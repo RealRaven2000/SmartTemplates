@@ -1,68 +1,146 @@
+// -----------------------------------------------------------------------------------
+// ---------------------------- last edit at 06/02/2012 ------------------------------
+// -----------------------------------------------------------------------------------
+// ----------------------------------- Changelog -------------------------------------
+// -----------------------------------------------------------------------------------
+// 0.7.5: "use strict" suggested by Mozilla add-on review team
+// 0.7.8: logging an error in error console if an variable is used incorrect
+// 0.8.0: other order of Account Name-User Name' instead of 'User Name-Account Name
+// -----------------------------------------------------------------------------------
+
 "use strict"; // "use strict" suggested by Mozilla add-on review team
 
 //******************************************************************************
 // for messengercompose
 //******************************************************************************
-var gSmartTemplate = {};
-
-gSmartTemplate.stateListener = {
-    NotifyComposeFieldsReady: function() {},
-    NotifyComposeBodyReady: function() {
-        gSmartTemplate.notifyComposeBodyReady();
+var gSmartTemplate = {
+    // definitions for whatIsX (time of %A-Za-z%)
+    XisToday : 0,
+    XisSent  : 1,
+    signature : null,
+    sigIsDefined : false,
+    
+    stateListener: {
+        NotifyComposeFieldsReady: function() {},
+        NotifyComposeBodyReady: function() {
+            gSmartTemplate.notifyComposeBodyReady();
+        },
+        ComposeProcessDone: function(aResult) {},
+        SaveInFolderDone: function(folderURI) {}
     },
-    ComposeProcessDone: function(aResult) {},
-    SaveInFolderDone: function(folderURI) {}
-};
+    
+    initListner: function() {   
+        gMsgCompose.RegisterStateListener(gSmartTemplate.stateListener);
+    },
+    // -------------------------------------------------------------------
+    // A handler to add template message
+    // -------------------------------------------------------------------
+    notifyComposeBodyReady: function()
+    {   
+        this.Util.logDebugOptional('events','gSmartTemplate.notifyComposeBodyReady()');
+        // Add template message
+        this.smartTemplate.insertTemplate(true);
+    },
+    
+    // -------------------------------------------------------------------
+    // A handler to switch identity
+    // -------------------------------------------------------------------
+    loadIdentity : function(startup)
+    {   
+        this.Util.logDebugOptional('functions','gSmartTemplate.loadIdentity(' + startup +')');
+        if (startup) {
+            // Old function call
+            this.oldFunc_LoadIdentity(startup);
+        } else {
+            // Check body modified or not
+            var isBodyModified = gMsgCompose.bodyModified;
+            if (!isBodyModified) {
+                // Add template message
+                this.smartTemplate.insertTemplate(false);
+            }
+            // Old function call
+            this.oldFunc_LoadIdentity(startup);
+            if (!isBodyModified && gMsgCompose.bodyModified)
+              { gMsgCompose.editor.resetModificationCount(); }  // for TB bug?
+        }
+    },
+    
+    // -------------------------------------------------------------------
+    // Escape to HTML character references
+    // -------------------------------------------------------------------
+    escapeHtml: function(str)
+    {
+        return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
+    },
 
-gSmartTemplate.initListner = function()
-{   
-    gMsgCompose.RegisterStateListener(gSmartTemplate.stateListener);
+    // -------------------------------------------------------------------
+    // Get day name and month name
+    // -------------------------------------------------------------------
+    classCalIDateTimeFormatter: function(useLegacy)
+    {
+        // -----------------------------------
+        // Constructor
+        try {
+            if (useLegacy)
+                throw "without lightning";
+            // with Lightning
+            var cal = Components.classes["@mozilla.org/calendar/datetime-formatter;1"].
+                        getService(Components.interfaces.calIDateTimeFormatter);
+        } 
+        catch(ex) {
+            // without Lightning
+            var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
+                             getService(Components.interfaces.nsIStringBundleService);
+            var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/calender.properties");
+            var cal = {
+                dayName        : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
+                shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
+                monthName      : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".name"); },
+                shortMonthName : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".short"); }
+            };
+        }
+    
+        function list() {
+            var str = "";
+            for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
+            for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
+            return str;
+        };
+    
+        // -----------------------------------
+        // Public methods
+        this.dayName        = cal.dayName;
+        this.shortDayName   = cal.shortDayName;
+        this.monthName      = cal.monthName;
+        this.shortMonthName = cal.shortMonthName;
+        this.list           = list;
+    } ,
+    
+    // -------------------------------------------------------------------
+    // Initialize
+    // -------------------------------------------------------------------
+    init: function()
+    {
+        function smartTemplate_loadIdentity(startup){
+            return gSmartTemplate.loadIdentity(startup);
+        }
+        gSmartTemplate.Util.logDebug('gSmartTemplate.init()');
+        this.oldFunc_LoadIdentity = LoadIdentity;
+        LoadIdentity = smartTemplate_loadIdentity;
+    
+        this.pref = new this.classPref("extensions.smarttemplate.", "def");
+        this.smartTemplate = new this.classSmartTemplate();
+        this.cal = new this.classCalIDateTimeFormatter(true);
+        
+        // Time of %A-Za-z% is today(default)
+        this.whatIsX = this.XisToday;
+        this.Util.logDebug('gSmartTemplate.init() ends.');
+        
+    }
+    
 };
-
-// definitions for whatIsX (time of %A-Za-z%)
-gSmartTemplate.XisToday = 0;
-gSmartTemplate.XisSent  = 1;
-gSmartTemplate.signature = null;
-gSmartTemplate.sigIsDefined = false;
 
 document.getElementById("msgcomposeWindow").addEventListener("compose-window-init", gSmartTemplate.initListner, false);
-
-
-
-// -------------------------------------------------------------------
-// A handler to add template message
-// -------------------------------------------------------------------
-gSmartTemplate.notifyComposeBodyReady = function()
-{   
-    // Add template message
-    this.smartTemplate.insertTemplate(true);
-};
-
-
-
-// -------------------------------------------------------------------
-// A handler to switch identity
-// -------------------------------------------------------------------
-gSmartTemplate.loadIdentity = function(startup)
-{   
-    if (startup) {
-        // Old function call
-        this.oldFunc_LoadIdentity(startup);
-    } else {
-        // Check body modified or not
-        var isBodyModified = gMsgCompose.bodyModified;
-        if (!isBodyModified) {
-            // Add template message
-            this.smartTemplate.insertTemplate(false);
-        }
-        // Old function call
-        this.oldFunc_LoadIdentity(startup);
-        if (!isBodyModified && gMsgCompose.bodyModified)
-          { gMsgCompose.editor.resetModificationCount(); }  // for TB bug?
-    }
-};
-
-
 
 // -------------------------------------------------------------------
 // common (preference)
@@ -137,8 +215,6 @@ gSmartTemplate.classPref = function(branch, useDefault)
     this.getLocalePref = getLocalePref;
 };
 
-
-
 // -------------------------------------------------------------------
 // Get header string
 // -------------------------------------------------------------------
@@ -190,9 +266,6 @@ gSmartTemplate.classGetHeaders = function(messageURI)
 
     return null;
 };
-
-
-
 
 // -------------------------------------------------------------------
 // MIME decode
@@ -310,59 +383,6 @@ gSmartTemplate.classMimeDecode = function()
     this.decode = decode;
     this.split = split;
 };
-
-
-// -------------------------------------------------------------------
-// Escape to HTML character references
-// -------------------------------------------------------------------
-gSmartTemplate.escapeHtml = function(str)
-{
-    return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
-};
-
-
-// -------------------------------------------------------------------
-// Get day name and month name
-// -------------------------------------------------------------------
-gSmartTemplate.classCalIDateTimeFormatter = function(useLegacy)
-{
-    // -----------------------------------
-    // Constructor
- try {
-    if (useLegacy)
-        throw "without lightning";
-    // with Lightning
-    var cal = Components.classes["@mozilla.org/calendar/datetime-formatter;1"].
-                getService(Components.interfaces.calIDateTimeFormatter);
-  }catch(ex){
-    // without Lightning
-    var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-                     getService(Components.interfaces.nsIStringBundleService);
-    var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/calender.properties");
-    var cal = {
-        dayName        : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
-        shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
-        monthName      : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".name"); },
-        shortMonthName : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".short"); }
-    };
-  }
-
-    function list() {
-        var str = "";
-        for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
-        for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
-        return str;
-    };
-
-    // -----------------------------------
-    // Public methods
-    this.dayName        = cal.dayName;
-    this.shortDayName   = cal.shortDayName;
-    this.monthName      = cal.monthName;
-    this.shortMonthName = cal.shortMonthName;
-    this.list           = list;
-};
-
 
 // -------------------------------------------------------------------
 // Regularize template message
@@ -615,7 +635,9 @@ gSmartTemplate.classSmartTemplate = function()
     // -----------------------------------
     // Extract Signature
     // 
-    function extractSignature(){
+    function extractSignature()
+    {
+        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.extractSignature()');
         var bodyEl = gMsgCompose.editor.rootElement;           
         var nodes = gMsgCompose.editor.rootElement.childNodes;
         parent.signature = null;
@@ -637,7 +659,26 @@ gSmartTemplate.classSmartTemplate = function()
     // Delete DOMNode/textnode or BR
     function delDOMNodeTextOrBR(node)
     {
-        if (node && (node.nodeName == "BR" || node.nodeName == "#text")) {
+        let match=false;
+        let theNodeName='';
+        if (node && node.nodeName)
+          theNodeName = node.nodeName.toLowerCase();
+        else
+          return;
+        switch(theNodeName) {
+          case 'br':
+            match = true;
+            break;
+          case '#text':
+            match = true;
+            break;
+          case 'div':  // tb 13++
+            if (node.className && node.className.indexOf('moz-cite-prefix')>=0)
+              match = true;
+            break;
+        }
+        
+        if (match) {
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
@@ -659,6 +700,7 @@ gSmartTemplate.classSmartTemplate = function()
     //We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
     function delReplyHeader(idKey)
     {
+        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delReplyHeader()');
         var   pref = parent.pref;
         var   lines = 0;
         if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1)
@@ -696,8 +738,10 @@ gSmartTemplate.classSmartTemplate = function()
     //In compose with TEXT, body is
     //  <BR><BR> <#text#(1041)><BR> <#text# (headers)>!<BR><BR>! original-message
     //We need to remove tags until two BR tags appear consecutively.
+    // AG: To assume that the 2 <br> stay like that is foolish.
     function delForwardHeader()
     {
+        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
         var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService).
                        createBundle("chrome://messenger/locale/mime.properties");
@@ -722,6 +766,7 @@ gSmartTemplate.classSmartTemplate = function()
     // Remove template messages and Restore original quote headers
     function undoTemplate()
     {
+        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.undoTemplate()');
         var curEl = gMsgCompose.editor.rootElement.firstChild;
         var nextEl = gMsgCompose.editor.rootElement.firstChild;
         if (nextEl && nextEl.nodeName == "PRE")
@@ -851,9 +896,11 @@ gSmartTemplate.classSmartTemplate = function()
         // add template message --------------------------------
         if (msgTmpl && msgTmpl !== "")
         {
+            if(gMsgCompose.composeHTML){
             gMsgCompose.editor.insertNode(
                     gMsgCompose.editor.document.createElement("br"),
                     gMsgCompose.editor.rootElement, 0);
+			}
             editor.beginningOfDocument();
             editor.insertHTML("<div id=\"IDstID\">" + msgTmpl + "</div>");
             editor.beginningOfDocument();
@@ -884,28 +931,11 @@ gSmartTemplate.classSmartTemplate = function()
     };
 
     // -----------------------------------
-    // Public methods
+    // Public methods of classSmartTemplate
     this.insertTemplate = insertTemplate;
 };
 
-// -------------------------------------------------------------------
-// Initialize
-// -------------------------------------------------------------------
-gSmartTemplate.init = function()
-{
-    function smartTemplate_loadIdentity(startup){
-        return gSmartTemplate.loadIdentity(startup);
-    }
-    gSmartTemplate.oldFunc_LoadIdentity = LoadIdentity;
-    LoadIdentity = smartTemplate_loadIdentity;
 
-    gSmartTemplate.pref = new this.classPref("extensions.smarttemplate.", "def");
-    gSmartTemplate.smartTemplate = new this.classSmartTemplate();
-    gSmartTemplate.cal = new this.classCalIDateTimeFormatter(true);
-    
-    // Time of %A-Za-z% is today(default)
-    gSmartTemplate.whatIsX = this.XisToday;
-    
-};
+window.setTimeout ( function(){gSmartTemplate.init();},500 );
 
-gSmartTemplate.init();
+

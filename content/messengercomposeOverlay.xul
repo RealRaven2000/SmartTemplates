@@ -5,7 +5,9 @@
 <overlay id="stMessengercomposeOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/x-javascript" src="chrome://smarttemplate/content/messengercomposeOverlay.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/messengercomposeOverlay.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/smartTemplate-util.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/smartTemplate-prefs.js"/>
 
 <!--
  <statusbar id="status-bar">
