@@ -1,0 +1,180 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label						"文件">
+<!ENTITY tools.label					"工具">
+<!ENTITY help.label						"帮助">
+
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label						"复制">
+<!ENTITY close.label					"关闭">
+<!ENTITY export.label					"导出">
+<!ENTITY import.label					"导入">
+<!ENTITY settings.label					"设置和模板">
+<!ENTITY add-onHome.label				"扩展主页">
+<!ENTITY add-onSupport.label			"支持主页">
+
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab           		"新建">
+<!ENTITY pref_rsp.tab           		"回复">
+<!ENTITY pref_fwd.tab           		"转发">
+<!ENTITY pref_help.tab         			"帮助">
+<!ENTITY pref_about.tab         		"关于">
+
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button	        		"接受">
+<!ENTITY cancel_button	        		"丢弃">
+
+<!-- #### OVERLAYS #### -->
+<!ENTITY add-onName.label				"SmartTemplate4">
+<!ENTITY add-onNameSettings_tip			"SmartTemplate4 选项">
+
+<!-- #### GUI #### -->
+<!ENTITY pref_dialog.title      		"SmartTemplate4 选项">
+<!ENTITY pref_server_desc       		"账户名称">
+<!ENTITY pref_server_def        		"通用">
+
+<!ENTITY pref_def.label         		"选择通用">
+<!ENTITY pref_def.cap           		"如果你想要设置这个账号，请移除‘选择通用’">
+
+<!ENTITY pref_newmsg.cap        		"新消息">
+<!ENTITY pref_new.label         		"将以下模板应用于新消息">
+
+<!ENTITY pref_rspmsg.cap        		"回复消息">
+<!ENTITY pref_rsp.label         		"将以下模板应用于回复消息">
+<!ENTITY pref_rsphead.label     		"替换标准引用头文件">
+
+<!ENTITY pref_fwdmsg.cap        		"转发消息">
+<!ENTITY pref_fwd.label         		"将以下模板应用于转发消息">
+<!ENTITY pref_fwdhead.label     		"使用以替换标准引用头文件">
+
+<!ENTITY pref_html.label        		"使用 HTML （例如，&lt;b&gt;bold&lt;/b&gt;）">
+<!ENTITY pref_html.cap          		"使用转义字符 &quot; , &amp; , &lt; , &gt;，空格。详见帮助。">
+<!ENTITY pref_rep_br.label      		"用 &lt;br&gt; 换行">
+<!ENTITY pref_rep_br.cap        		"注意：如果 &lt;br&gt; 后面跟着一个 HTML 标签则将不能换行">
+
+<!ENTITY pref_quotehead_tip     		"禁用标准引用头文件。请将你的引用头文件填入文本框。">
+<!ENTITY pref_template_tip      		"您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
+
+<!ENTITY help_dialog_title      		"SmartTemplate4 帮助">
+<!ENTITY help_keyword.cap       		"帮助">
+
+<!ENTITY account_st.cap         		"SmartTemplate4">
+<!ENTITY account_st.button      		"编辑模板和引用头文件">
+
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap						"关于SmartTemplate4">
+<!ENTITY creator.label					"创造者">
+<!ENTITY developer.label				"开发人员">
+<!ENTITY localename.label				"zh-CN">
+<!ENTITY localized.label				"翻译">
+<!ENTITY translatorNickname.label		"Yanfang Liu (BabelZilla)">
+<!ENTITY contributor.label				"贡献者">
+<!ENTITY about.label					"SmartTemplate4 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
+
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap 					"基础变量">
+<!ENTITY ownname.label 					"你的姓名"> 
+<!ENTITY ownmail.label 					"你的邮件地址"> 
+<!ENTITY date.label 					"日期和时间（和初始的邮件头一样）"> 
+<!ENTITY tomail.label 					"收件人邮件地址">
+<!ENTITY frommail.label 				"发件人邮件地址"> 
+<!ENTITY ccmail.label 					"抄送人邮件地址"> 
+<!ENTITY sig.label 						"Siganture 签名（来自TB帐户设置">
+<!ENTITY sig2.label 					"Siganture 签名（来自TB帐户设置，但没有'--'"> 
+
+<!ENTITY to_var.cap 					"收件人变量 (To) ">
+<!ENTITY to_note.label 					"当姓名不可用时，将显示邮件地址"> 
+<!ENTITY to.label 						"收件人姓名 (默认)"> 
+<!ENTITY tofirstname.label 				"收件人名字">
+<!ENTITY toname.label 					"收件人姓名"> 
+
+<!ENTITY from_var.cap 					"发件人变量 (From)">
+<!ENTITY from_note.label				"当姓名不可用时，将显示邮件地址">
+<!ENTITY from.label 					"发件人姓名 (默认)"> 
+<!ENTITY fromfirstname.label 			"发件人名字"> 
+<!ENTITY fromname.label 				"发件人姓名"> 
+
+<!ENTITY cc_var.cap 					"抄送变量 (CC)">
+<!ENTITY cc_note.label 					"当姓名不可用时，将显示邮件地址"> 
+<!ENTITY cc.label 						"抄送人姓名 (默认)"> 
+<!ENTITY ccfirstname.label 				"抄送人名字"> 
+<!ENTITY ccname.label 					"抄送人姓名"> 
+
+<!ENTITY spec_form.cap 					"特殊形式">
+<!ENTITY specform_note.label			"在弧面括号内的短语 &#123;Cc: &#37;cc(name)&#37;&#125; 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!"> 
+<!ENTITY ex_brack.label					"例子: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+
+<!ENTITY sub_var.cap 					"主题"> 
+<!ENTITY sub.label 						"主题（像原来Mailheader相同）"> 
+<!ENTITY sub2.label 					"主题（如结核病消息编辑器相同）"> 
+
+<!ENTITY spec_var.cap 					"特殊变量"> 
+<!ENTITY messid.label 					"消息 ID"> 
+<!ENTITY newsgr.label 					"新闻组"> 
+<!ENTITY xmail.label 					"X-Mailer">
+<!ENTITY any.label						"任何标题行"> 
+
+<!ENTITY fix_vartz.cap 					"固定的日期格式和时区变量 "> 
+<!ENTITY fix_vartz_note.label			"可以和 &#37;X:=sent&#37; 组合">
+<!ENTITY datelocal.label 				"日期和时间（地区设定格式）">
+<!ENTITY dateshort.label 				"日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label 					"时区 (+0100, +0200, ... )"> 
+<!ENTITY tzname.label 					"GMT, PST, EST, ... "> 
+
+<!ENTITY var_custom.cap 				"自定义日期格式的变量 "> 
+<!ENTITY customdf_note.label			"可以和 &#37;X:=sent&#37; 组合">
+<!ENTITY A.label 						"一周里的一天 (Friday)">
+<!ENTITY a.label 						"一周里的一天 (Fri.)">
+<!ENTITY d.label 						"一个月里的一天 (01 to 31)"> 
+<!ENTITY e.label 						"一个月里的一天 (1 to 31)">
+<!ENTITY m.label 						"月份 (01 to 12)">
+<!ENTITY n.label 						"月份 (1 to 12)">  
+<!ENTITY B.label 						"月份 (January)">
+<!ENTITY b.label 						"月份 (Jan.)">
+<!ENTITY y.label 						"年 (1970)"> 
+<!ENTITY m.label 						"分钟 (00 至 59)">
+<!ENTITY s.label 						"第二 (00 至 59)"> 
+<!ENTITY h.label 						"小时，24-小时格式 (00 to 23)">
+<!ENTITY k.label 						"小时，24-小时格式 (0 to 23)">  
+<!ENTITY i.label 						"小时，12-小时格式 (01 to 12)">
+<!ENTITY l.label 						"小时，12-小时格式 (1 to 12)"> 
+<!ENTITY p.label 						"AM 或 PM">
+<!ENTITY p1.label 						"a.m."> 
+<!ENTITY p2.label 						"A.M."> 
+<!ENTITY p3.label 						"AM"> 
+
+<!ENTITY var_xsent.cap 					"使用 &#37;X:=sent&#37;"> 
+<!ENTITY xsent_note.label				"上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。 "> 
+
+<!ENTITY xsent_long.cap 				"长字符串的例子：">
+<!ENTITY xsent_long.label				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; um &#37;H&#37;:&#37;M&#37; Uhr:">
+<!ENTITY xsent_long_result.label 		"结果： 16.02.2011 um 12:15 Uhr:"> 
+
+<!ENTITY xsent_short.cap  				"短字符串的例子：">
+<!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label 		"结果： 星期三， 16.02.2011 12:15:25">
+<!ENTITY xsent_short_note.label 		"额外的，你可以在以下两个变种变量使用：">
+
+<!ENTITY localedate.label 				"日期和时间（地区设定格式）">
+<!ENTITY shortdate.label 				"日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label 			"时区 (+0100, +0200, ... )"> 
+<!ENTITY timezonename.label 			"GMT, PST, EST, ... ">
+
+<!ENTITY im-ex.cap                      "设置和模板导出/导入">
+<!ENTITY im-ex_note1.label              "您可以导出和导入与您的每个账号相关的设置和模板。">
+<!ENTITY im-ex_note2.label              "首先从SmartTemplate4的设置下拉框中选择您想要导出的账号。">
+<!ENTITY im-ex_note3.label              "接下来从菜单栏中选择'工具' => '导出' => '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
+<!ENTITY im-ex_note4.label              "想要导入一个文件，首先从SmartTemplate4的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' => '导入' => '设置和模板'">
+<!ENTITY im-ex_note5.label              "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
+<!ENTITY im-ex_note6.label              "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
+
+<!ENTITY html_note.cap 					"HTML 模板说明 "> 
+<!ENTITY html_note.label				"HTML 模板中请只使用 UTF-8 (Unicode) 字符集！">
+
+<!ENTITY table.cap						"变量的使用情况">
+<!ENTITY table_note.label				"如果一个变量使用错误的错误记录在Errorconsole！">
+
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label			"变量">
+<!ENTITY table_new.label				"新">
+<!ENTITY table_reply.label				"回复">
+<!ENTITY table_fwd.label				"向前">

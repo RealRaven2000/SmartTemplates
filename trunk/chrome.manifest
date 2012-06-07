@@ -1,0 +1,29 @@
+#### MISC FILES CONTENT FOLDER ####
+content		SmartTemplate4						content/
+
+#### SKIN ####
+skin		SmartTemplate4		classic/1.0		skin/
+skin		SmartTemplate4		default/1.0		skin/default/
+
+#### LOCALIZATIONS (alphabetical by localename) ####
+locale		SmartTemplate4		de				locale/de/
+locale		SmartTemplate4		en-US			locale/en-US/
+locale		SmartTemplate4		es-ES			locale/es-ES/
+locale		SmartTemplate4		fi				locale/fi/
+locale		SmartTemplate4		fr				locale/fr/
+locale		SmartTemplate4		it				locale/it/
+locale		SmartTemplate4		ja				locale/ja/
+locale		SmartTemplate4		nl				locale/nl/
+locale		SmartTemplate4		pl				locale/pl/
+locale		SmartTemplate4		pt-BR			locale/pt-BR/
+locale		SmartTemplate4		ru				locale/ru/
+locale		SmartTemplate4		sv-SE			locale/sv-SE/
+locale		SmartTemplate4		zh-CN			locale/zh-CN/ 
+
+#### Thunderbird XUL OVERLAYS ####
+# messengercompose.xul (MailCompose Window)
+overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://SmartTemplate4/content/messengercomposeOverlay.xul 
+# am-addressing.xul (am addressing -> Accountmanager)
+overlay chrome://messenger/content/am-addressing.xul 						chrome://SmartTemplate4/content/am-addressingOverlay.xul
+# messenger.xul (Mainwindow -> "Statusbar")
+overlay chrome://messenger/content/messenger.xul 							chrome://SmartTemplate4/content/messengerOverlay.xul

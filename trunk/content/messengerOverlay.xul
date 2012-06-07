@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://SmartTemplate4/skin/default/style.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://SmartTemplate4/locale/SmartTemplate4.dtd">
+
+<overlay 
+	id="SmartTemplate4MessengerOverlay" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		 
+	<script type="application/x-javascript" src="chrome://SmartTemplate4/content/settings.js" />
+
+	<statusbar id="status-bar">
+		<statusbarpanel 
+				id="SmartTemplate4Messenger"
+				label="&add-onName.label;"
+				tooltiptext="&add-onNameSettings_tip;" 
+				class="statusbarpanel-iconic-text"					
+				oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,modal,centerscreen');" />		
+	</statusbar>
+</overlay>
