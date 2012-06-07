@@ -289,10 +289,10 @@
 										<vbox id="SmartTemplate4AboutLogo" class="AboutLogo" align="center" flex="1" height="40px" />
 										<spacer height="10px"/>
 									<vbox align="center" flex="1" style="overflow-y:auto; overflow-x:auto;" minheight="235px">
-										<description class="SmartTemplate4AboutDeveloper">&creator.label;: tool8</description>
-										<description class="SmartTemplate4AboutDeveloper">&developer.label;: tool8, Marky Mark DE</description>
+										<description class="SmartTemplate4AboutDeveloper">&creator.label;: Axel Grude</description>
+										<description class="SmartTemplate4AboutDeveloper">&developer.label;: Axel Grude, Marky Mark DE</description>
 										<description class="SmartTemplate4AboutDeveloper">&localized.label;: &translatorNickname.label;</description>
-										<description class="SmartTemplate4AboutDeveloper">&contributor.label;: Aris, Peter Macej</description>
+										<description class="SmartTemplate4AboutDeveloper">&contributor.label;: Aris, Peter Macej, tool8</description>
 										<spacer height="20px"/>
 										<description class="SmartTemplate4AboutDesc">&about.label;</description>
 									</vbox>
