@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title     "Smart Template 4 Einstellungen">
+<!ENTITY pref_dialog.maxwidth  "650">
+<!ENTITY pref_dialog.minwidth  "450">
+
+<!ENTITY pref_server_desc      "Konto:">
+<!ENTITY pref_server_def       "Globale Einstellungen">
+
+<!ENTITY pref_new.tab          "Neue Nachricht">
+<!ENTITY pref_rsp.tab          "Antworten">
+<!ENTITY pref_fwd.tab          "Weiterleiten">
+
+<!ENTITY pref_def.label        "Globale Einstellungen für dieses Konto verwenden">
+<!ENTITY pref_def.cap          "Deaktivieren sie 'Globale Einstellungen für dieses Konto verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">
+
+<!ENTITY pref_newmsg.cap       "Neue Nachricht">
+<!ENTITY pref_new.label        "Folgende Vorlage für die Nachricht verwenden">
+
+<!ENTITY pref_rspmsg.cap       "Antworten">
+<!ENTITY pref_rsp.label        "Folgende Vorlage für Antworten verwenden">
+<!ENTITY pref_rsphead.label    "Standard Thunderbird Mailheader deaktivieren">
+
+<!ENTITY pref_fwdmsg.cap       "Weiterleiten">
+<!ENTITY pref_fwd.label        "Folgende Vorlage für Weiterleitungen verwenden">
+<!ENTITY pref_fwdhead.label    "Standard Thunderbird Mailheader deaktivieren">
+
+<!ENTITY pref_html.label       "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
+<!ENTITY pref_html.cap         "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF8) Zeichen verwenden. Details siehe Hilfe.">
+<!ENTITY pref_rep_br.label     "Ersetze Leerstellen durch &lt;br&gt;">
+<!ENTITY pref_rep_br.cap       "HINWEIS: Es wird keine Leerstelle innerhalb des HTML Tag mit &lt;br&gt; eingefügt">
+
+<!ENTITY pref_quotehead_tip    "Standard Thunderbird Mailheader deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text innerhalb des Textfelds">
+<!ENTITY pref_template_tip     "Sie können auch Schlüsselwörter 'Variablen' verwenden. Details siehe Hilfe.">
+
+<!ENTITY help_button           "Hilfe">
+<!ENTITY help_dialog_title     "Smart Template 4 Hilfethemen">
+<!ENTITY help_keyword.cap      "Hilfethemen">
+
+<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.button     "Vorlageneinstellungen für 'quote-Header'...">

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>help.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="chrome://smarttemplate/skin/help.css">
+</head>
+<div class="body_helpfiles">
+<!-- ########## LOCALIZATION SECTION start ########## -->
+<div class="hr_spacer"></div>
+<div class="cap">基础变量</div>
+<div class="hr_spacer"></div>
+<code>%ownname%</code> = 你的姓名<br>
+<code>%ownmail%</code> = 你的邮件地址<br>
+<code>%date%</code> = 日期和时间（和初始的邮件头一样）<br>
+<code>%to(mail)%</code> = 收件人邮件地址<br>
+<code>%from(mail)%</code> = 发件人邮件地址<br>
+<code>%cc(mail)%</code> = 抄送人邮件地址<br>
+<code>%sig%</code> = Siganture（结核病帐户设置）<br>
+<code>%sig(2)%</code> = Siganture（结核病的帐户设置，但没有'--')<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">收件人变量 (To)
+<h1>(当姓名不可用时，将显示邮件地址)</h1></div>
+<div class="hr_spacer"></div>
+<code>%to%</code> = 收件人姓名 (默认)<br>
+<code>%to(firstname)%</code> = 收件人名字<br>
+<code>%to(name)%</code> = 收件人姓名<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">发件人变量 (From)
+<h1>(当姓名不可用时，将显示邮件地址)</h1></div>
+<div class="hr_spacer"></div>
+<code>%from%</code> = 发件人姓名 (默认)<br>
+<code>%from(firstname)%</code> = 发件人名字<br>
+<code>%from(name)%</code> = 发件人姓名<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">抄送变量 (CC)
+<h1>(当姓名不可用时，将显示邮件地址)</h1></div>
+<div class="hr_spacer"></div>
+<code>%cc%</code> = 抄送人姓名 (默认)<br>
+<code>%cc(firstname)%</code> = 抄送人名字<br>
+<code>%cc(name)%</code> = 抄送人姓名<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">特殊形式</div>
+<div class="hr_spacer"></div>
+To: <code>%to(name)%{</code><br>
+Cc: <code>%cc(name)%}</code>
+<br>
+<br>
+仅短语 "{Cc: %cc(name)%}" 将被显示， <br>
+如果变量 %cc(name) 可以被替换！<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">主题</div>
+<div class="hr_spacer"></div>
+<code>%subject%</code> = 主题（像原来Mailheader相同）<br>
+<code>%subject(2)%</code> = 主题（如结核病消息编辑器相同）<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">特殊变量</div>
+<div class="hr_spacer"></div>
+<code>%Message-ID%</code> = 消息 ID<br>
+<code>%Newsgroups%</code> = 新闻组<br>
+<code>%X-Mailer%</code> = X-Mailer<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">固定的日期格式和时区变量
+<h1>(可以和 %X:=sent% 组合)</h1></div>
+<div class="hr_spacer"></div>
+<code>%datelocal%</code> = 日期和时间（地区设定格式）<br>
+<code>%dateshort%</code> = 日期和时间的简写 (e.g. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = 时区 ("+0100";"+0200"; ...)<br>
+<code>%tz_name%</code> = GMT; PST; EST; ...<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">自定义日期格式的变量
+<h1>(可以和 %X:=sent% 组合)</h1></div>
+<div class="hr_spacer"></div>
+<code>%A% / %a%</code> = 一周里的一天 ("Friday" / "Fri.")<br>
+<code>%d% / %e%</code> = 一个月里的一天 ("01 to "31" / "1" to "31")<br>
+<code>%m% / %n%</code> = 月份 ("01" to "12" / "1 to 12")<br>
+<code>%B% / %b%</code> = 月份 ("January" / "Jan.")<br>
+<code>%Y%</code> = 年份 ("1970")<br>
+<code>%M%</code> = 分钟 ("00" to "59")<br>
+<code>%S%</code> = 秒 ("00" to "59")<br>
+<code>%H% / %k%</code> = 小时，24-小时格式 ("00" to "23" / "0" to "23")<br>
+<code>%I% / %l%</code> = 小时, 12-小时格式 ("01" to "12" / "1" to "12")<br>
+<code>%p%</code> = "AM" or "PM"<br> 
+<code>%p(1)%</code> = (a.m.)<br>
+<code>%p(2)%</code> = (A.M.)<br>
+<code>%p(3)%</code> = (AM)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">使用 %X:=sent%</div>
+<div class="hr_spacer"></div>
+上面的变量将正常设置当前的值。 <br>
+当与 %X:=sent% 组合时，将设置过去的值。 
+<br>
+<br>
+<b>长字符串的例子：</b><br>
+<code>%X:=sent%%d%.%m%.%Y% um %H%:%M% Uhr:</code><br>
+<b>结果：</b> 16.02.2011 um 12:15 Uhr:
+<br>
+<br>
+另外你可以使用这个变量：<br>
+<code>%datelocal%</code> = 日期和时间（地区设定格式）<br>
+<code>%dateshort%</code> = 日期和时间的简写 (e.g. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = 时区 ("+0100";"+0200"; ...)<br>
+设置一个短字符串。
+<br>
+<br>
+<b>短字符串的例子：</b><br>
+<code>%X:=sent%%datelocal%</code><br>
+<b>结果：</b> 星期三， 16.02.2011 12:15:25<br>
+或<br>
+<code>%X:=sent%%dateshort%</code><br>
+<b>结果：</b> 16.02.2011 12:15:25<br>
+<code>%date_tz%</code> = 时区 ("+0100";"+0200"; ...)<br>
+在两个变式中，你都可以额外使用 Timezone 变量。<br>
+<br>
+<div class="hr_spacer"></div><div class="cap">
+HTML 模板说明
+</div><div class="hr_spacer"></div>
+<b>HTML 模板中请只使用 UTF-8 (Unicode) 字符集！</b>
+<br>
+<br>
+<b>- 特殊字符: </b> " , &amp; , &lt; , &gt;<br>
+Unicode: <code>&amp;quot; ,  &amp;amp; , &amp;lt; , &amp;gt;</code>
+<br>
+<br>
+<b>- 变元音:</b> &Auml; ,  &auml; , &Uuml; , &uuml; , &Ouml; , &ouml; , &szlig;<br>
+Unicode: <code>&amp;Auml; ,  &amp;auml; , &amp;Uuml; , &amp;uuml; , &amp;Ouml; , &amp;ouml; , &amp;szlig;</code> 
+<br>
+<br>
+<b>- 换行</b><br>
+你需要使用 &lt;br&gt; 换行，当<br>
+' 用 &lt;br&gt; 换行' 不被勾选的时候。<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">備注:</div>
+<div class="hr_spacer"></div>
+</div>
+<iframe class="iframe_vars" src="chrome://smarttemplate/skin/vars.html" name="inhalt"></iframe>
+<!-- ########## LOCALIZATION SECTION end ########## -->
+</html>

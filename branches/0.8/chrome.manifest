@@ -1,0 +1,18 @@
+content smarttemplate content/
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://smarttemplate/content/messengercomposeOverlay.xul
+overlay chrome://messenger/content/am-addressing.xul chrome://smarttemplate/content/am-addressingOverlay.xul
+
+locale smarttemplate de locale/de/
+locale smarttemplate en-US locale/en-US/
+locale smarttemplate es-ES locale/es-ES/
+locale smarttemplate fr locale/fr/
+locale smarttemplate it locale/it/
+locale smarttemplate ja locale/ja/
+locale smarttemplate nl locale/nl/
+locale smarttemplate pl locale/pl/
+locale smarttemplate pt-BR locale/pt-BR/
+locale smarttemplate ru locale/ru/
+locale smarttemplate sv-SE locale/sv-SE/
+locale smarttemplate zh-CN locale/zh-CN/
+
+skin smarttemplate classic/1.0 skin/

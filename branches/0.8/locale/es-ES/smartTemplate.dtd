@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title      "Opciones de Smart Template 4">
+<!ENTITY pref_dialog.maxwidth   "650">
+<!ENTITY pref_dialog.minwidth   "450">
+
+<!ENTITY pref_server_desc       "Cuenta:">
+<!ENTITY pref_server_def        "Común">
+
+<!ENTITY pref_new.tab           "Nuevo">
+<!ENTITY pref_rsp.tab           "Responder">
+<!ENTITY pref_fwd.tab           "Reenviar">
+
+<!ENTITY pref_def.label         "Usar conún">
+<!ENTITY pref_def.cap           "Elimine &quot;Usar común&quot; si quiere predisponer esta cuenta.">
+
+<!ENTITY pref_newmsg.cap        "Nuevo mensaje">
+<!ENTITY pref_new.label         "Aplicar esta plantilla al nuevo mensaje">
+
+<!ENTITY pref_rspmsg.cap        "Responder mensaje">
+<!ENTITY pref_rsp.label         "Aplicar esta plantilla al mensaje de respuesta">
+<!ENTITY pref_rsphead.label     "Usar en vez del encabezado de cita estándar">
+
+<!ENTITY pref_fwdmsg.cap        "Reenviando el mensaje">
+<!ENTITY pref_fwd.label         "Aplicar esta plantilla al mensaje a reenviar">
+<!ENTITY pref_fwdhead.label     "Usar en vez del encabezado de cita estándar">
+
+<!ENTITY pref_html.label        "Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap          "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la sección de ayuda para más detalles.">
+<!ENTITY pref_rep_br.label      "Sustituir salto de línea por &lt;br&gt;">
+<!ENTITY pref_rep_br.cap        "NOTA: No sustituirá el salto de línea que siga a una etiqueta HTML con &lt;br&gt;.">
+
+<!ENTITY pref_quotehead_tip     "Desactivar el encabezado de cita estándar. Por favor configure su encabezado de cita en el cuadro de texto.">
+<!ENTITY pref_template_tip      "Puede cambiar el encabezado de cita con &quot;nombres de variable&quot;. Consulte la sección de ayuda para más detalles.">
+
+<!ENTITY help_button            "Ayuda">
+<!ENTITY help_dialog_title      "Ayuda de Smart Template 4">
+<!ENTITY help_keyword.cap       "Ayuda">
+
+<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.button      "Editar pantillas y encabezados de cita">

@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title      "Opções do Smart Template 4">
+<!ENTITY pref_dialog.maxwidth   "650">
+<!ENTITY pref_dialog.minwidth   "450">
+
+<!ENTITY pref_server_desc       "Conta:">
+<!ENTITY pref_server_def        "Configuração global">
+
+<!ENTITY pref_new.tab           "Nova">
+<!ENTITY pref_rsp.tab           "Responder">
+<!ENTITY pref_fwd.tab           "Encaminhar">
+
+<!ENTITY pref_def.label         "Usar configuração global">
+<!ENTITY pref_def.cap           "Para fazer configurações específicas nesta conta, desmarque a opção &quot;Usar configuração global&quot;.">
+
+<!ENTITY pref_newmsg.cap        "Nova mensagem">
+<!ENTITY pref_new.label         "Aplicar o seguinte modelo a novas mensagens">
+
+<!ENTITY pref_rspmsg.cap        "Responder mensagens">
+<!ENTITY pref_rsp.label         "Aplicar o seguinte modelo ao responder mensagens">
+<!ENTITY pref_rsphead.label     "Usar no lugar do cabeçalho da mensagem anterior">
+
+<!ENTITY pref_fwdmsg.cap        "Encaminhar mensagens">
+<!ENTITY pref_fwd.label         "Aplicar o seguinte modelo ao encaminhar mensagens">
+<!ENTITY pref_fwdhead.label     "Usar no lugar do cabeçalho da mensagem anterior">
+
+<!ENTITY pref_html.label        "Usar HTML (por exemplo, &lt;b&gt;negrito&lt;/b&gt;)">
+<!ENTITY pref_html.cap          "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espaço. Veja a ajuda para detalhes.">
+<!ENTITY pref_rep_br.label      "Substituir quebra de linha por &lt;br&gt;">
+<!ENTITY pref_rep_br.cap        "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;.">
+
+<!ENTITY pref_quotehead_tip     "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado.">
+<!ENTITY pref_template_tip      "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
+
+<!ENTITY help_button            "Ajuda">
+<!ENTITY help_dialog_title      "Ajuda do Smart Template 4">
+<!ENTITY help_keyword.cap       "Ajuda">
+
+<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.button      "Editar modelos e cabeçalhos das mensagens anteriores...">

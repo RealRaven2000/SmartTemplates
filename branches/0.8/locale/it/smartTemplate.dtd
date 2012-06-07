@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title      "Opzioni di Smart Template 4">
+<!ENTITY pref_dialog.maxwidth   "650">
+<!ENTITY pref_dialog.minwidth   "450">
+
+<!ENTITY pref_server_desc       "Account:">
+<!ENTITY pref_server_def        "Utilizza posta in arrivo globale">
+
+<!ENTITY pref_new.tab           "Messaggi nuovi">
+<!ENTITY pref_rsp.tab           "Messaggi in risposta">
+<!ENTITY pref_fwd.tab           "Messaggi da inoltrare">
+
+<!ENTITY pref_def.label         "Utilizza la cartella di posta in arrivo globale">
+<!ENTITY pref_def.cap           "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per personalizzare l&apos;intestazione delle citazioni dell&apos;account">
+
+<!ENTITY pref_newmsg.cap        "Messaggi nuovi">
+<!ENTITY pref_new.label         "Applica il seguente modello di intestazione personalizzata per i messaggi nuovi">
+
+<!ENTITY pref_rspmsg.cap        "Messaggi in risposta">
+<!ENTITY pref_rsp.label         "Applica il seguente modello di intestazione personalizzata per i messaggi in risposta">
+<!ENTITY pref_rsphead.label     "Utilizza l&apos;intestazione personalizzata della citazione invece di quella predefinita">
+
+<!ENTITY pref_fwdmsg.cap        "Messaggi da inoltrare">
+<!ENTITY pref_fwd.label         "Applica il seguente modello di intestazione personalizzata per i messaggi da inoltrare">
+<!ENTITY pref_fwdhead.label     "Utilizza l&apos;intestazione personalizzata della citazione invece di quella predefinita">
+
+<!ENTITY pref_html.label        "Utilizza il codice HTML (es: &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap          "Attivando l&apos;opzione verranno utilizzati i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni">
+<!ENTITY pref_rep_br.label      "Sostituisci \n con &lt;br&gt;">
+<!ENTITY pref_rep_br.cap        "Attivando l&apos;opzione \n verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui \n segue il codice HTML contenente &lt;br&gt;">
+
+<!ENTITY pref_quotehead_tip     "Attivando l&apos;opzione non verrà utilizzata l&apos;intestazione predefinita delle citazioni. Formulare l&apos;intestazione personalizzata all&apos;interno dell&apos;area di testo qui sopra">
+<!ENTITY pref_template_tip      "È possibile modificare l&apos;intestazione delle citazioni utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
+
+<!ENTITY help_button            "Contenuti guida">
+<!ENTITY help_dialog_title      "Contenuti guida di Smart Template 4">
+<!ENTITY help_keyword.cap       "Contenuti guida">
+
+<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.button      "Modifica i modelli di intestazione delle citazioni…">
