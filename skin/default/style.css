@@ -1,0 +1,353 @@
+/* ----------------------------------------------------------------------------------- */
+/* ---------------------------- create by Marky Mark DE ------------------------------ */
+/* ---------------------------- last edit at 06/02/2012 ------------------------------ */
+/* ----------------------------------------------------------------------------------- */
+/* ----------------------------------- Changelog ------------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+/* 1.0.0: new formatting all content over css */
+/* some formating works only as class e.g. inside an Tab which changes */
+/* the content by selecting another Identity, as ID it lost by change the formate */
+/* ----------------------------------------------------------------------------------- */
+
+/* ################################################################################### */
+/* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
+/* ################################################################################### */
+
+.menu-iconic,.menuitem-iconic {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
+}
+
+/* ################################## ICON BINDINGS ################################## */
+#SmartTemplate4CloseItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/close.png") !important;
+}
+#SmartTemplate4ExportMenuitem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/export.png") !important;
+}
+#SmartTemplate4ExportItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+}
+#SmartTemplate4ImportMenuitem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/import.png") !important;
+}
+#SmartTemplate4ImportItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+}
+#SmartTemplate4add-onHomeItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/mozilla.png") !important;
+}
+#SmartTemplate4add-onSupportItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/tool8.png") !important;
+}
+#SmartTemplate4RightClickCopyItem {
+  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/copy.png") !important;
+}
+
+/* ################################################################################### */
+/* ###################################### GUI ######################################## */
+/* ################################################################################### */
+
+/* ############################## SELECTED IDENTITY ################################## */
+/* or #SmartTemplate_prefDialog .identity-menulist */
+
+#SmartTemplate_prefDialog #SmartTemplate4MsgIdentity {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 10pt !important;
+}
+
+/* ########################## CONTENT IDENT. SELECT POPUP ############################ */
+#SmartTemplate_prefDialog #SmartTemplate4MsgIdentityPopup menuitem {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 10pt !important;
+}
+
+/* ################################ CHECKBOXTEXTS #################################### */
+#SmartTemplate_prefDialog checkbox label { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 10pt !important;
+  font-style: italic;
+}
+
+/* ################################## TEXTBOXES ###################################### */
+#SmartTemplate_prefDialog .indent textbox {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
+}
+
+/* ############################### DeckB Description ################################# */
+.SmartTemplate4DeckBDesc {
+  font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 11pt !important;
+  display: block;
+  margin-left: 30px;
+}
+
+
+/* ################################################################################### */
+/* ##################################### BUTTONS ##################################### */
+/* ################################################################################### */ 
+
+.AcceptButton,.CacelButton,.AccountmanagerButton {
+  cursor: pointer;
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
+}
+
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+#SmartTemplate4AcceptButton label,#SmartTemplate4CacelButton label, 
+#SmartTemplate4AccountmanagerButton label {
+  margin-left: 5px !important;
+}
+
+/* ################################## ICON BINDINGS ################################## */
+#SmartTemplate4AcceptButton {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/accept.png") !important;
+}
+#SmartTemplate4CacelButton {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/cancel.png") !important;
+}
+#SmartTemplate4AccountmanagerButton {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;
+}
+
+
+/* ################################################################################### */
+/* ####################################### TABS ###################################### */
+/* ################################################################################### */
+
+.NewTab,.RspTab,.FwdTab,.HelpTab,.AboutTab {
+  -moz-appearance: none !important;
+  cursor: pointer;
+  border: 1px solid #BDBDBD;
+  border-bottom: none !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-weight: bold; 
+  font-size: 10pt !important;  
+}
+
+/* ############################### HOVER,ACTIVE & FOCUS ############################## */
+#SmartTemplate4NewTab:focus,#SmartTemplate4RspTab:focus,#SmartTemplate4FwdTab:focus,
+#SmartTemplate4HelpTab:focus,#SmartTemplate4AboutTab:focus,
+#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active, 
+#SmartTemplate4HelpTab:active,#SmartTemplate4AboutTab:active,
+#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover, 
+#SmartTemplate4HelpTab:hover,#SmartTemplate4AboutTab:hover {
+  border: 1px solid #0CB2E4;
+  color: #0CB2E4;
+}
+
+/* ############################ SPACE BETWEEN LABEL&ICON ############################# */
+/* Space between label and Icon in Tabs only over class possible! */
+.NewTab label,.RspTab label,.FwdTab label,.HelpTab label,.AboutTab label {
+  margin-left:5px !important;
+}
+
+/* ################################## ICON BINDINGS ################################## */
+/* Icon Binding in Tabs only over class possible! */
+.NewTab {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+}
+.RspTab {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+}
+.FwdTab {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+}
+.HelpTab {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+}
+.AboutTab {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+}
+
+/* ################################################################################### */
+/* ####################################### CAPS ###################################### */
+/* ################################################################################### */
+
+.NewMsgCap,.RspMsgCap,.FwdMsgCap,.AboutCap,.AccountCap,.HelpCap,.AccountmanagerCap {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
+}
+
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+/* Space between label and Icon in Caps inside tabs only over class possible! */
+.NewMsgCap label,.RspMsgCap label,.FwdMsgCap label,.AboutCap label,.AccountCap label,
+.HelpCap label,.AccountmanagerCap label {
+  margin-left: 5px !important;
+}
+
+/* ################################### ICON BINDINGS ################################# */
+/* Icon Binding in Caps inside tabs only over class possible! */
+.NewMsgCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+}
+.RspMsgCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+}
+.FwdMsgCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+}
+.AboutCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+}
+.AccountCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;  
+}
+.HelpCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+}
+.AccountmanagerCap {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+}
+
+/* ################################################################################### */
+/* ################################# About Tab CONTENT ############################### */
+/* ################################################################################### */
+
+
+/* ##################################### ABOUTLOGO ################################### */
+/* Icon Binding inside tab only over class possible! */
+.AboutLogo {
+  background-image: url("chrome://SmartTemplate4/skin/logo.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;  
+}
+
+/* ################################## AboutDeveloper ################################# */
+.SmartTemplate4AboutDeveloper { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 12pt !important;
+  line-height: 12pt !important; 
+  font-weight: bold;
+  text-align: center;
+  color: #BDBDBD;
+  text-shadow: #000000 1px 1px 1px;  
+}
+
+/* ############################## SmartTemplate4AboutDesc ############################ */
+.SmartTemplate4AboutDesc { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 11pt !important;
+  display: block;    
+}
+
+/* ################################################################################### */
+/* ################################ Help Iframe CONTENT ############################## */
+/* ################################################################################### */
+
+/* ####################################### BODY ###################################### */
+.body {
+  font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 11pt !important;
+  display: block;   
+}
+
+/* ################################ CHAPTER (HEADLINES)  ############################# */
+.helpchapter { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 12pt !important; 
+  font-weight: bold;
+  text-align: center;
+  color: #BDBDBD;
+  text-shadow: #000000 1px 1px 1px;
+  border-top: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+/* ############################# HTML TAG H1 (BELOW CHAPTER) ######################### */
+h1 { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 11pt !important;
+  margin-top: 0px; 
+  margin-bottom: 5px; 
+  padding: 0px; 
+  font-style: italic;
+  font-weight: normal;  
+}
+
+/* ##################################### HTML TAG b  ################################# */
+b { 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-size: 11pt !important;
+  font-style: italic;
+}
+
+/* #################################### HTML TAG CODE ################################ */
+code { 
+  font-family: 'Palatino Linotype', 'Times New Roman','Courier New', Verdana, 
+Geneva, Arial, Helvetica, sans-serif; 
+  font-size: 11pt !important; 
+}
+
+/* #################################### TABLE FOR VARS ############################### */
+#keywords {
+  border: 0;
+  border-collapse: collapse;
+  width: 100%;  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+		
+.td-keywords,.tr-keywords {
+  font-size: 11pt !important;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #808080;
+  padding: 0;
+}
+
+/* ################################## SCREENSHOT CLASS ############################### */
+.screenshot_help {  
+  margin-top: 5px;
+  margin-bottom: 10px;  
+}
+
+/* ################################## SMALL ICON CLASS ############################### */
+.small_icon { 
+  height: 16px;/*max 16px */	
+  width: 16px; /*max 16px */
+  margin-right: 3px;  
+}
+
+/* ############################## CHECKMARK & X IN VARTABLE ########################## */
+.no {    
+  color: #ff0000; 
+  font-size: 13pt !important;   
+  text-shadow: #000000 1px 1px 1px;
+}
+.yes {   
+  color: #7cfc00; 
+  font-size: 13pt !important;    
+  text-shadow: #000000 1px 1px 1px;  
+}
+
+
+/* ################################################################################### */
+/* ################################ STATUSBAR OVERLAY ################################ */
+/* ################################################################################### */
+
+.statusbarpanel-iconic-text {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-weight: bold; 
+  font-size: 10pt !important;  
+}
+
+/* ############################### HOVER,ACTIVE & FOCUS ############################## */
+.statusbarpanel-iconic-text:hover {  
+  cursor: pointer;
+}
+
+/* ############################ SPACE BETWEEN LABEL&ICON ############################# */
+.statusbarpanel-iconic-text label {
+  margin-right: 5px !important;
+}
+
+/* ################################### ICON BINDINGS ################################# */
+#SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
+  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+}

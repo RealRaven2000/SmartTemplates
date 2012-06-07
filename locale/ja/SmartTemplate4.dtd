@@ -1,0 +1,180 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label						"ファイル">
+<!ENTITY tools.label					"ツール">
+<!ENTITY help.label						"ヘルプ">
+
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label						"コピー">
+<!ENTITY close.label					"閉じる">
+<!ENTITY export.label					"エクスポート">
+<!ENTITY import.label					"インポート">
+<!ENTITY settings.label					"設定とテンプレート">
+<!ENTITY add-onHome.label				"ホームページ">
+<!ENTITY add-onSupport.label			"サポート">
+
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab          			"新規">
+<!ENTITY pref_rsp.tab          			"返信">
+<!ENTITY pref_fwd.tab          			"転送">
+<!ENTITY pref_help.tab         			"ヘルプ">
+<!ENTITY pref_about.tab         		"SmartTemplate4 について">
+
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button	       			"OK">
+<!ENTITY cancel_button	       			"キャンセル">
+
+<!-- #### OVERLAYS #### -->
+<!ENTITY add-onName.label				"SmartTemplate4">
+<!ENTITY add-onNameSettings_tip			"SmartTemplate4 設定">
+
+<!-- #### GUI #### -->
+<!ENTITY pref_dialog.title     			"SmartTemplate4 設定">	
+<!ENTITY pref_server_desc      			"差出人:">
+<!ENTITY pref_server_def       			"共通設定">
+
+<!ENTITY pref_def.label        			"共通設定を使う">
+<!ENTITY pref_def.cap          			"差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">
+
+<!ENTITY pref_newmsg.cap       			"新規メッセージ作成の設定">
+<!ENTITY pref_new.label        			"新規メッセージに以下のテンプレートを適用する">
+
+<!ENTITY pref_rspmsg.cap       			"返信メッセージ作成の設定">
+<!ENTITY pref_rsp.label        			"返信メッセージに以下のテンプレートを適用する">
+<!ENTITY pref_rsphead.label    			"既定の返信ヘッダの代わりに使用する">
+
+<!ENTITY pref_fwdmsg.cap       			"転送メッセージ作成の設定">
+<!ENTITY pref_fwd.label        			"転送メッセージに以下のテンプレートを適用する">
+<!ENTITY pref_fwdhead.label    			"既定の転送ヘッダの代わりに使用する">
+
+<!ENTITY pref_html.label       			"HTML として挿入する (&lt;b&gt;bold&lt;/b&gt; など)">
+<!ENTITY pref_html.cap         			"&quot; , &amp; , &lt; , &gt; , space はエスケープしてください。詳細はヘルプを参照してください。">
+<!ENTITY pref_rep_br.label     			"改行を &lt;br&gt; に変換する">
+<!ENTITY pref_rep_br.cap       			"注：HTML タグに続く改行は &lt;br&gt; に変換されません。">
+
+<!ENTITY pref_quotehead_tip    			"既定の引用ヘッダを無効にします。テキストボックスで好きな引用ヘッダを入力してください。">
+<!ENTITY pref_template_tip     			"予約語による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
+
+<!ENTITY help_dialog_title     			"SmartTemplate4 ヘルプ">
+<!ENTITY help_keyword.cap      			"ヘルプ">
+
+<!ENTITY account_st.cap        			"SmartTemplate4">
+<!ENTITY account_st.button     			"テンプレートと引用ヘッダの設定...">
+
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap						"SmartTemplate4 について">
+<!ENTITY creator.label					"作者">
+<!ENTITY developer.label				"開発者">
+<!ENTITY localename.label				"ja">
+<!ENTITY localized.label				"翻訳者">
+<!ENTITY translatorNickname.label		"Cai (BabelZilla)">
+<!ENTITY contributor.label				"貢献者">
+<!ENTITY about.label					"Thunderbird の既定の引用ヘッダをカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。">
+
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap 					"固定変数">
+<!ENTITY ownname.label 					"あなたの名前"> 
+<!ENTITY ownmail.label 					"あなたのメールアドレス"> 
+<!ENTITY date.label 					"送信日時 (メールヘッダに記載されている形式)"> 
+<!ENTITY tomail.label 					"受信者のメールアドレス">
+<!ENTITY frommail.label 				"差出人のメールアドレス"> 
+<!ENTITY ccmail.label 					"CC 受信者のメールアドレス"> 
+<!ENTITY sig.label 						"アカウントに設定されている署名">
+<!ENTITY sig2.label 					"アカウントに設定されている署名 ('--' 無し)"> 
+
+<!ENTITY to_var.cap 					"受信者 (To)">
+<!ENTITY to_note.label 					"受信者の名前が設定されていない場合、メールアドレスが表示されます"> 
+<!ENTITY to.label 						"受信者の名前 (既定)"> 
+<!ENTITY tofirstname.label 				"受信者の名前 (名字を除く)">
+<!ENTITY toname.label 					"受信者の名前"> 
+
+<!ENTITY from_var.cap 					"差出人 (From)">
+<!ENTITY from_note.label				"差出人の名前が指定されていない場合、メールアドレスが表示されます">
+<!ENTITY from.label 					"差出人の名前 (既定)"> 
+<!ENTITY fromfirstname.label 			"差出人の名前 (名字を除く)"> 
+<!ENTITY fromname.label 				"差出人の名前"> 
+
+<!ENTITY cc_var.cap 					"CC 受信者 (CC)">
+<!ENTITY cc_note.label 					"CC 受信者の名前が設定されていない場合、メールアドレスが表示されます"> 
+<!ENTITY cc.label 						"CC 受信者の名前 (既定)"> 
+<!ENTITY ccfirstname.label 				"CC 受信者の名前 (名字を除く)"> 
+<!ENTITY ccname.label 					"CC 受信者の名前"> 
+
+<!ENTITY spec_form.cap 					"条件文">
+<!ENTITY specform_note.label			"括弧 &#123;&#125; 内のテンプレートは、その中の予約語が利用可能である時のみ有効となります。"> 
+<!ENTITY ex_brack.label					"例: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+
+<!ENTITY sub_var.cap 					"件名"> 
+<!ENTITY sub.label 						"返信/転送するメッセージの件名"> 
+<!ENTITY sub2.label 					"現在編集しているメッセージの件名"> 
+
+<!ENTITY spec_var.cap 					"特殊"> 
+<!ENTITY messid.label 					"Message ID"> 
+<!ENTITY newsgr.label 					"Newsgroups"> 
+<!ENTITY xmail.label 					"X-Mailer">
+<!ENTITY any.label						"任意のヘッダ行"> 
+
+<!ENTITY fix_vartz.cap 					"日時・タイムゾーンに関する固定変数"> 
+<!ENTITY fix_vartz_note.label			"&#37;X:=sent&#37; と組み合わせることが可能">
+<!ENTITY datelocal.label 				"日時 (OS の形式)">
+<!ENTITY dateshort.label 				"日時 (短い形式: 01.01.2000 1:23:45)">
+<!ENTITY datetz.label 					"タイムゾーン (+0100, +0200, ... )"> 
+<!ENTITY tzname.label 					"タイムゾーン (GMT, PST, EST, ... )"> 
+
+<!ENTITY var_custom.cap 				"日時に関する変数"> 
+<!ENTITY customdf_note.label			"&#37;X:=sent&#37; と組み合わせることが可能">
+<!ENTITY A.label 						"曜日 (金曜日)">
+<!ENTITY a.label 						"曜日 (金)">
+<!ENTITY d.label 						"日 (01 から 31)"> 
+<!ENTITY e.label 						"日 (1 から 31)">
+<!ENTITY m.label 						"月 (01 から 12)">
+<!ENTITY n.label 						"月 (1 から 12)"> 
+<!ENTITY B.label 						"月 (睦月)">
+<!ENTITY b.label 						"月 (1 月)">
+<!ENTITY y.label 						"年 (1970)"> 
+<!ENTITY m.label 						"分 (00 から 59)">
+<!ENTITY s.label 						"秒 (00 から 59)"> 
+<!ENTITY h.label 						"時 (24 時間表記、00 から 23)"> 
+<!ENTITY k.label 						"時 (24 時間表記、0 から 23)">
+<!ENTITY i.label 						"時 (12 時間表記、01 から 12)">
+<!ENTITY l.label 						"時 (12 時間表記、1 から 12)">  
+<!ENTITY p.label 						"AM / PM">
+<!ENTITY p1.label 						"a.m."> 
+<!ENTITY p2.label 						"A.M."> 
+<!ENTITY p3.label 						"AM"> 
+
+<!ENTITY var_xsent.cap 					"&#37;X:=sent&#37; の使用"> 
+<!ENTITY xsent_note.label				"日時に関する変数は通常現在の日時が反映されます。&#37;X:=sent&#37; と組み合わせた場合のみ、元のメッセージの日時が反映されます。"> 
+
+<!ENTITY xsent_long.cap 				"長い書式の例">
+<!ENTITY xsent_long.label				"&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; at &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
+<!ENTITY xsent_long_result.label 		"結果: Tuesday, December 20, 2011 at 4:11PM"> 
+
+<!ENTITY xsent_short.cap  				"短い書式の例">
+<!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label 		"結果: Tuesday, December 20, 2011 at 4:11PM">
+<!ENTITY xsent_short_note.label 		"次の変数はどちらの形式でも使用可能です:">
+
+<!ENTITY localedate.label 				"日時 (OS の形式)">
+<!ENTITY shortdate.label 				"日時 (短い形式: 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label 			"タイムゾーン (+0100, +0200, ... )"> 
+<!ENTITY timezonename.label 			"タイムゾーン (GMT, PST, EST, ... )">
+
+<!ENTITY im-ex.cap                      "インポート/エクスポート">
+<!ENTITY im-ex_note1.label              "アカウントごとに設定とテンプレートをエクスポート/インポートできます。">
+<!ENTITY im-ex_note2.label              "エクスポートしたいアカウントを選択します。">
+<!ENTITY im-ex_note3.label              "'ツール' => 'エクスポート' => '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
+<!ENTITY im-ex_note4.label              "インポート先のアカウントを選択します。次に、'ツール' => 'インポート' => '設定とテンプレート' を選択します。">
+<!ENTITY im-ex_note5.label              "インポートしたい SmartTemplate4 ファイル (拡張子 st4) を選択します">
+<!ENTITY im-ex_note6.label              "注: Apple/Macintosh 環境では、メニューバーはSmartTemplate4 設定ウインドウではなくタイトルリボンにあります。">
+
+<!ENTITY html_note.cap 					"HTML テンプレートについて"> 
+<!ENTITY html_note.label				"HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
+
+<!ENTITY table.cap						"変数の使用">
+<!ENTITY table_note.label				"変数の使用が適切でない場合には、エラーコンソールにエラーが表示されます。">
+
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label			"変数">
+<!ENTITY table_new.label				"新規">
+<!ENTITY table_reply.label				"返信">
+<!ENTITY table_fwd.label				"転送">
