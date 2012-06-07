@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title      "Smart Template 4 ustawienia">
+<!ENTITY pref_dialog.maxwidth   "650">
+<!ENTITY pref_dialog.minwidth   "450">
+
+<!ENTITY pref_server_desc       "Nazwa konta:">
+<!ENTITY pref_server_def        "Dla wszystkich kont">
+
+<!ENTITY pref_new.tab           "Nowa wiadomość">
+<!ENTITY pref_rsp.tab           "Odpowiedź">
+<!ENTITY pref_fwd.tab           "Przekazywanie">
+
+<!ENTITY pref_def.label         "Użyj dla wszystkich kont">
+<!ENTITY pref_def.cap           "Odznacz „Użyj dla wszystkich kont”, jeśli chcesz skonfigurować szablon dla tego konta.">
+
+<!ENTITY pref_newmsg.cap        "Nowa wiadomość">
+<!ENTITY pref_new.label         "Stosuj poniższy szablon dla nowych wiadomości">
+
+<!ENTITY pref_rspmsg.cap        "Odpowiedź na wiadomość">
+<!ENTITY pref_rsp.label         "Stosuj poniższy szablon dla odpowiedzi">
+<!ENTITY pref_rsphead.label     "Użyj zamiast standardowego nagłówka">
+
+<!ENTITY pref_fwdmsg.cap        "Przekazywanie wiadomości">
+<!ENTITY pref_fwd.label         "Stosuj poniższy szablon dla przekazywanych wiadomości">
+<!ENTITY pref_fwdhead.label     "Użyj zamiast standardowego nagłówka">
+
+<!ENTITY pref_html.label        "Użyj HTML, np. &lt;b&gt;bold&lt;/b&gt;">
+<!ENTITY pref_html.cap          "Używaj odwróconego ukośnika przed znakami &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc.">
+<!ENTITY pref_rep_br.label      "Zamieniaj nowy wiersz znakiem &lt;br&gt;">
+<!ENTITY pref_rep_br.cap        "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z &lt;br&gt;.">
+
+<!ENTITY pref_quotehead_tip     "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym.">
+<!ENTITY pref_template_tip      "Możesz zmienić nagłówek za pomocą słów kluczowych „zmienne”. Zobacz pomoc.">
+
+<!ENTITY help_button            "Pomoc">
+<!ENTITY help_dialog_title      "Pomoc Smart Template 4">
+<!ENTITY help_keyword.cap       "Pomoc">
+
+<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.button      "Edycja szablonów i nagłówka…">

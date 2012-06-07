@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title     "Smart Template 4 設定">
+<!ENTITY pref_dialog.maxwidth  "650">
+<!ENTITY pref_dialog.minwidth  "450">
+
+<!ENTITY pref_server_desc      "差出人:">
+<!ENTITY pref_server_def       "共通">
+
+<!ENTITY pref_new.tab          "新規">
+<!ENTITY pref_rsp.tab          "返信">
+<!ENTITY pref_fwd.tab          "転送">
+
+<!ENTITY pref_def.label        "共通設定を使う">
+<!ENTITY pref_def.cap          "設定を行う場合は共通設定のチェックを外してください。">
+
+<!ENTITY pref_newmsg.cap       "新規メール作成の設定">
+<!ENTITY pref_new.label        "新規メールに以下のテンプレートを適用する">
+
+<!ENTITY pref_rspmsg.cap       "返信メール作成の設定">
+<!ENTITY pref_rsp.label        "返信メールに以下のテンプレートを適用する">
+<!ENTITY pref_rsphead.label    "デフォルトのリプライヘッダの代わりに使用する">
+
+<!ENTITY pref_fwdmsg.cap       "転送メール作成の設定">
+<!ENTITY pref_fwd.label        "転送メールに以下のテンプレートを適用する">
+<!ENTITY pref_fwdhead.label    "デフォルトの転送ヘッダの代わりに使用する">
+
+<!ENTITY pref_html.label       "HTMLとして挿入する (&lt;b&gt;bold&lt;/b&gt;など)">
+<!ENTITY pref_html.cap         "&quot; , &amp; , &lt; , &gt; , space はエスケープしてください。">
+<!ENTITY pref_rep_br.label     "改行を&lt;br&gt;に変換する">
+<!ENTITY pref_rep_br.cap       "注：HTMLタグに続く改行は&lt;br&gt;に変換されません。">
+
+<!ENTITY pref_quotehead_tip    "デフォルトの引用ヘッダを無効にします。テキストボックスで好きな引用ヘッダを入力してください。">
+<!ENTITY pref_template_tip     "予約語による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
+
+<!ENTITY help_button           "ヘルプ">
+<!ENTITY help_dialog_title     "Smart Template 4 ヘルプ">
+<!ENTITY help_keyword.cap      "ヘルプ">
+
+<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.button     "テンプレートと引用ヘッダの設定...">

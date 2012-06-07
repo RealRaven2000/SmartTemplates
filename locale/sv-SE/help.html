@@ -1,0 +1,150 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>help.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="chrome://smarttemplate/skin/help.css">
+</head>
+<div class="body_helpfiles">
+<!-- ########## LOCALIZATION SECTION start ########## -->
+<div class="hr_spacer"></div>
+<div class="cap">Fasta variabler</div>
+<div class="hr_spacer"></div>
+<code>%ownname%</code> = Ditt namn<br>
+<code>%ownmail%</code> = Din e-postadress<br>
+<code>%date%</code> = Datum och tid (samma som originalmeddelandehuvudet)<br>
+<code>%to(e-post)%</code> = Mottagarens e-postadress<br>
+<code>%from(e-post)%</code> = Avsändarens e-postadress<br>
+<code>%cc(e-post)%</code> = Mottagarens e-postadress (kopia)<br>
+<code>%sig%</code> = Underskrift (från TB hänsyn inställningar)<br>
+<code>%sig(2)%</code> = Underskrift (från TB hänsyn inställningar men utan '--')<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Mottagarvariabler (Till)
+<h1>(När inget namn finns tillgängligt visas e-postadressen)</h1></div>
+<div class="hr_spacer"></div>
+<code>%to%</code> = Mottagarens namn (Standard)<br>
+<code>%to(förnamn)%</code> = Mottagarens förnamn<br>
+<code>%to(namn)%</code> = Mottagarens namn<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Avsändarvariabler (Från)
+<h1>(När inget namn finns tillgängligt visas e-postadressen)</h1></div>
+<div class="hr_spacer"></div>
+<code>%from%</code> = Avsändarens namn (Standard)<br>
+<code>%from(förnamn)%</code> = Avsändarens förnamn<br>
+<code>%from(namn)%</code> = Avsändarens namn<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Mottagarvariabler (Kopia)
+<h1>(När inget namn finns tillgängligt visas e-postadressen)</h1></div>
+<div class="hr_spacer"></div>
+<code>%cc%</code> = Mottagarens namn (Standard)<br>
+<code>%cc(förnamn)%</code> = Mottagarens förnamn<br>
+<code>%cc(namn)%</code> = Mottagarens namn<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Specialformat</div>
+<div class="hr_spacer"></div>
+Till: <code>%to(namn)%{</code><br>
+Kopia: <code>%cc(namn)%}</code>
+<br>
+<br>
+Frasen "{Kopia: %cc(namn)%}" kommer endast att <br>
+visas om  variabeln %cc(namn)% kan ersättas!<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Ämne</div>
+<div class="hr_spacer"></div>
+<code>%subject%</code> = Ämne (Samma som original Mailheader)<br>
+<code>%subject(2)%</code> = Ämne (samma som TB Message Editor)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Specialvariabler</div>
+<div class="hr_spacer"></div>
+<code>%Message-ID%</code> = Meddelande-ID<br>
+<code>%Newsgroups%</code> = Diskussionsgrupper<br>
+<code>%X-Mailer%</code> = X-Mailer-adresshuvud<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Fasta variabler för datumformat och tidszon
+<h1>(Kan kombineras med %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%datelocal%</code> = Datum och tid (lokalt format)<br> 
+<code>%dateshort%</code> = Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = Tidszon ("+0100";"+0200"; …)<br>
+<code>%tz_name%</code> = GMT; PST; EST; ...<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variabler för anpassat datumformat
+<h1>(Kan kombineras med %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%A% / %a%</code> = Veckodag ("fredag" / "fre")<br>
+<code>%d% / %e%</code> = Dag i månaden ("01 till "31" / "1" till "31")<br>
+<code>%m% / %n%</code> = Månad ("01" till "12" / "1 till 12")<br>
+<code>%B% / %b%</code> = Månad ("januari" / "jan")<br>
+<code>%Y%</code> = År ("1970")<br>
+<code>%M%</code> = Minuter ("00" till "59")<br>
+<code>%S%</code> = Sekunder ("00" till "59")<br>
+<code>%H% / %k%</code> = Timmar, 24-timmarsformat ("00" till "23" / "0" till "23")<br>
+<code>%I% / %l%</code> = Timmar, 12-timmarsformat ("01" till "12" / "1" till "12")<br>
+<code>%p%</code> = "AM" och "PM"<br> 
+<code>%p(1)%</code> = (a.m.)<br>
+<code>%p(2)%</code> = (A.M.)<br>
+<code>%p(3)%</code> = (AM)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Att använda %X:=sent%</div>
+<div class="hr_spacer"></div>
+Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena.<br>
+När du kombinerar dem med %X:=sent% kommer tidigare angivna värden att användas.
+<br>
+<br>
+<b>Exempel på en långsträng:</b><br>
+<code>%X:=sent%%d%.%m%.%Y% kl. %H%:%M%:</code><br>
+<b>Resultat:</b> 16.02.2011 kl. 12:15:
+<br>
+<br>
+Du kan dessutom använda dessa variabler:<br>
+<code>%datelocal%</code> = Datum och tid (lokalt format)<br> 
+<code>%dateshort%</code> = Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = Tidszon ("+0100";"+0200"; …)<br>
+för att ange en kortsträng.
+<br>
+<br>
+<b>Exempel på en kortsträng:</b><br>
+<code>%X:=sent%%datelocal%</code><br>
+<b>Resultat:</b> onsdag, 16.02.2011 12:15:25<br>
+eller<br>
+<code>%X:=sent%%dateshort%</code><br>
+<b>Resultat:</b> 16.02.2011 12:15:25<br>
+<code>%date_tz%</code> = Tidszon ("+0100";"+0200"; …)<br>
+I bägge varianterna kan du dessutom använda tidszonsvariabeln.<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Kommentarer rörande HTML-mallar</div>
+<div class="hr_spacer"></div>
+<b>Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!</b>
+<br>
+<br>
+<b>- Specialtecken:</b> " , &amp; , &lt; , &gt;<br>
+Unicode: <code>&amp;quot; ,  &amp;amp; , &amp;lt; , &amp;gt;</code>
+<br>
+<br>
+<b>- Diakritiska tecken:</b> &Aring; , &aring; , &Auml; ,  &auml; , &Ouml; , &ouml; , &Uuml; , &uuml; , &szlig;<br>
+Unicode: <code>&amp;Aring; , &amp;aring; , &amp;Auml; ,  &amp;auml; , &amp;Ouml; , &amp;ouml; , &amp;Uuml; , &amp;uuml; , &amp;szlig;</code> 
+<br>
+<br>
+<b>- Nya rader:</b><br>
+Du måste använda &lt;br&gt; för ny rad om <br>
+"Ersätt ny rad med &lt;br&gt;" inte används.<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Kommentar</div>
+<div class="hr_spacer"></div>
+</div>
+<iframe class="iframe_vars" src="chrome://smarttemplate/skin/vars.html" name="inhalt"></iframe>
+<!-- ########## LOCALIZATION SECTION end ########## -->
+</html>

@@ -1,0 +1,39 @@
+﻿<!ENTITY pref_dialog.title      "Smart Template 4 Opties">
+<!ENTITY pref_dialog.maxwidth   "650">
+<!ENTITY pref_dialog.minwidth   "450">
+
+<!ENTITY pref_server_desc       "Accountnaam:">
+<!ENTITY pref_server_def        "Algemeen">
+
+<!ENTITY pref_new.tab           "Nieuw">
+<!ENTITY pref_rsp.tab           "Antwoorden">
+<!ENTITY pref_fwd.tab           "Doorsturen">
+
+<!ENTITY pref_def.label         "Algemeen gebruiken">
+<!ENTITY pref_def.cap           "Verwijder 'Algemeen gebruiken' indien u deze account wilt instellen.">
+
+<!ENTITY pref_newmsg.cap        "Nieuw bericht">
+<!ENTITY pref_new.label         "Volgend sjabloon toepassen op het nieuwe bericht">
+
+<!ENTITY pref_rspmsg.cap        "Antwoordbericht">
+<!ENTITY pref_rsp.label         "Volgend sjabloon toepassen op antwoordbericht">
+<!ENTITY pref_rsphead.label     "Gebruiken in plaats van standaard aanhalingskoptekst">
+
+<!ENTITY pref_fwdmsg.cap        "Doorgestuurd bericht">
+<!ENTITY pref_fwd.label         "Volgend sjabloon toepassen op doorgestuurde berichten">
+<!ENTITY pref_fwdhead.label     "Gebruiken in plaats van standaard aanhalingskoptekst">
+
+<!ENTITY pref_html.label        "HTML gebruiken (b.v. &lt;b&gt;vet&lt;/b&gt;)">
+<!ENTITY pref_html.cap          "Excape-karakters gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details.">
+<!ENTITY pref_rep_br.label      "new-line vervangen door &lt;br&gt;">
+<!ENTITY pref_rep_br.cap        "OPMERKING: vervangt new-line volgend op een HTML-label niet door &lt;br&gt;.">
+
+<!ENTITY pref_quotehead_tip     "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
+<!ENTITY pref_template_tip      "U kunt de aanhalingskoptekst wijzigen met trefwoord-'variabelen'. Lees de hulptekst voor meer informatie.">
+
+<!ENTITY help_button            "Hulp">
+<!ENTITY help_dialog_title      "Smart Template 4 Hulp">
+<!ENTITY help_keyword.cap       "Hulp">
+
+<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.button      "Sjablonen en aanhalingskoptekst bewerken…">

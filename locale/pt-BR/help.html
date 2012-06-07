@@ -1,0 +1,140 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>help.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="chrome://smarttemplate/skin/help.css">
+</head>
+<div class="body_helpfiles">
+<!-- ########## LOCALIZATION SECTION start ########## -->
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis Básicas</div>
+<div class="hr_spacer"></div>
+<code>%ownname%</code> = Seu nome<br>
+<code>%ownmail%</code> = Seu endereço de e-mail<br>
+<code>%date%</code> = Data e hora (igual ao encontrado no cabeçalho da mensagem)<br>
+<code>%to(mail)%</code> = Nome e endereço do destinatário<br>
+<code>%from(mail)%</code> = Nome e endereço do remetente<br>
+<code>%cc(mail)%</code> = Nome e endereço do destinatário<br>
+<code>%sig%</code> = Assinatura (da TB Conta Settings)<br>
+<code>%sig(2)%</code> = Assinatura (da TB Conta Settings mas sem o '--')<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis de Destinatário (Para)
+<h1>(Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar)</h1></div>
+<div class="hr_spacer"></div>
+<code>%to%</code> = Destinatário (padrão)<br>
+<code>%to(firstname)%</code> = Primeiro nome do destinatário<br>
+<code>%to(name)%</code> = Nome do destinatário<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis de Remetente (De)
+<h1>(Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar)</h1></div>
+<div class="hr_spacer"></div>
+<code>%from%</code> = Remetente (padrão)<br>
+<code>%from(firstname)%</code> = Primeiro nome do remetente<br>
+<code>%from(name)%</code> = Nome do remetente<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis de Destinatário (Cc)
+<h1>(Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar)</h1></div>
+<div class="hr_spacer"></div>
+<code>%cc%</code> = Destinatário (padrão)<br>
+<code>%cc(firstname)%</code> = Primeiro nome do destinatário<br>
+<code>%cc(name)%</code> = Nome do destinatário<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Formato Especial</div>
+<div class="hr_spacer"></div>
+Para: <code>%to(name)%{</code><br>
+Cc: <code>%cc(name)%}</code>
+<br>
+<br>
+A frase "{Cc: %cc(name)%}" somente será exibida, se a variável %cc(name) não for vazia!<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Assunto</div>
+<div class="hr_spacer"></div>
+<code>%subject%</code> = Assunto (mesmo como mailheader originais)<br>
+<code>%subject(2)%</code> = Assunto (mesmo como editor Mensagem TB)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis Especiais</div>
+<div class="hr_spacer"></div>
+<code>%Message-ID%</code> = Identificador da mensagem<br>
+<code>%Newsgroups%</code> = Newsgroups<br>
+<code>%X-Mailer%</code> = X-Mailer<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis para Data e Hora
+<h1>(podem ser combinadas com %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%datelocal%</code> = Data e hora (formato local)<br> 
+<code>%dateshort%</code> = Data e hora curta (por exemplo, 01/01/2000 1:23:45)<br>
+<code>%date_tz%</code> = Fuso horário ("+0100";"+0200"; ...)<br>
+<code>%tz_name%</code> = GMT; PST; EST; ...<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Variáveis para Data e Hora Personalizáveis
+<h1>(podem ser combinadas com %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%A% / %a%</code> = Dia da semana ("Domingo" / "Dom.")<br>
+<code>%d% / %e%</code> = Dia do mês ("01 to "31" / "1" to "31")<br>
+<code>%m% / %n%</code> = Mês (de "01" a "12" / de "1" a "12")<br>
+<code>%B% / %b%</code> = Nome do mês ("Janeiro" / "Jan.")<br>
+<code>%Y%</code> = Ano ("1970")<br>
+<code>%M%</code> = Minutos (de "00" a "59")<br>
+<code>%S%</code> = Segundos (de "00" a "59")<br>
+<code>%H% / %k%</code> = Hora, no formato de 24 horas (de "00" a "23" / de "0" a "23")<br>
+<code>%I% / %l%</code> = Hora, no formato de 12 horas (de "01" a "12" / de "1" a "12")<br>
+<code>%p%</code> = "AM" or "PM"<br> 
+<code>%p(1)%</code> = (a.m.)<br>
+<code>%p(2)%</code> = (A.M.)<br>
+<code>%p(3)%</code> = (AM)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Uso do %X:=sent%</div>
+<div class="hr_spacer"></div>
+As variáveis acima são exibidas normalmente com os valores atuais.<br>
+Quando combinadas com %X:=sent%, elas são exibidas com os valores anteriores.
+<br>
+<br>
+<b>Exemplo com variáveis personalizáveis:</b><br>
+<code>%X:=sent%%d%/%m%/%Y% às %H%:%M%</code><br>
+<b>Resultado:</b> 16/02/2011 às 12:15
+<br>
+<br>
+<b>Exemplos com variáveis fixas:</b><br>
+<code>%X:=sent%%datelocal%</code><br>
+<b>Resultado:</b> Quarta-feira, 16/02/2011 12:15:25<br>
+ou<br>
+<code>%X:=sent%%dateshort%</code><br>
+<b>Resultado:</b> 16/02/2011 12:15:25<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Observações para Modelos em HTML</div>
+<div class="hr_spacer"></div>
+<b>Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!</b><br>
+<br>
+<br>
+<b>- Caracteres especiais:</b><br>
+<code>&quot; : &amp;quot;, &amp; : &amp;amp;, &lt; : &amp;lt;, &gt; : &amp;gt;</code>
+<br>
+<b>- Letras com acentos, til, cedilha:</b><br>
+<code>&Aacute; : &amp;Aacute;, &Eacute; : &amp;Eacute;, &Iacute; : &amp;Iacute;, &Oacute; : &amp;Oacute;, &Uacute; : &amp;Uacute;, &aacute; : &amp;aacute;,
+&eacute; : &amp;eacute;, &iacute; : &amp;iacute;, &oacute; : &amp;oacute;, &uacute; : &amp;uacute;, &Acirc; : &amp;Acirc;, &Ecirc; : &amp;Ecirc;,
+&Ocirc; : &amp;Ocirc;, &acirc; : &amp;acirc;, &ecirc; : &amp;ecirc;. &ocirc; : &amp;ocirc;, &Atilde; : &amp;Atilde;, &Otilde; : &amp;Otilde;,
+&atilde; : &amp;atilde;, &otilde; : &amp;otilde;, &Agrave; : &amp;Agrave;, &agrave; : &amp;agrave;, &Ccedil; : &amp;Ccedil;, &ccedil; : &amp;ccedil;</code>
+<br>
+<b>- Quebra de linha:</b><br>
+Você precisa usar &lt;br&gt; para inserir uma quebra de linha quando a opção 'Substituir quebra de linha por &lt;br&gt;' não estiver selecionada.<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Observações</div>
+<div class="hr_spacer"></div>
+</div>
+<iframe class="iframe_vars" src="chrome://smarttemplate/skin/vars.html" name="inhalt"></iframe>
+<!-- ########## LOCALIZATION SECTION end ########## -->
+</html>

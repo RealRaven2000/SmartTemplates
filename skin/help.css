@@ -1,0 +1,37 @@
+/* global formatting stylesheet of all html files */
+/* create by Marky Mark DE */
+/* last edit at 01/23/2012 */
+/* background-color:transparent is better for WIN7 Aero with Noia4 glass or GMB addon -> Change 23.01.12 */
+
+/* body for helpfiles */
+.body_helpfiles { background-color:transparent; margin-top:-.6em; margin-bottom:0em; margin-right:-.6em; margin-left:-.6em; font-size:10pt; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; }
+
+/* body for vars */
+.body_vars  { background-color:transparent;font-size:10pt; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; }
+
+/* iframe inside the helpfiles */
+.iframe_vars { background-color:transparent; margin-right:-.6em; margin-left:-.8em; margin-bottom:-.6em; width: 443px; height: 1100px; border: 0px solid #ff0000; overflow: hidden; scrolling: no;}
+
+/* chapter formatting */
+.cap { font-size:10pt; font-weight:bold; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; }
+
+/* spacer line between the chapters */
+.hr_spacer { color: #808080; background-color : #808080; height : 2px; }
+
+/* phrase inner "(" + " )" below chapter */
+h1 { font-size:10pt; margin-top:0em; padding-top:0em; font-style:italic; font-weight:normal; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; }
+
+/* variables (keywords) formatting */
+code { font-size:10pt; font-family:'Palatino Linotype', 'Times New Roman',  'Courier New', Verdana, Arial, Helvetica; }
+
+/* bold text */
+.b { font-size:10pt; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; }
+
+/* table formatting vars.html */
+td { font-size:10pt; font-family:Tahoma, 'Segoe UI', Arial, Helvetica; text-align:center; }
+
+/* negative sign "&#215;" inside the vars.html table */
+.no { color:#ff0000; font-size: 13pt; font-weight:bold; }
+
+/* positive sign "&#10003;" inside the vars.html table */
+.yes { color:#7cfc00; font-size: 13pt; font-weight:bold; }

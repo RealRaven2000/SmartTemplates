@@ -1,0 +1,150 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>help.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="chrome://smarttemplate/skin/help.css">
+</head>
+<div class="body_helpfiles">
+<!-- ########## LOCALIZATION SECTION start ########## -->
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne podstawowe</div>
+<div class="hr_spacer"></div>
+<code>%ownname%</code> = Twoje imię<br>
+<code>%ownmail%</code> = Twój adres e-mail<br>
+<code>%date%</code> = Data i czas (taki sam, jak oryginał nagłówka)<br>
+<code>%to(mail)%</code> = Adres e-mail odbiorcy<br>
+<code>%from(mail)%</code> = Adres e-mail nadawcy<br>
+<code>%cc(mail)%</code> = Adres e-mail odbiorcy<br>
+<code>%sig%</code> = Podpis (z uwzględnieniem TB ustawienia)<br>
+<code>%sig(2)%</code> = Podpis (z uwzględnieniem TB ustawienia ale bez '--')<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne odbiorcy (Do:)
+<h1>(Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail)</h1></div>
+<div class="hr_spacer"></div>
+<code>%to%</code> = Nazwa odbiorcy (domyślna)<br>
+<code>%to(firstname)%</code> = Imię odbiorcy<br>
+<code>%to(name)%</code> = Nazwisko odbiorcy<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne nadawcy (Nadawca:)
+<h1>(Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail)</h1></div>
+<div class="hr_spacer"></div>
+<code>%from%</code> = Nazwa nadawcy (domyślna)<br>
+<code>%from(firstname)%</code> = Imię nadawcy<br>
+<code>%from(name)%</code> = Nazwisko nadawcy<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne odbiorcy kopii (Kopia:)
+<h1>(Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail)</h1></div>
+<div class="hr_spacer"></div>
+<code>%cc%</code> = Nazwa odbiorcy (domyślna)<br>
+<code>%cc(firstname)%</code> = Imię odbiorcy<br>
+<code>%cc(name)%</code> = Nazwisko odbiorcy<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Format specjalny</div>
+<div class="hr_spacer"></div>
+Do: <code>%to(name)%{</code><br>
+Kopia: <code>%cc(name)%}</code>
+<br>
+<br>
+Fraza "{Cc: %cc(name)%}" będzie wyświetlana tylko, jeśli <br>
+zmienna %cc(name) może być zamieniana!<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Temat</div>
+<div class="hr_spacer"></div>
+<code>%subject%</code> = Temat (sam jak oryginalny nagłówek listu)<br>
+<code>%subject(2)%</code> = Temat (sam jako edytor wiadomości TB)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne specjalne</div>
+<div class="hr_spacer"></div>
+<code>%Message-ID%</code> = ID wiadomości<br>
+<code>%Newsgroups%</code> = Grupy dyskusyjne<br>
+<code>%X-Mailer%</code> = X-Mailer<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne dla formatu daty i strefy czasowej
+<h1>(Mogą być łączone z %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%datelocal%</code> = Data i czas (lokalny format) <br>
+<code>%dateshort%</code> = Data i czas (krótki format)) (np. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = Strefa czasowa ("+0100";"+0200"; ...)<br>
+<code>%tz_name%</code> = GMT; PST; EST; ...<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Zmienne dla dostosowania formatu daty
+<h1>(Mogą być łączone z %X:=sent%)</h1></div>
+<div class="hr_spacer"></div>
+<code>%A% / %a%</code> = Dzień tygodnia („Piątek” / „Pi”)<br>
+<code>%d% / %e%</code> = Dzień miesiąca („01” do „31” / „1” do „31”)<br>
+<code>%m% / %n%</code> = Miesiąc („01” to „12” / „1 do 12”)<br>
+<code>%B% / %b%</code> = Miesiąc („Styczeń” / „Sty”)<br>
+<code>%Y%</code> = Rok („1970”)<br>
+<code>%M%</code> = Minuty („00” to „59”)<br>
+<code>%S%</code> = Sekundy („00” to „59”)<br>
+<code>%H% / %k%</code> = godzina, format 24-godzinny („00” do „23” / „0” do „23”)<br>
+<code>%I% / %l%</code> = godzina, format 12-godzinny („01” do „12” / „1” do „12”)<br>
+<code>%p%</code> = „AM” lub „PM”<br>
+<code>%p(1)%</code> = (a.m.)<br>
+<code>%p(2)%</code> = (A.M.)<br>
+<code>%p(3)%</code> = (AM)<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Użycie %X:=sent%</div>
+<div class="hr_spacer"></div>
+Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu.<br>
+Jeśli będą łączone z %X:=sent%, będą zmiennymi dolnego poziomu.
+<br>
+<br>
+<b>Przykład długiego formatu:</b><br>
+<code>%X:=sent%%d%.%m%.%Y% o godz. %H%:%M%:</code><br>
+<b>Wynik:</b> 16.02.2011 o godz. 12:15:<br>
+<br>
+<br>
+Ponadto można używać następujących zmiennych:<br>
+<code>%datelocal%</code> = Data i czas (lokalny format)<br> 
+<code>%dateshort%</code> = Data i czas (krótki format)) (np. 01.01.2000 1:23:45)<br>
+<code>%date_tz%</code> = Strefa czasowa ("+0100";"+0200"; ...)<br>
+do określenia krótkiego formatu.
+<br>
+<br>
+<b>Przykład krótkiego formatu:</b><br>
+<code>%X:=sent%%datelocal%</code><br>
+<b>Wynik:</b> Środa, 16.02.2011 12:15:25<br>
+or<br>
+<code>%X:=sent%%dateshort%</code><br>
+<b>Wynik:</b> 16.02.2011 12:15:25<br>
+<code>%date_tz%</code> = Strefa czasowa ("+0100";"+0200"; ...)<br>
+W obu wariantach można dodatkowo użyć zmiennej strefy czasowej.<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Informacje dla stosowania szablonów HTML</div>
+<div class="hr_spacer"></div>
+<b>W szablonach HTML, należy używać kodowania znaków UTF-8 (Unicode)!</b>
+<br>
+<br>
+<b>- Znaki specjalne:</b> " , &amp; , &lt; , &gt;<br>
+Unicode: <code>&amp;quot; ,  &amp;amp; , &amp;lt; , &amp;gt;</code>
+<br>
+<br>
+<b>- Polskie ogonki:</b> np.  &#261; , &#281; , &#322; , &#380;<br>
+Unicode: <code>&amp;#261; , &amp;#281; , &amp;#322; , &amp;#380;</code>
+<br>
+<br>
+<b>- Nowe wiersze:</b><br>
+Należy używać &lt;br&gt; dla nowych wierszy, gdy nie jest używana funkcja<br>
+'Zamieniaj nowy wiersz znakiem &lt;br&gt;'.<br>
+<br>
+<div class="hr_spacer"></div>
+<div class="cap">Wskazówka</div>
+<div class="hr_spacer"></div>
+</div>
+<iframe class="iframe_vars" src="chrome://smarttemplate/skin/vars.html" name="inhalt"></iframe>
+<!-- ########## LOCALIZATION SECTION end ########## -->
+</html>

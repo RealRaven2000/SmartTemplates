@@ -1,318 +1,141 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
-<?xml-stylesheet href="chrome://global/skin/"?>
-<?xml-stylesheet href="chrome://SmartTemplate4/skin/default/style.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate/locale/smartTemplate.dtd">
 
-<!DOCTYPE prefwindow SYSTEM "chrome://SmartTemplate4/locale/SmartTemplate4.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 
-<prefwindow 
-	id="SmartTemplate_prefDialog"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"	
-	title="&pref_dialog.title; (&localename.label;)"
-	buttons="accept,cancel"
-	width="650px"
-	minheight="450px"
-	onload="gSmartTemplateSettings.onLoad(); centerWindowOnScreen(); window.sizeToContent();">	
-	
-	<script type="application/x-javascript" src="chrome://SmartTemplate4/content/settings.js" />
-		
-	<prefpane 
-		id="SmartTemplatePane"
-		style="padding: 0px; margin: 0px;">	
-		<!-- ######## Menubar Creating ######## -->
-		<!-- MENUITEMS: File - Tools - Help -->
-		<toolbox>
-			<toolbar type="menubar">
-				<toolbaritem>
-					<menubar style="border: 0px;">
-						<!-- ###### FILE ###### -->
-						<menu
-							id="SmartTemplate4FileMenuitem"
-							label="&file.label;"
-							class="menu-iconic">
-							<!-- ###### FILE -> CLOSE ###### -->
-							<menupopup
-									id="SmartTemplate4-close-popup">
-								<menuitem
-									id="SmartTemplate4CloseItem"
-									label="&close.label;"
-									class="menuitem-iconic"
-									oncommand="window.close();" />
-							</menupopup>
-						</menu>				
-						<!-- ###### TOOLS ###### -->
-						<menu 
-							id="SmartTemplate4ToolsMenuitem"
-							label="&tools.label;"
-							class="menu-iconic">
-							<menupopup
-									id="SmartTemplate4-tools-popup">
-							<!-- ###### TOOLS -> EXPORT ###### -->
-								<menu
-									id="SmartTemplate4ExportMenuitem"
-									label="&export.label;" 
-									class="menu-iconic">
-									<!-- ###### EXPORT -> * ###### -->
-									<menupopup
-											id="SmartTemplate4export-popup">
-										<menuitem
-											id="SmartTemplate4ExportItem"
-											label="&settings.label;"
-											class="menuitem-iconic"
-											oncommand="SmartTemplate4OnExport();" />
-										</menupopup>
-								</menu>
-								<!-- ###### TOOLS -> IMPORT ###### -->
-								<menu
-									id="SmartTemplate4ImportMenuitem"
-									label="&import.label;"
-									class="menu-iconic">
-									<!-- ###### IMPORT -> * ###### -->
-									<menupopup
-											id="SmartTemplate4-import-popup">
-										<menuitem
-											id="SmartTemplate4ImportItem"
-											label="&settings.label;"
-											class="menuitem-iconic"
-											oncommand="SmartTemplate4OnImport();" />
-									</menupopup>
-								</menu>
-							</menupopup>
-						</menu>
-						<!-- ###### HELP ###### -->
-						<menu
-							id="SmartTemplate4HelpMenuitem"
-							label="&help.label;"
-							class="menu-iconic">
-							<!-- ###### HELP -> * ###### -->
-							<menupopup
-									id="SmartTemplate4-help-popup">
-								<menuitem
-									id="SmartTemplate4add-onHomeItem"
-									label="&add-onHome.label;"
-									class="menuitem-iconic"
-									onclick="SmartTemplate4AMO.openAMOPage();" />
-								<menuitem
-									id="SmartTemplate4add-onSupportItem"
-									label="&add-onSupport.label;"
-									class="menuitem-iconic"
-									onclick="SmartTemplate4Support.openSupportPage();" />
-							</menupopup>
-						</menu>
-					</menubar>
-				</toolbaritem>
-			</toolbar>
-		</toolbox>		
-		<spacer height="5px" />
-		<!-- ######## Identity Dropdown Box Creating ######## -->
-		<hbox align="center">
-			<caption id="SmartTemplate4AccountCap" label="&pref_server_desc;:" class="AccountCap" />
-			<menulist 
-					id="SmartTemplate4MsgIdentity" 
-					flex="1" 
-					class="identity-menulist" 
-					label="&pref_server_def;" 
-					oncommand="gSmartTemplateSettings.selectIdentity(this.value);">
-				<menupopup id="SmartTemplate4MsgIdentityPopup">
-					<menuitem class="identity-popup-item" label="&pref_server_def;" value="common" />
-				</menupopup>
-			</menulist>			
-		</hbox>			
-		<!-- ######## Account DeckA & Preferences Creating ######## -->
-		<deck id="account.deckA" flex="1">
-			<vbox id="deckA.per_account" flex="1">
-				<preferences id="smarttemplate">
-					<preference id="pref_def"      name="extensions.smarttemplate.def"        type="bool" />
-					<preference id="pref_new"      name="extensions.smarttemplate.new"        type="bool" />
-					<preference id="pref_newmsg"   name="extensions.smarttemplate.newmsg"     type="unichar" />
-					<preference id="pref_newhtml"  name="extensions.smarttemplate.newhtml"    type="bool" />
-					<preference id="pref_newnbr"   name="extensions.smarttemplate.newnbr"     type="bool" />
-					<preference id="pref_rsp"      name="extensions.smarttemplate.rsp"        type="bool" />
-					<preference id="pref_rspmsg"   name="extensions.smarttemplate.rspmsg"     type="unichar" />
-					<preference id="pref_rsphtml"  name="extensions.smarttemplate.rsphtml"    type="bool" />
-					<preference id="pref_rspnbr"   name="extensions.smarttemplate.rspnbr"     type="bool" />
-					<preference id="pref_rsphead"  name="extensions.smarttemplate.rsphead"    type="bool" />
-					<preference id="pref_fwd"      name="extensions.smarttemplate.fwd"        type="bool" />
-					<preference id="pref_fwdmsg"   name="extensions.smarttemplate.fwdmsg"     type="unichar" />
-					<preference id="pref_fwdhtml"  name="extensions.smarttemplate.fwdhtml"    type="bool" />
-					<preference id="pref_fwdnbr"   name="extensions.smarttemplate.fwdnbr"     type="bool" />
-					<preference id="pref_fwdhead"  name="extensions.smarttemplate.fwdhead"    type="bool" />
-				</preferences>
-					<checkbox 
-						id="SmartTemplate4UseDefault" 
-						label="&pref_def.label;" 
-						preference="pref_def" 
-						oncommand="gSmartTemplateSettings.prefDeck('default.deckB', this.checked ?1:0);" />
-				<spacer height="5px" />				
-				<!-- ######## Delault DeckB & Tab Creating ######## -->
-				<deck id="default.deckB" flex="1">
-					<tabbox id="deckB.nodef" flex="1">
-						<tabs>
-							<tab id="SmartTemplate4NewTab" label="&pref_new.tab;" class="NewTab" flex="1" />
-							<tab id="SmartTemplate4RspTab" label="&pref_rsp.tab;" class="RspTab" flex="1" />
-							<tab id="SmartTemplate4FwdTab" label="&pref_fwd.tab;" class="FwdTab" flex="1" />
-							<tab id="SmartTemplate4HelpTab" label="&pref_help.tab;" class="HelpTab" flex="1" />
-							<tab id="SmartTemplate4AboutTab" label="&pref_about.tab;" class="AboutTab" flex="1" />
-						</tabs>						
-						<!-- ######## Content New Tab ######## -->
-						<tabpanels flex="1">
-							<tabpanel flex="1">
-								<groupbox flex="1">
-									<caption id="SmartTemplate4NewMsgCap" label="&pref_newmsg.cap;" class="NewMsgCap" />
-									<vbox flex="1">
-										<checkbox 
-												id="SmartTemplate4New" 
-												label="&pref_new.label;" 
-												preference="pref_new"
-												oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-										<vbox class="indent" flex="1">
-											<textbox  
-												id="SmartTemplate4NewMsg"  
-												multiline="true" 
-												rows="10" 
-												tooltiptext="&pref_template_tip;" 
-												preference="pref_newmsg"/>
-											<checkbox 
-												id="SmartTemplate4NewHtml" 
-												label="&pref_html.label;" 
-												tooltiptext="&pref_html.cap;" 
-												preference="pref_newhtml" 
-												oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-											<checkbox 
-												id="SmartTemplate4NewnBr"  
-												class="indent" 
-												label="&pref_rep_br.label;" 
-												tooltiptext="&pref_rep_br.cap;" 
-												preference="pref_newnbr" />
-										</vbox>
-									</vbox>
-								</groupbox>
-							</tabpanel>
-							<!-- ######## Content Reply Tab ######## -->
-							<tabpanel flex="1">
-								<groupbox flex="1">
-									<caption id="SmartTemplate4RspMsgCap" label="&pref_rspmsg.cap;" class="RspMsgCap" />
-									<vbox flex="1">
-											<checkbox 
-												id="SmartTemplate4Rsp" 
-												label="&pref_rsp.label;" 
-												preference="pref_rsp" 
-												oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-										<vbox class="indent" flex="1">
-											<textbox  
-												id="SmartTemplate4RspMsg"  
-												multiline="true" 
-												rows="10" 
-												tooltiptext="&pref_template_tip;" 
-												preference="pref_rspmsg" />
-											<checkbox 
-												id="SmartTemplate4RspHtml" 
-												label="&pref_html.label;" 
-												tooltiptext="&pref_html.cap;" 
-												preference="pref_rsphtml" 
-												oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-											<checkbox 
-												id="SmartTemplate4RspnBr"  
-												class="indent" 
-												label="&pref_rep_br.label;" 
-												tooltiptext="&pref_rep_br.cap;" 
-												preference="pref_rspnbr" />
-											<checkbox 
-												id="SmartTemplate4RspHead" 
-												label="&pref_rsphead.label;" 
-												tooltiptext="&pref_quotehead_tip;" 
-												preference="pref_rsphead" />
-										</vbox>
-									</vbox>
-								</groupbox>
-							</tabpanel>
-							<!-- ######## Content Forward Tab ######## -->
-							<tabpanel flex="1">
-								<groupbox flex="1">
-									<caption Id="SmartTemplate4FwdMsgCap" label="&pref_fwdmsg.cap;" class="FwdMsgCap" />
-										<vbox flex="1">
-											<checkbox 
-													id="SmartTemplate4Fwd" 
-													label="&pref_fwd.label;" 
-													preference="pref_fwd"
-													oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-											<vbox class="indent" flex="1">
-												<textbox  
-													id="SmartTemplate4FwdMsg"  
-													multiline="true" 
-													rows="10" 
-													tooltiptext="&pref_template_tip;" 
-													preference="pref_fwdmsg" />
-												<checkbox 
-													id="SmartTemplate4FwdHtml" 
-													label="&pref_html.label;" 
-													tooltiptext="&pref_html.cap;" 
-													preference="pref_fwdhtml" 
-													oncommand="gSmartTemplateSettings.disableWithCheckbox();" />
-												<checkbox 
-													id="SmartTemplate4FwdnBr"  
-													class="indent" 
-													label="&pref_rep_br.label;" 
-													tooltiptext="&pref_rep_br.cap;" 
-													preference="pref_fwdnbr" />
-												<checkbox 
-													id="SmartTemplate4FwdHead" 
-													label="&pref_fwdhead.label;" 
-													tooltiptext="&pref_quotehead_tip;" 
-													preference="pref_fwdhead" />
-											</vbox>
-										</vbox>
-								</groupbox>
-							</tabpanel>	   
-							<!-- ######## Content Help Tab ######## -->
-							<tabpanel flex="1">
-								<groupbox flex="1">
-									<popupset>
-										<menupopup id="SmartTemplate4-copy-popup">
-											<menuitem
-												id="SmartTemplate4RightClickCopyItem"
-												label="&copy.label;"
-												class="menuitem-iconic"
-												oncommand="SmartTemplate4RightClickCopyCommand();" />
-										</menupopup>
-									</popupset>
-										<caption id="SmartTemplate4HelpCap" label="&help_keyword.cap;" class="HelpCap" />
-									<vbox flex="1">										
-										<iframe context="SmartTemplate4-copy-popup" src="chrome://SmartTemplate4/content/help.xhtml" height="275px" frameborder="0" />
-									</vbox>
-								</groupbox>
-							</tabpanel>
-							<!-- ######## Content About Tab ######## -->
-							<tabpanel flex="1">
-								<groupbox flex="1">
-									<caption id="SmartTemplate4AboutCap" label="&about.cap;" class="AboutCap" />
-										<vbox id="SmartTemplate4AboutLogo" class="AboutLogo" align="center" flex="1" height="40px" />
-										<spacer height="10px"/>
-									<vbox align="center" flex="1" style="overflow-y:auto; overflow-x:auto;" minheight="235px">
-										<description class="SmartTemplate4AboutDeveloper">&creator.label;: Axel Grude</description>
-										<description class="SmartTemplate4AboutDeveloper">&developer.label;: Axel Grude, Marky Mark DE</description>
-										<description class="SmartTemplate4AboutDeveloper">&localized.label;: &translatorNickname.label;</description>
-										<description class="SmartTemplate4AboutDeveloper">&contributor.label;: Aris, Peter Macej, tool8</description>
-										<spacer height="20px"/>
-										<description class="SmartTemplate4AboutDesc">&about.label;</description>
-									</vbox>
-								</groupbox>
-							</tabpanel>	   
-						</tabpanels>
-					</tabbox>
-					<!-- ######## DeckB Definition ######## -->
-					<vbox id="deckB.usedef" flex="1" align="center" style="overflow-y:auto; overflow-x:auto;" minheight="275px">
-						<description class="SmartTemplate4DeckBDesc">&pref_def.cap;</description>
-					</vbox>					
-				</deck>
-			</vbox>
-		</deck>			
-	</prefpane>	
-	<!-- ######## Buttons ######## -->
-	<vbox flex="1" style="margin-top: -1px; margin-right: 5px; margin-bottom: 8px; margin-left: 2px;">
-		<hbox align="center" pack="end">			
-			<button id="SmartTemplate4CacelButton" label="&cancel_button;" class="CacelButton" dlgtype="cancel" />
-			<button id="SmartTemplate4AcceptButton" label="&accept_button;" class="AcceptButton" dlgtype="accept" />
-		</hbox>
-	</vbox>
+<prefwindow id="smartTemplate_prefDialog"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            title="&pref_dialog.title;"
+            maxwidth="&pref_dialog.maxwidth;"
+            buttons="extra2,cancel,accept"
+            onload="gSmartTemplateSettings.onLoad('&pref_server_def;');"
+            buttonlabelextra2="&help_button;"
+            ondialogextra2="document.documentElement.openSubDialog('chrome://smarttemplate/content/help.xul', '', null);">
+
+ <prefpane id="smartTemplatePane">
+
+  <hbox align="center" flex="1">
+   <label value="&pref_server_desc;"/>
+    <menulist id="msgIdentity" class="identity-menulist" label="&pref_server_def;" flex="1" oncommand="gSmartTemplateSettings.selectIdentity(this.value);">
+     <menupopup id="msgIdentityPopup">
+      <menuitem class="identity-popup-item" label="&pref_server_def;" value="common"/>
+     </menupopup>
+    </menulist>
+   </hbox>
+
+   <deck id="account.deckA" flex="1">
+
+    <vbox id="deckA.per_account" flex="1">
+
+     <preferences id="smarttemplate">
+      <preference id="pref_def"      name="extensions.smarttemplate.def"        type="bool"/>
+      <preference id="pref_new"      name="extensions.smarttemplate.new"        type="bool"/>
+      <preference id="pref_newmsg"   name="extensions.smarttemplate.newmsg"     type="unichar"/>
+      <preference id="pref_newhtml"  name="extensions.smarttemplate.newhtml"    type="bool"/>
+      <preference id="pref_newnbr"   name="extensions.smarttemplate.newnbr"     type="bool"/>
+      <preference id="pref_rsp"      name="extensions.smarttemplate.rsp"        type="bool"/>
+      <preference id="pref_rspmsg"   name="extensions.smarttemplate.rspmsg"     type="unichar"/>
+      <preference id="pref_rsphtml"  name="extensions.smarttemplate.rsphtml"    type="bool"/>
+      <preference id="pref_rspnbr"   name="extensions.smarttemplate.rspnbr"     type="bool"/>
+      <preference id="pref_rsphead"  name="extensions.smarttemplate.rsphead"    type="bool"/>
+      <preference id="pref_fwd"      name="extensions.smarttemplate.fwd"        type="bool"/>
+      <preference id="pref_fwdmsg"   name="extensions.smarttemplate.fwdmsg"     type="unichar"/>
+      <preference id="pref_fwdhtml"  name="extensions.smarttemplate.fwdhtml"    type="bool"/>
+      <preference id="pref_fwdnbr"   name="extensions.smarttemplate.fwdnbr"     type="bool"/>
+      <preference id="pref_fwdhead"  name="extensions.smarttemplate.fwdhead"    type="bool"/>
+     </preferences>
+
+     <checkbox id="use_default"   label="&pref_def.label;" preference="pref_def"
+                                    oncommand="gSmartTemplateSettings.prefDeck('default.deckB', this.checked ?1:0);"/>
+     
+     <deck id="default.deckB" flex="1">
+
+      <tabbox id="deckB.nodef" flex="1">
+       <tabs>
+        <tab label="&pref_new.tab;"/>
+        <tab label="&pref_rsp.tab;"/>
+        <tab label="&pref_fwd.tab;"/>
+       </tabs>
+       <tabpanels flex="1">
+        <tabpanel flex="1"><groupbox flex="1"><caption label="&pref_newmsg.cap;"/>
+         <vbox flex="1">
+          <checkbox id="new"      label="&pref_new.label;" preference="pref_new"
+                                    oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+          <vbox class="indent" flex="1">
+           <textbox  id="newmsg"  multiline="true" rows="10" minwidth="&pref_dialog.minwidth;"
+                                    tooltiptext="&pref_template_tip;"
+                                    preference="pref_newmsg"/>
+           <checkbox id="newhtml" label="&pref_html.label;"
+                                    tooltiptext="&pref_html.cap;"
+                                    preference="pref_newhtml"
+                                    oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+           <checkbox id="newnbr"  class="indent" label="&pref_rep_br.label;"
+                                    tooltiptext="&pref_rep_br.cap;"
+                                    preference="pref_newnbr"/>
+          </vbox>
+         </vbox>
+        </groupbox></tabpanel>
+
+        <tabpanel flex="1">
+         <groupbox flex="1"><caption label="&pref_rspmsg.cap;"/>
+          <vbox flex="1">
+          <checkbox id="rsp"      label="&pref_rsp.label;" preference="pref_rsp"
+                                 oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+           <vbox class="indent" flex="1">
+            <textbox  id="rspmsg"  multiline="true" rows="10" minwidth="&pref_dialog.minwidth;"
+                                   tooltiptext="&pref_template_tip;"
+                                   preference="pref_rspmsg"/>
+            <checkbox id="rsphtml" label="&pref_html.label;"
+                                   tooltiptext="&pref_html.cap;"
+                                   preference="pref_rsphtml"
+                                   oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+            <checkbox id="rspnbr"  class="indent" label="&pref_rep_br.label;"
+                                   tooltiptext="&pref_rep_br.cap;"
+                                   preference="pref_rspnbr"/>
+            <checkbox id="rsphead" label="&pref_rsphead.label;"
+                                   tooltiptext="&pref_quotehead_tip;"
+                                   preference="pref_rsphead"/>
+           </vbox>
+          </vbox>
+         </groupbox>
+        </tabpanel>
+
+        <tabpanel flex="1"><groupbox flex="1"><caption label="&pref_fwdmsg.cap;"/>
+         <vbox flex="1">
+          <checkbox id="fwd"      label="&pref_fwd.label;" preference="pref_fwd"
+                                    oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+          <vbox class="indent" flex="1">
+           <textbox  id="fwdmsg"  multiline="true" rows="10" minwidth="&pref_dialog.minwidth;"
+                                    tooltiptext="&pref_template_tip;"
+                                    preference="pref_fwdmsg"/>
+           <checkbox id="fwdhtml" label="&pref_html.label;"
+                                    tooltiptext="&pref_html.cap;"
+                                    preference="pref_fwdhtml"
+                                    oncommand="gSmartTemplateSettings.disableWithCheckbox();"/>
+           <checkbox id="fwdnbr"  class="indent" label="&pref_rep_br.label;"
+                                    tooltiptext="&pref_rep_br.cap;"
+                                    preference="pref_fwdnbr"/>
+           <checkbox id="fwdhead" label="&pref_fwdhead.label;"
+                                    tooltiptext="&pref_quotehead_tip;"
+                                    preference="pref_fwdhead"/>
+          </vbox>
+         </vbox>
+        </groupbox></tabpanel>
+       </tabpanels>
+      </tabbox>
+
+      <vbox id="deckB.usedef">
+       <description>&pref_def.cap;</description>
+      </vbox>
+
+     </deck>
+
+    </vbox>
+   </deck>
+
+
+  </prefpane>
+  <script type="application/x-javascript" src="chrome://smarttemplate/content/settings.js"/>
+ 
 </prefwindow>

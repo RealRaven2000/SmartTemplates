@@ -1,13 +1,3 @@
-// -----------------------------------------------------------------------------------
-// ---------------------------- last edit at 06/02/2012 ------------------------------
-// -----------------------------------------------------------------------------------
-// ----------------------------------- Changelog -------------------------------------
-// -----------------------------------------------------------------------------------
-// 0.7.5: "use strict" suggested by Mozilla add-on review team
-// 0.7.8: logging an error in error console if an variable is used incorrect
-// 0.8.0: other order of Account Name-User Name' instead of 'User Name-Account Name
-// -----------------------------------------------------------------------------------
-
 "use strict"; // "use strict" suggested by Mozilla add-on review team
 
 //******************************************************************************
@@ -68,7 +58,7 @@ gSmartTemplate.loadIdentity = function(startup)
         // Old function call
         this.oldFunc_LoadIdentity(startup);
         if (!isBodyModified && gMsgCompose.bodyModified)
-          { gMsgCompose.editor.resetModificationCount(); }	// for TB bug?
+          { gMsgCompose.editor.resetModificationCount(); }  // for TB bug?
     }
 };
 
@@ -119,10 +109,10 @@ gSmartTemplate.classPref = function(branch, useDefault)
     // Get preference with identity key
     function getWithIdkey(idkey, pref, def)
     {
-        if (getWithBranch(idkey + "." + useDefault, true))	// Check common or not.
-          { return getWithBranch(pref, def); }			// common preference
+        if (getWithBranch(idkey + "." + useDefault, true))  // Check common or not.
+          { return getWithBranch(pref, def); }          // common preference
         else
-          { return getWithBranch(idkey + "." + pref, def); }	// one's preference
+          { return getWithBranch(idkey + "." + pref, def); }    // one's preference
     };
     
     // -----------------------------------
@@ -290,15 +280,15 @@ gSmartTemplate.classMimeDecode = function()
           var result = "";
           if (withname) {
               result = address.replace(/\s*<\S+>\s*$/, "").
-                               replace(/^\s*\"|\"\s*$/g, "");			// %to% / %to(name)%
+                               replace(/^\s*\"|\"\s*$/g, "");           // %to% / %to(name)%
               if (result != "" && withaddr)
-                { result += address.replace(/.*<(\S+)>.*/g, " <$1>"); }		// %to%
+                { result += address.replace(/.*<(\S+)>.*/g, " <$1>"); }     // %to%
           }
           if (result == "") {
               if (!withaddr)
-                { result = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); }		// %to(name)%
+                { result = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); }     // %to(name)%
               else
-                { result = address.replace(/.*<(\S+)>.*/g, "$1"); }		// %to% / %to(mail)%
+                { result = address.replace(/.*<(\S+)>.*/g, "$1"); }     // %to% / %to(mail)%
           }
           // get firstname
           var delimiter;
@@ -348,7 +338,7 @@ gSmartTemplate.classCalIDateTimeFormatter = function(useLegacy)
     // without Lightning
     var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService);
-    var bundle = strBndlSvc.createBundle("chrome://SmartTemplate4/locale/calender.properties");
+    var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/calender.properties");
     var cal = {
         dayName        : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
         shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
@@ -438,7 +428,7 @@ gSmartTemplate.regularize = function(msg, type)
      msg = function(string) {
         // rw2h["reserved word"] = "header"
         var rw2h = new Array();
-        function setRw2h() {		// setRw2h("header", "reserved word",,,)
+        function setRw2h() {        // setRw2h("header", "reserved word",,,)
             for(var i = 1; i < arguments.length; i++)
               { rw2h[arguments[i]] = arguments[0]; }
         }
@@ -459,7 +449,7 @@ gSmartTemplate.regularize = function(msg, type)
             } catch (e) {
                 var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService);
-                var bundle = strBndlSvc.createBundle("chrome://SmartTemplate4/locale/errors.properties");
+                var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/errors.properties");
                 try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
                     Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
                 } catch (e) {
@@ -517,12 +507,12 @@ gSmartTemplate.regularize = function(msg, type)
 
         // for backward compatibility
         switch (s) {
-          case "fromname":	s = "From";	f = "(name)";	break;
-          case "frommail":	s = "From";	f = "(mail)";	break;
-          case "toname":	s = "To";	f = "(name)";	break;
-          case "tomail":	s = "To";	f = "(mail)";	break;
-          case "ccname":	s = "Cc";	f = "(name)";	break;
-          case "ccmail":	s = "Cc";	f = "(mail)";	break;
+          case "fromname":  s = "From"; f = "(name)";   break;
+          case "frommail":  s = "From"; f = "(mail)";   break;
+          case "toname":    s = "To";   f = "(name)";   break;
+          case "tomail":    s = "To";   f = "(mail)";   break;
+          case "ccname":    s = "Cc";   f = "(name)";   break;
+          case "ccmail":    s = "Cc";   f = "(mail)";   break;
         }
 
 
@@ -536,7 +526,7 @@ gSmartTemplate.regularize = function(msg, type)
                     s = prTime2Str(date, s, 0);
                     return parent.escapeHtml(s);
                 }
-            case "timezone":	
+            case "timezone":    
             case "date_tz":
                     var matches = tm.toString().match(/([+-][0-9]{4})/);
                     return parent.escapeHtml(matches[0]);
@@ -545,23 +535,23 @@ gSmartTemplate.regularize = function(msg, type)
         switch (s) {
         // for Common (new/reply/forward) message
           // own name
-          case "ownname":	s = identity.identityName.replace(/\s*<.*/, "");	break;
+          case "ownname":   s = identity.identityName.replace(/\s*<.*/, "");    break;
           // own email address
-          case "ownmail":	s = identity.email;					break;
+          case "ownmail":   s = identity.email;                 break;
           // today
           case "T":
-          case "X":	return expand("%H%:%M%:%S%");			break;	// Time hh:mm:ss
-          case "Y":	return "" + tm.getFullYear();			break;	// Year 1970...
-          case "n":	return "" + (tm.getMonth()+1);			break;	// Month 1..12
-          case "m":	return d02(tm.getMonth()+1);			break;	// Month 01..12
-          case "e":	return "" + tm.getDate();			break;	// Day of month 1..31
-          case "d":	return d02(tm.getDate());			break;	// Day of month 01..31
-          case "k":	return "" + tm.getHours();			break;	// Hour 0..23
-          case "H":	return d02(tm.getHours());			break;	// Hour 00..23
-          case "l":	return "" + (((tm.getHours() + 23) % 12) + 1);	break;	// Hour 1..12
-          case "I":	return d02(((tm.getHours() + 23) % 12) + 1);	break;	// Hour 01..12
-          case "M":	return d02(tm.getMinutes());			break;	// Minutes 00..59
-          case "S":	return d02(tm.getSeconds());			break;	// Seconds 00..59
+          case "X": return expand("%H%:%M%:%S%");           break;  // Time hh:mm:ss
+          case "Y": return "" + tm.getFullYear();           break;  // Year 1970...
+          case "n": return "" + (tm.getMonth()+1);          break;  // Month 1..12
+          case "m": return d02(tm.getMonth()+1);            break;  // Month 01..12
+          case "e": return "" + tm.getDate();           break;  // Day of month 1..31
+          case "d": return d02(tm.getDate());           break;  // Day of month 01..31
+          case "k": return "" + tm.getHours();          break;  // Hour 0..23
+          case "H": return d02(tm.getHours());          break;  // Hour 00..23
+          case "l": return "" + (((tm.getHours() + 23) % 12) + 1);  break;  // Hour 1..12
+          case "I": return d02(((tm.getHours() + 23) % 12) + 1);    break;  // Hour 01..12
+          case "M": return d02(tm.getMinutes());            break;  // Minutes 00..59
+          case "S": return d02(tm.getSeconds());            break;  // Seconds 00..59
           case "tz_name":    return tm.toString().replace(/^.*\(|\)$/g, "");    break; //time zone name
           case "sig":
             switch(f) {
@@ -577,21 +567,21 @@ gSmartTemplate.regularize = function(msg, type)
             } break;
           case "newsgroup": return getNewsgroup();  break;  
           // name of day and month
-          case "A":	return cal.dayName(tm.getDay());		break;	// locale day of week
-          case "a":	return cal.shortDayName(tm.getDay());		break;	// locale day of week(short)
-          case "B":	return cal.monthName(tm.getMonth());		break;	// locale month
-          case "b":	return cal.shortMonthName(tm.getMonth());	break;	// locale month(short)
+          case "A": return cal.dayName(tm.getDay());        break;  // locale day of week
+          case "a": return cal.shortDayName(tm.getDay());       break;  // locale day of week(short)
+          case "B": return cal.monthName(tm.getMonth());        break;  // locale month
+          case "b": return cal.shortMonthName(tm.getMonth());   break;  // locale month(short)
           case "p":
            switch (f) {
-            case "(1)":	return tm.getHours() < 12 ? "a.m." : "p.m.";	break;	// locale am or pm
-            case "(2)":	return tm.getHours() < 12 ? "A.M." : "P.M.";	break;	// locale am or pm
+            case "(1)": return tm.getHours() < 12 ? "a.m." : "p.m.";    break;  // locale am or pm
+            case "(2)": return tm.getHours() < 12 ? "A.M." : "P.M.";    break;  // locale am or pm
             case "(3)":
-            default:	return tm.getHours() < 12 ? "AM" : "PM";	break;	// locale am or pm
+            default:    return tm.getHours() < 12 ? "AM" : "PM";    break;  // locale am or pm
            } break;
-          case "dbg1":  return cal.list();				break;
+          case "dbg1":  return cal.list();              break;
           // Change time of %A-Za-z%
-          case "X:=sent":	parent.whatIsX = parent.XisSent;	return "";
-          case "X:=today":	parent.whatIsX = parent.XisToday;	return "";
+          case "X:=sent":   parent.whatIsX = parent.XisSent;    return "";
+          case "X:=today":  parent.whatIsX = parent.XisToday;   return "";
           
         // any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
         default:
@@ -647,30 +637,10 @@ gSmartTemplate.classSmartTemplate = function()
     // Delete DOMNode/textnode or BR
     function delDOMNodeTextOrBR(node)
     {
-        let match=false;
-        let theNodeName='';
-        if (node && node.nodeName)
-          theNodeName = node.nodeName.toLowerCase();
-        else
-          return;
-        switch(theNodeName) {
-          case 'br':
-            match = true;
-            break;
-          case '#text':
-            match = true;
-            break;
-          case 'div':  // tb 13++
-            if (node.className && node.className.indexOf('moz-cite-prefix')>=0)
-              match = true;
-            break;
-        }
-        
-        if (match) {
+        if (node && (node.nodeName == "BR" || node.nodeName == "#text")) {
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
-        
     };
     function delDOMNodeAll(node)
     {
@@ -697,15 +667,15 @@ gSmartTemplate.classSmartTemplate = function()
         function countLF(str) { return str.split("\n").length - 1; }
 
         switch (pref.getCom("mailnews.reply_header_type", 1)) {
-          case 3:	// LFLF + author + separator + ondate + colon+LF
-          case 2:	// LFLF + ondate + separator + author + colon+LF
+          case 3:   // LFLF + author + separator + ondate + colon+LF
+          case 2:   // LFLF + ondate + separator + author + colon+LF
             lines += countLF(pref.getCom("mailnews.reply_header_separator", ","));
             lines += countLF(pref.getCom("mailnews.reply_header_ondate", "(%s)"));
-          case 1:	// LFLF + author + colon+LF
-          default:	// Handle same as 1
+          case 1:   // LFLF + author + colon+LF
+          default:  // Handle same as 1
             lines += countLF(pref.getCom("mailnews.reply_header_authorwrote", "%s wrote"));
             lines += countLF(pref.getCom("mailnews.reply_header_colon", ":"));
-          case 0:	// LFLF + LF
+          case 0:   // LFLF + LF
             lines++;
             break;
         }
@@ -753,12 +723,12 @@ gSmartTemplate.classSmartTemplate = function()
     function undoTemplate()
     {
         var curEl = gMsgCompose.editor.rootElement.firstChild;
-		var nextEl = gMsgCompose.editor.rootElement.firstChild;
-	    if (nextEl && nextEl.nodeName == "PRE")
+        var nextEl = gMsgCompose.editor.rootElement.firstChild;
+        if (nextEl && nextEl.nodeName == "PRE")
           { nextEl = nextEl.firstChild; }
         while ((curEl = nextEl)) {
-			nextEl = curEl.nextSibling;
-			if (curEl.id == "IDstID") {
+            nextEl = curEl.nextSibling;
+            if (curEl.id == "IDstID") {
                 if (nextEl && nextEl.tagName == "BR")
                   { gMsgCompose.editor.deleteNode(nextEl); }
                 gMsgCompose.editor.deleteNode(curEl);
@@ -881,11 +851,9 @@ gSmartTemplate.classSmartTemplate = function()
         // add template message --------------------------------
         if (msgTmpl && msgTmpl !== "")
         {
-            if(gMsgCompose.composeHTML){
-				gMsgCompose.editor.insertNode(
-					gMsgCompose.editor.document.createElement("br"),
-					gMsgCompose.editor.rootElement, 0);
-			}
+            gMsgCompose.editor.insertNode(
+                    gMsgCompose.editor.document.createElement("br"),
+                    gMsgCompose.editor.rootElement, 0);
             editor.beginningOfDocument();
             editor.insertHTML("<div id=\"IDstID\">" + msgTmpl + "</div>");
             editor.beginningOfDocument();
@@ -907,7 +875,7 @@ gSmartTemplate.classSmartTemplate = function()
                 bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
             }
         }
-		
+        
         gMsgCompose.editor.resetModificationCount();
         if (startup) {
             gMsgCompose.editor.enableUndo(false);
@@ -937,7 +905,7 @@ gSmartTemplate.init = function()
     
     // Time of %A-Za-z% is today(default)
     gSmartTemplate.whatIsX = this.XisToday;
-	
+    
 };
 
 gSmartTemplate.init();

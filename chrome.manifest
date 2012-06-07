@@ -1,29 +1,18 @@
-#### MISC FILES CONTENT FOLDER ####
-content		SmartTemplate4						content/
+content smarttemplate content/
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://smarttemplate/content/messengercomposeOverlay.xul
+overlay chrome://messenger/content/am-addressing.xul chrome://smarttemplate/content/am-addressingOverlay.xul
 
-#### SKIN ####
-skin		SmartTemplate4		classic/1.0		skin/
-skin		SmartTemplate4		default/1.0		skin/default/
+locale smarttemplate de locale/de/
+locale smarttemplate en-US locale/en-US/
+locale smarttemplate es-ES locale/es-ES/
+locale smarttemplate fr locale/fr/
+locale smarttemplate it locale/it/
+locale smarttemplate ja locale/ja/
+locale smarttemplate nl locale/nl/
+locale smarttemplate pl locale/pl/
+locale smarttemplate pt-BR locale/pt-BR/
+locale smarttemplate ru locale/ru/
+locale smarttemplate sv-SE locale/sv-SE/
+locale smarttemplate zh-CN locale/zh-CN/
 
-#### LOCALIZATIONS (alphabetical by localename) ####
-locale		SmartTemplate4		de				locale/de/
-locale		SmartTemplate4		en-US			locale/en-US/
-locale		SmartTemplate4		es-ES			locale/es-ES/
-locale		SmartTemplate4		fi				locale/fi/
-locale		SmartTemplate4		fr				locale/fr/
-locale		SmartTemplate4		it				locale/it/
-locale		SmartTemplate4		ja				locale/ja/
-locale		SmartTemplate4		nl				locale/nl/
-locale		SmartTemplate4		pl				locale/pl/
-locale		SmartTemplate4		pt-BR			locale/pt-BR/
-locale		SmartTemplate4		ru				locale/ru/
-locale		SmartTemplate4		sv-SE			locale/sv-SE/
-locale		SmartTemplate4		zh-CN			locale/zh-CN/ 
-
-#### Thunderbird XUL OVERLAYS ####
-# messengercompose.xul (MailCompose Window)
-overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://SmartTemplate4/content/messengercomposeOverlay.xul 
-# am-addressing.xul (am addressing -> Accountmanager)
-overlay chrome://messenger/content/am-addressing.xul 						chrome://SmartTemplate4/content/am-addressingOverlay.xul
-# messenger.xul (Mainwindow -> "Statusbar")
-overlay chrome://messenger/content/messenger.xul 							chrome://SmartTemplate4/content/messengerOverlay.xul
+skin smarttemplate classic/1.0 skin/
