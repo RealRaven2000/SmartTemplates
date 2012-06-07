@@ -7,7 +7,7 @@
 		<Description rdf:about="urn:mozilla:install-manifest">
 					<em:id>smarttemplate4@thunderbird.extension</em:id>
 					<em:name>SmartTemplate4</em:name>
-					<em:version>0.9.9 (ID Version)</em:version>
+					<em:version>0.9.9</em:version>
 					<em:optionsURL>chrome://SmartTemplate4/content/settings.xul</em:optionsURL>
 					<em:type>2</em:type>
 					<em:iconURL>chrome://SmartTemplate4/skin/icon32.png</em:iconURL>					    
