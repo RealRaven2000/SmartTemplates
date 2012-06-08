@@ -210,7 +210,7 @@ gSmartTemplateSettings.onLoad = function()		// mod 0.3.2
 
     // Switch account (from account setting)
     if (window.arguments && window.arguments.length >= 1)	// add 0.4.0
-      { switchIdentity(window.arguments[0]); }			// add 0.4.0
+      {  gSmartTemplateSettings.switchIdentity(window.arguments[0]); }			// add 0.4.0
 
     // disable Use default (common account)
     document.getElementById("use_default").setAttribute("disabled", "true");
@@ -305,8 +305,8 @@ gSmartTemplateSettings.fillIdentityListPopup = function()	// mod 0.3.2
 
         for (var j = 0; j < account.identities.Count(); j++) {
             const identity = account.identities.QueryElementAt(j, gSmartTemplateSettings.Ci.nsIMsgIdentity);
-            document.getElementById("msgIdentity").
-                appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
+            document.getElementById("msgIdentity")
+                .appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
             gSmartTemplateSettings.addIdentity(identity.key);
         }
     }
@@ -319,6 +319,7 @@ gSmartTemplateSettings.switchIdentity = function(idKey)
 {
     var el = document.getElementById("msgIdentityPopup").firstChild
     var index = 0;
+    gSmartTemplateSettings.Util.logDebugOptional("settings","switchIdentity(" + idKey + ")");
     while (el) {
         if (el.getAttribute("value") == idKey) {
         // el.value could not access.. why??
