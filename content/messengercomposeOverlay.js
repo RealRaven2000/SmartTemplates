@@ -389,28 +389,6 @@ gSmartTemplate.classMimeDecode = function()
 // -------------------------------------------------------------------
 gSmartTemplate.regularize = function(msg, type)
 {
-    var parent = gSmartTemplate;
-    var idkey = document.getElementById("msgIdentity").value;
-    var identity = Components.classes["@mozilla.org/messenger/account-manager;1"].
-                     getService(Components.interfaces.nsIMsgAccountManager).
-                       getIdentity(idkey);
-    var messenger = Components.classes["@mozilla.org/messenger;1"].
-                      createInstance(Components.interfaces.nsIMessenger);
-    var mime = new this.classMimeDecode();
-    
-    if (type != "new") {
-        // for Reply/Forward message
-        var msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI);
-        var charset = msgDbHdr.Charset;
-        var date = msgDbHdr.date;
-        var hdr = new this.classGetHeaders(gMsgCompose.originalMsgURI);
-        var tz = new function(date) {
-            this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
-            this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
-            this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-        }(hdr.get("Date"));
-    }
-    
     function getSignature(rmdashes) {
         if (parent.signature != null){
             parent.sigIsDefined = true;
@@ -444,8 +422,31 @@ gSmartTemplate.regularize = function(msg, type)
         return acctKey;
     }
 
+    this.Util.logDebugOptional('functions','gSmartTemplate.regularize(' + msg +')');
+    var parent = gSmartTemplate;
+    var idkey = document.getElementById("msgIdentity").value;
+    var identity = Components.classes["@mozilla.org/messenger/account-manager;1"].
+                     getService(Components.interfaces.nsIMsgAccountManager).
+                       getIdentity(idkey);
+    var messenger = Components.classes["@mozilla.org/messenger;1"].
+                      createInstance(Components.interfaces.nsIMessenger);
+    var mime = new this.classMimeDecode();
+    
+    if (type != "new") {
+        // for Reply/Forward message
+        var msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI);
+        var charset = msgDbHdr.Charset;
+        var date = msgDbHdr.date;
+        var hdr = new this.classGetHeaders(gMsgCompose.originalMsgURI);
+        var tz = new function(date) {
+            this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
+            this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
+            this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
+        }(hdr.get("Date"));
+    }
+    
     // reduce "{" and "}"
-     msg = function(string) {
+    msg = function(string) {
         // rw2h["reserved word"] = "header"
         var rw2h = new Array();
         function setRw2h() {        // setRw2h("header", "reserved word",,,)
@@ -484,7 +485,7 @@ gSmartTemplate.regularize = function(msg, type)
         
         string = string.replace(/{([^{}]+)}/gm, chkRws);
         return string.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
-    }(msg);
+    } (msg);
 
     // Convert PRTime to string
     function prTime2Str(time, type, timezone) {
@@ -742,10 +743,15 @@ gSmartTemplate.classSmartTemplate = function()
     function delForwardHeader()
     {
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
+        debugger;
+        alert('test');
+        debugger;
+        
         var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService).
                        createBundle("chrome://messenger/locale/mime.properties");
         var header = bndl.GetStringFromID(1041);
+        debugger;
 
         // Delete original headers
         var rootEl = gMsgCompose.editor.rootElement;
@@ -822,6 +828,7 @@ gSmartTemplate.classSmartTemplate = function()
     // Add template message
     function insertTemplate(startup)
     {
+        gSmartTemplate.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
         var   pref = parent.pref;
         var   editor = GetCurrentEditor();
         var   msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -831,9 +838,10 @@ gSmartTemplate.classSmartTemplate = function()
 
         // Switch account
         if (startup) {
-            // Cleaer template
+            // Clear template
             clearTemplate();
-        } else {
+        } 
+        else {
             // Check identity changed or not
             if (gCurrentIdentity && gCurrentIdentity.key == idKey) {
                 return;
@@ -880,6 +888,8 @@ gSmartTemplate.classSmartTemplate = function()
           case msgComposeType.ForwardInline:
             if (pref.getWithIdkey(idKey, "fwd", false))
             {
+                gSmartTemplate.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
+
                 msgTmpl = getMsgTmpl("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
                 if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
                   { break; }
@@ -897,10 +907,10 @@ gSmartTemplate.classSmartTemplate = function()
         if (msgTmpl && msgTmpl !== "")
         {
             if(gMsgCompose.composeHTML){
-            gMsgCompose.editor.insertNode(
+                gMsgCompose.editor.insertNode(
                     gMsgCompose.editor.document.createElement("br"),
                     gMsgCompose.editor.rootElement, 0);
-			}
+            }
             editor.beginningOfDocument();
             editor.insertHTML("<div id=\"IDstID\">" + msgTmpl + "</div>");
             editor.beginningOfDocument();
