@@ -49,7 +49,7 @@
 <!ENTITY pref_html.label       			"Utiliser HTML (par ex., &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap         			"Utiliser des caractères d'échappement pour  &quot; , &amp; , &lt; , &gt; , espace. Voir l'aide pour les détails.">
 <!ENTITY pref_rep_br.label     			"Remplacez les sauts de ligne par &lt;br&gt;">
-<!ENTITY pref_rep_br.cap       			"Remarque: aucun espace ne sera ajouté dans le tag HTML en utilisant &lt;br&gt;.">
+<!ENTITY pref_rep_br.cap       			"Remarque : aucun espace ne sera ajouté dans le tag HTML en utilisant &lt;br&gt;.">
 
 <!ENTITY pref_quotehead_tip    			"Désactive l'entête par défaut. Merci d'inserer l'entête dans la zone de texte.">
 <!ENTITY pref_template_tip     			"Vous pouvez modifier un entête avec des variables. Voir l'aide pour plus d'information.">
@@ -66,7 +66,7 @@
 <!ENTITY developer.label				"Développeur">
 <!ENTITY localename.label				"fr">
 <!ENTITY localized.label				"Traducteur">
-<!ENTITY translatorNickname.label		"Roland Lacroute">
+<!ENTITY translatorNickname.label		"Google Translator">
 <!ENTITY contributor.label				"Contributeur">
 <!ENTITY about.label					"SmartTemplate4 permet de personnaliser aisément les entêtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
 
@@ -152,7 +152,7 @@
 <!ENTITY xsent_short.cap  				"Exemple de format court:">
 <!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label 		"Résultat : Mardi 20 décembre 2011 à 12:15 "> 
-<!ENTITY xsent_shobel 		"En plus, vous pouvez utiliser ces variables avec les variantes :">
+<!ENTITY xsent_shobel 					"En plus, vous pouvez utiliser ces variables avec les variantes :">
 
 <!ENTITY localedate.label 				"Date et heure (format local)">
 <!ENTITY shortdate.label 				"Date et heure courtes (ex : 01.01.2000 1:23:45)">
