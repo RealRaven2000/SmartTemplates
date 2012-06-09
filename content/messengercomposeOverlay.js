@@ -656,6 +656,11 @@ gSmartTemplate.classSmartTemplate = function()
         }
     }
 
+    
+    function truncateDOMuntilToken(token) {
+	    
+    } 
+    
     // -----------------------------------
     // Delete DOMNode/textnode or BR
     function delDOMNodeTextOrBR(node)
@@ -702,10 +707,11 @@ gSmartTemplate.classSmartTemplate = function()
     function delReplyHeader(idKey)
     {
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delReplyHeader()');
-        var   pref = parent.pref;
-        var   lines = 0;
-        if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1)
-          { lines = 2; }
+        var pref = parent.pref;
+        var lines = 0;
+        if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) { 
+	        lines = 2; 
+        }
 
         function countLF(str) { return str.split("\n").length - 1; }
 
@@ -722,12 +728,14 @@ gSmartTemplate.classSmartTemplate = function()
             lines++;
             break;
         }
+        gSmartTemplate.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
 
-        // Delete original headers
+        // Delete original headers .. eliminates all #text nodes but deletes the others
         var rootEl = gMsgCompose.editor.rootElement;
         while (rootEl.firstChild && lines > 0) {
-            if (rootEl.firstChild.nodeName != "#text")
-              { lines--; }
+            if (rootEl.firstChild.nodeName != "#text") { 
+	            lines--; 
+	          }
             delDOMNodeTextOrBR(rootEl.firstChild);
         }
     };
@@ -739,22 +747,29 @@ gSmartTemplate.classSmartTemplate = function()
     //In compose with TEXT, body is
     //  <BR><BR> <#text#(1041)><BR> <#text# (headers)>!<BR><BR>! original-message
     //We need to remove tags until two BR tags appear consecutively.
-    // AG: To assume that the 2 <br> stay like that is foolish.
+    // AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
     function delForwardHeader()
     {
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
         debugger;
         alert('test');
-        debugger;
         
         var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService).
                        createBundle("chrome://messenger/locale/mime.properties");
-        var header = bndl.GetStringFromID(1041);
+        let header = bndl.GetStringFromID(1041);
+        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Retrieved Header Token from mime properties: ' + header);
         debugger;
+        
+        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+	        var specialToken = "<div class='moz-forward-container'>" ;
+        }
 
         // Delete original headers
         var rootEl = gMsgCompose.editor.rootElement;
+        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Got root element: ' + rootEl.toString());
+        
+        truncateDOMuntilToken
         while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) {
             delDOMNodeTextOrBR(rootEl.firstChild);
         }

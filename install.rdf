@@ -5,7 +5,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 <em:id>smarttemplate4@thunderbird.extension</em:id>
 <em:name>SmartTemplate 4</em:name>
-<em:version>0.8.1pre15</em:version>
+<em:version>0.8.1pre20</em:version>
 <em:optionsURL>chrome://smarttemplate/content/settings.xul</em:optionsURL>
 <em:type>2</em:type>
 <em:iconURL>chrome://smarttemplate/skin/icon32x32.png</em:iconURL>
@@ -80,7 +80,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 <Description>
 <em:locale>ja</em:locale>
 <em:name>SmartTemplate 4</em:name>
-<em:description>アカウント毎に引用ヘッダもカスタマイズできるスマートなテンプレート機能を提供します</em:description>
+<em:description>?????????????????????????????????????????</em:description>
 <em:creator>tool8, Marky Mark DE</em:creator>
 <em:contributor>Aris-T</em:contributor>
 <em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -103,9 +103,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 <Description>
 <em:locale>pl</em:locale>
 <em:name>SmartTemplate 4</em:name>
-<em:description>Inteligentne szablony nagłówków, które można dostosowywać dla każdego konta.</em:description>
+<em:description>Inteligentne szablony naglówków, które mozna dostosowywac dla kazdego konta.</em:description>
 <em:creator>tool8, Marky Mark DE</em:creator>
-<em:translator>Leszek(teo) Życzkowski (BabelZilla)</em:translator>
+<em:translator>Leszek(teo) Zyczkowski (BabelZilla)</em:translator>
 <em:contributor>Aris-T</em:contributor>
 <em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 </Description>
@@ -127,7 +127,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 <Description>
 <em:locale>ru</em:locale>
 <em:name>SmartTemplate 4</em:name>
-<em:description>SmartTemplate 4 - расширение, с помощью которого можно настроить собственные шаблоны заголовков сообщений (новое, ответ, пересылка). Шаблоны могут быть как общие для всех эккаунтов, так и отдельные - свой для каждого эккаунта.</em:description>
+<em:description>SmartTemplate 4 - ??????????, ? ??????? ???????? ????? ????????? ??????????? ??????? ?????????? ????????? (?????, ?????, ?????????). ??????? ????? ???? ??? ????? ??? ???? ?????????, ??? ? ????????? - ???? ??? ??????? ????????.</em:description>
 <em:creator>tool8, Marky Mark DE</em:creator>
 <em:translator>Vinser</em:translator>
 <em:contributor>Aris-T</em:contributor>
@@ -151,7 +151,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 <Description>
 <em:locale>zh-CN</em:locale>
 <em:name>SmartTemplate 4</em:name>
-<em:description>smart template扩展能为每个账号自定义引用头文件</em:description>
+<em:description>smart template????????????????</em:description>
 <em:creator>tool8, Marky Mark DE</em:creator>
 <em:translator>Yanfang Liu (BabelZilla)</em:translator>
 <em:contributor>Aris-T</em:contributor>

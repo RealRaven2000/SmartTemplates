@@ -386,6 +386,33 @@ gSmartTemplate.Util = {
     return true;
   } ,
   
+  versionGreaterOrEqual: function(a, b) {
+	  /*
+	    Compares Application Versions
+	    returns
+	    - is smaller than 0, then A < B
+	    -  equals 0 then Version, then A==B
+	    - is bigger than 0, then A > B
+	  */
+		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+		                        .getService(Components.interfaces.nsIVersionComparator);	  
+		return (versionComparator.compare(a, b) >= 0);                   
+  } ,
+  
+  versionSmaller: function(in a, in b) {
+	  /*
+	    Compares Application Versions
+	    returns
+	    - is smaller than 0, then A < B
+	    -  equals 0 then Version, then A==B
+	    - is bigger than 0, then A > B
+	  */
+		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+		                        .getService(Components.interfaces.nsIVersionComparator);	  
+		 return (versionComparator.compare(a, b) < 0);                   
+  } ,
+  
+  
   showVersionHistory: function(ask) {
     var version = gSmartTemplate.Util.VersionSanitized;
 
