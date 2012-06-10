@@ -192,7 +192,7 @@ gSmartTemplate.Util = {
   popupAlert: function (title, text, icon) {
     try {
       if (!icon)
-        icon = "chrome://smarttemplate/skin/icon32x32.png";
+        icon = "chrome://smartTemplate4/skin/icon32x32.png";
       Components.classes['@mozilla.org/alerts-service;1'].
                 getService(Components.interfaces.nsIAlertsService).
                 showAlertNotification(icon, title, text, false, '', null);

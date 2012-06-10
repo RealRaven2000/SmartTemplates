@@ -1,145 +1,20 @@
+"use strict";
 // -----------------------------------------------------------------------------------
-// ---------------------------- last edit at 06/10/2012 ------------------------------
+// ---------------------------- last edit at 06/02/2012 ------------------------------
 // -----------------------------------------------------------------------------------
 // ----------------------------------- Changelog -------------------------------------
 // -----------------------------------------------------------------------------------
 // 0.7.5: "use strict" suggested by Mozilla add-on review team
 // 0.7.8: logging an error in error console if an variable is used incorrect
-// 0.8.0: other order of 'Account Name-User Name' instead of 'User Name-Account Name'
-// 0.8.1: rewrited large partitions of the script code to fix problems in TB13
+// 0.8.0: other order of Account Name-User Name' instead of 'User Name-Account Name
+// 0.8.1: rewrote large partitions of the script code to fix problems in TB13
+// 0.8.2: moved main object out to new file smartTemplate-main.js to share with settings.xul
 // -----------------------------------------------------------------------------------
-
-"use strict";
 
 //******************************************************************************
 // for messengercompose
 //******************************************************************************
-var gSmartTemplate = {
-    // definitions for whatIsX (time of %A-Za-z%)
-    XisToday : 0,
-    XisSent  : 1,
-    signature : null,
-    sigIsDefined : false,
-    
-    stateListener: {
-        NotifyComposeFieldsReady: function() {},
-        NotifyComposeBodyReady: function() {
-            gSmartTemplate.notifyComposeBodyReady();
-        },
-        ComposeProcessDone: function(aResult) {},
-        SaveInFolderDone: function(folderURI) {}
-    },
-    
-    initListner: function() {   
-        gMsgCompose.RegisterStateListener(gSmartTemplate.stateListener);
-    },
-    // -------------------------------------------------------------------
-    // A handler to add template message
-    // -------------------------------------------------------------------
-    notifyComposeBodyReady: function()
-    {   
-        this.Util.logDebugOptional('events','gSmartTemplate.notifyComposeBodyReady()');
-        // Add template message
-        this.smartTemplate.insertTemplate(true);
-    },
-    
-    // -------------------------------------------------------------------
-    // A handler to switch identity
-    // -------------------------------------------------------------------
-    loadIdentity : function(startup)
-    {   
-        this.Util.logDebugOptional('functions','gSmartTemplate.loadIdentity(' + startup +')');
-        if (startup) {
-            // Old function call
-            this.oldFunc_LoadIdentity(startup);
-        } else {
-            // Check body modified or not
-            var isBodyModified = gMsgCompose.bodyModified;
-            if (!isBodyModified) {
-                // Add template message
-                this.smartTemplate.insertTemplate(false);
-            }
-            // Old function call
-            this.oldFunc_LoadIdentity(startup);
-            if (!isBodyModified && gMsgCompose.bodyModified)
-              { gMsgCompose.editor.resetModificationCount(); }  // for TB bug?
-        }
-    },
-    
-    // -------------------------------------------------------------------
-    // Escape to HTML character references
-    // -------------------------------------------------------------------
-    escapeHtml: function(str)
-    {
-        return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
-    },
-
-    // -------------------------------------------------------------------
-    // Get day name and month name
-    // -------------------------------------------------------------------
-    classCalIDateTimeFormatter: function(useLegacy)
-    {
-        // -----------------------------------
-        // Constructor
-        try {
-            if (useLegacy)
-                throw "without lightning";
-            // with Lightning
-            var cal = Components.classes["@mozilla.org/calendar/datetime-formatter;1"].
-                        getService(Components.interfaces.calIDateTimeFormatter);
-        } 
-        catch(ex) {
-            // without Lightning
-            var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-                             getService(Components.interfaces.nsIStringBundleService);
-            var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/calender.properties");
-            var cal = {
-                dayName        : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
-                shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
-                monthName      : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".name"); },
-                shortMonthName : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".short"); }
-            };
-        }
-    
-        function list() {
-            var str = "";
-            for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
-            for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
-            return str;
-        };
-    
-        // -----------------------------------
-        // Public methods
-        this.dayName        = cal.dayName;
-        this.shortDayName   = cal.shortDayName;
-        this.monthName      = cal.monthName;
-        this.shortMonthName = cal.shortMonthName;
-        this.list           = list;
-    } ,
-    
-    // -------------------------------------------------------------------
-    // Initialize
-    // -------------------------------------------------------------------
-    init: function()
-    {
-        function smartTemplate_loadIdentity(startup){
-            return gSmartTemplate.loadIdentity(startup);
-        }
-        gSmartTemplate.Util.logDebug('gSmartTemplate.init()');
-        this.oldFunc_LoadIdentity = LoadIdentity;
-        LoadIdentity = smartTemplate_loadIdentity;
-    
-        this.pref = new this.classPref("extensions.smarttemplate.", "def");
-        this.smartTemplate = new this.classSmartTemplate();
-        this.cal = new this.classCalIDateTimeFormatter(true);
-        
-        // Time of %A-Za-z% is today(default)
-        this.whatIsX = this.XisToday;
-        this.Util.logDebug('gSmartTemplate.init() ends.');
-        
-    }
-    
-};
+// moved main object into smartTemplate-main.js !
 
 // -------------------------------------------------------------------
 // common (preference)
@@ -469,7 +344,7 @@ gSmartTemplate.regularize = function(msg, type)
             } catch (e) {
                 var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService);
-                var bundle = strBndlSvc.createBundle("chrome://smarttemplate/locale/errors.properties");
+                var bundle = strBndlSvc.createBundle("chrome://smartTemplate4/locale/errors.properties");
                 try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
                     Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
                 } catch (e) {
@@ -681,10 +556,11 @@ gSmartTemplate.classSmartTemplate = function()
             gMsgCompose.editor.deleteNode(node);
         }
     };
+    
     function delDOMNodeAll(node)
     {
         if (node) {
-		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeTextOrBR() - deletes node ' + node.nodeName 
+		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeAll() - deletes node ' + node.nodeName 
 		         		+ '\n' + node.innerHTML);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);

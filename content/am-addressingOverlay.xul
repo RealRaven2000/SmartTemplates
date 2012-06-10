@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE overlay SYSTEM "chrome://smarttemplate/locale/smartTemplate.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate.dtd">
 
 <overlay id="stam-addressingOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <vbox flex="1" id="compositionAndAddressing">
     <groupbox>
-      <caption   id="stcap"     label="&account_st.cap;"/>
+      <caption  id="SmartTemplate4AccountmanagerCap"     
+                label="&account_st.cap;"
+                class="AccountmanagerCap" />
       <hbox>
-        <button  id="editst"    label="&account_st.button;"
-                 oncommand="openDialog('chrome://smarttemplate/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
+        <button  id="editst"    
+                 label="&account_st.button;"
+                 class="AccountmanagerButton"
+                 oncommand="openDialog('chrome://smartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
       </hbox>
     </groupbox>
   </vbox>
