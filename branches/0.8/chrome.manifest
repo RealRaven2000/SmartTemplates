@@ -1,18 +1,18 @@
-content smarttemplate content/
-overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://smarttemplate/content/messengercomposeOverlay.xul
-overlay chrome://messenger/content/am-addressing.xul chrome://smarttemplate/content/am-addressingOverlay.xul
+content smartTemplate4 content/
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://smartTemplate4/content/messengercomposeOverlay.xul
+overlay chrome://messenger/content/am-addressing.xul chrome://smartTemplate4/content/am-addressingOverlay.xul
 
-locale smarttemplate de locale/de/
-locale smarttemplate en-US locale/en-US/
-locale smarttemplate es-ES locale/es-ES/
-locale smarttemplate fr locale/fr/
-locale smarttemplate it locale/it/
-locale smarttemplate ja locale/ja/
-locale smarttemplate nl locale/nl/
-locale smarttemplate pl locale/pl/
-locale smarttemplate pt-BR locale/pt-BR/
-locale smarttemplate ru locale/ru/
-locale smarttemplate sv-SE locale/sv-SE/
-locale smarttemplate zh-CN locale/zh-CN/
+locale smartTemplate4 de locale/de/
+locale smartTemplate4 en-US locale/en-US/
+locale smartTemplate4 es-ES locale/es-ES/
+locale smartTemplate4 fr locale/fr/
+locale smartTemplate4 it locale/it/
+locale smartTemplate4 ja locale/ja/
+locale smartTemplate4 nl locale/nl/
+locale smartTemplate4 pl locale/pl/
+locale smartTemplate4 pt-BR locale/pt-BR/
+locale smartTemplate4 ru locale/ru/
+locale smartTemplate4 sv-SE locale/sv-SE/
+locale smartTemplate4 zh-CN locale/zh-CN/
 
-skin smarttemplate classic/1.0 skin/
+skin smartTemplate4 classic/1.0 skin/

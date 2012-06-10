@@ -10,7 +10,7 @@
 <!ENTITY pref_fwd.tab          "Forward">
 
 <!ENTITY pref_def.label        "Use common">
-<!ENTITY pref_def.cap          "Remove 'Use common', if you want to setting this account.">
+<!ENTITY pref_def.cap          "Uncheck 'Use common' to create separate to settings for this account.">
 
 <!ENTITY pref_newmsg.cap       "New message">
 <!ENTITY pref_new.label        "Apply following template for the new message">

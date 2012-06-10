@@ -1,3 +1,5 @@
+"use strict"; 
+
 // -----------------------------------------------------------------------------------
 // ---------------------------- last edit at 06/10/2012 ------------------------------
 // -----------------------------------------------------------------------------------
@@ -6,7 +8,6 @@
 // 0.7.5: "use strict" suggested by Mozilla add-on review team
 // -----------------------------------------------------------------------------------
 
-"use strict";
 
 var gSmartTemplateSettings = {};
 
@@ -15,7 +16,7 @@ var gSmartTemplateSettings = {};
 //******************************************************************************
 gSmartTemplateSettings.gCurId = "";
 gSmartTemplateSettings.Ci = Components.interfaces;
-gSmartTemplateSettings.pref = Components.classes["@mozilla.org/preferences-service;1"].
+gSmartTemplateSettings.prefService = Components.classes["@mozilla.org/preferences-service;1"].
                                                  getService(gSmartTemplateSettings.Ci.nsIPrefService);
 
 
@@ -97,10 +98,10 @@ gSmartTemplateSettings.disableWithCheckbox = function()
 //--------------------------------------------------------------------
 gSmartTemplateSettings.cleanupUnusedPrefs = function()
 {
-    var array = gSmartTemplateSettings.pref.getChildList("extensions.smarttemplate.", {});
+    var array = gSmartTemplateSettings.prefService.getChildList("extensions.smarttemplate.", {});
     for (var i in array) {
         if (document.getElementsByAttribute("name", array[i]).length === 0) {
-            gSmartTemplateSettings.pref.deleteBranch(array[i]);
+            gSmartTemplateSettings.prefService.deleteBranch(array[i]);
         }
     }
 }
@@ -115,51 +116,51 @@ gSmartTemplateSettings.cleanupUnusedPrefs = function()
 //--------------------------------------------------------------------
 gSmartTemplateSettings.setPref1st = function(prefbranch)
 {  
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "def")
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "def", true); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "new");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "new", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "rsp");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "rsp", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "fwd");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "fwd", false); }
-  try {        gSmartTemplateSettings.pref.getCharPref(prefbranch + "newmsg");
-  } catch(e) { gSmartTemplateSettings.pref.setCharPref(prefbranch + "newmsg", ""); }
-  try {        gSmartTemplateSettings.pref.getCharPref(prefbranch + "rspmsg");
-  } catch(e) { gSmartTemplateSettings.pref.setCharPref(prefbranch + "rspmsg", ""); }
-  try {        gSmartTemplateSettings.pref.getCharPref(prefbranch + "fwdmsg");
-  } catch(e) { gSmartTemplateSettings.pref.setCharPref(prefbranch + "fwdmsg", ""); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "newhtml");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "newhtml", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "rsphtml");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "rsphtml", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "fwdhtml");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "fwdhtml", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "newnbr");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "newnbr", true); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "rspnbr");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "rspnbr", true); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "fwdnbr");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "fwdnbr", true); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "rsphead");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "rsphead", false); }
-  try {        gSmartTemplateSettings.pref.getBoolPref(prefbranch + "fwdhead");
-  } catch(e) { gSmartTemplateSettings.pref.setBoolPref(prefbranch + "fwdhead", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "def")
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "def", true); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "new");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "new", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "rsp");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "rsp", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "fwd");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "fwd", false); }
+  try {        gSmartTemplateSettings.prefService.getCharPref(prefbranch + "newmsg");
+  } catch(e) { gSmartTemplateSettings.prefService.setCharPref(prefbranch + "newmsg", ""); }
+  try {        gSmartTemplateSettings.prefService.getCharPref(prefbranch + "rspmsg");
+  } catch(e) { gSmartTemplateSettings.prefService.setCharPref(prefbranch + "rspmsg", ""); }
+  try {        gSmartTemplateSettings.prefService.getCharPref(prefbranch + "fwdmsg");
+  } catch(e) { gSmartTemplateSettings.prefService.setCharPref(prefbranch + "fwdmsg", ""); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "newhtml");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "newhtml", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "rsphtml");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "rsphtml", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "fwdhtml");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "fwdhtml", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "newnbr");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "newnbr", true); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "rspnbr");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "rspnbr", true); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "fwdnbr");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "fwdnbr", true); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "rsphead");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "rsphead", false); }
+  try {        gSmartTemplateSettings.prefService.getBoolPref(prefbranch + "fwdhead");
+  } catch(e) { gSmartTemplateSettings.prefService.setBoolPref(prefbranch + "fwdhead", false); }
 }
 
 // Get preference without prefType
 gSmartTemplateSettings.getPref = function(prefstring)
 {
-    switch (gSmartTemplateSettings.pref.getPrefType(prefstring))
+    switch (gSmartTemplateSettings.prefService.getPrefType(prefstring))
     {
       case Components.interfaces.nsIPrefBranch.PREF_STRING:
-        return gSmartTemplateSettings.pref.getComplexValue(prefstring,
+        return gSmartTemplateSettings.prefService.getComplexValue(prefstring,
                                  Components.interfaces.nsISupportsString).data;
                                                 break;
       case Components.interfaces.nsIPrefBranch.PREF_INT:
-        return gSmartTemplateSettings.pref.getIntPref(prefstring);     break;
+        return gSmartTemplateSettings.prefService.getIntPref(prefstring);     break;
       case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-        return gSmartTemplateSettings.pref.getBoolPref(prefstring);    break;
+        return gSmartTemplateSettings.prefService.getBoolPref(prefstring);    break;
       default:
         break;
     }
@@ -170,14 +171,14 @@ gSmartTemplateSettings.getPref = function(prefstring)
 //--------------------------------------------------------------------
 gSmartTemplateSettings.setPref = function(prefstring, value)
 {
-    switch (gSmartTemplateSettings.pref.getPrefType(prefstring))
+    switch (gSmartTemplateSettings.prefService.getPrefType(prefstring))
     {
       case Components.interfaces.nsIPrefBranch.PREF_STRING:
-        return gSmartTemplateSettings.pref.setCharPref(prefstring, value);    break;
+        return gSmartTemplateSettings.prefService.setCharPref(prefstring, value);    break;
       case Components.interfaces.nsIPrefBranch.PREF_INT:
-        return gSmartTemplateSettings.pref.setIntPref(prefstring, value);     break;
+        return gSmartTemplateSettings.prefService.setIntPref(prefstring, value);     break;
       case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-        return gSmartTemplateSettings.pref.setBoolPref(prefstring, value);    break;
+        return gSmartTemplateSettings.prefService.setBoolPref(prefstring, value);    break;
       default:
         break;
     }
@@ -207,6 +208,7 @@ gSmartTemplateSettings.reloadPrefs = function(el)
 //--------------------------------------------------------------------
 gSmartTemplateSettings.onLoad = function()		// mod 0.3.2
 {  
+	
     // Check and set common preference
     gSmartTemplateSettings.setPref1st("extensions.smarttemplate.");
     gSmartTemplateSettings.disableWithCheckbox();
@@ -216,9 +218,10 @@ gSmartTemplateSettings.onLoad = function()		// mod 0.3.2
 
     gSmartTemplateSettings.cleanupUnusedPrefs();
 
-    // Switch account (from account setting)
-    if (window.arguments && window.arguments.length >= 1)	// add 0.4.0
-      {  gSmartTemplateSettings.switchIdentity(window.arguments[0]); }			// add 0.4.0
+    // Switch account (from account setting)  // add 0.4.0
+    if (window.arguments && window.arguments.length >= 1)	{  
+      gSmartTemplateSettings.switchIdentity(window.arguments[0]); 
+    }
 
     // disable Use default (common account)
     document.getElementById("use_default").setAttribute("disabled", "true");
@@ -302,6 +305,7 @@ gSmartTemplateSettings.addIdentity = function(menuvalue)
 //--------------------------------------------------------------------
 gSmartTemplateSettings.fillIdentityListPopup = function()	// mod 0.3.2
 {  
+    gSmartTemplate.Util.logDebugOptional("settings","fillIdentityListPopup()");
     const accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
                                   getService(gSmartTemplateSettings.Ci.nsIMsgAccountManager).accounts;
 
@@ -314,7 +318,9 @@ gSmartTemplateSettings.fillIdentityListPopup = function()	// mod 0.3.2
         for (var j = 0; j < account.identities.Count(); j++) {
             const identity = account.identities.QueryElementAt(j, gSmartTemplateSettings.Ci.nsIMsgIdentity);
             document.getElementById("msgIdentity")
-                .appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
+                    .appendItem(account.incomingServer.prettyName 
+                                + " - " 
+                                + identity.identityName, identity.key, "");
             gSmartTemplateSettings.addIdentity(identity.key);
         }
     }
@@ -327,7 +333,7 @@ gSmartTemplateSettings.switchIdentity = function(idKey)
 {
     var el = document.getElementById("msgIdentityPopup").firstChild
     var index = 0;
-    gSmartTemplateSettings.Util.logDebugOptional("settings","switchIdentity(" + idKey + ")");
+    gSmartTemplate.Util.logDebugOptional("settings","switchIdentity(" + idKey + ")");
     while (el) {
         if (el.getAttribute("value") == idKey) {
         // el.value could not access.. why??
