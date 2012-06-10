@@ -140,8 +140,6 @@ var gSmartTemplate = {
     
 };
 
-document.getElementById("msgcomposeWindow").addEventListener("compose-window-init", gSmartTemplate.initListner, false);
-
 // -------------------------------------------------------------------
 // common (preference)
 // -------------------------------------------------------------------
@@ -1006,6 +1004,9 @@ gSmartTemplate.classSmartTemplate = function()
 };
 
 
-window.setTimeout ( function(){gSmartTemplate.init();},500 );
+window.setTimeout ( function(){
+	gSmartTemplate.init();
+  document.getElementById("msgcomposeWindow").addEventListener("compose-window-init", gSmartTemplate.initListner, false);
+},10 );
 
 
