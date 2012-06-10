@@ -629,11 +629,6 @@ gSmartTemplate.regularize = function(msg, type)
 gSmartTemplate.classSmartTemplate = function()
 {
     // -----------------------------------
-    // Constructor
-    var parent = gSmartTemplate;
-    var orgQuoteHeaders = new Array();
-    
-    // -----------------------------------
     // Extract Signature
     // 
     function extractSignature()
@@ -658,7 +653,9 @@ gSmartTemplate.classSmartTemplate = function()
 
     
     function truncateDOMuntilToken(token) {
-	    
+		    // cut off everything in the mail until we find the passed node or token
+		    // e.g. <blockquote class=" cite" ...
+        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.classSmartTemplate.truncateDOMuntilToken()');
     } 
     
     // -----------------------------------
@@ -714,31 +711,55 @@ gSmartTemplate.classSmartTemplate = function()
         }
 
         function countLF(str) { return str.split("\n").length - 1; }
-
-        switch (pref.getCom("mailnews.reply_header_type", 1)) {
-          case 3:   // LFLF + author + separator + ondate + colon+LF
-          case 2:   // LFLF + ondate + separator + author + colon+LF
-            lines += countLF(pref.getCom("mailnews.reply_header_separator", ","));
-            lines += countLF(pref.getCom("mailnews.reply_header_ondate", "(%s)"));
-          case 1:   // LFLF + author + colon+LF
-          default:  // Handle same as 1
-            lines += countLF(pref.getCom("mailnews.reply_header_authorwrote", "%s wrote"));
-            lines += countLF(pref.getCom("mailnews.reply_header_colon", ":"));
-          case 0:   // LFLF + LF
-            lines++;
-            break;
+        
+        
+        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+	        // recursive search from root element
+	        node = findChildNode(rootEl, 'moz-email-headers-table');
+	        if (node) {
+	        	delDOMNodeAll(node);
+        	}
         }
-        gSmartTemplate.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
-
-        // Delete original headers .. eliminates all #text nodes but deletes the others
-        var rootEl = gMsgCompose.editor.rootElement;
-        while (rootEl.firstChild && lines > 0) {
-            if (rootEl.firstChild.nodeName != "#text") { 
-	            lines--; 
-	          }
-            delDOMNodeTextOrBR(rootEl.firstChild);
+        else {
+	        switch (pref.getCom("mailnews.reply_header_type", 1)) {
+	          case 3:   // LFLF + author + separator + ondate + colon+LF
+	          case 2:   // LFLF + ondate + separator + author + colon+LF
+	            lines += countLF(pref.getCom("mailnews.reply_header_separator", ","));
+	            lines += countLF(pref.getCom("mailnews.reply_header_ondate", "(%s)"));
+	          case 1:   // LFLF + author + colon+LF
+	          default:  // Handle same as 1
+	            lines += countLF(pref.getCom("mailnews.reply_header_authorwrote", "%s wrote"));
+	            lines += countLF(pref.getCom("mailnews.reply_header_colon", ":"));
+	          case 0:   // LFLF + LF
+	            lines++;
+	            break;
+	        }
+	        gSmartTemplate.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
+	
+	        // Delete original headers .. eliminates all #text nodes but deletes the others
+	        var rootEl = gMsgCompose.editor.rootElement;
+	        while (rootEl.firstChild && lines > 0) {
+	            if (rootEl.firstChild.nodeName != "#text") { 
+		            lines--; 
+		          }
+	            delDOMNodeTextOrBR(rootEl.firstChild);
+	        }
         }
     };
+    
+    // helper function tgo find a child node of the passed class Name
+  	function findChildNode(node, className) {
+    	while (node) {
+	    	if (node && node.className == className)
+	    		return node;
+	    	let n = findChildNode(node.firstChild, className);
+	    	if (n)
+	    		return n;
+	    	node = node.nextSibling;
+  	  }
+  	  return null;
+    	  
+  	}
 
     // -----------------------------------
     // Delete quote header(forward)
@@ -750,37 +771,56 @@ gSmartTemplate.classSmartTemplate = function()
     // AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
     function delForwardHeader()
     {
+	    
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
-        debugger;
-        alert('test');
         
-        var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"].
-                     getService(Components.interfaces.nsIStringBundleService).
-                       createBundle("chrome://messenger/locale/mime.properties");
+        var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
+                             .getService(Components.interfaces.nsIStringBundleService)
+                             .createBundle("chrome://messenger/locale/mime.properties");
         let header = bndl.GetStringFromID(1041);
         gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Retrieved Header Token from mime properties: ' + header);
-        debugger;
-        
-        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
-	        var specialToken = "<div class='moz-forward-container'>" ;
-        }
 
         // Delete original headers
         var rootEl = gMsgCompose.editor.rootElement;
         gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Got root element: ' + rootEl.toString());
         
-        truncateDOMuntilToken
-        while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) {
-            delDOMNodeTextOrBR(rootEl.firstChild);
+        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+	        var specialToken = "<div class='moz-forward-container'>" ;
+	        truncateDOMuntilToken(specialToken); // to do!!
         }
-        var brcnt = 0;
-        while (rootEl.firstChild && brcnt < 2) {
-            if (rootEl.firstChild.nodeName == "BR")
-              { brcnt++; }
-            else
-              { brcnt = 0; }
-            delDOMNodeAll(rootEl.firstChild);
+        
+        let node = rootEl.firstChild
+        //while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) {#
+        while (node && node.nodeValue != header) {
+          let n = node.nextSibling;
+          // skip the forwarded part
+          if (node.className == 'moz-forward-container') {
+	          node = n;
+          	continue;
+        	}
+          delDOMNodeTextOrBR(node);
+        	node = n;
         }
+        
+        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+	        // recursive search from root element
+	        node = findChildNode(rootEl, 'moz-email-headers-table');
+	        if (node) {
+	        	delDOMNodeAll(node);
+        	}
+        }
+        else {
+	        let node = rootEl.firstChild;
+	        // old method continues until it finds <br><br> after header table
+	        var brcnt = 0;
+	        while (rootEl.firstChild && brcnt < 2) {
+	            if (rootEl.firstChild.nodeName == "BR")
+	              { brcnt++; }
+	            else
+	              { brcnt = 0; }
+	            delDOMNodeAll(rootEl.firstChild);
+	        }
+	      }
     };
 
     // -----------------------------------
@@ -954,6 +994,11 @@ gSmartTemplate.classSmartTemplate = function()
             gMsgCompose.editor.enableUndo(true);
         }
     };
+    
+    // -----------------------------------
+    // Constructor
+    var parent = gSmartTemplate;
+    var orgQuoteHeaders = new Array();
 
     // -----------------------------------
     // Public methods of classSmartTemplate
