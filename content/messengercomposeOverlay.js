@@ -650,12 +650,6 @@ gSmartTemplate.classSmartTemplate = function()
     }
 
     
-    function truncateDOMuntilToken(token) {
-		    // cut off everything in the mail until we find the passed node or token
-		    // e.g. <blockquote class=" cite" ...
-        gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.classSmartTemplate.truncateDOMuntilToken()');
-    } 
-    
     // -----------------------------------
     // Delete DOMNode/textnode or BR
     function delDOMNodeTextOrBR(node)
@@ -680,6 +674,8 @@ gSmartTemplate.classSmartTemplate = function()
         }
         
         if (match) {
+		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeTextOrBR() - deletes node ' + theNodeName 
+		         		+ '\n' + node.innerHTML);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
@@ -687,6 +683,8 @@ gSmartTemplate.classSmartTemplate = function()
     function delDOMNodeAll(node)
     {
         if (node) {
+		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeTextOrBR() - deletes node ' + node.nodeName 
+		         		+ '\n' + node.innerHTML);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
@@ -789,24 +787,30 @@ gSmartTemplate.classSmartTemplate = function()
         var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
                              .getService(Components.interfaces.nsIStringBundleService)
                              .createBundle("chrome://messenger/locale/mime.properties");
-        let header = bndl.GetStringFromID(1041);
-        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Retrieved Header Token from mime properties: ' + header);
+        let origMsgDelimiter = bndl.GetStringFromID(1041);
+        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
         // Delete original headers
         var rootEl = gMsgCompose.editor.rootElement;
-        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Got root element: ' + rootEl.toString());
-        
-        if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
-	        var specialToken = "<div class='moz-forward-container'>" ;
-	        truncateDOMuntilToken(specialToken); // to do!!
-        }
         
         let node = rootEl.firstChild
         //while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) {#
-        while (node && node.nodeValue != header) {
+        while (node) {
           let n = node.nextSibling;
           // skip the forwarded part
           if (node.className == 'moz-forward-container') {
+	          // lets find the ---original message--- now
+	          let inner = node.firstChild;
+	          while (inner) {
+		          let m = inner.nextSibling;
+	          	if (inner.nodeValue == origMsgDelimiter) {
+				        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting delimiter node: ' + origMsgDelimiter);
+			          gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
+		          	break;	
+	          	}
+	          	inner = m;
+          	}
+	          
 	          node = n;
           	continue;
         	}
