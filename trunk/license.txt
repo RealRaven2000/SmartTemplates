@@ -1,46 +1,46 @@
-/* ***** BEGIN LICENSE BLOCK *****
- *   Version: MPL 1.1/GPL 2.0/LGPL 2.1
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is smarttemplate.
- *
- * The Initial Developer of the Original Code is gaby_hy <gabygaby.hy@gmail.com>.
- * Further development as SmartTemplate4 since 2011 by 
- * tool8 <smarttemplate4@tool8now.com> and Marky Mark DE <smarttemplate4@gmx.de>.
- * Portions created by the Initial Developer are Copyright (C) 2009-2010
- * the Initial Developer. All Rights Reserved.
- * 
- *
- * Contributor(s):
- *
- * Alternatively, the contents of this file may be used under the terms of
- * either the GNU General Public License Version 2 or later (the "GPL"), or
- * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
- * in which case the provisions of the GPL or the LGPL are applicable instead
- * of those above. If you wish to allow use of your version of this file only
- * under the terms of either the GPL or the LGPL, and not to allow others to
- * use your version of this file under the terms of the MPL, indicate your
- * decision by deleting the provisions above and replace them with the notice
- * and other provisions required by the GPL or the LGPL. If you do not delete
- * the provisions above, a recipient may use your version of this file under
- * the terms of any one of the MPL, the GPL or the LGPL.
- *
- * Noia Icons: Permission is granted to copy, distribute and/or modify 
- * this document under the terms of the GNU LESSER GENERAL PUBLIC LICENSE
+LICENSE
+
+SmartTemplate4 is released under the GNU GPL Version 3.
+
+All contents of this file are subject to the GNU General Public License Version 3
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the complete License at
+http://www.gnu.org/licenses/gpl-3.0.txt
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+If you use large portions of the code please attribute to the authors
+(Axel Grude, Marky Mark DE)
+
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You can download a copy of the GNU General Public License at
+http://www.gnu.org/licenses/gpl-3.0.txt or get a free printed
+copy by writing to:
+  Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor,
+  Boston, MA 02110-1301, USA.
+
+
+ATTRIBUTIONS
+
+SmartTemplate4 includes work by:
+Current developer (Axel Grude, Marky Mark DE)
+Contributors (Aris, Peter Macej, tool8)
+
+Translations: The current list of translators is listed in the install.rdf (Add-ons Manager / About) and
+displayed on the "about" Tab.
+
+NOIA ICON SET
+This Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE 
+-> see:Noia_KDE_0.95.tar_4.tgz / lesser.txt
 		       
- * Version 2.1, February 1999, or any later version published by 
- * the Free Software Foundation; 
- * with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
- * Made by Carlitus (Carles Carbonell Bernado)
+Made by Carlitus (Carles Carbonell Bernado)
  <mail@carlitus.net>
- *
- * ***** END LICENSE BLOCK ***** */
