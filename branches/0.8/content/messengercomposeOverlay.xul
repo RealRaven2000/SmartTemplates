@@ -8,6 +8,7 @@
 <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/messengercomposeOverlay.js"/>
 <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/smartTemplate-util.js"/>
 <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/smartTemplate-prefs.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate/content/smartTemplate-init.js"/>
 
 <!--
  <statusbar id="status-bar">
