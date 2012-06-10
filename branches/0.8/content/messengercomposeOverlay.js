@@ -1,14 +1,15 @@
 // -----------------------------------------------------------------------------------
-// ---------------------------- last edit at 06/02/2012 ------------------------------
+// ---------------------------- last edit at 06/10/2012 ------------------------------
 // -----------------------------------------------------------------------------------
 // ----------------------------------- Changelog -------------------------------------
 // -----------------------------------------------------------------------------------
 // 0.7.5: "use strict" suggested by Mozilla add-on review team
 // 0.7.8: logging an error in error console if an variable is used incorrect
 // 0.8.0: other order of Account Name-User Name' instead of 'User Name-Account Name
+// 0.8.1: rewirted large partitions of the script code to fix problems in TB13
 // -----------------------------------------------------------------------------------
 
-"use strict"; // "use strict" suggested by Mozilla add-on review team
+"use strict";
 
 //******************************************************************************
 // for messengercompose
