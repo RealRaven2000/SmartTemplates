@@ -701,14 +701,29 @@ gSmartTemplate.classSmartTemplate = function()
     //We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
     function delReplyHeader(idKey)
     {
+        function countLF(str) { return str.split("\n").length - 1; }
+        
+        
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delReplyHeader()');
+	      let rootEl = gMsgCompose.editor.rootElement;
         var pref = parent.pref;
         var lines = 0;
         if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) { 
 	        lines = 2; 
         }
 
-        function countLF(str) { return str.split("\n").length - 1; }
+        let node = rootEl.firstChild
+        
+        while (node) {
+          let n = node.nextSibling;
+          // skip the forwarded part
+          if (node.nodeName && node.nodeName=='blockquote' && node.className.indexOf('cite')>=0) {
+	          node = n;
+          	continue;
+        	}
+          delDOMNodeTextOrBR(node);
+        	node = n;
+        }
         
         
         if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
@@ -735,7 +750,6 @@ gSmartTemplate.classSmartTemplate = function()
 	        gSmartTemplate.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
 	
 	        // Delete original headers .. eliminates all #text nodes but deletes the others
-	        var rootEl = gMsgCompose.editor.rootElement;
 	        while (rootEl.firstChild && lines > 0) {
 	            if (rootEl.firstChild.nodeName != "#text") { 
 		            lines--; 
