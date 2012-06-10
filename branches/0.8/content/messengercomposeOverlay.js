@@ -715,7 +715,7 @@ gSmartTemplate.classSmartTemplate = function()
         
         if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
 	        // recursive search from root element
-	        node = findChildNode(rootEl, 'moz-email-headers-table');
+	        let node = findChildNode(rootEl, 'moz-email-headers-table');
 	        if (node) {
 	        	delDOMNodeAll(node);
         	}
