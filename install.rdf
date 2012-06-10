@@ -23,7 +23,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>de</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Smart Template 4 bietet die Option die Standard Thunderbird Mailheader quote-header komfortabel anzupassen</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Marky Mark DE</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/de/thunderbird/addon/324497</em:homepageURL>
@@ -35,7 +37,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>en-US</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>The smart template which can customize quote header per account</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
@@ -46,7 +50,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>es-ES</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>La plantilla inteligente que permite personalizar el encabezado de cita para cada cuenta</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>urko (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -58,7 +64,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>fr</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
@@ -69,7 +77,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>it</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Permette di personalizzare l&apos;intestazione delle citazioni per gli account di posta</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>A35G e Luana (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -81,7 +91,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>ja</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>アカウント毎に引用ヘッダもカスタマイズできるスマートなテンプレート機能を提供します</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
@@ -92,7 +104,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>nl</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Het slimme sjabloon dat de koptekst per account kan aanpassen</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>markh (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -104,7 +118,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>pl</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Inteligentne szablony naglówków, które mozna dostosowywac dla kazdego konta.</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Leszek(teo) Zyczkowski (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -116,7 +132,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>pt-BR</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Modelos de mensagens inteligentes que permitem personalizar o cabeçalho das mensagens anteriores para cada conta de e-mail.</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Mauro José da Silva (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -128,7 +146,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>ru</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>SmartTemplate 4 - расширение, с помощью которого можно настроить собственные шаблоны заголовков сообщений (новое, ответ, пересылка). Шаблоны могут быть как общие для всех эккаунтов, так и отдельные - свой для каждого эккаунта.</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Vinser</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -140,7 +160,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>sv-SE</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>Den smarta mallen som kan anpassa citathuvuden för varje enskilt konto</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Lakrits (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
@@ -152,7 +174,9 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:locale>zh-CN</em:locale>
 				<em:name>SmartTemplate 4</em:name>
 				<em:description>smart template扩展能为每个账号自定义引用头文件</em:description>
-				<em:creator>tool8, Marky Mark DE</em:creator>
+				<em:creator>Axel Grude</em:creator>
+				<em:developer>Axel Grude</em:developer>
+				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Yanfang Liu (BabelZilla)</em:translator>
 				<em:contributor>Aris-T</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
