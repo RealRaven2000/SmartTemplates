@@ -399,7 +399,7 @@ gSmartTemplate.Util = {
 		return (versionComparator.compare(a, b) >= 0);                   
   } ,
   
-  versionSmaller: function(in a, in b) {
+  versionSmaller: function(a, b) {
 	  /*
 	    Compares Application Versions
 	    returns
