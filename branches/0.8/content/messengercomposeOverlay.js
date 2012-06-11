@@ -344,7 +344,7 @@ gSmartTemplate.regularize = function(msg, type)
             } catch (e) {
                 var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
                      getService(Components.interfaces.nsIStringBundleService);
-                var bundle = strBndlSvc.createBundle("chrome://smartTemplate4/locale/errors.properties");
+                var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
                 try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
                     Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
                 } catch (e) {

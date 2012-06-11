@@ -79,7 +79,7 @@ var gSmartTemplate = {
             // without Lightning
             var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
                              getService(Components.interfaces.nsIStringBundleService);
-            var bundle = strBndlSvc.createBundle("chrome://smartTemplate4/locale/calender.properties");
+            var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/calender.properties");
             var cal = {
                 dayName        : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
                 shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
