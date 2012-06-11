@@ -5,16 +5,16 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 		<em:id>smarttemplate4@thunderbird.extension</em:id>
 		<em:name>SmartTemplate4</em:name>
-		<em:version>0.8.1pre55</em:version>
+		<em:version>0.8.1pre58</em:version>
 		<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 		<em:type>2</em:type>
 		<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
 
 		<em:targetApplication>
 			<Description>
-				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
 				<em:minVersion>1.5</em:minVersion>
-				<em:maxVersion>12.*</em:maxVersion>
+				<em:maxVersion>13.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
@@ -28,6 +28,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Marky Mark DE</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/de/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -41,6 +42,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Axel Grude</em:developer>
 				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -55,6 +57,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>urko (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -68,6 +71,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Axel Grude</em:developer>
 				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -82,6 +86,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>A35G e Luana (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -92,9 +97,11 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:name>SmartTemplate4</em:name>
 				<em:description>アカウント毎に引用ヘッダもカスタマイズできるスマートなテンプレート機能を提供します</em:description>
 				<em:creator>Axel Grude</em:creator>
+				<em:translator>Cai (BabelZilla)</em:translator>
 				<em:developer>Axel Grude</em:developer>
 				<em:developer>Marky Mark DE</em:developer>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -109,6 +116,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>markh (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -123,6 +131,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Leszek(teo) Zyczkowski (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -137,6 +146,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Mauro José da Silva (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -151,6 +161,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Vinser</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -165,6 +176,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Lakrits (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
@@ -179,6 +191,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 				<em:developer>Marky Mark DE</em:developer>
 				<em:translator>Yanfang Liu (BabelZilla)</em:translator>
 				<em:contributor>Aris</em:contributor>
+				<em:contributor>tool8 - development, ver0.1-0.8</em:contributor>
 				<em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/324497</em:homepageURL>
 			</Description>
 		</em:localized>
