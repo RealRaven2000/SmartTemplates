@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://smarttemplate4/locale/smartTemplate.dtd">
 
 <overlay id="stam-addressingOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -14,7 +14,7 @@
         <button  id="editst"    
                  label="&account_st.button;"
                  class="AccountmanagerButton"
-                 oncommand="openDialog('chrome://smartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
+                 oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
       </hbox>
     </groupbox>
   </vbox>
