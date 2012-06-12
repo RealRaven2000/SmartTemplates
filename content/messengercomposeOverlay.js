@@ -524,18 +524,21 @@ gSmartTemplate.classSmartTemplate = function()
 	    // try to extract signature manually
         for(let i = 0; i < nodes.length; i++) {
             if ( nodes[i].className == "moz-signature" ) {
-                bodyEl.removeChild(nodes[i].previousElementSibling)//remove the preceding BR that TB always inserts
+                bodyEl.removeChild(nodes[i].previousElementSibling); //remove the preceding BR that TB always inserts
                 sig = bodyEl.removeChild(nodes[i-1]);
                 break;
             }
         }
         
         if (!sig || typeof sig == 'string') {
-	        
-		    sig = document.createElement(gMsgCompose.composeHTML ? "div" : "#text");
-		    if (gMsgCompose.composeHTML)
+		    if (gMsgCompose.composeHTML) {
+			    sig = gMsgCompose.editor.document.createElement("div");
 		    	sig.className = 'moz-signature';
-		    sig.innerHTML = gMsgCompose.identity.htmlSigText;
+			    sig.innerHTML = gMsgCompose.identity.htmlSigText;
+	    	}
+	    	else {
+			    sig = gMsgCompose.editor.document.createTextNode(gMsgCompose.identity.htmlSigText);
+	    	}
 	    }
 	    
         return sig;
