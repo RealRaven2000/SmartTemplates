@@ -23,8 +23,8 @@ gSmartTemplate.classPref = function(branch, useDefault)
 {
     // -----------------------------------
     // Constructor
-    var root = Components.classes["@mozilla.org/preferences-service;1"].
-                getService(Components.interfaces.nsIPrefBranch);
+    var root = Components.classes["@mozilla.org/preferences-service;1"]
+               .getService(Components.interfaces.nsIPrefBranch);
 
     // -----------------------------------
     // get preference
@@ -34,7 +34,7 @@ gSmartTemplate.classPref = function(branch, useDefault)
         switch (root.getPrefType(prefstring))
         {
           case Components.interfaces.nsIPrefBranch.PREF_STRING:
-            return root.getComplexValue(prefstring,
+			return root.getComplexValue(prefstring,
                                      Components.interfaces.nsISupportsString).data;
                                                       break;
           case Components.interfaces.nsIPrefBranch.PREF_INT:
@@ -144,18 +144,15 @@ gSmartTemplate.classGetHeaders = function(messageURI)
 // -------------------------------------------------------------------
 // MIME decode
 // -------------------------------------------------------------------
-gSmartTemplate.classMimeDecode = function()
-{
-    // -----------------------------------
-    // Constructor
-    var mimehdrpar = Components.classes["@mozilla.org/network/mime-hdrparam;1"].
-                       getService(Components.interfaces.nsIMIMEHeaderParam);
-    var cvtUTF8 = Components.classes["@mozilla.org/intl/utf8converterservice;1"].
-                    getService(Components.interfaces.nsIUTF8ConverterService);
+gSmartTemplate.mimeDecoder = {
+    headerParam: Components.classes["@mozilla.org/network/mime-hdrparam;1"]
+                 .getService(Components.interfaces.nsIMIMEHeaderParam),
+    cvtUTF8 : Components.classes["@mozilla.org/intl/utf8converterservice;1"]
+                  .getService(Components.interfaces.nsIUTF8ConverterService),
 
     // -----------------------------------
     // Detect character set
-    function detectCharset(str)
+    detectCharset : function(str)
     {
         var charset = "";
 
@@ -167,11 +164,11 @@ gSmartTemplate.classMimeDecode = function()
         // RFC1922 iso-2022-cn-ext is not support
         if (str.search(/\x1b\$\(D/gi) !== -1)                    { charset = "iso-2022-jp-1"; } // RFC2237
         return charset;
-    };
+    },
 
     // -----------------------------------
     // MIME decoding.
-    function decode(string, charset)
+    decode : function (string, charset)
     {
         var decodedStr = "";
 
@@ -181,23 +178,23 @@ gSmartTemplate.classMimeDecode = function()
             // because getParameter stops convert at the space/line-breaks.
             var array = string.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*/g);
             for (var i = 0; i < array.length; i++) {
-                decodedStr += mimehdrpar.
+                decodedStr += headerParam.
                                 getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null }).
                                   replace(/-%-/g, " ").replace(/%%/g, "%");
             }
         } else {
             // for Mailers has no manners.
             if (charset === "")
-                charset = detectCharset(string);
+                charset = this.detectCharset(string);
             var skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
-            decodedStr = cvtUTF8.convertStringToUTF8(string, charset, skip);
+            decodedStr = this.cvtUTF8.convertStringToUTF8(string, charset, skip);
         }
         return decodedStr;
-    };
+    } ,
 
     // -----------------------------------
     // Split addresses and change encoding.
-    function split(addrstr, charset, format)
+    split : function (addrstr, charset, format)
     {
       // MIME decode
       addrstr = this.decode(addrstr, charset);
@@ -250,12 +247,7 @@ gSmartTemplate.classMimeDecode = function()
           addresses += result;
       }
       return addresses;
-    };
-
-    // -----------------------------------
-    // Public methods
-    this.decode = decode;
-    this.split = split;
+    } 
 };
 
 // -------------------------------------------------------------------
@@ -263,17 +255,18 @@ gSmartTemplate.classMimeDecode = function()
 // -------------------------------------------------------------------
 gSmartTemplate.regularize = function(msg, type)
 {
-    function getSignature(rmdashes) {
-        if (parent.signature != null){
-            parent.sigIsDefined = true;
-            if(rmdashes){
-                if (parent.signature.firstChild.nodeValue == "-- ") {
-                    parent.signature.removeChild(parent.signature.firstChild); //remove '-- '
-                    parent.signature.removeChild(parent.signature.firstChild); //remove 'BR'
-                    return parent.signature.innerHTML;
+    function getSignatureInner(removeDashes) {
+        if (gSmartTemplate.signature != null) {
+            gSmartTemplate.sigIsDefined = true;
+            if (removeDashes) {
+                if (gSmartTemplate.signature.firstChild.nodeValue == "-- ") {
+                    gSmartTemplate.signature.removeChild(gSmartTemplate.signature.firstChild); //remove '-- '
+                    gSmartTemplate.signature.removeChild(gSmartTemplate.signature.firstChild); //remove 'BR'
+                    return gSmartTemplate.signature.innerHTML;
                 }
-            } else {
-                return parent.signature.innerHTML;
+            } 
+            else {
+                return gSmartTemplate.signature.innerHTML;
             }
         }
         return "";
@@ -288,45 +281,72 @@ gSmartTemplate.regularize = function(msg, type)
     }
     
     function getNewsgroup() {
-            var acctKey = msgDbHdr.accountKey;
-            //const account = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).getAccount(acctKey);
-            //dump ("acctKey:"+ acctKey);
+	    var acctKey = msgDbHdr.accountKey;
+	    //const account = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).getAccount(acctKey);
+	    //dump ("acctKey:"+ acctKey);
             
         //return account.incomingServer.prettyName;
         return acctKey;
     }
 
     this.Util.logDebugOptional('functions','gSmartTemplate.regularize(' + msg +')');
-    var parent = gSmartTemplate;
+    // var parent = gSmartTemplate;
     var idkey = document.getElementById("msgIdentity").value;
-    var identity = Components.classes["@mozilla.org/messenger/account-manager;1"].
-                     getService(Components.interfaces.nsIMsgAccountManager).
-                       getIdentity(idkey);
-    var messenger = Components.classes["@mozilla.org/messenger;1"].
-                      createInstance(Components.interfaces.nsIMessenger);
-    var mime = new this.classMimeDecode();
+    var identity = Components.classes["@mozilla.org/messenger/account-manager;1"]
+                     .getService(Components.interfaces.nsIMsgAccountManager)
+                     .getIdentity(idkey);
+    var messenger = Components.classes["@mozilla.org/messenger;1"]
+                     .createInstance(Components.interfaces.nsIMessenger);
+    let mime = this.mimeDecoder;
     
+    let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI);
+    let charset = msgDbHdr.Charset;
+    let hdr = new this.classGetHeaders(gMsgCompose.originalMsgURI);
+    let date = msgDbHdr.date;
     if (type != "new") {
         // for Reply/Forward message
-        var msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI);
-        var charset = msgDbHdr.Charset;
-        var date = msgDbHdr.date;
-        var hdr = new this.classGetHeaders(gMsgCompose.originalMsgURI);
-        var tz = new function(date) {
+        let tz = new function(date) {
             this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
             this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
             this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-        }(hdr.get("Date"));
+        } (hdr.get("Date"));
     }
+	// rw2h["reserved word"] = "header"
+	var rw2h = new Array();
     
     // reduce "{" and "}"
     msg = function(string) {
-        // rw2h["reserved word"] = "header"
-        var rw2h = new Array();
         function setRw2h() {        // setRw2h("header", "reserved word",,,)
-            for(var i = 1; i < arguments.length; i++)
-              { rw2h[arguments[i]] = arguments[0]; }
+            for(var i = 1; i < arguments.length; i++) { 
+	            rw2h[arguments[i]] = arguments[0]; 
+	        }
         }
+        // Check existence of a header related to the reserved word.
+        function chkRw(str, rw, dmy) {
+            try{
+		        gSmartTemplate.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  rw + ', ' + dmy + ')');
+		        let el = (typeof rw2h[rw]=='undefined') ? '' : rw2h[rw];
+                return el == "d.c." 
+                	? str 
+                	: hdr.get(el ? el : rw) != "" ? str : "";
+            } catch (e) {
+                let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
+                     getService(Components.interfaces.nsIStringBundleService);
+                let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
+                try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
+                    Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
+                } catch (e) {
+                    Components.utils.reportError("SmartTemplate4: The variable %" + rw + "% can't be used for NEW Messages!\nListing of usable variables see Help");
+                }
+                
+                return "";
+            } 
+        }
+        function chkRws(str, strInBrackets) { 
+	        return strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw).replace(/^[^%]*$/, ""); 
+	    }
+	    
+	    
         // Reserved words that does not depend on the original message.
         setRw2h("d.c.", "ownname", "ownmail",
                         "Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
@@ -337,25 +357,6 @@ gSmartTemplate.regularize = function(msg, type)
         setRw2h("Date", "X:=sent");
         setRw2h("From", "from", "fromname", "frommail");
         setRw2h("Subject", "subject");
-        // Check existence of a header related to the reserved word.
-        function chkRw(str, rw, dmy) {
-            try{
-                return rw2h[rw] == "d.c." ? str : hdr.get(rw2h[rw] ? rw2h[rw] : rw) != "" ? str : "";
-            } catch (e) {
-                var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-                     getService(Components.interfaces.nsIStringBundleService);
-                var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
-                try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
-                    Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
-                } catch (e) {
-                    Components.utils.reportError("SmartTemplate4: The variable %" + rw + "% can't be used for NEW Messages!\nListing of usable variables see Help");
-                }
-                
-                return "";
-            } 
-        }
-        function chkRws(str, strInBrackets)
-          { return strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw).replace(/^[^%]*$/, ""); }
         
         string = string.replace(/{([^{}]+)}/gm, chkRws);
         return string.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
@@ -367,7 +368,7 @@ gSmartTemplate.regularize = function(msg, type)
         var tm = new Date();
         var fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
                     createInstance(Components.interfaces.nsIScriptableDateFormat);
-        var locale = parent.pref.getLocalePref();
+        var locale = gSmartTemplate.pref.getLocalePref();
         
         // Set Time
         tm.setTime(time / 1000 + (timezone) * 60 * 1000);
@@ -394,10 +395,10 @@ gSmartTemplate.regularize = function(msg, type)
         var tm = new Date();
         var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
         var expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
-        var cal = parent.cal;
+        var cal = gSmartTemplate.cal;
 
         // Set %A-Za-z% to time of original message was sent.
-        if (parent.whatIsX == parent.XisSent)
+        if (gSmartTemplate.whatIsX == gSmartTemplate.XisSent)
           { tm.setTime(date / 1000); }
 
         // for backward compatibility
@@ -414,17 +415,17 @@ gSmartTemplate.regularize = function(msg, type)
         switch(s){
             case "datelocal":
             case "dateshort":
-                if (parent.whatIsX == parent.XisToday){
+                if (gSmartTemplate.whatIsX == gSmartTemplate.XisToday){
                     s = prTime2Str(tm.getTime() * 1000, s, 0);
-                    return parent.escapeHtml(s);
+                    return gSmartTemplate.escapeHtml(s);
                 }else{
                     s = prTime2Str(date, s, 0);
-                    return parent.escapeHtml(s);
+                    return gSmartTemplate.escapeHtml(s);
                 }
             case "timezone":    
             case "date_tz":
                     var matches = tm.toString().match(/([+-][0-9]{4})/);
-                    return parent.escapeHtml(matches[0]);
+                    return gSmartTemplate.escapeHtml(matches[0]);
         }
         
         switch (s) {
@@ -450,15 +451,15 @@ gSmartTemplate.regularize = function(msg, type)
           case "tz_name":    return tm.toString().replace(/^.*\(|\)$/g, "");    break; //time zone name
           case "sig":
             switch(f) {
-                case "(1)": return getSignature(false);                 break;
-                case "(2)": return getSignature(true);                  break;
-                default:    return getSignature(false);                 break;
+                case "(1)": return getSignatureInner(false); break;
+                case "(2)": return getSignatureInner(true);  break;
+                default:    return getSignatureInner(false); break;
             } break;
           case "subject":
             switch(f) {
-                case "(1)": return getSubject(false);                 break;
-                case "(2)": return getSubject(true);                  break;
-                default:    return getSubject(false);                 break;
+                case "(1)": return getSubject(false);   break;
+                case "(2)": return getSubject(true);    break;
+                default:    return getSubject(false);   break;
             } break;
           case "newsgroup": return getNewsgroup();  break;  
           // name of day and month
@@ -475,22 +476,25 @@ gSmartTemplate.regularize = function(msg, type)
            } break;
           case "dbg1":  return cal.list();              break;
           // Change time of %A-Za-z%
-          case "X:=sent":   parent.whatIsX = parent.XisSent;    return "";
-          case "X:=today":  parent.whatIsX = parent.XisToday;   return "";
+          case "X:=sent":   gSmartTemplate.whatIsX = gSmartTemplate.XisSent;    return "";
+          case "X:=today":  gSmartTemplate.whatIsX = gSmartTemplate.XisToday;   return "";
           
         // any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
         default:
             var isStripQuote = RegExp(" "+s+" ", "i").test(
               " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
               " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
-            if (isStripQuote)
-              { s = mime.split(hdr.get(s), charset, f); }
-            else
-              { s = mime.decode(hdr.get(s), charset); }
+            if (isStripQuote) {
+            	s = mime.split(hdr.get(s), charset, f); 
+            }
+            else { 
+	            s = mime.decode(hdr.get(s), charset); 
+            }
             break;
-        s = s.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
+        // unreachable code! =>
+        // s = s.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
         }
-        return parent.escapeHtml(s);
+        return gSmartTemplate.escapeHtml(s);
     }
     msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
     return msg;
@@ -507,22 +511,34 @@ gSmartTemplate.classSmartTemplate = function()
     // 
     function extractSignature()
     {
+	    let sig = '';
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.extractSignature()');
-        var bodyEl = gMsgCompose.editor.rootElement;           
-        var nodes = gMsgCompose.editor.rootElement.childNodes;
-        parent.signature = null;
-        parent.sigIsDefined = false;
+        let bodyEl = gMsgCompose.editor.rootElement;           
+        let nodes = gMsgCompose.editor.rootElement.childNodes;
+        gSmartTemplate.signature = null;
+        gSmartTemplate.sigIsDefined = false;
         
-        var pref = parent.pref;
-        var idKey = document.getElementById("msgIdentity").value;
+        let pref = gSmartTemplate.pref;
+        let idKey = document.getElementById("msgIdentity").value;
         
-        for(var i = 0; i < nodes.length; i++) {
+	    // try to extract signature manually
+        for(let i = 0; i < nodes.length; i++) {
             if ( nodes[i].className == "moz-signature" ) {
                 bodyEl.removeChild(nodes[i].previousElementSibling)//remove the preceding BR that TB always inserts
-                parent.signature = bodyEl.removeChild(nodes[i-1]);
+                sig = bodyEl.removeChild(nodes[i-1]);
                 break;
             }
         }
+        
+        if (!sig || typeof sig == 'string') {
+	        
+		    sig = document.createElement(gMsgCompose.composeHTML ? "div" : "#text");
+		    if (gMsgCompose.composeHTML)
+		    	sig.className = 'moz-signature';
+		    sig.innerHTML = gMsgCompose.identity.htmlSigText;
+	    }
+	    
+        return sig;
     }
 
     
@@ -551,7 +567,7 @@ gSmartTemplate.classSmartTemplate = function()
         
         if (match) {
 		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeTextOrBR() - deletes node ' + theNodeName 
-		         		+ '\n' + node.innerHTML);
+		         		+ '\n' + node.nodeName + '  ' + node.nodeValue);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
@@ -580,15 +596,17 @@ gSmartTemplate.classSmartTemplate = function()
         
         
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delReplyHeader()');
-	      let rootEl = gMsgCompose.editor.rootElement;
-        var pref = parent.pref;
+	    let rootEl = gMsgCompose.editor.rootElement;
+	    
+        var pref = gSmartTemplate.pref;
         var lines = 0;
         if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) { 
 	        lines = 2; 
         }
 
         let node = rootEl.firstChild
-        
+
+        // delete everything except quoted part        
         while (node) {
           let n = node.nextSibling;
           // skip the forwarded part
@@ -628,7 +646,7 @@ gSmartTemplate.classSmartTemplate = function()
 	        while (rootEl.firstChild && lines > 0) {
 	            if (rootEl.firstChild.nodeName != "#text") { 
 		            lines--; 
-		          }
+		        }
 	            delDOMNodeTextOrBR(rootEl.firstChild);
 	        }
         }
@@ -671,28 +689,27 @@ gSmartTemplate.classSmartTemplate = function()
         var rootEl = gMsgCompose.editor.rootElement;
         
         let node = rootEl.firstChild
-        //while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) {#
+        //while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) #
         while (node) {
-          let n = node.nextSibling;
-          // skip the forwarded part
-          if (node.className == 'moz-forward-container') {
-	          // lets find the ---original message--- now
-	          let inner = node.firstChild;
-	          while (inner) {
-		          let m = inner.nextSibling;
-	          	if (inner.nodeValue == origMsgDelimiter) {
-				        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting delimiter node: ' + origMsgDelimiter);
-			          gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
-		          	break;	
-	          	}
-	          	inner = m;
-          	}
-	          
-	          node = n;
-          	continue;
-        	}
-          delDOMNodeTextOrBR(node);
-        	node = n;
+			let n = node.nextSibling;
+			// skip the forwarded part
+			if (node.className == 'moz-forward-container') {
+				// lets find the ---original message--- now
+				let inner = node.firstChild;
+				while (inner) {
+				  let m = inner.nextSibling;
+				  if (inner.nodeValue == origMsgDelimiter) {
+					        gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting delimiter node: ' + origMsgDelimiter);
+				          gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
+				      	break;	
+				  	}
+				  	inner = m;
+				}
+				node = n;
+				continue;
+			}
+			delDOMNodeTextOrBR(node);
+			node = n;
         }
         
         if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
@@ -713,7 +730,7 @@ gSmartTemplate.classSmartTemplate = function()
 	              { brcnt = 0; }
 	            delDOMNodeAll(rootEl.firstChild);
 	        }
-	      }
+	    }
     };
 
     // -----------------------------------
@@ -749,7 +766,7 @@ gSmartTemplate.classSmartTemplate = function()
     // Get template message
     function getMsgTmpl(type, idKey, prefmsg, prefhtml, prefnbr)
     {
-        var pref = parent.pref;
+        var pref = gSmartTemplate.pref;
         var msg = pref.getWithIdkey(idKey, prefmsg, "");
             //Reset X to Today after each newline character
             //except for lines ending in { or }; breaks the omission of non-existent CC??
@@ -764,12 +781,12 @@ gSmartTemplate.classSmartTemplate = function()
             else
               { msg = msg.replace(/\n/gm, ""); }
         } else {
-            msg = parent.escapeHtml(msg);
+            msg = gSmartTemplate.escapeHtml(msg);
             // Escape space, if compose is HTML
             if (gMsgCompose.composeHTML)
               { msg = msg.replace(/ /gm, "&nbsp;"); }
         }
-        return parent.regularize(msg, type);
+        return gSmartTemplate.regularize(msg, type);
     };
 
     // -----------------------------------
@@ -777,8 +794,11 @@ gSmartTemplate.classSmartTemplate = function()
     function insertTemplate(startup)
     {
         gSmartTemplate.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
-        var   pref = parent.pref;
-        var   editor = GetCurrentEditor();
+        var   pref = gSmartTemplate.pref;
+        // var   editor = GetCurrentEditor();
+        let ed = gMsgCompose.editor; 
+        let editor = ed.QueryInterface(Components.interfaces.nsIEditor); // 
+        
         var   msgComposeType = Components.interfaces.nsIMsgCompType;
         var   msgTmpl = null;
         var   idKey = document.getElementById("msgIdentity").value;
@@ -798,7 +818,7 @@ gSmartTemplate.classSmartTemplate = function()
             undoTemplate();
         }
         
-        extractSignature();
+        gSmartTemplate.signature = extractSignature();
 
         switch (gMsgCompose.type) {
           // new message -----------------------------------------
@@ -825,8 +845,9 @@ gSmartTemplate.classSmartTemplate = function()
             {
                 msgTmpl = getMsgTmpl("rsp", idKey, "rspmsg", "rsphtml", "rspnbr");
                 if (pref.getWithIdkey(idKey, "rsphead", false) &&
-                    pref.getCom("mail.identity." + idKey + ".auto_quote", true))
-                  { delReplyHeader(idKey); }
+                    pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
+                	delReplyHeader(idKey); 
+                }
             }
             break;
 
@@ -839,14 +860,16 @@ gSmartTemplate.classSmartTemplate = function()
                 gSmartTemplate.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
 
                 msgTmpl = getMsgTmpl("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
-                if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
-                  { break; }
-                if (pref.getWithIdkey(idKey, "fwdhead", false))
-                  { delForwardHeader(); }
+                if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
+                	break; 
+                }
+                if (pref.getWithIdkey(idKey, "fwdhead", false)) { 
+	                delForwardHeader(); 
+	            }
             }
             break;
 
-          // do not proccesing -----------------------------------
+          // do not process -----------------------------------
           //   (Draft:9/Template:10/ReplyWithTemplate:12)
           default:
             break;
@@ -867,16 +890,17 @@ gSmartTemplate.classSmartTemplate = function()
         }
         
         // insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
-        if (!parent.sigIsDefined && parent.signature != null){
-            var pref = parent.pref;
-            var sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
-            var bodyEl = gMsgCompose.editor.rootElement;
+        let theSignature = gSmartTemplate.signature;
+        if (!gSmartTemplate.sigIsDefined && theSignature) {
+            let pref = gSmartTemplate.pref;
+            let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
+            let bodyEl = gMsgCompose.editor.rootElement;
             
             if (sig_on_bottom){
                 bodyEl.appendChild(gMsgCompose.editor.document.createElement("br")); //replace the BR that was removed in extractSignature
-                bodyEl.appendChild(parent.signature);
+                bodyEl.appendChild(theSignature);
             } else {
-                bodyEl.insertBefore(parent.signature, bodyEl.firstChild);
+                bodyEl.insertBefore(theSignature, bodyEl.firstChild);
                 bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
             }
         }
@@ -890,7 +914,7 @@ gSmartTemplate.classSmartTemplate = function()
     
     // -----------------------------------
     // Constructor
-    var parent = gSmartTemplate;
+    // var gSmartTemplate = gSmartTemplate;
     var orgQuoteHeaders = new Array();
 
     // -----------------------------------
