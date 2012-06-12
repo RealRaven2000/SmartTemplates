@@ -23,7 +23,7 @@
 <br>
 <div class="hr_spacer"></div>
 <div class="cap">Recipientvariables (To)
-<h1>(When Name is not available, will displayed the e mail Address)</h1></div>
+<h1>(When name is not available, will display the email address)</h1></div>
 <div class="hr_spacer"></div>
 <code>%to%</code> = Recipientname (Default)<br>
 <code>%to(firstname)%</code> = Receipient Firstname<br>
@@ -31,7 +31,7 @@
 <br>
 <div class="hr_spacer"></div>
 <div class="cap">Sendervariables (From)
-<h1>(When Name is not available, will displayed the e mail Address)</h1></div>
+<h1>(When name  is not available, will display the email address)</h1></div>
 <div class="hr_spacer"></div>
 <code>%from%</code> = Sendername (Default)<br>
 <code>%from(firstname)%</code> = Sender Firstname<br>
@@ -39,7 +39,7 @@
 <br>
 <div class="hr_spacer"></div>
 <div class="cap">Recipientvariables (CC)
-<h1>(When Name is not available, will displayed the e mail Address)</h1></div>
+<h1>(When name is not available, will display the email Address)</h1></div>
 <div class="hr_spacer"></div>
 <code>%cc%</code> = Recipientname (Default)<br>
 <code>%cc(firstname)%</code> = Recipient Firstname<br>
@@ -52,8 +52,8 @@ To: <code>%to(name)%{</code><br>
 Cc: <code>%cc(name)%}</code>
 <br>
 <br>
-The Phrase "{Cc: %cc(name)%}" will only displayed,<br> 
-if  Variable %cc(name) can be replaced!<br>
+The phrase "{Cc: %cc(name)%}" will only be displayed<br> 
+if  variable %cc(name) can be replaced!<br>
 <br>
 <div class="hr_spacer"></div>
 <div class="cap">Subject</div>
@@ -69,7 +69,7 @@ if  Variable %cc(name) can be replaced!<br>
 <code>%X-Mailer%</code> = X-Mailer<br>
 <br>
 <div class="hr_spacer"></div>
-<div class="cap">Fix Variables for Dateformat and Timezone
+<div class="cap">Fix variables for dateformat and timezone
 <h1>(Can be combined with %X:=sent%)</h1></div>
 <div class="hr_spacer"></div>
 <code>%datelocal%</code> = Date and Time (Locale Format)<br> 
@@ -78,12 +78,12 @@ if  Variable %cc(name) can be replaced!<br>
 <code>%tz_name%</code> = GMT; PST; EST; ...<br>
 <br>
 <div class="hr_spacer"></div>
-<div class="cap">variables for customized Dateformat
+<div class="cap">variables for customized dateformat
 <h1>(Can be combined with %X:=sent%)</h1></div>
 <div class="hr_spacer"></div>
-<code>%A% / %a%</code> = Day of Week ("Friday" / "Fri.")<br>
-<code>%d% / %e%</code> = Day of Month ("01 to "31" / "1" to "31")<br>
-<code>%m% / %n%</code> = Moth ("01" to "12" / "1 to 12")<br>
+<code>%A% / %a%</code> = Day of week ("Friday" / "Fri.")<br>
+<code>%d% / %e%</code> = Day of month ("01 to "31" / "1" to "31")<br>
+<code>%m% / %n%</code> = Month ("01" to "12" / "1 to 12")<br>
 <code>%B% / %b%</code> = Month ("January" / "Jan.")<br>
 <code>%Y%</code> = Year ("1970")<br>
 <code>%M%</code> = Minutes ("00" to "59")<br>
@@ -98,35 +98,34 @@ if  Variable %cc(name) can be replaced!<br>
 <div class="hr_spacer"></div>
 <div class="cap">Use the %X:=sent%</div>
 <div class="hr_spacer"></div>
-The on top named variables will be normaly set the current values.<br>
-When you combine this with %X:=sent%, will set the past values.
+The variables above will be normally insert the current values. When you combine this with %X:=sent%, they will set the past values.
 <br>
 <br>
-<b>Example of an Longstring:</b><br>
+<b>Example of a longstring:</b><br>
 <code>%X:=sent%%d%.%m%.%Y% um %H%:%M% Uhr:</code><br>
 <b>Result:</b> 16.02.2011 um 12:15 Uhr:
 <br>
 <br>
-Additional you can use this variables:<br>
-<code>%datelocal%</code> = Date and Time (Locale Format)<br> 
-<code>%dateshort%</code> = Date and Time short (e.g. 01.01.2000 1:23:45)<br>
+Additional you can use these variables:<br>
+<code>%datelocal%</code> = Date and time (locale format)<br> 
+<code>%dateshort%</code> = Date and time short (e.g. 01.01.2000 1:23:45)<br>
 <code>%date_tz%</code> = Timezone ("+0100";"+0200"; ...)<br>
-to set an Shortstring.
+to set a shortstring.
 <br>
 <br>
-<b>Example of an Shortstring:</b><br>
+<b>Example of a shortstring:</b><br>
 <code>%X:=sent%%datelocal%</code><br>
 <b>Result:</b> Mittwoch, 16.02.2011 12:15:25<br>
 or<br>
 <code>%X:=sent%%dateshort%</code><br>
 <b>Result:</b> 16.02.2011 12:15:25<br>
 <code>%date_tz%</code> = Timezone ("+0100";"+0200"; ...)<br>
-In Both variants you can additional use the Timezone Variable.<br>
+In both variants you can additionally use the timezone variable.<br>
 <br>
 <div class="hr_spacer"></div>
-<div class="cap">Notes for HTML Templates</div>
+<div class="cap">Notes for HTML templates</div>
 <div class="hr_spacer"></div>
-<b>Please use only the UTF-8 (Unicode) Charset inside HTML Templates!</b>
+<b>Please use only the UTF-8 (Unicode) charset inside HTML templates!</b>
 <br>
 <br>
 <b>- Special characters:</b> " , &amp; , &lt; , &gt;<br>
@@ -139,7 +138,7 @@ Unicode: <code>&amp;Auml; ,  &amp;auml; , &amp;Uuml; , &amp;uuml; , &amp;Ouml; ,
 <br>
 <b>- New-Lines:</b><br>
 You need to use &lt;br&gt; for new-line, when<br> 
-'Replace new-line with &lt;br&gt;' does not used.<br>
+'Replace new-line with &lt;br&gt;' is not used.<br>
 <br>
 <div class="hr_spacer"></div>
 <div class="cap">Note</div>
