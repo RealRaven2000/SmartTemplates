@@ -82,25 +82,25 @@
 <!ENTITY sig2.label 					"Signature from Account Settings but without '--'"> 
 
 <!ENTITY to_var.cap 					"Recipient (To)">
-<!ENTITY to_note.label 					"When the name is not available, email address will be displayed instead"> 
+<!ENTITY to_note.label 					"When the name is not available, email address will be display instead"> 
 <!ENTITY to.label 						"Recipients name (default)"> 
 <!ENTITY tofirstname.label 				"Recipients firstname">
 <!ENTITY toname.label 					"Recipients name"> 
 
 <!ENTITY from_var.cap 					"Sender (From)">
-<!ENTITY from_note.label				"When the name is not available, email address will be displayed instead">
+<!ENTITY from_note.label				"When the name is not available, email address will be display instead">
 <!ENTITY from.label 					"Senders name (default)"> 
 <!ENTITY fromfirstname.label 			"Senders firstname"> 
 <!ENTITY fromname.label 				"Senders name"> 
 
 <!ENTITY cc_var.cap 					"Recipient (CC)">
-<!ENTITY cc_note.label 					"When the name is not available, email address will be displayed instead"> 
+<!ENTITY cc_note.label 					"When the name is not available, email address will be display instead"> 
 <!ENTITY cc.label 						"Recipients name (Default)"> 
 <!ENTITY ccfirstname.label 				"Recipients firstname"> 
 <!ENTITY ccname.label 					"Recipients name"> 
 
 <!ENTITY spec_form.cap 					"Special format">
-<!ENTITY specform_note.label			"The Phrase inside brackets &#123;Cc: &#37;cc(name)&#37;&#125; will only be displayed, if the variable &#37;cc(name)&#37; can be replaced!"> 
+<!ENTITY specform_note.label			"The Phrase inside brackets &#123;Cc: &#37;cc(name)&#37;&#125; will only be display, if the variable &#37;cc(name)&#37; can be replaced!"> 
 <!ENTITY ex_brack.label					"Example: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
 
 <!ENTITY sub_var.cap 					"Subject"> 
