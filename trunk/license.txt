@@ -33,7 +33,7 @@ ATTRIBUTIONS
 
 SmartTemplate4 includes work by:
 Current developer (Axel Grude, Marky Mark DE)
-Contributors (Aris, Peter Macej, tool8)
+Contributors (Aris - style support, tool8 - development, Version 0.7.4 - 0.8.0)
 
 Translations: The current list of translators is listed in the install.rdf (Add-ons Manager / About) and
 displayed on the "about" Tab.
