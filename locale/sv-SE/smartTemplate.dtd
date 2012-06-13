@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Inställningar för Smart Template 4">
+﻿<!ENTITY pref_dialog.title      "Inställningar för SmartTemplate4">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
 
 <!ENTITY help_button            "Hjälp">
-<!ENTITY help_dialog_title      "Hjälp med SmartTemplate">
+<!ENTITY help_dialog_title      "Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap       "Hjälp">
 
-<!ENTITY account_st.cap         "SmartTemplate">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "Redigera mallar och citathuvuden…">
