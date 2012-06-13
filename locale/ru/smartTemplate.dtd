@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title     "Настройки Smart Template 4">
+﻿<!ENTITY pref_dialog.title     "Настройки SmartTemplate4">
 <!ENTITY pref_dialog.maxwidth  "650">
 <!ENTITY pref_dialog.minwidth  "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip     "Вы можете изменить заголовок, используя переменные. См. в справке.">
 
 <!ENTITY help_button           "Справка">
-<!ENTITY help_dialog_title     "Справка Smart Template 4">
+<!ENTITY help_dialog_title     "Справка SmartTemplate4">
 <!ENTITY help_keyword.cap      "Справка">
 
-<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.cap        "SmartTemplate4">
 <!ENTITY account_st.button     "Редактировать шаблоны и заголовки...">
