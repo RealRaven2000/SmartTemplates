@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Smart Template 4 ustawienia">
+﻿<!ENTITY pref_dialog.title      "SmartTemplate4 ustawienia">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "Możesz zmienić nagłówek za pomocą słów kluczowych „zmienne”. Zobacz pomoc.">
 
 <!ENTITY help_button            "Pomoc">
-<!ENTITY help_dialog_title      "Pomoc Smart Template 4">
+<!ENTITY help_dialog_title      "Pomoc SmartTemplate4">
 <!ENTITY help_keyword.cap       "Pomoc">
 
-<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "Edycja szablonów i nagłówka…">
