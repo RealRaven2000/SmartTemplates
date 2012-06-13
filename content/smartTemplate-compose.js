@@ -106,7 +106,7 @@ gSmartTemplate.classSmartTemplate = function()
     function deleteHeaderNode(node)
     {
         if (node) {
-		        gSmartTemplate.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
+	        gSmartTemplate.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
 		         		+ '\n' + node.innerHTML);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
@@ -206,6 +206,24 @@ gSmartTemplate.classSmartTemplate = function()
     // AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
     function delForwardHeader()
     {	    
+	    function truncateTo2BR(root) {
+		    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','truncateTo2BR()');
+	        let node = root.firstChild;
+	        // old method continues until it finds <br><br> after header table
+	        let brcnt = 0;
+	        while (root.firstChild && brcnt < 2) {
+	            if (root.firstChild.nodeName == "BR") {
+	            	brcnt++; 
+	            }
+	            else {
+		            // only older versions of Tb have 2 consecutive <BR>?? Tb13 has <br> <header> <br>
+		            //if (gSmartTemplate.Util.versionSmaller(gSmartTemplate.Util.AppverFull, "10"))
+	            	brcnt = 0; 
+	            }
+	            deleteHeaderNode(root.firstChild);
+	        }
+	    }
+	    
         gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
         
         var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
@@ -223,41 +241,33 @@ gSmartTemplate.classSmartTemplate = function()
         while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
-			if (gMsgCompose.composeHTML) {
-				if (node.className == 'moz-forward-container') {
-					// lets find the ---original message--- now
-					let searchWhiteSpace = true;
-					let truncWhiteSpace = false;
-					let inner = node.firstChild;
-					while (inner) {
-					    let m = inner.nextSibling;
-					    if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
-						    // delete all whitespace before delim
-						    if (searchWhiteSpace) {
-							    searchWhiteSpace = false;
-							    m = inner = node.firstChild;      //restart ...
-							    truncWhiteSpace = true;           // ...and delete EVERYTHING until delimiter
-							    firstNode = inner;
-							    continue;
-						    }
-						    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
-					        gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
-					        if (inner.nodeValue == origMsgDelimiter)
-					      		break;	
-					  	}
-					  	inner = m;
-					}
-					node = n;
-					continue;
+			if (node.className == 'moz-forward-container') {
+				// lets find the ---original message--- now
+				let searchWhiteSpace = true;
+				let truncWhiteSpace = false;
+				let inner = node.firstChild;
+				while (inner) {
+				    let m = inner.nextSibling;
+				    if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
+					    // delete all whitespace before delim
+					    if (searchWhiteSpace) {
+						    searchWhiteSpace = false;
+						    m = inner = node.firstChild;      //restart ...
+						    truncWhiteSpace = true;           // ...and delete EVERYTHING until delimiter
+						    firstNode = inner;
+						    continue;
+					    }
+					    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
+				        gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
+				        if (inner.nodeValue == origMsgDelimiter)
+				      		break;	
+				  	}
+				  	inner = m;
 				}
-				deleteNodeTextOrBR(node);
+				node = n;
+				continue;
 			}
-			else {
-				if (node.className == '#text' && nodeValue == origMsgDelimiter) {
-					break;
-				}
-				deleteNodeTextOrBR(node);
-			}
+			deleteNodeTextOrBR(node);
 			node = n;
         }
         
@@ -275,21 +285,13 @@ gSmartTemplate.classSmartTemplate = function()
         	}
         	else {
 			    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
+				if (!gMsgCompose.composeHTML) {
+			        truncateTo2BR(rootEl.firstChild);
+				}
         	}
         }
         else {
-	        let node = rootEl.firstChild;
-	        // old method continues until it finds <br><br> after header table
-	        var brcnt = 0;
-	        while (rootEl.firstChild && brcnt < 2) {
-	            if (rootEl.firstChild.nodeName == "BR") {
-	            	brcnt++; 
-	            }
-	            else {
-	            	brcnt = 0; 
-	            }
-	            deleteHeaderNode(rootEl.firstChild);
-	        }
+	        truncateTo2BR(rootEl);
 	    }
     };
 
