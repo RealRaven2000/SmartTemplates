@@ -44,14 +44,14 @@ gSmartTemplate.classSmartTemplate = function()
     
     // -----------------------------------
     // Delete DOMNode/textnode or BR
-    function delDOMNodeTextOrBR(node)
+    function deleteNodeTextOrBR(node)
     {
         let match=false;
         let theNodeName='';
         if (node && node.nodeName)
           theNodeName = node.nodeName.toLowerCase();
         else
-          return;
+          return match;
         switch(theNodeName) {
           case 'br':
             match = true;
@@ -66,17 +66,47 @@ gSmartTemplate.classSmartTemplate = function()
         }
         
         if (match) {
-		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeTextOrBR() - deletes node ' + theNodeName 
+		        gSmartTemplate.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node ' + theNodeName 
 		         		+ '\n' + node.nodeName + '  ' + node.nodeValue);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
         }
+        return match;
     };
     
-    function delDOMNodeAll(node)
+    
+    // -----------------------------------
+    // Delete all comsecutive whitespace nodes...
+    function deleteWhiteSpaceNodes(node) {
+	    let match = true;
+	    while (node && match) {
+		    let nextNode = node.nextSibling;
+		    match = false;
+		    switch (node.nodeType) {
+			    case Node.TEXT_NODE:
+			    	if (node.nodeValue == '\n' || node.nodeValue == '\r')
+			    		match=true;
+			    	break;
+				case Node.ELEMENT_NODE:
+					if (node.nodeName && node.nodeName.toLowerCase() == 'br') 
+						match = true;
+					break;
+			    default:
+			    	match = false;
+		    }
+		    if (match) {
+		        gSmartTemplate.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node '
+		         		+ '\n' + node.nodeName + '  ' + node.nodeValue);
+	            gMsgCompose.editor.deleteNode(node);
+	            node = nextNode;
+        	}
+    	}
+    };
+    
+    function deleteHeaderNode(node)
     {
         if (node) {
-		        gSmartTemplate.Util.logDebugOptional('functions','delDOMNodeAll() - deletes node ' + node.nodeName 
+		        gSmartTemplate.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
 		         		+ '\n' + node.innerHTML);
             orgQuoteHeaders.push(node);
             gMsgCompose.editor.deleteNode(node);
@@ -114,7 +144,7 @@ gSmartTemplate.classSmartTemplate = function()
 	          node = n;
           	continue;
         	}
-          delDOMNodeTextOrBR(node);
+          deleteNodeTextOrBR(node);
         	node = n;
         }
         
@@ -123,7 +153,7 @@ gSmartTemplate.classSmartTemplate = function()
 	        // recursive search from root element
 	        let node = findChildNode(rootEl, 'moz-email-headers-table');
 	        if (node) {
-	        	delDOMNodeAll(node);
+	        	deleteHeaderNode(node);
         	}
         }
         else {
@@ -147,7 +177,7 @@ gSmartTemplate.classSmartTemplate = function()
 	            if (rootEl.firstChild.nodeName != "#text") { 
 		            lines--; 
 		        }
-	            delDOMNodeTextOrBR(rootEl.firstChild);
+	            deleteNodeTextOrBR(rootEl.firstChild);
 	        }
         }
     };
@@ -220,24 +250,31 @@ gSmartTemplate.classSmartTemplate = function()
 					node = n;
 					continue;
 				}
-				delDOMNodeTextOrBR(node);
+				deleteNodeTextOrBR(node);
 			}
 			else {
 				if (node.className == '#text' && nodeValue == origMsgDelimiter) {
 					break;
 				}
-				delDOMNodeTextOrBR(node);
+				deleteNodeTextOrBR(node);
 			}
 			node = n;
         }
-		if (firstNode)
-			delDOMNodeTextOrBR(firstNode);
         
+        // remove the original Mail Header
+	    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
         if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
 	        // recursive search from root element
 	        node = findChildNode(rootEl, 'moz-email-headers-table');
 	        if (node) {
-	        	delDOMNodeAll(node);
+			    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
+		        let nextNode = node.nextSibling;
+	        	deleteHeaderNode(node);
+	        	// delete trailing newlines!
+	        	deleteWhiteSpaceNodes(nextNode);
+        	}
+        	else {
+			    gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
         	}
         }
         else {
@@ -251,7 +288,7 @@ gSmartTemplate.classSmartTemplate = function()
 	            else {
 	            	brcnt = 0; 
 	            }
-	            delDOMNodeAll(rootEl.firstChild);
+	            deleteHeaderNode(rootEl.firstChild);
 	        }
 	    }
     };
