@@ -1,26 +1,26 @@
-﻿<!ENTITY pref_dialog.title     "Smart Template 4 Einstellungen">
+﻿<!ENTITY pref_dialog.title     "SmartTemplate4 Einstellungen">
 <!ENTITY pref_dialog.maxwidth  "650">
 <!ENTITY pref_dialog.minwidth  "450">
 
 <!ENTITY pref_server_desc      "Konto:">
 <!ENTITY pref_server_def       "Allgemein">
 
-<!ENTITY pref_new.tab          "Neue Nachricht">
+<!ENTITY pref_new.tab          "Verfassen">
 <!ENTITY pref_rsp.tab          "Antworten">
 <!ENTITY pref_fwd.tab          "Weiterleiten">
 
 <!ENTITY pref_def.label        "Allgemein verwenden">
 <!ENTITY pref_def.cap          "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">
 
-<!ENTITY pref_newmsg.cap       "Neue Nachricht">
-<!ENTITY pref_new.label        "Folgende Vorlage für die Nachricht verwenden">
+<!ENTITY pref_newmsg.cap       "Verfassen">
+<!ENTITY pref_new.label        "Folgende Vorlage bei neuen Nachrichten hinzufügen">
 
 <!ENTITY pref_rspmsg.cap       "Antworten">
-<!ENTITY pref_rsp.label        "Folgende Vorlage für Antworten verwenden">
+<!ENTITY pref_rsp.label        "Folgende Vorlage beim Antworten hinzufügen">
 <!ENTITY pref_rsphead.label    "Standard Thunderbird Mailheader deaktivieren">
 
 <!ENTITY pref_fwdmsg.cap       "Weiterleiten">
-<!ENTITY pref_fwd.label        "Folgende Vorlage für Weiterleitungen verwenden">
+<!ENTITY pref_fwd.label        "Folgende Vorlage beim Weiterleiten hinzufügen">
 <!ENTITY pref_fwdhead.label    "Standard Thunderbird Mailheader deaktivieren">
 
 <!ENTITY pref_html.label       "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip     "Sie können auch Schlüsselwörter 'Variablen' verwenden. Details siehe Hilfe.">
 
 <!ENTITY help_button           "Hilfe">
-<!ENTITY help_dialog_title     "Smart Template 4 Hilfethemen">
+<!ENTITY help_dialog_title     "SmartTemplate4 Hilfethemen">
 <!ENTITY help_keyword.cap      "Hilfethemen">
 
-<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.cap        "SmartTemplate4">
 <!ENTITY account_st.button     "Vorlageneinstellungen für 'quote-Header'...">
