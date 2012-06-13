@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Opções do Smart Template 4">
+﻿<!ENTITY pref_dialog.title      "Opções do SmartTemplate4">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
 
 <!ENTITY help_button            "Ajuda">
-<!ENTITY help_dialog_title      "Ajuda do Smart Template 4">
+<!ENTITY help_dialog_title      "Ajuda do SmartTemplate4">
 <!ENTITY help_keyword.cap       "Ajuda">
 
-<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "Editar modelos e cabeçalhos das mensagens anteriores...">
