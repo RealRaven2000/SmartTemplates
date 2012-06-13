@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Opciones de Smart Template 4">
+﻿<!ENTITY pref_dialog.title      "Opciones de SmartTemplate4">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "Puede cambiar el encabezado de cita con &quot;nombres de variable&quot;. Consulte la sección de ayuda para más detalles.">
 
 <!ENTITY help_button            "Ayuda">
-<!ENTITY help_dialog_title      "Ayuda de Smart Template 4">
+<!ENTITY help_dialog_title      "Ayuda de SmartTemplate4">
 <!ENTITY help_keyword.cap       "Ayuda">
 
-<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "Editar pantillas y encabezados de cita">
