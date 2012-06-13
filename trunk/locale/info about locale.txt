@@ -27,6 +27,7 @@ the proper locale AMO Page -> or default en-US if his language not exist on AMO
 05/16/2012 locale zh-CN - replaced
 05/17/2012 locale ja-JP - replaced
 05/17/2012 locale nl 	- replaced
+06/08/2012 locale fr 	- replaced
 
 
 this is in our Version in EN only (untranslated)
