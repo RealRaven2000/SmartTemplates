@@ -292,7 +292,7 @@
 										<description class="SmartTemplate4AboutDeveloper">&creator.label;: Axel Grude</description>
 										<description class="SmartTemplate4AboutDeveloper">&developer.label;: Axel Grude, Marky Mark DE</description>
 										<description class="SmartTemplate4AboutDeveloper">&localized.label;: &translatorNickname.label;</description>
-										<description class="SmartTemplate4AboutDeveloper">&contributor.label;: Aris, Peter Macej, tool8</description>
+										<description class="SmartTemplate4AboutDeveloper">&contributor.label;: Aris - style support, tool8 - development, Version 0.7.2 - 0.8.0</description>
 										<spacer height="20px"/>
 										<description class="SmartTemplate4AboutDesc">&about.label;</description>
 									</vbox>
