@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title     "Smart Template 4 Options">
+﻿<!ENTITY pref_dialog.title     "SmartTemplate4 Options">
 <!ENTITY pref_dialog.maxwidth  "650">
 <!ENTITY pref_dialog.minwidth  "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip     "Vous pouvez modifier un en-tête avec des mots réservés. Voir l'aide pour les détails.">
 
 <!ENTITY help_button           "Assistant">
-<!ENTITY help_dialog_title     "Smart Template 4 assistant">
+<!ENTITY help_dialog_title     "SmartTemplate4 assistant">
 <!ENTITY help_keyword.cap      "Assistant">
 
-<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.cap        "SmartTemplate4">
 <!ENTITY account_st.button     "Modifier les modèles et les en-têtes...">
