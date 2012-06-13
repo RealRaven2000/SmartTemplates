@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Opzioni di Smart Template 4">
+﻿<!ENTITY pref_dialog.title      "Opzioni di SmartTemplate4">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "È possibile modificare l&apos;intestazione delle citazioni utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
 
 <!ENTITY help_button            "Contenuti guida">
-<!ENTITY help_dialog_title      "Contenuti guida di Smart Template 4">
+<!ENTITY help_dialog_title      "Contenuti guida di SmartTemplate4">
 <!ENTITY help_keyword.cap       "Contenuti guida">
 
-<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "Modifica i modelli di intestazione delle citazioni…">
