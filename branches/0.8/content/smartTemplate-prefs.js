@@ -11,8 +11,11 @@ gSmartTemplate.Preferences = {
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if(!this.Debug) return false;
-		try {return this.getBoolPrefQF("debug." + option);}
+		if (!this.Debug) 
+			return false;
+		try {
+			return this.getBoolPrefQF("debug." + option);
+		}
 		catch(e) {return false;}
 	},
 	

@@ -228,7 +228,7 @@ gSmartTemplate.Util = {
         MsgStatusFeedback.showStatusString(s);
     }
     catch(ex) {
-      this.logToConsole("showStatusMessage - " +  ex);
+      this.logException("showStatusMessage - ", ex);
       MsgStatusFeedback.showStatusString(s);
     }
   } ,
@@ -250,11 +250,15 @@ gSmartTemplate.Util = {
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   },
 
-  logToConsole: function (msg) {
+  logToConsole: function (msg, optionalTitle) {
     if (gSmartTemplate.Util.ConsoleService === null)
       gSmartTemplate.Util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
                   .getService(Components.interfaces.nsIConsoleService);
-    gSmartTemplate.Util.ConsoleService.logStringMessage("gSmartTemplate " + this.logTime() + "\n"+ msg);
+    let title = "SmartTemplate4";
+    if (typeof optionalTitle !== 'undefined')
+    	title += " {" + optionalTitle.toUpperCase() + "}"
+    	
+    gSmartTemplate.Util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
   },
 
   // flags
@@ -289,7 +293,7 @@ gSmartTemplate.Util = {
 
   logDebugOptional: function (option, msg) {
     if (gSmartTemplate.Preferences.isDebugOption(option))
-      this.logToConsole(msg);
+      this.logToConsole(msg, option);
   },  
 
   // dedicated function for email clients which don't support tabs
