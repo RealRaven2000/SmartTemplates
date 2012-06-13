@@ -116,7 +116,7 @@ var gSmartTemplate = {
         this.oldFunc_LoadIdentity = LoadIdentity;
         LoadIdentity = smartTemplate_loadIdentity;
     
-        this.pref = new this.classPref("extensions.smarttemplate.", "def");
+        this.pref = new gSmartTemplate.classPref("extensions.smarttemplate.", "def");
         this.smartTemplate = new this.classSmartTemplate();
         this.cal = new this.classCalIDateTimeFormatter(true);
         
