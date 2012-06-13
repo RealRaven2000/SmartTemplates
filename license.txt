@@ -13,7 +13,8 @@ as published by the Free Software Foundation; either version 3
 of the License, or (at your option) any later version.
 
 If you use large portions of the code please attribute to the authors
-(Axel Grude, Marky Mark DE)
+Axel Grude
+Marky Mark DE
 
 
 This program is distributed in the hope that it will be useful,
@@ -31,14 +32,21 @@ copy by writing to:
 
 ATTRIBUTIONS
 
-SmartTemplate4 includes work by:
-Current developer (Axel Grude, Marky Mark DE)
-Contributors (Aris - style support, tool8 - development, Version 0.7.4 - 0.8.0)
+SmartTemplate4 includes work by
 
-Translations: The current list of translators is listed in the install.rdf (Add-ons Manager / About) and
+Current developer: 
+Axel Grude
+Marky Mark DE
+
+Contributors: 
+Aris - style support
+tool8 - development, Version 0.7.2 - 0.8.0
+
+Translations: 
+The current list of translators is listed in the install.rdf (Add-ons Manager / About) and
 displayed on the "about" Tab.
 
-NOIA ICON SET
+NOIA ICON SET:
 This Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE 
 -> see:Noia_KDE_0.95.tar_4.tgz / lesser.txt
 		       
