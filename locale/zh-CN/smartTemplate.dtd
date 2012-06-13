@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title      "Smart Template 4 选项">
+﻿<!ENTITY pref_dialog.title      "SmartTemplate4 选项">
 <!ENTITY pref_dialog.maxwidth   "650">
 <!ENTITY pref_dialog.minwidth   "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip      "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
 
 <!ENTITY help_button            "帮助">
-<!ENTITY help_dialog_title      "Smart Template 4 帮助">
+<!ENTITY help_dialog_title      "SmartTemplate4 帮助">
 <!ENTITY help_keyword.cap       "帮助">
 
-<!ENTITY account_st.cap         "Smart Template 4">
+<!ENTITY account_st.cap         "SmartTemplate4">
 <!ENTITY account_st.button      "编辑模板和引用头文件">
