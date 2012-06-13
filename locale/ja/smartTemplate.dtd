@@ -1,4 +1,4 @@
-﻿<!ENTITY pref_dialog.title     "Smart Template 4 設定">
+﻿<!ENTITY pref_dialog.title     "SmartTemplate4 設定">
 <!ENTITY pref_dialog.maxwidth  "650">
 <!ENTITY pref_dialog.minwidth  "450">
 
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip     "予約語による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
 
 <!ENTITY help_button           "ヘルプ">
-<!ENTITY help_dialog_title     "Smart Template 4 ヘルプ">
+<!ENTITY help_dialog_title     "SmartTemplate4 ヘルプ">
 <!ENTITY help_keyword.cap      "ヘルプ">
 
-<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.cap        "SmartTemplate4">
 <!ENTITY account_st.button     "テンプレートと引用ヘッダの設定...">
