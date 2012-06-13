@@ -1,18 +1,18 @@
-﻿<!ENTITY pref_dialog.title     "Smart Template 4 Options">
+﻿<!ENTITY pref_dialog.title     "SmartTemplate4 Options">
 <!ENTITY pref_dialog.maxwidth  "650">
 <!ENTITY pref_dialog.minwidth  "450">
 
 <!ENTITY pref_server_desc      "Account name:">
 <!ENTITY pref_server_def       "Common">
 
-<!ENTITY pref_new.tab          "New">
+<!ENTITY pref_new.tab          "Write">
 <!ENTITY pref_rsp.tab          "Reply">
 <!ENTITY pref_fwd.tab          "Forward">
 
 <!ENTITY pref_def.label        "Use common">
 <!ENTITY pref_def.cap          "Uncheck 'Use common' to create separate to settings for this account.">
 
-<!ENTITY pref_newmsg.cap       "New message">
+<!ENTITY pref_newmsg.cap       "Write">
 <!ENTITY pref_new.label        "Apply following template for the new message">
 
 <!ENTITY pref_rspmsg.cap       "Replying message">
@@ -32,8 +32,8 @@
 <!ENTITY pref_template_tip     "You can change quote header with keywords 'variables'. See help for more information.">
 
 <!ENTITY help_button           "Help">
-<!ENTITY help_dialog_title     "Smart Template 4 Help">
+<!ENTITY help_dialog_title     "SmartTemplate4 Help">
 <!ENTITY help_keyword.cap      "Help">
 
-<!ENTITY account_st.cap        "Smart Template 4">
+<!ENTITY account_st.cap        "SmartTemplate4">
 <!ENTITY account_st.button     "Edit templates and quote header...">
