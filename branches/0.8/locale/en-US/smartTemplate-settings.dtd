@@ -57,8 +57,8 @@
 <!ENTITY help_dialog_title     "SmartTemplate4 Help">
 <!ENTITY help_keyword.cap      "Help">
 
-<!ENTITY pref_debug_check      "Debug Modus">
-<!ENTITY pref_debug_tip        "Rechts-klick für weitere Debug Optionen">
+<!ENTITY pref_debug_check      "Debug mode">
+<!ENTITY pref_debug_tip        "Rightclick for advanced debug options">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"About SmartTemplate4">

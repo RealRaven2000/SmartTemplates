@@ -1,16 +1,15 @@
 <?xml version = "1.0"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate.dtd">
+<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
 
 <prefwindow id = "smartTemplate_prefDialog"
             xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
             title = "&pref_dialog.title;"
-            maxwidth = "&pref_dialog.maxwidth;"
             buttons = "extra2,cancel,accept"
             onload = "SmartTemplate4.Settings.onLoad();"
-            buttonlabelextra2 = "&help_button;"
+            buttonlabelextra2 = "&pref_help.tab;"
             ondialogextra2 = "document.documentElement.openSubDialog('chrome://smarttemplate4/content/help.xul', '', null);">
 
  <prefpane id = "smartTemplatePane">
@@ -76,7 +75,6 @@
 		           <textbox  id = "newmsg"  
 		                     multiline = "true" 
 		                     rows = "10" 
-		                     minwidth = "&pref_dialog.minwidth;"
 		                     tooltiptext = "&pref_template_tip;"
 		                     preference = "pref_newmsg"/>
 		           <checkbox id = "newhtml" 
@@ -106,7 +104,6 @@
 									<textbox id = "rspmsg"
 									         multiline = "true" 
 									         rows = "10" 
-									         minwidth = "&pref_dialog.minwidth;"
 									         tooltiptext = "&pref_template_tip;"
 									         preference = "pref_rspmsg"/>
 									<checkbox id = "rsphtml"
@@ -141,7 +138,6 @@
 									<textbox id = "fwdmsg"  
 									         multiline = "true" 
 									         rows = "10" 
-									         minwidth = "&pref_dialog.minwidth;"
 									         tooltiptext = "&pref_template_tip;"
 									         preference = "pref_fwdmsg"/>
 									<checkbox id = "fwdhtml" 
