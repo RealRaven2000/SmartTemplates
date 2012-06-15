@@ -166,7 +166,10 @@ gSmartTemplate.mimeDecoder = {
 		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842
 		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922
 		// RFC1922 iso-2022-cn-ext is not support
-		if (str.search(/\x1b\$\(D/gi) !== -1)                    { charset = "iso-2022-jp-1"; } // RFC2237
+		if (str.search(/\x1b\$\(D/gi) !== -1) 
+		{
+			charset = "iso-2022-jp-1";  // RFC2237
+		} 
 		return charset;
 	},
 
@@ -182,9 +185,9 @@ gSmartTemplate.mimeDecoder = {
 			// because getParameter stops convert at the space/line-breaks.
 			var array = string.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*/g);
 			for (var i = 0; i < array.length; i++) {
-				decodedStr += headerParam.
-								getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null }).
-								  replace(/-%-/g, " ").replace(/%%/g, "%");
+				decodedStr += this.headerParam
+				                  .getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null })
+				                  .replace(/-%-/g, " ").replace(/%%/g, "%");
 			}
 		} else {
 			// for Mailers has no manners.
