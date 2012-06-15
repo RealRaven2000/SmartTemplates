@@ -8,10 +8,10 @@
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         buttons="accept">
-  <vbox flex="1">
-    <groupbox>
-	<caption label="&help_keyword.cap;"/>
-      <iframe src="chrome://smarttemplate4/locale/help.html"  type="content" height="450" width="455"/>
-    </groupbox>
-  </vbox>
+		<vbox flex="1">
+			<groupbox>
+				<caption label="&help_keyword.cap;"/>
+				<iframe src="chrome://smarttemplate4/locale/help.xhtml"  type="content" height="450" width="455"/>
+			</groupbox>
+		</vbox>
 </dialog>
