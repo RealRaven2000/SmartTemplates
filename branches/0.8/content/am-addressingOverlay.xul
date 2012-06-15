@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE overlay SYSTEM "chrome://smarttemplate4/locale/smartTemplate.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://smarttemplate4/locale/smartTemplate-accountManager.dtd">
 
 <overlay id="stam-addressingOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
