@@ -11,7 +11,7 @@
 		<vbox flex="1">
 			<groupbox>
 				<caption label="&help_keyword.cap;"/>
-				<iframe src="chrome://smarttemplate4/content/help.xhtml" height="450" width="600"/>
+				<iframe src="chrome://smarttemplate4/content/help.xhtml" height="450" width="550"/>
 			</groupbox>
 		</vbox>
 </dialog>
