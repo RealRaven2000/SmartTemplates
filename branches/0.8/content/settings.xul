@@ -12,6 +12,12 @@
             buttonlabelextra2 = "&pref_help.tab;"
             ondialogextra2 = "document.documentElement.openSubDialog('chrome://smarttemplate4/content/help.xul', '', null);">
 
+<!--            				window.openDialog('chrome://quickpasswords/content/changePassword.xul',
+					'quickpasswords-editPassword',
+					'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(),
+					params).focus(); -->
+
+            
  <prefpane id = "smartTemplatePane">
 
 	<!-- ######## Identity Dropdown Box Creating ######## -->

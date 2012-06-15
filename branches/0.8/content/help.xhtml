@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://smarttemplate4/skin/default/style.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
+
+<!-- #### Help Content #### -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>		
+			<title>help.xul</title>
+		</head>	
+	<body>	
+		<div class="body">
+			<!-- ##### Fix Variables #### -->		
+			<div class="helpchapter">&fix_var.cap;</div>
+			<code>%ownname%</code> = &ownname.label;
+			<br />
+			<code>%ownmail%</code> = &ownmail.label;
+			<br />
+			<code>%date%</code> = &date.label;
+			<br />
+			<code>%to(mail)%</code> = &tomail.label;
+			<br />
+			<code>%from(mail)%</code> = &frommail.label;
+			<br />
+			<code>%cc(mail)%</code> = &ccmail.label;
+			<br />
+			<code>%sig%</code> = &sig.label;
+			<br />
+			<code>%sig(2)%</code> = &sig2.label;
+			<br />
+			<br />
+			<!-- ##### "To" Variables #### -->
+			<div class="helpchapter">&to_var.cap;</div>
+			<h1>(&to_note.label;)</h1>
+			<code>%to%</code> = &to.label;
+			<br />
+			<code>%to(firstname)%</code> = &tofirstname.label;
+			<br />
+			<code>%to(name)%</code> = &toname.label;
+			<br />
+			<br />
+			<!-- ##### "From" Variables #### -->
+			<div class="helpchapter">&from_var.cap;</div>
+			<h1>(&from_note.label;)</h1>
+			<code>%from%</code> = &from.label;
+			<br />
+			<code>%from(firstname)%</code> = &fromfirstname.label;
+			<br />
+			<code>%from(name)%</code> = &fromname.label;
+			<br />
+			<br />
+			<!-- ##### "CC" Variables #### -->			
+			<div class="helpchapter">&cc_var.cap;</div>
+			<h1>(&cc_note.label;)</h1>
+			<code>%cc%</code> = &cc.label;
+			<br />
+			<code>%cc(firstname)%</code> = &ccfirstname.label;
+			<br />
+			<code>%cc(name)%</code> = &ccname.label;
+			<br />
+			<br />
+			<!-- ##### Special Formatting "{Brackets}" #### -->
+			<div class="helpchapter">&spec_form.cap;</div>
+			&specform_note.label;
+			<br />			
+			<b>&ex_brack.label;</b>
+			<br />
+			<br />
+			<!-- ##### Subject Variables #### -->
+			<div class="helpchapter">&sub_var.cap;</div>
+			<code>%subject%</code> = &sub.label;
+			<br />
+			<code>%subject(2)%</code> = &sub2.label;
+			<br />
+			<br />
+			<!-- ##### Special Variables (Message-Headerkeys) #### -->
+			<div class="helpchapter">&spec_var.cap;</div>
+			<code>%Message-ID%</code> = &messid.label;
+			<br />
+			<code>%Newsgroups%</code> = &newsgr.label;
+			<br />
+			<code>%X-Mailer%</code> = &xmail.label;
+			<br />
+			<code>%...%</code> = &any.label;			
+			<br />
+			<br />
+			<!-- ##### Fix Variables for Date/Timezone #### -->
+			<div class="helpchapter">&fix_vartz.cap;</div>
+			<h1>(&fix_vartz_note.label;)</h1>
+			<code>%datelocal%</code> = &datelocal.label;
+			<br />
+			<code>%dateshort%</code> = &dateshort.label;
+			<br />
+			<code>%date_tz%</code> = &datetz.label;
+			<br />
+			<code>%tz_name%</code> = &tzname.label;
+			<br />
+			<br />
+			<!-- ##### Custom Variables #### -->
+			<div class="helpchapter">&var_custom.cap;</div>
+			<h1>(&customdf_note.label;)</h1>
+			<code>%A%</code> = &A.label;
+			<br />
+			<code>%a%</code> = &a.label;
+			<br />
+			<code>%d%</code> = &d.label;
+			<br />
+			<code>%e%</code> = &e.label;
+			<br />
+			<code>%m%</code> = &m.label;
+			<br />
+			<code>%n%</code> = &n.label;
+			<br />
+			<code>%B%</code> = &B.label;
+			<br />
+			<code>%b%</code> = &b.label;
+			<br />
+			<code>%Y%</code> = &y.label;
+			<br />
+			<code>%M%</code> = &m.label;
+			<br />
+			<code>%S%</code> = &s.label;
+			<br />
+			<code>%H%</code> = &h.label;
+			<br />
+			<code>%k%</code> = &k.label;
+			<br />
+			<code>%I%</code> = &i.label;
+			<br />
+			<code>%l%</code> = &l.label;
+			<br />
+			<code>%p%</code> = &p.label;
+			<br />
+			<code>%p(1)%</code> = &p1.label;
+			<br />
+			<code>%p(2)%</code> = &p2.label;
+			<br />
+			<code>%p(3)%</code> = &p3.label;
+			<br />
+			<br />
+			<!-- ##### X:=Sent Variable #### -->			
+			<div class="helpchapter">&var_xsent.cap;</div>
+			&xsent_note.label;
+			<br />
+			<br />
+			<!-- ##### Longstring Descritption #### -->
+			<div class="helpchapter">&xsent_long.cap;</div>
+			&xsent_long.label;
+			<br />
+			<b>&xsent_long_result.label;</b>
+			<br />
+			<br />
+			<!-- ##### Shortstring Description #### -->
+			<div class="helpchapter">&xsent_short.cap;</div>
+			&xsent_short.label;
+			<br />
+			<b>&xsent_short_result.label;</b>
+			<br />
+			<br />
+			<b>&xsent_short_note.label;</b>
+			<br />
+			<code>%datelocal%</code> = &localedate.label;
+			<br />
+			<code>%dateshort%</code> = &shortdate.label;
+			<br />
+			<code>%date_tz%</code> = &datetimezone.label;
+			<br />
+			<code>%tz_name%</code> = &timezonename.label;
+			<br />
+			<br />
+			<!-- ##### Export/Import Function -> added in v.0.8.1 #### -->			
+			<div class="helpchapter">&im-ex.cap;</div>
+			&im-ex_note1.label;
+			<br />
+			<br />
+			<!-- ##### Export #### -->
+			<b>&export.label;:</b>
+			<br />
+			&im-ex_note2.label;
+			<br />				
+			<img class="screenshot_help" alt="" src="chrome://smarttemplate4/skin/screenshots/identity_select.png" width="100%" border="0px" />
+			<br />			
+			&im-ex_note3.label;
+			<br />
+			<img class="screenshot_help" alt="" src="chrome://smarttemplate4/skin/screenshots/export.png" width="100%" border="0px" />
+			<br />			
+			<!-- ##### Import #### -->
+			<b>&import.label;:</b>
+			<br />
+			&im-ex_note4.label;			
+			<br />			
+			<img class="screenshot_help" alt="" src="chrome://smarttemplate4/skin/screenshots/import.png" width="100%" border="0px" />
+			<br />			
+			&im-ex_note5.label;
+			<br />
+			<br />
+			<b>Apple/Macintosh:</b>
+			<br />
+			&im-ex_note6.label;
+			<br />
+			<img class="screenshot_help" alt="" src="chrome://smarttemplate4/skin/screenshots/mac-menubar.png" width="100%" border="0px" />			
+			<br />
+			<br />
+			<!-- ##### HTML -> UTF-8 Note #### -->
+			<div class="helpchapter">&html_note.cap;</div>
+			<b>&html_note.label;</b>
+			<br />
+			<br />
+			<!-- ##### Variable Table Note #### -->
+			<div class="helpchapter">&table.cap;</div>
+			<b>&table_note.label;</b>
+			<br />
+			<br />
+			<!-- ##### Variable Table #### -->	
+			<table id="keywords">
+				<tbody>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/variable-keyword.png" /><b>&table_keyword.label;</b></td>
+						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-new.png" /><b>&table_new.label;</b></td>
+						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-reply.png" /><b>&table_reply.label;</b></td>
+						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-fwd.png" /><b>&table_fwd.label;</b></td>
+					</tr>			
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%A% / %a%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%B% / %b%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%cc(firstname)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%cc(mail)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%cc(name)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%cc%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%d% / %e%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%date_tz%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%date%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%datelocal%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%dateshort%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%from(firstname)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%from(mail)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%from(name)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%from%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%H% / %k%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%l% / %i%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%M%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%m% / %n%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%Message-ID%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%Newsgroups%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%ownmail%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%ownname%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%p(1)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%p(2)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%p(3)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%p%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%S%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%sig%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%sig(2)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%subject%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%subject(2)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%T%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%to(firstname)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%to(mail)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%to(name)%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%to%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%tz_name%</code></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%X-Mailer%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%X:=sent%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%X:=today%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td class="td-keywords"><code>%Y%</code></td>
+						<td class="td-keywords"><div class="no">&#10007;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+						<td class="td-keywords"><div class="yes">&#10003;</div></td>
+					</tr>
+				</tbody>
+			</table>			
+		</div>
+	</body>
+</html>
