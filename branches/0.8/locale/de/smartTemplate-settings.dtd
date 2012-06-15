@@ -1,7 +1,7 @@
 ﻿<!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Datei">
 <!ENTITY tools.label					"Extras">
-<!ENTITY edit.label						"Editieren">
+<!ENTITY edit.label						"Bearbeiten">
 <!ENTITY help.label						"Hilfe">
 
 <!-- #### MENU OWN ITEMS #### -->
@@ -60,8 +60,8 @@
 <!ENTITY help_dialog_title     			"SmartTemplate4 Hilfe">
 <!ENTITY help_keyword.cap      			"Hilfe">
 
-<!ENTITY pref_debug_check      "Debug Modus">
-<!ENTITY pref_debug_tip        "Rechts-klick für weitere Debug Optionen">
+<!ENTITY pref_debug_check      			"Debug Modus">
+<!ENTITY pref_debug_tip        			"Rechts-klick für weitere Debug Optionen">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"Über SmartTemplate4">
