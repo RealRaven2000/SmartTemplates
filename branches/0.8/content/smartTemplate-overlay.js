@@ -80,8 +80,12 @@ SmartTemplate4.classPref = function(branch, useDefault)
 		{
 			var prefService = Components.classes["@mozilla.org/preferences-service;1"]
 			                  .getService(Components.interfaces.nsIPrefService);
-			try { var accept_languages = prefService.getComplexValue("intl.accept_languages",Components.interfaces.nsIPrefLocalizedString).data; }
-			catch (e) { var accept_languages = prefService.getCharPref("intl.accept_languages"); }
+			try { 
+				var accept_languages = prefService.getComplexValue("intl.accept_languages", Components.interfaces.nsIPrefLocalizedString).data; 
+			}
+			catch (e) { 
+				accept_languages = prefService.getCharPref("intl.accept_languages"); 
+			}
 			return /^[^\s,;]{2,}/.exec(accept_languages)[0];  // Extract first locale code in pref (space/comma/semicolon delimited list)
 		} catch (e) { return "en"; }
 	};
@@ -101,18 +105,20 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 {
 	// -----------------------------------
 	// Constructor
-	var   messenger = Components.classes["@mozilla.org/messenger;1"].
+	let messenger = Components.classes["@mozilla.org/messenger;1"].
 						createInstance(Components.interfaces.nsIMessenger);
-	var   messageService = messenger.messageServiceFromURI(messageURI);
-	var   messageStream = Components.classes["@mozilla.org/network/sync-stream-listener;1"].
+	let messageService = messenger.messageServiceFromURI(messageURI);
+	let messageStream = Components.classes["@mozilla.org/network/sync-stream-listener;1"].
 							createInstance().QueryInterface(Components.interfaces.nsIInputStream);
-	var   inputStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
+	let inputStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
 						  createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
 
 	inputStream.init(messageStream);
 	try {
 		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
-	} catch (ex) {
+	} 
+	catch (ex) {
+		SmartTemplate4.Util.logException('classGetHeaders - constructor - messageService.streamMessage failed', ex);
 		return null;
 	}
 
@@ -124,6 +130,7 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 			break;
 		}
 		if (msgContent.length > 2048 * 8) {
+			SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
 			return null;
 		}
 	}
@@ -161,7 +168,7 @@ SmartTemplate4.mimeDecoder = {
 	// Detect character set
 	detectCharset : function(str)
 	{
-		var charset = "";
+		let charset = "";
 
 		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468
 		// RFC1555 ISO-8859-8 (Hebrew) is not support.
@@ -228,8 +235,9 @@ SmartTemplate4.mimeDecoder = {
 		}
 
 		for (var i = 0; i < array.length; i++) {
-			if (i > 0)
-			{ addresses += ", "; }
+			if (i > 0) { 
+				addresses += ", "; 
+			}
 
 			// Escape "," in mail addresses
 			array[i] = array[i].replace(/\r\n|\r|\n/g, "").replace(/"[^"]*"/,
@@ -241,12 +249,12 @@ SmartTemplate4.mimeDecoder = {
 			if (withname) {
 				result = address.replace(/\s*<\S+>\s*$/, "").
 								 replace(/^\s*\"|\"\s*$/g, "");	         // %to% / %to(name)%
-				if (result != "" && withaddr)
-				{ result += address.replace(/.*<(\S+)>.*/g, " <$1>"); }     // %to%
+				if (result != "" && withaddr) { 
+					result += address.replace(/.*<(\S+)>.*/g, " <$1>"); 
+				}     // %to%
 			}
 			if (result == "") {
-				if (!withaddr)
-				{ 
+				if (!withaddr) { 
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
 				}     // %to(name)%
 				else { 
@@ -256,10 +264,12 @@ SmartTemplate4.mimeDecoder = {
 			// get firstname
 			let delimiter = '';
 			if ((delimiter = format.match(/^\(firstname(\[.*\])*\)$/i)) != null) {
-				if (delimiter[1] == null)
-				{ delimiter[1] = "[., ]"; }
-				else
-				{ delimiter[1] = delimiter[1].replace(/&nbsp;/, " "); }
+				if (delimiter[1] == null) { 
+					delimiter[1] = "[., ]"; 
+				}
+				else { 
+					delimiter[1] = delimiter[1].replace(/&nbsp;/, " "); 
+				}
 				result = result.replace(new RegExp(delimiter[1] + ".*"), "");
 			}
 
@@ -294,7 +304,8 @@ SmartTemplate4.regularize = function(msg, type)
 	function getSubject(current) {
 		if (current){
 			return document.getElementById("msgSubject").value;
-		} else {
+		} 
+		else {
 			return mime.decode(hdr.get("Subject"), charset);
 		}
 	}
@@ -314,15 +325,15 @@ SmartTemplate4.regularize = function(msg, type)
 	var identity = Components.classes["@mozilla.org/messenger/account-manager;1"]
 					 .getService(Components.interfaces.nsIMsgAccountManager)
 					 .getIdentity(idkey);
-	var messenger = Components.classes["@mozilla.org/messenger;1"]
+	let messenger = Components.classes["@mozilla.org/messenger;1"]
 					 .createInstance(Components.interfaces.nsIMessenger);
 	let mime = this.mimeDecoder;
 	
-	let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI);
-	let charset = msgDbHdr.Charset;
-	let hdr = new this.classGetHeaders(gMsgCompose.originalMsgURI);
-	let date = msgDbHdr.date;
+	let msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
+	let charset = (type != "new") ? msgDbHdr.Charset : null;
+	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
 	if (type != "new") {
+		let date = msgDbHdr.date;
 		// for Reply/Forward message
 		let tz = new function(date) {
 			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
@@ -341,36 +352,37 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		// Check existence of a header related to the reserved word.
-		function chkRw(str, rw, dmy) {
+		function chkRw(str, reservedWord, param) {
 			try{
-				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  rw + ', ' + dmy + ')');
-				let el = (typeof rw2h[rw]=='undefined') ? '' : rw2h[rw];
+				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  reservedWord + ', ' + param + ')');
+				let el = (typeof rw2h[reservedWord]=='undefined') ? '' : rw2h[reservedWord];
 				return el == "d.c." 
 					? str 
-					: hdr.get(el ? el : rw) != "" ? str : "";
+					: hdr.get(el ? el : reservedWord) != "" ? str : "";
 			} catch (e) {
 				let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 					 getService(Components.interfaces.nsIStringBundleService);
 				let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
 				try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
-					Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + rw + "% " + bundle.GetStringFromName("contextError2"));
+					Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + reservedWord + "% " + bundle.GetStringFromName("contextError2"));
 				} catch (e) {
-					Components.utils.reportError("SmartTemplate4: The variable %" + rw + "% can't be used for NEW Messages!\nListing of usable variables see Help");
+					Components.utils.reportError("SmartTemplate4: The variable %" + reservedWord + "% can't be used for NEW Messages!\nListing of usable variables see Help");
 				}
 				
 				return "";
 			} 
 		}
+		
 		function chkRws(str, strInBrackets) { 
 			return strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw).replace(/^[^%]*$/, ""); 
 		}
 		
-		
-		// Reserved words that does not depend on the original message.
+		// Reserved words that do not depend on the original message.
 		setRw2h("d.c.", "ownname", "ownmail",
 						"Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
 						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup");
-		// Reserved words depending on headers of the original message.
+		
+		// Reserved words which depend on headers of the original message.
 		setRw2h("To",   "to", "toname", "tomail");
 		setRw2h("Cc",   "cc", "ccname", "ccmail");
 		setRw2h("Date", "X:=sent");
@@ -409,7 +421,7 @@ SmartTemplate4.regularize = function(msg, type)
 	}
 		
 	// Replace reserved words
-	function replaceReservedWords(dmy, s, f)
+	function replaceReservedWords(dmy, token, f)
 	{
 		var tm = new Date();
 		var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
@@ -423,25 +435,25 @@ SmartTemplate4.regularize = function(msg, type)
 		}
 
 		// for backward compatibility
-		switch (s) {
-			case "fromname":  s = "From"; f = "(name)";   break;
-			case "frommail":  s = "From"; f = "(mail)";   break;
-			case "toname":    s = "To";   f = "(name)";   break;
-			case "tomail":    s = "To";   f = "(mail)";   break;
-			case "ccname":    s = "Cc";   f = "(name)";   break;
-			case "ccmail":    s = "Cc";   f = "(mail)";   break;
+		switch (token) {
+			case "fromname":  token = "From"; f = "(name)";   break;
+			case "frommail":  token = "From"; f = "(mail)";   break;
+			case "toname":    token = "To";   f = "(name)";   break;
+			case "tomail":    token = "To";   f = "(mail)";   break;
+			case "ccname":    token = "Cc";   f = "(name)";   break;
+			case "ccmail":    token = "Cc";   f = "(mail)";   break;
 		}
 
 
-		switch(s){
+		switch(token){
 			case "datelocal":
 			case "dateshort":
 				if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
-					s = prTime2Str(tm.getTime() * 1000, s, 0);
-					return SmartTemplate4.escapeHtml(s);
+					token = prTime2Str(tm.getTime() * 1000, token, 0);
+					return SmartTemplate4.escapeHtml(token);
 				}else{
-					s = prTime2Str(date, s, 0);
-					return SmartTemplate4.escapeHtml(s);
+					token = prTime2Str(date, token, 0);
+					return SmartTemplate4.escapeHtml(token);
 				}
 			case "timezone":    
 			case "date_tz":
@@ -449,14 +461,15 @@ SmartTemplate4.regularize = function(msg, type)
 					return SmartTemplate4.escapeHtml(matches[0]);
 		}
 		
-		switch (s) {
-		// for Common (new/reply/forward) message
-			// own name
-			case "ownname":   s = identity.identityName.replace(/\s*<.*/, "");    break;
-			// own email address
-			case "ownmail":   s = identity.email;                 break;
-			// today
-			case "T":
+		switch (token) {
+			// for Common (new/reply/forward) message
+			case "ownname": // own name
+				token = identity.identityName.replace(/\s*<.*/, "");
+				break;
+			case "ownmail": // own email address
+				token = identity.email;
+				break;
+			case "T": // today
 			case "X": return expand("%H%:%M%:%S%");           break;  // Time hh:mm:ss
 			case "Y": return "" + tm.getFullYear();           break;  // Year 1970...
 			case "n": return "" + (tm.getMonth()+1);          break;  // Month 1..12
@@ -517,20 +530,20 @@ SmartTemplate4.regularize = function(msg, type)
 
 		// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 			default:
-				var isStripQuote = RegExp(" "+s+" ", "i").test(
+				var isStripQuote = RegExp(" " + token + " ", "i").test(
 				                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
 				                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
 				if (isStripQuote) {
-					s = mime.split(hdr.get(s), charset, f); 
+					token = mime.split(hdr.get(token), charset, f); 
 				}
 				else { 
-					s = mime.decode(hdr.get(s), charset); 
+					token = mime.decode(hdr.get(token), charset); 
 				}
 				break;
-		// unreachable code! =>
-		// s = s.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
+				// unreachable code! =>
+				// token = token.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
 		}
-		return SmartTemplate4.escapeHtml(s);
+		return SmartTemplate4.escapeHtml(token);
 	}
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
 	return msg;

@@ -204,7 +204,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//We need to remove tags until two BR tags appear consecutively.
 	// AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
 	function delForwardHeader()
-	{		
+	{
 		function truncateTo2BR(root) {
 			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','truncateTo2BR()');
 			let node = root.firstChild;
@@ -270,29 +270,29 @@ SmartTemplate4.classSmartTemplate = function()
 			node = n;
 		}
 	
-		// remove the original Mail Header
-	SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
-	if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
-		// recursive search from root element
-		node = findChildNode(rootEl, 'moz-email-headers-table');
-		if (node) {
-			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
-			let nextNode = node.nextSibling;
-			deleteHeaderNode(node);
-			// delete trailing newlines!
-			deleteWhiteSpaceNodes(nextNode);
-		}
-		else {
-			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
-			if (!gMsgCompose.composeHTML) {
-				truncateTo2BR(rootEl.firstChild);
+			// remove the original Mail Header
+		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
+		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
+			// recursive search from root element
+			node = findChildNode(rootEl, 'moz-email-headers-table');
+			if (node) {
+				SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
+				let nextNode = node.nextSibling;
+				deleteHeaderNode(node);
+				// delete trailing newlines!
+				deleteWhiteSpaceNodes(nextNode);
+			}
+			else {
+				SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
+				if (!gMsgCompose.composeHTML) {
+					truncateTo2BR(rootEl.firstChild);
+				}
 			}
 		}
+		else {
+			truncateTo2BR(rootEl);
+		}
 	}
-	else {
-		truncateTo2BR(rootEl);
-	}
-};
 
 	// -----------------------------------
 	// Remove template messages and Restore original quote headers
@@ -317,6 +317,7 @@ SmartTemplate4.classSmartTemplate = function()
 			gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), gMsgCompose.editor.rootElement, 0);
 		}
 	};
+
 	function clearTemplate()
 	{
 		orgQuoteHeaders.length = 0;
@@ -324,7 +325,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Get template message
-	function getMsgTmpl(type, idKey, prefmsg, prefhtml, prefnbr)
+	function getTemplate(type, idKey, prefmsg, prefhtml, prefnbr)
 	{
 		var pref = SmartTemplate4.pref;
 		var msg = pref.getWithIdkey(idKey, prefmsg, "");
@@ -388,9 +389,8 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.New:
 				case msgComposeType.NewsPost:
 				case msgComposeType.MailToUrl:
-					if (pref.getWithIdkey(idKey, "new", false))
-					{
-						msgTmpl = getMsgTmpl("new", idKey, "newmsg", "newhtml", "newnbr");
+					if (pref.getWithIdkey(idKey, "new", false)) {
+						msgTmpl = getTemplate("new", idKey, "newmsg", "newhtml", "newnbr");
 					}
 					break;
 	
@@ -403,25 +403,23 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.ReplyToGroup:
 				case msgComposeType.ReplyToSenderAndGroup:
 				case msgComposeType.ReplyToList:
-				if (pref.getWithIdkey(idKey, "rsp", false))
-				{
-					msgTmpl = getMsgTmpl("rsp", idKey, "rspmsg", "rsphtml", "rspnbr");
-					if (pref.getWithIdkey(idKey, "rsphead", false) &&
-						pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-						delReplyHeader(idKey); 
+					if (pref.getWithIdkey(idKey, "rsp", false)) {
+						msgTmpl = getTemplate("rsp", idKey, "rspmsg", "rsphtml", "rspnbr");
+						if (pref.getWithIdkey(idKey, "rsphead", false) &&
+							pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
+							delReplyHeader(idKey); 
+						}
 					}
-				}
-				break;
+					break;
 	
 				// forwarding message ----------------------------------
 				// (ForwardAsAttachment:3 / ForwardInline:4)
 				case msgComposeType.ForwardAsAttachment:
 				case msgComposeType.ForwardInline:
-					if (pref.getWithIdkey(idKey, "fwd", false))
-					{
+					if (pref.getWithIdkey(idKey, "fwd", false)) {
 						SmartTemplate4.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
 		
-						msgTmpl = getMsgTmpl("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
+						msgTmpl = getTemplate("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
 							break; 
 						}
@@ -444,10 +442,10 @@ SmartTemplate4.classSmartTemplate = function()
 		// add template message --------------------------------
 		if (msgTmpl && msgTmpl !== "")
 		{
-			if(gMsgCompose.composeHTML){
-			gMsgCompose.editor.insertNode(
-					gMsgCompose.editor.document.createElement("br"),
-					gMsgCompose.editor.rootElement, 0);
+			if(gMsgCompose.composeHTML) {
+				gMsgCompose.editor.insertNode(
+				                   gMsgCompose.editor.document.createElement("br"),
+				                   gMsgCompose.editor.rootElement, 0);
 			}
 			editor.beginningOfDocument();
 			editor.insertHTML("<div id=\"IDstID\">" + msgTmpl + "</div>");
@@ -463,10 +461,11 @@ SmartTemplate4.classSmartTemplate = function()
 			let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
 			let bodyEl = gMsgCompose.editor.rootElement;
 			
-			if (sig_on_bottom){
+			if (sig_on_bottom) {
 				bodyEl.appendChild(gMsgCompose.editor.document.createElement("br")); //replace the BR that was removed in extractSignature
 				bodyEl.appendChild(theSignature);
-			} else {
+			} 
+			else {
 				bodyEl.insertBefore(theSignature, bodyEl.firstChild);
 				bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
 			}
