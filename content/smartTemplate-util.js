@@ -27,7 +27,7 @@ copy by writing to:
 END LICENSE BLOCK 
 */
 
-gSmartTemplate.Util = {
+SmartTemplate4.Util = {
 	HARDCODED_EXTENSION_VERSION : "0.8.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
@@ -41,7 +41,7 @@ gSmartTemplate.Util = {
 		
 	getBundleString: function(id, defaultText) { 
 		try {
-			var s= gSmartTemplate.Properties.getLocalized(id);
+			var s= SmartTemplate4.Properties.getLocalized(id);
 		}
 		catch(e) {
 			s= defaultText;
@@ -109,45 +109,45 @@ gSmartTemplate.Util = {
 	// this is done asynchronously, so it respawns itself
 	VersionProxy: function() {
 		try {
-			if (gSmartTemplate.Util.mExtensionVer // early exit, we got the version!
+			if (SmartTemplate4.Util.mExtensionVer // early exit, we got the version!
 				||
-					gSmartTemplate.Util.VersionProxyRunning) // no recursion...
+					SmartTemplate4.Util.VersionProxyRunning) // no recursion...
 				return; 
-			gSmartTemplate.Util.VersionProxyRunning = true;
-			gSmartTemplate.Util.logDebug("Util.VersionProxy() started.");
-			let myId = gSmartTemplate.Util.ADDON_ID;
+			SmartTemplate4.Util.VersionProxyRunning = true;
+			SmartTemplate4.Util.logDebug("Util.VersionProxy() started.");
+			let myId = SmartTemplate4.Util.ADDON_ID;
 			if (Components.utils.import) {
 				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 				AddonManager.getAddonByID(myId, function(addon) {
-					gSmartTemplate.Util.mExtensionVer = addon.version;
-					gSmartTemplate.Util.logDebug("AddonManager: gSmartTemplate extension's version is " + addon.version);
+					SmartTemplate4.Util.mExtensionVer = addon.version;
+					SmartTemplate4.Util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
 					let versionLabel = window.document.getElementById("smartTemplate-options-version");
 					if(versionLabel) versionLabel.setAttribute("value", addon.version);
 
 				});
 			}
-			gSmartTemplate.Util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
+			SmartTemplate4.Util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
 
 		}
 		catch(ex) {
-			gSmartTemplate.Util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + gSmartTemplate.Util.Application + "?"
+			SmartTemplate4.Util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + SmartTemplate4.Util.Application + "?"
 				+ "\n" + ex);
 		}
 		finally {
-			gSmartTemplate.Util.VersionProxyRunning=false;
+			SmartTemplate4.Util.VersionProxyRunning=false;
 		}
 	},
 	
 	get Version() {
 		//returns the current QF version number.
-		if(gSmartTemplate.Util.mExtensionVer)
-			return gSmartTemplate.Util.mExtensionVer;
-		var current = gSmartTemplate.Util.HARDCODED_EXTENSION_VERSION + gSmartTemplate.Util.HARDCODED_EXTENSION_TOKEN;
+		if(SmartTemplate4.Util.mExtensionVer)
+			return SmartTemplate4.Util.mExtensionVer;
+		var current = SmartTemplate4.Util.HARDCODED_EXTENSION_VERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
 		
 		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
-			gSmartTemplate.Util.VersionProxy(); // modern Mozilla builds.
+			SmartTemplate4.Util.VersionProxy(); // modern Mozilla builds.
 												// these will set mExtensionVer (eventually)
 												// also we will delay FirstRun.init() until we _know_ the version number
 		}
@@ -158,17 +158,17 @@ gSmartTemplate.Util = {
 				{
 					var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
 						.getService(Components.interfaces.nsIExtensionManager);
-					current = gExtensionManager.getItemForID(gSmartTemplate.Util.ADDON_ID).version;
+					current = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
 				}
 				else {
 					current = current + "(?)";
 				}
-				gSmartTemplate.Util.mExtensionVer = current;
+				SmartTemplate4.Util.mExtensionVer = current;
 
 			}
 			catch(ex) {
 				current = current + "(?ex?)" // hardcoded, program this for Tb 3.3 later
-				gSmartTemplate.Util.logToConsole("gSmartTemplate Version retrieval failed - are you using an old version of " + gSmartTemplate.Util.Application + "?");
+				SmartTemplate4.Util.logToConsole("SmartTemplate4 Version retrieval failed - are you using an old version of " + SmartTemplate4.Util.Application + "?");
 			}
 		}
 		return current;
@@ -183,7 +183,7 @@ gSmartTemplate.Util = {
 			return version;
 		}
 			
-		var pureVersion = strip(gSmartTemplate.Util.Version, 'pre');
+		var pureVersion = strip(SmartTemplate4.Util.Version, 'pre');
 		pureVersion = strip(pureVersion, 'beta');
 		pureVersion = strip(pureVersion, 'alpha');
 		return strip(pureVersion, '.hc');
@@ -251,14 +251,14 @@ gSmartTemplate.Util = {
 	},
 
 	logToConsole: function (msg, optionalTitle) {
-		if (gSmartTemplate.Util.ConsoleService === null)
-			gSmartTemplate.Util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
+		if (SmartTemplate4.Util.ConsoleService === null)
+			SmartTemplate4.Util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									.getService(Components.interfaces.nsIConsoleService);
 		let title = "SmartTemplate4";
 		if (typeof optionalTitle !== 'undefined')
 			title += " {" + optionalTitle.toUpperCase() + "}"
 			
-		gSmartTemplate.Util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
+		SmartTemplate4.Util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
 	},
 
 	// flags
@@ -287,12 +287,12 @@ gSmartTemplate.Util = {
 	} ,
 
 	logDebug: function (msg) {
-		if (gSmartTemplate.Preferences.Debug)
+		if (SmartTemplate4.Preferences.Debug)
 			this.logToConsole(msg);
 	},
 
 	logDebugOptional: function (option, msg) {
-		if (gSmartTemplate.Preferences.isDebugOption(option))
+		if (SmartTemplate4.Preferences.isDebugOption(option))
 			this.logToConsole(msg, option);
 	},	
 
@@ -302,7 +302,7 @@ gSmartTemplate.Util = {
 		let Ci = Components.interfaces;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			if (gSmartTemplate.Util.Application==='SeaMonkey') {
+			if (SmartTemplate4.Util.Application==='SeaMonkey') {
 				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
 				var browser = windowManager.getMostRecentWindow( "navigator:browser" );
 				if (browser) {
@@ -310,7 +310,7 @@ gSmartTemplate.Util = {
 					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
 				}
 				else {
-					this.getMail3PaneWindow().window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'gSmartTemplate');
+					this.getMail3PaneWindow().window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'SmartTemplate4');
 				}
 
 				return;
@@ -331,7 +331,7 @@ gSmartTemplate.Util = {
 	openLinkInBrowser: function(evt,linkURI) {
 		let Cc = Components.classes;
 		let Ci = Components.interfaces;
-		if (gSmartTemplate.Util.Application === 'Thunderbird') {
+		if (SmartTemplate4.Util.Application === 'Thunderbird') {
 			var service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
 				.getService(Ci.nsIExternalProtocolService);
 			var ioservice = Cc["@mozilla.org/network/io-service;1"].
@@ -349,7 +349,7 @@ gSmartTemplate.Util = {
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
 		var ioservice,iuri,eps;
 
-		if (gSmartTemplate.Util.Application==='SeaMonkey' || gSmartTemplate.Util.Application==='Postbox')
+		if (SmartTemplate4.Util.Application==='SeaMonkey' || SmartTemplate4.Util.Application==='Postbox')
 		{
 			this.openLinkInBrowserForced(URL);
 			if(null!=evt) evt.stopPropagation();
@@ -376,7 +376,7 @@ gSmartTemplate.Util = {
 				}
 			}
 			if (tabmail) {
-				sTabMode = (gSmartTemplate.Util.Application === "Thunderbird" && gSmartTemplate.Util.Appver >= 3) ? "contentTab" : "3pane";
+				sTabMode = (SmartTemplate4.Util.Application === "Thunderbird" && SmartTemplate4.Util.Appver >= 3) ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, gSmartTemplate_TabURIregexp._thunderbirdRegExp);"});
 			}
@@ -418,20 +418,20 @@ gSmartTemplate.Util = {
 	
 	
 	showVersionHistory: function(ask) {
-		var version = gSmartTemplate.Util.VersionSanitized;
+		var version = SmartTemplate4.Util.VersionSanitized;
 
-		var sPrompt = gSmartTemplate.Util.getBundleString("gSmartTemplate.confirmVersionLink", "Display version history for smartTemplate4")
+		var sPrompt = SmartTemplate4.Util.getBundleString("SmartTemplate4.confirmVersionLink", "Display version history for smartTemplate4")
 		if (!ask || confirm(sPrompt + " " + version + "?")) {
-			gSmartTemplate.Util.openURL(null, "http://smarttemplate4.mozdev.org/version.html#" + version);
+			SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/version.html#" + version);
 		}
 	} ,
 	
 	showDonatePage: function () {
-		gSmartTemplate.Util.openURLInTab('http://smarttemplate4.mozdev.org/donate.html');
+		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/donate.html');
 	}  ,
 	
 	showHomePage: function () {
-		gSmartTemplate.Util.openURLInTab('http://smarttemplate4.mozdev.org/index.html');
+		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/index.html');
 	} ,
 
 	showAboutConfig: function(filter) {
@@ -460,5 +460,3 @@ gSmartTemplate.Util = {
 	}
 	
 };
-
-;

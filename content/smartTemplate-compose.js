@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
 // -------------------------------------------------------------------
-gSmartTemplate.classSmartTemplate = function()
+SmartTemplate4.classSmartTemplate = function()
 {
 	// -----------------------------------
 	// Extract Signature
@@ -9,13 +9,13 @@ gSmartTemplate.classSmartTemplate = function()
 	function extractSignature()
 	{
 		let sig = '';
-		gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.extractSignature()');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.extractSignature()');
 		let bodyEl = gMsgCompose.editor.rootElement; 
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
-		gSmartTemplate.signature = null;
-		gSmartTemplate.sigIsDefined = false;
+		SmartTemplate4.signature = null;
+		SmartTemplate4.sigIsDefined = false;
 		
-		let pref = gSmartTemplate.pref;
+		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value;
 		
 		// try to extract signature manually
@@ -66,7 +66,7 @@ gSmartTemplate.classSmartTemplate = function()
 		}
 		
 		if (match) {
-				gSmartTemplate.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node ' + theNodeName 
+				SmartTemplate4.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node ' + theNodeName 
 						+ '\n' + node.nodeName + '	' + node.nodeValue);
 			orgQuoteHeaders.push(node);
 			gMsgCompose.editor.deleteNode(node);
@@ -95,7 +95,7 @@ gSmartTemplate.classSmartTemplate = function()
 					match = false;
 			}
 			if (match) {
-				gSmartTemplate.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node '
+				SmartTemplate4.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node '
 						+ '\n' + node.nodeName + '	' + node.nodeValue);
 				gMsgCompose.editor.deleteNode(node);
 				node = nextNode;
@@ -106,7 +106,7 @@ gSmartTemplate.classSmartTemplate = function()
 	function deleteHeaderNode(node)
 	{
 		if (node) {
-			gSmartTemplate.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
+			SmartTemplate4.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
 						+ '\n' + node.innerHTML);
 			orgQuoteHeaders.push(node);
 			gMsgCompose.editor.deleteNode(node);
@@ -125,10 +125,10 @@ gSmartTemplate.classSmartTemplate = function()
 		function countLF(str) { return str.split("\n").length - 1; }
 		
 		
-		gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delReplyHeader()');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
 		let rootEl = gMsgCompose.editor.rootElement;
 		
-		var pref = gSmartTemplate.pref;
+		var pref = SmartTemplate4.pref;
 		var lines = 0;
 		if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) { 
 			lines = 2; 
@@ -149,7 +149,7 @@ gSmartTemplate.classSmartTemplate = function()
 		}
 		
 		
-		if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
 			// recursive search from root element
 			let node = findChildNode(rootEl, 'moz-email-headers-table');
 			if (node) {
@@ -170,7 +170,7 @@ gSmartTemplate.classSmartTemplate = function()
 					lines++;
 					break;
 			}
-			gSmartTemplate.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
+			SmartTemplate4.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
 	
 			// Delete original headers .. eliminates all #text nodes but deletes the others
 			while (rootEl.firstChild && lines > 0) {
@@ -206,7 +206,7 @@ gSmartTemplate.classSmartTemplate = function()
 	function delForwardHeader()
 	{		
 		function truncateTo2BR(root) {
-			gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','truncateTo2BR()');
+			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','truncateTo2BR()');
 			let node = root.firstChild;
 			// old method continues until it finds <br><br> after header table
 			let brcnt = 0;
@@ -216,20 +216,20 @@ gSmartTemplate.classSmartTemplate = function()
 				}
 				else {
 					// only older versions of Tb have 2 consecutive <BR>?? Tb13 has <br> <header> <br>
-					//if (gSmartTemplate.Util.versionSmaller(gSmartTemplate.Util.AppverFull, "10"))
+					//if (SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, "10"))
 					brcnt = 0; 
 				}
 				deleteHeaderNode(root.firstChild);
 			}
 		}
 		
-		gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.delForwardHeader()');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
 		
 		var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
 							 .getService(Components.interfaces.nsIStringBundleService)
 							 .createBundle("chrome://messenger/locale/mime.properties");
 		let origMsgDelimiter = bndl.GetStringFromID(1041);
-		gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
+		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
 		// Delete original headers
 		var rootEl = gMsgCompose.editor.rootElement;
@@ -256,7 +256,7 @@ gSmartTemplate.classSmartTemplate = function()
 							firstNode = inner;
 							continue;
 						}
-						gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
+						SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
 						gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
 						if (inner.nodeValue == origMsgDelimiter)
 								break;
@@ -271,19 +271,19 @@ gSmartTemplate.classSmartTemplate = function()
 		}
 	
 		// remove the original Mail Header
-	gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
-	if (gSmartTemplate.Util.versionGreaterOrEqual(gSmartTemplate.Util.AppverFull, "12")) {
+	SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
+	if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
 		// recursive search from root element
 		node = findChildNode(rootEl, 'moz-email-headers-table');
 		if (node) {
-			gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
+			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
 			let nextNode = node.nextSibling;
 			deleteHeaderNode(node);
 			// delete trailing newlines!
 			deleteWhiteSpaceNodes(nextNode);
 		}
 		else {
-			gSmartTemplate.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
+			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
 			if (!gMsgCompose.composeHTML) {
 				truncateTo2BR(rootEl.firstChild);
 			}
@@ -298,7 +298,7 @@ gSmartTemplate.classSmartTemplate = function()
 	// Remove template messages and Restore original quote headers
 	function undoTemplate()
 	{
-		gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.undoTemplate()');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.undoTemplate()');
 		var curEl = gMsgCompose.editor.rootElement.firstChild;
 		var nextEl = gMsgCompose.editor.rootElement.firstChild;
 		if (nextEl && nextEl.nodeName == "PRE")
@@ -326,7 +326,7 @@ gSmartTemplate.classSmartTemplate = function()
 	// Get template message
 	function getMsgTmpl(type, idKey, prefmsg, prefhtml, prefnbr)
 	{
-		var pref = gSmartTemplate.pref;
+		var pref = SmartTemplate4.pref;
 		var msg = pref.getWithIdkey(idKey, prefmsg, "");
 			//Reset X to Today after each newline character
 			//except for lines ending in { or }; breaks the omission of non-existent CC??
@@ -341,20 +341,20 @@ gSmartTemplate.classSmartTemplate = function()
 			else
 				{ msg = msg.replace(/\n/gm, ""); }
 		} else {
-			msg = gSmartTemplate.escapeHtml(msg);
+			msg = SmartTemplate4.escapeHtml(msg);
 			// Escape space, if compose is HTML
 			if (gMsgCompose.composeHTML)
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
-		return gSmartTemplate.regularize(msg, type);
+		return SmartTemplate4.regularize(msg, type);
 	};
 
 	// -----------------------------------
 	// Add template message
 	function insertTemplate(startup)
 	{
-		gSmartTemplate.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
-		var pref = gSmartTemplate.pref;
+		SmartTemplate4.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
+		var pref = SmartTemplate4.pref;
 		// var	 editor = GetCurrentEditor();
 		let ed = gMsgCompose.editor; 
 		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); // 
@@ -378,7 +378,7 @@ gSmartTemplate.classSmartTemplate = function()
 			undoTemplate();
 		}
 		
-		gSmartTemplate.signature = extractSignature();
+		SmartTemplate4.signature = extractSignature();
 
 		// start parser...
 		try {
@@ -419,7 +419,7 @@ gSmartTemplate.classSmartTemplate = function()
 				case msgComposeType.ForwardInline:
 					if (pref.getWithIdkey(idKey, "fwd", false))
 					{
-						gSmartTemplate.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
+						SmartTemplate4.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
 		
 						msgTmpl = getMsgTmpl("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
@@ -438,7 +438,7 @@ gSmartTemplate.classSmartTemplate = function()
 			}
 		}
 		catch(ex) {
-			gSmartTemplate.Util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex); 
+			SmartTemplate4.Util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex); 
 		}
 		
 		// add template message --------------------------------
@@ -457,9 +457,9 @@ gSmartTemplate.classSmartTemplate = function()
 		}
 		
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
-		let theSignature = gSmartTemplate.signature;
-		if (!gSmartTemplate.sigIsDefined && theSignature) {
-			let pref = gSmartTemplate.pref;
+		let theSignature = SmartTemplate4.signature;
+		if (!SmartTemplate4.sigIsDefined && theSignature) {
+			let pref = SmartTemplate4.pref;
 			let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
 			let bodyEl = gMsgCompose.editor.rootElement;
 			
@@ -481,7 +481,7 @@ gSmartTemplate.classSmartTemplate = function()
 	
 	// -----------------------------------
 	// Constructor
-	// var gSmartTemplate = gSmartTemplate;
+	// var SmartTemplate4 = SmartTemplate4;
 	var orgQuoteHeaders = new Array();
 
 	// -----------------------------------

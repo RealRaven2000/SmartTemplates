@@ -10,6 +10,7 @@
 // 0.8.1: rewrote large partitions of the script code to fix problems in TB13
 // 0.8.2: moved main object out to new file smartTemplate-main.js to share with settings.xul
 // 0.8.3: reformatted.
+// 0.8.4: renamed messengercomposeOverlay to smartTemplate-overlay.js for easier debugging
 // -----------------------------------------------------------------------------------
 
 //******************************************************************************
@@ -20,7 +21,7 @@
 // -------------------------------------------------------------------
 // common (preference)
 // -------------------------------------------------------------------
-gSmartTemplate.classPref = function(branch, useDefault)
+SmartTemplate4.classPref = function(branch, useDefault)
 {
 	// -----------------------------------
 	// Constructor
@@ -96,7 +97,7 @@ gSmartTemplate.classPref = function(branch, useDefault)
 // -------------------------------------------------------------------
 // Get header string
 // -------------------------------------------------------------------
-gSmartTemplate.classGetHeaders = function(messageURI)
+SmartTemplate4.classGetHeaders = function(messageURI)
 {
 	// -----------------------------------
 	// Constructor
@@ -148,7 +149,7 @@ gSmartTemplate.classGetHeaders = function(messageURI)
 // -------------------------------------------------------------------
 // MIME decode
 // -------------------------------------------------------------------
-gSmartTemplate.mimeDecoder = {
+SmartTemplate4.mimeDecoder = {
 	headerParam: Components
 	             .classes["@mozilla.org/network/mime-hdrparam;1"]
 	             .getService(Components.interfaces.nsIMIMEHeaderParam),
@@ -172,7 +173,7 @@ gSmartTemplate.mimeDecoder = {
 		{
 			charset = "iso-2022-jp-1";  // RFC2237
 		} 
-		gSmartTemplate.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
+		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
 
@@ -207,7 +208,7 @@ gSmartTemplate.mimeDecoder = {
 	// Split addresses and change encoding.
 	split : function (addrstr, charset, format)
 	{
-		gSmartTemplate.Util.logDebugOptional('mime','mimeDecoder.split()');
+		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split()');
 		// MIME decode
 		addrstr = this.decode(addrstr, charset);
 		// Escape "," in mail addresses
@@ -271,20 +272,20 @@ gSmartTemplate.mimeDecoder = {
 // -------------------------------------------------------------------
 // Regularize template message
 // -------------------------------------------------------------------
-gSmartTemplate.regularize = function(msg, type)
+SmartTemplate4.regularize = function(msg, type)
 {
 	function getSignatureInner(removeDashes) {
-		if (gSmartTemplate.signature != null) {
-			gSmartTemplate.sigIsDefined = true;
+		if (SmartTemplate4.signature != null) {
+			SmartTemplate4.sigIsDefined = true;
 			if (removeDashes) {
-				if (gSmartTemplate.signature.firstChild.nodeValue == "-- ") {
-					gSmartTemplate.signature.removeChild(gSmartTemplate.signature.firstChild); //remove '-- '
-					gSmartTemplate.signature.removeChild(gSmartTemplate.signature.firstChild); //remove 'BR'
-					return gSmartTemplate.signature.innerHTML;
+				if (SmartTemplate4.signature.firstChild.nodeValue == "-- ") {
+					SmartTemplate4.signature.removeChild(SmartTemplate4.signature.firstChild); //remove '-- '
+					SmartTemplate4.signature.removeChild(SmartTemplate4.signature.firstChild); //remove 'BR'
+					return SmartTemplate4.signature.innerHTML;
 				}
 			} 
 			else {
-				return gSmartTemplate.signature.innerHTML;
+				return SmartTemplate4.signature.innerHTML;
 			}
 		}
 		return "";
@@ -307,8 +308,8 @@ gSmartTemplate.regularize = function(msg, type)
 		return acctKey;
 	}
 
-	gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.regularize(' + msg +')');
-	// var parent = gSmartTemplate;
+	SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.regularize(' + msg +')');
+	// var parent = SmartTemplate4;
 	var idkey = document.getElementById("msgIdentity").value;
 	var identity = Components.classes["@mozilla.org/messenger/account-manager;1"]
 					 .getService(Components.interfaces.nsIMsgAccountManager)
@@ -342,7 +343,7 @@ gSmartTemplate.regularize = function(msg, type)
 		// Check existence of a header related to the reserved word.
 		function chkRw(str, rw, dmy) {
 			try{
-				gSmartTemplate.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  rw + ', ' + dmy + ')');
+				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  rw + ', ' + dmy + ')');
 				let el = (typeof rw2h[rw]=='undefined') ? '' : rw2h[rw];
 				return el == "d.c." 
 					? str 
@@ -386,7 +387,7 @@ gSmartTemplate.regularize = function(msg, type)
 		var tm = new Date();
 		var fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
 					createInstance(Components.interfaces.nsIScriptableDateFormat);
-		var locale = gSmartTemplate.pref.getLocalePref();
+		var locale = SmartTemplate4.pref.getLocalePref();
 		
 		// Set Time
 		tm.setTime(time / 1000 + (timezone) * 60 * 1000);
@@ -413,10 +414,10 @@ gSmartTemplate.regularize = function(msg, type)
 		var tm = new Date();
 		var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
 		var expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
-		var cal = gSmartTemplate.cal;
+		var cal = SmartTemplate4.cal;
 
 		// Set %A-Za-z% to time of original message was sent.
-		if (gSmartTemplate.whatIsX == gSmartTemplate.XisSent)
+		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent)
 		{
 			tm.setTime(date / 1000);
 		}
@@ -435,17 +436,17 @@ gSmartTemplate.regularize = function(msg, type)
 		switch(s){
 			case "datelocal":
 			case "dateshort":
-				if (gSmartTemplate.whatIsX == gSmartTemplate.XisToday){
+				if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
 					s = prTime2Str(tm.getTime() * 1000, s, 0);
-					return gSmartTemplate.escapeHtml(s);
+					return SmartTemplate4.escapeHtml(s);
 				}else{
 					s = prTime2Str(date, s, 0);
-					return gSmartTemplate.escapeHtml(s);
+					return SmartTemplate4.escapeHtml(s);
 				}
 			case "timezone":    
 			case "date_tz":
 					var matches = tm.toString().match(/([+-][0-9]{4})/);
-					return gSmartTemplate.escapeHtml(matches[0]);
+					return SmartTemplate4.escapeHtml(matches[0]);
 		}
 		
 		switch (s) {
@@ -508,10 +509,10 @@ gSmartTemplate.regularize = function(msg, type)
 				break;
 			// Change time of %A-Za-z%
 			case "X:=sent":
-				gSmartTemplate.whatIsX = gSmartTemplate.XisSent;
+				SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
 				return "";
 			case "X:=today":
-				gSmartTemplate.whatIsX = gSmartTemplate.XisToday;
+				SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
 				return "";
 
 		// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
@@ -529,7 +530,7 @@ gSmartTemplate.regularize = function(msg, type)
 		// unreachable code! =>
 		// s = s.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
 		}
-		return gSmartTemplate.escapeHtml(s);
+		return SmartTemplate4.escapeHtml(s);
 	}
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
 	return msg;

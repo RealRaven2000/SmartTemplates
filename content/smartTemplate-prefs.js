@@ -2,7 +2,7 @@
 "use strict"
 // smartTemplate-prefs.js
 
-gSmartTemplate.Preferences = {
+SmartTemplate4.Preferences = {
 	Prefix: "extensions.smartTemplate4.",
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 
@@ -36,21 +36,21 @@ gSmartTemplate.Preferences = {
 			return this.service.getBoolPref(p);
 		} catch(e) {
 			var s="Err:" +e;
-			gSmartTemplate.Util.logToConsole("getBoolPref("+p+") failed:\n" + s);
+			SmartTemplate4.Util.logToConsole("getBoolPref("+p+") failed:\n" + s);
 			return false;
 		}
 	},
 
 	getBoolPrefQF: function(p) {
-		return gSmartTemplate.Preferences.getBoolPref(this.Prefix + p);
+		return SmartTemplate4.Preferences.getBoolPref(this.Prefix + p);
 	},
 
 	setBoolPrefQF: function(p, v) {
-		return gSmartTemplate.Preferences.setBoolPref(this.Prefix + p, v);
+		return SmartTemplate4.Preferences.setBoolPref(this.Prefix + p, v);
 	},
 
 	getIntPrefQF: function(p) {
-		return gSmartTemplate.Preferences.getIntPref(this.Prefix + p);
+		return SmartTemplate4.Preferences.getIntPref(this.Prefix + p);
 	},
 
 	setIntPrefQF: function(p, v) {
