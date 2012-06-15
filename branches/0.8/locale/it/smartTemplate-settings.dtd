@@ -22,6 +22,9 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button	        		"Accettare">
 <!ENTITY cancel_button	        		"Scartare">
+<!-- #### OVERLAYS #### -->
+<!ENTITY add-onName.label				"SmartTemplate4">
+<!ENTITY add-onNameSettings_tip			"Opzioni de SmartTemplate4">
 
 
 <!-- #### GUI #### -->
@@ -65,8 +68,6 @@
 <!ENTITY help_dialog_title      		"Contenuti guida di SmartTemplate4">
 <!ENTITY help_keyword.cap       		"Contenuti guida">
 
-<!ENTITY add-onName.label				"SmartTemplate4">
-<!ENTITY add-onNameSettings_tip			"Opzioni de SmartTemplate4">
 
 <!ENTITY fix_var.cap 					"Variabili di base">
 <!ENTITY ownname.label 					"Nome"> 
