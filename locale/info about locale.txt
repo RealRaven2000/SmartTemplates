@@ -33,7 +33,6 @@ the proper locale AMO Page -> or default en-US if his language not exist on AMO
 
 this is in our Version in EN only (untranslated)
 
-fr Help things missing
 it Menuitems and Help things missing
 sv Menuitems and Help things missing
 
