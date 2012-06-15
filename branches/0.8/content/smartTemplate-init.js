@@ -1,5 +1,5 @@
 
 window.setTimeout ( function(){
-	gSmartTemplate.init();
-	document.getElementById("msgcomposeWindow").addEventListener("compose-window-init", gSmartTemplate.initListner, false);
+	SmartTemplate4.init();
+	document.getElementById("msgcomposeWindow").addEventListener("compose-window-init", SmartTemplate4.initListner, false);
 },10 );

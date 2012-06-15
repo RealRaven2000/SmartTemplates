@@ -9,7 +9,7 @@
             title = "&pref_dialog.title;"
             maxwidth = "&pref_dialog.maxwidth;"
             buttons = "extra2,cancel,accept"
-            onload = "gSmartTemplateSettings.onLoad();"
+            onload = "SmartTemplate4.Settings.onLoad();"
             buttonlabelextra2 = "&help_button;"
             ondialogextra2 = "document.documentElement.openSubDialog('chrome://smarttemplate4/content/help.xul', '', null);">
 
@@ -18,7 +18,7 @@
 	<!-- ######## Identity Dropdown Box Creating ######## -->
   <hbox align = "center" flex = "1">
 		<label value = "&pref_server_desc;"/>
-			<menulist id = "msgIdentity" class = "identity-menulist" label = "&pref_server_def;" flex = "1" oncommand = "gSmartTemplateSettings.selectIdentity(this.value);">
+			<menulist id = "msgIdentity" class = "identity-menulist" label = "&pref_server_def;" flex = "1" oncommand = "SmartTemplate4.Settings.selectIdentity(this.value);">
 				<menupopup id = "msgIdentityPopup">
 					<menuitem class = "identity-popup-item" label = "&pref_server_def;" value = "common"/>
 				</menupopup>
@@ -52,7 +52,7 @@
 	     <checkbox id = "use_default"
 	               label = "&pref_def.label;"
 	               preference = "pref_def"
-	               oncommand = "gSmartTemplateSettings.prefDeck('default.deckB', this.checked ?1:0);"/>
+	               oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ?1:0);"/>
      
 			<!-- ######## Default DeckB & Tab Creating ######## -->
 			<deck id = "default.deckB" flex = "1">
@@ -71,7 +71,7 @@
 		          <checkbox id = "new"      
 		                    label = "&pref_new.label;" 
 		                    preference = "pref_new"
-		                    oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+		                    oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 		          <vbox class = "indent" flex = "1">
 		           <textbox  id = "newmsg"  
 		                     multiline = "true" 
@@ -83,7 +83,7 @@
 		                     label = "&pref_html.label;"
 		                     tooltiptext = "&pref_html.cap;"
 		                     preference = "pref_newhtml"
-		                     oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+		                     oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 		           <checkbox id = "newnbr"  
 		                     class = "indent" 
 		                     label = "&pref_rep_br.label;"
@@ -101,7 +101,7 @@
 								<checkbox id = "rsp"      
 								          label = "&pref_rsp.label;" 
 								          preference = "pref_rsp"
-								          oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+								          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 								<vbox class = "indent" flex = "1">
 									<textbox id = "rspmsg"
 									         multiline = "true" 
@@ -113,7 +113,7 @@
 									          label = "&pref_html.label;"
 									          tooltiptext = "&pref_html.cap;"
 									          preference = "pref_rsphtml"
-									          oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+									          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 									<checkbox id = "rspnbr"
 									          class = "indent"
 									          label = "&pref_rep_br.label;"
@@ -136,7 +136,7 @@
 							<checkbox id = "fwd"      
 							          label = "&pref_fwd.label;"
 							          preference = "pref_fwd"
-							          oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+							          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 							<vbox class = "indent" flex = "1">
 									<textbox id = "fwdmsg"  
 									         multiline = "true" 
@@ -148,7 +148,7 @@
 									          label = "&pref_html.label;"
 									          tooltiptext = "&pref_html.cap;"
 									          preference = "pref_fwdhtml"
-									          oncommand = "gSmartTemplateSettings.disableWithCheckbox();"/>
+									          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 									<checkbox id = "fwdnbr"  
 									          class = "indent" 
 									          label = "&pref_rep_br.label;"
@@ -185,14 +185,14 @@
 		          instantApply = "true"
 		          align = "right"
 		          tooltiptext = "Right-click for more options"
-		          oncontextmenu = "gSmartTemplate.Util.showAboutConfig('smartTemplate4.debug');return false;"
+		          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
 		          preference = "pref_debug"/>
 	</hbox>
 
   </prefpane>
 	<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 	<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
   <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/settings.js"/>
  
 </prefwindow>

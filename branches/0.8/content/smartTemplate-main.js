@@ -1,7 +1,7 @@
 
 // the main object
 
-var gSmartTemplate = {
+var SmartTemplate4 = {
 	// definitions for whatIsX (time of %A-Za-z%)
 	XisToday : 0,
 	XisSent  : 1,
@@ -11,21 +11,21 @@ var gSmartTemplate = {
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
-			gSmartTemplate.notifyComposeBodyReady();
+			SmartTemplate4.notifyComposeBodyReady();
 		},
 		ComposeProcessDone: function(aResult) {},
 		SaveInFolderDone: function(folderURI) {}
 	},
 	
 	initListner: function() {	
-		gMsgCompose.RegisterStateListener(gSmartTemplate.stateListener);
+		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 	},
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
 	notifyComposeBodyReady: function()
 	{	
-		this.Util.logDebugOptional('events','gSmartTemplate.notifyComposeBodyReady()');
+		this.Util.logDebugOptional('events','SmartTemplate4.notifyComposeBodyReady()');
 		// Add template message
 		this.smartTemplate.insertTemplate(true);
 	},
@@ -35,7 +35,7 @@ var gSmartTemplate = {
 	// -------------------------------------------------------------------
 	loadIdentity : function(startup)
 	{	
-		this.Util.logDebugOptional('functions','gSmartTemplate.loadIdentity(' + startup +')');
+		this.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
 			this.oldFunc_LoadIdentity(startup);
@@ -110,19 +110,19 @@ var gSmartTemplate = {
 	init: function()
 	{
 		function smartTemplate_loadIdentity(startup){
-			return gSmartTemplate.loadIdentity(startup);
+			return SmartTemplate4.loadIdentity(startup);
 		}
-		gSmartTemplate.Util.logDebug('gSmartTemplate.init()');
+		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
 		this.oldFunc_LoadIdentity = LoadIdentity;
 		LoadIdentity = smartTemplate_loadIdentity;
 	
-		this.pref = new gSmartTemplate.classPref("extensions.smarttemplate.", "def");
+		this.pref = new SmartTemplate4.classPref("extensions.smarttemplate.", "def");
 		this.smartTemplate = new this.classSmartTemplate();
 		this.cal = new this.classCalIDateTimeFormatter(true);
 		
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
-		this.Util.logDebug('gSmartTemplate.init() ends.');
+		this.Util.logDebug('SmartTemplate4.init() ends.');
 		
 	}
 };
