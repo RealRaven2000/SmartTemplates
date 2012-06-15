@@ -67,7 +67,7 @@ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 			<Description>
 				<em:locale>fi</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>SmartTemplate4 bietet die Option die Standard Thunderbird Mailheader quote-header komfortabel anzupassen</em:description>
+				<em:description>SmartTempalate4:n avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:developer>Marky Mark DE</em:developer>
