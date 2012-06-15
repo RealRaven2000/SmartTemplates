@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------------------------- */
 /* ---------------------------- create by Marky Mark DE ------------------------------ */
-/* ---------------------------- last edit at 06/02/2012 ------------------------------ */
+/* ---------------------------- last edit at 06/15/2012 ------------------------------ */
 /* ----------------------------------------------------------------------------------- */
 /* ----------------------------------- Changelog ------------------------------------- */
 /* ----------------------------------------------------------------------------------- */
@@ -20,28 +20,28 @@
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4CloseItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/close.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
 }
 #SmartTemplate4ExportMenuitem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/export.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/export.png") !important;
 }
 #SmartTemplate4ExportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #SmartTemplate4ImportMenuitem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/import.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/import.png") !important;
 }
 #SmartTemplate4ImportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #SmartTemplate4add-onHomeItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/mozilla.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
 }
 #SmartTemplate4add-onSupportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/tool8.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
 }
 #SmartTemplate4RightClickCopyItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/copy.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
 }
 
 /* ################################################################################### */
@@ -102,13 +102,13 @@
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4AcceptButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/accept.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/accept.png") !important;
 }
 #SmartTemplate4CacelButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/cancel.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/cancel.png") !important;
 }
 #SmartTemplate4AccountmanagerButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
 }
 
 
@@ -148,19 +148,19 @@
 /* ################################## ICON BINDINGS ################################## */
 /* Icon Binding in Tabs only over class possible! */
 .NewTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
 .RspTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
 }
 .FwdTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
 .HelpTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/help.png") !important;
 }
 .AboutTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 
 /* ################################################################################### */
@@ -182,25 +182,25 @@
 /* ################################### ICON BINDINGS ################################# */
 /* Icon Binding in Caps inside tabs only over class possible! */
 .NewMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
 .RspMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
 }
 .FwdMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
 .AboutCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 .AccountCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;  
+  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;  
 }
 .HelpCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/help.png") !important;
 }
 .AccountmanagerCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
 
 /* ################################################################################### */
@@ -211,7 +211,7 @@
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
 .AboutLogo {
-  background-image: url("chrome://SmartTemplate4/skin/logo.png") !important;
+  background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;  
 }
@@ -349,5 +349,5 @@ Geneva, Arial, Helvetica, sans-serif;
 
 /* ################################### ICON BINDINGS ################################# */
 #SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
