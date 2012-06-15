@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate.dtd">
+<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <dialog id="smartTemplateHelpDialog"
         title="&help_dialog_title;"
@@ -11,7 +11,7 @@
 		<vbox flex="1">
 			<groupbox>
 				<caption label="&help_keyword.cap;"/>
-				<iframe src="chrome://smarttemplate4/locale/help.xhtml"  type="content" height="450" width="455"/>
+				<iframe src="chrome://smarttemplate4/content/help.xhtml" height="450" width="455"/>
 			</groupbox>
 		</vbox>
 </dialog>

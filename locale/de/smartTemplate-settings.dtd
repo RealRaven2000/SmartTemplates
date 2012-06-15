@@ -1,10 +1,13 @@
 ﻿<!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Datei">
 <!ENTITY tools.label					"Extras">
+<!ENTITY edit.label						"Editieren">
 <!ENTITY help.label						"Hilfe">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Kopieren">
+<!ENTITY paste.label					"Einfügen">
+<!ENTITY insert.label					"Variable einfügen">
 <!ENTITY close.label					"Schließen">
 <!ENTITY export.label					"Exportieren">
 <!ENTITY import.label					"Importieren">
