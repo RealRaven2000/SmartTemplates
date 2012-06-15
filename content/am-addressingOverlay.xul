@@ -14,7 +14,7 @@
         <button  id="editst"    
                  label="&account_st.button;"
                  class="AccountmanagerButton"
-                 oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
+                 oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal,resizable', gIdentity.key);"/>
       </hbox>
     </groupbox>
   </vbox>

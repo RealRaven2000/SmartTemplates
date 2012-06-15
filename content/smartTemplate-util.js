@@ -432,7 +432,33 @@ gSmartTemplate.Util = {
 	
 	showHomePage: function () {
 		gSmartTemplate.Util.openURLInTab('http://smarttemplate4.mozdev.org/index.html');
+	} ,
+
+	showAboutConfig: function(filter) {
+
+		const name = "Preferences:ConfigManager";
+		const uri = "chrome://global/content/config.xul";
+
+		var mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
+		var w = mediator.getMostRecentWindow(name);
+
+		if (!w) {
+			var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
+			w = watcher.openWindow(null, uri, name, "chrome,resizable,centerscreen,width=500px,height=350px", null);
+		}
+		w.focus();
+		w.setTimeout(
+			function () {
+				var flt = w.document.getElementById("textbox");
+				if (flt) {
+					 flt.value=filter;
+					 flt.focus();
+					 if (w.self.FilterPrefs)
+					 w.self.FilterPrefs();
+				}
+			}, 300);
 	}
+	
 };
 
 ;
