@@ -1,0 +1,177 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label						"Archivo">
+<!ENTITY tools.label					"Herramientas">
+<!ENTITY help.label						"Ayuda">
+
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label						"Copiar">
+<!ENTITY close.label					"Cerrar">
+<!ENTITY export.label					"Exportar">
+<!ENTITY import.label					"Importar">
+<!ENTITY settings.label					"Opciones y Plantillas">
+<!ENTITY add-onHome.label				"Add-On Homepage">
+<!ENTITY add-onSupport.label			"Support Homepage">
+
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab 					"Nuevo">
+<!ENTITY pref_rsp.tab 					"Responder">
+<!ENTITY pref_fwd.tab 					"Reenviar">
+<!ENTITY pref_help.tab         			"Ayuda">
+<!ENTITY pref_about.tab         		"Acerca">
+
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button 					"Aceptar">
+<!ENTITY cancel_button 					"Cancelar">
+
+<!-- #### OVERLAYS #### -->
+<!ENTITY add-onName.label				"SmartTemplate4">
+<!ENTITY add-onNameSettings_tip			"Opciones de SmartTemplate4">
+
+<!-- #### GUI #### -->
+<!ENTITY pref_dialog.title 				"Opciones de SmartTemplate4">
+<!ENTITY pref_server_desc 				"Cuenta">
+<!ENTITY pref_server_def 				"Común">
+
+<!ENTITY pref_def.label 				"Usar conún">
+<!ENTITY pref_def.cap 					"Elimine 'Usar común' si quiere predisponer esta cuenta.">
+
+<!ENTITY pref_newmsg.cap 				"Nuevo mensaje">
+<!ENTITY pref_new.label 				"Aplicar esta plantilla al nuevo mensaje">
+
+<!ENTITY pref_rspmsg.cap 				"Responder mensaje">
+<!ENTITY pref_rsp.label 				"Aplicar esta plantilla al mensaje de respuesta">
+<!ENTITY pref_rsphead.label 			"Usar en vez del encabezado de cita estándar">
+
+<!ENTITY pref_fwdmsg.cap 				"Reenviando el mensaje">
+<!ENTITY pref_fwd.label 				"Aplicar esta plantilla al mensaje a reenviar">
+<!ENTITY pref_fwdhead.label 			"Usar en vez del encabezado estándar de respuesta">
+
+<!ENTITY pref_html.label 				"Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap 					"Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la sección de ayuda para más detalles.">
+<!ENTITY pref_rep_br.label 				"Sustituir salto de línea por &lt;br&gt;">
+<!ENTITY pref_rep_br.cap 				"NOTA: No sustituirá el salto de línea que siga a una etiqueta HTML con &lt;br&gt;.">
+
+<!ENTITY pref_quotehead_tip 			"Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto.">
+<!ENTITY pref_template_tip 				"Puede cambiar el encabezado de respuesta por 'variables' de palabras clave. Consulte la ayuda para más detalles.">
+
+<!ENTITY help_dialog_title 				"Ayuda de SmartTemplate4">
+<!ENTITY help_keyword.cap 				"Ayuda">
+
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap 						"Acerca de SmartTemplate4">
+<!ENTITY creator.label					"Creator">
+<!ENTITY developer.label				"Developer">
+<!ENTITY localename.label				"es-ES">
+<!ENTITY localized.label				"Translator">
+<!ENTITY translatorNickname.label		"urko (BabelZilla)">
+<!ENTITY contributor.label				"Contributor">
+<!ENTITY about.label 					"SmartTemplate4 ofrece unas plantillas inteligentes y fáciles de usar que personalizan encabezado estándar de respuesta de Thunderbir. Se puede utilizar estas plantillas para cada cuenta individual o para la configuración global (cuentas comunes).">
+
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap 					"Variables fijas">
+<!ENTITY ownname.label 					"Su nombre">
+<!ENTITY ownmail.label 					"Su dirección de correo">
+<!ENTITY date.label 					"Fecha y hora (las mismas que el formato original de la cabecera del correo)">
+<!ENTITY tomail.label 					"Dirección de correo del destinatario">
+<!ENTITY frommail.label 				"Dirección de correo del remitente">
+<!ENTITY ccmail.label 					"Dirección de correo del destinatario">
+<!ENTITY sig.label 						"Firma de la Configuración de cuentas de TB">
+<!ENTITY sig2.label 					"Firma de la Configuración de cuentas de TB pero sin el '--'">
+
+<!ENTITY to_var.cap 					"Variables de destinatario (Para)">
+<!ENTITY to_note.label 					"Si no se dispone del nombre, se mostrará la dirección de correo">
+<!ENTITY to.label 						"Nombre del destinatario (predeterminado)">
+<!ENTITY tofirstname.label 				"Nombre de pila del destinatario">
+<!ENTITY toname.label 					"Apellido del destinatario">
+
+<!ENTITY from_var.cap 					"Variables del remitente (De)">
+<!ENTITY from_note.label 				"Si no se dispone del nombre, se mostrará la dirección de correo">
+<!ENTITY from.label 					"Nombre de remitente (predeterminado)">
+<!ENTITY fromfirstname.label 			"Nombre de pila del remitente">
+<!ENTITY fromname.label 				"Apellido del remitente">
+
+<!ENTITY cc_var.cap 					"Variables de destinatario (CC)">
+<!ENTITY cc_note.label 					"Si no se dispone del nombre, se mostrará la dirección de correo">
+<!ENTITY cc.label 						"Nombre de destinatario (predeterminado)">
+<!ENTITY ccfirstname.label 				"Nombre de pila del destinatario">
+<!ENTITY ccname.label 					"Apellido del destinatario">
+
+<!ENTITY spec_form.cap 					"Formato especial">
+<!ENTITY specform_note.label 			"Sólo se mostrará la frase &#123;Cc: &#37;cc(name)&#37;&#125; si se puede sustituir la variable &#37;cc(name)&#37;">
+<!ENTITY ex_brack.label 				"Ejemplo: Para: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+
+<!ENTITY sub_var.cap 					"Asunto">
+<!ENTITY sub.label 						"asunto del correo que se responde o reenvía.">
+<!ENTITY sub2.label 					"asunto del mensaje que se está redactando">
+
+<!ENTITY spec_var.cap 					"Variables espciales">
+<!ENTITY messid.label 					"ID de mensaje">
+<!ENTITY newsgr.label 					"Grupos de noticias">
+<!ENTITY xmail.label 					"X-Mailer">
+<!ENTITY any.label						"Cualquier cabecera de línea">
+
+<!ENTITY fix_vartz.cap 					"Variables fijas para formatos de fecha y hora y zona horaria">
+<!ENTITY fix_vartz_note.label 			"Se pueden combinar con &#37;X:=sent&#37;">
+<!ENTITY datelocal.label 				"Fecha y hora (formato local)">
+<!ENTITY dateshort.label 				"Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label 					"Zona horaria (+0100, +0200, ... )">
+<!ENTITY tzname.label 					"GMT, PST, EST, ...">
+
+<!ENTITY var_custom.cap 				"Variables para formatos personalizados de fecha y hora">
+<!ENTITY customdf_note.label 			"Se pueden combinar con &#37;X:=sent&#37;">
+<!ENTITY A.label 						"Día de la semana (Viernes)">
+<!ENTITY a.label 						"Día de la semana (Vie.)">
+<!ENTITY d.label 						"Día del mes (01 a 31)">
+<!ENTITY e.label 						"Día del mes (1 a 31)">
+<!ENTITY m.label 						"Mes (01 a 12)">
+<!ENTITY n.label 						"Mes (1 a 12)">
+<!ENTITY B.label 						"Mes (Enero)">
+<!ENTITY b.label 						"Mes (Ene.)">
+<!ENTITY y.label 						"Año (1970)">
+<!ENTITY m.label 						"Minuto (00 a 59)">
+<!ENTITY s.label 						"Segundo (00 a 59)">
+<!ENTITY h.label 						"Hora en formato de 24 horas (00 a 23)">
+<!ENTITY k.label 						"Hora en formato de 24 horas (0 a 23)">
+<!ENTITY i.label						"Hora en formato de 12 horas (01 a 12)">
+<!ENTITY l.label						"Hora en formato de 12 horas (1 a 12)">
+<!ENTITY p.label 						"AM / PM">
+<!ENTITY p1.label 						"a.m.">
+<!ENTITY p2.label 						"A.M.">
+<!ENTITY p3.label 						"AM">
+
+<!ENTITY var_xsent.cap 					"Uso de &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label 				"Las variables de fecha y hora normalmente adoptarán los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
+
+<!ENTITY xsent_long.cap 				"Ejemplo de una cadena de texto larga:">
+<!ENTITY xsent_long.label 				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; a las &#37;H&#37;:&#37;M&#37;:">
+<!ENTITY xsent_long_result.label 		"Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
+
+<!ENTITY xsent_short.cap 				"Ejemplo de cadena de texto corta:">
+<!ENTITY xsent_short.label 				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label 		"Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
+<!ENTITY xsent_short_note.label 		"Además, también puede utilizar en ambos casos las siguientes variables:">
+
+<!ENTITY localedate.label 				"Fecha y hora (formato local)">
+<!ENTITY shortdate.label 				"Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label 			"Zona horaria (+0100, +0200, ... )">
+<!ENTITY timezonename.label 			"GMT, PST, EST, ...">
+
+<!ENTITY im-ex.cap                      "Importar/Exportar predisposiciones y plantillas">
+<!ENTITY im-ex_note1.label              "Puede exportar e importar sus predisposiciones y plantillas asociadas a cada cuenta.">
+<!ENTITY im-ex_note2.label              "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplate4.">
+<!ENTITY im-ex_note3.label              "Seleccione a continuación 'Herramientas' => 'Exportar' => 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador.">
+<!ENTITY im-ex_note4.label              "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplate4. Seleccione después 'Herramientas' => 'Importar' => 'Predisposiciones y plantillas' de la barra de menú.">
+<!ENTITY im-ex_note5.label              "Seleccione el archivo SmartTemplate4 (xxx.st4) a importar.">
+<!ENTITY im-ex_note6.label              "NOTA: En las plataformas Apple/Macintosh la barra de menú estará en la barra del título en vez de en la ventana de Opciones de SmartTemplate4. Es el comportamiento estándar en esas plataformas por lo que no se puede modificar.">
+
+<!ENTITY html_note.cap 					"Notas sobre las plantillas de HTML">
+<!ENTITY html_note.label 				"¡Por favor, utilice únicamente caracteres UTF-8 (Unicode) en las plantillas de HTML!">
+
+<!ENTITY table.cap 						"Uso de las variables">
+<!ENTITY table_note.label 				"Si se usa incorrectamente una variable se almacenará un error en la Consola de error.">
+
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label 			"Variable">
+<!ENTITY table_new.label 				"Nuevo">
+<!ENTITY table_reply.label 				"Responder">
+<!ENTITY table_fwd.label 				"Reenviar">
