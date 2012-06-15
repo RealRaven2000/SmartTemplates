@@ -332,8 +332,8 @@ SmartTemplate4.regularize = function(msg, type)
 	let msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
 	let charset = (type != "new") ? msgDbHdr.Charset : null;
 	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
+	let date = (type != "new") ? msgDbHdr.date : null;
 	if (type != "new") {
-		let date = msgDbHdr.date;
 		// for Reply/Forward message
 		let tz = new function(date) {
 			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
