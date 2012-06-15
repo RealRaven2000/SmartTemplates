@@ -126,8 +126,8 @@ gSmartTemplate.classGetHeaders = function(messageURI)
 			return null;
 		}
 	}
-	var headers = Components.classes["@mozilla.org/messenger/mimeheaders;1"].
-					createInstance().QueryInterface(Components.interfaces.nsIMimeHeaders);
+	var headers = Components.classes["@mozilla.org/messenger/mimeheaders;1"]
+	              .createInstance().QueryInterface(Components.interfaces.nsIMimeHeaders);
 	headers.initialize(msgContent, msgContent.length);
 
 	// -----------------------------------
@@ -149,10 +149,12 @@ gSmartTemplate.classGetHeaders = function(messageURI)
 // MIME decode
 // -------------------------------------------------------------------
 gSmartTemplate.mimeDecoder = {
-	headerParam: Components.classes["@mozilla.org/network/mime-hdrparam;1"]
-				 .getService(Components.interfaces.nsIMIMEHeaderParam),
-	cvtUTF8 : Components.classes["@mozilla.org/intl/utf8converterservice;1"]
-				  .getService(Components.interfaces.nsIUTF8ConverterService),
+	headerParam: Components
+	             .classes["@mozilla.org/network/mime-hdrparam;1"]
+	             .getService(Components.interfaces.nsIMIMEHeaderParam),
+	cvtUTF8 : Components
+	             .classes["@mozilla.org/intl/utf8converterservice;1"]
+	             .getService(Components.interfaces.nsIUTF8ConverterService),
 
 	// -----------------------------------
 	// Detect character set
@@ -170,6 +172,7 @@ gSmartTemplate.mimeDecoder = {
 		{
 			charset = "iso-2022-jp-1";  // RFC2237
 		} 
+		gSmartTemplate.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
 
@@ -189,7 +192,8 @@ gSmartTemplate.mimeDecoder = {
 				                  .getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null })
 				                  .replace(/-%-/g, " ").replace(/%%/g, "%");
 			}
-		} else {
+		} 
+		else {
 			// for Mailers has no manners.
 			if (charset === "")
 				charset = this.detectCharset(string);
@@ -203,6 +207,7 @@ gSmartTemplate.mimeDecoder = {
 	// Split addresses and change encoding.
 	split : function (addrstr, charset, format)
 	{
+		gSmartTemplate.Util.logDebugOptional('mime','mimeDecoder.split()');
 		// MIME decode
 		addrstr = this.decode(addrstr, charset);
 		// Escape "," in mail addresses
@@ -302,7 +307,7 @@ gSmartTemplate.regularize = function(msg, type)
 		return acctKey;
 	}
 
-	this.Util.logDebugOptional('functions','gSmartTemplate.regularize(' + msg +')');
+	gSmartTemplate.Util.logDebugOptional('functions','gSmartTemplate.regularize(' + msg +')');
 	// var parent = gSmartTemplate;
 	var idkey = document.getElementById("msgIdentity").value;
 	var identity = Components.classes["@mozilla.org/messenger/account-manager;1"]

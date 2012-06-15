@@ -314,7 +314,7 @@ gSmartTemplate.classSmartTemplate = function()
 		}
 		// Restore original quote headers
 		while (orgQuoteHeaders.length > 0) {
-			gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(),`gMsgCompose.editor.rootElement, 0);
+			gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), gMsgCompose.editor.rootElement, 0);
 		}
 	};
 	function clearTemplate()
