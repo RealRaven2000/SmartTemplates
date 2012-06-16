@@ -10,13 +10,8 @@
             buttons = "extra2,cancel,accept"
             onload = "SmartTemplate4.Settings.onLoad();"
             buttonlabelextra2 = "&pref_help.tab;"
-            ondialogextra2 = "document.documentElement.openSubDialog('chrome://smarttemplate4/content/help.xul', '', null);">
-
-<!--            				window.openDialog('chrome://quickpasswords/content/changePassword.xul',
-					'quickpasswords-editPassword',
-					'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(),
-					params).focus(); -->
-
+            ondialogextra2 = "window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus();"
+            >
             
  <prefpane id = "smartTemplatePane">
 
