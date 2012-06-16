@@ -244,6 +244,7 @@
   font-size: 11pt !important;
   display: block;   
   background-color: #ffffff;
+  padding: 5px 10px;
 }
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
@@ -253,11 +254,12 @@ h1.helpchapter {
   font-size: 12pt !important; 
   font-weight: bold;
   text-align: center;
-  color: #ACACAC;
+  color: #DCDCDC;
   text-shadow: #000000 1px 1px 1px;
   border-top: 2px solid #808080;
   border-bottom: 2px solid #808080;
   padding: 4px 0px;
+  border-radius: 1em 0 1em 0;
 }
 
 /* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
@@ -283,6 +285,7 @@ code { /* note: code looks best in a fixed width font - MS standard nowadays is 
   background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
   border-radius: 0.3em;
   border: 1px solid #bbb;
+  margin: 2px 0;
   cursor: pointer;
   display: inline-block;
   font-family: Consolas, 'Courier New', Geneva, sans-serif; 
