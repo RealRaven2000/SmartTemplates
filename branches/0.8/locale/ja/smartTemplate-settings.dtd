@@ -93,7 +93,7 @@
 <!ENTITY messid.label "Message ID">
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
-<!ENTITY any.label "Any Header-line">
+<!ENTITY any.label "任意のヘッダ行">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">

@@ -136,7 +136,7 @@
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
 <!ENTITY im-ex_note2.label "首先从 SmartTemplate4 的设置下拉框中选择您想要导出的账号。">
-<!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' => '导出' =>; '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
+<!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' &rArr; '导出' &rArr; '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
 <!ENTITY im-ex_note4.label "想要导入一个文件，首先从SmartTemplate4的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' => '导入' => '设置和模板'">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">

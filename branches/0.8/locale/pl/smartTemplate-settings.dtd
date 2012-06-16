@@ -136,7 +136,7 @@
 <!ENTITY im-ex.cap "Import/eksport ustawień i szablonów">
 <!ENTITY im-ex_note1.label "Można zaimportować i wyeksportować ustawienia i szablony skojarzone z każdym kontem.">
 <!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplate4 wybierz konto, które chcesz wyeksportować.">
-<!ENTITY im-ex_note3.label "Następnie na pasku menu wybierz Narzędzia => Eksportuj => Ustawienia i szablony i zapisz plik (xxx.st4) na swoim komputerze.">
+<!ENTITY im-ex_note3.label "Następnie na pasku menu wybierz Narzędzia &rArr; Eksportuj &rArr; Ustawienia i szablony i zapisz plik (xxx.st4) na swoim komputerze.">
 <!ENTITY im-ex_note4.label "Aby zaimportować plik, z menu rozwijanego ustawień SmartTemplate4 wybierz konto, które chcesz zaimportować, a następnie na pasku menu wybierz Narzędzia => Importuj => Ustawienia i szablony.">
 <!ENTITY im-ex_note5.label "Wybierz plik SmartTemplate4 (xxx.st4), który chcesz zaimportować.">
 <!ENTITY im-ex_note6.label "Informacja: W systemach Apple/Macintosh pasek menu znajduje się na górnym pasku systemowym, a nie w oknie ustawień SmartTemplate4. Jest to standardowy wygląd w tych systemach i nie można go zmienić.">
