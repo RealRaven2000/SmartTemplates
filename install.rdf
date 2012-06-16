@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <RDF 	
-		xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    
-		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-		xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-		<Description rdf:about="urn:mozilla:install-manifest">
+	xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description rdf:about="urn:mozilla:install-manifest">
 
 		<em:id>smarttemplate4@thunderbird.extension</em:id>
 		<em:name>SmartTemplate4</em:name>
