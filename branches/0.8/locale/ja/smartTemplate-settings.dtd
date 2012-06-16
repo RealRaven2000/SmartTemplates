@@ -84,7 +84,7 @@
 <!ENTITY ccfirstname.label "CC 受信者の名前 (名字を除く)">
 <!ENTITY ccname.label "CC 受信者の名前">
 <!ENTITY spec_form.cap "条件文">
-<!ENTITY specform_note.label "括弧 {} 内のテンプレートは、その中の予約語が利用可能である時のみ有効となります。">
+<!ENTITY specform_note.label "括弧 &#123;&#125; 内のテンプレートは、その中の予約語が利用可能である時のみ有効となります。">
 <!ENTITY ex_brack.label "例: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
 <!ENTITY sub_var.cap "件名">
 <!ENTITY sub.label "返信/転送するメッセージの件名">
