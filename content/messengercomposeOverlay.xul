@@ -1,22 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
 
-<!-- <!DOCTYPE overlay SYSTEM "chrome://smarttemplate4/locale/smartTemplate.dtd"> -->
-
-<overlay id="stMessengercomposeOverlay" 
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-init.js"/>
-
-<!--
- <statusbar id="status-bar">
-  <statusbarpanel id="SmartTemplate" label="SmartTemplate"/>
- </statusbar>
--->
-
+<overlay 
+	id="stMessengercomposeOverlay" 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+		<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-init.js"/>
 </overlay>
 
