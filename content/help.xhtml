@@ -451,8 +451,9 @@
 		
 		function containerClick(el, evt) {
 			var el = evt.target;
-			if (el && el.tagName) {
-		  	alert ('Selected variable: ' + el.innerHTML);
+			if (typeof el !='undefined') {
+				if (el.tagName)
+		  		alert ('Selected variable: ' + el.innerHTML);
 		  }
 		
 		}
