@@ -42,7 +42,7 @@
 <!ENTITY pref_html.label "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe.">
 <!ENTITY pref_rep_br.label "Ersetze Leerzeilen mit &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Leerzeilen enthält und diese nicht mit <br> gesetzt werden, sollte diese Option aktiviert werden.">
+<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Leerzeilen enthält und diese nicht mit &lt;br&gt; gesetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Mailheader deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Details siehe Hilfe.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
