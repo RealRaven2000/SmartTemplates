@@ -243,6 +243,7 @@
   font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 11pt !important;
   display: block;   
+  background-color: #ffffff;
 }
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
@@ -289,6 +290,12 @@ code { /* note: code looks best in a fixed width font - MS standard nowadays is 
   padding: 2px 4px;
 }
 
+
+#keywords code {
+  background: -moz-linear-gradient(top, rgba(246,248,249,1) 0%, rgba(229,235,238,1) 37%, rgba(215,222,227,1) 54%, rgba(245,247,249,1) 100%);
+  border-radius: 0.1em;
+  cursor: default;
+}
 /* #################################### TABLE FOR VARS ############################### */
 #keywords {
   border: 0;
