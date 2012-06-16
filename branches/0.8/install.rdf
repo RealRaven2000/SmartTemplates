@@ -1,11 +1,13 @@
-﻿<?xml version="1.0"?>
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-	<Description rdf:about="urn:mozilla:install-manifest">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<RDF 	
+		xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    
+		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+		<Description rdf:about="urn:mozilla:install-manifest">
 
 		<em:id>smarttemplate4@thunderbird.extension</em:id>
 		<em:name>SmartTemplate4</em:name>
-		<em:version>0.8.1pre167</em:version>
+		<em:version>0.8.1pre168</em:version>
 		<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 		<em:type>2</em:type>
 		<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
