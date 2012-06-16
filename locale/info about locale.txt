@@ -22,13 +22,10 @@ the proper locale AMO Page -> or default en-US if his language not exist on AMO
 
 06/16/2012 locale pl 	- replaced
 06/16/2012 locale es-ES - replaced
-05/11/2012 locale pt-BR - replaced
-05/15/2012 locale fi	- replaced
-05/16/2012 locale zh-CN - replaced
+06/16/2012 locale zh-CN - replaced
 06/16/2012 locale ja	- replaced
-05/17/2012 locale nl 	- replaced
 06/16/2012 locale ru 	- replaced
-06/08/2012 locale fr 	- replaced
+
 
 
 this is in our Version in EN only (untranslated)
@@ -39,7 +36,7 @@ sv Menuitems and Help things missing
 additional in all locale the settings.properties file is in en only
 
 
-!!! replace inside the smarttemplate.dtd file description 
+!!! replace inside .dtd files description 
 <!ENTITY .... "description"> follow sings !!!:
 
 sing =  replace with entitie
