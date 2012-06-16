@@ -84,7 +84,7 @@
 <!ENTITY ccfirstname.label "Nombre de pila del destinatario">
 <!ENTITY ccname.label "Apellido del destinatario">
 <!ENTITY spec_form.cap "Formato especial">
-<!ENTITY specform_note.label "Sólo se mostrará la frase {Cc: &#37;cc(name)&#37;} si se puede sustituir la variable &#37;cc(name)&#37;">
+<!ENTITY specform_note.label "Sólo se mostrará la frase &#123;Cc: &#37;cc(name)&#37;&#125; si se puede sustituir la variable &#37;cc(name)&#37;">
 <!ENTITY ex_brack.label "Ejemplo: Para: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
 <!ENTITY sub_var.cap "Asunto">
 <!ENTITY sub.label "asunto del correo que se responde o reenvía.">
