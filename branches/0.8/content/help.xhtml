@@ -11,9 +11,9 @@
 			<title>help.xul</title>
 		</head>	
 	<body>	
-		<div class="body">
+		<div class="body" id="helpContents">
 			<!-- ##### Fix Variables #### -->		
-			<div class="helpchapter">&fix_var.cap;</div>
+			<h1 class="helpchapter">&fix_var.cap;</h1>
 			<code>%ownname%</code> = &ownname.label;
 			<br />
 			<code>%ownmail%</code> = &ownmail.label;
@@ -32,8 +32,8 @@
 			<br />
 			<br />
 			<!-- ##### "To" Variables #### -->
-			<div class="helpchapter">&to_var.cap;</div>
-			<h1>(&to_note.label;)</h1>
+			<h1 class="helpchapter">&to_var.cap;</h1>
+			<h2>(&to_note.label;)</h2>
 			<code>%to%</code> = &to.label;
 			<br />
 			<code>%to(firstname)%</code> = &tofirstname.label;
@@ -42,8 +42,8 @@
 			<br />
 			<br />
 			<!-- ##### "From" Variables #### -->
-			<div class="helpchapter">&from_var.cap;</div>
-			<h1>(&from_note.label;)</h1>
+			<h1 class="helpchapter">&from_var.cap;</h1>
+			<h2>(&from_note.label;)</h2>
 			<code>%from%</code> = &from.label;
 			<br />
 			<code>%from(firstname)%</code> = &fromfirstname.label;
@@ -52,8 +52,8 @@
 			<br />
 			<br />
 			<!-- ##### "CC" Variables #### -->			
-			<div class="helpchapter">&cc_var.cap;</div>
-			<h1>(&cc_note.label;)</h1>
+			<h1 class="helpchapter">&cc_var.cap;</h1>
+			<h2>(&cc_note.label;)</h2>
 			<code>%cc%</code> = &cc.label;
 			<br />
 			<code>%cc(firstname)%</code> = &ccfirstname.label;
@@ -62,21 +62,21 @@
 			<br />
 			<br />
 			<!-- ##### Special Formatting "{Brackets}" #### -->
-			<div class="helpchapter">&spec_form.cap;</div>
+			<h1 class="helpchapter">&spec_form.cap;</h1>
 			&specform_note.label;
 			<br />			
 			<b>&ex_brack.label;</b>
 			<br />
 			<br />
 			<!-- ##### Subject Variables #### -->
-			<div class="helpchapter">&sub_var.cap;</div>
+			<h1 class="helpchapter">&sub_var.cap;</h1>
 			<code>%subject%</code> = &sub.label;
 			<br />
 			<code>%subject(2)%</code> = &sub2.label;
 			<br />
 			<br />
 			<!-- ##### Special Variables (Message-Headerkeys) #### -->
-			<div class="helpchapter">&spec_var.cap;</div>
+			<h1 class="helpchapter">&spec_var.cap;</h1>
 			<code>%Message-ID%</code> = &messid.label;
 			<br />
 			<code>%Newsgroups%</code> = &newsgr.label;
@@ -87,8 +87,8 @@
 			<br />
 			<br />
 			<!-- ##### Fix Variables for Date/Timezone #### -->
-			<div class="helpchapter">&fix_vartz.cap;</div>
-			<h1>(&fix_vartz_note.label;)</h1>
+			<h1 class="helpchapter">&fix_vartz.cap;</h1>
+			<h2>(&fix_vartz_note.label;)</h2>
 			<code>%datelocal%</code> = &datelocal.label;
 			<br />
 			<code>%dateshort%</code> = &dateshort.label;
@@ -99,8 +99,8 @@
 			<br />
 			<br />
 			<!-- ##### Custom Variables #### -->
-			<div class="helpchapter">&var_custom.cap;</div>
-			<h1>(&customdf_note.label;)</h1>
+			<h1 class="helpchapter">&var_custom.cap;</h1>
+			<h2>(&customdf_note.label;)</h2>
 			<code>%A%</code> = &A.label;
 			<br />
 			<code>%a%</code> = &a.label;
@@ -141,19 +141,19 @@
 			<br />
 			<br />
 			<!-- ##### X:=Sent Variable #### -->			
-			<div class="helpchapter">&var_xsent.cap;</div>
+			<h1 class="helpchapter">&var_xsent.cap;</h1>
 			&xsent_note.label;
 			<br />
 			<br />
 			<!-- ##### Longstring Descritption #### -->
-			<div class="helpchapter">&xsent_long.cap;</div>
+			<h1 class="helpchapter">&xsent_long.cap;</h1>
 			&xsent_long.label;
 			<br />
 			<b>&xsent_long_result.label;</b>
 			<br />
 			<br />
 			<!-- ##### Shortstring Description #### -->
-			<div class="helpchapter">&xsent_short.cap;</div>
+			<h1 class="helpchapter">&xsent_short.cap;</h1>
 			&xsent_short.label;
 			<br />
 			<b>&xsent_short_result.label;</b>
@@ -171,12 +171,12 @@
 			<br />
 			<br />		
 			<!-- ##### HTML -> UTF-8 Note #### -->
-			<div class="helpchapter">&html_note.cap;</div>
+			<h1 class="helpchapter">&html_note.cap;</h1>
 			<b>&html_note.label;</b>
 			<br />
 			<br />
 			<!-- ##### Variable Table Note #### -->
-			<div class="helpchapter">&table.cap;</div>
+			<h1 class="helpchapter">&table.cap;</h1>
 			<b>&table_note.label;</b>
 			<br />
 			<br />

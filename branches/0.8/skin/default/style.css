@@ -246,26 +246,28 @@
 }
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
-.helpchapter { 
+h1.helpchapter { 
+  background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
   font-size: 12pt !important; 
   font-weight: bold;
   text-align: center;
-  color: #BDBDBD;
+  color: #ACACAC;
   text-shadow: #000000 1px 1px 1px;
   border-top: 2px solid #808080;
   border-bottom: 2px solid #808080;
+  padding: 4px 0px;
 }
 
-/* ############################# HTML TAG H1 (BELOW CHAPTER) ######################### */
-h1 { 
+/* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
+h2 { 
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 11pt !important;
+  font-weight: normal; 
+  font-size: 10pt !important;
+  font-style: italic;
   margin-top: 0px; 
   margin-bottom: 5px; 
-  padding: 0px; 
-  font-style: italic;
-  font-weight: normal;  
+  padding: 4px 0px; 
 }
 
 /* ##################################### HTML TAG b  ################################# */
@@ -276,10 +278,15 @@ b {
 }
 
 /* #################################### HTML TAG CODE ################################ */
-code { 
-  font-family: 'Palatino Linotype', 'Times New Roman','Courier New', Verdana, 
-Geneva, Arial, Helvetica, sans-serif; 
-  font-size: 11pt !important; 
+code { /* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+  background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+  border-radius: 0.3em;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif; 
+  font-size: 10pt !important; 
+  padding: 2px 4px;
 }
 
 /* #################################### TABLE FOR VARS ############################### */
