@@ -136,7 +136,7 @@
 <!ENTITY im-ex.cap "Importar/Exportar predisposiciones y plantillas">
 <!ENTITY im-ex_note1.label "Puede exportar e importar sus predisposiciones y plantillas asociadas a cada cuenta.">
 <!ENTITY im-ex_note2.label "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Seleccione a continuación 'Herramientas' =&> 'Exportar' => 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador.">
+<!ENTITY im-ex_note3.label "Seleccione a continuación 'Archivo' &rArr; 'Exportar' &rArr; 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador.">
 <!ENTITY im-ex_note4.label "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplate4. Seleccione después 'Herramientas' => 'Importar' => 'Predisposiciones y plantillas' de la barra de menú.">
 <!ENTITY im-ex_note5.label "Seleccione el archivo SmartTemplate4 (xxx.st4) a importar.">
 <!ENTITY im-ex_note6.label "NOTA: En las plataformas Apple/Macintosh la barra de menú estará en la barra del título en vez de en la ventana de Opciones de SmartTemplate4. Es el comportamiento estándar en esas plataformas por lo que no se puede modificar.">

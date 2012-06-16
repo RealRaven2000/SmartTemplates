@@ -30,7 +30,7 @@
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Common">
 <!ENTITY pref_def.label "Use Common">
-<!ENTITY pref_def.cap "Uncheck 'Use Common' to create a cutomized quote header for this account.">
+<!ENTITY pref_def.cap "Uncheck 'Use Common' to create a customized quote header for this account.">
 <!ENTITY pref_newmsg.cap "Write">
 <!ENTITY pref_new.label "Apply the following template to the new message">
 <!ENTITY pref_rspmsg.cap "Reply">
@@ -57,7 +57,7 @@
 <!ENTITY localized.label "Translator">
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "Contributor">
-<!ENTITY about.label "SmartTemplate4 offers an easy way to customize Thunderbirds default quote header by using templates. Templates can be created for every account as well as for global settings (for all email accounts).">
+<!ENTITY about.label "SmartTemplate4 offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fixed variables">
 <!ENTITY ownname.label "Your name">
@@ -136,10 +136,10 @@
 <!ENTITY im-ex.cap "Settings and Templates Export/Import">
 <!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
 <!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label "Next select 'File' =&gt; 'Export' =&gt; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
+<!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
 <!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' =&gt; 'Import' =&gt; 'Settings and Templates' from the menu bar.">
 <!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window.  This is normal behavior on this platforms and can't be changed.">
+<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "Please use only UTF-8 (Unicode) charset inside HTML templates!">
 <!ENTITY table.cap "Usage of variables">
