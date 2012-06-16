@@ -7,11 +7,13 @@
 
 <!-- #### Help Content #### -->
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+
 		<head>		
 			<title>help.xul</title>
 		</head>	
 	<body>	
-		<div class="body" id="helpContents">
+		<div class="body" id="helpContents" onclick="containerClick(this, event);">
 			<!-- ##### Fix Variables #### -->		
 			<h1 class="helpchapter">&fix_var.cap;</h1>
 			<code>%ownname%</code> = &ownname.label;
@@ -445,4 +447,14 @@
 			</table>			
 		</div>
 	</body>
+	<script>
+		
+		function containerClick(el, evt) {
+			var el = evt.target;
+			if (el && el.tagName) {
+		  	alert ('Selected variable: ' + el.innerHTML);
+		  }
+		
+		}
+	</script>
 </html>
