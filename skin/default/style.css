@@ -6,7 +6,7 @@
 /* ----------------------------------------------------------------------------------- */
 /* 1.0.0: new formatting all content over css */
 /* some formating works only as class e.g. inside an Tab which changes */
-/* the content by selecting another Identity, as ID it lost by change the formate */
+/* the content by switching another Identity, as ID it lost by change the formate */
 /* ----------------------------------------------------------------------------------- */
 
 /* ################################################################################### */
@@ -52,19 +52,19 @@
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
 #SmartTemplate_prefDialog #SmartTemplate4MsgIdentity {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
 }
 
 /* ########################## CONTENT IDENT. SELECT POPUP ############################ */
 #SmartTemplate_prefDialog #SmartTemplate4MsgIdentityPopup menuitem {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
 }
 
 /* ################################ CHECKBOXTEXTS #################################### */
 #SmartTemplate_prefDialog checkbox label { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
   font-style: italic;
 }
@@ -95,7 +95,7 @@
 }
 
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
-#SmartTemplate4AcceptButton label,#SmartTemplate4CacelButton label, 
+#SmartTemplate4AcceptButton label,#SmartTemplate4CacelButton label,
 #SmartTemplate4AccountmanagerButton label {
   margin-left: 5px !important;
 }
@@ -124,8 +124,8 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-weight: bold; 
-  font-size: 10pt !important;  
+  font-weight: bold;
+  font-size: 10pt !important;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
@@ -194,7 +194,7 @@
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 .AccountCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;  
+  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
 }
 .HelpCap {
   list-style-image: url("chrome://smartTemplate4/skin/icons/help.png") !important;
@@ -241,7 +241,7 @@
 /* ####################################### BODY ###################################### */
 .body {
   font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 11pt !important;
+  font-size: 10pt !important;
   display: block;   
   background-color: #ffffff;
   padding: 5px 10px;
@@ -264,7 +264,7 @@ h1.helpchapter {
 
 /* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
 h2 { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-weight: normal; 
   font-size: 10pt !important;
   font-style: italic;
@@ -275,24 +275,24 @@ h2 {
 
 /* ##################################### HTML TAG b  ################################# */
 b { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 11pt !important;
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
   font-style: italic;
 }
 
 /* #################################### HTML TAG CODE ################################ */
-code { /* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+/* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+code {
   background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
   border-radius: 0.3em;
   border: 1px solid #bbb;
   margin: 2px 0;
   cursor: pointer;
   display: inline-block;
-  font-family: Consolas, 'Courier New', Geneva, sans-serif; 
-  font-size: 10pt !important; 
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
   padding: 2px 4px;
 }
-
 
 #keywords code {
   background: -moz-linear-gradient(top, rgba(246,248,249,1) 0%, rgba(229,235,238,1) 37%, rgba(215,222,227,1) 54%, rgba(245,247,249,1) 100%);
@@ -309,7 +309,7 @@ code { /* note: code looks best in a fixed width font - MS standard nowadays is 
   margin-top: 5px;
   margin-bottom: 5px;
 }
-		
+
 .td-keywords,.tr-keywords {
   font-size: 11pt !important;
   text-align: center;
@@ -332,15 +332,15 @@ code { /* note: code looks best in a fixed width font - MS standard nowadays is 
 }
 
 /* ############################## CHECKMARK & X IN VARTABLE ########################## */
-.no {    
-  color: #ff0000; 
-  font-size: 13pt !important;   
+.no {
+  color: #ff0000;
+  font-size: 13pt !important;
   text-shadow: #000000 1px 1px 1px;
 }
-.yes {   
+.yes {
   color: #7cfc00; 
-  font-size: 13pt !important;    
-  text-shadow: #000000 1px 1px 1px;  
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
 }
 
 
@@ -350,12 +350,12 @@ code { /* note: code looks best in a fixed width font - MS standard nowadays is 
 
 .statusbarpanel-iconic-text {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-weight: bold; 
-  font-size: 10pt !important;  
+  font-weight: bold;
+  font-size: 10pt !important;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-.statusbarpanel-iconic-text:hover {  
+.statusbarpanel-iconic-text:hover {
   cursor: pointer;
 }
 
