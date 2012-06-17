@@ -13,10 +13,10 @@
 			<groupbox>
 				<caption label="&help_keyword.cap;"/>
 				<iframe id="contentFrame"
-				        src="chrome://smarttemplate4/content/help.xhtml"  
+				        src="chrome://smarttemplate4/content/help.xhtml"
 				        type="chrome" 
 				        height="450"
-				        width="450"/>
+				        width="500"/>
 			</groupbox>
 		</vbox>
 
