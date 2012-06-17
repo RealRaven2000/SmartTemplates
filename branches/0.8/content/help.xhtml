@@ -445,15 +445,35 @@
 			</table>			
 		</div>
 	</body>
-	<script>
+	<script type="text/javascript;version = 1.7">
 		
 		function containerClick(el, evt) {
-			var el = evt.target;
-			if (typeof el !='undefined') {
-				if (el.tagName)
-		  		alert ('Selected variable: ' + el.innerHTML);
-		  }
-		
+			let code = evt.target;
+			if (typeof code !='undefined') {
+				if (code.tagName == 'code') {
+					if (code.parentNode) {
+						if (code.parentNode.id == 'helpContents') {
+							let exists = true;
+							let element = document.getElementById('ST4Dispatcher');
+							if (!element) {
+								exists = false;
+								element = document.createElement("CodeEventDispatcher");  
+								element.id = 'ST4Dispatcher';
+							}
+							
+							element.setAttribute("codeWord", code.innerHTML); // now, add the payload
+							
+							if (!exists)
+								document.documentElement.appendChild(element);  
+							  
+							// make a new custom event
+							var customEvent = document.createEvent("Events");  
+							customEvent.initEvent("SmartTemplate4CodeWord", true, false);  
+							element.dispatchEvent(customEvent);
+						}
+					}
+				}
+			}
 		}
 	</script>
 </html>
