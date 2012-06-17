@@ -4,24 +4,22 @@
 
 <!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
-<prefwindow 
-		id="smartTemplate_prefDialog"
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&pref_dialog.title;"
-        buttons="extra2,cancel,accept"
-        onload="SmartTemplate4.Settings.onLoad();"
-        buttonlabelextra2="&pref_help.tab;"
-        ondialogextra2="window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus();">            
+<prefwindow id="smartTemplate_prefDialog"
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+			title="&pref_dialog.title;"
+			buttons="extra2,cancel,accept"
+			onload="SmartTemplate4.Settings.onLoad();"
+			buttonlabelextra2="&pref_help.tab;"
+			ondialogextra2="window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus();">            
 	<prefpane id="smartTemplatePane">
 			<!-- ######## Identity Dropdown Box Creating ######## -->
 			<hbox align="center" flex="1">
 				<label value="&pref_server_desc;"/>
-					<menulist 
-							id="msgIdentity" 
-							class="identity-menulist" 
-							label="&pref_server_def;" 
-							flex="1" 
-							oncommand="SmartTemplate4.Settings.selectIdentity(this.value);">
+					<menulist 	id="msgIdentity" 
+								class="identity-menulist" 
+								label="&pref_server_def;" 
+								flex="1" 
+								oncommand="SmartTemplate4.Settings.selectIdentity(this.value);">
 						<menupopup id="msgIdentityPopup">
 							<menuitem class="identity-popup-item" label="&pref_server_def;" value="common"/>
 						</menupopup>
@@ -48,11 +46,10 @@
 							<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
 							<preference id="pref_debug"    name="extensions.smartTemplate4.debug"  type="bool"/>
 						</preferences>
-					<checkbox 
-						id="use_default"
-						label="&pref_def.label;"
-						preference="pref_def"
-						oncommand="SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ?1:0);"
+					<checkbox	id="use_default"
+								label="&pref_def.label;"
+								preference="pref_def"
+								oncommand="SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ?1:0);"
 					/>     
 					<!-- ######## Default DeckB & Tab Creating ######## -->
 					<deck id="default.deckB" flex="1">
@@ -73,26 +70,23 @@
 													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 												/>
 											<vbox class="indent" flex="1">
-												<textbox  
-													id="newmsg"  
-													multiline="true" 
-													rows="10" 
-													tooltiptext="&pref_template_tip;"
-													preference="pref_newmsg"
+												<textbox 	id="newmsg"  
+															multiline="true" 
+															rows="10" 
+															tooltiptext="&pref_template_tip;"
+															preference="pref_newmsg"
 												/>
-												<checkbox 
-													id="newhtml" 
-													label="&pref_html.label;"
-													tooltiptext="&pref_html.cap;"
-													preference="pref_newhtml"
-													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
+												<checkbox 	id="newhtml" 
+															label="&pref_html.label;"
+															tooltiptext="&pref_html.cap;"
+															preference="pref_newhtml"
+															oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 												/>
-												<checkbox 
-													id="newnbr"  
-													class="indent" 
-													label="&pref_rep_br.label;"
-													tooltiptext="&pref_rep_br.cap;"
-													preference="pref_newnbr"
+												<checkbox 	id="newnbr"  
+															class="indent" 
+															label="&pref_rep_br.label;"
+															tooltiptext="&pref_rep_br.cap;"
+															preference="pref_newnbr"
 												/>
 											</vbox>
 										</vbox>
@@ -103,39 +97,34 @@
 									<groupbox flex="1">
 										<caption label="&pref_rspmsg.cap;"/>
 										<vbox flex="1">
-											<checkbox 
-													id="rsp"      
-													label="&pref_rsp.label;" 
-													preference="pref_rsp"
-													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
+											<checkbox 		id="rsp"      
+															label="&pref_rsp.label;" 
+															preference="pref_rsp"
+															oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 											/>
 											<vbox class="indent" flex="1">
-												<textbox 
-													id="rspmsg"
-													multiline="true" 
-													rows="10" 
-													tooltiptext="&pref_template_tip;"
-													preference="pref_rspmsg"
+												<textbox	id="rspmsg"
+															multiline="true" 
+															rows="10" 
+															tooltiptext="&pref_template_tip;"
+															preference="pref_rspmsg"
 												/>
-												<checkbox 
-													id="rsphtml"
-													label="&pref_html.label;"
-													tooltiptext="&pref_html.cap;"
-													preference="pref_rsphtml"
-													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
+												<checkbox	id="rsphtml"
+															label="&pref_html.label;"
+															tooltiptext="&pref_html.cap;"
+															preference="pref_rsphtml"
+															oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 												/>
-												<checkbox 
-													id="rspnbr"
-													class="indent"
-													label="&pref_rep_br.label;"
-													tooltiptext="&pref_rep_br.cap;"
-													preference="pref_rspnbr"
+												<checkbox	id="rspnbr"
+															class="indent"
+															label="&pref_rep_br.label;"
+															tooltiptext="&pref_rep_br.cap;"
+															preference="pref_rspnbr"
 												/>
-												<checkbox 
-													id="rsphead" 
-													label="&pref_rsphead.label;"
-													tooltiptext="&pref_quotehead_tip;"
-													preference="pref_rsphead"
+												<checkbox	id="rsphead" 
+															label="&pref_rsphead.label;"
+															tooltiptext="&pref_quotehead_tip;"
+															preference="pref_rsphead"
 												/>
 											</vbox>
 										</vbox>
@@ -146,39 +135,34 @@
 									<groupbox flex="1">
 											<caption label="&pref_fwdmsg.cap;"/>
 										<vbox flex="1">
-											<checkbox 
-													id="fwd"      
-													label="&pref_fwd.label;"
-													preference="pref_fwd"
-													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
+											<checkbox	id="fwd"      
+														label="&pref_fwd.label;"
+														preference="pref_fwd"
+														oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 											/>
 											<vbox class="indent" flex="1">
-												<textbox 
-													id="fwdmsg"  
-													multiline="true" 
-													rows="10" 
-													tooltiptext="&pref_template_tip;"
-													preference="pref_fwdmsg"
+												<textbox	id="fwdmsg"  
+															multiline="true" 
+															rows="10" 
+															tooltiptext="&pref_template_tip;"
+															preference="pref_fwdmsg"
 												/>
-												<checkbox 
-													id="fwdhtml" 
-													label="&pref_html.label;"
-													tooltiptext="&pref_html.cap;"
-													preference="pref_fwdhtml"
-													oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
+												<checkbox	id="fwdhtml" 
+															label="&pref_html.label;"
+															tooltiptext="&pref_html.cap;"
+															preference="pref_fwdhtml"
+															oncommand="SmartTemplate4.Settings.disableWithCheckbox();"
 												/>
-												<checkbox 
-													id="fwdnbr"  
-													class="indent" 
-													label="&pref_rep_br.label;"
-													tooltiptext="&pref_rep_br.cap;"
-													preference="pref_fwdnbr"
+												<checkbox 	id="fwdnbr"  
+															class="indent" 
+															label="&pref_rep_br.label;"
+															tooltiptext="&pref_rep_br.cap;"
+															preference="pref_fwdnbr"
 												/>
-												<checkbox 
-													id="fwdhead" 
-													label="&pref_fwdhead.label;"
-													tooltiptext="&pref_quotehead_tip;"
-													preference="pref_fwdhead"
+												<checkbox	id="fwdhead" 
+															label="&pref_fwdhead.label;"
+															tooltiptext="&pref_quotehead_tip;"
+															preference="pref_fwdhead"
 												/>
 											</vbox>
 										</vbox>
@@ -195,14 +179,14 @@
 			</deck>
 		<hbox>
 		<spacer flex="1" />
-			<checkbox id="debug"  
-		          class="indent" 
-		          label="&pref_debug_check;"
-		          instantApply="true"
-		          align="right"
-		          tooltiptext="&pref_debug_tip;"
-		          oncontextmenu="SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
-		          preference="pref_debug"
+			<checkbox	id="debug"  
+						class="indent" 
+						label="&pref_debug_check;"
+						instantApply="true"
+						align="right"
+						tooltiptext="&pref_debug_tip;"
+						oncontextmenu="SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
+						preference="pref_debug"
 			/>		
 		</hbox>
 	</prefpane>
