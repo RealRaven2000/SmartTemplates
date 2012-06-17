@@ -23,7 +23,7 @@ the proper locale AMO Page -> or default en-US if his language not exist on AMO
 06/16/2012 locale pl 	- replaced
 06/16/2012 locale es-ES - replaced
 06/16/2012 locale zh-CN - replaced
-06/16/2012 locale ja	- replaced
+06/17/2012 locale ja	- replaced
 06/16/2012 locale ru 	- replaced
 
 
