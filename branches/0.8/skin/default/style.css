@@ -368,3 +368,9 @@ code {
 #SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
+
+#contentFrame {
+	min-width: 450px;
+	min-height: 450px;
+	height: auto;
+}
