@@ -363,11 +363,19 @@ SmartTemplate4.regularize = function(msg, type)
 				let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 					 getService(Components.interfaces.nsIStringBundleService);
 				let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
-				try{ //try writing an error to the Error Console using the localized string; if it fails write it in English
-					Components.utils.reportError(bundle.GetStringFromName("contextError1")+ " %" + reservedWord + "% " + bundle.GetStringFromName("contextError2"));
+				let ErrorString1 = '';
+				let ErrorString2 = '';
+				try{ 
+					//try writing an error to the Error Console using the localized string; if it fails write it in English
+					ErrorString1 = bundle.GetStringFromName("contextError1");
+					ErrorString2 = bundle.GetStringFromName("contextError2");
 				} catch (e) {
-					Components.utils.reportError("SmartTemplate4: The variable %" + reservedWord + "% can't be used for NEW Messages!\nListing of usable variables see Help");
+					ErrorString1 = bundle.GetStringFromName("SmartTemplate4: The variable");
+					ErrorString2 = bundle.GetStringFromName("can't be used for NEW Messages!\nListing of usable variables see Help");
 				}
+				let errorText = ErrorString1 + " %" + reservedWord + "% " + ErrorString2;
+				alert(errorText)
+				Components.utils.reportError(errorText);
 				
 				return "";
 			} 
