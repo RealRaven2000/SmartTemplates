@@ -8,7 +8,6 @@
 // 0.7.5: "use strict" suggested by Mozilla add-on review team
 // -----------------------------------------------------------------------------------
 
-
 SmartTemplate4.Settings = {
 	gCurId : "",
 	Ci : Components.interfaces,
@@ -230,8 +229,36 @@ SmartTemplate4.Settings = {
 	
 		// disable Use default (common account)
 		document.getElementById("use_default").setAttribute("disabled", "true");
-	
+		
+		window.onCodeWord = function(code) { 
+			SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
+			
+			let tabbox = document.getElementById('deckB.nodef');
+			let templateMsgBoxId = '';
+			switch (tabbox.selectedIndex) {
+				case 0:
+					templateMsgBoxId='newmsg';
+					break;
+				case 1:
+					templateMsgBoxId='rspmsg';
+					break;
+				case 2:
+					templateMsgBoxId='fwdmsg';
+					break;
+				default: // unknown!
+					break;
+			}
+			if (templateMsgBoxId) {
+				let editor = document.getElementById(templateMsgBoxId);
+				SmartTemplate4.Settings.insertAtCaret(editor, code);
+			}
+		};
+		
 		return true;
+	} ,
+	
+	onUnload : function() {
+// 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
 	} ,
 	
 	// Setup cloned nodes and replace preferences strings
@@ -366,7 +393,51 @@ SmartTemplate4.Settings = {
 			index++;
 		} 
 		
-	}
+	} ,
+	
+	insertAtCaret : function insertAtCaret(element, code) {
+		// code = code + ' '; // this could be an option in a future version...
+		if (!element) {
+			SmartTemplate4.Util.logToConsole("insertAtCaret for variable '" + code + "' cannot be done - no element passed!");
+			return;
+		}
+
+		var el =  '';
+		el +=  element.id ? "  id=" + element.id : "";
+		el +=  element.nodeName ? "  nodeName=" + element.nodeName : "";
+		el +=  element.name ? "  name=" + element.name : "";
+		SmartTemplate4.Util.logDebugOptional("events", "insertAtCaret(" + el + "): field Code = " + code);
+		try {
+			var node = element.nodeName;
+			element.focus();
+			if (node=="HTML") { // Composer Windows /
+			    if (window.getSelection && window.getSelection().getRangeAt) {
+			        range = window.getSelection().getRangeAt(0);
+			        node = range.createContextualFragment(code);
+			        range.insertNode(node);
+			    } else if (document.selection && document.selection.createRange) {
+			        document.selection.createRange().pasteHTML(code);
+			    }
+			}
+			else {
+				var startSel = element.selectionStart;
+				var endSel = element.selectionEnd;
+				if (!element.value)
+					element.value = "" + code;
+				else
+					element.value = element.value.substring(0, startSel) + code + element.value.substring(endSel, element.value.length);
+				element.selectionStart = startSel+code.length;
+				element.selectionEnd = startSel+code.length;
+			}
+			window.focus(); // wahrscheinlich ueberfluessich
+			element.focus();
+		}
+		catch(e) {
+			SmartTemplate4.Util.logException("Exception in insertAtCaret; (nodeName=" + node  +")", e);
+		}
+	}	
+	
+	
 
 
 };
