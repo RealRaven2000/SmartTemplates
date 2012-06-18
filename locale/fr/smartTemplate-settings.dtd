@@ -1,11 +1,15 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Fichier">
 <!ENTITY tools.label					"Outils">
-<!ENTITY help.label						"Assistant">
+<!ENTITY edit.label "Édition">
+<!ENTITY help.label "Assistant">
 
 <!-- #### MENU OWN ITEMS #### -->
-<!ENTITY copy.label						"Copier">
-<!ENTITY close.label					"Fermer">
+<!ENTITY copy.label "Copier">
+<!ENTITY paste.label "Coller">
+<!ENTITY insert.label "Insert Field">
+<!ENTITY close.label "Fermer">
+
 <!ENTITY export.label					"Exportation">
 <!ENTITY import.label					"Importation">
 <!ENTITY settings.label					"Paramètres et Modèles">
@@ -56,6 +60,8 @@
 
 <!ENTITY help_dialog_title     			"SmartTemplate4 assistant">
 <!ENTITY help_keyword.cap      			"Assistant">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"À propos de SmartTemplate4">

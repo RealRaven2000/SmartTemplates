@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Bestand">
 <!ENTITY tools.label					"Hulpmiddelen">
+<!ENTITY edit.label "Bewerken">
 <!ENTITY help.label						"Hulp">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Kopiëren">
+<!ENTITY paste.label "Plakken">
+<!ENTITY insert.label "Veld invoegen">
 <!ENTITY close.label					"Sluiten">
 <!ENTITY export.label					"Exporteren">
 <!ENTITY import.label					"Importeren">
@@ -56,6 +59,8 @@
 
 <!ENTITY help_dialog_title 				"SmartTemplate4-hulp">
 <!ENTITY help_keyword.cap 				"Help">
+<!ENTITY pref_debug_check "Foutopsporingsmodus">
+<!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
 
 
 <!-- #### ABOUT #### -->
@@ -124,7 +129,6 @@
 <!ENTITY a.label 						"Weekdag (Vrij.)">
 <!ENTITY d.label 						"Dag van de maand (01 tot 31)">
 <!ENTITY e.label 						"Dag van de maand (1 tot 31)">
-<!ENTITY m.label 						"Maand (01 tot 12)">
 <!ENTITY n.label 						"Maand (1 tot 12)">
 <!ENTITY B.label 						"Maand (Januari)">
 <!ENTITY b.label 						"Maand (Jan.)">

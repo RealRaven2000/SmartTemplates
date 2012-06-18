@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Tiedosto">
 <!ENTITY tools.label					"Työkalut">
+<!ENTITY edit.label "Muokkaa">
 <!ENTITY help.label						"Ohje">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Kopioi">
+<!ENTITY paste.label "Liitä">
+<!ENTITY insert.label "Lisää kenttä">
 <!ENTITY close.label					"Sulje">
 <!ENTITY export.label					"Vie">
 <!ENTITY import.label					"Tuo">
@@ -56,6 +59,8 @@
 
 <!ENTITY help_dialog_title 				"SmartTemplate4 - Ohje">
 <!ENTITY help_keyword.cap 				"Ohje">
+<!ENTITY pref_debug_check "Debug-tila">
+<!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap 						"SmartTemplate4 - Tietoja">

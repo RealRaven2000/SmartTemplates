@@ -60,7 +60,7 @@
 <!ENTITY about.label "SmartTemplate4 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "基础变量">
-<!ENTITY ownname.label "你的姓名">
+<!ENTITY ownname.label "你的名字">
 <!ENTITY ownmail.label "你的邮件地址">
 <!ENTITY date.label "日期和时间（和初始的邮件头一样）">
 <!ENTITY tomail.label "收件人邮件地址">
@@ -87,8 +87,8 @@
 <!ENTITY specform_note.label "在弧面括号内的短语 &#123;Cc: &#37;cc(name)&#37;&#125; 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
 <!ENTITY ex_brack.label "例子: To: &#37;to(name) {&#37;Cc: &#37;cc(name)&#37;}">
 <!ENTITY sub_var.cap "主题">
-<!ENTITY sub.label "主题（像原来Mailheader相同）">
-<!ENTITY sub2.label "主题（如结核病消息编辑器相同）">
+<!ENTITY sub.label "回复/转发的邮件主题">
+<!ENTITY sub2.label "当前消息的主题">
 <!ENTITY spec_var.cap "特殊变量">
 <!ENTITY messid.label "消息 ID">
 <!ENTITY newsgr.label "新闻组">
@@ -136,8 +136,8 @@
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
 <!ENTITY im-ex_note2.label "首先从 SmartTemplate4 的设置下拉框中选择您想要导出的账号。">
-<!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' &rArr; '导出' &rArr; '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
-<!ENTITY im-ex_note4.label "想要导入一个文件，首先从SmartTemplate4的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' => '导入' => '设置和模板'">
+<!ENTITY im-ex_note3.label "接下来从菜单栏中选择&ldquo;工具&rdquo; &rArr; &ldquo;导出&rdquo; &rArr; &ldquo;设置和模板&rdquo;，将文件（xxx.st4）保存到您的电脑中。">
+<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择&ldquo;工具&rdquo; &rArr; &ldquo;导入&rdquo; &rArr; &ldquo;设置和模板&rdquo;">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
 <!ENTITY html_note.cap "HTML 模板说明">
