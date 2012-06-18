@@ -6,7 +6,7 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Copy">
 <!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Field">
+<!ENTITY insert.label "Insert Variable">
 <!ENTITY close.label "Close">
 <!ENTITY export.label "Export">
 <!ENTITY import.label "Import">
