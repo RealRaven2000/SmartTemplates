@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"File">
 <!ENTITY tools.label					"Tools">
+<!ENTITY edit.label "Edit">
 <!ENTITY help.label						"Help">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Copy">
+<!ENTITY paste.label "Paste">
+<!ENTITY insert.label "Insert Field">
 <!ENTITY close.label					"Close">
 <!ENTITY export.label					"Export">
 <!ENTITY import.label					"Import">
@@ -23,10 +26,11 @@
 <!ENTITY accept_button	        		"Acceptera">
 <!ENTITY cancel_button	        		"Kassera">
 
+<!-- #### GUI #### -->
 <!ENTITY add-onName.label				"SmartTemplate4">
 <!ENTITY add-onNameSettings_tip			"Inställningar för SmartTemplate4">
 
-<!-- #### GUI #### -->
+<!-- #### ABOUT #### -->
 <!ENTITY pref_dialog.title      		"Inställningar för SmartTemplate4">
 <!ENTITY pref_server_desc       		"Konto">
 <!ENTITY pref_server_def        		"Allmänna inställningar">
@@ -56,6 +60,8 @@
 <!ENTITY help_dialog_title      		"Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap       		"Hjälp">
 
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"Ca SmartTemplate4">
 <!ENTITY creator.label					"Creator">
@@ -122,7 +128,6 @@
 <!ENTITY a.label 						"Veckodag (Fre.)">
 <!ENTITY d.label 						"Dag i månaden (01 till 31)">
 <!ENTITY e.label 						"Dag i månaden (1 till 31)">  
-<!ENTITY m.label 						"Månad (01 till 12)"> 
 <!ENTITY n.label 						"Månad (1 till 12)"> 
 <!ENTITY B.label 						"Månad (Januari)">
 <!ENTITY b.label 						"Månad (Jan.)">
