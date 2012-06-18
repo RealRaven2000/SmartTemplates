@@ -294,6 +294,10 @@ code {
   padding: 2px 4px;
 }
 
+code.noNew {
+  background: -moz-linear-gradient(top, rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+}
+
 #keywords code {
   background: -moz-linear-gradient(top, rgba(240,231,164,1) 0%, rgba(230,207,56,1) 50%, rgba(217,193,37,1) 51%, rgba(240,217,68,1) 100%);
 }
