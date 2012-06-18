@@ -7,12 +7,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 
-		<head>		
+		<head>
 			<title>help.xul</title>
-		</head>	
-	<body>	
+		</head>
+	<body>
 		<div class="body" id="helpContents" onclick="containerClick(this, event);">
-			<!-- ##### Fix Variables #### -->		
+			<!-- ##### Fix Variables #### -->
 			<h1 class="helpchapter">&fix_var.cap;</h1>
 			<code>%ownname%</code> = &ownname.label;
 			<br />
@@ -51,7 +51,7 @@
 			<code>%from(name)%</code> = &fromname.label;
 			<br />
 			<br />
-			<!-- ##### "CC" Variables #### -->			
+			<!-- ##### "CC" Variables #### -->
 			<h1 class="helpchapter">&cc_var.cap;</h1>
 			<h2>(&cc_note.label;)</h2>
 			<code>%cc%</code> = &cc.label;
@@ -64,7 +64,7 @@
 			<!-- ##### Special Formatting "{Brackets}" #### -->
 			<h1 class="helpchapter">&spec_form.cap;</h1>
 			&specform_note.label;
-			<br />			
+			<br />
 			<b>&ex_brack.label;</b>
 			<br />
 			<br />
@@ -83,7 +83,7 @@
 			<br />
 			<code>%X-Mailer%</code> = &xmail.label;
 			<br />
-			<code>%...%</code> = &any.label;			
+			<code>%...%</code> = &any.label;
 			<br />
 			<br />
 			<!-- ##### Fix Variables for Date/Timezone #### -->
@@ -140,7 +140,7 @@
 			<code>%p(3)%</code> = &p3.label;
 			<br />
 			<br />
-			<!-- ##### X:=Sent Variable #### -->			
+			<!-- ##### X:=Sent Variable #### -->
 			<h1 class="helpchapter">&var_xsent.cap;</h1>
 			&xsent_note.label;
 			<br />
@@ -169,7 +169,7 @@
 			<br />
 			<code>%tz_name%</code> = &timezonename.label;
 			<br />
-			<br />		
+			<br />
 			<!-- ##### HTML -> UTF-8 Note #### -->
 			<h1 class="helpchapter">&html_note.cap;</h1>
 			<b>&html_note.label;</b>
@@ -180,7 +180,7 @@
 			<b>&table_note.label;</b>
 			<br />
 			<br />
-			<!-- ##### Variable Table #### -->	
+			<!-- ##### Variable Table #### -->
 			<table id="keywords">
 				<tbody>
 					<tr class="tr-keywords">
@@ -188,45 +188,45 @@
 						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-new.png" /><b>&table_new.label;</b></td>
 						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-reply.png" /><b>&table_reply.label;</b></td>
 						<td class="td-keywords"><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-fwd.png" /><b>&table_fwd.label;</b></td>
-					</tr>			
+					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%A% / %a%</code></td>
+						<td class="td-keywords"><code>%A%</code>/<code>%a%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%B% / %b%</code></td>
+						<td class="td-keywords"><code>%B%</code>/<code>%b%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%cc(firstname)%</code></td>
+						<td class="td-keywords"><code class="noNew">%cc(firstname)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%cc(mail)%</code></td>
+						<td class="td-keywords"><code class="noNew">%cc(mail)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%cc(name)%</code></td>
+						<td class="td-keywords"><code class="noNew">%cc(name)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%cc%</code></td>
+						<td class="td-keywords"><code class="noNew">%cc%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%d% / %e%</code></td>
+						<td class="td-keywords"><code>%d%</code>/<code>%e%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -238,7 +238,7 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%date%</code></td>
+						<td class="td-keywords"><code class="noNew">%date%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -256,37 +256,37 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%from(firstname)%</code></td>
+						<td class="td-keywords"><code class="noNew">%from(firstname)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%from(mail)%</code></td>
+						<td class="td-keywords"><code class="noNew">%from(mail)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%from(name)%</code></td>
+						<td class="td-keywords"><code class="noNew">%from(name)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%from%</code></td>
+						<td class="td-keywords"><code class="noNew">%from%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%H% / %k%</code></td>
+						<td class="td-keywords"><code>%H%</code>/<code>%k%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%l% / %i%</code></td>
+						<td class="td-keywords"><code>%l%</code>/<code>%i%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -298,19 +298,19 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%m% / %n%</code></td>
+						<td class="td-keywords"><code>%m%</code>/<code>%n%</code></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%Message-ID%</code></td>
+						<td class="td-keywords"><code class="noNew">%Message-ID%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%Newsgroups%</code></td>
+						<td class="td-keywords"><code class="noNew">%Newsgroups%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -328,25 +328,25 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%p(1)%</code></td>
+						<td class="td-keywords"><code class="noNew">%p(1)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%p(2)%</code></td>
+						<td class="td-keywords"><code class="noNew">%p(2)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%p(3)%</code></td>
+						<td class="td-keywords"><code class="noNew">%p(3)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%p%</code></td>
+						<td class="td-keywords"><code class="noNew">%p%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -358,25 +358,25 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%sig%</code></td>
+						<td class="td-keywords"><code class="noNew">%sig%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%sig(2)%</code></td>
+						<td class="td-keywords"><code class="noNew">%sig(2)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%subject%</code></td>
+						<td class="td-keywords"><code class="noNew">%subject%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%subject(2)%</code></td>
+						<td class="td-keywords"><code class="noNew">%subject(2)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -388,25 +388,25 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%to(firstname)%</code></td>
+						<td class="td-keywords"><code class="noNew">%to(firstname)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%to(mail)%</code></td>
+						<td class="td-keywords"><code class="noNew">%to(mail)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%to(name)%</code></td>
+						<td class="td-keywords"><code class="noNew">%to(name)%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%to%</code></td>
+						<td class="td-keywords"><code class="noNew">%to%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
@@ -418,60 +418,57 @@
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%X-Mailer%</code></td>
+						<td class="td-keywords"><code class="noNew">%X-Mailer%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%X:=sent%</code></td>
+						<td class="td-keywords"><code class="noNew">%X:=sent%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%X:=today%</code></td>
+						<td class="td-keywords"><code class="noNew">%X:=today%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td class="td-keywords"><code>%Y%</code></td>
+						<td class="td-keywords"><code class="noNew">%Y%</code></td>
 						<td class="td-keywords"><div class="no">&#10007;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 						<td class="td-keywords"><div class="yes">&#10003;</div></td>
 					</tr>
 				</tbody>
-			</table>			
+			</table>
 		</div>
 	</body>
 	<script type="text/javascript;version = 1.7">
-		
+
 		function containerClick(el, evt) {
 			let code = evt.target;
 			if (typeof code !='undefined') {
 				if (code.tagName == 'code') {
-					if (code.parentNode) {
-						if (code.parentNode.id == 'helpContents') {
-							let exists = true;
-							let element = document.getElementById('ST4Dispatcher');
-							if (!element) {
-								exists = false;
-								element = document.createElement("CodeEventDispatcher");  
-								element.id = 'ST4Dispatcher';
-							}
-							
-							element.setAttribute("codeWord", code.innerHTML); // now, add the payload
-							
-							if (!exists)
-								document.documentElement.appendChild(element);  
-							  
-							// make a new custom event
-							var customEvent = document.createEvent("Events");  
-							customEvent.initEvent("SmartTemplate4CodeWord", true, false);  
-							element.dispatchEvent(customEvent);
-						}
+					let exists = true;
+					let element = document.getElementById('ST4Dispatcher');
+					if (!element) {
+						exists = false;
+						element = document.createElement("CodeEventDispatcher");
+						element.id = 'ST4Dispatcher';
 					}
+
+					element.setAttribute("codeWord", code.innerHTML); // now, add the payload
+					element.setAttribute("class", code.className);    // class="noNew" => cannot be used in new mail!!
+
+					if (!exists)
+						document.documentElement.appendChild(element);
+
+					// make a new custom event
+					var customEvent = document.createEvent("Events");
+					customEvent.initEvent("SmartTemplate4CodeWord", true, false);
+					element.dispatchEvent(customEvent);
 				}
 			}
 		}
