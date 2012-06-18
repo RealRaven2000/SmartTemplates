@@ -23,8 +23,8 @@ copy by writing to:
 	Free Software Foundation, Inc.,
 	51 Franklin Street, Fifth Floor,
 	Boston, MA 02110-1301, USA.
-	
-END LICENSE BLOCK 
+
+END LICENSE BLOCK
 */
 
 SmartTemplate4.Util = {
@@ -38,8 +38,8 @@ SmartTemplate4.Util = {
 	mExtensionVer: null,
 	ConsoleService: null,
 	lastTime: 0,
-		
-	getBundleString: function(id, defaultText) { 
+
+	getBundleString: function(id, defaultText) {
 		try {
 			var s= SmartTemplate4.Properties.getLocalized(id);
 		}
@@ -56,7 +56,7 @@ SmartTemplate4.Util = {
 		var win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
-	
+
 	get AppverFull() {
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
@@ -105,14 +105,14 @@ SmartTemplate4.Util = {
 		}
 		return this.mHost; // linux - winnt - darwin
 	},
-	
+
 	// this is done asynchronously, so it respawns itself
 	VersionProxy: function() {
 		try {
 			if (SmartTemplate4.Util.mExtensionVer // early exit, we got the version!
 				||
 					SmartTemplate4.Util.VersionProxyRunning) // no recursion...
-				return; 
+				return;
 			SmartTemplate4.Util.VersionProxyRunning = true;
 			SmartTemplate4.Util.logDebug("Util.VersionProxy() started.");
 			let myId = SmartTemplate4.Util.ADDON_ID;
@@ -138,13 +138,13 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.VersionProxyRunning=false;
 		}
 	},
-	
+
 	get Version() {
 		//returns the current QF version number.
 		if(SmartTemplate4.Util.mExtensionVer)
 			return SmartTemplate4.Util.mExtensionVer;
 		var current = SmartTemplate4.Util.HARDCODED_EXTENSION_VERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
-		
+
 		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
 			SmartTemplate4.Util.VersionProxy(); // modern Mozilla builds.
@@ -182,13 +182,13 @@ SmartTemplate4.Util = {
 			}
 			return version;
 		}
-			
+
 		var pureVersion = strip(SmartTemplate4.Util.Version, 'pre');
 		pureVersion = strip(pureVersion, 'beta');
 		pureVersion = strip(pureVersion, 'alpha');
 		return strip(pureVersion, '.hc');
 	},
-	 
+
 	popupAlert: function (title, text, icon) {
 		try {
 			if (!icon)
@@ -196,7 +196,7 @@ SmartTemplate4.Util = {
 			Components.classes['@mozilla.org/alerts-service;1'].
 								getService(Components.interfaces.nsIAlertsService).
 								showAlertNotification(icon, title, text, false, '', null);
-		} 
+		}
 		catch(e) {
 			// prevents runtime error on platforms that don't implement nsIAlertsService
 		}
@@ -257,7 +257,7 @@ SmartTemplate4.Util = {
 		let title = "SmartTemplate4";
 		if (typeof optionalTitle !== 'undefined')
 			title += " {" + optionalTitle.toUpperCase() + "}"
-			
+
 		SmartTemplate4.Util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
 	},
 
@@ -281,7 +281,7 @@ SmartTemplate4.Util = {
 		var stack = '';
 		if (typeof ex.stack!='undefined')
 			stack= ex.stack.replace("@","\n  ");
-			
+
 		let srcName = ex.fileName ? ex.fileName : "";
 		this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
 	} ,
@@ -294,7 +294,7 @@ SmartTemplate4.Util = {
 	logDebugOptional: function (option, msg) {
 		if (SmartTemplate4.Preferences.isDebugOption(option))
 			this.logToConsole(msg, option);
-	},	
+	},
 
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
@@ -361,7 +361,7 @@ SmartTemplate4.Util = {
 			}
 		}
 	},
-	
+
 	openURLInTab: function (URL) {
 		try {
 			var sTabMode="";
@@ -389,7 +389,7 @@ SmartTemplate4.Util = {
 		catch(e) { return false; }
 		return true;
 	} ,
-	
+
 	versionGreaterOrEqual: function(a, b) {
 		/*
 			Compares Application Versions
@@ -399,10 +399,10 @@ SmartTemplate4.Util = {
 			- is bigger than 0, then A > B
 		*/
 		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-														.getService(Components.interfaces.nsIVersionComparator);		
-		return (versionComparator.compare(a, b) >= 0);									 
+														.getService(Components.interfaces.nsIVersionComparator);
+		return (versionComparator.compare(a, b) >= 0);
 	} ,
-	
+
 	versionSmaller: function(a, b) {
 		/*
 			Compares Application Versions
@@ -412,11 +412,11 @@ SmartTemplate4.Util = {
 			- is bigger than 0, then A > B
 		*/
 		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-														.getService(Components.interfaces.nsIVersionComparator);		
-		 return (versionComparator.compare(a, b) < 0);									 
+														.getService(Components.interfaces.nsIVersionComparator);
+		 return (versionComparator.compare(a, b) < 0);
 	} ,
-	
-	
+
+
 	showVersionHistory: function(ask) {
 		var version = SmartTemplate4.Util.VersionSanitized;
 
@@ -425,11 +425,11 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/version.html#" + version);
 		}
 	} ,
-	
+
 	showDonatePage: function () {
 		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/donate.html');
 	}  ,
-	
+
 	showHomePage: function () {
 		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/index.html');
 	} ,
@@ -457,6 +457,26 @@ SmartTemplate4.Util = {
 					 w.self.FilterPrefs();
 				}
 			}, 300);
+	} ,
+
+	displayNotAllowedMessage: function(reservedWord) {
+		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
+			 getService(Components.interfaces.nsIStringBundleService);
+		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
+		let ErrorString1 = '';
+		let ErrorString2 = '';
+		try{
+			//try writing an error to the Error Console using the localized string; if it fails write it in English
+			ErrorString1 = bundle.GetStringFromName("contextError1");
+			ErrorString2 = bundle.GetStringFromName("contextError2");
+		} catch (e) {
+			ErrorString1 = bundle.GetStringFromName("SmartTemplate4: The variable");
+			ErrorString2 = bundle.GetStringFromName("can't be used for NEW Messages!\nListing of usable variables see Help");
+		}
+		let errorText = ErrorString1 + " %" + reservedWord + "% " + ErrorString2;
+		alert(errorText)
+		Components.utils.reportError(errorText);
 	}
-	
+
+
 };
