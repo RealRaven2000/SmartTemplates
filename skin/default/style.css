@@ -300,6 +300,9 @@ code {
 #keywords code.noNew {
   background: -moz-linear-gradient(top, rgba(240,202,164,1) 0%, rgba(230,140,56,1) 50%, rgba(217,124,37,1) 51%, rgba(240,151,68,1) 100%);
 }
+#helpContents code.noNew {
+  background: -moz-linear-gradient(top, rgba(240,202,164,1) 0%, rgba(230,140,56,1) 50%, rgba(217,124,37,1) 51%, rgba(240,151,68,1) 100%);
+}
 
 /* #################################### TABLE FOR VARS ############################### */
 #keywords {
