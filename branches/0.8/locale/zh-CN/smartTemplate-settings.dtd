@@ -42,7 +42,7 @@
 <!ENTITY pref_html.label "使用 HTML （例如，&lt;b&gt;bold&lt;/b&gt;）">
 <!ENTITY pref_html.cap "使用转义字符 &quot; , &amp; , &lt; , &gt;，空格。详见帮助。">
 <!ENTITY pref_rep_br.label "用 &lt;br&gt; 换行">
-<!ENTITY pref_rep_br.cap "注意：如果 <br> 后面跟着一个 HTML 标签则将不能换行">
+<!ENTITY pref_rep_br.cap "注意：如果 &lt;br&gt; 后面跟着一个 HTML 标签则将不能换行">
 <!ENTITY pref_quotehead_tip "禁用标准引用头文件。请将你的引用头文件填入文本框。">
 <!ENTITY pref_template_tip "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
 <!ENTITY help_dialog_title "SmartTemplate4 帮助">
