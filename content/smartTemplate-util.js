@@ -468,7 +468,6 @@ SmartTemplate4.Util = {
 			+ reservedWord
 			+ ((reservedWord[reservedWord.length - 1] != '%') ? '%' : '');
 
-
 		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
 		let ErrorString1 = '';
 		let ErrorString2 = '';
@@ -482,7 +481,7 @@ SmartTemplate4.Util = {
 		}
 		let errorText = ErrorString1 + " " + decoratedWord + " " + ErrorString2;
 		alert(errorText)
-		Components.utils.reportError(errorText);
+		this.logDebug (errorText);
 	}
 
 
