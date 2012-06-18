@@ -63,7 +63,7 @@
 }
 
 /* ################################ CHECKBOXTEXTS #################################### */
-#SmartTemplate_prefDialog checkbox label { 
+#SmartTemplate_prefDialog checkbox label {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
   font-style: italic;
@@ -86,7 +86,7 @@
 
 /* ################################################################################### */
 /* ##################################### BUTTONS ##################################### */
-/* ################################################################################### */ 
+/* ################################################################################### */
 
 .AcceptButton,.CacelButton,.AccountmanagerButton {
   cursor: pointer;
@@ -131,9 +131,9 @@
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
 #SmartTemplate4NewTab:focus,#SmartTemplate4RspTab:focus,#SmartTemplate4FwdTab:focus,
 #SmartTemplate4HelpTab:focus,#SmartTemplate4AboutTab:focus,
-#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active, 
+#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active,
 #SmartTemplate4HelpTab:active,#SmartTemplate4AboutTab:active,
-#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover, 
+#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover,
 #SmartTemplate4HelpTab:hover,#SmartTemplate4AboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
@@ -213,25 +213,25 @@
 .AboutLogo {
   background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
 }
 
 /* ################################## AboutDeveloper ################################# */
-.SmartTemplate4AboutDeveloper { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+.SmartTemplate4AboutDeveloper {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 12pt !important;
-  line-height: 12pt !important; 
+  line-height: 12pt !important;
   font-weight: bold;
   text-align: center;
   color: #BDBDBD;
-  text-shadow: #000000 1px 1px 1px;  
+  text-shadow: #000000 1px 1px 1px;
 }
 
 /* ############################## SmartTemplate4AboutDesc ############################ */
-.SmartTemplate4AboutDesc { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+.SmartTemplate4AboutDesc {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 11pt !important;
-  display: block;    
+  display: block;
 }
 
 /* ################################################################################### */
@@ -242,16 +242,16 @@
 .body {
   font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
-  display: block;   
+  display: block;
   background-color: #ffffff;
   padding: 5px 10px;
 }
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
-h1.helpchapter { 
+h1.helpchapter {
   background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 12pt !important; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 12pt !important;
   font-weight: bold;
   text-align: center;
   color: #DCDCDC;
@@ -263,18 +263,18 @@ h1.helpchapter {
 }
 
 /* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
-h2 { 
+h2 {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-weight: normal; 
+  font-weight: normal;
   font-size: 10pt !important;
   font-style: italic;
-  margin-top: 0px; 
-  margin-bottom: 5px; 
-  padding: 4px 0px; 
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 4px 0px;
 }
 
 /* ##################################### HTML TAG b  ################################# */
-b { 
+b {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
   font-style: italic;
@@ -295,15 +295,17 @@ code {
 }
 
 #keywords code {
-  background: -moz-linear-gradient(top, rgba(246,248,249,1) 0%, rgba(229,235,238,1) 37%, rgba(215,222,227,1) 54%, rgba(245,247,249,1) 100%);
-  border-radius: 0.1em;
-  cursor: default;
+  background: -moz-linear-gradient(top, rgba(240,231,164,1) 0%, rgba(230,207,56,1) 50%, rgba(217,193,37,1) 51%, rgba(240,217,68,1) 100%);
 }
+#keywords code.noNew {
+  background: -moz-linear-gradient(top, rgba(240,202,164,1) 0%, rgba(230,140,56,1) 50%, rgba(217,124,37,1) 51%, rgba(240,151,68,1) 100%);
+}
+
 /* #################################### TABLE FOR VARS ############################### */
 #keywords {
   border: 0;
   border-collapse: collapse;
-  width: 100%;  
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
@@ -319,16 +321,16 @@ code {
 }
 
 /* ################################## SCREENSHOT CLASS ############################### */
-.screenshot_help {  
+.screenshot_help {
   margin-top: 5px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
 /* ################################## SMALL ICON CLASS ############################### */
-.small_icon { 
-  height: 16px;/*max 16px */	
+.small_icon {
+  height: 16px;/*max 16px */
   width: 16px; /*max 16px */
-  margin-right: 3px;  
+  margin-right: 3px;
 }
 
 /* ############################## CHECKMARK & X IN VARTABLE ########################## */
@@ -338,7 +340,7 @@ code {
   text-shadow: #000000 1px 1px 1px;
 }
 .yes {
-  color: #7cfc00; 
+  color: #7cfc00;
   font-size: 13pt !important;
   text-shadow: #000000 1px 1px 1px;
 }
