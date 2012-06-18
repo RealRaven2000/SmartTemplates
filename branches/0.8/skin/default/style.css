@@ -286,7 +286,7 @@ code {
   background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
   border-radius: 0.3em;
   border: 1px solid #bbb;
-  margin: 2px 0;
+  margin: 2px 4px;
   cursor: pointer;
   display: inline-block;
   font-family: Consolas, 'Courier New', Geneva, sans-serif;
