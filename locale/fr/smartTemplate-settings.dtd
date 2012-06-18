@@ -6,7 +6,7 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Copier">
 <!ENTITY paste.label "Coller">
-<!ENTITY insert.label "Insérer un Variable">
+<!ENTITY insert.label "Insérer une Variable">
 <!ENTITY close.label "Fermer">
 <!ENTITY export.label "Exportation">
 <!ENTITY import.label "Importation">
@@ -49,8 +49,8 @@
 <!ENTITY help_keyword.cap "Aide">
 <!ENTITY account_st.cap "SmartTemplate4">
 <!ENTITY account_st.button "Modifier les modèles et les entêtes...">
-<!ENTITY pref_debug_check "Debug mode">
-<!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_debug_check "Mode débogage">
+<!ENTITY pref_debug_tip "Faire un clic droit pour les options avancées de débogage">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "À propos de SmartTemplate4">
 <!ENTITY creator.label "Créateur">
