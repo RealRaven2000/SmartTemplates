@@ -230,14 +230,14 @@ SmartTemplate4.Settings = {
 		// disable Use default (common account)
 		document.getElementById("use_default").setAttribute("disabled", "true");
 
-		window.onCodeWord = function(code) {
-			SmartTemplate4.Settings.onCodeWord(code);
+		window.onCodeWord = function(code, className) {
+			SmartTemplate4.Settings.onCodeWord(code, className);
 		};
 
 		return true;
 	} ,
 
-	onCodeWord : function(code) {
+	onCodeWord : function(code, className) {
 		SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
 		let currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
@@ -246,6 +246,10 @@ SmartTemplate4.Settings = {
 		switch (tabbox.selectedIndex) {
 			case 0:
 				templateMsgBoxId='newmsg';
+				if (className.indexOf('noNew') >= 0) {
+					SmartTemplate4.Util.displayNotAllowedMessage(code);
+					return;
+				}
 				break;
 			case 1:
 				templateMsgBoxId='rspmsg';
