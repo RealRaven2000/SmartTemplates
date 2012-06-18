@@ -7,7 +7,7 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Copy">
 <!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Field">
+<!ENTITY insert.label "Insert Variable">
 <!ENTITY close.label					"Close">
 <!ENTITY export.label					"Export">
 <!ENTITY import.label					"Import">
@@ -27,10 +27,6 @@
 <!ENTITY cancel_button	        		"Kassera">
 
 <!-- #### GUI #### -->
-<!ENTITY add-onName.label				"SmartTemplate4">
-<!ENTITY add-onNameSettings_tip			"Inställningar för SmartTemplate4">
-
-<!-- #### ABOUT #### -->
 <!ENTITY pref_dialog.title      		"Inställningar för SmartTemplate4">
 <!ENTITY pref_server_desc       		"Konto">
 <!ENTITY pref_server_def        		"Allmänna inställningar">
@@ -59,6 +55,8 @@
 
 <!ENTITY help_dialog_title      		"Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap       		"Hjälp">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 
 <!ENTITY pref_debug_check "Debug mode">
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
@@ -164,7 +162,7 @@
 <!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
 <!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
 <!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' =&gt; 'Import' =&gt; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &rArr; 'Import' &rArr; 'Settings and Templates' from the menu bar.">
 <!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
 <!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap 					"Kommentarer rörande HTML-mallar"> 
