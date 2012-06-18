@@ -39,9 +39,9 @@
 <!ENTITY pref_fwdmsg.cap "转发消息">
 <!ENTITY pref_fwd.label "将以下模板应用于转发消息">
 <!ENTITY pref_fwdhead.label "使用以替换标准引用头文件">
-<!ENTITY pref_html.label "使用 HTML （例如，<b>bold</b>）">
+<!ENTITY pref_html.label "使用 HTML （例如，&lt;b&gt;bold&lt;/b&gt;）">
 <!ENTITY pref_html.cap "使用转义字符 &quot; , &amp; , &lt; , &gt;，空格。详见帮助。">
-<!ENTITY pref_rep_br.label "用 <br> 换行">
+<!ENTITY pref_rep_br.label "用 &lt;br&gt; 换行">
 <!ENTITY pref_rep_br.cap "注意：如果 <br> 后面跟着一个 HTML 标签则将不能换行">
 <!ENTITY pref_quotehead_tip "禁用标准引用头文件。请将你的引用头文件填入文本框。">
 <!ENTITY pref_template_tip "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
@@ -84,8 +84,8 @@
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
 <!ENTITY spec_form.cap "特殊形式">
-<!ENTITY specform_note.label "在弧面括号内的短语 &#123;Cc: &#37;cc(name)&#37;&#125; 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
-<!ENTITY ex_brack.label "例子: To: &#37;to(name) {&#37;Cc: &#37;cc(name)&#37;}">
+<!ENTITY specform_note.label "在弧面括号内的短语 {Cc: &#37;cc(name)&#37;} 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
+<!ENTITY ex_brack.label "例子: To: &#37;to(name)&#37; {Cc: &#37;cc(name)&#37;}">
 <!ENTITY sub_var.cap "主题">
 <!ENTITY sub.label "回复/转发的邮件主题">
 <!ENTITY sub2.label "当前消息的主题">
