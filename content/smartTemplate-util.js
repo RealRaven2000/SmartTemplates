@@ -462,6 +462,13 @@ SmartTemplate4.Util = {
 	displayNotAllowedMessage: function(reservedWord) {
 		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 			 getService(Components.interfaces.nsIStringBundleService);
+		// wrap variable in % but only if necessary
+		let decoratedWord =
+			((reservedWord[0] != '%') ? '%' : '')
+			+ reservedWord
+			+ ((reservedWord[reservedWord.length - 1] != '%') ? '%' : '');
+
+
 		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
 		let ErrorString1 = '';
 		let ErrorString2 = '';
@@ -473,7 +480,7 @@ SmartTemplate4.Util = {
 			ErrorString1 = bundle.GetStringFromName("SmartTemplate4: The variable");
 			ErrorString2 = bundle.GetStringFromName("can't be used for NEW Messages!\nListing of usable variables see Help");
 		}
-		let errorText = ErrorString1 + " %" + reservedWord + "% " + ErrorString2;
+		let errorText = ErrorString1 + " " + decoratedWord + " " + ErrorString2;
 		alert(errorText)
 		Components.utils.reportError(errorText);
 	}
