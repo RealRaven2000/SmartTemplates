@@ -6,7 +6,7 @@
 
 		<em:id>smarttemplate4@thunderbird.extension</em:id>
 		<em:name>SmartTemplate4</em:name>
-		<em:version>0.8.5.6</em:version>
+		<em:version>0.8.5.7pre5</em:version>
 		<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 		<em:type>2</em:type>
 		<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
