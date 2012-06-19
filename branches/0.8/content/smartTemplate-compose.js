@@ -48,6 +48,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		let match=false;
 		let theNodeName='';
+		let cName = ''
 		if (node && node.nodeName)
 			theNodeName = node.nodeName.toLowerCase();
 		else
@@ -60,17 +61,22 @@ SmartTemplate4.classSmartTemplate = function()
 				match = true;
 				break;
 			case 'div': // tb 13++
-				if (node.className && node.className.indexOf('moz-cite-prefix')>=0)
+				if (node.className && node.className.indexOf('moz-cite-prefix')>=0) {
+					cName = node.className;
 					match = true;
-					break;
+				}
+				break;
 		}
 		
 		if (match) {
-				SmartTemplate4.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node ' + theNodeName 
-						+ '\n' + node.nodeName + '	' + node.nodeValue);
+				let msg = cName ? ('div class matched: ' + cName + '  ' + theNodeName) : theNodeName;
+				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - deletes node ' + msg 
+						+ '\n' + node.nodeName + ' ------------\n' + node.innerHTML);
 			orgQuoteHeaders.push(node);
 			gMsgCompose.editor.deleteNode(node);
 		}
+		else
+				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName); 
 		return match;
 	};
 	
@@ -79,6 +85,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// Delete all comsecutive whitespace nodes...
 	function deleteWhiteSpaceNodes(node) {
 		let match = true;
+		let count = 0;
 		while (node && match) {
 			let nextNode = node.nextSibling;
 			match = false;
@@ -95,18 +102,19 @@ SmartTemplate4.classSmartTemplate = function()
 					match = false;
 			}
 			if (match) {
-				SmartTemplate4.Util.logDebugOptional('functions','deleteNodeTextOrBR() - deletes node '
+				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteWhiteSpaceNodes() - deletes node '
 						+ '\n' + node.nodeName + '	' + node.nodeValue);
 				gMsgCompose.editor.deleteNode(node);
 				node = nextNode;
 			}
 		}
+		SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteWhiteSpaceNodes() - deleted ' + count + ' nodes.');
 	};
 	
 	function deleteHeaderNode(node)
 	{
 		if (node) {
-			SmartTemplate4.Util.logDebugOptional('functions','deleteHeaderNode() - deletes node ' + node.nodeName 
+			SmartTemplate4.Util.logDebugOptional('functions','deleteHeaderNode() - deleting ' + node.nodeName 
 						+ '\n' + node.innerHTML);
 			orgQuoteHeaders.push(node);
 			gMsgCompose.editor.deleteNode(node);
@@ -123,7 +131,6 @@ SmartTemplate4.classSmartTemplate = function()
 	function delReplyHeader(idKey)
 	{
 		function countLF(str) { return str.split("\n").length - 1; }
-		
 		
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
 		let rootEl = gMsgCompose.editor.rootElement;
@@ -153,6 +160,7 @@ SmartTemplate4.classSmartTemplate = function()
 			// recursive search from root element
 			let node = findChildNode(rootEl, 'moz-email-headers-table');
 			if (node) {
+				SmartTemplate4.Util.logDebugOptional('functions.delReplyHeader','found moz-email-headers-table, calling deleteHeaderNode()...');
 				deleteHeaderNode(node);
 			}
 		}
@@ -170,7 +178,7 @@ SmartTemplate4.classSmartTemplate = function()
 					lines++;
 					break;
 			}
-			SmartTemplate4.Util.logDebugOptional('functions.delReplyHeader','delReplyHeader: trying to delete ' + lines + ' lines...');
+			SmartTemplate4.Util.logDebugOptional('functions.delReplyHeader','older version of Tb [' + SmartTemplate4.Util.AppverFull + '], deleting ' + lines + ' lines');
 	
 			// Delete original headers .. eliminates all #text nodes but deletes the others
 			while (rootEl.firstChild && lines > 0) {
@@ -180,6 +188,7 @@ SmartTemplate4.classSmartTemplate = function()
 				deleteNodeTextOrBR(rootEl.firstChild);
 			}
 		}
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
 	};
 	
 	// helper function tgo find a child node of the passed class Name
@@ -206,7 +215,7 @@ SmartTemplate4.classSmartTemplate = function()
 	function delForwardHeader()
 	{
 		function truncateTo2BR(root) {
-			SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','truncateTo2BR()');
+			SmartTemplate4.Util.logDebugOptional('deleteNodes','truncateTo2BR()');
 			let node = root.firstChild;
 			// old method continues until it finds <br><br> after header table
 			let brcnt = 0;
@@ -237,6 +246,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let node = rootEl.firstChild
 		//while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) #
 		let firstNode = null;
+		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Running Loop to remove unnecessary whitespace..');
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
@@ -271,7 +281,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 	
 			// remove the original Mail Header
-		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Removing original header...');
+		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Remove the original header...');
 		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
 			// recursive search from root element
 			node = findChildNode(rootEl, 'moz-email-headers-table');
@@ -292,6 +302,7 @@ SmartTemplate4.classSmartTemplate = function()
 		else {
 			truncateTo2BR(rootEl);
 		}
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delForwardHeader() ENDS');
 	}
 
 	// -----------------------------------
