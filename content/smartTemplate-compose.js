@@ -48,11 +48,19 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		let match=false;
 		let theNodeName='';
-		let cName = ''
+		let cName = '';
 		if (node && node.nodeName)
 			theNodeName = node.nodeName.toLowerCase();
 		else
 			return match;
+			
+		let content = '';
+		if (node.innerHTML)
+			content += '\ninnerHTML: ' + node.innerHTML;
+		if (node.nodeValue)
+			content += '\nnodeValue: ' + node.nodeValue;
+		if (!content)
+			content = '\nEMPTY';
 		switch(theNodeName) {
 			case 'br':
 				match = true;
@@ -71,7 +79,7 @@ SmartTemplate4.classSmartTemplate = function()
 		if (match) {
 				let msg = cName ? ('div class matched: ' + cName + '  ' + theNodeName) : theNodeName;
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - deletes node ' + msg 
-						+ '\n' + node.nodeName + ' ------------\n' + node.innerHTML);
+						+ '\n_________' + node.nodeName + '_________' + content);
 			orgQuoteHeaders.push(node);
 			gMsgCompose.editor.deleteNode(node);
 		}
@@ -82,7 +90,7 @@ SmartTemplate4.classSmartTemplate = function()
 	
 	
 	// -----------------------------------
-	// Delete all comsecutive whitespace nodes...
+	// Delete all consecutive whitespace nodes...
 	function deleteWhiteSpaceNodes(node) {
 		let match = true;
 		let count = 0;
