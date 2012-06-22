@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-stylesheet href="chrome://global/skin/"?>
-<?xml-stylesheet href="chrome://SmartTemplate4/skin/default/style.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://smarttemplate4/locale/smartTemplate-accountManager.dtd">
 
-<!DOCTYPE overlay SYSTEM "chrome://SmartTemplate4/locale/SmartTemplate4.dtd">
+<overlay id="stam-addressingOverlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<overlay 
-	id="SmartTemplate4AmAddressingOverlay" 
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">		
-		
-	<vbox flex="1" id="compositionAndAddressing">
-		<groupbox>
-			<caption id="SmartTemplate4AccountmanagerCap" label="&account_st.cap;" class="AccountmanagerCap" />
-				<hbox>
-					<button	
-						id="SmartTemplate4AccountmanagerButton" 
-						label="&account_st.button;" 
-						class="AccountmanagerButton" 
-						oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal', gIdentity.key);"/>
-				</hbox>
-		</groupbox>
-	</vbox>
+  <vbox flex="1" id="compositionAndAddressing">
+    <groupbox>
+      <caption  id="SmartTemplate4AccountmanagerCap"     
+                label="&smarttemplate4_title;"
+                class="AccountmanagerCap" 
+		        />
+      <hbox>
+        <button  id="editst"    
+                 label="&smarttemplate4_button;"
+                 class="AccountmanagerButton"
+                 oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal,resizable', gIdentity.key);"
+		         />
+      </hbox>
+    </groupbox>
+  </vbox>
+
 </overlay>
+
