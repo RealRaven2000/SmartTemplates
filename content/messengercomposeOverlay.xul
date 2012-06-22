@@ -1,23 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
-<?xml-stylesheet href="chrome://global/skin/"?>
-<?xml-stylesheet href="chrome://SmartTemplate4/skin/default/style.css" type="text/css"?>
+<overlay id="stMessengercomposeOverlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<!DOCTYPE overlay SYSTEM "chrome://SmartTemplate4/locale/SmartTemplate4.dtd">
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-init.js"/>
 
-<overlay 
-	id="SmartTemplate4MessengercomposeOverlay" 
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	
-	<script type="application/x-javascript" src="chrome://SmartTemplate4/content/messengercomposeOverlay.js" />	
-<!--
-	<statusbar id="status-bar">
-		<statusbarpanel 
-				id="SmartTemplate4Messengercompose"
-				label="&add-onName.label;"
-				tooltiptext="&add-onNameSettings_tip;" 
-				class="statusbarpanel-iconic-text"					
-				oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,modal,centerscreen');" />		
-	</statusbar>
--->
 </overlay>
+

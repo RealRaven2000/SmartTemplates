@@ -1,12 +1,12 @@
 /* ----------------------------------------------------------------------------------- */
 /* ---------------------------- create by Marky Mark DE ------------------------------ */
-/* ---------------------------- last edit at 06/02/2012 ------------------------------ */
+/* ---------------------------- last edit at 06/18/2012 ------------------------------ */
 /* ----------------------------------------------------------------------------------- */
 /* ----------------------------------- Changelog ------------------------------------- */
 /* ----------------------------------------------------------------------------------- */
 /* 1.0.0: new formatting all content over css */
 /* some formating works only as class e.g. inside an Tab which changes */
-/* the content by selecting another Identity, as ID it lost by change the formate */
+/* the content by switching another Identity, as ID it lost by change the formate */
 /* ----------------------------------------------------------------------------------- */
 
 /* ################################################################################### */
@@ -20,28 +20,28 @@
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4CloseItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/close.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
 }
 #SmartTemplate4ExportMenuitem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/export.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/export.png") !important;
 }
 #SmartTemplate4ExportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #SmartTemplate4ImportMenuitem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/import.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/import.png") !important;
 }
 #SmartTemplate4ImportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #SmartTemplate4add-onHomeItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/mozilla.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
 }
 #SmartTemplate4add-onSupportItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/tool8.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
 }
 #SmartTemplate4RightClickCopyItem {
-  list-style-image: url("chrome://SmartTemplate4/skin/CuteMenus/copy.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
 }
 
 /* ################################################################################### */
@@ -52,19 +52,19 @@
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
 #SmartTemplate_prefDialog #SmartTemplate4MsgIdentity {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
 }
 
 /* ########################## CONTENT IDENT. SELECT POPUP ############################ */
 #SmartTemplate_prefDialog #SmartTemplate4MsgIdentityPopup menuitem {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
 }
 
 /* ################################ CHECKBOXTEXTS #################################### */
-#SmartTemplate_prefDialog checkbox label { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+#SmartTemplate_prefDialog checkbox label {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
   font-style: italic;
 }
@@ -86,7 +86,7 @@
 
 /* ################################################################################### */
 /* ##################################### BUTTONS ##################################### */
-/* ################################################################################### */ 
+/* ################################################################################### */
 
 .AcceptButton,.CacelButton,.AccountmanagerButton {
   cursor: pointer;
@@ -95,20 +95,20 @@
 }
 
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
-#SmartTemplate4AcceptButton label,#SmartTemplate4CacelButton label, 
+#SmartTemplate4AcceptButton label,#SmartTemplate4CacelButton label,
 #SmartTemplate4AccountmanagerButton label {
   margin-left: 5px !important;
 }
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4AcceptButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/accept.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/accept.png") !important;
 }
 #SmartTemplate4CacelButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/cancel.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/cancel.png") !important;
 }
 #SmartTemplate4AccountmanagerButton {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
 }
 
 
@@ -124,16 +124,16 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-weight: bold; 
-  font-size: 10pt !important;  
+  font-weight: bold;
+  font-size: 10pt !important;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
 #SmartTemplate4NewTab:focus,#SmartTemplate4RspTab:focus,#SmartTemplate4FwdTab:focus,
 #SmartTemplate4HelpTab:focus,#SmartTemplate4AboutTab:focus,
-#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active, 
+#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active,
 #SmartTemplate4HelpTab:active,#SmartTemplate4AboutTab:active,
-#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover, 
+#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover,
 #SmartTemplate4HelpTab:hover,#SmartTemplate4AboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
@@ -148,19 +148,19 @@
 /* ################################## ICON BINDINGS ################################## */
 /* Icon Binding in Tabs only over class possible! */
 .NewTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
 .RspTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
 }
 .FwdTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
 .HelpTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/help.png") !important;
 }
 .AboutTab {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 
 /* ################################################################################### */
@@ -182,25 +182,25 @@
 /* ################################### ICON BINDINGS ################################# */
 /* Icon Binding in Caps inside tabs only over class possible! */
 .NewMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-new.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
 .RspMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-reply.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
 }
 .FwdMsgCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/mail-fwd.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
 .AboutCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/info.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 .AccountCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/configure.png") !important;  
+  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
 }
 .HelpCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/help.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/help.png") !important;
 }
 .AccountmanagerCap {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
 
 /* ################################################################################### */
@@ -211,27 +211,27 @@
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
 .AboutLogo {
-  background-image: url("chrome://SmartTemplate4/skin/logo.png") !important;
+  background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
 }
 
 /* ################################## AboutDeveloper ################################# */
-.SmartTemplate4AboutDeveloper { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+.SmartTemplate4AboutDeveloper {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 12pt !important;
-  line-height: 12pt !important; 
+  line-height: 12pt !important;
   font-weight: bold;
   text-align: center;
   color: #BDBDBD;
-  text-shadow: #000000 1px 1px 1px;  
+  text-shadow: #000000 1px 1px 1px;
 }
 
 /* ############################## SmartTemplate4AboutDesc ############################ */
-.SmartTemplate4AboutDesc { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
+.SmartTemplate4AboutDesc {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 11pt !important;
-  display: block;    
+  display: block;
 }
 
 /* ################################################################################### */
@@ -241,58 +241,81 @@
 /* ####################################### BODY ###################################### */
 .body {
   font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 11pt !important;
-  display: block;   
+  font-size: 10pt !important;
+  display: block;
+  background-color: #ffffff;
+  padding: 5px 10px;
 }
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
-.helpchapter { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 12pt !important; 
+h1.helpchapter {
+  background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 12pt !important;
   font-weight: bold;
   text-align: center;
-  color: #BDBDBD;
+  color: #DCDCDC;
   text-shadow: #000000 1px 1px 1px;
   border-top: 2px solid #808080;
   border-bottom: 2px solid #808080;
+  padding: 4px 0px;
+  border-radius: 1em 0 1em 0;
 }
 
-/* ############################# HTML TAG H1 (BELOW CHAPTER) ######################### */
-h1 { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 11pt !important;
-  margin-top: 0px; 
-  margin-bottom: 5px; 
-  padding: 0px; 
+/* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
+h2 {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  font-size: 10pt !important;
   font-style: italic;
-  font-weight: normal;  
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 4px 0px;
 }
 
 /* ##################################### HTML TAG b  ################################# */
-b { 
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif; 
-  font-size: 11pt !important;
+b {
+  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+  font-size: 10pt !important;
   font-style: italic;
 }
 
 /* #################################### HTML TAG CODE ################################ */
-code { 
-  font-family: 'Palatino Linotype', 'Times New Roman','Courier New', Verdana, 
-Geneva, Arial, Helvetica, sans-serif; 
-  font-size: 11pt !important; 
+/* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+code {
+  background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+  border-radius: 0.3em;
+  border: 1px solid #bbb;
+  margin: 2px 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
+}
+
+code.noNew {
+  background: -moz-linear-gradient(top, rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+}
+
+#keywords code {
+  background: -moz-linear-gradient(top, rgba(240,231,164,1) 0%, rgba(230,207,56,1) 50%, rgba(217,193,37,1) 51%, rgba(240,217,68,1) 100%);
+}
+#keywords code.noNew {
+  background: -moz-linear-gradient(top, rgba(240,202,164,1) 0%, rgba(230,140,56,1) 50%, rgba(217,124,37,1) 51%, rgba(240,151,68,1) 100%);
 }
 
 /* #################################### TABLE FOR VARS ############################### */
 #keywords {
   border: 0;
   border-collapse: collapse;
-  width: 100%;  
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-		
+
 .td-keywords,.tr-keywords {
   font-size: 11pt !important;
   text-align: center;
@@ -302,28 +325,28 @@ Geneva, Arial, Helvetica, sans-serif;
 }
 
 /* ################################## SCREENSHOT CLASS ############################### */
-.screenshot_help {  
+.screenshot_help {
   margin-top: 5px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
 /* ################################## SMALL ICON CLASS ############################### */
-.small_icon { 
-  height: 16px;/*max 16px */	
+.small_icon {
+  height: 16px;/*max 16px */
   width: 16px; /*max 16px */
-  margin-right: 3px;  
+  margin-right: 3px;
 }
 
 /* ############################## CHECKMARK & X IN VARTABLE ########################## */
-.no {    
-  color: #ff0000; 
-  font-size: 13pt !important;   
+.no {
+  color: #ff0000;
+  font-size: 13pt !important;
   text-shadow: #000000 1px 1px 1px;
 }
-.yes {   
-  color: #7cfc00; 
-  font-size: 13pt !important;    
-  text-shadow: #000000 1px 1px 1px;  
+.yes {
+  color: #7cfc00;
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
 }
 
 
@@ -333,12 +356,12 @@ Geneva, Arial, Helvetica, sans-serif;
 
 .statusbarpanel-iconic-text {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-weight: bold; 
-  font-size: 10pt !important;  
+  font-weight: bold;
+  font-size: 10pt !important;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-.statusbarpanel-iconic-text:hover {  
+.statusbarpanel-iconic-text:hover {
   cursor: pointer;
 }
 
@@ -349,5 +372,11 @@ Geneva, Arial, Helvetica, sans-serif;
 
 /* ################################### ICON BINDINGS ################################# */
 #SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
-  list-style-image: url("chrome://SmartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
+}
+
+#contentFrame {
+	min-width: 450px;
+	min-height: 450px;
+	height: auto;
 }
