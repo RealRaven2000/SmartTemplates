@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Tiedosto">
 <!ENTITY tools.label					"Työkalut">
+<!ENTITY edit.label "Muokkaa">
 <!ENTITY help.label						"Ohje">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Kopioi">
+<!ENTITY paste.label "Liitä">
+<!ENTITY insert.label "Lisää kenttä">
 <!ENTITY close.label					"Sulje">
 <!ENTITY export.label					"Vie">
 <!ENTITY import.label					"Tuo">
@@ -56,9 +59,8 @@
 
 <!ENTITY help_dialog_title 				"SmartTemplate4 - Ohje">
 <!ENTITY help_keyword.cap 				"Ohje">
-
-<!ENTITY account_st.cap 				"SmartTemplate4">
-<!ENTITY account_st.button 				"Muokkaa pohjia / lainauksen otsakkeita…">
+<!ENTITY pref_debug_check "Debug-tila">
+<!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap 						"SmartTemplate4 - Tietoja">
@@ -162,7 +164,7 @@
 <!ENTITY im-ex.cap                      "Asetusten ja pohjien vieminen/tuominen">
 <!ENTITY im-ex_note1.label              "Asetuksia ja pohjia voi viedä ja tuoda tileittän.">
 <!ENTITY im-ex_note2.label              "Aluksi valitse tili, jonka asetukset viedään SmartTemplate4:n asetuksien pudotusvalikosta.">
-<!ENTITY im-ex_note3.label              "Seuraavaksi valitse valikkopalkilta 'Työkalut' => 'Vie' => 'Asetukset ja pohjat' ja tallenna tiedosto (xxx.st4) tietokoneelle.">
+<!ENTITY im-ex_note3.label              "Seuraavaksi valitse valikkopalkilta 'Tiedosto' &rArr; 'Vie' &rArr; 'Asetukset ja pohjat' ja tallenna tiedosto (xxx.st4) tietokoneelle.">
 <!ENTITY im-ex_note4.label              "Tuodaksesi asetuksia ja pohjia, valitse ensin tili, johon asetukset tuodaan, SmartTemplate4:n asetuksien pudotusvalikosta. Seuraavaksi valitse valikkopalkilta 'Työkalut' => 'Tuo' => 'Asetukset ja pohjat'.">
 <!ENTITY im-ex_note5.label              "Valitse tiedosto (xxx.st4), josta asetukset tuodaan.">
 <!ENTITY im-ex_note6.label              "HUOM: Apple/Macintosh-alustoilla on valikkopalkki otsikkonauhalla SmartTemplate4-asetusikkunan sijaan. Tämä on alustalle ominaista käyttäytymistä, eikä sitä voida muuttaa.">

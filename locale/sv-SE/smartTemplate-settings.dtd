@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"File">
 <!ENTITY tools.label					"Tools">
+<!ENTITY edit.label "Edit">
 <!ENTITY help.label						"Help">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Copy">
+<!ENTITY paste.label "Paste">
+<!ENTITY insert.label "Insert Variable">
 <!ENTITY close.label					"Close">
 <!ENTITY export.label					"Export">
 <!ENTITY import.label					"Import">
@@ -23,8 +26,9 @@
 <!ENTITY accept_button	        		"Acceptera">
 <!ENTITY cancel_button	        		"Kassera">
 
-<!ENTITY add-onName.label				"SmartTemplate4">
-<!ENTITY add-onNameSettings_tip			"Inställningar för SmartTemplate4">
+<!-- #### OVERLAYS #### -->
+<!ENTITY add-onName.label "SmartTemplate4">
+<!ENTITY add-onNameSettings_tip "SmartTemplate4 settings">
 
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title      		"Inställningar för SmartTemplate4">
@@ -55,10 +59,11 @@
 
 <!ENTITY help_dialog_title      		"Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap       		"Hjälp">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 
-<!ENTITY account_st.cap         		"SmartTemplate4">
-<!ENTITY account_st.button      		"Redigera mallar och citathuvuden…">
-
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"Ca SmartTemplate4">
 <!ENTITY creator.label					"Creator">
@@ -125,7 +130,6 @@
 <!ENTITY a.label 						"Veckodag (Fre.)">
 <!ENTITY d.label 						"Dag i månaden (01 till 31)">
 <!ENTITY e.label 						"Dag i månaden (1 till 31)">  
-<!ENTITY m.label 						"Månad (01 till 12)"> 
 <!ENTITY n.label 						"Månad (1 till 12)"> 
 <!ENTITY B.label 						"Månad (Januari)">
 <!ENTITY b.label 						"Månad (Jan.)">
@@ -158,15 +162,13 @@
 <!ENTITY shortdate.label 				"Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Tidszon (+0100, +0200, ... )"> 
 <!ENTITY timezonename.label 			"GMT, PST, EST, ... ">
-
-<!ENTITY im-ex.cap                      "Settings and Templates Export/Import">
-<!ENTITY im-ex_note1.label              "You can export and import your settings and templates associated with each account.">
-<!ENTITY im-ex_note2.label              "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label              "Next select 'Tools' => 'Export' => 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label              "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'Tools' => 'Import' => 'Settings and Templates' from the menu bar.">
-<!ENTITY im-ex_note5.label              "Select the SmartTemplate4 file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label              "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window.  This is normal behavior on this platforms and can't be changed.">
-
+<!ENTITY im-ex.cap "Settings and Templates Export/Import">
+<!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
+<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
+<!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &rArr; 'Import' &rArr; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
+<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap 					"Kommentarer rörande HTML-mallar"> 
 <!ENTITY html_note.label				"Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 
