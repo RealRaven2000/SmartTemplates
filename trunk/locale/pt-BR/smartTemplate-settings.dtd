@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Arquivo">
 <!ENTITY tools.label					"Ferramentas">
+<!ENTITY edit.label "Edit">
 <!ENTITY help.label						"Ajuda">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Copiar">
+<!ENTITY paste.label "Paste">
+<!ENTITY insert.label "Insert Field">
 <!ENTITY close.label					"Fechar">
 <!ENTITY export.label					"Exportar">
 <!ENTITY import.label					"Importar">
@@ -56,9 +59,8 @@
 
 <!ENTITY help_dialog_title 				"Ajuda do SmartTemplate4">
 <!ENTITY help_keyword.cap 				"Ajuda">
-
-<!ENTITY account_st.cap 				"SmartTemplate4">
-<!ENTITY account_st.button 				"Editar modelos e cabeçalhos das mensagens anteriores...">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap 						"Sobre SmartTemplate4">
@@ -126,7 +128,6 @@
 <!ENTITY a.label 						"Dia da semana (Dom.)">
 <!ENTITY d.label 						"Dia do mês (de 01 a 31)">
 <!ENTITY e.label 						"Dia do mês (de 1 a 31)">
-<!ENTITY m.label 						"Mês (de 01 a 12)">
 <!ENTITY n.label 						"Mês (de 1 a 12)">
 <!ENTITY B.label 						"Nome do mês (Janeiro)">
 <!ENTITY b.label 						"Nome do mês (Jan.)">
@@ -162,8 +163,8 @@
 <!ENTITY im-ex.cap                      "Exportação/Importação de Configurações e Modelos">
 <!ENTITY im-ex_note1.label              "Você pode exportar e importar as configurações e os modelos associados a cada conta.">
 <!ENTITY im-ex_note2.label              "Primeiro, selecione a conta que você deseja exportar no campo 'Conta' das opções do SmartTemplate4.">
-<!ENTITY im-ex_note3.label              "Depois, clique no menu 'Ferramentas' => 'Exportar' => 'Configurações e Modelos' e salve no seu computador o arquivo do SmartTemplate4 (extensão .st4).">
-<!ENTITY im-ex_note4.label              "Para importar um arquivo, selecione a conta no campo 'Conta' das opções do SmartTemplate4 e clique no menu 'Ferramentas' => 'Importar' => 'Configurações e Modelos'.">
+<!ENTITY im-ex_note3.label              "Depois, clique no menu 'Ferramentas' &rArr; 'Exportar' &rArr; 'Configurações e Modelos' e salve no seu computador o arquivo do SmartTemplate4 (extensão .st4).">
+<!ENTITY im-ex_note4.label              "Para importar um arquivo, selecione a conta no campo 'Conta' das opções do SmartTemplate4 e clique no menu 'Ferramentas' &rArr; 'Importar' &rArr; 'Configurações e Modelos'.">
 <!ENTITY im-ex_note5.label              "Selecione o arquivo do SmartTemplate4 (extensão .st4) que deseja importar.">
 <!ENTITY im-ex_note6.label              "OBSERVAÇÃO: Nos computadores Apple/Macintosh o menu será exibido na faixa superior e não na janela de opções do SmartTemplate4. Este é o comportamento padrão nessa plataforma e não pode ser alterado.">
 

@@ -1,10 +1,13 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label						"Bestand">
 <!ENTITY tools.label					"Hulpmiddelen">
+<!ENTITY edit.label "Bewerken">
 <!ENTITY help.label						"Hulp">
 
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label						"Kopiëren">
+<!ENTITY paste.label "Plakken">
+<!ENTITY insert.label "Veld invoegen">
 <!ENTITY close.label					"Sluiten">
 <!ENTITY export.label					"Exporteren">
 <!ENTITY import.label					"Importeren">
@@ -56,9 +59,9 @@
 
 <!ENTITY help_dialog_title 				"SmartTemplate4-hulp">
 <!ENTITY help_keyword.cap 				"Help">
+<!ENTITY pref_debug_check "Foutopsporingsmodus">
+<!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
 
-<!ENTITY account_st.cap 				"SmartTemplate4">
-<!ENTITY account_st.button 				"Sjablonen en aanhalingskoptekst bewerken…">
 
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap 						"Over SmartTemplate4">
@@ -126,7 +129,6 @@
 <!ENTITY a.label 						"Weekdag (Vrij.)">
 <!ENTITY d.label 						"Dag van de maand (01 tot 31)">
 <!ENTITY e.label 						"Dag van de maand (1 tot 31)">
-<!ENTITY m.label 						"Maand (01 tot 12)">
 <!ENTITY n.label 						"Maand (1 tot 12)">
 <!ENTITY B.label 						"Maand (Januari)">
 <!ENTITY b.label 						"Maand (Jan.)">
@@ -162,7 +164,7 @@
 <!ENTITY im-ex.cap                      "Exporteren/importeren van instellingen en sjablonen">
 <!ENTITY im-ex_note1.label              "U kunt uw instellingen en sjablonen verbonden aan elke account exporteren en importeren.">
 <!ENTITY im-ex_note2.label              "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate4-instellingen.">
-<!ENTITY im-ex_note3.label              "Selecteer vervolgens 'Hulpmiddelen' => 'Exporteren' => 'Instellingen en sjablonen' in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
+<!ENTITY im-ex_note3.label              "Selecteer vervolgens 'Hulpmiddelen' &rArr; 'Exporteren' &rArr; 'Instellingen en sjablonen' in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
 <!ENTITY im-ex_note4.label              "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens 'Hulpmiddelen' => 'Importeren' => 'Instellingen en sjablonen' in de menubalk.">
 <!ENTITY im-ex_note5.label              "Selecteer het te importeren SmartTemplate4-bestand (xxx.st4).">
 <!ENTITY im-ex_note6.label              "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in het titellint in plaats van in het SamrtTemplate4-optiesvenster. Dit is normaal gedrag in deze platforms en kan niet worden gewijzigd.">
