@@ -68,7 +68,7 @@ SmartTemplate4.Util = {
 
 	get Appver() {
 		if (null === this.mAppver) {
-		var appVer=this.AppverFull().substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
+		var appVer=this.AppverFull.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
 			this.mAppver = parseFloat(appVer); // quick n dirty!
 		}
 		return this.mAppver;
