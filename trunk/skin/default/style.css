@@ -40,14 +40,20 @@
 .supportURL, #SmartTemplate4add-onSupportItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
 }
-.homePageURL, .supportURL {
+
+label.text-link[href] > * {
+	text-decoration: underline !important;
+}
+
+label.text-link {
 	border-radius: 0.2em;
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
 	color: #ffffff;
 	text-shadow:#BBBBBB 0px 0px 1px;
-	padding: 0.5em, 4em;
-	margin: 0.5em auto;
-	max-width: 20em;
+	padding: 0.6em 5em !important;
+	margin: 1em auto !important;
+	max-width: 25em;
+	vertical-align: middle !important;
 }
 .homePageURL:hover, .supportURL:hover {
 	margin-top: 0.6em
@@ -55,10 +61,10 @@
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
 }
 .homePageURL {
-	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
+	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
 }
 .homePageURL:hover {
-	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
+	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
 }
 
 .supportURL {
@@ -252,7 +258,7 @@
   background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;
-  width: 300px;
+  width: 320px;
 }
 
 
