@@ -136,8 +136,8 @@
 <!ENTITY im-ex.cap "Einstellungen und Vorlagen Exportieren/Importieren">
 <!ENTITY im-ex_note1.label "Sie können für jeden Account einzeln die Einstellungen und Vorlagen exportieren und auch importieren.">
 <!ENTITY im-ex_note2.label "Als erstes wählen Sie das Konto in der Dropdown Box für welches Sie die Einstellungen und Vorlagen exportieren wollen.">
-<!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' &rArr; 'Exportieren' &rArr; 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
-<!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' &rArr; 'Importieren' &rArr; 'Einstellungen und Vorlagen'.">
+<!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' &#8658; 'Exportieren' &#8658; 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
+<!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' &#8658; 'Importieren' &#8658; 'Einstellungen und Vorlagen'.">
 <!ENTITY im-ex_note5.label "Wählen Sie nun die Datei (xxx.st4) die Sie importieren wollen.">
 <!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplate4 Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
 <!ENTITY html_note.cap "Hinweise für Vorlagen im HTML-Format">
