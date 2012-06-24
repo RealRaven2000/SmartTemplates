@@ -14,6 +14,6 @@
 		                label="&smartTemplate4.settings.label;"
 		                tooltiptext="&smartTemplate4.settings.tooltip;"
 		                class="statusbarpanel-iconic-text"
-		                oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,modal,centerscreen,resizable');" />
+		                oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
 	</statusbar>
 </overlay>

@@ -14,7 +14,7 @@
 			<hbox>
 				<button id="smartTemplate4_settings"
 				        label="&smarttemplate4_button;"
-				        oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,modal,resizable', gIdentity.key);"
+				        oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,dependent,resizable', gIdentity.key);"
 				        />
 			</hbox>
 		</groupbox>

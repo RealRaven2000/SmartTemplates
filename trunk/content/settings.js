@@ -234,6 +234,8 @@ SmartTemplate4.Settings = {
 			SmartTemplate4.Settings.onCodeWord(code, className);
 		};
 
+		window.sizeToContent();
+
 		return true;
 	} ,
 
@@ -393,7 +395,7 @@ SmartTemplate4.Settings = {
 		const  branch = idkey == "common" ? "" : "." + idkey;
 
 		// Display identity.
-		var deck = document.getElementById("account.deckA");	// mod 0.3.2 S
+		var deck = document.getElementById("account_deckA");	// mod 0.3.2 S
 		var index = 0;
 		for (var el = deck.firstChild; el; el = el.nextSibling) {
 			if (el.id == "deckA.per_account" + branch) {
