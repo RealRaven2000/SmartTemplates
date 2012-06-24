@@ -33,12 +33,43 @@
 #SmartTemplate4ImportItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
-#SmartTemplate4add-onHomeItem {
+
+.homePageURL, #SmartTemplate4add-onHomeItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
 }
-#SmartTemplate4add-onSupportItem {
+.supportURL, #SmartTemplate4add-onSupportItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
 }
+.homePageURL, .supportURL {
+	border-radius: 0.2em;
+	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
+	color: #ffffff;
+	text-shadow:#BBBBBB 0px 0px 1px;
+	padding: 0.5em, 4em;
+	margin: 0.5em auto;
+	max-width: 20em;
+}
+.homePageURL:hover, .supportURL:hover {
+	margin-top: 0.6em
+	margin-bottom: 0.4em;
+	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
+}
+.homePageURL {
+	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
+}
+.homePageURL:hover {
+	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
+}
+
+.supportURL {
+	background: -moz-linear-gradient(top, rgba(216,160,130,1) 0%, rgba(172,100,62,1) 50%, rgba(146,82,48,1) 51%, rgba(198,120,78,1) 100%);
+	text-decoration: underline;
+}
+.supportURL:hover {
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+	text-decoration: underline;
+}
+
 #SmartTemplate4RightClickCopyItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
 }
@@ -50,6 +81,7 @@
 }
 
 #helpBox {
+	display:none;
 	min-width:30px;
 	border: 1px solid gray;
 }
@@ -122,7 +154,12 @@
 /* ####################################### TABS ###################################### */
 /* ################################################################################### */
 
-.NewTab,.RspTab,.FwdTab,.AboutTab {
+/* editboxes for templates */
+.templateBox {
+	max-width: 600px;
+}
+
+.NewTab,.RespondTab,.ForwardTab,.AboutTab {
   -moz-appearance: none !important;
   cursor: pointer;
   border: 1px solid #BDBDBD;
@@ -145,7 +182,7 @@
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in Tabs only over class possible! */
-.NewTab label,.RspTab label,.FwdTab label,.AboutTab label {
+.NewTab label,.RespondTab label,.ForwardTab label,.AboutTab label {
   margin-left:5px !important;
 }
 
@@ -154,10 +191,10 @@
 .NewTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
-.RspTab {
+.RespondTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
 }
-.FwdTab {
+.ForwardTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
 .AboutTab {
@@ -205,16 +242,23 @@
 /* ################################################################################### */
 
 
+.aboutPanel, .aboutGroup {
+	max-width:70em;
+}
+
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
-.AboutLogo {
+.aboutLogo {
   background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;
+  width: 300px;
 }
 
+
+
 /* ################################## AboutDeveloper ################################# */
-.SmartTemplate4AboutDeveloper description {
+.aboutPersonnel description {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 12pt !important;
   line-height: 12pt !important;
@@ -224,23 +268,28 @@
   text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
 }
 
-#aboutWrapper {
+.aboutWrapper {
 	text-align: center;
 	padding: 1em;
+	max-width:62em;
 }
-#aboutBox {
+
+.aboutPersonnel {
 	border: 1px solid #CCCCCC;
 	border-radius: 1em;
 	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-	margin-left: auto;
-	margin-right: auto;
 	max-width: 60em;
+	min-height: 235px;
+	vertical-align: middle;
+	padding: 0.5em 1em;
+/*	overflow-y:auto; overflow-x:auto	*/
+
 }
 /* ############################## SmartTemplate4AboutDesc ############################ */
-#SmartTemplate4AboutDesc {
+.aboutContent description {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 11pt !important;
+  font-size: 10pt !important;
   display: block;
 }
 
