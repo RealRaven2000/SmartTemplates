@@ -46,27 +46,30 @@ label.text-link[href] > * {
 }
 
 label.text-link {
-	border-radius: 0.2em;
+	display: inline-block;
+	border-radius: 0.4em;
+	border: 1px solid rgb(100,120,120);
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
 	color: #dddddd;
-	text-shadow:#BBBBBB 0px 0px 1px;
-	padding: 0.6em 5em !important;
-	margin-top: 0.5em !important;
-	margin-bottom: 0.5em !important;
-	max-width: 25em;
+	text-shadow:#BBBBBB 0px 0px 2px;
+	padding: 0.3em 3em !important;
+	margin-top: 0.3em !important;
+	margin-bottom: 0.3em !important;
+	max-width: 22em;
 	vertical-align: middle !important;
 }
 label.text-link:hover {
 	margin-top: 0.6em !important;
 	margin-bottom: 0.4em !important;
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
-	color: #ffffff;
+	color: #FFFFFF !important;
 }
 .homePageURL {
 	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
 }
 .homePageURL:hover {
 	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
+	text-shadow: rgba(100, 0, 100, 0.8) 0px 0px 2px;
 }
 
 .supportURL {
@@ -76,6 +79,7 @@ label.text-link:hover {
 .supportURL:hover {
 	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
 	text-decoration: underline;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
 }
 
 #SmartTemplate4RightClickCopyItem {
@@ -288,9 +292,9 @@ label.text-link:hover {
 	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 	max-width: 60em;
-	min-height: 235px;
+	min-height: 8em;
 	vertical-align: middle;
-	padding: 0.5em 1em;
+	padding: 1em;
 /*	overflow-y:auto; overflow-x:auto	*/
 
 }
