@@ -22,9 +22,6 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "キャンセル">
-<!-- #### OVERLAYS #### -->
-<!ENTITY add-onName.label "SmartTemplate4">
-<!ENTITY add-onNameSettings_tip "SmartTemplate4 設定">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
 <!ENTITY pref_server_desc "差出人:">

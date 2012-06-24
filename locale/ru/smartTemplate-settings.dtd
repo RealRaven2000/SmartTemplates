@@ -22,9 +22,6 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">
-<!-- #### OVERLAYS #### -->
-<!ENTITY add-onName.label "SmartTemplate4">
-<!ENTITY add-onNameSettings_tip "Настройки SmartTemplate4">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "Настройки SmartTemplate4">
 <!ENTITY pref_server_desc "Учётная запись">
