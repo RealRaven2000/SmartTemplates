@@ -59,8 +59,8 @@ label.text-link {
 	vertical-align: middle !important;
 }
 label.text-link:hover {
-	margin-top: 0.6em !important;
-	margin-bottom: 0.4em !important;
+	margin-top: 0.35em !important;
+	margin-bottom: 0.25em !important;
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
 	color: #FFFFFF !important;
 }
