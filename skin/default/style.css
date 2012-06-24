@@ -48,17 +48,19 @@ label.text-link[href] > * {
 label.text-link {
 	border-radius: 0.2em;
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
-	color: #ffffff;
+	color: #dddddd;
 	text-shadow:#BBBBBB 0px 0px 1px;
 	padding: 0.6em 5em !important;
-	margin: 1em auto !important;
+	margin-top: 0.5em !important;
+	margin-bottom: 0.5em !important;
 	max-width: 25em;
 	vertical-align: middle !important;
 }
-.homePageURL:hover, .supportURL:hover {
-	margin-top: 0.6em
-	margin-bottom: 0.4em;
+label.text-link:hover {
+	margin-top: 0.6em !important;
+	margin-bottom: 0.4em !important;
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
+	color: #ffffff;
 }
 .homePageURL {
 	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
