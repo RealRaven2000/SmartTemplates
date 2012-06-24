@@ -268,8 +268,14 @@
 											</vbox>
 											<spacer flex = "1" />
 										</hbox>
-										<label onclick = "SmartTemplate4AMO.openAMOPage();" class = "homePageURL">&add-onHome.label;</label>
-										<label onclick = "SmartTemplate4Support.openSupportPage();"  class = "supportURL">&add-onSupport.label;</label>
+										<hbox>
+											<spacer flex="1"/>
+											<vbox>
+												<label onclick = "SmartTemplate4.Util.showHomePage();"    class = "homePageURL text-link">&add-onHome.label;</label>
+												<label onclick = "SmartTemplate4.Util.showSupportPage();" class = "supportURL text-link">&add-onSupport.label;</label>
+											</vbox>
+											<spacer flex="1"/>
+										</hbox>
 									</groupbox>
 								</tabpanel>
 							</tabpanels>
