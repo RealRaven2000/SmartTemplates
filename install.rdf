@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    
 		 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 		 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
@@ -6,7 +6,7 @@
 		<Description rdf:about="urn:mozilla:install-manifest">
 			<em:id>smarttemplate4@thunderbird.extension</em:id>
 			<em:name>SmartTemplate4</em:name>
-			<em:version>0.9pre8</em:version>
+			<em:version>0.9pre22</em:version>
 			<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 			<em:type>2</em:type>
 			<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
@@ -29,7 +29,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Marky Mark DE</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -45,7 +44,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Aris - style support</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -61,7 +59,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>urko (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -77,7 +74,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Akilles (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -91,9 +87,8 @@
 					<em:creator>Axel Grude</em:creator>
 					<em:developer>Axel Grude</em:developer>
 					<em:developer>Marky Mark DE</em:developer>
-					<em:translator>Roland Lacroute - Google Translator</em:translator>
+					<em:translator>Roland Lacroute</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -109,7 +104,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>A35G e Luana (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -125,7 +119,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Cai (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -141,7 +134,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>markh (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -157,7 +149,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Leszek(teo) Życzkowski (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -173,7 +164,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Mauro José da Silva (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -189,7 +179,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Anton Pinsky (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -205,7 +194,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Lakrits (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>
@@ -221,7 +209,6 @@
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Yanfang Liu (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
-					<em:contributor>Peter Macej</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
 				</Description>

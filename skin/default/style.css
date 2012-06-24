@@ -43,6 +43,17 @@
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
 }
 
+#SmartTemplate4HelpMenuitem { float: right; }
+
+#account_deckA {
+	max-width: 600px;
+}
+
+#helpBox {
+	min-width:30px;
+	border: 1px solid gray;
+}
+
 /* ################################################################################### */
 /* ###################################### GUI ######################################## */
 /* ################################################################################### */
@@ -50,23 +61,27 @@
 /* ############################## SELECTED IDENTITY ################################## */
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
+#smartTemplate_prefDialog {
+	width: 650px;
+	min-height: 450px;
+}
+
 #smartTemplate_prefDialog #msgIdentity {
-  font-size: 10pt !important;
+
 }
 
 /* ########################## CONTENT IDENT. SELECT POPUP ############################ */
-#smartTemplate_prefDialog #msgIdentityPopup menuitem {  
-  font-size: 10pt !important;
+#smartTemplate_prefDialog #msgIdentityPopup menuitem {
+
 }
 
 /* ################################ CHECKBOXTEXTS #################################### */
-#smartTemplate_prefDialog checkbox label {  
-  font-size: 10pt !important;
+#smartTemplate_prefDialog checkbox label {
   font-style: italic;
 }
 
 /* ################################## TEXTBOXES ###################################### */
-#smartTemplate_prefDialog .indent textbox {  
+#smartTemplate_prefDialog .indent textbox {
   font-size: 10pt !important;
 }
 
@@ -97,6 +112,11 @@
   list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
 }
 
+
+#smartTemplatePane {
+	padding: 0;
+	margin: 0;
+}
 
 /* ################################################################################### */
 /* ####################################### TABS ###################################### */
@@ -194,7 +214,7 @@
 }
 
 /* ################################## AboutDeveloper ################################# */
-.SmartTemplate4AboutDeveloper {
+.SmartTemplate4AboutDeveloper description {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 12pt !important;
   line-height: 12pt !important;
@@ -204,8 +224,21 @@
   text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
 }
 
+#aboutWrapper {
+	text-align: center;
+	padding: 1em;
+}
+#aboutBox {
+	border: 1px solid #CCCCCC;
+	border-radius: 1em;
+	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 60em;
+}
 /* ############################## SmartTemplate4AboutDesc ############################ */
-.SmartTemplate4AboutDesc {
+#SmartTemplate4AboutDesc {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 11pt !important;
   display: block;
@@ -346,13 +379,9 @@ code.noNew {
   margin-right: 5px !important;
 }
 
-/* ################################### ICON BINDINGS ################################# */
-#SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
-}
-
 #contentFrame {
 	min-width: 450px;
 	min-height: 450px;
 	height: auto;
 }
+
