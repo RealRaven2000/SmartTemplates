@@ -13,10 +13,84 @@
             buttonlabelextra2 = "&pref_help.tab;"
             ondialogextra2 = "window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus();window.sizeToContent();"
             >
-
+            
 	<prefpane id = "smartTemplatePane">
 
-		<!-- ######## Identity Dropdown Box Creating ######## -->
+	<!-- ######## Creating Menubar ######## -->
+	<!-- MENUITEMS: File - Tools - Help -->
+	<toolbox>
+		<toolbar type = "menubar">
+			<toolbaritem>
+				<menubar style = "border: 0px;">
+				<!-- ###### FILE ###### -->
+					<menu id = "SmartTemplate4FileMenuitem"
+					      label = "&file.label;"
+					      class = "menu-iconic">
+						<!-- ###### FILE -> CLOSE ###### -->
+						<menupopup id = "SmartTemplate4-close-popup">
+							<menuitem id = "SmartTemplate4CloseItem"
+							          label = "&close.label;"
+							          class = "menuitem-iconic"
+							          oncommand = "window.close();" />
+						</menupopup>
+						<menu id = "SmartTemplate4ExportMenuitem"
+						      label = "&export.label;" 
+						      class = "menu-iconic">
+							<!-- ###### EXPORT -> * ###### -->
+							<menupopup id = "SmartTemplate4export-popup">
+								<menuitem id = "SmartTemplate4ExportItem"
+								          label = "&settings.label;"
+								          class = "menuitem-iconic"
+								          oncommand = "SmartTemplate4OnExport();" />
+							</menupopup>
+						</menu>
+						<!-- ###### TOOLS -> IMPORT ###### -->
+						<menu id = "SmartTemplate4ImportMenuitem"
+						      label = "&import.label;"
+						      class = "menu-iconic">
+							<!-- ###### IMPORT -> * ###### -->
+							<menupopup id = "SmartTemplate4-import-popup">
+								<menuitem id = "SmartTemplate4ImportItem"
+								          label = "&settings.label;"
+								          class = "menuitem-iconic"
+								          oncommand = "SmartTemplate4OnImport();" />
+							</menupopup>
+						</menu>
+
+					</menu>
+					<!-- ###### TOOLS ###### -->
+					<menu id = "SmartTemplate4ToolsMenuitem"
+					      label = "&tools.label;"
+					      class = "menu-iconic">
+						<menupopup id = "SmartTemplate4-tools-popup">
+							<!-- ###### TOOLS -> EXPORT ###### -->
+						</menupopup>
+					</menu>
+					<!-- ###### HELP ###### -->
+					<menu id = "SmartTemplate4HelpMenuitem"
+					      label = "&help.label;"
+					      class = "menu-iconic">
+								<!-- ###### HELP -> * ###### -->
+									<menupopup id = "SmartTemplate4-help-popup">
+										<menuitem id = "SmartTemplate4add-onHomeItem"
+										          label = "&add-onHome.label;"
+										          class = "menuitem-iconic"
+										          onclick = "SmartTemplate4AMO.openAMOPage();" />
+										<menuitem id = "SmartTemplate4add-onSupportItem"
+										          label = "&add-onSupport.label;"
+										          class = "menuitem-iconic"
+										          onclick = "SmartTemplate4Support.openSupportPage();" />
+									</menupopup>
+					</menu>
+				</menubar>
+			</toolbaritem>
+		</toolbar>
+	</toolbox>
+<spacer height = "5px" />
+            
+
+
+		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox align = "center" flex = "1">
 			<label value = "&pref_server_desc;"/>
 				<menulist id="msgIdentity"
