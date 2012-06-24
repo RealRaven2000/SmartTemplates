@@ -66,8 +66,8 @@
 <!ENTITY tomail.label "Empfänger E-Mail Adresse">
 <!ENTITY frommail.label "Absender E-Mail Adresse">
 <!ENTITY ccmail.label "Empfänger E-Mail Adresse">
-<!ENTITY sig.label "Sigantur aus den Konten-Einstellungen">
-<!ENTITY sig2.label "Sigantur aus den Konten-Einstellungen aber ohne '--'">
+<!ENTITY sig.label "Signatur aus den Konten-Einstellungen">
+<!ENTITY sig2.label "Signatur aus den Konten-Einstellungen aber ohne '--'">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
