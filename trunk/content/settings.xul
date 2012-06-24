@@ -30,11 +30,6 @@
 					      label = "&file.label;"
 					      class = "menu-iconic">
 						<menupopup>
-							<!-- ###### FILE -> CLOSE ###### -->
-							<menuitem id = "SmartTemplate4CloseItem"
-							          label = "&close.label;"
-							          class = "menuitem-iconic"
-							          oncommand = "window.close();" />
 							<!-- ###### FILE -> EXPORT * ###### -->
 							<menu id = "SmartTemplate4ExportMenuitem"
 							      label = "&export.label;"
@@ -58,6 +53,11 @@
 									          oncommand = "SmartTemplate4OnImport();" />
 								</menupopup>
 							</menu>
+							<!-- ###### FILE -> CLOSE ###### -->
+							<menuitem id = "SmartTemplate4CloseItem"
+							          label = "&close.label;"
+							          class = "menuitem-iconic"
+							          oncommand = "window.close();" />
 						</menupopup>
 					</menu>
 

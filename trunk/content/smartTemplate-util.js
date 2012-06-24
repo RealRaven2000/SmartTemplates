@@ -38,6 +38,9 @@ SmartTemplate4.Util = {
 	mExtensionVer: null,
 	ConsoleService: null,
 	lastTime: 0,
+	AMOHomepage: "https://addons.mozilla.org/thunderbird/addon/324497/",
+	SupportHomepage: "http://www.tool8now.com/smarttemplate4/index.php",
+
 
 	getBundleString: function(id, defaultText) {
 		try {
@@ -386,7 +389,10 @@ SmartTemplate4.Util = {
 				{ tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, gSmartTemplate_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} } );
 			}
 		}
-		catch(e) { return false; }
+		catch(e) {
+			this.logException('openURLInTab(' + URL + ')', e);
+			return false;
+		}
 		return true;
 	} ,
 
@@ -431,7 +437,11 @@ SmartTemplate4.Util = {
 	}  ,
 
 	showHomePage: function () {
-		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/index.html');
+		SmartTemplate4.Util.openURLInTab(this.AMOHomepage);
+	} ,
+
+	showSupportPage: function () {
+		SmartTemplate4.Util.openURLInTab(this.SupportHomepage);
 	} ,
 
 	showAboutConfig: function(filter) {
