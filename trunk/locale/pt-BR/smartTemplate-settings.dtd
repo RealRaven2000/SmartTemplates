@@ -25,11 +25,6 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button 					"Aceptar">
 <!ENTITY cancel_button 					"Descartar">
-
-<!-- #### OVERLAYS #### -->
-<!ENTITY add-onName.label				"SmartTemplate4">
-<!ENTITY add-onNameSettings_tip			"Opções do SmartTemplate4">
-
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title				"Opções do SmartTemplate4">
 <!ENTITY pref_server_desc 				"Conta">

@@ -25,11 +25,6 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button	        		"Acceptera">
 <!ENTITY cancel_button	        		"Kassera">
-
-<!-- #### OVERLAYS #### -->
-<!ENTITY add-onName.label "SmartTemplate4">
-<!ENTITY add-onNameSettings_tip "SmartTemplate4 settings">
-
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title      		"Inställningar för SmartTemplate4">
 <!ENTITY pref_server_desc       		"Konto">
