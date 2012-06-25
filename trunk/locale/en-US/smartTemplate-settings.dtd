@@ -133,8 +133,8 @@
 <!ENTITY im-ex.cap "Settings and Templates Export/Import">
 <!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
 <!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &rArr; 'Import' &rArr; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note3.label "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
 <!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
 <!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap "Note for HTML templates">

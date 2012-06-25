@@ -179,7 +179,7 @@ button.text-link:hover {
 	max-width: 600px;
 }
 
-.actionTabs {
+.actionTabs > tab {
 	padding: 0.2em 2em;
 }
 
