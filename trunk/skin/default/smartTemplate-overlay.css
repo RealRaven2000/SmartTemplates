@@ -3,7 +3,8 @@
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
 #SmartTemplate4Messenger label {
-	transition: max-width 0.3s ease 0.2s;
+	max-width : 350px;
+	-moz-transition: max-width 0.3s ease 0.2s;
 }
 
 #SmartTemplate4Messenger:not(:hover) label {
