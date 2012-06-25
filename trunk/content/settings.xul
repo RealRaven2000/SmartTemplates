@@ -270,9 +270,9 @@
 										</hbox>
 										<hbox>
 											<spacer flex="1"/>
-											<label onclick = "SmartTemplate4.Util.showHomePage();"    class = "homePageURL text-link">&add-onHome.label;</label>
+											<button onclick = "SmartTemplate4.Util.showHomePage();"    class = "homePageURL text-link">&add-onHome.label;</button>
 											<spacer flex="1"/>
-											<label onclick = "SmartTemplate4.Util.showSupportPage();" class = "supportURL text-link">&add-onSupport.label;</label>
+											<button onclick = "SmartTemplate4.Util.showSupportPage();" class = "supportURL text-link">&add-onSupport.label;</button>
 											<spacer flex="1"/>
 										</hbox>
 									</groupbox>

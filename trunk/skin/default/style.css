@@ -41,11 +41,16 @@
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
 }
 
-label.text-link[href] > * {
+/* our own buttons */
+button.text-link {
+	-moz-appearance: none !important;
+}
+
+button.text-link[href] > * {
 	text-decoration: underline !important;
 }
 
-label.text-link {
+button.text-link {
 	display: inline-block;
 	border-radius: 0.4em;
 	border: 1px solid rgb(100,120,120);
@@ -58,14 +63,16 @@ label.text-link {
 	max-width: 22em;
 	vertical-align: middle !important;
 }
-label.text-link:hover {
+
+button.text-link:hover {
 	margin-top: 0.35em !important;
 	margin-bottom: 0.25em !important;
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
 	color: #FFFFFF !important;
 }
 .homePageURL {
-	background: -moz-linear-gradient(top, rgba(138,86,111,1) 0%, rgba(122,76,96,1) 50%, rgba(92,34,57,1) 51%, rgba(136,70,94,1) 100%);
+	list-style-image:
+	background: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%);
 }
 .homePageURL:hover {
 	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
@@ -73,11 +80,11 @@ label.text-link:hover {
 }
 
 .supportURL {
-	background: -moz-linear-gradient(top, rgba(216,160,130,1) 0%, rgba(172,100,62,1) 50%, rgba(146,82,48,1) 51%, rgba(198,120,78,1) 100%);
+	background: -moz-linear-gradient(top, rgba(242,211,194,1) 0%, rgba(212,135,94,1) 36%, rgba(207,106,51,1) 77%, rgba(226,164,130,1) 100%);
 	text-decoration: underline;
 }
 .supportURL:hover {
-	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 36%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
 	text-decoration: underline;
 	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
 }
@@ -117,11 +124,6 @@ label.text-link:hover {
 /* ########################## CONTENT IDENT. SELECT POPUP ############################ */
 #smartTemplate_prefDialog #msgIdentityPopup menuitem {
 
-}
-
-/* ################################ CHECKBOXTEXTS #################################### */
-#smartTemplate_prefDialog checkbox label {
-  font-style: italic;
 }
 
 /* ################################## TEXTBOXES ###################################### */
