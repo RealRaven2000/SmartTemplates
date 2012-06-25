@@ -142,7 +142,7 @@
 
 						<tabbox id = "deckB.nodef" flex = "1">
 
-							<tabs>
+							<tabs class="actionTabs">
 								<tab id = "newTab" label = "&pref_new.tab;"     class = "NewTab"/>
 								<tab id = "respondTab" label = "&pref_rsp.tab;" class = "RespondTab" />
 								<tab id = "forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
@@ -270,9 +270,13 @@
 										</hbox>
 										<hbox>
 											<spacer flex="1"/>
-											<button onclick = "SmartTemplate4.Util.showHomePage();"    class = "homePageURL text-link">&add-onHome.label;</button>
+											<button onclick = "SmartTemplate4.Util.showHomePage();"
+											        class = "homePageURL text-link"
+											        label = "&add-onHome.label;" />
 											<spacer flex="1"/>
-											<button onclick = "SmartTemplate4.Util.showSupportPage();" class = "supportURL text-link">&add-onSupport.label;</button>
+											<button onclick = "SmartTemplate4.Util.showSupportPage();"
+											        class = "supportURL text-link"
+											        label = "&add-onSupport.label;" />
 											<spacer flex="1"/>
 										</hbox>
 									</groupbox>

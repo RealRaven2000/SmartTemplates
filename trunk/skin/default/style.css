@@ -50,6 +50,8 @@ button.text-link[href] > * {
 	text-decoration: underline !important;
 }
 
+
+
 button.text-link {
 	display: inline-block;
 	border-radius: 0.4em;
@@ -70,8 +72,12 @@ button.text-link:hover {
 	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
 	color: #FFFFFF !important;
 }
+
+.text-link label {
+	margin-left: 1.5em;
+}
 .homePageURL {
-	list-style-image:
+	list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 	background: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%);
 }
 .homePageURL:hover {
@@ -173,6 +179,10 @@ button.text-link:hover {
 	max-width: 600px;
 }
 
+.actionTabs {
+	padding: 0.2em 2em;
+}
+
 .NewTab,.RespondTab,.ForwardTab,.AboutTab {
   -moz-appearance: none !important;
   cursor: pointer;
@@ -180,7 +190,6 @@ button.text-link:hover {
   border-bottom: none !important;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  font-size: 10pt !important;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
