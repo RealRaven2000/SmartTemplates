@@ -234,7 +234,8 @@ SmartTemplate4.Settings = {
 			SmartTemplate4.Settings.onCodeWord(code, className);
 		};
 
-		window.sizeToContent();
+		window.sizeToContent()
+
 
 		return true;
 	} ,
