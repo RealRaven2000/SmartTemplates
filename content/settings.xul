@@ -92,7 +92,7 @@
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox>
-			<label value = "&pref_server_desc;"/>
+			<label value = "&pref_server_desc;:"/>
 			<menulist id = "msgIdentity"
 			          class = "identity-menulist"
 			          label = "&pref_server_def;"
