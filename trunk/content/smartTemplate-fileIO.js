@@ -9,9 +9,6 @@
 
 
 SmartTemplate4.IO = {
-	SmartTemplate4AMOHomepage: "https://addons.mozilla.org/thunderbird/addon/324497/",
-	SmartTemplate4SupportHomepage = "http://www.tool8now.com/smarttemplate4/index.php",
-
 //******************************************************************************
 // Export / Import
 // added in v.1.0.0
