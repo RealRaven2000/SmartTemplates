@@ -10,7 +10,7 @@
             title = "&pref_dialog.title; (&localename.label;)"
             buttons = "extra2,cancel,accept"
             buttonlabelextra2 = "&pref_help.tab;"
-            ondialogextra2 = "window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus();window.sizeToContent();"
+            ondialogextra2 = "window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null).focus().sizeToContent();"
             onload = "SmartTemplate4.Settings.onLoad();"
             onunload = "SmartTemplate4.Settings.onUnload();"
             style = "max-width:700px;"
@@ -38,7 +38,7 @@
 									<menuitem id = "SmartTemplate4ExportItem"
 									          label = "&settings.label;"
 									          class = "menuitem-iconic"
-									          oncommand = "SmartTemplate4OnExport();" />
+									          oncommand = "SmartTemplate4.IO.export();" />
 								</menupopup>
 							</menu>
 							<!-- ###### FILE -> IMPORT ###### -->
@@ -50,7 +50,7 @@
 									<menuitem id = "SmartTemplate4ImportItem"
 									          label = "&settings.label;"
 									          class = "menuitem-iconic"
-									          oncommand = "SmartTemplate4OnImport();" />
+									          oncommand = "SmartTemplate4.IO.import();" />
 								</menupopup>
 							</menu>
 							<!-- ###### FILE -> CLOSE ###### -->
@@ -77,11 +77,11 @@
 										<menuitem id = "SmartTemplate4add-onHomeItem"
 										          label = "&add-onHome.label;"
 										          class = "menuitem-iconic"
-										          onclick = "SmartTemplate4AMO.openAMOPage();" />
+										          onclick = "SmartTemplate4.Util.showHomePage();" />
 										<menuitem id = "SmartTemplate4add-onSupportItem"
 										          label = "&add-onSupport.label;"
 										          class = "menuitem-iconic"
-										          onclick = "SmartTemplate4Support.openSupportPage();" />
+										          onclick = "SmartTemplate4.Util.showSupportPage();" />
 									</menupopup>
 					</menu>
 				</menubar>
