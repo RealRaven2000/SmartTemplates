@@ -39,7 +39,8 @@ var SmartTemplate4 = {
 		if (startup) {
 			// Old function call
 			this.oldFunc_LoadIdentity(startup);
-		} else {
+		} 
+		else {
 			// Check body modified or not
 			var isBodyModified = gMsgCompose.bodyModified;
 			if (!isBodyModified) {
