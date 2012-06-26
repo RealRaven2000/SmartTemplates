@@ -1,3 +1,5 @@
+"use strict";
+
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
 // -------------------------------------------------------------------
@@ -18,6 +20,8 @@ SmartTemplate4.classSmartTemplate = function()
 		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value;
 		
+		let sigNode = findChildNode(bodyEl, 'moz-signature'); // get the signature straight from the bodyElement!
+		
 		// try to extract signature manually
 		for(let i = 0; i < nodes.length; i++) {
 			if ( nodes[i].className == "moz-signature" ) {
@@ -27,14 +31,27 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 		}
 		
+		let sigText =gMsgCompose.identity.attachSignature ?
+		                  gMsgCompose.identity.htmlSigText : 
+		                  sigNode.innerHTML;
+		
 		if (!sig || typeof sig == 'string') {
 			if (gMsgCompose.composeHTML) {
 				sig = gMsgCompose.editor.document.createElement("div");
 				sig.className = 'moz-signature';
-				sig.innerHTML = gMsgCompose.identity.htmlSigText;
+				sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
+				// TEST STUFF..
+				if (gMsgCompose.identity.attachSignature) {
+					let sigFile = gMsgCompose.identity.signature.QueryInterface(Components.interfaces.nsILocalFile);
+					if (sigFile &&( sigFile.fileSize > 0)) {
+						SmartTemplate4.Util.logDebug('Trying to read signature file: ' + sigFile.leafName 
+						        + '\nfile size: ' + sigFile.fileSize 
+						        + '\nReadable: '  + sigFile.isReadable());
+				  }
+				}
 			}
 			else {
-				sig = gMsgCompose.editor.document.createTextNode(gMsgCompose.identity.htmlSigText);
+				sig = gMsgCompose.editor.document.createTextNode(sigText);
 			}
 		}
 		
@@ -46,6 +63,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// Delete DOMNode/textnode or BR
 	function deleteNodeTextOrBR(node)
 	{
+		let isCitation = false;
 		let match=false;
 		let theNodeName='';
 		let cName = '';
@@ -69,9 +87,11 @@ SmartTemplate4.classSmartTemplate = function()
 				match = true;
 				break;
 			case 'div': // tb 13++
-				if (node.className && node.className.indexOf('moz-cite-prefix')>=0) {
+				if (node.className && 
+				    node.className.indexOf('moz-cite-prefix')>=0) {
 					cName = node.className;
 					match = true;
+					isCitation = true;
 				}
 				break;
 		}
@@ -81,7 +101,12 @@ SmartTemplate4.classSmartTemplate = function()
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - deletes node ' + msg 
 						+ '\n_________' + node.nodeName + '_________' + content);
 			orgQuoteHeaders.push(node);
+			// rescue the signature from citation before deleting the node
 			gMsgCompose.editor.deleteNode(node);
+			if (isCitation) {
+				// findChildNode(node, '');
+				// => append signature where citation was
+			}
 		}
 		else
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName); 
@@ -473,10 +498,35 @@ SmartTemplate4.classSmartTemplate = function()
 			editor.selectionController.completeScroll(false);
 		}
 		
+		
+		
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate',
+		         'identityName:   ' + gMsgCompose.identity.identityName + '\n'
+		       + 'key:            ' + gMsgCompose.identity.key + '\n'
+		       + '------------------------------------------------\n' 
+		       + 'sigOnReply:     ' + gMsgCompose.identity.sigOnReply + '\n'
+		       + 'sigOnForward:   ' + gMsgCompose.identity.sigOnForward + '\n'
+		       + 'sigOnBottom:    ' + gMsgCompose.identity.sigOnBottom + '\n'
+		       + 'attachSignature:' + gMsgCompose.identity.attachSignature + '\n'
+		       + 'htmlSigFormat:  ' + gMsgCompose.identity.htmlSigFormat + '\n'
+		       + 'composeHtml:    ' + gMsgCompose.identity.composeHtml + '\n'
+		       + 'replyOnTop:     ' + gMsgCompose.identity.replyOnTop + '\n'
+		       + 'SmartTemplate4.sigIsDefined: ' + SmartTemplate4.sigIsDefined);
+			// why not use gMsgCompose.identity.sigBottom ??
+			// gMsgCompose.identity.sigOnReply
+			// gMsgCompose.identity.sigOnForward
+			// gMsgCompose.identity.identityName
+			
+		
+		
 		if (!SmartTemplate4.sigIsDefined && theSignature) {
 			let pref = SmartTemplate4.pref;
+			// why not use gMsgCompose.identity.sigBottom ??
+			// gMsgCompose.identity.sigOnReply
+			// gMsgCompose.identity.sigOnForward
+			
 			let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
 			let bodyEl = gMsgCompose.editor.rootElement;
 			

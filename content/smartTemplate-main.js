@@ -1,4 +1,4 @@
-
+"use strict";
 // the main object
 
 var SmartTemplate4 = {
@@ -17,7 +17,7 @@ var SmartTemplate4 = {
 		SaveInFolderDone: function(folderURI) {}
 	},
 	
-	initListner: function() {	
+	initListner: function() {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 	},
 	// -------------------------------------------------------------------
