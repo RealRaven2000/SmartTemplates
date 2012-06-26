@@ -68,7 +68,7 @@ SmartTemplate4.Util = {
 
 	get Appver() {
 		if (null === this.mAppver) {
-		var appVer=this.AppverFull.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
+			var appVer=this.AppverFull.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
 			this.mAppver = parseFloat(appVer); // quick n dirty!
 		}
 		return this.mAppver;
@@ -379,7 +379,7 @@ SmartTemplate4.Util = {
 				}
 			}
 			if (tabmail) {
-				sTabMode = (SmartTemplate4.Util.Application === "Thunderbird" && SmartTemplate4.Util.Appver >= 3) ? "contentTab" : "3pane";
+				sTabMode = (SmartTemplate4.Util.Application === "Thunderbird" && this.versionGreaterOrEqual(this.AppverFull, "3")) ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, gSmartTemplate_TabURIregexp._thunderbirdRegExp);"});
 			}

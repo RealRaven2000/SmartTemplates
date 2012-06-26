@@ -50,14 +50,12 @@ button.text-link[href] > * {
 	text-decoration: underline !important;
 }
 
-
-
 button.text-link {
 	display: inline-block;
 	border-radius: 0.4em;
 	border: 1px solid rgb(100,120,120);
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
-	color: #dddddd;
+	color: #EFEFEF;
 	text-shadow:#BBBBBB 0px 0px 2px;
 	padding: 0.3em 3em !important;
 	margin-top: 0.3em !important;

@@ -7,8 +7,6 @@
 <overlay id="SmartTemplate4MessengerOverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/settings.js" />
-
 	<statusbar id="status-bar">
 		<statusbarpanel id="SmartTemplate4Messenger"
 		                label="&smartTemplate4.settings.label;"
