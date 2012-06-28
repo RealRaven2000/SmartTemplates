@@ -12,8 +12,8 @@
 <!ENTITY export.label					"Vie">
 <!ENTITY import.label					"Tuo">
 <!ENTITY settings.label					"Asetukset ja pohjat">
-<!ENTITY add-onHome.label				"Lisäosan kotisivu">
-<!ENTITY add-onSupport.label			"Tuen kotisivu">
+<!ENTITY url.homePage.label				"Lisäosan kotisivu">
+<!ENTITY url.supportPage.label			"Tuen kotisivu">
 
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab 					"Uusi">

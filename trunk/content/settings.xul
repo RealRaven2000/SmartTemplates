@@ -74,14 +74,18 @@
 					      class = "menu-iconic">
 								<!-- ###### HELP -> * ###### -->
 									<menupopup id = "SmartTemplate4-help-popup">
-										<menuitem id = "SmartTemplate4add-onHomeItem"
-										          label = "&add-onHome.label;"
+										<menuitem id = "menuHomePage"
+										          label = "&url.homePage.label;"
 										          class = "menuitem-iconic"
 										          onclick = "SmartTemplate4.Util.showHomePage();" />
-										<menuitem id = "SmartTemplate4add-onSupportItem"
-										          label = "&add-onSupport.label;"
+										<menuitem id = "menuSupportPage"
+										          label = "&url.supportPage.label;"
 										          class = "menuitem-iconic"
 										          onclick = "SmartTemplate4.Util.showSupportPage();" />
+										<menuitem id = "menuBugsAndFeaturesPage"
+										          label = "&url.bugsAndFeaturesPage.label;"
+										          class = "menuitem-iconic"
+										          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();" />
 									</menupopup>
 					</menu>
 				</menubar>
@@ -167,10 +171,13 @@
 									<groupbox flex = "1" class = "newGroup">
 										<caption label = "&pref_newmsg.cap;"/>
 										<vbox flex = "1">
-											<checkbox id = "new"
-											          label = "&pref_new.label;"
-											          preference = "pref_new"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											<hbox>
+												<checkbox id = "new"
+												          label = "&pref_new.label;"
+												          preference = "pref_new"
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												<spacer flex="1" />
+											</hbox>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "newmsg"
 												         flex ="1"
@@ -199,10 +206,13 @@
 								<groupbox flex = "1" class = "replyGroup">
 									<caption label = "&pref_rspmsg.cap;"/>
 										<vbox flex = "1">
-											<checkbox id = "rsp"
-											          label = "&pref_rsp.label;"
-											          preference = "pref_rsp"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											<hbox>
+												<checkbox id = "rsp"
+												          label = "&pref_rsp.label;"
+												          preference = "pref_rsp"
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												<spacer flex="1" />
+											</hbox>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "rspmsg"
 												         class = "templateBox"
@@ -234,35 +244,38 @@
 								<groupbox  flex = "1" class = "forwardGroup">
 									<caption label = "&pref_fwdmsg.cap;"/>
 										<vbox flex = "1">
-											<checkbox id = "fwd"
-											          label = "&pref_fwd.label;"
-											          preference = "pref_fwd"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
-												<vbox class = "indent" flex = "1">
-													<textbox id = "fwdmsg"
-													         class = "templateBox"
-													         multiline = "true"
-													         rows = "10"
-													         tooltiptext = "&pref_template_tip;"
-													         preference = "pref_fwdmsg"/>
-													<checkbox id = "fwdhtml"
-													          label = "&pref_html.label;"
-													          tooltiptext = "&pref_html.cap;"
-													          preference = "pref_fwdhtml"
-													          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
-													<checkbox id = "fwdnbr"
-													          class = "indent"
-													          label = "&pref_rep_br.label;"
-													          tooltiptext = "&pref_rep_br.cap;"
-													          preference = "pref_fwdnbr"/>
-													<checkbox id = "fwdhead"
-													          label = "&pref_fwdhead.label;"
-													          tooltiptext = "&pref_quotehead_tip;"
-													          preference = "pref_fwdhead"/>
-												</vbox>
+											<hbox>
+												<checkbox id = "fwd"
+												          label = "&pref_fwd.label;"
+												          preference = "pref_fwd"
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												<spacer flex="1" />
+											</hbox>
+											<vbox class = "indent" flex = "1">
+												<textbox id = "fwdmsg"
+												         class = "templateBox"
+												         multiline = "true"
+												         rows = "10"
+												         tooltiptext = "&pref_template_tip;"
+												         preference = "pref_fwdmsg"/>
+												<checkbox id = "fwdhtml"
+												          label = "&pref_html.label;"
+												          tooltiptext = "&pref_html.cap;"
+												          preference = "pref_fwdhtml"
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												<checkbox id = "fwdnbr"
+												          class = "indent"
+												          label = "&pref_rep_br.label;"
+												          tooltiptext = "&pref_rep_br.cap;"
+												          preference = "pref_fwdnbr"/>
+												<checkbox id = "fwdhead"
+												          label = "&pref_fwdhead.label;"
+												          tooltiptext = "&pref_quotehead_tip;"
+												          preference = "pref_fwdhead"/>
 											</vbox>
-									</groupbox>
-								</tabpanel>
+										</vbox>
+								</groupbox>
+							</tabpanel>
 
 								<!-- ######## Content About Tab ######## -->
 								<tabpanel class="aboutPanel">
@@ -284,11 +297,15 @@
 											<spacer flex="1"/>
 											<button onclick = "SmartTemplate4.Util.showHomePage();"
 											        class = "homePageURL text-link"
-											        label = "&add-onHome.label;" />
+											        label = "&url.homePage.label;" />
 											<spacer flex="1"/>
 											<button onclick = "SmartTemplate4.Util.showSupportPage();"
 											        class = "supportURL text-link"
-											        label = "&add-onSupport.label;" />
+											        label = "&url.supportPage.label;" />
+											<spacer flex="1"/>
+											<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();"
+											        class = "bugsURL text-link"
+											        label = "&url.bugsAndFeaturesPage.label;" />
 											<spacer flex="1"/>
 										</hbox>
 									</groupbox>

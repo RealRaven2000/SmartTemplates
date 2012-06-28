@@ -11,8 +11,8 @@
 <!ENTITY export.label "导出">
 <!ENTITY import.label "导入">
 <!ENTITY settings.label "设置和模板">
-<!ENTITY add-onHome.label "扩展主页">
-<!ENTITY add-onSupport.label "支持主页">
+<!ENTITY url.homePage.label "扩展主页">
+<!ENTITY url.supportPage.label "支持主页">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "新建">
 <!ENTITY pref_rsp.tab "回复">

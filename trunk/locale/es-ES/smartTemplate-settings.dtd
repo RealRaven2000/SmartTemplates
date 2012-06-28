@@ -11,8 +11,8 @@
 <!ENTITY export.label "Exportar">
 <!ENTITY import.label "Importar">
 <!ENTITY settings.label "Opciones y Plantillas">
-<!ENTITY add-onHome.label "Sitio web de la extensión">
-<!ENTITY add-onSupport.label "Ayudar al sitio web">
+<!ENTITY url.homePage.label "Sitio web de la extensión">
+<!ENTITY url.supportPage.label "Ayudar al sitio web">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Redactar">
 <!ENTITY pref_rsp.tab "Responder">

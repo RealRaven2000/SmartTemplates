@@ -11,8 +11,8 @@
 <!ENTITY export.label "エクスポート">
 <!ENTITY import.label "インポート">
 <!ENTITY settings.label "設定とテンプレート">
-<!ENTITY add-onHome.label "ホームページ">
-<!ENTITY add-onSupport.label "サポート">
+<!ENTITY url.homePage.label "ホームページ">
+<!ENTITY url.supportPage.label "サポート">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "新規">
 <!ENTITY pref_rsp.tab "返信">

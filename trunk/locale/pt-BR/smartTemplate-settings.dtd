@@ -12,8 +12,8 @@
 <!ENTITY export.label					"Exportar">
 <!ENTITY import.label					"Importar">
 <!ENTITY settings.label					"Configurações e modelos">
-<!ENTITY add-onHome.label				"Página do complemento">
-<!ENTITY add-onSupport.label			"Página de suporte">
+<!ENTITY url.homePage.label				"Página do complemento">
+<!ENTITY url.supportPage.label			"Página de suporte">
 
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab 					"Nova">

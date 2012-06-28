@@ -11,8 +11,8 @@
 <!ENTITY export.label "Экспорт">
 <!ENTITY import.label "Импорт">
 <!ENTITY settings.label "Настройки и Шаблоны">
-<!ENTITY add-onHome.label "Домашняя страница дополнения">
-<!ENTITY add-onSupport.label "Страница поддержки">
+<!ENTITY url.homePage.label "Домашняя страница дополнения">
+<!ENTITY url.supportPage.label "Страница поддержки">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Создать">
 <!ENTITY pref_rsp.tab "Ответить">
