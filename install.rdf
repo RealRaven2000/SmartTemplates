@@ -6,7 +6,7 @@
 		<Description rdf:about="urn:mozilla:install-manifest">
 			<em:id>smarttemplate4@thunderbird.extension</em:id>
 			<em:name>SmartTemplate4</em:name>
-			<em:version>0.9pre60</em:version>
+			<em:version>0.9pre82</em:version>
 			<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 			<em:type>2</em:type>
 			<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
@@ -111,7 +111,7 @@
 			
 			<em:localized>
 				<Description>
-					<em:locale>ja</em:locale>
+					<em:locale>ja-JP</em:locale>
 					<em:name>SmartTemplate4</em:name>
 					<em:description>アカウントごとに引用ヘッダをカスタマイズします。</em:description>
 					<em:creator>Axel Grude</em:creator>

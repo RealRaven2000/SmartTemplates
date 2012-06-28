@@ -43,19 +43,21 @@
 
 /* our own buttons */
 button.text-link {
-	-moz-appearance: none !important;
+	-moz-appearance: label !important;
+	color: #ffffff !important;
 }
 
 button.text-link[href] > * {
 	text-decoration: underline !important;
+	color: #ffffff !important;
 }
 
 button.text-link {
+	color: #ffffff !important;
 	display: inline-block;
 	border-radius: 0.4em;
 	border: 1px solid rgb(100,120,120);
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
-	color: #EFEFEF;
 	text-shadow:#BBBBBB 0px 0px 2px;
 	padding: 0.3em 3em !important;
 	margin-top: 0.3em !important;
@@ -74,24 +76,36 @@ button.text-link:hover {
 .text-link label {
 	margin-left: 1.5em;
 }
-.homePageURL {
+.homePageURL, .homePageURL:focus {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 	background: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%);
+	color: #ffffff !important;
 }
-.homePageURL:hover {
-	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
-	text-shadow: rgba(100, 0, 100, 0.8) 0px 0px 2px;
+button.homePageURL:focus {
+	border: 2px solid #666 !important;
 }
 
-.supportURL {
+.homePageURL:hover, .homePageURL:hover:focus {
+	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
+	text-shadow: rgba(100, 0, 100, 0.8) 0px 0px 2px;
+	color: #ffaaff !important;
+}
+
+.supportURL, .supportURL:focus {
 	background: -moz-linear-gradient(top, rgba(242,211,194,1) 0%, rgba(212,135,94,1) 36%, rgba(207,106,51,1) 77%, rgba(226,164,130,1) 100%);
 	text-decoration: underline;
+	color: #ffffff !important;
 }
-.supportURL:hover {
+.supportURL:hover, .supportURL:focus:hover {
 	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 36%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
 	text-decoration: underline;
 	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+	color: #ffffaa !important;
 }
+button.supportURL:focus {
+	border: 2px solid #666 !important;
+}
+
 
 #SmartTemplate4RightClickCopyItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
@@ -100,13 +114,13 @@ button.text-link:hover {
 #SmartTemplate4HelpMenuitem { float: right; }
 
 #account_deckA {
-	max-width: 600px;
+	max-width: 1200px;
 }
 
 #helpBox {
-	display:none;
-	min-width:30px;
-	border: 1px solid gray;
+	min-width:450px;
+	height: auto;
+	margin-left: 1em;
 }
 
 /* ################################################################################### */
@@ -174,7 +188,12 @@ button.text-link:hover {
 
 /* editboxes for templates */
 .templateBox {
-	max-width: 600px;
+	background: rgba(255, 255, 255, 0.5);
+	width: auto;
+	min-width: 400px
+	max-width: 1000px;
+	font-family: consolas,"courier new",monospace;
+	font-size: 8pt;
 }
 
 .actionTabs > tab {
@@ -221,6 +240,25 @@ button.text-link:hover {
 .AboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
+
+
+.newGroup, .forwardGroup , .replyGroup  {
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+.newGroup {
+	background-image: url("chrome://smartTemplate4/skin/icons/large/mail_new.png");
+}
+
+.forwardGroup {
+	background-image: url("chrome://smartTemplate4/skin/icons/large/mail_forward.png");
+}
+
+.replyGroup {
+	background-image: url("chrome://smartTemplate4/skin/icons/large/mail_replay.png");
+}
+
+
 
 /* ################################################################################### */
 /* ####################################### CAPS ###################################### */
@@ -280,9 +318,7 @@ button.text-link:hover {
 
 /* ################################## AboutDeveloper ################################# */
 .aboutPersonnel description {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 12pt !important;
-  line-height: 12pt !important;
+  font-family: 'Segoe UI', Arial, Helvetica, Verdana, Geneva, sans-serif;
   font-weight: bold;
   text-align: center;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
@@ -292,10 +328,12 @@ button.text-link:hover {
 .aboutWrapper {
 	text-align: center;
 	padding: 1em;
-	max-width:62em;
+	max-width:65em;
 }
 
 .aboutPersonnel {
+  font-size: 10pt;
+  line-height: 10pt;
 	border: 1px solid #CCCCCC;
 	border-radius: 1em;
 	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
@@ -308,10 +346,11 @@ button.text-link:hover {
 
 }
 /* ############################## SmartTemplate4AboutDesc ############################ */
-.aboutContent description {
+description.aboutContent  {
   font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-size: 10pt !important;
   display: block;
+  margin-top: 0.5em;
 }
 
 /* ################################################################################### */
@@ -449,9 +488,50 @@ code.noNew {
   margin-right: 5px !important;
 }
 
+/* #### help frame  #### */
 #contentFrame {
 	min-width: 450px;
 	min-height: 450px;
 	height: auto;
 }
+
+/* ############################     CONTRIBUTE BUTTON      ############################# */
+
+button.dialog-button[dlgtype=extra2] {
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
+}
+.dialog-button[dlgtype=extra2]
+{
+	border-radius: 2em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin: 0.2em 0px 0.4em;
+	min-height: 2em;
+	-moz-appearance: none;
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.7);
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #fff;
+	background: rgb(254,204,177);
+	-moz-transition-property: box-shadow, margin;
+	-moz-transition-duration: 0.75s, 0.2s;
+}
+
+.dialog-button[dlgtype=extra2]:hover
+{
+	margin: 0.25em -1px 0.35em 1px;
+	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.8);
+	background: rgb(254,222,178);
+	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
+.dialog-button[dlgtype=extra2]:active
+{
+	margin: 0.3em -2px 0.3em 2px;
+	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.9);
+	background: rgb(254,222,178);
+	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
+
 

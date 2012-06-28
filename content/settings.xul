@@ -9,8 +9,8 @@
             xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
             title = "&pref_dialog.title; (&localename.label;)"
             buttons = "extra2,cancel,accept"
-            buttonlabelextra2 = "&pref_help.tab;"
-            ondialogextra2 = "SmartTemplate4.Settings.openHelp();"
+            buttonlabelextra2 = "&contribute_button;"
+            ondialogextra2 = "SmartTemplate4.Util.showDonatePage();"
             onload = "SmartTemplate4.Settings.onLoad();"
             onunload = "SmartTemplate4.Settings.onUnload();"
             style = "max-width:700px;"
@@ -88,7 +88,11 @@
 			</toolbaritem>
 		</toolbar>
 	</toolbox>
-	<spacer height = "5px" />
+
+		<spacer height = "5px" />
+
+<hbox>
+	<vbox id="decksContainer">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox>
@@ -103,10 +107,19 @@
 				</menupopup>
 			</menulist>
 			<spacer flex = "1" />
+			<button id="helpPanel"
+			        label="&pref_help.tab;&#x21D2;"
+			        onclick = "SmartTemplate4.Settings.openHelp();"/>
+			<button id="closeHelp"
+			        label="&#x21D0;&close.label;"
+			        onclick="SmartTemplate4.Settings.closeHelp();"
+			        hidden = "true"/>
 		</hbox>
 
 		<hbox id = "decksContainer">
-			<deck id = "account_deckA" flex = "1">
+			<deck id = "account_deckA"
+			      flex = "1"
+			      width = "600">
 
 				<vbox id = "deckA.per_account" flex = "1">
 
@@ -151,7 +164,7 @@
 
 							<tabpanels flex = "1">
 								<tabpanel flex = "1">
-									<groupbox flex = "1">
+									<groupbox flex = "1" class = "newGroup">
 										<caption label = "&pref_newmsg.cap;"/>
 										<vbox flex = "1">
 											<checkbox id = "new"
@@ -160,6 +173,7 @@
 											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "newmsg"
+												         flex ="1"
 												         class = "templateBox"
 												         multiline = "true"
 												         rows = "10"
@@ -182,7 +196,7 @@
 
 							<!-- ######## Content Reply Tab ######## -->
 							<tabpanel flex = "1">
-								<groupbox flex = "1">
+								<groupbox flex = "1" class = "replyGroup">
 									<caption label = "&pref_rspmsg.cap;"/>
 										<vbox flex = "1">
 											<checkbox id = "rsp"
@@ -217,7 +231,7 @@
 
 							<!-- ######## Content Forward Tab ######## -->
 							<tabpanel >
-								<groupbox  flex = "1">
+								<groupbox  flex = "1" class = "forwardGroup">
 									<caption label = "&pref_fwdmsg.cap;"/>
 										<vbox flex = "1">
 											<checkbox id = "fwd"
@@ -255,15 +269,13 @@
 									<groupbox  flex = "1" class="aboutGroup">
 										<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
 										<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" />
-										<spacer height = "4px"/>
 										<hbox class = "aboutWrapper">
 											<spacer flex = "1" />
 											<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">
 												<description>&creator.label;: Axel Grude</description>
 												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
 												<description>&localized.label;: &translatorNickname.label;</description>
-												<description>&contributor.label;: Aris - style support, tool8 - development, Version 0.7.2 - 0.8.0</description>
-												<spacer height = "20px"/>
+												<description>&contributor.label;: Aris - style support<br/>tool8 - development, Version 0.7.2 - 0.8.0</description>
 												<description class = "aboutContent">&about.label;</description>
 											</vbox>
 											<spacer flex = "1" />
@@ -295,10 +307,6 @@
 				</vbox>
 
 			</deck>
-			<vbox id = "helpBox" flex = "1">
-			  <description>Help</description>
-
-			</vbox>
 
 		</hbox>
 
@@ -314,6 +322,20 @@
 			          preference = "pref_debug"/>
 		</hbox>
 
+	</vbox>
+	<vbox id = "helpBox" flex = "2" hidden="true">
+		<hbox>
+			<caption label="&help_keyword.cap;"/>
+		</hbox>
+		<iframe id="contentFrame"
+		        src="chrome://smarttemplate4/content/help.xhtml"
+		        type="chrome"
+		        flex = "1"
+		        minheight="300"
+		        minwidth="400" />
+	</vbox>
+</hbox>
+
 	</prefpane>
 
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
@@ -321,5 +343,6 @@
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/settings.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
+<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-help.js"/>
 
 </prefwindow>

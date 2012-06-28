@@ -4,7 +4,7 @@ SmartTemplate4.Listener = {
 	listen: function(evt) {
 		let code = evt.target.getAttribute('codeWord');
 		let className = evt.target.className;
-		window.opener.onCodeWord(code, className);
+		window.onCodeWord(code, className); // was window.opener.onCodeWord when help was in its own window
 
 	}
 }

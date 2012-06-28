@@ -22,6 +22,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Abbrechen">
+<!ENTITY contribute_button "Einen Beitrag leisten">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
 <!ENTITY pref_server_desc "Konto">
