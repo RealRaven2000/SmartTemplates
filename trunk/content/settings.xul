@@ -341,7 +341,7 @@
 
 	</vbox>
 	<vbox id = "helpBox" flex = "2" hidden="true">
-		<hbox>
+		<hbox id = "helpCaption" hidden="true">
 			<caption label="&help_keyword.cap;"/>
 		</hbox>
 		<iframe id="contentFrame"
