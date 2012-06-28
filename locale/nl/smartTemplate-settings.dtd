@@ -12,8 +12,8 @@
 <!ENTITY export.label					"Exporteren">
 <!ENTITY import.label					"Importeren">
 <!ENTITY settings.label					"Instellingen en Sjablonen">
-<!ENTITY add-onHome.label				"Add-onstartpagina">
-<!ENTITY add-onSupport.label			"Ondersteuningspagina">
+<!ENTITY url.homePage.label				"Add-onstartpagina">
+<!ENTITY url.supportPage.label			"Ondersteuningspagina">
 
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab 					"Nieuw">

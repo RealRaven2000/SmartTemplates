@@ -13,10 +13,6 @@
 /* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
 /* ################################################################################### */
 
-.menu-iconic,.menuitem-iconic {
-  font-size: 10pt !important;
-}
-
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4CloseItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
@@ -34,17 +30,26 @@
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 
-.homePageURL, #SmartTemplate4add-onHomeItem {
+#menuHomePage {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
 }
-.supportURL, #SmartTemplate4add-onSupportItem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/tool8.png") !important;
+#menuSupportPage, #menuBugsAndFeaturesPage {
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 
 /* our own buttons */
 button.text-link {
-	-moz-appearance: label !important;
+	-moz-appearance: none !important;
 	color: #ffffff !important;
+}
+
+/* fix noia buttonbox styling */
+button.text-link, button.dialog-button[dlgtype=extra2] {
+	background-image: none;
+}
+button.text-link hbox.button-box,
+button.dialog-button[dlgtype=extra2] hbox.button-box {
+	background-image: none !important;
 }
 
 button.text-link[href] > * {
@@ -59,11 +64,15 @@ button.text-link {
 	border: 1px solid rgb(100,120,120);
 	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
 	text-shadow:#BBBBBB 0px 0px 2px;
-	padding: 0.3em 3em !important;
+	padding: 1px 1px !important;
 	margin-top: 0.3em !important;
 	margin-bottom: 0.3em !important;
 	max-width: 22em;
 	vertical-align: middle !important;
+}
+
+button.text-link hbox {
+	padding: 3px !important;
 }
 
 button.text-link:hover {
@@ -74,35 +83,48 @@ button.text-link:hover {
 }
 
 .text-link label {
-	margin-left: 1.5em;
+	margin-left: 0.2em;
 }
 .homePageURL, .homePageURL:focus {
-	list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
-	background: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%);
+	/* list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important; */
+	background: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%) !important;
 	color: #ffffff !important;
-}
-button.homePageURL:focus {
-	border: 2px solid #666 !important;
 }
 
 .homePageURL:hover, .homePageURL:hover:focus {
-	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%);
+	background: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%) !important;
 	text-shadow: rgba(100, 0, 100, 0.8) 0px 0px 2px;
 	color: #ffaaff !important;
 }
 
 .supportURL, .supportURL:focus {
-	background: -moz-linear-gradient(top, rgba(242,211,194,1) 0%, rgba(212,135,94,1) 36%, rgba(207,106,51,1) 77%, rgba(226,164,130,1) 100%);
+	background-image: -moz-linear-gradient(center top , rgb(100, 154, 174) 0%, rgb(79, 160, 181) 33%, rgb(43, 142, 169) 51%, rgb(47, 178, 217) 100%) !important;
 	text-decoration: underline;
 	color: #ffffff !important;
 }
 .supportURL:hover, .supportURL:focus:hover {
-	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 36%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+	background-image: -moz-linear-gradient(center top , rgb(149, 234, 237) 0%, rgb(71, 221, 223) 24%, rgb(9, 179, 181) 50%, rgb(44, 215, 218) 79%, rgb(88, 223, 226) 100%) !important;
+	text-decoration: underline;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+	color: #006600 !important;
+}
+
+.bugsURL, .bugsURL:focus {
+	background: -moz-linear-gradient(top, rgba(253,52,45,1) 0%, rgba(175,7,1,1) 23%, rgba(158,5,0,1) 51%, rgba(230,12,4,1) 100%) !important;
+	text-decoration: underline;
+	color: #ffffff !important;
+}
+.bugsURL:hover, .bugsURL:focus:hover {
+	background: -moz-linear-gradient(top, rgba(249,185,183,1) 0%, rgba(241,22,15,1) 31%, rgba(227,8,1,1) 51%, rgba(231,111,107,1) 100%) !important;
 	text-decoration: underline;
 	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
 	color: #ffffaa !important;
 }
-button.supportURL:focus {
+
+/* highlight keyboard focus */
+button.homePageURL:focus,
+button.supportURL:focus,
+button.bugsURL:focus {
 	border: 2px solid #666 !important;
 }
 
@@ -189,6 +211,8 @@ button.supportURL:focus {
 /* editboxes for templates */
 .templateBox {
 	background: rgba(255, 255, 255, 0.5);
+	color: #000000;
+	text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.9);
 	width: auto;
 	min-width: 400px
 	max-width: 1000px;
@@ -264,9 +288,11 @@ button.supportURL:focus {
 /* ####################################### CAPS ###################################### */
 /* ################################################################################### */
 
+/* let's leave the size to the theme!
 .NewMsgCap,.RspMsgCap,.FwdMsgCap,.AboutCap,.AccountCap,.AccountmanagerCap {
   font-size: 10pt !important;
 }
+*/
 
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 /* Space between label and Icon in Caps inside tabs only over class possible! */
@@ -491,14 +517,15 @@ code.noNew {
 /* #### help frame  #### */
 #contentFrame {
 	min-width: 450px;
-	min-height: 450px;
+	min-height: 300px;
 	height: auto;
 }
 
 /* ############################     CONTRIBUTE BUTTON      ############################# */
 
 button.dialog-button[dlgtype=extra2] {
-	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
+	background-color: rgb(241,116,50) !important;
+	background-image: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
 }
 .dialog-button[dlgtype=extra2]
 {

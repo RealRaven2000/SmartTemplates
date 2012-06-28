@@ -11,8 +11,8 @@
 <!ENTITY export.label "Exportation">
 <!ENTITY import.label "Importation">
 <!ENTITY settings.label "Réglages et Modèles">
-<!ENTITY add-onHome.label "Page d'accueil du plugin">
-<!ENTITY add-onSupport.label "Page d'accueil du support">
+<!ENTITY url.homePage.label "Page d'accueil du plugin">
+<!ENTITY url.supportPage.label "Page d'accueil du support">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nouveau">
 <!ENTITY pref_rsp.tab "Répondre">

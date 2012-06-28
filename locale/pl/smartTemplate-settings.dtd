@@ -11,8 +11,8 @@
 <!ENTITY export.label "Eksportuj">
 <!ENTITY import.label "Importuj">
 <!ENTITY settings.label "Ustawienia i szablony">
-<!ENTITY add-onHome.label "Strona domowa">
-<!ENTITY add-onSupport.label "Strona pomocy">
+<!ENTITY url.homePage.label "Strona domowa">
+<!ENTITY url.supportPage.label "Strona pomocy">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nowa wiadomość">
 <!ENTITY pref_rsp.tab "Odpowiedź">

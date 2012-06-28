@@ -11,8 +11,9 @@
 <!ENTITY export.label "Exportieren">
 <!ENTITY import.label "Importieren">
 <!ENTITY settings.label "Einstellungen und Vorlagen">
-<!ENTITY add-onHome.label "Add-On Homepage">
-<!ENTITY add-onSupport.label "Support Homepage">
+<!ENTITY url.homePage.label "Add-On Homepage">
+<!ENTITY url.supportPage.label "Support Homepage">
+<!ENTITY url.bugsAndFeaturesPage.label "Bugs / Features">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Verfassen">
 <!ENTITY pref_rsp.tab "Antworten">
