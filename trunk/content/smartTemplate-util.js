@@ -38,8 +38,10 @@ SmartTemplate4.Util = {
 	mExtensionVer: null,
 	ConsoleService: null,
 	lastTime: 0,
-	AMOHomepage: "https://addons.mozilla.org/thunderbird/addon/324497/",
-	SupportHomepage: "http://www.tool8now.com/smarttemplate4/index.php",
+	AMOHomepage:     "https://addons.mozilla.org/thunderbird/addon/324497/",
+	SupportHomepage: "http://smarttemplate4.mozdev.org/index.html",
+	BugPage:         "http://smarttemplate4.mozdev.org/bugs.html",
+	DonatePage:      "http://smarttemplate4.mozdev.org/contribute.html",
 
 
 	getBundleString: function(id, defaultText) {
@@ -432,8 +434,12 @@ SmartTemplate4.Util = {
 		}
 	} ,
 
+	showBugsAndFeaturesPage: function() {
+		SmartTemplate4.Util.openURLInTab(this.BugPage);
+	}
+
 	showDonatePage: function () {
-		SmartTemplate4.Util.openURLInTab('http://smarttemplate4.mozdev.org/donate.html');
+		SmartTemplate4.Util.openURLInTab(this.DonatePage);
 	}  ,
 
 	showHomePage: function () {

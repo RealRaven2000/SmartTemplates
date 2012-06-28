@@ -368,13 +368,33 @@ SmartTemplate4.Settings = {
 			}
 		}
 	} ,
-	
+
 	openHelp: function() {
-		window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help', 
+		let helpBox = document.getElementById('helpBox');
+		helpBox.hidden = false;
+		let wid = helpBox.clientWidth;
+		window.resizeBy(wid, 0);
+		SmartTemplate4.Help.onLoad();
+		document.getElementById('helpPanel').hidden = true;
+		document.getElementById('closeHelp').hidden = false;
+
+		/*
+		window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help',
 		                  'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null);
 		window.sizeToContent();
+		*/
+
 	} ,
 
+	closeHelp: function() {
+		let helpBox = document.getElementById('helpBox');
+		let wid = helpBox.clientWidth;
+		helpBox.hidden = true;
+		window.resizeBy(-wid, 0);
+		SmartTemplate4.Help.onUnload();
+		document.getElementById('helpPanel').hidden = false;
+		document.getElementById('closeHelp').hidden = true;
+	} ,
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
 	//--------------------------------------------------------------------
@@ -394,7 +414,7 @@ SmartTemplate4.Settings = {
 			}
 			el = el.nextSibling; index++;
 		}
-		
+
 	} , // add 0.4.0 E
 
 	// Select identity (from xul)
@@ -404,7 +424,7 @@ SmartTemplate4.Settings = {
 		let currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
 		let tabbox = document.getElementById(currentDeck);
 		var tabIndex = tabbox.selectedIndex;
-		
+
 		const  branch = idkey == "common" ? "" : "." + idkey;
 
 		// Display identity.
@@ -418,7 +438,7 @@ SmartTemplate4.Settings = {
 			}
 			index++;
 		}
-		
+
 		//reactivate the current tab: new / respond or forward!
 		currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
 		tabbox = document.getElementById(currentDeck);
