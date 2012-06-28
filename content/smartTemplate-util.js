@@ -436,7 +436,7 @@ SmartTemplate4.Util = {
 
 	showBugsAndFeaturesPage: function() {
 		SmartTemplate4.Util.openURLInTab(this.BugPage);
-	}
+	} ,
 
 	showDonatePage: function () {
 		SmartTemplate4.Util.openURLInTab(this.DonatePage);
