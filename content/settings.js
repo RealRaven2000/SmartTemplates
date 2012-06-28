@@ -234,8 +234,10 @@ SmartTemplate4.Settings = {
 			SmartTemplate4.Settings.onCodeWord(code, className);
 		};
 
-		window.sizeToContent()
-
+		window.sizeToContent();
+		// shrink width
+		let deltaShrink = document.getElementById('decksContainer').clientWidth - window.innerWidth;
+		window.resizeBy(deltaShrink + 15, 0);
 
 		return true;
 	} ,
@@ -377,6 +379,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('helpPanel').hidden = true;
 		document.getElementById('closeHelp').hidden = false;
+		document.getElementById('helpCaption').hidden = false;
 
 		/*
 		window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help',
@@ -389,6 +392,7 @@ SmartTemplate4.Settings = {
 	closeHelp: function() {
 		let helpBox = document.getElementById('helpBox');
 		let wid = helpBox.clientWidth;
+		let helpCaption = document.getElementById('helpCaption');
 		helpBox.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();
