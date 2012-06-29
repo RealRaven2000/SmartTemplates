@@ -13,6 +13,7 @@
 <!ENTITY settings.label "設定とテンプレート">
 <!ENTITY url.homePage.label "ホームページ">
 <!ENTITY url.supportPage.label "サポート">
+<!ENTITY url.bugsAndFeaturesPage.label "バグ報告 / 新機能要望">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "新規">
 <!ENTITY pref_rsp.tab "返信">
@@ -22,6 +23,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "キャンセル">
+<!ENTITY contribute_button "支援">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
 <!ENTITY pref_server_desc "差出人:">
@@ -50,7 +52,7 @@
 <!ENTITY about.cap "SmartTemplate4 について">
 <!ENTITY creator.label "作者">
 <!ENTITY developer.label "開発者">
-<!ENTITY localename.label "ja">
+<!ENTITY localename.label "ja-JP">
 <!ENTITY localized.label "翻訳者">
 <!ENTITY translatorNickname.label "Cai (BabelZilla)">
 <!ENTITY contributor.label "貢献者">
@@ -133,8 +135,8 @@
 <!ENTITY im-ex.cap "インポート/エクスポート">
 <!ENTITY im-ex_note1.label "アカウントごとに設定とテンプレートをエクスポート/インポートできます。">
 <!ENTITY im-ex_note2.label "エクスポートしたいアカウントを選択します。">
-<!ENTITY im-ex_note3.label "'ツール' =&gt; 'エクスポート' =&gt; '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
-<!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' =&gt; 'インポート' =&gt; '設定とテンプレート' を選択します。">
+<!ENTITY im-ex_note3.label "'ツール' &#8658; 'エクスポート' &#8658; '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
+<!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' &#8658; 'インポート' &#8658; '設定とテンプレート' を選択します。">
 <!ENTITY im-ex_note5.label "インポートしたい SmartTemplate4 ファイル (拡張子 st4) を選択します">
 <!ENTITY im-ex_note6.label "注: Apple/Macintosh 環境では、メニューバーはSmartTemplate4 設定ウインドウではなくタイトルリボンにあります。">
 <!ENTITY html_note.cap "HTML テンプレートについて">
