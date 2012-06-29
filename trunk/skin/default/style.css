@@ -287,10 +287,10 @@ button.bugsURL:focus {
 }
 
 #helpPanel {
-	list-style-image: url("chrome://smartTemplate4/skin/arrow-right.png") !important;
+	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-right.png") !important;
 }
 #closeHelp {
-	list-style-image: url("chrome://smartTemplate4/skin/arrow-left.png") !important;
+	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
 }
 
 
