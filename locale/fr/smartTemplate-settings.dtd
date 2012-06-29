@@ -20,7 +20,7 @@
 <!ENTITY pref_help.tab "Assistant">
 <!ENTITY pref_about.tab "À propos">
 <!-- #### BUTTONS #### -->
-<!ENTITY accept_button "OK">
+<!ENTITY accept_button "Accepter">
 <!ENTITY cancel_button "Annuler">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 Options">
@@ -105,7 +105,6 @@
 <!ENTITY a.label "Jour de la semaine (Vend.)">
 <!ENTITY d.label "Jour du mois (01 à 31)">
 <!ENTITY e.label "Jour du mois (1 à 31)">
-<!ENTITY m.label "Numéro du mois (01 à 12)">
 <!ENTITY n.label "Numéro du mois (1 à 12)"> 
 <!ENTITY B.label "Mois (January)">
 <!ENTITY b.label "Mois (Jan.)">
@@ -136,8 +135,8 @@
 <!ENTITY im-ex.cap "Paramétrages et import/export de modèles">
 <!ENTITY im-ex_note1.label "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte">
 <!ENTITY im-ex_note2.label "Tout d'abord, sélectionnez le compte que vous souhaitez exporter dans liste des réglages de SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Ensuite, sélectionner 'Outils' &rArr; 'Exporter' &rArr; 'Réglages et modèles' de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
-<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans la liste des réglages de SmartTemplate4. Ensuite, sélectionnez 'Outils' &rArr; 'Importer' &rArr; 'Réglages et modèles' de la barre de menu">
+<!ENTITY im-ex_note3.label "Ensuite, sélectionner 'Outils' &#8658; 'Exporter' &#8658; 'Réglages et modèles' de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
+<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans la liste des réglages de SmartTemplate4. Ensuite, sélectionnez 'Outils' &#8658; 'Importer' &#8658; 'Réglages et modèles' de la barre de menu">
 <!ENTITY im-ex_note5.label "Sélectionnez le fichier SmartTemplate4 (xxx.st4) que vous souhaitez importer.">
 <!ENTITY im-ex_note6.label "NOTE: les plateformes Apple/Macintosh auront les options dans la barre de menu en haut au lieu de la popup d'option de SmartTemplate4. Ceci est un comportement normal et ne peut pas être modifié.">
 <!ENTITY html_note.cap "Notes pour l'utilisation de HTML">

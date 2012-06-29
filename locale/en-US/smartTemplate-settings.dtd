@@ -83,7 +83,7 @@
 <!ENTITY ccfirstname.label "Recipient's first name">
 <!ENTITY ccname.label "Recipient's name">
 <!ENTITY spec_form.cap "Special format">
-<!ENTITY specform_note.label "The Phrase inside brackets &#123;Cc: &#37;cc(name)&#37;&#125; will only be displayed, if the variable &#37;cc(name)&#37; can be replaced!">
+<!ENTITY specform_note.label "Sections inside curly brackets &#123;Cc: &#37;cc(name)&#37;&#125; will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
 <!ENTITY ex_brack.label "Example: To: &#37;to(name) {&#37;Cc: &#37;cc(name)&#37;}">
 <!ENTITY sub_var.cap "Subject">
 <!ENTITY sub.label "subject of replied / forwarded email">
@@ -105,11 +105,11 @@
 <!ENTITY a.label "Day of Week (Fri.)">
 <!ENTITY d.label "Day of Month (01 to 31)">
 <!ENTITY e.label "Day of Month (1 to 31)">
-<!ENTITY m.label "Minute (00 to 59)">
 <!ENTITY n.label "Month (1 to 12)">
 <!ENTITY B.label "Month (January)">
 <!ENTITY b.label "Month (Jan.)">
 <!ENTITY y.label "Year (1970)">
+<!ENTITY m.label "Minute (00 to 59)">
 <!ENTITY s.label "Second (00 to 59)">
 <!ENTITY h.label "Hour, 24-Hour Format (00 to 23)">
 <!ENTITY k.label "Hour, 24-Hour Format (0 to 23)">

@@ -220,8 +220,9 @@ button.bugsURL:focus {
 	font-size: 8pt;
 }
 
-.actionTabs > tab {
-	padding: 0.2em 2em;
+.actionTabs > tab .tab-middle {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
 }
 
 .NewTab,.RespondTab,.ForwardTab,.AboutTab {
@@ -266,7 +267,7 @@ button.bugsURL:focus {
 }
 
 
-.newGroup, .forwardGroup , .replyGroup  {
+.newGroup, .forwardGroup , .replyGroup, .aboutGroup {
 	background-position: top right;
 	background-repeat: no-repeat;
 }
@@ -281,18 +282,22 @@ button.bugsURL:focus {
 .replyGroup {
 	background-image: url("chrome://smartTemplate4/skin/icons/large/mail_replay.png");
 }
+.aboutGroup {
+	background-image: url("chrome://smartTemplate4/skin/icon64x64.png");
+}
 
+#helpPanel {
+	list-style-image: url("chrome://smartTemplate4/skin/arrow-right.png") !important;
+}
+#closeHelp {
+	list-style-image: url("chrome://smartTemplate4/skin/arrow-left.png") !important;
+}
 
 
 /* ################################################################################### */
 /* ####################################### CAPS ###################################### */
 /* ################################################################################### */
 
-/* let's leave the size to the theme!
-.NewMsgCap,.RspMsgCap,.FwdMsgCap,.AboutCap,.AccountCap,.AccountmanagerCap {
-  font-size: 10pt !important;
-}
-*/
 
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 /* Space between label and Icon in Caps inside tabs only over class possible! */
@@ -301,26 +306,7 @@ button.bugsURL:focus {
   margin-left: 5px !important;
 }
 
-/* ################################### ICON BINDINGS ################################# */
-/* Icon Binding in Caps inside tabs only over class possible! */
-.NewMsgCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
-}
-.RspMsgCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-reply.png") !important;
-}
-.FwdMsgCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
-}
-.AboutCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
-}
-.AccountCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
-}
-.AccountmanagerCap {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
-}
+
 
 /* ################################################################################### */
 /* ################################# About Tab CONTENT ############################### */

@@ -112,10 +112,10 @@
 			</menulist>
 			<spacer flex = "1" />
 			<button id="helpPanel"
-			        label="&pref_help.tab;&#x21D2;"
+			        label="&pref_help.tab;"
 			        onclick = "SmartTemplate4.Settings.openHelp();"/>
 			<button id="closeHelp"
-			        label="&#x21D0;&close.label;"
+			        label="&close.label;"
 			        onclick="SmartTemplate4.Settings.closeHelp();"
 			        hidden = "true"/>
 		</hbox>
@@ -294,19 +294,19 @@
 											<spacer flex = "1" />
 										</hbox>
 										<hbox>
+											<spacer flex="2"/>
+											<button onclick = "SmartTemplate4.Util.showSupportPage();"
+											        class = "supportURL text-link"
+											        label = "&url.supportPage.label;" />
 											<spacer flex="1"/>
 											<button onclick = "SmartTemplate4.Util.showHomePage();"
 											        class = "homePageURL text-link"
 											        label = "&url.homePage.label;" />
 											<spacer flex="1"/>
-											<button onclick = "SmartTemplate4.Util.showSupportPage();"
-											        class = "supportURL text-link"
-											        label = "&url.supportPage.label;" />
-											<spacer flex="1"/>
 											<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();"
 											        class = "bugsURL text-link"
 											        label = "&url.bugsAndFeaturesPage.label;" />
-											<spacer flex="1"/>
+											<spacer flex="2"/>
 										</hbox>
 									</groupbox>
 								</tabpanel>

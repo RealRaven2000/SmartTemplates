@@ -236,8 +236,8 @@ SmartTemplate4.Settings = {
 
 		window.sizeToContent();
 		// shrink width
-		let deltaShrink = document.getElementById('decksContainer').clientWidth - window.innerWidth;
-		window.resizeBy(deltaShrink + 15, 0);
+		let deltaShrink = document.getElementById('decksContainer').scrollWidth - window.innerWidth;
+		window.resizeBy(deltaShrink + 40, 0); // 40 pixels for paddings etc.
 
 		return true;
 	} ,
@@ -374,7 +374,7 @@ SmartTemplate4.Settings = {
 	openHelp: function() {
 		let helpBox = document.getElementById('helpBox');
 		helpBox.hidden = false;
-		let wid = helpBox.clientWidth;
+		let wid = helpBox.scrollWidth;
 		window.resizeBy(wid, 0);
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('helpPanel').hidden = true;
@@ -391,7 +391,7 @@ SmartTemplate4.Settings = {
 
 	closeHelp: function() {
 		let helpBox = document.getElementById('helpBox');
-		let wid = helpBox.clientWidth;
+		let wid = helpBox.scrollWidth;
 		let helpCaption = document.getElementById('helpCaption');
 		helpBox.hidden = true;
 		window.resizeBy(-wid, 0);

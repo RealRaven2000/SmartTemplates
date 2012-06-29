@@ -103,11 +103,11 @@
 <!ENTITY a.label "一周里的一天 (Fri.)">
 <!ENTITY d.label "一个月里的一天 (01 至 31)">
 <!ENTITY e.label "一个月里的一天 (1 至 31)">
-<!ENTITY m.label "分钟 (00 至 59)">
 <!ENTITY n.label "月份 (1 至 12)">
 <!ENTITY B.label "月份 (January)">
 <!ENTITY b.label "月份 (Jan.)">
 <!ENTITY y.label "年 (1970)">
+<!ENTITY m.label "分钟 (00 至 59)">
 <!ENTITY s.label "第二 (00 至 59)">
 <!ENTITY h.label "小时，24-小时格式 (00 至 23)">
 <!ENTITY k.label "小时，24-小时格式 (0 至 23)">
@@ -133,8 +133,8 @@
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
 <!ENTITY im-ex_note2.label "首先从 SmartTemplate4 的设置下拉框中选择您想要导出的账号。">
-<!ENTITY im-ex_note3.label "接下来从菜单栏中选择&ldquo;工具&rdquo; &rArr; &ldquo;导出&rdquo; &rArr; &ldquo;设置和模板&rdquo;，将文件（xxx.st4）保存到您的电脑中。">
-<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择&ldquo;工具&rdquo; &rArr; &ldquo;导入&rdquo; &rArr; &ldquo;设置和模板&rdquo;">
+<!ENTITY im-ex_note3.label "接下来从菜单栏中选择&ldquo;工具&rdquo; &#8658; &ldquo;导出&rdquo; &#8658; &ldquo;设置和模板&rdquo;，将文件（xxx.st4）保存到您的电脑中。">
+<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择&ldquo;工具&rdquo; &#8658; &ldquo;导入&rdquo; &#8658; &ldquo;设置和模板&rdquo;">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
 <!ENTITY html_note.cap "HTML 模板说明">
