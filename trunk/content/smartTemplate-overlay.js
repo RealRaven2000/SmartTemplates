@@ -319,7 +319,7 @@ SmartTemplate4.regularize = function(msg, type)
 		return acctKey;
 	}
 
-	SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.regularize(' + msg +')');
+	SmartTemplate4.Util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  STARTS...');
 	// var parent = SmartTemplate4;
 	var idkey = document.getElementById("msgIdentity").value;
 	var identity = Components.classes["@mozilla.org/messenger/account-manager;1"]
@@ -387,30 +387,43 @@ SmartTemplate4.regularize = function(msg, type)
 	} (msg);
 
 	// Convert PRTime to string
-	function prTime2Str(time, type, timezone) {
+	function prTime2Str(time, timeType, timezone) {
+		SmartTemplate4.Util.logDebugOptional('regularize','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
 
-		var tm = new Date();
-		var fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
-					createInstance(Components.interfaces.nsIScriptableDateFormat);
-		var locale = SmartTemplate4.pref.getLocalePref();
+		try {
+			let tm = new Date();
+			let fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
+						createInstance(Components.interfaces.nsIScriptableDateFormat);
+			let locale = SmartTemplate4.pref.getLocalePref();
 
-		// Set Time
-		tm.setTime(time / 1000 + (timezone) * 60 * 1000);
+			// Set Time
+			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 
-		// Format date string
-		switch (type) {
-			case "datelocal":
-				var dateFormat = fmt.dateFormatLong;  var timeFormat = fmt.timeFormatSeconds;
-				break;
-			case "dateshort":
+			// Format date string
+			let dateFormat = null;
+			let timeFormat = null;
+			switch (timeType) {
+				case "datelocal":
+					dateFormat = fmt.dateFormatLong;
+					timeFormat = fmt.timeFormatSeconds;
+					break;
+				case "dateshort":
 				default:
-			var dateFormat = fmt.dateFormatShort; var timeFormat = fmt.timeFormatSeconds;
-				break;
-		}
+					dateFormat = fmt.dateFormatShort;
+					timeFormat = fmt.timeFormatSeconds;
+					break;
+			}
 
-		return fmt.FormatDateTime("", dateFormat, timeFormat,
-								  tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
-								  tm.getHours(), tm.getMinutes(), tm.getSeconds());
+			let timeString = fmt.FormatDateTime("",
+			                                    dateFormat, timeFormat,
+			                                    tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
+			                                    tm.getHours(), tm.getMinutes(), tm.getSeconds());
+			return timeString;
+		}
+		catch (ex) {
+			SmartTemplate4.Util.logException('regularize.prTime2Str() failed', ex);
+		}
+		return '';
 	}
 
 	// Replace reserved words
@@ -539,6 +552,7 @@ SmartTemplate4.regularize = function(msg, type)
 		return SmartTemplate4.escapeHtml(token);
 	}
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
+	SmartTemplate4.Util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  ...ENDS');
 	return msg;
 };
 

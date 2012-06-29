@@ -1,64 +1,37 @@
 <!-- #### MENU MAIN ITEMS #### -->
-<!ENTITY file.label						"File">
-<!ENTITY tools.label					"Tools">
-<!ENTITY edit.label "Edit">
-<!ENTITY help.label						"Help">
-
 <!-- #### MENU OWN ITEMS #### -->
-<!ENTITY copy.label						"Copy">
-<!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Variable">
-<!ENTITY close.label					"Close">
-<!ENTITY export.label					"Export">
-<!ENTITY import.label					"Import">
-<!ENTITY settings.label					"Settings and Templates">
-<!ENTITY url.homePage.label				"Add-On Homepage">
-<!ENTITY url.supportPage.label			"Support Homepage">
-
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab           		"Nytt">
 <!ENTITY pref_rsp.tab           		"Svara">
 <!ENTITY pref_fwd.tab           		"Framåt">
 <!ENTITY pref_help.tab         			"Hjälp">
 <!ENTITY pref_about.tab         		"Ca">
-
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button	        		"Acceptera">
 <!ENTITY cancel_button	        		"Kassera">
+<!ENTITY contribute_button "Contribute">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title      		"Inställningar för SmartTemplate4">
 <!ENTITY pref_server_desc       		"Konto">
 <!ENTITY pref_server_def        		"Allmänna inställningar">
-
 <!ENTITY pref_def.label         		"Använd allmänna inställningar">
 <!ENTITY pref_def.cap           		"Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot.">
-
 <!ENTITY pref_newmsg.cap        		"Nytt meddelande">
 <!ENTITY pref_new.label         		"Tillämpa följande mall på det nya meddelandet">
-
 <!ENTITY pref_rspmsg.cap        		"Svarsmeddelande">
 <!ENTITY pref_rsp.label         		"Tillämpa följande mall på svarsmeddelandet">
 <!ENTITY pref_rsphead.label     		"Använd istället för standardcitathuvudet">
-
 <!ENTITY pref_fwdmsg.cap        		"Vidarebefordrat meddelande">
 <!ENTITY pref_fwd.label        		 	"Tillämpa följande mall på det vidarebefordrade meddelandet">
 <!ENTITY pref_fwdhead.label     		"Använd istället för standardcitathuvudet">
-
 <!ENTITY pref_html.label        		"Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)">
 <!ENTITY pref_html.cap          		"Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer.">
 <!ENTITY pref_rep_br.label      		"Ersätt ny rad med &lt;br&gt;">
 <!ENTITY pref_rep_br.cap        		"Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;.">
-
 <!ENTITY pref_quotehead_tip     		"Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan.">
 <!ENTITY pref_template_tip      		"Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
-
 <!ENTITY help_dialog_title      		"Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap       		"Hjälp">
-<!ENTITY pref_debug_check "Debug mode">
-<!ENTITY pref_debug_tip "Right-click for advanced debug options">
-
-<!ENTITY pref_debug_check "Debug mode">
-<!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap						"Ca SmartTemplate4">
 <!ENTITY creator.label					"Creator">
@@ -68,7 +41,6 @@
 <!ENTITY translatorNickname.label		"Lakrits (BabelZilla)">
 <!ENTITY contributor.label				"Contributor">
 <!ENTITY about.label					"SmartTemplate4 erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
-
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap 					"Fasta variabler">
 <!ENTITY ownname.label 					"Ditt namn"> 
@@ -79,46 +51,38 @@
 <!ENTITY ccmail.label 					"Mottagarens e-postadress (kopia)"> 
 <!ENTITY sig.label 						"Underskrift (från TB hänsyn inställningar)">
 <!ENTITY sig2.label 					"Underskrift (från TB hänsyn inställningar men utan '--')"> 
-
 <!ENTITY to_var.cap 					"Mottagarvariabler (Till)">
 <!ENTITY to_note.label 					"När inget namn finns tillgängligt visas e-postadressen"> 
 <!ENTITY to.label 						"Mottagarens namn (Standard)"> 
 <!ENTITY tofirstname.label 				"Mottagarens förnamn">
 <!ENTITY toname.label 					"Mottagarens namn"> 
-
 <!ENTITY from_var.cap 					"Avsändarvariabler (Från) ">
 <!ENTITY from_note.label				"När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY from.label 					"Avsändarens namn (Standard)"> 
 <!ENTITY fromfirstname.label 			"Avsändarens förnamn"> 
 <!ENTITY fromname.label 				"Avsändarens namn"> 
-
 <!ENTITY cc_var.cap 					"Mottagarvariabler (Kopia)">
 <!ENTITY cc_note.label 					"När inget namn finns tillgängligt visas e-postadressen"> 
 <!ENTITY cc.label 						"Mottagarens namn (Standard)"> 
 <!ENTITY ccfirstname.label 				"Mottagarens förnamn"> 
 <!ENTITY ccname.label 					"Mottagarens namn"> 
-
 <!ENTITY spec_form.cap 					"Specialformat">
 <!ENTITY specform_note.label			"Frasen i välvda Konsoler &#123;Cc: &#37;cc(name)&#37;&#125; kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"> 
 <!ENTITY ex_brack.label					"Exempelvis: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
-
 <!ENTITY sub_var.cap 					"Ämne"> 
 <!ENTITY sub.label 						"Ämne (Samma som original Mailheader)"> 
 <!ENTITY sub2.label 					"Ämne (samma som TB Message Editor)">
-
 <!ENTITY spec_var.cap 					"Specialvariabler"> 
 <!ENTITY messid.label 					"Meddelande-ID"> 
 <!ENTITY newsgr.label 					"Diskussionsgrupper"> 
 <!ENTITY xmail.label 					"X-Mailer-adresshuvud">
 <!ENTITY any.label						"Alla Header-line"> 
-
 <!ENTITY fix_vartz.cap 					"Fasta variabler för datumformat och tidszon "> 
 <!ENTITY fix_vartz_note.label			"Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label 				"Datum och tid (lokalt format)">
 <!ENTITY dateshort.label 				"Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label 					"Tidszon (+0100, +0200, ... )"> 
 <!ENTITY tzname.label 					"GMT, PST, EST, ... "> 
-
 <!ENTITY var_custom.cap 				"Variabler för anpassat datumformat"> 
 <!ENTITY customdf_note.label			"Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY A.label 						"Veckodag (Fredag)">
@@ -139,37 +103,23 @@
 <!ENTITY p1.label 						"a.m."> 
 <!ENTITY p2.label 						"A.M."> 
 <!ENTITY p3.label 						"AM"> 
-
 <!ENTITY var_xsent.cap 					"Att använda &#37;X:=sent&#37;"> 
-<!ENTITY xsent_note.label				"Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas.
-"> 
-
+<!ENTITY xsent_note.label				"Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas."> 
 <!ENTITY xsent_long.cap 				"Exempel på en långsträng:">
 <!ENTITY xsent_long.label				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; kl. &#37;H&#37;:&#37;M&#37;:">
 <!ENTITY xsent_long_result.label 		"Resultat: 16.02.2011 kl. 12:15: "> 
-
 <!ENTITY xsent_short.cap  				"Exempel på en kortsträng:">
 <!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label 		"Resultat: onsdag, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Du kan dessutom använda dessa variabler:">
-
 <!ENTITY localedate.label 				"Datum och tid (lokalt format)">
 <!ENTITY shortdate.label 				"Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Tidszon (+0100, +0200, ... )"> 
 <!ENTITY timezonename.label 			"GMT, PST, EST, ... ">
-<!ENTITY im-ex.cap "Settings and Templates Export/Import">
-<!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
-<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &rArr; 'Import' &rArr; 'Settings and Templates' from the menu bar.">
-<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap 					"Kommentarer rörande HTML-mallar"> 
 <!ENTITY html_note.label				"Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
-
 <!ENTITY table.cap						"ExampleUsage av variablerna">
 <!ENTITY table_note.label				"Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
-
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label			"Variabel">
 <!ENTITY table_new.label				"Nytt">

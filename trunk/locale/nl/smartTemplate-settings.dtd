@@ -150,26 +150,21 @@
 <!ENTITY xsent_short.label 				"&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label 		"Resultaat: Woensdag, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Hiernaast kunt u in beide varianten de volgende variabelen ook gebruiken:">
-
 <!ENTITY localedate.label 				"Datum en tijd (lokale opmaak)">
 <!ENTITY shortdate.label 				"Datum en tijd kort (b.v. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Tijdzone (+0100, +0200, …)">
 <!ENTITY timezonename.label 			"GMT, PST, EST, …">
-
 <!ENTITY im-ex.cap                      "Exporteren/importeren van instellingen en sjablonen">
 <!ENTITY im-ex_note1.label              "U kunt uw instellingen en sjablonen verbonden aan elke account exporteren en importeren.">
 <!ENTITY im-ex_note2.label              "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate4-instellingen.">
-<!ENTITY im-ex_note3.label              "Selecteer vervolgens 'Hulpmiddelen' &rArr; 'Exporteren' &rArr; 'Instellingen en sjablonen' in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
-<!ENTITY im-ex_note4.label              "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens 'Hulpmiddelen' => 'Importeren' => 'Instellingen en sjablonen' in de menubalk.">
+<!ENTITY im-ex_note3.label              "Selecteer vervolgens 'Hulpmiddelen' &#8658; 'Exporteren' &#8658; 'Instellingen en sjablonen' in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
+<!ENTITY im-ex_note4.label              "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens 'Hulpmiddelen' &#8658; 'Importeren' &#8658; 'Instellingen en sjablonen' in de menubalk.">
 <!ENTITY im-ex_note5.label              "Selecteer het te importeren SmartTemplate4-bestand (xxx.st4).">
 <!ENTITY im-ex_note6.label              "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in het titellint in plaats van in het SamrtTemplate4-optiesvenster. Dit is normaal gedrag in deze platforms en kan niet worden gewijzigd.">
-
 <!ENTITY html_note.cap 					"Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label 				"Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
-
 <!ENTITY table.cap 						"Gebruik van de variabelen">
 <!ENTITY table_note.label 				"Als een variabele onjuist wordt gebruikt wordt een fout gelogd naar de Foutconsole!">
-
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label 			"Variabele">
 <!ENTITY table_new.label 				"Nieuw">

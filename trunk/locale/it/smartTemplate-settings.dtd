@@ -1,20 +1,5 @@
 <!-- #### MENU MAIN ITEMS #### -->
-<!ENTITY file.label						"File">
-<!ENTITY tools.label					"Tools">
-<!ENTITY edit.label "Edit">
-<!ENTITY help.label "Help">
-
 <!-- #### MENU OWN ITEMS #### -->
-<!ENTITY copy.label "Copy">
-<!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Field">
-<!ENTITY close.label					"Close">
-<!ENTITY export.label					"Export">
-<!ENTITY import.label					"Import">
-<!ENTITY settings.label					"Settings and Templates">
-<!ENTITY url.homePage.label				"Add-On Homepage">
-<!ENTITY url.supportPage.label			"Support Homepage">
-
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab           		"Messaggi nuovi">
 <!ENTITY pref_rsp.tab           		"Messaggi in risposta">
@@ -140,30 +125,19 @@
 <!ENTITY p1.label 						"a.m."> 
 <!ENTITY p2.label 						"A.M."> 
 <!ENTITY p3.label 						"AM"> 
-
 <!ENTITY var_xsent.cap 					"Varibile &#37;X:=sent&#37;"> 
 <!ENTITY xsent_note.label				"Le variabili per data/ora, Timezone e data/ora personalizzata qui sopra vengono impostate al valore attuale; quando associate alla variabile &#37;X:=sent&#37;#37; vengono ripristinati i valori di quando il messaggio è stato inviato"> 
-
 <!ENTITY xsent_long.cap 				"Esempio di Longstring">
 <!ENTITY xsent_long.label				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; alle ore &#37;H&#37;:&#37;M&#37;">
 <!ENTITY xsent_long_result.label 		"Risultato: 16.02.2011 alle ore 12:15"> 
-
 <!ENTITY xsent_short.cap  				"Esempio di Shortstring:">
 <!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label 		"Risultato: Mittwoch, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Aggiunta si possono utilizzare in entrambi i seguenti variabili di tipo variante anche:">
-
 <!ENTITY localedate.label 				"Data/ora (formato locale)">
 <!ENTITY shortdate.label 				"Data/ora abbreviata (es: 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Timezone (+0100, +0200, ... )"> 
 <!ENTITY timezonename.label 			"GMT, PST, EST, ... ">
-<!ENTITY im-ex.cap "Settings and Templates Export/Import">
-<!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
-<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label "Next select 'File' &rArr; 'Export' &rArr; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &rArr; 'Import' &rArr; 'Settings and Templates' from the menu bar.">
-<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap 					"Note per i modelli di intestazione personalizzata in HTML"> 
 <!ENTITY html_note.label				"Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML!">
 

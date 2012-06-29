@@ -8,7 +8,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Extract Signature
 	//
-	function extractSignature()
+	function extractSignature(Ident)
 	{
 		let sig = '';
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.extractSignature()');
@@ -20,14 +20,25 @@ SmartTemplate4.classSmartTemplate = function()
 		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value;
 
-		// try to extract signature manually
-		let sigNode = findChildNode(bodyEl, 'moz-signature'); // get the signature straight from the bodyElement!
+		// try to extract signature manually - well we need the last one!!
+		// get the signature straight from the bodyElement!
+		let sigNode = null ;
+		//signature from top
+		if (Ident.replyOnTop && !Ident.sigBottom) {
+			sigNode = findChildNode(bodyEl, 'moz-signature');
+		}
+		//signature from bottom
+		else {
+			let signatureNodes = document.getElementsByClassName('moz-signature');
+			if (signatureNodes)
+				sigNode = signatureNodes[signatureNodes.length-1];
+		}
 
-		let htmlSigText = gMsgCompose.identity.htmlSigText; // might not work if it is an attached file (find out how this is done)
+		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
 
 		// test code for reading local sig file (WIP)
-		if (gMsgCompose.identity.attachSignature) {
-			let sigFile = gMsgCompose.identity.signature.QueryInterface(Components.interfaces.nsILocalFile);
+		if (Ident.attachSignature) {
+			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsILocalFile);
 			if (sigFile &&( sigFile.fileSize > 0)) {
 				SmartTemplate4.Util.logDebug('Trying to read signature file: ' + sigFile.leafName
 				        + '\nfile size: ' + sigFile.fileSize
@@ -35,10 +46,7 @@ SmartTemplate4.classSmartTemplate = function()
 		  }
 		}
 
-		let sigText = sigNode ? sigNode.innerHTML
-		                      : gMsgCompose.identity.attachSignature
-		                                    ? htmlSigText
-		                                    : 'Please activate Include Signature in Account Settings / Composition &amp; Addressing to use signature!';
+		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
 
 		for(let i = 0; i < nodes.length; i++) {
 			if ( nodes[i].className == "moz-signature" ) {
@@ -406,7 +414,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		SmartTemplate4.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
 		var pref = SmartTemplate4.pref;
-		// var	 editor = GetCurrentEditor();
+		// var editor = GetCurrentEditor();
 		let ed = gMsgCompose.editor;
 		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); //
 
@@ -414,6 +422,10 @@ SmartTemplate4.classSmartTemplate = function()
 		var msgTmpl = null;
 		var idKey = document.getElementById("msgIdentity").value;
 		var branch = idKey + ".";
+
+		let theIdentity = gAccountManager.getIdentity(idKey);
+		if (!theIdentity)
+			theIdentity = gMsgCompose.identity;
 
 		// Switch account
 		if (startup) {
@@ -429,8 +441,9 @@ SmartTemplate4.classSmartTemplate = function()
 			undoTemplate();
 		}
 
-		SmartTemplate4.signature = extractSignature();
+		SmartTemplate4.signature = extractSignature(theIdentity);
 
+		let composeCase = 'undefined';
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -442,6 +455,7 @@ SmartTemplate4.classSmartTemplate = function()
 					if (pref.getWithIdkey(idKey, "new", false)) {
 						msgTmpl = getTemplate("new", idKey, "newmsg", "newhtml", "newnbr");
 					}
+					composeCase = 'new';
 					break;
 
 				// reply message ---------------------------------------
@@ -460,6 +474,7 @@ SmartTemplate4.classSmartTemplate = function()
 							delReplyHeader(idKey);
 						}
 					}
+					composeCase = 'reply';
 					break;
 
 				// forwarding message ----------------------------------
@@ -477,6 +492,7 @@ SmartTemplate4.classSmartTemplate = function()
 							delForwardHeader();
 						}
 					}
+					composeCase = 'forward';
 					break;
 
 				// do not process -----------------------------------
@@ -508,41 +524,50 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
+		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate',
-		         'identityName:   ' + gMsgCompose.identity.identityName + '\n'
-		       + 'key:            ' + gMsgCompose.identity.key + '\n'
+		         'identityName:   ' + theIdentity.identityName + '\n'
+		       + 'key:            ' + theIdentity.key + '\n'
 		       + '------------------------------------------------\n'
-		       + 'sigOnReply:     ' + gMsgCompose.identity.sigOnReply + '\n'
-		       + 'sigOnForward:   ' + gMsgCompose.identity.sigOnForward + '\n'
-		       + 'sigOnBottom:    ' + gMsgCompose.identity.sigOnBottom + '\n'
-		       + 'attachSignature:' + gMsgCompose.identity.attachSignature + '\n'
-		       + 'htmlSigFormat:  ' + gMsgCompose.identity.htmlSigFormat + '\n'
-		       + 'composeHtml:    ' + gMsgCompose.identity.composeHtml + '\n'
-		       + 'replyOnTop:     ' + gMsgCompose.identity.replyOnTop + '\n'
+		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
+		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
+		       + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
+		       + 'attachSignature:' + theIdentity.attachSignature + '\n'
+		       + 'htmlSigFormat:  ' + theIdentity.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
+		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
+		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
 		       + 'SmartTemplate4.sigIsDefined: ' + SmartTemplate4.sigIsDefined);
-			// why not use gMsgCompose.identity.sigBottom ??
-			// gMsgCompose.identity.sigOnReply
-			// gMsgCompose.identity.sigOnForward
-			// gMsgCompose.identity.identityName
 
+		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
+		                       ||
+		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
+		/* SIGNATURE HANDLING */
+		if (composeCase == 'reply' && theIdentity.sigOnReply && isSignatureSetup
+		    ||
+		    composeCase == 'forward' && theIdentity.sigOnForward && isSignatureSetup
+		    ||
+		    composeCase == 'new' && theSignature && isSignatureSetup) {
 
+			if (!SmartTemplate4.sigIsDefined && theSignature) {
+				SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
 
-		if (!SmartTemplate4.sigIsDefined && theSignature) {
-			let pref = SmartTemplate4.pref;
-			// why not use gMsgCompose.identity.sigBottom ??
-			// gMsgCompose.identity.sigOnReply
-			// gMsgCompose.identity.sigOnForward
+				let pref = SmartTemplate4.pref;
+				// why not use theIdentity.sigBottom ??
+				// theIdentity.sigOnReply
+				// theIdentity.sigOnForward
 
-			let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
-			let bodyEl = gMsgCompose.editor.rootElement;
+				// theIdentity.sigBottom is better than using
+				// let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
+				let bodyEl = gMsgCompose.editor.rootElement;
 
-			if (sig_on_bottom) {
-				bodyEl.appendChild(gMsgCompose.editor.document.createElement("br")); //replace the BR that was removed in extractSignature
-				bodyEl.appendChild(theSignature);
-			}
-			else {
-				bodyEl.insertBefore(theSignature, bodyEl.firstChild);
-				bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
+				if (theIdentity.sigBottom) {
+					bodyEl.appendChild(gMsgCompose.editor.document.createElement("br")); //replace the BR that was removed in extractSignature
+					bodyEl.appendChild(theSignature);
+				}
+				else {
+					bodyEl.insertBefore(theSignature, bodyEl.firstChild);
+					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
+				}
 			}
 		}
 
