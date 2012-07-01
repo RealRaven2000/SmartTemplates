@@ -515,11 +515,7 @@ button.dialog-button[dlgtype=extra2] {
 }
 .dialog-button[dlgtype=extra2]
 {
-	border-radius: 2em;
-	padding-left: 1em;
-	padding-right: 1em;
-	margin: 0.2em 0px 0.4em;
-	min-height: 2em;
+	border-radius: 1.3em;
 	-moz-appearance: none;
 	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.7);
 	color: #fff;
@@ -532,7 +528,7 @@ button.dialog-button[dlgtype=extra2] {
 
 .dialog-button[dlgtype=extra2]:hover
 {
-	margin: 0.25em -1px 0.35em 1px;
+	/* margin: 1px -1px -1px 1px; */
 	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.8);
 	background: rgb(254,222,178);
 	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
@@ -540,7 +536,7 @@ button.dialog-button[dlgtype=extra2] {
 
 .dialog-button[dlgtype=extra2]:active
 {
-	margin: 0.3em -2px 0.3em 2px;
+	/* margin: 1px -1px -1px 1px; */
 	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.9);
 	background: rgb(254,222,178);
 	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);

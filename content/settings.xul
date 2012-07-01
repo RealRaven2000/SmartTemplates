@@ -24,35 +24,22 @@
 	<toolbox>
 		<toolbar type = "menubar">
 			<toolbaritem>
-				<menubar>
+				<menubar  style = "border:0px;">
 				<!-- ###### FILE ###### -->
 					<menu id = "SmartTemplate4FileMenuitem"
 					      label = "&file.label;"
 					      class = "menu-iconic">
 						<menupopup>
 							<!-- ###### FILE -> EXPORT * ###### -->
-							<menu id = "SmartTemplate4ExportMenuitem"
-							      label = "&export.label;"
-							      class = "menu-iconic">
-								<menupopup id = "SmartTemplate4export-popup">
-									<menuitem id = "SmartTemplate4ExportItem"
-									          label = "&settings.label;"
-									          class = "menuitem-iconic"
-									          oncommand = "SmartTemplate4.IO.export();" />
-								</menupopup>
-							</menu>
+							<menuitem id = "SmartTemplate4ExportItem"
+							          label = "&export.label; &settings.label;..."
+							          class = "menuitem-iconic"
+							          oncommand = "SmartTemplate4.IO.export();" />
 							<!-- ###### FILE -> IMPORT ###### -->
-							<menu id = "SmartTemplate4ImportMenuitem"
-							      label = "&import.label;"
-							      class = "menu-iconic">
-								<!-- ###### IMPORT -> * ###### -->
-								<menupopup id = "SmartTemplate4-import-popup">
-									<menuitem id = "SmartTemplate4ImportItem"
-									          label = "&settings.label;"
-									          class = "menuitem-iconic"
-									          oncommand = "SmartTemplate4.IO.import();" />
-								</menupopup>
-							</menu>
+							<menuitem id = "SmartTemplate4ImportItem"
+							          label = "&import.label; &settings.label;..."
+							          class = "menuitem-iconic"
+							          oncommand = "SmartTemplate4.IO.import();" />
 							<!-- ###### FILE -> CLOSE ###### -->
 							<menuitem id = "SmartTemplate4CloseItem"
 							          label = "&close.label;"

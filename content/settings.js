@@ -239,6 +239,33 @@ SmartTemplate4.Settings = {
 		let deltaShrink = document.getElementById('decksContainer').scrollWidth - window.innerWidth;
 		window.resizeBy(deltaShrink + 40, 0); // 40 pixels for paddings etc.
 
+		// let's test if we can get this element
+		let prefDialog = document.getElementById('smartTemplate_prefDialog');
+		let hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons');
+
+		let buttons = [];
+		let maxHeight = 0;
+		let i = 0;
+		// build an array of visible dlg buttons and get their max height
+		for (i=0; i < hbox.childNodes.length; i++ ) {
+			let b = hbox.childNodes[i];
+			let c = b.className;
+			// let t = b.tagName;
+			if (!b.hidden && (b.tagName == 'xul:button') && (c.indexOf('dialog-button') >= 0)) {
+				buttons.push(b);
+				let rect = b.getBoundingClientRect();
+				let h = rect.bottom - rect.top;
+				maxHeight = (h > maxHeight) ? h : maxHeight;
+			}
+		}
+
+		// set height of buttons from that array
+		let finalHeight = parseInt(maxHeight) - 2; // allow for border.
+		for (i=0; i < buttons.length; i++ ) {
+			buttons[i].height = finalHeight;
+		}
+
+
 		return true;
 	} ,
 
