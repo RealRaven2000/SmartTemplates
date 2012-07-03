@@ -110,8 +110,9 @@
 <!ENTITY n.label 						"Kuukausi (1-12)">
 <!ENTITY B.label 						"Kuukausi (Tammikuu)">
 <!ENTITY b.label 						"Kuukausi (tammi)">
-<!ENTITY y.label 						"Vuosi (1970)">
-<!ENTITY m.label 						"Minuutti (00-59)">
+<!ENTITY Y.label 						"Vuosi (1970)">
+<!ENTITY M.label "Minuutti (00-59)">
+<!ENTITY m.label 						"Kuukausi (01-12)">
 <!ENTITY s.label 						"Sekunti (00-59)">
 <!ENTITY h.label 						"Tunti, 24-tuntinen muoto (00-23)">
 <!ENTITY k.label 						"Tunti, 24-tuntinen muoto (0-23)">

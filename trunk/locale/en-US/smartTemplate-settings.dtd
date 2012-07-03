@@ -110,8 +110,9 @@
 <!ENTITY n.label "Month (1 to 12)">
 <!ENTITY B.label "Month (January)">
 <!ENTITY b.label "Month (Jan.)">
-<!ENTITY y.label "Year (1970)">
-<!ENTITY m.label "Minute (00 to 59)">
+<!ENTITY Y.label "Year (1970)">
+<!ENTITY M.label "Minute (00 to 59)">
+<!ENTITY m.label "Month (01 to 12)">
 <!ENTITY s.label "Second (00 to 59)">
 <!ENTITY h.label "Hour, 24-Hour Format (00 to 23)">
 <!ENTITY k.label "Hour, 24-Hour Format (0 to 23)">

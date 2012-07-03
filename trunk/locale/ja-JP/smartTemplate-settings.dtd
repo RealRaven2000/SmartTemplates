@@ -105,11 +105,12 @@
 <!ENTITY a.label "曜日 (金)">
 <!ENTITY d.label "日 (01 から 31)">
 <!ENTITY e.label "日 (1 から 31)">
-<!ENTITY m.label "分 (00 から 59)">
+<!ENTITY m.label "月 (01 から 12)">
 <!ENTITY n.label "月 (1 から 12)">
 <!ENTITY B.label "月 (睦月)">
 <!ENTITY b.label "月 (1 月)">
-<!ENTITY y.label "年 (1970)">
+<!ENTITY Y.label "年 (1970)">
+<!ENTITY M.label "分 (00 から 59)">
 <!ENTITY s.label "秒 (00 から 59)">
 <!ENTITY h.label "時 (24 時間表記、00 から 23)">
 <!ENTITY k.label "時 (24 時間表記、0 から 23)">

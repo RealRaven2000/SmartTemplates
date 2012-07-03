@@ -103,11 +103,12 @@
 <!ENTITY a.label "Día de la semana (Vie.)">
 <!ENTITY d.label "Día del mes (01 a 31)">
 <!ENTITY e.label "Día del mes (1 a 31)">
-<!ENTITY m.label "Minuto (00 a 59)">
+<!ENTITY m.label "Mes (01 a 12)">
 <!ENTITY n.label "Mes (1 a 12)">
 <!ENTITY B.label "Mes (Enero)">
 <!ENTITY b.label "Mes (Ene.)">
-<!ENTITY y.label "Año (1970)">
+<!ENTITY Y.label "Año (1970)">
+<!ENTITY M.label "Minuto (00 a 59)">
 <!ENTITY s.label "Segundo (00 a 59)">
 <!ENTITY h.label "Hora en formato 24 horas (00 a 23)">
 <!ENTITY k.label "Hora en formato 24 horas (0 a 23)">

@@ -92,8 +92,9 @@
 <!ENTITY n.label 						"Månad (1 till 12)"> 
 <!ENTITY B.label 						"Månad (Januari)">
 <!ENTITY b.label 						"Månad (Jan.)">
-<!ENTITY y.label 						"År (1970)"> 
-<!ENTITY m.label 						"Minut (00 till 59)">
+<!ENTITY Y.label 						"År (1970)">
+<!ENTITY M.label "Minut (00 till 59)"> 
+<!ENTITY m.label 						"Månad (01 till 12)">
 <!ENTITY s.label 						"Sekund (00 till 59)"> 
 <!ENTITY h.label 						"Timmar, 24-timmarsformat (00 till 23)">
 <!ENTITY k.label 						"Timmar, 24-timmarsformat (0 till 23)"> 
