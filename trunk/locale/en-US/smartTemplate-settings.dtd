@@ -105,19 +105,19 @@
 <!ENTITY customdf_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY A.label "Day of Week (Friday)">
 <!ENTITY a.label "Day of Week (Fri.)">
-<!ENTITY d.label "Day of Month (01 to 31)">
+<!ENTITY d.label "Day of Month (01 to 31) - with leading zero">
 <!ENTITY e.label "Day of Month (1 to 31)">
 <!ENTITY n.label "Month (1 to 12)">
 <!ENTITY B.label "Month (January)">
 <!ENTITY b.label "Month (Jan.)">
+<!ENTITY m.label "Month (01 to 12) - with leading zero">
 <!ENTITY Y.label "Year (1970)">
 <!ENTITY M.label "Minute (00 to 59)">
-<!ENTITY m.label "Month (01 to 12)">
 <!ENTITY s.label "Second (00 to 59)">
-<!ENTITY h.label "Hour, 24-Hour Format (00 to 23)">
+<!ENTITY h.label "Hour, 24-Hour Format (00 to 23) - with leading zero">
 <!ENTITY k.label "Hour, 24-Hour Format (0 to 23)">
-<!ENTITY i.label "Hour, 12-Hour Format (01 to 12)">
 <!ENTITY l.label "Hour, 12-Hour Format (1 to 12)">
+<!ENTITY i.label "Hour, 12-Hour Format (01 to 12) - with leading zero">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">

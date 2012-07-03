@@ -14,4 +14,17 @@
 		                class="statusbarpanel-iconic-text"
 		                oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
 	</statusbar>
+
+
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/settings.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+
+<script type="application/x-javascript;version=1.7">
+	SmartTemplate4.startUp();
+</script>
+
 </overlay>
+
+

@@ -115,21 +115,21 @@
 				<vbox id = "deckA.per_account" flex = "1">
 
 					<preferences id = "smarttemplate">
-						<preference id = "pref_def"     name = "extensions.smarttemplate.def"      type = "bool"/>
-						<preference id = "pref_new"     name = "extensions.smarttemplate.new"      type = "bool"/>
-						<preference id = "pref_newmsg"  name = "extensions.smarttemplate.newmsg"   type = "unichar"/>
-						<preference id = "pref_newhtml" name = "extensions.smarttemplate.newhtml"  type = "bool"/>
-						<preference id = "pref_newnbr"  name = "extensions.smarttemplate.newnbr"   type = "bool"/>
-						<preference id = "pref_rsp"     name = "extensions.smarttemplate.rsp"      type = "bool"/>
-						<preference id = "pref_rspmsg"  name = "extensions.smarttemplate.rspmsg"   type = "unichar"/>
-						<preference id = "pref_rsphtml" name = "extensions.smarttemplate.rsphtml"  type = "bool"/>
-						<preference id = "pref_rspnbr"  name = "extensions.smarttemplate.rspnbr"   type = "bool"/>
-						<preference id = "pref_rsphead" name = "extensions.smarttemplate.rsphead"  type = "bool"/>
-						<preference id = "pref_fwd"     name = "extensions.smarttemplate.fwd"      type = "bool"/>
-						<preference id = "pref_fwdmsg"  name = "extensions.smarttemplate.fwdmsg"   type = "unichar"/>
-						<preference id = "pref_fwdhtml" name = "extensions.smarttemplate.fwdhtml"  type = "bool"/>
-						<preference id = "pref_fwdnbr"  name = "extensions.smarttemplate.fwdnbr"   type = "bool"/>
-						<preference id = "pref_fwdhead" name = "extensions.smarttemplate.fwdhead"  type = "bool"/>
+						<preference id = "pref_def"     name = "extensions.smartTemplate4.common.def"      type = "bool"/>
+						<preference id = "pref_new"     name = "extensions.smartTemplate4.common.new"      type = "bool"/>
+						<preference id = "pref_newmsg"  name = "extensions.smartTemplate4.common.newmsg"   type = "unichar"/>
+						<preference id = "pref_newhtml" name = "extensions.smartTemplate4.common.newhtml"  type = "bool"/>
+						<preference id = "pref_newnbr"  name = "extensions.smartTemplate4.common.newnbr"   type = "bool"/>
+						<preference id = "pref_rsp"     name = "extensions.smartTemplate4.common.rsp"      type = "bool"/>
+						<preference id = "pref_rspmsg"  name = "extensions.smartTemplate4.common.rspmsg"   type = "unichar"/>
+						<preference id = "pref_rsphtml" name = "extensions.smartTemplate4.common.rsphtml"  type = "bool"/>
+						<preference id = "pref_rspnbr"  name = "extensions.smartTemplate4.common.rspnbr"   type = "bool"/>
+						<preference id = "pref_rsphead" name = "extensions.smartTemplate4.common.rsphead"  type = "bool"/>
+						<preference id = "pref_fwd"     name = "extensions.smartTemplate4.common.fwd"      type = "bool"/>
+						<preference id = "pref_fwdmsg"  name = "extensions.smartTemplate4.common.fwdmsg"   type = "unichar"/>
+						<preference id = "pref_fwdhtml" name = "extensions.smartTemplate4.common.fwdhtml"  type = "bool"/>
+						<preference id = "pref_fwdnbr"  name = "extensions.smartTemplate4.common.fwdnbr"   type = "bool"/>
+						<preference id = "pref_fwdhead" name = "extensions.smartTemplate4.common.fwdhead"  type = "bool"/>
 						<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
 						<preference id = "pref_debug"   name = "extensions.smartTemplate4.debug"   type = "bool"/>
 					</preferences>
@@ -137,7 +137,7 @@
 					<checkbox id = "use_default"
 					          label = "&pref_def.label;"
 					          preference = "pref_def"
-					          oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ?1:0);"/>
+					          oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
 
 					<spacer height = "5px" />
 

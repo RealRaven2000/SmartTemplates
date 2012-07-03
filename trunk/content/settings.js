@@ -60,7 +60,7 @@ SmartTemplate4.Settings = {
 		  { deck.selectedIndex = index; }
 
 		const idkey = document.getElementById("msgIdentity").value;
-		const branch = idkey == "common" ? "" : "." + idkey;
+		const branch = (idkey == "common") ? ".common" : "." + idkey;
 	} ,
 
 
@@ -87,13 +87,48 @@ SmartTemplate4.Settings = {
 		}
 	},
 
+
+	convertOldPrefs : function() {
+		let debugText = "";
+		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
+
+		try {
+			let array = this.prefService.getChildList("extensions.smarttemplate.", {});
+
+			// AG new: import settings to new format
+			for (var i in array) {
+
+				let oldPrefName = array[i];
+				debugText += 'CONVERT: ' + oldPrefName;
+				let thePreference = this.prefService.getPref(oldPrefName);
+				let newPrefString = oldPrefName.indexOf('smarttemplate.id' > 0) ?
+				                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
+				                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
+
+				debugText += ' => ' + newPrefString + '\n';
+				this.prefService.setPref(newPrefString, thePreference);
+				// keep a backup ??
+				// this.prefService.deleteBranch(array[i]);
+			}
+		}
+		catch (ex) {
+			SmartTemplate4.Util.logException("convertOldPrefs failed: ", ex);
+		}
+		SmartTemplate4.Util.logDebug(debugText);
+	},
+
 	// Delete unused preferences.
 	//--------------------------------------------------------------------
 	cleanupUnusedPrefs : function()
 	{
-		var array = this.prefService.getChildList("extensions.smarttemplate.", {});
+		var array = this.prefService.getChildList("extensions.smartTemplate4.", {});
+
+		// AG new: preserve common and global settings!
 		for (var i in array) {
-			if (document.getElementsByAttribute("name", array[i]).length === 0) {
+			if (document.getElementsByAttribute("name", array[i]).length === 0
+			    &&
+			    array[i].indexOf("smartTemplate4.id">0))  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
+			{
 				this.prefService.deleteBranch(array[i]);
 			}
 		}
@@ -214,11 +249,11 @@ SmartTemplate4.Settings = {
 	onLoad : function() // mod 0.3.2
 	{
 		// Check and set common preference
-		this.setPref1st("extensions.smarttemplate.");
+		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
 
 		// Set account popup
-		this.fillIdentityListPopup(); 				// mod 0.3.2
+		this.fillIdentityListPopup();
 
 		this.cleanupUnusedPrefs();
 
@@ -349,20 +384,20 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	addIdentity : function(menuvalue)
 	{
-		const  branch = menuvalue == "common" ? "" : "." + menuvalue;
+		const  branch = menuvalue == "common" ? ".common" : "." + menuvalue;
 
 		// Add preferences, if preferences is not create.
-		this.setPref1st("extensions.smarttemplate" + branch + ".");
+		this.setPref1st("extensions.smartTemplate4" + branch + ".");
 
 		// Clone and setup a preference window tags.
 		const el = document.getElementById("deckA.per_account");
 		const clone = el.cloneNode(true);
 
-		this.prefCloneAndSetup(clone, "smarttemplate", branch);
-		el.parentNode.appendChild(clone);				// mod 0.3.2
+		this.prefCloneAndSetup(clone, "smartTemplate4", branch);
+		el.parentNode.appendChild(clone);
 
 		// Reload preferences
-		this.reloadPrefs(document.getElementById("smarttemplate" + branch));
+		this.reloadPrefs(document.getElementById("smartTemplate4" + branch));
 
 		// Disabled or Hidden DOM node
 		this.gCurId = branch;    // change current id for pref library
@@ -456,7 +491,7 @@ SmartTemplate4.Settings = {
 		let tabbox = document.getElementById(currentDeck);
 		var tabIndex = tabbox.selectedIndex;
 
-		const  branch = idkey == "common" ? "" : "." + idkey;
+		const  branch = (idkey == "common") ? ".common" : "." + idkey;
 
 		// Display identity.
 		var deck = document.getElementById("account_deckA");	// mod 0.3.2 S

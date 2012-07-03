@@ -26,7 +26,7 @@
 <!ENTITY contribute_button "支援">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
-<!ENTITY pref_server_desc "差出人">
+<!ENTITY pref_server_desc "差出人:">
 <!ENTITY pref_server_def "共通設定">
 <!ENTITY pref_def.label "共通設定を使う">
 <!ENTITY pref_def.cap "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">
