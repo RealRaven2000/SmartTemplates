@@ -127,8 +127,9 @@
 <!ENTITY n.label 						"Maand (1 tot 12)">
 <!ENTITY B.label 						"Maand (Januari)">
 <!ENTITY b.label 						"Maand (Jan.)">
-<!ENTITY y.label 						"Jaar (1970)">
-<!ENTITY m.label 						"Minuut (00 tot 59)">
+<!ENTITY Y.label 						"Jaar (1970)">
+<!ENTITY M.label "Minuut (00 tot 59)">
+<!ENTITY m.label 						"Maand (01 tot 12)">
 <!ENTITY s.label 						"Seconde (00 tot 59)">
 <!ENTITY h.label 						"Uur, 24-uursopmaak (00 tot 23)">
 <!ENTITY k.label 						"Uur, 24-uursopmaak (0 tot 23)">

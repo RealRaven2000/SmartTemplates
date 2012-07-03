@@ -103,11 +103,12 @@
 <!ENTITY a.label "День недели(Пт)">
 <!ENTITY d.label "День месяца (01-31)">
 <!ENTITY e.label "День месяца (1-31)">
-<!ENTITY m.label "Минуты (00-59)">
+<!ENTITY m.label "Месяц (01-12)">
 <!ENTITY n.label "Месяц (1-12)">
 <!ENTITY B.label "Месяц (Январь)">
 <!ENTITY b.label "Месяц (Янв.)">
-<!ENTITY y.label "Год (1970)">
+<!ENTITY Y.label "Год (1970)">
+<!ENTITY M.label "Минуты (00-59)">
 <!ENTITY s.label "Секунды (00-59)">
 <!ENTITY h.label "Часы (00-23)">
 <!ENTITY k.label "Часы (0-23)">

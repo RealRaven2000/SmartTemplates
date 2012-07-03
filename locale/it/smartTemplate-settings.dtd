@@ -114,8 +114,9 @@
 <!ENTITY n.label 						"Mese (da 1 a 12)"> 
 <!ENTITY B.label 						"Mese (Gennaio)">
 <!ENTITY b.label 						"Mese (Gen)">
-<!ENTITY y.label 						"Anno (1970)"> 
-<!ENTITY m.label 						"Minuto (00 a 59)">
+<!ENTITY Y.label 						"Anno (1970)">
+<!ENTITY M.label "Minuto (da 00 a 59)"> 
+<!ENTITY m.label 						"Mese (da 01 a 12)">
 <!ENTITY s.label 						"Secondo (00 a 59)"> 
 <!ENTITY h.label 						"Ore, formato orario in 24 ore (da 00 a 23)">
 <!ENTITY k.label 						"Ore, formato orario in 24 ore (da 0 a 23)"> 

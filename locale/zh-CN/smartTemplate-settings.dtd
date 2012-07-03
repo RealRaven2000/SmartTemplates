@@ -106,8 +106,9 @@
 <!ENTITY n.label "月份 (1 至 12)">
 <!ENTITY B.label "月份 (January)">
 <!ENTITY b.label "月份 (Jan.)">
-<!ENTITY y.label "年 (1970)">
-<!ENTITY m.label "分钟 (00 至 59)">
+<!ENTITY Y.label "年 (1970)">
+<!ENTITY M.label "分钟 (00 至 59)">
+<!ENTITY m.label "月 (01 至 12)">
 <!ENTITY s.label "第二 (00 至 59)">
 <!ENTITY h.label "小时，24-小时格式 (00 至 23)">
 <!ENTITY k.label "小时，24-小时格式 (0 至 23)">

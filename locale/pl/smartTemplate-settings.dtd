@@ -103,11 +103,12 @@
 <!ENTITY a.label "Dzień tygodnia (Pi)">
 <!ENTITY d.label "Dzień miesiąca (01 do 31)">
 <!ENTITY e.label "Dzień miesiąca (1 do 31)">
-<!ENTITY m.label "Minuta (00 do 59)">
+<!ENTITY m.label "Miesiąc (01 do 12)">
+<!ENTITY M.label "Minuta (00 do 59)">
 <!ENTITY n.label "Miesiąc (1 do 12)">
 <!ENTITY B.label "Miesiąc (Styczeń)">
 <!ENTITY b.label "Miesiąc (Sty)">
-<!ENTITY y.label "Rok (1970)">
+<!ENTITY Y.label "Rok (1970)">
 <!ENTITY s.label "Sekunda (00 do 59)">
 <!ENTITY h.label "Godzina, format 24-godzinny (00 do 23)">
 <!ENTITY k.label "Godzina, format 24-godzinny (0 do 23)">
