@@ -7,7 +7,7 @@ var SmartTemplate4 = {
 	XisSent  : 1,
 	signature : null,
 	sigIsDefined : false,
-	
+
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
@@ -16,7 +16,7 @@ var SmartTemplate4 = {
 		ComposeProcessDone: function(aResult) {},
 		SaveInFolderDone: function(folderURI) {}
 	},
-	
+
 	initListner: function() {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 	},
@@ -24,22 +24,22 @@ var SmartTemplate4 = {
 	// A handler to add template message
 	// -------------------------------------------------------------------
 	notifyComposeBodyReady: function()
-	{	
+	{
 		this.Util.logDebugOptional('events','SmartTemplate4.notifyComposeBodyReady()');
 		// Add template message
 		this.smartTemplate.insertTemplate(true);
 	},
-	
+
 	// -------------------------------------------------------------------
 	// A handler to switch identity
 	// -------------------------------------------------------------------
 	loadIdentity : function(startup)
-	{	
+	{
 		this.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
 			this.oldFunc_LoadIdentity(startup);
-		} 
+		}
 		else {
 			// Check body modified or not
 			var isBodyModified = gMsgCompose.bodyModified;
@@ -53,7 +53,7 @@ var SmartTemplate4 = {
 			  { gMsgCompose.editor.resetModificationCount(); }	// for TB bug?
 		}
 	},
-	
+
 	// -------------------------------------------------------------------
 	// Escape to HTML character references
 	// -------------------------------------------------------------------
@@ -75,7 +75,7 @@ var SmartTemplate4 = {
 			// with Lightning
 			var cal = Components.classes["@mozilla.org/calendar/datetime-formatter;1"].
 						getService(Components.interfaces.calIDateTimeFormatter);
-		} 
+		}
 		catch(ex) {
 			// without Lightning
 			var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
@@ -88,14 +88,14 @@ var SmartTemplate4 = {
 				shortMonthName : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".short"); }
 			};
 		}
-	
+
 		function list() {
 			var str = "";
 			for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
 			for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
 			return str;
 		};
-	
+
 		// -----------------------------------
 		// Public methods
 		this.dayName		= cal.dayName;
@@ -104,7 +104,7 @@ var SmartTemplate4 = {
 		this.shortMonthName = cal.shortMonthName;
 		this.list			= list;
 	} ,
-	
+
 	// -------------------------------------------------------------------
 	// Initialize - we only call this from the compose window
 	// -------------------------------------------------------------------
@@ -113,17 +113,24 @@ var SmartTemplate4 = {
 		function smartTemplate_loadIdentity(startup){
 			return SmartTemplate4.loadIdentity(startup);
 		}
+		// main code: avoid init()
+		if (typeof LoadIdentity === 'undefined')
+			return;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
+		SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
 		this.oldFunc_LoadIdentity = LoadIdentity;
 		LoadIdentity = smartTemplate_loadIdentity;
-	
+
 		this.pref = new SmartTemplate4.classPref("extensions.smarttemplate.", "def");
 		this.smartTemplate = new this.classSmartTemplate();
 		this.cal = new this.classCalIDateTimeFormatter(true);
-		
+
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
 		this.Util.logDebug('SmartTemplate4.init() ends.');
-		
+	} ,
+
+	startUp: function() {
+		let v = SmartTemplate4.Util.VersionProxy();
 	}
 };

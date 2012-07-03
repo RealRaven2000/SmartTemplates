@@ -28,7 +28,7 @@ END LICENSE BLOCK
 */
 
 SmartTemplate4.Util = {
-	HARDCODED_EXTENSION_VERSION : "0.8.1",
+	HARDCODED_EXTENSION_VERSION : "0.9",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -45,14 +45,19 @@ SmartTemplate4.Util = {
 
 
 	getBundleString: function(id, defaultText) {
-		try {
-			var s= SmartTemplate4.Properties.getLocalized(id);
-		}
-		catch(e) {
-			s= defaultText;
+
+		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
+			 getService(Components.interfaces.nsIStringBundleService);
+		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
+		let theText = '';
+		try{
+			//try writing an error to the Error Console using the localized string; if it fails write it in English
+			theText = bundle.GetStringFromName(id);
+		} catch (e) {
+			theText = defaultText;
 			this.logException ("Could not retrieve bundle string: " + id, e);
 		}
-		return s;
+		return theText;
 	} ,
 
 	getMail3PaneWindow: function() {
@@ -125,10 +130,25 @@ SmartTemplate4.Util = {
 				Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 				AddonManager.getAddonByID(myId, function(addon) {
+
+					let versionLabel = window.document.getElementById("qf-options-header-description");
+					if (versionLabel) versionLabel.setAttribute("value", addon.version);
+
+					let u = SmartTemplate4.Util;
+					u.mExtensionVer = addon.version;
+					u.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
+					u.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version " + u.mExtensionVer + "\n"
+					           + "Running on " + u.Application
+					           + " Version " + u.AppverFull);
+					// make sure we are not in options window
+					if (!versionLabel)
+						u.firstRun.init();
+
 					SmartTemplate4.Util.mExtensionVer = addon.version;
 					SmartTemplate4.Util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
 					let versionLabel = window.document.getElementById("smartTemplate-options-version");
-					if(versionLabel) versionLabel.setAttribute("value", addon.version);
+					if(versionLabel)
+						versionLabel.setAttribute("value", addon.version);
 
 				});
 			}
@@ -154,7 +174,7 @@ SmartTemplate4.Util = {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
 			SmartTemplate4.Util.VersionProxy(); // modern Mozilla builds.
 												// these will set mExtensionVer (eventually)
-												// also we will delay FirstRun.init() until we _know_ the version number
+												// also we will delay firstRun.init() until we _know_ the version number
 		}
 		else	// --- older code: extensions manager.
 		{
@@ -428,7 +448,7 @@ SmartTemplate4.Util = {
 	showVersionHistory: function(ask) {
 		var version = SmartTemplate4.Util.VersionSanitized;
 
-		var sPrompt = SmartTemplate4.Util.getBundleString("SmartTemplate4.confirmVersionLink", "Display version history for smartTemplate4")
+		var sPrompt = SmartTemplate4.Util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log for SmartTemplate4?")
 		if (!ask || confirm(sPrompt + " " + version + "?")) {
 			SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/version.html#" + version);
 		}
@@ -500,5 +520,178 @@ SmartTemplate4.Util = {
 		this.logDebug (errorText);
 	}
 
+};
+
+
+SmartTemplate4.Util.firstRun =
+{
+	update: function(previousVersion) {
+		// convert
+		SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
+
+	} ,
+
+	init: function() {
+		SmartTemplate4.Util.logDebugOptional('functions', 'Util.firstRun.init()');
+		var prev = -1, firstRun = true;
+		var showFirsts = true, debugFirstRun = false;
+		var prefBranchString = "extensions.smartTemplate4.";
+
+		var svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+		var ssPrefs = svc.getBranch(prefBranchString);
+
+		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
+
+		SmartTemplate4.Util.logDebugOptional ("firstRun","SmartTemplate4.Util.firstRun.init()");
+		if (!ssPrefs) {
+			SmartTemplate4.Util.logDebugOptional ("firstRun","Could not retrieve prefbranch for " + prefBranchString);
+		}
+
+		var current = SmartTemplate4.Util.Version;
+		SmartTemplate4.Util.logDebug("Current SmartTemplate4 Version: " + current);
+
+		try {
+			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
+			try { prev = ssPrefs.getCharPref("version"); }
+			catch (e) {
+				prev = "?";
+				SmartTemplate4.Util.logDebugOptional ("firstRun","Could not determine previous version - " + e);
+			} ;
+
+			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getBoolPref(firstRun)");
+			try { firstRun = ssPrefs.getBoolPref("firstRun"); } catch (e) { firstRun = true; }
+
+
+			if (firstRun) {
+				// previous setting found? not a new installation!
+				if (SmartTemplate4.Preferences.existsBoolPref("extensions.smarttemplate.def"))
+					firstRun = false;
+			}
+
+			// enablefirstruns=false - allows start pages to be turned off for partners
+			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getBoolPref(enablefirstruns)");
+			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
+
+
+			SmartTemplate4.Util.logDebugOptional ("firstRun", "Settings retrieved:"
+					+ "\nprevious version=" + prev
+					+ "\ncurrent version=" + current
+					+ "\nfirstrun=" + firstRun
+					+ "\nshowfirstruns=" + showFirsts
+					+ "\ndebugFirstRun=" + debugFirstRun);
+
+		}
+		catch(e) {
+			SmartTemplate4.Util.logException("Exception in SmartTemplate4-util.js: \n"
+				+ "\n\ncurrent: " + current
+				+ "\nprev: " + prev
+				+ "\nfirstrun: " + firstRun
+				+ "\nshowFirstRuns: " + showFirsts
+				+ "\ndebugFirstRun: " + debugFirstRun, e);
+		}
+		finally {
+			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - firstRun=" + firstRun);
+
+			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
+			var pureVersion = SmartTemplate4.Util.VersionSanitized;
+			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
+			// change this depending on the branch
+			var versionPage = "http://smarttemplate4.mozdev.org/version.html#" + pureVersion;
+			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
+
+			let updateVersionMessage = SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageVersion").replace("{1}",current);
+
+			// STORE CURRENT VERSION NUMBER!
+			if (prev != pureVersion && current != '?' && (current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+				if (SmartTemplate4.Preferences.Debug)
+					alert("ST4 Test  - Previous Version Number:" + prev + "\n"
+					      + "Store new version (will go here): " + pureVersion);
+				SmartTemplate4.Util.logDebug ("Storing new version number " + current);
+				// STORE VERSION CODE!
+				// ssPrefs.setCharPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+			}
+			else {
+				SmartTemplate4.Util.logDebugOptional ("firstRun","Can't store current version: " + current
+					+ "\nprevious: " + prev.toString()
+					+ "\ncurrent!='?' = " + (current!='?').toString()
+					+ "\nprev!=current = " + (prev!=current).toString()
+					+ "\ncurrent.indexOf(" + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN).toString());
+			}
+			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
+			if (firstRun){
+				/* EXTENSION INSTALLED FOR THE FIRST TIME! */
+				if (SmartTemplate4.Preferences.Debug)
+					alert("ST4 Test  - firstRun case");
+				SmartTemplate4.Util.logDebugOptional ("firstRun","set firstRun=false");
+				ssPrefs.setBoolPref("firstRun",false);
+
+				if (showFirsts) {
+					// Insert code for first run here
+					// on very first run, we go to the index page - welcome blablabla
+					SmartTemplate4.Util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
+					window.setTimeout(function() {
+						SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
+					}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
+
+				}
+
+			}
+			else {
+				/* EXTENSION UPDATED */
+				if (SmartTemplate4.Preferences.Debug) alert("ST4 Test  - update case");
+				let isUpdated = this.update(prev);
+
+
+				if (prev!=pureVersion && current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0) {
+					SmartTemplate4.Util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
+					// upgrade case!!
+					let upgradeMessage = "";
+
+					if (SmartTemplate4.Util.versionSmaller(current, '0.9')) {
+						upgradeMessage = "\n" + SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets1");
+						upgradeMessage += SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets2") + "\n";
+						upgradeMessage += SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets3");
+					}
+
+					if (showFirsts) {
+						// version is different => upgrade (or conceivably downgrade)
+
+						// DONATION PAGE
+						// display donation page - disable by right-clicking label above version jump panel
+						if ((SmartTemplate4.Preferences.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")))
+							SmartTemplate4.Util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
+						else {
+							SmartTemplate4.Util.logDebugOptional ("firstRun","setTimeout for donation link");
+							window.setTimeout(function() {SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/donate.html");}, 2000);
+						}
+
+						// VERSION HISTORY PAGE
+						// display version history - disable by right-clicking label above show history panel
+						if (!SmartTemplate4.Preferences.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
+							SmartTemplate4.Util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
+							window.setTimeout(function(){SmartTemplate4.Util.openURL(null, versionPage);}, 2200);
+						}
+
+
+					}
+
+					window.setTimeout(function(){
+						SmartTemplate4.Util.popupAlert("SmartTemplate4", updateVersionMessage + upgradeMessage);
+						SmartTemplate4.Settings.convertOldPrefs();
+					}, 3000);
+
+
+				}
+			}
+			SmartTemplate4.Util.logDebugOptional ("firstRun","finally { } ends.");
+		} // end finally
+
+	}
+
+
+// // fire this on application launch, which includes open-link-in-new-window
+// window.addEventListener("load",function(){ SmartTemplate4.Util.firstRun.init(); },true);
 
 };
+
+

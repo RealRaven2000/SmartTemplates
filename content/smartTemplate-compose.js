@@ -168,6 +168,20 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 	};
 
+	function isQuotedNode(node) {
+		if (!node)
+			return false;
+
+		if (node.nodeName &&
+		    node.nodeName.toLowerCase() == 'blockquote'
+		    ||
+		    node.className &&
+		    node.className.indexOf('moz-cite-prefix')>=0)
+			return true;
+
+		return false;
+	};
+
 	// -----------------------------------
 	// Delete quote header (reply)
 	//In compose with HTML, body is
@@ -194,9 +208,9 @@ SmartTemplate4.classSmartTemplate = function()
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
-			if (node.nodeName && node.nodeName=='blockquote' && node.className.indexOf('cite')>=0) {
+			if (isQuotedNode(node)) {
 				node = n;
-			continue;
+				continue;
 			}
 			deleteNodeTextOrBR(node);
 			node = n;
