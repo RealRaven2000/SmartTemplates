@@ -143,7 +143,7 @@
 <!ENTITY html_note.cap "Hinweise für Vorlagen im HTML-Format">
 <!ENTITY html_note.label "Verwenden Sie bitte ausschließlich den UTF-8 (Unicode) Zeichensatz innerhalb des HTML Quellcodes!">
 <!ENTITY table.cap "Anwenden der Variablen">
-<!ENTITY table_note.label "Wird eine Variable falsch angewendet, erscheint eine Fehlermeldung in der Fehlerkonsole!">
+<!ENTITY table_note.label "Wird eine Variable falsch angewendet, erscheint eine Fehlermeldung in der Fehlerkonsole von Thunderbird!">
 <!-- ##### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Verfassen">
