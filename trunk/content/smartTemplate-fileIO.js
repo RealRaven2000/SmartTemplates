@@ -117,7 +117,7 @@ SmartTemplate4.IO = {
 		cstream.close(); // this closes fstream
 
 		//add the identifier to the string data
-		if (gExportID != "common") {data = data.replace(/extensions.smarttemplate./gm, "extensions.smarttemplate." + gExportID + ".");}
+		if (gExportID != "common") {data = data.replace(/extensions.smartTemplate4./gm, "extensions.smartTemplate4." + gExportID + ".");}
 
 		//write corrected data to temp file
 		var tmpFile = Components.classes["@mozilla.org/file/directory_service;1"].

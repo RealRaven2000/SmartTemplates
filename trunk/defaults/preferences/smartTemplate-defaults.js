@@ -14,3 +14,4 @@ pref("extensions.smartTemplate4.debug.settings", false);
 pref("extensions.smartTemplate4.debug.regularize", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
+pref("extensions.smartTemplate4.debug.identities", false);

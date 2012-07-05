@@ -5,6 +5,7 @@
 // -------------------------------------------------------------------
 SmartTemplate4.classSmartTemplate = function()
 {
+	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
 	// Extract Signature
 	//
@@ -404,8 +405,11 @@ SmartTemplate4.classSmartTemplate = function()
 			//Reset X to Today after each newline character
 			//except for lines ending in { or }; breaks the omission of non-existent CC??
 			msg = msg.replace(/\n/gm, "%X:=today%\n");
-			msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
-			msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
+			//replace this later!!
+			// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
+			// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
+			msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
+			msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 
 		if (pref.getWithIdkey(idKey, prefhtml, false)) {
 			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
@@ -435,7 +439,7 @@ SmartTemplate4.classSmartTemplate = function()
 		var msgComposeType = Components.interfaces.nsIMsgCompType;
 		var msgTmpl = null;
 		var idKey = document.getElementById("msgIdentity").value;
-		var branch = idKey + ".";
+		var branch = "." + idKey;
 
 		let theIdentity = gAccountManager.getIdentity(idKey);
 		if (!theIdentity)

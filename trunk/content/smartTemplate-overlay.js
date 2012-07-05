@@ -21,8 +21,12 @@
 // -------------------------------------------------------------------
 // common (preference)
 // -------------------------------------------------------------------
-SmartTemplate4.classPref = function(branch, useDefault)
+// this class uses 2 "global" variables:
+// 1. branch = smartTemplate4  the branch from the preferences
+SmartTemplate4.classPref = function()
 {
+
+
 	// -----------------------------------
 	// Constructor
 	var root = Components.classes["@mozilla.org/preferences-service;1"]
@@ -30,46 +34,47 @@ SmartTemplate4.classPref = function(branch, useDefault)
 
 	// -----------------------------------
 	// get preference
-	function getCom(prefstring, def)
+	// returns default value if preference cannot be found.
+	function getCom(prefstring, defaultValue)
 	{
 		try {
-			switch (root.getPrefType(prefstring))
-			{
+			switch (root.getPrefType(prefstring)) {
 				case Components.interfaces.nsIPrefBranch.PREF_STRING:
-					return root.getComplexValue(prefstring,
-									 Components.interfaces.nsISupportsString).data;
-					break;
+					return root.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
 				case Components.interfaces.nsIPrefBranch.PREF_INT:
 					return root.getIntPref(prefstring);
-					break;
 				case Components.interfaces.nsIPrefBranch.PREF_BOOL:
 					return root.getBoolPref(prefstring);
-					break;
 				default:
 					break;
 			}
-			return def;
+			return defaultValue;
 		}
 		catch(ex) {
-			return def;
+			return defaultValue;
 		}
 	};
 
 	// -----------------------------------
 	// get preference(branch)
-	function getWithBranch(prefstring, def)
+	function getWithBranch(prefstring, defaultValue)
 	{
-		return getCom(branch + prefstring, def);
+		return getCom(SmartTemplate4.Preferences.Prefix + prefstring, defaultValue); //
 	};
 
 	// -----------------------------------
 	// Get preference with identity key
 	function getWithIdkey(idkey, pref, def)
 	{
-		if (getWithBranch(idkey + "." + useDefault, true))// Check common or not.
-			{ return getWithBranch(pref, def); }          // common preference
-		else
-			{ return getWithBranch(idkey + "." + pref, def); }    // one's preference
+		// extensions.smarttemplate.id8.def means account id8 uses common values.
+		if (getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+		  // common preference - test with .common!!!!
+			return getWithBranch("common." + pref, def);
+		}
+		else {
+		  // Account specific preference
+		  return getWithBranch(idkey + "." + pref, def);
+		}
 	};
 
 	// -----------------------------------
@@ -319,6 +324,59 @@ SmartTemplate4.regularize = function(msg, type)
 		return acctKey;
 	}
 
+	// AG: I think this function is designed to break out a more specialized variable
+	// such as %toname()% to a simpler one, like %To%
+	function simplify(aString) {
+		// building a hash table?
+		// setRw2h("header", "reserved word",,,)
+		function setRw2h() {
+			for(var i = 1; i < arguments.length; i++) {
+				rw2h[arguments[i]] = arguments[0];
+			}
+		}
+		// Check existence of a header related to the reserved word.
+		function chkRw(str, reservedWord, param) {
+			try{
+				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  reservedWord + ', ' + param + ')');
+				let el = (typeof rw2h[reservedWord]=='undefined') ? '' : rw2h[reservedWord];
+				return el == "d.c."
+					? str
+					: hdr.get(el ? el : reservedWord) != "" ? str : "";
+			} catch (e) {
+
+				SmartTemplate4.Util.displayNotAllowedMessage(reservedWord);
+				return "";
+			}
+		}
+
+		function chkRws(str, strInBrackets) {
+			// I think this first step is just replacing special functions with general ones.
+			// E.g.: %tomail%(z) = %To%(z)
+			let generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
+			// next: ?????
+			return  generalFunction.replace(/^[^%]*$/, "");
+		}
+
+		// Reserved words that do not depend on the original message.
+		setRw2h("d.c.", "ownname", "ownmail",
+						"Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup");
+
+		// Reserved words which depend on headers of the original message.
+		setRw2h("To",   "to", "toname", "tomail");
+		setRw2h("Cc",   "cc", "ccname", "ccmail");
+		setRw2h("Date", "X:=sent");
+		setRw2h("From", "from", "fromname", "frommail");
+		setRw2h("Subject", "subject");
+
+		// [AG] First Step: use the chkRws function to process any "broken out" parts that are embedded in {  .. } pairs
+		// aString = aString.replace(/{([^{}]+)}/gm, chkRws);
+		aString = aString.replace(/\[\[([^\[\]]+)\]\]/gm, chkRws);
+
+		// [AG] Second Step: use chkRw to categorize reserved words (variables) into one of the 6 classes: d.c., To, Cc, Date, From, Subject
+		return aString.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
+	}
+
 	SmartTemplate4.Util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  STARTS...');
 	// var parent = SmartTemplate4;
 	var idkey = document.getElementById("msgIdentity").value;
@@ -344,47 +402,8 @@ SmartTemplate4.regularize = function(msg, type)
 	// rw2h["reserved word"] = "header"
 	var rw2h = new Array();
 
-	// reduce "{" and "}"
-	msg = function(string) {
-		function setRw2h() {        // setRw2h("header", "reserved word",,,)
-			for(var i = 1; i < arguments.length; i++) {
-				rw2h[arguments[i]] = arguments[0];
-			}
-		}
-		// Check existence of a header related to the reserved word.
-		function chkRw(str, reservedWord, param) {
-			try{
-				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  reservedWord + ', ' + param + ')');
-				let el = (typeof rw2h[reservedWord]=='undefined') ? '' : rw2h[reservedWord];
-				return el == "d.c."
-					? str
-					: hdr.get(el ? el : reservedWord) != "" ? str : "";
-			} catch (e) {
-
-				SmartTemplate4.Util.displayNotAllowedMessage(reservedWord);
-				return "";
-			}
-		}
-
-		function chkRws(str, strInBrackets) {
-			return strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw).replace(/^[^%]*$/, "");
-		}
-
-		// Reserved words that do not depend on the original message.
-		setRw2h("d.c.", "ownname", "ownmail",
-						"Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup");
-
-		// Reserved words which depend on headers of the original message.
-		setRw2h("To",   "to", "toname", "tomail");
-		setRw2h("Cc",   "cc", "ccname", "ccmail");
-		setRw2h("Date", "X:=sent");
-		setRw2h("From", "from", "fromname", "frommail");
-		setRw2h("Subject", "subject");
-
-		string = string.replace(/{([^{}]+)}/gm, chkRws);
-		return string.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
-	} (msg);
+	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
+	msg = simplify(msg);
 
 	// Convert PRTime to string
 	function prTime2Str(time, timeType, timezone) {
