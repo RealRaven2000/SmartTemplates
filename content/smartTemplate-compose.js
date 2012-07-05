@@ -31,7 +31,7 @@ SmartTemplate4.classSmartTemplate = function()
 		//signature from bottom
 		else {
 			let signatureNodes = document.getElementsByClassName('moz-signature');
-			if (signatureNodes)
+			if (signatureNodes && signatureNodes.length)
 				sigNode = signatureNodes[signatureNodes.length-1];
 		}
 
@@ -433,7 +433,7 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
 		var pref = SmartTemplate4.pref;
 		// var editor = GetCurrentEditor();
-		let ed = gMsgCompose.editor;
+		let ed = GetCurrentEditor(); // gMsgCompose.editor; => did not have an insertHTML method!! [Bug]
 		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); //
 
 		var msgComposeType = Components.interfaces.nsIMsgCompType;
