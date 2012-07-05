@@ -85,8 +85,8 @@
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
 <!ENTITY spec_form.cap "Sonderformatierung">
-<!ENTITY specform_note.label "Der Satz in der geschweiften Klammer &#123;Cc: &#37;cc(name)&#37;&#125; wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
-<!ENTITY ex_brack.label "Beispiel: An: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
+<!ENTITY ex_brack.label "Beispiel: An: boo Cc: foo">
 <!ENTITY sub_var.cap "Betreff">
 <!ENTITY sub.label "Betreff (gleiches Format wie im E-Mail Header)">
 <!ENTITY sub2.label "Betreff (gleiches Format wie im Nachrichten-Editor)">
