@@ -1,6 +1,6 @@
 #smartTemplate4_settings {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
-#smartTemplate4_settings label {
- margin-left: 1.5em !important;
+.buttonIcon label {
+ margin-left: 0.188em !important;
 }
