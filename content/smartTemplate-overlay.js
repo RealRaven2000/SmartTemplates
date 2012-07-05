@@ -290,8 +290,13 @@ SmartTemplate4.mimeDecoder = {
 SmartTemplate4.regularize = function(msg, type)
 {
 	function getSignatureInner(removeDashes) {
+		SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
 		if (SmartTemplate4.signature != null) {
 			SmartTemplate4.sigIsDefined = true;
+			if (!SmartTemplate4.signature.children || SmartTemplate4.signature.children.length==0) {
+				SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
+				return SmartTemplate4.signature.innerHTML;  // deal with empty signature!
+			}
 			if (removeDashes) {
 				if (SmartTemplate4.signature.firstChild.nodeValue == "-- ") {
 					SmartTemplate4.signature.removeChild(SmartTemplate4.signature.firstChild); //remove '-- '
@@ -307,6 +312,7 @@ SmartTemplate4.regularize = function(msg, type)
 	}
 
 	function getSubject(current) {
+		SmartTemplate4.Util.logDebugOptional('regularize', 'getSubject(' + current + ')');
 		if (current){
 			return document.getElementById("msgSubject").value;
 		}
@@ -316,6 +322,7 @@ SmartTemplate4.regularize = function(msg, type)
 	}
 
 	function getNewsgroup() {
+		SmartTemplate4.Util.logDebugOptional('regularize', 'getNewsgroup()');
 		var acctKey = msgDbHdr.accountKey;
 		//const account = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager).getAccount(acctKey);
 		//dump ("acctKey:"+ acctKey);
@@ -356,6 +363,8 @@ SmartTemplate4.regularize = function(msg, type)
 			// next: ?????
 			return  generalFunction.replace(/^[^%]*$/, "");
 		}
+
+		SmartTemplate4.Util.logDebugOptional('regularize', 'simplify()');
 
 		// Reserved words that do not depend on the original message.
 		setRw2h("d.c.", "ownname", "ownmail",

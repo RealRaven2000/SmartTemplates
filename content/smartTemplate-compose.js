@@ -11,6 +11,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//
 	function extractSignature(Ident)
 	{
+		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.extractSignature()');
 		let bodyEl = gMsgCompose.editor.rootElement;
@@ -21,21 +22,24 @@ SmartTemplate4.classSmartTemplate = function()
 		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value;
 
-		// try to extract signature manually - well we need the last one!!
-		// get the signature straight from the bodyElement!
-		let sigNode = null ;
-		//signature from top
-		if (Ident.replyOnTop && !Ident.sigBottom) {
-			sigNode = findChildNode(bodyEl, 'moz-signature');
-		}
-		//signature from bottom
-		else {
-			let signatureNodes = document.getElementsByClassName('moz-signature');
-			if (signatureNodes && signatureNodes.length)
-				sigNode = signatureNodes[signatureNodes.length-1];
-		}
+		let isSignatureTb = htmlSigText || Ident.attachSignature;
 
-		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
+		if (isSignatureTb) {
+			// try to extract signature manually - well we need the last one!!
+			// get the signature straight from the bodyElement!
+			let sigNode = null ;
+			//signature from top
+			if (Ident.replyOnTop && !Ident.sigBottom) {
+				sigNode = findChildNode(bodyEl, 'moz-signature');
+			}
+			//signature from bottom
+			else {
+				let signatureNodes = document.getElementsByClassName('moz-signature');
+				if (signatureNodes && signatureNodes.length)
+					sigNode = signatureNodes[signatureNodes.length-1];
+			}
+
+		}
 
 		// test code for reading local sig file (WIP)
 		if (Ident.attachSignature) {
@@ -48,6 +52,15 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+
+		if(sigNode && isSignatureTb)
+		{
+			if (sigNode.previousElementSibling && sigNode.previousElementSibling.tagName="BR")
+				bodyEl.removeChild(sigNode.previousElementSibling); //remove the preceding BR that TB always inserts
+			bodyEl.removeChild(sigNode);
+			//gMsgCompose.editor.document.removeChild(sigNode);
+		}
+
 
 		for(let i = 0; i < nodes.length; i++) {
 			if ( nodes[i].className == "moz-signature" ) {
@@ -432,8 +445,8 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		SmartTemplate4.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
 		var pref = SmartTemplate4.pref;
-		// var editor = GetCurrentEditor();
-		let ed = GetCurrentEditor(); // gMsgCompose.editor; => did not have an insertHTML method!! [Bug]
+		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
+		let ed = GetCurrentEditor();
 		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); //
 
 		var msgComposeType = Components.interfaces.nsIMsgCompType;
