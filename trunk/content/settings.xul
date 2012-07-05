@@ -104,9 +104,11 @@
 			</menulist>
 			<spacer flex = "1" />
 			<button id="helpPanel"
+			        class="buttonIcon"
 			        label="&pref_help.tab;"
 			        onclick = "SmartTemplate4.Settings.openHelp();"/>
 			<button id="closeHelp"
+			        class="buttonIcon"
 			        label="&close.label;"
 			        onclick="SmartTemplate4.Settings.closeHelp();"
 			        hidden = "true"/>
