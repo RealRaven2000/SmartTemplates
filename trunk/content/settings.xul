@@ -22,7 +22,7 @@
 	<!-- ######## Creating Menubar ######## -->
 	<!-- MENUITEMS: File - Tools - Help -->
 	<toolbox>
-		<toolbar type = "menubar">
+		<toolbar type = "menubar" hidden = "true">
 			<toolbaritem>
 				<menubar  style = "border:0px;">
 				<!-- ###### FILE ###### -->

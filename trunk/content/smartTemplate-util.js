@@ -124,6 +124,19 @@ SmartTemplate4.Util = {
 				||
 					SmartTemplate4.Util.VersionProxyRunning) // no recursion...
 				return;
+
+			let bAddonManager = true;
+			// old builds! (pre Tb3.3 / Gecko 2.0)
+			if (Components.classes["@mozilla.org/extensions/manager;1"]) {
+				bAddonManager = false;
+				let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+					.getService(Components.interfaces.nsIExtensionManager);
+				let currentVersion = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
+				SmartTemplate4.Util.mExtensionVer = currentVersion;
+				SmartTemplate4.Util.VersionProxyRunning = false;
+				return;
+			}
+
 			SmartTemplate4.Util.VersionProxyRunning = true;
 			SmartTemplate4.Util.logDebug("Util.VersionProxy() started.");
 			let myId = SmartTemplate4.Util.ADDON_ID;
@@ -161,7 +174,7 @@ SmartTemplate4.Util = {
 				+ "\n" + ex);
 		}
 		finally {
-			SmartTemplate4.Util.VersionProxyRunning=false;
+			SmartTemplate4.Util.VersionProxyRunning = false;
 		}
 	},
 
