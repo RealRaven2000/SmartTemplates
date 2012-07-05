@@ -83,6 +83,11 @@
 		<spacer height = "5px" />
 
 <hbox>
+	<preferences id = "globals">
+		<preference id = "pref_debug"   name = "extensions.smartTemplate4.debug"   type = "bool"/>
+	</preferences>
+
+
 	<vbox id="decksContainer">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
@@ -107,14 +112,15 @@
 			        hidden = "true"/>
 		</hbox>
 
-		<hbox id = "decksContainer">
+		<hbox id = "dRecksContainer">
 			<deck id = "account_deckA"
 			      flex = "1"
 			      width = "600">
 
 				<vbox id = "deckA.per_account" flex = "1">
 
-					<preferences id = "smarttemplate">
+					<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
+					<preferences id = "templates">
 						<preference id = "pref_def"     name = "extensions.smartTemplate4.common.def"      type = "bool"/>
 						<preference id = "pref_new"     name = "extensions.smartTemplate4.common.new"      type = "bool"/>
 						<preference id = "pref_newmsg"  name = "extensions.smartTemplate4.common.newmsg"   type = "unichar"/>
@@ -130,8 +136,6 @@
 						<preference id = "pref_fwdhtml" name = "extensions.smartTemplate4.common.fwdhtml"  type = "bool"/>
 						<preference id = "pref_fwdnbr"  name = "extensions.smartTemplate4.common.fwdnbr"   type = "bool"/>
 						<preference id = "pref_fwdhead" name = "extensions.smartTemplate4.common.fwdhead"  type = "bool"/>
-						<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
-						<preference id = "pref_debug"   name = "extensions.smartTemplate4.debug"   type = "bool"/>
 					</preferences>
 
 					<checkbox id = "use_default"

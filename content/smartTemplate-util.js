@@ -57,7 +57,8 @@ SmartTemplate4.Util = {
 			theText = defaultText;
 			this.logException ("Could not retrieve bundle string: " + id, e);
 		}
-		return theText;
+		theText = theText.replace("&lt;","<");
+		return theText.replace("&gt;",">");
 	} ,
 
 	getMail3PaneWindow: function() {
@@ -526,18 +527,21 @@ SmartTemplate4.Util = {
 SmartTemplate4.Util.firstRun =
 {
 	update: function(previousVersion) {
-		// convert
-		SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
+		// upgrade routines for future use...
+		// SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
 
 	} ,
 
 	init: function() {
+		// avoid running firstRun.init in messenger compose again!
+		if (typeof SmartTemplate4.Settings === 'undefined')
+			return;
 		SmartTemplate4.Util.logDebugOptional('functions', 'Util.firstRun.init()');
-		var prev = -1, firstRun = true;
-		var showFirsts = true, debugFirstRun = false;
-		var prefBranchString = "extensions.smartTemplate4.";
+		let prev = -1, firstRun = true;
+		let showFirsts = true, debugFirstRun = false;
+		let prefBranchString = "extensions.smartTemplate4.";
 
-		var svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+		let svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
 		var ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
@@ -552,7 +556,9 @@ SmartTemplate4.Util.firstRun =
 
 		try {
 			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
-			try { prev = ssPrefs.getCharPref("version"); }
+			try {
+				prev = SmartTemplate4.Preferences.getMyStringPref("version");
+			}
 			catch (e) {
 				prev = "?";
 				SmartTemplate4.Util.logDebugOptional ("firstRun","Could not determine previous version - " + e);
@@ -566,6 +572,8 @@ SmartTemplate4.Util.firstRun =
 				// previous setting found? not a new installation!
 				if (SmartTemplate4.Preferences.existsBoolPref("extensions.smarttemplate.def"))
 					firstRun = false;
+				SmartTemplate4.Util.logDebugOptional ("firstRun","setting firstRun=false");
+				SmartTemplate4.Preferences.setMyBoolPref("firstRun", false);
 			}
 
 			// enablefirstruns=false - allows start pages to be turned off for partners
@@ -599,31 +607,14 @@ SmartTemplate4.Util.firstRun =
 			var versionPage = "http://smarttemplate4.mozdev.org/version.html#" + pureVersion;
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
 
-			let updateVersionMessage = SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageVersion").replace("{1}",current);
+			let updateVersionMessage = SmartTemplate4.Util.getBundleString (
+			                             "SmartTemplate4.updateMessageVersion",
+			                             "SmartTemplate4 was successfully upgraded to version {1}!").replace("{1}",current);
 
-			// STORE CURRENT VERSION NUMBER!
-			if (prev != pureVersion && current != '?' && (current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
-				if (SmartTemplate4.Preferences.Debug)
-					alert("ST4 Test  - Previous Version Number:" + prev + "\n"
-					      + "Store new version (will go here): " + pureVersion);
-				SmartTemplate4.Util.logDebug ("Storing new version number " + current);
-				// STORE VERSION CODE!
-				// ssPrefs.setCharPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-			}
-			else {
-				SmartTemplate4.Util.logDebugOptional ("firstRun","Can't store current version: " + current
-					+ "\nprevious: " + prev.toString()
-					+ "\ncurrent!='?' = " + (current!='?').toString()
-					+ "\nprev!=current = " + (prev!=current).toString()
-					+ "\ncurrent.indexOf(" + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN).toString());
-			}
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){
 				/* EXTENSION INSTALLED FOR THE FIRST TIME! */
-				if (SmartTemplate4.Preferences.Debug)
-					alert("ST4 Test  - firstRun case");
-				SmartTemplate4.Util.logDebugOptional ("firstRun","set firstRun=false");
-				ssPrefs.setBoolPref("firstRun",false);
+				SmartTemplate4.Util.logDebug ("firstRun code");
 
 				if (showFirsts) {
 					// Insert code for first run here
@@ -637,20 +628,28 @@ SmartTemplate4.Util.firstRun =
 
 			}
 			else {
-				/* EXTENSION UPDATED */
-				if (SmartTemplate4.Preferences.Debug) alert("ST4 Test  - update case");
-				let isUpdated = this.update(prev);
 
-
+				// check for update of pure version (everything before pre, beta, alpha)
 				if (prev!=pureVersion && current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0) {
+					/* EXTENSION UPDATED */
+					SmartTemplate4.Util.logDebug("ST4 Test  - SmartTemplate4 Update Detected:\n **PREVIOUS**:" + prev + "\npure Version: " + pureVersion + "\ncurrent: " + current);
+
+					let isUpdated = this.update(prev);
 					SmartTemplate4.Util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
 					// upgrade case!!
 					let upgradeMessage = "";
 
 					if (SmartTemplate4.Util.versionSmaller(current, '0.9')) {
-						upgradeMessage = "\n" + SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets1");
-						upgradeMessage += SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets2") + "\n";
-						upgradeMessage += SmartTemplate4.Util.getBundleString ("SmartTemplate4.updateMessageNewBrackets3");
+						upgradeMessage = "\n\n" + SmartTemplate4.Util.getBundleString (
+						                 "SmartTemplate4.updateMessageNewBrackets1",
+						                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the &lt;style&gt; tag so that you can now do advanced styling within your signature.");
+						upgradeMessage += SmartTemplate4.Util.getBundleString (
+						                 "SmartTemplate4.updateMessageNewBrackets2",
+						                 "In order to make this possible we had to redefined the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
+						                 + "\n\n";
+						upgradeMessage += SmartTemplate4.Util.getBundleString (
+						                 "SmartTemplate4.updateMessageNewBrackets3",
+						                 "For your convenience, we will now convert your existing templates so you can keep using them in the new version.");
 					}
 
 					if (showFirsts) {
@@ -662,27 +661,49 @@ SmartTemplate4.Util.firstRun =
 							SmartTemplate4.Util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
 						else {
 							SmartTemplate4.Util.logDebugOptional ("firstRun","setTimeout for donation link");
-							window.setTimeout(function() {SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/donate.html");}, 2000);
+							window.setTimeout(function() {SmartTemplate4.Util.showDonatePage();}, 2000);
 						}
 
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
 						if (!SmartTemplate4.Preferences.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
 							SmartTemplate4.Util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
-							window.setTimeout(function(){SmartTemplate4.Util.openURL(null, versionPage);}, 2200);
+							window.setTimeout(function(){SmartTemplate4.Util.showVersionHistory(false);}, 2200);
 						}
-
-
 					}
 
 					window.setTimeout(function(){
-						SmartTemplate4.Util.popupAlert("SmartTemplate4", updateVersionMessage + upgradeMessage);
-						SmartTemplate4.Settings.convertOldPrefs();
-					}, 3000);
+						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
+							alert(updateVersionMessage + upgradeMessage); // lets replace this with a window
+							// we are only running the old prefs routine for versions < .9
+							SmartTemplate4.Settings.convertOldPrefs();
+						}
+						else
+							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage + upgradeMessage);
+					}, 20000);
 
 
 				}
 			}
+
+			// =============================================
+			// STORE CURRENT VERSION NUMBER!
+			if (prev != pureVersion && current != '?' && (current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+				if (SmartTemplate4.Preferences.Debug)
+					alert("SmartTemplate4 Test (Debug)  - Previous Version Number:" + prev + "\n"
+					      + "Storing current version number: " + pureVersion);
+				SmartTemplate4.Util.logDebug ("Storing new version number " + current);
+				// STORE VERSION CODE!
+				SmartTemplate4.Preferences.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+			}
+			else {
+				SmartTemplate4.Util.logDebugOptional ("firstRun","No need to store current version: " + current
+					+ "\nprevious: " + prev.toString()
+					+ "\ncurrent!='?' = " + (current!='?').toString()
+					+ "\nprev!=current = " + (prev!=current).toString()
+					+ "\ncurrent.indexOf(" + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN).toString());
+			}
+
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 

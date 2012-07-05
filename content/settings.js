@@ -9,7 +9,7 @@
 // -----------------------------------------------------------------------------------
 
 SmartTemplate4.Settings = {
-	gCurId : "",
+	accountKey : "",
 	Ci : Components.interfaces,
 	prefService : Components.classes["@mozilla.org/preferences-service;1"]
 									.getService(Components.interfaces.nsIPrefService),
@@ -22,7 +22,7 @@ SmartTemplate4.Settings = {
 	prefDisable : function()
 	{
 		for(var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.gCurId);
+			var el = document.getElementById(arguments[i] + this.accountKey);
 			if (arguments[0]) {
 				el.disabled = false;
 				el.removeAttribute("disabled");
@@ -39,7 +39,7 @@ SmartTemplate4.Settings = {
 	prefHidden : function()
 	{
 		for(var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.gCurId);
+			var el = document.getElementById(arguments[i] + this.accountKey);
 			if (arguments[0]) {
 				el.hidden = true;
 				el.setAttribute("hidden", "true");
@@ -55,7 +55,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefDeck : function(id, index)
 	{
-		var deck = document.getElementById(id + this.gCurId);
+		var deck = document.getElementById(id + this.accountKey);
 		if (deck)
 		  { deck.selectedIndex = index; }
 
@@ -76,20 +76,22 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	disableWithCheckbox : function()
 	{
-		if (this.prefDisable(this.isChecked("new" + this.gCurId), "newmsg", "newhtml", "newnbr")) {
-			this.prefDisable(this.isChecked("newhtml" + this.gCurId), "newnbr");
+		if (this.prefDisable(this.isChecked("new" + this.accountKey), "newmsg", "newhtml", "newnbr")) {
+			this.prefDisable(this.isChecked("newhtml" + this.accountKey), "newnbr");
 		}
-		if (this.prefDisable(this.isChecked("rsp" + this.gCurId), "rspmsg", "rsphtml", "rspnbr", "rsphead")) {
-			this.prefDisable(this.isChecked("rsphtml" + this.gCurId), "rspnbr");
+		if (this.prefDisable(this.isChecked("rsp" + this.accountKey), "rspmsg", "rsphtml", "rspnbr", "rsphead")) {
+			this.prefDisable(this.isChecked("rsphtml" + this.accountKey), "rspnbr");
 		}
-		if (this.prefDisable(this.isChecked("fwd" + this.gCurId), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead")) {
-			this.prefDisable(this.isChecked("fwdhtml" + this.gCurId), "fwdnbr");
+		if (this.prefDisable(this.isChecked("fwd" + this.accountKey), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead")) {
+			this.prefDisable(this.isChecked("fwdhtml" + this.accountKey), "fwdnbr");
 		}
 	},
 
 
 	convertOldPrefs : function() {
 		let debugText = "";
+		let countConverted = 0;
+		let convertedBracketExpressions = 0;
 		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
 
 		try {
@@ -100,20 +102,49 @@ SmartTemplate4.Settings = {
 
 				let oldPrefName = array[i];
 				debugText += 'CONVERT: ' + oldPrefName;
-				let thePreference = this.prefService.getPref(oldPrefName);
-				let newPrefString = oldPrefName.indexOf('smarttemplate.id' > 0) ?
+				let thePreference = this.getPref(oldPrefName);
+				let newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
 				                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
 				                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
 
 				debugText += ' => ' + newPrefString + '\n';
-				this.prefService.setPref(newPrefString, thePreference);
-				// keep a backup ??
+				this.setPref(newPrefString, thePreference);
+				countConverted++;
+				switch (typeof thePreference) {
+					case 'string':
+						if (thePreference.indexOf('{')>0 || thePreference.indexOf('}')>0) {
+							convertedBracketExpressions++;
+							// hmmmffff....
+							thePreference = thePreference
+							                .replace("\{","[[").replace("{","[[")
+							                .replace("\}","]]").replace("}","]]");
+							debugText += '\nbracketed conversion:\n:   ' + thePreference;
+						}
+
+						this.prefService.setCharPref(newPrefString, thePreference);
+						break;
+					case 'number':
+						this.prefService.setIntPref(newPrefString, thePreference);
+						break;
+					case 'boolean':
+						this.prefService.setBoolPref(newPrefString, thePreference);
+						break;
+					default:
+						countConverted--;
+						break;
+				}
+				// keep a backup, for now ??
 				// this.prefService.deleteBranch(array[i]);
 			}
 		}
 		catch (ex) {
 			SmartTemplate4.Util.logException("convertOldPrefs failed: ", ex);
 		}
+		if (countConverted)
+			this.prefService.setIntPref("extensions.smartTemplate4.conversions.total", countConverted);
+		if (convertedBracketExpressions)
+			this.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
+
 		SmartTemplate4.Util.logDebug(debugText);
 	},
 
@@ -121,15 +152,19 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	cleanupUnusedPrefs : function()
 	{
+		SmartTemplate4.Util.logDebug('cleanupUnusedPrefs ()');
+
 		var array = this.prefService.getChildList("extensions.smartTemplate4.", {});
 
 		// AG new: preserve common and global settings!
 		for (var i in array) {
-			if (document.getElementsByAttribute("name", array[i]).length === 0
+			let branch = array[i];
+			if (document.getElementsByAttribute("name", branch).length === 0
 			    &&
-			    array[i].indexOf("smartTemplate4.id">0))  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
+			    branch.indexOf("smartTemplate4.id") > 0 )  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
 			{
-				this.prefService.deleteBranch(array[i]);
+				SmartTemplate4.Util.logDebug('deleting preference branch: ' + branch + ' ...'); // ++++++ RAUS LOESCHEN
+				this.prefService.deleteBranch(branch);
 			}
 		}
 	} ,
@@ -198,9 +233,9 @@ SmartTemplate4.Settings = {
 				return this.prefService.getComplexValue(prefstring,
 									 Components.interfaces.nsISupportsString).data;
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
-				return this.prefService.getIntPref(prefstring);	  break;
+				return this.prefService.getIntPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-				return this.prefService.getBoolPref(prefstring);	  break;
+				return this.prefService.getBoolPref(prefstring);
 			default:
 				break;
 		}
@@ -214,11 +249,11 @@ SmartTemplate4.Settings = {
 		switch (this.prefService.getPrefType(prefstring))
 		{
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-				return this.prefService.setCharPref(prefstring, value);	 break;
+				return this.prefService.setCharPref(prefstring, value);
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
-				return this.prefService.setIntPref(prefstring, value);	 break;
+				return this.prefService.setIntPref(prefstring, value);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-				return this.prefService.setBoolPref(prefstring, value);	 break;
+				return this.prefService.setBoolPref(prefstring, value);
 			default:
 				break;
 		}
@@ -307,7 +342,7 @@ SmartTemplate4.Settings = {
 	onCodeWord : function(code, className) {
 		SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
-		let currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
+		let currentDeck = (SmartTemplate4.Settings.accountKey) ? 'deckB.nodef' + SmartTemplate4.Settings.accountKey : 'deckB.nodef';
 		let tabbox = document.getElementById(currentDeck);
 		let templateMsgBoxId = '';
 		switch (tabbox.selectedIndex) {
@@ -328,8 +363,8 @@ SmartTemplate4.Settings = {
 				break;
 		}
 		if (templateMsgBoxId) {
-			if (SmartTemplate4.Settings.gCurId)
-				templateMsgBoxId += SmartTemplate4.Settings.gCurId;
+			if (SmartTemplate4.Settings.accountKey)
+				templateMsgBoxId += SmartTemplate4.Settings.accountKey;
 			let editBox = document.getElementById(templateMsgBoxId);
 			SmartTemplate4.Settings.insertAtCaret(editBox, code);
 		}
@@ -341,32 +376,48 @@ SmartTemplate4.Settings = {
 
 	// Setup cloned nodes and replace preferences strings
 	//--------------------------------------------------------------------
-	prefCloneAndSetup : function(el, str, key)
+	prefCloneAndSetup : function(el, branch)
 	{
-		function replaceAttr(_el, _attrname, _str, _key) { try {
-			if (_el.hasAttribute(_attrname)) {
-				var _attr = _el.getAttribute(_attrname);
-				if (_attr.indexOf(_str, 0) !== -1)
-				  { _el.setAttribute(_attrname, _attr.replace(_str, _str + _key)); }
-			}
-		} catch(ex) {} }
-		function appendAttr(_el, _attrname, _key) { try {
-			if (_el.hasAttribute(_attrname))
-			  { _el.setAttribute(_attrname, _el.getAttribute(_attrname) + _key); }
-		} catch(ex) {} }
+		// was called replaceAttr
+		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
+		function replacePrefName(_el,  key) {
+			try {
+				const _str = "smartTemplate4.common"; // was "smarttemplate"
+				if (_el.hasAttribute("name")) {
+					var _attr = _el.getAttribute("name");
+					if (_attr.indexOf(_str, 0) >= 0) {
+						_el.setAttribute("name", _attr.replace(_str, "smartTemplate4." + key));
+					}
+				}
+			} catch(ex) {}
+		}
 
-		var deps = 0;
+		// was called appendAttr; this will append the key id to the setting.
+		// Note this does not include the .common part
+		function replaceAttribute(_el, _attrname, _key) {
+			try {
+				if (_el.hasAttribute(_attrname)) {
+					_el.setAttribute(_attrname, _el.getAttribute(_attrname) + _key);
+				}
+			} catch(ex) {}
+		}
+
+		let key = branch.substr(1); // cut off leading '.'
+		let deps = 0;
+		// iterate cloned deck.
+		// note: this would be easier to rewrite & understand using recursion
 		while (el) {
 			// Set id, name, prefname
-			appendAttr(el, "id", key);
-			replaceAttr(el, "name", str, key);
-			appendAttr(el, "preference", key);
+			replaceAttribute(el, "id", branch);
+			replacePrefName(el, key); // applies only to preference nodes themselves
+			replaceAttribute(el, "preference", branch);
 
 			// Get next node or parent's next node
 			if (el.hasChildNodes()) {
 				el = el.firstChild;
 				deps++;
-			} else {
+			}
+			else {
 				while (deps > 0 && !el.nextSibling) {
 					el = el.parentNode;
 					deps--;
@@ -386,25 +437,30 @@ SmartTemplate4.Settings = {
 	{
 		const  branch = menuvalue == "common" ? ".common" : "." + menuvalue;
 
-		// Add preferences, if preferences is not create.
-		this.setPref1st("extensions.smartTemplate4" + branch + ".");
+		try {
+			// Add preferences, if preferences is not create.
+			this.setPref1st("extensions.smartTemplate4" + branch + ".");
 
-		// Clone and setup a preference window tags.
-		const el = document.getElementById("deckA.per_account");
-		const clone = el.cloneNode(true);
+			// Clone and setup a preference window tags.
+			const el = document.getElementById("deckA.per_account");
+			const clone = el.cloneNode(true);
 
-		this.prefCloneAndSetup(clone, "smartTemplate4", branch);
-		el.parentNode.appendChild(clone);
+			this.prefCloneAndSetup(clone, branch);
+			el.parentNode.appendChild(clone);
 
-		// Reload preferences
-		this.reloadPrefs(document.getElementById("smartTemplate4" + branch));
+			// Reload preferences
+			this.reloadPrefs(document.getElementById("templates" + branch));
 
-		// Disabled or Hidden DOM node
-		this.gCurId = branch;    // change current id for pref library
-		this.prefDeck("default.deckB", this.isChecked("use_default" + branch)?1:0);
+			// Disabled or Hidden DOM node
+			this.accountKey = branch;    // change current id for pref library
+			this.prefDeck("default.deckB", this.isChecked("use_default" + branch)?1:0);
 
-		this.disableWithCheckbox();
-		this.gCurId = "";
+			this.disableWithCheckbox();
+			this.accountKey = "";
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException("Exception in addIdentity(" + menuvalue  +")", ex);
+		}
 	} ,
 
 
@@ -469,7 +525,7 @@ SmartTemplate4.Settings = {
 
 		var el = document.getElementById("msgIdentityPopup").firstChild
 		var index = 0;
-		SmartTemplate4.Util.logDebugOptional("settings","switchIdentity(" + idKey + ")");
+		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
 			// el.value could not access.. why??
@@ -483,30 +539,52 @@ SmartTemplate4.Settings = {
 
 	} , // add 0.4.0 E
 
+	getCurrentDeck : function(accountKey) {
+		return (accountKey != ".common")
+		  ? 'deckB.nodef' + accountKey
+			: 'deckB.nodef';
+	} ,
+
 	// Select identity (from xul)
 	//--------------------------------------------------------------------
 	selectIdentity : function(idkey)
 	{
-		let currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
+		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
+		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountKey);
 		let tabbox = document.getElementById(currentDeck);
-		var tabIndex = tabbox.selectedIndex;
+		if (!tabbox)
+			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
+		let tabIndex = tabbox.selectedIndex;
 
 		const  branch = (idkey == "common") ? ".common" : "." + idkey;
 
 		// Display identity.
-		var deck = document.getElementById("account_deckA");	// mod 0.3.2 S
-		var index = 0;
+		let deck = document.getElementById("account_deckA");
+		let index = 0;
+
+		let searchDeckName = "deckA.per_account" + branch;
+		let found = false;
+
 		for (var el = deck.firstChild; el; el = el.nextSibling) {
-			if (el.id == "deckA.per_account" + branch) {
+			if (el.id == searchDeckName) {
 				deck.selectedIndex = index;
-				this.gCurId = branch;
+				this.accountKey = branch;
+				found = true;
 				break;
 			}
 			index++;
 		}
 
+		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
+		if (!found) {
+			deck.selectedIndex = 0;
+			this.accountKey = branch;
+		}
+
+		SmartTemplate4.Util.logDebugOptional("identities", "could " + (searchDeckName ? "" : "not") + " find deck:" + searchDeckName);
+
 		//reactivate the current tab: new / respond or forward!
-		currentDeck = (SmartTemplate4.Settings.gCurId) ? 'deckB.nodef' + SmartTemplate4.Settings.gCurId : 'deckB.nodef';
+		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountKey);
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox)
 			tabbox.selectedIndex = tabIndex;

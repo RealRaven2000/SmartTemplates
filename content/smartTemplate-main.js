@@ -121,8 +121,10 @@ var SmartTemplate4 = {
 		this.oldFunc_LoadIdentity = LoadIdentity;
 		LoadIdentity = smartTemplate_loadIdentity;
 
-		this.pref = new SmartTemplate4.classPref("extensions.smarttemplate.", "def");
-		this.smartTemplate = new this.classSmartTemplate();
+		this.pref = new SmartTemplate4.classPref();
+
+		// a class instance.
+		this.smartTemplate = new SmartTemplate4.classSmartTemplate();
 		this.cal = new this.classCalIDateTimeFormatter(true);
 
 		// Time of %A-Za-z% is today(default)

@@ -7,28 +7,24 @@ SmartTemplate4.Preferences = {
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 
 	get Debug() {
-		return this.getBoolPrefQF("debug");
+		return this.getMyBoolPref("debug");
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if (!this.Debug) 
+		if (!this.Debug)
 			return false;
 		try {
-			return this.getBoolPrefQF("debug." + option);
+			return this.getMyBoolPref("debug." + option);
 		}
 		catch(e) {return false;}
 	},
-	
+
 	getIntPref: function(p) {
 		return this.service.getIntPref(p);
 	},
 
 	setIntPref: function(p, v) {
 		return this.service.setIntPref(p, v);
-	},
-	
-	isAbortAfterCreateFilter: function() {
-  	return this.getBoolPrefQF("abortAfterCreate");
 	},
 
 	getBoolPref: function(p) {
@@ -41,19 +37,19 @@ SmartTemplate4.Preferences = {
 		}
 	},
 
-	getBoolPrefQF: function(p) {
+	getMyBoolPref: function(p) {
 		return SmartTemplate4.Preferences.getBoolPref(this.Prefix + p);
 	},
 
-	setBoolPrefQF: function(p, v) {
+	setMyBoolPref: function(p, v) {
 		return SmartTemplate4.Preferences.setBoolPref(this.Prefix + p, v);
 	},
 
-	getIntPrefQF: function(p) {
+	getMyIntPref: function(p) {
 		return SmartTemplate4.Preferences.getIntPref(this.Prefix + p);
 	},
 
-	setIntPrefQF: function(p, v) {
+	setMyIntPref: function(p, v) {
 		return this.setIntPref(this.Prefix + p, v);
 	},
 
@@ -66,11 +62,11 @@ SmartTemplate4.Preferences = {
 		}
 	} ,
 
-	setCharPrefQF: function(p, v) {
+	setMyStringPref: function(p, v) {
 		return this.service.setCharPref(this.Prefix + p, v);
 	} ,
-	
-	getCharPrefQF: function(p) {
+
+	getMyStringPref: function(p) {
 		return this.service.getCharPref(this.Prefix + p);
 	} ,
 
@@ -94,6 +90,15 @@ SmartTemplate4.Preferences = {
 		}
 		catch (e) {return false; }
 		return false;
+	},
+
+	getBoolPrefSilent: function(pref) {
+		try {
+			return this.service.getBoolPref(pref);
+		}
+		catch(e) {
+			return false;
+		}
 	}
-  
+
 }
