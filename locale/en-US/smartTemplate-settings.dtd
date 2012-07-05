@@ -85,8 +85,8 @@
 <!ENTITY ccfirstname.label "Recipient's first name">
 <!ENTITY ccname.label "Recipient's name">
 <!ENTITY spec_form.cap "Special format">
-<!ENTITY specform_note.label "Sections inside curly brackets &#123;Cc: &#37;cc(name)&#37;&#125; will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
-<!ENTITY ex_brack.label "Example: To: &#37;to(name) {&#37;Cc: &#37;cc(name)&#37;}">
+<!ENTITY specform_note.label "Sections inside double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
+<!ENTITY ex_brack.label "Example: To: boo Cc: foo">
 <!ENTITY sub_var.cap "Subject">
 <!ENTITY sub.label "subject of replied / forwarded email">
 <!ENTITY sub2.label "subject of current message being composed">
