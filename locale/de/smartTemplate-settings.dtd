@@ -123,7 +123,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Die Verwendung von &#37;X:=sent&#37;">
-<!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuellen Werten ersetzt. Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
+<!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt. Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
 <!ENTITY xsent_long.cap "Beispiel eines Langstrings:">
 <!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;A&#37;, &#37;d&#37;.&#37;m&#37;.&#37;Y&#37; &#37;H&#37;:&#37;M&#37; &#37;date_tz&#37;">
 <!ENTITY xsent_long_result.label "Ergebnis: Sonntag, 20.12.2011 16:24 +0100">
