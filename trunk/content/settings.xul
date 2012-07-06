@@ -24,7 +24,7 @@
 	<toolbox>
 		<toolbar type = "menubar" hidden = "true">
 			<toolbaritem>
-				<menubar  id = "SmartTemplate4MenuBar">
+				<menubar  id = "SmartTemplate4MenuBar" style = "border:0px;">
 				<!-- ###### FILE ###### -->
 					<menu id = "SmartTemplate4FileMenuitem"
 					      label = "&file.label;"
@@ -104,11 +104,9 @@
 			</menulist>
 			<spacer flex = "1" />
 			<button id="helpPanel"
-			        class="buttonIcon"
 			        label="&pref_help.tab;"
 			        onclick = "SmartTemplate4.Settings.openHelp();"/>
 			<button id="closeHelp"
-			        class="buttonIcon"
 			        label="&close.label;"
 			        onclick="SmartTemplate4.Settings.closeHelp();"
 			        hidden = "true"/>
@@ -281,9 +279,7 @@
 												<description>&creator.label;: Axel Grude</description>
 												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
 												<description>&localized.label;: &translatorNickname.label;</description>
-												<description>&contributor.label;:</description>
-												<description>Aris - style support</description>
-												<description>tool8 - development, Version 0.7.2 - 0.8.0</description>
+												<description>&contributor.label;: Aris - style support<br/>tool8 - development, Version 0.7.2 - 0.8.0</description>
 												<description class = "aboutContent">&about.label;</description>
 											</vbox>
 											<spacer flex = "1" />
