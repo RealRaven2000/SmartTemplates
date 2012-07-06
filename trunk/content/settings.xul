@@ -24,7 +24,7 @@
 	<toolbox>
 		<toolbar type = "menubar" hidden = "true">
 			<toolbaritem>
-				<menubar  style = "border:0px;">
+				<menubar  id = "SmartTemplate4MenuBar">
 				<!-- ###### FILE ###### -->
 					<menu id = "SmartTemplate4FileMenuitem"
 					      label = "&file.label;"
