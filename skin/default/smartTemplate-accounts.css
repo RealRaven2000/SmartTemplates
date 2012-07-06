@@ -1,6 +1,14 @@
-#smartTemplate4_settings {
+/* ################################################################################### */
+/* ############################## ACCOUNTMANAGER OVERLAY ############################# */
+/* ################################################################################### */
+
+/* ################################## ICON BINDINGS ################################## */
+#smartTemplate4_settings 
+{
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
-.buttonIcon label {
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+.buttonIcon label 
+{
  margin-left: 0.313em !important;
 }
