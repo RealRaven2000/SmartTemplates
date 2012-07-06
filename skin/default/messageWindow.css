@@ -1,0 +1,33 @@
+/** STYLES FOR THE MODELESS message window smarteTemplate-msg.xul ****/
+#titleBox {
+  background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 320px;
+}
+
+#messageCanvas {
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-image: url("chrome://smartTemplate4/skin/icon64x64.png");
+	width: 100%;
+	min-width: 500px;
+	min-height: 200px;
+	max-width: 850px;
+	white-space : pre-wrap;
+}
+
+
+#myMessage {
+	overflow: visible;
+	width: 100%;
+	min-height: 5em;
+	padding: 1em 2em;
+}
+
+#innerMessage {
+	border-radius: 1em;
+	background: -moz-linear-gradient(top, rgba(226,226,226,0.7) 0%, rgba(219,219,219,0.7) 50%, rgba(209,209,209,0.7) 51%, rgba(254,254,254,0.7) 100%);
+	width: auto;
+	font-size: 10pt;
+}
