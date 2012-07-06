@@ -55,8 +55,11 @@ SmartTemplate4.classSmartTemplate = function()
 
 		if(sigNode && isSignatureTb)
 		{
-			if (sigNode.previousElementSibling && sigNode.previousElementSibling.tagName="BR")
+			if (sigNode.previousElementSibling
+			    &&
+			    sigNode.previousElementSibling.tagName === "BR") {
 				bodyEl.removeChild(sigNode.previousElementSibling); //remove the preceding BR that TB always inserts
+			}
 			bodyEl.removeChild(sigNode);
 			//gMsgCompose.editor.document.removeChild(sigNode);
 		}
