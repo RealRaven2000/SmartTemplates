@@ -7,14 +7,13 @@
 }
 
 #messageCanvas {
-	width: 100%;
-	min-width: 200px;
-	min-height: 200px;
-	max-width: 850px;
 	background-position: top right;
 	background-repeat: no-repeat;
 	background-image: url("chrome://smartTemplate4/skin/icons/large/ST4-icon-128.png");
-/*	white-space : pre-wrap; */
+	max-width: 850px;
+	min-width: 200px;
+	min-height: 200px;
+	width: 100%;
 }
 
 /* remove default buttons, we add our own */
@@ -27,12 +26,13 @@
 }
 
 #innerMessage {
-	border-radius: 1em;
 	background: -moz-linear-gradient(top, rgba(226,226,226,0.7) 0%, rgba(219,219,219,0.7) 50%, rgba(209,209,209,0.7) 51%, rgba(254,254,254,0.7) 100%);
+	border-radius: 1em;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	font-size: 12pt;
 	min-height: 5em;
 	min-width: 300px;
-	margin: 2em 3em;
-	font-size: 12pt;
+	margin: 1em 3em 1.5em;
 	padding: 1em 2em;
 	width: 80%;
 	-moz-box-orient: vertical;

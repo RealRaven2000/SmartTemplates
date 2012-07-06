@@ -548,14 +548,15 @@ SmartTemplate4.Util.firstRun =
 	init: function() {
 
 		function buildUpgradeMessage09() {
-			let s = "\n\n" + SmartTemplate4.Util.getBundleString (
-			                 "SmartTemplate4.updateMessageNewBrackets1",
-			                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the <style> tag so that you can now do advanced styling within your signature.");
-			s += SmartTemplate4.Util.getBundleString (
+			let s = "\n" + SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateMessageNewBrackets1",
+		                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the usage of curly braces { } and the <style> tag so that you can now add advanced styling within your signature."
+		                 ) ;
+			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets2",
-			                 "In order to make this possible we had to redefined the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
-			                 + "\n\n";
-			s += SmartTemplate4.Util.getBundleString (
+			                 "In order to make this possible we had to slightly change the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
+			                 ;
+			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets3",
 			                 "For your convenience, we will now convert your existing templates so you can keep using them in the new version.");
 			return s;
@@ -691,6 +692,7 @@ SmartTemplate4.Util.firstRun =
 						}
 					}
 
+					// Display the modeless update message
 					window.setTimeout(function(){
 						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
 							// we are only running the old prefs routine for versions < .9
@@ -701,11 +703,10 @@ SmartTemplate4.Util.firstRun =
 						}
 						else
 							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage);
-					}, 20000);
-
+					}, 3000);
 
 				}
-// test of updateMessage:
+				// test of updateMessage:
 				if (SmartTemplate4.Preferences.isDebugOption('test.update'))
 					window.setTimeout(function(){
 						// call a modeless message window,
@@ -714,7 +715,7 @@ SmartTemplate4.Util.firstRun =
 						                            "centerscreen,titlebar",
 						                            function() {alert('[test callback function] {ok} - this is the expected behavior!')},
 						                            function() {alert('[test callback function] {cancel} - this is the expected behavior!')}); // lets replace the alert with a window
-					}, 500);
+					}, 3000);
 			}
 
 			// =============================================

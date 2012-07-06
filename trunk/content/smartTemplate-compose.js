@@ -57,20 +57,25 @@ SmartTemplate4.classSmartTemplate = function()
 		if(sigNode && isSignatureTb)
 		{
 			let ps = sigNode.previousElementSibling;
-			if (ps && ps.tagName === "BR")
+			if (ps && ps.tagName === "BR") {
 				try {
-					gMsgCompose.editor.document.removeChild(sigNode.previousElementSibling); //remove the preceding BR that TB always inserts
+					bodyEl.removeChild(ps); //remove the preceding BR that TB always inserts
 				}
-				catch(ex) { ; }
+				catch(ex) {
+					SmartTemplate4.Util.logException("extractSignature - exception removing <br> before signature!", ex);
+				}
+			}
 			// insert a place holder
 			let originalSigPlaceholder = gMsgCompose.editor.document.createElement("div");
 			originalSigPlaceholder.className = "st4originalSignature"; // we might have to replace this again...
 			let sp = sigNode.parentNode;
 			sp.insertBefore(originalSigPlaceholder, sigNode);
 			try {
-				gMsgCompose.editor.document.removeChild(sigNode);
+				bodyEl.removeChild(sigNode);
 			}
-			catch(ex) { ; }
+			catch(ex) {
+				SmartTemplate4.Util.logException("extractSignature - exception removing signature!", ex);
+			}
 			//gMsgCompose.editor.document.removeChild(sigNode);
 		}
 

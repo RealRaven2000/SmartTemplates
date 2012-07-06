@@ -14,7 +14,7 @@
         height = "200">
 
 	<vbox id="messageCanvas" >
-		<hbox id = "titleBox" align = "center" height = "40px">
+		<hbox id = "titleBox" align = "center" height = "45px">
 		</hbox>
 		<vbox class = "messageContents" flex="1">
 			<div id = "innerMessage" width="600" height="25">
