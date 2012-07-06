@@ -1,22 +1,24 @@
-/* ################################### ICON BINDINGS ################################# */
+/* ################################################################################### */
+/* ################################ STATUSBAR OVERLAY ################################ */
+/* ################################################################################### */
+
+/* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
-
-#SmartTemplate4Messenger:not(:hover)  {
-	margin-left: 6px;
-	margin-right: 6px;
-}
-
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 #SmartTemplate4Messenger label {
 	max-width : 350px;
 	width:auto;
 	-moz-transition: max-width 0.3s ease 0.2s;
 	-moz-transition: width 0.3s ease 0.2s;
 }
-
 #SmartTemplate4Messenger:not(:hover) label {
 	width: 0 !important;
 	max-width: 0 !important;
 	display: none;
+}
+#SmartTemplate4Messenger:not(:hover)  {
+	margin-left: 6px;
+	margin-right: 6px;
 }
