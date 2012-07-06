@@ -11,23 +11,37 @@
 	background-repeat: no-repeat;
 	background-image: url("chrome://smartTemplate4/skin/icon64x64.png");
 	width: 100%;
-	min-width: 500px;
+	min-width: 200px;
 	min-height: 200px;
 	max-width: 850px;
-	white-space : pre-wrap;
+/*	white-space : pre-wrap; */
 }
 
-
-#myMessage {
-	overflow: visible;
-	width: 100%;
-	min-height: 5em;
-	padding: 1em 2em;
+/* remove default buttons, we add our own */
+.dialog-button-box {
+	display: none;
 }
 
 #innerMessage {
 	border-radius: 1em;
 	background: -moz-linear-gradient(top, rgba(226,226,226,0.7) 0%, rgba(219,219,219,0.7) 50%, rgba(209,209,209,0.7) 51%, rgba(254,254,254,0.7) 100%);
-	width: auto;
-	font-size: 10pt;
+	min-height: 5em;
+	min-width: 300px;
+	margin: 2em 3em;
+	font-size: 12pt;
+	padding: 1em 2em;
+	width: 80%;
+	-moz-box-orient: vertical;
+}
+
+#innerMessage p, #innerMessage br {
+	display: block;
+	line-height: 1.2em;
+}
+#innerMessage p {
+	text-align: justify;
+	color: rgb(2,2,2) !important;
+	text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.7);
+	margin-bottom: 0.6em;
+	max-width: 850px;
 }

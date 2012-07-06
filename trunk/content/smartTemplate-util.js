@@ -546,6 +546,21 @@ SmartTemplate4.Util.firstRun =
 	} ,
 
 	init: function() {
+
+		function buildUpgradeMessage09() {
+			let s = "\n\n" + SmartTemplate4.Util.getBundleString (
+			                 "SmartTemplate4.updateMessageNewBrackets1",
+			                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the <style> tag so that you can now do advanced styling within your signature.");
+			s += SmartTemplate4.Util.getBundleString (
+			                 "SmartTemplate4.updateMessageNewBrackets2",
+			                 "In order to make this possible we had to redefined the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
+			                 + "\n\n";
+			s += SmartTemplate4.Util.getBundleString (
+			                 "SmartTemplate4.updateMessageNewBrackets3",
+			                 "For your convenience, we will now convert your existing templates so you can keep using them in the new version.");
+			return s;
+		}
+
 		// avoid running firstRun.init in messenger compose again!
 		if (typeof SmartTemplate4.Settings === 'undefined')
 			return;
@@ -653,16 +668,7 @@ SmartTemplate4.Util.firstRun =
 					let upgradeMessage = "";
 
 					if (SmartTemplate4.Util.versionSmaller(current, '0.9')) {
-						upgradeMessage = "\n\n" + SmartTemplate4.Util.getBundleString (
-						                 "SmartTemplate4.updateMessageNewBrackets1",
-						                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the &lt;style&gt; tag so that you can now do advanced styling within your signature.");
-						upgradeMessage += SmartTemplate4.Util.getBundleString (
-						                 "SmartTemplate4.updateMessageNewBrackets2",
-						                 "In order to make this possible we had to redefined the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
-						                 + "\n\n";
-						upgradeMessage += SmartTemplate4.Util.getBundleString (
-						                 "SmartTemplate4.updateMessageNewBrackets3",
-						                 "For your convenience, we will now convert your existing templates so you can keep using them in the new version.");
+						upgradeMessage = buildUpgradeMessage09();
 					}
 
 					if (showFirsts) {
@@ -687,16 +693,28 @@ SmartTemplate4.Util.firstRun =
 
 					window.setTimeout(function(){
 						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
-							alert(updateVersionMessage + upgradeMessage); // lets replace this with a window
 							// we are only running the old prefs routine for versions < .9
-							SmartTemplate4.Settings.convertOldPrefs();
+							SmartTemplate4.Message.open(updateVersionMessage + upgradeMessage,
+							                            "centerscreen,titlebar,dependent,alwaysRaised",
+							                            function() {SmartTemplate4.Settings.convertOldPrefs()}); // lets replace the alert with a window
+							;
 						}
 						else
-							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage + upgradeMessage);
+							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage);
 					}, 20000);
 
 
 				}
+// test of updateMessage:
+				if (SmartTemplate4.Preferences.isDebugOption('test.update'))
+					window.setTimeout(function(){
+						// call a modeless message window,
+						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
+						SmartTemplate4.Message.open(updateVersionMessage + buildUpgradeMessage09(),
+						                            "centerscreen,titlebar,dependent,alwaysRaised",
+						                            function() {alert('[test callback function] {ok} - this is the expected behavior!')},
+						                            function() {alert('[test callback function] {cancel} - this is the expected behavior!')}); // lets replace the alert with a window
+					}, 500);
 			}
 
 			// =============================================
@@ -728,4 +746,105 @@ SmartTemplate4.Util.firstRun =
 
 };
 
+SmartTemplate4.Message = {
+	okCALLBACK : null ,
+	cancelCALLBACK : null,
+	myWindow : null,
+	open : function(text, features, okCallback, cancelCallback) {
+		var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
 
+
+		if (okCallback)
+			this.okCALLBACK = okCallback;
+		if (cancelCallback)
+			this.cancelCALLBACK = cancelCallback;
+
+
+		// pass some data as args. we allow null for the callbacks
+		var params =
+		{
+			messageText:    text,
+			okCallback:     this.okCALLBACK,
+			cancelCallback: this.cancelCALLBACK
+		};
+
+		// open message with main as parent
+
+		let main = SmartTemplate4.Util.getMail3PaneWindow();
+		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,dependent,close=no," + features, params)
+		    .QueryInterface(Components.interfaces.nsIDOMWindow);
+// 		let win = watcher.openWindow(main, "chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome," + features, params)
+// 		                 .QueryInterface(Components.interfaces.nsIDOMWindow);
+
+	} ,
+
+	// default function (probably not used)
+	okMessage : function() {
+		if (this.okCALLBACK) {
+			this.okCALLBACK();
+			this.okCALLBACK = null;
+		}
+		window.close();
+	} ,
+
+	// default function (probably not used)
+	cancelMessage : function() {
+		if (this.cancelCALLBACK) {
+			this.cancelCALLBACK();
+			this.cancelCALLBACK = null;
+		}
+		window.close();
+
+	} ,
+
+	loadMessage : function () {
+		try {
+			if (window.arguments && window.arguments.length) {
+				let params = window.arguments[0];
+				let msgDiv = document.getElementById('innerMessage');
+
+				let theMessage = params.messageText;
+				// split text (passed in with /n as delimiter) into paragraphs
+				let textNodes = theMessage.split("\n");
+				let i = 0;
+				for (i = 0; i < textNodes.length; i++) {
+					// empty nodes will be <br>
+					let par = textNodes[i].length ? document.createElement('p') : document.createElement('br');
+					if (textNodes[i].length)
+						par.textContent = textNodes[i]; // we want this to wrap. won't use unescape for the moment
+					msgDiv.appendChild(par);
+				}
+				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
+
+				document.getElementById('ok').addEventListener("click", params.okCallback);
+				window.st4OkListener = params.okCallback;
+				if (params.cancelCallback) {
+					let cancelBtn = document.getElementById('cancel');
+					cancelBtn.addEventListener("click", params.cancelCallback);
+					cancelBtn.hidden = false;
+					window.st4CancelListener = params.cancelCallback;
+				}
+			}
+			else
+				alert('window.arguments: ' + window.arguments);
+		}
+		catch(ex) {
+			alert("Exception in loadMessage:" + ex);
+			SmartTemplate4.Util.logException("Exception in loadMessage:", ex);
+		}
+		window.sizeToContent();
+	} ,
+
+	unloadMessage : function (win) {
+		this.okCALLBACK = null;
+		this.cancelCALLBACK = null;
+		this.myWindow = null;
+		if (win.st4OkListener) {
+			document.getElementById('ok').removeEventListener("click", win.st4OkListener);
+		}
+		if (win.st4CancelListener) {
+			document.getElementById('cancel').removeEventListener("click", win.st4CancelListener);
+		}
+		win.close();
+	}
+}
