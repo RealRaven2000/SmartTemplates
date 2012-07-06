@@ -13,6 +13,9 @@
 /* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
 /* ################################################################################### */
 
+#SmartTemplate4MenuBar {
+ border:0px;
+}
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4CloseItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
