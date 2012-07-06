@@ -7,19 +7,23 @@
 }
 
 #messageCanvas {
-	background-position: top right;
-	background-repeat: no-repeat;
-	background-image: url("chrome://smartTemplate4/skin/icon64x64.png");
 	width: 100%;
 	min-width: 200px;
 	min-height: 200px;
 	max-width: 850px;
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-image: url("chrome://smartTemplate4/skin/icons/large/ST4-icon-128.png");
 /*	white-space : pre-wrap; */
 }
 
 /* remove default buttons, we add our own */
 .dialog-button-box {
 	display: none;
+}
+
+#ok, #cancel {
+	font-size: 12pt;
 }
 
 #innerMessage {

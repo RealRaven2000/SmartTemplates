@@ -11,27 +11,28 @@
         ondialogaccept = ""
         ondialogcancel = ""
         width = "750"
-        height = "400">
+        height = "200">
 
 	<vbox id="messageCanvas" >
 		<hbox id = "titleBox" align = "center" height = "40px">
 		</hbox>
 		<vbox class = "messageContents" flex="1">
-			<div id = "innerMessage" width="600" height="75">
+			<div id = "innerMessage" width="600" height="25">
 
 			</div>
 		</vbox>
 		<spacer flex = "1"/>
 		<hbox id = "commands">
-			<spacer flex = "1"/>
+			<spacer flex = "2"/>
 			<button id = "ok"
 			        label = "Ok"
 			        onclick = "SmartTemplate4.Message.okMessage();"/>
+			<spacer flex = "1"/>
 			<button id = "cancel"
 			        label = "Cancel"
 			        onclick = "SmartTemplate4.Message.cancelMessage();"
 			        hidden = "true" />
-			<spacer flex = "1"/>
+			<spacer flex = "2"/>
 		</hbox>
 	</vbox>
 

@@ -23,11 +23,11 @@ SmartTemplate4.classSmartTemplate = function()
 		let idKey = document.getElementById("msgIdentity").value;
 
 		let isSignatureTb = htmlSigText || Ident.attachSignature;
+		let sigNode = null;
 
 		if (isSignatureTb) {
 			// try to extract signature manually - well we need the last one!!
 			// get the signature straight from the bodyElement!
-			let sigNode = null ;
 			//signature from top
 			if (Ident.replyOnTop && !Ident.sigBottom) {
 				sigNode = findChildNode(bodyEl, 'moz-signature');
@@ -53,14 +53,24 @@ SmartTemplate4.classSmartTemplate = function()
 
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
 
+		// FOR THE MOMENT< LET'S REMOVE THE SIGNATURE (we will have to put it back in if the template does not contain %sig%)
 		if(sigNode && isSignatureTb)
 		{
-			if (sigNode.previousElementSibling
-			    &&
-			    sigNode.previousElementSibling.tagName === "BR") {
-				bodyEl.removeChild(sigNode.previousElementSibling); //remove the preceding BR that TB always inserts
+			let ps = sigNode.previousElementSibling;
+			if (ps && ps.tagName === "BR")
+				try {
+					gMsgCompose.editor.document.removeChild(sigNode.previousElementSibling); //remove the preceding BR that TB always inserts
+				}
+				catch(ex) { ; }
+			// insert a place holder
+			let originalSigPlaceholder = gMsgCompose.editor.document.createElement("div");
+			originalSigPlaceholder.className = "st4originalSignature"; // we might have to replace this again...
+			let sp = sigNode.parentNode;
+			sp.insertBefore(originalSigPlaceholder, sigNode);
+			try {
+				gMsgCompose.editor.document.removeChild(sigNode);
 			}
-			bodyEl.removeChild(sigNode);
+			catch(ex) { ; }
 			//gMsgCompose.editor.document.removeChild(sigNode);
 		}
 
