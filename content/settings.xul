@@ -281,7 +281,9 @@
 												<description>&creator.label;: Axel Grude</description>
 												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
 												<description>&localized.label;: &translatorNickname.label;</description>
-												<description>&contributor.label;: Aris - style support<br/>tool8 - development, Version 0.7.2 - 0.8.0</description>
+												<description>&contributor.label;:</description>
+												<description>Aris - style support</description>
+												<description>tool8 - development, Version 0.7.2 - 0.8.0</description>
 												<description class = "aboutContent">&about.label;</description>
 											</vbox>
 											<spacer flex = "1" />
