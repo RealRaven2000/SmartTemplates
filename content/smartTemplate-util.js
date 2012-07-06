@@ -695,7 +695,7 @@ SmartTemplate4.Util.firstRun =
 						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
 							// we are only running the old prefs routine for versions < .9
 							SmartTemplate4.Message.open(updateVersionMessage + upgradeMessage,
-							                            "centerscreen,titlebar,dependent,alwaysRaised",
+							                            "centerscreen,titlebar",
 							                            function() {SmartTemplate4.Settings.convertOldPrefs()}); // lets replace the alert with a window
 							;
 						}
@@ -711,7 +711,7 @@ SmartTemplate4.Util.firstRun =
 						// call a modeless message window,
 						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
 						SmartTemplate4.Message.open(updateVersionMessage + buildUpgradeMessage09(),
-						                            "centerscreen,titlebar,dependent,alwaysRaised",
+						                            "centerscreen,titlebar",
 						                            function() {alert('[test callback function] {ok} - this is the expected behavior!')},
 						                            function() {alert('[test callback function] {cancel} - this is the expected behavior!')}); // lets replace the alert with a window
 					}, 500);
@@ -771,7 +771,7 @@ SmartTemplate4.Message = {
 		// open message with main as parent
 
 		let main = SmartTemplate4.Util.getMail3PaneWindow();
-		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,dependent,close=no," + features, params)
+		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,alwaysRaised,dependent,close=no," + features, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
 // 		let win = watcher.openWindow(main, "chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome," + features, params)
 // 		                 .QueryInterface(Components.interfaces.nsIDOMWindow);
