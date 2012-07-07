@@ -148,7 +148,7 @@ SmartTemplate4.classSmartTemplate = function()
 						+ '\n_________' + node.nodeName + '_________' + content);
 			if (isCitation) {
 				// lets not remove it if the box [x] "Use instead of default quote header" is not checked
-				if (SmartTemplate4.pref.isDeleteHeaders(idKey, "rsp", false))
+				if (!SmartTemplate4.pref.isDeleteHeaders(idKey, "rsp", false))
 					return false; // we do not remove the citation prefix if this account doesn't have this option specified
 
 			}
