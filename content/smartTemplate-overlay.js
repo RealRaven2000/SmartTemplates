@@ -67,25 +67,25 @@ SmartTemplate4.classPref = function()
 	// def: true = common
 	function isDeleteHeaders(idKey, composeType, def) {
 		// xxxhead
-		return getWithIdkey(idkey, composeType + "head", def)
+		return getWithIdkey(idKey, composeType + "head", def)
 	};
 
 	function isReplaceNewLines(idKey, composeType, def) {
 		// xxxnbr
-		return getWithIdkey(idkey, composeType + "nbr", def)
+		return getWithIdkey(idKey, composeType + "nbr", def)
 	};
 
 	function isUseHtml(idKey, composeType, def) {
 		// xxxhtml
-		return getWithIdkey(idkey, composeType + "html", def)
+		return getWithIdkey(idKey, composeType + "html", def)
 	};
 
 	function getTemplate(idKey, composeType, def) {
-		return getWithIdkey(idkey, composeType + "msg", def)
+		return getWithIdkey(idKey, composeType + "msg", def)
 	};
 
 	function isProcessingActive(idKey, composeType, def) {
-		return getWithIdkey(idkey, composeType, def)
+		return getWithIdkey(idKey, composeType, def)
 	};
 
 
