@@ -62,6 +62,34 @@ SmartTemplate4.classPref = function()
 		return getCom(SmartTemplate4.Preferences.Prefix + prefstring, defaultValue); //
 	};
 
+	// idKey Account
+	// composeType: rsp, fwd, new
+	// def: true = common
+	function isDeleteHeaders(idKey, composeType, def) {
+		// xxxhead
+		return getWithIdkey(idkey, composeType + "head", def)
+	};
+
+	function isReplaceNewLines(idKey, composeType, def) {
+		// xxxnbr
+		return getWithIdkey(idkey, composeType + "nbr", def)
+	};
+
+	function isUseHtml(idKey, composeType, def) {
+		// xxxhtml
+		return getWithIdkey(idkey, composeType + "html", def)
+	};
+
+	function getTemplate(idKey, composeType, def) {
+		return getWithIdkey(idkey, composeType + "msg", def)
+	};
+
+	function isProcessingActive(idKey, composeType, def) {
+		return getWithIdkey(idkey, composeType, def)
+	};
+
+
+
 	// -----------------------------------
 	// Get preference with identity key
 	function getWithIdkey(idkey, pref, def)
@@ -98,9 +126,15 @@ SmartTemplate4.classPref = function()
 	// -----------------------------------
 	// Public methods
 	this.getCom = getCom;
+	this.getLocalePref = getLocalePref;
+	this.getTemplate = getTemplate;
 	this.getWithBranch = getWithBranch;
 	this.getWithIdkey = getWithIdkey;
-	this.getLocalePref = getLocalePref;
+	this.isDeleteHeaders = isDeleteHeaders;
+	this.isProcessingActive = isProcessingActive;
+	this.isReplaceNewLines = isReplaceNewLines;
+	this.isUseHtml = isUseHtml;
+
 };
 
 // -------------------------------------------------------------------

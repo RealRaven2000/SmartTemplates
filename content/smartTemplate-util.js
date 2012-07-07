@@ -554,7 +554,7 @@ SmartTemplate4.Util.firstRun =
 		                 ) ;
 			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets2",
-			                 "In order to make this possible we had to slightly change the specific syntax for bracketed expressions: {  %optional_variables% }  to use double brackets instead: [[ %optional_variables% ]].")
+			                 "In order to make this possible we had to slightly change the specific syntax for bracketed expressions: { %optional_variables% }  to use double square brackets instead: [[ %optional_variables% ]].")
 			                 ;
 			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets3",
