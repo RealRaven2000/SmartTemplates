@@ -107,7 +107,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Delete DOMNode/textnode or BR
-	function deleteNodeTextOrBR(node)
+	function deleteNodeTextOrBR(node, idKey)
 	{
 		let isCitation = false;
 		let match=false;
@@ -146,13 +146,15 @@ SmartTemplate4.classSmartTemplate = function()
 				let msg = cName ? ('div class matched: ' + cName + '  ' + theNodeName) : theNodeName;
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - deletes node ' + msg
 						+ '\n_________' + node.nodeName + '_________' + content);
+			if (isCitation) {
+				// lets not remove it if the box [x] "Use instead of default quote header" is not checked
+				if (SmartTemplate4.pref.isDeleteHeaders(idKey, "rsp", false))
+					return false; // we do not remove the citation prefix if this account doesn't have this option specified
+
+			}
 			orgQuoteHeaders.push(node);
 			// rescue the signature from citation before deleting the node
 			gMsgCompose.editor.deleteNode(node);
-			if (isCitation) {
-				// findChildNode(node, '');
-				// => append signature where citation was
-			}
 		}
 		else
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName);
@@ -204,14 +206,10 @@ SmartTemplate4.classSmartTemplate = function()
 		if (!node)
 			return false;
 
-		if (node.nodeName &&
-		    node.nodeName.toLowerCase() == 'blockquote'
-		    ||
-		    node.className &&
-		    node.className.indexOf('moz-cite-prefix')>=0)
-			return true;
-
-		return false;
+// Note:  moz-cite-prefix might be the container for the headers (shown _before_ the quote)
+// 		    node.className &&
+// 		    node.className.indexOf('moz-cite-prefix')>=0
+		return (node.nodeName && node.nodeName.toLowerCase() == 'blockquote');
 	};
 
 	// -----------------------------------
@@ -244,7 +242,7 @@ SmartTemplate4.classSmartTemplate = function()
 				node = n;
 				continue;
 			}
-			deleteNodeTextOrBR(node);
+			deleteNodeTextOrBR(node, idKey);
 			node = n;
 		}
 
@@ -278,7 +276,7 @@ SmartTemplate4.classSmartTemplate = function()
 				if (rootEl.firstChild.nodeName != "#text") {
 					lines--;
 				}
-				deleteNodeTextOrBR(rootEl.firstChild);
+				deleteNodeTextOrBR(rootEl.firstChild, idKey);
 			}
 		}
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
@@ -305,7 +303,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//	<BR><BR> <#text#(1041)><BR> <#text# (headers)>!<BR><BR>! original-message
 	//We need to remove tags until two BR tags appear consecutively.
 	// AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
-	function delForwardHeader()
+	function delForwardHeader(idKey)
 	{
 		function truncateTo2BR(root) {
 			SmartTemplate4.Util.logDebugOptional('deleteNodes','truncateTo2BR()');
@@ -369,7 +367,7 @@ SmartTemplate4.classSmartTemplate = function()
 				node = n;
 				continue;
 			}
-			deleteNodeTextOrBR(node);
+			deleteNodeTextOrBR(node, idKey);
 			node = n;
 		}
 
@@ -429,10 +427,10 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Get template message
-	function getTemplate(type, idKey, prefmsg, prefhtml, prefnbr)
+	function getProcessedTemplate(composeType, idKey)
 	{
 		var pref = SmartTemplate4.pref;
-		var msg = pref.getWithIdkey(idKey, prefmsg, "");
+		var msg = pref.getTemplate(idKey, composeType, "");
 			//Reset X to Today after each newline character
 			//except for lines ending in { or }; breaks the omission of non-existent CC??
 			msg = msg.replace(/\n/gm, "%X:=today%\n");
@@ -442,9 +440,9 @@ SmartTemplate4.classSmartTemplate = function()
 			msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
 			msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 
-		if (pref.getWithIdkey(idKey, prefhtml, false)) {
+		if (pref.isUseHtml(idKey, composeType, false)) {
 			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-			if (pref.getWithIdkey(idKey, prefnbr, true))
+			if (pref.isReplaceNewLines(idKey, composeType, true))
 				{ msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
 			else
 				{ msg = msg.replace(/\n/gm, ""); }
@@ -454,7 +452,7 @@ SmartTemplate4.classSmartTemplate = function()
 			if (gMsgCompose.composeHTML)
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
-		return SmartTemplate4.regularize(msg, type);
+		return SmartTemplate4.regularize(msg, composeType);
 	};
 
 	// -----------------------------------
@@ -493,6 +491,7 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.signature = extractSignature(theIdentity);
 
 		let composeCase = 'undefined';
+		let st4composeType = '';
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -501,10 +500,10 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.New:
 				case msgComposeType.NewsPost:
 				case msgComposeType.MailToUrl:
-					if (pref.getWithIdkey(idKey, "new", false)) {
-						msgTmpl = getTemplate("new", idKey, "newmsg", "newhtml", "newnbr");
+					st4composeType = composeCase = 'new';
+					if (pref.isProcessingActive(idKey, st4composeType, false)) {
+						msgTmpl = getProcessedTemplate(st4composeType, idKey);
 					}
-					composeCase = 'new';
 					break;
 
 				// reply message ---------------------------------------
@@ -516,32 +515,34 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.ReplyToGroup:
 				case msgComposeType.ReplyToSenderAndGroup:
 				case msgComposeType.ReplyToList:
-					if (pref.getWithIdkey(idKey, "rsp", false)) {
-						msgTmpl = getTemplate("rsp", idKey, "rspmsg", "rsphtml", "rspnbr");
-						if (pref.getWithIdkey(idKey, "rsphead", false) &&
+					composeCase = 'reply';
+					st4composeType = 'rsp';
+					if (pref.isProcessingActive(idKey, st4composeType, false)) {
+						msgTmpl = getProcessedTemplate(st4composeType, idKey);
+						if (pref.isDeleteHeaders(idKey, st4composeType, false) &&
 							pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							delReplyHeader(idKey);
 						}
 					}
-					composeCase = 'reply';
 					break;
 
 				// forwarding message ----------------------------------
 				// (ForwardAsAttachment:3 / ForwardInline:4)
 				case msgComposeType.ForwardAsAttachment:
 				case msgComposeType.ForwardInline:
-					if (pref.getWithIdkey(idKey, "fwd", false)) {
+					composeCase = 'forward';
+					st4composeType = "fwd";
+					if (pref.isProcessingActive(idKey, st4composeType, false)) {
 						SmartTemplate4.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
+						msgTmpl = getProcessedTemplate(st4composeType, idKey);
 
-						msgTmpl = getTemplate("fwd", idKey, "fwdmsg", "fwdhtml", "fwdnbr");
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
 							break;
 						}
-						if (pref.getWithIdkey(idKey, "fwdhead", false)) {
-							delForwardHeader();
+						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+							delForwardHeader(idKey);
 						}
 					}
-					composeCase = 'forward';
 					break;
 
 				// do not process -----------------------------------
