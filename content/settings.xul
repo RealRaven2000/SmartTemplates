@@ -20,7 +20,7 @@
 	<prefpane id = "smartTemplatePane">
 
 	<!-- ######## Creating Menubar ######## -->
-	<!-- MENUITEMS: File - Tools - Help -->
+	<!-- MENUITEMS: File - Help -->
 	<toolbox>
 		<toolbar type = "menubar" hidden = "true">
 			<toolbaritem>
@@ -121,6 +121,8 @@
 
 				<vbox id = "deckA.per_account" flex = "1">
 
+					<!-- ######## Template Preferences ######## -->
+
 					<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
 					<preferences id = "templates">
 						<preference id = "pref_def"     name = "extensions.smartTemplate4.common.def"      type = "bool"/>
@@ -158,6 +160,8 @@
 								<tab id = "forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
 								<tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" />
 							</tabs>
+
+							<!-- ######## Content New Message Tab ######## -->
 
 							<tabpanels flex = "1">
 								<tabpanel flex = "1">
@@ -232,7 +236,7 @@
 								</groupbox>
 							</tabpanel>
 
-							<!-- ######## Content Forward Tab ######## -->
+							<!-- ######## Content Forward Message Tab ######## -->
 							<tabpanel >
 								<groupbox  flex = "1" class = "forwardGroup">
 									<caption label = "&pref_fwdmsg.cap;"/>
@@ -287,6 +291,7 @@
 											<spacer flex = "1" />
 										</hbox>
 										<hbox>
+										<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
 											<spacer flex="2"/>
 											<button onclick = "SmartTemplate4.Util.showSupportPage();"
 											        class = "supportURL text-link"
@@ -320,6 +325,8 @@
 
 		</hbox>
 
+		<!-- ######## Global Debug Checkbox ######## -->
+
 		<hbox>
 		<spacer flex = "1" />
 			<checkbox id = "debug"
@@ -333,6 +340,8 @@
 		</hbox>
 
 	</vbox>
+
+	<!-- ######## Helpbox and Iframe ######## -->
 	<vbox id = "helpBox" flex = "2" hidden="true">
 		<hbox id = "helpCaption" hidden="true">
 			<caption label="&help_keyword.cap;"/>
