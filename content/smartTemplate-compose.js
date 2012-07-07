@@ -42,13 +42,18 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// test code for reading local sig file (WIP)
-		if (Ident.attachSignature) {
-			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsILocalFile);
-			if (sigFile &&( sigFile.fileSize > 0)) {
-				SmartTemplate4.Util.logDebug('Trying to read signature file: ' + sigFile.leafName
-				        + '\nfile size: ' + sigFile.fileSize
-				        + '\nReadable: '  + sigFile.isReadable());
-		  }
+		try {
+			if (Ident.attachSignature) {
+				let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsILocalFile);
+				if (sigFile &&( sigFile.fileSize > 0)) {
+					SmartTemplate4.Util.logDebug('Trying to read signature file: ' + sigFile.leafName
+					        + '\nfile size: ' + sigFile.fileSize
+					        + '\nReadable: '  + sigFile.isReadable());
+			  }
+			}
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException("extractSignature - exception looking at signature attachment file!", ex);
 		}
 
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
@@ -107,6 +112,10 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Delete DOMNode/textnode or BR
+	// change: return the type of node:
+	// "cite-prefix" - the original header texts
+	// tag name: usually "br" | "div" | "#text"
+	// "unknown" - no node or nodeName available
 	function deleteNodeTextOrBR(node, idKey)
 	{
 		let isCitation = false;
@@ -116,7 +125,7 @@ SmartTemplate4.classSmartTemplate = function()
 		if (node && node.nodeName)
 			theNodeName = node.nodeName.toLowerCase();
 		else
-			return match;
+			return 'unknown';
 
 		let content = '';
 		if (node.innerHTML)
@@ -149,7 +158,7 @@ SmartTemplate4.classSmartTemplate = function()
 			if (isCitation) {
 				// lets not remove it if the box [x] "Use instead of default quote header" is not checked
 				if (!SmartTemplate4.pref.isDeleteHeaders(idKey, "rsp", false))
-					return false; // we do not remove the citation prefix if this account doesn't have this option specified
+					return 'cite-prefix'; // we do not remove the citation prefix if this account doesn't have this option specified
 
 			}
 			orgQuoteHeaders.push(node);
@@ -158,7 +167,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		else
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName);
-		return match;
+		return theNodeName;
 	};
 
 
@@ -235,14 +244,16 @@ SmartTemplate4.classSmartTemplate = function()
 		let node = rootEl.firstChild
 
 		// delete everything except quoted part
+		let elType = '';
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
-			if (isQuotedNode(node)) {
+			// (this is either a blockquote or the previous element was a moz-cite-prefix)
+			if (isQuotedNode(node) || elType == 'cite-prefix') {
 				node = n;
 				continue;
 			}
-			deleteNodeTextOrBR(node, idKey);
+			elType = deleteNodeTextOrBR(node, idKey); // 'cite-prefix'
 			node = n;
 		}
 
