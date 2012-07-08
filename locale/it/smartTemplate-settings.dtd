@@ -85,8 +85,8 @@
 <!ENTITY ccname.label 					"Nome del destinatario"> 
 
 <!ENTITY spec_form.cap 					"Formati speciali">
-<!ENTITY specform_note.label			"Verrà visualizzata la frase &#123;Cc: &#37;cc(name)&#37;&#125; solo se è possibile sostituire la variabile &#37;cc(name)&#37;!"> 
-<!ENTITY ex_brack.label					"Esempio: A: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label			"Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!"> 
+<!ENTITY ex_brack.label					"Esempio: A: boo Cc: foo">
 
 <!ENTITY sub_var.cap 					"Oggetto"> 
 <!ENTITY sub.label 						"Oggetto (stessi gradicono Mailheader originale)"> 

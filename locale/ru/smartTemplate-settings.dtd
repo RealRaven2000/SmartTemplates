@@ -81,8 +81,8 @@
 <!ENTITY ccfirstname.label "Имя получателя">
 <!ENTITY ccname.label "Фамилия получателя">
 <!ENTITY spec_form.cap "Специальный формат">
-<!ENTITY specform_note.label "Выражение в скобках &#123;Cc: &#37;cc(name)&#37;&#125; будет выведено, если переменная &#37;cc(name)&#37; имеет значение!">
-<!ENTITY ex_brack.label "Пример: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label "Выражение в скобках [[Cc: &#37;cc(name)&#37;]] будет выведено, если переменная &#37;cc(name)&#37; имеет значение!">
+<!ENTITY ex_brack.label "Пример: To: boo Cc: foo">
 <!ENTITY sub_var.cap "Тема">
 <!ENTITY sub.label "тема отвечаемого / пересылаемого сообщения">
 <!ENTITY sub2.label "тема нового сообщения">

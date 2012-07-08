@@ -81,8 +81,8 @@
 <!ENTITY ccfirstname.label "Imię odbiorcy">
 <!ENTITY ccname.label "Nazwisko odbiorcy">
 <!ENTITY spec_form.cap "Format specjalny">
-<!ENTITY specform_note.label "Fraza w nawiasach klamrowych {Cc: &#37;cc(name)&#37;} będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
-<!ENTITY ex_brack.label "Przykład: Do: &#37;to(name)&#37; {&#37;Kopia: &#37;cc(name)&#37;}">
+<!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
+<!ENTITY ex_brack.label "Przykład: Do: boo Kopia: foo">
 <!ENTITY sub_var.cap "Temat">
 <!ENTITY sub.label "Temat odpowiedzi/przekazywanej wiadomości">
 <!ENTITY sub2.label "Temat aktualnie tworzonej wiadomości">

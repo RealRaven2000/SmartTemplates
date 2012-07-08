@@ -98,8 +98,8 @@
 <!ENTITY ccname.label 					"Achternaam ontvanger">
 
 <!ENTITY spec_form.cap 					"Speciale opmaak">
-<!ENTITY specform_note.label 			"De zin tussen accolades &#123;Cc: &#37;cc(name)&#37;&#125; wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
-<!ENTITY ex_brack.label 				"Voorbeeld: Aan: &#37;to(name) {&#37;Cc: &#37;cc(name)&#37;}">
+<!ENTITY specform_note.label 			"De zin tussen accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
+<!ENTITY ex_brack.label 				"Voorbeeld: Aan: boo Cc: foo">
 
 <!ENTITY sub_var.cap 					"Onderwerp">
 <!ENTITY sub.label 						"onderwerp van beantwoord / doorgestuurd e-mailbericht">

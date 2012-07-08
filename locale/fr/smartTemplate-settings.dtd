@@ -83,8 +83,8 @@
 <!ENTITY ccfirstname.label "Prénoms des destinataires en copie">
 <!ENTITY ccname.label "Noms des destinataires en copie">
 <!ENTITY spec_form.cap "Formats spéciaux">
-<!ENTITY specform_note.label "La phrase &#123;Cc: &#37;cc(name)&#37;&#125; s'affichera seulement si la variable &#37;cc(name)&#37; peut être remplacée!">
-<!ENTITY ex_brack.label "Exemple: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label "La phrase [[Cc: &#37;cc(name)&#37;]] s'affichera seulement si la variable &#37;cc(name)&#37; peut être remplacée!">
+<!ENTITY ex_brack.label "Exemple: To: boo Cc: foo">
 <!ENTITY sub_var.cap "Sujet">
 <!ENTITY sub.label "Sujet du message de réponse ou de transfert">
 <!ENTITY sub2.label "Sujet du message en cours de rédaction">
