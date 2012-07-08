@@ -81,8 +81,8 @@
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
 <!ENTITY spec_form.cap "特殊形式">
-<!ENTITY specform_note.label "在弧面括号内的短语 {Cc: &#37;cc(name)&#37;} 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
-<!ENTITY ex_brack.label "例子: To: &#37;to(name)&#37; {Cc: &#37;cc(name)&#37;}">
+<!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
+<!ENTITY ex_brack.label "例子: To: boo Cc: foo">
 <!ENTITY sub_var.cap "主题">
 <!ENTITY sub.label "回复/转发的邮件主题">
 <!ENTITY sub2.label "当前消息的主题">

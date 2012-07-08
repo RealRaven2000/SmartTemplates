@@ -67,8 +67,8 @@
 <!ENTITY ccfirstname.label 				"Mottagarens förnamn"> 
 <!ENTITY ccname.label 					"Mottagarens namn"> 
 <!ENTITY spec_form.cap 					"Specialformat">
-<!ENTITY specform_note.label			"Frasen i välvda Konsoler &#123;Cc: &#37;cc(name)&#37;&#125; kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"> 
-<!ENTITY ex_brack.label					"Exempelvis: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label			"Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"> 
+<!ENTITY ex_brack.label					"Exempelvis: To: boo Cc: foo">
 <!ENTITY sub_var.cap 					"Ämne"> 
 <!ENTITY sub.label 						"Ämne (Samma som original Mailheader)"> 
 <!ENTITY sub2.label 					"Ämne (samma som TB Message Editor)">

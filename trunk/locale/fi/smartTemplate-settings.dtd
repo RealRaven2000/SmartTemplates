@@ -84,8 +84,8 @@
 <!ENTITY ccfirstname.label 				"Vastaanottajan etunimi">
 <!ENTITY ccname.label 					"Vastaanottajan nimi">
 <!ENTITY spec_form.cap 					"Erikoismuotoilu">
-<!ENTITY specform_note.label 			"Lauseke kaarisulkujen sisällä &#123;Cc: &#37;cc(name)&#37;&#125; näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
-<!ENTITY ex_brack.label 				"Esim: To: &#37;to(name) &#123;&#37;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label 			"Lauseke kaarisulkujen sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
+<!ENTITY ex_brack.label 				"Esim: To: boo Cc: foo">
 
 <!ENTITY sub_var.cap 					"Aihe">
 <!ENTITY sub.label 						"vastattavan / välitettävän vietin aihe">

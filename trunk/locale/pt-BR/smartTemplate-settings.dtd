@@ -80,8 +80,8 @@
 <!ENTITY ccname.label 					"Nome do destinatário">
 
 <!ENTITY spec_form.cap 					"Formato Especial">
-<!ENTITY specform_note.label 			"A frase entre parênteses abaulados &#123;Cc: &#37;cc(name)&#37;&#125; somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
-<!ENTITY ex_brack.label 				"Exemplo: Para: &#37;to(name)&#37; &#123;Cc: &#37;cc(name)&#37;&#125;">
+<!ENTITY specform_note.label 			"A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
+<!ENTITY ex_brack.label 				"Exemplo: Para: boo Cc: foo">
 
 <!ENTITY sub_var.cap 					"Assunto">
 <!ENTITY sub.label 						"Assunto (mesmo como mailheader originais)">
