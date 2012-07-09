@@ -35,8 +35,9 @@ SmartTemplate4.classSmartTemplate = function()
 			//signature from bottom
 			else {
 				let signatureNodes = document.getElementsByClassName('moz-signature');
-				if (signatureNodes && signatureNodes.length)
+				if (signatureNodes && signatureNodes.length) {
 					sigNode = signatureNodes[signatureNodes.length-1];
+				}
 			}
 
 		}
@@ -115,7 +116,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 
 		for(let i = 0; i < nodes.length; i++) {
-			if ( nodes[i].className == "moz-signature" ) {
+			if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 				bodyEl.removeChild(nodes[i].previousElementSibling); //remove the preceding BR that TB always inserts
 				sig = bodyEl.removeChild(nodes[i-1]);
 				break;
@@ -131,7 +132,8 @@ SmartTemplate4.classSmartTemplate = function()
 				// TEST STUFF..
 			}
 			else {
-				sig = gMsgCompose.editor.document.createTextNode(sigText);
+				// createTextNode( ) returns a DOMString (16bit)
+				sig = sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 			}
 		}
 
@@ -366,6 +368,11 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 				deleteHeaderNode(root.firstChild);
 			}
+			// delete any trailing BRs
+			while (root.firstChild && root.firstChild.nodeName == "BR") {
+				deleteHeaderNode(root.firstChild);
+			}
+
 		}
 
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
@@ -383,35 +390,45 @@ SmartTemplate4.classSmartTemplate = function()
 		//while (rootEl.firstChild && rootEl.firstChild.nodeValue != header) #
 		let firstNode = null;
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Running Loop to remove unnecessary whitespace..');
+
 		while (node) {
 			let n = node.nextSibling;
-			// skip the forwarded part
-			if (node.className == 'moz-forward-container') {
-				// lets find the ---original message--- now
-				let searchWhiteSpace = true;
-				let truncWhiteSpace = false;
-				let inner = node.firstChild;
-				while (inner) {
-					let m = inner.nextSibling;
-					if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
-						// delete all whitespace before delim
-						if (searchWhiteSpace) {
-							searchWhiteSpace = false;
-							m = inner = node.firstChild;	//restart ...
-							truncWhiteSpace = true; 		  // ...and delete EVERYTHING until delimiter
-							firstNode = inner;
-							continue;
-						}
-						SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
-						gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
-						if (inner.nodeValue == origMsgDelimiter)
-								break;
-					}
-					inner = m;
-				}
-				node = n;
-				continue;
+
+			if (node.nodeValue && node.nodeValue == origMsgDelimiter) {
+				deleteNodeTextOrBR(node, idKey); // HTML + plain text - stop after removing "--- original message ---"
+				break;
 			}
+
+			// Analyse the forwarded part. if  it is plain text, let's search for the delimiter in any case (higher risk)!
+			if (gMsgCompose.composeHTML) {
+				if (node.className == 'moz-forward-container') {
+					// lets find the ---original message--- now
+					let searchWhiteSpace = true;
+					let truncWhiteSpace = false;
+					let inner = node.firstChild;
+					while (inner) {
+						let m = inner.nextSibling;
+						if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
+							// delete all whitespace before delim
+							if (searchWhiteSpace) {
+								searchWhiteSpace = false;
+								m = inner = node.firstChild;	//restart ...
+								truncWhiteSpace = true; 		  // ...and delete EVERYTHING until delimiter
+								firstNode = inner;
+								continue;
+							}
+							SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
+							gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
+							if (inner.nodeValue == origMsgDelimiter)
+								break;
+						}
+						inner = m;
+					}
+					node = n;
+					continue;
+				}
+			}
+
 			deleteNodeTextOrBR(node, idKey);
 			node = n;
 		}
@@ -533,7 +550,8 @@ SmartTemplate4.classSmartTemplate = function()
 			undoTemplate();
 		}
 
-		SmartTemplate4.signature = extractSignature(theIdentity, testSignatureVar(msgTmpl));
+		// is the %sig% variable used?
+		let sigVarDefined = false;
 
 		let composeCase = 'undefined';
 		let st4composeType = '';
@@ -545,10 +563,8 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.New:
 				case msgComposeType.NewsPost:
 				case msgComposeType.MailToUrl:
-					st4composeType = composeCase = 'new';
-					if (pref.isProcessingActive(idKey, st4composeType, false)) {
-						msgTmpl = getProcessedTemplate(st4composeType, idKey);
-					}
+					composeCase = 'new';
+					st4composeType = 'new';
 					break;
 
 				// reply message ---------------------------------------
@@ -562,13 +578,6 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.ReplyToList:
 					composeCase = 'reply';
 					st4composeType = 'rsp';
-					if (pref.isProcessingActive(idKey, st4composeType, false)) {
-						msgTmpl = getProcessedTemplate(st4composeType, idKey);
-						if (pref.isDeleteHeaders(idKey, st4composeType, false) &&
-							pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-							delReplyHeader(idKey);
-						}
-					}
 					break;
 
 				// forwarding message ----------------------------------
@@ -577,17 +586,6 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.ForwardInline:
 					composeCase = 'forward';
 					st4composeType = "fwd";
-					if (pref.isProcessingActive(idKey, st4composeType, false)) {
-						SmartTemplate4.Util.logDebugOptional('functions','insertTemplate() ForwardInline case');
-						msgTmpl = getProcessedTemplate(st4composeType, idKey);
-
-						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
-							break;
-						}
-						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
-							delForwardHeader(idKey);
-						}
-					}
 					break;
 
 				// do not process -----------------------------------
@@ -595,6 +593,33 @@ SmartTemplate4.classSmartTemplate = function()
 				default:
 					break;
 			}
+
+			if (pref.isProcessingActive(idKey, st4composeType, false)) {
+				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
+				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined);
+				msgTmpl = getProcessedTemplate(st4composeType, idKey);
+				switch(composeCase) {
+					case 'new':
+						break;
+					case 'reply':
+						if (pref.isDeleteHeaders(idKey, st4composeType, false) &&
+						    pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
+							delReplyHeader(idKey);
+						}
+						break;
+					case 'forward':
+						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
+							break;
+
+						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+							delForwardHeader(idKey);
+						}
+						break;
+
+				}
+			}
+
+
 		}
 		catch(ex) {
 			SmartTemplate4.Util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex);
@@ -637,9 +662,9 @@ SmartTemplate4.classSmartTemplate = function()
 		                       ||
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 		/* SIGNATURE HANDLING */
-		if (composeCase == 'reply' && theIdentity.sigOnReply && isSignatureSetup
+		if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 		    ||
-		    composeCase == 'forward' && theIdentity.sigOnForward && isSignatureSetup
+		    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
 		    ||
 		    composeCase == 'new' && theSignature && isSignatureSetup) {
 
