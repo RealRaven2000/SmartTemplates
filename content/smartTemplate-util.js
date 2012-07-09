@@ -125,15 +125,20 @@ SmartTemplate4.Util = {
 					SmartTemplate4.Util.VersionProxyRunning) // no recursion...
 				return;
 
+			SmartTemplate4.Util.logDebug("Util.VersionProxy()...");
+
 			let bAddonManager = true;
 			// old builds! (pre Tb3.3 / Gecko 2.0)
 			if (Components.classes["@mozilla.org/extensions/manager;1"]) {
+				SmartTemplate4.Util.logDebug("Util.VersionProxy() extensions/manager: old code branch");
 				bAddonManager = false;
 				let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
 					.getService(Components.interfaces.nsIExtensionManager);
 				let currentVersion = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
 				SmartTemplate4.Util.mExtensionVer = currentVersion;
 				SmartTemplate4.Util.VersionProxyRunning = false;
+				SmartTemplate4.Util.logDebug("extensions/manager: detected currentVersion: " + currentVersion);
+				SmartTemplate4.Util.firstRun.init();
 				return;
 			}
 
@@ -175,6 +180,7 @@ SmartTemplate4.Util = {
 		}
 		finally {
 			SmartTemplate4.Util.VersionProxyRunning = false;
+			SmartTemplate4.Util.logDebug("Util.VersionProxy ends()");
 		}
 	},
 
@@ -193,6 +199,7 @@ SmartTemplate4.Util = {
 		else	// --- older code: extensions manager.
 		{
 			try {
+
 				if(Components.classes["@mozilla.org/extensions/manager;1"])
 				{
 					var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
@@ -210,6 +217,8 @@ SmartTemplate4.Util = {
 				SmartTemplate4.Util.logToConsole("SmartTemplate4 Version retrieval failed - are you using an old version of " + SmartTemplate4.Util.Application + "?");
 			}
 		}
+		this.logDebug("Version() = " + current);
+
 		return current;
 	} ,
 
@@ -694,7 +703,7 @@ SmartTemplate4.Util.firstRun =
 							// we are only running the old prefs routine for versions < .9
 							upgradeMessage = buildUpgradeMessage09();
 							// let's show the cancel button only if the conversion to the new prefbranch has been done before
-							let showCancel = (SmartTemplate4.Preferences.existsBoolPref("extensions.smartTemplate4.common.def"));
+							let showCancel = (SmartTemplate4.Preferences.existsBoolPref("extensions.smartTemplate4.id1.def"));
 
 							SmartTemplate4.Message.display(updateVersionMessage + upgradeMessage,
 							                              "centerscreen,titlebar",
@@ -704,7 +713,7 @@ SmartTemplate4.Util.firstRun =
 						}
 						else
 							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage);
-					}, 3000);
+					}, 23000);
 
 				}
 				// test of updateMessage:
@@ -722,9 +731,6 @@ SmartTemplate4.Util.firstRun =
 			// =============================================
 			// STORE CURRENT VERSION NUMBER!
 			if (prev != pureVersion && current != '?' && (current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
-				if (SmartTemplate4.Preferences.Debug)
-					alert("SmartTemplate4 Test (Debug)  - Previous Version Number:" + prev + "\n"
-					      + "Storing current version number: " + pureVersion);
 				SmartTemplate4.Util.logDebug ("Storing new version number " + current);
 				// STORE VERSION CODE!
 				SmartTemplate4.Preferences.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
@@ -765,11 +771,12 @@ SmartTemplate4.Message = {
 			this.cancelCALLBACK = cancelCallback;
 
 		// pass some data as args. we allow null for the callbacks
-		var params =
+		// avoid using "this" in here as it confuses Tb3?
+		let params =
 		{
 			messageText:    text,
-			okCallback:     this.okCALLBACK,
-			cancelCallback: this.cancelCALLBACK
+			okCallback:     SmartTemplate4.Message.okCALLBACK,
+			cancelCallback: SmartTemplate4.Message.cancelCALLBACK
 		};
 
 		// open message with main as parent
@@ -804,10 +811,10 @@ SmartTemplate4.Message = {
 	loadMessage : function () {
 		try {
 			if (window.arguments && window.arguments.length) {
-				let params = window.arguments[0];
+				let params = window.arguments[0];  // leads to errors in tb3?
 				let msgDiv = document.getElementById('innerMessage');
 
-				let theMessage = params.messageText;
+				let theMessage = window.arguments[0].messageText;
 				// split text (passed in with /n as delimiter) into paragraphs
 				let textNodes = theMessage.split("\n");
 				let i = 0;
@@ -820,13 +827,13 @@ SmartTemplate4.Message = {
 				}
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
 
-				document.getElementById('ok').addEventListener("click", params.okCallback);
-				window.st4OkListener = params.okCallback;
-				if (params.cancelCallback) {
+				document.getElementById('ok').addEventListener("click", window.arguments[0].okCallback, true);
+				window.st4OkListener = window.arguments[0].okCallback;
+				if (window.arguments[0].cancelCallback) {
 					let cancelBtn = document.getElementById('cancel');
-					cancelBtn.addEventListener("click", params.cancelCallback);
+					cancelBtn.addEventListener("click", window.arguments[0].cancelCallback, true);
 					cancelBtn.hidden = false;
-					window.st4CancelListener = params.cancelCallback;
+					window.st4CancelListener = window.arguments[0].cancelCallback;
 				}
 			}
 			else

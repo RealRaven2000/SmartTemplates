@@ -326,20 +326,22 @@ SmartTemplate4.regularize = function(msg, type)
 	function getSignatureInner(removeDashes) {
 		SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
 		if (SmartTemplate4.signature != null) {
+			let sig = SmartTemplate4.signature;
 			SmartTemplate4.sigIsDefined = true;
-			if (!SmartTemplate4.signature.children || SmartTemplate4.signature.children.length==0) {
+			if (!sig.children || sig.children.length==0) {
 				SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
-				return SmartTemplate4.signature.innerHTML;  // deal with empty signature!
+
+				return sig.innerHTML ? sig.innerHTML : sig;  // deal with DOM String sig (non html)
 			}
 			if (removeDashes) {
-				if (SmartTemplate4.signature.firstChild.nodeValue == "-- ") {
-					SmartTemplate4.signature.removeChild(SmartTemplate4.signature.firstChild); //remove '-- '
-					SmartTemplate4.signature.removeChild(SmartTemplate4.signature.firstChild); //remove 'BR'
-					return SmartTemplate4.signature.innerHTML;
+				if (sig.firstChild.nodeValue == "-- ") {
+					sig.removeChild(sig.firstChild); //remove '-- '
+					sig.removeChild(sig.firstChild); //remove 'BR'
+					return sig.innerHTML;
 				}
 			}
 			else {
-				return SmartTemplate4.signature.innerHTML;
+				return sig.innerHTML;
 			}
 		}
 		return "";
