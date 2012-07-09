@@ -87,6 +87,7 @@
 <!ENTITY spec_form.cap "Special format">
 <!ENTITY specform_note.label "Sections inside double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
 <!ENTITY ex_brack.label "Example: To: boo Cc: foo">
+<!ENTITY brack_with_var.label "Follow Variables can be used inside [[...]]">
 <!ENTITY sub_var.cap "Subject">
 <!ENTITY sub.label "subject of replied / forwarded email">
 <!ENTITY sub2.label "subject of current message being composed">
