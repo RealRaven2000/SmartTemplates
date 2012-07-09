@@ -32,12 +32,12 @@
 						<menupopup>
 							<!-- ###### FILE -> EXPORT * ###### -->
 							<menuitem id = "SmartTemplate4ExportItem"
-							          label = "&menu.template_export.label;"
+							          label = "&menu.template_export.label;&#133;"
 							          class = "menuitem-iconic"
 							          oncommand = "SmartTemplate4.IO.export();" />
 							<!-- ###### FILE -> IMPORT ###### -->
 							<menuitem id = "SmartTemplate4ImportItem"
-							          label = "&menu.template_import.label;"
+							          label = "&menu.template_import.label;&#133;"
 							          class = "menuitem-iconic"
 							          oncommand = "SmartTemplate4.IO.import();" />
 							<!-- ###### FILE -> CLOSE ###### -->
