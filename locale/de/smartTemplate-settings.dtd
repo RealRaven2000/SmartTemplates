@@ -10,8 +10,8 @@
 <!ENTITY close.label "Schließen">
 <!ENTITY export.label "Exportieren">
 <!ENTITY import.label "Importieren">
-<!ENTITY menu.template_import.label "Einstellungen und Vorlagen importieren&hellip;">
-<!ENTITY menu.template_export.label "Einstellungen und Vorlagen exportieren&hellip;">
+<!ENTITY menu.template_import.label "Einstellungen und Vorlagen importieren">
+<!ENTITY menu.template_export.label "Einstellungen und Vorlagen exportieren">
 <!ENTITY settings.label "Einstellungen und Vorlagen">
 <!ENTITY url.homePage.label "Add-On Homepage">
 <!ENTITY url.supportPage.label "Support Homepage">
