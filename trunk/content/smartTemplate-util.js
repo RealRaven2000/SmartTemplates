@@ -554,11 +554,11 @@ SmartTemplate4.Util.firstRun =
 		                 ) ;
 			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets2",
-			                 "In order to make this possible we had to slightly change the specific syntax for bracketed expressions: { %optional_variables% }  to use double square brackets instead: [[ %optional_variables% ]].")
+			                 "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%optional_variables%} use double square brackets [[%optional_variables%]].")
 			                 ;
 			s += "\n" + SmartTemplate4.Util.getBundleString (
 			                 "SmartTemplate4.updateMessageNewBrackets3",
-			                 "For your convenience, we will now convert your existing templates so you can keep using them in the new version.");
+			                 "SmartTemplate4 will now convert your existing templates so you can keep using them in the new version. Press [Ok] to continue.");
 			return s;
 		}
 
@@ -668,10 +668,6 @@ SmartTemplate4.Util.firstRun =
 					// upgrade case!!
 					let upgradeMessage = "";
 
-					if (SmartTemplate4.Util.versionSmaller(current, '0.9')) {
-						upgradeMessage = buildUpgradeMessage09();
-					}
-
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
 
@@ -696,9 +692,14 @@ SmartTemplate4.Util.firstRun =
 					window.setTimeout(function(){
 						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
 							// we are only running the old prefs routine for versions < .9
-							SmartTemplate4.Message.open(updateVersionMessage + upgradeMessage,
-							                            "centerscreen,titlebar",
-							                            function() {SmartTemplate4.Settings.convertOldPrefs()}); // lets replace the alert with a window
+							upgradeMessage = buildUpgradeMessage09();
+							// let's show the cancel button only if the conversion to the new prefbranch has been done before
+							let showCancel = (SmartTemplate4.Preferences.existsBoolPref("extensions.smartTemplate4.common.def"));
+
+							SmartTemplate4.Message.display(updateVersionMessage + upgradeMessage,
+							                              "centerscreen,titlebar",
+							                              function() {SmartTemplate4.Settings.convertOldPrefs()},
+							                              showCancel ? function() {SmartTemplate4.Settings.cancelConvert()} : null );
 							;
 						}
 						else
@@ -711,10 +712,10 @@ SmartTemplate4.Util.firstRun =
 					window.setTimeout(function(){
 						// call a modeless message window,
 						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
-						SmartTemplate4.Message.open(updateVersionMessage + buildUpgradeMessage09(),
-						                            "centerscreen,titlebar",
-						                            function() {alert('[test callback function] {ok} - this is the expected behavior!')},
-						                            function() {alert('[test callback function] {cancel} - this is the expected behavior!')}); // lets replace the alert with a window
+						SmartTemplate4.Message.display(updateVersionMessage + buildUpgradeMessage09(),
+						                              "centerscreen,titlebar",
+						                              function() {alert('[test callback function] {ok} was pressed')},
+						                              function() {alert('[test callback function] {cancel} was pressed')});
 					}, 3000);
 			}
 
@@ -747,19 +748,21 @@ SmartTemplate4.Util.firstRun =
 
 };
 
+// this object is used to configure the modeless smartTemplate-msg window
+// the display() Method it takes 2 callback functions one for [Ok] and one for [Cancel]
+// these are executed when the button is pressed, and the window will be closed.
+// if a callback for [Cancel] is not passed then the Cancel button is hidden
 SmartTemplate4.Message = {
 	okCALLBACK : null ,
 	cancelCALLBACK : null,
 	myWindow : null,
-	open : function(text, features, okCallback, cancelCallback) {
+	display : function(text, features, okCallback, cancelCallback) {
 		var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-
 
 		if (okCallback)
 			this.okCALLBACK = okCallback;
 		if (cancelCallback)
 			this.cancelCALLBACK = cancelCallback;
-
 
 		// pass some data as args. we allow null for the callbacks
 		var params =

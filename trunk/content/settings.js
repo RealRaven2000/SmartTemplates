@@ -87,6 +87,11 @@ SmartTemplate4.Settings = {
 		}
 	},
 
+	cancelConvert : function() {
+		// conversion routine to 0.9 was cancelled
+		// user will have to create new settings from scratch!
+		// this is a dummy function, it doesn't do anything
+	} ,
 
 	convertOldPrefs : function() {
 		let debugText = "";
