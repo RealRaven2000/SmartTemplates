@@ -119,8 +119,14 @@ SmartTemplate4.classPref = function()
 			catch (e) {
 				accept_languages = prefService.getCharPref("intl.accept_languages");
 			}
-			return /^[^\s,;]{2,}/.exec(accept_languages)[0];  // Extract first locale code in pref (space/comma/semicolon delimited list)
-		} catch (e) { return "en"; }
+			let locale = /^[^\s,;]{2,}/.exec(accept_languages)[0];  // Extract first locale code in pref (space/comma/semicolon delimited list)
+			SmartTemplate4.Util.logDebug('getLocale() returns: ' + locale);
+			return locale;
+		}
+		catch (e) {
+			SmartTemplate4.Util.logException('getLocale() failed and defaulted to [en]', ex);
+			return "en";
+		}
 	};
 
 	// -----------------------------------
