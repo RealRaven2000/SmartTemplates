@@ -5,6 +5,51 @@
 // -------------------------------------------------------------------
 SmartTemplate4.classSmartTemplate = function()
 {
+	function readSigFile(Ident) {
+		let htmlSigText = '';
+		// test code for reading local sig file (WIP)
+		try {
+			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile)
+			if (sigFile)
+			{
+				SmartTemplate4.Util.logDebug('extractSignature() '
+				        + '\nTrying to read attached signature file: ' + sigFile.leafName
+				        + '\nat: ' + sigFile.path );
+// 					        + '\nfile size: ' + sigFile.fileSize
+// 					        + '\nReadable:  '  + sigFile.isReadable()
+// 					        + '\nisFile:    '  + sigFile.isFile());
+
+				// First, get and initialize the converter
+				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
+                        .createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
+				converter.charset = /* The character encoding you want, using UTF-8 here */ "UTF-8";
+
+				let data = "";
+				//read file into a string so the correct identifier can be added
+				let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
+					createInstance(Components.interfaces.nsIFileInputStream);
+				let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
+					createInstance(Components.interfaces.nsIConverterInputStream);
+				fstream.init(sigFile, -1, 0, 0);
+				cstream.init(fstream, "UTF-8", 0, 0);
+				let str = {};
+				{
+				  let read = 0;
+				  do {
+						read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
+						data += str.value;
+				  } while (read != 0);
+				}
+				cstream.close(); // this closes fstream
+
+				htmlSigText = data.toString();
+		  }
+		}
+		catch(ex) {
+			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
+			SmartTemplate4.Util.logException("extractSignature - exception trying to read signature attachment file!", ex);
+		}
+	}
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
 	// Extract Signature
@@ -39,53 +84,15 @@ SmartTemplate4.classSmartTemplate = function()
 					sigNode = signatureNodes[signatureNodes.length-1];
 				}
 			}
-
 		}
 
-		// test code for reading local sig file (WIP)
-		try {
-			if (Ident.attachSignature) {
-				let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile)
-				if (sigFile)
-				{
-					SmartTemplate4.Util.logDebug('extractSignature() '
-					        + '\nTrying to read attached signature file: ' + sigFile.leafName
-					        + '\nat: ' + sigFile.path );
-// 					        + '\nfile size: ' + sigFile.fileSize
-// 					        + '\nReadable:  '  + sigFile.isReadable()
-// 					        + '\nisFile:    '  + sigFile.isFile());
-
-					// First, get and initialize the converter
-					var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-                          .createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
-					converter.charset = /* The character encoding you want, using UTF-8 here */ "UTF-8";
-
-					let data = "";
-					//read file into a string so the correct identifier can be added
-					let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
-						createInstance(Components.interfaces.nsIFileInputStream);
-					let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
-						createInstance(Components.interfaces.nsIConverterInputStream);
-					fstream.init(sigFile, -1, 0, 0);
-					cstream.init(fstream, "UTF-8", 0, 0);
-					let str = {};
-					{
-					  let read = 0;
-					  do {
-							read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
-							data += str.value;
-					  } while (read != 0);
-					}
-					cstream.close(); // this closes fstream
-
-					htmlSigText = data.toString();
-			  }
-			}
-		}
-		catch(ex) {
-			SmartTemplate4.Util.logException("extractSignature - exception trying to read signature attachment file!", ex);
+		// read text from signature file
+		if (Ident.attachSignature) {
+			let fileSig = readSigFile(Ident);
+			htmlSigText = fileSig ? fileSig : htmlSigText;
 		}
 
+		// retrieve signature Node; if it doesn't work, try from the account
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
 
 		// LET'S REMOVE THE SIGNATURE (but only if our template contains a %sig%)
