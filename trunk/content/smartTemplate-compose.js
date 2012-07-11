@@ -174,10 +174,12 @@ SmartTemplate4.classSmartTemplate = function()
 			content = '\nEMPTY';
 		switch(theNodeName) {
 			case 'br':
-				match = true;
+				if (gMsgCompose.composeHTML) // AG change: only delete <br> nodes if we are in HTML mode.
+					match = true;
 				break;
 			case '#text':
-				match = true;
+				if (gMsgCompose.composeHTML) // AG change: only delete text nodes if we are in HTML mode.
+					match = true;
 				break;
 			case 'div': // tb 13++
 				if (node.className &&
