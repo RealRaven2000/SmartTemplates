@@ -120,11 +120,9 @@
 <!ENTITY p3.label "ДП">
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения.">
-<!ENTITY xsent_long.cap "Пример длинной строки:">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;d&#37; &#37;8&#37;, &#37;Y&#37; в &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
+<!ENTITY xsent_long.cap "Пример длинной строки">
 <!ENTITY xsent_long_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
-<!ENTITY xsent_short.cap "Пример короткой строки:">
-<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap "Пример короткой строки">
 <!ENTITY xsent_short_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
 <!ENTITY xsent_short_note.label "Следующие переменные могут быть использованы в обоих вариантах:">
 <!ENTITY localedate.label "Дата / время (локальный формат)">

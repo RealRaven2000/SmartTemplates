@@ -143,12 +143,9 @@
 <!ENTITY var_xsent.cap 					"Gebruik van &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label 				"De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met &#37;X:=sent&#37; combineert, worden de oorspronkelijke waarden weergegeven.">
 
-<!ENTITY xsent_long.cap 				"Voorbeeld van een lange zin:">
-<!ENTITY xsent_long.label 				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; om &#37;H&#37;:&#37;M&#37;:">
+<!ENTITY xsent_long.cap 				"Voorbeeld van een lange zin">
 <!ENTITY xsent_long_result.label 		"Resultaat: 16.02.2011 om 12:15:">
-
-<!ENTITY xsent_short.cap 				"Voorbeeld van een korte zin:">
-<!ENTITY xsent_short.label 				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap 				"Voorbeeld van een korte zin">
 <!ENTITY xsent_short_result.label 		"Resultaat: Woensdag, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Hiernaast kunt u in beide varianten de volgende variabelen ook gebruiken:">
 <!ENTITY localedate.label 				"Datum en tijd (lokale opmaak)">

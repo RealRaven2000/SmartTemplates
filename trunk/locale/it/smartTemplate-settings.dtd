@@ -129,10 +129,8 @@
 <!ENTITY var_xsent.cap 					"Varibile &#37;X:=sent&#37;"> 
 <!ENTITY xsent_note.label				"Le variabili per data/ora, Timezone e data/ora personalizzata qui sopra vengono impostate al valore attuale; quando associate alla variabile &#37;X:=sent&#37;#37; vengono ripristinati i valori di quando il messaggio è stato inviato"> 
 <!ENTITY xsent_long.cap 				"Esempio di Longstring">
-<!ENTITY xsent_long.label				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; alle ore &#37;H&#37;:&#37;M&#37;">
 <!ENTITY xsent_long_result.label 		"Risultato: 16.02.2011 alle ore 12:15"> 
-<!ENTITY xsent_short.cap  				"Esempio di Shortstring:">
-<!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap  				"Esempio di Shortstring">
 <!ENTITY xsent_short_result.label 		"Risultato: Mittwoch, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Aggiunta si possono utilizzare in entrambi i seguenti variabili di tipo variante anche:">
 <!ENTITY localedate.label 				"Data/ora (formato locale)">

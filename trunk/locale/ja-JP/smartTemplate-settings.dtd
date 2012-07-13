@@ -123,11 +123,9 @@
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; の使用">
 <!ENTITY xsent_note.label "日時に関する変数は通常現在の日時が反映されます。&#37;X:=sent&#37; と組み合わせた場合のみ、元のメッセージの日時が反映されます。">
 <!ENTITY xsent_long.cap "長い書式の例">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; at &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
 <!ENTITY xsent_long_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
 <!ENTITY xsent_short.cap "短い書式の例">
-<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
-<!ENTITY xsent_short_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
+<<!ENTITY xsent_short_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
 <!ENTITY xsent_short_note.label "次の変数はどちらの形式でも使用可能です:">
 <!ENTITY localedate.label "日時 (OS の形式)">
 <!ENTITY shortdate.label "日時 (短い形式: 01.01.2000 1:23:45)">

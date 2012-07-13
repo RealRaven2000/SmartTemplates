@@ -120,11 +120,9 @@
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Usar de &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
-<!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; a las &#37;H&#37;:&#37;M&#37;:">
+<!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga">
 <!ENTITY xsent_long_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
-<!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta:">
-<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta">
 <!ENTITY xsent_short_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
 <!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables:">
 <!ENTITY localedate.label "Fecha y hora (formato local)">
