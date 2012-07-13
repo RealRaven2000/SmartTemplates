@@ -117,7 +117,7 @@
 <!ENTITY s.label "Sekunden (00 bis 59)">
 <!ENTITY h.label "Stunde, 24-Stunden Format (00 bis 23) - mit führender null">
 <!ENTITY k.label "Stunde, 24-Stunden Format (0 bis 23)">
-<!ENTITY i.label "Stunde, 12-Stunden Format (01 bis 12)" - mit führender null>
+<!ENTITY i.label "Stunde, 12-Stunden Format (01 bis 12) - mit führender null">
 <!ENTITY l.label "Stunde, 12-Stunden Format (1 bis 12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
