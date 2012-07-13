@@ -132,7 +132,7 @@
 <!ENTITY xsent_long_result.label 		"Risultato: 16.02.2011 alle ore 12:15"> 
 <!ENTITY xsent_short.cap  				"Esempio di Shortstring">
 <!ENTITY xsent_short_result.label 		"Risultato: Mittwoch, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label 		"Aggiunta si possono utilizzare in entrambi i seguenti variabili di tipo variante anche:">
+<!ENTITY xsent_short_note.label 		"Aggiunta si possono utilizzare in entrambi i seguenti variabili di tipo variante anche">
 <!ENTITY localedate.label 				"Data/ora (formato locale)">
 <!ENTITY shortdate.label 				"Data/ora abbreviata (es: 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Timezone (+0100, +0200, ... )"> 

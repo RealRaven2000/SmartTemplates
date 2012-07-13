@@ -126,7 +126,7 @@
 <!ENTITY xsent_long_result.label "Résultat : Mardi 20 décembre 2011 à 12:15 ">
 <!ENTITY xsent_short.cap "Exemple de format court">
 <!ENTITY xsent_short_result.label "Résultat : Mardi 20 décembre 2011 à 12:15 ">
-<!ENTITY xsent_short_note.label "En plus, vous pouvez utiliser ces variables avec les variantes :">
+<!ENTITY xsent_short_note.label "En plus, vous pouvez utiliser ces variables avec les variantes">
 <!ENTITY localedate.label "Date et heure (format local)">
 <!ENTITY shortdate.label "Date et heure courtes (ex : 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Zone horaire (+0100, +0200, ... )">

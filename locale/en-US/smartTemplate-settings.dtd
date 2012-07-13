@@ -129,7 +129,7 @@
 <!ENTITY xsent_long_result.label "Result: Sunday, 20.12.2011 16:24 +0100">
 <!ENTITY xsent_short.cap "Example of a shortstring">
 <!ENTITY xsent_short_result.label "Result: Sunday, 20.12.2011 08:54:21">
-<!ENTITY xsent_short_note.label "The following variables can be used in both variants:">
+<!ENTITY xsent_short_note.label "The following variables can be used in both variants">
 <!ENTITY localedate.label "Date / Time (Locale Format)">
 <!ENTITY shortdate.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Timezone (+0100, +0200, ... )">
