@@ -106,25 +106,25 @@
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY A.label "Wochentag (Freitag)">
 <!ENTITY a.label "Wochentag (Fri.)">
-<!ENTITY d.label "Tag des Monats (01 bis 31)">
+<!ENTITY d.label "Tag des Monats (01 bis 31) - mit führender null">
 <!ENTITY e.label "Tag des Monats (1 bis 31)">
-<!ENTITY m.label "Monat (01 bis 12)">
+<!ENTITY m.label "Monat (01 bis 12) - mit führender null">
 <!ENTITY n.label "Monat (1 bis 12)">
 <!ENTITY B.label "Monat (Januar)">
 <!ENTITY b.label "Monat (Jan.)">
 <!ENTITY Y.label "Jahr (1970)">
 <!ENTITY M.label "Minuten (00 bis 59)">
 <!ENTITY s.label "Sekunden (00 bis 59)">
-<!ENTITY h.label "Stunde, 24-Stunden Format (00 bis 23)">
+<!ENTITY h.label "Stunde, 24-Stunden Format (00 bis 23) - mit führender null">
 <!ENTITY k.label "Stunde, 24-Stunden Format (0 bis 23)">
-<!ENTITY i.label "Stunde, 12-Stunden Format (01 bis 12)">
+<!ENTITY i.label "Stunde, 12-Stunden Format (01 bis 12)" - mit führender null>
 <!ENTITY l.label "Stunde, 12-Stunden Format (1 bis 12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Die Verwendung von &#37;X:=sent&#37;">
-<!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt. Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
+<!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
 <!ENTITY xsent_long.cap "Beispiel eines Langstrings">
 <!ENTITY xsent_long_result.label "Ergebnis: Sonntag, 20.12.2011 16:24 +0100">
 <!ENTITY xsent_short.cap "Beispiel eines Kurzstrings">
