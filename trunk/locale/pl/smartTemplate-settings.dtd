@@ -124,7 +124,7 @@
 <!ENTITY xsent_long_result.label "Wynik: 16.02.2011 o godz. 12:15:">
 <!ENTITY xsent_short.cap "Przykład krótkiego formatu">
 <!ENTITY xsent_short_result.label "Wynik: Środa, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "Dodatkowo można również używać w obu wariantach następujących zmiennych:">
+<!ENTITY xsent_short_note.label "Dodatkowo można również używać w obu wariantach następujących zmiennych">
 <!ENTITY localedate.label "Data i czas (lokalny format)">
 <!ENTITY shortdate.label "Data i czas (np. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Strefa czasowa (+0100, +0200,… )">

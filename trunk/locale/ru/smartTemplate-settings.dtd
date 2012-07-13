@@ -124,7 +124,7 @@
 <!ENTITY xsent_long_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
 <!ENTITY xsent_short.cap "Пример короткой строки">
 <!ENTITY xsent_short_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
-<!ENTITY xsent_short_note.label "Следующие переменные могут быть использованы в обоих вариантах:">
+<!ENTITY xsent_short_note.label "Следующие переменные могут быть использованы в обоих вариантах">
 <!ENTITY localedate.label "Дата / время (локальный формат)">
 <!ENTITY shortdate.label "Дата / время кратко (01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Часовогй пояс (+0100, +0200, ...)">

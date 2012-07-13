@@ -26,7 +26,7 @@
 <!ENTITY contribute_button "支援">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
-<!ENTITY pref_server_desc "差出人:">
+<!ENTITY pref_server_desc "差出人">
 <!ENTITY pref_server_def "共通設定">
 <!ENTITY pref_def.label "共通設定を使う">
 <!ENTITY pref_def.cap "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">
@@ -126,7 +126,7 @@
 <!ENTITY xsent_long_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
 <!ENTITY xsent_short.cap "短い書式の例">
 <<!ENTITY xsent_short_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
-<!ENTITY xsent_short_note.label "次の変数はどちらの形式でも使用可能です:">
+<!ENTITY xsent_short_note.label "次の変数はどちらの形式でも使用可能です">
 <!ENTITY localedate.label "日時 (OS の形式)">
 <!ENTITY shortdate.label "日時 (短い形式: 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "タイムゾーン (+0100, +0200, ... )">

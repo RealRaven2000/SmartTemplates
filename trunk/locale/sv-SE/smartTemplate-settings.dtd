@@ -110,7 +110,7 @@
 <!ENTITY xsent_long_result.label 		"Resultat: 16.02.2011 kl. 12:15: "> 
 <!ENTITY xsent_short.cap  				"Exempel på en kortsträng">
 <!ENTITY xsent_short_result.label 		"Resultat: onsdag, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label 		"Du kan dessutom använda dessa variabler:">
+<!ENTITY xsent_short_note.label 		"Du kan dessutom använda dessa variabler">
 <!ENTITY localedate.label 				"Datum och tid (lokalt format)">
 <!ENTITY shortdate.label 				"Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Tidszon (+0100, +0200, ... )"> 

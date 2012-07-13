@@ -124,7 +124,7 @@
 <!ENTITY xsent_long_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
 <!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta">
 <!ENTITY xsent_short_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
-<!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables:">
+<!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables">
 <!ENTITY localedate.label "Fecha y hora (formato local)">
 <!ENTITY shortdate.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Zona horaria (+0100, +0200, ... )">

@@ -126,7 +126,7 @@
 <!ENTITY xsent_long_result.label 		"Resultado: 16/02/2011 às 12:15">
 <!ENTITY xsent_short.cap 				"Exemplos com variáveis fixas">
 <!ENTITY xsent_short_result.label 		"Resultado: Quarta-feira, 16/02/2011 12:15:25">
-<!ENTITY xsent_short_note.label 		"Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também:">
+<!ENTITY xsent_short_note.label 		"Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também">
 <!ENTITY localedate.label 				"Data e hora (formato local)">
 <!ENTITY shortdate.label 				"Data e hora curta (por exemplo, 01/01/2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Fuso horário (+0100, +0200, ... )">

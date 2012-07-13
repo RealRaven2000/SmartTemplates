@@ -147,7 +147,7 @@
 <!ENTITY xsent_long_result.label 		"Resultaat: 16.02.2011 om 12:15:">
 <!ENTITY xsent_short.cap 				"Voorbeeld van een korte zin">
 <!ENTITY xsent_short_result.label 		"Resultaat: Woensdag, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label 		"Hiernaast kunt u in beide varianten de volgende variabelen ook gebruiken:">
+<!ENTITY xsent_short_note.label 		"Hiernaast kunt u in beide varianten de volgende variabelen ook gebruiken">
 <!ENTITY localedate.label 				"Datum en tijd (lokale opmaak)">
 <!ENTITY shortdate.label 				"Datum en tijd kort (b.v. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Tijdzone (+0100, +0200, …)">

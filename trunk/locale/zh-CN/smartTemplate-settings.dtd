@@ -124,7 +124,7 @@
 <!ENTITY xsent_long_result.label "结果： 16.02.2011 um 12:15 Uhr:">
 <!ENTITY xsent_short.cap "短字符串的例子">
 <!ENTITY xsent_short_result.label "结果： 星期三， 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用：">
+<!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用">
 <!ENTITY localedate.label "日期和时间（地区设定格式）">
 <!ENTITY shortdate.label "日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "时区 (+0100, +0200, ... )">
@@ -132,8 +132,8 @@
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
 <!ENTITY im-ex_note2.label "首先从 SmartTemplate4 的设置下拉框中选择您想要导出的账号。">
-<!ENTITY im-ex_note3.label "接下来从菜单栏中选择&ldquo;工具&rdquo; &#8658; &ldquo;导出&rdquo; &#8658; &ldquo;设置和模板&rdquo;，将文件（xxx.st4）保存到您的电脑中。">
-<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择&ldquo;工具&rdquo; &#8658; &ldquo;导入&rdquo; &#8658; &ldquo;设置和模板&rdquo;">
+<!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' &#8658; '导出' &#8658; '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
+<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' &#8658; '导入' &#8658; '设置和模板'">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
 <!ENTITY html_note.cap "HTML 模板说明">
