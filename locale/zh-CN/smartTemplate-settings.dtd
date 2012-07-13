@@ -120,11 +120,9 @@
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
-<!ENTITY xsent_long.cap "长字符串的例子：">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; um &#37;H&#37;:&#37;M&#37; Uhr:">
+<!ENTITY xsent_long.cap "长字符串的例子">
 <!ENTITY xsent_long_result.label "结果： 16.02.2011 um 12:15 Uhr:">
-<!ENTITY xsent_short.cap "短字符串的例子：">
-<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap "短字符串的例子">
 <!ENTITY xsent_short_result.label "结果： 星期三， 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用：">
 <!ENTITY localedate.label "日期和时间（地区设定格式）">

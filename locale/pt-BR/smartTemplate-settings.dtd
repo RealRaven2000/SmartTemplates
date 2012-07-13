@@ -122,11 +122,9 @@
 <!ENTITY p3.label 						"AM">
 <!ENTITY var_xsent.cap 					"Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label 				"As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">
-<!ENTITY xsent_long.cap 				"Exemplo com variáveis personalizáveis:">
-<!ENTITY xsent_long.label 				"A frase &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; às &#37;H&#37;:&#37;M&#37;">
+<!ENTITY xsent_long.cap 				"Exemplo com variáveis personalizáveis">
 <!ENTITY xsent_long_result.label 		"Resultado: 16/02/2011 às 12:15">
-<!ENTITY xsent_short.cap 				"Exemplos com variáveis fixas:">
-<!ENTITY xsent_short.label 				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap 				"Exemplos com variáveis fixas">
 <!ENTITY xsent_short_result.label 		"Resultado: Quarta-feira, 16/02/2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também:">
 <!ENTITY localedate.label 				"Data e hora (formato local)">

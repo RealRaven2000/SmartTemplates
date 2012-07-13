@@ -106,11 +106,9 @@
 <!ENTITY p3.label 						"AM"> 
 <!ENTITY var_xsent.cap 					"Att använda &#37;X:=sent&#37;"> 
 <!ENTITY xsent_note.label				"Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas."> 
-<!ENTITY xsent_long.cap 				"Exempel på en långsträng:">
-<!ENTITY xsent_long.label				"&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; kl. &#37;H&#37;:&#37;M&#37;:">
+<!ENTITY xsent_long.cap 				"Exempel på en långsträng">
 <!ENTITY xsent_long_result.label 		"Resultat: 16.02.2011 kl. 12:15: "> 
-<!ENTITY xsent_short.cap  				"Exempel på en kortsträng:">
-<!ENTITY xsent_short.label				"&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap  				"Exempel på en kortsträng">
 <!ENTITY xsent_short_result.label 		"Resultat: onsdag, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label 		"Du kan dessutom använda dessa variabler:">
 <!ENTITY localedate.label 				"Datum och tid (lokalt format)">

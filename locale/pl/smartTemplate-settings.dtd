@@ -120,11 +120,9 @@
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
-<!ENTITY xsent_long.cap "Przykład długiego formatu:">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; o godz. &#37;H&#37;:&#37;M&#37;:">
+<!ENTITY xsent_long.cap "Przykład długiego formatu">
 <!ENTITY xsent_long_result.label "Wynik: 16.02.2011 o godz. 12:15:">
-<!ENTITY xsent_short.cap "Przykład krótkiego formatu:">
-<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short.cap "Przykład krótkiego formatu">
 <!ENTITY xsent_short_result.label "Wynik: Środa, 16.02.2011 12:15:25">
 <!ENTITY xsent_short_note.label "Dodatkowo można również używać w obu wariantach następujących zmiennych:">
 <!ENTITY localedate.label "Data i czas (lokalny format)">

@@ -127,11 +127,9 @@
 <!ENTITY xsent_long.cap 				"Esimerkki pitkästä muotoilusta:">
 <!ENTITY xsent_long.label 				"&#37;X:=sent&#37; &#37;A&#37;na, &#37;d&#37;. &#37;B&#37;, &#37;Y&#37; klo &#37;k&#37;:&#37;M&#37;&#37;">
 <!ENTITY xsent_long_result.label 		"Lopputulos: tiistaina, 20. joulukuuta, 2011 klo 4:11">
-<!ENTITY xsent_short.cap 				"Esimerkki lyhyestä muotoilusta:">
-<!ENTITY xsent_short.label 				"&#37;X:=sent&#37; &#37;a&#37; &#37;dateshort&#37;">
+<!ENTITY xsent_short.cap 				"Esimerkki lyhyestä muotoilusta">
 <!ENTITY xsent_short_result.label 		"Lopputulos: ti 20.12.2011 4:11:34">
-<!ENTITY xsent_short_note.label 		"Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:">
-<!ENTITY localedate.label 				"Päiväys / Aika (Paikallinen muotoilu)">
+<!ENTITY xsent_short_note.label 		"Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia">
 <!ENTITY shortdate.label 				"Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Aikavyöhyke (+0100, +0200, ...)">
 <!ENTITY timezonename.label 			"GMT, PST, EST, …">
