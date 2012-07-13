@@ -154,7 +154,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// "cite-prefix" - the original header texts
 	// tag name: usually "br" | "div" | "#text"
 	// "unknown" - no node or nodeName available
-	function deleteNodeTextOrBR(node, idKey)
+	function deleteNodeTextOrBR(node, idKey, ignoreInPlainText)
 	{
 		let isCitation = false;
 		let match=false;
@@ -174,11 +174,11 @@ SmartTemplate4.classSmartTemplate = function()
 			content = '\nEMPTY';
 		switch(theNodeName) {
 			case 'br':
-				if (gMsgCompose.composeHTML) // AG change: only delete <br> nodes if we are in HTML mode.
+				if (!ignoreInPlainText) // AG change: only delete <br> nodes if we are in HTML mode.
 					match = true;
 				break;
 			case '#text':
-				if (gMsgCompose.composeHTML) // AG change: only delete text nodes if we are in HTML mode.
+				if (!ignoreInPlainText) // AG change: only delete text nodes if we are in HTML mode.
 					match = true;
 				break;
 			case 'div': // tb 13++
@@ -293,7 +293,8 @@ SmartTemplate4.classSmartTemplate = function()
 				node = n;
 				continue;
 			}
-			elType = deleteNodeTextOrBR(node, idKey); // 'cite-prefix'
+			let skipInPlainText = !gMsgCompose.composeHTML;
+			elType = deleteNodeTextOrBR(node, idKey, skipInPlainText); // 'cite-prefix'
 			node = n;
 		}
 
@@ -404,7 +405,8 @@ SmartTemplate4.classSmartTemplate = function()
 			let n = node.nextSibling;
 
 			if (node.nodeValue && node.nodeValue == origMsgDelimiter) {
-				deleteNodeTextOrBR(node, idKey); // HTML + plain text - stop after removing "--- original message ---"
+				let skipInPlainText = !gMsgCompose.composeHTML;
+				deleteNodeTextOrBR(node, idKey, skipInPlainText); // HTML + plain text - stop after removing "--- original message ---"
 				break;
 			}
 
@@ -643,10 +645,7 @@ SmartTemplate4.classSmartTemplate = function()
 				                   gMsgCompose.editor.rootElement, 0);
 			}
 			editor.beginningOfDocument();
-			editor.insertHTML("<div id=\"IDstID\">" + msgTmpl + "</div>");
-			editor.beginningOfDocument();
-			editor.selectionController.completeMove(false, false);
-			editor.selectionController.completeScroll(false);
+			editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
 		}
 
 
@@ -700,6 +699,10 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 		}
 
+		// moved code for moving cursor to top
+		editor.beginningOfDocument();
+		editor.selectionController.completeMove(false, false);
+		editor.selectionController.completeScroll(false);
 		gMsgCompose.editor.resetModificationCount();
 		if (startup) {
 			gMsgCompose.editor.enableUndo(false);
