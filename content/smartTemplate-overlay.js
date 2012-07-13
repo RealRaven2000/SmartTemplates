@@ -330,25 +330,30 @@ SmartTemplate4.mimeDecoder = {
 SmartTemplate4.regularize = function(msg, type)
 {
 	function getSignatureInner(removeDashes) {
-		SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
-		if (SmartTemplate4.signature != null) {
-			let sig = SmartTemplate4.signature;
-			SmartTemplate4.sigIsDefined = true;
-			if (!sig.children || sig.children.length==0) {
-				SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
+		try {
+			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
+			if (SmartTemplate4.signature != null) {
+				let sig = SmartTemplate4.signature;
+				SmartTemplate4.sigIsDefined = true;
+				if (!sig.children || sig.children.length==0) {
+					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
 
-				return sig.innerHTML ? sig.innerHTML : sig;  // deal with DOM String sig (non html)
-			}
-			if (removeDashes) {
-				if (sig.firstChild.nodeValue == "-- ") {
-					sig.removeChild(sig.firstChild); //remove '-- '
-					sig.removeChild(sig.firstChild); //remove 'BR'
+					return sig.innerHTML ? sig.innerHTML : sig.outerHTML;  // deal with DOM String sig (non html)
+				}
+				if (removeDashes) {
+					if (sig.firstChild.nodeValue == "-- ") {
+						sig.removeChild(sig.firstChild); //remove '-- '
+						sig.removeChild(sig.firstChild); //remove 'BR'
+						return sig.innerHTML;
+					}
+				}
+				else {
 					return sig.innerHTML;
 				}
 			}
-			else {
-				return sig.innerHTML;
-			}
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException('regularize.getSignatureInner() failed', ex);
 		}
 		return "";
 	}
@@ -388,9 +393,10 @@ SmartTemplate4.regularize = function(msg, type)
 			try{
 				SmartTemplate4.Util.logDebugOptional('regularize','regularize.chkRw(' + str + ', ' +  reservedWord + ', ' + param + ')');
 				let el = (typeof rw2h[reservedWord]=='undefined') ? '' : rw2h[reservedWord];
-				return el == "d.c."
+				let s = (el == "d.c.")
 					? str
 					: hdr.get(el ? el : reservedWord) != "" ? str : "";
+				return s;
 			} catch (e) {
 
 				SmartTemplate4.Util.displayNotAllowedMessage(reservedWord);
@@ -546,34 +552,42 @@ SmartTemplate4.regularize = function(msg, type)
 				token = identity.email;
 				break;
 			case "T": // today
-			case "X": return expand("%H%:%M%:%S%");           break;  // Time hh:mm:ss
-			case "Y": return "" + tm.getFullYear();           break;  // Year 1970...
-			case "n": return "" + (tm.getMonth()+1);          break;  // Month 1..12
-			case "m": return d02(tm.getMonth()+1);            break;  // Month 01..12
-			case "e": return "" + tm.getDate();           break;  // Day of month 1..31
-			case "d": return d02(tm.getDate());           break;  // Day of month 01..31
-			case "k": return "" + tm.getHours();          break;  // Hour 0..23
-			case "H": return d02(tm.getHours());          break;  // Hour 00..23
-			case "l": return "" + (((tm.getHours() + 23) % 12) + 1);  break;  // Hour 1..12
-			case "I": return d02(((tm.getHours() + 23) % 12) + 1);    break;  // Hour 01..12
-			case "M": return d02(tm.getMinutes());            break;  // Minutes 00..59
-			case "S": return d02(tm.getSeconds());            break;  // Seconds 00..59
-			case "tz_name":    return tm.toString().replace(/^.*\(|\)$/g, "");    break; //time zone name
+			case "X":                               // Time hh:mm:ss
+				return expand("%H%:%M%:%S%");
+			case "Y":                               // Year 1970...
+				return "" + tm.getFullYear();
+			case "n":                               // Month 1..12
+				return "" + (tm.getMonth()+1);
+			case "m":                               // Month 01..12
+				return d02(tm.getMonth()+1);
+			case "e":                               // Day of month 1..31
+				return "" + tm.getDate();
+			case "d":                               // Day of month 01..31
+				return d02(tm.getDate());
+			case "k":                               // Hour 0..23
+				return "" + tm.getHours();
+			case "H":                               // Hour 00..23
+				return d02(tm.getHours());
+			case "l":                               // Hour 1..12
+				return "" + (((tm.getHours() + 23) % 12) + 1);
+			case "I":                               // Hour 01..12
+				return d02(((tm.getHours() + 23) % 12) + 1);
+			case "M":                               // Minutes 00..59
+				return d02(tm.getMinutes());
+			case "S":                               // Seconds 00..59
+				return d02(tm.getSeconds());
+			case "tz_name":                         // time zone name
+				return tm.toString().replace(/^.*\(|\)$/g, "");
 			case "sig":
-				switch(f) {
-					case "(1)": return getSignatureInner(false); break;
-					case "(2)": return getSignatureInner(true);  break;
-					default:    return getSignatureInner(false); break;
-				}
-				break;
+				let removeDashes = (f=="(2)");
+				let ret = getSignatureInner(removeDashes)
+				return ret;
 			case "subject":
-				switch(f) {
-					case "(1)": return getSubject(false);   break;
-					case "(2)": return getSubject(true);    break;
-					default:    return getSubject(false);   break;
-				}
-				break;
-			case "newsgroup": return getNewsgroup();  break;
+				let current = (f=="(2)");
+				ret = getSubject(current);
+				return ret;
+			case "newsgroup":
+				return getNewsgroup();
 			// name of day and month
 			case "A":
 				return cal.dayName(tm.getDay());        break;  // locale day of week
@@ -604,7 +618,7 @@ SmartTemplate4.regularize = function(msg, type)
 				SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
 				return "";
 
-		// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
+			// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 			default:
 				var isStripQuote = RegExp(" " + token + " ", "i").test(
 				                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
