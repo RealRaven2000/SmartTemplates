@@ -25,7 +25,7 @@
 		<hbox id = "commands">
 			<spacer flex = "2"/>
 			<button id = "ok"
-			        label = "Ok"
+			        label = "OK"
 			        onclick = "SmartTemplate4.Message.okMessage();"/>
 			<spacer flex = "1"/>
 			<button id = "cancel"
