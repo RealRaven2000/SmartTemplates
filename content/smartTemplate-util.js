@@ -529,17 +529,18 @@ SmartTemplate4.Util = {
 
 		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
 		let ErrorString1 = '';
-		let ErrorString2 = '';
 		try{
 			//try writing an error to the Error Console using the localized string; if it fails write it in English
-			ErrorString1 = bundle.GetStringFromName("contextError1");
-			ErrorString2 = bundle.GetStringFromName("contextError2");
+			ErrorString1 = bundle.GetStringFromName("contextError");
 		} catch (e) {
-			ErrorString1 = bundle.GetStringFromName("SmartTemplate4: The variable");
-			ErrorString2 = bundle.GetStringFromName("can't be used for NEW Messages!\nListing of usable variables see Help");
+			ErrorString1 = bundle.GetStringFromName("The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables");
 		}
-		let errorText = ErrorString1 + " " + decoratedWord + " " + ErrorString2;
-		alert(errorText)
+		let errorText = ErrorString1.replace("{1}", decoratedWord);
+
+		SmartTemplate4.Message.display(errorText,
+		                              "centerscreen,titlebar",
+		                              function() { ; }
+		                              );
 		this.logDebug (errorText);
 	}
 

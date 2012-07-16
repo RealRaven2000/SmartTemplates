@@ -471,30 +471,39 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Remove template messages and Restore original quote headers
-	function undoTemplate()
+	function removePreviousTemplate()
 	{
-		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.undoTemplate()');
-		var curEl = gMsgCompose.editor.rootElement.firstChild;
-		var nextEl = gMsgCompose.editor.rootElement.firstChild;
-		if (nextEl && nextEl.nodeName == "PRE")
-			{ nextEl = nextEl.firstChild; }
-		while ((curEl = nextEl)) {
-			nextEl = curEl.nextSibling;
-			if (curEl.id == "IDstID") {
-				if (nextEl && nextEl.tagName == "BR")
-					{ gMsgCompose.editor.deleteNode(nextEl); }
-				gMsgCompose.editor.deleteNode(curEl);
-				break;
+		try {
+			SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.removePreviousTemplate()');
+			var curEl = gMsgCompose.editor.rootElement.firstChild;
+			var nextEl = gMsgCompose.editor.rootElement.firstChild;
+			if (nextEl && nextEl.nodeName == "PRE") {
+				nextEl = nextEl.firstChild;
+			}
+			while ((curEl = nextEl)) {
+				// one problem: if signature is not contained in this div, it will not be removed.
+				nextEl = curEl.nextSibling;
+				if (curEl.id == "smartTemplate4-template") {
+					if (nextEl && nextEl.tagName == "BR") {
+						gMsgCompose.editor.deleteNode(nextEl);
+					}
+					gMsgCompose.editor.deleteNode(curEl);
+					break;
+				}
+			}
+			// Restore original quote headers
+			while (orgQuoteHeaders.length > 0) {
+				gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), gMsgCompose.editor.rootElement, 0);
 			}
 		}
-		// Restore original quote headers
-		while (orgQuoteHeaders.length > 0) {
-			gMsgCompose.editor.insertNode(orgQuoteHeaders.pop(), gMsgCompose.editor.rootElement, 0);
+		catch(ex) {
+			SmartTemplate4.Util.logException("removePreviousTemplate - exception trying to remove previous template:", ex);
 		}
 	};
 
 	function clearTemplate()
 	{
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.clearTemplate()');
 		orgQuoteHeaders.length = 0;
 	};
 
@@ -558,7 +567,7 @@ SmartTemplate4.classSmartTemplate = function()
 				return;
 			}
 			// Undo template messages
-			undoTemplate();
+			removePreviousTemplate();
 		}
 
 		// is the %sig% variable used?
