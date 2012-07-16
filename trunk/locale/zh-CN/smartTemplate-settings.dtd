@@ -106,25 +106,26 @@
 <!ENTITY n.label "月份 (1 至 12)">
 <!ENTITY B.label "月份 (January)">
 <!ENTITY b.label "月份 (Jan.)">
+<!ENTITY m.label "月 (01 至 12)">
 <!ENTITY Y.label "年 (1970)">
 <!ENTITY M.label "分钟 (00 至 59)">
-<!ENTITY m.label "月 (01 至 12)">
 <!ENTITY s.label "第二 (00 至 59)">
 <!ENTITY h.label "小时，24-小时格式 (00 至 23)">
 <!ENTITY k.label "小时，24-小时格式 (0 至 23)">
-<!ENTITY i.label "小时，12-小时格式 (01 至 12)">
 <!ENTITY l.label "小时，12-小时格式 (1 至 12)">
+<!ENTITY i.label "小时，12-小时格式 (01 至 12)">
 <!ENTITY p.label "AM 或 PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
-<!ENTITY xsent_long.cap "长字符串的例子">
+<!ENTITY xsent_long.cap "长字符串的例子：">
 <!ENTITY xsent_long_result.label "结果： 16.02.2011 um 12:15 Uhr:">
 <!ENTITY xsent_short.cap "短字符串的例子">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "结果： 星期三， 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用">
+<!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用：">
 <!ENTITY localedate.label "日期和时间（地区设定格式）">
 <!ENTITY shortdate.label "日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "时区 (+0100, +0200, ... )">

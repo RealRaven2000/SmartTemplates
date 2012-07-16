@@ -30,7 +30,6 @@
 <!ENTITY pref_rspmsg.cap 				"Responder mensagens">
 <!ENTITY pref_rsp.label 				"Aplicar o seguinte modelo ao responder mensagens">
 <!ENTITY pref_rsphead.label 			"Usar no lugar do cabeçalho da mensagem anterior">
-
 <!ENTITY pref_fwdmsg.cap 				"Encaminhar mensagens">
 <!ENTITY pref_fwd.label 				"Aplicar o seguinte modelo ao encaminhar mensagens">
 <!ENTITY pref_fwdhead.label 			"Usar no lugar do cabeçalho da mensagem anterior">
@@ -66,33 +65,27 @@
 <!ENTITY to.label 						"Destinatário (padrão)">
 <!ENTITY tofirstname.label 				"Primeiro nome do destinatário">
 <!ENTITY toname.label 					"Nome do destinatário">
-
 <!ENTITY from_var.cap 					"Variáveis de Remetente (De)">
 <!ENTITY from_note.label 				"Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label 					"Remetente (padrão)">
 <!ENTITY fromfirstname.label 			"Primeiro nome do remetente">
 <!ENTITY fromname.label 				"Nome do remetente">
-
 <!ENTITY cc_var.cap 					"Variáveis de Destinatário (Cc)">
 <!ENTITY cc_note.label 					"Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY cc.label 						"Destinatário (padrão)">
 <!ENTITY ccfirstname.label 				"Primeiro nome do destinatário">
 <!ENTITY ccname.label 					"Nome do destinatário">
-
 <!ENTITY spec_form.cap 					"Formato Especial">
 <!ENTITY specform_note.label 			"A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
 <!ENTITY ex_brack.label 				"Exemplo: Para: boo Cc: foo">
-
 <!ENTITY sub_var.cap 					"Assunto">
 <!ENTITY sub.label 						"Assunto (mesmo como mailheader originais)">
 <!ENTITY sub2.label 					"Assunto (mesmo como editor Mensagem TB)">
-
 <!ENTITY spec_var.cap 					"Variáveis Especiais">
 <!ENTITY messid.label 					"Identificador da mensagem">
 <!ENTITY newsgr.label 					"Newsgroups">
 <!ENTITY xmail.label 					"X-Mailer">
 <!ENTITY any.label						"Qualquer linha de cabeçalho">
-
 <!ENTITY fix_vartz.cap 					"Variáveis para Data e Hora">
 <!ENTITY fix_vartz_note.label 			"Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label 				"Data e hora (formato local)">
@@ -108,25 +101,27 @@
 <!ENTITY n.label 						"Mês (de 1 a 12)">
 <!ENTITY B.label 						"Nome do mês (Janeiro)">
 <!ENTITY b.label 						"Nome do mês (Jan.)">
-<!ENTITY Y.label 						"Año (1970)">
+<!ENTITY m.label "Mês (de 01 a 12)">
+<!ENTITY Y.label "Año (1970)">
 <!ENTITY M.label "Minuto (00 a 59)">
-<!ENTITY m.label 						"Mês (de 01 a 12)">
-<!ENTITY s.label 						"Segundo (00 a 59)">
-<!ENTITY h.label 						"Hora, no formato de 24 horas (de 00 a 23)">
-<!ENTITY k.label 						"Hora, no formato de 24 horas (de 0 a 23)">
-<!ENTITY i.label 						"Hora, no formato de 12 horas (de 01 a 12)">
-<!ENTITY l.label 						"Hora, no formato de 12 horas (de 1 a 12)">
-<!ENTITY p.label 						"AM / PM">
+<!ENTITY s.label "Segundo (00 a 59)">
+<!ENTITY h.label "Hora, no formato de 24 horas (de 00 a 23)">
+<!ENTITY k.label "Hora, no formato de 24 horas (de 0 a 23)">
+<!ENTITY l.label "Hora, no formato de 12 horas (de 1 a 12)">
+<!ENTITY i.label "Hora, no formato de 12 horas (de 01 a 12)">
+<!ENTITY p.label "AM / PM">
 <!ENTITY p1.label 						"a.m.">
 <!ENTITY p2.label 						"A.M.">
 <!ENTITY p3.label 						"AM">
 <!ENTITY var_xsent.cap 					"Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label 				"As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">
-<!ENTITY xsent_long.cap 				"Exemplo com variáveis personalizáveis">
+<!ENTITY xsent_long.cap "Exemplo com variáveis personalizáveis:">
+<!ENTITY xsent_long.label "A frase &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; às &#37;H&#37;:&#37;M&#37;">
 <!ENTITY xsent_long_result.label 		"Resultado: 16/02/2011 às 12:15">
-<!ENTITY xsent_short.cap 				"Exemplos com variáveis fixas">
+<!ENTITY xsent_short.cap "Exemplos com variáveis fixas:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label 		"Resultado: Quarta-feira, 16/02/2011 12:15:25">
-<!ENTITY xsent_short_note.label 		"Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também">
+<!ENTITY xsent_short_note.label "Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também:">
 <!ENTITY localedate.label 				"Data e hora (formato local)">
 <!ENTITY shortdate.label 				"Data e hora curta (por exemplo, 01/01/2000 1:23:45)">
 <!ENTITY datetimezone.label 			"Fuso horário (+0100, +0200, ... )">

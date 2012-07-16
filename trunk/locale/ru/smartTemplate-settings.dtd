@@ -10,9 +10,12 @@
 <!ENTITY close.label "Закрыть">
 <!ENTITY export.label "Экспорт">
 <!ENTITY import.label "Импорт">
+<!ENTITY menu.template_import.label "Импорт шаблона">
+<!ENTITY menu.template_export.label "Экспорт шаблона">
 <!ENTITY settings.label "Настройки и Шаблоны">
 <!ENTITY url.homePage.label "Домашняя страница дополнения">
 <!ENTITY url.supportPage.label "Страница поддержки">
+<!ENTITY url.bugsAndFeaturesPage.label "Сообщение об ошибке / пожелание">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Создать">
 <!ENTITY pref_rsp.tab "Ответить">
@@ -22,6 +25,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">
+<!ENTITY contribute_button "Поддержать">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "Настройки SmartTemplate4">
 <!ENTITY pref_server_desc "Учётная запись">
@@ -36,10 +40,10 @@
 <!ENTITY pref_fwdmsg.cap "Переслать">
 <!ENTITY pref_fwd.label "Использовать следующий шаблон при пересылке сообщений">
 <!ENTITY pref_fwdhead.label "Отключить стандартный заголовок цитат">
-<!ENTITY pref_html.label "Шаблон в формате HTML (например &lt;b&gt;жирный&lt;/b&gt;)">
-<!ENTITY pref_html.cap "В данном случае шаблон используется как HTML-код. К примеру, новые строки, если не содержат &lt;br&gt;, не переносятся (если не включена опция ниже). Также могут использоваться HTML-символы:  &quot; , &amp; , &lt; , &gt; , пробел. Если отключено, все HTML-теги будут отображаться в сообщении в виде обычного текста. См. в справке.">
-<!ENTITY pref_rep_br.label "Заменять новые строки (в тексте шаблона) HTML-тегом &lt;br&gt; (в сообщении). См. в справке.">
-<!ENTITY pref_rep_br.cap "Внимание: при одноразовом использовании &lt;br&gt; пробелы не будут вставлены.">
+<!ENTITY pref_html.label "Шаблон в формате HTML (например &lt; b &gt;жирный &lt; /b &gt;)">
+<!ENTITY pref_html.cap "В данном случае шаблон используется как HTML-код. К примеру, новые строки, если не содержат &lt; br &gt;, не переносятся (если не включена опция ниже). Также могут использоваться HTML-символы:  &quot; , &amp; , &lt; , &gt; , пробел. Если отключено, все HTML-теги будут отображаться в сообщении в виде обычного текста. См. в справке.">
+<!ENTITY pref_rep_br.label "Заменять новые строки (в тексте шаблона) HTML-тегом &lt; br &gt; (в сообщении). См. в справке.">
+<!ENTITY pref_rep_br.cap "Внимание: при одноразовом использовании &lt; br &gt; пробелы не будут вставлены.">
 <!ENTITY pref_quotehead_tip "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат.">
 <!ENTITY pref_template_tip "Вы можете использовать переменные, описанные в справке.">
 <!ENTITY help_dialog_title "Справка SmartTemplate4">
@@ -83,6 +87,7 @@
 <!ENTITY spec_form.cap "Специальный формат">
 <!ENTITY specform_note.label "Выражение в скобках [[Cc: &#37;cc(name)&#37;]] будет выведено, если переменная &#37;cc(name)&#37; имеет значение!">
 <!ENTITY ex_brack.label "Пример: To: boo Cc: foo">
+<!ENTITY brack_with_var.label "Следующие переменные можно использовать внутри [[...]]">
 <!ENTITY sub_var.cap "Тема">
 <!ENTITY sub.label "тема отвечаемого / пересылаемого сообщения">
 <!ENTITY sub2.label "тема нового сообщения">
@@ -103,28 +108,30 @@
 <!ENTITY a.label "День недели(Пт)">
 <!ENTITY d.label "День месяца (01-31)">
 <!ENTITY e.label "День месяца (1-31)">
-<!ENTITY m.label "Месяц (01-12)">
 <!ENTITY n.label "Месяц (1-12)">
 <!ENTITY B.label "Месяц (Январь)">
 <!ENTITY b.label "Месяц (Янв.)">
+<!ENTITY m.label "Месяц (01-12)">
 <!ENTITY Y.label "Год (1970)">
 <!ENTITY M.label "Минуты (00-59)">
 <!ENTITY s.label "Секунды (00-59)">
 <!ENTITY h.label "Часы (00-23)">
 <!ENTITY k.label "Часы (0-23)">
-<!ENTITY i.label "Часы (01-12)">
 <!ENTITY l.label "Часы (1-12)">
+<!ENTITY i.label "Часы (01-12)">
 <!ENTITY p.label "до / после полудня">
 <!ENTITY p1.label "д.п.">
 <!ENTITY p2.label "Д.П.">
 <!ENTITY p3.label "ДП">
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения.">
-<!ENTITY xsent_long.cap "Пример длинной строки">
+<!ENTITY xsent_long.cap "Пример длинной строки:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;d&#37; &#37;8&#37;, &#37;Y&#37; в &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
 <!ENTITY xsent_long_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
-<!ENTITY xsent_short.cap "Пример короткой строки">
+<!ENTITY xsent_short.cap "Пример короткой строки:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Результат: Вторник, 20 Декабря, 2011 в 4:11пп">
-<!ENTITY xsent_short_note.label "Следующие переменные могут быть использованы в обоих вариантах">
+<!ENTITY xsent_short_note.label "Следующие переменные могут быть использованы в обоих вариантах:">
 <!ENTITY localedate.label "Дата / время (локальный формат)">
 <!ENTITY shortdate.label "Дата / время кратко (01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Часовогй пояс (+0100, +0200, ...)">

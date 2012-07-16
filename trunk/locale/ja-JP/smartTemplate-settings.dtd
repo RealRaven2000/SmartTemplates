@@ -26,7 +26,7 @@
 <!ENTITY contribute_button "支援">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
-<!ENTITY pref_server_desc "差出人">
+<!ENTITY pref_server_desc "差出人:">
 <!ENTITY pref_server_def "共通設定">
 <!ENTITY pref_def.label "共通設定を使う">
 <!ENTITY pref_def.cap "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">
@@ -105,17 +105,17 @@
 <!ENTITY a.label "曜日 (金)">
 <!ENTITY d.label "日 (01 から 31)">
 <!ENTITY e.label "日 (1 から 31)">
-<!ENTITY m.label "月 (01 から 12)">
 <!ENTITY n.label "月 (1 から 12)">
 <!ENTITY B.label "月 (睦月)">
 <!ENTITY b.label "月 (1 月)">
+<!ENTITY m.label "月 (01 から 12)">
 <!ENTITY Y.label "年 (1970)">
 <!ENTITY M.label "分 (00 から 59)">
 <!ENTITY s.label "秒 (00 から 59)">
 <!ENTITY h.label "時 (24 時間表記、00 から 23)">
 <!ENTITY k.label "時 (24 時間表記、0 から 23)">
-<!ENTITY i.label "時 (12 時間表記、01 から 12)">
 <!ENTITY l.label "時 (12 時間表記、1 から 12)">
+<!ENTITY i.label "時 (12 時間表記、01 から 12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
@@ -123,10 +123,12 @@
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; の使用">
 <!ENTITY xsent_note.label "日時に関する変数は通常現在の日時が反映されます。&#37;X:=sent&#37; と組み合わせた場合のみ、元のメッセージの日時が反映されます。">
 <!ENTITY xsent_long.cap "長い書式の例">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; at &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
 <!ENTITY xsent_long_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
 <!ENTITY xsent_short.cap "短い書式の例">
-<<!ENTITY xsent_short_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
-<!ENTITY xsent_short_note.label "次の変数はどちらの形式でも使用可能です">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "結果: Tuesday, December 20, 2011 at 4:11PM">
+<!ENTITY xsent_short_note.label "次の変数はどちらの形式でも使用可能です:">
 <!ENTITY localedate.label "日時 (OS の形式)">
 <!ENTITY shortdate.label "日時 (短い形式: 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "タイムゾーン (+0100, +0200, ... )">

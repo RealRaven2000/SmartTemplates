@@ -108,25 +108,27 @@
 <!ENTITY n.label "Numéro du mois (1 à 12)"> 
 <!ENTITY B.label "Mois (January)">
 <!ENTITY b.label "Mois (Jan.)">
+<!ENTITY m.label "Mois (01 à 12)">
 <!ENTITY Y.label "Année (1970)">
 <!ENTITY M.label "Minute (00 à 59)"> 
-<!ENTITY m.label "Mois (01 à 12)">
 <!ENTITY s.label "Deuxième (00 à 59)"> 
 <!ENTITY h.label "Heure, Format 24h (00 à 23)">
 <!ENTITY k.label "Heure, Format 24h (0 à 23)">
-<!ENTITY i.label "Heure, Format 12h (01 à 12)">
 <!ENTITY l.label "Heure, Format 12h (1 à 12)">
+<!ENTITY i.label "Heure, Format 12h (01 à 12)">
 <!ENTITY p.label "AM or PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Utiliser de &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Les variables de date et heure seront initialisées avec les valeurs courantes. Combiné avec &#37;X:=sent&#37;, les valeurs de date et heure seront celles du message original. ">
-<!ENTITY xsent_long.cap "Exemple d'un format long">
+<!ENTITY xsent_long.cap "Exemple d'un format long:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; à &#37;H&#37;:&#37;M&#37;">
 <!ENTITY xsent_long_result.label "Résultat : Mardi 20 décembre 2011 à 12:15 ">
-<!ENTITY xsent_short.cap "Exemple de format court">
+<!ENTITY xsent_short.cap "Exemple de format court:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Résultat : Mardi 20 décembre 2011 à 12:15 ">
-<!ENTITY xsent_short_note.label "En plus, vous pouvez utiliser ces variables avec les variantes">
+<!ENTITY xsent_short_note.label "En plus, vous pouvez utiliser ces variables avec les variantes :">
 <!ENTITY localedate.label "Date et heure (format local)">
 <!ENTITY shortdate.label "Date et heure courtes (ex : 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Zone horaire (+0100, +0200, ... )">

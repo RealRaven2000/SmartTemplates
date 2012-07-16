@@ -10,9 +10,12 @@
 <!ENTITY close.label "Zamknij">
 <!ENTITY export.label "Eksportuj">
 <!ENTITY import.label "Importuj">
+<!ENTITY menu.template_import.label "Importuj szablon">
+<!ENTITY menu.template_export.label "Eksportuj szablon">
 <!ENTITY settings.label "Ustawienia i szablony">
 <!ENTITY url.homePage.label "Strona domowa">
 <!ENTITY url.supportPage.label "Strona pomocy">
+<!ENTITY url.bugsAndFeaturesPage.label "Zgłaszanie błędów, próśb">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nowa wiadomość">
 <!ENTITY pref_rsp.tab "Odpowiedź">
@@ -22,6 +25,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Anuluj">
+<!ENTITY contribute_button "Zaangażuj się">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 – ustawienia">
 <!ENTITY pref_server_desc "Konta">
@@ -83,6 +87,7 @@
 <!ENTITY spec_form.cap "Format specjalny">
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
 <!ENTITY ex_brack.label "Przykład: Do: boo Kopia: foo">
+<!ENTITY brack_with_var.label "Następujące zmienne mogą być używane wewnątrz [[...]]">
 <!ENTITY sub_var.cap "Temat">
 <!ENTITY sub.label "Temat odpowiedzi/przekazywanej wiadomości">
 <!ENTITY sub2.label "Temat aktualnie tworzonej wiadomości">
@@ -103,28 +108,30 @@
 <!ENTITY a.label "Dzień tygodnia (Pi)">
 <!ENTITY d.label "Dzień miesiąca (01 do 31)">
 <!ENTITY e.label "Dzień miesiąca (1 do 31)">
-<!ENTITY m.label "Miesiąc (01 do 12)">
-<!ENTITY M.label "Minuta (00 do 59)">
 <!ENTITY n.label "Miesiąc (1 do 12)">
 <!ENTITY B.label "Miesiąc (Styczeń)">
 <!ENTITY b.label "Miesiąc (Sty)">
+<!ENTITY m.label "Miesiąc (01 do 12)">
 <!ENTITY Y.label "Rok (1970)">
+<!ENTITY M.label "Minuta (00 do 59)">
 <!ENTITY s.label "Sekunda (00 do 59)">
 <!ENTITY h.label "Godzina, format 24-godzinny (00 do 23)">
 <!ENTITY k.label "Godzina, format 24-godzinny (0 do 23)">
-<!ENTITY i.label "Godzina, format 12-godzinny (01 do 12)">
 <!ENTITY l.label "Godzina, format 12-godzinny (1 do 12)">
+<!ENTITY i.label "Godzina, format 12-godzinny (01 do 12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
-<!ENTITY xsent_long.cap "Przykład długiego formatu">
+<!ENTITY xsent_long.cap "Przykład długiego formatu:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; o godz. &#37;H&#37;:&#37;M&#37;:">
 <!ENTITY xsent_long_result.label "Wynik: 16.02.2011 o godz. 12:15:">
-<!ENTITY xsent_short.cap "Przykład krótkiego formatu">
+<!ENTITY xsent_short.cap "Przykład krótkiego formatu:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Wynik: Środa, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "Dodatkowo można również używać w obu wariantach następujących zmiennych">
+<!ENTITY xsent_short_note.label "Dodatkowo można również używać w obu wariantach następujących zmiennych:">
 <!ENTITY localedate.label "Data i czas (lokalny format)">
 <!ENTITY shortdate.label "Data i czas (np. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Strefa czasowa (+0100, +0200,… )">
