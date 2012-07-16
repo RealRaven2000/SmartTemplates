@@ -38,7 +38,7 @@ var SmartTemplate4 = {
 		this.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
-			this.oldFunc_LoadIdentity(startup);
+			this.original_LoadIdentity(startup);
 		}
 		else {
 			// Check body modified or not
@@ -48,9 +48,10 @@ var SmartTemplate4 = {
 				this.smartTemplate.insertTemplate(false);
 			}
 			// Old function call
-			this.oldFunc_LoadIdentity(startup);
-			if (!isBodyModified && gMsgCompose.bodyModified)
-			  { gMsgCompose.editor.resetModificationCount(); }	// for TB bug?
+			this.original_LoadIdentity(startup);
+			if (!isBodyModified && gMsgCompose.bodyModified) {
+				gMsgCompose.editor.resetModificationCount();
+			}	// for TB bug?
 		}
 	},
 
@@ -118,7 +119,7 @@ var SmartTemplate4 = {
 			return;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
 		SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
-		this.oldFunc_LoadIdentity = LoadIdentity;
+		this.original_LoadIdentity = LoadIdentity;
 		LoadIdentity = smartTemplate_loadIdentity;
 
 		this.pref = new SmartTemplate4.classPref();

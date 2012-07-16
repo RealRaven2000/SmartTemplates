@@ -23,7 +23,7 @@ SmartTemplate4.Help = {
 		                          SmartTemplate4.Listener.listen,
 		                          false,
 		                          true); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
-  } ,
+	} ,
 
 	onUnload : function() {
 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
