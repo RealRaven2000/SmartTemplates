@@ -724,7 +724,10 @@ SmartTemplate4.Util.firstRun =
 						SmartTemplate4.Message.display(updateVersionMessage + buildUpgradeMessage09(),
 						                              "centerscreen,titlebar",
 						                              function() {alert('[test callback function] {ok} was pressed')},
-						                              function() {alert('[test callback function] {cancel} was pressed')});
+						                              function() {alert('[test callback function] {cancel} was pressed')},
+						                              function() {alert('[test callback function] {yes} was pressed')},
+						                              function() {alert('[test callback function] {no} was pressed')}
+						                              );
 					}, 3000);
 			}
 
@@ -757,26 +760,34 @@ SmartTemplate4.Util.firstRun =
 // this object is used to configure the modeless smartTemplate-msg window
 // the display() Method it takes 2 callback functions one for [Ok] and one for [Cancel]
 // these are executed when the button is pressed, and the window will be closed.
-// if a callback for [Cancel] is not passed then the Cancel button is hidden
+// if a callback for [Cancel] [Yes] [No] is not passed then the Cancel button is hidden
 SmartTemplate4.Message = {
 	okCALLBACK : null ,
 	cancelCALLBACK : null,
+	yesCALLBACK : null ,
+	noCALLBACK : null ,
 	myWindow : null,
-	display : function(text, features, okCallback, cancelCallback) {
+	display : function(text, features, okCallback, cancelCallback, yesCallback, noCallback) {
 		var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
 
 		if (okCallback)
 			this.okCALLBACK = okCallback;
 		if (cancelCallback)
 			this.cancelCALLBACK = cancelCallback;
+		if (yesCallback)
+			this.yesCALLBACK = yesCallback;
+		if (noCallback)
+			this.noCALLBACK = noCallback;
 
-		// pass some data as args. we allow null for the callbacks
+		// pass some data as args. we allow nulls for the callbacks
 		// avoid using "this" in here as it confuses Tb3?
 		let params =
 		{
 			messageText:    text,
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
-			cancelCallback: SmartTemplate4.Message.cancelCALLBACK
+			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
+			yesCallback:    SmartTemplate4.Message.yesCALLBACK,
+			noCallback:     SmartTemplate4.Message.noCALLBACK
 		};
 
 		// open message with main as parent
@@ -805,7 +816,23 @@ SmartTemplate4.Message = {
 			this.cancelCALLBACK = null;
 		}
 		window.close();
+	} ,
 
+	// default function (probably not used)
+	yesMessage : function() {
+		if (this.yesCALLBACK) {
+			this.yesCALLBACK();
+			this.yesCALLBACK = null;
+		}
+		window.close();
+	} ,
+
+	noMessage : function() {
+		if (this.noCALLBACK) {
+			this.noCALLBACK();
+			this.noCALLBACK = null;
+		}
+		window.close();
 	} ,
 
 	loadMessage : function () {
@@ -835,6 +862,18 @@ SmartTemplate4.Message = {
 					cancelBtn.hidden = false;
 					window.st4CancelListener = window.arguments[0].cancelCallback;
 				}
+				if (window.arguments[0].yesCallback) {
+					let yesBtn = document.getElementById('yes');
+					yesBtn.addEventListener("click", window.arguments[0].yesCallback, true);
+					yesBtn.hidden = false;
+					window.st4YesListener = window.arguments[0].yesCallback;
+				}
+				if (window.arguments[0].noCallback) {
+					let noBtn = document.getElementById('no');
+					noBtn.addEventListener("click", window.arguments[0].noCallback, true);
+					noBtn.hidden = false;
+					window.st4NoListener = window.arguments[0].noCallback;
+				}
 			}
 			else
 				alert('window.arguments: ' + window.arguments);
@@ -849,12 +888,20 @@ SmartTemplate4.Message = {
 	unloadMessage : function (win) {
 		this.okCALLBACK = null;
 		this.cancelCALLBACK = null;
+		this.yesCALLBACK = null;
+		this.noCALLBACK = null;
 		this.myWindow = null;
 		if (win.st4OkListener) {
 			document.getElementById('ok').removeEventListener("click", win.st4OkListener);
 		}
 		if (win.st4CancelListener) {
 			document.getElementById('cancel').removeEventListener("click", win.st4CancelListener);
+		}
+		if (win.st4YesListener) {
+			document.getElementById('yes').removeEventListener("click", win.st4YesListener);
+		}
+		if (win.st4NoListener) {
+			document.getElementById('no').removeEventListener("click", win.st4NoListener);
 		}
 		win.close();
 	}
