@@ -9,6 +9,7 @@
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 #SmartTemplate4Messenger label 
 {
+	margin-left: 0.313em !important;
 	max-width : 350px;
 	width:auto;
 	-moz-transition: max-width 0.3s ease 0.2s;
