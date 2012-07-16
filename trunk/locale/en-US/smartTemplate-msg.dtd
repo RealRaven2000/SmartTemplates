@@ -1,0 +1,7 @@
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Cancel">
+<!ENTITY yes_button "Yes">
+<!ENTITY no_button "No">
+<!ENTITY message_default_title "SmartTemplate4">
+

@@ -1,10 +1,12 @@
 <?xml version = "1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-msg.dtd">
 <?xml-stylesheet href = "chrome://global/skin/global.css" type = "text/css"?>
 <?xml-stylesheet href = "chrome://smartTemplate4/skin/default/messageWindow.css" type = "text/css"?>
 
+
 <dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         id = "smarttemplate4-msg"
-        title = "SmartTemplate4"
+        title = "&message_default_title;"
         orient = "vertical"
         onload = "SmartTemplate4.Message.loadMessage();"
         onunload = "SmartTemplate4.Message.unloadMessage(this);"
@@ -23,16 +25,23 @@
 		</vbox>
 		<spacer flex = "1"/>
 		<hbox id = "commands">
-			<spacer flex = "2"/>
-			<button id = "ok"
-			        label = "OK"
-			        onclick = "SmartTemplate4.Message.okMessage();"/>
 			<spacer flex = "1"/>
+			<button id = "ok"
+			        label = "&accept_button;"
+			        onclick = "SmartTemplate4.Message.okMessage();"/>
+			<button id = "yes"
+			        label = "&yes_button;"
+			        onclick = "SmartTemplate4.Message.yesMessage();"
+			        hidden = "true" />
+			<button id = "no"
+			        label = "&no_button;"
+			        onclick = "SmartTemplate4.Message.noMessage();"
+			        hidden = "true" />
 			<button id = "cancel"
-			        label = "Cancel"
+			        label = "&cancel_button;"
 			        onclick = "SmartTemplate4.Message.cancelMessage();"
 			        hidden = "true" />
-			<spacer flex = "2"/>
+			<spacer flex = "1"/>
 		</hbox>
 	</vbox>
 
