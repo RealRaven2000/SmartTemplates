@@ -10,9 +10,12 @@
 <!ENTITY close.label "Sulje">
 <!ENTITY export.label "Vie">
 <!ENTITY import.label "Tuo">
+<!ENTITY menu.template_import.label "Tuo">
+<!ENTITY menu.template_export.label "Vie">
 <!ENTITY settings.label "Asetukset ja pohjat">
 <!ENTITY url.homePage.label "Lisäosan kotisivu">
 <!ENTITY url.supportPage.label "Tuen kotisivu">
+<!ENTITY url.bugsAndFeaturesPage.label "Virheilmoitukset / toimintoehdotukset">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Uusi">
 <!ENTITY pref_rsp.tab "Vastaa">
@@ -22,6 +25,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">
+<!ENTITY contribute_button "Avusta">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 - Asetukset">
 <!ENTITY pref_server_desc "Tili">
@@ -81,8 +85,9 @@
 <!ENTITY ccfirstname.label "Vastaanottajan etunimi">
 <!ENTITY ccname.label "Vastaanottajan nimi">
 <!ENTITY spec_form.cap "Erikoismuotoilu">
-<!ENTITY specform_note.label "Lauseke kaarisulkujen sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
+<!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
 <!ENTITY ex_brack.label "Esim: To: boo Cc: foo">
+<!ENTITY brack_with_var.label "Seuraavia muuttujia voidaan käyttää [[..]]-sulkeiden sisällä">
 <!ENTITY sub_var.cap "Aihe">
 <!ENTITY sub.label "vastattavan / välitettävän vietin aihe">
 <!ENTITY sub2.label "kirjoitettavan vietin aihe">
@@ -90,7 +95,7 @@
 <!ENTITY messid.label "Viestin tunnus (ID)">
 <!ENTITY newsgr.label "Uutisryhmät">
 <!ENTITY xmail.label "X-Mailer">
-<!ENTITY any.label "Kaikki Ylä-line">
+<!ENTITY any.label "Mikä tahansa otsakerivi">
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
@@ -106,26 +111,28 @@
 <!ENTITY n.label "Kuukausi (1-12)">
 <!ENTITY B.label "Kuukausi (Tammikuu)">
 <!ENTITY b.label "Kuukausi (tammi)">
+<!ENTITY m.label "Kuukausi (01-12)">
 <!ENTITY Y.label "Vuosi (1970)">
 <!ENTITY M.label "Minuutti (00-59)">
-<!ENTITY m.label "Kuukausi (01-12)">
 <!ENTITY s.label "Sekunti (00-59)">
 <!ENTITY h.label "Tunti, 24-tuntinen muoto (00-23)">
 <!ENTITY k.label "Tunti, 24-tuntinen muoto (0-23)">
-<!ENTITY i.label "Tunti, 12-tuntinen muoto (01-12)">
 <!ENTITY l.label "Tunti, 12-tuntinen muoto (1-12)">
+<!ENTITY i.label "Tunti, 12-tuntinen muoto (01-12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
-<!ENTITY xsent_long.cap "Esimerkki pitkästä muotoilusta">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;na, &#37;d&#37;. &#37;B&#37;, &#37;Y&#37; klo &#37;k&#37;:&#37;M&#37;&#37;">
+<!ENTITY xsent_long.cap "Esimerkki pitkästä muotoilusta:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;na, &#37;d&#37;. &#37;B&#37;, &#37;Y&#37; klo &#37;k&#37;:&#37;M&#37;">
 <!ENTITY xsent_long_result.label "Lopputulos: tiistaina, 20. joulukuuta, 2011 klo 4:11">
-<!ENTITY xsent_short.cap "Esimerkki lyhyestä muotoilusta">
+<!ENTITY xsent_short.cap "Esimerkki lyhyestä muotoilusta:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;a&#37; &#37;dateshort&#37;">
 <!ENTITY xsent_short_result.label "Lopputulos: ti 20.12.2011 4:11:34">
-<!ENTITY xsent_short_note.label "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia">
+<!ENTITY xsent_short_note.label "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:">
+<!ENTITY localedate.label "Päiväys / Aika (Paikallinen muotoilu)">
 <!ENTITY shortdate.label "Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Aikavyöhyke (+0100, +0200, ...)">
 <!ENTITY timezonename.label "GMT, PST, EST, …">

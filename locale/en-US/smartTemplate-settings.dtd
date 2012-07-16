@@ -126,9 +126,11 @@
 <!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">
 <!ENTITY xsent_note.label "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time.">
 <!ENTITY xsent_long.cap "Example for a longstring">
-<!ENTITY xsent_long_result.label "Result: Sunday, 20.12.2011 16:24 +0100">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock">
+<!ENTITY xsent_long_result.label "Result: Sunday, 20/12/2011 at 16:24 o'clock">
 <!ENTITY xsent_short.cap "Example of a shortstring">
-<!ENTITY xsent_short_result.label "Result: Sunday, 20.12.2011 08:54:21">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Result: Sunday, 20/12/2011 08:54:21">
 <!ENTITY xsent_short_note.label "The following variables can be used in both variants">
 <!ENTITY localedate.label "Date / Time (Locale Format)">
 <!ENTITY shortdate.label "Date / Time short (e.g. 01.01.2000 1:23:45)">

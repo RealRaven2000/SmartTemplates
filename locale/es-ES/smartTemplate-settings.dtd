@@ -10,9 +10,12 @@
 <!ENTITY close.label "Cerrar">
 <!ENTITY export.label "Exportar">
 <!ENTITY import.label "Importar">
+<!ENTITY menu.template_import.label "Importar plantilla">
+<!ENTITY menu.template_export.label "Exportar plantilla">
 <!ENTITY settings.label "Opciones y Plantillas">
 <!ENTITY url.homePage.label "Sitio web de la extensión">
 <!ENTITY url.supportPage.label "Ayudar al sitio web">
+<!ENTITY url.bugsAndFeaturesPage.label "Informes de errores / mejoras">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Redactar">
 <!ENTITY pref_rsp.tab "Responder">
@@ -22,6 +25,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Aceptar">
 <!ENTITY cancel_button "Cancelar">
+<!ENTITY contribute_button "Contribuir">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "Opciones de SmartTemplate4">
 <!ENTITY pref_server_desc "Cuenta">
@@ -83,6 +87,7 @@
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;">
 <!ENTITY ex_brack.label "Ejemplo: Para: boo Cc: foo">
+<!ENTITY brack_with_var.label "Las siguientes variables pueden usarse dentro de [[…]]">
 <!ENTITY sub_var.cap "Asunto">
 <!ENTITY sub.label "asunto del correo que se responde o reenvía.">
 <!ENTITY sub2.label "asunto del mensaje que se está redactando">
@@ -103,28 +108,30 @@
 <!ENTITY a.label "Día de la semana (Vie.)">
 <!ENTITY d.label "Día del mes (01 a 31)">
 <!ENTITY e.label "Día del mes (1 a 31)">
-<!ENTITY m.label "Mes (01 a 12)">
 <!ENTITY n.label "Mes (1 a 12)">
 <!ENTITY B.label "Mes (Enero)">
 <!ENTITY b.label "Mes (Ene.)">
+<!ENTITY m.label "Mes (01 a 12)">
 <!ENTITY Y.label "Año (1970)">
 <!ENTITY M.label "Minuto (00 a 59)">
 <!ENTITY s.label "Segundo (00 a 59)">
 <!ENTITY h.label "Hora en formato 24 horas (00 a 23)">
 <!ENTITY k.label "Hora en formato 24 horas (0 a 23)">
-<!ENTITY i.label "Hora en formato 12 horas (01 a 12)">
 <!ENTITY l.label "Hora en formato 12 horas (1 a 12)">
+<!ENTITY i.label "Hora en formato 12 horas (01 a 12)">
 <!ENTITY p.label "AM / PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY var_xsent.cap "Usar de &#37;X:=sent&#37;">
+<!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
-<!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga">
+<!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; a las &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
 <!ENTITY xsent_long_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
-<!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta">
+<!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
-<!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables">
+<!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables:">
 <!ENTITY localedate.label "Fecha y hora (formato local)">
 <!ENTITY shortdate.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Zona horaria (+0100, +0200, ... )">
