@@ -5,7 +5,7 @@
 // -------------------------------------------------------------------
 SmartTemplate4.classSmartTemplate = function()
 {
-	function readSigFile(Ident) {
+	function readSignatureFile(Ident) {
 		let htmlSigText = '';
 		// test code for reading local sig file (WIP)
 		try {
@@ -49,6 +49,7 @@ SmartTemplate4.classSmartTemplate = function()
 			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
 			SmartTemplate4.Util.logException("extractSignature - exception trying to read signature attachment file!", ex);
 		}
+		return htmlSigText;
 	}
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
@@ -71,7 +72,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let sigNode = null;
 
 		if (isSignatureTb) {
-			// try to extract signature manually - well we need the last one!!
+			// try to extract already inserted signature manually - well we need the last one!!
 			// get the signature straight from the bodyElement!
 			//signature from top
 			if (Ident.replyOnTop && !Ident.sigBottom) {
@@ -84,11 +85,19 @@ SmartTemplate4.classSmartTemplate = function()
 					sigNode = signatureNodes[signatureNodes.length-1];
 				}
 			}
+			// eliminate this if it is contained in BLOCKQUOTE
+			if (sigNode && sigNode.parentNode) {
+				if (sigNode.parentNode.nodeName) {
+					if (sigNode.parentNode.nodeName.toLowerCase() == 'blockquote')
+						sigNode = null;
+				}
+
+			}
 		}
 
 		// read text from signature file
 		if (Ident.attachSignature) {
-			let fileSig = readSigFile(Ident);
+			let fileSig = readSignatureFile(Ident);
 			htmlSigText = fileSig ? fileSig : htmlSigText;
 		}
 
