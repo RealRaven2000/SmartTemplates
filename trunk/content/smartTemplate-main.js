@@ -47,11 +47,10 @@ var SmartTemplate4 = {
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
 			if (!isBodyModified) {
-				// if previous id had signature below the quote, we should try to remove it now
+				// if previous id had signature below the quote, we should try to remove it from there now
 				if (previousIdentity) {
-					let oldIdentity = gAccountManager.getIdentity(previousIdentity);
-					if (oldIdentity.sigBottom) {
-						if (oldIdentity.composeHtml) {
+					if (previousIdentity.sigBottom) {
+						if (previousIdentity.composeHtml) {
 							// find and delete div class="st4signature" from end to start.
 							// for this we need to add the class "st4signature" into any sig we add...
 
