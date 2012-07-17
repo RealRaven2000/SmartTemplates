@@ -122,13 +122,15 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 
+		// catches position of previous signature.
 		for(let i = 0; i < nodes.length; i++) {
 			if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 				bodyEl.removeChild(nodes[i].previousElementSibling); //remove the preceding BR that TB always inserts
-				sig = bodyEl.removeChild(nodes[i-1]);
+				let old_sig = bodyEl.removeChild(nodes[i-1]);
 				break;
 			}
 		}
+		// let's discard the old signature instead.
 
 
 		if (!sig || typeof sig == 'string') {

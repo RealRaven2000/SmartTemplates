@@ -33,7 +33,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to switch identity
 	// -------------------------------------------------------------------
-	loadIdentity : function(startup)
+	loadIdentity : function(startup, previousIdentity)
 	{
 		this.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
@@ -43,8 +43,24 @@ var SmartTemplate4 = {
 		else {
 			// Check body modified or not
 			var isBodyModified = gMsgCompose.bodyModified;
+			// we can only reliable roll back the previous template and insert
+			// a new one if the user did not start composing yet (otherwise danger
+			// of removing newly composed content)
 			if (!isBodyModified) {
-				// Add template message
+				// if previous id had signature below the quote, we should try to remove it now
+				if (previousIdentity) {
+					let oldIdentity = gAccountManager.getIdentity(previousIdentity);
+					if (oldIdentity.sigBottom) {
+						if (oldIdentity.composeHtml) {
+							// find and delete div class="st4signature" from end to start.
+							// for this we need to add the class "st4signature" into any sig we add...
+
+						}
+						else {
+						}
+					}
+				}
+				// Add template message - will also remove previous header.
 				this.smartTemplate.insertTemplate(false);
 			}
 			// Old function call
@@ -68,6 +84,13 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	classCalIDateTimeFormatter: function(useLegacy)
 	{
+		function list() {
+			var str = "";
+			for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
+			for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
+			return str;
+		};
+
 		// -----------------------------------
 		// Constructor
 		try {
@@ -90,20 +113,13 @@ var SmartTemplate4 = {
 			};
 		}
 
-		function list() {
-			var str = "";
-			for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
-			for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
-			return str;
-		};
-
 		// -----------------------------------
 		// Public methods
-		this.dayName		= cal.dayName;
-		this.shortDayName	= cal.shortDayName;
-		this.monthName		= cal.monthName;
+		this.dayName = cal.dayName;
+		this.shortDayName = cal.shortDayName;
+		this.monthName = cal.monthName;
 		this.shortMonthName = cal.shortMonthName;
-		this.list			= list;
+		this.list = list;
 	} ,
 
 	// -------------------------------------------------------------------
@@ -112,14 +128,19 @@ var SmartTemplate4 = {
 	init: function()
 	{
 		function smartTemplate_loadIdentity(startup){
-			return SmartTemplate4.loadIdentity(startup);
+			var prevIdentity = gCurrentIdentity;
+			return SmartTemplate4.loadIdentity(startup, prevIdentity);
 		}
-		// main code: avoid init()
-		if (typeof LoadIdentity === 'undefined')
+
+		// http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
+		if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
 			return;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
 		SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
 		this.original_LoadIdentity = LoadIdentity;
+		// overwriting a global function within composer instance scope
+		// this is intentional, as we needed to replace Tb's processing
+		// with our own (?)
 		LoadIdentity = smartTemplate_loadIdentity;
 
 		this.pref = new SmartTemplate4.classPref();
