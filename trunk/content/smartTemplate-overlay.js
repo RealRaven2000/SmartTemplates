@@ -417,7 +417,7 @@ SmartTemplate4.regularize = function(msg, type)
 		// Reserved words that do not depend on the original message.
 		setRw2h("d.c.", "ownname", "ownmail",
 						"Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup");
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso");
 
 		// Reserved words which depend on headers of the original message.
 		setRw2h("To",   "to", "toname", "tomail");
@@ -516,122 +516,128 @@ SmartTemplate4.regularize = function(msg, type)
 			tm.setTime(date / 1000);
 		}
 
-		// for backward compatibility
-		switch (token) {
-			case "fromname":  token = "From"; f = "(name)";   break;
-			case "frommail":  token = "From"; f = "(mail)";   break;
-			case "toname":    token = "To";   f = "(name)";   break;
-			case "tomail":    token = "To";   f = "(mail)";   break;
-			case "ccname":    token = "Cc";   f = "(name)";   break;
-			case "ccmail":    token = "Cc";   f = "(mail)";   break;
-		}
-
-
-		switch(token){
-			case "datelocal":
-			case "dateshort":
-				if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
-					token = prTime2Str(tm.getTime() * 1000, token, 0);
-					return SmartTemplate4.escapeHtml(token);
-				}else{
-					token = prTime2Str(date, token, 0);
-					return SmartTemplate4.escapeHtml(token);
-				}
-			case "timezone":
-			case "date_tz":
-					var matches = tm.toString().match(/([+-][0-9]{4})/);
-					return SmartTemplate4.escapeHtml(matches[0]);
-		}
-
-		switch (token) {
-			// for Common (new/reply/forward) message
-			case "ownname": // own name
-				token = identity.identityName.replace(/\s*<.*/, "");
-				break;
-			case "ownmail": // own email address
-				token = identity.email;
-				break;
-			case "T": // today
-			case "X":                               // Time hh:mm:ss
-				return expand("%H%:%M%:%S%");
-			case "Y":                               // Year 1970...
-				return "" + tm.getFullYear();
-			case "n":                               // Month 1..12
-				return "" + (tm.getMonth()+1);
-			case "m":                               // Month 01..12
-				return d02(tm.getMonth()+1);
-			case "e":                               // Day of month 1..31
-				return "" + tm.getDate();
-			case "d":                               // Day of month 01..31
-				return d02(tm.getDate());
-			case "k":                               // Hour 0..23
-				return "" + tm.getHours();
-			case "H":                               // Hour 00..23
-				return d02(tm.getHours());
-			case "l":                               // Hour 1..12
-				return "" + (((tm.getHours() + 23) % 12) + 1);
-			case "I":                               // Hour 01..12
-				return d02(((tm.getHours() + 23) % 12) + 1);
-			case "M":                               // Minutes 00..59
-				return d02(tm.getMinutes());
-			case "S":                               // Seconds 00..59
-				return d02(tm.getSeconds());
-			case "tz_name":                         // time zone name
-				return tm.toString().replace(/^.*\(|\)$/g, "");
-			case "sig":
-				let removeDashes = (f=="(2)");
-				let ret = getSignatureInner(removeDashes)
-				return ret;
-			case "subject":
-				let current = (f=="(2)");
-				ret = getSubject(current);
-				return ret;
-			case "newsgroup":
-				return getNewsgroup();
-			// name of day and month
-			case "A":
-				return cal.dayName(tm.getDay());        break;  // locale day of week
-			case "a":
-				return cal.shortDayName(tm.getDay());       break;  // locale day of week(short)
-			case "B":
-				return cal.monthName(tm.getMonth());        break;  // locale month
-			case "b":
-				return cal.shortMonthName(tm.getMonth());   break;  // locale month(short)
-			case "p":
-			switch (f) {
-				case "(1)":
-					return tm.getHours() < 12 ? "a.m." : "p.m."; // locale am or pm
-				case "(2)":
-					return tm.getHours() < 12 ? "A.M." : "P.M."; // locale am or pm
-				case "(3)":
-				default:
-					return tm.getHours() < 12 ? "AM" : "PM";     // locale am or pm
+		try {
+			// for backward compatibility
+			switch (token) {
+				case "fromname":  token = "From"; f = "(name)";   break;
+				case "frommail":  token = "From"; f = "(mail)";   break;
+				case "toname":    token = "To";   f = "(name)";   break;
+				case "tomail":    token = "To";   f = "(mail)";   break;
+				case "ccname":    token = "Cc";   f = "(name)";   break;
+				case "ccmail":    token = "Cc";   f = "(mail)";   break;
 			}
-			break;
-			case "dbg1":  return cal.list();
-				break;
-			// Change time of %A-Za-z%
-			case "X:=sent":
-				SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
-				return "";
-			case "X:=today":
-				SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
-				return "";
 
-			// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
-			default:
-				var isStripQuote = RegExp(" " + token + " ", "i").test(
-				                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
-				                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
-				if (isStripQuote) {
-					token = mime.split(hdr.get(token), charset, f);
-				}
-				else {
-					token = mime.decode(hdr.get(token), charset);
-				}
-				break;
-				// unreachable code! =>
-				// token = token.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
+
+			switch(token){
+				case "datelocal":
+				case "dateshort":
+					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
+						token = prTime2Str(tm.getTime() * 1000, token, 0);
+						return SmartTemplate4.escapeHtml(token);
+					}else{
+						token = prTime2Str(date, token, 0);
+						return SmartTemplate4.escapeHtml(token);
+					}
+				case "timezone":
+				case "date_tz":
+						var matches = tm.toString().match(/([+-][0-9]{4})/);
+						return SmartTemplate4.escapeHtml(matches[0]);
+				// for Common (new/reply/forward) message
+				case "ownname": // own name
+					token = identity.identityName.replace(/\s*<.*/, "");
+					break;
+				case "ownmail": // own email address
+					token = identity.email;
+					break;
+				case "T": // today
+				case "X":                               // Time hh:mm:ss
+					return expand("%H%:%M%:%S%");
+				case "Y":                               // Year 1970...
+					return "" + tm.getFullYear();
+				case "n":                               // Month 1..12
+					return "" + (tm.getMonth()+1);
+				case "m":                               // Month 01..12
+					return d02(tm.getMonth()+1);
+				case "e":                               // Day of month 1..31
+					return "" + tm.getDate();
+				case "d":                               // Day of month 01..31
+					return d02(tm.getDate());
+				case "k":                               // Hour 0..23
+					return "" + tm.getHours();
+				case "H":                               // Hour 00..23
+					return d02(tm.getHours());
+				case "l":                               // Hour 1..12
+					return "" + (((tm.getHours() + 23) % 12) + 1);
+				case "I":                               // Hour 01..12
+					return d02(((tm.getHours() + 23) % 12) + 1);
+				case "M":                               // Minutes 00..59
+					return d02(tm.getMinutes());
+				case "S":                               // Seconds 00..59
+					return d02(tm.getSeconds());
+				case "tz_name":                         // time zone name
+					return tm.toString().replace(/^.*\(|\)$/g, "");
+				case "sig":
+					let removeDashes = (f=="(2)");
+					let ret = getSignatureInner(removeDashes)
+					return ret;
+				case "subject":
+					let current = (f=="(2)");
+					ret = getSubject(current);
+					return ret;
+				case "newsgroup":
+					return getNewsgroup();
+				// name of day and month
+				case "A":
+					return cal.dayName(tm.getDay());        break;  // locale day of week
+				case "a":
+					return cal.shortDayName(tm.getDay());       break;  // locale day of week(short)
+				case "B":
+					return cal.monthName(tm.getMonth());        break;  // locale month
+				case "b":
+					return cal.shortMonthName(tm.getMonth());   break;  // locale month(short)
+				case "p":
+					switch (f) {
+						case "(1)":
+							return tm.getHours() < 12 ? "a.m." : "p.m."; // locale am or pm
+						case "(2)":
+							return tm.getHours() < 12 ? "A.M." : "P.M."; // locale am or pm
+						case "(3)":
+						default:
+							return tm.getHours() < 12 ? "AM" : "PM";     // locale am or pm
+					}
+					break;
+				case "dbg1":  return cal.list();
+					break;
+				case "cwIso": // ISO calendar week [Bug 25012]
+					let offset = parseInt(f.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
+					return "" + SmartTemplate4.Util.getIsoWeek(tm, offset);
+				// Change time of %A-Za-z%
+				case "X:=sent":
+					SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
+					return "";
+				case "X:=today":
+					SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
+					return "";
+
+				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
+				default:
+					var isStripQuote = RegExp(" " + token + " ", "i").test(
+					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
+					                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+					if (isStripQuote) {
+						token = mime.split(hdr.get(token), charset, f);
+					}
+					else {
+						token = mime.decode(hdr.get(token), charset);
+					}
+					break;
+					// unreachable code! =>
+					// token = token.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
+			}
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException('replaceReservedWords(dmy, ' + token + ', ' + f +') failed ', ex);
+			token="??";
 		}
 		return SmartTemplate4.escapeHtml(token);
 	}
