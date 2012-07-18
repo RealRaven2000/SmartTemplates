@@ -606,8 +606,8 @@ SmartTemplate4.regularize = function(msg, type)
 							return tm.getHours() < 12 ? "AM" : "PM";     // locale am or pm
 					}
 					break;
-				case "dbg1":  return cal.list();
-					break;
+				case "dbg1":
+					return cal.list();
 				case "cwIso": // ISO calendar week [Bug 25012]
 					let offset = parseInt(f.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
 					return "" + SmartTemplate4.Util.getIsoWeek(tm, offset);

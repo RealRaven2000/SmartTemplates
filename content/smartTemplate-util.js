@@ -553,6 +553,13 @@ SmartTemplate4.Util = {
 */
 	getIsoWeek : function (tm, dowOffset) {
 	/*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.epoch-calendar.com */
+		if (!tm) {
+			return ("No valid time passed to getIsoWeek!");
+		}
+		if (isNaN(dowOffset)) {
+			return ("cwIso(offset) needs a number as offset! e.g. cwIso(0)");
+		}
+		SmartTemplate4.Util.logDebugOptional('functions', 'Util.getIsoWeek(' + tm + ', ' + dowOffset + ')');
 
 		dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0; //default dowOffset to zero
 
@@ -577,6 +584,7 @@ SmartTemplate4.Util = {
 		else {
 			weeknum = Math.floor((daynum+day-1)/7);
 		}
+		SmartTemplate4.Util.logDebugOptional('functions', 'Util.getIsoWeek() returns weeknum: ' + weeknum);
 		return weeknum;
 	}
 
