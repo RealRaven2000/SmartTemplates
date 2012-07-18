@@ -721,8 +721,14 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// moved code for moving cursor to top
 		editor.beginningOfDocument();
-		editor.selectionController.completeMove(false, false);
-		editor.selectionController.completeScroll(false);
+		try {
+			editor.selectionController.completeMove(false, false);
+			editor.selectionController.completeScroll(false);
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logDebug("editor.selectionController command failed - editor = " + editor + "\n" + ex);
+
+		}
 		gMsgCompose.editor.resetModificationCount();
 		if (startup) {
 			gMsgCompose.editor.enableUndo(false);
