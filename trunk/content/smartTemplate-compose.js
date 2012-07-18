@@ -9,7 +9,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let htmlSigText = '';
 		// test code for reading local sig file (WIP)
 		try {
-			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile)
+			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile);
 			if (sigFile)
 			{
 				SmartTemplate4.Util.logDebug('extractSignature() '
@@ -700,21 +700,21 @@ SmartTemplate4.classSmartTemplate = function()
 				SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
 
 				let pref = SmartTemplate4.pref;
-				// why not use theIdentity.sigBottom ??
-				// theIdentity.sigOnReply
-				// theIdentity.sigOnForward
 
 				// theIdentity.sigBottom is better than using
 				// let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
 				let bodyEl = gMsgCompose.editor.rootElement;
 
+				// add Signature and replace the BR that was removed in extractSignature
+				// do we ignore theIdentity.sigOnReply ?
+				// do we ignore theIdentity.sigOnForward ?
 				if (theIdentity.sigBottom) {
-					bodyEl.appendChild(gMsgCompose.editor.document.createElement("br")); //replace the BR that was removed in extractSignature
+					bodyEl.appendChild(gMsgCompose.editor.document.createElement("br"));
 					bodyEl.appendChild(theSignature);
 				}
 				else {
 					bodyEl.insertBefore(theSignature, bodyEl.firstChild);
-					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild); //replace the BR that was removed in extractSignature
+					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild);
 				}
 			}
 		}
