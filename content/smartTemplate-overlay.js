@@ -576,7 +576,10 @@ SmartTemplate4.regularize = function(msg, type)
 					return d02(tm.getSeconds());
 				case "tz_name":                         // time zone name
 					// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
-					return tm.toString().match('[A-Z]{3}').toString();
+					let timeZone = tm.toString().match('[A-Z]{4}');
+					if (!timeZone)
+						timeZone = tm.toString().match('[A-Z]{3}');
+					return timeZone.toString();
 				case "sig":
 					let removeDashes = (f=="(2)");
 					let ret = getSignatureInner(removeDashes)
