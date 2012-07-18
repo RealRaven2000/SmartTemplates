@@ -123,7 +123,7 @@ SmartTemplate4.classPref = function()
 			SmartTemplate4.Util.logDebug('getLocale() returns: ' + locale);
 			return locale;
 		}
-		catch (e) {
+		catch (ex) {
 			SmartTemplate4.Util.logException('getLocale() failed and defaulted to [en]', ex);
 			return "en";
 		}
@@ -397,7 +397,7 @@ SmartTemplate4.regularize = function(msg, type)
 					? str
 					: hdr.get(el ? el : reservedWord) != "" ? str : "";
 				return s;
-			} catch (e) {
+			} catch (ex) {
 
 				SmartTemplate4.Util.displayNotAllowedMessage(reservedWord);
 				return "";
