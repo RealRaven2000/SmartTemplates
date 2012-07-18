@@ -113,22 +113,10 @@ SmartTemplate4.classPref = function()
 		{
 			let localeService = Components.classes["@mozilla.org/intl/nslocaleservice;1"]
 			                    .getService(Components.interfaces.nsILocaleService);
-			let locale = localeService.getSystemLocale();
-			
-/*		
-			var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-			                  .getService(Components.interfaces.nsIPrefService);
-			try {
-				var accept_languages = prefService.getComplexValue("intl.accept_languages", Components.interfaces.nsIPrefLocalizedString).data;
-			}
-			catch (e) {
-				accept_languages = prefService.getCharPref("intl.accept_languages");
-			}
-			let locale = /^[^\s,;]{2,}/.exec(accept_languages)[0];  // Extract first locale code in pref (space/comma/semicolon delimited list)
-*/
-			let lo = locale.getLocaleComponentForUserAgent();
-			SmartTemplate4.Util.logDebug('getLocale() returns: ' + lo);
-			return lo;
+			let locale = localeService.getLocaleComponentForUserAgent();
+
+			SmartTemplate4.Util.logDebug('getLocale() returns: ' + locale);
+			return locale;
 		}
 		catch (ex) {
 			SmartTemplate4.Util.logException('getLocale() failed and defaulted to [en]', ex);
