@@ -330,6 +330,8 @@ SmartTemplate4.regularize = function(msg, type)
 			if (SmartTemplate4.signature != null) {
 				let sig = SmartTemplate4.signature;
 				SmartTemplate4.sigIsDefined = true;
+				if (typeof sig === "string")
+					return sig;
 				if (!sig.children || sig.children.length==0) {
 					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
 
