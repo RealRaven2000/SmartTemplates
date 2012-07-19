@@ -224,8 +224,8 @@ button.bugsURL:focus {
 }
 
 .actionTabs > tab .tab-middle {
-	padding-top: 6px !important;
-	padding-bottom: 6px !important;
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
 }
 
 .NewTab,.RespondTab,.ForwardTab,.AboutTab {
