@@ -664,8 +664,23 @@ SmartTemplate4.classSmartTemplate = function()
 				                   gMsgCompose.editor.document.createElement("br"),
 				                   gMsgCompose.editor.rootElement, 0);
 			}
+			try {
+				editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
+			}
+			catch (ex) {
+				let errortext = 'Could not insert Template as HTML; please check for syntax errors.'
+				      + '\n' + 'this might be caused by html comments <!-- or unclosed tag brackets <...>'
+				      + '\n' + ex
+				      + '\n' + 'Copy template contents to clipboard?';
+				SmartTemplate4.Message.display(errorText,
+				              "centerscreen,titlebar",
+				              function() {
+				              	let oClipBoard = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+				              	oClipBoard.copyString(msgTmpl); },
+				              function() { ;/* cancel NOP */ }
+				            );
+			}
 			editor.beginningOfDocument();
-			editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
 		}
 
 
@@ -720,8 +735,8 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// moved code for moving cursor to top
-		editor.beginningOfDocument();
 		try {
+			editor.beginningOfDocument();
 			editor.selectionController.completeMove(false, false);
 			editor.selectionController.completeScroll(false);
 		}
