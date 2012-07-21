@@ -177,6 +177,7 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 	var headers = Components.classes["@mozilla.org/messenger/mimeheaders;1"]
 	              .createInstance().QueryInterface(Components.interfaces.nsIMimeHeaders);
 	headers.initialize(msgContent, msgContent.length);
+	SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
 
 	// -----------------------------------
 	// Get header
@@ -226,27 +227,34 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// MIME decoding.
-	decode : function (string, charset)
+	decode : function (theString, charset)
 	{
 		var decodedStr = "";
 
-		if (/=\?/.test(string)) {
-			// RFC2231/2047 encoding.
-			// We need to escape the space and split by line-breaks,
-			// because getParameter stops convert at the space/line-breaks.
-			var array = string.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*/g);
-			for (var i = 0; i < array.length; i++) {
-				decodedStr += this.headerParam
-				                  .getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null })
-				                  .replace(/-%-/g, " ").replace(/%%/g, "%");
+		try {
+			if (/=\?/.test(theString)) {
+				// RFC2231/2047 encoding.
+				// We need to escape the space and split by line-breaks,
+				// because getParameter stops convert at the space/line-breaks.
+				var array = theString.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*/g);
+				for (var i = 0; i < array.length; i++) {
+					decodedStr += this.headerParam
+					                  .getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null })
+					                  .replace(/-%-/g, " ").replace(/%%/g, "%");
+				}
+			}
+			else {
+				// for Mailers has no manners.
+				if (charset === "")
+					charset = this.detectCharset(theString);
+				var skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
+				decodedStr = this.cvtUTF8.convertStringToUTF8(theString, charset, skip);
 			}
 		}
-		else {
-			// for Mailers has no manners.
-			if (charset === "")
-				charset = this.detectCharset(string);
-			var skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
-			decodedStr = this.cvtUTF8.convertStringToUTF8(string, charset, skip);
+		catch(ex) {
+			SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.decode('+theString+') failed with charset: ' + charset +'...\n'
+			    + ex);
+			return theString;
 		}
 		return decodedStr;
 	} ,
