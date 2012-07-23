@@ -534,7 +534,7 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		else {
-			SmartTemplate4.Util.logDebugOptional('Cannot determined timezone string - Missing ( ) ? - from: ' + tm.toString());
+			SmartTemplate4.Util.logDebugOptional('Cannot determine timezone string - Missing ( ) ? - from: ' + tm.toString());
 		}
 
 
