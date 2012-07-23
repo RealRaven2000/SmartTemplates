@@ -518,7 +518,7 @@ SmartTemplate4.regularize = function(msg, type)
 			let words = timeZone[0].substr(1).split(' ');
 			for (let i=0; i<words.length; i++) {
 				if (isLongForm) {
-					retVal += words[i];
+					retVal += ' ' + words[i];
 				}
 				else {
 					if (words[i].length == 3 && words[i].match('[A-Z]{3}')
@@ -530,7 +530,7 @@ SmartTemplate4.regularize = function(msg, type)
 				}
 			}
 			if (isLongForm) {
-				retVal = retVal.substr(0, retVal.length - 1) ; // cut off trailig parens
+				retVal = retVal.substr(1, retVal.length - 2) ; // cut off trailing parens
 			}
 
 		}
@@ -617,7 +617,7 @@ SmartTemplate4.regularize = function(msg, type)
 				case "S":                               // Seconds 00..59
 					return d02(tm.getSeconds());
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
-				  let long = (f=="1");
+				  let long = (f=="(1)");
 					return getTimeZoneAbbrev(tm, long);
 				case "sig":
 					let removeDashes = (f=="(2)");
