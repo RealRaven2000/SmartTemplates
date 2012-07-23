@@ -514,7 +514,7 @@ SmartTemplate4.regularize = function(msg, type)
 		// e.g. "(GMT Daylight Time)"
 		let timeZone = tm.toString().match(/\(.*?\)/);
 		let retVal = '';
-		if (timeZone.length>0) {
+		if (timeZone && timeZone.length>0) {
 			let words = timeZone[0].substr(1).split(' ');
 			for (let i=0; i<words.length; i++) {
 				if (isLongForm) {
@@ -532,7 +532,9 @@ SmartTemplate4.regularize = function(msg, type)
 			if (isLongForm) {
 				retVal = retVal.substr(1, retVal.length - 2) ; // cut off trailing parens
 			}
-
+		}
+		else {
+			SmartTemplate4.Util.logDebugOptional('Cannot determined timezone string - Missing ( ) ? - from: ' + tm.toString());
 		}
 
 
