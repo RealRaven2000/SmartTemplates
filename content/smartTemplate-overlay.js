@@ -244,16 +244,17 @@ SmartTemplate4.mimeDecoder = {
 				}
 			}
 			else {
-				// for Mailers has no manners.
+				// for Mailers who have no manners.
 				if (charset === "")
 					charset = this.detectCharset(theString);
 				var skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
+				// this will always fail if theString is not an ACString?
 				decodedStr = this.cvtUTF8.convertStringToUTF8(theString, charset, skip);
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.decode('+theString+') failed with charset: ' + charset +'...\n'
-			    + ex);
+			SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.decode(' + theString + ') failed with charset: ' + charset
+			    + '...\n' + ex);
 			return theString;
 		}
 		return decodedStr;
@@ -495,7 +496,7 @@ SmartTemplate4.regularize = function(msg, type)
 					break;
 			}
 
-			let timeString = fmt.FormatDateTime("",
+			let timeString = fmt.FormatDateTime(locale,
 			                                    dateFormat, timeFormat,
 			                                    tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
 			                                    tm.getHours(), tm.getMinutes(), tm.getSeconds());
@@ -505,6 +506,42 @@ SmartTemplate4.regularize = function(msg, type)
 			SmartTemplate4.Util.logException('regularize.prTime2Str() failed', ex);
 		}
 		return '';
+	}
+
+	function getTimeZoneAbbrev(tm, isLongForm) {
+		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
+		// get part between parentheses
+		// e.g. "(GMT Daylight Time)"
+		let timeZone = tm.toString().match(/\(.*?\)/);
+		let retVal = '';
+		if (timeZone.length>0) {
+			let words = timeZone[0].substr(1).split(' ');
+			for (let i=0; i<words.length; i++) {
+				if (isLongForm) {
+					retVal += words[i];
+				}
+				else {
+					if (words[i].length == 3 && words[i].match('[A-Z]{3}')
+					    ||
+					    words[i].length == 4 && words[i].match('[A-Z]{4}'))
+						retVal += words[i] + ' ';  // abbrev contained
+					else
+						retVal+=words[i][0];  // first letter
+				}
+			}
+			if (isLongForm) {
+				retVal = retVal.substr(0, retVal.length - 1) ; // cut off trailig parens
+			}
+
+		}
+
+
+		/*
+		let timeZone = tm.toString().match('[A-Z]{4}');
+		if (!timeZone)
+			timeZone = tm.toString().match('[A-Z]{3}');
+			*/
+		return retVal;
 	}
 
 	// Replace reserved words
@@ -579,12 +616,9 @@ SmartTemplate4.regularize = function(msg, type)
 					return d02(tm.getMinutes());
 				case "S":                               // Seconds 00..59
 					return d02(tm.getSeconds());
-				case "tz_name":                         // time zone name
-					// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
-					let timeZone = tm.toString().match('[A-Z]{4}');
-					if (!timeZone)
-						timeZone = tm.toString().match('[A-Z]{3}');
-					return timeZone.toString();
+				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
+				  let long = (f=="1");
+					return getTimeZoneAbbrev(tm, long);
 				case "sig":
 					let removeDashes = (f=="(2)");
 					let ret = getSignatureInner(removeDashes)
