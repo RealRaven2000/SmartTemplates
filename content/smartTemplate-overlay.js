@@ -535,7 +535,7 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		else {
-			SmartTemplate4.Util.logDebugOptional('Cannot determine timezone string - Missing parentheses - from:\n' + timeString);
+			SmartTemplate4.Util.logDebug('Cannot determine timezone string - Missing parentheses - from:\n' + timeString);
 			retVal = timeString.match('[A-Z]{4}');
 			if (!retVal)
 				timeZone = timeString.match('[A-Z]{3}');
