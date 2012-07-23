@@ -512,7 +512,8 @@ SmartTemplate4.regularize = function(msg, type)
 		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
 		// get part between parentheses
 		// e.g. "(GMT Daylight Time)"
-		let timeZone = tm.toString().match(/\(.*?\)/);
+		let timeString =  tm.toTimeString();
+		let timeZone = timeString.match(/\(.*?\)/);
 		let retVal = '';
 		if (timeZone && timeZone.length>0) {
 			let words = timeZone[0].substr(1).split(' ');
@@ -534,15 +535,11 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		else {
-			SmartTemplate4.Util.logDebugOptional('Cannot determine timezone string - Missing ( ) ? - from: ' + tm.toString());
+			SmartTemplate4.Util.logDebugOptional('Cannot determine timezone string - Missing parentheses - from:\n' + timeString);
+			retVal = timeString.match('[A-Z]{4}');
+			if (!retVal)
+				timeZone = timeString.match('[A-Z]{3}');
 		}
-
-
-		/*
-		let timeZone = tm.toString().match('[A-Z]{4}');
-		if (!timeZone)
-			timeZone = tm.toString().match('[A-Z]{3}');
-			*/
 		return retVal;
 	}
 
