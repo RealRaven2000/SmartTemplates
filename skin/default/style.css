@@ -432,8 +432,8 @@ b {
 
 /* #################################### HTML TAG CODE ################################ */
 /* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
-code {
-  background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+#keywords code, code {
+  background: -moz-linear-gradient(top,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
   border-radius: 0.3em;
   border: 1px solid #bbb;
   margin: 2px 4px;
@@ -444,8 +444,16 @@ code {
   padding: 2px 4px;
 }
 
-code.noNew {
-  background: -moz-linear-gradient(top, rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+#keywords code.noNew, code.noNew {
+  background: -moz-linear-gradient(top,  rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+	border-radius: 0.3em;
+  border: 1px solid #bbb;
+  margin: 2px 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
 }
 
 table div.yes, table div.no {
@@ -457,13 +465,6 @@ table div.yes {
 }
 table div.no {
 	list-style-image:  url("chrome://smartTemplate4/skin/icons/disabled.png");
-}
-
-#keywords code {
-  background: -moz-linear-gradient(top, rgba(240,231,164,1) 0%, rgba(230,207,56,1) 50%, rgba(217,193,37,1) 51%, rgba(240,217,68,1) 100%);
-}
-#keywords code.noNew {
-  background: -moz-linear-gradient(top, rgba(240,202,164,1) 0%, rgba(230,140,56,1) 50%, rgba(217,124,37,1) 51%, rgba(240,151,68,1) 100%);
 }
 
 /* #################################### TABLE FOR VARS ############################### */
