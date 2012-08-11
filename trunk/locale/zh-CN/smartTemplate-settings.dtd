@@ -10,9 +10,12 @@
 <!ENTITY close.label "关闭">
 <!ENTITY export.label "导出">
 <!ENTITY import.label "导入">
+<!ENTITY menu.template_import.label "导入模板">
+<!ENTITY menu.template_export.label "导出模板">
 <!ENTITY settings.label "设置和模板">
 <!ENTITY url.homePage.label "扩展主页">
 <!ENTITY url.supportPage.label "支持主页">
+<!ENTITY url.bugsAndFeaturesPage.label "报告问题 / 功能要求">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "新建">
 <!ENTITY pref_rsp.tab "回复">
@@ -20,14 +23,15 @@
 <!ENTITY pref_help.tab "帮助">
 <!ENTITY pref_about.tab "关于">
 <!-- #### BUTTONS #### -->
-<!ENTITY accept_button "接受">
-<!ENTITY cancel_button "丢弃">
+<!ENTITY accept_button "确定">
+<!ENTITY cancel_button "取消">
+<!ENTITY contribute_button "捐助">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4 选项">
-<!ENTITY pref_server_desc "账户名称">
+<!ENTITY pref_server_desc "帐户">
 <!ENTITY pref_server_def "通用">
-<!ENTITY pref_def.label "选择通用">
-<!ENTITY pref_def.cap "如果你想要设置这个账号，请移除‘选择通用’">
+<!ENTITY pref_def.label "使用通用">
+<!ENTITY pref_def.cap "如果您想要为这个帐户创建自定义的引用头，请取消选中“使用通用”">
 <!ENTITY pref_newmsg.cap "新消息">
 <!ENTITY pref_new.label "将以下模板应用于新消息">
 <!ENTITY pref_rspmsg.cap "回复消息">
@@ -83,6 +87,7 @@
 <!ENTITY spec_form.cap "特殊形式">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
 <!ENTITY ex_brack.label "例子: To: boo Cc: foo">
+<!ENTITY brack_with_var.label "以下变量可以用在 [[...]] 里面">
 <!ENTITY sub_var.cap "主题">
 <!ENTITY sub.label "回复/转发的邮件主题">
 <!ENTITY sub2.label "当前消息的主题">
@@ -93,8 +98,8 @@
 <!ENTITY any.label "任何标题行">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
-<!ENTITY datelocal.label "日期和时间（地区设定格式）">
-<!ENTITY dateshort.label "日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
+<!ENTITY datelocal.label "日期和时间（本地格式）">
+<!ENTITY dateshort.label "日期和时间的简写 (例如 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "时区 (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
 <!ENTITY var_custom.cap "自定义日期格式的变量">
@@ -121,10 +126,11 @@
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
 <!ENTITY xsent_long.cap "长字符串的例子：">
-<!ENTITY xsent_long_result.label "结果： 16.02.2011 um 12:15 Uhr:">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock">
+<!ENTITY xsent_long_result.label "Result: Sunday, 20/12/2011 at 16:24 o'clock">
 <!ENTITY xsent_short.cap "短字符串的例子">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
-<!ENTITY xsent_short_result.label "结果： 星期三， 16.02.2011 12:15:25">
+<!ENTITY xsent_short_result.label "Result: Sunday, 20/12/2011 08:54:21">
 <!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用：">
 <!ENTITY localedate.label "日期和时间（地区设定格式）">
 <!ENTITY shortdate.label "日期和时间的简写 (e.g. 01.01.2000 1:23:45)">
@@ -140,9 +146,9 @@
 <!ENTITY html_note.cap "HTML 模板说明">
 <!ENTITY html_note.label "HTML 模板中请只使用 UTF-8 (Unicode) 字符集！">
 <!ENTITY table.cap "变量的使用情况">
-<!ENTITY table_note.label "如果一个变量使用错误的错误记录在Errorconsole！">
+<!ENTITY table_note.label "不正确使用变量会引发错误，错误消息记录在“错误控制台”！">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "变量">
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">
-<!ENTITY table_fwd.label "向前">
+<!ENTITY table_fwd.label "转发">

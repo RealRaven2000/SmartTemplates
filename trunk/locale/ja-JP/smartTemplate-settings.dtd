@@ -10,6 +10,8 @@
 <!ENTITY close.label "閉じる">
 <!ENTITY export.label "エクスポート">
 <!ENTITY import.label "インポート">
+<!ENTITY menu.template_import.label "テンプレートをインポートする">
+<!ENTITY menu.template_export.label "テンプレートをエクスポートする">
 <!ENTITY settings.label "設定とテンプレート">
 <!ENTITY url.homePage.label "ホームページ">
 <!ENTITY url.supportPage.label "サポート">
@@ -43,7 +45,7 @@
 <!ENTITY pref_rep_br.label "改行を &lt;br&gt; に変換する">
 <!ENTITY pref_rep_br.cap "注：HTML タグに続く改行は &lt;br&gt; に変換されません。">
 <!ENTITY pref_quotehead_tip "既定の引用ヘッダを無効にします。テキストボックスで好きな引用ヘッダを入力してください。">
-<!ENTITY pref_template_tip "予約語による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
+<!ENTITY pref_template_tip "変数による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
 <!ENTITY help_dialog_title "SmartTemplate4 ヘルプ">
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
@@ -83,8 +85,9 @@
 <!ENTITY ccfirstname.label "CC 受信者の名前 (名字を除く)">
 <!ENTITY ccname.label "CC 受信者の名前">
 <!ENTITY spec_form.cap "条件文">
-<!ENTITY specform_note.label "括弧 [[]] 内のテンプレートは、その中の予約語が利用可能である時のみ有効となります。">
+<!ENTITY specform_note.label "括弧 [[Cc: &#37;cc(name)&#37;]] 内のテンプレートは、その中の変数 &#37;cc(name)&#37; が利用可能である時のみ有効となります。">
 <!ENTITY ex_brack.label "例: To: boo Cc: foo">
+<!ENTITY brack_with_var.label "これらの変数は括弧 [[...]] 内で利用可能です">
 <!ENTITY sub_var.cap "件名">
 <!ENTITY sub.label "返信/転送するメッセージの件名">
 <!ENTITY sub2.label "現在編集しているメッセージの件名">

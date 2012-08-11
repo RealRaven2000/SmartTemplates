@@ -10,9 +10,12 @@
 <!ENTITY close.label "Sluiten">
 <!ENTITY export.label "Exporteren">
 <!ENTITY import.label "Importeren">
+<!ENTITY menu.template_import.label "Sjabloon importeren">
+<!ENTITY menu.template_export.label "Sjabloon exporteren">
 <!ENTITY settings.label "Instellingen en Sjablonen">
 <!ENTITY url.homePage.label "Add-onstartpagina">
 <!ENTITY url.supportPage.label "Ondersteuningspagina">
+<!ENTITY url.bugsAndFeaturesPage.label "Bugrapporten / Functieaanvragen">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nieuw">
 <!ENTITY pref_rsp.tab "Antwoorden">
@@ -22,6 +25,7 @@
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Accepteren">
 <!ENTITY cancel_button "Annuleren">
+<!ENTITY contribute_button "Bijdragen">
 <!-- #### GUI #### -->
 <!ENTITY pref_dialog.title "SmartTemplate4-instellingen">
 <!ENTITY pref_server_desc "Account">
@@ -83,6 +87,7 @@
 <!ENTITY spec_form.cap "Speciale opmaak">
 <!ENTITY specform_note.label "De zin tussen accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
 <!ENTITY ex_brack.label "Voorbeeld: Aan: boo Cc: foo">
+<!ENTITY brack_with_var.label "De volgende variabelen kunnen worden gebruikt binnen [[…]]">
 <!ENTITY sub_var.cap "Onderwerp">
 <!ENTITY sub.label "onderwerp van beantwoord / doorgestuurd e-mailbericht">
 <!ENTITY sub2.label "onderwerp van momenteel geschreven bericht">
