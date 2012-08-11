@@ -509,73 +509,66 @@ SmartTemplate4.regularize = function(msg, type)
 	}
 
 	function zoneFromShort(short) {
-		var timezones = {
-			'ACDT' : 'Australian Central Daylight Time',
-			'ACST' : 'Australian Central Standard Time',
-			'ADT' : 'Atlantic Daylight Time',
-			'AEDT' : 'Australian Eastern Daylight Time',
-			'AEST' : 'Australian Eastern Standard Time',
-			'AKDT' : 'Alaska Daylight Time',
-			'AKST' : 'Alaska Standard Time',
-			'AST' : 'Atlantic Standard Time',
-			'AWDT' : 'Australian Western Daylight Time',
-			'AWST' : 'Australian Western Standard Time',
-			'BST' : 'British Summer Time',
-			'CDT' : 'Central Daylight Time',
-			'CEDT' : 'Central European Daylight Time',
-			'CEST' : 'Central European Summer Time',
-			'CET' : 'Central European Time',
-			'CST' : 'Central Summer(Daylight) Time',
-			'CST' : 'Central Standard Time',
-			'CST' : 'Central Standard Time',
-			'CXT' : 'Christmas Island Time',
-			'EDT' : 'Eastern Daylight Time',
-			'EEDT' : 'Eastern European Daylight Time',
-			'EEST' : 'Eastern European Summer Time',
-			'EET' : 'Eastern European Time',
-			'EST' : 'Eastern Summer(Daylight) Time',
-			'EST' : 'Eastern Standard Time',
-			'EST' : 'Eastern Standard Time',
-			'GMT' : 'Greenwich Mean Time',
-			'HAA' : 'Heure Avancée de l\'Atlantique',
-			'HAC' : 'Heure Avancée du Centre',
-			'HADT' : 'Hawaii-Aleutian Daylight Time',
-			'HAE' : 'Heure Avancée de l\'Est',
-			'HAP' : 'Heure Avancée du Pacifique',
-			'HAR' : 'Heure Avancée des Rocheuses',
-			'HAST' : 'Hawaii-Aleutian Standard Time',
-			'HAT' : 'Heure Avancée de Terre-Neuve',
-			'HAY' : 'Heure Avancée du Yukon',
-			'HNA' : 'Heure Normale de l\'Atlantique',
-			'HNC' : 'Heure Normale du Centre',
-			'HNE' : 'Heure Normale de l\'Est',
-			'HNP' : 'Heure Normale du Pacifique',
-			'HNR' : 'Heure Normale des Rocheuses',
-			'HNT' : 'Heure Normale de Terre-Neuve',
-			'HNY' : 'Heure Normale du Yukon',
-			'IST' : 'Irish Summer Time',
-			'MDT' : 'Mountain Daylight Time',
-			'MESZ' : 'Mitteleuropäische Sommerzeit',
-			'MEZ' : 'Mitteleuropäische Zeit',
-			'MST' : 'Mountain Standard Time',
-			'NDT' : 'Newfoundland Daylight Time',
-			'NFT' : 'Norfolk (Island) Time',
-			'NST' : 'Newfoundland Standard Time',
-			'PDT' : 'Pacific Daylight Time',
-			'PST' : 'Pacific Standard Time',
-			'UTC' : 'Coordinated Universal Time',
-			'WEDT' : 'Western European Daylight Time',
-			'WEST' : 'Western European Summer Time',
-			'WET' : 'Western European Time',
-			'WST' : 'Western Summer(Daylight) Time',
-			'WST' : 'Western Standard Time'
+		timezones = {
+			"ACDT" : "Australian Central Daylight Time",
+			"ACST" : "Australian Central Standard Time",
+			"ADT" : "Atlantic Daylight Time",
+			"AEDT" : "Australian Eastern Daylight Time",
+			"AEST" : "Australian Eastern Standard Time",
+			"AKDT" : "Alaska Daylight Time",
+			"AKST" : "Alaska Standard Time",
+			"AST" : "Atlantic Standard Time",
+			"AWDT" : "Australian Western Daylight Time",
+			"AWST" : "Australian Western Standard Time",
+			"BST" : "British Summer Time",
+			"CDT" : "Central Daylight Time",
+			"CEDT" : "Central European Daylight Time",
+			"CEST" : "Central European Summer Time",
+			"CET" : "Central European Time",
+			"CST" : "Central Standard Time",
+			"CXT" : "Christmas Island Time",
+			"EDT" : "Eastern Daylight Time",
+			"EEDT" : "Eastern European Daylight Time",
+			"EEST" : "Eastern European Summer Time",
+			"EET" : "Eastern European Time",
+			"EST" : "Eastern Standard Time",
+			"GMT" : "Greenwich Mean Time",
+			"HAA" : "Heure Avancée de l\"Atlantique",
+			"HAC" : "Heure Avancée du Centre",
+			"HADT" : "Hawaii-Aleutian Daylight Time",
+			"HAE" : "Heure Avancée de l\'Est",
+			"HAP" : "Heure Avancée du Pacifique",
+			"HAR" : "Heure Avancée des Rocheuses",
+			"HAST" : "Hawaii-Aleutian Standard Time",
+			"HAT" : "Heure Avancée de Terre-Neuve",
+			"HAY" : "Heure Avancée du Yukon",
+			"HNA" : "Heure Normale de l\'Atlantique",
+			"HNC" : "Heure Normale du Centre",
+			"HNE" : "Heure Normale de l\'Est",
+			"HNP" : "Heure Normale du Pacifique",
+			"HNR" : "Heure Normale des Rocheuses",
+			"HNT" : "Heure Normale de Terre-Neuve",
+			"HNY" : "Heure Normale du Yukon",
+			"IST" : "Irish Summer Time",
+			"MDT" : "Mountain Daylight Time",
+			"MESZ" : "Mitteleuropäische Sommerzeit",
+			"MEZ" : "Mitteleuropäische Zeit",
+			"MST" : "Mountain Standard Time",
+			"NDT" : "Newfoundland Daylight Time",
+			"NFT" : "Norfolk (Island) Time",
+			"NST" : "Newfoundland Standard Time",
+			"PDT" : "Pacific Daylight Time",
+			"PST" : "Pacific Standard Time",
+			"UTC" : "Coordinated Universal Time",
+			"WEDT" : "Western European Daylight Time",
+			"WEST" : "Western European Summer Time",
+			"WET" : "Western European Time",
+			"WST" : "Western Standard Time"
 		};
 
 		let tz = timezones[short]; // Date().toString().replace(/^.*\(|\)$/g, "")
-		// tz = timezones[new Date().toString().replace(/^.*\(|\)$/g, "")];
 		return tz || short;
 	}
-}
 
 	function getTimeZoneAbbrev(tm, isLongForm) {
 		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
@@ -753,7 +746,7 @@ SmartTemplate4.regularize = function(msg, type)
 		return SmartTemplate4.escapeHtml(token);
 	}
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
-	SmartTemplate4.Util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  ...ENDS');
+	SmartTemplate4.Util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
 };
 
