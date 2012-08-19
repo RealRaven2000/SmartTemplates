@@ -1,6 +1,7 @@
 /* global settings */
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
+pref("extensions.smartTemplate4.insertBRatTop", false);
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
@@ -16,3 +17,4 @@ pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);
+
