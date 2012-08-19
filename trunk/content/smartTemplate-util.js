@@ -27,8 +27,15 @@ copy by writing to:
 END LICENSE BLOCK
 */
 
+SmartTemplate4_TabURIregexp = {
+	get _thunderbirdRegExp() {
+		delete this._thunderbirdRegExp;
+		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
+	}
+};
+
 SmartTemplate4.Util = {
-	HARDCODED_EXTENSION_VERSION : "0.9",
+	HARDCODED_EXTENSION_VERSION : "0.9.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -426,12 +433,12 @@ SmartTemplate4.Util = {
 			if (tabmail) {
 				sTabMode = (SmartTemplate4.Util.Application === "Thunderbird" && this.versionGreaterOrEqual(this.AppverFull, "3")) ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
-				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, gSmartTemplate_TabURIregexp._thunderbirdRegExp);"});
+				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
 			}
 			else {
 				window.openDialog("chrome://messenger/content/", "_blank",
 									"chrome,dialog=no,all", null,
-				{ tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, gSmartTemplate_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} } );
+				{ tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} } );
 			}
 		}
 		catch(e) {

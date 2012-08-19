@@ -660,9 +660,11 @@ SmartTemplate4.classSmartTemplate = function()
 		if (msgTmpl && msgTmpl !== "")
 		{
 			if(gMsgCompose.composeHTML) {
-				gMsgCompose.editor.insertNode(
-				                   gMsgCompose.editor.document.createElement("br"),
-				                   gMsgCompose.editor.rootElement, 0);
+				// new global settings to deal withg [Bug 25084]
+				if (SmartTemplate4.Preferences.getMyBoolPref("insertBRatTop"))
+					gMsgCompose.editor.insertNode(
+					                   gMsgCompose.editor.document.createElement("br"),
+					                   gMsgCompose.editor.rootElement, 0);
 			}
 			try {
 				editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
