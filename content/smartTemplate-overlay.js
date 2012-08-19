@@ -289,15 +289,16 @@ SmartTemplate4.mimeDecoder = {
 			}
 
 			// Escape "," in mail addresses
-			array[i] = array[i].replace(/\r\n|\r|\n/g, "").replace(/"[^"]*"/,
-										function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+			array[i] = array[i].replace(/\r\n|\r|\n/g, "")
+			                   .replace(/"[^"]*"/,
+			                            function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
 			// name or/and address
-			var address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").
-								 replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+			var address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
 			var result = "";
 			if (withname) {
-				result = address.replace(/\s*<\S+>\s*$/, "").
-								 replace(/^\s*\"|\"\s*$/g, "");	         // %to% / %to(name)%
+				// this cuts off the angle-bracket adress part: <foo@bar.com>
+				result = address.replace(/\s*<\S+>\s*$/, "")
+					              .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
 				if (result != "" && withaddr) {
 					result += address.replace(/.*<(\S+)>.*/g, " <$1>");
 				}     // %to%
@@ -305,7 +306,7 @@ SmartTemplate4.mimeDecoder = {
 			if (result == "") {
 				if (!withaddr) {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
-				}     // %to(name)%
+				}  // %to(name)%
 				else {
 					result = address.replace(/.*<(\S+)>.*/g, "$1");
 				}     // %to% / %to(mail)%
@@ -587,7 +588,7 @@ SmartTemplate4.regularize = function(msg, type)
 			"GST"	 : "South Georgia and the South Sandwich Islands",
 			"GYT"	 : "Guyana Time",
 			"HADT"	 : "Hawaii-Aleutian Daylight Time",
-			"HAEC"	 : "Heure Avancée d'Europe Centrale francised name for CEST",
+			"HAEC"	 : "Heure Avanc\u00E9e d'Europe Centrale francised name for CEST",
 			"HAST"	 : "Hawaii-Aleutian Standard Time",
 			"HKT"	 : "Hong Kong Time",
 			"HMT"	 : "Heard and McDonald Islands Time",
@@ -644,7 +645,7 @@ SmartTemplate4.regularize = function(msg, type)
 			"PMST"	 : "Saint Pierre and Miquelon Standard Time",
 			"PONT"	 : "Pohnpei Standard Time",
 			"PST"	 : "Pacific Standard Time (North America)",
-			"RET"	 : "Réunion Time",
+			"RET"	 : "R\u00E9union Time",
 			"ROTT"	 : "Rothera Research Station Time",
 			"SAKT"	 : "Sakhalin Island time",
 			"SAMT"	 : "Samara Time",
