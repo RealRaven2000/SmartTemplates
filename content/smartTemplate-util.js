@@ -27,7 +27,7 @@ copy by writing to:
 END LICENSE BLOCK
 */
 
-SmartTemplate4_TabURIregexp = {
+var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
 		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
