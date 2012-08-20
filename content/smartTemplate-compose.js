@@ -63,7 +63,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
 		SmartTemplate4.signature = null;
-		SmartTemplate4.sigIsDefined = false;
+		SmartTemplate4.sigInTemplate = false;
 
 		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value;
@@ -80,7 +80,7 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 			//signature from bottom
 			else {
-				let signatureNodes = document.getElementsByClassName('moz-signature');
+				let signatureNodes = bodyEl.getElementsByClassName('moz-signature');
 				if (signatureNodes && signatureNodes.length) {
 					sigNode = signatureNodes[signatureNodes.length-1];
 				}
@@ -185,8 +185,8 @@ SmartTemplate4.classSmartTemplate = function()
 			content = '\nEMPTY';
 		switch(theNodeName) {
 			case 'br':
-				if (!ignoreInPlainText) // AG change: only delete <br> nodes if we are in HTML mode.
-					match = true;
+				//' if (!ignoreInPlainText) // AG change: only delete <br> nodes if we are in HTML mode.
+				match = true;
 				break;
 			case '#text':
 				if (!ignoreInPlainText) // AG change: only delete text nodes if we are in HTML mode.
@@ -667,7 +667,14 @@ SmartTemplate4.classSmartTemplate = function()
 					                   gMsgCompose.editor.rootElement, 0);
 			}
 			try {
-				editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
+				if (theIdentity.replyOnTop) {
+					editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
+				}
+				else {
+					// let's split the template into Header part and the rest. the header part always goes to the top...
+					editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
+					// problem: we cannot split it, the user needs to do it for us!!
+				}
 			}
 			catch (ex) {
 				let errortext = 'Could not insert Template as HTML; please check for syntax errors.'
@@ -701,7 +708,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'htmlSigFormat:  ' + theIdentity.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
 		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-		       + 'SmartTemplate4.sigIsDefined: ' + SmartTemplate4.sigIsDefined);
+		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate);
 
 		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
 		                       ||
@@ -713,7 +720,7 @@ SmartTemplate4.classSmartTemplate = function()
 		    ||
 		    composeCase == 'new' && theSignature && isSignatureSetup) {
 
-			if (!SmartTemplate4.sigIsDefined && theSignature) {
+			if (!SmartTemplate4.sigInTemplate && theSignature) {
 				SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
 
 				let pref = SmartTemplate4.pref;
@@ -725,6 +732,14 @@ SmartTemplate4.classSmartTemplate = function()
 				// add Signature and replace the BR that was removed in extractSignature
 				// do we ignore theIdentity.sigOnReply ?
 				// do we ignore theIdentity.sigOnForward ?
+				
+				// wrap text only signature to fix [Bug 25093]!
+				if (typeof theSignature === "string")  {
+					var sn = gMsgCompose.editor.document.createElement("div");
+					sn.innerHTML = theSignature;
+					theSignature = sn;
+				}
+				
 				if (theIdentity.sigBottom) {
 					bodyEl.appendChild(gMsgCompose.editor.document.createElement("br"));
 					bodyEl.appendChild(theSignature);
