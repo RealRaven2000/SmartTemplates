@@ -6,7 +6,7 @@
 		<Description rdf:about="urn:mozilla:install-manifest">
 			<em:id>smarttemplate4@thunderbird.extension</em:id>
 			<em:name>SmartTemplate4</em:name>
-			<em:version>0.9.2pre4</em:version>
+			<em:version>0.9.2pre6</em:version>
 			<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 			<em:type>2</em:type>
 			<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
@@ -143,7 +143,7 @@
 				<Description>
 					<em:locale>pl</em:locale>
 					<em:name>SmartTemplate4</em:name>
-					<em:description>Inteligentne szablony nagłówków, które można dostosowywać dla każdego konta.</em:description>
+					<em:description>Inteligentne szablony nagłówków, które można dostosowywać dla każdego konta</em:description>
 					<em:creator>Axel Grude</em:creator>
 					<em:developer>Axel Grude</em:developer>
 					<em:developer>Marky Mark DE</em:developer>
@@ -203,7 +203,7 @@
 				<Description>
 					<em:locale>zh-CN</em:locale>
 					<em:name>SmartTemplate4</em:name>
-					<em:description>smart template扩展能为每个账号自定义引用头文件</em:description>
+					<em:description>SmartTemplate4 扩展能为每个账号自定义引用头文件</em:description>
 					<em:creator>Axel Grude</em:creator>
 					<em:developer>Axel Grude</em:developer>
 					<em:developer>Marky Mark DE</em:developer>
