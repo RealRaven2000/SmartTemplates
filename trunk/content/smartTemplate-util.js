@@ -593,7 +593,75 @@ SmartTemplate4.Util = {
 		}
 		SmartTemplate4.Util.logDebugOptional('functions', 'Util.getIsoWeek() returns weeknum: ' + weeknum);
 		return weeknum;
+	},
+	
+  // moved from settings diaLog as there were problems calling this on program start
+	cancelConvert : function() {
+		// conversion routine to 0.9 was cancelled
+		// user will have to create new settings from scratch!
+		// this is a dummy function, it doesn't do anything
+	} ,
+
+	convertOldPrefs : function() {
+		let debugText = "";
+		let countConverted = 0;
+		let convertedBracketExpressions = 0;
+		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
+
+		try {
+			let array = this.prefService.getChildList("extensions.smarttemplate.", {});
+
+			// AG new: import settings to new format
+			for (var i in array) {
+
+				let oldPrefName = array[i];
+				debugText += 'CONVERT: ' + oldPrefName;
+				let thePreference = this.getPref(oldPrefName);
+				let newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
+				                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
+				                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
+
+				debugText += ' => ' + newPrefString + '\n';
+				this.setPref(newPrefString, thePreference);
+				countConverted++;
+				switch (typeof thePreference) {
+					case 'string':
+						if (thePreference.indexOf('{')>0 || thePreference.indexOf('}')>0) {
+							convertedBracketExpressions++;
+							// hmmmffff....
+							thePreference = thePreference
+							                .replace("\{","[[").replace("{","[[")
+							                .replace("\}","]]").replace("}","]]");
+							debugText += '\nbracketed conversion:\n:   ' + thePreference;
+						}
+
+						this.prefService.setCharPref(newPrefString, thePreference);
+						break;
+					case 'number':
+						this.prefService.setIntPref(newPrefString, thePreference);
+						break;
+					case 'boolean':
+						this.prefService.setBoolPref(newPrefString, thePreference);
+						break;
+					default:
+						countConverted--;
+						break;
+				}
+				// keep a backup, for now ??
+				// this.prefService.deleteBranch(array[i]);
+			}
+		}
+		catch (ex) {
+			SmartTemplate4.Util.logException("convertOldPrefs failed: ", ex);
+		}
+		if (countConverted)
+			this.prefService.setIntPref("extensions.smartTemplate4.conversions.total", countConverted);
+		if (convertedBracketExpressions)
+			this.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
+
+		SmartTemplate4.Util.logDebug(debugText);
 	}
+
 
 };
 
@@ -759,13 +827,13 @@ SmartTemplate4.Util.firstRun =
 
 							SmartTemplate4.Message.display(updateVersionMessage + upgradeMessage,
 							                              "centerscreen,titlebar",
-							                              function() {SmartTemplate4.Settings.convertOldPrefs()},
-							                              showCancel ? function() {SmartTemplate4.Settings.cancelConvert()} : null );
+							                              function() { SmartTemplate4.Util.convertOldPrefs();},
+							                              showCancel ? function() {SmartTemplate4.Util.cancelConvert();} : null );
 							;
 						}
 						else
 							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage);
-					}, 23000);
+					}, 3000);
 
 				}
 				// test of updateMessage:
@@ -801,7 +869,7 @@ SmartTemplate4.Util.firstRun =
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 
-	}
+	} 
 
 
 // // fire this on application launch, which includes open-link-in-new-window

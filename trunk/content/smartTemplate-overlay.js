@@ -339,7 +339,7 @@ SmartTemplate4.regularize = function(msg, type)
 			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
 			if (SmartTemplate4.signature != null) {
 				let sig = SmartTemplate4.signature;
-				SmartTemplate4.sigIsDefined = true;
+				SmartTemplate4.sigInTemplate = true;
 				if (typeof sig === "string")
 					return sig;
 				if (!sig.children || sig.children.length==0) {

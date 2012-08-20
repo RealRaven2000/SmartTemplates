@@ -6,7 +6,7 @@ var SmartTemplate4 = {
 	XisToday : 0,
 	XisSent  : 1,
 	signature : null,
-	sigIsDefined : false,
+	sigInTemplate : false,
 
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
