@@ -135,8 +135,14 @@ SmartTemplate4.Settings = {
 			this.prefService.getCharPref(prefbranch + "rspmsg");
 		} catch(e) { this.prefService.setCharPref(prefbranch + "rspmsg", ""); }
 		try {
+			this.prefService.getCharPref(prefbranch + "rspheader");
+		} catch(e) { this.prefService.setCharPref(prefbranch + "rspheader", ""); }
+		try {
 			this.prefService.getCharPref(prefbranch + "fwdmsg");
 		} catch(e) { this.prefService.setCharPref(prefbranch + "fwdmsg", ""); }
+		try {
+			this.prefService.getCharPref(prefbranch + "fwdheader");
+		} catch(e) { this.prefService.setCharPref(prefbranch + "fwdheader", ""); }
 		try {
 			this.prefService.getBoolPref(prefbranch + "newhtml");
 		} catch(e) { this.prefService.setBoolPref(prefbranch + "newhtml", false); }

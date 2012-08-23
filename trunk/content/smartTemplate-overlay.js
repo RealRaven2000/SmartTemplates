@@ -84,6 +84,10 @@ SmartTemplate4.classPref = function()
 		return getWithIdkey(idKey, composeType + "msg", def)
 	};
 
+	function getQuoteHeader(idKey, composeType, def) {
+		return getWithIdkey(idKey, composeType + "header", def)
+	};
+
 	function isProcessingActive(idKey, composeType, def) {
 		return getWithIdkey(idKey, composeType, def)
 	};
@@ -129,6 +133,7 @@ SmartTemplate4.classPref = function()
 	this.getCom = getCom;
 	this.getLocalePref = getLocalePref;
 	this.getTemplate = getTemplate;
+	this.getQuoteHeader = getQuoteHeader;
 	this.getWithBranch = getWithBranch;
 	this.getWithIdkey = getWithIdkey;
 	this.isDeleteHeaders = isDeleteHeaders;
