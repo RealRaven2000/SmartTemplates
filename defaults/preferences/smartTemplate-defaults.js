@@ -2,6 +2,9 @@
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
 pref("extensions.smartTemplate4.insertBRatTop", false);
+/* this is a convenience function - if I change from after or during composing, delete sig */
+pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
+
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
