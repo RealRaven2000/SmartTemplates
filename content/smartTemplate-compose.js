@@ -12,7 +12,7 @@ SmartTemplate4.classSmartTemplate = function()
 			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile);
 			if (sigFile)
 			{
-				SmartTemplate4.Util.logDebug('extractSignature() '
+				SmartTemplate4.Util.logDebug('readSignatureFile() '
 				        + '\nTrying to read attached signature file: ' + sigFile.leafName
 				        + '\nat: ' + sigFile.path );
 // 					        + '\nfile size: ' + sigFile.fileSize
@@ -47,7 +47,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		catch(ex) {
 			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
-			SmartTemplate4.Util.logException("extractSignature - exception trying to read signature attachment file!", ex);
+			SmartTemplate4.Util.logException("readSignatureFile - exception trying to read signature attachment file!", ex);
 		}
 		return htmlSigText;
 	}
@@ -131,11 +131,14 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 
-		// catches position of previous signature.
+		// remove previous signature. 
 		for(let i = 0; i < nodes.length; i++) {
 			if (nodes[i].className && nodes[i].className == "moz-signature" ) {
-				bodyEl.removeChild(nodes[i].previousElementSibling); //remove the preceding BR that TB always inserts
-				let old_sig = bodyEl.removeChild(nodes[i-1]);
+				let pBr = nodes[i].previousElementSibling;
+				let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
+				// old code - remove the preceding BR that TB always inserts
+				if (pBr && pBr.tagName == "BR")
+					bodyEl.removeChild(pBr); 
 				break;
 			}
 		}
@@ -422,33 +425,32 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 
 			// Analyse the forwarded part. if  it is plain text, let's search for the delimiter in any case (higher risk)!
-			if (gMsgCompose.composeHTML) {
-				if (node.className == 'moz-forward-container') {
-					// lets find the ---original message--- now
-					let searchWhiteSpace = true;
-					let truncWhiteSpace = false;
-					let inner = node.firstChild;
-					while (inner) {
-						let m = inner.nextSibling;
-						if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
-							// delete all whitespace before delim
-							if (searchWhiteSpace) {
-								searchWhiteSpace = false;
-								m = inner = node.firstChild;	//restart ...
-								truncWhiteSpace = true; 		  // ...and delete EVERYTHING until delimiter
-								firstNode = inner;
-								continue;
-							}
-							SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
-							gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
-							if (inner.nodeValue == origMsgDelimiter)
-								break;
+			// [Bug 25097] do not restrict this to html mode only
+			if (node.className == 'moz-forward-container') {
+				// lets find the ---original message--- now
+				let searchWhiteSpace = true;
+				let truncWhiteSpace = false;
+				let inner = node.firstChild;
+				while (inner) {
+					let m = inner.nextSibling;
+					if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
+						// delete all whitespace before delim
+						if (searchWhiteSpace) {
+							searchWhiteSpace = false;
+							m = inner = node.firstChild;	//restart ...
+							truncWhiteSpace = true; 		  // ...and delete EVERYTHING until delimiter
+							firstNode = inner;
+							continue;
 						}
-						inner = m;
+						SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','deleting node: ' + inner.nodeValue);
+						gMsgCompose.editor.deleteNode(inner); // we are not pushing this on to orgQuoteHeaders as there is no value to this.
+						if (inner.nodeValue == origMsgDelimiter)
+							break;
 					}
-					node = n;
-					continue;
+					inner = m;
 				}
+				node = n;
+				continue;
 			}
 
 			deleteNodeTextOrBR(node, idKey);
@@ -499,7 +501,10 @@ SmartTemplate4.classSmartTemplate = function()
 						gMsgCompose.editor.deleteNode(nextEl);
 					}
 					gMsgCompose.editor.deleteNode(curEl);
-					break;
+				}
+				// delete our last quoteHeader
+				if (curEl.id == "smartTemplate4-quoteHeader") {
+					gMsgCompose.editor.deleteNode(curEl);
 				}
 			}
 			// Restore original quote headers
@@ -519,34 +524,49 @@ SmartTemplate4.classSmartTemplate = function()
 	};
 
 	// -----------------------------------
-	// Get template message
-	function getProcessedTemplate(composeType, idKey)
+	// Get processed template
+	function getProcessedTemplate(templateText, idKey, composeType) 
 	{
 		var pref = SmartTemplate4.pref;
-		var msg = pref.getTemplate(idKey, composeType, "");
-			//Reset X to Today after each newline character
-			//except for lines ending in { or }; breaks the omission of non-existent CC??
-			msg = msg.replace(/\n/gm, "%X:=today%\n");
-			//replace this later!!
-			// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
-			// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
-			msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
-			msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
+		//Reset X to Today after each newline character
+		//except for lines ending in { or }; breaks the omission of non-existent CC??
+		templateText = templateText.replace(/\n/gm, "%X:=today%\n");
+		//replace this later!!
+		// templateText = templateText.replace(/{\s*%X:=today%\n/gm, "{\n");
+		// templateText = templateText.replace(/}\s*%X:=today%\n/gm, "}\n");
+		templateText = templateText.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
+		templateText = templateText.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 
 		if (pref.isUseHtml(idKey, composeType, false)) {
-			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
+			templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
 			if (pref.isReplaceNewLines(idKey, composeType, true))
-				{ msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
+				{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
 			else
-				{ msg = msg.replace(/\n/gm, ""); }
+				{ templateText = templateText.replace(/\n/gm, ""); }
 		} else {
-			msg = SmartTemplate4.escapeHtml(msg);
+			templateText = SmartTemplate4.escapeHtml(templateText);
 			// Escape space, if compose is HTML
 			if (gMsgCompose.composeHTML)
-				{ msg = msg.replace(/ /gm, "&nbsp;"); }
+				{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 		}
-		return SmartTemplate4.regularize(msg, composeType);
+		return SmartTemplate4.regularize(templateText, composeType);
 	};
+	
+	// new function to retrieve quote header separately [Bug 25099]
+	// in order to fix bottom-reply
+	function getQuoteHeader(composeType, idKey) {
+		var hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
+		return getProcessedTemplate(hdr, idKey, composeType);
+	};
+	
+	// -----------------------------------
+	// Get template message - wrapper for main template field
+	function getSmartTemplate(composeType, idKey)
+	{
+		var msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
+		return getProcessedTemplate(msg, idKey, composeType);
+	};
+	
 
 	// -----------------------------------
 	// Add template message
@@ -559,7 +579,8 @@ SmartTemplate4.classSmartTemplate = function()
 		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); //
 
 		var msgComposeType = Components.interfaces.nsIMsgCompType;
-		var msgTmpl = null;
+		var template = null;
+		var quoteHeader = "";
 		var idKey = document.getElementById("msgIdentity").value;
 		var branch = "." + idKey;
 
@@ -627,26 +648,40 @@ SmartTemplate4.classSmartTemplate = function()
 
 			if (pref.isProcessingActive(idKey, st4composeType, false)) {
 				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
+				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined);
-				msgTmpl = getProcessedTemplate(st4composeType, idKey);
+				template = getSmartTemplate(st4composeType, idKey);
+				quoteHeader = getQuoteHeader(st4composeType, idKey);
+				let newQuote = quoteHeader ? true : false;
 				switch(composeCase) {
 					case 'new':
 						break;
 					case 'reply':
-						if (pref.isDeleteHeaders(idKey, st4composeType, false) &&
-						    pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-							delReplyHeader(idKey);
+						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
+							newQuote = newQuote && true;
+							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+								delReplyHeader(idKey);
+							}
 						}
 						break;
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
+						newQuote = newQuote && true;
 
 						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
 							delForwardHeader(idKey);
 						}
 						break;
-
+				}
+				// put new quote header always on top
+				// we should probably find the previous node before blockquote and insert a new there element there
+				if (newQuote) {
+					let qdiv = editor.document.createElement("div");
+					qdiv.id = "smartTemplate4-quoteHeader";
+					qdiv.innerHTML = quoteHeader;
+					editor.rootElement.insertBefore(qdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
+					// editor.insertHTML("<div id=\"smartTemplate4-quoteHeader\">" + quoteHeader + "</div>");
 				}
 			}
 
@@ -655,9 +690,11 @@ SmartTemplate4.classSmartTemplate = function()
 		catch(ex) {
 			SmartTemplate4.Util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex);
 		}
+		
+		let targetNode = 0;
 
 		// add template message --------------------------------
-		if (msgTmpl && msgTmpl !== "")
+		if (true) // template && template !== ""
 		{
 			if(gMsgCompose.composeHTML) {
 				// new global settings to deal withg [Bug 25084]
@@ -666,18 +703,30 @@ SmartTemplate4.classSmartTemplate = function()
 					                   gMsgCompose.editor.document.createElement("br"),
 					                   gMsgCompose.editor.rootElement, 0);
 			}
+			// now insert quote Header separately
+			gMsgCompose.editor.insertNode(
+			                   gMsgCompose.editor.document.createElement("br"),
+			                   gMsgCompose.editor.rootElement, 0);
+
 			try {
+				let tdiv = editor.document.createElement("div");
+				tdiv.id = "smartTemplate4-template";
+				tdiv.innerHTML = template;
 				if (theIdentity.replyOnTop) {
-					editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
+					targetNode = editor.rootElement.insertBefore(tdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
+					editor.beginningOfDocument();
+					//editor.selectionController.scrollSelectionIntoView(null, null, false);
+					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 				else {
-					// let's split the template into Header part and the rest. the header part always goes to the top...
-					editor.insertHTML("<div id=\"smartTemplate4-template\">" + msgTmpl + "</div>");
-					// problem: we cannot split it, the user needs to do it for us!!
+					targetNode = editor.rootElement.appendChild(tdiv); // after BLOCKQUOTE (hopefully)
+					editor.endOfDocument();
+					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
+				
 			}
 			catch (ex) {
-				let errortext = 'Could not insert Template as HTML; please check for syntax errors.'
+				let errorText = 'Could not insert Template as HTML; please check for syntax errors.'
 				      + '\n' + 'this might be caused by html comments <!-- or unclosed tag brackets <...>'
 				      + '\n' + ex
 				      + '\n' + 'Copy template contents to clipboard?';
@@ -685,11 +734,10 @@ SmartTemplate4.classSmartTemplate = function()
 				              "centerscreen,titlebar",
 				              function() {
 				              	let oClipBoard = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-				              	oClipBoard.copyString(msgTmpl); },
+				              	oClipBoard.copyString(template); },
 				              function() { ;/* cancel NOP */ }
 				            );
 			}
-			editor.beginningOfDocument();
 		}
 
 
@@ -751,16 +799,18 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 		}
 
-		// moved code for moving cursor to top
+		// moved code for moving selection to top / bottom
 		try {
-			editor.beginningOfDocument();
-			editor.selectionController.completeMove(false, false);
-			editor.selectionController.completeScroll(false);
+			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
+			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
+			let theParent = targetNode.parentNode;
+			let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
+			editor.selection.collapse(theParent, nodeOffset+1); // collapse selection and move cursor - problem: stationery sets cursor to the top!
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logDebug("editor.selectionController command failed - editor = " + editor + "\n" + ex);
-
+			SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 		}
+
 		gMsgCompose.editor.resetModificationCount();
 		if (startup) {
 			gMsgCompose.editor.enableUndo(false);
@@ -776,6 +826,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Public methods of classSmartTemplate
 	this.insertTemplate = insertTemplate;
+	this.extractSignature = extractSignature;
 };
 
 
