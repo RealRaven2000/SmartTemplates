@@ -125,21 +125,23 @@
 
 					<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
 					<preferences id = "templates">
-						<preference id = "pref_def"     name = "extensions.smartTemplate4.common.def"      type = "bool"/>
-						<preference id = "pref_new"     name = "extensions.smartTemplate4.common.new"      type = "bool"/>
-						<preference id = "pref_newmsg"  name = "extensions.smartTemplate4.common.newmsg"   type = "unichar"/>
-						<preference id = "pref_newhtml" name = "extensions.smartTemplate4.common.newhtml"  type = "bool"/>
-						<preference id = "pref_newnbr"  name = "extensions.smartTemplate4.common.newnbr"   type = "bool"/>
-						<preference id = "pref_rsp"     name = "extensions.smartTemplate4.common.rsp"      type = "bool"/>
-						<preference id = "pref_rspmsg"  name = "extensions.smartTemplate4.common.rspmsg"   type = "unichar"/>
-						<preference id = "pref_rsphtml" name = "extensions.smartTemplate4.common.rsphtml"  type = "bool"/>
-						<preference id = "pref_rspnbr"  name = "extensions.smartTemplate4.common.rspnbr"   type = "bool"/>
-						<preference id = "pref_rsphead" name = "extensions.smartTemplate4.common.rsphead"  type = "bool"/>
-						<preference id = "pref_fwd"     name = "extensions.smartTemplate4.common.fwd"      type = "bool"/>
-						<preference id = "pref_fwdmsg"  name = "extensions.smartTemplate4.common.fwdmsg"   type = "unichar"/>
-						<preference id = "pref_fwdhtml" name = "extensions.smartTemplate4.common.fwdhtml"  type = "bool"/>
-						<preference id = "pref_fwdnbr"  name = "extensions.smartTemplate4.common.fwdnbr"   type = "bool"/>
-						<preference id = "pref_fwdhead" name = "extensions.smartTemplate4.common.fwdhead"  type = "bool"/>
+						<preference id = "pref_def"        name = "extensions.smartTemplate4.common.def"       type = "bool"/>
+						<preference id = "pref_new"        name = "extensions.smartTemplate4.common.new"       type = "bool"/>
+						<preference id = "pref_newmsg"     name = "extensions.smartTemplate4.common.newmsg"    type = "unichar"/>
+						<preference id = "pref_newhtml"    name = "extensions.smartTemplate4.common.newhtml"   type = "bool"/>
+						<preference id = "pref_newnbr"     name = "extensions.smartTemplate4.common.newnbr"    type = "bool"/>
+						<preference id = "pref_rsp"        name = "extensions.smartTemplate4.common.rsp"       type = "bool"/>
+						<preference id = "pref_rspheader"  name = "extensions.smartTemplate4.common.rspheader" type = "unichar"/>
+						<preference id = "pref_rspmsg"     name = "extensions.smartTemplate4.common.rspmsg"    type = "unichar"/>
+						<preference id = "pref_rsphtml"    name = "extensions.smartTemplate4.common.rsphtml"   type = "bool"/>
+						<preference id = "pref_rspnbr"     name = "extensions.smartTemplate4.common.rspnbr"    type = "bool"/>
+						<preference id = "pref_rsphead"    name = "extensions.smartTemplate4.common.rsphead"   type = "bool"/>
+						<preference id = "pref_fwd"        name = "extensions.smartTemplate4.common.fwd"       type = "bool"/>
+						<preference id = "pref_fwdheader"  name = "extensions.smartTemplate4.common.fwdheader" type = "unichar"/>
+						<preference id = "pref_fwdmsg"     name = "extensions.smartTemplate4.common.fwdmsg"    type = "unichar"/>
+						<preference id = "pref_fwdhtml"    name = "extensions.smartTemplate4.common.fwdhtml"   type = "bool"/>
+						<preference id = "pref_fwdnbr"     name = "extensions.smartTemplate4.common.fwdnbr"    type = "bool"/>
+						<preference id = "pref_fwdhead"    name = "extensions.smartTemplate4.common.fwdhead"   type = "bool"/>
 					</preferences>
 
 					<checkbox id = "use_default"
@@ -210,28 +212,40 @@
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
+											<label value = "Quote Header"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "rspmsg"
+												<textbox id = "rspheader"
 												         class = "templateBox"
 												         multiline = "true"
-												         rows = "10"
+												         rows = "5"
+												         flex = "1"
 												         tooltiptext = "&pref_template_tip;"
-												         preference = "pref_rspmsg"/>
-												<checkbox id = "rsphtml"
-												          label = "&pref_html.label;"
-												          tooltiptext = "&pref_html.cap;"
-												          preference = "pref_rsphtml"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
-												<checkbox id = "rspnbr"
-												          class = "indent"
-												          label = "&pref_rep_br.label;"
-												          tooltiptext = "&pref_rep_br.cap;"
-												          preference = "pref_rspnbr"/>
+												         preference = "pref_rspheader"/>
 												<checkbox id = "rsphead"
 												          label = "&pref_rsphead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "pref_rsphead"/>
+									    </vbox>
+											<label value = "Template"/>
+											<vbox class = "indent" flex = "1">
+												<textbox id = "rspmsg"
+												         class = "templateBox"
+												         multiline = "true"
+												         rows = "5"
+												         flex = "1"
+												         tooltiptext = "&pref_template_tip;"
+												         preference = "pref_rspmsg"/>
 											</vbox>
+											<checkbox id = "rsphtml"
+											          label = "&pref_html.label;"
+											          tooltiptext = "&pref_html.cap;"
+											          preference = "pref_rsphtml"
+											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											<checkbox id = "rspnbr"
+											          class = "indent"
+											          label = "&pref_rep_br.label;"
+											          tooltiptext = "&pref_rep_br.cap;"
+											          preference = "pref_rspnbr"/>
 										</vbox>
 								</groupbox>
 							</tabpanel>
@@ -248,28 +262,40 @@
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
+											<label value = "Quote Header"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "fwdmsg"
+												<textbox id = "fwdheader"
 												         class = "templateBox"
 												         multiline = "true"
-												         rows = "10"
+												         rows = "5"
+												         flex = "1"
 												         tooltiptext = "&pref_template_tip;"
-												         preference = "pref_fwdmsg"/>
-												<checkbox id = "fwdhtml"
-												          label = "&pref_html.label;"
-												          tooltiptext = "&pref_html.cap;"
-												          preference = "pref_fwdhtml"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
-												<checkbox id = "fwdnbr"
-												          class = "indent"
-												          label = "&pref_rep_br.label;"
-												          tooltiptext = "&pref_rep_br.cap;"
-												          preference = "pref_fwdnbr"/>
+												         preference = "pref_fwdheader"/>
 												<checkbox id = "fwdhead"
 												          label = "&pref_fwdhead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "pref_fwdhead"/>
+									    </vbox>
+											<label value = "Template"/>
+											<vbox class = "indent" flex = "1">
+												<textbox id = "fwdmsg"
+												         class = "templateBox"
+												         multiline = "true"
+												         flex = "1"
+												         rows = "5"
+												         tooltiptext = "&pref_template_tip;"
+												         preference = "pref_fwdmsg"/>
 											</vbox>
+											<checkbox id = "fwdhtml"
+											          label = "&pref_html.label;"
+											          tooltiptext = "&pref_html.cap;"
+											          preference = "pref_fwdhtml"
+											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											<checkbox id = "fwdnbr"
+											          class = "indent"
+											          label = "&pref_rep_br.label;"
+											          tooltiptext = "&pref_rep_br.cap;"
+											          preference = "pref_fwdnbr"/>
 										</vbox>
 								</groupbox>
 							</tabpanel>

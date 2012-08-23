@@ -47,20 +47,17 @@ var SmartTemplate4 = {
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
 			if (!isBodyModified) {
-				// if previous id had signature below the quote, we should try to remove it from there now
-				if (previousIdentity) {
-					if (previousIdentity.sigBottom) {
-						if (previousIdentity.composeHtml) {
-							// find and delete div class="st4signature" from end to start.
-							// for this we need to add the class "st4signature" into any sig we add...
-
-						}
-						else {
-						}
-					}
-				}
-				// Add template message - will also remove previous header.
+				// Add template message - will also remove previous template and quoteHeader.
 				this.smartTemplate.insertTemplate(false);
+			}
+			else {
+				// if previous id has added a signature, we should try to remove it from there now
+				// we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
+				// as the user might have edited here already! 
+				// however, the signature is important as it should match the from address?
+				if (SmartTemplate4.Preferences.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
+					this.smartTemplate.extractSignature(gMsgCompose.identity, false);
+				}
 			}
 			// Old function call
 			this.original_LoadIdentity(startup);
