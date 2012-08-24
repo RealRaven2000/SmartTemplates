@@ -305,6 +305,7 @@ SmartTemplate4.Settings = {
 		let currentDeck = (SmartTemplate4.Settings.accountKey) ? 'deckB.nodef' + SmartTemplate4.Settings.accountKey : 'deckB.nodef';
 		let tabbox = document.getElementById(currentDeck);
 		let templateMsgBoxId = '';
+		let headerMsgBoxId = '';
 		switch (tabbox.selectedIndex) {
 			case 0:
 				templateMsgBoxId='newmsg';
@@ -314,10 +315,12 @@ SmartTemplate4.Settings = {
 				}
 				break;
 			case 1:
-				templateMsgBoxId='rspmsg';
+				templateMsgBoxId = 'rspmsg';
+				headerMsgBoxId = 'rspheader';
 				break;
 			case 2:
 				templateMsgBoxId='fwdmsg';
+				headerMsgBoxId = 'fwdheader';
 				break;
 			default: // unknown!
 				break;
@@ -326,6 +329,15 @@ SmartTemplate4.Settings = {
 			if (SmartTemplate4.Settings.accountKey)
 				templateMsgBoxId += SmartTemplate4.Settings.accountKey;
 			let editBox = document.getElementById(templateMsgBoxId);
+
+			if (headerMsgBoxId) {
+			// find out whether the header box has focus instead? => paste there instead.
+				let headerBox = document.getElementById(headerMsgBoxId);
+				if (headerBox.parentNode.className.indexOf('hasFocus') >=0 ) {
+					editBox = headerBox;
+				}
+			}
+			
 			SmartTemplate4.Settings.insertAtCaret(editBox, code);
 		}
 	} ,
@@ -428,10 +440,21 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	fillIdentityListPopup : function()	// mod 0.3.2
 	{
+		// get current identity
 		SmartTemplate4.Util.logDebugOptional("settings","fillIdentityListPopup()");
 		const accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
 									  getService(this.Ci.nsIMsgAccountManager).accounts;
-
+		let currentId = 0;
+		let CurId = null;
+		
+		// only when calling from the mail 3 pane window: 
+		if (window.opener.GetSelectedMsgFolders) { 
+			let folders = window.opener.GetSelectedMsgFolders();
+			if (folders.length > 0)
+				CurId = window.opener.getIdentityForServer(folders[0].server);
+		}
+		
+		let theMenu = document.getElementById("msgIdentity");
 		for (var idx = 0; idx < accounts.Count(); idx++) {
 			const account = accounts.QueryElementAt(idx, this.Ci.nsIMsgAccount);
 
@@ -440,13 +463,14 @@ SmartTemplate4.Settings = {
 
 			for (var j = 0; j < account.identities.Count(); j++) {
 				const identity = account.identities.QueryElementAt(j, this.Ci.nsIMsgIdentity);
-				document.getElementById("msgIdentity")
-						.appendItem(account.incomingServer.prettyName
-									+ " - "
-									+ identity.identityName, identity.key, "");
+				if (CurId == identity)
+					currentId = theMenu.itemCount; // remember position
+				theMenu.appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
 				this.addIdentity(identity.key);
 			}
 		}
+		// now select the current identity from the drop down
+		theMenu.selectedIndex = currentId;
 	} ,
 
 	openHelp: function() {
