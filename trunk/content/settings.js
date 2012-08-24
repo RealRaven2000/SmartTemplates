@@ -71,6 +71,21 @@ SmartTemplate4.Settings = {
 		return document.getElementById(elid).checked;
 	} ,
 
+	// prepare a textbox to receive elements from the help window
+	pasteFocus : function(element) {
+		let hbox = element.parentNode;
+		let vbox = hbox.parentNode.parentNode;
+		var txtContainers = vbox.getElementsByClassName("pasteFocus");
+		for (var i = 0; i < txtContainers.length; i++) {
+			// add the arrow to the hbox that contains this textbox
+			// and remove it from all others
+			txtContainers[i].className = 
+				(txtContainers[i].firstChild == element) ? "pasteFocus hasFocus" : "pasteFocus";
+			
+		}
+		
+		
+	} ,
 
 	// Disable DOM node depeding on checkboxes
 	//--------------------------------------------------------------------
@@ -79,10 +94,10 @@ SmartTemplate4.Settings = {
 		if (this.prefDisable(this.isChecked("new" + this.accountKey), "newmsg", "newhtml", "newnbr")) {
 			this.prefDisable(this.isChecked("newhtml" + this.accountKey), "newnbr");
 		}
-		if (this.prefDisable(this.isChecked("rsp" + this.accountKey), "rspmsg", "rsphtml", "rspnbr", "rsphead")) {
+		if (this.prefDisable(this.isChecked("rsp" + this.accountKey), "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader")) {
 			this.prefDisable(this.isChecked("rsphtml" + this.accountKey), "rspnbr");
 		}
-		if (this.prefDisable(this.isChecked("fwd" + this.accountKey), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead")) {
+		if (this.prefDisable(this.isChecked("fwd" + this.accountKey), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
 			this.prefDisable(this.isChecked("fwdhtml" + this.accountKey), "fwdnbr");
 		}
 	},

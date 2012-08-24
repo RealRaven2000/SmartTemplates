@@ -296,6 +296,17 @@ button.bugsURL:focus {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
 }
 
+.pasteFocus {
+	padding-right: 13px;
+}
+
+.pasteFocus.hasFocus {
+	background-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
+	background-repeat: no-repeat;
+	background-position: right 5px;
+}
+
+
 .buttonIcon label {
  margin-left: 0.313em !important;
 }
