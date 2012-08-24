@@ -215,27 +215,33 @@
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "rspheader"
-												         class = "templateBox"
-												         multiline = "true"
-												         rows = "5"
-												         flex = "1"
-												         tooltiptext = "&pref_quoteHeaderBox_tip;"
-												         preference = "pref_rspheader"/>
+												<hbox class = "pasteFocus">
+													<textbox id = "rspheader"
+													         class = "templateBox"
+													         multiline = "true"
+													         rows = "5"
+													         flex = "1"
+													         tooltiptext = "&pref_quoteHeaderBox_tip;"
+													         preference = "pref_rspheader"
+													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+												</hbox>
 												<checkbox id = "rsphead"
 												          label = "&pref_rsphead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "pref_rsphead"/>
-									    </vbox>
-											<label value = "&pref_templateBox.label;"/>
+											</vbox>
+										<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "rspmsg"
-												         class = "templateBox"
-												         multiline = "true"
-												         rows = "5"
-												         flex = "1"
-												         tooltiptext = "&pref_templateBox_tip;"
-												         preference = "pref_rspmsg"/>
+												<hbox class = "pasteFocus">
+													<textbox id = "rspmsg"
+													         class = "templateBox"
+													         multiline = "true"
+													         rows = "5"
+													         flex = "1"
+													         tooltiptext = "&pref_templateBox_tip;"
+													         preference = "pref_rspmsg"
+													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+												</hbox>
 											</vbox>
 											<checkbox id = "rsphtml"
 											          label = "&pref_html.label;"
@@ -265,13 +271,16 @@
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "fwdheader"
-												         class = "templateBox"
-												         multiline = "true"
-												         rows = "5"
-												         flex = "1"
-												         tooltiptext = "&pref_quoteHeaderBox_tip;"
-												         preference = "pref_fwdheader"/>
+												<hbox class = "pasteFocus">
+													<textbox id = "fwdheader"
+													         class = "templateBox"
+													         multiline = "true"
+													         rows = "5"
+													         flex = "1"
+													         tooltiptext = "&pref_quoteHeaderBox_tip;"
+													         preference = "pref_fwdheader"
+													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+												</hbox>
 												<checkbox id = "fwdhead"
 												          label = "&pref_fwdhead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
@@ -279,13 +288,16 @@
 									    </vbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<textbox id = "fwdmsg"
-												         class = "templateBox"
-												         multiline = "true"
-												         flex = "1"
-												         rows = "5"
-												         tooltiptext = "&pref_templateBox_tip;"
-												         preference = "pref_fwdmsg"/>
+												<hbox class = "pasteFocus">
+													<textbox id = "fwdmsg"
+													         class = "templateBox"
+													         multiline = "true"
+													         flex = "1"
+													         rows = "5"
+													         tooltiptext = "&pref_templateBox_tip;"
+													         preference = "pref_fwdmsg"
+													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+													</hbox>
 											</vbox>
 											<checkbox id = "fwdhtml"
 											          label = "&pref_html.label;"
