@@ -543,8 +543,8 @@ SmartTemplate4.classSmartTemplate = function()
 			templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
 			if (pref.isReplaceNewLines(idKey, composeType, true))
 				{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
-			else
-				{ templateText = templateText.replace(/\n/gm, ""); }
+			//else
+			//	{ templateText = templateText.replace(/\n/gm, ""); }
 		} else {
 			templateText = SmartTemplate4.escapeHtml(templateText);
 			// Escape space, if compose is HTML
