@@ -27,6 +27,10 @@
 <!ENTITY cancel_button "Abbrechen">
 <!ENTITY contribute_button "Einen Beitrag leisten">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
+<!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "Nachrichtenvorlage">
+<!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY pref_server_def "Allgemein">
@@ -36,15 +40,15 @@
 <!ENTITY pref_new.label "Folgende Vorlage bei neuen Nachrichten hinzufügen">
 <!ENTITY pref_rspmsg.cap "Antworten">
 <!ENTITY pref_rsp.label "Folgende Vorlage beim Antworten hinzufügen">
-<!ENTITY pref_rsphead.label "Standard Thunderbird Mailheader deaktivieren">
+<!ENTITY pref_rsphead.label "Standard Thunderbird Kopfzeilen deaktivieren">
 <!ENTITY pref_fwdmsg.cap "Weiterleiten">
 <!ENTITY pref_fwd.label "Folgende Vorlage beim Weiterleiten hinzufügen">
-<!ENTITY pref_fwdhead.label "Standard Thunderbird Mailheader deaktivieren">
+<!ENTITY pref_fwdhead.label "Standard Thunderbird Kopfzeilen deaktivieren">
 <!ENTITY pref_html.label "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe.">
 <!ENTITY pref_rep_br.label "Ersetze Leerzeilen durch &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Leerzeilen enthält und diese nicht durch &lt;br&gt; gesetzt werden, sollte diese Option aktiviert werden.">
-<!ENTITY pref_quotehead_tip "Standard Thunderbird Mailheader deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
+<!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Details siehe Hilfe.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
 <!ENTITY help_keyword.cap "Hilfe">
@@ -58,12 +62,12 @@
 <!ENTITY localized.label "Übersetzer">
 <!ENTITY translatorNickname.label "Marky Mark DE (AMO)">
 <!ENTITY contributor.label "Mitwirkende">
-<!ENTITY about.label "SmartTemplate4 ermöglicht auf einfachem Weg die Thunderbird standard Mailheader durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
+<!ENTITY about.label "SmartTemplate4 ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
 <!ENTITY ownmail.label "Ihre E-Mail Adresse">
-<!ENTITY date.label "Datum und Zeit (gleiches Format wie im E-Mail Header)">
+<!ENTITY date.label "Datum und Zeit (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY tomail.label "Empfänger E-Mail Adresse">
 <!ENTITY frommail.label "Absender E-Mail Adresse">
 <!ENTITY ccmail.label "Empfänger E-Mail Adresse">
@@ -89,13 +93,13 @@
 <!ENTITY ex_brack.label "Beispiel: An: boo Cc: foo">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[...]] verwenden">
 <!ENTITY sub_var.cap "Betreff">
-<!ENTITY sub.label "Betreff (gleiches Format wie im E-Mail Header)">
+<!ENTITY sub.label "Betreff (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY sub2.label "Betreff (gleiches Format wie im Nachrichten-Editor)">
 <!ENTITY spec_var.cap "Sondervariablen">
 <!ENTITY messid.label "Nachrichten ID">
 <!ENTITY newsgr.label "Nachrichtengruppen">
 <!ENTITY xmail.label "X-Mailer">
-<!ENTITY any.label "Beliebige Header-Zeile">
+<!ENTITY any.label "Beliebige Kopfzeile">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">

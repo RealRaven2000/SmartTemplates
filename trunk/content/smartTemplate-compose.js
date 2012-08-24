@@ -498,7 +498,9 @@ SmartTemplate4.classSmartTemplate = function()
 				nextEl = curEl.nextSibling;
 				if (curEl.id == "smartTemplate4-template") {
 					if (nextEl && nextEl.tagName == "BR") {
+						let l = nextEl.nextSibling;
 						gMsgCompose.editor.deleteNode(nextEl);
+						nextEl = l;
 					}
 					gMsgCompose.editor.deleteNode(curEl);
 				}

@@ -177,6 +177,7 @@
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
+											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "newmsg"
 												         flex ="1"
@@ -212,28 +213,28 @@
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
-											<label value = "Quote Header"/>
+											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "rspheader"
 												         class = "templateBox"
 												         multiline = "true"
 												         rows = "5"
 												         flex = "1"
-												         tooltiptext = "&pref_template_tip;"
+												         tooltiptext = "&pref_quoteHeaderBox_tip;"
 												         preference = "pref_rspheader"/>
 												<checkbox id = "rsphead"
 												          label = "&pref_rsphead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "pref_rsphead"/>
 									    </vbox>
-											<label value = "Template"/>
+											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "rspmsg"
 												         class = "templateBox"
 												         multiline = "true"
 												         rows = "5"
 												         flex = "1"
-												         tooltiptext = "&pref_template_tip;"
+												         tooltiptext = "&pref_templateBox_tip;"
 												         preference = "pref_rspmsg"/>
 											</vbox>
 											<checkbox id = "rsphtml"
@@ -262,28 +263,28 @@
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
-											<label value = "Quote Header"/>
+											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "fwdheader"
 												         class = "templateBox"
 												         multiline = "true"
 												         rows = "5"
 												         flex = "1"
-												         tooltiptext = "&pref_template_tip;"
+												         tooltiptext = "&pref_quoteHeaderBox_tip;"
 												         preference = "pref_fwdheader"/>
 												<checkbox id = "fwdhead"
 												          label = "&pref_fwdhead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "pref_fwdhead"/>
 									    </vbox>
-											<label value = "Template"/>
+											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<textbox id = "fwdmsg"
 												         class = "templateBox"
 												         multiline = "true"
 												         flex = "1"
 												         rows = "5"
-												         tooltiptext = "&pref_template_tip;"
+												         tooltiptext = "&pref_templateBox_tip;"
 												         preference = "pref_fwdmsg"/>
 											</vbox>
 											<checkbox id = "fwdhtml"
@@ -311,7 +312,8 @@
 												<description>&creator.label;: Axel Grude</description>
 												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
 												<description>&localized.label;: &translatorNickname.label;</description>
-												<description>&contributor.label;: Aris - style support<br/>tool8 - development, Version 0.7.2 - 0.8.0</description>
+												<description>&contributor.label;: Aris - style support</description>
+												<description>&contributor.label;: tool8 - development, Version 0.7.2 - 0.8.0</description>
 												<description class = "aboutContent">&about.label;</description>
 											</vbox>
 											<spacer flex = "1" />
