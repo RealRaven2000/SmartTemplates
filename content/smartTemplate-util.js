@@ -324,7 +324,7 @@ SmartTemplate4.Util = {
 	logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags)
 	{
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
-																	 .getService(Components.interfaces.nsIConsoleService);
+		                               .getService(Components.interfaces.nsIConsoleService);
 		var aCategory = '';
 
 		var scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
@@ -601,52 +601,64 @@ SmartTemplate4.Util = {
 		// user will have to create new settings from scratch!
 		// this is a dummy function, it doesn't do anything
 	} ,
+	
+	// convert a extension.smarttemplate. setting to an extension.smartTemplate4. one
+	convertPrefValue : function (oldPrefName, test, realString) {
+		let converted = true;
+		let debugText = "";
+		debugText += 'CONVERT: ' + oldPrefName;
+		
+		let thePreference = realString ? realString : SmartTemplate4.Settings.getPref(oldPrefName);
+		let newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
+		                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
+		                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
+
+		debugText += ' => ' + newPrefString + '\n';
+		SmartTemplate4.Settings.setPref(newPrefString, thePreference);
+		switch (typeof thePreference) {
+			case 'string':
+				if (thePreference.indexOf('{')>0 || thePreference.indexOf('}')>0) {
+					convertedBracketExpressions++;
+					// hmmmffff....
+					thePreference = thePreference
+					                .replace("\{","[[").replace("{","[[")
+					                .replace("\}","]]").replace("}","]]");
+					debugText += '\nbracketed conversion:\n:   ' + thePreference;
+				}
+				if (test) 
+					alert(newPrefString + "\n" + thePreference);
+				else
+					SmartTemplate4.Settings.prefService.setCharPref(newPrefString, thePreference);
+				break;
+			case 'number':
+				SmartTemplate4.Settings.prefService.setIntPref(newPrefString, thePreference);
+				break;
+			case 'boolean':
+				SmartTemplate4.Settings.prefService.setBoolPref(newPrefString, thePreference);
+				break;
+			default:
+				converted = false;
+				break;
+		}
+		SmartTemplate4.Util.logDebug(debugText);
+		return converted;
+	},
 
 	convertOldPrefs : function() {
-		let debugText = "";
 		let countConverted = 0;
 		let convertedBracketExpressions = 0;
 		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
 
 		try {
-			let array = this.prefService.getChildList("extensions.smarttemplate.", {});
+			let array = SmartTemplate4.Settings.prefService.getChildList("extensions.smarttemplate.", {});
 
 			// AG new: import settings to new format
 			for (var i in array) {
 
 				let oldPrefName = array[i];
-				debugText += 'CONVERT: ' + oldPrefName;
-				let thePreference = this.getPref(oldPrefName);
-				let newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
-				                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
-				                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
-
-				debugText += ' => ' + newPrefString + '\n';
-				this.setPref(newPrefString, thePreference);
-				countConverted++;
-				switch (typeof thePreference) {
-					case 'string':
-						if (thePreference.indexOf('{')>0 || thePreference.indexOf('}')>0) {
-							convertedBracketExpressions++;
-							// hmmmffff....
-							thePreference = thePreference
-							                .replace("\{","[[").replace("{","[[")
-							                .replace("\}","]]").replace("}","]]");
-							debugText += '\nbracketed conversion:\n:   ' + thePreference;
-						}
-
-						this.prefService.setCharPref(newPrefString, thePreference);
-						break;
-					case 'number':
-						this.prefService.setIntPref(newPrefString, thePreference);
-						break;
-					case 'boolean':
-						this.prefService.setBoolPref(newPrefString, thePreference);
-						break;
-					default:
-						countConverted--;
-						break;
-				}
+				if (this.convertPrefValue(oldPrefName))
+					countConverted ++;
+				
 				// keep a backup, for now ??
 				// this.prefService.deleteBranch(array[i]);
 			}
@@ -655,11 +667,10 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.logException("convertOldPrefs failed: ", ex);
 		}
 		if (countConverted)
-			this.prefService.setIntPref("extensions.smartTemplate4.conversions.total", countConverted);
+			SmartTemplate4.Settings.prefService.setIntPref("extensions.smartTemplate4.conversions.total", countConverted);
 		if (convertedBracketExpressions)
-			this.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
+			SmartTemplate4.Settings.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
 
-		SmartTemplate4.Util.logDebug(debugText);
 	}
 
 

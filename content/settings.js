@@ -101,6 +101,18 @@ SmartTemplate4.Settings = {
 			this.prefDisable(this.isChecked("fwdhtml" + this.accountKey), "fwdnbr");
 		}
 	},
+	
+	clickLogo : function() {
+		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg");
+		let result = "";
+		if (testString == '') {
+			testString = prompt("Enter a string");
+			result = SmartTemplate4.Util.convertPrefValue(testString, true);
+		}
+		else
+			result = SmartTemplate4.Util.convertPrefValue(testString, true);
+		
+	},
 
 	// Delete unused preferences.
 	//--------------------------------------------------------------------

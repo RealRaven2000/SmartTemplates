@@ -317,7 +317,7 @@
 								<tabpanel class="aboutPanel">
 									<groupbox  flex = "1" class="aboutGroup">
 										<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
-										<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" />
+										<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
 										<hbox class = "aboutWrapper">
 											<spacer flex = "1" />
 											<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">
