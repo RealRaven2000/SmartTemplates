@@ -260,13 +260,16 @@ SmartTemplate4.Settings = {
 		this.disableWithCheckbox();
 
 		// Set account popup
-		this.fillIdentityListPopup();
+		let CurId = this.fillIdentityListPopup();
 
 		this.cleanupUnusedPrefs();
 
 		// Switch account (from account setting)  // add 0.4.0
 		if (window.arguments && window.arguments.length >= 1)	{
 		  this.switchIdentity(window.arguments[0]);
+		}
+		else if(CurId) {
+			this.switchIdentity(CurId);
 		}
 
 		// disable Use default (common account)
@@ -485,6 +488,8 @@ SmartTemplate4.Settings = {
 		}
 		// now select the current identity from the drop down
 		theMenu.selectedIndex = currentId;
+		return (CurId) ? CurId.key : null;
+		
 	} ,
 
 	openHelp: function() {
