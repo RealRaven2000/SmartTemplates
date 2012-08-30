@@ -338,8 +338,10 @@ SmartTemplate4.Settings = {
 				break;
 		}
 		if (templateMsgBoxId) {
-			if (SmartTemplate4.Settings.accountKey)
+			if (SmartTemplate4.Settings.accountKey) {
 				templateMsgBoxId += SmartTemplate4.Settings.accountKey;
+				headerMsgBoxId += SmartTemplate4.Settings.accountKey;
+			}
 			let editBox = document.getElementById(templateMsgBoxId);
 
 			if (headerMsgBoxId) {
