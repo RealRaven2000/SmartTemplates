@@ -104,13 +104,16 @@ SmartTemplate4.classSmartTemplate = function()
 		// retrieve signature Node; if it doesn't work, try from the account
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
 
-		// LET'S REMOVE THE SIGNATURE (but only if our template contains a %sig%)
-		if(sigNode && isSignatureTb && signatureDefined)
+		let removed = false;
+		// LET'S REMOVE THE SIGNATURE
+		//  && signatureDefined
+		if(sigNode && isSignatureTb)
 		{
 			let ps = sigNode.previousElementSibling;
 			if (ps && ps.tagName === "BR") {
+				//remove the preceding BR that TB always inserts
 				try {
-					bodyEl.removeChild(ps); //remove the preceding BR that TB always inserts
+					gMsgCompose.editor.deleteNode(ps);
 				}
 				catch(ex) {
 					SmartTemplate4.Util.logException("extractSignature - exception removing <br> before signature!", ex);
@@ -122,7 +125,8 @@ SmartTemplate4.classSmartTemplate = function()
 			let sp = sigNode.parentNode;
 			sp.insertBefore(originalSigPlaceholder, sigNode);
 			try {
-				bodyEl.removeChild(sigNode);
+				gMsgCompose.editor.deleteNode(sigNode);
+				removed = true;
 			}
 			catch(ex) {
 				SmartTemplate4.Util.logException("extractSignature - exception removing signature!", ex);
@@ -132,17 +136,18 @@ SmartTemplate4.classSmartTemplate = function()
 
 
 		// remove previous signature. 
-		for(let i = 0; i < nodes.length; i++) {
-			if (nodes[i].className && nodes[i].className == "moz-signature" ) {
-				let pBr = nodes[i].previousElementSibling;
-				let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
-				// old code - remove the preceding BR that TB always inserts
-				if (pBr && pBr.tagName == "BR")
-					bodyEl.removeChild(pBr); 
-				break;
+		if (!removed)
+			for(let i = 0; i < nodes.length; i++) {
+				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
+					let pBr = nodes[i].previousElementSibling;
+					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
+					// old code - remove the preceding BR that TB always inserts
+					if (pBr && pBr.tagName == "BR")
+						bodyEl.removeChild(pBr); 
+					break;
+				}
 			}
-		}
-		// let's discard the old signature instead.
+			// let's discard the old signature instead.
 
 
 		if (!sig || typeof sig == 'string') {
@@ -586,6 +591,7 @@ SmartTemplate4.classSmartTemplate = function()
 		var idKey = document.getElementById("msgIdentity").value;
 		var branch = "." + idKey;
 
+		let isActiveOnAccount = false;
 		let theIdentity = gAccountManager.getIdentity(idKey);
 		if (!theIdentity)
 			theIdentity = gMsgCompose.identity;
@@ -647,8 +653,10 @@ SmartTemplate4.classSmartTemplate = function()
 				default:
 					break;
 			}
+			
+			isActiveOnAccount = pref.isProcessingActive(idKey, st4composeType, false);
 
-			if (pref.isProcessingActive(idKey, st4composeType, false)) {
+			if (isActiveOnAccount) {
 				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined);
@@ -686,6 +694,10 @@ SmartTemplate4.classSmartTemplate = function()
 					// editor.insertHTML("<div id=\"smartTemplate4-quoteHeader\">" + quoteHeader + "</div>");
 				}
 			}
+			else {
+				SmartTemplate4.Util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
+			}
+			
 
 
 		}
@@ -696,7 +708,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let targetNode = 0;
 
 		// add template message --------------------------------
-		if (true) // template && template !== ""
+		if (isActiveOnAccount) // template && template !== ""
 		{
 			if(gMsgCompose.composeHTML) {
 				// new global settings to deal withg [Bug 25084]
@@ -706,10 +718,6 @@ SmartTemplate4.classSmartTemplate = function()
 					                   gMsgCompose.editor.rootElement, 0);
 			}
 			// now insert quote Header separately
-			gMsgCompose.editor.insertNode(
-			                   gMsgCompose.editor.document.createElement("br"),
-			                   gMsgCompose.editor.rootElement, 0);
-
 			try {
 				let tdiv = editor.document.createElement("div");
 				tdiv.id = "smartTemplate4-template";
@@ -747,6 +755,11 @@ SmartTemplate4.classSmartTemplate = function()
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
 		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
+
+		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
+		                       ||
+		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
+
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
 		       + 'key:            ' + theIdentity.key + '\n'
@@ -758,11 +771,9 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'htmlSigFormat:  ' + theIdentity.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
 		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate);
+		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
+		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup);
 
-		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
-		                       ||
-		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 		/* SIGNATURE HANDLING */
 		if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 		    ||
@@ -795,8 +806,14 @@ SmartTemplate4.classSmartTemplate = function()
 					bodyEl.appendChild(theSignature);
 				}
 				else {
-					bodyEl.insertBefore(theSignature, bodyEl.firstChild);
-					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), bodyEl.firstChild);
+					// reply above, before div smartTemplate4-template
+					let tdiv = document.getElementById('smartTemplate4-template');
+					// if we don't find this, lets take the first child div
+					if (!tdiv) {
+						tdiv = bodyEl.firstChild.nextSibling;
+					}
+					bodyEl.insertBefore(theSignature, tdiv);
+					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), tdiv);
 				}
 			}
 		}
@@ -806,8 +823,10 @@ SmartTemplate4.classSmartTemplate = function()
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
 			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
 			let theParent = targetNode.parentNode;
-			let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
-			editor.selection.collapse(theParent, nodeOffset+1); // collapse selection and move cursor - problem: stationery sets cursor to the top!
+			if (theParent) {
+				let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
+				editor.selection.collapse(theParent, nodeOffset+1); // collapse selection and move cursor - problem: stationery sets cursor to the top!
+			}
 		}
 		catch(ex) {
 			SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
