@@ -6,16 +6,16 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Copier">
 <!ENTITY paste.label "Coller">
-<!ENTITY insert.label "Insérer une Variable">
+<!ENTITY insert.label "Insérer une variable">
 <!ENTITY close.label "Fermer">
 <!ENTITY export.label "Exportation">
 <!ENTITY import.label "Importation">
 <!ENTITY menu.template_import.label "Importer un modèle">
 <!ENTITY menu.template_export.label "Exporter le modèle">
 <!ENTITY settings.label "Réglages et Modèles">
-<!ENTITY url.homePage.label "Page d'accueil du plugin">
+<!ENTITY url.homePage.label "Page Web du plugin">
 <!ENTITY url.supportPage.label "Page d'aide">
-<!ENTITY url.bugsAndFeaturesPage.label "Signalement de bogues/demande de fonctionnalité">
+<!ENTITY url.bugsAndFeaturesPage.label "Signalement de bogues/demande de fonctionnalités">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nouveau">
 <!ENTITY pref_rsp.tab "Répondre">
@@ -27,11 +27,15 @@
 <!ENTITY cancel_button "Annuler">
 <!ENTITY contribute_button "Contribuer">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Titre de citation">
+<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37; a écrit &#37;from(name)&#37; :">
+<!ENTITY pref_templateBox.label "Modèle">
+<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate4">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
-<!ENTITY pref_def.cap "Désactiver 'Utiliser les options globales' pour créer un entête personnalisé pour ce compte.">
+<!ENTITY pref_def.cap "Désactiver 'Utiliser les options globales' afin créer un entête personnalisé pour ce compte.">
 <!ENTITY pref_newmsg.cap "Nouveaux messages">
 <!ENTITY pref_new.label "Appliquer le modèle suivant pour les nouveaux messages">
 <!ENTITY pref_rspmsg.cap "Réponses">
@@ -108,7 +112,7 @@
 <!ENTITY a.label "Jour de la semaine (Vend.)">
 <!ENTITY d.label "Jour du mois (01 à 31)">
 <!ENTITY e.label "Jour du mois (1 à 31)">
-<!ENTITY n.label "Numéro du mois (1 à 12)"> 
+<!ENTITY n.label "Numéro du mois (1 à 12)">
 <!ENTITY B.label "Mois (Janvier)">
 <!ENTITY b.label "Mois (Jan.)">
 <!ENTITY m.label "Mois (01 à 12)">
@@ -139,8 +143,8 @@
 <!ENTITY im-ex.cap "Paramétrages et import/export de modèles">
 <!ENTITY im-ex_note1.label "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte.">
 <!ENTITY im-ex_note2.label "Tout d'abord, choisissez le compte que vous souhaitez exporter dans le menu déroulant des réglages de SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Ensuite, sélectionnez « Outils  &#8658; Exporter &#8658; Réglages et modèles » de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
-<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez « Outils &#8658; Importer &#8658; Réglages et modèles » de la barre de menu.">
+<!ENTITY im-ex_note3.label "Ensuite, sélectionnez 'Outils'  &amp;#8658; 'Exporter' &amp;#8658; 'Réglages et modèles' de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
+<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez 'Outils' &#8658; 'Importer' &#8658; 'Réglages et modèles' de la barre de menu.">
 <!ENTITY im-ex_note5.label "Sélectionnez le fichier SmartTemplate4 (xxx.st4) que vous souhaitez importer.">
 <!ENTITY im-ex_note6.label "REMARQUE : les plateformes Apple/Macintosh auront les options dans la barre de menu en haut au lieu de la popup d'option de SmartTemplate4. Ceci est un comportement normal et ne peut pas être modifié.">
 <!ENTITY html_note.cap "Notes pour l'utilisation de HTML">
