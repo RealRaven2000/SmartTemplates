@@ -9,7 +9,11 @@
 // -----------------------------------------------------------------------------------
 
 SmartTemplate4.Settings = {
-	accountKey : "",
+	accountKey : ".common",  // default to common
+	get accountId() {
+		// empty for ".common"
+		return (this.accountKey !== '.common') ? this.accountKey : ''; 
+	},
 	Ci : Components.interfaces,
 	prefService : Components.classes["@mozilla.org/preferences-service;1"]
 									.getService(Components.interfaces.nsIPrefService),
@@ -22,7 +26,7 @@ SmartTemplate4.Settings = {
 	prefDisable : function()
 	{
 		for(var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.accountKey);
+			var el = document.getElementById(arguments[i] + this.accountId);
 			if (arguments[0]) {
 				el.disabled = false;
 				el.removeAttribute("disabled");
@@ -39,7 +43,7 @@ SmartTemplate4.Settings = {
 	prefHidden : function()
 	{
 		for(var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.accountKey);
+			var el = document.getElementById(arguments[i] + this.accountId);
 			if (arguments[0]) {
 				el.hidden = true;
 				el.setAttribute("hidden", "true");
@@ -55,7 +59,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefDeck : function(id, index)
 	{
-		var deck = document.getElementById(id + this.accountKey);
+		var deck = document.getElementById(id + this.accountId);
 		if (deck)
 		  { deck.selectedIndex = index; }
 
@@ -66,9 +70,12 @@ SmartTemplate4.Settings = {
 
 	// Return checkbox is checked or not
 	//--------------------------------------------------------------------
-	isChecked : function(elid)
+	isChecked : function(elId)
 	{
-		return document.getElementById(elid).checked;
+		let com = elId.indexOf('.common');
+		if (com>0)
+		  elId = elId.substring(0, com); // cut off .common
+		return document.getElementById(elId).checked;
 	} ,
 
 	// prepare a textbox to receive elements from the help window
@@ -91,14 +98,14 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	disableWithCheckbox : function()
 	{
-		if (this.prefDisable(this.isChecked("new" + this.accountKey), "newmsg", "newhtml", "newnbr")) {
-			this.prefDisable(this.isChecked("newhtml" + this.accountKey), "newnbr");
+		if (this.prefDisable(this.isChecked("new" + this.accountId), "newmsg", "newhtml", "newnbr")) {
+			this.prefDisable(this.isChecked("newhtml" + this.accountId), "newnbr");
 		}
-		if (this.prefDisable(this.isChecked("rsp" + this.accountKey), "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader")) {
-			this.prefDisable(this.isChecked("rsphtml" + this.accountKey), "rspnbr");
+		if (this.prefDisable(this.isChecked("rsp" + this.accountId), "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader")) {
+			this.prefDisable(this.isChecked("rsphtml" + this.accountId), "rspnbr");
 		}
-		if (this.prefDisable(this.isChecked("fwd" + this.accountKey), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
-			this.prefDisable(this.isChecked("fwdhtml" + this.accountKey), "fwdnbr");
+		if (this.prefDisable(this.isChecked("fwd" + this.accountId), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
+			this.prefDisable(this.isChecked("fwdhtml" + this.accountId), "fwdnbr");
 		}
 	},
 	
@@ -317,7 +324,8 @@ SmartTemplate4.Settings = {
 	onCodeWord : function(code, className) {
 		SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
-		let currentDeck = (SmartTemplate4.Settings.accountKey) ? 'deckB.nodef' + SmartTemplate4.Settings.accountKey : 'deckB.nodef';
+		let currentDeck = 'deckB.nodef' + SmartTemplate4.Settings.accountId ;
+		
 		let tabbox = document.getElementById(currentDeck);
 		let templateMsgBoxId = '';
 		let headerMsgBoxId = '';
@@ -341,10 +349,9 @@ SmartTemplate4.Settings = {
 				break;
 		}
 		if (templateMsgBoxId) {
-			if (SmartTemplate4.Settings.accountKey) {
-				templateMsgBoxId += SmartTemplate4.Settings.accountKey;
-				headerMsgBoxId += SmartTemplate4.Settings.accountKey;
-			}
+			templateMsgBoxId += SmartTemplate4.Settings.accountId;
+			if (headerMsgBoxId)
+				headerMsgBoxId += SmartTemplate4.Settings.accountId;
 			let editBox = document.getElementById(templateMsgBoxId);
 
 			if (headerMsgBoxId) {
@@ -445,7 +452,7 @@ SmartTemplate4.Settings = {
 			this.prefDeck("default.deckB", this.isChecked("use_default" + branch)?1:0);
 
 			this.disableWithCheckbox();
-			this.accountKey = "";
+			// this.accountKey = "";
 		}
 		catch(ex) {
 			SmartTemplate4.Util.logException("Exception in addIdentity(" + menuvalue  +")", ex);
@@ -542,9 +549,9 @@ SmartTemplate4.Settings = {
 
 	} , // add 0.4.0 E
 
-	getCurrentDeck : function(accountKey) {
-		return (accountKey != ".common")
-		  ? 'deckB.nodef' + accountKey
+	getCurrentDeck : function(accountId) {
+		return (accountId != ".common")
+		  ? 'deckB.nodef' + accountId
 			: 'deckB.nodef';
 	} ,
 
@@ -553,7 +560,7 @@ SmartTemplate4.Settings = {
 	selectIdentity : function(idkey)
 	{
 		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
-		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountKey);
+		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
 		let tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
@@ -587,7 +594,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Util.logDebugOptional("identities", "could " + (searchDeckName ? "" : "not") + " find deck:" + searchDeckName);
 
 		//reactivate the current tab: new / respond or forward!
-		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountKey);
+		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox)
 			tabbox.selectedIndex = tabIndex;
