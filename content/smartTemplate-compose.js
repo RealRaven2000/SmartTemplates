@@ -59,6 +59,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
+		let isSignatureHTML = Ident.htmlSigFormat; // only reliable if in textbox!
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.extractSignature()');
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
@@ -99,6 +100,12 @@ SmartTemplate4.classSmartTemplate = function()
 		if (Ident.attachSignature) {
 			let fileSig = readSignatureFile(Ident);
 			htmlSigText = fileSig ? fileSig : htmlSigText;
+			if (fileSig) {
+				// look for html tags, because htmlSigFormat might be unchecked
+				// while an attached sig file might still be in HTML format.
+				if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>"))
+					isSignatureHTML = true;
+			}
 		}
 
 		// retrieve signature Node; if it doesn't work, try from the account
@@ -154,6 +161,14 @@ SmartTemplate4.classSmartTemplate = function()
 			if (gMsgCompose.composeHTML) {
 				sig = gMsgCompose.editor.document.createElement("div");
 				sig.className = 'moz-signature';
+				// if our signature is text only, we need to replace \n with <br>
+				if (!isSignatureHTML) {
+					// prettify: txt -> html
+					sigText = "<pre>"
+					        + sigText.replace(/\n/g, "<BR>")
+					                 .replace(/ /g, '&nbsp;')
+					        + "</pre>";
+				}
 				sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
 				// TEST STUFF..
 			}
@@ -606,7 +621,7 @@ SmartTemplate4.classSmartTemplate = function()
 			if (gCurrentIdentity && gCurrentIdentity.key == idKey) {
 				return;
 			}
-			// Undo template messages
+			// Undo template messages (does _not_ remove signature!)
 			removePreviousTemplate();
 		}
 
@@ -696,9 +711,9 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 			else {
 				SmartTemplate4.Util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
+				// remove old signature!
+				extractSignature(theIdentity, false);
 			}
-			
-
 
 		}
 		catch(ex) {
@@ -772,48 +787,54 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
 		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
-		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup);
+		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
+		       + '%sig% found in template: ' + sigVarDefined + '\n'
+		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount);
 
 		/* SIGNATURE HANDLING */
-		if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
-		    ||
-		    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
-		    ||
-		    composeCase == 'new' && theSignature && isSignatureSetup) {
-
-			if (!SmartTemplate4.sigInTemplate && theSignature) {
-				SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
-
-				let pref = SmartTemplate4.pref;
-
-				// theIdentity.sigBottom is better than using
-				// let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
-				let bodyEl = gMsgCompose.editor.rootElement;
-
-				// add Signature and replace the BR that was removed in extractSignature
-				// do we ignore theIdentity.sigOnReply ?
-				// do we ignore theIdentity.sigOnForward ?
-				
-				// wrap text only signature to fix [Bug 25093]!
-				if (typeof theSignature === "string")  {
-					var sn = gMsgCompose.editor.document.createElement("div");
-					sn.innerHTML = theSignature;
-					theSignature = sn;
-				}
-				
-				if (theIdentity.sigBottom) {
-					bodyEl.appendChild(gMsgCompose.editor.document.createElement("br"));
-					bodyEl.appendChild(theSignature);
-				}
-				else {
-					// reply above, before div smartTemplate4-template
-					let tdiv = document.getElementById('smartTemplate4-template');
-					// if we don't find this, lets take the first child div
-					if (!tdiv) {
-						tdiv = bodyEl.firstChild.nextSibling;
+		
+		if (isActiveOnAccount  && !sigVarDefined) {
+		   if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
+			    ||
+			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
+			    ||
+			    composeCase == 'new' && theSignature && isSignatureSetup)
+			{
+	
+				if (!SmartTemplate4.sigInTemplate && theSignature) {
+					SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
+	
+					let pref = SmartTemplate4.pref;
+	
+					// theIdentity.sigBottom is better than using
+					// let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
+					let bodyEl = gMsgCompose.editor.rootElement;
+	
+					// add Signature and replace the BR that was removed in extractSignature
+					// do we ignore theIdentity.sigOnReply ?
+					// do we ignore theIdentity.sigOnForward ?
+					
+					// wrap text only signature to fix [Bug 25093]!
+					if (typeof theSignature === "string")  {
+						var sn = gMsgCompose.editor.document.createElement("div");
+						sn.innerHTML = theSignature;
+						theSignature = sn;
 					}
-					bodyEl.insertBefore(theSignature, tdiv);
-					bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), tdiv);
+					
+					if (theIdentity.sigBottom) {
+						bodyEl.appendChild(gMsgCompose.editor.document.createElement("br"));
+						bodyEl.appendChild(theSignature);
+					}
+					else {
+						// reply above, before div smartTemplate4-template
+						let tdiv = document.getElementById('smartTemplate4-template');
+						// if we don't find this, lets take the first child div
+						if (!tdiv) {
+							tdiv = bodyEl.firstChild.nextSibling;
+						}
+						bodyEl.insertBefore(theSignature, tdiv);
+						bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), tdiv);
+					}
 				}
 			}
 		}
