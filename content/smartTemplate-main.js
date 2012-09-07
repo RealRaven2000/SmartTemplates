@@ -58,11 +58,11 @@ var SmartTemplate4 = {
 				if (SmartTemplate4.Preferences.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
 					this.smartTemplate.extractSignature(gMsgCompose.identity, false);
 				}
-				// Old function call
-				// AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
-				//               as it messes up the signature (pulls it into the blockquote)
-				this.original_LoadIdentity(startup);
 			}
+			// AG 31/08/2012 put this back as we need it!
+			// AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
+			//               as it messes up the signature (pulls it into the blockquote)
+			this.original_LoadIdentity(startup);
 			if (!isBodyModified && gMsgCompose.bodyModified) {
 				gMsgCompose.editor.resetModificationCount();
 			}	// for TB bug?
