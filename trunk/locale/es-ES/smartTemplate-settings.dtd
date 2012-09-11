@@ -27,6 +27,10 @@
 <!ENTITY cancel_button "Cancelar">
 <!ENTITY contribute_button "Contribuir">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Encabezado de cita">
+<!ENTITY pref_quoteHeaderBox_tip "Escriba aquí su encabezado de cita, por ejemplo: El &#37;date&#37; &#37;from(name)&#37; escribió:">
+<!ENTITY pref_templateBox.label "Plantilla">
+<!ENTITY pref_templateBox_tip "Escriba su plantilla aquí, como: Hola &#37;from(name)&#37;<br> Gracias por tu mensaje<br> un saludo, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Opciones de SmartTemplate4">
 <!ENTITY pref_server_desc "Cuenta">
 <!ENTITY pref_server_def "Común">
@@ -100,8 +104,8 @@
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">
 <!ENTITY dateshort.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
-<!ENTITY datetz.label "Zona horaria (+0100, +0200, ... )">
-<!ENTITY tzname.label "GMT, PST, EST, ...">
+<!ENTITY datetz.label "Zona horaria (+0100, +0200, … )">
+<!ENTITY tzname.label "GMT, PST, EST, …">
 <!ENTITY var_custom.cap "Variables para formatos de fecha personalizados">
 <!ENTITY customdf_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY A.label "Día de la semana (Viernes)">
@@ -126,16 +130,16 @@
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">
-<!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; a las &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;">
-<!ENTITY xsent_long_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; a las &#37;H&#37;:&#37;M&#37;">
+<!ENTITY xsent_long_result.label "Resultado: domingo 20/12/2011 a las 16:24">
 <!ENTITY xsent_short.cap "Ejemplo de cadena de texto corta:">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
-<!ENTITY xsent_short_result.label "Resultado: martes 20 de diciembre de 2011 a las 4:11PM">
+<!ENTITY xsent_short_result.label "Resultado: domingo 20/12/2011 a las 16:24">
 <!ENTITY xsent_short_note.label "Además, puede usar en ambos casos las siguientes variables:">
 <!ENTITY localedate.label "Fecha y hora (formato local)">
 <!ENTITY shortdate.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
-<!ENTITY datetimezone.label "Zona horaria (+0100, +0200, ... )">
-<!ENTITY timezonename.label "GMT, PST, EST, ...">
+<!ENTITY datetimezone.label "Zona horaria (+0100, +0200, … )">
+<!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Importar/Exportar predisposiciones y plantillas">
 <!ENTITY im-ex_note1.label "Puede exportar e importar las predisposiciones y plantillas asociadas a cada cuenta.">
 <!ENTITY im-ex_note2.label "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplate4.">

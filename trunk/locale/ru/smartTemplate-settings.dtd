@@ -27,6 +27,10 @@
 <!ENTITY cancel_button "Отмена">
 <!ENTITY contribute_button "Поддержать">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Заголовок цитат">
+<!ENTITY pref_quoteHeaderBox_tip "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:">
+<!ENTITY pref_templateBox.label "Шаблон">
+<!ENTITY pref_templateBox_tip "Напишите свой шаблон, к примеру Привет &#37;from(name)&#37;&lt; br &gt; Спасибо за сообщение&lt; br &gt; Всего наилучшего, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Настройки SmartTemplate4">
 <!ENTITY pref_server_desc "Учётная запись">
 <!ENTITY pref_server_def "Общие настройки">

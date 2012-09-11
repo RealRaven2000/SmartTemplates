@@ -27,6 +27,10 @@
 <!ENTITY cancel_button "Scartare">
 <!ENTITY contribute_button "Contribuire">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Quote Header">
+<!ENTITY pref_quoteHeaderBox_tip "Write your Quote Header in this Box e.g. On &#37;date&#37; wrote &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "Template">
+<!ENTITY pref_templateBox_tip "Write your Template in this Box e.g. Hello &#37;from(name)&#37;<br> Thanks for your message<br> regards, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Opzioni di SmartTemplate4">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Utilizza posta in arrivo globale">
