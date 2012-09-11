@@ -27,11 +27,15 @@
 <!ENTITY cancel_button "Peruuta">
 <!ENTITY contribute_button "Avusta">
 <!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Otsake">
+<!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
+<!ENTITY pref_templateBox.label "Pohja">
+<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;<br> Kiitos viestistäsi toivoien, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 - Asetukset">
 <!ENTITY pref_server_desc "Tili">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
-<!ENTITY pref_def.cap "Käytä tällä tilillä oletustilin pohjia.">
+<!ENTITY pref_def.cap "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä.">
 <!ENTITY pref_newmsg.cap "Uusi viesti">
 <!ENTITY pref_new.label "Käytä seuraavaa pohjaa uusille viesteille">
 <!ENTITY pref_rspmsg.cap "Viestiin vastaaminen">
@@ -127,10 +131,10 @@
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
 <!ENTITY xsent_long.cap "Esimerkki pitkästä muotoilusta:">
 <!ENTITY xsent_long.label "&#37;X:=sent&#37; &#37;A&#37;na, &#37;d&#37;. &#37;B&#37;, &#37;Y&#37; klo &#37;k&#37;:&#37;M&#37;">
-<!ENTITY xsent_long_result.label "Lopputulos: tiistaina, 20. joulukuuta, 2011 klo 4:11">
+<!ENTITY xsent_long_result.label "Lopputulos: tiistai, 20.06.2011 4:11 +0300">
 <!ENTITY xsent_short.cap "Esimerkki lyhyestä muotoilusta:">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;a&#37; &#37;dateshort&#37;">
-<!ENTITY xsent_short_result.label "Lopputulos: ti 20.12.2011 4:11:34">
+<!ENTITY xsent_short_result.label "Lopputulos: 20. joulukuuta 2011 4:11:34">
 <!ENTITY xsent_short_note.label "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:">
 <!ENTITY localedate.label "Päiväys / Aika (Paikallinen muotoilu)">
 <!ENTITY shortdate.label "Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)">
