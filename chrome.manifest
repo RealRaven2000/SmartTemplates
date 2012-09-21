@@ -18,6 +18,7 @@ locale                           smartTemplate4             pl           locale/
 locale                           smartTemplate4             pt-BR        locale/pt-BR/
 locale                           smartTemplate4             ru           locale/ru/
 locale                           smartTemplate4             sv-SE        locale/sv-SE/
+locale                           smartTemplate4             uk-UA        locale/uk-UA/
 locale                           smartTemplate4             zh-CN        locale/zh-CN/
 
 #### Thunderbird XUL OVERLAYS ####
