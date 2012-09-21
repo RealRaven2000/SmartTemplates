@@ -6,7 +6,7 @@
 		<Description rdf:about="urn:mozilla:install-manifest">
 			<em:id>smarttemplate4@thunderbird.extension</em:id>
 			<em:name>SmartTemplate4</em:name>
-			<em:version>0.9.2pre50</em:version>
+			<em:version>0.9.2pre51</em:version>
 			<em:optionsURL>chrome://smartTemplate4/content/settings.xul</em:optionsURL>
 			<em:type>2</em:type>
 			<em:iconURL>chrome://smartTemplate4/skin/icon32x32.png</em:iconURL>
@@ -193,6 +193,21 @@
 					<em:developer>Axel Grude</em:developer>
 					<em:developer>Marky Mark DE</em:developer>
 					<em:translator>Lakrits (BabelZilla)</em:translator>
+					<em:contributor>Aris - style support</em:contributor>
+					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
+					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
+				</Description>
+			</em:localized>
+			
+			<em:localized>
+				<Description>
+					<em:locale>uk-UA</em:locale>
+					<em:name>SmartTemplate4</em:name>
+					<em:description>Ідеальний інструмент за допомогою котрого можна налаштувати індивідуальні заголовки в шаблонах для кожного поштового запису</em:description>
+					<em:creator>Axel Grude</em:creator>
+					<em:developer>Axel Grude</em:developer>
+					<em:developer>Marky Mark DE</em:developer>
+					<em:translator>lexxai (BabelZilla)</em:translator>
 					<em:contributor>Aris - style support</em:contributor>
 					<em:contributor>tool8 - development, Version 0.7.2 - 0.8.0</em:contributor>
 					<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/324497/</em:homepageURL>
