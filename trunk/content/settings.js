@@ -499,14 +499,14 @@ SmartTemplate4.Settings = {
 		
 	} ,
 
-	openHelp: function() {
+	openAdvanced: function() {
 		let helpBox = document.getElementById('helpBox');
 		helpBox.hidden = false;
 		let wid = helpBox.scrollWidth;
 		window.resizeBy(wid, 0);
 		SmartTemplate4.Help.onLoad();
-		document.getElementById('helpPanel').hidden = true;
-		document.getElementById('closeHelp').hidden = false;
+		document.getElementById('btnAdvanced').hidden = true;
+		document.getElementById('closeAdvanced').hidden = false;
 		document.getElementById('helpCaption').hidden = false;
 
 		/*
@@ -514,18 +514,19 @@ SmartTemplate4.Settings = {
 		                  'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null);
 		window.sizeToContent();
 		*/
+		window.sizeToContent();
 
 	} ,
 
-	closeHelp: function() {
+	closeAdvanced: function() {
 		let helpBox = document.getElementById('helpBox');
 		let wid = helpBox.scrollWidth;
 		let helpCaption = document.getElementById('helpCaption');
 		helpBox.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();
-		document.getElementById('helpPanel').hidden = false;
-		document.getElementById('closeHelp').hidden = true;
+		document.getElementById('btnAdvanced').hidden = false;
+		document.getElementById('closeAdvanced').hidden = true;
 	} ,
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
