@@ -55,7 +55,7 @@
 					</menu> -->
 					<!-- ###### HELP ###### -->
 					<menu id = "SmartTemplate4HelpMenuitem"
-					      label = "&help.label;"
+					      label = "Advanced"
 					      class = "menu-iconic">
 								<!-- ###### HELP -> * ###### -->
 									<menupopup id = "SmartTemplate4-help-popup">
@@ -101,14 +101,14 @@
 				</menupopup>
 			</menulist>
 			<spacer flex = "1" />
-			<button id="helpPanel"
+			<button id="btnAdvanced"
 			        class = "buttonIcon"
-			        label="&pref_help.tab;"
-			        onclick = "SmartTemplate4.Settings.openHelp();"/>
-			<button id="closeHelp"
+			        label="Advanced"
+			        onclick = "SmartTemplate4.Settings.openAdvanced();"/>
+			<button id="closeAdvanced"
 			        class = "buttonIcon"
 			        label="&close.label;"
-			        onclick="SmartTemplate4.Settings.closeHelp();"
+			        onclick="SmartTemplate4.Settings.closeAdvanced();"
 			        hidden = "true"/>
 		</hbox>
 
@@ -158,7 +158,7 @@
 								<tab id = "newTab" label = "&pref_new.tab;"     class = "NewTab"/>
 								<tab id = "respondTab" label = "&pref_rsp.tab;" class = "RespondTab" />
 								<tab id = "forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
-								<tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" />
+								<!-- <tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" /> -->
 							</tabs>
 
 							<!-- ######## Content New Message Tab ######## -->
@@ -311,7 +311,7 @@
 								</groupbox>
 							</tabpanel>
 
-								<!-- ######## Content About Tab ######## -->
+								<!-- 
 								<tabpanel class="aboutPanel">
 									<groupbox  flex = "1" class="aboutGroup">
 										<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
@@ -329,7 +329,7 @@
 											<spacer flex = "1" />
 										</hbox>
 										<hbox>
-										<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+										
 											<spacer flex="2"/>
 											<button onclick = "SmartTemplate4.Util.showSupportPage();"
 											        class = "supportURL text-link"
@@ -346,6 +346,7 @@
 										</hbox>
 									</groupbox>
 								</tabpanel>
+								-->
 							</tabpanels>
 
 						</tabbox>
@@ -363,33 +364,87 @@
 
 		</hbox>
 
-		<!-- ######## Global Debug Checkbox ######## -->
-
-		<hbox>
-		<spacer flex = "1" />
-			<checkbox id = "debug"
-			          class = "indent"
-			          label = "&pref_debug_check;"
-			          instantApply = "true"
-			          align = "right"
-			          tooltiptext = "&pref_debug_tip;"
-			          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
-			          preference = "pref_debug"/>
-		</hbox>
-
 	</vbox>
 
 	<!-- ######## Helpbox and Iframe ######## -->
 	<vbox id = "helpBox" flex = "2" hidden="true">
-		<hbox id = "helpCaption" hidden="true">
-			<caption label="&help_keyword.cap;"/>
-		</hbox>
-		<iframe id="contentFrame"
-		        src="chrome://smarttemplate4/content/help.xhtml"
-		        type="chrome"
-		        flex = "1"
-		        minheight="300"
-		        minwidth="400" />
+
+		<tabbox id = "deckB.nodef" flex = "1">
+
+			<tabs class="actionTabs">
+			<!-- was &help.label; -->
+				<tab id = "fieldsTab" label = "Variables"     class = "FieldsTab"/>
+				<tab id = "settingsTab" label = "Global Settings" class = "GlobalTab" />
+				<tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" />
+			</tabs>
+	
+			<tabpanels flex = "1">
+				<tabpanel flex = "1">
+	
+					<iframe id="contentFrame"
+					        src="chrome://smarttemplate4/content/help.xhtml"
+					        type="chrome"
+					        flex = "1"
+					        minheight="300"
+					        minwidth="400" />
+	
+				</tabpanel>
+				<tabpanel flex = "1">
+					<vbox>
+						<!-- ######## Global Debug Checkbox ######## -->
+				
+						<hbox>
+						<spacer flex = "1" />
+							<checkbox id = "debug"
+							          class = "indent"
+							          label = "&pref_debug_check;"
+							          instantApply = "true"
+							          align = "right"
+							          tooltiptext = "&pref_debug_tip;"
+							          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
+							          preference = "pref_debug"/>
+						</hbox>
+					</vbox>
+				</tabpanel>
+				<tabpanel flex = "1">
+					<vbox id="aboutPanel" flex="1">
+						<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
+						<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
+						<hbox class = "aboutWrapper" flex="1">
+							<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">
+								<description>&creator.label;: Axel Grude</description>
+								<description>&developer.label;: Axel Grude, Marky Mark DE</description>
+								<description>&localized.label;: &translatorNickname.label;</description>
+								<description>&contributor.label;: Aris - style support</description>
+								<description>&contributor.label;: tool8 - development, Version 0.7.2 - 0.8.0</description>
+								<description class = "aboutContent">&about.label;</description>
+							</vbox>
+						</hbox>
+						<spacer flex="2"/>
+						<hbox>
+							<spacer flex = "1" />
+							<vbox class="buttonLinks">
+							<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+								<button onclick = "SmartTemplate4.Util.showSupportPage();"
+								        class = "supportURL text-link"
+								        label = "&url.supportPage.label;" />
+								<spacer flex="1"/>
+								<button onclick = "SmartTemplate4.Util.showHomePage();"
+								        class = "homePageURL text-link"
+								        label = "&url.homePage.label;" />
+								<spacer flex="1"/>
+								<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();"
+								        class = "bugsURL text-link"
+								        label = "&url.bugsAndFeaturesPage.label;" />
+							</vbox>
+							<spacer flex="2"/>
+						</hbox>
+						<spacer flex = "1" />
+					</vbox>
+				</tabpanel>
+				
+			</tabpanels>
+		</tabbox>
 	</vbox>
 </hbox>
 
