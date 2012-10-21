@@ -41,6 +41,11 @@
 }
 
 /* our own buttons */
+
+.buttonLinks button.text-link {
+	min-width: 25em;
+}
+
 button.text-link {
 	-moz-appearance: none !important;
 	color: #ffffff !important;
@@ -143,7 +148,7 @@ button.bugsURL:focus {
 }
 
 #helpBox {
-	min-width:450px;
+	min-width:350px;
 	height: auto;
 	margin-left: 1em;
 }
@@ -156,8 +161,8 @@ button.bugsURL:focus {
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
 #smartTemplate_prefDialog {
-	width: 650px;
-	min-height: 450px;
+	width: 600px;
+	min-height: 400px;
 }
 
 #smartTemplate_prefDialog #msgIdentity {
@@ -255,7 +260,7 @@ button.bugsURL:focus {
 }
 
 /* ################################## ICON BINDINGS ################################## */
-/* Icon Binding in Tabs only over class possible! */
+/* Icon Binding in the decked (multiple) tabs is only possible over class! */
 .NewTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
@@ -265,9 +270,19 @@ button.bugsURL:focus {
 .ForwardTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-fwd.png") !important;
 }
-.AboutTab {
+
+/** right hand tabs **/
+#fieldsTab {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/variable.png") !important;
+}
+#settingsTab {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/global.png") !important;
+}
+#aboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
+
+
 
 
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup {
@@ -289,10 +304,10 @@ button.bugsURL:focus {
 	background-image: url("chrome://smartTemplate4/skin/icons/large/ST4-icon.png");
 }
 
-#helpPanel {
+#btnAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-right.png") !important;
 }
-#closeHelp {
+#closeAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
 }
 
@@ -334,6 +349,10 @@ button.bugsURL:focus {
 .aboutPanel, .aboutGroup {
 	max-width:70em;
 }
+#aboutPanel {
+	min-width:400px;
+	max-width:430px;
+}
 
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
@@ -358,7 +377,7 @@ button.bugsURL:focus {
 .aboutWrapper {
 	text-align: center;
 	padding: 1em;
-	max-width:65em;
+	width:100%;
 }
 
 .aboutPersonnel {
@@ -544,7 +563,7 @@ table div.no {
 
 /* #### help frame  #### */
 #contentFrame {
-	min-width: 450px;
+	min-width: 400px;
 	min-height: 300px;
 	height: auto;
 }
