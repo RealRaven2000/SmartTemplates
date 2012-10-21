@@ -32,12 +32,11 @@
 #SmartTemplate4ImportItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
-
 #menuHomePage {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
 }
 #menuSupportPage, #menuBugsAndFeaturesPage {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozdev.png") !important;
 }
 
 /* our own buttons */
