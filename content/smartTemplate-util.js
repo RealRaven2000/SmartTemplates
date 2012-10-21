@@ -50,6 +50,13 @@ SmartTemplate4.Util = {
 	BugPage:         "http://smarttemplate4.mozdev.org/bugs.html",
 	DonatePage:      "http://smarttemplate4.mozdev.org/contribute.html",
 
+	AxelAMOPage:     "https://addons.mozilla.org/thunderbird/user/66492/",
+	MarkyAMOPage:    "https://addons.mozilla.org/thunderbird/user/2448736/",
+	ArisAMOPage:     "https://addons.mozilla.org/firefox/user/5641642/",
+	Tool8AMOPage:    "https://addons.mozilla.org/thunderbird/user/5843412/",
+	NoiaHomepage:    "http://carlitus.deviantart.com/",
+	FlagsHomepage:   "http://flags.blogpotato.de/",
+
 
 	getBundleString: function(id, defaultText) {
 
