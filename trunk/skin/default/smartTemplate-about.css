@@ -1,0 +1,73 @@
+window.dialog {
+  -moz-appearance: none;
+  padding: 4px;
+  background-image: url(chrome://smarttemplate4/skin/SmartTemplate4-watermark.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+vbox.about-content {
+  -moz-border-radius: 5px; /* TB <3.3 */
+  border-radius: 5px; /* TB >3.3 */
+  padding: 6px;
+  margin: 5px;
+  border: 1px solid rgb(128,128,128);
+  background-color: transparent;
+}
+
+hbox.logo, hbox.url {
+  -moz-border-radius: 5px; /* TB <3.3 */
+  border-radius: 5px; /* TB >3.3 */
+  background-color: transparent; 
+}
+
+hbox.url {
+  padding-bottom: 10px;
+}
+
+hbox.first-box {
+  -moz-box-align: start;
+}
+
+vbox.creator, vbox.developer, vbox.contributor {
+  padding-bottom: 5px;
+}
+
+label {
+  padding: 0px;
+  margin: 0px; 
+}
+
+label.head {
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+label[onclick] {
+  color: rgb(0,0,255);
+}
+
+label[onclick]:hover {
+  color: rgb(255,0,13) !important;
+  cursor: pointer !important;
+}
+
+label.idented {
+  -moz-padding-start: 10px;
+}
+
+hbox.locale {
+  padding-bottom: 5px;
+}
+
+label.translator {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+image.flag {
+  height: 15px !important;
+  width: auto !important;
+  -moz-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7); /* TB <3.3 */
+  box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7); /* TB >3.3 */
+}
