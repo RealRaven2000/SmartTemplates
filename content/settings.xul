@@ -20,7 +20,7 @@
 	<!-- ######## Creating Menubar ######## -->
 	<!-- MENUITEMS: File - Help -->
 	<toolbox>
-		<toolbar type = "menubar" hidden = "false">
+		<toolbar type = "menubar" hidden = "true">
 			<toolbaritem>
 				<menubar  id = "SmartTemplate4MenuBar" style = "border:0px;">
 				<!-- ###### FILE ###### -->
