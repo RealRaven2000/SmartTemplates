@@ -12,7 +12,7 @@ vbox.about-content {
   border: 1px solid rgb(128,128,128);
   background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
   background-repeat: no-repeat;
-  background-position: right 15px top 45px;
+  background-position: center top 45px;
   background-size: 200px;
 }
 
