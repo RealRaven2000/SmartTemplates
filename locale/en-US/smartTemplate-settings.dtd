@@ -8,6 +8,7 @@
 <!ENTITY paste.label "Paste">
 <!ENTITY insert.label "Insert Variable">
 <!ENTITY close.label "Close">
+<!ENTITY advanced.label "Advanced">
 <!ENTITY export.label "Export">
 <!ENTITY import.label "Import">
 <!ENTITY menu.template_import.label "Import Template">
@@ -22,6 +23,8 @@
 <!ENTITY pref_fwd.tab "Forward">
 <!ENTITY pref_help.tab "Help">
 <!ENTITY pref_about.tab "About">
+<!ENTITY pref_global.tab "Global Settings">
+<!ENTITY pref_variables.tab "Variables">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Cancel">
