@@ -27,8 +27,8 @@
 
     <hbox class = "urls">
       <spacer flex = "1"/>
-       <label value = "&url.homePage.label;" class = "idented" onclick = "SmartTemplate4.Util.showAMOHomepage();"/>
-       <label value = "&url.supportPage.label;" class = "idented" onclick = "SmartTemplate4.Util.showSupportHomepage();"/>
+       <label value = "&url.homePage.label;" class = "idented" onclick = "SmartTemplate4.Util.showHomePage();"/>
+       <label value = "&url.supportPage.label;" class = "idented" onclick = "SmartTemplate4.Util.showSupportPage();"/>
       <spacer flex = "1"/>
     </hbox>
 
@@ -115,7 +115,7 @@
 
         <hbox class = "locale"><!-- Polish (pl) -->
           <image class = "flag" src = "chrome://smarttemplate4/skin/flags/pl.png" tooltiptext = "pl"/>
-          <label class = "translator" value = "Leszek(teo) Życzkowski"/>
+          <label class = "translator" value = "Leszek(teo) Zyczkowski"/>
         </hbox>
 
         <hbox class = "locale"><!-- Portuguese (pt-BR) -->

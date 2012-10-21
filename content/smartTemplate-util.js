@@ -495,17 +495,15 @@ SmartTemplate4.Util = {
 		SmartTemplate4.Util.openURLInTab(this.BugPage);
 	} ,
 
-	showDonatePage: function () {
-		SmartTemplate4.Util.openURLInTab(this.DonatePage);
-	}  ,
-
-	showHomePage: function () {
-		SmartTemplate4.Util.openURLInTab(this.AMOHomepage);
-	} ,
-
-	showSupportPage: function () {
-		SmartTemplate4.Util.openURLInTab(this.SupportHomepage);
-	} ,
+	showDonatePage: function () { SmartTemplate4.Util.openURLInTab(this.DonatePage); }  ,
+	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
+	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); } ,
+	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
+	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
+	showArisAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.ArisAMOPage); } ,
+	showTool8AMOPage: function () { SmartTemplate4.Util.openURLInTab(this.Tool8AMOPage); } ,
+	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
+	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 
 	showAboutConfig: function(filter) {
 
