@@ -1,9 +1,7 @@
 window.dialog {
   -moz-appearance: none;
   padding: 4px;
-  background-image: url(chrome://smarttemplate4/skin/SmartTemplate4-watermark.png);
-  background-repeat: no-repeat;
-  background-position: center;
+  /* background-image: url(chrome://smarttemplate4/skin/SmartTemplate4-watermark.png); */
 }
 
 vbox.about-content {
@@ -12,7 +10,10 @@ vbox.about-content {
   padding: 6px;
   margin: 5px;
   border: 1px solid rgb(128,128,128);
-  background-color: transparent;
+  background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
+  background-repeat: no-repeat;
+  background-position: right 15px top 45px;
+  background-size: 200px;
 }
 
 hbox.logo, hbox.url {
