@@ -143,11 +143,11 @@ button.bugsURL:focus {
 #SmartTemplate4HelpMenuitem { float: right; }
 
 #account_deckA {
-	max-width: 1200px;
+	max-width: 1000px;
 }
 
-#helpBox {
-	min-width:350px;
+#advancedBox {
+	min-width:400px;
 	height: auto;
 	margin-left: 1em;
 }
@@ -160,13 +160,28 @@ button.bugsURL:focus {
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
 #smartTemplate_prefDialog {
-	width: 600px;
+	width: 550px;
 	min-height: 400px;
 }
 
-#smartTemplate_prefDialog #msgIdentity {
-
+#globalSettings
+{
+	width: 100%;
+	background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	/* background-size: 200px; */
 }
+#txtBreaks
+{
+	width: 3em;
+}
+
+#aboutPanel {
+	min-width:400px;
+	max-width:430px;
+}
+
 
 /* ########################## CONTENT IDENT. SELECT POPUP ############################ */
 #smartTemplate_prefDialog #msgIdentityPopup menuitem {
@@ -306,7 +321,7 @@ button.bugsURL:focus {
 #btnAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-right.png") !important;
 }
-#closeAdvanced {
+#btnCloseAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
 }
 
@@ -347,10 +362,6 @@ button.bugsURL:focus {
 
 .aboutPanel, .aboutGroup {
 	max-width:70em;
-}
-#aboutPanel {
-	min-width:400px;
-	max-width:430px;
 }
 
 /* ##################################### ABOUTLOGO ################################### */
