@@ -81,10 +81,6 @@
 		<spacer height = "5px" />
 
 <hbox>
-	<preferences id = "globals">
-		<preference id = "pref_debug"   name = "extensions.smartTemplate4.debug"   type = "bool"/>
-	</preferences>
-
 
 	<vbox id="decksContainer">
 
@@ -105,7 +101,7 @@
 			        class = "buttonIcon"
 			        label="Advanced"
 			        onclick = "SmartTemplate4.Settings.openAdvanced();"/>
-			<button id="closeAdvanced"
+			<button id="btnCloseAdvanced"
 			        class = "buttonIcon"
 			        label="&close.label;"
 			        onclick="SmartTemplate4.Settings.closeAdvanced();"
@@ -366,8 +362,15 @@
 
 	</vbox>
 
-	<!-- ######## Helpbox and Iframe ######## -->
-	<vbox id = "helpBox" flex = "2" hidden="true">
+	<!-- ######## advancedBox and Iframe ######## -->
+	<vbox id = "advancedBox" flex = "2" hidden="true">
+	
+		<preferences id = "globals">
+			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
+			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
+			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool"/>
+			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
+		</preferences>
 
 		<tabbox id = "deckB.nodef" flex = "1">
 
@@ -379,35 +382,45 @@
 			</tabs>
 	
 			<tabpanels flex = "1">
-				<tabpanel flex = "1">
-	
+				<tabpanel flex = "1" id = "variablesFrame">
 					<iframe id="contentFrame"
 					        src="chrome://smarttemplate4/content/help.xhtml"
 					        type="chrome"
 					        flex = "1"
 					        minheight="300"
 					        minwidth="400" />
-	
 				</tabpanel>
-				<tabpanel flex = "1">
+
+				<tabpanel flex = "1" id = "globalSettings">
 					<vbox>
 						<!-- ######## Global Debug Checkbox ######## -->
-				
 						<hbox>
-						<spacer flex = "1" />
-							<checkbox id = "debug"
-							          class = "indent"
+							<label value="&pref_breaksOnTop.label;" />
+							<textbox id = "txtBreaks"
+							         preference = "pref_breaks"
+							         instantApply="true" />
+						</hbox>
+						
+							<checkbox id = "chkRemoveSig"
+							          label = "&pref_removeSig.label;"
+							          preference = "pref_removeSig"/>
+						
+							<checkbox id = "chkStatusButton"
+							          label = "&pref_showStatusIcon.label;"
+							          preference = "pref_showStatusIcon"/>
+						
+							<spacer flex = "2" />
+							<checkbox id = "chkDebug"
 							          label = "&pref_debug_check;"
 							          instantApply = "true"
-							          align = "right"
 							          tooltiptext = "&pref_debug_tip;"
 							          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
 							          preference = "pref_debug"/>
-						</hbox>
 					</vbox>
 				</tabpanel>
-				<tabpanel flex = "1">
-					<vbox id="aboutPanel" flex="1">
+
+				<tabpanel flex = "1" id = "aboutPanel">
+					<vbox flex="1">
 						<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
 						<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
 						<hbox class = "aboutWrapper" flex="1">

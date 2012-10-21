@@ -500,13 +500,13 @@ SmartTemplate4.Settings = {
 	} ,
 
 	openAdvanced: function() {
-		let helpBox = document.getElementById('helpBox');
-		helpBox.hidden = false;
-		let wid = helpBox.scrollWidth;
+		let advancedBox = document.getElementById('advancedBox');
+		advancedBox.hidden = false;
+		let wid = advancedBox.scrollWidth;
 		window.resizeBy(wid, 0);
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('btnAdvanced').hidden = true;
-		document.getElementById('closeAdvanced').hidden = false;
+		document.getElementById('btnCloseAdvanced').hidden = false;
 		document.getElementById('helpCaption').hidden = false;
 
 		/*
@@ -519,14 +519,14 @@ SmartTemplate4.Settings = {
 	} ,
 
 	closeAdvanced: function() {
-		let helpBox = document.getElementById('helpBox');
-		let wid = helpBox.scrollWidth;
+		let advancedBox = document.getElementById('advancedBox');
+		let wid = advancedBox.scrollWidth;
 		let helpCaption = document.getElementById('helpCaption');
-		helpBox.hidden = true;
+		advancedBox.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();
 		document.getElementById('btnAdvanced').hidden = false;
-		document.getElementById('closeAdvanced').hidden = true;
+		document.getElementById('btnCloseAdvanced').hidden = true;
 	} ,
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
