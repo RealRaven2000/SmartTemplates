@@ -176,6 +176,10 @@ button.bugsURL:focus {
 {
 	width: 3em;
 }
+.txtBraksLabel {
+margin-top: 5px;
+margin-left: 30px;
+}
 
 #aboutPanel {
 	min-width:400px;
@@ -268,8 +272,8 @@ button.bugsURL:focus {
 }
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
-/* Space between label and Icon in Tabs only over class possible! */
-.NewTab label,.RespondTab label,.ForwardTab label,.AboutTab label {
+/* Space between label and Icon in our Tabs -> only over class possible! */
+.NewTab label,.RespondTab label,.ForwardTab label,.AboutTab label, .FieldsTab label, .GlobalTab label {
   margin-left:5px !important;
 }
 
@@ -295,9 +299,6 @@ button.bugsURL:focus {
 #aboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
-
-
-
 
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup {
 	background-position: top right;
