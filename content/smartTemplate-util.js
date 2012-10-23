@@ -426,6 +426,11 @@ SmartTemplate4.Util = {
 
 	openURLInTab: function (URL) {
 		try {
+			if (this.Application!='Thunderbird') {
+				this.openLinkInBrowserForced(URL);
+				return;
+			}
+			
 			var sTabMode="";
 			var tabmail;
 			tabmail = document.getElementById("tabmail");
