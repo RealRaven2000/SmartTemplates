@@ -488,8 +488,9 @@ SmartTemplate4.Util = {
 		
 		let version = util.VersionSanitized;
 
-		let sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log for SmartTemplate4?")
-		if (!ask || confirm(sPrompt + " " + version + "?")) {
+		let sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log?")+" [version {1}]";
+		sPrompt = sPrompt.replace("{1}", version);
+		if (!ask || confirm(sPrompt)) {
 			util.openURL(null, util.VersionPage + "#" + version);
 		}
 	} ,
