@@ -508,6 +508,9 @@ SmartTemplate4.Settings = {
 		document.getElementById('btnAdvanced').hidden = true;
 		document.getElementById('btnCloseAdvanced').hidden = false;
 
+		let versionBox = document.getElementById('versionBox');
+		// let's get the "top" instance of st4, as we know that already knows the version number!!
+		versionBox.value = SmartTemplate4.Util.Mail3PaneWindow.SmartTemplate4.Util.Version;
 		/*
 		window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help',
 		                  'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null);

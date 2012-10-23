@@ -374,11 +374,12 @@
 
 		<tabbox id = "deckB.nodef" flex = "1">
 
-			<tabs class="actionTabs">
-			<!-- was &help.label; -->
+			<tabs class = "actionTabs">
+				<!-- was &help.label; -->
 				<tab id = "fieldsTab" label = "&pref_variables.tab;"  class = "FieldsTab"/>
 				<tab id = "settingsTab" label = "&pref_global.tab;" class = "GlobalTab" />
-				<tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" />
+				<!-- was &pref_about.tab; -->
+				<tab id = "aboutTab" label = "&about.cap;" class = "AboutTab" /> 
 			</tabs>
 	
 			<tabpanels flex = "1">
@@ -424,7 +425,10 @@
 
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
-						<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
+						<hbox> 
+							<spacer flex = "1" />
+							<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true);" />
+						</hbox>
 						<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
 						<hbox class = "aboutWrapper" flex="1">
 							<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">

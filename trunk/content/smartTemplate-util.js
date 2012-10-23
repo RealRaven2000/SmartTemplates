@@ -49,7 +49,7 @@ SmartTemplate4.Util = {
 	SupportHomepage: "http://smarttemplate4.mozdev.org/index.html",
 	BugPage:         "http://smarttemplate4.mozdev.org/bugs.html",
 	DonatePage:      "http://smarttemplate4.mozdev.org/contribute.html",
-
+	VersionPage:     "http://smarttemplate4.mozdev.org/version.html",
 	AxelAMOPage:     "https://addons.mozilla.org/thunderbird/user/66492/",
 	MarkyAMOPage:    "https://addons.mozilla.org/thunderbird/user/2448736/",
 	ArisAMOPage:     "https://addons.mozilla.org/firefox/user/5641642/",
@@ -483,11 +483,14 @@ SmartTemplate4.Util = {
 
 
 	showVersionHistory: function(ask) {
-		var version = SmartTemplate4.Util.VersionSanitized;
+		let mainWindow = SmartTemplate4.Util.Mail3PaneWindow;
+		let util = mainWindow.SmartTemplate4.Util;
+		
+		let version = util.VersionSanitized;
 
-		var sPrompt = SmartTemplate4.Util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log for SmartTemplate4?")
+		let sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log for SmartTemplate4?")
 		if (!ask || confirm(sPrompt + " " + version + "?")) {
-			SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/version.html#" + version);
+			util.openURL(null, util.VersionPage + "#" + version);
 		}
 	} ,
 
@@ -778,7 +781,7 @@ SmartTemplate4.Util.firstRun =
 			var pureVersion = SmartTemplate4.Util.VersionSanitized;
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
-			var versionPage = "http://smarttemplate4.mozdev.org/version.html#" + pureVersion;
+			var versionPage = SmartTemplate4.Util.VersionPage + "#" + pureVersion;
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
 
 			let updateVersionMessage = SmartTemplate4.Util.getBundleString (
