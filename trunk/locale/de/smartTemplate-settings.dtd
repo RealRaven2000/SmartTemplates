@@ -36,7 +36,7 @@
 <!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
 <!ENTITY pref_breaksOnTop.label "Anzahl der Zeilenumbrüche am Anfang der Vorlage:">
-<!ENTITY pref_removeSig.label "Beim wechseln der Identität die Signatur löschen">
+<!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
 <!ENTITY pref_showStatusIcon.label "Button in der Statuszeile anzeigen">
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY pref_server_def "Allgemein">
