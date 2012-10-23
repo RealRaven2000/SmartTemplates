@@ -401,26 +401,28 @@
 							         instantApply="true" />
 						</hbox>
 						
-							<checkbox id = "chkRemoveSig"
-							          label = "&pref_removeSig.label;"
-							          preference = "pref_removeSig"/>
+						<checkbox id = "chkRemoveSig"
+						          label = "&pref_removeSig.label;"
+						          preference = "pref_removeSig"/>
+					
+						<checkbox id = "chkStatusButton"
+						          label = "&pref_showStatusIcon.label;"
+						          preference = "pref_showStatusIcon"
+						          instantApply="true" 
+						          onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
 						
-							<checkbox id = "chkStatusButton"
-							          label = "&pref_showStatusIcon.label;"
-							          preference = "pref_showStatusIcon"/>
-						
-							<spacer flex = "2" />
-							<checkbox id = "chkDebug"
-							          label = "&pref_debug_check;"
-							          instantApply = "true"
-							          tooltiptext = "&pref_debug_tip;"
-							          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
-							          preference = "pref_debug"/>
+						<spacer flex = "2" />
+						<checkbox id = "chkDebug"
+						          label = "&pref_debug_check;"
+						          instantApply = "true"
+						          tooltiptext = "&pref_debug_tip;"
+						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
+						          preference = "pref_debug"/>
 					</vbox>
 				</tabpanel>
 
 				<tabpanel flex = "1" id = "aboutPanel">
-					<vbox flex="1">
+					<vbox flex = "1">
 						<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
 						<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
 						<hbox class = "aboutWrapper" flex="1">
@@ -450,7 +452,7 @@
 								        class = "bugsURL text-link"
 								        label = "&url.bugsAndFeaturesPage.label;" />
 							</vbox>
-							<spacer flex="2"/>
+							<spacer flex="1"/>
 						</hbox>
 						<spacer flex = "1" />
 					</vbox>

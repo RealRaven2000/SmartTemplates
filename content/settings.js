@@ -507,21 +507,18 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('btnAdvanced').hidden = true;
 		document.getElementById('btnCloseAdvanced').hidden = false;
-		document.getElementById('helpCaption').hidden = false;
 
 		/*
 		window.openDialog('chrome://smarttemplate4/content/help.xul', 'smartTemplate4-help',
 		                  'chrome,titlebar,resizable,dependent,alwaysRaised,top=' + window.screenY.toString() + ',left=' + (window.screenX + window.outerWidth).toString(), null);
 		window.sizeToContent();
 		*/
-		window.sizeToContent();
 
 	} ,
 
 	closeAdvanced: function() {
 		let advancedBox = document.getElementById('advancedBox');
 		let wid = advancedBox.scrollWidth;
-		let helpCaption = document.getElementById('helpCaption');
 		advancedBox.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();

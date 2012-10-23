@@ -151,8 +151,19 @@ var SmartTemplate4 = {
 		this.whatIsX = this.XisToday;
 		this.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
+	
+	updateStatusBar: function(show) {
+		let btn = SmartTemplate4.Util.Mail3PaneWindow.document.getElementById('SmartTemplate4Messenger');
+		if (btn) {
+			let showPanel = (typeof show == 'undefined') ? 
+			                SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') :
+			                show;
+			btn.collapsed =  !showPanel;
+		}
+	} ,
 
 	startUp: function() {
 		let v = SmartTemplate4.Util.VersionProxy();
+		this.updateStatusBar();
 	}
 };
