@@ -251,7 +251,8 @@ margin-left: 30px;
 	padding-bottom: 3px !important;
 }
 
-.NewTab,.RespondTab,.ForwardTab,.FieldsTab, .GlobalTab,.AboutTab {
+.NewTab,.RespondTab,.ForwardTab,
+.FieldsTab, .GlobalTab,.AboutTab  {
   -moz-appearance: none !important;
   cursor: pointer;
   border: 1px solid #BDBDBD;
@@ -261,12 +262,12 @@ margin-left: 30px;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-#newTab:focus,#respondTab:focus,#forwardTab:focus, /* left hand tabs */
+#newTab:focus,#respondTab:focus,#forwardTab:focus,
 #newTab:active,#respondTab:active,#forwardTab:active,
 #newTab:hover,#respondTab:hover,#forwardTab:hover,
 
 #fieldsTab:focus,#settingsTab:focus,#aboutTab:focus,
-#fieldsTab:active,#settingsTab:active,#aboutTab:active, /* right hand tabs */
+#fieldsTab:active,#settingsTab:active,#aboutTab:active,
 #fieldsTab:hover,#settingsTab:hover,#aboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
@@ -274,12 +275,15 @@ margin-left: 30px;
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in our Tabs -> only over class possible! */
-.NewTab label,.RespondTab label,.ForwardTab label,.FieldsTab label, .GlobalTab label, .AboutTab label {
+.NewTab label,.RespondTab label,.ForwardTab label,
+.FieldsTab label, .GlobalTab label, .AboutTab label {
   margin-left:5px !important;
 }
 
 /* ################################## ICON BINDINGS ################################## */
 /* Icon Binding in the decked (multiple) tabs is only possible over class! */
+
+/** left hand tabs **/
 .NewTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/mail-new.png") !important;
 }
@@ -432,13 +436,13 @@ description.aboutContent  {
 	min-height: 950px;
   padding: 5px 10px;
 }
-.body:hover {
+/*.body:hover {
 	background: rgb(208,228,247);
 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 38%, rgba(225,225,225,1) 63%, rgba(246,246,246,1) 100%);
 	border-left: #ccc 1px;
 	border-right: #ccc 1px;
 	box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.25);
-}
+}*/
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
 h1.helpchapter {
