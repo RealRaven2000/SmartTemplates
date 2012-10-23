@@ -75,7 +75,7 @@ SmartTemplate4.Util = {
 		return theText.replace("&gt;",">");
 	} ,
 
-	getMail3PaneWindow: function() {
+	get Mail3PaneWindow() {
 		var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
 				.getService(Components.interfaces.nsIWindowMediator);
 		var win3pane = windowManager.getMostRecentWindow("mail:3pane");
@@ -266,7 +266,7 @@ SmartTemplate4.Util = {
 
 	showStatusMessage: function(s) {
 		try {
-			var sb = this.getMail3PaneWindow().document.getElementById('status-bar');
+			var sb = this.Mail3PaneWindow.document.getElementById('status-bar');
 			var el, sbt;
 			if (sb) {
 				for(var i = 0; i < sb.childNodes.length; i++)
@@ -372,7 +372,7 @@ SmartTemplate4.Util = {
 					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
 				}
 				else {
-					this.getMail3PaneWindow().window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'SmartTemplate4');
+					this.Mail3PaneWindow.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'SmartTemplate4');
 				}
 
 				return;
@@ -431,7 +431,7 @@ SmartTemplate4.Util = {
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				var mail3PaneWindow = this.getMail3PaneWindow();
+				var mail3PaneWindow = this.Mail3PaneWindow;
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
@@ -928,7 +928,7 @@ SmartTemplate4.Message = {
 
 		// open message with main as parent
 
-		let main = SmartTemplate4.Util.getMail3PaneWindow();
+		let main = SmartTemplate4.Util.Mail3PaneWindow;
 		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,alwaysRaised,dependent,close=no," + features, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
 // 		let win = watcher.openWindow(main, "chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome," + features, params)
