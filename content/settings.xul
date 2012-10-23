@@ -99,7 +99,7 @@
 			<spacer flex = "1" />
 			<button id="btnAdvanced"
 			        class = "buttonIcon"
-			        label="Advanced"
+			        label="&advanced.label;"
 			        onclick = "SmartTemplate4.Settings.openAdvanced();"/>
 			<button id="btnCloseAdvanced"
 			        class = "buttonIcon"
@@ -376,8 +376,8 @@
 
 			<tabs class="actionTabs">
 			<!-- was &help.label; -->
-				<tab id = "fieldsTab" label = "Variables"     class = "FieldsTab"/>
-				<tab id = "settingsTab" label = "Global Settings" class = "GlobalTab" />
+				<tab id = "fieldsTab" label = "&pref_variables.tab;"  class = "FieldsTab"/>
+				<tab id = "settingsTab" label = "&pref_global.tab;" class = "GlobalTab" />
 				<tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" />
 			</tabs>
 	
