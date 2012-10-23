@@ -8,6 +8,7 @@
 <!ENTITY paste.label "Coller">
 <!ENTITY insert.label "Insérer une variable">
 <!ENTITY close.label "Fermer">
+<!ENTITY advanced.label "Avancés">
 <!ENTITY export.label "Exportation">
 <!ENTITY import.label "Importation">
 <!ENTITY menu.template_import.label "Importer un modèle">
@@ -22,20 +23,25 @@
 <!ENTITY pref_fwd.tab "Transférer">
 <!ENTITY pref_help.tab "Assistant">
 <!ENTITY pref_about.tab "À propos">
+<!ENTITY pref_global.tab "Paramètres généraux">
+<!ENTITY pref_variables.tab "Variables">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Accepter">
 <!ENTITY cancel_button "Annuler">
 <!ENTITY contribute_button "Contribuer">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
-<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37; a écrit &#37;from(name)&#37;:">
+<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37; a écrit &#37;from(name)&#37; :">
 <!ENTITY pref_templateBox.label "Modèle">
-<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;<br> Merci pour ton message<br> salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
+<!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
+<!ENTITY pref_showStatusIcon.label "Afficher un bouton dans la barre des modules">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
-<!ENTITY pref_def.cap "Désactiver 'Utiliser les options globales' afin créer un entête personnalisé pour ce compte.">
+<!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin créer un entête personnalisé pour ce compte.">
 <!ENTITY pref_newmsg.cap "Nouveaux messages">
 <!ENTITY pref_new.label "Appliquer le modèle suivant pour les nouveaux messages">
 <!ENTITY pref_rspmsg.cap "Réponses">
@@ -143,8 +149,8 @@
 <!ENTITY im-ex.cap "Paramétrages et import/export de modèles">
 <!ENTITY im-ex_note1.label "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte.">
 <!ENTITY im-ex_note2.label "Tout d'abord, choisissez le compte que vous souhaitez exporter dans le menu déroulant des réglages de SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Ensuite, sélectionnez 'Outils'  &#8658; 'Exporter' &#8658; 'Réglages et modèles' de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
-<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez 'Outils' &#8658; 'Importer' &#8658; 'Réglages et modèles' de la barre de menu.">
+<!ENTITY im-ex_note3.label "Ensuite, sélectionnez « Outils  &#8658; Exporter &#8658; Réglages et modèles » de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
+<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez « Outils &#8658; Importer &#8658; Réglages et modèles » de la barre de menu.">
 <!ENTITY im-ex_note5.label "Sélectionnez le fichier SmartTemplate4 (xxx.st4) que vous souhaitez importer.">
 <!ENTITY im-ex_note6.label "REMARQUE : les plateformes Apple/Macintosh auront les options dans la barre de menu en haut au lieu de la popup d'option de SmartTemplate4. Ceci est un comportement normal et ne peut pas être modifié.">
 <!ENTITY html_note.cap "Notes pour l'utilisation de HTML">
