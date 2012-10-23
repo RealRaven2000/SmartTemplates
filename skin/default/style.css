@@ -261,11 +261,11 @@ margin-left: 30px;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-#newTab:focus,#rspTab:focus,#fwdTab:focus,
+#newTab:focus,#respondTab:focus,#forwardTab:focus,
 #aboutTab:focus,#fieldsTab:focus, #settingsTab:focus,
-#newTab:active,#rspTab:active,#fwdTab:active,
+#newTab:active,#respondTab:active,#forwardTab:active,
 #fieldsTab:active, #settingsTab:active, #aboutTab:active,
-#newTab:hover,#rspTab:hover,#fwdTab:hover,
+#newTab:hover,#respondTab:hover,#forwardTab:hover,
 #fieldsTab:hover, #settingsTab:hover, #aboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
