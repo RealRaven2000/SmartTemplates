@@ -394,7 +394,7 @@
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox>
 						<!-- ######## Global Debug Checkbox ######## -->
-						<hbox>
+						<hbox id = "breaksBox">
 							<label   id = "txtBreaksLabel"
 							         value="&pref_breaksOnTop.label;" />
 							<textbox id = "txtBreaks"

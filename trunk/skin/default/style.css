@@ -172,13 +172,17 @@ button.bugsURL:focus {
 	background-position: center center;
 	/* background-size: 200px; */
 }
+
+#breaksBox {
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
 #txtBreaks
 {
 	width: 3em;
 }
 #txtBreaksLabel {
-margin-top: 5px;
-margin-left: 30px;
+	margin-top: 5px;
 }
 
 #aboutPanel {
@@ -252,7 +256,7 @@ margin-left: 30px;
 }
 
 .NewTab,.RespondTab,.ForwardTab,
-#fieldsTab, #globalTab, #aboutTab  {
+#fieldsTab, #settingsTab, #aboutTab  {
   -moz-appearance: none !important;
   cursor: pointer;
   border: 1px solid #BDBDBD;
