@@ -395,7 +395,8 @@
 					<vbox>
 						<!-- ######## Global Debug Checkbox ######## -->
 						<hbox>
-							<label value="&pref_breaksOnTop.label;" />
+							<label   id = "txtBreaksLabel"
+							         value="&pref_breaksOnTop.label;" />
 							<textbox id = "txtBreaks"
 							         preference = "pref_breaks"
 							         instantApply="true" />
