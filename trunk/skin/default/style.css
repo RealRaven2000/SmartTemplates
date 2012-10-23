@@ -261,12 +261,13 @@ margin-left: 30px;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-#newTab:focus,#respondTab:focus,#forwardTab:focus,
-#aboutTab:focus,#fieldsTab:focus, #settingsTab:focus,
+#newTab:focus,#respondTab:focus,#forwardTab:focus, /* left hand tabs */
 #newTab:active,#respondTab:active,#forwardTab:active,
-#fieldsTab:active, #settingsTab:active, #aboutTab:active,
 #newTab:hover,#respondTab:hover,#forwardTab:hover,
-#fieldsTab:hover, #settingsTab:hover, #aboutTab:hover {
+
+#fieldsTab:focus,#settingsTab:focus,#aboutTab:focus,
+#fieldsTab:active,#settingsTab:active,#aboutTab:active, /* right hand tabs */
+#fieldsTab:hover,#settingsTab:hover,#aboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
 }
