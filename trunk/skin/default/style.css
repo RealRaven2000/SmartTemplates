@@ -366,7 +366,7 @@ button.bugsURL:focus {
 	padding: 0.3em;
 	text-align: center;
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
-	background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 24%, rgba(33,180,226,1) 62%, rgba(183,222,237,1) 100%);
+	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
 }
 
 #versionBox:hover {
