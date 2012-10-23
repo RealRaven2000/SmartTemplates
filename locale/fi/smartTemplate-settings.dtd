@@ -8,6 +8,7 @@
 <!ENTITY paste.label "Liitä">
 <!ENTITY insert.label "Lisää kenttä">
 <!ENTITY close.label "Sulje">
+<!ENTITY advanced.label "Lisäasetukset">
 <!ENTITY export.label "Vie">
 <!ENTITY import.label "Tuo">
 <!ENTITY menu.template_import.label "Tuo">
@@ -22,6 +23,8 @@
 <!ENTITY pref_fwd.tab "Välitä">
 <!ENTITY pref_help.tab "Ohje">
 <!ENTITY pref_about.tab "Tietoja">
+<!ENTITY pref_global.tab "Globaalit asetukset">
+<!ENTITY pref_variables.tab "Muuttujat">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">
@@ -30,8 +33,11 @@
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Pohja">
-<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;<br> Kiitos viestistäsi toivoien, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;&lt;br&gt; Kiitos viestistäsi toivoien, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 - Asetukset">
+<!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
+<!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa sähköpostia">
+<!ENTITY pref_showStatusIcon.label "Näytä painike tilapalkilla">
 <!ENTITY pref_server_desc "Tili">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
