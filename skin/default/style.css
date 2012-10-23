@@ -174,8 +174,7 @@ button.bugsURL:focus {
 }
 
 #breaksBox {
-	margin-top: 2em;
-	margin-bottom: 1em;
+	margin: 2em 0em 1em 1em;
 }
 #txtBreaks
 {
@@ -257,30 +256,16 @@ button.bugsURL:focus {
 
 .NewTab,.RespondTab,.ForwardTab,
 #fieldsTab, #settingsTab, #aboutTab  {
-  -moz-appearance: none !important;
   cursor: pointer;
-  border: 1px solid #BDBDBD;
-  border-bottom: none !important;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  -moz-appearance: tab !important;
+  
 }
 
-/* ############################### HOVER,ACTIVE & FOCUS ############################## */
-#newTab:focus,#respondTab:focus,#forwardTab:focus,
-#newTab:active,#respondTab:active,#forwardTab:active,
-#newTab:hover,#respondTab:hover,#forwardTab:hover,
-
-#fieldsTab:focus,#settingsTab:focus,#aboutTab:focus,
-#fieldsTab:active,#settingsTab:active,#aboutTab:active,
-#fieldsTab:hover,#settingsTab:hover,#aboutTab:hover {
-  border: 1px solid #0CB2E4;
-  color: #0CB2E4;
-}
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in our Tabs */
 .NewTab label,.RespondTab label,.ForwardTab label,
-#fieldsTab label, #globalTab label, #aboutTab label {
+#fieldsTab label, #settingsTab label, #aboutTab label {
   margin-left:5px !important;
 }
 
@@ -373,6 +358,24 @@ button.bugsURL:focus {
 .aboutPanel, .aboutGroup {
 	max-width:70em;
 }
+
+#versionBox {
+	position: relative;
+	border-radius: 1px solid rgba(0,0,0,0.5);
+	border-radius: 0.75em;
+	padding: 0.3em;
+	text-align: center;
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+	background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 24%, rgba(33,180,226,1) 62%, rgba(183,222,237,1) 100%);
+}
+
+#versionBox:hover {
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.7);
+}
+#versionBox:active {
+	box-shadow: inset 0 0 1px rgba(0,0,0,0.8);
+}
+
 
 /* ##################################### ABOUTLOGO ################################### */
 /* Icon Binding inside tab only over class possible! */
