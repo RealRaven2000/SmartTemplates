@@ -425,7 +425,7 @@
 
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
-						<hbox> 
+						<hbox class = "aboutWrapper" flex="1"> 
 							<spacer flex = "1" />
 							<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true);" />
 						</hbox>
