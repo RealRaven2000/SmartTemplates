@@ -261,12 +261,12 @@ margin-left: 30px;
 }
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
-#SmartTemplate4NewTab:focus,#SmartTemplate4RspTab:focus,#SmartTemplate4FwdTab:focus,
-#SmartTemplate4AboutTab:focus,#fieldsTab:focus, #settingsTab:focus,
-#SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active,
-#fieldsTab:active, #settingsTab:active, #SmartTemplate4AboutTab:active,
-#SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover,
-#fieldsTab:hover, #settingsTab:hover, #SmartTemplate4AboutTab:hover {
+#newTab:focus,#rspTab:focus,#fwdTab:focus,
+#aboutTab:focus,#fieldsTab:focus, #settingsTab:focus,
+#newTab:active,#rspTab:active,#fwdTab:active,
+#fieldsTab:active, #settingsTab:active, #aboutTab:active,
+#newTab:hover,#rspTab:hover,#fwdTab:hover,
+#fieldsTab:hover, #settingsTab:hover, #aboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
 }
