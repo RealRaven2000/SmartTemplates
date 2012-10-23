@@ -8,6 +8,7 @@
 <!ENTITY paste.label "Вставить">
 <!ENTITY insert.label "Вставить поле">
 <!ENTITY close.label "Закрыть">
+<!ENTITY advanced.label "Дополнительные настройки">
 <!ENTITY export.label "Экспорт">
 <!ENTITY import.label "Импорт">
 <!ENTITY menu.template_import.label "Импорт шаблона">
@@ -22,6 +23,8 @@
 <!ENTITY pref_fwd.tab "Переслать">
 <!ENTITY pref_help.tab "Справка">
 <!ENTITY pref_about.tab "О">
+<!ENTITY pref_global.tab "Общие настройки">
+<!ENTITY pref_variables.tab "Переменные">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">
@@ -32,6 +35,9 @@
 <!ENTITY pref_templateBox.label "Шаблон">
 <!ENTITY pref_templateBox_tip "Напишите свой шаблон, к примеру Привет &#37;from(name)&#37;&lt; br &gt; Спасибо за сообщение&lt; br &gt; Всего наилучшего, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Настройки SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Количество переводов строк в начале:">
+<!ENTITY pref_removeSig.label "Стирать подпись при смене адреса электронной почты">
+<!ENTITY pref_showStatusIcon.label "Кнопка в строке состояния">
 <!ENTITY pref_server_desc "Учётная запись">
 <!ENTITY pref_server_def "Общие настройки">
 <!ENTITY pref_def.label "Использовать общие настройки">
