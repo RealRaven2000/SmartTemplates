@@ -251,7 +251,7 @@ margin-left: 30px;
 	padding-bottom: 3px !important;
 }
 
-.NewTab,.RespondTab,.ForwardTab,.AboutTab {
+.NewTab,.RespondTab,.ForwardTab,.FieldsTab, .GlobalTab,.AboutTab {
   -moz-appearance: none !important;
   cursor: pointer;
   border: 1px solid #BDBDBD;
@@ -262,18 +262,18 @@ margin-left: 30px;
 
 /* ############################### HOVER,ACTIVE & FOCUS ############################## */
 #SmartTemplate4NewTab:focus,#SmartTemplate4RspTab:focus,#SmartTemplate4FwdTab:focus,
-#SmartTemplate4AboutTab:focus,
+#SmartTemplate4AboutTab:focus,#fieldsTab:focus, #settingsTab:focus,
 #SmartTemplate4NewTab:active,#SmartTemplate4RspTab:active,#SmartTemplate4FwdTab:active,
-#SmartTemplate4AboutTab:active,
+#fieldsTab:active, #settingsTab:active, #SmartTemplate4AboutTab:active,
 #SmartTemplate4NewTab:hover,#SmartTemplate4RspTab:hover,#SmartTemplate4FwdTab:hover,
-#SmartTemplate4AboutTab:hover {
+#fieldsTab:hover, #settingsTab:hover, #SmartTemplate4AboutTab:hover {
   border: 1px solid #0CB2E4;
   color: #0CB2E4;
 }
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in our Tabs -> only over class possible! */
-.NewTab label,.RespondTab label,.ForwardTab label,.AboutTab label, .FieldsTab label, .GlobalTab label {
+.NewTab label,.RespondTab label,.ForwardTab label,.FieldsTab label, .GlobalTab label, .AboutTab label {
   margin-left:5px !important;
 }
 
@@ -290,13 +290,13 @@ margin-left: 30px;
 }
 
 /** right hand tabs **/
-#fieldsTab {
+.FieldsTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/variable.png") !important;
 }
-#settingsTab {
+.GlobalTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/global.png") !important;
 }
-#aboutTab {
+.AboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
 }
 
