@@ -515,7 +515,6 @@ SmartTemplate4.Util = {
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 
 	showAboutConfig: function(filter) {
-
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
@@ -531,10 +530,12 @@ SmartTemplate4.Util = {
 			function () {
 				var flt = w.document.getElementById("textbox");
 				if (flt) {
-					 flt.value=filter;
-					 flt.focus();
-					 if (w.self.FilterPrefs)
-					 w.self.FilterPrefs();
+					flt.value=filter;
+					flt.focus();
+					if (w.self.FilterPrefs)
+						w.self.FilterPrefs();
+					// for security, we lock down about:config so users do not accidentally change stuff they shouldn't
+					flt.setAttribute('readonly',true);
 				}
 			}, 300);
 	} ,

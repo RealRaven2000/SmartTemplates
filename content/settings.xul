@@ -411,6 +411,7 @@
 						          label = "&pref_showStatusIcon.label;"
 						          preference = "pref_showStatusIcon"
 						          instantApply="true" 
+						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
 						          onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
 						
 						<spacer flex = "2" />
