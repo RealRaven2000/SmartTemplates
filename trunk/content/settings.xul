@@ -426,11 +426,13 @@
 
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
-						<hbox class = "aboutWrapper" flex="1"> 
-							<spacer flex = "1" />
-							<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true);" />
+						<hbox class = "aboutWrapper" flex="1" align = "center" > 
+							<hbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" onclick="SmartTemplate4.Settings.clickLogo();" flex = "1">
+								<spacer flex = "1"/>
+								<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true);" />
+							</hbox>
 						</hbox>
-						<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
+						
 						<hbox class = "aboutWrapper" flex="1">
 							<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">
 								<description>&creator.label;: Axel Grude</description>
