@@ -257,7 +257,8 @@ button.bugsURL:focus {
 .NewTab,.RespondTab,.ForwardTab,
 #fieldsTab, #settingsTab, #aboutTab  {
   cursor: pointer;
-  -moz-appearance: tab !important;
+  -moz-appearance: none !important;
+  border-radius: 0.8em 0.8em 0 0;
   
 }
 
@@ -368,6 +369,7 @@ button.bugsURL:focus {
 	padding: 0.3em 0.6em !important;
 	text-align: center;
 	vertical-align: middle;
+	max-height: 2em;
 }
 
 
