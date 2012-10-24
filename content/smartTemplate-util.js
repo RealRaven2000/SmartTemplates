@@ -428,7 +428,7 @@ SmartTemplate4.Util = {
 		try {
 			if (this.Application!='Thunderbird') {
 				this.openLinkInBrowserForced(URL);
-				return;
+				return true;
 			}
 			
 			var sTabMode="";
@@ -891,15 +891,16 @@ SmartTemplate4.Util.firstRun =
 					+ "\nprev!=current = " + (prev!=current).toString()
 					+ "\ncurrent.indexOf(" + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN).toString());
 			}
+			
 
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 
+		// // fire this on application launch, which includes open-link-in-new-window
+		// window.addEventListener("load",function(){ SmartTemplate4.Util.firstRun.init(); },true);
+		window.addEventListener("load", function(){ SmartTemplate4.updateStatusBar(); },true);
+
 	} 
-
-
-// // fire this on application launch, which includes open-link-in-new-window
-// window.addEventListener("load",function(){ SmartTemplate4.Util.firstRun.init(); },true);
 
 };
 
