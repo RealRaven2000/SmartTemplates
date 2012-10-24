@@ -66,7 +66,7 @@
 <!ENTITY developer.label "Entwickler">
 <!ENTITY localename.label "de">
 <!ENTITY localized.label "Übersetzer">
-<!ENTITY translatorNickname.label "Marky Mark DE (AMO)">
+<!ENTITY translatorNickname.label "Marky Mark DE">
 <!ENTITY contributor.label "Mitwirkende">
 <!ENTITY about.label "SmartTemplate4 ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
 <!-- #### HELP #### -->
