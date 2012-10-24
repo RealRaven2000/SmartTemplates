@@ -727,7 +727,7 @@ SmartTemplate4.classSmartTemplate = function()
 		{
 			if(gMsgCompose.composeHTML) {
 				// new global settings to deal withg [Bug 25084]
-				let breaks = SmartTemplate4.Preferences.getMyBoolPref("breaksAtTop");
+				let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
 				for (let i = 0; i < breaks; i++)
 					gMsgCompose.editor.insertNode(
 					                   gMsgCompose.editor.document.createElement("br"),
