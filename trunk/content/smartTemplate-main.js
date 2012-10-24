@@ -153,7 +153,10 @@ var SmartTemplate4 = {
 	} ,
 	
 	updateStatusBar: function(show) {
-		let btn = SmartTemplate4.Util.Mail3PaneWindow.document.getElementById('SmartTemplate4Messenger');
+		this.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar(' + show +')');
+		let doc = (typeof show == 'undefined') ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
+		let btn = doc.getElementById('SmartTemplate4Messenger');
+		(typeof show == 'undefined') 
 		if (btn) {
 			let showPanel = (typeof show == 'undefined') ? 
 			                SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') :
@@ -173,13 +176,14 @@ var SmartTemplate4 = {
 					break;
 			}
 			btn.className = theClass;
-			
-			
+			this.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass);		
 		}
+		else
+			this.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+			
 	} ,
 
 	startUp: function() {
 		let v = SmartTemplate4.Util.VersionProxy();
-		this.updateStatusBar();
 	}
 };

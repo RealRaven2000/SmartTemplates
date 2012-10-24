@@ -16,24 +16,22 @@
 	-moz-transition: width 0.3s ease 0.2s;
 }
 
-#SmartTemplate4Messenger.hidden label
-{
-	width: 0 !important;
-}
-
 #SmartTemplate4Messenger.always:not(:hover) label
 {
 	width: auto !important;
 }
 
 
-#SmartTemplate4Messenger:not(:hover):not(.always) label 
+#SmartTemplate4Messenger:not(:hover):not(.always) label,
+#SmartTemplate4Messenger.hidden label,
+#SmartTemplate4Messenger.hidden:hover label
 {
 	width: 0 !important;
 	max-width: 0 !important;
 	display: none;
 }
-#SmartTemplate4Messenger:not(:hover):not(.always)
+
+#SmartTemplate4Messenger:not(:hover):not(.always):not(.hidden)
 /* padding instead margin for Noia eXtreme Theme */
 {
 	padding-left: 6px;
