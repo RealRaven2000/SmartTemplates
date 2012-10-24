@@ -159,6 +159,22 @@ var SmartTemplate4 = {
 			                SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') :
 			                show;
 			btn.collapsed =  !showPanel;
+			let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode');
+			let theClass = 'statusbarpanel-iconic-text';
+			switch(labelMode) {
+				case 0:
+					theClass +=' hidden';
+					break;
+				case 1:
+					//NOP;
+					break;
+				case 2:
+					theClass +=' always';
+					break;
+			}
+			btn.className = theClass;
+			
+			
 		}
 	} ,
 
