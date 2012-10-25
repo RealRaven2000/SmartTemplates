@@ -594,7 +594,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// Add template message
 	function insertTemplate(startup)
 	{
-		SmartTemplate4.Util.logDebugOptional('functions','insertTemplate(' + startup + ')');
+		let util = SmartTemplate4.Util;
+		util.logDebugOptional('functions','insertTemplate(' + startup + ')');
 		var pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let ed = GetCurrentEditor();
@@ -710,14 +711,14 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 			}
 			else {
-				SmartTemplate4.Util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
+				util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
 				// remove old signature!
 				extractSignature(theIdentity, false);
 			}
 
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex);
+			util.logException("insertTemplate - exception during parsing. Continuing with inserting template!", ex);
 		}
 		
 		let targetNode = 0;
@@ -776,7 +777,8 @@ SmartTemplate4.classSmartTemplate = function()
 		                       ||
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 
-		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate',
+		
+		util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
 		       + 'key:            ' + theIdentity.key + '\n'
 		       + '------------------------------------------------\n'
@@ -790,7 +792,12 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
-		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount);
+		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount
+		       + '------------------------------------------------\n'
+		       + 'SmartTemplate ' + util.Version + '\n'
+		       + util.Application + " Version " + util.AppverFull + '\n'
+		       + 'Platform: ' + util.HostSystem
+		       );
 
 		/* SIGNATURE HANDLING */
 		
