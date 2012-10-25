@@ -92,7 +92,11 @@ SmartTemplate4.classPref = function()
 		return getWithIdkey(idKey, composeType, def)
 	};
 
-
+	// whether an Identity uses the common account
+	function isCommon(idkey) {
+		return getWithBranch(idkey + ".def", true);
+	};
+	
 
 	// -----------------------------------
 	// Get preference with identity key
@@ -136,6 +140,7 @@ SmartTemplate4.classPref = function()
 	this.getQuoteHeader = getQuoteHeader;
 	this.getWithBranch = getWithBranch;
 	this.getWithIdkey = getWithIdkey;
+	this.isCommon = isCommon;
 	this.isDeleteHeaders = isDeleteHeaders;
 	this.isProcessingActive = isProcessingActive;
 	this.isReplaceNewLines = isReplaceNewLines;
