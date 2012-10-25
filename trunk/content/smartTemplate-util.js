@@ -124,9 +124,19 @@ SmartTemplate4.Util = {
 
 	get HostSystem() {
 		if (null===this.mHost) {
-			var osString = Components.classes["@mozilla.org/xre/app-info;1"]
-						.getService(Components.interfaces.nsIXULRuntime).OS;
+			let runTime = Components.classes["@mozilla.org/xre/app-info;1"]
+						.getService(Components.interfaces.nsIXULRuntime);
+			let osString = runTime.OS;
 			this.mHost = osString.toLowerCase();
+			// 
+			if (window.navigator)
+				this.mHost = window.navigator.oscpu;
+			
+			
+			if (runTime.inSafeMode)
+				this.mHost += ' [Safe Mode]';
+			
+			
 		}
 		return this.mHost; // linux - winnt - darwin
 	},

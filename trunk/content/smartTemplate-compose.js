@@ -772,15 +772,25 @@ SmartTemplate4.classSmartTemplate = function()
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
 		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
-
 		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
 		                       ||
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 
+		// find out server name and type (IMAP / POP3 etc.)
+		let account = null;
+		for (var i = 0; i < gAccountManager.accounts.Count(); i++) {
+			account = gAccountManager.accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount)
+			if (account.defaultIdentity.key == idKey)
+				break;
+		}
+		let srv = account ? account.incomingServer : null;
+		let serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
 		
+		let common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : '';
 		util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
-		       + 'key:            ' + theIdentity.key + '\n'
+		       + 'key:            ' + theIdentity.key + common + '\n'
+		       + serverInfo
 		       + '------------------------------------------------\n'
 		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
 		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
@@ -794,7 +804,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4 ' + util.Version + '\n'
+		       + 'SmartTemplate ' + util.Version + '\n'
 		       + util.Application + " Version " + util.AppverFull + '\n'
 		       + 'Platform: ' + util.HostSystem
 		       );
