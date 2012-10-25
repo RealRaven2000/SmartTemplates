@@ -794,7 +794,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'SmartTemplate ' + util.Version + '\n'
+		       + 'SmartTemplate4 ' + util.Version + '\n'
 		       + util.Application + " Version " + util.AppverFull + '\n'
 		       + 'Platform: ' + util.HostSystem
 		       );
