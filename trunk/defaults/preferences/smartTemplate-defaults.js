@@ -1,4 +1,4 @@
-/* model */
+/* locale */
 pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://smartTemplate4/locale/settings.properties");
 
 /* global settings */
