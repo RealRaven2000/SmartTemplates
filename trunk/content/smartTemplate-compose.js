@@ -777,14 +777,18 @@ SmartTemplate4.classSmartTemplate = function()
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 
 		// find out server name and type (IMAP / POP3 etc.)
-		let account = null;
-		for (var i = 0; i < gAccountManager.accounts.Count(); i++) {
-			account = gAccountManager.accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount)
-			if (account.defaultIdentity.key == idKey)
-				break;
+		let serverInfo = '';
+		try {
+			let account = null;
+			for (var i = 0; i < gAccountManager.accounts.Count(); i++) {
+				account = gAccountManager.accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount)
+				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
+					break;
+			}
+			let srv = account ? account.incomingServer : null;
+			serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
 		}
-		let srv = account ? account.incomingServer : null;
-		let serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
+		catch(ex) { util.logException("could not find server for identity " + idKey , ex); }
 		
 		let common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : '';
 		util.logDebugOptional('functions.insertTemplate',
