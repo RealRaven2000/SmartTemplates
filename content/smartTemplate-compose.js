@@ -792,7 +792,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
-		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount
+		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
 		       + 'SmartTemplate ' + util.Version + '\n'
 		       + util.Application + " Version " + util.AppverFull + '\n'
