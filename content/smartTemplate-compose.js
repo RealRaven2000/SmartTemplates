@@ -425,6 +425,13 @@ SmartTemplate4.classSmartTemplate = function()
 							 .getService(Components.interfaces.nsIStringBundleService)
 							 .createBundle("chrome://messenger/locale/mime.properties");
 		let origMsgDelimiter = bndl.GetStringFromID(1041);
+		// [Bug 25089] default forward quote can't be completely hidden
+		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "14")) {
+			origMsgDelimiter = Components.classes["@mozilla.org/preferences-service;1"]
+			                             .getService(Components.interfaces.nsIPrefBranch)
+			                             .getComplexValue("mailnews.reply_header_originalmessage",
+			                                              Components.interfaces.nsIPrefLocalizedString).data
+		}
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
 		// Delete original headers
