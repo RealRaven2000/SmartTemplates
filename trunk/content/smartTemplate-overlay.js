@@ -40,7 +40,7 @@ SmartTemplate4.classPref = function()
 		try {
 			switch (root.getPrefType(prefstring)) {
 				case Components.interfaces.nsIPrefBranch.PREF_STRING:
-					return root.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
+					return root.getComplexValue(prefstring, Components.interfaces.nsIPrefLocalizedString).data;
 				case Components.interfaces.nsIPrefBranch.PREF_INT:
 					return root.getIntPref(prefstring);
 				case Components.interfaces.nsIPrefBranch.PREF_BOOL:
