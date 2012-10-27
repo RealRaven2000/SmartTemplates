@@ -30,7 +30,7 @@ SmartTemplate4.Help = {
 	} ,
 
 	onResize : function(win) {
-		let frame = document.getElementById('contentFrame');
+		let frame = document.getElementById('helpFrame');
 		if (frame) {
 			frame.height = win.innerHeight - 100; // sodala!
 		}
@@ -42,7 +42,7 @@ SmartTemplate4.Help = {
 /*
 SmartTemplate4.Util.logDebug("Setting up onCLick for container element...");
 
-let frame = document.getElementById('contentFrame');
+let frame = document.getElementById('helpFrame');
 let doc = frame.contentDocument;
 if (doc) {
 	let container = doc.getElementById('helpContents');

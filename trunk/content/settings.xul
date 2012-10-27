@@ -381,12 +381,11 @@
 	
 			<tabpanels flex = "1">
 				<tabpanel flex = "1" id = "variablesFrame">
-					<iframe id="contentFrame"
+					<iframe id="helpFrame"
 					        src="chrome://smarttemplate4/content/help.xhtml"
 					        type="chrome"
 					        flex = "1"
-					        minheight="300"
-					        minwidth="400" />
+					        minheight="300"/>
 				</tabpanel>
 
 				<tabpanel flex = "1" id = "globalSettings">
@@ -411,7 +410,7 @@
 						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
 						          onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
 						<spacer />
-						<hbox>
+						<hbox id = "fontBox">
 							<label  id = "lblFontSettings"
 							        value="&pref_fontSettings.label;" />
 							<button id = "fontSmaller"

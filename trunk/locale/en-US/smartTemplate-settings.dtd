@@ -157,7 +157,7 @@
 <!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "Please use only UTF-8 (Unicode) charset inside HTML templates!">
 <!ENTITY table.cap "Usage of variables">
-<!ENTITY table_note.label "Using variables incorrectly will cause error messages inside 'Error Console'!">
+<!ENTITY table_note.label "Using variables incorrectly will generate error messages inside 'Error Console'!">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Write">
