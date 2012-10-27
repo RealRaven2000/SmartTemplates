@@ -665,8 +665,8 @@ SmartTemplate4.Settings = {
 		
 		let off = new Object();
 		off.offset = 0;
-		// iterate all style sheets!
-		while ( ss = SmartTemplate4.Styles.getMyStyleSheet('style.css', "SmartTemplateSettings", off)) {
+		// iterate all style sheets! off.offset will be increased to continue from the last find.
+		while ( ss = SmartTemplate4.Styles.getMyStyleSheet('chrome://global/skin/style.css', "SmartTemplateSettings", off)) {
 			SmartTemplate4.Styles.setElementStyle(ss, '.templateBox', 'font-size', fontSizeString, true);
 		}
 		SmartTemplate4.Preferences.setMyIntPref("font.size", size);
