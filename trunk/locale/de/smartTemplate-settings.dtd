@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Anzahl der Zeilenumbrüche am Anfang der Vorlage:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
 <!ENTITY pref_showStatusIcon.label "Button in der Statuszeile anzeigen">
+<!ENTITY pref_fontSettings.label "Schriftart">
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY pref_server_def "Allgemein">
 <!ENTITY pref_def.label "Allgemein verwenden">
