@@ -317,6 +317,7 @@ SmartTemplate4.Settings = {
 			buttons[i].height = finalHeight;
 		}
 
+		this.fontSize(0);
 
 		return true;
 	} ,
@@ -642,6 +643,33 @@ SmartTemplate4.Settings = {
 		catch(e) {
 			SmartTemplate4.Util.logException("Exception in insertAtCaret; (nodeName=" + node  +")", e);
 		}
+	} , 
+	
+
+	fontSize: function(change) {
+		// find class rule for .templateBox and change font-size
+		let ss = null;
+		let size = SmartTemplate4.Preferences.getMyIntPref("font.size");
+		
+		size = size + change;
+		if (size < 7) 
+			size = 7;
+		if (size > 16) 
+			size = 16;
+
+		let fs = document.getElementById('txtFontSize');
+		if (fs)
+			fs.value = size;
+			
+		let fontSizeString = size.toString() + 'pt';
+		
+		let off = new Object();
+		off.offset = 0;
+		// iterate all style sheets!
+		while ( ss = SmartTemplate4.Styles.getMyStyleSheet('style.css', "SmartTemplateSettings", off)) {
+			SmartTemplate4.Styles.setElementStyle(ss, '.templateBox', 'font-size', fontSizeString, true);
+		}
+		SmartTemplate4.Preferences.setMyIntPref("font.size", size);
 	}
 
 

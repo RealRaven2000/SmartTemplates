@@ -76,29 +76,35 @@ SmartTemplate4.Util = {
 	} ,
 
 	get Mail3PaneWindow() {
-		var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
+		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
 				.getService(Components.interfaces.nsIWindowMediator);
-		var win3pane = windowManager.getMostRecentWindow("mail:3pane");
+		let win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
 
+	get PlatformVer() {
+		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+						.getService(Components.interfaces.nsIXULAppInfo);
+		return appInfo.platformVersion;
+	} ,
+	
 	get AppverFull() {
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
 		return appInfo.version;
 	},
 
 	get Appver() {
 		if (null === this.mAppver) {
-			var appVer=this.AppverFull.substr(0,3); // only use 1st three letters - that's all we need for compatibility checking!
-			this.mAppver = parseFloat(appVer); // quick n dirty!
+			let appVer=this.AppverFullPlatformVer; // no more truncation
+			this.mAppver = parseFloat(appVer).toString(); // quick n dirty!
 		}
 		return this.mAppver;
 	},
 
 	get Application() {
 		if (null===this.mAppName) {
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
 						.getService(Components.interfaces.nsIXULAppInfo);
 			const FIREFOX_ID = "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 			const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
