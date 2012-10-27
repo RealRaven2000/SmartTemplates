@@ -6,6 +6,7 @@
 SmartTemplate4.classSmartTemplate = function()
 {
 	function readSignatureFile(Ident) {
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		let htmlSigText = '';
 		// test code for reading local sig file (WIP)
 		try {
@@ -49,6 +50,8 @@ SmartTemplate4.classSmartTemplate = function()
 			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
 			SmartTemplate4.Util.logException("readSignatureFile - exception trying to read signature attachment file!", ex);
 		}
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - htmlSigText:\n'
+		                                   + htmlSigText + '[EOF]');
 		return htmlSigText;
 	}
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
@@ -60,7 +63,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
 		let isSignatureHTML = Ident.htmlSigFormat; // only reliable if in textbox!
-		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.extractSignature()');
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','START==========  extractSignature(' + Ident + ', ' + signatureDefined + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
 		SmartTemplate4.signature = null;
@@ -73,6 +76,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let sigNode = null;
 
 		if (isSignatureTb) {
+			SmartTemplate4.Util.logDebugOptional('functions.extractSignature','find moz-signature...');
 			// try to extract already inserted signature manually - well we need the last one!!
 			// get the signature straight from the bodyElement!
 			//signature from top
@@ -92,8 +96,11 @@ SmartTemplate4.classSmartTemplate = function()
 					if (sigNode.parentNode.nodeName.toLowerCase() == 'blockquote')
 						sigNode = null;
 				}
-
 			}
+			SmartTemplate4.Util.logDebugOptional('functions.extractSignature','signature node ' 
+			                                     + (sigNode ? 'was ' : 'not ')
+			                                     + 'found.');
+			
 		}
 
 		// read text from signature file
@@ -103,8 +110,11 @@ SmartTemplate4.classSmartTemplate = function()
 			if (fileSig) {
 				// look for html tags, because htmlSigFormat might be unchecked
 				// while an attached sig file might still be in HTML format.
-				if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>"))
+				if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>")) {
 					isSignatureHTML = true;
+				}
+				SmartTemplate4.Util.logDebugOptional('functions.extractSignature','Signature (from file) is ' + 
+				                                     (isSignatureHTML ? 'HTML' : ' probably plain text.'));
 			}
 		}
 
@@ -116,6 +126,7 @@ SmartTemplate4.classSmartTemplate = function()
 		//  && signatureDefined
 		if(sigNode && isSignatureTb)
 		{
+			SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'First attempt to remove Signature.');
 			let ps = sigNode.previousElementSibling;
 			if (ps && ps.tagName === "BR") {
 				//remove the preceding BR that TB always inserts
@@ -143,7 +154,8 @@ SmartTemplate4.classSmartTemplate = function()
 
 
 		// remove previous signature. 
-		if (!removed)
+		if (!removed) {
+			SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Not removed. 2nd attempt to remove previous sig...');
 			for(let i = 0; i < nodes.length; i++) {
 				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 					let pBr = nodes[i].previousElementSibling;
@@ -155,6 +167,7 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 			}
 			// let's discard the old signature instead.
+		}
 
 
 		if (!sig || typeof sig == 'string') {
@@ -163,6 +176,7 @@ SmartTemplate4.classSmartTemplate = function()
 				sig.className = 'moz-signature';
 				// if our signature is text only, we need to replace \n with <br>
 				if (!isSignatureHTML) {
+					SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
 					// prettify: txt -> html
 					sigText = "<pre>"
 					        + sigText.replace(/\n/g, "<BR>")
@@ -177,6 +191,9 @@ SmartTemplate4.classSmartTemplate = function()
 				sig = sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 			}
 		}
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','==============  extractSignature=============END\n'
+		                                   + 'Return Signature:' + sig + '\n'
+		                                   + sigText);
 
 		return sig;
 	}
@@ -558,6 +575,9 @@ SmartTemplate4.classSmartTemplate = function()
 	// Get processed template
 	function getProcessedTemplate(templateText, idKey, composeType) 
 	{
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedTemplate()   ==========');
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Template Text:\n' +
+		                                     templateText + '[END]');
 		var pref = SmartTemplate4.pref;
 		//Reset X to Today after each newline character
 		//except for lines ending in { or }; breaks the omission of non-existent CC??
@@ -580,7 +600,11 @@ SmartTemplate4.classSmartTemplate = function()
 			if (gMsgCompose.composeHTML)
 				{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 		}
-		return SmartTemplate4.regularize(templateText, composeType);
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n'
+		                                   + templateText);
+		let regular = SmartTemplate4.regularize(templateText, composeType);
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedTemplate()   ========== END');
+		return regular;
 	};
 	
 	// new function to retrieve quote header separately [Bug 25099]
@@ -594,6 +618,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// Get template message - wrapper for main template field
 	function getSmartTemplate(composeType, idKey)
 	{
+		SmartTemplate4.Util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		var msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
 		return getProcessedTemplate(msg, idKey, composeType);
 	};
