@@ -186,6 +186,16 @@ button.bugsURL:focus {
 	/* background-size: 200px; */
 }
 
+#fontBox {
+	vertical-align: vertical;
+	margin: 2em 0em 1em 1em;
+}
+
+#lblFontSettings {
+	margin-top: 0.8em;
+	vertical-align: center;
+}
+
 #fontSmaller, #fontLarger {
 	font-weight: 900;
 	font-family: "Arial Black", Arial;
@@ -222,7 +232,7 @@ button.bugsURL:focus {
 }
 
 #aboutPanel {
-	min-width:400px;
+	min-width:350px;
 	max-width:430px;
 }
 
@@ -283,7 +293,7 @@ button.bugsURL:focus {
 	min-width: 400px;
 	max-width: 1000px;
 	font-family: consolas,"courier new",monospace;
-	font-size: 8pt;
+	font-size: 9pt;
 	min-height: 100px;
 }
 
@@ -437,7 +447,6 @@ button.bugsURL:focus {
 
 /* ################################## AboutDeveloper ################################# */
 .aboutPersonnel description {
-  font-family: 'Segoe UI', Arial, Helvetica, Verdana, Geneva, sans-serif;
   font-weight: bold;
   text-align: center;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
@@ -465,9 +474,8 @@ button.bugsURL:focus {
 
 }
 /* ############################## SmartTemplate4AboutDesc ############################ */
-description.aboutContent  {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 10pt !important;
+.aboutContent  {
+  font-size: 9pt;
   display: block;
   margin-top: 0.5em;
 }
@@ -477,16 +485,21 @@ description.aboutContent  {
 /* ################################################################################### */
 
 /* ####################################### BODY ###################################### */
+.body, h1, h2, 
+.aboutPersonnel 
+{
+  font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+}
+
 .body {
-  font-family : Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 10pt !important;
+  font-size: 9pt;
   display: block;
   background: rgb(208,228,247);
 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 38%, rgba(225,225,225,1) 63%, rgba(246,246,246,1) 100%);
 	border-left: #ccc 1px;
 	border-right: #ccc 1px;
 	box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
-	font-size:11pt;
+	font-size: 10pt;
 	min-height: 950px;
   padding: 5px 10px;
 }
@@ -501,8 +514,7 @@ description.aboutContent  {
 /* ################################ CHAPTER (HEADLINES)  ############################# */
 h1.helpchapter {
   background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-  font-size: 12pt !important;
+  font-size: 12pt;
   font-weight: bold;
   text-align: center;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
@@ -515,7 +527,6 @@ h1.helpchapter {
 
 /* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
 h2 {
-  font-family: Arial, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
   font-weight: normal;
   font-size: 10pt !important;
   font-style: italic;
@@ -632,8 +643,8 @@ table div.no {
 }
 
 /* #### help frame  #### */
-#contentFrame {
-	min-width: 400px;
+#helpFrame {
+	min-width: 350px;
 	min-height: 300px;
 	height: auto;
 }
