@@ -501,9 +501,9 @@ SmartTemplate4.Settings = {
 	} ,
 
 	openAdvanced: function() {
-		let advancedBox = document.getElementById('advancedBox');
-		advancedBox.hidden = false;
-		let wid = advancedBox.scrollWidth;
+		let advancedContainer = document.getElementById('advancedContainer');
+		advancedContainer.hidden = false;
+		let wid = advancedContainer.scrollWidth;
 		window.resizeBy(wid, 0);
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('btnAdvanced').hidden = true;
@@ -521,9 +521,9 @@ SmartTemplate4.Settings = {
 	} ,
 
 	closeAdvanced: function() {
-		let advancedBox = document.getElementById('advancedBox');
-		let wid = advancedBox.scrollWidth;
-		advancedBox.hidden = true;
+		let advancedContainer = document.getElementById('advancedContainer');
+		let wid = advancedContainer.scrollWidth;
+		advancedContainer.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();
 		document.getElementById('btnAdvanced').hidden = false;
