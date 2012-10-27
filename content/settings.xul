@@ -15,7 +15,7 @@
             onunload = "SmartTemplate4.Settings.onUnload();"
             >
 
-	<prefpane id = "smartTemplatePane">
+	<prefpane id = "smartTemplatePane" orient = "vertical">
 
 	<!-- ######## Creating Menubar ######## -->
 	<!-- MENUITEMS: File - Help -->
@@ -79,10 +79,10 @@
 	</toolbox>
 
 		<spacer height = "5px" />
+<!-- fills full width of window -->
+<hbox flex = "3">
 
-<hbox>
-
-	<vbox id="decksContainer">
+	<vbox id="decksContainer" flex="2">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox>
@@ -109,9 +109,7 @@
 		</hbox>
 
 		<hbox id = "dRecksContainer">
-			<deck id = "account_deckA"
-			      flex = "1"
-			      width = "600">
+			<deck id = "account_deckA" flex = "1" class="templateDeck">
 
 				<vbox id = "deckA.per_account" flex = "1">
 
@@ -146,9 +144,9 @@
 					<spacer height = "5px" />
 
 					<!-- ######## Default DeckB & Tab Creating ######## -->
-					<deck id = "default.deckB" flex = "1">
+					<deck id = "default.deckB" flex = "1" orient = "vertical">
 
-						<tabbox id = "deckB.nodef" flex = "1">
+						<tabbox id = "deckB.nodef" flex = "1" orient = "vertical">
 
 							<tabs class="actionTabs">
 								<tab id = "newTab" label = "&pref_new.tab;"     class = "NewTab"/>
@@ -159,9 +157,9 @@
 
 							<!-- ######## Content New Message Tab ######## -->
 
-							<tabpanels flex = "1">
-								<tabpanel flex = "1">
-									<groupbox flex = "1" class = "newGroup">
+							<tabpanels flex = "1" orient = "vertical">
+								<tabpanel flex = "1" orient = "vertical">
+									<groupbox flex = "1" class = "newGroup" orient = "vertical">
 										<caption label = "&pref_newmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -173,11 +171,11 @@
 											</hbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
+												<!-- rows = "10" -->
 												<textbox id = "newmsg"
 												         flex ="1"
 												         class = "templateBox"
 												         multiline = "true"
-												         rows = "10"
 												         tooltiptext = "&pref_template_tip;"
 												         preference = "pref_newmsg"/>
 												<checkbox id = "newhtml"
@@ -209,7 +207,7 @@
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<hbox class = "pasteFocus">
+												<hbox class = "pasteFocus" flex = "1">
 													<textbox id = "rspheader"
 													         class = "templateBox quote"
 													         multiline = "true"
@@ -225,7 +223,7 @@
 											</vbox>
 										<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<hbox class = "pasteFocus">
+												<hbox class = "pasteFocus" flex = "2">
 													<textbox id = "rspmsg"
 													         class = "templateBox template"
 													         multiline = "true"
@@ -263,11 +261,11 @@
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<hbox class = "pasteFocus">
+												<hbox class = "pasteFocus" flex = "1">
+													         <!-- rows = "5" -->
 													<textbox id = "fwdheader"
 													         class = "templateBox quote"
 													         multiline = "true"
-													         rows = "5"
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
 													         preference = "pref_fwdheader"
@@ -280,12 +278,12 @@
 									    </vbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<hbox class = "pasteFocus">
+												<hbox class = "pasteFocus" flex = "2">
+													         <!-- rows = "5" -->
 													<textbox id = "fwdmsg"
 													         class = "templateBox template"
 													         multiline = "true"
 													         flex = "1"
-													         rows = "5"
 													         tooltiptext = "&pref_templateBox_tip;"
 													         preference = "pref_fwdmsg"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
@@ -360,8 +358,8 @@
 
 	</vbox>
 
-	<!-- ######## advancedBox and Iframe ######## -->
-	<vbox id = "advancedBox" flex = "2" hidden="true">
+	<!-- ######## advancedContainer and Iframe ######## -->
+	<vbox id = "advancedContainer" flex = "1" hidden="true">
 	
 		<preferences id = "globals">
 			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
@@ -371,7 +369,7 @@
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 		</preferences>
 
-		<tabbox id = "deckB.nodef" flex = "1">
+		<tabbox id = "rightPane" flex = "1">
 
 			<tabs class = "actionTabs">
 				<!-- was &help.label; -->

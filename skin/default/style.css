@@ -142,16 +142,6 @@ button.bugsURL:focus {
 
 #SmartTemplate4HelpMenuitem { float: right; }
 
-#account_deckA {
-	max-width: 1000px;
-}
-
-#advancedBox {
-	min-width:400px;
-	height: auto;
-	margin-left: 1em;
-}
-
 /* ################################################################################### */
 /* ###################################### GUI ######################################## */
 /* ################################################################################### */
@@ -163,6 +153,29 @@ button.bugsURL:focus {
 	width: 550px;
 	min-height: 400px;
 }
+
+/*  MAIN CONTAINERS: LEFT, RIGHT */
+#decksContainer {
+	
+}
+
+#advancedContainer {
+	height: auto;
+	margin-left: 1em;
+	margin-right: 1em;
+	min-width:350px;
+}
+
+.templateDeck {
+	min-width: 550px;
+}
+
+#account_deckA {
+	max-width: 1000px;
+}
+
+
+
 
 #globalSettings
 {
@@ -271,7 +284,7 @@ button.bugsURL:focus {
 	max-width: 1000px;
 	font-family: consolas,"courier new",monospace;
 	font-size: 8pt;
-	height: 100px;
+	min-height: 100px;
 }
 
 .actionTabs > tab .tab-middle {
