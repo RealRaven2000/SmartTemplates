@@ -426,7 +426,9 @@ SmartTemplate4.classSmartTemplate = function()
 							 .createBundle("chrome://messenger/locale/mime.properties");
 		let origMsgDelimiter = bndl.GetStringFromID(1041);
 		// [Bug 25089] default forward quote can't be completely hidden
-		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "14")) {
+		if ((SmartTemplate4.Util.Application === "Thunderbird" || SmartTemplate4.Util.Application === "SeaMonkey")
+		    && SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.PlatformVer, "14"))
+		{
 			origMsgDelimiter = Components.classes["@mozilla.org/preferences-service;1"]
 			                             .getService(Components.interfaces.nsIPrefBranch)
 			                             .getComplexValue("mailnews.reply_header_originalmessage",
@@ -486,7 +488,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 			// remove the original Mail Header
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Remove the original header...');
-		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
+		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.PlatformVer, "12")) {
 			// recursive search from root element
 			node = findChildNode(rootEl, 'moz-email-headers-table');
 			if (node) {
@@ -733,26 +735,26 @@ SmartTemplate4.classSmartTemplate = function()
 		// add template message --------------------------------
 		if (isActiveOnAccount) // template && template !== ""
 		{
-			if(gMsgCompose.composeHTML) {
-				// new global settings to deal withg [Bug 25084]
-				let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
-				for (let i = 0; i < breaks; i++)
-					gMsgCompose.editor.insertNode(
-					                   gMsgCompose.editor.document.createElement("br"),
-					                   gMsgCompose.editor.rootElement, 0);
-			}
+			// new global settings to deal with [Bug 25084]
+			let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
 			// now insert quote Header separately
 			try {
 				let tdiv = editor.document.createElement("div");
 				tdiv.id = "smartTemplate4-template";
 				tdiv.innerHTML = template;
 				if (theIdentity.replyOnTop) {
+					for (let i = 0; i < breaks; i++)
+						gMsgCompose.editor.insertNode(
+						                   gMsgCompose.editor.document.createElement("br"),
+						                   gMsgCompose.editor.rootElement, 0);
 					targetNode = editor.rootElement.insertBefore(tdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
 					editor.beginningOfDocument();
 					//editor.selectionController.scrollSelectionIntoView(null, null, false);
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 				else {
+					for (let i = 0; i < breaks; i++)
+						gMsgCompose.editor.rootElement.appendChild(gMsgCompose.editor.document.createElement("br"));
 					targetNode = editor.rootElement.appendChild(tdiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");

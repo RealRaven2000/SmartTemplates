@@ -3,7 +3,7 @@
 <!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
-<?xml-stylesheet href = "chrome://smartTemplate4/skin/default/style.css" type = "text/css"?>
+<?xml-stylesheet href = "chrome://smartTemplate4/skin/default/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
 
 <prefwindow id = "smartTemplate_prefDialog"
             xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -211,9 +211,8 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus">
 													<textbox id = "rspheader"
-													         class = "templateBox"
+													         class = "templateBox quote"
 													         multiline = "true"
-													         rows = "5"
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
 													         preference = "pref_rspheader"
@@ -228,9 +227,8 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus">
 													<textbox id = "rspmsg"
-													         class = "templateBox"
+													         class = "templateBox template"
 													         multiline = "true"
-													         rows = "5"
 													         flex = "1"
 													         tooltiptext = "&pref_templateBox_tip;"
 													         preference = "pref_rspmsg"
@@ -267,7 +265,7 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus">
 													<textbox id = "fwdheader"
-													         class = "templateBox"
+													         class = "templateBox quote"
 													         multiline = "true"
 													         rows = "5"
 													         flex = "1"
@@ -284,7 +282,7 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus">
 													<textbox id = "fwdmsg"
-													         class = "templateBox"
+													         class = "templateBox template"
 													         multiline = "true"
 													         flex = "1"
 													         rows = "5"
@@ -370,6 +368,7 @@
 			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool"/>
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
+			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 		</preferences>
 
 		<tabbox id = "deckB.nodef" flex = "1">
@@ -413,6 +412,21 @@
 						          instantApply="true" 
 						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
 						          onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+						<spacer />
+						<hbox>
+							<label  id = "lblFontSettings"
+							        value="&pref_fontSettings.label;" />
+							<button id = "fontSmaller"
+							        onclick = "SmartTemplate4.Settings.fontSize(-1);" 
+							        label = "A" />
+							<button id = "fontLarger"
+							        onclick = "SmartTemplate4.Settings.fontSize(+1);" 
+							        label = "A" />
+							<textbox id = "txtFontSize"
+							         preference = "pref_fontSize"
+							         instantApply="true" 
+							         disabled = "true"/>
+						</hbox>
 						
 						<spacer flex = "2" />
 						<checkbox id = "chkDebug"
@@ -477,6 +491,7 @@
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/settings.js"/>
+<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
 <script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-help.js"/>
 
