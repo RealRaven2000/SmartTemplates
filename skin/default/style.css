@@ -175,8 +175,6 @@ button.bugsURL:focus {
 }
 
 
-
-
 #globalSettings
 {
 	width: 100%;
@@ -201,18 +199,23 @@ button.bugsURL:focus {
 	font-family: "Arial Black", Arial;
 	color: rgb(0, 20, 80);
 	text-shadow: 1px 1px 0px rgba(250, 250, 250, 0.9); 
+	min-height: 22px;
+	min-width: 2em;
+	height: 28px !important;
+	width: 30px !important;
 } 
 
 #fontSmaller {
 	font-size: 9pt;
-	border-radius: 0.5em 0 0 0.5em;
+	border-radius: 0.5em 0 0 0.5em !important;
 	margin-right: 0;
 }
 
 #fontLarger {
 	font-size: 12pt;
-	border-radius: 0 0.5em 0.5em 0;
-	margin-left: 0;
+	border-radius: 0 0.5em 0.5em 0 !important;
+	margin-left: 2px;
+	padding-top: -1px;
 }
 
 #txtFontSize {
