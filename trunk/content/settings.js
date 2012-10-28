@@ -673,6 +673,4 @@ SmartTemplate4.Settings = {
 	}
 
 
-
-
 };
