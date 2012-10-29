@@ -56,7 +56,7 @@ SmartTemplate4.Styles = {
     	return S ? S.replace(/^\s+/,"") : '';
 		};
 
-		SmartTemplate4.Util.logDebugOptional("css.Detail", "getElementStyle( " + rule + ", " + attribute + ")");
+		SmartTemplate4.Util.logDebugOptional("css.detailed", "getElementStyle( " + rule + ", " + attribute + ")");
 		try {
 			let rulesList=ss.cssRules;
 			let match = false;
@@ -75,13 +75,13 @@ SmartTemplate4.Styles = {
 				}
 				if (match) {
 					let st=rulesList[i].style; // CSSStyleDeclaration
-					SmartTemplate4.Util.logDebugOptional("css.Detail", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
+					SmartTemplate4.Util.logDebugOptional("css.detailed", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
 
 					//iterate rules!
 					for (let k=0;k<st.length;k++) {
 						if (attribute==st.item(k)) {
 							let val=st.getPropertyValue(attribute);
-							SmartTemplate4.Util.logDebugOptional ("css.Detail", "attribute Found:\n" + attribute + " : " + val);
+							SmartTemplate4.Util.logDebugOptional ("css.detailed", "attribute Found:\n" + attribute + " : " + val);
 							return val;
 						}
 					}
@@ -110,7 +110,7 @@ SmartTemplate4.Styles = {
 			if (typeof ss.cssRules == 'undefined')
 				return false;
 
-			SmartTemplate4.Util.logDebugOptional("css.Detail", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
+			SmartTemplate4.Util.logDebugOptional("css.detailed", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
 
 			let rulesList=ss.cssRules;
 			var i;
@@ -126,15 +126,15 @@ SmartTemplate4.Styles = {
 
 				if (rule == selectors) {
 					st=rulesList[i].style; // CSSStyleDeclaration
-					SmartTemplate4.Util.logDebugOptional("css.Detail", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
+					SmartTemplate4.Util.logDebugOptional("css.detailed", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
 					var k;//iterate rules!
 
 					for (k=0;k<st.length;k++) {
 						try{
 							if (attribute==st.item(k)) {
 								foundRule=true;
-								SmartTemplate4.Util.logDebugOptional ("css.Detail", "\n=============\nModify item: " + st.item(k)) + " =====================";
-								SmartTemplate4.Util.logDebugOptional ("css.Detail", "\nrulesList[i].style[k]=" + rulesList[i].style[k]
+								SmartTemplate4.Util.logDebugOptional ("css.detailed", "\n=============\nModify item: " + st.item(k)) + " =====================";
+								SmartTemplate4.Util.logDebugOptional ("css.detailed", "\nrulesList[i].style[k]=" + rulesList[i].style[k]
 											+ "\nrulesList[i].style[k].parentRule=" + rulesList[i].style.parentRule
 											+ "\nrulesList[i].style.getPropertyPriority=" + rulesList[i].style.getPropertyPriority(attribute)
 											+ "\nst.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute)
