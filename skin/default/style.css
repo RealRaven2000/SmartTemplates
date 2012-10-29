@@ -163,7 +163,6 @@ button.bugsURL:focus {
 	height: auto;
 	margin-left: 1em;
 	margin-right: 1em;
-	min-width:350px;
 }
 
 .templateDeck {
@@ -236,7 +235,6 @@ button.bugsURL:focus {
 }
 
 #aboutPanel {
-	min-width:350px;
 	max-width:430px;
 }
 
@@ -646,9 +644,15 @@ table div.no {
   margin-right: 5px !important;
 }
 
+/* right hand panels widths */
+#helpFrame, #advancedContainer, #aboutPanel 
+{
+	min-width: 400px;
+}
+
+
 /* #### help frame  #### */
 #helpFrame {
-	min-width: 350px;
 	min-height: 300px;
 	height: auto;
 }
