@@ -29,5 +29,5 @@ pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);
 pref("extensions.smartTemplate4.debug.css.styleSheets", false);
-pref("extensions.smartTemplate4.debug.css.Detail", false);
+pref("extensions.smartTemplate4.debug.css.detailed", false);
 
