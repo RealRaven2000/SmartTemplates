@@ -200,9 +200,9 @@ button.bugsURL:focus {
 	color: rgb(0, 20, 80);
 	text-shadow: 1px 1px 0px rgba(250, 250, 250, 0.9); 
 	min-height: 22px;
-	min-width: 2em;
 	height: 28px !important;
 	width: 30px !important;
+	min-width: 30px !important;
 } 
 
 #fontSmaller {
