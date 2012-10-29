@@ -38,7 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
 <!ENTITY pref_removeSig.label "Replace signature when changing email identity">
 <!ENTITY pref_showStatusIcon.label "Display button in status bar">
-<!ENTITY pref_fontSettings.label "Font Settings">
+<!ENTITY pref_fontSettings.label "Template Editor Font">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Common">
 <!ENTITY pref_def.label "Use Common">
