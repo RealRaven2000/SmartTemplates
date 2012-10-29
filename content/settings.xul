@@ -58,20 +58,20 @@
 					      label = "Advanced"
 					      class = "menu-iconic">
 								<!-- ###### HELP -> * ###### -->
-									<menupopup id = "SmartTemplate4-help-popup">
-										<menuitem id = "menuHomePage"
-										          label = "&url.homePage.label;"
-										          class = "menuitem-iconic"
-										          onclick = "SmartTemplate4.Util.showHomePage();" />
-										<menuitem id = "menuSupportPage"
-										          label = "&url.supportPage.label;"
-										          class = "menuitem-iconic"
-										          onclick = "SmartTemplate4.Util.showSupportPage();" />
-										<menuitem id = "menuBugsAndFeaturesPage"
-										          label = "&url.bugsAndFeaturesPage.label;"
-										          class = "menuitem-iconic"
-										          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();" />
-									</menupopup>
+						<menupopup id = "SmartTemplate4-help-popup">
+							<menuitem id = "menuHomePage"
+							          label = "&url.homePage.label;"
+							          class = "menuitem-iconic"
+							          onclick = "SmartTemplate4.Util.showHomePage();" />
+							<menuitem id = "menuSupportPage"
+							          label = "&url.supportPage.label;"
+							          class = "menuitem-iconic"
+							          onclick = "SmartTemplate4.Util.showSupportPage();" />
+							<menuitem id = "menuBugsAndFeaturesPage"
+							          label = "&url.bugsAndFeaturesPage.label;"
+							          class = "menuitem-iconic"
+							          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();" />
+						</menupopup>
 					</menu>
 				</menubar>
 			</toolbaritem>
