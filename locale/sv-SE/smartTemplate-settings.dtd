@@ -24,10 +24,10 @@
 <!ENTITY pref_fwdmsg.cap "Vidarebefordrat meddelande">
 <!ENTITY pref_fwd.label "Tillämpa följande mall på det vidarebefordrade meddelandet">
 <!ENTITY pref_fwdhead.label "Använd istället för standardcitathuvudet">
-<!ENTITY pref_html.label        		"Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)">
+<!ENTITY pref_html.label "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer.">
-<!ENTITY pref_rep_br.label      		"Ersätt ny rad med &lt;br&gt;">
-<!ENTITY pref_rep_br.cap        		"Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;.">
+<!ENTITY pref_rep_br.label "Ersätt ny rad med &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan.">
 <!ENTITY pref_template_tip "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
 <!ENTITY help_dialog_title "Hjälp med SmartTemplate4">

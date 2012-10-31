@@ -6,14 +6,15 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Kopiëren">
 <!ENTITY paste.label "Plakken">
-<!ENTITY insert.label "Veld invoegen">
+<!ENTITY insert.label "Variabele invoegen">
 <!ENTITY close.label "Sluiten">
+<!ENTITY advanced.label "Geavanceerd">
 <!ENTITY export.label "Exporteren">
 <!ENTITY import.label "Importeren">
 <!ENTITY menu.template_import.label "Sjabloon importeren">
 <!ENTITY menu.template_export.label "Sjabloon exporteren">
-<!ENTITY settings.label "Instellingen en Sjablonen">
-<!ENTITY url.homePage.label "Add-onstartpagina">
+<!ENTITY settings.label "Instellingen en sjablonen">
+<!ENTITY url.homePage.label "Add-on-startpagina">
 <!ENTITY url.supportPage.label "Ondersteuningspagina">
 <!ENTITY url.bugsAndFeaturesPage.label "Bugrapporten / Functieaanvragen">
 <!-- #### TABS #### -->
@@ -22,6 +23,8 @@
 <!ENTITY pref_fwd.tab "Doorsturen">
 <!ENTITY pref_help.tab "Hulp">
 <!ENTITY pref_about.tab "Over">
+<!ENTITY pref_global.tab "Globale instellingen">
+<!ENTITY pref_variables.tab "Variabelen">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Accepteren">
 <!ENTITY cancel_button "Annuleren">
@@ -32,10 +35,13 @@
 <!ENTITY pref_templateBox.label "Sjabloon">
 <!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, b.v. Hallo &#37;from(name)&#37;&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4-instellingen">
+<!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
+<!ENTITY pref_removeSig.label "Handtekening vervangen bij wijziging van e-mailidentiteit">
+<!ENTITY pref_showStatusIcon.label "Knop weergeven in de statusbalk">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Algemeen">
 <!ENTITY pref_def.label "Algemeen gebruiken">
-<!ENTITY pref_def.cap "Verwijder 'Algemeen gebruiken' indien u dit account wilt instellen.">
+<!ENTITY pref_def.cap "Vink ‘Algemeen gebruiken’ uit als u een aangepaste aanhalingskoptekst voor deze account wilt instellen.">
 <!ENTITY pref_newmsg.cap "Nieuw bericht">
 <!ENTITY pref_new.label "Volgend sjabloon toepassen op het nieuwe bericht">
 <!ENTITY pref_rspmsg.cap "Antwoordbericht">
@@ -49,7 +55,7 @@
 <!ENTITY pref_rep_br.label "new-line vervangen door &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "OPMERKING: vervangt new-line volgend op een HTML-label niet door &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
-<!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met trefwoord-'variabelen'. Lees de hulptekst voor meer informatie.">
+<!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Lees de hulptekst voor meer informatie.">
 <!ENTITY help_dialog_title "SmartTemplate4-hulp">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
@@ -62,7 +68,7 @@
 <!ENTITY localized.label "Vertaler">
 <!ENTITY translatorNickname.label "markh (BabelZilla)">
 <!ENTITY contributor.label "Medewerker">
-<!ENTITY about.label "SmartTemplate4 biedt een intelligente / gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. Sjablonen (voor de aanhalingskoptekst) kunnen worden gebruikt voor een los account of algemeen (alle accounts).">
+<!ENTITY about.label "SmartTemplate4 biedt een intelligente / gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. Sjablonen (voor de aanhalingskoptekst) kunnen worden gebruikt voor een losse account of algemeen (alle accounts).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Basisvariabelen">
 <!ENTITY ownname.label "Uw naam">
@@ -72,7 +78,7 @@
 <!ENTITY frommail.label "E-mailadres afzender">
 <!ENTITY ccmail.label "E-mailadres ontvanger">
 <!ENTITY sig.label "Ondertekening (uit de TB-accountinstellingen)">
-<!ENTITY sig2.label "Ondertekening uit de TB-accountinstellingen maar zonder '--'">
+<!ENTITY sig2.label "Ondertekening uit de TB-accountinstellingen maar zonder ‘--’">
 <!ENTITY to_var.cap "Ontvangersvariabelen (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is wordt het e-mailadres weergegeven">
 <!ENTITY to.label "Ontvangersnaam (Standaard)">
@@ -99,7 +105,7 @@
 <!ENTITY messid.label "Bericht-ID">
 <!ENTITY newsgr.label "Nieuwsgroepen">
 <!ENTITY xmail.label "X-Mailer">
-<!ENTITY any.label "Elke Kop-line">
+<!ENTITY any.label "Elke headerregel">
 <!ENTITY fix_vartz.cap "Vaste variabelen voor datumopmaak en tijdzone">
 <!ENTITY fix_vartz_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum en tijd (lokale opmaak)">
@@ -143,10 +149,10 @@
 <!ENTITY im-ex.cap "Exporteren/importeren van instellingen en sjablonen">
 <!ENTITY im-ex_note1.label "U kunt uw instellingen en sjablonen verbonden aan elke account exporteren en importeren.">
 <!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate4-instellingen.">
-<!ENTITY im-ex_note3.label "Selecteer vervolgens 'Hulpmiddelen' &#8658; 'Exporteren' &#8658; 'Instellingen en sjablonen' in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
-<!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens 'Hulpmiddelen' &#8658; 'Importeren' &#8658; 'Instellingen en sjablonen' in de menubalk.">
+<!ENTITY im-ex_note3.label "Selecteer vervolgens ‘Bestand’ ⇒ ‘Exporteren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
+<!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
 <!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate4-bestand (xxx.st4).">
-<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in het titellint in plaats van in het SamrtTemplate4-optiesvenster. Dit is normaal gedrag in deze platforms en kan niet worden gewijzigd.">
+<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in het titellint in plaats van in het SmartTemplate4-optiesvenster. Dit is normaal gedrag in deze platforms en kan niet worden gewijzigd.">
 <!ENTITY html_note.cap "Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van de variabelen">
