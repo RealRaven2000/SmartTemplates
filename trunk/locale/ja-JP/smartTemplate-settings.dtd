@@ -149,8 +149,8 @@
 <!ENTITY im-ex.cap "インポート/エクスポート">
 <!ENTITY im-ex_note1.label "アカウントごとに設定とテンプレートをエクスポート/インポートできます。">
 <!ENTITY im-ex_note2.label "エクスポートしたいアカウントを選択します。">
-<!ENTITY im-ex_note3.label "'ツール' &amp;#8658; 'エクスポート' &amp;#8658; '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
-<!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' &amp;#8658; 'インポート' &amp;#8658; '設定とテンプレート' を選択します。">
+<!ENTITY im-ex_note3.label "'ツール' &#8658; 'エクスポート' &#8658; '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
+<!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' &#8658; 'インポート' &#8658; '設定とテンプレート' を選択します。">
 <!ENTITY im-ex_note5.label "インポートしたい SmartTemplate4 ファイル (拡張子 st4) を選択します">
 <!ENTITY im-ex_note6.label "注: Apple/Macintosh 環境では、メニューバーはSmartTemplate4 設定ウインドウではなくタイトルリボンにあります。">
 <!ENTITY html_note.cap "HTML テンプレートについて">
