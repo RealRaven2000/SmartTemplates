@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
 <!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä">
 <!ENTITY pref_showStatusIcon.label "Näytä painike tilapalkilla">
+<!ENTITY pref_fontSettings.label "Pohjamuokkaimen kirjaisin">
 <!ENTITY pref_server_desc "Tili">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">

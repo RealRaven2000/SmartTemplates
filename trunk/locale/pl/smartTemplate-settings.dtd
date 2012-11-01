@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Liczba wierszy odstępu na górze:">
 <!ENTITY pref_removeSig.label "Usuwaj podpis, gdy jest zmieniana tożsamość">
 <!ENTITY pref_showStatusIcon.label "Wyświetlaj przycisk na pasku stanu">
+<!ENTITY pref_fontSettings.label "Czcionka">
 <!ENTITY pref_server_desc "Konta">
 <!ENTITY pref_server_def "Dla wszystkich kont">
 <!ENTITY pref_def.label "Użyj dla wszystkich kont">

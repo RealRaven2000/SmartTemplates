@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Количество переводов строк в начале:">
 <!ENTITY pref_removeSig.label "Стирать подпись при смене адреса электронной почты">
 <!ENTITY pref_showStatusIcon.label "Кнопка в строке состояния">
+<!ENTITY pref_fontSettings.label "Шрифт редактора шаблонов">
 <!ENTITY pref_server_desc "Учётная запись">
 <!ENTITY pref_server_def "Общие настройки">
 <!ENTITY pref_def.label "Использовать общие настройки">

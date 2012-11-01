@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "顶部换行符数量：">
 <!ENTITY pref_removeSig.label "更改邮件身份时删除签名">
 <!ENTITY pref_showStatusIcon.label "在状态栏显示按钮">
+<!ENTITY pref_fontSettings.label "模板编辑器的字体">
 <!ENTITY pref_server_desc "帐户">
 <!ENTITY pref_server_def "通用">
 <!ENTITY pref_def.label "使用通用">

@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
 <!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
 <!ENTITY pref_showStatusIcon.label "Afficher un bouton dans la barre des modules">
+<!ENTITY pref_fontSettings.label "Police de l'éditeur de gabarit">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">

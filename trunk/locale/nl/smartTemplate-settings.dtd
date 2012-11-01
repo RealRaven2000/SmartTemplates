@@ -38,6 +38,7 @@
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Handtekening vervangen bij wijziging van e-mailidentiteit">
 <!ENTITY pref_showStatusIcon.label "Knop weergeven in de statusbalk">
+<!ENTITY pref_fontSettings.label "Sjabloonbewerkingslettertype">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Algemeen">
 <!ENTITY pref_def.label "Algemeen gebruiken">
