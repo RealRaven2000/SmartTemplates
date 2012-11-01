@@ -8,6 +8,7 @@
 <!ENTITY paste.label "Вставити">
 <!ENTITY insert.label "Вставити змінну">
 <!ENTITY close.label "Закрити">
+<!ENTITY advanced.label "Розвинутий">
 <!ENTITY export.label "Експорт">
 <!ENTITY import.label "Імпорт">
 <!ENTITY menu.template_import.label "Імпорт шаблону">
@@ -22,6 +23,8 @@
 <!ENTITY pref_fwd.tab "Переслати">
 <!ENTITY pref_help.tab "Допомога">
 <!ENTITY pref_about.tab "Про">
+<!ENTITY pref_global.tab "Глобальні налаштування">
+<!ENTITY pref_variables.tab "Змінні">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">
@@ -32,6 +35,10 @@
 <!ENTITY pref_templateBox.label "Шаблон">
 <!ENTITY pref_templateBox_tip "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, &#37;from(name)&#37;&lt;br&gt;Дякую Вам за Ваше повідомлення&lt;br&gt; з повагою, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 налаштування">
+<!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
+<!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
+<!ENTITY pref_showStatusIcon.label "Показувати кнопку у статусному рядку">
+<!ENTITY pref_fontSettings.label "Шрифт редактора шаблонів">
 <!ENTITY pref_server_desc "Запис">
 <!ENTITY pref_server_def "Загальні">
 <!ENTITY pref_def.label "Використовувати загальні">
