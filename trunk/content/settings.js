@@ -27,11 +27,11 @@ SmartTemplate4.Settings = {
 	{
 		for(var i = 1; i < arguments.length; i++){
 			var el = document.getElementById(arguments[i] + this.accountId);
+			el.disabled = arguments[0] ? false : true;
 			if (arguments[0]) {
-				el.disabled = false;
 				el.removeAttribute("disabled");
-			} else {
-				el.disabled = true;
+			} 
+			else {
 				el.setAttribute("disabled", "true");
 			}
 		}
@@ -272,11 +272,11 @@ SmartTemplate4.Settings = {
 		this.cleanupUnusedPrefs();
 
 		// Switch account (from account setting)  // add 0.4.0
-		if (window.arguments && window.arguments.length >= 1)	{
+		if (window.arguments && window.arguments.length >= 1) {
 		  this.switchIdentity(window.arguments[0]);
 		}
-		else if(CurId) {
-			this.switchIdentity(CurId);
+		else {
+			this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
 		}
 
 		// disable Use default (common account)
@@ -593,7 +593,7 @@ SmartTemplate4.Settings = {
 			this.accountKey = branch;
 		}
 
-		SmartTemplate4.Util.logDebugOptional("identities", "could " + (searchDeckName ? "" : "not") + " find deck:" + searchDeckName);
+		SmartTemplate4.Util.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
 
 		//reactivate the current tab: new / respond or forward!
 		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);

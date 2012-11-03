@@ -258,7 +258,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		else
 				SmartTemplate4.Util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName);
-		return theNodeName;
+		return isCitation ? 'cite-prefix' : theNodeName;
 	};
 
 
@@ -334,17 +334,20 @@ SmartTemplate4.classSmartTemplate = function()
 
 		let node = rootEl.firstChild
 
-		// delete everything except quoted part
+		// delete everything except (or until in plaintext?) quoted part
 		let elType = '';
+		let skipInPlainText = !gMsgCompose.composeHTML;
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
 			// (this is either a blockquote or the previous element was a moz-cite-prefix)
-			if (isQuotedNode(node) || elType == 'cite-prefix') {
+			if (skipInPlainText && elType == 'cite-prefix')
+				break;  // all following parts are in plain text, so we don't know whether they are all part of the quoted email
+			
+			if (isQuotedNode(node) || elType == 'cite-prefix' || elType == 'moz-cite-prefix') {
 				node = n;
 				continue;
 			}
-			let skipInPlainText = !gMsgCompose.composeHTML;
 			elType = deleteNodeTextOrBR(node, idKey, skipInPlainText); // 'cite-prefix'
 			node = n;
 		}
