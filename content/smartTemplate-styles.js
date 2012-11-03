@@ -43,7 +43,7 @@ SmartTemplate4.Styles = {
 		}
 		SmartTemplate4.Util.logDebugOptional("css.styleSheets", styleSheetList.length + " StyleSheets found:\n" + sList);
 
-		if (!ssFirstMatch && offset && offset.value == 1)
+		if (!ssFirstMatch && offset && offset.value && offset.value == 1)
 			SmartTemplate4.Util.logToConsole("Can not find style sheet: " + Name + " - " + Title + " in "
 			  + (window.closed ? "closed window" : window.location)
 				+ "\nwin.doc.title=" + window.document.title
