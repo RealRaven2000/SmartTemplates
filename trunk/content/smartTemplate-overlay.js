@@ -374,14 +374,17 @@ SmartTemplate4.regularize = function(msg, type)
 		}
 		return "";
 	}
-
+	
 	function getSubject(current) {
 		SmartTemplate4.Util.logDebugOptional('regularize', 'getSubject(' + current + ')');
+		let subject = '';
 		if (current){
-			return document.getElementById("msgSubject").value;
+			subject = document.getElementById("msgSubject").value;
+			return SmartTemplate4.escapeHtml(subject);
 		}
 		else {
-			return mime.decode(hdr.get("Subject"), charset);
+			subject = mime.decode(hdr.get("Subject"), charset);
+			return subject;
 		}
 	}
 
