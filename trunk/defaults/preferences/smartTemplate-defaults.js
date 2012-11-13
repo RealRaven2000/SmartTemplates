@@ -1,4 +1,4 @@
-/* locale */
+/* specify locale descriptions for addon-manager */
 pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://smartTemplate4/locale/settings.properties");
 
 /* global settings */
@@ -30,4 +30,3 @@ pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);
 pref("extensions.smartTemplate4.debug.css.styleSheets", false);
 pref("extensions.smartTemplate4.debug.css.detailed", false);
-
