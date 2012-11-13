@@ -3,21 +3,24 @@
 <RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  
   <!-- Thunderbird -->
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
    em:minVersion="3.1.7"
    em:maxVersion="17.*"/>
+
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="2.0.0"
-   em:maxVersion="3.*" />
+   em:maxVersion="3.*"/>
+
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
    em:minVersion="2.0"
-   em:maxVersion="2.13.*" />
+   em:maxVersion="2.12"/>
 
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
