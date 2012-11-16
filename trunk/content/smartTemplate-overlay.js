@@ -65,6 +65,7 @@ SmartTemplate4.classPref = function()
 	// idKey Account
 	// composeType: rsp, fwd, new
 	// def: true = common
+	// "Disable default quote header"
 	function isDeleteHeaders(idKey, composeType, def) {
 		// xxxhead
 		return getWithIdkey(idKey, composeType + "head", def)
