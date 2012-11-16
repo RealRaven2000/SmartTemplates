@@ -1,0 +1,165 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "Датотека">
+<!ENTITY tools.label "Алатке">
+<!ENTITY edit.label "Уреди">
+<!ENTITY help.label "Помоћ">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Умножи">
+<!ENTITY paste.label "Paste">
+<!ENTITY insert.label "Insert Variable">
+<!ENTITY close.label "Затвори">
+<!ENTITY advanced.label "Advanced">
+<!ENTITY export.label "Извези">
+<!ENTITY import.label "Import">
+<!ENTITY menu.template_import.label "Import Template">
+<!ENTITY menu.template_export.label "Export Template">
+<!ENTITY settings.label "Подешавања и шаблони">
+<!ENTITY url.homePage.label "Add-On Homepage">
+<!ENTITY url.supportPage.label "Support Page">
+<!ENTITY url.bugsAndFeaturesPage.label "Пријаве о грешкама / захтеви за могућности">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Write">
+<!ENTITY pref_rsp.tab "Reply">
+<!ENTITY pref_fwd.tab "Forward">
+<!ENTITY pref_help.tab "Help">
+<!ENTITY pref_about.tab "About">
+<!ENTITY pref_global.tab "Global Settings">
+<!ENTITY pref_variables.tab "Variables">
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "У реду">
+<!ENTITY cancel_button "Откажи">
+<!ENTITY contribute_button "Допринеси">
+<!-- #### GUI #### -->
+<!ENTITY pref_quoteHeaderBox.label "Quote Header">
+<!ENTITY pref_quoteHeaderBox_tip "Write your Quote Header in this Box e.g. On &#37;date&#37; wrote &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "Template">
+<!ENTITY pref_templateBox_tip "Write your Template in this Box e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "SmartTemplate4 settings">
+<!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
+<!ENTITY pref_removeSig.label "Replace signature when changing email identity">
+<!ENTITY pref_showStatusIcon.label "Display button in status bar">
+<!ENTITY pref_fontSettings.label "Template Editor Font">
+<!ENTITY pref_server_desc "Налог">
+<!ENTITY pref_server_def "Уобичајено">
+<!ENTITY pref_def.label "Use Common">
+<!ENTITY pref_def.cap "Uncheck 'Use Common' to create a customized quote header for this account.">
+<!ENTITY pref_newmsg.cap "Write">
+<!ENTITY pref_new.label "Apply the following template to the new message">
+<!ENTITY pref_rspmsg.cap "Одговори">
+<!ENTITY pref_rsp.label "Apply the following template to the replied message">
+<!ENTITY pref_rsphead.label "Користи уместо подразумеваног заглавља цитата">
+<!ENTITY pref_fwdmsg.cap "Forward">
+<!ENTITY pref_fwd.label "Apply the following template to the forwarded message">
+<!ENTITY pref_fwdhead.label "Disable default Thunderbird quote header">
+<!ENTITY pref_html.label "Use HTML (e.g., &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Use escape characters for  &quot; , &amp; , &lt; , &gt; , space. See &quot;help&quot; for more details.">
+<!ENTITY pref_rep_br.label "Replace new-line with &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once.">
+<!ENTITY pref_quotehead_tip "Disable default quote header. Please form your quote header inside the textbox.">
+<!ENTITY pref_template_tip "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација.">
+<!ENTITY help_dialog_title "Помоћ за SmartTemplate4">
+<!ENTITY help_keyword.cap "Помоћ">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap "О проширењу">
+<!ENTITY creator.label "Аутор">
+<!ENTITY developer.label "Програмер">
+<!ENTITY localename.label "en-US">
+<!ENTITY localized.label "Translator">
+<!ENTITY translatorNickname.label "Rancher">
+<!ENTITY contributor.label "Доприносилац">
+<!ENTITY about.label "SmartTemplate4 вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap "Контролне променљиве">
+<!ENTITY ownname.label "Your name">
+<!ENTITY ownmail.label "Your email address">
+<!ENTITY date.label "Датум/време (као и заглавље е-поруке)">
+<!ENTITY tomail.label "Е-адреса примаоца">
+<!ENTITY frommail.label "Е-адреса пошиљаоца">
+<!ENTITY ccmail.label "Е-адреса примаоца">
+<!ENTITY sig.label "Потпис из подешавања налога">
+<!ENTITY sig2.label "Потпис из подешавања налога, али без две цртице (--)">
+<!ENTITY to_var.cap "Прималац">
+<!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
+<!ENTITY to.label "Име примаоца (подразумевано)">
+<!ENTITY tofirstname.label "Име примаоца">
+<!ENTITY toname.label "Име примаоца">
+<!ENTITY from_var.cap "Пошиљалац">
+<!ENTITY from_note.label "Када име није доступно, биће приказана е-адреса">
+<!ENTITY from.label "Име пошиљаоца (подразумевано)">
+<!ENTITY fromfirstname.label "Име пошиљаоца">
+<!ENTITY fromname.label "Име пошиљаоца">
+<!ENTITY cc_var.cap "Прималац (CC)">
+<!ENTITY cc_note.label "Када име није доступно, користиће се е-адреса">
+<!ENTITY cc.label "Име примаоца (подразумевано)">
+<!ENTITY ccfirstname.label "Име примаоца">
+<!ENTITY ccname.label "Име примаоца">
+<!ENTITY spec_form.cap "Посебан формат">
+<!ENTITY specform_note.label "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени.">
+<!ENTITY ex_brack.label "Пример: „За: boo CC: foo“">
+<!ENTITY brack_with_var.label "Унутра можете да користите следеће променљиве [[...]]">
+<!ENTITY sub_var.cap "Наслов">
+<!ENTITY sub.label "наслов одговорене/прослеђене поруке">
+<!ENTITY sub2.label "наслов поруке коју тренутно састављате">
+<!ENTITY spec_var.cap "Посебна">
+<!ENTITY messid.label "Message ID">
+<!ENTITY newsgr.label "Newsgroups">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Било који ред заглавља">
+<!ENTITY fix_vartz.cap "Контролне променљиве за „Формат датума/временска зона“">
+<!ENTITY fix_vartz_note.label "Може да се комбинује са &#37;X:=sent&#37;">
+<!ENTITY datelocal.label "Датум/време (локални формат)">
+<!ENTITY dateshort.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
+<!ENTITY datetz.label "Временска зона (+0100, +0200…)">
+<!ENTITY tzname.label "GMT, PST, EST…">
+<!ENTITY var_custom.cap "Variables for customized 'Date format'">
+<!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
+<!ENTITY A.label "Дан у недељи">
+<!ENTITY a.label "Дан у недељи">
+<!ENTITY d.label "Дан у месецу, са нулом на почетку">
+<!ENTITY e.label "Дан у месецу">
+<!ENTITY n.label "Month (1 to 12)">
+<!ENTITY B.label "Месец">
+<!ENTITY b.label "Месец">
+<!ENTITY m.label "Month (01 to 12) - with leading zero">
+<!ENTITY Y.label "Година">
+<!ENTITY M.label "Минут">
+<!ENTITY s.label "Секунд">
+<!ENTITY h.label "24-часовни формат, са нулом на почетку">
+<!ENTITY k.label "Hour, 24-Hour Format (0 to 23)">
+<!ENTITY l.label "Hour, 12-Hour Format (1 to 12)">
+<!ENTITY i.label "12-часовни формат, са нулом на почетку">
+<!ENTITY p.label "AM / PM">
+<!ENTITY p1.label "a.m.">
+<!ENTITY p2.label "A.M.">
+<!ENTITY p3.label "AM">
+<!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">
+<!ENTITY xsent_note.label "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time.">
+<!ENTITY xsent_long.cap "Example for a longstring">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock">
+<!ENTITY xsent_long_result.label "Result: Sunday, 20/12/2011 at 16:24 o'clock">
+<!ENTITY xsent_short.cap "Example of a shortstring">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Result: Sunday, 20/12/2011 08:54:21">
+<!ENTITY xsent_short_note.label "The following variables can be used in both variants">
+<!ENTITY localedate.label "Date / Time (Locale Format)">
+<!ENTITY shortdate.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
+<!ENTITY datetimezone.label "Временска зона (+0100, +0200…)">
+<!ENTITY timezonename.label "GMT, PST, EST…">
+<!ENTITY im-ex.cap "Увоз/извоз подешавања и шаблона">
+<!ENTITY im-ex_note1.label "Можете да извезете и увезете ваша подешавања и шаблоне који су повезани са сваким налогом.">
+<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
+<!ENTITY im-ex_note3.label "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
+<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
+<!ENTITY html_note.cap "Напомена за HTML шаблоне">
+<!ENTITY html_note.label "Користите само UTF-8 (уникод) кодирање у HTML шаблонима.">
+<!ENTITY table.cap "Употреба променљивих">
+<!ENTITY table_note.label "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“.">
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label "Променљива">
+<!ENTITY table_new.label "Напиши">
+<!ENTITY table_reply.label "Одговори">
+<!ENTITY table_fwd.label "Проследи">
