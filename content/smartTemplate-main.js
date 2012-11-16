@@ -1,5 +1,7 @@
 "use strict";
 // the main object
+// notes
+// investigate gMsgCompose.compFields!
 
 var SmartTemplate4 = {
 	// definitions for whatIsX (time of %A-Za-z%)
@@ -11,13 +13,31 @@ var SmartTemplate4 = {
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
-			SmartTemplate4.notifyComposeBodyReady();
+			// For Stationery integration, we need to hack 
+			// its method of overwriting  stateListener.NotifyComposeBodyReady 
+			if (SmartTemplate4.Preferences.getMyBoolPref('stationery.supported') && Stationery && Stationery.OnComposeBodyReady) {
+				if (!Stationery.SmartTemplate) {
+					Stationery.SmartTemplate = new Object();
+					Stationery.SmartTemplate.StationeryOnBodyReady = Stationery.OnComposeBodyReady;
+					// Make sure Stationery does its magic _before_ SmartTemplate
+					Stationery.OnComposeBodyReady = function(win) {
+					
+						Stationery.SmartTemplate.StationeryOnBodyReady(win);
+						// test mode only, to test how the selected stationery modified mail body
+						if (!SmartTemplate4.Preferences.getMyBoolPref('stationery.test.disableST4notification'))
+							SmartTemplate4.notifyComposeBodyReady();
+					}
+				
+				}
+			}
+			else
+				SmartTemplate4.notifyComposeBodyReady();
 		},
 		ComposeProcessDone: function(aResult) {},
 		SaveInFolderDone: function(folderURI) {}
 	},
 
-	initListner: function() {
+	initListener: function() {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 	},
 	// -------------------------------------------------------------------
