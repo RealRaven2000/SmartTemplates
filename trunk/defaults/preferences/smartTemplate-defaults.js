@@ -12,7 +12,7 @@ pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 
 pref("extensions.smartTemplate4.stationery.supported", true);
-pref("extensions.smartTemplate4.stationery.testDisableST4notification", false);
+pref("extensions.smartTemplate4.stationery.test.disableST4notification", false);
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
