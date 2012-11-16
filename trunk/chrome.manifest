@@ -12,13 +12,14 @@ locale                           smartTemplate4             es-ES        locale/
 locale                           smartTemplate4             fi           locale/fi/
 locale                           smartTemplate4             fr           locale/fr/
 locale                           smartTemplate4             it           locale/it/
-locale                           smartTemplate4             ja-JP        locale/ja-JP/
+locale                           smartTemplate4             ja-JP        locale/ja/
 locale                           smartTemplate4             nl           locale/nl/
 locale                           smartTemplate4             pl           locale/pl/
 locale                           smartTemplate4             pt-BR        locale/pt-BR/
 locale                           smartTemplate4             ru           locale/ru/
+locale                           smartTemplate4             sr           locale/sr/
 locale                           smartTemplate4             sv-SE        locale/sv-SE/
-locale                           smartTemplate4             uk-UA        locale/uk-UA/
+locale                           smartTemplate4             uk-UA        locale/uk/
 locale                           smartTemplate4             zh-CN        locale/zh-CN/
 
 #### Thunderbird XUL OVERLAYS ####
