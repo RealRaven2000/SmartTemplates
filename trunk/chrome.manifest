@@ -1,26 +1,26 @@
 #### MISC FILES CONTENT FOLDER ####
-content                          smarttemplate4                          content/
+content     smarttemplate4            content/
 
 #### SKIN ####
-skin                             smarttemplate4                          classic/1.0 skin/
-skin                             smarttemplate4                          default/1.0 skin/default/
+skin        smarttemplate4            classic/1.0 skin/
+skin        smarttemplate4            default/1.0 skin/default/
 
 #### LOCALIZATIONS (alphabetical by localename) ####
-locale                           smarttemplate4             de           locale/de/
-locale                           smarttemplate4             en-US        locale/en-US/
-locale                           smarttemplate4             es-ES        locale/es-ES/
-locale                           smarttemplate4             fi           locale/fi/
-locale                           smarttemplate4             fr           locale/fr/
-locale                           smarttemplate4             it           locale/it/
-locale                           smarttemplate4             ja-JP        locale/ja/
-locale                           smarttemplate4             nl           locale/nl/
-locale                           smarttemplate4             pl           locale/pl/
-locale                           smarttemplate4             pt-BR        locale/pt-BR/
-locale                           smarttemplate4             ru           locale/ru/
-locale                           smarttemplate4             sr           locale/sr/
-locale                           smarttemplate4             sv-SE        locale/sv-SE/
-locale                           smarttemplate4             uk-UA        locale/uk/
-locale                           smarttemplate4             zh-CN        locale/zh-CN/
+locale      smarttemplate4           de           locale/de/
+locale      smarttemplate4           en-US        locale/en-US/
+locale      smarttemplate4           es-ES        locale/es-ES/
+locale      smarttemplate4           fi           locale/fi/
+locale      smarttemplate4           fr           locale/fr/
+locale      smarttemplate4           it           locale/it/
+locale      smarttemplate4           ja-JP        locale/ja/
+locale      smarttemplate4           nl           locale/nl/
+locale      smarttemplate4           pl           locale/pl/
+locale      smarttemplate4           pt-BR        locale/pt-BR/
+locale      smarttemplate4           ru           locale/ru/
+locale      smarttemplate4           sr           locale/sr/
+locale      smarttemplate4           sv-SE        locale/sv-SE/
+locale      smarttemplate4           uk-UA        locale/uk/
+locale      smarttemplate4           zh-CN        locale/zh-CN/
 
 #### Thunderbird XUL OVERLAYS ####
 # messengercompose.xul (MailCompose Window)
