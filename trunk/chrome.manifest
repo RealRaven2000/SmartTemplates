@@ -1,8 +1,3 @@
-#### NO CamelCasePackageNames for TB 1-2 and SM 1.1 (xul runner can't find them)!! ####
-#### see also: https://developer.mozilla.org/en-US/docs/Chrome_Registration ####
-
-#### MISC FILES CONTENT FOLDER ####
-
 #### MISC FILES CONTENT FOLDER ####
 content                          smarttemplate4                          content/
 
