@@ -831,7 +831,7 @@ SmartTemplate4.classSmartTemplate = function()
 		util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
 		       + 'key:            ' + theIdentity.key + common + '\n'
-		       + serverInfo
+		       + serverInfo + '\n'
 		       + '------------------------------------------------\n'
 		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
 		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
@@ -845,9 +845,10 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4: ' + util.Version + '\n'
-		       + util.Application + " Version: " + util.AppverFull + '\n'
-		       + 'Platform: ' + util.HostSystem
+		       + 'SmartTemplate4: ' + util.Version + '\n' // detected st4 version
+		       + util.Application + " Version: " + util.AppverFull + '\n' // detected applicaltion and version
+		       + 'Platform: ' + util.HostSystem + '\n' // detected os
+		       + '------------------------------------------------\n'
 		       );
 
 		/* SIGNATURE HANDLING */
