@@ -315,7 +315,7 @@
 												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
 												<description>&localized.label;: &translatorNickname.label;</description>
 												<description>&contributor.label;: Aris - style support</description>
-												<description>&contributor.label;: tool8 - development, Version 0.7.2 - 0.8.0</description>
+												<description>&contributor.label;: tool8 - Development, Version 0.7.2 - 0.8.0</description>
 												<description>&contributor.label;: Peter Macej - Development Support</description>
 												<description class = "aboutContent">&about.label;</description>
 											</vbox>
