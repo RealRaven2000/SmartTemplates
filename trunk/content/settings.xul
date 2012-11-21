@@ -417,6 +417,7 @@
 							<button id = "fontSmaller"
 							        onclick = "SmartTemplate4.Settings.fontSize(-1);" 
 							        label = "A" />
+							<spacer width = "5px" />
 							<button id = "fontLarger"
 							        onclick = "SmartTemplate4.Settings.fontSize(+1);" 
 							        label = "A" />
