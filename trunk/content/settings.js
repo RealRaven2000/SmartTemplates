@@ -648,7 +648,7 @@ SmartTemplate4.Settings = {
 
 	fontSize: function(change) {
 		// find class rule for .templateBox and change font-size
-		let ss = null;
+		let ss;
 		let size = SmartTemplate4.Preferences.getMyIntPref("font.size");
 		
 		size = size + change;
@@ -666,7 +666,7 @@ SmartTemplate4.Settings = {
 		let off = new Object();
 		off.offset = 0;
 		// iterate all style sheets! off.offset will be increased to continue from the last find.
-		while ( ss = SmartTemplate4.Styles.getMyStyleSheet('chrome://global/skin/style.css', "SmartTemplateSettings", off)) {
+		while ( (ss = SmartTemplate4.Styles.getMyStyleSheet('chrome://global/skin/style.css', "SmartTemplateSettings", off)) ) {
 			SmartTemplate4.Styles.setElementStyle(ss, '.templateBox', 'font-size', fontSizeString, true);
 		}
 		SmartTemplate4.Preferences.setMyIntPref("font.size", size);
