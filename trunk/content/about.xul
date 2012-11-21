@@ -52,7 +52,7 @@
         <label value = "&contributor.label;" class = "head"/>
         <label value = "Aris - Style Support &amp; Bugreport" class = "idented" onclick = "SmartTemplate4.Util.showArisAMOPage();"/>
         <label value = "tool8 - Development, Version 0.7.2 - 0.8.0" class = "idented" onclick = "SmartTemplate4.Util.showTool8AMOPage();"/>
-        <lebel value = "Peter Macej - Development Support" class = "idented"/> <!-- no URL for onclick -->
+        <label value = "Peter Macej - Development Support" class = "idented"/> <!-- no URL for onclick -->
         <label value = "Carles Carbonell Bernado (Noia Icons)" class = "idented" onclick = "SmartTemplate4.Util.showNoiaHomepage();"/>
         <label value = "Matthias Slovig (Flags)" class = "idented" onclick = "SmartTemplate4.Util.showFlagsHomepage();"/>
       </vbox>
