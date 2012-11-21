@@ -491,6 +491,6 @@
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/settings.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
-<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-help.js"/>
+<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
 
 </prefwindow>
