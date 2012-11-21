@@ -22,7 +22,7 @@ var SmartTemplate4 = {
 					// Make sure Stationery does its magic _before_ SmartTemplate
 					Stationery.OnComposeBodyReady = function(win) {
 					
-						Stationery.SmartTemplate.StationeryOnBodyReady(win);
+						Stationery.SmartTemplate.StationeryOnBodyReady(win); // throws: Stationery is not defined
 						// test mode only, to test how the selected stationery modified mail body
 						if (!SmartTemplate4.Preferences.getMyBoolPref('stationery.test.disableST4notification'))
 							SmartTemplate4.notifyComposeBodyReady();
