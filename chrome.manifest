@@ -1,4 +1,6 @@
-# TB 1+2 and SM 1.1 don't support camelCase package names! #
+# TB 1+2 and SM 1.1 don't support camelCase package names (gecko BUG)! #
+# you would get an error message similar to "No chrome registered for chrome://camelcasepackage/path/to/files" #
+# TB 3 and SM 2 cmaelCase again #
 # see: https://developer.mozilla.org/en-US/docs/Chrome_Registration #
 
 #### MISC FILES CONTENT FOLDER ####
