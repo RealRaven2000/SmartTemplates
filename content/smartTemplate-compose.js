@@ -826,12 +826,14 @@ SmartTemplate4.classSmartTemplate = function()
 			serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
 		}
 		catch(ex) { util.logException("could not find server for identity " + idKey , ex); }
+
+                /* our compact log to assist our users more effective */
 		
 		let common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : '';
 		util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
 		       + 'key:            ' + theIdentity.key + common + '\n'
-		       + serverInfo + '\n'
+		       + serverInfo
 		       + '------------------------------------------------\n'
 		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
 		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
@@ -845,10 +847,10 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4: ' + util.Version + '\n' // detected st4 version
-		       + util.Application + " Version: " + util.AppverFull + '\n' // detected applicaltion and version
-		       + 'Platform: ' + util.HostSystem + '\n' // detected os
-		       + '------------------------------------------------\n'
+		       + 'util.Version: ' + util.Version + '\n'
+		       + 'Application: ' + util.Application + '\n'
+                       + 'AppVerFull: ' + util.AppverFull + '\n'
+		       + 'HostSystem: ' + util.HostSystem + '\n'
 		       );
 
 		/* SIGNATURE HANDLING */
