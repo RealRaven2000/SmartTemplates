@@ -1,3 +1,6 @@
+# TB 1+2 and SM 1.1 don't support camelCase package names! #
+# see: https://developer.mozilla.org/en-US/docs/Chrome_Registration #
+
 #### MISC FILES CONTENT FOLDER ####
 content     smarttemplate4            content/
 
