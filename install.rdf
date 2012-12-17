@@ -21,6 +21,7 @@
     <em:targetApplication RDF:resource="rdf:#$Vsomt2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomv2"/>
 
+    <!-- follow infos we don't need, we have an own about.xul with all of this
     <em:developer>Axel Grude</em:developer>
     <em:developer>Marky Mark DE</em:developer>
 
@@ -43,7 +44,7 @@
     <em:translator>Lakrits (sv-SE)</em:translator>
     <em:translator>lexxai (uk-UA)</em:translator>
     <em:translator>Yanfang Liu &amp; yfdyh000 (zh-CN)</em:translator>
-
+-->
   </RDF:Description>
 
   <!-- Thunderbird -->
