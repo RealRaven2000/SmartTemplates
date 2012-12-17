@@ -827,7 +827,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		catch(ex) { util.logException("could not find server for identity " + idKey , ex); }
 
-		/* our compact log to assist our users more effective */
+		// our "compact log" to assist our users more effective
 		
 		let common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : '';
 		util.logDebugOptional('functions.insertTemplate',
@@ -847,14 +847,13 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '%sig% found in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'util.Version: ' + util.Version + '\n'
-		       + 'Application: ' + util.Application + '\n'
-		       + 'AppVerFull: ' + util.AppverFull + '\n'
+		       + 'SmartTemplate4: ' + util.Version + '\n'
+		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
 		       );
 
 		/* SIGNATURE HANDLING */
-		
+
 		if (isActiveOnAccount  && !sigVarDefined) {
 		   if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
