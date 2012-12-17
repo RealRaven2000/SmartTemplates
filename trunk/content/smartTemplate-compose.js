@@ -827,7 +827,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		catch(ex) { util.logException("could not find server for identity " + idKey , ex); }
 
-                /* our compact log to assist our users more effective */
+		/* our compact log to assist our users more effective */
 		
 		let common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : '';
 		util.logDebugOptional('functions.insertTemplate',
@@ -849,7 +849,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + '------------------------------------------------\n'
 		       + 'util.Version: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + '\n'
-                       + 'AppVerFull: ' + util.AppverFull + '\n'
+		       + 'AppVerFull: ' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
 		       );
 
