@@ -381,7 +381,7 @@ SmartTemplate4.regularize = function(msg, type)
 		let subject = '';
 		if (current){
 			subject = document.getElementById("msgSubject").value;
-			return SmartTemplate4.escapeHtml(subject);
+			return SmartTemplate4.escapeHtml(subject); //escapeHtml for non UTF8 chars in %subject% but this don't work in this place for the whole subject, only on %subject(2)%
 		}
 		else {
 			subject = mime.decode(hdr.get("Subject"), charset);
