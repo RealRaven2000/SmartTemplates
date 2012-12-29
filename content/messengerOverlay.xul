@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?xml-stylesheet href="chrome://smartTemplate4/skin/default/smartTemplate-overlay.css" type="text/css"?>
-
+<?xml-stylesheet href="chrome://smartTemplate4/skin/default/smartTemplate-overlay.css" type="text/css"?><!-- additional as overlay in chrome.manifest for customizedToolbar.xul -->
 <!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-overlay.dtd">
 
 <overlay id="SmartTemplate4MessengerOverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<statusbar id="status-bar">
-		<statusbarpanel id="SmartTemplate4Messenger"
-		                label="&smartTemplate4.settings.label;"
-		                tooltiptext="&smartTemplate4.settings.tooltip;"
-		                class="statusbarpanel-iconic-text"
-		                oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
-	</statusbar>
+<!-- #### TOOLBAR BUTTON OVERLAY #### --> 
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />
+  </stringbundleset>
+  
+  <!-- # THUNDERBIRD (TOOLBAR) # -->
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="SmartTemplate4Button"
+                   label="&smartTemplate4.settings.label;"
+                   tooltiptext="&smartTemplate4.settings.tooltip;"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional"
+                   oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+  </toolbarpalette>
+
+  <!-- # SEAMONKEY # -->
+  <vbox id="palette-box">
+    <toolbarbutton id="SmartTemplate4Button"
+                   label="&smartTemplate4.settings.label;"
+                   tooltiptext="&smartTemplate4.settings.tooltip;"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional"
+                   oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+  </vbox>
+
+<!-- #### STATUSBAR BUTTON OVERLAY IN MAINWINDOW #### -->
+  <statusbar id="status-bar">
+    <statusbarpanel id="SmartTemplate4Messenger"
+                    label="&smartTemplate4.settings.label;"
+                    tooltiptext="&smartTemplate4.settings.tooltip;"
+                    class="statusbarpanel-iconic-text"
+                    oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+  </statusbar>
 
 
-	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/settings.js"/>
-	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+  <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+  <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+  <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/settings.js"/>
+  <script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 
 <script type="application/x-javascript;version=1.7">
-	SmartTemplate4.startUp();
+  SmartTemplate4.startUp();
 </script>
 
 </overlay>
-
-
