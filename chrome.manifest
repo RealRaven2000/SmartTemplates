@@ -27,6 +27,11 @@ locale      smarttemplate4           sv-SE        locale/sv-SE/
 locale      smarttemplate4           uk-UA        locale/uk/
 locale      smarttemplate4           zh-CN        locale/zh-CN/
 
+#### OVERLAYS ####
+# Style Overlay for Toolbar Button #
+style  chrome://global/content/customizeToolbar.xul                      chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css
+
+
 #### SeaMonkey XUL OVERLAYS application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} ####
 #### PostBox XUL OVERLAYS application=postbox@postbox-inc.com ####
 
