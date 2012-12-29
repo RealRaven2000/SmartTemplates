@@ -8,7 +8,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="0.9.3pre1"
+   em:version="0.9.3pre2"
    em:creator="Axel Grude"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
    em:iconURL="chrome://smartTemplate4/skin/icon32x32.png"
@@ -53,12 +53,13 @@
    em:minVersion="3.1.7"
    em:maxVersion="17.*"/>
 
-  <!-- Postbox  planned to release next time round!
+  <!-- Postbox we plan the support next version around
   <RDF:Description RDF:about="rdf:#$Vsomt2"
    em:id="postbox@postbox-inc.com"
    em:minVersion="2.0.0"
    em:maxVersion="3.*"/>
    -->
+
 
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
