@@ -634,6 +634,12 @@ SmartTemplate4.Settings = {
 					element.value = "" + code;
 				else
 					element.value = element.value.substring(0, startSel) + code + element.value.substring(endSel, element.value.length);
+				//element.preference.getElementValue (element); 
+				// make sure pref is updated! => Nils Maier Review
+				let evt = document.createEvent("Events");
+				evt.initEvent("change", true, false);
+				element.dispatchEvent(evt);
+				
 				element.selectionStart = startSel+code.length;
 				element.selectionEnd = startSel+code.length;
 			}
