@@ -8,11 +8,13 @@ SmartTemplate4.classSmartTemplate = function()
 	function readSignatureFile(Ident) {
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		let htmlSigText = '';
+		let fileName = '';
 		// test code for reading local sig file (WIP)
 		try {
 			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile);
 			if (sigFile)
 			{
+				fileName = sigFile.path;
 				SmartTemplate4.Util.logDebug('readSignatureFile() '
 				        + '\nTrying to read attached signature file: ' + sigFile.leafName
 				        + '\nat: ' + sigFile.path );
@@ -48,7 +50,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		catch(ex) {
 			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
-			SmartTemplate4.Util.logException("readSignatureFile - exception trying to read signature attachment file!", ex);
+			SmartTemplate4.Util.logException("readSignatureFile - exception trying to read signature attachment file!\n" + fileName, ex);
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - htmlSigText:\n'
 		                                   + htmlSigText + '[EOF]');
@@ -57,7 +59,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
 	// Extract Signature
-	// signatureDefined - true if the %sig% variable ist part of our template - this means signature must be deleted in any case
+	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
 	function extractSignature(Ident, signatureDefined)
 	{
 		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
@@ -104,19 +106,34 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// read text from signature file
+		let sigType = 'unknown';
 		if (Ident.attachSignature) {
 			let fileSig = readSignatureFile(Ident);
-			htmlSigText = fileSig ? fileSig : htmlSigText;
 			if (fileSig) {
+				htmlSigText = fileSig;
 				// look for html tags, because htmlSigFormat might be unchecked
 				// while an attached sig file might still be in HTML format.
-				if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>")) {
-					isSignatureHTML = true;
+				if ((signatureDefined == 'auto') || (signatureDefined == false)) {
+					if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>")) {
+						isSignatureHTML = true;
+						sigType = 'probably HTML';
+					}
+					else
+						sigType = 'probably not HTML';
+						
 				}
-				SmartTemplate4.Util.logDebugOptional('functions.extractSignature','Signature (from file) is ' + 
-				                                     (isSignatureHTML ? 'HTML' : ' probably plain text.'));
 			}
 		}
+		if (signatureDefined == 'html') {
+			isSignatureHTML = true;
+			sigType = 'HTML'
+		}
+		if (signatureDefined == 'text') {
+			isSignatureHTML = false;
+			sigType = 'plain text';
+		}
+			
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature (from file) is ' + sigType);
 
 		// retrieve signature Node; if it doesn't work, try from the account
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
@@ -180,8 +197,7 @@ SmartTemplate4.classSmartTemplate = function()
 					// prettify: txt -> html
 					sigText = "<pre>"
 					        + sigText.replace(/\n/g, "<BR>")
-					                 .replace(/ /g, '&nbsp;')
-					        + "</pre>";
+					        + "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
 				}
 				sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
 				// TEST STUFF..
@@ -401,9 +417,27 @@ SmartTemplate4.classSmartTemplate = function()
 		return null;
 	};
 
+	function testCursorVar(template) {
+		// let reg = /%\[\[cursor\[\[%/gm;
+		let match = template.toLowerCase().match("[[cursor]]");
+		return (!match ? false : true);
+	};
+	
 	function testSignatureVar(template) {
 		let reg = /%(sig)(\([^)]+\))*%/gm;
-		return reg.test(template);
+		let match = template.toLowerCase().match(reg);
+		if (!match)
+			return '';
+		switch (match[0]) {
+		  case "%sig%":
+				return 'auto';
+			case "%sig(html)%":
+				return 'html';
+			case "%sig(text)%":
+				return 'text';
+			default:	  // invalid %sig% variable!
+				return '';
+		}
 	};
 
 	// -----------------------------------
@@ -759,31 +793,33 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		
 		let targetNode = 0;
-
+		let templateDiv;
+		
 		// add template message --------------------------------
 		if (isActiveOnAccount) // template && template !== ""
 		{
 			// new global settings to deal with [Bug 25084]
 			let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
+			templateDiv = editor.document.createElement("div");
 			// now insert quote Header separately
 			try {
-				let tdiv = editor.document.createElement("div");
-				tdiv.id = "smartTemplate4-template";
-				tdiv.innerHTML = template;
+				templateDiv.id = "smartTemplate4-template";
+				templateDiv.innerHTML = template;
 				if (theIdentity.replyOnTop) {
-					for (let i = 0; i < breaks; i++)
+					editor.beginningOfDocument();
+					for (let i = 0; i < breaks; i++) 
 						gMsgCompose.editor.insertNode(
 						                   gMsgCompose.editor.document.createElement("br"),
 						                   gMsgCompose.editor.rootElement, 0);
-					targetNode = editor.rootElement.insertBefore(tdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
-					editor.beginningOfDocument();
+					// the first Child will be BLOCKQUOTE (header is inserted afterwards)
+					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
 					//editor.selectionController.scrollSelectionIntoView(null, null, false);
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 				else {
 					for (let i = 0; i < breaks; i++)
 						gMsgCompose.editor.rootElement.appendChild(gMsgCompose.editor.document.createElement("br"));
-					targetNode = editor.rootElement.appendChild(tdiv); // after BLOCKQUOTE (hopefully)
+					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
@@ -844,7 +880,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
 		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
-		       + '%sig% found in template: ' + sigVarDefined + '\n'
+		       + '%sig% in template: ' + sigVarDefined + '\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
 		       + 'SmartTemplate4: ' + util.Version + '\n'
@@ -888,26 +924,58 @@ SmartTemplate4.classSmartTemplate = function()
 					}
 					else {
 						// reply above, before div smartTemplate4-template
-						let tdiv = document.getElementById('smartTemplate4-template');
+						templateDiv = document.getElementById('smartTemplate4-template');
 						// if we don't find this, lets take the first child div
-						if (!tdiv) {
-							tdiv = bodyEl.firstChild.nextSibling;
+						if (!templateDiv) {
+							templateDiv = bodyEl.firstChild.nextSibling;
 						}
-						bodyEl.insertBefore(theSignature, tdiv);
-						bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), tdiv);
+						bodyEl.insertBefore(theSignature, templateDiv);
+						bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), templateDiv);
 					}
 				}
 			}
 		}
 
 		// moved code for moving selection to top / bottom
+		let isCursor = testCursorVar(template);
 		try {
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
 			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
-			let theParent = targetNode.parentNode;
-			if (theParent) {
-				let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
-				editor.selection.collapse(theParent, nodeOffset+1); // collapse selection and move cursor - problem: stationery sets cursor to the top!
+			if (targetNode) {
+				let theParent = targetNode.parentNode;
+				if (theParent) {
+					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
+					// collapse selection and move cursor - problem: stationery sets cursor to the top!
+					if (isCursor) {
+						editor.selection.removeAllRanges();
+						// find offset for [[cursor]]
+						editor.selection.collapse(templateDiv, 0);
+						let pos = templateDiv.textContent.indexOf('[[cursor]]');
+						let htmlPos = templateDiv.innerHTML.indexOf('[[cursor]]');
+						let lineBreaks = templateDiv.innerHTML.toLowerCase().substr(0, htmlPos).match("<br");
+						if (lineBreaks)
+							pos = pos + lineBreaks.length;
+						for (let i=0; i<pos; i++)
+							editor.selectionController.characterMove(true, false); // move forward to [[cursor]]
+						for (let i=0; i<10; i++)
+							editor.selectionController.characterMove(true, true); // highlight [[cursor]]
+						// editor.selectionController.wordExtendForDelete(true);
+					}
+					else {
+						if (theIdentity.replyOnTop) {
+							if (editor.selection.collapseToStart)
+								editor.selection.collapseToStart();
+							else
+								editor.selection.collapse(theParent, nodeOffset+1); 
+						}
+						else {
+							if (editor.selection.collapseToEnd)
+								editor.selection.collapseToEnd();
+							else
+								editor.selection.collapse(theParent, nodeOffset+1); 
+						}
+					}
+				}
 			}
 		}
 		catch(ex) {
