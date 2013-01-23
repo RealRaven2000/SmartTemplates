@@ -15,20 +15,8 @@ var SmartTemplate4 = {
 		NotifyComposeBodyReady: function() {
 			// For Stationery integration, we need to hack 
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			if (SmartTemplate4.Preferences.getMyBoolPref('stationery.supported') && Stationery && Stationery.OnComposeBodyReady) {
-				if (!Stationery.SmartTemplate) {
-					Stationery.SmartTemplate = new Object();
-					Stationery.SmartTemplate.StationeryOnBodyReady = Stationery.OnComposeBodyReady;
-					// Make sure Stationery does its magic _before_ SmartTemplate
-					Stationery.OnComposeBodyReady = function(win) {
-					
-						Stationery.SmartTemplate.StationeryOnBodyReady(win); // throws: Stationery is not defined
-						// test mode only, to test how the selected stationery modified mail body
-						if (!SmartTemplate4.Preferences.getMyBoolPref('stationery.test.disableST4notification'))
-							SmartTemplate4.notifyComposeBodyReady();
-					}
-				
-				}
+			if (SmartTemplate4.Preferences.isStationerySupported && Stationery && Stationery.FireEvent) {
+			  ; // we do nothing as we have our own event handler
 			}
 			else
 				SmartTemplate4.notifyComposeBodyReady();
@@ -39,6 +27,17 @@ var SmartTemplate4 = {
 
 	initListener: function() {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+		// alternative events when 
+		if (SmartTemplate4.Preferences.isStationerySupported) {
+			window.addEventListener('stationery-template-loading', function(event) {
+				alert('stationery-template-loading');
+			}, false);
+
+			window.addEventListener('stationery-template-loaded', function(event) {
+				alert('stationery-template-loaded');
+				SmartTemplate4.notifyComposeBodyReady();
+			}, false);		
+		}
 	},
 	// -------------------------------------------------------------------
 	// A handler to add template message

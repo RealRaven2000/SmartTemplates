@@ -99,6 +99,10 @@ SmartTemplate4.Preferences = {
 		catch(e) {
 			return false;
 		}
+	},
+	
+	get isStationerySupported() {
+		return this.getMyBoolPref('stationery.supported');
 	}
 
 }
