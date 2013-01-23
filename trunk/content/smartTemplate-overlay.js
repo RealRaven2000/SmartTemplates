@@ -437,8 +437,8 @@ SmartTemplate4.regularize = function(msg, type)
 
 		// Reserved words that do not depend on the original message.
 		setRw2h("d.c.", "ownname", "ownmail",
-						"Y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso");
+						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor");
 
 		// Reserved words which depend on headers of the original message.
 		setRw2h("To",   "to", "toname", "tomail");
@@ -525,25 +525,25 @@ SmartTemplate4.regularize = function(msg, type)
 
 	function zoneFromShort(short) {
 		var timezones = {
-			"ACDT"	 : "Australian Central Daylight Time",
-			"ACST"	 : "Australian Central Standard Time",
+			"ACDT" : "Australian Central Daylight Time",
+			"ACST" : "Australian Central Standard Time",
 			"ACT"	 : "ASEAN Common Time",
 			"ADT"	 : "Atlantic Daylight Time",
-			"AEDT"	 : "Australian Eastern Daylight Time",
-			"AEST"	 : "Australian Eastern Standard Time",
+			"AEDT" : "Australian Eastern Daylight Time",
+			"AEST" : "Australian Eastern Standard Time",
 			"AFT"	 : "Afghanistan Time",
-			"AKDT"	 : "Alaska Daylight Time",
-			"AKST"	 : "Alaska Standard Time",
-			"AMST"	 : "Armenia Summer Time",
+			"AKDT" : "Alaska Daylight Time",
+			"AKST" : "Alaska Standard Time",
+			"AMST" : "Armenia Summer Time",
 			"AMT"	 : "Armenia Time",
 			"ART"	 : "Argentina Time",
 			"AST"	 : "Atlantic Standard Time",
-			"AWDT"	 : "Australian Western Daylight Time",
-			"AWST"	 : "Australian Western Standard Time",
-			"AZOST"	 : "Azores Standard Time",
+			"AWDT" : "Australian Western Daylight Time",
+			"AWST" : "Australian Western Standard Time",
+			"AZOST": "Azores Standard Time",
 			"AZT"	 : "Azerbaijan Time",
 			"BDT"	 : "Brunei Time",
-			"BIOT"	 : "British Indian Ocean Time",
+			"BIOT" : "British Indian Ocean Time",
 			"BIT"	 : "Baker Island Time",
 			"BOT"	 : "Bolivia Time",
 			"BRT"	 : "Brasilia Time",
@@ -552,84 +552,84 @@ SmartTemplate4.regularize = function(msg, type)
 			"CAT"	 : "Central Africa Time",
 			"CCT"	 : "Cocos Islands Time",
 			"CDT"	 : "Central Daylight Time (North America)",
-			"CEDT"	 : "Central European Daylight Time",
-			"CEST"	 : "Central European Summer Time (Cf. HAEC)",
+			"CEDT" : "Central European Daylight Time",
+			"CEST" : "Central European Summer Time (Cf. HAEC)",
 			"CET"	 : "Central European Time",
-			"CHADT"	 : "Chatham Daylight Time",
-			"CHAST"	 : "Chatham Standard Time",
-			"CHOT"	 : "Choibalsan",
-			"ChST"	 : "Chamorro Standard Time",
-			"CHUT"	 : "Chuuk Time",
-			"CIST"	 : "Clipperton Island Standard Time",
+			"CHADT": "Chatham Daylight Time",
+			"CHAST": "Chatham Standard Time",
+			"CHOT" : "Choibalsan",
+			"ChST" : "Chamorro Standard Time",
+			"CHUT" : "Chuuk Time",
+			"CIST" : "Clipperton Island Standard Time",
 			"CIT"	 : "Central Indonesia Time",
 			"CKT"	 : "Cook Island Time",
-			"CLST"	 : "Chile Summer Time",
+			"CLST" : "Chile Summer Time",
 			"CLT"	 : "Chile Standard Time",
-			"COST"	 : "Colombia Summer Time",
+			"COST" : "Colombia Summer Time",
 			"COT"	 : "Colombia Time",
 			"CST"	 : "Central Standard Time (North America)",
-			"CT"	 : "China time",
+			"CT"   : "China time",
 			"CVT"	 : "Cape Verde Time",
-			"CWST"	 : "Central Western Standard Time (Australia)",
+			"CWST" : "Central Western Standard Time (Australia)",
 			"CXT"	 : "Christmas Island Time",
-			"DAVT"	 : "Davis Time",
-			"DDUT"	 : "Dumont d'Urville Time",
+			"DAVT" : "Davis Time",
+			"DDUT" : "Dumont d'Urville Time",
 			"DFT"	 : "AIX specific equivalent of Central European Time",
-			"EASST"	 : "Easter Island Standard Summer Time",
-			"EAST"	 : "Easter Island Standard Time",
+			"EASST": "Easter Island Standard Summer Time",
+			"EAST" : "Easter Island Standard Time",
 			"EAT"	 : "East Africa Time",
 			"ECT"	 : "Ecuador Time",
 			"EDT"	 : "Eastern Daylight Time (North America)",
-			"EEDT"	 : "Eastern European Daylight Time",
-			"EEST"	 : "Eastern European Summer Time",
+			"EEDT" : "Eastern European Daylight Time",
+			"EEST" : "Eastern European Summer Time",
 			"EET"	 : "Eastern European Time",
-			"EGST"	 : "Eastern Greenland Summer Time",
+			"EGST" : "Eastern Greenland Summer Time",
 			"EGT"	 : "Eastern Greenland Time",
 			"EIT"	 : "Eastern Indonesian Time",
 			"EST"	 : "Eastern Standard Time (North America)",
 			"FET"	 : "Further-eastern_European_Time",
 			"FJT"	 : "Fiji Time",
-			"FKST"	 : "Falkland Islands Summer Time",
+			"FKST" : "Falkland Islands Summer Time",
 			"FKT"	 : "Falkland Islands Time",
 			"FNT"	 : "Fernando de Noronha Time",
-			"GALT"	 : "Galapagos Time",
-			"GAMT"	 : "Gambier Islands",
+			"GALT" : "Galapagos Time",
+			"GAMT" : "Gambier Islands",
 			"GET"	 : "Georgia Standard Time",
 			"GFT"	 : "French Guiana Time",
-			"GILT"	 : "Gilbert Island Time",
+			"GILT" : "Gilbert Island Time",
 			"GIT"	 : "Gambier Island Time",
 			"GMT"	 : "Greenwich Mean Time",
 			"GST"	 : "South Georgia and the South Sandwich Islands",
 			"GYT"	 : "Guyana Time",
-			"HADT"	 : "Hawaii-Aleutian Daylight Time",
-			"HAEC"	 : "Heure Avanc\u00E9e d'Europe Centrale francised name for CEST",
-			"HAST"	 : "Hawaii-Aleutian Standard Time",
+			"HADT" : "Hawaii-Aleutian Daylight Time",
+			"HAEC" : "Heure Avanc\u00E9e d'Europe Centrale francised name for CEST",
+			"HAST" : "Hawaii-Aleutian Standard Time",
 			"HKT"	 : "Hong Kong Time",
 			"HMT"	 : "Heard and McDonald Islands Time",
-			"HOVT"	 : "Khovd Time",
+			"HOVT" : "Khovd Time",
 			"HST"	 : "Hawaii Standard Time",
 			"ICT"	 : "Indochina Time",
 			"IDT"	 : "Israel Daylight Time",
 			"I0T"	 : "Indian Ocean Time",
-			"IRDT"	 : "Iran Daylight Time",
-			"IRKT"	 : "Irkutsk Time",
-			"IRST"	 : "Iran Standard Time",
+			"IRDT" : "Iran Daylight Time",
+			"IRKT" : "Irkutsk Time",
+			"IRST" : "Iran Standard Time",
 			"IST"	 : "Irish Summer Time",
 			"JST"	 : "Japan Standard Time",
 			"KGT"	 : "Kyrgyzstan time",
-			"KOST"	 : "Kosrae Time",
-			"KRAT"	 : "Krasnoyarsk Time",
+			"KOST" : "Kosrae Time",
+			"KRAT" : "Krasnoyarsk Time",
 			"KST"	 : "Korea Standard Time",
-			"LHST"	 : "Lord Howe Standard Time",
-			"LINT"	 : "Line Islands Time",
-			"MAGT"	 : "Magadan Time",
-			"MART"	 : "Marquesas Islands Time",
-			"MAWT"	 : "Mawson Station Time",
+			"LHST" : "Lord Howe Standard Time",
+			"LINT" : "Line Islands Time",
+			"MAGT" : "Magadan Time",
+			"MART" : "Marquesas Islands Time",
+			"MAWT" : "Mawson Station Time",
 			"MDT"	 : "Mountain Daylight Time (North America)",
 			"MET"	 : "Middle European Time Same zone as CET",
-			"MEST"	 : "Middle European Saving Time Same zone as CEST",
+			"MEST" : "Middle European Saving Time Same zone as CEST",
 			"MHT"	 : "Marshall_Islands",
-			"MIST"	 : "Macquarie Island Station Time",
+			"MIST" : "Macquarie Island Station Time",
 			"MIT"	 : "Marquesas Islands Time",
 			"MMT"	 : "Myanmar Time",
 			"MSK"	 : "Moscow Time",
@@ -644,26 +644,26 @@ SmartTemplate4.regularize = function(msg, type)
 			"NST"	 : "Newfoundland Standard Time",
 			"NT"	 : "Newfoundland Time",
 			"NUT"	 : "Niue Time",
-			"NZDT"	 : "New Zealand Daylight Time",
-			"NZST"	 : "New Zealand Standard Time",
-			"OMST"	 : "Omsk Time",
-			"ORAT"	 : "Oral Time",
+			"NZDT" : "New Zealand Daylight Time",
+			"NZST" : "New Zealand Standard Time",
+			"OMST" : "Omsk Time",
+			"ORAT" : "Oral Time",
 			"PDT"	 : "Pacific Daylight Time (North America)",
 			"PET"	 : "Peru Time",
-			"PETT"	 : "Kamchatka Time",
+			"PETT" : "Kamchatka Time",
 			"PGT"	 : "Papua New Guinea Time",
-			"PHOT"	 : "Phoenix Island Time",
+			"PHOT" : "Phoenix Island Time",
 			"PHT"	 : "Philippine Time",
 			"PKT"	 : "Pakistan Standard Time",
-			"PMDT"	 : "Saint Pierre and Miquelon Daylight time",
-			"PMST"	 : "Saint Pierre and Miquelon Standard Time",
-			"PONT"	 : "Pohnpei Standard Time",
+			"PMDT" : "Saint Pierre and Miquelon Daylight time",
+			"PMST" : "Saint Pierre and Miquelon Standard Time",
+			"PONT" : "Pohnpei Standard Time",
 			"PST"	 : "Pacific Standard Time (North America)",
 			"RET"	 : "R\u00E9union Time",
-			"ROTT"	 : "Rothera Research Station Time",
-			"SAKT"	 : "Sakhalin Island time",
-			"SAMT"	 : "Samara Time",
-			"SAST"	 : "South African Standard Time",
+			"ROTT" : "Rothera Research Station Time",
+			"SAKT" : "Sakhalin Island time",
+			"SAMT" : "Samara Time",
+			"SAST" : "South African Standard Time",
 			"SBT"	 : "Solomon Islands Time",
 			"SCT"	 : "Seychelles Time",
 			"SGT"	 : "Singapore Time",
@@ -681,25 +681,25 @@ SmartTemplate4.regularize = function(msg, type)
 			"TOT"	 : "Tonga Time",
 			"TVT"	 : "Tuvalu Time",
 			"UCT"	 : "Coordinated Universal Time",
-			"ULAT"	 : "Ulaanbaatar Time",
+			"ULAT" : "Ulaanbaatar Time",
 			"UTC"	 : "Coordinated Universal Time",
-			"UYST"	 : "Uruguay Summer Time",
+			"UYST" : "Uruguay Summer Time",
 			"UYT"	 : "Uruguay Standard Time",
 			"UZT"	 : "Uzbekistan Time",
 			"VET"	 : "Venezuelan Standard Time",
-			"VLAT"	 : "Vladivostok Time",
-			"VOLT"	 : "Volgograd Time",
-			"VOST"	 : "Vostok Station Time",
-			"VUT"	 : "Vanuatu Time",
-			"WAKT"	 : "Wake Island Time",
-			"WAST"	 : "West Africa Summer Time",
+			"VLAT" : "Vladivostok Time",
+			"VOLT" : "Volgograd Time",
+			"VOST" : "Vostok Station Time",
+			"VUT"  : "Vanuatu Time",
+			"WAKT" : "Wake Island Time",
+			"WAST" : "West Africa Summer Time",
 			"WAT"	 : "West Africa Time",
-			"WEDT"	 : "Western European Daylight Time",
-			"WEST"	 : "Western European Summer Time",
-			"WET"	 : "Western European Time",
+			"WEDT" : "Western European Daylight Time",
+			"WEST" : "Western European Summer Time",
+			"WET"  : "Western European Time",
 			"WST"	 : "Western Standard Time",
-			"YAKT"	 : "Yakutsk Time",
-			"YEKT"	 : "Yekaterinburg Time"
+			"YAKT" : "Yakutsk Time",
+			"YEKT" : "Yekaterinburg Time"
 		};
 
 		let tz = timezones[short]; // Date().toString().replace(/^.*\(|\)$/g, "")
@@ -748,6 +748,17 @@ SmartTemplate4.regularize = function(msg, type)
 	// Replace reserved words
 	function replaceReservedWords(dmy, token, f)
 	{
+	  // calling this function just for logging purposes
+		function finalize(tok, s, comment) {
+			if (s) {
+				let text = "replaceReservedWords( %" + tok + "% ) = " + s;
+				if (comment) {
+					text += '\n' + comment;
+				}
+				SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', text);
+			};
+			return s;
+		}
 		var tm = new Date();
 		var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
 		var expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
@@ -776,15 +787,15 @@ SmartTemplate4.regularize = function(msg, type)
 				case "dateshort":
 					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
 						token = prTime2Str(tm.getTime() * 1000, token, 0);
-						return SmartTemplate4.escapeHtml(token);
+						return finalize(token, SmartTemplate4.escapeHtml(token));
 					}else{
 						token = prTime2Str(date, token, 0);
-						return SmartTemplate4.escapeHtml(token);
+						return finalize(token, SmartTemplate4.escapeHtml(token));
 					}
 				case "timezone":
 				case "date_tz":
 						var matches = tm.toString().match(/([+-][0-9]{4})/);
-						return SmartTemplate4.escapeHtml(matches[0]);
+						return finalize(token, SmartTemplate4.escapeHtml(matches[0]));
 				// for Common (new/reply/forward) message
 				case "ownname": // own name
 					token = identity.identityName.replace(/\s*<.*/, "");
@@ -794,73 +805,82 @@ SmartTemplate4.regularize = function(msg, type)
 					break;
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
-					return expand("%H%:%M%:%S%");
+					return finalize(token, expand("%H%:%M%:%S%"));
+				case "y":                               // Year 1970...
+				  let year = tm.getFullYear().toString();
+					return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(-2)");
 				case "Y":                               // Year 1970...
-					return "" + tm.getFullYear();
+					return finalize(token, "" + tm.getFullYear(), "tm.getFullYear");
 				case "n":                               // Month 1..12
-					return "" + (tm.getMonth()+1);
+					return finalize(token, "" + (tm.getMonth()+1), "tm.getMonth()+1");
 				case "m":                               // Month 01..12
-					return d02(tm.getMonth()+1);
+					return finalize(token, d02(tm.getMonth()+1), "d02(tm.getMonth()+1)");
 				case "e":                               // Day of month 1..31
-					return "" + tm.getDate();
+					return finalize(token, "" + tm.getDate(), "tm.getDate()");
 				case "d":                               // Day of month 01..31
-					return d02(tm.getDate());
+					return finalize(token, d02(tm.getDate()), "d02(tm.getMonth()+1)");
 				case "k":                               // Hour 0..23
-					return "" + tm.getHours();
+					return finalize(token, "" + tm.getHours(), "tm.getHours()");
 				case "H":                               // Hour 00..23
-					return d02(tm.getHours());
+					return finalize(token, d02(tm.getHours()), "d02(tm.getHours()");
 				case "l":                               // Hour 1..12
-					return "" + (((tm.getHours() + 23) % 12) + 1);
+					return finalize(token, "" + (((tm.getHours() + 23) % 12) + 1));
 				case "I":                               // Hour 01..12
-					return d02(((tm.getHours() + 23) % 12) + 1);
+					return finalize(token, d02(((tm.getHours() + 23) % 12) + 1));
 				case "M":                               // Minutes 00..59
-					return d02(tm.getMinutes());
+					return finalize(token, d02(tm.getMinutes()), "d02(tm.getMinutes())");
 				case "S":                               // Seconds 00..59
-					return d02(tm.getSeconds());
+					return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
-					return getTimeZoneAbbrev(tm, (f=="(1)"));
+					return finalize(token, getTimeZoneAbbrev(tm, (f=="(1)")), "getTimeZoneAbbrev(tm, " + (f=="(1)") + ")");
 				case "sig":
 					let removeDashes = (f=="(2)");
-					let ret = getSignatureInner(removeDashes)
+					let ret = getSignatureInner(removeDashes);
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(removeDashes = ' + removeDashes +')');
 					return ret;
 				case "subject":
 					let current = (f=="(2)");
 					ret = getSubject(current);
-					return ret;
+					return finalize(token, ret);
 				case "newsgroup":
-					return getNewsgroup();
+					return finalize(token, getNewsgroup());
 				// name of day and month
 				case "A":
-					return cal.dayName(tm.getDay());        break;  // locale day of week
+					return finalize(token, cal.dayName(tm.getDay()), "cal.dayName(" + tm.getDay() + ")");       // locale day of week
 				case "a":
-					return cal.shortDayName(tm.getDay());       break;  // locale day of week(short)
+					return finalize(token, cal.shortDayName(tm.getDay()), "cal.shortDayName(" + tm.getDay() + ")");  // locale day of week(short)
 				case "B":
-					return cal.monthName(tm.getMonth());        break;  // locale month
+					return finalize(token, cal.monthName(tm.getMonth()), "cal.monthName(" + tm.getMonth() +")");   // locale month
 				case "b":
-					return cal.shortMonthName(tm.getMonth());   break;  // locale month(short)
+					return finalize(token, cal.shortMonthName(tm.getMonth()), "cal.shortMonthName(" + tm.getMonth() +")");   // locale month (short)
 				case "p":
 					switch (f) {
 						case "(1)":
-							return tm.getHours() < 12 ? "a.m." : "p.m."; // locale am or pm
+							return finalize(token + "(1)", tm.getHours() < 12 ? "a.m." : "p.m."); // locale am or pm
 						case "(2)":
-							return tm.getHours() < 12 ? "A.M." : "P.M."; // locale am or pm
+							return finalize(token + "(2)", tm.getHours() < 12 ? "A.M." : "P.M."); // locale am or pm
 						case "(3)":
 						default:
-							return tm.getHours() < 12 ? "AM" : "PM";     // locale am or pm
+							return finalize(token, tm.getHours() < 12 ? "AM" : "PM");     // locale am or pm
 					}
 					break;
 				case "dbg1":
-					return cal.list();
+					return finalize(token, cal.list());
 				case "cwIso": // ISO calendar week [Bug 25012]
 					let offset = parseInt(f.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
-					return "" + SmartTemplate4.Util.getIsoWeek(tm, offset);
+					return finalize(token, "" + SmartTemplate4.Util.getIsoWeek(tm, offset));
 				// Change time of %A-Za-z%
 				case "X:=sent":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT");
 					return "";
 				case "X:=today":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
 					return "";
+				case "cursor":
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Cursor found");
+					return "[[cursor]]";
 
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
@@ -879,7 +899,7 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logException('replaceReservedWords(dmy, ' + token + ', ' + f +') failed ', ex);
+			SmartTemplate4.Util.logException('replaceReservedWords(dmy, ' + token + ', ' + f +') failed - unknown token?', ex);
 			token="??";
 		}
 		return SmartTemplate4.escapeHtml(token);
