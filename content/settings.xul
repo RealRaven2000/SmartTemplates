@@ -115,7 +115,6 @@
 
 					<!-- ######## Template Preferences ######## -->
 
-					<!--eventually we will tidy up our act and have all our prefs under extensions.smartTemplate4 -->
 					<preferences id = "templates">
 						<preference id = "pref_def"        name = "extensions.smartTemplate4.common.def"       type = "bool"/>
 						<preference id = "pref_new"        name = "extensions.smartTemplate4.common.new"       type = "bool"/>
