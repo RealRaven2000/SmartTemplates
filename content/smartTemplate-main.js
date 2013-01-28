@@ -35,18 +35,34 @@ var SmartTemplate4 = {
 
 			window.addEventListener('stationery-template-loaded', function(event) {
 				alert('stationery-template-loaded');
-				SmartTemplate4.notifyComposeBodyReady();
+				SmartTemplate4.notifyComposeBodyReady(event);
 			}, false);		
 		}
 	},
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
-	notifyComposeBodyReady: function()
+	notifyComposeBodyReady: function(evt)
 	{
-		this.Util.logDebugOptional('events','SmartTemplate4.notifyComposeBodyReady()');
+		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
+		let isStationeryTemplate = false;
+		
+		if (evt) {
+			if (evt.currentTarget
+			    &&
+					evt.currentTarget.Stationery_) 
+			{
+				dbg += '\nStationery is installed';
+				let stationeryFile = evt.currentTarget.Stationery_.CurrentTemplateFileName;
+				if (stationeryFile !== '')
+					isStationeryTemplate = true;
+					dbg += '\nTemplate used is:' + stationeryFile;
+			}			
+		}
+		this.Util.logDebugOptional('events', dbg);
 		// Add template message
-		this.smartTemplate.insertTemplate(true);
+		
+		this.smartTemplate.insertTemplate(true, isStationeryTemplate);
 	},
 
 	// -------------------------------------------------------------------
