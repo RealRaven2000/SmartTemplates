@@ -663,10 +663,10 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup)
+	function insertTemplate(startup, isStationeryTemplate)
 	{
 		let util = SmartTemplate4.Util;
-		util.logDebugOptional('functions','insertTemplate(' + startup + ')');
+		util.logDebugOptional('functions','insertTemplate(' + startup + ', ' + isStationeryTemplate + ')');
 		var pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let ed = GetCurrentEditor();
@@ -756,7 +756,11 @@ SmartTemplate4.classSmartTemplate = function()
 					case 'reply':
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							newQuote = newQuote && true;
-							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+							// we do not delete reply header if stationery has inserted a template!
+							if (pref.isDeleteHeaders(idKey, st4composeType, false)
+									&&
+									!isStationeryTemplate) 
+							{
 								delReplyHeader(idKey);
 							}
 						}
@@ -766,7 +770,10 @@ SmartTemplate4.classSmartTemplate = function()
 							break;
 						newQuote = newQuote && true;
 
-						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+						// we do not delete forward header if stationery has inserted a template!
+						if (pref.isDeleteHeaders(idKey, st4composeType, false)
+								&&
+								!isStationeryTemplate)						{
 							delForwardHeader(idKey);
 						}
 						break;
@@ -804,7 +811,18 @@ SmartTemplate4.classSmartTemplate = function()
 			// now insert quote Header separately
 			try {
 				templateDiv.id = "smartTemplate4-template";
-				templateDiv.innerHTML = template;
+				// ****************************
+				// ***  STATIONERY SUPPORT  ***
+				// ****************************
+				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
+				if (!isStationeryTemplate) {
+					templateDiv.innerHTML = template;
+				}
+				else {
+					// to do:	template processing in body provided by Stationery!
+				  // ** => replace stationeryBodyText 
+					// **    with getProcessedTemplate(stationeryBodyText, idKey, st4composeType) 
+				}
 				if (theIdentity.replyOnTop) {
 					editor.beginningOfDocument();
 					for (let i = 0; i < breaks; i++) 
@@ -886,6 +904,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'SmartTemplate4: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
+					 + 'Stationery used: ' + isStationeryTemplate + '\n'
 		       );
 
 		/* SIGNATURE HANDLING */
