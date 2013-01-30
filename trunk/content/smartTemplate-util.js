@@ -702,10 +702,13 @@ SmartTemplate4.Util = {
 		if (convertedBracketExpressions)
 			SmartTemplate4.Settings.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
 
+	},
+
+	isFormatLink : function(format) {
+	   return (format.search(/\,link\)$/, "i") != -1);
 	}
 
-
-};
+};  // .Util
 
 
 SmartTemplate4.Util.firstRun =
@@ -918,7 +921,7 @@ SmartTemplate4.Util.firstRun =
 
 	} 
 
-};
+};  // .Util.firstRun
 
 // this object is used to configure the modeless smartTemplate-msg window
 // the display() Method it takes 2 callback functions one for [Ok] and one for [Cancel]
@@ -1068,4 +1071,5 @@ SmartTemplate4.Message = {
 		}
 		win.close();
 	}
-}
+	
+}  // .Message

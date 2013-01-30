@@ -30,11 +30,14 @@ var SmartTemplate4 = {
 		// alternative events when 
 		if (SmartTemplate4.Preferences.isStationerySupported) {
 			window.addEventListener('stationery-template-loading', function(event) {
-				alert('stationery-template-loading');
+				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loading');
 			}, false);
 
 			window.addEventListener('stationery-template-loaded', function(event) {
-				alert('stationery-template-loaded');
+				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loaded');
+				if (SmartTemplate4.Preferences.Debug) {
+					alert('Debug: Stationery Template loaded');
+				}
 				SmartTemplate4.notifyComposeBodyReady(event);
 			}, false);		
 		}
@@ -52,14 +55,14 @@ var SmartTemplate4 = {
 			    &&
 					evt.currentTarget.Stationery_) 
 			{
-				dbg += '\nStationery is installed';
+				dbg += '\nStationery is used';
 				let stationeryFile = evt.currentTarget.Stationery_.CurrentTemplateFileName;
 				if (stationeryFile !== '')
 					isStationeryTemplate = true;
 					dbg += '\nTemplate used is:' + stationeryFile;
 			}			
 		}
-		this.Util.logDebugOptional('events', dbg);
+		this.Util.logDebug(dbg);
 		// Add template message
 		
 		this.smartTemplate.insertTemplate(true, isStationeryTemplate);
