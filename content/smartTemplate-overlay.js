@@ -275,24 +275,34 @@ SmartTemplate4.mimeDecoder = {
 	// Split addresses and change encoding.
 	split : function (addrstr, charset, format)
 	{
+	  function getMailPart(a) {
+			return a.replace(/.*<(\S+)>.*/g, "$1");
+		}
+		function isMail(format) { return (format.search(/^\(mail[\),]/, "i") != -1);};
+		function isName(format) { return (format.search(/^\((first)*name[,\)]/, "i") != -1);};
+		function isLink(format) { return SmartTemplate4.Util.isFormatLink(format);  /* this = regularize? */ };
+		function isFirstName(format) { return (format.search(/^\(firstname[,\)]/, "i") != -1);};
+		
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split()');
 		// MIME decode
 		addrstr = this.decode(addrstr, charset);
 		// Escape "," in mail addresses
 		addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
 
-		var array = addrstr.split(/\s*,\s*/);
-		var addresses = "";
-		var withname = true;
-		var withaddr = true;
-		if (format.search(/^\((first)*name.*\)$/, "i") != -1)
-		{
-			withaddr = false;
-		}
-		else if (format.search(/^\(mail\)$/, "i") != -1)
-		{
-			withname = false;
-		}
+		let array = addrstr.split(/\s*,\s*/);
+		let addresses = "";
+		let showName = false;
+		let showMailAddress = false;
+		let showLink = false;
+		// difficult logic for format here... [makes it hard to extend format]
+		// possible values for format are:
+		// name
+		// firstname
+		// mail
+		// => new: link -- e.g. %to(mail,link)%
+		showName = isName(format);
+		showMailAddress = isMail(format);
+		showLink = isLink(format); 
 
 		for (var i = 0; i < array.length; i++) {
 			if (i > 0) {
@@ -302,38 +312,44 @@ SmartTemplate4.mimeDecoder = {
 			// Escape "," in mail addresses
 			array[i] = array[i].replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
-			                            function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
 			// name or/and address
 			var address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
 			var result = "";
-			if (withname) {
+			
+			if (showName) {
 				// this cuts off the angle-bracket adress part: <foo@bar.com>
 				result = address.replace(/\s*<\S+>\s*$/, "")
 					              .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
-				if (result != "" && withaddr) {
+				if (result != "" && showMailAddress) {
 					result += address.replace(/.*<(\S+)>.*/g, " <$1>");
 				}     // %to%
 			}
 			if (result == "") {
-				if (!withaddr) {
+				if (!showMailAddress) {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
 				}  // %to(name)%
 				else {
-					result = address.replace(/.*<(\S+)>.*/g, "$1");
+					result = getMailPart(address); // email part ?
 				}     // %to% / %to(mail)%
 			}
 			// get firstname
 			let delimiter = '';
-			if ((delimiter = format.match(/^\(firstname(\[.*\])*\)$/i)) != null) {
+			if ((delimiter = format.match(/^\(firstname(\[.*\])*[,\)]/i)) != null) {  // 
 				if (delimiter[1] == null) {
 					delimiter[1] = "[., ]";
 				}
 				else {
 					delimiter[1] = delimiter[1].replace(/&nbsp;/, " ");
 				}
+				// truncate after delimiter => first name
 				result = result.replace(new RegExp(delimiter[1] + ".*"), "");
 			}
 
+			if (showLink) {
+				result = "<a href=mailto:" + getMailPart(address) + ">" + result + "</a>";
+			}
+			
 			addresses += result;
 		}
 		return addresses;
@@ -744,7 +760,7 @@ SmartTemplate4.regularize = function(msg, type)
 		}
 		return retVal;
 	}
-
+	
 	// Replace reserved words
 	function replaceReservedWords(dmy, token, f)
 	{
@@ -893,6 +909,9 @@ SmartTemplate4.regularize = function(msg, type)
 					else {
 						token = mime.decode(hdr.get(token), charset);
 					}
+					// allow html as to(link) etc. builds a href with mailto
+					if (f && SmartTemplate4.Util.isFormatLink(f)) 
+						return token;
 					break;
 					// unreachable code! =>
 					// token = token.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
