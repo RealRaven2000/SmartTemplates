@@ -3,10 +3,10 @@
 /* ################################################################################### */
 #SmartTemplate4Button {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon24x24.png");
+}
 
 [iconsize="small"] #SmartTemplate4Button {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
-  }
 }
 /* ################################################################################### */
 /* ################################ STATUSBAR OVERLAY ################################ */
