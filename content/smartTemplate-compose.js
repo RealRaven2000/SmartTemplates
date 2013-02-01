@@ -137,6 +137,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// retrieve signature Node; if it doesn't work, try from the account
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+		sigText = sigText ? sigText : '';  
 		
 		
 
@@ -189,6 +190,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// okay now for the coup de grace!!
+		
 		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
 			sigText = getProcessedText(sigText, idKey, composeType);
 		
@@ -426,6 +428,8 @@ SmartTemplate4.classSmartTemplate = function()
 
 	function testCursorVar(template) {
 		// let reg = /%\[\[cursor\[\[%/gm;
+		if(!template)
+			return false;
 		let match = template.toLowerCase().match("[[cursor]]");
 		return (!match ? false : true);
 	};
@@ -870,7 +874,7 @@ SmartTemplate4.classSmartTemplate = function()
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
 		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
-		let isSignatureSetup = (theIdentity.htmlSigText.length > 0 && !theIdentity.attachSignature)
+		let isSignatureSetup = (theIdentity.htmlSigText && (theIdentity.htmlSigText.length > 0) && !theIdentity.attachSignature)
 		                       ||
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 
