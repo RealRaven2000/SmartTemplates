@@ -8,7 +8,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="0.9.3pre20"
+   em:version="0.9.3pre40"
    em:creator="Axel Grude"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
    em:iconURL="chrome://smartTemplate4/skin/icon32x32.png"
@@ -26,6 +26,7 @@
     <em:developer>Marky Mark DE</em:developer>
 
     <em:contributor>Aris - Style Support</em:contributor>
+	
     <em:contributor>tool8 - Development, Version 0.7.2 - 0.8.0</em:contributor>
     <em:contributor>Peter Macej - Development Support</em:contributor>
     <em:contributor>Carles Carbonell Bernado (Noia Icons) [http://carlitus.deviantart.com]</em:contributor>
@@ -60,12 +61,10 @@
    em:minVersion="2.0.0"
    em:maxVersion="3.*"/>
 
-
-
   <!-- SeaMonkey -->
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
    em:minVersion="2.0"
-   em:maxVersion="2.16.*"/>
+   em:maxVersion="2.17.*"/>
 
 </RDF:RDF>
