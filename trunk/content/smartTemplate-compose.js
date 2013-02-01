@@ -60,7 +60,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Extract Signature
 	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
-	function extractSignature(Ident, signatureDefined)
+	function extractSignature(Ident, signatureDefined, composeType)
 	{
 		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
@@ -137,6 +137,8 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// retrieve signature Node; if it doesn't work, try from the account
 		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+		
+		
 
 		let removed = false;
 		// LET'S REMOVE THE SIGNATURE
@@ -186,6 +188,11 @@ SmartTemplate4.classSmartTemplate = function()
 			// let's discard the old signature instead.
 		}
 
+		// okay now for the coup de grace!!
+		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
+			sigText = getProcessedText(sigText, idKey, composeType);
+		
+		
 
 		if (!sig || typeof sig == 'string') {
 			if (gMsgCompose.composeHTML) {
@@ -610,10 +617,10 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedTemplate(templateText, idKey, composeType) 
+	function getProcessedText(templateText, idKey, composeType) 
 	{
-		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedTemplate()   ==========');
-		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Template Text:\n' +
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedText()   ==========');
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Process Text:\n' +
 		                                     templateText + '[END]');
 		var pref = SmartTemplate4.pref;
 		//Reset X to Today after each newline character
@@ -640,7 +647,7 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n'
 		                                   + templateText);
 		let regular = SmartTemplate4.regularize(templateText, composeType);
-		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedTemplate()   ========== END');
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedText()   ========== END');
 		return regular;
 	};
 	
@@ -648,7 +655,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// in order to fix bottom-reply
 	function getQuoteHeader(composeType, idKey) {
 		var hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
-		return getProcessedTemplate(hdr, idKey, composeType);
+		return getProcessedText(hdr, idKey, composeType);
 	};
 	
 	// -----------------------------------
@@ -657,7 +664,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		SmartTemplate4.Util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		var msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
-		return getProcessedTemplate(msg, idKey, composeType);
+		return getProcessedText(msg, idKey, composeType);
 	};
 	
 
@@ -746,7 +753,7 @@ SmartTemplate4.classSmartTemplate = function()
 			if (isActiveOnAccount) {
 				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
 				// get signature and remove the one Tb has inserted
-				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined);
+				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
 				template = getSmartTemplate(st4composeType, idKey);
 				quoteHeader = getQuoteHeader(st4composeType, idKey);
 				let newQuote = quoteHeader ? true : false;
@@ -791,7 +798,7 @@ SmartTemplate4.classSmartTemplate = function()
 			else {
 				util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
 				// remove old signature!
-				extractSignature(theIdentity, false);
+				extractSignature(theIdentity, false, st4composeType);
 			}
 
 		}
@@ -821,7 +828,7 @@ SmartTemplate4.classSmartTemplate = function()
 				else {
 					// to do:	template processing in body provided by Stationery!
 				  // ** => replace stationeryBodyText 
-					// **    with getProcessedTemplate(stationeryBodyText, idKey, st4composeType) 
+					// **    with getProcessedText(stationeryBodyText, idKey, st4composeType) 
 				}
 				if (theIdentity.replyOnTop) {
 					editor.beginningOfDocument();
