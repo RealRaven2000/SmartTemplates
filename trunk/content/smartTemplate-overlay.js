@@ -803,10 +803,11 @@ SmartTemplate4.regularize = function(msg, type)
 			switch(token){
 				case "datelocal":
 				case "dateshort":
-					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday){
+					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday) {
 						token = prTime2Str(tm.getTime() * 1000, token, 0);
 						return finalize(token, SmartTemplate4.escapeHtml(token));
-					}else{
+					}
+					else {
 						token = prTime2Str(date, token, 0);
 						return finalize(token, SmartTemplate4.escapeHtml(token));
 					}
