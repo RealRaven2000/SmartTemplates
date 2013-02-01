@@ -110,6 +110,7 @@
 		# mailto link support for the main header fields that hold email address data: %to(mail,link)% %to(name,link)%$ %to(firstname,link)%  etc.
 		# new %identity()%  function
 		# added 24px icon
+		# added change log
 		
 		
 
