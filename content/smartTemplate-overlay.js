@@ -452,9 +452,11 @@ SmartTemplate4.regularize = function(msg, type)
 		SmartTemplate4.Util.logDebugOptional('regularize', 'simplify()');
 
 		// Reserved words that do not depend on the original message.
+		// identity(name) is the new ownname
+		// identity(mail) is the new ownmail
 		setRw2h("d.c.", "ownname", "ownmail",
 						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor");
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor", "identity");
 
 		// Reserved words which depend on headers of the original message.
 		setRw2h("To",   "to", "toname", "tomail");
@@ -819,6 +821,15 @@ SmartTemplate4.regularize = function(msg, type)
 				case "ownmail": // own email address
 					token = identity.email;
 					break;
+				case "identity":
+				  /////
+					let fullId = identity.fullName + ' <' + identity.email + '>';
+					// we need the split to support (name,link) etc.
+					token = mime.split(fullId, charset, f);
+					// allow html as to(link) etc. builds a href with mailto
+					if (f && SmartTemplate4.Util.isFormatLink(f)) 
+						return token;
+					break;
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
 					return finalize(token, expand("%H%:%M%:%S%"));
@@ -897,7 +908,6 @@ SmartTemplate4.regularize = function(msg, type)
 				case "cursor":
 					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Cursor found");
 					return "[[cursor]]";
-
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(
