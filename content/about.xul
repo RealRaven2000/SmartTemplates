@@ -66,7 +66,7 @@
     <label value = "&localized.label;" class = "head"/><!-- translators head -->
     <!-- same order as in the add-on -->
     <hbox class = "first-box">
-      <vbox><!-- 7 items per translator vbox -->
+      <vbox><!-- 8 items per translator vbox -->
 
         <hbox class = "locale"><!-- German (de) -->
           <image class = "flag" src = "chrome://smarttemplate4/skin/flags/de.png" tooltiptext = "de"/>
@@ -103,15 +103,20 @@
           <label class = "translator" value = "Cai"/>
         </hbox>
 
+        <hbox class = "locale"><!-- Dutch (nl) -->
+          <image class = "flag" src = "chrome://smarttemplate4/skin/flags/nl.png" tooltiptext = "nl"/>
+          <label class = "translator" value = "Markh"/>
+        </hbox>
+
       </vbox>
 
       <spacer flex = "1"/>
 
-      <vbox><!-- 7 items per translator vbox -->
-
-        <hbox class = "locale"><!-- Dutch (nl) -->
-          <image class = "flag" src = "chrome://smarttemplate4/skin/flags/nl.png" tooltiptext = "nl"/>
-          <label class = "translator" value = "Markh"/>
+      <vbox><!-- 8 items per translator vbox -->
+        
+        <hbox class = "locale"><!-- Occitan (oc) -->
+          <image class = "flag" src = "chrome://smarttemplate4/skin/flags/oc.png" tooltiptext = "oc"/>
+          <label class = "translator" value = "Cedric31"/>
         </hbox>
 
         <hbox class = "locale"><!-- Polish (pl) -->
@@ -144,7 +149,14 @@
           <label class = "translator" value = "Yanfang Liu &amp; yfdyh000"/>          
         </hbox>
 
+        <hbox class = "locale"><!-- Chinese Traditionel (zh-TW) -->
+          <image class = "flag" src = "chrome://smarttemplate4/skin/flags/tw.png" tooltiptext = "zh-TW"/>
+          <label class = "translator" value = "akong"/>
+        </hbox>
+
       </vbox>
+
+      <spacer flex = "1"/>
 
     </hbox><!-- first-box -->
   </vbox><!-- about-content -->
