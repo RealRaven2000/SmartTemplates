@@ -149,7 +149,7 @@
           <label class = "translator" value = "Yanfang Liu &amp; yfdyh000"/>          
         </hbox>
 
-        <hbox class = "locale"><!-- Chinese Traditionel (zh-TW) -->
+        <hbox class = "locale"><!-- Chinese Traditional (zh-TW) -->
           <image class = "flag" src = "chrome://smarttemplate4/skin/flags/tw.png" tooltiptext = "zh-TW"/>
           <label class = "translator" value = "akong"/>
         </hbox>
