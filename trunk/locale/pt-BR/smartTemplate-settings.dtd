@@ -1,44 +1,44 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label "Arquivo">
 <!ENTITY tools.label "Ferramentas">
-<!ENTITY edit.label "Edit">
+<!ENTITY edit.label "Editar">
 <!ENTITY help.label "Ajuda">
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Copiar">
-<!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Variable">
+<!ENTITY paste.label "Colar">
+<!ENTITY insert.label "Inserir Variável">
 <!ENTITY close.label "Fechar">
-<!ENTITY advanced.label "Advanced">
+<!ENTITY advanced.label "Avançado">
 <!ENTITY export.label "Exportar">
 <!ENTITY import.label "Importar">
-<!ENTITY menu.template_import.label "Import Template">
-<!ENTITY menu.template_export.label "Export Template">
+<!ENTITY menu.template_import.label "Importar Modelo">
+<!ENTITY menu.template_export.label "Exportar Modelo">
 <!ENTITY settings.label "Configurações e modelos">
 <!ENTITY url.homePage.label "Página do complemento">
 <!ENTITY url.supportPage.label "Página de suporte">
-<!ENTITY url.bugsAndFeaturesPage.label "Bug Reports / Feature Requests">
+<!ENTITY url.bugsAndFeaturesPage.label "Relatar Bug / Pedido de Recursos">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nova">
 <!ENTITY pref_rsp.tab "Responder">
 <!ENTITY pref_fwd.tab "Encaminhar">
 <!ENTITY pref_help.tab "Ajuda">
 <!ENTITY pref_about.tab "Sobre">
-<!ENTITY pref_global.tab "Global Settings">
-<!ENTITY pref_variables.tab "Variables">
+<!ENTITY pref_global.tab "Configurações Globais">
+<!ENTITY pref_variables.tab "Variáveis">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Aceptar">
 <!ENTITY cancel_button "Descartar">
 <!ENTITY contribute_button "Contribuir">
 <!-- #### GUI #### -->
-<!ENTITY pref_quoteHeaderBox.label "Quote Header">
-<!ENTITY pref_quoteHeaderBox_tip "Write your Quote Header in this Box e.g. On &#37;date&#37; wrote &#37;from(name)&#37;:">
-<!ENTITY pref_templateBox.label "Template">
-<!ENTITY pref_templateBox_tip "Write your Template in this Box e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_quoteHeaderBox.label "Citação de Cabeçalho">
+<!ENTITY pref_quoteHeaderBox_tip "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "Modelo">
+<!ENTITY pref_templateBox_tip "Escreva seu Modelo nest Caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
 <!ENTITY pref_dialog.title "Opções do SmartTemplate4">
-<!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
-<!ENTITY pref_removeSig.label "Replace signature when changing email identity">
-<!ENTITY pref_showStatusIcon.label "Display button in status bar">
-<!ENTITY pref_fontSettings.label "Template Editor Font">
+<!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
+<!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
+<!ENTITY pref_showStatusIcon.label "Exibir botão na barra de status">
+<!ENTITY pref_fontSettings.label "Fonte do Editor de Modelos">
 <!ENTITY pref_server_desc "Conta">
 <!ENTITY pref_server_def "Configuração global">
 <!ENTITY pref_def.label "Usar configuração global">
@@ -59,8 +59,8 @@
 <!ENTITY pref_template_tip "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
 <!ENTITY help_dialog_title "Ajuda do SmartTemplate4">
 <!ENTITY help_keyword.cap "Ajuda">
-<!ENTITY pref_debug_check "Debug mode">
-<!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_debug_check "Modo de depuração">
+<!ENTITY pref_debug_tip "Clique direito para opções avançadas de depuração">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Sobre SmartTemplate4">
 <!ENTITY creator.label "Criação">
@@ -98,7 +98,7 @@
 <!ENTITY spec_form.cap "Formato Especial">
 <!ENTITY specform_note.label "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
 <!ENTITY ex_brack.label "Exemplo: Para: boo Cc: foo">
-<!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
+<!ENTITY brack_with_var.label "As seguintes variáveis podem ser usadas dentro de [[...]]">
 <!ENTITY sub_var.cap "Assunto">
 <!ENTITY sub.label "Assunto (mesmo como mailheader originais)">
 <!ENTITY sub2.label "Assunto (mesmo como editor Mensagem TB)">
