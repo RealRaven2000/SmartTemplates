@@ -51,7 +51,7 @@
 <!ENTITY pref_fwdmsg.cap "Messatges transferits">
 <!ENTITY pref_fwd.label "Aplicar lo modèl seguent pels messatges transferits.">
 <!ENTITY pref_fwdhead.label "Desactivar l'entèsta per defaut de Thunderbird">
-<!ENTITY pref_html.label "Utilizar HTML (per ex., <b>gras</b>)">
+<!ENTITY pref_html.label "Utilizar HTML (per ex., &lt;b&gt;gras&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Utilizar de caractèrs d'escapament per  &quot; , &amp; , &lt; , &gt; , espaci. Veire l'ajuda per mai d'informacions.">
 <!ENTITY pref_rep_br.label "Remplaçatz los sauts de linha per &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant &lt;br&gt; un còp.">
