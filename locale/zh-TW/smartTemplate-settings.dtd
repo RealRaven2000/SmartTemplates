@@ -1,0 +1,145 @@
+<!ENTITY file.label "檔案">
+<!ENTITY tools.label "工具">
+<!ENTITY edit.label "編輯">
+<!ENTITY help.label "求助">
+<!ENTITY copy.label "複製">
+<!ENTITY paste.label "貼上">
+<!ENTITY insert.label "插入變數">
+<!ENTITY close.label "關閉">
+<!ENTITY advanced.label "進階">
+<!ENTITY export.label "匯出">
+<!ENTITY import.label "匯入">
+<!ENTITY menu.template_import.label "匯入樣板">
+<!ENTITY menu.template_export.label "匯出樣板">
+<!ENTITY settings.label "設定樣板">
+<!ENTITY url.homePage.label "附加元件網頁">
+<!ENTITY url.supportPage.label "支援網頁">
+<!ENTITY url.bugsAndFeaturesPage.label "臭蟲回報/功能需求">
+<!ENTITY pref_new.tab "編寫">
+<!ENTITY pref_rsp.tab "回覆">
+<!ENTITY pref_fwd.tab "轉寄">
+<!ENTITY pref_help.tab "求助">
+<!ENTITY pref_about.tab "關於">
+<!ENTITY pref_global.tab "全域設定">
+<!ENTITY pref_variables.tab "變數">
+<!ENTITY accept_button "確定">
+<!ENTITY cancel_button "取消">
+<!ENTITY contribute_button "貢獻">
+<!ENTITY pref_quoteHeaderBox.label "引用表頭">
+<!ENTITY pref_quoteHeaderBox_tip "將引用表頭寫在這個對話框,例如.在&#37;date&#37; wrote &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "樣板">
+<!ENTITY pref_templateBox_tip "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, &lt;br&gt; 感謝您的郵件 &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "SmartTemplate4 設定">
+<!ENTITY pref_breaksOnTop.label "從頭算起的換行數:">
+<!ENTITY pref_removeSig.label "當改變電子郵件身份時置換簽名檔">
+<!ENTITY pref_showStatusIcon.label "在狀態列顯示按鈕">
+<!ENTITY pref_fontSettings.label "樣板字體編輯器">
+<!ENTITY pref_server_desc "帳號">
+<!ENTITY pref_server_def "常見">
+<!ENTITY pref_def.label "使用常見的">
+<!ENTITY pref_def.cap "這個帳號未勾選'使用常見的'來建立自訂引用表頭.">
+<!ENTITY pref_newmsg.cap "編寫">
+<!ENTITY pref_new.label "套用以下的樣板到新的郵件">
+<!ENTITY pref_rspmsg.cap "回覆">
+<!ENTITY pref_rsp.label "套用以下的樣板到已回覆的郵件">
+<!ENTITY pref_rsphead.label "使用預設的引用表頭來代替">
+<!ENTITY pref_fwdmsg.cap "轉寄">
+<!ENTITY pref_fwd.label "套用以下的樣板來轉寄郵件">
+<!ENTITY pref_fwdhead.label "停用Thunderbird預設的引用表頭">
+<!ENTITY pref_html.label "使用HTML (例如.,<b>bold</b>)">
+<!ENTITY pref_html.cap "使用 ESC 字元來做 &quot; , &amp; , &lt; , &gt; , space. 請查看 &quot;求助&quot; 來取得更完整資訊.">
+<!ENTITY pref_rep_br.label "用 &lt;br&gt; 來取代換行">
+<!ENTITY pref_rep_br.cap "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中.">
+<!ENTITY pref_quotehead_tip "停用預設的引用表頭.請插入您的預設表頭到文字方塊.">
+<!ENTITY pref_template_tip "您可以用'變數'來變更引用表頭.請用求助取得更多資訊.">
+<!ENTITY help_dialog_title "SmartTemplate4 求助">
+<!ENTITY help_keyword.cap "求助">
+<!ENTITY pref_debug_check "除錯模式">
+<!ENTITY pref_debug_tip "點右鍵使用進階的除錯選項">
+<!ENTITY about.cap "有關 SmartTemplate4">
+<!ENTITY creator.label "建立者">
+<!ENTITY developer.label "開發者">
+<!ENTITY localename.label "en-US">
+<!ENTITY localized.label "翻譯者">
+<!ENTITY translatorNickname.label "Aris-T (AMO)">
+<!ENTITY contributor.label "貢獻者">
+<!ENTITY about.label "SmartTemplate4 提供簡單的方法,讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個帳號或是通用樣板來使用.">
+<!ENTITY fix_var.cap "固定的變數">
+<!ENTITY ownname.label "您的姓名">
+<!ENTITY ownmail.label "您的電子郵件">
+<!ENTITY date.label "日期/時間(需與原來的'郵件表頭'相同)">
+<!ENTITY tomail.label "收件者電子郵件">
+<!ENTITY frommail.label "寄件者電子郵件">
+<!ENTITY ccmail.label "副本收件者電子郵件">
+<!ENTITY sig.label "從帳號設定的簽名檔">
+<!ENTITY sig2.label "從帳號設定的簽名檔但不要 '--'">
+<!ENTITY to_var.cap "收件者(到)">
+<!ENTITY to_note.label "當姓名無法使用時,將會顯示電子郵件地址">
+<!ENTITY to.label "收件者姓名 (預設)">
+<!ENTITY tofirstname.label "收件者名字">
+<!ENTITY toname.label "收件者姓名">
+<!ENTITY from_var.cap "寄件者 (從)">
+<!ENTITY from_note.label "當姓名無法使用時,將會顯示電子郵件地址">
+<!ENTITY from.label "寄件者姓名 (預設)">
+<!ENTITY fromfirstname.label "寄件者名字">
+<!ENTITY fromname.label "寄件者姓名">
+<!ENTITY cc_var.cap "收件者 (副本)">
+<!ENTITY cc_note.label "當姓名無法使用時,將會顯示電子郵件地址">
+<!ENTITY cc.label "收件者姓名 (預設)">
+<!ENTITY ccfirstname.label "收件者名字">
+<!ENTITY ccname.label "收件者姓名">
+<!ENTITY spec_form.cap "特殊格式">
+<!ENTITY specform_note.label "假如變數 &#37;cc(name)&#37; 可以被置換時,將會顯示插入兩個中括號的 [[Cc: &#37;cc(name)&#37;]]!">
+<!ENTITY ex_brack.label "例如: 到:boo 副本:foo">
+<!ENTITY brack_with_var.label "以下的變數可以插入 [[...]] 來使用">
+<!ENTITY sub_var.cap "主旨">
+<!ENTITY sub.label "回覆/轉寄郵件的主旨">
+<!ENTITY sub2.label "目前郵件的主旨">
+<!ENTITY spec_var.cap "特殊">
+<!ENTITY messid.label "郵件 ID">
+<!ENTITY newsgr.label "新聞群組">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "任何 Header-line">
+<!ENTITY fix_vartz.cap "'日期格式'/'時區'為固定變數">
+<!ENTITY fix_vartz_note.label "可以跟 &#37;X:=sent&#37; 整合">
+<!ENTITY datelocal.label "日期/時間 (本地格式)">
+<!ENTITY dateshort.label "簡短的日期/時間 (例如. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label "時區 (+0100,+0200,...)">
+<!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
+<!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">
+<!ENTITY n.label "月 (1到12)">
+<!ENTITY B.label "月 (一月)">
+<!ENTITY b.label "月 (一月)">
+<!ENTITY m.label "月 (01到12) - 前面加零">
+<!ENTITY Y.label "年 (1970)">
+<!ENTITY M.label "分 (00到59)">
+<!ENTITY s.label "秒 (00到59)">
+<!ENTITY h.label "小時,24小時制 (00到23) - 前面加零">
+<!ENTITY k.label "小時,24小時制 (0到23)">
+<!ENTITY l.label "小時,12小時制 (1到12)">
+<!ENTITY i.label "小時,12小時制 (01到12) - 前面加零">
+<!ENTITY p.label "上午/下午">
+<!ENTITY p1.label "上午.">
+<!ENTITY p2.label "上午.">
+<!ENTITY p3.label "上午">
+<!ENTITY var_xsent.cap "&#37;X:=sent&#37; 修改者">
+<!ENTITY xsent_note.label "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 &#37;X:=sent&#37;,則日期/時間變數將會對應原來郵件的日期/時間.">
+<!ENTITY xsent_long.cap "長字串的範例">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock">
+<!ENTITY xsent_long_result.label "答案: 星期日, 20/12/2011 at 16:24 o'clock">
+<!ENTITY xsent_short.cap "短字串的範例">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "答案: 星期日, 20/12/2011 08:54:21">
+<!ENTITY im-ex.cap "設定及樣板的匯出/匯入">
+<!ENTITY im-ex_note1.label "您可以匯出及匯入設定和關聯每一個帳號的樣板.">
+<!ENTITY im-ex_note2.label "第一,選擇您想要匯出從SmartTemplate4設定下拉視窗的帳號.">
+<!ENTITY im-ex_note3.label "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦.">
+<!ENTITY im-ex_note4.label "要匯入檔案,選擇一個您想要從 SmartTemplate4 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'.">
+<!ENTITY im-ex_note5.label "選擇您想匯入的 SmartTemplate4 檔案 (xxx.st4).">
+<!ENTITY html_note.label "HTML 樣板只能使用 UTF-8 (Unicode) 字元!">
+<!ENTITY table.cap "變數使用方法">
+<!ENTITY table_note.label "錯誤使用變數將會在郵件中產生 'Error Console'!">
+<!ENTITY table_keyword.label "變數">
+<!ENTITY table_new.label "編寫">
+<!ENTITY table_reply.label "回覆">
+<!ENTITY table_fwd.label "轉寄">
