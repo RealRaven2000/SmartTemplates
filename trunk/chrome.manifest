@@ -17,7 +17,7 @@ locale      smarttemplate4           es-ES        locale/es-ES/
 locale      smarttemplate4           fi           locale/fi/
 locale      smarttemplate4           fr           locale/fr/
 locale      smarttemplate4           it           locale/it/
-locale      smarttemplate4           ja           locale/ja/
+locale      smarttemplate4           ja-JP        locale/ja/
 locale      smarttemplate4           nl           locale/nl/
 locale      smarttemplate4           oc           locale/oc/
 locale      smarttemplate4           pl           locale/pl/
