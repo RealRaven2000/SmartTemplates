@@ -404,6 +404,15 @@
 						<checkbox id = "chkRemoveSig"
 						          label = "&pref_removeSig.label;"
 						          preference = "pref_removeSig"/>
+								  
+						<checkbox id = "chkSignature"
+						          label = "&pref_parseSignature;"
+						          tooltiptext = "&pref_parseSignature_tip;"
+						          preference = "pref_parseSignature"/>
+						<checkbox id = "chkStationery"
+						          label = "&pref_stationerySupport;"
+						          tooltiptext = "&pref_stationerySupport_tip;"
+						          preference = "pref_stationerySupport"/>
 					
 						<checkbox id = "chkStatusButton"
 						          label = "&pref_showStatusIcon.label;"
@@ -428,14 +437,6 @@
 							         disabled = "true"/>
 						</hbox>
 
-						<checkbox id = "chkSignature"
-						          label = "&pref_parseSignature;"
-						          tooltiptext = "&pref_parseSignature_tip;"
-						          preference = "pref_parseSignature"/>
-						<checkbox id = "chkStationery"
-						          label = "&pref_stationerySupport;"
-						          tooltiptext = "&pref_stationerySupport_tip;"
-						          preference = "pref_stationerySupport"/>
 						
 						<spacer flex = "2" />
 						<checkbox id = "chkDebug"
