@@ -61,6 +61,10 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Debug mode">
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_parseSignature "Process signature">
+<!ENTITY pref_parseSignature_tip "replace variables in signature">
+<!ENTITY pref_stationerySupport "Support Stationery addon">
+<!ENTITY pref_stationerySupport_tip "supports using Stationery at the same time with smartTemplate4">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "About SmartTemplate4">
 <!ENTITY creator.label "Creator">
