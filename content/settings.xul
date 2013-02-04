@@ -367,6 +367,8 @@
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool"/>
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
+			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
+			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -425,14 +427,24 @@
 							         instantApply="true" 
 							         disabled = "true"/>
 						</hbox>
+
+						<checkbox id = "chkSignature"
+						          label = "&pref_parseSignature;"
+						          tooltiptext = "&pref_parseSignature_tip;"
+						          preference = "pref_parseSignature"/>
+						<checkbox id = "chkStationery"
+						          label = "&pref_stationerySupport;"
+						          tooltiptext = "&pref_stationerySupport_tip;"
+						          preference = "pref_stationerySupport"/>
 						
 						<spacer flex = "2" />
 						<checkbox id = "chkDebug"
 						          label = "&pref_debug_check;"
-						          instantApply = "true"
 						          tooltiptext = "&pref_debug_tip;"
 						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
 						          preference = "pref_debug"/>
+								 
+								 
 					</vbox>
 				</tabpanel>
 
