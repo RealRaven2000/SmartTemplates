@@ -61,6 +61,10 @@
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
+<!ENTITY pref_parseSignature "Process Signatur">
+<!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
+<!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
+<!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Über SmartTemplate4">
 <!ENTITY creator.label "Ersteller">
