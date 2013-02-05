@@ -56,6 +56,7 @@ SmartTemplate4.Util = {
 	Tool8AMOPage:    "https://addons.mozilla.org/thunderbird/user/5843412/",
 	NoiaHomepage:    "http://carlitus.deviantart.com/",
 	FlagsHomepage:   "http://flags.blogpotato.de/",
+	StationeryPage:  "https://addons.mozilla.org/thunderbird/addon/stationery",
 
 
 	getBundleString: function(id, defaultText) {
@@ -529,6 +530,7 @@ SmartTemplate4.Util = {
 	showTool8AMOPage: function () { SmartTemplate4.Util.openURLInTab(this.Tool8AMOPage); } ,
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
+	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
 
 	showAboutConfig: function(filter) {
 		const name = "Preferences:ConfigManager";
