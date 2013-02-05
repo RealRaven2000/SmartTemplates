@@ -8,7 +8,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="0.9.3pre50"
+   em:version="0.9.3pre56"
    em:creator="Axel Grude"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
    em:iconURL="chrome://smartTemplate4/skin/icon32x32.png"
