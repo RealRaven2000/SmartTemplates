@@ -225,14 +225,14 @@ SmartTemplate4.mimeDecoder = {
 	{
 		let charset = "";
 
-		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468
+		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468 (Japanese)
 		                                                         // not supported                  RFC1555 ISO-8859-8 (Hebrew)
-		if (str.search(/\x1b\$\)C/gi) !== -1)                    { charset = "iso-2022-kr"; }   // RFC1557
-		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842
-		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922
-		                                                         // not supported                  RFC1922 iso-2022-cn-ext (chinese extended)
+		if (str.search(/\x1b\$\)C/gi) !== -1)                    { charset = "iso-2022-kr"; }   // RFC1557 (Korean)
+		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842 (Chinese ASCII)
+		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922 (Chinese)
+		                                                         // not supported                  RFC1922 iso-2022-cn-ext (Chinese extended)
 		if (str.search(/\x1b\$\(D/gi) !== -1)
-		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237
+		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237 (Japanese 1)
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
