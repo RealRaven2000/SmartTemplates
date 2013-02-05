@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Modo de depuração">
 <!ENTITY pref_debug_tip "Clique direito para opções avançadas de depuração">
+<!ENTITY pref_parseSignature "Processar assinatura">
+<!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
+<!ENTITY pref_stationerySupport "Apoie o addon Stationery">
+<!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">
+<!ENTITY pref_stationeryLink "Addon Stationery">
+<!ENTITY pref_stationeryLink_tip "Obter Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Sobre SmartTemplate4">
 <!ENTITY creator.label "Criação">
