@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "Pomoc">
 <!ENTITY pref_debug_check "Tryb debugowania">
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
+<!ENTITY pref_parseSignature "Przetwórz podpis">
+<!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
+<!ENTITY pref_stationerySupport "Obsługuje dodatek Stationery">
+<!ENTITY pref_stationerySupport_tip "Dodatek smartTemplate4 współpracuje z dodatkiem Stationery.">
+<!ENTITY pref_stationerySupport_tip2 "Dzięki temu istnieje możliwość używania wzorców ze smartTemplate4 w dodatku Stationery.">
+<!ENTITY pref_stationeryLink "Dodatek Stationery">
+<!ENTITY pref_stationeryLink_tip "Pobierz Stationery…">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 – informacje">
 <!ENTITY creator.label "Autor">
