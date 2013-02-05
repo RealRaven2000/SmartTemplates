@@ -223,15 +223,13 @@ SmartTemplate4.mimeDecoder = {
 		let charset = "";
 
 		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468
-		// RFC1555 ISO-8859-8 (Hebrew) is not support.
+		                                                         // not support                    RFC1555 ISO-8859-8 (Hebrew)
 		if (str.search(/\x1b\$\)C/gi) !== -1)                    { charset = "iso-2022-kr"; }   // RFC1557
 		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842
 		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922
-		// RFC1922 iso-2022-cn-ext is not support
+		                                                         // not support                    RFC1922 iso-2022-cn-ext (chinese extended)
 		if (str.search(/\x1b\$\(D/gi) !== -1)
-		{
-			charset = "iso-2022-jp-1";  // RFC2237
-		}
+		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
