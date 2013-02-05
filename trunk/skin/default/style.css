@@ -123,10 +123,26 @@ button.text-link:hover {
 }
 .bugsURL:hover, .bugsURL:focus:hover {
 	background: -moz-linear-gradient(top, rgba(249,185,183,1) 0%, rgba(241,22,15,1) 31%, rgba(227,8,1,1) 51%, rgba(231,111,107,1) 100%) !important;
-	text-decoration: underline;
-	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+	text-decoration: underline !important;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px !important;
 	color: #ffffaa !important;
 }
+
+.stationeryURL, .stationeryURL:focus {
+	-moz-appearance: none !important;
+    border: 1px solid rgb(187, 204, 238) !important;
+	border-radius: 0.2em;
+    background: linear-gradient(to bottom, rgb(40, 132, 218) 0%, rgb(29, 104, 169) 15%, rgb(4, 45, 89) 50%, rgb(26, 92, 150) 83%, rgb(31, 110, 179) 100%) repeat scroll 0% 0% transparent;
+	color: #ffffff;
+    box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.7);
+    text-shadow: 0px 0px 3px rgba(230, 230, 255, 0.9);
+}
+
+.bugsURL:hover, .bugsURL:focus:hover {
+	text-decoration: underline;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+}
+
 
 /* highlight keyboard focus */
 button.homePageURL:focus,
@@ -184,13 +200,12 @@ button.bugsURL:focus {
 }
 
 #fontBox {
-	vertical-align: vertical;
 	margin: 2em 0em 1em 1em;
 }
 
 #lblFontSettings {
 	margin-top: 0.8em;
-	vertical-align: center;
+	vertical-align: middle;
 }
 
 #fontSmaller, #fontLarger {
@@ -214,7 +229,7 @@ button.bugsURL:focus {
 	font-size: 12pt;
 	border-radius: 0 0.5em 0.5em 0 !important;
 	margin-left: 2px;
-	padding-top: -1px;
+	padding-top: 0px;
 }
 
 #txtFontSize {
