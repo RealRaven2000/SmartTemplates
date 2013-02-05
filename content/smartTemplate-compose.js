@@ -192,7 +192,7 @@ SmartTemplate4.classSmartTemplate = function()
 		// okay now for the coup de grace!!
 		
 		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
-			sigText = getProcessedText(sigText, idKey, composeType);
+			sigText = getProcessedText(sigText, idKey, composeType, true);
 		
 		
 
@@ -621,7 +621,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedText(templateText, idKey, composeType) 
+	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 
 	{
 		if (!templateText) 
 			return "";
@@ -638,18 +638,21 @@ SmartTemplate4.classSmartTemplate = function()
 		templateText = templateText.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
 		templateText = templateText.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 
-		// for Draft, let's just assume html for the moment.
-		if (!composeType || pref.isUseHtml(idKey, composeType, false)) {
-			templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-			if (pref.isReplaceNewLines(idKey, composeType, true))
-				{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
-			//else
-			//	{ templateText = templateText.replace(/\n/gm, ""); }
-		} else {
-			templateText = SmartTemplate4.escapeHtml(templateText);
-			// Escape space, if compose is HTML
-			if (gMsgCompose.composeHTML)
-				{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
+		// ignoreHTML, e,g with signature, lets not do html processing
+		if (!ignoreHTML) {
+			// for Draft, let's just assume html for the moment.
+			if (!composeType || pref.isUseHtml(idKey, composeType, false)) {
+				templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
+				if (pref.isReplaceNewLines(idKey, composeType, true))
+					{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
+				//else
+				//	{ templateText = templateText.replace(/\n/gm, ""); }
+			} else {
+				templateText = SmartTemplate4.escapeHtml(templateText);
+				// Escape space, if compose is HTML
+				if (gMsgCompose.composeHTML)
+					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
+			}
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n'
 		                                   + templateText);
@@ -746,17 +749,33 @@ SmartTemplate4.classSmartTemplate = function()
 				case msgComposeType.ForwardAsAttachment:
 				case msgComposeType.ForwardInline:
 					composeCase = 'forward';
-					st4composeType = "fwd";
+					st4composeType = 'fwd';
 					break;
 
 				// do not process -----------------------------------
 				// (Draft:9/Template:10/ReplyWithTemplate:12)
+				case msgComposeType.Draft:
+					composeCase = 'draft';
+					let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
+					let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Components.interfaces.nsIMsgDBHdr);
+					const nsMsgKey_None = 0xffffffff;
+					if(msgDbHdr) {
+						if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
+							st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
+						}
+						if (msgDbHdr.numReferences == 0)
+							st4composeType = 'new';
+					}
+					break;
 				default:
 					st4composeType = "";
 					break;
 			}
 			
 			isActiveOnAccount = pref.isProcessingActive(idKey, st4composeType, false);
+			// draft + startup: do not process!
+			if (startup && composeCase=='draft')
+				isActiveOnAccount = false;
 
 			if (isActiveOnAccount) {
 				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
@@ -767,6 +786,9 @@ SmartTemplate4.classSmartTemplate = function()
 				let newQuote = quoteHeader ? true : false;
 				switch(composeCase) {
 					case 'new':
+						break;
+					case 'draft':
+					  // when do we remove old headers?
 						break;
 					case 'reply':
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
@@ -806,7 +828,8 @@ SmartTemplate4.classSmartTemplate = function()
 			else {
 				util.logDebugOptional('functions','insertTemplate - processing is not active for id ' + idKey);
 				// remove old signature!
-				extractSignature(theIdentity, false, st4composeType);
+				// we shouldn't do this if it is not active on account unless we inserted it just beforehand?
+				// extractSignature(theIdentity, false, st4composeType);
 			}
 
 		}
