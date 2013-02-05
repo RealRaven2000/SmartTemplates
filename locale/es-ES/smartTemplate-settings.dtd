@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
+<!ENTITY pref_parseSignature "Procesar firma">
+<!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
+<!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
+<!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a smartTemplate4">
+<!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">
+<!ENTITY pref_stationeryLink "Extensión Stationery">
+<!ENTITY pref_stationeryLink_tip "Instalar Stationery…">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Acerca de SmartTemplate4">
 <!ENTITY creator.label "Creator">
@@ -69,7 +76,7 @@
 <!ENTITY localized.label "Traductor">
 <!ENTITY translatorNickname.label "urko (BabelZilla)">
 <!ENTITY contributor.label "Colaboradores">
-<!ENTITY about.label "SmartTemplate4 ofrece plantillas inteligentes y fáciles de usar para personalizar el encabezado de respuesta de Thunderbird. Se puede usar para cada cuenta o para la configuración global (cuentas comunes).">
+<!ENTITY about.label "SmartTemplate4 ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variables fijas">
 <!ENTITY ownname.label "Su nombre">
