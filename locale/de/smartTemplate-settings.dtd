@@ -65,6 +65,9 @@
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
+<!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von smartTemplate variable in den Vorlagen von Stationery.">
+<!ENTITY pref_stationeryLink "Stationery Erweiterung">
+<!ENTITY pref_stationeryLink_tip "Stationery Installieren...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Über SmartTemplate4">
 <!ENTITY creator.label "Ersteller">
