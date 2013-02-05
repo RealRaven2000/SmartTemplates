@@ -391,7 +391,7 @@
 				</tabpanel>
 
 				<tabpanel flex = "1" id = "globalSettings">
-					<vbox>
+					<vbox flex = "1">
 						<!-- ######## Global Debug Checkbox ######## -->
 						<hbox id = "breaksBox">
 							<label   id = "txtBreaksLabel"
@@ -409,11 +409,18 @@
 						          label = "&pref_parseSignature;"
 						          tooltiptext = "&pref_parseSignature_tip;"
 						          preference = "pref_parseSignature"/>
-						<checkbox id = "chkStationery"
-						          label = "&pref_stationerySupport;"
-						          tooltiptext = "&pref_stationerySupport_tip;"
-						          preference = "pref_stationerySupport"/>
-					
+						<hbox>
+							<checkbox id = "chkStationery"
+									  label = "&pref_stationerySupport;"
+									  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
+									  preference = "pref_stationerySupport"/>
+							<spacer flex="1" />
+							<button onclick = "SmartTemplate4.Util.showStationeryPage();"
+								        class = "stationeryURL"
+								        label = "&pref_stationeryLink;" 
+										tooltiptext = "&pref_stationeryLink_tip;"/>
+						   
+						</hbox>
 						<checkbox id = "chkStatusButton"
 						          label = "&pref_showStatusIcon.label;"
 						          preference = "pref_showStatusIcon"

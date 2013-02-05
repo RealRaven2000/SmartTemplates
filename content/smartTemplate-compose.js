@@ -17,7 +17,7 @@ SmartTemplate4.classSmartTemplate = function()
 				fileName = sigFile.path;
 				SmartTemplate4.Util.logDebug('readSignatureFile() '
 				        + '\nTrying to read attached signature file: ' + sigFile.leafName
-				        + '\nat: ' + sigFile.path );
+				        + '\nat: ' + fileName );
 // 					        + '\nfile size: ' + sigFile.fileSize
 // 					        + '\nReadable:  '  + sigFile.isReadable()
 // 					        + '\nisFile:    '  + sigFile.isFile());
@@ -623,6 +623,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// Get processed template
 	function getProcessedText(templateText, idKey, composeType) 
 	{
+		if (!templateText) 
+			return "";
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedText()   ==========');
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -636,7 +638,8 @@ SmartTemplate4.classSmartTemplate = function()
 		templateText = templateText.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
 		templateText = templateText.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 
-		if (pref.isUseHtml(idKey, composeType, false)) {
+		// for Draft, let's just assume html for the moment.
+		if (!composeType || pref.isUseHtml(idKey, composeType, false)) {
 			templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
 			if (pref.isReplaceNewLines(idKey, composeType, true))
 				{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
@@ -749,6 +752,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// do not process -----------------------------------
 				// (Draft:9/Template:10/ReplyWithTemplate:12)
 				default:
+					st4composeType = "";
 					break;
 			}
 			

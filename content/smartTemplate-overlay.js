@@ -82,15 +82,15 @@ SmartTemplate4.classPref = function()
 	};
 
 	function getTemplate(idKey, composeType, def) {
-		return getWithIdkey(idKey, composeType + "msg", def)
+		return getWithIdkey(idKey, composeType + "msg", def);
 	};
 
 	function getQuoteHeader(idKey, composeType, def) {
-		return getWithIdkey(idKey, composeType + "header", def)
+		return getWithIdkey(idKey, composeType + "header", def);
 	};
 
 	function isProcessingActive(idKey, composeType, def) {
-		return getWithIdkey(idKey, composeType, def)
+		return getWithIdkey(idKey, composeType, def);
 	};
 
 	// whether an Identity uses the common account
@@ -103,6 +103,9 @@ SmartTemplate4.classPref = function()
 	// Get preference with identity key
 	function getWithIdkey(idkey, pref, def)
 	{
+	  // fix problems in draft mode...
+	  if (!pref) 
+			return ""; // draft etc.
 		// extensions.smarttemplate.id8.def means account id8 uses common values.
 		if (getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
 		  // common preference - test with .common!!!!
@@ -223,11 +226,11 @@ SmartTemplate4.mimeDecoder = {
 		let charset = "";
 
 		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468
-		                                                         // not support                    RFC1555 ISO-8859-8 (Hebrew)
+		                                                         // not supported                  RFC1555 ISO-8859-8 (Hebrew)
 		if (str.search(/\x1b\$\)C/gi) !== -1)                    { charset = "iso-2022-kr"; }   // RFC1557
 		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842
 		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922
-		                                                         // not support                    RFC1922 iso-2022-cn-ext (chinese extended)
+		                                                         // not supported                  RFC1922 iso-2022-cn-ext (chinese extended)
 		if (str.search(/\x1b\$\(D/gi) !== -1)
 		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
