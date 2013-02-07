@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
+<!ENTITY pref_parseSignature "Handtekening verwerken">
+<!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
+<!ENTITY pref_stationerySupport "Ondersteuning Stationery-add-on">
+<!ENTITY pref_stationerySupport_tip "Ondersteunt het gebruik van Stationery tegelijkertijd met smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
+<!ENTITY pref_stationeryLink "Stationery-add-on">
+<!ENTITY pref_stationeryLink_tip "Stationery downloaden…">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Over SmartTemplate4">
 <!ENTITY creator.label "Bedenker">

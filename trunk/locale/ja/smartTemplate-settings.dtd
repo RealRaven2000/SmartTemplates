@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
+<!ENTITY pref_parseSignature "署名での変数の使用を許可する">
+<!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">
+<!ENTITY pref_stationerySupport "Stationery をサポートする">
+<!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate4 の同時使用をサポートします。">
+<!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate4 の変数を使用できます。">
+<!ENTITY pref_stationeryLink "Stationery アドオン">
+<!ENTITY pref_stationeryLink_tip "Stationery アドオンを入手します。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 について">
 <!ENTITY creator.label "作者">
