@@ -61,6 +61,13 @@
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
+<!ENTITY pref_parseSignature "Allekirjoitus">
+<!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
+<!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
+<!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate4:n kanssa.">
+<!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
+<!ENTITY pref_stationeryLink "Stationary-lisäosa">
+<!ENTITY pref_stationeryLink_tip "Hanki Stationary...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 - Tietoja">
 <!ENTITY creator.label "Tekijä">
