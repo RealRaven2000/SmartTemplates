@@ -3,10 +3,10 @@
 
 <!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
-<dialog id="smartTemplateHelpDialog"
-        title="&help_dialog_title;"
-        xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+<dialog id = "smartTemplateHelpDialog"
+        title = "&help_dialog_title;"
+        xmlns:html = "http://www.w3.org/1999/xhtml"
+        xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         onload = "SmartTemplate4.Help.onLoad();"
         onunload = "SmartTemplate4.Help.onUnload();"
         onresize = "SmartTemplate4.Help.onResize(this);"
@@ -17,14 +17,14 @@
 				<caption label="&help_keyword.cap;"/>
 				<iframe id="helpFrame"
 				        src="chrome://smarttemplate4/content/help.xhtml"
-				        type="chrome" 
+				        type="content" 
 				        />
 			</groupbox>
 		</vbox>
 
-<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
 <script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-help.js"/>
+<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
 	
 </dialog>

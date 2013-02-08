@@ -112,6 +112,10 @@
 		# added 24px icon
 		# added change log
 		
+		Review specific:
+		help.xul - set iframe type="content" 
+		
+		
 		
 
 */
