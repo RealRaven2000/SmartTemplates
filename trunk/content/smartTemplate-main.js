@@ -113,7 +113,51 @@
 		# added change log
 		
 		Review specific:
-		help.xul - set iframe type="content" 
+		1) help.xul - set iframe type="content" 
+		2) To Do - revisit usage of innerHtml
+		3) habe ich mittlerweile auch gefixt, wir ueberschreiben Stationery nicht mehr. Allerdings funktioniert der neue Code erst ab Stationery version 0.8.
+    4) habe ich bisher gefixt
+    5) To Do - send a version to Nils for pre-testing on Mac. MIght require custom style sheet. 
+    6) To Do - test on Postbox
+		
+=========================
+    REVIEWS - 0.9.2 (Nils Maier)
+		
+		1) In help.xul, please set iframe type="content" if possible. It doesn't seem necessary for the page to have chrome-privs. Otherwise, please add a comment why this is not the case.
+
+		2) Try to avoid innerHTML where possible. E.g. in smartTemplate-compose.js it says "// wrap text only signature to fix [Bug 25093]!", so better use sn.textContent. Check all uses of innerHTML accordingly. You may want to look into http://mxr.mozilla.org/mozilla-central/source/parser/html/nsIParserUtils.idl and/or http://mxr.mozilla.org/mozilla-central/source/parser/html/nsIScriptableUnescapeHTML.idl for additional input sanitation.
+
+		3) When overriding/wrapping functions, it is recommended to use the Function.apply method. Example:
+		https://developer.mozilla.org/en-US/docs/XUL_School/Appendix_C:_Avoid_using_eval_in_Add-ons#Overriding.2FExtending_existing_functions
+		(E.g. smartTemplate-main.js)
+		Also, it is not recommended to stuff your own properties into globals (Stationery.SmartTemplate = new Object()) to avoid conflicts with the core code (e.g. to not confuse code doing for (let p in Stationery)) or other add-ons.
+
+		4) Adding a var to a template by clicking on it in the help window, the change will not be persisted unless one further edits the message text.
+		STR: Edit template a bit. Add variable by click. Close window (OSX is instantApply). Reopen window -> Variable not there
+		STR: Edit template a bit. Add variable by click. Edit a bit more. Close window (OSX is instantApply). Reopen window -> Variable *is* there
+
+		5) The prefwindow, in particular the tabs, doesn't display correctly on mac: http://666kb.com/i/c97a731tmm72h62ck.png
+
+		6) There is an error during startup:
+		Warnung: WARN addons.xpi: Ignoring invalid targetApplication entry in install manifest
+		Quelldatei: resource:///modules/XPIProvider.jsm
+		Zeile: 805
+		Likely because postbox is commented out, but the rdf ref is still there.
+
+		Consider the following suggestion and recommendations:
+		1) Please consider using Services.jsm (or creating your own if you truly want to support appversions that do not support that yet). Consider defining additional service references not covered by Services.jsm in your own code module.
+		See e.g. https://github.com/scriptish/scriptish/blob/master/extension/modules/constants.js
+		This makes the code somewhat faster, but more importantly, easier to read, maintain and review.
+
+		2) Did you recently test your minVersions?
+
+		3) There are multiple CSS errors you may want to address:
+		Warnung: Fehler beim Verarbeiten des Wertes fuer 'padding-top'.  Deklaration ignoriert.
+		Quelldatei: chrome://smarttemplate4/skin/default/style.css
+		Zeile: 217
+		Warnung: Fehler beim Verarbeiten des Wertes fuer 'vertical-align'.  Deklaration ignoriert.
+		Quelldatei: chrome://smarttemplate4/skin/default/style.css
+		Zeile: 187		
 		
 		
 		
@@ -133,7 +177,9 @@ var SmartTemplate4 = {
 		NotifyComposeBodyReady: function() {
 			// For Stationery integration, we need to hack 
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			if (SmartTemplate4.Preferences.isStationerySupported && Stationery && Stationery.FireEvent) {
+			if (SmartTemplate4.Preferences.isStationerySupported && 
+			    (typeof Stationery != 'undefined') && 
+					Stationery.FireEvent) {
 			  ; // we do nothing as we have our own event handler
 			}
 			else
@@ -147,19 +193,48 @@ var SmartTemplate4 = {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 		// alternative events when 
 		if (SmartTemplate4.Preferences.isStationerySupported) {
+
 			window.addEventListener('stationery-template-loading', function(event) {
+			  // synchronous event!
 				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loading');
+				SmartTemplate4.notifyStationeryLoading(event);
+			}, false);
+
+			window.addEventListener('stationery-template-reloading', function(event) {
+			  // is this a synchronous event?
+				SmartTemplate4.Util.logDebug('EVENT: stationery-template-reloading');
+				SmartTemplate4.notifyStationeryLoading(event);
 			}, false);
 
 			window.addEventListener('stationery-template-loaded', function(event) {
+			  // async event
 				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loaded');
-				if (SmartTemplate4.Preferences.Debug) {
-					alert('Debug: Stationery Template loaded');
-				}
 				SmartTemplate4.notifyComposeBodyReady(event);
 			}, false);		
 		}
 	},
+	
+	notifyStationeryLoading: function(evt)
+	{
+	  // only if we support stationery, we will be able to process the template before Stationery inserts it..
+		let o= {};
+		o.preprocessHTML = function(t) { 
+			SmartTemplate4.Util.logDebug('preprocessor for stationery running...');
+		  let idKey = document.getElementById("msgIdentity").value;
+			let st4composeType = SmartTemplate4.Util.getComposeType();
+			if (st4composeType.indexOf('(draft)')) {
+				st4composeType = st4composeType.substr(0,3);
+			}
+			t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType); 
+			SmartTemplate4.Util.logDebug('preprocessor complete.');
+		};
+		evt.currentTarget.Stationery.templates.registerFixer(o);
+		// shouldn't this be
+		//   Stationery_.currentTemplate.registerFixer(o); 
+		// ??
+		
+	},
+	
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
@@ -173,11 +248,11 @@ var SmartTemplate4 = {
 			    &&
 					evt.currentTarget.Stationery_) 
 			{
-				dbg += '\nStationery is used';
-				let stationeryFile = evt.currentTarget.Stationery_.CurrentTemplateFileName;
-				if (stationeryFile !== '')
+				dbg += '\nStationery is active';
+				dbg += '\nTemplate used is:' + stationeryTemplate.url;
+				let stationeryTemplate = evt.currentTarget.Stationery_.currentTemplate;
+				if (stationeryTemplate.type !== 'blank' && stationeryTemplate.url !== 'blank')
 					isStationeryTemplate = true;
-					dbg += '\nTemplate used is:' + stationeryFile;
 			}			
 		}
 		this.Util.logDebug(dbg);
@@ -308,11 +383,20 @@ var SmartTemplate4 = {
 		this.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	
+	setStatusIconMode: function(elem) {
+	  try {
+			this.Preferences.setMyIntPref('statusIconLabelMode', parseInt(elem.value));
+			this.updateStatusBar(elem.parentNode.firstChild.checked);
+		}
+		catch (ex) {
+			this.Util.logException("setStatusIconMode", ex);
+		}
+	} ,
+	
 	updateStatusBar: function(show) {
 		this.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar(' + show +')');
 		let doc = (typeof show == 'undefined') ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
 		let btn = doc.getElementById('SmartTemplate4Messenger');
-		(typeof show == 'undefined') 
 		if (btn) {
 			let showPanel = (typeof show == 'undefined') ? 
 			                SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') :
