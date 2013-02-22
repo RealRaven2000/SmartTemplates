@@ -58,7 +58,68 @@ SmartTemplate4.Util = {
 	FlagsHomepage:   "http://flags.blogpotato.de/",
 	StationeryPage:  "https://addons.mozilla.org/thunderbird/addon/stationery",
 
+	get mailDocument() {
+	  return gMsgCompose.editor.document;
+	} ,
+	
+	getComposeType: function() {
+		let msgComposeType = Components.interfaces.nsIMsgCompType;
+		let st4composeType = '';
+		
+		switch (gMsgCompose.type) {
+			// new message -----------------------------------------
+			//	(New:0 / NewsPost:5 / MailToUrl:11)
+			case msgComposeType.New:
+			case msgComposeType.NewsPost:
+			case msgComposeType.MailToUrl:
+				// composeCase = 'new';
+				st4composeType = 'new';
+				break;
 
+			// reply message ---------------------------------------
+			// (Reply:1 / ReplyAll:2 / ReplyToSender:6 / ReplyToGroup:7 /
+			// ReplyToSenderAndGroup:8 / ReplyToList:13)
+			case msgComposeType.Reply:
+			case msgComposeType.ReplyAll:
+			case msgComposeType.ReplyToSender:
+			case msgComposeType.ReplyToGroup:
+			case msgComposeType.ReplyToSenderAndGroup:
+			case msgComposeType.ReplyToList:
+				// composeCase = 'reply';
+				st4composeType = 'rsp';
+				break;
+
+			// forwarding message ----------------------------------
+			// (ForwardAsAttachment:3 / ForwardInline:4)
+			case msgComposeType.ForwardAsAttachment:
+			case msgComposeType.ForwardInline:
+				// composeCase = 'forward';
+				st4composeType = 'fwd';
+				break;
+
+			// do not process -----------------------------------
+			// (Draft:9/Template:10/ReplyWithTemplate:12)
+			case msgComposeType.Draft:
+				// composeCase = 'draft';
+				let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
+				let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Components.interfaces.nsIMsgDBHdr);
+				const nsMsgKey_None = 0xffffffff;
+				if(msgDbHdr) {
+					if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
+						st4composeType = 'rsp(draft)'; // just guessing, of course it could be fwd as well
+					}
+					if (msgDbHdr.numReferences == 0)
+						st4composeType = 'new(draft)';
+				}
+				break;
+			default:
+				st4composeType = "";
+				break;
+		}
+		return st4composeType;
+
+	} ,
+	
 	getBundleString: function(id, defaultText) {
 
 		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
