@@ -909,7 +909,7 @@ SmartTemplate4.regularize = function(msg, type)
 					return "";
 				case "cursor":
 					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Cursor found");
-					return "[[cursor]]";
+					return "<span id='_AthCaret'>[[cursor]]</span>"; // maybe make this invisible??
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(
