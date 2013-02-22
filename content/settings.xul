@@ -364,7 +364,8 @@
 		<preferences id = "globals">
 			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
 			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
-			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool"/>
+			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
+			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
@@ -421,12 +422,26 @@
 										tooltiptext = "&pref_stationeryLink_tip;"/>
 						   
 						</hbox>
-						<checkbox id = "chkStatusButton"
-						          label = "&pref_showStatusIcon.label;"
-						          preference = "pref_showStatusIcon"
-						          instantApply="true" 
-						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
-						          onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+						<hbox>
+							<checkbox id = "chkStatusButton"
+									  label = "&pref_showStatusIcon.label;"
+									  preference = "pref_showStatusIcon"
+									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
+									  onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+							<spacer flex="1" />
+							<menulist id = "iconType"
+									  label = ""
+									  flex = "1"
+									  preference = "pref_StatusIconMode"
+									  oncommand = "SmartTemplate4.setStatusIconMode(this);">
+								<menupopup>
+									<menuitem label = "&pref_StatusIcon.IconOnly;" value = "0"/>
+									<menuitem label = "&pref_StatusIcon.IconText;" value = "2"/>
+									<menuitem label = "&pref_StatusIcon.IconHoverText;" value = "1"/>
+								</menupopup>
+							</menulist>
+							
+					    </hbox>
 						<spacer />
 						<hbox id = "fontBox">
 							<label  id = "lblFontSettings"
@@ -440,7 +455,6 @@
 							        label = "A" />
 							<textbox id = "txtFontSize"
 							         preference = "pref_fontSize"
-							         instantApply="true" 
 							         disabled = "true"/>
 						</hbox>
 
