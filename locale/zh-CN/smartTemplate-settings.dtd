@@ -61,13 +61,6 @@
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
-<!ENTITY pref_parseSignature "Process signature">
-<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
-<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
-<!ENTITY pref_stationeryLink "Stationery Addon">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "关于SmartTemplate4">
 <!ENTITY creator.label "创造者">

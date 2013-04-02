@@ -56,6 +56,8 @@ SmartTemplate4.classSmartTemplate = function()
 		                                   + htmlSigText + '[EOF]');
 		return htmlSigText;
 	}
+	
+	
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
 	// -----------------------------------
 	// Extract Signature
@@ -72,7 +74,7 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.sigInTemplate = false;
 
 		let pref = SmartTemplate4.pref;
-		let idKey = document.getElementById("msgIdentity").value;
+		let idKey = document.getElementById("msgIdentity").value; // SmartTemplate4.Util.mailDocument?
 
 		let isSignatureTb = htmlSigText || Ident.attachSignature;
 		let sigNode = null;
@@ -158,7 +160,7 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 			}
 			// insert a place holder
-			let originalSigPlaceholder = gMsgCompose.editor.document.createElement("div");
+			let originalSigPlaceholder = SmartTemplate4.Util.mailDocument.createElement("div");
 			originalSigPlaceholder.className = "st4originalSignature"; // we might have to replace this again...
 			let sp = sigNode.parentNode;
 			sp.insertBefore(originalSigPlaceholder, sigNode);
@@ -198,7 +200,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		if (!sig || typeof sig == 'string') {
 			if (gMsgCompose.composeHTML) {
-				sig = gMsgCompose.editor.document.createElement("div");
+				sig = SmartTemplate4.Util.mailDocument.createElement("div");
 				sig.className = 'moz-signature';
 				// if our signature is text only, we need to replace \n with <br>
 				if (!isSignatureHTML) {
@@ -430,7 +432,7 @@ SmartTemplate4.classSmartTemplate = function()
 		// let reg = /%\[\[cursor\[\[%/gm;
 		if(!template)
 			return false;
-		let match = template.toLowerCase().match("[[cursor]]");
+		let match = template.toLowerCase().match('<div class="moz-signature">');
 		return (!match ? false : true);
 	};
 	
@@ -654,9 +656,11 @@ SmartTemplate4.classSmartTemplate = function()
 					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 			}
 		}
-		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n'
-		                                   + templateText);
+		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n' + templateText);
+		
 		let regular = SmartTemplate4.regularize(templateText, composeType);
+		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
+		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedText()   ========== END');
 		return regular;
 	};
@@ -818,7 +822,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// put new quote header always on top
 				// we should probably find the previous node before blockquote and insert a new there element there
 				if (newQuote) {
-					let qdiv = editor.document.createElement("div");
+					let qdiv = SmartTemplate4.Util.mailDocument.createElement("div");
 					qdiv.id = "smartTemplate4-quoteHeader";
 					qdiv.innerHTML = quoteHeader;
 					editor.rootElement.insertBefore(qdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
@@ -845,7 +849,7 @@ SmartTemplate4.classSmartTemplate = function()
 		{
 			// new global settings to deal with [Bug 25084]
 			let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
-			templateDiv = editor.document.createElement("div");
+			templateDiv = SmartTemplate4.Util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
 				templateDiv.id = "smartTemplate4-template";
@@ -865,7 +869,7 @@ SmartTemplate4.classSmartTemplate = function()
 					editor.beginningOfDocument();
 					for (let i = 0; i < breaks; i++) 
 						gMsgCompose.editor.insertNode(
-						                   gMsgCompose.editor.document.createElement("br"),
+						                   SmartTemplate4.Util.mailDocument.createElement("br"),
 						                   gMsgCompose.editor.rootElement, 0);
 					// the first Child will be BLOCKQUOTE (header is inserted afterwards)
 					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
@@ -874,7 +878,7 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 				else {
 					for (let i = 0; i < breaks; i++)
-						gMsgCompose.editor.rootElement.appendChild(gMsgCompose.editor.document.createElement("br"));
+						gMsgCompose.editor.rootElement.appendChild(SmartTemplate4.Util.mailDocument.createElement("br"));
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
@@ -970,24 +974,24 @@ SmartTemplate4.classSmartTemplate = function()
 					
 					// wrap text only signature to fix [Bug 25093]!
 					if (typeof theSignature === "string")  {
-						var sn = gMsgCompose.editor.document.createElement("div");
+						var sn = SmartTemplate4.Util.mailDocument.createElement("div");
 						sn.innerHTML = theSignature;
 						theSignature = sn;
 					}
 					
 					if (theIdentity.sigBottom) {
-						bodyEl.appendChild(gMsgCompose.editor.document.createElement("br"));
+						bodyEl.appendChild(SmartTemplate4.Util.mailDocument.createElement("br"));
 						bodyEl.appendChild(theSignature);
 					}
 					else {
 						// reply above, before div smartTemplate4-template
-						templateDiv = document.getElementById('smartTemplate4-template');
+						templateDiv = SmartTemplate4.Util.mailDocument.getElementById('smartTemplate4-template'); // was document
 						// if we don't find this, lets take the first child div
 						if (!templateDiv) {
 							templateDiv = bodyEl.firstChild.nextSibling;
 						}
 						bodyEl.insertBefore(theSignature, templateDiv);
-						bodyEl.insertBefore(gMsgCompose.editor.document.createElement("br"), templateDiv);
+						bodyEl.insertBefore(SmartTemplate4.Util.mailDocument.createElement("br"), templateDiv);
 					}
 				}
 			}
@@ -1004,6 +1008,8 @@ SmartTemplate4.classSmartTemplate = function()
 					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
+						// let thunderbird do it...
+						/*
 						editor.selection.removeAllRanges();
 						// find offset for [[cursor]]
 						editor.selection.collapse(templateDiv, 0);
@@ -1017,6 +1023,7 @@ SmartTemplate4.classSmartTemplate = function()
 						for (let i=0; i<10; i++)
 							editor.selectionController.characterMove(true, true); // highlight [[cursor]]
 						// editor.selectionController.wordExtendForDelete(true);
+						*/
 					}
 					else {
 						if (theIdentity.replyOnTop) {
@@ -1055,6 +1062,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// Public methods of classSmartTemplate
 	this.insertTemplate = insertTemplate;
 	this.extractSignature = extractSignature;
+  this.getProcessedText = getProcessedText;	
 };
 
 

@@ -101,10 +101,11 @@
 	  # toolbar button
 		# fixed a problem with preference not updating (found by AMO reviewer Nils Maier)
 	  # %cursor% variable
+		# deleteText( _) funciton
 	  # parsing of variables in Signature - enable extensions.smartTemplate4.parseSignature
 	  # Postbox support
 		# stabilised signature code base
-		# Preparation for Stationery support - will work with the new event model of Stationery 0.8 - at the moment template inserting is disabled is a Stationery Template is used
+		# Preparation for Stationery 0.8 support - will work with the new event model of Stationery 0.8 - at the moment template inserting is disabled is a Stationery Template is used
 		  to test, enable extensions.smartTemplate4.stationery.supported
 			use extensions.smartTemplate4.stationery.test.disableST4notification to see a message when stationery events happen
 		# mailto link support for the main header fields that hold email address data: %to(mail,link)% %to(name,link)%$ %to(firstname,link)%  etc.
@@ -164,6 +165,8 @@
 
 */
 
+Components.utils.import("resource://smarttemplate4/smartTemplate-stationery.jsm");
+
 
 var SmartTemplate4 = {
 	// definitions for whatIsX (time of %A-Za-z%)
@@ -178,8 +181,9 @@ var SmartTemplate4 = {
 			// For Stationery integration, we need to hack 
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
 			if (SmartTemplate4.Preferences.isStationerySupported && 
-			    (typeof Stationery != 'undefined') && 
-					Stationery.FireEvent) {
+			    (typeof Stationery_ != 'undefined'))
+			{
+				SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: n.o.p, as Stationery 0.8+ is not installed');
 			  ; // we do nothing as we have our own event handler
 			}
 			else
@@ -194,18 +198,6 @@ var SmartTemplate4 = {
 		// alternative events when 
 		if (SmartTemplate4.Preferences.isStationerySupported) {
 
-			window.addEventListener('stationery-template-loading', function(event) {
-			  // synchronous event!
-				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loading');
-				SmartTemplate4.notifyStationeryLoading(event);
-			}, false);
-
-			window.addEventListener('stationery-template-reloading', function(event) {
-			  // is this a synchronous event?
-				SmartTemplate4.Util.logDebug('EVENT: stationery-template-reloading');
-				SmartTemplate4.notifyStationeryLoading(event);
-			}, false);
-
 			window.addEventListener('stationery-template-loaded', function(event) {
 			  // async event
 				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loaded');
@@ -214,26 +206,20 @@ var SmartTemplate4 = {
 		}
 	},
 	
-	notifyStationeryLoading: function(evt)
-	{
-	  // only if we support stationery, we will be able to process the template before Stationery inserts it..
-		let o= {};
-		o.preprocessHTML = function(t) { 
-			SmartTemplate4.Util.logDebug('preprocessor for stationery running...');
-		  let idKey = document.getElementById("msgIdentity").value;
-			let st4composeType = SmartTemplate4.Util.getComposeType();
-			if (st4composeType.indexOf('(draft)')) {
-				st4composeType = st4composeType.substr(0,3);
-			}
-			t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType); 
-			SmartTemplate4.Util.logDebug('preprocessor complete.');
-		};
-		evt.currentTarget.Stationery.templates.registerFixer(o);
-		// shouldn't this be
-		//   Stationery_.currentTemplate.registerFixer(o); 
-		// ??
-		
-	},
+	// Stationery 0.8 support!
+  preprocessHTMLStationery: function(t) {
+    SmartTemplate4.Util.logDebug('preprocessor for stationery running...');
+    let idKey = document.getElementById("msgIdentity").value;
+    if(!idKey)
+      idKey = gMsgCompose.identity.key;
+    let st4composeType = SmartTemplate4.Util.getComposeType();
+    if (st4composeType.indexOf('(draft)')) {
+      st4composeType = st4composeType.substr(0,3);
+    }
+    // ignore html!
+    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true);
+    SmartTemplate4.Util.logDebug('preprocessor complete.');
+  },	
 	
 	// -------------------------------------------------------------------
 	// A handler to add template message
@@ -242,20 +228,21 @@ var SmartTemplate4 = {
 	{
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
 		let isStationeryTemplate = false;
+		let stationeryTemplate = null;
 		
 		if (evt) {
 			if (evt.currentTarget
 			    &&
 					evt.currentTarget.Stationery_) 
 			{
+				stationeryTemplate = evt.currentTarget.Stationery_.currentTemplate;
 				dbg += '\nStationery is active';
 				dbg += '\nTemplate used is:' + stationeryTemplate.url;
-				let stationeryTemplate = evt.currentTarget.Stationery_.currentTemplate;
 				if (stationeryTemplate.type !== 'blank' && stationeryTemplate.url !== 'blank')
 					isStationeryTemplate = true;
 			}			
 		}
-		this.Util.logDebug(dbg);
+		SmartTemplate4.Util.logDebug(dbg);
 		// Add template message
 		
 		this.smartTemplate.insertTemplate(true, isStationeryTemplate);
@@ -266,7 +253,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	loadIdentity : function(startup, previousIdentity)
 	{
-		this.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
 			this.original_LoadIdentity(startup);
@@ -380,7 +367,7 @@ var SmartTemplate4 = {
 
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
-		this.Util.logDebug('SmartTemplate4.init() ends.');
+		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	
 	setStatusIconMode: function(elem) {
@@ -389,12 +376,12 @@ var SmartTemplate4 = {
 			this.updateStatusBar(elem.parentNode.firstChild.checked);
 		}
 		catch (ex) {
-			this.Util.logException("setStatusIconMode", ex);
+			SmartTemplate4.Util.logException("setStatusIconMode", ex);
 		}
 	} ,
 	
 	updateStatusBar: function(show) {
-		this.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar(' + show +')');
+		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar(' + show +')');
 		let doc = (typeof show == 'undefined') ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
 		let btn = doc.getElementById('SmartTemplate4Messenger');
 		if (btn) {
@@ -416,10 +403,10 @@ var SmartTemplate4 = {
 					break;
 			}
 			btn.className = theClass;
-			this.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass);		
+			SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass);		
 		}
 		else
-			this.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+			SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
 			
 	} ,
 
