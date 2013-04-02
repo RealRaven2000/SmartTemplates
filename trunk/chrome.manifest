@@ -5,6 +5,7 @@
 
 #### MISC FILES CONTENT FOLDER ####
 content     smarttemplate4            content/
+resource    smarttemplate4            content/
 
 #### SKIN ####
 skin        smarttemplate4            classic/1.0 skin/

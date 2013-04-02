@@ -61,13 +61,6 @@
 <!ENTITY help_keyword.cap "求助">
 <!ENTITY pref_debug_check "除錯模式">
 <!ENTITY pref_debug_tip "點右鍵使用進階的除錯選項">
-<!ENTITY pref_parseSignature "Process signature">
-<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
-<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
-<!ENTITY pref_stationeryLink "Stationery Addon">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "有關 SmartTemplate4">
 <!ENTITY creator.label "建立者">
@@ -119,13 +112,8 @@
 <!ENTITY datelocal.label "日期/時間 (本地格式)">
 <!ENTITY dateshort.label "簡短的日期/時間 (例如. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "時區 (+0100,+0200,...)">
-<!ENTITY tzname.label "GMT, PST, EST, ... ">
 <!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
 <!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">
-<!ENTITY A.label "Day of Week (Friday)">
-<!ENTITY a.label "Day of Week (Fri.)">
-<!ENTITY d.label "Day of Month (01 to 31) - with leading zero">
-<!ENTITY e.label "Day of Month (1 to 31)">
 <!ENTITY n.label "月 (1到12)">
 <!ENTITY B.label "月 (一月)">
 <!ENTITY b.label "月 (一月)">
@@ -149,19 +137,12 @@
 <!ENTITY xsent_short.cap "短字串的範例">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "答案: 星期日, 20/12/2011 08:54:21">
-<!ENTITY xsent_short_note.label "The following variables can be used in both variants">
-<!ENTITY localedate.label "Date / Time (Locale Format)">
-<!ENTITY shortdate.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
-<!ENTITY datetimezone.label "Timezone (+0100, +0200, ... )">
-<!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "設定及樣板的匯出/匯入">
 <!ENTITY im-ex_note1.label "您可以匯出及匯入設定和關聯每一個帳號的樣板.">
 <!ENTITY im-ex_note2.label "第一,選擇您想要匯出從SmartTemplate4設定下拉視窗的帳號.">
 <!ENTITY im-ex_note3.label "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦.">
 <!ENTITY im-ex_note4.label "要匯入檔案,選擇一個您想要從 SmartTemplate4 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'.">
 <!ENTITY im-ex_note5.label "選擇您想匯入的 SmartTemplate4 檔案 (xxx.st4).">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
-<!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "HTML 樣板只能使用 UTF-8 (Unicode) 字元!">
 <!ENTITY table.cap "變數使用方法">
 <!ENTITY table_note.label "錯誤使用變數將會在郵件中產生 'Error Console'!">

@@ -167,6 +167,7 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 	let inputStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
 						  createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
 
+  SmartTemplate4.Util.logDebugOptional('functions','martTemplate4.classGetHeaders(' + messageURI + ')');
 	inputStream.init(messageStream);
 	try {
 		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
@@ -357,6 +358,21 @@ SmartTemplate4.mimeDecoder = {
 	} // split
 };
 
+SmartTemplate4.parseModifier = function(msg) {
+	let matches = msg.match(/%deleteText\(.*\)%/g);
+	if (matches) {
+		for (let i=0; i<matches.length; i++) {
+			// parse out the argument (string to delete)
+			msg = msg.replace(matches[i],'');
+			let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
+			if (dText) {
+				msg = msg.replace(dText[0].substring(1,dText[0].length-2));
+			}
+		}
+	}
+	return msg;
+}
+	
 // -------------------------------------------------------------------
 // Regularize template message
 // -------------------------------------------------------------------
@@ -423,7 +439,7 @@ SmartTemplate4.regularize = function(msg, type)
 		// setRw2h("header", "reserved word",,,)
 		function setRw2h() {
 			for(var i = 1; i < arguments.length; i++) {
-				rw2h[arguments[i]] = arguments[0];
+				rw2h[arguments[i]] = arguments[0]; // set the type of each token: d.c., To, Cc, Date, From, Subject
 			}
 		}
 		// Check existence of a header related to the reserved word.
@@ -434,9 +450,10 @@ SmartTemplate4.regularize = function(msg, type)
 				let s = (el == "d.c.")
 					? str
 					: hdr.get(el ? el : reservedWord) != "" ? str : "";
+				if (!el)
+					SmartTemplate4.Util.logDebug('Removing unknown variable: %' +  reservedWord + '%');
 				return s;
 			} catch (ex) {
-
 				SmartTemplate4.Util.displayNotAllowedMessage(reservedWord);
 				return "";
 			}
@@ -455,13 +472,13 @@ SmartTemplate4.regularize = function(msg, type)
 		// Reserved words that do not depend on the original message.
 		// identity(name) is the new ownname
 		// identity(mail) is the new ownmail
-		setRw2h("d.c.", "ownname", "ownmail",
+		setRw2h("d.c.", "ownname", "ownmail", "deleteText", "replaceText",
 						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
 						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor", "identity");
 
 		// Reserved words which depend on headers of the original message.
-		setRw2h("To",   "to", "toname", "tomail");
-		setRw2h("Cc",   "cc", "ccname", "ccmail");
+		setRw2h("To", "to", "toname", "tomail");
+		setRw2h("Cc", "cc", "ccname", "ccmail");
 		setRw2h("Date", "X:=sent");
 		setRw2h("From", "from", "fromname", "frommail");
 		setRw2h("Subject", "subject");
@@ -765,7 +782,7 @@ SmartTemplate4.regularize = function(msg, type)
 	}
 	
 	// Replace reserved words
-	function replaceReservedWords(dmy, token, f)
+	function replaceReservedWords(dmy, token, arg)
 	{
 	  // calling this function just for logging purposes
 		function finalize(tok, s, comment) {
@@ -792,16 +809,18 @@ SmartTemplate4.regularize = function(msg, type)
 		try {
 			// for backward compatibility
 			switch (token) {
-				case "fromname":  token = "From"; f = "(name)";   break;
-				case "frommail":  token = "From"; f = "(mail)";   break;
-				case "toname":    token = "To";   f = "(name)";   break;
-				case "tomail":    token = "To";   f = "(mail)";   break;
-				case "ccname":    token = "Cc";   f = "(name)";   break;
-				case "ccmail":    token = "Cc";   f = "(mail)";   break;
+				case "fromname":  token = "From"; arg = "(name)";   break;
+				case "frommail":  token = "From"; arg = "(mail)";   break;
+				case "toname":    token = "To";   arg = "(name)";   break;
+				case "tomail":    token = "To";   arg = "(mail)";   break;
+				case "ccname":    token = "Cc";   arg = "(name)";   break;
+				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
 			}
 
 
 			switch(token){
+				case "deleteText": // return unchanged
+					return '%' + token + arg + '%';
 				case "datelocal":
 				case "dateshort":
 					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday) {
@@ -827,9 +846,9 @@ SmartTemplate4.regularize = function(msg, type)
 				  /////
 					let fullId = identity.fullName + ' <' + identity.email + '>';
 					// we need the split to support (name,link) etc.
-					token = mime.split(fullId, charset, f);
+					token = mime.split(fullId, charset, arg);
 					// allow html as to(link) etc. builds a href with mailto
-					if (f && SmartTemplate4.Util.isFormatLink(f)) 
+					if (arg && SmartTemplate4.Util.isFormatLink(arg)) 
 						return token;
 					break;
 				case "T": // today
@@ -861,14 +880,14 @@ SmartTemplate4.regularize = function(msg, type)
 				case "S":                               // Seconds 00..59
 					return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
-					return finalize(token, getTimeZoneAbbrev(tm, (f=="(1)")), "getTimeZoneAbbrev(tm, " + (f=="(1)") + ")");
+					return finalize(token, getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
 				case "sig":
-					let removeDashes = (f=="(2)");
+					let removeDashes = (arg=="(2)");
 					let ret = getSignatureInner(removeDashes);
 					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(removeDashes = ' + removeDashes +')');
 					return ret;
 				case "subject":
-					let current = (f=="(2)");
+					let current = (arg=="(2)");
 					ret = getSubject(current);
 					return finalize(token, ret);
 				case "newsgroup":
@@ -883,7 +902,7 @@ SmartTemplate4.regularize = function(msg, type)
 				case "b":
 					return finalize(token, cal.shortMonthName(tm.getMonth()), "cal.shortMonthName(" + tm.getMonth() +")");   // locale month (short)
 				case "p":
-					switch (f) {
+					switch (arg) {
 						case "(1)":
 							return finalize(token + "(1)", tm.getHours() < 12 ? "a.m." : "p.m."); // locale am or pm
 						case "(2)":
@@ -896,7 +915,7 @@ SmartTemplate4.regularize = function(msg, type)
 				case "dbg1":
 					return finalize(token, cal.list());
 				case "cwIso": // ISO calendar week [Bug 25012]
-					let offset = parseInt(f.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
+					let offset = parseInt(arg.substr(1,1)); // (0) .. (6) weekoffset: 0-Sunday 1-Monday
 					return finalize(token, "" + SmartTemplate4.Util.getIsoWeek(tm, offset));
 				// Change time of %A-Za-z%
 				case "X:=sent":
@@ -909,20 +928,20 @@ SmartTemplate4.regularize = function(msg, type)
 					return "";
 				case "cursor":
 					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Cursor found");
-					return "<span id='_AthCaret'>[[cursor]]</span>"; // maybe make this invisible??
+					return '<div class="moz-signature"></div>'; // maybe make this invisible??
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(
 					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
 					                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
 					if (isStripQuote) {
-						token = mime.split(hdr.get(token), charset, f);
+						token = mime.split(hdr.get(token), charset, arg);
 					}
 					else {
 						token = mime.decode(hdr.get(token), charset);
 					}
 					// allow html as to(link) etc. builds a href with mailto
-					if (f && SmartTemplate4.Util.isFormatLink(f)) 
+					if (arg && SmartTemplate4.Util.isFormatLink(arg)) 
 						return token;
 					break;
 					// unreachable code! =>
@@ -930,12 +949,13 @@ SmartTemplate4.regularize = function(msg, type)
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logException('replaceReservedWords(dmy, ' + token + ', ' + f +') failed - unknown token?', ex);
+			SmartTemplate4.Util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
 			token="??";
 		}
 		return SmartTemplate4.escapeHtml(token);
 	}
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
+	
 	SmartTemplate4.Util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
 };
