@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "Zeilenumbrüche am Anfang der Vorlagen:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
 <!ENTITY pref_showStatusIcon.label "Button in der Statuszeile anzeigen">
+<!ENTITY pref_StatusIcon.IconOnly "Nur Icon">
+<!ENTITY pref_StatusIcon.IconText "Icon mit Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text nur unter Mauszeiger">
 <!ENTITY pref_fontSettings.label "Schriftgröße innerhalb der Vorlagenboxen">
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY pref_server_def "Allgemein">
@@ -68,9 +71,6 @@
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
 <!ENTITY pref_stationeryLink_tip "Stationery Installieren...">
-<!ENTITY pref_StatusIcon.IconOnly "Zeige nur Statusbar Icon">
-<!ENTITY pref_StatusIcon.IconText "Zeige Statusbar Icon und Text">
-<!ENTITY pref_StatusIcon.IconHoverText "Zeige Statusbar Icontext nur beim darüber fahren">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Über SmartTemplate4">
 <!ENTITY creator.label "Ersteller">
