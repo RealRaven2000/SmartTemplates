@@ -101,7 +101,7 @@
 	  # toolbar button
 		# fixed a problem with preference not updating (found by AMO reviewer Nils Maier)
 	  # %cursor% variable
-		# deleteText( _) funciton
+		# %deleteText()% and %replaceText()% functions
 	  # parsing of variables in Signature - enable extensions.smartTemplate4.parseSignature
 	  # Postbox support
 		# stabilised signature code base
