@@ -359,6 +359,9 @@ SmartTemplate4.mimeDecoder = {
 };
 
 SmartTemplate4.parseModifier = function(msg) {
+  function stripQuotes(s) {
+		return s.substring(1, s.length-1);
+	}
 	let matches = msg.match(/%deleteText\(.*\)%/g);
 	if (matches) {
 		for (let i=0; i<matches.length; i++) {
@@ -366,7 +369,18 @@ SmartTemplate4.parseModifier = function(msg) {
 			msg = msg.replace(matches[i],'');
 			let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
 			if (dText) {
-				msg = msg.replace(dText[0].substring(1,dText[0].length-2));
+				msg = msg.replace(stripQuotes(dText[0]), "");
+			}
+		}
+	}
+	let matches = msg.match(/%replaceText\(.*\)%/g);
+	if (matches) {
+		for (let i=0; i<matches.length; i++) {
+			// parse out the argument (string to delete)
+			msg = msg.replace(matches[i],'');
+			let dText = matches[i].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks)
+			if (dText) {
+				msg = msg.replace(stripQuotes(dText[0]), stripQuotes(dText[1]));
 			}
 		}
 	}
@@ -820,6 +834,8 @@ SmartTemplate4.regularize = function(msg, type)
 
 			switch(token){
 				case "deleteText": // return unchanged
+					return '%' + token + arg + '%';
+				case "replaceText": // return unchanged
 					return '%' + token + arg + '%';
 				case "datelocal":
 				case "dateshort":
