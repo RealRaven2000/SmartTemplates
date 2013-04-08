@@ -359,28 +359,32 @@ SmartTemplate4.mimeDecoder = {
 };
 
 SmartTemplate4.parseModifier = function(msg) {
-  function stripQuotes(s) {
-		return s.substring(1, s.length-1);
+  function unquotedRegex(s, global) {
+		let quoteLess = s.substring(1, s.length-1);
+	  if (global)
+			return new RegExp( quoteLess, 'ig');
+		return quoteLess;
 	}
+	// make 2 arrays, words to delete and replacement pairs.
 	let matches = msg.match(/%deleteText\(.*\)%/g);
+	let matchesR = msg.match(/%replaceText\(.*\)%/g);
 	if (matches) {
 		for (let i=0; i<matches.length; i++) {
 			// parse out the argument (string to delete)
 			msg = msg.replace(matches[i],'');
 			let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
 			if (dText) {
-				msg = msg.replace(stripQuotes(dText[0]), "");
+				msg = msg.replace(unquotedRegex(dText[0], true), "");
 			}
 		}
 	}
-	let matches = msg.match(/%replaceText\(.*\)%/g);
-	if (matches) {
-		for (let i=0; i<matches.length; i++) {
+	if (matchesR) {
+		for (let i=0; i<matchesR.length; i++) {
 			// parse out the argument (string to delete)
-			msg = msg.replace(matches[i],'');
-			let dText = matches[i].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks)
+			msg = msg.replace(matchesR[i],'');
+			let dText = matchesR[i].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
 			if (dText) {
-				msg = msg.replace(stripQuotes(dText[0]), stripQuotes(dText[1]));
+				msg = msg.replace(unquotedRegex(dText[0], true), unquotedRegex(dText[1]));
 			}
 		}
 	}
