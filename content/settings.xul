@@ -78,9 +78,9 @@
 		</toolbar>
 	</toolbox>
 
-		<spacer height = "5px" />
+		<spacer id="topOptions" />
 <!-- fills full width of window -->
-<hbox flex = "3">
+<hbox id="optionsContainer" flex="1">
 
 	<vbox id="decksContainer" flex="2">
 
@@ -108,7 +108,7 @@
 			        hidden = "true"/>
 		</hbox>
 
-		<hbox id = "dRecksContainer">
+		<vbox id = "decksWrapper" >
 			<deck id = "account_deckA" flex = "1" class="templateDeck">
 
 				<vbox id = "deckA.per_account" flex = "1">
@@ -354,7 +354,7 @@
 
 			</deck>
 
-		</hbox>
+		</vbox>
 
 	</vbox>
 
@@ -369,6 +369,7 @@
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
+			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
 		</preferences>
 
@@ -410,6 +411,11 @@
 						          label = "&pref_parseSignature;"
 						          tooltiptext = "&pref_parseSignature_tip;"
 						          preference = "pref_parseSignature"/>
+						<checkbox id = "chkFirstLastSwap"
+						          label = "Correct LastName, FirstName"
+						          tooltiptext = "Changes 'LastName, FirstName' to 'First Last'"
+						          preference = "pref_firstLastSwap"/>
+
 						<hbox>
 							<checkbox id = "chkStationery"
 									  label = "&pref_stationerySupport;"
@@ -431,7 +437,7 @@
 							<spacer flex="1" />
 							<menulist id = "iconType"
 									  label = ""
-									  flex = "1"
+									  flex = "5"
 									  preference = "pref_StatusIconMode"
 									  oncommand = "SmartTemplate4.setStatusIconMode(this);">
 								<menupopup>
@@ -518,6 +524,7 @@
 		</tabbox>
 	</vbox>
 </hbox>
+	    <spacer id="bottomOptions" />
 
 	</prefpane>
 

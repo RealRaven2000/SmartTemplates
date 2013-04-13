@@ -8,7 +8,8 @@ pref("extensions.smartTemplate4.breaksAtTop", 1);
 pref("extensions.smartTemplate4.showStatusIcon", true);
 pref("extensions.smartTemplate4.statusIconLabelMode", 1); /* 0 - no label; 1 - autohide; 2 - always show */
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
-pref("extensions.smartTemplate4.parseSignature",false);
+pref("extensions.smartTemplate4.parseSignature", false);
+pref("extensions.smartTemplate4.firstLastSwap", true);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 
