@@ -277,13 +277,14 @@ SmartTemplate4.mimeDecoder = {
 	// Split addresses and change encoding.
 	split : function (addrstr, charset, format)
 	{
-	  function getMailPart(a) {
+	  function getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}
 		function isMail(format) { return (format.search(/^\(mail[\),]/, "i") != -1);};
 		function isName(format) { return (format.search(/^\((first)*name[,\)]/, "i") != -1);};
 		function isLink(format) { return SmartTemplate4.Util.isFormatLink(format);  /* this = regularize? */ };
 		function isFirstName(format) { return (format.search(/^\(firstname[,\)]/, "i") != -1);};
+		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1);};
 		
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split()');
 		// MIME decode
@@ -332,24 +333,53 @@ SmartTemplate4.mimeDecoder = {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
 				}  // %to(name)%
 				else {
-					result = getMailPart(address); // email part ?
+					result = getEmailAddress(address); // email part ?
 				}     // %to% / %to(mail)%
 			}
-			// get firstname
-			let delimiter = '';
-			if ((delimiter = format.match(/^\(firstname(\[.*\])*[,\)]/i)) != null) {  // 
-				if (delimiter[1] == null) {
-					delimiter[1] = "[., ]";
+			// swap last, first
+			let nameProcessed = false;
+			if (isName(format) &&  SmartTemplate4.Preferences.getMyBoolPref('firstLastSwap')) 
+			{
+			  // => add special test for x, y (name) pattern!
+				// use this for the name and firstname case (but not for lastname)
+				let regex = /\(([^)]+)\)/;
+				let nameRes = regex.exec(result);
+				if (nameRes 
+				    && 
+						nameRes.length > 1
+						&&
+						!isLastName(format)) {
+					nameProcessed = true;
+					result = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
 				}
 				else {
-					delimiter[1] = delimiter[1].replace(/&nbsp;/, " ");
+					let iComma =  result.indexOf(', ');
+					if (iComma>0) {
+						let first = result.substr(iComma + 2);
+						let last = result.substr(0, iComma);
+						result = first + ' ' + last; // simple solution
+					}
 				}
-				// truncate after delimiter => first name
-				result = result.replace(new RegExp(delimiter[1] + ".*"), "");
+			}
+			
+			if (!nameProcessed) {
+				// get firstname  (result should hold name)
+				let delimiter = '';
+				if ((delimiter = format.match(/^\(firstname(\[.*\])*[,\)]/i)) != null) {  // [optional] second param is delimiter
+					if (delimiter[1] == null) {
+						delimiter[1] = "[., ]";
+					}
+					else {
+						// this simply replaces , or . with a white space
+						delimiter[1] = delimiter[1].replace(/&nbsp;/, " ");
+					}
+					// truncate after delimiter => first name
+					result = result.replace(new RegExp(delimiter[1] + ".*"), "");
+				}
 			}
 
 			if (showLink) {
-				result = "<a href=mailto:" + getMailPart(address) + ">" + result + "</a>";
+				result = "<a href=mailto:" + getEmailAddress(address) + ">" + result + "</a>";
 			}
 			
 			addresses += result;

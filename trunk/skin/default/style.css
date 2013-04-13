@@ -171,8 +171,22 @@ button.bugsURL:focus {
 }
 
 /*  MAIN CONTAINERS: LEFT, RIGHT */
+#topOptions, #bottomOptions 
+{ height: 5px ; 
+}
+#bottomOptions { bottom: 0; }
+#optionsContainer {
+	-moz-box-align: stretch;
+	height: 100%;
+}
+
 #decksContainer {
-	
+	height: 99%;
+	-moz-box-align: stretch;
+}
+#decksWrapper { 
+	height: 99%; 
+	-moz-box-align: stretch;
 }
 
 #advancedContainer {
