@@ -64,6 +64,8 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Debug mode">
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_nameSwap "Correct LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
 <!ENTITY pref_parseSignature "Process signature">
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
 <!ENTITY pref_stationerySupport "Support Stationery addon">
