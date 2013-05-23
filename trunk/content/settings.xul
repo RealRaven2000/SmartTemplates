@@ -412,8 +412,8 @@
 						          tooltiptext = "&pref_parseSignature_tip;"
 						          preference = "pref_parseSignature"/>
 						<checkbox id = "chkFirstLastSwap"
-						          label = "Correct LastName, FirstName"
-						          tooltiptext = "Changes 'LastName, FirstName' to 'First Last'"
+						          label = "pref_nameSwap;"
+						          tooltiptext = "Pref_nameSwap_tip;"
 						          preference = "pref_firstLastSwap"/>
 
 						<hbox>

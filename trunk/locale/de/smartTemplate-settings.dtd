@@ -64,6 +64,8 @@
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
+<!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
+<!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
