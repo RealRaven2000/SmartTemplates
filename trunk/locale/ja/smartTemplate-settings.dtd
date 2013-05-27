@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "ヘッダ上部の改行の数:">
 <!ENTITY pref_removeSig.label "差出人を変更したときに署名を削除する">
 <!ENTITY pref_showStatusIcon.label "ステータスバーにアイコンを表示する">
+<!ENTITY pref_StatusIcon.IconOnly "アイコンのみ">
+<!ENTITY pref_StatusIcon.IconText "アイコンとテキスト">
+<!ENTITY pref_StatusIcon.IconHoverText "マウスオーバーでテキスト表示">
 <!ENTITY pref_fontSettings.label "テンプレートエディタのフォントサイズ">
 <!ENTITY pref_server_desc "差出人:">
 <!ENTITY pref_server_def "共通設定">

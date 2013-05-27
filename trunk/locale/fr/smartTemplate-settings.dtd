@@ -13,8 +13,8 @@
 <!ENTITY import.label "Importation">
 <!ENTITY menu.template_import.label "Importer un modèle">
 <!ENTITY menu.template_export.label "Exporter le modèle">
-<!ENTITY settings.label "Réglages et Modèles">
-<!ENTITY url.homePage.label "Page Web du plugin">
+<!ENTITY settings.label "Réglages et modèles">
+<!ENTITY url.homePage.label "Page Web de l'extension">
 <!ENTITY url.supportPage.label "Page d'aide">
 <!ENTITY url.bugsAndFeaturesPage.label "Signalement de bogues/demande de fonctionnalités">
 <!-- #### TABS #### -->
@@ -31,23 +31,26 @@
 <!ENTITY contribute_button "Contribuer">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
-<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37; a écrit &#37;from(name)&#37; :">
+<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
 <!ENTITY pref_templateBox.label "Modèle">
 <!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
 <!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
 <!ENTITY pref_showStatusIcon.label "Afficher un bouton dans la barre des modules">
+<!ENTITY pref_StatusIcon.IconOnly "Icône Seulement">
+<!ENTITY pref_StatusIcon.IconText "Icône et texte">
+<!ENTITY pref_StatusIcon.IconHoverText "Texte au survol">
 <!ENTITY pref_fontSettings.label "Police de l'éditeur de gabarit">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
-<!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin créer un entête personnalisé pour ce compte.">
+<!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin de créer un entête personnalisé pour ce compte.">
 <!ENTITY pref_newmsg.cap "Nouveaux messages">
 <!ENTITY pref_new.label "Appliquer le modèle suivant pour les nouveaux messages">
 <!ENTITY pref_rspmsg.cap "Réponses">
 <!ENTITY pref_rsp.label "Appliquer le modèle suivant pour les réponses">
-<!ENTITY pref_rsphead.label "Utiliser au lieu de l'entête par défaut">
+<!ENTITY pref_rsphead.label "Utiliser à la place de l'entête par défaut">
 <!ENTITY pref_fwdmsg.cap "Messages transférés">
 <!ENTITY pref_fwd.label "Appliquer le modèle suivant pour les messages transférés.">
 <!ENTITY pref_fwdhead.label "Désactiver l'entête par défaut de Thunderbird">
@@ -61,13 +64,20 @@
 <!ENTITY help_keyword.cap "Aide">
 <!ENTITY pref_debug_check "Mode débogage">
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
+<!ENTITY pref_parseSignature "Traitement de la signature">
+<!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
+<!ENTITY pref_stationerySupport "Support de l'extension Stationery">
+<!ENTITY pref_stationerySupport_tip "Support de l'utilisation simultanée de Stationery et de smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">
+<!ENTITY pref_stationeryLink "Extension Stationery">
+<!ENTITY pref_stationeryLink_tip "Obtenir Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "À propos de SmartTemplate4">
 <!ENTITY creator.label "Créateur">
 <!ENTITY developer.label "Développeur">
 <!ENTITY localename.label "fr">
 <!ENTITY localized.label "Traducteur">
-<!ENTITY translatorNickname.label "Roland Lacroute">
+<!ENTITY translatorNickname.label "Jojaba, jujuf851, Goofy (BabelZilla)">
 <!ENTITY contributor.label "Contributeur">
 <!ENTITY about.label "SmartTemplate4 permet de personnaliser aisément les entêtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
 <!-- #### HELP #### -->
