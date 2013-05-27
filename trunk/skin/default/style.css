@@ -45,6 +45,7 @@
   cursor: pointer;
   margin-top: 3px;
   width: 16px !important;
+  min-width: 22px;
 }
 
 /* our own buttons */
