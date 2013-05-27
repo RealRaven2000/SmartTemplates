@@ -421,11 +421,15 @@
 									  label = "&pref_stationerySupport;"
 									  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
 									  preference = "pref_stationerySupport"/>
+							<button id="helpStationery"
+							        onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+							        label = ""
+							        />
 							<spacer flex="1" />
-							<button onclick = "SmartTemplate4.Util.showStationeryPage();"
-								        class = "stationeryURL"
-								        label = "&pref_stationeryLink;" 
-										tooltiptext = "&pref_stationeryLink_tip;"/>
+							<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
+								    class = "stationeryURL"
+								    label = "&pref_stationeryLink;" 
+									tooltiptext = "&pref_stationeryLink_tip;"/>
 						   
 						</hbox>
 						<hbox>

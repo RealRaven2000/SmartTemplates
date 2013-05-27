@@ -112,6 +112,7 @@
 		# new %identity()%  function
 		# added 24px icon
 		# added change log
+		# fix: redefinition of Thunderbird's nsIMsgAccount interface broke account dropdown in settings
 		
 		Review specific:
 		1) help.xul - set iframe type="content" 
