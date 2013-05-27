@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "Saltos de línea en la parte superior:">
 <!ENTITY pref_removeSig.label "Borrar firma al cambiar la identidad del correo">
 <!ENTITY pref_showStatusIcon.label "Mostrar botón en barra de estado">
+<!ENTITY pref_StatusIcon.IconOnly "Sólo icono">
+<!ENTITY pref_StatusIcon.IconText "Icono y texto">
+<!ENTITY pref_StatusIcon.IconHoverText "Texto con el paso de ratón">
 <!ENTITY pref_fontSettings.label "Fuente del editor de plantillas">
 <!ENTITY pref_server_desc "Cuenta">
 <!ENTITY pref_server_def "Común">

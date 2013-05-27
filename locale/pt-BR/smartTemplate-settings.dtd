@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
 <!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
 <!ENTITY pref_showStatusIcon.label "Exibir botão na barra de status">
+<!ENTITY pref_StatusIcon.IconOnly "Somente Ícone">
+<!ENTITY pref_StatusIcon.IconText "Ícone e Texto">
+<!ENTITY pref_StatusIcon.IconHoverText "Texto ao passar o cursor">
 <!ENTITY pref_fontSettings.label "Fonte do Editor de Modelos">
 <!ENTITY pref_server_desc "Conta">
 <!ENTITY pref_server_def "Configuração global">
