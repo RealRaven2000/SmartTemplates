@@ -50,6 +50,7 @@ SmartTemplate4.Util = {
 	BugPage:         "http://smarttemplate4.mozdev.org/bugs.html",
 	DonatePage:      "http://smarttemplate4.mozdev.org/contribute.html",
 	VersionPage:     "http://smarttemplate4.mozdev.org/version.html",
+	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
 	AxelAMOPage:     "https://addons.mozilla.org/thunderbird/user/66492/",
 	MarkyAMOPage:    "https://addons.mozilla.org/thunderbird/user/2448736/",
 	ArisAMOPage:     "https://addons.mozilla.org/firefox/user/5641642/",
@@ -592,6 +593,7 @@ SmartTemplate4.Util = {
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
+	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
 
 	showAboutConfig: function(filter) {
 		const name = "Preferences:ConfigManager";

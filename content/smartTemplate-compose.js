@@ -913,8 +913,12 @@ SmartTemplate4.classSmartTemplate = function()
 		let serverInfo = '';
 		try {
 			let account = null;
-			for (var i = 0; i < gAccountManager.accounts.Count(); i++) {
-				account = gAccountManager.accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount)
+			let accounts = gAccountManager.accounts;
+			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+			for (var i = 0; i < iAccounts; i++) {
+				let account = accounts.queryElementAt ?
+					accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount) :
+					accounts.GetElementAt(i).QueryInterface(Components.interfaces.nsIMsgAccount);
 				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
 					break;
 			}

@@ -480,14 +480,21 @@ SmartTemplate4.Settings = {
 		}
 		
 		let theMenu = document.getElementById("msgIdentity");
-		for (var idx = 0; idx < accounts.Count(); idx++) {
-			const account = accounts.QueryElementAt(idx, this.Ci.nsIMsgAccount);
+		let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+		for (var idx = 0; idx < iAccounts; idx++) {
+			let account = accounts.queryElementAt ?
+				accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
+				accounts.GetElementAt(idx).QueryInterface(this.Ci.nsIMsgAccount);
 
 			if (!account.incomingServer)
 				continue;
 
-			for (var j = 0; j < account.identities.Count(); j++) {
-				const identity = account.identities.QueryElementAt(j, this.Ci.nsIMsgIdentity);
+			let iIdentities = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
+			for (var j = 0; j < iIdentities; j++) {
+				let identity = account.identities.queryElementAt ?
+					account.identities.queryElementAt(j, this.Ci.nsIMsgIdentity) :
+					account.identities.GetElementAt(j).QueryInterface(this.Ci.nsIMsgIdentity);
+
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
 				theMenu.appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
