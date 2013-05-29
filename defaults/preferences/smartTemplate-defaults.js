@@ -13,7 +13,7 @@ pref("extensions.smartTemplate4.firstLastSwap", true);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 
-pref("extensions.smartTemplate4.stationery.supported", true); /* experimental */
+pref("extensions.smartTemplate4.stationery.supported", false); /* experimental */
 pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */
 
 /* debug settings */
