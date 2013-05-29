@@ -112,6 +112,7 @@
 		# added 24px icon
 		# added change log
 		# fix: redefinition of Thunderbird's nsIMsgAccount interface broke account dropdown in settings
+		# suppressed displaying string conversion prompt when clicking on the version number in advanced options
 		
 		Review specific:
 		1) help.xul - set iframe type="content" 

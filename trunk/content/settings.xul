@@ -485,7 +485,7 @@
 						<hbox class = "aboutWrapper" flex="1" align = "center" > 
 							<hbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" onclick="SmartTemplate4.Settings.clickLogo();" flex = "1">
 								<spacer flex = "1"/>
-								<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true);" />
+								<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true); event.stopPropagation();" />
 							</hbox>
 						</hbox>
 						
