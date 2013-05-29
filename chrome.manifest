@@ -8,8 +8,35 @@ content     smarttemplate4            content/
 resource    smarttemplate4            content/
 
 #### SKIN ####
-skin        smarttemplate4            classic/1.0 skin/
-skin        smarttemplate4            default/1.0 skin/default/
+#skin       packagename        [skinname] path/to/files
+# basic paths:
+# specialized paths
+skin        smarttemplate4     classic/1.0  skin/
+skin        st4common          classic/1.0  skin/common
+
+#Tb
+override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/default/style.css appversion>=4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/legacy/style.css appversion<4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/default/smartTemplate-accounts.css appversion>=4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/legacy/smartTemplate-accounts.css appversion<4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/default/smartTemplate-overlay.css appversion>=4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/legacy/smartTemplate-overlay.css appversion<4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/default/smartTemplate-about.css appversion>=4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/legacy/smartTemplate-about.css appversion<4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/default/messageWindow.css appversion>=4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/legacy/messageWindow.css appversion<4 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+#SM
+override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/default/style.css application=application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/default/smartTemplate-accounts.css application=application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/default/smartTemplate-overlay.css application=application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/default/smartTemplate-about.css application=application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/default/messageWindow.css application=application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#Pb
+override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/default/style.css application=postbox@postbox-inc.com
+override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/default/smartTemplate-accounts.css application=postbox@postbox-inc.com
+override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/default/smartTemplate-overlay.css application=postbox@postbox-inc.com
+override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/default/smartTemplate-about.css application=postbox@postbox-inc.com
+override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/default/messageWindow.css application=postbox@postbox-inc.com
 
 #### LOCALIZATIONS (alphabetical by localename) ####
 locale      smarttemplate4           de           locale/de/

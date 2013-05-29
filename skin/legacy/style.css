@@ -1,0 +1,64 @@
+@import url("chrome://smarttemplate4/skin/common/style.css");
+/* legacy css styles for Tb3 */
+
+.homePageURL, .homePageURL:focus {
+	background-image: -moz-linear-gradient(top, rgba(166,108,182,1) 0%, rgba(156,86,170,1) 50%, rgba(121,27,135,1) 51%, rgba(179,76,190,1) 100%) !important;
+}
+
+.homePageURL:hover, .homePageURL:hover:focus {
+	background-image: -moz-linear-gradient(top, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%) !important;
+}
+
+.stationeryURL, .stationeryURL:focus {
+    background-image: -moz-linear-gradient(top, rgb(40, 132, 218) 0%, rgb(29, 104, 169) 15%, rgb(4, 45, 89) 50%, rgb(26, 92, 150) 83%, rgb(31, 110, 179) 100%) !important;
+	background-repeat: repeat-x  !important;
+	background-position: 0% 0%  !important;
+	/* scroll  */
+}
+
+.bugsURL:hover, .bugsURL:focus:hover {
+	background-image: -moz-linear-gradient(top, rgba(249,185,183,1) 0%, rgba(241,22,15,1) 31%, rgba(227,8,1,1) 51%, rgba(231,111,107,1) 100%) !important;
+}
+.bugsURL, .bugsURL:focus {
+	background-image: -moz-linear-gradient(top, rgba(253,52,45,1) 0%, rgba(175,7,1,1) 23%, rgba(158,5,0,1) 51%, rgba(230,12,4,1) 100%) !important;
+}
+.supportURL, .supportURL:focus {
+	background-image: -moz-linear-gradient(center top , rgb(100, 154, 174) 0%, rgb(79, 160, 181) 33%, rgb(43, 142, 169) 51%, rgb(47, 178, 217) 100%) !important;
+}
+.supportURL:hover, .supportURL:focus:hover {
+	background-image: -moz-linear-gradient(center top , rgb(149, 234, 237) 0%, rgb(71, 221, 223) 24%, rgb(9, 179, 181) 50%, rgb(44, 215, 218) 79%, rgb(88, 223, 226) 100%) !important;
+}
+
+#versionBox {
+	background-image: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+	color: yellow !important; /*test */
+}
+.aboutPersonnel {
+	background-image: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
+}
+.body {
+	background-image: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 38%, rgba(225,225,225,1) 63%, rgba(246,246,246,1) 100%);
+}
+h1.helpchapter {
+  background-image: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
+}
+#keywords code, code {
+  background-image: -moz-linear-gradient(top,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+}
+#keywords code.noNew, code.noNew {
+  background-image: -moz-linear-gradient(top,  rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+}
+
+button.dialog-button[dlgtype=extra2] {
+	background-image: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
+}
+
+.dialog-button[dlgtype=extra2]:hover
+{
+	background-image: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+.dialog-button[dlgtype=extra2]:active
+{
+	background-image: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
