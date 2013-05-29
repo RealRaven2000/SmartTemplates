@@ -105,9 +105,8 @@
 	  # parsing of variables in Signature - enable extensions.smartTemplate4.parseSignature
 	  # Postbox support
 		# stabilised signature code base
-		# Preparation for Stationery 0.8 support - will work with the new event model of Stationery 0.8 - at the moment template inserting is disabled is a Stationery Template is used
-		  to test, enable extensions.smartTemplate4.stationery.supported
-			use extensions.smartTemplate4.stationery.test.disableST4notification to see a message when stationery events happen
+		# Added Stationery 0.8 support - works with the new event model of Stationery 0.8 - 
+			template inserting is disabled if a Stationery Template of 0.7.8 or older is used
 		# mailto link support for the main header fields that hold email address data: %to(mail,link)% %to(name,link)%$ %to(firstname,link)%  etc.
 		# new %identity()%  function
 		# added 24px icon
@@ -181,11 +180,32 @@ var SmartTemplate4 = {
 		NotifyComposeBodyReady: function() {
 			// For Stationery integration, we need to hack 
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
+			// Stationery_ is from old stationery!
 			if (SmartTemplate4.Preferences.isStationerySupported && 
 			    (typeof Stationery_ != 'undefined'))
 			{
-				SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: n.o.p, as Stationery 0.8+ is not installed');
-			  ; // we do nothing as we have our own event handler
+				// Stationery 0.7.8 and older
+				let bypass = true;
+				let oldTemplate = '';
+				// older versions of Stationer
+				if (typeof Stationery.Templates.OnceOverride != "undefined") {
+					if (Stationery.Templates.OnceOverride == '')
+						bypass = false;
+					else
+						oldTemplate = Stationery.Templates.OnceOverride;
+				}
+				else {
+					if (Stationery.Templates.Current =='')  
+						bypass = false;
+					else
+						oldTemplate = Stationery.Templates.Current;
+				}
+				if (bypass)
+					SmartTemplate4.Util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
+					   + 'As you have selected the Stationery template ' + oldTemplate 
+						 + ', SmartTemplate4 will be not used for this email.' );
+				else
+					SmartTemplate4.notifyComposeBodyReady();
 			}
 			else
 				SmartTemplate4.notifyComposeBodyReady();
