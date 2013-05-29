@@ -7,11 +7,12 @@ SmartTemplate4.classSmartTemplate = function()
 {
 	function readSignatureFile(Ident) {
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
+		let Ci = Components.interfaces;
 		let htmlSigText = '';
 		let fileName = '';
 		// test code for reading local sig file (WIP)
 		try {
-			let sigFile = Ident.signature.QueryInterface(Components.interfaces.nsIFile);
+			let sigFile = Ident.signature.QueryInterface(Ci.nsIFile);
 			if (sigFile)
 			{
 				fileName = sigFile.path;
@@ -24,15 +25,15 @@ SmartTemplate4.classSmartTemplate = function()
 
 				// First, get and initialize the converter
 				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-                        .createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
+                        .createInstance(Ci.nsIScriptableUnicodeConverter);
 				converter.charset = /* The character encoding you want, using UTF-8 here */ "UTF-8";
 
 				let data = "";
 				//read file into a string so the correct identifier can be added
 				let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
-					createInstance(Components.interfaces.nsIFileInputStream);
+					createInstance(Ci.nsIFileInputStream);
 				let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
-					createInstance(Components.interfaces.nsIConverterInputStream);
+					createInstance(Ci.nsIConverterInputStream);
 				fstream.init(sigFile, -1, 0, 0);
 				cstream.init(fstream, "UTF-8", 0, 0);
 				let str = {};
@@ -488,8 +489,9 @@ SmartTemplate4.classSmartTemplate = function()
 
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
 
+		let Ci = Components.interfaces;
 		var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
-							 .getService(Components.interfaces.nsIStringBundleService)
+							 .getService(Ci.nsIStringBundleService)
 							 .createBundle("chrome://messenger/locale/mime.properties");
 		let origMsgDelimiter = bndl.GetStringFromID(1041);
 		// [Bug 25089] default forward quote can't be completely hidden
@@ -497,9 +499,9 @@ SmartTemplate4.classSmartTemplate = function()
 		    && SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.PlatformVer, "14"))
 		{
 			origMsgDelimiter = Components.classes["@mozilla.org/preferences-service;1"]
-			                             .getService(Components.interfaces.nsIPrefBranch)
+			                             .getService(Ci.nsIPrefBranch)
 			                             .getComplexValue("mailnews.reply_header_originalmessage",
-			                                              Components.interfaces.nsIPrefLocalizedString).data
+			                                              Ci.nsIPrefLocalizedString).data
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
@@ -688,16 +690,17 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		let util = SmartTemplate4.Util;
 		util.logDebugOptional('functions','insertTemplate(' + startup + ', ' + isStationeryTemplate + ')');
-		var pref = SmartTemplate4.pref;
+		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
+		let Ci = Components.interfaces;
 		let ed = GetCurrentEditor();
-		let editor = ed.QueryInterface(Components.interfaces.nsIEditor); //
+		let editor = ed.QueryInterface(Ci.nsIEditor); //
 
-		var msgComposeType = Components.interfaces.nsIMsgCompType;
-		var template = null;
-		var quoteHeader = "";
-		var idKey = document.getElementById("msgIdentity").value;
-		var branch = "." + idKey;
+		let msgComposeType = Ci.nsIMsgCompType;
+		let template = null;
+		let quoteHeader = "";
+		let idKey = document.getElementById("msgIdentity").value;
+		let branch = "." + idKey;
 
 		let isActiveOnAccount = false;
 		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
@@ -762,8 +765,8 @@ SmartTemplate4.classSmartTemplate = function()
 				// (Draft:9/Template:10/ReplyWithTemplate:12)
 				case msgComposeType.Draft:
 					composeCase = 'draft';
-					let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
-					let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Components.interfaces.nsIMsgDBHdr);
+					let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+					let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
 					const nsMsgKey_None = 0xffffffff;
 					if(msgDbHdr) {
 						if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
@@ -895,7 +898,7 @@ SmartTemplate4.classSmartTemplate = function()
 				SmartTemplate4.Message.display(errorText,
 				              "centerscreen,titlebar",
 				              function() {
-				              	let oClipBoard = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+				              	let oClipBoard = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 				              	oClipBoard.copyString(template); },
 				              function() { ;/* cancel NOP */ }
 				            );
@@ -921,8 +924,8 @@ SmartTemplate4.classSmartTemplate = function()
 			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
 			for (var i = 0; i < iAccounts; i++) {
 				account = accounts.queryElementAt ?
-					accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount) :
-					accounts.GetElementAt(i).QueryInterface(Components.interfaces.nsIMsgAccount);
+					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
+					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
 				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
 					break;
 			}
