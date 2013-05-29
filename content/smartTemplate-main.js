@@ -184,6 +184,12 @@ var SmartTemplate4 = {
 			if (SmartTemplate4.Preferences.isStationerySupported && 
 			    (typeof Stationery_ != 'undefined'))
 			{
+			  //
+				if (SmartTemplate4.stateListener) {
+					SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
+					return;
+				}
+
 				// Stationery 0.7.8 and older
 				let bypass = true;
 				let oldTemplate = '';
