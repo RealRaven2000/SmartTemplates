@@ -77,7 +77,6 @@ button.text-link {
 	color: #ffffff !important;
 	display: inline-block;
 	border: 1px solid rgb(100,120,120);
-	box-shadow:  1px 1px 3px rgba(0,0,0,0.5);
 	text-shadow:#BBBBBB 0px 0px 2px;
 	padding: 1px 1px !important;
 	margin-top: 0.3em !important;
@@ -93,7 +92,6 @@ button.text-link hbox {
 button.text-link:hover {
 	margin-top: 0.35em !important;
 	margin-bottom: 0.25em !important;
-	box-shadow:  1px 1px 1px rgba(0,0,0,0.8);
 	color: #FFFFFF !important;
 }
 
@@ -134,7 +132,6 @@ button.text-link:hover {
 	-moz-appearance: none !important;
     border: 1px solid rgb(187, 204, 238) !important;
 	color: #ffffff;
-    box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.7);
     text-shadow: 0px 0px 3px rgba(230, 230, 255, 0.9);
 }
 
@@ -437,7 +434,6 @@ button.bugsURL:focus {
 
 #versionBox {
 	border: 1px solid rgba(200,225,250,0.9);
-	box-shadow: inset 0 0 6px rgba(0,0,0,0.6), 2px 2px 3px rgba(0,0,0,0.5);
 	color: #EEEEEE;
 	display: inline-block;
 	padding: 0.3em 0.6em !important;
@@ -448,12 +444,9 @@ button.bugsURL:focus {
 
 
 #versionBox:hover {
-	box-shadow: inset 0 0 3px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);;
 	color: #FFFFFF;
 }
-#versionBox:active {
-	box-shadow: inset 0 0 1px rgba(0,0,0,0.8), 2px 2px 3px rgba(0,0,0,0.5);;
-}
+
 
 
 /* ##################################### ABOUTLOGO ################################### */
@@ -488,7 +481,6 @@ button.bugsURL:focus {
   font-size: 10pt;
   line-height: 10pt;
 	border: 1px solid #CCCCCC;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 	max-width: 60em;
 	min-height: 8em;
 	vertical-align: middle;
@@ -520,7 +512,6 @@ button.bugsURL:focus {
   background: rgb(208,228,247);
 	border-left: #ccc 1px;
 	border-right: #ccc 1px;
-	box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.5);
 	font-size: 10pt;
 	min-height: 950px;
   padding: 5px 10px;
@@ -673,7 +664,6 @@ button.dialog-button[dlgtype=extra2] {
 .dialog-button[dlgtype=extra2]
 {
 	-moz-appearance: none;
-	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.7);
 	color: #fff;
 	font-weight: bold;
 	border: 1px solid #fff;
@@ -683,14 +673,12 @@ button.dialog-button[dlgtype=extra2] {
 .dialog-button[dlgtype=extra2]:hover
 {
 	/* margin: 1px -1px -1px 1px; */
-	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.8);
 	background: rgb(254,222,178);
 }
 
 .dialog-button[dlgtype=extra2]:active
 {
 	/* margin: 1px -1px -1px 1px; */
-	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.9);
 	background: rgb(254,222,178);
 }
 
