@@ -700,7 +700,9 @@ SmartTemplate4.classSmartTemplate = function()
 		var branch = "." + idKey;
 
 		let isActiveOnAccount = false;
-		let theIdentity = gAccountManager.getIdentity(idKey);
+		let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+	                        .getService(Ci.nsIMsgAccountManager);  
+		let theIdentity = acctMgr.getIdentity(idKey);
 		if (!theIdentity)
 			theIdentity = gMsgCompose.identity;
 
@@ -913,10 +915,12 @@ SmartTemplate4.classSmartTemplate = function()
 		let serverInfo = '';
 		try {
 			let account = null;
-			let accounts = gAccountManager.accounts;
+			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+														.getService(Ci.nsIMsgAccountManager);  
+			let accounts = acctMgr.accounts;
 			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
 			for (var i = 0; i < iAccounts; i++) {
-				let account = accounts.queryElementAt ?
+				account = accounts.queryElementAt ?
 					accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount) :
 					accounts.GetElementAt(i).QueryInterface(Components.interfaces.nsIMsgAccount);
 				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
