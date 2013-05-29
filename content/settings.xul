@@ -421,7 +421,7 @@
 									  label = "&pref_stationerySupport;"
 									  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
 									  preference = "pref_stationerySupport"/>
-							<button id="helpStationery"
+							<toolbarbutton id="helpStationery"
 							        onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
 							        label = ""
 							        />
