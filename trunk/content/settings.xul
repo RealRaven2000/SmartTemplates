@@ -3,7 +3,7 @@
 <!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
-<?xml-stylesheet href = "chrome://smartTemplate4/skin/default/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
+<?xml-stylesheet href = "chrome://smarttemplate4/skin/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
 
 <prefwindow id = "smartTemplate_prefDialog"
             xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"

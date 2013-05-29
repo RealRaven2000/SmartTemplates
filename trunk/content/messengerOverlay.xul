@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://smartTemplate4/skin/default/smartTemplate-overlay.css" type="text/css"?><!-- additional as overlay in chrome.manifest for customizedToolbar.xul -->
+<?xml-stylesheet href="chrome://smarttemplate4/skin/smartTemplate-overlay.css" type="text/css"?><!-- additional as overlay in chrome.manifest for customizedToolbar.xul -->
 <!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-overlay.dtd">
 
 <overlay id="SmartTemplate4MessengerOverlay"

@@ -1,49 +1,9 @@
-/* ################################################################################### */
-/* ############################# TOOLBAR BUTTON OVERLAY ############################## */
-/* ################################################################################### */
-#SmartTemplate4Button {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon24x24.png");
-}
+@import url("chrome://smarttemplate4/skin/common/smartTemplate-overlay.css");
 
-[iconsize="small"] #SmartTemplate4Button {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
-}
-/* ################################################################################### */
-/* ################################ STATUSBAR OVERLAY ################################ */
-/* ################################################################################### */
-
-/* ################################## ICON BINDINGS ################################## */
-#SmartTemplate4Messengercompose, #SmartTemplate4Messenger {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
-}
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 #SmartTemplate4Messenger label 
 {
-	margin-left: 0.313em !important;
-	max-width : 350px;
-	width:auto;
-	-moz-transition: max-width 0.3s ease 0.2s;
-	-moz-transition: width 0.3s ease 0.2s;
+	transition: max-width 0.3s ease 0.2s;
+	transition: width 0.3s ease 0.2s;
 }
 
-#SmartTemplate4Messenger.always:not(:hover) label
-{
-	width: auto !important;
-}
-
-
-#SmartTemplate4Messenger:not(:hover):not(.always) label,
-#SmartTemplate4Messenger.hidden label,
-#SmartTemplate4Messenger.hidden:hover label
-{
-	width: 0 !important;
-	max-width: 0 !important;
-	display: none;
-}
-
-#SmartTemplate4Messenger:not(:hover):not(.always):not(.hidden)
-/* padding instead margin for Noia eXtreme Theme */
-{
-	padding-left: 6px;
-	padding-right: 6px;
-}
