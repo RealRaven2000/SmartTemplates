@@ -1019,6 +1019,8 @@ SmartTemplate4.classSmartTemplate = function()
 					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
+						//SmartTemplate4.Util.setCursorPosition(editor);
+					
 						// let thunderbird do it...
 						/*
 						editor.selection.removeAllRanges();
