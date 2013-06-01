@@ -257,6 +257,7 @@ var SmartTemplate4 = {
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
 		let isStationeryTemplate = false;
 		let stationeryTemplate = null;
+
 		
 		if (evt) {
 			if (evt.currentTarget
@@ -272,8 +273,16 @@ var SmartTemplate4 = {
 		}
 		SmartTemplate4.Util.logDebug(dbg);
 		// Add template message
-		
-		this.smartTemplate.insertTemplate(true, isStationeryTemplate);
+		// guard against this being called multiple times from stationery
+		// avoid this being called multiple times
+    let Ci = Components.interfaces;
+		let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);		
+		let doc = editor.document;
+		if (!doc.smartTemplateInserted) {
+			this.smartTemplate.insertTemplate(true, isStationeryTemplate);
+			if (evt && evt.type && evt.type =="stationery-template-loaded")
+				doc.smartTemplateInserted = true;
+		}
 	},
 
 	// -------------------------------------------------------------------

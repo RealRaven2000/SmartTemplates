@@ -771,7 +771,23 @@ SmartTemplate4.Util = {
 
 	isFormatLink : function(format) {
 	   return (format.search(/\,link\)$/, "i") != -1);
-	}
+	} 
+	
+	/* 
+	,
+	
+  setCursorPosition : function(editor) { 
+		try {
+			let caretSpan = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret');
+			if (caretSpan) {
+				editor.selection.collapse(caretSpan, 0);
+				caretSpan.parentNode.removeChild(caretSpan);
+			}
+		} catch(e) {}
+	}	
+	*/
+		
+	
 
 };  // .Util
 
@@ -1135,6 +1151,6 @@ SmartTemplate4.Message = {
 			document.getElementById('no').removeEventListener("click", win.st4NoListener);
 		}
 		win.close();
-	}
+	} 
 	
 }  // .Message
