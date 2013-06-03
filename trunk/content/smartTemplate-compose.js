@@ -430,10 +430,9 @@ SmartTemplate4.classSmartTemplate = function()
 	};
 
 	function testCursorVar(template) {
-		// let reg = /%\[\[cursor\[\[%/gm;
 		if(!template)
 			return false;
-		let match = template.toLowerCase().match('<div class="moz-signature">');
+		let match = template.toLowerCase().match('%cursor%');  // <div class="moz-signature">
 		return (!match ? false : true);
 	};
 	
@@ -683,13 +682,32 @@ SmartTemplate4.classSmartTemplate = function()
 		return getProcessedText(msg, idKey, composeType);
 	};
 	
+	function findDirectChildById(parent, id) {
+		let node = parent.firstChild;
+		while (node) {
+			if (node && node.id == id)
+				return node;
+			node = node.nextSibling;
+		}
+		return null;
+	};
 
+	function findDirectChildByClass(parent, className) {
+		let node = parent.firstChild;
+		while (node) {
+			if (node && node.className == className)
+				return node;
+			node = node.nextSibling;
+		}
+		return null;
+	};
+						
 	// -----------------------------------
 	// Add template message
 	function insertTemplate(startup, isStationeryTemplate)
 	{
 		let util = SmartTemplate4.Util;
-		util.logDebugOptional('functions','insertTemplate(' + startup + ', ' + isStationeryTemplate + ')');
+		util.logDebugOptional('functions','insertTemplate(startup: ' + startup + ', is stationery template: ' + isStationeryTemplate + ')');
 		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let Ci = Components.interfaces;
@@ -728,6 +746,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		let composeCase = 'undefined';
 		let st4composeType = '';
+		let rawTemplate = '';
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -781,13 +800,15 @@ SmartTemplate4.classSmartTemplate = function()
 					break;
 			}
 			
+			
 			isActiveOnAccount = pref.isProcessingActive(idKey, st4composeType, false);
 			// draft + startup: do not process!
 			if (startup && composeCase=='draft')
 				isActiveOnAccount = false;
 
 			if (isActiveOnAccount) {
-				sigVarDefined = testSignatureVar(pref.getTemplate(idKey, st4composeType, ""));
+				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
+				sigVarDefined = testSignatureVar(rawTemplate);
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
 				template = getSmartTemplate(st4composeType, idKey);
@@ -949,9 +970,9 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'htmlSigFormat:  ' + theIdentity.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
 		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
-		       + '%sig% in template: ' + sigVarDefined + '\n'
+		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
+		       + '%sig% type: [' + sigVarDefined + ']\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
 		       + 'SmartTemplate4: ' + util.Version + '\n'
@@ -969,47 +990,51 @@ SmartTemplate4.classSmartTemplate = function()
 			    ||
 			    composeCase == 'new' && theSignature && isSignatureSetup)
 			{
-	
-				if (!SmartTemplate4.sigInTemplate && theSignature) {
-					SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
-	
-					let pref = SmartTemplate4.pref;
-	
-					// theIdentity.sigBottom is better than using
-					// let sig_on_bottom = pref.getCom("mail.identity." + idKey + ".sig_bottom", true);
-					let bodyEl = gMsgCompose.editor.rootElement;
-	
-					// add Signature and replace the BR that was removed in extractSignature
-					// do we ignore theIdentity.sigOnReply ?
-					// do we ignore theIdentity.sigOnForward ?
-					
-					// wrap text only signature to fix [Bug 25093]!
-					if (typeof theSignature === "string")  {
-						var sn = SmartTemplate4.Util.mailDocument.createElement("div");
-						sn.innerHTML = theSignature;
-						theSignature = sn;
-					}
-					
-					if (theIdentity.sigBottom) {
-						bodyEl.appendChild(SmartTemplate4.Util.mailDocument.createElement("br"));
-						bodyEl.appendChild(theSignature);
-					}
-					else {
-						// reply above, before div smartTemplate4-template
-						templateDiv = SmartTemplate4.Util.mailDocument.getElementById('smartTemplate4-template'); // was document
-						// if we don't find this, lets take the first child div
-						if (!templateDiv) {
-							templateDiv = bodyEl.firstChild.nextSibling;
+				let bodyEl = gMsgCompose.editor.rootElement;
+				let doc = gMsgCompose.editor.document;
+				try {
+					if (!SmartTemplate4.sigInTemplate && theSignature) {
+						SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
+		
+						let pref = SmartTemplate4.pref;
+						// add Signature and replace the BR that was removed in extractSignature
+						
+						// wrap text only signature to fix [Bug 25093]!
+						if (typeof theSignature === "string")  {
+							var sn = doc.createElement("div");
+							sn.innerHTML = theSignature;
+							theSignature = sn;
 						}
-						bodyEl.insertBefore(theSignature, templateDiv);
-						bodyEl.insertBefore(SmartTemplate4.Util.mailDocument.createElement("br"), templateDiv);
+						
+						if (theIdentity.sigBottom) {
+							bodyEl.appendChild(doc.createElement("br"));
+							bodyEl.appendChild(theSignature);
+						}
+						else {
+							// reply above, before div smartTemplate4-template
+							// findChildnode non recursive
+
+							
+							templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
+							// if we don't find this, lets take the first child div
+							if (!templateDiv) {
+								templateDiv = bodyEl.firstChild.nextSibling;
+							}
+							templateDiv.parentNode.insertBefore(theSignature, templateDiv);
+							templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv);
+						}
 					}
+			  }
+			  catch(ex) {
+					SmartTemplate4.Util.logException("handling signature failed", ex);
 				}
 			}
 		}
 
+		
 		// moved code for moving selection to top / bottom
-		let isCursor = testCursorVar(template);
+		let isCursor = testCursorVar(rawTemplate);
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' %cursor% in template: ' + isCursor);
 		try {
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
 			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
@@ -1019,6 +1044,16 @@ SmartTemplate4.classSmartTemplate = function()
 					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
+						// look for a child div with lass = 'st4cursor'
+						let caretContainer = findDirectChildByClass(targetNode, 'st4cursor');
+						if(!caretContainer)
+							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from stationery
+							
+						if (caretContainer) {
+							editor.selection.collapse(caretContainer, 0);
+							caretContainer.parentNode.removeChild(caretContainer);
+						}
+						
 						//SmartTemplate4.Util.setCursorPosition(editor);
 					
 						// let thunderbird do it...
@@ -1059,13 +1094,22 @@ SmartTemplate4.classSmartTemplate = function()
 			SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 		}
 
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' reset ModificationCount... ' );
+
+		resetDocument(gMsgCompose.editor, startup);
+		
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finishing. ' );
+	};
+
+	function resetDocument(editor, withUndo) {
 		gMsgCompose.editor.resetModificationCount();
-		if (startup) {
+		if (withUndo) {
+			SmartTemplate4.Util.logDebugOptional('functions', ' resetting Undo... ' );
 			gMsgCompose.editor.enableUndo(false);
 			gMsgCompose.editor.enableUndo(true);
 		}
 	};
-
+	
 	// -----------------------------------
 	// Constructor
 	// var SmartTemplate4 = SmartTemplate4;
@@ -1076,6 +1120,7 @@ SmartTemplate4.classSmartTemplate = function()
 	this.insertTemplate = insertTemplate;
 	this.extractSignature = extractSignature;
   this.getProcessedText = getProcessedText;	
+	this.resetDocument = resetDocument;
 };
 
 
