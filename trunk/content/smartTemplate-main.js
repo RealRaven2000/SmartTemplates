@@ -273,15 +273,31 @@ var SmartTemplate4 = {
 		}
 		SmartTemplate4.Util.logDebug(dbg);
 		// Add template message
+		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
 		// guard against this being called multiple times from stationery
 		// avoid this being called multiple times
     let Ci = Components.interfaces;
 		let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);		
-		let doc = editor.document;
-		if (!doc.smartTemplateInserted) {
-			this.smartTemplate.insertTemplate(true, isStationeryTemplate);
-			if (evt && evt.type && evt.type =="stationery-template-loaded")
-				doc.smartTemplateInserted = true;
+		try {
+			let flag = editor.rootElement;
+			if (!flag.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			{ 
+				this.smartTemplate.insertTemplate(true, isStationeryTemplate);
+				// store a flag in the document
+			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
+				editor.rootElement.setAttribute("smartTemplateInserted","true");
+				//editor.insertNode(div, editor.rootElement, 0);
+				// window.smartTemplateInserted = true;
+				this.smartTemplate.resetDocument(editor, true);
+				
+				SmartTemplate4.Util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
+			}
+			else {
+				SmartTemplate4.Util.logDebug('smartTemplateInserted is already set');
+			}
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException("notifyComposeBodyReady", ex);
 		}
 	},
 
