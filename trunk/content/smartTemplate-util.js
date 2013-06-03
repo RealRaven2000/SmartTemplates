@@ -411,7 +411,7 @@ SmartTemplate4.Util = {
 	{
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
 		                               .getService(Components.interfaces.nsIConsoleService);
-		var aCategory = '';
+		var aCategory = 'chrome javascript';
 
 		var scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 		scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
