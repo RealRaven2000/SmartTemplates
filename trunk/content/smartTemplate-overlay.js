@@ -167,7 +167,7 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 	let inputStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
 						  createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
 
-  SmartTemplate4.Util.logDebugOptional('functions','martTemplate4.classGetHeaders(' + messageURI + ')');
+  SmartTemplate4.Util.logDebugOptional('functions','classGetHeaders(' + messageURI + ')');
 	inputStream.init(messageStream);
 	try {
 		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
@@ -970,15 +970,15 @@ SmartTemplate4.regularize = function(msg, type)
 				// Change time of %A-Za-z%
 				case "X:=sent":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
-					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT");
+					//SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT");
 					return "";
 				case "X:=today":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
-					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
+					//SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
 					return "";
 				case "cursor":
-					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "Cursor found");
-					return '<div class="moz-signature"></div>'; // maybe make this invisible??
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
+					return '<div class="st4cursor"></div>'; // maybe make this invisible??
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(
