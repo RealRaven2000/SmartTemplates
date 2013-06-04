@@ -297,6 +297,7 @@ SmartTemplate4.mimeDecoder = {
 		let showName = false;
 		let showMailAddress = false;
 		let showLink = false;
+		let suppressLink = false;
 		// difficult logic for format here... [makes it hard to extend format]
 		// possible values for format are:
 		// name
@@ -333,7 +334,10 @@ SmartTemplate4.mimeDecoder = {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
 				}  // %to(name)%
 				else {
-					result = getEmailAddress(address); // email part ?
+					result = getEmailAddress(address); // email part
+					// suppress linkifying!
+					if (!showName) 
+					  suppressLink = true;
 				}     // %to% / %to(mail)%
 			}
 			// swap last, first
@@ -380,6 +384,9 @@ SmartTemplate4.mimeDecoder = {
 
 			if (showLink) {
 				result = "<a href=mailto:" + getEmailAddress(address) + ">" + result + "</a>";
+			}
+			if (suppressLink) {
+				result = "<a>" + result + "</a>"; // anchor without href supresses linkifying
 			}
 			
 			addresses += result;
@@ -990,8 +997,9 @@ SmartTemplate4.regularize = function(msg, type)
 					else {
 						token = mime.decode(hdr.get(token), charset);
 					}
-					// allow html as to(link) etc. builds a href with mailto
-					if (arg && SmartTemplate4.Util.isFormatLink(arg)) 
+					// allow HTML as to(link) etc. builds a href with mailto
+					// also to supress href in to(mail)!
+					if (arg && SmartTemplate4.Util.isFormatLink(arg) || arg=='(mail)') 
 						return token;
 					break;
 					// unreachable code! =>

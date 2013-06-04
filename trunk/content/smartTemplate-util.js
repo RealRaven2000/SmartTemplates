@@ -770,7 +770,8 @@ SmartTemplate4.Util = {
 	},
 
 	isFormatLink : function(format) {
-	   return (format.search(/\,link\)$/, "i") != -1);
+		let formattedHTML = (format.search(/\,link\)$/, "i") != -1);
+	  return formattedHTML;
 	} 
 	
 	/* 
