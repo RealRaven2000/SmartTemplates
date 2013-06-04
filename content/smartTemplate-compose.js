@@ -1012,9 +1012,7 @@ SmartTemplate4.classSmartTemplate = function()
 						}
 						else {
 							// reply above, before div smartTemplate4-template
-							// findChildnode non recursive
-
-							
+							// findChildnode non recursive						
 							templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
 							// if we don't find this, lets take the first child div
 							if (!templateDiv) {
@@ -1033,7 +1031,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		
 		// moved code for moving selection to top / bottom
-		let isCursor = testCursorVar(rawTemplate);
+		let isCursor = !isStationeryTemplate && testCursorVar(rawTemplate);
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' %cursor% in template: ' + isCursor);
 		try {
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
@@ -1053,25 +1051,7 @@ SmartTemplate4.classSmartTemplate = function()
 							editor.selection.collapse(caretContainer, 0);
 							caretContainer.parentNode.removeChild(caretContainer);
 						}
-						
 						//SmartTemplate4.Util.setCursorPosition(editor);
-					
-						// let thunderbird do it...
-						/*
-						editor.selection.removeAllRanges();
-						// find offset for [[cursor]]
-						editor.selection.collapse(templateDiv, 0);
-						let pos = templateDiv.textContent.indexOf('[[cursor]]');
-						let htmlPos = templateDiv.innerHTML.indexOf('[[cursor]]');
-						let lineBreaks = templateDiv.innerHTML.toLowerCase().substr(0, htmlPos).match("<br");
-						if (lineBreaks)
-							pos = pos + lineBreaks.length;
-						for (let i=0; i<pos; i++)
-							editor.selectionController.characterMove(true, false); // move forward to [[cursor]]
-						for (let i=0; i<10; i++)
-							editor.selectionController.characterMove(true, true); // highlight [[cursor]]
-						// editor.selectionController.wordExtendForDelete(true);
-						*/
 					}
 					else {
 						if (theIdentity.replyOnTop) {

@@ -185,8 +185,8 @@ var SmartTemplate4 = {
 			if (SmartTemplate4.Preferences.isStationerySupported && 
 			    (typeof Stationery_ != 'undefined'))
 			{
-			  //
-				if (SmartTemplate4.stateListener) {
+			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
+				if (Stationery.fireAsyncEvent) {
 					SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
 					return;
 				}
