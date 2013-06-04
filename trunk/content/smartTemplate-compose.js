@@ -1028,11 +1028,11 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 			}
 		}
-
 		
 		// moved code for moving selection to top / bottom
-		let isCursor = !isStationeryTemplate && testCursorVar(rawTemplate);
-		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' %cursor% in template: ' + isCursor);
+		let caretContainer = findChildNode(targetNode, 'st4cursor');
+		let isCursor = (caretContainer != null);
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' search %cursor% in template: ' + isCursor);
 		try {
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
 			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
@@ -1043,7 +1043,6 @@ SmartTemplate4.classSmartTemplate = function()
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
-						let caretContainer = findDirectChildByClass(targetNode, 'st4cursor');
 						if(!caretContainer)
 							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from stationery
 							
