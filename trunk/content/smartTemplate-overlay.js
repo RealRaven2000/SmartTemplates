@@ -905,7 +905,7 @@ SmartTemplate4.regularize = function(msg, type)
 					// we need the split to support (name,link) etc.
 					token = mime.split(fullId, charset, arg);
 					// allow html as to(link) etc. builds a href with mailto
-					if (arg && SmartTemplate4.Util.isFormatLink(arg)) 
+					if (arg && SmartTemplate4.Util.isFormatLink(arg) || arg=='(mail)') 
 						return token;
 					break;
 				case "T": // today

@@ -333,7 +333,7 @@ SmartTemplate4.Settings = {
 		switch (tabbox.selectedIndex) {
 			case 0:
 				templateMsgBoxId='newmsg';
-				if (className.indexOf('noNew') >= 0) {
+				if (className.indexOf('noWrite') >= 0) {
 					SmartTemplate4.Util.displayNotAllowedMessage(code);
 					return;
 				}
