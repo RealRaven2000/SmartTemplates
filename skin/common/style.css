@@ -558,7 +558,7 @@ b {
   padding: 2px 4px;
 }
 
-#keywords code.noNew, code.noNew {
+#keywords code.noWrite, code.noWrite {
   border: 1px solid #bbb;
   margin: 2px 4px;
   cursor: pointer;

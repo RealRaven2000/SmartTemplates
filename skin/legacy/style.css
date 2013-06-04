@@ -59,7 +59,7 @@ h1.helpchapter {
   background-image: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
   -moz-border-radius: 0.3em;
 }
-#keywords code.noNew, code.noNew {
+#keywords code.noWrite, code.noWrite {
   background-image: -moz-linear-gradient(top, rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
   -moz-border-radius: 0.3em;
 }

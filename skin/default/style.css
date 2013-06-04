@@ -62,7 +62,7 @@ h1.helpchapter {
   border-radius: 0.3em;
 }
 
-#keywords code.noNew, code.noNew {
+#keywords code.noWrite, code.noWrite {
   background: linear-gradient(to bottom,  rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
   border-radius: 0.3em;
 }
