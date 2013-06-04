@@ -1066,6 +1066,8 @@ SmartTemplate4.classSmartTemplate = function()
 								editor.selection.collapse(theParent, nodeOffset+1); 
 						}
 					}
+					editor.selection.modify('move', 'left', 'character');
+					editor.selection.modify('move', 'right', 'character');
 				}
 			}
 		}
