@@ -30,7 +30,7 @@ END LICENSE BLOCK
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.mozdev.org/");
+		return this._thunderbirdRegExp = new RegExp("^http://smarttemplate4.mozdev.org");
 	}
 };
 
