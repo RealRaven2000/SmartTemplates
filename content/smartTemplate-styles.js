@@ -103,7 +103,7 @@ SmartTemplate4.Styles = {
 		try {
 			if (!ss || ss==null) {
 				// fallback style sheet retrieval
-				// ss = this.getMyStyleSheet("SmartTemplate4Styles", 'quickfolders-layout.css'); // not always 100% right but we hope that it is being passed in correctly
+				// ss = this.getMyStyleSheet("SmartTemplate4Styles", 'layout.css'); // not always 100% right but we hope that it is being passed in correctly
 				// if (!ss || ss==null)
 					return false;
 			}
