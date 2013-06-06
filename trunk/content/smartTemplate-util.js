@@ -772,7 +772,14 @@ SmartTemplate4.Util = {
 	isFormatLink : function(format) {
 		let formattedHTML = (format.search(/\,link\)$/, "i") != -1);
 	  return formattedHTML;
-	} 
+	} ,
+	
+	showPlatformWarning: function() {
+	  let msg = "Did you know? Thunderbird 24 will be released shortly - the current release version of {1} is {2}.";
+		msg += "You are still running an old version {3} of Gecko which exposes your system to a number of security vulnerabilities.";
+		msg += "\nwhy not try the automatic update by going to Help > About > Check for updates\nShall we check for updates now?";
+		
+	}
 	
 	/* 
 	,

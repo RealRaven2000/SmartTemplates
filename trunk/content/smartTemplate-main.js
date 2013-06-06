@@ -100,8 +100,10 @@
   Version 0.9.3 - Work in Progress
 	  # toolbar button
 		# fixed a problem with preference not updating (found by AMO reviewer Nils Maier)
-	  # %cursor% variable
+	  # [FR 24990] Added %cursor% variable
+		# [FR 25083] New option "Correct Lastname, Firstname" to swap firstname to the front. 
 		# %deleteText()% and %replaceText()% functions
+		# [FR 25248] Added %y% for two digit years
 	  # parsing of variables in Signature - enable extensions.smartTemplate4.parseSignature
 	  # Postbox support
 		# stabilised signature code base

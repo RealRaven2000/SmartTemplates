@@ -222,6 +222,10 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// Detect character set
+	// jcranmer: this is really impossigblebased on such short fields
+	// see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
+	//           http://encoding.spec.whatwg.org/#interface-textdecoder
+	//           
 	detectCharset : function(str)
 	{
 		let charset = "";
@@ -234,6 +238,7 @@ SmartTemplate4.mimeDecoder = {
 		                                                         // not supported                  RFC1922 iso-2022-cn-ext (Chinese extended)
 		if (str.search(/\x1b\$\(D/gi) !== -1)
 		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237 (Japanese 1)
+		if (!charset) charset = 'ISO-8859-1';
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
@@ -277,6 +282,18 @@ SmartTemplate4.mimeDecoder = {
 	// Split addresses and change encoding.
 	split : function (addrstr, charset, format)
 	{
+	  // jcranmer: you want to use parseHeadersWithArray
+		// jcranmer: that gives you three arrays
+	  //  jcranmer: the first is an array of strings "a@b.com", "b@b.com", etc.
+		//  jcranmer: the second is an array of the display names, I think fully unquoted
+    //  jcranmer: the third is an array of strings "Hello <a@b.com>"
+		//            preserveIntegrity is used, so someone with the string "Dole, Bob" will have that be quoted I think
+		//            if you don't want that, you'd have to pass to unquotePhraseOrAddrWString(value, false)
+		//            oh, and you *don't* need to decode first, though you might want to
+		// see also: https://bugzilla.mozilla.org/show_bug.cgi?id=858337
+		//           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
+		// use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
+		// mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
 	  function getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}
@@ -558,6 +575,10 @@ SmartTemplate4.regularize = function(msg, type)
 
 	let msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
 	let charset = (type != "new") ? msgDbHdr.Charset : null;
+	// try falling back to folder charset:
+	if (!charset) {
+		msgDbHdr.folder.charset; // this might be wrong :)
+	}
 	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
 	let date = (type != "new") ? msgDbHdr.date : null;
 	if (type != "new") {
@@ -911,7 +932,7 @@ SmartTemplate4.regularize = function(msg, type)
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
 					return finalize(token, expand("%H%:%M%:%S%"));
-				case "y":                               // Year 1970...
+				case "y":                               // Year 13... (2digits)
 				  let year = tm.getFullYear().toString();
 					return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(-2)");
 				case "Y":                               // Year 1970...
