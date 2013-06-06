@@ -238,7 +238,7 @@ SmartTemplate4.mimeDecoder = {
 		                                                         // not supported                  RFC1922 iso-2022-cn-ext (Chinese extended)
 		if (str.search(/\x1b\$\(D/gi) !== -1)
 		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237 (Japanese 1)
-		if (!charset) charset = 'ISO-8859-1';
+		if (!charset) charset =  SmartTemplate4.Preferences.getMyStringPref ('defaultCharset');
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
