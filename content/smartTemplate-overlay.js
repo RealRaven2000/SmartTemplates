@@ -581,8 +581,8 @@ SmartTemplate4.regularize = function(msg, type)
 	let msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
 	let charset = (type != "new") ? msgDbHdr.Charset : null;
 	// try falling back to folder charset:
-	if (!charset) {
-		msgDbHdr.folder.charset; // this might be wrong :)
+	if (!charset && msgDbHdr) {
+		msgDbHdr.folder.charset; 
 	}
 	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
 	let date = (type != "new") ? msgDbHdr.date : null;
