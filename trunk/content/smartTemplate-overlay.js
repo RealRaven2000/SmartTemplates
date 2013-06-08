@@ -324,6 +324,11 @@ SmartTemplate4.mimeDecoder = {
 		showName = isName(format);
 		showMailAddress = isMail(format);
 		showLink = isLink(format); 
+		// restore old behavior:
+		if (format == '') {
+			showName = true;
+			showMailAddress = true;
+		}
 
 		for (var i = 0; i < array.length; i++) {
 			if (i > 0) {
@@ -342,7 +347,7 @@ SmartTemplate4.mimeDecoder = {
 				// this cuts off the angle-bracket adress part: <foo@bar.com>
 				result = address.replace(/\s*<\S+>\s*$/, "")
 					              .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
-				if (result != "" && showMailAddress) {
+				if (result != "" && (showMailAddress)) {
 					result += address.replace(/.*<(\S+)>.*/g, " <$1>");
 				}     // %to%
 			}
