@@ -1,75 +1,87 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label "File">
-<!ENTITY tools.label "Tools">
-<!ENTITY edit.label "Edit">
-<!ENTITY help.label "Help">
+<!ENTITY tools.label "Strumenti">
+<!ENTITY edit.label "Modifica">
+<!ENTITY help.label "Aiuto">
 <!-- #### MENU OWN ITEMS #### -->
-<!ENTITY copy.label "Copy">
-<!ENTITY paste.label "Paste">
-<!ENTITY insert.label "Insert Variable">
-<!ENTITY close.label "Close">
-<!ENTITY advanced.label "Advanced">
-<!ENTITY export.label "Export">
-<!ENTITY import.label "Import">
-<!ENTITY menu.template_import.label "Import Template">
-<!ENTITY menu.template_export.label "Export Template">
-<!ENTITY settings.label "Settings and Templates">
-<!ENTITY url.homePage.label "Add-On Homepage">
-<!ENTITY url.supportPage.label "Support Page">
-<!ENTITY url.bugsAndFeaturesPage.label "Bug Reports / Feature Requests">
+<!ENTITY copy.label "Copia">
+<!ENTITY paste.label "Incolla">
+<!ENTITY insert.label "Inserisci variabile">
+<!ENTITY close.label "Chiudi">
+<!ENTITY advanced.label "Avanzate">
+<!ENTITY export.label "Esporta">
+<!ENTITY import.label "Importa">
+<!ENTITY menu.template_import.label "Importa modello">
+<!ENTITY menu.template_export.label "Esporta modello">
+<!ENTITY settings.label "Impostazioni e modelli">
+<!ENTITY url.homePage.label "Pagina iniziale estensione">
+<!ENTITY url.supportPage.label "Pagina supporto">
+<!ENTITY url.bugsAndFeaturesPage.label "Segnala errori / Richiedi funzionalità">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Messaggi nuovi">
 <!ENTITY pref_rsp.tab "Messaggi in risposta">
 <!ENTITY pref_fwd.tab "Messaggi da inoltrare">
-<!ENTITY pref_help.tab "Contenuti guida">
-<!ENTITY pref_about.tab "A proposito">
-<!ENTITY pref_global.tab "Global Settings">
-<!ENTITY pref_variables.tab "Variables">
+<!ENTITY pref_help.tab "Aiuto">
+<!ENTITY pref_about.tab "Informazioni su">
+<!ENTITY pref_global.tab "Impostazioni globali">
+<!ENTITY pref_variables.tab "Variabili">
 <!-- #### BUTTONS #### -->
-<!ENTITY accept_button "Accettare">
-<!ENTITY cancel_button "Scartare">
-<!ENTITY contribute_button "Contribuire">
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Annulla">
+<!ENTITY contribute_button "Contribuisci">
 <!-- #### GUI #### -->
-<!ENTITY pref_quoteHeaderBox.label "Quote Header">
-<!ENTITY pref_quoteHeaderBox_tip "Write your Quote Header in this Box e.g. On &#37;date&#37; wrote &#37;from(name)&#37;:">
-<!ENTITY pref_templateBox.label "Template">
-<!ENTITY pref_templateBox_tip "Write your Template in this Box e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
-<!ENTITY pref_dialog.title "Opzioni di SmartTemplate4">
-<!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
-<!ENTITY pref_removeSig.label "Replace signature when changing email identity">
-<!ENTITY pref_showStatusIcon.label "Display button in status bar">
-<!ENTITY pref_fontSettings.label "Template Editor Font">
+<!ENTITY pref_quoteHeaderBox.label "Intestazione">
+<!ENTITY pref_quoteHeaderBox_tip "Inserire l'intestazione in questa area di testo, ad esempio Il &#37;date&#37; &#37;from(name)&#37; ha scritto:">
+<!ENTITY pref_templateBox.label "Modello">
+<!ENTITY pref_templateBox_tip "Inserire il modello in questa area di testo, ad esempio Ciao &#37;from(name)&#37;, &lt;br&gt; grazie per il tuo messaggio &lt;br&gt; saluti, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "Impostazioni di SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Numero di linee vuote nella testata:">
+<!ENTITY pref_removeSig.label "Sostituisci la firma quando cambia l'identità dell'account">
+<!ENTITY pref_showStatusIcon.label "Visualizza il pulsante nella barra di stato">
+<!ENTITY pref_StatusIcon.IconOnly "Icone">
+<!ENTITY pref_StatusIcon.IconText "Icone e testo">
+<!ENTITY pref_StatusIcon.IconHoverText "Testo al passaggio del mouse">
+<!ENTITY pref_fontSettings.label "Carattere editor modello">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Utilizza posta in arrivo globale">
 <!ENTITY pref_def.label "Utilizza la cartella di posta in arrivo globale">
-<!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per personalizzare l&apos;intestazione delle citazioni dell&apos;account">
+<!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account">
 <!ENTITY pref_newmsg.cap "Messaggi nuovi">
 <!ENTITY pref_new.label "Applica il seguente modello di intestazione personalizzata per i messaggi nuovi">
 <!ENTITY pref_rspmsg.cap "Messaggi in risposta">
 <!ENTITY pref_rsp.label "Applica il seguente modello di intestazione personalizzata per i messaggi in risposta">
-<!ENTITY pref_rsphead.label "Utilizza l&apos;intestazione personalizzata della citazione invece di quella predefinita">
+<!ENTITY pref_rsphead.label "Utilizza l'intestazione personalizzata invece di quella predefinita">
 <!ENTITY pref_fwdmsg.cap "Messaggi da inoltrare">
 <!ENTITY pref_fwd.label "Applica il seguente modello di intestazione personalizzata per i messaggi da inoltrare">
-<!ENTITY pref_fwdhead.label "Utilizza l&apos;intestazione personalizzata della citazione invece di quella predefinita">
-<!ENTITY pref_html.label "Utilizza il codice HTML (es: &lt;b&gt;bold&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Attivando l&apos;opzione verranno utilizzati i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni">
-<!ENTITY pref_rep_br.label "Sostituisci con &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Attivando l&apos;opzione verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui segue il codice HTML contenente &lt;br&gt;">
-<!ENTITY pref_quotehead_tip "Attivando l&apos;opzione non verrà utilizzata l&apos;intestazione predefinita delle citazioni. Formulare l&apos;intestazione personalizzata all&apos;interno dell&apos;area di testo qui sopra">
-<!ENTITY pref_template_tip "È possibile modificare l&apos;intestazione delle citazioni utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
+<!ENTITY pref_fwdhead.label "Disabilita l'intestazione predefinita di Thunderbird">
+<!ENTITY pref_html.label "Utilizza il codice HTML (es.: &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Utilizza i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni">
+<!ENTITY pref_rep_br.label "Sostituisci il ritorno a capo con &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Attivando l'opzione verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui segue il codice HTML contenente &lt;br&gt;">
+<!ENTITY pref_quotehead_tip "Attivando l'opzione non verrà utilizzata l'intestazione predefinita. Formulare l'intestazione personalizzata all'interno dell'area di testo qui sopra">
+<!ENTITY pref_template_tip "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
 <!ENTITY help_dialog_title "Contenuti guida di SmartTemplate4">
 <!ENTITY help_keyword.cap "Contenuti guida">
-<!ENTITY pref_debug_check "Debug mode">
-<!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_debug_check "Modalità debug">
+<!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
+<!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
+<!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
+<!ENTITY pref_parseSignature "Elabora firma">
+<!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
+<!ENTITY pref_stationerySupport "Supporta l'estensione Stationery">
+<!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
+<!ENTITY pref_stationeryLink "Estensione Stationery">
+<!ENTITY pref_stationeryLink_tip "Vai a estensione Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A proposito di SmartTemplate4">
-<!ENTITY creator.label "Creator">
-<!ENTITY developer.label "Developer">
+<!ENTITY creator.label "Creatore">
+<!ENTITY developer.label "Sviluppatore">
 <!ENTITY localename.label "it">
-<!ENTITY localized.label "Translator">
-<!ENTITY translatorNickname.label "A35G e Luana (BabelZilla)">
-<!ENTITY contributor.label "Contributor">
-<!ENTITY about.label "SmartTemplate4 offre un intelligente / facile modo di usare i modelli che personalizzano lo standard Thunderbird quote-Header. Modelli (quote-Header) può essere utilizzato per singolo account o per le impostazioni globali (conti comuni).">
+<!ENTITY localized.label "Traduttore">
+<!ENTITY translatorNickname.label "A35G, Luana e Lucky (BabelZilla)">
+<!ENTITY contributor.label "Contributo">
+<!ENTITY about.label "SmartTemplate4 permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variabili di base">
 <!ENTITY ownname.label "Nome">
@@ -77,9 +89,9 @@
 <!ENTITY date.label "Data/ora (come nell'intestazione originaria)">
 <!ENTITY tomail.label "Indirizzo e-mail del destinatario">
 <!ENTITY frommail.label "Indirizzo e-mail del mittente">
-<!ENTITY ccmail.label "Indirizzo e-mail del destinatario">
-<!ENTITY sig.label "Firma da Impostazioni account TB">
-<!ENTITY sig2.label "Firma da Impostazioni account TB ma senza il '--'">
+<!ENTITY ccmail.label "Indirizzo e-mail del destinatario in copia">
+<!ENTITY sig.label "Firma da impostazion account">
+<!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY to.label "Nome del destinatario (predefinito)">
@@ -98,66 +110,66 @@
 <!ENTITY spec_form.cap "Formati speciali">
 <!ENTITY specform_note.label "Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!">
 <!ENTITY ex_brack.label "Esempio: A: boo Cc: foo">
-<!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
+<!ENTITY brack_with_var.label "Le seguenti variabili possono essere usate tra [[...]]">
 <!ENTITY sub_var.cap "Oggetto">
-<!ENTITY sub.label "Oggetto (stessi gradicono Mailheader originale)">
-<!ENTITY sub2.label "Oggetto (stessi del redattore del messaggio di TB)">
+<!ENTITY sub.label "Oggetto del messaggio di risposta o inoltrato">
+<!ENTITY sub2.label "Oggetto del messaggio in corso di redazione">
 <!ENTITY spec_var.cap "Variabili speciali">
 <!ENTITY messid.label "Message ID">
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Qualsiasi Header-line">
-<!ENTITY fix_vartz.cap "Variabili per il formato data/ora e Timezone">
+<!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
 <!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data/ora (formato locale)">
 <!ENTITY dateshort.label "Data/ora abbreviata (es: 01.01.2000 1:23:45)">
-<!ENTITY datetz.label "Timezone (+0100, +0200, ... )">
+<!ENTITY datetz.label "Fuso orario (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
 <!ENTITY var_custom.cap "Variabili per data/ora personalizzata ">
 <!ENTITY customdf_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY A.label "Nome del giorno (Venerdì)">
 <!ENTITY a.label "Nome del giorno (Ven)">
-<!ENTITY d.label "Giorno del mese (da 01 a 31)">
+<!ENTITY d.label "Giorno del mese (da 01 a 31) espresso con due cifre">
 <!ENTITY e.label "Giorno del mese (da 1 a 31)">
 <!ENTITY n.label "Mese (da 1 a 12)">
 <!ENTITY B.label "Mese (Gennaio)">
 <!ENTITY b.label "Mese (Gen)">
-<!ENTITY m.label "Mese (da 01 a 12)">
+<!ENTITY m.label "Mese (da 01 a 12) espresso con due cifre">
 <!ENTITY Y.label "Anno (1970)">
 <!ENTITY M.label "Minuto (da 00 a 59)">
 <!ENTITY s.label "Secondo (00 a 59)">
-<!ENTITY h.label "Ore, formato orario in 24 ore (da 00 a 23)">
-<!ENTITY k.label "Ore, formato orario in 24 ore (da 0 a 23)">
-<!ENTITY l.label "Ore, formato orario in 12 ore (da 1 a 12)">
-<!ENTITY i.label "Ore, formato orario in 12 ore (da 01 a 12)">
-<!ENTITY p.label "AM or PM">
+<!ENTITY h.label "Ora nel formato 24 ore (da 00 a 23) espressa con due cifre">
+<!ENTITY k.label "Ora nel formato 24 ore (da 0 a 23)">
+<!ENTITY l.label "Ora nel formato 12 ore (da 1 a 12)">
+<!ENTITY i.label "Ora nel formato 12 ore (da 01 a 12) espressa con due cifre">
+<!ENTITY p.label "AM o PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY var_xsent.cap "Varibile &#37;X:=sent&#37;">
-<!ENTITY xsent_note.label "Le variabili per data/ora, Timezone e data/ora personalizzata qui sopra vengono impostate al valore attuale; quando associate alla variabile &#37;X:=sent&#37;#37; vengono ripristinati i valori di quando il messaggio è stato inviato">
+<!ENTITY var_xsent.cap "Variabile &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile &#37;X:=sent&#37;#37; vengono utilizzati i valori di quando il messaggio è stato inviato">
 <!ENTITY xsent_long.cap "Esempio di Longstring">
 <!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; alle ore &#37;H&#37;:&#37;M&#37;">
-<!ENTITY xsent_long_result.label "Risultato: 16.02.2011 alle ore 12:15">
+<!ENTITY xsent_long_result.label "Risultato:  Domenica, 16.02.2011 alle ore 12:15">
 <!ENTITY xsent_short.cap "Esempio di Shortstring:">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
-<!ENTITY xsent_short_result.label "Risultato: Mittwoch, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "Aggiunta si possono utilizzare in entrambi i seguenti variabili di tipo variante anche:">
+<!ENTITY xsent_short_result.label "Risultato: Domenica, 16.02.2011 12:15:25">
+<!ENTITY xsent_short_note.label "Le seguenti variabili si possono utilizzare in entrambe le varianti">
 <!ENTITY localedate.label "Data/ora (formato locale)">
-<!ENTITY shortdate.label "Data/ora abbreviata (es: 01.01.2000 1:23:45)">
-<!ENTITY datetimezone.label "Timezone (+0100, +0200, ... )">
+<!ENTITY shortdate.label "Data/ora abbreviata (es.: 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label "Fuso orario (+0100, +0200, ... )">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
-<!ENTITY im-ex.cap "Settings and Templates Export/Import">
-<!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
-<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
-<!ENTITY im-ex_note3.label "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
-<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
+<!ENTITY im-ex.cap "Importa / esporta impostazioni e modelli">
+<!ENTITY im-ex_note1.label "Si possono esportare ed importare le impostazioni ed i modelli associati ad ogni account.">
+<!ENTITY im-ex_note2.label "Per prima cosa seleziona l'account che desideri esportare nel menu a tendina delle impostazioni di SmartTemplate4.">
+<!ENTITY im-ex_note3.label "Successivamente seleziona 'File' &#8658; 'Esporta' &#8658; 'Impostazioni e modelli' dalla barra del menu e salva il file (xxx.st4) sul computer.">
+<!ENTITY im-ex_note4.label "Per importare un file, seleziona l'account da importare nel menu a tendina delle impostazioni di SmartTemplate4. Successivamente, seleziona 'File' &#8658; 'Importa' &#8658; 'Impostazioni e modelli' dalla barra del menu.">
+<!ENTITY im-ex_note5.label "Seleziona il file SmartTemplate4 (xxx.st4) da importare.">
+<!ENTITY im-ex_note6.label "NOTA: su Apple/Macintosh viene visualizzata la barra del menu nel pannello del titolo, anzichè la finestra Impostazioni di SmartTemplate4. Questo è il comportamento predefinito su questa piattaforma e non può essere cambiato.">
 <!ENTITY html_note.cap "Note per i modelli di intestazione personalizzata in HTML">
-<!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML!">
+<!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML !">
 <!ENTITY table.cap "Utilizzo delle variabili">
-<!ENTITY table_note.label "Se una variabile utilizzata non corretto un errore viene registrato nel Errorconsole!">
+<!ENTITY table_note.label "Se una variabile viene utilizzata in modo non corretto viene registrato un errore nella console degli errori !">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabile">
 <!ENTITY table_new.label "Nuovi">

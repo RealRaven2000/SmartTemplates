@@ -7,210 +7,148 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 
-		<head>
-			<title>help.xhtml</title>
-		</head>
+	<head>
+		<title>help.xhtml</title>
+	</head>
 	<body>
-		<div class="body" id="helpContents" onclick="containerClick(this, event);">
-			<!-- ##### Fix Variables #### -->
-			<h1 class="helpchapter">&fix_var.cap;</h1>
-			<code>%ownname%</code> = &ownname.label;
-			<br />
-			<code>%ownmail%</code> = &ownmail.label;
-			<br />
-			<code class="noWrite">%date%</code> = &date.label;
-			<br />
-			<code class="noWrite">%to(mail)%</code> = &tomail.label;
-			<br />
-			<code class="noWrite">%from(mail)%</code> = &frommail.label;
-			<br />
-			<code class="noWrite">%cc(mail)%</code> = &ccmail.label;
+		<div class="help" id="helpContents" onclick="containerClick(this, event);">
+		<!-- ##### Fix Variables #### -->
+		<h1 class="helpchapter">&fix_var.cap;</h1>
+			<ul>
+				<li><code>%ownname%</code> = &ownname.label;</li>
+				<li><code>%ownmail%</code> = &ownmail.label;</li>
+				<li><code class="noWrite">%date%</code> = &date.label;</li>
+				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
+				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>
+				<li><code class="noWrite">%cc(mail)%</code> = &ccmail.label;</li>
+			</ul>
 		       <!--
                         <br />
 			<code>%sig%</code> = &sig.label;
 			<br />
 			<code>%sig(2)%</code> = &sig2.label;
                        -->
-			<br />
-			<br />
-			<!-- ##### "To" Variables #### -->
-			<h1 class="helpchapter">&to_var.cap;</h1>
-			<h2>(&to_note.label;)</h2>
-			<code class="noWrite">%to%</code> = &to.label;
-			<br />
-			<code class="noWrite">%to(firstname)%</code> = &tofirstname.label;
-			<br />
-			<code class="noWrite">%to(name)%</code> = &toname.label;
-			<br />
-			<br />
+		<!-- ##### "To" Variables #### -->
+		<h1 class="helpchapter">&to_var.cap;</h1>
+			<aside>(&to_note.label;)</aside>
+			<ul>
+				<li><code class="noWrite">%to%</code> = &to.label;</li>
+				<li><code class="noWrite">%to(firstname)%</code> = &tofirstname.label;</li>
+				<li><code class="noWrite">%to(name)%</code> = &toname.label;</li>
+			</ul>
+			
 			<!-- ##### "From" Variables #### -->
 			<h1 class="helpchapter">&from_var.cap;</h1>
-			<h2>(&from_note.label;)</h2>
-			<code class="noWrite">%from%</code> = &from.label;
-			<br />
-			<code class="noWrite">%from(firstname)%</code> = &fromfirstname.label;
-			<br />
-			<code class="noWrite">%from(name)%</code> = &fromname.label;
-			<br />
-			<br />
-			<!-- ##### "CC" Variables #### -->
-			<h1 class="helpchapter">&cc_var.cap;</h1>
-			<h2>(&cc_note.label;)</h2>
-			<code class="noWrite">%cc%</code> = &cc.label;
-			<br />
-			<code class="noWrite">%cc(firstname)%</code> = &ccfirstname.label;
-			<br />
-			<code class="noWrite">%cc(name)%</code> = &ccname.label;
-			<br />
-			<br />
-			<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
-			<h1 class="helpchapter">&spec_form.cap;</h1>
-			&specform_note.label;
-			<br />
-			<b>&ex_brack.label;</b><br />
-			<br />
-			<b>&brack_with_var.label;:</b>
-			<br />
-			<code class="noWrite">%to%</code>
-			<br />
-			<code class="noWrite">%to(firstname)%</code>
-			<br />
-			<code class="noWrite">%to(name)%</code>
-			<br />
-			<code class="noWrite">%to(mail)%</code>
-			<br />
-			<code class="noWrite">%cc%</code>
-			<br />
-			<code class="noWrite">%cc(firstname)%</code>
-			<br />
-			<code class="noWrite">%cc(name)%</code>
-			<br />
-			<code class="noWrite">%cc(mail)%</code>
-			<br />
-			<br />
-			<!-- ##### Subject Variables #### -->
-			<h1 class="helpchapter">&sub_var.cap;</h1>
-			<code class="noWrite">%subject%</code> = &sub.label;
-			<br />
-			<code class="noWrite">%subject(2)%</code> = &sub2.label;
-			<br />
-			<br />
-			<!-- ##### Special Variables (Message-Headerkeys) #### -->
-			<h1 class="helpchapter">&spec_var.cap;</h1>
-			<code class="noWrite">%Message-ID%</code> = &messid.label;
-			<br />
-			<code class="noWrite">%Newsgroups%</code> = &newsgr.label;
-			<br />
-			<code class="noWrite">%X-Mailer%</code> = &xmail.label;
-			<br />
-			<code class="noWrite">%...%</code> = &any.label;
-			<br />
-			<br />
-			<!-- ##### Fix Variables for Date/Timezone #### -->
-			<h1 class="helpchapter">&fix_vartz.cap;</h1>
-			<h2>(&fix_vartz_note.label;)</h2>
-			<code>%datelocal%</code> = &datelocal.label;
-			<br />
-			<code>%dateshort%</code> = &dateshort.label;
-			<br />
-			<code>%date_tz%</code> = &datetz.label;
-			<br />
-			<code>%tz_name%</code> = &tzname.label;
-			<br />
-			<br />
-			<!-- ##### Custom Variables #### -->
-			<h1 class="helpchapter">&var_custom.cap;</h1>
-			<h2>(&customdf_note.label;)</h2>
-			<code>%A%</code> = &A.label;
-			<br />
-			<code>%a%</code> = &a.label;
-			<br />
-			<code>%B%</code> = &B.label;
-			<br />
-			<code>%b%</code> = &b.label;
-			<br />
-			<code>%d%</code> = &d.label;
-			<br />
-			<code>%e%</code> = &e.label;
-			<br />
-			<code>%m%</code> = &m.label;
-			<br />
-			<code>%n%</code> = &n.label;
-			<br />
-			<code>%Y%</code> = &Y.label;
-			<br />
-			<code>%M%</code> = &M.label;
-			<br />
-			<code>%S%</code> = &s.label;
-			<br />
-			<code>%H%</code> = &h.label;
-			<br />
-			<code>%k%</code> = &k.label;
-			<br />
-			<code>%I%</code> = &i.label;
-			<br />
-			<code>%l%</code> = &l.label;
-			<br />
-			<code class="noWrite">%p%</code> = &p.label;
-			<br />
-			<code class="noWrite">%p(1)%</code> = &p1.label;
-			<br />
-			<code class="noWrite">%p(2)%</code> = &p2.label;
-			<br />
-			<code class="noWrite">%p(3)%</code> = &p3.label;
-			<br />
-			<br />
-			<!-- ##### X:=Sent Variable #### -->
-			<h1 class="helpchapter">&var_xsent.cap;</h1>
-			&xsent_note.label;
-			<br />
-			<br />
-			<code class="noWrite">%X:=sent%</code>
-			<br />
-			<br />
-			<!-- ##### Longstring Description #### -->
-			<h1 class="helpchapter">&xsent_long.cap;:</h1>
-			<code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
-			<br />
-			<b>&xsent_long_result.label;</b>
-			<br />
-			<br />
-			<!-- ##### Shortstring Description #### -->
-			<h1 class="helpchapter">&xsent_short.cap;:</h1>
-			<code class="noWrite">%X:=sent% %datelocal%</code>
-			<br />
-			<b>&xsent_short_result.label;</b>
-			<br />
-			<br />
-			<b>&xsent_short_note.label;:</b>
-			<br />
-			<code>%datelocal%</code> = &localedate.label;
-			<br />
-			<code>%dateshort%</code> = &shortdate.label;
-			<br />
-			<code>%date_tz%</code> = &datetimezone.label;
-			<br />
-			<code>%tz_name%</code> = &timezonename.label;
-			<br />
-			<br />
-			<!-- ##### HTML -> UTF-8 Note #### -->
-			<h1 class="helpchapter">&html_note.cap;</h1>
-			<b>&html_note.label;</b>
-			<br />
-			<br />
-			<!-- ##### Variable Table Note #### -->
-			<h1 class="helpchapter">&table.cap;</h1>
-			<b>&table_note.label;</b>
-			<br />
-			<br />
+			<aside>(&from_note.label;)</aside>
+			<ul>
+				<li><code class="noWrite">%from%</code> = &from.label;</li>
+				<li><code class="noWrite">%from(firstname)%</code> = &fromfirstname.label;</li>
+				<li><code class="noWrite">%from(name)%</code> = &fromname.label;</li>
+			</ul>
+		<!-- ##### "CC" Variables #### -->
+		<h1 class="helpchapter">&cc_var.cap;</h1>
+			<aside>(&cc_note.label;)</aside>
+			<ul>
+				<li><code class="noWrite">%cc%</code> = &cc.label;</li>
+				<li><code class="noWrite">%cc(firstname)%</code> = &ccfirstname.label;</li>
+				<li><code class="noWrite">%cc(name)%</code> = &ccname.label;</li>
+			</ul>
+		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
+		<h1 class="helpchapter">&spec_form.cap;</h1>
+			<aside>&specform_note.label;
+				<br /><b>&ex_brack.label;</b><br />
+			</aside>&brack_with_var.label;:<aside>
+			</aside>
+			<ul>
+				<li><code class="noWrite">%to%</code> <code class="noWrite">%to(firstname)%</code> <code class="noWrite">%to(name)%</code> <code class="noWrite">%to(mail)%</code></li>
+				<li><code class="noWrite">%cc%</code> <code class="noWrite">%cc(firstname)%</code> <code class="noWrite">%cc(name)%</code> <code class="noWrite">%cc(mail)%</code></li>
+				<li><code class="noWrite">%bcc%</code> <code class="noWrite">%bcc(firstname)%</code> <code class="noWrite">%bcc(name)%</code> <code class="noWrite">%bcc(mail)%</code></li>
+			</ul>
+		<!-- ##### Subject Variables #### -->
+		<h1 class="helpchapter">&sub_var.cap;</h1>
+			<ul>
+				<li><code class="noWrite">%subject%</code> = &sub.label;</li>
+				<li><code class="noWrite">%subject(2)%</code> = &sub2.label;</li>
+			</ul>
+		<!-- ##### Special Variables (Message-Headerkeys) #### -->
+		<h1 class="helpchapter">&spec_var.cap;</h1>
+			<ul>
+				<li><code class="noWrite">%Message-ID%</code> = &messid.label;</li>
+				<li><code class="noWrite">%Newsgroups%</code> = &newsgr.label;</li>
+				<li><code class="noWrite">%X-Mailer%</code> = &xmail.label;</li>
+				<li><code class="noWrite">%...%</code> = &any.label;</li>
+			</ul>
+		<!-- ##### Fix Variables for Date/Timezone #### -->
+		<h1 class="helpchapter">&fix_vartz.cap;</h1>
+			<aside>(&fix_vartz_note.label;)</aside>
+			<ul>
+				<li><code>%datelocal%</code> = &datelocal.label;</li>
+				<li><code>%dateshort%</code> = &dateshort.label;</li>
+				<li><code>%date_tz%</code> = &datetz.label;</li>
+				<li><code>%tz_name%</code> = &tzname.label;</li>
+			</ul>
+		<!-- ##### Custom Variables #### -->
+		<h1 class="helpchapter">&var_custom.cap;</h1>
+			<aside>(&customdf_note.label;)</aside>
+			<ul>
+				<li><code>%A%</code> = &A.label;</li>
+				<li><code>%a%</code> = &a.label;</li>
+				<li><code>%B%</code> = &B.label;</li>
+				<li><code>%b%</code> = &b.label;</li>
+				<li><code>%d%</code> = &d.label;</li>
+				<li><code>%e%</code> = &e.label;</li>
+				<li><code>%m%</code> = &m.label;</li>
+				<li><code>%n%</code> = &n.label;</li>
+				<li><code>%Y%</code> = &Y.label;</li>
+				<li><code>%M%</code> = &M.label;</li>
+				<li><code>%S%</code> = &s.label;</li>
+				<li><code>%H%</code> = &h.label;</li>
+				<li><code>%k%</code> = &k.label;</li>
+				<li><code>%I%</code> = &i.label;</li>
+				<li><code>%l%</code> = &l.label;</li>
+				<li><code class="noWrite">%p%</code> = &p.label;</li>
+				<li><code class="noWrite">%p(1)%</code> = &p1.label;</li>
+				<li><code class="noWrite">%p(2)%</code> = &p2.label;</li>
+			</ul>
+		<!-- ##### X:=Sent Variable #### -->
+		<h1 class="helpchapter">&var_xsent.cap;</h1>
+			<aside>&xsent_note.label;</aside>
+			<ul>
+				<li><code class="noWrite">%X:=sent%</code></li>
+			</ul>
+		<!-- ##### Longstring Description #### -->
+		<h1 class="helpchapter">&xsent_long.cap;</h1>
+			<ul>
+				<li><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
+				    <br />&xsent_long_result.label;</li>
+			</ul>
+		<!-- ##### Shortstring Description #### -->
+		<h1 class="helpchapter">&xsent_short.cap;</h1>
+			<ul>
+				<li><code class="noWrite">%X:=sent% %datelocal%</code>
+				    <br />&xsent_short_result.label;</li>
+			</ul>
+			<aside>&xsent_short_note.label;</aside>
+			<ul>
+				<li><code>%datelocal%</code> = &localedate.label;</li>
+				<li><code>%dateshort%</code> = &shortdate.label;</li>
+				<li><code>%date_tz%</code> = &datetimezone.label;</li>
+				<li><code>%tz_name%</code> = &timezonename.label;</li>
+			</ul>
+		<!-- ##### HTML -> UTF-8 Note #### -->
+		<h1 class="helpchapter">&html_note.cap;</h1>
+			<aside>&html_note.label;</aside>
+		<!-- ##### Variable Table Note #### -->
+		<h1 class="helpchapter">&table.cap;</h1>
+			<aside>&table_note.label;</aside>
 			<!-- ##### Variable Table #### -->
 			<table id="keywords">
 				<tbody>
 					<tr class="tr-keywords">
-						<td><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/variable-keyword.png" /><b>&table_keyword.label;</b></td>
-						<td><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-new.png" /><b>&table_new.label;</b></td>
-						<td><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-reply.png" /><b>&table_reply.label;</b></td>
-						<td><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-fwd.png" /><b>&table_fwd.label;</b></td>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/variable-keyword.png" />&table_keyword.label;</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-new.png" />&table_new.label;</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-reply.png" />&table_reply.label;</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/skin/icons/mail-fwd.png" />&table_fwd.label;</th>
 					</tr>
 					<tr class="tr-keywords">
 						<td><code>%A%</code> <code>%a%</code></td>

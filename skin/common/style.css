@@ -500,13 +500,13 @@ button.bugsURL:focus {
 /* ################################################################################### */
 
 /* ####################################### BODY ###################################### */
-.body, h1, h2, 
+.help, h1, h2, aside, li,
 .aboutPersonnel 
 {
   font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
 }
 
-.body {
+.help {
   font-size: 9pt;
   display: block;
   background: rgb(208,228,247);
@@ -517,6 +517,15 @@ button.bugsURL:focus {
   padding: 5px 10px;
 }
 
+.help ul {
+	margin-bottom: 1.8em;
+	margin-top: 0.2em;
+	padding-left: 0;
+}
+.help ul li {
+  list-style-image: none;
+  list-style-type: none;
+}
 
 /* ################################ CHAPTER (HEADLINES)  ############################# */
 h1.helpchapter {
@@ -530,14 +539,15 @@ h1.helpchapter {
   padding: 4px 0px;
 }
 
-/* ############################# HTML TAG H2 (BELOW CHAPTER) ######################### */
-h2 {
+/* ############################# HTML TAG ASIDE (BELOW CHAPTER) ######################### */
+aside {
+  display: block;
   font-weight: normal;
   font-size: 10pt !important;
-  font-style: italic;
+  /* font-style: italic; */ /* its kind of ugly having italics everywhere... */
   margin-top: 0px;
   margin-bottom: 5px;
-  padding: 4px 0px;
+  padding: 0px 0px 4px;
 }
 
 /* ##################################### HTML TAG b  ################################# */
@@ -550,17 +560,7 @@ b {
 /* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
 #keywords code, code {
   border: 1px solid #bbb;
-  margin: 2px 4px;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Consolas, 'Courier New', Geneva, sans-serif;
-  font-size: 10pt !important;
-  padding: 2px 4px;
-}
-
-#keywords code.noWrite, code.noWrite {
-  border: 1px solid #bbb;
-  margin: 2px 4px;
+  margin: 2px 4px 2px 0px;
   cursor: pointer;
   display: inline-block;
   font-family: Consolas, 'Courier New', Geneva, sans-serif;
