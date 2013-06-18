@@ -269,7 +269,7 @@ var SmartTemplate4 = {
 				stationeryTemplate = evt.currentTarget.Stationery_.currentTemplate;
 				dbg += '\nStationery is active';
 				dbg += '\nTemplate used is:' + stationeryTemplate.url;
-				if (stationeryTemplate.type !== 'blank' && stationeryTemplate.url !== 'blank')
+				if (stationeryTemplate.type !== 'blank')
 					isStationeryTemplate = true;
 			}			
 		}
