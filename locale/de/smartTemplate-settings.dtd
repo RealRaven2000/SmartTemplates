@@ -59,7 +59,7 @@
 <!ENTITY pref_rep_br.label "Ersetze Leerzeilen durch &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Leerzeilen enthält und diese nicht durch &lt;br&gt; gesetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
-<!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Details siehe Hilfe.">
+<!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">

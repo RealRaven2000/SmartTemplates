@@ -31,9 +31,9 @@
 <!ENTITY contribute_button "Contribute">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Quote Header">
-<!ENTITY pref_quoteHeaderBox_tip "Write your Quote Header in this Box e.g. On &#37;date&#37; wrote &#37;from(name)&#37;:">
+<!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Template">
-<!ENTITY pref_templateBox_tip "Write your Template in this Box e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "In this box, put your mail template e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 settings">
 <!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
 <!ENTITY pref_removeSig.label "Replace signature when changing email identity">
@@ -59,7 +59,7 @@
 <!ENTITY pref_rep_br.label "Replace new-line with &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once.">
 <!ENTITY pref_quotehead_tip "Disable default quote header. Please form your quote header inside the textbox.">
-<!ENTITY pref_template_tip "You can change quote header with 'variables'. See help for more information.">
+<!ENTITY pref_template_tip "You can enhance the template with 'variables'. Click advanced / variables for more information.">
 <!ENTITY help_dialog_title "SmartTemplate4 Help">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Debug mode">
