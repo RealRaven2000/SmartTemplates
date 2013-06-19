@@ -775,13 +775,13 @@ SmartTemplate4.Util = {
 	} ,
 	
 	showPlatformWarning: function() {
-	  let msg = "Did you know? {1} 24 will be released shortly - the current release version of {1} is {2} ";
-		msg += "- You are still running an old version of Gecko [{3}] which exposes your system to a number of security vulnerabilities.";
+	  let msg = "Did you know? {1} 24 will be released shortly - the current release version of {1} is {2} or greater. ";
+		msg += "You are still running an old version of Gecko [{3}] which exposes your system to a number of security vulnerabilities.";
 		msg += "\nWhy not try the automatic update by going to Help > About > Check for updates\nShall we check for updates now?";
 
 		msg = msg.replace('{1}', this.Application).replace('{1}', this.Application);
-		msg = msg.replace('{2}', '17.0.6'); // we need to get this number (current release number) from the web...
-		msg = msg.replace('{3}', this.AppverFull);
+		msg = msg.replace('{2}', '17.0.6'); // in future, we need to get this number (current release number) from the web...
+		msg = msg.replace('{3}', this.PlatformVer);
 		SmartTemplate4.Message.display(msg,
 		                               "centerscreen,titlebar",
 							                     function() { SmartTemplate4.Util.goUpdateHost();},
@@ -789,11 +789,15 @@ SmartTemplate4.Util = {
 	},
 	
 	goUpdateHost: function() {
-		alert('update code goes here...');
+		window.setTimeout(
+		function() {
+			SmartTemplate4.Util.Mail3PaneWindow.openAboutDialog();
+		});
 	},
 	
 	cancelUpdateMessage: function() {
-		alert('disable message code goes here...');
+		//alert('disable message code goes here...');
+		// make a not of that the update screen has been shown to the user once.
 	}
 	
 	/* 
