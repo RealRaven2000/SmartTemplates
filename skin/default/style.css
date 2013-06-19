@@ -27,6 +27,13 @@
 .stationeryURL, .stationeryURL:focus {
     background: linear-gradient(to bottom, rgb(40, 132, 218) 0%, rgb(29, 104, 169) 15%, rgb(4, 45, 89) 50%, rgb(26, 92, 150) 83%, rgb(31, 110, 179) 100%) repeat scroll 0% 0% transparent;
 }
+.stationeryURL:hover {
+  background: linear-gradient(to bottom, rgba(66,158,244,1) 0%,rgba(23,139,241,1) 15%,rgba(3,88,179,1) 50%,rgba(14,130,232,1) 83%,rgba(32,144,242,1) 100%);
+}
+
+#btnUpdateThunderbird {
+	background: linear-gradient(to bottom, rgba(222,71,66,1) 0%,rgba(201,37,35,1) 15%,rgba(138,15,6,1) 50%,rgba(184,34,32,1) 83%,rgba(210,39,36,1) 100%);
+}
 
 #versionBox {
 	background: linear-gradient(to bottom, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 47%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);

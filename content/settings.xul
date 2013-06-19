@@ -470,14 +470,16 @@
 
 						
 						<spacer flex = "2" />
+						<button id="btnUpdateThunderbird"
+								label="Update Thunderbird!"
+						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
+								collapsed = "true"
+								/>
 						<checkbox id = "chkDebug"
 						          label = "&pref_debug_check;"
 						          tooltiptext = "&pref_debug_tip;"
 						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
 						          preference = "pref_debug"/>
-						<spacer flex="1" />
-						<button label="update test"
-						        onclick = "SmartTemplate4.Util.showPlatformWarning();" />
 								 
 								 
 					</vbox>

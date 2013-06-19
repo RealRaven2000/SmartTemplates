@@ -317,7 +317,15 @@ SmartTemplate4.Settings = {
 			buttons[i].height = finalHeight;
 		}
 
-		this.fontSize(0);
+		// set fontsize to the size stored in prefs
+		this.fontSize(0);		
+		
+		// show update button, but only if we run Thunderbird and it is an outdated version:
+		if (SmartTemplate4.Util.Application === "Thunderbird" 
+		    && 
+				SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, '17.1')) {
+			document.getElementById("btnUpdateThunderbird").collapsed = false;
+		}
 
 		return true;
 	} ,
