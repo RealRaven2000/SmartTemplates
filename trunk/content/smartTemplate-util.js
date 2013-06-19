@@ -791,7 +791,11 @@ SmartTemplate4.Util = {
 	goUpdateHost: function() {
 		window.setTimeout(
 		function() {
-			SmartTemplate4.Util.Mail3PaneWindow.openAboutDialog();
+		  // older versions have checkForUpdates function in root
+			if (SmartTemplate4.Util.Mail3PaneWindow.checkForUpdates)
+				SmartTemplate4.Util.Mail3PaneWindow.checkForUpdates();
+			else
+				SmartTemplate4.Util.Mail3PaneWindow.openAboutDialog();
 		});
 	},
 	
@@ -1166,16 +1170,16 @@ SmartTemplate4.Message = {
 		this.noCALLBACK = null;
 		this.myWindow = null;
 		if (win.st4OkListener) {
-			document.getElementById('ok').removeEventListener("click", win.st4OkListener);
+			document.getElementById('ok').removeEventListener("click", win.st4OkListener, false);
 		}
 		if (win.st4CancelListener) {
-			document.getElementById('cancel').removeEventListener("click", win.st4CancelListener);
+			document.getElementById('cancel').removeEventListener("click", win.st4CancelListener, false);
 		}
 		if (win.st4YesListener) {
-			document.getElementById('yes').removeEventListener("click", win.st4YesListener);
+			document.getElementById('yes').removeEventListener("click", win.st4YesListener, false);
 		}
 		if (win.st4NoListener) {
-			document.getElementById('no').removeEventListener("click", win.st4NoListener);
+			document.getElementById('no').removeEventListener("click", win.st4NoListener, false);
 		}
 		win.close();
 	} 

@@ -56,7 +56,7 @@
 <!ENTITY pref_fwdhead.label "Disable default Thunderbird quote header">
 <!ENTITY pref_html.label "Use HTML (e.g., &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Use escape characters for  &quot; , &amp; , &lt; , &gt; , space. See &quot;help&quot; for more details.">
-<!ENTITY pref_rep_br.label "Replace new-line with &lt;br&gt;">
+<!ENTITY pref_rep_br.label "Replace line breaks with &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once.">
 <!ENTITY pref_quotehead_tip "Disable default quote header. Please form your quote header inside the textbox.">
 <!ENTITY pref_template_tip "You can enhance the template with 'variables'. Click advanced / variables for more information.">
