@@ -775,20 +775,31 @@ SmartTemplate4.Util = {
 	} ,
 	
 	showPlatformWarning: function() {
-	  let msg = "Did you know? {1} 24 will be released shortly - the current release version of {1} is {2} or greater. ";
-		msg += "You are still running an old version of Gecko [{3}] which exposes your system to a number of security vulnerabilities.";
-		msg += "\nWhy not try the automatic update by going to Help > About > Check for updates\nShall we check for updates now?";
+	 
+	  let msg = SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateThunderbird1",
+		                 "Did you know? Thunderbird 24 will be released in September 2013 - the current release version of Thunderbird is {1} or greater."
+		                 ).replace('{1}', '17.0.6'); // in future, we need to get this number (current release number) from the web...
+		msg += SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateThunderbird2",
+		                 "You are still running an old version [Gecko {2}] which exposes your system to a number of security vulnerabilities."
+		                 ).replace('{2}', this.PlatformVer);
+		msg += "\n" + SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateThunderbird3",
+		                 "Why not try the automatic update by going to Help > About > Check for updates."
+		                 );
+		msg += "\n" + SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateThunderbird4",
+		                 "Shall we check for updates now?"
+		                 );
 
-		msg = msg.replace('{1}', this.Application).replace('{1}', this.Application);
-		msg = msg.replace('{2}', '17.0.6'); // in future, we need to get this number (current release number) from the web...
-		msg = msg.replace('{3}', this.PlatformVer);
 		SmartTemplate4.Message.display(msg,
 		                               "centerscreen,titlebar",
-							                     function() { SmartTemplate4.Util.goUpdateHost();},
-							                     function() { SmartTemplate4.Util.cancelUpdateMessage();} );
+							                     function() { SmartTemplate4.Util.updateThunderbird();},
+							                     function() { SmartTemplate4.Util.cancelUpdate();} );
 	},
 	
-	goUpdateHost: function() {
+	updateThunderbird: function() {
 		window.setTimeout(
 		function() {
 		  // older versions have checkForUpdates function in root
@@ -799,9 +810,11 @@ SmartTemplate4.Util = {
 		});
 	},
 	
-	cancelUpdateMessage: function() {
-		//alert('disable message code goes here...');
-		// make a not of that the update screen has been shown to the user once.
+	cancelUpdate: function() {
+		alert(SmartTemplate4.Util.getBundleString (
+		                 "SmartTemplate4.updateThunderbirdCancelled",
+		                 "Future versions of SmartTemplate4 will likely require the up to date code base of Thunderbird; please consider updating at a later stage. Thanks!"
+		                 ));		
 	}
 	
 	/* 
