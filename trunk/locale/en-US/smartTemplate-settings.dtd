@@ -29,6 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Cancel">
 <!ENTITY contribute_button "Contribute">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Quote Header">
 <!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">

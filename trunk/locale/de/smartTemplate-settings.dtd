@@ -29,6 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Abbrechen">
 <!ENTITY contribute_button "Einen Beitrag leisten">
+<!ENTITY button.updateThunderbird "Thunderbird updaten!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">

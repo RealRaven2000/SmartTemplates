@@ -471,7 +471,7 @@
 						
 						<spacer flex = "2" />
 						<button id="btnUpdateThunderbird"
-								label="Update Thunderbird!"
+								label="&button.updateThunderbird;"
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
 								/>
