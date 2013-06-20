@@ -29,6 +29,7 @@
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">
 <!ENTITY contribute_button "По жертвувати">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Цитата заголовка">
 <!ENTITY pref_quoteHeaderBox_tip "Напишіть цитату заголовка в цій графі, наприклад, Від &#37;from(name)&#37; написано було &#37;date&#37;:">
@@ -38,6 +39,9 @@
 <!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
 <!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
 <!ENTITY pref_showStatusIcon.label "Показувати кнопку у статусному рядку">
+<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
+<!ENTITY pref_StatusIcon.IconText "Icon And Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Шрифт редактора шаблонів">
 <!ENTITY pref_server_desc "Запис">
 <!ENTITY pref_server_def "Загальні">
@@ -61,6 +65,15 @@
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
+<!ENTITY pref_nameSwap "Correct LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY pref_parseSignature "Process signature">
+<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
+<!ENTITY pref_stationerySupport "Support Stationery addon">
+<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
+<!ENTITY pref_stationeryLink "Stationery Addon">
+<!ENTITY pref_stationeryLink_tip "Get Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Про SmartTemplate4">
 <!ENTITY creator.label "Автор">

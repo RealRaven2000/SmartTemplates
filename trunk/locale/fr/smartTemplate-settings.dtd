@@ -29,6 +29,7 @@
 <!ENTITY accept_button "Accepter">
 <!ENTITY cancel_button "Annuler">
 <!ENTITY contribute_button "Contribuer">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
 <!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">

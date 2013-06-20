@@ -29,6 +29,7 @@
 <!ENTITY accept_button "确定">
 <!ENTITY cancel_button "取消">
 <!ENTITY contribute_button "捐助">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "引用头">
 <!ENTITY pref_quoteHeaderBox_tip "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:">

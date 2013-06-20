@@ -29,6 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "キャンセル">
 <!ENTITY contribute_button "支援">
+<!ENTITY button.updateThunderbird "Thunderbird を更新します！">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "引用ヘッダ">
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
