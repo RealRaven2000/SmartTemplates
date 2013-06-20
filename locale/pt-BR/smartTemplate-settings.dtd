@@ -64,6 +64,8 @@
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Modo de depuração">
 <!ENTITY pref_debug_tip "Clique direito para opções avançadas de depuração">
+<!ENTITY pref_nameSwap "Corrigir ÚltimoNome, PrimeiroNome">
+<!ENTITY pref_nameSwap_tip "Altera 'ÚltimoNome, PrimeiroNome' para 'Primeiro Último'">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_stationerySupport "Apoie o addon Stationery">

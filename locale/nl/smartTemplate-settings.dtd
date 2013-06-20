@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Handtekening vervangen bij wijziging van e-mailidentiteit">
 <!ENTITY pref_showStatusIcon.label "Knop weergeven in de statusbalk">
+<!ENTITY pref_StatusIcon.IconOnly "Alleen pictogram">
+<!ENTITY pref_StatusIcon.IconText "Pictogram en tekst">
+<!ENTITY pref_StatusIcon.IconHoverText "Tekst bij aanwijzen">
 <!ENTITY pref_fontSettings.label "Sjabloonbewerkingslettertype">
 <!ENTITY pref_server_desc "Account">
 <!ENTITY pref_server_def "Algemeen">
@@ -61,6 +64,8 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
+<!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
+<!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
 <!ENTITY pref_parseSignature "Handtekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
 <!ENTITY pref_stationerySupport "Ondersteuning Stationery-add-on">
