@@ -64,6 +64,8 @@
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
+<!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
+<!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">

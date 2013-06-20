@@ -38,6 +38,9 @@
 <!ENTITY pref_breaksOnTop.label "顶部换行符数量：">
 <!ENTITY pref_removeSig.label "更改邮件身份时删除签名">
 <!ENTITY pref_showStatusIcon.label "在状态栏显示按钮">
+<!ENTITY pref_StatusIcon.IconOnly "仅图标">
+<!ENTITY pref_StatusIcon.IconText "图标和文字">
+<!ENTITY pref_StatusIcon.IconHoverText "悬停时显示文字">
 <!ENTITY pref_fontSettings.label "模板编辑器的字体">
 <!ENTITY pref_server_desc "帐户">
 <!ENTITY pref_server_def "通用">
@@ -61,6 +64,15 @@
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
+<!ENTITY pref_nameSwap "纠正 LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
+<!ENTITY pref_parseSignature "签名处理过程">
+<!ENTITY pref_parseSignature_tip "替换签名中的变量。">
+<!ENTITY pref_stationerySupport "支持附加组件 Stationery">
+<!ENTITY pref_stationerySupport_tip "支持同时使用 Stationery 与 smartTemplate4。">
+<!ENTITY pref_stationerySupport_tip2 "让你在 Stationery 中使用模板变量是可能的。">
+<!ENTITY pref_stationeryLink "附加组件 Stationery">
+<!ENTITY pref_stationeryLink_tip "获得 Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "关于SmartTemplate4">
 <!ENTITY creator.label "创造者">

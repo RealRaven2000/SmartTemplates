@@ -64,6 +64,8 @@
 <!ENTITY help_keyword.cap "Aide">
 <!ENTITY pref_debug_check "Mode débogage">
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
+<!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
+<!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_stationerySupport "Support de l'extension Stationery">
