@@ -29,6 +29,7 @@
 <!ENTITY accept_button "Acceptar">
 <!ENTITY cancel_button "Anullar">
 <!ENTITY contribute_button "Contribuir">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Títol de citacion">
 <!ENTITY pref_quoteHeaderBox_tip "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :">
@@ -38,6 +39,9 @@
 <!ENTITY pref_breaksOnTop.label "Nombre de retorns a la linha en naut :">
 <!ENTITY pref_removeSig.label "Suprimir la signatura al moment del cambiament de compte de mail">
 <!ENTITY pref_showStatusIcon.label "Afichar un boton dins la barra dels moduls">
+<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
+<!ENTITY pref_StatusIcon.IconText "Icon And Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Poliça de l'editor de gabarit">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Opcions globalas">
@@ -61,6 +65,15 @@
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Mòde desbugatge">
 <!ENTITY pref_debug_tip "Clic drech per las opcions avançadas de desbugatge">
+<!ENTITY pref_nameSwap "Correct LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY pref_parseSignature "Process signature">
+<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
+<!ENTITY pref_stationerySupport "Support Stationery addon">
+<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
+<!ENTITY pref_stationeryLink "Stationery Addon">
+<!ENTITY pref_stationeryLink_tip "Get Stationery...">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A prepaus de SmartTemplate4">
 <!ENTITY creator.label "Creator">

@@ -29,6 +29,7 @@
 <!ENTITY accept_button "Accepteren">
 <!ENTITY cancel_button "Annuleren">
 <!ENTITY contribute_button "Bijdragen">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Aanhalingstekst">
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, b.v. Op &#37;date&#37; schreef &#37;from(name)&#37;:">

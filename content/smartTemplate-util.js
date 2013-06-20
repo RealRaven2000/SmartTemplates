@@ -125,7 +125,7 @@ SmartTemplate4.Util = {
 
 		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 			 getService(Components.interfaces.nsIStringBundleService);
-		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
+		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties");
 		let theText = '';
 		try{
 			//try writing an error to the Error Console using the localized string; if it fails write it in English
@@ -630,7 +630,7 @@ SmartTemplate4.Util = {
 			+ reservedWord
 			+ ((reservedWord[reservedWord.length - 1] != '%') ? '%' : '');
 
-		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/errors.properties");
+		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties");
 		let ErrorString1 = '';
 		try{
 			//try writing an error to the Error Console using the localized string; if it fails write it in English

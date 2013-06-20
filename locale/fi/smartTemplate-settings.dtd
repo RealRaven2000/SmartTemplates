@@ -29,6 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">
 <!ENTITY contribute_button "Avusta">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
@@ -38,6 +39,9 @@
 <!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
 <!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä">
 <!ENTITY pref_showStatusIcon.label "Näytä painike tilapalkilla">
+<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
+<!ENTITY pref_StatusIcon.IconText "Icon And Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Pohjamuokkaimen kirjaisin">
 <!ENTITY pref_server_desc "Tili">
 <!ENTITY pref_server_def "Oletus">
@@ -61,6 +65,8 @@
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
+<!ENTITY pref_nameSwap "Correct LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
