@@ -439,7 +439,7 @@ SmartTemplate4.classSmartTemplate = function()
 	function testSmartTemplateToken(template, token) {
 		if(!template)
 			return false;
-		let match = template.toLowerCase().match('%' + token + '%');  // <div class="moz-signature">
+		let match = template.toLowerCase().match('%' + token.toLowerCase() + '%');  // <div class="moz-signature">
 		return (!match ? false : true);
 	};
 	
