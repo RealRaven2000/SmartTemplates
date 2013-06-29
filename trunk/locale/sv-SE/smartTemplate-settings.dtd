@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Addon">
 <!ENTITY pref_stationeryLink_tip "Get Stationery...">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Ca SmartTemplate4">
 <!ENTITY creator.label "Creator">

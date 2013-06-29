@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
 <!ENTITY pref_stationeryLink "Stationary-lisäosa">
 <!ENTITY pref_stationeryLink_tip "Hanki Stationary...">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 - Tietoja">
 <!ENTITY creator.label "Tekijä">

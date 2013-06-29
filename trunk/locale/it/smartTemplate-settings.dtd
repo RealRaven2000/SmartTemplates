@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
 <!ENTITY pref_stationeryLink "Estensione Stationery">
 <!ENTITY pref_stationeryLink_tip "Vai a estensione Stationery...">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A proposito di SmartTemplate4">
 <!ENTITY creator.label "Creatore">

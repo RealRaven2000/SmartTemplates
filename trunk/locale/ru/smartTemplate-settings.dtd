@@ -29,7 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">
 <!ENTITY contribute_button "Поддержать">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "Обновить Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Заголовок цитат">
 <!ENTITY pref_quoteHeaderBox_tip "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:">
@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Позволяет использовать переменные в шаблонах Stationery.">
 <!ENTITY pref_stationeryLink "Расширение Stationery">
 <!ENTITY pref_stationeryLink_tip "Загрузить расширение">
+<!ENTITY pref_defaultCharset.label "Стандартная кодировка">
+<!ENTITY pref_defaultCharset_tip "Использовать эту кодировку при чтении заголовков, если кодировка не определяется.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "О SmartTemplate4">
 <!ENTITY creator.label "Создатель">

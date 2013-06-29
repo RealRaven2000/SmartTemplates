@@ -29,7 +29,7 @@
 <!ENTITY accept_button "Accepter">
 <!ENTITY cancel_button "Annuler">
 <!ENTITY contribute_button "Contribuer">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "Mettre à jour Tghunderbird !">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
 <!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">
 <!ENTITY pref_stationeryLink "Extension Stationery">
 <!ENTITY pref_stationeryLink_tip "Obtenir Stationery...">
+<!ENTITY pref_defaultCharset.label "Encodage par défaut">
+<!ENTITY pref_defaultCharset_tip "Lors de la lecture des entêtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "À propos de SmartTemplate4">
 <!ENTITY creator.label "Créateur">
