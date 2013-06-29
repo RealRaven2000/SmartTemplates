@@ -115,6 +115,7 @@
 		# added change log
 		# fix: redefinition of Thunderbird's nsIMsgAccount interface broke account dropdown in settings
 		# suppressed displaying string conversion prompt when clicking on the version number in advanced options
+		# added preferences textbox for default charset
 		# [Bug 25483] when using %sig(2)% (option for removing dashes) - signature is missing on new mails in HTML mode 
 		# [Bug 25104] when switching identity, old sig does not get removed.
 		# [Bug 25486] attaching a plain text file as signature leads to double spaces in signature
@@ -184,6 +185,8 @@ var SmartTemplate4 = {
 	PreprocessingFlags : {
 	  hasCursor: false,
 		hasSignature: false,
+		hasQuotePlaceholder: false,
+		hasQuoteHeader: false,
 		isStationery: false
 	},
 
@@ -270,9 +273,12 @@ var SmartTemplate4 = {
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
 		// let isStationeryTemplate = false;
 		let stationeryTemplate = null;
-		this.PreprocessingFlags.hasSignature = false;
-		this.PreprocessingFlags.hasCursor = false;
-		this.PreprocessingFlags.isStationery = false;
+		let flags = this.PreprocessingFlags;
+		flags.hasSignature = false;
+		flags.hasCursor = false;
+		flags.isStationery = false;
+		flags.hasQuotePlaceholder = false;
+		flags.hasQuoteHeader = false;
 		
 		if (evt) {
 			if (evt.currentTarget
@@ -285,9 +291,17 @@ var SmartTemplate4 = {
 				dbg += '\nStationery is active';
 				dbg += '\nTemplate used is:' + stationeryTemplate.url;
 				if (stationeryTemplate.type !== 'blank') {
-					this.PreprocessingFlags.isStationery = true;
-					this.PreprocessingFlags.hasSignature = (!!this.smartTemplate.testSignatureVar(SmartTemplate4.StationeryTemplateText));
-					this.PreprocessingFlags.hasCursor = this.smartTemplate.testCursorVar(SmartTemplate4.StationeryTemplateText);
+					try {
+						let stationeryText = SmartTemplate4.StationeryTemplateText;
+						flags.isStationery = true;
+						flags.hasSignature = (!!this.smartTemplate.testSignatureVar(stationeryText));
+						flags.hasCursor = this.smartTemplate.testCursorVar(stationeryText);
+						flags.hasQuotePlaceholder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quotePlaceholder');
+						flags.hasQuoteHeader = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quoteHeader');
+					}
+					catch(ex) {
+						SmartTemplate4.Util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
+					}
 				}
 			}			
 		}
@@ -300,13 +314,13 @@ var SmartTemplate4 = {
     let Ci = Components.interfaces;
 		let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);		
 		try {
-			let flag = editor.rootElement;
-			if (!flag.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			let root = editor.rootElement;
+			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
-				this.smartTemplate.insertTemplate(true, this.PreprocessingFlags);
+				this.smartTemplate.insertTemplate(true, flags);
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
-				editor.rootElement.setAttribute("smartTemplateInserted","true");
+				root.setAttribute("smartTemplateInserted","true");
 				//editor.insertNode(div, editor.rootElement, 0);
 				// window.smartTemplateInserted = true;
 				this.smartTemplate.resetDocument(editor, true);

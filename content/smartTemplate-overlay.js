@@ -568,7 +568,7 @@ SmartTemplate4.regularize = function(msg, type)
 		// identity(mail) is the new ownmail
 		setRw2h("d.c.", "ownname", "ownmail", "deleteText", "replaceText",
 						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor", "identity");
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor", "identity", "quotePlaceholder");
 
 		// Reserved words which depend on headers of the original message.
 		setRw2h("To", "to", "toname", "tomail");
@@ -942,6 +942,14 @@ SmartTemplate4.regularize = function(msg, type)
 				case "ownmail": // own email address
 					token = identity.email;
 					break;
+				case "quoteHeader":  // currently only useful when put into a Stationery template.
+				  return "";
+				case "quotePlaceholder":  // currently only useful when put into a Stationery template.
+				  return   "<span stationery=\"content-placeholder\">"
+					       +   "<blockquote type=\"cite\"> ... "
+								 +   "</blockquote>"
+							   + "</span>";
+				  break;
 				case "identity":
 				  /////
 					let fullId = identity.fullName + ' <' + identity.email + '>';
