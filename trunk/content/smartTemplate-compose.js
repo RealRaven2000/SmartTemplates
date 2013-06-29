@@ -63,6 +63,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Extract Signature
 	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
+	// 1. removes signature node from the email
+	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
 	function extractSignature(Ident, signatureDefined, composeType)
 	{
 		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
@@ -77,7 +79,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let pref = SmartTemplate4.pref;
 		let idKey = document.getElementById("msgIdentity").value; // SmartTemplate4.Util.mailDocument?
 
-		let isSignatureTb = htmlSigText || Ident.attachSignature;
+		let isSignatureTb = (!!htmlSigText) || Ident.attachSignature;
 		let sigNode = null;
 
 		if (isSignatureTb) {
@@ -129,19 +131,23 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		if (signatureDefined == 'html') {
 			isSignatureHTML = true;
-			sigType = 'HTML'
+			sigType = 'HTML';
 		}
-		if (signatureDefined == 'text') {
+		else if (signatureDefined == 'text') {
 			isSignatureHTML = false;
 			sigType = 'plain text';
+		}
+		else if (htmlSigText && !Ident.attachSignature) {
+			sigType = Ident.htmlSigFormat ?  'HTML' : 'plain text';
 		}
 			
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature (from file) is ' + sigType);
 
 		// retrieve signature Node; if it doesn't work, try from the account
-		let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+		// let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+		let sigText = htmlSigText ? htmlSigText : 
+		              (sigNode && sigNode.innerHTML) ? sigNode.innerHTML : '';
 		sigText = sigText ? sigText : '';  
-		
 		
 
 		let removed = false;
@@ -207,8 +213,9 @@ SmartTemplate4.classSmartTemplate = function()
 				if (!isSignatureHTML) {
 					SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
 					// prettify: txt -> html
+					// first replace CRLF then LF
 					sigText = "<pre>"
-					        + sigText.replace(/\n/g, "<BR>")
+					        + sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
 					        + "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
 				}
 				sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
@@ -657,11 +664,11 @@ SmartTemplate4.classSmartTemplate = function()
 					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 			}
 		}
-		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regularize:\n' + templateText);
-		
 		let regular = SmartTemplate4.regularize(templateText, composeType);
+		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
 		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
+    SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','regular:\n' + regular);		
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedText()   ========== END');
 		return regular;
 	};
@@ -704,10 +711,12 @@ SmartTemplate4.classSmartTemplate = function()
 						
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup, isStationeryTemplate)
+	// isStationeryTemplate
+	function insertTemplate(startup, flags)
 	{
 		let util = SmartTemplate4.Util;
-		util.logDebugOptional('functions','insertTemplate(startup: ' + startup + ', is stationery template: ' + isStationeryTemplate + ')');
+		util.logDebugOptional('functions','insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')');
+		let isStationeryTemplate = flags ? flags.isStationery : false;
 		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let Ci = Components.interfaces;
@@ -808,7 +817,9 @@ SmartTemplate4.classSmartTemplate = function()
 
 			if (isActiveOnAccount) {
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
-				sigVarDefined = testSignatureVar(rawTemplate);
+				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
+				let hasBodySignature = flags ? flags.hasSignature : false;
+				sigVarDefined = hasBodySignature || testSignatureVar(rawTemplate); 
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
 				template = getSmartTemplate(st4composeType, idKey);
@@ -925,9 +936,13 @@ SmartTemplate4.classSmartTemplate = function()
 				            );
 			}
 		}
-
-
-
+		
+		// before we handle the sig, lets search for the cursor one time
+		// moved code for moving selection to top / bottom
+		let caretContainer = findChildNode(targetNode, 'st4cursor');
+		let isCursor = (caretContainer != null);
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' search %cursor% in template: ' + isCursor);
+		
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
 		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
@@ -1006,7 +1021,15 @@ SmartTemplate4.classSmartTemplate = function()
 							theSignature = sn;
 						}
 						
-						if (theIdentity.sigBottom) {
+						if (!isCursor && !theIdentity.replyOnTop) {
+							// if %cursor% is not set explicitely, and we reply on bottom, insert cursor straight after the quote (before the signature)
+							let cursor = doc.createElement("div");
+							cursor.className = "st4cursor";
+							bodyEl.appendChild(cursor);
+						}
+						
+						// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
+						if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 							bodyEl.appendChild(doc.createElement("br"));
 							bodyEl.appendChild(theSignature);
 						}
@@ -1030,9 +1053,10 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		
 		// moved code for moving selection to top / bottom
-		let caretContainer = findChildNode(targetNode, 'st4cursor');
-		let isCursor = (caretContainer != null);
-		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' search %cursor% in template: ' + isCursor);
+		// re-find cursor
+		caretContainer = findChildNode(targetNode, 'st4cursor');
+		isCursor = (caretContainer != null);
+		
 		try {
 			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
 			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
@@ -1060,6 +1084,7 @@ SmartTemplate4.classSmartTemplate = function()
 								editor.selection.collapse(theParent, nodeOffset+1); 
 						}
 						else {
+						  // if we reply below we must be above the signature.
 							if (editor.selection.collapseToEnd)
 								editor.selection.collapseToEnd();
 							else
@@ -1102,6 +1127,8 @@ SmartTemplate4.classSmartTemplate = function()
 	this.extractSignature = extractSignature;
   this.getProcessedText = getProcessedText;	
 	this.resetDocument = resetDocument;
+	this.testSignatureVar = testSignatureVar;
+	this.testCursorVar = testCursorVar;
 };
 
 

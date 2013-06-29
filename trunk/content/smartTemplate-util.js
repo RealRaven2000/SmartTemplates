@@ -779,7 +779,7 @@ SmartTemplate4.Util = {
 	  let msg = SmartTemplate4.Util.getBundleString (
 		                 "SmartTemplate4.updateThunderbird1",
 		                 "Did you know? Thunderbird 24 will be released in September 2013 - the current release version of Thunderbird is {1} or greater."
-		                 ).replace('{1}', '17.0.6'); // in future, we need to get this number (current release number) from the web...
+		                 ).replace('{1}', '17.0.7'); // in future, we need to get this number (current release number) from the web...
 		msg += " " + SmartTemplate4.Util.getBundleString (
 		                 "SmartTemplate4.updateThunderbird2",
 		                 "You are still running an old version [Gecko {2}] which exposes your system to a number of security vulnerabilities."

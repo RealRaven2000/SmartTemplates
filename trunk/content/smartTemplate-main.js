@@ -115,6 +115,10 @@
 		# added change log
 		# fix: redefinition of Thunderbird's nsIMsgAccount interface broke account dropdown in settings
 		# suppressed displaying string conversion prompt when clicking on the version number in advanced options
+		# [Bug 25483] when using %sig(2)% (option for removing dashes) - signature is missing on new mails in HTML mode 
+		# [Bug 25104] when switching identity, old sig does not get removed.
+		# [Bug 25486] attaching a plain text file as signature leads to double spaces in signature
+		# [Bug 25272] reply below quote with signature placed curorsor below signature (should be above signature and below quote)
 		
 		Review specific:
 		1) help.xul - set iframe type="content" 
@@ -177,6 +181,11 @@ var SmartTemplate4 = {
 	XisSent  : 1,
 	signature : null,
 	sigInTemplate : false,
+	PreprocessingFlags : {
+	  hasCursor: false,
+		hasSignature: false,
+		isStationery: false
+	},
 
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
@@ -247,6 +256,8 @@ var SmartTemplate4 = {
       st4composeType = st4composeType.substr(0,3);
     }
     // ignore html!
+		SmartTemplate4.StationeryTemplateText = t.HTML;
+		// do not do HTML escaping!
     t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true);
     SmartTemplate4.Util.logDebug('preprocessor complete.');
   },	
@@ -257,22 +268,30 @@ var SmartTemplate4 = {
 	notifyComposeBodyReady: function(evt)
 	{
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
-		let isStationeryTemplate = false;
+		// let isStationeryTemplate = false;
 		let stationeryTemplate = null;
-
+		this.PreprocessingFlags.hasSignature = false;
+		this.PreprocessingFlags.hasCursor = false;
+		this.PreprocessingFlags.isStationery = false;
 		
 		if (evt) {
 			if (evt.currentTarget
 			    &&
 					evt.currentTarget.Stationery_) 
 			{
-				stationeryTemplate = evt.currentTarget.Stationery_.currentTemplate;
+			  let stationeryInstance = evt.currentTarget.Stationery_;
+				let cur = null;
+				stationeryTemplate = stationeryInstance.currentTemplate;
 				dbg += '\nStationery is active';
 				dbg += '\nTemplate used is:' + stationeryTemplate.url;
-				if (stationeryTemplate.type !== 'blank')
-					isStationeryTemplate = true;
+				if (stationeryTemplate.type !== 'blank') {
+					this.PreprocessingFlags.isStationery = true;
+					this.PreprocessingFlags.hasSignature = (!!this.smartTemplate.testSignatureVar(SmartTemplate4.StationeryTemplateText));
+					this.PreprocessingFlags.hasCursor = this.smartTemplate.testCursorVar(SmartTemplate4.StationeryTemplateText);
+				}
 			}			
 		}
+		SmartTemplate4.StationeryTemplateText = ''; // discard it to be safe?
 		SmartTemplate4.Util.logDebug(dbg);
 		// Add template message
 		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
@@ -284,7 +303,7 @@ var SmartTemplate4 = {
 			let flag = editor.rootElement;
 			if (!flag.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
-				this.smartTemplate.insertTemplate(true, isStationeryTemplate);
+				this.smartTemplate.insertTemplate(true, this.PreprocessingFlags);
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
 				editor.rootElement.setAttribute("smartTemplateInserted","true");
@@ -308,12 +327,14 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	loadIdentity : function(startup, previousIdentity)
 	{
+		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
 			this.original_LoadIdentity(startup);
 		}
 		else {
+		  // change identity on an existing message:
 			// Check body modified or not
 			var isBodyModified = gMsgCompose.bodyModified;
 			// we can only reliable roll back the previous template and insert
@@ -321,9 +342,12 @@ var SmartTemplate4 = {
 			// of removing newly composed content)
 			if (!isBodyModified) {
 				// Add template message - will also remove previous template and quoteHeader.
-				this.smartTemplate.insertTemplate(false);
+			  this.smartTemplate.insertTemplate(false);
+				// [Bug 25104] when switching identity, old sig does not get removed.
+				//             (I think what really happens is that it is inserted twice)
+				isTemplateProcessed = true;
 			}
-			else {
+			if (isBodyModified) {
 				// if previous id has added a signature, we should try to remove it from there now
 				// we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
 				// as the user might have edited here already! 
@@ -335,7 +359,8 @@ var SmartTemplate4 = {
 			// AG 31/08/2012 put this back as we need it!
 			// AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
 			//               as it messes up the signature (pulls it into the blockquote)
-			this.original_LoadIdentity(startup);
+			// if (!isTemplateProcessed)
+				this.original_LoadIdentity(startup);
 			if (!isBodyModified && gMsgCompose.bodyModified) {
 				gMsgCompose.editor.resetModificationCount();
 			}	// for TB bug?

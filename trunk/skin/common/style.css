@@ -215,10 +215,6 @@ button.bugsURL:focus {
 	/* background-size: 200px; */
 }
 
-#fontBox {
-	margin: 2em 0em 1em 1em;
-}
-
 #lblFontSettings {
 	margin-top: 0.8em;
 	vertical-align: middle;
@@ -252,15 +248,15 @@ button.bugsURL:focus {
 	margin-left: 1em;
 }
 
-#breaksBox {
-	margin: 2em 0em 1em 1em;
-}
 #txtBreaks
 {
 	width: 3em;
 }
-#txtBreaksLabel {
+.textboxLabel {
 	margin-top: 5px;
+}
+.labeledBox {
+	margin: 0.5em 0em 0.5em 0.5em;
 }
 
 #aboutPanel {
