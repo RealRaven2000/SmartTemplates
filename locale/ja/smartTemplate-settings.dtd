@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate4 の変数を使用できます。">
 <!ENTITY pref_stationeryLink "Stationery アドオン">
 <!ENTITY pref_stationeryLink_tip "Stationery アドオンを入手します。">
+<!ENTITY pref_defaultCharset.label "既定の文字エンコーディング">
+<!ENTITY pref_defaultCharset_tip "ヘッダの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 について">
 <!ENTITY creator.label "作者">

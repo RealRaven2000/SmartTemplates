@@ -29,7 +29,7 @@
 <!ENTITY accept_button "确定">
 <!ENTITY cancel_button "取消">
 <!ENTITY contribute_button "捐助">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "更新 Thunderbird！">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "引用头">
 <!ENTITY pref_quoteHeaderBox_tip "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:">
@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "让你在 Stationery 中使用模板变量是可能的。">
 <!ENTITY pref_stationeryLink "附加组件 Stationery">
 <!ENTITY pref_stationeryLink_tip "获得 Stationery...">
+<!ENTITY pref_defaultCharset.label "默认字符集">
+<!ENTITY pref_defaultCharset_tip "阅读引用头时，如不能确定，则使用此字符集作为后备选择。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "关于SmartTemplate4">
 <!ENTITY creator.label "创造者">

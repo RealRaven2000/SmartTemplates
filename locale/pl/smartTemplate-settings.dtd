@@ -29,7 +29,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Anuluj">
 <!ENTITY contribute_button "Zaangażuj się">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "Zaktualizuj Thunderbirda!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Nagłówek cytatu">
 <!ENTITY pref_quoteHeaderBox_tip "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:">
@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Dzięki temu w dodatku Stationery będzie możliwość używania wzorców ze smartTemplate4.">
 <!ENTITY pref_stationeryLink "Dodatek Stationery">
 <!ENTITY pref_stationeryLink_tip "Pobierz Stationery…">
+<!ENTITY pref_defaultCharset.label "Domyślny zestaw znaków">
+<!ENTITY pref_defaultCharset_tip "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 – informacje">
 <!ENTITY creator.label "Autor">

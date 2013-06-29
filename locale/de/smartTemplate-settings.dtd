@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
 <!ENTITY pref_stationeryLink_tip "Stationery Installieren...">
+<!ENTITY pref_defaultCharset.label "Charset Standardwert">
+<!ENTITY pref_defaultCharset_tip "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Über SmartTemplate4">
 <!ENTITY creator.label "Ersteller">

@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
 <!ENTITY pref_stationeryLink "Stationery-add-on">
 <!ENTITY pref_stationeryLink_tip "Stationery downloaden…">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Over SmartTemplate4">
 <!ENTITY creator.label "Bedenker">

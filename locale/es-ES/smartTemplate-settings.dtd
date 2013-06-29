@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">
 <!ENTITY pref_stationeryLink "Extensión Stationery">
 <!ENTITY pref_stationeryLink_tip "Instalar Stationery…">
+<!ENTITY pref_defaultCharset.label "Juego caracteres por defecto">
+<!ENTITY pref_defaultCharset_tip "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Acerca de SmartTemplate4">
 <!ENTITY creator.label "Creator">

@@ -59,7 +59,7 @@
 <!ENTITY pref_html.cap "Use escape characters for  &quot; , &amp; , &lt; , &gt; , space. See &quot;help&quot; for more details.">
 <!ENTITY pref_rep_br.label "Replace line breaks with &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once.">
-<!ENTITY pref_quotehead_tip "Disable default quote header. Please form your quote header inside the textbox.">
+<!ENTITY pref_quotehead_tip "Disable default quote header. Please place your own header in the textbox above.">
 <!ENTITY pref_template_tip "You can enhance the template with 'variables'. Click advanced / variables for more information.">
 <!ENTITY help_dialog_title "SmartTemplate4 Help">
 <!ENTITY help_keyword.cap "Help">
@@ -74,6 +74,8 @@
 <!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Addon">
 <!ENTITY pref_stationeryLink_tip "Get Stationery...">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "About SmartTemplate4">
 <!ENTITY creator.label "Creator">
@@ -109,9 +111,9 @@
 <!ENTITY ccfirstname.label "Recipient's first name">
 <!ENTITY ccname.label "Recipient's name">
 <!ENTITY spec_form.cap "Special format">
-<!ENTITY specform_note.label "Sections inside double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
+<!ENTITY specform_note.label "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
 <!ENTITY ex_brack.label "Example: To: Fred Cc: Jane">
-<!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
+<!ENTITY brack_with_var.label "The following variables can be used within [[...]]">
 <!ENTITY sub_var.cap "Subject">
 <!ENTITY sub.label "subject of replied / forwarded email">
 <!ENTITY sub2.label "subject of current message being composed">
@@ -170,7 +172,7 @@
 <!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "Please use only UTF-8 (Unicode) charset inside HTML templates!">
 <!ENTITY table.cap "Usage of variables">
-<!ENTITY table_note.label "Using variables incorrectly will generate error messages inside 'Error Console'!">
+<!ENTITY table_note.label "Using variables incorrectly will generate error messages in 'Error Console'!">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Write">
