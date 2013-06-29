@@ -436,12 +436,17 @@ SmartTemplate4.classSmartTemplate = function()
 		return null;
 	};
 
-	function testCursorVar(template) {
+	function testSmartTemplateToken(template, token) {
 		if(!template)
 			return false;
-		let match = template.toLowerCase().match('%cursor%');  // <div class="moz-signature">
+		let match = template.toLowerCase().match('%' + token + '%');  // <div class="moz-signature">
 		return (!match ? false : true);
 	};
+	
+	function testCursorVar(template) {
+		return testSmartTemplateToken(template, 'cursor');
+	};
+	
 	
 	function testSignatureVar(template) {
 		let reg = /%(sig)(\([^)]+\))*%/gm;
@@ -835,9 +840,12 @@ SmartTemplate4.classSmartTemplate = function()
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							newQuote = newQuote && true;
 							// we do not delete reply header if stationery has inserted a template!
-							if (pref.isDeleteHeaders(idKey, st4composeType, false)
-									&&
-									!isStationeryTemplate) 
+							// unless: stationery has a placeholder for the original quote text. in which case we have to do this!
+							if (
+							      pref.isDeleteHeaders(idKey, st4composeType, false)
+									  &&
+									  (!isStationeryTemplate || (flags && flags.hasQuotePlaceholder)) 
+									)
 							{
 								delReplyHeader(idKey);
 							}
@@ -849,16 +857,18 @@ SmartTemplate4.classSmartTemplate = function()
 						newQuote = newQuote && true;
 
 						// we do not delete forward header if stationery has inserted a template!
-						if (pref.isDeleteHeaders(idKey, st4composeType, false)
-								&&
-								!isStationeryTemplate)						{
+						if (  pref.isDeleteHeaders(idKey, st4composeType, false)
+								  &&
+									(!isStationeryTemplate || (flags && flags.hasQuotePlaceholder))
+								)
+						{
 							delForwardHeader(idKey);
 						}
 						break;
 				}
 				// put new quote header always on top
 				// we should probably find the previous node before blockquote and insert a new there element there
-				if (newQuote) {
+				if (newQuote && !isStationeryTemplate) {
 					let qdiv = SmartTemplate4.Util.mailDocument.createElement("div");
 					qdiv.id = "smartTemplate4-quoteHeader";
 					qdiv.innerHTML = quoteHeader;
@@ -1129,6 +1139,7 @@ SmartTemplate4.classSmartTemplate = function()
 	this.resetDocument = resetDocument;
 	this.testSignatureVar = testSignatureVar;
 	this.testCursorVar = testCursorVar;
+	this.testSmartTemplateToken = testSmartTemplateToken;
 };
 
 
