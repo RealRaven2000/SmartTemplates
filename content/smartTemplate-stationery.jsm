@@ -37,7 +37,10 @@ try {
   Stationery.templates.registerFixer({
     //Stationery HTML preprocessor
     preprocessHTML: function(template) { 
-      //forward to SmartTemplate4 in current composre window
+		  // we will store the original stationery template source here, so we can check for variables
+			// post processing (Stationery 'consumes' its own template)
+			Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.StationeryTemplateText = '';
+      //forward to SmartTemplate4 in current composer window
       Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.preprocessHTMLStationery(template); 
     },
     

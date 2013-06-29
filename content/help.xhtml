@@ -21,6 +21,8 @@
 				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
 				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>
 				<li><code class="noWrite">%cc(mail)%</code> = &ccmail.label;</li>
+				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = &sig.label;</li>
+				<li><code>%sig(2)%</code> = &sig2.label;</li>
 			</ul>
 		       <!--
                         <br />
@@ -318,20 +320,18 @@
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
-                                      <!--
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%sig%</code></td>
-						<td><div class="no"></div></td>
+						<td><code>%sig%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%sig(2)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code>%sig(2)%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
-                                      -->
 					<tr class="tr-keywords">
 						<td><code class="noWrite">%subject%</code></td>
 						<td><div class="no"></div></td>

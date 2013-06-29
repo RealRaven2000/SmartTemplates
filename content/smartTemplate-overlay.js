@@ -455,29 +455,46 @@ SmartTemplate4.parseModifier = function(msg) {
 // -------------------------------------------------------------------
 SmartTemplate4.regularize = function(msg, type)
 {
-	function getSignatureInner(removeDashes) {
+  function removeDashes(elem, isPlainText) {
+	  // also fix removing dashes from plain text sig:
+	  if (isPlainText) {
+			return elem.replace('-- \<br\>', '');
+		}
+	
+		// [Bug 25483] when using %sig(2)% signature is missing on new mails in HTML mode
+		let newSig = elem;
+		if (elem.childNodes.length) {
+			if (elem.childNodes.length == 1)
+				newSig = removeDashes(elem.firstChild);
+			else {
+				if (elem.firstChild.nodeValue == "-- ") {
+					elem.removeChild(elem.firstChild); //remove '-- '
+				}
+				if (elem.firstChild.tagName == 'BR') {
+					elem.removeChild(elem.firstChild); //remove 'BR'
+				}
+			}
+		}
+		return newSig;
+	}
+	
+	function getSignatureInner(isRemoveDashes) {
 		try {
-			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + removeDashes + ')');
+			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + isRemoveDashes + ')');
 			if (SmartTemplate4.signature != null) {
 				let sig = SmartTemplate4.signature;
 				SmartTemplate4.sigInTemplate = true;
 				if (typeof sig === "string")
-					return sig;
+					return removeDashes(sig, true);
 				if (!sig.children || sig.children.length==0) {
 					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
 
 					return sig.innerHTML ? sig.innerHTML : sig.outerHTML;  // deal with DOM String sig (non html)
 				}
-				if (removeDashes) {
-					if (sig.firstChild.nodeValue == "-- ") {
-						sig.removeChild(sig.firstChild); //remove '-- '
-						sig.removeChild(sig.firstChild); //remove 'BR'
-						return sig.innerHTML;
-					}
+				if (isRemoveDashes) {
+				  removeDashes(sig, false);
 				}
-				else {
-					return sig.innerHTML;
-				}
+				return sig.innerHTML;
 			}
 		}
 		catch(ex) {
@@ -965,9 +982,9 @@ SmartTemplate4.regularize = function(msg, type)
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
 					return finalize(token, getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
 				case "sig":
-					let removeDashes = (arg=="(2)");
-					let ret = getSignatureInner(removeDashes);
-					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(removeDashes = ' + removeDashes +')');
+					let isRemoveDashes = (arg=="(2)")
+					let ret = getSignatureInner(isRemoveDashes);
+					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
 					return ret;
 				case "subject":
 					let current = (arg=="(2)");
@@ -1011,7 +1028,7 @@ SmartTemplate4.regularize = function(msg, type)
 					return "";
 				case "cursor":
 					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
-					return '<div class="st4cursor"></div>'; // maybe make this invisible??
+					return '<div class=st4cursor></div>'; // maybe make this invisible??
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(

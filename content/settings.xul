@@ -371,6 +371,7 @@
 			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
 			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
+			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -395,8 +396,8 @@
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox flex = "1">
 						<!-- ######## Global Debug Checkbox ######## -->
-						<hbox id = "breaksBox">
-							<label   id = "txtBreaksLabel"
+						<hbox class = "labeledBox">
+							<label   class = "textboxLabel"
 							         value="&pref_breaksOnTop.label;" />
 							<textbox id = "txtBreaks"
 							         preference = "pref_breaks"
@@ -432,6 +433,16 @@
 									tooltiptext = "&pref_stationeryLink_tip;"/>
 						   
 						</hbox>
+						<hbox class = "labeledBox">
+							<label   class = "textboxLabel"
+							         value="&pref_defaultCharset.label;:" />
+							<textbox id = "txtCharset"
+							         preference = "pref_defaultCharset"
+							         instantApply="true" 
+									 tooltiptext = "&pref_defaultCharset_tip;"/>
+						</hbox>
+						
+						
 						<hbox>
 							<checkbox id = "chkStatusButton"
 									  label = "&pref_showStatusIcon.label;"
@@ -453,7 +464,7 @@
 							
 					    </hbox>
 						<spacer />
-						<hbox id = "fontBox">
+						<hbox class = "labeledBox">
 							<label  id = "lblFontSettings"
 							        value="&pref_fontSettings.label;" />
 							<button id = "fontSmaller"
