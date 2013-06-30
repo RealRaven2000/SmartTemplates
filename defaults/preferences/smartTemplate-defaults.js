@@ -13,6 +13,7 @@ pref("extensions.smartTemplate4.insertSigDashes.plaintext", false);
 pref("extensions.smartTemplate4.insertSigDashes.html", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
 pref("extensions.smartTemplate4.defaultCharset", "ISO-8859-1");
+pref("extensions.smartTemplate4.signature.charset", "UTF-8");
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 

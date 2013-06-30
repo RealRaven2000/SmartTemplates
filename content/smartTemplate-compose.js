@@ -6,6 +6,7 @@
 SmartTemplate4.classSmartTemplate = function()
 {
 	function readSignatureFile(Ident) {
+		let sigCharset = SmartTemplate4.Preferences.getMyStringPref('signature.charset'); // usually UTF-8
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		let Ci = Components.interfaces;
 		let htmlSigText = '';
@@ -26,7 +27,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// First, get and initialize the converter
 				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
                         .createInstance(Ci.nsIScriptableUnicodeConverter);
-				converter.charset = /* The character encoding you want, using UTF-8 here */ "UTF-8";
+				converter.charset = sigCharset; /* The character encoding you want, default is using UTF-8 here */;
 
 				let data = "";
 				//read file into a string so the correct identifier can be added
@@ -35,7 +36,7 @@ SmartTemplate4.classSmartTemplate = function()
 				let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
 					createInstance(Ci.nsIConverterInputStream);
 				fstream.init(sigFile, -1, 0, 0);
-				cstream.init(fstream, "UTF-8", 0, 0);
+				cstream.init(fstream, sigCharset, 0, 0);
 				let str = {};
 				{
 				  let read = 0;
@@ -50,10 +51,13 @@ SmartTemplate4.classSmartTemplate = function()
 		  }
 		}
 		catch(ex) {
-			htmlSigText = "(problems reading signature file - see tools / error console for more detail)"
-			SmartTemplate4.Util.logException("readSignatureFile - exception trying to read signature attachment file!\n" + fileName, ex);
+			htmlSigText = "(problems reading signature file - see tools / error console for more detail)";
+			SmartTemplate4.Util.logException(
+			   "readSignatureFile - exception trying to read signature attachment file; expected charSet = " + sigCharset + " !\n" 
+			   + "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.charset\n"  
+			   + fileName, ex);
 		}
-		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - htmlSigText:\n'
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - charset = ' + sigCharset  +'; htmlSigText:\n'
 		                                   + htmlSigText + '[EOF]');
 		return htmlSigText;
 	}
