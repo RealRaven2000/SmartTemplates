@@ -9,6 +9,8 @@ pref("extensions.smartTemplate4.showStatusIcon", true);
 pref("extensions.smartTemplate4.statusIconLabelMode", 1); /* 0 - no label; 1 - autohide; 2 - always show */
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.parseSignature", false);
+pref("extensions.smartTemplate4.insertSigDashes.plaintext", false);
+pref("extensions.smartTemplate4.insertSigDashes.html", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
 pref("extensions.smartTemplate4.defaultCharset", "ISO-8859-1");
 /* this is a convenience function - if I change from after or during composing, delete sig */
