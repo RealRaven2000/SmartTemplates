@@ -815,7 +815,30 @@ SmartTemplate4.Util = {
 		                 "SmartTemplate4.updateThunderbirdCancelled",
 		                 "Future versions of SmartTemplate4 will likely require the up to date code base of Thunderbird; please consider updating at a later stage. Thanks!"
 		                 ));		
-	}
+	} ,
+	
+	getServerInfo: function(idKey) {
+		let Ci = Components.interfaces;
+		let serverInfo = '';
+		try {
+			let account = null;
+			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+														.getService(Ci.nsIMsgAccountManager);  
+			let accounts = acctMgr.accounts;
+			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+			for (var i = 0; i < iAccounts; i++) {
+				account = accounts.queryElementAt ?
+					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
+					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
+				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
+					break;
+			}
+			let srv = account ? account.incomingServer : null;
+			serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
+		}
+		catch(ex) { this.logException("could not find server for identity " + idKey , ex); }
+    return serverInfo;
+}
 	
 	/* 
 	,

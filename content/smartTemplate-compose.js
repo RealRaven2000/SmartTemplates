@@ -167,10 +167,12 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 			}
 			// insert a place holder
+      /*			
 			let originalSigPlaceholder = SmartTemplate4.Util.mailDocument.createElement("div");
 			originalSigPlaceholder.className = "st4originalSignature"; // we might have to replace this again...
 			let sp = sigNode.parentNode;
 			sp.insertBefore(originalSigPlaceholder, sigNode);
+			*/
 			try {
 				gMsgCompose.editor.deleteNode(sigNode);
 				removed = true;
@@ -206,6 +208,8 @@ SmartTemplate4.classSmartTemplate = function()
 		
 
 		if (!sig || typeof sig == 'string') {
+			let dashes = 
+				SmartTemplate4.Preferences.getMyBoolPref('insertSigDashes.plaintext') ? "-- <br>" : "";
 			if (gMsgCompose.composeHTML) {
 				sig = SmartTemplate4.Util.mailDocument.createElement("div");
 				sig.className = 'moz-signature';
@@ -214,7 +218,8 @@ SmartTemplate4.classSmartTemplate = function()
 					SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
 					// prettify: txt -> html
 					// first replace CRLF then LF
-					sigText = "<pre>"
+					sigText = dashes 
+					        + "<pre>"
 					        + sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
 					        + "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
 				}
@@ -223,7 +228,7 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 			else {
 				// createTextNode( ) returns a DOMString (16bit)
-				sig = sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
+				sig = dashes + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 			}
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','==============  extractSignature=============END\n'
@@ -890,12 +895,14 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		let targetNode = 0;
 		let templateDiv;
+		// new global settings to deal with [Bug 25084]
+		let breaksAtTop = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
 		
 		// add template message --------------------------------
-		if (isActiveOnAccount) // template && template !== ""
+		// if template text is empty: still insert targetNode as we need it for the cursor!
+		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
+		if (isActiveOnAccount) 
 		{
-			// new global settings to deal with [Bug 25084]
-			let breaks = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
 			templateDiv = SmartTemplate4.Util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
@@ -914,7 +921,7 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 				if (theIdentity.replyOnTop) {
 					editor.beginningOfDocument();
-					for (let i = 0; i < breaks; i++) 
+					for (let i = 0; i < breaksAtTop; i++) 
 						gMsgCompose.editor.insertNode(
 						                   SmartTemplate4.Util.mailDocument.createElement("br"),
 						                   gMsgCompose.editor.rootElement, 0);
@@ -924,13 +931,12 @@ SmartTemplate4.classSmartTemplate = function()
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 				else {
-					for (let i = 0; i < breaks; i++)
+					for (let i = 0; i < breaksAtTop; i++)
 						gMsgCompose.editor.rootElement.appendChild(SmartTemplate4.Util.mailDocument.createElement("br"));
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
-				
 			}
 			catch (ex) {
 				let errorText = 'Could not insert Template as HTML; please check for syntax errors.'
@@ -961,24 +967,7 @@ SmartTemplate4.classSmartTemplate = function()
 		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
 
 		// find out server name and type (IMAP / POP3 etc.)
-		let serverInfo = '';
-		try {
-			let account = null;
-			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-														.getService(Ci.nsIMsgAccountManager);  
-			let accounts = acctMgr.accounts;
-			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-			for (var i = 0; i < iAccounts; i++) {
-				account = accounts.queryElementAt ?
-					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
-					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
-				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
-					break;
-			}
-			let srv = account ? account.incomingServer : null;
-			serverInfo = srv ? 'server{?}:      ' + srv.hostName + ' [' + srv.type + ']' + '\n ': '';
-		}
-		catch(ex) { util.logException("could not find server for identity " + idKey , ex); }
+		let serverInfo = util.getServerInfo(idKey);
 
 		// our "compact log" to assist our users more effective
 		
@@ -1040,7 +1029,9 @@ SmartTemplate4.classSmartTemplate = function()
 						
 						// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
 						if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
-							bodyEl.appendChild(doc.createElement("br"));
+							// only need this in reply case (might not need it at all with breaksAtTop
+							if (composeCase == 'reply' && breaksAtTop == 0)
+							  bodyEl.appendChild(doc.createElement("br"));
 							bodyEl.appendChild(theSignature);
 						}
 						else {
@@ -1068,9 +1059,9 @@ SmartTemplate4.classSmartTemplate = function()
 		isCursor = (caretContainer != null);
 		
 		try {
-			editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
-			editor.selectionController.completeScroll(!theIdentity.replyOnTop);
 			if (targetNode) {
+				editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
+				editor.selectionController.completeScroll(!theIdentity.replyOnTop);
 				let theParent = targetNode.parentNode;
 				if (theParent) {
 					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
@@ -1101,8 +1092,8 @@ SmartTemplate4.classSmartTemplate = function()
 								editor.selection.collapse(theParent, nodeOffset+1); 
 						}
 					}
-					editor.selection.modify('move', 'left', 'character');
-					editor.selection.modify('move', 'right', 'character');
+					//editor.selection.modify('move', 'left', 'character');
+					//editor.selection.modify('move', 'right', 'character');
 				}
 			}
 		}
