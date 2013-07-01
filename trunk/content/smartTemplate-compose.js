@@ -444,6 +444,12 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		return null;
 	};
+	
+	// if can't find in child node, search direct parent
+	function findChildNodeOrParent(node, className) {
+		let f = findChildNode(node, className);
+		return f ? f : findChildNode(node.parentNode, className);
+	};
 
 	function testSmartTemplateToken(template, token) {
 		if(!template)
@@ -645,7 +651,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 
+	function getProcessedText(templateText, idKey, composeType, ignoreHTML, isStationery) 
 	{
 		if (!templateText) 
 			return "";
@@ -678,7 +684,7 @@ SmartTemplate4.classSmartTemplate = function()
 					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 			}
 		}
-		let regular = SmartTemplate4.regularize(templateText, composeType);
+		let regular = SmartTemplate4.regularize(templateText, composeType, isStationery);
 		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
 		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
@@ -691,7 +697,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// in order to fix bottom-reply
 	function getQuoteHeader(composeType, idKey) {
 		var hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
-		return getProcessedText(hdr, idKey, composeType);
+		return getProcessedText(hdr, idKey, composeType, false);
 	};
 	
 	// -----------------------------------
@@ -700,7 +706,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		SmartTemplate4.Util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		var msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
-		return getProcessedText(msg, idKey, composeType);
+		return getProcessedText(msg, idKey, composeType, false);
 	};
 	
 	function findDirectChildById(parent, id) {
@@ -959,7 +965,7 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// before we handle the sig, lets search for the cursor one time
 		// moved code for moving selection to top / bottom
-		let caretContainer = findChildNode(targetNode, 'st4cursor');
+		let caretContainer = findChildNodeOrParent(targetNode, 'st4cursor');
 		let isCursor = (caretContainer != null);
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' search %cursor% in template: ' + isCursor);
 		
@@ -1001,7 +1007,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		/* SIGNATURE HANDLING */
 
-		if (isActiveOnAccount  && !sigVarDefined) {
+		if (isActiveOnAccount) {  // && !sigVarDefined
 		   if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
 			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
@@ -1031,23 +1037,38 @@ SmartTemplate4.classSmartTemplate = function()
 							bodyEl.appendChild(cursor);
 						}
 						
-						// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
-						if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
-							// only need this in reply case (might not need it at all with breaksAtTop
-							if (composeCase == 'reply' && breaksAtTop == 0)
-							  bodyEl.appendChild(doc.createElement("br"));
-							bodyEl.appendChild(theSignature);
-						}
-						else {
-							// reply above, before div smartTemplate4-template
-							// findChildnode non recursive						
-							templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
-							// if we don't find this, lets take the first child div
-							if (!templateDiv) {
-								templateDiv = bodyEl.firstChild.nextSibling;
+						// 
+						if (sigVarDefined) { 
+						  // find and replace <sig>%sig%</sig> in body.
+							if(flags.isStationery) { 
+							  let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
+								if (sigNode) {
+									let isRemoveDashes = sigNode.getAttribute('removeDashes');
+									theSignature.innerHTML = SmartTemplate4.Util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
+									sigNode.parentNode.insertBefore(theSignature, sigNode);
+									sigNode.parentNode.removeChild(sigNode);
+								}
 							}
-							templateDiv.parentNode.insertBefore(theSignature, templateDiv);
-							templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv);
+						}
+						else { // append signature using usual methods
+							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
+							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
+								// only need this in reply case (might not need it at all with breaksAtTop
+								if (composeCase == 'reply' && breaksAtTop == 0)
+									bodyEl.appendChild(doc.createElement("br"));
+								bodyEl.appendChild(theSignature);
+							}
+							else {
+								// reply above, before div smartTemplate4-template
+								// findChildnode non recursive						
+								templateDiv = findDirectChildById(bodyEl, 'smartTemplate4-template'); // find direct child of html element (avoid parsing quoted mail)
+								// if we don't find this, lets take the first child div
+								if (!templateDiv) {
+									templateDiv = bodyEl.firstChild.nextSibling;
+								}
+								templateDiv.parentNode.insertBefore(theSignature, templateDiv);
+								templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv);
+							}
 						}
 					}
 			  }
@@ -1059,7 +1080,8 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// moved code for moving selection to top / bottom
 		// re-find cursor
-		caretContainer = findChildNode(targetNode, 'st4cursor');
+		if (!caretContainer)
+		  caretContainer = findChildNode(targetNode, 'st4cursor');
 		isCursor = (caretContainer != null);
 		
 		try {
@@ -1076,8 +1098,9 @@ SmartTemplate4.classSmartTemplate = function()
 							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from stationery
 							
 						if (caretContainer) {
+							editor.selection.selectAllChildren(caretContainer);
 							editor.selection.collapse(caretContainer, 0);
-							caretContainer.parentNode.removeChild(caretContainer);
+							// caretContainer.parentNode.removeChild(caretContainer);
 						}
 						//SmartTemplate4.Util.setCursorPosition(editor);
 					}
@@ -1096,8 +1119,6 @@ SmartTemplate4.classSmartTemplate = function()
 								editor.selection.collapse(theParent, nodeOffset+1); 
 						}
 					}
-					//editor.selection.modify('move', 'left', 'character');
-					//editor.selection.modify('move', 'right', 'character');
 				}
 			}
 		}
@@ -1108,6 +1129,10 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' reset ModificationCount... ' );
 
 		resetDocument(gMsgCompose.editor, startup);
+		if (isCursor) {
+			editor.selection.modify('move', 'left', 'character');
+			editor.selection.modify('move', 'right', 'character');
+		}
 		
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finishing. ' );
 	};
