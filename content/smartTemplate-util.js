@@ -838,7 +838,57 @@ SmartTemplate4.Util = {
 		}
 		catch(ex) { this.logException("could not find server for identity " + idKey , ex); }
     return serverInfo;
-}
+  },
+
+	getSignatureInner: function(sig, isRemoveDashes) {
+		function removeDashes(elem, isPlainText) {
+			// also fix removing dashes from plain text sig:
+			if (isPlainText) {
+				return elem.replace('-- \<br\>', '');
+			}
+		
+			// [Bug 25483] when using %sig(2)% signature is missing on new mails in HTML mode
+			let newSig = elem;
+			if (elem.childNodes.length) {
+				if (elem.childNodes.length == 1)
+					newSig = removeDashes(elem.firstChild);
+				else {
+					if (elem.firstChild.nodeValue == "-- ") {
+						elem.removeChild(elem.firstChild); //remove '-- '
+					}
+					if (elem.firstChild.tagName == 'BR') {
+						elem.removeChild(elem.firstChild); //remove 'BR'
+					}
+				}
+			}
+			return newSig;
+		}
+		// the actual function
+		try {
+			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + isRemoveDashes + ')');
+			if (sig != null) {
+				SmartTemplate4.sigInTemplate = true;
+				if (typeof sig === "string")
+					return isRemoveDashes ? removeDashes(sig, true) : sig;
+					
+				if (!sig.children || sig.children.length==0) {
+					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
+
+					return sig.innerHTML ? sig.innerHTML : sig.outerHTML;  // deal with DOM String sig (non html)
+				}
+				if (isRemoveDashes) {
+				  removeDashes(sig, false);
+				}
+				return sig.innerHTML;
+			}
+		}
+		catch(ex) {
+			SmartTemplate4.Util.logException('regularize.getSignatureInner() failed', ex);
+		}
+		return "";
+	}
+	
+
 	
 	/* 
 	,

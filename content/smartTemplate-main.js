@@ -252,7 +252,10 @@ var SmartTemplate4 = {
 	
 	// Stationery 0.8 support!
   preprocessHTMLStationery: function(t) {
-    SmartTemplate4.Util.logDebug('preprocessor for stationery running...');
+    SmartTemplate4.Util.logDebugOptional('stationery',
+		     '=========================================\n'
+		   + '=========================================\n'
+			 + 'preprocessor for Stationery running...');
     let idKey = document.getElementById("msgIdentity").value;
     if(!idKey)
       idKey = gMsgCompose.identity.key;
@@ -263,8 +266,14 @@ var SmartTemplate4 = {
     // ignore html!
 		SmartTemplate4.StationeryTemplateText = t.HTML;
 		// do not do HTML escaping!
-    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true);
-    SmartTemplate4.Util.logDebug('preprocessor complete.');
+		// pass in a flag to leave %sig% untouched
+    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true, true); 
+    SmartTemplate4.Util.logDebugOptional('stationery',
+		     '=========================================\n'
+		   + '=========================================\n'
+			 + 'Stationery preprocessor complete.');
+		SmartTemplate4.Util.logDebugOptional('stationery',
+		     'Processed text: ' + t.HTML);
   },	
 	
 	// -------------------------------------------------------------------
