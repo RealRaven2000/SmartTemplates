@@ -6,7 +6,7 @@
 SmartTemplate4.classSmartTemplate = function()
 {
 	function readSignatureFile(Ident) {
-		let sigCharset = SmartTemplate4.Preferences.getMyStringPref('signature.charset'); // usually UTF-8
+		let sigEncoding = SmartTemplate4.Preferences.getMyStringPref('signature.encoding'); // usually UTF-8
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		let Ci = Components.interfaces;
 		let htmlSigText = '';
@@ -27,7 +27,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// First, get and initialize the converter
 				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
                         .createInstance(Ci.nsIScriptableUnicodeConverter);
-				converter.charset = sigCharset; /* The character encoding you want, default is using UTF-8 here */;
+				converter.charset = sigEncoding; /* The character encoding you want, default is using UTF-8 here */;
 
 				let data = "";
 				//read file into a string so the correct identifier can be added
@@ -36,7 +36,7 @@ SmartTemplate4.classSmartTemplate = function()
 				let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
 					createInstance(Ci.nsIConverterInputStream);
 				fstream.init(sigFile, -1, 0, 0);
-				cstream.init(fstream, sigCharset, 0, 0);
+				cstream.init(fstream, sigEncoding, 0, 0);
 				let str = {};
 				{
 				  let read = 0;
@@ -53,11 +53,11 @@ SmartTemplate4.classSmartTemplate = function()
 		catch(ex) {
 			htmlSigText = "(problems reading signature file - see tools / error console for more detail)";
 			SmartTemplate4.Util.logException(
-			   "readSignatureFile - exception trying to read signature attachment file; expected charSet = " + sigCharset + " !\n" 
-			   + "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.charset\n"  
+			   "readSignatureFile - exception trying to read signature attachment file; expected charSet = " + sigEncoding + " !\n" 
+			   + "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.encoding\n"  
 			   + fileName, ex);
 		}
-		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - charset = ' + sigCharset  +'; htmlSigText:\n'
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - charset = ' + sigEncoding  +'; htmlSigText:\n'
 		                                   + htmlSigText + '[EOF]');
 		return htmlSigText;
 	}

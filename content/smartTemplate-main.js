@@ -120,7 +120,7 @@
 		# [Bug 25104] when switching identity, old sig does not get removed.
 		# [Bug 25486] attaching a plain text file as signature leads to double spaces in signature
 		# [Bug 25272] reply below quote with signature placed curorsor below signature (should be above signature and below quote)
-		# added configuration setting for signature file character set. extensions.smartTemplate4.signature.charset
+		# added configuration setting for signature file character set. extensions.smartTemplate4.signature.encoding
 		# added configuration setting adding dashes before text sig. extensions.smartTemplate4.insertSigDashes.plaintext
 		
 		Review specific:

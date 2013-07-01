@@ -19,6 +19,7 @@
 .stationeryURL:hover {
   background:  -moz-linear-gradient(top, rgba(66,158,244,1) 0%, rgba(23,139,241,1) 15%, rgba(3,88,179,1) 50%, rgba(14,130,232,1) 83%, rgba(32,144,242,1) 100%);
 }
+
 #btnUpdateThunderbird {
   background: -moz-linear-gradient(top, rgba(222,71,66,1) 0%, rgba(201,37,35,1) 15%, rgba(138,15,6,1) 50%, rgba(184,34,32,1) 83%, rgba(210,39,36,1) 100%);
 }
