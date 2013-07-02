@@ -6,6 +6,9 @@
 SmartTemplate4.classSmartTemplate = function()
 {
 	function readSignatureFile(Ident) {
+	  if (SmartTemplate4.Util.Application == 'Postbox') {
+			throw('readSignatureFile - reading signature from file is not supported in Postbox!');
+		}
 		let sigEncoding = SmartTemplate4.Preferences.getMyStringPref('signature.encoding'); // usually UTF-8
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		let Ci = Components.interfaces;
@@ -71,9 +74,10 @@ SmartTemplate4.classSmartTemplate = function()
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
 	function extractSignature(Ident, signatureDefined, composeType)
 	{
-		let htmlSigText = Ident.htmlSigText; // might not work if it is an attached file (find out how this is done)
+	  SmartTemplate4.Sig.init(Ident);
+		let htmlSigText = SmartTemplate4.Sig.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
-		let isSignatureHTML = Ident.htmlSigFormat; // only reliable if in textbox!
+		let isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','START==========  extractSignature(' + Ident + ', ' + signatureDefined + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
@@ -116,7 +120,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// read text from signature file
 		let sigType = 'unknown';
-		if (Ident.attachSignature) {
+		if (Ident.attachSignature) { // Postbox never gets here:
 			let fileSig = readSignatureFile(Ident);
 			if (fileSig) {
 				htmlSigText = fileSig;
@@ -142,7 +146,7 @@ SmartTemplate4.classSmartTemplate = function()
 			sigType = 'plain text';
 		}
 		else if (htmlSigText && !Ident.attachSignature) {
-			sigType = Ident.htmlSigFormat ?  'HTML' : 'plain text';
+			sigType = SmartTemplate4.Sig.htmlSigFormat ?  'HTML' : 'plain text';
 		}
 			
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature (from file) is ' + sigType);
@@ -971,11 +975,10 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
-		// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
-		let isSignatureSetup = (theIdentity.htmlSigText && (theIdentity.htmlSigText.length > 0) && !theIdentity.attachSignature)
-		                       ||
-		                       (theIdentity.attachSignature && theIdentity.signature && theIdentity.signature.exists());
-
+		
+		SmartTemplate4.Sig.init(theIdentity);
+		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup;
+		
 		// find out server name and type (IMAP / POP3 etc.)
 		let serverInfo = util.getServerInfo(idKey);
 
@@ -991,7 +994,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
 		       + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
 		       + 'attachSignature:' + theIdentity.attachSignature + '\n'
-		       + 'htmlSigFormat:  ' + theIdentity.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
+		       + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
 		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
