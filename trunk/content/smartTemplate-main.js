@@ -121,7 +121,7 @@
 		# [Bug 25486] attaching a plain text file as signature leads to double spaces in signature
 		# [Bug 25272] reply below quote with signature placed curorsor below signature (should be above signature and below quote)
 		# added configuration setting for signature file character set. extensions.smartTemplate4.signature.encoding
-		# added configuration setting adding dashes before text sig. extensions.smartTemplate4.insertSigDashes.plaintext
+		# added configuration setting adding dashes before text sig. extensions.smartTemplate4.signature.insertDashes.plaintext
 		
 		Review specific:
 		1) help.xul - set iframe type="content" 
@@ -195,14 +195,14 @@ var SmartTemplate4 = {
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
-			// For Stationery integration, we need to hack 
+			// For Stationery integration, we need to  
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			// Stationery_ is from old stationery!
 			if (SmartTemplate4.Preferences.isStationerySupported && 
 			    (typeof Stationery_ != 'undefined'))
 			{
 			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
 				if (Stationery.fireAsyncEvent) {
+				  // new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
 					SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
 					return;
 				}
@@ -210,14 +210,14 @@ var SmartTemplate4 = {
 				// Stationery 0.7.8 and older
 				let bypass = true;
 				let oldTemplate = '';
-				// older versions of Stationer
+				
 				if (typeof Stationery.Templates.OnceOverride != "undefined") {
 					if (Stationery.Templates.OnceOverride == '')
 						bypass = false;
 					else
 						oldTemplate = Stationery.Templates.OnceOverride;
 				}
-				else {
+				else { 
 					if (Stationery.Templates.Current =='')  
 						bypass = false;
 					else

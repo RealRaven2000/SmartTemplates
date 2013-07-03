@@ -411,6 +411,7 @@
 						<checkbox id = "chkSignature"
 						          label = "&pref_parseSignature;"
 						          tooltiptext = "&pref_parseSignature_tip;"
+								  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.signature');return false;"
 						          preference = "pref_parseSignature"/>
 						<checkbox id = "chkFirstLastSwap"
 						          label = "&pref_nameSwap;"

@@ -74,6 +74,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
 	function extractSignature(Ident, signatureDefined, composeType)
 	{
+	  let isSigInBlockquote = false;
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
@@ -89,6 +90,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		let isSignatureTb = (!!htmlSigText) || Ident.attachSignature;
 		let sigNode = null;
+		let sigText;
 
 		if (isSignatureTb) {
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature','find moz-signature...');
@@ -109,13 +111,13 @@ SmartTemplate4.classSmartTemplate = function()
 			if (sigNode && sigNode.parentNode) {
 				if (sigNode.parentNode.nodeName) {
 					if (sigNode.parentNode.nodeName.toLowerCase() == 'blockquote')
-						sigNode = null;
+						isSigInBlockquote = true;
 				}
 			}
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature','signature node ' 
 			                                     + (sigNode ? 'was ' : 'not ')
-			                                     + 'found.');
-			
+			                                     + 'found' 
+																					 + (isSigInBlockquote ? ' in <blockquote>!' : '.'));
 		}
 
 		// read text from signature file
@@ -153,9 +155,10 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// retrieve signature Node; if it doesn't work, try from the account
 		// let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
-		let sigText = htmlSigText ? htmlSigText : 
-		              (sigNode && sigNode.innerHTML) ? sigNode.innerHTML : '';
-		sigText = sigText ? sigText : '';  
+		sigText = isSigInBlockquote ? '' : htmlSigText
+		           ? htmlSigText : (sigNode && sigNode.innerHTML) 
+							 ? sigNode.innerHTML : '';
+		sigText = (sigText) ? sigText : '';  
 		
 
 		let removed = false;
@@ -199,6 +202,7 @@ SmartTemplate4.classSmartTemplate = function()
 				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 					let pBr = nodes[i].previousElementSibling;
 					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
+					removed = true;
 					// old code - remove the preceding BR that TB always inserts
 					if (pBr && pBr.tagName == "BR")
 						bodyEl.removeChild(pBr); 
@@ -207,41 +211,54 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 			// let's discard the old signature instead.
 		}
-
-		// okay now for the coup de grace!!
 		
-		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
-			sigText = getProcessedText(sigText, idKey, composeType, true);
-		
-		
-
-		if (!sig || typeof sig == 'string') {
-			let dashes = 
-				SmartTemplate4.Preferences.getMyBoolPref('insertSigDashes.plaintext') ? "-- <br>" : "";
-			if (gMsgCompose.composeHTML) {
-				sig = SmartTemplate4.Util.mailDocument.createElement("div");
-				sig.className = 'moz-signature';
-				// if our signature is text only, we need to replace \n with <br>
-				if (!isSignatureHTML) {
-					SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
-					// prettify: txt -> html
-					// first replace CRLF then LF
-					sigText = dashes 
-					        + "<pre>"
-					        + sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
-					        + "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
-				}
-				sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
-				// TEST STUFF..
+		// still not removed. Maybe an error happened and it slipped into the blockquote;
+		// let's have a global setting for removing it
+		if (!removed && isSigInBlockquote && SmartTemplate4.Preferences.getMyBoolPref('signature.removeBlockQuotedSig.onFail')) {
+			try {
+				gMsgCompose.editor.deleteNode(sigNode);
+				removed = true;
 			}
-			else {
-				// createTextNode( ) returns a DOMString (16bit)
-				sig = dashes + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
+			catch(ex) {
+				SmartTemplate4.Util.logException("extractSignature - exception removing signature from blockquote!", ex);
 			}
 		}
+
+		// okay now for the coup de grace!!
+		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
+			sigText = getProcessedText(sigText, idKey, composeType, true);
+
+		let dashesTxt = 
+			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.plaintext') ? "-- <br>" : "";
+		let dashesHTML = 
+			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.html') ? "-- <br>" : "";
+		if (gMsgCompose.composeHTML) {
+			sig = SmartTemplate4.Util.mailDocument.createElement("div");
+			sig.className = 'moz-signature';
+			// if our signature is text only, we need to replace \n with <br>
+			if (!isSignatureHTML) {
+				SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
+				// prettify: txt -> html
+				// first replace CRLF then LF
+				// ASCII signature
+				sigText = dashesTxt 
+								+ "<pre>"
+								+ sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
+								+ "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
+			} 
+			else {
+				sigText = dashesHTML + sigText;
+			}
+			sig.innerHTML = sigText;  // = gMsgCompose.identity.htmlSigText;
+			// TEST STUFF..
+		}
+		else {
+			// createTextNode( ) returns a DOMString (16bit)
+			sig = dashesTxt + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
+		}
+
 		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','==============  extractSignature=============END\n'
-		                                   + 'Return Signature:' + sig + '\n'
-		                                   + sigText);
+		                                   + 'Return Signature:\n' + sig );
 
 		return sig;
 	}
@@ -651,6 +668,7 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.clearTemplate()');
 		orgQuoteHeaders.length = 0;
+		SmartTemplate4.Sig.reset();
 	};
 
 	// -----------------------------------
@@ -1069,8 +1087,15 @@ SmartTemplate4.classSmartTemplate = function()
 								if (!templateDiv) {
 									templateDiv = bodyEl.firstChild.nextSibling;
 								}
-								templateDiv.parentNode.insertBefore(theSignature, templateDiv);
-								templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv);
+								// insert signature after template
+								if (templateDiv.nextSibling) {
+									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
+									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
+								}
+								else {
+									templateDiv.parentNode.appendChild(templateDiv);
+									templateDiv.parentNode.appendChild(doc.createElement("br"));
+								}
 							}
 						}
 					}

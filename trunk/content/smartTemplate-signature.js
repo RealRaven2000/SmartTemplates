@@ -38,6 +38,10 @@ SmartTemplate4.Sig = {
 		this.Identity = mailIdentity;
 	} ,
 	
+	reset: function() {
+	  this.Identity = null;
+	} ,
+	
 	_checkIdentity: function() {
 	  if (!this.Identity) {
 			throw "SmartTemplate4.Sig was not initialized! No Identity set.";
