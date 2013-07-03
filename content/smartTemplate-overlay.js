@@ -512,6 +512,11 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			// next: ?????
 			return  generalFunction.replace(/^[^%]*$/, "");
 		}
+		
+		if (!gMsgCompose.originalMsgURI)  {
+			SmartTemplate4.Util.popupAlert ("SmartTemplate4", "Missing message URI - SmartTemplate4 cannot process this message!");
+			return aString;
+		}
 
 		SmartTemplate4.Util.logDebugOptional('regularize', 'simplify()');
 
@@ -553,6 +558,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 	if (!charset && msgDbHdr) {
 		msgDbHdr.folder.charset; 
 	}
+
 	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
 	let date = (type != "new") ? msgDbHdr.date : null;
 	if (type != "new") {
