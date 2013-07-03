@@ -761,6 +761,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let isStationeryTemplate = flags ? flags.isStationery : false;
 		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
+		let doc = gMsgCompose.editor.document;
 		let Ci = Components.interfaces;
 		let ed = GetCurrentEditor();
 		let editor = ed.QueryInterface(Ci.nsIEditor); //
@@ -959,15 +960,12 @@ SmartTemplate4.classSmartTemplate = function()
 						                   gMsgCompose.editor.rootElement, 0);
 					// the first Child will be BLOCKQUOTE (header is inserted afterwards)
 					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
-					//editor.selectionController.scrollSelectionIntoView(null, null, false);
-					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 				else {
 					for (let i = 0; i < breaksAtTop; i++)
 						gMsgCompose.editor.rootElement.appendChild(SmartTemplate4.Util.mailDocument.createElement("br"));
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
-					// editor.insertHTML("<div id=\"smartTemplate4-template\">" + template + "</div>");
 				}
 			}
 			catch (ex) {
@@ -1027,7 +1025,6 @@ SmartTemplate4.classSmartTemplate = function()
 		       );
 
 		/* SIGNATURE HANDLING */
-
 		if (isActiveOnAccount) {  // && !sigVarDefined
 		   if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
@@ -1036,7 +1033,6 @@ SmartTemplate4.classSmartTemplate = function()
 			    composeCase == 'new' && theSignature && isSignatureSetup)
 			{
 				let bodyEl = gMsgCompose.editor.rootElement;
-				let doc = gMsgCompose.editor.document;
 				try {
 					if (!SmartTemplate4.sigInTemplate && theSignature) {
 						SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
@@ -1051,14 +1047,6 @@ SmartTemplate4.classSmartTemplate = function()
 							theSignature = sn;
 						}
 						
-						if (!isCursor && !theIdentity.replyOnTop) {
-							// if %cursor% is not set explicitely, and we reply on bottom, insert cursor straight after the quote (before the signature)
-							let cursor = doc.createElement("div");
-							cursor.className = "st4cursor";
-							bodyEl.appendChild(cursor);
-						}
-						
-						// 
 						if (sigVarDefined) { 
 						  // find and replace <sig>%sig%</sig> in body.
 							if(flags.isStationery) { 
@@ -1106,6 +1094,20 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 		}
 		
+		// if %cursor% is not set explicitely
+		if (!isCursor) {
+			let cursor = doc.createElement("div");
+			cursor.className = "st4cursor";
+			// if we have a template we simply insert it at the bottom of the template
+			if (templateDiv) {
+				templateDiv.appendChild(cursor);
+			}
+			else if (!theIdentity.replyOnTop) {
+				// reply on bottom, insert cursor straight after the quote (before the signature)
+				bodyEl.appendChild(cursor);
+			}
+		}
+		
 		// moved code for moving selection to top / bottom
 		// re-find cursor
 		if (!caretContainer)
@@ -1114,8 +1116,10 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		try {
 			if (targetNode) {
-				editor.selectionController.completeMove(!theIdentity.replyOnTop, false);
-				editor.selectionController.completeScroll(!theIdentity.replyOnTop);
+				let selCtrl = editor.selectionController;
+				selCtrl.completeMove(!theIdentity.replyOnTop, false);
+				selCtrl.completeScroll(!theIdentity.replyOnTop);
+				
 				let theParent = targetNode.parentNode;
 				if (theParent) {
 					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
@@ -1123,14 +1127,20 @@ SmartTemplate4.classSmartTemplate = function()
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
 						if(!caretContainer)
-							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from stationery
+							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from (old) stationery
 							
 						if (caretContainer) {
-							editor.selection.selectAllChildren(caretContainer);
-							editor.selection.collapse(caretContainer, 0);
-							// caretContainer.parentNode.removeChild(caretContainer);
+						  let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN;
+							let space = gMsgCompose.editor.document.createTextNode('\u00a0'); // &nbsp;
+							caretContainer.parentNode.insertBefore(space, caretContainer); 
+							caretContainer.parentNode.removeChild(caretContainer);
+							editor.selection.selectAllChildren(space);
+							editor.selection.collapseToStart(); // 
+							editor.selection.modify('extend', 'forward','character');
+							selCtrl.scrollSelectionIntoView(null, null, scrollFlags);
+							selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
+							// editor.selection.collapse(caretContainer, 0);
 						}
-						//SmartTemplate4.Util.setCursorPosition(editor);
 					}
 					else {
 						if (theIdentity.replyOnTop) {
@@ -1157,10 +1167,10 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' reset ModificationCount... ' );
 
 		resetDocument(gMsgCompose.editor, startup);
-		if (isCursor) {
+/*		if (isCursor) {
 			editor.selection.modify('move', 'left', 'character');
 			editor.selection.modify('move', 'right', 'character');
-		}
+		} */
 		
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finishing. ' );
 	};

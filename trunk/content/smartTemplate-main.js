@@ -122,6 +122,10 @@
 		# [Bug 25272] reply below quote with signature placed curorsor below signature (should be above signature and below quote)
 		# added configuration setting for signature file character set. extensions.smartTemplate4.signature.encoding
 		# added configuration setting adding dashes before text sig. extensions.smartTemplate4.signature.insertDashes.plaintext
+		# fixed signature position when replying on top (must be below template)
+		# hidden settings for adding --<br> before sig (html + plaintext separate).
+		# added warning if originalMsgURI cannot be determined
+		# added hidden UI on right-click on 'Process signature' option to manage signature settings
 		
 		Review specific:
 		1) help.xul - set iframe type="content" 
@@ -324,10 +328,13 @@ var SmartTemplate4 = {
 		// avoid this being called multiple times
     let Ci = Components.interfaces;
 		let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);		
+		let root = editor.rootElement;
+		let isInserted = false;
 		try {
-			let root = editor.rootElement;
 			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
+				isInserted = true;
+				// if insertTemplate throws, we avoid calling it again
 				this.smartTemplate.insertTemplate(true, flags);
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
@@ -344,6 +351,8 @@ var SmartTemplate4 = {
 		}
 		catch(ex) {
 			SmartTemplate4.Util.logException("notifyComposeBodyReady", ex);
+			if (isInserted)
+				root.setAttribute("smartTemplateInserted","true");
 		}
 	},
 
