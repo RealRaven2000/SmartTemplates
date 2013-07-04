@@ -326,8 +326,16 @@ SmartTemplate4.Settings = {
 				SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, '17.0.7')) {
 			document.getElementById("btnUpdateThunderbird").collapsed = false;
 		}
-
+		// wait some time so dialog can load first
+		window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
 		return true;
+	} ,
+	
+	loadTemplatesFrame: function() {
+		  // deferred loading of templates content
+			let templatesIFrame = document.getElementById("templatesIFrame");
+			if (!templatesIFrame.getAttribute("src"))
+			  templatesIFrame.setAttribute("src", "http://smarttemplate4.mozdev.org/templates.html");
 	} ,
 
 	onCodeWord : function(code, className) {

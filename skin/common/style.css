@@ -13,6 +13,8 @@
 /* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
 /* ################################################################################### */
 
+@import 'chrome://smartTemplate4-pl/skin/style.css';
+
 #SmartTemplate4MenuBar {
  border:0px;
 }
@@ -193,6 +195,8 @@ button.bugsURL:focus {
 
 #advancedContainer {
 	height: auto;
+}
+#rightPane {
 	margin-left: 1em;
 	margin-right: 1em;
 }
@@ -324,22 +328,28 @@ button.bugsURL:focus {
 	min-height: 100px;
 }
 
+#advancedTabs > tab:not([selected]) label {
+  display:none !important;
+}
+
 .actionTabs > tab .tab-middle {
 	padding-top: 3px !important;
 	padding-bottom: 3px !important;
 }
 
+/* mac improvements
 .NewTab,.RespondTab,.ForwardTab,
-#fieldsTab, #settingsTab, #aboutTab  {
+#fieldsTab, #settingsTab, #aboutTab, #templatesTab {
   cursor: pointer;
   -moz-appearance: none !important;
 }
+*/
 
 
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in our Tabs */
 .NewTab label,.RespondTab label,.ForwardTab label,
-#fieldsTab label, #settingsTab label, #aboutTab label {
+#fieldsTab label, #settingsTab label, #aboutTab label, #templatesTab label {
   margin-left:5px !important;
 }
 
@@ -366,6 +376,9 @@ button.bugsURL:focus {
 }
 #aboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
+}
+#templatesTab {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
 
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup {
@@ -646,9 +659,9 @@ table div.no {
 }
 
 /* right hand panels widths */
-#helpFrame, #advancedContainer, #aboutPanel 
+#rightPane tabpanel
 {
-	min-width: 400px;
+  min-width: 450px;
 }
 
 
