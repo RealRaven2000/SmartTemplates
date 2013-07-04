@@ -119,7 +119,7 @@
 		# [Bug 25483] when using %sig(2)% (option for removing dashes) - signature is missing on new mails in HTML mode 
 		# [Bug 25104] when switching identity, old sig does not get removed.
 		# [Bug 25486] attaching a plain text file as signature leads to double spaces in signature
-		# [Bug 25272] reply below quote with signature placed curorsor below signature (should be above signature and below quote)
+		# [Bug 25272] reply below quote with signature placed cursor below signature (should be above signature and below quote)
 		# added configuration setting for signature file character set. extensions.smartTemplate4.signature.encoding
 		# added configuration setting adding dashes before text sig. extensions.smartTemplate4.signature.insertDashes.plaintext
 		# fixed signature position when replying on top (must be below template)

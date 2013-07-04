@@ -111,7 +111,7 @@ button.text-link:hover {
   -moz-border-radius: 0 0.5em 0.5em 0 !important;
 }
 .NewTab,.RespondTab,.ForwardTab,
-#fieldsTab, #settingsTab, #aboutTab  {
+#fieldsTab, #settingsTab, #aboutTab, #templatesTab  {
   -moz-border-radius: 0.8em 0.8em 0 0;
 }
 

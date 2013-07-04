@@ -376,12 +376,11 @@
 
 		<tabbox id = "rightPane" flex = "1">
 
-			<tabs class = "actionTabs">
-				<!-- was &help.label; -->
-				<tab id = "fieldsTab" label = "&pref_variables.tab;"  class = "FieldsTab"/>
-				<tab id = "settingsTab" label = "&pref_global.tab;" class = "GlobalTab" />
-				<!-- was &pref_about.tab; -->
-				<tab id = "aboutTab" label = "&about.cap;" class = "AboutTab" /> 
+			<tabs class = "actionTabs" id="advancedTabs">
+				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  class = "FieldsTab"/>
+				<tab id = "templatesTab" label = "Templates (online only)" class = "TemplatesTab" oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"/>
+				<tab id = "settingsTab"  label = "&pref_global.tab;"     class = "GlobalTab" />
+				<tab id = "aboutTab"     label = "&about.cap;"           class = "AboutTab" /> 
 			</tabs>
 	
 			<tabpanels flex = "1">
@@ -391,6 +390,14 @@
 					        type="chrome"
 					        flex = "1"
 					        minheight="300"/>
+				</tabpanel>
+				
+				<tabpanel flex = "1" id = "templatesFrame">
+					<iframe id="templatesIFrame"
+					        type="content"
+					        flex = "1"
+					        minheight="300"
+							seamless="seamless"/>
 				</tabpanel>
 
 				<tabpanel flex = "1" id = "globalSettings">

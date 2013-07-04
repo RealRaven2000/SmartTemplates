@@ -1,0 +1,5 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.newGroup, .forwardGroup , .replyGroup, .aboutGroup {
+	background-position: -moz-calc(100% - 10px) 16px !important;
+}
