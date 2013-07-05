@@ -674,6 +674,16 @@ SmartTemplate4.Settings = {
 		}
 	} , 
 	
+	textDropped: function(evt) {
+	  // drop event is still ongoing, so we set a timeout to make sure the text is inserted first
+		let element = evt.target;
+		window.setTimeout(function() {
+			let newEvent = document.createEvent("Events");
+			newEvent.initEvent("change", true, false);
+			element.dispatchEvent(newEvent);
+			},250); // 250ms should be sufficient
+	} ,
+	
 
 	fontSize: function(change) {
 		// find class rule for .templateBox and change font-size

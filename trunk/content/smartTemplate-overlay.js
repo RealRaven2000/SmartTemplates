@@ -513,7 +513,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			return  generalFunction.replace(/^[^%]*$/, "");
 		}
 		
-		if (!gMsgCompose.originalMsgURI)  {
+		if ((type != "new") && !gMsgCompose.originalMsgURI)  {
 			SmartTemplate4.Util.popupAlert ("SmartTemplate4", "Missing message URI - SmartTemplate4 cannot process this message!");
 			return aString;
 		}

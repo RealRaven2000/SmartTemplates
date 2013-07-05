@@ -3,8 +3,12 @@
 
 <!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-accountManager.dtd">
 
+
 <overlay id="stam-addressingOverlay"
 				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-accounts.js"/>
 
 	<vbox flex="1" id="compositionAndAddressing">
 		<groupbox>
@@ -15,7 +19,7 @@
 				<button id="smartTemplate4_settings"
 				        class="buttonIcon"
 				        label="&smarttemplate4_button;"
-				        oncommand="openDialog('chrome://smarttemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,centerscreen,dependent,resizable', gIdentity.key);"
+				        oncommand="SmartTemplate4.openSettings();"
 				        />
 			</hbox>
 		</groupbox>

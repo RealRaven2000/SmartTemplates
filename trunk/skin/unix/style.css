@@ -1,7 +1,7 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 .NewTab,.RespondTab,.ForwardTab,
-#fieldsTab, #settingsTab, #aboutTab  {
+#fieldsTab, #settingsTab, #aboutTab, #templatesTab  {
   cursor: pointer;
   -moz-appearance: none !important;
 }

@@ -3,3 +3,7 @@
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup {
 	background-position: -moz-calc(100% - 10px) 16px !important;
 }
+
+#advancedTabs > tab {
+	min-height: 23px;
+}

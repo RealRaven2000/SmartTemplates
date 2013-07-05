@@ -176,6 +176,7 @@
 												         class = "templateBox"
 												         multiline = "true"
 												         tooltiptext = "&pref_template_tip;"
+														 ondrop="SmartTemplate4.Settings.textDropped(event);"
 												         preference = "pref_newmsg"/>
 												<checkbox id = "newhtml"
 												          label = "&pref_html.label;"
@@ -213,6 +214,7 @@
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
 													         preference = "pref_rspheader"
+															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "rsphead"
@@ -229,6 +231,7 @@
 													         flex = "1"
 													         tooltiptext = "&pref_templateBox_tip;"
 													         preference = "pref_rspmsg"
+															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 											</vbox>
@@ -268,6 +271,7 @@
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
 													         preference = "pref_fwdheader"
+															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "fwdhead"
@@ -285,6 +289,7 @@
 													         flex = "1"
 													         tooltiptext = "&pref_templateBox_tip;"
 													         preference = "pref_fwdmsg"
+															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 													</hbox>
 											</vbox>
@@ -377,10 +382,10 @@
 		<tabbox id = "rightPane" flex = "1">
 
 			<tabs class = "actionTabs" id="advancedTabs">
-				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  class = "FieldsTab"/>
-				<tab id = "templatesTab" label = "Templates (online only)" class = "TemplatesTab" oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"/>
-				<tab id = "settingsTab"  label = "&pref_global.tab;"     class = "GlobalTab" />
-				<tab id = "aboutTab"     label = "&about.cap;"           class = "AboutTab" /> 
+				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  />
+				<tab id = "templatesTab" label = "Templates (online only)" oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"/>
+				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
+				<tab id = "aboutTab"     label = "&about.cap;"           /> 
 			</tabs>
 	
 			<tabpanels flex = "1">

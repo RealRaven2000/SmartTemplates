@@ -22,16 +22,7 @@
 #SmartTemplate4CloseItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
 }
-#SmartTemplate4ExportMenuitem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/export.png") !important;
-}
-#SmartTemplate4ExportItem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
-}
-#SmartTemplate4ImportMenuitem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/import.png") !important;
-}
-#SmartTemplate4ImportItem {
+#SmartTemplate4ExportItem, #SmartTemplate4ImportItem
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #menuHomePage {
@@ -332,10 +323,6 @@ button.bugsURL:focus {
   display:none !important;
 }
 
-.actionTabs > tab .tab-middle {
-	padding-top: 3px !important;
-	padding-bottom: 3px !important;
-}
 
 /* mac improvements
 .NewTab,.RespondTab,.ForwardTab,
