@@ -684,5 +684,9 @@ button.dialog-button[dlgtype=extra2] {
 	background: rgb(254,222,178);
 }
 
+/* we will wrap these in parenthesis to indicate outdated status */
+#keywords code.deprecated, code.deprecated {
+	margin-right: 0;
+}
 
 

@@ -73,7 +73,10 @@ h1.helpchapter {
 
 #keywords code.noWrite, code.noWrite {
   background: linear-gradient(to bottom,  rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
-  border-radius: 0.3em;
+}
+
+#keywords code.deprecated, code.deprecated {
+  background: linear-gradient(to bottom, rgba(221,221,221,1) 0%,rgba(182,182,182,1) 50%,rgba(172,172,172,1) 51%,rgba(189,189,189,1) 100%);
 }
 
 /* ############################     CONTRIBUTE BUTTON      ############################# */
