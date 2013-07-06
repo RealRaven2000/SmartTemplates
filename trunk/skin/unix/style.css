@@ -11,6 +11,9 @@
   display:  -moz-box;
 }
 
+.buttonLinks > button {
+  height:1.8em;
+}
 /*
 #btnAdvanced .button-icon,
 #btnCloseAdvanced .button-icon {
