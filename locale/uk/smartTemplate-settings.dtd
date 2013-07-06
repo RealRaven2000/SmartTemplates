@@ -25,6 +25,8 @@
 <!ENTITY pref_about.tab "Про">
 <!ENTITY pref_global.tab "Глобальні налаштування">
 <!ENTITY pref_variables.tab "Змінні">
+<!ENTITY pref_examples.tab "Examples (online only)">
+<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">

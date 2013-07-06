@@ -25,6 +25,8 @@
 <!ENTITY pref_about.tab "A prepaus">
 <!ENTITY pref_global.tab "Paramètres generals">
 <!ENTITY pref_variables.tab "Variablas">
+<!ENTITY pref_examples.tab "Examples (online only)">
+<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Acceptar">
 <!ENTITY cancel_button "Anullar">

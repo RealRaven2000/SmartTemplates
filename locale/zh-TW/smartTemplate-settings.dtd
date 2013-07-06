@@ -25,6 +25,8 @@
 <!ENTITY pref_about.tab "關於">
 <!ENTITY pref_global.tab "全域設定">
 <!ENTITY pref_variables.tab "變數">
+<!ENTITY pref_examples.tab "Examples (online only)">
+<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "確定">
 <!ENTITY cancel_button "取消">
