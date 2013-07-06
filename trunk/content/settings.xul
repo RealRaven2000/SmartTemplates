@@ -383,7 +383,9 @@
 
 			<tabs class = "actionTabs" id="advancedTabs">
 				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  />
-				<tab id = "templatesTab" label = "Templates (online only)" oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"/>
+				<tab id = "templatesTab" label = "&pref_examples.tab;" 
+				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
+				     tooltiptext = "&pref_examples.tooltip;" />
 				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
 				<tab id = "aboutTab"     label = "&about.cap;"           /> 
 			</tabs>
