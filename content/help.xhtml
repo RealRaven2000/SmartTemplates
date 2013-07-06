@@ -15,8 +15,9 @@
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter">&fix_var.cap;</h1>
 			<ul>
-				<li><code>%ownname%</code> = &ownname.label;</li>
-				<li><code>%ownmail%</code> = &ownmail.label;</li>
+				<li><code>%identity(name)%</code> = &ownname.label; (<code class="deprecated">%ownname%</code>)</li>
+				<li><code>%identity(mail)%</code> = &ownmail.label; (<code class="deprecated">%ownmail%</code>)</li>
+				<li><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
 				<li><code class="noWrite">%date%</code> = &date.label;</li>
 				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
 				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>

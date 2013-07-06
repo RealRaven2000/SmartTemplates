@@ -5,3 +5,15 @@
   cursor: pointer;
   -moz-appearance: none !important;
 }
+
+/* make sure button icons are visible */
+.buttonIcon > .box-inherit > .button-icon {
+  display:  -moz-box;
+}
+
+/*
+#btnAdvanced .button-icon,
+#btnCloseAdvanced .button-icon {
+  display: inline-block;
+}
+*/
