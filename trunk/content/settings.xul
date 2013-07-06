@@ -383,10 +383,10 @@
 
 			<tabs class = "actionTabs" id="advancedTabs">
 				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  />
+				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
 				<tab id = "templatesTab" label = "&pref_examples.tab;" 
 				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "&pref_examples.tooltip;" />
-				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
 				<tab id = "aboutTab"     label = "&about.cap;"           /> 
 			</tabs>
 	
@@ -399,14 +399,6 @@
 					        minheight="300"/>
 				</tabpanel>
 				
-				<tabpanel flex = "1" id = "templatesFrame">
-					<iframe id="templatesIFrame"
-					        type="content"
-					        flex = "1"
-					        minheight="300"
-							seamless="seamless"/>
-				</tabpanel>
-
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox flex = "1">
 						<!-- ######## Global Debug Checkbox ######## -->
@@ -511,6 +503,14 @@
 					</vbox>
 				</tabpanel>
 
+				<tabpanel flex = "1" id = "templatesFrame">
+					<iframe id="templatesIFrame"
+					        type="content"
+					        flex = "1"
+					        minheight="300"
+							seamless="seamless"/>
+				</tabpanel>
+				
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
 						<hbox class = "aboutWrapper" flex="1" align = "center" > 
