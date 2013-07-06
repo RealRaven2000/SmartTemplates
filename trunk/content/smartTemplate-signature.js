@@ -76,6 +76,7 @@ SmartTemplate4.Sig = {
 				}
 				return true;
 		} 
+		return false;
 	} ,
 	
 	get htmlSigFormat() {
