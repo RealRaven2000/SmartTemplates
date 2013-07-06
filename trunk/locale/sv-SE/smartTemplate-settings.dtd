@@ -25,6 +25,8 @@
 <!ENTITY pref_about.tab "Ca">
 <!ENTITY pref_global.tab "Global Settings">
 <!ENTITY pref_variables.tab "Variables">
+<!ENTITY pref_examples.tab "Examples (online only)">
+<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">

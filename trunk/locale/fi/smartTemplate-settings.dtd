@@ -25,11 +25,13 @@
 <!ENTITY pref_about.tab "Tietoja">
 <!ENTITY pref_global.tab "Globaalit asetukset">
 <!ENTITY pref_variables.tab "Muuttujat">
+<!ENTITY pref_examples.tab "Esimerkkejä">
+<!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla http://smarttemplate4.mozdev.org/templates.html. Vaatii Internet-yhteyden.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">
 <!ENTITY contribute_button "Avusta">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "Päivitä Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
@@ -39,9 +41,9 @@
 <!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
 <!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä">
 <!ENTITY pref_showStatusIcon.label "Näytä painike tilapalkilla">
-<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
-<!ENTITY pref_StatusIcon.IconText "Icon And Text">
-<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
+<!ENTITY pref_StatusIcon.IconOnly "Vain kuvake">
+<!ENTITY pref_StatusIcon.IconText "Kuvake ja teksti">
+<!ENTITY pref_StatusIcon.IconHoverText "Teksti hiirellä kohdistettaessa">
 <!ENTITY pref_fontSettings.label "Pohjamuokkaimen kirjaisin">
 <!ENTITY pref_server_desc "Tili">
 <!ENTITY pref_server_def "Oletus">
@@ -65,8 +67,8 @@
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
-<!ENTITY pref_nameSwap "Correct LastName, FirstName">
-<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
@@ -74,8 +76,8 @@
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
 <!ENTITY pref_stationeryLink "Stationary-lisäosa">
 <!ENTITY pref_stationeryLink_tip "Hanki Stationary...">
-<!ENTITY pref_defaultCharset.label "Default charset">
-<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
+<!ENTITY pref_defaultCharset.label "Oletusmerkistö">
+<!ENTITY pref_defaultCharset_tip "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate4 - Tietoja">
 <!ENTITY creator.label "Tekijä">
