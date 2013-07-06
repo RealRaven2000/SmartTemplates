@@ -1130,16 +1130,21 @@ SmartTemplate4.classSmartTemplate = function()
 							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from (old) stationery
 							
 						if (caretContainer) {
-						  let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN;
-							let space = gMsgCompose.editor.document.createTextNode('\u00a0'); // &nbsp;
-							caretContainer.parentNode.insertBefore(space, caretContainer); 
-							caretContainer.parentNode.removeChild(caretContainer);
-							editor.selection.selectAllChildren(space);
-							editor.selection.collapseToStart(); // 
-							editor.selection.modify('extend', 'forward','character');
-							selCtrl.scrollSelectionIntoView(null, null, scrollFlags);
-							selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
-							// editor.selection.collapse(caretContainer, 0);
+							try {
+								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN;
+								let space = gMsgCompose.editor.document.createTextNode('\u00a0'); // &nbsp;
+								caretContainer.parentNode.insertBefore(space, caretContainer); 
+								caretContainer.parentNode.removeChild(caretContainer);
+								editor.selection.selectAllChildren(space);
+								editor.selection.collapseToStart(); // 
+								editor.selection.modify('extend', 'forward','character');
+								selCtrl.scrollSelectionIntoView(selCtrl.SELECTION_NORMAL, selCtrl.SELECTION_WHOLE_SELECTION, scrollFlags);
+								selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
+								// editor.selection.collapse(caretContainer, 0);
+							}
+							catch (ex) {
+								SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
+							}
 						}
 					}
 					else {
