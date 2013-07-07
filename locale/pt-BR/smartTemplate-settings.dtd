@@ -25,8 +25,8 @@
 <!ENTITY pref_about.tab "Sobre">
 <!ENTITY pref_global.tab "Configurações Globais">
 <!ENTITY pref_variables.tab "Variáveis">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
+<!ENTITY pref_examples.tab "Exemplos (somenet online)">
+<!ENTITY pref_examples.tooltip "Mostrar modelos de exemplo de http://smarttemplate4.mozdev.org/templates.html. Somente disponível no modo online.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Aceptar">
 <!ENTITY cancel_button "Descartar">
