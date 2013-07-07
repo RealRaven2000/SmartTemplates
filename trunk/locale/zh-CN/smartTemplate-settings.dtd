@@ -25,8 +25,8 @@
 <!ENTITY pref_about.tab "关于">
 <!ENTITY pref_global.tab "全局设置">
 <!ENTITY pref_variables.tab "变量">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
+<!ENTITY pref_examples.tab "示例（联网可用）">
+<!ENTITY pref_examples.tooltip "显示来自 http://smarttemplate4.mozdev.org/templates.html 的示例模板，仅联机模式可用。">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "确定">
 <!ENTITY cancel_button "取消">

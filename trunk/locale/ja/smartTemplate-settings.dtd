@@ -25,8 +25,8 @@
 <!ENTITY pref_about.tab "SmartTemplate4 について">
 <!ENTITY pref_global.tab "グローバル設定">
 <!ENTITY pref_variables.tab "変数">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
+<!ENTITY pref_examples.tab "テンプレート例 (オンラインのみ)">
+<!ENTITY pref_examples.tooltip "テンプレートの例を http://smarttemplate4.mozdev.org/templates.html より表示します。オンラインである必要があります。">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "キャンセル">
