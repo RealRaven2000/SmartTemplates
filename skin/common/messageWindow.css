@@ -26,7 +26,6 @@
 }
 
 #innerMessage {
-	background: -moz-linear-gradient(top, rgba(226,226,226,0.7) 0%, rgba(219,219,219,0.7) 50%, rgba(209,209,209,0.7) 51%, rgba(254,254,254,0.7) 100%);
 	font-size: 12pt;
 	min-height: 5em;
 	min-width: 300px;
