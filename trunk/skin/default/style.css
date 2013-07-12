@@ -85,8 +85,8 @@ button.dialog-button[dlgtype=extra2] {
 	background-image: linear-gradient(to bottom, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
 	border-radius: 1.3em;
 	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.7);
-	-moz-transition-property: box-shadow, margin;
-	-moz-transition-duration: 0.75s, 0.2s;
+	transition-property: box-shadow, margin;
+	transition-duration: 0.75s, 0.2s;
 }
 
 .dialog-button[dlgtype=extra2]:hover
