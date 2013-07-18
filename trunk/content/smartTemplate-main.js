@@ -359,7 +359,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to switch identity
 	// -------------------------------------------------------------------
-	loadIdentity : function(startup, previousIdentity)
+	loadIdentity: function(startup, previousIdentity)
 	{
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
@@ -409,48 +409,6 @@ var SmartTemplate4 = {
 		return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
 	},
 
-	// -------------------------------------------------------------------
-	// Get day name and month name
-	// -------------------------------------------------------------------
-	classCalIDateTimeFormatter: function(useLegacy)
-	{
-		function list() {
-			var str = "";
-			for (var i=0;i<7 ;i++){str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");} str += "\n";
-			for (var i=0;i<12;i++){str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");}
-			return str;
-		};
-
-		// -----------------------------------
-		// Constructor
-		try {
-			if (useLegacy)
-				throw "without lightning";
-			// with Lightning
-			var cal = Components.classes["@mozilla.org/calendar/datetime-formatter;1"].
-						getService(Components.interfaces.calIDateTimeFormatter);
-		}
-		catch(ex) {
-			// without Lightning
-			var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-							 getService(Components.interfaces.nsIStringBundleService);
-			var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/calender.properties");
-			var cal = {
-				dayName 	   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".name"); },
-				shortDayName   : function(n){ return bundle.GetStringFromName("day." + (n + 1) + ".short"); },
-				monthName	   : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".name"); },
-				shortMonthName : function(n){ return bundle.GetStringFromName("month." + (n + 1) + ".short"); }
-			};
-		}
-
-		// -----------------------------------
-		// Public methods
-		this.dayName = cal.dayName;
-		this.shortDayName = cal.shortDayName;
-		this.monthName = cal.monthName;
-		this.shortMonthName = cal.shortMonthName;
-		this.list = list;
-	} ,
 
 	// -------------------------------------------------------------------
 	// Initialize - we only call this from the compose window
@@ -477,7 +435,7 @@ var SmartTemplate4 = {
 
 		// a class instance.
 		this.smartTemplate = new SmartTemplate4.classSmartTemplate();
-		this.cal = new this.classCalIDateTimeFormatter(true);
+		// this.cal = new this.classCalIDateTimeFormatter(true);
 
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
@@ -528,3 +486,73 @@ var SmartTemplate4 = {
 		let v = SmartTemplate4.Util.VersionProxy();
 	}
 };
+
+
+// -------------------------------------------------------------------
+// Get day name and month name (localizable!)
+// locale optional for locale
+// -------------------------------------------------------------------
+// this was classCalIDateTimeFormatter
+SmartTemplate4.calendar = {
+    currentLocale : null,
+		bundle: null,
+		list: function () {
+			let str = "";
+			for (let i=0;i<7 ;i++){
+				str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");
+			} 
+			str += "\n";
+			for (let i=0;i<12;i++){
+				str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");
+			}
+			return str;
+		},
+		
+		init: function(forcedLocale) {
+			let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
+							 getService(Components.interfaces.nsIStringBundleService);
+			// validate the passed locale name for existence
+			// https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
+			if (forcedLocale) {
+				let chromeRegService = Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService();
+				let toolkitChromeReg = chromeRegService.QueryInterface(Components.interfaces.nsIToolkitChromeRegistry);
+				let availableLocales = toolkitChromeReg.getLocalesForPackage("smarttemplate4"); // smarttemplate4-locales
+				let found = false;
+				let listLocales = '';
+				while(availableLocales.hasMore()) {
+					let aLocale = availableLocales.getNext();
+					listLocales += aLocale.toString() + ',';
+					if (aLocale == forcedLocale) found = true;
+				}
+				if (!found) {
+					SmartTemplate4.Util.logError("Invalid locale: " + forcedLocale + '\navailable: ' + listLocales, '', '', 0, 0, 0x1);
+					forcedLocale = null;
+				}
+				else {
+					SmartTemplate4.Util.logDebug('calendar - found extension locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+				}
+      }			
+			this.currentLocale = forcedLocale;
+			let bundleUri = forcedLocale 
+				? "chrome://smarttemplate4-locales/content/" + forcedLocale 
+				: "chrome://smarttemplate4/locale";
+			this.bundle = strBndlSvc.createBundle(bundleUri + "/calender.properties");
+		},
+		
+		dayName: function(n){ 
+			return this.bundle.GetStringFromName("day." + (n + 1) + ".name"); 
+		},
+		
+		shortDayName: function(n) { 
+			return this.bundle.GetStringFromName("day." + (n + 1) + ".short"); 
+		},
+		
+		monthName: function(n){ 
+			return this.bundle.GetStringFromName("month." + (n + 1) + ".name"); 
+		},
+		
+		shortMonthName: function(n) { 
+			return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); 
+		}
+}
+	

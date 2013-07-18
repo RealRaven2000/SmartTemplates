@@ -59,6 +59,9 @@ locale      smarttemplate4           uk           locale/uk/
 locale      smarttemplate4           zh-CN        locale/zh-CN/
 locale      smarttemplate4           zh-TW        locale/zh-TW/
 
+# for forcing access to a ceratin locale: (suggested by Mook_as)
+content smarttemplate4-locales locale/
+
 #### OVERLAYS ####
 # Style Overlay for Toolbar Button #
 style  chrome://global/content/customizeToolbar.xul                      chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css
