@@ -706,6 +706,7 @@ SmartTemplate4.classSmartTemplate = function()
 					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
 			}
 		}
+		SmartTemplate4.calendar.init(); // set for default locale
 		let regular = SmartTemplate4.regularize(templateText, composeType, isStationery);
 		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")

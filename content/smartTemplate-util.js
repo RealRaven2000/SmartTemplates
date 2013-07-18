@@ -403,7 +403,7 @@ SmartTemplate4.Util = {
 	},
 
 	// flags
-	// errorFlag		0x0 	Error messages. A pseudo-flag for the default, error case.
+	// errorFlag		  0x0 	Error messages. A pseudo-flag for the default, error case.
 	// warningFlag		0x1 	Warning messages.
 	// exceptionFlag	0x2 	An exception was thrown for this case - exception-aware hosts can ignore this.
 	// strictFlag 		0x4

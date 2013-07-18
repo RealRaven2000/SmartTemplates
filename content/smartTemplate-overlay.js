@@ -226,7 +226,7 @@ SmartTemplate4.mimeDecoder = {
 	// see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
 	//           http://encoding.spec.whatwg.org/#interface-textdecoder
 	//           
-	detectCharset : function(str)
+	detectCharset: function(str)
 	{
 		let charset = "";
 
@@ -245,7 +245,7 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// MIME decoding.
-	decode : function (theString, charset)
+	decode: function (theString, charset)
 	{
 		var decodedStr = "";
 
@@ -280,7 +280,7 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// Split addresses and change encoding.
-	split : function (addrstr, charset, format)
+	split: function (addrstr, charset, format)
 	{
 	  // jcranmer: you want to use parseHeadersWithArray
 		// jcranmer: that gives you three arrays
@@ -525,7 +525,8 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		// identity(mail) is the new ownmail
 		setRw2h("d.c.", "ownname", "ownmail", "deleteText", "replaceText",
 						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", "cursor", "identity", "quotePlaceholder");
+						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
+						"cursor", "identity", "quotePlaceholder", "language");
 
 		// Reserved words which depend on headers of the original message.
 		setRw2h("To", "to", "toname", "tomail");
@@ -854,7 +855,9 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		var tm = new Date();
 		var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
 		var expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
-		var cal = SmartTemplate4.cal;
+		if (!SmartTemplate4.calendar.bundle)
+			SmartTemplate4.calendar.init(null); // default locale
+		let cal = SmartTemplate4.calendar;
 
 		// Set %A-Za-z% to time of original message was sent.
 		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent)
@@ -971,6 +974,9 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 					return finalize(token, cal.monthName(tm.getMonth()), "cal.monthName(" + tm.getMonth() +")");   // locale month
 				case "b":
 					return finalize(token, cal.shortMonthName(tm.getMonth()), "cal.shortMonthName(" + tm.getMonth() +")");   // locale month (short)
+				case "language":
+				  SmartTemplate4.calendar.init(arg.substr(1,arg.length-2)); // strip ( )
+					return "";
 				case "p":
 					switch (arg) {
 						case "(1)":
