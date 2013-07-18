@@ -519,7 +519,7 @@ SmartTemplate4.calendar = {
 				let availableLocales = toolkitChromeReg.getLocalesForPackage("smarttemplate4"); // smarttemplate4-locales
 				let found = false;
 				let listLocales = '';
-				while(availableLocales.hasMore()) {
+				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
 					listLocales += aLocale.toString() + ',';
 					if (aLocale == forcedLocale) found = true;

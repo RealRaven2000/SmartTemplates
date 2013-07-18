@@ -25,7 +25,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefDisable : function()
 	{
-		for(var i = 1; i < arguments.length; i++){
+		for (var i = 1; i < arguments.length; i++){
 			var el = document.getElementById(arguments[i] + this.accountId);
 			el.disabled = arguments[0] ? false : true;
 			if (arguments[0]) {
@@ -42,7 +42,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefHidden : function()
 	{
-		for(var i = 1; i < arguments.length; i++){
+		for (var i = 1; i < arguments.length; i++){
 			var el = document.getElementById(arguments[i] + this.accountId);
 			if (arguments[0]) {
 				el.hidden = true;

@@ -198,7 +198,7 @@ SmartTemplate4.classSmartTemplate = function()
 		// remove previous signature. 
 		if (!removed) {
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Not removed. 2nd attempt to remove previous sig...');
-			for(let i = 0; i < nodes.length; i++) {
+			for (let i = 0; i < nodes.length; i++) {
 				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 					let pBr = nodes[i].previousElementSibling;
 					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used

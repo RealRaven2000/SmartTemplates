@@ -484,7 +484,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		// building a hash table?
 		// setRw2h("header", "reserved word",,,)
 		function setRw2h() {
-			for(var i = 1; i < arguments.length; i++) {
+			for (var i = 1; i < arguments.length; i++) {
 				rw2h[arguments[i]] = arguments[0]; // set the type of each token: d.c., To, Cc, Date, From, Subject
 			}
 		}
