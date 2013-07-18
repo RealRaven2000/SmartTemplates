@@ -348,7 +348,7 @@ SmartTemplate4.Util = {
 			var sb = this.Mail3PaneWindow.document.getElementById('status-bar');
 			var el, sbt;
 			if (sb) {
-				for(var i = 0; i < sb.childNodes.length; i++)
+				for (var i = 0; i < sb.childNodes.length; i++)
 				{
 					el = sb.childNodes[i];
 					if (el.nodeType === 1 && el.id === 'statusTextBox') {
@@ -356,7 +356,7 @@ SmartTemplate4.Util = {
 							break;
 					}
 				}
-				for(var i = 0; i < sbt.childNodes.length; i++)
+				for (var i = 0; i < sbt.childNodes.length; i++)
 				{
 					el = sbt.childNodes[i];
 					if (el.nodeType === 1 && el.id === 'statusText') {
