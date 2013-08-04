@@ -157,8 +157,8 @@
 							<!-- ######## Content New Message Tab ######## -->
 
 							<tabpanels flex = "1" orient = "vertical">
-								<tabpanel flex = "1" orient = "vertical">
-									<groupbox flex = "1" class = "newGroup" orient = "vertical">
+								<tabpanel flex = "1" orient = "vertical" class = "newGroup">
+									<groupbox flex = "1" orient = "vertical">
 										<caption label = "&pref_newmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -194,8 +194,8 @@
 								</tabpanel>
 
 							<!-- ######## Content Reply Tab ######## -->
-							<tabpanel flex = "1">
-								<groupbox flex = "1" class = "replyGroup">
+							<tabpanel flex = "1" class = "replyGroup">
+								<groupbox flex = "1">
 									<caption label = "&pref_rspmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -250,8 +250,8 @@
 							</tabpanel>
 
 							<!-- ######## Content Forward Message Tab ######## -->
-							<tabpanel >
-								<groupbox  flex = "1" class = "forwardGroup">
+							<tabpanel class = "forwardGroup">
+								<groupbox  flex = "1">
 									<caption label = "&pref_fwdmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -368,6 +368,7 @@
 	
 		<preferences id = "globals">
 			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
+			<preference id = "pref_hideExamples" name = "extensions.smartTemplate4.hideExamples" type = "bool"/>
 			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
 			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
@@ -401,7 +402,6 @@
 				
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox flex = "1">
-						<!-- ######## Global Debug Checkbox ######## -->
 						<hbox class = "labeledBox">
 							<label   class = "textboxLabel"
 							         value="&pref_breaksOnTop.label;" />
@@ -492,6 +492,12 @@
 								label="&button.updateThunderbird;"
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
+								/>
+						<!-- ######## Global Debug Checkbox ######## -->
+						<checkbox id = "chkHideExamples"
+						          label = "hide examples tab"
+								  preference = "pref_hideExamples"
+								  oncommand = "SmartTemplate4.Settings.toggleExamples(this);"
 								/>
 						<checkbox id = "chkDebug"
 						          label = "&pref_debug_check;"

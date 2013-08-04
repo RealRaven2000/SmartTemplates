@@ -125,7 +125,38 @@ SmartTemplate4.classPref = function()
 		{
 			let localeService = Components.classes["@mozilla.org/intl/nslocaleservice;1"]
 			                    .getService(Components.interfaces.nsILocaleService);
+
+			// get locale from Operating System
 			let locale = localeService.getLocaleComponentForUserAgent();
+			
+			// check if the %language% variable was set:
+			let forcedLocale = SmartTemplate4.calendar.currentLocale;
+			let listLocales = '';
+			let found = false;
+			if (forcedLocale && forcedLocale != locale) {
+				let availableLocales = SmartTemplate4.Util.getAvailableLocales("global"); // list of installed locales
+				while (availableLocales.hasMore()) {
+					let aLocale = availableLocales.getNext();
+					listLocales += aLocale.toString() + ', ';
+					if (aLocale == forcedLocale) found = true;
+				}
+				if (!found) {
+				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
+					                + 'You will need the Language Pack from ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/' + SmartTemplate4.Util.AppverFull + '/yourPlatform/xpi' + '\n'
+					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
+					SmartTemplate4.Util.logError(errorText, '', '', 0, 0, 0x1);
+					SmartTemplate4.Message.display(errorText,
+		                              "centerscreen,titlebar",
+		                              function() { ; }
+		                              );
+					
+					forcedLocale = null;
+				}
+				else {
+					SmartTemplate4.Util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+					locale = forcedLocale;
+				}
+			}
 
 			SmartTemplate4.Util.logDebug('getLocale() returns: ' + locale);
 			return locale;
@@ -222,23 +253,36 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// Detect character set
-	// jcranmer: this is really impossigblebased on such short fields
+	// jcranmer: this is really impossible based on such short fields
 	// see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
 	//           http://encoding.spec.whatwg.org/#interface-textdecoder
 	//           
 	detectCharset: function(str)
 	{
 		let charset = "";
+		 // not supported                  
+		 // #    RFC1555 ISO-8859-8 (Hebrew)
+		 // #    RFC1922 iso-2022-cn-ext (Chinese extended)
 
-		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) { charset = "iso-2022-jp"; }   // RFC1468 (Japanese)
-		                                                         // not supported                  RFC1555 ISO-8859-8 (Hebrew)
-		if (str.search(/\x1b\$\)C/gi) !== -1)                    { charset = "iso-2022-kr"; }   // RFC1557 (Korean)
-		if (str.search(/~{/gi) !== -1)                           { charset = "HZ-GB-2312"; }    // RFC1842 (Chinese ASCII)
-		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       { charset = "iso-2022-cn"; }   // RFC1922 (Chinese)
-		                                                         // not supported                  RFC1922 iso-2022-cn-ext (Chinese extended)
-		if (str.search(/\x1b\$\(D/gi) !== -1)
-		                                                         {charset = "iso-2022-jp-1"; }  // RFC2237 (Japanese 1)
-		if (!charset) charset =  SmartTemplate4.Preferences.getMyStringPref ('defaultCharset');
+		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) {   // RFC1468 (Japanese)
+		  charset = "iso-2022-jp"; 
+		} 
+		if (str.search(/\x1b\$\)C/gi) !== -1)                    {   // RFC1557 (Korean)
+		  charset = "iso-2022-kr"; 
+		} 
+		if (str.search(/~{/gi) !== -1)                           {   // RFC1842 (Chinese ASCII)
+		  charset = "HZ-GB-2312"; 
+		}
+		if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       {   // RFC1922 (Chinese) 
+		  charset = "iso-2022-cn"; 
+		}
+		if (str.search(/\x1b\$\(D/gi) !== -1) {  // RFC2237 (Japanese 1)
+		  charset = "iso-2022-jp-1"; 
+		}
+		if (!charset) { 
+			let defaultSet = SmartTemplate4.Preferences.getMyStringPref ('defaultCharset');
+			charset = defaultSet ? defaultSet : '';  // should we take this from Thunderbird instead?
+		}
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
 	},
@@ -283,13 +327,13 @@ SmartTemplate4.mimeDecoder = {
 	split: function (addrstr, charset, format)
 	{
 	  // jcranmer: you want to use parseHeadersWithArray
-		// jcranmer: that gives you three arrays
-	  //  jcranmer: the first is an array of strings "a@b.com", "b@b.com", etc.
-		//  jcranmer: the second is an array of the display names, I think fully unquoted
-    //  jcranmer: the third is an array of strings "Hello <a@b.com>"
-		//            preserveIntegrity is used, so someone with the string "Dole, Bob" will have that be quoted I think
-		//            if you don't want that, you'd have to pass to unquotePhraseOrAddrWString(value, false)
-		//            oh, and you *don't* need to decode first, though you might want to
+		//           that gives you three arrays
+	  //           the first is an array of strings "a@b.com", "b@b.com", etc.
+		//           the second is an array of the display names, I think fully unquoted
+    //           the third is an array of strings "Hello <a@b.com>"
+		//           preserveIntegrity is used, so someone with the string "Dole, Bob" will have that be quoted I think
+		//           if you don't want that, you'd have to pass to unquotePhraseOrAddrWString(value, false)
+		//           oh, and you *don't* need to decode first, though you might want to
 		// see also: https://bugzilla.mozilla.org/show_bug.cgi?id=858337
 		//           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
 		// use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
@@ -344,7 +388,7 @@ SmartTemplate4.mimeDecoder = {
 			var result = "";
 			
 			if (showName) {
-				// this cuts off the angle-bracket adress part: <foo@bar.com>
+				// this cuts off the angle-bracket address part: <fredflintstone@fire.com>
 				result = address.replace(/\s*<\S+>\s*$/, "")
 					              .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
 				if (result != "" && (showMailAddress)) {
@@ -584,6 +628,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			let tm = new Date();
 			let fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
 						createInstance(Components.interfaces.nsIScriptableDateFormat);
+			
 			let locale = SmartTemplate4.pref.getLocalePref();
 
 			// Set Time
