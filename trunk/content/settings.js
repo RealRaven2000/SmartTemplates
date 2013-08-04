@@ -151,7 +151,7 @@ SmartTemplate4.Settings = {
 	setPref1st : function(prefbranch)
 	{
 		try {
-			this.prefService.getBoolPref(prefbranch + "def")
+			this.prefService.getBoolPref(prefbranch + "def");
 		} catch(e) { this.prefService.setBoolPref(prefbranch + "def", true); }
 		try {
 			this.prefService.getBoolPref(prefbranch + "new");
@@ -244,6 +244,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	reloadPrefs : function(el)
 	{
+		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs()...");
 		el = el.firstChild;
 		while (el) {
 			// Load preference
@@ -252,6 +253,7 @@ SmartTemplate4.Settings = {
 			}
 			el = el.nextSibling;
 		}
+		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs() COMPLETE");
 	} ,
 
 	//******************************************************************************
@@ -262,6 +264,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	onLoad : function() // mod 0.3.2
 	{
+		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() ...");
 		// Check and set common preference
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
@@ -327,8 +330,18 @@ SmartTemplate4.Settings = {
 			document.getElementById("btnUpdateThunderbird").collapsed = false;
 		}
 		// wait some time so dialog can load first
-		window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
+		if (SmartTemplate4.Preferences.getMyBoolPref('hideExamples')) { 
+			document.getElementById('templatesTab').collapsed = true;
+		}
+		else {
+			window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
+		}
+		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
+	} ,
+	
+	toggleExamples: function(el) {
+		document.getElementById('templatesTab').collapsed = (el.checked);
 	} ,
 	
 	loadTemplatesFrame: function() {
@@ -391,6 +404,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefCloneAndSetup : function(el, branch)
 	{
+		SmartTemplate4.Util.logDebugOptional("functions", "prefCloneAndSetup(" + el + ", " + branch + ")");
 		// was called replaceAttr
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
 		function replacePrefName(_el,  key) {
@@ -438,6 +452,7 @@ SmartTemplate4.Settings = {
 				el = el.nextSibling;
 			}
 		}
+		SmartTemplate4.Util.logDebugOptional("functions", "prefCloneAndSetup COMPLETE");
 	} ,
 
 	//******************************************************************************
@@ -448,6 +463,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	addIdentity : function(menuvalue)
 	{
+		SmartTemplate4.Util.logDebugOptional("functions", "addIdentity(" + menuvalue + ")");
 		const  branch = menuvalue == "common" ? ".common" : "." + menuvalue;
 
 		try {
@@ -473,6 +489,9 @@ SmartTemplate4.Settings = {
 		}
 		catch(ex) {
 			SmartTemplate4.Util.logException("Exception in addIdentity(" + menuvalue  +")", ex);
+		}
+		finally {
+			SmartTemplate4.Util.logDebugOptional("functions", "addIdentity COMPLETE");
 		}
 	} ,
 
@@ -571,6 +590,7 @@ SmartTemplate4.Settings = {
 			}
 			el = el.nextSibling; index++;
 		}
+		SmartTemplate4.Util.logDebugOptional("functions", "switchIdentity(" + idKey + ") COMPLETE");
 
 	} , // add 0.4.0 E
 
@@ -623,6 +643,7 @@ SmartTemplate4.Settings = {
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox)
 			tabbox.selectedIndex = tabIndex;
+		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
 

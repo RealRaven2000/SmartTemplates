@@ -23,6 +23,7 @@ pref("extensions.smartTemplate4.stationery.test.disableST4notification", false);
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
+pref("extensions.smartTemplate4.hideExamples", false);
 pref("extensions.smartTemplate4.debug.events", false);
 pref("extensions.smartTemplate4.debug.functions", false);
 pref("extensions.smartTemplate4.debug.functions.delReplyHeader", false);
@@ -33,6 +34,7 @@ pref("extensions.smartTemplate4.debug.functions.getProcessedTemplate", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.settings", false);
+pref("extensions.smartTemplate4.debug.settings.prefs", false);
 pref("extensions.smartTemplate4.debug.regularize", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.firstRun", false);

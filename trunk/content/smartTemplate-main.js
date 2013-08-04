@@ -97,7 +97,7 @@
     # [Bug 25117] Plaintext: Template always below the quoted message when replying
     # [Bug 25155] 0.9.1 regression - blank line is added AFTER Reply template
       	
-  Version 0.9.3 - Work in Progress
+  Version 0.9.3 - 31/07/2013
 	  # toolbar button
 		# fixed a problem with preference not updating (found by AMO reviewer Nils Maier)
 	  # [FR 24990] Added %cursor% variable
@@ -126,38 +126,20 @@
 		# hidden settings for adding --<br> before sig (html + plaintext separate).
 		# added warning if originalMsgURI cannot be determined
 		# added hidden UI on right-click on 'Process signature' option to manage signature settings
-		
-		Review specific:
-		1) help.xul - set iframe type="content" 
-		2) To Do - revisit usage of innerHtml
-		3) habe ich mittlerweile auch gefixt, wir ueberschreiben Stationery nicht mehr. Allerdings funktioniert der neue Code erst ab Stationery version 0.8.
-    4) habe ich bisher gefixt
-    5) To Do - send a version to Nils for pre-testing on Mac. MIght require custom style sheet. 
-    6) To Do - test on Postbox
+
+  Version 0.9.4 - WIP
+	  # Fixed [Bug 25523] Cannot use image as signature
+		# background images in new / reply / forward tabs did not show up in groupbox on default theme in Windows
+		# test option for not loading / showing examples tab
+	
 		
 =========================
-    REVIEWS - 0.9.2 (Nils Maier)
-		
-		1) In help.xul, please set iframe type="content" if possible. It doesn't seem necessary for the page to have chrome-privs. Otherwise, please add a comment why this is not the case.
-
-		2) Try to avoid innerHTML where possible. E.g. in smartTemplate-compose.js it says "// wrap text only signature to fix [Bug 25093]!", so better use sn.textContent. Check all uses of innerHTML accordingly. You may want to look into http://mxr.mozilla.org/mozilla-central/source/parser/html/nsIParserUtils.idl and/or http://mxr.mozilla.org/mozilla-central/source/parser/html/nsIScriptableUnescapeHTML.idl for additional input sanitation.
-
-		3) When overriding/wrapping functions, it is recommended to use the Function.apply method. Example:
-		https://developer.mozilla.org/en-US/docs/XUL_School/Appendix_C:_Avoid_using_eval_in_Add-ons#Overriding.2FExtending_existing_functions
-		(E.g. smartTemplate-main.js)
-		Also, it is not recommended to stuff your own properties into globals (Stationery.SmartTemplate = new Object()) to avoid conflicts with the core code (e.g. to not confuse code doing for (let p in Stationery)) or other add-ons.
+		0.9.3 Review specific:
+		2) To Do - revisit usage of innerHtml
 
 		4) Adding a var to a template by clicking on it in the help window, the change will not be persisted unless one further edits the message text.
 		STR: Edit template a bit. Add variable by click. Close window (OSX is instantApply). Reopen window -> Variable not there
 		STR: Edit template a bit. Add variable by click. Edit a bit more. Close window (OSX is instantApply). Reopen window -> Variable *is* there
-
-		5) The prefwindow, in particular the tabs, doesn't display correctly on mac: http://666kb.com/i/c97a731tmm72h62ck.png
-
-		6) There is an error during startup:
-		Warnung: WARN addons.xpi: Ignoring invalid targetApplication entry in install manifest
-		Quelldatei: resource:///modules/XPIProvider.jsm
-		Zeile: 805
-		Likely because postbox is commented out, but the rdf ref is still there.
 
 		Consider the following suggestion and recommendations:
 		1) Please consider using Services.jsm (or creating your own if you truly want to support appversions that do not support that yet). Consider defining additional service references not covered by Services.jsm in your own code module.
@@ -165,17 +147,6 @@
 		This makes the code somewhat faster, but more importantly, easier to read, maintain and review.
 
 		2) Did you recently test your minVersions?
-
-		3) There are multiple CSS errors you may want to address:
-		Warnung: Fehler beim Verarbeiten des Wertes fuer 'padding-top'.  Deklaration ignoriert.
-		Quelldatei: chrome://smarttemplate4/skin/default/style.css
-		Zeile: 217
-		Warnung: Fehler beim Verarbeiten des Wertes fuer 'vertical-align'.  Deklaration ignoriert.
-		Quelldatei: chrome://smarttemplate4/skin/default/style.css
-		Zeile: 187		
-		
-		
-		
 
 */
 
@@ -514,18 +485,23 @@ SmartTemplate4.calendar = {
 			// validate the passed locale name for existence
 			// https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
 			if (forcedLocale) {
-				let chromeRegService = Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService();
-				let toolkitChromeReg = chromeRegService.QueryInterface(Components.interfaces.nsIToolkitChromeRegistry);
-				let availableLocales = toolkitChromeReg.getLocalesForPackage("smarttemplate4"); // smarttemplate4-locales
+				let availableLocales = SmartTemplate4.Util.getAvailableLocales("smarttemplate4"); // smarttemplate4-locales
 				let found = false;
 				let listLocales = '';
 				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
-					listLocales += aLocale.toString() + ',';
+					listLocales += aLocale.toString() + ', ';
 					if (aLocale == forcedLocale) found = true;
 				}
 				if (!found) {
-					SmartTemplate4.Util.logError("Invalid locale: " + forcedLocale + '\navailable: ' + listLocales, '', '', 0, 0, 0x1);
+				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
+					                + 'Available in SmartTemplate4: ' + listLocales.substring(0, listLocales.length-2);
+					SmartTemplate4.Util.logError(errorText, '', '', 0, 0, 0x1);
+					SmartTemplate4.Message.display(errorText,
+		                              "centerscreen,titlebar",
+		                              function() { ; }
+		                              );
+					
 					forcedLocale = null;
 				}
 				else {

@@ -886,6 +886,14 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.logException('regularize.getSignatureInner() failed', ex);
 		}
 		return "";
+	} ,
+	
+	// returns a list of available locales for a given package
+	getAvailableLocales: function(packageName) {
+		let chromeRegService = Components.classes["@mozilla.org/chrome/chrome-registry;1"].getService();
+		let toolkitChromeReg = chromeRegService.QueryInterface(Components.interfaces.nsIToolkitChromeRegistry);
+		let availableLocales = toolkitChromeReg.getLocalesForPackage(packageName); 
+		return availableLocales;
 	}
 	
 

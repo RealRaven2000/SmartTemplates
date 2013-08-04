@@ -27,30 +27,39 @@ SmartTemplate4.classSmartTemplate = function()
 // 					        + '\nReadable:  '  + sigFile.isReadable()
 // 					        + '\nisFile:    '  + sigFile.isFile());
 
-				// First, get and initialize the converter
-				var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-                        .createInstance(Ci.nsIScriptableUnicodeConverter);
-				converter.charset = sigEncoding; /* The character encoding you want, default is using UTF-8 here */;
 
-				let data = "";
-				//read file into a string so the correct identifier can be added
-				let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
-					createInstance(Ci.nsIFileInputStream);
-				let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
-					createInstance(Ci.nsIConverterInputStream);
-				fstream.init(sigFile, -1, 0, 0);
-				cstream.init(fstream, sigEncoding, 0, 0);
-				let str = {};
-				{
-				  let read = 0;
-				  do {
-						read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
-						data += str.value;
-				  } while (read != 0);
+				// let's check whether the file is an image:
+				let isImage = (sigFile.leafName.toLowerCase().match("\.png|\.apng|\.jpg|\.jpeg|\.jp2k|\.gif|\.tif|\.bmp|\.dib|\.rle|\.ico|\.svg|\.webp"));
+				
+				if (isImage) {
+				  htmlSigText = "<img src='file:///" + fileName + "'\\>";
 				}
-				cstream.close(); // this closes fstream
+				else {
+					// First, get and initialize the converter
+					var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
+													.createInstance(Ci.nsIScriptableUnicodeConverter);
+					converter.charset = sigEncoding; /* The character encoding you want, default is using UTF-8 here */;
 
-				htmlSigText = data.toString();
+					let data = "";
+					//read file into a string so the correct identifier can be added
+					let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
+						createInstance(Ci.nsIFileInputStream);
+					let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
+						createInstance(Ci.nsIConverterInputStream);
+					fstream.init(sigFile, -1, 0, 0);
+					cstream.init(fstream, sigEncoding, 0, 0);
+					let str = {};
+					{
+						let read = 0;
+						do {
+							read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
+							data += str.value;
+						} while (read != 0);
+					}
+					cstream.close(); // this closes fstream
+
+					htmlSigText = data.toString();
+				}
 		  }
 		}
 		catch(ex) {
@@ -129,7 +138,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// look for html tags, because htmlSigFormat might be unchecked
 				// while an attached sig file might still be in HTML format.
 				if ((signatureDefined == 'auto') || (signatureDefined == false)) {
-					if (fileSig.toLowerCase().match("<br>|<br/>|<div*.>|<span*.>|<style*.>|<table*.>|<p*.>|</b>|</i>|<pre*.>")) {
+					if (fileSig.toLowerCase().match("<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>")) {
 						isSignatureHTML = true;
 						sigType = 'probably HTML';
 					}
@@ -475,7 +484,7 @@ SmartTemplate4.classSmartTemplate = function()
 	function testSmartTemplateToken(template, token) {
 		if(!template)
 			return false;
-		let match = template.toLowerCase().match('%' + token.toLowerCase() + '%');  // <div class="moz-signature">
+		let match = template.toLowerCase().match('%' + token.toLowerCase() + '%'); 
 		return (!match ? false : true);
 	};
 	
@@ -1170,15 +1179,8 @@ SmartTemplate4.classSmartTemplate = function()
 			SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 		}
 
-		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' reset ModificationCount... ' );
-
 		resetDocument(gMsgCompose.editor, startup);
-/*		if (isCursor) {
-			editor.selection.modify('move', 'left', 'character');
-			editor.selection.modify('move', 'right', 'character');
-		} */
-		
-		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finishing. ' );
+		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 	};
 
 	function resetDocument(editor, withUndo) {
