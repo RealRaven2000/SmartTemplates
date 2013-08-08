@@ -129,7 +129,8 @@
 
   Version 0.9.4 - WIP
 	  # Fixed [Bug 25523] Cannot use image as signature
-		# background images in new / reply / forward tabs did not show up in groupbox on default theme in Windows
+		# Fixed [Bug 25526] if no Signature is defined, %sig% is not removed
+		# Fixed: Background images in new / reply / forward tabs did not show up in groupbox on default theme in Windows
 		# test option for not loading / showing examples tab
 	
 		
@@ -163,9 +164,20 @@ var SmartTemplate4 = {
 	  hasCursor: false,
 		hasSignature: false,
 		hasQuotePlaceholder: false,
-		hasQuoteHeader: false,
+		hasQuoteHeader: false,          // WIP
+		hasTemplatePlaceHolder: false,  // future use
 		isStationery: false
 	},
+	
+	initFlags : function(flags) {
+	  // independent initialisation so we can create an empty flags object
+		flags.hasSignature = false;
+		flags.hasCursor = false;
+		flags.isStationery = false;
+		flags.hasQuotePlaceholder = false;
+		flags.hasQuoteHeader = false;
+		flags.hasTemplatePlaceHolder = false;
+	} ,
 
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
@@ -260,11 +272,7 @@ var SmartTemplate4 = {
 		// let isStationeryTemplate = false;
 		let stationeryTemplate = null;
 		let flags = this.PreprocessingFlags;
-		flags.hasSignature = false;
-		flags.hasCursor = false;
-		flags.isStationery = false;
-		flags.hasQuotePlaceholder = false;
-		flags.hasQuoteHeader = false;
+		this.initFlags(flags);
 		
 		if (evt) {
 			if (evt.currentTarget
@@ -284,6 +292,8 @@ var SmartTemplate4 = {
 						flags.hasCursor = this.smartTemplate.testCursorVar(stationeryText);
 						flags.hasQuotePlaceholder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quotePlaceholder');
 						flags.hasQuoteHeader = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quoteHeader');
+						flags.hasTemplatePlaceHolder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'smartTemplate');
+						
 					}
 					catch(ex) {
 						SmartTemplate4.Util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
@@ -455,8 +465,11 @@ var SmartTemplate4 = {
 
 	startUp: function() {
 		let v = SmartTemplate4.Util.VersionProxy();
-	}
-};
+	} ,
+	
+	signatureDelimiter:  '-- <br>'
+
+};  // Smarttemplate4
 
 
 // -------------------------------------------------------------------
@@ -530,5 +543,5 @@ SmartTemplate4.calendar = {
 		shortMonthName: function(n) { 
 			return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); 
 		}
-}
+};   // SmartTemplate4.calendar 
 	
