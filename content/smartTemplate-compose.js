@@ -137,10 +137,12 @@ SmartTemplate4.classSmartTemplate = function()
 				htmlSigText = fileSig;
 				// look for html tags, because htmlSigFormat might be unchecked
 				// while an attached sig file might still be in HTML format.
-				if ((signatureDefined == 'auto') || (signatureDefined == false)) {
+				if (signatureDefined != 'html' 
+				    && 
+						signatureDefined != 'text') {
 					if (fileSig.toLowerCase().match("<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>")) {
 						isSignatureHTML = true;
-						sigType = 'probably HTML';
+						sigType = 'HTML';
 					}
 					else
 						sigType = 'probably not HTML';
@@ -156,11 +158,11 @@ SmartTemplate4.classSmartTemplate = function()
 			isSignatureHTML = false;
 			sigType = 'plain text';
 		}
-		else if (htmlSigText && !Ident.attachSignature) {
+		else if (htmlSigText && !Ident.attachSignature) { // trust the checkbox as last thing.
 			sigType = SmartTemplate4.Sig.htmlSigFormat ?  'HTML' : 'plain text';
 		}
 			
-		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature (from file) is ' + sigType);
+		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature Type (from file) is ' + sigType);
 
 		// retrieve signature Node; if it doesn't work, try from the account
 		// let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
@@ -173,7 +175,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let removed = false;
 		// LET'S REMOVE THE SIGNATURE
 		//  && signatureDefined
-		if(sigNode && isSignatureTb)
+		if (isSignatureTb && sigNode)
 		{
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'First attempt to remove Signature.');
 			let ps = sigNode.previousElementSibling;
@@ -186,13 +188,7 @@ SmartTemplate4.classSmartTemplate = function()
 					SmartTemplate4.Util.logException("extractSignature - exception removing <br> before signature!", ex);
 				}
 			}
-			// insert a place holder
-      /*			
-			let originalSigPlaceholder = SmartTemplate4.Util.mailDocument.createElement("div");
-			originalSigPlaceholder.className = "st4originalSignature"; // we might have to replace this again...
-			let sp = sigNode.parentNode;
-			sp.insertBefore(originalSigPlaceholder, sigNode);
-			*/
+			// remove original signature (the one inserted by Thunderbird)
 			try {
 				gMsgCompose.editor.deleteNode(sigNode);
 				removed = true;
@@ -203,8 +199,7 @@ SmartTemplate4.classSmartTemplate = function()
 			//gMsgCompose.editor.document.removeChild(sigNode);
 		}
 
-
-		// remove previous signature. 
+		// remove previous signature (fallback). 
 		if (!removed) {
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Not removed. 2nd attempt to remove previous sig...');
 			for (let i = 0; i < nodes.length; i++) {
@@ -238,9 +233,9 @@ SmartTemplate4.classSmartTemplate = function()
 			sigText = getProcessedText(sigText, idKey, composeType, true);
 
 		let dashesTxt = 
-			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.plaintext') ? "-- <br>" : "";
+			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.plaintext') ? SmartTemplate4.signatureDelimiter : "";
 		let dashesHTML = 
-			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.html') ? "-- <br>" : "";
+			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.html') ? SmartTemplate4.signatureDelimiter : "";
 		if (gMsgCompose.composeHTML) {
 			sig = SmartTemplate4.Util.mailDocument.createElement("div");
 			sig.className = 'moz-signature';
@@ -250,10 +245,17 @@ SmartTemplate4.classSmartTemplate = function()
 				// prettify: txt -> html
 				// first replace CRLF then LF
 				// ASCII signature
-				sigText = dashesTxt 
+				// check for empty signature!!
+				if (sigText.length<=1) {
+					sigText = '';
+					SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'no signature defined!');
+				}
+				else {
+					sigText = dashesTxt 
 								+ "<pre>"
 								+ sigText.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>")
 								+ "</pre>";  // .replace(/ /g, '&nbsp;') - we do not need this as we wrap in pre, anyway!
+				}
 			} 
 			else {
 				sigText = dashesHTML + sigText;
@@ -462,7 +464,7 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
 	};
 
-	// helper function tgo find a child node of the passed class Name
+	// helper function to find a child node of the passed class Name
 	function findChildNode(node, className) {
 		while (node) {
 			if (node && node.className == className)
@@ -500,6 +502,8 @@ SmartTemplate4.classSmartTemplate = function()
 			return '';
 		switch (match[0]) {
 		  case "%sig%":
+				return 'auto';
+		  case "%sig(2)%":
 				return 'auto';
 			case "%sig(html)%":
 				return 'html';
@@ -684,8 +688,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// Get processed template
 	function getProcessedText(templateText, idKey, composeType, ignoreHTML, isStationery) 
 	{
-		if (!templateText) 
-			return "";
+		if (!templateText) return "";
+		if (typeof isStationery === 'undefined') isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedText()   ==========');
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -768,7 +772,14 @@ SmartTemplate4.classSmartTemplate = function()
 	{
 		let util = SmartTemplate4.Util;
 		util.logDebugOptional('functions','insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')');
-		let isStationeryTemplate = flags ? flags.isStationery : false;
+		if (!flags) {
+		  // if not passed, create an empty "flags" object, and initialise it.
+		  flags = {};
+			flags.isStationery = false;
+			flags.identitySwitched = true;  // new flag
+			SmartTemplate4.initFlags(flags);
+		}
+		let isStationeryTemplate = flags.isStationery;
 		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let doc = gMsgCompose.editor.document;
@@ -871,13 +882,12 @@ SmartTemplate4.classSmartTemplate = function()
 			if (isActiveOnAccount) {
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
 				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
-				let hasBodySignature = flags ? flags.hasSignature : false;
-				sigVarDefined = hasBodySignature || testSignatureVar(rawTemplate); 
+				sigVarDefined = flags.hasSignature || testSignatureVar(rawTemplate); 
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
 				template = getSmartTemplate(st4composeType, idKey);
 				quoteHeader = getQuoteHeader(st4composeType, idKey);
-				let newQuote = quoteHeader ? true : false;
+				let isQuoteHeader = quoteHeader ? true : false;
 				switch(composeCase) {
 					case 'new':
 						break;
@@ -886,13 +896,13 @@ SmartTemplate4.classSmartTemplate = function()
 						break;
 					case 'reply':
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-							newQuote = newQuote && true;
+							isQuoteHeader = isQuoteHeader && true;
 							// we do not delete reply header if stationery has inserted a template!
 							// unless: stationery has a placeholder for the original quote text. in which case we have to do this!
 							if (
 							      pref.isDeleteHeaders(idKey, st4composeType, false)
 									  &&
-									  (!isStationeryTemplate || (flags && flags.hasQuotePlaceholder)) 
+									  (!isStationeryTemplate || flags.hasQuotePlaceholder) 
 									)
 							{
 								delReplyHeader(idKey);
@@ -902,12 +912,12 @@ SmartTemplate4.classSmartTemplate = function()
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
-						newQuote = newQuote && true;
+						isQuoteHeader = isQuoteHeader && true;
 
 						// we do not delete forward header if stationery has inserted a template!
 						if (  pref.isDeleteHeaders(idKey, st4composeType, false)
 								  &&
-									(!isStationeryTemplate || (flags && flags.hasQuotePlaceholder))
+									(!isStationeryTemplate || flags.hasQuotePlaceholder)
 								)
 						{
 							delForwardHeader(idKey);
@@ -916,12 +926,24 @@ SmartTemplate4.classSmartTemplate = function()
 				}
 				// put new quote header always on top
 				// we should probably find the previous node before blockquote and insert a new there element there
-				if (newQuote && !isStationeryTemplate) {
-					let qdiv = SmartTemplate4.Util.mailDocument.createElement("div");
-					qdiv.id = "smartTemplate4-quoteHeader";
-					qdiv.innerHTML = quoteHeader;
-					editor.rootElement.insertBefore(qdiv, editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
-					// editor.insertHTML("<div id=\"smartTemplate4-quoteHeader\">" + quoteHeader + "</div>");
+				if (isQuoteHeader) {
+					let qdiv = function() { // closure to avoid unnecessary processing
+						let qd = SmartTemplate4.Util.mailDocument.createElement("div");
+						qd.id = "smartTemplate4-quoteHeader";
+						qd.innerHTML = quoteHeader;
+						return qd;
+					}
+					if (!isStationeryTemplate) {
+						editor.rootElement.insertBefore(qdiv(), editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
+					}
+					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
+						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
+						if (qnode) {
+							if (composeCase!='new')
+								editor.rootElement.insertBefore(qdiv(), qnode);
+							editor.rootElement.removeChild(qnode);
+						}
+					}
 				}
 			}
 			else {
@@ -1036,13 +1058,13 @@ SmartTemplate4.classSmartTemplate = function()
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
-		   if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
+			let bodyEl = gMsgCompose.editor.rootElement;
+		  if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
 			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
 			    ||
 			    composeCase == 'new' && theSignature && isSignatureSetup)
 			{
-				let bodyEl = gMsgCompose.editor.rootElement;
 				try {
 					if (!SmartTemplate4.sigInTemplate && theSignature) {
 						SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
@@ -1102,6 +1124,18 @@ SmartTemplate4.classSmartTemplate = function()
 					SmartTemplate4.Util.logException("handling signature failed", ex);
 				}
 			}
+			// active, but empty signature?
+			else {
+				if(flags.isStationery 
+				   && 
+					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
+					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
+					if (sigNode) {
+						sigNode.parentNode.removeChild(sigNode);
+					}
+				}
+			}
+		
 		}
 		
 		// if %cursor% is not set explicitely

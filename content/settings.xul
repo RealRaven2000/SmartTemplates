@@ -116,28 +116,28 @@
 					<!-- ######## Template Preferences ######## -->
 
 					<preferences id = "templates">
-						<preference id = "pref_def"        name = "extensions.smartTemplate4.common.def"       type = "bool"/>
-						<preference id = "pref_new"        name = "extensions.smartTemplate4.common.new"       type = "bool"/>
-						<preference id = "pref_newmsg"     name = "extensions.smartTemplate4.common.newmsg"    type = "unichar"/>
-						<preference id = "pref_newhtml"    name = "extensions.smartTemplate4.common.newhtml"   type = "bool"/>
-						<preference id = "pref_newnbr"     name = "extensions.smartTemplate4.common.newnbr"    type = "bool"/>
-						<preference id = "pref_rsp"        name = "extensions.smartTemplate4.common.rsp"       type = "bool"/>
-						<preference id = "pref_rspheader"  name = "extensions.smartTemplate4.common.rspheader" type = "unichar"/>
-						<preference id = "pref_rspmsg"     name = "extensions.smartTemplate4.common.rspmsg"    type = "unichar"/>
-						<preference id = "pref_rsphtml"    name = "extensions.smartTemplate4.common.rsphtml"   type = "bool"/>
-						<preference id = "pref_rspnbr"     name = "extensions.smartTemplate4.common.rspnbr"    type = "bool"/>
-						<preference id = "pref_rsphead"    name = "extensions.smartTemplate4.common.rsphead"   type = "bool"/>
-						<preference id = "pref_fwd"        name = "extensions.smartTemplate4.common.fwd"       type = "bool"/>
-						<preference id = "pref_fwdheader"  name = "extensions.smartTemplate4.common.fwdheader" type = "unichar"/>
-						<preference id = "pref_fwdmsg"     name = "extensions.smartTemplate4.common.fwdmsg"    type = "unichar"/>
-						<preference id = "pref_fwdhtml"    name = "extensions.smartTemplate4.common.fwdhtml"   type = "bool"/>
-						<preference id = "pref_fwdnbr"     name = "extensions.smartTemplate4.common.fwdnbr"    type = "bool"/>
-						<preference id = "pref_fwdhead"    name = "extensions.smartTemplate4.common.fwdhead"   type = "bool"/>
+						<preference id = "default_Enable"    name = "extensions.smartTemplate4.common.def"       type = "bool"/>
+						<preference id = "new_Enable"        name = "extensions.smartTemplate4.common.new"       type = "bool"/>
+						<preference id = "rsp_Enable"        name = "extensions.smartTemplate4.common.rsp"       type = "bool"/>
+						<preference id = "fwd_Enable"        name = "extensions.smartTemplate4.common.fwd"       type = "bool"/>
+						<preference id = "new_smartTemplate" name = "extensions.smartTemplate4.common.newmsg"    type = "unichar"/>
+						<preference id = "rsp_smartTemplate" name = "extensions.smartTemplate4.common.rspmsg"    type = "unichar"/>
+						<preference id = "fwd_smartTemplate" name = "extensions.smartTemplate4.common.fwdmsg"    type = "unichar"/>
+						<preference id = "new_isHtml"        name = "extensions.smartTemplate4.common.newhtml"   type = "bool"/>
+						<preference id = "rsp_isHtml"        name = "extensions.smartTemplate4.common.rsphtml"   type = "bool"/>
+						<preference id = "fwd_isHtml"        name = "extensions.smartTemplate4.common.fwdhtml"   type = "bool"/>
+						<preference id = "new_replaceBreaks" name = "extensions.smartTemplate4.common.newnbr"    type = "bool"/>
+						<preference id = "rsp_replaceBreaks" name = "extensions.smartTemplate4.common.rspnbr"    type = "bool"/>
+						<preference id = "fwd_replaceBreaks" name = "extensions.smartTemplate4.common.fwdnbr"    type = "bool"/>
+						<preference id = "rsp_quoteHeader"   name = "extensions.smartTemplate4.common.rspheader" type = "unichar"/>
+						<preference id = "fwd_quoteHeader"   name = "extensions.smartTemplate4.common.fwdheader" type = "unichar"/>
+						<preference id = "rsp_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.rsphead"   type = "bool"/>
+						<preference id = "fwd_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.fwdhead"   type = "bool"/>
 					</preferences>
 
 					<checkbox id = "use_default"
 					          label = "&pref_def.label;"
-					          preference = "pref_def"
+					          preference = "default_Enable"
 					          oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
 
 					<spacer height = "5px" />
@@ -164,7 +164,7 @@
 											<hbox>
 												<checkbox id = "new"
 												          label = "&pref_new.label;"
-												          preference = "pref_new"
+												          preference = "new_Enable"
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
@@ -177,17 +177,17 @@
 												         multiline = "true"
 												         tooltiptext = "&pref_template_tip;"
 														 ondrop="SmartTemplate4.Settings.textDropped(event);"
-												         preference = "pref_newmsg"/>
+												         preference = "new_smartTemplate"/>
 												<checkbox id = "newhtml"
 												          label = "&pref_html.label;"
 												          tooltiptext = "&pref_html.cap;"
-												          preference = "pref_newhtml"
+												          preference = "new_isHtml"
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<checkbox id = "newnbr"
 												          class = "indent"
 												          label = "&pref_rep_br.label;"
 												          tooltiptext = "&pref_rep_br.cap;"
-												          preference = "pref_newnbr"/>
+												          preference = "new_replaceBreaks"/>
 											</vbox>
 										</vbox>
 									</groupbox>
@@ -201,7 +201,7 @@
 											<hbox>
 												<checkbox id = "rsp"
 												          label = "&pref_rsp.label;"
-												          preference = "pref_rsp"
+												          preference = "rsp_Enable"
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
@@ -213,14 +213,14 @@
 													         multiline = "true"
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
-													         preference = "pref_rspheader"
+													         preference = "rsp_quoteHeader"
 															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "rsphead"
 												          label = "&pref_rsphead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
-												          preference = "pref_rsphead"/>
+												          preference = "rsp_replaceQuoteHeader"/>
 											</vbox>
 										<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
@@ -230,7 +230,7 @@
 													         multiline = "true"
 													         flex = "1"
 													         tooltiptext = "&pref_templateBox_tip;"
-													         preference = "pref_rspmsg"
+													         preference = "rsp_smartTemplate"
 															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
@@ -238,13 +238,13 @@
 											<checkbox id = "rsphtml"
 											          label = "&pref_html.label;"
 											          tooltiptext = "&pref_html.cap;"
-											          preference = "pref_rsphtml"
+											          preference = "rsp_isHtml"
 											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 											<checkbox id = "rspnbr"
 											          class = "indent"
 											          label = "&pref_rep_br.label;"
 											          tooltiptext = "&pref_rep_br.cap;"
-											          preference = "pref_rspnbr"/>
+											          preference = "rsp_replaceBreaks"/>
 										</vbox>
 								</groupbox>
 							</tabpanel>
@@ -257,7 +257,7 @@
 											<hbox>
 												<checkbox id = "fwd"
 												          label = "&pref_fwd.label;"
-												          preference = "pref_fwd"
+												          preference = "fwd_Enable"
 												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 												<spacer flex="1" />
 											</hbox>
@@ -270,14 +270,14 @@
 													         multiline = "true"
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
-													         preference = "pref_fwdheader"
+													         preference = "fwd_quoteHeader"
 															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "fwdhead"
 												          label = "&pref_fwdhead.label;"
 												          tooltiptext = "&pref_quotehead_tip;"
-												          preference = "pref_fwdhead"/>
+												          preference = "fwd_replaceQuoteHeader"/>
 									    </vbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
@@ -288,7 +288,7 @@
 													         multiline = "true"
 													         flex = "1"
 													         tooltiptext = "&pref_templateBox_tip;"
-													         preference = "pref_fwdmsg"
+													         preference = "fwd_smartTemplate"
 															 ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 													</hbox>
@@ -296,13 +296,13 @@
 											<checkbox id = "fwdhtml"
 											          label = "&pref_html.label;"
 											          tooltiptext = "&pref_html.cap;"
-											          preference = "pref_fwdhtml"
+											          preference = "fwd_isHtml"
 											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
 											<checkbox id = "fwdnbr"
 											          class = "indent"
 											          label = "&pref_rep_br.label;"
 											          tooltiptext = "&pref_rep_br.cap;"
-											          preference = "pref_fwdnbr"/>
+											          preference = "fwd_replaceBreaks"/>
 										</vbox>
 								</groupbox>
 							</tabpanel>
