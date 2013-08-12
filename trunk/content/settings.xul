@@ -403,14 +403,29 @@
 				</tabpanel>
 				
 				<tabpanel flex = "1" id = "globalSettings">
-					<vbox flex = "1">
-						<hbox class = "labeledBox">
-							<label   class = "textboxLabel"
-							         value="&pref_breaksOnTop.label;" />
-							<textbox id = "txtBreaks"
-							         preference = "pref_breaks"
-							         instantApply="true" />
-						</hbox>
+					<vbox flex = "1" style = "overflow-y: scroll">
+						<groupbox>
+							<caption label="Mail Content"/>
+							<hbox class = "labeledBox">
+								<label   class = "textboxLabel"
+										 value="&pref_breaksOnTop.label;" />
+								<textbox id = "txtBreaks"
+										 preference = "pref_breaks"
+										 instantApply="true" />
+							</hbox>
+							<hbox class = "labeledBox">
+								<label   class = "textboxLabel"
+										 value="&pref_defaultCharset.label;:" />
+								<textbox id = "txtCharset"
+										 preference = "pref_defaultCharset"
+										 instantApply="true" 
+										 tooltiptext = "&pref_defaultCharset_tip;"/>
+							</hbox>
+							<checkbox id = "chkFirstLastSwap"
+									  label = "&pref_nameSwap;"
+									  tooltiptext = "&pref_nameSwap_tip;"
+									  preference = "pref_firstLastSwap"/>
+						</groupbox>
 						
 						<groupbox>
 							<caption label="Signatures"/>
@@ -428,6 +443,7 @@
 								<checkbox label = "Add -- in HTML mail"
 										  tooltiptext = "Always add the -- delimiter before the Signature (in HTML mails)"
 										  preference = "pref_addSigDashHTML"/>
+								<spacer flex="1" />
 								<checkbox label = "Add -- in plain text mail"
 										  tooltiptext = "Always add the -- delimiter before the Signature (in plain text mails)"
 										  preference = "pref_parseSignature"/>
@@ -435,73 +451,63 @@
 									  
 						</groupbox>
 						
-						<checkbox id = "chkFirstLastSwap"
-						          label = "&pref_nameSwap;"
-						          tooltiptext = "&pref_nameSwap_tip;"
-						          preference = "pref_firstLastSwap"/>
-
-						<hbox>
-							<checkbox id = "chkStationery"
-									  label = "&pref_stationerySupport;"
-									  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
-									  preference = "pref_stationerySupport"/>
-							<toolbarbutton id="helpStationery"
-							        onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
-							        label = ""
-							        />
-							<spacer flex="1" />
-							<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
-								    class = "stationeryURL"
-								    label = "&pref_stationeryLink;" 
-									tooltiptext = "&pref_stationeryLink_tip;"/>
-						   
-						</hbox>
-						<hbox class = "labeledBox">
-							<label   class = "textboxLabel"
-							         value="&pref_defaultCharset.label;:" />
-							<textbox id = "txtCharset"
-							         preference = "pref_defaultCharset"
-							         instantApply="true" 
-									 tooltiptext = "&pref_defaultCharset_tip;"/>
-						</hbox>
-						
-						
-						<hbox>
-							<checkbox id = "chkStatusButton"
-									  label = "&pref_showStatusIcon.label;"
-									  preference = "pref_showStatusIcon"
-									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
-									  onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
-							<spacer flex="1" />
-							<menulist id = "iconType"
-									  label = ""
-									  flex = "5"
-									  preference = "pref_StatusIconMode"
-									  oncommand = "SmartTemplate4.setStatusIconMode(this);">
-								<menupopup>
-									<menuitem label = "&pref_StatusIcon.IconOnly;" value = "0"/>
-									<menuitem label = "&pref_StatusIcon.IconText;" value = "2"/>
-									<menuitem label = "&pref_StatusIcon.IconHoverText;" value = "1"/>
-								</menupopup>
-							</menulist>
-							
-					    </hbox>
-						<spacer />
-						<hbox class = "labeledBox">
-							<label  id = "lblFontSettings"
-							        value="&pref_fontSettings.label;" />
-							<button id = "fontSmaller"
-							        onclick = "SmartTemplate4.Settings.fontSize(-1);" 
-							        label = "A" />
-							<spacer width = "5px" />
-							<button id = "fontLarger"
-							        onclick = "SmartTemplate4.Settings.fontSize(+1);" 
-							        label = "A" />
-							<textbox id = "txtFontSize"
-							         preference = "pref_fontSize"
-							         disabled = "true"/>
-						</hbox>
-
+						<groupbox>
+							<caption label="Advanced Functions"/>
+							<hbox>
+								<checkbox id = "chkStationery"
+										  label = "&pref_stationerySupport;"
+										  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
+										  preference = "pref_stationerySupport"/>
+								<toolbarbutton id="helpStationery"
+										onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+										label = ""
+										/>
+								<spacer flex="1" />
+								<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
+										class = "stationeryURL"
+										label = "&pref_stationeryLink;" 
+										tooltiptext = "&pref_stationeryLink_tip;"/>
+						   </hbox>
+						</groupbox>
+					
+						<groupbox>
+							<caption label="User Interface"/>
+							<hbox>
+								<checkbox id = "chkStatusButton"
+										  label = "&pref_showStatusIcon.label;"
+										  preference = "pref_showStatusIcon"
+										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
+										  onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+								<spacer flex="1" />
+								<menulist id = "iconType"
+										  label = ""
+										  flex = "5"
+										  preference = "pref_StatusIconMode"
+										  oncommand = "SmartTemplate4.setStatusIconMode(this);">
+									<menupopup>
+										<menuitem label = "&pref_StatusIcon.IconOnly;" value = "0"/>
+										<menuitem label = "&pref_StatusIcon.IconText;" value = "2"/>
+										<menuitem label = "&pref_StatusIcon.IconHoverText;" value = "1"/>
+									</menupopup>
+								</menulist>
+								
+							</hbox>
+							<spacer />
+							<hbox class = "labeledBox">
+								<label  id = "lblFontSettings"
+										value="&pref_fontSettings.label;" />
+								<button id = "fontSmaller"
+										onclick = "SmartTemplate4.Settings.fontSize(-1);" 
+										label = "A" />
+								<spacer width = "5px" />
+								<button id = "fontLarger"
+										onclick = "SmartTemplate4.Settings.fontSize(+1);" 
+										label = "A" />
+								<textbox id = "txtFontSize"
+										 preference = "pref_fontSize"
+										 disabled = "true"/>
+							</hbox>
+						</groupbox>
 						
 						<spacer flex = "2" />
 						<button id="btnUpdateThunderbird"
