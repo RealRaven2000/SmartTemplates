@@ -33,6 +33,14 @@
 <!ENTITY contribute_button "Contribute">
 <!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Mail Content">
+<!ENTITY pref_groupSignatures "Signatures">
+<!ENTITY pref_groupAdvanced "Advanced Functions">
+<!ENTITY pref_groupUI "User Interface">
+<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
+<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
+<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
 <!ENTITY pref_quoteHeaderBox.label "Quote Header">
 <!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Template">
