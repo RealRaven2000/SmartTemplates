@@ -251,7 +251,7 @@ button.bugsURL:focus {
 	margin-top: 5px;
 }
 .labeledBox {
-	margin: 0.5em 0em 0.5em 0.5em;
+	margin-left: 0.5em;
 }
 
 #aboutPanel {
