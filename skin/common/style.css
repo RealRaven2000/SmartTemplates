@@ -206,7 +206,7 @@ button.bugsURL:focus {
 	width: 100%;
 	background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: 92% 2%;
 	/* background-size: 200px; */
 }
 
