@@ -370,11 +370,13 @@
 			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
 			<preference id = "pref_hideExamples" name = "extensions.smartTemplate4.hideExamples" type = "bool"/>
 			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
+			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
+			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.insertDashes.html" type = "bool" />
+			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.insertDashes.plaintext" type = "bool" />
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
 			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
-			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
 			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
@@ -410,15 +412,29 @@
 							         instantApply="true" />
 						</hbox>
 						
-						<checkbox id = "chkRemoveSig"
-						          label = "&pref_removeSig.label;"
-						          preference = "pref_removeSig"/>
-								  
-						<checkbox id = "chkSignature"
-						          label = "&pref_parseSignature;"
-						          tooltiptext = "&pref_parseSignature_tip;"
-								  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.signature');return false;"
-						          preference = "pref_parseSignature"/>
+						<groupbox>
+							<caption label="Signatures"/>
+							<checkbox id = "chkRemoveSig"
+									  label = "&pref_removeSig.label;"
+									  preference = "pref_removeSig"/>
+									  
+							<checkbox id = "chkSignature"
+									  label = "&pref_parseSignature;"
+									  tooltiptext = "&pref_parseSignature_tip;"
+									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.signature');return false;"
+									  preference = "pref_parseSignature"/>
+									  
+							<hbox>
+								<checkbox label = "Add -- in HTML mail"
+										  tooltiptext = "Always add the -- delimiter before the Signature (in HTML mails)"
+										  preference = "pref_addSigDashHTML"/>
+								<checkbox label = "Add -- in plain text mail"
+										  tooltiptext = "Always add the -- delimiter before the Signature (in plain text mails)"
+										  preference = "pref_parseSignature"/>
+							</hbox>
+									  
+						</groupbox>
+						
 						<checkbox id = "chkFirstLastSwap"
 						          label = "&pref_nameSwap;"
 						          tooltiptext = "&pref_nameSwap_tip;"
