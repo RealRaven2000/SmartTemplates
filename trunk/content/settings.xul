@@ -515,17 +515,22 @@
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
 								/>
-						<!-- ######## Global Debug Checkbox ######## -->
-						<checkbox id = "chkHideExamples"
-						          label = "hide examples tab"
-								  preference = "pref_hideExamples"
-								  oncommand = "SmartTemplate4.Settings.toggleExamples(this);"
-								/>
-						<checkbox id = "chkDebug"
-						          label = "&pref_debug_check;"
-						          tooltiptext = "&pref_debug_tip;"
-						          oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
-						          preference = "pref_debug"/>
+						<groupbox>
+							<caption label="&pref_groupTroubleShooting;"/>
+							<hbox>
+								<checkbox id = "chkDebug"
+										  label = "&pref_debug_check;"
+										  tooltiptext = "&pref_debug_tip;"
+										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
+										  preference = "pref_debug"/>
+								<spacer   flex = "1"/>
+								<checkbox id = "chkHideExamples"
+										  label = "&pref_hideExamples;"
+										  preference = "pref_hideExamples"
+										  oncommand = "SmartTemplate4.Settings.toggleExamples(this);"
+										/>
+							</hbox>
+						</groupbox>
 								 
 								 
 					</vbox>
