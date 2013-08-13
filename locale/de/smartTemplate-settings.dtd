@@ -33,6 +33,14 @@
 <!ENTITY contribute_button "Einen Beitrag leisten">
 <!ENTITY button.updateThunderbird "Thunderbird updaten!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Mailinhalt">
+<!ENTITY pref_groupSignatures "Signaturen"> 
+<!ENTITY pref_groupAdvanced "Erweiterte Funktionen">
+<!ENTITY pref_groupUI "Benutzeroberfläche">
+<!ENTITY pref_addSigBreakHTML.label "-- vor Signatur in HTML e-Mails">
+<!ENTITY pref_addSigBreakHTML.tooltip "Immer Signaturtrenner '--' vor der Signatur einfügen (in HTML e-Mails)">
+<!ENTITY pref_addSigBreakPlaintext.label "-- vor Signatur in Text e-Mails">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Immer Signaturtrenner '--' vor der Signatur einfügen (in Text e-Mails)">
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Nachrichtenvorlage">
