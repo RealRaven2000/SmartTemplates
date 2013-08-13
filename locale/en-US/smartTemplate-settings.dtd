@@ -37,6 +37,7 @@
 <!ENTITY pref_groupSignatures "Signatures">
 <!ENTITY pref_groupAdvanced "Advanced Functions">
 <!ENTITY pref_groupUI "User Interface">
+<!ENTITY pref_groupTroubleShooting "Troubleshooting">
 <!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
 <!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
 <!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
@@ -74,6 +75,7 @@
 <!ENTITY help_dialog_title "SmartTemplate4 Help">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_hideExamples "Hide examples tab">
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
