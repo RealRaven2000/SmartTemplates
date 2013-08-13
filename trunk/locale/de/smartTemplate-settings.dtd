@@ -37,9 +37,10 @@
 <!ENTITY pref_groupSignatures "Signaturen"> 
 <!ENTITY pref_groupAdvanced "Erweiterte Funktionen">
 <!ENTITY pref_groupUI "Benutzeroberfläche">
-<!ENTITY pref_addSigBreakHTML.label "-- vor Signatur in HTML e-Mails">
+<!ENTITY pref_groupTroubleShooting "Fehlerdiagnose">
+<!ENTITY pref_addSigBreakHTML.label "-- Trennzeichen in HTML e-Mails">
 <!ENTITY pref_addSigBreakHTML.tooltip "Immer Signaturtrenner '--' vor der Signatur einfügen (in HTML e-Mails)">
-<!ENTITY pref_addSigBreakPlaintext.label "-- vor Signatur in Text e-Mails">
+<!ENTITY pref_addSigBreakPlaintext.label "-- Trennzeichen in Text e-Mails">
 <!ENTITY pref_addSigBreakPlaintext.tooltip "Immer Signaturtrenner '--' vor der Signatur einfügen (in Text e-Mails)">
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
@@ -74,6 +75,7 @@
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
+<!ENTITY pref_hideExamples "Beispiele nicht anzeigen">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
