@@ -121,7 +121,7 @@
 
         <hbox class = "locale"><!-- Polish (pl) -->
           <image class = "flag" src = "chrome://smarttemplate4/skin/flags/pl.png" tooltiptext = "pl"/>
-          <label class = "translator" value = "Leszek(teo) Zyczkowski"/>
+          <label class = "translator" value = "Leszek(teo) Zyczkowski &amp; Fijalkowski"/>
         </hbox>
 
         <hbox class = "locale"><!-- Portuguese (pt-BR) -->
