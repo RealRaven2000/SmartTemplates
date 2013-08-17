@@ -84,7 +84,7 @@
 <!ENTITY developer.label "Développeur">
 <!ENTITY localename.label "fr">
 <!ENTITY localized.label "Traducteur">
-<!ENTITY translatorNickname.label "Jojaba, jujuf851, Goofy (BabelZilla)">
+<!ENTITY translatorNickname.label "jojoba &amp; Goofy &amp; jufjuf851 (BabelZilla)">
 <!ENTITY contributor.label "Contributeur">
 <!ENTITY about.label "SmartTemplate4 permet de personnaliser aisément les entêtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
 <!-- #### HELP #### -->

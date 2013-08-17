@@ -84,7 +84,7 @@
 <!ENTITY developer.label "开发人员">
 <!ENTITY localename.label "zh-CN">
 <!ENTITY localized.label "翻译">
-<!ENTITY translatorNickname.label "Yanfang Liu (BabelZilla)">
+<!ENTITY translatorNickname.label "yliu &amp; yfdyh000 (BabelZilla)">
 <!ENTITY contributor.label "贡献者">
 <!ENTITY about.label "SmartTemplate4 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
 <!-- #### HELP #### -->
