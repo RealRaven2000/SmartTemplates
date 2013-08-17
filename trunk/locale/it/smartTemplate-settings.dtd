@@ -79,7 +79,7 @@
 <!ENTITY developer.label "Sviluppatore">
 <!ENTITY localename.label "it">
 <!ENTITY localized.label "Traduttore">
-<!ENTITY translatorNickname.label "A35G, Luana e Lucky (BabelZilla)">
+<!ENTITY translatorNickname.label "A35G, Luana e Lucky &amp; Danilo Fortunato (BabelZilla)">
 <!ENTITY contributor.label "Contributo">
 <!ENTITY about.label "SmartTemplate4 permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account.">
 <!-- #### HELP #### -->
