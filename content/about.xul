@@ -95,7 +95,7 @@
 
         <hbox class = "locale"><!-- Italian (it) -->
           <image class = "flag" src = "chrome://smarttemplate4/skin/flags/it.png" tooltiptext = "it"/>
-          <label class = "translator" value = "A35G e Luana"/>
+          <label class = "translator" value = "A35G e Luana &amp; Danilo Fortunato"/>
         </hbox>
 
         <hbox class = "locale"><!-- Japanese (ja-JP) -->
