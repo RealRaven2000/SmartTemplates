@@ -65,9 +65,9 @@
 <!ENTITY about.cap "Про SmartTemplate4">
 <!ENTITY creator.label "Автор">
 <!ENTITY developer.label "Розробник">
-<!ENTITY localename.label "uk-UA">
+<!ENTITY localename.label "uk">
 <!ENTITY localized.label "Перекладач">
-<!ENTITY translatorNickname.label "Aris-T (AMO)">
+<!ENTITY translatorNickname.label "tymofiy (BabelZilla)">
 <!ENTITY contributor.label "Спонсори">
 <!ENTITY about.label "SmartTemplate4 пропонує простий спосіб налаштування Thunderbirds заголовків за замовчуванням за допомогою шаблонів. Індивідуальні шаблони можуть бути створені для кожного запису, а також загальний шаблон для всіх.">
 <!-- #### HELP #### -->
