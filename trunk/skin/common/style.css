@@ -200,6 +200,14 @@ button.bugsURL:focus {
 	max-width: 1000px;
 }
 
+groupbox.transparent {
+  background-image: none;
+  background-color: transparent !important;
+}
+
+groupbox.transparent .groupbox-title {
+  background-color: transparent;
+}
 
 #globalSettings
 {
