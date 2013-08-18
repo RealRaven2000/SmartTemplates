@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "Contribuer">
 <!ENTITY button.updateThunderbird "Mettre à jour Tghunderbird !">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Contenu du courriel">
+<!ENTITY pref_groupSignatures "Signatures">
+<!ENTITY pref_groupAdvanced "Fonctions avancées">
+<!ENTITY pref_groupUI "Interface utilisateur">
+<!ENTITY pref_groupTroubleShooting "Dépannage">
+<!ENTITY pref_addSigBreakHTML.label "Ajouter -- dans le courriels HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courrile HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Ajouter -- dans les courriel au format texte">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courrile HTML)">
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
 <!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
 <!ENTITY pref_templateBox.label "Modèle">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "Aide de SmartTemplate4">
 <!ENTITY help_keyword.cap "Aide">
 <!ENTITY pref_debug_check "Mode débogage">
+<!ENTITY pref_hideExamples "Masquer l'onglet d'exemples">
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
@@ -84,7 +94,7 @@
 <!ENTITY developer.label "Développeur">
 <!ENTITY localename.label "fr">
 <!ENTITY localized.label "Traducteur">
-<!ENTITY translatorNickname.label "jojoba &amp; Goofy &amp; jufjuf851 (BabelZilla)">
+<!ENTITY translatorNickname.label "Jojaba, jujuf851, Goofy (BabelZilla)">
 <!ENTITY contributor.label "Contributeur">
 <!ENTITY about.label "SmartTemplate4 permet de personnaliser aisément les entêtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
 <!-- #### HELP #### -->

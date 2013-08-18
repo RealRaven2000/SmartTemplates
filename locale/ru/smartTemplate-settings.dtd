@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "Поддержать">
 <!ENTITY button.updateThunderbird "Обновить Thunderbird!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Содержимое сообщения">
+<!ENTITY pref_groupSignatures "Подпись">
+<!ENTITY pref_groupAdvanced "Дополнительные функции">
+<!ENTITY pref_groupUI "Интерфейс пользователя">
+<!ENTITY pref_groupTroubleShooting "Решение проблем">
+<!ENTITY pref_addSigBreakHTML.label "Вставка -- в HTML сообщение">
+<!ENTITY pref_addSigBreakHTML.tooltip "Всегда добавлять разделитель -- перед подписью (в письмах в формате HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Вставка -- в обычнoe сообщение">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Всегда добавлять разделитель -- перед подписью (в обычных текстовых письмах)">
 <!ENTITY pref_quoteHeaderBox.label "Заголовок цитат">
 <!ENTITY pref_quoteHeaderBox_tip "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "Справка SmartTemplate4">
 <!ENTITY help_keyword.cap "Справка">
 <!ENTITY pref_debug_check "Режим отладки">
+<!ENTITY pref_hideExamples "Спрятать вкладку с примерами">
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
 <!ENTITY pref_nameSwap "Исправить фамилия, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
