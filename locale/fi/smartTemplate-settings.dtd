@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "Avusta">
 <!ENTITY button.updateThunderbird "Päivitä Thunderbird!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Viestin sisältö">
+<!ENTITY pref_groupSignatures "Allekirjoitukset">
+<!ENTITY pref_groupAdvanced "Lisätoiminnot">
+<!ENTITY pref_groupUI "Käyttöliittymä">
+<!ENTITY pref_groupTroubleShooting "Vian etsiminen">
+<!ENTITY pref_addSigBreakHTML.label "LIsää -- HTML-viestiin">
+<!ENTITY pref_addSigBreakHTML.tooltip "Aina lisää -- erotin ennen allekirjoitusta (HTML-viesteissä)">
+<!ENTITY pref_addSigBreakPlaintext.label "Lisää -- pelkkä teksti -viesteihin">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Aina lisää -- erotin ennen allekirjoitusta (pelkkä teksti -viesteissä)">
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Pohja">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "SmartTemplate4 - Ohje">
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
+<!ENTITY pref_hideExamples "Piilota esimerkit-välilehti">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
