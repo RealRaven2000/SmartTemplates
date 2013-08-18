@@ -158,7 +158,7 @@
 
 							<tabpanels flex = "1" orient = "vertical">
 								<tabpanel flex = "1" orient = "vertical" class = "newGroup">
-									<groupbox flex = "1" orient = "vertical">
+									<groupbox flex = "1" orient = "vertical" class="transparent">
 										<caption label = "&pref_newmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -195,7 +195,7 @@
 
 							<!-- ######## Content Reply Tab ######## -->
 							<tabpanel flex = "1" class = "replyGroup">
-								<groupbox flex = "1">
+								<groupbox flex = "1" class="transparent">
 									<caption label = "&pref_rspmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -251,7 +251,7 @@
 
 							<!-- ######## Content Forward Message Tab ######## -->
 							<tabpanel class = "forwardGroup">
-								<groupbox  flex = "1">
+								<groupbox  flex = "1" class="transparent">
 									<caption label = "&pref_fwdmsg.cap;"/>
 										<vbox flex = "1">
 											<hbox>
@@ -404,7 +404,7 @@
 				
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox flex = "1" style = "overflow-y: scroll">
-						<groupbox>
+						<groupbox class="transparent">
 							<caption label="&pref_groupMailContent;"/>
 							<hbox class = "labeledBox">
 								<label   class = "textboxLabel"
@@ -427,7 +427,7 @@
 									  preference = "pref_firstLastSwap"/>
 						</groupbox>
 						
-						<groupbox>
+						<groupbox class="transparent">
 							<caption label="&pref_groupSignatures;"/>
 							<checkbox id = "chkRemoveSig"
 									  label = "&pref_removeSig.label;"
@@ -451,7 +451,7 @@
 									  
 						</groupbox>
 						
-						<groupbox>
+						<groupbox class="transparent">
 							<caption label="&pref_groupAdvanced;"/>
 							<hbox>
 								<checkbox id = "chkStationery"
@@ -470,7 +470,7 @@
 						   </hbox>
 						</groupbox>
 					
-						<groupbox>
+						<groupbox class="transparent">
 							<caption label="&pref_groupUI;"/>
 							<hbox>
 								<checkbox id = "chkStatusButton"
@@ -515,7 +515,7 @@
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
 								/>
-						<groupbox>
+						<groupbox class="transparent">
 							<caption label="&pref_groupTroubleShooting;"/>
 							<hbox>
 								<checkbox id = "chkDebug"
