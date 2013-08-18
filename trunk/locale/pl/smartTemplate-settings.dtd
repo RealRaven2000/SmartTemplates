@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "Zaangażuj się">
 <!ENTITY button.updateThunderbird "Zaktualizuj Thunderbirda!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Treść wiadomości">
+<!ENTITY pref_groupSignatures "Sygnaturki">
+<!ENTITY pref_groupAdvanced "Funkcje zaawansowane">
+<!ENTITY pref_groupUI "Interfejs użytkownika">
+<!ENTITY pref_groupTroubleShooting "Rozwiązywanie problemów">
+<!ENTITY pref_addSigBreakHTML.label "Dodawaj w formacie HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Zawsze dodawaj separator przed podpisem">
+<!ENTITY pref_addSigBreakPlaintext.label "Dodawaj w formacie tekstowym">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Zawsze dodawaj separator przed podpisem">
 <!ENTITY pref_quoteHeaderBox.label "Nagłówek cytatu">
 <!ENTITY pref_quoteHeaderBox_tip "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:">
 <!ENTITY pref_templateBox.label "Szablon">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "Pomoc SmartTemplate4">
 <!ENTITY help_keyword.cap "Pomoc">
 <!ENTITY pref_debug_check "Tryb debugowania">
+<!ENTITY pref_hideExamples "Ukryj kartę przykładów">
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">

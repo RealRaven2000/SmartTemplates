@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "支援">
 <!ENTITY button.updateThunderbird "Thunderbird を更新します！">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "メールクライアント">
+<!ENTITY pref_groupSignatures "署名">
+<!ENTITY pref_groupAdvanced "追加機能">
+<!ENTITY pref_groupUI "ユーザインターフェイス">
+<!ENTITY pref_groupTroubleShooting "トラブルシューティング">
+<!ENTITY pref_addSigBreakHTML.label "HTML メールで署名に &quot;--&quot; を追加する">
+<!ENTITY pref_addSigBreakHTML.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (HTML 形式の場合)。">
+<!ENTITY pref_addSigBreakPlaintext.label "テキストメールで署名に &quot;--&quot; を追加する">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (プレーンテキスト形式の場合)。">
 <!ENTITY pref_quoteHeaderBox.label "引用ヘッダ">
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "テンプレート">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "SmartTemplate4 ヘルプ">
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
+<!ENTITY pref_hideExamples "テンプレート例のタブを隠す">
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">

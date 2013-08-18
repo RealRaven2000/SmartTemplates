@@ -34,7 +34,7 @@
 <!ENTITY button.updateThunderbird "Thunderbird updaten!">
 <!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "Mailinhalt">
-<!ENTITY pref_groupSignatures "Signaturen"> 
+<!ENTITY pref_groupSignatures "Signaturen">
 <!ENTITY pref_groupAdvanced "Erweiterte Funktionen">
 <!ENTITY pref_groupUI "Benutzeroberfläche">
 <!ENTITY pref_groupTroubleShooting "Fehlerdiagnose">
