@@ -326,7 +326,7 @@ SmartTemplate4.Settings = {
 		// show update button, but only if we run Thunderbird and it is an outdated version:
 		if (SmartTemplate4.Util.Application === "Thunderbird" 
 		    && 
-				SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, '17.0.7')) {
+				SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, '17.0.8')) {
 			document.getElementById("btnUpdateThunderbird").collapsed = false;
 		}
 		// wait some time so dialog can load first
