@@ -941,7 +941,8 @@ SmartTemplate4.classSmartTemplate = function()
 							  let quoteHd = qdiv();
 								qnode.parentNode.insertBefore(quoteHd, qnode);
 							}
-							editor.rootElement.removeChild(qnode);
+							if (quoteHeader) // guard against empty setting: we do not remove header if there is nothing defined in st4.
+								editor.rootElement.removeChild(qnode);
 						}
 					}
 				}
