@@ -924,8 +924,6 @@ SmartTemplate4.classSmartTemplate = function()
 						}
 						break;
 				}
-				// put new quote header always on top
-				// we should probably find the previous node before blockquote and insert a new there element there
 				if (isQuoteHeader) {
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = SmartTemplate4.Util.mailDocument.createElement("div");
@@ -939,8 +937,10 @@ SmartTemplate4.classSmartTemplate = function()
 					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
 						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
 						if (qnode) {
-							if (composeCase!='new')
-								editor.rootElement.insertBefore(qdiv(), qnode);
+							if (composeCase!='new') {
+							  let quoteHd = qdiv();
+								qnode.parentNode.insertBefore(quoteHd, qnode);
+							}
 							editor.rootElement.removeChild(qnode);
 						}
 					}
