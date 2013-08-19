@@ -341,11 +341,12 @@ SmartTemplate4.mimeDecoder = {
 	  function getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}
-		function isMail(format) { return (format.search(/^\(mail[\),]/, "i") != -1);};
-		function isName(format) { return (format.search(/^\((first)*name[,\)]/, "i") != -1);};
-		function isLink(format) { return SmartTemplate4.Util.isFormatLink(format);  /* this = regularize? */ };
-		function isFirstName(format) { return (format.search(/^\(firstname[,\)]/, "i") != -1);};
-		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1);};
+		function isMail(format) { return (format.search(/^\(mail[\),]/, "i") != -1); };
+		function isName(format) { return (format.search(/^\((first)*name[,\)]/, "i") != -1); };
+		function isLink(format) { return SmartTemplate4.Util.isFormatLink(format); };
+		function isFirstName(format) { return (format.search(/^\(firstname[,\)]/, "i") != -1); };
+		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
+		function isDontSuppressLink(format) { return (format.search(/\,islinkable\)$/, "i") != -1); };
 		
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split()');
 		// MIME decode
@@ -402,8 +403,9 @@ SmartTemplate4.mimeDecoder = {
 				else {
 					result = getEmailAddress(address); // email part
 					// suppress linkifying!
-					if (!showName) 
-					  suppressLink = true;
+					if (!showName ) {
+					  suppressLink = isDontSuppressLink(format) ? false : true;
+					}
 				}     // %to% / %to(mail)%
 			}
 			// swap last, first
