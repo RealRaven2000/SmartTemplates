@@ -14,7 +14,8 @@ pref("extensions.smartTemplate4.defaultCharset", "ISO-8859-1");
 pref("extensions.smartTemplate4.signature.encoding", "UTF-8");
 pref("extensions.smartTemplate4.signature.insertDashes.plaintext", false);
 pref("extensions.smartTemplate4.signature.insertDashes.html", false);
-pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); // we might have removeBlockQuotedSig.always later as a feature!
+pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); // we might have removeBlockQuotedSig.always later as a feature!#
+pref("extensions.smartTemplate4.cursor.insertSpace", true);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 

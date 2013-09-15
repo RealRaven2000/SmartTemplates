@@ -31,7 +31,7 @@
 <!ENTITY accept_button "Accepter">
 <!ENTITY cancel_button "Annuler">
 <!ENTITY contribute_button "Contribuer">
-<!ENTITY button.updateThunderbird "Mettre à jour Tghunderbird !">
+<!ENTITY button.updateThunderbird "Mettre à jour Thunderbird !">
 <!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "Contenu du courriel">
 <!ENTITY pref_groupSignatures "Signatures">
@@ -39,18 +39,18 @@
 <!ENTITY pref_groupUI "Interface utilisateur">
 <!ENTITY pref_groupTroubleShooting "Dépannage">
 <!ENTITY pref_addSigBreakHTML.label "Ajouter -- dans le courriels HTML">
-<!ENTITY pref_addSigBreakHTML.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courrile HTML)">
-<!ENTITY pref_addSigBreakPlaintext.label "Ajouter -- dans les courriel au format texte">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courrile HTML)">
+<!ENTITY pref_addSigBreakHTML.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Ajouter -- dans les courriels au format texte">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)">
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
-<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre entête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
+<!ENTITY pref_quoteHeaderBox_tip "Écrivez votre en-tête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
 <!ENTITY pref_templateBox.label "Modèle">
 <!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
 <!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
 <!ENTITY pref_showStatusIcon.label "Afficher un bouton dans la barre des modules">
-<!ENTITY pref_StatusIcon.IconOnly "Icône Seulement">
+<!ENTITY pref_StatusIcon.IconOnly "Icône seulement">
 <!ENTITY pref_StatusIcon.IconText "Icône et texte">
 <!ENTITY pref_StatusIcon.IconHoverText "Texte au survol">
 <!ENTITY pref_fontSettings.label "Police de l'éditeur de gabarit">
@@ -87,7 +87,7 @@
 <!ENTITY pref_stationeryLink "Extension Stationery">
 <!ENTITY pref_stationeryLink_tip "Obtenir Stationery...">
 <!ENTITY pref_defaultCharset.label "Encodage par défaut">
-<!ENTITY pref_defaultCharset_tip "Lors de la lecture des entêtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage.">
+<!ENTITY pref_defaultCharset_tip "Lors de la lecture des en-têtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "À propos de SmartTemplate4">
 <!ENTITY creator.label "Créateur">
@@ -96,7 +96,7 @@
 <!ENTITY localized.label "Traducteur">
 <!ENTITY translatorNickname.label "Jojaba, jujuf851, Goofy (BabelZilla)">
 <!ENTITY contributor.label "Contributeur">
-<!ENTITY about.label "SmartTemplate4 permet de personnaliser aisément les entêtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
+<!ENTITY about.label "SmartTemplate4 permet de personnaliser aisément les en-têtes de Thunderbird en utilisant des modèles. Les modèles peuvent être créés pour chaque compte ou de manière globale (pour l'ensemble des comptes).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variables fixes">
 <!ENTITY ownname.label "Votre nom">
@@ -124,7 +124,7 @@
 <!ENTITY ccname.label "Noms des destinataires en copie">
 <!ENTITY spec_form.cap "Formats spéciaux">
 <!ENTITY specform_note.label "La phrase [[Cc: &#37;cc(name)&#37;]] ne s'affichera que si la variable &#37;cc(name)&#37; peut être remplacée !">
-<!ENTITY ex_brack.label "Exemple : Pour : boo Copie à : foo">
+<!ENTITY ex_brack.label "Exemple : Pour : Fred Copie à : Lucie">
 <!ENTITY brack_with_var.label "Les variables suivantes peuvent être utilisées dans des [[…]]">
 <!ENTITY sub_var.cap "Sujet">
 <!ENTITY sub.label "Sujet du message de réponse ou transféré">
@@ -174,7 +174,7 @@
 <!ENTITY shortdate.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
-<!ENTITY im-ex.cap "Paramétrages et import/export de modèles">
+<!ENTITY im-ex.cap "Paramétrages et importation/exportation de modèles">
 <!ENTITY im-ex_note1.label "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte.">
 <!ENTITY im-ex_note2.label "Tout d'abord, choisissez le compte que vous souhaitez exporter dans le menu déroulant des réglages de SmartTemplate4.">
 <!ENTITY im-ex_note3.label "Ensuite, sélectionnez « Outils  &#8658; Exporter &#8658; Réglages et modèles » de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">

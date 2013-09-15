@@ -1011,6 +1011,8 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 				case "subject":
 					let current = (arg=="(2)");
 					ret = getSubject(current);
+					if (!current)
+						ret = SmartTemplate4.escapeHtml(ret);
 					return finalize(token, ret);
 				case "newsgroup":
 					return finalize(token, getNewsgroup());
