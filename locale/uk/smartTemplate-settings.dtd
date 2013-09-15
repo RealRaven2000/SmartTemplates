@@ -25,11 +25,23 @@
 <!ENTITY pref_about.tab "Про">
 <!ENTITY pref_global.tab "Глобальні налаштування">
 <!ENTITY pref_variables.tab "Змінні">
+<!ENTITY pref_examples.tab "Приклади (тільки через мережу)">
+<!ENTITY pref_examples.tooltip "Показати приклади шаблонів з http://smarttemplate4.mozdev.org/templates.html. Тільки якщо доступна мережа.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">
 <!ENTITY contribute_button "По жертвувати">
+<!ENTITY button.updateThunderbird "Оновити Thunderbird!">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "l зміст">
+<!ENTITY pref_groupSignatures "Підписи">
+<!ENTITY pref_groupAdvanced "Додаткові функції">
+<!ENTITY pref_groupUI "Інтерфейс користувача ">
+<!ENTITY pref_groupTroubleShooting "Пошук і усунення несправностей">
+<!ENTITY pref_addSigBreakHTML.label "Додати -- до пошти у форматі HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Завжди додати розділювач -- перед підписом (у пошті формату HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Додати розділювач -- у пошті ">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Завжди додати розділювач -- перед підписом (у пошті)">
 <!ENTITY pref_quoteHeaderBox.label "Цитата заголовка">
 <!ENTITY pref_quoteHeaderBox_tip "Напишіть цитату заголовка в цій графі, наприклад, Від &#37;from(name)&#37; написано було &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
@@ -38,6 +50,9 @@
 <!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
 <!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
 <!ENTITY pref_showStatusIcon.label "Показувати кнопку у статусному рядку">
+<!ENTITY pref_StatusIcon.IconOnly "Значки тільки">
+<!ENTITY pref_StatusIcon.IconText "Значки та текст">
+<!ENTITY pref_StatusIcon.IconHoverText "Текст при наведенні">
 <!ENTITY pref_fontSettings.label "Шрифт редактора шаблонів">
 <!ENTITY pref_server_desc "Запис">
 <!ENTITY pref_server_def "Загальні">
@@ -60,7 +75,19 @@
 <!ENTITY help_dialog_title "SmartTemplate4 допомога">
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
+<!ENTITY pref_hideExamples "Сховати закладку з прикладами">
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
+<!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
+<!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
+<!ENTITY pref_parseSignature "Підписання">
+<!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
+<!ENTITY pref_stationerySupport "Додано підтримку додатку Stationery ">
+<!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
+<!ENTITY pref_stationeryLink "Додаток Stationery ">
+<!ENTITY pref_stationeryLink_tip "Завантажити Stationery ...">
+<!ENTITY pref_defaultCharset.label "кодова сторінка по замовчуванні ">
+<!ENTITY pref_defaultCharset_tip "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Про SmartTemplate4">
 <!ENTITY creator.label "Автор">

@@ -371,8 +371,8 @@
 			<preference id = "pref_hideExamples" name = "extensions.smartTemplate4.hideExamples" type = "bool"/>
 			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
 			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
-			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.insertDashes.html" type = "bool" />
-			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.insertDashes.plaintext" type = "bool" />
+			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.signature.insertDashes.html" type = "bool" />
+			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.signature.insertDashes.plaintext" type = "bool" />
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
 			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>

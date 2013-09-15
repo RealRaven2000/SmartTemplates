@@ -1182,9 +1182,11 @@ SmartTemplate4.classSmartTemplate = function()
 								caretContainer.parentNode.removeChild(caretContainer);
 								editor.selection.selectAllChildren(space);
 								editor.selection.collapseToStart(); // 
-								editor.selection.modify('extend', 'forward','character');
-								selCtrl.scrollSelectionIntoView(selCtrl.SELECTION_NORMAL, selCtrl.SELECTION_WHOLE_SELECTION, scrollFlags);
-								selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
+								if (SmartTemplate4.Preferences.getMyBoolPref('cursor.insertSpace')) {
+									editor.selection.modify('extend', 'forward','character');
+									selCtrl.scrollSelectionIntoView(selCtrl.SELECTION_NORMAL, selCtrl.SELECTION_WHOLE_SELECTION, scrollFlags);
+									selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
+								}
 								// editor.selection.collapse(caretContainer, 0);
 							}
 							catch (ex) {

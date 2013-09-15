@@ -117,6 +117,7 @@ SmartTemplate4.Util = {
 				st4composeType = "";
 				break;
 		}
+		SmartTemplate4.Util.logDebugOptional('functions', 'getComposeType: gMsgCompose.type = ' + gMsgCompose.type + ' (' + st4composeType + ')');
 		return st4composeType;
 
 	} ,
@@ -221,18 +222,23 @@ SmartTemplate4.Util = {
 			SmartTemplate4.Util.logDebug("Util.VersionProxy()...");
 
 			let bAddonManager = true;
-			// old builds! (pre Tb3.3 / Gecko 2.0)
-			if (Components.classes["@mozilla.org/extensions/manager;1"]) {
-				SmartTemplate4.Util.logDebug("Util.VersionProxy() extensions/manager: old code branch");
-				bAddonManager = false;
-				let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-					.getService(Components.interfaces.nsIExtensionManager);
-				let currentVersion = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
-				SmartTemplate4.Util.mExtensionVer = currentVersion;
-				SmartTemplate4.Util.VersionProxyRunning = false;
-				SmartTemplate4.Util.logDebug("extensions/manager: detected currentVersion: " + currentVersion);
-				SmartTemplate4.Util.firstRun.init();
-				return;
+			try {
+				// old builds! (pre Tb3.3 / Gecko 2.0)
+				if (Components.classes["@mozilla.org/extensions/manager;1"]) {
+					SmartTemplate4.Util.logDebug("Util.VersionProxy() extensions/manager: old code branch");
+					bAddonManager = false;
+					let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+						.getService(Components.interfaces.nsIExtensionManager);
+					let currentVersion = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
+					SmartTemplate4.Util.mExtensionVer = currentVersion;
+					SmartTemplate4.Util.VersionProxyRunning = false;
+					SmartTemplate4.Util.logDebug("extensions/manager: detected currentVersion: " + currentVersion);
+					SmartTemplate4.Util.firstRun.init();
+					return;
+				}
+			}
+			catch(ex) {
+				SmartTemplate4.Util.logToConsole("Old extensions manager check failed: \n" + ex);
 			}
 
 			SmartTemplate4.Util.VersionProxyRunning = true;
@@ -945,7 +951,10 @@ SmartTemplate4.Util.firstRun =
 		// avoid running firstRun.init in messenger compose again!
 		if (typeof SmartTemplate4.Settings === 'undefined')
 			return;
-		SmartTemplate4.Util.logDebugOptional('functions', 'Util.firstRun.init()');
+			
+  	window.addEventListener("load", function(){ SmartTemplate4.updateStatusBar('default'); },true);
+			
+		SmartTemplate4.Util.logDebug('Util.firstRun.init()');
 		let prev = -1, firstRun = true;
 		let showFirsts = true, debugFirstRun = false;
 		let prefBranchString = "extensions.smartTemplate4.";
@@ -1123,8 +1132,7 @@ SmartTemplate4.Util.firstRun =
 
 		// // fire this on application launch, which includes open-link-in-new-window
 		// window.addEventListener("load",function(){ SmartTemplate4.Util.firstRun.init(); },true);
-		window.addEventListener("load", function(){ SmartTemplate4.updateStatusBar(); },true);
-
+	
 	} 
 
 };  // .Util.firstRun

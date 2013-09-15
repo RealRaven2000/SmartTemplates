@@ -33,6 +33,15 @@
 <!ENTITY contribute_button "捐助">
 <!ENTITY button.updateThunderbird "更新 Thunderbird！">
 <!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "邮件内容">
+<!ENTITY pref_groupSignatures "签名">
+<!ENTITY pref_groupAdvanced "高级功能">
+<!ENTITY pref_groupUI "用户界面">
+<!ENTITY pref_groupTroubleShooting "疑难解答">
+<!ENTITY pref_addSigBreakHTML.label "添加 -- 在 HTML 邮件中">
+<!ENTITY pref_addSigBreakHTML.tooltip "总是添加 -- 在签名分隔符前（HTML 邮件中）">
+<!ENTITY pref_addSigBreakPlaintext.label "添加 -- 在纯文本邮件中">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "总是添加 -- 在签名分隔符前（纯文本邮件中）">
 <!ENTITY pref_quoteHeaderBox.label "引用头">
 <!ENTITY pref_quoteHeaderBox_tip "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "模板">
@@ -66,6 +75,7 @@
 <!ENTITY help_dialog_title "SmartTemplate4 帮助">
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
+<!ENTITY pref_hideExamples "隐藏示例选项卡">
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
@@ -114,7 +124,7 @@
 <!ENTITY ccname.label "抄送人姓名">
 <!ENTITY spec_form.cap "特殊形式">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
-<!ENTITY ex_brack.label "例子: To: boo Cc: foo">
+<!ENTITY ex_brack.label "例子: To: Li Cc: Wu">
 <!ENTITY brack_with_var.label "以下变量可以用在 [[...]] 里面">
 <!ENTITY sub_var.cap "主题">
 <!ENTITY sub.label "回复/转发的邮件主题">
@@ -156,7 +166,7 @@
 <!ENTITY xsent_long.cap "长字符串的例子：">
 <!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock">
 <!ENTITY xsent_long_result.label "Result: Sunday, 20/12/2011 at 16:24 o'clock">
-<!ENTITY xsent_short.cap "短字符串的例子">
+<!ENTITY xsent_short.cap "短字符串的例子：">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Result: Sunday, 20/12/2011 08:54:21">
 <!ENTITY xsent_short_note.label "额外的，你可以在以下两个变种变量使用：">

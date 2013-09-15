@@ -8,6 +8,14 @@
 [iconsize="small"] #SmartTemplate4Button {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
 }
+
+/* avoid the 'squashed' look in Nuvola */
+toolbar:not([iconsize="small"]) #SmartTemplate4Button image
+{
+  width: 24px;
+  height: 24px;
+}
+
 /* ################################################################################### */
 /* ################################ STATUSBAR OVERLAY ################################ */
 /* ################################################################################### */

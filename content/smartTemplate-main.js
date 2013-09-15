@@ -132,6 +132,8 @@
 		# Fixed [Bug 25526] if no Signature is defined, %sig% is not removed
 		# Fixed: Background images in new / reply / forward tabs did not show up in groupbox on default theme in Windows
 		# test option for not loading / showing examples tab
+		# Reopened and Fixed [Bug 25088] by making status bar icon status more resilient
+		# Fixed %subject% removing expressions in <brackets>
 	
 		
 =========================
@@ -434,33 +436,36 @@ var SmartTemplate4 = {
 	} ,
 	
 	updateStatusBar: function(show) {
-		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar(' + show +')');
-		let doc = (typeof show == 'undefined') ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
-		let btn = doc.getElementById('SmartTemplate4Messenger');
-		if (btn) {
-			let showPanel = (typeof show == 'undefined') ? 
-			                SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') :
-			                show;
-			btn.collapsed =  !showPanel;
-			let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode');
-			let theClass = 'statusbarpanel-iconic-text';
-			switch(labelMode) {
-				case 0:
-					theClass +=' hidden';
-					break;
-				case 1:
-					//NOP;
-					break;
-				case 2:
-					theClass +=' always';
-					break;
+		try {
+			SmartTemplate4.Util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
+			let isDefault = (typeof show == 'undefined' || show == 'default');
+			let isVisible = isDefault ? SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') : show;
+			let doc = isDefault ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
+			let btn = doc.getElementById('SmartTemplate4Messenger');
+			if (btn) {
+				btn.collapsed =  !isVisible;
+				let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode');
+				let theClass = 'statusbarpanel-iconic-text';
+				switch(labelMode) {
+					case 0:
+						theClass +=' hidden';
+						break;
+					case 1:
+						//NOP;
+						break;
+					case 2:
+						theClass +=' always';
+						break;
+				}
+				btn.className = theClass;
+				SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
 			}
-			btn.className = theClass;
-			SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass);		
+			else
+				SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+    }
+		catch(ex) {
+				SmartTemplate4.Util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
 		}
-		else
-			SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
-			
 	} ,
 
 	startUp: function() {
