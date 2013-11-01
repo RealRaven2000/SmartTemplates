@@ -1054,7 +1054,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'SmartTemplate4: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
-					 + 'Stationery used: ' + isStationeryTemplate + '\n'
+		       + 'Stationery used: ' + isStationeryTemplate + '\n'
 		       );
 
 		/* SIGNATURE HANDLING */
