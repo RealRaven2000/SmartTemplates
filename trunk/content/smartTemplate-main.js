@@ -127,14 +127,21 @@
 		# added warning if originalMsgURI cannot be determined
 		# added hidden UI on right-click on 'Process signature' option to manage signature settings
 
-  Version 0.9.4 - WIP
+  Version 0.9.4 - 15/09/2013 
 	  # Fixed [Bug 25523] Cannot use image as signature
 		# Fixed [Bug 25526] if no Signature is defined, %sig% is not removed
 		# Fixed: Background images in new / reply / forward tabs did not show up in groupbox on default theme in Windows
 		# test option for not loading / showing examples tab
 		# Reopened and Fixed [Bug 25088] by making status bar icon status more resilient
 		# Fixed %subject% removing expressions in <brackets>
-	
+		
+  Version 0.9.5 -	WIP
+	  # improved locale matching (allow matching en as en-US etc.)
+		# [Bug 25571]  "replace line breaks with <br>" on when not enabled
+		# Make sure that debug settings window stays on top
+		# added UI for disabling space for %cursor%
+		# [Bug 25676] Javascript parser added by  	Benito van der Zander
+		
 		
 =========================
 		0.9.3 Review specific:
@@ -509,7 +516,10 @@ SmartTemplate4.calendar = {
 				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
 					listLocales += aLocale.toString() + ', ';
-					if (aLocale == forcedLocale) found = true;
+					if (aLocale.indexOf(forcedLocale)==0) {  // allow en to match en-UK, en-US etc.
+					  forcedLocale = aLocale;
+					  found = true;
+					}
 				}
 				if (!found) {
 				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
