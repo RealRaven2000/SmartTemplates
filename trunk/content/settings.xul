@@ -379,6 +379,7 @@
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
+			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" />
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
 		</preferences>
 
@@ -436,7 +437,7 @@
 							<checkbox id = "chkSignature"
 									  label = "&pref_parseSignature;"
 									  tooltiptext = "&pref_parseSignature_tip;"
-									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.signature');return false;"
+									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
 									  preference = "pref_parseSignature"/>
 									  
 							<hbox>
@@ -468,6 +469,10 @@
 										label = "&pref_stationeryLink;" 
 										tooltiptext = "&pref_stationeryLink_tip;"/>
 						   </hbox>
+							<checkbox id = "chkStationery"
+									  label = "Insert Space to highlight %cursor%"
+									  preference = "pref_cursorSpace"/>
+
 						</groupbox>
 					
 						<groupbox class="transparent">
@@ -476,7 +481,7 @@
 								<checkbox id = "chkStatusButton"
 										  label = "&pref_showStatusIcon.label;"
 										  preference = "pref_showStatusIcon"
-										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
+										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
 										  onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
 								<spacer flex="1" />
 								<menulist id = "iconType"
@@ -521,7 +526,7 @@
 								<checkbox id = "chkDebug"
 										  label = "&pref_debug_check;"
 										  tooltiptext = "&pref_debug_tip;"
-										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig('smartTemplate4.debug');return false;"
+										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'smartTemplate4.debug');return false;"
 										  preference = "pref_debug"/>
 								<spacer   flex = "1"/>
 								<checkbox id = "chkHideExamples"
