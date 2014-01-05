@@ -209,10 +209,13 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 	}
 
 	var msgContent = "";
-	while (inputStream.available()) {
-		msgContent = msgContent + inputStream.read(2048);
-		if (msgContent.search(/\r\n\r\n|\r\r|\n\n/) > 0) {
-			msgContent = msgContent.split(/\r\n\r\n.*|\r\r.*|\n\n.*/)[0] + "\r\n";
+	var contentCache = "";
+	while (inputStream.available()) { 
+		msgContent = msgContent + inputStream.read(2048); 
+		var p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
+		if (p > 0) {
+			contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
+			msgContent = msgContent.substr(0, p) + "\r\n";
 			break;
 		}
 		if (msgContent.length > 2048 * 8) {
@@ -232,10 +235,20 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 		var str = headers.extractHeader(header, false);
 		return str ? str : "";
 	};
+	
+	// -----------------------------------
+	// Get content
+	function content(size) {
+	  while (inputStream.available() && contentCache.length < size) 
+	    contentCache += inputStream.read(2048);
+	  if (contentCache.length > size) return contentCache.substr(0, size);
+	  else return contentCache;
+	};
 
 	// -----------------------------------
 	// Public methods
 	this.get = get;
+	this.content = content;
 
 	return null;
 };
@@ -324,7 +337,7 @@ SmartTemplate4.mimeDecoder = {
 
 	// -----------------------------------
 	// Split addresses and change encoding.
-	split: function (addrstr, charset, format)
+	split: function (addrstr, charset, format, bypassCharsetDecoder)
 	{
 	  // jcranmer: you want to use parseHeadersWithArray
 		//           that gives you three arrays
@@ -348,9 +361,10 @@ SmartTemplate4.mimeDecoder = {
 		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
 		function isDontSuppressLink(format) { return (format.search(/\,islinkable\)$/, "i") != -1); };
 		
-		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split()');
+		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split() charset decoding=' + bypassCharsetDecoder ? 'on' : 'off');
 		// MIME decode
-		addrstr = this.decode(addrstr, charset);
+		if (!bypassCharsetDecoder)
+			addrstr = this.decode(addrstr, charset);
 		// Escape "," in mail addresses
 		addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
 
@@ -499,7 +513,7 @@ SmartTemplate4.parseModifier = function(msg) {
 // -------------------------------------------------------------------
 // Regularize template message
 // -------------------------------------------------------------------
-SmartTemplate4.regularize = function(msg, type, isStationery)
+SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraftLike)
 {
 	function getSubject(current) {
 		SmartTemplate4.Util.logDebugOptional('regularize', 'getSubject(' + current + ')');
@@ -527,13 +541,6 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 	// AG: I think this function is designed to break out a more specialized variable
 	// such as %toname()% to a simpler one, like %To%
 	function simplify(aString) {
-		// building a hash table?
-		// setRw2h("header", "reserved word",,,)
-		function setRw2h() {
-			for (var i = 1; i < arguments.length; i++) {
-				rw2h[arguments[i]] = arguments[0]; // set the type of each token: d.c., To, Cc, Date, From, Subject
-			}
-		}
 		// Check existence of a header related to the reserved word.
 		function chkRw(str, reservedWord, param) {
 			try{
@@ -565,21 +572,6 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		}
 
 		SmartTemplate4.Util.logDebugOptional('regularize', 'simplify()');
-
-		// Reserved words that do not depend on the original message.
-		// identity(name) is the new ownname
-		// identity(mail) is the new ownmail
-		setRw2h("d.c.", "ownname", "ownmail", "deleteText", "replaceText",
-						"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-						"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
-						"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate");
-
-		// Reserved words which depend on headers of the original message.
-		setRw2h("To", "to", "toname", "tomail");
-		setRw2h("Cc", "cc", "ccname", "ccmail");
-		setRw2h("Date", "X:=sent");
-		setRw2h("From", "from", "fromname", "frommail");
-		setRw2h("Subject", "subject");
 
 		// [AG] First Step: use the chkRws function to process any "broken out" parts that are embedded in {  .. } pairs
 		// aString = aString.replace(/{([^{}]+)}/gm, chkRws);
@@ -617,10 +609,32 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		} (hdr.get("Date"));
 	}
 	// rw2h["reserved word"] = "header"
-	var rw2h = new Array();
+	var rw2h = {};
+	// building a hash table?
+	// setRw2h("header", "reserved word",,,)
+	function setRw2h() {
+		for (var i = 1; i < arguments.length; i++) {
+			rw2h[arguments[i]] = arguments[0]; // set the type of each token: d.c., To, Cc, Date, From, Subject
+		}
+	}
+	// Reserved words that do not depend on the original message.
+	// identity(name) is the new ownname
+	// identity(mail) is the new ownmail
+	setRw2h("d.c.", "ownname", "ownmail", "deleteText", "replaceText",
+					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
+					"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
+					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
+					"messageRaw" //depends on the original message, but not on any header
+					);
 
-	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
-	msg = simplify(msg);
+	// Reserved words which depend on headers of the original message.
+	setRw2h("To", "to", "toname", "tomail");
+	setRw2h("Cc", "cc", "ccname", "ccmail");
+	setRw2h("Date", "X:=sent");
+	setRw2h("From", "from", "fromname", "frommail");
+	setRw2h("Subject", "subject");
+
+
 
 	// Convert PRTime to string
 	function prTime2Str(time, timeType, timezone) {
@@ -671,6 +685,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			"ADT"	 : "Atlantic Daylight Time",
 			"AEDT" : "Australian Eastern Daylight Time",
 			"AEST" : "Australian Eastern Standard Time",
+			"AUS"  : "Australian Time",
 			"AFT"	 : "Afghanistan Time",
 			"AKDT" : "Alaska Daylight Time",
 			"AKST" : "Alaska Standard Time",
@@ -810,8 +825,8 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			"SLT"	 : "Sri Lanka Time",
 			"SRT"	 : "Suriname Time",
 			"SST"	 : "Singapore Standard Time",
-			"SYOT"	 : "Showa Station Time",
-			"TAHT"	 : "Tahiti Time",
+			"SYOT" : "Showa Station Time",
+			"TAHT" : "Tahiti Time",
 			"THA"	 : "Thailand Standard Time",
 			"TFT"	 : "Indian/Kerguelen",
 			"TJT"	 : "Tajikistan Time",
@@ -850,9 +865,12 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
 		// get part between parentheses
 		// e.g. "(GMT Daylight Time)"
+		SmartTemplate4.Util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev(time: ' + tm.toString() + ', long form: ' + isLongForm);
 		let timeString =  tm.toTimeString();
 		let timeZone = timeString.match(/\(.*?\)/);
 		let retVal = '';
+		SmartTemplate4.Util.logDebugOptional ('timeZones', 'timeString = ' + timeString + '\n' 
+		                                      + 'timeZone =' + timeZone);
 		if (timeZone && timeZone.length>0) {
 			let words = timeZone[0].substr(1).split(' ');
 			for (let i=0; i<words.length; i++) {
@@ -873,6 +891,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 			}
 		}
 		else {
+			SmartTemplate4.Util.logDebugOptional ('timeZones', 'no timeZone match, building manual...');
 			retVal = timeString.match('[A-Z]{4}');
 			if (!retVal)
 				retVal = timeString.match('[A-Z]{3}');
@@ -882,6 +901,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 				retVal = zoneFromShort(retVal);
 			}
 		}
+		SmartTemplate4.Util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev return value = ' + retVal);
 		return retVal;
 	}
 	
@@ -898,7 +918,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 				SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', text);
 			};
 			return s;
-		}
+		} 
 		var tm = new Date();
 		var d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
 		var expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
@@ -964,7 +984,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 				  /////
 					let fullId = identity.fullName + ' <' + identity.email + '>';
 					// we need the split to support (name,link) etc.
-					token = mime.split(fullId, charset, arg);
+					token = mime.split(fullId, charset, arg, true); // disable charsets decoding!
 					// allow html as to(link) etc. builds a href with mailto
 					if (arg && SmartTemplate4.Util.isFormatLink(arg) || arg=='(mail)') 
 						return token;
@@ -1058,7 +1078,11 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 					//if(isStationery)
 					//	return dmy;
 					return '<div class="st4cursor">&nbsp;</div>'; 
+			  case "internal-javascript-ref":
+			    return javascriptResults[/\((.*)\)/.exec(arg)[1]];
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
+				case "messageRaw": //returns the arg-th first characters of the content of the original message
+				  return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
 				default:
 					var isStripQuote = RegExp(" " + token + " ", "i").test(
 					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
@@ -1084,7 +1108,113 @@ SmartTemplate4.regularize = function(msg, type, isStationery)
 		}
 		return SmartTemplate4.escapeHtml(token);
 	}
+	
+	var sandbox;
+	
+	function replaceJavascript(dmy, token) {
+	  if (!sandbox) {
+	    sandbox = new Components.utils.Sandbox(
+        window,
+        {
+        //  'sandboxName': aScript.id,
+          'sandboxPrototype': window,
+          'wantXrays': true
+        });
+        
+      //useful functions (especially if you want to change the template depending on the received message)
+      sandbox.choose = function(a){return a[Math.floor(Math.random()*a.length)]};
+      sandbox.String.prototype.contains = function(s, startIndex){return this.indexOf(s, startIndex) >= 0};
+      sandbox.String.prototype.containsSome = function(a){return a.some(function(s){return this.indexOf(s) >= 0}, this)};
+      sandbox.String.prototype.count = function(s, startIndex){
+        var count = 0; 
+        var pos = this.indexOf(s, startIndex);
+        while (pos != -1) { 
+          count += 1; 
+          pos = this.indexOf(s, pos + 1);
+        }
+        return count;
+      };        
+      sandbox.variable = function(name, arg){return replaceReservedWords("", name, arg?arg:"")};
+      var implicitNull = {};
+      //var strangeImplicitCall = function () { return this(implicitNull); }
+      var stringFunctionHack = new Function();
+      var props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
+      for (var i=0;i<props.length;i++) {
+        var s = props[i];
+        stringFunctionHack[s] = sandbox.String.prototype[s];
+      }
+      stringFunctionHack.valueOf = function(){return this(implicitNull);};
+      stringFunctionHack.toString = function(){return this(implicitNull);};
+        
+      for (var name in rw2h) {
+        sandbox[name] = (function(aname){return function(arg){
+          if (typeof arg === "undefined") return "%"+aname + "()%"; //do not allow name()            
+          if (arg === implicitNull) arg = "";
+          else arg = "("+arg+")";                         //handles the case %%name(arg)%% and returns the same as %name(arg)%
+          return replaceReservedWords("", aname, arg);
+        };})(name);
+        
+        sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
+        //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
+        
+        //simpler hack (that does not have all string methods):
+//        sandbox[name].toString = strangeImplicitCall;     //handles the case %%name%% and returns the same as %name%
+//        sandbox[name].valueOf = strangeImplicitCall;
+      }
+      
+
+	  };
+	 //  alert(token);
+	  var x;
+	  try {
+	    x = Components.utils.evalInSandbox("("+token+").toString()", sandbox); 
+	    if (x.toString === String.prototype.toString) x = x.toString(); //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
+	    else x = "security violation";
+	  } catch (ex) {
+	    x = "ERR: "+ex;
+	  }
+	  javascriptResults.push(x);
+	 // alert(x);	  
+	  return "%internal-javascript-ref("+(javascriptResults.length-1)+")%"; //todo: safety checks (currently the sandbox is useless)
+	}
+	
+	//process javascript insertions first, so the javascript source is not broken by the remaining processing
+	var javascriptResults = []; //but cannot insert result now, or it would be double html escaped, so insert them later
+	msg = msg.replace(/%%((.|\n)*?)%%/gm, replaceJavascript);
+	
+	//Now do this chaotical stuff:
+	
+  //Reset X to Today after each newline character
+	//except for lines ending in { or }; breaks the omission of non-existent CC??
+	msg = msg.replace(/\n/gm, "%X:=today%\n");
+	//replace this later!!
+	// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
+	// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
+	msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
+	msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
+
+	// ignoreHTML, e,g with signature, lets not do html processing
+	if (!ignoreHTML) {
+		// for Draft, let's just assume html for the moment.
+		if (isDraftLike) {
+			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
+			if (pref.isReplaceNewLines(idKey, composeType, true))
+				{ msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
+			//else
+			//	{ msg = msg.replace(/\n/gm, ""); }
+		} else {
+			msg = SmartTemplate4.escapeHtml(msg);
+			// Escape space, if compose is HTML
+			if (gMsgCompose.composeHTML)
+				{ msg = msg.replace(/ /gm, "&nbsp;"); }
+		}
+	}
+	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
+	msg = simplify(msg);	
+	
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
+	
+	if (sandbox) Components.utils.nukeSandbox(sandbox);
 	
 	SmartTemplate4.Util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;

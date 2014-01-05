@@ -689,38 +689,15 @@ SmartTemplate4.classSmartTemplate = function()
 	function getProcessedText(templateText, idKey, composeType, ignoreHTML, isStationery) 
 	{
 		if (!templateText) return "";
+
 		if (typeof isStationery === 'undefined') isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedText()   ==========');
 		SmartTemplate4.Util.logDebugOptional('functions.getProcessedTemplate', 'Process Text:\n' +
 		                                     templateText + '[END]');
 		var pref = SmartTemplate4.pref;
-		//Reset X to Today after each newline character
-		//except for lines ending in { or }; breaks the omission of non-existent CC??
-		templateText = templateText.replace(/\n/gm, "%X:=today%\n");
-		//replace this later!!
-		// templateText = templateText.replace(/{\s*%X:=today%\n/gm, "{\n");
-		// templateText = templateText.replace(/}\s*%X:=today%\n/gm, "}\n");
-		templateText = templateText.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
-		templateText = templateText.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
-
-		// ignoreHTML, e,g with signature, lets not do html processing
-		if (!ignoreHTML) {
-			// for Draft, let's just assume html for the moment.
-			if (!composeType || pref.isUseHtml(idKey, composeType, false)) {
-				templateText = templateText.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-				if (pref.isReplaceNewLines(idKey, composeType, true))
-					{ templateText = templateText.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
-				//else
-				//	{ templateText = templateText.replace(/\n/gm, ""); }
-			} else {
-				templateText = SmartTemplate4.escapeHtml(templateText);
-				// Escape space, if compose is HTML
-				if (gMsgCompose.composeHTML)
-					{ templateText = templateText.replace(/ /gm, "&nbsp;"); }
-			}
-		}
+		
 		SmartTemplate4.calendar.init(); // set for default locale
-		let regular = SmartTemplate4.regularize(templateText, composeType, isStationery);
+		let regular = SmartTemplate4.regularize(templateText, composeType, isStationery, ignoreHTML, !composeType || pref.isUseHtml(idKey, composeType, false));
 		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
 		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
