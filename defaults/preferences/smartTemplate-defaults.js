@@ -45,3 +45,4 @@ pref("extensions.smartTemplate4.debug.css.styleSheets", false);
 pref("extensions.smartTemplate4.debug.css.detailed", false);
 pref("extensions.smartTemplate4.debug.css.AddRule", false);
 pref("extensions.smartTemplate4.debug.stationery", false);
+pref("extensions.smartTemplate4.debug.timeZones", false);
