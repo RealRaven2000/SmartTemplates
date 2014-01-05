@@ -188,13 +188,13 @@ SmartTemplate4.Settings = {
 		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdhtml", false); }
 		try {
 			this.prefService.getBoolPref(prefbranch + "newnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "newnbr", true); }
+		} catch(e) { this.prefService.setBoolPref(prefbranch + "newnbr", false); }  // bug 25571
 		try {
 			this.prefService.getBoolPref(prefbranch + "rspnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "rspnbr", true); }
+		} catch(e) { this.prefService.setBoolPref(prefbranch + "rspnbr", false); }  // bug 25571
 		try {
 			this.prefService.getBoolPref(prefbranch + "fwdnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdnbr", true); }
+		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdnbr", false); }  // bug 25571
 		try {
 			this.prefService.getBoolPref(prefbranch + "rsphead");
 		} catch(e) { this.prefService.setBoolPref(prefbranch + "rsphead", false); }
