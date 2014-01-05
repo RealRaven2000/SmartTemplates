@@ -601,30 +601,34 @@ SmartTemplate4.Util = {
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
 
-	showAboutConfig: function(filter) {
+	showAboutConfig: function(clickedElement, filter) {
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xul";
 
-		var mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-		var w = mediator.getMostRecentWindow(name);
+		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
+		let w = mediator.getMostRecentWindow(name);
+		// parent window
+		let win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
+         		? clickedElement.ownerDocument.defaultView 
+						: window;
 
 		if (!w) {
-			var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-			w = watcher.openWindow(null, uri, name, "chrome,resizable,centerscreen,width=500px,height=350px", null);
+			let watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
+			w = watcher.openWindow(win, uri, name, "chrome,resizable,centerscreen,width=600px,height=350px", null);
 		}
 		w.focus();
-		w.setTimeout(
-			function () {
-				var flt = w.document.getElementById("textbox");
-				if (flt) {
-					flt.value=filter;
-					flt.focus();
-					if (w.self.FilterPrefs)
-						w.self.FilterPrefs();
-					// for security, we lock down about:config so users do not accidentally change stuff they shouldn't
+    w.addEventListener('load', 
+      function () {
+        let flt = w.document.getElementById("textbox");
+        if (flt) {
+          flt.value=filter;
+          // make filter box readonly to prevent damage!
 					flt.setAttribute('readonly',true);
-				}
-			}, 300);
+          if (w.self.FilterPrefs) {
+            w.self.FilterPrefs();
+          }
+        }
+      });
 	} ,
 
 	displayNotAllowedMessage: function(reservedWord) {
@@ -682,8 +686,8 @@ SmartTemplate4.Util = {
 		if(day < 4) {
 			weeknum = Math.floor((daynum+day-1)/7) + 1;
 			if(weeknum > 52) {
-				nYear = new Date(tm.getFullYear() + 1,0,1);
-				nday = nYear.getDay() - dowOffset;
+				let nYear = new Date(tm.getFullYear() + 1,0,1);
+				let nday = nYear.getDay() - dowOffset;
 				nday = nday >= 0 ? nday : nday + 7;
 				/*if the next year starts before the middle of
 				the week, it is week #1 of that year*/
