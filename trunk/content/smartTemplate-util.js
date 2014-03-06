@@ -57,6 +57,7 @@ SmartTemplate4.Util = {
 	Tool8AMOPage:    "https://addons.mozilla.org/thunderbird/user/5843412/",
 	NoiaHomepage:    "http://carlitus.deviantart.com/",
 	FlagsHomepage:   "http://flags.blogpotato.de/",
+	BeniBelaHomepage: "http://www.benibela.de/",
 	StationeryPage:  "https://addons.mozilla.org/thunderbird/addon/stationery",
 
 	get mailDocument() {
@@ -434,7 +435,8 @@ SmartTemplate4.Util = {
 	} ,
 
 	logDebug: function (msg) {
-		if (SmartTemplate4.Preferences.Debug)
+	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
+		if (SmartTemplate4.Preferences.Debug && SmartTemplate4.Preferences.isDebugOption('default'))
 			this.logToConsole(msg);
 	},
 
@@ -600,6 +602,7 @@ SmartTemplate4.Util = {
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
+	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 
 	showAboutConfig: function(clickedElement, filter) {
 		const name = "Preferences:ConfigManager";
