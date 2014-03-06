@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Assistant">
 <!ENTITY pref_about.tab "À propos">
 <!ENTITY pref_global.tab "Paramètres généraux">
+<!ENTITY pref_advanced.tab "Paramètres avancés">
 <!ENTITY pref_variables.tab "Variables">
 <!ENTITY pref_examples.tab "Exemples (en ligne uniquement)">
 <!ENTITY pref_examples.tooltip "Afficher des exemples de modèles de http://smarttemplate4.mozdev.org/templates.html. Uniquement disponible en mode en ligne">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Signatures">
 <!ENTITY pref_groupAdvanced "Fonctions avancées">
 <!ENTITY pref_groupUI "Interface utilisateur">
+<!ENTITY pref_groupNameRules "Règles pour nom">
 <!ENTITY pref_groupTroubleShooting "Dépannage">
 <!ENTITY pref_addSigBreakHTML.label "Ajouter -- dans le courriels HTML">
 <!ENTITY pref_addSigBreakHTML.tooltip "Ajoute toujours le séparateur -- avant la signature (dans les courriels HTML)">
@@ -79,6 +81,8 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
+<!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
+<!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_stationerySupport "Support de l'extension Stationery">

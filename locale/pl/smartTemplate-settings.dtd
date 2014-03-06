@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Pomoc">
 <!ENTITY pref_about.tab "Informacje">
 <!ENTITY pref_global.tab "Ustawienia ogólne">
+<!ENTITY pref_advanced.tab "Ustawienia zaawansowane">
 <!ENTITY pref_variables.tab "Zmienne">
 <!ENTITY pref_examples.tab "Przykłady (tylko online)">
 <!ENTITY pref_examples.tooltip "Wyświetla przykładowe szablony z witryny http://smarttemplate4.mozdev.org/templates.html. Dostępne tylko w trybie online.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Sygnaturki">
 <!ENTITY pref_groupAdvanced "Funkcje zaawansowane">
 <!ENTITY pref_groupUI "Interfejs użytkownika">
+<!ENTITY pref_groupNameRules "Nazwa reguły">
 <!ENTITY pref_groupTroubleShooting "Rozwiązywanie problemów">
 <!ENTITY pref_addSigBreakHTML.label "Dodawaj w formacie HTML">
 <!ENTITY pref_addSigBreakHTML.tooltip "Zawsze dodawaj separator przed podpisem">
@@ -79,6 +81,8 @@
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
+<!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
+<!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
 <!ENTITY pref_stationerySupport "Współpracuj z dodatkiem Stationery">

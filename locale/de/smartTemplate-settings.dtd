@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Hilfe">
 <!ENTITY pref_about.tab "Über">
 <!ENTITY pref_global.tab "Globale Einstellungen">
+<!ENTITY pref_advanced.tab "Erweiterte Einstellungen">
 <!ENTITY pref_variables.tab "Variablen">
 <!ENTITY pref_examples.tab "Beispiele (nur online)">
 <!ENTITY pref_examples.tooltip "Zeigt Beispielvorlagen von http://smarttemplate4.mozdev.org/templates.html. Nur im online Modus sichtbar.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Signaturen">
 <!ENTITY pref_groupAdvanced "Erweiterte Funktionen">
 <!ENTITY pref_groupUI "Benutzeroberfläche">
+<!ENTITY pref_groupNameRules "Namensregeln">
 <!ENTITY pref_groupTroubleShooting "Fehlerdiagnose">
 <!ENTITY pref_addSigBreakHTML.label "-- Trennzeichen in HTML e-Mails">
 <!ENTITY pref_addSigBreakHTML.tooltip "Immer Signaturtrenner '--' vor der Signatur einfügen (in HTML e-Mails)">
@@ -79,13 +81,15 @@
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
+<!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
+<!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
-<!ENTITY pref_stationeryLink_tip "Stationery Installieren...">
+<!ENTITY pref_stationeryLink_tip "Stationery Installieren…">
 <!ENTITY pref_defaultCharset.label "Charset Standardwert">
 <!ENTITY pref_defaultCharset_tip "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann">
 <!-- #### ABOUT #### -->
@@ -125,7 +129,7 @@
 <!ENTITY spec_form.cap "Sonderformatierung">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
 <!ENTITY ex_brack.label "Beispiel: An: Friedrich Cc: Eva">
-<!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[...]] verwenden">
+<!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
 <!ENTITY sub_var.cap "Betreff">
 <!ENTITY sub.label "Betreff (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY sub2.label "Betreff (gleiches Format wie im Nachrichten-Editor)">
@@ -138,8 +142,8 @@
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
 <!ENTITY dateshort.label "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)">
-<!ENTITY datetz.label "Zeitzone (+0100, +0200, ... )">
-<!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY datetz.label "Zeitzone (+0100, +0200, … )">
+<!ENTITY tzname.label "GMT, PST, EST, … ">
 <!ENTITY var_custom.cap "Variablen für angepasstes Datumsformat">
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY A.label "Wochentag (Freitag)">
@@ -172,8 +176,8 @@
 <!ENTITY xsent_short_note.label "Folgende Variablen lassen sich in beiden Varianten ebenso verwenden">
 <!ENTITY localedate.label "Datum und Zeit (Lokales Format)">
 <!ENTITY shortdate.label "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)">
-<!ENTITY datetimezone.label "Zeitzone (+0100, +0200, ... )">
-<!ENTITY timezonename.label "GMT, PST, EST, ... ">
+<!ENTITY datetimezone.label "Zeitzone (+0100, +0200, … )">
+<!ENTITY timezonename.label "GMT, PST, EST, … ">
 <!ENTITY im-ex.cap "Einstellungen und Vorlagen Exportieren/Importieren">
 <!ENTITY im-ex_note1.label "Sie können für jeden Account einzeln die Einstellungen und Vorlagen exportieren und auch importieren.">
 <!ENTITY im-ex_note2.label "Als erstes wählen Sie das Konto in der Dropdown Box für welches Sie die Einstellungen und Vorlagen exportieren wollen.">
