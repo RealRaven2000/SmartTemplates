@@ -55,6 +55,7 @@
         <label value = "Peter Macej - Development Support" class = "idented"/> <!-- no URL for onclick -->
         <label value = "Carles Carbonell Bernado (Noia Icons)" class = "idented" onclick = "SmartTemplate4.Util.showNoiaHomepage();"/>
         <label value = "Matthias Slovig (Flags)" class = "idented" onclick = "SmartTemplate4.Util.showFlagsHomepage();"/>
+		<label value = "Benito van der Zander (Bug 25676)" class = "idented" onclick = "SmartTemplate4.Util.showBeniBelaHomepage();"/>
       </vbox>
 
       <spring flex = "2"/>
