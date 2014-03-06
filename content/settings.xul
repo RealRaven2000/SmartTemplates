@@ -381,6 +381,8 @@
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
 			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" />
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
+			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" />
+			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -388,6 +390,7 @@
 			<tabs class = "actionTabs" id="advancedTabs">
 				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  />
 				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
+				<tab id = "advancedSettingsTab"  label = "&pref_advanced.tab;"     />
 				<tab id = "templatesTab" label = "&pref_examples.tab;" 
 				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "&pref_examples.tooltip;" />
@@ -422,10 +425,6 @@
 										 instantApply="true" 
 										 tooltiptext = "&pref_defaultCharset_tip;"/>
 							</hbox>
-							<checkbox id = "chkFirstLastSwap"
-									  label = "&pref_nameSwap;"
-									  tooltiptext = "&pref_nameSwap_tip;"
-									  preference = "pref_firstLastSwap"/>
 						</groupbox>
 						
 						<groupbox class="transparent">
@@ -520,6 +519,27 @@
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
 								/>
+								 
+					</vbox>
+				</tabpanel>
+					
+				<tabpanel flex = "1" id = "advancedFrame">
+					<vbox flex = "1" style = "overflow-y: scroll">
+						<groupbox class="transparent">
+							<caption label="&pref_groupNameRules;"/>
+							<checkbox id = "chkFirstLastSwap"
+									  label = "&pref_nameSwap;"
+									  tooltiptext = "&pref_nameSwap_tip;"
+									  preference = "pref_firstLastSwap"/>
+							<checkbox id = "chkResolveAB"
+									 label = "&resolveNamesFromAB;"
+									 preference = "pref_resolveNamesFromAB"/>
+							<checkbox id = "chkResolveABNick"
+									 label = "&resolveNamesFromABNick;"
+									 preference = "pref_resolveNamesFromAB_Nickname"/>
+						</groupbox>
+					
+						<spacer flex = "2" />
 						<groupbox class="transparent">
 							<caption label="&pref_groupTroubleShooting;"/>
 							<hbox>
@@ -536,8 +556,6 @@
 										/>
 							</hbox>
 						</groupbox>
-								 
-								 
 					</vbox>
 				</tabpanel>
 
