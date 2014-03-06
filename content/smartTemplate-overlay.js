@@ -360,6 +360,24 @@ SmartTemplate4.mimeDecoder = {
 		function isFirstName(format) { return (format.search(/^\(firstname[,\)]/, "i") != -1); };
 		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
 		function isDontSuppressLink(format) { return (format.search(/\,islinkable\)$/, "i") != -1); };
+    function getCardFromAB(mail) {
+      if (!mail) return null;
+      // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
+      // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
+      let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+      let allAddressBooks = abManager.directories; 
+      while (allAddressBooks.hasMoreElements()) {
+        let addressBook = allAddressBooks.getNext()
+                                         .QueryInterface(Components.interfaces.nsIAbDirectory);
+        if (addressBook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
+          // alert ("Directory Name:" + addressBook.dirName);
+          let card = addressBook.cardForEmailAddress(mail);
+          if (card)
+            return card;
+        }
+      }
+      return null;
+    }
 		
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split() charset decoding=' + bypassCharsetDecoder ? 'on' : 'off');
 		// MIME decode
@@ -380,7 +398,7 @@ SmartTemplate4.mimeDecoder = {
 		// firstname
 		// mail
 		// => new: link -- e.g. %to(mail,link)%
-		showName = isName(format);
+		showName = isName(format) || isLastName(format);
 		showMailAddress = isMail(format);
 		showLink = isLink(format); 
 		// restore old behavior:
@@ -400,6 +418,10 @@ SmartTemplate4.mimeDecoder = {
 			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
 			// name or/and address
 			var address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+      // [Bug 25643] get name from Addressbook
+      let mailDirectory = getEmailAddress(address); // get this always
+      let card = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB') ? getCardFromAB(mailDirectory) : null;
+      
 			var result = "";
 			
 			if (showName) {
@@ -415,7 +437,7 @@ SmartTemplate4.mimeDecoder = {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
 				}  // %to(name)%
 				else {
-					result = getEmailAddress(address); // email part
+					result = mailDirectory; // email part
 					// suppress linkifying!
 					if (!showName ) {
 					  suppressLink = isDontSuppressLink(format) ? false : true;
@@ -424,7 +446,30 @@ SmartTemplate4.mimeDecoder = {
 			}
 			// swap last, first
 			let nameProcessed = false;
-			if (isName(format) &&  SmartTemplate4.Preferences.getMyBoolPref('firstLastSwap')) 
+      
+      // [Bug 25643] get name from Addressbook
+      if (showName && card) {
+        if (isLastName(format) && card.lastName) {
+          result = card.lastName;
+          nameProcessed = true;
+        }
+        else if (isFirstName(format) && card.firstName) {
+          result = card.firstName;
+          if (SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.preferNick')) {
+            result = card.getProperty("NickName", result);
+          }
+          nameProcessed = true;
+        }
+        else if (card.lastName && card.firstName) {
+          result = card.firstName + ' ' + card.lastName;
+        }
+        else if (card.displayName) {
+          result = card.displayName;
+        }
+        SmartTemplate4.Util.logDebugOptional('mime','Resolved name from Addressbook [' + mailDirectory + ']: ' + result);
+      }
+      
+			if (isName(format) && !nameProcessed && SmartTemplate4.Preferences.getMyBoolPref('firstLastSwap')) 
 			{
 			  // => add special test for x, y (name) pattern!
 				// use this for the name and firstname case (but not for lastname)
@@ -1111,6 +1156,11 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	
 	var sandbox;
 	
+	// [Bug 25676]	Turing Complete Templates - Benito van der Zander
+	// we are allowing certain (string) Javascript functions in concatenation to our %variable%
+	// as long as they are in a script block %{%    %}%
+	// local variables can be defined within these blocks, only 1 expression line is allowed per block,
+	// hence best to wrap all code in (function() { ..code.. })()  
 	function replaceJavascript(dmy, token) {
 	  if (!sandbox) {
 	    sandbox = new Components.utils.Sandbox(
@@ -1136,8 +1186,8 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
       };        
       sandbox.variable = function(name, arg){return replaceReservedWords("", name, arg?arg:"")};
       var implicitNull = {};
-      //var strangeImplicitCall = function () { return this(implicitNull); }
       var stringFunctionHack = new Function();
+			// overloading our strings using sandbox
       var props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
       for (var i=0;i<props.length;i++) {
         var s = props[i];
@@ -1147,40 +1197,40 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
       stringFunctionHack.toString = function(){return this(implicitNull);};
         
       for (var name in rw2h) {
-        sandbox[name] = (function(aname){return function(arg){
-          if (typeof arg === "undefined") return "%"+aname + "()%"; //do not allow name()            
-          if (arg === implicitNull) arg = "";
-          else arg = "("+arg+")";                         //handles the case %%name(arg)%% and returns the same as %name(arg)%
-          return replaceReservedWords("", aname, arg);
-        };})(name);
-        
+        sandbox[name] = (function(aname) {
+					return function(arg){
+						if (typeof arg === "undefined") return "%"+aname + "()%"; //do not allow name()            
+						if (arg === implicitNull) arg = "";
+						else arg = "("+arg+")";    //handles the case %%name(arg)%% and returns the same as %name(arg)%
+						return replaceReservedWords("", aname, arg);
+					};
+				})(name);
         sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
         //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
-        
-        //simpler hack (that does not have all string methods):
-//        sandbox[name].toString = strangeImplicitCall;     //handles the case %%name%% and returns the same as %name%
-//        sandbox[name].valueOf = strangeImplicitCall;
-      }
-      
-
-	  };
-	 //  alert(token);
+      }  // for
+	  };  // (!sandbox)
+	  //  alert(token);
 	  var x;
 	  try {
 	    x = Components.utils.evalInSandbox("("+token+").toString()", sandbox); 
-	    if (x.toString === String.prototype.toString) x = x.toString(); //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
-	    else x = "security violation";
-	  } catch (ex) {
-	    x = "ERR: "+ex;
+			//prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
+	    if (x.toString === String.prototype.toString) {
+			  x = x.toString(); 
+			}
+	    else { 
+			  x = "security violation";
+			}
+	  } 
+		catch (ex) {
+	    x = "ERR: " + ex;
 	  }
 	  javascriptResults.push(x);
-	 // alert(x);	  
 	  return "%internal-javascript-ref("+(javascriptResults.length-1)+")%"; //todo: safety checks (currently the sandbox is useless)
 	}
 	
 	//process javascript insertions first, so the javascript source is not broken by the remaining processing
 	var javascriptResults = []; //but cannot insert result now, or it would be double html escaped, so insert them later
-	msg = msg.replace(/%%((.|\n)*?)%%/gm, replaceJavascript);
+	msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
 	
 	//Now do this chaotical stuff:
 	
@@ -1192,13 +1242,13 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
 	msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
 	msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
-
+	
 	// ignoreHTML, e,g with signature, lets not do html processing
 	if (!ignoreHTML) {
 		// for Draft, let's just assume html for the moment.
 		if (isDraftLike) {
 			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-			if (pref.isReplaceNewLines(idKey, composeType, true))
+			if (SmartTemplate4.pref.isReplaceNewLines(idkey, type, true))  // type = composeType
 				{ msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
 			//else
 			//	{ msg = msg.replace(/\n/gm, ""); }
