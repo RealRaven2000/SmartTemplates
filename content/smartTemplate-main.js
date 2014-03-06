@@ -140,8 +140,11 @@
 		# [Bug 25571]  "replace line breaks with <br>" on when not enabled
 		# Make sure that debug settings window stays on top
 		# added UI for disabling space for %cursor%
-		# [Bug 25676] Javascript parser added by  	Benito van der Zander
-		
+		# [Bug 25676] Javascript parser added by Benito van der Zander
+		# [Bug 25710] <div id=smartTemplate4-template> is inserted in Stationery body
+    # [Bug 25643] Display Names from Address book
+	
+
 		
 =========================
 		0.9.3 Review specific:
