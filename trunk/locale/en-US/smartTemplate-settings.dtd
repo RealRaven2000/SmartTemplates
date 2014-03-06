@@ -7,7 +7,7 @@
 <!ENTITY copy.label "Copy">
 <!ENTITY paste.label "Paste">
 <!ENTITY insert.label "Insert Variable">
-<!ENTITY close.label "Close">
+<!ENTITY close.label "Basic">
 <!ENTITY advanced.label "Advanced">
 <!ENTITY export.label "Export">
 <!ENTITY import.label "Import">
@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Help">
 <!ENTITY pref_about.tab "About">
 <!ENTITY pref_global.tab "Global Settings">
+<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "Variables">
 <!ENTITY pref_examples.tab "Examples (online only)">
 <!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Signatures">
 <!ENTITY pref_groupAdvanced "Advanced Functions">
 <!ENTITY pref_groupUI "User Interface">
+<!ENTITY pref_groupNameRules "Name Rules">
 <!ENTITY pref_groupTroubleShooting "Troubleshooting">
 <!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
 <!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
@@ -79,6 +81,8 @@
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY resolveNamesFromAB "Resolve names from address books">
+<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
 <!ENTITY pref_parseSignature "Process signature">
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
 <!ENTITY pref_stationerySupport "Support Stationery addon">

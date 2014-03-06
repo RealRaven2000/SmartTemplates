@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Ayuda">
 <!ENTITY pref_about.tab "Acerca de">
 <!ENTITY pref_global.tab "Predisposiciones globales">
+<!ENTITY pref_advanced.tab "Predisposiciones avanzadas">
 <!ENTITY pref_variables.tab "Variables">
 <!ENTITY pref_examples.tab "Ejemplos (sólo online)">
 <!ENTITY pref_examples.tooltip "Mostrar plantillas de ejemplo desde http://smarttemplate4.mozdev.org/templates.html. Sólo disponible estando online.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Firmas">
 <!ENTITY pref_groupAdvanced "Funciones avanzadas">
 <!ENTITY pref_groupUI "Interfaz de usuario">
+<!ENTITY pref_groupNameRules "Reglas para nombres">
 <!ENTITY pref_groupTroubleShooting "Resolución de problemas">
 <!ENTITY pref_addSigBreakHTML.label "Añadir -- en correo HTML">
 <!ENTITY pref_addSigBreakHTML.tooltip "Añadir siempre el delimitador -- antes de la firma (in correos HTML)">
@@ -48,7 +50,7 @@
 <!ENTITY pref_templateBox_tip "Escriba su plantilla aquí, como: Hola &#37;from(name)&#37;&lt;br&gt; Gracias por tu mensaje&lt;br&gt; un saludo, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Opciones de SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Saltos de línea en la parte superior:">
-<!ENTITY pref_removeSig.label "Borrar firma al cambiar la identidad del correo">
+<!ENTITY pref_removeSig.label "Cambiar firma al cambiar la identidad del correo">
 <!ENTITY pref_showStatusIcon.label "Mostrar botón en barra de estado">
 <!ENTITY pref_StatusIcon.IconOnly "Sólo icono">
 <!ENTITY pref_StatusIcon.IconText "Icono y texto">
@@ -79,6 +81,8 @@
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
+<!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
+<!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
