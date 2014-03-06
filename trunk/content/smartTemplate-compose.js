@@ -33,6 +33,7 @@ SmartTemplate4.classSmartTemplate = function()
 				
 				if (isImage) {
 				  htmlSigText = "<img src='file:///" + fileName + "'\\>";
+          SmartTemplate4.Util.logDebugOptional('functions.extractSignature','Sig is image: ' + htmlSigText);
 				}
 				else {
 					// First, get and initialize the converter
@@ -48,17 +49,20 @@ SmartTemplate4.classSmartTemplate = function()
 						createInstance(Ci.nsIConverterInputStream);
 					fstream.init(sigFile, -1, 0, 0);
 					cstream.init(fstream, sigEncoding, 0, 0);
+          let countRead = 0;
 					let str = {};
 					{
 						let read = 0;
 						do {
 							read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
 							data += str.value;
+              countRead += read;
 						} while (read != 0);
 					}
 					cstream.close(); // this closes fstream
 
 					htmlSigText = data.toString();
+          SmartTemplate4.Util.logDebugOptional('functions.extractSignature','Signature text read: (' + countRead + ') bytes.');
 				}
 		  }
 		}
@@ -744,7 +748,6 @@ SmartTemplate4.classSmartTemplate = function()
 						
 	// -----------------------------------
 	// Add template message
-	// isStationeryTemplate
 	function insertTemplate(startup, flags)
 	{
 		let util = SmartTemplate4.Util;
@@ -756,7 +759,6 @@ SmartTemplate4.classSmartTemplate = function()
 			flags.identitySwitched = true;  // new flag
 			SmartTemplate4.initFlags(flags);
 		}
-		let isStationeryTemplate = flags.isStationery;
 		let pref = SmartTemplate4.pref;
 		// gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		let doc = gMsgCompose.editor.document;
@@ -879,7 +881,7 @@ SmartTemplate4.classSmartTemplate = function()
 							if (
 							      pref.isDeleteHeaders(idKey, st4composeType, false)
 									  &&
-									  (!isStationeryTemplate || flags.hasQuotePlaceholder) 
+									  (!flags.isStationery || flags.hasQuotePlaceholder) 
 									)
 							{
 								delReplyHeader(idKey);
@@ -894,7 +896,7 @@ SmartTemplate4.classSmartTemplate = function()
 						// we do not delete forward header if stationery has inserted a template!
 						if (  pref.isDeleteHeaders(idKey, st4composeType, false)
 								  &&
-									(!isStationeryTemplate || flags.hasQuotePlaceholder)
+									(!flags.isStationery || flags.hasQuotePlaceholder)
 								)
 						{
 							delForwardHeader(idKey);
@@ -908,7 +910,7 @@ SmartTemplate4.classSmartTemplate = function()
 						qd.innerHTML = quoteHeader;
 						return qd;
 					}
-					if (!isStationeryTemplate) {
+					if (!flags.isStationery) {
 						editor.rootElement.insertBefore(qdiv(), editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
 					}
 					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
@@ -939,7 +941,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let targetNode = 0;
 		let templateDiv;
 		// new global settings to deal with [Bug 25084]
-		let breaksAtTop = SmartTemplate4.Preferences.getMyIntPref("breaksAtTop");
+		let breaksAtTop = flags.isStationery ? 0 : SmartTemplate4.Preferences.getMyIntPref("breaksAtTop"); // no breaks if Stationery is used!
 		
 		// add template message --------------------------------
 		// if template text is empty: still insert targetNode as we need it for the cursor!
@@ -954,7 +956,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// ***  STATIONERY SUPPORT  ***
 				// ****************************
 				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
-				if (!isStationeryTemplate) {
+				if (!flags.isStationery) {
 					templateDiv.innerHTML = template;
 				}
 				else {
@@ -1031,12 +1033,12 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'SmartTemplate4: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
-		       + 'Stationery used: ' + isStationeryTemplate + '\n'
+		       + 'Stationery used: ' + flags.isStationery + '\n'
 		       );
 
+		let bodyEl = gMsgCompose.editor.rootElement;
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
-			let bodyEl = gMsgCompose.editor.rootElement;
 		  if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
 			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
@@ -1192,7 +1194,10 @@ SmartTemplate4.classSmartTemplate = function()
 		catch(ex) {
 			SmartTemplate4.Util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 		}
-
+		
+		if (flags.isStationery && targetNode) {
+		  bodyEl.removeChild(targetNode);  // Bug 25710
+		}
 		resetDocument(gMsgCompose.editor, startup);
 		SmartTemplate4.Util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 	};
