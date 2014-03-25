@@ -114,8 +114,8 @@
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
-<!ENTITY tofirstname.label "Absendervorname">
-<!ENTITY toname.label "Absendername">
+<!ENTITY tofirstname.label "Empfängervorname">
+<!ENTITY toname.label "Empfängername">
 <!ENTITY from_var.cap "Absendervariablen (Von)">
 <!ENTITY from_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
 <!ENTITY from.label "Absendername (Standardformat)">
