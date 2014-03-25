@@ -140,9 +140,15 @@
 		# [Bug 25571]  "replace line breaks with <br>" on when not enabled
 		# Make sure that debug settings window stays on top
 		# added UI for disabling space for %cursor%
-		# [Bug 25676] Javascript parser added by Benito van der Zander
+    # Advanced Tab in options dialog
+		# [Bug 25676] JavaScript parser added by Benito van der Zander
 		# [Bug 25710] <div id=smartTemplate4-template> is inserted in Stationery body
     # [Bug 25643] Display Names from Address book
+    # Fixed [Bug 25191] conflict with add-on Account Colors
+    # Fixed a problem with name matching signature files - 
+      depending on file name some textual signatures might be accidentally treated as images.
+    # Fixed reading plain text signature files (linefeeds where lost) by inserting html line breaks
+      to disable this behavior toggle extensions.smartTemplate4.signature.replaceLF.plaintext.br in about:config
 	
 
 		
