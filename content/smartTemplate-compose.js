@@ -29,18 +29,14 @@ SmartTemplate4.classSmartTemplate = function()
 
 
 				// let's check whether the file is an image:
-				let isImage = (sigFile.leafName.toLowerCase().match("\.png|\.apng|\.jpg|\.jpeg|\.jp2k|\.gif|\.tif|\.bmp|\.dib|\.rle|\.ico|\.svg|\.webp"));
+        // use a regexp / as "strings" will escape backslashes!
+				let isImage = (sigFile.leafName.toLowerCase().match( /\.(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/));
 				
 				if (isImage) {
 				  htmlSigText = "<img src='file:///" + fileName + "'\\>";
           SmartTemplate4.Util.logDebugOptional('functions.extractSignature','Sig is image: ' + htmlSigText);
 				}
 				else {
-					// First, get and initialize the converter
-					var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"]
-													.createInstance(Ci.nsIScriptableUnicodeConverter);
-					converter.charset = sigEncoding; /* The character encoding you want, default is using UTF-8 here */;
-
 					let data = "";
 					//read file into a string so the correct identifier can be added
 					let fstream = Components.classes["@mozilla.org/network/file-input-stream;1"].
@@ -48,6 +44,7 @@ SmartTemplate4.classSmartTemplate = function()
 					let cstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].
 						createInstance(Ci.nsIConverterInputStream);
 					fstream.init(sigFile, -1, 0, 0);
+          /* sigEncoding: The character encoding you want, default is using UTF-8 here */
 					cstream.init(fstream, sigEncoding, 0, 0);
           let countRead = 0;
 					let str = {};
@@ -85,14 +82,16 @@ SmartTemplate4.classSmartTemplate = function()
 	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
-	function extractSignature(Ident, signatureDefined, composeType)
-	{
+	function extractSignature(Ident, signatureDefined, composeType) {
+    let prefs = SmartTemplate4.Preferences;
+
 	  let isSigInBlockquote = false;
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText; // might not work if it is an attached file (find out how this is done)
 		let sig = '';
 		let isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
-		SmartTemplate4.Util.logDebugOptional('functions.extractSignature','START==========  extractSignature(' + Ident + ', ' + signatureDefined + ')  ========');
+		SmartTemplate4.Util.logDebugOptional(
+      'functions.extractSignature','START==========  extractSignature(' + Ident + ',defined=' + signatureDefined + ', compose type=' + composeType + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
 		SmartTemplate4.signature = null;
@@ -174,6 +173,12 @@ SmartTemplate4.classSmartTemplate = function()
 		           ? htmlSigText : (sigNode && sigNode.innerHTML) 
 							 ? sigNode.innerHTML : '';
 		sigText = (sigText) ? sigText : '';  
+    
+    if ((sigType == 'plain text' || sigType == 'probably not HTML')
+        && (prefs.getMyBoolPref('signature.replaceLF.plaintext.br'))) {
+      sigText = sigText.replace(/\r\n/g, '<br>');
+      sigText = sigText.replace(/\n/g, '<br>');
+    }
 		
 
 		let removed = false;
@@ -222,7 +227,7 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// still not removed. Maybe an error happened and it slipped into the blockquote;
 		// let's have a global setting for removing it
-		if (!removed && isSigInBlockquote && SmartTemplate4.Preferences.getMyBoolPref('signature.removeBlockQuotedSig.onFail')) {
+		if (!removed && isSigInBlockquote && prefs.getMyBoolPref('signature.removeBlockQuotedSig.onFail')) {
 			try {
 				gMsgCompose.editor.deleteNode(sigNode);
 				removed = true;
@@ -233,13 +238,13 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// okay now for the coup de grace!!
-		if (SmartTemplate4.Preferences.getMyBoolPref('parseSignature'))
+		if (prefs.getMyBoolPref('parseSignature'))
 			sigText = getProcessedText(sigText, idKey, composeType, true);
 
 		let dashesTxt = 
-			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.plaintext') ? SmartTemplate4.signatureDelimiter : "";
+			prefs.getMyBoolPref('signature.insertDashes.plaintext') ? SmartTemplate4.signatureDelimiter : "";
 		let dashesHTML = 
-			SmartTemplate4.Preferences.getMyBoolPref('signature.insertDashes.html') ? SmartTemplate4.signatureDelimiter : "";
+			prefs.getMyBoolPref('signature.insertDashes.html') ? SmartTemplate4.signatureDelimiter : "";
 		if (gMsgCompose.composeHTML) {
 			sig = SmartTemplate4.Util.mailDocument.createElement("div");
 			sig.className = 'moz-signature';
@@ -942,12 +947,12 @@ SmartTemplate4.classSmartTemplate = function()
 		let templateDiv;
 		// new global settings to deal with [Bug 25084]
 		let breaksAtTop = flags.isStationery ? 0 : SmartTemplate4.Preferences.getMyIntPref("breaksAtTop"); // no breaks if Stationery is used!
+		let bodyEl = gMsgCompose.editor.rootElement;
 		
 		// add template message --------------------------------
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
-		if (isActiveOnAccount) 
-		{
+		if (isActiveOnAccount)	{
 			templateDiv = SmartTemplate4.Util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
@@ -1036,7 +1041,6 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'Stationery used: ' + flags.isStationery + '\n'
 		       );
 
-		let bodyEl = gMsgCompose.editor.rootElement;
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
 		  if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
