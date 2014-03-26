@@ -1157,6 +1157,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	var sandbox;
 	
 	// [Bug 25676]	Turing Complete Templates - Benito van der Zander
+  // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
 	// we are allowing certain (string) Javascript functions in concatenation to our %variable%
 	// as long as they are in a script block %{%    %}%
 	// local variables can be defined within these blocks, only 1 expression line is allowed per block,
