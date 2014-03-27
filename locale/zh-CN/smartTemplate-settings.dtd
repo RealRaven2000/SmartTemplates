@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "帮助">
 <!ENTITY pref_about.tab "关于">
 <!ENTITY pref_global.tab "全局设置">
+<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "变量">
 <!ENTITY pref_examples.tab "示例（联网可用）">
 <!ENTITY pref_examples.tooltip "显示来自 http://smarttemplate4.mozdev.org/templates.html 的示例模板，仅联机模式可用。">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "签名">
 <!ENTITY pref_groupAdvanced "高级功能">
 <!ENTITY pref_groupUI "用户界面">
+<!ENTITY pref_groupNameRules "Name Rules">
 <!ENTITY pref_groupTroubleShooting "疑难解答">
 <!ENTITY pref_addSigBreakHTML.label "添加 -- 在 HTML 邮件中">
 <!ENTITY pref_addSigBreakHTML.tooltip "总是添加 -- 在签名分隔符前（HTML 邮件中）">
@@ -79,8 +81,12 @@
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
+<!ENTITY resolveNamesFromAB "Resolve names from address books">
+<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
 <!ENTITY pref_parseSignature "签名处理过程">
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">
+<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
 <!ENTITY pref_stationerySupport "支持附加组件 Stationery">
 <!ENTITY pref_stationerySupport_tip "支持同时使用 Stationery 与 smartTemplate4。">
 <!ENTITY pref_stationerySupport_tip2 "让你在 Stationery 中使用模板变量是可能的。">

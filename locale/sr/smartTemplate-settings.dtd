@@ -5,30 +5,108 @@
 <!ENTITY help.label "Помоћ">
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Умножи">
+<!ENTITY paste.label "Налепи">
+<!ENTITY insert.label "Убаци променљиву">
 <!ENTITY close.label "Затвори">
+<!ENTITY advanced.label "Напредно">
 <!ENTITY export.label "Извези">
+<!ENTITY import.label "Увези">
+<!ENTITY menu.template_import.label "Увези шаблон">
+<!ENTITY menu.template_export.label "Извези шаблон">
 <!ENTITY settings.label "Подешавања и шаблони">
+<!ENTITY url.homePage.label "Сајт додатка">
+<!ENTITY url.supportPage.label "Страница за подршку">
 <!ENTITY url.bugsAndFeaturesPage.label "Пријаве о грешкама / захтеви за могућности">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Састави">
+<!ENTITY pref_rsp.tab "Одговори">
+<!ENTITY pref_fwd.tab "Проследи">
+<!ENTITY pref_help.tab "Помоћ">
+<!ENTITY pref_about.tab "О додатку">
+<!ENTITY pref_global.tab "Глобалне поставке">
+<!ENTITY pref_advanced.tab "Напредне поставке">
+<!ENTITY pref_variables.tab "Променљиве">
+<!ENTITY pref_examples.tab "Примери (само на мрежи)">
+<!ENTITY pref_examples.tooltip "Прикажите примере шаблона са http://smarttemplate4.mozdev.org/templates.html. Доступно само док сте повезани на интернет.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "У реду">
 <!ENTITY cancel_button "Откажи">
 <!ENTITY contribute_button "Допринеси">
+<!ENTITY button.updateThunderbird "Ажурирај Thunderbird!">
+<!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Садржај е-поруке">
+<!ENTITY pref_groupSignatures "Потписи">
+<!ENTITY pref_groupAdvanced "Напредне функције">
+<!ENTITY pref_groupUI "Корисничко окружење">
+<!ENTITY pref_groupNameRules "Правила за именовање">
+<!ENTITY pref_groupTroubleShooting "Решавање проблема">
+<!ENTITY pref_addSigBreakHTML.label "Додај „--“ у HTML е-поруку">
+<!ENTITY pref_addSigBreakHTML.tooltip "Увек додајте граничник „--“ пре потписа (у HTML е-порукама)">
+<!ENTITY pref_addSigBreakPlaintext.label "Додај „--“ у обичну е-поруку">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Увек додајте граничник „--“ пре потписа (у обичним е-порукама)">
+<!ENTITY pref_quoteHeaderBox.label "Заглавље цитирања">
+<!ENTITY pref_quoteHeaderBox_tip "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:">
+<!ENTITY pref_templateBox.label "Шаблон">
+<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "Поставке SmartTemplate4-а">
+<!ENTITY pref_breaksOnTop.label "Број прелома на врху:">
+<!ENTITY pref_removeSig.label "Замени потпис при промени иднтитета е-поште">
+<!ENTITY pref_showStatusIcon.label "Прикажи дугме у статусној траци">
+<!ENTITY pref_StatusIcon.IconOnly "Само икона">
+<!ENTITY pref_StatusIcon.IconText "Икона и текст">
+<!ENTITY pref_StatusIcon.IconHoverText "Текст при задржавању курсора">
+<!ENTITY pref_fontSettings.label "Фонт у уређивачу шаблона">
 <!ENTITY pref_server_desc "Налог">
 <!ENTITY pref_server_def "Уобичајено">
+<!ENTITY pref_def.label "Користи подразумевано">
+<!ENTITY pref_def.cap "Демаркирајте „Користи подразумевано“ да бисте направили прилагођено заглавље цитирања на овом налогу.">
+<!ENTITY pref_newmsg.cap "Састави">
+<!ENTITY pref_new.label "Примени следећи шаблон на нову поруку">
 <!ENTITY pref_rspmsg.cap "Одговори">
+<!ENTITY pref_rsp.label "Примени следећи шаблон на одговорену поруку">
 <!ENTITY pref_rsphead.label "Користи уместо подразумеваног заглавља цитата">
+<!ENTITY pref_fwdmsg.cap "Проследи">
+<!ENTITY pref_fwd.label "Примени следећи шаблон на прослеђену поруку">
+<!ENTITY pref_fwdhead.label "Онемогући подразумевано заглавље цитирања Thunderbird-а">
+<!ENTITY pref_html.label "Користи HTML (нпр. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Користите командне знакове за &quot;, &amp;, &lt;, &gt; и space. За више информација, погледајте помоћ.">
+<!ENTITY pref_rep_br.label "Замени преломе са &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем &lt;br&gt;.">
+<!ENTITY pref_quotehead_tip "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље.">
 <!ENTITY pref_template_tip "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација.">
 <!ENTITY help_dialog_title "Помоћ за SmartTemplate4">
 <!ENTITY help_keyword.cap "Помоћ">
+<!ENTITY pref_debug_check "Отклањање грешака">
+<!ENTITY pref_hideExamples "Сакриј картицу са примерима">
+<!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
+<!ENTITY pref_nameSwap "Исправи LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
+<!ENTITY resolveNamesFromAB "Разреши имена из адресара">
+<!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
+<!ENTITY pref_parseSignature "Обради потпис">
+<!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
+<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
+<!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
+<!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate4-ом.">
+<!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">
+<!ENTITY pref_stationeryLink "Додатак Stationery">
+<!ENTITY pref_stationeryLink_tip "Преузми Stationery…">
+<!ENTITY pref_defaultCharset.label "Подразумевано кодирање">
+<!ENTITY pref_defaultCharset_tip "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "О проширењу">
 <!ENTITY creator.label "Аутор">
 <!ENTITY developer.label "Програмер">
+<!ENTITY localename.label "sr-RS">
+<!ENTITY localized.label "Преводилац">
 <!ENTITY translatorNickname.label "Rancher">
 <!ENTITY contributor.label "Доприносилац">
 <!ENTITY about.label "SmartTemplate4 вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Контролне променљиве">
+<!ENTITY ownname.label "Ваше име">
+<!ENTITY ownmail.label "Е-адреса">
 <!ENTITY date.label "Датум/време (као и заглавље е-поруке)">
 <!ENTITY tomail.label "Е-адреса примаоца">
 <!ENTITY frommail.label "Е-адреса пошиљаоца">
@@ -68,23 +146,47 @@
 <!ENTITY dateshort.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
 <!ENTITY datetz.label "Временска зона (+0100, +0200…)">
 <!ENTITY tzname.label "GMT, PST, EST…">
+<!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY A.label "Дан у недељи">
 <!ENTITY a.label "Дан у недељи">
 <!ENTITY d.label "Дан у месецу, са нулом на почетку">
 <!ENTITY e.label "Дан у месецу">
+<!ENTITY n.label "Месец (од 1 до 12)">
 <!ENTITY B.label "Месец">
 <!ENTITY b.label "Месец">
+<!ENTITY m.label "Месец (од 01 до 12) – са почетном нулом">
 <!ENTITY Y.label "Година">
 <!ENTITY M.label "Минут">
 <!ENTITY s.label "Секунд">
 <!ENTITY h.label "24-часовни формат, са нулом на почетку">
+<!ENTITY k.label "Време, 24-часовни формат (од 0 до 23)">
+<!ENTITY l.label "Време, 12-часовни формат (од 1 до 12)">
 <!ENTITY i.label "12-часовни формат, са нулом на почетку">
+<!ENTITY p.label "AM/PM">
+<!ENTITY p1.label "a.m.">
+<!ENTITY p2.label "A.M.">
+<!ENTITY p3.label "AM">
+<!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука.">
+<!ENTITY xsent_long.cap "Пример LongString-а">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; у &#37;H&#37;:&#37;M&#37; сати">
+<!ENTITY xsent_long_result.label "Резултат: недеља, 20/12/2011 у 16:24 сати">
+<!ENTITY xsent_short.cap "Пример ShortString-а">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Резултат: недеља, 20/12/2011 08:54:21">
+<!ENTITY xsent_short_note.label "Следеће променљиве се могу користити у обе варијанте">
+<!ENTITY localedate.label "Датум/време (локални формат)">
 <!ENTITY shortdate.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
 <!ENTITY datetimezone.label "Временска зона (+0100, +0200…)">
 <!ENTITY timezonename.label "GMT, PST, EST…">
 <!ENTITY im-ex.cap "Увоз/извоз подешавања и шаблона">
 <!ENTITY im-ex_note1.label "Можете да извезете и увезете ваша подешавања и шаблоне који су повезани са сваким налогом.">
+<!ENTITY im-ex_note2.label "Прво изаберите налог који желите да извезете у падајућем менију са поставкама SmartTemplate4-а.">
+<!ENTITY im-ex_note3.label "Након тога, из менија изаберите „Датотека &#8658; Извези &#8658; Поставке и шаблони“ и сачувајте датотеку (xxx.st4) на рачунар.">
+<!ENTITY im-ex_note4.label "Да бисте увезли датотеку, изаберите налог из падајућег менија са поставкама SmartTemplate4-а. Након тога, из менија изаберите „Датотека &#8658; Увези &#8658; Поставке и шаблони“.">
+<!ENTITY im-ex_note5.label "Изаберите датотеку SmartTemplate4-а (xxx.st4) коју желите да увезете.">
+<!ENTITY im-ex_note6.label "Напомена: На Apple/Macintosh платформама, трака са менијем се налази у насловној траци уместо у прозору са опцијама SmartTemplate4-а.">
 <!ENTITY html_note.cap "Напомена за HTML шаблоне">
 <!ENTITY html_note.label "Користите само UTF-8 (уникод) кодирање у HTML шаблонима.">
 <!ENTITY table.cap "Употреба променљивих">

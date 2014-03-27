@@ -70,10 +70,10 @@
 <!ENTITY pref_fwdhead.label "Desactivar el encabezado de respuesta predeterminado de Thunderbird">
 <!ENTITY pref_html.label "Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la Ayuda para más detalles.">
-<!ENTITY pref_rep_br.label "Sustituir salto de línea por &lt;br&gt;">
+<!ENTITY pref_rep_br.label "Sustituir saltos de línea por &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "NOTA: No se insertará un espacio en la etiqueta HTML si se usa &lt;br&gt; una vez.">
 <!ENTITY pref_quotehead_tip "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto.">
-<!ENTITY pref_template_tip "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles.">
+<!ENTITY pref_template_tip "Puede cambiar el encabezado de respuesta por 'variables'. Consulte Avanzado / variables para más detalles.">
 <!ENTITY help_dialog_title "Ayuda de SmartTemplate4">
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
@@ -85,6 +85,8 @@
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
+<!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Reemplazar salto de línea por &lt;br&gt; en la firma de texto simple">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
 <!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a smartTemplate4">
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">

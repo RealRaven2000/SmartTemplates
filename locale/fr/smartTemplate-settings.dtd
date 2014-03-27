@@ -85,6 +85,8 @@
 <!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
+<!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
+<!ENTITY pref_sigReplaceBR.label "Remplacer les retours à la ligne dans les signatures en texte brut par des &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Support de l'extension Stationery">
 <!ENTITY pref_stationerySupport_tip "Support de l'utilisation simultanée de Stationery et de smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">

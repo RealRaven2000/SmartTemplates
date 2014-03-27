@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "ヘルプ">
 <!ENTITY pref_about.tab "SmartTemplate4 について">
 <!ENTITY pref_global.tab "グローバル設定">
+<!ENTITY pref_advanced.tab "詳細設定">
 <!ENTITY pref_variables.tab "変数">
 <!ENTITY pref_examples.tab "テンプレート例 (オンラインのみ)">
 <!ENTITY pref_examples.tooltip "テンプレートの例を http://smarttemplate4.mozdev.org/templates.html より表示します。オンラインである必要があります。">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "署名">
 <!ENTITY pref_groupAdvanced "追加機能">
 <!ENTITY pref_groupUI "ユーザインターフェイス">
+<!ENTITY pref_groupNameRules "名前のルール">
 <!ENTITY pref_groupTroubleShooting "トラブルシューティング">
 <!ENTITY pref_addSigBreakHTML.label "HTML メールで署名に &quot;--&quot; を追加する">
 <!ENTITY pref_addSigBreakHTML.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (HTML 形式の場合)。">
@@ -79,8 +81,12 @@
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
+<!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
+<!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
 <!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">
+<!ENTITY pref_cursorInsertSpace "ハイライト表示された &#37;cursor&#37; にスペースを挿入する">
+<!ENTITY pref_sigReplaceBR.label "プレーンテキスト形式の署名に含まれる改行を &lt;br&gt; で置換する">
 <!ENTITY pref_stationerySupport "Stationery をサポートする">
 <!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate4 の同時使用をサポートします。">
 <!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate4 の変数を使用できます。">

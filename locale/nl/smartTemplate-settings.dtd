@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Hulp">
 <!ENTITY pref_about.tab "Over">
 <!ENTITY pref_global.tab "Globale instellingen">
+<!ENTITY pref_advanced.tab "Geavanceerde instellingen">
 <!ENTITY pref_variables.tab "Variabelen">
 <!ENTITY pref_examples.tab "Voorbeelden (alleen online)">
 <!ENTITY pref_examples.tooltip "Voorbeeldsjablonen van http://smarttemplate4.mozdev.org/templates.html weergeven. Alleen beschikbaar in online-modus.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Handtekeningen">
 <!ENTITY pref_groupAdvanced "Geavanceerde functies">
 <!ENTITY pref_groupUI "Gebruikersinterface">
+<!ENTITY pref_groupNameRules "Naamregels">
 <!ENTITY pref_groupTroubleShooting "Probleemoplossing">
 <!ENTITY pref_addSigBreakHTML.label "‘--’ toevoegen in HTML-berichten">
 <!ENTITY pref_addSigBreakHTML.tooltip "Het scheidingsteken -- altijd toevoegen voor de handtekening (in HTML-berichten)">
@@ -79,8 +81,12 @@
 <!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
+<!ENTITY resolveNamesFromAB "Namen uit adresboeken oplossen">
+<!ENTITY resolveNamesFromABNick "Voornaam vervangen als schuilnaam aanwezig is">
 <!ENTITY pref_parseSignature "Handtekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
+<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Ondersteuning Stationery-add-on">
 <!ENTITY pref_stationerySupport_tip "Ondersteunt het gebruik van Stationery tegelijkertijd met smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
