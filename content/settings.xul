@@ -373,6 +373,7 @@
 			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
 			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.signature.insertDashes.html" type = "bool" />
 			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.signature.insertDashes.plaintext" type = "bool" />
+			<preference id = "pref_sigReplaceBR" name = "extensions.smartTemplate4.signature.replaceLF.plaintext.br" type = "bool" />
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
 			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
@@ -433,11 +434,16 @@
 									  label = "&pref_removeSig.label;"
 									  preference = "pref_removeSig"/>
 									  
-							<checkbox id = "chkSignature"
-									  label = "&pref_parseSignature;"
-									  tooltiptext = "&pref_parseSignature_tip;"
-									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
-									  preference = "pref_parseSignature"/>
+							<hbox>
+								<checkbox id = "chkSignature"
+										  label = "&pref_parseSignature;"
+										  tooltiptext = "&pref_parseSignature_tip;"
+										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
+										  preference = "pref_parseSignature"/>
+								<spacer flex="1" />
+								<checkbox label = "&pref_sigReplaceBR.label;"
+										  preference = "pref_sigReplaceBR"/>
+							</hbox>
 									  
 							<hbox>
 								<checkbox label = "&pref_addSigBreakHTML.label;"
@@ -469,7 +475,7 @@
 										tooltiptext = "&pref_stationeryLink_tip;"/>
 						   </hbox>
 							<checkbox id = "chkStationery"
-									  label = "Insert Space to highlight %cursor%"
+									  label = "&pref_cursorInsertSpace;"
 									  preference = "pref_cursorSpace"/>
 
 						</groupbox>
