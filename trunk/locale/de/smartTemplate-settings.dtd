@@ -70,8 +70,8 @@
 <!ENTITY pref_fwdhead.label "Standard Thunderbird Kopfzeilen deaktivieren">
 <!ENTITY pref_html.label "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe.">
-<!ENTITY pref_rep_br.label "Ersetze Leerzeilen durch &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Leerzeilen enthält und diese nicht durch &lt;br&gt; gesetzt werden, sollte diese Option aktiviert werden.">
+<!ENTITY pref_rep_br.label "Ersetze Zeilenumbrüche durch &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch &lt;br&gt; ersetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
@@ -85,6 +85,8 @@
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
+<!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
+<!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch &lt;br&gt; ersetzen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">

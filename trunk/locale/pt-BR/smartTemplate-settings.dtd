@@ -85,6 +85,8 @@
 <!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
+<!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Apoie o addon Stationery">
 <!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">

@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Ohje">
 <!ENTITY pref_about.tab "Tietoja">
 <!ENTITY pref_global.tab "Globaalit asetukset">
+<!ENTITY pref_advanced.tab "Lisäasetukset">
 <!ENTITY pref_variables.tab "Muuttujat">
 <!ENTITY pref_examples.tab "Esimerkkejä">
 <!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla http://smarttemplate4.mozdev.org/templates.html. Vaatii Internet-yhteyden.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Allekirjoitukset">
 <!ENTITY pref_groupAdvanced "Lisätoiminnot">
 <!ENTITY pref_groupUI "Käyttöliittymä">
+<!ENTITY pref_groupNameRules "Nimisäännöt">
 <!ENTITY pref_groupTroubleShooting "Vian etsiminen">
 <!ENTITY pref_addSigBreakHTML.label "LIsää -- HTML-viestiin">
 <!ENTITY pref_addSigBreakHTML.tooltip "Aina lisää -- erotin ennen allekirjoitusta (HTML-viesteissä)">
@@ -79,8 +81,12 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
+<!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
+<!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
+<!ENTITY pref_cursorInsertSpace "Lisää väli korostamaan &#37;osoitin&#37;">
+<!ENTITY pref_sigReplaceBR.label "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
 <!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate4:n kanssa.">
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">

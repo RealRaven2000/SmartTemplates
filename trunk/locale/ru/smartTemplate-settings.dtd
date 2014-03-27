@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Справка">
 <!ENTITY pref_about.tab "О">
 <!ENTITY pref_global.tab "Общие настройки">
+<!ENTITY pref_advanced.tab "Дополнительные параметры">
 <!ENTITY pref_variables.tab "Переменные">
 <!ENTITY pref_examples.tab "Примеры (только при наличии подключения к Интернету)">
 <!ENTITY pref_examples.tooltip "Показывать примеры с http://smarttemplate4.mozdev.org/templates.html. Доступно только при наличии подключения к Интернету. ">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Подпись">
 <!ENTITY pref_groupAdvanced "Дополнительные функции">
 <!ENTITY pref_groupUI "Интерфейс пользователя">
+<!ENTITY pref_groupNameRules "Правила для имен">
 <!ENTITY pref_groupTroubleShooting "Решение проблем">
 <!ENTITY pref_addSigBreakHTML.label "Вставка -- в HTML сообщение">
 <!ENTITY pref_addSigBreakHTML.tooltip "Всегда добавлять разделитель -- перед подписью (в письмах в формате HTML)">
@@ -77,10 +79,14 @@
 <!ENTITY pref_debug_check "Режим отладки">
 <!ENTITY pref_hideExamples "Спрятать вкладку с примерами">
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
-<!ENTITY pref_nameSwap "Исправить фамилия, имя">
+<!ENTITY pref_nameSwap "Исправить фамилию, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
+<!ENTITY resolveNamesFromAB "Брать имена из адресных книг">
+<!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
+<!ENTITY pref_cursorInsertSpace "Вставлять пробел для подчеркивания &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "&lt;br&gt; вместо перевода строк в текстовой подписи">
 <!ENTITY pref_stationerySupport "Поддержка расширения Stationery">
 <!ENTITY pref_stationerySupport_tip "Совместное использование с расширением Stationery.">
 <!ENTITY pref_stationerySupport_tip2 "Позволяет использовать переменные в шаблонах Stationery.">
