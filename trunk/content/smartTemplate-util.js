@@ -907,9 +907,36 @@ SmartTemplate4.Util = {
 		let toolkitChromeReg = chromeRegService.QueryInterface(Components.interfaces.nsIToolkitChromeRegistry);
 		let availableLocales = toolkitChromeReg.getLocalesForPackage(packageName); 
 		return availableLocales;
-	}
-	
-
+	},
+  
+  toTitleCase: function toTitleCase(str) { // international version.
+    let orig = str;
+    try {
+      let i = -1;
+      let findw = -1;
+      while((i = str.indexOf(' ',i >= 0? i + 1 : 0 )) !== -1 ) {
+        if(str.charAt(++findw) != ' ')
+        {			 
+          str = str.substring(0, findw)
+              .concat(str.charAt(findw).toLocaleUpperCase())
+              .concat(str.substring(findw + 1).toLocaleLowerCase());
+          findw = i;
+        }
+      }
+      //check for last word
+      if(str.charAt(++findw) != ' ')
+      {			 
+        str = str.substring(0, findw)
+            .concat(str.charAt(findw).toLocaleUpperCase())
+            .concat(str.substring(findw + 1).toLocaleLowerCase());
+      }
+      return str;
+    }
+    catch(ex) {
+      this.logException ("toTitleCase(" + orig + ") failed", ex);
+      return orig;
+    }
+  }
 	
 	/* 
 	,
@@ -927,7 +954,7 @@ SmartTemplate4.Util = {
 		
 	
 
-};  // .Util
+};  // ST4.Util
 
 
 SmartTemplate4.Util.firstRun =
@@ -1142,7 +1169,7 @@ SmartTemplate4.Util.firstRun =
 	
 	} 
 
-};  // .Util.firstRun
+};  // ST4.Util.firstRun
 
 // this object is used to configure the modeless smartTemplate-msg window
 // the display() Method it takes 2 callback functions one for [Ok] and one for [Cancel]
@@ -1293,4 +1320,4 @@ SmartTemplate4.Message = {
 		win.close();
 	} 
 	
-}  // .Message
+}  // ST4.Message

@@ -508,6 +508,13 @@ SmartTemplate4.mimeDecoder = {
 					result = result.replace(new RegExp(delimiter[1] + ".*"), "");
 				}
 			}
+      // Capitalize ("Title Case")
+      if (isName(format) && SmartTemplate4.Preferences.getMyBoolPref('names.capitalize')) {
+        result = SmartTemplate4.Util.toTitleCase(result);
+        // result = result.str.toLowerCase().replace( /(^| )(\w)/g, function(x){return x.toUpperCase();} );
+        // replace(/(\w)(\w*)/g,
+        // function(g0,g1,g2){return g1.toUpperCase() + g2.toLowerCase();});
+      }
 
 			if (showLink) {
 				result = "<a href=mailto:" + getEmailAddress(address) + ">" + result + "</a>";
@@ -907,6 +914,9 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	}
 
 	function getTimeZoneAbbrev(tm, isLongForm) {
+    function isAcronym(str) {
+      return (str.toUpperCase() == str); // if it is all caps we assume it is an acronym
+    }
 		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
 		// get part between parentheses
 		// e.g. "(GMT Daylight Time)"
@@ -919,21 +929,31 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 		if (timeZone && timeZone.length>0) {
 			let words = timeZone[0].substr(1).split(' ');
 			for (let i=0; i<words.length; i++) {
+        let wrd = words[i];
 				if (isLongForm) {
-					retVal += ' ' + words[i];
+					retVal += ' ' + wrd;
 				}
 				else {
-					if (words[i].length == 3 && words[i].match('[A-Z]{3}')
+					if (wrd.length == 3 && wrd.match('[A-Z]{3}') 
 					    ||
-					    words[i].length == 4 && words[i].match('[A-Z]{4}'))
-						retVal += words[i] + ' ';  // abbrev contained
-					else
-						retVal+=words[i][0];  // first letter
+					    wrd.length == 4 && wrd.match('[A-Z]{4}')
+              ||
+              isAcronym(wrd))
+          {
+						retVal += wrd + ' ';  // abbrev contained
+          }
+					else {
+						retVal += wrd[0];  // first letter
+          }
 				}
 			}
-			if (isLongForm) {
-				retVal = retVal.substr(1, retVal.length - 2) ; // cut off trailing parens
+      // remove outer brackets
+			if (retVal.charAt(0) == '(') {
+				retVal = retVal.substr(1, retVal.length - 1) ; 
 			}
+      if (retVal.charAt(retVal.length-1) == ')') {
+        retVal = retVal.substr(0, retVal.length - 1);
+      }
 		}
 		else {
 			SmartTemplate4.Util.logDebugOptional ('timeZones', 'no timeZone match, building manual...');
