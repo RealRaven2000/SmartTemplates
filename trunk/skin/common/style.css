@@ -162,7 +162,7 @@ button.bugsURL:focus {
 
 #smartTemplate_prefDialog {
 	width: 550px;
-	min-height: 400px;
+	min-height: 600px;
 }
 
 /*  MAIN CONTAINERS: LEFT, RIGHT */
@@ -344,7 +344,7 @@ groupbox.transparent .groupbox-title {
 /* ############################ SPACE BETWEEN LABEL&ICON ############################# */
 /* Space between label and Icon in our Tabs */
 .NewTab label,.RespondTab label,.ForwardTab label,
-#fieldsTab label, #settingsTab label, #aboutTab label, #templatesTab label {
+#fieldsTab label, #settingsTab label, #aboutTab label, #templatesTab label, #advancedSettingsTab label {
   margin-left:5px !important;
 }
 
@@ -368,6 +368,9 @@ groupbox.transparent .groupbox-title {
 }
 #settingsTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/global.png") !important;
+}
+#advancedSettingsTab {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/advanced.png") !important;
 }
 #aboutTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/info.png") !important;
@@ -398,6 +401,7 @@ groupbox.transparent .groupbox-title {
 #btnAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-right.png") !important;
 }
+
 #btnCloseAdvanced {
 	list-style-image: url("chrome://smartTemplate4/skin/icons/arrow-left.png") !important;
 }
