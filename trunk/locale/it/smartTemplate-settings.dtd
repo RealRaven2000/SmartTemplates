@@ -24,26 +24,26 @@
 <!ENTITY pref_help.tab "Aiuto">
 <!ENTITY pref_about.tab "Informazioni su">
 <!ENTITY pref_global.tab "Impostazioni globali">
-<!ENTITY pref_advanced.tab "Advanced Settings">
+<!ENTITY pref_advanced.tab "Impostazioni avanzate">
 <!ENTITY pref_variables.tab "Variabili">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
+<!ENTITY pref_examples.tab "Esempi (solo su Internet)">
+<!ENTITY pref_examples.tooltip "Visualizza modelli di esempio su http://smarttemplate4.mozdev.org/templates.html. Disponibili solo su Internet.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Annulla">
 <!ENTITY contribute_button "Contribuisci">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!ENTITY button.updateThunderbird "Aggiorna Thunderbird !">
 <!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "Mail Content">
 <!ENTITY pref_groupSignatures "Signatures">
 <!ENTITY pref_groupAdvanced "Advanced Functions">
 <!ENTITY pref_groupUI "User Interface">
-<!ENTITY pref_groupNameRules "Name Rules">
-<!ENTITY pref_groupTroubleShooting "Troubleshooting">
-<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
-<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
-<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
+<!ENTITY pref_groupNameRules "Regole per il nome">
+<!ENTITY pref_groupTroubleShooting "Risoluzione dei problemi">
+<!ENTITY pref_addSigBreakHTML.label "Aggiungi -- nei messaggi HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Aggiungi -- nei messaggi di testo semplice">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi di testo semplice)">
 <!ENTITY pref_quoteHeaderBox.label "Intestazione">
 <!ENTITY pref_quoteHeaderBox_tip "Inserire l'intestazione in questa area di testo, ad esempio Il &#37;date&#37; &#37;from(name)&#37; ha scritto:">
 <!ENTITY pref_templateBox.label "Modello">
@@ -77,23 +77,24 @@
 <!ENTITY help_dialog_title "Contenuti guida di SmartTemplate4">
 <!ENTITY help_keyword.cap "Contenuti guida">
 <!ENTITY pref_debug_check "Modalità debug">
-<!ENTITY pref_hideExamples "Hide examples tab">
+<!ENTITY pref_hideExamples "Non visualizzare la scheda degli esempi">
 <!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
-<!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
+<!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
+<!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
+<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Elabora firma">
 <!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
+<!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursore&#37;">
+<!ENTITY pref_sigReplaceBR.label "Sostituisci le interruzioni di riga con &lt;br&gt; nelle firme in testo semplice">
 <!ENTITY pref_stationerySupport "Supporta l'estensione Stationery">
 <!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
 <!ENTITY pref_stationeryLink "Estensione Stationery">
 <!ENTITY pref_stationeryLink_tip "Vai a estensione Stationery...">
-<!ENTITY pref_defaultCharset.label "Default charset">
-<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
+<!ENTITY pref_defaultCharset.label "Codifica dei caratteri predefinita">
+<!ENTITY pref_defaultCharset_tip "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A proposito di SmartTemplate4">
 <!ENTITY creator.label "Creatore">

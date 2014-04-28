@@ -83,6 +83,7 @@
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
 <!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
+<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">

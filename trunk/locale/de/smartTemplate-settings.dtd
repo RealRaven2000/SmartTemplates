@@ -83,6 +83,7 @@
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
+<!ENTITY capitalizeNames "Namen großschreiben">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">

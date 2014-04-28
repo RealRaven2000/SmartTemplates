@@ -83,6 +83,7 @@
 <!ENTITY pref_nameSwap_tip "Altera 'ÚltimoNome, PrimeiroNome' para 'Primeiro Último'">
 <!ENTITY resolveNamesFromAB "Resolver nomes do livro de endereços">
 <!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
+<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
