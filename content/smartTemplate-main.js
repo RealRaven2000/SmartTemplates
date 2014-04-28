@@ -135,7 +135,7 @@
 		# Reopened and Fixed [Bug 25088] by making status bar icon status more resilient
 		# Fixed %subject% removing expressions in <brackets>
 		
-  Version 0.9.5 -	WIP
+  Version 0.9.5 -	21/04/2014
 	  # improved locale matching (allow matching en as en-US etc.)
 		# [Bug 25571]  "replace line breaks with <br>" on when not enabled
 		# Make sure that debug settings window stays on top
@@ -149,7 +149,9 @@
       depending on file name some textual signatures might be accidentally treated as images.
     # Fixed reading plain text signature files (linefeeds where lost) by inserting html line breaks
       to disable this behavior toggle extensions.smartTemplate4.signature.replaceLF.plaintext.br in about:config
-	
+
+  Version 0.9.5.1 
+    # Fixed minver for SeaMonkey
 
 		
 =========================

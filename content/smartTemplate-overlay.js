@@ -927,7 +927,8 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 		SmartTemplate4.Util.logDebugOptional ('timeZones', 'timeString = ' + timeString + '\n' 
 		                                      + 'timeZone =' + timeZone);
 		if (timeZone && timeZone.length>0) {
-			let words = timeZone[0].substr(1).split(' ');
+      // remove enclosing brackets and split
+			let words = timeZone[0].substr(1,timeZone[0].length-2).split(' ');
 			for (let i=0; i<words.length; i++) {
         let wrd = words[i];
 				if (isLongForm) {
@@ -943,17 +944,10 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 						retVal += wrd + ' ';  // abbrev contained
           }
 					else {
-						retVal += wrd[0];  // first letter
+						retVal += wrd[0];  // first letters cobbled together
           }
 				}
 			}
-      // remove outer brackets
-			if (retVal.charAt(0) == '(') {
-				retVal = retVal.substr(1, retVal.length - 1) ; 
-			}
-      if (retVal.charAt(retVal.length-1) == ')') {
-        retVal = retVal.substr(0, retVal.length - 1);
-      }
 		}
 		else {
 			SmartTemplate4.Util.logDebugOptional ('timeZones', 'no timeZone match, building manual...');

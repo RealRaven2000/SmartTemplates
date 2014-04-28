@@ -409,7 +409,7 @@
 				</tabpanel>
 				
 				<tabpanel flex = "1" id = "globalSettings">
-					<vbox flex = "1" style = "overflow-y: scroll">
+					<vbox flex = "1" id = "globalSettingsVbox">
 						<groupbox class="transparent">
 							<caption label="&pref_groupMailContent;"/>
 							<hbox class = "labeledBox">
@@ -508,13 +508,14 @@
 							<hbox class = "labeledBox">
 								<label  id = "lblFontSettings"
 										value="&pref_fontSettings.label;" />
-								<button id = "fontSmaller"
+								<toolbarbutton id = "fontSmaller"
 										onclick = "SmartTemplate4.Settings.fontSize(-1);" 
-										label = "A" />
-								<spacer width = "5px" />
-								<button id = "fontLarger"
+										label = "" />
+								<spacer id = "fontButtonSpacer" />
+								<toolbarbutton id = "fontLarger"
 										onclick = "SmartTemplate4.Settings.fontSize(+1);" 
-										label = "A" />
+										label = "" />
+								<spacer width = "2px" />
 								<textbox id = "txtFontSize"
 										 preference = "pref_fontSize"
 										 disabled = "true"/>
@@ -532,7 +533,7 @@
 				</tabpanel>
 					
 				<tabpanel flex = "1" id = "advancedFrame">
-					<vbox flex = "1" style = "overflow-y: scroll">
+					<vbox flex = "1" id = "advancedSettingsVbox">
 						<groupbox class="transparent">
 							<caption label="&pref_groupNameRules;"/>
 							<checkbox label = "&capitalizeNames;"
