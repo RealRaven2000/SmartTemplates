@@ -144,6 +144,9 @@
 		# [Bug 25676] JavaScript parser added by Benito van der Zander
 		# [Bug 25710] <div id=smartTemplate4-template> is inserted in Stationery body
     # [Bug 25643] Display Names from Address book
+    # option: Capitalize Names
+    # option: Nickname instead of First
+    # Improved parsing of timezone string (remove brackets)
     # Fixed [Bug 25191] conflict with add-on Account Colors
     # Fixed a problem with name matching signature files - 
       depending on file name some textual signatures might be accidentally treated as images.
