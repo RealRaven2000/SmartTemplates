@@ -83,6 +83,7 @@
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
 <!ENTITY resolveNamesFromAB "Брать имена из адресных книг">
 <!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
+<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
 <!ENTITY pref_cursorInsertSpace "Вставлять пробел для подчеркивания &#37;cursor&#37;">
