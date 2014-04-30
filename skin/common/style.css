@@ -22,7 +22,7 @@
 #SmartTemplate4CloseItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
 }
-#SmartTemplate4ExportItem, #SmartTemplate4ImportItem
+#SmartTemplate4ExportItem, #SmartTemplate4ImportItem {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
 }
 #menuHomePage {
@@ -161,15 +161,17 @@ button.bugsURL:focus {
 /* or #SmartTemplate_prefDialog .identity-menulist */
 
 #smartTemplate_prefDialog {
-	width: 550px;
-	min-height: 600px;
+	min-width: 550px;
+	min-height: 550px;
 }
 
 /*  MAIN CONTAINERS: LEFT, RIGHT */
-#topOptions, #bottomOptions 
-{ height: 5px ; 
+#topOptions, #bottomOptions { 
+  height: 5px ; 
 }
-#bottomOptions { bottom: 0; }
+#bottomOptions { 
+  bottom: 0; 
+}
 #optionsContainer {
 	-moz-box-align: stretch;
 	height: 100%;
@@ -192,7 +194,7 @@ button.bugsURL:focus {
 	margin-right: 1em;
 }
 
-.templateDeck {
+#account_deckA, .templateDeck {
 	min-width: 550px;
 }
 
@@ -209,8 +211,7 @@ groupbox.transparent .groupbox-title {
   background-color: transparent;
 }
 
-#globalSettings
-{
+#globalSettings {
 	width: 100%;
 	background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
 	background-repeat: no-repeat;
@@ -218,41 +219,55 @@ groupbox.transparent .groupbox-title {
 	/* background-size: 200px; */
 }
 
+#fontSmaller {
+	list-style-image: url("chrome://smartTemplate4/skin/icons/edit-size-down.png") !important;
+}
+
+#fontLarger {
+	list-style-image: url("chrome://smartTemplate4/skin/icons/edit-size-up.png") !important;
+}
+
 #lblFontSettings {
-	margin-top: 0.8em;
+	margin-top: 0.7em;
 	vertical-align: middle;
 }
 
 #fontSmaller, #fontLarger {
-	font-weight: 900;
-	font-family: "Arial Black", Arial;
-	color: rgb(0, 20, 80);
-	text-shadow: 1px 1px 0px rgba(250, 250, 250, 0.9); 
-	min-height: 22px;
-	height: 28px !important;
-	width: 30px !important;
-	min-width: 30px !important;
+  -moz-appearance: none;
+  background-image: linear-gradient(to top, #E9E9E9 30%, #FAFAFA 50%); /* taken from silvermel */
+	box-shadow: #333 0px 0px 3px;
+	margin-top: 5px;
+	height: 20px;
+	min-height: 10px;
+	width: 35px !important;
+	min-width: 25px !important;
+	cursor: pointer;
 } 
+#fontSmaller label, #fontLarger label {
+  display:none;
+}
+#fontSmaller:hover, #fontLarger:hover {
+	border: 1px solid #49C0E7; /* taken from silvermel */
+}
 
 #fontSmaller {
-	font-size: 8pt;
 	margin-right: 0;
 }
 
 #fontLarger {
-	font-size: 12pt;
 	margin-left: 2px;
-	padding-top: 0px;
+}
+#fontButtonSpacer {
+  width: 2px;
 }
 
 #txtFontSize {
+	margin-top: 7px;
 	text-align: center !important;
 	width: 2em;
 	margin-left: 1em;
 }
-
-#txtBreaks
-{
+#txtBreaks {
 	width: 3em;
 }
 .textboxLabel {
@@ -260,10 +275,6 @@ groupbox.transparent .groupbox-title {
 }
 .labeledBox {
 	margin-left: 0.5em;
-}
-
-#aboutPanel {
-	max-width:430px;
 }
 
 
@@ -495,12 +506,10 @@ groupbox.transparent .groupbox-title {
   font-size: 10pt;
   line-height: 10pt;
 	border: 1px solid #CCCCCC;
-	max-width: 60em;
+	max-width: 60em; /* wenn tab min-width darf hier nicht fixiert werden */
 	min-height: 8em;
 	vertical-align: middle;
 	padding: 1em;
-/*	overflow-y:auto; overflow-x:auto	*/
-
 }
 /* ############################## SmartTemplate4AboutDesc ############################ */
 .aboutContent  {
@@ -515,8 +524,7 @@ groupbox.transparent .groupbox-title {
 
 /* ####################################### BODY ###################################### */
 .help, h1, h2, aside, li,
-.aboutPersonnel 
-{
+.aboutPersonnel {
   font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
 }
 
@@ -658,11 +666,11 @@ table div.no {
 }
 
 /* right hand panels widths */
-#rightPane tabpanel
-{
+#rightPane tabpanel , #aboutPanel {
   min-width: 450px;
+  max-width: 460px;
 }
-
+ 
 
 /* #### help frame  #### */
 #helpFrame {
@@ -675,8 +683,7 @@ table div.no {
 button.dialog-button[dlgtype=extra2] {
 	background-color: rgb(241,116,50) !important;
 }
-.dialog-button[dlgtype=extra2]
-{
+.dialog-button[dlgtype=extra2] {
 	-moz-appearance: none;
 	color: #fff;
 	font-weight: bold;
@@ -701,4 +708,7 @@ button.dialog-button[dlgtype=extra2] {
 	margin-right: 0;
 }
 
-
+#globalSettingsVbox, #advancedSettingsVbox {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
