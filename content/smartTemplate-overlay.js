@@ -364,16 +364,33 @@ SmartTemplate4.mimeDecoder = {
       if (!mail) return null;
       // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
       // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
-      let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
-      let allAddressBooks = abManager.directories; 
+      
+      let allAddressBooks;
+
+      if (SmartTemplate4.Util.Application === "Postbox") {
+         // mailCore.js:2201 
+         // abCardForEmailAddress(aEmailAddress, aAddressBookOperations, aAddressBook)
+         let card = abCardForEmailAddress(mail,  Components.interfaces.nsIAbDirectory.opRead, {});
+         if (card) return card;
+         return null;
+      }
+      else {
+        let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+        allAddressBooks = abManager.directories; 
+      }
       while (allAddressBooks.hasMoreElements()) {
         let addressBook = allAddressBooks.getNext()
                                          .QueryInterface(Components.interfaces.nsIAbDirectory);
         if (addressBook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
           // alert ("Directory Name:" + addressBook.dirName);
-          let card = addressBook.cardForEmailAddress(mail);
-          if (card)
-            return card;
+          try {
+            let card = addressBook.cardForEmailAddress(mail);
+            if (card)
+              return card;
+          }
+          catch(ex) {
+            SmartTemplate4.Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+          }
         }
       }
       return null;
@@ -456,7 +473,12 @@ SmartTemplate4.mimeDecoder = {
         else if (isFirstName(format) && card.firstName) {
           result = card.firstName;
           if (SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.preferNick')) {
-            result = card.getProperty("NickName", result);
+            if (SmartTemplate4.Util.Application === "Postbox") {
+              if (card.nickName)
+                result = card.nickName;
+            }
+            else
+              result = card.getProperty("NickName", result);
           }
           nameProcessed = true;
         }
