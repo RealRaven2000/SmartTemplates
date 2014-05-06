@@ -987,8 +987,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	}
 	
 	// Replace reserved words
-	function replaceReservedWords(dmy, token, arg)
-	{
+	function replaceReservedWords(dmy, token, arg)	{
 	  // calling this function just for logging purposes
 		function finalize(tok, s, comment) {
 			if (s) {

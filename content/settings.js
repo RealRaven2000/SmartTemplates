@@ -336,6 +336,18 @@ SmartTemplate4.Settings = {
 		else {
 			window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
 		}
+    
+    let nickBox = document.getElementById('chkResolveABNick');
+    let abBox = document.getElementById('chkResolveAB');
+    let isPostbox = (SmartTemplate4.Util.Application === "Postbox");
+    if (isPostbox) {
+      SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB', false);
+      SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB.preferNick', false);
+    }
+    
+    nickBox.disabled = !abBox.checked || isPostbox;
+    abBox.disabled = isPostbox;
+    
 		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
 	} ,
@@ -355,7 +367,6 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
 		let currentDeck = 'deckB.nodef' + SmartTemplate4.Settings.accountId ;
-		
 		let tabbox = document.getElementById(currentDeck);
 		let templateMsgBoxId = '';
 		let headerMsgBoxId = '';
@@ -730,7 +741,17 @@ SmartTemplate4.Settings = {
 			SmartTemplate4.Styles.setElementStyle(ss, '.templateBox', 'font-size', fontSizeString, true);
 		}
 		SmartTemplate4.Preferences.setMyIntPref("font.size", size);
-	}
-
+	} ,
+  
+  resolveAB_onClick: function(el) {
+    // if it was already checked we are now unchecking it...
+    let nickBox = document.getElementById('chkResolveABNick');
+    if (el.checked) {
+      nickBox.checked = false;
+      nickBox.disabled = true;
+    }
+    else
+      nickBox.disabled = false;
+}
 
 };
