@@ -432,17 +432,14 @@
 						<groupbox class="transparent">
 							<caption label="&pref_groupSignatures;"/>
 									  
-							<hbox>
-								<checkbox id = "chkRemoveSig"
-										  label = "&pref_removeSig.label;"
-										  preference = "pref_removeSig"/>
-								<spacer flex="1" />
-								<checkbox id = "chkSignature"
-										  label = "&pref_parseSignature;"
-										  tooltiptext = "&pref_parseSignature_tip;"
-										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
-										  preference = "pref_parseSignature"/>
-							</hbox>
+							<checkbox id = "chkRemoveSig"
+									  label = "&pref_removeSig.label;"
+									  preference = "pref_removeSig"/>
+							<checkbox id = "chkSignature"
+									  label = "&pref_parseSignature;"
+									  tooltiptext = "&pref_parseSignature_tip;"
+									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
+									  preference = "pref_parseSignature"/>
 							
 							<checkbox label = "&pref_sigReplaceBR.label;"
 									  preference = "pref_sigReplaceBR"/>
@@ -542,12 +539,18 @@
 									  label = "&pref_nameSwap;"
 									  tooltiptext = "&pref_nameSwap_tip;"
 									  preference = "pref_firstLastSwap"/>
+							<separator />		  
 							<checkbox id = "chkResolveAB"
-									 label = "&resolveNamesFromAB;"
-									 preference = "pref_resolveNamesFromAB"/>
-							<checkbox id = "chkResolveABNick"
-									 label = "&resolveNamesFromABNick;"
-									 preference = "pref_resolveNamesFromAB_Nickname"/>
+									  label = "&resolveNamesFromAB;"
+									  preference = "pref_resolveNamesFromAB"
+								      tooltiptext = "&resolveNamesFromAB_tip;"
+									  onclick = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
+							<hbox>
+								<spacer style="width:2em;"/>
+								<checkbox id = "chkResolveABNick"
+										 label = "&resolveNamesFromABNick;"
+										 preference = "pref_resolveNamesFromAB_Nickname"/>
+							</hbox>
 						</groupbox>
 					
 						<spacer flex = "2" />
