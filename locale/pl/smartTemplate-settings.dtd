@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
+<!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "Nazwy kapitalikami">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
 <!ENTITY pref_cursorInsertSpace "Wstaw spacje do wyróżnienia &#37;cursor&#37;">

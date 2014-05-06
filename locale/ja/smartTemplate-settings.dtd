@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
+<!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
 <!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
 <!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">
 <!ENTITY pref_cursorInsertSpace "ハイライト表示された &#37;cursor&#37; にスペースを挿入する">

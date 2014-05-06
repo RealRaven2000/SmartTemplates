@@ -82,6 +82,7 @@
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
+<!ENTITY resolveNamesFromAB_tip "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP.">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
 <!ENTITY capitalizeNames "Namen großschreiben">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
