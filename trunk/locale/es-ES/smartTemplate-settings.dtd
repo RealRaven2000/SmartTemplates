@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
+<!ENTITY resolveNamesFromAB_tip "Esta funcionalidad no funciona con algunas agendas remotas como LDAP">
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "Nombres en mayúsculas">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">

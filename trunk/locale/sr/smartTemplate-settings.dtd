@@ -83,11 +83,8 @@
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
-<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
 <!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate4-ом.">
 <!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">

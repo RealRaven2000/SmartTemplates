@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
+<!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
 <!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "Nomi con lettera iniziale in maiuscolo">
 <!ENTITY pref_parseSignature "Elabora firma">
 <!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
 <!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursore&#37;">

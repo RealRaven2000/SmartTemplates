@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
+<!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "大写名称">
 <!ENTITY pref_parseSignature "签名处理过程">
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">
 <!ENTITY pref_cursorInsertSpace "插入空格到高亮的“光标”">

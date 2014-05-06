@@ -82,8 +82,9 @@
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
+<!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
-<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY capitalizeNames "Nimet isolla alkukirjaimella">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_cursorInsertSpace "Lisää väli korostamaan &#37;osoitin&#37;">
