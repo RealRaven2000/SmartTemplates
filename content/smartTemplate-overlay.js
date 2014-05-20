@@ -396,7 +396,11 @@ SmartTemplate4.mimeDecoder = {
       return null;
     }
 		
-		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.split() charset decoding=' + bypassCharsetDecoder ? 'on' : 'off');
+		SmartTemplate4.Util.logDebugOptional('mime.split',
+         'mimeDecoder.split() charset decoding=' + (bypassCharsetDecoder ? 'on' : 'off') + '\n'
+       + 'addrstr:' +  addrstr + '\n'
+       + 'charset: ' + charset + '\n'
+       + 'format: ' + format);
 		// MIME decode
 		if (!bypassCharsetDecoder)
 			addrstr = this.decode(addrstr, charset);
@@ -423,18 +427,23 @@ SmartTemplate4.mimeDecoder = {
 			showName = true;
 			showMailAddress = true;
 		}
+    SmartTemplate4.Util.logDebugOptional('mime.split',
+      'format = ' + format + '\n'
+      + 'showName = ' + showName + ', showMailAddress = ' + showMailAddress);
 
 		for (var i = 0; i < array.length; i++) {
 			if (i > 0) {
 				addresses += ", ";
 			}
-
+      let addressField = array[i];
 			// Escape "," in mail addresses
-			array[i] = array[i].replace(/\r\n|\r|\n/g, "")
+			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
 			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
 			// name or/and address
 			var address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+      SmartTemplate4.Util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
+                                           + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       let mailDirectory = getEmailAddress(address); // get this always
       let card = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB') ? getCardFromAB(mailDirectory) : null;
@@ -448,15 +457,20 @@ SmartTemplate4.mimeDecoder = {
 				if (result != "" && (showMailAddress)) {
 					result += address.replace(/.*<(\S+)>.*/g, " <$1>");
 				}     // %to%
+        SmartTemplate4.Util.logDebugOptional('mime.split', 
+          'showName = true, showMailAddress = ' + showMailAddress + '\n'
+          + 'Result after replacing from address[' + address + ']: ' + result);
 			}
 			if (result == "") {
 				if (!showMailAddress) {
 					result = address.replace(/.*<(\S+)@\S+>.*/g, "$1");
+          SmartTemplate4.Util.logDebugOptional('mime.split', 'no result, using address [showMailAddress=false]: ' + result);
 				}  // %to(name)%
 				else {
 					result = mailDirectory; // email part
 					// suppress linkifying!
 					if (!showName ) {
+            SmartTemplate4.Util.logDebugOptional('mime.split', 'no result, using address [showMailAddress=true, showName=false]: ' + result);
 					  suppressLink = isDontSuppressLink(format) ? false : true;
 					}
 				}     // %to% / %to(mail)%
@@ -466,6 +480,7 @@ SmartTemplate4.mimeDecoder = {
       
       // [Bug 25643] get name from Addressbook
       if (showName && card) {
+        SmartTemplate4.Util.logDebugOptional('mime.split', 'get Name from Address Book...' );
         if (isLastName(format) && card.lastName) {
           result = card.lastName;
           nameProcessed = true;
@@ -489,6 +504,10 @@ SmartTemplate4.mimeDecoder = {
           result = card.displayName;
         }
         SmartTemplate4.Util.logDebugOptional('mime','Resolved name from Addressbook [' + mailDirectory + ']: ' + result);
+        if (!SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.removeEmail') && showMailAddress) {
+          // re-add address
+          result += ' <' + mailDirectory + '>';
+        }
       }
       
 			if (isName(format) && !nameProcessed && SmartTemplate4.Preferences.getMyBoolPref('firstLastSwap')) 
@@ -1101,16 +1120,20 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 					return finalize(token, getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
 				case "sig":
 					let isRemoveDashes = (arg=="(2)");
+          let retVal;
 				  if (isStationery) {
-					  return '<sig class="st4-signature" removeDashes=' + isRemoveDashes + '>' + dmy + '</sig>' // 
+            retVal = '<sig class="st4-signature" removeDashes=' + isRemoveDashes + '>' + dmy + '</sig>' // 
 					}
+          else {
 					// BIG FAT SIDE EFFECT!
-					let ret = SmartTemplate4.Util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
-					SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
-					return ret;
+            retVal = SmartTemplate4.Util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
+            SmartTemplate4.Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
+          }
+          SmartTemplate4.Util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
+					return retVal;
 				case "subject":
 					let current = (arg=="(2)");
-					ret = getSubject(current);
+					let ret = getSubject(current);
 					if (!current)
 						ret = SmartTemplate4.escapeHtml(ret);
 					return finalize(token, ret);

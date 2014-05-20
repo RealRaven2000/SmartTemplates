@@ -384,6 +384,7 @@
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
 			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" />
 			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
+			<preference id = "pref_resolveNamesFromAB_ReplaceEmail" name = "extensions.smartTemplate4.mime.resolveAB.removeEmail" type = "bool" />
 			<preference id = "pref_capitalizeNames" name = "extensions.smartTemplate4.names.capitalize" type = "bool" />
 		</preferences>
 
@@ -547,9 +548,15 @@
 									  onclick = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
 							<hbox>
 								<spacer style="width:2em;"/>
-								<checkbox id = "chkResolveABNick"
-										 label = "&resolveNamesFromABNick;"
-										 preference = "pref_resolveNamesFromAB_Nickname"/>
+								<vbox>
+									<checkbox id = "chkResolveABNick"
+											 label = "&resolveNamesFromABNick;"
+											 preference = "pref_resolveNamesFromAB_Nickname"/>
+									<checkbox id = "chkResolveABRemoveMail"
+											 label = "Remove email address unless format specified"
+											 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."
+											 preference = "pref_resolveNamesFromAB_ReplaceEmail"/>
+								</vbox>
 							</hbox>
 						</groupbox>
 					
