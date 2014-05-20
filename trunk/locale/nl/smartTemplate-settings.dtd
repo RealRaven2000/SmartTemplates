@@ -82,6 +82,7 @@
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
 <!ENTITY resolveNamesFromAB "Namen uit adresboeken oplossen">
+<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Voornaam vervangen als schuilnaam aanwezig is">
 <!ENTITY capitalizeNames "Namen in hoofdletters">
 <!ENTITY pref_parseSignature "Handtekening verwerken">

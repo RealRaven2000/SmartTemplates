@@ -338,6 +338,7 @@ SmartTemplate4.Settings = {
 		}
     
     let nickBox = document.getElementById('chkResolveABNick');
+    let replaceMail = document.getElementById('chkResolveABRemoveMail');
     let abBox = document.getElementById('chkResolveAB');
     let isPostbox = (SmartTemplate4.Util.Application === "Postbox");
     if (isPostbox) {
@@ -346,6 +347,7 @@ SmartTemplate4.Settings = {
     }
     
     nickBox.disabled = !abBox.checked || isPostbox;
+    replaceMail.disabled = !abBox.checked || isPostbox;
     abBox.disabled = isPostbox;
     
 		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() COMPLETE");
@@ -746,12 +748,16 @@ SmartTemplate4.Settings = {
   resolveAB_onClick: function(el) {
     // if it was already checked we are now unchecking it...
     let nickBox = document.getElementById('chkResolveABNick');
+    let replaceMail = document.getElementById('chkResolveABRemoveMail');
     if (el.checked) {
       nickBox.checked = false;
       nickBox.disabled = true;
+      replaceMail.disabled = true;
     }
-    else
+    else {
       nickBox.disabled = false;
+      replaceMail.disabled = false;
+    }
 }
 
 };

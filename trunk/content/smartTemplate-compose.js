@@ -80,6 +80,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Extract Signature
 	// signatureDefined - 'auto', 'text' or 'html' if the %sig% variable ist part of our template - this means signature must be deleted in any case
+  //                    'omit' to suppress (remove only)
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
 	function extractSignature(Ident, signatureDefined, composeType) {
@@ -91,7 +92,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let sig = '';
 		let isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
 		SmartTemplate4.Util.logDebugOptional(
-      'functions.extractSignature','START==========  extractSignature(' + Ident + ',defined=' + signatureDefined + ', compose type=' + composeType + ')  ========');
+      'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ',defined=' + signatureDefined + ', compose type=' + composeType + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement;
 		let nodes = gMsgCompose.editor.rootElement.childNodes;
 		SmartTemplate4.signature = null;
@@ -104,6 +105,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let sigNode = null;
 		let sigText;
 
+    // find signature node...
 		if (isSignatureTb) {
 			SmartTemplate4.Util.logDebugOptional('functions.extractSignature','find moz-signature...');
 			// try to extract already inserted signature manually - well we need the last one!!
@@ -132,47 +134,54 @@ SmartTemplate4.classSmartTemplate = function()
 																					 + (isSigInBlockquote ? ' in <blockquote>!' : '.'));
 		}
 
-		// read text from signature file
+		// read text from signature file...
 		let sigType = 'unknown';
-		if (Ident.attachSignature) { // Postbox never gets here:
-			let fileSig = readSignatureFile(Ident);
-			if (fileSig) {
-				htmlSigText = fileSig;
-				// look for html tags, because htmlSigFormat might be unchecked
-				// while an attached sig file might still be in HTML format.
-				if (signatureDefined != 'html' 
-				    && 
-						signatureDefined != 'text') {
-					if (fileSig.toLowerCase().match("<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>")) {
-						isSignatureHTML = true;
-						sigType = 'HTML';
-					}
-					else
-						sigType = 'probably not HTML';
-						
-				}
-			}
-		}
-		if (signatureDefined == 'html') {
-			isSignatureHTML = true;
-			sigType = 'HTML';
-		}
-		else if (signatureDefined == 'text') {
-			isSignatureHTML = false;
-			sigType = 'plain text';
-		}
-		else if (htmlSigText && !Ident.attachSignature) { // trust the checkbox as last thing.
-			sigType = SmartTemplate4.Sig.htmlSigFormat ?  'HTML' : 'plain text';
-		}
-			
-		SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature Type (from file) is ' + sigType);
+    if (signatureDefined == 'omit') {
+      isSignatureHTML = false;
+      sigType = 'plain text';
+      sigText = ''
+    }
+    else {
+      if (Ident.attachSignature) { // Postbox never gets here:
+        let fileSig = readSignatureFile(Ident);
+        if (fileSig) {
+          htmlSigText = fileSig;
+          // look for html tags, because htmlSigFormat might be unchecked
+          // while an attached sig file might still be in HTML format.
+          if (signatureDefined != 'html' 
+              && 
+              signatureDefined != 'text') {
+            if (fileSig.toLowerCase().match("<br>|<br/>|<div.*>|<span.*>|<style.*>|<table.*>|<p.*>|<u>|<b>|<i>|<pre.*>|<img.*>")) {
+              isSignatureHTML = true;
+              sigType = 'HTML';
+            }
+            else
+              sigType = 'probably not HTML';
+              
+          }
+        }
+      }
+      if (signatureDefined == 'html') {
+        isSignatureHTML = true;
+        sigType = 'HTML';
+      }
+      else if (signatureDefined == 'text') {
+        isSignatureHTML = false;
+        sigType = 'plain text';
+      }
+      else if (htmlSigText && !Ident.attachSignature) { // trust the checkbox as last thing.
+        sigType = SmartTemplate4.Sig.htmlSigFormat ?  'HTML' : 'plain text';
+      }
+      SmartTemplate4.Util.logDebugOptional('functions.extractSignature', 'Signature Type (from file) is ' + sigType);
 
-		// retrieve signature Node; if it doesn't work, try from the account
-		// let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
-		sigText = isSigInBlockquote ? '' : htmlSigText
-		           ? htmlSigText : (sigNode && sigNode.innerHTML) 
-							 ? sigNode.innerHTML : '';
-		sigText = (sigText) ? sigText : '';  
+      // retrieve signature Node; if it doesn't work, try from the account
+      // let sigText = sigNode ? sigNode.innerHTML : htmlSigText;
+      sigText = isSigInBlockquote ? '' : htmlSigText
+                 ? htmlSigText : (sigNode && sigNode.innerHTML) 
+                 ? sigNode.innerHTML : '';
+      sigText = (sigText) ? sigText : '';  
+    }
+			
     
     if ((sigType == 'plain text' || sigType == 'probably not HTML')
         && (prefs.getMyBoolPref('signature.replaceLF.plaintext.br'))) {
@@ -238,7 +247,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 		// okay now for the coup de grace!!
-		if (prefs.getMyBoolPref('parseSignature'))
+		if (prefs.getMyBoolPref('parseSignature') && sigText)
 			sigText = getProcessedText(sigText, idKey, composeType, true);
 
 		let dashesTxt = 
@@ -507,6 +516,7 @@ SmartTemplate4.classSmartTemplate = function()
 	function testSignatureVar(template) {
 		let reg = /%(sig)(\([^)]+\))*%/gm;
 		let match = template.toLowerCase().match(reg);
+    SmartTemplate4.Util.logDebugOptional('functions','testSignatureVar() match = ' + match);
 		if (!match)
 			return '';
 		switch (match[0]) {
@@ -518,6 +528,8 @@ SmartTemplate4.classSmartTemplate = function()
 				return 'html';
 			case "%sig(text)%":
 				return 'text';
+		  case "%sig(none)%":
+				return 'omit';
 			default:	  // invalid %sig% variable!
 				return '';
 		}
@@ -800,6 +812,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		// is the %sig% variable used?
 		let sigVarDefined = false;
+    let sigType = null;
 
 		let composeCase = 'undefined';
 		let st4composeType = '';
@@ -866,7 +879,9 @@ SmartTemplate4.classSmartTemplate = function()
 			if (isActiveOnAccount) {
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
 				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
-				sigVarDefined = flags.hasSignature || testSignatureVar(rawTemplate); 
+        sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
+        // if Stationery has %sig(none)% then flags.omitSignature == true
+				sigVarDefined = flags.hasSignature || sigType; 
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
 				template = getSmartTemplate(st4composeType, idKey);
@@ -1032,7 +1047,7 @@ SmartTemplate4.classSmartTemplate = function()
 		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
 		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
 		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
-		       + '%sig% type: [' + sigVarDefined + ']\n'
+		       + '%sig% type: [' + sigType + ']\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
 		       + 'SmartTemplate4: ' + util.Version + '\n'
@@ -1043,6 +1058,11 @@ SmartTemplate4.classSmartTemplate = function()
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
+      isSignatureSetup = isSignatureSetup && (sigType != 'omit') && !flags.omitSignature; // we say there is no signature if %sig(none)% is defined in [Stationery] Template
+      SmartTemplate4.Util.logDebugOptional ('signatures','isSignatureSetup:' + isSignatureSetup + '\n'
+         + 'sigType: ' + sigType + '\n'
+         + 'flags.omitSignature: ' + flags.omitSignature +'\n'
+         + 'sigVarDefined: ' + sigVarDefined);
 		  if (composeCase == 'reply' && (theIdentity.sigOnReply || sigVarDefined) && isSignatureSetup
 			    ||
 			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
@@ -1110,11 +1130,14 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 			// active, but empty signature?
 			else {
-				if(flags.isStationery 
+				if(flags.omitSignature
+           ||
+           flags.isStationery 
 				   && 
 					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
 					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
 					if (sigNode) {
+            SmartTemplate4.Util.logDebugOptional ('signatures','found signature node, removing...');
 						sigNode.parentNode.removeChild(sigNode);
 					}
 				}

@@ -18,6 +18,7 @@ pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); 
 pref("extensions.smartTemplate4.signature.replaceLF.plaintext.br", true);
 pref("extensions.smartTemplate4.cursor.insertSpace", true);
 pref("extensions.smartTemplate4.mime.resolveAB", true);
+pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.names.capitalize", true);
 /* this is a convenience function - if I change from after or during composing, delete sig */
@@ -41,8 +42,10 @@ pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.settings", false);
 pref("extensions.smartTemplate4.debug.settings.prefs", false);
+pref("extensions.smartTemplate4.debug.signatures", false);
 pref("extensions.smartTemplate4.debug.regularize", false);
 pref("extensions.smartTemplate4.debug.mime", false);
+pref("extensions.smartTemplate4.debug.mime.split", false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);

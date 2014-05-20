@@ -156,6 +156,12 @@
   Version 0.9.5.1 
     # Fixed minver for SeaMonkey
 
+  Version 0.9.5.2
+    # Fixed [Bug 25762] related to Replace Names from Addressbook (LDAP). Also disabled this feature on Postbox.
+    
+  Version 0.9.5.31/07/2013
+    # Added switch %sig(none)% to completely suppress signature
+    
 		
 =========================
 		0.9.3 Review specific:
@@ -311,7 +317,9 @@ var SmartTemplate4 = {
 					try {
 						let stationeryText = SmartTemplate4.StationeryTemplateText;
 						flags.isStationery = true;
-						flags.hasSignature = (!!this.smartTemplate.testSignatureVar(stationeryText));
+            let sigTest = this.smartTemplate.testSignatureVar(stationeryText);
+						flags.hasSignature = (!!sigTest);
+            flags.omitSignature = (sigTest=='omit');
 						flags.hasCursor = this.smartTemplate.testCursorVar(stationeryText);
 						flags.hasQuotePlaceholder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quotePlaceholder');
 						flags.hasQuoteHeader = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quoteHeader');

@@ -82,7 +82,9 @@
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
+<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
+<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
