@@ -160,7 +160,8 @@
     # Fixed [Bug 25762] related to Replace Names from Addressbook (LDAP). Also disabled this feature on Postbox.
     
   Version 0.9.5.31/07/2013
-    # Added switch %sig(none)% to completely suppress signature
+    # Added a switch for removing emails when replacing Names from Address book
+    # Added format %sig(none)% to completely suppress signature
     
 		
 =========================
@@ -192,6 +193,7 @@ var SmartTemplate4 = {
 	PreprocessingFlags : {
 	  hasCursor: false,
 		hasSignature: false,
+    omitSignature: false,
 		hasQuotePlaceholder: false,
 		hasQuoteHeader: false,          // WIP
 		hasTemplatePlaceHolder: false,  // future use
@@ -201,6 +203,7 @@ var SmartTemplate4 = {
 	initFlags : function(flags) {
 	  // independent initialisation so we can create an empty flags object
 		flags.hasSignature = false;
+    flags.omitSignature = false,
 		flags.hasCursor = false;
 		flags.isStationery = false;
 		flags.hasQuotePlaceholder = false;
