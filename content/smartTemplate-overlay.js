@@ -183,6 +183,60 @@ SmartTemplate4.classPref = function()
 
 };
 
+
+/**
+ * Function to kick off/resume asynchronous processing.  Any function invoked by
+ *  async_run that returns/yields false at any point is responsible for ensuring
+ *  async_driver() is called again once the async operation completes.
+ *
+ * Note: This function actually schedules the real driver to run after a
+ *  timeout. This is to ensure that if you call us from a notification event
+ *  that all the other things getting notified get a chance to do their work
+ *  before we actually continue execution.  It also keeps our stack traces
+ *  cleaner.
+ */
+ /*
+function async_driver(val) {
+  asyncGeneratorSendValue = val;
+  do_execute_soon(_async_driver);
+  return false;
+}
+*/
+
+// We use this as a display consumer
+// nsIStreamListener
+var streamListenerST4 =
+{
+  _data: "",
+  _stream : null,
+
+  QueryInterface:
+    XPCOMUtils.generateQI([Components.interfaces.nsIStreamListener, Components.interfaces.nsIRequestObserver]),
+
+  // nsIRequestObserver interfaces
+  onStartRequest: function(aRequest, aContext) {
+    // Note: An exception thrown from onStartRequest has the side-effect of causing the request to be canceled.
+  },
+  onStopRequest: function(aRequest, aContext, aStatusCode) {
+    // Called to signify the end of an asynchronous request. This call is always preceded by a call to onStartRequest().
+    //in nsIRequest aRequest,
+    // in nsISupports aContext,
+    // in nsresult aStatusCode
+    do_check_eq(aStatusCode, 0);
+    do_check_true(this._data.contains("Content-Type"));
+    // async_driver(); //????
+  },
+
+  // concatenate stream data into a string
+  onDataAvailable: function(aRequest, aContext, aInputStream, aOffset, aCount) {
+    if (this._stream == null) {
+      this._stream = Components.classes["@mozilla.org/scriptableinputstream;1"].createInstance(Components.interfaces.nsIScriptableInputStream);
+      this._stream.init(aInputStream);
+    }
+    this._data += this._stream.read(aCount);
+  }
+};
+
 // -------------------------------------------------------------------
 // Get header string
 // -------------------------------------------------------------------
@@ -199,6 +253,28 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 						  createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
 
   SmartTemplate4.Util.logDebugOptional('functions','classGetHeaders(' + messageURI + ')');
+  let headers = Components.classes["@mozilla.org/messenger/mimeheaders;1"]
+              .createInstance().QueryInterface(Components.interfaces.nsIMimeHeaders);
+/*   
+  // ASYNC MIME HEADERS
+
+  let testStreamHeaders = true; // new code!
+  var asyncUrlListener = new AsyncUrlListener();
+  
+  if (testStreamHeaders) {
+    // http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgMessageService.idl#190
+    
+    // http://mxr.mozilla.org/comm-central/source/mailnews/imap/test/unit/test_imapHdrStreaming.js#101
+    let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
+    let msgService = messenger.messageServiceFromURI(messageURI); // get nsIMsgMessageService
+    msgService.streamHeaders(msgURI, streamListenerST4, asyncUrlListener,true);    
+    yield false;
+  }
+  // ==
+  let msgContent = new String(streamListenerST4._data);
+  headers.initialize(msgContent, msgContent.length);
+*/  
+  
 	inputStream.init(messageStream);
 	try {
 		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
@@ -223,8 +299,7 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 			return null;
 		}
 	}
-	var headers = Components.classes["@mozilla.org/messenger/mimeheaders;1"]
-	              .createInstance().QueryInterface(Components.interfaces.nsIMimeHeaders);
+  
 	headers.initialize(msgContent, msgContent.length);
 	SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
 
@@ -593,11 +668,24 @@ SmartTemplate4.parseModifier = function(msg) {
 	if (matchesR) {
 		for (let i=0; i<matchesR.length; i++) {
 			// parse out the argument (string to delete)
-			msg = msg.replace(matchesR[i],'');
-			let dText = matchesR[i].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-			if (dText) {
-				msg = msg.replace(unquotedRegex(dText[0], true), unquotedRegex(dText[1]));
-			}
+			msg = msg.replace(matchesR[i], '');
+      let theStrings = matchesR[i].split(",");
+      if (theStrings.length==2) {
+        let dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+        let dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+        if (dText1.length + dText2.length == 2) {
+          msg = msg.replace(unquotedRegex(dText1[0], true), unquotedRegex(dText2[0]));
+        }
+        else {
+          SmartTemplate4.Util.logDebug('Splitting replaceText(a,b) arguments could not be parsed. '
+            + '\n Arguments have to be enclosed in double quotes.');
+        }
+      }
+      else {
+        SmartTemplate4.Util.logDebug('Splitting replaceText(a,b) did not return 2 arguments. '
+          + '\n Arguments may not contain comma or double quotes.'
+          + '\n Special characters such as # must be escaped with backslash.');
+      }
 		}
 	}
 	return msg;
@@ -691,7 +779,13 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 		msgDbHdr.folder.charset; 
 	}
 
-	let hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
+	let hdr = null;
+  try {
+    hdr = (type != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
+  }
+  catch(ex) {
+    SmartTemplate4.Util.logException('fatal error - classGetHeaders() failed', ex);
+  }
 	let date = (type != "new") ? msgDbHdr.date : null;
 	if (type != "new") {
 		// for Reply/Forward message
