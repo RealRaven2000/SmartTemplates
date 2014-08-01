@@ -156,12 +156,17 @@
   Version 0.9.5.1 
     # Fixed minver for SeaMonkey
 
-  Version 0.9.5.2
+  Version 0.9.5.2  
     # Fixed [Bug 25762] related to Replace Names from Addressbook (LDAP). Also disabled this feature on Postbox.
     
-  Version 0.9.5.31/07/2013
+  Version 0.9.6  
     # Added a switch for removing emails when replacing Names from Address book
     # Added format %sig(none)% to completely suppress signature
+    # [Bug 25089] (reopened) default quote header wasn't removed anymore in Tb 31.0
+    # [Bug 25816] Missing names in reply caused by different Encodings - the Mime decoder fails when multiple addresses with varying encodings are contained
+    # [Bug 25089] Default forward quote not hidden
+    # variable %matchTextFromBody()% to find and replace patter e.g. %matchTextFromBody(TEST *)% will retrieve '123' from 'TEST 123'
+    
     
 		
 =========================
