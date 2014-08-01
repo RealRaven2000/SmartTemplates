@@ -40,7 +40,14 @@ SmartTemplate4.classPref = function()
 		try {
 			switch (root.getPrefType(prefstring)) {
 				case Components.interfaces.nsIPrefBranch.PREF_STRING:
-					return root.getComplexValue(prefstring, Components.interfaces.nsIPrefLocalizedString).data;
+          try {
+            return root.getComplexValue(prefstring, Components.interfaces.nsIPrefLocalizedString).data;
+          }
+          catch(ex) {
+            SmartTemplate4.Util.logException("Prefstring missing: " + prefstring 
+              + "\nReturning default string: " + defaultValue, ex);
+            return defaultValue;
+          }
 				case Components.interfaces.nsIPrefBranch.PREF_INT:
 					return root.getIntPref(prefstring);
 				case Components.interfaces.nsIPrefBranch.PREF_BOOL:
@@ -286,19 +293,25 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 
 	var msgContent = "";
 	var contentCache = "";
-	while (inputStream.available()) { 
-		msgContent = msgContent + inputStream.read(2048); 
-		var p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
-		if (p > 0) {
-			contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
-			msgContent = msgContent.substr(0, p) + "\r\n";
-			break;
-		}
-		if (msgContent.length > 2048 * 8) {
-			SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
-			return null;
-		}
-	}
+  try {
+    while (inputStream.available()) { 
+      msgContent = msgContent + inputStream.read(2048); 
+      var p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
+      if (p > 0) {
+        contentCache = msgContent.substr(p + (msgContent[p] == msgContent[p+1] ? 2 : 4));
+        msgContent = msgContent.substr(0, p) + "\r\n";
+        break;
+      }
+      if (msgContent.length > 2048 * 8) {
+        SmartTemplate4.Util.logDebug('classGetHeaders - early exit - msgContent length>16kB: ' + msgContent.length);
+        return null;
+      }
+    }
+  }
+  catch(ex) {
+    SmartTemplate4.Util.logException('Reading inputStream failed:', ex);
+    if (!msgContent) throw(ex);
+  }
   
 	headers.initialize(msgContent, msgContent.length);
 	SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
@@ -472,17 +485,18 @@ SmartTemplate4.mimeDecoder = {
     }
 		
 		SmartTemplate4.Util.logDebugOptional('mime.split',
-         'mimeDecoder.split() charset decoding=' + (bypassCharsetDecoder ? 'on' : 'off') + '\n'
+         'mimeDecoder.split() charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + '\n'
        + 'addrstr:' +  addrstr + '\n'
        + 'charset: ' + charset + '\n'
        + 'format: ' + format);
-		// MIME decode
-		if (!bypassCharsetDecoder)
-			addrstr = this.decode(addrstr, charset);
+		// if (!bypassCharsetDecoder)
+			// addrstr = this.decode(addrstr, charset);
 		// Escape "," in mail addresses
 		addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
+		SmartTemplate4.Util.logDebugOptional('mime.split', 'After replacing %%:\n' + addrstr);
 
 		let array = addrstr.split(/\s*,\s*/);
+    SmartTemplate4.Util.logDebugOptional('mime.split', 'addrstr.split() found [' + array.length + '] addresses');
 		let addresses = "";
 		let showName = false;
 		let showMailAddress = false;
@@ -511,6 +525,11 @@ SmartTemplate4.mimeDecoder = {
 				addresses += ", ";
 			}
       let addressField = array[i];
+      // [Bug 25816] - missing names caused by differeing encoding
+      // MIME decode (moved into the loop)
+      if (!bypassCharsetDecoder)
+        addressField = this.decode(array[i], charset);
+      
 			// Escape "," in mail addresses
 			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
@@ -653,8 +672,8 @@ SmartTemplate4.parseModifier = function(msg) {
 		return quoteLess;
 	}
 	// make 2 arrays, words to delete and replacement pairs.
-	let matches = msg.match(/%deleteText\(.*\)%/g);
-	let matchesR = msg.match(/%replaceText\(.*\)%/g);
+	let matches = msg.match(/%deleteText\(.*\)%/g); // works on template only
+	let matchesR = msg.match(/%replaceText\(.*\)%/g); // works on template only
 	if (matches) {
 		for (let i=0; i<matches.length; i++) {
 			// parse out the argument (string to delete)
@@ -665,7 +684,26 @@ SmartTemplate4.parseModifier = function(msg) {
 			}
 		}
 	}
-	if (matchesR) {
+  
+  // %matchTextFromBody()% using * to generate result:
+  // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
+  let matchesP = msg.match(/%matchTextFromBody\(.*\)%/g);
+  if (matchesP) {
+    let patternArg = matchesP[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
+    if (patternArg) {
+      let rx = unquotedRegex(patternArg[0], true);  // patter for searching body
+      let rootEl = gMsgCompose.editor.rootElement;
+      if (rootEl) {
+        let result = rx.exec(rootEl.innerText); // extract Pattern from body
+        if (result && result.length) {
+          // retrieve the * part from the pattern  - e..g matchTextFromBody(Tattoo *) => finds "Tattoo 100" => generates "100" (one word)
+          msg = msg.replace(matchesP, result[1]);
+        }
+      }
+    }  
+  }
+  
+	if (matchesR) { // replacements
 		for (let i=0; i<matchesR.length; i++) {
 			// parse out the argument (string to delete)
 			msg = msg.replace(matchesR[i], '');
@@ -673,6 +711,8 @@ SmartTemplate4.parseModifier = function(msg) {
       if (theStrings.length==2) {
         let dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
         let dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+        // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
+        
         if (dText1.length + dText2.length == 2) {
           msg = msg.replace(unquotedRegex(dText1[0], true), unquotedRegex(dText2[0]));
         }
@@ -772,12 +812,30 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 					 .createInstance(Components.interfaces.nsIMessenger);
 	let mime = this.mimeDecoder;
 
-	let msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
-	let charset = (type != "new") ? msgDbHdr.Charset : null;
-	// try falling back to folder charset:
-	if (!charset && msgDbHdr) {
-		msgDbHdr.folder.charset; 
-	}
+  // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
+  let msgDbHdr;
+  let charset;
+  try {
+    msgDbHdr = (type != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
+    charset = (type != "new") ? msgDbHdr.Charset : null;
+    // try falling back to folder charset:
+    if (!charset && msgDbHdr) {
+      msgDbHdr.folder.charset; 
+    }
+  }
+  catch (ex) {
+    SmartTemplate4.Util.logException('messenger.msgHdrFromURI failed:', ex);
+    // gMsgCompose.originalMsgURI ="mailbox:///E:/Dev/Mozilla/DEV/SmartTemplate/Support/Dmitry/%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F%20%D0%9A%D0%B0%D0%BB%D1%83%D0%B6%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%88%D0%BE%D1%81%D1%81%D0%B5.eml?number=0"
+    // doesn't return a header but throws!
+    charset = gMsgCompose.compFields.characterSet;
+    // gMsgCompose.editor
+    // gMsgCompose.editor.document
+    // gMsgCompose.compFields.messageId = ""
+    // gMsgCompose.compFields.subject
+    // gMsgCompose.compFields.to
+  }
+  
+  
 
 	let hdr = null;
   try {
