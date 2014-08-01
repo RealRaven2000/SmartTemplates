@@ -579,10 +579,15 @@ SmartTemplate4.classSmartTemplate = function()
 		if ((SmartTemplate4.Util.Application === "Thunderbird" || SmartTemplate4.Util.Application === "SeaMonkey")
 		    && SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.PlatformVer, "14"))
 		{
-			origMsgDelimiter = Components.classes["@mozilla.org/preferences-service;1"]
-			                             .getService(Ci.nsIPrefBranch)
-			                             .getComplexValue("mailnews.reply_header_originalmessage",
-			                                              Ci.nsIPrefLocalizedString).data
+      // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
+      let fwdId = 'mailnews.forward_header_originalmessage'; // from Tb 31.0 onwards?
+      let replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
+      let service = Components.classes["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+      origMsgDelimiter = service.getComplexValue(fwdId, Ci.nsIPrefLocalizedString).data;
+      // fallback to replyId if it doesn't exist.
+      if (!origMsgDelimiter)
+        origMsgDelimiter = service.getComplexValue(replyId, Ci.nsIPrefLocalizedString).data;
+      
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
