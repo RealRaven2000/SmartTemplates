@@ -23,6 +23,9 @@ pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.names.capitalize", true);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
+/* header replacement rules */
+pref("extensions.smartTemplate4.headers.unescape.quotes", true);
+
 
 pref("extensions.smartTemplate4.stationery.supported", false); /* experimental */
 pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */
@@ -54,3 +57,4 @@ pref("extensions.smartTemplate4.debug.css.detailed", false);
 pref("extensions.smartTemplate4.debug.css.AddRule", false);
 pref("extensions.smartTemplate4.debug.stationery", false);
 pref("extensions.smartTemplate4.debug.timeZones", false);
+pref("extensions.smartTemplate4.debug.headers", false);
