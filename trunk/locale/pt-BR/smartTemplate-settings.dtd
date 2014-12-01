@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Resolver nomes do livro de endereços">
 <!ENTITY resolveNamesFromAB_tip "Este recurso não funciona com certos catálogos de endereços, como LDAP.">
 <!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
+<!ENTITY resolveABRemoveMail "Remover endereço de e-mail a menos que o parâmetro de formato esteja especificado">
 <!ENTITY capitalizeNames "Capitalizar Nomes">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">

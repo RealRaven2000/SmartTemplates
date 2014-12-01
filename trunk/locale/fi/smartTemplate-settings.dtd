@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
 <!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
+<!ENTITY resolveABRemoveMail "Poista sähköpostiosoite, ellei parametria ei ole eritelty">
 <!ENTITY capitalizeNames "Nimet isolla alkukirjaimella">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">

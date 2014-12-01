@@ -40,9 +40,9 @@
 <!ENTITY pref_groupUI "ユーザインターフェイス">
 <!ENTITY pref_groupNameRules "名前のルール">
 <!ENTITY pref_groupTroubleShooting "トラブルシューティング">
-<!ENTITY pref_addSigBreakHTML.label "HTML メールで署名に &quot;--&quot; を追加する">
+<!ENTITY pref_addSigBreakHTML.label "&quot;--&quot; を追加する (HTML メール)">
 <!ENTITY pref_addSigBreakHTML.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (HTML 形式の場合)。">
-<!ENTITY pref_addSigBreakPlaintext.label "テキストメールで署名に &quot;--&quot; を追加する">
+<!ENTITY pref_addSigBreakPlaintext.label "&quot;--&quot; を追加する (テキストメール)">
 <!ENTITY pref_addSigBreakPlaintext.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (プレーンテキスト形式の場合)。">
 <!ENTITY pref_quoteHeaderBox.label "引用ヘッダ">
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
 <!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
 <!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
+<!ENTITY resolveABRemoveMail "フォーマットで指定されない限りメールアドレスを除去する">
 <!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
 <!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">

@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
 <!ENTITY resolveNamesFromAB_tip "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP.">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
+<!ENTITY resolveABRemoveMail "Email Adresse entfernen wenn kein Formatparameter angegeben ist">
 <!ENTITY capitalizeNames "Namen großschreiben">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
