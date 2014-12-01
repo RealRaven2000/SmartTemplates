@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Namen uit adresboeken oplossen">
 <!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Voornaam vervangen als schuilnaam aanwezig is">
+<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
 <!ENTITY capitalizeNames "Namen in hoofdletters">
 <!ENTITY pref_parseSignature "Handtekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">

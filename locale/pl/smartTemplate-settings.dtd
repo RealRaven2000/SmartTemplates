@@ -69,7 +69,7 @@
 <!ENTITY pref_fwd.label "Stosuj poniższy szablon dla przekazywanych wiadomości">
 <!ENTITY pref_fwdhead.label "Użyj zamiast standardowego nagłówka">
 <!ENTITY pref_html.label "Użyj HTML, np. &lt;b&gt;bold&lt;/b&gt;">
-<!ENTITY pref_html.cap "Używaj odwróconego ukośnika przed znakami &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc.">
+<!ENTITY pref_html.cap "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc.">
 <!ENTITY pref_rep_br.label "Zamieniaj nowy wiersz znakiem &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym.">
@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
+<!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
@@ -147,7 +148,7 @@
 <!ENTITY datelocal.label "Data i czas (lokalny format)">
 <!ENTITY dateshort.label "Data i czas (krótki format, np. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Strefa czasowa (+0100, +0200, … )">
-<!ENTITY tzname.label "GMT, PST, EST, …">
+<!ENTITY tzname.label "GMT, PST, EST, … ">
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -181,7 +182,7 @@
 <!ENTITY localedate.label "Data i czas (lokalny format)">
 <!ENTITY shortdate.label "Data i czas (np. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Strefa czasowa (+0100, +0200,… )">
-<!ENTITY timezonename.label "GMT, PST, EST,…">
+<!ENTITY timezonename.label "GMT, PST, EST,… ">
 <!ENTITY im-ex.cap "Import/eksport ustawień i szablonów">
 <!ENTITY im-ex_note1.label "Można zaimportować i wyeksportować ustawienia i szablony skojarzone z każdym kontem.">
 <!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplate4 wybierz konto, które chcesz wyeksportować.">

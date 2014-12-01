@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
 <!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
+<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
 <!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">

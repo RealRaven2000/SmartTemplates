@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
 <!ENTITY resolveNamesFromAB_tip "Esta funcionalidad no funciona con algunas agendas remotas como LDAP">
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
+<!ENTITY resolveABRemoveMail "Eliminar dirección de correo si no está especificado el parámetro de formato">
 <!ENTITY capitalizeNames "Nombres en mayúsculas">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">

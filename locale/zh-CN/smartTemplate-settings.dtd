@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
 <!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
+<!ENTITY resolveABRemoveMail "移除电子邮件地址，除非已指定格式参数">
 <!ENTITY capitalizeNames "大写名称">
 <!ENTITY pref_parseSignature "签名处理过程">
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">

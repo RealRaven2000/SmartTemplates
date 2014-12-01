@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
 <!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
 <!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
+<!ENTITY resolveABRemoveMail "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato">
 <!ENTITY capitalizeNames "Nomi con lettera iniziale in maiuscolo">
 <!ENTITY pref_parseSignature "Elabora firma">
 <!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">

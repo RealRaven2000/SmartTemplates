@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Resolve names from address books">
 <!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
+<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
 <!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Process signature">
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
