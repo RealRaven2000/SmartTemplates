@@ -70,7 +70,7 @@
 <!ENTITY pref_fwdhead.label "Gebruiken in plaats van standaard aanhalingskoptekst">
 <!ENTITY pref_html.label "HTML gebruiken (b.v. &lt;b&gt;vet&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Escape-karakters gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details.">
-<!ENTITY pref_rep_br.label "new-line vervangen door &lt;br&gt;">
+<!ENTITY pref_rep_br.label "nieuwe regel vervangen door &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "OPMERKING: vervangt new-line volgend op een HTML-label niet door &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
 <!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Lees de hulptekst voor meer informatie.">
@@ -128,7 +128,7 @@
 <!ENTITY fromname.label "Achternaam afzender">
 <!ENTITY cc_var.cap "Ontvanger (CC)">
 <!ENTITY cc_note.label "Wanneer de naam niet beschikbaar is wordt het e-mailadres weergegeven">
-<!ENTITY cc.label "Ontvangersnaam (Standaard)">
+<!ENTITY cc.label "Naam ontvanger (Standaard)">
 <!ENTITY ccfirstname.label "Voornaam ontvanger">
 <!ENTITY ccname.label "Achternaam ontvanger">
 <!ENTITY spec_form.cap "Speciale opmaak">
@@ -152,12 +152,12 @@
 <!ENTITY var_custom.cap "Variabelen voor aangepaste datumopmaak">
 <!ENTITY customdf_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY A.label "Weekdag (Vrijdag)">
-<!ENTITY a.label "Weekdag (Vrij.)">
-<!ENTITY d.label "Dag van de maand (01 tot 31) - met voorafgaande nul">
+<!ENTITY a.label "Weekdag (Vrij)">
+<!ENTITY d.label "Dag van de maand (01 tot 31) - incl. nul">
 <!ENTITY e.label "Dag van de maand (1 tot 31)">
 <!ENTITY n.label "Maand (1 tot 12)">
 <!ENTITY B.label "Maand (Januari)">
-<!ENTITY b.label "Maand (Jan.)">
+<!ENTITY b.label "Maand (Jan)">
 <!ENTITY m.label "Maand (01 tot 12) - met voorafgaande nul">
 <!ENTITY Y.label "Jaar (1970)">
 <!ENTITY M.label "Minuut (00 tot 59)">
@@ -189,7 +189,7 @@
 <!ENTITY im-ex_note3.label "Selecteer vervolgens ‘Bestand’ ⇒ ‘Exporteren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
 <!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
 <!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate4-bestand (xxx.st4).">
-<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in het titellint in plaats van in het SmartTemplate4-optiesvenster. Dit is normaal gedrag in deze platforms en kan niet worden gewijzigd.">
+<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in de titelregel in plaats van in het SmartTemplate4-optiesvenster. Dit is normaal in deze platforms en kan niet worden gewijzigd.">
 <!ENTITY html_note.cap "Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">

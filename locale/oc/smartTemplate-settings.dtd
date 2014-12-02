@@ -24,26 +24,11 @@
 <!ENTITY pref_help.tab "Assistent">
 <!ENTITY pref_about.tab "A prepaus">
 <!ENTITY pref_global.tab "Paramètres generals">
-<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "Variablas">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Acceptar">
 <!ENTITY cancel_button "Anullar">
 <!ENTITY contribute_button "Contribuir">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
-<!-- #### GUI #### -->
-<!ENTITY pref_groupMailContent "Mail Content">
-<!ENTITY pref_groupSignatures "Signatures">
-<!ENTITY pref_groupAdvanced "Advanced Functions">
-<!ENTITY pref_groupUI "User Interface">
-<!ENTITY pref_groupNameRules "Name Rules">
-<!ENTITY pref_groupTroubleShooting "Troubleshooting">
-<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
-<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
-<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
 <!ENTITY pref_quoteHeaderBox.label "Títol de citacion">
 <!ENTITY pref_quoteHeaderBox_tip "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :">
 <!ENTITY pref_templateBox.label "Modèl">
@@ -52,9 +37,6 @@
 <!ENTITY pref_breaksOnTop.label "Nombre de retorns a la linha en naut :">
 <!ENTITY pref_removeSig.label "Suprimir la signatura al moment del cambiament de compte de mail">
 <!ENTITY pref_showStatusIcon.label "Afichar un boton dins la barra dels moduls">
-<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
-<!ENTITY pref_StatusIcon.IconText "Icon And Text">
-<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Poliça de l'editor de gabarit">
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY pref_server_def "Opcions globalas">
@@ -77,26 +59,7 @@
 <!ENTITY help_dialog_title "Ajuda de SmartTemplate4">
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Mòde desbugatge">
-<!ENTITY pref_hideExamples "Hide examples tab">
 <!ENTITY pref_debug_tip "Clic drech per las opcions avançadas de desbugatge">
-<!ENTITY pref_nameSwap "Correct LastName, FirstName">
-<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
-<!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
-<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
-<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
-<!ENTITY capitalizeNames "Capitalize Names">
-<!ENTITY pref_parseSignature "Process signature">
-<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
-<!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
-<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
-<!ENTITY pref_stationeryLink "Stationery Addon">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
-<!ENTITY pref_defaultCharset.label "Default charset">
-<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A prepaus de SmartTemplate4">
 <!ENTITY creator.label "Creator">
