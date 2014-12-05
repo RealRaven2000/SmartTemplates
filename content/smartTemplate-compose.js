@@ -447,7 +447,8 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 
 
-		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12")) {
+		if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "12") ||
+        SmartTemplate4.Util.Application != 'Thunderbird') {
 			// recursive search from root element
 			let node = findChildNode(rootEl, 'moz-email-headers-table');
 			if (node) {
@@ -571,23 +572,40 @@ SmartTemplate4.classSmartTemplate = function()
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
 
 		let Ci = Components.interfaces;
+    let origMsgDelimiter = '';
+    let Id;
 		var bndl = Components.classes["@mozilla.org/intl/stringbundle;1"]
 							 .getService(Ci.nsIStringBundleService)
 							 .createBundle("chrome://messenger/locale/mime.properties");
-		let origMsgDelimiter = bndl.GetStringFromID(1041);
+    try {           
+      origMsgDelimiter = bndl.GetStringFromID(1041);
+    }
+    catch(ex) {
+    }
 		// [Bug 25089] default forward quote can't be completely hidden
 		if ((SmartTemplate4.Util.Application === "Thunderbird" || SmartTemplate4.Util.Application === "SeaMonkey")
 		    && SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.PlatformVer, "14"))
 		{
-      // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
-      let fwdId = 'mailnews.forward_header_originalmessage'; // from Tb 31.0 onwards?
-      let replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
-      let service = Components.classes["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
-      origMsgDelimiter = service.getComplexValue(fwdId, Ci.nsIPrefLocalizedString).data;
-      // fallback to replyId if it doesn't exist.
-      if (!origMsgDelimiter)
-        origMsgDelimiter = service.getComplexValue(replyId, Ci.nsIPrefLocalizedString).data;
-      
+      try {
+        // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
+        let fwdId = 'mailnews.forward_header_originalmessage'; // from Tb 31.0 onwards?
+        let replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
+        let service = Components.classes["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+        
+        Id = fwdId;
+        origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+        // fallback to replyId if it doesn't exist.
+        if (!origMsgDelimiter) {
+          Id = replyId
+          origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+        }
+      }
+      catch(ex) {
+        if (!origMsgDelimiter) {
+          SmartTemplate4.Util.logException("Could not retrieve delimiter {" + Id + "}; attempt original method.", ex)
+          origMsgDelimiter = bndl.GetStringFromID(1041);
+        }
+      }
 		}
 		SmartTemplate4.Util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
