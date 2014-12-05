@@ -208,7 +208,7 @@ var SmartTemplate4 = {
 		isStationery: false
 	},
 	
-	initFlags : function(flags) {
+	initFlags : function initFlags(flags) {
 	  // independent initialisation so we can create an empty flags object
 		flags.hasSignature = false;
     flags.omitSignature = false,
@@ -264,7 +264,7 @@ var SmartTemplate4 = {
 		SaveInFolderDone: function(folderURI) {}
 	},
 
-	initListener: function() {
+	initListener: function initListener() {
 		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 		// alternative events when 
 		if (SmartTemplate4.Preferences.isStationerySupported) {
@@ -278,7 +278,7 @@ var SmartTemplate4 = {
 	},
 	
 	// Stationery 0.8 support!
-  preprocessHTMLStationery: function(t) {
+  preprocessHTMLStationery: function preprocessHTMLStationery(t) {
     SmartTemplate4.Util.logDebugOptional('stationery',
 		     '=========================================\n'
 		   + '=========================================\n'
@@ -306,7 +306,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
-	notifyComposeBodyReady: function(evt)
+	notifyComposeBodyReady: function notifyComposeBodyReady(evt)
 	{
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
 		// let isStationeryTemplate = false;
@@ -382,7 +382,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to switch identity
 	// -------------------------------------------------------------------
-	loadIdentity: function(startup, previousIdentity)
+	loadIdentity: function loadIdentity(startup, previousIdentity)
 	{
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
@@ -427,7 +427,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// Escape to HTML character references
 	// -------------------------------------------------------------------
-	escapeHtml: function(str)
+	escapeHtml: function escapeHtml(str)
 	{
 		return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
 	},
@@ -436,7 +436,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// Initialize - we only call this from the compose window
 	// -------------------------------------------------------------------
-	init: function()
+	init: function init()
 	{
 		function smartTemplate_loadIdentity(startup){
 			var prevIdentity = gCurrentIdentity;
@@ -465,7 +465,7 @@ var SmartTemplate4 = {
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	
-	setStatusIconMode: function(elem) {
+	setStatusIconMode: function setStatusIconMode(elem) {
 	  try {
 			this.Preferences.setMyIntPref('statusIconLabelMode', parseInt(elem.value));
 			this.updateStatusBar(elem.parentNode.firstChild.checked);
@@ -475,7 +475,7 @@ var SmartTemplate4 = {
 		}
 	} ,
 	
-	updateStatusBar: function(show) {
+	updateStatusBar: function updateStatusBar(show) {
 		try {
 			SmartTemplate4.Util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
 			let isDefault = (typeof show == 'undefined' || show == 'default');
@@ -508,7 +508,7 @@ var SmartTemplate4 = {
 		}
 	} ,
 
-	startUp: function() {
+	startUp: function startUp() {
 		let v = SmartTemplate4.Util.VersionProxy();
 	} ,
 	
@@ -525,7 +525,7 @@ var SmartTemplate4 = {
 SmartTemplate4.calendar = {
     currentLocale : null,
 		bundle: null,
-		list: function () {
+		list: function list() {
 			let str = "";
 			for (let i=0;i<7 ;i++){
 				str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");
@@ -537,7 +537,7 @@ SmartTemplate4.calendar = {
 			return str;
 		},
 		
-		init: function(forcedLocale) {
+		init: function init(forcedLocale) {
 			let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 							 getService(Components.interfaces.nsIStringBundleService);
 			// validate the passed locale name for existence
@@ -576,19 +576,19 @@ SmartTemplate4.calendar = {
 			this.bundle = strBndlSvc.createBundle(bundleUri + "/calender.properties");
 		},
 		
-		dayName: function(n){ 
+		dayName: function dayName(n){ 
 			return this.bundle.GetStringFromName("day." + (n + 1) + ".name"); 
 		},
 		
-		shortDayName: function(n) { 
+		shortDayName: function shortDayName(n) { 
 			return this.bundle.GetStringFromName("day." + (n + 1) + ".short"); 
 		},
 		
-		monthName: function(n){ 
+		monthName: function monthName(n){ 
 			return this.bundle.GetStringFromName("month." + (n + 1) + ".name"); 
 		},
 		
-		shortMonthName: function(n) { 
+		shortMonthName: function shortMonthName(n) { 
 			return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); 
 		}
 };   // SmartTemplate4.calendar 
