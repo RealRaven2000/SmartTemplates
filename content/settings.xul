@@ -553,7 +553,7 @@
 											 label = "&resolveNamesFromABNick;"
 											 preference = "pref_resolveNamesFromAB_Nickname"/>
 									<checkbox id = "chkResolveABRemoveMail"
-											 label = "Remove email address unless format specified"
+											 label = "&resolveABRemoveMail;"
 											 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."
 											 preference = "pref_resolveNamesFromAB_ReplaceEmail"/>
 								</vbox>
