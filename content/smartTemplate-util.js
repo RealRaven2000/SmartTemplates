@@ -35,7 +35,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_EXTENSION_VERSION : "0.9.5.2",
+	HARDCODED_EXTENSION_VERSION : "0.9.6.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -917,6 +917,13 @@ SmartTemplate4.Util = {
       while((i = str.indexOf(' ',i >= 0? i + 1 : 0 )) !== -1 ) {
         if(str.charAt(++findw) != ' ')
         {			 
+          // each word
+          // Capitalize doesn't work if word is quoted.
+          // we do not do this in case of "string" 'string' (string) or [string]
+          while ("\\\"\'\{\[\(\)".indexOf(str.charAt(findw))>=0) {
+            findw++; // skip these characters, so we hit alphabetics again
+          }
+          
           str = str.substring(0, findw)
               .concat(str.charAt(findw).toLocaleUpperCase())
               .concat(str.substring(findw + 1).toLocaleLowerCase());
