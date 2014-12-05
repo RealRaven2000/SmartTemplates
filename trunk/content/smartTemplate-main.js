@@ -170,7 +170,7 @@
   Version 0.9.6.1
     # [Bug 25902]  %from% and %to% fail if no argument is given
     # [Bug 25903] In address fields Quotation marks are escaped: \"
-    # Capitalize Names doesn't work if string is quoted. Makes the whole string lowercase.
+    # Fixed: Capitalize Names doesn't work if string is quoted. Makes the whole string lowercase.
 		
 =========================
 		0.9.3 Review specific:
