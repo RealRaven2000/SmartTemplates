@@ -44,8 +44,8 @@ SmartTemplate4.classPref = function()
             return root.getComplexValue(prefstring, Components.interfaces.nsIPrefLocalizedString).data;
           }
           catch(ex) {
-            SmartTemplate4.Util.logException("Prefstring missing: " + prefstring 
-              + "\nReturning default string: " + defaultValue, ex);
+            SmartTemplate4.Util.logDebug("Prefstring missing: " + prefstring 
+              + "\nReturning default string: [" + defaultValue + "]");
             return defaultValue;
           }
 				case Components.interfaces.nsIPrefBranch.PREF_INT:
@@ -212,6 +212,7 @@ function async_driver(val) {
 
 // We use this as a display consumer
 // nsIStreamListener
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 var streamListenerST4 =
 {
   _data: "",
@@ -320,8 +321,19 @@ SmartTemplate4.classGetHeaders = function(messageURI)
 	// Get header
 	function get(header)
 	{
+    // /nsIMimeHeaders.extractHeader
+    let retValue = '';
 		var str = headers.extractHeader(header, false);
-		return str ? str : "";
+    // for names maybe use nsIMsgHeaderParser.extractHeaderAddressName instead?
+    if (str && SmartTemplate4.Preferences.getMyBoolPref('headers.unescape.quotes')) {
+      // if a string has nested escaped quotes in it, should we unescape them?
+      // "Al \"Karsten\" Seltzer" <fxxxx@gmail.com>
+      retValue = str.replace(/\\\"/g, "\""); // unescape
+    }
+    else
+      retValue = str ? str : "";
+    SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
+    return retValue;
 	};
 	
 	// -----------------------------------
@@ -484,6 +496,7 @@ SmartTemplate4.mimeDecoder = {
       return null;
     }
 		
+    if (typeof format=='undefined') format = ''; // [Bug 25902]  %from% and %to% fail if no argument is given
 		SmartTemplate4.Util.logDebugOptional('mime.split',
          'mimeDecoder.split() charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + '\n'
        + 'addrstr:' +  addrstr + '\n'
@@ -802,6 +815,7 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 		return aString.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, chkRw);
 	}
 
+  SmartTemplate4.regularize.headersDump = '';
 	SmartTemplate4.Util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  STARTS...');
 	// var parent = SmartTemplate4;
 	var idkey = document.getElementById("msgIdentity").value;
@@ -1476,7 +1490,9 @@ SmartTemplate4.regularize = function(msg, type, isStationery, ignoreHTML, isDraf
 	msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
 	
 	if (sandbox) Components.utils.nukeSandbox(sandbox);
-	
+
+  // dump out all headers that were retrieved during regularize  
+  SmartTemplate4.Util.logDebugOptional('headers', SmartTemplate4.regularize.headersDump);
 	SmartTemplate4.Util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
 };
