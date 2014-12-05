@@ -8,7 +8,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="0.9.6pre1"
+   em:version="0.9.6.1pre24"
    em:creator="Axel Grude"
    em:contributor="Benito van der Zander [Bug 25676]"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
@@ -29,7 +29,7 @@
   <RDF:Description RDF:about="rdf:#$Vsomz2"
    em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
    em:minVersion="3.1.7"
-   em:maxVersion="32.*"/>
+   em:maxVersion="33.*"/>
 
   <!-- Postbox -->
   <RDF:Description RDF:about="rdf:#$Vsomt2"
@@ -41,6 +41,6 @@
    <RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
    em:minVersion="2.0"
-   em:maxVersion="2.28.*"/>
+   em:maxVersion="2.31.*"/>
 
 </RDF:RDF>
