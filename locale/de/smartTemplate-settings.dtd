@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Empfänger E-Mail Adresse">
 <!ENTITY sig.label "Signatur aus den Konten-Einstellungen">
 <!ENTITY sig2.label "Signatur aus den Konten-Einstellungen aber ohne '--'">
+<!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
+<!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">

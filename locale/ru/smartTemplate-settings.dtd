@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Адрес получателя копии">
 <!ENTITY sig.label "Подпись">
 <!ENTITY sig2.label "Подпись, но без '--'">
+<!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
+<!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
 <!ENTITY to.label "Инициалы получателя (стандарт)">

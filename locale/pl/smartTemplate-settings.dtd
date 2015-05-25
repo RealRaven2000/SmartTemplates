@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Adres e-mail odbiorcy">
 <!ENTITY sig.label "Podpis (z ustawień konta)">
 <!ENTITY sig2.label "z ustawień konta ale bez „--”">
+<!ENTITY fileHTML.label "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków..">
+<!ENTITY fileImage.label "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText.">
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">

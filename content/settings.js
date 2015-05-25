@@ -25,8 +25,8 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefDisable : function()
 	{
-		for (var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.accountId);
+		for (let i = 1; i < arguments.length; i++){
+			let el = document.getElementById(arguments[i] + this.accountId);
 			el.disabled = arguments[0] ? false : true;
 			if (arguments[0]) {
 				el.removeAttribute("disabled");
@@ -42,8 +42,8 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	prefHidden : function()
 	{
-		for (var i = 1; i < arguments.length; i++){
-			var el = document.getElementById(arguments[i] + this.accountId);
+		for (let i = 1; i < arguments.length; i++){
+			let el = document.getElementById(arguments[i] + this.accountId);
 			if (arguments[0]) {
 				el.hidden = true;
 				el.setAttribute("hidden", "true");
@@ -57,13 +57,12 @@ SmartTemplate4.Settings = {
 
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
-	prefDeck : function(id, index)
-	{
-		var deck = document.getElementById(id + this.accountId);
+	prefDeck : function(id, index) {
+		let deck = document.getElementById(id + this.accountId);
 		if (deck)
 		  { deck.selectedIndex = index; }
 
-		const idkey = document.getElementById("msgIdentity").value;
+		const idkey = SmartTemplate4.Util.getIdentityKey(document);
 		const branch = (idkey == "common") ? ".common" : "." + idkey;
 	} ,
 
@@ -82,8 +81,8 @@ SmartTemplate4.Settings = {
 	pasteFocus : function(element) {
 		let hbox = element.parentNode;
 		let vbox = hbox.parentNode.parentNode;
-		var txtContainers = vbox.getElementsByClassName("pasteFocus");
-		for (var i = 0; i < txtContainers.length; i++) {
+		let txtContainers = vbox.getElementsByClassName("pasteFocus");
+		for (let i = 0; i < txtContainers.length; i++) {
 			// add the arrow to the hbox that contains this textbox
 			// and remove it from all others
 			txtContainers[i].className = 
@@ -127,10 +126,10 @@ SmartTemplate4.Settings = {
 	{
 		SmartTemplate4.Util.logDebug('cleanupUnusedPrefs ()');
 
-		var array = this.prefService.getChildList("extensions.smartTemplate4.", {});
+		let array = this.prefService.getChildList("extensions.smartTemplate4.", {});
 
 		// AG new: preserve common and global settings!
-		for (var i in array) {
+		for (let i in array) {
 			let branch = array[i];
 			if (document.getElementsByAttribute("name", branch).length === 0
 			    &&
@@ -366,9 +365,11 @@ SmartTemplate4.Settings = {
 	} ,
 
 	onCodeWord : function(code, className) {
-		SmartTemplate4.Util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
+    let util = SmartTemplate4.Util,
+        settings = SmartTemplate4.Settings;
+		util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
-		let currentDeck = 'deckB.nodef' + SmartTemplate4.Settings.accountId ;
+		let currentDeck = 'deckB.nodef' + settings.accountId ;
 		let tabbox = document.getElementById(currentDeck);
 		let templateMsgBoxId = '';
 		let headerMsgBoxId = '';
@@ -376,7 +377,7 @@ SmartTemplate4.Settings = {
 			case 0:
 				templateMsgBoxId='newmsg';
 				if (className.indexOf('noWrite') >= 0) {
-					SmartTemplate4.Util.displayNotAllowedMessage(code);
+					util.displayNotAllowedMessage(code);
 					return;
 				}
 				break;
@@ -392,9 +393,9 @@ SmartTemplate4.Settings = {
 				break;
 		}
 		if (templateMsgBoxId) {
-			templateMsgBoxId += SmartTemplate4.Settings.accountId;
+			templateMsgBoxId += settings.accountId;
 			if (headerMsgBoxId)
-				headerMsgBoxId += SmartTemplate4.Settings.accountId;
+				headerMsgBoxId += settings.accountId;
 			let editBox = document.getElementById(templateMsgBoxId);
 
 			if (headerMsgBoxId) {
@@ -404,10 +405,69 @@ SmartTemplate4.Settings = {
 					editBox = headerBox;
 				}
 			}
+      if (code.indexOf('%file')==0) {
+        code = settings.getFileName(code,editBox);
+        return; // cancel
+      }
 			
-			SmartTemplate4.Settings.insertAtCaret(editBox, code);
+			settings.insertAtCaret(editBox, code);
 		}
 	} ,
+  
+  // %file(filePath,encoding)%
+  // %file(imagePath,altText)%
+  getFileName: function getFileName(code,editBox) {
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
+    let fileType = (code.indexOf('filePath')>0) ? 'html' :
+                   ((code.indexOf('imagePath')>0) ? 'image' : 'unknown'),
+		    //localized text for filePicker filter menu
+		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
+		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
+        filterText;
+    
+    if (fileType=='unknown')
+      return false; // error
+    
+		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
+		fp.init(window, "", fp.modeOpen); // second parameter: prompt
+    switch (fileType) {
+      case 'html':
+        filterText = bundle.GetStringFromName("fpHTMLFile");
+        fp.appendFilter(filterText, "*.htm;*.html;*.txt");
+        break;
+      case 'image':
+        filterText = bundle.GetStringFromName("fpImageFile");
+         // fp.appendFilter(filterText, "*.png;*.jpg;*.jpeg;*.bmp;*.dib;*.ico;*.svg;*.gif;*.tif");
+        fp.appendFilters(Ci.nsIFilePicker.filterImages);
+        break;
+    }
+    
+    let fpCallback = function fpCallback_FilePicker(aResult) {
+      if (aResult == Ci.nsIFilePicker.returnOK) {
+        if (fp.file) {
+          let path = fp.file.path;
+          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+          try {
+            let st4Code = "%file(" + path + ")%"; //. .replace(/\\/g,"/")
+            SmartTemplate4.Settings.insertAtCaret(editBox, st4Code);
+          }
+          catch(ex) {
+            ;
+          }
+        }
+      }
+    }
+    
+		if (fp.open)
+			fp.open(fpCallback);		
+		else { // Postbox
+		  fpCallback(fp.show());
+		}
+    
+    return true;
+    
+  } ,
 
 	onUnload : function() {
 // 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
@@ -424,7 +484,7 @@ SmartTemplate4.Settings = {
 			try {
 				const _str = "smartTemplate4.common"; // was "smarttemplate"
 				if (_el.hasAttribute("name")) {
-					var _attr = _el.getAttribute("name");
+					let _attr = _el.getAttribute("name");
 					if (_attr.indexOf(_str, 0) >= 0) {
 						_el.setAttribute("name", _attr.replace(_str, "smartTemplate4." + key));
 					}
@@ -527,9 +587,9 @@ SmartTemplate4.Settings = {
 				CurId = window.opener.getIdentityForServer(folders[0].server);
 		}
 		
-		let theMenu = document.getElementById("msgIdentity");
-		let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-		for (var idx = 0; idx < iAccounts; idx++) {
+		let theMenu = document.getElementById("msgIdentity"),
+		    iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+		for (let idx = 0; idx < iAccounts; idx++) {
 			let account = accounts.queryElementAt ?
 				accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
 				accounts.GetElementAt(idx).QueryInterface(this.Ci.nsIMsgAccount);
@@ -538,7 +598,7 @@ SmartTemplate4.Settings = {
 				continue;
 
 			let iIdentities = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
-			for (var j = 0; j < iIdentities; j++) {
+			for (let j = 0; j < iIdentities; j++) {
 				let identity = account.identities.queryElementAt ?
 					account.identities.queryElementAt(j, this.Ci.nsIMsgIdentity) :
 					account.identities.GetElementAt(j).QueryInterface(this.Ci.nsIMsgIdentity);
@@ -587,11 +647,9 @@ SmartTemplate4.Settings = {
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
 	//--------------------------------------------------------------------
-	switchIdentity : function(idKey)
-	{
-
-		var el = document.getElementById("msgIdentityPopup").firstChild
-		var index = 0;
+	switchIdentity : function(idKey)	{
+		let el = document.getElementById("msgIdentityPopup").firstChild
+		let index = 0;
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
@@ -615,11 +673,10 @@ SmartTemplate4.Settings = {
 
 	// Select identity (from xul)
 	//--------------------------------------------------------------------
-	selectIdentity : function(idkey)
-	{
+	selectIdentity : function(idkey)	{
 		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
-		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
-		let tabbox = document.getElementById(currentDeck);
+		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+		    tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
 		let tabIndex = tabbox.selectedIndex;
@@ -627,13 +684,12 @@ SmartTemplate4.Settings = {
 		const  branch = (idkey == "common") ? ".common" : "." + idkey;
 
 		// Display identity.
-		let deck = document.getElementById("account_deckA");
-		let index = 0;
+		let deck = document.getElementById("account_deckA"),
+		    index = 0,
+		    searchDeckName = "deckA.per_account" + branch,
+		    found = false;
 
-		let searchDeckName = "deckA.per_account" + branch;
-		let found = false;
-
-		for (var el = deck.firstChild; el; el = el.nextSibling) {
+		for (let el = deck.firstChild; el; el = el.nextSibling) {
 			if (el.id == searchDeckName) {
 				deck.selectedIndex = index;
 				this.accountKey = branch;
@@ -667,13 +723,14 @@ SmartTemplate4.Settings = {
 			return;
 		}
 
-		var el =  '';
+		let el =  '';
+    let node;
 		el +=  element.id ? "  id=" + element.id : "";
 		el +=  element.nodeName ? "  nodeName=" + element.nodeName : "";
 		el +=  element.name ? "  name=" + element.name : "";
 		SmartTemplate4.Util.logDebugOptional("events", "insertAtCaret(" + el + "): field Code = " + code);
 		try {
-			var node = element.nodeName;
+			node = element.nodeName;
 			element.focus();
 			if (node=="HTML") { // Composer Windows /
 			    if (window.getSelection && window.getSelection().getRangeAt) {
@@ -685,8 +742,8 @@ SmartTemplate4.Settings = {
 			    }
 			}
 			else {
-				var startSel = element.selectionStart;
-				var endSel = element.selectionEnd;
+				let startSel = element.selectionStart;
+				let endSel = element.selectionEnd;
 				if (!element.value)
 					element.value = "" + code;
 				else
