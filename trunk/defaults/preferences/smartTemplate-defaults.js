@@ -21,6 +21,7 @@ pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.names.capitalize", true);
+pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */
@@ -43,6 +44,7 @@ pref("extensions.smartTemplate4.debug.functions.extractSignature", false);
 pref("extensions.smartTemplate4.debug.functions.getProcessedTemplate", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
+pref("extensions.smartTemplate4.debug.composer", false);
 pref("extensions.smartTemplate4.debug.settings", false);
 pref("extensions.smartTemplate4.debug.settings.prefs", false);
 pref("extensions.smartTemplate4.debug.signatures", false);

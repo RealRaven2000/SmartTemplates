@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Adresse électronique des destinataires en copie">
 <!ENTITY sig.label "Signature issue des paramètres du compte">
 <!ENTITY sig2.label "Signature issue des paramètres du compte, mais sans '--'">
+<!ENTITY fileHTML.label "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé.">
+<!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
 <!ENTITY to.label "Noms des destinataires (défaut)">

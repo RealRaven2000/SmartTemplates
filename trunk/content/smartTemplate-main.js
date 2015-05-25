@@ -3,8 +3,6 @@
 // notes
 // investigate gMsgCompose.compFields!
 
-
-
 /* Version History  (chronological)
 
   Version 0.7.4 - Released 09/08/2011
@@ -153,13 +151,13 @@
     # Fixed reading plain text signature files (linefeeds where lost) by inserting html line breaks
       to disable this behavior toggle extensions.smartTemplate4.signature.replaceLF.plaintext.br in about:config
 
-  Version 0.9.5.1 
+  Version 0.9.5.1 - 24/04/2014
     # Fixed minver for SeaMonkey
 
-  Version 0.9.5.2  
+  Version 0.9.5.2  - 08/05/2014
     # Fixed [Bug 25762] related to Replace Names from Addressbook (LDAP). Also disabled this feature on Postbox.
     
-  Version 0.9.6  
+  Version 0.9.6  - 04/10/2014
     # Added a switch for removing emails when replacing Names from Address book
     # Added format %sig(none)% to completely suppress signature
     # [Bug 25089] (reopened) default quote header wasn't removed anymore in Tb 31.0
@@ -167,10 +165,43 @@
     # [Bug 25089] Default forward quote not hidden
     # variable %matchTextFromBody()% to find and replace patter e.g. %matchTextFromBody(TEST *)% will retrieve '123' from 'TEST 123'
     
-  Version 0.9.6.1
-    # [Bug 25902]  %from% and %to% fail if no argument is given
+  Version 1.0  - 24/05/2015
+  Features
+    # [Bug 25871] %file()% - insert html, text or image from file (for customized signatures)
+                  use a local file path in order to insert a file from the computer you are sending from
+                  %file(fileName)%
+                  %file(fileName,encoding)%
+                  If the encoding parameter is omitted, we assume UTF-8 (recommended)
+                  %file(imageName,altText)%
+                  The optional altText is displayed at the recipient if the image cannot be displayed. It may not contain the characters ,)(><
+                  
+    # [Bug 25902], [Bug 26020] To support multiple mail addresses with more flexibility
+                   bracketMail(arg) - use  within from() to() cc() etc. to "wrap" mail address with non-standard characters
+                   bracketName(arg) - same using "name portion"
+            usage: bracketMail(startDel;endDel)  startDel = characters before the mail portion 
+                                                 endDel = characters after the mail portion
+                                                 e.g. bracketMail(";")  not allowed are:  ; , < > ( ) [ ]
+                   bracketMail()        =  <mail@domain.com>
+                   bracketMail(angle)   =  <mail@domain.com>
+                   bracketMail(round)   =  (mail@domain.com)
+                   bracketMail(square)  =  [mail@domain.com]
+    
+  Bugfixes
+    # [Bug 25902] %from% and %to% fail if no argument is given - Added Improvements + Stability + better List support
     # [Bug 25903] In address fields Quotation marks are escaped: \"
     # Fixed: Capitalize Names doesn't work if string is quoted. Makes the whole string lowercase.
+             Also words with Names in brackets now.
+    # Fixed: getSignatureInner inserts "undefined" in Postbox if no signature is defined for current identity.
+    # [Bug 25951] ST4 not working in SeaMonkey 2.32 - Temporal Deadzone - This was caused by some code changes in the
+      Mozilla code base that established different rules for variables declared with "var" causing addons to break
+      which have the same variable declared with let or var&let multiple times (in the same scope)
+    # [Bug 25976] Reply to List: variables not resolved - Stationery Patch available
+    # [Bug 26008] Inserting Template in Postbox may fail with "XPCOMUtils not defined"
+    # [Bug 25089] Default forward quote not hidden - in Postbox "Fred wrote:" was not removed in plain text mode.
+                  Set extensions.smartTemplate4.plainText.preserveTextNodes = true for roll back to previous behavior
+    # [Bug 26013] ST4 picks template from common settings instead of identity (Tb38)
+    # [Bug 25911] Spaces in long subject headers [Decoding Problem] - WIP
+    # Postbox 4: fixed removal of quote header (author wrote:) which is in a plain <span>
 		
 =========================
 		0.9.3 Review specific:
@@ -265,28 +296,41 @@ var SmartTemplate4 = {
 	},
 
 	initListener: function initListener() {
-		gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+    let util = SmartTemplate4.Util,
+        log = util.logDebugOptional.bind(util),
+        notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4);
+    log('composer', 'Registering State Listener...');
+    try {
+      gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+    }
+    catch (ex) {
+      SmartTemplate4.Util.logException("Could not register status listener", ex);
+    }
 		// alternative events when 
 		if (SmartTemplate4.Preferences.isStationerySupported) {
-
+      log('composer' , 'Adding Listener for stationery-template-loaded...');
 			window.addEventListener('stationery-template-loaded', function(event) {
 			  // async event
-				SmartTemplate4.Util.logDebug('EVENT: stationery-template-loaded');
-				SmartTemplate4.notifyComposeBodyReady(event);
+				log('composer,events', 'EVENT: stationery-template-loaded');
+				notifyComposeBodyReady(event);
 			}, false);		
 		}
+    else {
+      log('composer', 'not registering stationery-template-loaded event Preferences.isStationerySupported=false?');
+    }
 	},
 	
 	// Stationery 0.8 support!
   preprocessHTMLStationery: function preprocessHTMLStationery(t) {
-    SmartTemplate4.Util.logDebugOptional('stationery',
+    let util = SmartTemplate4.Util;
+    util.logDebugOptional('stationery',
 		     '=========================================\n'
 		   + '=========================================\n'
 			 + 'preprocessor for Stationery running...');
-    let idKey = document.getElementById("msgIdentity").value;
+    let idKey = util.getIdentityKey(document);
     if(!idKey)
       idKey = gMsgCompose.identity.key;
-    let st4composeType = SmartTemplate4.Util.getComposeType();
+    let st4composeType = util.getComposeType();
     if (st4composeType.indexOf('(draft)')) {
       st4composeType = st4composeType.substr(0,3);
     }
@@ -295,11 +339,11 @@ var SmartTemplate4 = {
 		// do not do HTML escaping!
 		// pass in a flag to leave %sig% untouched
     t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true, true); 
-    SmartTemplate4.Util.logDebugOptional('stationery',
+    util.logDebugOptional('stationery',
 		     '=========================================\n'
 		   + '=========================================\n'
 			 + 'Stationery preprocessor complete.');
-		SmartTemplate4.Util.logDebugOptional('stationery',
+		util.logDebugOptional('stationery',
 		     'Processed text: ' + t.HTML);
   },	
 	
@@ -393,7 +437,7 @@ var SmartTemplate4 = {
 		else {
 		  // change identity on an existing message:
 			// Check body modified or not
-			var isBodyModified = gMsgCompose.bodyModified;
+			let isBodyModified = gMsgCompose.bodyModified;
 			// we can only reliable roll back the previous template and insert
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
@@ -436,10 +480,9 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// Initialize - we only call this from the compose window
 	// -------------------------------------------------------------------
-	init: function init()
-	{
+	init: function init()	{
 		function smartTemplate_loadIdentity(startup){
-			var prevIdentity = gCurrentIdentity;
+			let prevIdentity = gCurrentIdentity;
 			return SmartTemplate4.loadIdentity(startup, prevIdentity);
 		}
 
@@ -515,7 +558,6 @@ var SmartTemplate4 = {
 	signatureDelimiter:  '-- <br>'
 
 };  // Smarttemplate4
-
 
 // -------------------------------------------------------------------
 // Get day name and month name (localizable!)

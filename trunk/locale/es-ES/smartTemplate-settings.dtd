@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Dirección de destinatario en copia">
 <!ENTITY sig.label "Firma de la Configuración de cuentas de TB">
 <!ENTITY sig2.label "Firma de la Configuración de cuentas de TB pero sin '--'">
+<!ENTITY fileHTML.label "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8.">
+<!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">

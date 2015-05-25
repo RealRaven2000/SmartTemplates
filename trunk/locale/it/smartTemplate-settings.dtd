@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Indirizzo e-mail del destinatario in copia">
 <!ENTITY sig.label "Firma da impostazion account">
 <!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
+<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
+<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY to.label "Nome del destinatario (predefinito)">

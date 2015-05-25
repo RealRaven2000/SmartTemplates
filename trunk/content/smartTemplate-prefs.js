@@ -31,7 +31,7 @@ SmartTemplate4.Preferences = {
 		try {
 			return this.service.getBoolPref(p);
 		} catch(e) {
-			var s="Err:" +e;
+			let s="Err:" +e;
 			SmartTemplate4.Util.logToConsole("getBoolPref("+p+") failed:\n" + s);
 			return false;
 		}
@@ -57,7 +57,7 @@ SmartTemplate4.Preferences = {
 		try {
 			return this.service.setBoolPref(p, v);
 		} catch(e) {
-			var s="Err:" +e;
+			let s="Err:" +e;
 			return false;
 		}
 	} ,

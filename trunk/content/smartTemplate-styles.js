@@ -16,9 +16,9 @@ SmartTemplate4.Styles = {
 		let styleSheetList = document.styleSheets;
 		offset = offset || null; 
 		let o = offset ? offset.offset : 0;
-		for (var i = o; i < styleSheetList.length; i++) {
-			var ss = styleSheetList[i];
-			var href = ss.href ? ss.href : "";
+		for (let i = o; i < styleSheetList.length; i++) {
+			let ss = styleSheetList[i];
+			let href = ss.href ? ss.href : "";
 
 			sList += i.toString() + '. ' + href
 			         + (ss.title ? ' [' + ss.title + ']' : '') + '\n';
@@ -60,8 +60,7 @@ SmartTemplate4.Styles = {
 		try {
 			let rulesList=ss.cssRules;
 			let match = false;
-			var i;
-			for (i=1; i<rulesList.length; i++)
+			for (let i=1; i<rulesList.length; i++)
 			{
 				let selectors = rulesList[i].selectorText;
 				if (!selectors || !selectors.length)
@@ -113,12 +112,11 @@ SmartTemplate4.Styles = {
 			SmartTemplate4.Util.logDebugOptional("css.detailed", "setElementStyle( " + rule + ", " + attribute + ", " + value + ")");
 
 			let rulesList=ss.cssRules;
-			var i;
-			var found=false;
-			var foundRule=false;
-			var st; // new style rule
+			let found=false;
+			let foundRule=false;
+			let st; // new style rule
 			// 0 is fake, it is not a rule (no idea why)
-			for (i=1; i<rulesList.length; i++)
+			for (let i=1; i<rulesList.length; i++)
 			{
 				let selectors = rulesList[i].selectorText;
 				if (!selectors || !selectors.length)
@@ -127,9 +125,8 @@ SmartTemplate4.Styles = {
 				if (rule == selectors) {
 					st=rulesList[i].style; // CSSStyleDeclaration
 					SmartTemplate4.Util.logDebugOptional("css.detailed", "found relevant style: " + rulesList[i].selectorText + " searching rule " + attribute);
-					var k;//iterate rules!
-
-					for (k=0;k<st.length;k++) {
+					//iterate rules!
+					for (let k=0; k<st.length; k++) {
 						try{
 							if (attribute==st.item(k)) {
 								foundRule=true;
@@ -152,7 +149,7 @@ SmartTemplate4.Styles = {
 						return true;
 				}
 			}
-			var sRule=rule +"{" + attribute + ":" + value + ((important) ? " !important" : "") + ";}";
+			let sRule=rule +"{" + attribute + ":" + value + ((important) ? " !important" : "") + ";}";
 			SmartTemplate4.Util.logDebugOptional("css.AddRule", "Adding new CSS rule:" + sRule );
 			if (null!=value)
 				ss.insertRule(sRule, ss.cssRules.length);

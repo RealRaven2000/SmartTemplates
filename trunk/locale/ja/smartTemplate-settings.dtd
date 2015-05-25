@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "CC 受信者のメールアドレス">
 <!ENTITY sig.label "アカウントに設定されている署名">
 <!ENTITY sig2.label "アカウントに設定されている署名 ('-- ' 無し)">
+<!ENTITY fileHTML.label "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。">
+<!ENTITY fileImage.label "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。">
 <!ENTITY to_var.cap "受信者 (To)">
 <!ENTITY to_note.label "受信者の名前が設定されていない場合、メールアドレスが表示されます">
 <!ENTITY to.label "受信者の名前とメールアドレス (既定)">

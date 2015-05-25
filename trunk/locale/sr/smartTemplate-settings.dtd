@@ -1,21 +1,21 @@
 <!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label "Датотека">
 <!ENTITY tools.label "Алатке">
-<!ENTITY edit.label "Уреди">
+<!ENTITY edit.label "Уређивање">
 <!ENTITY help.label "Помоћ">
 <!-- #### MENU OWN ITEMS #### -->
-<!ENTITY copy.label "Умножи">
+<!ENTITY copy.label "Копирај">
 <!ENTITY paste.label "Налепи">
 <!ENTITY insert.label "Убаци променљиву">
-<!ENTITY close.label "Затвори">
+<!ENTITY close.label "Основно">
 <!ENTITY advanced.label "Напредно">
 <!ENTITY export.label "Извези">
 <!ENTITY import.label "Увези">
 <!ENTITY menu.template_import.label "Увези шаблон">
 <!ENTITY menu.template_export.label "Извези шаблон">
-<!ENTITY settings.label "Подешавања и шаблони">
+<!ENTITY settings.label "Поставке и шаблони">
 <!ENTITY url.homePage.label "Сајт додатка">
-<!ENTITY url.supportPage.label "Страница за подршку">
+<!ENTITY url.supportPage.label "Подршка">
 <!ENTITY url.bugsAndFeaturesPage.label "Пријаве о грешкама / захтеви за могућности">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Састави">
@@ -47,10 +47,10 @@
 <!ENTITY pref_quoteHeaderBox.label "Заглавље цитирања">
 <!ENTITY pref_quoteHeaderBox_tip "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;“">
 <!ENTITY pref_dialog.title "Поставке SmartTemplate4-а">
 <!ENTITY pref_breaksOnTop.label "Број прелома на врху:">
-<!ENTITY pref_removeSig.label "Замени потпис при промени иднтитета е-поште">
+<!ENTITY pref_removeSig.label "Замени потпис при промени идентитета е-поште">
 <!ENTITY pref_showStatusIcon.label "Прикажи дугме у статусној траци">
 <!ENTITY pref_StatusIcon.IconOnly "Само икона">
 <!ENTITY pref_StatusIcon.IconText "Икона и текст">
@@ -82,9 +82,14 @@
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
+<!ENTITY resolveNamesFromAB_tip "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP.">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
+<!ENTITY resolveABRemoveMail "Уклони е-адресу ако формат није наведен">
+<!ENTITY capitalizeNames "Капитализуј имена">
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
+<!ENTITY pref_cursorInsertSpace "Убаци размак ради истицања &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Замени нови ред у текстуалном потпису са &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
 <!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate4-ом.">
 <!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">
@@ -93,13 +98,13 @@
 <!ENTITY pref_defaultCharset.label "Подразумевано кодирање">
 <!ENTITY pref_defaultCharset_tip "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "О проширењу">
+<!ENTITY about.cap "О додатку">
 <!ENTITY creator.label "Аутор">
 <!ENTITY developer.label "Програмер">
 <!ENTITY localename.label "sr-RS">
 <!ENTITY localized.label "Преводилац">
 <!ENTITY translatorNickname.label "Rancher">
-<!ENTITY contributor.label "Доприносилац">
+<!ENTITY contributor.label "Сарадник">
 <!ENTITY about.label "SmartTemplate4 вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Контролне променљиве">
@@ -111,6 +116,8 @@
 <!ENTITY ccmail.label "Е-адреса примаоца">
 <!ENTITY sig.label "Потпис из подешавања налога">
 <!ENTITY sig2.label "Потпис из подешавања налога, али без две цртице (--)">
+<!ENTITY fileHTML.label "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8.">
+<!ENTITY fileImage.label "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан.">
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY to.label "Име примаоца (подразумевано)">
@@ -134,8 +141,8 @@
 <!ENTITY sub.label "наслов одговорене/прослеђене поруке">
 <!ENTITY sub2.label "наслов поруке коју тренутно састављате">
 <!ENTITY spec_var.cap "Посебна">
-<!ENTITY messid.label "Message ID">
-<!ENTITY newsgr.label "Newsgroups">
+<!ENTITY messid.label "ID поруке">
+<!ENTITY newsgr.label "Дискусионе групе">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Било који ред заглавља">
 <!ENTITY fix_vartz.cap "Контролне променљиве за „Формат датума/временска зона“">
@@ -146,21 +153,21 @@
 <!ENTITY tzname.label "GMT, PST, EST…">
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
-<!ENTITY A.label "Дан у недељи">
-<!ENTITY a.label "Дан у недељи">
-<!ENTITY d.label "Дан у месецу, са нулом на почетку">
+<!ENTITY A.label "Дан у недељи (пун назив)">
+<!ENTITY a.label "Дан у недељи (скраћени назив)">
+<!ENTITY d.label "Дан у месецу (од 01 до 31) са нулом на почетку">
 <!ENTITY e.label "Дан у месецу">
 <!ENTITY n.label "Месец (од 1 до 12)">
-<!ENTITY B.label "Месец">
-<!ENTITY b.label "Месец">
-<!ENTITY m.label "Месец (од 01 до 12) – са почетном нулом">
+<!ENTITY B.label "Месец (пун назив)">
+<!ENTITY b.label "Месец (скраћени назив)">
+<!ENTITY m.label "Месец (од 01 до 12) – са нулом на почетку">
 <!ENTITY Y.label "Година">
 <!ENTITY M.label "Минут">
 <!ENTITY s.label "Секунд">
-<!ENTITY h.label "24-часовни формат, са нулом на почетку">
+<!ENTITY h.label "Време, 24-часовни формат (од 00 до 23) са нулом на почетку">
 <!ENTITY k.label "Време, 24-часовни формат (од 0 до 23)">
 <!ENTITY l.label "Време, 12-часовни формат (од 1 до 12)">
-<!ENTITY i.label "12-часовни формат, са нулом на почетку">
+<!ENTITY i.label "Време, 12-часовни формат (од 01 до 12) са нулом на почетку">
 <!ENTITY p.label "AM/PM">
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
@@ -191,6 +198,6 @@
 <!ENTITY table_note.label "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“.">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Променљива">
-<!ENTITY table_new.label "Напиши">
+<!ENTITY table_new.label "Састави">
 <!ENTITY table_reply.label "Одговори">
 <!ENTITY table_fwd.label "Проследи">

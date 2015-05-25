@@ -116,6 +116,8 @@
 <!ENTITY ccmail.label "Nome e endereço do destinatário">
 <!ENTITY sig.label "Assinatura (da TB Conta Settings)">
 <!ENTITY sig2.label "Assinatura (da TB Conta Settings mas sem o '--')">
+<!ENTITY fileHTML.label "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'.">
+<!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O opcional altText é exibido se a imagem não pode ser localizada.">
 <!ENTITY to_var.cap "Variáveis de Destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY to.label "Destinatário (padrão)">

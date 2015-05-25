@@ -35,7 +35,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_EXTENSION_VERSION : "0.9.6.1",
+	HARDCODED_EXTENSION_VERSION : "1.0.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -265,7 +265,7 @@ SmartTemplate4.Util = {
 
 					SmartTemplate4.Util.mExtensionVer = addon.version;
 					SmartTemplate4.Util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
-					let versionLabel = window.document.getElementById("smartTemplate-options-version");
+					versionLabel = window.document.getElementById("smartTemplate-options-version");
 					if(versionLabel)
 						versionLabel.setAttribute("value", addon.version);
 
@@ -288,7 +288,7 @@ SmartTemplate4.Util = {
 		//returns the current QF version number.
 		if(SmartTemplate4.Util.mExtensionVer)
 			return SmartTemplate4.Util.mExtensionVer;
-		var current = SmartTemplate4.Util.HARDCODED_EXTENSION_VERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
+		let current = SmartTemplate4.Util.HARDCODED_EXTENSION_VERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
 
 		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
@@ -302,7 +302,7 @@ SmartTemplate4.Util = {
 
 				if(Components.classes["@mozilla.org/extensions/manager;1"])
 				{
-					var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+					let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
 						.getService(Components.interfaces.nsIExtensionManager);
 					current = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
 				}
@@ -331,12 +331,21 @@ SmartTemplate4.Util = {
 			return version;
 		}
 
-		var pureVersion = strip(SmartTemplate4.Util.Version, 'pre');
+		let pureVersion = strip(SmartTemplate4.Util.Version, 'pre');
 		pureVersion = strip(pureVersion, 'beta');
 		pureVersion = strip(pureVersion, 'alpha');
 		return strip(pureVersion, '.hc');
 	},
 
+  getIdentityKey  :  function getIdentityKey(doc) {
+    let selected = doc.getElementById("msgIdentity").selectedItem;
+    if (!selected) return "";
+    let key = selected.getAttribute("identitykey");  // Tb 38.*
+    if (!key)
+        key = selected.getAttribute("value"); // Tb 31.*
+    return key;
+  }, 
+  
 	popupAlert: function (title, text, icon) {
 		try {
 			if (!icon)
@@ -352,10 +361,10 @@ SmartTemplate4.Util = {
 
 	showStatusMessage: function(s) {
 		try {
-			var sb = this.Mail3PaneWindow.document.getElementById('status-bar');
-			var el, sbt;
+			let sb = this.Mail3PaneWindow.document.getElementById('status-bar');
+			let el, sbt;
 			if (sb) {
-				for (var i = 0; i < sb.childNodes.length; i++)
+				for (let i = 0; i < sb.childNodes.length; i++)
 				{
 					el = sb.childNodes[i];
 					if (el.nodeType === 1 && el.id === 'statusTextBox') {
@@ -363,7 +372,7 @@ SmartTemplate4.Util = {
 							break;
 					}
 				}
-				for (var i = 0; i < sbt.childNodes.length; i++)
+				for (let i = 0; i < sbt.childNodes.length; i++)
 				{
 					el = sbt.childNodes[i];
 					if (el.nodeType === 1 && el.id === 'statusText') {
@@ -382,15 +391,16 @@ SmartTemplate4.Util = {
 	} ,
 
 	logTime: function() {
-		var timePassed = '';
+		let timePassed = '';
+    let end;
 		try { // AG added time logging for test
-			var end= new Date();
-			var endTime = end.getTime();
+			end = new Date();
+			let endTime = end.getTime();
 			if (this.lastTime === 0) {
 				this.lastTime = endTime;
 				return "[logTime init]"
 			}
-			var elapsed = new String(endTime - this.lastTime); // time in milliseconds
+			let elapsed = new String(endTime - this.lastTime); // time in milliseconds
 			timePassed = '[' + elapsed + ' ms]	 ';
 			this.lastTime = endTime; // remember last time
 		}
@@ -416,17 +426,19 @@ SmartTemplate4.Util = {
 	// strictFlag 		0x4
 	logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags)
 	{
-		var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
-		                               .getService(Components.interfaces.nsIConsoleService);
-		var aCategory = 'chrome javascript';
-
-		var scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
+		let consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+		                               .getService(Components.interfaces.nsIConsoleService),
+		    aCategory = 'chrome javascript',
+		    scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 		scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
 		consoleService.logMessage(scriptError);
+    if (this.Application == 'Postbox') { // apparently logMessage is ignored here.
+      this.logToConsole(aMessage, 'EXCEPTION in ' + aSourceName + ' @ line ' + aLineNumber + '\n');
+    }
 	} ,
 
 	logException: function (aMessage, ex) {
-		var stack = '';
+		let stack = '';
 		if (typeof ex.stack!='undefined')
 			stack= ex.stack.replace("@","\n  ");
 
@@ -440,9 +452,15 @@ SmartTemplate4.Util = {
 			this.logToConsole(msg);
 	},
 
-	logDebugOptional: function (option, msg) {
-		if (SmartTemplate4.Preferences.isDebugOption(option))
-			this.logToConsole(msg, option);
+	logDebugOptional: function (optionString, msg) {
+    let options = optionString.split(','); // allow multiple switches
+    for (let i=0; i<options.length; i++) {
+      let option = options[i];
+      if (SmartTemplate4.Preferences.isDebugOption(option)) {
+        this.logToConsole(msg, option);
+        break; // only log once, in case multiple log switches are on
+      }
+    }
 	},
 
 	// dedicated function for email clients which don't support tabs
@@ -452,8 +470,8 @@ SmartTemplate4.Util = {
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
 			if (SmartTemplate4.Util.Application==='SeaMonkey') {
-				var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
-				var browser = windowManager.getMostRecentWindow( "navigator:browser" );
+				let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
+				let browser = windowManager.getMostRecentWindow( "navigator:browser" );
 				if (browser) {
 					let URI = linkURI;
 					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
@@ -464,11 +482,9 @@ SmartTemplate4.Util = {
 
 				return;
 			}
-			var service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-				.getService(Ci.nsIExternalProtocolService);
-			var ioservice = Components.classes["@mozilla.org/network/io-service;1"].
-						getService(Ci.nsIIOService);
-			var uri = ioservice.newURI(linkURI, null, null);
+			let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService);
+			let ioservice = Components.classes["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+			let uri = ioservice.newURI(linkURI, null, null);
 			service.loadURI(uri);
 		}
 		catch(e) { this.logDebug("openLinkInBrowserForced (" + linkURI + ") " + e.toString()); }
@@ -481,9 +497,9 @@ SmartTemplate4.Util = {
 		let Cc = Components.classes;
 		let Ci = Components.interfaces;
 		if (SmartTemplate4.Util.Application === 'Thunderbird') {
-			var service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
+			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
 				.getService(Ci.nsIExternalProtocolService);
-			var ioservice = Cc["@mozilla.org/network/io-service;1"].
+			let ioservice = Cc["@mozilla.org/network/io-service;1"].
 						getService(Ci.nsIIOService);
 			service.loadURI(ioservice.newURI(linkURI, null, null));
 			if(null !== evt)
@@ -496,7 +512,7 @@ SmartTemplate4.Util = {
 
 	// moved from options.js (then called
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
-		var ioservice,iuri,eps;
+		let ioservice,iuri,eps;
 
 		if (SmartTemplate4.Util.Application==='SeaMonkey' || SmartTemplate4.Util.Application==='Postbox')
 		{
@@ -518,12 +534,12 @@ SmartTemplate4.Util = {
 				return true;
 			}
 			
-			var sTabMode="";
-			var tabmail;
+			let sTabMode="";
+			let tabmail;
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
-				var mail3PaneWindow = this.Mail3PaneWindow;
+				let mail3PaneWindow = this.Mail3PaneWindow;
 				if (mail3PaneWindow) {
 					tabmail = mail3PaneWindow.document.getElementById("tabmail");
 					mail3PaneWindow.focus();
@@ -783,8 +799,14 @@ SmartTemplate4.Util = {
 	},
 
 	isFormatLink : function(format) {
-		let formattedHTML = (format.search(/\,link\)$/, "i") != -1);
-	  return formattedHTML;
+    if (!format) return false;
+    if (format.charAt(0)=='(')
+      format = format.slice(1);
+    if (format.charAt(format.length-1)==')')
+      format = format.slice(0, -1);
+    
+    let fs = format.split(',');
+	  return (fs.indexOf('link') != -1);
 	} ,
 	
 	showPlatformWarning: function() {
@@ -839,7 +861,7 @@ SmartTemplate4.Util = {
 														.getService(Ci.nsIMsgAccountManager);  
 			let accounts = acctMgr.accounts;
 			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-			for (var i = 0; i < iAccounts; i++) {
+			for (let i = 0; i < iAccounts; i++) {
 				account = accounts.queryElementAt ?
 					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
 					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
@@ -887,7 +909,8 @@ SmartTemplate4.Util = {
 				if (!sig.children || sig.children.length==0) {
 					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
 
-					return sig.innerHTML ? sig.innerHTML : sig.outerHTML;  // deal with DOM String sig (non html)
+					return sig.innerHTML ? sig.innerHTML : 
+                 (sig.outerHTML ? sig.outerHTML : '');  // deal with DOM String sig (non html)
 				}
 				if (isRemoveDashes) {
 				  removeDashes(sig, false);
@@ -912,31 +935,20 @@ SmartTemplate4.Util = {
   toTitleCase: function toTitleCase(str) { // international version.
     let orig = str;
     try {
-      let i = -1;
-      let findw = -1;
-      while((i = str.indexOf(' ',i >= 0? i + 1 : 0 )) !== -1 ) {
-        if(str.charAt(++findw) != ' ')
-        {			 
-          // each word
-          // Capitalize doesn't work if word is quoted.
-          // we do not do this in case of "string" 'string' (string) or [string]
-          while ("\\\"\'\{\[\(\)".indexOf(str.charAt(findw))>=0) {
-            findw++; // skip these characters, so we hit alphabetics again
-          }
+      let words = str.split(' ');
           
-          str = str.substring(0, findw)
-              .concat(str.charAt(findw).toLocaleUpperCase())
-              .concat(str.substring(findw + 1).toLocaleLowerCase());
-          findw = i;
+      for (let i=0; i<words.length; i++) {
+        let word = words[i],
+            findw = 0;
+        while ("\\\"\'\{\[\(\)".indexOf(word.charAt(findw))>=0 && findw<word.length) {
+          findw++; // skip these characters, so we hit alphabetics again
         }
+        // Titlecase and re-append to Array
+        words[i] = word.substring(0, findw)
+                       .concat(word.charAt(findw).toLocaleUpperCase())
+                       .concat(word.substring(findw + 1).toLocaleLowerCase());
       }
-      //check for last word
-      if(str.charAt(++findw) != ' ')
-      {			 
-        str = str.substring(0, findw)
-            .concat(str.charAt(findw).toLocaleUpperCase())
-            .concat(str.substring(findw + 1).toLocaleLowerCase());
-      }
+      str = words.join(' ');
       return str;
     }
     catch(ex) {
@@ -1001,7 +1013,7 @@ SmartTemplate4.Util.firstRun =
 		let prefBranchString = "extensions.smartTemplate4.";
 
 		let svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
-		var ssPrefs = svc.getBranch(prefBranchString);
+		let ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
 
@@ -1010,7 +1022,7 @@ SmartTemplate4.Util.firstRun =
 			SmartTemplate4.Util.logDebugOptional ("firstRun","Could not retrieve prefbranch for " + prefBranchString);
 		}
 
-		var current = SmartTemplate4.Util.Version;
+		let current = SmartTemplate4.Util.Version;
 		SmartTemplate4.Util.logDebug("Current SmartTemplate4 Version: " + current);
 
 		try {
@@ -1060,10 +1072,10 @@ SmartTemplate4.Util.firstRun =
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - firstRun=" + firstRun);
 
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-			var pureVersion = SmartTemplate4.Util.VersionSanitized;
+			let pureVersion = SmartTemplate4.Util.VersionSanitized;
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
-			var versionPage = SmartTemplate4.Util.VersionPage + "#" + pureVersion;
+			let versionPage = SmartTemplate4.Util.VersionPage + "#" + pureVersion;
 			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
 
 			let updateVersionMessage = SmartTemplate4.Util.getBundleString (
@@ -1189,8 +1201,6 @@ SmartTemplate4.Message = {
 	noCALLBACK : null ,
 	myWindow : null,
 	display : function(text, features, okCallback, cancelCallback, yesCallback, noCallback) {
-		var watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-
 		if (okCallback)
 			this.okCALLBACK = okCallback;
 		if (cancelCallback)
@@ -1216,8 +1226,6 @@ SmartTemplate4.Message = {
 		let main = SmartTemplate4.Util.Mail3PaneWindow;
 		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,alwaysRaised,dependent,close=no," + features, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
-// 		let win = watcher.openWindow(main, "chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome," + features, params)
-// 		                 .QueryInterface(Components.interfaces.nsIDOMWindow);
 
 	} ,
 
