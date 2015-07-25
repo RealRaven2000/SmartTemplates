@@ -3,12 +3,11 @@
 
 <RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
-         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> 
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="1.0.1"
+   em:version="1.1pre5"
    em:creator="Axel Grude"
    em:contributor="Benito van der Zander [Bug 25676]"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
