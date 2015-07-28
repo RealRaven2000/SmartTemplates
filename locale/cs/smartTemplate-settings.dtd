@@ -1,0 +1,104 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "Soubor">
+<!ENTITY tools.label "Nástroje">
+<!ENTITY edit.label "Upravit">
+<!ENTITY help.label "Nápověda">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Kopírovat">
+<!ENTITY paste.label "Vložit">
+<!ENTITY insert.label "Vložit proměnnou">
+<!ENTITY close.label "Základní">
+<!ENTITY advanced.label "Rozšířené">
+<!ENTITY export.label "Export">
+<!ENTITY import.label "Import">
+<!ENTITY menu.template_import.label "Importovat šablonu">
+<!ENTITY menu.template_export.label "Exportovat šablonu">
+<!ENTITY settings.label "Nastavení a šablony">
+<!ENTITY url.homePage.label "Vložení dom. stránky">
+<!ENTITY url.supportPage.label "Stránka podpory">
+<!ENTITY url.bugsAndFeaturesPage.label "Hlášení chyb/požadavků">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Zapsat">
+<!ENTITY pref_rsp.tab "Odpovědět">
+<!ENTITY pref_fwd.tab "Přeposlat">
+<!ENTITY pref_help.tab "Nápověda">
+<!ENTITY pref_about.tab "O programu">
+<!ENTITY pref_global.tab "Globální nastavení">
+<!ENTITY pref_variables.tab "Proměnné">
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Zrušit">
+<!ENTITY contribute_button "Přispět">
+<!ENTITY pref_quoteHeaderBox.label "Uvození citace">
+<!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
+<!ENTITY pref_templateBox.label "Šablona">
+<!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, &lt;br&gt; Díky za Vaši zprávu &lt;br&gt; S pozdravem, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "Nastavení SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
+<!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
+<!ENTITY pref_showStatusIcon.label "Zobraz tlačítko v řádku statusu">
+<!ENTITY pref_fontSettings.label "Písmo editoru šablony">
+<!ENTITY pref_server_desc "Účet">
+<!ENTITY pref_server_def "Společné">
+<!ENTITY pref_def.label "Použij společné">
+<!ENTITY pref_def.cap "Pokud si chcete přizpůsobit řádek uvození citace, zrušte volbu 'Použij společné'.">
+<!ENTITY pref_newmsg.cap "Zapsat">
+<!ENTITY pref_new.label "Zvolit následující šablonu pro psaní nové zprávy">
+<!ENTITY pref_rspmsg.cap "Odpovědět">
+<!ENTITY pref_rsp.label "Zvolit následující šablonu pro psaní odpovědi">
+<!ENTITY pref_rsphead.label "Použít namísto implicitního uvození citace">
+<!ENTITY pref_fwdmsg.cap "Předat">
+<!ENTITY pref_fwd.label "Zvolit následující šablonu pro předávanou zprávu">
+<!ENTITY pref_fwdhead.label "Zakázat implicitní uvození citace v Thunderbirdu">
+<!ENTITY pref_html.label "Použij HTML (např. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Použij únikové znaky pro  &quot; , &amp; , &lt; , &gt; , mezeru. Pro více detailů se podívejte do nápovědy.">
+<!ENTITY brack_with_var.label "V [[...]] mohou být použity následující proměnné">
+<!ENTITY sub_var.cap "Předmět">
+<!ENTITY sub.label "předmět zprávy, kterou přeposíláte, nebo na kterou odpovídáte">
+<!ENTITY sub2.label "předmět vytvářené zprávy">
+<!ENTITY spec_var.cap "Speciální">
+<!ENTITY messid.label "ID zprávy">
+<!ENTITY newsgr.label "Mailová skupina">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Jakákoliv řádka hlavičky">
+<!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
+<!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
+<!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
+<!ENTITY dateshort.label "Krátký formát data / času (e.g. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label "Časová zóna (+0100, +0200, ... )">
+<!ENTITY tzname.label "Zkratka čas. zóny GMT, PST, EST, ... ">
+<!ENTITY var_custom.cap "Proměnné pro přizpůsobený formát data">
+<!ENTITY customdf_note.label "Může být použito s &#37;X:=sent&#37;">
+<!ENTITY A.label "Den týdne (pátek)">
+<!ENTITY a.label "Zkratka dne týdne (Pá)">
+<!ENTITY d.label "Den v měsíci uvozený nulou (01 až 31)">
+<!ENTITY e.label "Den v měsíci (1 až 31)">
+<!ENTITY n.label "Měsíc číselně (1 až 12)">
+<!ENTITY B.label "Měsíc slovně (leden)">
+<!ENTITY b.label "Zkratka měsíce (Led)">
+<!ENTITY m.label "Číslo měsíce uvozené nulou (01 až 12)">
+<!ENTITY Y.label "Rok (1970)">
+<!ENTITY M.label "Minuta (00 až 59)">
+<!ENTITY s.label "Vteřina (00 až 59)">
+<!ENTITY h.label "Hodina uvozená nulami (00 až 23)">
+<!ENTITY k.label "Hodina  (0 až 23)">
+<!ENTITY l.label "Hodina (1 až 12)">
+<!ENTITY i.label "Hodina uvozená nulami (01 až 12)">
+<!ENTITY p.label "dop. / odp.">
+<!ENTITY p1.label "dop.">
+<!ENTITY p2.label "Dop.">
+<!ENTITY p3.label "Dop.">
+<!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy.">
+<!ENTITY xsent_long.cap "Příklad pro dlouhý řetězec">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; v &#37;H&#37;:&#37;M&#37; hodin">
+<!ENTITY xsent_long_result.label "Výsledek: Neděle 20.12.2011 v 16.24 hodin">
+<!ENTITY xsent_short.cap "Příklad krátkého řetězce">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Výsledek: Neděle 20.12.2011 08.54.21">
+<!ENTITY xsent_short_note.label "Následující proměnné lze použít v obou variantách">
+<!ENTITY localedate.label "Datum / Čas (podle formátu locale)">
+<!ENTITY shortdate.label "Krátký datum / čas (např. 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label "Časová zóna (+0100, +0200, ... )">
+<!ENTITY timezonename.label "Značka časové zóny GMT, PST, EST, ... ">
+<!ENTITY im-ex.cap "Export/Import nastavení šablon">

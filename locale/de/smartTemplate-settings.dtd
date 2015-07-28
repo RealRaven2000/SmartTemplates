@@ -85,6 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP.">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
 <!ENTITY resolveABRemoveMail "Email Adresse entfernen wenn kein Formatparameter angegeben ist">
+<!ENTITY suppressMailtToLink "Verhindern dass Mail Programme Email Adressen verlinken.">
 <!ENTITY capitalizeNames "Namen großschreiben">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
@@ -119,17 +120,17 @@
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
-<!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
+<!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
 <!ENTITY tofirstname.label "Empfängervorname">
 <!ENTITY toname.label "Empfängername">
 <!ENTITY from_var.cap "Absendervariablen (Von)">
-<!ENTITY from_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
+<!ENTITY from_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY from.label "Absendername (Standardformat)">
 <!ENTITY fromfirstname.label "Absendervorname">
 <!ENTITY fromname.label "Absendername">
 <!ENTITY cc_var.cap "Empfängervariablen (CC)">
-<!ENTITY cc_note.label "Wenn der Name nicht verfügbar ist, wird die e Mail Adresse angezeigt">
+<!ENTITY cc_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY cc.label "Empfängername (Standardformat)">
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
@@ -145,6 +146,14 @@
 <!ENTITY newsgr.label "Nachrichtengruppen">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Beliebige Kopfzeile">
+<!ENTITY header_function.cap "Mail Header Abändern">
+<!ENTITY header_function.explain "Diese Funktion kann zum ändern bestimmter mail header verwendet werden, wie hier beschrieben:">
+<!ENTITY header_function.scope "Kann mit den folgenden Feldern benutzt werden: ">
+<!ENTITY header.set.subject "Betreff durch den Text ersetzen">
+<!ENTITY header.prefix.subject "Den Text dem Betreff voranstellen">
+<!ENTITY header.append.subject "Text an den Betreff anhängen">
+<!ENTITY header.set.to "Empfänger durch Email-Adresse ersetzen">
+<!ENTITY header.append.to "Email-Adresse zu Empfängern hinzufügen">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">

@@ -24,7 +24,6 @@
 <!ENTITY pref_help.tab "Допомога">
 <!ENTITY pref_about.tab "Про">
 <!ENTITY pref_global.tab "Глобальні налаштування">
-<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "Змінні">
 <!ENTITY pref_examples.tab "Приклади (тільки через мережу)">
 <!ENTITY pref_examples.tooltip "Показати приклади шаблонів з http://smarttemplate4.mozdev.org/templates.html. Тільки якщо доступна мережа.">
@@ -38,7 +37,6 @@
 <!ENTITY pref_groupSignatures "Підписи">
 <!ENTITY pref_groupAdvanced "Додаткові функції">
 <!ENTITY pref_groupUI "Інтерфейс користувача ">
-<!ENTITY pref_groupNameRules "Name Rules">
 <!ENTITY pref_groupTroubleShooting "Пошук і усунення несправностей">
 <!ENTITY pref_addSigBreakHTML.label "Додати -- до пошти у форматі HTML">
 <!ENTITY pref_addSigBreakHTML.tooltip "Завжди додати розділювач -- перед підписом (у пошті формату HTML)">
@@ -81,15 +79,8 @@
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
-<!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
-<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
-<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
-<!ENTITY capitalizeNames "Capitalize Names">
 <!ENTITY pref_parseSignature "Підписання">
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Додано підтримку додатку Stationery ">
 <!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
@@ -116,8 +107,6 @@
 <!ENTITY ccmail.label "Адреса електронної пошти отримувача-СС">
 <!ENTITY sig.label "Підпис з налаштувань запису">
 <!ENTITY sig2.label "Підпис з налаштувань запису але без '--'">
-<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
-<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
