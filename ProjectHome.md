@@ -1,0 +1,1 @@
+SmartTemplate4 offers an easy way to customize Thunderbirds default quote header by using templates. Templates can be created for every account as well as for global settings (for all email accounts).
