@@ -85,7 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "Esta funcionalidad no funciona con algunas agendas remotas como LDAP">
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
 <!ENTITY resolveABRemoveMail "Eliminar dirección de correo si no está especificado el parámetro de formato">
-<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
+<!ENTITY suppressMailtToLink "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo">
 <!ENTITY capitalizeNames "Nombres en mayúsculas">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
@@ -146,14 +146,14 @@
 <!ENTITY newsgr.label "Grupos de noticias">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Cualquier cabecera de línea">
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
+<!ENTITY header_function.cap "Modificar el encabezado del correo">
+<!ENTITY header_function.explain "Se puede usar esta función para modificar encabezados de correo, según se describe a continuación:">
+<!ENTITY header_function.scope "Se puede usar en los encabezados:">
+<!ENTITY header.set.subject "reemplazando el asunto con el texto">
+<!ENTITY header.prefix.subject "añadiendo el texto antes del asunto">
+<!ENTITY header.append.subject "añadiendo el texto después del asunto">
+<!ENTITY header.set.to "reemplazando el receptor con la dirección de correo">
+<!ENTITY header.append.to "añadiendo el correo a la lista de recibidos">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">

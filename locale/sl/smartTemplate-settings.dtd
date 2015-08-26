@@ -85,7 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP.">
 <!ENTITY resolveNamesFromABNick "Nadomesti ime, če je prisoten vzdevek">
 <!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
-<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
+<!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
 <!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
 <!ENTITY pref_parseSignature "Podpis opravila">
 <!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
@@ -146,14 +146,14 @@
 <!ENTITY newsgr.label "Novičarske skupine">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Katerakoli vrstica glave">
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
+<!ENTITY header_function.cap "Spremeni glavo pošte">
+<!ENTITY header_function.explain "To funkcijo lahko uporabite za spreminjanje glav sporočil, kot je to opisano tukaj:">
+<!ENTITY header_function.scope "Lahko jo uporabite s temi glavami:">
+<!ENTITY header.set.subject "nadomesti zadevo z besedilom">
+<!ENTITY header.prefix.subject "predpni zadevo z besedilom">
+<!ENTITY header.append.subject "pripni besedilo k zadevi">
+<!ENTITY header.set.to "nadomesti prejemnika z e-poštnim naslovom">
+<!ENTITY header.append.to "dodaj e-pošto na seznam prejemnikov">
 <!ENTITY fix_vartz.cap "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'">
 <!ENTITY fix_vartz_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / Čas (oblika trenutnega jezika)">
