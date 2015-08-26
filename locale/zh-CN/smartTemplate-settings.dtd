@@ -85,6 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
 <!ENTITY resolveABRemoveMail "移除电子邮件地址，除非已指定格式参数">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "大写名称">
 <!ENTITY pref_parseSignature "签名处理过程">
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">
@@ -145,6 +146,14 @@
 <!ENTITY newsgr.label "新闻组">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何标题行">
+<!ENTITY header_function.cap "Modify Mail Header">
+<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
+<!ENTITY header_function.scope "It can be used with the these headers:">
+<!ENTITY header.set.subject "replace subject with the text">
+<!ENTITY header.prefix.subject "prefix subject with the text">
+<!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.set.to "replace recipient with email address">
+<!ENTITY header.append.to "add email to recipient list">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">

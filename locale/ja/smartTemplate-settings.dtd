@@ -85,6 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
 <!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
 <!ENTITY resolveABRemoveMail "フォーマットで指定されない限りメールアドレスを除去する">
+<!ENTITY suppressMailtToLink "メールアドレスにリンクを設定することを抑制する">
 <!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
 <!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">
@@ -145,6 +146,14 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任意のヘッダ行">
+<!ENTITY header_function.cap "メールヘッダの変更">
+<!ENTITY header_function.explain "メールヘッダの内容を変更することができます。参照:">
+<!ENTITY header_function.scope "以下の変数が利用可能です:">
+<!ENTITY header.set.subject "件名をテキストで置換する">
+<!ENTITY header.prefix.subject "件名の前にテキストを追記する">
+<!ENTITY header.append.subject "件名の後にテキストを追記する">
+<!ENTITY header.set.to "受信者をメールアドレスで置換する">
+<!ENTITY header.append.to "メールアドレスを受信者に追加する">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">

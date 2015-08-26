@@ -85,6 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "Эта функция работает не со всеми удалёнными адресными книгами, как то каталог LDAP">
 <!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
 <!ENTITY resolveABRemoveMail "Скрыть адрес если он не используется как параметр в шаблоне">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Имена - заглавными буквами">
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
@@ -145,6 +146,14 @@
 <!ENTITY newsgr.label "Группа новостей">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Любой заголовок строки">
+<!ENTITY header_function.cap "Modify Mail Header">
+<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
+<!ENTITY header_function.scope "It can be used with the these headers:">
+<!ENTITY header.set.subject "replace subject with the text">
+<!ENTITY header.prefix.subject "prefix subject with the text">
+<!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.set.to "replace recipient with email address">
+<!ENTITY header.append.to "add email to recipient list">
 <!ENTITY fix_vartz.cap "Переменные для даты и часового пояса">
 <!ENTITY fix_vartz_note.label "Может быть использована с &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / время (локальный формат)">

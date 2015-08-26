@@ -85,6 +85,7 @@
 <!ENTITY resolveNamesFromAB_tip "Este recurso não funciona com certos catálogos de endereços, como LDAP.">
 <!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
 <!ENTITY resolveABRemoveMail "Remover endereço de e-mail a menos que o parâmetro de formato esteja especificado">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Capitalizar Nomes">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
@@ -145,6 +146,14 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Qualquer linha de cabeçalho">
+<!ENTITY header_function.cap "Modify Mail Header">
+<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
+<!ENTITY header_function.scope "It can be used with the these headers:">
+<!ENTITY header.set.subject "replace subject with the text">
+<!ENTITY header.prefix.subject "prefix subject with the text">
+<!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.set.to "replace recipient with email address">
+<!ENTITY header.append.to "add email to recipient list">
 <!ENTITY fix_vartz.cap "Variáveis para Data e Hora">
 <!ENTITY fix_vartz_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e hora (formato local)">
