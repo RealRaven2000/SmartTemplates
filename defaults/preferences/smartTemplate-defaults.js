@@ -21,6 +21,7 @@ pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.names.capitalize", true);
+pref("extensions.smartTemplate4.mail.suppressLink", false);
 pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
@@ -60,3 +61,4 @@ pref("extensions.smartTemplate4.debug.css.AddRule", false);
 pref("extensions.smartTemplate4.debug.stationery", false);
 pref("extensions.smartTemplate4.debug.timeZones", false);
 pref("extensions.smartTemplate4.debug.headers", false);
+pref("extensions.smartTemplate4.debug.sandbox", false);
