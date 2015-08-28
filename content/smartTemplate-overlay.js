@@ -23,11 +23,12 @@
 // -------------------------------------------------------------------
 // this class uses 2 "global" variables:
 // 1. branch = smartTemplate4  the branch from the preferences
-SmartTemplate4.classPref = function()
-{
+SmartTemplate4.classPref = function() {
+  const Ci = Components.interfaces,
+        Cc = Components.classes;
 	// -----------------------------------
 	// Constructor
-	let root = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	let root = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
 
 	// -----------------------------------
 	// get preference
@@ -35,18 +36,18 @@ SmartTemplate4.classPref = function()
 	function getCom(prefstring, defaultValue)	{
 		try {
 			switch (root.getPrefType(prefstring)) {
-				case Components.interfaces.nsIPrefBranch.PREF_STRING:
+				case Ci.nsIPrefBranch.PREF_STRING:
           try {
-            return root.getComplexValue(prefstring, Components.interfaces.nsIPrefLocalizedString).data;
+            return root.getComplexValue(prefstring, Ci.nsIPrefLocalizedString).data;
           }
           catch(ex) {
             SmartTemplate4.Util.logDebug("Prefstring missing: " + prefstring 
               + "\nReturning default string: [" + defaultValue + "]");
             return defaultValue;
           }
-				case Components.interfaces.nsIPrefBranch.PREF_INT:
+				case Ci.nsIPrefBranch.PREF_INT:
 					return root.getIntPref(prefstring);
-				case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+				case Ci.nsIPrefBranch.PREF_BOOL:
 					return root.getBoolPref(prefstring);
 				default:
 					break;
@@ -125,8 +126,8 @@ SmartTemplate4.classPref = function()
 	{
 		try
 		{
-			let localeService = Components.classes["@mozilla.org/intl/nslocaleservice;1"]
-			                    .getService(Components.interfaces.nsILocaleService),
+			let localeService = Cc["@mozilla.org/intl/nslocaleservice;1"]
+			                    .getService(Ci.nsILocaleService),
 			    locale = localeService.getLocaleComponentForUserAgent(),  // get locale from Operating System
 			    forcedLocale = SmartTemplate4.calendar.currentLocale,  // check if the %language% variable was set
 			    listLocales = '',
@@ -204,7 +205,8 @@ function async_driver(val) {
 // We use this as a display consumer
 // nsIStreamListener
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
-var streamListenerST4 =
+// not used (yet)
+var SmartTemplate4_streamListener =
 {
   _data: "",
   _stream : null,
@@ -265,11 +267,11 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
     // http://mxr.mozilla.org/comm-central/source/mailnews/imap/test/unit/test_imapHdrStreaming.js#101
     let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
     let msgService = messenger.messageServiceFromURI(messageURI); // get nsIMsgMessageService
-    msgService.streamHeaders(msgURI, streamListenerST4, asyncUrlListener,true);    
+    msgService.streamHeaders(msgURI, SmartTemplate4_streamListener, asyncUrlListener,true);    
     yield false;
   }
   // ==
-  let msgContent = new String(streamListenerST4._data);
+  let msgContent = new String(SmartTemplate4_streamListener._data);
   headers.initialize(msgContent, msgContent.length);
 */  
   
@@ -359,8 +361,7 @@ SmartTemplate4.mimeDecoder = {
 	// see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
 	//           http://encoding.spec.whatwg.org/#interface-textdecoder
 	//           
-	detectCharset: function(str)
-	{
+	detectCharset: function(str) {
 		let charset = "";
 		 // not supported                  
 		 // #    RFC1555 ISO-8859-8 (Hebrew)
@@ -731,7 +732,11 @@ SmartTemplate4.mimeDecoder = {
               default:
                 //empty anchor suppresses link; adding angle brackets as default
                 // TO DO: make default brackets configurable later
-                part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
+                if (SmartTemplate4.Preferences.getMyBoolPref('mail.suppressLink'))
+                  part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
+                else
+                  part = emailAddress;
+                  
             }
             break;
           case 'name':
@@ -860,8 +865,10 @@ SmartTemplate4.parseModifier = function(msg) {
 // -------------------------------------------------------------------
 SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, ignoreHTML, isDraftLike) {
   const Ci = Components.interfaces,
-        Cc = Components.classes;
-  let util = SmartTemplate4.Util;
+        Cc = Components.classes,
+        util = SmartTemplate4.Util,
+        preferences = SmartTemplate4.Preferences;
+
 	function getSubject(current) {
 		util.logDebugOptional('regularize', 'getSubject(' + current + ')');
 		let subject = '';
@@ -997,7 +1004,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
 					"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
 					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
-					"messageRaw", "file" //depends on the original message, but not on any header
+					"messageRaw", "file", //depends on the original message, but not on any header
+          "header.set", "header.append", "header.prefix"
 					);
 
 	// Reserved words which depend on headers of the original message.
@@ -1240,9 +1248,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// get part between parentheses
 		// e.g. "(GMT Daylight Time)"
 		util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev(time: ' + tm.toString() + ', long form: ' + isLongForm);
-		let timeString =  tm.toTimeString();
-		let timeZone = timeString.match(/\(.*?\)/);
-		let retVal = '';
+		let timeString =  tm.toTimeString(),
+		    timeZone = timeString.match(/\(.*?\)/),
+		    retVal = '';
 		util.logDebugOptional ('timeZones', 'timeString = ' + timeString + '\n' 
 		                                      + 'timeZone =' + timeZone);
 		if (timeZone && timeZone.length>0) {
@@ -1308,9 +1316,138 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         return true;
       return false;
     }
-    let tm = new Date();
-		let d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); }
-		let expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); }
+    
+    function modifyHeader(hdr, cmd, argString) {
+      const whiteList = ["subject","to","from","cc","bcc","reply-to"],
+            ComposeFields = gMsgCompose.compFields;
+      let targetString = '',
+          modType = '',
+          argument = argString.substr(argString.indexOf(",")+1); // cut off first part (command)
+      argument = argument.substr(1, argument.lastIndexOf(")")-2);
+      if (preferences.Debug) debugger;
+      try {
+        util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
+        if (whiteList.indexOf(hdr)<0) {
+          util.logToConsole("invalid header - no permission to modify: " + hdr);
+          return '';
+        }
+        // get
+        modType = 'address';
+        switch (hdr) {
+          case 'subject':
+            targetString = ComposeFields.subject;
+            modType = 'string';
+            break;
+          case 'to':
+            targetString = ComposeFields.to;
+            break;
+          case 'cc':
+            targetString = ComposeFields.cc;
+            break;
+          case 'bcc':
+            targetString = ComposeFields.bcc;
+            break;
+          case 'from':
+            targetString = ComposeFields.from;
+            break;
+          case 'reply-to':
+            targetString = ComposeFields.replyTo;
+            break;
+          default:
+            modType = '';
+            break;
+        }
+        // modify
+        switch (modType) {
+          case 'string': // single string
+            switch (cmd) {
+              case 'set':
+                targetString = argument; 
+                break;
+              case 'prefix':
+                let replyPrefix = targetString.lastIndexOf(':'),
+                    testSubject = targetString;
+                if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
+                  // cut off Re: Fwd: etc.
+                  testSubject = targetString.substr(0, replyPrefix).trim();
+                  if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
+                  // cut off string after last prefix to restore original subject
+                  testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
+                }
+                // keyword is immediately after last colon, or start of original subject
+                if (testSubject.indexOf(argument)!=0)  { // avoid duplication!
+                  targetString = argument + targetString; 
+                }
+                break;
+              case 'append':
+                // problem - if there are encoding breaks, will this comparison fail?
+                let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
+                if (argPos < 0 || argPos < targetString.length-argument.length ) 
+                  targetString = targetString + argument; 
+                break;
+            }
+            break;
+          case 'address': // address field
+            switch (cmd) {
+              case 'set': // overwrite address field
+                targetString = argument.toString(); 
+                break;
+              case 'prefix':
+                // targetString = argument.toString() + ' ' + targetString; 
+                // invalid!
+                break;
+              case 'append': // append an address field (if not contained already)
+                             // also omit in Cc if already in To and vice versa
+                if (hdr=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                  break;
+                if (hdr=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                  break;
+                
+                if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
+                  targetString = targetString + ', ' + argument; 
+                }
+                break;
+            }
+            break;
+        }
+        
+        // set
+        // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
+        switch (hdr) {
+          case 'subject':
+            document.getElementById("msgSubject").value = targetString;
+            ComposeFields.subject = targetString;
+            break;
+          case 'to':
+            ComposeFields.to = targetString;
+            break;
+          case 'cc':
+            ComposeFields.cc = targetString;
+            break;
+          case 'bcc':
+            ComposeFields.bcc = targetString;
+            break;
+          case 'from':
+            ComposeFields.from = targetString;
+            break;
+          case 'reply-to':
+            ComposeFields.replyTo = targetString;
+            break;
+        }
+        // try to update headers - ComposeFieldsReady()
+        // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
+        if (modType == 'address')
+          CompFields2Recipients(ComposeFields);
+      }
+      catch(ex) {
+        util.logException('modifyHeader()', ex);
+      }
+      return ''; // consume
+    }
+    
+    let tm = new Date(),
+		    d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); },
+		    expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); };
 		if (!SmartTemplate4.calendar.bundle)
 			SmartTemplate4.calendar.init(null); // default locale
 		let cal = SmartTemplate4.calendar;
@@ -1492,6 +1629,26 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           }
 					break;
 				default:
+          // [Bug 25904]
+          if (token.indexOf('header')==0) {
+            let args = arg.split(","),
+                modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
+            if (args.length<2) {
+              util.logToConsole("modifyHeader() second parameter missing");
+              return '';
+            }
+            switch (token) {
+              case "header.set":
+                return modifyHeader(modHdr, 'set', arg);
+              case "header.append":
+                return modifyHeader(modHdr, 'append', arg);
+              case "header.prefix":
+                return modifyHeader(modHdr, 'prefix', arg);
+              default: 
+                util.logToConsole("invalid header command: " + token);
+                return '';
+            }
+          }
 					let isStripQuote = RegExp(" " + token + " ", "i").test(
 					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
 					                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To "),
@@ -1522,9 +1679,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	
   // [Bug 25871]
   function insertFileLink(txt) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes;
-    let util = SmartTemplate4.Util;
     util.logDebug("insertFileLink " + txt);
     // determine file type:
     let html,
@@ -1595,14 +1749,15 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   } 
   
 	let sandbox;
-	
 	// [Bug 25676]	Turing Complete Templates - Benito van der Zander
   // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
 	// we are allowing certain (string) Javascript functions in concatenation to our %variable%
 	// as long as they are in a script block %{%    %}%
 	// local variables can be defined within these blocks, only 1 expression line is allowed per block,
 	// hence best to wrap all code in (function() { ..code.. })()  
-	function replaceJavascript(dmy, token) {
+  // function must return "" in order not to insert an error
+	function replaceJavascript(dmy, script) {
+    util.logDebugOptional('sandbox', 'replaceJavascript(' + dmy +', ' + script +')');
 	  if (!sandbox) {
 	    sandbox = new Components.utils.Sandbox(
         window,
@@ -1625,35 +1780,49 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         }
         return count;
       };        
-      sandbox.variable = function(name, arg){return replaceReservedWords("", name, arg?arg:"")};
-      var implicitNull = {};
-      var stringFunctionHack = new Function();
+      sandbox.variable = function(name, arg) {
+        arg = arg || "";
+        if (preferences.isDebugOption('sandbox')) debugger;
+        let retVariable = replaceReservedWords("", name, arg || "");
+        util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
+          + 'returns: ' + retVariable);
+        return retVariable;
+      };
+      var implicitNull = {},
+          stringFunctionHack = new Function(),
 			// overloading our strings using sandbox
-      var props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
+          props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
       for (let i=0; i<props.length; i++) {
         let s = props[i];
         stringFunctionHack[s] = sandbox.String.prototype[s];
       }
-      stringFunctionHack.valueOf = function(){return this(implicitNull);};
-      stringFunctionHack.toString = function(){return this(implicitNull);};
+      stringFunctionHack.valueOf = function(){ return this(implicitNull); };
+      stringFunctionHack.toString = function(){ return this(implicitNull); };
         
       for (let name in TokenMap) {
         sandbox[name] = (function(aname) {
 					return function(arg){
-						if (typeof arg === "undefined") return "%"+aname + "()%"; //do not allow name()            
+            if (preferences.isDebugOption('sandbox')) debugger;
+						if (typeof arg === "undefined") {
+              util.logDebugOptional('sandbox','sandbox[] arg undefined, returning %' + aname +'()%');
+              return "%"+aname + "()%"; //do not allow name() 
+            }
 						if (arg === implicitNull) arg = "";
 						else arg = "("+arg+")";    //handles the case %%name(arg)%% and returns the same as %name(arg)%
-						return replaceReservedWords("", aname, arg);
+            let sbVal = replaceReservedWords("", aname, arg);
+            util.logDebugOptional('sandbox','sandbox[' + aname +'] returns:' + sbVal);
+						return sbVal;
 					};
 				})(name);
         sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
         //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
       }  // for
 	  };  // (!sandbox)
-	  //  alert(token);
+	  //  alert(script);
 	  var x;
 	  try {
-	    x = Components.utils.evalInSandbox("("+token+").toString()", sandbox); 
+      if (preferences.isDebugOption('sandbox')) debugger;
+	    x = Components.utils.evalInSandbox("(" + script + ").toString()", sandbox); 
 			//prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
 	    if (x.toString === String.prototype.toString) {
 			  x = x.toString(); 
@@ -1706,7 +1875,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   // this makes it possible to nest functions!
 	msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\[$2\]");
 	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\[$2\]");
-  msg = msg.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, replaceReservedWords);
+  if (preferences.isDebugOption('regularize')) debugger;
+  msg = msg.replace(/%([\w-:=.]+)(\([^)]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	
 	if (sandbox) Components.utils.nukeSandbox(sandbox);
 
@@ -1714,7 +1884,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   util.logDebugOptional('headers', SmartTemplate4.regularize.headersDump);
 	util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
-};
+}; // regularize
 
 
 

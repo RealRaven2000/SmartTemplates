@@ -154,10 +154,10 @@
   Version 0.9.5.1 - 24/04/2014
     # Fixed minver for SeaMonkey
 
-  Version 0.9.5.2  - 08/05/2014
+  Version 0.9.5.2 - 08/05/2014
     # Fixed [Bug 25762] related to Replace Names from Addressbook (LDAP). Also disabled this feature on Postbox.
     
-  Version 0.9.6  - 04/10/2014
+  Version 0.9.6 - 04/10/2014
     # Added a switch for removing emails when replacing Names from Address book
     # Added format %sig(none)% to completely suppress signature
     # [Bug 25089] (reopened) default quote header wasn't removed anymore in Tb 31.0
@@ -165,7 +165,7 @@
     # [Bug 25089] Default forward quote not hidden
     # variable %matchTextFromBody()% to find and replace patter e.g. %matchTextFromBody(TEST *)% will retrieve '123' from 'TEST 123'
     
-  Version 1.0  - 24/05/2015
+  Version 1.0 - 24/05/2015
   Features
     # [Bug 25871] %file()% - insert html, text or image from file (for customized signatures)
                   use a local file path in order to insert a file from the computer you are sending from
@@ -202,6 +202,17 @@
     # [Bug 26013] ST4 picks template from common settings instead of identity (Tb38)
     # [Bug 25911] Spaces in long subject headers [Decoding Problem] - WIP
     # Postbox 4: fixed removal of quote header (author wrote:) which is in a plain <span>
+
+  Version 1.1 - WIP
+  Features  
+    # [Bug 25904] Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others
+    #             %header.set(name,value)%
+    #             %header.append(name,value)%
+    #             %header.prefix(name,value)%
+    #             supported headers: subject, to, from, cc, bcc, reply-to 
+    # Removed automatic suppression of "mailTo" links and added an option for activating it
+    # [Bug 26043] Save Template / Load Template feature
+
 		
 =========================
 		0.9.3 Review specific:

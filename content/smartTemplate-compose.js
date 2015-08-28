@@ -566,7 +566,6 @@ SmartTemplate4.classSmartTemplate = function()
 			while (root.firstChild && root.firstChild.nodeName == "BR") {
 				deleteHeaderNode(root.firstChild);
 			}
-
 		}
 
 		util.logDebugOptional('functions','SmartTemplate4.delForwardHeader()');
