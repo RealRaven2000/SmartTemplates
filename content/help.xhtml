@@ -83,6 +83,18 @@
 				<li><code class="noWrite">%X-Mailer%</code> = &xmail.label;</li>
 				<li><code class="noWrite">%...%</code> = &any.label;</li>
 			</ul>
+		<!-- ##### header.set / header.append / header.prefix #### -->
+		<h1 class="helpchapter">&header_function.cap;</h1>
+			<aside>&header_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904">[Bug 25904]</a>.</aside>
+			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to</aside>
+			<ul>
+				<li><code>%header.set(subject,"text")%</code> = &header.set.subject;</li>
+				<li><code>%header.prefix(subject,"text")%</code> = &header.prefix.subject;</li>
+				<li><code>%header.append(subject,"text")%</code> = &header.append.subject;</li>
+				<li><code>%header.set(to,"abc@de.com")%</code> = &header.set.to;</li>
+				<li><code>%header.append(to,"abc@de.com")%</code> = &header.append.to;</li>
+			</ul>
+			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
 		<h1 class="helpchapter">&fix_vartz.cap;</h1>
 			<aside>(&fix_vartz_note.label;)</aside>
