@@ -85,7 +85,7 @@
 	<vbox id="decksContainer" flex="2">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
-		<hbox>
+		<hbox align="center">
 			<label value = "&pref_server_desc;:"/>
 			<menulist id = "msgIdentity"
 			          class = "identity-menulist"
@@ -96,6 +96,18 @@
 					<menuitem class = "identity-popup-item" label = "&pref_server_def;" value = "common"/>
 				</menupopup>
 			</menulist>
+			<toolbar id="templateTools" 
+			         mode="icons" 
+							 customizable="false">
+				<toolbarbutton id="btnSaveTemplate"
+											 class="toolbarbutton-1 chromeclass-toolbar-additional"
+											 tooltiptext="&btnSaveTemplate.tooltip;"
+											 onclick = "SmartTemplate4.Settings.store();"/>
+				<toolbarbutton id="btnLoadTemplate"
+											 class="toolbarbutton-1 chromeclass-toolbar-additional"
+											 tooltiptext="&btnLoadTemplate.tooltip;"
+											 onclick="SmartTemplate4.Settings.load();"/>
+			</toolbar>
 			<spacer flex = "1" />
 			<button id="btnAdvanced"
 			        class = "buttonIcon"
@@ -135,10 +147,13 @@
 						<preference id = "fwd_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.fwdhead"   type = "bool"/>
 					</preferences>
 
-					<checkbox id = "use_default"
-					          label = "&pref_def.label;"
-					          preference = "default_Enable"
-					          oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
+					<hbox align="center">
+						<checkbox id = "use_default"
+											label = "&pref_def.label;"
+											preference = "default_Enable"
+											oncommand = "SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
+						<spacer flex="1" />
+					</hbox>
 
 					<spacer height = "5px" />
 
@@ -386,6 +401,7 @@
 			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
 			<preference id = "pref_resolveNamesFromAB_ReplaceEmail" name = "extensions.smartTemplate4.mime.resolveAB.removeEmail" type = "bool" />
 			<preference id = "pref_capitalizeNames" name = "extensions.smartTemplate4.names.capitalize" type = "bool" />
+			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" />
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -559,6 +575,9 @@
 								</vbox>
 							</hbox>
 						</groupbox>
+						
+						<checkbox label = "&suppressMailtToLink;"
+						          preference = "pref_suppressMailTo"/>
 					
 						<spacer flex = "2" />
 						<groupbox class="transparent">

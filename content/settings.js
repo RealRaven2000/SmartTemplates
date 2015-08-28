@@ -23,8 +23,7 @@ SmartTemplate4.Settings = {
 
 	// Disable DOM node with identity key
 	//--------------------------------------------------------------------
-	prefDisable : function()
-	{
+	prefDisable : function prefDisable() {
 		for (let i = 1; i < arguments.length; i++){
 			let el = document.getElementById(arguments[i] + this.accountId);
 			el.disabled = arguments[0] ? false : true;
@@ -40,8 +39,7 @@ SmartTemplate4.Settings = {
 
 	// Disable DOM node with identity key
 	//--------------------------------------------------------------------
-	prefHidden : function()
-	{
+	prefHidden : function prefHidden() {
 		for (let i = 1; i < arguments.length; i++){
 			let el = document.getElementById(arguments[i] + this.accountId);
 			if (arguments[0]) {
@@ -57,7 +55,7 @@ SmartTemplate4.Settings = {
 
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
-	prefDeck : function(id, index) {
+	prefDeck : function prefDeck(id, index) {
 		let deck = document.getElementById(id + this.accountId);
 		if (deck)
 		  { deck.selectedIndex = index; }
@@ -69,8 +67,7 @@ SmartTemplate4.Settings = {
 
 	// Return checkbox is checked or not
 	//--------------------------------------------------------------------
-	isChecked : function(elId)
-	{
+	isChecked : function isChecked(elId) {
 		let com = elId.indexOf('.common');
 		if (com>0)
 		  elId = elId.substring(0, com); // cut off .common
@@ -78,7 +75,7 @@ SmartTemplate4.Settings = {
 	} ,
 
 	// prepare a textbox to receive elements from the help window
-	pasteFocus : function(element) {
+	pasteFocus : function pasteFocus(element) {
 		let hbox = element.parentNode;
 		let vbox = hbox.parentNode.parentNode;
 		let txtContainers = vbox.getElementsByClassName("pasteFocus");
@@ -95,8 +92,7 @@ SmartTemplate4.Settings = {
 
 	// Disable DOM node depeding on checkboxes
 	//--------------------------------------------------------------------
-	disableWithCheckbox : function()
-	{
+	disableWithCheckbox : function disableWithCheckbox() {
 		if (this.prefDisable(this.isChecked("new" + this.accountId), "newmsg", "newhtml", "newnbr")) {
 			this.prefDisable(this.isChecked("newhtml" + this.accountId), "newnbr");
 		}
@@ -108,9 +104,9 @@ SmartTemplate4.Settings = {
 		}
 	},
 	
-	clickLogo : function() {
-		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg");
-		let result = "";
+	clickLogo : function clickLogo() {
+		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg"),
+		    result = "";
 		if (testString == '') {
 			testString = prompt("Enter a string");
 			result = SmartTemplate4.Util.convertPrefValue(testString, true);
@@ -122,8 +118,7 @@ SmartTemplate4.Settings = {
 
 	// Delete unused preferences.
 	//--------------------------------------------------------------------
-	cleanupUnusedPrefs : function()
-	{
+	cleanupUnusedPrefs : function cleanupUnusedPrefs() {
 		SmartTemplate4.Util.logDebug('cleanupUnusedPrefs ()');
 
 		let array = this.prefService.getChildList("extensions.smartTemplate4.", {});
@@ -147,8 +142,7 @@ SmartTemplate4.Settings = {
 
 	// Create preferences
 	//--------------------------------------------------------------------
-	setPref1st : function(prefbranch)
-	{
+	setPref1st : function setPref1st(prefbranch) {
 		try {
 			this.prefService.getBoolPref(prefbranch + "def");
 		} catch(e) { this.prefService.setBoolPref(prefbranch + "def", true); }
@@ -203,8 +197,7 @@ SmartTemplate4.Settings = {
 	} ,
 
 	// Get preference without prefType
-	getPref : function(prefstring)
-	{
+	getPref : function getPref(prefstring)	{
 		switch (this.prefService.getPrefType(prefstring))
 		{
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
@@ -222,8 +215,7 @@ SmartTemplate4.Settings = {
 
 	// Set preference without prefType
 	//--------------------------------------------------------------------
-	setPref : function(prefstring, value)
-	{
+	setPref : function setPref(prefstring, value) {
 		switch (this.prefService.getPrefType(prefstring))
 		{
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
@@ -241,8 +233,7 @@ SmartTemplate4.Settings = {
 
 	// Reload preferences and update elements.
 	//--------------------------------------------------------------------
-	reloadPrefs : function(el)
-	{
+	reloadPrefs : function reloadPrefs(el) {
 		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs()...");
 		el = el.firstChild;
 		while (el) {
@@ -261,8 +252,7 @@ SmartTemplate4.Settings = {
 
 	// Setup default preferences and common settings
 	//--------------------------------------------------------------------
-	onLoad : function() // mod 0.3.2
-	{
+	onLoad : function onLoad() {
 		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() ...");
 		// Check and set common preference
 		this.setPref1st("extensions.smartTemplate4.");
@@ -294,21 +284,20 @@ SmartTemplate4.Settings = {
 		window.resizeBy(deltaShrink + 40, 0); // 40 pixels for paddings etc.
 
 		// let's test if we can get this element
-		let prefDialog = document.getElementById('smartTemplate_prefDialog');
-		let hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons');
-
-		let buttons = [];
-		let maxHeight = 0;
-		let i = 0;
+		let prefDialog = document.getElementById('smartTemplate_prefDialog'),
+		    hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
+		    buttons = [],
+		    maxHeight = 0,
+		    i = 0;
 		// build an array of visible dlg buttons and get their max height
 		for (i=0; i < hbox.childNodes.length; i++ ) {
-			let b = hbox.childNodes[i];
-			let c = b.className;
+			let b = hbox.childNodes[i],
+			    c = b.className;
 			// let t = b.tagName;
 			if (!b.hidden && (b.tagName == 'xul:button') && (c.indexOf('dialog-button') >= 0)) {
 				buttons.push(b);
-				let rect = b.getBoundingClientRect();
-				let h = rect.bottom - rect.top;
+				let rect = b.getBoundingClientRect(),
+				    h = rect.bottom - rect.top;
 				maxHeight = (h > maxHeight) ? h : maxHeight;
 			}
 		}
@@ -336,10 +325,10 @@ SmartTemplate4.Settings = {
 			window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
 		}
     
-    let nickBox = document.getElementById('chkResolveABNick');
-    let replaceMail = document.getElementById('chkResolveABRemoveMail');
-    let abBox = document.getElementById('chkResolveAB');
-    let isPostbox = (SmartTemplate4.Util.Application === "Postbox");
+    let nickBox = document.getElementById('chkResolveABNick'),
+        replaceMail = document.getElementById('chkResolveABRemoveMail'),
+        abBox = document.getElementById('chkResolveAB'),
+        isPostbox = (SmartTemplate4.Util.Application === "Postbox");
     if (isPostbox) {
       SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB', false);
       SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB.preferNick', false);
@@ -353,26 +342,26 @@ SmartTemplate4.Settings = {
 		return true;
 	} ,
 	
-	toggleExamples: function(el) {
+	toggleExamples: function toggleExamples(el) {
 		document.getElementById('templatesTab').collapsed = (el.checked);
 	} ,
 	
-	loadTemplatesFrame: function() {
-		  // deferred loading of templates content
-			let templatesIFrame = document.getElementById("templatesIFrame");
-			if (!templatesIFrame.getAttribute("src"))
-			  templatesIFrame.setAttribute("src", "http://smarttemplate4.mozdev.org/templates.html");
+	loadTemplatesFrame: function loadTemplatesFrame() {
+    // deferred loading of templates content
+    let templatesIFrame = document.getElementById("templatesIFrame");
+    if (!templatesIFrame.getAttribute("src"))
+      templatesIFrame.setAttribute("src", "http://smarttemplate4.mozdev.org/templates.html");
 	} ,
 
-	onCodeWord : function(code, className) {
-    let util = SmartTemplate4.Util,
-        settings = SmartTemplate4.Settings;
+	onCodeWord : function onCodeWord(code, className) {
+    const util = SmartTemplate4.Util,
+          settings = SmartTemplate4.Settings;
 		util.logDebugOptional("events","Preferences window retrieved code variable: " + code);
 
-		let currentDeck = 'deckB.nodef' + settings.accountId ;
-		let tabbox = document.getElementById(currentDeck);
-		let templateMsgBoxId = '';
-		let headerMsgBoxId = '';
+		let currentDeck = 'deckB.nodef' + settings.accountId,
+		    tabbox = document.getElementById(currentDeck),
+		    templateMsgBoxId = '',
+		    headerMsgBoxId = '';
 		switch (tabbox.selectedIndex) {
 			case 0:
 				templateMsgBoxId='newmsg';
@@ -408,6 +397,9 @@ SmartTemplate4.Settings = {
       if (code.indexOf('%file')==0) {
         code = settings.getFileName(code,editBox);
         return; // cancel
+      }
+      if (code.indexOf('%header.')==0) {
+        code = settings.getHeaderArgument(code);
       }
 			
 			settings.insertAtCaret(editBox, code);
@@ -465,18 +457,34 @@ SmartTemplate4.Settings = {
 		  fpCallback(fp.show());
 		}
     
-    return true;
-    
+    return true;    
   } ,
 
+  // header.set(subject,"text")
+  // header.set(to,"abc@de.com")
+  getHeaderArgument: function getHeaderArgument(code) {
+		const Cc = Components.classes,
+          Ci = Components.interfaces,
+          strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
+		      bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties");
+    let txtArg;
+    if (code.indexOf('subject')>0)  {
+      txtArg = prompt(bundle.GetStringFromName('prompt.text'));
+      return code.replace("text", txtArg);
+    }
+    else {
+      txtArg = prompt(bundle.GetStringFromName('prompt.email'));
+      return code.replace("abc@de.com", txtArg);
+    }
+  } ,
+  
 	onUnload : function() {
 // 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
 	} ,
 
 	// Setup cloned nodes and replace preferences strings
 	//--------------------------------------------------------------------
-	prefCloneAndSetup : function(el, branch)
-	{
+	prefCloneAndSetup : function prefCloneAndSetup(el, branch) {
 		SmartTemplate4.Util.logDebugOptional("functions", "prefCloneAndSetup(" + el + ", " + branch + ")");
 		// was called replaceAttr
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
@@ -534,8 +542,7 @@ SmartTemplate4.Settings = {
 
 	// Add identity
 	//--------------------------------------------------------------------
-	addIdentity : function(menuvalue)
-	{
+	addIdentity : function addIdentity(menuvalue) {
 		SmartTemplate4.Util.logDebugOptional("functions", "addIdentity(" + menuvalue + ")");
 		const  branch = menuvalue == "common" ? ".common" : "." + menuvalue;
 
@@ -544,8 +551,8 @@ SmartTemplate4.Settings = {
 			this.setPref1st("extensions.smartTemplate4" + branch + ".");
 
 			// Clone and setup a preference window tags.
-			const el = document.getElementById("deckA.per_account");
-			const clone = el.cloneNode(true);
+			const el = document.getElementById("deckA.per_account"),
+			      clone = el.cloneNode(true);
 
 			this.prefCloneAndSetup(clone, branch);
 			el.parentNode.appendChild(clone);
@@ -568,17 +575,16 @@ SmartTemplate4.Settings = {
 		}
 	} ,
 
-
 	// Fill identities menu
 	//--------------------------------------------------------------------
-	fillIdentityListPopup : function()	// mod 0.3.2
-	{
+  // mod 0.3.2
+	fillIdentityListPopup : function fillIdentityListPopup() {
 		// get current identity
 		SmartTemplate4.Util.logDebugOptional("settings","fillIdentityListPopup()");
 		const accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
 									  getService(this.Ci.nsIMsgAccountManager).accounts;
-		let currentId = 0;
-		let CurId = null;
+		let currentId = 0,
+		    CurId = null;
 		
 		// only when calling from the mail 3 pane window: 
 		if (window.opener.GetSelectedMsgFolders) { 
@@ -615,7 +621,7 @@ SmartTemplate4.Settings = {
 		
 	} ,
 
-	openAdvanced: function() {
+	openAdvanced: function openAdvanced() {
 		let advancedContainer = document.getElementById('advancedContainer');
 		advancedContainer.hidden = false;
 		let wid = advancedContainer.scrollWidth;
@@ -635,7 +641,7 @@ SmartTemplate4.Settings = {
 
 	} ,
 
-	closeAdvanced: function() {
+	closeAdvanced: function closeAdvanced() {
 		let advancedContainer = document.getElementById('advancedContainer');
 		let wid = advancedContainer.scrollWidth;
 		advancedContainer.hidden = true;
@@ -647,9 +653,9 @@ SmartTemplate4.Settings = {
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
 	//--------------------------------------------------------------------
-	switchIdentity : function(idKey)	{
-		let el = document.getElementById("msgIdentityPopup").firstChild
-		let index = 0;
+	switchIdentity : function switchIdentity(idKey)	{
+		let el = document.getElementById("msgIdentityPopup").firstChild,
+		    index = 0;
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
@@ -665,7 +671,7 @@ SmartTemplate4.Settings = {
 
 	} , // add 0.4.0 E
 
-	getCurrentDeck : function(accountId) {
+	getCurrentDeck : function getCurrentDeck(accountId) {
 		return (accountId != ".common")
 		  ? 'deckB.nodef' + accountId
 			: 'deckB.nodef';
@@ -673,7 +679,7 @@ SmartTemplate4.Settings = {
 
 	// Select identity (from xul)
 	//--------------------------------------------------------------------
-	selectIdentity : function(idkey)	{
+	selectIdentity : function selectIdentity(idkey)	{
 		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
 		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
 		    tabbox = document.getElementById(currentDeck);
@@ -681,7 +687,7 @@ SmartTemplate4.Settings = {
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
 		let tabIndex = tabbox.selectedIndex;
 
-		const  branch = (idkey == "common") ? ".common" : "." + idkey;
+		const branch = (idkey == "common") ? ".common" : "." + idkey;
 
 		// Display identity.
 		let deck = document.getElementById("account_deckA"),
@@ -710,8 +716,16 @@ SmartTemplate4.Settings = {
 		//reactivate the current tab: new / respond or forward!
 		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
 		tabbox = document.getElementById(currentDeck);
-		if (tabbox)
+		if (tabbox) {
 			tabbox.selectedIndex = tabIndex;
+      let txtDump = '',
+          tabboxArray = tabbox.getElementsByTagName('textbox');
+      for (let i=0; i<tabboxArray.length; i++)
+        txtDump += tabboxArray[i].value;  // append all texts
+      // disable / enable Save button in case template is empty
+      let disableSave = (txtDump.length===0) && (document.getElementById('use_default.' + this.currentId).checked === true);
+      document.getElementById('btnSaveTemplate').disabled = disableSave;
+    }
 		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
@@ -723,11 +737,10 @@ SmartTemplate4.Settings = {
 			return;
 		}
 
-		let el =  '';
-    let node;
-		el +=  element.id ? "  id=" + element.id : "";
-		el +=  element.nodeName ? "  nodeName=" + element.nodeName : "";
-		el +=  element.name ? "  name=" + element.name : "";
+		let el, node;
+		el =  element.id ? "  id=" + element.id : "";
+		el += element.nodeName ? "  nodeName=" + element.nodeName : "";
+		el += element.name ? "  name=" + element.name : "";
 		SmartTemplate4.Util.logDebugOptional("events", "insertAtCaret(" + el + "): field Code = " + code);
 		try {
 			node = element.nodeName;
@@ -765,7 +778,7 @@ SmartTemplate4.Settings = {
 		}
 	} , 
 	
-	textDropped: function(evt) {
+	textDropped: function textDropped(evt) {
 	  // drop event is still ongoing, so we set a timeout to make sure the text is inserted first
 		let element = evt.target;
 		window.setTimeout(function() {
@@ -774,9 +787,8 @@ SmartTemplate4.Settings = {
 			element.dispatchEvent(newEvent);
 			},250); // 250ms should be sufficient
 	} ,
-	
 
-	fontSize: function(change) {
+	fontSize: function fontSize(change) {
 		// find class rule for .templateBox and change font-size
 		let ss;
 		let size = SmartTemplate4.Preferences.getMyIntPref("font.size");
@@ -791,9 +803,8 @@ SmartTemplate4.Settings = {
 		if (fs)
 			fs.value = size;
 			
-		let fontSizeString = size.toString() + 'pt';
-		
-		let off = new Object();
+		let fontSizeString = size.toString() + 'pt',
+		    off = new Object();
 		off.offset = 0;
 		// iterate all style sheets! off.offset will be increased to continue from the last find.
 		while ( (ss = SmartTemplate4.Styles.getMyStyleSheet('chrome://global/skin/style.css', "SmartTemplateSettings", off)) ) {
@@ -802,10 +813,10 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Preferences.setMyIntPref("font.size", size);
 	} ,
   
-  resolveAB_onClick: function(el) {
+  resolveAB_onClick: function resolveAB_onClick(el) {
     // if it was already checked we are now unchecking it...
-    let nickBox = document.getElementById('chkResolveABNick');
-    let replaceMail = document.getElementById('chkResolveABRemoveMail');
+    let nickBox = document.getElementById('chkResolveABNick'),
+        replaceMail = document.getElementById('chkResolveABRemoveMail');
     if (el.checked) {
       nickBox.checked = false;
       nickBox.disabled = true;
@@ -815,6 +826,178 @@ SmartTemplate4.Settings = {
       nickBox.disabled = false;
       replaceMail.disabled = false;
     }
-}
+  } ,
+  
+  get currentId () {
+    let key = document.getElementById('msgIdentity').value;
+    return key;
+  },
+  
+  get currentAccountName() {
+    const  Ci = Components.interfaces,
+           accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
+									  getService(Ci.nsIMsgAccountManager).accounts;
+    let theMenu = document.getElementById("msgIdentity"),
+        menuEntry = theMenu.label,
+        end = menuEntry.indexOf(' <');
+    if (end>0)
+      return menuEntry.substring(0, end);
+    else
+      return menuEntry;
+  },
+  
+  fileAccountSettings: function fileAccountSettings(mode, jsonData, fname) {
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          util = SmartTemplate4.Util;
+    let //localized text for filePicker filter menu
+		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
+		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
+        filterText;
+    
+		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
+        fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
+    
+		fp.init(window, "", fileOpenMode); // second parameter: prompt
+    filterText = bundle.GetStringFromName("fpJsonFile");
+    fp.appendFilter(filterText, "*.json");
+    fp.defaultExtension = 'json';
+    if (mode == 'save') {
+      fp.defaultString = fname + '.json';
+    }
+    
+    let fpCallback = function fpCallback_FilePicker(aResult) {
+      if (aResult == Ci.nsIFilePicker.returnOK || aResult == Ci.nsIFilePicker.returnReplace) {
+        if (fp.file) {
+          let path = fp.file.path;
+          const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
+          
+          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+          switch (mode) {
+            case 'load':
+              let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
+              promiseRead.then(
+                function readSuccess(data) {
+                  function updateElement(el, stem, targetId) {
+                    // id target is common, append .id#, otherwise replace the .id#
+                    let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem,
+                        evt = document.createEvent("Events");
+                    // set element value (text / checkbox) from json data
+                    if (el.tagName == 'checkbox')
+                      el.checked = settings[oldId];
+                    else
+                      el.value = settings[oldId]; // textbox
+                    // force preference update
+                    evt.initEvent("change", true, false);
+                    el.dispatchEvent(evt);
+                  }
+                  debugger;
+                  let settings = JSON.parse(data);
+                  // jsonData = the key
+                  // every identifier ends with id#; we need to replace the number with the current key!
+                  // or match the string up to .id!
+                  
+                  // we need to read one keyname of one (the first) json member
+                  // e.g "newmsg.id1"
+                  let sourceId = Object.keys(settings)[0];
+                  if (sourceId) {
+                    // cut off variable before .id1
+                    // find out if specific identity or common
+                    // and only then append identity extension
+                    // jsonData.key has target identity and this can be "common"
+                    let isSrcIdentity = (sourceId.indexOf('.id') > 0),
+                        stem = isSrcIdentity ? sourceId.substr(sourceId.lastIndexOf('.')) : '', // use empty key for common case
+                        isTargetIdentity = (jsonData.key!='common' || jsonData.key==''),
+                        targetId = isTargetIdentity ? ('.' + jsonData.key) : '';
+                    for (let i=0; i<jsonData.texts.length; i++) {
+                      updateElement(jsonData.texts[i], stem, targetId);
+                    }
+                    for (let i=0; i<jsonData.checks.length; i++) {
+                      // e.g newmsg.id1
+                      updateElement(jsonData.checks[i], stem, targetId);
+                    }
+                  }                  
+                },
+                function readFailed(ex) {
+                  util.logDebug ('read() - Failure: ' + ex); 
+                }
+              )
+              break;
+            case 'save':
+              // if (aResult == Ci.nsIFilePicker.returnReplace)
+              let promiseDelete = OS.File.remove(path);
+              // defined 2 functions
+              util.logDebug ('Setting up promise Delete');
+              promiseDelete.then (
+                function saveJSON() {
+                  util.logDebug ('saveJSON()...'); 
+                  // force appending correct file extension!
+                  if (!path.toLowerCase().endsWith('.json'))
+                    path += '.json';
+                  let promiseWrite = OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+                  promiseWrite.then(
+                    function saveSuccess(byteCount) {
+                      util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
+                    },
+                    function saveReject(fileError) {  // OS.File.Error
+                      util.logDebug ('bookmarks.save error:' + fileError);
+                    }
+                  );
+                },
+                function failDelete(fileError) {
+                  util.logDebug ('OS.File.remove failed for reason:' + fileError); 
+                }
+              );
+              break;
+          }
+        }
+      }
+    }
+    
+		if (fp.open)
+			fp.open(fpCallback);		
+		else { // Postbox
+		  fpCallback(fp.show());
+		}
+    
+    return true;    
+  } ,
+  
+  
+  store: function store() {
+      // let's get all the settings from the key and then put them in a json structure:
+    const util = SmartTemplate4.Util,
+          settings = SmartTemplate4.Settings;
+    let key = this.currentId,
+        currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+        tabbox = document.getElementById(currentDeck),
+        txt = tabbox.getElementsByTagName('textbox'),
+        chk = tabbox.getElementsByTagName('checkbox'),
+        entry = {};
+        
+        // anonymize by truncating id# ?
+    for (let i=0; i<txt.length; i++) {
+      let t = txt[i];
+      entry[t.id] = t.value;
+    }
+    for (let i=0; i<chk.length; i++) {
+      let c = chk[i];
+      entry[c.id] = c.checked ? true : false;
+    }
+    let json = JSON.stringify(entry, null, '  '); // prettified with indentation
+    settings.fileAccountSettings('save', json, this.currentAccountName);
+  } ,
+  
+  load: function load() {
+    let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+        tabbox = document.getElementById(currentDeck),
+        txt = tabbox.getElementsByTagName('textbox'),
+        chk = tabbox.getElementsByTagName('checkbox');
+    SmartTemplate4.Settings.fileAccountSettings('load', 
+        {key: this.currentId, 
+         texts:txt, 
+         checks:chk}
+    );
+  }
 
 };
