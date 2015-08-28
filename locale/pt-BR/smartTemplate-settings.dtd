@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Texto ao passar o cursor">
 <!ENTITY pref_fontSettings.label "Fonte do Editor de Modelos">
 <!ENTITY pref_server_desc "Conta">
+<!ENTITY btnSaveTemplate.tooltip "Salvar Modelo...">
+<!ENTITY btnLoadTemplate.tooltip "Carregar Modelo...">
 <!ENTITY pref_server_def "Configuração global">
 <!ENTITY pref_def.label "Usar configuração global">
 <!ENTITY pref_def.cap "Para fazer configurações específicas nesta conta, desmarque a opção 'Usar configuração global'.">

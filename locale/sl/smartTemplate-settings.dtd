@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Besedilo ob prehodu z miško">
 <!ENTITY pref_fontSettings.label "Pisava urejevalnika predlog">
 <!ENTITY pref_server_desc "Račun">
+<!ENTITY btnSaveTemplate.tooltip "Shrani predlogo ...">
+<!ENTITY btnLoadTemplate.tooltip "Naloži predlogo ...">
 <!ENTITY pref_server_def "Splošno">
 <!ENTITY pref_def.label "Uporabi splošno">
 <!ENTITY pref_def.cap "Odznačite 'Uporabi splošno' za ustvarjanje glave navedka po meri za ta račun,">

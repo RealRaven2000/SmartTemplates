@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Texte au survol">
 <!ENTITY pref_fontSettings.label "Police de l'éditeur de gabarit">
 <!ENTITY pref_server_desc "Compte">
+<!ENTITY btnSaveTemplate.tooltip "Enregistrer le modèle…">
+<!ENTITY btnLoadTemplate.tooltip "Charger un modèle…">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
 <!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin de créer un entête personnalisé pour ce compte.">

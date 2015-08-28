@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Texto con el paso de ratón">
 <!ENTITY pref_fontSettings.label "Fuente del editor de plantillas">
 <!ENTITY pref_server_desc "Cuenta">
+<!ENTITY btnSaveTemplate.tooltip "Guardar plantilla…">
+<!ENTITY btnLoadTemplate.tooltip "Cargar plantilla…">
 <!ENTITY pref_server_def "Común">
 <!ENTITY pref_def.label "Usar común">
 <!ENTITY pref_def.cap "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta.">

@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "悬停时显示文字">
 <!ENTITY pref_fontSettings.label "模板编辑器的字体">
 <!ENTITY pref_server_desc "帐户">
+<!ENTITY btnSaveTemplate.tooltip "保存模板…">
+<!ENTITY btnLoadTemplate.tooltip "载入模板…">
 <!ENTITY pref_server_def "通用">
 <!ENTITY pref_def.label "使用通用">
 <!ENTITY pref_def.cap "如果您想要为这个帐户创建自定义的引用头，请取消选中“使用通用”">
