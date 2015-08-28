@@ -712,3 +712,19 @@ button.dialog-button[dlgtype=extra2] {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+#btnSaveTemplate, #btnLoadTemplate {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	display: -moz-box;
+}
+#btnSaveTemplate {
+	list-style-image: url("chrome://smartTemplate4/skin/icons/fugue-disk.png");
+}
+#btnLoadTemplate {
+	list-style-image: url("chrome://smartTemplate4/skin/icons/template-load.png");
+}
+#templateTools {
+	background-image: none;
+	border: none;
+	-moz-appearance: none;
+}
