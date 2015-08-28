@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Template Editor Font">
 <!ENTITY pref_server_desc "Account">
+<!ENTITY btnSaveTemplate.tooltip "Save Template…">
+<!ENTITY btnLoadTemplate.tooltip "Load Template…">
 <!ENTITY pref_server_def "Common">
 <!ENTITY pref_def.label "Use Common">
 <!ENTITY pref_def.cap "Uncheck 'Use Common' to create a customized quote header for this account.">

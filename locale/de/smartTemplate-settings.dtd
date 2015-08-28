@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Text nur unter Mauszeiger">
 <!ENTITY pref_fontSettings.label "Schriftgröße innerhalb der Vorlagenboxen">
 <!ENTITY pref_server_desc "Konto">
+<!ENTITY btnSaveTemplate.tooltip "Vorlage speichern…">
+<!ENTITY btnLoadTemplate.tooltip "Vorlage laden…">
 <!ENTITY pref_server_def "Allgemein">
 <!ENTITY pref_def.label "Allgemein verwenden">
 <!ENTITY pref_def.cap "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">
