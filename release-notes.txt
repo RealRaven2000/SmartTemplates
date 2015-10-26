@@ -1,0 +1,23 @@
+<ul>
+	  <a title="Improvements">Improvements</a>
+    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26043" target="_blank">[Bug 26043]</a> 
+Save Template / Load Template feature
+Save / load the current template to / from a file.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a> Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others
+
+<code>%header.set(name,"value")%</code> replaces the field of the Email.
+
+<code>%header.append(name,"value")%</code> appends text or recipient to the field of the Email.
+
+<code>%header.prefix(name,"value")%</code> prefixes text to the field of the Email.
+
+This currently supports the following headers: subject, to, from, cc, bcc, reply-to. For example, <code class="inline">%header.prefix(subject,"[Project 1] ")%</code> will turn the subject "Re: Support Request" into "[Project 1] Re: Support Request".
+
+The <i>append</i> function can also be used to add more additional recipients. In all cases, duplicates should be checked and avoided - please double check this is the case and report it to the bug if there are problems. The value has to be wrapped in " and doesn't currently support these characters: <i>" , %</i> used within.
+		</li>
+    <li>Removed automatic suppression of "mailTo" links and added an Advanced Setting for re-activating it. Going forward, we recommend keeping this option off, as it may have some undesirable side-effects.</li>
+    <a title="Miscellaneous">Miscellaneous</a>
+		<li>Postbox 4 compatibility. Raised minimum version for Thunderbird to 9.0.</li>
+</ul>
+	
+	

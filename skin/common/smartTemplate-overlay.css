@@ -1,11 +1,15 @@
 /* ################################################################################### */
 /* ############################# TOOLBAR BUTTON OVERLAY ############################## */
 /* ################################################################################### */
-#SmartTemplate4Button {
+#SmartTemplate4Button,
+#mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
+{
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon24x24.png");
 }
 
-[iconsize="small"] #SmartTemplate4Button {
+[iconsize="small"] #SmartTemplate4Button,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #SmartTemplate4Button.toolbarbutton-1
+{
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
 }
 

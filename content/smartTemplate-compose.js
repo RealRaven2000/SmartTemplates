@@ -1185,12 +1185,23 @@ SmartTemplate4.classSmartTemplate = function()
 		if (!caretContainer)
 		  caretContainer = findChildNode(targetNode, 'st4cursor');
 		isCursor = (caretContainer != null);
-		
 		try {
 			if (targetNode) {
-				let selCtrl = editor.selectionController;
-				selCtrl.completeMove(!theIdentity.replyOnTop, false);
-				selCtrl.completeScroll(!theIdentity.replyOnTop);
+				let selCtrl = editor.selectionController,  // Ci.nsISelectionController
+            isReplyOnTop = theIdentity.replyOnTop,
+            forward = !isReplyOnTop;
+        try {
+          selCtrl.completeMove(forward, false); // forward, extend
+        }
+        catch(ex) {
+          util.logException("editor.selectionController completeMove(forward = " + forward + ") failed", ex);
+        }
+        try {
+          selCtrl.completeScroll(forward);
+        }
+        catch(ex) {
+          util.logException("editor.selectionController completeScroll(forward = " + forward + ") failed", ex);
+        }
 				
 				let theParent = targetNode.parentNode;
 				if (theParent) {
@@ -1222,7 +1233,7 @@ SmartTemplate4.classSmartTemplate = function()
 						}
 					}
 					else {
-						if (theIdentity.replyOnTop) {
+						if (isReplyOnTop) {
 							if (editor.selection.collapseToStart)
 								editor.selection.collapseToStart();
 							else

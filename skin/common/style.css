@@ -717,11 +717,13 @@ button.dialog-button[dlgtype=extra2] {
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	display: -moz-box;
 }
-#btnSaveTemplate {
-	list-style-image: url("chrome://smartTemplate4/skin/icons/fugue-disk.png");
+#smartTemplatePane #btnSaveTemplate,
+#smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
+	list-style-image: url("chrome://smarttemplate4/skin/icons/fugue-disk.png") !important;
 }
-#btnLoadTemplate {
-	list-style-image: url("chrome://smartTemplate4/skin/icons/template-load.png");
+#smartTemplatePane #btnLoadTemplate,
+#smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
+	list-style-image: url("chrome://smarttemplate4/skin/icons/template-load.png") !important;
 }
 #templateTools {
 	background-image: none;

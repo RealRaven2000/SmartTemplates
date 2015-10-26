@@ -452,10 +452,15 @@ SmartTemplate4.mimeDecoder = {
 		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
     // argType = Mail or Name to support bracketMail and bracketName
     function getBracketAddressArgs(format, argType) { 
-      let reg = new RegExp('bracket' + argType + '\\[(.+?)\\]', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail[*] !
+      let reg = new RegExp('bracket' + argType + '\\<(.+?)\\>', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail<*> !
           ar = reg.exec(format);
-      if (ar && ar.length>1)
-        return ar[1];
+      if (ar && ar.length>1) {
+        let args = ar[1];
+        SmartTemplate4.Util.logDebugOptional('regularize', 
+          'getBracketAddressArgs(' + format + ',' + argType + ') returns ' + args 
+          + '\n out of ' + ar.length + ' results.');
+        return args;
+      }
       return '';
     };
     function getCardFromAB(mail) {
@@ -757,8 +762,8 @@ SmartTemplate4.mimeDecoder = {
               part = lastName;
             break;
           default:
-            let bM = (element.field.indexOf('bracketMail[')==0),
-                bN = (element.field.indexOf('bracketName[')==0);
+            let bM = (element.field.indexOf('bracketMail<')==0),
+                bN = (element.field.indexOf('bracketName<')==0);
             if (bM || bN) {
               let open, close;
               if (bM) {
@@ -885,7 +890,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	function getNewsgroup() {
 		util.logDebugOptional('regularize', 'getNewsgroup()');
 		let acctKey = msgDbHdr.accountKey;
-		//const account = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getAccount(acctKey);
+		//const account = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getAccount(acctKey);
 		//dump ("acctKey:"+ acctKey);
 
 		//return account.incomingServer.prettyName;
@@ -915,8 +920,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		function checkReservedWords(str, strInBrackets) {
 			// I think this first step is just replacing special functions with general ones.
 			// E.g.: %tomail%(z) = %To%(z)
+      // also removes optional [[ CC ]] parts.
+      // this replaces empty cc
+      // problem if string contains ( or ) it won't work
 			let generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
-			// next: ?????
+			// next: if it contains %, delete the string
 			return  generalFunction.replace(/^[^%]*$/, "");
 		}
 		
@@ -939,10 +947,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	util.logDebugOptional('regularize','SmartTemplate4.regularize(' + msg +')  STARTS...');
 	// var parent = SmartTemplate4;
 	let idkey = util.getIdentityKey(document),
-	    identity = Components.classes["@mozilla.org/messenger/account-manager;1"]
+	    identity = Cc["@mozilla.org/messenger/account-manager;1"]
 					 .getService(Ci.nsIMsgAccountManager)
 					 .getIdentity(idkey),
-	    messenger = Components.classes["@mozilla.org/messenger;1"]
+	    messenger = Cc["@mozilla.org/messenger;1"]
 					 .createInstance(Ci.nsIMessenger),
 	    mime = this.mimeDecoder;
 
@@ -1021,7 +1029,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 		try {
 			let tm = new Date();
-			let fmt = Components.classes["@mozilla.org/intl/scriptabledateformat;1"].
+			let fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].
 						createInstance(Ci.nsIScriptableDateFormat);
 			
 			let locale = SmartTemplate4.pref.getLocalePref();
@@ -1869,12 +1877,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
 	}
+  // replace round brackets of bracketMail() with <> - using the second (=inner) match group
+  // this makes it possible to nest functions!
+  // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
+	msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
+	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
-  // replace round brackets of bracktMail() with [] - using the second (=inner) match group
-  // this makes it possible to nest functions!
-	msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\[$2\]");
-	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\[$2\]");
   if (preferences.isDebugOption('regularize')) debugger;
   msg = msg.replace(/%([\w-:=.]+)(\([^)]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	

@@ -203,16 +203,20 @@
     # [Bug 25911] Spaces in long subject headers [Decoding Problem] - WIP
     # Postbox 4: fixed removal of quote header (author wrote:) which is in a plain <span>
 
-  Version 1.1 - WIP
+  Version 1.1 - 30/08/2015
   Features  
+    # [Bug 26043] Save Template / Load Template feature
     # [Bug 25904] Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others
     #             %header.set(name,value)%
     #             %header.append(name,value)%
     #             %header.prefix(name,value)%
     #             supported headers: subject, to, from, cc, bcc, reply-to 
     # Removed automatic suppression of "mailTo" links and added an option for activating it
-    # [Bug 26043] Save Template / Load Template feature
+    # Postbox 4 compatibility. Raised minimum Verion for Thunderbird to 9
 
+  Version 1.2 - WIP
+    # [Bug 26100] Double brackets not working with %cc(name,bracketMail(angle))%
+    # 
 		
 =========================
 		0.9.3 Review specific:
@@ -532,14 +536,14 @@ var SmartTemplate4 = {
 	updateStatusBar: function updateStatusBar(show) {
 		try {
 			SmartTemplate4.Util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
-			let isDefault = (typeof show == 'undefined' || show == 'default');
-			let isVisible = isDefault ? SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') : show;
-			let doc = isDefault ? document : SmartTemplate4.Util.Mail3PaneWindow.document;
-			let btn = doc.getElementById('SmartTemplate4Messenger');
+			let isDefault = (typeof show == 'undefined' || show == 'default'),
+			    isVisible = isDefault ? SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') : show,
+			    doc = isDefault ? document : SmartTemplate4.Util.Mail3PaneWindow.document,
+			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
 				btn.collapsed =  !isVisible;
-				let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode');
-				let theClass = 'statusbarpanel-iconic-text';
+				let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode'),
+				    theClass = 'statusbarpanel-iconic-text';
 				switch(labelMode) {
 					case 0:
 						theClass +=' hidden';
