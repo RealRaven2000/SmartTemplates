@@ -8,6 +8,19 @@
 // 0.7.5: "use strict" suggested by Mozilla add-on review team
 // -----------------------------------------------------------------------------------
 
+if (SmartTemplate4.Util.Application == 'Postbox'){ 
+  if (typeof XPCOMUtils != 'undefined') {
+    XPCOMUtils.defineLazyGetter(this, "NetUtil", function() {
+    Components.utils.import("resource://gre/modules/NetUtil.jsm");
+    return NetUtil;
+    });
+  }
+  else {
+    Components.utils.import("resource://gre/modules/NetUtil.jsm");
+  }
+}
+
+
 SmartTemplate4.Settings = {
 	accountKey : ".common",  // default to common
 	get accountId() {
@@ -847,6 +860,57 @@ SmartTemplate4.Settings = {
   },
   
   fileAccountSettings: function fileAccountSettings(mode, jsonData, fname) {
+    // readData: this function does the actual work of interpreting the read data
+    // and setting the UI values of currently selected deck accordingly:
+    function readData(data) {
+      function updateElement(el, stem, targetId) {
+        // id target is common, append .id#, otherwise replace the .id#
+        let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem,
+            evt = document.createEvent("Events");
+        // set element value (text / checkbox) from json data
+        if (el.tagName == 'checkbox')
+          el.checked = settings[oldId];
+        else
+          el.value = settings[oldId]; // textbox
+        // force preference update
+        evt.initEvent("change", true, false);
+        el.dispatchEvent(evt);
+      }
+      let settings = JSON.parse(data);
+      // jsonData = the key
+      // every identifier ends with id#; we need to replace the number with the current key!
+      // or match the string up to .id!
+      
+      // we need to read one keyname of one (the first) json member
+      // e.g "newmsg.id1"
+      let sourceId = Object.keys(settings)[0];
+      if (sourceId) {
+        // cut off variable before .id1
+        // find out if specific identity or common
+        // and only then append identity extension
+        // jsonData.key has target identity and this can be "common"
+        let isSrcIdentity = (sourceId.indexOf('.id') > 0),
+            stem = isSrcIdentity ? sourceId.substr(sourceId.lastIndexOf('.')) : '', // use empty key for common case
+            isTargetIdentity = (jsonData.key!='common' || jsonData.key==''),
+            targetId = isTargetIdentity ? ('.' + jsonData.key) : '';
+        if (isTargetIdentity) {
+          // uncheck 'use common' checkbox
+          document.getElementById('use_default' + targetId).checked = false;
+          SmartTemplate4.Settings.prefDeck('default.deckB', 0);
+        }
+        for (let i=0; i<jsonData.textboxes.length; i++) {
+          updateElement(jsonData.textboxes[i], stem, targetId);
+          // check use_default
+        }
+        for (let i=0; i<jsonData.checkboxes.length; i++) {
+          // e.g newmsg.id1
+          let el = jsonData.checkboxes[i];
+          updateElement(el, stem, targetId);
+        }
+        // update enable / disable textboxes from checkbox data.
+        SmartTemplate4.Settings.disableWithCheckbox();
+      }                  
+    }
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = SmartTemplate4.Util;
@@ -870,6 +934,19 @@ SmartTemplate4.Settings = {
       if (aResult == Ci.nsIFilePicker.returnOK || aResult == Ci.nsIFilePicker.returnReplace) {
         if (fp.file) {
           let path = fp.file.path;
+          if (util.Application=='Postbox') {
+            switch (mode) {
+              case 'load':
+                let settings = SmartTemplate4.Settings.Postbox_readFile(path);
+                readData(settings);
+                return;
+              case 'save':
+                SmartTemplate4.Settings.Postbox_writeFile(path, jsonData)
+                return;
+            }
+            throw ('invalid mode: ' + mode);
+          }
+          
           const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
           
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
@@ -878,45 +955,8 @@ SmartTemplate4.Settings = {
               let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
               promiseRead.then(
                 function readSuccess(data) {
-                  function updateElement(el, stem, targetId) {
-                    // id target is common, append .id#, otherwise replace the .id#
-                    let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem,
-                        evt = document.createEvent("Events");
-                    // set element value (text / checkbox) from json data
-                    if (el.tagName == 'checkbox')
-                      el.checked = settings[oldId];
-                    else
-                      el.value = settings[oldId]; // textbox
-                    // force preference update
-                    evt.initEvent("change", true, false);
-                    el.dispatchEvent(evt);
-                  }
                   debugger;
-                  let settings = JSON.parse(data);
-                  // jsonData = the key
-                  // every identifier ends with id#; we need to replace the number with the current key!
-                  // or match the string up to .id!
-                  
-                  // we need to read one keyname of one (the first) json member
-                  // e.g "newmsg.id1"
-                  let sourceId = Object.keys(settings)[0];
-                  if (sourceId) {
-                    // cut off variable before .id1
-                    // find out if specific identity or common
-                    // and only then append identity extension
-                    // jsonData.key has target identity and this can be "common"
-                    let isSrcIdentity = (sourceId.indexOf('.id') > 0),
-                        stem = isSrcIdentity ? sourceId.substr(sourceId.lastIndexOf('.')) : '', // use empty key for common case
-                        isTargetIdentity = (jsonData.key!='common' || jsonData.key==''),
-                        targetId = isTargetIdentity ? ('.' + jsonData.key) : '';
-                    for (let i=0; i<jsonData.texts.length; i++) {
-                      updateElement(jsonData.texts[i], stem, targetId);
-                    }
-                    for (let i=0; i<jsonData.checks.length; i++) {
-                      // e.g newmsg.id1
-                      updateElement(jsonData.checks[i], stem, targetId);
-                    }
-                  }                  
+                  readData(data);
                 },
                 function readFailed(ex) {
                   util.logDebug ('read() - Failure: ' + ex); 
@@ -963,6 +1003,54 @@ SmartTemplate4.Settings = {
     return true;    
   } ,
   
+  Postbox_writeFile: function Pb_writeFile(path, jsonData) {
+    const Ci = Components.interfaces,
+          Cc = Components.classes;
+    
+    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    file.initWithPath(path);
+    // stateString.data = aData;
+    // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
+
+    // Initialize the file output stream.
+    let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
+    ostream.init(file, 
+                 0x02 | 0x08 | 0x20,   // write-only,create file, reset if exists
+                 0x600,   // read+write permissions
+                 ostream.DEFER_OPEN); 
+
+    // Obtain a converter to convert our data to a UTF-8 encoded input stream.
+    let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
+    converter.charset = "UTF-8";
+
+    // Asynchronously copy the data to the file.
+    let istream = converter.convertToInputStream(jsonData); // aData
+    NetUtil.asyncCopy(istream, ostream, function(rc) {
+      if (Components.isSuccessCode(rc)) {
+        // do something for success
+      }
+    });
+  } ,
+  
+  Postbox_readFile: function Pb_readFile(path) {
+    const Ci = Components.interfaces,
+          Cc = Components.classes;
+    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    file.initWithPath(path);
+          
+    let fstream = Cc["@mozilla.org/network/file-input-stream;1"].
+                  createInstance(Ci.nsIFileInputStream);
+    fstream.init(file, -1, 0, 0);
+
+    let cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].
+                  createInstance(Ci.nsIConverterInputStream);
+    cstream.init(fstream, "UTF-8", 0, 0);
+
+    let string  = {};
+    cstream.readString(-1, string);
+    cstream.close();
+    return string.value;    
+  }, 
   
   store: function store() {
       // let's get all the settings from the key and then put them in a json structure:
@@ -995,8 +1083,8 @@ SmartTemplate4.Settings = {
         chk = tabbox.getElementsByTagName('checkbox');
     SmartTemplate4.Settings.fileAccountSettings('load', 
         {key: this.currentId, 
-         texts:txt, 
-         checks:chk}
+         textboxes:txt, 
+         checkboxes:chk}
     );
   }
 
