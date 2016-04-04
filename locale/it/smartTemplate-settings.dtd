@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Testo al passaggio del mouse">
 <!ENTITY pref_fontSettings.label "Carattere editor modello">
 <!ENTITY pref_server_desc "Account">
+<!ENTITY btnSaveTemplate.tooltip "Esporta modello...">
+<!ENTITY btnLoadTemplate.tooltip "Importa modello...">
 <!ENTITY pref_server_def "Utilizza posta in arrivo globale">
 <!ENTITY pref_def.label "Utilizza la cartella di posta in arrivo globale">
 <!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account">

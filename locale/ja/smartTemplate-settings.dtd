@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "マウスオーバーでテキスト表示">
 <!ENTITY pref_fontSettings.label "テンプレートエディタのフォントサイズ">
 <!ENTITY pref_server_desc "差出人:">
+<!ENTITY btnSaveTemplate.tooltip "テンプレートを保存します...">
+<!ENTITY btnLoadTemplate.tooltip "テンプレートを読み込みます...">
 <!ENTITY pref_server_def "共通設定">
 <!ENTITY pref_def.label "共通設定を使う">
 <!ENTITY pref_def.cap "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">

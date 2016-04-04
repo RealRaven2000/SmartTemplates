@@ -57,6 +57,8 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Tekst po wskazaniu kursorem">
 <!ENTITY pref_fontSettings.label "Czcionka">
 <!ENTITY pref_server_desc "Konta">
+<!ENTITY btnSaveTemplate.tooltip "Zapisz szablon…">
+<!ENTITY btnLoadTemplate.tooltip "Wczytaj szablon…">
 <!ENTITY pref_server_def "Dla wszystkich kont">
 <!ENTITY pref_def.label "Użyj dla wszystkich kont">
 <!ENTITY pref_def.cap "Odznacz „Użyj dla wszystkich kont”, jeśli chcesz skonfigurować szablon dla tego konta.">
@@ -85,6 +87,7 @@
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
 <!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
+<!ENTITY suppressMailtToLink "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
@@ -145,6 +148,14 @@
 <!ENTITY newsgr.label "Grupy dyskusyjne">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Każdy wiersz nagłówka">
+<!ENTITY header_function.cap "Modyfikuj nagłówek wiadomości">
+<!ENTITY header_function.explain "Funkcja ta może być stosowana do modyfikowania nagłówków w następujący sposób">
+<!ENTITY header_function.scope "Funkcja może być używana z następującymi nagłówkami:">
+<!ENTITY header.set.subject "zamień temay z tekstem">
+<!ENTITY header.prefix.subject "dodaj prefiks do tekstu">
+<!ENTITY header.append.subject "dołączyć tekst do tematu">
+<!ENTITY header.set.to "zamień odbiorcę z adresem wiadomości">
+<!ENTITY header.append.to "dodaj wiadomość do listy odbiorców">
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">
