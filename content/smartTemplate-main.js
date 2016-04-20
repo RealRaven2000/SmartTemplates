@@ -214,9 +214,12 @@
     # Removed automatic suppression of "mailTo" links and added an option for activating it
     # Postbox 4 compatibility. Raised minimum Verion for Thunderbird to 9
 
-  Version 1.2 - WIP
+  Version 1.2.1 - 20/04/2016
     # [Bug 26100] Double brackets not working with %cc(name,bracketMail(angle))%
-    # 
+    # [Bug 26159] %cursor% variable breaks paragraphs style
+		# [Bug 26126] Unwanted space added after cursor
+		# [Bug 26139] Fix position of warning message for variables not allowed in New Emails 
+		# [Bug 26197] Thunderbird 45 - unwanted paragraph after quote header
 		
 =========================
 		0.9.3 Review specific:
@@ -520,6 +523,7 @@ var SmartTemplate4 = {
 
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
+		this.whatIsUtc = false;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	
