@@ -26,6 +26,7 @@
 				<li><code>%sig(2)%</code> = &sig2.label;</li>
 				<li><code>%file(filePath,encoding)%</code> = &fileHTML.label;</li>
 				<li><code>%file(imagePath,altText)%</code> = &fileImage.label;</li>
+				<li><code>%cursor%</code> = &cursor.label;</li>
 			</ul>
 		       <!--
                         <br />
@@ -40,6 +41,8 @@
 				<li><code class="noWrite">%to%</code> = &to.label;</li>
 				<li><code class="noWrite">%to(firstname)%</code> = &tofirstname.label;</li>
 				<li><code class="noWrite">%to(name)%</code> = &toname.label;</li>
+				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
+				<li><code class="noWrite">%to(name,bracketMail())%</code> = &toname.label; &lt;&tomail.label;&gt;</li>
 			</ul>
 			
 			<!-- ##### "From" Variables #### -->
@@ -49,6 +52,12 @@
 				<li><code class="noWrite">%from%</code> = &from.label;</li>
 				<li><code class="noWrite">%from(firstname)%</code> = &fromfirstname.label;</li>
 				<li><code class="noWrite">%from(name)%</code> = &fromname.label;</li>
+				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>
+				<li><code class="noWrite">%from(name,mail)%</code> = &fromname.label; &frommail.label;</li>
+				<li><code class="noWrite">%from(name,bracketMail())%</code> = &fromname.label; &lt;&frommail.label;&gt;</li>
+				<li><code class="noWrite">%from(name,bracketMail(+;+))%</code> = &fromname.label; +&frommail.label;+</li>
+				<li><code class="noWrite">%from(name,bracketMail(square))%</code> = &fromname.label; [&frommail.label;]</li>
+				<li><code class="noWrite">%from(name,bracketMail(round))%</code> = &fromname.label; (&frommail.label;)</li>
 			</ul>
 		<!-- ##### "CC" Variables #### -->
 		<h1 class="helpchapter">&cc_var.cap;</h1>
@@ -57,6 +66,7 @@
 				<li><code class="noWrite">%cc%</code> = &cc.label;</li>
 				<li><code class="noWrite">%cc(firstname)%</code> = &ccfirstname.label;</li>
 				<li><code class="noWrite">%cc(name)%</code> = &ccname.label;</li>
+				<li><code class="noWrite">%cc(name,bracketMail())%</code> = &ccname.label; &lt;&ccmail.label;&gt;</li>
 			</ul>
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">&spec_form.cap;</h1>
@@ -85,7 +95,7 @@
 			</ul>
 		<!-- ##### header.set / header.append / header.prefix #### -->
 		<h1 class="helpchapter">&header_function.cap;</h1>
-			<aside>&header_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904">[Bug 25904]</a>.</aside>
+			<aside>&header_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a>.</aside>
 			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to</aside>
 			<ul>
 				<li><code>%header.set(subject,"text")%</code> = &header.set.subject;</li>
