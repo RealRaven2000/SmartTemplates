@@ -122,8 +122,7 @@ SmartTemplate4.classPref = function() {
 
 	// -----------------------------------
 	// get locale preference
-	function getLocalePref()
-	{
+	function getLocalePref()	{
 		try
 		{
 			let localeService = Cc["@mozilla.org/intl/nslocaleservice;1"]
@@ -902,16 +901,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	function simplify(aString) {
 		// Check existence of a header related to the reserved word.
 		function classifyReservedWord(str, reservedWord, param) {
-			try{
+			try {
 				util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param + ')');
 				let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
 				    s = (el == "reserved")
 					? str
 					: hdr.get(el ? el : reservedWord) != "" ? str : "";
 				if (!el)
-					util.logDebug('Removing unknown variable: %' +  reservedWord + '%');
+					util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
 				return s;
-			} catch (ex) {
+			} 
+			catch (ex) {
+				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
 				util.displayNotAllowedMessage(reservedWord);
 				return "";
 			}
@@ -1028,18 +1029,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		util.logDebugOptional('regularize','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
 
 		try {
-			let tm = new Date();
-			let fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].
-						createInstance(Ci.nsIScriptableDateFormat);
-			
-			let locale = SmartTemplate4.pref.getLocalePref();
-
+			let tm = new Date(),
+			    fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].
+						createInstance(Ci.nsIScriptableDateFormat),
+			    locale = SmartTemplate4.pref.getLocalePref();
+      
+			if (preferences.isDebugOption('timeStrings')) debugger;
 			// Set Time
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 
 			// Format date string
-			let dateFormat = null;
-			let timeFormat = null;
+			let dateFormat = null,
+			    timeFormat = null;
 			switch (timeType) {
 				case "datelocal":
 					dateFormat = fmt.dateFormatLong;
@@ -1332,7 +1333,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           modType = '',
           argument = argString.substr(argString.indexOf(",")+1); // cut off first part (command)
       argument = argument.substr(1, argument.lastIndexOf(")")-2);
-      if (preferences.Debug) debugger;
       try {
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
@@ -1477,8 +1477,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
 			}
 
-
-			switch(token){
+      if (preferences.isDebugOption('tokens') && token != "X:=today") debugger;
+			let isUTC = SmartTemplate4.whatIsUtc;
+			switch(token) {
 				case "deleteText": // return unchanged
 					return '%' + token + arg + '%';
 				case "replaceText": // return unchanged
@@ -1520,31 +1521,81 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "X":                               // Time hh:mm:ss
 					return finalize(token, expand("%H%:%M%:%S%"));
 				case "y":                               // Year 13... (2digits)
-				  let year = tm.getFullYear().toString();
-					return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(-2)");
 				case "Y":                               // Year 1970...
-					return finalize(token, "" + tm.getFullYear(), "tm.getFullYear");
+				  let year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString();
+					if (token=="y")
+						return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(len-2)");
+					return finalize(token, "" + year, "tm.getFullYear");
 				case "n":                               // Month 1..12
-					return finalize(token, "" + (tm.getMonth()+1), "tm.getMonth()+1");
 				case "m":                               // Month 01..12
-					return finalize(token, d02(tm.getMonth()+1), "d02(tm.getMonth()+1)");
+				case "B": 
+				case "b":
+				  let month = isUTC ? tm.getUTCMonth() : tm.getMonth();
+					switch(token) {
+						case "n":
+						  return finalize(token, "" + (month+1), "tm.getMonth()+1");
+						case "m":
+						  return finalize(token, d02(month+1), "d02(tm.getMonth()+1)");
+						case "B":
+						  return finalize(token, cal.monthName(month), "cal.monthName(" + month +")");   // locale month
+						case "b":
+						  return finalize(token, cal.shortMonthName(month), "cal.shortMonthName(" + month +")");   // locale month (short)
+					}
+					break;
 				case "e":                               // Day of month 1..31
-					return finalize(token, "" + tm.getDate(), "tm.getDate()");
 				case "d":                               // Day of month 01..31
-					return finalize(token, d02(tm.getDate()), "d02(tm.getMonth()+1)");
+				  let day = isUTC ? tm.getUTCDate() : tm.getDate();
+					switch(token) {
+						case "e":
+						  return finalize(token, "" + day, "tm.getDate(" + day + ")");
+						case "d":
+						  return finalize(token, d02(day), "d02(" + day + ")");
+					}
+					break;
+				case "A":                               // name of day 
+				case "a":
+				  let weekday = tm.getDay();
+					switch(token) {
+						case "A":
+						  return finalize(token, cal.dayName(weekday), "cal.dayName(" + weekday + ")");       // locale day of week
+						case "a":
+							return finalize(token, cal.shortDayName(weekday), "cal.shortDayName(" + weekday + ")");  // locale day of week(short)
+					}
+					break;
 				case "k":                               // Hour 0..23
-					return finalize(token, "" + tm.getHours(), "tm.getHours()");
 				case "H":                               // Hour 00..23
-					return finalize(token, d02(tm.getHours()), "d02(tm.getHours()");
 				case "l":                               // Hour 1..12
-					return finalize(token, "" + (((tm.getHours() + 23) % 12) + 1));
 				case "I":                               // Hour 01..12
-					return finalize(token, d02(((tm.getHours() + 23) % 12) + 1));
+				case "p":
+				  let hour = isUTC ? tm.getUTCHours() : tm.getHours();
+					switch(token) {
+						case "k":
+							return finalize(token, "" + hour, "tm.getHours()");
+						case "H":
+							return finalize(token, d02(hour), "d02(tm.getHours()");
+						case "l":
+							return finalize(token, "" + (((hour + 23) % 12) + 1));
+						case "I":
+							return finalize(token, d02(((hour + 23) % 12) + 1));
+						case "p":
+							switch (arg) {
+								case "(1)":
+									return finalize(token + "(1)", hour < 12 ? "a.m." : "p.m."); // locale am or pm
+								case "(2)":
+									return finalize(token + "(2)", hour < 12 ? "A.M." : "P.M."); // locale am or pm
+								case "(3)":
+								default:
+									return finalize(token, hour < 12 ? "AM" : "PM");     // locale am or pm
+							}
+			    }
+					break;
 				case "M":                               // Minutes 00..59
-					return finalize(token, d02(tm.getMinutes()), "d02(tm.getMinutes())");
+				  let minute = isUTC ? tm.getUTCMinutes() : tm.getMinutes();
+					return finalize(token, d02(minute), "d02(tm.getMinutes())");
 				case "S":                               // Seconds 00..59
 					return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
+				  if (isUTC) return "(UTC)";
 					return finalize(token, getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
 				case "sig":
 					let isRemoveDashes = (arg=="(2)");
@@ -1561,36 +1612,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
 					return retVal;
 				case "subject":
-					let current = (arg=="(2)");
-					let ret = getSubject(current);
+					let current = (arg=="(2)"),
+					    ret = getSubject(current);
 					if (!current)
 						ret = SmartTemplate4.escapeHtml(ret);
 					return finalize(token, ret);
 				case "newsgroup":
 					return finalize(token, getNewsgroup());
-				// name of day and month
-				case "A":
-					return finalize(token, cal.dayName(tm.getDay()), "cal.dayName(" + tm.getDay() + ")");       // locale day of week
-				case "a":
-					return finalize(token, cal.shortDayName(tm.getDay()), "cal.shortDayName(" + tm.getDay() + ")");  // locale day of week(short)
-				case "B":
-					return finalize(token, cal.monthName(tm.getMonth()), "cal.monthName(" + tm.getMonth() +")");   // locale month
-				case "b":
-					return finalize(token, cal.shortMonthName(tm.getMonth()), "cal.shortMonthName(" + tm.getMonth() +")");   // locale month (short)
 				case "language":
 				  SmartTemplate4.calendar.init(arg.substr(1,arg.length-2)); // strip ( )
 					return "";
-				case "p":
-					switch (arg) {
-						case "(1)":
-							return finalize(token + "(1)", tm.getHours() < 12 ? "a.m." : "p.m."); // locale am or pm
-						case "(2)":
-							return finalize(token + "(2)", tm.getHours() < 12 ? "A.M." : "P.M."); // locale am or pm
-						case "(3)":
-						default:
-							return finalize(token, tm.getHours() < 12 ? "AM" : "PM");     // locale am or pm
-					}
-					break;
 				case "dbg1":
 					return finalize(token, cal.list());
 				case "cwIso": // ISO calendar week [Bug 25012]
@@ -1599,17 +1630,19 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				// Change time of %A-Za-z%
 				case "X:=sent":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
-					//util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT");
+					SmartTemplate4.whatIsUtc = (arg && arg=='(UTC)');
+					util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT - UTC = " + SmartTemplate4.whatIsUtc);
 					return "";
 				case "X:=today":
 					SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
+					SmartTemplate4.whatIsUtc = false;
 					//util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
 					return "";
 				case "cursor":
 					util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
 					//if(isStationery)
 					//	return dmy;
-					return '<div class="st4cursor">&nbsp;</div>'; 
+					return '<span class="st4cursor">&nbsp;</span>'; 
 			  case "internal-javascript-ref":
 			    return javascriptResults[/\((.*)\)/.exec(arg)[1]];
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
@@ -1664,18 +1697,23 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           // make sure empty header stays empty for this special case
           if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc "))
             return '';
-					if (isStripQuote) {
-						token = mime.split(theHeader, charset, arg);
+					if (token=="date" && isUTC) {
+						try {
+							let x = new Date(theHeader);
+							theHeader = x.toUTCString();
+						}
+						catch(ex) {
+							util.logException('Cannot convert date to UTC: ' + token, ex);
+						}
 					}
-					else {
-						token = mime.decode(theHeader, charset);
-					}
+					let headerValue = isStripQuote ?
+					    mime.split(theHeader, charset, arg) :
+							mime.decode(theHeader, charset);
 					// allow HTML as to(link) etc. builds a href with mailto
-					if (testHTML(token, arg)) // avoid double escaping
-						return token;
+					if (testHTML(headerValue, arg)) // avoid double escaping
+						return headerValue;
+					token = headerValue;
 					break;
-					// unreachable code! =>
-					// token = token.replace(/\r\n|\r|\n/g, ""); //remove line breaks from 'other headers'
 			}
 		}
 		catch(ex) {
