@@ -107,6 +107,11 @@
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnLoadTemplate.tooltip;"
 											 onclick="SmartTemplate4.Settings.load();"/>
+				<toolbarbutton id="btnYouTube"
+											 class="toolbarbutton-1 chromeclass-toolbar-additional"
+											 tooltiptext="&btnYouTube.tooltip;"
+											 onclick="SmartTemplate4.Util.showYouTubePage();" 
+											 />
 			</toolbar>
 			<spacer flex = "1" />
 			<button id="btnAdvanced"

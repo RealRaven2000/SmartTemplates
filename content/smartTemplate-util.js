@@ -35,7 +35,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_EXTENSION_VERSION : "1.0.1",
+	HARDCODED_CURRENTVERSION : "1.2.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -45,20 +45,21 @@ SmartTemplate4.Util = {
 	mExtensionVer: null,
 	ConsoleService: null,
 	lastTime: 0,
-	AMOHomepage:     "https://addons.mozilla.org/thunderbird/addon/324497/",
-	SupportHomepage: "http://smarttemplate4.mozdev.org/index.html",
-	BugPage:         "http://smarttemplate4.mozdev.org/bugs.html",
-	DonatePage:      "http://smarttemplate4.mozdev.org/contribute.html",
-	VersionPage:     "http://smarttemplate4.mozdev.org/version.html",
+	AMOHomepage:      "https://addons.mozilla.org/thunderbird/addon/324497/",
+	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
+	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
+	DonatePage:       "http://smarttemplate4.mozdev.org/contribute.html",
+	VersionPage:      "http://smarttemplate4.mozdev.org/version.html",
 	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
-	AxelAMOPage:     "https://addons.mozilla.org/thunderbird/user/66492/",
-	MarkyAMOPage:    "https://addons.mozilla.org/thunderbird/user/2448736/",
-	ArisAMOPage:     "https://addons.mozilla.org/firefox/user/5641642/",
-	Tool8AMOPage:    "https://addons.mozilla.org/thunderbird/user/5843412/",
-	NoiaHomepage:    "http://carlitus.deviantart.com/",
-	FlagsHomepage:   "http://flags.blogpotato.de/",
+	AxelAMOPage:      "https://addons.mozilla.org/thunderbird/user/66492/",
+	MarkyAMOPage:     "https://addons.mozilla.org/thunderbird/user/2448736/",
+	ArisAMOPage:      "https://addons.mozilla.org/firefox/user/5641642/",
+	Tool8AMOPage:     "https://addons.mozilla.org/thunderbird/user/5843412/",
+	NoiaHomepage:     "http://carlitus.deviantart.com/",
+	FlagsHomepage:    "http://flags.blogpotato.de/",
 	BeniBelaHomepage: "http://www.benibela.de/",
-	StationeryPage:  "https://addons.mozilla.org/thunderbird/addon/stationery",
+	StationeryPage:   "https://addons.mozilla.org/thunderbird/addon/stationery",
+	YouTubePage:      "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
 
 	get mailDocument() {
 	  return gMsgCompose.editor.document;
@@ -288,7 +289,7 @@ SmartTemplate4.Util = {
 		//returns the current QF version number.
 		if(SmartTemplate4.Util.mExtensionVer)
 			return SmartTemplate4.Util.mExtensionVer;
-		let current = SmartTemplate4.Util.HARDCODED_EXTENSION_VERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
+		let current = SmartTemplate4.Util.HARDCODED_CURRENTVERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
 
 		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
 			// Addon Manager: use Proxy code to retrieve version asynchronously
@@ -610,6 +611,7 @@ SmartTemplate4.Util = {
 	showDonatePage: function () { SmartTemplate4.Util.openURLInTab(this.DonatePage); }  ,
 	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
 	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); } ,
+	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
 	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
 	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
 	showArisAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.ArisAMOPage); } ,
@@ -1200,6 +1202,7 @@ SmartTemplate4.Message = {
 	yesCALLBACK : null ,
 	noCALLBACK : null ,
 	myWindow : null,
+	parentWindow : null,
 	display : function(text, features, okCallback, cancelCallback, yesCallback, noCallback) {
 		if (okCallback)
 			this.okCALLBACK = okCallback;
@@ -1223,9 +1226,10 @@ SmartTemplate4.Message = {
 
 		// open message with main as parent
 
-		let main = SmartTemplate4.Util.Mail3PaneWindow;
+		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow;
 		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,alwaysRaised,dependent,close=no," + features, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
+		this.parentWindow = null;
 
 	} ,
 
@@ -1267,14 +1271,13 @@ SmartTemplate4.Message = {
 	loadMessage : function () {
 		try {
 			if (window.arguments && window.arguments.length) {
-				let params = window.arguments[0];  // leads to errors in tb3?
-				let msgDiv = document.getElementById('innerMessage');
-
-				let theMessage = window.arguments[0].messageText;
+				let params = window.arguments[0],  // leads to errors in tb3?
+				    msgDiv = document.getElementById('innerMessage'),
+				    theMessage = window.arguments[0].messageText,
 				// split text (passed in with /n as delimiter) into paragraphs
-				let textNodes = theMessage.split("\n");
-				let i = 0;
-				for (i = 0; i < textNodes.length; i++) {
+				    textNodes = theMessage.split("\n");
+						
+				for (let i = 0; i < textNodes.length; i++) {
 					// empty nodes will be <br>
 					let par = textNodes[i].length ? document.createElement('p') : document.createElement('br');
 					if (textNodes[i].length)
