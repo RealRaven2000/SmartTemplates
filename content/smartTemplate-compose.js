@@ -7,10 +7,11 @@ SmartTemplate4.classSmartTemplate = function()
 {
   const Ci = Components.interfaces,
         Cc = Components.classes;
-  let util = SmartTemplate4.Util;
+  let util = SmartTemplate4.Util,
+	    prefs = SmartTemplate4.Preferences;
         
 	function readSignatureFile(Ident) {
-		let sigEncoding = SmartTemplate4.Preferences.getMyStringPref('signature.encoding'), // usually UTF-8
+		let sigEncoding = prefs.getMyStringPref('signature.encoding'), // usually UTF-8
 		    htmlSigText = '',
 		    fileName = '';
 	  if (util.Application == 'Postbox') {
@@ -85,8 +86,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
 	function extractSignature(Ident, signatureDefined, composeType) {
-    let prefs = SmartTemplate4.Preferences,
-        isSigInBlockquote = false;
+    let isSigInBlockquote = false;
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText, // might not work if it is an attached file (find out how this is done)
 		    sig = '',
@@ -298,10 +298,10 @@ SmartTemplate4.classSmartTemplate = function()
 	// tag name: usually "br" | "div" | "#text"
 	// "unknown" - no node or nodeName available
 	function deleteNodeTextOrBR(node, idKey, isPlainText)	{
-		let isCitation = false;
-		let match=false;
-		let theNodeName='';
-		let cName = '';
+		let isCitation = false,
+		    match=false,
+		    theNodeName='',
+		    cName = '';
 		if (node && node.nodeName)
 			theNodeName = node.nodeName.toLowerCase();
 		else
@@ -315,6 +315,9 @@ SmartTemplate4.classSmartTemplate = function()
 		if (!content)
 			content = '\nEMPTY';
 		switch(theNodeName) {
+			case 'p':
+				match = true;
+				break;
 			case 'br':
 				match = true;
 				break;
@@ -363,8 +366,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Delete all consecutive whitespace nodes...
 	function deleteWhiteSpaceNodes(node) {
-		let match = true;
-		let count = 0;
+		let match = true,
+		    count = 0;
 		while (node && match) {
 			let nextNode = node.nextSibling;
 			match = false;
@@ -430,7 +433,7 @@ SmartTemplate4.classSmartTemplate = function()
 		let node = rootEl.firstChild,
 		    elType = '',
 		    skipInPlainText = !gMsgCompose.composeHTML,
-        preserve = SmartTemplate4.Preferences.getMyBoolPref('plainText.preserveTextNodes');
+        preserve = prefs.getMyBoolPref('plainText.preserveTextNodes');
 		// delete everything except (or until in plaintext?) quoted part
 		while (node) {
 			let n = node.nextSibling;
@@ -516,8 +519,8 @@ SmartTemplate4.classSmartTemplate = function()
 	
 	
 	function testSignatureVar(template) {
-		let reg = /%(sig)(\([^)]+\))*%/gm;
-		let match = template.toLowerCase().match(reg);
+		let reg = /%(sig)(\([^)]+\))*%/gm,
+		    match = template.toLowerCase().match(reg);
     util.logDebugOptional('functions','testSignatureVar() match = ' + match);
 		if (!match)
 			return '';
@@ -612,7 +615,7 @@ SmartTemplate4.classSmartTemplate = function()
 		    node = rootEl.firstChild,
 		    firstNode = null,
 				skipInPlainText = !gMsgCompose.composeHTML,
-        preserve = SmartTemplate4.Preferences.getMyBoolPref('plainText.preserveTextNodes');
+        preserve = prefs.getMyBoolPref('plainText.preserveTextNodes');
 		util.logDebugOptional('functions.delForwardHeader','Running Loop to remove unnecessary whitespace..');
 
 		while (node) {
@@ -782,6 +785,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Add template message
 	function insertTemplate(startup, flags)	{
+		let isDebugComposer = prefs.isDebugOption('composer')
 		util.logDebugOptional('functions,functions.insertTemplate','insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')');
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
@@ -841,6 +845,7 @@ SmartTemplate4.classSmartTemplate = function()
 		    composeCase = 'undefined',
 		    st4composeType = '',
 		    rawTemplate = '';
+		if (prefs.Debug) debugger;
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -930,6 +935,7 @@ SmartTemplate4.classSmartTemplate = function()
 									  (!flags.isStationery || flags.hasQuotePlaceholder) 
 									)
 							{
+								if (isDebugComposer) debugger;
 								delReplyHeader(idKey);
 							}
 						}
@@ -945,11 +951,13 @@ SmartTemplate4.classSmartTemplate = function()
 									(!flags.isStationery || flags.hasQuotePlaceholder)
 								)
 						{
+							if (isDebugComposer) debugger;
 							delForwardHeader(idKey);
 						}
 						break;
 				}
 				if (isQuoteHeader) {
+					if (isDebugComposer) debugger;
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = util.mailDocument.createElement("div");
 						qd.id = "smartTemplate4-quoteHeader";
@@ -957,7 +965,12 @@ SmartTemplate4.classSmartTemplate = function()
 						return qd;
 					}
 					if (!flags.isStationery) {
-						editor.rootElement.insertBefore(qdiv(), editor.rootElement.firstChild); // the first Child will be BLOCKQUOTE (header is inserted afterwards)
+						let firstQuote = 
+						  (composeCase=='forward') ?
+							editor.rootElement.firstChild :
+						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
+						
+						editor.rootElement.insertBefore(qdiv(), firstQuote || editor.rootElement.firstChild); 
 					}
 					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
 						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
@@ -987,13 +1000,14 @@ SmartTemplate4.classSmartTemplate = function()
 		let targetNode = 0,
 		    templateDiv,
 		    // new global settings to deal with [Bug 25084]
-		    breaksAtTop = flags.isStationery ? 0 : SmartTemplate4.Preferences.getMyIntPref("breaksAtTop"), // no breaks if Stationery is used!
+		    breaksAtTop = flags.isStationery ? 0 : prefs.getMyIntPref("breaksAtTop"), // no breaks if Stationery is used!
 		    bodyEl = gMsgCompose.editor.rootElement;
 		
 		// add template message --------------------------------
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
 		if (isActiveOnAccount)	{
+			if (isDebugComposer) debugger;
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
@@ -1011,17 +1025,24 @@ SmartTemplate4.classSmartTemplate = function()
 					// **    with getProcessedText(stationeryBodyText, idKey, st4composeType) 
 				}
 				if (theIdentity.replyOnTop) {
+					// this is where we lose the default "paragraph" style
 					editor.beginningOfDocument();
-					for (let i = 0; i < breaksAtTop; i++) 
+					for (let i = 0; i < breaksAtTop; i++)  {
+						if (isDebugComposer) debugger;
 						gMsgCompose.editor.insertNode(
 						                   util.mailDocument.createElement("br"),
 						                   gMsgCompose.editor.rootElement, 0);
-					// the first Child will be BLOCKQUOTE (header is inserted afterwards)
+					}
+					// the first Child should be BLOCKQUOTE (header is inserted afterwards)
+					if (isDebugComposer) debugger;
 					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
 				}
 				else {
-					for (let i = 0; i < breaksAtTop; i++)
+					for (let i = 0; i < breaksAtTop; i++) {
+						if (isDebugComposer) debugger;
 						gMsgCompose.editor.rootElement.appendChild(util.mailDocument.createElement("br"));
+					}
+					if (isDebugComposer) debugger;
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 				}
@@ -1031,6 +1052,8 @@ SmartTemplate4.classSmartTemplate = function()
 				      + '\n' + 'this might be caused by html comments <!-- or unclosed tag brackets <...>'
 				      + '\n' + ex
 				      + '\n' + 'Copy template contents to clipboard?';
+							
+				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
 				SmartTemplate4.Message.display(errorText,
 				              "centerscreen,titlebar",
 				              function() {
@@ -1110,6 +1133,7 @@ SmartTemplate4.classSmartTemplate = function()
 							  let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
 								if (sigNode) {
 									let isRemoveDashes = sigNode.getAttribute('removeDashes');
+									if (isDebugComposer) debugger;
 									theSignature.innerHTML = util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
 									sigNode.parentNode.insertBefore(theSignature, sigNode);
 									sigNode.parentNode.removeChild(sigNode);
@@ -1120,6 +1144,7 @@ SmartTemplate4.classSmartTemplate = function()
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
+								if (isDebugComposer) debugger;
 								if (composeCase == 'reply' && breaksAtTop == 0)
 									bodyEl.appendChild(doc.createElement("br"));
 								bodyEl.appendChild(theSignature);
@@ -1134,10 +1159,12 @@ SmartTemplate4.classSmartTemplate = function()
 								}
 								// insert signature after template
 								if (templateDiv.nextSibling) {
+									if (isDebugComposer) debugger;
 									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
 									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
 								}
 								else {
+									if (isDebugComposer) debugger;
 									templateDiv.parentNode.appendChild(templateDiv);
 									templateDiv.parentNode.appendChild(doc.createElement("br"));
 								}
@@ -1158,6 +1185,7 @@ SmartTemplate4.classSmartTemplate = function()
 					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
 					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
 					if (sigNode) {
+						if (isDebugComposer) debugger;
             util.logDebugOptional ('signatures','found signature node, removing...');
 						sigNode.parentNode.removeChild(sigNode);
 					}
@@ -1168,7 +1196,7 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// if %cursor% is not set explicitely
 		if (!isCursor) {
-			let cursor = doc.createElement("div");
+			let cursor = doc.createElement("span");
 			cursor.className = "st4cursor";
 			// if we have a template we simply insert it at the bottom of the template
 			if (templateDiv) {
@@ -1214,17 +1242,24 @@ SmartTemplate4.classSmartTemplate = function()
 							
 						if (caretContainer) {
 							try {
+								if (isDebugComposer) debugger;
 								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
-								    space = gMsgCompose.editor.document.createTextNode('\u00a0'); // &nbsp;
-								caretContainer.parentNode.insertBefore(space, caretContainer); 
-								caretContainer.parentNode.removeChild(caretContainer);
+								    space = gMsgCompose.editor.document.createTextNode('\u00a0'), // &nbsp;
+										theParent = caretContainer.parentNode; 
+								theParent.insertBefore(space, caretContainer); 
+								theParent.removeChild(caretContainer);
 								editor.selection.selectAllChildren(space);
-								editor.selection.collapseToStart(); // 
-								if (SmartTemplate4.Preferences.getMyBoolPref('cursor.insertSpace')) {
+								if (prefs.getMyBoolPref('cursor.insertSpace')) {
+									editor.selection.collapseToStart(); // 
 									editor.selection.modify('extend', 'forward','character');
 									selCtrl.scrollSelectionIntoView(selCtrl.SELECTION_NORMAL, selCtrl.SELECTION_WHOLE_SELECTION, scrollFlags);
 									selCtrl.setDisplaySelection(selCtrl.SELECTION_ATTENTION);
 								}
+								else {
+									editor.selection.collapseToStart(); 
+									theParent.removeChild(space);
+								}
+								window.updateCommands('style');
 								// editor.selection.collapse(caretContainer, 0);
 							}
 							catch (ex) {
@@ -1255,6 +1290,7 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		
 		if (flags.isStationery && targetNode) {
+			if (isDebugComposer) debugger;
 		  bodyEl.removeChild(targetNode);  // Bug 25710
 		}
 		resetDocument(gMsgCompose.editor, startup);
