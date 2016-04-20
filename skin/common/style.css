@@ -713,7 +713,7 @@ button.dialog-button[dlgtype=extra2] {
   overflow-x: hidden;
 }
 
-#btnSaveTemplate, #btnLoadTemplate {
+#btnSaveTemplate, #btnLoadTemplate, #btnYouTube {
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	display: -moz-box;
 }
@@ -725,6 +725,12 @@ button.dialog-button[dlgtype=extra2] {
 #smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
 	list-style-image: url("chrome://smarttemplate4/skin/icons/template-load.png") !important;
 }
+
+#smartTemplatePane #btnYouTube,
+#smartTemplatePane toolbar[brighttext] #btnYouTube {
+	list-style-image: url("chrome://smarttemplate4/skin/icons/youtube.png") !important;
+}
+
 #templateTools {
 	background-image: none;
 	border: none;
