@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Conta">
 <!ENTITY btnSaveTemplate.tooltip "Salvar Modelo...">
 <!ENTITY btnLoadTemplate.tooltip "Carregar Modelo...">
+<!ENTITY btnYouTube.tooltip "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o Stationery e outras complementos">
 <!ENTITY pref_server_def "Configuração global">
 <!ENTITY pref_def.label "Usar configuração global">
 <!ENTITY pref_def.cap "Para fazer configurações específicas nesta conta, desmarque a opção 'Usar configuração global'.">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Assinatura (da TB Conta Settings mas sem o '--')">
 <!ENTITY fileHTML.label "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'.">
 <!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O opcional altText é exibido se a imagem não pode ser localizada.">
+<!ENTITY cursor.label "Define a posição do cursor">
 <!ENTITY to_var.cap "Variáveis de Destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY to.label "Destinatário (padrão)">

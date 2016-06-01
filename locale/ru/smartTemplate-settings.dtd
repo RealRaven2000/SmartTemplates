@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Учётная запись">
 <!ENTITY btnSaveTemplate.tooltip "Сохранить шаблон…">
 <!ENTITY btnLoadTemplate.tooltip "Загрузить шаблон…">
+<!ENTITY btnYouTube.tooltip "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию Stationery и других дополнений">
 <!ENTITY pref_server_def "Общие настройки">
 <!ENTITY pref_def.label "Использовать общие настройки">
 <!ENTITY pref_def.cap "Отключить 'Использовать общие настройки' для создания индивидуального заголовка цитат для этой учётной записи.">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Подпись, но без '--'">
 <!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
 <!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
+<!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
 <!ENTITY to.label "Инициалы получателя (стандарт)">

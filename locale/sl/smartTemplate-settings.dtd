@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Račun">
 <!ENTITY btnSaveTemplate.tooltip "Shrani predlogo ...">
 <!ENTITY btnLoadTemplate.tooltip "Naloži predlogo ...">
+<!ENTITY btnYouTube.tooltip "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih">
 <!ENTITY pref_server_def "Splošno">
 <!ENTITY pref_def.label "Uporabi splošno">
 <!ENTITY pref_def.cap "Odznačite 'Uporabi splošno' za ustvarjanje glave navedka po meri za ta račun,">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Podpis iz nastavitev računa, toda brez '- -'">
 <!ENTITY fileHTML.label "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8.">
 <!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
+<!ENTITY cursor.label "Nastavi položaj kazalca">
 <!ENTITY to_var.cap "Prejemnik (Za)">
 <!ENTITY to_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
 <!ENTITY to.label "Prejemnikovo ime (privzeto)">

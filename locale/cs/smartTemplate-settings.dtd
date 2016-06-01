@@ -24,11 +24,26 @@
 <!ENTITY pref_help.tab "Nápověda">
 <!ENTITY pref_about.tab "O programu">
 <!ENTITY pref_global.tab "Globální nastavení">
+<!ENTITY pref_advanced.tab "Rozšířené nastavení">
 <!ENTITY pref_variables.tab "Proměnné">
+<!ENTITY pref_examples.tab "Příklady (pouze on-line)">
+<!ENTITY pref_examples.tooltip "Zobraz příklady šablon z http://smarttemplate4.mozdev.org/templates.html. Dostupné pouze v on-line módu.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Zrušit">
 <!ENTITY contribute_button "Přispět">
+<!ENTITY button.updateThunderbird "Aktualizuj Thunderbird!">
+<!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Obsah e-mailu">
+<!ENTITY pref_groupSignatures "Podpisy">
+<!ENTITY pref_groupAdvanced "Rozšířené funkce">
+<!ENTITY pref_groupUI "Uživatelské rozhraní">
+<!ENTITY pref_groupNameRules "Jméno role">
+<!ENTITY pref_groupTroubleShooting "Řešení problému">
+<!ENTITY pref_addSigBreakHTML.label "Přidej -- do HTML e-mailu">
+<!ENTITY pref_addSigBreakHTML.tooltip "Vždy přidej -- oddělovač před podpis (v HTML e-mailu)">
+<!ENTITY pref_addSigBreakPlaintext.label "Přidej -- i textovém e-mailu">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Vždy přidej -- oddělovač před podpis (v textovém e-mailu)">
 <!ENTITY pref_quoteHeaderBox.label "Uvození citace">
 <!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
 <!ENTITY pref_templateBox.label "Šablona">
@@ -37,8 +52,14 @@
 <!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
 <!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
 <!ENTITY pref_showStatusIcon.label "Zobraz tlačítko v řádku statusu">
+<!ENTITY pref_StatusIcon.IconOnly "Jen ikona">
+<!ENTITY pref_StatusIcon.IconText "Ikona a Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text nad">
 <!ENTITY pref_fontSettings.label "Písmo editoru šablony">
 <!ENTITY pref_server_desc "Účet">
+<!ENTITY btnSaveTemplate.tooltip "Ulož Šablonu...">
+<!ENTITY btnLoadTemplate.tooltip "Nahraj Šablonu...">
+<!ENTITY btnYouTube.tooltip "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení">
 <!ENTITY pref_server_def "Společné">
 <!ENTITY pref_def.label "Použij společné">
 <!ENTITY pref_def.cap "Pokud si chcete přizpůsobit řádek uvození citace, zrušte volbu 'Použij společné'.">
@@ -52,6 +73,76 @@
 <!ENTITY pref_fwdhead.label "Zakázat implicitní uvození citace v Thunderbirdu">
 <!ENTITY pref_html.label "Použij HTML (např. &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Použij únikové znaky pro  &quot; , &amp; , &lt; , &gt; , mezeru. Pro více detailů se podívejte do nápovědy.">
+<!ENTITY pref_rep_br.label "Nahraď konece řádků &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím &lt;br&gt; .">
+<!ENTITY pref_quotehead_tip "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. ">
+<!ENTITY pref_template_tip "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. ">
+<!ENTITY help_dialog_title "SmartTemplate4 Nápověda">
+<!ENTITY help_keyword.cap "Nápověda">
+<!ENTITY pref_debug_check "Ladicí mód">
+<!ENTITY pref_hideExamples "Skrýt záložku s příklady">
+<!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
+<!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
+<!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
+<!ENTITY resolveNamesFromAB "Získej jméno z adresáře">
+<!ENTITY resolveNamesFromAB_tip "Funkce nepracuje se vzdálenýma adresářema, jako LDAP.">
+<!ENTITY resolveNamesFromABNick "Přepiš křestní jméno, když existuje přezdívka">
+<!ENTITY resolveABRemoveMail "Smaž e-mailovou adresu pokud formátovací parametr je uveden">
+<!ENTITY suppressMailtToLink "Omezení mail klienta přidat odkaz do e-mailové adresy.">
+<!ENTITY capitalizeNames "Využij Jména">
+<!ENTITY pref_parseSignature "Proces podpisu">
+<!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
+<!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Nahraď oddělovače řádků za &lt;br&gt; v textovém podpisu ">
+<!ENTITY pref_stationerySupport "Podpora &quot;Stationery&quot; rozšíření">
+<!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s smarTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Toto vytváří možnost použít šablonu proměných ve tvém &quot;Stationery&quot;.">
+<!ENTITY pref_stationeryLink "Stationery rozšíření">
+<!ENTITY pref_forceParagraph "Vynucený mód odstavce">
+<!ENTITY pref_forceParagraph_tip "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy.">
+<!ENTITY pref_stationeryLink_tip "Získat &quot;Stationery&quot;...">
+<!ENTITY pref_defaultCharset.label "Výchozí znakové sada">
+<!ENTITY pref_defaultCharset_tip "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána.">
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap "O SmartTemplate4">
+<!ENTITY creator.label "Autor">
+<!ENTITY developer.label "Programátor">
+<!ENTITY localename.label "en-US">
+<!ENTITY localized.label "Překladatel">
+<!ENTITY translatorNickname.label "Aris-T (AMO)">
+<!ENTITY contributor.label "Spoluautor">
+<!ENTITY about.label "SmartTemplat4 nabízí snadný způsob pro přizpůsobení Thunderbirdích standardních záhlaví použitím šablon. Vlastní šablony můžou být vytvořeny pro každ účet a také společné pro všechny.">
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap "Něměnné proměnné">
+<!ENTITY ownname.label "Tvé jméno">
+<!ENTITY ownmail.label "Tvůj e-mail">
+<!ENTITY date.label "Datum / Čas (stejné jako původní 'Mailheader')">
+<!ENTITY tomail.label "e-mail příjemce">
+<!ENTITY frommail.label "e-mail odesílatele">
+<!ENTITY ccmail.label "e-mail v kopii">
+<!ENTITY sig.label "Podpis z nastavení účtu">
+<!ENTITY sig2.label "Podpis z nastavení účtu bez '--'">
+<!ENTITY fileHTML.label "HTML nebo text soubor. UTF-8 je předpokládano pokud je vynechan volitelný parametr znakové sady.">
+<!ENTITY fileImage.label "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen.">
+<!ENTITY cursor.label "nastav pozici kurzoru">
+<!ENTITY to_var.cap "Příjemce (To)">
+<!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
+<!ENTITY to.label "Jméno příjemce (defaultní)">
+<!ENTITY tofirstname.label "Křestní jméno příjemce">
+<!ENTITY toname.label "Jméno příjemce">
+<!ENTITY from_var.cap "Odesílatel (From)">
+<!ENTITY from_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj.">
+<!ENTITY from.label "Jméno odesílatele (defaultní)">
+<!ENTITY fromfirstname.label "Křestní jméno odesílatele">
+<!ENTITY fromname.label "Jméno odesílatele">
+<!ENTITY cc_var.cap "Příjemce (kopie)">
+<!ENTITY cc_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj.">
+<!ENTITY cc.label "Jméno příjemce (defaultní)">
+<!ENTITY ccfirstname.label "Křestní jméno příjemce">
+<!ENTITY ccname.label "Jméno příjemce">
+<!ENTITY spec_form.cap "Speciální formát">
+<!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
+<!ENTITY ex_brack.label "Příklad: To: Fred Cc:Jane">
 <!ENTITY brack_with_var.label "V [[...]] mohou být použity následující proměnné">
 <!ENTITY sub_var.cap "Předmět">
 <!ENTITY sub.label "předmět zprávy, kterou přeposíláte, nebo na kterou odpovídáte">
@@ -61,6 +152,14 @@
 <!ENTITY newsgr.label "Mailová skupina">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Jakákoliv řádka hlavičky">
+<!ENTITY header_function.cap "Uprav hlavičku e-mailu ">
+<!ENTITY header_function.explain "Funkce může být použita k úpravě hlavičky e-mailu, jak je popsáno zde:">
+<!ENTITY header_function.scope "Toto může být použito s těmito hlavičkami:">
+<!ENTITY header.set.subject "nahraď předmět tímto textem">
+<!ENTITY header.prefix.subject "předpona předmětu s textem">
+<!ENTITY header.append.subject "přidej text do předmětu">
+<!ENTITY header.set.to "nahraď příjemce e-mailovou adresou">
+<!ENTITY header.append.to "přidej e-mail do seznamu příjemců">
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
@@ -102,3 +201,18 @@
 <!ENTITY datetimezone.label "Časová zóna (+0100, +0200, ... )">
 <!ENTITY timezonename.label "Značka časové zóny GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Export/Import nastavení šablon">
+<!ENTITY im-ex_note1.label "Můžeš exportovat a importovat tvé nastavení a šablony pro každý účet.">
+<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate4 v rozbalovacím poli.">
+<!ENTITY im-ex_note3.label "Dále vyber 'Soubor' &#8658; 'Export' &#8658; 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
+<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate4 nastavení, v rozbalovacím poli. dále vyber 'Soubor' &#8658; 'Import' &#8658; 'Nastavení a Šablony' z menu.">
+<!ENTITY im-ex_note5.label "Vyber SmartTemplate4 soubor (xxx.st4) který chceš naimportovat.">
+<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby Smarttemplate4. To je standardní na této platformě a nebůže být změněno.">
+<!ENTITY html_note.cap "Poznámka pro HTML šablonu.">
+<!ENTITY html_note.label "Prosím používej pouze UTF-8 (Unicode) znaky v HTML šabloně!">
+<!ENTITY table.cap "Použití promněnných">
+<!ENTITY table_note.label "Nesprávné použití promněnných vytvoří chybovou hlášku v 'Chybové konzoli'!">
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label "Proměnná">
+<!ENTITY table_new.label "Zápis">
+<!ENTITY table_reply.label "Odpovědět">
+<!ENTITY table_fwd.label "Přeposlat">

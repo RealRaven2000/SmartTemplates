@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Account">
 <!ENTITY btnSaveTemplate.tooltip "Esporta modello...">
 <!ENTITY btnLoadTemplate.tooltip "Importa modello...">
+<!ENTITY btnYouTube.tooltip "Visita il canale YouTube 'Thunderbird Daily' - per suggerimenti e guide per usare Stationery e altre estensioni">
 <!ENTITY pref_server_def "Utilizza posta in arrivo globale">
 <!ENTITY pref_def.label "Utilizza la cartella di posta in arrivo globale">
 <!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
 <!ENTITY fileHTML.label "File HTML o in testo semplice. Utilizza UTF-8 se il parametro opzionale della codifica dei caratteri è omesso.">
 <!ENTITY fileImage.label "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata.">
+<!ENTITY cursor.label "Imposta la posizione del cursore">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY to.label "Nome del destinatario (predefinito)">

@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Konta">
 <!ENTITY btnSaveTemplate.tooltip "Zapisz szablon…">
 <!ENTITY btnLoadTemplate.tooltip "Wczytaj szablon…">
+<!ENTITY btnYouTube.tooltip "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze Stationery i innych dodatków.">
 <!ENTITY pref_server_def "Dla wszystkich kont">
 <!ENTITY pref_def.label "Użyj dla wszystkich kont">
 <!ENTITY pref_def.cap "Odznacz „Użyj dla wszystkich kont”, jeśli chcesz skonfigurować szablon dla tego konta.">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "z ustawień konta ale bez „--”">
 <!ENTITY fileHTML.label "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków..">
 <!ENTITY fileImage.label "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText.">
+<!ENTITY cursor.label "Określ pozycję kursora">
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">

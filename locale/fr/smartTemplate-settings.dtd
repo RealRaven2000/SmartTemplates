@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Compte">
 <!ENTITY btnSaveTemplate.tooltip "Enregistrer le modèle…">
 <!ENTITY btnLoadTemplate.tooltip "Charger un modèle…">
+<!ENTITY btnYouTube.tooltip "Allez visiter la chaîne YouTube &quot;Thunderbird Daily&quot; pour des astuces et tutoriels d'utilisation de Stationery et autres modules">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
 <!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin de créer un entête personnalisé pour ce compte.">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Signature issue des paramètres du compte, mais sans '--'">
 <!ENTITY fileHTML.label "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé.">
 <!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
+<!ENTITY cursor.label "Définit la position du curseur">
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
 <!ENTITY to.label "Noms des destinataires (défaut)">

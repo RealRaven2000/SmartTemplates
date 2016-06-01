@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "差出人:">
 <!ENTITY btnSaveTemplate.tooltip "テンプレートを保存します...">
 <!ENTITY btnLoadTemplate.tooltip "テンプレートを読み込みます...">
+<!ENTITY btnYouTube.tooltip "'Thunderbird Daily' YouTube チャネルを開きます。Stationery やそのほかのアドオンの利用法のチュートリアルを紹介しています">
 <!ENTITY pref_server_def "共通設定">
 <!ENTITY pref_def.label "共通設定を使う">
 <!ENTITY pref_def.cap "差出人ごとの設定を行う場合は「共通設定を使う」のチェックを外してください。">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "アカウントに設定されている署名 ('-- ' 無し)">
 <!ENTITY fileHTML.label "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。">
 <!ENTITY fileImage.label "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。">
+<!ENTITY cursor.label "カーソルの位置を設定する">
 <!ENTITY to_var.cap "受信者 (To)">
 <!ENTITY to_note.label "受信者の名前が設定されていない場合、メールアドレスが表示されます">
 <!ENTITY to.label "受信者の名前とメールアドレス (既定)">

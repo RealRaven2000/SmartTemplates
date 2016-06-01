@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY btnSaveTemplate.tooltip "Vorlage speichern…">
 <!ENTITY btnLoadTemplate.tooltip "Vorlage laden…">
+<!ENTITY btnYouTube.tooltip "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons.">
 <!ENTITY pref_server_def "Allgemein">
 <!ENTITY pref_def.label "Allgemein verwenden">
 <!ENTITY pref_def.cap "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">
@@ -97,6 +98,8 @@
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
+<!ENTITY pref_forceParagraph "Anfangs Absatz einfügen">
+<!ENTITY pref_forceParagraph_tip "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen.">
 <!ENTITY pref_stationeryLink_tip "Stationery Installieren…">
 <!ENTITY pref_defaultCharset.label "Charset Standardwert">
 <!ENTITY pref_defaultCharset_tip "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann">
@@ -121,6 +124,7 @@
 <!ENTITY sig2.label "Signatur aus den Konten-Einstellungen aber ohne '--'">
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
+<!ENTITY cursor.label "Bestimmt die Position des Cursors">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">

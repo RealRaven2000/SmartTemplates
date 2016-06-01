@@ -24,6 +24,7 @@
 <!ENTITY pref_help.tab "Допомога">
 <!ENTITY pref_about.tab "Про">
 <!ENTITY pref_global.tab "Глобальні налаштування">
+<!ENTITY pref_advanced.tab "Додаткові налаштування">
 <!ENTITY pref_variables.tab "Змінні">
 <!ENTITY pref_examples.tab "Приклади (тільки через мережу)">
 <!ENTITY pref_examples.tooltip "Показати приклади шаблонів з http://smarttemplate4.mozdev.org/templates.html. Тільки якщо доступна мережа.">
@@ -37,6 +38,7 @@
 <!ENTITY pref_groupSignatures "Підписи">
 <!ENTITY pref_groupAdvanced "Додаткові функції">
 <!ENTITY pref_groupUI "Інтерфейс користувача ">
+<!ENTITY pref_groupNameRules "Назва правил">
 <!ENTITY pref_groupTroubleShooting "Пошук і усунення несправностей">
 <!ENTITY pref_addSigBreakHTML.label "Додати -- до пошти у форматі HTML">
 <!ENTITY pref_addSigBreakHTML.tooltip "Завжди додати розділювач -- перед підписом (у пошті формату HTML)">
@@ -55,6 +57,9 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Текст при наведенні">
 <!ENTITY pref_fontSettings.label "Шрифт редактора шаблонів">
 <!ENTITY pref_server_desc "Запис">
+<!ENTITY btnSaveTemplate.tooltip "Зберегти шаблон...">
+<!ENTITY btnLoadTemplate.tooltip "Завантажити шаблон...">
+<!ENTITY btnYouTube.tooltip "Відвідайте YouTube канал &quot;Thunderbird Daily&quot; - для поради та навчальні посібників з використання додатків">
 <!ENTITY pref_server_def "Загальні">
 <!ENTITY pref_def.label "Використовувати загальні">
 <!ENTITY pref_def.cap "Зніміть прапорець 'Використовувати загальні', щоб створити індивідуальний заголовок для цього запису.">
@@ -79,8 +84,16 @@
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
+<!ENTITY resolveNamesFromAB "Розпізнавати імена використовуючи адресну книгу">
+<!ENTITY resolveNamesFromAB_tip "Ця функція не працює з деякими віддаленими адресними книгами, такими як LDAP.">
+<!ENTITY resolveNamesFromABNick "Замінити ім'я якщо є нікнейм ">
+<!ENTITY resolveABRemoveMail "Видалити адреса електронної пошти, якщо не вказано параметр формату">
+<!ENTITY suppressMailtToLink "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти.">
+<!ENTITY capitalizeNames "Назви прописними ">
 <!ENTITY pref_parseSignature "Підписання">
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
+<!ENTITY pref_cursorInsertSpace "Вставити пробіл, щоб виділити &#37;курсор&#37;">
+<!ENTITY pref_sigReplaceBR.label "Замінити розриви рядків у підпису з форматом простого тексту з &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Додано підтримку додатку Stationery ">
 <!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
@@ -107,6 +120,9 @@
 <!ENTITY ccmail.label "Адреса електронної пошти отримувача-СС">
 <!ENTITY sig.label "Підпис з налаштувань запису">
 <!ENTITY sig2.label "Підпис з налаштувань запису але без '--'">
+<!ENTITY fileHTML.label "HTML або звичайний текстовий файл. UTF-8 передбачається, як додатковий параметр кодування символів.">
+<!ENTITY fileImage.label "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено.">
+<!ENTITY cursor.label "Позиції курсора">
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
@@ -134,6 +150,14 @@
 <!ENTITY newsgr.label "Група новин">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "любий рядок з заголовка">
+<!ENTITY header_function.cap "Зміна заголовка поштового повідомлення">
+<!ENTITY header_function.explain "Ця функція може бути використана для зміни заголовків поштового повідомлення, як описано тут:">
+<!ENTITY header_function.scope "Це може бути використано з цими заголовками:">
+<!ENTITY header.set.subject "замінити тему повідомлення цим текстом">
+<!ENTITY header.prefix.subject "префікс теми повідомлення">
+<!ENTITY header.append.subject "додати текст до теми повідомлення">
+<!ENTITY header.set.to "замінити тему повідомлення електронною адресою">
+<!ENTITY header.append.to "Додати електронну адресу до переліку отримувачів">
 <!ENTITY fix_vartz.cap "Фіксовані змінні для 'формату дати'/'часового поясу'">
 <!ENTITY fix_vartz_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / Час (місцевий формат)">

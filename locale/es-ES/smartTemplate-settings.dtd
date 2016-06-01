@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "Cuenta">
 <!ENTITY btnSaveTemplate.tooltip "Guardar plantilla…">
 <!ENTITY btnLoadTemplate.tooltip "Cargar plantilla…">
+<!ENTITY btnYouTube.tooltip "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos.">
 <!ENTITY pref_server_def "Común">
 <!ENTITY pref_def.label "Usar común">
 <!ENTITY pref_def.cap "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta.">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Firma de la Configuración de cuentas de TB pero sin '--'">
 <!ENTITY fileHTML.label "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8.">
 <!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
+<!ENTITY cursor.label "Establece la posición del cursor">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">

@@ -59,6 +59,7 @@
 <!ENTITY pref_server_desc "帐户">
 <!ENTITY btnSaveTemplate.tooltip "保存模板…">
 <!ENTITY btnLoadTemplate.tooltip "载入模板…">
+<!ENTITY btnYouTube.tooltip "访问 'Thunderbird Daily' YouTube 频道 - 使用 Stationery 和其他扩展的技巧与教程">
 <!ENTITY pref_server_def "通用">
 <!ENTITY pref_def.label "使用通用">
 <!ENTITY pref_def.cap "如果您想要为这个帐户创建自定义的引用头，请取消选中“使用通用”">
@@ -121,6 +122,7 @@
 <!ENTITY sig2.label "Siganture 签名（来自TB帐户设置，但没有'--'">
 <!ENTITY fileHTML.label "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。">
 <!ENTITY fileImage.label "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。">
+<!ENTITY cursor.label "设置光标位置">
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY to.label "收件人姓名 (默认)">
