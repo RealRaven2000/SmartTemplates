@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
+<!ENTITY pref_addressDelimiter "多个通信者的分隔符：">
+<!ENTITY pref_addressDelimiter_tip "决定多个通信者之间的分隔符。Outlook 使用分号 (;)。Thunderbird 默认为英文逗号 (,)">
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
 <!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "支持同时使用 Stationery 与 smartTemplate4。">
 <!ENTITY pref_stationerySupport_tip2 "让你在 Stationery 中使用模板变量是可能的。">
 <!ENTITY pref_stationeryLink "附加组件 Stationery">
+<!ENTITY pref_forceParagraph "强制段落模式">
+<!ENTITY pref_forceParagraph_tip "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [Enter] 键创建新段落。">
 <!ENTITY pref_stationeryLink_tip "获得 Stationery...">
 <!ENTITY pref_defaultCharset.label "默认字符集">
 <!ENTITY pref_defaultCharset_tip "阅读引用头时，如不能确定，则使用此字符集作为后备选择。">

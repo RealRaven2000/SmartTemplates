@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
 <!ENTITY pref_nameSwap "Pravilni priimek, ime">
 <!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
+<!ENTITY pref_addressDelimiter "Loči dopisnike s/z:">
+<!ENTITY pref_addressDelimiter_tip "Ločilo med dopisniki. Outlook uporablja podpičje (;). Privzeto za Thunderbird je vejica (,).">
 <!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
 <!ENTITY resolveNamesFromAB_tip "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP.">
 <!ENTITY resolveNamesFromABNick "Nadomesti ime, če je prisoten vzdevek">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Podpira skupno uporabo dodatka Stationary in SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "To omogoča uporabo spremenljivk predlog v Dodatku Stationary.">
 <!ENTITY pref_stationeryLink "Dodatek Stationary">
+<!ENTITY pref_forceParagraph "Vsili odstavkovni način">
+<!ENTITY pref_forceParagraph_tip "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter].">
 <!ENTITY pref_stationeryLink_tip "Dobi Stationary ...">
 <!ENTITY pref_defaultCharset.label "Privzeti nabor znakov">
 <!ENTITY pref_defaultCharset_tip "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati.">

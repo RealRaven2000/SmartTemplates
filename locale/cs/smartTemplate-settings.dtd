@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
+<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
+<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Získej jméno z adresáře">
 <!ENTITY resolveNamesFromAB_tip "Funkce nepracuje se vzdálenýma adresářema, jako LDAP.">
 <!ENTITY resolveNamesFromABNick "Přepiš křestní jméno, když existuje přezdívka">

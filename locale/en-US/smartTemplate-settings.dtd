@@ -84,8 +84,10 @@
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
+<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
+<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote address books, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
 <!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">

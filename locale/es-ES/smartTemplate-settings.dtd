@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
+<!ENTITY pref_addressDelimiter "Deliminar corresponsales múltiples con:">
+<!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
 <!ENTITY resolveNamesFromAB_tip "Esta funcionalidad no funciona con algunas agendas remotas como LDAP">
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a smartTemplate4">
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">
 <!ENTITY pref_stationeryLink "Extensión Stationery">
+<!ENTITY pref_forceParagraph "Forzar modo párrafo">
+<!ENTITY pref_forceParagraph_tip "Garantiza que la posición del cursor se inicia dentro de un párrafo. También recomendamos seleccionar en Opciones - Redacción de Thunderbird la opción crear un nuevo párrafo al presionar la tecla [Intro].">
 <!ENTITY pref_stationeryLink_tip "Instalar Stationery…">
 <!ENTITY pref_defaultCharset.label "Juego caracteres por defecto">
 <!ENTITY pref_defaultCharset_tip "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar.">

@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
+<!ENTITY pref_addressDelimiter "Trenne mehrere Korrespondenten mit:">
+<!ENTITY pref_addressDelimiter_tip "Trennzeichen zwischen mehreren Briefpartnern. Outlook benutzt Semikolon (;) Die Voreinstellung in Thunderbird ist Komma (,)">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
 <!ENTITY resolveNamesFromAB_tip "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP.">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">

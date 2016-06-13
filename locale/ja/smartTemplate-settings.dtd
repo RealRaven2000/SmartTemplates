@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
+<!ENTITY pref_addressDelimiter "複数の通信相手の区切りに以下のデリミタを使用する:">
+<!ENTITY pref_addressDelimiter_tip "複数の通信相手の区切りに使用するデリミタを指定します。Outlook ではセミコロン (;) を、Thunderbird の既定ではカンマ (,) を使用します">
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
 <!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
 <!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate4 の同時使用をサポートします。">
 <!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate4 の変数を使用できます。">
 <!ENTITY pref_stationeryLink "Stationery アドオン">
+<!ENTITY pref_forceParagraph "強制的に段落モードを使用する">
+<!ENTITY pref_forceParagraph_tip "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します">
 <!ENTITY pref_stationeryLink_tip "Stationery アドオンを入手します。">
 <!ENTITY pref_defaultCharset.label "既定の文字エンコーディング">
 <!ENTITY pref_defaultCharset_tip "ヘッダの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">

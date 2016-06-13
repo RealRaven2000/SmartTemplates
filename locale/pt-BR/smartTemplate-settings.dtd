@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Clique direito para opções avançadas de depuração">
 <!ENTITY pref_nameSwap "Corrigir ÚltimoNome, PrimeiroNome">
 <!ENTITY pref_nameSwap_tip "Altera 'ÚltimoNome, PrimeiroNome' para 'Primeiro Último'">
+<!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
+<!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do livro de endereços">
 <!ENTITY resolveNamesFromAB_tip "Este recurso não funciona com certos catálogos de endereços, como LDAP.">
 <!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">
 <!ENTITY pref_stationeryLink "Addon Stationery">
+<!ENTITY pref_forceParagraph "Forçar Modo Parágrafo">
+<!ENTITY pref_forceParagraph_tip "Certifique-se de que a posição do cursor começa em um parágrafo. Recomendamos também a opção Compor do Thunderbird para criar um novo parágrafo ao pressionar a tecla [Enter].">
 <!ENTITY pref_stationeryLink_tip "Obter Stationery...">
 <!ENTITY pref_defaultCharset.label "Codificação padrão">
 <!ENTITY pref_defaultCharset_tip "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada.">
