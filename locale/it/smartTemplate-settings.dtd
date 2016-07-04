@@ -84,8 +84,8 @@
 <!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
-<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
-<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
+<!ENTITY pref_addressDelimiter "Usa il carattere seguente per separare più destinatari:">
+<!ENTITY pref_addressDelimiter_tip "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,).">
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
 <!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
 <!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
@@ -100,8 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
 <!ENTITY pref_stationeryLink "Estensione Stationery">
-<!ENTITY pref_forceParagraph "Force Paragraph Mode">
-<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
+<!ENTITY pref_forceParagraph "Imposta la modalità Paragrafo">
+<!ENTITY pref_forceParagraph_tip "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto Invio.">
 <!ENTITY pref_stationeryLink_tip "Vai a estensione Stationery...">
 <!ENTITY pref_defaultCharset.label "Codifica dei caratteri predefinita">
 <!ENTITY pref_defaultCharset_tip "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata.">

@@ -84,8 +84,8 @@
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
-<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
-<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
+<!ENTITY pref_addressDelimiter "Oddzielaj wielu korespondentów za pomocą:">
+<!ENTITY pref_addressDelimiter_tip "Separator pomiędzy wieloma korespondentami.W Outlooku jest to średnik (;), a w Thunderbirdzie przecinek (,).">
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
@@ -100,8 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Dodatek smartTemplate4 będzie współpracował z dodatkiem Stationery.">
 <!ENTITY pref_stationerySupport_tip2 "Dzięki temu w dodatku Stationery będzie możliwość używania wzorców ze smartTemplate4.">
 <!ENTITY pref_stationeryLink "Dodatek Stationery">
-<!ENTITY pref_forceParagraph "Force Paragraph Mode">
-<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
+<!ENTITY pref_forceParagraph "Stosuj tryb akapitu">
+<!ENTITY pref_forceParagraph_tip "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter.">
 <!ENTITY pref_stationeryLink_tip "Pobierz Stationery…">
 <!ENTITY pref_defaultCharset.label "Domyślny zestaw znaków">
 <!ENTITY pref_defaultCharset_tip "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu.">
