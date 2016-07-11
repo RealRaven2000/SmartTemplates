@@ -140,7 +140,7 @@ SmartTemplate4.classPref = function() {
 				}
 				if (!found) {
 				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
-					                + 'You will need the Language Pack from ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/' + SmartTemplate4.Util.AppverFull + '/yourPlatform/xpi' + '\n'
+					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + SmartTemplate4.Util.AppverFull + '/yourPlatform/xpi' + '\n'
 					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
 					SmartTemplate4.Util.logError(errorText, '', '', 0, 0, 0x1);
 					SmartTemplate4.Message.display(errorText,
@@ -432,6 +432,8 @@ SmartTemplate4.mimeDecoder = {
   // charset - character set of target string (probably silly to have one for all)
   // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail()
 	split: function (addrstr, charset, format, bypassCharsetDecoder)	{
+		const util = SmartTemplate4.Util,
+		      preferences = SmartTemplate4.Preferences;
 	  // jcranmer: you want to use parseHeadersWithArray
 		//           that gives you three arrays
 	  //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -455,7 +457,7 @@ SmartTemplate4.mimeDecoder = {
           ar = reg.exec(format);
       if (ar && ar.length>1) {
         let args = ar[1];
-        SmartTemplate4.Util.logDebugOptional('regularize', 
+        util.logDebugOptional('regularize', 
           'getBracketAddressArgs(' + format + ',' + argType + ') returns ' + args 
           + '\n out of ' + ar.length + ' results.');
         return args;
@@ -469,7 +471,7 @@ SmartTemplate4.mimeDecoder = {
       
       let allAddressBooks;
 
-      if (SmartTemplate4.Util.Application === "Postbox") {
+      if (util.Application === "Postbox") {
          // mailCore.js:2201 
          // abCardForEmailAddress(aEmailAddress, aAddressBookOperations, aAddressBook)
          let card = abCardForEmailAddress(mail,  Components.interfaces.nsIAbDirectory.opRead, {});
@@ -491,14 +493,14 @@ SmartTemplate4.mimeDecoder = {
               return card;
           }
           catch(ex) {
-            SmartTemplate4.Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+            util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
           }
         }
       }
       return null;
     }
 
-    // return the bracket delimiteds
+    // return the bracket delimiters
 		function getBracketDelimiters(bracketParams, element) {
       let del1='', del2='',
           bracketExp = element.field;
@@ -551,12 +553,12 @@ SmartTemplate4.mimeDecoder = {
     
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.removeEmail') ?
+      format = preferences.getMyBoolPref('mime.resolveAB.removeEmail') ?
               'name' :
               'name,bracketMail[angle]'; 
     }
     
-		SmartTemplate4.Util.logDebugOptional('mime.split',
+		util.logDebugOptional('mime.split',
          '====================================================\n'
        + 'mimeDecoder.split(charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + ')\n'
        + '  addrstr:' +  addrstr + '\n'
@@ -566,8 +568,10 @@ SmartTemplate4.mimeDecoder = {
 		// if (!bypassCharsetDecoder)
 			// addrstr = this.decode(addrstr, charset);
 		// Escape % and , characters in mail addresses
+		if (preferences.isDebugOption('mime.split')) debugger;
+		
 		addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
-		SmartTemplate4.Util.logDebugOptional('mime.split', 'After escaping special chars in mail address field:\n' + addrstr);
+		util.logDebugOptional('mime.split', 'After escaping special chars in mail address field:\n' + addrstr);
 
     /** SPLIT ADDRESSES **/
 		let array = addrstr.split(/\s*,\s*/);
@@ -608,18 +612,20 @@ SmartTemplate4.mimeDecoder = {
         dbgText += '(' + formatArray[i].modifier + ')';
       dbgText += '\n';
     }
-    SmartTemplate4.Util.logDebugOptional('mime.split', dbgText);
+    util.logDebugOptional('mime.split', dbgText);
     
+		const nameDelim = preferences.getMyStringPref('names.delimiter'); // Bug 26207
 		let addresses = "",
         address,
         bracketMailParams = getBracketAddressArgs(format, 'Mail'),
         bracketNameParams = getBracketAddressArgs(format, 'Name');
 
-    // if (SmartTemplate4.Preferences.Debug) debugger;
+    // if (preferences.Debug) debugger;
     /** ITERATE ADDRESSES  **/
 		for (let i = 0; i < array.length; i++) {
+			if (preferences.isDebugOption('mime.split')) debugger;
 			if (i > 0) {
-				addresses += ", ";
+				addresses += nameDelim + " ";  // comma or semicolon
 			}
       let addressee = '',
           firstName, lastName,
@@ -638,11 +644,11 @@ SmartTemplate4.mimeDecoder = {
 			// name or/and address
 			address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
       
-      SmartTemplate4.Util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
+      util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
-      let card = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
+      let card = preferences.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
       // this cuts off the angle-bracket address part: <fredflintstone@fire.com>
       addressee = address.replace(/\s*<\S+>\s*$/, "")
                       .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
@@ -652,13 +658,17 @@ SmartTemplate4.mimeDecoder = {
           addressee = addressee.slice(1);
       }
       // if somebody repeats the email address instead of a name at front, e.g. a.x@tcom, we cut the domain off anyway
-      if (addressee.indexOf('@')>0)
-        addressee = addressee.slice(0, addressee.indexOf('@'))
+      if (addressee.indexOf('@')>0) {
+				let add_end = addressee.substring(addressee.length-1);
+        addressee = addressee.slice(0, addressee.indexOf('@')); // if we do this we may need to re-add parentheses or special characters at the end!
+			if ([')', ']', '}', '"'].indexOf(add_end) !== -1)
+				addressee += add_end; // re-add ')'
+			}
 			fullName = addressee;
       
       firstName = card ? card.firstName : '';
-      if (card && SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.preferNick')) {
-        if (SmartTemplate4.Util.Application === "Postbox") {
+      if (card && preferences.getMyBoolPref('mime.resolveAB.preferNick')) {
+        if (util.Application === "Postbox") {
           if (card.nickName)
             firstName = card.nickName;
         }
@@ -668,17 +678,18 @@ SmartTemplate4.mimeDecoder = {
       lastName = card ? card.lastName : '';
       fullName = (card && card.displayName) ? card.displayName : fullName;
       
-      let isNameFound = (firstName.length + lastName.length > 0); // nameProcessed
-      if (!isNameFound && SmartTemplate4.Preferences.getMyBoolPref('firstLastSwap')) {
+      let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
+      if (!isNameFound && preferences.getMyBoolPref('firstLastSwap')) {
         // extract Name from left hand side of email address
 				let regex = /\(([^)]+)\)/,
 				    nameRes = regex.exec(addressee);
+				// (Name) extraction!
 				if (nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
 					isNameFound = true;
 					firstName = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
 				}
 				else {
-					let iComma =  addressee.indexOf(', ');
+					let iComma = addressee.indexOf(', ');
 					if (iComma>0) {
 						firstName = addressee.substr(iComma + 2);
 						lastName = addressee.substr(0, iComma);
@@ -686,7 +697,6 @@ SmartTemplate4.mimeDecoder = {
 					}
 				}
       }
-
       
       if (!fullName) {
         if (firstName && lastName) { 
@@ -709,14 +719,26 @@ SmartTemplate4.mimeDecoder = {
       }
       
       let names = fullName.split(' '),
-          isOnlyOneName = (names.length==1) ? true : false;
-      if (!firstName) firstName = (names.length) ? names[0] : '';
-      if (!lastName) lastName = (names.length>1) ? names[names.length-1] : '';
+			    ncount = names.length,
+          isOnlyOneName = (ncount==1) ? true : false;
+      if (!firstName) {
+				firstName = '';
+				if (isOnlyOneName)
+					firstName = names[0];  // always fill first Name!
+				else for (let n=0; n<ncount-1; n++) {
+					if (n>0) firstName += ' '; // concatenate with space between all first names
+					firstName += names[n];
+				}
+			}
+			// [Bug 26208] ? Omitting middle names
+			if (!lastName && !isOnlyOneName) {
+				lastName = ncount ? names[ncount-1] : '';
+			}
       
-      if (SmartTemplate4.Preferences.getMyBoolPref('names.capitalize')) {
-        fullName = SmartTemplate4.Util.toTitleCase(fullName);
-        firstName = SmartTemplate4.Util.toTitleCase(firstName);
-        lastName = SmartTemplate4.Util.toTitleCase(lastName);
+      if (preferences.getMyBoolPref('names.capitalize')) {
+        fullName = util.toTitleCase(fullName);
+        firstName = util.toTitleCase(firstName);
+        lastName = util.toTitleCase(lastName);
       }
       
       // build the part!
@@ -736,7 +758,7 @@ SmartTemplate4.mimeDecoder = {
               default:
                 //empty anchor suppresses link; adding angle brackets as default
                 // TO DO: make default brackets configurable later
-                if (SmartTemplate4.Preferences.getMyBoolPref('mail.suppressLink'))
+                if (preferences.getMyBoolPref('mail.suppressLink'))
                   part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
                 else
                   part = emailAddress;
@@ -748,6 +770,11 @@ SmartTemplate4.mimeDecoder = {
               part = fullName;
             else
               part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+						// [Bug 26209] wrap name if contains comma
+						if (preferences.getMyBoolPref('names.quoteIfComma')) {
+							if (part.includes(',') || part.includes(';'))
+								part = '"' + part + '"';
+						}
             break;
           case 'firstname':
             part = firstName;
@@ -789,7 +816,7 @@ SmartTemplate4.mimeDecoder = {
         }
       }
       
-      SmartTemplate4.Util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
+      util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
       addresses += addressField;
 		}
 		return addresses;

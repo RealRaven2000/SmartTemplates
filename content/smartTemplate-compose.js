@@ -336,6 +336,7 @@ SmartTemplate4.classSmartTemplate = function()
 			case 'div': // tb 13++
 				if (node.className &&
 				    node.className.indexOf('moz-cite-prefix')>=0) {
+					if (prefs.isDebugOption('composer')) debugger;
 					cName = node.className;
 					match = true;
 					isCitation = true;
@@ -358,7 +359,7 @@ SmartTemplate4.classSmartTemplate = function()
 			gMsgCompose.editor.deleteNode(node);
 		}
 		else
-				util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName);
+			util.logDebugOptional('deleteNodes','deleteNodeTextOrBR() - ignored nonmatching ' + theNodeName);
 		return isCitation ? 'cite-prefix' : theNodeName;
 	};
 
@@ -409,7 +410,11 @@ SmartTemplate4.classSmartTemplate = function()
 // Note:  moz-cite-prefix might be the container for the headers (shown _before_ the quote)
 // 		    node.className &&
 // 		    node.className.indexOf('moz-cite-prefix')>=0
-		return (node.nodeName && node.nodeName.toLowerCase() == 'blockquote');
+    if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote')
+			return true;
+		if (!node.parentNode) return false;
+		// make this recursive; if the node is child of a quoted parent, it is also considered to be quoted.
+		return isQuotedNode(node.parentNode); 
 	};
 
 	// -----------------------------------
@@ -419,7 +424,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//In compose with TEXT, body is
 	//	<BR><BR>(<- if reply_on_top=1) <#text#>..... (reply_header_xxxx) <BR><SPAN> original-message
 	//We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
-	function delReplyHeader(idKey) {
+	function delReplyHeader(idKey, onlyHeader) {
 		function countLF(str) { return str.split("\n").length - 1; }
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
@@ -429,11 +434,13 @@ SmartTemplate4.classSmartTemplate = function()
 		if (pref.getCom("mail.identity." + idKey + ".reply_on_top", 1) == 1) {
 			lines = 2;
 		}
+		if (prefs.getMyBoolPref('debug.functions.delReplyHeader')) debugger;
 
 		let node = rootEl.firstChild,
 		    elType = '',
 		    skipInPlainText = !gMsgCompose.composeHTML,
-        preserve = prefs.getMyBoolPref('plainText.preserveTextNodes');
+        preserve = prefs.getMyBoolPref('plainText.preserveTextNodes'),
+				foundReplyHeader = false;
 		// delete everything except (or until in plaintext?) quoted part
 		while (node) {
 			let n = node.nextSibling;
@@ -443,10 +450,24 @@ SmartTemplate4.classSmartTemplate = function()
 				break;  // all following parts are in plain text, so we don't know whether they are all part of the quoted email
 			
 			if (isQuotedNode(node) || elType == 'cite-prefix' || elType == 'moz-cite-prefix') {
+				// skip element after quote header
 				node = n;
 				continue;
 			}
+			
+			if (onlyHeader) { // don't delete all previous nodes!
+				if (node.nodeName.toLowerCase()=='div' &&
+				    node.className &&
+				    node.className.indexOf('moz-cite-prefix')>=0) {
+					elType = deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // 'cite-prefix'
+				}
+				node = n;
+				continue;
+			}
+			
 			elType = deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve); // 'cite-prefix'
+			if (elType == 'cite-prefix')
+				foundReplyHeader = true;
 			node = n;
 		}
 
@@ -459,6 +480,15 @@ SmartTemplate4.classSmartTemplate = function()
 				util.logDebugOptional('functions.delReplyHeader','found moz-email-headers-table, calling deleteHeaderNode()...');
 				deleteHeaderNode(node);
 			}
+			if (!foundReplyHeader) {
+				node = findChildNode(rootEl, 'moz-cite-prefix');
+				if (node) {
+					// only delete prefix if it is NOT within a blockquote
+					if (!isQuotedNode(node))
+						deleteNodeTextOrBR(node, idKey, skipInPlainText && preserve);
+				}
+			}
+				
 		}
 		else {
 			switch (pref.getCom("mailnews.reply_header_type", 1)) {
@@ -548,7 +578,7 @@ SmartTemplate4.classSmartTemplate = function()
 	//	<BR><BR> <#text#(1041)><BR> <#text# (headers)>!<BR><BR>! original-message
 	//We need to remove tags until two BR tags appear consecutively.
 	// AG: To assume that the 2 <br> stay like that is foolish... it change in Tb12 / Tb13
-	function delForwardHeader(idKey)	{
+	function delForwardHeader(idKey, onlyHeader)	{
 		function truncateTo2BR(root) {
 			util.logDebugOptional('deleteNodes','truncateTo2BR()');
 			let node = root.firstChild;
@@ -630,9 +660,9 @@ SmartTemplate4.classSmartTemplate = function()
 			// [Bug 25097] do not restrict this to html mode only
 			if (node.className == 'moz-forward-container') {
 				// lets find the ---original message--- now
-				let searchWhiteSpace = true;
-				let truncWhiteSpace = false;
-				let inner = node.firstChild;
+				let searchWhiteSpace = true,
+				    truncWhiteSpace = false,
+				    inner = node.firstChild;
 				while (inner) {
 					let m = inner.nextSibling;
 					if (inner.nodeValue == origMsgDelimiter || truncWhiteSpace) {
@@ -654,8 +684,9 @@ SmartTemplate4.classSmartTemplate = function()
 				node = n;
 				continue;
 			}
-
-			deleteNodeTextOrBR(node, idKey);
+			
+      if (!onlyHeader)
+				deleteNodeTextOrBR(node, idKey);
 			node = n;
 		}
 
@@ -785,8 +816,7 @@ SmartTemplate4.classSmartTemplate = function()
 	// -----------------------------------
 	// Add template message
 	function insertTemplate(startup, flags)	{
-		let isDebugComposer = prefs.isDebugOption('composer')
-		util.logDebugOptional('functions,functions.insertTemplate','insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')');
+		let isDebugComposer = prefs.isDebugOption('composer');
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
 		  flags = {};
@@ -794,12 +824,15 @@ SmartTemplate4.classSmartTemplate = function()
 			flags.identitySwitched = true;  // new flag
 			SmartTemplate4.initFlags(flags);
 		}
+		util.logDebugOptional('functions,functions.insertTemplate',
+		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
+			+ 'gMsgCompose.type = ' + gMsgCompose.type);
+		const msgComposeType = Ci.nsIMsgCompType,
+					ed = GetCurrentEditor(),
+		      editor = ed.QueryInterface(Ci.nsIEditor);
 		let pref = SmartTemplate4.pref,
 		    // gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
 		    doc = gMsgCompose.editor.document,
-		    ed = GetCurrentEditor(),
-		    editor = ed.QueryInterface(Ci.nsIEditor),
-		    msgComposeType = Ci.nsIMsgCompType,
 		    template = null,
 		    quoteHeader = "",
         idKey = util.getIdentityKey(document);
@@ -907,6 +940,8 @@ SmartTemplate4.classSmartTemplate = function()
 
 			if (isActiveOnAccount) {
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
+				if (gMsgCompose.type == msgComposeType.MailToUrl)
+					rawTemplate = "";
 				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
         // if Stationery has %sig(none)% then flags.omitSignature == true
@@ -926,33 +961,31 @@ SmartTemplate4.classSmartTemplate = function()
 						break;
 					case 'reply':
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
-							isQuoteHeader = isQuoteHeader && true;
-							// we do not delete reply header if stationery has inserted a template!
-							// unless: stationery has a placeholder for the original quote text. in which case we have to do this!
+							// stationery has a placeholder for the original quote text.
 							if (
 							      pref.isDeleteHeaders(idKey, st4composeType, false)
 									  &&
-									  (!flags.isStationery || flags.hasQuotePlaceholder) 
+									  (!flags.isStationery || flags.hasQuotePlaceholder ||
+										 flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) 
 									)
 							{
 								if (isDebugComposer) debugger;
-								delReplyHeader(idKey);
+								// when in stationery we only delete the quote header and not all preceding quotes!
+								delReplyHeader(idKey, flags.isStationery);
 							}
 						}
 						break;
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
-						isQuoteHeader = isQuoteHeader && true;
-
-						// we do not delete forward header if stationery has inserted a template!
 						if (  pref.isDeleteHeaders(idKey, st4composeType, false)
 								  &&
-									(!flags.isStationery || flags.hasQuotePlaceholder)
+									(!flags.isStationery || flags.hasQuotePlaceholder || 
+									  flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader'))
 								)
 						{
 							if (isDebugComposer) debugger;
-							delForwardHeader(idKey);
+							delForwardHeader(idKey, flags.isStationery);
 						}
 						break;
 				}
@@ -964,13 +997,22 @@ SmartTemplate4.classSmartTemplate = function()
 						qd.innerHTML = quoteHeader;
 						return qd;
 					}
-					if (!flags.isStationery) {
+					// new behavior: always replace the standard quote header [forceReplaceQuoteHeader]
+					if (!flags.isStationery
+					   ||
+						 !flags.hasQuoteHeader && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) {
 						let firstQuote = 
 						  (composeCase=='forward') ?
 							editor.rootElement.firstChild :
 						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
-						
-						editor.rootElement.insertBefore(qdiv(), firstQuote || editor.rootElement.firstChild); 
+						if (firstQuote) {
+							let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
+							    prev = quoteHd.previousSibling;
+							// force deleting the original quote header:
+							if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
+								prev.parentNode.removeChild(prev); 
+							}
+						}
 					}
 					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
 						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
@@ -978,9 +1020,23 @@ SmartTemplate4.classSmartTemplate = function()
 							if (composeCase!='new') {
 							  let quoteHd = qdiv();
 								qnode.parentNode.insertBefore(quoteHd, qnode);
+								if (quoteHeader) // guard against empty setting: we do not remove header if there is nothing defined in st4.
+									gMsgCompose.editor.deleteNode(qnode);
+								// only if followed by a blockquote, delete every element between quoteHeader and blockquote element
+								let nn = quoteHd.nextSibling,
+								    isFollowedByQuote = false;
+								while (nn) {
+									if (nn.nodeName.toLowerCase() == 'blockquote') {
+										isFollowedByQuote = true;
+										break;
+									}
+									nn = nn.nextSibling;
+								}
+								if (isFollowedByQuote)
+									while (quoteHd.nextSibling && quoteHd.nextSibling.nodeName.toLowerCase() != 'blockquote') {
+										gMsgCompose.editor.deleteNode(quoteHd.nextSibling);
+									}
 							}
-							if (quoteHeader) // guard against empty setting: we do not remove header if there is nothing defined in st4.
-								editor.rootElement.removeChild(qnode);
 						}
 					}
 				}
@@ -1001,8 +1057,19 @@ SmartTemplate4.classSmartTemplate = function()
 		    templateDiv,
 		    // new global settings to deal with [Bug 25084]
 		    breaksAtTop = flags.isStationery ? 0 : prefs.getMyIntPref("breaksAtTop"), // no breaks if Stationery is used!
-		    bodyEl = gMsgCompose.editor.rootElement;
+		    bodyEl = gMsgCompose.editor.rootElement,
+				bodyContent = '';
 		
+		if (gMsgCompose.type == msgComposeType.MailToUrl) {
+			// back up the mailto body
+			bodyContent = bodyEl.innerHTML;
+			bodyEl.innerHTML = '';
+			if (bodyContent) {
+				template = bodyContent; // clear template
+				SmartTemplate4.sigInTemplate = false;
+			}
+		}
+
 		// add template message --------------------------------
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
@@ -1012,6 +1079,12 @@ SmartTemplate4.classSmartTemplate = function()
 			// now insert quote Header separately
 			try {
 				templateDiv.id = "smartTemplate4-template";
+				/* TEST
+				if (prefs.getMyBoolPref('debug.composer')) {
+					// color the template part for debugging.
+					templateDiv.style.backgroundColor = "#FFF4CC";
+					templateDiv.style.border = "1px solid #FFE070";
+				} */
 				// ****************************
 				// ***  STATIONERY SUPPORT  ***
 				// ****************************
@@ -1102,6 +1175,7 @@ SmartTemplate4.classSmartTemplate = function()
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
+		
       isSignatureSetup = isSignatureSetup && (sigType != 'omit') && !flags.omitSignature; // we say there is no signature if %sig(none)% is defined in [Stationery] Template
       util.logDebugOptional ('signatures','isSignatureSetup:' + isSignatureSetup + '\n'
          + 'sigType: ' + sigType + '\n'
@@ -1237,17 +1311,65 @@ SmartTemplate4.classSmartTemplate = function()
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
-						if(!caretContainer)
+						if (!caretContainer)
 							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from (old) stationery
 							
+						if (isDebugComposer) debugger;
 						if (caretContainer) {
 							try {
-								if (isDebugComposer) debugger;
 								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
-								    space = gMsgCompose.editor.document.createTextNode('\u00a0'), // &nbsp;
-										theParent = caretContainer.parentNode; 
-								theParent.insertBefore(space, caretContainer); 
-								theParent.removeChild(caretContainer);
+										cursorParent = caretContainer.parentNode; 
+                // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
+								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
+									// refind the caret Container.
+									// wrap internals in <p>
+									let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
+									    caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
+									    caretEndPos = caretStartPos + caretContainer.outerHTML.length,
+									    para = doc.createElement('P'),
+									    nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
+											previousBlock = parentSrchHTML.lastIndexOf('</p', caretStartPos) + 1 || parentSrchHTML.lastIndexOf('<br',caretStartPos) + 1 || parentSrchHTML.lastIndexOf('</div',caretStartPos) + 1; // where the previous Block ends
+									if (!previousBlock) 
+										previousBlock = caretStartPos;
+									else {
+										previousBlock = parentSrchHTML.indexOf('>', previousBlock)+1 || caretStartPos; // find end of closing tag
+										if (previousBlock < 0) previousBlock = 0;
+									}
+									
+									if (nextBlock<0) {
+										// find next block level element or line break
+										nextBlock = parentSrchHTML.indexOf('<br', caretEndPos);
+										if (nextBlock<0)
+											nextBlock = parentSrchHTML.indexOf('<div', caretEndPos);
+										if (nextBlock<0)
+											nextBlock = cursorParent.innerHTML.length-1;
+									}
+									if (nextBlock<caretEndPos)
+										nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
+									
+									// If THunderbird has inserted the empty <p><br><p> here let's cut that out:
+									let startNextBlock =
+									  (parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0) ? nextBlock+11 : nextBlock;
+									
+									if (isDebugComposer) debugger;
+									let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
+											rightHTML = cursorParent.innerHTML.substring(startNextBlock),
+											midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
+									para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
+									
+									cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
+                  caretContainer = findChildNode(theParent, 'st4cursor');
+									if (!caretContainer)
+										caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret');
+									
+								  theParent = caretContainer.parentNode;
+								}
+								
+								let space = gMsgCompose.editor.document.createTextNode('\u00a0');
+								if (caretContainer) {
+									caretContainer.parentNode.insertBefore(space, caretContainer); 
+									caretContainer.parentNode.removeChild(caretContainer);
+								}
 								editor.selection.selectAllChildren(space);
 								if (prefs.getMyBoolPref('cursor.insertSpace')) {
 									editor.selection.collapseToStart(); // 
@@ -1257,10 +1379,9 @@ SmartTemplate4.classSmartTemplate = function()
 								}
 								else {
 									editor.selection.collapseToStart(); 
-									theParent.removeChild(space);
 								}
 								window.updateCommands('style');
-								// editor.selection.collapse(caretContainer, 0);
+                // =========== FORCE CURSOR IN <PARA> ==================================== ]]]]
 							}
 							catch (ex) {
 								util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
@@ -1291,8 +1412,16 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		if (flags.isStationery && targetNode) {
 			if (isDebugComposer) debugger;
-		  bodyEl.removeChild(targetNode);  // Bug 25710
+			if (targetNode.parentNode)
+				targetNode.parentNode.removeChild(targetNode);  // Bug 25710
 		}
+		//[] prepend mailto "body" part if missing, in case something went wrong
+		if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
+			if (!bodyEl.innerHTML)
+				bodyEl.innerHTML = bodyContent;
+		}
+		
+		
 		resetDocument(gMsgCompose.editor, startup);
 		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 	};

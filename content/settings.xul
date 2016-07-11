@@ -196,7 +196,7 @@
 												         class = "templateBox"
 												         multiline = "true"
 												         tooltiptext = "&pref_template_tip;"
-														 ondrop="SmartTemplate4.Settings.textDropped(event);"
+														     ondrop="SmartTemplate4.Settings.textDropped(event);"
 												         preference = "new_smartTemplate"/>
 												<checkbox id = "newhtml"
 												          label = "&pref_html.label;"
@@ -234,7 +234,7 @@
 													         flex = "1"
 													         tooltiptext = "&pref_quoteHeaderBox_tip;"
 													         preference = "rsp_quoteHeader"
-															 ondrop="SmartTemplate4.Settings.textDropped(event);"
+															     ondrop="SmartTemplate4.Settings.textDropped(event);"
 													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "rsphead"
@@ -242,7 +242,7 @@
 												          tooltiptext = "&pref_quotehead_tip;"
 												          preference = "rsp_replaceQuoteHeader"/>
 											</vbox>
-										<label value = "&pref_templateBox.label;"/>
+										  <label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "2">
 													<textbox id = "rspmsg"
@@ -399,8 +399,10 @@
 			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
+			<preference id = "pref_nameDelimiter" name = "extensions.smartTemplate4.names.delimiter" type = "string" />
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
 			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" />
+			<preference id = "pref_forceParagraph" name = "extensions.smartTemplate4.forceParagraph" type = "bool" />
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
 			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" />
 			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
@@ -484,6 +486,7 @@
 								<checkbox id = "chkStationery"
 										  label = "&pref_stationerySupport;"
 										  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
+											oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.stationery');"
 										  preference = "pref_stationerySupport"/>
 								<toolbarbutton id="helpStationery"
 										onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
@@ -498,7 +501,10 @@
 							<checkbox id = "chkStationery"
 									  label = "&pref_cursorInsertSpace;"
 									  preference = "pref_cursorSpace"/>
-
+							<checkbox id = "chkStationery"
+									  preference = "pref_forceParagraph"
+									  label = "&pref_forceParagraph;"
+										tooltiptext = "&pref_forceParagraph_tip;"/>
 						</groupbox>
 					
 						<groupbox class="transparent">
@@ -561,6 +567,14 @@
 									  label = "&pref_nameSwap;"
 									  tooltiptext = "&pref_nameSwap_tip;"
 									  preference = "pref_firstLastSwap"/>
+							<hbox  align="center">
+								<label value="&pref_addressDelimiter;"
+								       control="txtNameDelimiter"/>
+								<textbox id="txtNameDelimiter"
+								         style="width:2em;"
+												 tooltiptext = "&pref_addressDelimiter_tip;"
+												 preference = "pref_nameDelimiter"/>
+							</hbox>
 							<separator />		  
 							<checkbox id = "chkResolveAB"
 									  label = "&resolveNamesFromAB;"
@@ -577,6 +591,7 @@
 											 label = "&resolveABRemoveMail;"
 											 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."
 											 preference = "pref_resolveNamesFromAB_ReplaceEmail"/>
+								  
 								</vbox>
 							</hbox>
 						</groupbox>

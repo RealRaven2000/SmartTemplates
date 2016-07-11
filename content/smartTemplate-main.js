@@ -221,6 +221,18 @@
 		# [Bug 26139] Fix position of warning message for variables not allowed in New Emails 
 		# [Bug 26197] Thunderbird 45 - unwanted paragraph after quote header
 		
+	Version 1.3 - WIP  
+	  # [Bug 26207] Add option to delimit address list with semicolons
+		# [Bug 26208] Lastname and Firstname arguments omit part of the name when broken up - WIP
+		# [Bug 26257] Default quote header not removed in complex Stationery
+		# Force Replacing default quote header in Stationery even if no %quoteHeader% variable is contained
+		# [Bug 26215] Bad interaction between SmartTemplate4 and "When using paragraph format, the enter key creates a new paragraph"
+		# [Bug 26209] Add option to wrap name in double quotes if it contains commas - WIP
+    # When clicking on a mailto link from a web browser with a given text body, this was overwritten by SmartTemplate4
+		  new behavior: bypass the smartTemplate to avoid losing information from the web site. 
+		# Added button to visit our Thunderbird Daily Youtube channel
+		# Updated outdated links to language libraries from ftp to https
+		
 =========================
 		0.9.3 Review specific:
 		2) To Do - revisit usage of innerHtml
@@ -370,19 +382,19 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	notifyComposeBodyReady: function notifyComposeBodyReady(evt)
 	{
-		let dbg = 'SmartTemplate4.notifyComposeBodyReady()';
-		// let isStationeryTemplate = false;
-		let stationeryTemplate = null;
-		let flags = this.PreprocessingFlags;
+		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
+		    stationeryTemplate = null,
+		    flags = this.PreprocessingFlags;
 		this.initFlags(flags);
+		if (SmartTemplate4.Preferences.isDebugOption('composer')) debugger;
 		
 		if (evt) {
 			if (evt.currentTarget
 			    &&
 					evt.currentTarget.Stationery_) 
 			{
-			  let stationeryInstance = evt.currentTarget.Stationery_;
-				let cur = null;
+			  let stationeryInstance = evt.currentTarget.Stationery_,
+				    cur = null;
 				stationeryTemplate = stationeryInstance.currentTemplate;
 				dbg += '\nStationery is active';
 				dbg += '\nTemplate used is:' + stationeryTemplate.url;
@@ -411,10 +423,10 @@ var SmartTemplate4 = {
 		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
 		// guard against this being called multiple times from stationery
 		// avoid this being called multiple times
-    let Ci = Components.interfaces;
-		let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);		
-		let root = editor.rootElement;
-		let isInserted = false;
+    let Ci = Components.interfaces,
+		    editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor),
+		    root = editor.rootElement,
+		    isInserted = false;
 		try {
 			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
