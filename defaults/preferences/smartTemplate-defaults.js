@@ -5,6 +5,7 @@ pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://sm
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
 pref("extensions.smartTemplate4.breaksAtTop", 1);
+pref("extensions.smartTemplate4.forceParagraph", true);
 pref("extensions.smartTemplate4.showStatusIcon", true);
 pref("extensions.smartTemplate4.statusIconLabelMode", 1); /* 0 - no label; 1 - autohide; 2 - always show */
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
@@ -20,7 +21,9 @@ pref("extensions.smartTemplate4.cursor.insertSpace", true);
 pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
+pref("extensions.smartTemplate4.names.delimiter", ",");
 pref("extensions.smartTemplate4.names.capitalize", true);
+pref("extensions.smartTemplate4.names.quoteIfComma", false);
 pref("extensions.smartTemplate4.mail.suppressLink", false);
 pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 /* this is a convenience function - if I change from after or during composing, delete sig */
@@ -29,7 +32,8 @@ pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 
 
-pref("extensions.smartTemplate4.stationery.supported", false); /* experimental */
+pref("extensions.smartTemplate4.stationery.supported", false);
+pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);
 pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */
 
 /* debug settings */
