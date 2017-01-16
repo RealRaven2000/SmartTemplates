@@ -155,13 +155,20 @@
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Beliebige Kopfzeile">
 <!ENTITY header_function.cap "Mail Header Abändern">
-<!ENTITY header_function.explain "Diese Funktion kann zum ändern bestimmter mail header verwendet werden, wie hier beschrieben:">
+<!ENTITY header_function.explain "Diese Funktionen können zum ändern bestimmter Mail Header verwendet werden, wie hier beschrieben:">
 <!ENTITY header_function.scope "Kann mit den folgenden Feldern benutzt werden: ">
 <!ENTITY header.set.subject "Betreff durch den Text ersetzen">
 <!ENTITY header.prefix.subject "Den Text dem Betreff voranstellen">
 <!ENTITY header.append.subject "Text an den Betreff anhängen">
 <!ENTITY header.set.to "Empfänger durch Email-Adresse ersetzen">
 <!ENTITY header.append.to "Email-Adresse zu Empfängern hinzufügen">
+<!ENTITY stringmanip_function.cap "Textmanipulation">
+<!ENTITY stringmanip_function.explain "Funktionen zum Löschen oder Ersetzen von Text innerhalb der Nachrichtenvorlage oder Kopfzeilen.">
+<!ENTITY deleteText "Löscht Text aus der Kopfzeile, z.B. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Ersetzt Text durch einen anderen.">
+<!ENTITY matchTextFromBody "Findet einen Regulären Ausdruck in der zitierten Email und fügt ihn an der Position dieser Funktion ein.">
+<!ENTITY matchTextFromSubject "Findet einen Regulären Ausdruck in der Betreff-Zeile and und fügt ihn an der Position dieser Funktion ein.">
+<!ENTITY stringmanip.match.comment "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">

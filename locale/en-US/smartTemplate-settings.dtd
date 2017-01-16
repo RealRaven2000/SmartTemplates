@@ -155,13 +155,20 @@
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Any Header-line">
 <!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "This function can be used to modify mail headers, as described here:">
+<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
 <!ENTITY header_function.scope "It can be used with the these headers:">
 <!ENTITY header.set.subject "replace subject with the text">
 <!ENTITY header.prefix.subject "prefix subject with the text">
 <!ENTITY header.append.subject "append text to subject">
 <!ENTITY header.set.to "replace recipient with email address">
 <!ENTITY header.append.to "add email to recipient list">
+<!ENTITY stringmanip_function.cap "String Manipulation">
+<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
+<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Replace some text with something else.">
+<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
+<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
+<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">
 <!ENTITY fix_vartz_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date / Time (locale format)">

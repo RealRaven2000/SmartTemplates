@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "pripni besedilo k zadevi">
 <!ENTITY header.set.to "nadomesti prejemnika z e-poštnim naslovom">
 <!ENTITY header.append.to "dodaj e-pošto na seznam prejemnikov">
+<!ENTITY stringmanip_function.cap "Ravnanje z nizi">
+<!ENTITY stringmanip_function.explain "Te funkcije lahko uporabite za brisanje ali menjavo besedila v e-poštni predlogi ali glavi navedka.">
+<!ENTITY deleteText "Odstrani besedilo iz navedka, npr. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Zamenjaj besedilo z drugim besedilom.">
+<!ENTITY matchTextFromBody "Poišči vzorec RegEx v e-pošti z navedkom in vstavi na mestu funkcije.">
+<!ENTITY matchTextFromSubject "Poišči vzorec RegEx v zadevi in vstavi na mestu funkcije.">
+<!ENTITY stringmanip.match.comment "Funkcije ujemanja: prvi parameter (običajni izraz) mora biti v dvojnih narekovajih. Drugi parameter je število skupine ujemanja. Uporabite 0 za ujemanje celotnega izraza, 1 za prvo skupino itd.">
 <!ENTITY fix_vartz.cap "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'">
 <!ENTITY fix_vartz_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / Čas (oblika trenutnega jezika)">

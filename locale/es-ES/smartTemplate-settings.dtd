@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "añadiendo el texto después del asunto">
 <!ENTITY header.set.to "reemplazando el receptor con la dirección de correo">
 <!ENTITY header.append.to "añadiendo el correo a la lista de recibidos">
+<!ENTITY stringmanip_function.cap "Manipulación de cadena de texto">
+<!ENTITY stringmanip_function.explain "Estas funciones pueden usarse para borrar o reemplazar texto de la plantilla del correo o del encabezado de cita.">
+<!ENTITY deleteText "Eliminar texto de la cita, p. ej. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Reemplazar texto por otra cosa.">
+<!ENTITY matchTextFromBody "Encontrar una patrón de RegEx en el correco citado e insertar en la ubicación de la función.">
+<!ENTITY matchTextFromSubject "Encontrar una patrón de RegEx en el asunto e insertar en la ubicación de la función.">
+<!ENTITY stringmanip.match.comment "Funciones de coincidencia: El primer parámetro (expresión regular) debe estar dentro de comillas. El segundo es el el número de grupo de coincidencia. Use 0 para que coincida toda la expresión, 1 para el primer grupo, etc.">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">

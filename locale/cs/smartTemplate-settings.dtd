@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "přidej text do předmětu">
 <!ENTITY header.set.to "nahraď příjemce e-mailovou adresou">
 <!ENTITY header.append.to "přidej e-mail do seznamu příjemců">
+<!ENTITY stringmanip_function.cap "změna řetězce">
+<!ENTITY stringmanip_function.explain "Tato funkce může být použita pro smazání nebo přepsání textu šablonou e-mailu nebo hlavičky.">
+<!ENTITY deleteText "Smaže nějaký text z hlavičky, např. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Přepíše text něčím jiným.">
+<!ENTITY matchTextFromBody "Najdi RegEx vzor v hlavičce e-mailu a vlož do funkce.">
+<!ENTITY matchTextFromSubject "Najdi RegEx vzor v předmětu a vlož do funkce.">
+<!ENTITY stringmanip.match.comment "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd.">
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
