@@ -84,8 +84,6 @@
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
-<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
-<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Розпізнавати імена використовуючи адресну книгу">
 <!ENTITY resolveNamesFromAB_tip "Ця функція не працює з деякими віддаленими адресними книгами, такими як LDAP.">
 <!ENTITY resolveNamesFromABNick "Замінити ім'я якщо є нікнейм ">
@@ -100,8 +98,6 @@
 <!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
 <!ENTITY pref_stationeryLink "Додаток Stationery ">
-<!ENTITY pref_forceParagraph "Force Paragraph Mode">
-<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
 <!ENTITY pref_stationeryLink_tip "Завантажити Stationery ...">
 <!ENTITY pref_defaultCharset.label "кодова сторінка по замовчуванні ">
 <!ENTITY pref_defaultCharset_tip "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні.">
