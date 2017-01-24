@@ -221,7 +221,7 @@
 		# [Bug 26139] Fix position of warning message for variables not allowed in New Emails 
 		# [Bug 26197] Thunderbird 45 - unwanted paragraph after quote header
 		
-	Version 1.3 - WIP  
+	Version 1.3 - 11/07/2016  
 	  # [Bug 26207] Add option to delimit address list with semicolons
 		# [Bug 26208] Lastname and Firstname arguments omit part of the name when broken up - WIP
 		# [Bug 26257] Default quote header not removed in complex Stationery
@@ -232,7 +232,21 @@
 		  new behavior: bypass the smartTemplate to avoid losing information from the web site. 
 		# Added button to visit our Thunderbird Daily Youtube channel
 		# Updated outdated links to language libraries from ftp to https
+		# Release Video at: https://www.youtube.com/watch?v=xKh7FkU8A1w
+	
+	Version 1.3.1 - 23/09/2016
+	  # [Bug 26261] Quote header not inserted in plain text mode
+		# [Bug 26260] Browser's "EMail Link" feature doesn't copy link
 		
+		
+  Version 1.4 - 22/01/2017
+		# Postbox 5.0 compatibility
+	  # Fixed: mailto links are missing signature
+		# Extended %matchTextFromBody( )% function
+		# New %matchTextFromSubject( )% function
+		# Release video at: https://www.youtube.com/watch?v=u72yHAPNkZE
+		
+	
 =========================
 		0.9.3 Review specific:
 		2) To Do - revisit usage of innerHtml
@@ -283,6 +297,7 @@ var SmartTemplate4 = {
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
+			const util = SmartTemplate4.Util;
 			// For Stationery integration, we need to  
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
 			if (SmartTemplate4.Preferences.isStationerySupported && 
@@ -291,13 +306,13 @@ var SmartTemplate4 = {
 			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
 				if (Stationery.fireAsyncEvent) {
 				  // new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
-					SmartTemplate4.Util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
+					util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
 					return;
 				}
 
 				// Stationery 0.7.8 and older
-				let bypass = true;
-				let oldTemplate = '';
+				let bypass = true,
+				    oldTemplate = '';
 				
 				if (typeof Stationery.Templates.OnceOverride != "undefined") {
 					if (Stationery.Templates.OnceOverride == '')
@@ -312,7 +327,7 @@ var SmartTemplate4 = {
 						oldTemplate = Stationery.Templates.Current;
 				}
 				if (bypass)
-					SmartTemplate4.Util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
+					util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
 					   + 'As you have selected the Stationery template ' + oldTemplate 
 						 + ', SmartTemplate4 will be not used for this email.' );
 				else
@@ -382,11 +397,12 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	notifyComposeBodyReady: function notifyComposeBodyReady(evt)
 	{
+		const prefs = SmartTemplate4.Preferences;
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
 		    stationeryTemplate = null,
 		    flags = this.PreprocessingFlags;
 		this.initFlags(flags);
-		if (SmartTemplate4.Preferences.isDebugOption('composer')) debugger;
+		if (prefs.isDebugOption('composer')) debugger;
 		
 		if (evt) {
 			if (evt.currentTarget
@@ -428,6 +444,7 @@ var SmartTemplate4 = {
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
+			if (prefs.isDebugOption('composer')) debugger;
 			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
@@ -458,6 +475,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	loadIdentity: function loadIdentity(startup, previousIdentity)
 	{
+		const prefs = SmartTemplate4.Preferences;		
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
@@ -483,7 +501,7 @@ var SmartTemplate4 = {
 				// we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
 				// as the user might have edited here already! 
 				// however, the signature is important as it should match the from address?
-				if (SmartTemplate4.Preferences.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
+				if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
 					this.smartTemplate.extractSignature(gMsgCompose.identity, false);
 				}
 			}
@@ -550,15 +568,17 @@ var SmartTemplate4 = {
 	} ,
 	
 	updateStatusBar: function updateStatusBar(show) {
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util;
 		try {
-			SmartTemplate4.Util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
+			util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
 			let isDefault = (typeof show == 'undefined' || show == 'default'),
-			    isVisible = isDefault ? SmartTemplate4.Preferences.getMyBoolPref('showStatusIcon') : show,
-			    doc = isDefault ? document : SmartTemplate4.Util.Mail3PaneWindow.document,
+			    isVisible = isDefault ? prefs.getMyBoolPref('showStatusIcon') : show,
+			    doc = isDefault ? document : util.Mail3PaneWindow.document,
 			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
 				btn.collapsed =  !isVisible;
-				let labelMode = SmartTemplate4.Preferences.getMyIntPref('statusIconLabelMode'),
+				let labelMode = prefs.getMyIntPref('statusIconLabelMode'),
 				    theClass = 'statusbarpanel-iconic-text';
 				switch(labelMode) {
 					case 0:
@@ -572,13 +592,13 @@ var SmartTemplate4 = {
 						break;
 				}
 				btn.className = theClass;
-				SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
+				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
 			}
 			else
-				SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+				util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
     }
 		catch(ex) {
-				SmartTemplate4.Util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
+			util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
 		}
 	} ,
 
@@ -611,12 +631,14 @@ SmartTemplate4.calendar = {
 		},
 		
 		init: function init(forcedLocale) {
+			const util = SmartTemplate4.Util;
+
 			let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 							 getService(Components.interfaces.nsIStringBundleService);
 			// validate the passed locale name for existence
 			// https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
 			if (forcedLocale) {
-				let availableLocales = SmartTemplate4.Util.getAvailableLocales("smarttemplate4"); // smarttemplate4-locales
+				let availableLocales = util.getAvailableLocales("smarttemplate4"); // smarttemplate4-locales
 				let found = false;
 				let listLocales = '';
 				while (availableLocales.hasMore()) {
@@ -630,7 +652,7 @@ SmartTemplate4.calendar = {
 				if (!found) {
 				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
 					                + 'Available in SmartTemplate4: ' + listLocales.substring(0, listLocales.length-2);
-					SmartTemplate4.Util.logError(errorText, '', '', 0, 0, 0x1);
+					util.logError(errorText, '', '', 0, 0, 0x1);
 					SmartTemplate4.Message.display(errorText,
 		                              "centerscreen,titlebar",
 		                              function() { ; }
@@ -639,7 +661,7 @@ SmartTemplate4.calendar = {
 					forcedLocale = null;
 				}
 				else {
-					SmartTemplate4.Util.logDebug('calendar - found extension locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+					util.logDebug('calendar - found extension locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
 				}
       }			
 			this.currentLocale = forcedLocale;

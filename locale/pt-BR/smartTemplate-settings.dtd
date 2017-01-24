@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "anexar texto ao assunto">
 <!ENTITY header.set.to "substituir destinatário pelo endereço de e-mail">
 <!ENTITY header.append.to "adicionar e-mail à lista do destinatário">
+<!ENTITY stringmanip_function.cap "Manipulação de String">
+<!ENTITY stringmanip_function.explain "Essas funções podem ser usadas para excluir ou substituir texto dentro do modelo de e-mail ou cabeçalho de citação.">
+<!ENTITY deleteText "Remove algum texto da Citação, ex.: deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Substitui algum texto por outra coisa.">
+<!ENTITY matchTextFromBody "Encontra um padrão RegEx no e-mail citado e insere no local da função.">
+<!ENTITY matchTextFromSubject "Encontra um padrão RegEx no assunto e insere no local da função.">
+<!ENTITY stringmanip.match.comment "Funções correspondentes: O primeiro parâmetro (a expressão regular) deve estar entre aspas duplas. O segundo parâmetro é o número do grupo de correspondência. Use 0 para corresponder a expressão completa, 1 para o primeiro grupo, etc.">
 <!ENTITY fix_vartz.cap "Variáveis para Data e Hora">
 <!ENTITY fix_vartz_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e hora (formato local)">

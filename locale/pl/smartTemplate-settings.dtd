@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "dołączyć tekst do tematu">
 <!ENTITY header.set.to "zamień odbiorcę z adresem wiadomości">
 <!ENTITY header.append.to "dodaj wiadomość do listy odbiorców">
+<!ENTITY stringmanip_function.cap "Manipulacja stringami">
+<!ENTITY stringmanip_function.explain "Te funkcje mogą być użwane do usuwania lub zamiany tekstu w szablonie wiadomości lub nagłówku cytatu.">
+<!ENTITY deleteText "Usunięcie tekstu z cytatu np. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Zamiana tekstu na coś innego.">
+<!ENTITY matchTextFromBody "W cytowanej wiadomości znajdź wzorzec wyrażenia regularnego i umieścić w miejscu funkcji.">
+<!ENTITY matchTextFromSubject "W temacie znajdź wzorzec wyrażenia regularnego i umieścić w miejscu funkcji.">
+<!ENTITY stringmanip.match.comment "match Functions: Pierwszy parametr (wyrażenie regularne) musi być zawarte w cudzysłowie. Drugim parametrem jest numer grupy. Użyj 0 dla całego wyrażenia, 1 dla pierwszej grupy itd.">
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">

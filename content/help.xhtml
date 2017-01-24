@@ -72,7 +72,8 @@
 		<h1 class="helpchapter">&spec_form.cap;</h1>
 			<aside>&specform_note.label;
 				<br /><b>&ex_brack.label;</b><br />
-			</aside>&brack_with_var.label;:<aside>
+			</aside>
+			<aside>&brack_with_var.label;:
 			</aside>
 			<ul>
 				<li><code class="noWrite">%to%</code> <code class="noWrite">%to(firstname)%</code> <code class="noWrite">%to(name)%</code> <code class="noWrite">%to(mail)%</code></li>
@@ -104,6 +105,17 @@
 				<li><code>%header.set(to,"abc@de.com")%</code> = &header.set.to;</li>
 				<li><code>%header.append(to,"abc@de.com")%</code> = &header.append.to;</li>
 			</ul>
+			
+		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
+		<h1 class="helpchapter">&stringmanip_function.cap;</h1>
+			<aside>&stringmanip_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a>.</aside>
+			<ul>
+				<li><code>%deleteText("text")%</code> = &deleteText;</li>
+				<li><code>%replaceText("find","replace")%</code> = &replaceText;</li>
+				<li><code>%matchTextFromBody("Regular Expression",MatchGroup)%</code> = &matchTextFromBody;</li>
+				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup)%</code> = &matchTextFromSubject;</li>
+			</ul>
+			<aside>&stringmanip.match.comment;</aside>			
 			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
 		<h1 class="helpchapter">&fix_vartz.cap;</h1>

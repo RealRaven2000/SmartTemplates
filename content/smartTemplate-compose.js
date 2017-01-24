@@ -6,9 +6,9 @@
 SmartTemplate4.classSmartTemplate = function()
 {
   const Ci = Components.interfaces,
-        Cc = Components.classes;
-  let util = SmartTemplate4.Util,
-	    prefs = SmartTemplate4.Preferences;
+        Cc = Components.classes,
+        util = SmartTemplate4.Util,
+	      prefs = SmartTemplate4.Preferences;
         
 	function readSignatureFile(Ident) {
 		let sigEncoding = prefs.getMyStringPref('signature.encoding'), // usually UTF-8
@@ -940,12 +940,12 @@ SmartTemplate4.classSmartTemplate = function()
 
 			if (isActiveOnAccount) {
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
-				if (gMsgCompose.type == msgComposeType.MailToUrl)
-					rawTemplate = "";
+				//if (gMsgCompose.type == msgComposeType.MailToUrl)
+				//	rawTemplate = "";
 				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
         // if Stationery has %sig(none)% then flags.omitSignature == true
-				sigVarDefined = flags.hasSignature || sigType; 
+				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
         util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
@@ -1005,6 +1005,8 @@ SmartTemplate4.classSmartTemplate = function()
 						  (composeCase=='forward') ?
 							editor.rootElement.firstChild :
 						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
+						// [Bug 26261] Quote header not inserted in plain text mode
+						if (!firstQuote) firstQuote = editor.rootElement.firstChild;
 						if (firstQuote) {
 							let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
 							    prev = quoteHd.previousSibling;
@@ -1060,11 +1062,14 @@ SmartTemplate4.classSmartTemplate = function()
 		    bodyEl = gMsgCompose.editor.rootElement,
 				bodyContent = '';
 		
-		if (gMsgCompose.type == msgComposeType.MailToUrl) {
+		// [Bug 26260] only remove body for mailto case if active on account
+		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
+			if (isDebugComposer) debugger;
 			// back up the mailto body
 			bodyContent = bodyEl.innerHTML;
 			bodyEl.innerHTML = '';
 			if (bodyContent) {
+				util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
 				template = bodyContent; // clear template
 				SmartTemplate4.sigInTemplate = false;
 			}
@@ -1075,6 +1080,7 @@ SmartTemplate4.classSmartTemplate = function()
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
 		if (isActiveOnAccount)	{
 			if (isDebugComposer) debugger;
+			util.logDebugOptional('composer','isActiveOnAccount: creating template Div...');
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
@@ -1090,9 +1096,11 @@ SmartTemplate4.classSmartTemplate = function()
 				// ****************************
 				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
 				if (!flags.isStationery) {
+					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML...' + template);
 					templateDiv.innerHTML = template;
 				}
 				else {
+					util.logDebugOptional('composer','isStationery=true: processing left to Stationery');
 					// to do:	template processing in body provided by Stationery!
 				  // ** => replace stationeryBodyText 
 					// **    with getProcessedText(stationeryBodyText, idKey, st4composeType) 
@@ -1108,6 +1116,7 @@ SmartTemplate4.classSmartTemplate = function()
 					}
 					// the first Child should be BLOCKQUOTE (header is inserted afterwards)
 					if (isDebugComposer) debugger;
+					util.logDebugOptional('composer','Reply on Top - inserting template before first root child');
 					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
 				}
 				else {
@@ -1116,6 +1125,7 @@ SmartTemplate4.classSmartTemplate = function()
 						gMsgCompose.editor.rootElement.appendChild(util.mailDocument.createElement("br"));
 					}
 					if (isDebugComposer) debugger;
+					util.logDebugOptional('composer','Reply at Botton - appending template to first root child');
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 				}
@@ -1137,6 +1147,7 @@ SmartTemplate4.classSmartTemplate = function()
 			}
 		}
 		
+		util.logDebugOptional('composer','finding cursor node...');
 		// before we handle the sig, lets search for the cursor one time
 		// moved code for moving selection to top / bottom
 		let caretContainer = findChildNodeOrParent(targetNode, 'st4cursor'),
@@ -1201,7 +1212,7 @@ SmartTemplate4.classSmartTemplate = function()
 							theSignature = sn;
 						}
 						
-						if (sigVarDefined) { 
+						if (sigVarDefined && gMsgCompose.type!=msgComposeType.MailToUrl) { 
 						  // find and replace <sig>%sig%</sig> in body.
 							if(flags.isStationery) { 
 							  let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
@@ -1216,9 +1227,9 @@ SmartTemplate4.classSmartTemplate = function()
 						}
 						else { // append signature using usual methods
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
+							if (isDebugComposer) debugger;
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
-								if (isDebugComposer) debugger;
 								if (composeCase == 'reply' && breaksAtTop == 0)
 									bodyEl.appendChild(doc.createElement("br"));
 								bodyEl.appendChild(theSignature);
@@ -1232,15 +1243,15 @@ SmartTemplate4.classSmartTemplate = function()
 									templateDiv = bodyEl.firstChild.nextSibling;
 								}
 								// insert signature after template
+								if (isDebugComposer) debugger;
 								if (templateDiv.nextSibling) {
-									if (isDebugComposer) debugger;
 									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
 									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
 								}
 								else {
-									if (isDebugComposer) debugger;
-									templateDiv.parentNode.appendChild(templateDiv);
+									// templateDiv.parentNode.appendChild(templateDiv);
 									templateDiv.parentNode.appendChild(doc.createElement("br"));
+									templateDiv.parentNode.appendChild(theSignature);
 								}
 							}
 						}
@@ -1417,8 +1428,10 @@ SmartTemplate4.classSmartTemplate = function()
 		}
 		//[] prepend mailto "body" part if missing, in case something went wrong
 		if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
-			if (!bodyEl.innerHTML)
+			if (!bodyEl.innerHTML) {
 				bodyEl.innerHTML = bodyContent;
+				util.logDebugOptional('composer','restoring body inner HTML:\n' + bodyContent);
+			}
 		}
 		
 		

@@ -41,6 +41,7 @@ override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smartt
 override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/legacy/messageWindow.css application=postbox@postbox-inc.com
 
 #### LOCALIZATIONS (alphabetical by localename) ####
+locale      smarttemplate4           cs           locale/cs/
 locale      smarttemplate4           de           locale/de/
 locale      smarttemplate4           en-US        locale/en-US/
 locale      smarttemplate4           es-ES        locale/es-ES/

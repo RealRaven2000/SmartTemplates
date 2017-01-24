@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
+<!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
+<!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
 <!ENTITY resolveNamesFromAB_tip "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP.">
 <!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
@@ -98,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Support de l'utilisation simultanée de Stationery et de smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">
 <!ENTITY pref_stationeryLink "Extension Stationery">
+<!ENTITY pref_forceParagraph "Forcer le mode paragraphe">
+<!ENTITY pref_forceParagraph_tip "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird.">
 <!ENTITY pref_stationeryLink_tip "Obtenir Stationery...">
 <!ENTITY pref_defaultCharset.label "Encodage par défaut">
 <!ENTITY pref_defaultCharset_tip "Lors de la lecture des en-têtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage.">
@@ -158,6 +162,13 @@
 <!ENTITY header.append.subject "ajouter le texte au sujet">
 <!ENTITY header.set.to "remplacer le destinataire par l'adresse électronique">
 <!ENTITY header.append.to "ajouter le courriel à la liste des destinataires">
+<!ENTITY stringmanip_function.cap "Manipulation des chaînes de caractères">
+<!ENTITY stringmanip_function.explain "Ces fonctions peuvent être utilisées afin de supprimer ou remplacer du texte dans le modèle de courriel ou l'entête.">
+<!ENTITY deleteText "Supprimer du texte de l'entête. Exemple : deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Remplacer du texte.">
+<!ENTITY matchTextFromBody "Trouver un motif RegEx dans un courriel marqué et insérer à l'endroit de la fonction.">
+<!ENTITY matchTextFromSubject "Trouver un motif RegEx dans le sujet et insérer à l'endroit de la fonction.">
+<!ENTITY stringmanip.match.comment "Fonctions de correspondance : Le premier paramètre (l'expression régulière) doit être indiqué entre guillemets doubles. Le second paramètre est le numéro de groupe de correspondance. Utilisez 0 pour l'expression complète, 1 pour le premier groupe, etc.">
 <!ENTITY fix_vartz.cap "Variables fixes pour le format de date et la zone horaire">
 <!ENTITY fix_vartz_note.label "Peut être combinée avec &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date et heure (format local)">

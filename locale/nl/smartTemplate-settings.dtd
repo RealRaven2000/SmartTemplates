@@ -57,6 +57,9 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Tekst bij aanwijzen">
 <!ENTITY pref_fontSettings.label "Sjabloonbewerkingslettertype">
 <!ENTITY pref_server_desc "Account">
+<!ENTITY btnSaveTemplate.tooltip "Save Template…">
+<!ENTITY btnLoadTemplate.tooltip "Load Template…">
+<!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
 <!ENTITY pref_server_def "Algemeen">
 <!ENTITY pref_def.label "Algemeen gebruiken">
 <!ENTITY pref_def.cap "Vink ‘Algemeen gebruiken’ uit als u een aangepaste aanhalingskoptekst voor deze account wilt instellen.">
@@ -81,10 +84,13 @@
 <!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
+<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
+<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Namen uit adresboeken oplossen">
 <!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote Addressbooks, such as LDAP.">
 <!ENTITY resolveNamesFromABNick "Voornaam vervangen als schuilnaam aanwezig is">
 <!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Namen in hoofdletters">
 <!ENTITY pref_parseSignature "Handtekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
@@ -94,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Ondersteunt het gebruik van Stationery tegelijkertijd met smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
 <!ENTITY pref_stationeryLink "Stationery-add-on">
+<!ENTITY pref_forceParagraph "Force Paragraph Mode">
+<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
 <!ENTITY pref_stationeryLink_tip "Stationery downloaden…">
 <!ENTITY pref_defaultCharset.label "Standaard tekenset">
 <!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet bepaald kan worden.">
@@ -116,6 +124,9 @@
 <!ENTITY ccmail.label "E-mailadres CC-ontvanger">
 <!ENTITY sig.label "Ondertekening (uit de TB-accountinstellingen)">
 <!ENTITY sig2.label "Ondertekening uit de TB-accountinstellingen maar zonder ‘--’">
+<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
+<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
+<!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Ontvanger (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is wordt het e-mailadres weergegeven">
 <!ENTITY to.label "Ontvangersnaam (Standaard)">
@@ -143,6 +154,21 @@
 <!ENTITY newsgr.label "Nieuwsgroepen">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Elke headerregel">
+<!ENTITY header_function.cap "Modify Mail Header">
+<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
+<!ENTITY header_function.scope "It can be used with the these headers:">
+<!ENTITY header.set.subject "replace subject with the text">
+<!ENTITY header.prefix.subject "prefix subject with the text">
+<!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.set.to "replace recipient with email address">
+<!ENTITY header.append.to "add email to recipient list">
+<!ENTITY stringmanip_function.cap "String Manipulation">
+<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
+<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Replace some text with something else.">
+<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
+<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
+<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "Vaste variabelen voor datumopmaak en tijdzone">
 <!ENTITY fix_vartz_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum en tijd (lokale opmaak)">

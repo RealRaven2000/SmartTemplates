@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "件名の後にテキストを追記する">
 <!ENTITY header.set.to "受信者をメールアドレスで置換する">
 <!ENTITY header.append.to "メールアドレスを受信者に追加する">
+<!ENTITY stringmanip_function.cap "文字列操作">
+<!ENTITY stringmanip_function.explain "これらの関数は、テンプレートおよび返信ヘッダにおいて、文字列の消去や置換に用いることができます">
+<!ENTITY deleteText "引用部から特定の文字列を消去します 例: deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "特定の文字列を異なる文字列に置換します">
+<!ENTITY matchTextFromBody "引用部から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
+<!ENTITY matchTextFromSubject "件名から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
+<!ENTITY stringmanip.match.comment "一致関数: 1 つ目のパラメータ (正規表現) は、二重引用符で囲まれている必要があります。2 つめのパラメータは、一致したグループの数を示します。0: 完全一致、1: 1 つめに一致、など。">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">

@@ -830,6 +830,79 @@ SmartTemplate4.parseModifier = function(msg) {
 			return new RegExp( quoteLess, 'ig');
 		return quoteLess;
 	}
+	function matchText(regX, fromPart) {
+	  try {
+			if (preferences.isDebugOption('parseModifier')) debugger;
+			let matchPart = msg.match(regX);
+			if (matchPart) {
+				for (let i=0; i<matchPart.length; i++) {
+					util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
+					let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
+							hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
+							extractSource = '',
+							rx = patternArg ? unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
+					switch(fromPart) {
+						case 'subject':
+							if (!hdr) {
+								msg = msg.replace(matchPart[i], "");
+								util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
+								return;
+							}
+							let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+									charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+							extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
+							util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
+							break;
+						case 'body':
+							let rootEl = gMsgCompose.editor.rootElement;
+							extractSource = rootEl.innerText;
+							util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
+							break;
+						default:
+							throw("Unknown source type:" + fromPart);
+					}
+					if (patternArg) {
+						let groupArg = matchPart[i].match(  /\"\,([0-9]*)/    ) || 0, // match group number; 0 for whole thing
+						    removePat = false;
+						if (extractSource) {
+							let result = rx.exec(extractSource); // extract Pattern from body
+							if (result && result.length) {
+								let group = groupArg ? parseInt(groupArg[1]) : 0;
+								// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
+								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n'
+              								+ result[group]);
+								msg = msg.replace(matchPart[i], result[group]);
+							}
+							else
+								removePat = true;
+								msg = msg.replace(matchPart[i],"");
+						}
+						else removePat = true;
+						if(removePat) {
+							util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
+							msg = msg.replace(matchPart[i],"");
+						}
+					} 
+				}
+			} // matches loop
+		}	
+		catch	(ex) {
+			util.logException('matchText(' + regX + ', ' + fromPart +') failed:', ex);
+		}
+	}
+	
+	const util = SmartTemplate4.Util,
+	      preferences = SmartTemplate4.Preferences,
+				Ci = Components.interfaces,
+				Cc = Components.classes;
+	
+  // %matchTextFromBody()% using * to generate result:
+  // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
+	// Insert replacement from body of QUOTED email!
+	matchText(/%matchTextFromBody\(.*\)%/g, 'body')
+	// Insert replacement from subject line
+	matchText(/%matchTextFromSubject\(.*\)%/g, 'subject');
+
 	// make 2 arrays, words to delete and replacement pairs.
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
 	    matchesR = msg.match(/%replaceText\(.*\)%/g); // works on template only
@@ -844,25 +917,7 @@ SmartTemplate4.parseModifier = function(msg) {
 		}
 	}
   
-  // %matchTextFromBody()% using * to generate result:
-  // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
-  let matchesP = msg.match(/%matchTextFromBody\(.*\)%/g);
-  if (matchesP) {
-    let patternArg = matchesP[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
-    if (patternArg) {
-      let rx = unquotedRegex(patternArg[0], true),  // pattern for searching body
-          rootEl = gMsgCompose.editor.rootElement;
-      if (rootEl) {
-        let result = rx.exec(rootEl.innerText); // extract Pattern from body
-        if (result && result.length) {
-          // retrieve the * part from the pattern  - e..g matchTextFromBody(Tattoo *) => finds "Tattoo 100" => generates "100" (one word)
-          msg = msg.replace(matchesP, result[1]);
-        }
-      }
-    }  
-  }
-  
-	if (matchesR) { // replacements
+	if (matchesR) { // replacements in place
     let dText1, dText2;
 		for (let i=0; i<matchesR.length; i++) {
 			// parse out the argument (string to delete)
@@ -877,17 +932,35 @@ SmartTemplate4.parseModifier = function(msg) {
           msg = msg.replace(unquotedRegex(dText1[0], true), unquotedRegex(dText2[0]));
         }
         else {
-          SmartTemplate4.Util.logDebug('Splitting replaceText(a,b) arguments could not be parsed. '
+          util.logDebug('Splitting replaceText(a,b) arguments could not be parsed. '
             + '\n Arguments have to be enclosed in double quotes.');
         }
       }
       else {
-        SmartTemplate4.Util.logDebug('Splitting replaceText(a,b) did not return 2 arguments. '
+        util.logDebug('Splitting replaceText(a,b) did not return 2 arguments. '
           + '\n Arguments may not contain comma or double quotes.'
           + '\n Special characters such as # must be escaped with backslash.');
       }
 		}
 	}
+	
+	/*
+  let matchesP = msg.match(/%matchTextFromBody\(.*\)%/g);
+  if (matchesP) {
+    let patternArg = matchesP[0].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
+    if (patternArg) {
+      let rx = unquotedRegex(patternArg[0], true),  // pattern for searching body
+          rootEl = gMsgCompose.editor.rootElement;
+      if (rootEl) {
+        let result = rx.exec(rootEl.innerText); // extract Pattern from body
+        if (result && result.length) {
+          // retrieve the * part from the pattern  - e..g matchTextFromBody(Tattoo *) => finds "Tattoo 100" => generates "100" (one word)
+          msg = msg.replace(matchesP, result[1]);
+        }
+      }
+    }  
+  }
+	*/
 	return msg;
 }
 	
@@ -929,7 +1002,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// Check existence of a header related to the reserved word.
 		function classifyReservedWord(str, reservedWord, param) {
 			try {
-				util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param + ')');
+				if (str!="%X:=today%") {
+				  util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param || '' + ')');
+				}
 				let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
 				    s = (el == "reserved")
 					? str
@@ -983,8 +1058,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	    mime = this.mimeDecoder;
 
   // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
-  let msgDbHdr;
-  let charset;
+  let msgDbHdr,
+      charset;
   try {
     msgDbHdr = (composeType != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
     charset = (composeType != "new") ? msgDbHdr.Charset : null;
@@ -1014,6 +1089,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   catch(ex) {
     util.logException('fatal error - classGetHeaders() failed', ex);
   }
+  if (preferences.isDebugOption('regularize')) debugger;
 	let date = (composeType != "new") ? msgDbHdr.date : null;
 	if (composeType != "new") {
 		// for Reply/Forward message
@@ -1036,7 +1112,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// Reserved words that do not depend on the original message.
 	// identity(name) is the new ownname
 	// identity(mail) is the new ownmail
-	addTokens("reserved", "ownname", "ownmail", "deleteText", "replaceText",
+	addTokens("reserved", "ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
 					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
 					"X:=today", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
 					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
@@ -1488,8 +1564,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		let cal = SmartTemplate4.calendar;
 
 		// Set %A-Za-z% to time of original message was sent.
-		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent)
-		{
+		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent) {
 			tm.setTime(date / 1000);
 		}
 
@@ -1508,8 +1583,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			let isUTC = SmartTemplate4.whatIsUtc;
 			switch(token) {
 				case "deleteText": // return unchanged
-					return '%' + token + arg + '%';
 				case "replaceText": // return unchanged
+				case "matchTextFromSubject": // return unchanged
+				case "matchTextFromBody": // return unchanged
 					return '%' + token + arg + '%';
 				case "datelocal":
 				case "dateshort":

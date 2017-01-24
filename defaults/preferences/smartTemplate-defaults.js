@@ -57,6 +57,7 @@ pref("extensions.smartTemplate4.debug.regularize", false);
 pref("extensions.smartTemplate4.debug.tokens", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.mime.split", false);
+pref("extensions.smartTemplate4.debug.parseModifier", false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);

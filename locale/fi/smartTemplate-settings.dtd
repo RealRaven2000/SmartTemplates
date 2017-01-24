@@ -57,6 +57,9 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Teksti hiirellä kohdistettaessa">
 <!ENTITY pref_fontSettings.label "Pohjamuokkaimen kirjaisin">
 <!ENTITY pref_server_desc "Tili">
+<!ENTITY btnSaveTemplate.tooltip "Save Template…">
+<!ENTITY btnLoadTemplate.tooltip "Load Template…">
+<!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
 <!ENTITY pref_def.cap "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä.">
@@ -81,6 +84,8 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
+<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
+<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
 <!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
@@ -95,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate4:n kanssa.">
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
 <!ENTITY pref_stationeryLink "Stationary-lisäosa">
+<!ENTITY pref_forceParagraph "Force Paragraph Mode">
+<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
 <!ENTITY pref_stationeryLink_tip "Hanki Stationary...">
 <!ENTITY pref_defaultCharset.label "Oletusmerkistö">
 <!ENTITY pref_defaultCharset_tip "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään.">
@@ -119,6 +126,7 @@
 <!ENTITY sig2.label "Allekirjoitus (TB:n tilitiedoista ilman '--')">
 <!ENTITY fileHTML.label "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta.">
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
+<!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
@@ -154,6 +162,13 @@
 <!ENTITY header.append.subject "liitä teksti aiheen jälkeen">
 <!ENTITY header.set.to "korvaa vastaanottaja sähköpostiosoitteella">
 <!ENTITY header.append.to "lisää sähköpostiosoite vastaanottajien listaan">
+<!ENTITY stringmanip_function.cap "String Manipulation">
+<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
+<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Replace some text with something else.">
+<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
+<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
+<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
