@@ -35,7 +35,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "1.4",
+	HARDCODED_CURRENTVERSION : "1.5",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -390,6 +390,14 @@ SmartTemplate4.Util = {
 			MsgStatusFeedback.showStatusString(s);
 		}
 	} ,
+	
+	debugVar: function debugVar(value) {
+		let str = "Value: " + value + "\r\n";
+		for (let prop in value) {
+			str += prop + " => " + value[prop] + "\r\n";
+		}
+		this.logDebug(str);
+	},
 
 	logTime: function() {
 		let timePassed = '';
@@ -399,7 +407,7 @@ SmartTemplate4.Util = {
 			let endTime = end.getTime();
 			if (this.lastTime === 0) {
 				this.lastTime = endTime;
-				return "[logTime init]"
+				return "[logTime init]";
 			}
 			let elapsed = new String(endTime - this.lastTime); // time in milliseconds
 			timePassed = '[' + elapsed + ' ms]	 ';
@@ -957,6 +965,40 @@ SmartTemplate4.Util = {
       this.logException ("toTitleCase(" + orig + ") failed", ex);
       return orig;
     }
+  } ,
+	
+  unquotedRegex: function unquotedRegex(s, global) {
+		let quoteLess = s.substring(1, s.length-1);
+	  if (global)
+			return new RegExp( quoteLess, 'ig');
+		return quoteLess;
+	} ,
+	
+	getFileAsDataURI : function getFileAsDataURI(aURL) {
+		const prefs = SmartTemplate4.Preferences;
+		if (prefs.isDebugOption('images')) debugger;
+    let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
+    filename = decodeURIComponent(filename);
+    let url = Services.io.newURI(aURL, null, null),
+        contentType = Components.classes["@mozilla.org/mime;1"].getService(Components.interfaces.nsIMIMEService).getTypeFromURI(url);
+    if (!contentType.startsWith("image/")) {
+			// non-image content-type; let Thunderbird show a warning after insertion
+			return aURL;
+    }
+
+		try {
+			url = url.QueryInterface(Components.interfaces.nsIURL);
+			let channel = Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Components.interfaces.nsILoadInfo.SEC_NORMAL, Components.interfaces.nsIContentPolicy.TYPE_OTHER),
+					stream = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
+			stream.setInputStream(channel.open());
+			let encoded = btoa(stream.readBytes(stream.available()));
+			stream.close();
+			return "data:" + contentType + (filename ? ";filename=" + encodeURIComponent(filename) : "") + ";base64," + encoded;
+		}
+		catch (ex) {
+			this.logToConsole("could not decode file: " + filename + "\n" + ex.toString());
+			return aURL;
+		}
   }
 	
 	/* 
@@ -1338,4 +1380,4 @@ SmartTemplate4.Message = {
 		win.close();
 	} 
 	
-}  // ST4.Message
+};  // ST4.Message

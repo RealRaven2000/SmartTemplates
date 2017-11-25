@@ -89,9 +89,9 @@ SmartTemplate4.Settings = {
 
 	// prepare a textbox to receive elements from the help window
 	pasteFocus : function pasteFocus(element) {
-		let hbox = element.parentNode;
-		let vbox = hbox.parentNode.parentNode;
-		let txtContainers = vbox.getElementsByClassName("pasteFocus");
+		let hbox = element.parentNode,
+		    vbox = hbox.parentNode.parentNode,
+		    txtContainers = vbox.getElementsByClassName("pasteFocus");
 		for (let i = 0; i < txtContainers.length; i++) {
 			// add the arrow to the hbox that contains this textbox
 			// and remove it from all others
@@ -99,8 +99,6 @@ SmartTemplate4.Settings = {
 				(txtContainers[i].firstChild == element) ? "pasteFocus hasFocus" : "pasteFocus";
 			
 		}
-		
-		
 	} ,
 
 	// Disable DOM node depeding on checkboxes
@@ -211,15 +209,17 @@ SmartTemplate4.Settings = {
 
 	// Get preference without prefType
 	getPref : function getPref(prefstring)	{
-		switch (this.prefService.getPrefType(prefstring))
-		{
+		const PS = this.prefService;
+		switch (PS.getPrefType(prefstring)) {
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-				return this.prefService.getComplexValue(prefstring,
-									 Components.interfaces.nsISupportsString).data;
+			  if (SmartTemplate4.Util.PlatformVersion < 57.0) 
+					return PS.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
+				else
+					return PS.getStringPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
-				return this.prefService.getIntPref(prefstring);
+				return PS.getIntPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-				return this.prefService.getBoolPref(prefstring);
+				return PS.getBoolPref(prefstring);
 			default:
 				break;
 		}
@@ -1007,7 +1007,7 @@ SmartTemplate4.Settings = {
     const Ci = Components.interfaces,
           Cc = Components.classes;
     
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile); // Postbox specific. deprecated in Tb 57
     file.initWithPath(path);
     // stateString.data = aData;
     // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
@@ -1035,7 +1035,7 @@ SmartTemplate4.Settings = {
   Postbox_readFile: function Pb_readFile(path) {
     const Ci = Components.interfaces,
           Cc = Components.classes;
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile); // Postbox specific. deprecated in Tb 57
     file.initWithPath(path);
           
     let fstream = Cc["@mozilla.org/network/file-input-stream;1"].

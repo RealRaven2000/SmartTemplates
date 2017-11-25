@@ -37,7 +37,10 @@ SmartTemplate4.classSmartTemplate = function()
 				let isImage = (sigFile.leafName.toLowerCase().match( /\.(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/));
 				
 				if (isImage) {
-				  htmlSigText = "<img src='file:///" + fileName + "'\\>";
+					let filePath = "file:///" + fileName;
+					// change to data URL
+					filePath = util.getFileAsDataURI(filePath);
+				  htmlSigText = "<img src='" + filePath + "'\\>";
           util.logDebugOptional('functions.extractSignature','Sig is image: ' + htmlSigText);
 				}
 				else {
@@ -547,7 +550,6 @@ SmartTemplate4.classSmartTemplate = function()
 		return testSmartTemplateToken(template, 'cursor');
 	};
 	
-	
 	function testSignatureVar(template) {
 		let reg = /%(sig)(\([^)]+\))*%/gm,
 		    match = template.toLowerCase().match(reg);
@@ -773,6 +775,20 @@ SmartTemplate4.classSmartTemplate = function()
 		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
 		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
+		
+		// [Bug 26364] Inline Images are not shown.
+		// fix DataURLs from other template (Stationery)
+		// This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
+		// we can fix the Data urls for file:/// images now
+		// assume they are enclosed in single quote, double quote or terminated by &gt;
+		regular = regular.replace(/file:\/\/\/[^\"\'\>]*/g, 
+		  function(match) {
+				util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
+				return util.getFileAsDataURI(match);
+			}
+		);
+
+		
     util.logDebugOptional('functions.getProcessedTemplate','regular:\n' + regular);		
 		util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedText()   ========== END');
 		return regular;
@@ -782,7 +798,8 @@ SmartTemplate4.classSmartTemplate = function()
 	// in order to fix bottom-reply
 	function getQuoteHeader(composeType, idKey) {
 		let hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
-		return getProcessedText(hdr, idKey, composeType, false);
+		let ignoreHTML = false; // was false always
+		return getProcessedText(hdr, idKey, composeType, ignoreHTML);
 	};
 	
 	// -----------------------------------
@@ -790,7 +807,8 @@ SmartTemplate4.classSmartTemplate = function()
 	function getSmartTemplate(composeType, idKey) {
 		util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		let msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
-		return getProcessedText(msg, idKey, composeType, false);
+		let ignoreHTML = false; // was false always - do we need gMsgCompose.composeHTML ?
+		return getProcessedText(msg, idKey, composeType, ignoreHTML);
 	};
 	
 	function findDirectChildById(parent, id) {
@@ -878,7 +896,6 @@ SmartTemplate4.classSmartTemplate = function()
 		    composeCase = 'undefined',
 		    st4composeType = '',
 		    rawTemplate = '';
-		if (prefs.Debug) debugger;
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -939,6 +956,8 @@ SmartTemplate4.classSmartTemplate = function()
 				isActiveOnAccount = false;
 
 			if (isActiveOnAccount) {
+				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
+				
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
 				//if (gMsgCompose.type == msgComposeType.MailToUrl)
 				//	rawTemplate = "";
@@ -1326,54 +1345,62 @@ SmartTemplate4.classSmartTemplate = function()
 							caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret'); // from (old) stationery
 							
 						if (isDebugComposer) debugger;
-						if (caretContainer) {
+						if (caretContainer && caretContainer.outerHTML) {
 							try {
+								//if (util.Application=='Postbox') util.debugVar(caretContainer);
+								
 								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
 										cursorParent = caretContainer.parentNode; 
                 // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
 								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
-									// refind the caret Container.
-									// wrap internals in <p>
-									let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
-									    caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
-									    caretEndPos = caretStartPos + caretContainer.outerHTML.length,
-									    para = doc.createElement('P'),
-									    nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
-											previousBlock = parentSrchHTML.lastIndexOf('</p', caretStartPos) + 1 || parentSrchHTML.lastIndexOf('<br',caretStartPos) + 1 || parentSrchHTML.lastIndexOf('</div',caretStartPos) + 1; // where the previous Block ends
-									if (!previousBlock) 
-										previousBlock = caretStartPos;
-									else {
-										previousBlock = parentSrchHTML.indexOf('>', previousBlock)+1 || caretStartPos; // find end of closing tag
-										if (previousBlock < 0) previousBlock = 0;
+									try {
+										if (util.Application=='Postbox') util.logDebug("cursorParent:\n" + cursorParent);
+										// refind the caret Container.
+										// wrap internals in <p>
+										let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),
+												caretStartPos = cursorParent.innerHTML.indexOf(caretContainer.outerHTML),
+												caretEndPos = caretStartPos + caretContainer.outerHTML.length,
+												para = doc.createElement('P'),
+												nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
+												previousBlock = parentSrchHTML.lastIndexOf('</p', caretStartPos) + 1 || parentSrchHTML.lastIndexOf('<br',caretStartPos) + 1 || parentSrchHTML.lastIndexOf('</div',caretStartPos) + 1; // where the previous Block ends
+										if (!previousBlock) 
+											previousBlock = caretStartPos;
+										else {
+											previousBlock = parentSrchHTML.indexOf('>', previousBlock)+1 || caretStartPos; // find end of closing tag
+											if (previousBlock < 0) previousBlock = 0;
+										}
+										
+										if (nextBlock<0) {
+											// find next block level element or line break
+											nextBlock = parentSrchHTML.indexOf('<br', caretEndPos);
+											if (nextBlock<0)
+												nextBlock = parentSrchHTML.indexOf('<div', caretEndPos);
+											if (nextBlock<0)
+												nextBlock = cursorParent.innerHTML.length-1;
+										}
+										if (nextBlock<caretEndPos)
+											nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
+										
+										// If THunderbird has inserted the empty <p><br><p> here let's cut that out:
+										let startNextBlock =
+											(parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0) ? nextBlock+11 : nextBlock;
+										
+										if (isDebugComposer) debugger;
+										let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
+												rightHTML = cursorParent.innerHTML.substring(startNextBlock),
+												midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
+										para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
+										
+										cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
+										caretContainer = findChildNode(theParent, 'st4cursor');
+										if (!caretContainer)
+											caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret');
+										
+										theParent = caretContainer.parentNode;
 									}
-									
-									if (nextBlock<0) {
-										// find next block level element or line break
-										nextBlock = parentSrchHTML.indexOf('<br', caretEndPos);
-										if (nextBlock<0)
-											nextBlock = parentSrchHTML.indexOf('<div', caretEndPos);
-										if (nextBlock<0)
-											nextBlock = cursorParent.innerHTML.length-1;
+									catch (ex) {
+										util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 									}
-									if (nextBlock<caretEndPos)
-										nextBlock = caretEndPos; // if no suitable element follows, we are cutting the paragraph short here
-									
-									// If THunderbird has inserted the empty <p><br><p> here let's cut that out:
-									let startNextBlock =
-									  (parentSrchHTML.substr(nextBlock).indexOf("<p><br></p>") == 0) ? nextBlock+11 : nextBlock;
-									
-									if (isDebugComposer) debugger;
-									let leftHTML = cursorParent.innerHTML.substring(0, previousBlock),
-											rightHTML = cursorParent.innerHTML.substring(startNextBlock),
-											midHTML = cursorParent.innerHTML.substring(previousBlock, nextBlock);
-									para.innerHTML = midHTML; // caretContainer.outerHTML +"<br>" visibility hack for the resulting empty <p>
-									
-									cursorParent.innerHTML = leftHTML + para.outerHTML + rightHTML;
-                  caretContainer = findChildNode(theParent, 'st4cursor');
-									if (!caretContainer)
-										caretContainer = editor.rootElement.childNodes[0].ownerDocument.getElementById('_AthCaret');
-									
-								  theParent = caretContainer.parentNode;
 								}
 								
 								let space = gMsgCompose.editor.document.createTextNode('\u00a0');
@@ -1390,12 +1417,19 @@ SmartTemplate4.classSmartTemplate = function()
 								}
 								else {
 									editor.selection.collapseToStart(); 
+									// check if we would create an empty paragraph:
+									if (space.textContent == space.parentNode.innerText 
+									    && 
+											space.parentNode.tagName.toLowerCase()=="p")
+										space.parentNode.innerHTML="<br>"; // avoid empty paragraph because the editor will remove it; replaces space
+									else
+										space.parentNode.removeChild(space);
 								}
 								window.updateCommands('style');
                 // =========== FORCE CURSOR IN <PARA> ==================================== ]]]]
 							}
 							catch (ex) {
-								util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
+								util.logException("forceParagraph failed.", ex);
 							}
 						}
 					}

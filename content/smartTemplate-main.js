@@ -246,6 +246,22 @@
 		# New %matchTextFromSubject( )% function
 		# Release video at: https://www.youtube.com/watch?v=u72yHAPNkZE
 		
+  Version 1.5 - WIP
+	  # [Bug 26340] New "unmodified field" option for %To()%, %CC()% and %From()% %from(initial)% New initial keyword to avoid any changes of header; just displays the header as received.
+	  # New: %header.set.matchFromSubject()% function to retrieve regex from subject line and set a (text) header
+	  # New: %header.append.matchFromSubject()% function to retrieve regex from subject line and append to a (text) header
+	  # New: %header.prefix.matchFromSubject()% function to retrieve regex from subject line and prefix to a (text) header
+	  # New: %header.set.matchFromBody()% function to retrieve regex from email body and set a (text) header
+	  # New: %header.append.matchFromBody()% function to retrieve regex from email body and append to a (text) header
+	  # New: %header.prefix.matchFromBody()% function to retrieve regex from email body and prefix to a (text) header
+		# New: %to(initial)% keyword to return unchanged address header
+		# Fix: [Bug 25571] "replace line breaks with <br>" on when not enabled in Common settings
+		# [Bug 26300] %cursor% leaves an unnecessary space character
+    # [Bug 26345] Unexpected "Â" character in mail body
+		# [Bug 26356] Thunderbird 52 - Forwarding an email inline adds empty paragraph on top
+		# [Bug 26364] Inline Images are not shown
+		# [Bug 26446] 
+
 	
 =========================
 		0.9.3 Review specific:
@@ -298,6 +314,7 @@ var SmartTemplate4 = {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
 			const util = SmartTemplate4.Util;
+			util.logDebug('NotifyComposeBodyReady');
 			// For Stationery integration, we need to  
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
 			if (SmartTemplate4.Preferences.isStationerySupported && 
@@ -336,8 +353,14 @@ var SmartTemplate4 = {
 			else
 				SmartTemplate4.notifyComposeBodyReady();
 		},
-		ComposeProcessDone: function(aResult) {},
-		SaveInFolderDone: function(folderURI) {}
+		ComposeProcessDone: function(aResult) {
+			const util = SmartTemplate4.Util;
+			util.logDebug('ComposeProcessDone');
+		},
+		SaveInFolderDone: function(folderURI) {
+			const util = SmartTemplate4.Util;
+			util.logDebug('SaveInFolderDone');
+		}
 	},
 
 	initListener: function initListener() {
@@ -347,6 +370,22 @@ var SmartTemplate4 = {
     log('composer', 'Registering State Listener...');
     try {
       gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+			// can we overwrite part of global state listener?
+			if (stateListener && stateListener.NotifyComposeBodyReady) {
+				if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
+					util.OrigNotify = stateListener.NotifyComposeBodyReady;
+					let idKey = util.getIdentityKey(document);
+					stateListener.NotifyComposeBodyReady = function() {
+						// Bug 26356 - no notification on forward w. empty template
+						if (gComposeType !== Components.interfaces.nsIMsgCompType.ForwardInline
+						   ||
+							 (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
+							  && 
+								SmartTemplate4.pref.isProcessingActive(idKey, 'fwd', false))
+							util.OrigNotify();
+					}
+				}
+			}
     }
     catch (ex) {
       SmartTemplate4.Util.logException("Could not register status listener", ex);
@@ -554,6 +593,7 @@ var SmartTemplate4 = {
 		// Time of %A-Za-z% is today(default)
 		this.whatIsX = this.XisToday;
 		this.whatIsUtc = false;
+		this.whatIsDateOffset = 0;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	

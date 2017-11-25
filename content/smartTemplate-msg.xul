@@ -46,7 +46,7 @@
 		</hbox>
 	</vbox>
 
-	<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type = "application/x-javascript;version = 1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
 
 </dialog>
