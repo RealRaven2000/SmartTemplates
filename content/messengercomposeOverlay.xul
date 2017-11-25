@@ -3,13 +3,13 @@
 <overlay id="stMessengercomposeOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-<script type="application/x-javascript;version=1.7" src="chrome://smarttemplate4/content/smartTemplate-init.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-init.js"/>
 
 </overlay>
 

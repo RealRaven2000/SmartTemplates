@@ -167,9 +167,9 @@
     <button label = "&close.label;" oncommand = "window.close();" default = "true"/>
   </hbox>
 
-<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
-<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-<script type = "application/x-javascript;version = 1.7" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
 
 </window>
