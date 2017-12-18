@@ -260,7 +260,8 @@
     # [Bug 26345] Unexpected "Â" character in mail body
 		# [Bug 26356] Thunderbird 52 - Forwarding an email inline adds empty paragraph on top
 		# [Bug 26364] Inline Images are not shown
-		# [Bug 26446] 
+		# [Bug 26446] Thunderbird 57 hangs on start with SmartTemplate4 enabled 
+		# Adding SmartTemplate Pro License
 
 	
 =========================
