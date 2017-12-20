@@ -18,6 +18,23 @@ SmartTemplate4.Preferences = {
 		}
 		catch(e) {return false;}
 	},
+	
+	getStringPref: function getStringPref(p) {
+    let prefString =''
+    try {
+      prefString = this.service.getCharPref(this.Prefix + p);
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
+    }
+    finally {
+      return prefString;
+    }
+	},
+	
+	setStringPref: function setStringPref(p, v) {
+		return this.service.setCharPref(this.Prefix + p, v);
+	},
 
 	getIntPref: function(p) {
 		return this.service.getIntPref(p);

@@ -266,7 +266,10 @@ SmartTemplate4.Settings = {
 	// Setup default preferences and common settings
 	//--------------------------------------------------------------------
 	onLoad : function onLoad() {
-		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() ...");
+		const util = SmartTemplate4.Util,
+					prefs = SmartTemplate4.Preferences,
+					getElement = window.document.getElementById.bind(window.document);
+		util.logDebugOptional("functions", "onLoad() ...");
 		// Check and set common preference
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
@@ -285,7 +288,7 @@ SmartTemplate4.Settings = {
 		}
 
 		// disable Use default (common account)
-		document.getElementById("use_default").setAttribute("disabled", "true");
+		getElement("use_default").setAttribute("disabled", "true");
 
 		window.onCodeWord = function(code, className) {
 			SmartTemplate4.Settings.onCodeWord(code, className);
@@ -293,11 +296,11 @@ SmartTemplate4.Settings = {
 
 		window.sizeToContent();
 		// shrink width
-		let deltaShrink = document.getElementById('decksContainer').scrollWidth - window.innerWidth;
+		let deltaShrink = getElement('decksContainer').scrollWidth - window.innerWidth;
 		window.resizeBy(deltaShrink + 40, 0); // 40 pixels for paddings etc.
 
 		// let's test if we can get this element
-		let prefDialog = document.getElementById('smartTemplate_prefDialog'),
+		let prefDialog = getElement('smartTemplate_prefDialog'),
 		    hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
 		    buttons = [],
 		    maxHeight = 0,
@@ -325,33 +328,47 @@ SmartTemplate4.Settings = {
 		this.fontSize(0);		
 		
 		// show update button, but only if we run Thunderbird and it is an outdated version:
-		if (SmartTemplate4.Util.Application === "Thunderbird" 
+		if (util.Application === "Thunderbird" 
 		    && 
-				SmartTemplate4.Util.versionSmaller(SmartTemplate4.Util.AppverFull, '17.0.8')) {
-			document.getElementById("btnUpdateThunderbird").collapsed = false;
+				util.versionSmaller(util.AppverFull, '17.0.8')) {
+			getElement("btnUpdateThunderbird").collapsed = false;
 		}
 		// wait some time so dialog can load first
-		if (SmartTemplate4.Preferences.getMyBoolPref('hideExamples')) { 
-			document.getElementById('templatesTab').collapsed = true;
+		if (prefs.getMyBoolPref('hideExamples')) { 
+			getElement('templatesTab').collapsed = true;
 		}
 		else {
 			window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
 		}
     
-    let nickBox = document.getElementById('chkResolveABNick'),
-        replaceMail = document.getElementById('chkResolveABRemoveMail'),
-        abBox = document.getElementById('chkResolveAB'),
-        isPostbox = (SmartTemplate4.Util.Application === "Postbox");
+    let nickBox = getElement('chkResolveABNick'),
+        replaceMail = getElement('chkResolveABRemoveMail'),
+        abBox = getElement('chkResolveAB'),
+        isPostbox = (util.Application === "Postbox");
     if (isPostbox) {
-      SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB', false);
-      SmartTemplate4.Preferences.setMyBoolPref('mime.resolveAB.preferNick', false);
+      prefs.setMyBoolPref('mime.resolveAB', false);
+      prefs.setMyBoolPref('mime.resolveAB.preferNick', false);
     }
     
     nickBox.disabled = !abBox.checked || isPostbox;
     replaceMail.disabled = !abBox.checked || isPostbox;
     abBox.disabled = isPostbox;
+		
+		const licenser = util.Licenser;
+					
+    /*****  License  *****/
+    let buyLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+
+    getElement("btnLicense").label = buyLabel;
+    // validate License key
+    licenser.LicenseKey = prefs.getStringPref('LicenseKey');
+    getElement('txtLicenseKey').value = licenser.LicenseKey;
+    if (licenser.LicenseKey) {
+      this.validateLicenseInOptions(false);
+    }
+		
     
-		SmartTemplate4.Util.logDebugOptional("functions", "onLoad() COMPLETE");
+		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
 	} ,
 	
@@ -1247,18 +1264,23 @@ SmartTemplate4.Settings = {
   
   validateLicenseInOptions: function validateLicenseInOptions(testMode) {
 		function replaceCssClass(el,addedClass) {
-			el.classList.add(addedClass);
-			if (addedClass!='paid')	el.classList.remove('paid');
-			if (addedClass!='expired') el.classList.remove('expired');
-			if (addedClass!='free')	el.classList.remove('free');
+			try {
+				el.classList.add(addedClass);
+				if (addedClass!='paid')	el.classList.remove('paid');
+				if (addedClass!='expired') el.classList.remove('expired');
+				if (addedClass!='free')	el.classList.remove('free');
+			}
+			catch(ex) {
+				util.logException("replaceCssClass(" + el + "):\n", ex);
+			}
 		}
 		const util = SmartTemplate4.Util,
 					State = util.Licenser.ELicenseState; 
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
         btnLicense = getElement("btnLicense"),
-				proTab = getElement("smartTemplate-Pro"),
-				beautyTitle = getElement("smarttemplate-Title");
+				proTab = getElement("SmartTemplate4-Pro"),
+				beautyTitle = getElement("SmartTemplate4AboutLogo");
     try {
 			let result = this.decryptLicense(testMode);
 			switch(result) {
@@ -1266,7 +1288,8 @@ SmartTemplate4.Settings = {
 				  btnLicense.collapsed = true;
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
-					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
+					beautyTitle.classList.remove('aboutLogo');
+					beautyTitle.classList.add('aboutLogoPro');
 				  break;
 				case State.Expired:
 					btnLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
@@ -1280,6 +1303,8 @@ SmartTemplate4.Settings = {
 					replaceCssClass(proTab, 'free');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo.png");
 				  btnLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+					beautyTitle.classList.add('aboutLogo');
+					beautyTitle.classList.remove('aboutLogoPro');
 			}
 			util.logDebug('validateLicense - result = ' + result);
     }

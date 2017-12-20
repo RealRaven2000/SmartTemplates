@@ -4,6 +4,7 @@
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
 <?xml-stylesheet href = "chrome://smarttemplate4/skin/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
+<?xml-stylesheet href="chrome://smarttemplate4/skin/common/license.css" type="text/css"?>
 
 <prefwindow id = "smartTemplate_prefDialog"
             xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -631,7 +632,10 @@
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
 						<hbox class = "aboutWrapper" flex="1" align = "center" > 
-							<hbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" onclick="SmartTemplate4.Settings.clickLogo();" flex = "1">
+							<hbox id = "SmartTemplate4AboutLogo" 
+							      class = "aboutLogo" 
+										onclick="SmartTemplate4.Settings.clickLogo();" 
+										flex = "1">
 								<spacer flex = "1"/>
 								<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true); event.stopPropagation();" />
 							</hbox>
@@ -708,7 +712,19 @@
 						</vbox>
 						<spacer flex="1"/>
 					</hbox>
-					<separator  style="height:1em;" />
+					<separator  style="height:0.5em;" />
+					<hbox>
+						<spacer flex="1" />
+						<vbox class="btnLicenseContainer"
+						      height="40">
+							<spacer flex="1" />
+							<button id="btnLicense" 
+											label="Buy License"
+											oncommand="SmartTemplate4.Licenser.showDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );" />
+							<spacer flex="1" />
+						</vbox>
+						<spacer flex="1" />
+					</hbox>				
 					<hbox>
 						<groupbox id="premiumConfig" disabled="true">
 							<caption label="&premiumConfig;" />
@@ -720,13 +736,6 @@
 						</groupbox>
 					</hbox>
 					<!-- will be populated / modified from bundle in code -->
-					<hbox>
-						<spacer flex="1" />
-						<button id="btnLicense" 
-										label="Buy License"
-										oncommand="SmartTemplate4.Licenser.showDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );" />
-						<spacer flex="1" />
-					</hbox>				
 				</tabpanel>
 				
 				
@@ -740,6 +749,7 @@
 
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type = "application/x-javascript" src = "chrome://shimEc1/content/smartTemplate-shim-ecma.js" />
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/settings.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>

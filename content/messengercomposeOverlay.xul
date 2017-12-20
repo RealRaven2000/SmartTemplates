@@ -6,8 +6,9 @@
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
-<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
+<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
+<script type="application/x-javascript" src="chrome://shimEc1/content/smartTemplate-shim-ecma.js" />
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
 <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>

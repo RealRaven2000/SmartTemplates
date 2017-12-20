@@ -11,7 +11,7 @@
 
 #SmartTemplate4-Options-goPro #btnLicense:hover {
 	animation: none !important;
-	outline: 580px solid rgba(0,0,0,0.4); /* dim background on hover */
+	outline: 230px solid rgba(0,0,0,0.4); /* dim background on hover */
 	transition: outline-color 1s ease;
 }
 
@@ -21,10 +21,13 @@
 	100% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
 }
 
+.btnLicenseContainer {
+	height: 60px;
+}
+
 #btnLicense {
   animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
 }
-
 
 #btnLicense label,
 #btnDomainLicense label,

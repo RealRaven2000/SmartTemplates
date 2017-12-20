@@ -7,7 +7,7 @@
 
 <dialog 
   title="&licenseWindow.title;"
-	id="st-register"
+	id="smarttemplate-register"
 	buttons="none"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	ondialogcancel="SmartTemplate4.Licenser.cancel();"
@@ -16,10 +16,10 @@
 
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-util.js" />
+	<script type="application/x-javascript" src="chrome://shimEc1/content/smartTemplate-shim-ecma.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-prefs.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-rsa.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-register.js" />
-
 	
 	<vbox id="thePage">
 		<hbox>
@@ -27,7 +27,7 @@
 			<spacer flex="1" />
 			<vbox align="center">
 				<spacer flex="1" />
-				<hbox id="qfLicenseTerm" class="para">
+				<hbox id="LicenseTerm" class="para">
 					<label id="licenseDateLabel">&label.licenseValid;</label>
 					<label id="licenseDate" value="-" />
 				</hbox>

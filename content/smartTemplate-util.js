@@ -46,6 +46,7 @@ SmartTemplate4.Util = {
 	ConsoleService: null,
 	lastTime: 0,
 	AMOHomepage:      "https://addons.mozilla.org/thunderbird/addon/324497/",
+	PremiumFeaturesPage: "http://smarttemplate4.mozdev.org/premium.html",
 	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
 	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
 	DonatePage:       "http://smarttemplate4.mozdev.org/contribute.html",
@@ -60,6 +61,18 @@ SmartTemplate4.Util = {
 	BeniBelaHomepage: "http://www.benibela.de/",
 	StationeryPage:   "https://addons.mozilla.org/thunderbird/addon/stationery",
 	YouTubePage:      "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
+	
+	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
+		const util = SmartTemplate4.Util;
+	  try { 
+			return util.Mail3PaneWindow.SmartTemplate4.Licenser;
+		}
+		catch(ex) {
+			util.logException('Retrieve Licenser failed: ', ex);
+		}
+		return SmartTemplate4.Licenser;
+	} ,
+
 
 	get mailDocument() {
 	  return gMsgCompose.editor.document;
@@ -630,6 +643,8 @@ SmartTemplate4.Util = {
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
+	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
+	
 
 	showAboutConfig: function(clickedElement, filter) {
 		const name = "Preferences:ConfigManager";
@@ -867,11 +882,11 @@ SmartTemplate4.Util = {
 		let Ci = Components.interfaces;
 		let serverInfo = '';
 		try {
-			let account = null;
-			let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-														.getService(Ci.nsIMsgAccountManager);  
-			let accounts = acctMgr.accounts;
-			let iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+			let account = null,
+			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
+														.getService(Ci.nsIMsgAccountManager),  
+			    accounts = acctMgr.accounts,
+			    iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
 			for (let i = 0; i < iAccounts; i++) {
 				account = accounts.queryElementAt ?
 					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
@@ -1060,7 +1075,32 @@ SmartTemplate4.Util = {
 				quickFilters,
 				params).focus();
 	  
-	}	
+	}	,
+	
+  /** 
+	* getAccountsPostbox() return an Array of mail Accounts for Postbox
+	*/   
+	getAccountsPostbox: function getAccountsPostbox() {
+	  let accounts=[],
+        actManager = this.Mail3PaneWindow.accountManager,
+        Ci = Components.interfaces,
+		    smartServers = actManager.allSmartServers;
+		for (let i = 0; i < smartServers.Count(); i++) {
+			let smartServer = smartServers.QueryElementAt(i, Ci.nsIMsgIncomingServer),
+			    account_groups = smartServer.getCharValue("group_accounts");
+			if (account_groups) {
+				let groups = account_groups.split(",");
+				for (let k=0; k<groups.length; k++) {
+          let account = actManager.getAccount(groups[k]); // groups returns accountkey
+					if (account) {
+						accounts.push(account);
+					}
+				}
+			}
+		}
+		return accounts;
+	} 
+	
 	
 	/* 
 	,

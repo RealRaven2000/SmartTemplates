@@ -480,13 +480,20 @@ groupbox.transparent .groupbox-title {
 /* Icon Binding inside tab only over class possible! */
 
 #SmartTemplate4AboutLogo {
-  background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;
   min-width: 250px;
   min-height: 45px;
   text-align: right;
 }
+
+#SmartTemplate4AboutLogo.aboutLogo {
+	background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
+}
+#SmartTemplate4AboutLogo.aboutLogoPro {
+	background-image: url("chrome://smartTemplate4/skin/logo-pro.png") !important;
+}
+
 
 
 

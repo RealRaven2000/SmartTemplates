@@ -14,10 +14,10 @@ Components.utils.import('resource://gre/modules/Services.jsm');
 
 SmartTemplate4.Crypto = {
   get key_type() {
-    return SmartTemplate4.Preferences.getIntPref('licenseType');
+    return SmartTemplate4.Preferences.getMyIntPref('licenseType');
   },
   set  key_type(t) {
-    SmartTemplate4.Preferences.setIntPref('licenseType', t);
+    SmartTemplate4.Preferences.setMyIntPref('licenseType', t);
   },
 	/* note the encryption key is private. please do not attemept te reverse engineer */
   get decryption_key() {
