@@ -162,13 +162,13 @@
 <!ENTITY header.append.subject "Aggiunge il testo all'oggetto">
 <!ENTITY header.set.to "Sostituisce il destinatario con l'indirizzo di posta elettronica">
 <!ENTITY header.append.to "Aggiunge l'indirizzo di posta elettronica alla lista dei destinatari">
-<!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
+<!ENTITY stringmanip_function.cap "Gestione stringhe di testo">
+<!ENTITY stringmanip_function.explain "Funzioni per cancellare o sostituire un testo nel modello del messaggio o nell'intestazione.">
+<!ENTITY deleteText "Elimina un testo dall'intestazione. Per esempio: deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Sostituisce un testo con un altro.">
+<!ENTITY matchTextFromBody "Trova una espressione regolare nel messaggio citato ed inserisce una funzione.">
+<!ENTITY matchTextFromSubject "Trova una espressione regolare nell'oggetto ed inserisce una funzione.">
+<!ENTITY stringmanip.match.comment "Funzioni di abbinamento: il primo parametro (l'espressione regolare) deve essere racchiuso tra doppi apici. Il secondo parametro è il numero del gruppo di abbinamento. Utilizza 0 per abbinare l'espressione completa, 1 per il primo gruppo, e così via.">
 <!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
 <!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data/ora (formato locale)">
@@ -225,3 +225,17 @@
 <!ENTITY table_new.label "Nuovi">
 <!ENTITY table_reply.label "Risposta">
 <!ENTITY table_fwd.label "Inoltrare">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Inserire la propria chiave di licenza qui:">
+<!ENTITY label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">
+<!ENTITY button.pasteLicense "Incolla">
+<!ENTITY button.validateLicense "Convalida">
+<!ENTITY label.licenseValid "La licenza è valida fino a:">
+<!ENTITY licenseValidation.passed "Grazie per aver registrato SmartTemplate4 Pro. Tutte le caratteristiche della versione Premium sono ora disponibili.">
+<!ENTITY licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare il messaggio di email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">
+<!ENTITY licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
+<!ENTITY premiumConfig "Caratteristiche Premium">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

@@ -225,3 +225,18 @@
 <!ENTITY table_new.label "Verfassen">
 <!ENTITY table_reply.label "Antworten">
 <!ENTITY table_fwd.label "Weiterleiten">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Lizenzschlüssel hier eintragen:">
+<!ENTITY label.insertLicense.tooltip "Der Lizenzschlüssel wird Ihnen von Fastspring zugeschickt.">
+<!ENTITY button.pasteLicense "einfügen">
+<!ENTITY button.validateLicense "bestätigen">
+<!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
+<!ENTITY licenseValidation.passed "Vielen Dank für's Registrieren von SmartTemplate4 Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
+<!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
+<!ENTITY licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
+<!ENTITY licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
+<!ENTITY premiumConfig "Premium Funktionen">
+<!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite">
+

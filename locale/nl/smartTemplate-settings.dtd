@@ -225,3 +225,17 @@
 <!ENTITY table_new.label "Nieuw">
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
+<!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">
+<!ENTITY button.pasteLicense "plakken">
+<!ENTITY button.validateLicense "valideren">
+<!ENTITY label.licenseValid "Uw licentie is geldig tot:">
+<!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate4 Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
+<!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het tabblad Ondersteuning.">
+<!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
+<!ENTITY licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
+<!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
+<!ENTITY premiumConfig "Premiumfuncties">
+<!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">

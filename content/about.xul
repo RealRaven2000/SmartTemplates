@@ -21,7 +21,7 @@
 
     <hbox class = "logo">
       <spacer flex = "1"/>
-       <image src = "chrome://smarttemplate4/skin/logo.png" height = "40px"/>
+       <image id="smarttemplate-Title" src = "chrome://smarttemplate4/skin/logo.png" height = "40px"/>
       <spacer flex = "1"/>
     </hbox>
 

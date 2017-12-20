@@ -414,13 +414,14 @@
 		<tabbox id = "rightPane" flex = "1">
 
 			<tabs class = "actionTabs" id="advancedTabs">
-				<tab id = "fieldsTab"    label = "&pref_variables.tab;"  />
-				<tab id = "settingsTab"  label = "&pref_global.tab;"     />
-				<tab id = "advancedSettingsTab"  label = "&pref_advanced.tab;"     />
+				<tab id = "fieldsTab"    label = "&pref_variables.tab;" />
+				<tab id = "settingsTab"  label = "&pref_global.tab;" />
+				<tab id = "advancedSettingsTab"  label = "&pref_advanced.tab;" />
 				<tab id = "templatesTab" label = "&pref_examples.tab;" 
 				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "&pref_examples.tooltip;" />
-				<tab id = "aboutTab"     label = "&about.cap;"           /> 
+				<tab id = "aboutTab"  label = "&about.cap;" /> 
+				<tab id = "SmartTemplate4-Pro" label="SmartTemplate4 Pro"  class="free" />
 			</tabs>
 	
 			<tabpanels flex = "1">
@@ -671,6 +672,64 @@
 					</vbox>
 				</tabpanel>
 				
+				<!-- Licensing tab -->
+				<tabpanel orient="vertical" id="SmartTemplate4-Options-goPro">
+					<description>&label.insertLicense;</description>
+					<hbox id="licenseContainer" align="start">
+						<textbox id="txtLicenseKey"
+										 class="licenseKey"
+										 flex="1"
+										 multiline="true"
+										 rows="4"
+										 style="min-height: 4.5em;"
+										 tooltiptext="&label.insertLicense.tooltip;"></textbox>
+						<vbox>
+							<button id="btnPasteLicense"
+											label="&button.pasteLicense;"
+											oncommand="SmartTemplate4.Settings.pasteLicense();" />
+							<button id="btnValidateLicense"
+											label="&button.validateLicense;"
+											oncommand="SmartTemplate4.Settings.validateLicenseInOptions(false);" />
+						</vbox>
+					</hbox>
+					<separator class="licenseSeparator" />
+					<hbox>
+						<label>&label.licenseValid;</label>
+						<label id="licenseDate" value="-" />
+					</hbox>
+					<separator class = "licenseSeparator" />
+					<hbox id="validationResults">
+						<vbox>
+							<description id="validationPassed" class="niceFont" collapsed="true">&licenseValidation.passed;</description>
+							<description id="validationFailed" class="niceFont" collapsed="true">&licenseValidation.failed;</description>
+							<description id="validationExpired" class="niceFont" collapsed="true">&licenseValidation.expired;</description>
+							<description id="validationInvalidEmail" class="niceFont" collapsed="true">&licenseValidation.invalidMail;</description>
+							<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&licenseValidation.notMatchedMail;</description>
+						</vbox>
+						<spacer flex="1"/>
+					</hbox>
+					<separator  style="height:1em;" />
+					<hbox>
+						<groupbox id="premiumConfig" disabled="true">
+							<caption label="&premiumConfig;" />
+							<hbox>
+								<label class="plain-link" 
+											 tooltiptext="http://smarttemplate4.mozdev.org/"
+											 onclick="SmartTemplate4.Util.showPremiumFeatures();">&label.premiumFeaturesSite;</label>
+							</hbox>
+						</groupbox>
+					</hbox>
+					<!-- will be populated / modified from bundle in code -->
+					<hbox>
+						<spacer flex="1" />
+						<button id="btnLicense" 
+										label="Buy License"
+										oncommand="SmartTemplate4.Licenser.showDialog('licenseTab'); setTimeout( function() {window.close();}, 500 );" />
+						<spacer flex="1" />
+					</hbox>				
+				</tabpanel>
+				
+				
 			</tabpanels>
 		</tabbox>
 	</vbox>
@@ -683,6 +742,8 @@
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/settings.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
+<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-register.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>

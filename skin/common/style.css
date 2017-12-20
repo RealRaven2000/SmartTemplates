@@ -13,7 +13,9 @@
 /* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
 /* ################################################################################### */
 
+/*
 @import 'chrome://smartTemplate4-pl/skin/style.css';
+*/
 
 #SmartTemplate4MenuBar {
  border:0px;
@@ -735,4 +737,53 @@ button.dialog-button[dlgtype=extra2] {
 	background-image: none;
 	border: none;
 	-moz-appearance: none;
+}
+
+/* Pro  Tab */
+		
+@keyframes SmartTemplate4RotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
+#SmartTemplate4-Pro.free .tab-icon {
+  animation: SmartTemplate4RotateY 3s linear 0.3s infinite ;
+	height: 19px;
+	width: 30px;
+}
+
+#SmartTemplate4-Pro.paid .tab-icon {
+	animation: none !important;
+}
+
+@keyframes SmartTemplate4Pulse {
+    0% { transform: scale(1); font-size: 1em; opacity: 0.6; }
+    50% { transform: scale(1.2); font-size: 1.25em; opacity: 1; }
+    100% { transform: scale(1); font-size: 1em; opacity: 0.6; }
+}
+
+#SmartTemplate4-Pro.expired .tab-icon,
+#btnLicense {
+  animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
+}
+#btnLicense:hover {
+	animation: none;
+}
+
+/* ICON RULE TO OVERWRITE IN PRO VERSION */
+/* menuitem.cmd[tagName="qfRegister"],  */
+tab#SmartTemplate4-Pro {
+	list-style-image : url('chrome://smarttemplate4/skin/icons/pro.png') !important;
+}
+
+tab#SmartTemplate4-Pro.paid {
+	list-style-image : url('chrome://smarttemplate4/skin/icons/pro-paid.png') !important;
+}
+
+tab#SmartTemplate4-Pro.expired {
+	list-style-image : url('chrome://smarttemplate4/skin/icons/pro-expired.png') !important;
 }

@@ -50,6 +50,7 @@ pref("extensions.smartTemplate4.debug.functions.getProcessedTemplate", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
+pref("extensions.smartTemplate4.debug.images", false);
 pref("extensions.smartTemplate4.debug.settings", false);
 pref("extensions.smartTemplate4.debug.settings.prefs", false);
 pref("extensions.smartTemplate4.debug.signatures", false);
@@ -69,3 +70,10 @@ pref("extensions.smartTemplate4.debug.timeZones", false);
 pref("extensions.smartTemplate4.debug.timeStrings", false);
 pref("extensions.smartTemplate4.debug.headers", false);
 pref("extensions.smartTemplate4.debug.sandbox", false);
+pref("extensions.smartTemplate4.debug.premium.licenser", false);
+pref("extensions.smartTemplate4.debug.premium.rsa", false);
+
+// SmartTemplate Pro specific:
+pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
+pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
+pref("extensions.smartTemplate4.LicenseKey", "");

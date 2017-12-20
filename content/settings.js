@@ -1086,6 +1086,207 @@ SmartTemplate4.Settings = {
          textboxes:txt, 
          checkboxes:chk}
     );
-  }
+  } ,
+	
+  trimLicense: function trimLicense() {
+		const util = SmartTemplate4.Util;
+    let txtBox = document.getElementById('txtLicenseKey'),
+        strLicense = txtBox.value.toString();
+    util.logDebug('trimLicense() : ' + strLicense);
+    strLicense = strLicense.replace(/^\s+|\s+$/g, ''); // remove line breaks
+    strLicense = strLicense.replace('\[at\]','@');
+    txtBox.value = strLicense;
+    util.logDebug('trimLicense() result : ' + strLicense);
+    return strLicense;
+  } ,
+  
+  enablePremiumConfig: function enablePremiumConfig(isEnabled) {
+		/* future function: enables premium configuration UI
+    let getElement      = document.getElementById.bind(document),
+        premiumConfig   = getElement('premiumConfig'),
+        quickJump       = getElement('chkQuickJumpHotkey'),
+        quickMove       = getElement('chkQuickMoveHotkey'),
+        quickCopy       = getElement('chkQuickCopyHotkey'),
+        quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
+        quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
+        quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
+        quickMoveFormat = getElement('menuQuickMoveFormat'),
+        quickMoveDepth  = getElement('quickmove-path-depth'),
+        multiCategories = getElement('chkCategories');
+    premiumConfig.disabled = !isEnabled;
+    quickJump.disabled = !isEnabled;
+    quickMove.disabled = !isEnabled;
+    quickCopy.disabled = !isEnabled;
+    quickJumpTxt.disabled = !isEnabled;
+    quickMoveTxt.disabled = !isEnabled;
+    quickCopyTxt.disabled = !isEnabled;
+    quickMoveFormat.disabled = !isEnabled;
+    quickMoveDepth.disabled = !isEnabled;
+    multiCategories.disabled = !isEnabled;
+		*/
+  },
+  
+  decryptLicense: function decryptLicense(testMode) {
+		const util = SmartTemplate4.Util,
+		      licenser = util.Licenser,
+					State = licenser.ELicenseState;
+    let getElement = document.getElementById.bind(document),
+        validationPassed       = getElement('validationPassed'),
+        validationFailed       = getElement('validationFailed'),
+        validationExpired      = getElement('validationExpired'),
+        validationInvalidEmail = getElement('validationInvalidEmail'),
+        validationEmailNoMatch = getElement('validationEmailNoMatch'),
+        decryptedMail, decryptedDate,
+				result = State.NotValidated;
+    validationPassed.collapsed = true;
+    validationFailed.collapsed = true;
+    validationExpired.collapsed = true;
+    validationInvalidEmail.collapsed = true;
+    validationEmailNoMatch.collapsed = true;
+    this.enablePremiumConfig(false);
+    try {
+      this.trimLicense();
+      let txtBox = getElement('txtLicenseKey'),
+          license = txtBox.value;
+      // store new license key
+      if (!testMode) // in test mode we do not store the license key!
+        SmartTemplate4.Preferences.setStringPref('LicenseKey', license);
+      
+      let maxDigits = SmartTemplate4.Crypto.maxDigits, // this will be hardcoded in production 
+          LicenseKey,
+          crypto = licenser.getCrypto(license),
+          mail = licenser.getMail(license),
+          date = licenser.getDate(license);
+      if (SmartTemplate4.Preferences.isDebug) {
+        let test = 
+            "┌───────────────────────────────────────────────────────────────┐\n"
+          + "│ SmartTemplate4.Licenser found the following License components:\n"
+          + "│ Email: " + mail + "\n"
+          + "│ Date: " + date + "\n"
+          + "│ Crypto: " + crypto + "\n"
+          + "└───────────────────────────────────────────────────────────────┘";
+        if (testMode)
+          util.alert(test);
+        util.logDebug(test);
+      }
+      if (crypto)
+        [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
+      else { // reset internal state of object if no crypto can be found!
+        result = State.Invalid;
+				licenser.DecryptedDate = "";
+				licenser.DecryptedMail = "";
+			}
+      decryptedDate = licenser.DecryptedDate;
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+      decryptedMail = licenser.DecryptedMail;
+      switch(result) {
+        case State.Valid:
+          this.enablePremiumConfig(true);
+          validationPassed.collapsed=false;
+          // test code
+          // getElement('txtEncrypt').value = LicenseKey;
+          break;
+        case State.Invalid:
+          validationFailed.collapsed=false;
+          break;
+        case State.Expired:
+          validationExpired.collapsed=false;
+          break;
+        case State.MailNotConfigured:
+          validationInvalidEmail.collapsed=false;
+          // if mail was already replaced the string will contain [mail address] in square brackets
+          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
+          break;
+        case State.MailDifferent:
+          validationFailed.collapsed=false;
+          validationEmailNoMatch.collapsed=false;
+          break;
+        default:
+          Services.prompt.alert(null,"SmartTemplate4",'Unknown license status: ' + result);
+          break;
+      }
+      if (testMode) {
+      //  getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
+      }
+      else {
+        // reset License status of main instance
+				util.Licenser.ValidationStatus =
+              result != State.Valid ? State.NotValidated : result;
+        util.Licenser.wasValidityTested = true; // no need to re-validate there
+      }
+      
+    }    
+    catch(ex) {
+      util.logException("Error in SmartTemplate4.Settings.decryptLicense():\n", ex);
+    }
+		return result;
+  } ,
+  
+  pasteLicense: function pasteLicense() {
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
+        str       = {},
+        strLength = {},
+        finalLicense = '';        
+    trans.addDataFlavor("text/unicode");
+    Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+
+    trans.getTransferData("text/unicode", str, strLength);
+    if (strLength.value) {
+      if (str) {
+        let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data,
+            txtBox = document.getElementById('txtLicenseKey'),
+            strLicense = pastetext.toString();
+        txtBox.value = strLicense;
+        finalLicense = this.trimLicense();
+      }    
+    }
+    if (finalLicense) {
+      this.validateLicenseInOptions(false);
+    }
+  } ,
+  
+  validateLicenseInOptions: function validateLicenseInOptions(testMode) {
+		function replaceCssClass(el,addedClass) {
+			el.classList.add(addedClass);
+			if (addedClass!='paid')	el.classList.remove('paid');
+			if (addedClass!='expired') el.classList.remove('expired');
+			if (addedClass!='free')	el.classList.remove('free');
+		}
+		const util = SmartTemplate4.Util,
+					State = util.Licenser.ELicenseState; 
+    let wd = window.document,
+        getElement = wd.getElementById.bind(wd),
+        btnLicense = getElement("btnLicense"),
+				proTab = getElement("smartTemplate-Pro"),
+				beautyTitle = getElement("smarttemplate-Title");
+    try {
+			let result = this.decryptLicense(testMode);
+			switch(result) {
+				case State.Valid:
+				  btnLicense.collapsed = true;
+					replaceCssClass(proTab, 'paid');
+					replaceCssClass(btnLicense, 'paid');
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
+				  break;
+				case State.Expired:
+					btnLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+				  btnLicense.collapsed = false;
+					replaceCssClass(proTab, 'expired');
+					replaceCssClass(btnLicense, 'expired');
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
+					break;
+				default:
+				  btnLicense.collapsed = false;
+					replaceCssClass(proTab, 'free');
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo.png");
+				  btnLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+			}
+			util.logDebug('validateLicense - result = ' + result);
+    }
+    catch(ex) {
+      util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);
+    }
+  } 
+	
 
 };

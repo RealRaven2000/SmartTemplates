@@ -66,8 +66,9 @@ SmartTemplate4.Util = {
 	} ,
 	
 	getComposeType: function() {
-		let msgComposeType = Components.interfaces.nsIMsgCompType;
-		let st4composeType = '';
+		const Ci = Components.interfaces;
+		let msgComposeType = Ci.nsIMsgCompType,
+		    st4composeType = '';
 		
 		switch (gMsgCompose.type) {
 			// new message -----------------------------------------
@@ -104,8 +105,8 @@ SmartTemplate4.Util = {
 			// (Draft:9/Template:10/ReplyWithTemplate:12)
 			case msgComposeType.Draft:
 				// composeCase = 'draft';
-				let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
-				let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Components.interfaces.nsIMsgDBHdr);
+				let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+				let msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
 				const nsMsgKey_None = 0xffffffff;
 				if(msgDbHdr) {
 					if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
@@ -125,11 +126,11 @@ SmartTemplate4.Util = {
 	} ,
 	
 	getBundleString: function(id, defaultText) {
-
+    const Ci = Components.interfaces;
 		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-			 getService(Components.interfaces.nsIStringBundleService);
-		let bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties");
-		let theText = '';
+						getService(Ci.nsIStringBundleService),
+		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties"),
+		    theText = '';
 		try{
 			//try writing an error to the Error Console using the localized string; if it fails write it in English
 			theText = bundle.GetStringFromName(id);
@@ -143,8 +144,8 @@ SmartTemplate4.Util = {
 
 	get Mail3PaneWindow() {
 		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
-				.getService(Components.interfaces.nsIWindowMediator);
-		let win3pane = windowManager.getMostRecentWindow("mail:3pane");
+				.getService(Components.interfaces.nsIWindowMediator),
+		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
 
@@ -999,7 +1000,67 @@ SmartTemplate4.Util = {
 			this.logToConsole("could not decode file: " + filename + "\n" + ex.toString());
 			return aURL;
 		}
-  }
+  } ,
+	
+  hasPremiumLicense: function hasPremiumLicense(reset) {
+		const util = SmartTemplate4.Util,
+					licenser = util.Licenser;
+    // early exit for Licensed copies
+    if (licenser.isValidated) 
+      return true;
+    // short circuit if we already validated:
+    if (!reset && licenser.wasValidityTested)
+      return licenser.isValidated;
+    let licenseKey = SmartTemplate4.Preferences.getStringPref('LicenseKey');
+    if (!licenseKey) 
+      return false; // short circuit if no license key!
+    if (!licenser.isValidated || reset) {
+      licenser.wasValidityTested = false;
+      licenser.validateLicense(licenseKey);
+    }
+    if (licenser.isValidated) 
+      return true;
+    return false;
+  } ,
+	
+	// appends user=pro OR user=proRenew if user has a valid / expired license
+	makeUriPremium: function makeUriPremium(URL) {
+		const util = SmartTemplate4.Util,
+					isPremiumLicense = util.hasPremiumLicense(false),
+					isExpired = util.Licenser.isExpired;
+		try {
+			let uType = "";
+			if (isExpired) 
+				uType = "proRenew"
+			else if (isPremiumLicense)
+			  uType = "pro";
+			// make sure we can sanitize all pages for our premium users!
+			if (   uType
+			    && URL.indexOf("user=")==-1 
+					&& URL.indexOf("smarttemplate4.mozdev.org")>0 ) {
+				if (URL.indexOf("?")==-1)
+					URL = URL + "?user=" + uType;
+				else
+					URL = URL + "&user=" + uType;
+			}
+		}
+		catch(ex) {
+		}
+		finally {
+			return URL;
+		}
+	} ,
+  
+	viewLicense: function viewLicense() {
+		let win = SmartTemplate4.Util.Mail3PaneWindow,
+        params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.SmartTemplate4}, out:null};
+		// open options and open the last tab!
+    win.openDialog('chrome://smarttemplate4/content/settings.xul',
+				'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
+				quickFilters,
+				params).focus();
+	  
+	}	
 	
 	/* 
 	,
@@ -1051,61 +1112,61 @@ SmartTemplate4.Util.firstRun =
 			
   	window.addEventListener("load", function(){ SmartTemplate4.updateStatusBar('default'); },true);
 			
-		SmartTemplate4.Util.logDebug('Util.firstRun.init()');
-		let prev = -1, firstRun = true;
-		let showFirsts = true, debugFirstRun = false;
-		let prefBranchString = "extensions.smartTemplate4.";
-
-		let svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
-		let ssPrefs = svc.getBranch(prefBranchString);
+		const util = SmartTemplate4.Util,
+		      prefs = SmartTemplate4.Preferences;
+		util.logDebug('Util.firstRun.init()');
+		let prev = -1, firstRun = true,
+		    showFirsts = true, debugFirstRun = false,
+		    prefBranchString = "extensions.smartTemplate4.",
+		    svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
+		    ssPrefs = svc.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
 
-		SmartTemplate4.Util.logDebugOptional ("firstRun","SmartTemplate4.Util.firstRun.init()");
+		util.logDebugOptional ("firstRun","SmartTemplate4.Util.firstRun.init()");
 		if (!ssPrefs) {
-			SmartTemplate4.Util.logDebugOptional ("firstRun","Could not retrieve prefbranch for " + prefBranchString);
+			util.logDebugOptional ("firstRun","Could not retrieve prefbranch for " + prefBranchString);
 		}
 
-		let current = SmartTemplate4.Util.Version;
-		SmartTemplate4.Util.logDebug("Current SmartTemplate4 Version: " + current);
+		let current = util.Version;
+		util.logDebug("Current SmartTemplate4 Version: " + current);
 
 		try {
-			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
+			util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
 			try {
-				prev = SmartTemplate4.Preferences.getMyStringPref("version");
+				prev = prefs.getMyStringPref("version");
 			}
 			catch (e) {
 				prev = "?";
-				SmartTemplate4.Util.logDebugOptional ("firstRun","Could not determine previous version - " + e);
+				util.logDebugOptional ("firstRun","Could not determine previous version - " + e);
 			} ;
 
-			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getBoolPref(firstRun)");
+			util.logDebugOptional ("firstRun","try to get setting: getBoolPref(firstRun)");
 			try { firstRun = ssPrefs.getBoolPref("firstRun"); } catch (e) { firstRun = true; }
 
 
 			if (firstRun) {
 				// previous setting found? not a new installation!
-				if (SmartTemplate4.Preferences.existsBoolPref("extensions.smarttemplate.def"))
+				if (prefs.existsBoolPref("extensions.smarttemplate.def"))
 					firstRun = false;
-				SmartTemplate4.Util.logDebugOptional ("firstRun","setting firstRun=false");
-				SmartTemplate4.Preferences.setMyBoolPref("firstRun", false);
+				util.logDebugOptional ("firstRun","setting firstRun=false");
+				prefs.setMyBoolPref("firstRun", false);
 			}
 
 			// enablefirstruns=false - allows start pages to be turned off for partners
-			SmartTemplate4.Util.logDebugOptional ("firstRun","try to get setting: getBoolPref(enablefirstruns)");
+			util.logDebugOptional ("firstRun","try to get setting: getBoolPref(enablefirstruns)");
 			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
 
 
-			SmartTemplate4.Util.logDebugOptional ("firstRun", "Settings retrieved:"
+			util.logDebugOptional ("firstRun", "Settings retrieved:"
 					+ "\nprevious version=" + prev
 					+ "\ncurrent version=" + current
 					+ "\nfirstrun=" + firstRun
 					+ "\nshowfirstruns=" + showFirsts
 					+ "\ndebugFirstRun=" + debugFirstRun);
-
 		}
 		catch(e) {
-			SmartTemplate4.Util.logException("Exception in SmartTemplate4-util.js: \n"
+			util.logException("Exception in SmartTemplate4-util.js: \n"
 				+ "\n\ncurrent: " + current
 				+ "\nprev: " + prev
 				+ "\nfirstrun: " + firstRun
@@ -1113,30 +1174,31 @@ SmartTemplate4.Util.firstRun =
 				+ "\ndebugFirstRun: " + debugFirstRun, e);
 		}
 		finally {
-			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - firstRun=" + firstRun);
+			util.logDebugOptional ("firstRun","finally - firstRun=" + firstRun);
 
 			// AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-			let pureVersion = SmartTemplate4.Util.VersionSanitized;
-			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
+			let pureVersion = util.VersionSanitized;
+			util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
-			let versionPage = SmartTemplate4.Util.VersionPage + "#" + pureVersion;
-			SmartTemplate4.Util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
-
-			let updateVersionMessage = SmartTemplate4.Util.getBundleString (
+			let versionPage = util.VersionPage + "#" + pureVersion;
+			util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
+			
+			let isPremium = util.hasPremiumLicense(true),
+			    updateVersionMessage = util.getBundleString (
 			                             "SmartTemplate4.updateMessageVersion",
 			                             "SmartTemplate4 was successfully upgraded to version {1}!").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){
 				/* EXTENSION INSTALLED FOR THE FIRST TIME! */
-				SmartTemplate4.Util.logDebug ("firstRun code");
+				util.logDebug ("firstRun code");
 
 				if (showFirsts) {
 					// Insert code for first run here
 					// on very first run, we go to the index page - welcome blablabla
-					SmartTemplate4.Util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
+					util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
 					window.setTimeout(function() {
-						SmartTemplate4.Util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
+						util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
 					}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 
 				}
@@ -1145,56 +1207,56 @@ SmartTemplate4.Util.firstRun =
 			else {
 
 				// check for update of pure version (everything before pre, beta, alpha)
-				if (prev!=pureVersion && current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0) {
+				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
 					/* EXTENSION UPDATED */
-					SmartTemplate4.Util.logDebug("ST4 Test  - SmartTemplate4 Update Detected:\n **PREVIOUS**:" + prev + "\npure Version: " + pureVersion + "\ncurrent: " + current);
+					util.logDebug("ST4 Test  - SmartTemplate4 Update Detected:\n **PREVIOUS**:" + prev + "\npure Version: " + pureVersion + "\ncurrent: " + current);
 
 					let isUpdated = this.update(prev);
-					SmartTemplate4.Util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
+					util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
 					// upgrade case!!
 					let upgradeMessage = "";
 
-					if (showFirsts) {
+					if (showFirsts && !isPremium) {
 						// version is different => upgrade (or conceivably downgrade)
 
 						// DONATION PAGE
 						// display donation page - disable by right-clicking label above version jump panel
-						if ((SmartTemplate4.Preferences.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")))
-							SmartTemplate4.Util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
+						if ((prefs.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")))
+							util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
 						else {
-							SmartTemplate4.Util.logDebugOptional ("firstRun","setTimeout for donation link");
-							window.setTimeout(function() {SmartTemplate4.Util.showDonatePage();}, 2000);
+							util.logDebugOptional ("firstRun","setTimeout for donation link");
+							window.setTimeout(function() {util.showDonatePage();}, 2000);
 						}
 
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
-						if (!SmartTemplate4.Preferences.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
-							SmartTemplate4.Util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
-							window.setTimeout(function(){SmartTemplate4.Util.showVersionHistory(false);}, 2200);
+						if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
+							util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
+							window.setTimeout(function(){util.showVersionHistory(false);}, 2200);
 						}
 					}
 
 					// Display the modeless update message
 					window.setTimeout(function(){
-						if (SmartTemplate4.Util.versionSmaller(prev, '0.9')) {
+						if (util.versionSmaller(prev, '0.9')) {
 							// we are only running the old prefs routine for versions < .9
 							upgradeMessage = buildUpgradeMessage09();
 							// let's show the cancel button only if the conversion to the new prefbranch has been done before
-							let showCancel = (SmartTemplate4.Preferences.existsBoolPref("extensions.smartTemplate4.id1.def"));
+							let showCancel = (prefs.existsBoolPref("extensions.smartTemplate4.id1.def"));
 
 							SmartTemplate4.Message.display(updateVersionMessage + upgradeMessage,
 							                              "centerscreen,titlebar",
-							                              function() { SmartTemplate4.Util.convertOldPrefs();},
-							                              showCancel ? function() {SmartTemplate4.Util.cancelConvert();} : null );
+							                              function() { util.convertOldPrefs();},
+							                              showCancel ? function() {util.cancelConvert();} : null );
 							;
 						}
 						else
-							SmartTemplate4.Util.popupAlert ("SmartTemplate4", updateVersionMessage);
+							util.popupAlert ("SmartTemplate4", updateVersionMessage);
 					}, 3000);
 
 				}
 				// test of updateMessage:
-				if (SmartTemplate4.Preferences.isDebugOption('test.update'))
+				if (prefs.isDebugOption('test.update'))
 					window.setTimeout(function(){
 						// call a modeless message window,
 						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
@@ -1210,21 +1272,21 @@ SmartTemplate4.Util.firstRun =
 
 			// =============================================
 			// STORE CURRENT VERSION NUMBER!
-			if (prev != pureVersion && current != '?' && (current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN) < 0)) {
-				SmartTemplate4.Util.logDebug ("Storing new version number " + current);
+			if (prev != pureVersion && current != '?' && (current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+				util.logDebug ("Storing new version number " + current);
 				// STORE VERSION CODE!
-				SmartTemplate4.Preferences.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+				prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
 			}
 			else {
-				SmartTemplate4.Util.logDebugOptional ("firstRun","No need to store current version: " + current
+				util.logDebugOptional ("firstRun","No need to store current version: " + current
 					+ "\nprevious: " + prev.toString()
 					+ "\ncurrent!='?' = " + (current!='?').toString()
 					+ "\nprev!=current = " + (prev!=current).toString()
-					+ "\ncurrent.indexOf(" + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN).toString());
+					+ "\ncurrent.indexOf(" + util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(util.HARDCODED_EXTENSION_TOKEN).toString());
 			}
 			
 
-			SmartTemplate4.Util.logDebugOptional ("firstRun","finally { } ends.");
+			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 
 		// // fire this on application launch, which includes open-link-in-new-window

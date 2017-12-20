@@ -225,3 +225,15 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
+<!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
+<!ENTITY button.pasteLicense "Wklej">
+<!ENTITY button.validateLicense "Zatwierdź">
+<!ENTITY label.licenseValid "Twoja licencja jest ważna do:">
+<!ENTITY licenseValidation.passed "Dziękujemy za rejestrację SmartTemplate4 Pro! Wszystkie funkcje premium są teraz odblokowane.">
+<!ENTITY licenseValidation.failed "Wprowadzony klucz licencyjny jest nieprawidłowy. Sprawdź wiadomość od FastSpring zawierającą instrukcje. Jeśli problem występuje nadal, skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
+<!ENTITY licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję.">
+<!ENTITY licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
+<!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
+<!ENTITY premiumConfig "Funkcje premium">

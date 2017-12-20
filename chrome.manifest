@@ -5,7 +5,7 @@
 
 #### MISC FILES CONTENT FOLDER ####
 content     smarttemplate4            content/
-content     smarttemplate4-pl         content/ platform
+#content     smarttemplate4-pl         content/ platform
 resource    smarttemplate4            content/
 
 #### SKIN ####
@@ -13,7 +13,7 @@ resource    smarttemplate4            content/
 # basic paths:
 # specialized paths
 skin        smarttemplate4     classic/1.0  skin/
-skin        smarttemplate4-pl  classic/1.0  skin/
+#skin        smarttemplate4-pl  classic/1.0  skin/
 skin        st4common          classic/1.0  skin/common
 
 #Tb

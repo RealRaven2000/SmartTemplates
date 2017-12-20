@@ -37,25 +37,25 @@
 <!ENTITY pref_groupMailContent "メールクライアント">
 <!ENTITY pref_groupSignatures "署名">
 <!ENTITY pref_groupAdvanced "追加機能">
-<!ENTITY pref_groupUI "ユーザインターフェイス">
+<!ENTITY pref_groupUI "ユーザーインターフェイス">
 <!ENTITY pref_groupNameRules "名前のルール">
 <!ENTITY pref_groupTroubleShooting "トラブルシューティング">
 <!ENTITY pref_addSigBreakHTML.label "&quot;--&quot; を追加する (HTML メール)">
 <!ENTITY pref_addSigBreakHTML.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (HTML 形式の場合)。">
 <!ENTITY pref_addSigBreakPlaintext.label "&quot;--&quot; を追加する (テキストメール)">
 <!ENTITY pref_addSigBreakPlaintext.tooltip "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (プレーンテキスト形式の場合)。">
-<!ENTITY pref_quoteHeaderBox.label "引用ヘッダ">
-<!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
+<!ENTITY pref_quoteHeaderBox.label "引用ヘッダー">
+<!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダーを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "テンプレート">
 <!ENTITY pref_templateBox_tip "メッセージのテンプレートを入力してください。例：こんにちは、&#37;from(name)&#37;さん。&lt;br&gt;メッセージありがとうございました。&lt;br&gt;敬具 &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
-<!ENTITY pref_breaksOnTop.label "ヘッダ上部の改行の数:">
+<!ENTITY pref_breaksOnTop.label "ヘッダー上部の改行の数:">
 <!ENTITY pref_removeSig.label "差出人を変更したときに署名を削除する">
 <!ENTITY pref_showStatusIcon.label "ステータスバーにアイコンを表示する">
 <!ENTITY pref_StatusIcon.IconOnly "アイコンのみ">
 <!ENTITY pref_StatusIcon.IconText "アイコンとテキスト">
 <!ENTITY pref_StatusIcon.IconHoverText "マウスオーバーでテキスト表示">
-<!ENTITY pref_fontSettings.label "テンプレートエディタのフォントサイズ">
+<!ENTITY pref_fontSettings.label "テンプレートエディターのフォントサイズ">
 <!ENTITY pref_server_desc "差出人:">
 <!ENTITY btnSaveTemplate.tooltip "テンプレートを保存します...">
 <!ENTITY btnLoadTemplate.tooltip "テンプレートを読み込みます...">
@@ -67,16 +67,16 @@
 <!ENTITY pref_new.label "新規メッセージに以下のテンプレートを適用する">
 <!ENTITY pref_rspmsg.cap "返信メッセージ作成の設定">
 <!ENTITY pref_rsp.label "返信メッセージに以下のテンプレートを適用する">
-<!ENTITY pref_rsphead.label "既定の返信ヘッダの代わりに使用する">
+<!ENTITY pref_rsphead.label "既定の返信ヘッダーの代わりに使用する">
 <!ENTITY pref_fwdmsg.cap "転送メッセージ作成の設定">
 <!ENTITY pref_fwd.label "転送メッセージに以下のテンプレートを適用する">
-<!ENTITY pref_fwdhead.label "既定の転送ヘッダの代わりに使用する">
+<!ENTITY pref_fwdhead.label "既定の転送ヘッダーの代わりに使用する">
 <!ENTITY pref_html.label "HTML として挿入する (&lt;b&gt;bold&lt;/b&gt; など)">
 <!ENTITY pref_html.cap "&quot; , &amp; , &lt; , &gt; , space はエスケープしてください。詳細はヘルプを参照してください。">
 <!ENTITY pref_rep_br.label "改行を &lt;br&gt; に変換する">
 <!ENTITY pref_rep_br.cap "注：HTML タグに続く改行は &lt;br&gt; に変換されません。">
-<!ENTITY pref_quotehead_tip "既定の引用ヘッダを無効にします。テキストボックスで好きな引用ヘッダを入力してください。">
-<!ENTITY pref_template_tip "変数による引用ヘッダのカスタマイズができます。詳細はヘルプを参照してください。">
+<!ENTITY pref_quotehead_tip "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。">
+<!ENTITY pref_template_tip "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。">
 <!ENTITY help_dialog_title "SmartTemplate4 ヘルプ">
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
@@ -84,7 +84,7 @@
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
-<!ENTITY pref_addressDelimiter "複数の通信相手の区切りに以下のデリミタを使用する:">
+<!ENTITY pref_addressDelimiter "複数の通信相手の区切りに以下のデリミターを使用する:">
 <!ENTITY pref_addressDelimiter_tip "複数の通信相手の区切りに使用するデリミタを指定します。Outlook ではセミコロン (;) を、Thunderbird の既定ではカンマ (,) を使用します">
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
 <!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
@@ -154,7 +154,7 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任意のヘッダ行">
-<!ENTITY header_function.cap "メールヘッダの変更">
+<!ENTITY header_function.cap "メールヘッダーの変更">
 <!ENTITY header_function.explain "メールヘッダの内容を変更することができます。参照:">
 <!ENTITY header_function.scope "以下の変数が利用可能です:">
 <!ENTITY header.set.subject "件名をテキストで置換する">
@@ -168,7 +168,7 @@
 <!ENTITY replaceText "特定の文字列を異なる文字列に置換します">
 <!ENTITY matchTextFromBody "引用部から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
 <!ENTITY matchTextFromSubject "件名から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
-<!ENTITY stringmanip.match.comment "一致関数: 1 つ目のパラメータ (正規表現) は、二重引用符で囲まれている必要があります。2 つめのパラメータは、一致したグループの数を示します。0: 完全一致、1: 1 つめに一致、など。">
+<!ENTITY stringmanip.match.comment "一致関数: 1 つ目のパラメーター (正規表現) は、二重引用符で囲まれている必要があります。2 つめのパラメーターは、一致したグループの数を示します。0: 完全一致、1: 1 つめに一致、など。">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">
@@ -225,3 +225,17 @@
 <!ENTITY table_new.label "新規">
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "QuickFolders Pro">
+<!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
+<!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
+<!ENTITY button.pasteLicense "貼り付け">
+<!ENTITY button.validateLicense "認証">
+<!ENTITY label.licenseValid "ライセンスの有効期限:">
+<!ENTITY licenseValidation.passed "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
+<!ENTITY licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
+<!ENTITY licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
+<!ENTITY licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">
+<!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
+<!ENTITY premiumConfig "有料機能">
+<!ENTITY label.premiumFeaturesSite "有料機能についての詳細はウェブサイトをご覧ください">
