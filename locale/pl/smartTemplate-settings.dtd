@@ -225,7 +225,6 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
