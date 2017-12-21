@@ -1,26 +1,10 @@
 
 // OLD SHIM CODE 
-//   this is to make quickFIlters backwards compatible with Postbox 3,4,5
+//   this is to make SmartTemplate4 backwards compatible with Postbox 3,4,5
 //   which hasn't got the new code of ECMA 1.7
 
-if (!SmartTemplate4.Util.Accounts) {
-	Object.defineProperty(SmartTemplate4.Util, "Accounts",
-	{ get: function() {
-			const Ci = Components.interfaces,
-							Cc = Components.classes,
-							util = SmartTemplate4.Util;
-				let aAccounts=[];
-			if (util.Application == 'Postbox') 
-				aAccounts = util.getAccountsPostbox(); 
-			else {
-				throw("Old ECMA module! We can use for..in in modern platforms!");
-			}
-			return aAccounts;
-		}
-	});
-}
-
 if (!SmartTemplate4.Shim) {
+	Components.utils.import("resource:///modules/iteratorUtils.jsm");
 	SmartTemplate4.Shim = {
 		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {
 			const Util = SmartTemplate4.Util,
@@ -76,7 +60,18 @@ if (!SmartTemplate4.Shim) {
 			}
 		} ,
 		
-		
+		get Accounts() {
+			const Ci = Components.interfaces,
+						Cc = Components.classes,
+						util = SmartTemplate4.Util;
+			let aAccounts=[];
+			if (util.Application == 'Postbox') 
+				aAccounts = util.getAccountsPostbox(); 
+			else {
+				throw("Old ECMA module! We can use for..in in modern platforms!");
+			}
+			return aAccounts;
+		} ,
 		dummy: ', <== end Shim properties here'
 	} // end of Shim definition
 };

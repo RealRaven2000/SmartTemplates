@@ -15,19 +15,35 @@
 	transition: outline-color 1s ease;
 }
 
-@keyframes SmartTemplate4Pulse {
-	0% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
-	50% { transform: scale(1); font-size: 1em; opacity: 1; }
-	100% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
+/* validation notification */
+.niceFont, 
+.niceFont description, 
+.niceFont button,
+.niceFont button label
+{
+  font-family: cambria, Georgia, serif;
+  font-size: 10.2pt;
 }
 
-.btnLicenseContainer {
-	height: 60px;
+#validationResults description {
+  max-width:450px;
+}
+#validationResults:hover {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-#btnLicense {
-  animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
+
+#validationPassed {
+  color: rgb(0,120,0);
 }
+#validationFailed, #validationInvalidEmail, #validationEmailNoMatch {
+  color: rgb(90,0,0);
+}
+#validationExpired {
+  color: rgb(120,0,90);
+}
+
+
 
 #btnLicense label,
 #btnDomainLicense label,
@@ -79,8 +95,7 @@
 }
 
 #btnLicense:active,
-#btnDomainLicense:active
-{
+#btnDomainLicense:active {
 	margin: 4px 0px 0px 4px !important;
 	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.9);
 	background: rgb(254,222,178);
@@ -92,13 +107,41 @@
 	text-align: left;
 	max-width: 600px;
 }
+
 #haveLicense, #buyBox {
 	color: rgba(30, 100, 190, 0.8);
 	font-size: 8pt;
 	text-align: center;
 	font-style: italic;
 }
+
 .buyAction td {
 	padding:3px;
 	vertical-align: middle;
+}
+
+
+@keyframes SmartTemplate4Pulse {
+	0% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
+	50% { transform: scale(1); font-size: 1em; opacity: 1; }
+	100% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
+}
+
+.btnLicenseContainer {
+	height: 60px;
+}
+
+#btnLicense {
+  animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
+}
+
+.licenseKey {
+  font-size: 10pt;
+	font-family: Consolas, Courier, monospace;
+}
+
+#txtLicenseKey {
+	height: 5.5em !important;
+	min-width: 25em; /* avoid "shrinking" too much in licenseKey only mode */
+	max-width: 450px; 
 }

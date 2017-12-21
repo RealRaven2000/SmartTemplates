@@ -682,19 +682,19 @@
 					<hbox id="licenseContainer" align="start">
 						<textbox id="txtLicenseKey"
 										 class="licenseKey"
-										 flex="1"
+										 flex="2"
 										 multiline="true"
-										 rows="4"
-										 style="min-height: 4.5em;"
+										 rows="5"
 										 tooltiptext="&label.insertLicense.tooltip;"></textbox>
-						<vbox>
-							<button id="btnPasteLicense"
-											label="&button.pasteLicense;"
-											oncommand="SmartTemplate4.Settings.pasteLicense();" />
-							<button id="btnValidateLicense"
-											label="&button.validateLicense;"
-											oncommand="SmartTemplate4.Settings.validateLicenseInOptions(false);" />
-						</vbox>
+					</hbox>
+					<hbox>
+					  <spacer flex = "1"/>
+						<button id="btnPasteLicense"
+										label="&button.pasteLicense;"
+										oncommand="SmartTemplate4.Settings.pasteLicense();" />
+						<button id="btnValidateLicense"
+										label="&button.validateLicense;"
+										oncommand="SmartTemplate4.Settings.validateLicenseInOptions(false);" />
 					</hbox>
 					<separator class="licenseSeparator" />
 					<hbox>
@@ -715,8 +715,7 @@
 					<separator  style="height:0.5em;" />
 					<hbox>
 						<spacer flex="1" />
-						<vbox class="btnLicenseContainer"
-						      height="40">
+						<vbox class="btnLicenseContainer">
 							<spacer flex="1" />
 							<button id="btnLicense" 
 											label="Buy License"
@@ -749,7 +748,7 @@
 
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type = "application/x-javascript" src = "chrome://shimEc1/content/smartTemplate-shim-ecma.js" />
+<script type = "application/x-javascript" src = "chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/settings.js"/>
 <script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>

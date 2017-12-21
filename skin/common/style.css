@@ -794,3 +794,8 @@ tab#SmartTemplate4-Pro.paid {
 tab#SmartTemplate4-Pro.expired {
 	list-style-image : url('chrome://smarttemplate4/skin/icons/pro-expired.png') !important;
 }
+
+.btnLicenseContainer {
+	height: 65px !important;
+}
+

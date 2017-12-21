@@ -16,7 +16,7 @@
 
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-util.js" />
-	<script type="application/x-javascript" src="chrome://shimEc1/content/smartTemplate-shim-ecma.js" />
+	<script type="application/x-javascript" src="chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-prefs.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-rsa.js" />
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-register.js" />

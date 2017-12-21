@@ -268,6 +268,7 @@ SmartTemplate4.Settings = {
 	onLoad : function onLoad() {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
+					settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document);
 		util.logDebugOptional("functions", "onLoad() ...");
 		// Check and set common preference
@@ -279,19 +280,26 @@ SmartTemplate4.Settings = {
 
 		this.cleanupUnusedPrefs();
 
+		let args = window.arguments,
+		    mode = null;
 		// Switch account (from account setting)  // add 0.4.0
-		if (window.arguments && window.arguments.length >= 1) {
-		  this.switchIdentity(window.arguments[0]);
+		if (args && args.length >= 1) {
+			if (args[0])
+				this.switchIdentity(args[0]);
+			if (args.length >=2) {
+				mode = args[1].inn.mode;
+			}
 		}
 		else {
 			this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
 		}
+			
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
 
 		window.onCodeWord = function(code, className) {
-			SmartTemplate4.Settings.onCodeWord(code, className);
+			settings.onCodeWord(code, className);
 		};
 
 		window.sizeToContent();
@@ -338,7 +346,7 @@ SmartTemplate4.Settings = {
 			getElement('templatesTab').collapsed = true;
 		}
 		else {
-			window.setTimeout(function() { SmartTemplate4.Settings.loadTemplatesFrame(); }, 5000);
+			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 5000);
 		}
     
     let nickBox = getElement('chkResolveABNick'),
@@ -367,6 +375,13 @@ SmartTemplate4.Settings = {
       this.validateLicenseInOptions(false);
     }
 		
+		settings.openAdvanced();
+		let tabbox = getElement("rightPane");
+		// open "ST Pro" tab
+		if (mode=='licenseKey') {
+			tabbox.selectedPanel = getElement('SmartTemplate4-Options-goPro');
+			tabbox.selectedIndex = 5;
+		}
     
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;

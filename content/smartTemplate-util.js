@@ -1070,9 +1070,11 @@ SmartTemplate4.Util = {
 		let win = SmartTemplate4.Util.Mail3PaneWindow,
         params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.SmartTemplate4}, out:null};
 		// open options and open the last tab!
+		// first param = identity (not set, unimportant)
+		// second param = mode to open correct setting 
     win.openDialog('chrome://smarttemplate4/content/settings.xul',
 				'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
-				quickFilters,
+				null,
 				params).focus();
 	  
 	}	,

@@ -115,7 +115,7 @@ SmartTemplate4.Licenser = {
   } ,
   // list of eligible accounts
   get Accounts() {
-		return SmartTemplate4.Util.Accounts;
+		return SmartTemplate4.Shim.Accounts;
   },
   
   accept: function accept() {

@@ -7,7 +7,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
    em:id="smarttemplate4@thunderbird.extension"
    em:name="SmartTemplate4"
-   em:version="1.5pre96"
+   em:version="1.5pre114"
    em:creator="Axel Grude"
    em:contributor="Benito van der Zander [Bug 25676]"
    em:description="The SmartTemplate4 Add-on can customize 'quote headers' per account."
