@@ -518,7 +518,7 @@ SmartTemplate4.Licenser = {
         isDbgAccounts = prefs.isDebugOption('premium.licenser'),
         hasDefaultIdentity = false,
         myAccounts = this.Accounts,
-        ForceSecondaryMail = prefs.getBoolPref('licenser.forceSecondaryIdentity');
+        ForceSecondaryMail = prefs.getMyBoolPref('licenser.forceSecondaryIdentity');
     if (ForceSecondaryMail) {
       // switch for secondary email licensing
       this.AllowSecondaryMails = true;

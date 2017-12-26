@@ -62,6 +62,27 @@ SmartTemplate4.Util = {
 	StationeryPage:   "https://addons.mozilla.org/thunderbird/addon/stationery",
 	YouTubePage:      "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
 	
+  get mainInstance() {
+    return this.Mail3PaneWindow.SmartTemplate4;
+  } ,
+	
+  /* premiumFeatures: array of premium function used during getProcessedText calls.
+   * this gathers all into a single consolidated notification.	
+	 */
+	premiumFeatures: new Array(),  // only the array in the main instance Util will be used
+	addUsedPremiumFunction: function addUsedPremiumFunction(f) {
+		const mainUtil = SmartTemplate4.Util.mainInstance.Util;
+		// avoid duplicates
+		if (!mainUtil.premiumFeatures.some(e => e == f))
+			mainUtil.premiumFeatures.push(f);
+	},
+	
+	clearUsedPremiumFunctions: function clearUsedPremiumFunctions() {
+		while (SmartTemplate4.Util.mainInstance.Util.premiumFeatures.length) {
+			SmartTemplate4.Util.mainInstance.Util.premiumFeatures.pop();
+		}
+	},
+	
 	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
 		const util = SmartTemplate4.Util;
 	  try { 
@@ -373,6 +394,155 @@ SmartTemplate4.Util = {
 			// prevents runtime error on platforms that don't implement nsIAlertsService
 		}
 	},
+	
+  /* SmartTemplate4 Pro / licensing features */
+	// default to isRegister from now = show button for buying a license.
+	popupProFeature: function popupProFeature(featureList, isRegister, isDonate, additionalText) {
+		let notificationId,
+        util = SmartTemplate4.Util,
+				State = util.Licenser.ELicenseState,
+				featureName = '',
+				isList = false;
+				
+    if (!SmartTemplate4.Preferences.isDebugOption('premium.testNotification') && util.hasPremiumLicense(false))
+      return;
+		
+		switch(util.Application) {
+			case 'Postbox': 
+				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
+				break;
+			case 'Thunderbird': 
+				notificationId = 'mail-notification-box'
+				break;
+			case 'SeaMonkey':
+				notificationId = null;
+				break;
+		}
+		
+		if (typeof featureList == 'string') {
+			featureName = featureList;
+		}
+		else { // Array
+			featureName = featureList.join('|'); // we use this in the referrer URL, but might need to concatenate.
+			if (featureList.length > 1)
+				isList=true;
+		}
+		
+		util.logDebug('popupProFeature(' + featureName + ')' );
+		
+		let notifyBox = document.getElementById (notificationId);
+    if (!notifyBox) {
+      notifyBox = util.Mail3PaneWindow.document.getElementById (notificationId);
+    }
+		let title = util.getBundleString("SmartTemplate4.notification.premium.title", "Premium Feature"),
+		    theText = 
+				  isList 
+						? util.getBundleString("SmartTemplate4.notification.premium.text.plural",
+																 "{1} are Premium features, please obtain a SmartTemplate4 Pro License for using them permanently.")
+						: util.getBundleString("SmartTemplate4.notification.premium.text",
+																 "{1} is a Premium feature, please get a SmartTemplate4 Pro License for using it permanently."),
+        featureTitle = 
+				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
+						// util.getBundleString('SmartTemplate4.premium.title.' + featureName, featureName); 
+		theText = theText.replace ("{1}", "'" + featureTitle + "'");
+		if (additionalText)
+			theText = theText + '  ' + additionalText;
+		
+		let regBtn,
+        hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.hotKey", "L"),
+				nbox_buttons = [];
+				
+		switch(util.Licenser.ValidationStatus) {
+			case State.Expired:
+				regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+			  break;
+			default:
+			  regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+		}
+				
+		if (notifyBox) {
+			let notificationKey = "SmartTemplate4-proFeature";
+      if (notifyBox.getNotificationWithValue(notificationKey)) {
+        // notification is already shown on screen.
+        util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
+        return;
+      }
+      util.logDebug('Showing notifyBox for [' + notificationKey + ']...');
+      
+			if (!hotKey) hotKey='L'; // we also use this for hacking the style of the "Buy" button!
+			// obsolete: button for disabling this notification in the future
+			if (true) {
+        // registration button
+        if (isRegister) {
+          nbox_buttons.push(
+						{
+							label: regBtn,
+							accessKey: hotKey,   
+							callback: function() { 
+								util.mainInstance.Util.Licenser.showDialog(featureName); 
+							},
+							popup: null
+						}
+          )
+        }
+        
+        // donate button
+        if (isDonate) {
+          let donateMsg = util.getBundleString("SmartTemplate4.notification.donate", "Donate");
+          nbox_buttons.push(
+            {
+              label: donateMsg,
+              accessKey: null, 
+              callback: function() { 
+							  const theUtil = util.mainInstance.Util;
+                theUtil.showDonatePage(); 
+                let item = notifyBox.getNotificationWithValue(notificationKey); // notifyBox, notificationKey are closured
+                notifyBox.removeNotification(item, (theUtil.Application == 'Postbox'))
+              },
+              popup: null
+            }
+          )
+        }
+        
+			}
+			else {
+				// obsolete: button for disabling this notification in the future
+				let dontShow = util.getBundleString("SmartTemplate4.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']'
+				nbox_buttons.push(
+					{
+						label: dontShow,
+						accessKey: null, 
+						callback: function() { util.mainInstance.Util.disableFeatureNotification(featureName); },
+						popup: null
+					}
+				);
+			}
+			
+			if (notifyBox) {
+				let item = notifyBox.getNotificationWithValue(notificationKey);
+				if (item)
+					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
+			}
+		
+			notifyBox.appendNotification( 
+			    theText, 
+					notificationKey, 
+					"chrome://smarttemplate4/skin/proFeature.png" , 
+					notifyBox.PRIORITY_INFO_HIGH, 
+					nbox_buttons ); // , eventCallback
+			if (util.Application == 'Postbox') {
+				this.fixLineWrap(notifyBox, notificationKey);
+			}
+		}
+		else {
+			// fallback for systems that do not support notification (currently: SeaMonkey)
+			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),  
+			    check = {value: false},   // default the checkbox to true  
+					dontShow = util.getBundleString("SmartTemplate4.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']',
+			    result = prompts.alert(null, title, theText); // , dontShow, check
+			// if (check.value==true) util.disableFeatureNotification(featureName);
+		}
+	},  	
 
 	showStatusMessage: function(s) {
 		try {

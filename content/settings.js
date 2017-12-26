@@ -946,6 +946,8 @@ SmartTemplate4.Settings = {
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = SmartTemplate4.Util;
+		util.popupProFeature(mode + "_template", true, false); // save_template, load_template
+					
     let //localized text for filePicker filter menu
 		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),

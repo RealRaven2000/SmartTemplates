@@ -3,8 +3,7 @@
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
 // -------------------------------------------------------------------
-SmartTemplate4.classSmartTemplate = function()
-{
+SmartTemplate4.classSmartTemplate = function() {
   const Ci = Components.interfaces,
         Cc = Components.classes,
         util = SmartTemplate4.Util,
@@ -78,7 +77,7 @@ SmartTemplate4.classSmartTemplate = function()
 		util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - charset = ' + sigEncoding  +'; htmlSigText:\n'
 		                                   + htmlSigText + '[EOF]');
 		return htmlSigText;
-	}
+	};
 	
 	
 	//  this.modifierCurrentTime = "%X:=today%";   // scheiss drauf ...
@@ -291,7 +290,7 @@ SmartTemplate4.classSmartTemplate = function()
 		                                   + 'Return Signature:\n' + sig );
 
 		return sig;
-	}
+	};
 
 
 	// -----------------------------------
@@ -765,8 +764,8 @@ SmartTemplate4.classSmartTemplate = function()
 		if (!templateText) return "";
 
 		if (typeof isStationery === 'undefined') isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
-		util.logDebugOptional('functions.getProcessedTemplate', 'START =============  getProcessedText()   ==========');
-		util.logDebugOptional('functions.getProcessedTemplate', 'Process Text:\n' +
+		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
+		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
 		var pref = SmartTemplate4.pref;
 		
@@ -789,8 +788,8 @@ SmartTemplate4.classSmartTemplate = function()
 		);
 
 		
-    util.logDebugOptional('functions.getProcessedTemplate','regular:\n' + regular);		
-		util.logDebugOptional('functions.getProcessedTemplate','=============  getProcessedText()   ========== END');
+    util.logDebugOptional('functions.getProcessedText','regular:\n' + regular);		
+		util.logDebugOptional('functions.getProcessedText','=============  getProcessedText()   ========== END');
 		return regular;
 	};
 	
@@ -968,6 +967,7 @@ SmartTemplate4.classSmartTemplate = function()
 				// get signature and remove the one Tb has inserted
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
         util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
+				// main processing - note: this calls getProcessedText()
 				template = getSmartTemplate(st4composeType, idKey);
         util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
 				quoteHeader = getQuoteHeader(st4composeType, idKey);
@@ -1295,10 +1295,21 @@ SmartTemplate4.classSmartTemplate = function()
 					}
 				}
 			}
-		
+			
+			// PREMIUM FUNCTIONS
+			// issue notifications for any premium features used.
+			// all used functions are stored in the main instance of SmartTemplate4 (3pane window)
+			if (util.mainInstance.Util.premiumFeatures.length 
+			    && (!util.hasPremiumLicense(false)
+					   || 
+						 prefs.isDebugOption('premium.testNotification'))) {
+				util.popupProFeature(util.mainInstance.Util.premiumFeatures, true, false);
+			}  
+			// reset the list of used premium functions for next turn
+			util.clearUsedPremiumFunctions();  // will affect main instance
 		}
 		
-		// if %cursor% is not set explicitely
+		// if %cursor% is not set explicitly
 		if (!isCursor) {
 			let cursor = doc.createElement("span");
 			cursor.className = "st4cursor";

@@ -34,6 +34,7 @@ SmartTemplate4.classPref = function() {
 	// get preference
 	// returns default value if preference cannot be found.
 	function getCom(prefstring, defaultValue)	{
+		const util = SmartTemplate4.Util;
 		try {
 			switch (root.getPrefType(prefstring)) {
 				case Ci.nsIPrefBranch.PREF_STRING:
@@ -41,7 +42,7 @@ SmartTemplate4.classPref = function() {
 						return root.getComplexValue(prefstring, Ci.nsIPrefLocalizedString).data;
           }
           catch(ex) {
-            SmartTemplate4.Util.logDebug("Prefstring missing: " + prefstring 
+            util.logDebug("Prefstring missing: " + prefstring 
               + "\nReturning default string: [" + defaultValue + "]");
             return defaultValue;
           }
@@ -123,16 +124,18 @@ SmartTemplate4.classPref = function() {
 	// -----------------------------------
 	// get locale preference
 	function getLocalePref()	{
+		const util = SmartTemplate4.Util;
 		try
 		{
-			let localeService = Cc["@mozilla.org/intl/nslocaleservice;1"]
-			                    .getService(Ci.nsILocaleService),
-			    locale = localeService.getLocaleComponentForUserAgent(),  // get locale from Operating System
+			let locale =   // get locale from Operating System. note nslocaleservice was removed in Gecko 57
+			      Cc["@mozilla.org/intl/nslocaleservice;1"] 
+			        ? Cc["@mozilla.org/intl/nslocaleservice;1"].getService(Ci.nsILocaleService).getLocaleComponentForUserAgent()
+							: Services.locale.getAppLocaleAsLangTag(),
 			    forcedLocale = SmartTemplate4.calendar.currentLocale,  // check if the %language% variable was set
 			    listLocales = '',
 			    found = false;
 			if (forcedLocale && forcedLocale != locale) {
-				let availableLocales = SmartTemplate4.Util.getAvailableLocales("global"); // list of installed locales
+				let availableLocales = util.getAvailableLocales("global"); // list of installed locales
 				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
 					listLocales += aLocale.toString() + ', ';
@@ -140,9 +143,9 @@ SmartTemplate4.classPref = function() {
 				}
 				if (!found) {
 				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
-					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + SmartTemplate4.Util.AppverFull + '/yourPlatform/xpi' + '\n'
+					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + util.AppverFull + '/yourPlatform/xpi' + '\n'
 					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
-					SmartTemplate4.Util.logError(errorText, '', '', 0, 0, 0x1);
+					util.logError(errorText, '', '', 0, 0, 0x1);
 					SmartTemplate4.Message.display(errorText,
 		                              "centerscreen,titlebar",
 		                              function() { ; }
@@ -151,16 +154,16 @@ SmartTemplate4.classPref = function() {
 					forcedLocale = null;
 				}
 				else {
-					SmartTemplate4.Util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
 					locale = forcedLocale;
 				}
 			}
 
-			SmartTemplate4.Util.logDebug('getLocale() returns: ' + locale);
+			util.logDebug('getLocale() returns: ' + locale);
 			return locale;
 		}
 		catch (ex) {
-			SmartTemplate4.Util.logException('getLocale() failed and defaulted to [en]', ex);
+			util.logException('getLocale() failed and defaulted to [en]', ex);
 			return "en";
 		}
 	};
@@ -910,6 +913,7 @@ SmartTemplate4.parseModifier = function(msg) {
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
 	    matchesR = msg.match(/%replaceText\(.*\)%/g); // works on template only
 	if (matches) {
+		util.addUsedPremiumFunction('deleteText');
 		for (let i=0; i<matches.length; i++) {
 			// parse out the argument (string to delete)
 			msg = msg.replace(matches[i],'');
@@ -922,6 +926,7 @@ SmartTemplate4.parseModifier = function(msg) {
   
 	if (matchesR) { // replacements in place
     let dText1, dText2;
+		util.addUsedPremiumFunction('replaceText');
 		for (let i=0; i<matchesR.length; i++) {
 			// parse out the argument (string to delete)
 			msg = msg.replace(matchesR[i], '');
@@ -956,6 +961,7 @@ SmartTemplate4.parseModifier = function(msg) {
 SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, ignoreHTML, isDraftLike) {
   const Ci = Components.interfaces,
         Cc = Components.classes,
+				Cu = Components.utils,
         util = SmartTemplate4.Util,
         preferences = SmartTemplate4.Preferences;
 
@@ -1056,14 +1062,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   }
   catch (ex) {
     util.logException('messenger.msgHdrFromURI failed:', ex);
-    // gMsgCompose.originalMsgURI ="mailbox:///E:/Dev/Mozilla/DEV/SmartTemplate/Support/Dmitry/%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F%20%D0%9A%D0%B0%D0%BB%D1%83%D0%B6%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%88%D0%BE%D1%81%D1%81%D0%B5.eml?number=0"
     // doesn't return a header but throws!
     charset = gMsgCompose.compFields.characterSet;
-    // gMsgCompose.editor
-    // gMsgCompose.editor.document
-    // gMsgCompose.compFields.messageId = ""
-    // gMsgCompose.compFields.subject
-    // gMsgCompose.compFields.to
   }
   
   
@@ -1123,9 +1123,19 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 		try {
 			let tm = new Date(),
-			    fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].
-						createInstance(Ci.nsIScriptableDateFormat),
-			    locale = SmartTemplate4.pref.getLocalePref();
+			    locale = SmartTemplate4.pref.getLocalePref(),
+					isOldDateFormat = (typeof Ci.nsIScriptableDateFormat !== "undefined"),
+					fmt;
+					
+			if(isOldDateFormat)
+				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
+			else {
+				// this interface was removed in Gecko 57.0
+				// alternative date formatting
+				Cu.import("resource:///modules/ToLocaleFormat.jsm");
+				fmt = Services.intl.createDateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
+			}
+			    
       
 			if (preferences.isDebugOption('timeStrings')) debugger;
 			
@@ -1142,20 +1152,25 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			    timeFormat = null;
 			switch (timeType) {
 				case "datelocal":
-					dateFormat = fmt.dateFormatLong;
-					timeFormat = fmt.timeFormatSeconds;
+					dateFormat = isOldDateFormat ? fmt.dateFormatLong : Services.intl.createDateTimeFormat(undefined, {dateStyle: "long"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : Services.intl.createDateTimeFormat(undefined, {timeStyle: "long"}).format();
 					break;
 				case "dateshort":
 				default:
-					dateFormat = fmt.dateFormatShort;
-					timeFormat = fmt.timeFormatSeconds;
+					dateFormat = isOldDateFormat ? fmt.dateFormatShort : Services.intl.createDateTimeFormat(undefined, {dateStyle: "short"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : Services.intl.createDateTimeFormat(undefined, {timeStyle: "short"}).format();
 					break;
 			}
 
-			let timeString = fmt.FormatDateTime(locale,
-			                                    dateFormat, timeFormat,
-			                                    tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
-			                                    tm.getHours(), tm.getMinutes(), tm.getSeconds());
+			
+			let timeString = 
+			  isOldDateFormat 
+						? fmt.FormatDateTime(locale,
+																dateFormat, 
+																timeFormat,
+																tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
+																tm.getHours(), tm.getMinutes(), tm.getSeconds())
+						: fmt.format(tm);
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
 			return timeString;
 		}
@@ -1444,6 +1459,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 									util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
 									return "";
 								}
+								util.addUsedPremiumFunction('matchTextFromSubject');
 								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
 								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
@@ -1453,6 +1469,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 								let rootEl = gMsgCompose.editor.rootElement;
 								extractSource = rootEl.innerText;
 								util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
+								util.addUsedPremiumFunction('matchTextFromBody');
 								break;
 							default:
 								throw("Unknown source type:" + fromPart);
@@ -1497,7 +1514,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     function modifyHeader(hdr, cmd, argString, matchFunction) {
       const whiteList = ["subject","to","from","cc","bcc","reply-to"],
             ComposeFields = gMsgCompose.compFields;
+						
 			if (preferences.isDebugOption('headers')) debugger;			
+			util.addUsedPremiumFunction('header.' + cmd);
       let targetString = '',
           modType = '',
           argument = argString.substr(argString.indexOf(",")+1),
@@ -1588,7 +1607,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
                 if (argPos < 0 || argPos < targetString.length-argument.length ) 
                   targetString = targetString + argument; 
                 break;
-							case 'delete': // remove a subestring, e.g. header.delete(subject,"(re: | Fwd: ")
+							case 'delete': // remove a substring, e.g. header.delete(subject,"(re: | Fwd: ")
 							  let pattern = util.unquotedRegex(argument, true);
 							  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
 							  break;
@@ -1860,6 +1879,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "messageRaw": //returns the arg-th first characters of the content of the original message
 				  return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
         case 'file':
+					util.addUsedPremiumFunction('file');
           let fileContents = insertFileLink(arg),
               parsedContent = SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
           return parsedContent;
@@ -1938,7 +1958,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			token="??";
 		}
 		return SmartTemplate4.escapeHtml(token);
-	}
+	} // end of replaceReservedWords  (longest add-on function written ever)
 	
   // [Bug 25871]
   function insertFileLink(txt) {
@@ -1963,7 +1983,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             countRead = 0;
         //let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
         try {
-          let FileUtils = Components.utils.import("resource://gre/modules/FileUtils.jsm").FileUtils,
+          let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils,
               isFU = FileUtils && FileUtils.File,
               localFile = isFU ?   // not in Postbox
                           new FileUtils.File(path) :
@@ -2025,7 +2045,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	function replaceJavascript(dmy, script) {
     util.logDebugOptional('sandbox', 'replaceJavascript(' + dmy +', ' + script +')');
 	  if (!sandbox) {
-	    sandbox = new Components.utils.Sandbox(
+	    sandbox = new Cu.Sandbox(
         window,
         {
         //  'sandboxName': aScript.id,
@@ -2088,7 +2108,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	  var x;
 	  try {
       if (preferences.isDebugOption('sandbox')) debugger;
-	    x = Components.utils.evalInSandbox("(" + script + ").toString()", sandbox); 
+	    x = Cu.evalInSandbox("(" + script + ").toString()", sandbox); 
 			//prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
 	    if (x.toString === String.prototype.toString) {
 			  x = x.toString(); 
@@ -2146,15 +2166,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   msg = msg.replace(/%([\w-:=.]+)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
 	
-	if (sandbox) Components.utils.nukeSandbox(sandbox);
+	if (sandbox) Cu.nukeSandbox(sandbox);
 
   // dump out all headers that were retrieved during regularize  
   util.logDebugOptional('headers', SmartTemplate4.regularize.headersDump);
 	util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
 }; // regularize
-
-
-
 
 

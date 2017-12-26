@@ -17,7 +17,7 @@
     # Some users reported subject lines not being displayed correctly. Specifically there were line breaks causing the subject to span more than one line. This could also occur with other  headers but subject was the only one reported.
     # corrected issue where headers longer than 4096 were being truncated.
     # An option was added in settings called "Use OS date/time format instead of Thunderbird".
-          Some users reported that SmartTemplate 4 was not using the custom date format they had set in their operating system.
+          Some users reported that SmartTemplate4 was not using the custom date format they had set in their operating system.
     # updated all helpfiles 'added recent changes'
     # implemented some coding changes suggested by the Mozilla AMO review team.
 		
@@ -229,7 +229,7 @@
 		# [Bug 26215] Bad interaction between SmartTemplate4 and "When using paragraph format, the enter key creates a new paragraph"
 		# [Bug 26209] Add option to wrap name in double quotes if it contains commas - WIP
     # When clicking on a mailto link from a web browser with a given text body, this was overwritten by SmartTemplate4
-		  new behavior: bypass the smartTemplate to avoid losing information from the web site. 
+		  new behavior: bypass the SmartTemplate4 to avoid losing information from the web site. 
 		# Added button to visit our Thunderbird Daily Youtube channel
 		# Updated outdated links to language libraries from ftp to https
 		# Release Video at: https://www.youtube.com/watch?v=xKh7FkU8A1w
@@ -261,7 +261,10 @@
 		# [Bug 26356] Thunderbird 52 - Forwarding an email inline adds empty paragraph on top
 		# [Bug 26364] Inline Images are not shown
 		# [Bug 26446] Thunderbird 57 hangs on start with SmartTemplate4 enabled 
-		# Adding SmartTemplate Pro License
+		# Adding SmartTemplate4 Pro License
+		# Thunderbird 57 deprecated nsILocaleService causing local date to fail
+		# Thunderbird 57 deprecated nsIScriptableDateFormat causing most date functions (datelocal, dateshort) to dail [prTime2Str()]
+		
 
 	
 =========================
@@ -423,6 +426,7 @@ var SmartTemplate4 = {
 		SmartTemplate4.StationeryTemplateText = t.HTML;
 		// do not do HTML escaping!
 		// pass in a flag to leave %sig% untouched
+		util.clearUsedPremiumFunctions();
     t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true, true); 
     util.logDebugOptional('stationery',
 		     '=========================================\n'
