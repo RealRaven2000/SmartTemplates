@@ -1,0 +1,65 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "Dosya">
+<!ENTITY tools.label "Araçlar">
+<!ENTITY edit.label "Düzenle">
+<!ENTITY help.label "Yardım">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Kopyala">
+<!ENTITY paste.label "Yapıştır">
+<!ENTITY insert.label "Değişken Ekle">
+<!ENTITY close.label "Temel">
+<!ENTITY advanced.label "İleri">
+<!ENTITY export.label "Dışarı Aktar">
+<!ENTITY import.label "İçeri Aktar">
+<!ENTITY menu.template_import.label "Şablonu İçeri Aktar">
+<!ENTITY menu.template_export.label "Şablonu Dışarı Çıkart">
+<!ENTITY settings.label "Ayarlar Ve Şablonlar">
+<!ENTITY url.homePage.label "Ana-sayfaya Ekle">
+<!ENTITY url.supportPage.label "Sayfayı Destekle">
+<!ENTITY url.bugsAndFeaturesPage.label "Hata Raporları / Özellik İstekleri">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Yaz">
+<!ENTITY pref_rsp.tab "Cevapla">
+<!ENTITY pref_fwd.tab "İlet">
+<!ENTITY pref_help.tab "Yardım">
+<!ENTITY pref_about.tab "Hakkında">
+<!ENTITY pref_global.tab "Evrensel Seçenekler">
+<!ENTITY pref_variables.tab "Değişkenler">
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "Tamam">
+<!ENTITY cancel_button "İptal">
+<!ENTITY contribute_button "Kat">
+<!ENTITY pref_quoteHeaderBox.label "Alıntı ">
+<!ENTITY pref_quoteHeaderBox_tip "Bu kutuya, alıntı bölümünden önce ne görüntülenmesi gerektiğini yazınız (Orjinal posta) - Örnek:  On &#37;date&#37;, &#37;from(name)&#37; wrote:">
+<!ENTITY pref_templateBox.label "Şablon">
+<!ENTITY pref_templateBox_tip "Bu kutuya posta şablonunu koyunuz. Hello &#37;from(name)&#37;, &lt;br&gt; Mesajınız için teşekkürler &lt;br&gt; selamlar, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "SmartTemplate4 ayarları">
+<!ENTITY pref_breaksOnTop.label "Yukarı atılan satır sayısı:">
+<!ENTITY pref_removeSig.label "Posta kimliğini değiştiğinde imzayı değiştir">
+<!ENTITY pref_showStatusIcon.label "Butonu durum çubuğunda göster">
+<!ENTITY pref_fontSettings.label "Şablon Editör Fontu">
+<!ENTITY pref_server_desc "Hesap">
+<!ENTITY pref_server_def "Ortak">
+<!ENTITY pref_def.label "Ortak Kullan">
+<!ENTITY pref_def.cap "&quot;Ortak Kullan&quot; onaylandığında alıntı kontrolü yapma.">
+<!ENTITY pref_newmsg.cap "Yaz">
+<!ENTITY pref_new.label "Şablonu yeni mesaja uygula">
+<!ENTITY pref_rspmsg.cap "Cevapla">
+<!ENTITY pref_rsp.label "Şablonu cevaplanan mesaja uygula">
+<!ENTITY pref_rsphead.label "Yerine ilk alıntıyı kullan">
+<!ENTITY pref_fwdmsg.cap "İlet">
+<!ENTITY pref_fwd.label "Şablonu iletilen mesaja uygula">
+<!ENTITY pref_fwdhead.label "Thunderbird'ün ön tanımlı alıntısını devre dışı bırak">
+<!ENTITY pref_html.label "HTML Kullan (e.g., &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Escape karakterleri &amp; , &lt; , &gt; , space. hakkında detaylı bilgi için lütfen &quot; Yardım&quot; a bakınız.">
+<!ENTITY pref_rep_br.label "Satır kesmelerini &lt;br&gt; ile değiştir">
+<!ENTITY pref_rep_br.cap "NOT: HTML tag'ına  &lt;br&gt; kullanılarak boşluk eklenemez.">
+<!ENTITY pref_quotehead_tip "Ön tanımlı alıntıyı devre dışı bırak. Lütfen kendi alıntınızı kutuya yerleştiriniz. ">
+<!ENTITY pref_template_tip "Şablonları &quot;Değişkenler&quot;e basarak değiştirebilirsiniz. Daha fazla bilgi için &quot;Gelişmiş Değişkenler &quot; e tıklayınız.">
+<!ENTITY help_dialog_title "SmartTemplate4 Yardım">
+<!ENTITY help_keyword.cap "Yardım">
+<!ENTITY pref_debug_check "Hata Ayıklama Modu ">
+<!ENTITY pref_debug_tip "Gelişmiş hata ayıklama ayarları için sağ tıklayınız">
+<!ENTITY pref_parseSignature "Süreç imzası ">
+<!ENTITY pref_parseSignature_tip "İmzadaki değişkenleri değiştir.">
+<!ENTITY pref_stationerySupport "Destek Eklenti Kütüphanesi">
