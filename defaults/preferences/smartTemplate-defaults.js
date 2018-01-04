@@ -46,7 +46,7 @@ pref("extensions.smartTemplate4.debug.functions.delReplyHeader", false);
 pref("extensions.smartTemplate4.debug.functions.delForwardHeader", false);
 pref("extensions.smartTemplate4.debug.functions.insertTemplate", false);
 pref("extensions.smartTemplate4.debug.functions.extractSignature", false);
-pref("extensions.smartTemplate4.debug.functions.getProcessedTemplate", false);
+pref("extensions.smartTemplate4.debug.functions.getProcessedText", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
@@ -72,6 +72,8 @@ pref("extensions.smartTemplate4.debug.headers", false);
 pref("extensions.smartTemplate4.debug.sandbox", false);
 pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
+pref("extensions.smartTemplate4.debug.premium.testNotification", false);
+
 
 // SmartTemplate Pro specific:
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
