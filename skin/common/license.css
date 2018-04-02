@@ -25,6 +25,20 @@
   font-size: 10.2pt;
 }
 
+
+.licenseError {
+	border: 1px solid white;
+	color: white !important;
+	background: #A50B5E !important;
+	padding: 5px;
+}
+.licenseWarning {
+	border: 1px solid #00468C;
+	color: #00468C !important;
+	background: #FFD12A !important;
+	padding: 5px;
+}
+
 #validationResults description {
   max-width:450px;
 }
@@ -35,12 +49,6 @@
 
 #validationPassed {
   color: rgb(0,120,0);
-}
-#validationFailed, #validationInvalidEmail, #validationEmailNoMatch {
-  color: rgb(90,0,0);
-}
-#validationExpired {
-  color: rgb(120,0,90);
 }
 
 
@@ -121,18 +129,14 @@
 }
 
 
-@keyframes SmartTemplate4Pulse {
-	0% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
-	50% { transform: scale(1); font-size: 1em; opacity: 1; }
-	100% { transform: scale(1); font-size: 1.3em; opacity: 0.6; }
-}
+@keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 .btnLicenseContainer {
 	height: 60px;
 }
 
 #btnLicense {
-  animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
+  animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
 .licenseKey {

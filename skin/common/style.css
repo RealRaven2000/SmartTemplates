@@ -13,10 +13,6 @@
 /* ############################ MENUBAR & RIGHTCLICK MENU ############################ */
 /* ################################################################################### */
 
-/*
-@import 'chrome://smartTemplate4-pl/skin/style.css';
-*/
-
 #SmartTemplate4MenuBar {
  border:0px;
 }
@@ -767,15 +763,11 @@ button.dialog-button[dlgtype=extra2] {
 	animation: none !important;
 }
 
-@keyframes SmartTemplate4Pulse {
-    0% { transform: scale(1); font-size: 1em; opacity: 0.6; }
-    50% { transform: scale(1.2); font-size: 1.25em; opacity: 1; }
-    100% { transform: scale(1); font-size: 1em; opacity: 0.6; }
-}
+@keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 #SmartTemplate4-Pro.expired .tab-icon,
 #btnLicense {
-  animation: SmartTemplate4Pulse 2.5s 1s ease-in-out infinite;
+  animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 #btnLicense:hover {
 	animation: none;
