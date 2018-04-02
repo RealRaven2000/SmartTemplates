@@ -63,3 +63,54 @@
 <!ENTITY pref_parseSignature "Süreç imzası ">
 <!ENTITY pref_parseSignature_tip "İmzadaki değişkenleri değiştir.">
 <!ENTITY pref_stationerySupport "Destek Eklenti Kütüphanesi">
+<!ENTITY pref_stationerySupport_tip "SmartTemplate4 aynı anda Kırtasiye kullanımını destekler.">
+<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
+<!ENTITY pref_stationeryLink "Kırtasiye Eklentileri">
+<!ENTITY pref_stationeryLink_tip "Kırtasiye alın ...">
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap "SmartTemplate4 Hakkında">
+<!ENTITY creator.label "Oluşturan">
+<!ENTITY developer.label "Geliştirici">
+<!ENTITY localename.label "en-US">
+<!ENTITY localized.label "Çevirmen">
+<!ENTITY translatorNickname.label "Aris-T (AMO)">
+<!ENTITY contributor.label "Katılımcı">
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap "Sabit değişkenler">
+<!ENTITY ownname.label "Adınız">
+<!ENTITY ownmail.label "E-posta Adresiniz">
+<!ENTITY date.label "Tarih / Saat (orijinal 'Posta Başlığı' ile aynı)">
+<!ENTITY tomail.label "Alıcının e-posta adresi">
+<!ENTITY frommail.label "Gönderenin e-posta adresi">
+<!ENTITY ccmail.label "CC-Alıcının e-posta adresi">
+<!ENTITY sig.label "Hesap Ayarlarındaki İmza">
+<!ENTITY sig2.label "Hesap Ayarlarından İmza Yok '- -'">
+<!ENTITY to_var.cap "Alıcı (To)">
+<!ENTITY to_note.label "İsim mevcut olmadığında, bunun yerine e-posta adresi görüntülenecektir">
+<!ENTITY to.label "Alıcının adı (varsayılan)">
+<!ENTITY tofirstname.label "Alıcının ilk adı">
+<!ENTITY toname.label "Alıcının ismi">
+<!ENTITY from_var.cap "Sender (From)">
+<!ENTITY from_note.label "İsim mevcut olmadığında, bunun yerine e-posta adresi görüntülenecektir">
+<!ENTITY from.label "Gönderenin adı (varsayılan)">
+<!ENTITY fromfirstname.label "Gönderenin adı">
+<!ENTITY fromname.label "Gönderenin adı">
+<!ENTITY cc_var.cap "Alıcı (CC)">
+<!ENTITY cc_note.label "İsim mevcut olmadığında, bunun yerine e-posta adresi görüntülenecektir">
+<!ENTITY cc.label "Alıcının adı (Varsayılan)">
+<!ENTITY ccfirstname.label "Alıcının ilk adı">
+<!ENTITY ccname.label "Alıcının ismi">
+<!ENTITY spec_form.cap "Özel format">
+<!ENTITY specform_note.label "Çift parantez içindeki bölümler [[Cc:% cc (name)%]] sadece% cc (name)% değişkeni değiştirilebiliyorsa görüntülenecektir!">
+<!ENTITY ex_brack.label "Örnek: Kime: Fred Cc: Jane">
+<!ENTITY brack_with_var.label "Aşağıdaki değişkenler [[...]] içinde kullanılabilir">
+<!ENTITY sub_var.cap "Konu">
+<!ENTITY sub.label "cevaplanan / iletilen e-posta konusu">
+<!ENTITY sub2.label "Mevcut mesajın içeriği">
+<!ENTITY spec_var.cap "Özel">
+<!ENTITY messid.label "Mesaj Kimliği ID">
+<!ENTITY newsgr.label "Haber Grupları">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Herhangi bir başlık satırı">
+<!ENTITY fix_vartz.cap "'Tarih biçimi' / 'Zaman Dilimi' için sabit değişkenler">
+<!ENTITY fix_vartz_note.label "% X ile birleştirilebilir: =% gönderilir">

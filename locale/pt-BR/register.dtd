@@ -1,0 +1,28 @@
+<!ENTITY licenseWindow.title "Licença do SmartTemplate4 Pro">
+<!ENTITY label.licenseValid "Sua licença é válida até:">
+<!ENTITY label.haveLicense "Já possui uma licença?">
+<!ENTITY getSmartTemplate4 "Obter o SmartTemplate4 Pro">
+<!ENTITY intro "Uma licença anual para o SmartTemplate4 Pro dá-lhe todas as funcionalidades premium durante um ano. Também nos dá suporte para aumentar ainda mais o produto e transformá-lo em algo ainda mais impressionante.">
+<!ENTITY testDrive "Você pode testar os recursos premium com a versão gratuita, mas eles podem ser um pouco restritos.">
+<!ENTITY yearlyLicense.title "Licença Anual">
+<!ENTITY yearlyLicense.premiumFeatures "O SmartTemplate4 Pro dá-lhe acesso completo irrestrito aos recursos premium.">
+<!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Saiba mais sobre os recursos premium.">
+<!ENTITY yearlyLicense.usageTerm "A licença é para seu uso pessoal e está vinculada ao seu endereço de e-mail. Você pode instalá-la em vários clientes de e-mail, desde que eles estejam configurados para usar esse endereço.">
+<!ENTITY domainLicense.email "Entraremos em contato com você usando este endereço de e-mail para gerar sua licença de domínio; Por favor, aguarde dois dias úteis para entrar em contato. Digite o nome do domínio para a licença na próxima página.">
+<!ENTITY domainLicense.header "Domínio do E-mail Licenciado">
+<!ENTITY domainLicense.instruct "A licença está vinculada ao domínio da sua empresa. A licença permitirá que usuários com endereços de e-mail que terminem neste domínio de e-mail usem o SmartTemplate4 Pro. Por exemplo: se você digitar o nome de domínio 'abc.com', usuários de e-mail como fred@abc.com, martha@abc.com, mike.doe@abc.com, etc. poderão usar a licença. O número máximo de usuários individuais válidos é o número digitado na tela inicial.">
+<!ENTITY domainLicense.validate "Certifique-se de inserir o nome de domínio *exatamente como ele é* nos endereços de e-mail da sua empresa (a parte *após* o sinal @), pois ele será usado para autorizar os endereços de e-mail de seus usuários.">
+<!ENTITY updates.title "Atualizações">
+<!ENTITY updatesExpiry "O SmartTemplate4 Pro será automaticamente atualizado via addons.mozilla.org como de costume. Após o término do ano, você poderá renovar a licença ou continuar usando os recursos premium sob os mesmos termos que os usuários gratuitos. Os recursos &quot;Premium Exclusive&quot; exigirão uma chave de registro válida.">
+<!ENTITY vouchers.title "Vouchers">
+<!ENTITY freeLicense "Se você doou recentemente para o projeto SmartTemplate4 ou fez algum trabalho de contribuição, como traduzir ou gravar correções, pode se qualificar para uma chave de licença gratuita. Entre em contato comigo na aba suporte nas opções do SmartTemplate4.">
+<!ENTITY account.label "Selecione a conta:">
+<!ENTITY email.label "E-mail:">
+<!ENTITY firstName.label "Primeiro nome:">
+<!ENTITY lastName.label "Sobrenome:">
+<!ENTITY buyLicense.instruct "Precisa de uma licença para você? Obtenha uma licença de usuário único. Ela será vinculada ao seu endereço de e-mail pessoal e pode ser usada em várias instalações.">
+<!ENTITY buyPersonalLicense.button "Comprar Licença Pessoal !">
+<!ENTITY buyDomainLicense.instruct "Precisa de licenças para uma empresa com mais de cinco usuários? Obter uma licença de domínio sairá mais barato:">
+<!ENTITY buyDomainLicense.button "Comprar Licença de Domínio">
+<!ENTITY enterLicenseKey.button "Entrar Chave de Licença...">
+<!ENTITY enterLicenseKey.tooltip "Entre o código da Chave de Licença enviado por e-mail.">

@@ -235,6 +235,7 @@
 <!ENTITY licenseValidation.passed "Gracias por registrarse en SmartTemplate4 Pro. Ya se han activado todas las funcionalidades premium.">
 <!ENTITY licenseValidation.failed "La clave de licencia introducida no es válida. Compruebe las instrucciones que venían con el correo de Fastspring. Si sigue teniendo problemas, por favor contacte conmigo a través de la pestaña de Ayuda.">
 <!ENTITY licenseValidation.expired "La clave de licencia introducida está caducada. Por favor pulse el botón de la parte inferior para renovar su licencia.">
+<!ENTITY licenseValidation.invalidAddon "La clave de licencia introducida puede pertenecer a otra extensión. Las claves de licencia para {0} comienzan por {1}.">
 <!ENTITY licenseValidation.invalidMail "La dirección de correo electrónico asociada a la clave de licencia [{1}] no está en este momento asociada ningua de sus cuentas de correo. Por favor contacte conmigo a través de la pestaña de Ayuda para que poder solucionarlo.">
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">

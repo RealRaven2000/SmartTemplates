@@ -57,6 +57,9 @@
 <!ENTITY pref_StatusIcon.IconHoverText "Teksti hiirellä kohdistettaessa">
 <!ENTITY pref_fontSettings.label "Pohjamuokkaimen kirjaisin">
 <!ENTITY pref_server_desc "Tili">
+<!ENTITY btnSaveTemplate.tooltip "Tallenna pohja…">
+<!ENTITY btnLoadTemplate.tooltip "Lataa pohja…">
+<!ENTITY btnYouTube.tooltip "Käy &quot;Thunderbird Daily&quot; -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
 <!ENTITY pref_def.cap "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä.">
@@ -81,6 +84,8 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
+<!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
+<!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
 <!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
@@ -95,6 +100,8 @@
 <!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate4:n kanssa.">
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
 <!ENTITY pref_stationeryLink "Stationary-lisäosa">
+<!ENTITY pref_forceParagraph "Pakota Kappale-tila">
+<!ENTITY pref_forceParagraph_tip "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [Enter]-näppäintä painamalla.">
 <!ENTITY pref_stationeryLink_tip "Hanki Stationary...">
 <!ENTITY pref_defaultCharset.label "Oletusmerkistö">
 <!ENTITY pref_defaultCharset_tip "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään.">
@@ -119,6 +126,7 @@
 <!ENTITY sig2.label "Allekirjoitus (TB:n tilitiedoista ilman '--')">
 <!ENTITY fileHTML.label "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta.">
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
+<!ENTITY cursor.label "Aseta osoittimen sijainti">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
@@ -154,6 +162,13 @@
 <!ENTITY header.append.subject "liitä teksti aiheen jälkeen">
 <!ENTITY header.set.to "korvaa vastaanottaja sähköpostiosoitteella">
 <!ENTITY header.append.to "lisää sähköpostiosoite vastaanottajien listaan">
+<!ENTITY stringmanip_function.cap "Merkkijonon manipulointi">
+<!ENTITY stringmanip_function.explain "Näitä toimintoja voidaan käyttää sähköpostin pohjien tai otsakkeiden poistamiseksi tai muokkaamiseksi">
+<!ENTITY deleteText "Poista tekstiä otsakkeesta, esim. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Korvaa tekstiä jollain muulla.">
+<!ENTITY matchTextFromBody "Etsi RegEx-kaava lainatusta sähköpostista ja lisää se funktioihin.">
+<!ENTITY matchTextFromSubject "Etsi RegEx-kaava aiheesta ja lisää se funktioihin.">
+<!ENTITY stringmanip.match.comment "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne.">
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
@@ -210,3 +225,18 @@
 <!ENTITY table_new.label "Uusi">
 <!ENTITY table_reply.label "Vastaa">
 <!ENTITY table_fwd.label "Välitä">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Syötä henkilökohtainen lisenssiavain tähän:">
+<!ENTITY label.insertLicense.tooltip "Lisenssiavain löytyy Fatspringiltä tulleessa varmistussähköpostissa">
+<!ENTITY button.pasteLicense "liitä">
+<!ENTITY button.validateLicense "validoi">
+<!ENTITY label.licenseValid "Lisenssi on vanhenee:">
+<!ENTITY licenseValidation.passed "Kiitos, että rekisteröit SmartTemplate4 Pro -version! Kaikki maksulliset lisätoiminnot on nyt käytössä.">
+<!ENTITY licenseValidation.failed "Syöttämäsi lisenssiavain ei ole voimassa. Tarkista sähköpostisi FatSpringiltä saadaksesi ohjeistusta. Jos ongelmia edelleen ilmenee, ota yhteyttä minuun Tuki-välilehdeltä.">
+<!ENTITY licenseValidation.expired "Syöttämäsi lisenssiavain on vanhentunut. Paina alla olevaa painiketta uusiaksesi lisenssin.">
+<!ENTITY licenseValidation.invalidAddon "Syöttämäsi lisenssiavain saattaa olla toiselle lisäosalle. Lisenssiavaimet lisäosalle {0} alkavat: {1}.">
+<!ENTITY licenseValidation.invalidMail "Lisenssiavaimeen [{1}] sidottu sähköpostiosoite ei ole tällä hetkellä mikään sähköpostitileistäsi. Ota yhteyttä minuun Tuki-välilehdeltä saadaksesi apua.">
+<!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
+<!ENTITY premiumConfig "Maksulliset lisätoiminnot">
+<!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme">
