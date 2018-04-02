@@ -260,7 +260,9 @@
     # [Bug 26345] Unexpected "Â" character in mail body
 		# [Bug 26356] Thunderbird 52 - Forwarding an email inline adds empty paragraph on top
 		# [Bug 26364] Inline Images are not shown
+		# [Bug 26494] ESR 2018 readiness - Make SmartTemplate4 compatible with Tb 60
 		# [Bug 26446] Thunderbird 57 hangs on start with SmartTemplate4 enabled 
+		# [Bug 26483] Opening an .eml file SmartTemplate4 doesn't apply templates
 		# Adding SmartTemplate4 Pro License
 		# Thunderbird 57 deprecated nsILocaleService causing local date to fail
 		# Thunderbird 57 deprecated nsIScriptableDateFormat causing most date functions (datelocal, dateshort) to dail [prTime2Str()]
@@ -325,7 +327,8 @@ var SmartTemplate4 = {
 			    (typeof Stationery_ != 'undefined'))
 			{
 			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
-				if (Stationery.fireAsyncEvent) {
+				// added: New Stationery 0.9 uses promises
+				if (Stationery.fireAsyncEvent || Stationery.waitForPromise) {
 				  // new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
 					util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
 					return;
@@ -375,6 +378,7 @@ var SmartTemplate4 = {
     try {
       gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
 			// can we overwrite part of global state listener?
+			// stateListener is defined in components/compose/content/MsgComposeCommands.js
 			if (stateListener && stateListener.NotifyComposeBodyReady) {
 				if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
 					util.OrigNotify = stateListener.NotifyComposeBodyReady;
@@ -386,7 +390,9 @@ var SmartTemplate4 = {
 							 (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
 							  && 
 								SmartTemplate4.pref.isProcessingActive(idKey, 'fwd', false))
+						{
 							util.OrigNotify();
+						}
 					}
 				}
 			}
@@ -439,12 +445,14 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
-	notifyComposeBodyReady: function notifyComposeBodyReady(evt)
-	{
-		const prefs = SmartTemplate4.Preferences;
+	notifyComposeBodyReady: function notifyComposeBodyReady(evt) 	{
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util;
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
 		    stationeryTemplate = null,
 		    flags = this.PreprocessingFlags;
+		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
+    // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
 		this.initFlags(flags);
 		if (prefs.isDebugOption('composer')) debugger;
 		
@@ -472,19 +480,19 @@ var SmartTemplate4 = {
 						
 					}
 					catch(ex) {
-						SmartTemplate4.Util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
+						util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
 					}
 				}
 			}			
 		}
 		SmartTemplate4.StationeryTemplateText = ''; // discard it to be safe?
-		SmartTemplate4.Util.logDebug(dbg);
+		util.logDebug(dbg);
 		// Add template message
 		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
 		// guard against this being called multiple times from stationery
 		// avoid this being called multiple times
     let Ci = Components.interfaces,
-		    editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor),
+		    editor = util.CurrentEditor.QueryInterface(Ci.nsIEditor),
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
@@ -501,14 +509,14 @@ var SmartTemplate4 = {
 				// window.smartTemplateInserted = true;
 				this.smartTemplate.resetDocument(editor, true);
 				
-				SmartTemplate4.Util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
+				util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
 			}
 			else {
-				SmartTemplate4.Util.logDebug('smartTemplateInserted is already set');
+				util.logDebug('smartTemplateInserted is already set');
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logException("notifyComposeBodyReady", ex);
+			util.logException("notifyComposeBodyReady", ex);
 			if (isInserted)
 				root.setAttribute("smartTemplateInserted","true");
 		}

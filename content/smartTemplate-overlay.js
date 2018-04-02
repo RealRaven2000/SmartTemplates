@@ -242,6 +242,7 @@ var SmartTemplate4_streamListener =
 
 // -------------------------------------------------------------------
 // Get header string
+// for "dummy header" derived from eml file, use clsGetAltHeader() instead.
 // -------------------------------------------------------------------
 SmartTemplate4.classGetHeaders = function(messageURI) {
 	// -----------------------------------
@@ -257,6 +258,8 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   util.logDebugOptional('functions','classGetHeaders(' + messageURI + ')');
   let headers = Cc["@mozilla.org/messenger/mimeheaders;1"]
               .createInstance().QueryInterface(Ci.nsIMimeHeaders);
+							
+					
 /*   
   // ASYNC MIME HEADERS
 
@@ -276,7 +279,10 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   let msgContent = new String(SmartTemplate4_streamListener._data);
   headers.initialize(msgContent, msgContent.length);
 */  
-  
+  if (messageURI.includes(".eml")) { 
+	  debugger;
+		return null;
+	}
 	inputStream.init(messageStream);
 	try {
 		messageService.streamMessage(messageURI, messageStream, msgWindow, null, false, null);
@@ -346,6 +352,38 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	return null;
 };
 
+SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
+	// -----------------------------------
+	// Get header
+	function get(header) {
+		function toCamelCase(h) {
+			return h.substr(0, 1).toLowerCase() + h.substr(1);
+		}
+    // /nsIMimeHeaders.extractHeader
+		let hdr = toCamelCase(header);
+		switch(hdr) {
+			case "from":
+			  hdr = "author";
+				break;
+			case "to":
+			  hdr = "recipients";
+				break;
+		}
+		let retValue = "";
+		try {
+			retValue = msgDummyHeader[hdr];
+			if(!retValue)
+				retValue = msgDummyHeader.__proto__[hdr];
+		}
+		catch (ex) {
+			SmartTemplate4.Util.logException("clsGetAltHeader.get(" + hdr + ") failed.")
+		}
+    SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
+    return retValue;
+	};	
+	this.get = get;
+	this.content = ""; // nothing here...
+}
 // -------------------------------------------------------------------
 // MIME decode
 // -------------------------------------------------------------------
@@ -436,7 +474,7 @@ SmartTemplate4.mimeDecoder = {
   // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail(), initial
 	split: function (addrstr, charset, format, bypassCharsetDecoder)	{
 		const util = SmartTemplate4.Util,
-		      preferences = SmartTemplate4.Preferences;
+		      prefs = SmartTemplate4.Preferences;
 	  // jcranmer: you want to use parseHeadersWithArray
 		//           that gives you three arrays
 	  //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -556,7 +594,7 @@ SmartTemplate4.mimeDecoder = {
     
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format = preferences.getMyBoolPref('mime.resolveAB.removeEmail') ?
+      format = prefs.getMyBoolPref('mime.resolveAB.removeEmail') ?
               'name' :
               'name,bracketMail[angle]'; 
     }
@@ -571,7 +609,7 @@ SmartTemplate4.mimeDecoder = {
 		// if (!bypassCharsetDecoder)
 			// addrstr = this.decode(addrstr, charset);
 		// Escape % and , characters in mail addresses
-		if (preferences.isDebugOption('mime.split')) debugger;
+		if (prefs.isDebugOption('mime.split')) debugger;
 		
 		addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
 		util.logDebugOptional('mime.split', 'After escaping special chars in mail address field:\n' + addrstr);
@@ -592,7 +630,7 @@ SmartTemplate4.mimeDecoder = {
       if (format.charAt(format.length-1)==')')
         format = format.slice(0, -1);
       
-      let fs=format.split(',');
+      let fs=format.split(','); // lastname, firstname ?
       for(let i=0; i<fs.length; i++) {
         let ff = fs[i].trim();
         // if next one is a link modifier, modify previous element and continue
@@ -617,16 +655,16 @@ SmartTemplate4.mimeDecoder = {
     }
     util.logDebugOptional('mime.split', dbgText);
     
-		const nameDelim = preferences.getMyStringPref('names.delimiter'); // Bug 26207
+		const nameDelim = prefs.getMyStringPref('names.delimiter'); // Bug 26207
 		let addresses = "",
         address,
         bracketMailParams = getBracketAddressArgs(format, 'Mail'),
         bracketNameParams = getBracketAddressArgs(format, 'Name');
 
-    // if (preferences.Debug) debugger;
+    // if (prefs.Debug) debugger;
     /** ITERATE ADDRESSES  **/
 		for (let i = 0; i < array.length; i++) {
-			if (preferences.isDebugOption('mime.split')) debugger;
+			if (prefs.isDebugOption('mime.split')) debugger;
 			if (i > 0) {
 				addresses += nameDelim + " ";  // comma or semicolon
 			}
@@ -651,7 +689,7 @@ SmartTemplate4.mimeDecoder = {
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
-      let card = preferences.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
+      let card = prefs.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
       // this cuts off the angle-bracket address part: <fredflintstone@fire.com>
       addressee = address.replace(/\s*<\S+>\s*$/, "")
                       .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
@@ -670,7 +708,7 @@ SmartTemplate4.mimeDecoder = {
 			fullName = addressee;
       
       firstName = card ? card.firstName : '';
-      if (card && preferences.getMyBoolPref('mime.resolveAB.preferNick')) {
+      if (card && prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
         if (util.Application === "Postbox") {
           if (card.nickName)
             firstName = card.nickName;
@@ -682,7 +720,7 @@ SmartTemplate4.mimeDecoder = {
       fullName = (card && card.displayName) ? card.displayName : fullName;
       
       let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
-      if (!isNameFound && preferences.getMyBoolPref('firstLastSwap')) {
+      if (!isNameFound && prefs.getMyBoolPref('firstLastSwap')) {
         // extract Name from left hand side of email address
 				let regex = /\(([^)]+)\)/,
 				    nameRes = regex.exec(addressee);
@@ -738,7 +776,7 @@ SmartTemplate4.mimeDecoder = {
 				lastName = ncount ? names[ncount-1] : '';
 			}
       
-      if (preferences.getMyBoolPref('names.capitalize')) {
+      if (prefs.getMyBoolPref('names.capitalize')) {
         fullName = util.toTitleCase(fullName);
         firstName = util.toTitleCase(firstName);
         lastName = util.toTitleCase(lastName);
@@ -763,7 +801,7 @@ SmartTemplate4.mimeDecoder = {
               default:
                 //empty anchor suppresses link; adding angle brackets as default
                 // TO DO: make default brackets configurable later
-                if (preferences.getMyBoolPref('mail.suppressLink'))
+                if (prefs.getMyBoolPref('mail.suppressLink'))
                   part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
                 else
                   part = emailAddress;
@@ -776,7 +814,7 @@ SmartTemplate4.mimeDecoder = {
             else
               part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
 						// [Bug 26209] wrap name if contains comma
-						if (preferences.getMyBoolPref('names.quoteIfComma')) {
+						if (prefs.getMyBoolPref('names.quoteIfComma')) {
 							if (part.includes(',') || part.includes(';'))
 								part = '"' + part + '"';
 						}
@@ -835,6 +873,7 @@ SmartTemplate4.parseModifier = function(msg) {
 			let matchPart = msg.match(regX);
 			if (matchPart) {
 				for (let i=0; i<matchPart.length; i++) {
+					if (!gMsgCompose.originalMsgURI) debugger;
 					util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
 					let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
 							hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
@@ -1050,31 +1089,53 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	    mime = this.mimeDecoder;
 
   // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
-  let msgDbHdr,
-      charset;
-  try {
-    msgDbHdr = (composeType != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
-    charset = (composeType != "new") ? msgDbHdr.Charset : null;
-    // try falling back to folder charset:
-    if (!charset && msgDbHdr) {
-      msgDbHdr.folder.charset; 
-    }
-  }
-  catch (ex) {
-    util.logException('messenger.msgHdrFromURI failed:', ex);
-    // doesn't return a header but throws!
-    charset = gMsgCompose.compFields.characterSet;
-  }
+  let msgDbHdr = null,
+      charset,
+			hdr = null;
+			
+  if (gMsgCompose.originalMsgURI.includes(".eml")) { 
+		let messageWindow = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:messageWindow"),
+				messageHeaderSink = messageWindow.messageHeaderSink;
+		charset = gMsgCompose.compFields.characterSet;
+		// with .eml file, use gExpandedHeaderView[hdrName] collection?
+		// see also messagepane-loaded event in msgHeaderView
+		// see also gMessageDisplay.displayExternalMessage
+		// messenger.msgHdrFromURI(sourceUri)
+		// messageHeaderSink.dummyMsgHeader  (has author, recipients, subject, deliveredTo, messageId)
+		// messageHeaderSink.dummyMsgHeader.__proto__  has more fields, such as flags, datee, ccList, accountKey, listPost, mime2DecodedSubject() getter...)
+		msgDbHdr =  messageHeaderSink.dummyMsgHeader;
+		debugger;
+		try {
+			hdr = (composeType != "new") ? new this.clsGetAltHeader(msgDbHdr) : null;
+		}
+		catch(ex) {
+			util.logException('fatal error - clsGetAltHeader() failed', ex);
+		}
+	}
+	else {
+		try {
+			msgDbHdr = (composeType != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
+			charset = (composeType != "new") ? msgDbHdr.Charset : null;
+			// try falling back to folder charset:
+			if (!charset && msgDbHdr) {
+				msgDbHdr.folder.charset; 
+			}
+		}
+		catch (ex) {
+			util.logException('messenger.msgHdrFromURI failed:', ex);
+			// doesn't return a header but throws!
+			charset = gMsgCompose.compFields.characterSet;
+		}
+		try {
+			hdr = (composeType != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
+		}
+		catch(ex) {
+			util.logException('fatal error - classGetHeaders() failed', ex);
+		}
+	}
   
   
 
-	let hdr = null;
-  try {
-    hdr = (composeType != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
-  }
-  catch(ex) {
-    util.logException('fatal error - classGetHeaders() failed', ex);
-  }
   if (preferences.isDebugOption('regularize')) debugger;
 	let date = (composeType != "new") ? msgDbHdr.date : null;
 	if (composeType != "new") {
@@ -1083,7 +1144,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
 			this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
 			this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-		} (hdr.get("Date"));
+		} (hdr ? hdr.get("Date") : msgDbHdr.date);
 	}
 	// TokenMap["headerName"] = mail Header
 	// TokenMap["reserved"] = ST4 function
@@ -1450,9 +1511,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					for (let i=0; i<matchPart.length; i++) {
 						util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
 						let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
-								hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
+								hdr,
 								extractSource = '',
 								rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
+
+						hdr =	(gMsgCompose.originalMsgURI.includes(".eml")) ?
+							new SmartTemplate4.clsGetAltHeader(msgDbHdr) :
+							new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI);
 						switch(fromPart) {
 							case 'subject':
 								if (!hdr) {

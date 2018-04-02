@@ -247,8 +247,14 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 
 		// okay now for the coup de grace!!
-		if (prefs.getMyBoolPref('parseSignature') && sigText)
-			sigText = getProcessedText(sigText, idKey, composeType, true);
+		if (prefs.getMyBoolPref('parseSignature') && sigText) {
+			try {
+				sigText = getProcessedText(sigText, idKey, composeType, true);
+			}
+			catch(ex) {
+				util.logException(ex, "getProcessedText(signature) failed.");
+			}
+		}
 
 		let dashesTxt = 
 			prefs.getMyBoolPref('signature.insertDashes.plaintext') ? SmartTemplate4.signatureDelimiter : "";
@@ -832,7 +838,7 @@ SmartTemplate4.classSmartTemplate = function() {
 						
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup, flags)	{
+	function insertTemplate(startup, flags, retryCount)	{
 		let isDebugComposer = prefs.isDebugOption('composer');
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
@@ -845,7 +851,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
 			+ 'gMsgCompose.type = ' + gMsgCompose.type);
 		const msgComposeType = Ci.nsIMsgCompType,
-					ed = GetCurrentEditor(),
+					ed = util.CurrentEditor,
 		      editor = ed.QueryInterface(Ci.nsIEditor);
 		let pref = SmartTemplate4.pref,
 		    // gMsgCompose.editor; => did not have an insertHTML method!! [Bug ... Tb 3.1.10]
@@ -933,9 +939,9 @@ SmartTemplate4.classSmartTemplate = function() {
 				case msgComposeType.Draft:
 					composeCase = 'draft';
 					let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-					    msgDbHdr = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
-					const nsMsgKey_None = 0xffffffff;
+					    msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
 					if(msgDbHdr) {
+						const nsMsgKey_None = 0xffffffff;
 						if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
 							st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
 						}
@@ -955,6 +961,20 @@ SmartTemplate4.classSmartTemplate = function() {
 				isActiveOnAccount = false;
 
 			if (isActiveOnAccount) {
+				// Message File loaded:
+				/*
+				if (gMsgCompose.originalMsgURI.includes(".eml")) {
+					if (typeof messageHeaderSink == 'undefined') {
+						retryCount = !retryCount ? 1 : retryCount + 1;
+						util.logDebug("Waiting for messageHeaderSink...(" + retryCount + ")");
+						if (retryCount<15)
+							setTimeout(function() { insertTemplate(startup, flags, retryCount); }, 400);
+						else
+							debugger;
+						return;
+					}
+				}
+				*/
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
 				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
@@ -1329,7 +1349,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  caretContainer = findChildNode(targetNode, 'st4cursor');
 		isCursor = (caretContainer != null);
 		try {
-			if (targetNode) {
+			if (targetNode) { // usually <body>
 				let selCtrl = editor.selectionController,  // Ci.nsISelectionController
             isReplyOnTop = theIdentity.replyOnTop,
             forward = !isReplyOnTop;
@@ -1361,7 +1381,7 @@ SmartTemplate4.classSmartTemplate = function() {
 								//if (util.Application=='Postbox') util.debugVar(caretContainer);
 								
 								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
-										cursorParent = caretContainer.parentNode; 
+										cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
 								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
 									try {
@@ -1443,8 +1463,8 @@ SmartTemplate4.classSmartTemplate = function() {
 								util.logException("forceParagraph failed.", ex);
 							}
 						}
-					}
-					else {
+					} 
+					else { // no cursor
 						if (isReplyOnTop) {
 							if (editor.selection.collapseToStart)
 								editor.selection.collapseToStart();
@@ -1459,6 +1479,8 @@ SmartTemplate4.classSmartTemplate = function() {
 								editor.selection.collapse(theParent, nodeOffset+1); 
 						}
 					}
+					/* void scrollIntoView (in short aRegion, in boolean aIsSynchronous, in int16_t aVPercent, in int16_t aHPercent); */
+					// editor.selection.scrollIntoView(space,false,10,10);
 				}
 			}
 		}

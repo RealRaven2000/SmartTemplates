@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://smarttemplate4/skin/smartTemplate-overlay.css" type="text/css"?><!-- additional as overlay in chrome.manifest for customizedToolbar.xul -->
+
+<!-- additional as overlay in chrome.manifest for customizeToolbar.xul -->
+<?xml-stylesheet href="chrome://smarttemplate4/skin/smartTemplate-overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-overlay.dtd">
 
 <overlay id="SmartTemplate4MessengerOverlay"
@@ -30,11 +32,12 @@
 
 <!-- #### STATUSBAR BUTTON OVERLAY IN MAINWINDOW #### -->
   <statusbar id="status-bar">
-    <statusbarpanel id="SmartTemplate4Messenger"
-                    label="&smartTemplate4.settings.label;"
-                    tooltiptext="&smartTemplate4.settings.tooltip;"
-                    class="statusbarpanel-iconic-text"
-                    oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+	  <statusbarpanel insertafter="totalMessageCount">
+			<toolbarbutton id="SmartTemplate4Messenger"
+											label="&smartTemplate4.settings.label;"
+											tooltiptext="&smartTemplate4.settings.tooltip;"
+											oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
+	  </statusbarpanel>
   </statusbar>
 
 

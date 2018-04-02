@@ -3,7 +3,9 @@
 <!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
-<?xml-stylesheet href = "chrome://smarttemplate4/skin/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://smarttemplate4/skin/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
 <?xml-stylesheet href="chrome://smarttemplate4/skin/common/license.css" type="text/css"?>
 
 <prefwindow id = "smartTemplate_prefDialog"
@@ -697,7 +699,7 @@
 										oncommand="SmartTemplate4.Settings.validateLicenseInOptions(false);" />
 					</hbox>
 					<separator class="licenseSeparator" />
-					<hbox>
+					<hbox id="validationDate">
 						<label>&label.licenseValid;</label>
 						<label id="licenseDate" value="-" />
 					</hbox>
@@ -705,10 +707,11 @@
 					<hbox id="validationResults">
 						<vbox>
 							<description id="validationPassed" class="niceFont" collapsed="true">&licenseValidation.passed;</description>
-							<description id="validationFailed" class="niceFont" collapsed="true">&licenseValidation.failed;</description>
-							<description id="validationExpired" class="niceFont" collapsed="true">&licenseValidation.expired;</description>
-							<description id="validationInvalidEmail" class="niceFont" collapsed="true">&licenseValidation.invalidMail;</description>
-							<description id="validationEmailNoMatch" class="niceFont" collapsed="true">&licenseValidation.notMatchedMail;</description>
+							<description id="validationFailed" class="niceFont licenseError" collapsed="true">&licenseValidation.failed;</description>
+							<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">&licenseValidation.expired;</description>
+							<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">&licenseValidation.invalidMail;</description>
+							<description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">&licenseValidation.notMatchedMail;</description>
+							<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">&licenseValidation.invalidAddon;</description>
 						</vbox>
 						<spacer flex="1"/>
 					</hbox>

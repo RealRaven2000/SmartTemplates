@@ -212,10 +212,10 @@ SmartTemplate4.Settings = {
 		const PS = this.prefService;
 		switch (PS.getPrefType(prefstring)) {
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-			  if (SmartTemplate4.Util.PlatformVersion < 57.0) 
-					return PS.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
-				else
+			  if (typeof PS.getStringPref === 'function') 
 					return PS.getStringPref(prefstring);
+				else
+					return PS.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
 				return PS.getIntPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
@@ -725,7 +725,9 @@ SmartTemplate4.Settings = {
 	// Select identity (from xul)
 	//--------------------------------------------------------------------
 	selectIdentity : function selectIdentity(idkey)	{
-		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
+		const util = SmartTemplate4.Util,
+		      prefs = SmartTemplate4.Preferences;
+		util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
 		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
 		    tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
@@ -756,7 +758,7 @@ SmartTemplate4.Settings = {
 			this.accountKey = branch;
 		}
 
-		SmartTemplate4.Util.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
+		util.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
 
 		//reactivate the current tab: new / respond or forward!
 		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
@@ -768,10 +770,13 @@ SmartTemplate4.Settings = {
       for (let i=0; i<tabboxArray.length; i++)
         txtDump += tabboxArray[i].value;  // append all texts
       // disable / enable Save button in case template is empty
-      let disableSave = (txtDump.length===0) && (document.getElementById('use_default.' + this.currentId).checked === true);
-      document.getElementById('btnSaveTemplate').disabled = disableSave;
+			try {
+				let disableSave = (txtDump.length===0) && (document.getElementById('use_default' + this.currentIdSelector).checked === true);
+				document.getElementById('btnSaveTemplate').disabled = disableSave;
+			}
+			catch (ex) {;}
     }
-		SmartTemplate4.Util.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
+		util.logDebugOptional("identities", "selectIdentity(" + idkey + ") COMPLETE");
 
 	} ,
 
@@ -873,10 +878,15 @@ SmartTemplate4.Settings = {
     }
   } ,
   
-  get currentId () {
+  get currentId() {
     let key = document.getElementById('msgIdentity').value;
     return key;
   },
+	
+	get currentIdSelector() {
+		let s = this.currentId;
+		return (s!="common") ? ('.'+ s) : "";
+	} ,
   
   get currentAccountName() {
     const  Ci = Components.interfaces,
@@ -981,7 +991,10 @@ SmartTemplate4.Settings = {
             throw ('invalid mode: ' + mode);
           }
           
-          const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
+					const {OS} = (typeof ChromeUtils.import == "undefined") ?
+						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
+						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+					
           
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           switch (mode) {
@@ -1167,16 +1180,20 @@ SmartTemplate4.Settings = {
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
         validationFailed       = getElement('validationFailed'),
+				validationInvalidAddon = getElement('validationInvalidAddon'),
         validationExpired      = getElement('validationExpired'),
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
+				validationDate         = getElement('validationDate'),
         decryptedMail, decryptedDate,
 				result = State.NotValidated;
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
     validationExpired.collapsed = true;
+		validationInvalidAddon.collapsed = true;
     validationInvalidEmail.collapsed = true;
     validationEmailNoMatch.collapsed = true;
+		validationDate.collapsed = false;
     this.enablePremiumConfig(false);
     try {
       this.trimLicense();
@@ -1221,17 +1238,40 @@ SmartTemplate4.Settings = {
           // getElement('txtEncrypt').value = LicenseKey;
           break;
         case State.Invalid:
-          validationFailed.collapsed=false;
+				  validationDate.collapsed=true;
+				  let addonName = '';
+				  switch (license.substr(0,2)) {
+						case 'QI':
+							addonName = 'quickFilters';
+						  break;
+						case 'QF':
+							addonName = 'QuickFolders';
+						  break;
+						case 'ST':
+						default: 
+						  validationFailed.collapsed=false;
+					}
+					if (addonName) {
+						validationInvalidAddon.collapsed = false;
+						let txt = validationInvalidAddon.textContent;
+						txt = txt.replace('{0}','SmartTemplate4').replace('{1}','ST'); // keys for {0} start with {1}
+						if (txt.indexOf(addonName) < 0) {
+							txt += " " + util.getBundleString("SmartTemplate4.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
+						}
+						validationInvalidAddon.textContent = txt;
+					}
           break;
         case State.Expired:
           validationExpired.collapsed=false;
           break;
         case State.MailNotConfigured:
+				  validationDate.collapsed=true;
           validationInvalidEmail.collapsed=false;
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
         case State.MailDifferent:
+				  validationDate.collapsed=true;
           validationFailed.collapsed=false;
           validationEmailNoMatch.collapsed=false;
           break;

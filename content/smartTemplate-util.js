@@ -66,6 +66,13 @@ SmartTemplate4.Util = {
     return this.Mail3PaneWindow.SmartTemplate4;
   } ,
 	
+	get CurrentEditor() {
+		if (typeof GetCurrentEditor == 'function')
+			return GetCurrentEditor();
+		this.logDebug("CurrentEditor failed!");
+		return null;
+	} ,
+	
   /* premiumFeatures: array of premium function used during getProcessedText calls.
    * this gathers all into a single consolidated notification.	
 	 */

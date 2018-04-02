@@ -194,8 +194,8 @@ SmartTemplate4.Licenser = {
 		
 		switch(licenser.ValidationStatus) {
 			case ELS.Expired:
-			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
-				getElement('qfLicenseTerm').classList.add('expired');
+			  getElement('licenseDateLabel').value = util.getBundleString("SmartTemplate4.licenseValidation.expired","Your license expired on:")
+				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case ELS.Valid:
 			  getElement('btnLicense').classList.remove('register'); // remove the "breathing effect" if license is valid.
@@ -431,7 +431,7 @@ SmartTemplate4.Licenser = {
     }
     if (LicenseKey.indexOf('STD')==0) {
        if (SmartTemplate4.Crypto.key_type!=1) { // not currently a domain key?
-         let txt = util.getBundleString("qf.prompt.switchDomainLicense", "Switch to Domain License?");
+         let txt = util.getBundleString("SmartTemplate4.prompt.switchDomainLicense", "Switch to Domain License?");
 				  
          if (Services.prompt.confirm(null, "SmartTemplate4", txt)) {
            SmartTemplate4.Crypto.key_type=1; // switch to volume license
