@@ -874,7 +874,7 @@ SmartTemplate4.parseModifier = function(msg) {
 			if (matchPart) {
 				for (let i=0; i<matchPart.length; i++) {
 					if (!gMsgCompose.originalMsgURI) debugger;
-					util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
+					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
 					let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
 							hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
 							extractSource = '',
@@ -905,22 +905,22 @@ SmartTemplate4.parseModifier = function(msg) {
 						if (extractSource) {
 							let result = rx.exec(extractSource); // extract Pattern from body
 							if (result && result.length) {
-								let group = groupArg ? parseInt(groupArg[1]) : 0;
-								let replaceGroupString = '';
+								let group = groupArg ? parseInt(groupArg[1]) : 0,
+								    replaceGroupString = '';
 								if (group>result.length) {
 									util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
 								}
 								else {
 									replaceGroupString = result[group];
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
-									util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n'
-																+ replaceGroupString);
 								}
+								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
 								msg = msg.replace(matchPart[i], replaceGroupString);
 							}
-							else
+							else { // [Bug 26512]
 								removePat = true;
 								msg = msg.replace(matchPart[i],"");
+							}
 						}
 						else removePat = true;
 						if(removePat) {

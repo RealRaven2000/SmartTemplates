@@ -666,11 +666,14 @@ SmartTemplate4.Util = {
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function(linkURI) {
-		let Ci = Components.interfaces;
+		const Ci = Components.interfaces,
+		      Cc = Components.classes,
+		      util = SmartTemplate4.Util;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			if (SmartTemplate4.Util.Application==='SeaMonkey') {
-				let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
+			linkURI = util.makeUriPremium(linkURI);
+			if (util.Application==='SeaMonkey') {
+				let windowManager = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
 				let browser = windowManager.getMostRecentWindow( "navigator:browser" );
 				if (browser) {
 					let URI = linkURI;
@@ -682,8 +685,8 @@ SmartTemplate4.Util = {
 
 				return;
 			}
-			let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService);
-			let ioservice = Components.classes["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
+			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService);
+			let ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
 			let uri = ioservice.newURI(linkURI, null, null);
 			service.loadURI(uri);
 		}
@@ -693,15 +696,17 @@ SmartTemplate4.Util = {
 
 	// moved from options.js
 	// use this to follow a href that did not trigger the browser to open (from a XUL file)
-	openLinkInBrowser: function(evt,linkURI) {
-		let Cc = Components.classes;
-		let Ci = Components.interfaces;
-		if (SmartTemplate4.Util.Application === 'Thunderbird') {
+	openLinkInBrowser: function(evt, linkURI) {
+		const Cc = Components.classes,
+		      Ci = Components.interfaces,
+					util = SmartTemplate4.Util;
+		if (util.Application === 'Thunderbird') {
 			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
 				.getService(Ci.nsIExternalProtocolService);
 			let ioservice = Cc["@mozilla.org/network/io-service;1"].
 						getService(Ci.nsIIOService);
-			service.loadURI(ioservice.newURI(linkURI, null, null));
+			service.loadURI(ioservice.newURI(util.makeUriPremium(linkURI), null, null));
+			
 			if(null !== evt)
 				evt.stopPropagation();
 		}
@@ -728,14 +733,17 @@ SmartTemplate4.Util = {
 	},
 
 	openURLInTab: function (URL) {
+		const util = SmartTemplate4.Util;
 		try {
 			if (this.Application!='Thunderbird') {
 				this.openLinkInBrowserForced(URL);
 				return true;
 			}
 			
-			let sTabMode="";
-			let tabmail;
+			let sTabMode="",
+			    tabmail;
+			URL = util.makeUriPremium(URL);
+			
 			tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
 				// Try opening new tabs in an existing 3pane window
@@ -746,18 +754,23 @@ SmartTemplate4.Util = {
 				}
 			}
 			if (tabmail) {
-				sTabMode = (SmartTemplate4.Util.Application === "Thunderbird" && this.versionGreaterOrEqual(this.AppverFull, "3")) ? "contentTab" : "3pane";
+				sTabMode = (util.Application === "Thunderbird" && this.versionGreaterOrEqual(this.AppverFull, "3")) ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
 			}
 			else {
-				window.openDialog("chrome://messenger/content/", "_blank",
-									"chrome,dialog=no,all", null,
-				{ tabType: "contentTab", tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} } );
+				window.openDialog("chrome://messenger/content/", 
+				  "_blank", 
+					"chrome,dialog=no,all", 
+					null,
+					{ tabType: "contentTab", 
+					  tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} 
+					} 
+				);
 			}
 		}
 		catch(e) {
-			this.logException('openURLInTab(' + URL + ')', e);
+			util.logException('openURLInTab(' + URL + ')', e);
 			return false;
 		}
 		return true;
@@ -1230,10 +1243,18 @@ SmartTemplate4.Util = {
 			if (   uType
 			    && URL.indexOf("user=")==-1 
 					&& URL.indexOf("smarttemplate4.mozdev.org")>0 ) {
+				// remove #NAMED anchors
+				let x = URL.indexOf("#"),
+				    anchor = '';
+				if (x>0) {
+					anchor = URL.substr(x);
+					URL = URL.substr(0, x)
+				}
 				if (URL.indexOf("?")==-1)
 					URL = URL + "?user=" + uType;
 				else
 					URL = URL + "&user=" + uType;
+				URL = URL + anchor;
 			}
 		}
 		catch(ex) {
