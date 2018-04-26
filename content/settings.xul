@@ -65,15 +65,15 @@
 							<menuitem id = "menuHomePage"
 							          label = "&url.homePage.label;"
 							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showHomePage();" />
+							          onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );" />
 							<menuitem id = "menuSupportPage"
 							          label = "&url.supportPage.label;"
 							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showSupportPage();" />
+							          onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );" />
 							<menuitem id = "menuBugsAndFeaturesPage"
 							          label = "&url.bugsAndFeaturesPage.label;"
 							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();" />
+							          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );" />
 						</menupopup>
 					</menu>
 				</menubar>
@@ -551,12 +551,14 @@
 							</hbox>
 						</groupbox>
 						
+						<!--
 						<spacer flex = "2" />
 						<button id="btnUpdateThunderbird"
 								label="&button.updateThunderbird;"
 						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
 								collapsed = "true"
 								/>
+								-->
 								 
 					</vbox>
 				</tabpanel>
@@ -660,15 +662,15 @@
 							<spacer flex = "1" />
 							<vbox class="buttonLinks">
 							<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
-								<button onclick = "SmartTemplate4.Util.showSupportPage();"
+								<button onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "supportURL text-link"
 								        label = "&url.supportPage.label;" />
 								<spacer flex="1"/>
-								<button onclick = "SmartTemplate4.Util.showHomePage();"
+								<button onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "homePageURL text-link"
 								        label = "&url.homePage.label;" />
 								<spacer flex="1"/>
-								<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();"
+								<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "bugsURL text-link"
 								        label = "&url.bugsAndFeaturesPage.label;" />
 							</vbox>

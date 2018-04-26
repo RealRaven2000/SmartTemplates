@@ -14,7 +14,7 @@
    em:icon64URL="chrome://smartTemplate4/skin/icon64x64.png"
    em:optionsURL="chrome://smartTemplate4/content/settings.xul"
    em:aboutURL="chrome://smartTemplate4/content/about.xul">
-	  <em:version>1.5pre196</em:version>
+	  <em:version>1.5</em:version>
     <em:homepageURL>http://smarttemplate4.mozdev.org/index.html</em:homepageURL>
     <em:type>2</em:type>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
@@ -30,16 +30,16 @@
    em:minVersion="14.0"
    em:maxVersion="60.*"/>
 
-  <!-- Postbox -->
-  <RDF:Description RDF:about="rdf:#$Vsomt2"
-   em:id="postbox@postbox-inc.com"
-   em:minVersion="3.0"
-   em:maxVersion="5.52b6"/>
-
   <!-- SeaMonkey -->
 	<RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
    em:minVersion="2.14"
    em:maxVersion="2.49.*"/>
+
+  <!-- Postbox, from now all specific development is frozen -->
+  <RDF:Description RDF:about="rdf:#$Vsomt2"
+   em:id="postbox@postbox-inc.com"
+   em:minVersion="3.0"
+   em:maxVersion="5.52b6"/>
 
 </RDF:RDF>

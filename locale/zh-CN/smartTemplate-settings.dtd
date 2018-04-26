@@ -162,6 +162,13 @@
 <!ENTITY header.append.subject "追加文本到主题">
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
+<!ENTITY stringmanip_function.cap "String Manipulation">
+<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
+<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Replace some text with something else.">
+<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
+<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
+<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
@@ -218,3 +225,18 @@
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">
 <!ENTITY table_fwd.label "转发">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Insert your personal License key here:">
+<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
+<!ENTITY button.pasteLicense "paste">
+<!ENTITY button.validateLicense "validate">
+<!ENTITY label.licenseValid "Your license is valid until:">
+<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate4 Pro! All premium features are now unlocked.">
+<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
+<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
+<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
+<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
+<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY premiumConfig "Premium Features">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

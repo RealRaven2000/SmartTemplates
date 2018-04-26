@@ -30,6 +30,7 @@ pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
+pref("extensions.smartTemplate4.expandSettings", false);
 
 
 pref("extensions.smartTemplate4.stationery.supported", false);

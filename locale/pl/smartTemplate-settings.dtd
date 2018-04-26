@@ -225,6 +225,8 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
@@ -237,3 +239,4 @@
 <!ENTITY licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

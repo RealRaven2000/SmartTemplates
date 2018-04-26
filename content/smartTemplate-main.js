@@ -266,7 +266,8 @@
 		# Adding SmartTemplate4 Pro License
 		# Thunderbird 57 deprecated nsILocaleService causing local date to fail
 		# Thunderbird 57 deprecated nsIScriptableDateFormat causing most date functions (datelocal, dateshort) to dail [prTime2Str()]
-		
+		# Remember expanded / contracted status of setting dialog 
+		# Close settings dialog when clicking on links in the support tab		
 
 	
 =========================

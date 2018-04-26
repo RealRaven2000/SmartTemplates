@@ -822,7 +822,7 @@ SmartTemplate4.Util = {
 
 	showDonatePage: function () { SmartTemplate4.Util.openURLInTab(this.DonatePage); }  ,
 	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
-	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); } ,
+	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); window.close();} ,
 	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
 	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
 	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
@@ -1025,6 +1025,8 @@ SmartTemplate4.Util = {
 	  return (fs.indexOf('link') != -1);
 	} ,
 	
+	/*
+	  // platform warning is now officially retired
 	showPlatformWarning: function() {
 	 
 	  let msg = SmartTemplate4.Util.getBundleString (
@@ -1049,6 +1051,7 @@ SmartTemplate4.Util = {
 							                     function() { SmartTemplate4.Util.updateThunderbird();},
 							                     function() { SmartTemplate4.Util.cancelUpdate();} );
 	},
+	*/
 	
 	updateThunderbird: function() {
 		window.setTimeout(

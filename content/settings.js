@@ -336,11 +336,15 @@ SmartTemplate4.Settings = {
 		this.fontSize(0);		
 		
 		// show update button, but only if we run Thunderbird and it is an outdated version:
+		// btnUpdateThunderbird deprecated
+		/*
 		if (util.Application === "Thunderbird" 
 		    && 
 				util.versionSmaller(util.AppverFull, '17.0.8')) {
 			getElement("btnUpdateThunderbird").collapsed = false;
 		}
+		*/
+		
 		// wait some time so dialog can load first
 		if (prefs.getMyBoolPref('hideExamples')) { 
 			getElement('templatesTab').collapsed = true;
@@ -375,7 +379,9 @@ SmartTemplate4.Settings = {
       this.validateLicenseInOptions(false);
     }
 		
-		settings.openAdvanced();
+		if (prefs.getMyBoolPref('expandSettings')) {
+			settings.openAdvanced();
+		}
 		let tabbox = getElement("rightPane");
 		// open "ST Pro" tab
 		if (mode=='licenseKey') {
@@ -385,6 +391,11 @@ SmartTemplate4.Settings = {
     
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
+	} ,
+	
+	onUnload : function() {
+// 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
+    
 	} ,
 	
 	toggleExamples: function toggleExamples(el) {
@@ -523,10 +534,6 @@ SmartTemplate4.Settings = {
     }
   } ,
   
-	onUnload : function() {
-// 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
-	} ,
-
 	// Setup cloned nodes and replace preferences strings
 	//--------------------------------------------------------------------
 	prefCloneAndSetup : function prefCloneAndSetup(el, branch) {
@@ -667,6 +674,7 @@ SmartTemplate4.Settings = {
 	} ,
 
 	openAdvanced: function openAdvanced() {
+		const prefs = SmartTemplate4.Preferences;
 		let advancedContainer = document.getElementById('advancedContainer');
 		advancedContainer.hidden = false;
 		let wid = advancedContainer.scrollWidth;
@@ -674,6 +682,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Help.onLoad();
 		document.getElementById('btnAdvanced').hidden = true;
 		document.getElementById('btnCloseAdvanced').hidden = false;
+		prefs.setMyBoolPref('expandSettings', true);
 
 		let versionBox = document.getElementById('versionBox');
 		// let's get the "top" instance of st4, as we know that already knows the version number!!
@@ -687,13 +696,15 @@ SmartTemplate4.Settings = {
 	} ,
 
 	closeAdvanced: function closeAdvanced() {
-		let advancedContainer = document.getElementById('advancedContainer');
-		let wid = advancedContainer.scrollWidth;
+		const prefs = SmartTemplate4.Preferences;
+		let advancedContainer = document.getElementById('advancedContainer'),
+		    wid = advancedContainer.scrollWidth;
 		advancedContainer.hidden = true;
 		window.resizeBy(-wid, 0);
 		SmartTemplate4.Help.onUnload();
 		document.getElementById('btnAdvanced').hidden = false;
 		document.getElementById('btnCloseAdvanced').hidden = true;
+		prefs.setMyBoolPref('expandSettings', false);
 	} ,
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
