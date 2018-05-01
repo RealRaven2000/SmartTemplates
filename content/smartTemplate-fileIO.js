@@ -1,12 +1,13 @@
-"use strict"
-// -----------------------------------------------------------------------------------
-// ---------------------------- last edit at 06/02/2012 ------------------------------
-// -----------------------------------------------------------------------------------
-// ----------------------------------- Changelog -------------------------------------
-// -----------------------------------------------------------------------------------
-// 0.7.5: "use strict" suggested by Mozilla add-on review team
-// 1.0.0: made some ID's in settings.xul and inside this scripts more explicid
-// -----------------------------------------------------------------------------------
+"use strict";
+/* 
+BEGIN LICENSE BLOCK
+
+	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK 
+*/
 
 
 SmartTemplate4.IO = {

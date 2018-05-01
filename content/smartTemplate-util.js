@@ -1,28 +1,11 @@
 "use strict";
 
-/* BEGIN LICENSE BLOCK
+/* 
+BEGIN LICENSE BLOCK
 
-for detail, please refer to license.txt in the root folder of this extension
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 3
-of the License, or (at your option) any later version.
-
-If you use large portions of the code please attribute to the authors
-(Axel Grude)
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
-GNU General Public License for more details.
-
-You can download a copy of the GNU General Public License at
-http://www.gnu.org/licenses/gpl-3.0.txt or get a free printed
-copy by writing to:
-	Free Software Foundation, Inc.,
-	51 Franklin Street, Fifth Floor,
-	Boston, MA 02110-1301, USA.
+	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK
 */
@@ -35,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "1.5",
+	HARDCODED_CURRENTVERSION : "1.5.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -80,7 +63,7 @@ SmartTemplate4.Util = {
 	addUsedPremiumFunction: function addUsedPremiumFunction(f) {
 		const mainUtil = SmartTemplate4.Util.mainInstance.Util;
 		// avoid duplicates
-		if (!mainUtil.premiumFeatures.some(e => e == f))
+		if (!mainUtil.premiumFeatures.some(function(e) {return e==f;} ))  // e => e == f    OLD POSTBOX IS TOO STUPID FOR THIS SYNTAX
 			mainUtil.premiumFeatures.push(f);
 	},
 	
@@ -662,6 +645,80 @@ SmartTemplate4.Util = {
       }
     }
 	},
+	
+	getTabInfoLength: function getTabInfoLength(tabmail) {
+		if (tabmail.tabInfo)
+		  return tabmail.tabInfo.length;
+	  if (tabmail.tabOwners)
+		  return tabmail.tabOwners.length;
+		return null;
+	} ,
+	
+	getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
+		if (tabmail.tabInfo)
+			return tabmail.tabInfo[idx];
+		if (tabmail.tabOwners)
+		  return tabmail.tabOwners[idx];
+		return null;
+	} ,
+	
+	getTabMode: function getTabMode(tab) {
+	  if (tab.mode) {   // Tb / Sm
+		  if (this.Application=='SeaMonkey' && (typeof tab.modeBits != 'undefined')) {
+				const kTabShowFolderPane  = 1 << 0;
+				const kTabShowMessagePane = 1 << 1;
+				const kTabShowThreadPane  = 1 << 2;			
+				// SM: maybe also check	tab.getAttribute("type")=='folder'
+				// check for single message shown - SeaMonkey always uses 3pane!
+				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
+			  if ( (tab.modeBits & kTabShowMessagePane) 
+             && 
+             !(tab.modeBits & kTabShowFolderPane)) {
+				  return 'message';
+				}
+			}
+			return tab.mode.name;
+		}
+		if (tab.type)  // Pb
+		  return tab.type;
+		return "";
+	},
+	
+	getBaseURI: function baseURI(URL) {
+		let hashPos = URL.indexOf('#'),
+				queryPos = URL.indexOf('?'),
+				baseURL = URL;
+				
+		if (hashPos>0)
+			baseURL = URL.substr(0, hashPos);
+		else if (queryPos>0)
+			baseURL = URL.substr(0, queryPos);
+		if (baseURL.endsWith('/'))
+			return baseURL.substr(0, baseURL.length-1); // match "x.com" with "x.com/"
+		return baseURL;		
+	} ,
+	
+	findMailTab: function findMailTab(tabmail, URL) {
+		const util = SmartTemplate4.Util;
+		// mail: tabmail.tabInfo[n].browser		
+		let baseURL = util.getBaseURI(URL),
+				numTabs = util.getTabInfoLength(tabmail);
+		
+		for (let i = 0; i < numTabs; i++) {
+			let info = util.getTabInfoByIndex(tabmail, i);
+			if (info.browser && info.browser.currentURI) {
+				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
+				if (tabUri == baseURL) {
+					tabmail.switchToTab(i);
+					// focus on tabmail ?
+					
+					return true;
+				}
+			}
+		}
+		return false;
+	} ,	
+	
 
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
@@ -717,15 +774,16 @@ SmartTemplate4.Util = {
 
 	// moved from options.js (then called
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
-		let ioservice,iuri,eps;
+		const util = SmartTemplate4.Util;
+		let ioservice, iuri, eps;
 
-		if (SmartTemplate4.Util.Application==='SeaMonkey' || SmartTemplate4.Util.Application==='Postbox')
+		if (util.Application==='SeaMonkey' || util.Application==='Postbox')
 		{
-			this.openLinkInBrowserForced(URL);
+			util.openLinkInBrowserForced(util.makeUriPremium(URL));
 			if(null!=evt) evt.stopPropagation();
 		}
 		else {
-			if (this.openURLInTab(URL) && null!=evt) {
+			if (util.openURLInTab(URL) && null!=evt) {
 				if (evt.preventDefault)  evt.preventDefault();
 				if (evt.stopPropagation)	evt.stopPropagation();
 			}
@@ -753,8 +811,9 @@ SmartTemplate4.Util = {
 					mail3PaneWindow.focus();
 				}
 			}
-			if (tabmail) {
-				sTabMode = (util.Application === "Thunderbird" && this.versionGreaterOrEqual(this.AppverFull, "3")) ? "contentTab" : "3pane";
+			// note: findMailTab will activate the tab if it is already open
+			if (tabmail  && (!util.findMailTab(tabmail, URL))) {
+				sTabMode = (util.Application === "Thunderbird") ? "contentTab" : "3pane";
 				tabmail.openTab(sTabMode,
 				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
 			}
@@ -1359,7 +1418,7 @@ SmartTemplate4.Util.firstRun =
 		      prefs = SmartTemplate4.Preferences;
 		util.logDebug('Util.firstRun.init()');
 		let prev = -1, firstRun = true,
-		    showFirsts = true, debugFirstRun = false,
+		    debugFirstRun = false,
 		    prefBranchString = "extensions.smartTemplate4.",
 		    svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
 		    ssPrefs = svc.getBranch(prefBranchString);
@@ -1396,16 +1455,11 @@ SmartTemplate4.Util.firstRun =
 				prefs.setMyBoolPref("firstRun", false);
 			}
 
-			// enablefirstruns=false - allows start pages to be turned off for partners
-			util.logDebugOptional ("firstRun","try to get setting: getBoolPref(enablefirstruns)");
-			try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
-
 
 			util.logDebugOptional ("firstRun", "Settings retrieved:"
 					+ "\nprevious version=" + prev
 					+ "\ncurrent version=" + current
 					+ "\nfirstrun=" + firstRun
-					+ "\nshowfirstruns=" + showFirsts
 					+ "\ndebugFirstRun=" + debugFirstRun);
 		}
 		catch(e) {
@@ -1413,7 +1467,6 @@ SmartTemplate4.Util.firstRun =
 				+ "\n\ncurrent: " + current
 				+ "\nprev: " + prev
 				+ "\nfirstrun: " + firstRun
-				+ "\nshowFirstRuns: " + showFirsts
 				+ "\ndebugFirstRun: " + debugFirstRun, e);
 		}
 		finally {
@@ -1435,53 +1488,66 @@ SmartTemplate4.Util.firstRun =
 			if (firstRun){
 				/* EXTENSION INSTALLED FOR THE FIRST TIME! */
 				util.logDebug ("firstRun code");
-
-				if (showFirsts) {
-					// Insert code for first run here
-					// on very first run, we go to the index page - welcome blablabla
-					util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
-					window.setTimeout(function() {
-						util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
-					}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
-
-				}
-
+				// Insert code for first run here
+				// on very first run, we go to the index page - welcome blablabla
+				util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
+				window.setTimeout(function() {
+					util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
+				}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 			}
 			else {
 
 				// check for update of pure version (everything before pre, beta, alpha)
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
+					let omitDonation = false;
+					
+					if (pureVersion=="1.5.1") {
+						omitDonation = true;
+					}
+					
 					/* EXTENSION UPDATED */
-					util.logDebug("ST4 Test  - SmartTemplate4 Update Detected:\n **PREVIOUS**:" + prev + "\npure Version: " + pureVersion + "\ncurrent: " + current);
-
 					let isUpdated = this.update(prev);
+					util.logDebug("===========================\n"+
+					              "ST4 Test  - SmartTemplate4 Update Detected:\n" +
+												" **PREVIOUS**:" + prev + 
+												"\npure Version: " + pureVersion + 
+												"\ncurrent: " + current +
+												"\nisUpdated=" + isUpdated);
 					util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
-					// upgrade case!!
-					let upgradeMessage = "";
 
-					if (showFirsts && !isPremium) {
+					if (isPremium) {
+						util.logDebugOptional ("firstRun","Paid version: donate page omitted.");
+					}
+					else {
 						// version is different => upgrade (or conceivably downgrade)
 
 						// DONATION PAGE
 						// display donation page - disable by right-clicking label above version jump panel
-						if ((prefs.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")))
+						if (prefs.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")) {
 							util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
+						}
+						else if (omitDonation) {
+							util.logDebugOptional ("firstRun","Donation page omitted b/c of maintenance update.");
+						}
 						else {
 							util.logDebugOptional ("firstRun","setTimeout for donation link");
 							window.setTimeout(function() {util.showDonatePage();}, 2000);
 						}
-
-						// VERSION HISTORY PAGE
-						// display version history - disable by right-clicking label above show history panel
-						if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
-							util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
-							window.setTimeout(function(){util.showVersionHistory(false);}, 2200);
-						}
+					}
+					
+					// VERSION HISTORY PAGE
+					// display version history - disable by right-clicking label above show history panel
+					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
+						util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
+						window.setTimeout(function(){util.showVersionHistory(false);}, 2200);
 					}
 
 					// Display the modeless update message
+					// To Do: We need to make this more generic for charging for a standard version!
 					window.setTimeout(function(){
 						if (util.versionSmaller(prev, '0.9')) {
+							// upgrade case!!
+							let upgradeMessage = "";
 							// we are only running the old prefs routine for versions < .9
 							upgradeMessage = buildUpgradeMessage09();
 							// let's show the cancel button only if the conversion to the new prefbranch has been done before
@@ -1494,7 +1560,7 @@ SmartTemplate4.Util.firstRun =
 							;
 						}
 						else
-							util.popupAlert ("SmartTemplate4", updateVersionMessage);
+							util.popupAlert ("SmartTemplate4", updateVersionMessage); // OS notification
 					}, 3000);
 
 				}

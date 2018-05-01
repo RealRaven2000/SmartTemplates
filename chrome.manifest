@@ -81,7 +81,6 @@ overlay chrome://messenger/content/am-addressing.xul                     chrome:
 overlay chrome://messenger/content/messenger.xul                         chrome://SmartTemplate4/content/messengerOverlay.xul
 
 
-
 # shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
 # while also avoid Postbox crashing us for syntax when we use for..of
 #tb (for..of)
@@ -89,4 +88,6 @@ content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application=
 #sm (for..of)
 content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 #postbox (for in)
-content shimSmartTemplate chrome://SmartTemplate4/content/shimEcmaOld/ application=postbox@postbox-inc.com
+content shimSmartTemplate chrome://SmartTemplate4/content/shimEcmaOld/ application=postbox@postbox-inc.com appversion<5.5
+content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application=postbox@postbox-inc.com appversion>=5.5
+

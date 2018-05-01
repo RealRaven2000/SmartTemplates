@@ -1,7 +1,14 @@
 "use strict";
-// the main object
-// notes
-// investigate gMsgCompose.compFields!
+/* 
+BEGIN LICENSE BLOCK
+
+	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK 
+*/
+
 
 /* Version History  (chronological)
 
@@ -246,7 +253,7 @@
 		# New %matchTextFromSubject( )% function
 		# Release video at: https://www.youtube.com/watch?v=u72yHAPNkZE
 		
-  Version 1.5 - WIP
+  Version 1.5 - 27/04/2018
 	  # [Bug 26340] New "unmodified field" option for %To()%, %CC()% and %From()% %from(initial)% New initial keyword to avoid any changes of header; just displays the header as received.
 	  # New: %header.set.matchFromSubject()% function to retrieve regex from subject line and set a (text) header
 	  # New: %header.append.matchFromSubject()% function to retrieve regex from subject line and append to a (text) header
@@ -268,7 +275,19 @@
 		# Thunderbird 57 deprecated nsIScriptableDateFormat causing most date functions (datelocal, dateshort) to dail [prTime2Str()]
 		# Remember expanded / contracted status of setting dialog 
 		# Close settings dialog when clicking on links in the support tab		
+		
+	Version 1.5.1 - WIP
+	  # changed license to (CC BY-ND 4.0)
+	  # [Bug 26518] Clicking on variables in the Variables Tab doesn't copy them
+		# [Bug 26434] Forwarding email with embedded images removes images
+		              (use insertFileLink? getFileAsDataURI? encodeURIComponent?)
+									MsgComposeCommands uses loadBlockedImage() ?
+	  # [Bug 26307] Extend dates variables with additional offset parameter for hours / minutes
+		
 
+=========================
+To Do
+// investigate gMsgCompose.compFields!
 	
 =========================
 		0.9.3 Review specific:
@@ -320,11 +339,16 @@ var SmartTemplate4 = {
 	stateListener: {
 		NotifyComposeFieldsReady: function() {},
 		NotifyComposeBodyReady: function() {
-			const util = SmartTemplate4.Util;
+			const util = SmartTemplate4.Util,
+			      prefs = SmartTemplate4.Preferences;
+		  let eventDelay = (gMsgCompose.type != Components.interfaces.nsIMsgCompType.ForwardInline) 
+			               ? 10 
+										 : prefs.getMyIntPref("forwardInlineImg.delay"),
+			    isNotify = false;
 			util.logDebug('NotifyComposeBodyReady');
 			// For Stationery integration, we need to  
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			if (SmartTemplate4.Preferences.isStationerySupported && 
+			if (prefs.isStationerySupported && 
 			    (typeof Stationery_ != 'undefined'))
 			{
 			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
@@ -355,16 +379,27 @@ var SmartTemplate4 = {
 					util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
 					   + 'As you have selected the Stationery template ' + oldTemplate 
 						 + ', SmartTemplate4 will be not used for this email.' );
-				else
-					SmartTemplate4.notifyComposeBodyReady();
+				else {
+					isNotify = true;
+				}
 			}
 			else
-				SmartTemplate4.notifyComposeBodyReady();
+				isNotify = true;
+				
+			if (isNotify) {
+				// [BUG 26434] forwarding email with embedded images removes images
+				// test delaying call for forward case
+				window.setTimeout(
+					function(){ SmartTemplate4.notifyComposeBodyReady(); }, 
+					eventDelay);
+			}
 		},
+		
 		ComposeProcessDone: function(aResult) {
 			const util = SmartTemplate4.Util;
 			util.logDebug('ComposeProcessDone');
 		},
+		
 		SaveInFolderDone: function(folderURI) {
 			const util = SmartTemplate4.Util;
 			util.logDebug('SaveInFolderDone');
@@ -372,8 +407,9 @@ var SmartTemplate4 = {
 	},
 
 	initListener: function initListener() {
-    let util = SmartTemplate4.Util,
-        log = util.logDebugOptional.bind(util),
+    const util = SmartTemplate4.Util,
+		      prefs = SmartTemplate4.Preferences;
+    let log = util.logDebugOptional.bind(util),
         notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4);
     log('composer', 'Registering State Listener...');
     try {
@@ -399,15 +435,24 @@ var SmartTemplate4 = {
 			}
     }
     catch (ex) {
-      SmartTemplate4.Util.logException("Could not register status listener", ex);
+      util.logException("Could not register status listener", ex);
     }
 		// alternative events when 
-		if (SmartTemplate4.Preferences.isStationerySupported) {
+		if (prefs.isStationerySupported) {
       log('composer' , 'Adding Listener for stationery-template-loaded...');
 			window.addEventListener('stationery-template-loaded', function(event) {
+				// Thunderbird uses gComposeType
+				let eventDelay = (gMsgCompose.type != Components.interfaces.nsIMsgCompType.ForwardInline) 
+											 ? 10 
+											 : prefs.getMyIntPref("forwardInlineImg.delay");
 			  // async event
 				log('composer,events', 'EVENT: stationery-template-loaded');
-				notifyComposeBodyReady(event);
+				// [BUG 26434] forwarding email with embedded images removes images
+				// test delaying call for forward case
+				window.setTimeout(
+					function(){ notifyComposeBodyReady(event); }, 
+					eventDelay
+				);
 			}, false);		
 		}
     else {
@@ -454,15 +499,15 @@ var SmartTemplate4 = {
 		    flags = this.PreprocessingFlags;
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
-		this.initFlags(flags);
+		if (prefs.isDebugOption('stationery')) debugger;
 		if (prefs.isDebugOption('composer')) debugger;
+		this.initFlags(flags);
 		
 		if (evt) {
-			if (evt.currentTarget
-			    &&
-					evt.currentTarget.Stationery_) 
+			let targ = evt.currentTarget || evt.target;
+			if (targ.Stationery_) 
 			{
-			  let stationeryInstance = evt.currentTarget.Stationery_,
+			  let stationeryInstance = targ.Stationery_,
 				    cur = null;
 				stationeryTemplate = stationeryInstance.currentTemplate;
 				dbg += '\nStationery is active';
@@ -497,7 +542,7 @@ var SmartTemplate4 = {
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
-			if (prefs.isDebugOption('composer')) debugger;
+			if (prefs.isDebugOption('stationery')) debugger;
 			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
@@ -515,6 +560,23 @@ var SmartTemplate4 = {
 			else {
 				util.logDebug('smartTemplateInserted is already set');
 			}
+			
+			//set focus to editor
+			let FocusElement;
+			switch (this.smartTemplate.composeCase) {
+				case 'new':
+					FocusElement = window.document.getElementById('addressCol2#1'); // "to" line
+					break;
+				case 'forward':
+					FocusElement = window.document.getElementById('addressCol2#1'); // "to" line
+					break;
+				default: // 'reply'  - what about mailto?
+				  FocusElement = window.document.getElementById('content-frame'); // Editor
+			}
+			if (FocusElement) {
+				FocusElement.focus();
+			}
+			
 		}
 		catch(ex) {
 			util.logException("notifyComposeBodyReady", ex);
@@ -526,8 +588,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to switch identity
 	// -------------------------------------------------------------------
-	loadIdentity: function loadIdentity(startup, previousIdentity)
-	{
+	loadIdentity: function loadIdentity(startup, previousIdentity) {
 		const prefs = SmartTemplate4.Preferences;		
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
@@ -567,6 +628,7 @@ var SmartTemplate4 = {
 				gMsgCompose.editor.resetModificationCount();
 			}	// for TB bug?
 		}
+		
 	},
 
 	// -------------------------------------------------------------------

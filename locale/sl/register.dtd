@@ -1,28 +1,28 @@
-<!ENTITY licenseWindow.title "SmartTemplate4 Pro License">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY label.haveLicense "Already have a License?">
-<!ENTITY getSmartTemplate4 "Get SmartTemplate4 Pro">
-<!ENTITY intro "An annual license for SmartTemplate4 Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome.">
-<!ENTITY testDrive "You can test drive the premium features with the free version, but they might be slightly restricted.">
-<!ENTITY yearlyLicense.title "Annual License">
-<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate4 Pro gives you full unrestricted access to the premium features.">
-<!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "More about premium features.">
-<!ENTITY yearlyLicense.usageTerm "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address.">
-<!ENTITY domainLicense.email "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page.">
-<!ENTITY domainLicense.header "Licensed Email Domain">
-<!ENTITY domainLicense.instruct "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use SmartTemplate4 Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen.">
-<!ENTITY domainLicense.validate "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users.">
-<!ENTITY updates.title "Updates">
-<!ENTITY updatesExpiry "SmartTemplate4 Pro will be automatically updated via addons.mozilla.org as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key.">
-<!ENTITY vouchers.title "Vouchers">
-<!ENTITY freeLicense "If you have recently donated to the SmartTemplate4 project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in SmartTemplate4 Options.">
-<!ENTITY account.label "Select account:">
-<!ENTITY email.label "Email:">
-<!ENTITY firstName.label "First Name:">
-<!ENTITY lastName.label "Last Name:">
-<!ENTITY buyLicense.instruct "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations.">
-<!ENTITY buyPersonalLicense.button "Buy Personal License!">
-<!ENTITY buyDomainLicense.instruct "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:">
-<!ENTITY buyDomainLicense.button "Buy Domain License">
-<!ENTITY enterLicenseKey.button "Enter License Key…">
-<!ENTITY enterLicenseKey.tooltip "Enter the License Key code sent to you via Email.">
+<!ENTITY licenseWindow.title "Dovoljenje SmartTemplate4 Pro">
+<!ENTITY label.licenseValid "Vaše dovoljenje velja do:">
+<!ENTITY label.haveLicense "Že imate dovoljenje?">
+<!ENTITY getSmartTemplate4 "Pridobite si SmartTemplate4 Pro">
+<!ENTITY intro "Letno dovoljenje za SmartTemplate4 Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega.">
+<!ENTITY testDrive "Lastnosti premium lahko preskusite v brezplačni različici, vendar je njihovo delovanje lahko rahlo omejeno.">
+<!ENTITY yearlyLicense.title "Letno dovoljenje">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate4 Pro omogoča poln in neomejen dostop do lastnosti premium.">
+<!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Več o lastnostih premium.">
+<!ENTITY yearlyLicense.usageTerm "Dovoljenje je za osebno uporabo in je vezano na vaš e-poštni naslov. Lahko ga namestite na več odjemalcev, dokler so le-ti nastavljeni na uporabo tega naslova.">
+<!ENTITY domainLicense.email "Za ustvarjanje domenskega dovoljenja vam bomo pisali na ta e-poštni naslov. Prosimo, dovolite nam dva delovna dneva za stik z vami. Na naslednji strani vnesite ime domene dovoljenja.">
+<!ENTITY domainLicense.header "E-poštna domena dovoljenja">
+<!ENTITY domainLicense.instruct "Dovoljenje je zaklenjeno na domeno vašega podjetja. To bo uporabnikom z e-poštnimi naslovi, ki se končajo na to domeno, omogočalo uporabo dodatka SmartTemplate4 Pro. Npr., če vnesete ime domene 'abc.com', potem bodo uporabniki kot so fredi@abc.com, marta@abc.com, miha.novak@abc.com itd., lahko uporabljali dovoljenje. Največje število veljavnih posameznih uporabnikov je število, ki ste ga vnesli na začetnem zaslonu.">
+<!ENTITY domainLicense.validate "Prepričajte se, da ste ime domene vnesli *natanko tako*, kot ga vsebuje e-poštni naslov vašega podjetja (del *za* znakom @), ker se bo uporabljalo  za odobritev e-poštnih naslovov vaših uporabnikov.">
+<!ENTITY updates.title "Posodobitve">
+<!ENTITY updatesExpiry "SmartTemplate4 Pro se bo samodejno posodabljal preko strani addons.mozilla.org kot običajno. Po preteku enega leta lahko dovoljenje obnovite ali pa še naprej uporabljate lastnosti premium pod pogoji, ki veljajo za brezplačno različico. Ekskluzivne lastnosti 'premium' zahtevajo veljaven registracijski ključ.">
+<!ENTITY vouchers.title "Boni">
+<!ENTITY freeLicense "Če ste že darovali za projekt SmartTemplate4 ali ste k njemu prispevali (npr. s prevajanjem ali pisanjem popravkov), ste morda upravičeni do brezplačnega dovoljenja. Navežite stik z mano preko zavihka Podpora v možnostih dodatka SmartTemplate4.">
+<!ENTITY account.label "Izberite račun:">
+<!ENTITY email.label "E-pošta:">
+<!ENTITY firstName.label "Ime:">
+<!ENTITY lastName.label "Priimek:">
+<!ENTITY buyLicense.instruct "Zase potrebujete dovoljenje? Pridobite si dovoljenje za eno osebo. Vezano je na vaš osebni e-poštni naslov in se ga lahko uporablja v več namestitvah.">
+<!ENTITY buyPersonalLicense.button "Kupi osebno dovoljenje!">
+<!ENTITY buyDomainLicense.instruct "Potrebujete dovoljenje za podjetje z več kot 5-imi uporabniki? Domensko dovoljenja bo za vas cenejše.">
+<!ENTITY buyDomainLicense.button "Kupi domensko dovoljenje">
+<!ENTITY enterLicenseKey.button "Vnesi ključ dovoljenja …">
+<!ENTITY enterLicenseKey.tooltip "Vnesite ključ dovoljenja, ki je bil poslan na vaš e-poštni naslov.">

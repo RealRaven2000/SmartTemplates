@@ -1,4 +1,14 @@
 "use strict";
+/* 
+BEGIN LICENSE BLOCK
+
+	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK 
+*/
+
 
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
@@ -901,6 +911,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		    composeCase = 'undefined',
 		    st4composeType = '',
 		    rawTemplate = '';
+	  if (isDebugComposer) debugger;
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
@@ -1504,6 +1515,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		resetDocument(gMsgCompose.editor, startup);
 		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
+		// remember  compose case for outside world
+		this.composeCase = composeCase;      // 'undefined', 'new', 'reply', 'forward', 'draft'
+		this.composeType = st4composeType;   // '', 'new', 'rsp', 'fwd'
 	};
 
 	function resetDocument(editor, withUndo) {

@@ -1,17 +1,13 @@
 "use strict";
-// -----------------------------------------------------------------------------------
-// ---------------------------- last edit at 06/02/2012 ------------------------------
-// -----------------------------------------------------------------------------------
-// ----------------------------------- Changelog -------------------------------------
-// -----------------------------------------------------------------------------------
-// 0.7.5: "use strict" suggested by Mozilla add-on review team
-// 0.7.8: logging an error in error console if an variable is used incorrect
-// 0.8.0: other order of Account Name-User Name' instead of 'User Name-Account Name
-// 0.8.1: rewrote large partitions of the script code to fix problems in TB13
-// 0.8.2: moved main object out to new file smartTemplate-main.js to share with settings.xul
-// 0.8.3: reformatted.
-// 0.8.4: renamed messengercomposeOverlay to smartTemplate-overlay.js for easier debugging
-// -----------------------------------------------------------------------------------
+/* 
+BEGIN LICENSE BLOCK
+
+	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+	For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK 
+*/
 
 //******************************************************************************
 // for messengercompose
@@ -279,7 +275,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   let msgContent = new String(SmartTemplate4_streamListener._data);
   headers.initialize(msgContent, msgContent.length);
 */  
-  if (messageURI.includes(".eml")) { 
+  if (messageURI.indexOf(".eml")>0) { 
 	  debugger;
 		return null;
 	}
@@ -1093,7 +1089,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       charset,
 			hdr = null;
 			
-  if (gMsgCompose.originalMsgURI.includes(".eml")) { 
+  if (gMsgCompose.originalMsgURI.indexOf(".eml")>0) { 
 		let messageWindow = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:messageWindow"),
 				messageHeaderSink = messageWindow.messageHeaderSink;
 		charset = gMsgCompose.compFields.characterSet;
@@ -1515,7 +1511,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 								extractSource = '',
 								rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
 
-						hdr =	(gMsgCompose.originalMsgURI.includes(".eml")) ?
+						hdr =	(gMsgCompose.originalMsgURI.indexOf(".eml")>0) ?
 							new SmartTemplate4.clsGetAltHeader(msgDbHdr) :
 							new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI);
 						switch(fromPart) {

@@ -1,75 +1,8 @@
 <ul>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26340" target="_blank">[Bug 26340]</a>
-		New "unmodified field" option for %To()%, %CC()% and %From()%
-		<code>%from(<i>initial</i>)%</code> New <i>initial</i> keyword to avoid any changes of header; just displays the header as received.</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26307" target="_blank">[Bug 26307]</a>
-		New switch for adding (subtracting) days from date fields:<br>
-		<code>%X:=calculated(n)%</code> where n = is the number of days to add. Note this needs to be reset using
-		<code>%X:=calculated(0)%</code> to unapply it to the rest of the Email.
-		</li>				
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26411" target="_blank">Bug 26411</a>
-		New: Expanded functions for manipulation of headers, based on 
-		<a href="http://www.regular-expressions.info/quickstart.html" target="_blank">Regular Expressions</a>.</li>
-<li><code>%header.set.matchFromSubject(<i>hdr,regex,group</i>)%</code> Set the header if a matching regular expression is found in subject line.</li>
-<li><code>%header.append.matchFromSubject(<i>hdr,regex,group</i>)%</code> Append text to header / recipient if a matching regular expression is found in subject line.</li>
-<li><code>%header.prefix.matchFromSubject(<i>hdr,regex,group</i>)%</code> Prefix text to header if a matching regular expression is found in subject line.</li>
-<li><code>%header.set.matchFromBody(<i>hdr,regex,group</i>)%</code> Set the header if a matching regular expression is found in quoted email.</li>
-<li><code>%header.append.matchFromBody(<i>hdr,regex,group</i>)%</code> Append text to header / recipient if a matching regular expression is found in quoted email.</li>
-<li><code>%header.prefix.matchFromBody(<i>hdr,regex,group</i>)%</code> Prefix text to header if a matching regular expression is found in quoted email.</li>
-<li><code>%header.delete(<i>hdr,regex</i>)%</code> Remove matching regular expression from text.</li>
-</ul>
-<p><i>hdr</i>: One of the following list {subject | to | from | cc | bcc | reply-to}</p>
-<p><i>regex</i>: A regular expression within double quotes, e.g. 
-"You got an email from .* \((\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b)\)" - 
-Note that this function supports <a href="http://www.regular-expressions.info/brackets.html" target="_blank">match groups</a>.</p>
-<p><i>group</i>: The number of the match group, type 0 for inserting the match from the complete expression.</p>
-<p>Notes: if no match is found the header will not be deleted or modified in any way. Therefore it is important 
-to  do a visual check on all fields before you send of your emails. No error messages will be issued when no
-match is found. Prefix and append will check whether the value already exist and avoid duplication. The prefix 
-command should not be used with address fields, instead use append to add more recipients.</p>
-<p>More information on regular expressions and examples can be found on the 
- <a href="variables.html#stringManipulation">variables page</a>.</p>
-<h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
-<ul>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26494" target="_blank">[Bug 26494]</a> 
-	ESR 2018 readiness - Make SmartTemplate<sup>4</sup> compatible with Thunderbird 60
-</li>
-<li>
-	<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26446" target="_blank">[Bug 26446]</a>
-	Thunderbird 57 hangs on start with SmartTemplate<sup>4</sup> enabled.<br>
-	See also the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1417209">Related Thunderbird bug </a>
-</li>
-<li>
-	(Gecko 57) Local date fails due to codebase changes - deprecated <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsILocaleService">nsILocaleService</a> causing local date to fail
-</li>
-<li>
-	(Gecko 57) Most date functions (datelocal, dateshort) Caused by deprecated <a href="https://dxr.mozilla.org/comm-central/search?q=nsIScriptableDateFormat&redirect=false">nsIScriptableDateFormat</a>
-</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26300" target="_blank">[Bug 26300]</a>
-		%cursor% leaves an unnecessary space character </li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26345" target="_blank">[Bug 26345]</a>
-		Unexpected "Â" character in mail body </li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26356" target="_blank">[Bug 26356]</a>
-		Thunderbird 52 - Forwarding an email inline adds empty paragraph on top.</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25571" target="_blank">[Bug 25571]</a>
-		"Replace line breaks with &lt;br&gt;" on when not enabled - if Common settings are used:
-		this inserted unwanted extra line breaks causing ugly spacing issues when forwarding email.
-		</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26364" target="_blank">[Bug 26364]</a>
-		Inline Images are not shown. The fix will look for file:\\\ paths and replace with the 
-		raw image data. This won't work if there is no "file:\\\" portion given (relative path / 
-		current folder not supported)
-		</li>
-</ul>
-
-<h5 class="inList"><span class="inListTitle">Postbox</span></h5>
-<ul>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26485" target="_blank">[Bug 26485]</a>
-		 Make SmartTemplate<sup>4</sup> compatible with the next Postbox build - 5.52 beta 6 (modern Gecko build) - as of beta 7, Postbox is following Mozilla Quantum in <a href="https://support.postbox-inc.com/hc/en-us/articles/115004234013" target="_blank">dropping 3rd party Addons support altogether</a>:
-		 <quote>
-			 <p> Postbox is based on Mozilla code, and as of Firefox Quantum, Mozilla has discontinued support for add-ons. As such, a decision has been made to remove add-ons functionality from Postbox at this time.</p>
-			 <p> Postbox's Signatures and Responses add-ons have been rolled into the core product. Cloud File Sharing and installable Dictionaries will be supported in future BETA releases. </p>
-			 <p>Add-ons from 3rd parties will no longer operate in Postbox, but we may opt to roll certain 3rd party add-on functionality into Postbox in the future.</p>
-		 </quote>
-</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26434" target="_blank">[Bug 26434]</a> Forwarding email with embedded images removes images</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26465" target="_blank">[Bug 26465]</a> Composer does not focus into body of mail.</li>
+<li>Updated locales for French and Slovenian language. Thanks to Joël Bauer and Peter Klofutar at Babelzilla.</li>
+<li>Raised minimum Thunderbird version to 45.0 </li>
+<li><a href="https://youtu.be/zJu9tpa0cHY">Release video<a/>Please help my YouTube channel by liking the video and subscribing.</li>
+<li>Changed license to Attribution-NoDerivatives 4.0 International <a href="http://creativecommons.org/licenses/by-nd/4.0/">(CC BY-ND 4.0)</a></li>
 </ul>

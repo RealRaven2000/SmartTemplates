@@ -227,16 +227,16 @@
 <!ENTITY table_fwd.label "Posreduj">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate4 Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate4 Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
+<!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">
+<!ENTITY button.pasteLicense "prilepi">
+<!ENTITY button.validateLicense "potrdi">
+<!ENTITY label.licenseValid "Dovoljenje velja do:">
+<!ENTITY licenseValidation.passed "Hvala, ker ste registrirali SmartTemplate4 Pro! Vse lastnosti premium so sedaj odklenjene.">
+<!ENTITY licenseValidation.failed "Vneseni ključ ni veljaven. Za navodila si oglejte e-pošto od FastSpringa. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora.">
+<!ENTITY licenseValidation.expired "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb.">
+<!ENTITY licenseValidation.invalidAddon "Vneseni ključ je lahko za drug dodatek. Ključi za {0} se začnejo s/z {1}.">
+<!ENTITY licenseValidation.invalidMail "Vaši e-poštni računi trenutno ne vsebujejo e-poštnega naslova, na katerega je vezan na ključ [{1}]. Za pomoč navežite stik z mano preko zavihka Podpora.">
+<!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
+<!ENTITY premiumConfig "Lastnosti premium">
+<!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani">

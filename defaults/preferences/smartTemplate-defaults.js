@@ -26,6 +26,7 @@ pref("extensions.smartTemplate4.names.capitalize", true);
 pref("extensions.smartTemplate4.names.quoteIfComma", false);
 pref("extensions.smartTemplate4.mail.suppressLink", false);
 pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
+pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); /* [BUG 26434] delay for inline image replacement when forwarding */
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */

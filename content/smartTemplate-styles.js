@@ -66,8 +66,8 @@ SmartTemplate4.Styles = {
 				if (!selectors || !selectors.length)
 					continue;
 				let selectorArray = selectors.split(',');
-				for (let r of selectorArray) {
-				// for each (let r in selectorArray) {
+				for (let j=0; j<selectorArray.length; j++) {
+					let r =selectorArray[j];
 					if (rule == leftTrim(r)) {
 						match=true;
 						break;
