@@ -225,18 +225,3 @@
 <!ENTITY table_new.label "Zápis">
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate4 Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

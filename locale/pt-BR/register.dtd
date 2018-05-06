@@ -18,11 +18,11 @@
 <!ENTITY freeLicense "Se você doou recentemente para o projeto SmartTemplate4 ou fez algum trabalho de contribuição, como traduzir ou gravar correções, pode se qualificar para uma chave de licença gratuita. Entre em contato comigo na aba suporte nas opções do SmartTemplate4.">
 <!ENTITY account.label "Selecione a conta:">
 <!ENTITY email.label "E-mail:">
-<!ENTITY firstName.label "Primeiro nome:">
+<!ENTITY firstName.label "Nome:">
 <!ENTITY lastName.label "Sobrenome:">
 <!ENTITY buyLicense.instruct "Precisa de uma licença para você? Obtenha uma licença de usuário único. Ela será vinculada ao seu endereço de e-mail pessoal e pode ser usada em várias instalações.">
 <!ENTITY buyPersonalLicense.button "Comprar Licença Pessoal !">
 <!ENTITY buyDomainLicense.instruct "Precisa de licenças para uma empresa com mais de cinco usuários? Obter uma licença de domínio sairá mais barato:">
 <!ENTITY buyDomainLicense.button "Comprar Licença de Domínio">
-<!ENTITY enterLicenseKey.button "Entrar Chave de Licença...">
-<!ENTITY enterLicenseKey.tooltip "Entre o código da Chave de Licença enviado por e-mail.">
+<!ENTITY enterLicenseKey.button "Digite a chave de licença...">
+<!ENTITY enterLicenseKey.tooltip "Digite a chave de licença enviado por e-mail.">

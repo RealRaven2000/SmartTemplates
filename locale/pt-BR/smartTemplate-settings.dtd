@@ -6,59 +6,59 @@
 <!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Copiar">
 <!ENTITY paste.label "Colar">
-<!ENTITY insert.label "Inserir Variável">
-<!ENTITY close.label "Fechar">
+<!ENTITY insert.label "Inserir variável">
+<!ENTITY close.label "Básico">
 <!ENTITY advanced.label "Avançado">
 <!ENTITY export.label "Exportar">
 <!ENTITY import.label "Importar">
-<!ENTITY menu.template_import.label "Importar Modelo">
-<!ENTITY menu.template_export.label "Exportar Modelo">
+<!ENTITY menu.template_import.label "Importar modelo">
+<!ENTITY menu.template_export.label "Exportar modelo">
 <!ENTITY settings.label "Configurações e modelos">
-<!ENTITY url.homePage.label "Página do complemento">
+<!ENTITY url.homePage.label "Página de complementos">
 <!ENTITY url.supportPage.label "Página de suporte">
-<!ENTITY url.bugsAndFeaturesPage.label "Relatar Bug / Pedido de Recursos">
+<!ENTITY url.bugsAndFeaturesPage.label "Relatar bug / Solicitar recursos">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nova">
 <!ENTITY pref_rsp.tab "Responder">
 <!ENTITY pref_fwd.tab "Encaminhar">
 <!ENTITY pref_help.tab "Ajuda">
 <!ENTITY pref_about.tab "Sobre">
-<!ENTITY pref_global.tab "Configurações Globais">
-<!ENTITY pref_advanced.tab "Configurações Avançadas">
+<!ENTITY pref_global.tab "Configurações globais">
+<!ENTITY pref_advanced.tab "Configurações avançadas">
 <!ENTITY pref_variables.tab "Variáveis">
-<!ENTITY pref_examples.tab "Exemplos (somenet online)">
+<!ENTITY pref_examples.tab "Exemplos (somente online)">
 <!ENTITY pref_examples.tooltip "Mostrar modelos de exemplo de http://smarttemplate4.mozdev.org/templates.html. Somente disponível no modo online.">
 <!-- #### BUTTONS #### -->
-<!ENTITY accept_button "Aceptar">
-<!ENTITY cancel_button "Descartar">
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Cancelar">
 <!ENTITY contribute_button "Contribuir">
 <!ENTITY button.updateThunderbird "Atualizar Thunderbird!">
 <!-- #### GUI #### -->
-<!ENTITY pref_groupMailContent "Conteúdo do Correio">
+<!ENTITY pref_groupMailContent "Conteúdo do email">
 <!ENTITY pref_groupSignatures "Assinaturas">
-<!ENTITY pref_groupAdvanced "Funções Avançadas">
-<!ENTITY pref_groupUI "Interface do Usuário">
-<!ENTITY pref_groupNameRules "Nomear Regras">
-<!ENTITY pref_groupTroubleShooting "Resolução de Problemas">
-<!ENTITY pref_addSigBreakHTML.label "Adicionar --no correio HTML">
-<!ENTITY pref_addSigBreakHTML.tooltip "Sempre adicionar delimitador -- antes da assinatura (em correios HTML)">
-<!ENTITY pref_addSigBreakPlaintext.label "Adicionar --no correio de texto simples">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Sempre adicionar delimitador -- antes da assinatura (em correios de texto simples)">
-<!ENTITY pref_quoteHeaderBox.label "Citação de Cabeçalho">
+<!ENTITY pref_groupAdvanced "Funções avançadas">
+<!ENTITY pref_groupUI "Interface do usuário">
+<!ENTITY pref_groupNameRules "Nomear regras">
+<!ENTITY pref_groupTroubleShooting "Resolução de problemas">
+<!ENTITY pref_addSigBreakHTML.label "Adicionar --no email HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Sempre adicionar delimitador -- antes da assinatura (email HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Adicionar -- no email de texto simples">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Sempre adicionar delimitador -- antes da assinatura (em email de texto simples)">
+<!ENTITY pref_quoteHeaderBox.label "Citação de cabeçalho">
 <!ENTITY pref_quoteHeaderBox_tip "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Modelo">
-<!ENTITY pref_templateBox_tip "Escreva seu Modelo nest Caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
+<!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
 <!ENTITY pref_dialog.title "Opções do SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
 <!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
 <!ENTITY pref_showStatusIcon.label "Exibir botão na barra de status">
-<!ENTITY pref_StatusIcon.IconOnly "Somente Ícone">
-<!ENTITY pref_StatusIcon.IconText "Ícone e Texto">
+<!ENTITY pref_StatusIcon.IconOnly "Somente ícone">
+<!ENTITY pref_StatusIcon.IconText "Ícone e texto">
 <!ENTITY pref_StatusIcon.IconHoverText "Texto ao passar o cursor">
-<!ENTITY pref_fontSettings.label "Fonte do Editor de Modelos">
+<!ENTITY pref_fontSettings.label "Fonte do editor de modelos">
 <!ENTITY pref_server_desc "Conta">
-<!ENTITY btnSaveTemplate.tooltip "Salvar Modelo...">
-<!ENTITY btnLoadTemplate.tooltip "Carregar Modelo...">
+<!ENTITY btnSaveTemplate.tooltip "Salvar modelo...">
+<!ENTITY btnLoadTemplate.tooltip "Carregar modelo...">
 <!ENTITY btnYouTube.tooltip "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o Stationery e outras complementos">
 <!ENTITY pref_server_def "Configuração global">
 <!ENTITY pref_def.label "Usar configuração global">
@@ -81,27 +81,27 @@
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Modo de depuração">
 <!ENTITY pref_hideExamples "Ocultar aba de exemplos">
-<!ENTITY pref_debug_tip "Clique direito para opções avançadas de depuração">
-<!ENTITY pref_nameSwap "Corrigir ÚltimoNome, PrimeiroNome">
-<!ENTITY pref_nameSwap_tip "Altera 'ÚltimoNome, PrimeiroNome' para 'Primeiro Último'">
+<!ENTITY pref_debug_tip "Clique com o botão direito do mouse para opções avançadas e de depuração">
+<!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
+<!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
-<!ENTITY resolveNamesFromAB "Resolver nomes do livro de endereços">
+<!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
 <!ENTITY resolveNamesFromAB_tip "Este recurso não funciona com certos catálogos de endereços, como LDAP.">
-<!ENTITY resolveNamesFromABNick "Substiuir primeiro nome se Apelido está presente">
-<!ENTITY resolveABRemoveMail "Remover endereço de e-mail a menos que o parâmetro de formato esteja especificado">
-<!ENTITY suppressMailtToLink "Suprimir cliente de e-mail adicionando links aos endereços de e-mail.">
-<!ENTITY capitalizeNames "Capitalizar Nomes">
+<!ENTITY resolveNamesFromABNick "Substituir primeiro nome se o apelido estiver presente">
+<!ENTITY resolveABRemoveMail "Remover endereço de email a menos que o parâmetro de formato esteja especificado">
+<!ENTITY suppressMailtToLink "Suprimir cliente de email adicionando links aos endereços de email.">
+<!ENTITY capitalizeNames "Capitalizar nomes">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
 <!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">
-<!ENTITY pref_stationerySupport "Apoie o addon Stationery">
-<!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o smartTemplate4.">
+<!ENTITY pref_stationerySupport "Apoie o Stationery">
+<!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">
 <!ENTITY pref_stationeryLink "Addon Stationery">
-<!ENTITY pref_forceParagraph "Forçar Modo Parágrafo">
-<!ENTITY pref_forceParagraph_tip "Certifique-se de que a posição do cursor começa em um parágrafo. Recomendamos também a opção Compor do Thunderbird para criar um novo parágrafo ao pressionar a tecla [Enter].">
+<!ENTITY pref_forceParagraph "Forçar modo parágrafo">
+<!ENTITY pref_forceParagraph_tip "Certifique-se de que a posição do cursor comece em um parágrafo. Recomendamos também a opção compor do Thunderbird para criar um novo parágrafo ao pressionar a tecla [Enter].">
 <!ENTITY pref_stationeryLink_tip "Obter Stationery...">
 <!ENTITY pref_defaultCharset.label "Codificação padrão">
 <!ENTITY pref_defaultCharset_tip "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada.">
@@ -115,67 +115,68 @@
 <!ENTITY contributor.label "Colaboração">
 <!ENTITY about.label "SmartTemplate4 oferece um modelos inteligentes / mais fácil forma de usar o que personalizar o Thunderbird padrão citação cabeçalho. Modelos (citação do cabeçalho) pode ser usado para a conta única ou para configurações globais (contas comuns).">
 <!-- #### HELP #### -->
-<!ENTITY fix_var.cap "Variáveis Básicas">
+<!ENTITY fix_var.cap "Variáveis básicas">
 <!ENTITY ownname.label "Seu nome">
 <!ENTITY ownmail.label "Seu endereço de e-mail">
 <!ENTITY date.label "Data e hora (igual ao encontrado no cabeçalho da mensagem)">
 <!ENTITY tomail.label "Nome e endereço do destinatário">
 <!ENTITY frommail.label "Nome e endereço do remetente">
 <!ENTITY ccmail.label "Nome e endereço do destinatário">
-<!ENTITY sig.label "Assinatura (da TB Conta Settings)">
-<!ENTITY sig2.label "Assinatura (da TB Conta Settings mas sem o '--')">
+<!ENTITY sig.label "Assinatura das configurações da conta">
+<!ENTITY sig2.label "Assinatura das configurações da conta sem o '--'">
 <!ENTITY fileHTML.label "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'.">
-<!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O opcional altText é exibido se a imagem não pode ser localizada.">
-<!ENTITY cursor.label "Define a posição do cursor">
-<!ENTITY to_var.cap "Variáveis de Destinatário (Para)">
+<!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada.">
+<!ENTITY cursor.label "Definir a posição do cursor">
+<!ENTITY to_var.cap "Variáveis de destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY to.label "Destinatário (padrão)">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
-<!ENTITY from_var.cap "Variáveis de Remetente (De)">
+<!ENTITY from_var.cap "Variáveis de remetente (De)">
 <!ENTITY from_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label "Remetente (padrão)">
 <!ENTITY fromfirstname.label "Primeiro nome do remetente">
 <!ENTITY fromname.label "Nome do remetente">
-<!ENTITY cc_var.cap "Variáveis de Destinatário (Cc)">
+<!ENTITY cc_var.cap "Variáveis de destinatário (Cc)">
 <!ENTITY cc_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY cc.label "Destinatário (padrão)">
 <!ENTITY ccfirstname.label "Primeiro nome do destinatário">
 <!ENTITY ccname.label "Nome do destinatário">
-<!ENTITY spec_form.cap "Formato Especial">
+<!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
-<!ENTITY ex_brack.label "Exemplo: Para: boo Cc: foo">
+<!ENTITY ex_brack.label "Exemplo: Para: Fred Cc: Jane">
 <!ENTITY brack_with_var.label "As seguintes variáveis podem ser usadas dentro de [[...]]">
 <!ENTITY sub_var.cap "Assunto">
-<!ENTITY sub.label "Assunto (mesmo como mailheader originais)">
-<!ENTITY sub2.label "Assunto (mesmo como editor Mensagem TB)">
-<!ENTITY spec_var.cap "Variáveis Especiais">
+<!ENTITY sub.label "Assunto de email respondido / encaminhado">
+<!ENTITY sub2.label "Assunto da mensagem atual">
+<!ENTITY spec_var.cap "Variáveis especiais">
 <!ENTITY messid.label "Identificador da mensagem">
-<!ENTITY newsgr.label "Newsgroups">
+<!ENTITY newsgr.label "Grupos de notícias">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Qualquer linha de cabeçalho">
-<!ENTITY header_function.cap "Modificar cabeçalho do e-mail">
-<!ENTITY header_function.explain "Esta função pode ser usada para modificar cabeçalhos de e-mails, como descrito aqui:">
+<!ENTITY header_function.cap "Modificar cabeçalho do email">
+<!ENTITY header_function.explain "Esta função pode ser usada para modificar cabeçalhos de emails, como descrito aqui:">
 <!ENTITY header_function.scope "Ele pode ser usado com estes cabeçalhos:">
 <!ENTITY header.set.subject "substituir assunto pelo texto">
-<!ENTITY header.prefix.subject "prefixar assunto com o texto">
+<!ENTITY header.prefix.subject "prefixo do assunto
+">
 <!ENTITY header.append.subject "anexar texto ao assunto">
-<!ENTITY header.set.to "substituir destinatário pelo endereço de e-mail">
-<!ENTITY header.append.to "adicionar e-mail à lista do destinatário">
-<!ENTITY stringmanip_function.cap "Manipulação de String">
-<!ENTITY stringmanip_function.explain "Essas funções podem ser usadas para excluir ou substituir texto dentro do modelo de e-mail ou cabeçalho de citação.">
+<!ENTITY header.set.to "substituir destinatário pelo endereço de email">
+<!ENTITY header.append.to "adicionar email à lista do destinatário">
+<!ENTITY stringmanip_function.cap "Manipulação de string">
+<!ENTITY stringmanip_function.explain "Essas funções podem ser usadas para excluir ou substituir texto dentro do modelo de email ou cabeçalho de citação.">
 <!ENTITY deleteText "Remove algum texto da Citação, ex.: deleteText(&quot;via Paypal&quot;)">
 <!ENTITY replaceText "Substitui algum texto por outra coisa.">
 <!ENTITY matchTextFromBody "Encontra um padrão RegEx no e-mail citado e insere no local da função.">
 <!ENTITY matchTextFromSubject "Encontra um padrão RegEx no assunto e insere no local da função.">
 <!ENTITY stringmanip.match.comment "Funções correspondentes: O primeiro parâmetro (a expressão regular) deve estar entre aspas duplas. O segundo parâmetro é o número do grupo de correspondência. Use 0 para corresponder a expressão completa, 1 para o primeiro grupo, etc.">
-<!ENTITY fix_vartz.cap "Variáveis para Data e Hora">
+<!ENTITY fix_vartz.cap "Variáveis para data e hora">
 <!ENTITY fix_vartz_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e hora (formato local)">
-<!ENTITY dateshort.label "Data e hora curta (por exemplo, 01/01/2000 1:23:45)">
+<!ENTITY dateshort.label "Data e hora curta (exemplo: 01/01/2000 01:23:45)">
 <!ENTITY datetz.label "Fuso horário (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
-<!ENTITY var_custom.cap "Variáveis para Data e Hora Personalizáveis ">
+<!ENTITY var_custom.cap "Variáveis para data e hora personalizáveis ">
 <!ENTITY customdf_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY A.label "Dia da semana (Domingo)">
 <!ENTITY a.label "Dia da semana (Dom.)">
@@ -185,7 +186,7 @@
 <!ENTITY B.label "Nome do mês (Janeiro)">
 <!ENTITY b.label "Nome do mês (Jan.)">
 <!ENTITY m.label "Mês (de 01 a 12)">
-<!ENTITY Y.label "Año (1970)">
+<!ENTITY Y.label "Ano (1970)">
 <!ENTITY M.label "Minuto (00 a 59)">
 <!ENTITY s.label "Segundo (00 a 59)">
 <!ENTITY h.label "Hora, no formato de 24 horas (de 00 a 23)">
@@ -200,16 +201,16 @@
 <!ENTITY xsent_note.label "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">
 <!ENTITY xsent_long.cap "Exemplo com variáveis personalizáveis:">
 <!ENTITY xsent_long.label "A frase &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; às &#37;H&#37;:&#37;M&#37;">
-<!ENTITY xsent_long_result.label "Resultado: 16/02/2011 às 12:15">
+<!ENTITY xsent_long_result.label "Resultado: 20/12/2011 às 16:24">
 <!ENTITY xsent_short.cap "Exemplos com variáveis fixas:">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
-<!ENTITY xsent_short_result.label "Resultado: Quarta-feira, 16/02/2011 12:15:25">
-<!ENTITY xsent_short_note.label "Adicional que você pode usar em ambas as variáveis ​​seguintes variantes também:">
+<!ENTITY xsent_short_result.label "Resultado: Quarta-feira, 20/12/2011 08:54:21">
+<!ENTITY xsent_short_note.label "As seguintes variáveis podem ser usadas em ambas as variantes também">
 <!ENTITY localedate.label "Data e hora (formato local)">
-<!ENTITY shortdate.label "Data e hora curta (por exemplo, 01/01/2000 1:23:45)">
+<!ENTITY shortdate.label "Data e hora curta (por exemplo, 01/01/2000 01:23:45)">
 <!ENTITY datetimezone.label "Fuso horário (+0100, +0200, ... )">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
-<!ENTITY im-ex.cap "Exportação/Importação de Configurações e Modelos">
+<!ENTITY im-ex.cap "Configurações e importação/exportação de modelos">
 <!ENTITY im-ex_note1.label "Você pode exportar e importar as configurações e os modelos associados a cada conta.">
 <!ENTITY im-ex_note2.label "Primeiro, selecione a conta que você deseja exportar no campo 'Conta' das opções do SmartTemplate4.">
 <!ENTITY im-ex_note3.label "Depois, clique no menu 'Ferramentas' &#8658; 'Exportar' &#8658; 'Configurações e Modelos' e salve no seu computador o arquivo do SmartTemplate4 (extensão .st4).">
@@ -218,8 +219,8 @@
 <!ENTITY im-ex_note6.label "OBSERVAÇÃO: Nos computadores Apple/Macintosh o menu será exibido na faixa superior e não na janela de opções do SmartTemplate4. Este é o comportamento padrão nessa plataforma e não pode ser alterado.">
 <!ENTITY html_note.cap "Observações para Modelos em HTML">
 <!ENTITY html_note.label "Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!">
-<!ENTITY table.cap "Uso das Variáveis">
-<!ENTITY table_note.label "Se uma variável usada incorreta um erro é registrado no Errorconsole!">
+<!ENTITY table.cap "Uso das variáveis">
+<!ENTITY table_note.label "Usar variáveis incorretamente gerará mensagens de erro no 'console de erros'!">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variáveis">
 <!ENTITY table_new.label "Nova">
