@@ -2,5 +2,5 @@
 set /P smartTemplateRev=<revision.txt
 set /a smartTemplateRev+=1
 echo %smartTemplateRev% > revision.txt
-move *.xpi "..\..\Release\_Test Versions\1.5.1\"
-rename smartTemplate.zip smartTemplate-1.5.1pre%smartTemplateRev%.xpi
+move *.xpi "..\..\Release\_Test Versions\1.5.2\"
+rename smartTemplate.zip smartTemplate-1.5.2pre%smartTemplateRev%.xpi

@@ -276,7 +276,7 @@ END LICENSE BLOCK
 		# Remember expanded / contracted status of setting dialog 
 		# Close settings dialog when clicking on links in the support tab		
 		
-	Version 1.5.1 - WIP
+	Version 1.5.1 - 03/05/2018
 	  # changed license to (CC BY-ND 4.0)
 	  # [Bug 26518] Clicking on variables in the Variables Tab doesn't copy them
 		# [Bug 26434] Forwarding email with embedded images removes images
@@ -284,6 +284,10 @@ END LICENSE BLOCK
 									MsgComposeCommands uses loadBlockedImage() ?
 	  # [Bug 26307] Extend dates variables with additional offset parameter for hours / minutes
 		
+	Version 1.5.2 - WIP
+	  # [Bug 26523] Remove extra <br> before blockquote if standard quote header is used.
+		# [Bug 26524] %datelocal% and %dateshort% are broken in Tb 60
+		# Completed various translations (ru, pl, nl, sr)
 
 =========================
 To Do

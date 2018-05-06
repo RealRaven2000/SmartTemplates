@@ -1190,7 +1190,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				// this interface was removed in Gecko 57.0
 				// alternative date formatting
 				Cu.import("resource:///modules/ToLocaleFormat.jsm");
-				fmt = Services.intl.createDateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
+				fmt = new Services.intl.DateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
 			}
 			    
       
@@ -1209,13 +1209,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			    timeFormat = null;
 			switch (timeType) {
 				case "datelocal":
-					dateFormat = isOldDateFormat ? fmt.dateFormatLong : Services.intl.createDateTimeFormat(undefined, {dateStyle: "long"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : Services.intl.createDateTimeFormat(undefined, {timeStyle: "long"}).format();
+					dateFormat = isOldDateFormat ? fmt.dateFormatLong : new Services.intl.DateTimeFormat(undefined, {dateStyle: "long"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "long"}).format();
 					break;
 				case "dateshort":
 				default:
-					dateFormat = isOldDateFormat ? fmt.dateFormatShort : Services.intl.createDateTimeFormat(undefined, {dateStyle: "short"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : Services.intl.createDateTimeFormat(undefined, {timeStyle: "short"}).format();
+					dateFormat = isOldDateFormat ? fmt.dateFormatShort : new Services.intl.DateTimeFormat(undefined, {dateStyle: "short"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "short"}).format();
 					break;
 			}
 

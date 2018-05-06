@@ -442,7 +442,8 @@ SmartTemplate4.classSmartTemplate = function() {
 	//In compose with TEXT, body is
 	//	<BR><BR>(<- if reply_on_top=1) <#text#>..... (reply_header_xxxx) <BR><SPAN> original-message
 	//We need to remove a few lines depending on reply_ono_top and reply_header_xxxx.
-	function delReplyHeader(idKey, onlyHeader) {
+	// [Bug 26523] added an additional option to only delete the space before the original quote header
+	function delReplyHeader(idKey, onlyHeader, onlySpace) {
 		function countLF(str) { return str.split("\n").length - 1; }
 
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader()');
@@ -489,9 +490,8 @@ SmartTemplate4.classSmartTemplate = function() {
 			node = n;
 		}
 
-
-		if (util.versionGreaterOrEqual(util.AppverFull, "12") ||
-        util.Application != 'Thunderbird') {
+		// remove quote header elemenbt
+		if (!onlySpace) {
 			// recursive search from root element
 			let node = findChildNode(rootEl, 'moz-email-headers-table');
 			if (node) {
@@ -508,6 +508,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 				
 		}
+		/*   // OLD CODE
 		else {
 			switch (pref.getCom("mailnews.reply_header_type", 1)) {
 				case 3:	// LFLF + author + separator + ondate + colon+LF
@@ -532,6 +533,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				deleteNodeTextOrBR(rootEl.firstChild, idKey);
 			}
 		}
+		*/
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
 	};
 
@@ -1023,6 +1025,8 @@ SmartTemplate4.classSmartTemplate = function() {
 								// when in stationery we only delete the quote header and not all preceding quotes!
 								delReplyHeader(idKey, flags.isStationery);
 							}
+							else
+								delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
 						}
 						break;
 					case 'forward':
@@ -1039,8 +1043,9 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						break;
 				}
+				
+				if (isDebugComposer) debugger;
 				if (isQuoteHeader) {
-					if (isDebugComposer) debugger;
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = util.mailDocument.createElement("div");
 						qd.id = "smartTemplate4-quoteHeader";
@@ -1091,6 +1096,9 @@ SmartTemplate4.classSmartTemplate = function() {
 							}
 						}
 					}
+				}
+				else { // delete all <br> before quote!
+					
 				}
 			}
 			else {
