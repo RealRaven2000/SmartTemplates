@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
 <!ENTITY resolveNamesFromAB_tip "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。">
 <!ENTITY resolveNamesFromABNick "ニックネームが存在する場合には名前を置き換える">
+<!ENTITY resolveNamesFromABDisplay "名が存在しない場合 Display Name を使用する">
 <!ENTITY resolveABRemoveMail "フォーマットで指定されない限りメールアドレスを除去する">
 <!ENTITY suppressMailtToLink "メールアドレスにリンクを設定することを抑制する">
 <!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "アカウントに設定されている署名 ('-- ' 無し)">
 <!ENTITY fileHTML.label "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。">
 <!ENTITY fileImage.label "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。">
+<!ENTITY attach.label "添付ファイルとして追加する">
 <!ENTITY cursor.label "カーソルの位置を設定する">
 <!ENTITY to_var.cap "受信者 (To)">
 <!ENTITY to_note.label "受信者の名前が設定されていない場合、メールアドレスが表示されます">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "日時 (短い形式: 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "タイムゾーン (+0100, +0200, ... )">
 <!ENTITY tzname.label "タイムゾーン (GMT, PST, EST, ... )">
+<!ENTITY dateoffset_note.label "表示された日時をどれだけずらすか指定します">
+<!ENTITY calculate.explain "DD=追加する日数 H=追加する時間数 (オプション) MM=追加する分数 (オプション)">
+<!ENTITY calculate.reset "日時の修正を行わない場合は 0 を指定してください">
 <!ENTITY var_custom.cap "日時に関する変数">
 <!ENTITY customdf_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY A.label "曜日 (金曜日)">

@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
 <!ENTITY resolveNamesFromAB_tip "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP.">
 <!ENTITY resolveNamesFromABNick "Vorname durch Spitznamen ersetzen falls vorhanden">
+<!ENTITY resolveNamesFromABDisplay "Falls Vorname fehlt, durch Anzeigenamen ersetzen">
 <!ENTITY resolveABRemoveMail "Email Adresse entfernen wenn kein Formatparameter angegeben ist">
 <!ENTITY suppressMailtToLink "Verhindern dass Mail Programme Email Adressen verlinken.">
 <!ENTITY capitalizeNames "Namen großschreiben">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Signatur aus den Konten-Einstellungen aber ohne '--'">
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
+<!ENTITY attach.label "Datei als Anhang anfügen">
 <!ENTITY cursor.label "Bestimmt die Position des Cursors">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Zeitzone (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, … ">
+<!ENTITY dateoffset_note.label "Die folgende Funktion addiert einen Zeitabstand zu allen folgenden Zeiten.">
+<!ENTITY calculate.explain "DD=Anzahl der addierten Tage. H=Anzahl addierter Stunden (optional). MM=Anzahl addierter Minuten (optional).">
+<!ENTITY calculate.reset "0 setzt alle nachfolgenden Zeiten zurück.">
 <!ENTITY var_custom.cap "Variablen für angepasstes Datumsformat">
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY A.label "Wochentag (Freitag)">

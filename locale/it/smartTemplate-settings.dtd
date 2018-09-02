@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
 <!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
 <!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
+<!ENTITY resolveNamesFromABDisplay "Usa Display Name se il nome proprio è assente">
 <!ENTITY resolveABRemoveMail "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato">
 <!ENTITY suppressMailtToLink "Non richiama i programmi di posta se si aggiunge un riferimento ad un indirizzo di posta elettronica.">
 <!ENTITY capitalizeNames "Nomi con lettera iniziale in maiuscolo">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
 <!ENTITY fileHTML.label "File HTML o in testo semplice. Utilizza UTF-8 se il parametro opzionale della codifica dei caratteri è omesso.">
 <!ENTITY fileImage.label "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata.">
+<!ENTITY attach.label "Aggiungi un file come allegato">
 <!ENTITY cursor.label "Imposta la posizione del cursore">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "Data/ora abbreviata (es: 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuso orario (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "Questa funzione aggiunge un intervallo temporale a tutte le ore visualizzate">
+<!ENTITY calculate.explain "DD=numero di giorni da aggiungere. H=numero di ore da aggiungere (opzionale). MM=minuti da aggiungere (opzionale) ">
+<!ENTITY calculate.reset "Imposta il parametro a 0 per interrompere la modifica delle ore.">
 <!ENTITY var_custom.cap "Variabili per data/ora personalizzata ">
 <!ENTITY customdf_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY A.label "Nome del giorno (Venerdì)">

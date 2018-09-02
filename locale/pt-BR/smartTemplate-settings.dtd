@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
 <!ENTITY resolveNamesFromAB_tip "Este recurso não funciona com certos catálogos de endereços, como LDAP.">
 <!ENTITY resolveNamesFromABNick "Substituir primeiro nome se o apelido estiver presente">
+<!ENTITY resolveNamesFromABDisplay "Utilizar nome de exibição se o primeiro nome estiver ausente">
 <!ENTITY resolveABRemoveMail "Remover endereço de email a menos que o parâmetro de formato esteja especificado">
 <!ENTITY suppressMailtToLink "Suprimir cliente de email adicionando links aos endereços de email.">
 <!ENTITY capitalizeNames "Capitalizar nomes">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Assinatura das configurações da conta sem o '--'">
 <!ENTITY fileHTML.label "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'.">
 <!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada.">
+<!ENTITY attach.label "Adicionar arquivo como anexo">
 <!ENTITY cursor.label "Definir a posição do cursor">
 <!ENTITY to_var.cap "Variáveis de destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
@@ -176,6 +178,9 @@
 <!ENTITY dateshort.label "Data e hora curta (exemplo: 01/01/2000 01:23:45)">
 <!ENTITY datetz.label "Fuso horário (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "A função a seguir adiciona um deslocamento a todos os tempos exibidos a seguir.">
+<!ENTITY calculate.explain "DD = número de dias para adicionar. H = número de horas para adicionar (opcional). MM = minutos para adicionar (opcional)">
+<!ENTITY calculate.reset "Definir o argumento como 0 para interromper a modificação de datas.">
 <!ENTITY var_custom.cap "Variáveis para data e hora personalizáveis ">
 <!ENTITY customdf_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY A.label "Dia da semana (Domingo)">

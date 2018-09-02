@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
 <!ENTITY resolveNamesFromAB_tip "Esta funcionalidad no funciona con algunas agendas remotas como LDAP">
 <!ENTITY resolveNamesFromABNick "Reemplazar nombre si hay un apodo">
+<!ENTITY resolveNamesFromABDisplay "Usar Mostrar nombre si falta el nombre de pila">
 <!ENTITY resolveABRemoveMail "Eliminar dirección de correo si no está especificado el parámetro de formato">
 <!ENTITY suppressMailtToLink "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo">
 <!ENTITY capitalizeNames "Nombres en mayúsculas">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Firma de la Configuración de cuentas de TB pero sin '--'">
 <!ENTITY fileHTML.label "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8.">
 <!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
+<!ENTITY attach.label "Añadir archivo como adjunto">
 <!ENTITY cursor.label "Establece la posición del cursor">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Zona horaria (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
+<!ENTITY dateoffset_note.label "La siguiente función inserta un retardo a todas las fechas mostradas a continuación.">
+<!ENTITY calculate.explain "DD=días a añadir. H=horas a añadir (opcional). MM=minutos a añadir (opcional).">
+<!ENTITY calculate.reset "Deje el valor a 0 para no modificar más fechas.">
 <!ENTITY var_custom.cap "Variables para formatos de fecha personalizados">
 <!ENTITY customdf_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY A.label "Día de la semana (Viernes)">

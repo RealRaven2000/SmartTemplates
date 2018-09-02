@@ -89,6 +89,7 @@
 <!ENTITY resolveNamesFromAB "Розпізнавати імена використовуючи адресну книгу">
 <!ENTITY resolveNamesFromAB_tip "Ця функція не працює з деякими віддаленими адресними книгами, такими як LDAP.">
 <!ENTITY resolveNamesFromABNick "Замінити ім'я якщо є нікнейм ">
+<!ENTITY resolveNamesFromABDisplay "Використовувати відображуване ім'я, якщо ім'я відсутнє">
 <!ENTITY resolveABRemoveMail "Видалити адреса електронної пошти, якщо не вказано параметр формату">
 <!ENTITY suppressMailtToLink "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти.">
 <!ENTITY capitalizeNames "Назви прописними ">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Підпис з налаштувань запису але без '--'">
 <!ENTITY fileHTML.label "HTML або звичайний текстовий файл. UTF-8 передбачається, як додатковий параметр кодування символів.">
 <!ENTITY fileImage.label "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено.">
+<!ENTITY attach.label "Додати файл як вкладення">
 <!ENTITY cursor.label "Позиції курсора">
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "Дата / Час короткий запис (напр. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Часовий пояс (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
+<!ENTITY dateoffset_note.label "Наступна функція додає зміщення на всі наступні відображення часу.">
+<!ENTITY calculate.explain "DD=кількість днів до додавання. H=кількість годин для додавання (необов'язково). MM=хвилини для додавання (необов'язково)">
+<!ENTITY calculate.reset "Встановіть аргумент на 0, щоб зупинити зміну будь-яких дат.">
 <!ENTITY var_custom.cap "Змінні для персоналізації 'Date format'">
 <!ENTITY customdf_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY A.label "День неділі (П'ятниця)">

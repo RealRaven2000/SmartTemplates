@@ -1,15 +1,65 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "File">
+<!ENTITY tools.label "Tools">
+<!ENTITY edit.label "Edit">
+<!ENTITY help.label "Help">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Copy">
+<!ENTITY paste.label "Paste">
+<!ENTITY insert.label "Insert Variable">
+<!ENTITY close.label "Basic">
+<!ENTITY advanced.label "Advanced">
+<!ENTITY export.label "Export">
+<!ENTITY import.label "Import">
+<!ENTITY menu.template_import.label "Import Template">
+<!ENTITY menu.template_export.label "Export Template">
+<!ENTITY settings.label "Settings and Templates">
+<!ENTITY url.homePage.label "Add-On Homepage">
+<!ENTITY url.supportPage.label "Support Page">
+<!ENTITY url.bugsAndFeaturesPage.label "Bug Reports / Feature Requests">
 <!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Nytt">
 <!ENTITY pref_rsp.tab "Svara">
 <!ENTITY pref_fwd.tab "Framåt">
 <!ENTITY pref_help.tab "Hjälp">
 <!ENTITY pref_about.tab "Ca">
+<!ENTITY pref_global.tab "Global Settings">
+<!ENTITY pref_advanced.tab "Advanced Settings">
+<!ENTITY pref_variables.tab "Variables">
+<!ENTITY pref_examples.tab "Examples (online only)">
+<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">
 <!ENTITY contribute_button "Bidra">
+<!ENTITY button.updateThunderbird "Update Thunderbird!">
+<!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Mail Content">
+<!ENTITY pref_groupSignatures "Signatures">
+<!ENTITY pref_groupAdvanced "Advanced Functions">
+<!ENTITY pref_groupUI "User Interface">
+<!ENTITY pref_groupNameRules "Name Rules">
+<!ENTITY pref_groupTroubleShooting "Troubleshooting">
+<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
+<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
+<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
+<!ENTITY pref_quoteHeaderBox.label "Quote Header">
+<!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">
+<!ENTITY pref_templateBox.label "Template">
+<!ENTITY pref_templateBox_tip "In this box, put your mail template e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Inställningar för SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
+<!ENTITY pref_removeSig.label "Replace signature when changing email identity">
+<!ENTITY pref_showStatusIcon.label "Display button in status bar">
+<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
+<!ENTITY pref_StatusIcon.IconText "Icon And Text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
+<!ENTITY pref_fontSettings.label "Template Editor Font">
 <!ENTITY pref_server_desc "Konto">
+<!ENTITY btnSaveTemplate.tooltip "Save Template…">
+<!ENTITY btnLoadTemplate.tooltip "Load Template…">
+<!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
 <!ENTITY pref_server_def "Allmänna inställningar">
 <!ENTITY pref_def.label "Använd allmänna inställningar">
 <!ENTITY pref_def.cap "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot.">
@@ -29,6 +79,33 @@
 <!ENTITY pref_template_tip "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
 <!ENTITY help_dialog_title "Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap "Hjälp">
+<!ENTITY pref_debug_check "Debug mode">
+<!ENTITY pref_hideExamples "Hide examples tab">
+<!ENTITY pref_debug_tip "Right-click for advanced debug options">
+<!ENTITY pref_nameSwap "Correct LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
+<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
+<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
+<!ENTITY resolveNamesFromAB "Resolve names from address books">
+<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote address books, such as LDAP.">
+<!ENTITY resolveNamesFromABNick "Replace first name with Nickname if present">
+<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
+<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
+<!ENTITY capitalizeNames "Capitalize Names">
+<!ENTITY pref_parseSignature "Process signature">
+<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
+<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
+<!ENTITY pref_stationerySupport "Support Stationery addon">
+<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
+<!ENTITY pref_stationeryLink "Stationery Addon">
+<!ENTITY pref_forceParagraph "Force Paragraph Mode">
+<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
+<!ENTITY pref_stationeryLink_tip "Get Stationery...">
+<!ENTITY pref_defaultCharset.label "Default charset">
+<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Ca SmartTemplate4">
 <!ENTITY creator.label "Creator">
@@ -48,6 +125,10 @@
 <!ENTITY ccmail.label "Mottagarens e-postadress (kopia)">
 <!ENTITY sig.label "Underskrift (från TB hänsyn inställningar)">
 <!ENTITY sig2.label "Underskrift (från TB hänsyn inställningar men utan '--')">
+<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
+<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
+<!ENTITY attach.label "Add file as attachment">
+<!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
@@ -75,12 +156,30 @@
 <!ENTITY newsgr.label "Diskussionsgrupper">
 <!ENTITY xmail.label "X-Mailer-adresshuvud">
 <!ENTITY any.label "Alla Header-line">
+<!ENTITY header_function.cap "Modify Mail Header">
+<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
+<!ENTITY header_function.scope "It can be used with the these headers:">
+<!ENTITY header.set.subject "replace subject with the text">
+<!ENTITY header.prefix.subject "prefix subject with the text">
+<!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.set.to "replace recipient with email address">
+<!ENTITY header.append.to "add email to recipient list">
+<!ENTITY stringmanip_function.cap "String Manipulation">
+<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
+<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Replace some text with something else.">
+<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
+<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
+<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">
 <!ENTITY dateshort.label "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Tidszon (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
+<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
+<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Variabler för anpassat datumformat">
 <!ENTITY customdf_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY A.label "Veckodag (Fredag)">
@@ -115,6 +214,13 @@
 <!ENTITY shortdate.label "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Tidszon (+0100, +0200, ... )">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
+<!ENTITY im-ex.cap "Settings and Templates Export/Import">
+<!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
+<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate4 settings dropdown box.">
+<!ENTITY im-ex_note3.label "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate4 settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note5.label "Select the SmartTemplate4 file (xxx.st4) you want to import.">
+<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate4 Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap "Kommentarer rörande HTML-mallar">
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">

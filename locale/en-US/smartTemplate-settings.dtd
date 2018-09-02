@@ -88,7 +88,8 @@
 <!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Resolve names from address books">
 <!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote address books, such as LDAP.">
-<!ENTITY resolveNamesFromABNick "Replace firstname if Nickname is present">
+<!ENTITY resolveNamesFromABNick "Replace first name with Nickname if present">
+<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Capitalize Names">
@@ -126,6 +127,7 @@
 <!ENTITY sig2.label "Signature from Account Settings but without '--'">
 <!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
 <!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
+<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Recipient (To)">
 <!ENTITY to_note.label "When the name is not available, email address will be displayed instead">
@@ -175,6 +177,9 @@
 <!ENTITY dateshort.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Timezone (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
+<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
+<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Variables for customized 'Date format'">
 <!ENTITY customdf_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY A.label "Day of Week (Friday)">
