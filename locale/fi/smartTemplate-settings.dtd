@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
 <!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Poista sähköpostiosoite, ellei parametria ei ole eritelty">
 <!ENTITY suppressMailtToLink "Ehkäise sähköpostisovellusten lisätä linkkejä sähköpostiosoitteisiin.">
 <!ENTITY capitalizeNames "Nimet isolla alkukirjaimella">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Allekirjoitus (TB:n tilitiedoista ilman '--')">
 <!ENTITY fileHTML.label "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta.">
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Päiväys / Aika lyhyt muoto (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Aikavyöhyke (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">

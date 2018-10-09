@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
 <!ENTITY resolveNamesFromAB_tip "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP.">
 <!ENTITY resolveNamesFromABNick "Remplacer le prénom si le pseudo est présent">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié">
 <!ENTITY suppressMailtToLink "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques.">
 <!ENTITY capitalizeNames "Noms en lettres capitales">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Signature issue des paramètres du compte, mais sans '--'">
 <!ENTITY fileHTML.label "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé.">
 <!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Définit la position du curseur">
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Variables pour personnaliser le format de date ">
 <!ENTITY customdf_note.label "Peut être combinée avec &#37;X:=sent&#37;">
 <!ENTITY A.label "Jour de la semaine (Vendredi)">

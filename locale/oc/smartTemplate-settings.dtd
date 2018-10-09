@@ -24,26 +24,11 @@
 <!ENTITY pref_help.tab "Assistent">
 <!ENTITY pref_about.tab "A prepaus">
 <!ENTITY pref_global.tab "Paramètres generals">
-<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "Variablas">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Acceptar">
 <!ENTITY cancel_button "Anullar">
 <!ENTITY contribute_button "Contribuir">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
-<!-- #### GUI #### -->
-<!ENTITY pref_groupMailContent "Mail Content">
-<!ENTITY pref_groupSignatures "Signatures">
-<!ENTITY pref_groupAdvanced "Advanced Functions">
-<!ENTITY pref_groupUI "User Interface">
-<!ENTITY pref_groupNameRules "Name Rules">
-<!ENTITY pref_groupTroubleShooting "Troubleshooting">
-<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
-<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
-<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
 <!ENTITY pref_quoteHeaderBox.label "Títol de citacion">
 <!ENTITY pref_quoteHeaderBox_tip "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :">
 <!ENTITY pref_templateBox.label "Modèl">
@@ -52,14 +37,8 @@
 <!ENTITY pref_breaksOnTop.label "Nombre de retorns a la linha en naut :">
 <!ENTITY pref_removeSig.label "Suprimir la signatura al moment del cambiament de compte de mail">
 <!ENTITY pref_showStatusIcon.label "Afichar un boton dins la barra dels moduls">
-<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
-<!ENTITY pref_StatusIcon.IconText "Icon And Text">
-<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "Poliça de l'editor de gabarit">
 <!ENTITY pref_server_desc "Compte">
-<!ENTITY btnSaveTemplate.tooltip "Save Template…">
-<!ENTITY btnLoadTemplate.tooltip "Load Template…">
-<!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
 <!ENTITY pref_server_def "Opcions globalas">
 <!ENTITY pref_def.label "Utilizar las opcions globalas">
 <!ENTITY pref_def.cap "Desactivar « Utilizar las opcions globalas » per crear una entèsta personalizada per aqueste compte.">
@@ -80,32 +59,7 @@
 <!ENTITY help_dialog_title "Ajuda de SmartTemplate4">
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Mòde desbugatge">
-<!ENTITY pref_hideExamples "Hide examples tab">
 <!ENTITY pref_debug_tip "Clic drech per las opcions avançadas de desbugatge">
-<!ENTITY pref_nameSwap "Correct LastName, FirstName">
-<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
-<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
-<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
-<!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote address books, such as LDAP.">
-<!ENTITY resolveNamesFromABNick "Replace first name with Nickname if present">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
-<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
-<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
-<!ENTITY capitalizeNames "Capitalize Names">
-<!ENTITY pref_parseSignature "Process signature">
-<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
-<!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with smartTemplate4.">
-<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
-<!ENTITY pref_stationeryLink "Stationery Addon">
-<!ENTITY pref_forceParagraph "Force Paragraph Mode">
-<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
-<!ENTITY pref_defaultCharset.label "Default charset">
-<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "A prepaus de SmartTemplate4">
 <!ENTITY creator.label "Creator">
@@ -125,10 +79,6 @@
 <!ENTITY ccmail.label "Adreça electronica dels destinataris en còpia">
 <!ENTITY sig.label "Signatura eissida dels paramètres del compte">
 <!ENTITY sig2.label "Signatura eissida dels paramètres del compte, mas sens '--'">
-<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
-<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
-<!ENTITY attach.label "Add file as attachment">
-<!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Destinataris (Per)">
 <!ENTITY to_note.label "Quand lo nom es pas disponible, l'adreça electronica serà pas afichada a la plaça">
 <!ENTITY to.label "Noms dels destinataris (defaut)">
@@ -156,30 +106,12 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Quina entèsta que siá">
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
-<!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "Variablas fixas pel format de data e la zòna orària">
 <!ENTITY fix_vartz_note.label "Pòt èsser combinada amb &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e ora (format local)">
 <!ENTITY dateshort.label "Data e ora cortas (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fus orari (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Variablas per personalizar lo format de data ">
 <!ENTITY customdf_note.label "Pòt èsser combinada amb &#37;X:=sent&#37;">
 <!ENTITY A.label "Jorn de la setmana (Divendres)">
@@ -230,18 +162,3 @@
 <!ENTITY table_new.label "Novèl">
 <!ENTITY table_reply.label "Respondre">
 <!ENTITY table_fwd.label "Transferir">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate4 Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

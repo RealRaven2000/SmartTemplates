@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
 <!ENTITY resolveNamesFromAB_tip "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP.">
 <!ENTITY resolveNamesFromABNick "Nadomesti ime, če je prisoten vzdevek">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
 <!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
 <!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Podpis iz nastavitev računa, toda brez '- -'">
 <!ENTITY fileHTML.label "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8.">
 <!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Nastavi položaj kazalca">
 <!ENTITY to_var.cap "Prejemnik (Za)">
 <!ENTITY to_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Časovni pas (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Spremenljivke za 'obliko datuma' po meri">
 <!ENTITY customdf_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dan v tednu (petek)">

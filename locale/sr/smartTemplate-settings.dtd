@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
 <!ENTITY resolveNamesFromAB_tip "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP.">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Уклони е-адресу ако формат није наведен">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Капитализуј имена">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Потпис из подешавања налога, али без две цртице (--)">
 <!ENTITY fileHTML.label "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8.">
 <!ENTITY fileImage.label "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
 <!ENTITY datetz.label "Временска зона (+0100, +0200…)">
 <!ENTITY tzname.label "GMT, PST, EST…">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY A.label "Дан у недељи (пун назив)">
@@ -240,8 +235,6 @@
 <!ENTITY licenseValidation.passed "Хвала што сте регистровали SmartTemplate4 про! Све могућности су сада откључане.">
 <!ENTITY licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
 <!ENTITY licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
 <!ENTITY licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

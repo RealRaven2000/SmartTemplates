@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
 <!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "移除电子邮件地址，除非已指定格式参数">
 <!ENTITY suppressMailtToLink "禁止邮件客户端添加链接到电子邮件地址。">
 <!ENTITY capitalizeNames "大写名称">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Siganture 签名（来自TB帐户设置，但没有'--'">
 <!ENTITY fileHTML.label "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。">
 <!ENTITY fileImage.label "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "设置光标位置">
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
@@ -164,22 +162,12 @@
 <!ENTITY header.append.subject "追加文本到主题">
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
-<!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
 <!ENTITY dateshort.label "日期和时间的简写 (例如 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "时区 (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "自定义日期格式的变量">
 <!ENTITY customdf_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY A.label "一周里的一天 (Friday)">
@@ -230,18 +218,3 @@
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">
 <!ENTITY table_fwd.label "转发">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate4 Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

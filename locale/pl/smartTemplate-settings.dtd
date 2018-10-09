@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
 <!ENTITY suppressMailtToLink "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "z ustawień konta ale bez „--”">
 <!ENTITY fileHTML.label "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków..">
 <!ENTITY fileImage.label "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Określ pozycję kursora">
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Data i czas (krótki format, np. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Strefa czasowa (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, … ">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -230,8 +225,6 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
@@ -244,4 +237,3 @@
 <!ENTITY licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

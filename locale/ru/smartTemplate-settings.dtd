@@ -89,7 +89,6 @@
 <!ENTITY resolveNamesFromAB "Брать имена из адресных книг">
 <!ENTITY resolveNamesFromAB_tip "Эта функция работает не со всеми удалёнными адресными книгами, как то каталог LDAP">
 <!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Скрыть адрес если он не используется как параметр в шаблоне">
 <!ENTITY suppressMailtToLink "Предотвращать добавление ссылок на адреса электронной почты.">
 <!ENTITY capitalizeNames "Имена - заглавными буквами">
@@ -127,7 +126,6 @@
 <!ENTITY sig2.label "Подпись, но без '--'">
 <!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
 <!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
@@ -177,9 +175,6 @@
 <!ENTITY dateshort.label "Дата / время кратко (01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Часовогй пояс (+0100, +0200, ...)">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Переменные для настраиваемой даты">
 <!ENTITY customdf_note.label "Может быть использована с &#37;X:=sent&#37;">
 <!ENTITY A.label "День недели(Пятница)">
