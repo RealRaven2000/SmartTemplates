@@ -29,10 +29,11 @@
 <!ENTITY accept_button "Acceptar">
 <!ENTITY cancel_button "Anullar">
 <!ENTITY contribute_button "Contribuir">
+<!-- #### ABOUT #### -->
 <!ENTITY pref_quoteHeaderBox.label "Títol de citacion">
 <!ENTITY pref_quoteHeaderBox_tip "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :">
 <!ENTITY pref_templateBox.label "Modèl">
-<!ENTITY pref_templateBox_tip "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu &#37;from(name)&#37;&lt;br&gt; Mercé per ton messatge&lt;br&gt; salutacions, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu &#37;from(name)&#37;<br> Mercé per ton messatge<br> salutacions, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Opcions de SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Nombre de retorns a la linha en naut :">
 <!ENTITY pref_removeSig.label "Suprimir la signatura al moment del cambiament de compte de mail">
@@ -50,17 +51,17 @@
 <!ENTITY pref_fwdmsg.cap "Messatges transferits">
 <!ENTITY pref_fwd.label "Aplicar lo modèl seguent pels messatges transferits.">
 <!ENTITY pref_fwdhead.label "Desactivar l'entèsta per defaut de Thunderbird">
-<!ENTITY pref_html.label "Utilizar HTML (per ex., &lt;b&gt;gras&lt;/b&gt;)">
+<!ENTITY pref_html.label "Utilizar HTML (per ex., <b>gras</b>)">
 <!ENTITY pref_html.cap "Utilizar de caractèrs d'escapament per  &quot; , &amp; , &lt; , &gt; , espaci. Veire l'ajuda per mai d'informacions.">
-<!ENTITY pref_rep_br.label "Remplaçatz los sauts de linha per &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant &lt;br&gt; un còp.">
+<!ENTITY pref_rep_br.label "Remplaçatz los sauts de linha per <br>">
+<!ENTITY pref_rep_br.cap "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant <br> un còp.">
 <!ENTITY pref_quotehead_tip "Desactiva l'entèsta per defaut. Mercé d'indicar vòstra entèsta dins la zòna de tèxte.">
 <!ENTITY pref_template_tip "Podètz modificar una entèsta amb de variablas. Veire l'ajuda per mai d'informacions.">
 <!ENTITY help_dialog_title "Ajuda de SmartTemplate4">
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Mòde desbugatge">
 <!ENTITY pref_debug_tip "Clic drech per las opcions avançadas de desbugatge">
-<!-- #### ABOUT #### -->
+<!-- #### HELP #### -->
 <!ENTITY about.cap "A prepaus de SmartTemplate4">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Desvolopaire">
@@ -69,7 +70,7 @@
 <!ENTITY translatorNickname.label "Cédric Valmary (totenoc.org)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate4 permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global (per l'ensemble dels comptes).">
-<!-- #### HELP #### -->
+<!-- #### TABLE #### -->
 <!ENTITY fix_var.cap "Variablas fixas">
 <!ENTITY ownname.label "Vòstre nom">
 <!ENTITY ownmail.label "Vòstra adreça electronica">
@@ -157,7 +158,6 @@
 <!ENTITY html_note.label "Mercé d'utilizar pas que lo jòc de caractèrs UTF-8 (Unicode) dins lo HTML !">
 <!ENTITY table.cap "Utilizacion de las variablas">
 <!ENTITY table_note.label "Se una variabla es utilizada d'un biais incorrècte, un messatge d'error serà mandat cap a la consòla d'error.">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabla">
 <!ENTITY table_new.label "Novèl">
 <!ENTITY table_reply.label "Respondre">

@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Цитата заголовка">
 <!ENTITY pref_quoteHeaderBox_tip "Напишіть цитату заголовка в цій графі, наприклад, Від &#37;from(name)&#37; написано було &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_templateBox_tip "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, &#37;from(name)&#37;&lt;br&gt;Дякую Вам за Ваше повідомлення&lt;br&gt; з повагою, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, &#37;from(name)&#37;<br>Дякую Вам за Ваше повідомлення<br> з повагою, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 налаштування">
 <!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
 <!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Переадресувати">
 <!ENTITY pref_fwd.label "Застосувати наступний шаблон до переадресованого повідомлення">
 <!ENTITY pref_fwdhead.label "Заборонити Thunderbird заголовк по-замовчуванню">
-<!ENTITY pref_html.label "Використовувати HTML (напр., &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.label "Використовувати HTML (напр., <b>bold</b>)">
 <!ENTITY pref_html.cap "Використовувати escape символи для ' , &amp; , &lt; , &gt; , space. Дивіться 'допомогу' для детальної інформації.">
-<!ENTITY pref_rep_br.label "Замінити позначення нового рядку символом &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "ПРИМІТКА: No space буде вставлено до HTML тегів у разі разового використання &lt;br&gt; .">
+<!ENTITY pref_rep_br.label "Замінити позначення нового рядку символом <br>">
+<!ENTITY pref_rep_br.cap "ПРИМІТКА: No space буде вставлено до HTML тегів у разі разового використання <br> .">
 <!ENTITY pref_quotehead_tip "Відключення заголовку за замовчуванням. Будь ласка, сформуйте свій заголовок всередині текстового поля.">
 <!ENTITY pref_template_tip "Ви можете змінити заголовки з 'змінним'. Див. довідку для отримання додаткової інформації.">
 <!ENTITY help_dialog_title "SmartTemplate4 допомога">
@@ -96,7 +96,7 @@
 <!ENTITY pref_parseSignature "Підписання">
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
 <!ENTITY pref_cursorInsertSpace "Вставити пробіл, щоб виділити &#37;курсор&#37;">
-<!ENTITY pref_sigReplaceBR.label "Замінити розриви рядків у підпису з форматом простого тексту з &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Замінити розриви рядків у підпису з форматом простого тексту з <br>">
 <!ENTITY pref_stationerySupport "Додано підтримку додатку Stationery ">
 <!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
@@ -217,8 +217,8 @@
 <!ENTITY im-ex.cap "Налаштування та Шаблони Експорт/Імпорт">
 <!ENTITY im-ex_note1.label "Ви можете експортувати та імпортувати налаштування і шаблони, пов'язані з кожного запису.">
 <!ENTITY im-ex_note2.label "Спочатку виберіть в випадаючому списку потрібний обліковий запис для експорту в SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Потім виберіть з меню 'Файл' &#8658; 'Експорт' &#8658; 'Налагодження та шаблони' і збережіть файл (xxx.st4) до комп'ютера.">
-<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplate4 з випадаючого списку. Потім виберіть з меню 'Файл' &#8658; 'Import' &#8658; 'Налагодження та шаблони'">
+<!ENTITY im-ex_note3.label "Потім виберіть з меню 'Файл' ⇒ 'Експорт' ⇒ 'Налагодження та шаблони' і збережіть файл (xxx.st4) до комп'ютера.">
+<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplate4 з випадаючого списку. Потім виберіть з меню 'Файл' ⇒ 'Import' ⇒ 'Налагодження та шаблони'">
 <!ENTITY im-ex_note5.label "Виберіть той файл SmartTemplate4 (xxx.st4) що ви бажаєте імпортувати.">
 <!ENTITY im-ex_note6.label "ПРИМІТКА: Apple / Macintosh платформи матимуть в меню в назву стрічки, замість вікна 'Налаштувань' в SmartTemplate4 . Це нормальна поведінка цієї платформи і не може бути змінена.">
 <!ENTITY html_note.cap "ПРИМІТКА для HTML шаблонів">

@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
 <!ENTITY pref_quoteHeaderBox_tip "Écrivez votre en-tête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
 <!ENTITY pref_templateBox.label "Modèle">
-<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;<br> Merci pour ton message<br> salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
 <!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Messages transférés">
 <!ENTITY pref_fwd.label "Appliquer le modèle suivant pour les messages transférés.">
 <!ENTITY pref_fwdhead.label "Désactiver l'entête par défaut de Thunderbird">
-<!ENTITY pref_html.label "Utiliser HTML (par ex., &lt;b&gt;gras&lt;/b&gt;)">
+<!ENTITY pref_html.label "Utiliser HTML (par ex., <b>gras</b>)">
 <!ENTITY pref_html.cap "Utiliser des caractères d'échappement pour  &quot; , &amp; , &lt; , &gt; , espace. Voir l'aide pour davantage d'informations.">
-<!ENTITY pref_rep_br.label "Remplacez les sauts de ligne par &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Remarque : aucun espace ne sera ajouté dans la balise HTML en utilisant &lt;br&gt; une fois.">
+<!ENTITY pref_rep_br.label "Remplacez les sauts de ligne par <br>">
+<!ENTITY pref_rep_br.cap "Remarque : aucun espace ne sera ajouté dans la balise HTML en utilisant <br> une fois.">
 <!ENTITY pref_quotehead_tip "Désactive l'entête par défaut. Merci d'indiquer votre entête dans la zone de texte.">
 <!ENTITY pref_template_tip "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations.">
 <!ENTITY help_dialog_title "Aide de SmartTemplate4">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
-<!ENTITY pref_sigReplaceBR.label "Remplacer les retours à la ligne dans les signatures en texte brut par des &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>">
 <!ENTITY pref_stationerySupport "Support de l'extension Stationery">
 <!ENTITY pref_stationerySupport_tip "Support de l'utilisation simultanée de Stationery et de smartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">
@@ -212,8 +212,8 @@
 <!ENTITY im-ex.cap "Paramétrages et importation/exportation de modèles">
 <!ENTITY im-ex_note1.label "Vous pouvez exporter et importer vos réglages et modèles associés à chaque compte.">
 <!ENTITY im-ex_note2.label "Tout d'abord, choisissez le compte que vous souhaitez exporter dans le menu déroulant des réglages de SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Ensuite, sélectionnez « Outils  &#8658; Exporter &#8658; Réglages et modèles » de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
-<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez « Outils &#8658; Importer &#8658; Réglages et modèles » de la barre de menu.">
+<!ENTITY im-ex_note3.label "Ensuite, sélectionnez « Outils  ⇒ Exporter ⇒ Réglages et modèles » de la barre de menu et sauvegardez le fichier (xxx.st4) sur votre ordinateur.">
+<!ENTITY im-ex_note4.label "Pour importer un fichier, sélectionnez le compte que vous souhaitez importer dans le menu déroulant des réglages de SmartTemplate4. Ensuite, sélectionnez « Outils ⇒ Importer ⇒ Réglages et modèles » de la barre de menu.">
 <!ENTITY im-ex_note5.label "Sélectionnez le fichier SmartTemplate4 (xxx.st4) que vous souhaitez importer.">
 <!ENTITY im-ex_note6.label "REMARQUE : les plateformes Apple/Macintosh auront les options dans la barre de menu en haut au lieu de la popup d'option de SmartTemplate4. Ceci est un comportement normal et ne peut pas être modifié.">
 <!ENTITY html_note.cap "Notes pour l'utilisation de HTML">

@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Glava navedka">
 <!ENTITY pref_quoteHeaderBox_tip "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. &#37;date&#37;, &#37;from(name)&#37; je napisal:">
 <!ENTITY pref_templateBox.label "Predloga">
-<!ENTITY pref_templateBox_tip "V to polje vstavite svojo poštno predlogo npr. Hello &#37;from(name)&#37;, &lt;br&gt; Hvala za vaše sporočilo &lt;br&gt; Lep pozdrav, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "V to polje vstavite svojo poštno predlogo npr. Hello &#37;from(name)&#37;, <br> Hvala za vaše sporočilo <br> Lep pozdrav, <br>&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Nastavitve SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Število prelomov vrstic na vrhu:">
 <!ENTITY pref_removeSig.label "Nadomesti podpis ob spremembi e-poštne identitete">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Posreduj">
 <!ENTITY pref_fwd.label "Uveljavi naslednjo predlogo za posredovano sporočilo">
 <!ENTITY pref_fwdhead.label "Onemogoči privzeto Thunderbirdovo glavo navedka">
-<!ENTITY pref_html.label "Uporabi HTML (npr., &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.label "Uporabi HTML (npr., <b>bold</b>)">
 <!ENTITY pref_html.cap "Uporabi ubežne znake za  &quot; , &amp; , &lt; , &gt; , presledek. Glejte &quot;Pomoč&quot; za več podorbnosti.">
-<!ENTITY pref_rep_br.label "Nadomesti prelome vrstic z &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "OPOMBA: presledek ne bo vstavljen v oznako HTML ob enkratni uporabi &lt;br&gt;.">
+<!ENTITY pref_rep_br.label "Nadomesti prelome vrstic z <br>">
+<!ENTITY pref_rep_br.cap "OPOMBA: presledek ne bo vstavljen v oznako HTML ob enkratni uporabi <br>.">
 <!ENTITY pref_quotehead_tip "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje.">
 <!ENTITY pref_template_tip "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti.">
 <!ENTITY help_dialog_title "Pomoč SmartTemplate4">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Podpis opravila">
 <!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
 <!ENTITY pref_cursorInsertSpace "Vstavi presledek za označitev &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Nadomesti prelome vrstic v podpisu z golim besedilom s &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Nadomesti prelome vrstic v podpisu z golim besedilom s <br>">
 <!ENTITY pref_stationerySupport "Podpri dodatek Stationary">
 <!ENTITY pref_stationerySupport_tip "Podpira skupno uporabo dodatka Stationary in SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "To omogoča uporabo spremenljivk predlog v Dodatku Stationary.">
@@ -212,8 +212,8 @@
 <!ENTITY im-ex.cap "Nastavitve in predloge Uvoz/Izvoz">
 <!ENTITY im-ex_note1.label "Svoje nastavitve in predloge za posamezni račun lahko izvozite ali uvozite.">
 <!ENTITY im-ex_note2.label "Najprej v spustnem polju nastavitev SmartTemplate4 izberite račun, ki ga želite izvoziti.">
-<!ENTITY im-ex_note3.label "Potem iz menijske vrstice izberite 'Datoteka' &#8658; 'Izvozi' &#8658; 'Nastavitve in predloge' in shranite datoteko (xxx.st4) na svoj računalnik.">
-<!ENTITY im-ex_note4.label "Za uvoz datoteke v spustnem polju nastavitev SmartTemplate4 izberite račun za uvoz. Potem iz menijske vrstice izberite 'Datoteka' &#8658; 'Uvozi' &#8658; 'Nastavitve in predloge'.">
+<!ENTITY im-ex_note3.label "Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Izvozi' ⇒ 'Nastavitve in predloge' in shranite datoteko (xxx.st4) na svoj računalnik.">
+<!ENTITY im-ex_note4.label "Za uvoz datoteke v spustnem polju nastavitev SmartTemplate4 izberite račun za uvoz. Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Uvozi' ⇒ 'Nastavitve in predloge'.">
 <!ENTITY im-ex_note5.label "Izberite datoteko SmartTemplate 4 (xxx.st4) za uvoz.">
 <!ENTITY im-ex_note6.label "OPOMBA: Okolja Apple/Macintosh  bodo imela menijsko vrstico v nazivnem traku namesto v oknu možnosti SmartTemplate4. To je običajno v teh okoljih in se ne da spremeniti.">
 <!ENTITY html_note.cap "Opomba za predloge HTML">

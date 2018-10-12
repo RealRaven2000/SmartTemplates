@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Intestazione">
 <!ENTITY pref_quoteHeaderBox_tip "Inserire l'intestazione in questa area di testo, ad esempio Il &#37;date&#37; &#37;from(name)&#37; ha scritto:">
 <!ENTITY pref_templateBox.label "Modello">
-<!ENTITY pref_templateBox_tip "Inserire il modello in questa area di testo, ad esempio Ciao &#37;from(name)&#37;, &lt;br&gt; grazie per il tuo messaggio &lt;br&gt; saluti, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Inserire il modello in questa area di testo, ad esempio Ciao &#37;from(name)&#37;, <br> grazie per il tuo messaggio <br> saluti, <br>&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Impostazioni di SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Numero di linee vuote nella testata:">
 <!ENTITY pref_removeSig.label "Sostituisci la firma quando cambia l'identità dell'account">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Messaggi da inoltrare">
 <!ENTITY pref_fwd.label "Applica il seguente modello di intestazione personalizzata per i messaggi da inoltrare">
 <!ENTITY pref_fwdhead.label "Disabilita l'intestazione predefinita di Thunderbird">
-<!ENTITY pref_html.label "Utilizza il codice HTML (es.: &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.label "Utilizza il codice HTML (es.: <b>bold</b>)">
 <!ENTITY pref_html.cap "Utilizza i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni">
-<!ENTITY pref_rep_br.label "Sostituisci il ritorno a capo con &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Attivando l'opzione verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui segue il codice HTML contenente &lt;br&gt;">
+<!ENTITY pref_rep_br.label "Sostituisci il ritorno a capo con <br>">
+<!ENTITY pref_rep_br.cap "Attivando l'opzione verrà sostituito con <br>, ad eccezione dei casi in cui segue il codice HTML contenente <br>">
 <!ENTITY pref_quotehead_tip "Attivando l'opzione non verrà utilizzata l'intestazione predefinita. Formulare l'intestazione personalizzata all'interno dell'area di testo qui sopra">
 <!ENTITY pref_template_tip "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
 <!ENTITY help_dialog_title "Contenuti guida di SmartTemplate4">
@@ -96,7 +96,7 @@
 <!ENTITY pref_parseSignature "Elabora firma">
 <!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
 <!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursore&#37;">
-<!ENTITY pref_sigReplaceBR.label "Sostituisci le interruzioni di riga con &lt;br&gt; nelle firme in testo semplice">
+<!ENTITY pref_sigReplaceBR.label "Sostituisci le interruzioni di riga con <br> nelle firme in testo semplice">
 <!ENTITY pref_stationerySupport "Supporta l'estensione Stationery">
 <!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
@@ -217,8 +217,8 @@
 <!ENTITY im-ex.cap "Importa / esporta impostazioni e modelli">
 <!ENTITY im-ex_note1.label "Si possono esportare ed importare le impostazioni ed i modelli associati ad ogni account.">
 <!ENTITY im-ex_note2.label "Per prima cosa seleziona l'account che desideri esportare nel menu a tendina delle impostazioni di SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Successivamente seleziona 'File' &#8658; 'Esporta' &#8658; 'Impostazioni e modelli' dalla barra del menu e salva il file (xxx.st4) sul computer.">
-<!ENTITY im-ex_note4.label "Per importare un file, seleziona l'account da importare nel menu a tendina delle impostazioni di SmartTemplate4. Successivamente, seleziona 'File' &#8658; 'Importa' &#8658; 'Impostazioni e modelli' dalla barra del menu.">
+<!ENTITY im-ex_note3.label "Successivamente seleziona 'File' ⇒ 'Esporta' ⇒ 'Impostazioni e modelli' dalla barra del menu e salva il file (xxx.st4) sul computer.">
+<!ENTITY im-ex_note4.label "Per importare un file, seleziona l'account da importare nel menu a tendina delle impostazioni di SmartTemplate4. Successivamente, seleziona 'File' ⇒ 'Importa' ⇒ 'Impostazioni e modelli' dalla barra del menu.">
 <!ENTITY im-ex_note5.label "Seleziona il file SmartTemplate4 (xxx.st4) da importare.">
 <!ENTITY im-ex_note6.label "NOTA: su Apple/Macintosh viene visualizzata la barra del menu nel pannello del titolo, anzichè la finestra Impostazioni di SmartTemplate4. Questo è il comportamento predefinito su questa piattaforma e non può essere cambiato.">
 <!ENTITY html_note.cap "Note per i modelli di intestazione personalizzata in HTML">

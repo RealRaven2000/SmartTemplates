@@ -1,13 +1,16 @@
 <!-- #### TABS #### -->
+<!-- #### BUTTONS #### -->
+<!-- #### ABOUT #### -->
 <!ENTITY pref_new.tab "Nytt">
 <!ENTITY pref_rsp.tab "Svara">
 <!ENTITY pref_fwd.tab "Framåt">
 <!ENTITY pref_help.tab "Hjälp">
 <!ENTITY pref_about.tab "Ca">
-<!-- #### BUTTONS #### -->
+<!-- #### HELP #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">
 <!ENTITY contribute_button "Bidra">
+<!-- #### TABLE #### -->
 <!ENTITY pref_dialog.title "Inställningar för SmartTemplate4">
 <!ENTITY pref_server_desc "Konto">
 <!ENTITY pref_server_def "Allmänna inställningar">
@@ -21,15 +24,15 @@
 <!ENTITY pref_fwdmsg.cap "Vidarebefordrat meddelande">
 <!ENTITY pref_fwd.label "Tillämpa följande mall på det vidarebefordrade meddelandet">
 <!ENTITY pref_fwdhead.label "Använd istället för standardcitathuvudet">
-<!ENTITY pref_html.label "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)">
+<!ENTITY pref_html.label "Använd HTML (t.ex. <b>fetstil</b>)">
 <!ENTITY pref_html.cap "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer.">
-<!ENTITY pref_rep_br.label "Ersätt ny rad med &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;.">
+<!ENTITY pref_rep_br.label "Ersätt ny rad med <br>">
+<!ENTITY pref_rep_br.cap "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med <br>.">
 <!ENTITY pref_quotehead_tip "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan.">
 <!ENTITY pref_template_tip "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
 <!ENTITY help_dialog_title "Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap "Hjälp">
-<!-- #### ABOUT #### -->
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY about.cap "Ca SmartTemplate4">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
@@ -38,7 +41,6 @@
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate4 erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
-<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
@@ -119,12 +121,10 @@
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
 <!ENTITY table_note.label "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Nytt">
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate4 Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">

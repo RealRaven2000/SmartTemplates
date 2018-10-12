@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Uvození citace">
 <!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
 <!ENTITY pref_templateBox.label "Šablona">
-<!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, &lt;br&gt; Díky za Vaši zprávu &lt;br&gt; S pozdravem, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, <br> Díky za Vaši zprávu <br> S pozdravem, <br>&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Nastavení SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
 <!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Předat">
 <!ENTITY pref_fwd.label "Zvolit následující šablonu pro předávanou zprávu">
 <!ENTITY pref_fwdhead.label "Zakázat implicitní uvození citace v Thunderbirdu">
-<!ENTITY pref_html.label "Použij HTML (např. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.label "Použij HTML (např. <b>bold</b>)">
 <!ENTITY pref_html.cap "Použij únikové znaky pro  &quot; , &amp; , &lt; , &gt; , mezeru. Pro více detailů se podívejte do nápovědy.">
-<!ENTITY pref_rep_br.label "Nahraď konece řádků &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím &lt;br&gt; .">
+<!ENTITY pref_rep_br.label "Nahraď konece řádků <br>">
+<!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím <br> .">
 <!ENTITY pref_quotehead_tip "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. ">
 <!ENTITY pref_template_tip "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. ">
 <!ENTITY help_dialog_title "SmartTemplate4 Nápověda">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Proces podpisu">
 <!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
 <!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Nahraď oddělovače řádků za &lt;br&gt; v textovém podpisu ">
+<!ENTITY pref_sigReplaceBR.label "Nahraď oddělovače řádků za <br> v textovém podpisu ">
 <!ENTITY pref_stationerySupport "Podpora &quot;Stationery&quot; rozšíření">
 <!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s smarTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Toto vytváří možnost použít šablonu proměných ve tvém &quot;Stationery&quot;.">
@@ -212,8 +212,8 @@
 <!ENTITY im-ex.cap "Export/Import nastavení šablon">
 <!ENTITY im-ex_note1.label "Můžeš exportovat a importovat tvé nastavení a šablony pro každý účet.">
 <!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate4 v rozbalovacím poli.">
-<!ENTITY im-ex_note3.label "Dále vyber 'Soubor' &#8658; 'Export' &#8658; 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
-<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate4 nastavení, v rozbalovacím poli. dále vyber 'Soubor' &#8658; 'Import' &#8658; 'Nastavení a Šablony' z menu.">
+<!ENTITY im-ex_note3.label "Dále vyber 'Soubor' ⇒ 'Export' ⇒ 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
+<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate4 nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
 <!ENTITY im-ex_note5.label "Vyber SmartTemplate4 soubor (xxx.st4) který chceš naimportovat.">
 <!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby Smarttemplate4. To je standardní na této platformě a nebůže být změněno.">
 <!ENTITY html_note.cap "Poznámka pro HTML šablonu.">

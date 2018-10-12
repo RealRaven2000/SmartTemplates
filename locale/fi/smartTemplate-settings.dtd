@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Pohja">
-<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;&lt;br&gt; Kiitos viestistäsi toivoien, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;<br> Kiitos viestistäsi toivoien, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 - Asetukset">
 <!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
 <!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Viestin välittäminen">
 <!ENTITY pref_fwd.label "Käytä seuraava pohjaa välitettäessä viestejä">
 <!ENTITY pref_fwdhead.label "Käytä perusotsakkeen sijasta">
-<!ENTITY pref_html.label "Käytä HTML:ää (esim. &lt;b&gt;lihavoitu&lt;/b&gt;)">
+<!ENTITY pref_html.label "Käytä HTML:ää (esim. <b>lihavoitu</b>)">
 <!ENTITY pref_html.cap "Käytä koodinvaihtomerkkejä merkeille &quot;, &amp;, &lt;, &gt;, välilyönti. Yksityiskohdat ohjeessa.">
-<!ENTITY pref_rep_br.label "Korvaa uusi rivi &lt;br&gt;-merkillä">
-<!ENTITY pref_rep_br.cap "HUOM! Ei korvaa uutta riviä, jota seuraa &lt;br&gt;.">
+<!ENTITY pref_rep_br.label "Korvaa uusi rivi <br>-merkillä">
+<!ENTITY pref_rep_br.cap "HUOM! Ei korvaa uutta riviä, jota seuraa <br>.">
 <!ENTITY pref_quotehead_tip "Poistaa perusotsakeen käytöstä. Muodosta lainausotsake tekstilaatikossa.">
 <!ENTITY pref_template_tip "Voit muuttaa lainauksen otsaketta muuttujilla. Ohjeessa lisätietoa.">
 <!ENTITY help_dialog_title "SmartTemplate4 - Ohje">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_cursorInsertSpace "Lisää väli korostamaan &#37;osoitin&#37;">
-<!ENTITY pref_sigReplaceBR.label "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä <br>">
 <!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
 <!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate4:n kanssa.">
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
@@ -212,8 +212,8 @@
 <!ENTITY im-ex.cap "Asetusten ja pohjien vieminen/tuominen">
 <!ENTITY im-ex_note1.label "Asetuksia ja pohjia voi viedä ja tuoda tileittän.">
 <!ENTITY im-ex_note2.label "Aluksi valitse tili, jonka asetukset viedään SmartTemplate4:n asetuksien pudotusvalikosta.">
-<!ENTITY im-ex_note3.label "Seuraavaksi valitse valikkopalkilta 'Tiedosto' &#8658; 'Vie' &#8658; 'Asetukset ja pohjat' ja tallenna tiedosto (xxx.st4) tietokoneelle.">
-<!ENTITY im-ex_note4.label "Tuodaksesi asetuksia ja pohjia, valitse ensin tili, johon asetukset tuodaan, SmartTemplate4:n asetuksien pudotusvalikosta. Seuraavaksi valitse valikkopalkilta 'Työkalut' &#8658; 'Tuo' &#8658; 'Asetukset ja pohjat'.">
+<!ENTITY im-ex_note3.label "Seuraavaksi valitse valikkopalkilta 'Tiedosto' ⇒ 'Vie' ⇒ 'Asetukset ja pohjat' ja tallenna tiedosto (xxx.st4) tietokoneelle.">
+<!ENTITY im-ex_note4.label "Tuodaksesi asetuksia ja pohjia, valitse ensin tili, johon asetukset tuodaan, SmartTemplate4:n asetuksien pudotusvalikosta. Seuraavaksi valitse valikkopalkilta 'Työkalut' ⇒ 'Tuo' ⇒ 'Asetukset ja pohjat'.">
 <!ENTITY im-ex_note5.label "Valitse tiedosto (xxx.st4), josta asetukset tuodaan.">
 <!ENTITY im-ex_note6.label "HUOM: Apple/Macintosh-alustoilla on valikkopalkki otsikkonauhalla SmartTemplate4-asetusikkunan sijaan. Tämä on alustalle ominaista käyttäytymistä, eikä sitä voida muuttaa.">
 <!ENTITY html_note.cap "Huomio HTML-pohjiin">

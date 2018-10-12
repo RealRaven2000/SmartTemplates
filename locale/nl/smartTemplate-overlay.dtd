@@ -1,3 +1,5 @@
 <!-- #### OVERLAYS #### -->
 <!ENTITY smartTemplate4.settings.label "SmartTemplate4">
 <!ENTITY smartTemplate4.settings.tooltip "SmartTemplate4-instellingen">
+<!ENTITY smartTemplate4.cleandeferred.label "Opschonen!">
+<!ENTITY smartTemplate4.cleandeferred.tooltip "Alle SmartTemplate-variabelen opschonen">

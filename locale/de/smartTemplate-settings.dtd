@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Nachrichtenvorlage">
-<!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;<br> Danke für Ihre Nachricht<br> Gruß, <br>&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
 <!ENTITY pref_breaksOnTop.label "Zeilenumbrüche am Anfang der Vorlagen:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Weiterleiten">
 <!ENTITY pref_fwd.label "Folgende Vorlage beim Weiterleiten hinzufügen">
 <!ENTITY pref_fwdhead.label "Standard Thunderbird Kopfzeilen deaktivieren">
-<!ENTITY pref_html.label "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
+<!ENTITY pref_html.label "HTML Tags verwenden (z.B. <b>fett</b>)">
 <!ENTITY pref_html.cap "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe.">
-<!ENTITY pref_rep_br.label "Ersetze Zeilenumbrüche durch &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch &lt;br&gt; ersetzt werden, sollte diese Option aktiviert werden.">
+<!ENTITY pref_rep_br.label "Ersetze Zeilenumbrüche durch <br>">
+<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch <br> ersetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
@@ -96,7 +96,7 @@
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
-<!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch &lt;br&gt; ersetzen">
+<!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch <br> ersetzen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
@@ -201,6 +201,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Funktion um die aktuelle Zeit einzufügen (klickbares Feld).">
+<!ENTITY dateformat.explain "Die meisten oben gelisteten Zeitvariablen können unter weglassen des &#37; Symbols als Parameter verwendet werden, siehe:">
+<!ENTITY dateformat.example "Beispiel: ">
 <!ENTITY var_xsent.cap "Die Verwendung von &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
 <!ENTITY xsent_long.cap "Beispiel eines Langstrings">
@@ -217,8 +220,8 @@
 <!ENTITY im-ex.cap "Einstellungen und Vorlagen Exportieren/Importieren">
 <!ENTITY im-ex_note1.label "Sie können für jeden Account einzeln die Einstellungen und Vorlagen exportieren und auch importieren.">
 <!ENTITY im-ex_note2.label "Als erstes wählen Sie das Konto in der Dropdown Box für welches Sie die Einstellungen und Vorlagen exportieren wollen.">
-<!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' &#8658; 'Exportieren' &#8658; 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
-<!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' &#8658; 'Importieren' &#8658; 'Einstellungen und Vorlagen'.">
+<!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Exportieren' ⇒ 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
+<!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Importieren' ⇒ 'Einstellungen und Vorlagen'.">
 <!ENTITY im-ex_note5.label "Wählen Sie nun die Datei (xxx.st4) die Sie importieren wollen.">
 <!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplate4 Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
 <!ENTITY html_note.cap "Hinweise für Vorlagen im HTML-Format">
@@ -245,4 +248,3 @@
 <!ENTITY licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY premiumConfig "Premium Funktionen">
 <!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite">
-

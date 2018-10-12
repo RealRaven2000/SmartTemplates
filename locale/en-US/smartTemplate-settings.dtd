@@ -201,6 +201,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">
 <!ENTITY xsent_note.label "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time.">
 <!ENTITY xsent_long.cap "Example for a longstring">
