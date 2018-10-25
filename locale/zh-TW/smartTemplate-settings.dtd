@@ -33,7 +33,7 @@
 <!ENTITY pref_quoteHeaderBox.label "引用表頭">
 <!ENTITY pref_quoteHeaderBox_tip "將引用表頭寫在這個對話框,例如.在&#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "樣板">
-<!ENTITY pref_templateBox_tip "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, <br> 感謝您的郵件 <br> regards, <br>&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, &lt;br&gt; 感謝您的郵件 &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 設定">
 <!ENTITY pref_breaksOnTop.label "從頭算起的換行數:">
 <!ENTITY pref_removeSig.label "當改變電子郵件身份時置換簽名檔">
@@ -51,10 +51,10 @@
 <!ENTITY pref_fwdmsg.cap "轉寄">
 <!ENTITY pref_fwd.label "套用以下的樣板來轉寄郵件">
 <!ENTITY pref_fwdhead.label "停用Thunderbird預設的引用表頭">
-<!ENTITY pref_html.label "使用HTML (例如.,<b>bold</b>)">
+<!ENTITY pref_html.label "使用HTML (例如.,&lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "使用 ESC 字元來做 &quot; , &amp; , &lt; , &gt; , space. 請查看 &quot;求助&quot; 來取得更完整資訊.">
-<!ENTITY pref_rep_br.label "用 <br> 來取代換行">
-<!ENTITY pref_rep_br.cap "提醒: 當使用了 <br> 後將沒有空間再插入到 HTML 標籤中.">
+<!ENTITY pref_rep_br.label "用 &lt;br&gt; 來取代換行">
+<!ENTITY pref_rep_br.cap "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中.">
 <!ENTITY pref_quotehead_tip "停用預設的引用表頭.請插入您的預設表頭到文字方塊.">
 <!ENTITY pref_template_tip "您可以用'變數'來變更引用表頭.請用求助取得更多資訊.">
 <!ENTITY help_dialog_title "SmartTemplate4 求助">

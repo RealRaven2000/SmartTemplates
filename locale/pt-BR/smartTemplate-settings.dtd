@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Citação de cabeçalho">
 <!ENTITY pref_quoteHeaderBox_tip "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Modelo">
-<!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, <br> Obrigado pela sua mensagem <br> cumprimentos, <br>&#37;próprio nome&#37;">
+<!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
 <!ENTITY pref_dialog.title "Opções do SmartTemplate4">
 <!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
 <!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Encaminhar mensagens">
 <!ENTITY pref_fwd.label "Aplicar o seguinte modelo ao encaminhar mensagens">
 <!ENTITY pref_fwdhead.label "Usar no lugar do cabeçalho da mensagem anterior">
-<!ENTITY pref_html.label "Usar HTML (por exemplo, <b>negrito</b>)">
+<!ENTITY pref_html.label "Usar HTML (por exemplo, &lt;b&gt;negrito&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espaço. Veja a ajuda para detalhes.">
-<!ENTITY pref_rep_br.label "Substituir quebra de linha por <br>">
-<!ENTITY pref_rep_br.cap "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por <br>.">
+<!ENTITY pref_rep_br.label "Substituir quebra de linha por &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado.">
 <!ENTITY pref_template_tip "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
 <!ENTITY help_dialog_title "Ajuda do SmartTemplate4">
@@ -96,7 +96,7 @@
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por <br>">
+<!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Apoie o Stationery">
 <!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">

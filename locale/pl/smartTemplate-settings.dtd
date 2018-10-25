@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Nagłówek cytatu">
 <!ENTITY pref_quoteHeaderBox_tip "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:">
 <!ENTITY pref_templateBox.label "Szablon">
-<!ENTITY pref_templateBox_tip "W tym polu podaj swój szablon, np.  Witaj &#37;from(name).&#37;<br> Dziękuję za Twoją wiadomość.<br> Pozdrowienia &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "W tym polu podaj swój szablon, np.  Witaj &#37;from(name).&#37;&lt;br&gt; Dziękuję za Twoją wiadomość.&lt;br&gt; Pozdrowienia &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 – ustawienia">
 <!ENTITY pref_breaksOnTop.label "Liczba wierszy odstępu na górze:">
 <!ENTITY pref_removeSig.label "Usuwaj podpis, gdy jest zmieniana tożsamość">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Przekazywanie wiadomości">
 <!ENTITY pref_fwd.label "Stosuj poniższy szablon dla przekazywanych wiadomości">
 <!ENTITY pref_fwdhead.label "Użyj zamiast standardowego nagłówka">
-<!ENTITY pref_html.label "Użyj HTML, np. <b>bold</b>">
+<!ENTITY pref_html.label "Użyj HTML, np. &lt;b&gt;bold&lt;/b&gt;">
 <!ENTITY pref_html.cap "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc.">
-<!ENTITY pref_rep_br.label "Zamieniaj nowy wiersz znakiem <br>">
-<!ENTITY pref_rep_br.cap "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z <br>.">
+<!ENTITY pref_rep_br.label "Zamieniaj nowy wiersz znakiem &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym.">
 <!ENTITY pref_template_tip "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc.">
 <!ENTITY help_dialog_title "Pomoc SmartTemplate4">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
 <!ENTITY pref_cursorInsertSpace "Wstaw spacje do wyróżnienia &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Zamień w podpisie tekstowym podziały wiersza na <br>">
+<!ENTITY pref_sigReplaceBR.label "Zamień w podpisie tekstowym podziały wiersza na &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Współpracuj z dodatkiem Stationery">
 <!ENTITY pref_stationerySupport_tip "Dodatek smartTemplate4 będzie współpracował z dodatkiem Stationery.">
 <!ENTITY pref_stationerySupport_tip2 "Dzięki temu w dodatku Stationery będzie możliwość używania wzorców ze smartTemplate4.">

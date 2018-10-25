@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Заглавље цитирања">
 <!ENTITY pref_quoteHeaderBox_tip "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, <br> Хвала вам на поруци <br> Срдачан поздрав, <br>&#37;ownname&#37;“">
+<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;“">
 <!ENTITY pref_dialog.title "Поставке SmartTemplate4-а">
 <!ENTITY pref_breaksOnTop.label "Број прелома на врху:">
 <!ENTITY pref_removeSig.label "Замени потпис при промени идентитета е-поште">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Проследи">
 <!ENTITY pref_fwd.label "Примени следећи шаблон на прослеђену поруку">
 <!ENTITY pref_fwdhead.label "Онемогући подразумевано заглавље цитирања Thunderbird-а">
-<!ENTITY pref_html.label "Користи HTML (нпр. <b>bold</b>)">
+<!ENTITY pref_html.label "Користи HTML (нпр. &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Користите командне знакове за &quot;, &amp;, &lt;, &gt; и space. За више информација, погледајте помоћ.">
-<!ENTITY pref_rep_br.label "Замени преломе са <br>">
-<!ENTITY pref_rep_br.cap "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем <br>.">
+<!ENTITY pref_rep_br.label "Замени преломе са &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље.">
 <!ENTITY pref_template_tip "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација.">
 <!ENTITY help_dialog_title "Помоћ за SmartTemplate4">
@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
 <!ENTITY pref_cursorInsertSpace "Убаци размак ради истицања &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Замени нови ред у текстуалном потпису са <br>">
+<!ENTITY pref_sigReplaceBR.label "Замени нови ред у текстуалном потпису са &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
 <!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate4-ом.">
 <!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">

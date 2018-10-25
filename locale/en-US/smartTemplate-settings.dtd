@@ -134,6 +134,7 @@
 <!ENTITY to.label "Recipient's name (default)">
 <!ENTITY tofirstname.label "Recipient's first name">
 <!ENTITY toname.label "Recipient's name">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Sender (From)">
 <!ENTITY from_note.label "When the name is not available, email address will be displayed instead">
 <!ENTITY from.label "Sender's name (default)">

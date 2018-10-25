@@ -1,18 +1,65 @@
 <!-- #### TABS #### -->
+<!ENTITY file.label "Arkiv">
+<!ENTITY tools.label "Verktyg">
+<!ENTITY edit.label "Redigera">
+<!ENTITY help.label "Hjälp">
 <!-- #### BUTTONS #### -->
+<!ENTITY copy.label "Kopiera">
+<!ENTITY paste.label "Klistra in">
+<!ENTITY insert.label "Infoga variabel">
+<!ENTITY close.label "Grundläggande">
+<!ENTITY advanced.label "Avancerat">
+<!ENTITY export.label "Exportera">
+<!ENTITY import.label "Importera">
+<!ENTITY menu.template_import.label "Importera mall">
+<!ENTITY menu.template_export.label "Exportera mall">
+<!ENTITY settings.label "Inställningar och mallar">
+<!ENTITY url.homePage.label "Hemsida för tillägg">
+<!ENTITY url.supportPage.label "Supportsida">
+<!ENTITY url.bugsAndFeaturesPage.label "Buggrapporter/funktionsbegäran">
 <!-- #### ABOUT #### -->
 <!ENTITY pref_new.tab "Nytt">
 <!ENTITY pref_rsp.tab "Svara">
 <!ENTITY pref_fwd.tab "Framåt">
 <!ENTITY pref_help.tab "Hjälp">
 <!ENTITY pref_about.tab "Ca">
+<!ENTITY pref_global.tab "Globala inställningar">
+<!ENTITY pref_advanced.tab "Avancerade inställningar">
+<!ENTITY pref_variables.tab "Variabler">
+<!ENTITY pref_examples.tab "Exempel (endast online)">
+<!ENTITY pref_examples.tooltip "Visa exempelmallar från http://smarttemplate4.mozdev.org/templates.html. Endast tillgängligt i onlineläget.">
 <!-- #### HELP #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">
 <!ENTITY contribute_button "Bidra">
+<!ENTITY button.updateThunderbird "Uppdatera Thunderbird!">
 <!-- #### TABLE #### -->
+<!ENTITY pref_groupMailContent "E-postinnehåll">
+<!ENTITY pref_groupSignatures "Signaturer">
+<!ENTITY pref_groupAdvanced "Avancerade funktioner">
+<!ENTITY pref_groupUI "Användargränssnitt">
+<!ENTITY pref_groupNameRules "Namnregler">
+<!ENTITY pref_groupTroubleShooting "Felsökning">
+<!ENTITY pref_addSigBreakHTML.label "Lägg till -- i e-post med HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Lägg alltid till avgränsaren -- innan signaturen (i e-post med HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Lägg till -- i e-post med vanlig text">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Lägg alltid till avgränsaren -- innan signaturen (i e-post med vanlig text)">
+<!ENTITY pref_quoteHeaderBox.label "Citationssidhuvud">
+<!ENTITY pref_quoteHeaderBox_tip "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den &#37;date&#37; skrev &#37;from(name)&#37;:">
+<!ENTITY pref_templateBox.label "Mall">
+<!ENTITY pref_templateBox_tip "Skriv din e-postmall i detta fält, t.ex. Hej &#37;from(name)&#37;, &lt;br&gt; tack för ditt meddelande &lt;br&gt; hälsningar, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Inställningar för SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Antal radbrytningar i början:">
+<!ENTITY pref_removeSig.label "Ersätt signaturen när e-postidentiteten ändras">
+<!ENTITY pref_showStatusIcon.label "Visa knapp i statusfältet">
+<!ENTITY pref_StatusIcon.IconOnly "Endast ikon">
+<!ENTITY pref_StatusIcon.IconText "Ikon och text">
+<!ENTITY pref_StatusIcon.IconHoverText "Text vid hovring">
+<!ENTITY pref_fontSettings.label "Typsnitt för mallredigerare">
 <!ENTITY pref_server_desc "Konto">
+<!ENTITY btnSaveTemplate.tooltip "Spara mall…">
+<!ENTITY btnLoadTemplate.tooltip "Läs in mall…">
+<!ENTITY btnYouTube.tooltip "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg">
 <!ENTITY pref_server_def "Allmänna inställningar">
 <!ENTITY pref_def.label "Använd allmänna inställningar">
 <!ENTITY pref_def.cap "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot.">
@@ -24,14 +71,35 @@
 <!ENTITY pref_fwdmsg.cap "Vidarebefordrat meddelande">
 <!ENTITY pref_fwd.label "Tillämpa följande mall på det vidarebefordrade meddelandet">
 <!ENTITY pref_fwdhead.label "Använd istället för standardcitathuvudet">
-<!ENTITY pref_html.label "Använd HTML (t.ex. <b>fetstil</b>)">
+<!ENTITY pref_html.label "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer.">
-<!ENTITY pref_rep_br.label "Ersätt ny rad med <br>">
-<!ENTITY pref_rep_br.cap "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med <br>.">
+<!ENTITY pref_rep_br.label "Ersätt ny rad med &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan.">
 <!ENTITY pref_template_tip "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
 <!ENTITY help_dialog_title "Hjälp med SmartTemplate4">
 <!ENTITY help_keyword.cap "Hjälp">
+<!ENTITY pref_debug_check "Felsökningsläge">
+<!ENTITY pref_hideExamples "Dölj flik med exempel">
+<!ENTITY pref_debug_tip "Högerklicka för avancerade felsökningsalternativ">
+<!ENTITY pref_nameSwap "Korrigera Efternamn, Förnamn">
+<!ENTITY pref_nameSwap_tip "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;">
+<!ENTITY resolveNamesFromAB "Lös namn från adressböcker">
+<!ENTITY resolveNamesFromAB_tip "Denna funktioner fungerar inte med vissa fjärradressböcker, som LDAP.">
+<!ENTITY resolveNamesFromABNick "Ersätt förnamn med smeknamn om det finns">
+<!ENTITY resolveNamesFromABDisplay "Använd visningsnamn om förnamnet saknas">
+<!ENTITY resolveABRemoveMail "Ta bort e-postadresser om formatparametern anges">
+<!ENTITY capitalizeNames "Versalisera namn">
+<!ENTITY pref_parseSignature "Bearbeta signatur">
+<!ENTITY pref_parseSignature_tip "Ersätt variabler i signaturen.">
+<!ENTITY pref_cursorInsertSpace "Infoga mellanslag för att markera &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Ersätt radbrytningar i signaturer med vanlig text med &lt;br&gt;">
+<!ENTITY pref_stationerySupport "Stöd tillägget Stationery">
+<!ENTITY pref_stationerySupport_tip2 "Detta gör det möjligt att använda variabler i din Stationery.">
+<!ENTITY pref_stationeryLink "Brevpapperstillägg">
+<!ENTITY pref_forceParagraph "Tvinga paragrafläge">
+<!ENTITY pref_stationeryLink_tip "Hämta brevpapper...">
+<!ENTITY pref_defaultCharset.label "Standardteckenkodning">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY about.cap "Ca SmartTemplate4">
 <!ENTITY creator.label "Creator">
@@ -50,11 +118,16 @@
 <!ENTITY ccmail.label "Mottagarens e-postadress (kopia)">
 <!ENTITY sig.label "Underskrift (från TB hänsyn inställningar)">
 <!ENTITY sig2.label "Underskrift (från TB hänsyn inställningar men utan '--')">
+<!ENTITY fileHTML.label "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts.">
+<!ENTITY fileImage.label "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas.">
+<!ENTITY attach.label "Lägg till bifogad fil">
+<!ENTITY cursor.label "Ändrar pekarpositionen">
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
 <!ENTITY tofirstname.label "Mottagarens förnamn">
 <!ENTITY toname.label "Mottagarens namn">
+<!ENTITY tofwd.label "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden">
 <!ENTITY from_var.cap "Avsändarvariabler (Från) ">
 <!ENTITY from_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY from.label "Avsändarens namn (Standard)">
@@ -77,12 +150,27 @@
 <!ENTITY newsgr.label "Diskussionsgrupper">
 <!ENTITY xmail.label "X-Mailer-adresshuvud">
 <!ENTITY any.label "Alla Header-line">
+<!ENTITY header_function.cap "Modifiera e-postsidhuvud">
+<!ENTITY header_function.explain "Dessa funktioner kan användas för att modifiera e-postsidhuvuden, som beskrivs nedan:">
+<!ENTITY header_function.scope "Den kan användas med dessa sidhuvuden:">
+<!ENTITY header.set.subject "ersätt ämnet med texten">
+<!ENTITY header.prefix.subject "prefigera ämnet med text">
+<!ENTITY header.append.subject "lägg till text efter ämnet">
+<!ENTITY header.set.to "ersätt mottagare med e-postadress">
+<!ENTITY header.append.to "lägg till e-postadress i mottagarlistan">
+<!ENTITY stringmanip_function.cap "Strängmanipulering">
+<!ENTITY stringmanip_function.explain "Dessa funktioner kan användas för att radera eller ersätta text inom e-postmallen eller citationssidhuvudet.">
+<!ENTITY deleteText "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Ersätt lite text med någonting annat.">
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">
 <!ENTITY dateshort.label "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Tidszon (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "Följande funktion lägger till ett offset till alla följande synliga timers.">
+<!ENTITY calculate.explain "DD=antal dagar att lägga till. H=antal timmar att lägga till (valfritt). MM=minuter att lägga till (valfritt)">
+<!ENTITY calculate.reset "Ändra argumentet till 0 för att sluta modifiera några datum.">
 <!ENTITY var_custom.cap "Variabler för anpassat datumformat">
 <!ENTITY customdf_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY A.label "Veckodag (Fredag)">
@@ -104,6 +192,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Funktion för att infoga nuvarande tid (klickbart fält).">
+<!ENTITY dateformat.explain "De flesta tidsvariablerna ovan kan användas i parametersträngen genom att utesluta &#37;. Se även:">
+<!ENTITY dateformat.example "Exempel:">
 <!ENTITY var_xsent.cap "Att använda &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas.">
 <!ENTITY xsent_long.cap "Exempel på en långsträng:">
@@ -117,6 +208,13 @@
 <!ENTITY shortdate.label "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Tidszon (+0100, +0200, ... )">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
+<!ENTITY im-ex.cap "Exportering/importering av inställningar och mallar">
+<!ENTITY im-ex_note1.label "Du kan exportera och importera dina inställningar och mallar som associeras med varje konto.">
+<!ENTITY im-ex_note2.label "Välj först kontot du vill exportera i SmartTemplate4-inställningarnas rullgardinslist.">
+<!ENTITY im-ex_note3.label "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator.">
+<!ENTITY im-ex_note4.label "För att importera en fil, välj kontot du vill importera i SmartTemplate4-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet.">
+<!ENTITY im-ex_note5.label "Välj den SmartTemplate4-fil (xxx.st4) du vill importera.">
+<!ENTITY im-ex_note6.label "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplate4s alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras.">
 <!ENTITY html_note.cap "Kommentarer rörande HTML-mallar">
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">

@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Nachrichtenvorlage">
-<!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;<br> Danke für Ihre Nachricht<br> Gruß, <br>&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
 <!ENTITY pref_breaksOnTop.label "Zeilenumbrüche am Anfang der Vorlagen:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
@@ -71,10 +71,10 @@
 <!ENTITY pref_fwdmsg.cap "Weiterleiten">
 <!ENTITY pref_fwd.label "Folgende Vorlage beim Weiterleiten hinzufügen">
 <!ENTITY pref_fwdhead.label "Standard Thunderbird Kopfzeilen deaktivieren">
-<!ENTITY pref_html.label "HTML Tags verwenden (z.B. <b>fett</b>)">
+<!ENTITY pref_html.label "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe.">
-<!ENTITY pref_rep_br.label "Ersetze Zeilenumbrüche durch <br>">
-<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch <br> ersetzt werden, sollte diese Option aktiviert werden.">
+<!ENTITY pref_rep_br.label "Ersetze Zeilenumbrüche durch &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch &lt;br&gt; ersetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
 <!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
@@ -96,7 +96,7 @@
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
-<!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch <br> ersetzen">
+<!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch &lt;br&gt; ersetzen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
@@ -134,6 +134,7 @@
 <!ENTITY to.label "Empfängername (Standardformat)">
 <!ENTITY tofirstname.label "Empfängervorname">
 <!ENTITY toname.label "Empfängername">
+<!ENTITY tofwd.label "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen">
 <!ENTITY from_var.cap "Absendervariablen (Von)">
 <!ENTITY from_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY from.label "Absendername (Standardformat)">

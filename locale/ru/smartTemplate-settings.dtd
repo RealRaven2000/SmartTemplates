@@ -95,7 +95,7 @@
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
 <!ENTITY pref_cursorInsertSpace "Вставлять пробел для подчеркивания &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "<br> вместо перевода строк в текстовой подписи">
+<!ENTITY pref_sigReplaceBR.label "&lt;br&gt; вместо перевода строк в текстовой подписи">
 <!ENTITY pref_stationerySupport "Поддержка расширения Stationery">
 <!ENTITY pref_stationerySupport_tip "Совместное использование с расширением Stationery.">
 <!ENTITY pref_stationerySupport_tip2 "Позволяет использовать переменные в шаблонах Stationery.">

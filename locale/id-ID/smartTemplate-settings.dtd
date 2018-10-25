@@ -1,0 +1,242 @@
+<!ENTITY file.label "Berkas">
+<!ENTITY tools.label "Alat">
+<!ENTITY edit.label "Edit">
+<!ENTITY help.label "Bantuan">
+<!ENTITY copy.label "Salin">
+<!ENTITY paste.label "Tempel">
+<!ENTITY insert.label "Sisipkan Variabel">
+<!ENTITY close.label "Dasar">
+<!ENTITY advanced.label "Lanjutan">
+<!ENTITY export.label "Ekspor">
+<!ENTITY import.label "Import">
+<!ENTITY menu.template_import.label "Impor Template">
+<!ENTITY menu.template_export.label "Ekspor Template">
+<!ENTITY settings.label "Setelan dan Template">
+<!ENTITY url.homePage.label "Beranda Pengaya">
+<!ENTITY url.supportPage.label "Halaman Dukungan">
+<!ENTITY url.bugsAndFeaturesPage.label "Laporan Bug / Permintaan Fitur">
+<!ENTITY pref_new.tab "Tulis">
+<!ENTITY pref_rsp.tab "Balas">
+<!ENTITY pref_fwd.tab "Teruskan">
+<!ENTITY pref_help.tab "Bantuan">
+<!ENTITY pref_about.tab "Tentang">
+<!ENTITY pref_global.tab "Setelan Umum">
+<!ENTITY pref_advanced.tab "Setelan Lanjutan">
+<!ENTITY pref_variables.tab "Variabel">
+<!ENTITY pref_examples.tab "Contoh (butuh koneksi internet)">
+<!ENTITY pref_examples.tooltip "Tampilkan contoh template dari http://smarttemplate4.mozdev.org/templates.html. Hanya tersedia dalam mode online.">
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Batal">
+<!ENTITY contribute_button "Kontribusi">
+<!ENTITY button.updateThunderbird "Perbarui Thunderbird!">
+<!ENTITY pref_groupMailContent "Konten Email">
+<!ENTITY pref_groupSignatures "Tanda Tangan">
+<!ENTITY pref_groupAdvanced "Fungsi Lanjutan">
+<!ENTITY pref_groupUI "Antarmuka pengguna">
+<!ENTITY pref_groupNameRules "Tata Tertib">
+<!ENTITY pref_groupTroubleShooting "Penyelesaian masalah">
+<!ENTITY pref_addSigBreakHTML.label "Tambahkan - di email HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam surat HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Tambahkan - dalam pesan teks biasa">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam pesan teks biasa)">
+<!ENTITY pref_quoteHeaderBox.label "Kutipan Tajuk">
+<!ENTITY pref_quoteHeaderBox_tip "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada &#37;date&#37;, &#37;from(name)&#37; menulis:">
+<!ENTITY pref_templateBox.label "Template">
+<!ENTITY pref_templateBox_tip "Dalam kotak ini,tempatkan template email Anda, mis. Halo &#37;from(name)&#37;, <br> Terima kasih atas pesan Anda <br> Salam, <br>&#37;ownname&#37;">
+<!ENTITY pref_dialog.title "Setelan SmartTemplate4">
+<!ENTITY pref_breaksOnTop.label "Jumlah jeda baris di atas:">
+<!ENTITY pref_removeSig.label "Ganti tanda tangan saat mengubah identitas email">
+<!ENTITY pref_showStatusIcon.label "Tampilkan tombol di bilah status">
+<!ENTITY pref_StatusIcon.IconOnly "Hanya Ikon">
+<!ENTITY pref_StatusIcon.IconText "Ikon dan Teks">
+<!ENTITY pref_StatusIcon.IconHoverText "Teks Hover">
+<!ENTITY pref_fontSettings.label "Editor Huruf Template">
+<!ENTITY pref_server_desc "Akun">
+<!ENTITY btnSaveTemplate.tooltip "Simpan Template...">
+<!ENTITY btnLoadTemplate.tooltip "Memuat Template...">
+<!ENTITY btnYouTube.tooltip "Kunjungi kanal Youtube 'Thunderbird Daily' - untuk tips dan tutorial dalam penggunaan Peralatan dan Pengaya lainnya">
+<!ENTITY pref_server_def "Umum">
+<!ENTITY pref_def.label "Gunakan Umum">
+<!ENTITY pref_def.cap "Hapus centang 'Gunakan Umum' untuk membuat kutipan tajuk yang disesuaikan untuk akun ini.">
+<!ENTITY pref_newmsg.cap "Tulis">
+<!ENTITY pref_new.label "Terapkan template berikut untuk pesan baru">
+<!ENTITY pref_rspmsg.cap "Balas">
+<!ENTITY pref_rsp.label "Terapkan template berikut ke pesan yang dibalas">
+<!ENTITY pref_rsphead.label "Gunakan daripada kutipan header standar">
+<!ENTITY pref_fwdmsg.cap "Teruskan">
+<!ENTITY pref_fwd.label "Terapkan template berikut ke pesan yang diteruskan">
+<!ENTITY pref_fwdhead.label "Nonaktifkan kutipan header Thunderbird standar">
+<!ENTITY pref_html.label "Gunakan HTML (mis., <b>bold</b>)">
+<!ENTITY pref_html.cap "Gunakan karakter escape untuk &quot; , &amp; , &lt; , &gt; , spasi. Lihat &quot;help&quot; untuk lebih jelasnya.">
+<!ENTITY pref_rep_br.label "Ganti jeda baris dengan <br>">
+<!ENTITY pref_rep_br.cap "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan <br> satu kali.">
+<!ENTITY pref_quotehead_tip "Nonaktifkan kutipan header standar. Silakan tempatkan header anda di kotak teks di atas.">
+<!ENTITY pref_template_tip "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut.">
+<!ENTITY help_dialog_title "Bantuan SmartTemplate4">
+<!ENTITY help_keyword.cap "Bantuan">
+<!ENTITY pref_debug_check "Mode Debug">
+<!ENTITY pref_hideExamples "Sembunyikan tab contoh">
+<!ENTITY pref_debug_tip "Klik-kanan untuk opsi debug lanjutan">
+<!ENTITY pref_nameSwap "Koreksi LastName, FirstName">
+<!ENTITY pref_nameSwap_tip "Ubah 'LastName, FirstName' menjadi 'First Last">
+<!ENTITY pref_addressDelimiter "Batasi beberapa koresponden dengan:">
+<!ENTITY pref_addressDelimiter_tip "Batasi antara beberapa koresponden. Outlook menggunakan titik koma (;) Standar untuk Thunderbird adalah Koma (,)">
+<!ENTITY resolveNamesFromAB "Pilih nama dari buku alamat">
+<!ENTITY resolveNamesFromAB_tip "Fitur ini tidak berfungsi dengan buku alamat remote tertentu, seperti LDAP.">
+<!ENTITY resolveNamesFromABNick "Ganti nama depan dengan Nama panggilan jika ada">
+<!ENTITY resolveNamesFromABDisplay "Gunakan Nama Tampilan jika nama depan hilang">
+<!ENTITY resolveABRemoveMail "Hapus alamat email kecuali format batasan ditentukan">
+<!ENTITY suppressMailtToLink "Suppress Mail Clients menambahkan tautan ke alamat Email.">
+<!ENTITY capitalizeNames "Nama Huruf Kapital">
+<!ENTITY pref_parseSignature "Proses Tanda tangan">
+<!ENTITY pref_parseSignature_tip "Ganti variabel dalam tanda tangan.">
+<!ENTITY pref_cursorInsertSpace "Sisipkan Ruang untuk menyorot &#37;cursor&#37;">
+<!ENTITY pref_sigReplaceBR.label "Ganti jeda baris tanda tangan dalam teks biasa dengan <br>">
+<!ENTITY pref_stationerySupport "Dukungan Peralatan Pengaya">
+<!ENTITY pref_stationerySupport_tip "Dukungan pengguanaan Peralatan pada saat yang sama dengan smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip2 "Ini memungkinkan untuk menggunakan variabel template di Peralatan Anda.">
+<!ENTITY pref_stationeryLink "Pengaya Peralatan">
+<!ENTITY pref_forceParagraph "Paksa Mode Paragraf">
+<!ENTITY pref_forceParagraph_tip "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [Enter].">
+<!ENTITY pref_stationeryLink_tip "Dapatkan Peralatan...">
+<!ENTITY pref_defaultCharset.label "Charset standar">
+<!ENTITY pref_defaultCharset_tip "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan.">
+<!ENTITY about.cap "Tentang SmartTemplate4">
+<!ENTITY creator.label "Pencipta">
+<!ENTITY developer.label "Pengembang">
+<!ENTITY localename.label "Ing-AS">
+<!ENTITY localized.label "Penerjemah">
+<!ENTITY translatorNickname.label "Aris-T (AMO)">
+<!ENTITY contributor.label "Kontibutor">
+<!ENTITY about.label "SmartTemplate4 menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua.">
+<!ENTITY fix_var.cap "Variabel tetap">
+<!ENTITY ownname.label "Nama anda">
+<!ENTITY ownmail.label "Alamat email anda">
+<!ENTITY date.label "Tanggal / Waktu (sama seperti 'Mailheader' asli)">
+<!ENTITY tomail.label "Alamat email penerima">
+<!ENTITY frommail.label "Alat email pengirim">
+<!ENTITY ccmail.label "CC-Alamat email penerima">
+<!ENTITY sig.label "Tanda tangan dari Setelan Akun">
+<!ENTITY sig2.label "Tanda tangan dari Setelan Akun tanpa '--'">
+<!ENTITY fileHTML.label "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset.">
+<!ENTITY fileImage.label "Berkas gambar (png,jpg,gif,bmp,svg). AltText opsional ditampilkan jika gambar tidak dapat ditemukan.">
+<!ENTITY attach.label "Tambah berkas lampiran">
+<!ENTITY cursor.label "Setel posisi kursor">
+<!ENTITY to_var.cap "Penerima (Untuk)">
+<!ENTITY to_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
+<!ENTITY to.label "Nama penerima (bawaan)">
+<!ENTITY tofirstname.label "Nama depan penerima">
+<!ENTITY toname.label "Nama penerima">
+<!ENTITY tofwd.label "Gunakan fwd untuk menambahkan penerima yang dapat diklik dalam email yang diteruskan">
+<!ENTITY from_var.cap "Pengirim (Dari)">
+<!ENTITY from_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
+<!ENTITY from.label "Nama pengirim (bawaan)">
+<!ENTITY fromfirstname.label "Nama depan pengirim">
+<!ENTITY fromname.label "Nama pengirim">
+<!ENTITY cc_var.cap "Penerima (CC)">
+<!ENTITY cc_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
+<!ENTITY cc.label "Nama Penerima (Bawaan)">
+<!ENTITY ccfirstname.label "Nama depan penerima">
+<!ENTITY ccname.label "Nama penerima">
+<!ENTITY spec_form.cap "Format khusus">
+<!ENTITY specform_note.label "Bagian dalam kurung ganda  [[Cc: &#37;cc(name)&#37;]] hanya akan ditampilkan jika variabel &#37;cc(name)&#37; bisa diganti!">
+<!ENTITY ex_brack.label "Contoh: Untuk: Fred Cc: Jane">
+<!ENTITY brack_with_var.label "Variabel berikut dapat digunakan di dalam [[...]]">
+<!ENTITY sub_var.cap "Subjek">
+<!ENTITY sub.label "subjek email yang dijawab / diteruskan">
+<!ENTITY sub2.label "subjek pesan saat ini sedang disusun">
+<!ENTITY spec_var.cap "Khusus">
+<!ENTITY messid.label "ID Pesan">
+<!ENTITY newsgr.label "Grup diskusi">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Setiap Baris Tajuk">
+<!ENTITY header_function.cap "Ubah Header Surat">
+<!ENTITY header_function.explain "Fungsi-fungsi ini dapat digunakan untuk mengubah header mail, seperti yang dijelaskan di sini:">
+<!ENTITY header_function.scope "Ini dapat digunakan dengan header ini:">
+<!ENTITY header.set.subject "ganti subjek dengan teks">
+<!ENTITY header.prefix.subject "awalan subjek dengan teks">
+<!ENTITY header.append.subject "tambahkan teks ke subjek">
+<!ENTITY header.set.to "ganti penerima dengan alamat email">
+<!ENTITY header.append.to "tambahkan email ke daftar penerima">
+<!ENTITY stringmanip_function.cap "Manipulasi String">
+<!ENTITY stringmanip_function.explain "Fungsi-fungsi ini dapat digunakan untuk menghapus atau mengganti teks dalam template Email atau kutipan header.">
+<!ENTITY deleteText "Hapus beberapa teks dari Kutipan, mis., deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Ganti beberapa teks dengan yang lain.">
+<!ENTITY matchTextFromBody "Temukan pola RegEx di Email yang dikutip dan masukkan di lokasi fungsi.">
+<!ENTITY matchTextFromSubject "Temukan pola RegEx dalam subjek dan masukkan di lokasi fungsi.">
+<!ENTITY stringmanip.match.comment "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll.">
+<!ENTITY fix_vartz.cap "Variabel tetap untuk 'Format Tanggal' / 'Zona Waktu'">
+<!ENTITY fix_vartz_note.label "Dapat digabung dengan &#37;X:=sent&#37;">
+<!ENTITY datelocal.label "Tanggal / Waktu (format lokal)">
+<!ENTITY dateshort.label "Tanggal / Waktu singkat (mis. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label "Zona Waktu (+0100, +0200, ... )">
+<!ENTITY tzname.label "GMT, PST, EST, ...">
+<!ENTITY dateoffset_note.label "Fungsi berikut menambahkan offset ke semua waktu yang ditampilkan.">
+<!ENTITY calculate.explain "HH=jumlah hari untuk ditambahkan. J=jumlah jam untuk ditambahkan (opsional). MM=menit untuk ditambahkan (opsional)">
+<!ENTITY calculate.reset "Setel argumen ke 0 untuk berhenti memodifikasi tanggal apa pun.">
+<!ENTITY var_custom.cap "Variabel untuk menyesuaikan 'Format tanggal'">
+<!ENTITY customdf_note.label "Dapat digabung dengan &#37;X:=sent&#37;">
+<!ENTITY A.label "Hari dalam Seminggu (Jumat)">
+<!ENTITY a.label "Hari dalam Seminggu (Jum.)">
+<!ENTITY d.label "Hari dalam Sebulan (01 - 31) - dengan nol">
+<!ENTITY e.label "Hari dalam Sebulan (01 - 31)">
+<!ENTITY n.label "Bulan (1 - 12)">
+<!ENTITY B.label "Bulan (Januari)">
+<!ENTITY b.label "Bulan (Jan.)">
+<!ENTITY m.label "Bulan (01 - 12) - dengan nol">
+<!ENTITY Y.label "Tahun (1970)">
+<!ENTITY M.label "Menit (00 - 59)">
+<!ENTITY s.label "Detik (00 - 59)">
+<!ENTITY h.label "Jam, Format 24-Jam (00 - 23) - dengan nol">
+<!ENTITY k.label "Jam, Format 24-Jam (00 - 23)">
+<!ENTITY l.label "Jam, Format 12-Jam (1 - 12)">
+<!ENTITY i.label "Jam, Format 12-Jam (1 - 12) - dengan nol">
+<!ENTITY p.label "AM / PM">
+<!ENTITY p1.label "a.m.">
+<!ENTITY p2.label "A.M.">
+<!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)">
+<!ENTITY dateformat.explain "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan &#37;. Lihat pula:">
+<!ENTITY dateformat.example "Contoh:">
+<!ENTITY var_xsent.cap "Pengubah &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan &#37;X:=sent&#37;, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli.">
+<!ENTITY xsent_long.cap "Contoh untuk longstring">
+<!ENTITY xsent_long.label "pukul &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37;">
+<!ENTITY xsent_long_result.label "Hasil: Minggu,20/12/2011 pada pukul 16:24">
+<!ENTITY xsent_short.cap "Contoh dari shortstring">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Hasil: Minggu, 20/12/2011 08:54:21">
+<!ENTITY xsent_short_note.label "Variabel berikut dapat digunakan dikedua varian">
+<!ENTITY localedate.label "Tanggal / Waktu (Format Lokal)">
+<!ENTITY shortdate.label "Tanggal / Waktu singkat (mis. 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label "Zona Waktu (+0100, +0200, ... )">
+<!ENTITY timezonename.label "GMT, PST, EST, ...">
+<!ENTITY im-ex.cap "Ekspor/Impor Setelan dan Template">
+<!ENTITY im-ex_note1.label "Anda dapat mengekspor dan mengimpor pengaturan dan template anda yang terkait dengan setiap akun.">
+<!ENTITY im-ex_note2.label "Pertama pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate4.">
+<!ENTITY im-ex_note3.label "Lanjut pilih 'File' ⇒ 'Export' ⇒ 'Settings and Templates' dari bilah menu dan simpan berkas (xxx.st4) ke komputer anda.">
+<!ENTITY im-ex_note4.label "Untuk mengimpor berkas. pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate4. Lanjut, pilih 'File' ⇒ 'Import' ⇒ 'Settings and Templates' dari bilah menu.">
+<!ENTITY im-ex_note5.label "Pilih berkas SmartTemplate4 (xxx.st4) yang ingin Anda impor.">
+<!ENTITY im-ex_note6.label "CATATAN: perangkat Apple/Macintosh bilah menu akan berada di pita judul alih-alih di Opsi jendela SmartTemplate4. Ini adalah perilaku normal pada perangkat ini dan tidak dapat diubah.">
+<!ENTITY html_note.cap "Catatan untuk template HTML">
+<!ENTITY html_note.label "Mohon gunakan charset UTF-8 (Unicode) didalam template HTML!">
+<!ENTITY table.cap "Penggunaan variabel">
+<!ENTITY table_note.label "Menggunakan variabel secara tidak benar akan menghasilkan pesan kesalahan di 'Error Console'!">
+<!ENTITY table_keyword.label "Variabel">
+<!ENTITY table_new.label "Tulis">
+<!ENTITY table_reply.label "Balas">
+<!ENTITY table_fwd.label "Teruskan">
+<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY label.insertLicense "Masukkan Kunci Lisensi Personal anda disini:">
+<!ENTITY label.insertLicense.tooltip "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring.">
+<!ENTITY button.pasteLicense "Tempel">
+<!ENTITY button.validateLicense "mengesahkan">
+<!ENTITY label.licenseValid "Lisensi Anda berlaku hingga:">
+<!ENTITY licenseValidation.passed "Terima kasih telah mendaftar SmartTemplate4 Pro! Semua fitur premium sekarang terbuka.">
+<!ENTITY licenseValidation.failed "Kunci lisensi yang anda masukkan tidak valid. Periksa email anda dari FastSpring untuk mendapatkan petunjuk. Jika anda masih mengalami masalah, silakan hubungi saya dari tab Dukungan.">
+<!ENTITY licenseValidation.expired "Kunci lisensi yang Anda masukkan sudah kadaluarsa. Silakan tekan tombol di bawah ini untuk memperbarui lisensi Anda.">
+<!ENTITY licenseValidation.invalidAddon "Kunci lisensi yang Anda masukkan mungkin untuk Pengaya yang berbeda. Kunci lisensi untuk {0} dimulai dengan {1}.">
+<!ENTITY licenseValidation.invalidMail "Alamat email yang terikat ke kunci lisensi [{1}] saat ini tidak terdaftar di salah satu akun email Anda. Silakan hubungi saya dari tab Dukungan untuk bantuan.">
+<!ENTITY licenseValidation.notMatchedMail "Alamat Email terenkripsi tidak cocok dengan yang dapat dibaca.">
+<!ENTITY premiumConfig "Fitur Premium">
+<!ENTITY label.premiumFeaturesSite "Baca selengkapnya tentang Fitur Premium di Situs Web kami">

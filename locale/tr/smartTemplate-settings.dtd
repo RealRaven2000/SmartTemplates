@@ -33,7 +33,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Alıntı ">
 <!ENTITY pref_quoteHeaderBox_tip "Bu kutuya, alıntı bölümünden önce ne görüntülenmesi gerektiğini yazınız (Orjinal posta) - Örnek:  On &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Şablon">
-<!ENTITY pref_templateBox_tip "Bu kutuya posta şablonunu koyunuz. Hello &#37;from(name)&#37;, <br> Mesajınız için teşekkürler <br> selamlar, <br>&#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Bu kutuya posta şablonunu koyunuz. Hello &#37;from(name)&#37;, &lt;br&gt; Mesajınız için teşekkürler &lt;br&gt; selamlar, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate4 ayarları">
 <!ENTITY pref_breaksOnTop.label "Yukarı atılan satır sayısı:">
 <!ENTITY pref_removeSig.label "Posta kimliğini değiştiğinde imzayı değiştir">
@@ -51,10 +51,10 @@
 <!ENTITY pref_fwdmsg.cap "İlet">
 <!ENTITY pref_fwd.label "Şablonu iletilen mesaja uygula">
 <!ENTITY pref_fwdhead.label "Thunderbird'ün ön tanımlı alıntısını devre dışı bırak">
-<!ENTITY pref_html.label "HTML Kullan (e.g., <b>bold</b>)">
+<!ENTITY pref_html.label "HTML Kullan (e.g., &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Escape karakterleri &amp; , &lt; , &gt; , space. hakkında detaylı bilgi için lütfen &quot; Yardım&quot; a bakınız.">
-<!ENTITY pref_rep_br.label "Satır kesmelerini <br> ile değiştir">
-<!ENTITY pref_rep_br.cap "NOT: HTML tag'ına  <br> kullanılarak boşluk eklenemez.">
+<!ENTITY pref_rep_br.label "Satır kesmelerini &lt;br&gt; ile değiştir">
+<!ENTITY pref_rep_br.cap "NOT: HTML tag'ına  &lt;br&gt; kullanılarak boşluk eklenemez.">
 <!ENTITY pref_quotehead_tip "Ön tanımlı alıntıyı devre dışı bırak. Lütfen kendi alıntınızı kutuya yerleştiriniz. ">
 <!ENTITY pref_template_tip "Şablonları &quot;Değişkenler&quot;e basarak değiştirebilirsiniz. Daha fazla bilgi için &quot;Gelişmiş Değişkenler &quot; e tıklayınız.">
 <!ENTITY help_dialog_title "SmartTemplate4 Yardım">
