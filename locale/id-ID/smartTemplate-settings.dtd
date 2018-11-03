@@ -43,7 +43,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada &#37;date&#37;, &#37;from(name)&#37; menulis:">
 <!ENTITY pref_templateBox.label "Template">
 <!ENTITY pref_templateBox_tip "Dalam kotak ini,tempatkan template email Anda, mis. Halo &#37;from(name)&#37;, <br> Terima kasih atas pesan Anda <br> Salam, <br>&#37;ownname&#37;">
-<!ENTITY pref_dialog.title "Setelan SmartTemplate4">
+<!ENTITY pref_dialog.title "Setelan SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Jumlah jeda baris di atas:">
 <!ENTITY pref_removeSig.label "Ganti tanda tangan saat mengubah identitas email">
 <!ENTITY pref_showStatusIcon.label "Tampilkan tombol di bilah status">
@@ -72,13 +72,15 @@
 <!ENTITY pref_rep_br.cap "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan <br> satu kali.">
 <!ENTITY pref_quotehead_tip "Nonaktifkan kutipan header standar. Silakan tempatkan header anda di kotak teks di atas.">
 <!ENTITY pref_template_tip "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut.">
-<!ENTITY help_dialog_title "Bantuan SmartTemplate4">
+<!ENTITY help_dialog_title "Bantuan SmartTemplate⁴">
 <!ENTITY help_keyword.cap "Bantuan">
 <!ENTITY pref_debug_check "Mode Debug">
 <!ENTITY pref_hideExamples "Sembunyikan tab contoh">
 <!ENTITY pref_debug_tip "Klik-kanan untuk opsi debug lanjutan">
 <!ENTITY pref_nameSwap "Koreksi LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Ubah 'LastName, FirstName' menjadi 'First Last">
+<!ENTITY defaultMimeFormat "Format alamat bawaan:">
+<!ENTITY defaultMimeFormat_tip "Format yang digunakan saat mengganti alamat &#37;to&#37; &#37;from&#37; &#37;cc&#37; biasa. Mis, Nama depan, nama belakang, ?? pesan akan ditampilkan nama depan diikuti nama belakang; jika keduanya tak tersedia, akan menampilakn alamat email sebagai gantinya.">
 <!ENTITY pref_addressDelimiter "Batasi beberapa koresponden dengan:">
 <!ENTITY pref_addressDelimiter_tip "Batasi antara beberapa koresponden. Outlook menggunakan titik koma (;) Standar untuk Thunderbird adalah Koma (,)">
 <!ENTITY resolveNamesFromAB "Pilih nama dari buku alamat">
@@ -88,6 +90,7 @@
 <!ENTITY resolveABRemoveMail "Hapus alamat email kecuali format batasan ditentukan">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients menambahkan tautan ke alamat Email.">
 <!ENTITY capitalizeNames "Nama Huruf Kapital">
+<!ENTITY guessNameFromMail "Nama Tamu bagian dari alamat email jika tak ada">
 <!ENTITY pref_parseSignature "Proses Tanda tangan">
 <!ENTITY pref_parseSignature_tip "Ganti variabel dalam tanda tangan.">
 <!ENTITY pref_cursorInsertSpace "Sisipkan Ruang untuk menyorot &#37;cursor&#37;">
@@ -101,14 +104,14 @@
 <!ENTITY pref_stationeryLink_tip "Dapatkan Peralatan...">
 <!ENTITY pref_defaultCharset.label "Charset standar">
 <!ENTITY pref_defaultCharset_tip "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan.">
-<!ENTITY about.cap "Tentang SmartTemplate4">
+<!ENTITY about.cap "Tentang SmartTemplate⁴">
 <!ENTITY creator.label "Pencipta">
 <!ENTITY developer.label "Pengembang">
 <!ENTITY localename.label "Ing-AS">
 <!ENTITY localized.label "Penerjemah">
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "Kontibutor">
-<!ENTITY about.label "SmartTemplate4 menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua.">
+<!ENTITY about.label "SmartTemplate⁴ menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua.">
 <!ENTITY fix_var.cap "Variabel tetap">
 <!ENTITY ownname.label "Nama anda">
 <!ENTITY ownmail.label "Alamat email anda">
@@ -213,11 +216,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ...">
 <!ENTITY im-ex.cap "Ekspor/Impor Setelan dan Template">
 <!ENTITY im-ex_note1.label "Anda dapat mengekspor dan mengimpor pengaturan dan template anda yang terkait dengan setiap akun.">
-<!ENTITY im-ex_note2.label "Pertama pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate4.">
+<!ENTITY im-ex_note2.label "Pertama pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate⁴.">
 <!ENTITY im-ex_note3.label "Lanjut pilih 'File' ⇒ 'Export' ⇒ 'Settings and Templates' dari bilah menu dan simpan berkas (xxx.st4) ke komputer anda.">
-<!ENTITY im-ex_note4.label "Untuk mengimpor berkas. pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate4. Lanjut, pilih 'File' ⇒ 'Import' ⇒ 'Settings and Templates' dari bilah menu.">
-<!ENTITY im-ex_note5.label "Pilih berkas SmartTemplate4 (xxx.st4) yang ingin Anda impor.">
-<!ENTITY im-ex_note6.label "CATATAN: perangkat Apple/Macintosh bilah menu akan berada di pita judul alih-alih di Opsi jendela SmartTemplate4. Ini adalah perilaku normal pada perangkat ini dan tidak dapat diubah.">
+<!ENTITY im-ex_note4.label "Untuk mengimpor berkas. pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplate⁴. Lanjut, pilih 'File' ⇒ 'Import' ⇒ 'Settings and Templates' dari bilah menu.">
+<!ENTITY im-ex_note5.label "Pilih berkas SmartTemplate⁴ (xxx.st4) yang ingin Anda impor.">
+<!ENTITY im-ex_note6.label "CATATAN: perangkat Apple/Macintosh bilah menu akan berada di pita judul alih-alih di Opsi jendela SmartTemplate⁴. Ini adalah perilaku normal pada perangkat ini dan tidak dapat diubah.">
 <!ENTITY html_note.cap "Catatan untuk template HTML">
 <!ENTITY html_note.label "Mohon gunakan charset UTF-8 (Unicode) didalam template HTML!">
 <!ENTITY table.cap "Penggunaan variabel">
@@ -226,13 +229,13 @@
 <!ENTITY table_new.label "Tulis">
 <!ENTITY table_reply.label "Balas">
 <!ENTITY table_fwd.label "Teruskan">
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Masukkan Kunci Lisensi Personal anda disini:">
 <!ENTITY label.insertLicense.tooltip "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring.">
 <!ENTITY button.pasteLicense "Tempel">
 <!ENTITY button.validateLicense "mengesahkan">
 <!ENTITY label.licenseValid "Lisensi Anda berlaku hingga:">
-<!ENTITY licenseValidation.passed "Terima kasih telah mendaftar SmartTemplate4 Pro! Semua fitur premium sekarang terbuka.">
+<!ENTITY licenseValidation.passed "Terima kasih telah mendaftar SmartTemplate⁴ Pro! Semua fitur premium sekarang terbuka.">
 <!ENTITY licenseValidation.failed "Kunci lisensi yang anda masukkan tidak valid. Periksa email anda dari FastSpring untuk mendapatkan petunjuk. Jika anda masih mengalami masalah, silakan hubungi saya dari tab Dukungan.">
 <!ENTITY licenseValidation.expired "Kunci lisensi yang Anda masukkan sudah kadaluarsa. Silakan tekan tombol di bawah ini untuk memperbarui lisensi Anda.">
 <!ENTITY licenseValidation.invalidAddon "Kunci lisensi yang Anda masukkan mungkin untuk Pengaya yang berbeda. Kunci lisensi untuk {0} dimulai dengan {1}.">

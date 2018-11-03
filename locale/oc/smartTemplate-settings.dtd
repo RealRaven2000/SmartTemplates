@@ -34,7 +34,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :">
 <!ENTITY pref_templateBox.label "Modèl">
 <!ENTITY pref_templateBox_tip "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu &#37;from(name)&#37;&lt;br&gt; Mercé per ton messatge&lt;br&gt; salutacions, &#37;ownname&#37;">
-<!ENTITY pref_dialog.title "Opcions de SmartTemplate4">
+<!ENTITY pref_dialog.title "Opcions de SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Nombre de retorns a la linha en naut :">
 <!ENTITY pref_removeSig.label "Suprimir la signatura al moment del cambiament de compte de mail">
 <!ENTITY pref_showStatusIcon.label "Afichar un boton dins la barra dels moduls">
@@ -57,19 +57,19 @@
 <!ENTITY pref_rep_br.cap "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant &lt;br&gt; un còp.">
 <!ENTITY pref_quotehead_tip "Desactiva l'entèsta per defaut. Mercé d'indicar vòstra entèsta dins la zòna de tèxte.">
 <!ENTITY pref_template_tip "Podètz modificar una entèsta amb de variablas. Veire l'ajuda per mai d'informacions.">
-<!ENTITY help_dialog_title "Ajuda de SmartTemplate4">
+<!ENTITY help_dialog_title "Ajuda de SmartTemplate⁴">
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Mòde desbugatge">
 <!ENTITY pref_debug_tip "Clic drech per las opcions avançadas de desbugatge">
 <!-- #### HELP #### -->
-<!ENTITY about.cap "A prepaus de SmartTemplate4">
+<!ENTITY about.cap "A prepaus de SmartTemplate⁴">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Desvolopaire">
 <!ENTITY localename.label "oc">
 <!ENTITY localized.label "Traductor">
 <!ENTITY translatorNickname.label "Cédric Valmary (totenoc.org)">
 <!ENTITY contributor.label "Contributor">
-<!ENTITY about.label "SmartTemplate4 permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global (per l'ensemble dels comptes).">
+<!ENTITY about.label "SmartTemplate⁴ permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global (per l'ensemble dels comptes).">
 <!-- #### TABLE #### -->
 <!ENTITY fix_var.cap "Variablas fixas">
 <!ENTITY ownname.label "Vòstre nom">
@@ -149,11 +149,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Parametratges e impòrt/expòrt de modèls">
 <!ENTITY im-ex_note1.label "Podètz exportar e importar vòstres reglatges e modèls associats a cada compte.">
-<!ENTITY im-ex_note2.label "D'en primièr, causissètz lo compte que volètz exportar dins lo menú desenrotlant dels reglatges de SmartTemplate4.">
+<!ENTITY im-ex_note2.label "D'en primièr, causissètz lo compte que volètz exportar dins lo menú desenrotlant dels reglatges de SmartTemplate⁴.">
 <!ENTITY im-ex_note3.label "Puèi, seleccionatz « Aisinas  &amp;#8658; Exportar &amp;#8658; Reglatges e modèls » de la barra de menú e salvatz lo fichièr (xxx.st4) sus vòstre ordenador.">
-<!ENTITY im-ex_note4.label "Per importar un fichièr, seleccionatz lo compte que volètz importar dins lo menut desenrotlant dels reglatges de SmartTemplate4. Puèi, seleccionatz « Aisinas &amp;#8658; Importar &amp;#8658; Reglatges e modèls » de la barra de menú.">
-<!ENTITY im-ex_note5.label "Seleccionatz lo fichièr SmartTemplate4 (xxx.st4) que volètz importar.">
-<!ENTITY im-ex_note6.label "REMARCA : las plataformas Apple/Macintosh auràn las opcions dins la barra de menú en naut al luòc de la popup d'opcion de SmartTemplate4. Aquò's un compòrtament normal e pòt pas èsser modificat.">
+<!ENTITY im-ex_note4.label "Per importar un fichièr, seleccionatz lo compte que volètz importar dins lo menut desenrotlant dels reglatges de SmartTemplate⁴. Puèi, seleccionatz « Aisinas &amp;#8658; Importar &amp;#8658; Reglatges e modèls » de la barra de menú.">
+<!ENTITY im-ex_note5.label "Seleccionatz lo fichièr SmartTemplate⁴ (xxx.st4) que volètz importar.">
+<!ENTITY im-ex_note6.label "REMARCA : las plataformas Apple/Macintosh auràn las opcions dins la barra de menú en naut al luòc de la popup d'opcion de SmartTemplate⁴. Aquò's un compòrtament normal e pòt pas èsser modificat.">
 <!ENTITY html_note.cap "Nòtas per l'utilizacion de HTML">
 <!ENTITY html_note.label "Mercé d'utilizar pas que lo jòc de caractèrs UTF-8 (Unicode) dins lo HTML !">
 <!ENTITY table.cap "Utilizacion de las variablas">

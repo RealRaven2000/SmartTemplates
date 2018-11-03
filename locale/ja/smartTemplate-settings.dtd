@@ -22,7 +22,7 @@
 <!ENTITY pref_rsp.tab "返信">
 <!ENTITY pref_fwd.tab "転送">
 <!ENTITY pref_help.tab "ヘルプ">
-<!ENTITY pref_about.tab "SmartTemplate4 について">
+<!ENTITY pref_about.tab "SmartTemplate⁴ について">
 <!ENTITY pref_global.tab "グローバル設定">
 <!ENTITY pref_advanced.tab "詳細設定">
 <!ENTITY pref_variables.tab "変数">
@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダーを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "テンプレート">
 <!ENTITY pref_templateBox_tip "メッセージのテンプレートを入力してください。例：こんにちは、&#37;from(name)&#37;さん。&lt;br&gt;メッセージありがとうございました。&lt;br&gt;敬具 &#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4 設定">
+<!ENTITY pref_dialog.title "SmartTemplate⁴ 設定">
 <!ENTITY pref_breaksOnTop.label "ヘッダー上部の改行の数:">
 <!ENTITY pref_removeSig.label "差出人を変更したときに署名を削除する">
 <!ENTITY pref_showStatusIcon.label "ステータスバーにアイコンを表示する">
@@ -77,13 +77,15 @@
 <!ENTITY pref_rep_br.cap "注：HTML タグに続く改行は &lt;br&gt; に変換されません。">
 <!ENTITY pref_quotehead_tip "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。">
 <!ENTITY pref_template_tip "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。">
-<!ENTITY help_dialog_title "SmartTemplate4 ヘルプ">
+<!ENTITY help_dialog_title "SmartTemplate⁴ ヘルプ">
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
 <!ENTITY pref_hideExamples "テンプレート例のタブを隠す">
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
+<!ENTITY defaultMimeFormat "既定のアドレスのフォーマット">
+<!ENTITY defaultMimeFormat_tip "&#37;to&#37; &#37;from&#37; &#37;cc&#37; といったアドレスを置換する際のフォーマットです。例：名,姓,?? の場合には、アドレスは名を最初に示し、次に姓を示します。どちらも利用できない場合、メールアドレスを表示します。">
 <!ENTITY pref_addressDelimiter "複数の通信相手の区切りに以下のデリミターを使用する:">
 <!ENTITY pref_addressDelimiter_tip "複数の通信相手の区切りに使用するデリミタを指定します。Outlook ではセミコロン (;) を、Thunderbird の既定ではカンマ (,) を使用します">
 <!ENTITY resolveNamesFromAB "アドレス帳から名前を取得する">
@@ -93,13 +95,14 @@
 <!ENTITY resolveABRemoveMail "フォーマットで指定されない限りメールアドレスを除去する">
 <!ENTITY suppressMailtToLink "メールアドレスにリンクを設定することを抑制する">
 <!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
+<!ENTITY guessNameFromMail "名前をメールアドレスから推測します">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
-<!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate4 の変数を利用可能にします。">
+<!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate⁴ の変数を利用可能にします。">
 <!ENTITY pref_cursorInsertSpace "ハイライト表示された &#37;cursor&#37; にスペースを挿入する">
 <!ENTITY pref_sigReplaceBR.label "プレーンテキスト形式の署名に含まれる改行を &lt;br&gt; で置換する">
 <!ENTITY pref_stationerySupport "Stationery をサポートする">
-<!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate4 の同時使用をサポートします。">
-<!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate4 の変数を使用できます。">
+<!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate⁴ の同時使用をサポートします。">
+<!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate⁴ の変数を使用できます。">
 <!ENTITY pref_stationeryLink "Stationery アドオン">
 <!ENTITY pref_forceParagraph "強制的に段落モードを使用する">
 <!ENTITY pref_forceParagraph_tip "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します">
@@ -107,7 +110,7 @@
 <!ENTITY pref_defaultCharset.label "既定の文字エンコーディング">
 <!ENTITY pref_defaultCharset_tip "ヘッダの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "SmartTemplate4 について">
+<!ENTITY about.cap "SmartTemplate⁴ について">
 <!ENTITY creator.label "作者">
 <!ENTITY developer.label "開発者">
 <!ENTITY localename.label "ja-JP">
@@ -223,7 +226,7 @@
 <!ENTITY im-ex_note2.label "エクスポートしたいアカウントを選択します。">
 <!ENTITY im-ex_note3.label "'ツール' ⇒ 'エクスポート' ⇒ '設定とテンプレート' を選択し、SmartTemplate4 ファイル (拡張子 st4) を保存します。">
 <!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' ⇒ 'インポート' ⇒ '設定とテンプレート' を選択します。">
-<!ENTITY im-ex_note5.label "インポートしたい SmartTemplate4 ファイル (拡張子 st4) を選択します">
+<!ENTITY im-ex_note5.label "インポートしたい SmartTemplate⁴ ファイル (拡張子 st4) を選択します">
 <!ENTITY im-ex_note6.label "注: Apple/Macintosh 環境では、メニューバーはSmartTemplate4 設定ウインドウではなくタイトルリボンにあります。">
 <!ENTITY html_note.cap "HTML テンプレートについて">
 <!ENTITY html_note.label "HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
@@ -235,7 +238,7 @@
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "QuickFolders Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
 <!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
 <!ENTITY button.pasteLicense "貼り付け">

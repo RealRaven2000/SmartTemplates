@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "模板">
 <!ENTITY pref_templateBox_tip "在此框中写下您的模板，例如： Hello &#37;from(name)&#37;&lt;br&gt; Thanks for your message&lt;br&gt; regards, &#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4 选项">
+<!ENTITY pref_dialog.title "SmartTemplate⁴ 选项">
 <!ENTITY pref_breaksOnTop.label "顶部换行符数量：">
 <!ENTITY pref_removeSig.label "更改邮件身份时删除签名">
 <!ENTITY pref_showStatusIcon.label "在状态栏显示按钮">
@@ -77,7 +77,7 @@
 <!ENTITY pref_rep_br.cap "注意：如果 &lt;br&gt; 后面跟着一个 HTML 标签则将不能换行">
 <!ENTITY pref_quotehead_tip "禁用标准引用头文件。请将你的引用头文件填入文本框。">
 <!ENTITY pref_template_tip "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
-<!ENTITY help_dialog_title "SmartTemplate4 帮助">
+<!ENTITY help_dialog_title "SmartTemplate⁴ 帮助">
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
 <!ENTITY pref_hideExamples "隐藏示例选项卡">
@@ -113,7 +113,7 @@
 <!ENTITY localized.label "翻译">
 <!ENTITY translatorNickname.label "yliu &amp; yfdyh000 (BabelZilla)">
 <!ENTITY contributor.label "贡献者">
-<!ENTITY about.label "SmartTemplate4 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
+<!ENTITY about.label "SmartTemplate⁴ 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "基础变量">
 <!ENTITY ownname.label "你的名字">
@@ -204,9 +204,9 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ...">
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
-<!ENTITY im-ex_note2.label "首先从 SmartTemplate4 的设置下拉框中选择您想要导出的账号。">
+<!ENTITY im-ex_note2.label "首先从 SmartTemplate⁴ 的设置下拉框中选择您想要导出的账号。">
 <!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' ⇒ '导出' ⇒ '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
-<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate4 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'">
+<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate⁴ 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
 <!ENTITY html_note.cap "HTML 模板说明">

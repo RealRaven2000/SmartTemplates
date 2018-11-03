@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Sjabloon">
 <!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4-instellingen">
+<!ENTITY pref_dialog.title "SmartTemplate⁴-instellingen">
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Handtekening vervangen bij wijziging van e-mailidentiteit">
 <!ENTITY pref_showStatusIcon.label "Knop weergeven in de statusbalk">
@@ -77,13 +77,15 @@
 <!ENTITY pref_rep_br.cap "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig &lt;br&gt; te gebruiken.">
 <!ENTITY pref_quotehead_tip "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
 <!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie.">
-<!ENTITY help_dialog_title "SmartTemplate4-hulp">
+<!ENTITY help_dialog_title "SmartTemplate⁴-hulp">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_hideExamples "Tabblad met voorbeelden verbergen">
 <!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
+<!ENTITY defaultMimeFormat "Standaard adresnotatie:">
+<!ENTITY defaultMimeFormat_tip "Te gebruiken notatie bij vervanging van platte &#37;to&#37; &#37;from&#37; &#37;cc&#37; adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond.">
 <!ENTITY pref_addressDelimiter "Meerdere geadresseerden scheiden door:">
 <!ENTITY pref_addressDelimiter_tip "Scheidingsteken tussen meerdere geadresseerden. Outlook gebruikt puntkomma (;) Standaard voor Thunderbird is komma (,)">
 <!ENTITY resolveNamesFromAB "Namen uit adresboeken omzetten">
@@ -93,6 +95,7 @@
 <!ENTITY resolveABRemoveMail "E-mailadres verwijderen, tenzij opmaakparameter is opgegeven">
 <!ENTITY suppressMailtToLink "Toevoegen van koppelingen aan e-mailadressen door mailclients onderdrukken.">
 <!ENTITY capitalizeNames "Namen in hoofdletters">
+<!ENTITY guessNameFromMail "Naamgedeelten uit e-mailadressen raden bij ontbreken">
 <!ENTITY pref_parseSignature "Handtekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
 <!ENTITY pref_cursorInsertSpace "Spatie invoegen om &#37;cursor&#37; te accentueren">
@@ -107,14 +110,14 @@
 <!ENTITY pref_defaultCharset.label "Standaardtekenset">
 <!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Over SmartTemplate4">
+<!ENTITY about.cap "Over SmartTemplate⁴">
 <!ENTITY creator.label "Bedenker">
 <!ENTITY developer.label "Ontwikkelaar">
 <!ENTITY localename.label "nl">
 <!ENTITY localized.label "Vertaler">
 <!ENTITY translatorNickname.label "markh (BabelZilla)">
 <!ENTITY contributor.label "Medewerker">
-<!ENTITY about.label "SmartTemplate4 biedt een gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. Individuele sjablonen kunnen worden gebruikt voor een losse account of algemeen.">
+<!ENTITY about.label "SmartTemplate⁴ biedt een gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. Individuele sjablonen kunnen worden gebruikt voor een losse account of algemeen.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Vaste variabelen">
 <!ENTITY ownname.label "Uw naam">
@@ -220,11 +223,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Exporteren/importeren van instellingen en sjablonen">
 <!ENTITY im-ex_note1.label "U kunt uw instellingen en sjablonen verbonden aan elke account exporteren en importeren.">
-<!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate4-instellingen.">
+<!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate⁴-instellingen.">
 <!ENTITY im-ex_note3.label "Selecteer vervolgens ‘Bestand’ ⇒ ‘Exporteren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
-<!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate4-instellingen. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
-<!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate4-bestand (xxx.st4).">
-<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in de titelregel in plaats van in het SmartTemplate4-optiesvenster. Dit is normaal in deze platforms en kan niet worden gewijzigd.">
+<!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate⁴-instellingen. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
+<!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate⁴-bestand (xxx.st4).">
+<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in de titelregel in plaats van in het SmartTemplate⁴-optiesvenster. Dit is normaal in deze platforms en kan niet worden gewijzigd.">
 <!ENTITY html_note.cap "Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
@@ -235,13 +238,13 @@
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
 <!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">
 <!ENTITY button.pasteLicense "plakken">
 <!ENTITY button.validateLicense "valideren">
 <!ENTITY label.licenseValid "Uw licentie is geldig tot:">
-<!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate4 Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
+<!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate⁴ Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
 <!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel is mogelijk voor een andere add-on. Licentiesleutels voor {0} starten met {1}.">

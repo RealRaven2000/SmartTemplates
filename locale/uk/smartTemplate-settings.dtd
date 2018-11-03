@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Напишіть цитату заголовка в цій графі, наприклад, Від &#37;from(name)&#37; написано було &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
 <!ENTITY pref_templateBox_tip "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, &#37;from(name)&#37;&lt;br&gt;Дякую Вам за Ваше повідомлення&lt;br&gt; з повагою, &#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4 налаштування">
+<!ENTITY pref_dialog.title "SmartTemplate⁴ налаштування">
 <!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
 <!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
 <!ENTITY pref_showStatusIcon.label "Показувати кнопку у статусному рядку">
@@ -77,7 +77,7 @@
 <!ENTITY pref_rep_br.cap "ПРИМІТКА: No space буде вставлено до HTML тегів у разі разового використання &lt;br&gt; .">
 <!ENTITY pref_quotehead_tip "Відключення заголовку за замовчуванням. Будь ласка, сформуйте свій заголовок всередині текстового поля.">
 <!ENTITY pref_template_tip "Ви можете змінити заголовки з 'змінним'. Див. довідку для отримання додаткової інформації.">
-<!ENTITY help_dialog_title "SmartTemplate4 допомога">
+<!ENTITY help_dialog_title "SmartTemplate⁴ допомога">
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
 <!ENTITY pref_hideExamples "Сховати закладку з прикладами">
@@ -107,14 +107,14 @@
 <!ENTITY pref_defaultCharset.label "кодова сторінка по замовчуванні ">
 <!ENTITY pref_defaultCharset_tip "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Про SmartTemplate4">
+<!ENTITY about.cap "Про SmartTemplate⁴">
 <!ENTITY creator.label "Автор">
 <!ENTITY developer.label "Розробник">
 <!ENTITY localename.label "uk">
 <!ENTITY localized.label "Перекладач">
 <!ENTITY translatorNickname.label "tymofiy (BabelZilla)">
 <!ENTITY contributor.label "Спонсори">
-<!ENTITY about.label "SmartTemplate4 пропонує простий спосіб налаштування Thunderbirds заголовків за замовчуванням за допомогою шаблонів. Індивідуальні шаблони можуть бути створені для кожного запису, а також загальний шаблон для всіх.">
+<!ENTITY about.label "SmartTemplate⁴ пропонує простий спосіб налаштування Thunderbirds заголовків за замовчуванням за допомогою шаблонів. Індивідуальні шаблони можуть бути створені для кожного запису, а також загальний шаблон для всіх.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Фіксовані змінні">
 <!ENTITY ownname.label "Ваше ім'я">
@@ -216,11 +216,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ...">
 <!ENTITY im-ex.cap "Налаштування та Шаблони Експорт/Імпорт">
 <!ENTITY im-ex_note1.label "Ви можете експортувати та імпортувати налаштування і шаблони, пов'язані з кожного запису.">
-<!ENTITY im-ex_note2.label "Спочатку виберіть в випадаючому списку потрібний обліковий запис для експорту в SmartTemplate4.">
+<!ENTITY im-ex_note2.label "Спочатку виберіть в випадаючому списку потрібний обліковий запис для експорту в SmartTemplate⁴.">
 <!ENTITY im-ex_note3.label "Потім виберіть з меню 'Файл' ⇒ 'Експорт' ⇒ 'Налагодження та шаблони' і збережіть файл (xxx.st4) до комп'ютера.">
-<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplate4 з випадаючого списку. Потім виберіть з меню 'Файл' ⇒ 'Import' ⇒ 'Налагодження та шаблони'">
-<!ENTITY im-ex_note5.label "Виберіть той файл SmartTemplate4 (xxx.st4) що ви бажаєте імпортувати.">
-<!ENTITY im-ex_note6.label "ПРИМІТКА: Apple / Macintosh платформи матимуть в меню в назву стрічки, замість вікна 'Налаштувань' в SmartTemplate4 . Це нормальна поведінка цієї платформи і не може бути змінена.">
+<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplate⁴ з випадаючого списку. Потім виберіть з меню 'Файл' ⇒ 'Import' ⇒ 'Налагодження та шаблони'">
+<!ENTITY im-ex_note5.label "Виберіть той файл SmartTemplate⁴ (xxx.st4) що ви бажаєте імпортувати.">
+<!ENTITY im-ex_note6.label "ПРИМІТКА: Apple / Macintosh платформи матимуть в меню в назву стрічки, замість вікна 'Налаштувань' в SmartTemplate⁴ . Це нормальна поведінка цієї платформи і не може бути змінена.">
 <!ENTITY html_note.cap "ПРИМІТКА для HTML шаблонів">
 <!ENTITY html_note.label "Будь ласка використовуйте тільки UTF-8 (Unicode) кодування всередині HTML шаблонів!">
 <!ENTITY table.cap "Використання змінних">
@@ -231,13 +231,13 @@
 <!ENTITY table_reply.label "Відповідь">
 <!ENTITY table_fwd.label "Переслати">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro stuff ">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro stuff ">
 <!ENTITY label.insertLicense "Введіть свій особистий ліцензійний ключ тут:">
 <!ENTITY label.insertLicense.tooltip "Ваш ліцензійний ключ міститься в електронному листі з підтвердженням замовлення від Fastspring.">
 <!ENTITY button.pasteLicense "вставити">
 <!ENTITY button.validateLicense "перевірити">
 <!ENTITY label.licenseValid "Ваша ліцензія дійсна до:">
-<!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplate4 Pro! Всі преміум-функції тепер розблоковано.">
+<!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplate⁴ Pro! Всі преміум-функції тепер розблоковано.">
 <!ENTITY licenseValidation.failed "Введений ліцензійний ключ недійсний. Перевірте свою електронну пошту з FastSpring за інструкціями. Якщо у вас все ще є проблеми, зв'яжіться зі мною на вкладці Підтримка.">
 <!ENTITY licenseValidation.expired "Термін дії ліцензійного ключа закінчився. Будь ласка, натисніть кнопку нижче, щоб оновити свою ліцензію.">
 <!ENTITY licenseValidation.invalidAddon "Введений ліцензійний ключ може бути для іншого надбудови. Ліцензійні ключі для {0} починаються з {1}.">

@@ -1,21 +1,21 @@
-<!ENTITY licenseWindow.title "Licencja SmartTemplate4 Pro">
+<!ENTITY licenseWindow.title "Licencja SmartTemplate⁴ Pro">
 <!ENTITY label.licenseValid "Twoja licencja jest ważna do:">
 <!ENTITY label.haveLicense "Czy już masz licencję?">
-<!ENTITY getSmartTemplate4 "Zarejestruj SmartTemplate4 Pro">
-<!ENTITY intro "Licencja SmartTemplate4 Pro zapewnia wszystkie funkcje wersji Premium na rok. Umożliwia także wspieranie, dalszy rozwój produktu i przekształcanie go w coś jeszcze bardziej niesamowitego.">
+<!ENTITY getSmartTemplate4 "Zarejestruj SmartTemplate⁴ Pro">
+<!ENTITY intro "Licencja SmartTemplate⁴ Pro zapewnia wszystkie funkcje wersji Premium na rok. Umożliwia także wspieranie, dalszy rozwój produktu i przekształcanie go w coś jeszcze bardziej niesamowitego.">
 <!ENTITY testDrive "Możesz przetestować funkcje Premium w darmowej wersji, ale mogą być nieco ograniczone.">
 <!ENTITY yearlyLicense.title "Licencja roczna">
-<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate4 Pro oferuje pełny, nieograniczony dostęp do funkcji Premium.">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro oferuje pełny, nieograniczony dostęp do funkcji Premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Więcej informacji o funkcjach wersji Premium.">
-<!ENTITY yearlyLicense.usageTerm "Licencja przeznaczona jest do użytku prywatnego i powiązana jest z twoim adresem e-mail. Można ją zarejestrować w wielu programach pocztowych obsługujących SmartTemplate4, o ile są one skonfigurowane dla tego adresu e-mail.">
+<!ENTITY yearlyLicense.usageTerm "Licencja przeznaczona jest do użytku prywatnego i powiązana jest z twoim adresem e-mail. Można ją zarejestrować w wielu programach pocztowych obsługujących SmartTemplate⁴, o ile są one skonfigurowane dla tego adresu e-mail.">
 <!ENTITY domainLicense.email "Kontaktujemy się z Tobą używając podanego adresu email w celu wygenerowania licencji domeny; proszę daj nam dwa dni robocze aby się z Tobą skontaktować. Podaj nazwę domeny dla licencji na następnej stronie.">
 <!ENTITY domainLicense.header "Licencjonowany Email domeny">
 <!ENTITY domainLicense.instruct "Licencja jest przypisana do domeny Twojej firmy. Licencja umożliwia korzystanie z wersji QuickFolders Pro użytkownikom z adresem e-mail kończącym się domeną. Dla przykładu, jeśli podasz nazwę domeny &quot;abc.com&quot; wówczas użytkownicy mający adresy takie jak: fred@abc.com, martha@abc.com, mike.doe@abc.com, mogą używać licencji. Maksymalną ilość uprawnionych użytkowników stanowi liczba podana na ekranie początkowym.">
 <!ENTITY domainLicense.validate "Upewnij się, że wpisałeś właściwą nazwę domeny adresu e-mail Twojej firmy (część za znakiem &quot;@&quot;), ponieważ będzie ona używana do autoryzacji adresów e-mail użytkowników.">
 <!ENTITY updates.title "Aktualizacje">
-<!ENTITY updatesExpiry "Dodatek SmartTemplate4 Pro jest automatycznie aktualizowany poprzez witrynę dodatków Mozilli. Po upływie roku można będzie odnowić licencję lub zachować funkcje Premium na takich samych warunkach, jak użytkownik wersji darmowej. Funkcje wersji Premium będą wymagały rejestracji właściwego klucza licencyjnego.">
+<!ENTITY updatesExpiry "Dodatek SmartTemplate⁴ Pro jest automatycznie aktualizowany poprzez witrynę dodatków Mozilli. Po upływie roku można będzie odnowić licencję lub zachować funkcje Premium na takich samych warunkach, jak użytkownik wersji darmowej. Funkcje wersji Premium będą wymagały rejestracji właściwego klucza licencyjnego.">
 <!ENTITY vouchers.title "Vouchery">
-<!ENTITY freeLicense "Jeśli niedawno przekazałeś/przekazałaś dotację na rzecz SmartTemplate4 lub brałeś/brałaś udział przy jego tworzeniu, np. poprzez tłumaczenie, czy tworzenie kodu, możesz uzyskać za darmo klucz licencyjny. Skontaktuj się z autorem dodatku, używając przycisku znajdującego się na karcie „Pomoc techniczna” w opcjach SmartTemplate4">
+<!ENTITY freeLicense "Jeśli niedawno przekazałeś/przekazałaś dotację na rzecz SmartTemplate⁴ lub brałeś/brałaś udział przy jego tworzeniu, np. poprzez tłumaczenie, czy tworzenie kodu, możesz uzyskać za darmo klucz licencyjny. Skontaktuj się z autorem dodatku, używając przycisku znajdującego się na karcie „Pomoc techniczna” w opcjach SmartTemplate⁴">
 <!ENTITY account.label "Wybierz konto:">
 <!ENTITY email.label "E-mail:">
 <!ENTITY firstName.label "Imię:">

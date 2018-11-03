@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Nachrichtenvorlage">
 <!ENTITY pref_templateBox_tip "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &lt;br&gt;&#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4 Einstellungen">
+<!ENTITY pref_dialog.title "SmartTemplate⁴ Einstellungen">
 <!ENTITY pref_breaksOnTop.label "Zeilenumbrüche am Anfang der Vorlagen:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
 <!ENTITY pref_showStatusIcon.label "Button in der Statuszeile anzeigen">
@@ -77,13 +77,15 @@
 <!ENTITY pref_rep_br.cap "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch &lt;br&gt; ersetzt werden, sollte diese Option aktiviert werden.">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
-<!ENTITY help_dialog_title "SmartTemplate4 Hilfe">
+<!ENTITY help_dialog_title "SmartTemplate⁴ Hilfe">
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_hideExamples "Beispiele nicht anzeigen">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
+<!ENTITY defaultMimeFormat "Standardformat für Adressen:">
+<!ENTITY defaultMimeFormat_tip "Format beim Ersetzen von &#37;to&#37; &#37;from&#37; &#37;cc&#37; Addressen. z.B. firstname,lastname,??mail ersetzt mit Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt.">
 <!ENTITY pref_addressDelimiter "Trenne mehrere Korrespondenten mit:">
 <!ENTITY pref_addressDelimiter_tip "Trennzeichen zwischen mehreren Briefpartnern. Outlook benutzt Semikolon (;) Die Voreinstellung in Thunderbird ist Komma (,)">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
@@ -92,7 +94,8 @@
 <!ENTITY resolveNamesFromABDisplay "Falls Vorname fehlt, durch Anzeigenamen ersetzen">
 <!ENTITY resolveABRemoveMail "Email Adresse entfernen wenn kein Formatparameter angegeben ist">
 <!ENTITY suppressMailtToLink "Verhindern dass Mail Programme Email Adressen verlinken.">
-<!ENTITY capitalizeNames "Namen großschreiben">
+<!ENTITY capitalizeNames "Namen groß schreiben">
+<!ENTITY guessNameFromMail "Fehlende Namen aus der Email Adresse erraten">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
 <!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
@@ -107,14 +110,14 @@
 <!ENTITY pref_defaultCharset.label "Charset Standardwert">
 <!ENTITY pref_defaultCharset_tip "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Über SmartTemplate4">
+<!ENTITY about.cap "Über SmartTemplate⁴">
 <!ENTITY creator.label "Ersteller">
 <!ENTITY developer.label "Entwickler">
 <!ENTITY localename.label "de">
 <!ENTITY localized.label "Übersetzer">
 <!ENTITY translatorNickname.label "Marky Mark DE">
 <!ENTITY contributor.label "Mitwirkende">
-<!ENTITY about.label "SmartTemplate4 ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
+<!ENTITY about.label "SmartTemplate⁴ ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
@@ -224,7 +227,7 @@
 <!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Exportieren' ⇒ 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
 <!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Importieren' ⇒ 'Einstellungen und Vorlagen'.">
 <!ENTITY im-ex_note5.label "Wählen Sie nun die Datei (xxx.st4) die Sie importieren wollen.">
-<!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplate4 Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
+<!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplate⁴ Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
 <!ENTITY html_note.cap "Hinweise für Vorlagen im HTML-Format">
 <!ENTITY html_note.label "Verwenden Sie bitte ausschließlich den UTF-8 (Unicode) Zeichensatz innerhalb des HTML Quellcodes!">
 <!ENTITY table.cap "Anwenden der Variablen">
@@ -235,13 +238,13 @@
 <!ENTITY table_reply.label "Antworten">
 <!ENTITY table_fwd.label "Weiterleiten">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Lizenzschlüssel hier eintragen:">
 <!ENTITY label.insertLicense.tooltip "Der Lizenzschlüssel wird Ihnen von Fastspring zugeschickt.">
 <!ENTITY button.pasteLicense "einfügen">
 <!ENTITY button.validateLicense "bestätigen">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
-<!ENTITY licenseValidation.passed "Vielen Dank für's Registrieren von SmartTemplate4 Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.passed "Vielen Dank für's Registrieren von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
 <!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY licenseValidation.invalidAddon "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}.">

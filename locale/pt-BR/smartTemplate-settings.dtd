@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Modelo">
 <!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
-<!ENTITY pref_dialog.title "Opções do SmartTemplate4">
+<!ENTITY pref_dialog.title "Opções do SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
 <!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
 <!ENTITY pref_showStatusIcon.label "Exibir botão na barra de status">
@@ -77,7 +77,7 @@
 <!ENTITY pref_rep_br.cap "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado.">
 <!ENTITY pref_template_tip "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
-<!ENTITY help_dialog_title "Ajuda do SmartTemplate4">
+<!ENTITY help_dialog_title "Ajuda do SmartTemplate⁴">
 <!ENTITY help_keyword.cap "Ajuda">
 <!ENTITY pref_debug_check "Modo de depuração">
 <!ENTITY pref_hideExamples "Ocultar aba de exemplos">
@@ -98,7 +98,7 @@
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
 <!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Apoie o Stationery">
-<!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o SmartTemplate4.">
+<!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">
 <!ENTITY pref_stationeryLink "Addon Stationery">
 <!ENTITY pref_forceParagraph "Forçar modo parágrafo">
@@ -107,14 +107,14 @@
 <!ENTITY pref_defaultCharset.label "Codificação padrão">
 <!ENTITY pref_defaultCharset_tip "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Sobre SmartTemplate4">
+<!ENTITY about.cap "Sobre SmartTemplate⁴">
 <!ENTITY creator.label "Criação">
 <!ENTITY developer.label "Desenvolvimento">
 <!ENTITY localename.label "pt-BR">
 <!ENTITY localized.label "Tradução">
 <!ENTITY translatorNickname.label "Mauro José da Silva (BabelZilla)">
 <!ENTITY contributor.label "Colaboração">
-<!ENTITY about.label "SmartTemplate4 oferece um modelos inteligentes / mais fácil forma de usar o que personalizar o Thunderbird padrão citação cabeçalho. Modelos (citação do cabeçalho) pode ser usado para a conta única ou para configurações globais (contas comuns).">
+<!ENTITY about.label "SmartTemplate⁴ oferece um modelos inteligentes / mais fácil forma de usar o que personalizar o Thunderbird padrão citação cabeçalho. Modelos (citação do cabeçalho) pode ser usado para a conta única ou para configurações globais (contas comuns).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variáveis básicas">
 <!ENTITY ownname.label "Seu nome">
@@ -219,11 +219,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Configurações e importação/exportação de modelos">
 <!ENTITY im-ex_note1.label "Você pode exportar e importar as configurações e os modelos associados a cada conta.">
-<!ENTITY im-ex_note2.label "Primeiro, selecione a conta que você deseja exportar no campo 'Conta' das opções do SmartTemplate4.">
-<!ENTITY im-ex_note3.label "Depois, clique no menu 'Ferramentas' ⇒ 'Exportar' ⇒ 'Configurações e Modelos' e salve no seu computador o arquivo do SmartTemplate4 (extensão .st4).">
-<!ENTITY im-ex_note4.label "Para importar um arquivo, selecione a conta no campo 'Conta' das opções do SmartTemplate4 e clique no menu 'Ferramentas' ⇒ 'Importar' ⇒ 'Configurações e Modelos'.">
-<!ENTITY im-ex_note5.label "Selecione o arquivo do SmartTemplate4 (extensão .st4) que deseja importar.">
-<!ENTITY im-ex_note6.label "OBSERVAÇÃO: Nos computadores Apple/Macintosh o menu será exibido na faixa superior e não na janela de opções do SmartTemplate4. Este é o comportamento padrão nessa plataforma e não pode ser alterado.">
+<!ENTITY im-ex_note2.label "Primeiro, selecione a conta que você deseja exportar no campo 'Conta' das opções do SmartTemplate⁴.">
+<!ENTITY im-ex_note3.label "Depois, clique no menu 'Ferramentas' ⇒ 'Exportar' ⇒ 'Configurações e Modelos' e salve no seu computador o arquivo do SmartTemplate⁴ (extensão .st4).">
+<!ENTITY im-ex_note4.label "Para importar um arquivo, selecione a conta no campo 'Conta' das opções do SmartTemplate⁴ e clique no menu 'Ferramentas' ⇒ 'Importar' ⇒ 'Configurações e Modelos'.">
+<!ENTITY im-ex_note5.label "Selecione o arquivo do SmartTemplate⁴ (extensão .st4) que deseja importar.">
+<!ENTITY im-ex_note6.label "OBSERVAÇÃO: Nos computadores Apple/Macintosh o menu será exibido na faixa superior e não na janela de opções do SmartTemplate⁴. Este é o comportamento padrão nessa plataforma e não pode ser alterado.">
 <!ENTITY html_note.cap "Observações para Modelos em HTML">
 <!ENTITY html_note.label "Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!">
 <!ENTITY table.cap "Uso das variáveis">
@@ -234,13 +234,13 @@
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Encaminhar">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Insira sua licença pessoal aqui:">
 <!ENTITY label.insertLicense.tooltip "Sua chave de licença foi enviada no e-mail de confirmação de compra da Fastspring.">
 <!ENTITY button.pasteLicense "colar">
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Sua licença é válida até:">
-<!ENTITY licenseValidation.passed "Obrigado por registrar o SmartTemplate4 Pro! Todos os recursos premium agora estão desbloqueados.">
+<!ENTITY licenseValidation.passed "Obrigado por registrar o SmartTemplate⁴ Pro! Todos os recursos premium agora estão desbloqueados.">
 <!ENTITY licenseValidation.failed "A chave de licença inserida não é válida. Verifique o e-mail da FastSpring para instruções. Se você ainda tiver problemas, entre em contato comigo a partir da aba Suporte.">
 <!ENTITY licenseValidation.expired "A chave de licença inserida expirou. Por favor, pressione o botão abaixo para renovar sua licença.">
 <!ENTITY licenseValidation.invalidAddon "A chave de licença inserida pode ser para uma extensão diferente. A chaves de licença para o {0} começam com {1}.">

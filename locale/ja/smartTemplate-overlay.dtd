@@ -1,6 +1,6 @@
 <!-- #### OVERLAYS #### -->
-<!ENTITY smartTemplate4.settings.label "SmartTemplate4">
-<!ENTITY smartTemplate4.settings.tooltip "SmartTemplate4 設定">
+<!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
+<!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴ 設定">
 <!ENTITY smartTemplate4.cleandeferred.label "除去！">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "SmartTemplate のすべての変数を除去します">
 <!ENTITY smartTemplate4.deferredcontext.update "SmartTemplate⁴ のコンテンツを更新します">

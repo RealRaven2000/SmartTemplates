@@ -34,7 +34,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "將引用表頭寫在這個對話框,例如.在&#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "樣板">
 <!ENTITY pref_templateBox_tip "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, &lt;br&gt; 感謝您的郵件 &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
-<!ENTITY pref_dialog.title "SmartTemplate4 設定">
+<!ENTITY pref_dialog.title "SmartTemplate⁴ 設定">
 <!ENTITY pref_breaksOnTop.label "從頭算起的換行數:">
 <!ENTITY pref_removeSig.label "當改變電子郵件身份時置換簽名檔">
 <!ENTITY pref_showStatusIcon.label "在狀態列顯示按鈕">
@@ -57,19 +57,19 @@
 <!ENTITY pref_rep_br.cap "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中.">
 <!ENTITY pref_quotehead_tip "停用預設的引用表頭.請插入您的預設表頭到文字方塊.">
 <!ENTITY pref_template_tip "您可以用'變數'來變更引用表頭.請用求助取得更多資訊.">
-<!ENTITY help_dialog_title "SmartTemplate4 求助">
+<!ENTITY help_dialog_title "SmartTemplate⁴ 求助">
 <!ENTITY help_keyword.cap "求助">
 <!ENTITY pref_debug_check "除錯模式">
 <!ENTITY pref_debug_tip "點右鍵使用進階的除錯選項">
 <!-- #### HELP #### -->
-<!ENTITY about.cap "有關 SmartTemplate4">
+<!ENTITY about.cap "有關 SmartTemplate⁴">
 <!ENTITY creator.label "建立者">
 <!ENTITY developer.label "開發者">
 <!ENTITY localename.label "en-US">
 <!ENTITY localized.label "翻譯者">
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "貢獻者">
-<!ENTITY about.label "SmartTemplate4 提供簡單的方法,讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個帳號或是通用樣板來使用.">
+<!ENTITY about.label "SmartTemplate⁴ 提供簡單的方法,讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個帳號或是通用樣板來使用.">
 <!-- #### TABLE #### -->
 <!ENTITY fix_var.cap "固定的變數">
 <!ENTITY ownname.label "您的姓名">
@@ -141,8 +141,8 @@
 <!ENTITY im-ex_note1.label "您可以匯出及匯入設定和關聯每一個帳號的樣板.">
 <!ENTITY im-ex_note2.label "第一,選擇您想要匯出從SmartTemplate4設定下拉視窗的帳號.">
 <!ENTITY im-ex_note3.label "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦.">
-<!ENTITY im-ex_note4.label "要匯入檔案,選擇一個您想要從 SmartTemplate4 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'.">
-<!ENTITY im-ex_note5.label "選擇您想匯入的 SmartTemplate4 檔案 (xxx.st4).">
+<!ENTITY im-ex_note4.label "要匯入檔案,選擇一個您想要從 SmartTemplate⁴ 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'.">
+<!ENTITY im-ex_note5.label "選擇您想匯入的 SmartTemplate⁴ 檔案 (xxx.st4).">
 <!ENTITY html_note.label "HTML 樣板只能使用 UTF-8 (Unicode) 字元!">
 <!ENTITY table.cap "變數使用方法">
 <!ENTITY table_note.label "錯誤使用變數將會在郵件中產生 'Error Console'!">

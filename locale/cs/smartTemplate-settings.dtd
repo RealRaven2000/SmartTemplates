@@ -48,7 +48,7 @@
 <!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
 <!ENTITY pref_templateBox.label "Šablona">
 <!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, &lt;br&gt; Díky za Vaši zprávu &lt;br&gt; S pozdravem, &lt;br&gt;&#37;ownname&#37;">
-<!ENTITY pref_dialog.title "Nastavení SmartTemplate4">
+<!ENTITY pref_dialog.title "Nastavení SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
 <!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
 <!ENTITY pref_showStatusIcon.label "Zobraz tlačítko v řádku statusu">
@@ -77,7 +77,7 @@
 <!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím &lt;br&gt; .">
 <!ENTITY pref_quotehead_tip "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. ">
 <!ENTITY pref_template_tip "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. ">
-<!ENTITY help_dialog_title "SmartTemplate4 Nápověda">
+<!ENTITY help_dialog_title "SmartTemplate⁴ Nápověda">
 <!ENTITY help_keyword.cap "Nápověda">
 <!ENTITY pref_debug_check "Ladicí mód">
 <!ENTITY pref_hideExamples "Skrýt záložku s příklady">
@@ -106,7 +106,7 @@
 <!ENTITY pref_defaultCharset.label "Výchozí znakové sada">
 <!ENTITY pref_defaultCharset_tip "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "O SmartTemplate4">
+<!ENTITY about.cap "O SmartTemplate⁴">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programátor">
 <!ENTITY localename.label "en-US">
@@ -211,11 +211,11 @@
 <!ENTITY timezonename.label "Značka časové zóny GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Export/Import nastavení šablon">
 <!ENTITY im-ex_note1.label "Můžeš exportovat a importovat tvé nastavení a šablony pro každý účet.">
-<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate4 v rozbalovacím poli.">
+<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate⁴ v rozbalovacím poli.">
 <!ENTITY im-ex_note3.label "Dále vyber 'Soubor' ⇒ 'Export' ⇒ 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
-<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate4 nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
-<!ENTITY im-ex_note5.label "Vyber SmartTemplate4 soubor (xxx.st4) který chceš naimportovat.">
-<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby Smarttemplate4. To je standardní na této platformě a nebůže být změněno.">
+<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate⁴ nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
+<!ENTITY im-ex_note5.label "Vyber SmartTemplate⁴ soubor (xxx.st4) který chceš naimportovat.">
+<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplate⁴. To je standardní na této platformě a nebůže být změněno.">
 <!ENTITY html_note.cap "Poznámka pro HTML šablonu.">
 <!ENTITY html_note.label "Prosím používej pouze UTF-8 (Unicode) znaky v HTML šabloně!">
 <!ENTITY table.cap "Použití promněnných">
