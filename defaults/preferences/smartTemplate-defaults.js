@@ -21,12 +21,20 @@ pref("extensions.smartTemplate4.cursor.insertSpace", true);
 pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
+pref("extensions.smartTemplate4.mime.resolveAB.displayName", false);
+pref("extensions.smartTemplate4.mime.defaultFormat","name,bracketMail(angle)");
 pref("extensions.smartTemplate4.names.delimiter", ",");
 pref("extensions.smartTemplate4.names.capitalize", true);
 pref("extensions.smartTemplate4.names.quoteIfComma", false);
+pref("extensions.smartTemplate4.names.guessFromMail", true); // [Bug 26595] do not guess Name from email address part
+pref("extensions.smartTemplate4.names.extractNameFromParentheses", false); // [Bug 26596] Make extracting Name from (parentheses) optional
 pref("extensions.smartTemplate4.mail.suppressLink", false);
 pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); /* [BUG 26434] delay for inline image replacement when forwarding */
+pref("extensions.smartTemplate4.xtodaylegacy", false); /* old way of processing which temporarily inserted  %X:=today% on _EVERY_ new line */
+pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
+
+
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */
@@ -58,6 +66,7 @@ pref("extensions.smartTemplate4.debug.settings.prefs", false);
 pref("extensions.smartTemplate4.debug.signatures", false);
 pref("extensions.smartTemplate4.debug.regularize", false);
 pref("extensions.smartTemplate4.debug.tokens", false);
+pref("extensions.smartTemplate4.debug.tokens.deferred", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.mime.split", false);
 pref("extensions.smartTemplate4.debug.parseModifier", false);

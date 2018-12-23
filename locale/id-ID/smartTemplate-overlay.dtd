@@ -1,5 +1,6 @@
-<!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
-<!ENTITY smartTemplate4.settings.tooltip "Setelan SmartTemplate⁴">
+<!-- #### OVERLAYS #### -->
+<!ENTITY smartTemplate4.settings.label "SmartTemplate4">
+<!ENTITY smartTemplate4.settings.tooltip "Setelan SmartTemplate4">
 <!ENTITY smartTemplate4.cleandeferred.label "Membersihkan!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Membersihkan semua variabel SmartTemplate">
 <!ENTITY smartTemplate4.deferredcontext.update "Perbarui konten SmartTemplate⁴">

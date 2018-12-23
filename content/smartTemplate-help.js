@@ -12,9 +12,16 @@ END LICENSE BLOCK
 
 SmartTemplate4.Listener = {
 	listen: function(evt) {
-		let code = evt.target.getAttribute('codeWord');
-		let className = evt.target.className;
-		window.onCodeWord(code, className); // was window.opener.onCodeWord when help was in its own window
+		if (evt.type=="SmartTemplate4CodeWord") {
+		  let code = evt.target.getAttribute('codeWord'),
+		      className = evt.target.className;
+			window.onCodeWord(code, className); // was window.opener.onCodeWord when help was in its own window
+		}
+		if (evt.type=="SmartTemplate4Website") {
+			let href = evt.target.getAttribute('href');
+			if (href)
+				SmartTemplate4.Util.openURLInTab(href);
+		}
 
 	}
 }
@@ -33,10 +40,17 @@ SmartTemplate4.Help = {
 		                          SmartTemplate4.Listener.listen,
 		                          false,
 		                          true); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
+    // allow opening content tabs:
+		document.addEventListener("SmartTemplate4Website",
+		                          SmartTemplate4.Listener.listen,
+		                          false,
+		                          true); // The last value is a Mozilla-specific value to indicate untrusted content is allowed to trigger the event
+		
 	} ,
 
 	onUnload : function() {
 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
+		document.removeEventListener("SmartTemplate4Website", SmartTemplate4.Listener.listen, false);
 	} ,
 
 	onResize : function(win) {

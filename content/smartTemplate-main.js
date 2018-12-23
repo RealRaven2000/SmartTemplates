@@ -170,7 +170,7 @@ END LICENSE BLOCK
     # [Bug 25089] (reopened) default quote header wasn't removed anymore in Tb 31.0
     # [Bug 25816] Missing names in reply caused by different Encodings - the Mime decoder fails when multiple addresses with varying encodings are contained
     # [Bug 25089] Default forward quote not hidden
-    # variable %matchTextFromBody()% to find and replace patter e.g. %matchTextFromBody(TEST *)% will retrieve '123' from 'TEST 123'
+    # variable %matchTextFromBody()% to find and replace pattern e.g. %matchTextFromBody(TEST *)% will retrieve '123' from 'TEST 123'
     
   Version 1.0 - 24/05/2015
   Features
@@ -283,31 +283,33 @@ END LICENSE BLOCK
 		              (use insertFileLink? getFileAsDataURI? encodeURIComponent?)
 									MsgComposeCommands uses loadBlockedImage() ?
 	  # [Bug 26307] Extend dates variables with additional offset parameter for hours / minutes
+		# [Bug 26465] Composer does not focus into body of mail
 		
-	Version 1.5.2 - WIP
+	Version 2.0 - 23/12/2018
+		# [Bug 26494] ESR 2018 readiness - Make SmartTemplate4 compatible with Tb 60
 	  # [Bug 26523] Remove extra <br> before blockquote if standard quote header is used.
 		# [Bug 26524] %datelocal% and %dateshort% are broken in Tb 60
 		# Completed various translations (ru, pl, nl, sr)
+		# [Bug 26526] %file% causes rogue errors "The Variable %5C.. can not be used for new meessages" when including images
+		# [Bug 26551] Add Domain License key support for SmartTemplate⁴ Pro
+		# [Bug 26552] %attach% Variable for attaching [pdf] files
+		# Moved links from addons.mozilla.org to addons.thunderbird.net
+		# Address Book: Added feature to replace firstname with Display Name if no first name is recorded.
+		# Added Indonesian Locale - thanks to Mienz Louveinski (Babelzilla.org)
+		# [Bug 26596] Make extracting Name from (parentheses) optional - extensions.smartTemplate4.names.guessFromMail
+		# [Bug 26595] Option to disable guessing Name Part
+		# [Bug 26597] Add ?? operator to mmake parts of address header arguments optional, e.g. %from(name,??mail)%
+		# Added option for default address variable format
+		# [Bug 24993]</a> Premium Feature: Added support for using the following fields when composing a *new* Email:%subject% %from% %to% %cc% %bcc% %date% %dateformat()%
+		
+  FUTURE WORK
+	  # [Bug 26536] Support using SmartTemplate4 variables in Thunderbird Templates
 
 =========================
-To Do
+		
 // investigate gMsgCompose.compFields!
 	
 =========================
-		0.9.3 Review specific:
-		2) To Do - revisit usage of innerHtml
-
-		4) Adding a var to a template by clicking on it in the help window, the change will not be persisted unless one further edits the message text.
-		STR: Edit template a bit. Add variable by click. Close window (OSX is instantApply). Reopen window -> Variable not there
-		STR: Edit template a bit. Add variable by click. Edit a bit more. Close window (OSX is instantApply). Reopen window -> Variable *is* there
-
-		Consider the following suggestion and recommendations:
-		1) Please consider using Services.jsm (or creating your own if you truly want to support appversions that do not support that yet). Consider defining additional service references not covered by Services.jsm in your own code module.
-		See e.g. https://github.com/scriptish/scriptish/blob/master/extension/modules/constants.js
-		This makes the code somewhat faster, but more importantly, easier to read, maintain and review.
-
-		2) Did you recently test your minVersions?
-
 */
 
 Components.utils.import("resource://smarttemplate4/smartTemplate-stationery.jsm");
@@ -326,7 +328,8 @@ var SmartTemplate4 = {
 		hasQuotePlaceholder: false,
 		hasQuoteHeader: false,          // WIP
 		hasTemplatePlaceHolder: false,  // future use
-		isStationery: false
+		isStationery: false,
+		isThunderbirdTemplate: false
 	},
 	
 	initFlags : function initFlags(flags) {
@@ -338,6 +341,7 @@ var SmartTemplate4 = {
 		flags.hasQuotePlaceholder = false;
 		flags.hasQuoteHeader = false;
 		flags.hasTemplatePlaceHolder = false;
+		flags.isThunderbirdTemplate = false;
 	} ,
 
 	stateListener: {
@@ -484,12 +488,11 @@ var SmartTemplate4 = {
 		// pass in a flag to leave %sig% untouched
 		util.clearUsedPremiumFunctions();
     t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true, true); 
+		util.logDebugOptional('stationery', 'Processed text: ' + t.HTML);
     util.logDebugOptional('stationery',
 		     '=========================================\n'
 		   + '=========================================\n'
 			 + 'Stationery preprocessor complete.');
-		util.logDebugOptional('stationery',
-		     'Processed text: ' + t.HTML);
   },	
 	
 	// -------------------------------------------------------------------
@@ -497,14 +500,16 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	notifyComposeBodyReady: function notifyComposeBodyReady(evt) 	{
 		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		      util = SmartTemplate4.Util,
+					Ci = Components.interfaces,
+					msgComposeType = Ci.nsIMsgCompType;
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
 		    stationeryTemplate = null,
 		    flags = this.PreprocessingFlags;
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
-		if (prefs.isDebugOption('stationery')) debugger;
-		if (prefs.isDebugOption('composer')) debugger;
+		if (prefs.isDebugOption('stationery') || prefs.isDebugOption('composer')) debugger;
+		util.logDebugOptional('stationery', 'notifyComposeBodyReady()...');
 		this.initFlags(flags);
 		
 		if (evt) {
@@ -527,7 +532,6 @@ var SmartTemplate4 = {
 						flags.hasQuotePlaceholder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quotePlaceholder');
 						flags.hasQuoteHeader = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quoteHeader');
 						flags.hasTemplatePlaceHolder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'smartTemplate');
-						
 					}
 					catch(ex) {
 						util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
@@ -535,23 +539,23 @@ var SmartTemplate4 = {
 				}
 			}			
 		}
+		flags.isThunderbirdTemplate = (gMsgCompose.type == msgComposeType.Template);
 		SmartTemplate4.StationeryTemplateText = ''; // discard it to be safe?
 		util.logDebug(dbg);
 		// Add template message
 		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
 		// guard against this being called multiple times from stationery
 		// avoid this being called multiple times
-    let Ci = Components.interfaces,
-		    editor = util.CurrentEditor.QueryInterface(Ci.nsIEditor),
+    let editor = util.CurrentEditor.QueryInterface(Ci.nsIEditor),
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
 			if (prefs.isDebugOption('stationery')) debugger;
-			if (!root.getAttribute('smartTemplateInserted'))  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
 				// if insertTemplate throws, we avoid calling it again
-				this.smartTemplate.insertTemplate(true, flags);
+				this.smartTemplate.insertTemplate(!flags.isThunderbirdTemplate, flags); // if a Tb template is opened, process without removal
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
 				root.setAttribute("smartTemplateInserted","true");
@@ -566,17 +570,23 @@ var SmartTemplate4 = {
 			}
 			
 			//set focus to editor
-			let FocusElement;
+			let FocusElement, FocusId;
+			// if we load a template ST4 processing will have been done befeore the template was saved.
 			switch (this.smartTemplate.composeCase) {
-				case 'new':
-					FocusElement = window.document.getElementById('addressCol2#1'); // "to" line
+				case 'tbtemplate':
+				case 'new': // includes msgComposeType.Template and msgComposeType.MailToUrl
+				  if (gMsgCompose.type == msgComposeType.MailToUrl)
+						FocusId = 'content-frame'; // Editor
+					else
+						FocusId = 'addressCol2#1'; // "to" line
 					break;
 				case 'forward':
-					FocusElement = window.document.getElementById('addressCol2#1'); // "to" line
+					FocusId = 'addressCol2#1'; // "to" line
 					break;
 				default: // 'reply'  - what about mailto?
-				  FocusElement = window.document.getElementById('content-frame'); // Editor
+				  FocusId = 'content-frame'; // Editor
 			}
+			FocusElement = window.document.getElementById(FocusId);
 			if (FocusElement) {
 				FocusElement.focus();
 			}
@@ -587,7 +597,8 @@ var SmartTemplate4 = {
 			if (isInserted)
 				root.setAttribute("smartTemplateInserted","true");
 		}
-	},
+		util.logDebugOptional('stationery', 'notifyComposeBodyReady() ended.');
+},
 
 	// -------------------------------------------------------------------
 	// A handler to switch identity
@@ -674,6 +685,14 @@ var SmartTemplate4 = {
 		this.whatIsX = this.XisToday;
 		this.whatIsUtc = false;
 		this.whatIsDateOffset = 0;
+		this.whatIsHourOffset = 0;
+		this.whatIsMinuteOffset = 0;
+		// flag for deferred vairables - once we add an event handler into the composer content script for clicking on
+		// not (yet) existing headers [e.g. %To(Name)% in a new Email] we set this variable to true
+		// (avoids having the function there multiple times)
+		this.hasDeferredVars = false; 
+
+
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
 	} ,
 	

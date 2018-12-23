@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Clique com o botão direito do mouse para opções avançadas e de depuração">
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -93,6 +95,7 @@
 <!ENTITY resolveABRemoveMail "Remover endereço de email a menos que o parâmetro de formato esteja especificado">
 <!ENTITY suppressMailtToLink "Suprimir cliente de email adicionando links aos endereços de email.">
 <!ENTITY capitalizeNames "Capitalizar nomes">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
@@ -134,6 +137,7 @@
 <!ENTITY to.label "Destinatário (padrão)">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Variáveis de remetente (De)">
 <!ENTITY from_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label "Remetente (padrão)">
@@ -161,6 +165,10 @@
 <!ENTITY header_function.scope "Ele pode ser usado com estes cabeçalhos:">
 <!ENTITY header.set.subject "substituir assunto pelo texto">
 <!ENTITY header.prefix.subject "prefixo do assunto
+
+
+
+
 
 
 ">
@@ -204,6 +212,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">
 <!ENTITY xsent_long.cap "Exemplo com variáveis personalizáveis:">

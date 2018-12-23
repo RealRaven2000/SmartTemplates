@@ -20,15 +20,17 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image
   height: 24px;
 }
 
+
 /* ################################################################################### */
 /* ################################ STATUSBAR OVERLAY ################################ */
 /* ################################################################################### */
 
 /* ################################## ICON BINDINGS ################################## */
+/* @import url("chrome://messenger/skin/shared/messenger.css"); for --toolbarbutton-border-radius */
 #SmartTemplate4Messenger {
 	-moz-appearance: none;
 	border: 1px solid transparent;
-	border-radius: var(--toolbarbutton-border-radius);
+	border-radius: 2px; /* var(--toolbarbutton-border-radius, 3px); from messenger.css - 2px win 3px osx */
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 	margin: 0;
 	padding: 1px 2px 0 !important;
@@ -100,6 +102,7 @@ notification[value="SmartTemplate4-proFeature"] image.messageImage {
 	width: 72px !important;
 	min-height: 36px !important;
 	height: 36px !important;
+	background-image: none !important; /* remove attachment icon in composer */
 }
 
 notification[value="SmartTemplate4-proFeature"] .messageCloseButton {

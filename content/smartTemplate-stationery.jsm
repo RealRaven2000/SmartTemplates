@@ -30,22 +30,48 @@ END LICENSE BLOCK
 
 var EXPORTED_SYMBOLS = [];
 
-try {
-  Components.utils.import("resource://stationery/content/stationery.jsm");
-  Components.utils.import("resource://gre/modules/Services.jsm");
-  
-  Stationery.templates.registerFixer({
-    //Stationery HTML preprocessor
-    preprocessHTML: function(template) { 
-		  // we will store the original stationery template source here, so we can check for variables
-			// post processing (Stationery 'consumes' its own template)
-			Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.StationeryTemplateText = '';
-      //forward to SmartTemplate4 in current composer window
-      Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.preprocessHTMLStationery(template); 
-    },
-    
-  });
+// protect global scope. We do not reference SmartTemplate4 objects from here.
+(function() {
+	function log(msg) {
+		const title = "SmartTemplate4";
+		if (!isDebugStationery) return;
+		consoleService.logStringMessage(title + "\n"+ msg);
+	}
+	const Cu = Components.utils,
+				Cc = Components.classes,
+				Ci = Components.interfaces,
+				service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+				consoleService = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);			
 
-} catch (e) {
-  //no Stationery installed
-}
+	let isStationery = service.getBoolPref('extensions.smartTemplate4.stationery.supported'),
+	    isDebugStationery = service.getBoolPref('extensions.smartTemplate4.debug.stationery');
+
+	try {
+					
+		Cu.import("resource://stationery/content/stationery.jsm");
+		Cu.import("resource://gre/modules/Services.jsm");
+		
+		if (isStationery) {
+			log('stationery', 'Calling Stationery.templates.registerFixer()');
+			
+			Stationery.templates.registerFixer({
+				//Stationery HTML preprocessor
+				preprocessHTML: function(template) { 
+					// we will store the original stationery template source here, so we can check for variables
+					// post processing (Stationery 'consumes' its own template)
+					Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.StationeryTemplateText = '';
+					//forward to SmartTemplate4 in current composer window
+					Services.wm.getMostRecentWindow('msgcompose').SmartTemplate4.preprocessHTMLStationery(template); 
+				},
+				
+			});
+		}
+		else {
+			log('stationery', 'Stationery support is disabled. Check ST4 options!');
+		}
+
+	} catch (ex) {
+		//no Stationery installed
+		log('stationery', 'Stationery not Installed?' + ex.toString());
+	}
+})();

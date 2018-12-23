@@ -38,6 +38,11 @@ override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smar
 override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/legacy/smartTemplate-about.css application=postbox@postbox-inc.com
 override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/legacy/messageWindow.css application=postbox@postbox-inc.com
 
+## add style rules to editor
+style   chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/compose-overlay.css appversion<59.0a1
+style   chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/default/compose-overlay.css appversion>=59.0a1
+
+
 #### LOCALIZATIONS (alphabetical by localename) ####
 locale      smarttemplate4           cs           locale/cs/
 locale      smarttemplate4           de           locale/de/
@@ -46,7 +51,8 @@ locale      smarttemplate4           es-ES        locale/es-ES/
 locale      smarttemplate4           fi           locale/fi/
 locale      smarttemplate4           fr           locale/fr/
 locale      smarttemplate4           it           locale/it/
-locale      smarttemplate4           ja-JP        locale/ja/
+locale      smarttemplate4           id-ID        locale/id-ID/
+locale      smarttemplate4           ja           locale/ja/
 locale      smarttemplate4           nl           locale/nl/
 locale      smarttemplate4           oc           locale/oc/
 locale      smarttemplate4           pl           locale/pl/
@@ -66,7 +72,7 @@ content smarttemplate4-locales locale/
 # Style Overlay for Toolbar Button # 
 style  chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion<59.0a1
 style  chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion>=59.0a1
-
+style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/default/compose-overlay.css
 
 
 #### SeaMonkey XUL OVERLAYS application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} ####

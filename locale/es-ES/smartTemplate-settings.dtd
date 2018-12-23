@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar corresponsales múltiples con:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
@@ -93,12 +95,13 @@
 <!ENTITY resolveABRemoveMail "Eliminar dirección de correo si no está especificado el parámetro de formato">
 <!ENTITY suppressMailtToLink "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo">
 <!ENTITY capitalizeNames "Nombres en mayúsculas">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">
 <!ENTITY pref_sigReplaceBR.label "Reemplazar salto de línea por &lt;br&gt; en la firma de texto simple">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
-<!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a smartTemplate4">
+<!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a SmartTemplate⁴">
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">
 <!ENTITY pref_stationeryLink "Extensión Stationery">
 <!ENTITY pref_forceParagraph "Forzar modo párrafo">
@@ -134,6 +137,7 @@
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
 <!ENTITY tofirstname.label "Nombre de pila del destinatario">
 <!ENTITY toname.label "Apellido del destinatario">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Remitente (De)">
 <!ENTITY from_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY from.label "Nombre de remitente (predeterminado)">
@@ -201,6 +205,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">

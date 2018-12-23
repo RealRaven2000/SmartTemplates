@@ -34,9 +34,9 @@
 <!ENTITY contribute_button "Contribuisci">
 <!ENTITY button.updateThunderbird "Aggiorna Thunderbird !">
 <!-- #### GUI #### -->
-<!ENTITY pref_groupMailContent "Mail Content">
+<!ENTITY pref_groupMailContent "Contenuto Mail">
 <!ENTITY pref_groupSignatures "Signatures">
-<!ENTITY pref_groupAdvanced "Advanced Functions">
+<!ENTITY pref_groupAdvanced "Funzioni avanzate">
 <!ENTITY pref_groupUI "User Interface">
 <!ENTITY pref_groupNameRules "Regole per il nome">
 <!ENTITY pref_groupTroubleShooting "Risoluzione dei problemi">
@@ -84,18 +84,21 @@
 <!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
+<!ENTITY defaultMimeFormat "Formato indirizzo predefinito:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Usa il carattere seguente per separare più destinatari:">
 <!ENTITY pref_addressDelimiter_tip "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,).">
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
 <!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
 <!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
-<!ENTITY resolveNamesFromABDisplay "Usa Display Name se il nome proprio è assente">
+<!ENTITY resolveNamesFromABDisplay "Usa il nome visualizzato se il nome proprio è assente">
 <!ENTITY resolveABRemoveMail "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato">
-<!ENTITY suppressMailtToLink "Non richiama i programmi di posta se si aggiunge un riferimento ad un indirizzo di posta elettronica.">
+<!ENTITY suppressMailtToLink "Non richiamare i programmi di posta se si aggiunge un riferimento ad un indirizzo di posta elettronica.">
 <!ENTITY capitalizeNames "Nomi con lettera iniziale in maiuscolo">
+<!ENTITY guessNameFromMail "Se mancante, indovina le parti di un nome dall'indirizzo email.">
 <!ENTITY pref_parseSignature "Elabora firma">
 <!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
-<!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursore&#37;">
+<!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursor&#37;">
 <!ENTITY pref_sigReplaceBR.label "Sostituisci le interruzioni di riga con &lt;br&gt; nelle firme in testo semplice">
 <!ENTITY pref_stationerySupport "Supporta l'estensione Stationery">
 <!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate⁴.">
@@ -134,6 +137,7 @@
 <!ENTITY to.label "Nome del destinatario (predefinito)">
 <!ENTITY tofirstname.label "Cognome del destinatario">
 <!ENTITY toname.label "Nome del destinatario">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Variabili del mittente (Da)">
 <!ENTITY from_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY from.label "Nome del mittente (predefinito)">
@@ -201,6 +205,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Variabile &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile &#37;X:=sent&#37;#37; vengono utilizzati i valori di quando il messaggio è stato inviato">
 <!ENTITY xsent_long.cap "Esempio di Longstring">

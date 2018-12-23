@@ -102,7 +102,7 @@
 <!ENTITY pref_sigReplaceBR.label "Zeilenumbrüche in Text-Signatur durch &lt;br&gt; ersetzen">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
-<!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SamrtTemplate4 Variablen in den Vorlagen von Stationery.">
+<!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SmartTemplate⁴ Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
 <!ENTITY pref_forceParagraph "Anfangs Absatz einfügen">
 <!ENTITY pref_forceParagraph_tip "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen.">

@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "1.5.2",
+	HARDCODED_CURRENTVERSION : "2.0",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -28,21 +28,21 @@ SmartTemplate4.Util = {
 	mExtensionVer: null,
 	ConsoleService: null,
 	lastTime: 0,
-	AMOHomepage:      "https://addons.mozilla.org/thunderbird/addon/324497/",
+	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
 	PremiumFeaturesPage: "http://smarttemplate4.mozdev.org/premium.html",
 	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
 	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
 	DonatePage:       "http://smarttemplate4.mozdev.org/contribute.html",
 	VersionPage:      "http://smarttemplate4.mozdev.org/version.html",
 	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
-	AxelAMOPage:      "https://addons.mozilla.org/thunderbird/user/66492/",
-	MarkyAMOPage:     "https://addons.mozilla.org/thunderbird/user/2448736/",
-	ArisAMOPage:      "https://addons.mozilla.org/firefox/user/5641642/",
-	Tool8AMOPage:     "https://addons.mozilla.org/thunderbird/user/5843412/",
+	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
+	MarkyAMOPage:     "https://addons.thunderbird.net/thunderbird/user/2448736/",
+	ArisAMOPage:      "https://addons.thunderbird.net/firefox/user/5641642/",
+	Tool8AMOPage:     "https://addons.thunderbird.net/thunderbird/user/5843412/",
 	NoiaHomepage:     "http://carlitus.deviantart.com/",
 	FlagsHomepage:    "http://flags.blogpotato.de/",
 	BeniBelaHomepage: "http://www.benibela.de/",
-	StationeryPage:   "https://addons.mozilla.org/thunderbird/addon/stationery",
+	StationeryPage:   "https://addons.thunderbird.net/thunderbird/addon/stationery",
 	YouTubePage:      "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
 	
   get mainInstance() {
@@ -402,7 +402,10 @@ SmartTemplate4.Util = {
 				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
 				break;
 			case 'Thunderbird': 
-				notificationId = 'mail-notification-box'
+				if (window.location.toString().endsWith("messengercompose.xul"))
+					notificationId = 'attachmentNotificationBox';
+				else
+					notificationId = 'attachmentNotificationBox';
 				break;
 			case 'SeaMonkey':
 				notificationId = null;
@@ -1243,25 +1246,33 @@ SmartTemplate4.Util = {
 	} ,
 	
 	getFileAsDataURI : function getFileAsDataURI(aURL) {
-		const prefs = SmartTemplate4.Preferences;
-		if (prefs.isDebugOption('images')) debugger;
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util,
+					Ci = Components.interfaces,
+		      Cc = Components.classes;
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
+		util.logDebugOptional('images',"getFileAsDataURI()\nfilename=" + filename);
     let url = Services.io.newURI(aURL, null, null),
-        contentType = Components.classes["@mozilla.org/mime;1"].getService(Components.interfaces.nsIMIMEService).getTypeFromURI(url);
+        contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromURI(url);
     if (!contentType.startsWith("image/")) {
+			util.logDebugOptional('images',"getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType);
 			// non-image content-type; let Thunderbird show a warning after insertion
 			return aURL;
     }
 
 		try {
-			url = url.QueryInterface(Components.interfaces.nsIURL);
-			let channel = Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Components.interfaces.nsILoadInfo.SEC_NORMAL, Components.interfaces.nsIContentPolicy.TYPE_OTHER),
-					stream = Components.classes["@mozilla.org/binaryinputstream;1"].createInstance(Components.interfaces.nsIBinaryInputStream);
+			url = url.QueryInterface(Ci.nsIURL);
+			let LoadInfoFlags = Ci.nsILoadInfo.SEC_NORMAL || Ci.nsILoadInfo.SEC_REQUIRE_CORS_DATA_INHERITS,
+			    channel = Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER),
+					stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 			stream.setInputStream(channel.open());
+			util.logDebugOptional('images',"opening image stream...");
 			let encoded = btoa(stream.readBytes(stream.available()));
 			stream.close();
-			return "data:" + contentType + (filename ? ";filename=" + encodeURIComponent(filename) : "") + ";base64," + encoded;
+			let encodedFileName = filename ? encodeURIComponent(filename) : "";
+			util.logDebugOptional('images',"stream read. Adding data, including encoded filename part: " + encodedFileName);
+			return "data:" + contentType + (filename ? ";filename=" + encodedFileName : "") + ";base64," + encoded;
 		}
 		catch (ex) {
 			this.logToConsole("could not decode file: " + filename + "\n" + ex.toString());
@@ -1361,7 +1372,700 @@ SmartTemplate4.Util = {
 			}
 		}
 		return accounts;
-	} 
+	} ,
+	
+	// HTML only:
+	// headers that are currently not defined may be filled later.
+	// e.g. adding a To address when writing a new email
+	wrapDeferredHeader : function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
+		
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util;
+		if (prefs.isDebugOption("tokens.deferred")) debugger;
+		
+		let newComposeClass = isComposeNew ? " class='noWrite'" : ""; /* make field look pink for headers that are not available in New Emails */
+		if (!isHtml) return defaultValue; // not supported in plain text for now
+		
+		SmartTemplate4.hasDeferredVars = true;
+		
+		if (!defaultValue) {  //  || defaultValue=='??'
+			defaultValue = field;  // show the syntax of placeholder (without percent signs!)
+		}
+			
+    util.popupProFeature("Wrap_Deferred_Variables", true, false, "%" + field + "%");
+		field = field.replace(/%/g,'');
+		let tag = "<smarttemplate" +
+					 " hdr='" + field + "'" +
+					 " st4variable='" + field + "'" +
+					 " title='" + field + "'" +
+					 newComposeClass + 
+					 ">" + defaultValue + "</smarttemplate>";
+					 
+		return tag;
+	} ,
+	
+	// should be called when email is sent
+	composerSendMessage : function composerSendMessage (evt) {
+		const Ci = Components.interfaces,
+		      util = SmartTemplate4.Util,
+		      msgComposeType = Ci.nsIMsgCompType;
+
+					
+		// is SmartTemplate4.classSmartTemplate.composeType == '', 'new', 'rsp', 'fwd'
+		switch (gMsgCompose.type) {
+			case msgComposeType.New:
+			case msgComposeType.NewsPost:
+			case msgComposeType.MailToUrl:
+			  util.cleanupDeferredFields();
+				break;
+			default:
+				return;
+		}
+		
+	} ,
+	
+	cleanupDeferredFields : function cleanupDeferredFields() {
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util,
+					editor = gMsgCompose.editor;
+		let body = editor.rootElement,
+		    el = body,
+				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
+				nodeList = [];
+				
+		while(treeWalker.nextNode()) {
+			let node = treeWalker.currentNode;
+			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+				util.resolveDeferred(editor, node, true, nodeList); 
+			}
+		}	
+		
+		// replace all divs (working backwards.)
+		while (nodeList.length) {
+			let nL = nodeList.pop();
+			nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
+			editor.deleteNode(nL.divNode);
+		}
+	} ,
+	
+	resolveDeferred: function st4_resolveDeferred(editor, el, isReplaceField, nodeList) {
+		const util = SmartTemplate4.Util,
+		      Ci = Components.interfaces,
+		      Cc = Components.classes;
+		let div = el,
+				st4 = div.getAttribute('st4variable'),
+				alreadyResolved = (el.className == 'resolved'), // for removing _all_ smarttemplate divs
+				resolved = false,
+				tm;
+				
+		if (st4) {
+			// isReplaceField is the final call where the deferred smarttemplate element is removed.
+			// it's false when we click on the element (manual) so that we can refresh the content
+			// multiple times
+			if(!alreadyResolved || !isReplaceField) {
+				let parensPos = st4.indexOf('('),
+						generalFunction = (parensPos==-1) ? st4 : st4.substr(0,parensPos),
+						argList = (parensPos==-1) ? "" : st4.match(/([\w-:=]+)\(([^)]+)\)*/);
+				if (!generalFunction.length)
+					return;
+				// util.logDebugOptional('resolveDeferred','matched variable [' + i + ']: ' + matchPart[i]);
+				let args=(argList.length<2) ? [] : argList[2].split(',');
+				
+				// 1st group: name of st4 variable, e.g. subject
+				if (generalFunction=='date')
+					generalFunction = 'dateshort';
+				if (generalFunction=='identity')
+					generalFunction = 'from';
+				switch(generalFunction) {
+					case 'subject':
+						let sub = GetMsgSubjectElement();
+						if (sub.value) {
+							el.innerText = sub.value;
+							resolved = true;
+						}
+						break;
+					case 'from':  // fall through
+					case 'to':    // fall through
+					case 'cc':    // fall through
+					case 'bcc':
+						let aw = GetMsgAddressingWidgetTreeElement(),
+								identityList = GetMsgIdentityElement(),
+								messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+								charset = null,
+								addressValue; // messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+						
+						if(generalFunction=='from')
+							addressValue = identityList.value;
+						else {
+							// first column of widget:  addr_to, addr_bss, addr_bcc
+							for (let i=1; i<aw.getRowCount(); i++) {
+								let id = 'addressCol1#' + i;
+								if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
+									id = 'addressCol2#' + i;
+									addressValue = document.getElementById(id).value;
+									break;
+								}
+							}
+						}
+						
+						if (addressValue) {
+							let token = SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
+							// if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
+							if (token || isReplaceField) {
+								el.innerText = token;
+								resolved = true;
+							}
+						}
+						
+						break;
+					case 'dateformat':
+						tm = new Date();
+						el.innerText = util.dateFormat(tm.getTime() * 1000, argList[2], 0);
+						resolved = true;
+						break;
+					case "datelocal":  // fall through
+					case "dateshort":
+						tm = new Date(), 
+						el.innerText = util.prTime2Str(tm.getTime() * 1000, generalFunction, 0);
+						resolved = true;
+						break;
+					default:
+						alert('NOT SUPPORTED: Replace deferred smartTemplate variable: %' + generalFunction + '%');
+						break;
+				}
+			}
+			
+			if (alreadyResolved || resolved) {
+				if (isReplaceField) {
+					// called from "clean up all button"
+					let txtNode = editor.document.createTextNode(el.innerText);
+					if (nodeList) {
+						// create an array of elements that will be replaced.
+						// (can't do DOM replacements during the treeWalker)
+						// replace div with a text node.
+						nodeList.push ( { txtNode:txtNode, divNode: el } );
+					}
+					else { // called from context menu: remove the field and replace with content
+						el.parentNode.insertBefore(txtNode, el);
+						editor.deleteNode(el);
+					}
+				}
+				else
+					el.className = "resolved";
+			}
+		}
+	} ,
+	
+	// add listeners for deferred variables (e.g. "from" in New Email)
+	setupDeferredListeners: function st4_setupDeferredListeners(editor) {
+		const prefs = SmartTemplate4.Preferences,
+		      util = SmartTemplate4.Util;
+		let body = editor.rootElement,
+		    el = body,
+				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
+				
+				
+		while(treeWalker.nextNode()) {
+			let node = treeWalker.currentNode;
+			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+				// add a click handler
+				node.addEventListener(
+					"click", 
+					function(event) { 
+						util.resolveDeferred(editor, event.target, false); 
+						return false; 
+					}, 
+					false
+				);
+				
+				// add context menu
+				node.addEventListener(
+					"contextmenu", 
+					function(event) { 
+					  let st4element = event.originalTarget,
+					      popup = document.getElementById('SmartTemplate4-ComposerPopup'); // button.ownerDocument.getElementById
+						// document.popupNode = button
+						// document.getElementById('msgcomposeWindow').ownerDocument.getElementById('SmartTemplate4-ComposerPopup')
+						popup.targetNode = event.target;
+						popup.openPopup(st4element,'after_start', 0, 0, true, false, event);
+					  event.preventDefault();
+						return false; 
+					}, 
+					false
+				);
+				
+			}
+		}
+	},
+	
+	removeDeferred: function removeDeferred(item) {
+		let par = item.parentNode;
+		gMsgCompose.editor.selection;
+		// just a hack to move the cursor: insert a space, select it then remove it again.
+    let space = gMsgCompose.editor.document.createTextNode('\u00a0');
+		if (par) {
+			par.insertBefore(space, item); 
+			par.removeChild(item);
+		}
+		editor.selection.selectAllChildren(space);
+		editor.selection.collapseToStart()
+		par.removeChild(space);
+	},
+	
+	// new function for manually formatting a time / date string in one go.
+	dateFormat: function dateFormat(time, timeFormat, timezone) {
+		const util = SmartTemplate4.Util;
+		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')');
+		util.addUsedPremiumFunction('dateFormat');
+		if (!timezone) timezone=0;
+		try {
+			let tm = new Date();
+			
+			if (SmartTemplate4.whatIsDateOffset) {
+				time += (SmartTemplate4.whatIsDateOffset*24*60*60*1000*1000); // add n days
+			}
+			if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset ) {
+				time += (SmartTemplate4.whatIsHourOffset*60*60*1000*1000)
+				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add m hours / n minutes
+			}		
+			
+			// Set Time - add Timezone offset
+			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
+			let d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); },
+			    cal = SmartTemplate4.calendar,
+			    isUTC = SmartTemplate4.whatIsUtc,
+					year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString(),
+					month = isUTC ? tm.getUTCMonth() : tm.getMonth(),
+					day = isUTC ? tm.getUTCDate() : tm.getDate(),
+					hour = isUTC ? tm.getUTCHours() : tm.getHours(),
+					minute = isUTC ? tm.getUTCMinutes() : tm.getMinutes();
+					
+      //numeral replacements first					
+			let timeString = 
+			  timeFormat
+					.replace('Y', year)
+					.replace('y', year.slice(year.length-2))
+					.replace('n', (month+1))
+					.replace('m', d02(month+1))
+					.replace('e', day)
+					.replace('d', d02(day))
+					.replace('k',     hour)
+					.replace('H', d02(hour))
+					.replace('l',    (((hour + 23) % 12) + 1))
+					.replace('I', d02(((hour + 23) % 12) + 1))
+					.replace('M', d02(minute))
+					.replace('S', d02(tm.getSeconds()));
+			
+      // alphabetic-placeholders need to be inserted because otherwise we will replace
+			// parts of day / monthnames etc.
+			timeString=			
+			  timeString
+					.replace("tz_name", "##t")
+					.replace('B', '##B')
+					.replace('b', '##b')
+				  .replace('A', '##A')
+					.replace('a', '##a')
+					.replace('p1', '##p1')
+					.replace('p2', '##p2')
+					.replace('p', '##p')
+				
+			timeString=
+			  timeString
+				  .replace('##t', isUTC ? 'UTC' : util.getTimeZoneAbbrev(tm, false))
+					.replace('##B', cal.monthName(month))
+					.replace('##b', cal.shortMonthName(month))
+				  .replace('##A', cal.dayName(tm.getDay()))
+					.replace('##a', cal.shortDayName(tm.getDay()))
+					.replace('##p1', hour < 12 ? "a.m." : "p.m.")
+					.replace('##p2', hour < 12 ? "A.M." : "P.M.")
+					.replace('##p', hour < 12 ? "AM" : "PM")
+					
+					
+			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
+			return timeString;
+			
+		}
+		catch (ex) {
+			util.logException('util.dateFormat() failed', ex);
+		}
+		return '';
+	} ,
+	
+	prTime2Str : function st4_prTime2Str(time, timeType, timezone) {
+		const util = SmartTemplate4.Util,
+		      Ci = Components.interfaces,
+		      Cc = Components.classes;
+		util.logDebugOptional('timeStrings','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
+		try {
+			let tm = new Date(),
+			    locale = SmartTemplate4.pref.getLocalePref(),
+					isOldDateFormat = (typeof Ci.nsIScriptableDateFormat !== "undefined"),
+					fmt;
+					
+			if(isOldDateFormat)
+				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
+			else {
+				// this interface was removed in Gecko 57.0
+				// alternative date formatting
+				// Cu.import("resource:///modules/ToLocaleFormat.jsm");
+				// new Services.intl.
+				fmt = new Intl.DateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
+			}
+      
+			if (SmartTemplate4.whatIsDateOffset) {
+				time += (SmartTemplate4.whatIsDateOffset*24*60*60*1000*1000); // add n days
+				util.logDebugOptional('timeStrings', 'Adding ' + SmartTemplate4.whatIsDateOffset + ' days to time');
+			}
+			if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset ) {
+				time += (SmartTemplate4.whatIsHourOffset*60*60*1000*1000)
+				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add n days
+				util.logDebugOptional('timeStrings', 
+				  'Adding ' + SmartTemplate4.whatIsHourOffset  + ':' + SmartTemplate4.whatIsMinuteOffset + ' hours to time');
+			}
+			
+			// Set Time - add Timezone offset
+			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
+
+			// Format date string
+			let dateFormat = null,
+			    timeFormat = null;
+			switch (timeType) {
+				case "datelocal":
+					dateFormat = isOldDateFormat ? fmt.dateFormatLong : new Services.intl.DateTimeFormat(undefined, {dateStyle: "long"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "long"}).format();
+					break;
+				case "dateshort":
+				default:
+					dateFormat = isOldDateFormat ? fmt.dateFormatShort : new Services.intl.DateTimeFormat(undefined, {dateStyle: "short"}).format();
+					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "short"}).format();
+					break;
+			}
+
+			
+			let timeString = 
+			  isOldDateFormat 
+						? fmt.FormatDateTime(locale,
+																dateFormat, 
+																timeFormat,
+																tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
+																tm.getHours(), tm.getMinutes(), tm.getSeconds())
+						: fmt.format(tm);
+			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
+			return timeString;
+		}
+		catch (ex) {
+			util.logException('util.prTime2Str() failed', ex);
+		}
+		return '';
+	} ,
+
+	zoneFromShort: function st4_zoneFromShort(short) {
+		let timezones = {
+			"ACDT" : "Australian Central Daylight Time",
+			"ACST" : "Australian Central Standard Time",
+			"ACT"	 : "ASEAN Common Time",
+			"ADT"	 : "Atlantic Daylight Time",
+			"AEDT" : "Australian Eastern Daylight Time",
+			"AEST" : "Australian Eastern Standard Time",
+			"AUS"  : "Australian Time",
+			"AFT"	 : "Afghanistan Time",
+			"AKDT" : "Alaska Daylight Time",
+			"AKST" : "Alaska Standard Time",
+			"AMST" : "Armenia Summer Time",
+			"AMT"	 : "Armenia Time",
+			"ART"	 : "Argentina Time",
+			"AST"	 : "Atlantic Standard Time",
+			"AWDT" : "Australian Western Daylight Time",
+			"AWST" : "Australian Western Standard Time",
+			"AZOST": "Azores Standard Time",
+			"AZT"	 : "Azerbaijan Time",
+			"BDT"	 : "Brunei Time",
+			"BIOT" : "British Indian Ocean Time",
+			"BIT"	 : "Baker Island Time",
+			"BOT"	 : "Bolivia Time",
+			"BRT"	 : "Brasilia Time",
+			"BST"	 : "British Summer Time (British Standard Time from Feb 1968 to Oct 1971)",
+			"BTT"	 : "Bhutan Time",
+			"CAT"	 : "Central Africa Time",
+			"CCT"	 : "Cocos Islands Time",
+			"CDT"	 : "Central Daylight Time (North America)",
+			"CEDT" : "Central European Daylight Time",
+			"CEST" : "Central European Summer Time (Cf. HAEC)",
+			"CET"	 : "Central European Time",
+			"CHADT": "Chatham Daylight Time",
+			"CHAST": "Chatham Standard Time",
+			"CHOT" : "Choibalsan",
+			"ChST" : "Chamorro Standard Time",
+			"CHUT" : "Chuuk Time",
+			"CIST" : "Clipperton Island Standard Time",
+			"CIT"	 : "Central Indonesia Time",
+			"CKT"	 : "Cook Island Time",
+			"CLST" : "Chile Summer Time",
+			"CLT"	 : "Chile Standard Time",
+			"COST" : "Colombia Summer Time",
+			"COT"	 : "Colombia Time",
+			"CST"	 : "Central Standard Time (North America)",
+			"CT"   : "China time",
+			"CVT"	 : "Cape Verde Time",
+			"CWST" : "Central Western Standard Time (Australia)",
+			"CXT"	 : "Christmas Island Time",
+			"DAVT" : "Davis Time",
+			"DDUT" : "Dumont d'Urville Time",
+			"DFT"	 : "AIX specific equivalent of Central European Time",
+			"EASST": "Easter Island Standard Summer Time",
+			"EAST" : "Easter Island Standard Time",
+			"EAT"	 : "East Africa Time",
+			"ECT"	 : "Ecuador Time",
+			"EDT"	 : "Eastern Daylight Time (North America)",
+			"EEDT" : "Eastern European Daylight Time",
+			"EEST" : "Eastern European Summer Time",
+			"EET"	 : "Eastern European Time",
+			"EGST" : "Eastern Greenland Summer Time",
+			"EGT"	 : "Eastern Greenland Time",
+			"EIT"	 : "Eastern Indonesian Time",
+			"EST"	 : "Eastern Standard Time (North America)",
+			"FET"	 : "Further-eastern_European_Time",
+			"FJT"	 : "Fiji Time",
+			"FKST" : "Falkland Islands Summer Time",
+			"FKT"	 : "Falkland Islands Time",
+			"FNT"	 : "Fernando de Noronha Time",
+			"GALT" : "Galapagos Time",
+			"GAMT" : "Gambier Islands",
+			"GET"	 : "Georgia Standard Time",
+			"GFT"	 : "French Guiana Time",
+			"GILT" : "Gilbert Island Time",
+			"GIT"	 : "Gambier Island Time",
+			"GMT"	 : "Greenwich Mean Time",
+			"GST"	 : "South Georgia and the South Sandwich Islands",
+			"GYT"	 : "Guyana Time",
+			"HADT" : "Hawaii-Aleutian Daylight Time",
+			"HAEC" : "Heure Avanc\u00E9e d'Europe Centrale francised name for CEST",
+			"HAST" : "Hawaii-Aleutian Standard Time",
+			"HKT"	 : "Hong Kong Time",
+			"HMT"	 : "Heard and McDonald Islands Time",
+			"HOVT" : "Khovd Time",
+			"HST"	 : "Hawaii Standard Time",
+			"ICT"	 : "Indochina Time",
+			"IDT"	 : "Israel Daylight Time",
+			"I0T"	 : "Indian Ocean Time",
+			"IRDT" : "Iran Daylight Time",
+			"IRKT" : "Irkutsk Time",
+			"IRST" : "Iran Standard Time",
+			"IST"	 : "Irish Summer Time",
+			"JST"	 : "Japan Standard Time",
+			"KGT"	 : "Kyrgyzstan time",
+			"KOST" : "Kosrae Time",
+			"KRAT" : "Krasnoyarsk Time",
+			"KST"	 : "Korea Standard Time",
+			"LHST" : "Lord Howe Standard Time",
+			"LINT" : "Line Islands Time",
+			"MAGT" : "Magadan Time",
+			"MART" : "Marquesas Islands Time",
+			"MAWT" : "Mawson Station Time",
+			"MDT"	 : "Mountain Daylight Time (North America)",
+			"MET"	 : "Middle European Time Same zone as CET",
+			"MEST" : "Middle European Saving Time Same zone as CEST",
+			"MHT"	 : "Marshall_Islands",
+			"MIST" : "Macquarie Island Station Time",
+			"MIT"	 : "Marquesas Islands Time",
+			"MMT"	 : "Myanmar Time",
+			"MSK"	 : "Moscow Time",
+			"MST"	 : "Mountain Standard Time (North America)",
+			"MUT"	 : "Mauritius Time",
+			"MVT"	 : "Maldives Time",
+			"MYT"	 : "Malaysia Time",
+			"NCT"	 : "New Caledonia Time",
+			"NDT"	 : "Newfoundland Daylight Time",
+			"NFT"	 : "Norfolk Time[1]",
+			"NPT"	 : "Nepal Time",
+			"NST"	 : "Newfoundland Standard Time",
+			"NT"	 : "Newfoundland Time",
+			"NUT"	 : "Niue Time",
+			"NZDT" : "New Zealand Daylight Time",
+			"NZST" : "New Zealand Standard Time",
+			"OMST" : "Omsk Time",
+			"ORAT" : "Oral Time",
+			"PDT"	 : "Pacific Daylight Time (North America)",
+			"PET"	 : "Peru Time",
+			"PETT" : "Kamchatka Time",
+			"PGT"	 : "Papua New Guinea Time",
+			"PHOT" : "Phoenix Island Time",
+			"PHT"	 : "Philippine Time",
+			"PKT"	 : "Pakistan Standard Time",
+			"PMDT" : "Saint Pierre and Miquelon Daylight time",
+			"PMST" : "Saint Pierre and Miquelon Standard Time",
+			"PONT" : "Pohnpei Standard Time",
+			"PST"	 : "Pacific Standard Time (North America)",
+			"RET"	 : "R\u00E9union Time",
+			"ROTT" : "Rothera Research Station Time",
+			"SAKT" : "Sakhalin Island time",
+			"SAMT" : "Samara Time",
+			"SAST" : "South African Standard Time",
+			"SBT"	 : "Solomon Islands Time",
+			"SCT"	 : "Seychelles Time",
+			"SGT"	 : "Singapore Time",
+			"SLT"	 : "Sri Lanka Time",
+			"SRT"	 : "Suriname Time",
+			"SST"	 : "Singapore Standard Time",
+			"SYOT" : "Showa Station Time",
+			"TAHT" : "Tahiti Time",
+			"THA"	 : "Thailand Standard Time",
+			"TFT"	 : "Indian/Kerguelen",
+			"TJT"	 : "Tajikistan Time",
+			"TKT"	 : "Tokelau Time",
+			"TLT"	 : "Timor Leste Time",
+			"TMT"	 : "Turkmenistan Time",
+			"TOT"	 : "Tonga Time",
+			"TVT"	 : "Tuvalu Time",
+			"UCT"	 : "Coordinated Universal Time",
+			"ULAT" : "Ulaanbaatar Time",
+			"UTC"	 : "Coordinated Universal Time",
+			"UYST" : "Uruguay Summer Time",
+			"UYT"	 : "Uruguay Standard Time",
+			"UZT"	 : "Uzbekistan Time",
+			"VET"	 : "Venezuelan Standard Time",
+			"VLAT" : "Vladivostok Time",
+			"VOLT" : "Volgograd Time",
+			"VOST" : "Vostok Station Time",
+			"VUT"  : "Vanuatu Time",
+			"WAKT" : "Wake Island Time",
+			"WAST" : "West Africa Summer Time",
+			"WAT"	 : "West Africa Time",
+			"WEDT" : "Western European Daylight Time",
+			"WEST" : "Western European Summer Time",
+			"WET"  : "Western European Time",
+			"WST"	 : "Western Standard Time",
+			"YAKT" : "Yakutsk Time",
+			"YEKT" : "Yekaterinburg Time"
+		};
+
+		let tz = timezones[short]; // Date().toString().replace(/^.*\(|\)$/g, "")
+		return tz || short;
+	} ,
+
+	getTimeZoneAbbrev: function st4_getTimeZoneAbbrev(tm, isLongForm) {
+		const util = SmartTemplate4.Util;
+    function isAcronym(str) {
+      return (str.toUpperCase() == str); // if it is all caps we assume it is an acronym
+    }
+		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
+		// get part between parentheses
+		// e.g. "(GMT Daylight Time)"
+		util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev(time: ' + tm.toString() + ', long form: ' + isLongForm);
+		let timeString =  tm.toTimeString(),
+		    timeZone = timeString.match(/\(.*?\)/),
+		    retVal = '';
+		util.logDebugOptional ('timeZones', 'timeString = ' + timeString + '\n' 
+		                                      + 'timeZone =' + timeZone);
+		if (timeZone && timeZone.length>0) {
+      // remove enclosing brackets and split
+			let words = timeZone[0].substr(1,timeZone[0].length-2).split(' ');
+			for (let i=0; i<words.length; i++) {
+        let wrd = words[i];
+				if (isLongForm) {
+					retVal += ' ' + wrd;
+				}
+				else {
+					if (wrd.length == 3 && wrd.match('[A-Z]{3}') 
+					    ||
+					    wrd.length == 4 && wrd.match('[A-Z]{4}')
+              ||
+              isAcronym(wrd))
+          {
+						retVal += wrd + ' ';  // abbrev contained
+          }
+					else {
+						retVal += wrd[0];  // first letters cobbled together
+          }
+				}
+			}
+		}
+		else {
+			util.logDebugOptional ('timeZones', 'no timeZone match, building manual...');
+			retVal = timeString.match('[A-Z]{4}');
+			if (!retVal)
+				retVal = timeString.match('[A-Z]{3}');
+			// convert to long form by using hard-coded time zones array.
+			util.logDebug('Cannot determine timezone string - Missed parentheses - from:\n' + timeString + ' regexp guesses: ' + retVal);
+			if (isLongForm) {
+				retVal = util.zoneFromShort(retVal);
+			}
+		}
+		util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev return value = ' + retVal);
+		return retVal.trim();
+	} ,
+	
+	splitFormatArgs: function splitFormatArgs(format)	{
+    let formatArray = [];
+    if (format) {
+      // remove parentheses
+      if (format.charAt(0)=='(')
+        format = format.slice(1);
+      if (format.charAt(format.length-1)==')')
+        format = format.slice(0, -1);
+      
+      let fs=format.split(','); // lastname, firstname ?
+      for(let i=0; i<fs.length; i++) {
+        let ff = fs[i].trim();
+        // if next one is a link modifier, modify previous element and continue
+        switch(ff.toLowerCase()) {
+          case 'link':
+            formatArray[formatArray.length-1].modifier = 'linkTo';
+            continue;
+          case 'islinkable':
+            formatArray[formatArray.length-1].modifier = 'linkable';
+            continue;
+        }
+        formatArray.push ({ field: ff, modifier: ''}); // modifier: linkTo
+      }
+    }
+		return formatArray;
+	} ,
+	
+  /**
+   * Installs the toolbar button with the given ID into the given
+   * toolbar, if it is not already present in the document.
+   *
+   * @toolbarId {string} The ID of the toolbar to install to.
+   * @id {string} The ID of the button to install.
+   * @afterId {string} The ID of the element to insert after. @optional
+   */	
+	installButton: function installButton(toolbarId, id, afterId) {
+    // if (!document.getElementById(id)) {
+			debugger;
+      this.logDebug("installButton(" + toolbarId + "," + id + "," + afterId + ")");
+			if (this.Application=="Postbox") return; // something is going wrong in Pb, so we are not doing this.
+
+      let toolbar = document.getElementById(toolbarId),
+          before = null;
+      // If no afterId is given, then append the item to the toolbar
+      if (afterId) {
+        let elem = document.getElementById(afterId);
+        if (elem && elem.parentNode == toolbar)
+          before = elem.nextElementSibling;
+				else {
+					// get last item and insert before:
+					before = toolbar.childNodes[toolbar.childNodes.length-1];
+					this.logDebug("toolbar.childNodes length = " + toolbar.childNodes.length);
+					// if there is a spacer, let's put element before that.
+					if (before && before.previousElementSibling.tagName == "toolbarspring")
+						before = before.previousElementSibling;
+				}
+      }
+			if (!before) {
+				return false;
+			}
+
+      this.logDebug("toolbar.insertItem(" + id  + "," + before + ")");
+			if (before)
+				toolbar.insertItem(id, before);
+				
+      toolbar.setAttribute("currentset", toolbar.currentSet);
+      this.logDebug("document.persist" + toolbar.id + ")");
+      document.persist(toolbar.id, "currentset");
+      return true;
+    // }
+  }  ,
 	
 	
 	/* 
@@ -1501,7 +2205,7 @@ SmartTemplate4.Util.firstRun =
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
 					let omitDonation = false;
 					
-					if (pureVersion=="1.5.1") {
+					if (pureVersion=="1.5.1" || pureVersion=="1.5.2") {
 						omitDonation = true;
 					}
 					

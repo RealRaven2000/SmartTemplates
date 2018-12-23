@@ -18,14 +18,15 @@
 				<li><code>%identity(name)%</code> = &ownname.label; (<code class="deprecated">%ownname%</code>)</li>
 				<li><code>%identity(mail)%</code> = &ownmail.label; (<code class="deprecated">%ownmail%</code>)</li>
 				<li><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
-				<li><code class="noWrite">%date%</code> = &date.label;</li>
-				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
-				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>
-				<li><code class="noWrite">%cc(mail)%</code> = &ccmail.label;</li>
+				<li><code class="deferable">%date%</code> = &date.label;</li>
+				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
+				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
+				<li><code class="deferable">%cc(mail)%</code> = &ccmail.label;</li>
 				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = &sig.label;</li>
 				<li><code>%sig(2)%</code> = &sig2.label;</li>
 				<li><code>%file(filePath,encoding)%</code> = &fileHTML.label;</li>
 				<li><code>%file(imagePath,altText)%</code> = &fileImage.label;</li>
+				<li><code>%attach(filePath)%</code> = &attach.label;</li>
 				<li><code>%cursor%</code> = &cursor.label;</li>
 			</ul>
 		       <!--
@@ -38,35 +39,36 @@
 		<h1 class="helpchapter">&to_var.cap;</h1>
 			<aside>(&to_note.label;)</aside>
 			<ul>
-				<li><code class="noWrite">%to%</code> = &to.label;</li>
-				<li><code class="noWrite">%to(firstname)%</code> = &tofirstname.label;</li>
-				<li><code class="noWrite">%to(name)%</code> = &toname.label;</li>
-				<li><code class="noWrite">%to(mail)%</code> = &tomail.label;</li>
-				<li><code class="noWrite">%to(name,bracketMail())%</code> = &toname.label; &lt;&tomail.label;&gt;</li>
+				<li><code class="deferable">%to%</code> = &to.label;</li>
+				<li><code class="deferable">%to(firstname)%</code> = &tofirstname.label;</li>
+				<li><code class="deferable">%to(name)%</code> = &toname.label;</li>
+				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
+				<li><code class="deferable">%to(name,bracketMail())%</code> = &toname.label; &lt;&tomail.label;&gt;</li>
+				<li><code class="deferable">%to(name,fwd)%</code> = &tofwd.label;</li>
 			</ul>
 			
 			<!-- ##### "From" Variables #### -->
 			<h1 class="helpchapter">&from_var.cap;</h1>
 			<aside>(&from_note.label;)</aside>
 			<ul>
-				<li><code class="noWrite">%from%</code> = &from.label;</li>
-				<li><code class="noWrite">%from(firstname)%</code> = &fromfirstname.label;</li>
-				<li><code class="noWrite">%from(name)%</code> = &fromname.label;</li>
-				<li><code class="noWrite">%from(mail)%</code> = &frommail.label;</li>
-				<li><code class="noWrite">%from(name,mail)%</code> = &fromname.label; &frommail.label;</li>
-				<li><code class="noWrite">%from(name,bracketMail())%</code> = &fromname.label; &lt;&frommail.label;&gt;</li>
-				<li><code class="noWrite">%from(name,bracketMail(+;+))%</code> = &fromname.label; +&frommail.label;+</li>
-				<li><code class="noWrite">%from(name,bracketMail(square))%</code> = &fromname.label; [&frommail.label;]</li>
-				<li><code class="noWrite">%from(name,bracketMail(round))%</code> = &fromname.label; (&frommail.label;)</li>
+				<li><code class="deferable">%from%</code> = &from.label;</li>
+				<li><code class="deferable">%from(firstname)%</code> = &fromfirstname.label;</li>
+				<li><code class="deferable">%from(name)%</code> = &fromname.label;</li>
+				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
+				<li><code class="deferable">%from(name,mail)%</code> = &fromname.label; &frommail.label;</li>
+				<li><code class="deferable">%from(name,bracketMail())%</code> = &fromname.label; &lt;&frommail.label;&gt;</li>
+				<li><code class="deferable">%from(name,bracketMail(+;+))%</code> = &fromname.label; +&frommail.label;+</li>
+				<li><code class="deferable">%from(name,bracketMail(square))%</code> = &fromname.label; [&frommail.label;]</li>
+				<li><code class="deferable">%from(name,bracketMail(round))%</code> = &fromname.label; (&frommail.label;)</li>
 			</ul>
 		<!-- ##### "CC" Variables #### -->
 		<h1 class="helpchapter">&cc_var.cap;</h1>
 			<aside>(&cc_note.label;)</aside>
 			<ul>
-				<li><code class="noWrite">%cc%</code> = &cc.label;</li>
-				<li><code class="noWrite">%cc(firstname)%</code> = &ccfirstname.label;</li>
-				<li><code class="noWrite">%cc(name)%</code> = &ccname.label;</li>
-				<li><code class="noWrite">%cc(name,bracketMail())%</code> = &ccname.label; &lt;&ccmail.label;&gt;</li>
+				<li><code class="deferable">%cc%</code> = &cc.label;</li>
+				<li><code class="deferable">%cc(firstname)%</code> = &ccfirstname.label;</li>
+				<li><code class="deferable">%cc(name)%</code> = &ccname.label;</li>
+				<li><code class="deferable">%cc(name,bracketMail())%</code> = &ccname.label; &lt;&ccmail.label;&gt;</li>
 			</ul>
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">&spec_form.cap;</h1>
@@ -76,15 +78,15 @@
 			<aside>&brack_with_var.label;:
 			</aside>
 			<ul>
-				<li><code class="noWrite">%to%</code> <code class="noWrite">%to(firstname)%</code> <code class="noWrite">%to(name)%</code> <code class="noWrite">%to(mail)%</code></li>
-				<li><code class="noWrite">%cc%</code> <code class="noWrite">%cc(firstname)%</code> <code class="noWrite">%cc(name)%</code> <code class="noWrite">%cc(mail)%</code></li>
-				<li><code class="noWrite">%bcc%</code> <code class="noWrite">%bcc(firstname)%</code> <code class="noWrite">%bcc(name)%</code> <code class="noWrite">%bcc(mail)%</code></li>
+				<li><code class="deferable">%to%</code> <code class="deferable">%to(firstname)%</code> <code class="deferable">%to(name)%</code> <code class="deferable">%to(mail)%</code></li>
+				<li><code class="deferable">%cc%</code> <code class="deferable">%cc(firstname)%</code> <code class="deferable">%cc(name)%</code> <code class="deferable">%cc(mail)%</code></li>
+				<li><code class="deferable">%bcc%</code> <code class="deferable">%bcc(firstname)%</code> <code class="deferable">%bcc(name)%</code> <code class="deferable">%bcc(mail)%</code></li>
 			</ul>
 		<!-- ##### Subject Variables #### -->
 		<h1 class="helpchapter">&sub_var.cap;</h1>
 			<ul>
-				<li><code class="noWrite">%subject%</code> = &sub.label;</li>
-				<li><code class="noWrite">%subject(2)%</code> = &sub2.label;</li>
+				<li><code class="deferable">%subject%</code> = &sub.label;</li>
+				<li><code class="deferable">%subject(2)%</code> = &sub2.label;</li>
 			</ul>
 		<!-- ##### Special Variables (Message-Headerkeys) #### -->
 		<h1 class="helpchapter">&spec_var.cap;</h1>
@@ -108,7 +110,7 @@
 			
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
 		<h1 class="helpchapter">&stringmanip_function.cap;</h1>
-			<aside>&stringmanip_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a>.</aside>
+			<aside>&stringmanip_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904 " target="_blank">[Bug 25904]</a>.</aside>
 			<ul>
 				<li><code>%deleteText("text")%</code> = &deleteText;</li>
 				<li><code>%replaceText("find","replace")%</code> = &replaceText;</li>
@@ -126,6 +128,13 @@
 				<li><code>%date_tz%</code> = &datetz.label;</li>
 				<li><code>%tz_name%</code> = &tzname.label;</li>
 			</ul>
+			<aside>(&dateoffset_note.label;)</aside>
+			<ul>
+				<li><code>%X:=calculated(DD,HH:MM)%</code> = &calculate.explain;</li>
+				<li><code>%X:=calculated(0)%</code> = &calculate.reset;</li>
+			</ul>
+			
+			
 		<!-- ##### Custom Variables #### -->
 		<h1 class="helpchapter">&var_custom.cap;</h1>
 			<aside>(&customdf_note.label;)</aside>
@@ -148,6 +157,11 @@
 				<li><code class="noWrite">%p%</code> = &p.label;</li>
 				<li><code class="noWrite">%p(1)%</code> = &p1.label;</li>
 				<li><code class="noWrite">%p(2)%</code> = &p2.label;</li>
+				<li><code class="deferable">%dateformat()%</code> = &dateformat.label;
+					<aside>&dateformat.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26588" target="_blank">[Bug 26588]</a>.</aside>
+					<br />&dateformat.example;
+					<code class="deferable">%dateformat(A, e/n/Y H:M)%</code>
+				</li>
 			</ul>
 		<!-- ##### X:=Sent Variable #### -->
 		<h1 class="helpchapter">&var_xsent.cap;</h1>
@@ -202,26 +216,26 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%cc(firstname)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%cc(firstname)%</code></td>
 						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="noWrite">%cc(mail)%</code></td>
-						<td><div class="no"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%cc(name)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%cc(mail)%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%cc%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%cc(name)%</code></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td><code class="deferable">%cc%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
@@ -238,8 +252,8 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%date%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%date%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
@@ -256,26 +270,26 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%from(firstname)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%from(firstname)%</code></td>
 						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="noWrite">%from(mail)%</code></td>
-						<td><div class="no"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%from(name)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%from(mail)%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%from%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%from(name)%</code></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td><code class="deferable">%from%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
@@ -370,14 +384,14 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%subject%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%subject%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%subject(2)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%subject(2)%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
@@ -388,26 +402,26 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%to(firstname)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%to(firstname)%</code></td>
 						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="noWrite">%to(mail)%</code></td>
-						<td><div class="no"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%to(name)%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%to(mail)%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="noWrite">%to%</code></td>
-						<td><div class="no"></div></td>
+						<td><code class="deferable">%to(name)%</code></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+						<td><div class="yes"></div></td>
+					</tr>
+					<tr class="tr-keywords">
+						<td><code class="deferable">%to%</code></td>
+						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
@@ -448,26 +462,33 @@
 	<script type="text/javascript">
   //<![CDATA[
 		function containerClick(el, evt) {
-			let code = evt.target;
+			var code = evt.target;
 			if (typeof code !='undefined') {
-				if (code.tagName == 'code') {
-					let exists = true;
-					let element = document.getElementById('ST4Dispatcher');
+				if (code.tagName == 'code' || code.tagName  == 'a') {
+					var exists = true,
+					    element = document.getElementById('ST4Dispatcher');
 					if (!element) {
 						exists = false;
 						element = document.createElement("CodeEventDispatcher");
 						element.id = 'ST4Dispatcher';
 					}
 
-					element.setAttribute("codeWord", code.innerHTML); // now, add the payload
-					element.setAttribute("class", code.className);    // class="noWrite" => cannot be used in new mail!!
+					if (code.tagName  == 'code') {
+						element.setAttribute("codeWord", code.innerHTML); // now, add the payload
+						element.setAttribute("class", code.className);    // class="noWrite" => cannot be used in new mail!!
+					}
+					else
+					  element.setAttribute("href", code.getAttribute('href'));
 
 					if (!exists)
 						document.documentElement.appendChild(element);
 
 					// make a new custom event
 					var customEvent = document.createEvent("Events");
-					customEvent.initEvent("SmartTemplate4CodeWord", true, false);
+					if (code.tagName  == 'code')
+						customEvent.initEvent("SmartTemplate4CodeWord", true, false);
+					else
+						customEvent.initEvent("SmartTemplate4Website", true, false);
 					element.dispatchEvent(customEvent);
 				}
 			}

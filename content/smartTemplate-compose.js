@@ -18,7 +18,8 @@ SmartTemplate4.classSmartTemplate = function() {
         Cc = Components.classes,
         util = SmartTemplate4.Util,
 	      prefs = SmartTemplate4.Preferences;
-        
+  
+			
 	function readSignatureFile(Ident) {
 		let sigEncoding = prefs.getMyStringPref('signature.encoding'), // usually UTF-8
 		    htmlSigText = '',
@@ -461,6 +462,7 @@ SmartTemplate4.classSmartTemplate = function() {
         preserve = prefs.getMyBoolPref('plainText.preserveTextNodes'),
 				foundReplyHeader = false;
 		// delete everything except (or until in plaintext?) quoted part
+		// in Postbox, just delete class=__pbConvHr - there is no cite-prefix in Postbox!
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
@@ -492,10 +494,11 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// remove quote header elemenbt
 		if (!onlySpace) {
+			const quoteHeaderCls = (util.Application != 'Postbox') ? 'moz-email-headers-table' : '__pbConvHr';
 			// recursive search from root element
-			let node = findChildNode(rootEl, 'moz-email-headers-table');
+			let node = findChildNode(rootEl, quoteHeaderCls);
 			if (node) {
-				util.logDebugOptional('functions.delReplyHeader','found moz-email-headers-table, calling deleteHeaderNode()...');
+				util.logDebugOptional('functions.delReplyHeader','found ' + quoteHeaderCls +', calling deleteHeaderNode()...');
 				deleteHeaderNode(node);
 			}
 			if (!foundReplyHeader) {
@@ -899,12 +902,14 @@ SmartTemplate4.classSmartTemplate = function() {
 			clearTemplate();
 		}
 		else {
-			// Check identity changed or not
-			if (gCurrentIdentity && gCurrentIdentity.key == idKey) {
-				return;
+			if (gMsgCompose.type != msgComposeType.Template) {
+				// Check identity changed or not
+				if (gCurrentIdentity && gCurrentIdentity.key == idKey) {
+					return;
+				}
+				// Undo template messages (does _not_ remove signature!)
+				removePreviousTemplate();
 			}
-			// Undo template messages (does _not_ remove signature!)
-			removePreviousTemplate();
 		}
 
 		// is the %sig% variable used?
@@ -917,6 +922,10 @@ SmartTemplate4.classSmartTemplate = function() {
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
+				case msgComposeType.Template: // new type for 1.6
+					composeCase = 'tbtemplate'; // flags.isThunderbirdTemplate
+					st4composeType = 'new';
+					break;
 				// new message -----------------------------------------
 				//	(New:0 / NewsPost:5 / MailToUrl:11)
 				case msgComposeType.New:
@@ -948,7 +957,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					break;
 
 				// do not process -----------------------------------
-				// (Draft:9/Template:10/ReplyWithTemplate:12)
+				// (Draft:9/ReplyWithTemplate:12)
 				case msgComposeType.Draft:
 					composeCase = 'draft';
 					let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
@@ -990,9 +999,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				*/
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
-				rawTemplate = pref.getTemplate(idKey, st4composeType, "");
-				//if (gMsgCompose.type == msgComposeType.MailToUrl)
-				//	rawTemplate = "";
+				rawTemplate = (!flags.isThunderbirdTemplate) ? pref.getTemplate(idKey, st4composeType, "") : "";
 				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
         // if Stationery has %sig(none)% then flags.omitSignature == true
@@ -1001,12 +1008,20 @@ SmartTemplate4.classSmartTemplate = function() {
 				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
         util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
 				// main processing - note: this calls getProcessedText()
-				template = getSmartTemplate(st4composeType, idKey);
-        util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
-				quoteHeader = getQuoteHeader(st4composeType, idKey);
+				// for thunderbird template case, we should probably get the body contents.
+				template = (!flags.isThunderbirdTemplate) 
+				  ? getSmartTemplate(st4composeType, idKey) 
+					: getProcessedText(editor.rootElement.outerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
+					
+				
+				if (!flags.isThunderbirdTemplate) {
+					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
+					quoteHeader = getQuoteHeader(st4composeType, idKey);
+				}
 				let isQuoteHeader = quoteHeader ? true : false;
 				switch(composeCase) {
 					case 'new':
+					case 'tbtemplate':
 						break;
 					case 'draft':
 					  // when do we remove old headers?
@@ -1142,6 +1157,14 @@ SmartTemplate4.classSmartTemplate = function() {
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
+				if (flags.isThunderbirdTemplate && template.length) {
+					debugger;
+					// remove original st4 div
+					let oldSt4Div = editor.document.getElementById("smartTemplate4-template");
+					if (oldSt4Div) {
+					  oldSt4Div.parentNode.removeChild(oldSt4Div);
+					}
+				}
 				templateDiv.id = "smartTemplate4-template";
 				/* TEST
 				if (prefs.getMyBoolPref('debug.composer')) {
@@ -1522,6 +1545,11 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		
 		resetDocument(gMsgCompose.editor, startup);
+		
+		if (SmartTemplate4.hasDeferredVars) {
+			util.setupDeferredListeners(gMsgCompose.editor);
+		}
+		
 		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 		// remember  compose case for outside world
 		this.composeCase = composeCase;      // 'undefined', 'new', 'reply', 'forward', 'draft'

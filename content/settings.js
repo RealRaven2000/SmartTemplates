@@ -356,6 +356,7 @@ SmartTemplate4.Settings = {
 		}
     
     let nickBox = getElement('chkResolveABNick'),
+		    displayNameBox = getElement('chkResolveABDisplay'),
         replaceMail = getElement('chkResolveABRemoveMail'),
         abBox = getElement('chkResolveAB'),
         isPostbox = (util.Application === "Postbox");
@@ -365,6 +366,7 @@ SmartTemplate4.Settings = {
     }
     
     nickBox.disabled = !abBox.checked || isPostbox;
+		displayNameBox.disabled = !abBox.checked || isPostbox;
     replaceMail.disabled = !abBox.checked || isPostbox;
     abBox.disabled = isPostbox;
 		
@@ -453,7 +455,11 @@ SmartTemplate4.Settings = {
 				}
 			}
       if (code.indexOf('%file')==0) {
-        code = settings.getFileName(code,editBox);
+        code = settings.getFileName(code, editBox, "file");
+        return; // cancel
+      }
+      if (code.indexOf('%attach')==0) {
+        code = settings.getFileName(code, editBox, "attach");
         return; // cancel
       }
       if (code.indexOf('%header.')==0) {
@@ -466,7 +472,8 @@ SmartTemplate4.Settings = {
   
   // %file(filePath,encoding)%
   // %file(imagePath,altText)%
-  getFileName: function getFileName(code,editBox) {
+	// %attach(filePath)%
+  getFileName: function getFileName(code, editBox, functionName) {
     const Cc = Components.classes,
           Ci = Components.interfaces;
     let fileType = (code.indexOf('filePath')>0) ? 'html' :
@@ -475,6 +482,7 @@ SmartTemplate4.Settings = {
 		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
+		if (!functionName) functionName='file'; // default %file%
     
     if (fileType=='unknown')
       return false; // error
@@ -499,7 +507,7 @@ SmartTemplate4.Settings = {
           let path = fp.file.path;
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           try {
-            let st4Code = "%file(" + path + ")%"; //. .replace(/\\/g,"/")
+            let st4Code = "%" + functionName + "(" + path + ")%"; //. .replace(/\\/g,"/")
             SmartTemplate4.Settings.insertAtCaret(editBox, st4Code);
           }
           catch(ex) {
@@ -879,16 +887,14 @@ SmartTemplate4.Settings = {
   resolveAB_onClick: function resolveAB_onClick(el) {
     // if it was already checked we are now unchecking it...
     let nickBox = document.getElementById('chkResolveABNick'),
+		    displayNameBox = document.getElementById('chkResolveABDisplay'),
         replaceMail = document.getElementById('chkResolveABRemoveMail');
     if (el.checked) {
       nickBox.checked = false;
-      nickBox.disabled = true;
-      replaceMail.disabled = true;
-    }
-    else {
-      nickBox.disabled = false;
-      replaceMail.disabled = false;
-    }
+		}
+		displayNameBox.disabled = el.checked;
+		nickBox.disabled = el.checked;
+		replaceMail.disabled = el.checked;
   } ,
   
   get currentId() {

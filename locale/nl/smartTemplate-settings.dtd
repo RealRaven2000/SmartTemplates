@@ -101,7 +101,7 @@
 <!ENTITY pref_cursorInsertSpace "Spatie invoegen om &#37;cursor&#37; te accentueren">
 <!ENTITY pref_sigReplaceBR.label "Regelafbrekingen in handtekening in platte tekst vervangen door &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Ondersteuning Stationery-add-on">
-<!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
 <!ENTITY pref_stationeryLink "Stationery-add-on">
 <!ENTITY pref_forceParagraph "Alineamodus afdwingen">

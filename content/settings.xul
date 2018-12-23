@@ -409,8 +409,11 @@
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
 			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" />
 			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
+			<preference id = "pref_resolveNamesFromAB_DisplayName" name = "extensions.smartTemplate4.mime.resolveAB.displayName" type = "bool" />
 			<preference id = "pref_resolveNamesFromAB_ReplaceEmail" name = "extensions.smartTemplate4.mime.resolveAB.removeEmail" type = "bool" />
 			<preference id = "pref_capitalizeNames" name = "extensions.smartTemplate4.names.capitalize" type = "bool" />
+			<preference id = "pref_guessNameFromMail" name = "extensions.smartTemplate4.names.guessFromMail" type = "bool" />
+			<preference id = "pref_defaultMimeFormat" name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" />
 			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" />
 		</preferences>
 
@@ -573,6 +576,16 @@
 									  label = "&pref_nameSwap;"
 									  tooltiptext = "&pref_nameSwap_tip;"
 									  preference = "pref_firstLastSwap"/>
+							<checkbox id = "chkFirstLastSwap"
+									  label = "&guessNameFromMail;"
+									  preference = "pref_guessNameFromMail"/>
+							<hbox  align="center">
+								<label value="&defaultMimeFormat;"
+								       control="txtNameDelimiter"/>
+								<textbox flex="1"
+								         preference = "pref_defaultMimeFormat"
+								         tooltiptext= "&defaultMimeFormat_tip;"/>
+							</hbox>
 							<hbox  align="center">
 								<label value="&pref_addressDelimiter;"
 								       control="txtNameDelimiter"/>
@@ -593,6 +606,10 @@
 									<checkbox id = "chkResolveABNick"
 											 label = "&resolveNamesFromABNick;"
 											 preference = "pref_resolveNamesFromAB_Nickname"/>
+									<checkbox id = "chkResolveABDisplay"
+											 label = "&resolveNamesFromABDisplay;"
+											 preference = "pref_resolveNamesFromAB_DisplayName"/>
+											 
 									<checkbox id = "chkResolveABRemoveMail"
 											 label = "&resolveABRemoveMail;"
 											 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."

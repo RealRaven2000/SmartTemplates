@@ -368,8 +368,18 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 		let retValue = "";
 		try {
 			retValue = msgDummyHeader[hdr];
-			if(!retValue)
-				retValue = msgDummyHeader.__proto__[hdr];
+			if(!retValue) {
+				if (retValue=="") {
+					// if we are writing a NEW mail, we should insert some placeholders for resolving later.
+					// if (gMsgCompose.composeHTML && hdr.composeType == 'new') {
+					//   retValue = util.wrapDeferredHeader(hdr, "", gMsgCompose.composeHTML);
+					// }
+				}
+				else
+					if (typeof msgDummyHeader[hdr] == "undefined")
+						retValue = msgDummyHeader.__proto__[hdr];
+			} 
+				
 		}
 		catch (ex) {
 			SmartTemplate4.Util.logException("clsGetAltHeader.get(" + hdr + ") failed.")
@@ -379,6 +389,7 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 	};	
 	this.get = get;
 	this.content = ""; // nothing here...
+	
 }
 // -------------------------------------------------------------------
 // MIME decode
@@ -540,8 +551,11 @@ SmartTemplate4.mimeDecoder = {
     // return the bracket delimiters
 		function getBracketDelimiters(bracketParams, element) {
       let del1='', del2='',
-          bracketExp = element.field;
+          bracketExp = element.field,
+					isOptional = false;
       if (bracketExp) {
+				// ??prefix make brackets optional if bracketMail / bracketName is the only element in the address.
+				// e.g. ??bracketName(??round)
         // bracketMail()% use to "wrap" mail address with non-standard characters
         // bracketMail(square)%    [email]  - square brackets
         // bracketMail(round)%     (email)   - round brackets
@@ -554,6 +568,11 @@ SmartTemplate4.mimeDecoder = {
         // the expression between brackets can also have empty delimiters; e.g. bracketMail(- ;) will prefix "- " and append nothing
         // we use ; as delimiter between the bracket expressions to avoid wrongly splitting format string elsewhere
         // (Should we allow escaped round brackets?)
+				if (bracketParams.indexOf('??')==0) {
+					isOptional = true;
+					bracketParams = bracketParams.substring(2);
+				}
+					
         if (!bracketParams.trim())
           bracketParams = 'angle';
         let delimiters = bracketParams.split(';');
@@ -575,8 +594,8 @@ SmartTemplate4.mimeDecoder = {
                 del2 = '&gt;';  // >
                 break;
               default:
-                del1 = '?';
-                del2 = '?';
+                del1 = delimiters[0]; // allow single delimiter, such as dash
+                del2 = '';
             }
             break;
           default: // delimiters separated by ; 3 and more are ignored.
@@ -585,14 +604,16 @@ SmartTemplate4.mimeDecoder = {
             break;
         }
       }
-      return [del1, del2];
+      return [del1, del2, isOptional];
     }
     
+		
+		if (typeof addrstr =='undefined')
+			return ''; // no address string (new emails)
+		
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format = prefs.getMyBoolPref('mime.resolveAB.removeEmail') ?
-              'name' :
-              'name,bracketMail[angle]'; 
+      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail<angle>'
     }
     
 		util.logDebugOptional('mime.split',
@@ -616,31 +637,9 @@ SmartTemplate4.mimeDecoder = {
     /** SPLIT FORMAT PLACEHOLDERS **/
 		// possible values for format are:
 		// name, firstname, lastname, mail - fields (to be extended)
-    // bracketMail(args) - special function (we replaced the round brackets with [] for parsing)
+    // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
     // link, islinkable  - these are "modifiers" for the previous list element
-    let formatArray = [];
-    if (format) {
-      // remove parentheses
-      if (format.charAt(0)=='(')
-        format = format.slice(1);
-      if (format.charAt(format.length-1)==')')
-        format = format.slice(0, -1);
-      
-      let fs=format.split(','); // lastname, firstname ?
-      for(let i=0; i<fs.length; i++) {
-        let ff = fs[i].trim();
-        // if next one is a link modifier, modify previous element and continue
-        switch(ff.toLowerCase()) {
-          case 'link':
-            formatArray[formatArray.length-1].modifier = 'linkTo';
-            continue;
-          case 'islinkable':
-            formatArray[formatArray.length-1].modifier = 'linkable';
-            continue;
-        }
-        formatArray.push ({ field: ff, modifier: ''}); // modifier: linkTo
-      }
-    }
+		let formatArray = util.splitFormatArgs(format);
     
     let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
     for (let i=0; i<formatArray.length; i++) {
@@ -651,15 +650,17 @@ SmartTemplate4.mimeDecoder = {
     }
     util.logDebugOptional('mime.split', dbgText);
     
-		const nameDelim = prefs.getMyStringPref('names.delimiter'); // Bug 26207
+		const nameDelim = prefs.getMyStringPref('names.delimiter'), // Bug 26207
+			    isGuessFromAddressPart = prefs.getMyBoolPref('names.guessFromMail'),
+					isReplaceNameFromParens = prefs.getMyBoolPref('names.extractNameFromParentheses'); // [Bug 26595] disable name guessing      
 		let addresses = "",
         address,
         bracketMailParams = getBracketAddressArgs(format, 'Mail'),
         bracketNameParams = getBracketAddressArgs(format, 'Name');
 
-    // if (prefs.Debug) debugger;
     /** ITERATE ADDRESSES  **/
 		for (let i = 0; i < array.length; i++) {
+			let suppressMail = false;
 			if (prefs.isDebugOption('mime.split')) debugger;
 			if (i > 0) {
 				addresses += nameDelim + " ";  // comma or semicolon
@@ -669,6 +670,7 @@ SmartTemplate4.mimeDecoder = {
           fullName = '',
           emailAddress = '',
           addressField = array[i];
+					
       // [Bug 25816] - missing names caused by differing encoding
       // MIME decode (moved into the loop)
       if (!bypassCharsetDecoder)
@@ -678,18 +680,23 @@ SmartTemplate4.mimeDecoder = {
 			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
 			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
-			// name or/and address
+			// name or/and address. (wraps email into <  > )
 			address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+			
       
       util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
       let card = prefs.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
-      // this cuts off the angle-bracket address part: <fredflintstone@fire.com>
+			
+          
+			
+      // determine name part (left of email)
       addressee = address.replace(/\s*<\S+>\s*$/, "")
                       .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
-      if (!addressee) { // if no addressee part found we probably have only an email address.; take first part before the @
+											
+      if (isGuessFromAddressPart && !addressee) { // if no addressee part found we probably have only an email address.; take first part before the @
         addressee = address.slice(0, address.indexOf('@'));
         if (addressee.charAt('0')=='<')
           addressee = addressee.slice(1);
@@ -703,25 +710,42 @@ SmartTemplate4.mimeDecoder = {
 			}
 			fullName = addressee;
       
+			// attempt filling first & last name from AB
       firstName = card ? card.firstName : '';
-      if (card && prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
-        if (util.Application === "Postbox") {
-          if (card.nickName)
-            firstName = card.nickName;
-        }
-        else
-          firstName = card.getProperty("NickName", card.firstName);
+      if (card) {
+				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
+					if (util.Application === "Postbox") {
+						if (card.nickName) 
+							firstName = card.nickName;
+					}
+					else
+						firstName = card.getProperty("NickName", card.firstName);
+				}
+				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName'))
+					firstName = card.displayName;
       }
       lastName = card ? card.lastName : '';
       fullName = (card && card.displayName) ? card.displayName : fullName;
-      
-      let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
+			
+			
+			let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
+			if ((fullName || isNameFound) && prefs.getMyBoolPref('mime.resolveAB.removeEmail')) {
+				// remove mail if name found in AB, and a name component is displayed:
+				for (let f=0; f<formatArray.length; f++) {
+					if (["name","firstname","lastname","fullname"].indexOf(formatArray[f].field)>=0) {
+						suppressMail = true;
+					}
+				}
+			}
+              
+					
       if (!isNameFound && prefs.getMyBoolPref('firstLastSwap')) {
         // extract Name from left hand side of email address
+				
 				let regex = /\(([^)]+)\)/,
 				    nameRes = regex.exec(addressee);
 				// (Name) extraction!
-				if (nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
+				if (isReplaceNameFromParens && nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
 					isNameFound = true;
 					firstName = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
 				}
@@ -729,6 +753,9 @@ SmartTemplate4.mimeDecoder = {
 					let iComma = addressee.indexOf(', ');
 					if (iComma>0) {
 						firstName = addressee.substr(iComma + 2);
+						// remove parentheses part from firstnames
+						if (nameRes)
+							firstName = (firstName.replace(nameRes[0],'')).trim();
 						lastName = addressee.substr(0, iComma);
             isNameFound = true;
 					}
@@ -779,14 +806,31 @@ SmartTemplate4.mimeDecoder = {
       }
       
       // build the part!
-      addressField = ''; // reset to finalize
+			let addressElements = [],
+			    foundNonOptionalParts = false,
+			    open = '', 
+					close = '',
+					bracketsAreOptional = false; // bracket Elements
+
       for (let j=0; j<formatArray.length; j++)  {
         let element = formatArray[j],
-            part = ''; 
-        switch(element.field.toLowerCase()) {
+            part = '',
+						isOptionalPart = false,
+						partKeyWord = element.field; 
+						
+				if (partKeyWord.indexOf('??')==0) {
+					partKeyWord = partKeyWord.substring(2);
+					isOptionalPart = true;
+				}
+        switch(partKeyWord.toLowerCase()) {
 					case 'initial':
-					  return addrstr; // return unchanged string, ignore all other parameters
+						while (addressElements.length>1) 
+							addressElements.pop();
+					  addressElements.push( {part:addrstr, optional:false, bracketLeft:'', bracketRight:'', bracketsOptional:true}  ); // return unchanged string, ignore all other parameters
+						break;
           case 'mail':
+						if (suppressMail)
+							continue;
             switch (element.modifier) {
               case 'linkable':
                 part = emailAddress;
@@ -800,15 +844,21 @@ SmartTemplate4.mimeDecoder = {
                 if (prefs.getMyBoolPref('mail.suppressLink'))
                   part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
                 else
-                  part = emailAddress;
-                  
+                  part = emailAddress;                  
             }
             break;
+					case 'fwd': // this is handled on the outside, so we ignore it
+						continue;
           case 'name':
+          case 'fullname':
             if (fullName)
               part = fullName;
-            else
-              part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+            else {
+							if (isGuessFromAddressPart)
+								part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+							else
+								part = ''; // [Bug 26595]
+						}
 						// [Bug 26209] wrap name if contains comma
 						if (prefs.getMyBoolPref('names.quoteIfComma')) {
 							if (part.includes(',') || part.includes(';'))
@@ -827,18 +877,21 @@ SmartTemplate4.mimeDecoder = {
               part = lastName;
             break;
           default:
-            let bM = (element.field.indexOf('bracketMail<')==0),
-                bN = (element.field.indexOf('bracketName<')==0);
+            let bM = (partKeyWord.indexOf('bracketMail<')==0),
+                bN = (partKeyWord.indexOf('bracketName<')==0);
             if (bM || bN) {
-              let open, close;
               if (bM) {
-                [open, close] = getBracketDelimiters(bracketMailParams, element);
-                part = emailAddress ? open + emailAddress + close : '';
+                [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
+                part = emailAddress ?  emailAddress : ''; // adding brackets later!
               }
               else {
-                [open, close] = getBracketDelimiters(bracketNameParams, element);
-                let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
-                part = fN ? open + fN + close : '';
+								if (isGuessFromAddressPart || fullName) {
+									[open, close, bracketsAreOptional] = getBracketDelimiters(bracketNameParams, element);
+									let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+									part = fN ? fN : '';
+								}
+								else
+									part = '';
               }
             }
             break;
@@ -847,13 +900,33 @@ SmartTemplate4.mimeDecoder = {
           part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
         }
 
-        // append the next part
-        if (part.length>1) {
-          // space to append next parts
-          if(j) addressField += ' ';
-          addressField += part;
-        }
+				// make array of non-empty parts
+				if (part) {
+					addressElements.push({part:part, optional:isOptionalPart, bracketLeft:open, bracketRight:close, bracketsOptional: bracketsAreOptional});
+					if (!isOptionalPart) 
+						foundNonOptionalParts = true;
+				}
       }
+			
+      addressField = ''; // reset to finalize
+			for (let j=0; j<addressElements.length; j++)  {
+				let aElement = addressElements[j];
+				// remove optional parts, e.g. to(name,??mail) - will only show name unless missing, in which case it shows mail
+				if (aElement.optional && foundNonOptionalParts)
+					continue;
+        // append the next part if not empty
+        if (aElement.part.length>1) {
+          if (addressField.length) addressField += ' '; // space to append next parts
+					// if there is only one element and brackets param is prefixed with ??
+					// e.g. %from(name,bracketMail(??- {,}))%
+					// Name - {email}
+					// then hide the brackets and only show email.
+					if (addressElements.length==1 && aElement.bracketsOptional)
+						addressField += aElement.part; // omit brackets if this is the only bracketed Expression returned
+					else
+						addressField += aElement.bracketLeft + aElement.part + aElement.bracketRight;
+        }
+			}
       
       util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
       addresses += addressField;
@@ -882,6 +955,8 @@ SmartTemplate4.parseModifier = function(msg) {
 								util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
 								return;
 							}
+							util.addUsedPremiumFunction('matchTextFromSubject');
+							// util.popupProFeature("matchTextFromSubject", true, false);
 							let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 									charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
 							extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
@@ -890,6 +965,8 @@ SmartTemplate4.parseModifier = function(msg) {
 						case 'body':
 							let rootEl = gMsgCompose.editor.rootElement;
 							extractSource = rootEl.innerText;
+							// util.popupProFeature("matchTextFromBody", true, false);
+							util.addUsedPremiumFunction('matchTextFromBody');
 							util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
 							break;
 						default:
@@ -948,18 +1025,24 @@ SmartTemplate4.parseModifier = function(msg) {
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
 	    matchesR = msg.match(/%replaceText\(.*\)%/g); // works on template only
 	if (matches) {
-		util.addUsedPremiumFunction('deleteText');
-		for (let i=0; i<matches.length; i++) {
-			// parse out the argument (string to delete)
-			msg = msg.replace(matches[i],'');
-			let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
-			if (dText) {
-				msg = msg.replace(util.unquotedRegex(dText[0], true), "");
+		try {
+			util.addUsedPremiumFunction('deleteText');
+			for (let i=0; i<matches.length; i++) {
+				// parse out the argument (string to delete)
+				msg = msg.replace(matches[i],'');
+				let dText = matches[i].match(   /(\"[^)].*\")/   ); // get argument (includes quotation marks)
+				if (dText) {
+					msg = msg.replace(util.unquotedRegex(dText[0], true), "");
+				}
 			}
+		}
+		catch (ex) {
+			util.logException('%deleteText()%', ex);
 		}
 	}
   
 	if (matchesR) { // replacements in place
+	try {
     let dText1, dText2;
 		util.addUsedPremiumFunction('replaceText');
 		for (let i=0; i<matchesR.length; i++) {
@@ -971,20 +1054,38 @@ SmartTemplate4.parseModifier = function(msg) {
         dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
         // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
         
-        if (dText1.length + dText2.length == 2) {
+					let errTxt = "Splitting replaceText(a,b) arguments could not be parsed.",
+							errDetail;
+					
+					if (!dText1)
+						errDetail = "1st argument missing.";
+					else if (!dText2)
+						errDetail = "2nd argument missing.";
+					else if (dText1.length + dText2.length < 2) {
+						errDetail = "arguments malformed.";
+					}
+					else if (dText1.length + dText2.length > 2) {
+						errDetail = "Argument contains quote marks - not supported.";
+					}
+					else {
           msg = msg.replace(util.unquotedRegex(dText1[0], true), util.unquotedRegex(dText2[0]));
         }
-        else {
-          util.logDebug('Splitting replaceText(a,b) arguments could not be parsed. '
+					if(errDetail)
+						util.logToConsole(errTxt
+							+ '\n ' + errDetail
             + '\n Arguments have to be enclosed in double quotes.');
         }
-      }
       else {
         util.logDebug('Splitting replaceText(a,b) did not return 2 arguments. '
           + '\n Arguments may not contain comma or double quotes.'
           + '\n Special characters such as # must be escaped with backslash.');
       }
 		}
+	}
+		catch (ex) {
+			util.logException('%replaceText()%', ex);
+		}
+		
 	}
 	
 	return msg;
@@ -999,8 +1100,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
         preferences = SmartTemplate4.Preferences;
-
+				
 	function getSubject(current) {
+		if (preferences.isDebugOption("tokens.deferred")) debugger;
 		util.logDebugOptional('regularize', 'getSubject(' + current + ')');
 		let subject = '';
 		if (current){
@@ -1008,7 +1110,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			return SmartTemplate4.escapeHtml(subject); //escapeHtml for non UTF8 chars in %subject% but this don't work in this place for the whole subject, only on %subject(2)%
 		}
 		else {
+			
 			subject = mime.decode(hdr.get("Subject"), charset);
+			if (hdr.composeType=="new" && !subject) {
+				subject = util.wrapDeferredHeader("subject", subject, gMsgCompose.composeHTML);
+				util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
+			}
 			return subject;
 		}
 	}
@@ -1027,6 +1134,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// such as %toname()% to a simpler one, like %To%
 	function simplify(aString) {
 		// Check existence of a header related to the reserved word.
+		// str = smartTemplate token, e.g. %subject%
 		function classifyReservedWord(str, reservedWord, param) {
 			try {
 				if (str!="%X:=today%") {
@@ -1038,9 +1146,22 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					: hdr.get(el ? el : reservedWord) != "" ? str : "";
 				if (!el)
 					util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
+				else { // it's a reserved word, likely a header
+					if (preferences.isDebugOption("tokens.deferred")) debugger;
+					if (typeof s =='undefined' || (s=="" && composeType=='new')) {
+						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
+						// wrap into <smarttemplate > for later deferral (works only in HTML)
+						// use pink fields for new emails for the New Mail case - this var can not be used in...
+						s = util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+						util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
+					}
+				}
 				return s;
 			} 
 			catch (ex) {
+				if (preferences.isDebugOption("tokens.deferred")) debugger;
+				// let's implement later resolving of variables for premium users:
+				// throws "hdr is null"
 				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
 				util.displayNotAllowedMessage(reservedWord);
 				return "";
@@ -1123,11 +1244,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			charset = gMsgCompose.compFields.characterSet;
 		}
 		try {
-			hdr = (composeType != "new") ? new this.classGetHeaders(gMsgCompose.originalMsgURI) : null;
+			hdr = (composeType != "new") ? 
+			  new this.classGetHeaders(gMsgCompose.originalMsgURI) : 
+				new this.clsGetAltHeader(gMsgCompose.compFields);
 		}
 		catch(ex) {
 			util.logException('fatal error - classGetHeaders() failed', ex);
 		}
+	}
+	// append composeType to hdr class.
+	if(hdr) {
+		hdr.composeType = composeType;
 	}
   
   
@@ -1157,9 +1284,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// identity(mail) is the new ownmail
 	addTokens("reserved", "ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
 					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-					"X:=today", "X:=calculated", "dbg1", "datelocal", "dateshort", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
+					"X:=today", "X:=calculated", "dbg1", "datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
 					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
-					"messageRaw", "file", //depends on the original message, but not on any header
+					"messageRaw", "file", "attach", //depends on the original message, but not on any header
           "header.set", "header.append", "header.prefix, header.delete",
 					"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
           "header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody"
@@ -1168,309 +1295,27 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// Reserved words which depend on headers of the original message.
 	addTokens("To", "to", "toname", "tomail");
 	addTokens("Cc", "cc", "ccname", "ccmail");
-	addTokens("Date", "X:=sent");
+  addTokens("Date", "X:=sent");
 	addTokens("From", "from", "fromname", "frommail");
 	addTokens("Subject", "subject");
 
+	/*
+	// move to Util.	
 	// Convert PRTime to string
 	// https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR/Reference/PRTime
 	// 64bit value, measured in microseconds since NSPR epoch
 	function prTime2Str(time, timeType, timezone) {
-		util.logDebugOptional('regularize','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
-
-		try {
-			let tm = new Date(),
-			    locale = SmartTemplate4.pref.getLocalePref(),
-					isOldDateFormat = (typeof Ci.nsIScriptableDateFormat !== "undefined"),
-					fmt;
-					
-			if(isOldDateFormat)
-				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
-			else {
-				// this interface was removed in Gecko 57.0
-				// alternative date formatting
-				Cu.import("resource:///modules/ToLocaleFormat.jsm");
-				fmt = new Services.intl.DateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
-			}
-			    
-      
-			if (preferences.isDebugOption('timeStrings')) debugger;
-			
-			if (SmartTemplate4.whatIsDateOffset) {
-				time += (SmartTemplate4.whatIsDateOffset*24*60*60*1000*1000); // add n days
-				util.logDebugOptional('timeStrings', 'Adding ' + SmartTemplate4.whatIsDateOffset + ' days to time');
-			}
-			
-			// Set Time - add Timezone offset
-			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
-
-			// Format date string
-			let dateFormat = null,
-			    timeFormat = null;
-			switch (timeType) {
-				case "datelocal":
-					dateFormat = isOldDateFormat ? fmt.dateFormatLong : new Services.intl.DateTimeFormat(undefined, {dateStyle: "long"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "long"}).format();
-					break;
-				case "dateshort":
-				default:
-					dateFormat = isOldDateFormat ? fmt.dateFormatShort : new Services.intl.DateTimeFormat(undefined, {dateStyle: "short"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "short"}).format();
-					break;
-			}
-
-			
-			let timeString = 
-			  isOldDateFormat 
-						? fmt.FormatDateTime(locale,
-																dateFormat, 
-																timeFormat,
-																tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
-																tm.getHours(), tm.getMinutes(), tm.getSeconds())
-						: fmt.format(tm);
-			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
-			return timeString;
-		}
-		catch (ex) {
-			util.logException('regularize.prTime2Str() failed', ex);
-		}
-		return '';
+    ...
 	}
 
 	function zoneFromShort(short) {
-		let timezones = {
-			"ACDT" : "Australian Central Daylight Time",
-			"ACST" : "Australian Central Standard Time",
-			"ACT"	 : "ASEAN Common Time",
-			"ADT"	 : "Atlantic Daylight Time",
-			"AEDT" : "Australian Eastern Daylight Time",
-			"AEST" : "Australian Eastern Standard Time",
-			"AUS"  : "Australian Time",
-			"AFT"	 : "Afghanistan Time",
-			"AKDT" : "Alaska Daylight Time",
-			"AKST" : "Alaska Standard Time",
-			"AMST" : "Armenia Summer Time",
-			"AMT"	 : "Armenia Time",
-			"ART"	 : "Argentina Time",
-			"AST"	 : "Atlantic Standard Time",
-			"AWDT" : "Australian Western Daylight Time",
-			"AWST" : "Australian Western Standard Time",
-			"AZOST": "Azores Standard Time",
-			"AZT"	 : "Azerbaijan Time",
-			"BDT"	 : "Brunei Time",
-			"BIOT" : "British Indian Ocean Time",
-			"BIT"	 : "Baker Island Time",
-			"BOT"	 : "Bolivia Time",
-			"BRT"	 : "Brasilia Time",
-			"BST"	 : "British Summer Time (British Standard Time from Feb 1968 to Oct 1971)",
-			"BTT"	 : "Bhutan Time",
-			"CAT"	 : "Central Africa Time",
-			"CCT"	 : "Cocos Islands Time",
-			"CDT"	 : "Central Daylight Time (North America)",
-			"CEDT" : "Central European Daylight Time",
-			"CEST" : "Central European Summer Time (Cf. HAEC)",
-			"CET"	 : "Central European Time",
-			"CHADT": "Chatham Daylight Time",
-			"CHAST": "Chatham Standard Time",
-			"CHOT" : "Choibalsan",
-			"ChST" : "Chamorro Standard Time",
-			"CHUT" : "Chuuk Time",
-			"CIST" : "Clipperton Island Standard Time",
-			"CIT"	 : "Central Indonesia Time",
-			"CKT"	 : "Cook Island Time",
-			"CLST" : "Chile Summer Time",
-			"CLT"	 : "Chile Standard Time",
-			"COST" : "Colombia Summer Time",
-			"COT"	 : "Colombia Time",
-			"CST"	 : "Central Standard Time (North America)",
-			"CT"   : "China time",
-			"CVT"	 : "Cape Verde Time",
-			"CWST" : "Central Western Standard Time (Australia)",
-			"CXT"	 : "Christmas Island Time",
-			"DAVT" : "Davis Time",
-			"DDUT" : "Dumont d'Urville Time",
-			"DFT"	 : "AIX specific equivalent of Central European Time",
-			"EASST": "Easter Island Standard Summer Time",
-			"EAST" : "Easter Island Standard Time",
-			"EAT"	 : "East Africa Time",
-			"ECT"	 : "Ecuador Time",
-			"EDT"	 : "Eastern Daylight Time (North America)",
-			"EEDT" : "Eastern European Daylight Time",
-			"EEST" : "Eastern European Summer Time",
-			"EET"	 : "Eastern European Time",
-			"EGST" : "Eastern Greenland Summer Time",
-			"EGT"	 : "Eastern Greenland Time",
-			"EIT"	 : "Eastern Indonesian Time",
-			"EST"	 : "Eastern Standard Time (North America)",
-			"FET"	 : "Further-eastern_European_Time",
-			"FJT"	 : "Fiji Time",
-			"FKST" : "Falkland Islands Summer Time",
-			"FKT"	 : "Falkland Islands Time",
-			"FNT"	 : "Fernando de Noronha Time",
-			"GALT" : "Galapagos Time",
-			"GAMT" : "Gambier Islands",
-			"GET"	 : "Georgia Standard Time",
-			"GFT"	 : "French Guiana Time",
-			"GILT" : "Gilbert Island Time",
-			"GIT"	 : "Gambier Island Time",
-			"GMT"	 : "Greenwich Mean Time",
-			"GST"	 : "South Georgia and the South Sandwich Islands",
-			"GYT"	 : "Guyana Time",
-			"HADT" : "Hawaii-Aleutian Daylight Time",
-			"HAEC" : "Heure Avanc\u00E9e d'Europe Centrale francised name for CEST",
-			"HAST" : "Hawaii-Aleutian Standard Time",
-			"HKT"	 : "Hong Kong Time",
-			"HMT"	 : "Heard and McDonald Islands Time",
-			"HOVT" : "Khovd Time",
-			"HST"	 : "Hawaii Standard Time",
-			"ICT"	 : "Indochina Time",
-			"IDT"	 : "Israel Daylight Time",
-			"I0T"	 : "Indian Ocean Time",
-			"IRDT" : "Iran Daylight Time",
-			"IRKT" : "Irkutsk Time",
-			"IRST" : "Iran Standard Time",
-			"IST"	 : "Irish Summer Time",
-			"JST"	 : "Japan Standard Time",
-			"KGT"	 : "Kyrgyzstan time",
-			"KOST" : "Kosrae Time",
-			"KRAT" : "Krasnoyarsk Time",
-			"KST"	 : "Korea Standard Time",
-			"LHST" : "Lord Howe Standard Time",
-			"LINT" : "Line Islands Time",
-			"MAGT" : "Magadan Time",
-			"MART" : "Marquesas Islands Time",
-			"MAWT" : "Mawson Station Time",
-			"MDT"	 : "Mountain Daylight Time (North America)",
-			"MET"	 : "Middle European Time Same zone as CET",
-			"MEST" : "Middle European Saving Time Same zone as CEST",
-			"MHT"	 : "Marshall_Islands",
-			"MIST" : "Macquarie Island Station Time",
-			"MIT"	 : "Marquesas Islands Time",
-			"MMT"	 : "Myanmar Time",
-			"MSK"	 : "Moscow Time",
-			"MST"	 : "Mountain Standard Time (North America)",
-			"MUT"	 : "Mauritius Time",
-			"MVT"	 : "Maldives Time",
-			"MYT"	 : "Malaysia Time",
-			"NCT"	 : "New Caledonia Time",
-			"NDT"	 : "Newfoundland Daylight Time",
-			"NFT"	 : "Norfolk Time[1]",
-			"NPT"	 : "Nepal Time",
-			"NST"	 : "Newfoundland Standard Time",
-			"NT"	 : "Newfoundland Time",
-			"NUT"	 : "Niue Time",
-			"NZDT" : "New Zealand Daylight Time",
-			"NZST" : "New Zealand Standard Time",
-			"OMST" : "Omsk Time",
-			"ORAT" : "Oral Time",
-			"PDT"	 : "Pacific Daylight Time (North America)",
-			"PET"	 : "Peru Time",
-			"PETT" : "Kamchatka Time",
-			"PGT"	 : "Papua New Guinea Time",
-			"PHOT" : "Phoenix Island Time",
-			"PHT"	 : "Philippine Time",
-			"PKT"	 : "Pakistan Standard Time",
-			"PMDT" : "Saint Pierre and Miquelon Daylight time",
-			"PMST" : "Saint Pierre and Miquelon Standard Time",
-			"PONT" : "Pohnpei Standard Time",
-			"PST"	 : "Pacific Standard Time (North America)",
-			"RET"	 : "R\u00E9union Time",
-			"ROTT" : "Rothera Research Station Time",
-			"SAKT" : "Sakhalin Island time",
-			"SAMT" : "Samara Time",
-			"SAST" : "South African Standard Time",
-			"SBT"	 : "Solomon Islands Time",
-			"SCT"	 : "Seychelles Time",
-			"SGT"	 : "Singapore Time",
-			"SLT"	 : "Sri Lanka Time",
-			"SRT"	 : "Suriname Time",
-			"SST"	 : "Singapore Standard Time",
-			"SYOT" : "Showa Station Time",
-			"TAHT" : "Tahiti Time",
-			"THA"	 : "Thailand Standard Time",
-			"TFT"	 : "Indian/Kerguelen",
-			"TJT"	 : "Tajikistan Time",
-			"TKT"	 : "Tokelau Time",
-			"TLT"	 : "Timor Leste Time",
-			"TMT"	 : "Turkmenistan Time",
-			"TOT"	 : "Tonga Time",
-			"TVT"	 : "Tuvalu Time",
-			"UCT"	 : "Coordinated Universal Time",
-			"ULAT" : "Ulaanbaatar Time",
-			"UTC"	 : "Coordinated Universal Time",
-			"UYST" : "Uruguay Summer Time",
-			"UYT"	 : "Uruguay Standard Time",
-			"UZT"	 : "Uzbekistan Time",
-			"VET"	 : "Venezuelan Standard Time",
-			"VLAT" : "Vladivostok Time",
-			"VOLT" : "Volgograd Time",
-			"VOST" : "Vostok Station Time",
-			"VUT"  : "Vanuatu Time",
-			"WAKT" : "Wake Island Time",
-			"WAST" : "West Africa Summer Time",
-			"WAT"	 : "West Africa Time",
-			"WEDT" : "Western European Daylight Time",
-			"WEST" : "Western European Summer Time",
-			"WET"  : "Western European Time",
-			"WST"	 : "Western Standard Time",
-			"YAKT" : "Yakutsk Time",
-			"YEKT" : "Yekaterinburg Time"
-		};
-
-		let tz = timezones[short]; // Date().toString().replace(/^.*\(|\)$/g, "")
-		return tz || short;
+		...
 	}
 
 	function getTimeZoneAbbrev(tm, isLongForm) {
-    function isAcronym(str) {
-      return (str.toUpperCase() == str); // if it is all caps we assume it is an acronym
-    }
-		// return tm.toString().replace(/^.*\(|\)$/g, ""); HARAKIRIs version, not working.
-		// get part between parentheses
-		// e.g. "(GMT Daylight Time)"
-		util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev(time: ' + tm.toString() + ', long form: ' + isLongForm);
-		let timeString =  tm.toTimeString(),
-		    timeZone = timeString.match(/\(.*?\)/),
-		    retVal = '';
-		util.logDebugOptional ('timeZones', 'timeString = ' + timeString + '\n' 
-		                                      + 'timeZone =' + timeZone);
-		if (timeZone && timeZone.length>0) {
-      // remove enclosing brackets and split
-			let words = timeZone[0].substr(1,timeZone[0].length-2).split(' ');
-			for (let i=0; i<words.length; i++) {
-        let wrd = words[i];
-				if (isLongForm) {
-					retVal += ' ' + wrd;
-				}
-				else {
-					if (wrd.length == 3 && wrd.match('[A-Z]{3}') 
-					    ||
-					    wrd.length == 4 && wrd.match('[A-Z]{4}')
-              ||
-              isAcronym(wrd))
-          {
-						retVal += wrd + ' ';  // abbrev contained
-          }
-					else {
-						retVal += wrd[0];  // first letters cobbled together
-          }
-				}
-			}
-		}
-		else {
-			util.logDebugOptional ('timeZones', 'no timeZone match, building manual...');
-			retVal = timeString.match('[A-Z]{4}');
-			if (!retVal)
-				retVal = timeString.match('[A-Z]{3}');
-			// convert to long form by using hard-coded time zones array.
-			util.logDebug('Cannot determine timezone string - Missed parentheses - from:\n' + timeString + ' regexp guesses: ' + retVal);
-			if (isLongForm) {
-				retVal = zoneFromShort(retVal);
-			}
-		}
-		util.logDebugOptional ('timeZones', 'getTimeZoneAbbrev return value = ' + retVal);
-		return retVal;
+		 ...
 	}
+	*/
 	
 	// Replace reserved words
 	function replaceReservedWords(dmy, token, arg)	{
@@ -1732,6 +1577,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       return ''; // consume
     }
     
+		let originalToken = token;
+		
     let tm = new Date(),
 		    d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); },
 		    expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); };
@@ -1739,16 +1586,32 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			SmartTemplate4.calendar.init(null); // default locale
 		let cal = SmartTemplate4.calendar;
 
-		// Set %A-Za-z% to time of original message was sent.
-		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent) {
-			tm.setTime(date / 1000);
+		
+		// what if we go over date boundary? (23:59)
+		let msOffset = (SmartTemplate4.whatIsHourOffset ? SmartTemplate4.whatIsHourOffset*60*60*1000 : 0)
+		               + (SmartTemplate4.whatIsMinuteOffset ?  SmartTemplate4.whatIsMinuteOffset*60*1000 : 0),
+		    dayOffset = SmartTemplate4.whatIsDateOffset;
+		
+		// date is sent date when replying!
+		// in new mails or if offset is applied we use dateshort
+		if (msOffset || dayOffset || (util.getComposeType()=='new')) {
+			if (token=="date") 
+				token = "dateshort";
 		}
 		
+		// Set %A-Za-z% to time of original message was sent.
+		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent) 
+			tm.setTime((date / 1000) + msOffset);
+		else
+			tm.setTime(tm.getTime() + msOffset);
+		
 		// note: date variable comes from header!
-		if (SmartTemplate4.whatIsDateOffset) {
-			tm.setDate(tm.getDate() + SmartTemplate4.whatIsDateOffset);
+		if (dayOffset) {
+			tm.setDate(tm.getDate() + dayOffset);
 		}
 
+		let debugTimeStrings = (preferences.isDebugOption('timeStrings'));
+		if (!arg) arg='';
 		try {
 			// for backward compatibility
 			switch (token) {
@@ -1768,16 +1631,21 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "matchTextFromSubject": // return unchanged
 				case "matchTextFromBody": // return unchanged
 					return '%' + token + arg + '%';
+				case "dateformat":
+					tm = new Date();
+					let defaultTime = util.dateFormat(tm.getTime() * 1000, arg, 0);
+				  token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+					return token; 
 				case "datelocal":
 				case "dateshort":
-				  if (preferences.isDebugOption('timeStrings')) debugger;
+				  if (debugTimeStrings) debugger;
 					if (SmartTemplate4.whatIsX == SmartTemplate4.XisToday) {
 						tm = new Date(); // undo offset for this case.
-						token = prTime2Str(tm.getTime() * 1000, token, 0);
+						token = util.prTime2Str(tm.getTime() * 1000, token, 0);
 						return finalize(token, SmartTemplate4.escapeHtml(token));
 					}
 					else {
-						token = prTime2Str(date, token, 0);
+						token = util.prTime2Str(date, token, 0);
 						return finalize(token, SmartTemplate4.escapeHtml(token));
 					}
 				case "timezone":
@@ -1808,6 +1676,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return finalize(token, expand("%H%:%M%:%S%"));
 				case "y":                               // Year 13... (2digits)
 				case "Y":                               // Year 1970...
+				  if (debugTimeStrings) debugger;
 				  let year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString();
 					if (token=="y")
 						return finalize(token, "" + year.slice(year.length-2), "tm.getFullYear.slice(len-2)");
@@ -1816,6 +1685,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "m":                               // Month 01..12
 				case "B": 
 				case "b":
+				  if (debugTimeStrings) debugger;
 				  let month = isUTC ? tm.getUTCMonth() : tm.getMonth();
 					switch(token) {
 						case "n":
@@ -1830,7 +1700,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					break;
 				case "e":                               // Day of month 1..31
 				case "d":                               // Day of month 01..31
-				  let day = isUTC ? tm.getUTCDate() : tm.getDate();
+				  if (debugTimeStrings) debugger;
+					let day = isUTC ? tm.getUTCDate() : tm.getDate();
 					switch(token) {
 						case "e":
 						  return finalize(token, "" + day, "tm.getDate(" + day + ")");
@@ -1840,6 +1711,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					break;
 				case "A":                               // name of day 
 				case "a":
+				  if (debugTimeStrings) debugger;
 				  let weekday = tm.getDay();
 					switch(token) {
 						case "A":
@@ -1853,6 +1725,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "l":                               // Hour 1..12
 				case "I":                               // Hour 01..12
 				case "p":
+					if (debugTimeStrings) debugger;
 				  let hour = isUTC ? tm.getUTCHours() : tm.getHours();
 					switch(token) {
 						case "k":
@@ -1876,22 +1749,25 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			    }
 					break;
 				case "M":                               // Minutes 00..59
+				  if (debugTimeStrings) debugger;
 				  let minute = isUTC ? tm.getUTCMinutes() : tm.getMinutes();
 					return finalize(token, d02(minute), "d02(tm.getMinutes())");
 				case "S":                               // Seconds 00..59
 					return finalize(token, d02(tm.getSeconds()), "d02(tm.getSeconds())");
 				case "tz_name":                         // time zone name (abbreviated) tz_name(1) = long form
 				  if (isUTC) return "(UTC)";
-					return finalize(token, getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
+					return finalize(token, util.getTimeZoneAbbrev(tm, (arg=="(1)")), "getTimeZoneAbbrev(tm, " + (arg=="(1)") + ")");
 				case "sig":
-					let isRemoveDashes = (arg=="(2)");
+				  if (arg && arg.indexOf('none')>=0) return "";
+					let isRemoveDashes = arg ? (arg=="(2)") : false;
           let retVal;
 				  if (isStationery) {
             retVal = '<sig class="st4-signature" removeDashes=' + isRemoveDashes + '>' + dmy + '</sig>' // 
 					}
           else {
 					// BIG FAT SIDE EFFECT!
-            retVal = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
+            let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
+						retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true);
             if (!retVal) retVal=''; // empty signature
             util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
           }
@@ -1915,19 +1791,30 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return finalize(token, "" + util.getIsoWeek(tm, offset));
 				// Change time of %A-Za-z%
 				case "X:=sent":
+				  if (debugTimeStrings) debugger;
 					SmartTemplate4.whatIsX = SmartTemplate4.XisSent;
 					SmartTemplate4.whatIsUtc = (arg && arg=='(UTC)');
 					util.logDebugOptional ('replaceReservedWords', "Switch: Time = SENT - UTC = " + SmartTemplate4.whatIsUtc);
 					return "";
 				case "X:=today":
+				  if (debugTimeStrings) debugger;
 					SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
 					SmartTemplate4.whatIsUtc = false;
 					//util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
 					return "";
 				case "X:=calculated":  // calculated(numberOfDays)
-				  let dateOffset = parseInt(arg.substr(1,1)); // reset wit calculated(0)
+				  if (debugTimeStrings) debugger;
+					let params = arg.substr(1,arg.length-2).split(','),	
+				      dateOffset = (params.length>0) ? parseInt(params[0] || "0" ) : 0,
+							tOffset = (params.length>1) ? params[1] : "00:00";
+					let hm = tOffset.split(':'),
+					    hourOffset = parseInt(hm[0]),
+							minOffset = (hm.length>1) ? parseInt(hm[1]) : 0; // reset wit calculated(0)
 				  SmartTemplate4.whatIsDateOffset = dateOffset;
-					util.logDebugOptional ('timeStrings', "Setting date offset to " + dateOffset + " days.");
+				  SmartTemplate4.whatIsHourOffset = hourOffset;
+					SmartTemplate4.whatIsMinuteOffset = minOffset;
+					
+					util.logDebugOptional ('timeStrings', "Setting date offset to " + dateOffset + " days, " + hourOffset + ":" + minOffset + " hours.");
 					return "";
 				case "cursor":
 					util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
@@ -1939,10 +1826,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				case "messageRaw": //returns the arg-th first characters of the content of the original message
 				  return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
-        case 'file':
+				case "attach":
+					util.addUsedPremiumFunction('attach');
+          attachFile(arg);
+					return "";
+        case "file":
 					util.addUsedPremiumFunction('file');
+					// do not process images that are returned - insertFileLink will already turn them into a DataURI
           let fileContents = insertFileLink(arg),
-              parsedContent = SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
+              parsedContent = fileContents.startsWith("<img") 
+							  ? fileContents
+							  : SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
           return parsedContent;
 				case "identity":
 				  /////
@@ -1991,11 +1885,33 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					let isStripQuote = RegExp(" " + token + " ", "i").test(
 					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
 					                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To "),
-              theHeader = hdr.get(token);
-          // make sure empty header stays empty for this special case
-          if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc "))
-            return '';
+              theHeader = hdr.get(token),
+							isFwdArg = false;
+							
+					if (util.getComposeType()=='fwd') {
+						let fmt = util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
+						// e.g. %to(firstname,fwd)%
+						for (let i=0; i<fmt.length; i++) {
+							if (fmt[i].field == 'fwd') {
+								isFwdArg = true;
+								break;
+							}
+						}
+					} 
+					// wrap variables that can't be resolved at the moment
+					if (typeof theHeader == "undefined" || isFwdArg) {
+						if (!arg) arg='';
+						token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+						return token; // this is HTML: we won't escape it.
+					}
+					// <----  early exit for non existent headers, e.g. "from" in Write case
+					else {
+						// make sure empty header stays empty for this special case
+						if (!theHeader && RegExp(" " + token + " ", "i").test(" Bcc Cc "))
+							return '';
+					}
 					if (token=="date" && isUTC) {
+						if (debugTimeStrings) debugger;
 						try {
 							let x = new Date(theHeader);
 							theHeader = x.toUTCString();
@@ -2016,7 +1932,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		catch(ex) {
 			util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
-			token="??";
+			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
 		}
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
@@ -2067,6 +1983,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           } while (read != 0);
           cstream.close(); // this closes fstream
           html = data.toString();
+					// if we compose in html and file is txt we need to replace all line breaks with <br>
+					if (type=='txt') {
+						html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+					}
         }
         catch (ex) {
           util.logException("insertFileLink() - read " + countRead + " characters.", ex);
@@ -2095,6 +2015,62 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     return html;
   } 
   
+	// [Bug 26552] find the file and add it to the attachments pane
+	function attachFile(args) {
+		const util = SmartTemplate4.Util,
+		      Ci = Components.interfaces,
+					Cc = Components.classes,
+					{OS} = (typeof ChromeUtils.import == "undefined") ?
+						Cu.import("resource://gre/modules/osfile.jsm", {}) :
+						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+						
+    let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
+        pathUri = arr[0],
+		    composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window,
+		    attachments=[];
+		try {
+			// alert('the attach() function is still work in progress!')
+			debugger;
+			
+			// https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2508
+			/*
+			let nsFile = Services.io.getProtocolHandler("file")
+				.QueryInterface(Ci.nsIFileProtocolHandler)
+				.getFileFromURLSpec(uri); // img.src
+				*/
+				
+			let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils;
+			
+			if (!FileUtils) {
+				alert("No FileUtils in this platform - %attach% is not supported. Are you on an old version of " + util.Application + "?");
+				return;
+			}
+      let localFile = new FileUtils.File(pathUri);				
+			
+			if (!localFile.exists()) {
+				alert("file not found: " + pathUri);
+				return;
+			}
+			
+			let contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromFile(localFile),
+			    attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
+			// from https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2721
+			// if (nsFile instanceof Ci.nsIFile) {..}
+			attachment.url = "file://" + localFile.path;
+			attachment.contentType = contentType;
+			attachment.name = localFile.leafName;
+			
+			attachments = [attachment]; // make a 1 member array of nsIMsgAttachment
+			composerWin.AddAttachments(attachments);
+			
+			
+		}
+		catch(ex) {
+			util.logException("attachFile(" + pathUri + ")", ex);
+		}
+	}
+	
 	let sandbox;
 	// [Bug 25676]	Turing Complete Templates - Benito van der Zander
   // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
@@ -2189,16 +2165,19 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	let javascriptResults = []; //but cannot insert result now, or it would be double html escaped, so insert them later
 	msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
 	
-	//Now do this chaotical stuff:
+	/*  deprecating bs code. */
+	if (preferences.getMyBoolPref('xtodaylegacy')) {
+		//Now do this chaotical stuff:
+		//Reset X to Today after each newline character
+		//except for lines ending in { or }; breaks the omission of non-existent CC??
+		msg = msg.replace(/\n/gm, "%X:=today%\n");
+		//replace this later!!
+		// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
+		// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
+		msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
+		msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
+	}
 	
-  //Reset X to Today after each newline character
-	//except for lines ending in { or }; breaks the omission of non-existent CC??
-	msg = msg.replace(/\n/gm, "%X:=today%\n");
-	//replace this later!!
-	// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
-	// msg = msg.replace(/}\s*%X:=today%\n/gm, "}\n");
-	msg = msg.replace(/\[\[\s*%X:=today%\n/gm, "[[\n");
-	msg = msg.replace(/\]\]\s*%X:=today%\n/gm, "]]\n");
 	
 	// ignoreHTML, e,g with signature, lets not do html processing
 	if (!ignoreHTML) {
