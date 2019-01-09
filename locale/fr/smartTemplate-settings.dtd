@@ -84,8 +84,6 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -95,7 +93,6 @@
 <!ENTITY resolveABRemoveMail "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié">
 <!ENTITY suppressMailtToLink "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques.">
 <!ENTITY capitalizeNames "Noms en lettres capitales">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">

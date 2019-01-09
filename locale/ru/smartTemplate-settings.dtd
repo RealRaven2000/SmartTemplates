@@ -84,18 +84,14 @@
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
 <!ENTITY pref_nameSwap "Исправить фамилию, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Разделитель в списке корреспондентов:">
 <!ENTITY pref_addressDelimiter_tip "Разделитель между несколькими корреспондентами. Outlook использует точку с запятой (;), Thunderbird  стандартно запятую (,)">
 <!ENTITY resolveNamesFromAB "Брать имена из адресных книг">
 <!ENTITY resolveNamesFromAB_tip "Эта функция работает не со всеми удалёнными адресными книгами, как то каталог LDAP">
 <!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Скрыть адрес если он не используется как параметр в шаблоне">
 <!ENTITY suppressMailtToLink "Предотвращать добавление ссылок на адреса электронной почты.">
 <!ENTITY capitalizeNames "Имена - заглавными буквами">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
 <!ENTITY pref_cursorInsertSpace "Вставлять пробел для подчеркивания &#37;cursor&#37;">
@@ -130,14 +126,12 @@
 <!ENTITY sig2.label "Подпись, но без '--'">
 <!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
 <!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
 <!ENTITY to.label "Инициалы получателя (стандарт)">
 <!ENTITY tofirstname.label "Имя получателя">
 <!ENTITY toname.label "Фамилия получателя">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Отправитель (От)">
 <!ENTITY from_note.label "Если имя отсутствует, будет использован адрес">
 <!ENTITY from.label "Инициалы отправителя (стандарт)">
@@ -181,9 +175,6 @@
 <!ENTITY dateshort.label "Дата / время кратко (01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Часовогй пояс (+0100, +0200, ...)">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Переменные для настраиваемой даты">
 <!ENTITY customdf_note.label "Может быть использована с &#37;X:=sent&#37;">
 <!ENTITY A.label "День недели(Пятница)">
@@ -205,9 +196,6 @@
 <!ENTITY p1.label "д.п.">
 <!ENTITY p2.label "Д.П.">
 <!ENTITY p3.label "ДП">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения.">
 <!ENTITY xsent_long.cap "Пример длинной строки:">

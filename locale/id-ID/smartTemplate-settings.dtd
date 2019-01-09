@@ -1,9 +1,7 @@
-<!-- #### MENU MAIN ITEMS #### -->
 <!ENTITY file.label "Berkas">
 <!ENTITY tools.label "Alat">
 <!ENTITY edit.label "Edit">
 <!ENTITY help.label "Bantuan">
-<!-- #### MENU OWN ITEMS #### -->
 <!ENTITY copy.label "Salin">
 <!ENTITY paste.label "Tempel">
 <!ENTITY insert.label "Sisipkan Variabel">
@@ -17,7 +15,6 @@
 <!ENTITY url.homePage.label "Beranda Pengaya">
 <!ENTITY url.supportPage.label "Halaman Dukungan">
 <!ENTITY url.bugsAndFeaturesPage.label "Laporan Bug / Permintaan Fitur">
-<!-- #### TABS #### -->
 <!ENTITY pref_new.tab "Tulis">
 <!ENTITY pref_rsp.tab "Balas">
 <!ENTITY pref_fwd.tab "Teruskan">
@@ -28,12 +25,10 @@
 <!ENTITY pref_variables.tab "Variabel">
 <!ENTITY pref_examples.tab "Contoh (butuh koneksi internet)">
 <!ENTITY pref_examples.tooltip "Tampilkan contoh template dari http://smarttemplate4.mozdev.org/templates.html. Hanya tersedia dalam mode online.">
-<!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Batal">
 <!ENTITY contribute_button "Kontribusi">
 <!ENTITY button.updateThunderbird "Perbarui Thunderbird!">
-<!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "Konten Email">
 <!ENTITY pref_groupSignatures "Tanda Tangan">
 <!ENTITY pref_groupAdvanced "Fungsi Lanjutan">
@@ -109,7 +104,6 @@
 <!ENTITY pref_stationeryLink_tip "Dapatkan Peralatan...">
 <!ENTITY pref_defaultCharset.label "Charset standar">
 <!ENTITY pref_defaultCharset_tip "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan.">
-<!-- #### ABOUT #### -->
 <!ENTITY about.cap "Tentang SmartTemplate4">
 <!ENTITY creator.label "Pencipta">
 <!ENTITY developer.label "Pengembang">
@@ -118,7 +112,6 @@
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "Kontibutor">
 <!ENTITY about.label "SmartTemplate4 menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua.">
-<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variabel tetap">
 <!ENTITY ownname.label "Nama anda">
 <!ENTITY ownmail.label "Alamat email anda">
@@ -232,12 +225,10 @@
 <!ENTITY html_note.label "Mohon gunakan charset UTF-8 (Unicode) didalam template HTML!">
 <!ENTITY table.cap "Penggunaan variabel">
 <!ENTITY table_note.label "Menggunakan variabel secara tidak benar akan menghasilkan pesan kesalahan di 'Error Console'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Tulis">
 <!ENTITY table_reply.label "Balas">
 <!ENTITY table_fwd.label "Teruskan">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate4 Pro">
 <!ENTITY label.insertLicense "Masukkan Kunci Lisensi Personal anda disini:">
 <!ENTITY label.insertLicense.tooltip "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring.">
