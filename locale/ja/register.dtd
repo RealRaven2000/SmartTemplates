@@ -8,6 +8,7 @@
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro は、有料機能へのアクセス制限をすべて解除します。">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "有料機能についての詳細。">
 <!ENTITY yearlyLicense.usageTerm "ライセンスは、あなたの個人使用に限り、あなたのメールアドレスが登録されます。このメールアドレスを使用するように設定すると、複数のメールクライアントにインストールできます。">
+<!ENTITY yearlyLicense.usageTerm1 "メールアドレスの追加に問題はありません - 個別のライセンスは必要ありません。ご質問がある場合には、サポートタブからウェブサイトを参照ください">
 <!ENTITY domainLicense.email "あなたのドメインライセンスを生成するため、このメールアドレスに問い合わせます (2 営業日以内に確認のメールが送信されます)。次のページでライセンスのドメイン名を入力してください。">
 <!ENTITY domainLicense.header "ライセンス登録済みのドメイン">
 <!ENTITY domainLicense.instruct "このライセンスは、あなたの団体ドメインの鍵になります。ライセンスは、SmartTemplate4 Pro の使用をこのメールドメインが末尾に付くメールアドレスのユーザに許可します。例えば、ドメイン名に 'abc.com' と入力すると、fred@abc.com や martha@abc.com、mike.doe@abc.com などのユーザがライセンスの使用を許可されます。正規ユーザの最大数は、最初の画面で入力した数になります。">

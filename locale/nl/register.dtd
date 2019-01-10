@@ -7,22 +7,23 @@
 <!ENTITY yearlyLicense.title "Jaarlicentie">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro geeft u onbeperkt toegang tot de premiumfuncties.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Meer over premiumfuncties.">
-<!ENTITY yearlyLicense.usageTerm "De licentie geldt voor uw persoonlijke gebruik en is verbonden aan uw e-mailadres. U kunt het bij meerdere e-mailclients installeren, zo lang deze zijn ingesteld om dat adres te gebruiken.">
+<!ENTITY yearlyLicense.usageTerm "De licentie geldt voor uw persoonlijke gebruik en is verbonden aan uw e-mailadres. U kunt de add-on in meerdere e-mailclients installeren, zolang deze zijn ingesteld om dat adres te gebruiken.">
+<!ENTITY yearlyLicense.usageTerm1 "Eventuele extra e-mailadressen zijn geen probleem - deze vereisen geen aparte licentie. In het geval van vragen kunt u mij bereiken via het ondersteuningstabblad.">
 <!ENTITY domainLicense.email "We nemen via dit e-mailadres binnen twee werkdagen contact met u op om uw domeinlicentie te genereren. Geef de domeinnaam voor de licentie in op de volgende pagina.">
-<!ENTITY domainLicense.header "Licentie voor e-mail domein">
-<!ENTITY domainLicense.instruct "De licentie is gebonden aan de domeinnaam van je bedrijf. De licentie laat gebruikers met e-mail adressen onder deze domeinnaam toe om SmartTemplate⁴ Pro te gebruiken. Vb: Geef je domeinnaam 'abc.com' in, dan mogen e-mail gebruikers zoals fred@abc.com, martha@abc.com, mike.doe@abc.com etc. de licentie gebruiken. Het maximale aantal individuele gebruikers is het aantal dat je op het eerste scherm hebt ingegeven.">
-<!ENTITY domainLicense.validate "Zorg ervoor dat je de domeinnaam *exact hetzelfde* ingeeft zoals in de e-mail adressen van uw bedrijf (het deel *na* het @ teken), aangezien het gebruikt zal worden om de e-mail adressen van je gebruikers te autoriseren.">
+<!ENTITY domainLicense.header "Licentie voor e-maildomein">
+<!ENTITY domainLicense.instruct "De licentie is gebonden aan de domeinnaam van uw bedrijf. Via de licentie kunnen gebruikers met e-mailadressen die met deze domeinnaam eindigen SmartTemplate⁴ Pro gebruiken. Als u bijvoorbeeld de domeinnaam ‘abc.com’ invoert, mogen e-mailgebruikers zoals fred@abc.com, martha@abc.com, mike.doe@abc.com etc. de licentie gebruiken. Het maximale aantal individuele gebruikers is het aantal dat u op het eerste scherm hebt ingevoerd.">
+<!ENTITY domainLicense.validate "Zorg ervoor dat u de domeinnaam *exact hetzelfde* invoert zoals in de e-mailadressen van uw bedrijf (het deel *na* het @-teken), aangezien dit zal worden gebruikt om de e-mailadressen van uw gebruikers te autoriseren.">
 <!ENTITY updates.title "Updates">
-<!ENTITY updatesExpiry "SmartTemplate⁴ Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premium-functies blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel.">
+<!ENTITY updatesExpiry "SmartTemplate⁴ Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel.">
 <!ENTITY vouchers.title "Tegoedbonnen">
-<!ENTITY freeLicense "Als u onlangs hebt gedoneerd aan het SmartTemplate⁴-project of een bijdrage hebt geleverd, zoals vertalen of foutreparaties schrijven, dan komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met me op via het ondersteuningstabblad in de SmartTemplate⁴-opties.">
+<!ENTITY freeLicense "Als u onlangs aan het SmartTemplate⁴-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met me op via het ondersteuningstabblad in de SmartTemplate⁴-opties.">
 <!ENTITY account.label "Selecteer account:">
 <!ENTITY email.label "E-mailadres:">
 <!ENTITY firstName.label "Voornaam:">
 <!ENTITY lastName.label "Achternaam:">
-<!ENTITY buyLicense.instruct "Hebt u een licentie voor uzelf nodig? Neem een persoonlijke licentie. Deze is gekoppeld aan uw persoonlijke e-mailadres en kan bij verschillende installaties gebruikt worden.">
+<!ENTITY buyLicense.instruct "Hebt u een licentie voor uzelf nodig? Neem dan een persoonlijke licentie. Deze is gekoppeld aan uw persoonlijke e-mailadres en kan bij verschillende installaties worden gebruikt.">
 <!ENTITY buyPersonalLicense.button "Een persoonlijke licentie kopen!">
 <!ENTITY buyDomainLicense.instruct "Hebt u een licentie nodig voor een bedrijf met meer dan vijf gebruikers? Een domeinlicentie zal goedkoper zijn:">
 <!ENTITY buyDomainLicense.button "Een domeinlicentie kopen">
 <!ENTITY enterLicenseKey.button "Licentiesleutel invullen…">
-<!ENTITY enterLicenseKey.tooltip "Vul de licentiesleutel in die u via e-mail ontvangen hebt.">
+<!ENTITY enterLicenseKey.tooltip "Vul de licentiesleutel in die u via e-mail hebt ontvangen.">

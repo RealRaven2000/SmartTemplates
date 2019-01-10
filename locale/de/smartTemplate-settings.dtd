@@ -181,6 +181,7 @@
 <!ENTITY dateshort.label "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Zeitzone (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, … ">
+<!ENTITY timezone.explain "Bestimmen Sie eine Zeitzone für Datumsvariablen mit dem tz Parameter (GMT, EST, CST, PST usw.)">
 <!ENTITY dateoffset_note.label "Die folgende Funktion addiert einen Zeitabstand zu allen folgenden Zeiten.">
 <!ENTITY calculate.explain "DD=Anzahl der addierten Tage. H=Anzahl addierter Stunden (optional). MM=Anzahl addierter Minuten (optional).">
 <!ENTITY calculate.reset "0 setzt alle nachfolgenden Zeiten zurück.">

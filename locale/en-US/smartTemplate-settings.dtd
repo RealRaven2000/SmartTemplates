@@ -181,6 +181,7 @@
 <!ENTITY dateshort.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Timezone (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
 <!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">

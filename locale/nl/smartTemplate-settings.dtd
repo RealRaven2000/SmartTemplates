@@ -35,23 +35,23 @@
 <!ENTITY button.updateThunderbird "Thunderbird bijwerken!">
 <!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "E-mailinhoud">
-<!ENTITY pref_groupSignatures "Handtekeningen">
+<!ENTITY pref_groupSignatures "Ondertekeningen">
 <!ENTITY pref_groupAdvanced "Geavanceerde functies">
 <!ENTITY pref_groupUI "Gebruikersinterface">
 <!ENTITY pref_groupNameRules "Naamregels">
 <!ENTITY pref_groupTroubleShooting "Probleemoplossing">
 <!ENTITY pref_addSigBreakHTML.label "‘--’ toevoegen in HTML-berichten">
-<!ENTITY pref_addSigBreakHTML.tooltip "Het scheidingsteken -- altijd toevoegen voor de handtekening (in HTML-berichten)">
+<!ENTITY pref_addSigBreakHTML.tooltip "Het scheidingsteken -- altijd toevoegen voor de ondertekening (in HTML-berichten)">
 <!ENTITY pref_addSigBreakPlaintext.label "‘--’ toevoegen in plattetekstberichten">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Het scheidingsteken -- altijd toevoegen voor de handtekening (in plattetekstberichten)">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Het scheidingsteken -- altijd toevoegen voor de ondertekening (in plattetekstberichten)">
 <!ENTITY pref_quoteHeaderBox.label "Aanhalingstekst">
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Sjabloon">
 <!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴-instellingen">
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
-<!ENTITY pref_removeSig.label "Handtekening vervangen bij wijziging van e-mailidentiteit">
-<!ENTITY pref_showStatusIcon.label "Knop weergeven in de statusbalk">
+<!ENTITY pref_removeSig.label "Ondertekening vervangen bij wijzigen van e-mailidentiteit">
+<!ENTITY pref_showStatusIcon.label "Knop weergeven in statusbalk">
 <!ENTITY pref_StatusIcon.IconOnly "Alleen pictogram">
 <!ENTITY pref_StatusIcon.IconText "Pictogram en tekst">
 <!ENTITY pref_StatusIcon.IconHoverText "Tekst bij aanwijzen">
@@ -64,12 +64,12 @@
 <!ENTITY pref_def.label "Algemeen gebruiken">
 <!ENTITY pref_def.cap "Vink ‘Algemeen gebruiken’ uit als u een aangepaste aanhalingskoptekst voor deze account wilt instellen.">
 <!ENTITY pref_newmsg.cap "Nieuw bericht">
-<!ENTITY pref_new.label "Volgend sjabloon toepassen op het nieuwe bericht">
+<!ENTITY pref_new.label "Volgende sjabloon toepassen op het nieuwe bericht">
 <!ENTITY pref_rspmsg.cap "Antwoordbericht">
-<!ENTITY pref_rsp.label "Volgend sjabloon toepassen op antwoordbericht">
+<!ENTITY pref_rsp.label "Volgende sjabloon toepassen op antwoordbericht">
 <!ENTITY pref_rsphead.label "Gebruiken in plaats van standaard aanhalingskoptekst">
 <!ENTITY pref_fwdmsg.cap "Doorgestuurd bericht">
-<!ENTITY pref_fwd.label "Volgend sjabloon toepassen op doorgestuurde berichten">
+<!ENTITY pref_fwd.label "Volgende sjabloon toepassen op doorgestuurde berichten">
 <!ENTITY pref_fwdhead.label "Gebruiken in plaats van standaard aanhalingskoptekst">
 <!ENTITY pref_html.label "HTML gebruiken (bv. &lt;b&gt;vet&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Escape-tekens gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details.">
@@ -81,7 +81,7 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_hideExamples "Tabblad met voorbeelden verbergen">
-<!ENTITY pref_debug_tip "Rechtsklik voor geavanceerde foutopsporingsopties">
+<!ENTITY pref_debug_tip "Klik met de rechtermuisknop voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
 <!ENTITY defaultMimeFormat "Standaard adresnotatie:">
@@ -96,11 +96,11 @@
 <!ENTITY suppressMailtToLink "Toevoegen van koppelingen aan e-mailadressen door mailclients onderdrukken.">
 <!ENTITY capitalizeNames "Namen in hoofdletters">
 <!ENTITY guessNameFromMail "Naamgedeelten uit e-mailadressen raden bij ontbreken">
-<!ENTITY pref_parseSignature "Handtekening verwerken">
-<!ENTITY pref_parseSignature_tip "Variabelen in handtekening vervangen.">
+<!ENTITY pref_parseSignature "Ondertekening verwerken">
+<!ENTITY pref_parseSignature_tip "Variabelen in ondertekening vervangen">
 <!ENTITY pref_cursorInsertSpace "Spatie invoegen om &#37;cursor&#37; te accentueren">
-<!ENTITY pref_sigReplaceBR.label "Regelafbrekingen in handtekening in platte tekst vervangen door &lt;br&gt;">
-<!ENTITY pref_stationerySupport "Ondersteuning Stationery-add-on">
+<!ENTITY pref_sigReplaceBR.label "Regelafbrekingen in ondertekening in platte tekst vervangen door &lt;br&gt;">
+<!ENTITY pref_stationerySupport "Ondersteuning van Stationery-add-on">
 <!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
 <!ENTITY pref_stationeryLink "Stationery-add-on">
@@ -117,15 +117,15 @@
 <!ENTITY localized.label "Vertaler">
 <!ENTITY translatorNickname.label "markh (BabelZilla)">
 <!ENTITY contributor.label "Medewerker">
-<!ENTITY about.label "SmartTemplate⁴ biedt een gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. Individuele sjablonen kunnen worden gebruikt voor een losse account of algemeen.">
+<!ENTITY about.label "SmartTemplate⁴ biedt een makkelijke manier om sjablonen te gebruiken die de standaard aanhalingskoptekst in Thunderbird aanpassen. Individuele sjablonen kunnen zowel voor een losse account als alle accounts worden gemaakt.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Vaste variabelen">
 <!ENTITY ownname.label "Uw naam">
 <!ENTITY ownmail.label "Uw e-mailadres">
 <!ENTITY date.label "Datum en tijd (identiek aan oorspronkelijke mailheader)">
-<!ENTITY tomail.label "E-mailadres ontvanger">
-<!ENTITY frommail.label "E-mailadres afzender">
-<!ENTITY ccmail.label "E-mailadres CC-ontvanger">
+<!ENTITY tomail.label "E-mailadres van ontvanger">
+<!ENTITY frommail.label "E-mailadres van afzender">
+<!ENTITY ccmail.label "E-mailadres van CC-ontvanger">
 <!ENTITY sig.label "Ondertekening uit accountinstellingen">
 <!ENTITY sig2.label "Ondertekening uit accountinstellingen maar zonder ‘--’">
 <!ENTITY fileHTML.label "HTML of platte tekst. Bij ontbreken van een optionele tekenset-parameter wordt UTF-8 aangenomen.">
@@ -135,19 +135,19 @@
 <!ENTITY to_var.cap "Ontvanger (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
 <!ENTITY to.label "Ontvangersnaam (Standaard)">
-<!ENTITY tofirstname.label "Voornaam ontvanger">
-<!ENTITY toname.label "Achternaam ontvanger">
+<!ENTITY tofirstname.label "Voornaam van ontvanger">
+<!ENTITY toname.label "Achternaam van ontvanger">
 <!ENTITY tofwd.label "Gebruik fwd om een aanklikbare ontvanger in doorgestuurde e-mailberichten toe te voegen">
 <!ENTITY from_var.cap "Afzendervariabelen (Van)">
 <!ENTITY from_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
-<!ENTITY from.label "Naam afzender (standaard)">
-<!ENTITY fromfirstname.label "Voornaam afzender">
-<!ENTITY fromname.label "Achternaam afzender">
+<!ENTITY from.label "Naam van afzender (standaard)">
+<!ENTITY fromfirstname.label "Voornaam van afzender">
+<!ENTITY fromname.label "Achternaam van afzender">
 <!ENTITY cc_var.cap "Ontvanger (CC)">
 <!ENTITY cc_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
-<!ENTITY cc.label "Naam ontvanger (Standaard)">
-<!ENTITY ccfirstname.label "Voornaam ontvanger">
-<!ENTITY ccname.label "Achternaam ontvanger">
+<!ENTITY cc.label "Naam van ontvanger (Standaard)">
+<!ENTITY ccfirstname.label "Voornaam van ontvanger">
+<!ENTITY ccname.label "Achternaam van ontvanger">
 <!ENTITY spec_form.cap "Speciale opmaak">
 <!ENTITY specform_note.label "De zin tussen dubbele accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
 <!ENTITY ex_brack.label "Voorbeeld: Aan: Fred Cc: Marie">
@@ -181,6 +181,7 @@
 <!ENTITY dateshort.label "Datum en tijd kort (bv. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Tijdzone (+0100, +0200, …)">
 <!ENTITY tzname.label "GMT, PST, EST, …">
+<!ENTITY timezone.explain "Forceer een specifieke tijdzone voor datumvariabelen door de tz-parameter te vervangen (GMT, EST, CST, PST, etc.).">
 <!ENTITY dateoffset_note.label "De volgende functie voegt een startwaarde toe aan alle volgende weergegeven tijden.">
 <!ENTITY calculate.explain "DD=aantal toe te voegen dagen. H=aantal toe te voegen uren (optioneel). MM=aantal toe te voegen minuten (optioneel)">
 <!ENTITY calculate.reset "Stel het argument op 0 in om te stoppen met aanpassen van data.">
@@ -191,8 +192,8 @@
 <!ENTITY d.label "Dag van de maand (01 tot 31) - incl. nul">
 <!ENTITY e.label "Dag van de maand (1 tot 31)">
 <!ENTITY n.label "Maand (1 tot 12)">
-<!ENTITY B.label "Maand (Januari)">
-<!ENTITY b.label "Maand (Jan)">
+<!ENTITY B.label "Maand (januari)">
+<!ENTITY b.label "Maand (jan)">
 <!ENTITY m.label "Maand (01 tot 12) - met voorafgaande nul">
 <!ENTITY Y.label "Jaar (1970)">
 <!ENTITY M.label "Minuut (00 tot 59)">
@@ -222,16 +223,16 @@
 <!ENTITY datetimezone.label "Tijdzone (+0100, +0200, …)">
 <!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Exporteren/importeren van instellingen en sjablonen">
-<!ENTITY im-ex_note1.label "U kunt uw instellingen en sjablonen verbonden aan elke account exporteren en importeren.">
+<!ENTITY im-ex_note1.label "U kunt uw aan elke account verbonden instellingen en sjablonen exporteren en importeren.">
 <!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate⁴-instellingen.">
 <!ENTITY im-ex_note3.label "Selecteer vervolgens ‘Bestand’ ⇒ ‘Exporteren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
-<!ENTITY im-ex_note4.label "Selecteer om een bestand te importeren de account die u wilt importeren in het dropdownveld van de SmartTemplate⁴-instellingen. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
+<!ENTITY im-ex_note4.label "Selecteer de account die u wilt importeren in het dropdownveld van de SmartTemplate⁴-instellingen om een bestand te importeren. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
 <!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate⁴-bestand (xxx.st4).">
-<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platforms hebben de menubalk in de titelregel in plaats van in het SmartTemplate⁴-optiesvenster. Dit is normaal in deze platforms en kan niet worden gewijzigd.">
+<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platformen hebben de menubalk in de titelregel in plaats van in het SmartTemplate⁴-optiesvenster. Dit is normaal op deze platformen en kan niet worden gewijzigd.">
 <!ENTITY html_note.cap "Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
-<!ENTITY table_note.label "Als een variabele onjuist wordt gebruikt wordt een fout gelogd naar de Foutconsole!">
+<!ENTITY table_note.label "Onjuist gebruik van variabelen zal foutmeldingen in de Foutconsole genereren!">
 <!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabele">
 <!ENTITY table_new.label "Nieuw">
@@ -247,8 +248,8 @@
 <!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate⁴ Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
 <!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
-<!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel is mogelijk voor een andere add-on. Licentiesleutels voor {0} starten met {1}.">
+<!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel dient mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}.">
 <!ENTITY licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
-<!ENTITY premiumConfig "Premiumfuncties">
+<!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">

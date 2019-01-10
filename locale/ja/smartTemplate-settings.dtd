@@ -181,6 +181,7 @@
 <!ENTITY dateshort.label "日時 (短い形式: 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "タイムゾーン (+0100, +0200, ... )">
 <!ENTITY tzname.label "タイムゾーン (GMT, PST, EST, ... )">
+<!ENTITY timezone.explain "tz パラメーター (GMT, JST, EST, CST, PST など) を置換することにより、日時の変数において特定のタイムゾーンを強制します">
 <!ENTITY dateoffset_note.label "表示された日時をどれだけずらすか指定します">
 <!ENTITY calculate.explain "DD=追加する日数 H=追加する時間数 (オプション) MM=追加する分数 (オプション)">
 <!ENTITY calculate.reset "日時の修正を行わない場合は 0 を指定してください">
