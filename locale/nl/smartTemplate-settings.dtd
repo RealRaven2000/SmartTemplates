@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Aanhalingstekst">
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Sjabloon">
-<!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
+<!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;,&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴-instellingen">
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Ondertekening vervangen bij wijzigen van e-mailidentiteit">
@@ -85,7 +85,7 @@
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
 <!ENTITY defaultMimeFormat "Standaard adresnotatie:">
-<!ENTITY defaultMimeFormat_tip "Te gebruiken notatie bij vervanging van platte &#37;to&#37; &#37;from&#37; &#37;cc&#37; adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond.">
+<!ENTITY defaultMimeFormat_tip "Te gebruiken notatie bij vervanging van platte &#37;to&#37;/&#37;from&#37;/&#37;cc&#37;-adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond.">
 <!ENTITY pref_addressDelimiter "Meerdere geadresseerden scheiden door:">
 <!ENTITY pref_addressDelimiter_tip "Scheidingsteken tussen meerdere geadresseerden. Outlook gebruikt puntkomma (;) Standaard voor Thunderbird is komma (,)">
 <!ENTITY resolveNamesFromAB "Namen uit adresboeken omzetten">
@@ -108,7 +108,7 @@
 <!ENTITY pref_forceParagraph_tip "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de Enter-toets voor Opstellen in Thunderbird wordt ook aanbevolen.">
 <!ENTITY pref_stationeryLink_tip "Stationery downloaden…">
 <!ENTITY pref_defaultCharset.label "Standaardtekenset">
-<!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald.">
+<!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Over SmartTemplate⁴">
 <!ENTITY creator.label "Bedenker">
@@ -170,7 +170,7 @@
 <!ENTITY header.append.to "e-mailadres aan ontvangerslijst toevoegen">
 <!ENTITY stringmanip_function.cap "Stringmanipulatie">
 <!ENTITY stringmanip_function.explain "Deze functies kunnen worden gebruikt om tekst in het e-mailsjabloon of de aanhalingskoptekst te verwijderen of te vervangen.">
-<!ENTITY deleteText "Tekst uit de aanhaling verwijderen, bv. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY deleteText "Tekst uit de aanhaling verwijderen, bv. deleteText(‘via Paypal’)">
 <!ENTITY replaceText "Tekst door iets anders vervangen">
 <!ENTITY matchTextFromBody "Een RexEx-patroon in een aangehaald e-mailbericht zoeken en invoegen op de functielocatie.">
 <!ENTITY matchTextFromSubject "Een RexEx-patroon in het onderwerp zoeken en invoegen op de functielocatie.">

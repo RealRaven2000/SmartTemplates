@@ -180,6 +180,7 @@
 <!ENTITY dateshort.label "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Tidszon (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Tvinga en specifik tidszon för datumvariabler genom att ersätta parametern tz (GMT, EST, CST, PST, etc.)">
 <!ENTITY dateoffset_note.label "Följande funktion lägger till ett offset till alla följande synliga timers.">
 <!ENTITY calculate.explain "DD=antal dagar att lägga till. H=antal timmar att lägga till (valfritt). MM=minuter att lägga till (valfritt)">
 <!ENTITY calculate.reset "Ändra argumentet till 0 för att sluta modifiera några datum.">
@@ -226,7 +227,7 @@
 <!ENTITY im-ex_note3.label "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator.">
 <!ENTITY im-ex_note4.label "För att importera en fil, välj kontot du vill importera i SmartTemplate⁴-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet.">
 <!ENTITY im-ex_note5.label "Välj den SmartTemplate⁴-fil (xxx.st4) du vill importera.">
-<!ENTITY im-ex_note6.label "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplate4s alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras.">
+<!ENTITY im-ex_note6.label "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplate⁴s alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras.">
 <!ENTITY html_note.cap "Kommentarer rörande HTML-mallar">
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
