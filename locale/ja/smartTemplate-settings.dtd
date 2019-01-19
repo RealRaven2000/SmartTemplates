@@ -245,7 +245,7 @@
 <!ENTITY button.pasteLicense "貼り付け">
 <!ENTITY button.validateLicense "認証">
 <!ENTITY label.licenseValid "ライセンスの有効期限:">
-<!ENTITY licenseValidation.passed "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
+<!ENTITY licenseValidation.passed "SmartTemplate⁴ Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
 <!ENTITY licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
 <!ENTITY licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
 <!ENTITY licenseValidation.invalidAddon "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。">
