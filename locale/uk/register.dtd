@@ -8,6 +8,7 @@
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro дає вам повний необмежений доступ до функцій преміум-класу.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Докладніше про преміум-функції.">
 <!ENTITY yearlyLicense.usageTerm "Ліцензія призначена для особистого користування та прив'язана до вашої електронної адреси. Ви можете встановити його на декількох клієнтах електронної пошти, якщо вони налаштовані на використання цієї адреси.">
+<!ENTITY yearlyLicense.usageTerm1 "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab.">
 <!ENTITY domainLicense.email "Ми зв'яжемося з вами за допомогою цієї електронної адреси, щоб створити для домену ліцензію; будь ласка, зачекайте протягом двох робочих днів, щоб ми могли зв'язатися з Вами. Введіть ім'я ліцензії домена на наступній сторінці.">
 <!ENTITY domainLicense.header "Ліцензійний Email Домен">
 <!ENTITY domainLicense.instruct "Ліцензія додається до домену вашої компанії. Ліцензія дозволить користувачам з адресами електронної пошти, що закінчуються цим доменом електронної пошти, використовувати SmartTemplate⁴ Pro. Наприклад, якщо ви вводите доменне ім'я &quot;abc.com&quot;, тоді користувачі електронної пошти, такі як fred@abc.com, martha@abc.com, mike.doe@abc.com тощо, можуть використовувати ліцензію. Максимальна кількість дійсних окремих користувачів - це номер, який ви ввели на початковому екрані.">

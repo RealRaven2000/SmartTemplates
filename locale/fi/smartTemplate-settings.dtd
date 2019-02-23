@@ -84,14 +84,18 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
 <!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
 <!ENTITY resolveNamesFromAB_tip "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP.">
 <!ENTITY resolveNamesFromABNick "Korvaa etunimi lempinimellä, jos sellainen on annettu">
+<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Poista sähköpostiosoite, ellei parametria ei ole eritelty">
 <!ENTITY suppressMailtToLink "Ehkäise sähköpostisovellusten lisätä linkkejä sähköpostiosoitteisiin.">
 <!ENTITY capitalizeNames "Nimet isolla alkukirjaimella">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Allekirjoitus">
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_cursorInsertSpace "Lisää väli korostamaan &#37;osoitin&#37;">
@@ -126,12 +130,14 @@
 <!ENTITY sig2.label "Allekirjoitus (TB:n tilitiedoista ilman '--')">
 <!ENTITY fileHTML.label "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta.">
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
+<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
 <!ENTITY tofirstname.label "Vastaanottaja etunimi">
 <!ENTITY toname.label "Vastaanottajan nimi">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Lähettäjän muuttujat (From-kenttä)">
 <!ENTITY from_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY from.label "Lähettäjän nimi (oletus)">
@@ -175,6 +181,10 @@
 <!ENTITY dateshort.label "Päiväys / Aika lyhyt muoto (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Aikavyöhyke (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
+<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
+<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
+<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
+<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">
@@ -196,6 +206,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
 <!ENTITY xsent_long.cap "Esimerkki pitkästä muotoilusta:">
