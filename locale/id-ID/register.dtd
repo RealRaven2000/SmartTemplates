@@ -8,6 +8,7 @@
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro memberi Anda akses tak terbatas ke fitur premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Info tentang fitur premium.">
 <!ENTITY yearlyLicense.usageTerm "Lisensi ini untuk penggunaan pribadi Anda dan terkait dengan alamat email Anda. Anda dapat menginstalnya di beberapa klien email selama mereka dikonfigurasi untuk menggunakan alamat itu.">
+<!ENTITY yearlyLicense.usageTerm1 "Setiap alamat email tambahan tidak masalah - mereka tidak memerlukan lisensi terpisah. Jika ada pertanyaan, Anda dapat menghubungi saya melalui tab dukungan.">
 <!ENTITY domainLicense.email "Kami akan menghubungi Anda menggunakan alamat email ini untuk menghasilkan lisensi domain Anda; mohon tunggu dua hari kerja bagi kami untuk berhubungan. Masukkan nama domain untuk lisensi di halaman berikutnya.">
 <!ENTITY domainLicense.header "Domain Email Berlisensi">
 <!ENTITY domainLicense.instruct "Lisensi ini dikunci untuk domain perusahaan Anda. Lisensi akan memungkinkan pengguna dengan alamat email berakhiran domain email ini untuk menggunakan SmartTemplate⁴ Pro. Misalnya. jika Anda memasukkan nama domain 'abc.com' maka pengguna email seperti fred@abc.com, martha@abc.com, mike.doe@abc.com, dll. diizinkan untuk menggunakan lisensi. Jumlah maksimum pengguna individu yang valid adalah nomor yang Anda masukkan pada layar awal.">

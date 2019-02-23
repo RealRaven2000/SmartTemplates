@@ -32,6 +32,7 @@
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Zrušit">
 <!ENTITY contribute_button "Přispět">
+<!ENTITY button.updateThunderbird "Aktualizuj Thunderbird!">
 <!-- #### GUI #### -->
 <!ENTITY pref_groupMailContent "Obsah e-mailu">
 <!ENTITY pref_groupSignatures "Podpisy">
