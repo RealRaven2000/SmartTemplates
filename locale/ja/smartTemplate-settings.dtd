@@ -108,7 +108,7 @@
 <!ENTITY pref_forceParagraph_tip "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します">
 <!ENTITY pref_stationeryLink_tip "Stationery アドオンを入手します。">
 <!ENTITY pref_defaultCharset.label "既定の文字エンコーディング">
-<!ENTITY pref_defaultCharset_tip "ヘッダの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
+<!ENTITY pref_defaultCharset_tip "ヘッダーの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate⁴ について">
 <!ENTITY creator.label "作者">
@@ -117,12 +117,12 @@
 <!ENTITY localized.label "翻訳者">
 <!ENTITY translatorNickname.label "Cai (BabelZilla)">
 <!ENTITY contributor.label "貢献者">
-<!ENTITY about.label "Thunderbird の既定の引用ヘッダをカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。">
+<!ENTITY about.label "Thunderbird の既定の引用ヘッダーをカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "固定変数">
 <!ENTITY ownname.label "あなたの名前">
 <!ENTITY ownmail.label "あなたのメールアドレス">
-<!ENTITY date.label "送信日時 (メールヘッダに記載されている形式)">
+<!ENTITY date.label "送信日時 (メールヘッダーに記載されている形式)">
 <!ENTITY tomail.label "受信者のメールアドレス">
 <!ENTITY frommail.label "差出人のメールアドレス">
 <!ENTITY ccmail.label "CC 受信者のメールアドレス">
@@ -159,9 +159,9 @@
 <!ENTITY messid.label "Message ID">
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
-<!ENTITY any.label "任意のヘッダ行">
+<!ENTITY any.label "任意のヘッダー行">
 <!ENTITY header_function.cap "メールヘッダーの変更">
-<!ENTITY header_function.explain "メールヘッダの内容を変更することができます。参照:">
+<!ENTITY header_function.explain "メールヘッダーの内容を変更することができます。参照:">
 <!ENTITY header_function.scope "以下の変数が利用可能です:">
 <!ENTITY header.set.subject "件名をテキストで置換する">
 <!ENTITY header.prefix.subject "件名の前にテキストを追記する">
@@ -169,7 +169,7 @@
 <!ENTITY header.set.to "受信者をメールアドレスで置換する">
 <!ENTITY header.append.to "メールアドレスを受信者に追加する">
 <!ENTITY stringmanip_function.cap "文字列操作">
-<!ENTITY stringmanip_function.explain "これらの関数は、テンプレートおよび返信ヘッダにおいて、文字列の消去や置換に用いることができます">
+<!ENTITY stringmanip_function.explain "これらの関数は、テンプレートおよび返信ヘッダーにおいて、文字列の消去や置換に用いることができます">
 <!ENTITY deleteText "引用部から特定の文字列を消去します 例: deleteText(&quot;via Paypal&quot;)">
 <!ENTITY replaceText "特定の文字列を異なる文字列に置換します">
 <!ENTITY matchTextFromBody "引用部から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
@@ -245,11 +245,12 @@
 <!ENTITY button.pasteLicense "貼り付け">
 <!ENTITY button.validateLicense "認証">
 <!ENTITY label.licenseValid "ライセンスの有効期限:">
-<!ENTITY licenseValidation.passed "SmartTemplate⁴ Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。">
+<!ENTITY licenseValidation.passed "SmartTemplate⁴ Pro のご登録ありがとうございます！ すべてのプレミアム機能がロック解除されました。">
+<!ENTITY licenseValidation.standard "SmartTemplate⁴ Standard のご登録ありがとうございます！ プレミアム機能のテストが行えるようになりました。">
 <!ENTITY licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
 <!ENTITY licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
 <!ENTITY licenseValidation.invalidAddon "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。">
 <!ENTITY licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
-<!ENTITY premiumConfig "有料機能">
-<!ENTITY label.premiumFeaturesSite "有料機能についての詳細はウェブサイトをご覧ください">
+<!ENTITY premiumConfig "プレミアム機能">
+<!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください">
