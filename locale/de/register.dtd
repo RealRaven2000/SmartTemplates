@@ -4,6 +4,7 @@
 <!ENTITY getSmartTemplate4 "Holen Sie sich SmartTemplate⁴ Pro">
 <!ENTITY intro "Eine Jahreslizenz für SmartTemplate⁴ Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Produkt weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplate⁴ weiter fantastisch!">
 <!ENTITY testDrive "Premium Funktionen können in der Gratisversion getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang.">
+<!ENTITY testDriveS "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang.">
 <!ENTITY yearlyLicense.title "Jahreslizenz">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro bietet Ihnen vollen Zugriff auf alle Premium Funktionen.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Weitere Informationen über Premium Funktionen.">
@@ -21,9 +22,11 @@
 <!ENTITY email.label "Email:">
 <!ENTITY firstName.label "Vorname:">
 <!ENTITY lastName.label "Nachname:">
-<!ENTITY buyLicense.instruct "Sie benutzen SmartTemplate⁴ persönlich? Holen Sie sich eine Einzelplatz-Lizenz. Diese Lizenz ist an Ihre persönliche Email Adressen gebunden. Sie kann auf mehreren Installationen verwendet werden.">
-<!ENTITY buyPersonalLicense.button "Einzel-Lizenz erwerben!">
-<!ENTITY buyDomainLicense.instruct "Sie benötigen Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier billiger:">
+<!ENTITY buyPremiumLicense.instruct "Sie wollen alle Premium Funktionen von SmartTemplate⁴ unbegrenzt nutzen? Holen Sie sich eine SmartTemplate⁴ Pro Einzelplatz-Lizenz. Diese Lizenz ist an Ihre persönliche Email Adressen gebunden. Sie kann auf mehreren Installationen verwendet werden.">
+<!ENTITY buyPremiumLicense.button "Pro-Lizenz erwerben!">
+<!ENTITY buyStandardLicense.instruct "Sie wollen nur die Standardfunktionen? Kaufen sie jetzt eine verbilligte Standard-Lizenz und testen Sie weiter die Premium Funktionen.">
+<!ENTITY buyStandardLicense.button "Standard Lizenz erwerben!">
+<!ENTITY buyDomainLicense.instruct "Sie benötigen Pro-Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier billiger:">
 <!ENTITY buyDomainLicense.button "Domänen Lizenz erwerben">
 <!ENTITY enterLicenseKey.button "Lizenzschlüssel eingeben…">
 <!ENTITY enterLicenseKey.tooltip "Geben Sie den Lizenzschlüssel aus der Registrierungs-Mail ein.">

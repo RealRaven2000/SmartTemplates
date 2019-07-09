@@ -1,8 +1,3 @@
 <!-- #### OVERLAYS #### -->
 <!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
 <!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴ - ustawienia">
-<!ENTITY smartTemplate4.cleandeferred.label "Clean up!">
-<!ENTITY smartTemplate4.cleandeferred.tooltip "Clean up all SmartTemplate variables">
-<!ENTITY smartTemplate4.deferredcontext.update "Update SmartTemplate⁴ contents">
-<!ENTITY smartTemplate4.deferredcontext.cleanup "Update and Replace with Content">
-<!ENTITY smartTemplate4.deferredcontext.delete "Remove SmartTemplate⁴ variable">

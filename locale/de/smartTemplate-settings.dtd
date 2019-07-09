@@ -245,7 +245,8 @@
 <!ENTITY button.pasteLicense "einfügen">
 <!ENTITY button.validateLicense "bestätigen">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
-<!ENTITY licenseValidation.passed "Vielen Dank für's Registrieren von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.passed "Danke für die Registering von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.standard "Danke für die Registering von SmartTemplate⁴ Standard - damit Sie helfen dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
 <!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY licenseValidation.invalidAddon "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}.">

@@ -8,7 +8,6 @@
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro omogoča poln in neomejen dostop do lastnosti premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Več o lastnostih premium.">
 <!ENTITY yearlyLicense.usageTerm "Dovoljenje je za osebno uporabo in je vezano na vaš e-poštni naslov. Lahko ga namestite na več odjemalcev, dokler so le-ti nastavljeni na uporabo tega naslova.">
-<!ENTITY yearlyLicense.usageTerm1 "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab.">
 <!ENTITY domainLicense.email "Za ustvarjanje domenskega dovoljenja vam bomo pisali na ta e-poštni naslov. Prosimo, dovolite nam dva delovna dneva za stik z vami. Na naslednji strani vnesite ime domene dovoljenja.">
 <!ENTITY domainLicense.header "E-poštna domena dovoljenja">
 <!ENTITY domainLicense.instruct "Dovoljenje je zaklenjeno na domeno vašega podjetja. To bo uporabnikom z e-poštnimi naslovi, ki se končajo na to domeno, omogočalo uporabo dodatka SmartTemplate⁴ Pro. Npr., če vnesete ime domene 'abc.com', potem bodo uporabniki kot so fredi@abc.com, marta@abc.com, miha.novak@abc.com itd., lahko uporabljali dovoljenje. Največje število veljavnih posameznih uporabnikov je število, ki ste ga vnesli na začetnem zaslonu.">

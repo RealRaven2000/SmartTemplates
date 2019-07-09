@@ -84,18 +84,14 @@
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Oddzielaj wielu korespondentów za pomocą:">
 <!ENTITY pref_addressDelimiter_tip "Separator pomiędzy wieloma korespondentami.W Outlooku jest to średnik (;), a w Thunderbirdzie przecinek (,).">
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
 <!ENTITY suppressMailtToLink "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
 <!ENTITY pref_cursorInsertSpace "Wstaw spacje do wyróżnienia &#37;cursor&#37;">
@@ -130,14 +126,12 @@
 <!ENTITY sig2.label "z ustawień konta ale bez „--”">
 <!ENTITY fileHTML.label "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków..">
 <!ENTITY fileImage.label "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Określ pozycję kursora">
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">
 <!ENTITY tofirstname.label "Imię odbiorcy">
 <!ENTITY toname.label "Nazwisko odbiorcy">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Zmienne nadawcy (Nadawca:)">
 <!ENTITY from_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY from.label "Nazwa nadawcy (domyślna)">
@@ -181,10 +175,6 @@
 <!ENTITY dateshort.label "Data i czas (krótki format, np. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Strefa czasowa (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, … ">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -206,9 +196,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
 <!ENTITY xsent_long.cap "Przykład długiego formatu:">
@@ -238,8 +225,6 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
@@ -252,4 +237,3 @@
 <!ENTITY licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

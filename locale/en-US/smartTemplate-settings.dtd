@@ -246,6 +246,7 @@
 <!ENTITY button.validateLicense "validate">
 <!ENTITY label.licenseValid "Your license is valid until:">
 <!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate⁴ Pro! All premium features are now unlocked.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
 <!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
