@@ -1,8 +1,8 @@
-<!ENTITY licenseWindow.title "SmartTemplate⁴ Pro 授权">
+<!ENTITY licenseWindow.title "SmartTemplate⁴ 授权">
 <!ENTITY label.licenseValid "您的授权截止时间为：">
 <!ENTITY label.haveLicense "已有授权？">
-<!ENTITY getSmartTemplate4 "获取 SmartTemplate⁴ Pro">
-<!ENTITY intro "SmartTemplate⁴ Pro 的年度授权将为您提供一整年的全部高级功能。它可以让我们继续支持和改进产品，使其更加强大。">
+<!ENTITY getSmartTemplate4 "获取 SmartTemplate⁴">
+<!ENTITY intro "SmartTemplate⁴ 的年度授权将为您提供一整年的全部高级功能。它可以让我们继续支持和改进产品，使其更加强大。">
 <!ENTITY testDrive "您可以用免费版本试用一些高级功能，但部分可能受到限制。">
 <!ENTITY yearlyLicense.title "年度授权">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro 可以让您不受限制的使用高级功能。">
