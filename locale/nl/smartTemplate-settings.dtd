@@ -246,6 +246,7 @@
 <!ENTITY button.validateLicense "valideren">
 <!ENTITY label.licenseValid "Uw licentie is geldig tot:">
 <!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate⁴ Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
+<!ENTITY licenseValidation.standard "Bedankt voor het registreren van SmartTemplate⁴ Standaard – u helpt hier de add-on enorm mee! U kunt nu ook alle premiumfuncties uitproberen.">
 <!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel dient mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}.">

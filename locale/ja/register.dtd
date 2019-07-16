@@ -2,8 +2,8 @@
 <!ENTITY label.licenseValid "ライセンスの有効期限:">
 <!ENTITY label.haveLicense "ライセンス登録はお済みですか？">
 <!ENTITY getSmartTemplate4 "SmartTemplate⁴ ライセンスを取得する">
+<!ENTITY licenseTypes "SmartTemplate⁴ には、標準とプロの 2 つのライセンスがあります。Thunderbird プラットフォームの変更への対応のため、継続的な支援が必要です。大幅な変更は 1 年ごととなるため、ライセンスの有効期間も 1 年間となります。">
 <!ENTITY intro "SmartTemplate⁴ Pro の年間ライセンスは、すべてのプレミアム機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。">
-<!ENTITY testDrive "無料バージョンでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。">
 <!ENTITY testDriveS "標準ライセンスでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。">
 <!ENTITY yearlyLicense.title "年間ライセンス">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro は、プレミアム機能へのアクセス制限をすべて解除します。">

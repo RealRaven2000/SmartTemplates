@@ -2,8 +2,9 @@
 <!ENTITY label.licenseValid "Uw licentie is geldig tot:">
 <!ENTITY label.haveLicense "Hebt u al een licentie?">
 <!ENTITY getSmartTemplate4 "Licentie voor SmartTemplate⁴ verkrijgen">
+<!ENTITY licenseTypes "Vanaf nu biedt SmartTemplate⁴ twee licenties, Standaard en Pro; deze zijn nodig om bij te blijven bij de wijzigingen aan het Thunderbird-platform en innovaties en reparaties aan de add-on te financieren. Aangezien grote wijzigingen in een jaarlijkse cyclus worden doorgevoerd, zal de licentie ook een geldigheidsduur van een jaar hebben.">
 <!ENTITY intro "Een jaarlicentie voor SmartTemplate⁴ Pro geeft u een jaar lang alle premiumfuncties. U stelt ons er ook mee in staat het product verder te ondersteunen en laten groeien en het te veranderen in iets dat nog geweldiger is.">
-<!ENTITY testDrive "U kunt de premiumfuncties uitproberen met de gratis versie, maar ze zijn mogelijk enigszins beperkt.">
+<!ENTITY testDriveS "U kunt de premiumfuncties met een standaardlicentie uitproberen, maar ze zijn mogelijk enigszins beperkt.">
 <!ENTITY yearlyLicense.title "Jaarlicentie">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro geeft u onbeperkt toegang tot de premiumfuncties.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Meer over premiumfuncties.">
@@ -21,8 +22,10 @@
 <!ENTITY email.label "E-mailadres:">
 <!ENTITY firstName.label "Voornaam:">
 <!ENTITY lastName.label "Achternaam:">
-<!ENTITY buyLicense.instruct "Hebt u een licentie voor uzelf nodig? Neem dan een persoonlijke licentie. Deze is gekoppeld aan uw persoonlijke e-mailadres en kan bij verschillende installaties worden gebruikt.">
-<!ENTITY buyPersonalLicense.button "Een persoonlijke licentie kopen!">
+<!ENTITY buyPremiumLicense.instruct "Wilt u alle premiumfuncties zonder beperkingen gebruiken? Koop dan een SmartTemplate⁴ Pro-licentie. Deze is verbonden aan uw persoonlijke e-mailadres en kan op meerdere plaatsen worden gebruikt.">
+<!ENTITY buyPremiumLicense.button "Pro-licentie kopen!">
+<!ENTITY buyStandardLicense.instruct "Kunt u zich de premiumfuncties niet veroorloven? Koop dan een betaalbare standaardlicentie en blijf de premiumfuncties uitproberen.">
+<!ENTITY buyStandardLicense.button "Standaardlicentie kopen!">
 <!ENTITY buyDomainLicense.instruct "Hebt u een licentie nodig voor een bedrijf met meer dan vijf gebruikers? Een domeinlicentie zal goedkoper zijn:">
 <!ENTITY buyDomainLicense.button "Een domeinlicentie kopen">
 <!ENTITY enterLicenseKey.button "Licentiesleutel invullen…">

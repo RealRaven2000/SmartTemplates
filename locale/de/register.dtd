@@ -2,20 +2,20 @@
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
 <!ENTITY label.haveLicense "Sie haben bereits eine Lizenz?">
 <!ENTITY getSmartTemplate4 "Holen Sie sich SmartTemplate⁴ Pro">
-<!ENTITY intro "Eine Jahreslizenz für SmartTemplate⁴ Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Produkt weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplate⁴ weiter fantastisch!">
-<!ENTITY testDrive "Premium Funktionen können in der Gratisversion getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang.">
+<!ENTITY licenseTypes "In Zukunft bietet SmartTemplate⁴ zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und die Reparaturen und Innovationen zu finanzieren. Da Funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig.">
+<!ENTITY intro "Eine Jahreslizenz für SmartTemplate⁴ Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Add-on weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplate⁴ weiter fantastisch!">
 <!ENTITY testDriveS "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang.">
 <!ENTITY yearlyLicense.title "Jahreslizenz">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro bietet Ihnen vollen Zugriff auf alle Premium Funktionen.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Weitere Informationen über Premium Funktionen.">
-<!ENTITY yearlyLicense.usageTerm "Die Lizenz ist für persönliche Nutzung (eine Person) und an Ihre Email Adresse gebunden. Sie kann auf mehreren Mailprogrammen installiert werden so lange diese auch die Mail Adresse nutzen.">
+<!ENTITY yearlyLicense.usageTerm "Die Lizenz ist für persönliche Nutzung (eine Person) und an Ihre Email Adresse gebunden. Sie kann auf mehreren Mailprogrammen installiert werden so lange diese auch die lizenzierte Mail Adresse nutzen.">
 <!ENTITY yearlyLicense.usageTerm1 "Zusätzliche Email Adressen sind kein Problem - diese benötigen keine separate Lizenz. Bei Fragen kontaktieren Sie mich gerne über den Support Reiter.">
 <!ENTITY domainLicense.email "Wir kontaktieren Sie über diese Email Adresse um Ihre Domänen-Lizenz erzeugen; bitte erlauben Sie dafür 2 Werktage. Sie können den Domänen-Namen im nächsten Schritt eingeben.">
 <!ENTITY domainLicense.header "Lizenzierte Email Domäne">
 <!ENTITY domainLicense.instruct "Der Lizenzschlüssel enthält die Domäne Ihrer Firma. Die Lizenz erlaubt Benutzern mit Email-Adressen welche mit diesem Namen enden die Benutzung von SmartTemplate⁴ Pro. Wenn sie z.B. den Domänennamen 'abc.com' eingeben, dann können Benutzer wie fred@abc.com, martina@abc.com, michael.schulz@abc.com usw. die Lizenz nutzen. Die maximale Anzahl individueller Benutzer entspricht der Nummer die im ersten Schritt eingegeben wurde.">
 <!ENTITY domainLicense.validate "Bitte stellen Sie sicher, daß der Domänenname *exakt* der von den Email Adressen Ihrer Firma entspricht (der text *nach* dem @ Symbol), denn dieser wird bei der Autorisierung Ihrer Mitarbeiter benutzt.">
 <!ENTITY updates.title "Aktualisierung">
-<!ENTITY updatesExpiry "SmartTemplate⁴ Pro wird automatisch über addons.thunderbird.net aktualisiert. Nach dem Ablauf des Jahres können Sie die Lizenz erneuern oder die Premium Funktionen unter denselben Bedingungen wie Gratisnutzer nutzen. 'Premium Exklusivfunktionen' setzen allerdings eine gültige Lizenz voraus.">
+<!ENTITY updatesExpiry "SmartTemplate⁴ Pro wird automatisch über addons.thunderbird.net aktualisiert. Nach dem Ablauf des Jahres können Sie die Lizenz erneuern oder die Premium Funktionen unter denselben Bedingungen wie Standard Benutzer testen. 'Premium Exklusivfunktionen' setzen allerdings eine gültige Lizenz voraus.">
 <!ENTITY vouchers.title "Gutscheine">
 <!ENTITY freeLicense "Falls Sie in letzter Zeit dem SmartTemplate⁴ Projekt gespendet oder mit Arbeit beigetragen haben, z.B. durch Übersetzung oder Softwarepatches, können Sie für eine Gratislizenz qualifiziert sein. Kontaktieren Sie mich einfach vom 'Support' Reiter im SmartTemplate⁴ Optionen Dialog.">
 <!ENTITY account.label "Konto wählen:">
@@ -26,7 +26,7 @@
 <!ENTITY buyPremiumLicense.button "Pro-Lizenz erwerben!">
 <!ENTITY buyStandardLicense.instruct "Sie wollen nur die Standardfunktionen? Kaufen sie jetzt eine verbilligte Standard-Lizenz und testen Sie weiter die Premium Funktionen.">
 <!ENTITY buyStandardLicense.button "Standard Lizenz erwerben!">
-<!ENTITY buyDomainLicense.instruct "Sie benötigen Pro-Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier billiger:">
+<!ENTITY buyDomainLicense.instruct "Sie benötigen Pro-Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier günstiger:">
 <!ENTITY buyDomainLicense.button "Domänen Lizenz erwerben">
 <!ENTITY enterLicenseKey.button "Lizenzschlüssel eingeben…">
 <!ENTITY enterLicenseKey.tooltip "Geben Sie den Lizenzschlüssel aus der Registrierungs-Mail ein.">
