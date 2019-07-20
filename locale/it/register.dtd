@@ -2,8 +2,10 @@
 <!ENTITY label.licenseValid "La licenza è valida fino a:">
 <!ENTITY label.haveLicense "Avete già una licenza?">
 <!ENTITY getSmartTemplate4 "Ottieni la licenza SmartTemplate⁴">
+<!ENTITY licenseTypes "D'ora in poi SmartTemplate4 utilizzerà due tipi di licenza: Standard e Pro; ciò si rende necessario per mantenere aggiornato il prodotto in funzione delle modifiche di Thunderbird, per finanziare le novità che verranno aggiunte e per correggere i bugs di questa estensione. Poiché gli aggiornamenti rilevanti sono programmati con ciclo annuale, anche la licenza ha validità di un anno.">
 <!ENTITY intro "Una licenza annuale di SmartTemplate⁴ Pro consente l'accesso a tutte le caratteristiche della versione Premium per un periodo di un anno. Inoltre favorisce il supporto e l'ulteriore sviluppo del prodotto, così da renderlo ancor più completo.">
-<!ENTITY testDrive "È possibile provare le caratteristiche della versione Premium usando la versione gratuita di SmartTemplate⁴,. Le funzionalità però sono leggermente ridotte.">
+<!ENTITY testDrive "È possibile provare le caratteristiche della versione Premium usando la versione gratuita di SmartTemplate⁴. Le funzionalità però sono leggermente ridotte.">
+<!ENTITY testDriveS "È possibile testare le caratteristiche 'Premium' sottoscrivendo la licenza 'standard', con delle piccole restrizioni.">
 <!ENTITY yearlyLicense.title "Licenza annuale">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro consente un accesso completo alle caratteristiche della versione Premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Informazioni addizionali sulle caratteristiche della versione Premium.">
@@ -21,8 +23,12 @@
 <!ENTITY email.label "Email:">
 <!ENTITY firstName.label "Nome:">
 <!ENTITY lastName.label "Cognome:">
+<!ENTITY buyPremiumLicense.instruct "Si vogliono usare tutte le caratteristiche Premium senza restrizioni? Si acquisti una licenza Pro di SmartTemplate4 che si lega al vostro indirizzo personale di email potendo essere utilizzata in più installazioni.">
+<!ENTITY buyPremiumLicense.button "Acquista una licenza Pro!">
+<!ENTITY buyStandardLicense.instruct "Non ci si può permettere le caratteristiche Premium? Si acquisti una licenza Standard in modo di avere comunque la possibilità di testarele caratteristiche Premium">
 <!ENTITY buyLicense.instruct "Avete bisogno di una licenza solo per voi stessi? Acquisite una licenza per uso personale. Essa viene collegata ad un vostro account di posta elettronica e può essere utilizzata per installazioni multiple.">
 <!ENTITY buyPersonalLicense.button "Acquista una licenza personale">
+<!ENTITY buyStandardLicense.button "Acquista una licenza Standard!">
 <!ENTITY buyDomainLicense.instruct "Avete bisogno di una licenza per un'azienda con più di cinque utilizzatori? Se acquisite una licenza di dominio ciò risulterà più conveniente:">
 <!ENTITY buyDomainLicense.button "Acquista una licenza di dominio">
 <!ENTITY enterLicenseKey.button "Inserire la chiave della licenza…">

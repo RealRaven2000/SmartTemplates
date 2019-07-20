@@ -136,6 +136,7 @@
 <!ENTITY to.label "Nome del destinatario (predefinito)">
 <!ENTITY tofirstname.label "Cognome del destinatario">
 <!ENTITY toname.label "Nome del destinatario">
+<!ENTITY tofwd.label "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate">
 <!ENTITY from_var.cap "Variabili del mittente (Da)">
 <!ENTITY from_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY from.label "Nome del mittente (predefinito)">
@@ -179,6 +180,7 @@
 <!ENTITY dateshort.label "Data/ora abbreviata (es: 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuso orario (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Forza il fuso orario specifico per le variabili di data sostituendo il parametro tz (GMT, EST, CST, PST ecc.)">
 <!ENTITY dateoffset_note.label "Questa funzione aggiunge un intervallo temporale a tutte le ore visualizzate">
 <!ENTITY calculate.explain "DD=numero di giorni da aggiungere. H=numero di ore da aggiungere (opzionale). MM=minuti da aggiungere (opzionale) ">
 <!ENTITY calculate.reset "Imposta il parametro a 0 per interrompere la modifica delle ore.">
@@ -203,6 +205,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Funzione per l'inserimento del tempo corrente (campo cliccabile).">
+<!ENTITY dateformat.explain "La maggior parte delle variabili temporali di cui sopra possono essere utilizzate nella stringa di parametri omettendo &#37;. Guarda anche:">
+<!ENTITY dateformat.example "Esempio:">
 <!ENTITY var_xsent.cap "Variabile &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile &#37;X:=sent&#37;#37; vengono utilizzati i valori di quando il messaggio è stato inviato">
 <!ENTITY xsent_long.cap "Esempio di Longstring">
@@ -240,9 +245,11 @@
 <!ENTITY button.validateLicense "Convalida">
 <!ENTITY label.licenseValid "La licenza è valida fino a:">
 <!ENTITY licenseValidation.passed "Grazie per aver registrato SmartTemplate⁴ Pro. Tutte le caratteristiche della versione Premium sono ora disponibili.">
+<!ENTITY licenseValidation.standard "Grazie per aver registrato SmartTemplate4 Standard. Stai aiutando immensamente lo sviluppo di questa estensione! Adesso puoi anche testare tutte le caratteristiche Premium">
 <!ENTITY licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare il messaggio di email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">
 <!ENTITY licenseValidation.invalidAddon "La chiave di licenza inserita potrebbe essere relativa a un'altra estensione. Le chiavi di licenza per {0} iniziano con  {1}">
 <!ENTITY licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY premiumConfig "Caratteristiche Premium">
+<!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web">
