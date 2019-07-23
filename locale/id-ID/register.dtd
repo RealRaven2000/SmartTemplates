@@ -3,7 +3,6 @@
 <!ENTITY label.haveLicense "Sudah memiliki Lisensi?">
 <!ENTITY getSmartTemplate4 "Dapatkan SmartTemplate⁴ Pro">
 <!ENTITY intro "Lisensi tahunan SmartTemplate⁴ Pro memberikan anda semua fitur premium selama setahun. Itu juga memungkinkan kami untuk mendukung dan menumbuhkan produk lebih lanjut dan mengubahnya menjadi sesuatu yang bahkan lebih menakjubkan.">
-<!ENTITY testDrive "Anda dapat mencoba fitur premium dengan versi gratis, tetapi dengan beberapa batasan.">
 <!ENTITY yearlyLicense.title "Lisensi Tahunan">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro memberi Anda akses tak terbatas ke fitur premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Info tentang fitur premium.">
@@ -21,8 +20,6 @@
 <!ENTITY email.label "Email:">
 <!ENTITY firstName.label "Nama Depan:">
 <!ENTITY lastName.label "Nama Belakang:">
-<!ENTITY buyLicense.instruct "Butuh lisensi untuk individu? Dapatkan lisensi perseorangan. Ini terikat ke alamat Email pribadi Anda dan dapat digunakan di banyak instalasi.">
-<!ENTITY buyPersonalLicense.button "Beli Lisensi Personal!">
 <!ENTITY buyDomainLicense.instruct "Butuh Lisensi untuk perusahaan dengan lebih dari lima pengguna? Mendapatkan lisensi domain yang lebih murah:">
 <!ENTITY buyDomainLicense.button "Beli Lisensi Domain">
 <!ENTITY enterLicenseKey.button "Masukkan Kunci Lisensi...">

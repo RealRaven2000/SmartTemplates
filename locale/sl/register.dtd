@@ -3,7 +3,6 @@
 <!ENTITY label.haveLicense "Že imate dovoljenje?">
 <!ENTITY getSmartTemplate4 "Pridobite licenco si SmartTemplate⁴">
 <!ENTITY intro "Letno dovoljenje za SmartTemplate⁴ Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega.">
-<!ENTITY testDrive "Lastnosti premium lahko preskusite v brezplačni različici, vendar je njihovo delovanje lahko rahlo omejeno.">
 <!ENTITY yearlyLicense.title "Letno dovoljenje">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro omogoča poln in neomejen dostop do lastnosti premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Več o lastnostih premium.">
@@ -20,8 +19,6 @@
 <!ENTITY email.label "E-pošta:">
 <!ENTITY firstName.label "Ime:">
 <!ENTITY lastName.label "Priimek:">
-<!ENTITY buyLicense.instruct "Zase potrebujete dovoljenje? Pridobite si dovoljenje za eno osebo. Vezano je na vaš osebni e-poštni naslov in se ga lahko uporablja v več namestitvah.">
-<!ENTITY buyPersonalLicense.button "Kupi osebno dovoljenje!">
 <!ENTITY buyDomainLicense.instruct "Potrebujete dovoljenje za podjetje z več kot 5-imi uporabniki? Domensko dovoljenja bo za vas cenejše.">
 <!ENTITY buyDomainLicense.button "Kupi domensko dovoljenje">
 <!ENTITY enterLicenseKey.button "Vnesi ključ dovoljenja …">

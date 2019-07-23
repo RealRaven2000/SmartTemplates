@@ -3,7 +3,6 @@
 <!ENTITY label.haveLicense "Já possui uma licença?">
 <!ENTITY getSmartTemplate4 "Obter licença SmartTemplate⁴">
 <!ENTITY intro "Uma licença anual para o SmartTemplate⁴ Pro dá-lhe todas as funcionalidades premium durante um ano. Também nos dá suporte para aumentar ainda mais o produto e transformá-lo em algo ainda mais impressionante.">
-<!ENTITY testDrive "Você pode testar os recursos premium com a versão gratuita, mas eles podem ser um pouco restritos.">
 <!ENTITY yearlyLicense.title "Licença Anual">
 <!ENTITY yearlyLicense.premiumFeatures "O SmartTemplate⁴ Pro dá-lhe acesso completo irrestrito aos recursos premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Saiba mais sobre os recursos premium.">
@@ -20,8 +19,6 @@
 <!ENTITY email.label "E-mail:">
 <!ENTITY firstName.label "Nome:">
 <!ENTITY lastName.label "Sobrenome:">
-<!ENTITY buyLicense.instruct "Precisa de uma licença para você? Obtenha uma licença de usuário único. Ela será vinculada ao seu endereço de e-mail pessoal e pode ser usada em várias instalações.">
-<!ENTITY buyPersonalLicense.button "Comprar Licença Pessoal !">
 <!ENTITY buyDomainLicense.instruct "Precisa de licenças para uma empresa com mais de cinco usuários? Obter uma licença de domínio sairá mais barato:">
 <!ENTITY buyDomainLicense.button "Comprar Licença de Domínio">
 <!ENTITY enterLicenseKey.button "Digite a chave de licença...">

@@ -2,8 +2,9 @@
 <!ENTITY label.licenseValid "Twoja licencja jest ważna do:">
 <!ENTITY label.haveLicense "Czy już masz licencję?">
 <!ENTITY getSmartTemplate4 "Uzyskaj licencję SmartTemplate⁴">
+<!ENTITY licenseTypes "Idąc dalej, SmartTemplate⁴ oferuje dwie licencje: Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird i finansować innowacje i naprawy dodatku. Ponieważ zmiany w toku są wprowadzane w cyklu rocznym, licencja będzie ważna przez 1 rok.">
 <!ENTITY intro "Licencja SmartTemplate⁴ Pro zapewnia wszystkie funkcje wersji Premium na rok. Umożliwia także wspieranie, dalszy rozwój produktu i przekształcanie go w coś jeszcze bardziej niesamowitego.">
-<!ENTITY testDrive "Możesz przetestować funkcje Premium w darmowej wersji, ale mogą być nieco ograniczone.">
+<!ENTITY testDriveS "Możesz przetestować funkcje premium za pomocą standardowej licencji, ale mogą one być nieco ograniczone.">
 <!ENTITY yearlyLicense.title "Licencja roczna">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro oferuje pełny, nieograniczony dostęp do funkcji Premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Więcej informacji o funkcjach wersji Premium.">
@@ -21,8 +22,10 @@
 <!ENTITY email.label "E-mail:">
 <!ENTITY firstName.label "Imię:">
 <!ENTITY lastName.label "Nazwisko:">
-<!ENTITY buyLicense.instruct "Potrzebujesz licencji dla siebie? Zdobądź licencję dla jednego użytkownika. Jest ona przypisana do Twojego adresu Email i może być używana w wielu instalacjach.">
-<!ENTITY buyPersonalLicense.button "Kup prywatną licencję!">
+<!ENTITY buyPremiumLicense.instruct "Chcesz korzystać ze wszystkich funkcji premium bez ograniczeń? Uzyskaj licencję SmartTemplate⁴ Pro. Jest on powiązany z Twoim osobistym adresem e-mail i może być używany w wielu instalacjach.">
+<!ENTITY buyPremiumLicense.button "Kup licencję Pro!">
+<!ENTITY buyStandardLicense.instruct "Nie możesz sobie pozwolić na funkcje premium? Uzyskaj niedrogą standardową licencję i testuj funkcje premium.">
+<!ENTITY buyStandardLicense.button "Kup licencję standardową!">
 <!ENTITY buyDomainLicense.instruct "Potrzebujesz licencję dla firmy powyżej pięciu użytkowników? Uzyskanie licencji dla domeny jest tańsze.">
 <!ENTITY buyDomainLicense.button "Kup licencję dla domeny">
 <!ENTITY enterLicenseKey.button "Podaj klucz licencji…">

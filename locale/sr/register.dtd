@@ -3,7 +3,6 @@
 <!ENTITY label.haveLicense "Већ имате лиценцу?">
 <!ENTITY getSmartTemplate4 "Набавите лиценцу за СмартТемплате⁴">
 <!ENTITY intro "Годишња лиценца за SmartTemplate⁴ вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи.">
-<!ENTITY testDrive "Можете испробати премијум могућности и у бесплатној верзији, али ће бити делимично ограничене.">
 <!ENTITY yearlyLicense.title "Годишња лиценца">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије SmartTemplate⁴-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Више о премијум могућностима.">
@@ -16,8 +15,6 @@
 <!ENTITY email.label "Ел. адреса:">
 <!ENTITY firstName.label "Име:">
 <!ENTITY lastName.label "Презиме:">
-<!ENTITY buyLicense.instruct "Треба вам само једна лиценца? Онда набавите лиценцу за једног корисника. Везана је за вашу личну ел. адресу и може се користити за више инсталација.">
-<!ENTITY buyPersonalLicense.button "Купи личну лиценцу!">
 <!ENTITY buyDomainLicense.instruct "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:">
 <!ENTITY buyDomainLicense.button "Купи групну лиценцу">
 <!ENTITY enterLicenseKey.button "Унесите број лиценце...">

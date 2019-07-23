@@ -2,12 +2,14 @@
 <!ENTITY label.licenseValid "您的授权截止时间为：">
 <!ENTITY label.haveLicense "已有授权？">
 <!ENTITY getSmartTemplate4 "获取 SmartTemplate⁴">
+<!ENTITY licenseTypes "展望未来，SmartTemplate⁴提供两个许可证，Standard和Pro; 这些对于跟上Thunderbird平台的变化以及为附加组件的创新和修复提供资金是必要的。 由于重大变更按年度周期推出，许可证的有效期也为1年。">
 <!ENTITY intro "SmartTemplate⁴ 的年度授权将为您提供一整年的全部高级功能。它可以让我们继续支持和改进产品，使其更加强大。">
-<!ENTITY testDrive "您可以用免费版本试用一些高级功能，但部分可能受到限制。">
+<!ENTITY testDriveS "您可以使用标准许可证测试高级功能，但可能会受到轻微限制。">
 <!ENTITY yearlyLicense.title "年度授权">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro 可以让您不受限制的使用高级功能。">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "高级功能的更多信息。">
 <!ENTITY yearlyLicense.usageTerm "此授权是供您个人使用，并与您的电子邮件地址绑定。您只需将它安装到多个已配置使用该地址的电子邮件客户端上。">
+<!ENTITY yearlyLicense.usageTerm1 "任何其他电子邮件地址都没有问题 - 它们不需要单独的许可证。 如有疑问，您可以通过支持标签与我联系。">
 <!ENTITY domainLicense.email "我们会在两个工作日内使用此电子邮件地址与您联系，以生成您的域授权。请在下一个页面中输入要授权的域名。">
 <!ENTITY domainLicense.header "授权的电子邮件域名">
 <!ENTITY domainLicense.instruct "此授权绑定在您的公司域上。此授权将允许使用该电子邮件域名结尾的电子邮件地址的用户使用 SmartTemplate⁴ Pro。例如，如果您输入了域名“abc.com”，那么下面这样的电子邮件用户可以使用此授权：fred@abc.com, martha@abc.com, mike.doe@abc.com。有效的个人用户最大数量是您在第一个屏幕上输入的数字。">
@@ -20,8 +22,10 @@
 <!ENTITY email.label "电子邮件：">
 <!ENTITY firstName.label "名字">
 <!ENTITY lastName.label "姓氏">
-<!ENTITY buyLicense.instruct "只需要为自己授权？获取单用户授权吧。它绑定到您的个人电子邮件地址，并可在多处安装。">
-<!ENTITY buyPersonalLicense.button "购买个人授权！">
+<!ENTITY buyPremiumLicense.instruct "想要无限制地使用所有高级功能？ 获得SmartTemplate⁴Pro许可证。 它与您的个人电子邮件地址绑定，可用于多个安装。">
+<!ENTITY buyPremiumLicense.button "购买专业版许可！">
+<!ENTITY buyStandardLicense.instruct "买不起高级功能？ 获得高价格的标准许可证并继续测试高级功能。">
+<!ENTITY buyStandardLicense.button "购买标准许可证！">
 <!ENTITY buyDomainLicense.instruct "需要为超过五名用户的公司购买授权？购买域授权会更便宜：">
 <!ENTITY buyDomainLicense.button "购买域授权">
 <!ENTITY enterLicenseKey.button "请输入授权密钥…">

@@ -101,7 +101,7 @@
 <!ENTITY pref_cursorInsertSpace "Sisipkan Ruang untuk menyorot &#37;cursor&#37;">
 <!ENTITY pref_sigReplaceBR.label "Ganti jeda baris tanda tangan dalam teks biasa dengan &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Dukungan Peralatan Pengaya">
-<!ENTITY pref_stationerySupport_tip "Dukungan pengguanaan Peralatan pada saat yang sama dengan smartTemplate4.">
+<!ENTITY pref_stationerySupport_tip "Dukungan pengguanaan Peralatan pada saat yang sama dengan SmartTemplate4.">
 <!ENTITY pref_stationerySupport_tip2 "Ini memungkinkan untuk menggunakan variabel template di Peralatan Anda.">
 <!ENTITY pref_stationeryLink "Pengaya Peralatan">
 <!ENTITY pref_forceParagraph "Paksa Mode Paragraf">
@@ -239,7 +239,7 @@
 <!ENTITY table_reply.label "Balas">
 <!ENTITY table_fwd.label "Teruskan">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate4 Pro">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Masukkan Kunci Lisensi Personal anda disini:">
 <!ENTITY label.insertLicense.tooltip "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring.">
 <!ENTITY button.pasteLicense "Tempel">

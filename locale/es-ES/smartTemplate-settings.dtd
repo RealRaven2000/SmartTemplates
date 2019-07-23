@@ -93,6 +93,7 @@
 <!ENTITY resolveABRemoveMail "Eliminar dirección de correo si no está especificado el parámetro de formato">
 <!ENTITY suppressMailtToLink "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo">
 <!ENTITY capitalizeNames "Nombres en mayúsculas">
+<!ENTITY guessNameFromMail "Adivina el nombre de las partes de la dirección de correo electrónico si falta">
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">

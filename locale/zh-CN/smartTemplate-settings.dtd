@@ -84,14 +84,17 @@
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
+<!ENTITY defaultMimeFormat "默认地址格式：">
 <!ENTITY pref_addressDelimiter "多个通信者的分隔符：">
 <!ENTITY pref_addressDelimiter_tip "决定多个通信者之间的分隔符。Outlook 使用分号 (;)。Thunderbird 默认为英文逗号 (,)">
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
 <!ENTITY resolveNamesFromAB_tip "此功能不能与某些远程通讯录协同工作，例如 LDAP。">
 <!ENTITY resolveNamesFromABNick "如果已设置昵称，代替首名">
+<!ENTITY resolveNamesFromABDisplay "如果缺少名字，请使用显示名称">
 <!ENTITY resolveABRemoveMail "移除电子邮件地址，除非已指定格式参数">
 <!ENTITY suppressMailtToLink "禁止邮件客户端添加链接到电子邮件地址。">
 <!ENTITY capitalizeNames "大写名称">
+<!ENTITY guessNameFromMail "如果遗漏，请从电子邮件地址猜出姓名部分">
 <!ENTITY pref_parseSignature "签名处理过程">
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">
 <!ENTITY pref_cursorInsertSpace "插入空格到高亮的“光标”">
@@ -126,6 +129,7 @@
 <!ENTITY sig2.label "Siganture 签名（来自TB帐户设置，但没有'--'">
 <!ENTITY fileHTML.label "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。">
 <!ENTITY fileImage.label "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。">
+<!ENTITY attach.label "添加文件作为附件">
 <!ENTITY cursor.label "设置光标位置">
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
@@ -162,6 +166,8 @@
 <!ENTITY header.append.subject "追加文本到主题">
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
+<!ENTITY stringmanip_function.cap "文本操作">
+<!ENTITY replaceText "用其他东西替换一些文本。">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
@@ -218,3 +224,16 @@
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">
 <!ENTITY table_fwd.label "转发">
+<!ENTITY label.insertLicense "在此处插入您的个人许可密钥：">
+<!ENTITY label.insertLicense.tooltip "您的许可证密钥包含在Fastspring的订单确认电子邮件中。">
+<!ENTITY button.pasteLicense "贴">
+<!ENTITY button.validateLicense "验证">
+<!ENTITY label.licenseValid "您的许可有效期至：">
+<!ENTITY licenseValidation.passed "感谢您注册SmartTemplate⁴Pro！ 所有高级功能现已解锁。">
+<!ENTITY licenseValidation.failed "您输入的许可证密钥无效。 有关说明，请查看FastSpring的电子邮件。 如果您仍有问题，请通过“支持”选项卡与我联系。">
+<!ENTITY licenseValidation.expired "您输入的许可密钥已过期。 请按下面的按钮续订许可证。">
+<!ENTITY licenseValidation.invalidAddon "您输入的许可证密钥可能适用于其他附加组件。 {0}的许可证密钥以{1}开头。">
+<!ENTITY licenseValidation.invalidMail "绑定到许可证密钥[{1}]的电子邮件地址当前未在任何邮件帐户中列出。 请从支持选项卡与我联系以获取帮助。">
+<!ENTITY licenseValidation.notMatchedMail "加密电子邮件地址与可读邮件地址不匹配。">
+<!ENTITY premiumConfig "高级功能">
+<!ENTITY label.premiumFeaturesSite "详细了解我们网站上的高级功能">
