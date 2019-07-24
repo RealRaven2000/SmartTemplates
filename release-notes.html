@@ -1,17 +1,50 @@
-<b>Change List</b>
+<meta charset="UTF-8">
+<b>Change List version 2.1</b>
+
+Going Forward, SmartTemplate&#8308; will <span class="emphasis">require a license</span> for continued use - the reason for this is that unlike compiled software that runs on an operating system, the constant changes on the host mail software (Thunderbird) require substantial ongoing changes with a high effort; something which cannot be provided for free ("as in beer") anymore. You may have noticed many Add-on authors abandoning their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not trying to involve the users in funding the required work.
+
+
+<b>Improvements</b>
 <ul>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26494" target="_blank">[Bug 26494]</a> ESR 2018 readiness - Make SmartTemplate4 compatible with Tb 60</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26523" target="_blank">[Bug 26523]</a> Remove extra line break before blockquote if standard quote header is used.</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26524" target="_blank">[Bug 26524]</a> %datelocal% and %dateshort% are broken in Tb 60</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26523" target="_blank">[Bug 26523]</a> Completed various translations (ru, pl, nl, sr)</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26526" target="_blank">[Bug 26526]</a> %file% causes rogue errors "The Variable %5C.. can not be used for new messages" when including images</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26551" target="_blank">[Bug 26551]</a> Add Domain License key support for SmartTemplate⁴ Pro</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26552" target="_blank">[Bug 26552]</a> %attach% Variable for attaching [pdf] files</li>
-<li>Address Book: Added feature to replace firstname with Display Name if no first name is recorded.</li>
-<li>Added Indonesian Locale - thanks to Mienz Louveinski (Babelzilla.org)</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24993" target="_blank">[Bug 24993]</a> Premium Feature: Added support for using the following fields when composing a *new* Email:%subject% %from% %to% %cc% %bcc% %date% %dateformat()%</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26596" target="_blank">[Bug 26596]</a> Make extracting Name from (parentheses) optional - extensions.smartTemplate4.names.guessFromMail</li> 
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26595" target="_blank">[Bug 26595]</a> Option to disable guessing Name Part</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26597" target="_blank">[Bug 26597]</a> Add ?? operator to mmake parts of address header arguments optional, e.g. %from(name,??mail)%</li>
-<li>Added option for default address variable format</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26536">[Bug 26536]</a> Support using SmartTemplate⁴ variables in Thunderbird Templates (Tb 60).</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26629">[Bug 26629]</a> Added a variable to set a specific time zone (e.g. GMT) for date/time variables. Use the new %X:=timezone(<i>timezone</i>)% switch to force displaying the time with a fixed time zone. For example: %X:=timezone(EST)% for inserting Eastern Standard Time in date functions such as %dateshort% or %dateformat()%</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26634">[Bug 26634]</a> header.*.matchFrom* functions: append/prepend arbitrary text to field based on match.
+
+You can now use the matchFromSubject and matchFromBody functions in the following way:
+
+%header.set.matchFromBody(<i>header</i>,<i>search pattern</i>,"<i>replacement text</i>")%
+this is different from the already supported usage
+%header.set.matchFromBody(<i>header</i>,<i>search pattern</i>,<i>match group</i>)%
+The main difference is that match group is a number - which will insert / set / append the matched text found during the search, whereas <i>replacement text</i> is a text that is used instead if the search pattern is found. For usage simply add the double quotation marks around the 3rd parameter.</li>
+<li>Added button for extending your SmartTemplate⁴ Pro License. This will now show up on the  SmartTemplate⁴ Pro Tab 30 days before the current license expires. The web shop will give you an additional year based on the current expiry date for a smaller price (typically 20 %) than a new license. If the license is already expired, then the current date is used to calculate new expiry date, giving you also a full year.</li>
+<li>SmartTemplate⁴ from now on will remember the last selected folder using the file picker when saving / loading  templates.</li>
+<li> Added a button for opening the Stationery configuration tab. </a>
+</ul>
+<b>Bug Fixes</b>
+<ul>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26626">[Bug 26626]</a> Edit As New duplicated email content unless Stationery is installed.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26627">[Bug 26627]</a> Signature was always removed when creating message from templates. With this fix, when creating a mail from a thunderbird template the signature will be treated according tothe rules set up in account settings composition section. 
+To omit the signature, use %sig(none)%within the template.
+To determine a specific position other than specified in account settings, use %sig(html)%</li>
+<li> Fixed: %attach()% command previously had a filter to only append HTML files.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26628">[Bug 26628]</a> Fixed: %dateshort% and %datelocal% left out time portion.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26632">[Bug 26632]</a> Using %dateformat% in reply / forward: deferred fields were not automatically tidied up.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26635">[Bug 26635]</a> Cursor not placed in "To:" Row when writing/forwarding email. 
+Fix: SmartTemplate⁴ will now check when writing new emails if the "To:" address is already set. If not, the cursor will be placed into the address widget and %cursor% ignored.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26636">[Bug 26636]</a> Stationery broken with %sig(text)%. When using a Stationery template with the "Use instead of default quote header" option switched off, some of the template text may be accidentally deleted from the Email.</li>
+</ul>
+<b>Other</b>
+<ul> 
+<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>  ESR 2019 Readiness - compatibility with Thunderbird 68
+
+Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing effort to  future proof SmartTemplate&#8308; for 2020. This will also mean eventually making the minimum requirement using Thunderbird version 60. 
+The latest test version (2.1 pre 244) can be be found <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26667#c2">here</a>.
+
+<li> Replaced prefwindows with dialogs. There are a lot of changes in the code to make storing preferences in Thunderbird's configuration database work again.</li>
+<li> Use newer preferences script.</li>
+<li> Replace groupbox caption elements with hbox + additional layout fixes.</li>
+<li> Use new promise-based AddonManager object.</li>
+<li> Remove document.createElement in xul documents (replace with createXULElement until Mozilla decides to deprecate that too).</li>
+<li> Improved loading script in composer to be more reliable.</li>
+<li> Added mandatory Standard license. </li>
 </ul>
