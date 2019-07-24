@@ -84,14 +84,18 @@
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Oddělit více adres s:">
 <!ENTITY pref_addressDelimiter_tip "Oddělovač mezi adresama. Outlook používá středník(;) Výchozí pro Thunderbird je čárka (,)">
 <!ENTITY resolveNamesFromAB "Získej jméno z adresáře">
 <!ENTITY resolveNamesFromAB_tip "Funkce nepracuje se vzdálenýma adresářema, jako LDAP.">
 <!ENTITY resolveNamesFromABNick "Přepiš křestní jméno, když existuje přezdívka">
+<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Smaž e-mailovou adresu pokud formátovací parametr je uveden">
 <!ENTITY suppressMailtToLink "Omezení mail klienta přidat odkaz do e-mailové adresy.">
 <!ENTITY capitalizeNames "Využij Jména">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Proces podpisu">
 <!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
 <!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
@@ -126,12 +130,14 @@
 <!ENTITY sig2.label "Podpis z nastavení účtu bez '--'">
 <!ENTITY fileHTML.label "HTML nebo text soubor. UTF-8 je předpokládano pokud je vynechan volitelný parametr znakové sady.">
 <!ENTITY fileImage.label "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen.">
+<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "nastav pozici kurzoru">
 <!ENTITY to_var.cap "Příjemce (To)">
 <!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
 <!ENTITY to.label "Jméno příjemce (defaultní)">
 <!ENTITY tofirstname.label "Křestní jméno příjemce">
 <!ENTITY toname.label "Jméno příjemce">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Odesílatel (From)">
 <!ENTITY from_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj.">
 <!ENTITY from.label "Jméno odesílatele (defaultní)">
@@ -175,6 +181,10 @@
 <!ENTITY dateshort.label "Krátký formát data / času (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Časová zóna (+0100, +0200, ... )">
 <!ENTITY tzname.label "Zkratka čas. zóny GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
+<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
+<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
+<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Proměnné pro přizpůsobený formát data">
 <!ENTITY customdf_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY A.label "Den týdne (pátek)">
@@ -196,6 +206,9 @@
 <!ENTITY p1.label "dop.">
 <!ENTITY p2.label "Dop.">
 <!ENTITY p3.label "Dop.">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy.">
 <!ENTITY xsent_long.cap "Příklad pro dlouhý řetězec">
@@ -225,3 +238,19 @@
 <!ENTITY table_new.label "Zápis">
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY label.insertLicense "Insert your personal License key here:">
+<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
+<!ENTITY button.pasteLicense "paste">
+<!ENTITY button.validateLicense "validate">
+<!ENTITY label.licenseValid "Your license is valid until:">
+<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate⁴ Pro! All premium features are now unlocked.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
+<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
+<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
+<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
+<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
+<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY premiumConfig "Premium Features">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

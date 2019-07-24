@@ -2,11 +2,14 @@
 <!ENTITY label.licenseValid "Vaše dovoljenje velja do:">
 <!ENTITY label.haveLicense "Že imate dovoljenje?">
 <!ENTITY getSmartTemplate4 "Pridobite licenco si SmartTemplate⁴">
+<!ENTITY licenseTypes "Going forward, SmartTemplate⁴ offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
 <!ENTITY intro "Letno dovoljenje za SmartTemplate⁴ Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega.">
+<!ENTITY testDriveS "You can test drive the premium features with the standard license, but they may be slightly restricted.">
 <!ENTITY yearlyLicense.title "Letno dovoljenje">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro omogoča poln in neomejen dostop do lastnosti premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Več o lastnostih premium.">
 <!ENTITY yearlyLicense.usageTerm "Dovoljenje je za osebno uporabo in je vezano na vaš e-poštni naslov. Lahko ga namestite na več odjemalcev, dokler so le-ti nastavljeni na uporabo tega naslova.">
+<!ENTITY yearlyLicense.usageTerm1 "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab.">
 <!ENTITY domainLicense.email "Za ustvarjanje domenskega dovoljenja vam bomo pisali na ta e-poštni naslov. Prosimo, dovolite nam dva delovna dneva za stik z vami. Na naslednji strani vnesite ime domene dovoljenja.">
 <!ENTITY domainLicense.header "E-poštna domena dovoljenja">
 <!ENTITY domainLicense.instruct "Dovoljenje je zaklenjeno na domeno vašega podjetja. To bo uporabnikom z e-poštnimi naslovi, ki se končajo na to domeno, omogočalo uporabo dodatka SmartTemplate⁴ Pro. Npr., če vnesete ime domene 'abc.com', potem bodo uporabniki kot so fredi@abc.com, marta@abc.com, miha.novak@abc.com itd., lahko uporabljali dovoljenje. Največje število veljavnih posameznih uporabnikov je število, ki ste ga vnesli na začetnem zaslonu.">
@@ -19,6 +22,10 @@
 <!ENTITY email.label "E-pošta:">
 <!ENTITY firstName.label "Ime:">
 <!ENTITY lastName.label "Priimek:">
+<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplate⁴ Pro license. It is bound to your personal Email address and can be used in multiple installations.">
+<!ENTITY buyPremiumLicense.button "Buy Pro License!">
+<!ENTITY buyStandardLicense.instruct "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions.">
+<!ENTITY buyStandardLicense.button "Buy Standard License!">
 <!ENTITY buyDomainLicense.instruct "Potrebujete dovoljenje za podjetje z več kot 5-imi uporabniki? Domensko dovoljenja bo za vas cenejše.">
 <!ENTITY buyDomainLicense.button "Kupi domensko dovoljenje">
 <!ENTITY enterLicenseKey.button "Vnesi ključ dovoljenja …">

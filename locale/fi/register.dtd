@@ -2,6 +2,7 @@
 <!ENTITY label.licenseValid "Lisenssi on voimassa, kunnes:">
 <!ENTITY label.haveLicense "Onko sinulla jo lisenssi?">
 <!ENTITY getSmartTemplate4 "Hanki SmartTemplate⁴ -lisenssi">
+<!ENTITY licenseTypes "SmartTemplate⁴ tarjoaa kaksi lisenssiä: Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten ja lisäosien innovaatioiden ja korjausten rahoittamiseksi. Koska rikkomisen muutokset toteutetaan vuosittain, lisenssi on voimassa 1 vuosi.">
 <!ENTITY intro "SmartTemplate⁴ Pro tarjoaa vuosittaisen lisenssin kaikille premium-ominaisuuksille vuodeksi. Sen avulla voimme myös tukea ja kasvattaa tuotetta entisestään ja kääntää sen entistäkin mahtavammaksi.">
 <!ENTITY testDriveS "Voit testata premium-ominaisuuksia tavallisella lisenssillä, mutta ne voivat olla hieman rajoitettuja.">
 <!ENTITY yearlyLicense.title "Vuosilupa">
@@ -10,6 +11,7 @@
 <!ENTITY yearlyLicense.usageTerm "Lisenssi on tarkoitettu henkilökohtaiseen käyttöön ja se on sidottu sähköpostiosoitteeseesi. Voit asentaa sen useisiin sähköpostiohjelmiin niin kauan kuin ne on määritetty käyttämään kyseistä osoitetta.">
 <!ENTITY yearlyLicense.usageTerm1 "Kaikki muut sähköpostiosoitteet eivät ole ongelma - ne eivät vaadi erillistä lisenssiä. Jos sinulla on kysymyksiä, pääset minut tukisivun kautta.">
 <!ENTITY domainLicense.email "Otamme sinuun yhteyttä käyttämällä tätä sähköpostiosoitetta luodaksesi verkkotunnuksen lisenssin; ota yhteyttä kahteen työpäivään. Anna lisenssin verkkotunnus seuraavalla sivulla.">
+<!ENTITY domainLicense.header "Licensed Email Domain">
 <!ENTITY domainLicense.instruct "Lisenssi on merkitty yrityksesi verkkotunnukseen. Lisenssin avulla käyttäjät, joilla on sähköpostiosoite, jotka päättyvät tähän sähköpostialueeseen, käyttävät SmartTemplate⁴ Pro -ohjelmaa. Esimerkiksi. jos annat verkkotunnuksen 'abc.com', niin sähköpostin käyttäjät, kuten fred@abc.com, martha@abc.com, mike.doe@abc.com jne. saavat käyttää lisenssiä. Voimassa olevien yksittäisten käyttäjien enimmäismäärä on numero, jonka olet antanut aloitusnäytölle.">
 <!ENTITY domainLicense.validate "Varmista, että annat verkkotunnuksen * täsmälleen sellaisena kuin se on * yrityksesi sähköpostiosoitteissa (osassa * @ -merkin jälkeen), koska sitä käytetään valtuuttamaan käyttäjien sähköpostiosoitteet.">
 <!ENTITY updates.title "Päivitykset">
