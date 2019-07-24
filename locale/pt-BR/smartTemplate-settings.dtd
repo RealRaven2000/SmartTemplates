@@ -84,6 +84,7 @@
 <!ENTITY pref_debug_tip "Clique com o botão direito do mouse para opções avançadas e de depuração">
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
+<!ENTITY defaultMimeFormat "Formato de endereço padrão:">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -93,6 +94,7 @@
 <!ENTITY resolveABRemoveMail "Remover endereço de email a menos que o parâmetro de formato esteja especificado">
 <!ENTITY suppressMailtToLink "Suprimir cliente de email adicionando links aos endereços de email.">
 <!ENTITY capitalizeNames "Capitalizar nomes">
+<!ENTITY guessNameFromMail "Adivinha partes do nome do endereço de e-mail se estiver faltando">
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
@@ -191,6 +193,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ">
 <!ENTITY header.append.subject "anexar texto ao assunto">
 <!ENTITY header.set.to "substituir destinatário pelo endereço de email">
@@ -232,6 +266,7 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.example "Exemplo:">
 <!ENTITY var_xsent.cap "Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">
 <!ENTITY xsent_long.cap "Exemplo com variáveis personalizáveis:">
@@ -269,6 +304,7 @@
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Sua licença é válida até:">
 <!ENTITY licenseValidation.passed "Obrigado por registrar o SmartTemplate⁴ Pro! Todos os recursos premium agora estão desbloqueados.">
+<!ENTITY licenseValidation.standard "Obrigado por registrar o SmartTemplate® Standard - Você está ajudando imensamente o Add-on! Você também pode testar todas as funções premium.">
 <!ENTITY licenseValidation.failed "A chave de licença inserida não é válida. Verifique o e-mail da FastSpring para instruções. Se você ainda tiver problemas, entre em contato comigo a partir da aba Suporte.">
 <!ENTITY licenseValidation.expired "A chave de licença inserida expirou. Por favor, pressione o botão abaixo para renovar sua licença.">
 <!ENTITY licenseValidation.invalidAddon "A chave de licença inserida pode ser para uma extensão diferente. A chaves de licença para o {0} começam com {1}.">
