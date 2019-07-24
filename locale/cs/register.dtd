@@ -2,6 +2,7 @@
 <!ENTITY label.licenseValid "Vaše licence je platná do:">
 <!ENTITY label.haveLicense "Už máte licenci?">
 <!ENTITY getSmartTemplate4 "Získejte licenci SmartTemplate⁴">
+<!ENTITY licenseTypes "V budoucnu SmartTemplate⁴ nabízí dvě licence, Standard a Pro; je nutné držet krok se změnami v platformě Thunderbird a financovat inovace a opravy doplňku. Vzhledem k tomu, že se v průběhu ročního cyklu zavádějí zásadní změny, bude licence platná také po dobu 1 roku.">
 <!ENTITY intro "Roční licence pro SmartTemplate⁴ Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější.">
 <!ENTITY testDriveS "Můžete otestovat prémiové funkce se standardní licencí, ale mohou být mírně omezeny.">
 <!ENTITY yearlyLicense.title "Roční licence">
@@ -21,6 +22,8 @@
 <!ENTITY email.label "e-mailem:">
 <!ENTITY firstName.label "Jméno:">
 <!ENTITY lastName.label "Příjmení:">
+<!ENTITY buyPremiumLicense.instruct "Chcete používat všechny prémiové funkce bez omezení? Získejte licenci SmartTemplate⁴ Pro. Je vázán na vaši osobní e-mailovou adresu a lze jej použít ve více instalacích.">
+<!ENTITY buyPremiumLicense.button "Koupit licenci Pro!">
 <!ENTITY buyStandardLicense.instruct "Nemůžete si dovolit prémiové funkce? Získejte levnější standardní licenci a udržujte testování prémiových funkcí.">
 <!ENTITY buyStandardLicense.button "Koupit Standardní licenci!">
 <!ENTITY buyDomainLicense.instruct "Potřebujete Pro Licence pro společnost s více než pěti uživateli? Získání licence na domény bude fungovat levněji:">
