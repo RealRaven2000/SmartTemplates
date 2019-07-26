@@ -243,6 +243,7 @@
 <!ENTITY button.validateLicense "verifiera">
 <!ENTITY label.licenseValid "Din licens är giltig t.o.m.:">
 <!ENTITY licenseValidation.passed "Tack för att du registrerar SmartTemplate⁴ Pro! Alla licensbelagda funktioner är nu tillgängliga.">
+<!ENTITY licenseValidation.standard "Tack för att du registrerade SmartTemplate⁴ Standard - Du hjälper tillägget oerhört! Du kan nu också testa alla premiumfunktioner.">
 <!ENTITY licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY licenseValidation.invalidAddon "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}.">

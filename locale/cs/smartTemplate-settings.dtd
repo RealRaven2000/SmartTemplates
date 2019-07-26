@@ -225,3 +225,17 @@
 <!ENTITY table_new.label "Zápis">
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
+<!ENTITY label.insertLicense "Sem vložte svůj osobní licenční klíč:">
+<!ENTITY label.insertLicense.tooltip "Váš licenční klíč je obsažen v e-mailu s potvrzením objednávky od Fastspring.">
+<!ENTITY button.pasteLicense "vložit">
+<!ENTITY button.validateLicense "legalizovat">
+<!ENTITY label.licenseValid "Vaše licence je platná do:">
+<!ENTITY licenseValidation.passed "Děkujeme za registraci SmartTemplate⁴ Pro! Všechny prémiové funkce jsou nyní odemčeny.">
+<!ENTITY licenseValidation.standard "Děkujeme za registraci SmartTemplate⁴ Standard - doplňku nesmírně pomáháte! Nyní můžete také otestovat všechny prémiové funkce.">
+<!ENTITY licenseValidation.failed "Zadaný licenční klíč není platný. Pokyny naleznete ve svém e-mailu od FastSpring. Pokud problémy přetrvávají, kontaktujte mě na kartě Podpora.">
+<!ENTITY licenseValidation.expired "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci.">
+<!ENTITY licenseValidation.invalidAddon "Zadaný licenční klíč může být pro jiný doplněk. Licenční klíče pro {0} začínají {1}.">
+<!ENTITY licenseValidation.invalidMail "E-mailová adresa, která je vázána na licenční klíč [{1}], není aktuálně uvedena v žádném z vašich poštovních účtů. Požádejte mě o pomoc na kartě Podpora.">
+<!ENTITY licenseValidation.notMatchedMail "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
+<!ENTITY premiumConfig "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
+<!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu">

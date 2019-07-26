@@ -233,6 +233,7 @@
 <!ENTITY button.validateLicense "potrdi">
 <!ENTITY label.licenseValid "Dovoljenje velja do:">
 <!ENTITY licenseValidation.passed "Hvala, ker ste registrirali SmartTemplate⁴ Pro! Vse lastnosti premium so sedaj odklenjene.">
+<!ENTITY licenseValidation.standard "Hvala za registracijo SmartTemplate⁴ Standard - Pomagate Add-on izjemno! Prav tako lahko zdaj preskusite vse premijske funkcije.">
 <!ENTITY licenseValidation.failed "Vneseni ključ ni veljaven. Za navodila si oglejte e-pošto od FastSpringa. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora.">
 <!ENTITY licenseValidation.expired "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb.">
 <!ENTITY licenseValidation.invalidAddon "Vneseni ključ je lahko za drug dodatek. Ključi za {0} se začnejo s/z {1}.">

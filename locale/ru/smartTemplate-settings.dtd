@@ -233,6 +233,7 @@
 <!ENTITY button.validateLicense "проверить">
 <!ENTITY label.licenseValid "Лицензионный ключ действителен до:">
 <!ENTITY licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
+<!ENTITY licenseValidation.standard "Спасибо за регистрацию SmartTemplate⁴ Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса.">
 <!ENTITY licenseValidation.failed "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
 <!ENTITY licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
 <!ENTITY licenseValidation.invalidAddon "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}.">

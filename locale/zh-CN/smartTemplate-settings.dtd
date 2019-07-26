@@ -230,6 +230,7 @@
 <!ENTITY button.validateLicense "验证">
 <!ENTITY label.licenseValid "您的许可有效期至：">
 <!ENTITY licenseValidation.passed "感谢您注册SmartTemplate⁴Pro！ 所有高级功能现已解锁。">
+<!ENTITY licenseValidation.standard "感谢您注册SmartTemplate⁴标准版 - 您正在极大地帮助加载项！ 您现在也可以测试所有高级功能。">
 <!ENTITY licenseValidation.failed "您输入的许可证密钥无效。 有关说明，请查看FastSpring的电子邮件。 如果您仍有问题，请通过“支持”选项卡与我联系。">
 <!ENTITY licenseValidation.expired "您输入的许可密钥已过期。 请按下面的按钮续订许可证。">
 <!ENTITY licenseValidation.invalidAddon "您输入的许可证密钥可能适用于其他附加组件。 {0}的许可证密钥以{1}开头。">
