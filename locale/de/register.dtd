@@ -1,7 +1,7 @@
 <!ENTITY licenseWindow.title "SmartTemplate⁴ Lizenz">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
 <!ENTITY label.haveLicense "Sie haben bereits eine Lizenz?">
-<!ENTITY getSmartTemplate4 "Holen Sie sich SmartTemplate⁴ Pro">
+<!ENTITY getSmartTemplate4 "SmartTemplate⁴ Lizensieren">
 <!ENTITY licenseTypes "In Zukunft bietet SmartTemplate⁴ zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und die Reparaturen und Innovationen zu finanzieren. Da Funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig.">
 <!ENTITY intro "Eine Jahreslizenz für SmartTemplate⁴ Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Add-on weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplate⁴ weiter fantastisch!">
 <!ENTITY testDriveS "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang.">

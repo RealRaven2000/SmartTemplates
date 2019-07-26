@@ -118,7 +118,6 @@
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate⁴ erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
-<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
@@ -233,12 +232,10 @@
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
 <!ENTITY table_note.label "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Nytt">
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
@@ -246,7 +243,6 @@
 <!ENTITY button.validateLicense "verifiera">
 <!ENTITY label.licenseValid "Din licens är giltig t.o.m.:">
 <!ENTITY licenseValidation.passed "Tack för att du registrerar SmartTemplate⁴ Pro! Alla licensbelagda funktioner är nu tillgängliga.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY licenseValidation.invalidAddon "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}.">

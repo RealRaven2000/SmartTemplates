@@ -84,8 +84,6 @@
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar corresponsales múltiples con:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
@@ -137,7 +135,6 @@
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
 <!ENTITY tofirstname.label "Nombre de pila del destinatario">
 <!ENTITY toname.label "Apellido del destinatario">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Remitente (De)">
 <!ENTITY from_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY from.label "Nombre de remitente (predeterminado)">
@@ -181,7 +178,6 @@
 <!ENTITY dateshort.label "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Zona horaria (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "La siguiente función inserta un retardo a todas las fechas mostradas a continuación.">
 <!ENTITY calculate.explain "DD=días a añadir. H=horas a añadir (opcional). MM=minutos a añadir (opcional).">
 <!ENTITY calculate.reset "Deje el valor a 0 para no modificar más fechas.">
@@ -206,9 +202,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">
@@ -246,7 +239,6 @@
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Su licencia tiene validez hasta:">
 <!ENTITY licenseValidation.passed "Gracias por registrarse en SmartTemplate⁴ Pro. Ya se han activado todas las funcionalidades premium.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "La clave de licencia introducida no es válida. Compruebe las instrucciones que venían con el correo de Fastspring. Si sigue teniendo problemas, por favor contacte conmigo a través de la pestaña de Ayuda.">
 <!ENTITY licenseValidation.expired "La clave de licencia introducida está caducada. Por favor pulse el botón de la parte inferior para renovar su licencia.">
 <!ENTITY licenseValidation.invalidAddon "La clave de licencia introducida puede pertenecer a otra extensión. Las claves de licencia para {0} comienzan por {1}.">

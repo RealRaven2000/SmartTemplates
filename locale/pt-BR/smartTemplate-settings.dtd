@@ -85,7 +85,6 @@
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
 <!ENTITY defaultMimeFormat "Formato de endereço padrão:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -137,7 +136,6 @@
 <!ENTITY to.label "Destinatário (padrão)">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Variáveis de remetente (De)">
 <!ENTITY from_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label "Remetente (padrão)">
@@ -244,7 +242,6 @@
 <!ENTITY dateshort.label "Data e hora curta (exemplo: 01/01/2000 01:23:45)">
 <!ENTITY datetz.label "Fuso horário (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "A função a seguir adiciona um deslocamento a todos os tempos exibidos a seguir.">
 <!ENTITY calculate.explain "DD = número de dias para adicionar. H = número de horas para adicionar (opcional). MM = minutos para adicionar (opcional)">
 <!ENTITY calculate.reset "Definir o argumento como 0 para interromper a modificação de datas.">
@@ -269,8 +266,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
 <!ENTITY dateformat.example "Exemplo:">
 <!ENTITY var_xsent.cap "Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">

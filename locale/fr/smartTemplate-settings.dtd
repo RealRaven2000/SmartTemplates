@@ -84,8 +84,6 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -95,7 +93,6 @@
 <!ENTITY resolveABRemoveMail "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié">
 <!ENTITY suppressMailtToLink "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques.">
 <!ENTITY capitalizeNames "Noms en lettres capitales">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
@@ -181,7 +178,6 @@
 <!ENTITY dateshort.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "La fonction suivante ajoute un décalage à toutes les dates et horaires suivants.">
 <!ENTITY calculate.explain "DD=nombre de jours à ajouter. H=nombre d'heures à ajouter (facultatif). MM=minutes à ajouter (facultatif)">
 <!ENTITY calculate.reset "Définir l'argument à 0 pour arrêter la modification des dates.">
@@ -246,7 +242,6 @@
 <!ENTITY button.validateLicense "valider">
 <!ENTITY label.licenseValid "Votre licence est valide jusqu'au :">
 <!ENTITY licenseValidation.passed "Merci pour votre abonnement à SmartTemplate⁴ Pro ! Toutes les fonctionnalités premium sont à présent disponibles.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "La clé de licence que vous avez saisie n'est pas valide. Vérifiez votre courriel de FastSpring pour des instructions complémentaires. Si vous rencontrez encore des problèmes, veuillez me contacter à partir de l'onglet d'aide.">
 <!ENTITY licenseValidation.expired "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence.">
 <!ENTITY licenseValidation.invalidAddon "La clé de licence que vous avez entrée semble être pour un module complémentaire différent. La clé pour {0} commence par {1}">
