@@ -91,7 +91,9 @@ SmartTemplate4.classPref = function() {
 	};
 
 	function isProcessingActive(idKey, composeType, def) {
-		return getWithIdkey(idKey, composeType, def);
+		let isActive = getWithIdkey(idKey, composeType, def);
+		if (!isActive) return false; // defaults to empty string
+		return isActive;
 	};
 
 	// whether an Identity uses the common account
@@ -118,56 +120,9 @@ SmartTemplate4.classPref = function() {
 	};
 
 	// -----------------------------------
-	// get locale preference
-	function getLocalePref()	{
-		const util = SmartTemplate4.Util;
-		try
-		{
-			let locale =   // get locale from Operating System. note nslocaleservice was removed in Gecko 57
-			      Cc["@mozilla.org/intl/nslocaleservice;1"] 
-			        ? Cc["@mozilla.org/intl/nslocaleservice;1"].getService(Ci.nsILocaleService).getLocaleComponentForUserAgent()
-							: Services.locale.getAppLocaleAsLangTag(),
-			    forcedLocale = SmartTemplate4.calendar.currentLocale,  // check if the %language% variable was set
-			    listLocales = '',
-			    found = false;
-			if (forcedLocale && forcedLocale != locale) {
-				let availableLocales = util.getAvailableLocales("global"); // list of installed locales
-				while (availableLocales.hasMore()) {
-					let aLocale = availableLocales.getNext();
-					listLocales += aLocale.toString() + ', ';
-					if (aLocale == forcedLocale) found = true;
-				}
-				if (!found) {
-				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
-					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + util.AppverFull + '/yourPlatform/xpi' + '\n'
-					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
-					util.logError(errorText, '', '', 0, 0, 0x1);
-					SmartTemplate4.Message.display(errorText,
-		                              "centerscreen,titlebar",
-		                              function() { ; }
-		                              );
-					
-					forcedLocale = null;
-				}
-				else {
-					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
-					locale = forcedLocale;
-				}
-			}
-
-			util.logDebug('getLocale() returns: ' + locale);
-			return locale;
-		}
-		catch (ex) {
-			util.logException('getLocale() failed and defaulted to [en]', ex);
-			return "en";
-		}
-	};
-
-	// -----------------------------------
 	// Public methods
 	this.getCom = getCom;
-	this.getLocalePref = getLocalePref;
+	this.getLocalePref = SmartTemplate4.Util.getLocalePref;
 	this.getTemplate = getTemplate;
 	this.getQuoteHeader = getQuoteHeader;
 	this.getWithBranch = getWithBranch;
@@ -210,7 +165,11 @@ var SmartTemplate4_streamListener =
   _stream : null,
 
   QueryInterface:
-    XPCOMUtils.generateQI([Components.interfaces.nsIStreamListener, Components.interfaces.nsIRequestObserver]),
+	  function () {
+			if (XPCOMUtils.generateQI)
+				return XPCOMUtils.generateQI([Components.interfaces.nsIStreamListener, Components.interfaces.nsIRequestObserver]);
+			return null;
+		},
 
   // nsIRequestObserver interfaces
   onStartRequest: function(aRequest, aContext) {
@@ -276,7 +235,6 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   headers.initialize(msgContent, msgContent.length);
 */  
   if (messageURI.indexOf(".eml")>0) { 
-	  debugger;
 		return null;
 	}
 	inputStream.init(messageStream);
@@ -398,9 +356,6 @@ SmartTemplate4.mimeDecoder = {
 	headerParam: Components
 	             .classes["@mozilla.org/network/mime-hdrparam;1"]
 	             .getService(Components.interfaces.nsIMIMEHeaderParam),
-	cvtUTF8 : Components
-	             .classes["@mozilla.org/intl/utf8converterservice;1"]
-	             .getService(Components.interfaces.nsIUTF8ConverterService),
 
 	// -----------------------------------
 	// Detect character set
@@ -459,11 +414,19 @@ SmartTemplate4.mimeDecoder = {
 			}
 			else {
 				// for Mailers who have no manners.
-				if (charset === "")
-					charset = this.detectCharset(theString);
-				let skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
-				// this will always fail if theString is not an ACString?
-				decodedStr = this.cvtUTF8.convertStringToUTF8(theString, charset, skip);
+				if (util.versionGreaterOrEqual(util.AppverFull, "61")) {
+					util.logDebug("Mailer has no manners, trying to decode string: " + theString);
+					decodedStr = decodeURIComponent(escape(theString));
+					util.logDebug("...decoded string: " + decodedStr);
+				}
+				else {
+					if (charset === "")
+						charset = this.detectCharset(theString);
+					let skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1;
+					// this will always fail if theString is not an ACString?
+					let cvtUTF8 = Components.classes["@mozilla.org/intl/utf8converterservice;1"].getService(Components.interfaces.nsIUTF8ConverterService),
+					decodedStr = this.cvtUTF8.convertStringToUTF8(theString, charset, skip);
+				}
 			}
 		}
 		catch(ex) {
@@ -938,13 +901,13 @@ SmartTemplate4.mimeDecoder = {
 SmartTemplate4.parseModifier = function(msg) {
 	function matchText(regX, fromPart) {
 	  try {
-			if (preferences.isDebugOption('parseModifier')) debugger;
+			if (prefs.isDebugOption('parseModifier')) debugger;
 			let matchPart = msg.match(regX);
 			if (matchPart) {
 				for (let i=0; i<matchPart.length; i++) {
 					if (!gMsgCompose.originalMsgURI) debugger;
 					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
-					let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
+					let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
 							hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
 							extractSource = '',
 							rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
@@ -956,7 +919,6 @@ SmartTemplate4.parseModifier = function(msg) {
 								return;
 							}
 							util.addUsedPremiumFunction('matchTextFromSubject');
-							// util.popupProFeature("matchTextFromSubject", true, false);
 							let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 									charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
 							extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
@@ -965,7 +927,7 @@ SmartTemplate4.parseModifier = function(msg) {
 						case 'body':
 							let rootEl = gMsgCompose.editor.rootElement;
 							extractSource = rootEl.innerText;
-							// util.popupProFeature("matchTextFromBody", true, false);
+							// util.popupLicenseNotification("matchTextFromBody", true, true);
 							util.addUsedPremiumFunction('matchTextFromBody');
 							util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
 							break;
@@ -973,24 +935,43 @@ SmartTemplate4.parseModifier = function(msg) {
 							throw("Unknown source type:" + fromPart);
 					}
 					if (patternArg) {
-						let groupArg = matchPart[i].match(  /\"\,([0-9]*)/    ) || 0, // match group number; 0 for whole thing
+						let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ), // match group number
 						    removePat = false;
 						if (extractSource) {
 							let result = rx.exec(extractSource); // extract Pattern from body
 							if (result && result.length) {
 								let group = groupArg ? parseInt(groupArg[1]) : 0,
 								    replaceGroupString = '';
+								if (isNaN(group)) group = 0;
 								if (group>result.length) {
 									util.logToConsole("Your group argument [" + group + "] is too high, do you have enough (round brackets) in your expression?");
 								}
 								else {
-									replaceGroupString = result[group];
+									if (groupArg==null) { // [Bug 26634] third parameter is a replacement string
+										// check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
+										let commaPos = matchPart[i].lastIndexOf(",\"");
+										if (commaPos>0) {
+											let thirdArg = matchPart[i].substring(commaPos), // search for end of string ")
+											    endPos = thirdArg.indexOf("\")");
+											if (endPos>0) {
+												replaceGroupString = thirdArg.substring(2,endPos);
+											}
+											else {
+												util.logToConsole("replaceText - last string parameter is not well formed.");
+												replaceGroupString = ""; // not well formed
+											}
+										} 
+										else
+											replaceGroupString = "";
+									}
+									else
+									  replaceGroupString = result[group];
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 								}
 								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
 								msg = msg.replace(matchPart[i], replaceGroupString);
 							}
-							else { // [Bug 26512]
+							else { // [Bug 26512] - if matchText is used multiple times, the result is blank
 								removePat = true;
 								msg = msg.replace(matchPart[i],"");
 							}
@@ -1010,7 +991,7 @@ SmartTemplate4.parseModifier = function(msg) {
 	}
 	
 	const util = SmartTemplate4.Util,
-	      preferences = SmartTemplate4.Preferences,
+	      prefs = SmartTemplate4.Preferences,
 				Ci = Components.interfaces,
 				Cc = Components.classes;
 	
@@ -1099,10 +1080,38 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         Cc = Components.classes,
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
-        preferences = SmartTemplate4.Preferences;
+        prefs = SmartTemplate4.Preferences,
+				licenser = SmartTemplate4.Licenser;
+				
+	if (!licenser.hasLicense && licenser.GracePeriod==0) {
+		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
+		if (varX.test(msg)) {
+			const PreviewLength = 320,
+			      startVars = msg.search(/%\S*%/),
+						isTruncateStart = (startVars > 10); // cut off text before first %var%
+			let txtAlert = util.getBundleString("SmartTemplate4.notification.license.required", 
+			                 "SmartTemplate⁴ requires a license to continue working. Read more at the bottom of the compose window."),
+					txtParseTitle = util.getBundleString("SmartTemplate4.notification.parsing", "Parsing variables:"),
+			    parseString = 
+						(isTruncateStart ? "…" : "") +
+						msg.substr(isTruncateStart ? startVars : 0);
+						
+			parseString = txtParseTitle + '\n' +
+			    parseString.substr(0, PreviewLength) +
+					(parseString.length>PreviewLength ? "…" : "")
+					
+			// show a fancier "branded" alert:
+			SmartTemplate4.Message.display(txtAlert + '\n\n' + parseString, 
+				"centerscreen,titlebar,modal,dialog",
+				{ ok: function() { ; }},
+				Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window
+			);
+			debugger;
+		}
+	}
 				
 	function getSubject(current) {
-		if (preferences.isDebugOption("tokens.deferred")) debugger;
+		if (prefs.isDebugOption("tokens.deferred")) debugger;
 		util.logDebugOptional('regularize', 'getSubject(' + current + ')');
 		let subject = '';
 		if (current){
@@ -1147,19 +1156,23 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				if (!el)
 					util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
 				else { // it's a reserved word, likely a header
-					if (preferences.isDebugOption("tokens.deferred")) debugger;
+					if (prefs.isDebugOption("tokens.deferred")) debugger;
 					if (typeof s =='undefined' || (s=="" && composeType=='new')) {
 						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
 						// wrap into <smarttemplate > for later deferral (works only in HTML)
 						// use pink fields for new emails for the New Mail case - this var can not be used in...
-						s = util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+						if (el != "reserved" && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
+							s = str;
+						}
+						else
+							s = util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
 						util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
 					}
 				}
 				return s;
 			} 
 			catch (ex) {
-				if (preferences.isDebugOption("tokens.deferred")) debugger;
+				if (prefs.isDebugOption("tokens.deferred")) debugger;
 				// let's implement later resolving of variables for premium users:
 				// throws "hdr is null"
 				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
@@ -1221,7 +1234,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// messageHeaderSink.dummyMsgHeader  (has author, recipients, subject, deliveredTo, messageId)
 		// messageHeaderSink.dummyMsgHeader.__proto__  has more fields, such as flags, datee, ccList, accountKey, listPost, mime2DecodedSubject() getter...)
 		msgDbHdr =  messageHeaderSink.dummyMsgHeader;
-		debugger;
 		try {
 			hdr = (composeType != "new") ? new this.clsGetAltHeader(msgDbHdr) : null;
 		}
@@ -1259,7 +1271,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   
   
 
-  if (preferences.isDebugOption('regularize')) debugger;
+  if (prefs.isDebugOption('regularize')) debugger;
 	let date = (composeType != "new") ? msgDbHdr.date : null;
 	if (composeType != "new") {
 		// for Reply/Forward message
@@ -1284,7 +1296,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// identity(mail) is the new ownmail
 	addTokens("reserved", "ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
 					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-					"X:=today", "X:=calculated", "dbg1", "datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
+					"X:=today", "X:=calculated", "X:=timezone", "dbg1", "datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
 					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
 					"messageRaw", "file", "attach", //depends on the original message, but not on any header
           "header.set", "header.append", "header.prefix, header.delete",
@@ -1346,12 +1358,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// duplicate for now
 		function matchText(regX, fromPart) {
 			try {
-				if (preferences.isDebugOption('parseModifier')) debugger;
 				let matchPart = msg.match(regX);
 				if (matchPart) {
+					if (prefs.isDebugOption('parseModifier')) debugger;
 					for (let i=0; i<matchPart.length; i++) {
 						util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
-						let patternArg = matchPart[i].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
+						let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? for non greedy to match first closing doublequote
 								hdr,
 								extractSource = '',
 								rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
@@ -1373,23 +1385,50 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 								break;
 							case 'body':
 								let rootEl = gMsgCompose.editor.rootElement;
-								extractSource = rootEl.innerText;
-								util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
+								// we may still need to remove the div.moz-cite-prefix, let's look for a blockquote
+								if (rootEl.childNodes.length) {
+									for (let c=0; c<rootEl.childNodes.length; c++ ) {
+										let el = rootEl.childNodes[c];
+										if (el.tagName && el.tagName.toLowerCase() == 'blockquote') {
+											extractSource = el.innerText;  // quoted material
+										}
+									}
+								}
+								if (!extractSource)
+								  extractSource = rootEl.innerText;
 								util.addUsedPremiumFunction('matchTextFromBody');
+								util.logDebugOptional('parseModifier',"Extracting " + rx + " from editor.root:\n" + extractSource);
 								break;
 							default:
 								throw("Unknown source type:" + fromPart);
 						}
 						if (patternArg) {
-							let groupArg = matchPart[i].match(  /\"\,([0-9]*)/    ) || 0, // match group number; 0 for whole thing
+							let groupArg = matchPart[i].match( /\"\,([0-9]+)/ ), // match group number
 									removePat = false;
 							if (extractSource) {
 								let result = rx.exec(extractSource); // extract Pattern from source
 								if (result && result.length) {
 									let group = groupArg ? parseInt(groupArg[1]) : 0;
+									if (isNaN(group)) group = 0;
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 									util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n'
 																+ result[group]);
+									if (groupArg==null) { // third parameter is a replacement string
+										// check for string arg - after second comma: %header.append.matchFromSubject(hdr,regex,"replaceText"])%
+										let commaPos = matchPart[i].lastIndexOf(",\"");
+										if (commaPos>0) {
+											let thirdArg = matchPart[i].substring(commaPos), // search for end of string ")
+											    endPos = thirdArg.indexOf("\")");
+											if (endPos>0) {
+												let txt = thirdArg.substring(2,endPos);
+												return txt;
+											}
+											else {
+												util.logToConsole("replaceText - last string parameter is not well formed.");
+												return ""; // not well formed
+											}
+										} 
+									}									
 									return result[group];
 								}
 								else
@@ -1421,21 +1460,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       const whiteList = ["subject","to","from","cc","bcc","reply-to"],
             ComposeFields = gMsgCompose.compFields;
 						
-			if (preferences.isDebugOption('headers')) debugger;			
+			if (prefs.isDebugOption('headers')) debugger;			
 			util.addUsedPremiumFunction('header.' + cmd);
       let targetString = '',
           modType = '',
-          argument = argString.substr(argString.indexOf(",")+1),
-					groupArg = 0,
-					matchRegex = ""; // cut off first part (command)
+          argument = argString.substr(argString.indexOf(",")+1); 
 			switch (matchFunction) {
 				case "": // no matchFunction, so argString is literal
 					argument = argument.substr(1, argument.lastIndexOf(")")-2);
 				  break;
 				case "matchFromSubject":
 				case "matchFromBody":
-					matchRegex = argument.substr(1, argument.lastIndexOf(",")-1);
-				  groupArg = parseInt(argument.substr(argument.lastIndexOf(",")+1));
 					let regX = new RegExp("%header." + cmd + "." + matchFunction + "\(.*\)%", "g");
 					
 					if (matchFunction == 'matchFromBody') {
@@ -1456,7 +1491,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       try {
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
-          util.logToConsole("invalid header - no permission to modify: " + hdr);
+          util.logToConsole("invalid header - no permission to modify: " + hdr + 
+					  "\nSupported headers: " + whiteList.join(', '));
           return '';
         }
         // get
@@ -1547,8 +1583,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
         switch (hdr) {
           case 'subject':
-            document.getElementById("msgSubject").value = targetString;
-            ComposeFields.subject = targetString;
+					  // replace newline characters with spaces and trim result!
+					  let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
+            document.getElementById("msgSubject").value = subjectString;
+            ComposeFields.subject = subjectString;
             break;
           case 'to':
             ComposeFields.to = targetString;
@@ -1577,6 +1615,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       return ''; // consume
     }
     
+		function checkIsURLencoded(tok) {
+			debugger;
+			if (tok.length>=4) {
+				let t = tok.substr(1,2);
+				if (/[0-9a-fA-F]+/.test(t)) {
+					return true;
+				}
+			}
+			return false;
+		}
+					
+
 		let originalToken = token;
 		
     let tm = new Date(),
@@ -1584,13 +1634,22 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		    expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); };
 		if (!SmartTemplate4.calendar.bundle)
 			SmartTemplate4.calendar.init(null); // default locale
-		let cal = SmartTemplate4.calendar;
+		let cal = SmartTemplate4.calendar,
+		    nativeUtcOffset = tm.getTimezoneOffset(); // UTC offset for current time,  in minutes
 
 		
 		// what if we go over date boundary? (23:59)
 		let msOffset = (SmartTemplate4.whatIsHourOffset ? SmartTemplate4.whatIsHourOffset*60*60*1000 : 0)
 		               + (SmartTemplate4.whatIsMinuteOffset ?  SmartTemplate4.whatIsMinuteOffset*60*1000 : 0),
 		    dayOffset = SmartTemplate4.whatIsDateOffset;
+				
+		if (SmartTemplate4.whatIsTimezone) {
+			let forcedTz = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone);
+			msOffset = msOffset + forcedTz*60*60*1000 - nativeUtcOffset*60*1000;
+			util.logDebug("Adding timezone offsets:\n" +
+			  "UTC Offset: " + nativeUtcOffset/(-60) + "\n" +
+				"Forced Timezone:" + forcedTz);
+		}
 		
 		// date is sent date when replying!
 		// in new mails or if offset is applied we use dateshort
@@ -1610,7 +1669,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			tm.setDate(tm.getDate() + dayOffset);
 		}
 
-		let debugTimeStrings = (preferences.isDebugOption('timeStrings'));
+		let debugTimeStrings = (prefs.isDebugOption('timeStrings'));
 		if (!arg) arg='';
 		try {
 			// for backward compatibility
@@ -1623,8 +1682,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
 			}
 
-      if (preferences.isDebugOption('tokens') && token != "X:=today") debugger;
-			let isUTC = SmartTemplate4.whatIsUtc;
+      if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;
+			let isUTC = SmartTemplate4.whatIsUtc, params;
 			switch(token) {
 				case "deleteText": // return unchanged
 				case "replaceText": // return unchanged
@@ -1765,7 +1824,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             retVal = '<sig class="st4-signature" removeDashes=' + isRemoveDashes + '>' + dmy + '</sig>' // 
 					}
           else {
-					// BIG FAT SIDE EFFECT!
+					  // BIG FAT SIDE EFFECT!
+						if (prefs.isDebugOption('composer')) debugger;
             let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
 						retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true);
             if (!retVal) retVal=''; // empty signature
@@ -1804,8 +1864,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return "";
 				case "X:=calculated":  // calculated(numberOfDays)
 				  if (debugTimeStrings) debugger;
-					let params = arg.substr(1,arg.length-2).split(','),	
-				      dateOffset = (params.length>0) ? parseInt(params[0] || "0" ) : 0,
+					params = arg.substr(1,arg.length-2).split(',');
+				  let dateOffset = (params.length>0) ? parseInt(params[0] || "0" ) : 0,
 							tOffset = (params.length>1) ? params[1] : "00:00";
 					let hm = tOffset.split(':'),
 					    hourOffset = parseInt(hm[0]),
@@ -1816,6 +1876,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					
 					util.logDebugOptional ('timeStrings', "Setting date offset to " + dateOffset + " days, " + hourOffset + ":" + minOffset + " hours.");
 					return "";
+				case "X:=timezone":
+				  if (debugTimeStrings) debugger;
+					params = arg.substr(1,arg.length-2).split(',');
+				  SmartTemplate4.whatIsTimezone = params[0];
+				  return "";
 				case "cursor":
 					util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
 					//if(isStationery)
@@ -1874,7 +1939,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               case "prefix":
                 return modifyHeader(modHdr, 'prefix', arg, matchFunction);
               case "delete":
-								if (preferences.isDebugOption('parseModifier')) debugger;
+								if (prefs.isDebugOption('parseModifier')) debugger;
                 modifyHeader(modHdr, 'delete', arg, ''); // no match function - this works within the same header (e.g. subject)
 								return '';
               default: 
@@ -1898,10 +1963,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 							}
 						}
 					} 
+					
 					// wrap variables that can't be resolved at the moment
 					if (typeof theHeader == "undefined" || isFwdArg) {
 						if (!arg) arg='';
-						token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+							
+						if (!util.checkIsURLencoded(token)) {
+							token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+						}
 						return token; // this is HTML: we won't escape it.
 					}
 					// <----  early exit for non existent headers, e.g. "from" in Write case
@@ -1932,7 +2001,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		catch(ex) {
 			util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
-			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+			if (!util.checkIsURLencoded(token))
+				token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+			else
+				return token;
 		}
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
@@ -2030,15 +2102,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window,
 		    attachments=[];
 		try {
-			// alert('the attach() function is still work in progress!')
-			debugger;
-			
 			// https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2508
 			/*
 			let nsFile = Services.io.getProtocolHandler("file")
 				.QueryInterface(Ci.nsIFileProtocolHandler)
 				.getFileFromURLSpec(uri); // img.src
-				*/
+			*/
 				
 			let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils;
 			
@@ -2105,7 +2174,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       };        
       sandbox.variable = function(name, arg) {
         arg = arg || "";
-        if (preferences.isDebugOption('sandbox')) debugger;
+        if (prefs.isDebugOption('sandbox')) debugger;
         let retVariable = replaceReservedWords("", name, arg || "");
         util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
           + 'returns: ' + retVariable);
@@ -2125,7 +2194,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       for (let name in TokenMap) {
         sandbox[name] = (function(aname) {
 					return function(arg){
-            if (preferences.isDebugOption('sandbox')) debugger;
+            if (prefs.isDebugOption('sandbox')) debugger;
 						if (typeof arg === "undefined") {
               util.logDebugOptional('sandbox','sandbox[] arg undefined, returning %' + aname +'()%');
               return "%"+aname + "()%"; //do not allow name() 
@@ -2144,7 +2213,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	  //  alert(script);
 	  var x;
 	  try {
-      if (preferences.isDebugOption('sandbox')) debugger;
+      if (prefs.isDebugOption('sandbox')) debugger;
 	    x = Cu.evalInSandbox("(" + script + ").toString()", sandbox); 
 			//prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
 	    if (x.toString === String.prototype.toString) {
@@ -2166,7 +2235,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
 	
 	/*  deprecating bs code. */
-	if (preferences.getMyBoolPref('xtodaylegacy')) {
+	if (prefs.getMyBoolPref('xtodaylegacy')) {
 		//Now do this chaotical stuff:
 		//Reset X to Today after each newline character
 		//except for lines ending in { or }; breaks the omission of non-existent CC??
@@ -2202,7 +2271,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
-  if (preferences.isDebugOption('regularize')) debugger;
+  if (prefs.isDebugOption('regularize')) debugger;
   msg = msg.replace(/%([\w-:=.]+)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
 	

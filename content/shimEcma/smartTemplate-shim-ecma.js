@@ -1,7 +1,11 @@
 
 // MODERN SHIM CODE
 if (!SmartTemplate4.Shim) {
-	Components.utils.import("resource:///modules/iteratorUtils.jsm");
+	var { fixIterator } = 
+	  ChromeUtils.import ?
+	  ChromeUtils.import("resource:///modules/iteratorUtils.jsm", null) :
+	  Components.utils.import("resource:///modules/iteratorUtils.jsm");
+		
 	SmartTemplate4.Shim = {
 		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {
 			const Util = SmartTemplate4.Util,

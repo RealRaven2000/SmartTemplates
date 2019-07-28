@@ -49,9 +49,14 @@ var EXPORTED_SYMBOLS = [];
 	try {
 					
 		Cu.import("resource://stationery/content/stationery.jsm");
-		Cu.import("resource://gre/modules/Services.jsm");
 		
 		if (isStationery) {
+			var { Services } =
+				ChromeUtils.import ?
+				ChromeUtils.import('resource://gre/modules/Services.jsm') :
+				Components.utils.import('resource://gre/modules/Services.jsm');
+			
+			
 			log('stationery', 'Calling Stationery.templates.registerFixer()');
 			
 			Stationery.templates.registerFixer({

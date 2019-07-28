@@ -3,15 +3,15 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://smarttemplate4/skin/common/smartTemplate-register.css" title="SmartTemplateRegStyles" type="text/css"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://smartTemplate4/locale/register.dtd" >
+<!DOCTYPE dialog SYSTEM "chrome://smartTemplate4/locale/register.dtd" >
 
 <dialog 
   title="&licenseWindow.title;"
 	id="smarttemplate-register"
 	buttons="none"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	ondialogcancel="SmartTemplate4.Licenser.cancel();"
-	onload="SmartTemplate4.Licenser.load();"
+	ondialogcancel="var cancel=SmartTemplate4.Licenser.cancel.bind(SmartTemplate4.Licenser); cancel();"
+	onload="var load=SmartTemplate4.Licenser.load.bind(SmartTemplate4.Licenser); load();"
 >
 
 	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
@@ -48,9 +48,11 @@
 			
 		</hbox>
 		
+		<description class="para">&licenseTypes;</description>
+		
 		<description class="para">&intro;</description>
 
-		<description class="para">&testDrive;</description>
+		<description class="para">&testDriveS;</description>
 			
 		<table>
 			<tr>
@@ -62,7 +64,7 @@
 					<description class="para">&yearlyLicense.premiumFeatures;</description>
 					<label class="para link" 
 					onclick="SmartTemplate4.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
-					<description class="para">&yearlyLicense.usageTerm;</description>
+					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
 				</td>
 			</tr>	
 			<tr>	
@@ -132,16 +134,32 @@
 					<spacer flex="1" />
 				</td>
 				<td>
-					<label class="shilling">&buyLicense.instruct;</label>
+					<label class="shilling">&buyPremiumLicense.instruct;</label>
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnLicense"
 					  class="register"
-						label="&buyPersonalLicense.button;"
+						label="&buyPremiumLicense.button;"
 						oncommand="SmartTemplate4.Licenser.goPro(0);" />
 				</td>
 			</tr>
-			<!-- hide these when releasing first version !!-->
+			
+			<tr align="center" id="StandardLicenseRow">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyStandardLicense.instruct;</label>
+				</td>
+				<td class="btnLicenseContainer">
+					<button id="btnStdLicense"
+					  class="register"
+						label="&buyStandardLicense.button;"
+						oncommand="SmartTemplate4.Licenser.goPro(2);" />
+				</td>
+			</tr>
+			
+			
 			<tr align="center">
 				<td>
 					<spacer flex="1" />

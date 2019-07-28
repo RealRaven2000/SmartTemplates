@@ -11,7 +11,7 @@
 
 #SmartTemplate4-Options-goPro #btnLicense:hover {
 	animation: none !important;
-	outline: 230px solid rgba(0,0,0,0.4); /* dim background on hover */
+	outline: 165px solid rgba(0,0,0,0.4); /* dim background on hover */
 	transition: outline-color 1s ease;
 }
 
@@ -40,19 +40,27 @@
 }
 
 #validationResults description {
-  max-width:450px;
+  max-width: 420px;
 }
 #validationResults:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-
+#validationStandard,
 #validationPassed {
   color: rgb(0,120,0);
 }
 
+#licenseDateLabel.important {
+	background-color: black;
+	border: 2px solid yellow;
+	border-radius: 3px;
+	color: yellow;
+	font-weight: bold;
+	padding: 0.4em;
+}
 
-
+#btnStdLicense label,
 #btnLicense label,
 #btnDomainLicense label,
 #btnEnterCode label
@@ -64,14 +72,14 @@
 	max-height: 2em; /* slimmer donate button */
 }
 
-#btnLicense, #btnEnterCode, #btnDomainLicense {
+#btnStdLicense, #btnLicense, #btnEnterCode, #btnDomainLicense {
   font-family: cambria, Georgia, serif; /* see also .niceFont in quickfolders-options.css */
   font-size: 10.2pt;
 	font-style: normal;
 	margin: 2px 2px 2px 2px !important;
 }
 
-#btnLicense, #btnDomainLicense {
+#btnStdLicense, #btnLicense, #btnDomainLicense {
 	-moz-appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
@@ -84,6 +92,7 @@
 	transition-duration: 0.75s, 0.2s;
 }
 
+#btnStdLicense:hover,
 #btnLicense:hover,
 #btnDomainLicense:hover
 {
@@ -94,6 +103,15 @@
 	box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.7);
 }
 
+#btnStdLicense {
+	background: linear-gradient(to bottom, #f4ad6b 0%,#fca72f 22%,#f76d04 51%,#ec9d26 100%) !important;
+}
+
+#btnStdLicense:hover {
+	background: linear-gradient(to bottom, #e2cb95 0%,#d6be68 24%,#cea51e 52%,#eded44 100%) !important;
+}
+
+
 #btnDomainLicense {
 	background: linear-gradient(to bottom, rgb(104, 30, 154) 0%, rgb(132, 42, 216) 50%, rgb(123, 32, 202) 51%, rgb(179, 126, 232) 100%) !important;
 }
@@ -102,6 +120,7 @@
 	background: linear-gradient(to bottom, rgba(200, 86, 175, 0.9) 0%, rgba(140, 15, 106, 0.9) 48%, rgba(109, 5, 76, 0.8) 100%) !important;
 }
 
+#btnStdLicense:active,
 #btnLicense:active,
 #btnDomainLicense:active {
 	margin: 4px 0px 0px 4px !important;
@@ -117,14 +136,14 @@
 }
 
 #haveLicense, #buyBox {
-	color: rgba(30, 100, 190, 0.8);
-	font-size: 8pt;
+	color: rgba(60, 40, 70, 0.9);
+	font-size: 10pt;
 	text-align: center;
 	font-style: italic;
 }
 
 .buyAction td {
-	padding:3px;
+	padding: 3px;
 	vertical-align: middle;
 }
 
@@ -132,11 +151,15 @@
 @keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 .btnLicenseContainer {
+	position: absolute;
 	height: 60px;
 }
 
 #btnLicense {
   animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+#btnLicense.upgrade {
+	animation: none;
 }
 
 .licenseKey {
@@ -144,8 +167,16 @@
 	font-family: Consolas, Courier, monospace;
 }
 
+#licenseContainer {
+	position: absolute;
+}
+
 #txtLicenseKey {
-	height: 5.5em !important;
-	min-width: 25em; /* avoid "shrinking" too much in licenseKey only mode */
-	max-width: 450px; 
+	height: 6.6em !important;
+	/*! min-width: 420px; */ /* avoid "shrinking" too much in licenseKey only mode */
+	/*! max-width: 420px; */ 
+	width: 96%;
+	position: relative;
+  right: 8px !important;
+  left: 4px !important;
 }

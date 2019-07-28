@@ -73,7 +73,7 @@ content smarttemplate4-locales locale/
 style  chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion<59.0a1
 style  chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion>=59.0a1
 style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/default/compose-overlay.css
-
+style  chrome://smarttemplate4/content/settings.xul  chrome://SmartTemplate4/skin/default/st4-settings68.css  appversion>=61
 
 #### SeaMonkey XUL OVERLAYS application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} ####
 #### PostBox XUL OVERLAYS application=postbox@postbox-inc.com ####
@@ -84,7 +84,9 @@ overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome:
 # am-addressing.xul (am addressing -> Accountmanager)
 overlay chrome://messenger/content/am-addressing.xul                     chrome://smarttemplate4/content/am-addressingOverlay.xul
 # messenger.xul (Mainwindow -> "Statusbar")
-overlay chrome://messenger/content/messenger.xul                         chrome://SmartTemplate4/content/messengerOverlay.xul
+overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/content/messengerOverlay.xul appversion<65.0
+overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/content/messengerOverlay65.xul appversion>=65.0
+
 
 
 # shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated

@@ -27,8 +27,9 @@
 
 #innerMessage {
 	font-size: 12pt;
-	min-height: 5em;
+	/*! min-height: 5em; */
 	min-width: 300px;
+	height: auto;
 	margin: 1em 3em 1.5em;
 	padding: 1em 2em;
 	width: 80%;

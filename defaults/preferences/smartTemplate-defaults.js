@@ -4,10 +4,10 @@ pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://sm
 /* global settings */
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
-pref("extensions.smartTemplate4.breaksAtTop", 1);
+pref("extensions.smartTemplate4.breaksAtTop", 0);
 pref("extensions.smartTemplate4.forceParagraph", true);
 pref("extensions.smartTemplate4.showStatusIcon", true);
-pref("extensions.smartTemplate4.statusIconLabelMode", 1); /* 0 - no label; 1 - autohide; 2 - always show */
+pref("extensions.smartTemplate4.statusIconLabelMode", 2); /* 0 - no label; 1 - autohide; 2 - always show */
 pref("extensions.smartTemplate4.font.size", 9); /* 8pt .templateBox font size */
 pref("extensions.smartTemplate4.parseSignature", false);
 pref("extensions.smartTemplate4.firstLastSwap", true);
@@ -33,6 +33,7 @@ pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); /* [BUG 26434] delay for inline image replacement when forwarding */
 pref("extensions.smartTemplate4.xtodaylegacy", false); /* old way of processing which temporarily inserted  %X:=today% on _EVERY_ new line */
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
+pref("extensions.smartTemplate4.files.path", ""); /* location of saved / loaded templates */
 
 
 /* this is a convenience function - if I change from after or during composing, delete sig */

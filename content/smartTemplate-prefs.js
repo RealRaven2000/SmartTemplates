@@ -6,12 +6,12 @@ SmartTemplate4.Preferences = {
 	Prefix: "extensions.smartTemplate4.",
 	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 
-	get Debug() {
+	get isDebug() {
 		return this.getMyBoolPref("debug");
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if (!this.Debug)
+		if (!this.isDebug)
 			return false;
 		try {
 			return this.getMyBoolPref("debug." + option);
@@ -20,9 +20,14 @@ SmartTemplate4.Preferences = {
 	},
 	
 	getStringPref: function getStringPref(p) {
-    let prefString =''
+    let prefString ='',
+		    key = this.Prefix + p;
     try {
-      prefString = this.service.getCharPref(this.Prefix + p);
+		  const Ci = Components.interfaces, Cc = Components.classes;
+			prefString = 
+				this.service.getStringPref ?
+				this.service.getStringPref(key) :
+        this.service.getCharPref(key);
     }
     catch(ex) {
       SmartTemplate4.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
@@ -33,7 +38,10 @@ SmartTemplate4.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-		return this.service.setCharPref(this.Prefix + p, v);
+		if (this.service.setStringPref)
+			return this.service.setStringPref(this.Prefix + p, v);
+		else 
+			return this.service.setCharPref(this.Prefix + p, v);
 	},
 
 	getIntPref: function(p) {

@@ -31,26 +31,27 @@
   </vbox>
 
 <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
-  <statusbar id="status-bar">
-	  <statusbarpanel insertafter="totalMessageCount" id="SmartTemplate4Panel" class="statusbarpanel">
+  <hbox id="status-bar">
+<!-- <statusbarpanel insertafter="totalMessageCount" id="SmartTemplate4Panel" class="statusbarpanel"> -->
 			<toolbarbutton id="SmartTemplate4Messenger"
 										 class="statusbarpanel-iconic"
 										 label="&smartTemplate4.settings.label;"
 										 tooltiptext="&smartTemplate4.settings.tooltip;"
+										 insertafter="totalMessageCount"
 										 oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
-	  </statusbarpanel>
-  </statusbar>
+<!-- </statusbarpanel> -->
+  </hbox>
 
 
-  <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-  <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-  <script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-	<script type="application/x-javascript" src="chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
-	<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
-	<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
-  <script type="application/x-javascript" src="chrome://smarttemplate4/content/settings.js"/>
+  <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+  <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+  <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+	<script type="application/javascript" src="chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
+  <script type="application/javascript" src="chrome://smarttemplate4/content/settings.js"/>
 
-<script type="application/x-javascript">
+<script type="text/javascript">
   SmartTemplate4.startUp();
 </script>
 

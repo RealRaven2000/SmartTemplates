@@ -11,8 +11,6 @@
         orient = "vertical"
         onload = "SmartTemplate4.Message.loadMessage();"
         onunload = "SmartTemplate4.Message.unloadMessage(this);"
-        ondialogaccept = ""
-        ondialogcancel = ""
         width = "750"
         height = "200">
 

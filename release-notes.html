@@ -16,6 +16,9 @@ You can now use the matchFromSubject and matchFromBody functions in the followin
 this is different from the already supported usage
 %header.set.matchFromBody(<i>header</i>,<i>search pattern</i>,<i>match group</i>)%
 The main difference is that match group is a number - which will insert / set / append the matched text found during the search, whereas <i>replacement text</i> is a text that is used instead if the search pattern is found. For usage simply add the double quotation marks around the 3rd parameter.</li>
+<li> <a name="26677" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26677" target="_blank">[Bug 26677]</a> <code>%header.set.matchFromBody()</code> improvements for use with subject line. It is now possible to quote the first n characters of the quoted email like this:
+
+<tt>%header.set.matchFromBody(subject,"(\s*\S){1,75}",0)%</tt></li>
 <li>Added button for extending your SmartTemplate⁴ Pro License. This will now show up on the  SmartTemplate⁴ Pro Tab 30 days before the current license expires. The web shop will give you an additional year based on the current expiry date for a smaller price (typically 20 %) than a new license. If the license is already expired, then the current date is used to calculate new expiry date, giving you also a full year.</li>
 <li>SmartTemplate⁴ from now on will remember the last selected folder using the file picker when saving / loading  templates.</li>
 <li> Added a button for opening the Stationery configuration tab. </a>
@@ -32,17 +35,18 @@ To determine a specific position other than specified in account settings, use %
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26635">[Bug 26635]</a> Cursor not placed in "To:" Row when writing/forwarding email. 
 Fix: SmartTemplate⁴ will now check when writing new emails if the "To:" address is already set. If not, the cursor will be placed into the address widget and %cursor% ignored.</li>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26636">[Bug 26636]</a> Stationery broken with %sig(text)%. When using a Stationery template with the "Use instead of default quote header" option switched off, some of the template text may be accidentally deleted from the Email.</li>
+<li>Improved matchTextFromBody: avoid scanning inserted quote header or anything outside of the replied to email.</li>
 </ul>
 <b>Other</b>
 <ul> 
 <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>  ESR 2019 Readiness - compatibility with Thunderbird 68
 
-Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing effort to  future proof SmartTemplate&#8308; for 2020. This will also mean eventually making the minimum requirement using Thunderbird version 60. 
-The latest test version (2.1 pre 244) can be be found <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26667#c2">here</a>.
+Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing effort to  future proof SmartTemplate&#8308; for 2020. This will also mean eventually making the minimum requirement using Thunderbird version 60.
 
 <li> Replaced prefwindows with dialogs. There are a lot of changes in the code to make storing preferences in Thunderbird's configuration database work again.</li>
 <li> Use newer preferences script.</li>
 <li> Replace groupbox caption elements with hbox + additional layout fixes.</li>
+<li> Replace statusbar element with hbox (Tb65 and higher) </li>
 <li> Use new promise-based AddonManager object.</li>
 <li> Remove document.createElement in xul documents (replace with createXULElement until Mozilla decides to deprecate that too).</li>
 <li> Improved loading script in composer to be more reliable.</li>

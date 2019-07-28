@@ -105,7 +105,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		    sig = '',
 		    isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
 		util.logDebugOptional(
-      'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ',defined=' + signatureDefined + ', compose type=' + composeType + ')  ========');
+      'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ', defined type=' + signatureDefined + ', compose type=' + composeType + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement,
 		    nodes = gMsgCompose.editor.rootElement.childNodes;
 		SmartTemplate4.signature = null;
@@ -588,6 +588,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  case "%sig(none)%":
 				return 'omit';
 			default:	  // invalid %sig% variable!
+				util.logToConsole("Invalid %sig% variable: " + match[0])
 				return '';
 		}
 	};
@@ -922,9 +923,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		// start parser...
 		try {
 			switch (gMsgCompose.type) {
-				case msgComposeType.Template: // new type for 1.6
+				case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
 					composeCase = 'tbtemplate'; // flags.isThunderbirdTemplate
-					st4composeType = 'new';
+					st4composeType = "new"; // was "new" but there should be no processing in templates
 					break;
 				// new message -----------------------------------------
 				//	(New:0 / NewsPost:5 / MailToUrl:11)
@@ -971,6 +972,14 @@ SmartTemplate4.classSmartTemplate = function() {
 							st4composeType = 'new';
 					}
 					break;
+				case msgComposeType.EditAsNew: // Tb 60+
+				  // no processing should be done
+					util.logDebug("Edit As New - exit insertTemplate() without processing")
+					return;
+				case msgComposeType.EditTemplate: // Tb 60+
+				  // no processing should be done
+					util.logDebug("Edit Template - exit insertTemplate() without processing")
+					return;
 				default:
 					st4composeType = "";
 					break;
@@ -999,23 +1008,39 @@ SmartTemplate4.classSmartTemplate = function() {
 				*/
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
-				rawTemplate = (!flags.isThunderbirdTemplate) ? pref.getTemplate(idKey, st4composeType, "") : "";
-				// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
-        sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
-        // if Stationery has %sig(none)% then flags.omitSignature == true
+				if (flags.isThunderbirdTemplate) 
+					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
+				else
+					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
+				
+				if (!flags.isStationery) {
+					// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
+					sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
+				}
+				else
+					sigType = flags.sigType; // initialised in notifyComposeBodyReady if tested in stationery
+				
+				// if Stationery has %sig(none)% then flags.omitSignature == true
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
 				// get signature and remove the one Tb has inserted
-				SmartTemplate4.signature = extractSignature(theIdentity, sigVarDefined, st4composeType);
+				SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+				
+				if (flags.isThunderbirdTemplate) {
+					// use innerHTML instead of outer (we do not want to replace the "body" part)
+					// if %sig% variable is in Tb Template it is going to be expanded at this step.
+					template = getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
+					// need to empty out the innerHTML if we insert this to avoid duplication.
+					editor.rootElement.innerHTML="";
+				}
+				
+				
         util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
 				// main processing - note: this calls getProcessedText()
-				// for thunderbird template case, we should probably get the body contents.
-				template = (!flags.isThunderbirdTemplate) 
-				  ? getSmartTemplate(st4composeType, idKey) 
-					: getProcessedText(editor.rootElement.outerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
-					
+				// for thunderbird template case, we should get the body contents AND PROCESS THEM?
 				
 				if (!flags.isThunderbirdTemplate) {
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
+					template = getSmartTemplate(st4composeType, idKey);
 					quoteHeader = getQuoteHeader(st4composeType, idKey);
 				}
 				let isQuoteHeader = quoteHeader ? true : false;
@@ -1030,13 +1055,12 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							// stationery has a placeholder for the original quote text.
 							if (
-							      pref.isDeleteHeaders(idKey, st4composeType, false)
-									  &&
-									  (!flags.isStationery || flags.hasQuotePlaceholder ||
-										 flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) 
-									)
+									(pref.isDeleteHeaders(idKey, st4composeType, false) || flags.isStationery)
+									&&
+									(!flags.isStationery || flags.hasQuotePlaceholder ||
+									 flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) 
+								)
 							{
-								if (isDebugComposer) debugger;
 								// when in stationery we only delete the quote header and not all preceding quotes!
 								delReplyHeader(idKey, flags.isStationery);
 							}
@@ -1047,19 +1071,17 @@ SmartTemplate4.classSmartTemplate = function() {
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
-						if (  pref.isDeleteHeaders(idKey, st4composeType, false)
+						if (  (pref.isDeleteHeaders(idKey, st4composeType, false) || flags.isStationery)
 								  &&
 									(!flags.isStationery || flags.hasQuotePlaceholder || 
 									  flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader'))
 								)
 						{
-							if (isDebugComposer) debugger;
 							delForwardHeader(idKey, flags.isStationery);
 						}
 						break;
 				}
 				
-				if (isDebugComposer) debugger;
 				if (isQuoteHeader) {
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = util.mailDocument.createElement("div");
@@ -1072,7 +1094,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					   ||
 						 !flags.hasQuoteHeader && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) {
 						let firstQuote = 
-						  (composeCase=='forward') ?
+						  (st4composeType=='fwd') ?
 							editor.rootElement.firstChild :
 						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
 						// [Bug 26261] Quote header not inserted in plain text mode
@@ -1137,7 +1159,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// [Bug 26260] only remove body for mailto case if active on account
 		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
-			if (isDebugComposer) debugger;
 			// back up the mailto body
 			bodyContent = bodyEl.innerHTML;
 			bodyEl.innerHTML = '';
@@ -1152,13 +1173,11 @@ SmartTemplate4.classSmartTemplate = function() {
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
 		if (isActiveOnAccount)	{
-			if (isDebugComposer) debugger;
 			util.logDebugOptional('composer','isActiveOnAccount: creating template Div...');
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
 				if (flags.isThunderbirdTemplate && template.length) {
-					debugger;
 					// remove original st4 div
 					let oldSt4Div = editor.document.getElementById("smartTemplate4-template");
 					if (oldSt4Div) {
@@ -1177,7 +1196,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				// ****************************
 				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
 				if (!flags.isStationery) {
-					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML...' + template);
+					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML...\n' + template);
 					templateDiv.innerHTML = template;
 				}
 				else {
@@ -1190,22 +1209,18 @@ SmartTemplate4.classSmartTemplate = function() {
 					// this is where we lose the default "paragraph" style
 					editor.beginningOfDocument();
 					for (let i = 0; i < breaksAtTop; i++)  {
-						if (isDebugComposer) debugger;
 						gMsgCompose.editor.insertNode(
 						                   util.mailDocument.createElement("br"),
 						                   gMsgCompose.editor.rootElement, 0);
 					}
 					// the first Child should be BLOCKQUOTE (header is inserted afterwards)
-					if (isDebugComposer) debugger;
 					util.logDebugOptional('composer','Reply on Top - inserting template before first root child');
 					targetNode = editor.rootElement.insertBefore(templateDiv, editor.rootElement.firstChild); 
 				}
 				else {
 					for (let i = 0; i < breaksAtTop; i++) {
-						if (isDebugComposer) debugger;
 						gMsgCompose.editor.rootElement.appendChild(util.mailDocument.createElement("br"));
 					}
-					if (isDebugComposer) debugger;
 					util.logDebugOptional('composer','Reply at Botton - appending template to first root child');
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
@@ -1217,14 +1232,15 @@ SmartTemplate4.classSmartTemplate = function() {
 				      + '\n' + ex
 				      + '\n' + 'Copy template contents to clipboard?';
 							
-				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
 				SmartTemplate4.Message.display(errorText,
 				              "centerscreen,titlebar",
-				              function() {
+											{ ok: function() {
 				              	let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 				              	oClipBoard.copyString(template); },
-				              function() { ;/* cancel NOP */ }
-				            );
+												cancel: function() { ;/* cancel NOP */ }
+											}
+				              , gMsgCompose.editor.document.defaultView
+				);
 			}
 		}
 		
@@ -1277,7 +1293,9 @@ SmartTemplate4.classSmartTemplate = function() {
 			    ||
 			    composeCase == 'forward' && (theIdentity.sigOnForward || sigVarDefined) && isSignatureSetup
 			    ||
-			    composeCase == 'new' && theSignature && isSignatureSetup)
+			    composeCase == 'new' && theSignature && isSignatureSetup
+					||
+					composeCase == 'tbtemplate' && theSignature && isSignatureSetup)
 			{
 				try {
 					if (!SmartTemplate4.sigInTemplate && theSignature) {
@@ -1293,22 +1311,26 @@ SmartTemplate4.classSmartTemplate = function() {
 							theSignature = sn;
 						}
 						
-						if (sigVarDefined && gMsgCompose.type!=msgComposeType.MailToUrl) { 
+						if (sigVarDefined 
+						    && gMsgCompose.type != msgComposeType.MailToUrl) { 
 						  // find and replace <sig>%sig%</sig> in body.
+							let sigNode;
 							if(flags.isStationery) { 
-							  let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
-								if (sigNode) {
-									let isRemoveDashes = sigNode.getAttribute('removeDashes');
-									if (isDebugComposer) debugger;
-									theSignature.innerHTML = util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
-									sigNode.parentNode.insertBefore(theSignature, sigNode);
-									sigNode.parentNode.removeChild(sigNode);
-								}
+							  sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
+							}
+							else if(composeCase == 'tbtemplate') {
+								// find %sig(..)% text?
+								
+							}
+							if (sigNode) {
+								let isRemoveDashes = sigNode.getAttribute('removeDashes');
+								theSignature.innerHTML = util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
+								sigNode.parentNode.insertBefore(theSignature, sigNode);
+								sigNode.parentNode.removeChild(sigNode);
 							}
 						}
 						else { // append signature using usual methods
 							// if we reply on bottom we MUST ignore sigBottom (signature will not go on top template!)
-							if (isDebugComposer) debugger;
 							if (!theIdentity.replyOnTop || theIdentity.sigBottom) {
 								// only need this in reply case (might not need it at all with breaksAtTop
 								if (composeCase == 'reply' && breaksAtTop == 0)
@@ -1324,7 +1346,6 @@ SmartTemplate4.classSmartTemplate = function() {
 									templateDiv = bodyEl.firstChild.nextSibling;
 								}
 								// insert signature after template
-								if (isDebugComposer) debugger;
 								if (templateDiv.nextSibling) {
 									templateDiv.parentNode.insertBefore(theSignature, templateDiv.nextSibling);
 									templateDiv.parentNode.insertBefore(doc.createElement("br"), templateDiv.nextSibling);
@@ -1362,10 +1383,10 @@ SmartTemplate4.classSmartTemplate = function() {
 			// issue notifications for any premium features used.
 			// all used functions are stored in the main instance of SmartTemplate4 (3pane window)
 			if (util.mainInstance.Util.premiumFeatures.length 
-			    && (!util.hasPremiumLicense(false)
+			    && (!util.hasLicense(false)
 					   || 
 						 prefs.isDebugOption('premium.testNotification'))) {
-				util.popupProFeature(util.mainInstance.Util.premiumFeatures, true, false);
+				util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance
@@ -1410,7 +1431,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				
 				let theParent = targetNode.parentNode;
 				if (theParent) {
-					let nodeOffset = Array.indexOf(theParent.childNodes, targetNode);
+					let nodeOffset = Array.prototype.indexOf(theParent.childNodes, targetNode);
 					// collapse selection and move cursor - problem: stationery sets cursor to the top!
 					if (isCursor) {
 						// look for a child div with lass = 'st4cursor'
@@ -1545,6 +1566,14 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		
 		resetDocument(gMsgCompose.editor, startup);
+		
+		// no license => show license notification.
+		if (!util.mainInstance.Licenser.isValidated) {
+			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
+			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
+		}
+		else
+			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
 		
 		if (SmartTemplate4.hasDeferredVars) {
 			util.setupDeferredListeners(gMsgCompose.editor);

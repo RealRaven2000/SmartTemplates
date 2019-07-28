@@ -151,7 +151,8 @@ SmartTemplate4.IO = {
 		var preferencesElements = document.getElementsByTagName("preferences");
 		var preferencesElement = preferencesElements[preferencesElements.length - 1];
 
-		var preference = preferencesElement.appendChild(document.createElement("preference"));
+		var preference = preferencesElement.appendChild(
+		  document.createElement ? document.createXULElement("preference") : document.createElement("preference"));
 		preference.setAttribute("id", aPrefName);
 		preference.setAttribute("name", aPrefName);
 		preference.setAttribute("type", {"boolean": "bool", "number": "int"}[typeof aValue] || "string");

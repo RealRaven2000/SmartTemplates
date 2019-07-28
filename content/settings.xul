@@ -1,22 +1,24 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
+<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
 <!--  tb 59 -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<!--  tb 68, for groupbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css" ?>
 <?xml-stylesheet href="chrome://smarttemplate4/skin/style.css" type = "text/css" title = "SmartTemplateSettings" ?>
 <?xml-stylesheet href="chrome://smarttemplate4/skin/common/license.css" type="text/css"?>
 
-<prefwindow id = "smartTemplate_prefDialog"
-            xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-            title = "&pref_dialog.title; (&localename.label;)"
-            buttons = "extra2,cancel,accept"
-            buttonlabelextra2 = "&contribute_button;"
-            ondialogextra2 = "SmartTemplate4.Util.showDonatePage();"
-            onload = "st4Load=SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings);st4Load();"
-            onunload = "SmartTemplate4.Settings.onUnload();"
-            >
+<dialog id = "smartTemplate_prefDialog"
+				xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				xmlns:html="http://www.w3.org/1999/xhtml"
+				title = "&pref_dialog.title; (&localename.label;)"
+				buttons = "extra2,accept"
+				buttonlabelextra2 = "&contribute_button;"
+				onload = "(function(){var st4Load=SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings); st4Load();})();"
+				onunload = "SmartTemplate4.Settings.onUnload();"
+				>
 
 	<prefpane id = "smartTemplatePane" orient = "vertical">
 
@@ -136,23 +138,23 @@
 					<!-- ######## Template Preferences ######## -->
 
 					<preferences id = "templates">
-						<preference id = "default_Enable"    name = "extensions.smartTemplate4.common.def"       type = "bool"/>
-						<preference id = "new_Enable"        name = "extensions.smartTemplate4.common.new"       type = "bool"/>
-						<preference id = "rsp_Enable"        name = "extensions.smartTemplate4.common.rsp"       type = "bool"/>
-						<preference id = "fwd_Enable"        name = "extensions.smartTemplate4.common.fwd"       type = "bool"/>
-						<preference id = "new_smartTemplate" name = "extensions.smartTemplate4.common.newmsg"    type = "unichar"/>
-						<preference id = "rsp_smartTemplate" name = "extensions.smartTemplate4.common.rspmsg"    type = "unichar"/>
-						<preference id = "fwd_smartTemplate" name = "extensions.smartTemplate4.common.fwdmsg"    type = "unichar"/>
-						<preference id = "new_isHtml"        name = "extensions.smartTemplate4.common.newhtml"   type = "bool"/>
-						<preference id = "rsp_isHtml"        name = "extensions.smartTemplate4.common.rsphtml"   type = "bool"/>
-						<preference id = "fwd_isHtml"        name = "extensions.smartTemplate4.common.fwdhtml"   type = "bool"/>
-						<preference id = "new_replaceBreaks" name = "extensions.smartTemplate4.common.newnbr"    type = "bool"/>
-						<preference id = "rsp_replaceBreaks" name = "extensions.smartTemplate4.common.rspnbr"    type = "bool"/>
-						<preference id = "fwd_replaceBreaks" name = "extensions.smartTemplate4.common.fwdnbr"    type = "bool"/>
-						<preference id = "rsp_quoteHeader"   name = "extensions.smartTemplate4.common.rspheader" type = "unichar"/>
-						<preference id = "fwd_quoteHeader"   name = "extensions.smartTemplate4.common.fwdheader" type = "unichar"/>
-						<preference id = "rsp_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.rsphead"   type = "bool"/>
-						<preference id = "fwd_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.fwdhead"   type = "bool"/>
+						<preference id = "default_Enable"    name = "extensions.smartTemplate4.common.def"       type = "bool" instantApply="true"/>
+						<preference id = "new_Enable"        name = "extensions.smartTemplate4.common.new"       type = "bool" instantApply="true"/>
+						<preference id = "rsp_Enable"        name = "extensions.smartTemplate4.common.rsp"       type = "bool" instantApply="true"/>
+						<preference id = "fwd_Enable"        name = "extensions.smartTemplate4.common.fwd"       type = "bool" instantApply="true"/>
+						<preference id = "new_smartTemplate" name = "extensions.smartTemplate4.common.newmsg"    type = "unichar" instantApply="true"/>
+						<preference id = "rsp_smartTemplate" name = "extensions.smartTemplate4.common.rspmsg"    type = "unichar" instantApply="true"/>
+						<preference id = "fwd_smartTemplate" name = "extensions.smartTemplate4.common.fwdmsg"    type = "unichar" instantApply="true"/>
+						<preference id = "new_isHtml"        name = "extensions.smartTemplate4.common.newhtml"   type = "bool" instantApply="true"/>
+						<preference id = "rsp_isHtml"        name = "extensions.smartTemplate4.common.rsphtml"   type = "bool" instantApply="true"/>
+						<preference id = "fwd_isHtml"        name = "extensions.smartTemplate4.common.fwdhtml"   type = "bool" instantApply="true"/>
+						<preference id = "new_replaceBreaks" name = "extensions.smartTemplate4.common.newnbr"    type = "bool" instantApply="true"/>
+						<preference id = "rsp_replaceBreaks" name = "extensions.smartTemplate4.common.rspnbr"    type = "bool" instantApply="true"/>
+						<preference id = "fwd_replaceBreaks" name = "extensions.smartTemplate4.common.fwdnbr"    type = "bool" instantApply="true"/>
+						<preference id = "rsp_quoteHeader"   name = "extensions.smartTemplate4.common.rspheader" type = "unichar" instantApply="true"/>
+						<preference id = "fwd_quoteHeader"   name = "extensions.smartTemplate4.common.fwdheader" type = "unichar" instantApply="true"/>
+						<preference id = "rsp_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.rsphead"   type = "bool" instantApply="true"/>
+						<preference id = "fwd_replaceQuoteHeader"   name = "extensions.smartTemplate4.common.fwdhead"   type = "bool" instantApply="true"/>
 					</preferences>
 
 					<hbox align="center">
@@ -177,13 +179,12 @@
 								<!-- <tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" /> -->
 							</tabs>
 
-							<!-- ######## Content New Message Tab ######## -->
-
+							<!-- ######## Content New Message Tab [Write] ######## -->
 							<tabpanels flex = "1" orient = "vertical">
 								<tabpanel flex = "1" orient = "vertical" class = "newGroup">
 									<groupbox flex = "1" orient = "vertical" class="transparent">
-										<caption label = "&pref_newmsg.cap;"/>
-										<vbox flex = "1">
+										<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
+										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id = "new"
 												          label = "&pref_new.label;"
@@ -193,14 +194,15 @@
 											</hbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
-												<!-- rows = "10" -->
-												<textbox id = "newmsg"
-												         flex ="1"
-												         class = "templateBox"
-												         multiline = "true"
-												         tooltiptext = "&pref_template_tip;"
-														     ondrop="SmartTemplate4.Settings.textDropped(event);"
-												         preference = "new_smartTemplate"/>
+												<html:textarea 
+													id = "newmsg"
+													flex ="1"
+													class = "templateBox templateWrite"
+													multiline = "true"
+													tooltiptext = "&pref_template_tip;"
+													ondrop="SmartTemplate4.Settings.textDropped(event);"
+													preference = "new_smartTemplate"
+													preference-editable = "true"/>
 												<checkbox id = "newhtml"
 												          label = "&pref_html.label;"
 												          tooltiptext = "&pref_html.cap;"
@@ -216,11 +218,11 @@
 									</groupbox>
 								</tabpanel>
 
-							<!-- ######## Content Reply Tab ######## -->
+							<!-- ######## Content [Reply] Tab ######## -->
 							<tabpanel flex = "1" class = "replyGroup">
 								<groupbox flex = "1" class="transparent">
-									<caption label = "&pref_rspmsg.cap;"/>
-										<vbox flex = "1">
+									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
+										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id = "rsp"
 												          label = "&pref_rsp.label;"
@@ -231,14 +233,16 @@
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "1">
-													<textbox id = "rspheader"
-													         class = "templateBox quote"
-													         multiline = "true"
-													         flex = "1"
-													         tooltiptext = "&pref_quoteHeaderBox_tip;"
-													         preference = "rsp_quoteHeader"
-															     ondrop="SmartTemplate4.Settings.textDropped(event);"
-													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+													<html:textarea 
+														id = "rspheader"
+														class = "templateBox quote"
+														multiline = "true"
+														flex = "1"
+														tooltiptext = "&pref_quoteHeaderBox_tip;"
+														preference = "rsp_quoteHeader"
+														preference-editable = "true"
+														ondrop="SmartTemplate4.Settings.textDropped(event);"
+														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "rsphead"
 												          label = "&pref_rsphead.label;"
@@ -248,14 +252,16 @@
 										  <label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "2">
-													<textbox id = "rspmsg"
-													         class = "templateBox template"
-													         multiline = "true"
-													         flex = "1"
-													         tooltiptext = "&pref_templateBox_tip;"
-													         preference = "rsp_smartTemplate"
-															 ondrop="SmartTemplate4.Settings.textDropped(event);"
-													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+													<html:textarea 
+														id = "rspmsg"
+														class = "templateBox template"
+														multiline = "true"
+														flex = "1"
+														tooltiptext = "&pref_templateBox_tip;"
+														preference = "rsp_smartTemplate"
+														preference-editable = "true"
+														ondrop="SmartTemplate4.Settings.textDropped(event);"
+														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 											</vbox>
 											<checkbox id = "rsphtml"
@@ -272,11 +278,11 @@
 								</groupbox>
 							</tabpanel>
 
-							<!-- ######## Content Forward Message Tab ######## -->
+							<!-- ######## Content [Forward] Message Tab ######## -->
 							<tabpanel class = "forwardGroup">
 								<groupbox  flex = "1" class="transparent">
-									<caption label = "&pref_fwdmsg.cap;"/>
-										<vbox flex = "1">
+									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
+										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id = "fwd"
 												          label = "&pref_fwd.label;"
@@ -288,14 +294,16 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "1">
 													         <!-- rows = "5" -->
-													<textbox id = "fwdheader"
-													         class = "templateBox quote"
-													         multiline = "true"
-													         flex = "1"
-													         tooltiptext = "&pref_quoteHeaderBox_tip;"
-													         preference = "fwd_quoteHeader"
-															 ondrop="SmartTemplate4.Settings.textDropped(event);"
-													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+													<html:textarea 
+													  id = "fwdheader"
+														class = "templateBox quote"
+														multiline = "true"
+														flex = "1"
+														tooltiptext = "&pref_quoteHeaderBox_tip;"
+														preference = "fwd_quoteHeader"
+														preference-editable = "true"
+														ondrop="SmartTemplate4.Settings.textDropped(event);"
+														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "fwdhead"
 												          label = "&pref_fwdhead.label;"
@@ -306,14 +314,15 @@
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "2">
 													         <!-- rows = "5" -->
-													<textbox id = "fwdmsg"
-													         class = "templateBox template"
-													         multiline = "true"
-													         flex = "1"
-													         tooltiptext = "&pref_templateBox_tip;"
-													         preference = "fwd_smartTemplate"
-															 ondrop="SmartTemplate4.Settings.textDropped(event);"
-													         onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+													<html:textarea id = "fwdmsg"
+													  class = "templateBox template"
+													  multiline = "true"
+													  flex = "1"
+													  tooltiptext = "&pref_templateBox_tip;"
+													  preference = "fwd_smartTemplate"
+														preference-editable = "true"
+														ondrop="SmartTemplate4.Settings.textDropped(event);"
+													  onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 													</hbox>
 											</vbox>
 											<checkbox id = "fwdhtml"
@@ -390,31 +399,31 @@
 	<vbox id = "advancedContainer" flex = "1" hidden="true">
 	
 		<preferences id = "globals">
-			<preference id = "pref_debug"     name = "extensions.smartTemplate4.debug" type = "bool"/>
-			<preference id = "pref_hideExamples" name = "extensions.smartTemplate4.hideExamples" type = "bool"/>
-			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool"/>
-			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" />
-			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.signature.insertDashes.html" type = "bool" />
-			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.signature.insertDashes.plaintext" type = "bool" />
-			<preference id = "pref_sigReplaceBR" name = "extensions.smartTemplate4.signature.replaceLF.plaintext.br" type = "bool" />
+			<preference id = "pref_debug"  name = "extensions.smartTemplate4.debug" type = "bool" instantApply="true"/>
+			<preference id = "pref_hideExamples" name = "extensions.smartTemplate4.hideExamples" type = "bool" instantApply="true"/>
+			<preference id = "pref_removeSig" name = "extensions.smartTemplate4.removeSigOnIdChangeAfterEdits" type = "bool" instantApply="true"/>
+			<preference id = "pref_parseSignature" name = "extensions.smartTemplate4.parseSignature" type = "bool" instantApply="true"/>
+			<preference id = "pref_addSigDashHTML" name = "extensions.smartTemplate4.signature.insertDashes.html" type = "bool" instantApply="true"/>
+			<preference id = "pref_addSigDashPlaintext" name = "extensions.smartTemplate4.signature.insertDashes.plaintext" type = "bool" instantApply="true"/>
+			<preference id = "pref_sigReplaceBR" name = "extensions.smartTemplate4.signature.replaceLF.plaintext.br" type = "bool" instantApply="true"/>
 			<preference id = "pref_showStatusIcon" name = "extensions.smartTemplate4.showStatusIcon" type = "bool" instantApply = "true" />
 			<preference id = "pref_StatusIconMode" name = "extensions.smartTemplate4.statusIconLabelMode" type = "int" instantApply = "true" />
-			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int"/>
+			<preference id = "pref_breaks"    name = "extensions.smartTemplate4.breaksAtTop" type = "int" instantApply="true"/>
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
-			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" />
-			<preference id = "pref_nameDelimiter" name = "extensions.smartTemplate4.names.delimiter" type = "string" />
+			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" instantApply="true"/>
+			<preference id = "pref_nameDelimiter" name = "extensions.smartTemplate4.names.delimiter" type = "string" instantApply="true"/>
 			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
-			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" />
-			<preference id = "pref_forceParagraph" name = "extensions.smartTemplate4.forceParagraph" type = "bool" />
-			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" />
-			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" />
-			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" />
-			<preference id = "pref_resolveNamesFromAB_DisplayName" name = "extensions.smartTemplate4.mime.resolveAB.displayName" type = "bool" />
-			<preference id = "pref_resolveNamesFromAB_ReplaceEmail" name = "extensions.smartTemplate4.mime.resolveAB.removeEmail" type = "bool" />
-			<preference id = "pref_capitalizeNames" name = "extensions.smartTemplate4.names.capitalize" type = "bool" />
-			<preference id = "pref_guessNameFromMail" name = "extensions.smartTemplate4.names.guessFromMail" type = "bool" />
-			<preference id = "pref_defaultMimeFormat" name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" />
-			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" />
+			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" instantApply="true"/>
+			<preference id = "pref_forceParagraph" name = "extensions.smartTemplate4.forceParagraph" type = "bool" instantApply="true"/>
+			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" instantApply="true"/>
+			<preference id = "pref_resolveNamesFromAB" name = "extensions.smartTemplate4.mime.resolveAB" type = "bool" instantApply="true"/>
+			<preference id = "pref_resolveNamesFromAB_Nickname" name = "extensions.smartTemplate4.mime.resolveAB.preferNick" type = "bool" instantApply="true"/>
+			<preference id = "pref_resolveNamesFromAB_DisplayName" name = "extensions.smartTemplate4.mime.resolveAB.displayName" type = "bool" instantApply="true"/>
+			<preference id = "pref_resolveNamesFromAB_ReplaceEmail" name = "extensions.smartTemplate4.mime.resolveAB.removeEmail" type = "bool" instantApply="true"/>
+			<preference id = "pref_capitalizeNames" name = "extensions.smartTemplate4.names.capitalize" type = "bool" instantApply="true"/>
+			<preference id = "pref_guessNameFromMail" name = "extensions.smartTemplate4.names.guessFromMail" type = "bool" instantApply="true"/>
+			<preference id = "pref_defaultMimeFormat" name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" instantApply="true"/>
+			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" instantApply="true"/>
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -427,10 +436,10 @@
 				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "&pref_examples.tooltip;" />
 				<tab id = "aboutTab"  label = "&about.cap;" /> 
-				<tab id = "SmartTemplate4-Pro" label="SmartTemplate4 Pro"  class="free" />
+				<tab id = "SmartTemplate4-Pro" label="SmartTemplate⁴ License"  class="free" />
 			</tabs>
 	
-			<tabpanels flex = "1">
+			<tabpanels flex = "1" id="ST4-Panels">
 				<tabpanel flex = "1" id = "variablesFrame">
 					<iframe id="helpFrame"
 					        src="chrome://smarttemplate4/content/help.xhtml"
@@ -442,181 +451,187 @@
 				<tabpanel flex = "1" id = "globalSettings">
 					<vbox flex = "1" id = "globalSettingsVbox">
 						<groupbox class="transparent">
-							<caption label="&pref_groupMailContent;"/>
-							<hbox class = "labeledBox">
-								<label   class = "textboxLabel"
-										 value="&pref_breaksOnTop.label;" />
-								<textbox id = "txtBreaks"
-										 preference = "pref_breaks"
-										 instantApply="true" />
-							</hbox>
-							<hbox class = "labeledBox">
-								<label   class = "textboxLabel"
-										 value="&pref_defaultCharset.label;:" />
-								<textbox id = "txtCharset"
-										 preference = "pref_defaultCharset"
-										 instantApply="true" 
-										 tooltiptext = "&pref_defaultCharset_tip;"/>
-							</hbox>
+							<hbox class="groupbox-title"><label class="header">&pref_groupMailContent;</label></hbox>
+							<vbox>
+								<hbox class = "labeledBox">
+									<label   class = "textboxLabel"
+											 value="&pref_breaksOnTop.label;" />
+									<textbox id = "txtBreaks"
+											 preference = "pref_breaks"
+											 instantApply="true" />
+								</hbox>
+								<hbox class = "labeledBox">
+									<label   class = "textboxLabel"
+											 value="&pref_defaultCharset.label;:" />
+									<textbox id = "txtCharset"
+											 preference = "pref_defaultCharset"
+											 instantApply="true" 
+											 tooltiptext = "&pref_defaultCharset_tip;"/>
+								</hbox>
+							</vbox>
 						</groupbox>
 						
 						<groupbox class="transparent">
-							<caption label="&pref_groupSignatures;"/>
+							<hbox class="groupbox-title"><label class="header">&pref_groupSignatures;</label></hbox>
+							<vbox>
+								<checkbox id = "chkRemoveSig"
+											label = "&pref_removeSig.label;"
+											preference = "pref_removeSig"/>
+								<checkbox id = "chkSignature"
+											label = "&pref_parseSignature;"
+											tooltiptext = "&pref_parseSignature_tip;"
+											oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
+											preference = "pref_parseSignature"/>
+								
+								<checkbox label = "&pref_sigReplaceBR.label;"
+											preference = "pref_sigReplaceBR"/>
 									  
-							<checkbox id = "chkRemoveSig"
-									  label = "&pref_removeSig.label;"
-									  preference = "pref_removeSig"/>
-							<checkbox id = "chkSignature"
-									  label = "&pref_parseSignature;"
-									  tooltiptext = "&pref_parseSignature_tip;"
-									  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
-									  preference = "pref_parseSignature"/>
-							
-							<checkbox label = "&pref_sigReplaceBR.label;"
-									  preference = "pref_sigReplaceBR"/>
-									  
-							<hbox>
-								<checkbox label = "&pref_addSigBreakHTML.label;"
-										  tooltiptext = "&pref_addSigBreakHTML.tooltip;"
-										  preference = "pref_addSigDashHTML"/>
-								<spacer flex="1" />
-								<checkbox label = "&pref_addSigBreakPlaintext.label;"
-										  tooltiptext = "&pref_addSigBreakPlaintext.tooltip;"
-										  preference = "pref_addSigDashPlaintext"/>
-							</hbox>
-									  
+								<hbox>
+									<checkbox label = "&pref_addSigBreakHTML.label;"
+												tooltiptext = "&pref_addSigBreakHTML.tooltip;"
+												preference = "pref_addSigDashHTML"/>
+									<spacer flex="1" />
+									<checkbox label = "&pref_addSigBreakPlaintext.label;"
+												tooltiptext = "&pref_addSigBreakPlaintext.tooltip;"
+												preference = "pref_addSigDashPlaintext"/>
+								</hbox>
+							</vbox>									  
 						</groupbox>
 						
 						<groupbox class="transparent">
-							<caption label="&pref_groupAdvanced;"/>
-							<hbox>
+							<hbox class="groupbox-title"><label class="header">&pref_groupAdvanced;</label></hbox>
+							<vbox>
+								<hbox>
+									<checkbox id = "chkStationery"
+												label = "&pref_stationerySupport;"
+												tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
+												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.stationery');"
+												preference = "pref_stationerySupport"/>
+									<toolbarbutton id="helpStationery"
+											onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+											label = ""
+											/>
+									<spacer/>
+									<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
+											class = "stationeryURL"
+											label = "&pref_stationeryLink;" 
+											tooltiptext = "&pref_stationeryLink_tip;"/>
+									<spacer flex="1" />
+									<toolbarbutton 
+									    id = "stationerySettings"
+									    onclick = "SmartTemplate4.Util.showStationerySettings();"
+											label = "" 
+											tooltiptext = "Settings…"/>
+									<spacer flex="10" />
+								</hbox>
 								<checkbox id = "chkStationery"
-										  label = "&pref_stationerySupport;"
-										  tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
-											oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.stationery');"
-										  preference = "pref_stationerySupport"/>
-								<toolbarbutton id="helpStationery"
-										onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
-										label = ""
-										/>
-								<spacer flex="1" />
-								<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
-										class = "stationeryURL"
-										label = "&pref_stationeryLink;" 
-										tooltiptext = "&pref_stationeryLink_tip;"/>
-						   </hbox>
-							<checkbox id = "chkStationery"
-									  label = "&pref_cursorInsertSpace;"
-									  preference = "pref_cursorSpace"/>
-							<checkbox id = "chkStationery"
-									  preference = "pref_forceParagraph"
-									  label = "&pref_forceParagraph;"
-										tooltiptext = "&pref_forceParagraph_tip;"/>
+											label = "&pref_cursorInsertSpace;"
+											preference = "pref_cursorSpace"/>
+								<checkbox id = "chkStationery"
+											preference = "pref_forceParagraph"
+											label = "&pref_forceParagraph;"
+											tooltiptext = "&pref_forceParagraph_tip;"/>
+							</vbox>
 						</groupbox>
 					
 						<groupbox class="transparent">
-							<caption label="&pref_groupUI;"/>
-							<hbox>
-								<checkbox id = "chkStatusButton"
-										  label = "&pref_showStatusIcon.label;"
-										  preference = "pref_showStatusIcon"
-										  oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
-										  onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
-								<spacer flex="1" />
-								<menulist id = "iconType"
-										  label = ""
-										  flex = "5"
-										  preference = "pref_StatusIconMode"
-										  oncommand = "SmartTemplate4.setStatusIconMode(this);">
-									<menupopup>
-										<menuitem label = "&pref_StatusIcon.IconOnly;" value = "0"/>
-										<menuitem label = "&pref_StatusIcon.IconText;" value = "2"/>
-										<menuitem label = "&pref_StatusIcon.IconHoverText;" value = "1"/>
-									</menupopup>
-								</menulist>
-								
-							</hbox>
-							<spacer />
-							<hbox class = "labeledBox">
-								<label  id = "lblFontSettings"
-										value="&pref_fontSettings.label;" />
-								<toolbarbutton id = "fontSmaller"
-										onclick = "SmartTemplate4.Settings.fontSize(-1);" 
-										label = "" />
-								<spacer id = "fontButtonSpacer" />
-								<toolbarbutton id = "fontLarger"
-										onclick = "SmartTemplate4.Settings.fontSize(+1);" 
-										label = "" />
-								<spacer width = "2px" />
-								<textbox id = "txtFontSize"
-										 preference = "pref_fontSize"
-										 disabled = "true"/>
-							</hbox>
+							<hbox class="groupbox-title"><label class="header">&pref_groupUI;</label></hbox>
+							<vbox>
+								<hbox>
+									<checkbox id = "chkStatusButton"
+												label = "&pref_showStatusIcon.label;"
+												preference = "pref_showStatusIcon"
+												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
+												onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+									<spacer flex="1" />
+									<menulist id = "iconType"
+												label = ""
+												flex = "5"
+												preference = "pref_StatusIconMode"
+												oncommand = "SmartTemplate4.setStatusIconMode(this);">
+										<menupopup>
+											<menuitem label = "&pref_StatusIcon.IconOnly;" value = "0"/>
+											<menuitem label = "&pref_StatusIcon.IconText;" value = "2"/>
+											<menuitem label = "&pref_StatusIcon.IconHoverText;" value = "1"/>
+										</menupopup>
+									</menulist>
+									
+								</hbox>
+								<spacer />
+								<hbox class = "labeledBox">
+									<label  id = "lblFontSettings"
+											value="&pref_fontSettings.label;" />
+									<toolbarbutton id = "fontSmaller"
+											onclick = "SmartTemplate4.Settings.fontSize(-1);" 
+											label = "" />
+									<spacer id = "fontButtonSpacer" />
+									<toolbarbutton id = "fontLarger"
+											onclick = "SmartTemplate4.Settings.fontSize(+1);" 
+											label = "" />
+									<spacer width = "2px" />
+									<textbox id = "txtFontSize"
+											 preference = "pref_fontSize"
+											 disabled = "true"/>
+								</hbox>
+							</vbox>
 						</groupbox>
-						
-						<!--
-						<spacer flex = "2" />
-						<button id="btnUpdateThunderbird"
-								label="&button.updateThunderbird;"
-						        onclick = "SmartTemplate4.Util.showPlatformWarning();"
-								collapsed = "true"
-								/>
-								-->
-								 
+														 
 					</vbox>
 				</tabpanel>
 					
-				<tabpanel flex = "1" id = "advancedFrame">
-					<vbox flex = "1" id = "advancedSettingsVbox">
+				<tabpanel flex="1" id="advancedFrame">
+					<vbox flex="1" id="advancedSettingsVbox">
 						<groupbox class="transparent">
-							<caption label="&pref_groupNameRules;"/>
-							<checkbox label = "&capitalizeNames;"
-									 preference = "pref_capitalizeNames"/>
-							<checkbox id = "chkFirstLastSwap"
-									  label = "&pref_nameSwap;"
-									  tooltiptext = "&pref_nameSwap_tip;"
-									  preference = "pref_firstLastSwap"/>
-							<checkbox id = "chkFirstLastSwap"
-									  label = "&guessNameFromMail;"
-									  preference = "pref_guessNameFromMail"/>
-							<hbox  align="center">
-								<label value="&defaultMimeFormat;"
-								       control="txtNameDelimiter"/>
-								<textbox flex="1"
-								         preference = "pref_defaultMimeFormat"
-								         tooltiptext= "&defaultMimeFormat_tip;"/>
-							</hbox>
-							<hbox  align="center">
-								<label value="&pref_addressDelimiter;"
-								       control="txtNameDelimiter"/>
-								<textbox id="txtNameDelimiter"
-								         style="width:2em;"
-												 tooltiptext = "&pref_addressDelimiter_tip;"
-												 preference = "pref_nameDelimiter"/>
-							</hbox>
-							<separator />		  
-							<checkbox id = "chkResolveAB"
-									  label = "&resolveNamesFromAB;"
-									  preference = "pref_resolveNamesFromAB"
-								      tooltiptext = "&resolveNamesFromAB_tip;"
-									  onclick = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
-							<hbox>
-								<spacer style="width:2em;"/>
-								<vbox>
-									<checkbox id = "chkResolveABNick"
-											 label = "&resolveNamesFromABNick;"
-											 preference = "pref_resolveNamesFromAB_Nickname"/>
-									<checkbox id = "chkResolveABDisplay"
-											 label = "&resolveNamesFromABDisplay;"
-											 preference = "pref_resolveNamesFromAB_DisplayName"/>
-											 
-									<checkbox id = "chkResolveABRemoveMail"
-											 label = "&resolveABRemoveMail;"
-											 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."
-											 preference = "pref_resolveNamesFromAB_ReplaceEmail"/>
-								  
-								</vbox>
-							</hbox>
+							<hbox class="groupbox-title"><label class="header">&pref_groupNameRules;</label></hbox>
+							<vbox>
+								<checkbox label = "&capitalizeNames;"
+										 preference = "pref_capitalizeNames"/>
+								<checkbox id = "chkFirstLastSwap"
+											label = "&pref_nameSwap;"
+											tooltiptext = "&pref_nameSwap_tip;"
+											preference = "pref_firstLastSwap"/>
+								<checkbox id = "chkFirstLastSwap"
+											label = "&guessNameFromMail;"
+											preference = "pref_guessNameFromMail"/>
+								<hbox  align="center">
+									<label value="&defaultMimeFormat;"
+												 control="txtNameDelimiter"/>
+									<textbox flex="1"
+													 preference = "pref_defaultMimeFormat"
+													 tooltiptext= "&defaultMimeFormat_tip;"/>
+								</hbox>
+								<hbox  align="center">
+									<label value="&pref_addressDelimiter;"
+												 control="txtNameDelimiter"/>
+									<textbox id="txtNameDelimiter"
+													 style="width:2em;"
+													 tooltiptext = "&pref_addressDelimiter_tip;"
+													 preference = "pref_nameDelimiter"/>
+								</hbox>
+								<separator />		  
+								<checkbox id = "chkResolveAB"
+											label = "&resolveNamesFromAB;"
+											preference = "pref_resolveNamesFromAB"
+												tooltiptext = "&resolveNamesFromAB_tip;"
+											onclick = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
+								<hbox>
+									<spacer style="width:2em;"/>
+									<vbox>
+										<checkbox id = "chkResolveABNick"
+												 label = "&resolveNamesFromABNick;"
+												 preference = "pref_resolveNamesFromAB_Nickname"/>
+										<checkbox id = "chkResolveABDisplay"
+												 label = "&resolveNamesFromABDisplay;"
+												 preference = "pref_resolveNamesFromAB_DisplayName"/>
+												 
+										<checkbox id = "chkResolveABRemoveMail"
+												 label = "&resolveABRemoveMail;"
+												 tooltiptext = "This will hide the mail address when using plain %cc% etc. if address book entry was found."
+												 preference = "pref_resolveNamesFromAB_ReplaceEmail"/>
+										
+									</vbox>
+								</hbox>
+							</vbox>								
 						</groupbox>
 						
 						<checkbox label = "&suppressMailtToLink;"
@@ -624,7 +639,7 @@
 					
 						<spacer flex = "2" />
 						<groupbox class="transparent">
-							<caption label="&pref_groupTroubleShooting;"/>
+							<hbox class="groupbox-title"><label class="header">&pref_groupTroubleShooting;</label></hbox>
 							<hbox>
 								<checkbox id = "chkDebug"
 										  label = "&pref_debug_check;"
@@ -658,7 +673,7 @@
 										onclick="SmartTemplate4.Settings.clickLogo();" 
 										flex = "1">
 								<spacer flex = "1"/>
-								<label id = "versionBox" onclick = "SmartTemplate4.Util.showVersionHistory(true); event.stopPropagation();" />
+								<label id = "versionBox" onclick = "if (SmartTemplate4.Util.showVersionHistory(true)) window.close(); event.stopPropagation();" />
 							</hbox>
 						</hbox>
 						
@@ -701,12 +716,13 @@
 				<tabpanel orient="vertical" id="SmartTemplate4-Options-goPro">
 					<description>&label.insertLicense;</description>
 					<hbox id="licenseContainer" align="start">
-						<textbox id="txtLicenseKey"
-										 class="licenseKey"
-										 flex="2"
-										 multiline="true"
-										 rows="5"
-										 tooltiptext="&label.insertLicense.tooltip;"></textbox>
+						<html:textarea 
+							id="txtLicenseKey"
+							class="licenseKey"
+							flex="2"
+							multiline="true"
+							rows="5"
+							tooltiptext="&label.insertLicense.tooltip;"></html:textarea>
 					</hbox>
 					<hbox>
 					  <spacer flex = "1"/>
@@ -719,21 +735,19 @@
 					</hbox>
 					<separator class="licenseSeparator" />
 					<hbox id="validationDate">
-						<label>&label.licenseValid;</label>
+						<label id="licenseDateLabel">&label.licenseValid;</label>
 						<label id="licenseDate" value="-" />
 					</hbox>
-					<separator class = "licenseSeparator" />
-					<hbox id="validationResults">
-						<vbox>
-							<description id="validationPassed" class="niceFont" collapsed="true">&licenseValidation.passed;</description>
-							<description id="validationFailed" class="niceFont licenseError" collapsed="true">&licenseValidation.failed;</description>
-							<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">&licenseValidation.expired;</description>
-							<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">&licenseValidation.invalidMail;</description>
-							<description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">&licenseValidation.notMatchedMail;</description>
-							<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">&licenseValidation.invalidAddon;</description>
-						</vbox>
-						<spacer flex="1"/>
-					</hbox>
+					<separator id="validationDateSpace" class="licenseSeparator" />
+					<vbox id="validationResults">
+						<description id="validationPassed" class="niceFont" collapsed="true">&licenseValidation.passed;</description>
+						<description id="validationStandard" class="niceFont" collapsed="true">&licenseValidation.standard;</description>
+						<description id="validationFailed" class="niceFont licenseError" collapsed="true">&licenseValidation.failed;</description>
+						<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">&licenseValidation.expired;</description>
+						<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">&licenseValidation.invalidMail;</description>
+						<description id="validationEmailNoMatch" class="niceFont licenseWarning" collapsed="true">&licenseValidation.notMatchedMail;</description>
+						<description id="validationInvalidAddon" class="niceFont licenseError" collapsed="true">&licenseValidation.invalidAddon;</description>
+					</vbox>
 					<separator  style="height:0.5em;" />
 					<hbox>
 						<spacer flex="1" />
@@ -748,7 +762,7 @@
 					</hbox>				
 					<hbox>
 						<groupbox id="premiumConfig" disabled="true">
-							<caption label="&premiumConfig;" />
+							<hbox class="groupbox-title"><label class="header">&premiumConfig;</label></hbox>
 							<hbox>
 								<label class="plain-link" 
 											 tooltiptext="http://smarttemplate4.mozdev.org/"
@@ -768,15 +782,21 @@
 
 	</prefpane>
 
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
-<script type = "application/x-javascript" src = "chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/settings.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-register.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
-<script type = "application/x-javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+<script type = "application/javascript" src = "chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/settings.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-register.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
 
-</prefwindow>
+	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+	<script>
+	  SmartTemplate4.Settings.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
+	</script>
+
+
+</dialog>

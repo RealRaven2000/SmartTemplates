@@ -10,7 +10,7 @@
 	<head>
 		<title>help.xhtml</title>
 	</head>
-	<body>
+	<body style="margin: 0;">
 		<div class="help" id="helpContents" onclick="containerClick(this, event);">
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter">&fix_var.cap;</h1>
@@ -127,6 +127,7 @@
 				<li><code>%dateshort%</code> = &dateshort.label;</li>
 				<li><code>%date_tz%</code> = &datetz.label;</li>
 				<li><code>%tz_name%</code> = &tzname.label;</li>
+				<li><code>%X:=timezone(tz)%</code> = &timezone.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26629" target="_blank">[Bug 26629]</a></li>
 			</ul>
 			<aside>(&dateoffset_note.label;)</aside>
 			<ul>

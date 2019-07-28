@@ -1,0 +1,29 @@
+{
+  "author": "Axel Grude",
+  "manifest_version": 2,
+  "name": "SmartTemplate4",
+	"description": "SmartTemplate4 customizes 'quote headers' and Mail template per account.",
+  "version": "2.1",
+  "developer": {
+	  "name": "Axel Grude",
+    "url": "http://smarttemplate4.mozdev.org/index.html"
+	},
+  "applications": {
+    "gecko": {
+      "id": "smarttemplate4@thunderbird.extension",
+      "strict_min_version": "60.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "icons": {
+    "32": "skin/icon32x32.png",
+    "64": "skin/icon64x64.png"
+  },
+	
+  "legacy": {
+    "options": {
+      "page": "chrome://SmartTemplate4/content/settings.xul",
+      "open_in_tab": false
+    }
+  }	
+}

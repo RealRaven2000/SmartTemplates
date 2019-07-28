@@ -84,6 +84,8 @@
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Розділити декілька кореспондентів за допомогою:">
 <!ENTITY pref_addressDelimiter_tip "Розділ між кількома кореспондентами. Outlook використовує крапку з комою (;) За умовчанням для Thunderbird це кома (,)">
 <!ENTITY resolveNamesFromAB "Розпізнавати імена використовуючи адресну книгу">
@@ -93,6 +95,7 @@
 <!ENTITY resolveABRemoveMail "Видалити адреса електронної пошти, якщо не вказано параметр формату">
 <!ENTITY suppressMailtToLink "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти.">
 <!ENTITY capitalizeNames "Назви прописними ">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Підписання">
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
 <!ENTITY pref_cursorInsertSpace "Вставити пробіл, щоб виділити &#37;курсор&#37;">
@@ -134,6 +137,7 @@
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
 <!ENTITY tofirstname.label "Ім'я отримувача">
 <!ENTITY toname.label "Прізвище отримувача">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Відправник (From)">
 <!ENTITY from_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY from.label "Прізвище відправника (за замовчуванням)">
@@ -177,6 +181,7 @@
 <!ENTITY dateshort.label "Дата / Час короткий запис (напр. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Часовий пояс (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
+<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "Наступна функція додає зміщення на всі наступні відображення часу.">
 <!ENTITY calculate.explain "DD=кількість днів до додавання. H=кількість годин для додавання (необов'язково). MM=хвилини для додавання (необов'язково)">
 <!ENTITY calculate.reset "Встановіть аргумент на 0, щоб зупинити зміну будь-яких дат.">
@@ -201,6 +206,9 @@
 <!ENTITY p1.label "д.о">
 <!ENTITY p2.label "Д.О.">
 <!ENTITY p3.label "ДО">
+<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; модифікатор">
 <!ENTITY xsent_note.label "За замовчуванням, змінні дата / час завжди ініціалізувалися за поточними значеннями (час, коли ви створюєте електронну пошту). У поєднанні з &#37;X:=sent&#37;, дата / час змінні відображають первісну дату або час повідомлень.">
 <!ENTITY xsent_long.cap "Приклад для довго рядка">
@@ -238,6 +246,7 @@
 <!ENTITY button.validateLicense "перевірити">
 <!ENTITY label.licenseValid "Ваша ліцензія дійсна до:">
 <!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplate⁴ Pro! Всі преміум-функції тепер розблоковано.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Введений ліцензійний ключ недійсний. Перевірте свою електронну пошту з FastSpring за інструкціями. Якщо у вас все ще є проблеми, зв'яжіться зі мною на вкладці Підтримка.">
 <!ENTITY licenseValidation.expired "Термін дії ліцензійного ключа закінчився. Будь ласка, натисніть кнопку нижче, щоб оновити свою ліцензію.">
 <!ENTITY licenseValidation.invalidAddon "Введений ліцензійний ключ може бути для іншого надбудови. Ліцензійні ключі для {0} починаються з {1}.">

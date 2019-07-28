@@ -85,3 +85,9 @@ smarttemplate:hover:after{
 	width: auto;
 }
 
+notification[value="SmartTemplate4-license"] .notification-button[accesskey], 
+xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey], 
+notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey], 
+xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey] {
+	min-height: 24px;
+}
