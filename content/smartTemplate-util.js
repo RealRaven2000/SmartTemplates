@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.0",
+	HARDCODED_CURRENTVERSION : "2.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -32,7 +32,7 @@ SmartTemplate4.Util = {
 	PremiumFeaturesPage: "http://smarttemplate4.mozdev.org/premium.html",
 	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
 	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
-	DonatePage:       "http://smarttemplate4.mozdev.org/contribute.html",
+	LicensePage:       "http://smarttemplate4.mozdev.org/contribute.html",
 	VersionPage:      "http://smarttemplate4.mozdev.org/version.html",
 	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
@@ -187,7 +187,7 @@ SmartTemplate4.Util = {
 
 	get Appver() {
 		if (null === this.mAppver) {
-			let appVer=this.AppverFullPlatformVer; // no more truncation
+			let appVer=this.AppverFull; // no more truncation
 			this.mAppver = parseFloat(appVer).toString(); // quick n dirty!
 		}
 		return this.mAppver;
@@ -240,109 +240,72 @@ SmartTemplate4.Util = {
 
 	// this is done asynchronously, so it respawns itself
 	VersionProxy: function() {
+		const util = SmartTemplate4.Util;
 		try {
-			if (SmartTemplate4.Util.mExtensionVer // early exit, we got the version!
+			if (util.mExtensionVer // early exit, we got the version!
 				||
-					SmartTemplate4.Util.VersionProxyRunning) // no recursion...
+					util.VersionProxyRunning) // no recursion...
 				return;
 
-			SmartTemplate4.Util.logDebug("Util.VersionProxy()...");
-
-			let bAddonManager = true;
-			try {
-				// old builds! (pre Tb3.3 / Gecko 2.0)
-				if (Components.classes["@mozilla.org/extensions/manager;1"]) {
-					SmartTemplate4.Util.logDebug("Util.VersionProxy() extensions/manager: old code branch");
-					bAddonManager = false;
-					let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-						.getService(Components.interfaces.nsIExtensionManager);
-					let currentVersion = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
-					SmartTemplate4.Util.mExtensionVer = currentVersion;
-					SmartTemplate4.Util.VersionProxyRunning = false;
-					SmartTemplate4.Util.logDebug("extensions/manager: detected currentVersion: " + currentVersion);
-					SmartTemplate4.Util.firstRun.init();
-					return;
-				}
-			}
-			catch(ex) {
-				SmartTemplate4.Util.logToConsole("Old extensions manager check failed: \n" + ex);
-			}
-
-			SmartTemplate4.Util.VersionProxyRunning = true;
-			SmartTemplate4.Util.logDebug("Util.VersionProxy() started.");
-			let myId = SmartTemplate4.Util.ADDON_ID;
+			util.logDebug("Util.VersionProxy()...");
+			util.VersionProxyRunning = true;
+			util.logDebug("Util.VersionProxy() started.");
+			let myId = util.ADDON_ID;
 			if (Components.utils.import) {
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-
-				AddonManager.getAddonByID(myId, function(addon) {
-
+				var { AddonManager } = 
+					ChromeUtils.import ?
+					ChromeUtils.import("resource://gre/modules/AddonManager.jsm") :
+					Components.utils.import("resource://gre/modules/AddonManager.jsm");
+				
+				let versionCallback = function(addon) {
 					let versionLabel = window.document.getElementById("qf-options-header-description");
 					if (versionLabel) versionLabel.setAttribute("value", addon.version);
 
-					let u = SmartTemplate4.Util;
-					u.mExtensionVer = addon.version;
-					u.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
-					u.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version " + u.mExtensionVer + "\n"
-					           + "Running on " + u.Application
-					           + " Version " + u.AppverFull);
+					util.mExtensionVer = addon.version;
+					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
+					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version " + util.mExtensionVer + "\n"
+					           + "Running on " + util.Application
+					           + " Version " + util.AppverFull);
 					// make sure we are not in options window
 					if (!versionLabel)
-						u.firstRun.init();
+						util.firstRun.init();
 
-					SmartTemplate4.Util.mExtensionVer = addon.version;
-					SmartTemplate4.Util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
+					util.mExtensionVer = addon.version;
+					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
 					versionLabel = window.document.getElementById("smartTemplate-options-version");
 					if(versionLabel)
 						versionLabel.setAttribute("value", addon.version);
-
-				});
+				}
+				
+				if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
+					AddonManager.getAddonByID(myId).then(versionCallback); // this function is now a promise
+				else
+					AddonManager.getAddonByID(myId, versionCallback);
 			}
-			SmartTemplate4.Util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
+			util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
 
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + SmartTemplate4.Util.Application + "?"
+			util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + util.Application + "?"
 				+ "\n" + ex);
 		}
 		finally {
-			SmartTemplate4.Util.VersionProxyRunning = false;
-			SmartTemplate4.Util.logDebug("Util.VersionProxy ends()");
+			util.VersionProxyRunning = false;
+			util.logDebug("Util.VersionProxy ends()");
 		}
 	},
 
 	get Version() {
-		//returns the current QF version number.
-		if(SmartTemplate4.Util.mExtensionVer)
-			return SmartTemplate4.Util.mExtensionVer;
-		let current = SmartTemplate4.Util.HARDCODED_CURRENTVERSION + SmartTemplate4.Util.HARDCODED_EXTENSION_TOKEN;
+		const util = SmartTemplate4.Util;
+		//returns the current full SmartTemplate version number.
+		if(util.mExtensionVer)
+			return util.mExtensionVer;
+		let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN;
 
-		if (!Components.classes["@mozilla.org/extensions/manager;1"]) {
-			// Addon Manager: use Proxy code to retrieve version asynchronously
-			SmartTemplate4.Util.VersionProxy(); // modern Mozilla builds.
-												// these will set mExtensionVer (eventually)
-												// also we will delay firstRun.init() until we _know_ the version number
-		}
-		else	// --- older code: extensions manager.
-		{
-			try {
-
-				if(Components.classes["@mozilla.org/extensions/manager;1"])
-				{
-					let gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-						.getService(Components.interfaces.nsIExtensionManager);
-					current = gExtensionManager.getItemForID(SmartTemplate4.Util.ADDON_ID).version;
-				}
-				else {
-					current = current + "(?)";
-				}
-				SmartTemplate4.Util.mExtensionVer = current;
-
-			}
-			catch(ex) {
-				current = current + "(?ex?)" // hardcoded, program this for Tb 3.3 later
-				SmartTemplate4.Util.logToConsole("SmartTemplate4 Version retrieval failed - are you using an old version of " + SmartTemplate4.Util.Application + "?");
-			}
-		}
+		// Addon Manager: use Proxy code to retrieve version asynchronously
+		util.VersionProxy(); // modern Mozilla builds.
+											// these will set mExtensionVer (eventually)
+											// also we will delay firstRun.init() until we _know_ the version number
 		this.logDebug("Version() = " + current);
 
 		return current;
@@ -387,30 +350,32 @@ SmartTemplate4.Util = {
 	
   /* SmartTemplate4 Pro / licensing features */
 	// default to isRegister from now = show button for buying a license.
-	popupProFeature: function popupProFeature(featureList, isRegister, isDonate, additionalText) {
-		let notificationId,
-        util = SmartTemplate4.Util,
+	// was popupProFeature, now renamed to popupLicenseNotification
+	// isProFeature = true - show notification based on function used
+	//              = false - show fact that a license is needed.
+	popupLicenseNotification: function popupLicenseNotification(featureList, isRegister, isProFeature, additionalText) {
+		const util = SmartTemplate4.Util;
+		let notifyBox,
 				State = util.Licenser.ELicenseState,
 				featureName = '',
-				isList = false;
+				isList = false,
+				hasLicense = util.hasLicense(false),
+				isStandardLicense = false;
 				
-    if (!SmartTemplate4.Preferences.isDebugOption('premium.testNotification') && util.hasPremiumLicense(false))
-      return;
-		
-		switch(util.Application) {
-			case 'Postbox': 
-				notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-				break;
-			case 'Thunderbird': 
-				if (window.location.toString().endsWith("messengercompose.xul"))
-					notificationId = 'attachmentNotificationBox';
-				else
-					notificationId = 'attachmentNotificationBox';
-				break;
-			case 'SeaMonkey':
-				notificationId = null;
-				break;
+		if (SmartTemplate4.Preferences.isDebugOption('premium.testNotification')) {
+			util.logToConsole("Testing license warning - to restore normal validation of your license, please reset extensions.smartTemplate4.debug.premium.testNotification");
+			hasLicense=false;
 		}
+				
+    if (hasLicense) {
+			if (isProFeature && util.hasStandardLicense)
+				isStandardLicense = true; // popup for pro features
+			else return;
+		}
+		
+		// show no license reminder if user has standard license, unless this is a "pro feature" warning
+		if (!isProFeature && isStandardLicense) return; 
+		
 		
 		if (typeof featureList == 'string') {
 			featureName = featureList;
@@ -421,25 +386,62 @@ SmartTemplate4.Util = {
 				isList=true;
 		}
 		
-		util.logDebug('popupProFeature(' + featureName + ')' );
+		util.logDebug('popupLicenseNotification(' + featureName + ')' );
 		
-		let notifyBox = document.getElementById (notificationId);
-    if (!notifyBox) {
-      notifyBox = util.Mail3PaneWindow.document.getElementById (notificationId);
-    }
-		let title = util.getBundleString("SmartTemplate4.notification.premium.title", "Premium Feature"),
-		    theText = 
+		if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+			notifyBox = specialTabs.msgNotificationBar;
+		}
+		else if( typeof gNotification == 'object' && gNotification.notificationbox) { // Tb 68
+			notifyBox = gNotification.notificationbox;
+		}
+		else {
+			let notificationId;
+			switch(util.Application) {
+				case 'Postbox': 
+					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
+					break;
+				case 'Thunderbird': 
+					if (window.location.toString().endsWith("messengercompose.xul"))
+						notificationId = 'attachmentNotificationBox';
+					else
+						notificationId = 'mail-notification-box';
+					break;
+				case 'SeaMonkey':
+					notificationId = null;
+					break;
+			}
+			notifyBox = document.getElementById (notificationId);
+			// composer/dialog windows fallback - show in main window if notification is not available in this window
+			if (!notifyBox) { 
+				notifyBox = util.Mail3PaneWindow.document.getElementById (notificationId);
+			}
+		}
+		let title, theText, featureTitle='';
+		if (isProFeature) {
+			title = util.getBundleString("SmartTemplate4.notification.premium.title", "Premium Feature");
+			theText = 
 				  isList 
 						? util.getBundleString("SmartTemplate4.notification.premium.text.plural",
-																 "{1} are Premium features, please obtain a SmartTemplate4 Pro License for using them permanently.")
+																 "{1} are Premium features, please upgrade to a SmartTemplate⁴ Pro License for using them permanently.")
 						: util.getBundleString("SmartTemplate4.notification.premium.text",
-																 "{1} is a Premium feature, please get a SmartTemplate4 Pro License for using it permanently."),
+																 "{1} is a Premium feature, please upgrade to a SmartTemplate⁴ Pro License for using it permanently.");
         featureTitle = 
 				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
 						// util.getBundleString('SmartTemplate4.premium.title.' + featureName, featureName); 
-		theText = theText.replace ("{1}", "'" + featureTitle + "'");
-		if (additionalText)
-			theText = theText + '  ' + additionalText;
+			theText = theText.replace ("{1}", "'" + featureTitle + "'");
+			if (additionalText)
+				theText = theText + '  ' + additionalText;
+		}
+		else {
+			title = "Licensing";
+			theText = 
+				util.getBundleString("SmartTemplate4.notification.license.text",
+					"From now on, SmartTemplate⁴ requires at least a standard license. " +
+					"Read more about it on our licensing page.");
+			let gracePeriod = SmartTemplate4.Licenser.GracePeriod,
+					txtGracePeriod = util.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", gracePeriod);
+			theText = theText + '  ' + txtGracePeriod;
+		}
 		
 		let regBtn,
         hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.hotKey", "L"),
@@ -450,11 +452,17 @@ SmartTemplate4.Util = {
 				regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
 			  break;
 			default:
-			  regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+			  if (util.Licenser.key_type==2) { // standard license
+					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+					hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade.hotKey", "U");
+				}
+				else
+					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
 		}
 				
 		if (notifyBox) {
-			let notificationKey = "SmartTemplate4-proFeature";
+			let notificationKey = 
+			  (isProFeature) ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
       if (notifyBox.getNotificationWithValue(notificationKey)) {
         // notification is already shown on screen.
         util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
@@ -462,7 +470,6 @@ SmartTemplate4.Util = {
       }
       util.logDebug('Showing notifyBox for [' + notificationKey + ']...');
       
-			if (!hotKey) hotKey='L'; // we also use this for hacking the style of the "Buy" button!
 			// obsolete: button for disabling this notification in the future
 			if (true) {
         // registration button
@@ -479,23 +486,25 @@ SmartTemplate4.Util = {
           )
         }
         
-        // donate button
-        if (isDonate) {
-          let donateMsg = util.getBundleString("SmartTemplate4.notification.donate", "Donate");
+        // licensing buttons
+        if (!isProFeature) {
+          let donateMsg = util.getBundleString("SmartTemplate4.notification.licensing", "More about licensing");
           nbox_buttons.push(
             {
               label: donateMsg,
               accessKey: null, 
               callback: function() { 
 							  const theUtil = util.mainInstance.Util;
-                theUtil.showDonatePage(); 
-                let item = notifyBox.getNotificationWithValue(notificationKey); // notifyBox, notificationKey are closured
-                notifyBox.removeNotification(item, (theUtil.Application == 'Postbox'))
+                theUtil.showLicensePage(); 
+								// remove this message?
+                // let item = notifyBox.getNotificationWithValue(notificationKey);
+                // notifyBox.removeNotification(item, (theUtil.Application == 'Postbox'))
               },
               popup: null
             }
           )
-        }
+				  // remind me later checkbox?
+				}
         
 			}
 			else {
@@ -517,11 +526,13 @@ SmartTemplate4.Util = {
 					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
 			}
 		
+		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
+			// it contains the number of free / trial days left
 			notifyBox.appendNotification( 
 			    theText, 
 					notificationKey, 
-					"chrome://smarttemplate4/skin/proFeature.png" , 
-					notifyBox.PRIORITY_INFO_HIGH, 
+					isProFeature ? "chrome://smarttemplate4/skin/proFeature.png" : "chrome://smarttemplate4/skin/licensing.png" , 
+					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
 					nbox_buttons ); // , eventCallback
 			if (util.Application == 'Postbox') {
 				this.fixLineWrap(notifyBox, notificationKey);
@@ -595,14 +606,15 @@ SmartTemplate4.Util = {
 	},
 
 	logToConsole: function (msg, optionalTitle) {
-		if (SmartTemplate4.Util.ConsoleService === null)
-			SmartTemplate4.Util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
+		const util = SmartTemplate4.Util;
+		if (util.ConsoleService === null)
+			util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									.getService(Components.interfaces.nsIConsoleService);
-		let title = "SmartTemplate4";
+		let title = "SmartTemplate⁴";
 		if (typeof optionalTitle !== 'undefined')
 			title += " {" + optionalTitle.toUpperCase() + "}"
 
-		SmartTemplate4.Util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
+		util.ConsoleService.logStringMessage(title + " " + this.logTime() + "\n"+ msg);
 	},
 
 	// flags
@@ -634,7 +646,7 @@ SmartTemplate4.Util = {
 
 	logDebug: function (msg) {
 	  // to disable the standard debug log, turn off extensions.smartTemplate4.debug.default
-		if (SmartTemplate4.Preferences.Debug && SmartTemplate4.Preferences.isDebugOption('default'))
+		if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption('default'))
 			this.logToConsole(msg);
 	},
 
@@ -713,8 +725,7 @@ SmartTemplate4.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					// focus on tabmail ?
-					
+					info.browser.loadURI(URL);
 					return true;
 				}
 			}
@@ -733,11 +744,21 @@ SmartTemplate4.Util = {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
 			linkURI = util.makeUriPremium(linkURI);
 			if (util.Application==='SeaMonkey') {
-				let windowManager = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
-				let browser = windowManager.getMostRecentWindow( "navigator:browser" );
-				if (browser) {
+				let windowManager = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator),
+				    browserWin = windowManager.getMostRecentWindow( "navigator:browser" );
+				if (browserWin) {
 					let URI = linkURI;
-					setTimeout(function() {  browser.currentTab = browser.getBrowser().addTab(URI); if (browser.currentTab.reload) browser.currentTab.reload(); }, 250);
+					browserWin.setTimeout(
+						function sm_openBrowser() {  
+					    let browser = browserWin.getBrowser();
+							browser.selectedTab = browser.addTab(URI); 
+							if (browser.selectedTab.reload) 
+								browser.selectedTab.reload(); 
+							browserWin.focus();
+						}, 
+						250
+					);
+					
 				}
 				else {
 					this.Mail3PaneWindow.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'SmartTemplate4');
@@ -745,9 +766,9 @@ SmartTemplate4.Util = {
 
 				return;
 			}
-			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService);
-			let ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-			let uri = ioservice.newURI(linkURI, null, null);
+			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
+			    ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
+			    uri = ioservice.newURI(linkURI, null, null);
 			service.loadURI(uri);
 		}
 		catch(e) { this.logDebug("openLinkInBrowserForced (" + linkURI + ") " + e.toString()); }
@@ -815,10 +836,12 @@ SmartTemplate4.Util = {
 				}
 			}
 			// note: findMailTab will activate the tab if it is already open
-			if (tabmail  && (!util.findMailTab(tabmail, URL))) {
-				sTabMode = (util.Application === "Thunderbird") ? "contentTab" : "3pane";
-				tabmail.openTab(sTabMode,
-				{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
+			if (tabmail) {
+				if (!util.findMailTab(tabmail, URL)) {
+					sTabMode = (util.Application === "Thunderbird") ? "contentTab" : "3pane";
+					tabmail.openTab(sTabMode,
+					{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
+				}
 			}
 			else {
 				window.openDialog("chrome://messenger/content/", 
@@ -866,23 +889,23 @@ SmartTemplate4.Util = {
 
 
 	showVersionHistory: function(ask) {
-		let mainWindow = SmartTemplate4.Util.Mail3PaneWindow;
-		let util = mainWindow.SmartTemplate4.Util;
-		
-		let version = util.VersionSanitized;
-
-		let sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log?")+" [version {1}]";
+		let mainWindow = SmartTemplate4.Util.Mail3PaneWindow,
+		    util = mainWindow.SmartTemplate4.Util,
+		    version = util.VersionSanitized,
+		    sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log?")+" [version {1}]";
 		sPrompt = sPrompt.replace("{1}", version);
 		if (!ask || confirm(sPrompt)) {
 			util.openURL(null, util.VersionPage + "#" + version);
+			return true;
 		}
+		return false;
 	} ,
 
 	showBugsAndFeaturesPage: function() {
 		SmartTemplate4.Util.openURLInTab(this.BugPage);
 	} ,
 
-	showDonatePage: function () { SmartTemplate4.Util.openURLInTab(this.DonatePage); }  ,
+	showLicensePage: function () { SmartTemplate4.Util.openURLInTab(this.LicensePage); } ,
 	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
 	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); window.close();} ,
 	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
@@ -893,6 +916,18 @@ SmartTemplate4.Util = {
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
+	showStationerySettings: function () {
+		let win = this.Mail3PaneWindow;
+		if (win.Stationery)
+			win.Stationery.showOptions(win);
+		else {
+			var { Services } =
+				ChromeUtils.import ?
+				ChromeUtils.import('resource://gre/modules/Services.jsm') :
+				Components.utils.import('resource://gre/modules/Services.jsm');
+			Services.prompt.alert(null, 'MenuOnTop', 'Could not find Stationery - is Stationery installed?');
+		}
+	},
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
@@ -949,8 +984,8 @@ SmartTemplate4.Util = {
 
 		SmartTemplate4.Message.display(errorText,
 		                              "centerscreen,titlebar",
-		                              function() { ; }
-		                              );
+		                              { ok: function() { ; }}
+		);
 		this.logDebug (errorText);
 	} ,
 
@@ -1007,12 +1042,12 @@ SmartTemplate4.Util = {
 	
 	// convert a extension.smarttemplate. setting to an extension.smartTemplate4. one
 	convertPrefValue : function (oldPrefName, test, realString) {
-		let converted = true;
-		let debugText = "";
+		let converted = true,
+		    debugText = "";
 		debugText += 'CONVERT: ' + oldPrefName;
 		
-		let thePreference = realString ? realString : SmartTemplate4.Settings.getPref(oldPrefName);
-		let newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
+		let thePreference = realString ? realString : SmartTemplate4.Settings.getPref(oldPrefName),
+		    newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
 		                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
 		                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
 
@@ -1048,8 +1083,8 @@ SmartTemplate4.Util = {
 	},
 
 	convertOldPrefs : function() {
-		let countConverted = 0;
-		let convertedBracketExpressions = 0;
+		let countConverted = 0,
+		    convertedBracketExpressions = 0;
 		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
 
 		try {
@@ -1085,52 +1120,6 @@ SmartTemplate4.Util = {
     
     let fs = format.split(',');
 	  return (fs.indexOf('link') != -1);
-	} ,
-	
-	/*
-	  // platform warning is now officially retired
-	showPlatformWarning: function() {
-	 
-	  let msg = SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateThunderbird1",
-		                 "Did you know? Thunderbird 24 will be released in September 2013 - the current release version of Thunderbird is {1} or greater."
-		                 ).replace('{1}', '17.0.7'); // in future, we need to get this number (current release number) from the web...
-		msg += " " + SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateThunderbird2",
-		                 "You are still running an old version [Gecko {2}] which exposes your system to a number of security vulnerabilities."
-		                 ).replace('{2}', this.PlatformVer);
-		msg += "\n" + SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateThunderbird3",
-		                 "Why not try the automatic update by going to Help > About > Check for updates."
-		                 );
-		msg += "\n" + SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateThunderbird4",
-		                 "Shall we check for updates now?"
-		                 );
-
-		SmartTemplate4.Message.display(msg,
-		                               "centerscreen,titlebar",
-							                     function() { SmartTemplate4.Util.updateThunderbird();},
-							                     function() { SmartTemplate4.Util.cancelUpdate();} );
-	},
-	*/
-	
-	updateThunderbird: function() {
-		window.setTimeout(
-		function() {
-		  // older versions have checkForUpdates function in root
-			if (SmartTemplate4.Util.Mail3PaneWindow.checkForUpdates)
-				SmartTemplate4.Util.Mail3PaneWindow.checkForUpdates();
-			else
-				SmartTemplate4.Util.Mail3PaneWindow.openAboutDialog();
-		});
-	},
-	
-	cancelUpdate: function() {
-		alert(SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateThunderbirdCancelled",
-		                 "Future versions of SmartTemplate4 will likely require the up to date code base of Thunderbird; please consider updating at a later stage. Thanks!"
-		                 ));		
 	} ,
 	
 	getServerInfo: function(idKey) {
@@ -1180,15 +1169,16 @@ SmartTemplate4.Util = {
 			return newSig;
 		}
 		// the actual function
+		const util = SmartTemplate4.Util;
 		try {
-			SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(' + isRemoveDashes + ')');
+			util.logDebugOptional('regularize','getSignatureInner(' + isRemoveDashes + ')');
 			if (sig != null) {
 				SmartTemplate4.sigInTemplate = true;
 				if (typeof sig === "string")
 					return isRemoveDashes ? removeDashes(sig, true) : sig;
 					
 				if (!sig.children || sig.children.length==0) {
-					SmartTemplate4.Util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
+					util.logDebugOptional('regularize','getSignatureInner(): signature has no child relements.');
 
 					return sig.innerHTML ? sig.innerHTML : 
                  (sig.outerHTML ? sig.outerHTML : '');  // deal with DOM String sig (non html)
@@ -1200,7 +1190,7 @@ SmartTemplate4.Util = {
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logException('regularize.getSignatureInner() failed', ex);
+			util.logException('regularize.getSignatureInner() failed', ex);
 		}
 		return "";
 	} ,
@@ -1245,6 +1235,7 @@ SmartTemplate4.Util = {
 		return quoteLess;
 	} ,
 	
+	// see MsgComposeCommands, loadBlockedImage()
 	getFileAsDataURI : function getFileAsDataURI(aURL) {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
@@ -1253,7 +1244,13 @@ SmartTemplate4.Util = {
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
 		util.logDebugOptional('images',"getFileAsDataURI()\nfilename=" + filename);
-    let url = Services.io.newURI(aURL, null, null),
+		
+		var { Services } =
+			ChromeUtils.import ?
+			ChromeUtils.import('resource://gre/modules/Services.jsm') :
+			Components.utils.import('resource://gre/modules/Services.jsm');
+		
+    let url = Services.io.newURI(aURL), // , null, null
         contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromURI(url);
     if (!contentType.startsWith("image/")) {
 			util.logDebugOptional('images',"getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType);
@@ -1262,10 +1259,21 @@ SmartTemplate4.Util = {
     }
 
 		try {
-			url = url.QueryInterface(Ci.nsIURL);
-			let LoadInfoFlags = Ci.nsILoadInfo.SEC_NORMAL || Ci.nsILoadInfo.SEC_REQUIRE_CORS_DATA_INHERITS,
-			    channel = Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER),
-					stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
+			let LoadInfoFlags, channel;
+			
+			if (Services.io.newChannelFromURI2) { // Thunderbird 60 + older
+				url = url.QueryInterface(Ci.nsIURL);
+				//  Allow loads from any origin, but require CORS for cross-origin loads.
+				LoadInfoFlags = Ci.nsILoadInfo.SEC_REQUIRE_CORS_DATA_INHERITS; // SEC_NORMAL  was removed
+			  channel = 
+					  Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
+			}
+			else { // Thunderbird 68 + 
+				LoadInfoFlags = Ci.nsILoadInfo.SEC_NORMAL | Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL;
+			  channel = 
+					  Services.io.newChannelFromURI(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
+			}
+			let stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 			stream.setInputStream(channel.open());
 			util.logDebugOptional('images',"opening image stream...");
 			let encoded = btoa(stream.readBytes(stream.available()));
@@ -1280,7 +1288,7 @@ SmartTemplate4.Util = {
 		}
   } ,
 	
-  hasPremiumLicense: function hasPremiumLicense(reset) {
+  hasLicense: function hasLicense(reset) {
 		const util = SmartTemplate4.Util,
 					licenser = util.Licenser;
     // early exit for Licensed copies
@@ -1289,22 +1297,37 @@ SmartTemplate4.Util = {
     // short circuit if we already validated:
     if (!reset && licenser.wasValidityTested)
       return licenser.isValidated;
+		
     let licenseKey = SmartTemplate4.Preferences.getStringPref('LicenseKey');
     if (!licenseKey) 
       return false; // short circuit if no license key!
+		
+		// ======================================
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
-      licenser.validateLicense(licenseKey);
+			let validate = licenser.validateLicense.bind(SmartTemplate4.Util.Licenser);
+      validate(licenseKey);
     }
     if (licenser.isValidated) 
       return true;
     return false;
   } ,
 	
+	get hasStandardLicense() {
+		const util = SmartTemplate4.Util,
+					licenser = util.Licenser;
+    if (licenser.isValidated) {
+			return (licenser.key_type==2); // standard license - true 
+			                               // pro / domain license - false
+		}
+		return false;
+		
+	}, 
+	
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
 		const util = SmartTemplate4.Util,
-					isPremiumLicense = util.hasPremiumLicense(false),
+					isPremiumLicense = util.hasLicense(false),
 					isExpired = util.Licenser.isExpired;
 		try {
 			let uType = "";
@@ -1374,6 +1397,25 @@ SmartTemplate4.Util = {
 		return accounts;
 	} ,
 	
+  // safe wrapper to get member from account.identities array
+  getIdentityByIndex: function getIdentityByIndex(ids, index) {
+    const Ci = Components.interfaces;
+    if (!ids) return null;
+    try {
+      if (ids.queryElementAt) {
+        return ids.queryElementAt(index, Ci.nsIMsgIdentity);
+      }
+      if (ids.QueryElementAt) {  // Postbox
+        return ids.QueryElementAt(index, Ci.nsIMsgIdentity);
+      }
+      return null;
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logDebug('Exception in getIdentityByIndex(ids,' + index + ') \n' + ex.toString());
+    }
+    return null;
+  } ,	
+	
 	// HTML only:
 	// headers that are currently not defined may be filled later.
 	// e.g. adding a To address when writing a new email
@@ -1392,7 +1434,7 @@ SmartTemplate4.Util = {
 			defaultValue = field;  // show the syntax of placeholder (without percent signs!)
 		}
 			
-    util.popupProFeature("Wrap_Deferred_Variables", true, false, "%" + field + "%");
+    util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
 		field = field.replace(/%/g,'');
 		let tag = "<smarttemplate" +
 					 " hdr='" + field + "'" +
@@ -1408,18 +1450,32 @@ SmartTemplate4.Util = {
 	composerSendMessage : function composerSendMessage (evt) {
 		const Ci = Components.interfaces,
 		      util = SmartTemplate4.Util,
-		      msgComposeType = Ci.nsIMsgCompType;
-
+		      msgComposeType = Ci.nsIMsgCompType,
+					nsIMsgCompDeliverMode = Ci.nsIMsgCompDeliverMode;
 					
-		// is SmartTemplate4.classSmartTemplate.composeType == '', 'new', 'rsp', 'fwd'
-		switch (gMsgCompose.type) {
-			case msgComposeType.New:
-			case msgComposeType.NewsPost:
-			case msgComposeType.MailToUrl:
-			  util.cleanupDeferredFields();
-				break;
-			default:
-				return;
+		let msgType = window.document.getElementById("msgcomposeWindow").getAttribute("msgtype");
+		util.logDebug('composerSendMessage() - msgType=' + msgType);
+		
+		if (msgType == nsIMsgCompDeliverMode.Now || msgType == nsIMsgCompDeliverMode.Background || msgType == nsIMsgCompDeliverMode.Later) {
+			// is SmartTemplate4.classSmartTemplate.composeType == '', 'new', 'rsp', 'fwd'
+			switch (gMsgCompose.type) {
+				case msgComposeType.New:
+				case msgComposeType.NewsPost:
+				case msgComposeType.MailToUrl:
+				// [Bug 26632] Using %dateformat% in reply / forward: deferred fields are not automatically tidied up
+				case msgComposeType.Reply:
+				case msgComposeType.ReplyAll:
+				case msgComposeType.ReplyToSender:
+				case msgComposeType.ReplyToGroup:
+				case msgComposeType.ReplyToSenderAndGroup:
+				case msgComposeType.ReplyToList:
+				case msgComposeType.ForwardAsAttachment:
+				case msgComposeType.ForwardInline:
+					util.cleanupDeferredFields();
+					break;
+				default:
+					return;
+			}
 		}
 		
 	} ,
@@ -1433,6 +1489,7 @@ SmartTemplate4.Util = {
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
 				nodeList = [];
 				
+		util.logDebug('cleanupDeferredFields()');
 		while(treeWalker.nextNode()) {
 			let node = treeWalker.currentNode;
 			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
@@ -1457,6 +1514,11 @@ SmartTemplate4.Util = {
 				alreadyResolved = (el.className == 'resolved'), // for removing _all_ smarttemplate divs
 				resolved = false,
 				tm;
+		function getAddressingWidget() {
+      if (typeof GetMsgAddressingWidgetTreeElement == 'function')
+				return GetMsgAddressingWidgetTreeElement(); // returns #addressingWidgetTree
+			return GetMsgAddressingWidgetElement();  // legacy, SeaMonkey fallback, gets #addressingWidget
+		}
 				
 		if (st4) {
 			// isReplaceField is the final call where the deferred smarttemplate element is removed.
@@ -1488,7 +1550,7 @@ SmartTemplate4.Util = {
 					case 'to':    // fall through
 					case 'cc':    // fall through
 					case 'bcc':
-						let aw = GetMsgAddressingWidgetTreeElement(),
+						let aw = getAddressingWidget(),
 								identityList = GetMsgIdentityElement(),
 								messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 								charset = null,
@@ -1612,10 +1674,26 @@ SmartTemplate4.Util = {
 		par.removeChild(space);
 	},
 	
+	
+	checkIsURLencoded: function checkIsURLencoded(tok) {
+		if (tok.length>=4) {
+			let t = tok.substr(1,2);
+			if (/[0-9a-fA-F]+/.test(t)) {
+				this.logDebug("checkIsURLencoded()\n" +
+				  "I will ignore the following character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
+					tok)
+				return true;
+			}
+		}
+		this.logDebug("checkIsURLencoded()\nNot an encoded string, I believe this is a SmartTemplate⁴ header:\n" + tok);
+		return false;
+	}	,
+	
 	// new function for manually formatting a time / date string in one go.
 	dateFormat: function dateFormat(time, timeFormat, timezone) {
 		const util = SmartTemplate4.Util;
-		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')');
+		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
+		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']=' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
 		util.addUsedPremiumFunction('dateFormat');
 		if (!timezone) timezone=0;
 		try {
@@ -1628,6 +1706,9 @@ SmartTemplate4.Util = {
 				time += (SmartTemplate4.whatIsHourOffset*60*60*1000*1000)
 				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add m hours / n minutes
 			}		
+			if (SmartTemplate4.whatIsTimezone) { // add UTC offset for timezonee
+				time += util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)*60*60*1000*1000;
+			}
 			
 			// Set Time - add Timezone offset
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
@@ -1698,18 +1779,41 @@ SmartTemplate4.Util = {
 		util.logDebugOptional('timeStrings','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
 		try {
 			let tm = new Date(),
-			    locale = SmartTemplate4.pref.getLocalePref(),
 					isOldDateFormat = (typeof Ci.nsIScriptableDateFormat !== "undefined"),
 					fmt;
 					
-			if(isOldDateFormat)
-				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
-			else {
+			if(isOldDateFormat) {
 				// this interface was removed in Gecko 57.0
+				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
+			}
+			else {
 				// alternative date formatting
 				// Cu.import("resource:///modules/ToLocaleFormat.jsm");
 				// new Services.intl.
-				fmt = new Intl.DateTimeFormat(undefined, { dateStyle: "full", timeStyle: "long" });
+				let dateOptions = {
+					hour12: false, // 24 hours
+					hour: "numeric",
+					minute: "2-digit",
+					dateStyle: "full"
+				};
+				// { dateStyle: "full", timeStyle: "long" } - not documented!
+				switch (timeType) {
+					case "datelocal":
+						// no change
+						dateOptions.weekday = "long";
+					  dateOptions.day = "numeric";
+					  dateOptions.month = "short";
+					  dateOptions.year = "numeric";
+						break;
+					case "dateshort":
+					default:
+					  dateOptions.day = "numeric";
+					  dateOptions.month = "numeric";
+					  dateOptions.year = "numeric";
+						break;
+				}
+				fmt = new Intl.DateTimeFormat(util.getLocalePref(), dateOptions);
+				util.logDebugOptional('timeStrings','DateTimeFormat resolved options: ' + fmt.resolvedOptions());
 			}
       
 			if (SmartTemplate4.whatIsDateOffset) {
@@ -1724,32 +1828,43 @@ SmartTemplate4.Util = {
 			}
 			
 			// Set Time - add Timezone offset
+			let nativeUtcOffset = tm.getTimezoneOffset(),
+			    forceTimeZone = SmartTemplate4.whatIsTimezone; // UTC offset for current time,  in minutes
+			if (forceTimeZone)  {
+				let forceHours = util.getTimezoneOffset(forceTimeZone);
+				timezone = nativeUtcOffset*(-1) + forceHours*60; // offset in minutes!
+				util.logDebug("Adding timezone offsets:\n" +
+				  "UTC Offset: " + nativeUtcOffset/(-60) + 
+					"\nForced Timezone[" + forceTimeZone + "]: " + forceHours);
+			}
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 
 			// Format date string
 			let dateFormat = null,
 			    timeFormat = null;
-			switch (timeType) {
-				case "datelocal":
-					dateFormat = isOldDateFormat ? fmt.dateFormatLong : new Services.intl.DateTimeFormat(undefined, {dateStyle: "long"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "long"}).format();
-					break;
-				case "dateshort":
-				default:
-					dateFormat = isOldDateFormat ? fmt.dateFormatShort : new Services.intl.DateTimeFormat(undefined, {dateStyle: "short"}).format();
-					timeFormat = isOldDateFormat ? fmt.timeFormatSeconds : new Services.intl.DateTimeFormat(undefined, {timeStyle: "short"}).format();
-					break;
-			}
 
 			
-			let timeString = 
-			  isOldDateFormat 
-						? fmt.FormatDateTime(locale,
-																dateFormat, 
-																timeFormat,
-																tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
-																tm.getHours(), tm.getMinutes(), tm.getSeconds())
-						: fmt.format(tm);
+			let timeString;
+			if (isOldDateFormat) {
+				switch (timeType) {
+					case "datelocal":
+						dateFormat = fmt.dateFormatLong;
+						timeFormat = fmt.timeFormatSeconds;
+						break;
+					case "dateshort":
+					default:
+						dateFormat = fmt.dateFormatShort;
+						timeFormat = fmt.timeFormatSeconds;
+						break;
+				}
+				timeString = fmt.FormatDateTime(SmartTemplate4.pref.getLocalePref(),
+												dateFormat, 
+												timeFormat,
+												tm.getFullYear(), tm.getMonth() + 1, tm.getDate(),
+												tm.getHours(), tm.getMinutes(), tm.getSeconds());
+			}
+			else
+				timeString = fmt.format(tm)
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
 			return timeString;
 		}
@@ -1942,6 +2057,194 @@ SmartTemplate4.Util = {
 		let tz = timezones[short]; // Date().toString().replace(/^.*\(|\)$/g, "")
 		return tz || short;
 	} ,
+	
+	getTimezoneOffset: function st4_getTimezoneOffset(zone) {
+		let offset = 0;
+		// Offsets according to https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations
+		switch (zone) {
+			case "ACDT": return 10.5;
+			case "ACST": return 9.5;
+			case "ACT": return -5;
+			case "ACWST": return 8.75;
+			case "ADT": return -3;
+			case "AEDT": return 11;
+			case "AEST": return 10;
+			case "AFT": return 4.5;
+			case "ART": return -3;
+			case "AKDT": return -8; // Alaska Daylight
+			case "AKST": return -9;
+			case "AMST": return -3;
+			case "ART": return -3;
+			case "AST": return -4;  //Atlantic Standard Time
+			case "AWST": return 8;
+			case "AZOST": return 0;
+			case "AZOT": return -1;
+			case "AZT": return 4;
+			case "BDT": return 8;
+			case "BIOT": return 6;
+			case "BIT": return -12;
+			case "BOT": return -4;
+			case "BRST": return -2;
+			case "BRT": return -3;
+			case "BST": return 1; // British Summer Time
+			case "BTT": return 6;
+			case "CAT": return 2;
+			case "CCT": return 6.5;
+			case "CDT": return -5; // Central Daylight (North America)
+			case "CEST": return 2;
+			case "CET": return 1;
+			case "CHADT": return 13.75;
+			case "CHAST": return 12.75;
+			case "CHOT": return 8;
+			case "CHIST": return 9;
+			case "CHST": return 10;
+			case "CHUT": return 10;
+			case "CIST": return -8;
+			case "CIT": return 8;
+			case "CKT": return -10;
+			case "CLST": return -3;
+			case "CLT": return -4;
+			case "COST": return -5;
+			case "CST": return -6; // Central Standard Time (North America)
+			case "CT": return 8;
+			case "CVT": return -1;
+			case "CWST": return -8.75; // Central Western Standard Time (Australia) unofficial
+			case "CXT": return 7;
+			case "DAVY": return 7;
+			case "DDUT": return 10;
+			case "DFT": return 1;
+			case "EASST": return -5;
+			case "EAST": return -6;
+			case "EAT": return 3;
+			case "ECT": return -4; //Eastern Caribbean Time 
+			case "EDT": return -4; // Eastern Daylight Time (North America)
+			case "EEST": return 3;
+			case "EET": return 2;
+			case "EGST": return -1;
+			case "EGT": return -1;
+			case "EIT": return 9;
+			case "EST": return -5; // Eastern Standard Time (North America)
+			case "FET": return 3;
+			case "FJT": return 12;
+			case "FKST": return -3;
+			case "FKT": return -4;
+			case "FNT": return -2;
+			case "GAKT": return -6;
+			case "GAMT": return -9;
+			case "GFT": return -3;
+			case "GILT": return 12;
+			case "GIT": return -9;
+			case "GMT": return 0;
+			case "GST": return 4; //  	Gulf Standard Time
+			case "GYT": return -4;
+			case "HDT": return -9;
+			case "HAEC": return 2;
+			case "HST": return -10;
+			case "HKT": return 8;
+			case "HMT": return 5;
+			case "HOVST": return 8;
+			case "HOVT": return 7;
+			case "ICT": return 7;
+			case "IDLW": return -12;
+			case "IDT": return 3;
+			case "IOT": return 3;
+			case "IRDT": return 4.5;
+			case "IRKT": return 8;
+			case "IRST": return 3.5;
+			case "IST": return 5.5;
+			case "JST": return 9;
+			case "KALT": return 2;
+			case "KGT": return 6;
+			case "KOST": return 11;
+			case "KRAT": return 7;
+			case "KST": return 9;
+			case "LHST": return 10.5; // Lord Howe Standard Time
+			case "LINT": return 14;
+			case "MAGT": return 12;
+			case "MART": return -9.5;
+			case "MAWT": return 5;
+			case "MDT": return -6;
+			case "MEET": return 1;
+			case "MEST": return 2;
+			case "MHT": return 12;
+			case "MIST": return 11;
+			case "MIT": return -9.5;
+			case "MMT": return 6.5;
+			case "MSK": return 3;
+			case "MST": return -7;  // Mountain Standard Time (North America)
+			case "MUT": return 4;
+			case "MVT": return 5;
+			case "MYT": return 8;
+			case "NCT": return 11;
+			case "NDT": return -2.5;
+			case "NFT": return 11;
+			case "NPT": return 5.75;
+			case "NST": return -3.5;
+			case "NT": return -3.5;
+			case "NUT": return -11;
+			case "NZDY": return 13;
+			case "NZST": return 12;
+			case "OMST": return 6;
+			case "ORAT": return 5;
+			case "PDT": return -7;
+			case "PET": return -5;
+			case "PETT": return 12;
+			case "PGT": return 10;
+			case "PHOT": return 13;
+			case "PHT": return 8;
+			case "PKT": return 5;
+			case "PMDT": return -2;
+			case "PMST": return -3;
+			case "PONT": return 11;
+			case "PST": return -8;  //Pacific Standard Time (North America)
+			case "PYST": return -3;
+			case "PYT": return -4;
+			case "RET": return 4;
+			case "ROTT": return -3;
+			case "SAKT": return 11;
+			case "SAMT": return 4;
+			case "SAST": return 2;
+			case "SBT": return 11;
+			case "SCT": return 4;
+			case "SDT": return -10;
+			case "SGT": return 8;
+			case "SLST": return 5.5;
+			case "SRET": return 11;
+			case "SST": return 8;  //Singapore Standard Time
+			case "SYOT": return 3;
+			case "TAHT": return -10;
+			case "THA": return 7;
+			case "TFT": return 5;
+			case "TJT": return 5;
+			case "TKT": return 13;
+			case "TLT": return 9;
+			case "TMT": return 5;
+			case "TRT": return 3;
+			case "TOT": return 13;
+			case "TVT": return 12;
+			case "ULAST": return 9;
+			case "ULAT": return 8;
+			case "UTC": return 0;
+			case "UYST": return -2;
+			case "UYT": return -3;
+			case "UZT": return 5;
+			case "VET": return -4;
+			case "VLAT": return 10;
+			case "VOLT": return 4;
+			case "VOST": return 6;
+			case "VUT": return 11;
+			case "WAKT": return 12;
+			case "WAST": return 1;
+			case "WAT": return 2;
+			case "WEST": return 1;
+			case "WET": return 0;
+			case "WST": return 8;
+			case "YAKT": return 9;
+			case "YEKT": return 5;
+		}
+		return 0;
+		
+	} ,
 
 	getTimeZoneAbbrev: function st4_getTimeZoneAbbrev(tm, isLongForm) {
 		const util = SmartTemplate4.Util;
@@ -2032,7 +2335,6 @@ SmartTemplate4.Util = {
    */	
 	installButton: function installButton(toolbarId, id, afterId) {
     // if (!document.getElementById(id)) {
-			debugger;
       this.logDebug("installButton(" + toolbarId + "," + id + "," + afterId + ")");
 			if (this.Application=="Postbox") return; // something is going wrong in Pb, so we are not doing this.
 
@@ -2062,10 +2364,71 @@ SmartTemplate4.Util = {
 				
       toolbar.setAttribute("currentset", toolbar.currentSet);
       this.logDebug("document.persist" + toolbar.id + ")");
-      document.persist(toolbar.id, "currentset");
+			if (document.persist)
+				document.persist(toolbar.id, "currentset");
       return true;
     // }
   }  ,
+	
+	// -----------------------------------
+	// get locale preference
+	getLocalePref : function getLocalePref()	{
+		const Ci = Components.interfaces,
+		      Cc = Components.classes,
+		      util = SmartTemplate4.Util;
+		try {
+			let locale,
+			    forcedLocale = SmartTemplate4.calendar.currentLocale,  // check if the %language% variable was set
+			    listLocales = '',
+			    found = false;
+			try {
+				var { Services } =
+				  ChromeUtils.import ?
+					ChromeUtils.import('resource://gre/modules/Services.jsm') :
+					Components.utils.import('resource://gre/modules/Services.jsm');
+				
+				locale =   // get locale from Operating System. note nslocaleservice was removed in Gecko 57
+			      Cc["@mozilla.org/intl/nslocaleservice;1"] 
+			        ? Cc["@mozilla.org/intl/nslocaleservice;1"].getService(Ci.nsILocaleService).getLocaleComponentForUserAgent()
+							: Services.locale.requestedLocale; // was Services.locale.getAppLocaleAsLangTag();
+			}
+			catch(ex) {
+				util.logException("getLocalePref failed - fallback to en-US", ex);
+				locale = "en-US";				
+			}
+			if (forcedLocale && forcedLocale != locale) {
+				let availableLocales = util.getAvailableLocales("global"); // list of installed locales
+				while (availableLocales.hasMore()) {
+					let aLocale = availableLocales.getNext();
+					listLocales += aLocale.toString() + ', ';
+					if (aLocale == forcedLocale) found = true;
+				}
+				if (!found) {
+				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
+					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + util.AppverFull + '/yourPlatform/xpi' + '\n'
+					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
+					util.logError(errorText, '', '', 0, 0, 0x1);
+					SmartTemplate4.Message.display(errorText,
+		                              "centerscreen,titlebar",
+		                              { ok: function() { ; }}
+					);
+					
+					forcedLocale = null;
+				}
+				else {
+					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+					locale = forcedLocale;
+				}
+			}
+
+			util.logDebug('getLocale() returns: ' + locale);
+			return locale;
+		}
+		catch (ex) {
+			util.logException('getLocale() failed and defaulted to [en]', ex);
+			return "en";
+		}
+	} ,
 	
 	
 	/* 
@@ -2158,7 +2521,13 @@ SmartTemplate4.Util.firstRun =
 				util.logDebugOptional ("firstRun","setting firstRun=false");
 				prefs.setMyBoolPref("firstRun", false);
 			}
-
+			else {
+				// this is an update - start license timer if license is empty.
+				if (!prefs.getStringPref('LicenseKey')) {
+					let daysLeft = util.Licenser.gracePeriod(); // start / continue countdown
+					util.logDebug("Days left without license: " + daysLeft);
+				}
+			}
 
 			util.logDebugOptional ("firstRun", "Settings retrieved:"
 					+ "\nprevious version=" + prev
@@ -2183,7 +2552,7 @@ SmartTemplate4.Util.firstRun =
 			let versionPage = util.VersionPage + "#" + pureVersion;
 			util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
 			
-			let isPremium = util.hasPremiumLicense(true),
+			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
 			                             "SmartTemplate4.updateMessageVersion",
 			                             "SmartTemplate4 was successfully upgraded to version {1}!").replace("{1}",current);
@@ -2203,11 +2572,6 @@ SmartTemplate4.Util.firstRun =
 
 				// check for update of pure version (everything before pre, beta, alpha)
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
-					let omitDonation = false;
-					
-					if (pureVersion=="1.5.1" || pureVersion=="1.5.2") {
-						omitDonation = true;
-					}
 					
 					/* EXTENSION UPDATED */
 					let isUpdated = this.update(prev);
@@ -2219,26 +2583,6 @@ SmartTemplate4.Util.firstRun =
 												"\nisUpdated=" + isUpdated);
 					util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
 
-					if (isPremium) {
-						util.logDebugOptional ("firstRun","Paid version: donate page omitted.");
-					}
-					else {
-						// version is different => upgrade (or conceivably downgrade)
-
-						// DONATION PAGE
-						// display donation page - disable by right-clicking label above version jump panel
-						if (prefs.getBoolPrefSilent("extensions.smarttemplate4.donateNoMore")) {
-							util.logDebugOptional ("firstRun","Jump to donations page disabled by user");
-						}
-						else if (omitDonation) {
-							util.logDebugOptional ("firstRun","Donation page omitted b/c of maintenance update.");
-						}
-						else {
-							util.logDebugOptional ("firstRun","setTimeout for donation link");
-							window.setTimeout(function() {util.showDonatePage();}, 2000);
-						}
-					}
-					
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
 					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
@@ -2257,10 +2601,14 @@ SmartTemplate4.Util.firstRun =
 							// let's show the cancel button only if the conversion to the new prefbranch has been done before
 							let showCancel = (prefs.existsBoolPref("extensions.smartTemplate4.id1.def"));
 
-							SmartTemplate4.Message.display(updateVersionMessage + upgradeMessage,
-							                              "centerscreen,titlebar",
-							                              function() { util.convertOldPrefs();},
-							                              showCancel ? function() {util.cancelConvert();} : null );
+							SmartTemplate4.Message.display(
+										updateVersionMessage + upgradeMessage,
+										"centerscreen,titlebar",
+										{
+											ok: function() { util.convertOldPrefs();},
+											cancel : (showCancel ? function() {util.cancelConvert();} : null)
+										}
+							);
 							;
 						}
 						else
@@ -2273,13 +2621,16 @@ SmartTemplate4.Util.firstRun =
 					window.setTimeout(function(){
 						// call a modeless message window,
 						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
-						SmartTemplate4.Message.display(updateVersionMessage + buildUpgradeMessage09(),
-						                              "centerscreen,titlebar",
-						                              function() {alert('[test callback function] {ok} was pressed')},
-						                              function() {alert('[test callback function] {cancel} was pressed')},
-						                              function() {alert('[test callback function] {yes} was pressed')},
-						                              function() {alert('[test callback function] {no} was pressed')}
-						                              );
+						SmartTemplate4.Message.display(
+							updateVersionMessage + buildUpgradeMessage09(),
+						  "centerscreen,titlebar",
+							{
+								ok : function() {alert('[test callback function] {ok} was pressed')},
+								cancel : function() {alert('[test callback function] {cancel} was pressed')},
+								yes : function() {alert('[test callback function] {yes} was pressed')},
+								no : function() {alert('[test callback function] {no} was pressed')}
+							}
+						);
 					}, 3000);
 			}
 
@@ -2320,15 +2671,14 @@ SmartTemplate4.Message = {
 	noCALLBACK : null ,
 	myWindow : null,
 	parentWindow : null,
-	display : function(text, features, okCallback, cancelCallback, yesCallback, noCallback) {
-		if (okCallback)
-			this.okCALLBACK = okCallback;
-		if (cancelCallback)
-			this.cancelCALLBACK = cancelCallback;
-		if (yesCallback)
-			this.yesCALLBACK = yesCallback;
-		if (noCallback)
-			this.noCALLBACK = noCallback;
+	display : function(text, features, callbacksObj, parent) {
+		// initialize callback functions
+		this.okCALLBACK = callbacksObj.ok || null;
+		this.cancelCALLBACK = callbacksObj.cancel || null;
+		this.yesCALLBACK = callbacksObj.yes  || null;
+		this.noCALLBACK = callbacksObj.no || null;
+		// parent window
+		if (parent) this.parentWindow = parent;
 
 		// pass some data as args. we allow nulls for the callbacks
 		// avoid using "this" in here as it confuses Tb3?
@@ -2343,8 +2693,9 @@ SmartTemplate4.Message = {
 
 		// open message with main as parent
 
-		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow;
-		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", "chrome,alwaysRaised,dependent,close=no," + features, params)
+		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow,
+		    dispFeatures = "chrome,alwaysRaised,dependent,close=no," + features; //  close=no,
+		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", dispFeatures, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
 		this.parentWindow = null;
 
@@ -2404,7 +2755,7 @@ SmartTemplate4.Message = {
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
 
 				document.getElementById('ok').addEventListener("click", window.arguments[0].okCallback, true);
-				window.st4OkListener = window.arguments[0].okCallback;
+				window.st4OkListener = window.arguments[0].okCallback; // this is the minimum
 				if (window.arguments[0].cancelCallback) {
 					let cancelBtn = document.getElementById('cancel');
 					cancelBtn.addEventListener("click", window.arguments[0].cancelCallback, true);
