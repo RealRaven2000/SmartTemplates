@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Encabezado de cita">
 <!ENTITY pref_quoteHeaderBox_tip "Escriba aquí su encabezado de cita, por ejemplo: El &#37;date&#37; &#37;from(name)&#37; escribió:">
 <!ENTITY pref_templateBox.label "Plantilla">
-<!ENTITY pref_templateBox_tip "Escriba su plantilla aquí, como: Hola &#37;from(name)&#37;&lt;br&gt; Gracias por tu mensaje&lt;br&gt; un saludo, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Opciones de SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Saltos de línea en la parte superior:">
 <!ENTITY pref_removeSig.label "Cambiar firma al cambiar la identidad del correo">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Reenviar">
 <!ENTITY pref_fwd.label "Aplicar esta plantilla al mensaje reenviado">
 <!ENTITY pref_fwdhead.label "Desactivar el encabezado de respuesta predeterminado de Thunderbird">
-<!ENTITY pref_html.label "Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la Ayuda para más detalles.">
-<!ENTITY pref_rep_br.label "Sustituir salto de línea por &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "NOTA: No se insertará un espacio en la etiqueta HTML si se usa &lt;br&gt; una vez.">
 <!ENTITY pref_quotehead_tip "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto.">
 <!ENTITY pref_template_tip "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles.">
 <!ENTITY help_dialog_title "Ayuda de SmartTemplate⁴">
@@ -99,7 +94,6 @@
 <!ENTITY pref_parseSignature "Procesar firma">
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Reemplazar salto de línea por &lt;br&gt; en la firma de texto simple">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
 <!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a SmartTemplate⁴">
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">

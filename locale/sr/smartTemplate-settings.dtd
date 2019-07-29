@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Заглавље цитирања">
 <!ENTITY pref_quoteHeaderBox_tip "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_templateBox_tip "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;“">
 <!ENTITY pref_dialog.title "Поставке SmartTemplate⁴-а">
 <!ENTITY pref_breaksOnTop.label "Број прелома на врху:">
 <!ENTITY pref_removeSig.label "Замени потпис при промени идентитета е-поште">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Проследи">
 <!ENTITY pref_fwd.label "Примени следећи шаблон на прослеђену поруку">
 <!ENTITY pref_fwdhead.label "Онемогући подразумевано заглавље цитирања Thunderbird-а">
-<!ENTITY pref_html.label "Користи HTML (нпр. &lt;b&gt;bold&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Користите командне знакове за &quot;, &amp;, &lt;, &gt; и space. За више информација, погледајте помоћ.">
-<!ENTITY pref_rep_br.label "Замени преломе са &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље.">
 <!ENTITY pref_template_tip "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација.">
 <!ENTITY help_dialog_title "Помоћ за SmartTemplate⁴">
@@ -84,22 +79,17 @@
 <!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
 <!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
 <!ENTITY resolveNamesFromAB_tip "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP.">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Уклони е-адресу ако формат није наведен">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Капитализуј имена">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
 <!ENTITY pref_cursorInsertSpace "Убаци размак ради истицања &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Замени нови ред у текстуалном потпису са &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
 <!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate⁴-ом.">
 <!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">
@@ -130,14 +120,12 @@
 <!ENTITY sig2.label "Потпис из подешавања налога, али без две цртице (--)">
 <!ENTITY fileHTML.label "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8.">
 <!ENTITY fileImage.label "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY to.label "Име примаоца (подразумевано)">
 <!ENTITY tofirstname.label "Име примаоца">
 <!ENTITY toname.label "Име примаоца">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Пошиљалац">
 <!ENTITY from_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY from.label "Име пошиљаоца (подразумевано)">
@@ -181,10 +169,6 @@
 <!ENTITY dateshort.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
 <!ENTITY datetz.label "Временска зона (+0100, +0200…)">
 <!ENTITY tzname.label "GMT, PST, EST…">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY A.label "Дан у недељи (пун назив)">
@@ -206,9 +190,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука.">
 <!ENTITY xsent_long.cap "Пример LongString-а">
@@ -246,11 +227,8 @@
 <!ENTITY button.validateLicense "потврди">
 <!ENTITY label.licenseValid "Ваша лиценца важи до:">
 <!ENTITY licenseValidation.passed "Хвала што сте регистровали SmartTemplate⁴ про! Све могућности су сада откључане.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
 <!ENTITY licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
 <!ENTITY licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">

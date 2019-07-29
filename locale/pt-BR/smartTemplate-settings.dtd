@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Citação de cabeçalho">
 <!ENTITY pref_quoteHeaderBox_tip "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Modelo">
-<!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
 <!ENTITY pref_dialog.title "Opções do SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Número de quebra de linhas no topo:">
 <!ENTITY pref_removeSig.label "Substituir assinatura ao mudar identidade de e-mail">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Encaminhar mensagens">
 <!ENTITY pref_fwd.label "Aplicar o seguinte modelo ao encaminhar mensagens">
 <!ENTITY pref_fwdhead.label "Usar no lugar do cabeçalho da mensagem anterior">
-<!ENTITY pref_html.label "Usar HTML (por exemplo, &lt;b&gt;negrito&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espaço. Veja a ajuda para detalhes.">
-<!ENTITY pref_rep_br.label "Substituir quebra de linha por &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;.">
 <!ENTITY pref_quotehead_tip "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado.">
 <!ENTITY pref_template_tip "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes.">
 <!ENTITY help_dialog_title "Ajuda do SmartTemplate⁴">
@@ -85,7 +80,6 @@
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
 <!ENTITY defaultMimeFormat "Formato de endereço padrão:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -99,7 +93,6 @@
 <!ENTITY pref_parseSignature "Processar assinatura">
 <!ENTITY pref_parseSignature_tip "Substitui variáveis na assinatura.">
 <!ENTITY pref_cursorInsertSpace "Inserir espaço para destacar &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Apoie o Stationery">
 <!ENTITY pref_stationerySupport_tip "Apoie usando o Stationery ao mesmo tempo com o SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Isto torna possível usar variáveis de modelo em seu Stationery.">
@@ -137,7 +130,6 @@
 <!ENTITY to.label "Destinatário (padrão)">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Variáveis de remetente (De)">
 <!ENTITY from_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label "Remetente (padrão)">

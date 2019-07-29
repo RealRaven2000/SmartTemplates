@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Titre de citation">
 <!ENTITY pref_quoteHeaderBox_tip "Écrivez votre en-tête dans cette boîte, ex. : Le &#37;date&#37;, &#37;from(name)&#37; a écrit :">
 <!ENTITY pref_templateBox.label "Modèle">
-<!ENTITY pref_templateBox_tip "Écrivez votre modèle dans cette boîte, ex. : Salut &#37;from(name)&#37;&lt;br&gt; Merci pour ton message&lt;br&gt; salutations, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "Options de SmartTemplate⁴">
 <!ENTITY pref_breaksOnTop.label "Nombre de retours à la ligne en haut :">
 <!ENTITY pref_removeSig.label "Supprimer la signature lors du changement de compte courriel">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Messages transférés">
 <!ENTITY pref_fwd.label "Appliquer le modèle suivant pour les messages transférés.">
 <!ENTITY pref_fwdhead.label "Désactiver l'entête par défaut de Thunderbird">
-<!ENTITY pref_html.label "Utiliser HTML (par ex., &lt;b&gt;gras&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Utiliser des caractères d'échappement pour  &quot; , &amp; , &lt; , &gt; , espace. Voir l'aide pour davantage d'informations.">
-<!ENTITY pref_rep_br.label "Remplacez les sauts de ligne par &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "Remarque : aucun espace ne sera ajouté dans la balise HTML en utilisant &lt;br&gt; une fois.">
 <!ENTITY pref_quotehead_tip "Désactive l'entête par défaut. Merci d'indiquer votre entête dans la zone de texte.">
 <!ENTITY pref_template_tip "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations.">
 <!ENTITY help_dialog_title "Aide de SmartTemplate⁴">
@@ -84,8 +79,6 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -95,11 +88,9 @@
 <!ENTITY resolveABRemoveMail "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié">
 <!ENTITY suppressMailtToLink "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques.">
 <!ENTITY capitalizeNames "Noms en lettres capitales">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
-<!ENTITY pref_sigReplaceBR.label "Remplacer les retours à la ligne dans les signatures en texte brut par des &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Support de l'extension Stationery">
 <!ENTITY pref_stationerySupport_tip "Support de l'utilisation simultanée de Stationery et de SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Rend possible l'utilisation de variables du modèle dans Stationery.">
@@ -181,7 +172,6 @@
 <!ENTITY dateshort.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "La fonction suivante ajoute un décalage à toutes les dates et horaires suivants.">
 <!ENTITY calculate.explain "DD=nombre de jours à ajouter. H=nombre d'heures à ajouter (facultatif). MM=minutes à ajouter (facultatif)">
 <!ENTITY calculate.reset "Définir l'argument à 0 pour arrêter la modification des dates.">

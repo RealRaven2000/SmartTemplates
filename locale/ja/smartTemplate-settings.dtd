@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "引用ヘッダー">
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダーを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "テンプレート">
-<!ENTITY pref_templateBox_tip "メッセージのテンプレートを入力してください。例：こんにちは、&#37;from(name)&#37;さん。&lt;br&gt;メッセージありがとうございました。&lt;br&gt;敬具 &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴ 設定">
 <!ENTITY pref_breaksOnTop.label "ヘッダー上部の改行の数:">
 <!ENTITY pref_removeSig.label "差出人を変更したときに署名を削除する">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "転送メッセージ作成の設定">
 <!ENTITY pref_fwd.label "転送メッセージに以下のテンプレートを適用する">
 <!ENTITY pref_fwdhead.label "既定の転送ヘッダーの代わりに使用する">
-<!ENTITY pref_html.label "HTML として挿入する (&lt;b&gt;bold&lt;/b&gt; など)">
-<!ENTITY pref_html.cap "&quot; , &amp; , &lt; , &gt; , space はエスケープしてください。詳細はヘルプを参照してください。">
-<!ENTITY pref_rep_br.label "改行を &lt;br&gt; に変換する">
-<!ENTITY pref_rep_br.cap "注：HTML タグに続く改行は &lt;br&gt; に変換されません。">
 <!ENTITY pref_quotehead_tip "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。">
 <!ENTITY pref_template_tip "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。">
 <!ENTITY help_dialog_title "SmartTemplate⁴ ヘルプ">
@@ -99,7 +94,6 @@
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
 <!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate⁴ の変数を利用可能にします。">
 <!ENTITY pref_cursorInsertSpace "ハイライト表示された &#37;cursor&#37; にスペースを挿入する">
-<!ENTITY pref_sigReplaceBR.label "プレーンテキスト形式の署名に含まれる改行を &lt;br&gt; で置換する">
 <!ENTITY pref_stationerySupport "Stationery をサポートする">
 <!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate⁴ の同時使用をサポートします。">
 <!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate⁴ の変数を使用できます。">

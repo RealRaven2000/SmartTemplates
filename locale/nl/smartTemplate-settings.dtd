@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Aanhalingstekst">
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Sjabloon">
-<!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;,&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴-instellingen">
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Ondertekening vervangen bij wijzigen van e-mailidentiteit">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Doorgestuurd bericht">
 <!ENTITY pref_fwd.label "Volgende sjabloon toepassen op doorgestuurde berichten">
 <!ENTITY pref_fwdhead.label "Gebruiken in plaats van standaard aanhalingskoptekst">
-<!ENTITY pref_html.label "HTML gebruiken (bv. &lt;b&gt;vet&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Escape-tekens gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details.">
-<!ENTITY pref_rep_br.label "Regelafbrekingen vervangen door &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig &lt;br&gt; te gebruiken.">
 <!ENTITY pref_quotehead_tip "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
 <!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie.">
 <!ENTITY help_dialog_title "SmartTemplate⁴-hulp">
@@ -99,7 +94,6 @@
 <!ENTITY pref_parseSignature "Ondertekening verwerken">
 <!ENTITY pref_parseSignature_tip "Variabelen in ondertekening vervangen">
 <!ENTITY pref_cursorInsertSpace "Spatie invoegen om &#37;cursor&#37; te accentueren">
-<!ENTITY pref_sigReplaceBR.label "Regelafbrekingen in ondertekening in platte tekst vervangen door &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Ondersteuning van Stationery-add-on">
 <!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">

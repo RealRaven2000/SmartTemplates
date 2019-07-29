@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;">
+<!ENTITY pref_html.label "Usar HTML (por exemplo, &lt;b&gt;negrito&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espaço. Veja a ajuda para detalhes.">
+<!ENTITY pref_rep_br.label "Substituir quebra de linha por &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;.">
+<!ENTITY pref_sigReplaceBR.label "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;">

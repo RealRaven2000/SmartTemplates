@@ -47,7 +47,6 @@
 <!ENTITY pref_quoteHeaderBox.label "Quote Header">
 <!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Template">
-<!ENTITY pref_templateBox_tip "In this box, put your mail template e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴ settings">
 <!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
 <!ENTITY pref_removeSig.label "Replace signature when changing email identity">
@@ -71,10 +70,6 @@
 <!ENTITY pref_fwdmsg.cap "Forward">
 <!ENTITY pref_fwd.label "Apply the following template to the forwarded message">
 <!ENTITY pref_fwdhead.label "Disable default Thunderbird quote header">
-<!ENTITY pref_html.label "Use HTML (e.g., &lt;b&gt;bold&lt;/b&gt;)">
-<!ENTITY pref_html.cap "Use escape characters for  &quot; , &amp; , &lt; , &gt; , space. See &quot;help&quot; for more details.">
-<!ENTITY pref_rep_br.label "Replace line breaks with &lt;br&gt;">
-<!ENTITY pref_rep_br.cap "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once.">
 <!ENTITY pref_quotehead_tip "Disable default quote header. Please place your own header in the textbox above.">
 <!ENTITY pref_template_tip "You can enhance the template with 'variables'. Click advanced / variables for more information.">
 <!ENTITY help_dialog_title "SmartTemplate⁴ Help">
@@ -99,7 +94,6 @@
 <!ENTITY pref_parseSignature "Process signature">
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
 <!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">
 <!ENTITY pref_stationerySupport "Support Stationery addon">
 <!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
@@ -111,6 +105,7 @@
 <!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "About SmartTemplate⁴">
+<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
 <!ENTITY localename.label "en-US">
@@ -254,3 +249,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY premiumConfig "Premium Features">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!-- #####  Support ##### -->
+<!ENTITY support.type "Type:">
+<!ENTITY support.type.selectOne "Select a topic!">
+<!ENTITY support.type.license "Licensing related">
+<!ENTITY support.type.tech "Technical">
+<!ENTITY support.type.html "Help with HTML / CSS">
+<!ENTITY support.type.other "Other">
+<!ENTITY support.subject "Subject:">
+<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
+<!ENTITY support.compose "Write to support…">
+<!ENTITY support.links "Support Links">

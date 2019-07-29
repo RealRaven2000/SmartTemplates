@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "W tym polu podaj swój szablon, np.  Witaj &#37;from(name).&#37;&lt;br&gt; Dziękuję za Twoją wiadomość.&lt;br&gt; Pozdrowienia &#37;ownname&#37;">
+<!ENTITY pref_html.label "Użyj HTML, np. &lt;b&gt;bold&lt;/b&gt;">
+<!ENTITY pref_html.cap "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc.">
+<!ENTITY pref_rep_br.label "Zamieniaj nowy wiersz znakiem &lt;br&gt;">
+<!ENTITY pref_rep_br.cap "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z &lt;br&gt;.">
+<!ENTITY pref_sigReplaceBR.label "Zamień w podpisie tekstowym podziały wiersza na &lt;br&gt;">

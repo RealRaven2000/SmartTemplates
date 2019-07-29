@@ -24,42 +24,21 @@
 <!ENTITY pref_help.tab "求助">
 <!ENTITY pref_about.tab "關於">
 <!ENTITY pref_global.tab "全域設定">
-<!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "變數">
-<!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplate4.mozdev.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "確定">
 <!ENTITY cancel_button "取消">
 <!ENTITY contribute_button "貢獻">
-<!ENTITY button.updateThunderbird "Update Thunderbird!">
 <!-- #### ABOUT #### -->
-<!ENTITY pref_groupMailContent "Mail Content">
-<!ENTITY pref_groupSignatures "Signatures">
-<!ENTITY pref_groupAdvanced "Advanced Functions">
-<!ENTITY pref_groupUI "User Interface">
-<!ENTITY pref_groupNameRules "Name Rules">
-<!ENTITY pref_groupTroubleShooting "Troubleshooting">
-<!ENTITY pref_addSigBreakHTML.label "Add -- in HTML mail">
-<!ENTITY pref_addSigBreakHTML.tooltip "Always add the -- delimiter before the Signature (in HTML mails)">
-<!ENTITY pref_addSigBreakPlaintext.label "Add -- in plain text mail">
-<!ENTITY pref_addSigBreakPlaintext.tooltip "Always add the -- delimiter before the Signature (in plain text mails)">
 <!ENTITY pref_quoteHeaderBox.label "引用表頭">
 <!ENTITY pref_quoteHeaderBox_tip "將引用表頭寫在這個對話框,例如.在&#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "樣板">
-<!ENTITY pref_templateBox_tip "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, &lt;br&gt; 感謝您的郵件 &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;">
 <!ENTITY pref_dialog.title "SmartTemplate⁴ 設定">
 <!ENTITY pref_breaksOnTop.label "從頭算起的換行數:">
 <!ENTITY pref_removeSig.label "當改變電子郵件身份時置換簽名檔">
 <!ENTITY pref_showStatusIcon.label "在狀態列顯示按鈕">
-<!ENTITY pref_StatusIcon.IconOnly "Icon Only">
-<!ENTITY pref_StatusIcon.IconText "Icon And Text">
-<!ENTITY pref_StatusIcon.IconHoverText "Text on Hover">
 <!ENTITY pref_fontSettings.label "樣板字體編輯器">
 <!ENTITY pref_server_desc "帳號">
-<!ENTITY btnSaveTemplate.tooltip "Save Template…">
-<!ENTITY btnLoadTemplate.tooltip "Load Template…">
-<!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
 <!ENTITY pref_server_def "常見">
 <!ENTITY pref_def.label "使用常見的">
 <!ENTITY pref_def.cap "這個帳號未勾選'使用常見的'來建立自訂引用表頭.">
@@ -71,44 +50,12 @@
 <!ENTITY pref_fwdmsg.cap "轉寄">
 <!ENTITY pref_fwd.label "套用以下的樣板來轉寄郵件">
 <!ENTITY pref_fwdhead.label "停用Thunderbird預設的引用表頭">
-<!ENTITY pref_html.label "使用HTML (例如.,&lt;b&gt;bold&lt;/b&gt;)">
-<!ENTITY pref_html.cap "使用 ESC 字元來做 &quot; , &amp; , &lt; , &gt; , space. 請查看 &quot;求助&quot; 來取得更完整資訊.">
-<!ENTITY pref_rep_br.label "用 &lt;br&gt; 來取代換行">
-<!ENTITY pref_rep_br.cap "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中.">
 <!ENTITY pref_quotehead_tip "停用預設的引用表頭.請插入您的預設表頭到文字方塊.">
 <!ENTITY pref_template_tip "您可以用'變數'來變更引用表頭.請用求助取得更多資訊.">
 <!ENTITY help_dialog_title "SmartTemplate⁴ 求助">
 <!ENTITY help_keyword.cap "求助">
 <!ENTITY pref_debug_check "除錯模式">
-<!ENTITY pref_hideExamples "Hide examples tab">
 <!ENTITY pref_debug_tip "點右鍵使用進階的除錯選項">
-<!ENTITY pref_nameSwap "Correct LastName, FirstName">
-<!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
-<!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
-<!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
-<!ENTITY resolveNamesFromAB "Resolve names from address books">
-<!ENTITY resolveNamesFromAB_tip "This feature does not work with certain remote address books, such as LDAP.">
-<!ENTITY resolveNamesFromABNick "Replace first name with Nickname if present">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
-<!ENTITY resolveABRemoveMail "Remove email address unless format parameter is specified">
-<!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
-<!ENTITY capitalizeNames "Capitalize Names">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
-<!ENTITY pref_parseSignature "Process signature">
-<!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
-<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with <br>">
-<!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with SmartTemplate⁴.">
-<!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
-<!ENTITY pref_stationeryLink "Stationery Addon">
-<!ENTITY pref_forceParagraph "Force Paragraph Mode">
-<!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
-<!ENTITY pref_defaultCharset.label "Default charset">
-<!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### HELP #### -->
 <!ENTITY about.cap "有關 SmartTemplate⁴">
 <!ENTITY creator.label "建立者">
@@ -128,16 +75,11 @@
 <!ENTITY ccmail.label "副本收件者電子郵件">
 <!ENTITY sig.label "從帳號設定的簽名檔">
 <!ENTITY sig2.label "從帳號設定的簽名檔但不要 '--'">
-<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
-<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
-<!ENTITY attach.label "Add file as attachment">
-<!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "收件者(到)">
 <!ENTITY to_note.label "當姓名無法使用時,將會顯示電子郵件地址">
 <!ENTITY to.label "收件者姓名 (預設)">
 <!ENTITY tofirstname.label "收件者名字">
 <!ENTITY toname.label "收件者姓名">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "寄件者 (從)">
 <!ENTITY from_note.label "當姓名無法使用時,將會顯示電子郵件地址">
 <!ENTITY from.label "寄件者姓名 (預設)">
@@ -160,37 +102,13 @@
 <!ENTITY newsgr.label "新聞群組">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何 Header-line">
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
-<!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "'日期格式'/'時區'為固定變數">
 <!ENTITY fix_vartz_note.label "可以跟 &#37;X:=sent&#37; 整合">
 <!ENTITY datelocal.label "日期/時間 (本地格式)">
 <!ENTITY dateshort.label "簡短的日期/時間 (例如. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "時區 (+0100,+0200,...)">
-<!ENTITY tzname.label "GMT, PST, EST, ... ">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
 <!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">
-<!ENTITY A.label "Day of Week (Friday)">
-<!ENTITY a.label "Day of Week (Fri.)">
-<!ENTITY d.label "Day of Month (01 to 31) - with leading zero">
-<!ENTITY e.label "Day of Month (1 to 31)">
 <!ENTITY n.label "月 (1到12)">
 <!ENTITY B.label "月 (一月)">
 <!ENTITY b.label "月 (一月)">
@@ -206,9 +124,6 @@
 <!ENTITY p1.label "上午.">
 <!ENTITY p2.label "上午.">
 <!ENTITY p3.label "上午">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; 修改者">
 <!ENTITY xsent_note.label "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 &#37;X:=sent&#37;,則日期/時間變數將會對應原來郵件的日期/時間.">
 <!ENTITY xsent_long.cap "長字串的範例">
@@ -217,40 +132,16 @@
 <!ENTITY xsent_short.cap "短字串的範例">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "答案: 星期日, 20/12/2011 08:54:21">
-<!ENTITY xsent_short_note.label "The following variables can be used in both variants">
-<!ENTITY localedate.label "Date / Time (Locale Format)">
-<!ENTITY shortdate.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
-<!ENTITY datetimezone.label "Timezone (+0100, +0200, ... )">
-<!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "設定及樣板的匯出/匯入">
 <!ENTITY im-ex_note1.label "您可以匯出及匯入設定和關聯每一個帳號的樣板.">
 <!ENTITY im-ex_note2.label "第一,選擇您想要匯出從SmartTemplate4設定下拉視窗的帳號.">
 <!ENTITY im-ex_note3.label "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦.">
 <!ENTITY im-ex_note4.label "要匯入檔案,選擇一個您想要從 SmartTemplate⁴ 設定下拉視窗匯入的帳號.下一步,從選單列點選 '檔案' ⇒ '設定及樣板'.">
 <!ENTITY im-ex_note5.label "選擇您想匯入的 SmartTemplate⁴ 檔案 (xxx.st4).">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate⁴ Options window. This is normal behavior on this platforms and can't be changed.">
-<!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "HTML 樣板只能使用 UTF-8 (Unicode) 字元!">
 <!ENTITY table.cap "變數使用方法">
 <!ENTITY table_note.label "錯誤使用變數將會在郵件中產生 'Error Console'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "變數">
 <!ENTITY table_new.label "編寫">
 <!ENTITY table_reply.label "回覆">
 <!ENTITY table_fwd.label "轉寄">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate⁴ Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
-<!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
