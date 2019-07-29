@@ -1,6 +1,6 @@
 <!ENTITY pref_templateBox_tip "Напишіть Ваш шаблон в цій графі, наприклад, Добрий день, &#37;from(name)&#37;&lt;br&gt;Дякую Вам за Ваше повідомлення&lt;br&gt; з повагою, &#37;ownname&#37;">
 <!ENTITY pref_html.label "Використовувати HTML (напр., &lt;b&gt;bold&lt;/b&gt;)">
 <!ENTITY pref_html.cap "Використовувати escape символи для ' , &amp; , &lt; , &gt; , space. Дивіться 'допомогу' для детальної інформації.">
-<!ENTITY pref_rep_br.label "Замінити позначення нового рядку символом &lt;br&gt;">
 <!ENTITY pref_rep_br.cap "ПРИМІТКА: No space буде вставлено до HTML тегів у разі разового використання &lt;br&gt; .">
+<!ENTITY pref_rep_br.label "Замінити позначення нового рядку символом &lt;br&gt;">
 <!ENTITY pref_sigReplaceBR.label "Замінити розриви рядків у підпису з форматом простого тексту з &lt;br&gt;">
