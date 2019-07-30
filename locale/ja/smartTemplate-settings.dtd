@@ -105,6 +105,7 @@
 <!ENTITY pref_defaultCharset_tip "ヘッダーの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate⁴ について">
+<!ENTITY support.tab "サポート">
 <!ENTITY creator.label "作者">
 <!ENTITY developer.label "開発者">
 <!ENTITY localename.label "ja-JP">
@@ -248,3 +249,14 @@
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
 <!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください">
+<!ENTITY support.title "サポートにメール">
+<!ENTITY support.type "タイプ:">
+<!ENTITY support.type.selectOne "トピックを選択してください！">
+<!ENTITY support.type.license "ライセンスに関する質問">
+<!ENTITY support.type.tech "技術的な質問">
+<!ENTITY support.type.html "HTML / CSS に関する質問">
+<!ENTITY support.type.other "その他の質問">
+<!ENTITY support.subject "件名:">
+<!ENTITY support.mail.instructions "下のボタンをクリックすると、サポートへのメールの作成ウインドウが開かれます。技術的な質問の場合には、スクリーンショットの添付も検討してください。">
+<!ENTITY support.compose "サポートへメールを送信">
+<!ENTITY support.links "サポートへのリンク">

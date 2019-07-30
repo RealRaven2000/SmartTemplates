@@ -250,6 +250,7 @@
 <!ENTITY premiumConfig "Premium Features">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
 <!-- #####  Support ##### -->
+<!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Select a topic!">
 <!ENTITY support.type.license "Licensing related">

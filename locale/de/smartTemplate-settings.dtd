@@ -250,6 +250,7 @@
 <!ENTITY premiumConfig "Premium Funktionen">
 <!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite">
 <!-- #####  Support ##### -->
+<!ENTITY support.title "Email an Support">
 <!ENTITY support.type "Typ:">
 <!ENTITY support.type.selectOne "Wählen Sie ein Thema!">
 <!ENTITY support.type.license "Lizenz bezogen">
