@@ -1,0 +1,14 @@
+groupbox {
+	/*  this used to havee margin fixing measures before Tb68.0b5 */
+}
+
+groupbox > hbox:first-child {
+	/*  this used to havee margin fixing measures before Tb68.0b5 */
+}
+
+groupbox caption, 
+groupbox > .groupbox-title > .header {
+	padding: 0px 6px; 
+	background-color: white; /* color of my tabs */
+	font-weight: bold !important;;
+}

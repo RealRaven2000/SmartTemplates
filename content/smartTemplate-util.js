@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.1",
+	HARDCODED_CURRENTVERSION : "2.1.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1291,16 +1291,23 @@ SmartTemplate4.Util = {
   hasLicense: function hasLicense(reset) {
 		const util = SmartTemplate4.Util,
 					licenser = util.Licenser;
+		function withLog(result) { // returns value but logs it first.
+			util.logDebugOptional("premium.licenser", "util.hasLicense = " + result);
+			return result;
+		}
     // early exit for Licensed copies
-    if (licenser.isValidated) 
-      return true;
+    if (licenser.isValidated) {
+      return withLog(true);
+		}
     // short circuit if we already validated:
-    if (!reset && licenser.wasValidityTested)
-      return licenser.isValidated;
+    if (!reset && licenser.wasValidityTested) {
+      return withLog(licenser.isValidated);
+		}
 		
     let licenseKey = SmartTemplate4.Preferences.getStringPref('LicenseKey');
-    if (!licenseKey) 
-      return false; // short circuit if no license key!
+    if (!licenseKey) {
+			return withLog(false); // short circuit if no license key!
+		}
 		
 		// ======================================
     if (!licenser.isValidated || reset) {
@@ -1308,16 +1315,19 @@ SmartTemplate4.Util = {
 			let validate = licenser.validateLicense.bind(SmartTemplate4.Util.Licenser);
       validate(licenseKey);
     }
-    if (licenser.isValidated) 
-      return true;
-    return false;
+    if (licenser.isValidated) {
+			return withLog(true);
+		}
+    return withLog(false);
   } ,
 	
 	get hasStandardLicense() {
 		const util = SmartTemplate4.Util,
 					licenser = util.Licenser;
     if (licenser.isValidated) {
-			return (licenser.key_type==2); // standard license - true 
+			let result = (licenser.key_type==2);
+			util.logDebugOptional("premium.licenser", "util.hasStandardLicense = " + result);
+			return result; // standard license - true 
 			                               // pro / domain license - false
 		}
 		return false;
@@ -1434,7 +1444,8 @@ SmartTemplate4.Util = {
 			defaultValue = field;  // show the syntax of placeholder (without percent signs!)
 		}
 			
-    util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
+		// Add variables in "Write" window to standard features!
+    // util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
 		field = field.replace(/%/g,'');
 		let tag = "<smarttemplate" +
 					 " hdr='" + field + "'" +
@@ -2459,22 +2470,6 @@ SmartTemplate4.Util.firstRun =
 	} ,
 
 	init: function() {
-
-		function buildUpgradeMessage09() {
-			let s = "\n" + SmartTemplate4.Util.getBundleString (
-		                 "SmartTemplate4.updateMessageNewBrackets1",
-		                 "Dear SmartTemplate4 user, we are excited to announce that from this version on, SmartTemplate4 also supports the usage of curly braces { } and the <style> tag so that you can now add advanced styling within your signature."
-		                 ) ;
-			s += "\n" + SmartTemplate4.Util.getBundleString (
-			                 "SmartTemplate4.updateMessageNewBrackets2",
-			                 "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%optional_variables%} use double square brackets [[%optional_variables%]].")
-			                 ;
-			s += "\n" + SmartTemplate4.Util.getBundleString (
-			                 "SmartTemplate4.updateMessageNewBrackets3",
-			                 "SmartTemplate4 will now convert your existing templates so you can keep using them in the new version. Press [Ok] to continue.");
-			return s;
-		}
-
 		// avoid running firstRun.init in messenger compose again!
 		if (typeof SmartTemplate4.Settings === 'undefined')
 			return;
@@ -2524,8 +2519,8 @@ SmartTemplate4.Util.firstRun =
 			else {
 				// this is an update - start license timer if license is empty.
 				if (!prefs.getStringPref('LicenseKey')) {
-					let daysLeft = util.Licenser.gracePeriod(); // start / continue countdown
-					util.logDebug("Days left without license: " + daysLeft);
+					let daysLeft = util.Licenser.graceDate(); // start / continue countdown
+					util.logDebug("Days left without license: " + util.Licenser.GracePeriod);
 				}
 			}
 
@@ -2593,45 +2588,10 @@ SmartTemplate4.Util.firstRun =
 					// Display the modeless update message
 					// To Do: We need to make this more generic for charging for a standard version!
 					window.setTimeout(function(){
-						if (util.versionSmaller(prev, '0.9')) {
-							// upgrade case!!
-							let upgradeMessage = "";
-							// we are only running the old prefs routine for versions < .9
-							upgradeMessage = buildUpgradeMessage09();
-							// let's show the cancel button only if the conversion to the new prefbranch has been done before
-							let showCancel = (prefs.existsBoolPref("extensions.smartTemplate4.id1.def"));
-
-							SmartTemplate4.Message.display(
-										updateVersionMessage + upgradeMessage,
-										"centerscreen,titlebar",
-										{
-											ok: function() { util.convertOldPrefs();},
-											cancel : (showCancel ? function() {util.cancelConvert();} : null)
-										}
-							);
-							;
-						}
-						else
-							util.popupAlert ("SmartTemplate4", updateVersionMessage); // OS notification
+						util.popupAlert ("SmartTemplate4", updateVersionMessage); // OS notification
 					}, 3000);
 
 				}
-				// test of updateMessage:
-				if (prefs.isDebugOption('test.update'))
-					window.setTimeout(function(){
-						// call a modeless message window,
-						// pass 2 functions that are either executed depending on whether ok or cancel is clicked
-						SmartTemplate4.Message.display(
-							updateVersionMessage + buildUpgradeMessage09(),
-						  "centerscreen,titlebar",
-							{
-								ok : function() {alert('[test callback function] {ok} was pressed')},
-								cancel : function() {alert('[test callback function] {cancel} was pressed')},
-								yes : function() {alert('[test callback function] {yes} was pressed')},
-								no : function() {alert('[test callback function] {no} was pressed')}
-							}
-						);
-					}, 3000);
 			}
 
 			// =============================================

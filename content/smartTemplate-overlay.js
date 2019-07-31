@@ -58,9 +58,9 @@ SmartTemplate4.classPref = function() {
 
 	// -----------------------------------
 	// get preference(branch)
-	function getWithBranch(prefstring, defaultValue)
+	function getWithBranch(idKey, defaultValue)
 	{
-		return getCom(SmartTemplate4.Preferences.Prefix + prefstring, defaultValue); //
+		return getCom(SmartTemplate4.Preferences.Prefix + idKey, defaultValue); //
 	};
 
 	// idKey Account
@@ -157,7 +157,7 @@ function async_driver(val) {
 
 // We use this as a display consumer
 // nsIStreamListener
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 // not used (yet)
 var SmartTemplate4_streamListener =
 {
@@ -1081,9 +1081,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
         prefs = SmartTemplate4.Preferences,
-				licenser = SmartTemplate4.Licenser;
+				mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
 				
-	if (!licenser.hasLicense && licenser.GracePeriod==0) {
+	// make sure to use the licenser from main window, to save time.
+	if (!mainLicenser.isValidated && mainLicenser.GracePeriod<=0) {
 		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
 		if (varX.test(msg)) {
 			const PreviewLength = 320,

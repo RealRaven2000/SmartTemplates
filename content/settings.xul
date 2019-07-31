@@ -1,6 +1,10 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
+<!DOCTYPE overlay [
+   <!ENTITY % localeDTD SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">  %localeDTD;
+   <!ENTITY % htmlDTD SYSTEM "chrome://smarttemplate4/locale/settings-html.dtd"> %htmlDTD;
+]>
+
 
 <?xml-stylesheet href = "chrome://global/skin/" type = "text/css"?>
 <!--  tb 59 -->
@@ -20,70 +24,9 @@
 				onunload = "SmartTemplate4.Settings.onUnload();"
 				>
 
-	<prefpane id = "smartTemplatePane" orient = "vertical">
-
-	<!-- ######## Creating Menubar ######## -->
-	<!-- MENUITEMS: File - Help -->
-	<toolbox>
-		<toolbar type = "menubar" hidden = "true">
-			<toolbaritem>
-				<menubar  id = "SmartTemplate4MenuBar" style = "border:0px;">
-				<!-- ###### FILE ###### -->
-					<menu id = "SmartTemplate4FileMenuitem"
-					      label = "&file.label;"
-					      class = "menu-iconic">
-						<menupopup>
-							<!-- ###### FILE -> EXPORT * ###### -->
-							<menuitem id = "SmartTemplate4ExportItem"
-							          label = "&menu.template_export.label;&#133;"
-							          class = "menuitem-iconic"
-							          oncommand = "SmartTemplate4.IO.export();" />
-							<!-- ###### FILE -> IMPORT ###### -->
-							<menuitem id = "SmartTemplate4ImportItem"
-							          label = "&menu.template_import.label;&#133;"
-							          class = "menuitem-iconic"
-							          oncommand = "SmartTemplate4.IO.import();" />
-							<!-- ###### FILE -> CLOSE ###### -->
-							<menuitem id = "SmartTemplate4CloseItem"
-							          label = "&close.label;"
-							          class = "menuitem-iconic"
-							          oncommand = "window.close();" />
-						</menupopup>
-					</menu>
-
-					<!-- ###### TOOLS ######
-					<menu id = "SmartTemplate4ToolsMenuitem"
-					      label = "&tools.label;"
-					      class = "menu-iconic">
-						<menupopup id = "SmartTemplate4-tools-popup">
-						</menupopup>
-					</menu> -->
-					<!-- ###### HELP ###### -->
-					<menu id = "SmartTemplate4HelpMenuitem"
-					      label = "Advanced"
-					      class = "menu-iconic">
-								<!-- ###### HELP -> * ###### -->
-						<menupopup id = "SmartTemplate4-help-popup">
-							<menuitem id = "menuHomePage"
-							          label = "&url.homePage.label;"
-							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );" />
-							<menuitem id = "menuSupportPage"
-							          label = "&url.supportPage.label;"
-							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );" />
-							<menuitem id = "menuBugsAndFeaturesPage"
-							          label = "&url.bugsAndFeaturesPage.label;"
-							          class = "menuitem-iconic"
-							          onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );" />
-						</menupopup>
-					</menu>
-				</menubar>
-			</toolbaritem>
-		</toolbar>
-	</toolbox>
-
+	<prefpane id = "smartTemplatePane" orient = "vertical" flex="1">
 		<spacer id="topOptions" />
+		
 <!-- fills full width of window -->
 <hbox id="optionsContainer" flex="1">
 
@@ -130,11 +73,10 @@
 			        hidden = "true"/>
 		</hbox>
 
-		<vbox id = "decksWrapper" >
+		<vbox id = "decksWrapper" flex="1">
 			<deck id = "account_deckA" flex = "1" class="templateDeck">
 
 				<vbox id = "deckA.per_account" flex = "1">
-
 					<!-- ######## Template Preferences ######## -->
 
 					<preferences id = "templates">
@@ -189,7 +131,7 @@
 												<checkbox id = "new"
 												          label = "&pref_new.label;"
 												          preference = "new_Enable"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
 											<label value = "&pref_templateBox.label;"/>
@@ -207,7 +149,7 @@
 												          label = "&pref_html.label;"
 												          tooltiptext = "&pref_html.cap;"
 												          preference = "new_isHtml"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<checkbox id = "newnbr"
 												          class = "indent"
 												          label = "&pref_rep_br.label;"
@@ -227,7 +169,7 @@
 												<checkbox id = "rsp"
 												          label = "&pref_rsp.label;"
 												          preference = "rsp_Enable"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
@@ -268,7 +210,7 @@
 											          label = "&pref_html.label;"
 											          tooltiptext = "&pref_html.cap;"
 											          preference = "rsp_isHtml"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id = "rspnbr"
 											          class = "indent"
 											          label = "&pref_rep_br.label;"
@@ -287,7 +229,7 @@
 												<checkbox id = "fwd"
 												          label = "&pref_fwd.label;"
 												          preference = "fwd_Enable"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
@@ -329,7 +271,7 @@
 											          label = "&pref_html.label;"
 											          tooltiptext = "&pref_html.cap;"
 											          preference = "fwd_isHtml"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox();"/>
+											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id = "fwdnbr"
 											          class = "indent"
 											          label = "&pref_rep_br.label;"
@@ -338,46 +280,7 @@
 										</vbox>
 								</groupbox>
 							</tabpanel>
-
-								<!-- 
-								<tabpanel class="aboutPanel">
-									<groupbox  flex = "1" class="aboutGroup">
-										<caption id = "SmartTemplate4AboutCap" label = "&about.cap;" class = "AboutCap" />
-										<vbox id = "SmartTemplate4AboutLogo" class = "aboutLogo" align = "center" height = "40px" onclick="SmartTemplate4.Settings.clickLogo();" />
-										<hbox class = "aboutWrapper">
-											<spacer flex = "1" />
-											<vbox id = "aboutBox" class = "aboutPersonnel" align = "center" flex = "1">
-												<description>&creator.label;: Axel Grude</description>
-												<description>&developer.label;: Axel Grude, Marky Mark DE</description>
-												<description>&localized.label;: &translatorNickname.label;</description>
-												<description>&contributor.label;: Aris - style support</description>
-												<description>&contributor.label;: tool8 - Development, Version 0.7.2 - 0.8.0</description>
-												<description>&contributor.label;: Peter Macej - Development Support</description>
-												<description class = "aboutContent">&about.label;</description>
-											</vbox>
-											<spacer flex = "1" />
-										</hbox>
-										<hbox>
-										
-											<spacer flex="2"/>
-											<button onclick = "SmartTemplate4.Util.showSupportPage();"
-											        class = "supportURL text-link"
-											        label = "&url.supportPage.label;" />
-											<spacer flex="1"/>
-											<button onclick = "SmartTemplate4.Util.showHomePage();"
-											        class = "homePageURL text-link"
-											        label = "&url.homePage.label;" />
-											<spacer flex="1"/>
-											<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage();"
-											        class = "bugsURL text-link"
-											        label = "&url.bugsAndFeaturesPage.label;" />
-											<spacer flex="2"/>
-										</hbox>
-									</groupbox>
-								</tabpanel>
-								-->
 							</tabpanels>
-
 						</tabbox>
 
 						<!-- ######## DeckB Definition ######## -->
@@ -437,6 +340,7 @@
 				     tooltiptext = "&pref_examples.tooltip;" />
 				<tab id = "aboutTab"  label = "&about.cap;" /> 
 				<tab id = "SmartTemplate4-Pro" label="SmartTemplate⁴ License"  class="free" />
+				<tab id = "supportTab" label = "&support.tab;" collapsed="true" /> 
 			</tabs>
 	
 			<tabpanels flex = "1" id="ST4-Panels">
@@ -731,7 +635,7 @@
 										oncommand="SmartTemplate4.Settings.pasteLicense();" />
 						<button id="btnValidateLicense"
 										label="&button.validateLicense;"
-										oncommand="SmartTemplate4.Settings.validateLicenseInOptions(false);" />
+										oncommand="SmartTemplate4.Settings.validateLicenseInOptions();" />
 					</hbox>
 					<separator class="licenseSeparator" />
 					<hbox id="validationDate">
@@ -773,7 +677,70 @@
 					<!-- will be populated / modified from bundle in code -->
 				</tabpanel>
 				
-				
+				<!-- Support tab -->
+				<tabpanel flex = "1" id = "supportPanel">
+				  <vbox flex="1" style="min-width:410px;">
+						<groupbox flex = "1" class="transparent">
+							<hbox class="groupbox-title"><label class="header">&support.title;</label></hbox>
+							<vbox flex = "1">
+								<hbox>
+									<label class = "textboxLabel" value="&support.type;" />
+									<menulist id = "supportType"
+												label = ""
+												oncommand = "SmartTemplate4.Settings.setSupportMode(this);">
+										<menupopup>
+											<menuitem label = "&support.type.selectOne;" value = ""/>
+											<menuitem label = "&support.type.license;" value = "[SmartTemplate4 Licensing]"/>
+											<menuitem label = "&support.type.tech;" value = "[SmartTemplate4 Technical]"/>
+											<menuitem label = "&support.type.html;" value = "[SmartTemplate4 HTML]"/>
+											<menuitem label = "&support.type.other;" value = "[SmartTemplate4 Support]"/>
+										</menupopup>
+									</menulist>
+								</hbox>
+								<hbox class = "labeledBox">
+									<label class = "textboxLabel" value="&support.subject;" />
+									<textbox id = "txtSupportSubject" flex="1" maxlength="60"/>
+								</hbox>
+								<label>&support.mail.instructions;</label>
+								<label>
+									Emails in English / German are easier to answer as these are languages I speak fluently.
+									The other ones will probably go through google translate.
+								</label>
+								<hbox>
+									<spacer flex="1" />
+									<button id="composeSupportMail"
+													disabled = "true"
+													class = "buttonIcon"
+													label="&support.compose;"
+													onclick = "SmartTemplate4.Settings.sendMail('axelg@gofree.indigo.ie');"/>
+									<spacer flex="1" />
+								</hbox>
+							</vbox>
+						</groupbox>
+						<groupbox class="transparent">
+							<hbox class="groupbox-title"><label class="header">&support.links;</label></hbox>
+							<hbox>
+							  <spacer flex="1" />
+								<vbox class="buttonLinks">
+								<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+									<button onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
+													class = "supportURL text-link"
+													label = "&url.supportPage.label;" />
+									<spacer flex="1"/>
+									<button onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
+													class = "homePageURL text-link"
+													label = "&url.homePage.label;" />
+									<spacer flex="1"/>
+									<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
+													class = "bugsURL text-link"
+													label = "&url.bugsAndFeaturesPage.label;" />
+								</vbox>
+							  <spacer flex="1" />
+							</hbox>
+						</groupbox>
+					</vbox>
+				</tabpanel>
+
 			</tabpanels>
 		</tabbox>
 	</vbox>

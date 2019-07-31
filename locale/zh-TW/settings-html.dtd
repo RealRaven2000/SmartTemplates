@@ -3,3 +3,4 @@
 <!ENTITY pref_html.cap "使用 ESC 字元來做 &quot; , &amp; , &lt; , &gt; , space. 請查看 &quot;求助&quot; 來取得更完整資訊.">
 <!ENTITY pref_rep_br.cap "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中.">
 <!ENTITY pref_rep_br.label "用 &lt;br&gt; 來取代換行">
+<!ENTITY pref_sigReplaceBR.label "Replace line breaks in plain text signature with &lt;br&gt;">

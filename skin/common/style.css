@@ -386,6 +386,9 @@ groupbox.transparent .groupbox-title {
 #templatesTab {
   list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
 }
+#supportTab {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/fg-user-support.png") !important;
+}
 
 .newGroup, .forwardGroup , .replyGroup, .aboutGroup {
 	background-position: top right;
@@ -441,6 +444,10 @@ groupbox.transparent .groupbox-title {
 	/*! max-width: 1000px; */
 	font-family: consolas,"courier new",monospace;
 	font-size: 9pt;
+}
+
+.templateBox[disabled=true] {
+	color: GrayText;
 }
 
 .templateWrite.templateBox {

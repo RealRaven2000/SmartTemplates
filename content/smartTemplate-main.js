@@ -302,7 +302,7 @@ END LICENSE BLOCK
 		# Added option for default address variable format
 		# [Bug 24993]</a> Premium Feature: Added support for using the following fields when composing a *new* Email:%subject% %from% %to% %cc% %bcc% %date% %dateformat()%
 		
-	Version 2.1 - WIP
+	Version 2.1 - 28/07/2019
 	  # [Bug 26536] Support using SmartTemplate⁴ variables in Thunderbird Templates (Tb 60)
 		# [Bug 26634] header.*.matchFrom* functions: append/prepend arbitrary text to field based on match.
 		# [Bug 26677] %header.set.matchFromBody()% improvements for use with subject line.
@@ -318,6 +318,14 @@ END LICENSE BLOCK
 		# [Bug 26667] ESR 2019 Readyness - make SmartTemplate⁴ compatible with Thunderbird 68
 		# Added mandatory Standard license	
 
+	Version 2.1.1 - WIP
+		# Some improvements with panel sizing on preferences dialog
+	  # Added Support Tab (licensed users only - these can now send an email directly) 
+		# ESR - Eliminated getCharPref / setCharPref
+		# in Tb 68, some account specific options (use HTML, replace BR) are greyed out 
+		  when opening the dialog and  have to be reactivated by enabling / disabling 
+			"Apply the following template"
+		#
 			
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

@@ -112,7 +112,8 @@ SmartTemplate4.Licenser =
     return (this.ValidationStatus == this.ELicenseState.Expired);
 	},
 	
-	gracePeriod: function ST4_licenser_gracePeriod() {
+	graceDate: function ST4_licenser_graceDate() {
+		util.logDebugOptional("premium.licenser", "Setting graceDate()...");
 		let graceDate = "", isResetDate = false;
 		try {
 			graceDate = prefs.getStringPref("license.gracePeriodDate");
@@ -125,8 +126,21 @@ SmartTemplate4.Licenser =
 			graceDate = today; // cannot be in the future
 			isResetDate = true;
 		}
+		else {
+			// if a license exists & is expired long ago, use the last day of expiration date.
+			let lic = util.Mail3PaneWindow.SmartTemplate4.Licenser;
+			if (lic.ValidationStatus == lic.ELicenseState.Expired) {
+				if (graceDate < lic.DecryptedDate) {
+					util.logDebugOptional("premium.licenser", 
+						"Extending graceDate from {0} to {1}".replace("{0}",graceDate).replace("{1}",lic.DecryptedDate));
+					graceDate = lic.DecryptedDate;
+					isResetDate = true;
+				}
+			}
+		}
 		if (isResetDate)
 			prefs.setStringPref("license.gracePeriodDate", graceDate);
+		util.logDebugOptional("premium.licenser", "Returning Grace Period Date: " + graceDate);
 		return graceDate;
 	},
 	
@@ -136,11 +150,11 @@ SmartTemplate4.Licenser =
 		      SINGLE_DAY = 1000*60*60*24; 
 		try {
 		  graceDate = prefs.getStringPref("license.gracePeriodDate");
-			if (!graceDate) graceDate = this.gracePeriod(); // create the date
+			if (!graceDate) graceDate = this.graceDate(); // create the date
 		}
 		catch(ex) { 
 		  // if it's not there, set it now!
-			graceDate = this.gracePeriod(); 
+			graceDate = this.graceDate(); 
 		}
 		let today = (new Date()),
 		    installDate = new Date(graceDate),
@@ -260,8 +274,10 @@ SmartTemplate4.Licenser =
 				btnProLicense.removeAttribute('oncommand');
 				if (!this.isValidated) {  // EXPIRED
 					if (licenser.key_type==2) { // standard
+						// this should be renewal instead?
 						btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
 						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);');
+						btnProLicense.classList.add('upgrade'); // no flashing
 					}
 					else {
 						btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
@@ -558,7 +574,8 @@ SmartTemplate4.Licenser =
     if (prefs.isDebug) {
       util.logDebug("validateLicense(" + LicenseKey + ")");
     }
-    if (!LicenseKey) {
+    this.LicenseKey = LicenseKey;
+		if (!LicenseKey) {
       this.ValidationStatus = ELS.Empty;
       logResult(this);
 			crypto.key_type = 0; // reset to pro!

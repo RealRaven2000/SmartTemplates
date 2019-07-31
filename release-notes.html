@@ -1,6 +1,5 @@
 <meta charset="UTF-8">
-<b>Change List version 2.1</b>
-
+<style>b { display: block; margin-top: 10px; } </style>
 Going Forward, SmartTemplate&#8308; will <span class="emphasis">require a license</span> for continued use - the reason for this is that unlike compiled software that runs on an operating system, the constant changes on the host mail software (Thunderbird) require substantial ongoing changes with a high effort; something which cannot be provided for free ("as in beer") anymore. You may have noticed many Add-on authors abandoning their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not trying to involve the users in funding the required work.
 
 
@@ -52,3 +51,14 @@ Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing e
 <li> Improved loading script in composer to be more reliable.</li>
 <li> Added mandatory Standard license. </li>
 </ul>
+
+<b>Added in Maintenance Version 2.1.1</b>
+
+<ul>
+<li>(licensed users only) Added support tab. </li>
+<li>Added the premium feature 'deferred variables in "Write" template' (such as %to%) to standard features.</li>
+<li>Improved panel sizing on Preferences dialog. </li>
+<li>ESR - Eliminated deprecated getCharPref / setCharPref functions</li>
+<li>Fixed regression caused by ESR work for Thunderbird 68 <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>, some account specific options (use HTML, replace BR) were greyed out when opening the dialog and had to be reactivated by enabling / disabling "Apply the following template". Use Common should always disable account specific settings for clarity. </li>
+<li>Improvement: When opening settings for the current Id and "use common" is selected, display common settings instead.</li>
+</ul>	

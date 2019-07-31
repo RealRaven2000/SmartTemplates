@@ -36,9 +36,14 @@ SmartTemplate4.Settings = {
 
 	// Disable DOM node with identity key
 	//--------------------------------------------------------------------
+	// @arg[0] = enabled
+	// @arg[1] = accouint id ("", ".id1", ".id2" etc..)
+	// @arg[2..n] = which options to disable / enable
 	prefDisable : function prefDisable() {
-		for (let i = 1; i < arguments.length; i++){
-			let el = document.getElementById(arguments[i] + this.accountId);
+		let enable = arguments[0],
+		    accountId = arguments[1];
+		for (let i = 2; i < arguments.length; i++){
+			let el = document.getElementById(arguments[i] + accountId);
 			el.disabled = arguments[0] ? false : true;
 			if (arguments[0]) {
 				el.removeAttribute("disabled");
@@ -102,27 +107,63 @@ SmartTemplate4.Settings = {
 
 	// Disable DOM node depeding on checkboxes
 	//--------------------------------------------------------------------
-	disableWithCheckbox : function disableWithCheckbox() {
-		if (this.prefDisable(this.isChecked("new" + this.accountId), "newmsg", "newhtml", "newnbr")) {
-			this.prefDisable(this.isChecked("newhtml" + this.accountId), "newnbr");
+	disableWithCheckbox : function disableWithCheckbox(el) {
+		// change this to reading prefs instead! called during addidentity!!
+		
+		const account = this.accountId; // "", ".id1", ".id2" ...
+		if (!el) {
+			const prefs = SmartTemplate4.Preferences,
+			      service = this.prefService,
+						branch = ((account || ".common") + ".").substr(1);  // cut off leading [.] for getting bool pref
+						
+			// initialise all checkboxes for this account according to pref settings!
+			if (this.prefDisable(prefs.getMyBoolPref(branch + "new"), account, "newmsg", "newhtml", "newnbr")) {
+				this.prefDisable(prefs.getMyBoolPref(branch + "newhtml"), account, "newnbr");
+			}
+			if (this.prefDisable(prefs.getMyBoolPref(branch + "rsp"), account, "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader")) {
+				this.prefDisable(prefs.getMyBoolPref(branch + "rsphtml"), account, "rspnbr");
+			}
+			if (this.prefDisable(prefs.getMyBoolPref(branch + "fwd"), account, "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
+				this.prefDisable(prefs.getMyBoolPref(branch + "fwdhtml"), account, "fwdnbr");
+			}
 		}
-		if (this.prefDisable(this.isChecked("rsp" + this.accountId), "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader")) {
-			this.prefDisable(this.isChecked("rsphtml" + this.accountId), "rspnbr");
-		}
-		if (this.prefDisable(this.isChecked("fwd" + this.accountId), "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader")) {
-			this.prefDisable(this.isChecked("fwdhtml" + this.accountId), "fwdnbr");
+		else {
+			let ids = (el.id).split('.'); 
+			switch (ids[0]) { // eg "new" or "new.id1"
+				case "new":
+				  this.prefDisable(this.isChecked("new" + account), account, "newmsg", "newhtml", "newnbr");
+				// fall through
+				case "newhtml":
+					this.prefDisable(this.isChecked("newhtml" + account), account, "newnbr");
+					break;
+				// ======================
+				case "rsp":
+					this.prefDisable(this.isChecked("rsp" + account), account, "rspmsg", "rsphtml", "rspnbr", "rsphead", "rspheader");
+				// fall through
+				case "rsphtml":					
+					this.prefDisable(this.isChecked("rsphtml" + account), account, "rspnbr");
+				  break;
+				// ======================
+				case "fwd":
+					this.prefDisable(this.isChecked("fwd" + account), account, "fwdmsg", "fwdhtml", "fwdnbr", "fwdhead", "fwdheader");
+				// fall through
+				case "fwdhtml":
+					this.prefDisable(this.isChecked("fwdhtml" + account), account, "fwdnbr");
+					break;
+			}
 		}
 	},
 	
 	clickLogo : function clickLogo() {
+		const util = SmartTemplate4.Util;
 		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg"),
 		    result = "";
 		if (testString == '') {
 			testString = prompt("Enter a string");
-			result = SmartTemplate4.Util.convertPrefValue(testString, true);
+			result = util.convertPrefValue(testString, true);
 		}
 		else
-			result = SmartTemplate4.Util.convertPrefValue(testString, true);
+			result = util.convertPrefValue(testString, true);
 		
 	},
 
@@ -150,61 +191,75 @@ SmartTemplate4.Settings = {
 	//******************************************************************************
 	// Preferences library
 	//******************************************************************************
-
+	
 	// Create preferences
 	//--------------------------------------------------------------------
 	setPref1st : function setPref1st(prefbranch) {
+		function setStringPref(pref, val) {
+			if (prefService.setStringPref)
+				prefService.setStringPref(pref, val);
+			else
+				prefService.setCharPref(pref, val);
+		}
+		function getStringPref(pref) {
+			if (prefService.getStringPref)
+				return prefService.getStringPref(pref);
+			else
+				return prefService.getCharPref(pref);
+		}
+		const prefService = this.prefService;
+		
 		try {
-			this.prefService.getBoolPref(prefbranch + "def");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "def", true); }
+			prefService.getBoolPref(prefbranch + "def");
+		} catch(e) { prefService.setBoolPref(prefbranch + "def", true); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "new");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "new", false); }
+			prefService.getBoolPref(prefbranch + "new");
+		} catch(e) { prefService.setBoolPref(prefbranch + "new", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "rsp");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "rsp", false); }
+			prefService.getBoolPref(prefbranch + "rsp");
+		} catch(e) { prefService.setBoolPref(prefbranch + "rsp", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "fwd");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwd", false); }
+			prefService.getBoolPref(prefbranch + "fwd");
+		} catch(e) { prefService.setBoolPref(prefbranch + "fwd", false); }
 		try {
-			this.prefService.getCharPref(prefbranch + "newmsg");
-		} catch(e) { this.prefService.setCharPref(prefbranch + "newmsg", ""); }
+			getStringPref(prefbranch + "newmsg");
+		} catch(e) { setStringPref(prefbranch + "newmsg", ""); }
 		try {
-			this.prefService.getCharPref(prefbranch + "rspmsg");
-		} catch(e) { this.prefService.setCharPref(prefbranch + "rspmsg", ""); }
+			getStringPref(prefbranch + "rspmsg");
+		} catch(e) { setStringPref(prefbranch + "rspmsg", ""); }
 		try {
-			this.prefService.getCharPref(prefbranch + "rspheader");
-		} catch(e) { this.prefService.setCharPref(prefbranch + "rspheader", ""); }
+			getStringPref(prefbranch + "rspheader");
+		} catch(e) { setStringPref(prefbranch + "rspheader", ""); }
 		try {
-			this.prefService.getCharPref(prefbranch + "fwdmsg");
-		} catch(e) { this.prefService.setCharPref(prefbranch + "fwdmsg", ""); }
+			getStringPref(prefbranch + "fwdmsg");
+		} catch(e) { setStringPref(prefbranch + "fwdmsg", ""); }
 		try {
-			this.prefService.getCharPref(prefbranch + "fwdheader");
-		} catch(e) { this.prefService.setCharPref(prefbranch + "fwdheader", ""); }
+			getStringPref(prefbranch + "fwdheader");
+		} catch(e) { setStringPref(prefbranch + "fwdheader", ""); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "newhtml");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "newhtml", false); }
+			prefService.getBoolPref(prefbranch + "newhtml");
+		} catch(e) { prefService.setBoolPref(prefbranch + "newhtml", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "rsphtml");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "rsphtml", false); }
+			prefService.getBoolPref(prefbranch + "rsphtml");
+		} catch(e) { prefService.setBoolPref(prefbranch + "rsphtml", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "fwdhtml");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdhtml", false); }
+			prefService.getBoolPref(prefbranch + "fwdhtml");
+		} catch(e) { prefService.setBoolPref(prefbranch + "fwdhtml", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "newnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "newnbr", false); }  // bug 25571
+			prefService.getBoolPref(prefbranch + "newnbr");
+		} catch(e) { prefService.setBoolPref(prefbranch + "newnbr", false); }  // bug 25571
 		try {
-			this.prefService.getBoolPref(prefbranch + "rspnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "rspnbr", false); }  // bug 25571
+			prefService.getBoolPref(prefbranch + "rspnbr");
+		} catch(e) { prefService.setBoolPref(prefbranch + "rspnbr", false); }  // bug 25571
 		try {
-			this.prefService.getBoolPref(prefbranch + "fwdnbr");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdnbr", false); }  // bug 25571
+			prefService.getBoolPref(prefbranch + "fwdnbr");
+		} catch(e) { prefService.setBoolPref(prefbranch + "fwdnbr", false); }  // bug 25571
 		try {
-			this.prefService.getBoolPref(prefbranch + "rsphead");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "rsphead", false); }
+			prefService.getBoolPref(prefbranch + "rsphead");
+		} catch(e) { prefService.setBoolPref(prefbranch + "rsphead", false); }
 		try {
-			this.prefService.getBoolPref(prefbranch + "fwdhead");
-		} catch(e) { this.prefService.setBoolPref(prefbranch + "fwdhead", false); }
+			prefService.getBoolPref(prefbranch + "fwdhead");
+		} catch(e) { prefService.setBoolPref(prefbranch + "fwdhead", false); }
 	} ,
 
 	// Get preference without prefType
@@ -227,21 +282,23 @@ SmartTemplate4.Settings = {
 	} ,
 
 	// Set preference without prefType
-	//--------------------------------------------------------------------
 	setPref : function setPref(prefstring, value) {
-		switch (this.prefService.getPrefType(prefstring))
-		{
-			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-				return this.prefService.setCharPref(prefstring, value);
-			case Components.interfaces.nsIPrefBranch.PREF_INT:
+		const Ci = Components.interfaces;
+		switch (this.prefService.getPrefType(prefstring)) {
+			case Ci.nsIPrefBranch.PREF_STRING:
+				return 
+					(this.prefService.setStringPref ?
+						this.prefService.setStringPref(prefstring, value) :
+						this.prefService.setCharPref(prefstring, value));
+			case Ci.nsIPrefBranch.PREF_INT:
 				return this.prefService.setIntPref(prefstring, value);
-			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+			case Ci.nsIPrefBranch.PREF_BOOL:
 				return this.prefService.setBoolPref(prefstring, value);
 			default:
 				break;
 		}
 		return false;
-	} ,
+	} ,	
 
 
 	// Reload preferences and update elements.
@@ -308,7 +365,6 @@ SmartTemplate4.Settings = {
 				let actDropDown = getElement('msgIdentity');
 				actDropDown.style.maxWidth = "350px"; // avoid the dialog getting super wide by restricting the hbox with the selected value.
 				if (isAdvancedPanelOpen) {
-					if (prefs.isDebug) debugger;
 					window.sizeToContent(); // times out on - get_editable@chrome://global/content/bindings/menulist.xml:134:1
 					// shrink width
 					let deltaShrink = getElement('decksContainer').scrollWidth - window.innerWidth;
@@ -390,7 +446,7 @@ SmartTemplate4.Settings = {
     licenser.LicenseKey = prefs.getStringPref('LicenseKey');
     getElement('txtLicenseKey').value = licenser.LicenseKey;
     if (licenser.LicenseKey) {
-      SmartTemplate4.Settings.validateLicenseInOptions(false);
+      SmartTemplate4.Settings.validateLicenseInOptions();
     }
 		
 		if (isAdvancedPanelOpen) {
@@ -669,12 +725,15 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	addIdentity : function addIdentity(menuvalue) {
 		const util = SmartTemplate4.Util,
-		      branch = (menuvalue == "common") ? ".common" : "." + menuvalue;
+					prefs = SmartTemplate4.Preferences,
+					isCommon = (menuvalue == "common"),
+		      branch = isCommon ? ".common" : "." + menuvalue;
 		util.logDebugOptional("functions", "addIdentity(" + menuvalue + ")");
 
 		try {
 			// Add preferences, if preferences is not create.
-			this.setPref1st("extensions.smartTemplate4" + branch + ".");
+			let prefRoot = "extensions.smartTemplate4" + branch + ".";
+			this.setPref1st(prefRoot);
 
 			// Clone and setup a preference window tags.
 			const el = document.getElementById("deckA.per_account"),
@@ -688,7 +747,10 @@ SmartTemplate4.Settings = {
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
-			this.prefDeck("default.deckB", this.isChecked("use_default" + branch)?1:0);
+			
+			let useCommon = 
+			  isCommon ? false : prefs.getBoolPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
+			this.prefDeck("default.deckB", useCommon ? 1 : 0);
 
 			this.disableWithCheckbox();
 			// this.accountKey = "";
@@ -767,8 +829,15 @@ SmartTemplate4.Settings = {
 			this.preferenceElements[i].updateElements();
 		}
 		
-		// now select the current identity from the drop down
-		theMenu.selectedIndex = currentId;
+		
+		if (CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
+			theMenu.selectedIndex = 0;
+			CurId = null; // select common
+		}
+		else {
+			// select the current identity from the drop down:
+			theMenu.selectedIndex = currentId;
+		}
 		return (CurId) ? CurId.key : null;
 		
 	} ,
@@ -1008,6 +1077,9 @@ SmartTemplate4.Settings = {
     // readData: this function does the actual work of interpreting the read data
     // and setting the UI values of currently selected deck accordingly:
     function readData(data) {
+			function isOrStartsWith(el, s) {
+				return (el.id == s || el.id.startsWith(s + "."));
+			}
       function updateElement(el, stem, targetId) {
         // id target is common, append .id#, otherwise replace the .id#
         let oldId = targetId ? el.id.replace(targetId, stem) : el.id + stem,
@@ -1056,9 +1128,13 @@ SmartTemplate4.Settings = {
           // e.g newmsg.id1
           let el = jsonData.checkboxes[i];
           updateElement(el, stem, targetId);
+					// update enable / disable textboxes from checkbox data.
+					if (isOrStartsWith(el, "new") || isOrStartsWith(el, "newhtml") ||
+					    isOrStartsWith(el, "rsp") || isOrStartsWith(el, "rsphtml") ||
+							isOrStartsWith(el, "fwd") || isOrStartsWith(el, "fwdhtml"))
+						SmartTemplate4.Settings.disableWithCheckbox(el);
+					
         }
-        // update enable / disable textboxes from checkbox data.
-        SmartTemplate4.Settings.disableWithCheckbox();
       }                  
     }
     const Cc = Components.classes,
@@ -1308,7 +1384,7 @@ SmartTemplate4.Settings = {
 		*/
   },
   
-  decryptLicense: function decryptLicense(testMode) {
+  decryptLicense: function decryptLicense() {
 		const util = SmartTemplate4.Util,
 		      licenser = SmartTemplate4.Licenser,
 					prefs = SmartTemplate4.Preferences,
@@ -1348,8 +1424,7 @@ SmartTemplate4.Settings = {
       let txtBox = getElement('txtLicenseKey'),
           license = txtBox.value;
       // store new license key
-      if (!testMode) // in test mode we do not store the license key!
-        prefs.setStringPref('LicenseKey', license);
+			prefs.setStringPref('LicenseKey', license);
 			if (!license) 
 				crypto.key_type=0; //reset
       
@@ -1366,8 +1441,6 @@ SmartTemplate4.Settings = {
           + "│ Date: " + date + "\n"
           + "│ Crypto: " + encrypted + "\n"
           + "└───────────────────────────────────────────────────────────────┘";
-        if (testMode)
-          util.alert(test);
         util.logDebug(test);
       }
       if (encrypted)
@@ -1449,18 +1522,13 @@ SmartTemplate4.Settings = {
 				}
 			}
 			
-      if (testMode) {
-      //  getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
-      }
-      else {
-        // transfer License state to main instance Licenser
-				globalLicenser.ValidationStatus =
-              (result != ELS.Valid) ? ELS.NotValidated : result;
-				globalLicenser.DecryptedDate = decryptedDate;
-				globalLicenser.DecryptedMail = decryptedMail;
-				globalLicenser.LicenseKey = licenser.LicenseKey;
-        globalLicenser.wasValidityTested = true; // no need to re-validate there
-      }
+			// transfer License state to main instance Licenser
+			globalLicenser.ValidationStatus =
+						(result != ELS.Valid) ? ELS.NotValidated : result;
+			globalLicenser.DecryptedDate = decryptedDate;
+			globalLicenser.DecryptedMail = decryptedMail;
+			globalLicenser.LicenseKey = LicenseKey;
+			globalLicenser.wasValidityTested = true; // no need to re-validate there
       
     }    
     catch(ex) {
@@ -1492,11 +1560,11 @@ SmartTemplate4.Settings = {
 			finalLicense = this.trimLicense();
     }
     if (finalLicense) {
-      SmartTemplate4.Settings.validateLicenseInOptions(false);
+      SmartTemplate4.Settings.validateLicenseInOptions();
     }
   } ,
   
-  validateLicenseInOptions: function validateLicenseInOptions(testMode) {
+  validateLicenseInOptions: function validateLicenseInOptions() {
 		function replaceCssClass(el,addedClass) {
 			try {
 				el.classList.add(addedClass);
@@ -1509,7 +1577,7 @@ SmartTemplate4.Settings = {
 			}
 		}
 		const util = SmartTemplate4.Util,
-					licenser = SmartTemplate4.Licenser,
+					licenser = util.Licenser, // use global licenser? (stored in main window)
 					ELS = licenser.ELicenseState,
 					settings = SmartTemplate4.Settings; 
     let wd = window.document,
@@ -1519,7 +1587,15 @@ SmartTemplate4.Settings = {
 				beautyTitle = getElement("SmartTemplate4AboutLogo");
     try {
 			//let decrypt = SmartTemplate4.Settings.decryptLicense.bind(SmartTemplate4.Settings);
-			let result = settings.decryptLicense(testMode); // this.decrypt breaks internal scopes in licenser.validateLicense ?
+			let result = settings.decryptLicense(); // this.decrypt breaks internal scopes in licenser.validateLicense ?
+			// show support tab if license is not empty - util.Licenser uses global licenser object!
+			let isSupportEnabled = (licenser.LicenseKey) ? true : false;
+			getElement('supportTab').collapsed = !(isSupportEnabled);
+			if (isSupportEnabled) {
+//				let mainUtil = util.Mail3PaneWindow.SmartTemplate4.Util,
+//				    v = mainUtil.Version; // test
+			}
+			
 			switch(result) {
 				case ELS.Valid:
 					let today = new Date(),
@@ -1650,6 +1726,7 @@ SmartTemplate4.Settings = {
 			case "upgrade":
 				let upgradeLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
 				btnLicense.label = upgradeLabel;
+				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;
 		}
 		return "";
@@ -1674,7 +1751,31 @@ SmartTemplate4.Settings = {
 			if (Preferences)
 				Preferences.addAll(prefArray);
 		}							
-	}
+	},
+	
+	setSupportMode: function (elem) {
+		const btnSupport = document.getElementById('composeSupportMail');
+		// force user to select a topic.
+		let topic = elem.value;
+		btnSupport.disabled = (topic) ? false : true;
+	} ,
+	
+	sendMail: function sendMail(mailto) {
+    const util = SmartTemplate4.Util;
+		
+    let subjectTxt = document.getElementById('txtSupportSubject'),
+		    supportType = document.getElementById('supportType').value,
+				version = document.getElementById('versionBox').value,
+		    subjectline = supportType + " (" + version + ") " + subjectTxt.value,
+		    sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline), // urlencode
+		    MessageComposer=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService),
+		    // make the URI
+		    ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService),
+		    aURI = ioService.newURI(sURL, null, null);
+		// open new message
+		MessageComposer.OpenComposeWindowWithURI (null, aURI);
+		// focus window?
+	},	
 
 	
 
