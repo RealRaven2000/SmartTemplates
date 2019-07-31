@@ -84,9 +84,11 @@
 <!ENTITY resolveNamesFromAB "Брать имена из адресных книг">
 <!ENTITY resolveNamesFromAB_tip "Эта функция работает не со всеми удалёнными адресными книгами, как то каталог LDAP">
 <!ENTITY resolveNamesFromABNick "При наличии псевдонима пользоваться им вместо имени">
+<!ENTITY resolveNamesFromABDisplay "Используйте отображаемое имя, если имя отсутствует">
 <!ENTITY resolveABRemoveMail "Скрыть адрес если он не используется как параметр в шаблоне">
 <!ENTITY suppressMailtToLink "Предотвращать добавление ссылок на адреса электронной почты.">
 <!ENTITY capitalizeNames "Имена - заглавными буквами">
+<!ENTITY guessNameFromMail "Угадайте название части из адреса электронной почты, если отсутствует">
 <!ENTITY pref_parseSignature "Обрабатывать подпись">
 <!ENTITY pref_parseSignature_tip "Заменять переменные в подписи">
 <!ENTITY pref_cursorInsertSpace "Вставлять пробел для подчеркивания &#37;cursor&#37;">
@@ -101,6 +103,7 @@
 <!ENTITY pref_defaultCharset_tip "Использовать эту кодировку при чтении заголовков, если кодировка не определяется.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "О SmartTemplate⁴">
+<!ENTITY support.tab "Служба поддержки">
 <!ENTITY creator.label "Создатель">
 <!ENTITY developer.label "Разработчик">
 <!ENTITY localename.label "ru">
@@ -120,6 +123,7 @@
 <!ENTITY sig2.label "Подпись, но без '--'">
 <!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
 <!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
+<!ENTITY attach.label "Добавить файл как вложение">
 <!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
@@ -190,6 +194,7 @@
 <!ENTITY p1.label "д.п.">
 <!ENTITY p2.label "Д.П.">
 <!ENTITY p3.label "ДП">
+<!ENTITY dateformat.example "Пример:">
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения.">
 <!ENTITY xsent_long.cap "Пример длинной строки:">
@@ -235,3 +240,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY premiumConfig "Премиум-функции">
 <!ENTITY label.premiumFeaturesSite "Узнать больше о премиум-функциях на нашей странице">
+<!ENTITY support.title "Почта в службу поддержки">
+<!ENTITY support.type "Тип:">
+<!ENTITY support.type.selectOne "Выберите тему!">
+<!ENTITY support.type.license "Лицензирование связано">
+<!ENTITY support.type.tech "технический">
+<!ENTITY support.type.html "Помогите с HTML / CSS">
+<!ENTITY support.type.other "Другой">
+<!ENTITY support.subject "Предмет:">
+<!ENTITY support.mail.instructions "Нажмите кнопку ниже, чтобы открыть новое письмо для поддержки. Если у вас возникли технические проблемы, рассмотрите возможность добавления снимка экрана.">
+<!ENTITY support.compose "Написать в поддержку…">
+<!ENTITY support.links "Ссылки поддержки">

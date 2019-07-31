@@ -105,6 +105,7 @@
 <!ENTITY pref_defaultCharset_tip "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "O SmartTemplate⁴">
+<!ENTITY support.tab "Podpěra">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programátor">
 <!ENTITY localename.label "en-US">
@@ -248,3 +249,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY premiumConfig "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu">
+<!ENTITY support.title "Mail na podporu">
+<!ENTITY support.type "Typ:">
+<!ENTITY support.type.selectOne "Vyber téma!">
+<!ENTITY support.type.license "Podpora související s licencí">
+<!ENTITY support.type.tech "Technická podpora">
+<!ENTITY support.type.html "Nápověda s HTML / CSS">
+<!ENTITY support.type.other "Jiný">
+<!ENTITY support.subject "Předmět:">
+<!ENTITY support.mail.instructions "Kliknutím na tlačítko níže otevřete nový e-mail na podporu. Pokud máte technické problémy, zvažte přidání snímku obrazovky.">
+<!ENTITY support.compose "Napište na podporu…">
+<!ENTITY support.links "Odkazy na podporu">

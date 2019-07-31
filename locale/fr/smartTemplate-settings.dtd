@@ -88,6 +88,7 @@
 <!ENTITY resolveABRemoveMail "Supprimer l'adresse électronique tant que le paramètre de format n'est pas spécifié">
 <!ENTITY suppressMailtToLink "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques.">
 <!ENTITY capitalizeNames "Noms en lettres capitales">
+<!ENTITY guessNameFromMail "Devinez Nom des parties de l'adresse e-mail si manquant">
 <!ENTITY pref_parseSignature "Traitement de la signature">
 <!ENTITY pref_parseSignature_tip "Remplacer des variables dans la signature.">
 <!ENTITY pref_cursorInsertSpace "Insérer un espace pour mettre en évidence le &#37;curseur&#37;">
@@ -102,6 +103,7 @@
 <!ENTITY pref_defaultCharset_tip "Lors de la lecture des en-têtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "À propos de SmartTemplate⁴">
+<!ENTITY support.tab "Soutien">
 <!ENTITY creator.label "Créateur">
 <!ENTITY developer.label "Développeur">
 <!ENTITY localename.label "fr">
@@ -244,3 +246,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY premiumConfig "Fonctionnalités Premium">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY support.title "Courrier au support">
+<!ENTITY support.type "Genre:">
+<!ENTITY support.type.selectOne "Choisissez un sujet!">
+<!ENTITY support.type.license "Aide à la licence">
+<!ENTITY support.type.tech "Support technique">
+<!ENTITY support.type.html "Aide avec HTML / CSS">
+<!ENTITY support.type.other "Autres sujets">
+<!ENTITY support.subject "Assujettir:">
+<!ENTITY support.mail.instructions "Cliquez sur le bouton ci-dessous pour ouvrir un nouveau courrier électronique à prendre en charge. Si vous rencontrez des problèmes techniques, pensez à ajouter une capture d'écran.">
+<!ENTITY support.compose "Ecrire pour soutenir…">
+<!ENTITY support.links "Liens de support">

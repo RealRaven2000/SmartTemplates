@@ -87,6 +87,7 @@
 <!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
 <!ENTITY suppressMailtToLink "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
+<!ENTITY guessNameFromMail "Zgadnij nazwy części z adresu e-mail, jeśli ich brakuje">
 <!ENTITY pref_parseSignature "Przetwórz podpis">
 <!ENTITY pref_parseSignature_tip "Zamień zmienne w podpisie">
 <!ENTITY pref_cursorInsertSpace "Wstaw spacje do wyróżnienia &#37;cursor&#37;">
@@ -101,6 +102,7 @@
 <!ENTITY pref_defaultCharset_tip "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate⁴ – informacje">
+<!ENTITY support.tab "Wsparcie">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programiosta">
 <!ENTITY localename.label "pl">
@@ -190,6 +192,7 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.example "Przykład:">
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
 <!ENTITY xsent_long.cap "Przykład długiego formatu:">
@@ -233,3 +236,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
 <!ENTITY label.premiumFeaturesSite "Przeczytaj więcej o funkcjach Premium na naszej stronie internetowej">
+<!ENTITY support.title "Wyślij pocztą do wsparcia">
+<!ENTITY support.type "Rodzaj:">
+<!ENTITY support.type.selectOne "Wybierz temat!">
+<!ENTITY support.type.license "Licencjonowanie powiązane">
+<!ENTITY support.type.tech "Techniczny">
+<!ENTITY support.type.html "Pomoc w HTML / CSS">
+<!ENTITY support.type.other "Inny">
+<!ENTITY support.subject "Przedmiot:">
+<!ENTITY support.mail.instructions "Kliknij poniższy przycisk, aby otworzyć nowy e-mail do obsługi. Jeśli masz problemy techniczne, rozważ dodanie zrzutu ekranu.">
+<!ENTITY support.compose "Napisz do wsparcia…">
+<!ENTITY support.links "Linki pomocnicze">

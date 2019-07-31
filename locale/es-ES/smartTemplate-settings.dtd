@@ -105,6 +105,7 @@
 <!ENTITY pref_defaultCharset_tip "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Acerca de SmartTemplate⁴">
+<!ENTITY support.tab "Apoyo">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Desarrollador">
 <!ENTITY localename.label "es-ES">
@@ -248,3 +249,13 @@
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
 <!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web.">
+<!ENTITY support.type "Tipo:">
+<!ENTITY support.type.selectOne "¡Seleccione un tema!">
+<!ENTITY support.type.license "Licencias relacionadas">
+<!ENTITY support.type.tech "Soporte técnico">
+<!ENTITY support.type.html "Ayuda con HTML / CSS">
+<!ENTITY support.type.other "Otra">
+<!ENTITY support.subject "Tema:">
+<!ENTITY support.mail.instructions "Haga clic en el botón de abajo para abrir un nuevo correo electrónico para soporte. Si tiene problemas técnicos, considere agregar una captura de pantalla.">
+<!ENTITY support.compose "Escribe para apoyar…">
+<!ENTITY support.links "Enlaces de soporte">

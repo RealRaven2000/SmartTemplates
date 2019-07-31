@@ -103,6 +103,7 @@
 <!ENTITY pref_defaultCharset_tip "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "SmartTemplate⁴ - Tietoja">
+<!ENTITY support.tab "Tuki">
 <!ENTITY creator.label "Tekijä">
 <!ENTITY developer.label "Kehittäjä">
 <!ENTITY localename.label "fi">
@@ -239,3 +240,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
 <!ENTITY premiumConfig "Maksulliset lisätoiminnot">
 <!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme">
+<!ENTITY support.title "Lähetä sähköpostia tukeen">
+<!ENTITY support.type "Tyyppi:">
+<!ENTITY support.type.selectOne "Valitse aihe!">
+<!ENTITY support.type.license "Liittyvät lisensointiin">
+<!ENTITY support.type.tech "tekninen">
+<!ENTITY support.type.html "Ohje HTML / CSS: n kanssa">
+<!ENTITY support.type.other "muut">
+<!ENTITY support.subject "Aihe:">
+<!ENTITY support.mail.instructions "Napsauta alla olevaa painiketta avataksesi uuden tuettavan sähköpostin. Jos sinulla on teknisiä ongelmia, harkitse kuvakaappauksen lisäämistä.">
+<!ENTITY support.compose "Kirjoita tukeaksesi…">
+<!ENTITY support.links "Tukilinkit">

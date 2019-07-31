@@ -84,6 +84,7 @@
 <!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
 <!ENTITY resolveNamesFromAB_tip "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP.">
 <!ENTITY resolveNamesFromABNick "Nadomesti ime, če je prisoten vzdevek">
+<!ENTITY resolveNamesFromABDisplay "Uporabite prikazno ime, če manjka ime">
 <!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
 <!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
 <!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
@@ -101,6 +102,7 @@
 <!ENTITY pref_defaultCharset_tip "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "O dodatku SmartTemplate⁴">
+<!ENTITY support.tab "Podpora">
 <!ENTITY creator.label "Avtor">
 <!ENTITY developer.label "Razvijalec">
 <!ENTITY localename.label "sl-SI">
@@ -120,6 +122,7 @@
 <!ENTITY sig2.label "Podpis iz nastavitev računa, toda brez '- -'">
 <!ENTITY fileHTML.label "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8.">
 <!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
+<!ENTITY attach.label "Dodaj datoteko kot prilogo">
 <!ENTITY cursor.label "Nastavi položaj kazalca">
 <!ENTITY to_var.cap "Prejemnik (Za)">
 <!ENTITY to_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
@@ -169,6 +172,8 @@
 <!ENTITY dateshort.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Časovni pas (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY dateoffset_note.label "Ta funkcija doda odmik vsem naslednjim prikazanim časom.">
+<!ENTITY calculate.reset "Nastavite argument na 0, da ustavite spreminjanje datumov.">
 <!ENTITY var_custom.cap "Spremenljivke za 'obliko datuma' po meri">
 <!ENTITY customdf_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dan v tednu (petek)">
@@ -190,6 +195,7 @@
 <!ENTITY p1.label "dop.">
 <!ENTITY p2.label "dop.">
 <!ENTITY p3.label "dop.">
+<!ENTITY dateformat.label "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti).">
 <!ENTITY var_xsent.cap "Spremenilnik  - z vodilno ničlo">
 <!ENTITY xsent_note.label "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z &#37;X:=sent&#37; bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila.">
 <!ENTITY xsent_long.cap "Primer dolgega niza">
@@ -235,3 +241,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY premiumConfig "Lastnosti premium">
 <!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani">
+<!ENTITY support.title "Pošlji na podporo">
+<!ENTITY support.type "Vrsta:">
+<!ENTITY support.type.selectOne "Izberite temo!">
+<!ENTITY support.type.license "Povezane z licenciranjem">
+<!ENTITY support.type.tech "Tehnična podpora">
+<!ENTITY support.type.html "Pomoč pri HTML / CSS">
+<!ENTITY support.type.other "Drugo">
+<!ENTITY support.subject "Zadeva:">
+<!ENTITY support.mail.instructions "Kliknite spodnji gumb, da odprete novo e-pošto za podporo. Če imate tehnične težave, razmislite o dodajanju zaslona.">
+<!ENTITY support.compose "Napišite v podporo…">
+<!ENTITY support.links "Povezave za podporo">
