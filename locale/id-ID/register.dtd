@@ -2,7 +2,9 @@
 <!ENTITY label.licenseValid "Lisensi Anda berlaku hingga:">
 <!ENTITY label.haveLicense "Sudah memiliki Lisensi?">
 <!ENTITY getSmartTemplate4 "Dapatkan Lisensi SmartTemplate⁴">
+<!ENTITY licenseTypes "Going forward, SmartTemplate⁴ offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
 <!ENTITY intro "Lisensi tahunan SmartTemplate⁴ Pro memberikan anda semua fitur premium selama setahun. Itu juga memungkinkan kami untuk mendukung dan menumbuhkan produk lebih lanjut dan mengubahnya menjadi sesuatu yang bahkan lebih menakjubkan.">
+<!ENTITY testDriveS "You can test drive the premium features with the standard license, but they may be slightly restricted.">
 <!ENTITY yearlyLicense.title "Lisensi Tahunan">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro memberi Anda akses tak terbatas ke fitur premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Info tentang fitur premium.">
@@ -20,6 +22,10 @@
 <!ENTITY email.label "Email:">
 <!ENTITY firstName.label "Nama Depan:">
 <!ENTITY lastName.label "Nama Belakang:">
+<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplate⁴ Pro license. It is bound to your personal Email address and can be used in multiple installations.">
+<!ENTITY buyPremiumLicense.button "Buy Pro License!">
+<!ENTITY buyStandardLicense.instruct "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions.">
+<!ENTITY buyStandardLicense.button "Buy Standard License!">
 <!ENTITY buyDomainLicense.instruct "Butuh Lisensi untuk perusahaan dengan lebih dari lima pengguna? Mendapatkan lisensi domain yang lebih murah:">
 <!ENTITY buyDomainLicense.button "Beli Lisensi Domain">
 <!ENTITY enterLicenseKey.button "Masukkan Kunci Lisensi...">

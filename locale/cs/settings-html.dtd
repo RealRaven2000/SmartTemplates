@@ -1,6 +1,6 @@
-<!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, &lt;br&gt; Díky za Vaši zprávu &lt;br&gt; S pozdravem, &lt;br&gt;&#37;ownname&#37;">
-<!ENTITY pref_html.label "Použij HTML (např. &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_templateBox_tip "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, <br> Díky za Vaši zprávu <br> S pozdravem, <br>&#37;ownname&#37;">
+<!ENTITY pref_html.label "Použij HTML (např. <b>bold</b>)">
 <!ENTITY pref_html.cap "Použij únikové znaky pro  &quot; , &amp; , &lt; , &gt; , mezeru. Pro více detailů se podívejte do nápovědy.">
-<!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím &lt;br&gt; .">
-<!ENTITY pref_rep_br.label "Nahraď konece řádků &lt;br&gt;">
-<!ENTITY pref_sigReplaceBR.label "Nahraď oddělovače řádků za &lt;br&gt; v textovém podpisu ">
+<!ENTITY pref_rep_br.cap "Poznámka: Mezera nebude vložena do HTML tagu použitím <br> .">
+<!ENTITY pref_rep_br.label "Nahraď konece řádků <br>">
+<!ENTITY pref_sigReplaceBR.label "Nahraď oddělovače řádků za <br> v textovém podpisu ">
