@@ -1,9 +1,10 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
-Going Forward, SmartTemplate&#8308; will <span class="emphasis">require a license</span> for continued use - the reason for this is that unlike compiled software that runs on an operating system, the constant changes on the host mail software (Thunderbird) require substantial ongoing changes with a high effort; something which cannot be provided for free ("as in beer") anymore. You may have noticed many Add-on authors abandoning their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not trying to involve the users in funding the required work.
+Going Forward, SmartTemplate&#8308; <i>requires a license</i> for continued use - the reason for this is that unlike compiled software that runs on operating systems, constant changes on the host mail software (Thunderbird) require constant, substantial, ongoing changes with high effort; something which cannot be provided for free ("as in beer") anymore. The days of simply hacking maximum version numbers to make an Add-on compatible with the next version of Thunderbird are over.
 
+You may have noticed many Add-on authors <i>abandoning</i> their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not involving users in funding the required work.
 
-<b>Improvements</b>
+<b>Improvements 2.1</b>
 <ul>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26536">[Bug 26536]</a> Support using SmartTemplate⁴ variables in Thunderbird Templates (Tb 60).</li>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26629">[Bug 26629]</a> Added a variable to set a specific time zone (e.g. GMT) for date/time variables. Use the new %X:=timezone(<i>timezone</i>)% switch to force displaying the time with a fixed time zone. For example: %X:=timezone(EST)% for inserting Eastern Standard Time in date functions such as %dateshort% or %dateformat()%</li>
@@ -22,7 +23,7 @@ The main difference is that match group is a number - which will insert / set / 
 <li>SmartTemplate⁴ from now on will remember the last selected folder using the file picker when saving / loading  templates.</li>
 <li> Added a button for opening the Stationery configuration tab. </a>
 </ul>
-<b>Bug Fixes</b>
+<b>Bug Fixes 2.1</b>
 <ul>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26626">[Bug 26626]</a> Edit As New duplicated email content unless Stationery is installed.</li>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26627">[Bug 26627]</a> Signature was always removed when creating message from templates. With this fix, when creating a mail from a thunderbird template the signature will be treated according tothe rules set up in account settings composition section. 
@@ -36,7 +37,7 @@ Fix: SmartTemplate⁴ will now check when writing new emails if the "To:" addres
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26636">[Bug 26636]</a> Stationery broken with %sig(text)%. When using a Stationery template with the "Use instead of default quote header" option switched off, some of the template text may be accidentally deleted from the Email.</li>
 <li>Improved matchTextFromBody: avoid scanning inserted quote header or anything outside of the replied to email.</li>
 </ul>
-<b>Other</b>
+<b>Other 2.1</b>
 <ul> 
 <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>  ESR 2019 Readiness - compatibility with Thunderbird 68
 
@@ -55,10 +56,10 @@ Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing e
 <b>Added in Maintenance Version 2.1.1</b>
 
 <ul>
-<li>(licensed users only) Added support tab. </li>
-<li>Added the premium feature 'deferred variables in "Write" template' (such as %to%) to standard features.</li>
+<li>Added support tab for licensed users only. </li>
+<li>Added the premium feature <a href="http://smarttemplate4.mozdev.org/premium.html#deferredVariables">'deferred variables in "Write" template'</a> (such as %to%) to standard features. Important: this only works in <i>HTML mode</i> - plain text is <i>not supported</i></li>
 <li>Improved panel sizing on Preferences dialog. </li>
 <li>ESR - Eliminated deprecated getCharPref / setCharPref functions</li>
 <li>Fixed regression caused by ESR work for Thunderbird 68 <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>, some account specific options (use HTML, replace BR) were greyed out when opening the dialog and had to be reactivated by enabling / disabling "Apply the following template". Use Common should always disable account specific settings for clarity. </li>
 <li>Improvement: When opening settings for the current Id and "use common" is selected, display common settings instead.</li>
-</ul>	
+</ul>
