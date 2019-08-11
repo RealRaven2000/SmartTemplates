@@ -368,7 +368,7 @@
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Sua licença é válida até:">
 <!ENTITY licenseValidation.passed "Obrigado por registrar o SmartTemplate⁴ Pro! Todos os recursos premium agora estão desbloqueados.">
-<!ENTITY licenseValidation.standard "Obrigado por registrar o SmartTemplate® Standard - Você está ajudando imensamente o Add-on! Você também pode testar todas as funções premium.">
+<!ENTITY licenseValidation.standard "Obrigado por registrar o SmartTemplate⁴ Standard - Você está ajudando imensamente o Add-on! Você também pode testar todas as funções premium.">
 <!ENTITY licenseValidation.failed "A chave de licença inserida não é válida. Verifique o e-mail da FastSpring para instruções. Se você ainda tiver problemas, entre em contato comigo a partir da aba Suporte.">
 <!ENTITY licenseValidation.expired "A chave de licença inserida expirou. Por favor, pressione o botão abaixo para renovar sua licença.">
 <!ENTITY licenseValidation.invalidAddon "A chave de licença inserida pode ser para uma extensão diferente. A chaves de licença para o {0} começam com {1}.">

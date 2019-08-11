@@ -35,6 +35,11 @@ pref("extensions.smartTemplate4.xtodaylegacy", false); /* old way of processing 
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); /* location of saved / loaded templates */
 
+pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
+pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
+pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
+pref("extensions.smartTemplate4.dateformat.year", "numeric"); // change to "2-digit" for forcing 2digit dateshort only
+
 
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);

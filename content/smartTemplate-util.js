@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.1.1",
+	HARDCODED_CURRENTVERSION : "2.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1704,7 +1704,7 @@ SmartTemplate4.Util = {
 	dateFormat: function dateFormat(time, timeFormat, timezone) {
 		const util = SmartTemplate4.Util;
 		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
-		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']=' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
+		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= -' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
 		util.addUsedPremiumFunction('dateFormat');
 		if (!timezone) timezone=0;
 		try {
@@ -1718,7 +1718,7 @@ SmartTemplate4.Util = {
 				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add m hours / n minutes
 			}		
 			if (SmartTemplate4.whatIsTimezone) { // add UTC offset for timezonee
-				time += util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)*60*60*1000*1000;
+				time -= util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)*60*60*1000*1000;
 			}
 			
 			// Set Time - add Timezone offset
@@ -1785,15 +1785,20 @@ SmartTemplate4.Util = {
 	
 	prTime2Str : function st4_prTime2Str(time, timeType, timezone) {
 		const util = SmartTemplate4.Util,
+					prefs = SmartTemplate4.Preferences;
 		      Ci = Components.interfaces,
 		      Cc = Components.classes;
+		function getDateFormat(field) {
+			return prefs.getStringPref("dateformat." + field);
+		}
+					
 		util.logDebugOptional('timeStrings','prTime2Str(' + time + ', ' + timeType + ', ' + timezone + ')');
 		try {
 			let tm = new Date(),
 					isOldDateFormat = (typeof Ci.nsIScriptableDateFormat !== "undefined"),
 					fmt;
 					
-			if(isOldDateFormat) {
+			if (isOldDateFormat) {
 				// this interface was removed in Gecko 57.0
 				fmt = Cc["@mozilla.org/intl/scriptabledateformat;1"].createInstance(Ci.nsIScriptableDateFormat);
 			}
@@ -1803,7 +1808,7 @@ SmartTemplate4.Util = {
 				// new Services.intl.
 				let dateOptions = {
 					hour12: false, // 24 hours
-					hour: "numeric",
+					hour: getDateFormat('hour'),
 					minute: "2-digit",
 					dateStyle: "full"
 				};
@@ -1812,30 +1817,31 @@ SmartTemplate4.Util = {
 					case "datelocal":
 						// no change
 						dateOptions.weekday = "long";
-					  dateOptions.day = "numeric";
+					  dateOptions.day = getDateFormat('day');
 					  dateOptions.month = "short";
 					  dateOptions.year = "numeric";
 						break;
 					case "dateshort":
 					default:
-					  dateOptions.day = "numeric";
-					  dateOptions.month = "numeric";
-					  dateOptions.year = "numeric";
+					  dateOptions.day = getDateFormat('day');
+					  dateOptions.month = getDateFormat('month');
+					  dateOptions.year = getDateFormat('year');
 						break;
 				}
-				fmt = new Intl.DateTimeFormat(util.getLocalePref(), dateOptions);
-				util.logDebugOptional('timeStrings','DateTimeFormat resolved options: ' + fmt.resolvedOptions());
+				let localeString = util.getLocalePref();
+				fmt = new Intl.DateTimeFormat(localeString, dateOptions);
+				util.logDebugOptional('timeStrings',"DateTimeFormat(" + localeString + ") resolved options: " + fmt.resolvedOptions());
 			}
       
 			if (SmartTemplate4.whatIsDateOffset) {
 				time += (SmartTemplate4.whatIsDateOffset*24*60*60*1000*1000); // add n days
-				util.logDebugOptional('timeStrings', 'Adding ' + SmartTemplate4.whatIsDateOffset + ' days to time');
+				util.logDebugOptional('timeStrings', "Adding " + SmartTemplate4.whatIsDateOffset + " days to time");
 			}
 			if (SmartTemplate4.whatIsHourOffset || SmartTemplate4.whatIsMinuteOffset ) {
 				time += (SmartTemplate4.whatIsHourOffset*60*60*1000*1000)
 				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add n days
 				util.logDebugOptional('timeStrings', 
-				  'Adding ' + SmartTemplate4.whatIsHourOffset  + ':' + SmartTemplate4.whatIsMinuteOffset + ' hours to time');
+				  "Adding " + SmartTemplate4.whatIsHourOffset  + ":" + SmartTemplate4.whatIsMinuteOffset + " hours to time");
 			}
 			
 			// Set Time - add Timezone offset
@@ -1843,10 +1849,10 @@ SmartTemplate4.Util = {
 			    forceTimeZone = SmartTemplate4.whatIsTimezone; // UTC offset for current time,  in minutes
 			if (forceTimeZone)  {
 				let forceHours = util.getTimezoneOffset(forceTimeZone);
-				timezone = nativeUtcOffset*(-1) + forceHours*60; // offset in minutes!
+				timezone = nativeUtcOffset*(-1) - forceHours*60; // offset in minutes!
 				util.logDebug("Adding timezone offsets:\n" +
 				  "UTC Offset: " + nativeUtcOffset/(-60) + 
-					"\nForced Timezone[" + forceTimeZone + "]: " + forceHours);
+					"\nForced Timezone[" + forceTimeZone + "]: -" + forceHours);
 			}
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 
@@ -1876,7 +1882,7 @@ SmartTemplate4.Util = {
 			}
 			else
 				timeString = fmt.format(tm)
-			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
+			util.logDebugOptional('timeStrings', "Created timeString: " + timeString);
 			return timeString;
 		}
 		catch (ex) {
@@ -2102,7 +2108,8 @@ SmartTemplate4.Util = {
 			case "CAT": return 2;
 			case "CCT": return 6.5;
 			case "CDT": return -5; // Central Daylight (North America)
-			case "CEST": return 2;
+			case "CEDT": return 2; // Central European Daylight Saving Time
+			case "CEST": return 2; // Central European Summer Time
 			case "CET": return 1;
 			case "CHADT": return 13.75;
 			case "CHAST": return 12.75;
@@ -2176,7 +2183,8 @@ SmartTemplate4.Util = {
 			case "MAWT": return 5;
 			case "MDT": return -6;
 			case "MEET": return 1;
-			case "MEST": return 2;
+			case "MEST": return 2; // Middle European Summer Time 
+			case "MESZ": return 2; // Middle European Summer Time 
 			case "MHT": return 12;
 			case "MIST": return 11;
 			case "MIT": return -9.5;
@@ -2398,33 +2406,61 @@ SmartTemplate4.Util = {
 					ChromeUtils.import('resource://gre/modules/Services.jsm') :
 					Components.utils.import('resource://gre/modules/Services.jsm');
 				
+				// Tb68: requestedLocale
+				// Tb60: getRequestedLocale()
+				// Tb52: getApplicationLocale().getCategory("NSILOCALE_TIME")
+				let platformRequestedLocale 
+				  = (typeof Services.locale.requestedLocale == "string") ? Services.locale.requestedLocale : 
+					  (Services.locale.getRequestedLocale ? Services.locale.getRequestedLocale() : Services.locale.getApplicationLocale().getCategory("NSILOCALE_TIME"));
+				
 				locale =   // get locale from Operating System. note nslocaleservice was removed in Gecko 57
-			      Cc["@mozilla.org/intl/nslocaleservice;1"] 
-			        ? Cc["@mozilla.org/intl/nslocaleservice;1"].getService(Ci.nsILocaleService).getLocaleComponentForUserAgent()
-							: Services.locale.requestedLocale; // was Services.locale.getAppLocaleAsLangTag();
+			      Services.locale.getLocaleComponentForUserAgent() 
+							|| platformRequestedLocale || Services.locale.lastFallbackLocale; // was Services.locale.getAppLocaleAsLangTag();
 			}
 			catch(ex) {
 				util.logException("getLocalePref failed - fallback to en-US", ex);
 				locale = "en-US";				
 			}
 			if (forcedLocale && forcedLocale != locale) {
-				let availableLocales = util.getAvailableLocales("global"); // list of installed locales
+				let availableLocales = util.getAvailableLocales("global"),
+				    foundPartly=""; // list of installed locales
 				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
 					listLocales += aLocale.toString() + ', ';
-					if (aLocale == forcedLocale) found = true;
+					if (aLocale == forcedLocale) 
+						found = true;
+					else {
+						if(aLocale.indexOf(forcedLocale)==0)
+							foundPartly = aLocale; // partly matched, e.g. forcedLocale=de, language pack = de-DE
+					}
+				}
+				if (!found && foundPartly) {
+					util.logDebug("found requested language '{0}' matching partly: %language% selecting '{1}'"
+					  .replace("{0}", forcedLocale)
+					  .replace("{1}", foundPartly));
+					// we found a variation of the root language requested:
+					forcedLocale = foundPartly;
+					found = true;
 				}
 				if (!found) {
+					let requiredLocaleTxt =
+					  " In order to use %datelocal% or %dateshort% with the requested language," +
+					  " You will need the matching Language Pack [{0}]".replace('{0}', forcedLocale+".xpi")
+						+ " from https://ftp.mozilla.org/pub/thunderbird/releases/" + util.AppverFull + "/yourOS/xpi";
 				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
-					                + 'You will need the Language Pack from https://ftp.mozilla.org/pub/thunderbird/releases/' + util.AppverFull + '/yourPlatform/xpi' + '\n'
+					                +  requiredLocaleTxt + '\n'
 					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
-					util.logError(errorText, '', '', 0, 0, 0x1);
+					util.logToConsole(errorText);
+					/*
+					let parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window;
 					SmartTemplate4.Message.display(errorText,
-		                              "centerscreen,titlebar",
-		                              { ok: function() { ; }}
+							"centerscreen,titlebar",
+							{ ok: function() { parentWin.focus(); }},
+							parentWin
 					);
-					
 					forcedLocale = null;
+					*/
+					
 				}
 				else {
 					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
@@ -2432,11 +2468,11 @@ SmartTemplate4.Util = {
 				}
 			}
 
-			util.logDebug('getLocale() returns: ' + locale);
+			util.logDebug('getLocalePref() returns: ' + locale);
 			return locale;
 		}
 		catch (ex) {
-			util.logException('getLocale() failed and defaulted to [en]', ex);
+			util.logException('getLocalePref() failed and defaulted to [en]', ex);
 			return "en";
 		}
 	} ,
@@ -2474,9 +2510,7 @@ SmartTemplate4.Util.firstRun =
 		if (typeof SmartTemplate4.Settings === 'undefined')
 			return;
 			
-  	window.addEventListener("load", function(){ SmartTemplate4.updateStatusBar('default'); },true);
-			
-		const util = SmartTemplate4.Util,
+  	const util = SmartTemplate4.Util,
 		      prefs = SmartTemplate4.Preferences;
 		util.logDebug('Util.firstRun.init()');
 		let prev = -1, firstRun = true,

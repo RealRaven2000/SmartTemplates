@@ -18,7 +18,7 @@
                    label="&smartTemplate4.settings.label;"
                    tooltiptext="&smartTemplate4.settings.tooltip;"
                    class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+                   oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
   </toolbarpalette>
 
   <!-- # SEAMONKEY # -->
@@ -27,7 +27,7 @@
                    label="&smartTemplate4.settings.label;"
                    tooltiptext="&smartTemplate4.settings.tooltip;"
                    class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+                   oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
   </vbox>
 
 <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
@@ -37,7 +37,7 @@
 										 class="statusbarpanel-iconic"
 										 label="&smartTemplate4.settings.label;"
 										 tooltiptext="&smartTemplate4.settings.tooltip;"
-										 oncommand="openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
+										 oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
 	  </statusbarpanel>
   </statusbar>
 

@@ -145,8 +145,8 @@ SmartTemplate4.Licenser =
 	},
 	
 	get GracePeriod() {
-		let graceDate; // actually the install date.
-		const period = 14,
+		let graceDate; // actually the install date for 2.1 or later.
+		const period = 28,
 		      SINGLE_DAY = 1000*60*60*24; 
 		try {
 		  graceDate = prefs.getStringPref("license.gracePeriodDate");

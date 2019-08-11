@@ -1,0 +1,22 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.NewTab,.RespondTab,.ForwardTab,
+#fieldsTab, #settingsTab, #aboutTab, #templatesTab, #advancedSettingsTab  {
+  cursor: pointer;
+  -moz-appearance: none !important;
+}
+
+.actionTabs > tab .tab-middle {
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
+}
+
+/*** Animated popup Notifications  ***/
+@keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
+
+notification[value="SmartTemplate4-license"] .notification-button[accesskey],
+xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey],
+notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey],
+xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey] {
+  animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1) 10s;
+}

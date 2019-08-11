@@ -157,7 +157,10 @@ function async_driver(val) {
 
 // We use this as a display consumer
 // nsIStreamListener
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+var { XPCOMUtils } = 
+  ChromeUtils.import ?
+  ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") :
+	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");  // Fix for THunderbird 52
 // not used (yet)
 var SmartTemplate4_streamListener =
 {
@@ -998,9 +1001,9 @@ SmartTemplate4.parseModifier = function(msg) {
   // %matchTextFromBody()% using * to generate result:
   // %matchTextFromBody(TEST *)% => returns first * match: TEST XYZ => XYZ
 	// Insert replacement from body of QUOTED email!
-	matchText(/%matchTextFromBody\(.*\)%/g, 'body');
+	matchText(/%matchTextFromBody\(.*?\)%/g, 'body'); // [bug 26688]
 	// Insert replacement from subject line
-	matchText(/%matchTextFromSubject\(.*\)%/g, 'subject');
+	matchText(/%matchTextFromSubject\(.*?\)%/g, 'subject');
 
 	// make 2 arrays, words to delete and replacement pairs.
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
@@ -1302,7 +1305,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					"messageRaw", "file", "attach", //depends on the original message, but not on any header
           "header.set", "header.append", "header.prefix, header.delete",
 					"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
-          "header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody"
+          "header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
 					);
 
 	// Reserved words which depend on headers of the original message.
@@ -1626,7 +1629,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			}
 			return false;
 		}
-					
+			
+    // revove  (  ) from argument string
+    function removeParentheses(arg) {
+			return arg.substr(1,arg.length-2);
+		}
 
 		let originalToken = token;
 		
@@ -1646,10 +1653,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				
 		if (SmartTemplate4.whatIsTimezone) {
 			let forcedTz = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone);
-			msOffset = msOffset + forcedTz*60*60*1000 - nativeUtcOffset*60*1000;
+			msOffset = msOffset - forcedTz*60*60*1000 - nativeUtcOffset*60*1000;
 			util.logDebug("Adding timezone offsets:\n" +
-			  "UTC Offset: " + nativeUtcOffset/(-60) + "\n" +
-				"Forced Timezone:" + forcedTz);
+			  "UTC Offset: " + nativeUtcOffset/(-60) + " hour\n" +
+				"Forced Timezone Offset: -" + forcedTz + " hours\n" +
+				"Total Offset = " + msOffset + " ms will be added to time");
 		}
 		
 		// date is sent date when replying!
@@ -1843,8 +1851,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "newsgroup":
 					return finalize(token, getNewsgroup());
 				case "language":
-				  SmartTemplate4.calendar.init(arg.substr(1,arg.length-2)); // strip ( )
+				  SmartTemplate4.calendar.init(removeParentheses(arg));
 					return "";
+				case "logMsg": // For testing purposes - add a comment line to email and error console
+				  util.logToConsole(removeParentheses(arg));
+					return removeParentheses(arg)+"<br>"; // insert into email
 				case "dbg1":
 					return finalize(token, cal.list());
 				case "cwIso": // ISO calendar week [Bug 25012]
@@ -1865,7 +1876,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return "";
 				case "X:=calculated":  // calculated(numberOfDays)
 				  if (debugTimeStrings) debugger;
-					params = arg.substr(1,arg.length-2).split(',');
+					params = removeParentheses(arg).split(',');
 				  let dateOffset = (params.length>0) ? parseInt(params[0] || "0" ) : 0,
 							tOffset = (params.length>1) ? params[1] : "00:00";
 					let hm = tOffset.split(':'),
@@ -1879,7 +1890,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return "";
 				case "X:=timezone":
 				  if (debugTimeStrings) debugger;
-					params = arg.substr(1,arg.length-2).split(',');
+					params = removeParentheses(arg).split(',');
 				  SmartTemplate4.whatIsTimezone = params[0];
 				  return "";
 				case "cursor":

@@ -3,7 +3,7 @@
 <!ENTITY label.haveLicense "已经有许可证？">
 <!ENTITY getSmartTemplate4 "购买SmartTemplate⁴许可证">
 <!ENTITY licenseTypes "展望未來，SmartTemplate⁴提供兩個許可證，Standard和Pro; 這些對於跟上Thunderbird平台的變化以及為附加組件的創新和修復提供資金是必要的。 由於重大變更按年度週期推出，許可證的有效期也為1年。">
-<!ENTITY intro "SmartTemplate®Pro的年度许可证为您提供一年的所有高级功能。 它还使我们能够进一步支持和发展产品，并将其变得更加令人敬畏。">
+<!ENTITY intro "SmartTemplate⁴Pro的年度许可证为您提供一年的所有高级功能。 它还使我们能够进一步支持和发展产品，并将其变得更加令人敬畏。">
 <!ENTITY testDriveS "您可以使用標准許可證測試高級功能，但可能會受到輕微限制。">
 <!ENTITY yearlyLicense.title "年度许可证">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴Pro 让您可以完全不受限制地访问高级功能。">
@@ -12,12 +12,12 @@
 <!ENTITY yearlyLicense.usageTerm1 "任何其他电子邮件地址都没有问题 - 它们不需要单独的许可证。 如有疑问，您可以通过支持标签与我联系。">
 <!ENTITY domainLicense.email "我們將使用此電子郵件地址與您聯繫以生成您的域名許可; 請允許我們兩個工作日與我們取得聯繫。 在下一頁上輸入許可證的域名。">
 <!ENTITY domainLicense.header "许可的电子邮件域">
-<!ENTITY domainLicense.instruct "许可证是您公司域的关键。 许可证允许使用此电子邮件域结尾的电子邮件地址的用户使用SmartTemplate®Pro。 例如。 如果您输入域名'abc.com'，则允许邮件用户如fred @ abc.com，martha @ abc.com，mike.doe @ abc.com等使用该许可证。 有效个人用户的最大数量是您在初始屏幕上输入的数量。">
+<!ENTITY domainLicense.instruct "许可证是您公司域的关键。 许可证允许使用此电子邮件域结尾的电子邮件地址的用户使用SmartTemplate⁴Pro。 例如。 如果您输入域名'abc.com'，则允许邮件用户如fred @ abc.com，martha @ abc.com，mike.doe @ abc.com等使用该许可证。 有效个人用户的最大数量是您在初始屏幕上输入的数量。">
 <!ENTITY domainLicense.validate "确保您在公司的电子邮件地址（*符号后面的部分*）中输入域名* *，因为它将用于授权用户的电子邮件地址。">
 <!ENTITY updates.title "更新">
 <!ENTITY updatesExpiry "SmartTemplate⁴Pro将像往常一样通过addons.thunderbird.net自动更新。 在年度到期后，您可以续订许可证或继续使用与免费用户相同条款的高级功能。 'Premium Exclusive'功能需要有效的注册码。">
 <!ENTITY vouchers.title "优惠券">
-<!ENTITY freeLicense "如果您最近捐赠给SmartTemplate®项目或已经完成了贡献工作，例如翻译或编写补丁，您可能有资格获得免费许可证密钥。 通过SmartTemplate®选项中的支持选项卡与我联系。">
+<!ENTITY freeLicense "如果您最近捐赠给SmartTemplate⁴项目或已经完成了贡献工作，例如翻译或编写补丁，您可能有资格获得免费许可证密钥。 通过SmartTemplate⁴选项中的支持选项卡与我联系。">
 <!ENTITY account.label "选择帐户：">
 <!ENTITY email.label "电子邮件：">
 <!ENTITY firstName.label "名字：">

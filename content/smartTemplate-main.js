@@ -318,14 +318,37 @@ END LICENSE BLOCK
 		# [Bug 26667] ESR 2019 Readyness - make SmartTemplate⁴ compatible with Thunderbird 68
 		# Added mandatory Standard license	
 
-	Version 2.1.1 - WIP
+	Version 2.1.1 - 03/08/2019
 		# Some improvements with panel sizing on preferences dialog
 	  # Added Support Tab (licensed users only - these can now send an email directly) 
 		# ESR - Eliminated getCharPref / setCharPref
 		# in Tb 68, some account specific options (use HTML, replace BR) are greyed out 
 		  when opening the dialog and  have to be reactivated by enabling / disabling 
 			"Apply the following template"
-		#
+
+	Version 2.2 - WIP
+	  # [issue #5] Fixed %timezone% to subtract the offset hours rather than falsely add it.
+		  also added CEDT and MESZ
+		  https://github.com/RealRaven2000/SmartTemplate4/issues/4
+		# [issue #4] Fixed locale problem. SmartTemplate⁴ due to a regression in 2.0 the current
+		  locale of the mail client cannot be determind currectly.
+			The %language()% switch works now better and gives more precise error messages
+			in JavaScript console where needed.			
+		# [issue #3] added formatting 2-digit switches (about:config) for %dateshort% and %datelocal%
+		  dateformat.hour, dateformat.day, dateformat.month, dateformat.years
+			(change strings from "numeric" to "2-digit")
+		# [Bug 26688] Multiple %matchTextFromBody% in a line yielded only a single result
+		# Backwards fixes for Thunderbird 52
+		# Extended trial period from 14 days to 28 days.
+		
+	Version 2.Future Version? - WIP
+	  # add template management functions. to do:
+		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
+			- add list of eml templates to wrtie / reply / fwd buttons
+			- support "reply with" from thunderbird template (sub)folder
+			- support editing templates with SmartTemplate variables
+			- ...
+		# ...
 			
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -838,7 +861,8 @@ var SmartTemplate4 = {
 // -------------------------------------------------------------------
 // this was classCalIDateTimeFormatter
 SmartTemplate4.calendar = {
-    currentLocale : null,
+    currentLocale : null, // whatever was passed into %language()%
+		bundleLocale: null,
 		bundle: null,
 		list: function list() {
 			let str = "";
@@ -862,37 +886,43 @@ SmartTemplate4.calendar = {
 			if (forcedLocale) {
 				let availableLocales = util.getAvailableLocales("smarttemplate4"), // smarttemplate4-locales
 						found = false,
-						listLocales = '';
+						fullMatch = false,
+						listLocales = "";
 				while (availableLocales.hasMore()) {
 					let aLocale = availableLocales.getNext();
 					listLocales += aLocale.toString() + ', ';
-					if (aLocale.indexOf(forcedLocale)==0) {  // allow en to match en-UK, en-US etc.
-					  forcedLocale = aLocale;
+					if (aLocale == forcedLocale) { // match completely, e.g/ "en" or "en-GB"
+					  this.bundleLocale = aLocale;
+						fullMatch = true;
+					  found = true;
+					}
+					if (!fullMatch && aLocale.indexOf(forcedLocale)==0) {  // allow en to match en-UK, en-US etc.
+					  this.bundleLocale = aLocale;
 					  found = true;
 					}
 				}
 				if (!found) {
-				  let errorText =   'Invalid %language% id: ' + forcedLocale + '\n'
-					                + 'Available in SmartTemplate4: ' + listLocales.substring(0, listLocales.length-2);
-					util.logError(errorText, '', '', 0, 0, 0x1);
-					SmartTemplate4.Message.display(errorText,
-		        "centerscreen,titlebar",
-		        { ok: function() { ; } }
-		      );
-					
-					forcedLocale = null;
+				  let errorText =   "Unsupported %language% id: " + forcedLocale + "\n"
+					                + "Available in SmartTemplate4: " + listLocales.substring(0, listLocales.length-2) + "\n"
+													+ "This will affect the following variables: %A% %a% %B% %b% (week days and months) ";
+					util.logToConsole(errorText);
+					/* SmartTemplate4.Message.display(errorText, "centerscreen,titlebar", { ok: function() { ; } }); */
+					this.bundleLocale = null;
 				}
 				else {
-					util.logDebug('calendar - found extension locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
+					util.logDebug("calendar - found extension locales: " + listLocales + "\nconfiguring " + forcedLocale);
 				}
       }			
-			this.currentLocale = forcedLocale;
-			let bundleUri = forcedLocale 
-				? "chrome://smarttemplate4-locales/content/" + forcedLocale 
-				: "chrome://smarttemplate4/locale";
+			this.currentLocale = forcedLocale; // if not passed in, this will use the default locale for date translations 
+			let bundleUri = this.bundleLocale 
+				? "chrome://smarttemplate4-locales/content/" + this.bundleLocale 
+				: "chrome://smarttemplate4/locale"; // determined by currently active Thunderbird locale
 			this.bundle = strBndlSvc.createBundle(bundleUri + "/calender.properties");
 		},
 		
+		// the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)
+		// these will affect the following variables: %A% %a% %B% %b% (week days and months)
+		// OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
 		dayName: function dayName(n){ 
 			return this.bundle.GetStringFromName("day." + (n + 1) + ".name"); 
 		},

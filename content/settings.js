@@ -373,10 +373,27 @@ SmartTemplate4.Settings = {
 				}
 				if (util.HostSystem.toLowerCase().startsWith("linux"))
 					window.resizeBy(0,55); // show Ok / Cancel buttons.
+				// make sure we are not moved partly off screen
+				if (window.opener && window.opener.document.documentURI.endsWith("messenger.xul")) {
+					let parentWidth = window.opener.outerWidth,
+					    parentX = window.opener.screenX,
+							parentRight = parentX + parentWidth;
+					
+					let offScreenX = window.screenX + window.outerWidth;
+					
+					if (offScreenX > parentRight) {
+						// move window to left if it's outside of right hand of screen
+						window.moveBy (parentRight - offScreenX - 10, 0);
+					}
+					
+							
+				}
+				
 				setTimeout( function() {
 					  actDropDown.style.maxWidth = null; // undo width restrictions 
 				  }, 250
 				);
+				
 				
 				
 				// let's test if we can get this element

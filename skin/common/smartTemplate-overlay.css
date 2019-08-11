@@ -72,8 +72,6 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image
 }
 
 
-/*** Animated popup Notifications  ***/
-@keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */
 notification[value="SmartTemplate4-license"] .notification-button[accesskey],
@@ -81,7 +79,6 @@ xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey]
 notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey],
 xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey] {
 	-moz-appearance: none;
-  animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
 	border: 1px solid white;
@@ -95,6 +92,8 @@ xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accessk
 	height: 135% !important;
 	width: 135% !important;
 }
+
+/* moved animation to windows specific style sheet */
 
 notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
 xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
@@ -133,7 +132,7 @@ xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton {
 }
 
 notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
-xbl-notification[value="SmartTemplate4-license"] .messageCloseButton:hover.
+xbl-notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
 notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover,
 xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover {
 	background-color: rgba(255, 255, 255, 1);

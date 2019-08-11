@@ -315,7 +315,7 @@
 			<preference id = "pref_fontSize"  name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference id = "pref_firstLastSwap" name = "extensions.smartTemplate4.firstLastSwap" type = "bool" instantApply="true"/>
 			<preference id = "pref_nameDelimiter" name = "extensions.smartTemplate4.names.delimiter" type = "string" instantApply="true"/>
-			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" />
+			<preference id = "pref_stationerySupport" name = "extensions.smartTemplate4.stationery.supported" type = "bool" instantApply="true" />
 			<preference id = "pref_cursorSpace" name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" instantApply="true"/>
 			<preference id = "pref_forceParagraph" name = "extensions.smartTemplate4.forceParagraph" type = "bool" instantApply="true"/>
 			<preference id = "pref_defaultCharset" name = "extensions.smartTemplate4.defaultCharset" type = "string" instantApply="true"/>
