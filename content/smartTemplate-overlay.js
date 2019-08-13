@@ -1154,9 +1154,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				  util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param || '' + ')');
 				}
 				let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
-				    s = (el == "reserved")
-					? str
-					: hdr.get(el ? el : reservedWord) != "" ? str : "";
+				    isReserved = (el && el.startsWith("reserved")),
+				    s = isReserved ? str
+					      : hdr.get(el ? el : reservedWord) != "" ? str : ""; // check if header exists
 				if (!el)
 					util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
 				else { // it's a reserved word, likely a header
@@ -1165,7 +1165,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
 						// wrap into <smarttemplate > for later deferral (works only in HTML)
 						// use pink fields for new emails for the New Mail case - this var can not be used in...
-						if (el != "reserved" && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
+						if (!isReserved && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
 							s = str;
 						}
 						else
@@ -1298,15 +1298,21 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// Reserved words that do not depend on the original message.
 	// identity(name) is the new ownname
 	// identity(mail) is the new ownmail
-	addTokens("reserved", "ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
-					"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
-					"X:=today", "X:=calculated", "X:=timezone", "dbg1", "datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "sig", "newsgroup", "cwIso", 
-					"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
-					"messageRaw", "file", "attach", //depends on the original message, but not on any header
-          "header.set", "header.append", "header.prefix, header.delete",
-					"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
-          "header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
-					);
+	addTokens("reserved", 
+		"ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
+		"dbg1", "sig", "newsgroup", 
+		"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
+		"messageRaw", "file", "attach", //depends on the original message, but not on any header
+		"header.set", "header.append", "header.prefix, header.delete",
+		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
+		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
+	);
+	// new classification for time variables only
+	addTokens("reserved.time", 
+		"Y", "y", "m", "n", "d", "e", "H", "k", "I", "l", "M", "S", "T", "X", "A", "a", "B", "b", "p",
+		"datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "cwIso",
+		"X:=today", "X:=calculated", "X:=timezone");
+
 
 	// Reserved words which depend on headers of the original message.
 	addTokens("To", "to", "toname", "tomail");
@@ -1630,7 +1636,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			return false;
 		}
 			
-    // revove  (  ) from argument string
+    // remove  (  ) from argument string
     function removeParentheses(arg) {
 			return arg.substr(1,arg.length-2);
 		}
@@ -1642,41 +1648,51 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		    expand = function(str) { return str.replace(/%([\w-]+)%/gm, replaceReservedWords); };
 		if (!SmartTemplate4.calendar.bundle)
 			SmartTemplate4.calendar.init(null); // default locale
-		let cal = SmartTemplate4.calendar,
-		    nativeUtcOffset = tm.getTimezoneOffset(); // UTC offset for current time,  in minutes
-
-		
-		// what if we go over date boundary? (23:59)
-		let msOffset = (SmartTemplate4.whatIsHourOffset ? SmartTemplate4.whatIsHourOffset*60*60*1000 : 0)
-		               + (SmartTemplate4.whatIsMinuteOffset ?  SmartTemplate4.whatIsMinuteOffset*60*1000 : 0),
-		    dayOffset = SmartTemplate4.whatIsDateOffset;
-				
-		if (SmartTemplate4.whatIsTimezone) {
-			let forcedTz = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone);
-			msOffset = msOffset - forcedTz*60*60*1000 - nativeUtcOffset*60*1000;
-			util.logDebug("Adding timezone offsets:\n" +
-			  "UTC Offset: " + nativeUtcOffset/(-60) + " hour\n" +
-				"Forced Timezone Offset: -" + forcedTz + " hours\n" +
-				"Total Offset = " + msOffset + " ms will be added to time");
+		let cal = SmartTemplate4.calendar;
+			
+		// expensive calculations, only necessary if we deal with tokens that do time 
+		if (typeof TokenMap[token]!='undefined' && (TokenMap[token] == 'reserved.time')) {
+			// what if we go over date boundary? (23:59)
+			let nativeUtcOffset = tm.getTimezoneOffset(), // UTC offset for current time, in minutes
+			    msOffset = (SmartTemplate4.whatIsHourOffset ? SmartTemplate4.whatIsHourOffset*60*60*1000 : 0)
+										 + (SmartTemplate4.whatIsMinuteOffset ?  SmartTemplate4.whatIsMinuteOffset*60*1000 : 0),
+					dayOffset = SmartTemplate4.whatIsDateOffset;
+					
+			if (SmartTemplate4.whatIsTimezone) {
+				let forcedTz = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone);
+				msOffset = msOffset + forcedTz*60*60*1000 + nativeUtcOffset*60*1000;
+				util.logDebug("Adding timezone offsets:\n" +
+					"UTC Offset: " + nativeUtcOffset/(60) + " hour\n" +
+					"Forced Timezone Offset: " + forcedTz + " hours\n" +
+					"Total Offset = " + msOffset + " ms will be added to time");
+			}
+			
+			// date is sent date when replying!
+			// in new mails or if offset is applied we use dateshort
+			if (msOffset || dayOffset || (util.getComposeType()=='new')) {
+				if (token=="date") 
+					token = "dateshort";
+			}
+			
+			if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && !date) {
+				// 
+				alert( "There is no sent date. You cannot use the X:=Sent switch in this case!");
+				SmartTemplate4.whatIsX = SmartTemplate4.XisToday;
+			}
+			
+			// Set %A-Za-z% to time of original message was sent.
+			if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent)  {
+				tm.setTime((date / 1000) + msOffset);
+			}
+			else
+				tm.setTime(tm.getTime() + msOffset);
+			
+			// note: date variable comes from header!
+			if (dayOffset) {
+				tm.setDate(tm.getDate() + dayOffset);
+			}
 		}
 		
-		// date is sent date when replying!
-		// in new mails or if offset is applied we use dateshort
-		if (msOffset || dayOffset || (util.getComposeType()=='new')) {
-			if (token=="date") 
-				token = "dateshort";
-		}
-		
-		// Set %A-Za-z% to time of original message was sent.
-		if (SmartTemplate4.whatIsX == SmartTemplate4.XisSent) 
-			tm.setTime((date / 1000) + msOffset);
-		else
-			tm.setTime(tm.getTime() + msOffset);
-		
-		// note: date variable comes from header!
-		if (dayOffset) {
-			tm.setDate(tm.getDate() + dayOffset);
-		}
 
 		let debugTimeStrings = (prefs.isDebugOption('timeStrings'));
 		if (!arg) arg='';
@@ -1700,9 +1716,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "matchTextFromBody": // return unchanged
 					return '%' + token + arg + '%';
 				case "dateformat":
+					if (debugTimeStrings) debugger;
 					tm = new Date();
-					let defaultTime = util.dateFormat(tm.getTime() * 1000, arg, 0);
-				  token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+					const dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
+					if (dateFormatSent)
+						tm.setTime((date / 1000));
+					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
+					if (dateFormatSent)
+						token = defaultTime;
+					else
+						token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
 					return token; 
 				case "datelocal":
 				case "dateshort":

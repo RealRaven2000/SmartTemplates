@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.2",
+	HARDCODED_CURRENTVERSION : "2.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1704,7 +1704,7 @@ SmartTemplate4.Util = {
 	dateFormat: function dateFormat(time, timeFormat, timezone) {
 		const util = SmartTemplate4.Util;
 		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
-		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= -' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
+		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= ' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
 		util.addUsedPremiumFunction('dateFormat');
 		if (!timezone) timezone=0;
 		try {
@@ -1717,8 +1717,10 @@ SmartTemplate4.Util = {
 				time += (SmartTemplate4.whatIsHourOffset*60*60*1000*1000)
 				      + (SmartTemplate4.whatIsMinuteOffset*60*1000*1000); // add m hours / n minutes
 			}		
-			if (SmartTemplate4.whatIsTimezone) { // add UTC offset for timezonee
-				time -= util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)*60*60*1000*1000;
+			if (SmartTemplate4.whatIsTimezone) { // subtract UTC offset for timezone
+			  let nativeUtcOffset = tm.getTimezoneOffset(),
+			      forcedOffset = util.getTimezoneOffset(SmartTemplate4.whatIsTimezone)*60; // calculate minutes
+				time = time + (nativeUtcOffset + forcedOffset)*60*1000*1000;
 			}
 			
 			// Set Time - add Timezone offset
@@ -1849,10 +1851,10 @@ SmartTemplate4.Util = {
 			    forceTimeZone = SmartTemplate4.whatIsTimezone; // UTC offset for current time,  in minutes
 			if (forceTimeZone)  {
 				let forceHours = util.getTimezoneOffset(forceTimeZone);
-				timezone = nativeUtcOffset*(-1) - forceHours*60; // offset in minutes!
+				timezone = nativeUtcOffset + forceHours*60; // offset in minutes!
 				util.logDebug("Adding timezone offsets:\n" +
-				  "UTC Offset: " + nativeUtcOffset/(-60) + 
-					"\nForced Timezone[" + forceTimeZone + "]: -" + forceHours);
+				  "UTC Offset: " + nativeUtcOffset/60 + 
+					"\nForced Timezone[" + forceTimeZone + "]: " + forceHours);
 			}
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 
@@ -2414,7 +2416,8 @@ SmartTemplate4.Util = {
 					  (Services.locale.getRequestedLocale ? Services.locale.getRequestedLocale() : Services.locale.getApplicationLocale().getCategory("NSILOCALE_TIME"));
 				
 				locale =   // get locale from Operating System. note nslocaleservice was removed in Gecko 57
-			      Services.locale.getLocaleComponentForUserAgent() 
+				           // removed Services.locale.getLocaleComponentForUserAgent()
+			      Services.locale.appLocaleAsLangTag  
 							|| platformRequestedLocale || Services.locale.lastFallbackLocale; // was Services.locale.getAppLocaleAsLangTag();
 			}
 			catch(ex) {
@@ -2503,6 +2506,18 @@ SmartTemplate4.Util.firstRun =
 		// upgrade routines for future use...
 		// SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
 
+	} ,
+	
+	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
+		let p = previousVersion.toString(),
+		    n = newVersion.toString();
+		if (p=="2.2" && n=="2.2.1") {
+			SmartTemplate4.Util.logToConsole(
+				"Silent Update - no version history displayed because v{0} is a maintenance release for v{1}"
+				.replace("{0}",n).replace("{1}",p));
+			return true;
+		}
+		return false;
 	} ,
 
 	init: function() {
@@ -2614,9 +2629,10 @@ SmartTemplate4.Util.firstRun =
 
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
-					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")) {
-						util.logDebugOptional ("firstRun","open tab for version history, QF " + current);
-						window.setTimeout(function(){util.showVersionHistory(false);}, 2200);
+					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")
+						  && !this.silentUpdate(prev,pureVersion)) {
+						util.logDebugOptional ("firstRun","open tab for version history, ST " + current);
+						window.setTimeout(function(){ util.showVersionHistory(false); }, 2200);
 					}
 
 					// Display the modeless update message

@@ -4,17 +4,17 @@
 <!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-accountManager.dtd">
 
 
-<overlay id="stam-addressingOverlay"
+<overlay id="st4-addressingOverlay"
 				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	 
 
-	<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type="application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-accounts.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-accounts.js"/>
 
 	<vbox flex="1" id="compositionAndAddressing">
 		<groupbox>
-			<caption id="smartTemplate4_caption"
-			         label="&smarttemplate4_title;"
-			         />
+			<label class="header"
+			       id="smartTemplate4_caption">&smarttemplate4_title;</label>
 			<hbox>
 				<button id="smartTemplate4_settings"
 				        class="buttonIcon"
@@ -24,6 +24,8 @@
 			</hbox>
 		</groupbox>
 	</vbox>
+	
+	
 
 </overlay>
 
