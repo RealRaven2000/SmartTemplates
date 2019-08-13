@@ -8,4 +8,4 @@ rem "C:\Program Files\7-Zip\7z" a -xr!.svn smartTemplate.zip install.rdf chrome.
 echo %smartTemplateRev% > revision.txt
 move smartTemplate-*.xpi "..\..\Test Versions\2.2\"
 pwsh -Command "Start-Sleep -m 150"
-rename smartTemplateWeb.zip smartTemplate-fx-2.2.1pre%smartTemplateRev%.xpi
+rename smartTemplateWeb.zip smartTemplate-fx-2.2.2pre%smartTemplateRev%.xpi
