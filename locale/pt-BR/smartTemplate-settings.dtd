@@ -80,7 +80,6 @@
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
 <!ENTITY defaultMimeFormat "Formato de endereço padrão:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -105,7 +104,6 @@
 <!ENTITY pref_defaultCharset_tip "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Sobre SmartTemplate⁴">
-<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Criação">
 <!ENTITY developer.label "Desenvolvimento">
 <!ENTITY localename.label "pt-BR">
@@ -132,7 +130,6 @@
 <!ENTITY to.label "Destinatário (padrão)">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Variáveis de remetente (De)">
 <!ENTITY from_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY from.label "Remetente (padrão)">
@@ -368,7 +365,7 @@
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Sua licença é válida até:">
 <!ENTITY licenseValidation.passed "Obrigado por registrar o SmartTemplate⁴ Pro! Todos os recursos premium agora estão desbloqueados.">
-<!ENTITY licenseValidation.standard "Obrigado por registrar o SmartTemplate⁴ Standard - Você está ajudando imensamente o Add-on! Você também pode testar todas as funções premium.">
+<!ENTITY licenseValidation.standard "Obrigado por registrar o SmartTemplate® Standard - Você está ajudando imensamente o Add-on! Você também pode testar todas as funções premium.">
 <!ENTITY licenseValidation.failed "A chave de licença inserida não é válida. Verifique o e-mail da FastSpring para instruções. Se você ainda tiver problemas, entre em contato comigo a partir da aba Suporte.">
 <!ENTITY licenseValidation.expired "A chave de licença inserida expirou. Por favor, pressione o botão abaixo para renovar sua licença.">
 <!ENTITY licenseValidation.invalidAddon "A chave de licença inserida pode ser para uma extensão diferente. A chaves de licença para o {0} começam com {1}.">
@@ -376,15 +373,3 @@
 <!ENTITY licenseValidation.notMatchedMail "O endereço de e-mail criptografado não corresponde ao legível.">
 <!ENTITY premiumConfig "Recursos Premium">
 <!ENTITY label.premiumFeaturesSite "Leia mais sobre os Recursos Premium em nosso site">
-<!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">

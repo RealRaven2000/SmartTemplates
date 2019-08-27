@@ -105,7 +105,6 @@
 <!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Over SmartTemplate⁴">
-<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Bedenker">
 <!ENTITY developer.label "Ontwikkelaar">
 <!ENTITY localename.label "nl">
@@ -249,15 +248,3 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
-<!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">

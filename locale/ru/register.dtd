@@ -22,7 +22,7 @@
 <!ENTITY email.label "Адрес:">
 <!ENTITY firstName.label "Имя:">
 <!ENTITY lastName.label "Фамилия:">
-<!ENTITY buyPremiumLicense.instruct "Хотите использовать все премиальные функции без ограничений? Получите лицензию SmartTemplate⁴ Pro. Он привязан к вашему личному адресу электронной почты и может использоваться в нескольких установках.">
+<!ENTITY buyPremiumLicense.instruct "Хотите использовать все премиальные функции без ограничений? Получите лицензию SmartTemplate® Pro. Он привязан к вашему личному адресу электронной почты и может использоваться в нескольких установках.">
 <!ENTITY buyPremiumLicense.button "Купить Pro License!">
 <!ENTITY buyStandardLicense.instruct "Не можете позволить себе премиум функции? Получите очень доступную стандартную лицензию и продолжайте тестировать премиальные функции.">
 <!ENTITY buyStandardLicense.button "Купить стандартную лицензию!">

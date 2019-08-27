@@ -79,8 +79,6 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
 <!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
@@ -132,7 +130,6 @@
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
 <!ENTITY tofirstname.label "Vastaanottaja etunimi">
 <!ENTITY toname.label "Vastaanottajan nimi">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Lähettäjän muuttujat (From-kenttä)">
 <!ENTITY from_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY from.label "Lähettäjän nimi (oletus)">
@@ -176,10 +173,6 @@
 <!ENTITY dateshort.label "Päiväys / Aika lyhyt muoto (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Aikavyöhyke (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">
@@ -201,8 +194,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
 <!ENTITY dateformat.example "Esimerkki:">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
@@ -249,7 +240,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
 <!ENTITY premiumConfig "Maksulliset lisätoiminnot">
 <!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Lähetä sähköpostia tukeen">
 <!ENTITY support.type "Tyyppi:">
 <!ENTITY support.type.selectOne "Valitse aihe!">

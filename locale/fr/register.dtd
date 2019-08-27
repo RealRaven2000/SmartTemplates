@@ -22,7 +22,7 @@
 <!ENTITY email.label "Courriel :">
 <!ENTITY firstName.label "Prénom :">
 <!ENTITY lastName.label "Nom :">
-<!ENTITY buyPremiumLicense.instruct "Voulez-vous utiliser toutes les fonctionnalités premium sans restrictions? Obtenez une licence SmartTemplate⁴ Pro. Il est lié à votre adresse électronique personnelle et peut être utilisé dans plusieurs installations.">
+<!ENTITY buyPremiumLicense.instruct "Voulez-vous utiliser toutes les fonctionnalités premium sans restrictions? Obtenez une licence SmartTemplate® Pro. Il est lié à votre adresse électronique personnelle et peut être utilisé dans plusieurs installations.">
 <!ENTITY buyPremiumLicense.button "Acheter une licence Pro!">
 <!ENTITY buyStandardLicense.instruct "Vous ne pouvez pas vous permettre les fonctions premium? Obtenez une licence standard très abordable et continuez à tester des fonctions premium.">
 <!ENTITY buyStandardLicense.button "Acheter une licence standard!">

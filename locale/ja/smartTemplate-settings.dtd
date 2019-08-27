@@ -249,7 +249,6 @@
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
 <!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "サポートにメール">
 <!ENTITY support.type "タイプ:">
 <!ENTITY support.type.selectOne "トピックを選択してください！">
