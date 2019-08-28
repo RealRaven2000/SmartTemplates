@@ -240,12 +240,12 @@
 <!ENTITY button.pasteLicense "plakken">
 <!ENTITY button.validateLicense "valideren">
 <!ENTITY label.licenseValid "Uw licentie is geldig tot:">
-<!ENTITY licenseValidation.passed "Bedankt voor uw registratie van SmartTemplate⁴ Pro! Alle premiumfuncties kunnen nu worden gebruikt.">
-<!ENTITY licenseValidation.standard "Bedankt voor het registreren van SmartTemplate⁴ Standaard – u helpt hier de add-on enorm mee! U kunt nu ook alle premiumfuncties uitproberen.">
-<!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met me op via het tabblad Ondersteuning.">
+<!ENTITY licenseValidation.passed "Bedankt voor het registreren van SmartTemplate⁴ Pro! Alle premiumfuncties zijn nu ontgrendeld.">
+<!ENTITY licenseValidation.standard "Bedankt voor het registreren van SmartTemplate⁴ Standaard – hiermee helpt u de add-on enorm! U kunt nu ook alle premiumfuncties uitproberen.">
+<!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met mij op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel dient mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}.">
-<!ENTITY licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met me op via het tabblad Ondersteuning.">
+<!ENTITY licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met mij op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
@@ -257,6 +257,6 @@
 <!ENTITY support.type.html "Hulp met HTML / CSS">
 <!ENTITY support.type.other "Overig">
 <!ENTITY support.subject "Onderwerp:">
-<!ENTITY support.mail.instructions "Klik op onderstaande knop om een nieuw e-mailbericht voor ondersteuning te openen. Als u technische problemen ondervindt, overweeg dan een schermafdruk toe te voegen.">
+<!ENTITY support.mail.instructions "Klik op onderstaande knop om een nieuw e-mailbericht voor ondersteuning te openen. Als u technische problemen ondervindt, overweeg dan een schermafbeelding toe te voegen.">
 <!ENTITY support.compose "Aan ondersteuning schrijven…">
 <!ENTITY support.links "Koppelingen voor ondersteuning">
