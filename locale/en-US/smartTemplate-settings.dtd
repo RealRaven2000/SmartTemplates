@@ -100,7 +100,7 @@
 <!ENTITY pref_stationeryLink "Stationery Addon">
 <!ENTITY pref_forceParagraph "Force Paragraph Mode">
 <!ENTITY pref_forceParagraph_tip "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key.">
-<!ENTITY pref_stationeryLink_tip "Get Stationery...">
+<!ENTITY pref_stationeryLink_tip "Get Stationery…">
 <!ENTITY pref_defaultCharset.label "Default charset">
 <!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->

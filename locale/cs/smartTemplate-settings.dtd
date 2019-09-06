@@ -108,7 +108,7 @@
 <!ENTITY support.tab "Podpěra">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programátor">
-<!ENTITY localename.label "en-US">
+<!ENTITY localename.label "cs">
 <!ENTITY localized.label "Překladatel">
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "Spoluautor">
