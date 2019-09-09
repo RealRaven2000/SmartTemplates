@@ -249,7 +249,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecteer een onderwerp!">
