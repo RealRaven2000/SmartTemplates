@@ -167,3 +167,13 @@ notification[value="SmartTemplate4-license"] hbox.notification-inner  {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+
+menuitem.st4templatePicker,
+menuitem.st4templateEntry:hover {
+	list-style-image : url('chrome://smartTemplate4/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4templatePicker:hover {
+	list-style-image : url('chrome://smartTemplate4/skin/icons/file-load.png') !important;
+}
+

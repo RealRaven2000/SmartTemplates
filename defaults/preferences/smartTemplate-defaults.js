@@ -33,8 +33,10 @@ pref("extensions.smartTemplate4.plainText.preserveTextNodes", false);
 pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); /* [BUG 26434] delay for inline image replacement when forwarding */
 pref("extensions.smartTemplate4.xtodaylegacy", false); /* old way of processing which temporarily inserted  %X:=today% on _EVERY_ new line */
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
-pref("extensions.smartTemplate4.files.path", ""); /* location of saved / loaded templates */
-
+pref("extensions.smartTemplate4.files.path", ""); /* location of last saved / loaded json template  */
+// pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
+pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
+pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" */
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
@@ -76,6 +78,7 @@ pref("extensions.smartTemplate4.debug.tokens.deferred", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.mime.split", false);
 pref("extensions.smartTemplate4.debug.parseModifier", false);
+pref("extensions.smartTemplate4.debug.fileTemplates",false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);

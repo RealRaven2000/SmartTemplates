@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.2.2",
+	HARDCODED_CURRENTVERSION : "2.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -32,7 +32,7 @@ SmartTemplate4.Util = {
 	PremiumFeaturesPage: "http://smarttemplate4.mozdev.org/premium.html",
 	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
 	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
-	LicensePage:       "http://smarttemplate4.mozdev.org/contribute.html",
+	LicensePage:      "http://smarttemplate4.mozdev.org/contribute.html",
 	VersionPage:      "http://smarttemplate4.mozdev.org/version.html",
 	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
@@ -237,6 +237,13 @@ SmartTemplate4.Util = {
 		}
 		return this.mHost; // linux - winnt - darwin
 	},
+	
+	get isLinux() {
+    // https://developer.mozilla.org/en-US/docs/OS_TARGET
+    let xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
+                 .getService(Components.interfaces.nsIXULRuntime);  
+    return (xulRuntime.OS.indexOf('Linux')>=0);
+  } ,
 
 	// this is done asynchronously, so it respawns itself
 	VersionProxy: function() {
@@ -921,11 +928,25 @@ SmartTemplate4.Util = {
 		if (win.Stationery)
 			win.Stationery.showOptions(win);
 		else {
-			var { Services } =
-				ChromeUtils.import ?
-				ChromeUtils.import('resource://gre/modules/Services.jsm') :
-				Components.utils.import('resource://gre/modules/Services.jsm');
-			Services.prompt.alert(null, 'MenuOnTop', 'Could not find Stationery - is Stationery installed?');
+			let noStationery = this.getBundleString("SmartTemplate4.notification.noStationery", "Could not find Stationery - is Stationery installed?")
+			let warnText = noStationery,
+				  txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
+					"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
+					+ "Therefore SmartTemplate⁴ now offers its own HTML template management system; click Ok to set it up.");
+			SmartTemplate4.Message.display(
+				warnText  + "\n" + txtSuggestion,
+				"centerscreen,titlebar",
+				{ ok: function() {
+					  // select from dropdown + open file templates
+						let idMenu = document.getElementById("msgIdentity");
+						if (idMenu)
+							idMenu.selectedIndex = 1;
+						SmartTemplate4.Settings.switchIdentity("fileTemplates");
+					},
+					cancel: function() { ;/* cancel NOP */ }
+				}
+				, window
+			);			
 		}
 	},
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
@@ -2511,7 +2532,7 @@ SmartTemplate4.Util.firstRun =
 	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
-		if (p=="2.2" && (n=="2.2.1" || n=="2.2.2") {
+		if (p=="2.2" && (n=="2.2.1" || n=="2.2.2")) {
 			SmartTemplate4.Util.logToConsole(
 				"Silent Update - no version history displayed because v{0} is a maintenance release for v{1}"
 				.replace("{0}",n).replace("{1}",p));
@@ -2659,6 +2680,12 @@ SmartTemplate4.Util.firstRun =
 					+ "\ncurrent.indexOf(" + util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(util.HARDCODED_EXTENSION_TOKEN).toString());
 			}
 			
+			// load the templates file and initialize the dropdown menus for write / reply / forward
+			setTimeout(
+			  function() {
+					SmartTemplate4.fileTemplates.initMenus();
+				}, 4500
+			);
 
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally

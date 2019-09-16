@@ -17,7 +17,7 @@
 <script type="application/javascript" src="chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
 <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
 <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-composer.js"/>
-
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-fileTemplates.js"/>
 	
 	<!-- Toolbar -->
 	<toolbarpalette id="MsgComposeToolbarPalette">

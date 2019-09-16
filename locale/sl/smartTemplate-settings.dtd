@@ -79,6 +79,8 @@
 <!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
 <!ENTITY pref_nameSwap "Pravilni priimek, ime">
 <!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
+<!ENTITY defaultMimeFormat "Default address format:">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Loči dopisnike s/z:">
 <!ENTITY pref_addressDelimiter_tip "Ločilo med dopisniki. Outlook uporablja podpičje (;). Privzeto za Thunderbird je vejica (,).">
 <!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
@@ -88,6 +90,7 @@
 <!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
 <!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
 <!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
+<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Podpis opravila">
 <!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
 <!ENTITY pref_cursorInsertSpace "Vstavi presledek za označitev &#37;cursor&#37;">
@@ -129,6 +132,7 @@
 <!ENTITY to.label "Prejemnikovo ime (privzeto)">
 <!ENTITY tofirstname.label "Prejemnikovo ime">
 <!ENTITY toname.label "Prejemnikov priimek">
+<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Pošiljatelj (Od)">
 <!ENTITY from_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
 <!ENTITY from.label "Pošiljateljevo ime (privzeto)">
@@ -172,7 +176,9 @@
 <!ENTITY dateshort.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Časovni pas (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "Ta funkcija doda odmik vsem naslednjim prikazanim časom.">
+<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Nastavite argument na 0, da ustavite spreminjanje datumov.">
 <!ENTITY var_custom.cap "Spremenljivke za 'obliko datuma' po meri">
 <!ENTITY customdf_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
@@ -196,6 +202,8 @@
 <!ENTITY p2.label "dop.">
 <!ENTITY p3.label "dop.">
 <!ENTITY dateformat.label "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti).">
+<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Spremenilnik  - z vodilno ničlo">
 <!ENTITY xsent_note.label "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z &#37;X:=sent&#37; bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila.">
 <!ENTITY xsent_long.cap "Primer dolgega niza">
@@ -241,6 +249,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY premiumConfig "Lastnosti premium">
 <!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Pošlji na podporo">
 <!ENTITY support.type "Vrsta:">
 <!ENTITY support.type.selectOne "Izberite temo!">

@@ -21,8 +21,12 @@ if (SmartTemplate4.Util.Application == 'Postbox'){
 
 
 SmartTemplate4.Settings = {
-	accountKey : ".common",  // default to common
+	accountKey : ".common",  // default to common; .file for files
 	preferenceElements : [],
+	get isFileTemplates() {
+		// let isEnabled = SmartTemplate4.Preferences.getMyBoolPref("fileTemplates");
+		return true;
+	} ,
 	get accountId() {
 		// empty for ".common"
 		return (this.accountKey !== '.common') ? this.accountKey : ''; 
@@ -182,7 +186,7 @@ SmartTemplate4.Settings = {
 			    &&
 			    branch.indexOf("smartTemplate4.id") > 0 )  // AG from now on, we only delete the account specific settings "smartTemplate4.id<N>"
 			{
-				util.logDebug('deleting preference branch: ' + branch + ' ...'); // ++++++ RAUS LOESCHEN
+				util.logDebug('deleting preference branch: ' + branch + ' …'); // ++++++ RAUS LOESCHEN
 				this.prefService.deleteBranch(branch);
 			}
 		}
@@ -300,11 +304,10 @@ SmartTemplate4.Settings = {
 		return false;
 	} ,	
 
-
 	// Reload preferences and update elements.
 	//--------------------------------------------------------------------
 	reloadPrefs : function reloadPrefs(el) {
-		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs()...");
+		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs()…");
 		el = el.firstChild;
 		while (el) {
 			// Load preference
@@ -328,7 +331,8 @@ SmartTemplate4.Settings = {
 					settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document),
 					isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings');
-		util.logDebugOptional("functions", "onLoad() ...");
+					
+		util.logDebugOptional("functions", "onLoad() …");
 		// Check and set common preference
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
@@ -493,7 +497,20 @@ SmartTemplate4.Settings = {
 			licenseDate.value = "";
 		}
 
+		// window.addEventListener('dialogaccept', function () {  });
+		// window.addEventListener('dialogcancel', function () { });
 		this.configExtra2Button();
+		
+		// hide get Stationery button in modern Thunderbird builds. 
+		if (util.versionGreaterOrEqual(util.AppverFull, "61")) {
+			getElement('btnGetStationery').collapsed = true;
+			getElement('spcStationery').collapsed = true;
+		}
+		
+		
+		// Stationery replacement :)
+		SmartTemplate4.fileTemplates.loadCustomMenu(true);
+		
     
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
@@ -501,7 +518,20 @@ SmartTemplate4.Settings = {
 	
 	onUnload : function() {
 // 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
-    
+		if (SmartTemplate4.fileTemplates.isModified) {
+			let parentWin = 
+			  (window.opener && window.opener.document.URL.endsWith("messenger.xul")) ?
+					window.opener :
+					SmartTemplate4.Util.Mail3PaneWindow;
+			parentWin.setTimeout (
+				function() {
+					const st4 = parentWin.SmartTemplate4;
+					st4.Util.logDebug("Refreshing fileTemplate menus...");
+					st4.fileTemplates.initMenus();
+				} , 100
+			);
+		}
+		
 	} ,
 	
 	toggleExamples: function toggleExamples(el) {
@@ -808,11 +838,6 @@ SmartTemplate4.Settings = {
 					ChromeUtils.import("resource:///modules/" + mailUtilsName) :
 					Components.utils.import("resource:///modules/" + mailUtilsName);
 					
-				var { NetUtil } = 
-				  ChromeUtils.import ?
-					ChromeUtils.import("resource://gre/modules/NetUtil.jsm") :
-					Components.utils.import("resource://gre/modules/NetUtil.jsm");
-			
 				CurId = (MailUtils && MailUtils.getIdentityForServer) ?
 				  MailUtils.getIdentityForServer(folders[0].server) :
 					window.opener.getIdentityForServer(folders[0].server);
@@ -821,6 +846,13 @@ SmartTemplate4.Settings = {
 		
 		let theMenu = document.getElementById("msgIdentity"),
 		    iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+				
+		// (Stationery replacement) file lists: menupopup add below common?
+		if (SmartTemplate4.Settings.isFileTemplates) {
+			const label = util.getBundleString("SmartTemplate4.fileTemplates", "File Templates");
+			theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
+		}
+				
 		for (let idx = 0; idx < iAccounts; idx++) {
 			let account = accounts.queryElementAt ?
 				accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
@@ -847,7 +879,7 @@ SmartTemplate4.Settings = {
 		}
 		
 		
-		if (CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
+		if (CurId && CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
 			theMenu.selectedIndex = 0;
 			CurId = null; // select common
 		}
@@ -908,6 +940,8 @@ SmartTemplate4.Settings = {
 	} , // add 0.4.0 E
 
 	getCurrentDeck : function getCurrentDeck(accountId) {
+		if (accountId.startsWith("file"))
+			return "fileTemplatesTabs";
 		return (accountId != ".common")
 		  ? 'deckB.nodef' + accountId
 			: 'deckB.nodef';
@@ -917,9 +951,10 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	selectIdentity : function selectIdentity(idkey)	{
 		const util = SmartTemplate4.Util,
-		      prefs = SmartTemplate4.Preferences;
+		      prefs = SmartTemplate4.Preferences,
+					settings = SmartTemplate4.Settings;
 		util.logDebugOptional("identities", "selectIdentity(" + idkey +  ")");
-		let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
+		let currentDeck = this.getCurrentDeck(settings.accountId),
 		    tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
@@ -929,30 +964,36 @@ SmartTemplate4.Settings = {
 
 		// Display identity.
 		let deck = document.getElementById("account_deckA"),
-		    index = 0,
+		    idx = 0,
 		    searchDeckName = "deckA.per_account" + branch,
 		    found = false;
 
 		for (let el = deck.firstChild; el; el = el.nextSibling) {
 			if (el.id == searchDeckName) {
-				deck.selectedIndex = index;
+				deck.selectedIndex = idx;
 				this.accountKey = branch;
 				found = true;
 				break;
 			}
-			index++;
+			idx++;
+		}
+		//
+		if (idkey == "fileTemplates") {
+			found = true;
+			deck.selectedIndex = 1;
+			this.accountKey = "files";
 		}
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
 		if (!found) {
-			deck.selectedIndex = 0;
+			deck.selectedIndex = 0; // choice for file templates will be inserted below this.
 			this.accountKey = branch;
 		}
 
 		util.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
 
 		//reactivate the current tab: new / respond or forward!
-		currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId);
+		currentDeck = this.getCurrentDeck(settings.accountId);
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox) {
 			tabbox.selectedIndex = tabIndex;
@@ -971,6 +1012,36 @@ SmartTemplate4.Settings = {
 
 	} ,
 
+  selectFileCase : function selectFileCase(el, evt) {
+		function moveFileControls(richListBoxId) {
+			let fc = document.getElementById('fileControls'),
+			    rlb = document.getElementById(richListBoxId);
+			// move to the correct panel (if it's not already there)
+			if (rlb.parentNode.lastChild != fc)
+				rlb.parentNode.appendChild(fc);
+		}
+		const util = 	SmartTemplate4.Util;
+		// get the tabbox to determine which case is selected.
+		if (evt && evt.target.tagName != 'tabpanels') return;
+		if (!el)
+			el = document.getElementById('fileTemplatesTabs');
+		
+		util.logDebug("Selected " + el.id); // tabbox value
+		switch (el.selectedIndex) {
+			case 0:
+				moveFileControls('templateList.new');
+				break;
+			case 1:
+				moveFileControls('templateList.rsp');
+				break;
+			case 2:
+				moveFileControls('templateList.fwd');
+				break;
+			default:
+		}
+	},
+	
+	
 	insertAtCaret : function insertAtCaret(element, code) {
 		// code = code + ' '; // this could be an option in a future version...
 		if (!element) {
@@ -1232,7 +1303,7 @@ SmartTemplate4.Settings = {
               util.logDebug ('Setting up promise Delete');
               promiseDelete.then (
                 function saveJSON() {
-                  util.logDebug ('saveJSON()...'); 
+                  util.logDebug ('saveJSON()…'); 
                   // force appending correct file extension!
                   if (!path.toLowerCase().endsWith('.json'))
                     path += '.json';
@@ -1283,6 +1354,11 @@ SmartTemplate4.Settings = {
     let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
     converter.charset = "UTF-8";
 
+		var { NetUtil } = 
+			ChromeUtils.import ?
+			ChromeUtils.import("resource://gre/modules/NetUtil.jsm") :
+			Components.utils.import("resource://gre/modules/NetUtil.jsm");
+			
     // Asynchronously copy the data to the file.
     let istream = converter.convertToInputStream(jsonData); // aData
     NetUtil.asyncCopy(istream, ostream, function(rc) {
@@ -1347,15 +1423,6 @@ SmartTemplate4.Settings = {
          textboxes:txt, 
          checkboxes:chk}
     );
-		
-		// window.addEventListener('dialogaccept', function () {  });
-		// window.addEventListener('dialogcancel', function () { });
-		window.addEventListener('dialogextra2', function (event) { 
-			setTimeout(function() { 
-				SmartTemplate4.Licenser.showDialog('options_dialog'); // referrer 
-				window.close(); 
-			});	
-    });			
 		
   } ,
 	
@@ -1596,12 +1663,16 @@ SmartTemplate4.Settings = {
 		const util = SmartTemplate4.Util,
 					licenser = util.Licenser, // use global licenser? (stored in main window)
 					ELS = licenser.ELicenseState,
-					settings = SmartTemplate4.Settings; 
+					settings = SmartTemplate4.Settings,
+          prefs = SmartTemplate4.Preferences;
+					
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
         btnLicense = getElement("btnLicense"),
 				proTab = getElement("SmartTemplate4-Pro"),
 				beautyTitle = getElement("SmartTemplate4AboutLogo");
+				
+		if (prefs.isDebugOption("premium.licenser")) debugger;
     try {
 			//let decrypt = SmartTemplate4.Settings.decryptLicense.bind(SmartTemplate4.Settings);
 			let result = settings.decryptLicense(); // this.decrypt breaks internal scopes in licenser.validateLicense ?
@@ -1651,6 +1722,8 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.remove('aboutLogoPro');
 			}
 			util.logDebug('validateLicense - result = ' + result);
+			// make sure to refresh the file template menus!
+			SmartTemplate4.fileTemplates.isModified = true; 
     }
     catch(ex) {
       util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);
@@ -1676,44 +1749,52 @@ SmartTemplate4.Settings = {
 			return;
 		}
 		let donateButton = document.documentElement.getButton('extra2');
-		if(!el) el = document.getElementById("ST4-Panels");
-		switch (el.selectedPanel.id) {
-			case 'SmartTemplate4-Options-goPro':
-				donateButton.collapsed = true;
-				break;
-			default:
-				donateButton.collapsed = false;
-				if (!prefs.getStringPref('LicenseKey')) {
-					options.labelLicenseBtn(donateButton, "buy");
-					donateButton.addEventListener(
-						"click", 
-					  function(event) { 
-							setTimeout(function() { 
-								SmartTemplate4.Licenser.showDialog('extra2'); // referrer 
-								window.close(); 
-							});	
-						}, 
-						false);
-				}
-				else {
-					switch (licenser.ValidationStatus) {
-						case State.Expired:
-						  options.labelLicenseBtn(donateButton, "renew");
-						  break;
-						case State.Valid:
-							donateButton.collapsed = true;
-							break;
-						case State.Invalid:
+		// el.selectedPanel is schroedingers cat; it may not exist on load 
+		// if the right hand side dialog is not expanded yet
+		//setTimeout(
+		//  function() {
+				if(!el) el = document.getElementById("ST4-Panels");
+				let selectedPanelId = el.selectedPanel ? el.selectedPanel.id : 'unknown';
+				switch (selectedPanelId) {
+					case 'SmartTemplate4-Options-goPro':
+						donateButton.collapsed = true;
+						break;
+					default:
+						donateButton.collapsed = false;
+						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
-							break;
-						case State.NotValidated: // hide?
-						default:
-						  options.labelLicenseBtn(donateButton, "buy");
-							break;
-					}
-					
-				}
-		}
+							donateButton.addEventListener(
+								"click", 
+								function(event) { 
+									setTimeout(function() { 
+										SmartTemplate4.Licenser.showDialog('extra2'); // referrer 
+										window.close(); 
+									});	
+								}, 
+								false);
+						}
+						else {
+							switch (licenser.ValidationStatus) {
+								case State.Expired:
+									options.labelLicenseBtn(donateButton, "renew");
+									break;
+								case State.Valid:
+									donateButton.collapsed = true;
+									break;
+								case State.Invalid:
+									options.labelLicenseBtn(donateButton, "buy");
+									break;
+								case State.NotValidated: // hide?
+								default:
+									options.labelLicenseBtn(donateButton, "buy");
+									break;
+							}
+							
+						}
+				}			
+		//	}, 500
+		//);
+
 	},
 	
 

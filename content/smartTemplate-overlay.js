@@ -169,8 +169,11 @@ var SmartTemplate4_streamListener =
 
   QueryInterface:
 	  function () {
+			const Ci = Components.interfaces;
+			if (ChromeUtils.generateQI) // Tb 68
+				return ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]);
 			if (XPCOMUtils.generateQI)
-				return XPCOMUtils.generateQI([Components.interfaces.nsIStreamListener, Components.interfaces.nsIRequestObserver]);
+				return XPCOMUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]);
 			return null;
 		},
 
@@ -206,9 +209,10 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	// -----------------------------------
 	// Constructor
   const Ci = Components.interfaces,
-        Cc = Components.classes;
-	let util = SmartTemplate4.Util,
-      messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+        Cc = Components.classes,
+				util = SmartTemplate4.Util;
+	if (!messageURI) return null;
+	let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 	    messageService = messenger.messageServiceFromURI(messageURI),
 	    messageStream = Cc["@mozilla.org/network/sync-stream-listener;1"].createInstance().QueryInterface(Ci.nsIInputStream),
 	    inputStream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance().QueryInterface(Ci.nsIScriptableInputStream);
@@ -398,6 +402,7 @@ SmartTemplate4.mimeDecoder = {
 	// -----------------------------------
 	// MIME decoding.
 	decode: function (theString, charset) {
+		const util = SmartTemplate4.Util;
 		let decodedStr = "";
 
 		try {
@@ -433,7 +438,7 @@ SmartTemplate4.mimeDecoder = {
 			}
 		}
 		catch(ex) {
-			SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.decode(' + theString + ') failed with charset: ' + charset
+			util.logDebugOptional('mime','mimeDecoder.decode(' + theString + ') failed with charset: ' + charset
 			    + '...\n' + ex);
 			return theString;
 		}
@@ -901,7 +906,7 @@ SmartTemplate4.mimeDecoder = {
 	} // split
 };
 
-SmartTemplate4.parseModifier = function(msg) {
+SmartTemplate4.parseModifier = function(msg, composeType) {
 	function matchText(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
@@ -911,20 +916,22 @@ SmartTemplate4.parseModifier = function(msg) {
 					if (!gMsgCompose.originalMsgURI) debugger;
 					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
 					let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
-							hdr = new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI),
+							hdr = (composeType!="new") ? new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI) : null,
 							extractSource = '',
 							rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
 					switch(fromPart) {
 						case 'subject':
+							util.addUsedPremiumFunction('matchTextFromSubject');
 							if (!hdr) {
 								msg = msg.replace(matchPart[i], "");
-								util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri");
-								return;
+								util.logToConsole("matchText() - matchTextFromSubject failed - couldn't retrieve header from Uri [" + gMsgCompose.originalMsgURI + "] - did you REPLY to a message?");
+								extractSource = gMsgCompose.compFields.subject;
 							}
-							util.addUsedPremiumFunction('matchTextFromSubject');
-							let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-									charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
-							extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
+							else {
+								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
+							}
 							util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
 							break;
 						case 'body':
@@ -1108,7 +1115,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			SmartTemplate4.Message.display(txtAlert + '\n\n' + parseString, 
 				"centerscreen,titlebar,modal,dialog",
 				{ ok: function() { ; }},
-				Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window
+				Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window
 			);
 			debugger;
 		}
@@ -1467,7 +1474,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody"
     function modifyHeader(hdr, cmd, argString, matchFunction) {
-      const whiteList = ["subject","to","from","cc","bcc","reply-to"],
+      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
             ComposeFields = gMsgCompose.compFields;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
@@ -1477,7 +1484,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           argument = argString.substr(argString.indexOf(",")+1); 
 			switch (matchFunction) {
 				case "": // no matchFunction, so argString is literal
-					argument = argument.substr(1, argument.lastIndexOf(")")-2);
+				  if (argument.startsWith("\""))  // string wrapped in double quotes
+						argument = argument.substr(1, argument.lastIndexOf(")")-2);
+					else   // literal, only remove the closing parentheses
+						argument = argument.substr(0, argument.lastIndexOf(")"));
 				  break;
 				case "matchFromSubject":
 				case "matchFromBody":
@@ -1613,10 +1623,43 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           case 'reply-to':
             ComposeFields.replyTo = targetString;
             break;
+					case 'priority':
+					  const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
+						let found = validVals.find(f => f.toLowerCase() == argument);
+						if (found) {
+							try {
+								util.logDebug("Setting priority to: " + found);
+								ComposeFields.priority = found;
+								updatePriorityToolbarButton(found);
+							}
+							catch(ex) {
+								util.logException('set priority ', ex);
+							}
+						}
+						else 
+							util.logDebug("Invalid Priority: '" + targetString + "'\n" 
+						    + "Must be one of [" + validVals.join() +  "]");
+						
+						
+					  break;
         }
         // try to update headers - ComposeFieldsReady()
         // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
-        if (modType == 'address')
+				// issue 9 : setting from doesn't work
+				if (hdr=='from' && ComposeFields.from && cmd=='set') {
+					let identityList = GetMsgIdentityElement(),
+					    fromAddress = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null).join(", ");
+					if (fromAddress != identityList.value)
+					{
+						MakeFromFieldEditable(true);
+						identityList.value = fromAddress;
+					}
+					LoadIdentity(true);			
+					// there is a problem with dark themes - when editing the from address the text remains black.
+					// identityList.setAttribute("editable", "false");
+					// identityList.removeAttribute("editable");
+				}
+        else if (modType == 'address')
           CompFields2Recipients(ComposeFields);
       }
       catch(ex) {
@@ -1751,16 +1794,21 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					token = identity.email;
 					break;
 				case "smartTemplate":  // currently only useful when put into a Stationery template.
-				  return   "<span class=\"smartTemplate-placeholder\"></span>";
-				case "quoteHeader":  // currently only useful when put into a Stationery template.
-				  return   "<span class=\"quoteHeader-placeholder\"></span>";
+				  return isStationery ? 
+					  "<span class=\"smartTemplate-placeholder\"></span>" : "";
+						
+				case "quoteHeader":  // is this useful when Stationery does not exist?
+					return "<span class=\"quoteHeader-placeholder\"></span>";
+					
 				case "quotePlaceholder":  // currently only useful when put into a Stationery template.
           // apparently Stationery inserts the blockquote after
           // <span class="quoteHeader-placeholder"></span> <br>
-				  return   "<span stationery=\"content-placeholder\">"
+				  return isStationery ?
+  					"<span stationery=\"content-placeholder\">"
 					       +   "<blockquote type=\"cite\"> ... "
 								 +   "</blockquote>"
-							   + "</span>";
+							   + "</span>" 
+						: "";
 				  break;
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
@@ -1933,7 +1981,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         case "file":
 					util.addUsedPremiumFunction('file');
 					// do not process images that are returned - insertFileLink will already turn them into a DataURI
-          let fileContents = insertFileLink(arg),
+          let fileContents = insertFileLink(arg, composeType),
               parsedContent = fileContents.startsWith("<img") 
 							  ? fileContents
 							  : SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
@@ -2044,8 +2092,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
 	
-  // [Bug 25871]
-  function insertFileLink(txt) {
+  // [Bug 25871] %file()% function
+  function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
     // determine file type:
     let html,
@@ -2059,51 +2107,72 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       case 'htm':
       case 'html':
       case 'txt':
-        // find / load file and expand?
-        let data = "",
-            //read file into a string so the correct identifier can be added
-            fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
-            cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
-            countRead = 0;
-        //let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
-        try {
-          let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils,
-              isFU = FileUtils && FileUtils.File,
-              localFile = isFU ?   // not in Postbox
-                          new FileUtils.File(path) :
-                          Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-              str = {};
-          util.logDebug("localFile.initWithPath(" + path + ")");
-          if (!isFU)
-            localFile.initWithPath(path);
-          
-          fstream.init(localFile, -1, 0, 0);
-          /* sigEncoding: The character encoding you want, default is using UTF-8 here */
-          let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
-          util.logDebug("initializing stream with " + encoding + " encoding...");
-          cstream.init(fstream, encoding, 0, 0);
-          let read = 0;
-          do {
-            read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
-            data += str.value;
-            countRead += read;
-          } while (read != 0);
-          cstream.close(); // this closes fstream
-          html = data.toString();
-					// if we compose in html and file is txt we need to replace all line breaks with <br>
-					if (type=='txt') {
-						html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+			  //try our new method
+				if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
+					let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
+						{
+							composeType: composeType, 
+							path: path, 
+							label: "data inserted from %file%"
+						}
+					);
+					if (!tmpTemplate.failed) {
+						html = tmpTemplate.HTML;
+						if (!html)
+							html = tmpTemplate.Text;
 					}
-        }
-        catch (ex) {
-          util.logException("insertFileLink() - read " + countRead + " characters.", ex);
-          if (countRead) {
-            html = data.toString();
-          }
-          else
-            html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
-                   + "Please check error console for detail</div>";
-        }
+				}
+				if (!html) {
+					// OLD Method
+					// find / load file and expand?
+					let data = "",
+							//read file into a string so the correct identifier can be added
+							fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
+							cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
+							countRead = 0;
+					//let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
+					try {
+						const { FileUtils } = 
+							ChromeUtils.import ?
+							ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
+							Components.utils.import("resource://gre/modules/FileUtils.jsm");
+						let isFU = FileUtils && FileUtils.File,
+								localFile = isFU ?   // not in Postbox
+														new FileUtils.File(path) :
+														Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+								str = {};
+						util.logDebug("localFile.initWithPath(" + path + ")");
+						if (!isFU)
+							localFile.initWithPath(path);
+						
+						fstream.init(localFile, -1, 0, 0);
+						/* sigEncoding: The character encoding you want, default is using UTF-8 here */
+						let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
+						util.logDebug("initializing stream with " + encoding + " encoding...");
+						cstream.init(fstream, encoding, 0, 0);
+						let read = 0;
+						do {
+							read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
+							data += str.value;
+							countRead += read;
+						} while (read != 0);
+						cstream.close(); // this closes fstream
+						html = data.toString();
+					}
+					catch (ex) {
+						util.logException("insertFileLink() - read " + countRead + " characters.", ex);
+						if (countRead) {
+							html = data.toString();
+						}
+						else
+							html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
+										 + "Please check error console for detail</div>";
+					}					
+				}
+				// if we compose in html and file is txt we need to replace all line breaks with <br>
+				if (type=='txt') {
+					html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				}
         break;
       case 'image':
         let alt = (arr.length>1) ? 
@@ -2131,10 +2200,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						Cu.import("resource://gre/modules/osfile.jsm", {}) :
 						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
 						
+		// msgcompose was msgcomposeWindow
     let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
         pathUri = arr[0],
 		    composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window,
+		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window,
 		    attachments=[];
 		try {
 			// https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2508

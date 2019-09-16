@@ -1,41 +1,30 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
-Going Forward, SmartTemplate&#8308; <i>requires a license</i> for continued use - the reason for this is that unlike compiled software that runs on operating systems, constant changes on the host mail software (Thunderbird) require constant, substantial, ongoing changes with high effort; something which cannot be provided for free ("as in beer") anymore. The days of simply hacking maximum version numbers to make an Add-on compatible with the next version of Thunderbird are over.
 
-You may have noticed many Add-on authors <i>abandoning</i> their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not involving users in funding the required work.
+Release video: https://youtu.be/AWdZWB0_ym0
+
 <b>Improvements</b>
 <ul>
-<li>Increased the trial period to 28 days. As adoption of the Standard License were decent I want to give more users a chance to test SmartTemplate&#8308 with the next version of Thunderbird.</li>
-<li>On popular demand, I localized the license shop for Japanase, Russian, German, Polish, Italian, Spanish and Dutch users. Additional Domain Seats can now be purchased after the fact.</li>
-<li>Removed License button animation in sliding notification for Linux and Mac systems as allegedly they cause performance issues on some systems. Fixed OS specific style paths so they work again.</li>
-<li> 2.2.2: It is now possible to use the <code>%dateformat()%</code> function with the <code class="inline">%X:=sent%</code> modifier when replying to / forwarding emails. </li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/3" target="_blank">[issue #3]</a> 
+<li>[<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/8">issue #8</a>] Support File Templates - to replace Stationery from Thunderbird 68 forward. 
 
-Allow displaying leading zeroes for parts of %dateshort% and %datelocal%
+I have repeatedly reached out to the author of the excellent Stationery Add-on over the last 8 months, but unfortunately did not get any reply. I also attempted to patch it for Thunderbird68 but it is just too much work. (I estimate 2-3 man weeks)
 
-You can now modify the following settings in about:config
+SmartTemplate⁴ still supports it, but it looks like it will stop working as soon as Thunderbird 68 lands in August / September 2019; therefore we need another solution to be able to use ad-hoc templates in the form of HTML files.
 
-extensions.smartTemplate4.dateformat.hour = "numeric" 
-extensions.smartTemplate4.dateformat.day = "numeric" 
-extensions.smartTemplate4.dateformat.month = "numeric" 
-extensions.smartTemplate4.dateformat.year = "numeric" 
+The template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.</li>
+<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26689" target="_blank">[Bug 26689]</a> New function to set E-mail priority
 
-hour: change to "2-digit" for forcing 2digit hours in datelocal / dateshort 
-day: change to "2-digit" for forcing 2digit day in datelocal / dateshort 
-month: change to "2-digit" for forcing 2digit month (dateshort only)
-year: change to "2-digit" for forcing 2digit year (dateshort only)
-</li>
-<li>Made sure settings dialog is not cropped by right hand edge of screen.</li>
+ Add a function to set the priority of the composed Email.
+
+Examples:
+
+%header.set(priority,highest)%
+%header.set(priority,high)%
+%header.set(priority,normal)%
+%header.set(priority,low)%
+%header.set(priority,lowest)%</li>
 </ul>
 <b>Bug Fixes</b>
 <ul>
-<li>Wrote some backward fixes for Thunderbird 52. In the last version the file smartTemplate-overlay.js didn't load successfully because of importing XPCOMUtils.jsm in a non-backward compatible format.  (ChromeUtils.import replaces Components.utils.import from Tb60 forward)</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/5" target="_blank">[issue #5]</a> In 2.2.2 - finally fixed %timezone% to correctly calculate the offset time. Also added CEDT and MESZ.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/4" target="_blank">[issue #4]</a> Fixed locale problems. SmartTemplate⁴ due to a regression in 2.0 the current locale of the mail client cannot be correctly determined. 
-
-The %language()% switch can now be used to force correct display of day / month names in the variables %A% %a% %B% %b% (and related %dateformat()% function) It will also force using the installed language pack for date formatting through the %datelocal% and %dateshort% function. If the language pack is missing or disabled, this will be indicated in JavaScript error console - not a potentially disruptive message box.
-</li>
-<li><a name="26688" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26688" target="_blank">[Bug 26688]</a> Multiple %matchTextFromBody% in a line yielded only a single result. This is now fixed also for %matchTextFromSubject%, so they can better be used multiple times in the same template.
-</li>
-<li>Fixed status icon mode on Thunderbird 68 startup.</li>
+<li>Fixed a problem with the Czech translation file that caused an error when trying to display the SmartTemplate Settings dialog.</li>
 </ul>

@@ -782,20 +782,27 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedText(templateText, idKey, composeType, ignoreHTML, isStationery) 	{
+	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
 		if (!templateText) return "";
 
-		if (typeof isStationery === 'undefined') isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
+		let isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
 		var pref = SmartTemplate4.pref;
 		
 		SmartTemplate4.calendar.init(); // set for default locale
-		let regular = SmartTemplate4.regularize(templateText, composeType, isStationery, ignoreHTML, !composeType || pref.isUseHtml(idKey, composeType, false));
+		let isDraftLike = !composeType 
+		  || SmartTemplate4.PreprocessingFlags.isFileTemplate
+		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
+		let regular = SmartTemplate4.regularize(templateText, 
+				composeType, 
+				isStationery, 
+				ignoreHTML, 
+				isDraftLike);
 		
 		// now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")
-		regular = SmartTemplate4.parseModifier(regular); // run global replacement functions (deleteText, replaceText)
+		regular = SmartTemplate4.parseModifier(regular, composeType); // run global replacement functions (deleteText, replaceText)
 		
 		// [Bug 26364] Inline Images are not shown.
 		// fix DataURLs from other template (Stationery)
@@ -854,14 +861,14 @@ SmartTemplate4.classSmartTemplate = function() {
 						
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup, flags, retryCount)	{
+	function insertTemplate(startup, flags, fileTemplateSource)	{
 		let isDebugComposer = prefs.isDebugOption('composer');
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
 		  flags = {};
 			flags.isStationery = false;
-			flags.identitySwitched = true;  // new flag
 			SmartTemplate4.initFlags(flags);
+			flags.identitySwitched = true;  // new flag
 		}
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
@@ -905,7 +912,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		else {
 			if (gMsgCompose.type != msgComposeType.Template) {
 				// Check identity changed or not
-				if (gCurrentIdentity && gCurrentIdentity.key == idKey) {
+				if (!flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
 					return;
 				}
 				// Undo template messages (does _not_ remove signature!)
@@ -993,22 +1000,11 @@ SmartTemplate4.classSmartTemplate = function() {
 
 			if (isActiveOnAccount) {
 				// Message File loaded:
-				/*
-				if (gMsgCompose.originalMsgURI.includes(".eml")) {
-					if (typeof messageHeaderSink == 'undefined') {
-						retryCount = !retryCount ? 1 : retryCount + 1;
-						util.logDebug("Waiting for messageHeaderSink...(" + retryCount + ")");
-						if (retryCount<15)
-							setTimeout(function() { insertTemplate(startup, flags, retryCount); }, 400);
-						else
-							debugger;
-						return;
-					}
-				}
-				*/
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
-				if (flags.isThunderbirdTemplate) 
+				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed)
+				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
+				else if (flags.isThunderbirdTemplate) 
 					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
 				else
 					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
@@ -1032,15 +1028,18 @@ SmartTemplate4.classSmartTemplate = function() {
 					// need to empty out the innerHTML if we insert this to avoid duplication.
 					editor.rootElement.innerHTML="";
 				}
-				
-				
-        util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
-				// main processing - note: this calls getProcessedText()
-				// for thunderbird template case, we should get the body contents AND PROCESS THEM?
-				
-				if (!flags.isThunderbirdTemplate) {
+				else {
+					// main processing - note: this calls getProcessedText()
+					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
+					if (flags.isFileTemplate) {
+						util.logDebugOptional('functions.insertTemplate','processing fileTemplate(' + fileTemplateSource + ')');
+						template = getProcessedText(rawTemplate, idKey, st4composeType, false); // ignoreHTML
+					}
+				  else {
+						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
+						template = getSmartTemplate(st4composeType, idKey);
+					}
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
-					template = getSmartTemplate(st4composeType, idKey);
 					quoteHeader = getQuoteHeader(st4composeType, idKey);
 				}
 				let isQuoteHeader = quoteHeader ? true : false;

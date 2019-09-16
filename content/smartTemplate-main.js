@@ -326,8 +326,8 @@ END LICENSE BLOCK
 		  when opening the dialog and  have to be reactivated by enabling / disabling 
 			"Apply the following template"
 
-	Version 2.2 - WIP
-	  # [issue #5] Fixed %timezone% to subtract the offset hours rather than falsely add it.
+	Version 2.2.2 - 13/08/2019
+	  # [issue #5] 2.2.2 - Fixed %timezone% to subtract the offset hours rather than falsely add it.
 		  also added CEDT and MESZ
 		  https://github.com/RealRaven2000/SmartTemplate4/issues/4
 		# [issue #4] Fixed locale problem. SmartTemplate⁴ due to a regression in 2.0 the current
@@ -340,8 +340,16 @@ END LICENSE BLOCK
 		# [Bug 26688] Multiple %matchTextFromBody% in a line yielded only a single result
 		# Backwards fixes for Thunderbird 52
 		# Extended trial period from 14 days to 28 days.
+		# Support using %X:=sent% modifier with %dateformat()% function when replying to / forwarding emails. 
 		
-	Version 2.Future Version? - WIP
+	Version 2.3 - WIP
+	  # [Bug 26689] Support setting priority with %header.set(priority,value)%
+		# [issue 9] %header.set(from)% not working in Tb60.9
+	  # Add file template function and management functions
+		
+  ...........	
+	
+	Version 2.Future Version? 
 	  # add template management functions. to do:
 		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
 			- add list of eml templates to wrtie / reply / fwd buttons
@@ -376,7 +384,8 @@ var SmartTemplate4 = {
 		hasQuoteHeader: false,          // WIP
 		hasTemplatePlaceHolder: false,  // future use
 		isStationery: false,
-		isThunderbirdTemplate: false
+		isThunderbirdTemplate: false,
+		isFileTemplate: false
 	},
 	
 	initFlags : function initFlags(flags) {
@@ -389,6 +398,7 @@ var SmartTemplate4 = {
 		flags.hasQuoteHeader = false;
 		flags.hasTemplatePlaceHolder = false;
 		flags.isThunderbirdTemplate = false;
+		flags.isFileTemplate = false;
 	} ,
 
 	stateListener: {
@@ -404,51 +414,55 @@ var SmartTemplate4 = {
 			util.logDebug('NotifyComposeBodyReady');
 			// For Stationery integration, we need to  
 			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			if (prefs.isStationerySupported && 
-			    (typeof Stationery_ != 'undefined'))
-			{
-			  // test existence of Stationery 0.8 specific function to test if we need to use the new event model.
-				// added: New Stationery 0.9 uses promises
+			if (prefs.isStationerySupported) {
 				
-				if (Stationery.fireAsyncEvent || Stationery.waitForPromise) {
-					if (gMsgCompose.type == msgComposeType.Template) {
-						// force calling compose ready as Stationery does not support "template" case
-						window.setTimeout(
-							function(){ 
-								util.logDebug("Template case with Stationery enabled: calling notifyComposeBodyReady()")
-							  SmartTemplate4.notifyComposeBodyReady(); 
-							}, 
-							eventDelay);					
-					}
-					else {
-						// new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
-						util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
-					}
-					return;
+				if (typeof Stationery_ == 'undefined') {
+					util.popupAlert("Stationery is not installed or was not loaded, so Stationery support is disabled!");
 				}
-
-				// Stationery 0.7.8 and older
-				let bypass = true,
-				    oldTemplate = '';
-				
-				if (typeof Stationery.Templates.OnceOverride != "undefined") {
-					if (Stationery.Templates.OnceOverride == '')
-						bypass = false;
-					else
-						oldTemplate = Stationery.Templates.OnceOverride;
-				}
-				else { 
-					if (Stationery.Templates.Current =='')  
-						bypass = false;
-					else
-						oldTemplate = Stationery.Templates.Current;
-				}
-				if (bypass)
-					util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
-					   + 'As you have selected the Stationery template ' + oldTemplate 
-						 + ', SmartTemplate4 will be not used for this email.' );
 				else {
-					isNotify = true;
+					// test existence of Stationery 0.8 specific function to test if we need to use the new event model.
+					// added: New Stationery 0.9 uses promises
+					
+					if (Stationery.fireAsyncEvent || Stationery.waitForPromise) {
+						if (gMsgCompose.type == msgComposeType.Template) {
+							// force calling compose ready as Stationery does not support "template" case
+							window.setTimeout(
+								function(){ 
+									util.logDebug("Template case with Stationery enabled: calling notifyComposeBodyReady()")
+									SmartTemplate4.notifyComposeBodyReady(); 
+								}, 
+								eventDelay);					
+						}
+						else {
+							// new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
+							util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
+						}
+						return;
+					}
+
+					// Stationery 0.7.8 and older
+					let bypass = true,
+							oldTemplate = '';
+					
+					if (typeof Stationery.Templates.OnceOverride != "undefined") {
+						if (Stationery.Templates.OnceOverride == '')
+							bypass = false;
+						else
+							oldTemplate = Stationery.Templates.OnceOverride;
+					}
+					else { 
+						if (Stationery.Templates.Current =='')  
+							bypass = false;
+						else
+							oldTemplate = Stationery.Templates.Current;
+					}
+					if (bypass)
+						util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
+							 + 'As you have selected the Stationery template ' + oldTemplate 
+							 + ', SmartTemplate4 will be not used for this email.' );
+					else {
+						isNotify = true;
+					}
 				}
 			}
 			else
@@ -526,7 +540,7 @@ var SmartTemplate4 = {
 				// [BUG 26434] forwarding email with embedded images removes images
 				// test delaying call for forward case
 				window.setTimeout(
-					function(){ notifyComposeBodyReady(event); }, 
+					function(){ notifyComposeBodyReady(event); },  // let's pass the window handle so we know where we come from!
 					eventDelay
 				);
 			}, false);		
@@ -555,7 +569,8 @@ var SmartTemplate4 = {
 		// do not do HTML escaping!
 		// pass in a flag to leave %sig% untouched
 		util.clearUsedPremiumFunctions();
-    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true, true); 
+		SmartTemplate4.PreprocessingFlags.isStationery = true;
+    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true); 
 		util.logDebugOptional('stationery', 'Processed text: ' + t.HTML);
     util.logDebugOptional('stationery',
 		     '=========================================\n'
@@ -571,15 +586,65 @@ var SmartTemplate4 = {
 		      util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
 					msgComposeType = Ci.nsIMsgCompType;
+		// maybe use 		GetCurrentEditor() and find out  stuff from there
+		// get last opened 3pane window - but we really need the owner of the "write button"
+		// we clicked. 
+		// That window stores SmartTemplate4.fileTemplates.armedEntry
+		// we need this to retrieve the file Template path and title!
+		let ownerWin = util.Mail3PaneWindow,
+		    fileTemplateSource = null; // for fileTemplates, echeck if null and o.failed, otherwise o.HTML shoulde be the tempalte
+		
+		// check if a file tempalte is active. we need to get the window from the originating event!
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
 		    stationeryTemplate = null,
 		    flags = this.PreprocessingFlags;
+		this.initFlags(flags);
+				
+		// retrieve and consume fileTemplate info
+		// I will be very cautious in case composer is called from elsewhere (e.g. a mailto link, or a single message window)
+		
+		if (ownerWin && 
+		    ownerWin.SmartTemplate4 && 
+				ownerWin.SmartTemplate4.fileTemplates && 
+				ownerWin.SmartTemplate4.fileTemplates.armedEntry) {
+			let theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry; 			// this is a html file we need to parse.
+			ownerWin.SmartTemplate4.fileTemplates.armedEntry = null; 
+			util.logDebugOptional("fileTemplates", "notifyComposeBodyReady: \n"
+			  + "Consuming fileTemplate: " + theFileTemplate.label + "\n"
+				+ "composeType:" + theFileTemplate.composeType + "\n"
+				+ "path:" + theFileTemplate.path);
+				
+			// composer context:
+			fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
+			if (fileTemplateSource.failed) {
+				let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+				   "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+				  
+				SmartTemplate4.Message.display(
+					text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
+					"centerscreen,titlebar,modal,dialog",
+				  { ok: function() {  
+					        // get last composer window and bring to foreground
+									let composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+										.getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose");
+									if (composerWin)
+										composerWin.focus();
+					      }
+					}, 
+					ownerWin
+				);
+			}
+			else {
+				flags.isFileTemplate = true; // !!! new Stationery substitution
+			}
+		}
+		
+				
 				
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
 		if (prefs.isDebugOption('stationery') || prefs.isDebugOption('composer')) debugger;
 		util.logDebugOptional('stationery', 'notifyComposeBodyReady()...');
-		this.initFlags(flags);
 		
 		dbg += "\ngMsgCompose type: "  + gMsgCompose.type;
 		// see https://dxr.mozilla.org/comm-central/source/comm/mailnews/compose/public/nsIMsgComposeParams.idl
@@ -598,7 +663,7 @@ var SmartTemplate4 = {
 			// this also means the hacky code around flags.isThunderbirdTemplate will now be obsolete.
 		if (evt) {
 			let targ = evt.currentTarget || evt.target;
-			if (targ.Stationery_) {
+			if (targ.Stationery_ && prefs.isStationerySupported) {
 			  let stationeryInstance = targ.Stationery_,
 				    cur = null;
 				stationeryTemplate = stationeryInstance.currentTemplate;
@@ -640,7 +705,7 @@ var SmartTemplate4 = {
 			{ 
 				isInserted = true;
 				// if insertTemplate throws, we avoid calling it again
-				this.smartTemplate.insertTemplate(!flags.isThunderbirdTemplate, flags); // if a Tb template is opened, process without removal
+				this.smartTemplate.insertTemplate(!flags.isThunderbirdTemplate, flags, fileTemplateSource); // if a Tb template is opened, process without removal
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
 				root.setAttribute("smartTemplateInserted","true");

@@ -2,6 +2,7 @@
 
 <!DOCTYPE overlay [
    <!ENTITY % localeDTD SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">  %localeDTD;
+   <!ENTITY % fileTemplateDTD SYSTEM "chrome://smarttemplate4/locale/smartTemplate-fileTemplates.dtd"> %fileTemplateDTD;
    <!ENTITY % htmlDTD SYSTEM "chrome://smarttemplate4/locale/settings-html.dtd"> %htmlDTD;
 ]>
 
@@ -22,6 +23,7 @@
 				buttonlabelextra2 = "&contribute_button;"
 				onload = "(function(){var st4Load=SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings); st4Load();})();"
 				onunload = "SmartTemplate4.Settings.onUnload();"
+				windowtype = "addon:SmartTemplate4"
 				>
 
 	<prefpane id = "smartTemplatePane" orient = "vertical" flex="1">
@@ -76,7 +78,7 @@
 		<vbox id = "decksWrapper" flex="1">
 			<deck id = "account_deckA" flex = "1" class="templateDeck">
 
-				<vbox id = "deckA.per_account" flex = "1">
+				<vbox id = "deckA.per_account" flex = "1"> <!-- cloned element -->
 					<!-- ######## Template Preferences ######## -->
 
 					<preferences id = "templates">
@@ -115,15 +117,14 @@
 						<tabbox id = "deckB.nodef" flex = "1" orient = "vertical">
 
 							<tabs class="actionTabs">
-								<tab id = "newTab" label = "&pref_new.tab;"     class = "NewTab"/>
+								<tab id = "newTab"     label = "&pref_new.tab;" class = "NewTab"/>
 								<tab id = "respondTab" label = "&pref_rsp.tab;" class = "RespondTab" />
 								<tab id = "forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
-								<!-- <tab id = "aboutTab" label = "&pref_about.tab;" class = "AboutTab" /> -->
 							</tabs>
 
-							<!-- ######## Content New Message Tab [Write] ######## -->
+							<!-- ######## Content New Message [Write] Tab ######## -->
 							<tabpanels flex = "1" orient = "vertical">
-								<tabpanel flex = "1" orient = "vertical" class = "newGroup">
+								<tabpanel class = "newGroup">
 									<groupbox flex = "1" orient = "vertical" class="transparent">
 										<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
 										<vbox flex="1" class="vfield">
@@ -160,16 +161,16 @@
 									</groupbox>
 								</tabpanel>
 
-							<!-- ######## Content [Reply] Tab ######## -->
-							<tabpanel flex = "1" class = "replyGroup">
-								<groupbox flex = "1" class="transparent">
-									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
+								<!-- ######## Content [Reply] Tab ######## -->
+								<tabpanel class = "replyGroup">
+									<groupbox flex = "1" class="transparent">
+										<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
 										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id = "rsp"
-												          label = "&pref_rsp.label;"
-												          preference = "rsp_Enable"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+																	label = "&pref_rsp.label;"
+																	preference = "rsp_Enable"
+																	oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
@@ -187,11 +188,11 @@
 														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "rsphead"
-												          label = "&pref_rsphead.label;"
-												          tooltiptext = "&pref_quotehead_tip;"
-												          preference = "rsp_replaceQuoteHeader"/>
+																	label = "&pref_rsphead.label;"
+																	tooltiptext = "&pref_quotehead_tip;"
+																	preference = "rsp_replaceQuoteHeader"/>
 											</vbox>
-										  <label value = "&pref_templateBox.label;"/>
+											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "2">
 													<html:textarea 
@@ -207,37 +208,37 @@
 												</hbox>
 											</vbox>
 											<checkbox id = "rsphtml"
-											          label = "&pref_html.label;"
-											          tooltiptext = "&pref_html.cap;"
-											          preference = "rsp_isHtml"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+																label = "&pref_html.label;"
+																tooltiptext = "&pref_html.cap;"
+																preference = "rsp_isHtml"
+																oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id = "rspnbr"
-											          class = "indent"
-											          label = "&pref_rep_br.label;"
-											          tooltiptext = "&pref_rep_br.cap;"
-											          preference = "rsp_replaceBreaks"/>
+																class = "indent"
+																label = "&pref_rep_br.label;"
+																tooltiptext = "&pref_rep_br.cap;"
+																preference = "rsp_replaceBreaks"/>
 										</vbox>
-								</groupbox>
-							</tabpanel>
+									</groupbox>
+								</tabpanel>
 
-							<!-- ######## Content [Forward] Message Tab ######## -->
-							<tabpanel class = "forwardGroup">
-								<groupbox  flex = "1" class="transparent">
-									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
+								<!-- ######## Content [Forward] Message Tab ######## -->
+								<tabpanel class = "forwardGroup">
+									<groupbox  flex = "1" class="transparent">
+										<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
 										<vbox flex="1" class="vfield">
 											<hbox>
 												<checkbox id = "fwd"
-												          label = "&pref_fwd.label;"
-												          preference = "fwd_Enable"
-												          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+																	label = "&pref_fwd.label;"
+																	preference = "fwd_Enable"
+																	oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 												<spacer flex="1" />
 											</hbox>
 											<label value = "&pref_quoteHeaderBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "1">
-													         <!-- rows = "5" -->
+																	 <!-- rows = "5" -->
 													<html:textarea 
-													  id = "fwdheader"
+														id = "fwdheader"
 														class = "templateBox quote"
 														multiline = "true"
 														flex = "1"
@@ -248,50 +249,199 @@
 														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 												</hbox>
 												<checkbox id = "fwdhead"
-												          label = "&pref_fwdhead.label;"
-												          tooltiptext = "&pref_quotehead_tip;"
-												          preference = "fwd_replaceQuoteHeader"/>
-									    </vbox>
+																	label = "&pref_fwdhead.label;"
+																	tooltiptext = "&pref_quotehead_tip;"
+																	preference = "fwd_replaceQuoteHeader"/>
+											</vbox>
 											<label value = "&pref_templateBox.label;"/>
 											<vbox class = "indent" flex = "1">
 												<hbox class = "pasteFocus" flex = "2">
-													         <!-- rows = "5" -->
+																	 <!-- rows = "5" -->
 													<html:textarea id = "fwdmsg"
-													  class = "templateBox template"
-													  multiline = "true"
-													  flex = "1"
-													  tooltiptext = "&pref_templateBox_tip;"
-													  preference = "fwd_smartTemplate"
+														class = "templateBox template"
+														multiline = "true"
+														flex = "1"
+														tooltiptext = "&pref_templateBox_tip;"
+														preference = "fwd_smartTemplate"
 														preference-editable = "true"
 														ondrop="SmartTemplate4.Settings.textDropped(event);"
-													  onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
+														onfocus = "SmartTemplate4.Settings.pasteFocus(this);"/>
 													</hbox>
 											</vbox>
 											<checkbox id = "fwdhtml"
-											          label = "&pref_html.label;"
-											          tooltiptext = "&pref_html.cap;"
-											          preference = "fwd_isHtml"
-											          oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
+																label = "&pref_html.label;"
+																tooltiptext = "&pref_html.cap;"
+																preference = "fwd_isHtml"
+																oncommand = "SmartTemplate4.Settings.disableWithCheckbox(this);"/>
 											<checkbox id = "fwdnbr"
-											          class = "indent"
-											          label = "&pref_rep_br.label;"
-											          tooltiptext = "&pref_rep_br.cap;"
-											          preference = "fwd_replaceBreaks"/>
+																class = "indent"
+																label = "&pref_rep_br.label;"
+																tooltiptext = "&pref_rep_br.cap;"
+																preference = "fwd_replaceBreaks"/>
 										</vbox>
-								</groupbox>
-							</tabpanel>
+									</groupbox>
+								</tabpanel>
 							</tabpanels>
 						</tabbox>
 
-						<!-- ######## DeckB Definition ######## -->
+						<!-- ######## placeholder for hint: 'Use Common' to create a customized quote header for this account. ######## -->
 						<vbox id = "deckB.usedef">
 							<description>&pref_def.cap;</description>
 						</vbox>
-
+						
 					</deck>
-
+					
+					
 				</vbox>
+				
+				<!-- ######## File Templates (replaces Stationery) ######## -->
+				<vbox id="fileTemplatesBox">
+					<tabbox id="fileTemplatesTabs" 
+					        flex="1"
+									onchange="SmartTemplate4.Settings.selectFileCase(this, event);"
+					>
+						<tabs class="actionTabs">
+							<tab id = "file.newTab"     label = "&pref_new.tab;" class = "NewTab"/>
+							<tab id = "file.respondTab" label = "&pref_rsp.tab;" class = "RespondTab" />
+							<tab id = "file.forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
+						</tabs>
+						
+						<tabpanels flex = "1" 
+						           orient = "vertical"
+											 onselect="SmartTemplate4.Settings.selectFileCase(this, event);"
+											 >
+							<tabpanel class = "newGroup">
+								<groupbox flex = "1" orient = "vertical" class="transparent">
+									<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
+									<vbox flex="1" class="vfield">
+										<label value="&fileTemplates.title;" 
+										       tooltiptext="&fileTemplates.new.tooltip;" 
+													 />
+										<richlistbox 
+												id="templateList.new" 
+												style="min-height: 10em;" 
+												flex="1"
+												seltype="single"
+												onclick="SmartTemplate4.fileTemplates.onSelect(this);"
+												> <!-- note selTyope is camelCase in JS -->
+										</richlistbox>
+										<!-- we will move this around to the active tab -->
+										<vbox id="fileControls">
+											<hbox id="fileToolbarPanel">
+												<toolbar id = "fileTemplateToolbar"
+																 class="templateList"
+																 mode="full"
+																 customizable="false" >
+													<toolbarbutton
+															id="btnAdd"
+															class="toolbarbutton-1 chromeclass-toolbar-additional" 
+															label="&fileTemplates.add;"
+															oncommand = "SmartTemplate4.fileTemplates.update(true);" />
+													<toolbarbutton
+															id="btnUpdate"
+															class="toolbarbutton-1 chromeclass-toolbar-additional" 
+															label="&fileTemplates.update;"
+															oncommand = "SmartTemplate4.fileTemplates.update(false);" />
+													<toolbarbutton
+															id="btnRemove"
+															class="toolbarbutton-1 chromeclass-toolbar-additional" 
+															label="&fileTemplates.remove;"
+															oncommand = "SmartTemplate4.fileTemplates.remove();" />
+													<toolbarseparator />
+													<toolbarbutton
+															id="btnUp"
+															class="toolbarbutton-1 chromeclass-toolbar-additional" 
+															label="&fileTemplates.up;"
+															oncommand = "SmartTemplate4.fileTemplates.up();" />
+													<toolbarbutton
+															id="btnDown"
+															class="toolbarbutton-1 chromeclass-toolbar-additional" 
+															label="&fileTemplates.down;"
+															oncommand = "SmartTemplate4.fileTemplates.down();" />
+													<spacer flex="1" />
+												</toolbar>						
+											</hbox>
+											<hbox>
+											
+												<grid flex="1">
+													<columns>
+														<column id="colFileTemplates1" />
+														<column id="colFileTemplates2" flex = "2" />
+													</columns>
+													<rows>
+														<row align="left" id="labelRow">
+															<label>&fileTemplates.file.path;</label>
+															<hbox flex="3">
+																<textbox id="txtTemplatePath" 
+																				 flex="2"
+																				 />
+																<toolbarbutton 
+																				id="btnPickTemplate" 
+																				tooltiptext="&fileTemplates.file.open;" 
+																				onclick="SmartTemplate4.fileTemplates.pickFileFromSettings();"
+																				/>
+															</hbox>
+														</row>
+														<row align="left" id="labelRow">
+															<label >&fileTemplates.file.title;</label>
+															<textbox id="txtTemplateTitle" 
+																			 flex="3" 
+																			 tooltiptext="&fileTemplates.file.title.tooltip;"
+																			 onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+																			 />
+														</row>
+													</rows>
+												</grid>
+											</hbox>
+											<spacer flex="1" />
+										</vbox>
+									</vbox>
+								</groupbox>
+							</tabpanel>
 
+							<!-- ######## Content [Reply] Tab ######## -->
+							<tabpanel class = "replyGroup">
+								<groupbox flex = "1" class="transparent">
+									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
+									<vbox flex="1" class="vfield">
+										<label value="&fileTemplates.title;" 
+										       tooltiptext="&fileTemplates.rsp.tooltip;" 
+													 />										
+										<richlistbox 
+											id="templateList.rsp" 
+											style="min-height: 10em;" 
+											flex="1"
+										  onclick="SmartTemplate4.fileTemplates.onSelect(this);">
+										</richlistbox>
+									</vbox>
+								</groupbox>
+							</tabpanel>
+
+							<!-- ######## Content [Forward] File Tab ######## -->
+							<tabpanel class = "forwardGroup">
+								<groupbox  flex = "1" class="transparent">
+									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
+									<vbox flex="1" class="vfield">
+										<label value="&fileTemplates.title;" 
+										       tooltiptext="&fileTemplates.fwd.tooltip;" 
+													 />
+										<richlistbox 
+											id="templateList.fwd" 
+											style="min-height: 10em;" 
+											flex="1"
+											onclick="SmartTemplate4.fileTemplates.onSelect(this);">
+										</richlistbox>
+									</vbox>									
+								</groupbox>
+							</tabpanel>
+						</tabpanels>
+						
+						
+					</tabbox>
+				</vbox>
+			
+			
+			
 			</deck>
 
 		</vbox>
@@ -416,11 +566,13 @@
 											label = ""
 											/>
 									<spacer/>
-									<toolbarbutton onclick = "SmartTemplate4.Util.showStationeryPage();"
+									<toolbarbutton 
+									    id = "btnGetStationery"
+									    onclick = "SmartTemplate4.Util.showStationeryPage();"
 											class = "stationeryURL"
 											label = "&pref_stationeryLink;" 
 											tooltiptext = "&pref_stationeryLink_tip;"/>
-									<spacer flex="1" />
+									<spacer flex="1" id="spcStationery"/>
 									<toolbarbutton 
 									    id = "stationerySettings"
 									    onclick = "SmartTemplate4.Util.showStationerySettings();"
@@ -759,6 +911,7 @@
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
+<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileTemplates.js"/>
 
 	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
 	<script>
