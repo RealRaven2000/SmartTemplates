@@ -249,7 +249,6 @@
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
 <!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web.">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Escribir un correo electrónico a Soporte">
 <!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "¡Seleccione un tema!">
