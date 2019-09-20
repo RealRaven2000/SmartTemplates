@@ -997,7 +997,10 @@ SmartTemplate4.classSmartTemplate = function() {
 			// draft + startup: do not process!
 			if (startup && composeCase=='draft')
 				isActiveOnAccount = false;
-
+			
+			if (flags.isFileTemplate)
+				isActiveOnAccount = true;
+ 
 			if (isActiveOnAccount) {
 				// Message File loaded:
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;

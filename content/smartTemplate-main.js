@@ -417,7 +417,21 @@ var SmartTemplate4 = {
 			if (prefs.isStationerySupported) {
 				
 				if (typeof Stationery_ == 'undefined') {
-					util.popupAlert("Stationery is not installed or was not loaded, so Stationery support is disabled!");
+					isNotify = true;					
+					prefs.setMyBoolPref("stationery.supported",false);
+					util.showStationeryWarning();
+					/*
+					SmartTemplate4.Message.display(
+						"Stationery is not installed or was not loaded, so Stationery support is disabled!\n" +
+						"To re-activate, you have to open SmartTemplate⁴ Global Settings and check [x] Support Stationery.",
+						{  
+							ok: function() { 
+								prefs.setMyBoolPref("stationery.supported",false);
+							}
+						},
+						window
+					);
+					*/
 				}
 				else {
 					// test existence of Stationery 0.8 specific function to test if we need to use the new event model.

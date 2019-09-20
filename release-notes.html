@@ -1,7 +1,9 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Release video: https://youtu.be/AWdZWB0_ym0
+<b>2.3.1 Maintenance version with important fixes for the new file templates feature.</b>
+
+Release video - showcases the new file templates feature: https://youtu.be/AWdZWB0_ym0
 
 <b>Improvements</b>
 <ul>
@@ -11,7 +13,10 @@ I have repeatedly reached out to the author of the excellent Stationery Add-on o
 
 SmartTemplate⁴ still supports it, but it looks like it will stop working as soon as Thunderbird 68 lands in August / September 2019; therefore we need another solution to be able to use ad-hoc templates in the form of HTML files.
 
-The template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.</li>
+The template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.
+</li>
+<li>[v2.3.1] Fixed <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/14">[issue 14]</a>: If Lightning is not installed in Thunderbird 68, currently the new "file templates" function will not load the template, but may open 2 composer windows instead.</li>
+<li>[v2.3.1] Fixed <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/15">[issue 15]</a>: file templates only work on an account if the box <i>Apply following template</i> is active.</li>
 <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26689" target="_blank">[Bug 26689]</a> New function to set E-mail priority
 
  Add a function to set the priority of the composed Email.
@@ -23,6 +28,12 @@ Examples:
 %header.set(priority,normal)%
 %header.set(priority,low)%
 %header.set(priority,lowest)%</li>
+</ul>
+<b>Known Issues</b>
+<ul>
+<li> You have to disable the option <i>Global Settings</i>&#xbb;<i>Global Settings</i>&#xbb;<i>Advanced Functions</i>&#xbb;<i>Support Stationery Add-on</i>.
+I have raised <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/13">issue 13</a> to handle this bug.
+</li>
 </ul>
 <b>Bug Fixes</b>
 <ul>

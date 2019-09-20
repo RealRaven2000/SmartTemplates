@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.3",
+	HARDCODED_CURRENTVERSION : "2.3.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -923,30 +923,49 @@ SmartTemplate4.Util = {
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
 	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
+	showStationeryWarning: function(win) {
+		let noStationery = this.getBundleString("SmartTemplate4.notification.noStationery", 
+		  "Could not find Stationery - is Stationery installed?");
+		let warnText = noStationery,
+				txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
+				"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
+				+ "Therefore SmartTemplate⁴ now offers its own HTML template management system; click Ok to set it up.");
+		SmartTemplate4.Message.display(
+			warnText  + "\n" + txtSuggestion,
+			"centerscreen,titlebar",
+			{ ok: function() {
+				  if (!win) {
+						// open ST4 options with the file templates panel open:
+						let win = SmartTemplate4.Util.Mail3PaneWindow,
+								params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4}, out:null};
+						// open options and open the last tab!
+						// first param = identity (not set, unimportant)
+						// second param = mode to open correct setting 
+						win.openDialog('chrome://smarttemplate4/content/settings.xul',
+								'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
+								null,
+								params).focus();
+					}
+					else {
+						// select from dropdown + open file templates
+						let idMenu = document.getElementById("msgIdentity");
+						if (idMenu)
+							idMenu.selectedIndex = 1;
+						SmartTemplate4.Settings.switchIdentity("fileTemplates");
+					}
+				},
+				cancel: function() { ;/* cancel NOP */ }
+			}
+			, win
+		);			
+		
+	},
 	showStationerySettings: function () {
 		let win = this.Mail3PaneWindow;
 		if (win.Stationery)
 			win.Stationery.showOptions(win);
 		else {
-			let noStationery = this.getBundleString("SmartTemplate4.notification.noStationery", "Could not find Stationery - is Stationery installed?")
-			let warnText = noStationery,
-				  txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
-					"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
-					+ "Therefore SmartTemplate⁴ now offers its own HTML template management system; click Ok to set it up.");
-			SmartTemplate4.Message.display(
-				warnText  + "\n" + txtSuggestion,
-				"centerscreen,titlebar",
-				{ ok: function() {
-					  // select from dropdown + open file templates
-						let idMenu = document.getElementById("msgIdentity");
-						if (idMenu)
-							idMenu.selectedIndex = 1;
-						SmartTemplate4.Settings.switchIdentity("fileTemplates");
-					},
-					cancel: function() { ;/* cancel NOP */ }
-				}
-				, window
-			);			
+			this.showStationeryWarning(window);
 		}
 	},
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
@@ -1401,7 +1420,6 @@ SmartTemplate4.Util = {
 				'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
 				null,
 				params).focus();
-	  
 	}	,
 	
   /** 

@@ -474,10 +474,18 @@ SmartTemplate4.Settings = {
 			settings.openAdvanced();
 		}
 		let tabbox = getElement("rightPane");
-		// open "ST Pro" tab
-		if (mode=='licenseKey') {
-			tabbox.selectedPanel = getElement('SmartTemplate4-Options-goPro');
-			tabbox.selectedIndex = 5;
+		// special settings (omit selecting an identit from the accounts dropdown)
+		switch(mode) {
+			case 'licenseKey': // open "ST Pro" tab
+				tabbox.selectedPanel = getElement('SmartTemplate4-Options-goPro');
+				tabbox.selectedIndex = 5;
+				break;
+			case 'fileTemplates': // set up file templates.
+				let idMenu = document.getElementById("msgIdentity");
+				if (idMenu)
+					idMenu.selectedIndex = 1;
+				SmartTemplate4.Settings.switchIdentity("fileTemplates");
+			  break;
 		}
 		
 		let panels = getElement('ST4-Panels');

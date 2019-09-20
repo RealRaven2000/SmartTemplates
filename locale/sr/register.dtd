@@ -2,11 +2,18 @@
 <!ENTITY label.licenseValid "Ваша лиценца важи до:">
 <!ENTITY label.haveLicense "Већ имате лиценцу?">
 <!ENTITY getSmartTemplate4 "Набавите лиценцу за СмартТемплате⁴">
+<!ENTITY licenseTypes "Going forward, SmartTemplate⁴ offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
 <!ENTITY intro "Годишња лиценца за SmartTemplate⁴ вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи.">
+<!ENTITY testDriveS "You can test drive the premium features with the standard license, but they may be slightly restricted.">
 <!ENTITY yearlyLicense.title "Годишња лиценца">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије SmartTemplate⁴-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Више о премијум могућностима.">
 <!ENTITY yearlyLicense.usageTerm "Лиценца је за вашу личну употрету и везана је за вашу ел. адресу. Можете је инсталирати на више програма, док год су подешени за рад са том ел. адресом.">
+<!ENTITY yearlyLicense.usageTerm1 "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab.">
+<!ENTITY domainLicense.email "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page.">
+<!ENTITY domainLicense.header "Licensed Email Domain">
+<!ENTITY domainLicense.instruct "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use SmartTemplate⁴ Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen.">
+<!ENTITY domainLicense.validate "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users.">
 <!ENTITY updates.title "Ажурирања">
 <!ENTITY updatesExpiry "SmartTemplate⁴ Pro ће аутоматски бити ажуриран преко addons.thunderbird.net, као и обично. Након годину дана, можете обновити лиценцу или наставити да користите премијум могућности под истим условима као и корисници бесплатне верзије. Премијум могућности ће захтевати регистрациони кључ.">
 <!ENTITY vouchers.title "Купони">
@@ -15,6 +22,10 @@
 <!ENTITY email.label "Ел. адреса:">
 <!ENTITY firstName.label "Име:">
 <!ENTITY lastName.label "Презиме:">
+<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplate⁴ Pro license. It is bound to your personal Email address and can be used in multiple installations.">
+<!ENTITY buyPremiumLicense.button "Buy Pro License!">
+<!ENTITY buyStandardLicense.instruct "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions.">
+<!ENTITY buyStandardLicense.button "Buy Standard License!">
 <!ENTITY buyDomainLicense.instruct "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:">
 <!ENTITY buyDomainLicense.button "Купи групну лиценцу">
 <!ENTITY enterLicenseKey.button "Унесите број лиценце...">

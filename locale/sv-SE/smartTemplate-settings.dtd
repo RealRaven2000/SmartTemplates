@@ -105,6 +105,7 @@
 <!ENTITY pref_defaultCharset_tip "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras.">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY about.cap "Ca SmartTemplate⁴">
+<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
 <!ENTITY localename.label "sv-SE">
@@ -112,6 +113,7 @@
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate⁴ erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
+<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
@@ -226,10 +228,12 @@
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
 <!ENTITY table_note.label "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Nytt">
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
@@ -245,3 +249,15 @@
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
 <!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats">
+<!-- #####  Support ##### -->
+<!ENTITY support.title "Mail to Support">
+<!ENTITY support.type "Type:">
+<!ENTITY support.type.selectOne "Select a topic!">
+<!ENTITY support.type.license "Licensing related">
+<!ENTITY support.type.tech "Technical">
+<!ENTITY support.type.html "Help with HTML / CSS">
+<!ENTITY support.type.other "Other">
+<!ENTITY support.subject "Subject:">
+<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
+<!ENTITY support.compose "Write to support…">
+<!ENTITY support.links "Support Links">

@@ -519,31 +519,32 @@ SmartTemplate4.fileTemplates = {
 			
 			// if this is a non-native menupopup (we created it)
 			// we need to add an event handler to notify the parent button.
-			//if (msgPopup.getAttribute("st4nonNative")) {
-				menuitem.addEventListener("click", 
-					function(event) { 
-						if (event.target.disabled) {
-							event.stopImmediatePropagation();
-							let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplate⁴ license to use more than {1} templates!");
-							
-							SmartTemplate4.Message.display(
-								txt.replace("{1}", maxFreeItems), 
-								"centerscreen,titlebar,modal,dialog",
-								{ ok: function() { ; }},
-								util.Mail3PaneWindow
-							);
-							return false;
-						}
-						event.preventDefault();
-						util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
-						  + "composeType=" + composeType + "\n"
-							+ "template=" + theTemplate.label);
-						fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label); 
-						return false; 
-					}, 
-					{capture:true } , 
-					true);
-			//}
+			menuitem.addEventListener("click", 
+				function(event) { 
+					event.stopImmediatePropagation();
+					if (event.target.disabled) {
+						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplate⁴ license to use more than {1} templates!");
+						
+						SmartTemplate4.Message.display(
+							txt.replace("{1}", maxFreeItems), 
+							"centerscreen,titlebar,modal,dialog",
+							{ ok: function() { ; }},
+							util.Mail3PaneWindow
+						);
+						return false;
+					}
+					
+					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
+						+ "composeType=" + composeType + "\n"
+						+ "template=" + theTemplate.label);
+					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label); 
+					return false; 
+				}, 
+				{capture:true } , 
+				true);
+			// stop command event from bubbling up.
+			menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
+			
 			msgPopup.appendChild(menuitem);									 
 		}
 		// add an item for choosing ad hoc file template
@@ -630,7 +631,7 @@ SmartTemplate4.fileTemplates = {
 		// there is no existing menu popup, let's create one.
 		let menupopup = doc.createXULElement ? doc.createXULElement('menupopup') : doc.createElement('menupopup');
 		// we do not want to add the click handler on the hdr buttons as the button click is alreayd triggered. (?)
-		if (!parent)
+		// if (!parent)  // issue 14
 			menupopup.setAttribute("st4nonNative", true);
 		element.appendChild(menupopup);
 		return menupopup;		
@@ -729,6 +730,7 @@ SmartTemplate4.fileTemplates = {
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
 						logDebug("headerToolbox found; adding template file menus...");
+						
 						// 4) (header) reply entries     --------------------
 						replyPopup = fT.getPopup(["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrReplyToSenderButton","button-reply","hdrFollowUpButton"], headerToolbox); // compactHeader support
 						if (replyPopup) {
@@ -889,6 +891,7 @@ SmartTemplate4.fileTemplates = {
 			
 		let popup = menuitem.parentNode;
 		if (popup.getAttribute("st4nonNative") 
+			  || btn.id=="button-newmsg"
 			  || btn.id=="button-forward"  
 			  || btn.id=="button-reply") {
 			// we need to trigger the button.
@@ -896,7 +899,11 @@ SmartTemplate4.fileTemplates = {
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
       // we may want to control which of these 2 are triggered (inline or attach), but I guess 
 			// without specifying it will likely be the Thunderbird account defaults
-			btn.click(); // or fire the command event?
+			util.logDebugOptional("fileTemplates","firing btn.click() ...");
+			btn.click(); // or fire the command event? 
+		}
+		else {
+			util.logDebugOptional("fileTemplates","+======++++++======++++++======+\nNo click event fired for button id=" + btn.id);
 		}
 		// for retrieval we need to check this from composer window (by asking original window)
 		// and then reset to null. fileTemplateInstance = mail3pane.SmartTemplate4.fileTemplates
@@ -993,7 +1000,6 @@ SmartTemplate4.fileTemplates = {
 						localFile;
 
 				if (isFU) {    // not in Postbox
-					debugger;
 					localFile	=	new FileUtils.File(template.path);
 				}
 				else {
