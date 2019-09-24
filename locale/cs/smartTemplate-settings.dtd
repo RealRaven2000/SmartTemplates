@@ -249,7 +249,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY premiumConfig "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Mail na podporu">
 <!ENTITY support.type "Typ:">
 <!ENTITY support.type.selectOne "Vyber téma!">

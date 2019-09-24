@@ -79,18 +79,14 @@
 <!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
 <!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
 <!ENTITY resolveNamesFromAB_tip "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP.">
 <!ENTITY resolveNamesFromABNick "Замени име ако је доступан надимак">
-<!ENTITY resolveNamesFromABDisplay "Use Display Name if first name missing">
 <!ENTITY resolveABRemoveMail "Уклони е-адресу ако формат није наведен">
 <!ENTITY suppressMailtToLink "Suppress Mail Clients adding links to Email addresses.">
 <!ENTITY capitalizeNames "Капитализуј имена">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Обради потпис">
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
 <!ENTITY pref_cursorInsertSpace "Убаци размак ради истицања &#37;cursor&#37;">
@@ -105,7 +101,6 @@
 <!ENTITY pref_defaultCharset_tip "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "О додатку">
-<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Аутор">
 <!ENTITY developer.label "Програмер">
 <!ENTITY localename.label "sr-RS">
@@ -125,14 +120,12 @@
 <!ENTITY sig2.label "Потпис из подешавања налога, али без две цртице (--)">
 <!ENTITY fileHTML.label "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8.">
 <!ENTITY fileImage.label "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан.">
-<!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY to.label "Име примаоца (подразумевано)">
 <!ENTITY tofirstname.label "Име примаоца">
 <!ENTITY toname.label "Име примаоца">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Пошиљалац">
 <!ENTITY from_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY from.label "Име пошиљаоца (подразумевано)">
@@ -176,10 +169,6 @@
 <!ENTITY dateshort.label "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)">
 <!ENTITY datetz.label "Временска зона (+0100, +0200…)">
 <!ENTITY tzname.label "GMT, PST, EST…">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY A.label "Дан у недељи (пун назив)">
@@ -201,9 +190,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука.">
 <!ENTITY xsent_long.cap "Пример LongString-а">
@@ -241,23 +227,8 @@
 <!ENTITY button.validateLicense "потврди">
 <!ENTITY label.licenseValid "Ваша лиценца важи до:">
 <!ENTITY licenseValidation.passed "Хвала што сте регистровали SmartTemplate⁴ про! Све могућности су сада откључане.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
 <!ENTITY licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
 <!ENTITY licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
-<!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">

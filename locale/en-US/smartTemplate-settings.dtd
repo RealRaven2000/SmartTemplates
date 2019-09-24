@@ -127,6 +127,7 @@
 <!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
 <!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
+<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Recipient (To)">
 <!ENTITY to_note.label "When the name is not available, email address will be displayed instead">
 <!ENTITY to.label "Recipient's name (default)">
