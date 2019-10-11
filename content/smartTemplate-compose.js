@@ -200,6 +200,17 @@ SmartTemplate4.classSmartTemplate = function() {
       sigText = sigText.replace(/\r\n/g, '<br>');
       sigText = sigText.replace(/\n/g, '<br>');
     }
+    else {
+      // replace image(s) in signature with data src if necessary.
+      const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+      sigText = sigText.replace(Frex, 
+        function(match) {
+          util.logDebugOptional('composer', 'Replacing signature image as data url: ' + match);
+          return util.getFileAsDataURI(match);
+        }
+      );
+      
+    }
 		
 
 		let removed = false;
@@ -302,7 +313,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			// createTextNode( ) returns a DOMString (16bit)
 			sig = dashesTxt + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 		}
-
+    
 		util.logDebugOptional('functions.extractSignature','==============  extractSignature=============END\n'
 		                                   + 'Return Signature:\n' + sig );
 
@@ -809,7 +820,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		// This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
 		// we can fix the Data urls for file:/// images now
 		// assume they are enclosed in single quote, double quote or terminated by &gt;
-		regular = regular.replace(/file:\/\/\/[^\"\'\>]*/g, 
+    const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+		regular = regular.replace(Frex,   // /file:\/\/\/[^\"\'\>]*/g
 		  function(match) {
 				util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
 				return util.getFileAsDataURI(match);

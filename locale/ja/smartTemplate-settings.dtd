@@ -127,6 +127,7 @@
 <!ENTITY fileImage.label "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。">
 <!ENTITY attach.label "添付ファイルとして追加する">
 <!ENTITY cursor.label "カーソルの位置を設定する">
+<!ENTITY spellcheck.label "スペルチェックの言語を指定してください。例：(en, de-DE, es-ES, ru) - スペルチェック辞書をインストールする必要があります。">
 <!ENTITY to_var.cap "受信者 (To)">
 <!ENTITY to_note.label "受信者の名前が設定されていない場合、メールアドレスが表示されます">
 <!ENTITY to.label "受信者の名前とメールアドレス (既定)">
@@ -249,6 +250,7 @@
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
 <!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "サポートにメール">
 <!ENTITY support.type "タイプ:">
 <!ENTITY support.type.selectOne "トピックを選択してください！">

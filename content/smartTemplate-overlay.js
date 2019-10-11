@@ -1308,7 +1308,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	addTokens("reserved", 
 		"ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
 		"dbg1", "sig", "newsgroup", 
-		"cursor", "identity", "quotePlaceholder", "language", "quoteHeader", "smartTemplate", "internal-javascript-ref",
+		"cursor", "identity", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
 		"messageRaw", "file", "attach", //depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
@@ -1923,6 +1923,54 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					return finalize(token, getNewsgroup());
 				case "language":
 				  SmartTemplate4.calendar.init(removeParentheses(arg));
+					return "";
+        case "spellcheck":
+          // use first argument to switch dictionary language.
+          let lang = removeParentheses(arg);
+          try {
+            let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
+                o1 = {}, o2 = {};
+            spellChecker.GetDictionaryList(o1, o2);
+            // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
+            let dictList = o1.value, 
+                count = o2.value,
+                found = false;
+            if (count==0) {
+              let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
+              throw wrn;
+            }
+            
+            if (lang.length>=2) 
+              for (let i = 0; i < dictList.length; i++) {
+                if (dictList[i].startsWith(lang)) {
+                  found = true;
+                  lang = dictList[i];
+                  break;
+                }
+              }
+            
+            if (found) {
+              // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
+              // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
+              // this should trigger gLanguageObserver to select the correct spell checker.
+              util.logDebug("Setting spellchecker / document language to: " + lang);
+              document.documentElement.setAttribute("lang", lang); 
+              spellChecker.SetCurrentDictionary(lang);
+            }
+            else {
+              let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
+              throw wrn.replace("{0}", lang);
+            }
+          }
+          catch(ex) {
+            let msg = util.getBundleString("SmartTemplate4.notification.spellcheck.error", 
+                        "Cannot switch spell checker. Have you installed the correct dictionary?");
+            SmartTemplate4.Message.display(msg + "\n" + ex, 
+              "centerscreen,titlebar,modal,dialog",
+              { ok: function() { ; }},
+              window
+            );
+          }
 					return "";
 				case "logMsg": // For testing purposes - add a comment line to email and error console
 				  util.logToConsole(removeParentheses(arg));

@@ -342,10 +342,24 @@ END LICENSE BLOCK
 		# Extended trial period from 14 days to 28 days.
 		# Support using %X:=sent% modifier with %dateformat()% function when replying to / forwarding emails. 
 		
-	Version 2.3 - WIP
+	Version 2.3 - 16/09/2019
 	  # [Bug 26689] Support setting priority with %header.set(priority,value)%
 		# [issue 9] %header.set(from)% not working in Tb60.9
 	  # Add file template function and management functions
+		
+	Version 2.3.1 - 20/09/2019		
+	  # Improved handling of non-working Stationery Add-on in Thunderbird 68.
+		# [issue 14] If Lightning is not installed in Thunderbird 68, the new "file templates" 
+		  function will not load the template
+		# [issue 15] file templates only work on an account if the box "Apply following template" 
+		  is active
+
+	Version 2.3.2 - WIP
+    # [issue 16] in some cases, images in signature trigger the "blocked file" warning
+      Improved image replacement wit %file()% in signatures.
+    # [issue 17] Add switch for Dictionary to change to a different language %spellcheck()%
+    # fixed an issue with handling missing default identities (licenser would fail silently 
+      rather than log an error in JS console)
 		
   ...........	
 	
