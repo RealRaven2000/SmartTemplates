@@ -79,8 +79,6 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -127,7 +125,6 @@
 <!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
 <!ENTITY attach.label "Ajouter comme fichier joint">
 <!ENTITY cursor.label "Définit la position du curseur">
-<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
 <!ENTITY to.label "Noms des destinataires (défaut)">
@@ -177,7 +174,6 @@
 <!ENTITY dateshort.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "La fonction suivante ajoute un décalage à toutes les dates et horaires suivants.">
 <!ENTITY calculate.explain "DD=nombre de jours à ajouter. H=nombre d'heures à ajouter (facultatif). MM=minutes à ajouter (facultatif)">
 <!ENTITY calculate.reset "Définir l'argument à 0 pour arrêter la modification des dates.">
@@ -250,7 +246,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY premiumConfig "Fonctionnalités Premium">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Courrier au support">
 <!ENTITY support.type "Genre:">
 <!ENTITY support.type.selectOne "Choisissez un sujet!">

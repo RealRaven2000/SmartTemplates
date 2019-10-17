@@ -127,7 +127,7 @@
 <!ENTITY fileImage.label "Afbeeldingesbestand (png, jpg, gif, bmp, svg). De optionele altText wordt weergegeven als het bestand niet kan worden gevonden.">
 <!ENTITY attach.label "Bestand als bijlage toevoegen">
 <!ENTITY cursor.label "Stelt de cursorpositie in">
-<!ENTITY spellcheck.label "Stelt de taal voor spellingscontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – merk op dat het woordenboek moet zijn geïnstalleerd.">
+<!ENTITY spellcheck.label "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd.">
 <!ENTITY to_var.cap "Ontvanger (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
 <!ENTITY to.label "Ontvangersnaam (Standaard)">
@@ -250,7 +250,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecteer een onderwerp!">
