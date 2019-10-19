@@ -1,42 +1,20 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>2.3.1 Maintenance version with important fixes for the new file templates feature.</b>
+<b>2.4 Halloween version with important fixes for the new file templates feature.</b>
 
-Release video - showcases the new file templates feature: https://youtu.be/AWdZWB0_ym0
+Video for Ex-Stationery users - showcases the new file templates feature: https://youtu.be/AWdZWB0_ym0
 
 <b>Improvements</b>
 <ul>
-<li>2.3.1 - Improved handling of non-working Stationery in Thunderbird 68. You can now jump straight into configuring file templates and "support stationery" will be automatically disabled if it cannot be run in the current Tb version.</li>
-<li>[<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/8">issue #8</a>] Support File Templates - to replace Stationery from Thunderbird 68 forward. 
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/17">[issue 17]</a> Add %spellcheck()% variable for changing spellchecker to a different language.
 
-I have repeatedly reached out to the author of the excellent Stationery Add-on over the last 8 months, but unfortunately did not get any reply. I also attempted to patch it for Thunderbird68 but it is just too much work. (I estimate 2-3 man weeks)
+%spellcheck(language)%
 
-SmartTemplate⁴ still supports it, but it looks like it will stop working as soon as Thunderbird 68 lands in August / September 2019; therefore we need another solution to be able to use ad-hoc templates in the form of HTML files.
-
-The template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.
-</li>
-<li>[v2.3.1] Fixed <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/14">[issue 14]</a>: If Lightning is not installed in Thunderbird 68, currently the new "file templates" function will not load the template, but may open 2 composer windows instead.</li>
-<li>[v2.3.1] Fixed <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/15">[issue 15]</a>: file templates only work on an account if the box <i>Apply following template</i> is active.</li>
-<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26689" target="_blank">[Bug 26689]</a> New function to set E-mail priority
-
- Add a function to set the priority of the composed Email.
-
-Examples:
-
-%header.set(priority,highest)%
-%header.set(priority,high)%
-%header.set(priority,normal)%
-%header.set(priority,low)%
-%header.set(priority,lowest)%</li>
-</ul>
-<b>Known Issues</b>
-<ul>
-<li> You have to disable the option <i>Global Settings</i>&#xbb;<i>Global Settings</i>&#xbb;<i>Advanced Functions</i>&#xbb;<i>Support Stationery Add-on</i>.
-I have raised <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/13">issue 13</a> to handle this bug.
-</li>
+This is the new variable to switch the spell checked to a different language. language can be any locale string of a dictionary that is already installed, e.g. en, de, en-GB etc.</li>
 </ul>
 <b>Bug Fixes</b>
 <ul>
-<li>Fixed a problem with the Czech translation file that caused an error when trying to display the SmartTemplate Settings dialog.</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/16">[issue 16]</a> In some cases, images in signature triggered the "blocked file" warning.  The latest version of SmartTemplate&#8308; will now parse the signature and replace the  file-based image source with a base64 encoded data link to avoid this warning. </li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/19">[issue 19]</a> File templates can generate unexpected line breaks, and contained images may break. This can happen if the option "replacing line breaks with &lt;br&gt;" is active in the corresponding account template. </li>
 </ul>

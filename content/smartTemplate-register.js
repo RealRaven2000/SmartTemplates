@@ -160,9 +160,7 @@ SmartTemplate4.Licenser =
 		    installDate = new Date(graceDate),
 				days = Math.floor( (today.getTime() - installDate.getTime()) / SINGLE_DAY);
 		// later.setDate(later.getDate()-period);
-		if (period-days>0)
-			return (period-days); // returns number of days left, or 0 if past period
-		return 0;
+    return (period-days); // returns number of days left, or -days since trial expired if past period
 	},
 	
   ValidationStatus: 0,

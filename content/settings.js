@@ -495,8 +495,8 @@ SmartTemplate4.Settings = {
 			if (prefs.isDebug) debugger;
 			let licenseDate = getElement('licenseDate'),
 			    licenseDateLbl = getElement('licenseDateLabel'),
-					gracePeriod = SmartTemplate4.Licenser.GracePeriod,
-					txtGracePeriod=util.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", gracePeriod);
+					txtGracePeriod= util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
+          
 			if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
 				licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
 			}

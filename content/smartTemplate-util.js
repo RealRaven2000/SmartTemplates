@@ -445,8 +445,7 @@ SmartTemplate4.Util = {
 				util.getBundleString("SmartTemplate4.notification.license.text",
 					"From now on, SmartTemplate⁴ requires at least a standard license. " +
 					"Read more about it on our licensing page.");
-			let gracePeriod = SmartTemplate4.Licenser.GracePeriod,
-					txtGracePeriod = util.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", gracePeriod);
+			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
 			theText = theText + '  ' + txtGracePeriod;
 		}
 		
@@ -586,6 +585,13 @@ SmartTemplate4.Util = {
 		}
 	} ,
 	
+  gracePeriodText: function gracePeriodText(days) {
+    let txt = (days>=0) ?
+      this.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", days) :
+      this.getBundleString("SmartTemplate4.trialExpiry", "Your trial period expired {0} days ago.").replace("{0}", -days);
+    return txt;
+  },
+  
 	debugVar: function debugVar(value) {
 		let str = "Value: " + value + "\r\n";
 		for (let prop in value) {
@@ -2493,16 +2499,6 @@ SmartTemplate4.Util = {
 					                +  requiredLocaleTxt + '\n'
 					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
 					util.logToConsole(errorText);
-					/*
-					let parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window;
-					SmartTemplate4.Message.display(errorText,
-							"centerscreen,titlebar",
-							{ ok: function() { parentWin.focus(); }},
-							parentWin
-					);
-					forcedLocale = null;
-					*/
-					
 				}
 				else {
 					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
@@ -2518,6 +2514,77 @@ SmartTemplate4.Util = {
 			return "en";
 		}
 	} ,
+  
+  setSpellchecker: function(language) {
+		const Ci = Components.interfaces,
+		      Cc = Components.classes,
+		      util = SmartTemplate4.Util;
+    let retry = util.retrySpellCheck || 0;
+    try {
+      let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
+          o1 = {}, 
+          o2 = {};
+      if (!spellChecker) {
+        if (retry<5) {
+          retry++;
+          util.retrySpellCheck = retry;
+          util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
+          // if spellChecker is not ready, we try again in 2 seconds.
+          setTimeout(function() {
+            util.setSpellchecker(language);
+          }, 2000);
+          return;
+        }
+        else {
+          let wrn = "Could not retrieve spellChecker, giving up after " + retry + " attempts.";
+          util.retrySpellCheck=0;
+          throw wrn;          
+        }
+      }
+      spellChecker.GetDictionaryList(o1, o2);
+      util.retrySpellCheck=0;
+      // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
+      let dictList = o1.value, 
+          count = o2.value,
+          found = false;
+      if (count==0) {
+        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
+        throw wrn;
+      }
+      
+      if (language.length>=2) 
+        for (let i = 0; i < dictList.length; i++) {
+          if (dictList[i].startsWith(language)) {
+            found = true;
+            language = dictList[i];
+            break;
+          }
+        }
+      
+      if (found) {
+        // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
+        // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
+        // this should trigger gLanguageObserver to select the correct spell checker.
+        util.logDebug("Setting spellchecker / document language to: " + language);
+        document.documentElement.setAttribute("lang", language); 
+        spellChecker.SetCurrentDictionary(language);
+      }
+      else {
+        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
+        throw wrn.replace("{0}", language);
+      }
+    }
+    catch(ex) {
+      let msg = util.getBundleString("SmartTemplate4.notification.spellcheck.error", 
+                  "Cannot switch spell checker language. Have you installed the correct dictionary?");
+      SmartTemplate4.Message.display(msg + "\n" + ex, 
+        "centerscreen,titlebar,modal,dialog",
+        { ok: function() { ; }},
+        window
+      );
+    }
+    
+  }
 	
 	
 	/* 
@@ -2727,19 +2794,44 @@ SmartTemplate4.Message = {
 	myWindow : null,
 	parentWindow : null,
 	display : function(text, features, callbacksObj, parent) {
+    let countDown = callbacksObj.countDown || 0,
+        isLicenseWarning = callbacksObj.isLicenseWarning,
+        licenser = callbacksObj.licenser || null;
+    if (licenser) {
+      if (licenser.GracePeriod<0) {
+        if (licenser.isExpired) {
+          // license is expired
+          // 0.5 sec penalty / week. (2secs per month)
+          countDown = parseInt(licenser.GracePeriod * (-1) / 14, 10); 
+        }
+        else {
+          // no license: trial period is over
+          // 1 sec penalty + 1 sec / week.
+          countDown = parseInt((licenser.GracePeriod * (-1) / 7), 10) + 1; 
+        }
+      }
+    }
 		// initialize callback functions
 		this.okCALLBACK = callbacksObj.ok || null;
 		this.cancelCALLBACK = callbacksObj.cancel || null;
 		this.yesCALLBACK = callbacksObj.yes  || null;
 		this.noCALLBACK = callbacksObj.no || null;
-		// parent window
-		if (parent) this.parentWindow = parent;
+		// remember parent window
+		if (parent) {
+      this.parentWindow = parent;
+      // if this is the composer window, check if countdown has already been (partically) spent...
+      if ("SmartTemplate4_countDown" in parent)
+        countDown = parent.SmartTemplate4_countDown; // remaining seconds.
+      else
+        parent.SmartTemplate4_countDown = countDown; // remember seconds.
+    }
 
 		// pass some data as args. we allow nulls for the callbacks
 		// avoid using "this" in here as it confuses Tb3?
 		let params =
 		{
 			messageText:    text,
+      countDown:      countDown,
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
 			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
 			yesCallback:    SmartTemplate4.Message.yesCALLBACK,
@@ -2792,13 +2884,43 @@ SmartTemplate4.Message = {
 	} ,
 
 	loadMessage : function () {
+    function startTimer(duration, label) {
+      var timer = duration;
+      if (duration < 0) return;
+      let fun = setInterval(
+        function () {
+          timer--;
+          if (timer<=0) {
+            clearInterval(fun);
+          }
+          label.value = timer.toString();
+        }, 1000);
+    }    
 		try {
+      let countDown;
+      function addButton(id, myCallback) {
+        let btn = document.getElementById(id);
+        if (btn) {
+          btn.addEventListener("click", myCallback, true);
+          btn.hidden = false;
+          if (countDown) btn.disabled = true;
+        }
+        return btn;
+      }
+      
 			if (window.arguments && window.arguments.length) {
 				let params = window.arguments[0],  // leads to errors in tb3?
 				    msgDiv = document.getElementById('innerMessage'),
-				    theMessage = window.arguments[0].messageText,
-				// split text (passed in with /n as delimiter) into paragraphs
+				    theMessage = params.messageText,
+            // split text (passed in with /n as delimiter) into paragraphs
 				    textNodes = theMessage.split("\n");
+            
+        countDown = params.countDown || 0;
+        if (countDown) {
+          let cdLabel = document.getElementById('countDown');
+          startTimer(countDown, cdLabel);
+        }
+        
 						
 				for (let i = 0; i < textNodes.length; i++) {
 					// empty nodes will be <br>
@@ -2808,27 +2930,33 @@ SmartTemplate4.Message = {
 					msgDiv.appendChild(par);
 				}
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
+        let buttons = [];
 
-				document.getElementById('ok').addEventListener("click", window.arguments[0].okCallback, true);
-				window.st4OkListener = window.arguments[0].okCallback; // this is the minimum
-				if (window.arguments[0].cancelCallback) {
-					let cancelBtn = document.getElementById('cancel');
-					cancelBtn.addEventListener("click", window.arguments[0].cancelCallback, true);
-					cancelBtn.hidden = false;
-					window.st4CancelListener = window.arguments[0].cancelCallback;
+        // ok callback is mandatory!
+        buttons.push(addButton('ok', params.okCallback));
+				window.st4OkListener = params.okCallback; // this is the minimum
+        
+				if (params.cancelCallback) {
+          buttons.push(addButton('cancel', params.cancelCallback));
+					window.st4CancelListener = params.cancelCallback;
 				}
-				if (window.arguments[0].yesCallback) {
-					let yesBtn = document.getElementById('yes');
-					yesBtn.addEventListener("click", window.arguments[0].yesCallback, true);
-					yesBtn.hidden = false;
-					window.st4YesListener = window.arguments[0].yesCallback;
+				if (params.yesCallback) {
+          buttons.push(addButton('yes', params.yesCallback));
+					window.st4YesListener = params.yesCallback;
 				}
-				if (window.arguments[0].noCallback) {
-					let noBtn = document.getElementById('no');
-					noBtn.addEventListener("click", window.arguments[0].noCallback, true);
-					noBtn.hidden = false;
-					window.st4NoListener = window.arguments[0].noCallback;
+				if (params.noCallback) {
+          buttons.push(addButton('no', params.noCallback));
+					window.st4NoListener = params.noCallback;
 				}
+        if (countDown) {
+          // enable the buttons after countDown period.
+          window.setTimeout( function() {
+            for (let i=0; i<buttons.length; i++) {
+              if (buttons[i])
+                buttons[i].disabled = false;
+            }
+          }, countDown*1000);
+        }
 			}
 			else
 				alert('window.arguments: ' + window.arguments);
@@ -2846,6 +2974,12 @@ SmartTemplate4.Message = {
 		this.yesCALLBACK = null;
 		this.noCALLBACK = null;
 		this.myWindow = null;
+    let cdLabel = document.getElementById('countDown');
+    if (cdLabel && cdLabel.value.length>0) {
+      let remainingCountdown = parseInt(cdLabel.value,10);
+      // composer should remember remaining seconds of countdown;
+      win.opener.SmartTemplate4_countDown = remainingCountdown;
+    }
 		if (win.st4OkListener) {
 			document.getElementById('ok').removeEventListener("click", win.st4OkListener, false);
 		}

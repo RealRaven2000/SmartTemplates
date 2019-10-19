@@ -1111,13 +1111,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			    parseString.substr(0, PreviewLength) +
 					(parseString.length>PreviewLength ? "…" : "")
 					
-			// show a fancier "branded" alert:
-			SmartTemplate4.Message.display(txtAlert + '\n\n' + parseString, 
+			// show a fancier "branded" alert;
+      // add countdown  - isLicenseWarning=true
+      const parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window;
+			SmartTemplate4.Message.display(
+        txtAlert + '\n\n' + parseString, 
 				"centerscreen,titlebar,modal,dialog",
-				{ ok: function() { ; }},
-				Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window
+				{ ok: function() { ; } , 
+          isLicenseWarning: true, 
+          licenser: mainLicenser},
+				parentWin
 			);
-			debugger;
 		}
 	}
 				
@@ -1927,50 +1931,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         case "spellcheck":
           // use first argument to switch dictionary language.
           let lang = removeParentheses(arg);
-          try {
-            let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
-                o1 = {}, o2 = {};
-            spellChecker.GetDictionaryList(o1, o2);
-            // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
-            let dictList = o1.value, 
-                count = o2.value,
-                found = false;
-            if (count==0) {
-              let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
-              throw wrn;
-            }
-            
-            if (lang.length>=2) 
-              for (let i = 0; i < dictList.length; i++) {
-                if (dictList[i].startsWith(lang)) {
-                  found = true;
-                  lang = dictList[i];
-                  break;
-                }
-              }
-            
-            if (found) {
-              // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
-              // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
-              // this should trigger gLanguageObserver to select the correct spell checker.
-              util.logDebug("Setting spellchecker / document language to: " + lang);
-              document.documentElement.setAttribute("lang", lang); 
-              spellChecker.SetCurrentDictionary(lang);
-            }
-            else {
-              let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
-              throw wrn.replace("{0}", lang);
-            }
-          }
-          catch(ex) {
-            let msg = util.getBundleString("SmartTemplate4.notification.spellcheck.error", 
-                        "Cannot switch spell checker. Have you installed the correct dictionary?");
-            SmartTemplate4.Message.display(msg + "\n" + ex, 
-              "centerscreen,titlebar,modal,dialog",
-              { ok: function() { ; }},
-              window
-            );
-          }
+          util.setSpellchecker(lang);
 					return "";
 				case "logMsg": // For testing purposes - add a comment line to email and error console
 				  util.logToConsole(removeParentheses(arg));
@@ -2407,10 +2368,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		if (isDraftLike) {
 			msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
 			if (SmartTemplate4.pref.isReplaceNewLines(idkey, composeType, false))   // [Bug 25571] let's default to NOT replacing newlines. Common seems to not save the setting!
-				{ msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); }
+      { 
+          msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); 
+      }
 			//else
 			//	{ msg = msg.replace(/\n/gm, ""); }
-		} else {
+		}
+    else {
 			msg = SmartTemplate4.escapeHtml(msg);
 			// Escape space, if compose is HTML
 			if (gMsgCompose.composeHTML)

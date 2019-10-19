@@ -1048,7 +1048,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
 					if (flags.isFileTemplate) {
 						util.logDebugOptional('functions.insertTemplate','processing fileTemplate(' + fileTemplateSource + ')');
-						template = getProcessedText(rawTemplate, idKey, st4composeType, false); // ignoreHTML
+            // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
+						template = getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
 					}
 				  else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');

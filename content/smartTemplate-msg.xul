@@ -27,20 +27,22 @@
 			<spacer flex = "1"/>
 			<button id = "ok"
 			        label = "&accept_button;"
-			        onclick = "SmartTemplate4.Message.okMessage();"/>
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.okMessage();"/>
 			<button id = "yes"
 			        label = "&yes_button;"
-			        onclick = "SmartTemplate4.Message.yesMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.yesMessage();"
 			        hidden = "true" />
 			<button id = "no"
 			        label = "&no_button;"
-			        onclick = "SmartTemplate4.Message.noMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.noMessage();"
 			        hidden = "true" />
 			<button id = "cancel"
 			        label = "&cancel_button;"
-			        onclick = "SmartTemplate4.Message.cancelMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.cancelMessage();"
 			        hidden = "true" />
+      <label id="countDown"> </label>
 			<spacer flex = "1"/>
+      
 		</hbox>
 	</vbox>
 

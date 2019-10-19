@@ -354,10 +354,13 @@ END LICENSE BLOCK
 		# [issue 15] file templates only work on an account if the box "Apply following template" 
 		  is active
 
-	Version 2.3.2 - WIP
+	Version 2.4 - WIP
     # [issue 16] in some cases, images in signature trigger the "blocked file" warning
-      Improved image replacement wit %file()% in signatures.
+      Improved image replacement with %file()% in signatures.
     # [issue 17] Add switch for Dictionary to change to a different language %spellcheck()%
+    # [issue 19] file templates have unexpected line breaks, and contained images may break
+      this can happen if option "replacing line breaks with <br>" is active
+    # added count down if trial period is expired
     # fixed an issue with handling missing default identities (licenser would fail silently 
       rather than log an error in JS console)
 		

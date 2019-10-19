@@ -21,9 +21,10 @@
 	display: none;
 }
 
-#ok, #cancel, #yes, #no {
+#ok, #cancel, #yes, #no, #countDown  {
 	font-size: 12pt;
 }
+
 
 #innerMessage {
 	font-size: 12pt;
