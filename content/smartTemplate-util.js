@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.3.2",
+	HARDCODED_CURRENTVERSION : "2.4.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -2887,13 +2887,15 @@ SmartTemplate4.Message = {
     function startTimer(duration, label) {
       var timer = duration;
       if (duration < 0) return;
+      if (duration == 0) label.collapsed = true;
       let fun = setInterval(
         function () {
           timer--;
           if (timer<=0) {
             clearInterval(fun);
+            label.collapsed = true; // hide the label if it is zero!
           }
-          label.value = timer.toString();
+          label.value = timer.toString(); // make sure the last number shown is 1...
         }, 1000);
     }    
 		try {

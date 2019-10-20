@@ -354,7 +354,7 @@ END LICENSE BLOCK
 		# [issue 15] file templates only work on an account if the box "Apply following template" 
 		  is active
 
-	Version 2.4 - WIP
+	Version 2.4.1 - 20/10/2019
     # [issue 16] in some cases, images in signature trigger the "blocked file" warning
       Improved image replacement with %file()% in signatures.
     # [issue 17] Add switch for Dictionary to change to a different language %spellcheck()%
