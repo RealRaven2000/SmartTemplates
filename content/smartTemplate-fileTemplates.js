@@ -1034,7 +1034,7 @@ SmartTemplate4.fileTemplates = {
 					//reinit "is" because inStream.close(); closes "is" too
 					fstream.init(localFile, 1, 0, null);
 					
-					inStream = Stationery.XPCOM('nsIConverterInputStream');
+					inStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream); // Stationery.XPCOM('nsIConverterInputStream');
 					inStream.init(fstream, bomCharset, fstream.available(), inStream.DEFAULT_REPLACEMENT_CHARACTER);
 					let str = {};
 					while (inStream.readString(-1, str) != 0) {
@@ -1086,7 +1086,7 @@ SmartTemplate4.fileTemplates = {
 					}
 					if (!charSet) {
 						charSet =  "UTF-8"; // Stationery.getPref('DefaultTemplateEncoding');
-						util.logDebugOptional("fileTemplates","No charset found, defaulting to: " + charSet);
+						util.logDebugOptional("fileTemplates", "No charset found, defaulting to: " + charSet);
 					}
 					if (charSet) {
 						template.HTML = toUnicode(charSet, template.HTML);

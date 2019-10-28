@@ -2254,99 +2254,108 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 	}
 	
-	let sandbox;
-	// [Bug 25676]	Turing Complete Templates - Benito van der Zander
-  // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
-	// we are allowing certain (string) Javascript functions in concatenation to our %variable%
-	// as long as they are in a script block %{%    %}%
-	// local variables can be defined within these blocks, only 1 expression line is allowed per block,
-	// hence best to wrap all code in (function() { ..code.. })()  
-  // function must return "" in order not to insert an error
-	function replaceJavascript(dmy, script) {
-    util.logDebugOptional('sandbox', 'replaceJavascript(' + dmy +', ' + script +')');
-	  if (!sandbox) {
-	    sandbox = new Cu.Sandbox(
-        window,
-        {
-        //  'sandboxName': aScript.id,
-          'sandboxPrototype': window,
-          'wantXrays': true
-        });
-        
-      //useful functions (especially if you want to change the template depending on the received message)
-      sandbox.choose = function(a){return a[Math.floor(Math.random()*a.length)]};
-      sandbox.String.prototype.contains = function(s, startIndex){return this.indexOf(s, startIndex) >= 0};
-      sandbox.String.prototype.containsSome = function(a){return a.some(function(s){return this.indexOf(s) >= 0}, this)};
-      sandbox.String.prototype.count = function(s, startIndex){
-        let count = 0; 
-        let pos = this.indexOf(s, startIndex);
-        while (pos != -1) { 
-          count += 1; 
-          pos = this.indexOf(s, pos + 1);
+  let supportEval = true;
+  // it still works in 68.1.2, not sure when they will deprecate it...
+  if (util.versionGreaterOrEqual(util.AppverFull, "69")) 
+    supportEval = false;
+  let sandbox,
+      javascriptResults = [];
+    
+  if (supportEval) {
+    // [Bug 25676]	Turing Complete Templates - Benito van der Zander
+    // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
+    // we are allowing certain (string) Javascript functions in concatenation to our %variable%
+    // as long as they are in a script block %{%    %}%
+    // local variables can be defined within these blocks, only 1 expression line is allowed per block,
+    // hence best to wrap all code in (function() { ..code.. })()  
+    // function must return "" in order not to insert an error
+    function replaceJavascript(dmy, script) {
+      util.logDebugOptional('sandbox', 'replaceJavascript(' + dmy +', ' + script +')');
+      if (!sandbox) {
+        sandbox = new Cu.Sandbox(
+          window,
+          {
+          //  'sandboxName': aScript.id,
+            'sandboxPrototype': window,
+            'wantXrays': true
+          });
+          
+        //useful functions (especially if you want to change the template depending on the received message)
+        sandbox.choose = function(a){return a[Math.floor(Math.random()*a.length)]};
+        sandbox.String.prototype.contains = function(s, startIndex){return this.indexOf(s, startIndex) >= 0};
+        sandbox.String.prototype.containsSome = function(a){return a.some(function(s){return this.indexOf(s) >= 0}, this)};
+        sandbox.String.prototype.count = function(s, startIndex){
+          let count = 0; 
+          let pos = this.indexOf(s, startIndex);
+          while (pos != -1) { 
+            count += 1; 
+            pos = this.indexOf(s, pos + 1);
+          }
+          return count;
+        };        
+        sandbox.variable = function(name, arg) {
+          arg = arg || "";
+          if (prefs.isDebugOption('sandbox')) debugger;
+          let retVariable = replaceReservedWords("", name, arg || "");
+          util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
+            + 'returns: ' + retVariable);
+          return retVariable;
+        };
+        // eventually, "new Function()" will be deprecated. Don't exactly know when.
+        var implicitNull = {},
+            stringFunctionHack = new Function(),
+        // overloading our strings using sandbox
+            props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
+        for (let i=0; i<props.length; i++) {
+          let s = props[i];
+          stringFunctionHack[s] = sandbox.String.prototype[s];
         }
-        return count;
-      };        
-      sandbox.variable = function(name, arg) {
-        arg = arg || "";
+        stringFunctionHack.valueOf = function(){ return this(implicitNull); };
+        stringFunctionHack.toString = function(){ return this(implicitNull); };
+          
+        for (let name in TokenMap) {
+          sandbox[name] = (function(aname) {
+            return function(arg){
+              if (prefs.isDebugOption('sandbox')) debugger;
+              if (typeof arg === "undefined") {
+                util.logDebugOptional('sandbox','sandbox[] arg undefined, returning %' + aname +'()%');
+                return "%"+aname + "()%"; //do not allow name() 
+              }
+              if (arg === implicitNull) arg = "";
+              else arg = "("+arg+")";    //handles the case %%name(arg)%% and returns the same as %name(arg)%
+              let sbVal = replaceReservedWords("", aname, arg);
+              util.logDebugOptional('sandbox','sandbox[' + aname +'] returns:' + sbVal);
+              return sbVal;
+            };
+          })(name);
+          sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
+          //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
+        }  // for
+      };  // (!sandbox)
+      //  alert(script);
+      var x;
+      try {
         if (prefs.isDebugOption('sandbox')) debugger;
-        let retVariable = replaceReservedWords("", name, arg || "");
-        util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
-          + 'returns: ' + retVariable);
-        return retVariable;
-      };
-      var implicitNull = {},
-          stringFunctionHack = new Function(),
-			// overloading our strings using sandbox
-          props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
-      for (let i=0; i<props.length; i++) {
-        let s = props[i];
-        stringFunctionHack[s] = sandbox.String.prototype[s];
+        x = Cu.evalInSandbox("(" + script + ").toString()", sandbox); 
+        //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
+        if (x.toString === String.prototype.toString) {
+          x = x.toString(); 
+        }
+        else { 
+          x = "security violation";
+        }
+      } 
+      catch (ex) {
+        x = "ERR: " + ex;
       }
-      stringFunctionHack.valueOf = function(){ return this(implicitNull); };
-      stringFunctionHack.toString = function(){ return this(implicitNull); };
-        
-      for (let name in TokenMap) {
-        sandbox[name] = (function(aname) {
-					return function(arg){
-            if (prefs.isDebugOption('sandbox')) debugger;
-						if (typeof arg === "undefined") {
-              util.logDebugOptional('sandbox','sandbox[] arg undefined, returning %' + aname +'()%');
-              return "%"+aname + "()%"; //do not allow name() 
-            }
-						if (arg === implicitNull) arg = "";
-						else arg = "("+arg+")";    //handles the case %%name(arg)%% and returns the same as %name(arg)%
-            let sbVal = replaceReservedWords("", aname, arg);
-            util.logDebugOptional('sandbox','sandbox[' + aname +'] returns:' + sbVal);
-						return sbVal;
-					};
-				})(name);
-        sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
-        //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
-      }  // for
-	  };  // (!sandbox)
-	  //  alert(script);
-	  var x;
-	  try {
-      if (prefs.isDebugOption('sandbox')) debugger;
-	    x = Cu.evalInSandbox("(" + script + ").toString()", sandbox); 
-			//prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
-	    if (x.toString === String.prototype.toString) {
-			  x = x.toString(); 
-			}
-	    else { 
-			  x = "security violation";
-			}
-	  } 
-		catch (ex) {
-	    x = "ERR: " + ex;
-	  }
-	  javascriptResults.push(x);
-	  return "%internal-javascript-ref("+(javascriptResults.length-1)+")%"; //todo: safety checks (currently the sandbox is useless)
-	}
-	
-	//process javascript insertions first, so the javascript source is not broken by the remaining processing
-	let javascriptResults = []; //but cannot insert result now, or it would be double html escaped, so insert them later
-	msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
+      javascriptResults.push(x);
+      return "%internal-javascript-ref("+(javascriptResults.length-1)+")%"; //todo: safety checks (currently the sandbox is useless)
+    }
+    
+    //process javascript insertions first, so the javascript source is not broken by the remaining processing
+    //but cannot insert result now, or it would be double html escaped, so insert them later
+    msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
+  }
 	
 	/*  deprecating bs code. */
 	if (prefs.getMyBoolPref('xtodaylegacy')) {
@@ -2392,7 +2401,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   msg = msg.replace(/%([\w-:=.]+)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
 	
-	if (sandbox) Cu.nukeSandbox(sandbox);
+    
+  if (supportEval) {
+    try {
+      if (sandbox && Cu.nukeSandbox) 
+        Cu.nukeSandbox(sandbox);  
+    }
+    catch (ex) {
+      util.logException("Sandbox not nuked.", ex);
+    }
+  }
 
   // dump out all headers that were retrieved during regularize  
   util.logDebugOptional('headers', SmartTemplate4.regularize.headersDump);

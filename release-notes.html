@@ -1,20 +1,13 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>2.4.1 Halloween version with important fixes for the new file templates feature.</b>
+<b>2.4.2 Halloween version with important fixes for the new file templates feature.</b>
 
-Video for Ex-Stationery users - showcases the new file templates feature: https://youtu.be/AWdZWB0_ym0
+Video for Ex-Stationery users - showcasing the new file templates feature: https://youtu.be/AWdZWB0_ym0
 
-<b>Improvements</b>
-<ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/17">[issue 17]</a> Add %spellcheck()% variable for changing spellchecker to a different language.
-
-%spellcheck(language)%
-
-This is the new variable to switch the spell checked to a different language. language can be any locale string of a dictionary that is already installed, e.g. en, de, en-GB etc.</li>
-</ul>
 <b>Bug Fixes</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/16">[issue 16]</a> In some cases, images in signature triggered the "blocked file" warning.  The latest version of SmartTemplate&#8308; will now parse the signature and replace the  file-based image source with a base64 encoded data link to avoid this warning. </li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/19">[issue 19]</a> File templates can generate unexpected line breaks, and contained images may break. This can happen if the option "replacing line breaks with &lt;br&gt;" is active in the corresponding account template. </li>
-</ul>
+  <ul>
+    <li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/20">[issue 20]</a> If a html template file starts with certain UTF detection characters,  the "missing file" warning is wrongly displayed.    </li>
+    <li> Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676] stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing...  for now, SmartTemplate⁴ allows using these again for versions smaller than 69.</li>
+  </ul></ul>

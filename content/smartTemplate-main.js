@@ -363,10 +363,17 @@ END LICENSE BLOCK
     # added count down if trial period is expired
     # fixed an issue with handling missing default identities (licenser would fail silently 
       rather than log an error in JS console)
+      
+	Version 2.4.2 - 28/10/2019
+    # [issue 20] If a template file starts with UTF detection character "missing file" is wrongly displayed
+    # Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676]
+      stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing... 
+      for now, SmartTemplate⁴ allows using these again for versions smaller than 69
+      
 		
   ...........	
 	
-	Version 2.Future Version? 
+	Version 2.x
 	  # add template management functions. to do:
 		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
 			- add list of eml templates to wrtie / reply / fwd buttons
