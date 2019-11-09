@@ -80,7 +80,6 @@
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
 <!ENTITY defaultMimeFormat "默认地址格式：">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "多个通信者的分隔符：">
 <!ENTITY pref_addressDelimiter_tip "决定多个通信者之间的分隔符。Outlook 使用分号 (;)。Thunderbird 默认为英文逗号 (,)">
 <!ENTITY resolveNamesFromAB "根据通讯录解析名称">
@@ -105,7 +104,6 @@
 <!ENTITY pref_defaultCharset_tip "阅读引用头时，如不能确定，则使用此字符集作为后备选择。">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "关于SmartTemplate4">
-<!ENTITY support.tab "Support">
 <!ENTITY creator.label "创造者">
 <!ENTITY developer.label "开发人员">
 <!ENTITY localename.label "zh-CN">
@@ -127,13 +125,11 @@
 <!ENTITY fileImage.label "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。">
 <!ENTITY attach.label "添加文件作为附件">
 <!ENTITY cursor.label "设置光标位置">
-<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY to.label "收件人姓名 (默认)">
 <!ENTITY tofirstname.label "收件人名字">
 <!ENTITY toname.label "收件人姓名">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "发件人变量 (From)">
 <!ENTITY from_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY from.label "发件人姓名 (默认)">
@@ -165,22 +161,13 @@
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
 <!ENTITY stringmanip_function.cap "文本操作">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
 <!ENTITY replaceText "用其他东西替换一些文本。">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
 <!ENTITY dateshort.label "日期和时间的简写 (例如 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "时区 (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
 <!ENTITY var_custom.cap "自定义日期格式的变量">
 <!ENTITY customdf_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY A.label "一周里的一天 (Friday)">
@@ -202,9 +189,6 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
 <!ENTITY xsent_long.cap "长字符串的例子：">
@@ -234,8 +218,6 @@
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">
 <!ENTITY table_fwd.label "转发">
-<!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "在此处插入您的个人许可密钥：">
 <!ENTITY label.insertLicense.tooltip "您的许可证密钥包含在Fastspring的订单确认电子邮件中。">
 <!ENTITY button.pasteLicense "贴">
@@ -250,15 +232,3 @@
 <!ENTITY licenseValidation.notMatchedMail "加密电子邮件地址与可读邮件地址不匹配。">
 <!ENTITY premiumConfig "高级功能">
 <!ENTITY label.premiumFeaturesSite "详细了解我们网站上的高级功能">
-<!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">

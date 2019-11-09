@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Vorlage speichern…">
 <!ENTITY btnLoadTemplate.tooltip "Vorlage laden…">
 <!ENTITY btnYouTube.tooltip "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons.">
+<!ENTITY tip.fileTemplates "Hier klicken um die vollständige Dokumentation über Stationery und externe HTML Vorlagen auf unserer Support Seite zu lesen…">
 <!ENTITY pref_server_def "Allgemein">
 <!ENTITY pref_def.label "Allgemein verwenden">
 <!ENTITY pref_def.cap "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">

@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Sjabloon opslaan…">
 <!ENTITY btnLoadTemplate.tooltip "Sjabloon laden…">
 <!ENTITY btnYouTube.tooltip "Bezoek het YouTube-kanaal ‘Thunderbird Daily’ voor tips en handleidingen voor het gebruik van Stationery en andere add-ons">
+<!ENTITY tip.fileTemplates "Klik hier voor de volledige documentatie over Stationery en externe HTML-sjablonen op onze ondersteuningswebsite…">
 <!ENTITY pref_server_def "Algemeen">
 <!ENTITY pref_def.label "Algemeen gebruiken">
 <!ENTITY pref_def.cap "Vink ‘Algemeen gebruiken’ uit als u een aangepaste aanhalingskoptekst voor deze account wilt instellen.">
@@ -250,7 +251,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecteer een onderwerp!">

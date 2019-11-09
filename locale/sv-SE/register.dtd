@@ -2,9 +2,7 @@
 <!ENTITY label.licenseValid "Din licens är giltig t.o.m.:">
 <!ENTITY label.haveLicense "Har du redan en licens?">
 <!ENTITY getSmartTemplate4 "Få SmartTemplate⁴-licens">
-<!ENTITY licenseTypes "Going forward, SmartTemplate⁴ offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
 <!ENTITY intro "En årslicens för SmartTemplate⁴ Pro ger dig tillgång till alla licensbelagda funktioner under ett års tid. Det ger oss även medel, som vi kan använda för att vidareutveckla produkten.">
-<!ENTITY testDriveS "You can test drive the premium features with the standard license, but they may be slightly restricted.">
 <!ENTITY yearlyLicense.title "Årslicens">
 <!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro ger dig obegränsad tillgång till de licensbelagda funktionerna.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Mer om licensbelagda funktioner.">
@@ -22,10 +20,6 @@
 <!ENTITY email.label "E-post:">
 <!ENTITY firstName.label "Förnamn:">
 <!ENTITY lastName.label "Efternamn:">
-<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplate⁴ Pro license. It is bound to your personal Email address and can be used in multiple installations.">
-<!ENTITY buyPremiumLicense.button "Buy Pro License!">
-<!ENTITY buyStandardLicense.instruct "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions.">
-<!ENTITY buyStandardLicense.button "Buy Standard License!">
 <!ENTITY buyDomainLicense.instruct "Behöver du licenser för ett företag med fler än fem användare? Då är en domänlicens billigare:">
 <!ENTITY buyDomainLicense.button "Köp domänlicens">
 <!ENTITY enterLicenseKey.button "Ange licensnyckel …">

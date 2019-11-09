@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Save Template…">
 <!ENTITY btnLoadTemplate.tooltip "Load Template…">
 <!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
+<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Common">
 <!ENTITY pref_def.label "Use Common">
 <!ENTITY pref_def.cap "Uncheck 'Use Common' to create a customized quote header for this account.">
