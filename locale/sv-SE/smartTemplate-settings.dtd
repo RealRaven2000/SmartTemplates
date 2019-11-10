@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Spara mall…">
 <!ENTITY btnLoadTemplate.tooltip "Läs in mall…">
 <!ENTITY btnYouTube.tooltip "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg">
+<!ENTITY tip.fileTemplates "Klicka för att läsa full dokumentation om brevpapper och externa HTML-mallar på vår supportwebbplats…">
 <!ENTITY pref_server_def "Allmänna inställningar">
 <!ENTITY pref_def.label "Använd allmänna inställningar">
 <!ENTITY pref_def.cap "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot.">
@@ -105,6 +106,7 @@
 <!ENTITY pref_defaultCharset_tip "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras.">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY about.cap "Ca SmartTemplate⁴">
+<!ENTITY support.tab "Stöd">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
 <!ENTITY localename.label "sv-SE">
@@ -125,6 +127,7 @@
 <!ENTITY fileImage.label "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas.">
 <!ENTITY attach.label "Lägg till bifogad fil">
 <!ENTITY cursor.label "Ändrar pekarpositionen">
+<!ENTITY spellcheck.label "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad.">
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
@@ -245,3 +248,14 @@
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
 <!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats">
+<!ENTITY support.title "skriva Mail to Support">
+<!ENTITY support.type "Typ:">
+<!ENTITY support.type.selectOne "Välj ett ämne!">
+<!ENTITY support.type.license "Licensrelaterade">
+<!ENTITY support.type.tech "Teknisk">
+<!ENTITY support.type.html "Hjälp med HTML / CSS">
+<!ENTITY support.type.other "Övrig">
+<!ENTITY support.subject "Ämne:">
+<!ENTITY support.mail.instructions "Klicka på knappen nedan för att öppna en ny e-post som ska stödjas. Om du har tekniska problem kan du överväga att lägga till en skärmdump.">
+<!ENTITY support.compose "Skriv för att stödja…">
+<!ENTITY support.links "Support Länkar">

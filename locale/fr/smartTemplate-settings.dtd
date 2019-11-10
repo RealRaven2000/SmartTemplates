@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Enregistrer le modèle…">
 <!ENTITY btnLoadTemplate.tooltip "Charger un modèle…">
 <!ENTITY btnYouTube.tooltip "Allez visiter la chaîne YouTube &quot;Thunderbird Daily&quot; pour des astuces et tutoriels d'utilisation de Stationery et autres modules">
+<!ENTITY tip.fileTemplates "Cliquez pour lire la documentation complète sur la papeterie et les modèles HTML externes sur notre site de support…">
 <!ENTITY pref_server_def "Options globales">
 <!ENTITY pref_def.label "Utiliser les options globales">
 <!ENTITY pref_def.cap "Désactiver « Utiliser les options globales » afin de créer un entête personnalisé pour ce compte.">
@@ -79,6 +80,8 @@
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
+<!ENTITY defaultMimeFormat "Format d'adresse par défaut:">
+<!ENTITY defaultMimeFormat_tip "Format à utiliser lors du remplacement des adresses &#37;yo&#37; &#37;from&#37; &#37;cc&#37;. Par exemple.  firstname,lastname,??mail affichera le prénom suivi du nom de famille; si les deux sont indisponibles, l'adresse e-mail sera affichée.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -125,6 +128,7 @@
 <!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
 <!ENTITY attach.label "Ajouter comme fichier joint">
 <!ENTITY cursor.label "Définit la position du curseur">
+<!ENTITY spellcheck.label "Définit la langue de vérification orthographique. Exemples de valeurs: (en, de-DE, es-ES, fr) - notez que le dictionnaire doit être installé.">
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
 <!ENTITY to.label "Noms des destinataires (défaut)">
@@ -174,6 +178,7 @@
 <!ENTITY dateshort.label "Date et heure courtes (ex. : 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Fuseau horaire (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST,…">
+<!ENTITY timezone.explain "Forcer le fuseau horaire spécifique aux variables de date en remplaçant le paramètre tz (GMT, EST, CST, PST, etc.)">
 <!ENTITY dateoffset_note.label "La fonction suivante ajoute un décalage à toutes les dates et horaires suivants.">
 <!ENTITY calculate.explain "DD=nombre de jours à ajouter. H=nombre d'heures à ajouter (facultatif). MM=minutes à ajouter (facultatif)">
 <!ENTITY calculate.reset "Définir l'argument à 0 pour arrêter la modification des dates.">

@@ -80,11 +80,14 @@
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
+<!ENTITY defaultMimeFormat "Domyślny format adresu:">
+<!ENTITY defaultMimeFormat_tip "Format używany podczas zastępowania zwykłych adresów  &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Na przykład.  firstname,lastname,??mail pokaże imię, a następnie nazwisko; jeśli oba są niedostępne, wyświetli się adres e-mail.">
 <!ENTITY pref_addressDelimiter "Oddzielaj wielu korespondentów za pomocą:">
 <!ENTITY pref_addressDelimiter_tip "Separator pomiędzy wieloma korespondentami.W Outlooku jest to średnik (;), a w Thunderbirdzie przecinek (,).">
 <!ENTITY resolveNamesFromAB "Rozpoznaj nazwy z książki adresowej">
 <!ENTITY resolveNamesFromAB_tip "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. ">
 <!ENTITY resolveNamesFromABNick "Zamień imię, jeśli jest obecny nick">
+<!ENTITY resolveNamesFromABDisplay "Użyj nazwy wyświetlanej, jeśli brakuje imienia">
 <!ENTITY resolveABRemoveMail "Usuń adres e-mail, jeśli nie jest określony format">
 <!ENTITY suppressMailtToLink "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,">
 <!ENTITY capitalizeNames "Nazwy kapitalikami">
@@ -123,12 +126,15 @@
 <!ENTITY sig2.label "z ustawień konta ale bez „--”">
 <!ENTITY fileHTML.label "Plik HTML lub zwykły plik tekstowy. Zostanie zastosowane kodowanie UTF-8, jeśli zostanie pominięty opcjonalny parametr zestawu znaków..">
 <!ENTITY fileImage.label "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText.">
+<!ENTITY attach.label "Dodaj plik jako załącznik">
 <!ENTITY cursor.label "Określ pozycję kursora">
+<!ENTITY spellcheck.label "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany.">
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">
 <!ENTITY tofirstname.label "Imię odbiorcy">
 <!ENTITY toname.label "Nazwisko odbiorcy">
+<!ENTITY tofwd.label "Użyj programu fwd, aby dodać klikalnego odbiorcę w przesłanych wiadomościach e-mail">
 <!ENTITY from_var.cap "Zmienne nadawcy (Nadawca:)">
 <!ENTITY from_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY from.label "Nazwa nadawcy (domyślna)">
@@ -172,6 +178,10 @@
 <!ENTITY dateshort.label "Data i czas (krótki format, np. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Strefa czasowa (+0100, +0200, … )">
 <!ENTITY tzname.label "GMT, PST, EST, … ">
+<!ENTITY timezone.explain "Wymuś określoną strefę czasową dla zmiennych daty, zastępując parametr tz (GMT, EST, CST, PST itp.)">
+<!ENTITY dateoffset_note.label "Poniższa funkcja dodaje przesunięcie do wszystkich kolejnych wyświetlanych czasów.">
+<!ENTITY calculate.explain "DD = liczba dni do dodania. H = liczba godzin do dodania (opcjonalnie). MM = minuty do dodania (opcjonalnie)">
+<!ENTITY calculate.reset "Ustaw argument na 0, aby zatrzymać modyfikowanie dowolnych dat.">
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -193,6 +203,8 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Funkcja wstawiania aktualnego czasu (pole klikalne).">
+<!ENTITY dateformat.explain "Większość zmiennych czasowych powyżej może być użytych w ciągu parametrów, pomijając &#37;. Zobacz też:">
 <!ENTITY dateformat.example "Przykład:">
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
@@ -223,6 +235,7 @@
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">

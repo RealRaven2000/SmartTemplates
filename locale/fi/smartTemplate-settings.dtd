@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Tallenna pohja…">
 <!ENTITY btnLoadTemplate.tooltip "Lataa pohja…">
 <!ENTITY btnYouTube.tooltip "Käy &quot;Thunderbird Daily&quot; -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen">
+<!ENTITY tip.fileTemplates "Napsauta lukeaksesi täydelliset ohjeet Stationery- ja ulkoisista HTML-malleista tukisivustollamme…">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
 <!ENTITY pref_def.cap "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä.">
@@ -79,6 +80,8 @@
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
+<!ENTITY defaultMimeFormat "Oletusosoitteen muoto:">
+<!ENTITY defaultMimeFormat_tip "Käytettävä muoto korvaamalla tavallinen &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Esim. firstname,lastname,??mail näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen.">
 <!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
 <!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
@@ -125,11 +128,13 @@
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
 <!ENTITY attach.label "Lisää tiedosto liitteenä">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
+<!ENTITY spellcheck.label "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava.">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
 <!ENTITY tofirstname.label "Vastaanottaja etunimi">
 <!ENTITY toname.label "Vastaanottajan nimi">
+<!ENTITY tofwd.label "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin">
 <!ENTITY from_var.cap "Lähettäjän muuttujat (From-kenttä)">
 <!ENTITY from_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY from.label "Lähettäjän nimi (oletus)">
@@ -173,6 +178,10 @@
 <!ENTITY dateshort.label "Päiväys / Aika lyhyt muoto (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Aikavyöhyke (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
+<!ENTITY timezone.explain "Pakota erityinen aikavyöhyke päivämäärämuuttujille korvaamalla tz-parametri (GMT, EST, CST, PST jne.)">
+<!ENTITY dateoffset_note.label "Seuraava toiminto lisää siirtymän kaikkiin seuraaviin näytettyihin aikoihin.">
+<!ENTITY calculate.explain "DD = lisättävien päivien lukumäärä. H = lisättävien tuntien määrä (valinnainen). MM = lisättävät minuutit (valinnainen)">
+<!ENTITY calculate.reset "Aseta argumentti arvoon 0 lopettaaksesi päivämäärien muokkaamisen.">
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">
@@ -194,6 +203,8 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä).">
+<!ENTITY dateformat.explain "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrijonoon jättämällä &#37; pois. Katso myös:">
 <!ENTITY dateformat.example "Esimerkki:">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">

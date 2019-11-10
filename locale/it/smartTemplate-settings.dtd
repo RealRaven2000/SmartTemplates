@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Esporta modello...">
 <!ENTITY btnLoadTemplate.tooltip "Importa modello...">
 <!ENTITY btnYouTube.tooltip "Visita il canale YouTube 'Thunderbird Daily' - per suggerimenti e guide per usare Stationery e altre estensioni">
+<!ENTITY tip.fileTemplates "Fai clic per leggere la documentazione completa su Stationery e modelli HTML esterni sul nostro sito di supporto ...">
 <!ENTITY pref_server_def "Utilizza posta in arrivo globale">
 <!ENTITY pref_def.label "Utilizza la cartella di posta in arrivo globale">
 <!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account">
@@ -80,6 +81,7 @@
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
 <!ENTITY defaultMimeFormat "Formato indirizzo predefinito:">
+<!ENTITY defaultMimeFormat_tip "Formato da utilizzare quando si sostituiscono gli indirizzi da &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Per firstname,lastname,??mail mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta.">
 <!ENTITY pref_addressDelimiter "Usa il carattere seguente per separare più destinatari:">
 <!ENTITY pref_addressDelimiter_tip "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,).">
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
@@ -126,6 +128,7 @@
 <!ENTITY fileImage.label "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata.">
 <!ENTITY attach.label "Aggiungi un file come allegato">
 <!ENTITY cursor.label "Imposta la posizione del cursore">
+<!ENTITY spellcheck.label "Imposta la lingua per il controllo ortografico. Valori di esempio: (en, de-DE, es-ES, it) - nota che il dizionario deve essere installato.">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY to.label "Nome del destinatario (predefinito)">
