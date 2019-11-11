@@ -371,6 +371,18 @@ END LICENSE BLOCK
       for now, SmartTemplate⁴ allows using these again for versions smaller than 69
       
 		
+	Version 2.5 - WIP
+    # Added switch for toggling automatic proofing; %spellcheck(off)% to disable, %spellcheck(on)% to enable
+      To force switching and change to a different language do the toggle command first.
+    # [issue 21] %spellcheck% sometimes doesn't remove red proofing lines after setting language
+    # Improved UI on Template Files page for Stationery users:
+      - removed irrelevant Save and Load buttons
+      - added a (?) button which links to the Stationery help page
+    # Completed some of the missing translations for new functionality in the Finnish, French, Czech, 
+      Spanish, Italian, Polish and Swedish locales.
+    # Extended error log for trouble shooting getFileAsDataURI
+  
+  
   ...........	
 	
 	Version 2.x

@@ -251,6 +251,7 @@
 <!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY premiumConfig "Caratteristiche Premium">
 <!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Posta al supporto">
 <!ENTITY support.type "Genere:">
 <!ENTITY support.type.selectOne "Seleziona un argomento!">

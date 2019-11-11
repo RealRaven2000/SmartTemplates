@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Guardar plantilla…">
 <!ENTITY btnLoadTemplate.tooltip "Cargar plantilla…">
 <!ENTITY btnYouTube.tooltip "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos.">
+<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Común">
 <!ENTITY pref_def.label "Usar común">
 <!ENTITY pref_def.cap "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta.">
@@ -127,6 +128,7 @@
 <!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
 <!ENTITY attach.label "Añadir archivo como adjunto">
 <!ENTITY cursor.label "Establece la posición del cursor">
+<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
@@ -249,6 +251,7 @@
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
 <!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web.">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Escribir un correo electrónico a Soporte">
 <!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "¡Seleccione un tema!">

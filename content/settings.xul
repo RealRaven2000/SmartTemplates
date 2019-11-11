@@ -49,6 +49,12 @@
 			<toolbar id="templateTools" 
 			         mode="icons" 
 							 customizable="false">
+        <toolbarbutton id="helpTemplates"
+            class="toolbarbutton-1 chromeclass-toolbar-additional"
+            onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+            label = ""
+            tooltiptext="&tip.fileTemplates;"
+            />
 				<toolbarbutton id="btnSaveTemplate"
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnSaveTemplate.tooltip;"
@@ -62,7 +68,8 @@
 											 tooltiptext="&btnYouTube.tooltip;"
 											 onclick="SmartTemplate4.Util.showYouTubePage();" 
 											 />
-			</toolbar>
+      </toolbar>
+
 			<spacer flex = "1" />
 			<button id="btnAdvanced"
 			        class = "buttonIcon"

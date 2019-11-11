@@ -2,8 +2,8 @@
   "author": "Axel Grude",
   "manifest_version": 2,
   "name": "SmartTemplate4",
-	"description": "SmartTemplate4 customizes 'quote headers' and Mail template per account.",
-  "version": "2.4.2",
+	"description": "SmartTemplate4 customizes quote headers and mail template per account. It also replaces Stationery in Tb 68.",
+  "version": "2.5",
   "developer": {
 	  "name": "Axel Grude",
     "url": "http://smarttemplate4.mozdev.org/index.html"

@@ -1,13 +1,20 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-<b>2.4.2 Halloween version with important fixes for the new file templates feature.</b>
+<b>2.5 Clarified UI for Ex-Stationery users, spellcheck improvements.</b>
 
 Video for Ex-Stationery users - showcasing the new file templates feature: https://youtu.be/AWdZWB0_ym0
 
+<b>Improvements</b>
+<ul>
+<li>Added switch for toggling automatic proofing: use %spellcheck(off)% to disable or %spellcheck(on)% to enable automatic proofing. Different languages can be set using the language parameter, e.g. %spellcheck(it)% to switch to italian spell check. Additional dictionaries can be installed from <a href="https://addons.thunderbird.net/thunderbird/language-tools/">addons.thunderbird.net</a> using Add-ons Manager.</li>
+<li>Improved UI on Template Files page for Stationery users:
+- removed irrelevant Save and Load buttons
+- added a (?) button which links to the <a href="http://smarttemplate4.mozdev.org/stationery.html" target="_blank">Stationery help page</a>.</li>
+<li>Completed some of the missing translations for new functionality in the Finnish, French, Czech, Spanish, Italian, Polish and Swedish locales.</li>
+</ul>
 <b>Bug Fixes</b>
 <ul>
-  <ul>
-    <li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/20">[issue 20]</a> If a html template file starts with certain UTF detection characters,  the "missing file" warning is wrongly displayed.    </li>
-    <li> Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676] stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing...  for now, SmartTemplate⁴ allows using these again for versions smaller than 69.</li>
-  </ul></ul>
+<li>Fixed <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/21">[issue 21]</a> %spellcheck% sometimes doesn't remove red proofing lines after setting language </li>
+<li>Extended error log for trouble shooting the getFileAsDataURI() function; this is used to improve behavior when images are included using the %file()% function, by replacing them with inline data without Thunderbird complaining about security problems. note that image file names should have an extension in order to determine file type correctly. To troubleshoot missing images that are included in this way, , enable SmartTemplate's "debug" mode and check the Javascript error console.</li>
+</ul>

@@ -2215,14 +2215,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		    composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
 		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window,
 		    attachments=[];
-		try {
-			// https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#2508
-			/*
-			let nsFile = Services.io.getProtocolHandler("file")
-				.QueryInterface(Ci.nsIFileProtocolHandler)
-				.getFileFromURLSpec(uri); // img.src
-			*/
-				
+		try {			
 			let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils;
 			
 			if (!FileUtils) {
@@ -2232,7 +2225,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       let localFile = new FileUtils.File(pathUri);				
 			
 			if (!localFile.exists()) {
-				alert("file not found: " + pathUri);
+        let wrn = util.getBundleString("SmartTemplate4.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
+				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + pathUri);
 				return;
 			}
 			

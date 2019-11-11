@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.4.2",
+	HARDCODED_CURRENTVERSION : "2.5",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1286,7 +1286,9 @@ SmartTemplate4.Util = {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
-		      Cc = Components.classes;
+		      Cc = Components.classes,
+          MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
+          
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
 		util.logDebugOptional('images',"getFileAsDataURI()\nfilename=" + filename);
@@ -1297,7 +1299,18 @@ SmartTemplate4.Util = {
 			Components.utils.import('resource://gre/modules/Services.jsm');
 		
     let url = Services.io.newURI(aURL), // , null, null
-        contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromURI(url);
+        contentType;
+    try {
+      contentType = MimeService.getTypeFromURI(url);
+    }
+    catch(ex) {
+      util.logException("MimeService failed to determine MIME type from url:\n"
+        + "asciiSpec: " + url.asciiSpec + "\n"
+        + "path: " + url.path + "\n"
+        + "I cannot convert this into a data URI, therefore you may get security warnings when Composer loads content.\n"
+        + "returning raw URL: " + aURL, ex);
+      return aURL;
+    }
     if (!contentType.startsWith("image/")) {
 			util.logDebugOptional('images',"getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType);
 			// non-image content-type; let Thunderbird show a warning after insertion
@@ -2515,15 +2528,29 @@ SmartTemplate4.Util = {
 		}
 	} ,
   
-  setSpellchecker: function(language) {
+  // isDisabled - force disabled (on retry)
+  setSpellchecker: function(language, isDisabled) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,
 		      util = SmartTemplate4.Util;
+    
     let retry = util.retrySpellCheck || 0;
     try {
       let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
           o1 = {}, 
           o2 = {};
+      if (language=='on') {
+        gSpellChecker.enabled = true;
+        util.logDebug('Enabled automatic spellcheck');
+        return;
+      }
+      if (!isDisabled)
+        isDisabled = (gSpellChecker.enabled == false);
+      if (isDisabled && language!='off') {
+        // temporarily enable
+        gSpellChecker.enabled = true;
+        spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker;
+      }
       if (!spellChecker) {
         if (retry<5) {
           retry++;
@@ -2531,7 +2558,7 @@ SmartTemplate4.Util = {
           util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
           // if spellChecker is not ready, we try again in 2 seconds.
           setTimeout(function() {
-            util.setSpellchecker(language);
+            util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
           }, 2000);
           return;
         }
@@ -2541,6 +2568,12 @@ SmartTemplate4.Util = {
           throw wrn;          
         }
       }
+      if (language=='off') {
+        gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
+        util.logDebug('Disabled automatic spellcheck');
+        return;
+      }
+      
       spellChecker.GetDictionaryList(o1, o2);
       util.retrySpellCheck=0;
       // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
@@ -2568,6 +2601,14 @@ SmartTemplate4.Util = {
         util.logDebug("Setting spellchecker / document language to: " + language);
         document.documentElement.setAttribute("lang", language); 
         spellChecker.SetCurrentDictionary(language);
+        // force re-checking:
+        if (gSpellChecker.enabled) {
+          gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+        }
+        if (isDisabled) { // force restoring disabled status
+          gSpellChecker.enabled = false; 
+          util.logDebug('Disabling automatic spellcheck according to global setting.');
+        }
       }
       else {
         let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");

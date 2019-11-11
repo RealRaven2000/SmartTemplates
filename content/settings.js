@@ -986,11 +986,18 @@ SmartTemplate4.Settings = {
 			idx++;
 		}
 		//
-		if (idkey == "fileTemplates") {
+    let btnSave = document.getElementById("btnSaveTemplate"),
+        btnLoad = document.getElementById("btnLoadTemplate"),
+        tipHelp = document.getElementById("helpTemplates"),
+        isShowTemplateSelector = (idkey == "fileTemplates");
+		if (isShowTemplateSelector) {
 			found = true;
 			deck.selectedIndex = 1;
 			this.accountKey = "files";
 		}
+    btnSave.collapsed = (isShowTemplateSelector);
+    btnLoad.collapsed = (isShowTemplateSelector);
+    tipHelp.collapsed = (!isShowTemplateSelector);
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
 		if (!found) {

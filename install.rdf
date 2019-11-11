@@ -27,12 +27,12 @@
    em:name="SmartTemplate4"
    em:creator="Axel Grude"
    em:contributor="Benito van der Zander [Bug 25676]"
-   em:description="SmartTemplate4 customizes 'quote headers' and Mail template per account."
+   em:description="SmartTemplate4 customizes 'quote headers' and Mail template per account. It also replaces Stationery in Tb 68."
    em:iconURL="chrome://smartTemplate4/skin/icon32x32.png"
    em:icon64URL="chrome://smartTemplate4/skin/icon64x64.png"
    em:optionsURL="chrome://smartTemplate4/content/settings.xul"
    em:aboutURL="chrome://smartTemplate4/content/about.xul">
-	  <em:version>2.4.2</em:version>
+	  <em:version>2.5</em:version>
     <em:homepageURL>http://smarttemplate4.mozdev.org/index.html</em:homepageURL>
     <em:type>2</em:type>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
@@ -44,7 +44,7 @@
 			<Description>
 				<em:locale>de</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>SmartTemplate4 bietet die Option die Standard Thunderbird Mailheader quote-header komfortabel anzupassen</em:description>
+				<em:description>SmartTemplate4 bietet die Option die Standard Thunderbird Mailheader quote-header komfortabel anzupassen, und ersetzt Stationery (Tb68)</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -59,7 +59,7 @@
 			<Description>
 				<em:locale>en-US</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>The smart template which can customize quote header per account</em:description>
+				<em:description>SmartTemplate4 customizes 'quote headers' and Mail template per account. It also replaces Stationery in Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -88,7 +88,7 @@
 			<Description>
 				<em:locale>fi</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>SmartTempalate4:n avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille</em:description>
+				<em:description>SmartTemplate4 avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille. Se korvaa myös ilmaisun Stationery kohdassa Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -103,7 +103,7 @@
 			<Description>
 				<em:locale>fr</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes</em:description>
+				<em:description>Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes. Il remplace également Stationery dans Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -118,7 +118,7 @@
 			<Description>
 				<em:locale>it</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>Permette di personalizzare l&apos;intestazione delle citazioni per gli account di posta</em:description>
+				<em:description>Permette di personalizzare l&apos;intestazione delle citazioni per gli account di posta. Sostituisce anche Stationery nella Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -149,7 +149,7 @@
 			<Description>
 				<em:locale>nl</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>Het slimme sjabloon dat de koptekst per account kan aanpassen</em:description>
+				<em:description>Het slimme sjabloon dat de koptekst per account kan aanpassen. Het vervangt ook Stationery in Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>
@@ -180,7 +180,7 @@
 			<Description>
 				<em:locale>pl</em:locale>
 				<em:name>SmartTemplate4</em:name>
-				<em:description>Inteligentne szablony naglówków, które mozna dostosowywac dla kazdego konta.</em:description>
+				<em:description>Inteligentne szablony naglówków, które mozna dostosowywac dla kazdego konta. Nahrazuje také Stationery v Tb 68.</em:description>
 				<em:creator>Axel Grude</em:creator>
 				<em:developer>Axel Grude</em:developer>
 				<em:contributor>Marky Mark - website, support, management</em:contributor>

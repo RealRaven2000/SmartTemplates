@@ -251,6 +251,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
 <!ENTITY premiumConfig "Maksulliset lisätoiminnot">
 <!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Lähetä sähköpostia tukeen">
 <!ENTITY support.type "Tyyppi:">
 <!ENTITY support.type.selectOne "Valitse aihe!">

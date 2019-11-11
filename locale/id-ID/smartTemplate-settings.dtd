@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Simpan Template...">
 <!ENTITY btnLoadTemplate.tooltip "Memuat Template...">
 <!ENTITY btnYouTube.tooltip "Kunjungi kanal Youtube 'Thunderbird Daily' - untuk tips dan tutorial dalam penggunaan Peralatan dan Pengaya lainnya">
+<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Umum">
 <!ENTITY pref_def.label "Gunakan Umum">
 <!ENTITY pref_def.cap "Hapus centang 'Gunakan Umum' untuk membuat kutipan tajuk yang disesuaikan untuk akun ini.">
@@ -105,6 +106,7 @@
 <!ENTITY pref_defaultCharset_tip "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Tentang SmartTemplate⁴">
+<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Pencipta">
 <!ENTITY developer.label "Pengembang">
 <!ENTITY localename.label "Ing-AS">
@@ -126,6 +128,7 @@
 <!ENTITY fileImage.label "Berkas gambar (png,jpg,gif,bmp,svg). AltText opsional ditampilkan jika gambar tidak dapat ditemukan.">
 <!ENTITY attach.label "Tambah berkas lampiran">
 <!ENTITY cursor.label "Setel posisi kursor">
+<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Penerima (Untuk)">
 <!ENTITY to_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
 <!ENTITY to.label "Nama penerima (bawaan)">
@@ -240,6 +243,7 @@
 <!ENTITY button.validateLicense "mengesahkan">
 <!ENTITY label.licenseValid "Lisensi Anda berlaku hingga:">
 <!ENTITY licenseValidation.passed "Terima kasih telah mendaftar SmartTemplate⁴ Pro! Semua fitur premium sekarang terbuka.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Kunci lisensi yang anda masukkan tidak valid. Periksa email anda dari FastSpring untuk mendapatkan petunjuk. Jika anda masih mengalami masalah, silakan hubungi saya dari tab Dukungan.">
 <!ENTITY licenseValidation.expired "Kunci lisensi yang Anda masukkan sudah kadaluarsa. Silakan tekan tombol di bawah ini untuk memperbarui lisensi Anda.">
 <!ENTITY licenseValidation.invalidAddon "Kunci lisensi yang Anda masukkan mungkin untuk Pengaya yang berbeda. Kunci lisensi untuk {0} dimulai dengan {1}.">
@@ -247,3 +251,15 @@
 <!ENTITY licenseValidation.notMatchedMail "Alamat Email terenkripsi tidak cocok dengan yang dapat dibaca.">
 <!ENTITY premiumConfig "Fitur Premium">
 <!ENTITY label.premiumFeaturesSite "Baca selengkapnya tentang Fitur Premium di Situs Web kami">
+<!-- #####  Support ##### -->
+<!ENTITY support.title "Mail to Support">
+<!ENTITY support.type "Type:">
+<!ENTITY support.type.selectOne "Select a topic!">
+<!ENTITY support.type.license "Licensing related">
+<!ENTITY support.type.tech "Technical">
+<!ENTITY support.type.html "Help with HTML / CSS">
+<!ENTITY support.type.other "Other">
+<!ENTITY support.subject "Subject:">
+<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
+<!ENTITY support.compose "Write to support…">
+<!ENTITY support.links "Support Links">
