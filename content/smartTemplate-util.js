@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.5",
+	HARDCODED_CURRENTVERSION : "2.5.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -2652,7 +2652,10 @@ SmartTemplate4.Util.firstRun =
 	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
-		if (p=="2.2" && (n=="2.2.1" || n=="2.2.2")) {
+		if ( p=="2.2" && (n=="2.2.1" || n=="2.2.2")
+         || 
+         p=="2.5.1" && n=="2.5.2"
+    ) {
 			SmartTemplate4.Util.logToConsole(
 				"Silent Update - no version history displayed because v{0} is a maintenance release for v{1}"
 				.replace("{0}",n).replace("{1}",p));

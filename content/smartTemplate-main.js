@@ -383,9 +383,13 @@ END LICENSE BLOCK
     # Extended error log for trouble shooting getFileAsDataURI
   
   
-	Version 2.5.1 - WIP
+	Version 2.5.1 - 21/11/2019
     # Fix "cut off descriptions" bug in Linux 
     # Added "Silent updates" option
+      
+	Version 2.5.2 - 21/11/2019
+    # [issue 22] Cannot add new recipients to address widget after modifiction through header.set
+    # [issue 23] Settings dialog broken in Czech version. 
   
   ...........	
 	

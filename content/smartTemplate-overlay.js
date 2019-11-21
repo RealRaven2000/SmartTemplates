@@ -1649,7 +1649,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         }
         // try to update headers - ComposeFieldsReady()
         // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
-				// issue 9 : setting from doesn't work
+				// [issue 9] : setting from doesn't work
 				if (hdr=='from' && ComposeFields.from && cmd=='set') {
 					let identityList = GetMsgIdentityElement(),
 					    fromAddress = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null).join(", ");
@@ -1663,8 +1663,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					// identityList.setAttribute("editable", "false");
 					// identityList.removeAttribute("editable");
 				}
-        else if (modType == 'address')
+        else if (modType == 'address') {
+          // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
+          // rebuild all addresses - for this we need to remove all [dummy] rows
+          // except for the very first one.
+          let listbox = document.getElementById("addressingWidget");
+          while (listbox.itemCount>1) { // remove everything apart from first item:
+            listbox.getItemAtIndex(listbox.itemCount-1).remove();
+          }
           CompFields2Recipients(ComposeFields);
+        }
       }
       catch(ex) {
         util.logException('modifyHeader()', ex);
