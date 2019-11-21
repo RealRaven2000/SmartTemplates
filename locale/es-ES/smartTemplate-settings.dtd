@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
 <!ENTITY pref_hideExamples "Ocultar pestaña de ejemplos">
+<!ENTITY pref_silentUpdates "Actualizaciones silenciosas">
+<!ENTITY pref_silentUpdates_tip "No abra el registro de cambios después de actualizar SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "La dirección de correo electrónico asociada a la clave de licencia [{1}] no está en este momento asociada ningua de sus cuentas de correo. Por favor contacte conmigo a través de la pestaña de Ayuda para que poder solucionarlo.">
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
-<!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web.">
+<!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Escribir un correo electrónico a Soporte">
 <!ENTITY support.type "Tipo:">

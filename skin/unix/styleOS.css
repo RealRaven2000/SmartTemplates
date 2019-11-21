@@ -14,6 +14,19 @@
 .buttonLinks > button {
   height:1.8em;
 }
+
+/* fix "cut off descriptions" bug in Linux */
+#globalSettingsVbox, #advancedSettingsVbox {
+  overflow-y: inherit !important;
+  overflow-x: visible !important;
+}
+
+#rightPane tabpanel, #aboutPanel {
+  min-width: unset !important;
+  max-width: unset !important;
+  margin-right:0;
+}
+
 /*
 #btnAdvanced .button-icon,
 #btnCloseAdvanced .button-icon {

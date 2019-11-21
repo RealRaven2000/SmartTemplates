@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Aide">
 <!ENTITY pref_debug_check "Mode débogage">
 <!ENTITY pref_hideExamples "Masquer l'onglet d'exemples">
+<!ENTITY pref_silentUpdates "Mises à jour silencieuses">
+<!ENTITY pref_silentUpdates_tip "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Clic droit pour les options avancées de débogage">
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "L'adresse électronique associée à la clé de licence [{1}] n'est pas listée dans un de vos comptes courriel. Veuillez me contacter à partir de l'onglet d'aide.">
 <!ENTITY licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY premiumConfig "Fonctionnalités Premium">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Courrier au support">
 <!ENTITY support.type "Genre:">

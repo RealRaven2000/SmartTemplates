@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Справка">
 <!ENTITY pref_debug_check "Режим отладки">
 <!ENTITY pref_hideExamples "Спрятать вкладку с примерами">
+<!ENTITY pref_silentUpdates "Тихие обновления">
+<!ENTITY pref_silentUpdates_tip "Не открывайте журнал изменений после обновления SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
 <!ENTITY pref_nameSwap "Исправить фамилию, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках.">
 <!ENTITY licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY premiumConfig "Премиум-функции">
-<!ENTITY label.premiumFeaturesSite "Узнать больше о премиум-функциях на нашей странице">
+<!ENTITY label.premiumFeaturesSite "Узнать больше о премиум-функциях на нашей странице…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Почта в службу поддержки">
 <!ENTITY support.type "Тип:">

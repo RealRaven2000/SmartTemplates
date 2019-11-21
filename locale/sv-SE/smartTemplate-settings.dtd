@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Hjälp">
 <!ENTITY pref_debug_check "Felsökningsläge">
 <!ENTITY pref_hideExamples "Dölj flik med exempel">
+<!ENTITY pref_silentUpdates "Tyst uppdateringar">
+<!ENTITY pref_silentUpdates_tip "Öppna inte ändringsloggen efter att SmartTemplate⁴ har uppdaterats.">
 <!ENTITY pref_debug_tip "Högerklicka för avancerade felsökningsalternativ">
 <!ENTITY pref_nameSwap "Korrigera Efternamn, Förnamn">
 <!ENTITY pref_nameSwap_tip "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
-<!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats">
+<!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "skriva Mail to Support">
 <!ENTITY support.type "Typ:">

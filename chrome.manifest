@@ -79,6 +79,7 @@ style  chrome://smarttemplate4/content/settings.xul  chrome://SmartTemplate4/ski
 style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/win/styleOS.css os=WINNT
 style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/mac/styleOS.css os=Darwin
 style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/unix/styleOS.css os=Linux
+style  chrome://smarttemplate4/content/settings.xul chrome://SmartTemplate4/skin/unix/styleOS.css os=Linux
 
 #### SeaMonkey XUL OVERLAYS application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} ####
 #### PostBox XUL OVERLAYS application=postbox@postbox-inc.com ####

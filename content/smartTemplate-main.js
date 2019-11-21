@@ -371,7 +371,7 @@ END LICENSE BLOCK
       for now, SmartTemplate⁴ allows using these again for versions smaller than 69
       
 		
-	Version 2.5 - WIP
+	Version 2.5 - 11/11/2019
     # Added switch for toggling automatic proofing; %spellcheck(off)% to disable, %spellcheck(on)% to enable
       To force switching and change to a different language do the toggle command first.
     # [issue 21] %spellcheck% sometimes doesn't remove red proofing lines after setting language
@@ -383,9 +383,15 @@ END LICENSE BLOCK
     # Extended error log for trouble shooting getFileAsDataURI
   
   
+	Version 2.5.1 - WIP
+    # Fix "cut off descriptions" bug in Linux 
+    # Added "Silent updates" option
+  
   ...........	
 	
 	Version 2.x
+    # [issue 10] add %deliveryoptions% function to  force Return Receipt.
+    # [issue 12] <head> section is merged into <body>
 	  # add template management functions. to do:
 		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
 			- add list of eml templates to wrtie / reply / fwd buttons

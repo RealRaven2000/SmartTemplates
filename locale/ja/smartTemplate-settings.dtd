@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
 <!ENTITY pref_hideExamples "テンプレート例のタブを隠す">
+<!ENTITY pref_silentUpdates "更新履歴の非表示">
+<!ENTITY pref_silentUpdates_tip "SmartTemplate⁴ の更新後に、更新履歴を表示しません">
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。">
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
-<!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください">
+<!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "サポートにメール">
 <!ENTITY support.type "タイプ:">

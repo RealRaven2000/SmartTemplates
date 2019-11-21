@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "求助">
 <!ENTITY pref_debug_check "除錯模式">
 <!ENTITY pref_hideExamples "Hide examples tab">
+<!ENTITY pref_silentUpdates "Silent updates">
+<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
 <!ENTITY pref_debug_tip "點右鍵使用進階的除錯選項">
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
 <!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
 <!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

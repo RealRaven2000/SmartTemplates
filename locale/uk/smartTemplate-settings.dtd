@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
 <!ENTITY pref_hideExamples "Сховати закладку з прикладами">
+<!ENTITY pref_silentUpdates "Silent updates">
+<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Електронна адреса, пов'язана з ліцензійним ключем [{1}], наразі не входить до жодної з ваших поштових облікових записів. Будь ласка, зв'яжіться зі мною на вкладці Підтримка для отримання допомоги.">
 <!ENTITY licenseValidation.notMatchedMail "Зашифрована адреса електронної пошти не відповідає жодній допустимій.">
 <!ENTITY premiumConfig "Преміальні функції">
-<!ENTITY label.premiumFeaturesSite "Дізнайтеся більше про преміум-функції на нашому веб-сайті">
+<!ENTITY label.premiumFeaturesSite "Дізнайтеся більше про преміум-функції на нашому веб-сайті…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

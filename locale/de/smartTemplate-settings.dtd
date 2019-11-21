@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_hideExamples "Beispiele nicht anzeigen">
+<!ENTITY pref_silentUpdates "Stille Updates">
+<!ENTITY pref_silentUpdates_tip "Bei updates die Versionsgeschichte nicht anzeigen.">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY premiumConfig "Premium Funktionen">
-<!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite">
+<!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Email an Support">
 <!ENTITY support.type "Typ:">

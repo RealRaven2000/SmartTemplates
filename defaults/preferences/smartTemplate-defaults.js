@@ -94,8 +94,8 @@ pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
 
-
-// SmartTemplate Pro specific:
+// SmartTemplate License specific:
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
+pref("extensions.smartTemplate4.silentUpdate", false);

@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_hideExamples "Tabblad met voorbeelden verbergen">
+<!ENTITY pref_silentUpdates "Stille updates">
+<!ENTITY pref_silentUpdates_tip "Geen wijzigingslijst openen nadat SmartTemplate⁴ is bijgewerkt">
 <!ENTITY pref_debug_tip "Klik met de rechtermuisknop voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
@@ -214,7 +216,7 @@
 <!ENTITY xsent_short.cap "Voorbeeld van een korte zin:">
 <!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
 <!ENTITY xsent_short_result.label "Resultaat: Woensdag, 16.02.2011 12:15:25">
-<!ENTITY xsent_short_note.label "Hiernaast kunt u in beide varianten de volgende variabelen ook gebruiken:">
+<!ENTITY xsent_short_note.label "In beide varianten kunt u de volgende variabelen gebruiken:">
 <!ENTITY localedate.label "Datum en tijd (lokale opmaak)">
 <!ENTITY shortdate.label "Datum en tijd kort (bv. 01.01.2000 1:23:45)">
 <!ENTITY datetimezone.label "Tijdzone (+0100, +0200, …)">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Het aan de licentiesleutel [{1}] verbonden e-mailadres staat momenteel niet bij uw e-mailaccounts. Neem voor hulp contact met mij op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
-<!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website">
+<!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">

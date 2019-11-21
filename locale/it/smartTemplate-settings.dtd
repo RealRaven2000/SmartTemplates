@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Contenuti guida">
 <!ENTITY pref_debug_check "Modalità debug">
 <!ENTITY pref_hideExamples "Non visualizzare la scheda degli esempi">
+<!ENTITY pref_silentUpdates "Aggiornamenti silenziosi">
+<!ENTITY pref_silentUpdates_tip "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
 <!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY premiumConfig "Caratteristiche Premium">
-<!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web">
+<!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Posta al supporto">
 <!ENTITY support.type "Genere:">

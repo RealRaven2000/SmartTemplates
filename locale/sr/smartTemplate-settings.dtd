@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Помоћ">
 <!ENTITY pref_debug_check "Отклањање грешака">
 <!ENTITY pref_hideExamples "Сакриј картицу са примерима">
+<!ENTITY pref_silentUpdates "Тиха ажурирања">
+<!ENTITY pref_silentUpdates_tip "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран.">
 <!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

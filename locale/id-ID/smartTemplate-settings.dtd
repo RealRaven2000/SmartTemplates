@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Bantuan">
 <!ENTITY pref_debug_check "Mode Debug">
 <!ENTITY pref_hideExamples "Sembunyikan tab contoh">
+<!ENTITY pref_silentUpdates "Silent updates">
+<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
 <!ENTITY pref_debug_tip "Klik-kanan untuk opsi debug lanjutan">
 <!ENTITY pref_nameSwap "Koreksi LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Ubah 'LastName, FirstName' menjadi 'First Last">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Alamat email yang terikat ke kunci lisensi [{1}] saat ini tidak terdaftar di salah satu akun email Anda. Silakan hubungi saya dari tab Dukungan untuk bantuan.">
 <!ENTITY licenseValidation.notMatchedMail "Alamat Email terenkripsi tidak cocok dengan yang dapat dibaca.">
 <!ENTITY premiumConfig "Fitur Premium">
-<!ENTITY label.premiumFeaturesSite "Baca selengkapnya tentang Fitur Premium di Situs Web kami">
+<!ENTITY label.premiumFeaturesSite "Baca selengkapnya tentang Fitur Premium di Situs Web kami…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

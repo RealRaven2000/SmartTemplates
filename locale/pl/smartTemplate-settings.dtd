@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Pomoc">
 <!ENTITY pref_debug_check "Tryb debugowania">
 <!ENTITY pref_hideExamples "Ukryj kartę przykładów">
+<!ENTITY pref_silentUpdates "Ciche aktualizacje">
+<!ENTITY pref_silentUpdates_tip "Nie otwieraj dziennika zmian po aktualizacji SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Adres e-mail powiązany z kluczem licencyjnym [{1}] nie znajduje się obecnie w żadnym z kont pocztowych. Skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
-<!ENTITY label.premiumFeaturesSite "Przeczytaj więcej o funkcjach Premium na naszej stronie internetowej">
+<!ENTITY label.premiumFeaturesSite "Przeczytaj więcej o funkcjach Premium na naszej stronie internetowej…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Wyślij pocztą do wsparcia">
 <!ENTITY support.type "Rodzaj:">

@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
 <!ENTITY pref_hideExamples "隐藏示例选项卡">
+<!ENTITY pref_silentUpdates "靜默更新">
+<!ENTITY pref_silentUpdates_tip "SmartTemplate⁴更新後，請勿打開更改日誌。">
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "绑定到许可证密钥[{1}]的电子邮件地址当前未在任何邮件帐户中列出。 请从支持选项卡与我联系以获取帮助。">
 <!ENTITY licenseValidation.notMatchedMail "加密电子邮件地址与可读邮件地址不匹配。">
 <!ENTITY premiumConfig "高级功能">
-<!ENTITY label.premiumFeaturesSite "详细了解我们网站上的高级功能">
+<!ENTITY label.premiumFeaturesSite "详细了解我们网站上的高级功能…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

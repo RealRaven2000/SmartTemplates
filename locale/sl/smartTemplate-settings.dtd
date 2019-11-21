@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Pomoč">
 <!ENTITY pref_debug_check "Razhroščevalni način">
 <!ENTITY pref_hideExamples "Skrij zavihek s primeri">
+<!ENTITY pref_silentUpdates "Tihe posodobitve">
+<!ENTITY pref_silentUpdates_tip "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
 <!ENTITY pref_nameSwap "Pravilni priimek, ime">
 <!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "Vaši e-poštni računi trenutno ne vsebujejo e-poštnega naslova, na katerega je vezan na ključ [{1}]. Za pomoč navežite stik z mano preko zavihka Podpora.">
 <!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY premiumConfig "Lastnosti premium">
-<!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani">
+<!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Pošlji na podporo">
 <!ENTITY support.type "Vrsta:">

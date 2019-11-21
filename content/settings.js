@@ -1699,11 +1699,13 @@ SmartTemplate4.Settings = {
 //				    v = mainUtil.Version; // test
 			}
 			
+      let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(result) {
 				case ELS.Valid:
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
+          silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenser.DecryptedDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1722,13 +1724,15 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.add('aboutLogoPro');
 				  break;
 				case ELS.Expired:
+          silentUpdateOption.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
 					break;
-				default:
+				default: // no license
+          silentUpdateOption.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');

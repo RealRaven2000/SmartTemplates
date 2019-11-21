@@ -77,6 +77,8 @@
 <!ENTITY help_keyword.cap "Nápověda">
 <!ENTITY pref_debug_check "Ladicí mód">
 <!ENTITY pref_hideExamples "Skrýt záložku s příklady">
+<!ENTITY pref_silentUpdates "Tiché aktualizace">
+<!ENTITY pref_silentUpdates_tip "Neotevírejte protokol změn po aktualizaci SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
@@ -250,7 +252,7 @@
 <!ENTITY licenseValidation.invalidMail "E-mailová adresa, která je vázána na licenční klíč [{1}], není aktuálně uvedena v žádném z vašich poštovních účtů. Požádejte mě o pomoc na kartě Podpora.">
 <!ENTITY licenseValidation.notMatchedMail "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY premiumConfig "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
-<!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu">
+<!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail na podporu">
 <!ENTITY support.type "Typ:">

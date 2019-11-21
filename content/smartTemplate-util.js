@@ -2649,12 +2649,6 @@ SmartTemplate4.Util = {
 
 SmartTemplate4.Util.firstRun =
 {
-	update: function(previousVersion) {
-		// upgrade routines for future use...
-		// SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
-
-	} ,
-	
 	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
@@ -2740,8 +2734,7 @@ SmartTemplate4.Util.firstRun =
 			let pureVersion = util.VersionSanitized;
 			util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
-			let versionPage = util.VersionPage + "#" + pureVersion;
-			util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
+			util.logDebugOptional ("firstRun","finally - versionPage=" + util.VersionPage + "#" + pureVersion);
 			
 			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
@@ -2765,19 +2758,21 @@ SmartTemplate4.Util.firstRun =
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
 					
 					/* EXTENSION UPDATED */
-					let isUpdated = this.update(prev);
 					util.logDebug("===========================\n"+
 					              "ST4 Test  - SmartTemplate4 Update Detected:\n" +
 												" **PREVIOUS**:" + prev + 
 												"\npure Version: " + pureVersion + 
 												"\ncurrent: " + current +
-												"\nisUpdated=" + isUpdated);
+                        "\nisPremium=" + isPremium);
 					util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
 
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
-					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")
-						  && !this.silentUpdate(prev,pureVersion)) {
+          let isSilentUpdate =
+            isPremium && prefs.getMyBoolPref("silentUpdate");
+          if (isSilentUpdate) 
+            util.logDebug("Supressing Change Log, as disabled by user.")
+          else if (!this.silentUpdate(prev,pureVersion)) {
 						util.logDebugOptional ("firstRun","open tab for version history, ST " + current);
 						window.setTimeout(function(){ util.showVersionHistory(false); }, 2200);
 					}

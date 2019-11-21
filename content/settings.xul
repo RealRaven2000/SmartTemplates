@@ -484,6 +484,7 @@
 			<preference id = "pref_guessNameFromMail" name = "extensions.smartTemplate4.names.guessFromMail" type = "bool" instantApply="true"/>
 			<preference id = "pref_defaultMimeFormat" name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" instantApply="true"/>
 			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" instantApply="true"/>
+			<preference id = "pref_silentUpdate" name =  "extensions.smartTemplate4.silentUpdate" type = "bool" instantApply="true"/>
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -831,6 +832,11 @@
 											 tooltiptext="http://smarttemplate4.mozdev.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">&label.premiumFeaturesSite;</label>
 							</hbox>
+              <checkbox id = "chkSilentUpdates"
+                    label = "&pref_silentUpdates;"
+                    tooltiptext = "&pref_silentUpdates_tip;"
+                    preference = "pref_silentUpdate"
+                    disabled = "true" /> 
 						</groupbox>
 					</hbox>
 					<!-- will be populated / modified from bundle in code -->
