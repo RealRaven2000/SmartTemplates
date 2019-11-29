@@ -390,7 +390,12 @@ END LICENSE BLOCK
 	Version 2.5.2 - 21/11/2019
     # [issue 22] Cannot add new recipients to address widget after modifiction through header.set
     # [issue 23] Settings dialog broken in Czech version. 
-  
+    
+
+  Version 2.6 - WIP
+    # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
+
+    
   ...........	
 	
 	Version 2.x
@@ -834,7 +839,8 @@ var SmartTemplate4 = {
 	// A handler to switch identity
 	// -------------------------------------------------------------------
 	loadIdentity: function loadIdentity(startup, previousIdentity) {
-		const prefs = SmartTemplate4.Preferences;		
+		const prefs = SmartTemplate4.Preferences,
+          util = SmartTemplate4.Util;    
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
@@ -842,9 +848,11 @@ var SmartTemplate4 = {
 			this.original_LoadIdentity(startup);
 		}
 		else {
+      let newSig;
 		  // change identity on an existing message:
 			// Check body modified or not
-			let isBodyModified = gMsgCompose.bodyModified;
+			let isBodyModified = gMsgCompose.bodyModified,
+          composeType = util.getComposeType();
 			// we can only reliable roll back the previous template and insert
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
@@ -855,20 +863,35 @@ var SmartTemplate4 = {
 				//             (I think what really happens is that it is inserted twice)
 				isTemplateProcessed = true;
 			}
-			if (isBodyModified) {
+			else {
 				// if previous id has added a signature, we should try to remove it from there now
 				// we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
 				// as the user might have edited here already! 
 				// however, the signature is important as it should match the from address?
 				if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-					this.smartTemplate.extractSignature(gMsgCompose.identity, false);
+					newSig = this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
 				}
 			}
 			// AG 31/08/2012 put this back as we need it!
 			// AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
 			//               as it messes up the signature (pulls it into the blockquote)
-			// if (!isTemplateProcessed)
+      // AG 27/11/2019 [issue 7] putting condition back as it can mess up signature.
+			if (!isTemplateProcessed) {
+        if (isBodyModified && composeType=="new") {
+          // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
+          util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
+        }
 				this.original_LoadIdentity(startup);
+        // try replacing the (unprocessed) signature that Thunderbird has inserted.
+        if (prefs.getMyBoolPref('parseSignature') && newSig ) {
+          // find and replace signature node.
+          let sigNode = util.findChildNode(gMsgCompose.editor.rootElement, 'moz-signature');
+          if (sigNode) {
+            sigNode.innerHTML = newSig.innerHTML;
+          }
+          gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
+        }
+      }
 			if (!isBodyModified && gMsgCompose.bodyModified) {
 				gMsgCompose.editor.resetModificationCount();
 			}	// for TB bug?

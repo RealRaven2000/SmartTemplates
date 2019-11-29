@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.5.2",
+	HARDCODED_CURRENTVERSION : "2.6",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1549,7 +1549,7 @@ SmartTemplate4.Util = {
 		
 	} ,
 	
-	cleanupDeferredFields : function cleanupDeferredFields() {
+	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
@@ -1569,8 +1569,12 @@ SmartTemplate4.Util = {
 		// replace all divs (working backwards.)
 		while (nodeList.length) {
 			let nL = nodeList.pop();
-			nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
-			editor.deleteNode(nL.divNode);
+      if (nL.resolved) {
+        nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
+      }
+      // tidy up unresolved variables, if forced!
+      if (nL.resolved || forceDelete)
+        editor.deleteNode(nL.divNode);
 		}
 	} ,
 	
@@ -1674,7 +1678,7 @@ SmartTemplate4.Util = {
 						// create an array of elements that will be replaced.
 						// (can't do DOM replacements during the treeWalker)
 						// replace div with a text node.
-						nodeList.push ( { txtNode:txtNode, divNode: el } );
+						nodeList.push ( { txtNode:txtNode, divNode: el, resolved: (alreadyResolved || resolved) } );
 					}
 					else { // called from context menu: remove the field and replace with content
 						el.parentNode.insertBefore(txtNode, el);
@@ -1684,6 +1688,9 @@ SmartTemplate4.Util = {
 				else
 					el.className = "resolved";
 			}
+      else {
+        nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+      }
 		}
 	} ,
 	
@@ -2625,7 +2632,20 @@ SmartTemplate4.Util = {
       );
     }
     
-  }
+  },
+  
+	// helper function to find a child node of the passed class Name
+	findChildNode: function findChildNode(node, className) {
+		while (node) {
+			if (node && node.className == className)
+				return node;
+			let n = this.findChildNode(node.firstChild, className);
+			if (n)
+				return n;
+			node = node.nextSibling;
+		}
+		return null;
+	},  
 	
 	
 	/* 

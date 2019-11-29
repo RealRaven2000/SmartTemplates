@@ -3,7 +3,7 @@
 /******
    Special interface to wrap Postbox signature stuff vs. the much simpler Thunderbird / SeaMonkey interface 
 	 - Tb/Sm integrates everything signature related within identity
-	 - Postbox creates its own interface c;ass/
+	 - Postbox creates its own interface class/
 ****/
 
 SmartTemplate4.Sig = {

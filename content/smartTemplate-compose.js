@@ -553,15 +553,8 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// helper function to find a child node of the passed class Name
 	function findChildNode(node, className) {
-		while (node) {
-			if (node && node.className == className)
-				return node;
-			let n = findChildNode(node.firstChild, className);
-			if (n)
-				return n;
-			node = node.nextSibling;
-		}
-		return null;
+    const util = SmartTemplate4.Util;
+    return util.findChildNode(node, className);
 	};
 	
 	// if can't find in child node, search direct parent

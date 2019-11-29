@@ -2,8 +2,15 @@
 <style>b { display: block; margin-top: 10px; } </style>
 
 
-<b>2.5.2 - Bug Fixes</b>
+<b>2.6 - Improvements</b>
 <ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/22">[issue 22]</a> Cannot add new recipients to address widget after modification through %header.set()% or %header.append()%</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/23">[issue 23]</a> Settings dialog broken in Czech version.</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/7">[issue 7]</a> Losing all typed text in compose window when changing identity / signature not updated correctly. 
+
+Normally, SmartTemplate&#8308 is designed to do all processing (building the email and replacing variables) when opening the compose window; it also does this when you change identity provided you have not typed any text in the body of the email. In that case, Thunderbird rebuilds the email itself, thereby ignoring SmartTemplate and reusing the typed text. This could also lead to losing typed text and variables within the signature not being replaced.
+
+In this new version this behavior is improved: SmartTemplate&#8308 will now process the (replaced) Signature if it contains SmartTemplate variables. It will also replace all "late resolved" variable fields (such as %to(name)%) when changing the identity. Since Thunderbird cannot recreate the JavaScript necessary for these advanced functions all "late resolved" variables will be replaced; they will be removed if they cannot be replaced meaningfully. 
+
+When working with these variable fields in New Emails, I recommend to either resolve them first by making sure the <i>To</i> address and <i>subject</i> line are populated, or to  not start typing until the correct identity is selected.
+
+For using variables such as <code class="inline">%identity(name)%</code> within the signature, make sure to activate the appropriate Global Signature settings.</li>
 </ul>
