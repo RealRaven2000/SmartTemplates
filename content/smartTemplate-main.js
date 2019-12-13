@@ -392,9 +392,13 @@ END LICENSE BLOCK
     # [issue 23] Settings dialog broken in Czech version. 
     
 
-  Version 2.6 - WIP
+  Version 2.6 - 29/11/2019
     # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
 
+    
+  Version 2.6.1 - WIP 
+    # [issue 24] Allow selecting different file template after opening composer. 
+      As starting point, we could just do a file open mechanism and an optional single toolbar button.
     
   ...........	
 	

@@ -627,7 +627,16 @@ SmartTemplate4.mimeDecoder = {
 		let addresses = "",
         address,
         bracketMailParams = getBracketAddressArgs(format, 'Mail'),
-        bracketNameParams = getBracketAddressArgs(format, 'Name');
+        bracketNameParams = getBracketAddressArgs(format, 'Name'),
+        card;
+
+      
+    function getCardProperty(p) {
+      if (!card) return '';
+      let r = card.getProperty(p,"");
+      return r;
+    }
+
 
     /** ITERATE ADDRESSES  **/
 		for (let i = 0; i < array.length; i++) {
@@ -659,7 +668,8 @@ SmartTemplate4.mimeDecoder = {
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
-      let card = prefs.getMyBoolPref('mime.resolveAB') ? getCardFromAB(emailAddress) : null;
+      const isResolveNamesAB = prefs.getMyBoolPref('mime.resolveAB');
+      card = getCardFromAB(emailAddress);
 			
           
 			
@@ -682,8 +692,8 @@ SmartTemplate4.mimeDecoder = {
 			fullName = addressee;
       
 			// attempt filling first & last name from AB
-      firstName = card ? card.firstName : '';
-      if (card) {
+      firstName = (isResolveNamesAB && card) ? card.firstName : '';
+      if (isResolveNamesAB && card) {
 				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
 					if (util.Application === "Postbox") {
 						if (card.nickName) 
@@ -695,8 +705,8 @@ SmartTemplate4.mimeDecoder = {
 				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName'))
 					firstName = card.displayName;
       }
-      lastName = card ? card.lastName : '';
-      fullName = (card && card.displayName) ? card.displayName : fullName;
+      lastName = (isResolveNamesAB && card)  ? card.lastName : '';
+      fullName = (isResolveNamesAB && card && card.displayName) ? card.displayName : fullName;
 			
 			
 			let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
@@ -782,7 +792,7 @@ SmartTemplate4.mimeDecoder = {
 			    open = '', 
 					close = '',
 					bracketsAreOptional = false; // bracket Elements
-
+          
       for (let j=0; j<formatArray.length; j++)  {
         let element = formatArray[j],
             part = '',
@@ -847,6 +857,104 @@ SmartTemplate4.mimeDecoder = {
             else
               part = lastName;
             break;
+          // [issue 24]
+          // AB stuff - contact
+          case 'nickname':
+            part = getCardProperty("NickName");
+            break;
+          case 'additionalmail':
+            part = getCardProperty("SecondEmail");
+            break;
+          case 'chatname':
+            part = getCardProperty("ChatName");
+            break;
+          case 'workphone':
+            part = getCardProperty("WorkPhone");
+            break;
+          case 'homephone':
+            part = getCardProperty("HomePhone");
+            break;
+          case 'fax':
+            part = getCardProperty("FaxNumber");
+            break;
+          case 'pager':
+            part = getCardProperty("PagerNumber");
+            break;
+          case 'mobile':
+            part = getCardProperty("CellularNumber");
+            break;
+          // AB stuff - private
+          case 'private.address1':
+            part = getCardProperty("HomeAddress");
+            break;
+          case 'private.address2':
+            part = getCardProperty("HomeAddress2");
+            break;
+          case 'private.city':
+            part = getCardProperty("HomeCity");
+            break;
+          case 'private.state':
+            part = getCardProperty("HomeState");
+            break;
+          case 'private.country':
+            part = getCardProperty("HomeCountry");
+            break;
+          case 'private.zip':
+            part = getCardProperty("HomeZipCode");
+            break;
+          // work
+          case 'work.title':
+            part = getCardProperty("JobTitle");
+            break;
+          case 'work.department':
+            part = getCardProperty("Department");
+            break;
+          case 'work.organization':
+            part = getCardProperty("Company");
+            break;
+          case 'work.address1':
+            part = getCardProperty("WorkAddress");
+            break;
+          case 'work.address2':
+            part = getCardProperty("WorkAddress2");
+            break;
+          case 'work.city':
+            part = getCardProperty("WorkCity");
+            break;
+          case 'work.state':
+            part = getCardProperty("WorkState");
+            break;
+          case 'work.country':
+            part = getCardProperty("WorkCountry");
+            break;
+          case 'work.zip':
+            part = getCardProperty("WorkZipCode");          
+            break;
+          case 'work.webpage':
+            part = getCardProperty("WebPage1");          
+            break;
+            
+          // other
+          case 'other.custom1':
+            part = getCardProperty("Custom1");
+            break;
+          case 'other.custom2':
+            part = getCardProperty("Custom2");
+            break;
+          case 'other.custom3':
+            part = getCardProperty("Custom3");
+            break;
+          case 'other.custom4':
+            part = getCardProperty("Custom4");
+            break;
+          case 'other.custom5':
+            part = getCardProperty("Custom5");
+            break;
+          case 'other.notes':
+            part = getCardProperty("Notes");
+            break;
+                    
+            
           default:
             let bM = (partKeyWord.indexOf('bracketMail<')==0),
                 bN = (partKeyWord.indexOf('bracketName<')==0);
