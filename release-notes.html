@@ -2,15 +2,62 @@
 <style>b { display: block; margin-top: 10px; } </style>
 
 
-<b>2.6 - Improvements</b>
+<b>2.7 - Improvements</b>
 <ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/7">[issue 7]</a> Losing all typed text in compose window when changing identity / signature not updated correctly. 
 
-Normally, SmartTemplate&#8308 is designed to do all processing (building the email and replacing variables) when opening the compose window; it also does this when you change identity provided you have not typed any text in the body of the email. In that case, Thunderbird rebuilds the email itself, thereby ignoring SmartTemplate and reusing the typed text. This could also lead to losing typed text and variables within the signature not being replaced.
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/29">[issue 29]</a> Add configuration item to file template menus.</li>
+<li>Premium function: Added an optional 3rd parameter to <tt>%matchTextFromBody(<i>regular Expression</i>,<i>group #</i>,<i>"<b>alternative text</b>"</i>)%</tt>.
 
-In this new version this behavior is improved: SmartTemplate&#8308 will now process the (replaced) Signature if it contains SmartTemplate variables. It will also replace all "late resolved" variable fields (such as %to(name)%) when changing the identity. Since Thunderbird cannot recreate the JavaScript necessary for these advanced functions all "late resolved" variables will be replaced; they will be removed if they cannot be replaced meaningfully. 
+If the quoted email has no match, then the alternative text will be inserted instead.</li>
+<li>Completed translations for Brazil (Portuguese) and Swedish - thanks to google translate.</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/25">[issue 25]</a> Set variables from addressbook fields.
 
-When working with these variable fields in New Emails, I recommend to either resolve them first by making sure the <i>To</i> address and <i>subject</i> line are populated, or to  not start typing until the correct identity is selected.
+<b>Contact</b>
+<pre>
+  firstname
+  lastname
+  name  (uses Display Name but only if the option 'Resolve Name from Address Book' is enabled)
+  nickname
+  additionalmail
+  chatname
+  workphone
+  homephone
+  fax
+  pager
+  mobile
+</pre>
+<b>Private</b>
+<pre>
+  private.city
+  private.address1
+  private.address2
+  private.state
+  private.country
+  private.zipcode
+  private.webpage
+</pre>
+<b>Other</b>
+<pre>
+  other.custom1
+  other.custom2
+  other.custom3
+  other.custom4
+  other.notes
+</pre>
+<b>Work</b>
+<pre>
+  work.title
+  work.department
+  work.organization
+  work.address1
+  work.address2
+  work.city
+  work.state
+  work.country
+  work.zipcode
+  work.webpage
+</pre>
+</li>
 
-For using variables such as <code class="inline">%identity(name)%</code> within the signature, make sure to activate the appropriate Global Signature settings.</li>
+
 </ul>
