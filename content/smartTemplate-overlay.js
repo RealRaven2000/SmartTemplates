@@ -1079,23 +1079,33 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 												replaceGroupString = ""; // not well formed
 											}
 										} 
-										else
-											replaceGroupString = "";
 									}
-									else
-									  replaceGroupString = result[group];
+									else {
+                    if (group>result.length-1)
+                      replaceGroupString ="";
+                    else
+                      replaceGroupString = result[group];
+                  }
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 								}
 								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
 								msg = msg.replace(matchPart[i], replaceGroupString);
 							}
-							else { // [Bug 26512] - if matchText is used multiple times, the result is blank
-								removePat = true;
-								msg = msg.replace(matchPart[i],"");
+							else {       
+                // not matched, insert string from third parameter
+							  let alternative = matchPart[i].match( /[0-9],\"(.*)\"/ ); // get what's between the last double quotes
+                if (alternative) {
+                  // if no match found but there is a 3rd parameter, replace with this instead.
+                  msg = msg.replace(matchPart[i], alternative[1]);
+                }
+                else {
+                  // [Bug 26512] - if matchText is used multiple times, the result is blank  
+                  msg = msg.replace(matchPart[i],"");
+                }
 							}
 						}
 						else removePat = true;
-						if(removePat) {
+						if (removePat) {
 							util.logDebug("pattern not found in " + fromPart + ":\n" + regX);
 							msg = msg.replace(matchPart[i],"");
 						}

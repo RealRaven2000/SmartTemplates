@@ -329,8 +329,10 @@ SmartTemplate4.Settings = {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
-					getElement = window.document.getElementById.bind(window.document),
-					isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings');
+					getElement = window.document.getElementById.bind(window.document);
+    
+    let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
+        composeType = null;
 					
 		util.logDebugOptional("functions", "onLoad() …");
 		// Check and set common preference
@@ -345,16 +347,27 @@ SmartTemplate4.Settings = {
 		let args = window.arguments,
 		    mode = null;
 		// Switch account (from account setting)  // add 0.4.0
-		if (args && args.length >= 1) {
-			if (args[0])
-				this.switchIdentity(args[0]);
-			if (args.length >=2) {
-				mode = args[1].inn.mode;
-			}
-		}
-		else {
-			this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
-		}
+    try {
+      if (args && args.length >= 1) {
+        if (args[0])
+          this.switchIdentity(args[0]);
+        if (args.length >=2) {
+          let inParams = args[1].inn;
+          mode = inParams.mode;
+          if (mode == "fileTemplates")
+            isAdvancedPanelOpen = false; // simplify the window.
+          if (inParams.composeType) {
+            composeType = inParams.composeType;
+          }
+        }
+      }
+      else {
+        this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
+      }
+    }
+    catch(ex) {
+      util.logException("Settings onLoad() switching account", ex);
+    }
 			
 
 		// disable Use default (common account)
@@ -481,10 +494,10 @@ SmartTemplate4.Settings = {
 				tabbox.selectedIndex = 5;
 				break;
 			case 'fileTemplates': // set up file templates.
-				let idMenu = document.getElementById("msgIdentity");
+				let idMenu = getElement("msgIdentity");
 				if (idMenu)
 					idMenu.selectedIndex = 1;
-				SmartTemplate4.Settings.switchIdentity("fileTemplates");
+				SmartTemplate4.Settings.switchIdentity("fileTemplates", composeType);
 			  break;
 		}
 		
@@ -929,9 +942,10 @@ SmartTemplate4.Settings = {
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
 	//--------------------------------------------------------------------
-	switchIdentity : function switchIdentity(idKey)	{
+	switchIdentity : function switchIdentity(idKey, composeType)	{
 		let el = document.getElementById("msgIdentityPopup").firstChild,
 		    index = 0;
+    composeType = composeType || null;
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
@@ -942,7 +956,23 @@ SmartTemplate4.Settings = {
 				break;
 			}
 			el = el.nextSibling; index++;
-		}
+    }
+    // select the correct compose type tab
+		if (idKey=='fileTemplates' && composeType) {
+      let fileTemplatesTabs = document.getElementById('fileTemplatesTabs'),
+          panelId = composeType + '-fileTemplates',
+          idx = 0;
+      switch (composeType) {
+        case 'new': idx = 0; break;
+        case 'rsp': idx = 1; break;
+        case 'fwd': idx = 2; break;
+      }
+      fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
+      fileTemplatesTabs.selectedIndex = idx;
+      // attract attention to the picker button
+      document.getElementById('btnPickTemplate').classList.add('pulseRed');
+    }
+    
 		SmartTemplate4.Util.logDebugOptional("functions", "switchIdentity(" + idKey + ") COMPLETE");
 
 	} , // add 0.4.0 E

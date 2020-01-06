@@ -508,6 +508,7 @@ SmartTemplate4.fileTemplates = {
 				msgPopup.appendChild(menuseparator);
 			}
 			
+      /* insert one item for each listed html template */
 			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
 			menuitem.setAttribute("label", theTemplate.label);
 			menuitem.setAttribute("st4composeType", composeType);
@@ -547,7 +548,7 @@ SmartTemplate4.fileTemplates = {
 			
 			msgPopup.appendChild(menuitem);									 
 		}
-		// add an item for choosing ad hoc file template
+		/* add an item for choosing ad hoc file template - uses file picker */
 		let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
 		menuseparator.id = "fileTemplates-" + composeType + "msg-bottom";
 		menuseparator.classList.add ("st4templateSeparator");
@@ -579,6 +580,37 @@ SmartTemplate4.fileTemplates = {
 			}
 		);
 		msgPopup.appendChild(menuitem);	
+    
+		/* [item 29]  Add configuration item to file template menus. */
+    menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
+		menuitem.setAttribute("label", menuTitle);
+		menuitem.setAttribute("st4composeType", composeType);
+		menuitem.classList.add("menuitem-iconic");
+		menuitem.classList.add("st4templateConfig");
+
+		menuitem.addEventListener("click", 
+			function(event) { 
+			  event.stopImmediatePropagation();
+        let win = SmartTemplate4.Util.Mail3PaneWindow,
+            params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
+				win.openDialog('chrome://smarttemplate4/content/settings.xul', 
+          'Preferences', 
+          'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
+          null,
+					params);
+				return false; 
+			}, 
+			{capture:true } , 
+			true);
+		// stop the oncommand event bubbling up.
+		menuitem.addEventListener("command",
+			function(event) { 
+				event.stopImmediatePropagation();
+			}
+		);
+		msgPopup.appendChild(menuitem);	
+    
 		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
 		if (lastChild && lastChild.tagName == 'menuseparator') {
@@ -656,8 +688,10 @@ SmartTemplate4.fileTemplates = {
 					// 0) clear all old items if they exist
 					let separators = document.getElementsByClassName("st4templateSeparator"),
 							items = document.getElementsByClassName("st4templateEntry"),
-							pickers = document.getElementsByClassName("st4templatePicker");
-							
+							pickers = document.getElementsByClassName("st4templatePicker"),
+              configurators = document.getElementsByClassName("st4templateConfig");
+					logDebug("Resetting all menus…");
+          
 					try {
 						 // turn these HTMLCollections into Arrays
 						Array.from(separators).forEach(el => { 
@@ -669,6 +703,10 @@ SmartTemplate4.fileTemplates = {
 							} 
 						);
 						Array.from(pickers).forEach(el => { 
+								el.parentNode.removeChild(el); 
+							} 
+						);
+						Array.from(configurators).forEach(el => { 
 								el.parentNode.removeChild(el); 
 							} 
 						);
@@ -803,6 +841,9 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
 	pickFileFromSettings: function pickFileFromSettings() {
+    let el = document ?
+      document.getElementById('btnPickTemplate') : null;
+    if (el) el.classList.remove('pulseRed'); // remove animation. we've found the button!
 		this.pickFile(
 		  function(localFile) {
 				const prefs = SmartTemplate4.Preferences;

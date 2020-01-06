@@ -396,13 +396,16 @@ END LICENSE BLOCK
     # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
 
     
-  Version 2.6.1 - WIP 
-    # [issue 24] Allow selecting different file template after opening composer. 
-      As starting point, we could just do a file open mechanism and an optional single toolbar button.
+  Version 2.7 - WIP
+    # [issue 25] Set variables from addressbook fields
+    # [issue 29] Add configuration item to file template menus.
+    # Added an optional 3rd parameter to %matchTextFromBody()% - insert string when no match is found
     
   ...........	
 	
 	Version 2.x
+    # [issue 24] Allow selecting different file template after opening composer. 
+      As starting point, we could just do a file open mechanism and an optional single toolbar button.
     # [issue 10] add %deliveryoptions% function to  force Return Receipt.
     # [issue 12] <head> section is merged into <body>
 	  # add template management functions. to do:

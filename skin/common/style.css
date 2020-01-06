@@ -796,6 +796,7 @@ button.dialog-button[dlgtype=extra2] {
 	}
 }
 
+
 #SmartTemplate4-Pro.free .tab-icon {
   animation: SmartTemplate4RotateY 3s linear 0.3s infinite ;
 	height: 19px;
@@ -814,6 +815,24 @@ button.dialog-button[dlgtype=extra2] {
 }
 #btnLicense:hover {
 	animation: none;
+}
+
+
+/* to attract attention to Pick template button: */
+@keyframes SmartTemplate4RedPulse {
+  0%   { background-color: rgba(180,0,0.0.1);  }
+  50%  { background-color: rgba(180,0,0,0.9);  }
+  100% { background-color: rgba(180,0,0,0.1);  }
+}
+.pulseRed image {
+  animation: SmartTemplate4RedPulse;
+	animation-iteration-count: infinite;
+	animation-duration: 4s;
+	animation-timing-function: ease-in-out;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
 }
 
 /* ICON RULE TO OVERWRITE IN PRO VERSION */

@@ -317,7 +317,7 @@
 						           orient = "vertical"
 											 onselect="SmartTemplate4.Settings.selectFileCase(this, event);"
 											 >
-							<tabpanel class = "newGroup">
+							<tabpanel class = "newGroup" id="new-fileTemplates">
 								<groupbox flex = "1" orient = "vertical" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -407,7 +407,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Reply] Tab ######## -->
-							<tabpanel class = "replyGroup">
+							<tabpanel class = "replyGroup" id="rsp-fileTemplates">
 								<groupbox flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -425,7 +425,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Forward] File Tab ######## -->
-							<tabpanel class = "forwardGroup">
+							<tabpanel class = "forwardGroup" id="fwd-fileTemplates">
 								<groupbox  flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
