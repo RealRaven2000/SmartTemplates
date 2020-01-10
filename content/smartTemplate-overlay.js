@@ -1118,6 +1118,90 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 		}
 	}
 	
+  function parseParams(cmd, cmdParameters, functionName) {
+    let dText1, dText2,
+        theStrings = cmd.split(",");
+    
+    if (theStrings.length>=2) {
+      dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+      dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+      // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
+    
+      let errTxt = "Splitting " + functionName + "(a,b) arguments could not be parsed.",
+          errDetail;
+      
+      if (!dText1)
+        errDetail = "1st argument missing.";
+      else if (!dText2)
+        errDetail = "2nd argument missing.";
+      else if (dText1.length + dText2.length < 2) {
+        errDetail = "arguments malformed.";
+      }
+      else if (dText1.length + dText2.length > 2) {
+        errDetail = "Argument contains quote marks - not supported.";
+      }
+      else {
+        // msg = msg.replace(util.unquotedRegex(dText1[0], true), util.unquotedRegex(dText2[0]));
+        // pass back results
+        cmdParameters.p1 = dText1[0];
+        cmdParameters.p2 = dText2[0];
+        if (theStrings.length>2)
+          cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
+        return true;
+      }
+      if(errDetail)
+        util.logToConsole(errTxt
+          + '\n ' + errDetail
+        + '\n Arguments have to be enclosed in double quotes.');
+    }
+    else {
+      util.logDebug('Splitting ' + functionName + '(a,b) did not return >= 2 arguments. '
+        + '\n Arguments may not contain comma or double quotes.'
+        + '\n Special characters such as # must be escaped with backslash.');
+    }    
+    return false;
+  }
+  
+  function quoteLevel(element, level) {
+    if (!element || !element.parentNode)
+      return level;
+    let p = element.parentNode;
+    if (p.tagName && p.tagName.toLowerCase()=="blockquote")
+      return quoteLevel(p, level + 1); // increase level and check grandparent
+    return level;
+  }
+  
+  function htmlToElement(doc, html) {
+    let template = doc.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
+  }
+  
+  function displayTag(node) {
+    let att = node.attributes,
+        aS = node.tagName || node.nodeName;
+    if (att) {
+      for (let a=0; a< att.length; a++) {
+        if(a==0) 
+          aS += " ";
+        else
+          aS +=", ";
+        aS = aS + att[a].name;
+        if (att[a].value != null) {
+          let val = att[a].value.toString();
+          aS = aS + ": " + val.substr(0,20);
+          if (val.length > 20) {
+            aS = aS + "...";
+          }
+        }
+      }   
+    }
+    if (aS == '#text#')
+      return "'" + node.textContent + "'";
+    return "<" + aS + ">";
+  }
+  
 	const util = SmartTemplate4.Util,
 	      prefs = SmartTemplate4.Preferences,
 				Ci = Components.interfaces,
@@ -1132,7 +1216,13 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 
 	// make 2 arrays, words to delete and replacement pairs.
 	let matches = msg.match(/%deleteText\(.*\)%/g), // works on template only
-	    matchesR = msg.match(/%replaceText\(.*\)%/g); // works on template only
+	    matchesR = msg.match(/%replaceText\(.*\)%/g), // works on template only
+      quoteMatches = msg.match(/%deleteQuotedText\(.*\)%/g),
+      quoteMatchesR = msg.match(/%replaceQuotedText\(.*\)%/g),
+      quoteTags = msg.match(/%deleteQuotedTags\(.*\)%/g),
+      quoteTagsR = msg.match(/%replaceQuotedTags\(.*\)%/g);
+      
+  /* delete text in template / signature itself */
 	if (matches) {
 		try {
 			util.addUsedPremiumFunction('deleteText');
@@ -1150,52 +1240,159 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 		}
 	}
   
+  /* replace texts in template / signature itself */
 	if (matchesR) { // replacements in place
-	try {
-    let dText1, dText2;
-		util.addUsedPremiumFunction('replaceText');
-		for (let i=0; i<matchesR.length; i++) {
-			// parse out the argument (string to delete)
-			msg = msg.replace(matchesR[i], '');
-      let theStrings = matchesR[i].split(",");
-      if (theStrings.length==2) {
-        dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-        dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-        // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
-        
-					let errTxt = "Splitting replaceText(a,b) arguments could not be parsed.",
-							errDetail;
-					
-					if (!dText1)
-						errDetail = "1st argument missing.";
-					else if (!dText2)
-						errDetail = "2nd argument missing.";
-					else if (dText1.length + dText2.length < 2) {
-						errDetail = "arguments malformed.";
-					}
-					else if (dText1.length + dText2.length > 2) {
-						errDetail = "Argument contains quote marks - not supported.";
-					}
-					else {
-          msg = msg.replace(util.unquotedRegex(dText1[0], true), util.unquotedRegex(dText2[0]));
+    try {
+      util.addUsedPremiumFunction('replaceText');
+      
+      for (let i=0; i<matchesR.length; i++) {
+        // parse out the argument (string to delete)
+        msg = msg.replace(matchesR[i], '');
+        let params = {p1: null, p2: null, p3: null};
+        if (parseParams(matchesR[i], params, 'replaceText')) {
+          msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
         }
-					if(errDetail)
-						util.logToConsole(errTxt
-							+ '\n ' + errDetail
-            + '\n Arguments have to be enclosed in double quotes.');
-        }
-      else {
-        util.logDebug('Splitting replaceText(a,b) did not return 2 arguments. '
-          + '\n Arguments may not contain comma or double quotes.'
-          + '\n Special characters such as # must be escaped with backslash.');
       }
+    }
+    catch (ex) {
+      util.logException('%replaceText()%', ex);
+    }
+  }
+  
+  /* Remove quoted texts */
+  if (quoteMatches) {
+		try {
+      util.addUsedPremiumFunction('deleteQuotedText');
+			for (let i=0; i<quoteMatches.length; i++) {
+				// parse out the argument (string to delete)
+				msg = msg.replace(quoteMatches[i],'');  // remove from template
+        let theStrings = quoteMatches[i].split(","),
+				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
+            minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
+            rootEl = gMsgCompose.editor.rootElement;
+            
+        if (dText && dText.length) {
+          let s = util.unquotedRegex(dText[0], true),
+              quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+          for (let i=0; i<quotes.length; i++) {
+            let q = quotes.item(i),
+                lv = quoteLevel(q, 1);
+            if (lv == minQuoteLevel) {
+              // replaces everything on this level and higher (all its child blockquotes)
+              util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
+              q.innerHTML = q.innerHTML.replace(s, "");
+            }
+          }            
+        }
+			}
 		}
-	}
 		catch (ex) {
-			util.logException('%replaceText()%', ex);
+			util.logException('%deleteQuotedText()%', ex);
 		}
-		
+  }
+  
+  /* Replace quoted text */
+	if (quoteMatchesR) { // replacements in quote
+    try {
+      util.addUsedPremiumFunction('replaceQuotedText');
+      for (let i=0; i<quoteMatchesR.length; i++) {
+        // parse out the argument (string to delete)
+        msg = msg.replace(quoteMatchesR[i], '');  // remove from template
+        let params = {p1: null, p2: null, p3: null};
+        if (parseParams(quoteMatchesR[i], params, 'replaceQuotedText')) {
+          // now replace text in quote body:
+          let minQuoteLevel = params.p3 || 1,
+              s = util.unquotedRegex(params.p1, true),
+              r = util.unquotedRegex(params.p2),
+              rootEl = gMsgCompose.editor.rootElement;
+              
+          let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+          for (let i=0; i<quotes.length; i++) {
+            let q = quotes.item(i),
+                lv = quoteLevel(q, 1);
+            if (lv == minQuoteLevel) {
+              // replaces everything on this level and higher (all its child blockquotes)
+              util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
+              q.innerHTML = q.innerHTML.replace(s, r);
+            }
+          }
+        }
+      }
+    }
+    catch (ex) {
+      util.logException('%replaceQuotedText()%', ex);
+    }
 	}
+  
+  /* Remove quoted tags */
+  if (quoteTags) {
+		try {
+      util.addUsedPremiumFunction('deleteQuotedTags');
+			for (let i=0; i<quoteTags.length; i++) {
+				// parse out the argument (string to delete)
+				msg = msg.replace(quoteTags[i],'');  // remove from template
+        let theStrings = quoteTags[i].split(","),
+				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
+            minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
+            rootEl = gMsgCompose.editor.rootElement;
+            
+        if (dText && dText.length) {
+          let s = util.unquotedRegex(dText[0]),
+              nodes = rootEl.querySelectorAll(s); // NodeList
+          for (let i=0; i<nodes.length; i++) {
+            let n = nodes.item(i),
+                lv = quoteLevel(n, 0);
+            if (lv >= minQuoteLevel) {
+              // replaces everything on this level and higher (all its child blockquotes)
+              util.logDebug('%deleteQuotedTags% - Removing quoted tag (l=' + lv + '):\n' + displayTag(n)); // displays tag + attributes
+              n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+            }
+          }            
+        }
+			}
+		}
+		catch (ex) {
+			util.logException('%deleteQuotedTags()%', ex);
+		}    
+  }
+  
+  /* Replace quoted tags */  
+  if (quoteTagsR) {
+		try {
+      util.addUsedPremiumFunction('replaceQuotedTags');
+      for (let i=0; i<quoteTagsR.length; i++) {
+        let params = {p1: null, p2: null, p3: null};        
+        // parse out the argument (string to delete)
+        msg = msg.replace(quoteTagsR[i],''); // remove from template
+        if (parseParams(quoteTagsR[i], params, 'replaceQuotedText')) {
+          let minQuoteLevel = params.p3 || 1,
+              s = util.unquotedRegex(params.p1),
+              r = util.unquotedRegex(params.p2),
+              rootEl = gMsgCompose.editor.rootElement;
+          
+            if (s) {
+              let nodes = rootEl.querySelectorAll(s); // NodeList
+              for (let i=0; i<nodes.length; i++) {
+                let n = nodes.item(i),
+                    lv = quoteLevel(n, 0);
+                if (lv >= minQuoteLevel) {
+                  // replaces everything on this level and higher (all its child blockquotes)
+                  debugger;
+                  let newEl = htmlToElement(gMsgCompose.editor.document, r);
+                  util.logDebug('%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) + ' with ' + displayTag(newEl)); // displays tag + attributes
+                  n.parentNode.insertBefore(newEl, n)
+                  n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+                }
+              }            
+            }
+        }
+      }
+    }
+		catch (ex) {
+			util.logException('%replaceQuotedTags()%', ex);
+		}  
+  }
+  
 	
 	return msg;
 }
@@ -1286,8 +1483,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				    isReserved = (el && el.startsWith("reserved")),
 				    s = isReserved ? str
 					      : hdr.get(el ? el : reservedWord) != "" ? str : ""; // check if header exists
-				if (!el)
-					util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
+				if (!el) {
+					// util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
+          util.logToConsole('Discarding unknown variable: %' +  reservedWord + '%')
+        }
 				else { // it's a reserved word, likely a header
 					if (prefs.isDebugOption("tokens.deferred")) debugger;
 					if (typeof s =='undefined' || (s=="" && composeType=='new')) {
@@ -1428,8 +1627,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// identity(name) is the new ownname
 	// identity(mail) is the new ownmail
 	addTokens("reserved", 
-		"ownname", "ownmail", "deleteText", "replaceText", "matchTextFromSubject", "matchTextFromBody",
 		"dbg1", "sig", "newsgroup", 
+		"ownname", "ownmail", 
+    "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
+    "matchTextFromSubject", "matchTextFromBody",
 		"cursor", "identity", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
 		"messageRaw", "file", "attach", //depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
@@ -1883,10 +2084,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;
 			let isUTC = SmartTemplate4.whatIsUtc, params;
 			switch(token) {
-				case "deleteText": // return unchanged
-				case "replaceText": // return unchanged
-				case "matchTextFromSubject": // return unchanged
-				case "matchTextFromBody": // return unchanged
+				case "deleteText":            // return unchanged
+				case "replaceText":           // return unchanged
+        case "deleteQuotedText":      // return unchanged
+        case "deleteQuotedTags":      // return unchanged
+        case "replaceQuotedText":     // return unchanged
+        case "replaceQuotedTags":     // return unchanged
+				case "matchTextFromSubject":  // return unchanged
+				case "matchTextFromBody":     // return unchanged
 					return '%' + token + arg + '%';
 				case "dateformat":
 					if (debugTimeStrings) debugger;
