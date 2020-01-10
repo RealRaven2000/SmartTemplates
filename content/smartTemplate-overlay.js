@@ -1168,7 +1168,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
     let p = element.parentNode;
     if (p.tagName && p.tagName.toLowerCase()=="blockquote")
       return quoteLevel(p, level + 1); // increase level and check grandparent
-    return level;
+    return quoteLevel(p, level);
   }
   
   function htmlToElement(doc, html) {

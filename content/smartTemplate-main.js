@@ -396,28 +396,28 @@ END LICENSE BLOCK
     # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
 
     
-  Version 2.7 - WIP
+  Version 2.7 - 01/09/2020
     # [issue 25] Set variables from addressbook fields
     # [issue 29] Add configuration item to file template menus.
     # Added an optional 3rd parameter to %matchTextFromBody()% - insert string when no match is found
     
-  ...........	
-	
-	Version 2.x
-    # [issue 24] Allow selecting different file template after opening composer. 
-      As starting point, we could just do a file open mechanism and an optional single toolbar button.
-    # [issue 10] add %deliveryoptions% function to  force Return Receipt.
-    # [issue 12] <head> section is merged into <body>
-	  # add template management functions. to do:
-		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
-			- add list of eml templates to wrtie / reply / fwd buttons
-			- support "reply with" from thunderbird template (sub)folder
-			- support editing templates with SmartTemplate variables
-			- ...
-		# ...
-			
+  Version 2.8 - WIP
+    # [issue 31] Add functions to remove text / tags from quoted parts
+    
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
+	
+	Version 2.x
+    # [issue 30] Reply button loses template menu items
+    # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
+    # [issue 27] Insert external HTML Templates from a web page URL
+    # [issue 24] Allow selecting different file template after opening composer. 
+      As starting point, we could just do a file open mechanism and an optional single toolbar button.
+    # [issue 10] add %deliveryoptions% function to force Return Receipt.
+    # [issue 12] <head> section is merged into <body>
+		# ...
+			
   Version 2.2
     # Known issues: The "clean up button" is not automatically installed in the composer toolbar.
 

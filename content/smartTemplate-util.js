@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.7",
+	HARDCODED_CURRENTVERSION : "2.8",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1274,6 +1274,8 @@ SmartTemplate4.Util = {
     }
   } ,
 	
+  // @global=true returns a regular expression from a quoted string
+  // @global=false returns a string from a quoted string
   unquotedRegex: function unquotedRegex(s, global) {
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
