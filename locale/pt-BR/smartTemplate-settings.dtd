@@ -130,7 +130,6 @@
 <!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada.">
 <!ENTITY attach.label "Adicionar arquivo como anexo">
 <!ENTITY cursor.label "Definir a posição do cursor">
-<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Variáveis de destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY to.label "Destinatário (padrão)">
@@ -65770,9 +65769,7 @@
 <!ENTITY licenseValidation.notMatchedMail "O endereço de e-mail criptografado não corresponde ao legível.">
 <!ENTITY premiumConfig "Recursos Premium">
 <!ENTITY label.premiumFeaturesSite "Leia mais sobre os Recursos Premium em nosso site…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Enviar email para o suporte">
-<!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecione um topico!">
 <!ENTITY support.type.license "Relacionado a licenciamento">
 <!ENTITY support.type.tech "Problema técnico">

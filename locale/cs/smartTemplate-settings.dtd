@@ -59,7 +59,6 @@
 <!ENTITY btnSaveTemplate.tooltip "Ulož Šablonu...">
 <!ENTITY btnLoadTemplate.tooltip "Nahraj Šablonu...">
 <!ENTITY btnYouTube.tooltip "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení">
-<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Společné">
 <!ENTITY pref_def.label "Použij společné">
 <!ENTITY pref_def.cap "Pokud si chcete přizpůsobit řádek uvození citace, zrušte volbu 'Použij společné'.">
@@ -130,7 +129,6 @@
 <!ENTITY fileImage.label "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen.">
 <!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "nastav pozici kurzoru">
-<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Příjemce (To)">
 <!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
 <!ENTITY to.label "Jméno příjemce (defaultní)">
@@ -253,7 +251,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY premiumConfig "Šifrovaná e-mailová adresa neodpovídá čitelné adrese.">
 <!ENTITY label.premiumFeaturesSite "Přečtěte si více o prémiových funkcích na našem webu…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Mail na podporu">
 <!ENTITY support.type "Typ:">
 <!ENTITY support.type.selectOne "Vyber téma!">

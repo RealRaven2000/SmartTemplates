@@ -253,7 +253,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY premiumConfig "Fonctionnalités Premium">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Courrier au support">
 <!ENTITY support.type "Genre:">
 <!ENTITY support.type.selectOne "Choisissez un sujet!">

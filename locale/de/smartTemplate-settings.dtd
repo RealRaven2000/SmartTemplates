@@ -147,6 +147,13 @@
 <!ENTITY cc.label "Empfängername (Standardformat)">
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
+<!-- #### TABLE #### -->
+<!ENTITY ab_switches "Schalter für Adressbuch">
+<!ENTITY ab_switches.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zusätzliche Schalter hinzugefügt werden, z.B.:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Privat">
+<!ENTITY ab_other "Sonstiges">
+<!ENTITY ab_work "Dienstlich">
 <!ENTITY spec_form.cap "Sonderformatierung">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
 <!ENTITY ex_brack.label "Beispiel: An: Friedrich Cc: Eva">
@@ -174,6 +181,21 @@
 <!ENTITY matchTextFromBody "Findet einen Regulären Ausdruck in der zitierten Email und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY matchTextFromSubject "Findet einen Regulären Ausdruck in der Betreff-Zeile and und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY stringmanip.match.comment "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw.">
+<!ENTITY stringmanip.alttext "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Zitat-Bearbeitung">
+<!ENTITY quote_changers.desc "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen.">
+<!ENTITY deleteQuotedText "Löscht Text im Zitat">
+<!ENTITY replaceQuotedText "Ersetzt Text im Zitat mit HTML">
+<!ENTITY deleteQuotedTags "Löscht HTML Tags aus Zitaten">
+<!ENTITY replaceQuotedTags "Ersetzt HTML Tags in Zitaten mit Text oder HTML">
+<!ENTITY Parameters "Parameter">
+<!ENTITY regexpAnyText "Beliebiger Text - regulärer Ausdruck - muß in doppelten Anführungszeichen sein.">
+<!ENTITY replacementHTML "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt.">
+<!ENTITY quoteLevel "[optional, numerisch]: minimaler Zitatlevel ab dem ersetzt werden soll">
+<!ENTITY selector "- CSS kompatibler Selektor, im simpelsten Fall 'img' oder 'p', Attribut Selektoren können verwendet werden. Ausnahme: doppelte Anführungszeichen müssen vermiden werden.">
+<!ENTITY minSize "[optional, numerisch]: minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
+<!ENTITY minSize_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
@@ -232,7 +254,7 @@
 <!ENTITY html_note.label "Verwenden Sie bitte ausschließlich den UTF-8 (Unicode) Zeichensatz innerhalb des HTML Quellcodes!">
 <!ENTITY table.cap "Anwenden der Variablen">
 <!ENTITY table_note.label "Wird eine Variable falsch angewendet, erscheint eine Fehlermeldung in der Fehlerkonsole von Thunderbird!">
-<!-- #### TABLE #### -->
+<!-- #####  Support ##### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Verfassen">
 <!ENTITY table_reply.label "Antworten">
@@ -265,4 +287,3 @@
 <!ENTITY support.mail.instructions "Klicken Sie die Schaltfläche unterhalb um eine neue Email an Support zu schreiben. Falls Sie technische Probleme haben, kann ein Screenshot hilfreich sein.">
 <!ENTITY support.compose "An Support schreiben…">
 <!ENTITY support.links "Support Links">
-

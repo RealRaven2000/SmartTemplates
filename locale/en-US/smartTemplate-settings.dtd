@@ -147,6 +147,14 @@
 <!ENTITY cc.label "Recipient's name (Default)">
 <!ENTITY ccfirstname.label "Recipient's first name">
 <!ENTITY ccname.label "Recipient's name">
+<!-- AB switch section -->
+<!ENTITY ab_switches "Address Book Switches">
+<!ENTITY ab_switches.desc "When replying to a matching email address you can now use additional part switches for address variables such as from, for example:">
+<!ENTITY ab_contact "Contact">
+<!ENTITY ab_private "Private">
+<!ENTITY ab_other "Other">
+<!ENTITY ab_work "Work">
+
 <!ENTITY spec_form.cap "Special format">
 <!ENTITY specform_note.label "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
 <!ENTITY ex_brack.label "Example: To: Fred Cc: Jane">
@@ -174,6 +182,23 @@
 <!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
+<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+
+<!-- quote manipulation section -->
+<!ENTITY quote_changers.cap "Quote Manipulation">
+<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY deleteQuotedText "Deletes quoted Text">
+<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
+<!ENTITY deleteQuotedTags "Deletes tags from the quote">
+<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
+<!ENTITY Parameters "Parameters">
+<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
+<!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
+<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
+<!ENTITY selector "-what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
+<!ENTITY minSize "[optional, numeric]) - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
+<!ENTITY minSize_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
+
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">
 <!ENTITY fix_vartz_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date / Time (locale format)">
