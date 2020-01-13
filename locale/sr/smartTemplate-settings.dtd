@@ -138,6 +138,7 @@
 <!ENTITY cc.label "Име примаоца (подразумевано)">
 <!ENTITY ccfirstname.label "Име примаоца">
 <!ENTITY ccname.label "Име примаоца">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Посебан формат">
 <!ENTITY specform_note.label "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени.">
 <!ENTITY ex_brack.label "Пример: „За: boo CC: foo“">
@@ -165,6 +166,7 @@
 <!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Контролне променљиве за „Формат датума/временска зона“">
 <!ENTITY fix_vartz_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Датум/време (локални формат)">
@@ -216,12 +218,10 @@
 <!ENTITY html_note.label "Користите само UTF-8 (уникод) кодирање у HTML шаблонима.">
 <!ENTITY table.cap "Употреба променљивих">
 <!ENTITY table_note.label "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“.">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Променљива">
 <!ENTITY table_new.label "Састави">
 <!ENTITY table_reply.label "Одговори">
 <!ENTITY table_fwd.label "Проследи">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Унесите свој лични број лиценце овде:">
 <!ENTITY label.insertLicense.tooltip "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а.">

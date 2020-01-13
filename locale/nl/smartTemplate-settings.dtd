@@ -147,6 +147,13 @@
 <!ENTITY cc.label "Naam van ontvanger (Standaard)">
 <!ENTITY ccfirstname.label "Voornaam van ontvanger">
 <!ENTITY ccname.label "Achternaam van ontvanger">
+<!-- #### TABLE #### -->
+<!ENTITY ab_switches "Adresboekwisselingen">
+<!ENTITY ab_switches.desc "Bij het beantwoorden van een overeenkomend e-mailadres kunt u nu aanvullende deelwisselingen gebruiken voor adresvariabelen zoals Van, bijvoorbeeld:">
+<!ENTITY ab_contact "Contactpersoon">
+<!ENTITY ab_private "Privé">
+<!ENTITY ab_other "Overig">
+<!ENTITY ab_work "Werk">
 <!ENTITY spec_form.cap "Speciale opmaak">
 <!ENTITY specform_note.label "De zin tussen dubbele accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
 <!ENTITY ex_brack.label "Voorbeeld: Aan: Fred Cc: Marie">
@@ -174,6 +181,21 @@
 <!ENTITY matchTextFromBody "Een RexEx-patroon in een aangehaald e-mailbericht zoeken en invoegen op de functielocatie.">
 <!ENTITY matchTextFromSubject "Een RexEx-patroon in het onderwerp zoeken en invoegen op de functielocatie.">
 <!ENTITY stringmanip.match.comment "Functies matchen: de eerste parameter (de reguliere expressie) dient tussen dubbele aanhalingstekens te staan. De tweede parameter in het te matchen groepsnummer. Gebruik 0 om de volledige expressie te matchen, 1 voor de eerste groep, enz.">
+<!ENTITY stringmanip.alttext "[optionele parameter] Alternatieve tekst: als geen overeenkomst wordt gevonden, wordt de alternatieve tekst ingevoegd.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Aanhalingsmanipulatie">
+<!ENTITY quote_changers.desc "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen.">
+<!ENTITY deleteQuotedText "Verwijdert aangehaalde tekst">
+<!ENTITY replaceQuotedText "Vervangt aangehaalde tekst door HTML">
+<!ENTITY deleteQuotedTags "Verwijdert labels uit het aangehaalde gedeelte">
+<!ENTITY replaceQuotedTags "Vervangt labels uit de aangehaalde tekst door tekst of HTML">
+<!ENTITY Parameters "Parameters">
+<!ENTITY regexpAnyText "Alle tekst - reguliere expressie - dient tussen dubbele aanhalingstekens te staan.">
+<!ENTITY replacementHTML "dient tussen dubbele aanhalingstekens te staan – een tekst of HTML-label dat tussen aanhalingstekens wordt ingevoegd als een overeenkomst wordt gevonden.">
+<!ENTITY quoteLevel "[optioneel, numeriek]: vanaf welk minimaal aanhalingsniveau moet worden begonnen">
+<!ENTITY selector "- wat u wilt gebruiken om het label te adresseren in CSS. Het eenvoudigste geval is ‘img’ of ‘p’, maar attribuutselectors kunnen worden toegevoegd zolang dubbele aanhalingstekens kunnen worden vermeden.">
+<!ENTITY minSize "[optioneel, numeriek]: aantal kByte, minimale grootte voor het verwijderen van het label. Op deze manier behoudt u kleinere afbeeldingen als pictogrammen en emoji’s, terwijl grote afbeeldingen worden verwijderd.">
+<!ENTITY minSize_note "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt.">
 <!ENTITY fix_vartz.cap "Vaste variabelen voor datumopmaak en tijdzone">
 <!ENTITY fix_vartz_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum en tijd (lokale opmaak)">
@@ -232,12 +254,10 @@
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
 <!ENTITY table_note.label "Onjuist gebruik van variabelen zal foutmeldingen in de Foutconsole genereren!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabele">
 <!ENTITY table_new.label "Nieuw">
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
 <!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">

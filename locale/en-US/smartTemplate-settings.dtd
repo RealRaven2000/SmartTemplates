@@ -196,7 +196,7 @@
 <!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
 <!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
 <!ENTITY selector "-what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
-<!ENTITY minSize "[optional, numeric]) - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
+<!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY minSize_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">

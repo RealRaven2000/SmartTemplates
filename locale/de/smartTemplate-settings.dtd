@@ -194,7 +194,7 @@
 <!ENTITY replacementHTML "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt.">
 <!ENTITY quoteLevel "[optional, numerisch]: minimaler Zitatlevel ab dem ersetzt werden soll">
 <!ENTITY selector "- CSS kompatibler Selektor, im simpelsten Fall 'img' oder 'p', Attribut Selektoren können verwendet werden. Ausnahme: doppelte Anführungszeichen müssen vermiden werden.">
-<!ENTITY minSize "[optional, numerisch]: minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
+<!ENTITY minSize "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
 <!ENTITY minSize_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">

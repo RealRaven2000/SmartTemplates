@@ -142,6 +142,7 @@
 <!ENTITY cc.label "抄送人姓名 (默认)">
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "特殊形式">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
 <!ENTITY ex_brack.label "例子: To: Li Cc: Wu">
@@ -215,7 +216,6 @@
 <!ENTITY html_note.label "HTML 模板中请只使用 UTF-8 (Unicode) 字符集！">
 <!ENTITY table.cap "变量的使用情况">
 <!ENTITY table_note.label "不正确使用变量会引发错误，错误消息记录在“错误控制台”！">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "变量">
 <!ENTITY table_new.label "新">
 <!ENTITY table_reply.label "回复">

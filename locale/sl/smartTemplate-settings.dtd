@@ -141,6 +141,7 @@
 <!ENTITY cc.label "Prejemnikovo ime (privzeto)">
 <!ENTITY ccfirstname.label "Prejemnikovo ime">
 <!ENTITY ccname.label "Prejemnikov priimek">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Posebna oblika">
 <!ENTITY specform_note.label "Odseki z dvojnimi oglatimi oklepaji [[Cc: &#37;cc(name)&#37;]] bodo prikazani samo, če se spremenljivko &#37;cc(name)&#37; lahko nadomesti!">
 <!ENTITY ex_brack.label "Primer: Za: Jože Kp: Jure">
@@ -168,6 +169,7 @@
 <!ENTITY matchTextFromBody "Poišči vzorec RegEx v e-pošti z navedkom in vstavi na mestu funkcije.">
 <!ENTITY matchTextFromSubject "Poišči vzorec RegEx v zadevi in vstavi na mestu funkcije.">
 <!ENTITY stringmanip.match.comment "Funkcije ujemanja: prvi parameter (običajni izraz) mora biti v dvojnih narekovajih. Drugi parameter je število skupine ujemanja. Uporabite 0 za ujemanje celotnega izraza, 1 za prvo skupino itd.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'">
 <!ENTITY fix_vartz_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / Čas (oblika trenutnega jezika)">
@@ -222,12 +224,10 @@
 <!ENTITY html_note.label "V predlogah HTML uporabite samo nabor znakov UTF-8 (Unicode)!">
 <!ENTITY table.cap "Uporaba spremenljivk">
 <!ENTITY table_note.label "Nepravilna uporaba spremenljivk bo ustvarila sporočila o napakah v 'konzoli za napake'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Spremenljivka">
 <!ENTITY table_new.label "Sestavi">
 <!ENTITY table_reply.label "Odgovori">
 <!ENTITY table_fwd.label "Posreduj">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
 <!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">

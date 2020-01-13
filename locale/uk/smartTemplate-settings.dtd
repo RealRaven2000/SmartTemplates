@@ -138,6 +138,7 @@
 <!ENTITY cc.label "Прізвище отримувача копії повідомлення (за замовчуванням)">
 <!ENTITY ccfirstname.label "Ім'я отримувача копії повідомлення">
 <!ENTITY ccname.label "Прізвище отримувача копії повідомлення">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Спеціальний формат">
 <!ENTITY specform_note.label "Розділи всередині подвійних квадратних дужок [[Cc: &#37;cc(name)&#37;]] будуть відображатися тільки в тому випадку, якщо змінна &#37;cc(name)&#37; може бути замінена!">
 <!ENTITY ex_brack.label "Приклад: To: boo Cc: foo">
@@ -165,6 +166,7 @@
 <!ENTITY matchTextFromBody "Знаходження за шаблоном RegEx у цитованому Email та вставлення результату в місце розташування функції.">
 <!ENTITY matchTextFromSubject "Знайти за шаблоном RegEx у темі та вставити результат в місце розташування функції.">
 <!ENTITY stringmanip.match.comment "Функції відповідності: Перший параметр (регулярний вираз) повинен бути в межах подвійних лапок. Другий параметр - це номер групи відповідності. Використовуйте 0 для повного виразу, 1 для першої групи тощо.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Фіксовані змінні для 'формату дати'/'часового поясу'">
 <!ENTITY fix_vartz_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / Час (місцевий формат)">
@@ -219,12 +221,10 @@
 <!ENTITY html_note.label "Будь ласка використовуйте тільки UTF-8 (Unicode) кодування всередині HTML шаблонів!">
 <!ENTITY table.cap "Використання змінних">
 <!ENTITY table_note.label "Неправильне використання змінних викличе повідомлення про помилку в 'Консолі помилок'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Змінна">
 <!ENTITY table_new.label "Записати">
 <!ENTITY table_reply.label "Відповідь">
 <!ENTITY table_fwd.label "Переслати">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro stuff ">
 <!ENTITY label.insertLicense "Введіть свій особистий ліцензійний ключ тут:">
 <!ENTITY label.insertLicense.tooltip "Ваш ліцензійний ключ міститься в електронному листі з підтвердженням замовлення від Fastspring.">

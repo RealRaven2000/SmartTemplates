@@ -147,6 +147,13 @@
 <!ENTITY cc.label "CC 受信者の名前とメールアドレス (既定)">
 <!ENTITY ccfirstname.label "CC 受信者の名前 (名字を除く)">
 <!ENTITY ccname.label "CC 受信者の名前">
+<!-- #### TABLE #### -->
+<!ENTITY ab_switches "アドレス帳の切り換え">
+<!ENTITY ab_switches.desc "マッチするメールアドレスに返信するときに、以下のようなアドレス帳の追加パートに切り替えて変数を利用することができます:">
+<!ENTITY ab_contact "連絡先">
+<!ENTITY ab_private "プライベート">
+<!ENTITY ab_other "その他">
+<!ENTITY ab_work "勤務先">
 <!ENTITY spec_form.cap "条件文">
 <!ENTITY specform_note.label "括弧 [[Cc: &#37;cc(name)&#37;]] 内のテンプレートは、その中の変数 &#37;cc(name)&#37; が利用可能である時のみ有効となります。">
 <!ENTITY ex_brack.label "例: To: boo Cc: foo">
@@ -174,6 +181,21 @@
 <!ENTITY matchTextFromBody "引用部から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
 <!ENTITY matchTextFromSubject "件名から正規表現に適合する文字列を見つけ、関数の位置に挿入します">
 <!ENTITY stringmanip.match.comment "一致関数: 1 つ目のパラメーター (正規表現) は、二重引用符で囲まれている必要があります。2 つめのパラメーターは、一致したグループの数を示します。0: 完全一致、1: 1 つめに一致、など。">
+<!ENTITY stringmanip.alttext "[オプションパラメーター] 代替テキスト: マッチするものが見つからない場合、代わりに代替テキストを挿入します">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "引用部の操作">
+<!ENTITY quote_changers.desc "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。">
+<!ENTITY deleteQuotedText "引用文の消去">
+<!ENTITY replaceQuotedText "引用文を HTML で置換">
+<!ENTITY deleteQuotedTags "引用部からタグを消去">
+<!ENTITY replaceQuotedTags "引用部のタグをテキストあるいは HTML で置換">
+<!ENTITY Parameters "パラメーター">
+<!ENTITY regexpAnyText "任意のテキスト - 正規表現 - ダブルクオートで囲まれている必要があります。">
+<!ENTITY replacementHTML "ダブルクオートで囲まれている必要があります - 引用部でマッチするすべての場所において、テキストあるいは HTML タグで置換されます">
+<!ENTITY quoteLevel "[オプション, 数値]: 開始する引用レベルの最小値">
+<!ENTITY selector "- CSS 中で処理するタグを指定します。単純なケースでは 'img' や 'p' です。ダブルクオートの利用を避けられるのであれば、属性を追加で指定することもできます。">
+<!ENTITY minSize "[オプション, 数値]) - タグを消去する最小サイズ (kB 単位)。これにより、大きな画像が除去される状況でもアイコンや絵文字のような小さな画像をそのままにできます。">
+<!ENTITY minSize_note "改行を含むことができるため、空白を \s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">
@@ -232,12 +254,10 @@
 <!ENTITY html_note.label "HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
 <!ENTITY table.cap "変数の使用">
 <!ENTITY table_note.label "変数の使用が適切でない場合には、エラーコンソールにエラーが表示されます。">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "変数">
 <!ENTITY table_new.label "新規">
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
 <!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">

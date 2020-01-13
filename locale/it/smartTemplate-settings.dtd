@@ -147,6 +147,13 @@
 <!ENTITY cc.label "Nome del destinatario (predefinito)">
 <!ENTITY ccfirstname.label "Cognome del destinatario">
 <!ENTITY ccname.label "Nome del destinatario">
+<!-- #### TABLE #### -->
+<!ENTITY ab_switches "Interruttori della rubrica">
+<!ENTITY ab_switches.desc "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare switch di parti aggiuntivi per variabili di indirizzo come, ad esempio:">
+<!ENTITY ab_contact "Contatto">
+<!ENTITY ab_private "Privato">
+<!ENTITY ab_other "Altro">
+<!ENTITY ab_work "Lavoro">
 <!ENTITY spec_form.cap "Formati speciali">
 <!ENTITY specform_note.label "Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!">
 <!ENTITY ex_brack.label "Esempio: A: boo Cc: foo">
@@ -174,6 +181,21 @@
 <!ENTITY matchTextFromBody "Trova una espressione regolare nel messaggio citato ed inserisce una funzione.">
 <!ENTITY matchTextFromSubject "Trova una espressione regolare nell'oggetto ed inserisce una funzione.">
 <!ENTITY stringmanip.match.comment "Funzioni di abbinamento: il primo parametro (l'espressione regolare) deve essere racchiuso tra doppi apici. Il secondo parametro è il numero del gruppo di abbinamento. Utilizza 0 per abbinare l'espressione completa, 1 per il primo gruppo, e così via.">
+<!ENTITY stringmanip.alttext "[parametro opzionale] Testo alternativo: se non viene trovata alcuna corrispondenza, inserisce invece il testo alternativo.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipolazione delle citazioni">
+<!ENTITY quote_changers.desc "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio.">
+<!ENTITY deleteQuotedText "Elimina il testo citato">
+<!ENTITY replaceQuotedText "Sostituisce il testo citato con HTML">
+<!ENTITY deleteQuotedTags "Elimina i tag dalla citazione">
+<!ENTITY replaceQuotedTags "Sostituisce i tag della citazione con testo o HTML">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Qualsiasi testo - espressione regolare - deve essere racchiuso tra virgolette.">
+<!ENTITY replacementHTML "deve essere racchiuso tra virgolette: un tag di testo o html che verrà inserito tra virgolette ogni volta che viene trovata una corrispondenza.">
+<!ENTITY quoteLevel "[opzionale, numerico]: da quale livello minimo di preventivo iniziare">
+<!ENTITY selector "- cosa useresti per indirizzare il tag in CSS. il caso più semplice 'img' o 'p' ma i selettori di attributo possono essere aggiunti purché si possano evitare virgolette doppie.">
+<!ENTITY minSize "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni.">
+<!ENTITY minSize_note "Si noti che gli spazi bianchi possono essere meglio rappresentati come \ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie.">
 <!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
 <!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data/ora (formato locale)">
@@ -232,12 +254,10 @@
 <!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML !">
 <!ENTITY table.cap "Utilizzo delle variabili">
 <!ENTITY table_note.label "Se una variabile viene utilizzata in modo non corretto viene registrato un errore nella console degli errori !">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabile">
 <!ENTITY table_new.label "Nuovi">
 <!ENTITY table_reply.label "Risposta">
 <!ENTITY table_fwd.label "Inoltrare">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Inserire la propria chiave di licenza qui:">
 <!ENTITY label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">

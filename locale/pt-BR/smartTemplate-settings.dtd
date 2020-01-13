@@ -146,6 +146,7 @@
 <!ENTITY cc.label "Destinatário (padrão)">
 <!ENTITY ccfirstname.label "Primeiro nome do destinatário">
 <!ENTITY ccname.label "Nome do destinatário">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
 <!ENTITY ex_brack.label "Exemplo: Para: Fred Cc: Jane">
@@ -65690,6 +65691,7 @@
 <!ENTITY matchTextFromBody "Encontra um padrão RegEx no e-mail citado e insere no local da função.">
 <!ENTITY matchTextFromSubject "Encontra um padrão RegEx no assunto e insere no local da função.">
 <!ENTITY stringmanip.match.comment "Funções correspondentes: O primeiro parâmetro (a expressão regular) deve estar entre aspas duplas. O segundo parâmetro é o número do grupo de correspondência. Use 0 para corresponder a expressão completa, 1 para o primeiro grupo, etc.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Variáveis para data e hora">
 <!ENTITY fix_vartz_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e hora (formato local)">
@@ -65748,12 +65750,10 @@
 <!ENTITY html_note.label "Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!">
 <!ENTITY table.cap "Uso das variáveis">
 <!ENTITY table_note.label "Usar variáveis incorretamente gerará mensagens de erro no 'console de erros'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variáveis">
 <!ENTITY table_new.label "Nova">
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Encaminhar">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Insira sua licença pessoal aqui:">
 <!ENTITY label.insertLicense.tooltip "Sua chave de licença foi enviada no e-mail de confirmação de compra da Fastspring.">

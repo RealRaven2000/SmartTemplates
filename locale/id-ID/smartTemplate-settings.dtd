@@ -142,6 +142,7 @@
 <!ENTITY cc.label "Nama Penerima (Bawaan)">
 <!ENTITY ccfirstname.label "Nama depan penerima">
 <!ENTITY ccname.label "Nama penerima">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Format khusus">
 <!ENTITY specform_note.label "Bagian dalam kurung ganda  [[Cc: &#37;cc(name)&#37;]] hanya akan ditampilkan jika variabel &#37;cc(name)&#37; bisa diganti!">
 <!ENTITY ex_brack.label "Contoh: Untuk: Fred Cc: Jane">
@@ -169,6 +170,7 @@
 <!ENTITY matchTextFromBody "Temukan pola RegEx di Email yang dikutip dan masukkan di lokasi fungsi.">
 <!ENTITY matchTextFromSubject "Temukan pola RegEx dalam subjek dan masukkan di lokasi fungsi.">
 <!ENTITY stringmanip.match.comment "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Variabel tetap untuk 'Format Tanggal' / 'Zona Waktu'">
 <!ENTITY fix_vartz_note.label "Dapat digabung dengan &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Tanggal / Waktu (format lokal)">
@@ -227,12 +229,10 @@
 <!ENTITY html_note.label "Mohon gunakan charset UTF-8 (Unicode) didalam template HTML!">
 <!ENTITY table.cap "Penggunaan variabel">
 <!ENTITY table_note.label "Menggunakan variabel secara tidak benar akan menghasilkan pesan kesalahan di 'Error Console'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Tulis">
 <!ENTITY table_reply.label "Balas">
 <!ENTITY table_fwd.label "Teruskan">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Masukkan Kunci Lisensi Personal anda disini:">
 <!ENTITY label.insertLicense.tooltip "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring.">

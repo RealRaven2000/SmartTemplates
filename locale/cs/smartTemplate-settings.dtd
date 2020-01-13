@@ -145,6 +145,7 @@
 <!ENTITY cc.label "Jméno příjemce (defaultní)">
 <!ENTITY ccfirstname.label "Křestní jméno příjemce">
 <!ENTITY ccname.label "Jméno příjemce">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Speciální formát">
 <!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
 <!ENTITY ex_brack.label "Příklad: To: Fred Cc:Jane">
@@ -172,6 +173,7 @@
 <!ENTITY matchTextFromBody "Najdi RegEx vzor v hlavičce e-mailu a vlož do funkce.">
 <!ENTITY matchTextFromSubject "Najdi RegEx vzor v předmětu a vlož do funkce.">
 <!ENTITY stringmanip.match.comment "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
@@ -230,12 +232,10 @@
 <!ENTITY html_note.label "Prosím používej pouze UTF-8 (Unicode) znaky v HTML šabloně!">
 <!ENTITY table.cap "Použití promněnných">
 <!ENTITY table_note.label "Nesprávné použití promněnných vytvoří chybovou hlášku v 'Chybové konzoli'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Proměnná">
 <!ENTITY table_new.label "Zápis">
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Sem vložte svůj osobní licenční klíč:">
 <!ENTITY label.insertLicense.tooltip "Váš licenční klíč je obsažen v e-mailu s potvrzením objednávky od Fastspring.">

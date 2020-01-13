@@ -145,6 +145,12 @@
 <!ENTITY cc.label "Nombre de destinatario (predeterminado)">
 <!ENTITY ccfirstname.label "Nombre de pila del destinatario">
 <!ENTITY ccname.label "Apellido del destinatario">
+<!-- #### TABLE #### -->
+<!ENTITY ab_switches "Variables de la libreta de direcciones">
+<!ENTITY ab_contact "Contacto">
+<!ENTITY ab_private "Privado">
+<!ENTITY ab_other "Otros">
+<!ENTITY ab_work "Trabajo">
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;">
 <!ENTITY ex_brack.label "Ejemplo: Para: boo Cc: foo">
@@ -172,6 +178,22 @@
 <!ENTITY matchTextFromBody "Encontrar una patrón de RegEx en el correco citado e insertar en la ubicación de la función.">
 <!ENTITY matchTextFromSubject "Encontrar una patrón de RegEx en el asunto e insertar en la ubicación de la función.">
 <!ENTITY stringmanip.match.comment "Funciones de coincidencia: El primer parámetro (expresión regular) debe estar dentro de comillas. El segundo es el el número de grupo de coincidencia. Use 0 para que coincida toda la expresión, 1 para el primer grupo, etc.">
+<!ENTITY stringmanip.alttext "[parámetro opcional] Texto alternativo: si no se encuentra ninguna coincidencia, inserta el texto alternativo en su lugar.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipulación de cotizaciones">
+<!ENTITY quote_changers.desc "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio.">
+<!ENTITY deleteQuotedText "Elimina el texto citado">
+<!ENTITY replaceQuotedText "Reemplaza el texto citado con HTML">
+<!ENTITY deleteQuotedTags "Elimina tags de la cita.">
+<!ENTITY replaceQuotedTags "Reemplaza las etiquetas html de la cita con texto o html">
+<!ENTITY Parameters "Parámetros">
+<!ENTITY regexpAnyText "Cualquier texto, expresión regular, debe estar entre comillas dobles.">
+<!ENTITY replacementHTML "debe estar entre comillas dobles, ya sea un texto o una etiqueta html que se insertará entre comillas donde se encuentre una coincidencia.">
+<!ENTITY quoteLevel "[opcional, numérico]: desde qué nivel mínimo de presupuesto comenzar">
+<!ENTITY selector "- lo que usarías para direccionar la etiqueta en css. caso más simple 'img' o 'p' pero los selectores de atributos se pueden agregar siempre que se puedan evitar las comillas dobles.">
+<!ENTITY minSize "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes.">
+<!ENTITY minSize_note "142/5000
+Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">
@@ -230,12 +252,10 @@
 <!ENTITY html_note.label "¡Por favor, utilice únicamente caracteres UTF-8 (Unicode) en las plantillas de HTML!">
 <!ENTITY table.cap "Uso de las variables">
 <!ENTITY table_note.label "Si se usa incorrectamente una variable aparecerá un error en la Consola de error.">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Redactar">
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Reenviar">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Introduzca su clave personal de Licencia:">
 <!ENTITY label.insertLicense.tooltip "Su clave de licencia está incluida en su correo de confirmación de pedido de Fastspring.">

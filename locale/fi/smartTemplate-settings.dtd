@@ -147,6 +147,7 @@
 <!ENTITY cc.label "Vastaanottajan nimi (oletus)">
 <!ENTITY ccfirstname.label "Vastaanottajan etunimi">
 <!ENTITY ccname.label "Vastaanottajan nimi">
+<!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Erikoismuotoilu">
 <!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
 <!ENTITY ex_brack.label "Esim: To: boo Cc: foo">
@@ -174,6 +175,7 @@
 <!ENTITY matchTextFromBody "Etsi RegEx-kaava lainatusta sähköpostista ja lisää se funktioihin.">
 <!ENTITY matchTextFromSubject "Etsi RegEx-kaava aiheesta ja lisää se funktioihin.">
 <!ENTITY stringmanip.match.comment "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne.">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
@@ -232,12 +234,10 @@
 <!ENTITY html_note.label "Käytä vain UTF-8-merkistökoodausta (Unicode) HTML-pohjissa!">
 <!ENTITY table.cap "Muuttujien käyttö">
 <!ENTITY table_note.label "Jos muuttuja on virheellinen virhekonsoliin tulee virheviesti!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Muuttuja">
 <!ENTITY table_new.label "Uusi">
 <!ENTITY table_reply.label "Vastaa">
 <!ENTITY table_fwd.label "Välitä">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Syötä henkilökohtainen lisenssiavain tähän:">
 <!ENTITY label.insertLicense.tooltip "Lisenssiavain löytyy Fatspringiltä tulleessa varmistussähköpostissa">
