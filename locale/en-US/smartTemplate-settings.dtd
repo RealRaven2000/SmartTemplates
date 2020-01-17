@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
 <!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
 <!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Resolve names from address books">
@@ -96,7 +96,7 @@
 <!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Process signature">
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
-<!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
+<!ENTITY pref_cursorInsertSpace "Insert Space to highlight %cursor%">
 <!ENTITY pref_stationerySupport "Support Stationery addon">
 <!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with SmartTemplate⁴.">
 <!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
@@ -154,13 +154,13 @@
 <!ENTITY ccname.label "Recipient's name">
 <!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as %from%, such as:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
 <!ENTITY spec_form.cap "Special format">
-<!ENTITY specform_note.label "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
+<!ENTITY specform_note.label "Sections within double brackets [[Cc: %cc(name)%]] will only be displayed if the variable %cc(name)% can be replaced!">
 <!ENTITY ex_brack.label "Example: To: John | Cc: Alison">
 <!ENTITY brack_with_var.label "The following variables can be used within [[...]]">
 <!ENTITY sub_var.cap "Subject">
@@ -198,13 +198,13 @@
 <!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
 <!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
 <!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
-<!ENTITY selector "-what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
+<!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
 
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">
-<!ENTITY fix_vartz_note.label "Can be combined with &#37;X:=sent&#37;">
+<!ENTITY fix_vartz_note.label "Can be combined with %X:=sent%">
 <!ENTITY datelocal.label "Date / Time (locale format)">
 <!ENTITY dateshort.label "Date / Time short (e.g. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Timezone (+0100, +0200, ... )">
@@ -235,7 +235,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '%'. See also:">
 <!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">
 <!ENTITY xsent_note.label "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time.">

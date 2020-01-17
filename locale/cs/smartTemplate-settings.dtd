@@ -82,8 +82,8 @@
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat "Výchozí formát adresy:">
+<!ENTITY defaultMimeFormat_tip "Formát, který se použije při nahrazení obyčejného %to%; %from%; %cc% adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu.">
 <!ENTITY pref_addressDelimiter "Oddělit více adres s:">
 <!ENTITY pref_addressDelimiter_tip "Oddělovač mezi adresama. Outlook používá středník(;) Výchozí pro Thunderbird je čárka (,)">
 <!ENTITY resolveNamesFromAB "Získej jméno z adresáře">
@@ -93,7 +93,7 @@
 <!ENTITY resolveABRemoveMail "Smaž e-mailovou adresu pokud formátovací parametr je uveden">
 <!ENTITY suppressMailtToLink "Omezení mail klienta přidat odkaz do e-mailové adresy.">
 <!ENTITY capitalizeNames "Využij Jména">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
+<!ENTITY guessNameFromMail "Hádejte Pojmenujte části z e-mailové adresy, pokud chybí">
 <!ENTITY pref_parseSignature "Proces podpisu">
 <!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
 <!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
@@ -141,7 +141,7 @@
 <!ENTITY standardformat.config "Konfigurovat výchozí formát…">
 <!ENTITY tofirstname.label "Křestní jméno příjemce">
 <!ENTITY toname.label "Jméno příjemce">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
+<!ENTITY tofwd.label "Pomocí fwd přidejte příjemce, na který lze kliknout, do předávaných e-mailů">
 <!ENTITY from_var.cap "Odesílatel (From)">
 <!ENTITY from_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj.">
 <!ENTITY from.label "Jméno odesílatele (defaultní)">
@@ -209,9 +209,9 @@
 <!ENTITY datetz.label "Časová zóna (+0100, +0200, ... )">
 <!ENTITY tzname.label "Zkratka čas. zóny GMT, PST, EST, ... ">
 <!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!ENTITY dateoffset_note.label "Následující funkce přidává offset ke všem následujícím zobrazeným časům.">
+<!ENTITY calculate.explain "DD = počet dní, které se mají přidat. H = počet hodin, které lze přidat (volitelné). MM = minuty pro přidání (volitelné) ">
+<!ENTITY calculate.reset "Nastavením argumentu na 0 přestanete měnit všechna data.">
 <!ENTITY var_custom.cap "Proměnné pro přizpůsobený formát data">
 <!ENTITY customdf_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY A.label "Den týdne (pátek)">
@@ -233,9 +233,9 @@
 <!ENTITY p1.label "dop.">
 <!ENTITY p2.label "Dop.">
 <!ENTITY p3.label "Dop.">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.label "Funkce pro vložení aktuálního času (pole, na které lze kliknout).">
+<!ENTITY dateformat.explain "Většina výše uvedených proměnných může být použita v řetězci parametrů vynecháním '%'. Viz také:">
+<!ENTITY dateformat.example "Příklad: ">
 <!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy.">
 <!ENTITY xsent_long.cap "Příklad pro dlouhý řetězec">

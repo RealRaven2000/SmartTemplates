@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
 <!ENTITY defaultMimeFormat "Oletusosoitteen muoto:">
-<!ENTITY defaultMimeFormat_tip "Käytettävä muoto korvaamalla tavallinen &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Esim. firstname,lastname,??mail näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen.">
+<!ENTITY defaultMimeFormat_tip "Käytettävä muoto korvaamalla tavallinen &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Esim. (firstname,lastname,??mail) näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen.">
 <!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
 <!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">

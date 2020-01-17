@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
 <!ENTITY defaultMimeFormat "Standardformat für Adressen:">
-<!ENTITY defaultMimeFormat_tip "Format beim Ersetzen von &#37;to&#37; &#37;from&#37; &#37;cc&#37; Addressen. z.B. firstname,lastname,??mail ersetzt mit Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt.">
+<!ENTITY defaultMimeFormat_tip "Format beim Ersetzen von %to% %from% %cc% Addressen. z.B. (firstname,lastname,??mail) ersetzt durch Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt.">
 <!ENTITY pref_addressDelimiter "Trenne mehrere Korrespondenten mit:">
 <!ENTITY pref_addressDelimiter_tip "Trennzeichen zwischen mehreren Briefpartnern. Outlook benutzt Semikolon (;) Die Voreinstellung in Thunderbird ist Komma (,)">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
@@ -96,7 +96,7 @@
 <!ENTITY guessNameFromMail "Fehlende Namen aus der Email Adresse erraten">
 <!ENTITY pref_parseSignature "Signatur verarbeiten">
 <!ENTITY pref_parseSignature_tip "Variablen in Signaturtext einfügen">
-<!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
+<!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um %cursor% hervorzuheben">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
 <!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SmartTemplate⁴ Variablen in den Vorlagen von Stationery.">
@@ -154,13 +154,13 @@
 <!ENTITY ccname.label "Empfängername">
 <!-- #### TABLE #### -->
 <!ENTITY ab_fields "Felder für Adressbuch">
-<!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:">
+<!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie %from% folgende zusätzliche Felder hinzugefügt werden:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Sonstiges">
 <!ENTITY ab_work "Dienstlich">
 <!ENTITY spec_form.cap "Sonderformatierung">
-<!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
+<!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: %cc(name)%]] wird nur dann gezeigt, wenn die Variable %cc(name)% ersetzt werden konnte!">
 <!ENTITY ex_brack.label "Beispiel: An: Friedrich | Cc: Eva">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
 <!ENTITY sub_var.cap "Betreff">
@@ -203,7 +203,7 @@
 <!ENTITY whitespace_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
 <!ENTITY minSize_detail "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
-<!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
+<!ENTITY fix_vartz_note.label "kombinierbar mit %X:=sent%">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
 <!ENTITY dateshort.label "Kurzformat Datum und Zeit (z.B. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Zeitzone (+0100, +0200, … )">

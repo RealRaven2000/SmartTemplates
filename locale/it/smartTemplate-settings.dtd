@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
 <!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
 <!ENTITY defaultMimeFormat "Formato indirizzo predefinito:">
-<!ENTITY defaultMimeFormat_tip "Formato da utilizzare quando si sostituiscono gli indirizzi da &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Per firstname,lastname,??mail mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta.">
+<!ENTITY defaultMimeFormat_tip "Formato da utilizzare quando si sostituiscono gli indirizzi da &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Per (firstname,lastname,??mail) mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta.">
 <!ENTITY pref_addressDelimiter "Usa il carattere seguente per separare più destinatari:">
 <!ENTITY pref_addressDelimiter_tip "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,).">
 <!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">

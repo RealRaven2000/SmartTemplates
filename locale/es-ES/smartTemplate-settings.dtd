@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
 <!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat_tip "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo.">
 <!ENTITY pref_addressDelimiter "Delimitar corresponsales múltiples con:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
@@ -141,7 +141,7 @@
 <!ENTITY standardformat.config "Configurar formato predeterminado…">
 <!ENTITY tofirstname.label "Nombre de pila del destinatario">
 <!ENTITY toname.label "Apellido del destinatario">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
+<!ENTITY tofwd.label "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados">
 <!ENTITY from_var.cap "Remitente (De)">
 <!ENTITY from_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY from.label "Nombre de remitente (predeterminado)">
@@ -233,9 +233,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
+<!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '%'. Ver también:">
+<!ENTITY dateformat.example "Ejemplo: ">
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">

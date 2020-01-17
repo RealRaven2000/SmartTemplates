@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Corrigir sobrenome, nome">
 <!ENTITY pref_nameSwap_tip "Altera 'sobrenome, nome'' para 'Primeiro Último'">
 <!ENTITY defaultMimeFormat "Formato de endereço padrão:">
-<!ENTITY defaultMimeFormat_tip "Formato a ser usado ao substituir endereços simples &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Por exemplo. firstname,lastname,??mail mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email.">
+<!ENTITY defaultMimeFormat_tip "Formato a ser usado ao substituir endereços simples &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Por exemplo. (firstname,lastname,??mail) mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email.">
 <!ENTITY pref_addressDelimiter "Delimitar vários correspondentes com:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre vários correspondentes. O Outlook usa ponto e vírgula (;) O padrão do Thunderbird é Vírgula (,)">
 <!ENTITY resolveNamesFromAB "Resolver nomes do catálogo de endereços">
@@ -65751,7 +65751,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.explain "A maioria das variáveis de tempo acima pode ser usada na sequência de parâmetros, omitindo '%'. Veja também:">
 <!ENTITY dateformat.example "Exemplo:">
 <!ENTITY var_xsent.cap "Uso do &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores.">

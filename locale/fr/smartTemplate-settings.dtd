@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Corriger l'affichage &quot;nom, prénom&quot;">
 <!ENTITY pref_nameSwap_tip "Change &quot;nom, prénom&quot; en &quot;prénom, nom&quot;">
 <!ENTITY defaultMimeFormat "Format d'adresse par défaut:">
-<!ENTITY defaultMimeFormat_tip "Format à utiliser lors du remplacement des adresses &#37;yo&#37; &#37;from&#37; &#37;cc&#37;. Par exemple.  firstname,lastname,??mail affichera le prénom suivi du nom de famille; si les deux sont indisponibles, l'adresse e-mail sera affichée.">
+<!ENTITY defaultMimeFormat_tip "Format à utiliser lors du remplacement des adresses &#37;yo&#37; &#37;from&#37; &#37;cc&#37;. Par exemple.  (firstname,lastname,??mail) affichera le prénom suivi du nom de famille; si les deux sont indisponibles, l'adresse e-mail sera affichée.">
 <!ENTITY pref_addressDelimiter "Énumérer plusieurs correspondants en utilisant :">
 <!ENTITY pref_addressDelimiter_tip "Délimiteur entre plusieurs correspondants. Outlook utilise des points-virgules (;), pour Thunderbird, par défaut, ce sont des virgules (,).">
 <!ENTITY resolveNamesFromAB "Résoudre les noms à partir du carnet d'adresses">
@@ -198,7 +198,7 @@
 <!ENTITY regexpAnyText "Tout texte - expression régulière - doit être entre guillemets.">
 <!ENTITY replacementHTML "doit être entre guillemets doubles - soit un texte, soit une balise html qui sera insérée entre guillemets partout où une correspondance sera trouvée.">
 <!ENTITY quoteLevel "[facultatif, numérique]: à partir de quel niveau de devis minimal">
-<!ENTITY selector "-ce que vous utiliseriez pour adresser la balise dans css. le cas le plus simple 'img' ou 'p' mais des sélecteurs d'attributs peuvent être ajoutés tant que les guillemets doubles peuvent être évités.">
+<!ENTITY selector "- ce que vous utiliseriez pour adresser la balise dans css. le cas le plus simple 'img' ou 'p' mais des sélecteurs d'attributs peuvent être ajoutés tant que les guillemets doubles peuvent être évités.">
 <!ENTITY minSize "[facultatif, numérique] - nombre de koctets, taille minimale pour supprimer la balise. De cette façon, vous pouvez conserver des images plus petites comme des icônes / emojis tout en jetant de grandes images.">
 <!ENTITY whitespace_note "Notez que les espaces peuvent être mieux représentés sous forme de \ s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés.">
 <!ENTITY minSize_detail "Il n'est pas toujours possible de déterminer la taille, en particulier si Thunderbird est toujours en train de charger l'image, souvent en raison d'une grande taille - dans ce cas, la balise sera supprimée de toute façon.">
