@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Shrani predlogo ...">
 <!ENTITY btnLoadTemplate.tooltip "Naloži predlogo ...">
 <!ENTITY btnYouTube.tooltip "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih">
+<!ENTITY tip.fileTemplates "Kliknite in preberite celotno dokumentacijo o pisarniških materialih in zunanjih predlog HTML na našem spletnem mestu za podporo…">
 <!ENTITY pref_server_def "Splošno">
 <!ENTITY pref_def.label "Uporabi splošno">
 <!ENTITY pref_def.cap "Odznačite 'Uporabi splošno' za ustvarjanje glave navedka po meri za ta račun,">
@@ -81,6 +82,8 @@
 <!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
 <!ENTITY pref_nameSwap "Pravilni priimek, ime">
 <!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
+<!ENTITY defaultMimeFormat "Privzeta oblika naslova:">
+<!ENTITY defaultMimeFormat_tip "Oblika za uporabo pri zamenjavi navadnih&#37; do&#37;&#37; iz&#37;&#37; cc&#37; naslovov. Npr. (firstname,lastname,??mail), bo prikazano ime, ki mu sledi priimek; če oba nista na voljo, bo prikazan e-poštni naslov.">
 <!ENTITY pref_addressDelimiter "Loči dopisnike s/z:">
 <!ENTITY pref_addressDelimiter_tip "Ločilo med dopisniki. Outlook uporablja podpičje (;). Privzeto za Thunderbird je vejica (,).">
 <!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
@@ -90,6 +93,7 @@
 <!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
 <!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
 <!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
+<!ENTITY guessNameFromMail "Uganite, poimenujte dele iz e-poštnega naslova, če manjkajo">
 <!ENTITY pref_parseSignature "Podpis opravila">
 <!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
 <!ENTITY pref_cursorInsertSpace "Vstavi presledek za označitev &#37;cursor&#37;">
@@ -116,6 +120,11 @@
 <!ENTITY fix_var.cap "Stalne spremenljivke">
 <!ENTITY ownname.label "Vaše ime">
 <!ENTITY ownmail.label "Vaš e-poštni naslov">
+<!ENTITY identity_ab "Uporabite ključno besedo 'addressbook', da iz naslova najdete dodatne podatke o identiteti.">
+<!ENTITY identity_ab.field "Za dodatne vrednosti polja glejte poglavje 'Polja adresarja' spodaj.
+Send feedback">
+<!ENTITY identity_ab.example "Primer">
+<!ENTITY identity_ab.phoneno "Telefon št">
 <!ENTITY date.label "Datum / Čas (isto kot izvirna 'glava pošte')">
 <!ENTITY tomail.label "E-poštni naslov prejemnika">
 <!ENTITY frommail.label "E-poštni naslov pošiljatelja">
@@ -126,11 +135,14 @@
 <!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
 <!ENTITY attach.label "Dodaj datoteko kot prilogo">
 <!ENTITY cursor.label "Nastavi položaj kazalca">
+<!ENTITY spellcheck.label "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen.">
 <!ENTITY to_var.cap "Prejemnik (Za)">
 <!ENTITY to_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
 <!ENTITY to.label "Prejemnikovo ime (privzeto)">
+<!ENTITY standardformat.config "Konfiguriraj privzeto obliko…">
 <!ENTITY tofirstname.label "Prejemnikovo ime">
 <!ENTITY toname.label "Prejemnikov priimek">
+<!ENTITY tofwd.label "Uporabite 'fwd', da v posredovano pošto dodate prejemnika, ki ga je mogoče klikniti">
 <!ENTITY from_var.cap "Pošiljatelj (Od)">
 <!ENTITY from_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
 <!ENTITY from.label "Pošiljateljevo ime (privzeto)">
@@ -142,6 +154,12 @@
 <!ENTITY ccfirstname.label "Prejemnikovo ime">
 <!ENTITY ccname.label "Prejemnikov priimek">
 <!-- #### TABLE #### -->
+<!ENTITY ab_fields "Polja Adresarja">
+<!ENTITY ab_fields.desc "Ko odgovarjate na ustrezen e-poštni naslov, lahko zdaj uporabite dodatna polja za spremenljivke naslova, kot je &#37;from&#37;, na primer:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Zasebno">
+<!ENTITY ab_other "Drugo">
+<!ENTITY ab_work "Delo">
 <!ENTITY spec_form.cap "Posebna oblika">
 <!ENTITY specform_note.label "Odseki z dvojnimi oglatimi oklepaji [[Cc: &#37;cc(name)&#37;]] bodo prikazani samo, če se spremenljivko &#37;cc(name)&#37; lahko nadomesti!">
 <!ENTITY ex_brack.label "Primer: Za: Jože | Kp: Jure">
@@ -169,14 +187,31 @@
 <!ENTITY matchTextFromBody "Poišči vzorec RegEx v e-pošti z navedkom in vstavi na mestu funkcije.">
 <!ENTITY matchTextFromSubject "Poišči vzorec RegEx v zadevi in vstavi na mestu funkcije.">
 <!ENTITY stringmanip.match.comment "Funkcije ujemanja: prvi parameter (običajni izraz) mora biti v dvojnih narekovajih. Drugi parameter je število skupine ujemanja. Uporabite 0 za ujemanje celotnega izraza, 1 za prvo skupino itd.">
+<!ENTITY stringmanip.alttext "[izbirni parameter] Alternativno besedilo: če ni najdeno nobenega ujemanja, namesto tega vstavi alternativno besedilo.">
 <!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipulacija citatov">
+<!ENTITY quote_changers.desc "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor.">
+<!ENTITY deleteQuotedText "Izbriše citirano besedilo">
+<!ENTITY replaceQuotedText "Nadomešča citirano besedilo s HTML">
+<!ENTITY deleteQuotedTags "Izbriše oznake iz ponudbe">
+<!ENTITY replaceQuotedTags "Zamenja oznake iz citata z besedilom ali html-jem">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Vsako besedilo - reden izraz - mora biti v dvojnih narekovajih.">
+<!ENTITY replacementHTML "mora biti v dvojnih narekovajih - bodisi besedilu ali html oznaki, ki bo vstavljen v narekovaje, kjer koli se najde ujemanje.">
+<!ENTITY quoteLevel "[izbirno, numerično]: od katere najnižje ravni ponudbe naj se začne">
+<!ENTITY selector "- kaj bi uporabil za naslov v css. najpreprostejši primer 'img' ali 'p', vendar se lahko dodajo izbirniki atributov, dokler se ni mogoče izogniti dvojnim narekovajem.">
+<!ENTITY minSize "[neobvezno, številčno] - število kByte, najmanjša velikost za odstranjevanje oznake. Tako lahko ob zavračanju večjih slik obdržite manjše slike, kot so ikone / emojis.">
+<!ENTITY whitespace_note "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \ s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti.">
+<!ENTITY minSize_detail "Velikosti ni vedno mogoče določiti, še posebej, če Thunderbird še vedno nalaga sliko, pogosto zaradi velike velikosti - v tem primeru bo oznaka vseeno odstranjena.">
 <!ENTITY fix_vartz.cap "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'">
 <!ENTITY fix_vartz_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / Čas (oblika trenutnega jezika)">
 <!ENTITY dateshort.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Časovni pas (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Prisilno določite časovni pas za spremenljivke datuma z zamenjavo parametra tz (GMT, EST, CST, PST itd.)">
 <!ENTITY dateoffset_note.label "Ta funkcija doda odmik vsem naslednjim prikazanim časom.">
+<!ENTITY calculate.explain "DD = število dni za dodajanje. H = število ur za dodajanje (neobvezno). MM = minut za dodajanje (neobvezno)">
 <!ENTITY calculate.reset "Nastavite argument na 0, da ustavite spreminjanje datumov.">
 <!ENTITY var_custom.cap "Spremenljivke za 'obliko datuma' po meri">
 <!ENTITY customdf_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
@@ -200,6 +235,8 @@
 <!ENTITY p2.label "dop.">
 <!ENTITY p3.label "dop.">
 <!ENTITY dateformat.label "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti).">
+<!ENTITY dateformat.explain "Večino časovnih spremenljivk lahko zgoraj v nizu parametrov uporabimo tako, da izpustimo '&#37;'. Poglej tudi:">
+<!ENTITY dateformat.example "Primer:">
 <!ENTITY var_xsent.cap "Spremenilnik  - z vodilno ničlo">
 <!ENTITY xsent_note.label "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z &#37;X:=sent&#37; bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila.">
 <!ENTITY xsent_long.cap "Primer dolgega niza">

@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Guardar plantilla…">
 <!ENTITY btnLoadTemplate.tooltip "Cargar plantilla…">
 <!ENTITY btnYouTube.tooltip "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos.">
+<!ENTITY tip.fileTemplates "Haga clic para leer la documentación completa sobre Papelería y plantillas HTML externas en nuestro sitio de soporte…">
 <!ENTITY pref_server_def "Común">
 <!ENTITY pref_def.label "Usar común">
 <!ENTITY pref_def.cap "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta.">
@@ -119,6 +120,10 @@
 <!ENTITY fix_var.cap "Variables fijas">
 <!ENTITY ownname.label "Su nombre">
 <!ENTITY ownmail.label "Su dirección de correo">
+<!ENTITY identity_ab "Use la palabra clave 'addressbook' para recuperar información de identidad adicional de la libreta de direcciones.">
+<!ENTITY identity_ab.field "Para valores de campo adicionales, consulte el capítulo 'Campos de la libreta de direcciones' a continuación.">
+<!ENTITY identity_ab.example "Ejemplo">
+<!ENTITY identity_ab.phoneno "Telefono no">
 <!ENTITY date.label "Fecha y hora (las de la cabecera original del correo)">
 <!ENTITY tomail.label "Dirección del destinatario">
 <!ENTITY frommail.label "Dirección del remitente">
@@ -129,9 +134,11 @@
 <!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
 <!ENTITY attach.label "Añadir archivo como adjunto">
 <!ENTITY cursor.label "Establece la posición del cursor">
+<!ENTITY spellcheck.label "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado.">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
+<!ENTITY standardformat.config "Configurar formato predeterminado…">
 <!ENTITY tofirstname.label "Nombre de pila del destinatario">
 <!ENTITY toname.label "Apellido del destinatario">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -194,6 +201,7 @@
 <!ENTITY selector "- lo que usarías para direccionar la etiqueta en css. caso más simple 'img' o 'p' pero los selectores de atributos se pueden agregar siempre que se puedan evitar las comillas dobles.">
 <!ENTITY minSize "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes.">
 <!ENTITY whitespace_note "Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
+<!ENTITY minSize_detail "No siempre es posible determinar el tamaño, especialmente si Thunderbird todavía está cargando la imagen, a menudo debido al gran tamaño; en este caso, la etiqueta se eliminará de todos modos.">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">

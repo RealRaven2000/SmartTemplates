@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Variáveis básicas">
 <!ENTITY ownname.label "Seu nome">
 <!ENTITY ownmail.label "Seu endereço de e-mail">
+<!ENTITY identity_ab "Use a palavra-chave 'addressbook' para recuperar informações de identidade adicionais do catálogo de endereços.">
+<!ENTITY identity_ab.field "Para valores adicionais de campo, consulte o capítulo 'Campos do catálogo de endereços' abaixo.">
+<!ENTITY identity_ab.example "Exemplo">
+<!ENTITY identity_ab.phoneno "Telefone não">
 <!ENTITY date.label "Data e hora (igual ao encontrado no cabeçalho da mensagem)">
 <!ENTITY tomail.label "Nome e endereço do destinatário">
 <!ENTITY frommail.label "Nome e endereço do remetente">
@@ -130,9 +134,11 @@
 <!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada.">
 <!ENTITY attach.label "Adicionar arquivo como anexo">
 <!ENTITY cursor.label "Definir a posição do cursor">
+<!ENTITY spellcheck.label "Define o idioma da verificação ortográfica. Valores de exemplo: (en, de-DE, es-ES, ru) - o dicionário deve estar instalado.">
 <!ENTITY to_var.cap "Variáveis de destinatário (Para)">
 <!ENTITY to_note.label "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar">
 <!ENTITY to.label "Destinatário (padrão)">
+<!ENTITY standardformat.config "Configurar formato padrão…">
 <!ENTITY tofirstname.label "Primeiro nome do destinatário">
 <!ENTITY toname.label "Nome do destinatário">
 <!ENTITY tofwd.label "Usar &quot;fwd&quot; para adicionar o destinatário clicável nos emails encaminhados">
@@ -147,6 +153,12 @@
 <!ENTITY ccfirstname.label "Primeiro nome do destinatário">
 <!ENTITY ccname.label "Nome do destinatário">
 <!-- #### TABLE #### -->
+<!ENTITY ab_fields "Campos do Catálogo de Endereços">
+<!ENTITY ab_fields.desc "Ao responder a um endereço de e-mail correspondente, agora você pode usar campos adicionais para variáveis de endereço como &#37;from&#37;, como:">
+<!ENTITY ab_contact "Contato">
+<!ENTITY ab_private "Privativo">
+<!ENTITY ab_other "Outro">
+<!ENTITY ab_work "Trabhalo">
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
 <!ENTITY ex_brack.label "Exemplo: Para: ADÃO | Cc: ALBERTINA">
@@ -65691,7 +65703,22 @@
 <!ENTITY matchTextFromBody "Encontra um padrão RegEx no e-mail citado e insere no local da função.">
 <!ENTITY matchTextFromSubject "Encontra um padrão RegEx no assunto e insere no local da função.">
 <!ENTITY stringmanip.match.comment "Funções correspondentes: O primeiro parâmetro (a expressão regular) deve estar entre aspas duplas. O segundo parâmetro é o número do grupo de correspondência. Use 0 para corresponder a expressão completa, 1 para o primeiro grupo, etc.">
+<!ENTITY stringmanip.alttext "[parâmetro opcional] Texto alternativo: se nenhuma correspondência for encontrada, insere o texto alternativo.">
 <!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipulação de Cotação">
+<!ENTITY quote_changers.desc "Variáveis premium para remover texto / tags das partes citadas e economizar espaço.">
+<!ENTITY deleteQuotedText "Exclui o texto citado">
+<!ENTITY replaceQuotedText "Substitui o texto citado por HTML">
+<!ENTITY deleteQuotedTags "Exclui tags da cotação">
+<!ENTITY replaceQuotedTags "Substitui as tags da citação por texto ou html">
+<!ENTITY Parameters "Parâmetros">
+<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
+<!ENTITY replacementHTML "deve estar entre aspas duplas - um texto ou uma tag html que será inserida entre aspas sempre que uma correspondência for encontrada.">
+<!ENTITY quoteLevel "[opcional, numérico]: qual nível mínimo de cotação para começar">
+<!ENTITY selector "- o que você usaria para endereçar a tag em css. maiúsculas e minúsculas 'img' ou 'p', mas os seletores de atributos podem ser adicionados desde que as aspas duplas possam ser evitadas.">
+<!ENTITY minSize "[opcional, numérico] - número de kByte, tamanho mínimo para remover a tag. Dessa forma, você pode manter imagens menores, como ícones / emojis, enquanto descarta imagens grandes.">
+<!ENTITY whitespace_note "Observe que o espaço em branco pode ser melhor representado como \ s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados.">
+<!ENTITY minSize_detail "Nem sempre é possível determinar o tamanho, especialmente se o Thunderbird ainda estiver carregando a imagem, geralmente devido ao tamanho grande - nesse caso, a tag será removida de qualquer maneira.">
 <!ENTITY fix_vartz.cap "Variáveis para data e hora">
 <!ENTITY fix_vartz_note.label "Podem ser combinadas com &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e hora (formato local)">
@@ -65770,6 +65797,7 @@
 <!ENTITY premiumConfig "Recursos Premium">
 <!ENTITY label.premiumFeaturesSite "Leia mais sobre os Recursos Premium em nosso site…">
 <!ENTITY support.title "Enviar email para o suporte">
+<!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "Selecione um topico!">
 <!ENTITY support.type.license "Relacionado a licenciamento">
 <!ENTITY support.type.tech "Problema técnico">

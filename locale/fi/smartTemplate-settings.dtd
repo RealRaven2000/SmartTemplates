@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Määrätyt muuttujat">
 <!ENTITY ownname.label "Nimesi">
 <!ENTITY ownmail.label "Sähköpostiosoitteesi">
+<!ENTITY identity_ab "Käytä avainsanaa 'addressbook' hakeaksesi lisätietoja henkilöllisyydestä osoitekirjasta.">
+<!ENTITY identity_ab.field "Lisätietoja kenttäarvoista on jäljempänä luvussa 'Osoitekirjan kentät'.">
+<!ENTITY identity_ab.example "Esimerkki">
+<!ENTITY identity_ab.phoneno "Puhelinnumero">
 <!ENTITY date.label "Päiväys / Aika (sama kuin alkuperäisessä viestin otsakkeessa)">
 <!ENTITY tomail.label "Vastaanottajan sähköpostiosoite">
 <!ENTITY frommail.label "Lähettäjän sähköpostiosoite">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
+<!ENTITY standardformat.config "Määritä oletusmuoto…">
 <!ENTITY tofirstname.label "Vastaanottaja etunimi">
 <!ENTITY toname.label "Vastaanottajan nimi">
 <!ENTITY tofwd.label "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin">
@@ -148,6 +153,12 @@
 <!ENTITY ccfirstname.label "Vastaanottajan etunimi">
 <!ENTITY ccname.label "Vastaanottajan nimi">
 <!-- #### TABLE #### -->
+<!ENTITY ab_fields "Osoitekirjan kentät">
+<!ENTITY ab_fields.desc "Kun vastaat vastaavaan sähköpostiosoitteeseen, voit nyt käyttää lisäkenttiä osoitemuuttujille, &#37;from&#37;: sta, kuten:">
+<!ENTITY ab_contact "Yhteyshenkilö">
+<!ENTITY ab_private "Yksityinen">
+<!ENTITY ab_other "Muu">
+<!ENTITY ab_work "Työ">
 <!ENTITY spec_form.cap "Erikoismuotoilu">
 <!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
 <!ENTITY ex_brack.label "Esim: To: AKSELI | Cc: JAAKOB">
@@ -175,7 +186,22 @@
 <!ENTITY matchTextFromBody "Etsi RegEx-kaava lainatusta sähköpostista ja lisää se funktioihin.">
 <!ENTITY matchTextFromSubject "Etsi RegEx-kaava aiheesta ja lisää se funktioihin.">
 <!ENTITY stringmanip.match.comment "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne.">
+<!ENTITY stringmanip.alttext "[valinnainen parametri] Vaihtoehtoinen teksti: Jos vastaavuutta ei löydy, lisää vaihtoehtoisen tekstin.">
 <!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Lainaa manipulointia">
+<!ENTITY quote_changers.desc "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi.">
+<!ENTITY deleteQuotedText "Poistaa lainatun tekstin">
+<!ENTITY replaceQuotedText "Korvaa lainatun tekstin HTML-koodilla">
+<!ENTITY deleteQuotedTags "Poistaa tunnisteet tarjouksesta">
+<!ENTITY replaceQuotedTags "Korvaa tarjouksen tunnisteet tekstillä tai html-tiedostolla">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Minkä tahansa tekstin - säännöllisen lausekkeen - on oltava lainausmerkeissä.">
+<!ENTITY replacementHTML "Tämän on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy.">
+<!ENTITY quoteLevel "on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy.">
+<!ENTITY selector "- mitä käyttäisit osoitteen käsittelemiseen css-muodossa. yksinkertaisin tapaus 'img' tai 'p', mutta ominaisuusvalitsimet voidaan lisätä, kunhan kaksinkertaiset lainaukset voidaan välttää.">
+<!ENTITY minSize "[valinnainen, numeerinen] - ktby-lukumäärä, vähimmäiskoko tunnisteen poistamiseen. Tällä tavalla voit pitää pienempiä kuvia, kuten kuvakkeita / hymiöitä, hylkäämättä suuria kuvia.">
+<!ENTITY whitespace_note "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \ s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää.">
+<!ENTITY minSize_detail "Kokoa ei aina voida määrittää oikein, varsinkin jos Thunderbird lataa kuvaa edelleen, usein suuren koon takia - tässä tapauksessa tunniste poistetaan joka tapauksessa.">
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">

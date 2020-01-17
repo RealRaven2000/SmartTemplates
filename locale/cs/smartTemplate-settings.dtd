@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Ulož Šablonu...">
 <!ENTITY btnLoadTemplate.tooltip "Nahraj Šablonu...">
 <!ENTITY btnYouTube.tooltip "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení">
+<!ENTITY tip.fileTemplates "Klepnutím si můžete přečíst celou dokumentaci o šablonách a externích šablonách HTML na našem webu podpory ...">
 <!ENTITY pref_server_def "Společné">
 <!ENTITY pref_def.label "Použij společné">
 <!ENTITY pref_def.cap "Pokud si chcete přizpůsobit řádek uvození citace, zrušte volbu 'Použij společné'.">
@@ -119,6 +120,10 @@
 <!ENTITY fix_var.cap "Něměnné proměnné">
 <!ENTITY ownname.label "Tvé jméno">
 <!ENTITY ownmail.label "Tvůj e-mail">
+<!ENTITY identity_ab "Pomocí klíčového slova „addressbook“ získejte další informace o totožnosti z adresáře.">
+<!ENTITY identity_ab.field "Další hodnoty polí naleznete v kapitole „Pole adresáře“ níže.">
+<!ENTITY identity_ab.example "Příklad">
+<!ENTITY identity_ab.phoneno "Telefonní číslo">
 <!ENTITY date.label "Datum / Čas (stejné jako původní 'Mailheader')">
 <!ENTITY tomail.label "e-mail příjemce">
 <!ENTITY frommail.label "e-mail odesílatele">
@@ -129,9 +134,11 @@
 <!ENTITY fileImage.label "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen.">
 <!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "nastav pozici kurzoru">
+<!ENTITY spellcheck.label "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován.">
 <!ENTITY to_var.cap "Příjemce (To)">
 <!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
 <!ENTITY to.label "Jméno příjemce (defaultní)">
+<!ENTITY standardformat.config "Konfigurovat výchozí formát…">
 <!ENTITY tofirstname.label "Křestní jméno příjemce">
 <!ENTITY toname.label "Jméno příjemce">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -146,6 +153,12 @@
 <!ENTITY ccfirstname.label "Křestní jméno příjemce">
 <!ENTITY ccname.label "Jméno příjemce">
 <!-- #### TABLE #### -->
+<!ENTITY ab_fields "Pole Adresáře">
+<!ENTITY ab_fields.desc "Při odpovídání na odpovídající e-mailovou adresu můžete nyní použít další pole pro proměnné adresy, například &#37;from&#37;, například:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Soukromé">
+<!ENTITY ab_other "Ostatní">
+<!ENTITY ab_work "Zaměstnání">
 <!ENTITY spec_form.cap "Speciální formát">
 <!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
 <!ENTITY ex_brack.label "Příklad: To: BEDŘICH | Cc: LUBOŠ">
@@ -173,7 +186,22 @@
 <!ENTITY matchTextFromBody "Najdi RegEx vzor v hlavičce e-mailu a vlož do funkce.">
 <!ENTITY matchTextFromSubject "Najdi RegEx vzor v předmětu a vlož do funkce.">
 <!ENTITY stringmanip.match.comment "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd.">
+<!ENTITY stringmanip.alttext "[nepovinný parametr] Alternativní text: pokud není nalezena žádná shoda, místo toho vloží alternativní text.">
 <!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Nabídka manipulace">
+<!ENTITY quote_changers.desc "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa.">
+<!ENTITY deleteQuotedText "Odstraní citovaný text">
+<!ENTITY replaceQuotedText "Nahrazuje citovaný text HTML">
+<!ENTITY deleteQuotedTags "Odstraní značky z nabídky">
+<!ENTITY replaceQuotedTags "Nahradí značky z nabídky textem nebo html">
+<!ENTITY Parameters "Parametry">
+<!ENTITY regexpAnyText "Jakýkoli text - regulární výraz - musí být ve dvojitých uvozovkách.">
+<!ENTITY replacementHTML "musí být ve dvojitých uvozovkách - buď text nebo html značka, která bude vložena do uvozovek, kdekoli bude nalezena shoda.">
+<!ENTITY quoteLevel "[nepovinné, číselné]: od které minimální úrovně nabídky začít">
+<!ENTITY selector "- co byste použili k oslovení značky v CSS. nejjednodušší případ 'img' nebo 'p', ale lze přidat selektory atributů, pokud se lze vyhnout dvojitým uvozovkám.">
+<!ENTITY minSize "[nepovinné, číselné] - počet kByte, minimální velikost pro odstranění značky. Tímto způsobem můžete při likvidaci velkých obrázků uchovávat menší obrázky, jako jsou ikony / ikony emodži.">
+<!ENTITY whitespace_note "Všimněte si, že mezeru lze nejlépe reprezentovat jako \ s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky.">
+<!ENTITY minSize_detail "Není vždy možné určit velikost, zejména pokud Thunderbird stále načítá obrázek, často kvůli velké velikosti - v tomto případě bude značka stejně odstraněna.">
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">

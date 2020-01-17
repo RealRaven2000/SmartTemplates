@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Variabili di base">
 <!ENTITY ownname.label "Nome">
 <!ENTITY ownmail.label "Indirizzo e-mail">
+<!ENTITY identity_ab "Utilizzare la parola chiave  'addressbook' per recuperare ulteriori informazioni sull'identità dalla rubrica.">
+<!ENTITY identity_ab.field "Per ulteriori valori dei campi, vedere il capitolo 'Campi della rubrica' di seguito.">
+<!ENTITY identity_ab.example "Esempio">
+<!ENTITY identity_ab.phoneno "Numero di telefono">
 <!ENTITY date.label "Data/ora (come nell'intestazione originaria)">
 <!ENTITY tomail.label "Indirizzo e-mail del destinatario">
 <!ENTITY frommail.label "Indirizzo e-mail del mittente">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
 <!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
 <!ENTITY to.label "Nome del destinatario (predefinito)">
+<!ENTITY standardformat.config "Configura formato predefinito…">
 <!ENTITY tofirstname.label "Cognome del destinatario">
 <!ENTITY toname.label "Nome del destinatario">
 <!ENTITY tofwd.label "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate">
@@ -196,6 +201,7 @@
 <!ENTITY selector "- cosa useresti per indirizzare il tag in CSS. il caso più semplice 'img' o 'p' ma i selettori di attributo possono essere aggiunti purché si possano evitare virgolette doppie.">
 <!ENTITY minSize "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni.">
 <!ENTITY whitespace_note "Si noti che gli spazi bianchi possono essere meglio rappresentati come \ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie.">
+<!ENTITY minSize_detail "Non è sempre possibile determinare le dimensioni, soprattutto se Thunderbird sta ancora caricando l'immagine, spesso a causa delle grandi dimensioni - in questo caso il tag verrà rimosso comunque.">
 <!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
 <!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data/ora (formato locale)">

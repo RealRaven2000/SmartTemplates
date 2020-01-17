@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Zmienne podstawowe">
 <!ENTITY ownname.label "Twoje imię">
 <!ENTITY ownmail.label "Twój adres e-mail">
+<!ENTITY identity_ab "Użyj słowa kluczowego „addressbook”, aby uzyskać dodatkowe informacje o tożsamości z książki adresowej.">
+<!ENTITY identity_ab.field "Aby uzyskać dodatkowe wartości pól, patrz rozdział „Pola książki adresowej” poniżej.">
+<!ENTITY identity_ab.example "Przykład">
+<!ENTITY identity_ab.phoneno "Nr telefonu">
 <!ENTITY date.label "Data i czas (taki sam, jak oryginał nagłówka)">
 <!ENTITY tomail.label "Adres e-mail odbiorcy">
 <!ENTITY frommail.label "Adres e-mail nadawcy">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">
+<!ENTITY standardformat.config "Skonfiguruj domyślny format…">
 <!ENTITY tofirstname.label "Imię odbiorcy">
 <!ENTITY toname.label "Nazwisko odbiorcy">
 <!ENTITY tofwd.label "Użyj programu fwd, aby dodać klikalnego odbiorcę w przesłanych wiadomościach e-mail">
@@ -153,6 +158,7 @@
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Prywatny">
 <!ENTITY ab_other "Inne">
+<!ENTITY ab_work "Służbowy">
 <!ENTITY spec_form.cap "Format specjalny">
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
 <!ENTITY ex_brack.label "Przykład: Do: Jakub | Kopia: Zuzanna">
@@ -194,6 +200,7 @@
 <!ENTITY selector "- czego byś użył, aby zaadresować znacznik w css. najprostszy przypadek „img” lub „p”, ale selektory atrybutów można dodawać, o ile można uniknąć podwójnych cudzysłowów.">
 <!ENTITY minSize "[opcjonalnie, numerycznie] - liczba kB, minimalny rozmiar do usunięcia tagu. W ten sposób możesz przechowywać mniejsze obrazy, takie jak ikony / emotikony, jednocześnie odrzucając duże obrazy.">
 <!ENTITY whitespace_note "Zauważ, że białe znaki można najlepiej przedstawić jako \ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu.">
+<!ENTITY minSize_detail "Nie zawsze jest możliwe określenie rozmiaru, szczególnie jeśli Thunderbird wciąż ładuje obraz, często ze względu na duży rozmiar - w tym przypadku tag i tak zostanie usunięty.">
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">

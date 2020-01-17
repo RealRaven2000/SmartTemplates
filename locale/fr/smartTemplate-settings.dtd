@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Variables fixes">
 <!ENTITY ownname.label "Votre nom">
 <!ENTITY ownmail.label "Votre adresse électronique">
+<!ENTITY identity_ab "Utilisez le mot clé «addressbook» pour récupérer des informations d'identité supplémentaires dans le carnet d'adresses.">
+<!ENTITY identity_ab.field "Pour des valeurs de champ supplémentaires, voir le chapitre «Champs du carnet d'adresses» ci-dessous.">
+<!ENTITY identity_ab.example "Exemple">
+<!ENTITY identity_ab.phoneno "Numéro de téléphone">
 <!ENTITY date.label "Date et heure (ceux du message original)">
 <!ENTITY tomail.label "Adresse électronique des destinataires">
 <!ENTITY frommail.label "Adresse électronique de l'expéditeur">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Destinataires (Pour)">
 <!ENTITY to_note.label "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place">
 <!ENTITY to.label "Noms des destinataires (défaut)">
+<!ENTITY standardformat.config "Configurer le format par défaut…">
 <!ENTITY tofirstname.label "Prénoms des destinataires">
 <!ENTITY toname.label "Noms des destinataires">
 <!ENTITY tofwd.label "Utiliser « transférer » pour ajouter un destinataire cliquable dans les courriels transférés">
@@ -196,6 +201,7 @@
 <!ENTITY selector "-ce que vous utiliseriez pour adresser la balise dans css. le cas le plus simple 'img' ou 'p' mais des sélecteurs d'attributs peuvent être ajoutés tant que les guillemets doubles peuvent être évités.">
 <!ENTITY minSize "[facultatif, numérique] - nombre de koctets, taille minimale pour supprimer la balise. De cette façon, vous pouvez conserver des images plus petites comme des icônes / emojis tout en jetant de grandes images.">
 <!ENTITY whitespace_note "Notez que les espaces peuvent être mieux représentés sous forme de \ s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés.">
+<!ENTITY minSize_detail "Il n'est pas toujours possible de déterminer la taille, en particulier si Thunderbird est toujours en train de charger l'image, souvent en raison d'une grande taille - dans ce cas, la balise sera supprimée de toute façon.">
 <!ENTITY fix_vartz.cap "Variables fixes pour le format de date et la zone horaire">
 <!ENTITY fix_vartz_note.label "Peut être combinée avec &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date et heure (format local)">
