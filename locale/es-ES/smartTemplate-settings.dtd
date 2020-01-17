@@ -146,14 +146,15 @@
 <!ENTITY ccfirstname.label "Nombre de pila del destinatario">
 <!ENTITY ccname.label "Apellido del destinatario">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Variables de la libreta de direcciones">
+<!ENTITY ab_fields "Variables de la libreta de direcciones">
+<!ENTITY ab_fields.desc "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como &#37;from&#37;, como:">
 <!ENTITY ab_contact "Contacto">
 <!ENTITY ab_private "Privado">
 <!ENTITY ab_other "Otros">
 <!ENTITY ab_work "Trabajo">
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;">
-<!ENTITY ex_brack.label "Ejemplo: Para: boo Cc: foo">
+<!ENTITY ex_brack.label "Ejemplo: Para: ÁGUEDA | Cc: BENIGNO">
 <!ENTITY brack_with_var.label "Las siguientes variables pueden usarse dentro de [[…]]">
 <!ENTITY sub_var.cap "Asunto">
 <!ENTITY sub.label "asunto del correo que se responde o reenvía.">
@@ -192,8 +193,7 @@
 <!ENTITY quoteLevel "[opcional, numérico]: desde qué nivel mínimo de presupuesto comenzar">
 <!ENTITY selector "- lo que usarías para direccionar la etiqueta en css. caso más simple 'img' o 'p' pero los selectores de atributos se pueden agregar siempre que se puedan evitar las comillas dobles.">
 <!ENTITY minSize "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes.">
-<!ENTITY minSize_note "142/5000
-Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
+<!ENTITY whitespace_note "Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">

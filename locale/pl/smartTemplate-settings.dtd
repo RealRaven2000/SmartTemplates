@@ -148,14 +148,14 @@
 <!ENTITY ccfirstname.label "Imię odbiorcy">
 <!ENTITY ccname.label "Nazwisko odbiorcy">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Przełączniki książki adresowej">
-<!ENTITY ab_switches.desc "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych przełączników części dla zmiennych adresowych, takich jak from, na przykład:">
+<!ENTITY ab_fields "Pola książki adresowej">
+<!ENTITY ab_fields.desc "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych pól dla zmiennych adresu, takich jak &#37;from&#37;, takich jak:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Prywatny">
 <!ENTITY ab_other "Inne">
 <!ENTITY spec_form.cap "Format specjalny">
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
-<!ENTITY ex_brack.label "Przykład: Do: boo Kopia: foo">
+<!ENTITY ex_brack.label "Przykład: Do: Jakub | Kopia: Zuzanna">
 <!ENTITY brack_with_var.label "Następujące zmienne mogą być używane wewnątrz [[...]]">
 <!ENTITY sub_var.cap "Temat">
 <!ENTITY sub.label "Temat odpowiedzi/przekazywanej wiadomości">
@@ -193,7 +193,7 @@
 <!ENTITY quoteLevel "[opcjonalnie, numerycznie]: od którego minimalnego poziomu wyceny zacząć">
 <!ENTITY selector "- czego byś użył, aby zaadresować znacznik w css. najprostszy przypadek „img” lub „p”, ale selektory atrybutów można dodawać, o ile można uniknąć podwójnych cudzysłowów.">
 <!ENTITY minSize "[opcjonalnie, numerycznie] - liczba kB, minimalny rozmiar do usunięcia tagu. W ten sposób możesz przechowywać mniejsze obrazy, takie jak ikony / emotikony, jednocześnie odrzucając duże obrazy.">
-<!ENTITY minSize_note "Zauważ, że białe znaki można najlepiej przedstawić jako \ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu.">
+<!ENTITY whitespace_note "Zauważ, że białe znaki można najlepiej przedstawić jako \ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu.">
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">

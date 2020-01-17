@@ -144,7 +144,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Posebna oblika">
 <!ENTITY specform_note.label "Odseki z dvojnimi oglatimi oklepaji [[Cc: &#37;cc(name)&#37;]] bodo prikazani samo, če se spremenljivko &#37;cc(name)&#37; lahko nadomesti!">
-<!ENTITY ex_brack.label "Primer: Za: Jože Kp: Jure">
+<!ENTITY ex_brack.label "Primer: Za: Jože | Kp: Jure">
 <!ENTITY brack_with_var.label "Naslednje spremenljivke lahko uporabite v [[...]]">
 <!ENTITY sub_var.cap "Zadeva">
 <!ENTITY sub.label "Zadeva odgovora / posredovane pošte">

@@ -148,15 +148,15 @@
 <!ENTITY ccfirstname.label "Prénoms des destinataires en copie">
 <!ENTITY ccname.label "Noms des destinataires en copie">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Commutateurs du carnet d'adresses">
-<!ENTITY ab_switches.desc "Lorsque vous répondez à une adresse e-mail correspondante, vous pouvez désormais utiliser des commutateurs de pièces supplémentaires pour des variables d'adresse telles que, par exemple:">
+<!ENTITY ab_fields "Variables du carnet d'adresses">
+<!ENTITY ab_fields.desc "Lorsque vous répondez à une adresse e-mail correspondante, vous pouvez désormais utiliser des champs supplémentaires pour les variables d'adresse telles que &#37;from&#37;, telles que:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Privée">
 <!ENTITY ab_other "Informations complémentaires">
 <!ENTITY ab_work "Professionelle">
 <!ENTITY spec_form.cap "Formats spéciaux">
 <!ENTITY specform_note.label "La phrase [[Cc: &#37;cc(name)&#37;]] ne s'affichera que si la variable &#37;cc(name)&#37; peut être remplacée !">
-<!ENTITY ex_brack.label "Exemple : Pour : Fred Copie à : Lucie">
+<!ENTITY ex_brack.label "Exemple : Pour : Fred | Copie à : Lucie">
 <!ENTITY brack_with_var.label "Les variables suivantes peuvent être utilisées dans des [[…]]">
 <!ENTITY sub_var.cap "Sujet">
 <!ENTITY sub.label "Sujet du message de réponse ou transféré">
@@ -195,7 +195,7 @@
 <!ENTITY quoteLevel "[facultatif, numérique]: à partir de quel niveau de devis minimal">
 <!ENTITY selector "-ce que vous utiliseriez pour adresser la balise dans css. le cas le plus simple 'img' ou 'p' mais des sélecteurs d'attributs peuvent être ajoutés tant que les guillemets doubles peuvent être évités.">
 <!ENTITY minSize "[facultatif, numérique] - nombre de koctets, taille minimale pour supprimer la balise. De cette façon, vous pouvez conserver des images plus petites comme des icônes / emojis tout en jetant de grandes images.">
-<!ENTITY minSize_note "Notez que les espaces peuvent être mieux représentés sous forme de \ s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés.">
+<!ENTITY whitespace_note "Notez que les espaces peuvent être mieux représentés sous forme de \ s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés.">
 <!ENTITY fix_vartz.cap "Variables fixes pour le format de date et la zone horaire">
 <!ENTITY fix_vartz_note.label "Peut être combinée avec &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date et heure (format local)">

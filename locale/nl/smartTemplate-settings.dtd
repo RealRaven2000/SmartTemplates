@@ -120,20 +120,25 @@
 <!ENTITY fix_var.cap "Vaste variabelen">
 <!ENTITY ownname.label "Uw naam">
 <!ENTITY ownmail.label "Uw e-mailadres">
+<!ENTITY identity_ab "Gebruik het trefwoord ‘addressbook’ om aanvullende identiteitsgegevens uit het adresboek op te halen.">
+<!ENTITY identity_ab.field "Zie het hoofdstuk ‘Adresboekvelden’ hieronder voor aanvullende veldwaarden.">
+<!ENTITY identity_ab.example "Voorbeeld">
+<!ENTITY identity_ab.phoneno "Telefoonnr">
 <!ENTITY date.label "Datum en tijd (identiek aan oorspronkelijke mailheader)">
 <!ENTITY tomail.label "E-mailadres van ontvanger">
 <!ENTITY frommail.label "E-mailadres van afzender">
 <!ENTITY ccmail.label "E-mailadres van CC-ontvanger">
 <!ENTITY sig.label "Ondertekening uit accountinstellingen">
 <!ENTITY sig2.label "Ondertekening uit accountinstellingen maar zonder ‘--’">
-<!ENTITY fileHTML.label "HTML of platte tekst. Bij ontbreken van een optionele tekenset-parameter wordt UTF-8 aangenomen.">
+<!ENTITY fileHTML.label "HTML of platte tekst. Bij ontbreken van een optionele tekensetparameter wordt UTF-8 aangenomen.">
 <!ENTITY fileImage.label "Afbeeldingesbestand (png, jpg, gif, bmp, svg). De optionele altText wordt weergegeven als het bestand niet kan worden gevonden.">
 <!ENTITY attach.label "Bestand als bijlage toevoegen">
 <!ENTITY cursor.label "Stelt de cursorpositie in">
 <!ENTITY spellcheck.label "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd.">
 <!ENTITY to_var.cap "Ontvanger (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
-<!ENTITY to.label "Ontvangersnaam (Standaard)">
+<!ENTITY to.label "Naam van ontvanger (standaard)">
+<!ENTITY standardformat.config "Standaardnotatie configureren…">
 <!ENTITY tofirstname.label "Voornaam van ontvanger">
 <!ENTITY toname.label "Achternaam van ontvanger">
 <!ENTITY tofwd.label "Gebruik fwd om een aanklikbare ontvanger in doorgestuurde e-mailberichten toe te voegen">
@@ -148,15 +153,15 @@
 <!ENTITY ccfirstname.label "Voornaam van ontvanger">
 <!ENTITY ccname.label "Achternaam van ontvanger">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Adresboekwisselingen">
-<!ENTITY ab_switches.desc "Bij het beantwoorden van een overeenkomend e-mailadres kunt u nu aanvullende deelwisselingen gebruiken voor adresvariabelen zoals Van, bijvoorbeeld:">
+<!ENTITY ab_fields "Adresboekvelden">
+<!ENTITY ab_fields.desc "Bij het antwoorden naar een overeenkomend e-mailadres kunt u nu aanvullende velden gebruiken voor adresvariabelen zoals &#37;from&#37;, bijvoorbeeld:">
 <!ENTITY ab_contact "Contactpersoon">
 <!ENTITY ab_private "Privé">
 <!ENTITY ab_other "Overig">
 <!ENTITY ab_work "Werk">
 <!ENTITY spec_form.cap "Speciale opmaak">
 <!ENTITY specform_note.label "De zin tussen dubbele accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
-<!ENTITY ex_brack.label "Voorbeeld: Aan: Fred Cc: Marie">
+<!ENTITY ex_brack.label "Voorbeeld: Aan: Pieter | Cc: Sanne">
 <!ENTITY brack_with_var.label "De volgende variabelen kunnen worden gebruikt binnen [[…]]">
 <!ENTITY sub_var.cap "Onderwerp">
 <!ENTITY sub.label "onderwerp van beantwoord / doorgestuurd e-mailbericht">
@@ -175,7 +180,7 @@
 <!ENTITY header.set.to "ontvanger vervangen door e-mailadres">
 <!ENTITY header.append.to "e-mailadres aan ontvangerslijst toevoegen">
 <!ENTITY stringmanip_function.cap "Stringmanipulatie">
-<!ENTITY stringmanip_function.explain "Deze functies kunnen worden gebruikt om tekst in het e-mailsjabloon of de aanhalingskoptekst te verwijderen of te vervangen.">
+<!ENTITY stringmanip_function.explain "Deze functies kunnen worden gebruikt om tekst binnen de e-mailsjabloon of aanhalingskoptekst te verwijderen of te vervangen.">
 <!ENTITY deleteText "Tekst uit de aanhaling verwijderen, bv. deleteText(‘via Paypal’)">
 <!ENTITY replaceText "Tekst door iets anders vervangen">
 <!ENTITY matchTextFromBody "Een RexEx-patroon in een aangehaald e-mailbericht zoeken en invoegen op de functielocatie.">
@@ -195,7 +200,8 @@
 <!ENTITY quoteLevel "[optioneel, numeriek]: vanaf welk minimaal aanhalingsniveau moet worden begonnen">
 <!ENTITY selector "- wat u wilt gebruiken om het label te adresseren in CSS. Het eenvoudigste geval is ‘img’ of ‘p’, maar attribuutselectors kunnen worden toegevoegd zolang dubbele aanhalingstekens kunnen worden vermeden.">
 <!ENTITY minSize "[optioneel, numeriek]: aantal kByte, minimale grootte voor het verwijderen van het label. Op deze manier behoudt u kleinere afbeeldingen als pictogrammen en emoji’s, terwijl grote afbeeldingen worden verwijderd.">
-<!ENTITY minSize_note "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt.">
+<!ENTITY whitespace_note "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt.">
+<!ENTITY minSize_detail "De grootte kan niet altijd worden vastgesteld, helemaal als Thunderbird de afbeelding nog laadt, vaak door de grootte ervan - in dit geval wordt de tag toch verwijderd.">
 <!ENTITY fix_vartz.cap "Vaste variabelen voor datumopmaak en tijdzone">
 <!ENTITY fix_vartz_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum en tijd (lokale opmaak)">

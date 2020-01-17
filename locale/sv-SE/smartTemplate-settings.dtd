@@ -146,15 +146,15 @@
 <!ENTITY cc.label "Mottagarens namn (Standard)">
 <!ENTITY ccfirstname.label "Mottagarens förnamn">
 <!ENTITY ccname.label "Mottagarens namn">
-<!ENTITY ab_switches "Adressbok växlar">
-<!ENTITY ab_switches.desc "När du svarar på en matchande e-postadress kan du nu använda ytterligare delomkopplare för adressvariabler som från, till exempel:">
+<!ENTITY ab_fields "Adressbokfält">
+<!ENTITY ab_fields.desc "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Annat">
 <!ENTITY ab_work "Arbete">
 <!ENTITY spec_form.cap "Specialformat">
 <!ENTITY specform_note.label "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!">
-<!ENTITY ex_brack.label "Exempelvis: To: boo Cc: foo">
+<!ENTITY ex_brack.label "Exempelvis: To: ALFHILD | Cc: HENRIKA">
 <!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
 <!ENTITY sub_var.cap "Ämne">
 <!ENTITY sub.label "Ämne (Samma som original Mailheader)">
@@ -192,7 +192,7 @@
 <!ENTITY quoteLevel "[valfritt, numeriskt]: vilken lägsta offertnivå att börja med">
 <!ENTITY selector "- vad du skulle använda för att adressera taggen i css. enklaste fallet 'img' eller 'p' men attributväljare kan läggas till så länge dubbla citat kan undvikas.">
 <!ENTITY minSize "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder.">
-<!ENTITY minSize_note "Observera att whitespace bäst kan representeras som '\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas.">
+<!ENTITY whitespace_note "Observera att whitespace bäst kan representeras som '\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas.">
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">

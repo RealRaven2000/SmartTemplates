@@ -148,7 +148,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Speciální formát">
 <!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
-<!ENTITY ex_brack.label "Příklad: To: Fred Cc:Jane">
+<!ENTITY ex_brack.label "Příklad: To: BEDŘICH | Cc: LUBOŠ">
 <!ENTITY brack_with_var.label "V [[...]] mohou být použity následující proměnné">
 <!ENTITY sub_var.cap "Předmět">
 <!ENTITY sub.label "předmět zprávy, kterou přeposíláte, nebo na kterou odpovídáte">

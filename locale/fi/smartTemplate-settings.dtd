@@ -150,7 +150,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Erikoismuotoilu">
 <!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
-<!ENTITY ex_brack.label "Esim: To: boo Cc: foo">
+<!ENTITY ex_brack.label "Esim: To: AKSELI | Cc: JAAKOB">
 <!ENTITY brack_with_var.label "Seuraavia muuttujia voidaan käyttää [[..]]-sulkeiden sisällä">
 <!ENTITY sub_var.cap "Aihe">
 <!ENTITY sub.label "vastattavan / välitettävän vietin aihe">

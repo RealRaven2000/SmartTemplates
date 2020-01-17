@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "固定変数">
 <!ENTITY ownname.label "あなたの名前">
 <!ENTITY ownmail.label "あなたのメールアドレス">
+<!ENTITY identity_ab "アドレス帳から追加の情報を得るには 'addressbook' キーワードを利用してください。">
+<!ENTITY identity_ab.field "追加フィールドの値については、下の 'アドレス帳フィールド' を参照ください。">
+<!ENTITY identity_ab.example "例">
+<!ENTITY identity_ab.phoneno "電話番号">
 <!ENTITY date.label "送信日時 (メールヘッダーに記載されている形式)">
 <!ENTITY tomail.label "受信者のメールアドレス">
 <!ENTITY frommail.label "差出人のメールアドレス">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "受信者 (To)">
 <!ENTITY to_note.label "受信者の名前が設定されていない場合、メールアドレスが表示されます">
 <!ENTITY to.label "受信者の名前とメールアドレス (既定)">
+<!ENTITY standardformat.config "既定のフォーマットを設定しています...">
 <!ENTITY tofirstname.label "受信者の名前 (名字を除く)">
 <!ENTITY toname.label "受信者の名前">
 <!ENTITY tofwd.label "転送メッセージの受信者の追加に fwd を使用する">
@@ -148,15 +153,15 @@
 <!ENTITY ccfirstname.label "CC 受信者の名前 (名字を除く)">
 <!ENTITY ccname.label "CC 受信者の名前">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "アドレス帳の切り換え">
-<!ENTITY ab_switches.desc "マッチするメールアドレスに返信するときに、以下のようなアドレス帳の追加パートに切り替えて変数を利用することができます:">
+<!ENTITY ab_fields "アドレス帳の切り換え">
+<!ENTITY ab_fields.desc "マッチするメールアドレスに返信するときに、以下のようなアドレス帳の追加パートに切り替えて変数を利用することができます:">
 <!ENTITY ab_contact "連絡先">
 <!ENTITY ab_private "プライベート">
 <!ENTITY ab_other "その他">
 <!ENTITY ab_work "勤務先">
 <!ENTITY spec_form.cap "条件文">
 <!ENTITY specform_note.label "括弧 [[Cc: &#37;cc(name)&#37;]] 内のテンプレートは、その中の変数 &#37;cc(name)&#37; が利用可能である時のみ有効となります。">
-<!ENTITY ex_brack.label "例: To: boo Cc: foo">
+<!ENTITY ex_brack.label "例: To: Akira | Cc: Fuyo">
 <!ENTITY brack_with_var.label "これらの変数は括弧 [[...]] 内で利用可能です">
 <!ENTITY sub_var.cap "件名">
 <!ENTITY sub.label "返信/転送するメッセージの件名">
@@ -195,7 +200,8 @@
 <!ENTITY quoteLevel "[オプション, 数値]: 開始する引用レベルの最小値">
 <!ENTITY selector "- CSS 中で処理するタグを指定します。単純なケースでは 'img' や 'p' です。ダブルクオートの利用を避けられるのであれば、属性を追加で指定することもできます。">
 <!ENTITY minSize "[オプション, 数値]) - タグを消去する最小サイズ (kB 単位)。これにより、大きな画像が除去される状況でもアイコンや絵文字のような小さな画像をそのままにできます。">
-<!ENTITY minSize_note "改行を含むことができるため、空白を \s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。">
+<!ENTITY whitespace_note "改行を含むことができるため、空白を \s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。">
+<!ENTITY minSize_detail "Thunderbird が画像を読み込み中の場合 (特にサイズが大きい場合) など、サイズを確定できないことがあります - その場合、無条件でタグを消去牛ます。">
 <!ENTITY fix_vartz.cap "日時・タイムゾーンに関する固定変数">
 <!ENTITY fix_vartz_note.label "&#37;X:=sent&#37; と組み合わせることが可能">
 <!ENTITY datelocal.label "日時 (OS の形式)">

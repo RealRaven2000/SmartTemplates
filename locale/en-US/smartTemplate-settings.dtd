@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Fixed variables">
 <!ENTITY ownname.label "Your name">
 <!ENTITY ownmail.label "Your email address">
+<!ENTITY identity_ab "Use the 'addressbook' keyword to retrieve additional identity information from address book.">
+<!ENTITY identity_ab.field "For additional field values, see chapter 'Address Book Fields' below.">
+<!ENTITY identity_ab.example "Example">
+<!ENTITY identity_ab.phoneno "Phone No">
 <!ENTITY date.label "Date / Time (same as original 'Mailheader')">
 <!ENTITY tomail.label "Recipient's email address">
 <!ENTITY frommail.label "Sender's email address">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Recipient (To)">
 <!ENTITY to_note.label "When the name is not available, email address will be displayed instead">
 <!ENTITY to.label "Recipient's name (default)">
+<!ENTITY standardformat.config "Configure default format…">
 <!ENTITY tofirstname.label "Recipient's first name">
 <!ENTITY toname.label "Recipient's name">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -148,16 +153,15 @@
 <!ENTITY ccfirstname.label "Recipient's first name">
 <!ENTITY ccname.label "Recipient's name">
 <!-- AB switch section -->
-<!ENTITY ab_switches "Address Book Switches">
-<!ENTITY ab_switches.desc "When replying to a matching email address you can now use additional part switches for address variables such as from, for example:">
+<!ENTITY ab_fields "Address Book Fields">
+<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-
 <!ENTITY spec_form.cap "Special format">
 <!ENTITY specform_note.label "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
-<!ENTITY ex_brack.label "Example: To: Fred Cc: Jane">
+<!ENTITY ex_brack.label "Example: To: John | Cc: Alison">
 <!ENTITY brack_with_var.label "The following variables can be used within [[...]]">
 <!ENTITY sub_var.cap "Subject">
 <!ENTITY sub.label "subject of replied / forwarded email">
@@ -183,7 +187,6 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
-
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
@@ -197,7 +200,8 @@
 <!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
 <!ENTITY selector "-what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
-<!ENTITY minSize_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
+<!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
+<!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
 
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">
 <!ENTITY fix_vartz_note.label "Can be combined with &#37;X:=sent&#37;">

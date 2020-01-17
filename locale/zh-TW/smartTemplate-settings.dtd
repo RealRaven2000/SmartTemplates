@@ -92,7 +92,7 @@
 <!ENTITY ccname.label "收件者姓名">
 <!ENTITY spec_form.cap "特殊格式">
 <!ENTITY specform_note.label "假如變數 &#37;cc(name)&#37; 可以被置換時,將會顯示插入兩個中括號的 [[Cc: &#37;cc(name)&#37;]]!">
-<!ENTITY ex_brack.label "例如: 到:boo 副本:foo">
+<!ENTITY ex_brack.label "例如: 到:晨 | 副本:芳">
 <!ENTITY brack_with_var.label "以下的變數可以插入 [[...]] 來使用">
 <!ENTITY sub_var.cap "主旨">
 <!ENTITY sub.label "回覆/轉寄郵件的主旨">

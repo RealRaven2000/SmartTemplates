@@ -149,7 +149,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!">
-<!ENTITY ex_brack.label "Exemplo: Para: Fred Cc: Jane">
+<!ENTITY ex_brack.label "Exemplo: Para: ADÃO | Cc: ALBERTINA">
 <!ENTITY brack_with_var.label "As seguintes variáveis podem ser usadas dentro de [[...]]">
 <!ENTITY sub_var.cap "Assunto">
 <!ENTITY sub.label "Assunto de email respondido / encaminhado">

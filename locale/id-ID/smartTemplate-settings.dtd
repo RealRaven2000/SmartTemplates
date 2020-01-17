@@ -145,7 +145,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Format khusus">
 <!ENTITY specform_note.label "Bagian dalam kurung ganda  [[Cc: &#37;cc(name)&#37;]] hanya akan ditampilkan jika variabel &#37;cc(name)&#37; bisa diganti!">
-<!ENTITY ex_brack.label "Contoh: Untuk: Fred Cc: Jane">
+<!ENTITY ex_brack.label "Contoh: Untuk: Fred | Cc: Jane">
 <!ENTITY brack_with_var.label "Variabel berikut dapat digunakan di dalam [[...]]">
 <!ENTITY sub_var.cap "Subjek">
 <!ENTITY sub.label "subjek email yang dijawab / diteruskan">

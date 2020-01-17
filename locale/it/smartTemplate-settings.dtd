@@ -148,15 +148,15 @@
 <!ENTITY ccfirstname.label "Cognome del destinatario">
 <!ENTITY ccname.label "Nome del destinatario">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Interruttori della rubrica">
-<!ENTITY ab_switches.desc "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare switch di parti aggiuntivi per variabili di indirizzo come, ad esempio:">
+<!ENTITY ab_fields "Campi della rubrica">
+<!ENTITY ab_fields.desc "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare campi aggiuntivi per variabili di indirizzo come &#37;from&#37;, ad esempio:">
 <!ENTITY ab_contact "Contatto">
 <!ENTITY ab_private "Privato">
 <!ENTITY ab_other "Altro">
 <!ENTITY ab_work "Lavoro">
 <!ENTITY spec_form.cap "Formati speciali">
 <!ENTITY specform_note.label "Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!">
-<!ENTITY ex_brack.label "Esempio: A: boo Cc: foo">
+<!ENTITY ex_brack.label "Esempio: A: Gianni | Cc: Zola">
 <!ENTITY brack_with_var.label "Le seguenti variabili possono essere usate tra [[...]]">
 <!ENTITY sub_var.cap "Oggetto">
 <!ENTITY sub.label "Oggetto del messaggio di risposta o inoltrato">
@@ -195,7 +195,7 @@
 <!ENTITY quoteLevel "[opzionale, numerico]: da quale livello minimo di preventivo iniziare">
 <!ENTITY selector "- cosa useresti per indirizzare il tag in CSS. il caso più semplice 'img' o 'p' ma i selettori di attributo possono essere aggiunti purché si possano evitare virgolette doppie.">
 <!ENTITY minSize "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni.">
-<!ENTITY minSize_note "Si noti che gli spazi bianchi possono essere meglio rappresentati come \ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie.">
+<!ENTITY whitespace_note "Si noti che gli spazi bianchi possono essere meglio rappresentati come \ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie.">
 <!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
 <!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data/ora (formato locale)">

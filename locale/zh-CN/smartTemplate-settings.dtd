@@ -145,7 +145,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "特殊形式">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
-<!ENTITY ex_brack.label "例子: To: Li Cc: Wu">
+<!ENTITY ex_brack.label "例子: To: Li | Cc: Wu">
 <!ENTITY brack_with_var.label "以下变量可以用在 [[...]] 里面">
 <!ENTITY sub_var.cap "主题">
 <!ENTITY sub.label "回复/转发的邮件主题">

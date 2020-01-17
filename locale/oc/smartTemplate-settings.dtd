@@ -92,7 +92,7 @@
 <!ENTITY ccname.label "Noms dels destinataris en còpia">
 <!ENTITY spec_form.cap "Formats especials">
 <!ENTITY specform_note.label "La frasa [[Cc: &#37;cc(name)&#37;]] s'aficharà pas que se la variabla &#37;cc(name)&#37; pòt èsser remplaçada !">
-<!ENTITY ex_brack.label "Exemple : Per : boo Còpia a : foo">
+<!ENTITY ex_brack.label "Exemple : Per : ANAÏS | Còpia a : ESTÈVE">
 <!ENTITY brack_with_var.label "Las variablas seguentas pòdon èsser utilizadas dins de [[…]]">
 <!ENTITY sub_var.cap "Subjècte">
 <!ENTITY sub.label "Subjècte del messatge de responsa o transferit">

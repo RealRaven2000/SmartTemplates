@@ -141,7 +141,7 @@
 <!-- #### TABLE #### -->
 <!ENTITY spec_form.cap "Посебан формат">
 <!ENTITY specform_note.label "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени.">
-<!ENTITY ex_brack.label "Пример: „За: boo CC: foo“">
+<!ENTITY ex_brack.label "Пример: „За: Анђелка | CC: Илинка“">
 <!ENTITY brack_with_var.label "Унутра можете да користите следеће променљиве [[...]]">
 <!ENTITY sub_var.cap "Наслов">
 <!ENTITY sub.label "наслов одговорене/прослеђене поруке">

@@ -120,6 +120,10 @@
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
 <!ENTITY ownmail.label "Ihre E-Mail Adresse">
+<!ENTITY identity_ab "Verwenden Sie das Schlüsselwort 'addressbook', um zusätzliche Identitätsinformationen aus dem Adressbuch abzurufen.">
+<!ENTITY identity_ab.field "Informationen zu möglichen zusätzlichen Feldwerten finden Sie im nachfolgenden Kapitel 'Adressbuchfelder'.">
+<!ENTITY identity_ab.example "Beispiel">
+<!ENTITY identity_ab.phoneno "Telefon-Nr">
 <!ENTITY date.label "Datum und Zeit (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY tomail.label "Empfänger E-Mail Adresse">
 <!ENTITY frommail.label "Absender E-Mail Adresse">
@@ -134,6 +138,7 @@
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
+<!ENTITY standardformat.config "Standardformat setzen…">
 <!ENTITY tofirstname.label "Empfängervorname">
 <!ENTITY toname.label "Empfängername">
 <!ENTITY tofwd.label "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen">
@@ -148,15 +153,15 @@
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
 <!-- #### TABLE #### -->
-<!ENTITY ab_switches "Schalter für Adressbuch">
-<!ENTITY ab_switches.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zusätzliche Schalter hinzugefügt werden, z.B.:">
+<!ENTITY ab_fields "Felder für Adressbuch">
+<!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Sonstiges">
 <!ENTITY ab_work "Dienstlich">
 <!ENTITY spec_form.cap "Sonderformatierung">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
-<!ENTITY ex_brack.label "Beispiel: An: Friedrich Cc: Eva">
+<!ENTITY ex_brack.label "Beispiel: An: Friedrich | Cc: Eva">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
 <!ENTITY sub_var.cap "Betreff">
 <!ENTITY sub.label "Betreff (gleiches Format wie in der E-Mail Kopfzeile)">
@@ -195,7 +200,8 @@
 <!ENTITY quoteLevel "[optional, numerisch]: minimaler Zitatlevel ab dem ersetzt werden soll">
 <!ENTITY selector "- CSS kompatibler Selektor, im simpelsten Fall 'img' oder 'p', Attribut Selektoren können verwendet werden. Ausnahme: doppelte Anführungszeichen müssen vermiden werden.">
 <!ENTITY minSize "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
-<!ENTITY minSize_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
+<!ENTITY whitespace_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
+<!ENTITY minSize_detail "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
