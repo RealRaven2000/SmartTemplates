@@ -260,10 +260,12 @@
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
 <!ENTITY table_note.label "Onjuist gebruik van variabelen zal foutmeldingen in de Foutconsole genereren!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabele">
 <!ENTITY table_new.label "Nieuw">
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
 <!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">
@@ -279,6 +281,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecteer een onderwerp!">

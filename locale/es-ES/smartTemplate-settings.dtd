@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
 <!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo.">
+<!ENTITY defaultMimeFormat_tip "Formato para usar al reemplazar de las direcciones &#37;to&#37; &#37;from&#37; &#37;cc&#37;.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo.">
 <!ENTITY pref_addressDelimiter "Delimitar corresponsales múltiples con:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
@@ -234,7 +234,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
-<!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '%'. Ver también:">
+<!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '&#37;'. Ver también:">
 <!ENTITY dateformat.example "Ejemplo: ">
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
@@ -260,10 +260,12 @@
 <!ENTITY html_note.label "¡Por favor, utilice únicamente caracteres UTF-8 (Unicode) en las plantillas de HTML!">
 <!ENTITY table.cap "Uso de las variables">
 <!ENTITY table_note.label "Si se usa incorrectamente una variable aparecerá un error en la Consola de error.">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Redactar">
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Reenviar">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Introduzca su clave personal de Licencia:">
 <!ENTITY label.insertLicense.tooltip "Su clave de licencia está incluida en su correo de confirmación de pedido de Fastspring.">
@@ -279,6 +281,7 @@
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
 <!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Escribir un correo electrónico a Soporte">
 <!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "¡Seleccione un tema!">
