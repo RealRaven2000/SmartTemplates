@@ -116,9 +116,14 @@
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate⁴ erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
+<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
+<!ENTITY identity_ab "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken.">
+<!ENTITY identity_ab.field "För ytterligare fältvärden, se kapitlet 'Adressbokfält' nedan.">
+<!ENTITY identity_ab.example "Exempel">
+<!ENTITY identity_ab.phoneno "Telefonnr">
 <!ENTITY date.label "Datum och tid (samma som originalmeddelandehuvudet)">
 <!ENTITY tomail.label "Mottagarens e-postadress">
 <!ENTITY frommail.label "Avsändarens e-postadress">
@@ -133,6 +138,7 @@
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
+<!ENTITY standardformat.config "Konfigurera standardformat…">
 <!ENTITY tofirstname.label "Mottagarens förnamn">
 <!ENTITY toname.label "Mottagarens namn">
 <!ENTITY tofwd.label "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden">
@@ -146,6 +152,7 @@
 <!ENTITY cc.label "Mottagarens namn (Standard)">
 <!ENTITY ccfirstname.label "Mottagarens förnamn">
 <!ENTITY ccname.label "Mottagarens namn">
+<!-- AB switch section -->
 <!ENTITY ab_fields "Adressbokfält">
 <!ENTITY ab_fields.desc "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:">
 <!ENTITY ab_contact "Kontakt">
@@ -180,6 +187,7 @@
 <!ENTITY matchTextFromSubject "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen.">
 <!ENTITY stringmanip.match.comment "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc.">
 <!ENTITY stringmanip.alttext "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Citat Manipulation">
 <!ENTITY quote_changers.desc "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme.">
 <!ENTITY deleteQuotedText "Tar bort citerad text">
@@ -193,6 +201,7 @@
 <!ENTITY selector "- vad du skulle använda för att adressera taggen i css. enklaste fallet 'img' eller 'p' men attributväljare kan läggas till så länge dubbla citat kan undvikas.">
 <!ENTITY minSize "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder.">
 <!ENTITY whitespace_note "Observera att whitespace bäst kan representeras som '\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas.">
+<!ENTITY minSize_detail "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå.">
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">
@@ -251,10 +260,12 @@
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
 <!ENTITY table_note.label "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Nytt">
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
@@ -270,6 +281,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
 <!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "skriva Mail to Support">
 <!ENTITY support.type "Typ:">
 <!ENTITY support.type.selectOne "Välj ett ämne!">
