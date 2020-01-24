@@ -133,6 +133,10 @@
 <!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
 <!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
 <!ENTITY attach.label "Add file as attachment">
+<!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
+<!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
+<!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
+<!ENTITY basepath.absolute "Click this to set specific folder on your local drive.">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Recipient (To)">

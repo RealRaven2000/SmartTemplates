@@ -11,48 +11,68 @@
 		<title>help.xhtml</title>
 	</head>
 	<body style="margin: 0;">
-		<div class="help" id="helpContents" onclick="containerClick(this, event);">
+  
+  <div class="help" id="helpContents" onclick="containerClick(this, event);">
+    <p id="allexpander">Click a heading or <a href="#" onclick="expandAll(event);">expand all.</a></p>
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter">&fix_var.cap;</h1>
+    <div class="chapterBody">
 			<ul>
 				<li><code>%identity(name)%</code> = &ownname.label; (<code class="deprecated">%ownname%</code>)</li>
 				<li><code>%identity(mail)%</code> = &ownmail.label; (<code class="deprecated">%ownmail%</code>)</li>
 				<li><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
+				<li><code>%identity(addressbook,<i>fieldId</i>)%</code> = &identity_ab;<br/>
+        <span class="param">fieldId</span> : &identity_ab.field;
+        </li>
+        <aside><b>&identity_ab.example;</b><br/> &identity_ab.phoneno;: %identity(addressbook,workphone)%</aside>
+        
+        <div class="chapterbreak" />
 				<li><code class="deferable">%date%</code> = &date.label;</li>
 				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
 				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
 				<li><code class="deferable">%cc(mail)%</code> = &ccmail.label;</li>
+        
+        <div class="chapterbreak" />
 				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = &sig.label;</li>
 				<li><code>%sig(2)%</code> = &sig2.label;</li>
+        <div class="chapterbreak" />
 				<li><code>%file(filePath,encoding)%</code> = &fileHTML.label;</li>
 				<li><code>%file(imagePath,altText)%</code> = &fileImage.label;</li>
 				<li><code>%attach(filePath)%</code> = &attach.label;</li>
+        
+      <div style="display:none;">
+        <div class="chapterbreak"  />
+        <aside><!--&basepath.desc; &basepath.desc2; --></aside>
+				<li><code>%basepath%</code> = <!--&basepath.relative; --></li>
+				<li><code>%basepath(folderPath)%</code> = <!-- &basepath.absolute; --></li>
+      </div>
+
+        <div class="chapterbreak" />
 				<li><code>%spellcheck(language)%</code> = &spellcheck.label;</li>
 				<li><code>%cursor%</code> = &cursor.label;</li>
 			</ul>
-		       <!--
-                        <br />
-			<code>%sig%</code> = &sig.label;
-			<br />
-			<code>%sig(2)%</code> = &sig2.label;
-                       -->
+    </div>
+
 		<!-- ##### "To" Variables #### -->
 		<h1 class="helpchapter">&to_var.cap;</h1>
+    <div class="chapterBody">
 			<aside>(&to_note.label;)</aside>
 			<ul>
-				<li><code class="deferable">%to%</code> = &to.label;</li>
+				<li><code class="deferable">%to%</code> = &to.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
 				<li><code class="deferable">%to(firstname)%</code> = &tofirstname.label;</li>
 				<li><code class="deferable">%to(name)%</code> = &toname.label;</li>
 				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
 				<li><code class="deferable">%to(name,bracketMail())%</code> = &toname.label; &lt;&tomail.label;&gt;</li>
 				<li><code class="deferable">%to(name,fwd)%</code> = &tofwd.label;</li>
 			</ul>
+    </div>
 			
 			<!-- ##### "From" Variables #### -->
-			<h1 class="helpchapter">&from_var.cap;</h1>
+    <h1 class="helpchapter">&from_var.cap;</h1>
+    <div class="chapterBody">
 			<aside>(&from_note.label;)</aside>
 			<ul>
-				<li><code class="deferable">%from%</code> = &from.label;</li>
+				<li><code class="deferable">%from%</code> = &from.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
 				<li><code class="deferable">%from(firstname)%</code> = &fromfirstname.label;</li>
 				<li><code class="deferable">%from(name)%</code> = &fromname.label;</li>
 				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
@@ -62,17 +82,91 @@
 				<li><code class="deferable">%from(name,bracketMail(square))%</code> = &fromname.label; [&frommail.label;]</li>
 				<li><code class="deferable">%from(name,bracketMail(round))%</code> = &fromname.label; (&frommail.label;)</li>
 			</ul>
+    </div>
+    
 		<!-- ##### "CC" Variables #### -->
 		<h1 class="helpchapter">&cc_var.cap;</h1>
+    <div class="chapterBody">
 			<aside>(&cc_note.label;)</aside>
 			<ul>
-				<li><code class="deferable">%cc%</code> = &cc.label;</li>
+				<li><code class="deferable">%cc%</code> = &cc.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
 				<li><code class="deferable">%cc(firstname)%</code> = &ccfirstname.label;</li>
 				<li><code class="deferable">%cc(name)%</code> = &ccname.label;</li>
 				<li><code class="deferable">%cc(name,bracketMail())%</code> = &ccname.label; &lt;&ccmail.label;&gt;</li>
 			</ul>
+    </div>
+    
+    <!-- ##### AB switches #### -->  
+		<h1 class="helpchapter">&ab_fields;</h1>
+    <div class="chapterBody">
+
+      <aside>&ab_fields.desc; <code>%from(firstname,workphone)%</code></aside>
+      
+      <table class="ab_fields">
+        <tr>
+          <td>
+      <h4>&ab_contact;</h4>
+      <ul class="contact_switches">
+        <li>firstname</li>
+        <li>lastname</li>
+        <li>name</li>
+        <li>nickname</li>
+        <li>additionalmail</li>
+        <li>chatname</li>
+        <li>workphone</li>
+        <li>homephone</li>
+        <li>fax</li>
+        <li>pager</li>
+        <li>mobile</li>
+      </ul>
+          </td>
+          <td>
+      <h4>&ab_private;</h4>
+      <ul class="contact_switches">
+        <li>private.city</li>
+        <li>private.address1</li>
+        <li>private.address2</li>
+        <li>private.state</li>
+        <li>private.country</li>
+        <li>private.zipcode</li>
+        <li>private.webpage</li>
+        <li></li>
+      </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+      <h4>&ab_work;</h4>
+      <ul class="contact_switches">
+        <li>work.title</li>
+        <li>work.department</li>
+        <li>work.organization</li>
+        <li>work.address1</li>
+        <li>work.address2</li>
+        <li>work.city</li>
+        <li>work.state</li>
+        <li>work.country</li>
+        <li>work.zipcode</li>
+        <li>work.webpage</li>
+      </ul>
+          </td>
+          <td>
+      <h4>&ab_other;</h4>
+      <ul class="contact_switches">
+        <li>other.custom1</li>
+        <li>other.custom2</li>
+        <li>other.custom3</li>
+        <li>other.custom4</li>
+        <li>other.notes</li>
+      </ul>
+          </td>
+        </tr>
+      </table>
+    </div>    
+      
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">&spec_form.cap;</h1>
+    <div class="chapterBody">
 			<aside>&specform_note.label;
 				<br /><b>&ex_brack.label;</b><br />
 			</aside>
@@ -83,22 +177,30 @@
 				<li><code class="deferable">%cc%</code> <code class="deferable">%cc(firstname)%</code> <code class="deferable">%cc(name)%</code> <code class="deferable">%cc(mail)%</code></li>
 				<li><code class="deferable">%bcc%</code> <code class="deferable">%bcc(firstname)%</code> <code class="deferable">%bcc(name)%</code> <code class="deferable">%bcc(mail)%</code></li>
 			</ul>
+    </div>
+    
 		<!-- ##### Subject Variables #### -->
 		<h1 class="helpchapter">&sub_var.cap;</h1>
+    <div class="chapterBody">
 			<ul>
 				<li><code class="deferable">%subject%</code> = &sub.label;</li>
 				<li><code class="deferable">%subject(2)%</code> = &sub2.label;</li>
 			</ul>
+    </div>
+    
 		<!-- ##### Special Variables (Message-Headerkeys) #### -->
 		<h1 class="helpchapter">&spec_var.cap;</h1>
+    <div class="chapterBody">
 			<ul>
 				<li><code class="noWrite">%Message-ID%</code> = &messid.label;</li>
 				<li><code class="noWrite">%Newsgroups%</code> = &newsgr.label;</li>
 				<li><code class="noWrite">%X-Mailer%</code> = &xmail.label;</li>
 				<li><code class="noWrite">%...%</code> = &any.label;</li>
 			</ul>
+    </div>
 		<!-- ##### header.set / header.append / header.prefix #### -->
 		<h1 class="helpchapter">&header_function.cap;</h1>
+    <div class="chapterBody">
 			<aside>&header_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a>.</aside>
 			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to</aside>
 			<ul>
@@ -108,20 +210,49 @@
 				<li><code>%header.set(to,"abc@de.com")%</code> = &header.set.to;</li>
 				<li><code>%header.append(to,"abc@de.com")%</code> = &header.append.to;</li>
 			</ul>
-			
+    </div>
+      
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
 		<h1 class="helpchapter">&stringmanip_function.cap;</h1>
+    <div class="chapterBody">
 			<aside>&stringmanip_function.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904 " target="_blank">[Bug 25904]</a>.</aside>
 			<ul>
 				<li><code>%deleteText("text")%</code> = &deleteText;</li>
 				<li><code>%replaceText("find","replace")%</code> = &replaceText;</li>
-				<li><code>%matchTextFromBody("Regular Expression",MatchGroup)%</code> = &matchTextFromBody;</li>
-				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup)%</code> = &matchTextFromSubject;</li>
+				<li><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = &matchTextFromBody;</li>
+				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = &matchTextFromSubject;</li>
 			</ul>
-			<aside>&stringmanip.match.comment;</aside>			
+			<aside>&stringmanip.match.comment;</aside>
+      <aside><span class="param">altText</span> : &stringmanip.alttext;</aside>
+    </div>
+    <div class="chapterbreak" />
+
+		<h1 class="helpchapter">&quote_changers.cap;</h1>
+    <div class="chapterBody">
+      <ul>
+        <aside>&quote_changers.desc; <a href="http://smarttemplate4.mozdev.org/variables.html#quoteManipulation" target="_blank">Docs</a>.</aside>
+        <code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> &deleteQuotedText;<br/>
+        <code>%replaceQuotedText("<span class="param">searchText</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>)%</code> &replaceQuotedText; <br/>
+        <code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> &deleteQuotedTags; <br/>
+        <code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> &replaceQuotedTags; <br/>
+        
+        <h4>&Parameters;</h4>
+        <li class="paramList"><span class="param">searchText</span> &regexpAnyText;
+        <aside>&whitespace_note;</aside>
+        </li>
+        <li class="paramList"><span class="param">replacementHTML</span>  &replacementHTML;</li>
+        <li class="paramList"><span class="param">quoteLevel</span> &quoteLevel;</li>
+        <li class="paramList"><span class="param">selector</span> &selector;</li>
+        <li class="paramList"><span class="param">minSize</span> &minSize;
+        <aside>&minSize_detail;</aside></li>        
+        
+      </ul>
+    </div>
+
 			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
 		<h1 class="helpchapter">&fix_vartz.cap;</h1>
+    <div class="chapterBody">
 			<aside>(&fix_vartz_note.label;)</aside>
 			<ul>
 				<li><code>%datelocal%</code> = &datelocal.label;</li>
@@ -135,10 +266,11 @@
 				<li><code>%X:=calculated(DD,HH:MM)%</code> = &calculate.explain;</li>
 				<li><code>%X:=calculated(0)%</code> = &calculate.reset;</li>
 			</ul>
-			
+		</div>	
 			
 		<!-- ##### Custom Variables #### -->
 		<h1 class="helpchapter">&var_custom.cap;</h1>
+    <div class="chapterBody">
 			<aside>(&customdf_note.label;)</aside>
 			<ul>
 				<li><code>%A%</code> = &A.label;</li>
@@ -161,24 +293,67 @@
 				<li><code class="noWrite">%p(2)%</code> = &p2.label;</li>
 				<li><code class="deferable">%dateformat()%</code> = &dateformat.label;
 					<aside>&dateformat.explain; <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26588" target="_blank">[Bug 26588]</a>.</aside>
-					<br />&dateformat.example;
-					<code class="deferable">%dateformat(A, e/n/Y H:M)%</code>
+					<aside><b>&dateformat.example;</b></aside>
+          <table class="date_examples">
+            <tr>
+              <th>ST⁴ Variable</th>
+              <th>&dateformat.example;</th>
+              <th>Countries</th>
+            </tr>
+            <tr>
+              <td><code class="deferable">%dateformat(A, e/n/Y H:M)%</code></td>
+              <td>Monday, 13/4/2022 13:20</td>
+              <td>en-UK, es-ES, fr</td>
+            </tr>
+            <tr>
+              <td><code class="deferable">%dateformat(A, m/e/Y I:M p)%</code></td>
+              <td>Monday, 4/13/2022 1:20 pm</td>
+              <td>en-US</td>
+            </tr>
+            <tr>
+              <td><code class="deferable">%dateformat(A, e.n.Y H:M)%</code></td>
+              <td>Montag, 13.4.2022 13:20</td>
+              <td>de</td>
+            </tr>
+            <tr>
+              <td><code class="deferable">%dateformat(Y年m月d日 {A} H:M)%</code></td>
+              <td>2022年04月13日 {日曜日} 13:20</td>
+              <td>ja</td>
+            </tr>
+            <tr>
+              <td><code class="deferable">%dateformat(y-m-d {A} H:M)%</code></td>
+              <td>2022-04-13 {星期日} 13:20</td>
+              <td>zh-CN</td>
+            </tr>
+          </table>
+          
 				</li>
 			</ul>
+    </div>
+
 		<!-- ##### X:=Sent Variable #### -->
 		<h1 class="helpchapter">&var_xsent.cap;</h1>
+    <div class="chapterBody">
 			<aside>&xsent_note.label;</aside>
 			<ul>
 				<li><code class="noWrite">%X:=sent%</code></li>
 			</ul>
+    </div>
+    
+    
 		<!-- ##### Longstring Description #### -->
 		<h1 class="helpchapter">&xsent_long.cap;</h1>
+    <div class="chapterBody">
 			<ul>
 				<li><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
 				    <br />&xsent_long_result.label;</li>
 			</ul>
+    </div>
+    
+    
 		<!-- ##### Shortstring Description #### -->
 		<h1 class="helpchapter">&xsent_short.cap;</h1>
+    <div class="chapterBody">
 			<ul>
 				<li><code class="noWrite">%X:=sent% %datelocal%</code>
 				    <br />&xsent_short_result.label;</li>
@@ -190,11 +365,17 @@
 				<li><code>%date_tz%</code> = &datetimezone.label;</li>
 				<li><code>%tz_name%</code> = &timezonename.label;</li>
 			</ul>
+    </div>
+    
 		<!-- ##### HTML -> UTF-8 Note #### -->
 		<h1 class="helpchapter">&html_note.cap;</h1>
+    <div class="chapterBody">
 			<aside>&html_note.label;</aside>
+    </div>
+    
 		<!-- ##### Variable Table Note #### -->
 		<h1 class="helpchapter">&table.cap;</h1>
+    <div class="chapterBody">
 			<aside>&table_note.label;</aside>
 			<!-- ##### Variable Table #### -->
 			<table id="keywords">
@@ -460,13 +641,31 @@
 				</tbody>
 			</table>
 		</div>
+  </div>
+    
+    
 	</body>
 	<script type="text/javascript">
   //<![CDATA[
 		function containerClick(el, evt) {
 			var code = evt.target;
+      
+      if (code && code.classList.contains("helpchapter")) {
+        /*  
+        // not needed
+          var newClick = new MouseEvent('click', { view: window, bubbles: false, cancelable: true })
+          window.setTimeout( function clickHelpChapter() {
+            code.dispatchEvent(newClick);
+          }, 25);
+        */
+        return;
+      }
+      
 			if (typeof code !='undefined') {
-				if (code.tagName == 'code' || code.tagName  == 'a') {
+        var classList = code.classList,
+            isAddressConfig = (classList && classList.contains('config_default'));
+            
+				if (code.tagName == 'code' || code.tagName == 'a' || isAddressConfig) {
 					var exists = true,
 					    element = document.getElementById('ST4Dispatcher');
 					if (!element) {
@@ -475,26 +674,98 @@
 						element.id = 'ST4Dispatcher';
 					}
 
-					if (code.tagName  == 'code') {
-						element.setAttribute("codeWord", code.innerHTML); // now, add the payload
-						element.setAttribute("class", code.className);    // class="noWrite" => cannot be used in new mail!!
-					}
-					else
-					  element.setAttribute("href", code.getAttribute('href'));
+          switch(code.tagName) {
+            case 'code':
+              /* this used to use innerHTML unnecessarily */
+              element.setAttribute("codeWord", code.innerText); // now, add the payload
+              element.setAttribute("class", code.className);    // class="noWrite" = cannot be used in new mail!!
+              break;
+            case 'span':
+              if (isAddressConfig) {
+                element.removeAttribute("codeWord");
+                element.setAttribute("class", code.className);
+              }
+              break;
+            case 'a':
+            default: // probably anchor
+              element.setAttribute("href", code.getAttribute('href'));
+              break;
+          }
 
 					if (!exists)
 						document.documentElement.appendChild(element);
 
 					// make a new custom event
 					var customEvent = document.createEvent("Events");
-					if (code.tagName  == 'code')
-						customEvent.initEvent("SmartTemplate4CodeWord", true, false);
-					else
-						customEvent.initEvent("SmartTemplate4Website", true, false);
+          
+          switch(code.tagName) {
+            case 'code':
+              customEvent.initEvent("SmartTemplate4CodeWord", true, false);
+              break;
+            case 'span':
+              if (isAddressConfig)
+                customEvent.initEvent("SmartTemplate4CAD", true, false);
+              break;
+            default:
+              customEvent.initEvent("SmartTemplate4Website", true, false);
+              break;
+          }
+						
 					element.dispatchEvent(customEvent);
 				}
 			}
 		}
+    
+    function expandAll(evt) {
+      evt.preventDefault();
+      event.stopPropagation();
+      var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
+      allchapters.forEach(function(el) {
+        el.classList.remove('collapsed');
+      });
+    }    
+    
+    // Accordion:
+    var mychapters = Array.from(document.getElementsByClassName('chapterBody'));
+    mychapters.forEach(function(el) {
+      var hd = el.previousElementSibling,
+          xalert = window.alert.bind(window);
+      
+      /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
+      hd.addEventListener('click', 
+        function(e) { 
+          var isCollapsed = el.classList.contains('collapsed');
+          if (isCollapsed) {
+            // collapse all other chapters
+            Array.from(document.getElementsByClassName('chapterBody')).forEach(
+              function(x) {
+                if (x!=el)
+                  x.classList.add('collapsed');
+              }
+            )
+            el.classList.remove('collapsed'); // uncollapse chapter below this heading
+            window.setTimeout( function() { hd.scrollIntoView(true); }, 150 );
+            
+          }
+          else
+            el.classList.add('collapsed');
+        }
+      );
+      el.classList.add('collapsed');
+    });
+    
+    // address standard configurators
+    /*
+    var configLinks = Array.from(document.getElementsByClassName('config_default'));
+    configLinks.forEach(function(el) {
+      var newClick = new MouseEvent('click', { view: window, bubbles: false, cancelable: true });
+      window.setTimeout( function clickConfigDefault() {
+        alert('test');
+      }, 25);
+    });
+    */
+    
+
   //]]>
 	</script>
 </html>

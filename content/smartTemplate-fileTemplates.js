@@ -253,7 +253,7 @@ SmartTemplate4.fileTemplates = {
   },
   
   remove: function remove() {
-    if (SmartTemplate4.Preferences.isDebug) debugger;
+    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) debugger;
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
     if (idx<0) return;
@@ -492,9 +492,9 @@ SmartTemplate4.fileTemplates = {
 					fT = SmartTemplate4.fileTemplates,
 					maxFreeItems = 3,
 					isLicensed = util.hasLicense(false);
+		let parent = msgPopup.parentNode;			
 					
-					
-		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries");
+		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
 		// first clear entries:
 							
 		let lastChild = msgPopup.lastChild;
@@ -538,7 +538,7 @@ SmartTemplate4.fileTemplates = {
 					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
-					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label); 
+					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
 					return false; 
 				}, 
 				{capture:true } , 
@@ -616,7 +616,7 @@ SmartTemplate4.fileTemplates = {
 		if (lastChild && lastChild.tagName == 'menuseparator') {
 			msgPopup.appendChild(lastChild);
 		}
-		
+		msgPopup.setAttribute("st4configured", true);
 	} ,
 	
 	// find menupopup in button's childNodes. If there is no menupopup, then append a new one.
@@ -632,7 +632,7 @@ SmartTemplate4.fileTemplates = {
 					  if (cV.tagName=="toolbaritem") { // drill down into "smart" reply buttons - hdrSmartReplyButton item
 							cV.childNodes.forEach(
 							  function(bV, bI, id) {
-									if (buttonName.includes(bV.id) && !bV.getAttribute('hidden')) {
+									if (buttonName == bV.id ) {  // && !bV.getAttribute('hidden')
 										element = bV;
 									}
 								}
@@ -640,7 +640,7 @@ SmartTemplate4.fileTemplates = {
 						}
 						else
 							// make sure the button is not hidden!
-							if (buttonName.includes(cV.id) && !cV.getAttribute('hidden')) {
+							if (buttonName == cV.id ) {  // !cV.getAttribute('hidden')
 								element = cV;
 							}
 					}
@@ -669,11 +669,17 @@ SmartTemplate4.fileTemplates = {
 		return menupopup;		
 	} ,
 	
-  initMenus: function () {
-		const util = SmartTemplate4.Util;
+  initMenus: function (reset = false) {
+		const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences;
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 
+    function needsConfig(menu) {
+      if (!menu) return false;
+      if (reset) return true;
+      return (!menu.getAttribute('st4configured'));
+    }
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
@@ -695,19 +701,27 @@ SmartTemplate4.fileTemplates = {
 					try {
 						 // turn these HTMLCollections into Arrays
 						Array.from(separators).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 						Array.from(items).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 						Array.from(pickers).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 						Array.from(configurators).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 					} catch (ex) {;}
@@ -729,8 +743,10 @@ SmartTemplate4.fileTemplates = {
 							btn.appendChild(newMsgPopup);
 						}
 					}
-					if (newMsgPopup)
+          
+					if (needsConfig(newMsgPopup)) {
 						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
+          }
 					
 					// 2a) reply entries     --------------------
 					//    calling getPopup() - if it doesn't exist, the popup will be automatically created & appended to button
@@ -743,7 +759,8 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
-						fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+            if (needsConfig(replyPopup))
+						  fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
 					// 2b) reply all entries     --------------------
@@ -756,43 +773,81 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
-						fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+            if (needsConfig(replyPopup))
+              fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
 					// 3) forwarding entries --------------------
 					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
-					if (fwdMsgPopup)
-						fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+					if (needsConfig(fwdMsgPopup)) {
+            fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+          }
 					
 					// ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
-						logDebug("headerToolbox found; adding template file menus...");
+						logDebug("headerToolbox found; adding template file menus…");
 						
-						// 4) (header) reply entries     --------------------
-						replyPopup = fT.getPopup(["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrReplyToSenderButton","button-reply","hdrFollowUpButton"], headerToolbox); // compactHeader support
-						if (replyPopup) {
-							let btn = replyPopup.parentNode;
-							if (!replyPopup.id) {
-								replyPopup.id='button-replyMsgPopup';
-								btn.type = "menu-button";
-								// attach the menupopup
-								btn.insertBefore(replyPopup, btn.firstChild);
-							}
-							fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
-						}
-						else logDebug("replyPopup not found.");
+						// 4) (header) reply entries     -------------------- 
+            let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton","hdrReplyToSenderButton","button-reply","button-replyall"];
+            for (let b=0; b<hrBtns.length; b++) {
+              let id = hrBtns[b],
+                  theB = document.getElementById(id);
+              if (theB && theB.parentNode.Id == 'hdrSmartReplyButton') { // skip these and deal with them directly
+                if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+                replyPopup = fT.getPopup(id, null);
+              }
+              else
+                replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
+              if (needsConfig(replyPopup)) {
+                let btn = replyPopup.parentNode;
+                if (!replyPopup.id) {
+                  replyPopup.id='button-replyMsgPopup'+b;
+                  btn.type = "menu-button";
+                  // attach the menupopup
+                  btn.insertBefore(replyPopup, btn.firstChild);
+                }
+                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+              }
+              if(!replyPopup) logDebug("not found: " + id);            
+            }
+            
+            // 4.1) smart reply button - submenus! parent is
+            let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
+            for (let b=0; b<smartSM.length; b++) {
+              let id=smartSM[b];
+              replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
+              if (needsConfig(replyPopup)) {
+                let btn = replyPopup.parentNode;
+                if (!replyPopup.id) {
+                  replyPopup.id='button-replyMsgPopup'+b;
+                  btn.type = "menu-button";
+                  // attach the menupopup
+                  btn.insertBefore(replyPopup, btn.firstChild);
+                }
+                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+              }
+              if(!replyPopup) logDebug("not found: " + id);            
+            }
+
 						
 						// 5) (header) forwarding entries --------------------
 						// what about hdrDualForwardButton ?
-						fwdMsgPopup = fT.getPopup(['hdrForwardButton','button-forward'], headerToolbox); // compactHeader support 'hdrDualForwardButton'
-						if (fwdMsgPopup) {
-							let btn = fwdMsgPopup.parentNode;
-							btn.type = "menu-button";
-							fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
-							btn.insertBefore(fwdMsgPopup, btn.firstChild);
-						}
-						else logDebug("fwdMsgPopup not found.");
+            let hfBtns=['hdrForwardButton','hdrDualForwardButton','button-forward'];
+            for (let b=0; b<hfBtns.length; b++) {
+              let id=hfBtns[b];
+              if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+              fwdMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 'hdrDualForwardButton'
+              if (needsConfig(fwdMsgPopup)) {
+                let btn = fwdMsgPopup.parentNode;
+                btn.type = "menu-button";
+                fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+                btn.insertBefore(fwdMsgPopup, btn.firstChild);
+                logDebug("added fwdMsgPopup to: " + id);
+              }
+              if(!fwdMsgPopup) logDebug("not found: " + id);
+            }
+
 					}
 					else {
 						logDebug("headerToolbox NOT found!");
@@ -916,8 +971,9 @@ SmartTemplate4.fileTemplates = {
   }  ,
 	
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label) {
-		const util = SmartTemplate4.Util;
+	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent) {
+		const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences;
 		// now remember the correct template for the next composer window!
 		fileTemplateInstance.armedEntry = 
 		  { 
@@ -930,18 +986,67 @@ SmartTemplate4.fileTemplates = {
 		  + "template:" + label + "\n"
 			+ "path:" + path);
 			
-		let popup = menuitem.parentNode;
+		let popup = menuitem.parentNode,
+        isSmartReplyBtn = 
+          (btn.parentElement.id == "hdrSmartReplyButton"); // contains all "smart" buttons
+        
+    
 		if (popup.getAttribute("st4nonNative") 
 			  || btn.id=="button-newmsg"
 			  || btn.id=="button-forward"  
-			  || btn.id=="button-reply") {
+			  || btn.id=="button-reply"
+        || isSmartReplyBtn) {
 			// we need to trigger the button.
-			// in Thunderbird 68 for some reason it is not done on the message header pagen buttons automatically. 
+			// in Thunderbird 68 for some reason it is not done on the message header page buttons automatically. 
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
       // we may want to control which of these 2 are triggered (inline or attach), but I guess 
 			// without specifying it will likely be the Thunderbird account defaults
-			util.logDebugOptional("fileTemplates","firing btn.click() ...");
-			btn.click(); // or fire the command event? 
+			util.logDebugOptional("fileTemplates","firing btn.click() …");
+      if (isSmartReplyBtn) {
+        const isAlt = originalEvent.altKey, 
+              isCtrl = originalEvent.ctrlKey, 
+              isShift = originalEvent.shiftKey;
+        let buttonNo = 0,
+            buttons = btn.parentElement.childNodes,
+            popupMenuItems = menuitem.parentElement.childNodes;
+        
+        /* select first second third or fourth button. default is the first one (usally reply all): */
+        if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+        if (isShift) buttonNo = 1;
+        if (isCtrl) buttonNo = 2;
+        if (isShift && isCtrl) buttonNo = 3;
+        // find out whether to chose the top (default) command or one below.
+        let counter = 0;
+        for (let c=0; c<popupMenuItems.length; c++) {
+          if (popupMenuItems[c].tagName != "menuitem") continue;
+          if (popupMenuItems[c].getAttribute('hidden')=='true') continue;
+          if (buttonNo == counter) { 
+            let ob = popupMenuItems[c].getAttribute('observes');
+            if (ob) {
+              originalEvent.stopPropagation();
+              util.logDebugOptional("fileTemplates","triggering click event for command: " + ob);
+              return popupMenuItems[c].click();
+            }
+            
+            switch(popupMenuItems[c].id) {
+              case "hdrReplyList_ReplyListSubButton":  // first item
+              case "hdrReplyAll_ReplyAllSubButton":
+              case "hdrRelplyList_ReplyAllSubButton": // genuine typo from Tb
+              case "hdrReplyList_ReplyAllSubButton":  // in case they fix it :)
+              case "hdrReplySubButton":
+              case "hdrReplyList_ReplySubButton":
+                util.logDebugOptional("fileTemplates","Clicking the menu item: " + popupMenuItems[c].id);
+                return popupMenuItems[c].click();
+              default:
+                util.logDebugOptional("fileTemplates","Click direct, Smart Button id:"  + popupMenuItems[c].id);
+                return btn.click(); // or fire the standard command event? 
+            }
+          }
+          counter++;
+        }
+      }
+      else
+        btn.click(); // or fire the standard command event? 
 		}
 		else {
 			util.logDebugOptional("fileTemplates","+======++++++======++++++======+\nNo click event fired for button id=" + btn.id);

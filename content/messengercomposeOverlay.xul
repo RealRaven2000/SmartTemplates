@@ -30,6 +30,17 @@
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
 		</toolbarbutton>
+		<!-- [issue 24] Select a different template in Composer..
+    toolbarbutton 
+		  id="smarttemplate4-changeTemplate" 
+			class="toolbarbutton-1 AG"
+			label="change template…"
+			tooltiptext="Select a different template"
+			context=""
+			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
+			-->
+    
+    
 	</toolbarpalette>
 	
   <window id="msgcomposeWindow">

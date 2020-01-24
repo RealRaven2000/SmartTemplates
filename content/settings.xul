@@ -654,13 +654,14 @@
 											label = "&pref_nameSwap;"
 											tooltiptext = "&pref_nameSwap_tip;"
 											preference = "pref_firstLastSwap"/>
-								<checkbox id = "chkFirstLastSwap"
+								<checkbox id = "chkGuessName"
 											label = "&guessNameFromMail;"
 											preference = "pref_guessNameFromMail"/>
 								<hbox  align="center">
 									<label value="&defaultMimeFormat;"
-												 control="txtNameDelimiter"/>
+												 control="default_address_format"/>
 									<textbox flex="1"
+                           id="default_address_format"
 													 preference = "pref_defaultMimeFormat"
 													 tooltiptext= "&defaultMimeFormat_tip;"/>
 								</hbox>

@@ -610,13 +610,17 @@ SmartTemplate4.mimeDecoder = {
 		// name, firstname, lastname, mail - fields (to be extended)
     // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
     // link, islinkable  - these are "modifiers" for the previous list element
-		let formatArray = util.splitFormatArgs(format);
+		let formatArray = util.splitFormatArgs(format),
+        isForceAB = false;
     
     let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
     for (let i=0; i<formatArray.length; i++) {
-      dbgText += formatArray[i].field;
-      if (formatArray[i].modifier)  
-        dbgText += '(' + formatArray[i].modifier + ')';
+      let fld = formatArray[i];
+      if (fld.field == "addressbook") 
+        isForceAB = true;
+      dbgText += fld.field;
+      if (fld.modifier)  
+        dbgText += '(' + fld.modifier + ')';
       dbgText += '\n';
     }
     util.logDebugOptional('mime.split', dbgText);
@@ -668,7 +672,7 @@ SmartTemplate4.mimeDecoder = {
                                            + 'address: ' + address);
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
-      const isResolveNamesAB = prefs.getMyBoolPref('mime.resolveAB');
+      const isResolveNamesAB = isForceAB || prefs.getMyBoolPref('mime.resolveAB');
       card = getCardFromAB(emailAddress);
 			
           
@@ -753,14 +757,16 @@ SmartTemplate4.mimeDecoder = {
         if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
       }
       else {
-        // name split / replacements; if there are no spaces lets replace '.' then '_'
-        if (fullName.indexOf(' ')<0) {
-           fullName = addressee.replace('.',' ');
+        if (!card || (card && card.displayName && card.displayName != fullName)) { // allow a single word from AB as displayName to "survive"
+          // name split / replacements; if there are no spaces lets replace '.' then '_'
+          if (fullName.indexOf(' ')<0) {
+             fullName = addressee.replace('.',' ');
+          }
+          if (fullName.indexOf(' ')<0) {
+             fullName = addressee.replace('_',' ');
+          }
+          // replace double quotation marks?
         }
-        if (fullName.indexOf(' ')<0) {
-           fullName = addressee.replace('_',' ');
-        }
-        // replace double quotation marks?
       }
       
       let names = fullName.split(' '),
@@ -953,8 +959,8 @@ SmartTemplate4.mimeDecoder = {
           case 'other.notes':
             part = getCardProperty("Notes");
             break;
-                    
-            
+          case 'addressbook':
+            part = "";          
           default:
             let bM = (partKeyWord.indexOf('bracketMail<')==0),
                 bN = (partKeyWord.indexOf('bracketName<')==0);
@@ -1147,6 +1153,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
         cmdParameters.p2 = dText2[0];
         if (theStrings.length>2)
           cmdParameters.p3 = parseInt(theStrings[2]); // quote level param
+        if (theStrings.length>3)
+          cmdParameters.p4 = parseInt(theStrings[3]); // minSize (kB)
         return true;
       }
       if(errDetail)
@@ -1192,7 +1200,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
           let val = att[a].value.toString();
           aS = aS + ": " + val.substr(0,20);
           if (val.length > 20) {
-            aS = aS + "...";
+            aS = aS + "…";
           }
         }
       }   
@@ -1248,7 +1256,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
       for (let i=0; i<matchesR.length; i++) {
         // parse out the argument (string to delete)
         msg = msg.replace(matchesR[i], '');
-        let params = {p1: null, p2: null, p3: null};
+        let params = {p1: null, p2: null, p3: null, p4: 0};
         if (parseParams(matchesR[i], params, 'replaceText')) {
           msg = msg.replace(util.unquotedRegex(params.p1, true), util.unquotedRegex(params.p2));
         }
@@ -1298,7 +1306,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
       for (let i=0; i<quoteMatchesR.length; i++) {
         // parse out the argument (string to delete)
         msg = msg.replace(quoteMatchesR[i], '');  // remove from template
-        let params = {p1: null, p2: null, p3: null};
+        let params = {p1: null, p2: null, p3: null, p4: 0};
         if (parseParams(quoteMatchesR[i], params, 'replaceQuotedText')) {
           // now replace text in quote body:
           let minQuoteLevel = params.p3 || 1,
@@ -1334,6 +1342,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
         let theStrings = quoteTags[i].split(","),
 				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
+            minSize = (theStrings.length>2) ? parseInt(theStrings[2]) : 0,
             rootEl = gMsgCompose.editor.rootElement;
             
         if (dText && dText.length) {
@@ -1341,11 +1350,31 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
               nodes = rootEl.querySelectorAll(s); // NodeList
           for (let i=0; i<nodes.length; i++) {
             let n = nodes.item(i),
-                lv = quoteLevel(n, 0);
+                lv = quoteLevel(n, 0),
+                loadingDeferred = false;
             if (lv >= minQuoteLevel) {
-              // replaces everything on this level and higher (all its child blockquotes)
-              util.logDebug('%deleteQuotedTags% - Removing quoted tag (l=' + lv + '):\n' + displayTag(n)); // displays tag + attributes
+              let tagSizeKB = n.outerHTML.length/1000;
+              if (n.classList.contains("loading-internal")) {
+                let src = n.getAttribute('src');
+                if (src && src.startsWith("mailbox")) {
+                  loadingDeferred = true; // we don't know it's real size - it is loaded later!
+                }
+              } 
+              
+              if (!loadingDeferred && minSize && (tagSizeKB < minSize)) {
+                util.logDebug('%deleteQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
+                continue;
+              }
+              let txtDebug = '%deleteQuotedTags% - Removing quoted tag (l=' + lv + '):\n' + 
+                            displayTag(n) + '\n';
+              if (loadingDeferred)
+                txtDebug += "loading deferred, cannot determine size right now.";
+              else
+                txtDebug += " saved " + tagSizeKB + " kByte";
+              // remove tag
               n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+              util.logDebug(txtDebug);  
+              
             }
           }            
         }
@@ -1366,6 +1395,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
         msg = msg.replace(quoteTagsR[i],''); // remove from template
         if (parseParams(quoteTagsR[i], params, 'replaceQuotedText')) {
           let minQuoteLevel = params.p3 || 1,
+              minSize = params.p4 || 0,
               s = util.unquotedRegex(params.p1),
               r = util.unquotedRegex(params.p2),
               rootEl = gMsgCompose.editor.rootElement;
@@ -1374,14 +1404,33 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
               let nodes = rootEl.querySelectorAll(s); // NodeList
               for (let i=0; i<nodes.length; i++) {
                 let n = nodes.item(i),
-                    lv = quoteLevel(n, 0);
+                    lv = quoteLevel(n, 0),
+                    loadingDeferred = false;
                 if (lv >= minQuoteLevel) {
+                  let tagSizeKB = n.outerHTML.length/1000;
+                  if (n.classList.contains("loading-internal")) {
+                    let src = n.getAttribute('src');
+                    if (src && src.startsWith("mailbox")) {
+                      loadingDeferred = true; // we don't know it's real size - it is loaded later!
+                    }
+                  } 
+                  
                   // replaces everything on this level and higher (all its child blockquotes)
-                  debugger;
-                  let newEl = htmlToElement(gMsgCompose.editor.document, r);
-                  util.logDebug('%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) + ' with ' + displayTag(newEl)); // displays tag + attributes
+                  if (!loadingDeferred && (minSize && (tagSizeKB < minSize))) {
+                    util.logDebug('%replaceQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
+                    continue;
+                  }
+                  let newEl = htmlToElement(gMsgCompose.editor.document, r),
+                      txtDebug = '%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) +  
+                                ' with ' + displayTag(newEl) + ' \n'; // display tag + attributes
+                  if (loadingDeferred)
+                    txtDebug += "loading deferred, cannot determine size right now.";
+                  else
+                    txtDebug += " saved " + tagSizeKB + " kByte";
+                  
                   n.parentNode.insertBefore(newEl, n)
                   n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+                  util.logDebug(txtDebug);  
                 }
               }            
             }
@@ -1474,6 +1523,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	function simplify(aString) {
 		// Check existence of a header related to the reserved word.
 		// str = smartTemplate token, e.g. %subject%
+    // reserved words : these are words about which we know are not headers!
 		function classifyReservedWord(str, reservedWord, param) {
 			try {
 				if (str!="%X:=today%") {
@@ -1519,8 +1569,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       // also removes optional [[ CC ]] parts.
       // this replaces empty cc
       // problem if string contains ( or ) it won't work
-			let generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+      let isOptionalAB = (strInBrackets.includes("%identity") && strInBrackets.includes('addressbook')),
+			    generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+
 			// next: if it contains %, delete the string
+      if (isOptionalAB)
+        return str.replace(/^[^%]*$/, "");
 			return  generalFunction.replace(/^[^%]*$/, "");
 		}
 		
@@ -1533,6 +1587,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 		// [AG] First Step: use the checkReservedWords function to process any "broken out" parts that are embedded in {  .. } pairs
 		// aString = aString.replace(/{([^{}]+)}/gm, checkReservedWords);
+    // removes [[ double brackets ]]  !!
 		aString = aString.replace(/\[\[([^\[\]]+)\]\]/gm, checkReservedWords);
 
 		// [AG] Second Step: use classifyReservedWord to categorize reserved words (variables) into one of the 6 classes: reserved, To, Cc, Date, From, Subject
@@ -1628,11 +1683,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// identity(mail) is the new ownmail
 	addTokens("reserved", 
 		"dbg1", "sig", "newsgroup", 
-		"ownname", "ownmail", 
+		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
     "matchTextFromSubject", "matchTextFromBody",
-		"cursor", "identity", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
-		"messageRaw", "file", "attach", //depends on the original message, but not on any header
+		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
+		"messageRaw", "file", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
@@ -1643,6 +1698,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"datelocal", "dateshort", "dateformat", "date_tz", "tz_name", "cwIso",
 		"X:=today", "X:=calculated", "X:=timezone");
 
+  addTokens("reserved.optional", "identity"); // non-headers but support [[ optional syntax ]] (remove part if empty)
 
 	// Reserved words which depend on headers of the original message.
 	addTokens("To", "to", "toname", "tomail");
@@ -1999,17 +2055,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       return ''; // consume
     }
     
-		function checkIsURLencoded(tok) {
-			debugger;
-			if (tok.length>=4) {
-				let t = tok.substr(1,2);
-				if (/[0-9a-fA-F]+/.test(t)) {
-					return true;
-				}
-			}
-			return false;
-		}
-			
     // remove  (  ) from argument string
     function removeParentheses(arg) {
 			return arg.substr(1,arg.length-2);
@@ -2326,12 +2371,28 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 							  ? fileContents
 							  : SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
           return parsedContent;
+        case "basepath":
+          return insertBasePath(removeParentheses(arg));
 				case "identity":
 				  /////
-          if (identity.fullName && identity.email) {
-            let fullId = identity.fullName + ' <' + identity.email + '>';
+          let idArgs = arg.substr(1,arg.length-2).split(','),
+              isAB = idArgs && idArgs.includes("addressbook");
+          if ((identity.fullName || isAB) && identity.email ) {
+            
+            let fullId = 
+              (isAB) ? identity.email :
+              identity.fullName + ' <' + identity.email + '>';
             // we need the split to support (name,link) etc.
             token = mime.split(fullId, charset, arg, true); // disable charsets decoding!
+            
+            if(isAB && !token) { 
+              // let's put in a placeholder so we can delete superfluous [[ lines ]] 
+              // in regularize() after running replaceReservedWords
+              util.logDebug("AB info[" + identity.email + "] not found: " + arg);
+              token='<span class=st4optional args="' + arg + '" empty="true" />'; // we may need to delete commas from arg.
+              return token; // we need this to be HTML
+            }
+            
             // avoid double escaping
             if (testHTML(token, arg))
               return token;
@@ -2343,6 +2404,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             return "identity - undefined";
           }
 					break;
+        case "mailto": 
+          if (arg) {
+            let param = removeParentheses(arg);
+            switch(param) {
+              case 'body':
+                return "<span class='mailToBody'/>"; // placeholder for mailto body content
+              default:
+                return "";
+            }
+          }
+          break;
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
@@ -2390,11 +2462,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					// wrap variables that can't be resolved at the moment
 					if (typeof theHeader == "undefined" || isFwdArg) {
 						if (!arg) arg='';
+            
+            if (util.checkIsURLencoded(dmy))
+              return dmy; // this is HTML: we won't escape it.
 							
-						if (!util.checkIsURLencoded(token)) {
-							token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
-						}
-						return token; // this is HTML: we won't escape it.
+            token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+						return token; 
 					}
 					// <----  early exit for non existent headers, e.g. "from" in Write case
 					else {
@@ -2424,25 +2497,95 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		catch(ex) {
 			util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
-			if (!util.checkIsURLencoded(token))
-				token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
-			else
-				return token;
+			if (util.checkIsURLencoded(dmy))
+        return dmy;
+			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+      return token;
 		}
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
 	
+  // insert a <base> tag as starting point for relative <img> paths 
+  function insertBasePath(arg) {
+    let filePath, html; 
+    if (arg) {
+      filePath = "file:///" + arg.replace('\\','/');
+    }
+    else {
+      filePath = ""; // get path from last %file% location!
+    }
+    if (!filePath.endsWith('/'))
+      filePath += '/';
+    html = "<base href=\"" + filePath + "\">";
+    return html;
+  }
+  
   // [Bug 25871] %file()% function
   function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
+    const { FileUtils } = 
+            ChromeUtils.import ?
+            ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
+            Components.utils.import("resource://gre/modules/FileUtils.jsm"),
+          isFU = FileUtils && FileUtils.File;
+								
     // determine file type:
     let html,
         arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
-        path = arr[0],
-        type = path.toLowerCase().substr(path.lastIndexOf('.')+1);
+        path = arr[0].replace(/"/g, ''),  // strip quotes
+        type = path.toLowerCase().substr(path.lastIndexOf('.')+1),
+        flags = SmartTemplate4.PreprocessingFlags;
     if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
       type='image';
     util.logDebug("insertFile - type detected: " + type);
+    // find out whether path is relative:
+    let isAbsolute = 
+      (path.startsWith('/user') || 
+      /([a-zA-Z]:)/.test(path) || 
+      path.startsWith("\\"));
+    if (!isAbsolute) {
+      util.logDebug("%File% path may be relative: " + path  +
+        "\n flags.isFileTemplate = " + flags.isFileTemplate +
+        "\n template path = " + flags.filePath || '?');
+      let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
+      if (isFU) {
+        if (prefs.isDebugOption("fileTemplates")) debugger;
+        try {
+          if (!FileUtils.getFile("", pathArray, false)){
+            util.logDebug("Cannot find file. Trying to append path of template");
+          }
+        }
+        catch (ex) {
+          let slash = flags.filePath.includes("/") ? "/" : "\\",
+              noSlash = (slash=='/') ? "\\" : "/",
+              fPart = flags.filePath.lastIndexOf(slash),
+              newPath;
+          newPath = flags.filePath.substr(0,fPart) + slash + path.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
+          let pathArray = newPath.split(slash);
+          try{
+            let ff = new FileUtils.File(newPath);
+            if (!ff.exists()){
+              util.logDebug("Failed to find file at: " + newPath);
+            } 
+            else {
+              util.logDebug("%file% Converted relative path: " + newPath);
+              path=newPath; // fix path and make absolute
+            }
+          }
+          catch(ex) {
+            debugger;
+          }
+        }
+      }
+      else { // Postbox
+        let LFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+            file = LFile.initWithPath(path);
+        if (!file.exists()) {
+          logDebug("file doesn't exist: " + path);
+        }
+      }
+        
+    }
     switch(type) {
       case 'htm':
       case 'html':
@@ -2472,12 +2615,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 							countRead = 0;
 					//let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
 					try {
-						const { FileUtils } = 
-							ChromeUtils.import ?
-							ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-							Components.utils.import("resource://gre/modules/FileUtils.jsm");
-						let isFU = FileUtils && FileUtils.File,
-								localFile = isFU ?   // not in Postbox
+						let localFile = isFU ?   // not in Postbox
 														new FileUtils.File(path) :
 														Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
 								str = {};
@@ -2488,7 +2626,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						fstream.init(localFile, -1, 0, 0);
 						/* sigEncoding: The character encoding you want, default is using UTF-8 here */
 						let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
-						util.logDebug("initializing stream with " + encoding + " encoding...");
+						util.logDebug("initializing stream with " + encoding + " encoding…");
 						cstream.init(fstream, encoding, 0, 0);
 						let read = 0;
 						do {
@@ -2723,9 +2861,15 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
-  msg = msg.replace(/%([\w-:=.]+)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
+  msg = msg.replace(/%(\D[\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
+                                                                          // \D added mandatory start with a letter to avoid catching  encoded numbers such as %5C
 	
+  // nuke optional stuff wrapped in double brackets [[ %identity(addressbook,..)% ]]
+  msg = msg.replace(/\[\[[^\[]+class=st4optional[^\]]+\]\]/gm, '') ;
+  // nuke remaining double brackets.
+  msg = msg.replace(/\[\[([^\[\]]+)\]\]/gm, '$1') ;
+    
     
   if (supportEval) {
     try {

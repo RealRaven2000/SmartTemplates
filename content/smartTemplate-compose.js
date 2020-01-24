@@ -218,16 +218,24 @@ SmartTemplate4.classSmartTemplate = function() {
 		//  && signatureDefined
 		if (isSignatureTb && sigNode) {
 			util.logDebugOptional('functions.extractSignature', 'First attempt to remove Signature.');
-			let ps = sigNode.previousElementSibling;
-			if (ps && ps.tagName === "BR") {
-				//remove the preceding BR that TB always inserts
-				try {
-					gMsgCompose.editor.deleteNode(ps);
-				}
-				catch(ex) {
-					util.logException("extractSignature - exception removing <br> before signature!", ex);
-				}
-			}
+      const after = 0x04;
+			let pe = sigNode.previousElementSibling, // line break
+          ps = sigNode.previousSibling;  // text node
+      if (pe && ps && 
+          (pe.compareDocumentPosition(ps) & after)) {
+        /* there is some text before the signature, possibly after a line break. can happen with mailto links */
+      }
+      else {
+        if (pe && pe.tagName === "BR") {
+          //remove the preceding BR that TB always inserts
+          try {
+            gMsgCompose.editor.deleteNode(pe);
+          }
+          catch(ex) {
+            util.logException("extractSignature - exception removing <br> before signature!", ex);
+          }
+        }
+      }
 			// remove original signature (the one inserted by Thunderbird)
 			try {
 				gMsgCompose.editor.deleteNode(sigNode);
@@ -890,7 +898,7 @@ SmartTemplate4.classSmartTemplate = function() {
         
     util.logDebugOptional("identities", "Retrieved msgIdentity key value: " + idKey);
     if (!idKey) {
-      util.logDebugOptional("identities", "no key, getting from gMsgCompose.identity...");
+      util.logDebugOptional("identities", "no key, getting from gMsgCompose.identity…");
       idKey = gMsgCompose.identity.key;
     }
 		let isActiveOnAccount = false,
@@ -1167,13 +1175,23 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// [Bug 26260] only remove body for mailto case if active on account
 		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
-			// back up the mailto body
-			bodyContent = bodyEl.innerHTML;
-			bodyEl.innerHTML = '';
+			// back up the mailto body  (was  bodyContent = bodyEl.innerHTML;  )
+      // replace newline chars, usually encoded LF or CLRF (decimal 10 / 13-10)
+      bodyContent = bodyEl.textContent.trim().replace(/\\n/gm,"<br/>").replace(/%0D%0A/gm,"<br/>").replace(/%0A/gm,"<br/>");
 			if (bodyContent) {
-				util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
-				template = bodyContent; // clear template
-				SmartTemplate4.sigInTemplate = false;
+        const mailtoVar = "%mailto(body)%";
+        if (template && rawTemplate.includes(mailtoVar)) {
+          template = template.replace("<span class='mailToBody'/>", bodyEl.innerHTML);
+          bodyEl.innerHTML = '';
+          bodyContent = '';
+          util.logDebugOptional('composer','msgComposeType.MailToUrl - injecting mailto content:\n' + bodyEl.innerHTML);
+        }
+        else {
+          bodyEl.innerHTML = '';
+          util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
+          template = bodyContent; // clear template
+          SmartTemplate4.sigInTemplate = false;
+        }
 			}
 		}
 

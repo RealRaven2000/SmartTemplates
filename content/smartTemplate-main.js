@@ -396,13 +396,24 @@ END LICENSE BLOCK
     # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
 
     
-  Version 2.7 - 01/09/2020
+  Version 2.7 - 09/01/2020
     # [issue 25] Set variables from addressbook fields
     # [issue 29] Add configuration item to file template menus.
     # Added an optional 3rd parameter to %matchTextFromBody()% - insert string when no match is found
     
   Version 2.8 - WIP
-    # [issue 31] Add functions to remove text / tags from quoted parts
+    # [issue 31] New functions to remove text / tags from quoted parts
+    # The template editor boxes now resize vertically with dialog for easier editing
+    # new variable for including mailto body text in template
+    # Variables window: Added documentation for address book functions window and slightly modernised layout.
+    # [issue 35] extended %identity% with the variable 'addressbook' in order to pull extended info
+      from the AB based on an email match
+    # completed translations for locales: cs, es-ES, fi, it, pl,pt-BR, ru, sl, sv-SE
+    # added international examples for %dateformat% in the variables tab
+    
+    # [issue 32] Fixed: Single Message window header buttons missing file template dropdowns
+    # [Bug 26755],[issue 30] reply button has no template list if reply add is enabled by default.
+    # when AB replacement is enabled, allow displayname to be a single word.
     
     
 =========================
@@ -708,6 +719,7 @@ var SmartTemplate4 = {
 			}
 			else {
 				flags.isFileTemplate = true; // !!! new Stationery substitution
+        flags.filePath = theFileTemplate.path; // remember the path.
 			}
 		}
 		

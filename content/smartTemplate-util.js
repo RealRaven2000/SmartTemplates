@@ -254,7 +254,7 @@ SmartTemplate4.Util = {
 					util.VersionProxyRunning) // no recursion...
 				return;
 
-			util.logDebug("Util.VersionProxy()...");
+			util.logDebug("Util.VersionProxy()…");
 			util.VersionProxyRunning = true;
 			util.logDebug("Util.VersionProxy() started.");
 			let myId = util.ADDON_ID;
@@ -301,6 +301,43 @@ SmartTemplate4.Util = {
 			util.logDebug("Util.VersionProxy ends()");
 		}
 	},
+  
+  initTabListener: function() {
+    const util = SmartTemplate4.Util;
+    try {
+      let tabMon = {
+        monitorName: "st4TabMon",
+        onTabTitleChanged() {},
+        onTabOpened(tab, aFirstTab, aOldTab)
+        {
+          if (tab.mode.name != "preferencesTab")
+            return;
+          if (util.getTabMode()=='message') {
+            util.logDebug("tabListener event:" + event);
+          }          
+        }
+      }
+      
+      
+      if (document) {
+        let tabmail = document.getElementById("tabmail");
+        util.logDebug("adding tablistener for tabmail.");
+        // tabmail.registerTabMonitor()
+        let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
+			  tabContainer.addEventListener("TabOpen", function tabOpened_st4(event) { 
+          let tabInfo = event.detail.tabInfo;
+          if (util.getTabMode(tabInfo)=='message') {
+            util.logDebug("tabListener event:" + event);
+            // main window.
+            SmartTemplate4.fileTemplates.initMenus();
+          }
+        });
+      }
+    }
+    catch(ex) {
+      util.logException("initTabListener - ", ex);
+    }
+  },
 
 	get Version() {
 		const util = SmartTemplate4.Util;
@@ -1336,7 +1373,7 @@ SmartTemplate4.Util = {
 			}
 			let stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 			stream.setInputStream(channel.open());
-			util.logDebugOptional('images',"opening image stream...");
+			util.logDebugOptional('images',"opening image stream…");
 			let encoded = btoa(stream.readBytes(stream.available()));
 			stream.close();
 			let encodedFileName = filename ? encodeURIComponent(filename) : "";
@@ -1755,15 +1792,15 @@ SmartTemplate4.Util = {
 	
 	checkIsURLencoded: function checkIsURLencoded(tok) {
 		if (tok.length>=4) {
-			let t = tok.substr(1,2);
-			if (/[0-9a-fA-F]+/.test(t)) {
+			let t = tok.substr(0,2); // hexcode, such as %5C
+			if (/\%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
 				this.logDebug("checkIsURLencoded()\n" +
-				  "I will ignore the following character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
+				  "Ignoring character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
 					tok)
 				return true;
 			}
 		}
-		this.logDebug("checkIsURLencoded()\nNot an encoded string, I believe this is a SmartTemplate⁴ header:\n" + tok);
+		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplate⁴ header:\n" + tok);
 		return false;
 	}	,
 	
@@ -2832,6 +2869,8 @@ SmartTemplate4.Util.firstRun =
 					SmartTemplate4.fileTemplates.initMenus();
 				}, 4500
 			);
+      
+      util.initTabListener(); // need this for initialising fileTemplate menus in single message window
 
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
@@ -2943,8 +2982,53 @@ SmartTemplate4.Message = {
 		}
 		window.close();
 	} ,
-
+  
+  windowKeyPress: function(e,dir) {
+    function logEvent(eventTarget) {
+			try {
+				util.logDebugOptional("msg", "KeyboardEvent on unknown target" 
+					+ "\n" + "  id: " + (eventTarget.id || '(no id)') 
+					+ "\n" + "  nodeName: " + (eventTarget.nodeName || 'null')
+					+ "\n" + "  tagName: "  + (eventTarget.tagName || 'none'));
+			}
+			catch (e) {;}
+    }
+		function logKey(event) {
+			if (!prefs.isDebugOption('msg')) return;
+      util.logDebugOptional("msg", 
+				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
+			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n" +
+        "keyCode = " + e.keyCode);
+		}
+    const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences,
+          VK_ESCAPE = 0x1B,
+          VK_F4 = 0x73;
+		let isAlt = e.altKey,
+		    isCtrl = e.ctrlKey,
+		    isShift = e.shiftKey,
+        eventTarget = e.target,
+        theKeyPressed = (String.fromCharCode(e.charCode)).toLowerCase();
+        
+    logKey(e);
+    // disable closing window via keyboard:
+    // Mac: Command+w
+    // Windows,Linux: Alt+F4
+    if (SmartTemplate4.Message.allowClose) return;
+    if ( e.keyCode == VK_ESCAPE || 
+        (isAlt && e.keyCode == VK_F4) || 
+        (theKeyPressed=='w' && e.getModifierState("Meta"))) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    
+  } ,
+  
+  boundKeyListener: false,
+  allowClose: false,
 	loadMessage : function () {
+    const MSG = SmartTemplate4.Message;
     function startTimer(duration, label) {
       var timer = duration;
       if (duration < 0) return;
@@ -2959,6 +3043,18 @@ SmartTemplate4.Message = {
           label.value = timer.toString(); // make sure the last number shown is 1...
         }, 1000);
     }    
+
+    if(!MSG.boundKeyListener) {
+      window.addEventListener("keypress", this.keyListen = function(e) {
+        MSG.windowKeyPress(e,'down');
+      }, true);
+      window.addEventListener("keyup", function(e) {
+        MSG.windowKeyPress(e,'up');
+      }, true);
+      MSG.boundKeyListener = true;
+    }
+
+
 		try {
       let countDown;
       function addButton(id, myCallback) {
@@ -2983,6 +3079,8 @@ SmartTemplate4.Message = {
           let cdLabel = document.getElementById('countDown');
           startTimer(countDown, cdLabel);
         }
+        else 
+          SmartTemplate4.Message.allowClose = true;
         
 						
 				for (let i = 0; i < textNodes.length; i++) {
@@ -3013,12 +3111,14 @@ SmartTemplate4.Message = {
 				}
         if (countDown) {
           // enable the buttons after countDown period.
-          window.setTimeout( function() {
-            for (let i=0; i<buttons.length; i++) {
-              if (buttons[i])
-                buttons[i].disabled = false;
-            }
-          }, countDown*1000);
+          window.setTimeout( 
+            function() {
+              for (let i=0; i<buttons.length; i++) {
+                if (buttons[i])
+                  buttons[i].disabled = false;
+              }
+              SmartTemplate4.Message.allowClose = true;
+            }, countDown*1000);
         }
 			}
 			else

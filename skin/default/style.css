@@ -62,8 +62,8 @@
 
 
 h1.helpchapter {
-  background: linear-gradient(to bottom, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%);
-  border-radius: 0.5em 0.25em 0.5em 0.25em;
+  background-image: linear-gradient(to bottom, rgba(90,90,90,1) 0%, rgba(40,40,40,1) 100%);
+  border-radius: 0;
 }
 
 #keywords code, code {
@@ -90,6 +90,56 @@ h1.helpchapter {
 #helpContents a[href]:hover {
 	text-decoration: underline;
 }
+
+.param {
+  color: rgb(0,0,45);
+  font-size: 0.8em;
+  font-family: Consolas, monaco, monospace;
+  font-style: italic;
+}
+.paramList {
+  margin: 5px 0;
+}
+.paramList .param {
+  background-color: rgb(230,230,230);
+  padding: 3px;
+}
+
+#helpContents h4 {
+	margin: 0 0 !important;
+  padding: 5px;
+	background-color: rgb(60,60,60);
+	color: rgb(180,180,180) !important;
+  max-width: 80%;
+  width: 150px;
+}
+
+.help ul.contact_switches {
+  margin-left: 14px;
+  list-style: bullet;
+	margin: 5px 0 !important;
+	margin-block-start: 5px;
+	margin-block-end: 5px;
+}
+.help ul.contact_switches li {
+  font-family: Consolas, monaco, monospace;
+  font-size: 10pt;
+	margin: 5px 0 0 15px !important;
+	color:  rgb(80,0,0) !important;
+}
+
+.help table.ab_fields * {
+  vertical-align: top !important;
+}
+
+/* highlight a textbox */
+.highlighted * {
+  background-color: #ffb6c1 !important;
+}
+#default_address_format.highlighted {
+  border: 1px solid rgb(100,0,0) !important;
+}
+
 
 /* ############################     CONTRIBUTE BUTTON      ############################# */
 

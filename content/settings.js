@@ -21,6 +21,7 @@ if (SmartTemplate4.Util.Application == 'Postbox'){
 
 
 SmartTemplate4.Settings = {
+  dialogHeight: 0,
 	accountKey : ".common",  // default to common; .file for files
 	preferenceElements : [],
 	get isFileTemplates() {
@@ -318,6 +319,44 @@ SmartTemplate4.Settings = {
 		}
 		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs() COMPLETE");
 	} ,
+  
+  resizeSettings: function(evt) {
+		const util = SmartTemplate4.Util,
+          settings = SmartTemplate4.Settings,
+					getElement = window.document.getElementById.bind(window.document),
+          dlg = getElement('smartTemplate_prefDialog');
+    
+    // only do something if height changes!
+    if (settings.dialogHeight && dlg.clientHeight == settings.dialogHeight)
+      return;
+    settings.dialogHeight = dlg.clientHeight; // remember new height
+    
+    let decksWrapper = getElement('decksWrapper'),
+        templateBoxes = decksWrapper.getElementsByClassName('template');
+    for (let i=0; i<templateBoxes.length; i++) {
+      let t = templateBoxes[i];
+      t.style.height = (t.parentNode.clientHeight - 15) + "px";
+    }
+    
+    let quoteBoxes = decksWrapper.getElementsByClassName('quote');
+    for (let i=0; i<quoteBoxes.length; i++) {
+      let t = quoteBoxes[i];
+      t.style.height = (t.parentNode.clientHeight - 15) + "px";
+    }
+        
+    let writeBoxes = decksWrapper.getElementsByClassName('templateWrite');
+    for (let i=0; i<writeBoxes.length; i++) {
+      let t = writeBoxes[i],
+          cbs = t.parentNode.getElementsByTagName('checkbox'),
+          cbHeight = 0;
+      for (let j=0; j<cbs.length; j++) {
+        cbHeight += cbs[j].clientHeight;
+      }
+      
+      t.style.height = (t.parentNode.clientHeight - 25 - cbHeight) + "px";
+    }
+    
+  },
 
 	//******************************************************************************
 	// Preferences
@@ -376,6 +415,8 @@ SmartTemplate4.Settings = {
 		window.onCodeWord = function(code, className) {
 			settings.onCodeWord(code, className);
 		};
+    
+		window.addEventListener('resize', settings.resizeSettings);
 
     window.setTimeout( 
 		  function() {
@@ -531,7 +572,6 @@ SmartTemplate4.Settings = {
 		
 		// Stationery replacement :)
 		SmartTemplate4.fileTemplates.loadCustomMenu(true);
-		
     
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
@@ -548,7 +588,7 @@ SmartTemplate4.Settings = {
 				function() {
 					const st4 = parentWin.SmartTemplate4;
 					st4.Util.logDebug("Refreshing fileTemplate menus...");
-					st4.fileTemplates.initMenus();
+					st4.fileTemplates.initMenus(true); // force reset!
 				} , 100
 			);
 		}
@@ -611,6 +651,10 @@ SmartTemplate4.Settings = {
         code = settings.getFileName(code, editBox, "file");
         return; // cancel
       }
+      if (code.indexOf('%basepath(')==0) {
+        code = settings.getFileName(code, editBox, "basepath");
+        return; // cancel
+      }
       if (code.indexOf('%attach')==0) {
         code = settings.getFileName(code, editBox, "attach");
         return; // cancel
@@ -626,7 +670,9 @@ SmartTemplate4.Settings = {
   // %file(filePath,encoding)%
   // %file(imagePath,altText)%
 	// %attach(filePath)%
-  getFileName: function getFileName(code, editBox, functionName) {
+  // %basepath(folderPath)%
+  // @functionName: file / basepath / attach - corresponding to the ST4 variables %file% / %basepath% / %attach%
+  getFileName: function getFileName(code, editBox, functionName='file') {
     const Cc = Components.classes,
           Ci = Components.interfaces;
     let fileType = "all",
@@ -634,17 +680,30 @@ SmartTemplate4.Settings = {
 		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
-		if (functionName=="file") 
-			fileType = (code.indexOf('filePath')>0) ? 'html' :
-                   ((code.indexOf('imagePath')>0) ? 'image' : 'unknown');	
-		if (!functionName) functionName='file'; // default %file%
-    
+    switch (functionName) {
+      case "file":
+        fileType = (code.indexOf('filePath')>0) ? 'html' :
+                     ((code.indexOf('imagePath')>0) ? 'image' : 'unknown');	
+        break;
+      case "basepath":
+        fileType = "folder";
+        break;
+    }
     if (fileType=='unknown')
       return false; // error
+                   
+    
     
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
-		fp.init(window, "", fp.modeOpen); // second parameter: prompt
+    if (fileType=='folder')
+      fp.init(window, "", fp.modeGetFolder);
+    else
+      fp.init(window, "", fp.modeOpen); // second parameter: prompt
     switch (fileType) {
+      case 'folder':
+        filterText = bundle.GetStringFromName("fpFolder");
+        fp.appendFilter(filterText, "*.");
+        break;
       case 'html':
         filterText = bundle.GetStringFromName("fpHTMLFile");
         fp.appendFilter(filterText, "*.htm;*.html;*.txt");

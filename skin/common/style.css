@@ -595,6 +595,10 @@ groupbox.transparent .groupbox-title {
   list-style-type: none;
 }
 
+p#allexpander {
+  margin: 2px 0;
+}
+
 /* ################################ CHAPTER (HEADLINES)  ############################# */
 h1.helpchapter {
   font-size: 12pt;
@@ -602,9 +606,57 @@ h1.helpchapter {
   text-align: center;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
   text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
-  border-top: 2px solid #808080;
-  border-bottom: 2px solid #808080;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  cursor: pointer;
   padding: 4px 0px;
+  margin: 7px 0;
+}
+
+.help ul.chapterBody {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.chapterBody {
+  height: auto;
+  max-height: 1500px;
+  transition: max-height 0.4s ease-in;
+}
+
+.chapterBody.collapsed {
+  background-color: light-gray;
+  margin-top: -0.5em;  
+  max-height: 0;
+  transition: max-height 0.12s ease-out;
+  overflow: hidden;  
+}
+.chapterBody.collapsed ul, 
+.chapterBody.collapsed li, 
+.chapterBody.collapsed aside,
+.chapterBody.collapsed table,
+.chapterBody.collapsed h4 {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;  
+  color: #ffffff;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.chapterBody .chapterbreak {
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(144,144,144,0.1) 0%,rgba(144,144,144,0.7) 20%,rgba(144,144,144,1) 50%,rgba(144,144,144,0.7) 80%,rgba(144,144,144,0.1) 100%);
+  margin: 4px 25px 8px;
+}
+
+/* style the gear emoji to go to standard address format settings... */
+.config_default {
+  color: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  padding-bottom: 2px;
+  text-shadow: 0 0 0 rgba(109,140,200,0.9);
+  vertical-align: middle;
 }
 
 /* ############################# HTML TAG ASIDE (BELOW CHAPTER) ######################### */

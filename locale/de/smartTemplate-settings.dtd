@@ -133,6 +133,10 @@
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
 <!ENTITY attach.label "Datei als Anhang anfügen">
+<!ENTITY basepath.desc "Falls Ihre Vorlage Bilder mit dem 'img' Tag enthält, welche lokal gespeichert sind, muss dies SmartTemplate mitgeteilt werden.">
+<!ENTITY basepath.desc2 "Die 'basepath' Variable fügt ein HTML-Tag 'base' ein, um alle Bilder basierend auf einer Startposition zu finden. Sie kann nur einmal in einer E-Mail verwendet werden.">
+<!ENTITY basepath.relative "Verwenden Sie diese Variable, um die Bilder am selben Speicherort wie die HTML-Dateivorlage zu finden.">
+<!ENTITY basepath.absolute "Klicken Sie hier, um einen bestimmten Ordner auf Ihrem lokalen Laufwerk festzulegen.">
 <!ENTITY cursor.label "Bestimmt die Position des Cursors">
 <!ENTITY spellcheck.label "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein.">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
@@ -272,8 +276,8 @@
 <!ENTITY button.pasteLicense "einfügen">
 <!ENTITY button.validateLicense "bestätigen">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
-<!ENTITY licenseValidation.passed "Danke für die Registering von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
-<!ENTITY licenseValidation.standard "Danke für die Registering von SmartTemplate⁴ Standard - damit Sie helfen dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
+<!ENTITY licenseValidation.passed "Danke für die Registrierung von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.standard "Danke für die Registrierung von SmartTemplate⁴ Standard - damit helfen Sie dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
 <!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY licenseValidation.invalidAddon "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}.">
