@@ -655,6 +655,10 @@ SmartTemplate4.fileTemplates = {
 		if (nodes.length) {
 			for (let i = 0; i < nodes.length; ++i) {
 				if (nodes[i].nodeName == 'menupopup') {
+          // Stationery hack for Tb60:
+          // make sure the click event fires even if menu has been enhanced by Stationery too.
+          if (nodes[i].getAttribute('stationery-related-id'))
+            nodes[i].setAttribute("st4nonNative", true);
 					return nodes[i];
 				}
 			}
@@ -662,9 +666,9 @@ SmartTemplate4.fileTemplates = {
 		
 		// there is no existing menu popup, let's create one.
 		let menupopup = doc.createXULElement ? doc.createXULElement('menupopup') : doc.createElement('menupopup');
-		// we do not want to add the click handler on the hdr buttons as the button click is alreayd triggered. (?)
-		// if (!parent)  // issue 14
-			menupopup.setAttribute("st4nonNative", true);
+		// we do not want to add the click handler on the hdr buttons as the button click is already triggered. (?)
+		menupopup.setAttribute("st4nonNative", true);
+    
 		element.appendChild(menupopup);
 		return menupopup;		
 	} ,
@@ -911,10 +915,13 @@ SmartTemplate4.fileTemplates = {
 					prefs.setStringPref('fileTemplates.path',localFile.parent.path); // store folder as default for next time.
 				}
 			}
-		)
+		),
+    'fileTemplates.path'
 	} ,
 	
-	pickFile: function fileTemplates_pickFile(lastCallback) {
+  // @initialPathPref: defaults to the path setting from menu configuration (ST4 prefs dialog)
+  //                   but can be overwritten for remembering a path when open file is selected from reply menu
+	pickFile: function fileTemplates_pickFile(lastCallback, initialPathPref='fileTemplates.path') {
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = SmartTemplate4.Util,
@@ -929,10 +936,15 @@ SmartTemplate4.fileTemplates = {
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
 		// set default path
-		if (prefs.getStringPref('fileTemplates.path')) {
-			let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-			defaultPath.initWithPath(prefs.getStringPref('fileTemplates.path'))
-			fp.displayDirectory = defaultPath; // nsILocalFile
+		if (prefs.getStringPref(initialPathPref)) {
+      try {
+        let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+        defaultPath.initWithPath(prefs.getStringPref(initialPathPref))
+        fp.displayDirectory = defaultPath; // nsILocalFile
+      }
+      catch (ex) {
+        util.logException("Failed to open path: " + defaultPath, ex);
+      }
 		} 
 		
 		fp.init(window, "", fp.modeOpen);
@@ -1078,7 +1090,8 @@ SmartTemplate4.fileTemplates = {
 							path: localFile.path, 
 							label: name
 						};
-						
+            
+          prefs.setStringPref('fileTemplates.instantPath',localFile.parent.path); // store folder as default for next time.
 					// we need to trigger the button.
 					// in Thunderbird 68 for some reason it is not done on the message header pagen buttons automatically. 
 					// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
@@ -1086,7 +1099,8 @@ SmartTemplate4.fileTemplates = {
 					// without specifying it will likely be the Thunderbird account defaults
 					btn.click();
 				}
-			}
+			},
+      'fileTemplates.instantPath'
 		)
 	},
 	
@@ -1236,6 +1250,7 @@ SmartTemplate4.fileTemplates = {
 					}
 					if (charSet) {
 						template.HTML = toUnicode(charSet, template.HTML);
+            template.charset = charSet;
 					}
 				}
 				
@@ -1261,7 +1276,8 @@ SmartTemplate4.fileTemplates = {
 			HTML:"", 
 			path: aFileTemplateArmedEntry.path, 
 			label: aFileTemplateArmedEntry.label,
-      failed: false			
+      failed: false,
+      charset: null			
 		};
 		if (this.readHTMLTemplateFile(template)) {
 			try { 

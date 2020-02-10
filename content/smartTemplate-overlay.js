@@ -856,7 +856,9 @@ SmartTemplate4.mimeDecoder = {
             part = firstName;
             break;
           case 'lastname':
-            if (isOnlyOneName && format.indexOf('firstname')<0) {
+            if (card && card.lastName)
+              part = card.lastName;
+            else if (isOnlyOneName && format.indexOf('firstname')<0) {
               part = firstName; // fall back to first name if lastName was 
                                 // 'emptied' because of duplication
             }
@@ -1531,8 +1533,23 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				}
 				let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
 				    isReserved = (el && el.startsWith("reserved")),
-				    s = isReserved ? str
-					      : hdr.get(el ? el : reservedWord) != "" ? str : ""; // check if header exists
+            isAddress = util.isAddressHeader(el),
+            addressHdr = isReserved ? "" : hdr.get(el ? el : reservedWord);
+            
+        if (isAddress && !isReserved) {
+          // if the header can be found, check if it has parameters and would evaluate to be empty?
+          if (addressHdr && param && param.length>2) {  // includes parameters e.g. (firstname)
+            util.logDebugOptional('regularize','check whether ' + reservedWord + ' ' + param + ' returns content...');
+            let charset = gMsgCompose.compFields.characterSet,
+                headerValue = mime.split(addressHdr, charset, param);
+            if (!headerValue) {
+              util.logDebugOptional('regularize','This %' + reservedWord + '% variable returned nothing.');
+              addressHdr = "";
+            }
+          }
+        }
+				let s = (isReserved) ? str
+					      : (addressHdr != "") ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
 				if (!el) {
 					// util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
           util.logToConsole('Discarding unknown variable: %' +  reservedWord + '%')
@@ -1572,7 +1589,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       let isOptionalAB = (strInBrackets.includes("%identity") && strInBrackets.includes('addressbook')),
 			    generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
 
-			// next: if it contains %, delete the string
+			// next: if it doesn't contain %, delete the string
+      // preserve square brackets for all genuinely optional stuff
+      // util.isAddressHeader(token) ?
       if (isOptionalAB)
         return str.replace(/^[^%]*$/, "");
 			return  generalFunction.replace(/^[^%]*$/, "");
@@ -1689,6 +1708,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
 		"messageRaw", "file", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
+    "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
 	);
@@ -1849,10 +1869,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// modify a number of header with either a string literal 
 		// or a regex match (depending on matchFunction argument)
 		// hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
-		// cmd: "set" | "prefix" | "append" | "delete"
+		// cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
 		// argString: 
-		// matchFunction: "" | "matchFromSubject" | "matchFromBody"
-    function modifyHeader(hdr, cmd, argString, matchFunction) {
+		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
+    function modifyHeader(hdr, cmd, argString, matchFunction="") {
       const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
             ComposeFields = gMsgCompose.compFields;
 						
@@ -1863,8 +1883,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           argument = argString.substr(argString.indexOf(",")+1); 
 			switch (matchFunction) {
 				case "": // no matchFunction, so argString is literal
+          if (cmd=="deleteFromSubject") {
+            argument = argString.substr(1); // cut off opening parenthesis
+          }
 				  if (argument.startsWith("\""))  // string wrapped in double quotes
-						argument = argument.substr(1, argument.lastIndexOf(")")-2);
+						argument = argument.substr(1, argument.lastIndexOf("\"")-1);
 					else   // literal, only remove the closing parentheses
 						argument = argument.substr(0, argument.lastIndexOf(")"));
 				  break;
@@ -1948,8 +1971,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
                 if (argPos < 0 || argPos < targetString.length-argument.length ) 
                   targetString = targetString + argument; 
                 break;
-							case 'delete': // remove a substring, e.g. header.delete(subject,"(re: | Fwd: ")
-							  let pattern = util.unquotedRegex(argument, true);
+							case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
+              case 'deleteFromSubject':
+							  let pattern = new RegExp(argument, "gm");
 							  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
 							  break;
             }
@@ -2366,10 +2390,20 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         case "file":
 					util.addUsedPremiumFunction('file');
 					// do not process images that are returned - insertFileLink will already turn them into a DataURI
-          let fileContents = insertFileLink(arg, composeType),
+          // we are using pathArray to keep track of "where we are" in terms of relative paths
+          let pathArray = SmartTemplate4.PreprocessingFlags.filePaths || [],
+              pL = pathArray.length,
+              // Next Step: if it's html file, this step can put a new path on the filePath stack.
+              // if it contains file(img) then these may be relative to the parent path
+              // and they will be resolved during this function call using the new stack
+              // recursively:
+              fileContents = insertFileLink(arg, composeType), 
               parsedContent = fileContents.startsWith("<img") 
 							  ? fileContents
 							  : SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
+          // internally, we may have used another relative (sub)path
+          // allow nested %file%  variables + relative paths
+          if (pL<pathArray.length) pathArray.pop(); 
           return parsedContent;
         case "basepath":
           return insertBasePath(removeParentheses(arg));
@@ -2420,8 +2454,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           if (token.indexOf('header')==0) {
             let args = arg.split(","),
                 modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
-            if (args.length<2) {
-              util.logToConsole("modifyHeader() second parameter missing");
+            if (args.length<2 && token!="header.deleteFromSubject") {
+              util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
               return '';
             }
 						let toks = token.split("."),
@@ -2434,17 +2468,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               case "prefix":
                 return modifyHeader(modHdr, 'prefix', arg, matchFunction);
               case "delete":
-								if (prefs.isDebugOption('parseModifier')) debugger;
                 modifyHeader(modHdr, 'delete', arg, ''); // no match function - this works within the same header (e.g. subject)
+								return '';
+              case "deleteFromSubject":
+								if (prefs.isDebugOption('parseModifier')) debugger;
+                modifyHeader('subject', toks[1], arg, ''); // no match function - this works within the same header (e.g. subject)
 								return '';
               default: 
                 util.logToConsole("invalid header command: " + token);
                 return '';
             }
           }
-					let isStripQuote = RegExp(" " + token + " ", "i").test(
-					                   " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
-					                   " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To "),
+					let isStripQuote = util.isAddressHeader(token),
               theHeader = hdr.get(token),
 							isFwdArg = false;
 							
@@ -2488,6 +2523,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					let headerValue = isStripQuote ?
 					    mime.split(theHeader, charset, arg) :
 							mime.decode(theHeader, charset);
+          if (!headerValue && util.isAddressHeader(token)) {
+            let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
+            return newTok;
+          }
 					// allow HTML as to(link) etc. builds a href with mailto
 					if (testHTML(headerValue, arg)) // avoid double escaping
 						return headerValue;
@@ -2534,46 +2573,62 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
         path = arr[0].replace(/"/g, ''),  // strip quotes
         type = path.toLowerCase().substr(path.lastIndexOf('.')+1),
-        flags = SmartTemplate4.PreprocessingFlags;
+        flags = SmartTemplate4.PreprocessingFlags,
+        isHTML = false,
+        currentPath = flags.filePaths ? 
+                     (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
+                     ""; // top of stack
+                     
+    let slash = currentPath.includes("/") ? "/" : "\\",
+        noSlash = (slash=='/') ? "\\" : "/",
+        fPart = currentPath.lastIndexOf(slash),
+        newPath = "";
+    if (fPart)
+      newPath = currentPath.substr(0,fPart) + slash + path.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
+
+                     
     if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
-      type='image';
+      type = 'image';
+    if (type.match(/(htm|html|xhtml|xml)$/)) 
+      isHTML = true;
     util.logDebug("insertFile - type detected: " + type);
     // find out whether path is relative:
     let isAbsolute = 
-      (path.startsWith('/user') || 
+      (path.toLowerCase().startsWith('/user') || 
       /([a-zA-Z]:)/.test(path) || 
       path.startsWith("\\"));
-    if (!isAbsolute) {
-      util.logDebug("%File% path may be relative: " + path  +
+    if (type=='image' && !isAbsolute) {
+      util.logDebug("%File% - image path may be relative: " + path  +
         "\n flags.isFileTemplate = " + flags.isFileTemplate +
-        "\n template path = " + flags.filePath || '?');
+        "\n template path = " + currentPath || '?');
       let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
       if (isFU) {
         if (prefs.isDebugOption("fileTemplates")) debugger;
         try {
-          if (!FileUtils.getFile("", pathArray, false)){
-            util.logDebug("Cannot find file. Trying to append path of template");
+          // on Mac systems nsIDirectoryService key may NOT be empty!
+          // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
+          if (!FileUtils.getFile("Home", pathArray, false)) {
+            util.logDebug("Cannot find file. Trying to append to path of template.");
           }
         }
         catch (ex) {
-          let slash = flags.filePath.includes("/") ? "/" : "\\",
-              noSlash = (slash=='/') ? "\\" : "/",
-              fPart = flags.filePath.lastIndexOf(slash),
-              newPath;
-          newPath = flags.filePath.substr(0,fPart) + slash + path.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
-          let pathArray = newPath.split(slash);
-          try{
-            let ff = new FileUtils.File(newPath);
-            if (!ff.exists()){
-              util.logDebug("Failed to find file at: " + newPath);
-            } 
-            else {
-              util.logDebug("%file% Converted relative path: " + newPath);
-              path=newPath; // fix path and make absolute
+          // new code for path of template - failed on Rob's Mac as unknown.
+          // I think this is only set when a template is opened from the submenus!
+          if (flags.isFileTemplate && currentPath) {
+            let pathArray = newPath.split(slash);
+            try {
+              let ff = new FileUtils.File(newPath);
+              if (!ff.exists()){
+                util.logDebug("Failed to find file at: " + newPath);
+              } 
+              else {
+                util.logDebug("%file% Converted relative path: " + newPath);
+                path=newPath; // fix path and make absolute
+              }
             }
-          }
-          catch(ex) {
-            debugger;
+            catch(ex) {
+              debugger;
+            }
           }
         }
       }
@@ -2584,12 +2639,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           logDebug("file doesn't exist: " + path);
         }
       }
-        
     }
     switch(type) {
       case 'htm':
       case 'html':
       case 'txt':
+        if (!isAbsolute) 
+          path = newPath;
 			  //try our new method
 				if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
 					let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
@@ -2613,7 +2669,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 							fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
 							cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
 							countRead = 0;
-					//let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
+					// let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
 					try {
 						let localFile = isFU ?   // not in Postbox
 														new FileUtils.File(path) :
@@ -2651,12 +2707,28 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				if (type=='txt') {
 					html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
 				}
+        
+        flags.isFileTemplate = true;
+        // prepare for using relative paths from here...
+        // assume we are within a template, to make matching subsequent relative paths possible.
+        // should work for using %file(template.html) in a SmartTemplate.
+        if (!flags.filePaths) 
+          flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+        flags.filePaths.push(path);
         break;
       case 'image':
         let alt = (arr.length>1) ? 
-                  (" alt='" + arr[1].replace("'","") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
+                  (" alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
                   "",
-						filePath = "file:///" + path.replace('\\','/');
+						filePath;
+        if (!isAbsolute && currentPath) {
+          //
+          util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
+          let lastSlash = currentPath.lastIndexOf("\\");
+          if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
+          path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
+        }
+        filePath = "file:///" + path.replace('\\','/');
 				// change to data URL
 				filePath = util.getFileAsDataURI(filePath)
         html = "<img src='" + filePath + "'" + alt + " >";
@@ -2848,7 +2920,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
     else {
 			msg = SmartTemplate4.escapeHtml(msg);
-			// Escape space, if compose is HTML
+			// Preserve all spaces of plaintext template, if compose is HTML 
+      // - this should be a global option because it is ugly.
+      // imho it shouldn't do this!
 			if (gMsgCompose.composeHTML)
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
@@ -2861,9 +2935,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
-  msg = msg.replace(/%(\D[\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
+  msg = msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
-                                                                          // \D added mandatory start with a letter to avoid catching  encoded numbers such as %5C
+                                                                          // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
+                                                                          // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
 	
   // nuke optional stuff wrapped in double brackets [[ %identity(addressbook,..)% ]]
   msg = msg.replace(/\[\[[^\[]+class=st4optional[^\]]+\]\]/gm, '') ;

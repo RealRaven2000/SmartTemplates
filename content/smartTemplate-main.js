@@ -401,7 +401,7 @@ END LICENSE BLOCK
     # [issue 29] Add configuration item to file template menus.
     # Added an optional 3rd parameter to %matchTextFromBody()% - insert string when no match is found
     
-  Version 2.8 - WIP
+  Version 2.8 - 24/01/2019
     # [issue 31] New functions to remove text / tags from quoted parts
     # The template editor boxes now resize vertically with dialog for easier editing
     # new variable for including mailto body text in template
@@ -414,7 +414,19 @@ END LICENSE BLOCK
     # [issue 32] Fixed: Single Message window header buttons missing file template dropdowns
     # [Bug 26755],[issue 30] reply button has no template list if reply add is enabled by default.
     # when AB replacement is enabled, allow displayname to be a single word.
+    # [issue 38] Images with encoded file URLs are not loaded correctly
     
+  Version 2.9 - WIP
+    # [issue 45] Support using %file()% with relative paths and nesting %file()% within a template.
+    # [issue 48] Support [[optional double brackets]] syntax for all extended address book fields
+    # Remember the last path separately for opening templates from the menu directly
+    --
+    # [issue 41] No file template menus in single message window
+    # [issue 42] The (lastname) switch uses first name from AB if only single name is matched from received address.
+    # [issue 43] %file(template)% doesn't work on Mac for paths that start with "/user". 
+    # Fixed: Do not run cleanupDeferredFields() on quoted elements
+    # Remove double quote from alt attribute in %file(image,alttext)%
+    # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work. 
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -719,11 +731,10 @@ var SmartTemplate4 = {
 			}
 			else {
 				flags.isFileTemplate = true; // !!! new Stationery substitution
-        flags.filePath = theFileTemplate.path; // remember the path.
+        if (!flags.filePaths) flags.filePaths = [];
+        flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
 			}
 		}
-		
-				
 				
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
@@ -923,7 +934,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	escapeHtml: function escapeHtml(str)
 	{
-		return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
+		return str.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>"); // remove quote replacements
 	},
 
 

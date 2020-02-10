@@ -93,7 +93,19 @@ SmartTemplate4.Sig = {
 			return this.Postbox.htmlSigText;
 		else
 		  return this.Identity.htmlSigText;
-	}
+	} ,
+  
+  get htmlSigPath() {
+		this._checkIdentity();
+    if (SmartTemplate4.Util.Application == 'Postbox') return ""; // i don't know right now
+    if (!this.Identity.signature) return "";
+    let sig = this.Identity.signature;
+    if (sig) {
+      if (sig.isFile())
+        return sig.path;
+    }
+    return ""; 
+  }
 	
 };
 

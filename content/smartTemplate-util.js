@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.8",
+	HARDCODED_CURRENTVERSION : "2.9",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1587,20 +1587,36 @@ SmartTemplate4.Util = {
 		}
 		
 	} ,
+  
 	
 	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
+          
+  	function isQuotedNode(node) {
+      if (!node)
+        return false;
+      if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote')
+        return true;
+      if (!node.parentNode) return false;
+      // make this recursive; if the node is child of a quoted parent, it is also considered to be quoted.
+      return isQuotedNode(node.parentNode); 
+    };
+          
 		let body = editor.rootElement,
 		    el = body,
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
 				nodeList = [];
-				
+        
+
 		util.logDebug('cleanupDeferredFields()');
 		while(treeWalker.nextNode()) {
 			let node = treeWalker.currentNode;
+      // omit all quoted material.
+      if (isQuotedNode(node)) continue;
 			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+        // update content of late deferred variables and add to nodeList for deletion
 				util.resolveDeferred(editor, node, true, nodeList); 
 			}
 		}	
@@ -1803,7 +1819,13 @@ SmartTemplate4.Util = {
 		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplate⁴ header:\n" + tok);
 		return false;
 	}	,
-	
+
+  isAddressHeader: function	isAddressHeader(token='') {
+    if (!token) return false;
+    return RegExp(" " + token + " ", "i").test(
+       " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
+       " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+  } ,
 	// new function for manually formatting a time / date string in one go.
 	dateFormat: function dateFormat(time, timeFormat, timezone) {
 		const util = SmartTemplate4.Util;

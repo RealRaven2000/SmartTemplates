@@ -103,7 +103,10 @@ SmartTemplate4.classSmartTemplate = function() {
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText, // might not work if it is an attached file (find out how this is done)
 		    sig = '',
-		    isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
+		    isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat,
+        sigPath = SmartTemplate4.Sig.htmlSigPath; // only reliable if in textbox!
+    const flags = SmartTemplate4.PreprocessingFlags;
+    
 		util.logDebugOptional(
       'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ', defined type=' + signatureDefined + ', compose type=' + composeType + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement,
@@ -278,12 +281,19 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// okay now for the coup de grace!!
 		if (prefs.getMyBoolPref('parseSignature') && sigText) {
+      if (!flags.filePaths) flags.filePaths=[]; // make sure we have a stack for paths!
+      let pathArray = flags.filePaths;
+      // if this has a path - put it on the stack so we can process %file()% variables within
+      if (isSignatureTb && sigPath)
+        pathArray.push(sigPath);
 			try {
 				sigText = getProcessedText(sigText, idKey, composeType, true);
 			}
 			catch(ex) {
 				util.logException(ex, "getProcessedText(signature) failed.");
 			}
+      if (isSignatureTb && sigPath)
+        pathArray.pop();
 		}
 
 		let dashesTxt = 
@@ -796,8 +806,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	// Get processed template
 	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
 		if (!templateText) return "";
+    const flags = SmartTemplate4.PreprocessingFlags;
 
-		let isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
+		let isStationery = flags.isStationery;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -805,7 +816,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		SmartTemplate4.calendar.init(); // set for default locale
 		let isDraftLike = !composeType 
-		  || SmartTemplate4.PreprocessingFlags.isFileTemplate
+		  || flags.isFileTemplate
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
 		let regular = SmartTemplate4.regularize(templateText, 
 				composeType, 

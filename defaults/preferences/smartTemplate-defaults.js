@@ -36,7 +36,8 @@ pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); /* location of last saved / loaded json template  */
 // pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
-pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" */
+pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" for next menu config action */
+pref("extensions.smartTemplate4.fileTemplates.instantPath", "") /* location for path used for adhoc html template selection */
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort

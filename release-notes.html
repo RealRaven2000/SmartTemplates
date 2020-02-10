@@ -1,64 +1,38 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplate4.mozdev.org/version.html#2.8">can be found here</a>
+Full change log with screen shots <a href="http://smarttemplate4.mozdev.org/version.html#2.9">can be found here</a>
 
 <b>Improvements</b>
 <ul>
 
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/31">[issue 31]</a> New premium variables to remove text / tags from quoted parts.
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/45">[issue 45]</a> Support for using <code >%file()%</code>  with relative paths and nesting <code>%file()%</code> variables within a template. Also supports this for including more html parts and images in subfolders relative to the template.</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/48">[issue 48]</a> Support [[optional double brackets]] syntax for all extended address book fields. This will make it possible to show more informationn from the Addressbook without  causing half-empty lines:
 
-
-<code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text 
-<code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text
-
-<i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.
-<i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
-<i>quoteLevel</i> - optional, (number) which minimal quote level to start from.
-
-<code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote
-<code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote
-<i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors can be added as long as double quotes can be avoided.
-<i>quoteLevel</i> - A note on quoteLevel, for images I would recommend 2 if you want to remove images to retain some context in your replies. This will dramatically decrease email sizes in long threads which contain a lot of images (e.g. screenshots).
-<i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. 
-This way you can keep smaller images like icons / emojis while discarding large images.
+<pre>
+&lt;h3&gt;Sender Info&lt;/h3&gt;
+Sender: %from% 
+[[Mail: %from(mail)% &lt;br&gt;]]
+[[First Name: %from(firstname)% &lt;br&gt;]]
+[[Name: %from(name)% &lt;br&gt;]]
+[[Additional mail: %from(additionalmail)% &lt;br&gt;]]
+[[Work City: %from(work.city)%&lt;br&gt;]]
+[[Web Page: %from(work.webpage)%&lt;br&gt;]]
+</pre>
 </li>
-<li>Variables window: Added documentation for address book functions and modernized layout. Added accordion UI to minimize scrolling. Simply click one of the headers to expand an article.
-</li> 
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/33">[issue 33]</a> New variable %mailto(body)% for including body text for internet mailto links in template. Also slightly improved behavior if body is empty, so that standard template can be used when a mailto link is clicked on.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/35">[issue 35]</a> Extended <code>%identity%</code> with the variable 'addressbook' in order to extract <a href="http://smarttemplate4.mozdev.org/variables.html#ab_fields">extended info from the Address Book</a> based on an email match, some examples:
-
-  %identity(addressbook,work.title)%
-  %identity(addressbook,work.organization)%
-  %identity(addressbook,homephone)%
-  
-The addressbook variables also support using the optionality syntax [[ ... ]] in order to leave out a section of text or html if the particular addressbook field is empty. 
-
-The following line will be omitted if State information is not available from the address book for the current identity:
-
-[[State: %identity(addressbook,work.state)%]]         
-</li>
-<li>Completed translations for locales: cs, es-ES, fi, it, pl,pt-BR, ru, sl, sv-SE.</li>
-<li>The template editor boxes now resize vertically with dialog for easier editing.</li>
-<li>Added international examples for <code class="inline">%dateformat%</code> in the variables tab.</a>
+<li>Remember the last path separately for opening templates from the menu directly.</li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/32">[issue 30]</a>, <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/32">[issue 32]</a>, <a name="26755" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26755" target="_blank">[Bug 26755]</a>
-Some reply / forward buttons were missing the file template dropdowns.
-</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/36">[issue 36]</a>
-Fixed: Smart-Reply button is missing template menus / template menus not working on combined "Reply All" / "Reply to Sender" / "Reply to List" button in preview header area.
+   <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/42">[issue 42]</a> The <code class="inline">(lastname)</code> switch uses first name from address book if only a single name is matched from the received address. This affects any address book switch of the format <code class="inline">%from(lastname)%</code>, provided there is only a single name in the transmitted email address, e.g. john@mail.com.</li>
+  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/41">[issue 41]</a>       No file template menus in single message window
+  Single message windows (not tabs) did not support replying / writing mails using the external HTML template files.</li>
+  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/43">[issue 43]</a>      <code class="inline">%file(template)%</code> doesn't work on Mac for paths that start with "/user". Unfortunately, it is still not supported to use relative <code class="html">&lt;img&gt;</code> paths in a html file, but when using <code class="inline">%file(img)%</code> using a path relative to the location of the template should be possible now when used from within an external HTML template file. 
 
-I have added a simplified menu solution for this case. Instead of having template submenus for each command, clicking a template below the smart buttons is modified through the keys [Shift] and [Ctrl]. The template items will:
-  <ul style="list-style-type:disc !important; list-style-image: none !important;">
-  <li>trigger the top command (e.g. reply all) by clicking on any templates below</li>
-  <li>trigger the 2nd command (e.g. reply to sender) via Shift+click</li>
-  <li>trigger the 3rd command via Ctrl+click</li>
-  </ul>
-</li>
-<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/38">[issue 38]</a> Images with encoded file URLs are not loaded correctly. An image tag that contains URLencoded characters can lead to the image not being loaded, for example:
-<code>&lt;img src="file:///C%3A%5CUsers%5CJohn%5Cimg%5Cimg3.png"&gt;</code>
-</li>
+  Ideally we will need this to support <code class="html">&lt;img&gt;</code> paths as well.</li>
+  <li>Fix: Remove double quote from alt attribute in %file(image,alttext)%</li>
+  <li>Fixed: Do not run cleanupDeferredFields() on quoted elements. This leads to problems with <code class="inline">%file()%</code> variables in replied emails (both correspondents have to use SmartTemplate&#8308; for this problem to occur.    </li>
+  <li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/46">[issue 46]</a> In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate&#8308; do not work.</li>
+  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/49">[issue 49]</a> CSS pattern <code class="html">%;-ms-text-size-adjust:100%;</code> is falsely recognized as header variable. </li>
 </ul>
