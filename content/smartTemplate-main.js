@@ -416,7 +416,7 @@ END LICENSE BLOCK
     # when AB replacement is enabled, allow displayname to be a single word.
     # [issue 38] Images with encoded file URLs are not loaded correctly
     
-  Version 2.9 - WIP
+  Version 2.9 - 11/02/2020
     # [issue 45] Support using %file()% with relative paths and nesting %file()% within a template.
     # [issue 48] Support [[optional double brackets]] syntax for all extended address book fields
     # Remember the last path separately for opening templates from the menu directly
@@ -427,6 +427,10 @@ END LICENSE BLOCK
     # Fixed: Do not run cleanupDeferredFields() on quoted elements
     # Remove double quote from alt attribute in %file(image,alttext)%
     # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work. 
+    
+  Version 2.9.1 - WIP
+    # since v2.9: template may not work if signature path is invalid  
+    
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

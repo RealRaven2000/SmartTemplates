@@ -1045,8 +1045,14 @@ SmartTemplate4.classSmartTemplate = function() {
 				
 				// if Stationery has %sig(none)% then flags.omitSignature == true
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
-				// get signature and remove the one Tb has inserted
-				SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+        try {
+          // get signature and remove the one Tb has inserted
+          SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+        }
+        catch(ex) {
+          SmartTemplate4.signature = "";
+          util.logException("Could not extract signature - is your signature path correct?", ex);
+        }
 				
 				if (flags.isThunderbirdTemplate) {
 					// use innerHTML instead of outer (we do not want to replace the "body" part)

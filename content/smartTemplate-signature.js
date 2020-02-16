@@ -96,13 +96,28 @@ SmartTemplate4.Sig = {
 	} ,
   
   get htmlSigPath() {
-		this._checkIdentity();
-    if (SmartTemplate4.Util.Application == 'Postbox') return ""; // i don't know right now
-    if (!this.Identity.signature) return "";
-    let sig = this.Identity.signature;
-    if (sig) {
-      if (sig.isFile())
-        return sig.path;
+    const util = SmartTemplate4.Util;
+    try {
+      this._checkIdentity();
+      if (util.Application == 'Postbox') return ""; // i don't know right now
+      if (!this.Identity.signature) return "";
+      let sig = this.Identity.signature;
+      if (sig) {
+        try {
+          if (sig.exists() && sig.isFile()) // nsIFile.isFile
+            return sig.path;
+        }
+        catch (ex) {
+          if (Cr.NS_ERROR_FILE_NOT_FOUND == ex.result) {
+            util.logException("Invalid signature path: " + sig.path, ex);
+          }
+          else
+            util.logException("SmartTemplate4.Sig.htmlSigPath() failed.", ex);
+        }
+      }
+    }
+    catch(ex) {
+      util.logException("SmartTemplate4.Sig.htmlSigPath() failed.", ex);
     }
     return ""; 
   }

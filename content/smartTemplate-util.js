@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.9",
+	HARDCODED_CURRENTVERSION : "2.9.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1367,7 +1367,7 @@ SmartTemplate4.Util = {
 					  Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
 			}
 			else { // Thunderbird 68 + 
-				LoadInfoFlags = Ci.nsILoadInfo.SEC_NORMAL | Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL;
+				LoadInfoFlags = Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL; // SEC_NORMAL has been removed.
 			  channel = 
 					  Services.io.newChannelFromURI(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
 			}
