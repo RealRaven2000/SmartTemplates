@@ -132,6 +132,7 @@
 <!ENTITY sig2.label "Signatur aus den Konten-Einstellungen aber ohne '--'">
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
+<!ENTITY fileCSS.label "Formatvorlage (css). Fügen Sie Ihre bevorzugten CSS-Regeln hinzu, um sie zwischen verschiedenen Vorlagen zu teilen.">
 <!ENTITY attach.label "Datei als Anhang anfügen">
 <!ENTITY basepath.desc "Falls Ihre Vorlage Bilder mit dem 'img' Tag enthält, welche lokal gespeichert sind, muss dies SmartTemplate mitgeteilt werden.">
 <!ENTITY basepath.desc2 "Die 'basepath' Variable fügt ein HTML-Tag 'base' ein, um alle Bilder basierend auf einer Startposition zu finden. Sie kann nur einmal in einer E-Mail verwendet werden.">

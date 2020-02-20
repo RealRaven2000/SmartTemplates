@@ -124,6 +124,10 @@
 <!ENTITY identity_ab.field "Za dodatne vrednosti polja glejte poglavje 'Polja adresarja' spodaj.
 
 
+
+
+
+
 Send feedback">
 <!ENTITY identity_ab.example "Primer">
 <!ENTITY identity_ab.phoneno "Telefon št">
@@ -135,7 +139,12 @@ Send feedback">
 <!ENTITY sig2.label "Podpis iz nastavitev računa, toda brez '- -'">
 <!ENTITY fileHTML.label "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8.">
 <!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
+<!ENTITY fileCSS.label "Zunanji slog slog (css). Vključite svoja najljubša pravila CSS, ki jih želite deliti med različnimi predlogami.">
 <!ENTITY attach.label "Dodaj datoteko kot prilogo">
+<!ENTITY basepath.desc "Če vaša predloga vsebuje slike z oznako 'img', ki so na vašem lokalnem pogonu, boste morali povedati SmartTemplate, kje jih lahko najdete.">
+<!ENTITY basepath.desc2 "Spremenljivka 'basepath' bo vdelala html oznako 'base' in poiskala vse slike na podlagi začetne lokacije - v e-pošti jih je mogoče uporabiti samo enkrat.">
+<!ENTITY basepath.relative "S to spremenljivko poiščite slike na istem mestu kot predlogo datoteke html.">
+<!ENTITY basepath.absolute "Kliknite tukaj, da izberete določeno mapo na vašem lokalnem pogonu.">
 <!ENTITY cursor.label "Nastavi položaj kazalca">
 <!ENTITY spellcheck.label "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen.">
 <!ENTITY to_var.cap "Prejemnik (Za)">
@@ -263,12 +272,10 @@ Send feedback">
 <!ENTITY html_note.label "V predlogah HTML uporabite samo nabor znakov UTF-8 (Unicode)!">
 <!ENTITY table.cap "Uporaba spremenljivk">
 <!ENTITY table_note.label "Nepravilna uporaba spremenljivk bo ustvarila sporočila o napakah v 'konzoli za napake'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Spremenljivka">
 <!ENTITY table_new.label "Sestavi">
 <!ENTITY table_reply.label "Odgovori">
 <!ENTITY table_fwd.label "Posreduj">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
 <!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">
@@ -284,7 +291,6 @@ Send feedback">
 <!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY premiumConfig "Lastnosti premium">
 <!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Pošlji na podporo">
 <!ENTITY support.type "Vrsta:">
 <!ENTITY support.type.selectOne "Izberite temo!">

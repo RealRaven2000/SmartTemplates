@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
 <!ENTITY fileHTML.label "File HTML o in testo semplice. Utilizza UTF-8 se il parametro opzionale della codifica dei caratteri è omesso.">
 <!ENTITY fileImage.label "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata.">
+<!ENTITY fileCSS.label "Foglio di stile esterno (css). Includi le tue regole CSS preferite da condividere tra diversi modelli.">
 <!ENTITY attach.label "Aggiungi un file come allegato">
+<!ENTITY basepath.desc "Se il tuo modello contiene immagini con il tag 'img' che si trovano sul tuo disco locale, dovrai dire a SmartTemplate dove trovarle.">
+<!ENTITY basepath.desc2 "La variabile 'basepath' inserirà un tag html 'base' per trovare tutte le immagini in base a una posizione iniziale - può essere usata una sola volta in una e-mail.">
+<!ENTITY basepath.relative "Utilizzare questa variabile per trovare le immagini nella stessa posizione del modello di file html.">
+<!ENTITY basepath.absolute "Fare clic qui per selezionare una cartella specifica sull'unità locale.">
 <!ENTITY cursor.label "Imposta la posizione del cursore">
 <!ENTITY spellcheck.label "Imposta la lingua per il controllo ortografico. Valori di esempio: (en, de-DE, es-ES, it) - nota che il dizionario deve essere installato.">
 <!ENTITY to_var.cap "Variabili del destinatario (A)">
@@ -260,12 +265,10 @@
 <!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML !">
 <!ENTITY table.cap "Utilizzo delle variabili">
 <!ENTITY table_note.label "Se una variabile viene utilizzata in modo non corretto viene registrato un errore nella console degli errori !">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabile">
 <!ENTITY table_new.label "Nuovi">
 <!ENTITY table_reply.label "Risposta">
 <!ENTITY table_fwd.label "Inoltrare">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Inserire la propria chiave di licenza qui:">
 <!ENTITY label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">
@@ -281,7 +284,6 @@
 <!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY premiumConfig "Caratteristiche Premium">
 <!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Posta al supporto">
 <!ENTITY support.type "Genere:">
 <!ENTITY support.type.selectOne "Seleziona un argomento!">

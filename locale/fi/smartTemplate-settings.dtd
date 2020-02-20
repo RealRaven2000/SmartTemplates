@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Allekirjoitus (TB:n tilitiedoista ilman '--')">
 <!ENTITY fileHTML.label "HTML- tai pelkkä teksti -tiedosto. Käytetään UTF-8:a, jos valinnainen merkistökoodaus parametri jätetään huomoimatta.">
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
+<!ENTITY fileCSS.label "Ulkoinen tyylisivu (css). Sisällytä suosikki CSS-säännöt jaettavaksi eri mallien välillä.">
 <!ENTITY attach.label "Lisää tiedosto liitteenä">
+<!ENTITY basepath.desc "Jos malli sisältää kuvia, joissa on paikallisella asemallasi oleva 'img' -tagi, sinun on kerrottava SmartTemplatelle, mistä ne löytyvät.">
+<!ENTITY basepath.desc2 "'basepath' -muuttuja lisää html 'base' -tunnisteen löytääksesi kaikki kuvat lähtöpaikan perusteella - sitä voidaan käyttää vain kerran sähköpostissa.">
+<!ENTITY basepath.relative "Käytä tätä muuttujaa löytääksesi kuvia samasta sijainnista kuin html-tiedostomalli.">
+<!ENTITY basepath.absolute "Napsauta tätä valitaksesi tietyn kansion paikalliselta asemalta.">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
 <!ENTITY spellcheck.label "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava.">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
@@ -260,12 +265,10 @@
 <!ENTITY html_note.label "Käytä vain UTF-8-merkistökoodausta (Unicode) HTML-pohjissa!">
 <!ENTITY table.cap "Muuttujien käyttö">
 <!ENTITY table_note.label "Jos muuttuja on virheellinen virhekonsoliin tulee virheviesti!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Muuttuja">
 <!ENTITY table_new.label "Uusi">
 <!ENTITY table_reply.label "Vastaa">
 <!ENTITY table_fwd.label "Välitä">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Syötä henkilökohtainen lisenssiavain tähän:">
 <!ENTITY label.insertLicense.tooltip "Lisenssiavain löytyy Fatspringiltä tulleessa varmistussähköpostissa">
@@ -281,7 +284,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
 <!ENTITY premiumConfig "Maksulliset lisätoiminnot">
 <!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Lähetä sähköpostia tukeen">
 <!ENTITY support.type "Tyyppi:">
 <!ENTITY support.type.selectOne "Valitse aihe!">

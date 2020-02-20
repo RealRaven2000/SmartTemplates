@@ -59,7 +59,6 @@
 <!ENTITY btnSaveTemplate.tooltip "Зберегти шаблон...">
 <!ENTITY btnLoadTemplate.tooltip "Завантажити шаблон...">
 <!ENTITY btnYouTube.tooltip "Відвідайте YouTube канал &quot;Thunderbird Daily&quot; - для поради та навчальні посібників з використання додатків">
-<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Загальні">
 <!ENTITY pref_def.label "Використовувати загальні">
 <!ENTITY pref_def.cap "Зніміть прапорець 'Використовувати загальні', щоб створити індивідуальний заголовок для цього запису.">
@@ -77,13 +76,9 @@
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
 <!ENTITY pref_hideExamples "Сховати закладку з прикладами">
-<!ENTITY pref_silentUpdates "Silent updates">
-<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Розділити декілька кореспондентів за допомогою:">
 <!ENTITY pref_addressDelimiter_tip "Розділ між кількома кореспондентами. Outlook використовує крапку з комою (;) За умовчанням для Thunderbird це кома (,)">
 <!ENTITY resolveNamesFromAB "Розпізнавати імена використовуючи адресну книгу">
@@ -93,7 +88,6 @@
 <!ENTITY resolveABRemoveMail "Видалити адреса електронної пошти, якщо не вказано параметр формату">
 <!ENTITY suppressMailtToLink "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти.">
 <!ENTITY capitalizeNames "Назви прописними ">
-<!ENTITY guessNameFromMail "Guess Name parts from email address if missing">
 <!ENTITY pref_parseSignature "Підписання">
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
 <!ENTITY pref_cursorInsertSpace "Вставити пробіл, щоб виділити &#37;курсор&#37;">
@@ -108,7 +102,6 @@
 <!ENTITY pref_defaultCharset_tip "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні.">
 <!-- #### ABOUT #### -->
 <!ENTITY about.cap "Про SmartTemplate⁴">
-<!ENTITY support.tab "Support">
 <!ENTITY creator.label "Автор">
 <!ENTITY developer.label "Розробник">
 <!ENTITY localename.label "uk">
@@ -120,10 +113,6 @@
 <!ENTITY fix_var.cap "Фіксовані змінні">
 <!ENTITY ownname.label "Ваше ім'я">
 <!ENTITY ownmail.label "Адреса Вашого email">
-<!ENTITY identity_ab "Use the 'addressbook' keyword to retrieve additional identity information from address book.">
-<!ENTITY identity_ab.field "For additional field values, see chapter 'Address Book Fields' below.">
-<!ENTITY identity_ab.example "Example">
-<!ENTITY identity_ab.phoneno "Phone No">
 <!ENTITY date.label "Дата / Час (така як і оригінальна 'Mailheader')">
 <!ENTITY tomail.label "Адреса електронної пошти отримувача">
 <!ENTITY frommail.label "Адреса електронної пошти відправника">
@@ -134,14 +123,11 @@
 <!ENTITY fileImage.label "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено.">
 <!ENTITY attach.label "Додати файл як вкладення">
 <!ENTITY cursor.label "Позиції курсора">
-<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
-<!ENTITY standardformat.config "Configure default format…">
 <!ENTITY tofirstname.label "Ім'я отримувача">
 <!ENTITY toname.label "Прізвище отримувача">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
 <!ENTITY from_var.cap "Відправник (From)">
 <!ENTITY from_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY from.label "Прізвище відправника (за замовчуванням)">
@@ -153,12 +139,6 @@
 <!ENTITY ccfirstname.label "Ім'я отримувача копії повідомлення">
 <!ENTITY ccname.label "Прізвище отримувача копії повідомлення">
 <!-- #### TABLE #### -->
-<!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
-<!ENTITY ab_contact "Contact">
-<!ENTITY ab_private "Private">
-<!ENTITY ab_other "Other">
-<!ENTITY ab_work "Work">
 <!ENTITY spec_form.cap "Спеціальний формат">
 <!ENTITY specform_note.label "Розділи всередині подвійних квадратних дужок [[Cc: &#37;cc(name)&#37;]] будуть відображатися тільки в тому випадку, якщо змінна &#37;cc(name)&#37; може бути замінена!">
 <!ENTITY ex_brack.label "Приклад: To: Аліна | Cc: Август">
@@ -186,29 +166,13 @@
 <!ENTITY matchTextFromBody "Знаходження за шаблоном RegEx у цитованому Email та вставлення результату в місце розташування функції.">
 <!ENTITY matchTextFromSubject "Знайти за шаблоном RegEx у темі та вставити результат в місце розташування функції.">
 <!ENTITY stringmanip.match.comment "Функції відповідності: Перший параметр (регулярний вираз) повинен бути в межах подвійних лапок. Другий параметр - це номер групи відповідності. Використовуйте 0 для повного виразу, 1 для першої групи тощо.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY quote_changers.cap "Quote Manipulation">
-<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
-<!ENTITY deleteQuotedText "Deletes quoted Text">
-<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
-<!ENTITY deleteQuotedTags "Deletes tags from the quote">
-<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
-<!ENTITY Parameters "Parameters">
-<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
-<!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
-<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
-<!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
-<!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
-<!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
-<!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
 <!ENTITY fix_vartz.cap "Фіксовані змінні для 'формату дати'/'часового поясу'">
 <!ENTITY fix_vartz_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / Час (місцевий формат)">
 <!ENTITY dateshort.label "Дата / Час короткий запис (напр. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Часовий пояс (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
 <!ENTITY dateoffset_note.label "Наступна функція додає зміщення на всі наступні відображення часу.">
 <!ENTITY calculate.explain "DD=кількість днів до додавання. H=кількість годин для додавання (необов'язково). MM=хвилини для додавання (необов'язково)">
 <!ENTITY calculate.reset "Встановіть аргумент на 0, щоб зупинити зміну будь-яких дат.">
@@ -233,9 +197,6 @@
 <!ENTITY p1.label "д.о">
 <!ENTITY p2.label "Д.О.">
 <!ENTITY p3.label "ДО">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
-<!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; модифікатор">
 <!ENTITY xsent_note.label "За замовчуванням, змінні дата / час завжди ініціалізувалися за поточними значеннями (час, коли ви створюєте електронну пошту). У поєднанні з &#37;X:=sent&#37;, дата / час змінні відображають первісну дату або час повідомлень.">
 <!ENTITY xsent_long.cap "Приклад для довго рядка">
@@ -260,12 +221,10 @@
 <!ENTITY html_note.label "Будь ласка використовуйте тільки UTF-8 (Unicode) кодування всередині HTML шаблонів!">
 <!ENTITY table.cap "Використання змінних">
 <!ENTITY table_note.label "Неправильне використання змінних викличе повідомлення про помилку в 'Консолі помилок'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Змінна">
 <!ENTITY table_new.label "Записати">
 <!ENTITY table_reply.label "Відповідь">
 <!ENTITY table_fwd.label "Переслати">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro stuff ">
 <!ENTITY label.insertLicense "Введіть свій особистий ліцензійний ключ тут:">
 <!ENTITY label.insertLicense.tooltip "Ваш ліцензійний ключ міститься в електронному листі з підтвердженням замовлення від Fastspring.">
@@ -273,7 +232,6 @@
 <!ENTITY button.validateLicense "перевірити">
 <!ENTITY label.licenseValid "Ваша ліцензія дійсна до:">
 <!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplate⁴ Pro! Всі преміум-функції тепер розблоковано.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Введений ліцензійний ключ недійсний. Перевірте свою електронну пошту з FastSpring за інструкціями. Якщо у вас все ще є проблеми, зв'яжіться зі мною на вкладці Підтримка.">
 <!ENTITY licenseValidation.expired "Термін дії ліцензійного ключа закінчився. Будь ласка, натисніть кнопку нижче, щоб оновити свою ліцензію.">
 <!ENTITY licenseValidation.invalidAddon "Введений ліцензійний ключ може бути для іншого надбудови. Ліцензійні ключі для {0} починаються з {1}.">
@@ -281,15 +239,3 @@
 <!ENTITY licenseValidation.notMatchedMail "Зашифрована адреса електронної пошти не відповідає жодній допустимій.">
 <!ENTITY premiumConfig "Преміальні функції">
 <!ENTITY label.premiumFeaturesSite "Дізнайтеся більше про преміум-функції на нашому веб-сайті…">
-<!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">

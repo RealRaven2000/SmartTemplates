@@ -83,7 +83,7 @@
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
 <!ENTITY defaultMimeFormat "Výchozí formát adresy:">
-<!ENTITY defaultMimeFormat_tip "Formát, který se použije při nahrazení obyčejného &#37;to&#37;, &#37;from&#37;, &#37;cc&#37; adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu.">
+<!ENTITY defaultMimeFormat_tip "Formát, který se použije při nahrazení obyčejného &#37;to&#37;; &#37;from&#37;; &#37;cc&#37; adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu.">
 <!ENTITY pref_addressDelimiter "Oddělit více adres s:">
 <!ENTITY pref_addressDelimiter_tip "Oddělovač mezi adresama. Outlook používá středník(;) Výchozí pro Thunderbird je čárka (,)">
 <!ENTITY resolveNamesFromAB "Získej jméno z adresáře">
@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Podpis z nastavení účtu bez '--'">
 <!ENTITY fileHTML.label "HTML nebo text soubor. UTF-8 je předpokládano pokud je vynechan volitelný parametr znakové sady.">
 <!ENTITY fileImage.label "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen.">
+<!ENTITY fileCSS.label "Vnější styl styl (css). Zahrňte svá oblíbená pravidla CSS pro sdílení mezi různými šablonami.">
 <!ENTITY attach.label "Add file as attachment">
+<!ENTITY basepath.desc "Pokud vaše šablona obsahuje obrázky se značkou „img“, které jsou na místním disku, budete muset SmartTemplate říct, kde je najít.">
+<!ENTITY basepath.desc2 "Proměnná 'basepath' vloží značku html 'base' a najde všechny obrázky na základě počátečního umístění - v e-mailu lze použít pouze jednou.">
+<!ENTITY basepath.relative "Tato proměnná slouží k nalezení obrázků ve stejném umístění jako šablona souboru html.">
+<!ENTITY basepath.absolute "Klepnutím sem vyberte konkrétní složku na místní jednotce.">
 <!ENTITY cursor.label "nastav pozici kurzoru">
 <!ENTITY spellcheck.label "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován.">
 <!ENTITY to_var.cap "Příjemce (To)">

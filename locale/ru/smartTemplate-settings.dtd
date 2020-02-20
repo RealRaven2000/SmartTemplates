@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Подпись, но без '--'">
 <!ENTITY fileHTML.label "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8.">
 <!ENTITY fileImage.label "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText.">
+<!ENTITY fileCSS.label "Внешняя таблица стилей (CSS). Включите ваши любимые правила CSS для обмена между различными шаблонами.">
 <!ENTITY attach.label "Добавить файл как вложение">
+<!ENTITY basepath.desc "Если ваш шаблон содержит изображения с тегом «img», которые находятся на вашем локальном диске, вам нужно указать SmartTemplate, где их найти.">
+<!ENTITY basepath.desc2 "Переменная 'basepath' вставит HTML-тег 'base', чтобы найти все изображения, основанные на начальном местоположении - его можно использовать только один раз в электронном письме.">
+<!ENTITY basepath.relative "Используйте эту переменную, чтобы найти изображения в том же месте, что и шаблон HTML-файла.">
+<!ENTITY basepath.absolute "Нажмите здесь, чтобы выбрать конкретную папку на вашем локальном диске.">
 <!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY spellcheck.label "Устанавливает язык проверки правописания. Примеры значений: (en, de-DE, es-ES, ru) - обратите внимание, что словарь должен быть установлен.">
 <!ENTITY to_var.cap "Получатель (Кому)">
@@ -260,12 +265,10 @@
 <!ENTITY html_note.label "Используйте только UTF-8 (Уникод) в HTML шаблонах!">
 <!ENTITY table.cap "Использование переменных">
 <!ENTITY table_note.label "Неправильное использование переменных приведет к выводу сообщений об ошибках в 'консоли ошибок'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Переменная">
 <!ENTITY table_new.label "Создать">
 <!ENTITY table_reply.label "Ответить">
 <!ENTITY table_fwd.label "Переслать">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Вставить лицензионный ключ сюда:">
 <!ENTITY label.insertLicense.tooltip "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ.">
@@ -281,7 +284,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY premiumConfig "Премиум-функции">
 <!ENTITY label.premiumFeaturesSite "Узнать больше о премиум-функциях на нашей странице…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Почта в службу поддержки">
 <!ENTITY support.type "Тип:">
 <!ENTITY support.type.selectOne "Выберите тему!">

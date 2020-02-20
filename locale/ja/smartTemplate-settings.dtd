@@ -260,12 +260,10 @@
 <!ENTITY html_note.label "HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
 <!ENTITY table.cap "変数の使用">
 <!ENTITY table_note.label "変数の使用が適切でない場合には、エラーコンソールにエラーが表示されます。">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "変数">
 <!ENTITY table_new.label "新規">
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
 <!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
@@ -281,7 +279,6 @@
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
 <!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "サポートにメール">
 <!ENTITY support.type "タイプ:">
 <!ENTITY support.type.selectOne "トピックを選択してください！">

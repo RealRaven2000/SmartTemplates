@@ -116,7 +116,6 @@
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplate⁴ erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
-<!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
@@ -132,7 +131,12 @@
 <!ENTITY sig2.label "Underskrift (från TB hänsyn inställningar men utan '--')">
 <!ENTITY fileHTML.label "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts.">
 <!ENTITY fileImage.label "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas.">
+<!ENTITY fileCSS.label "Externt formatmall (css). Inkludera dina favorit CSS-regler för att dela mellan olika mallar.">
 <!ENTITY attach.label "Lägg till bifogad fil">
+<!ENTITY basepath.desc "Om din mall innehåller bilder med 'img' -taggen som finns på din lokala enhet måste du berätta för SmartTemplate var du kan hitta dessa.">
+<!ENTITY basepath.desc2 "Variabeln 'basepath' kommer att infoga en html-bas-tagg för att hitta alla bilder baserade på en startplats - den kan bara användas en gång i ett e-postmeddelande.">
+<!ENTITY basepath.relative "Använd denna variabel för att hitta bilderna på samma plats som html-filmallen.">
+<!ENTITY basepath.absolute "Klicka här för att välja en specifik mapp på din lokala enhet.">
 <!ENTITY cursor.label "Ändrar pekarpositionen">
 <!ENTITY spellcheck.label "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad.">
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
@@ -152,7 +156,6 @@
 <!ENTITY cc.label "Mottagarens namn (Standard)">
 <!ENTITY ccfirstname.label "Mottagarens förnamn">
 <!ENTITY ccname.label "Mottagarens namn">
-<!-- AB switch section -->
 <!ENTITY ab_fields "Adressbokfält">
 <!ENTITY ab_fields.desc "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:">
 <!ENTITY ab_contact "Kontakt">
@@ -187,7 +190,6 @@
 <!ENTITY matchTextFromSubject "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen.">
 <!ENTITY stringmanip.match.comment "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc.">
 <!ENTITY stringmanip.alttext "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället.">
-<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Citat Manipulation">
 <!ENTITY quote_changers.desc "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme.">
 <!ENTITY deleteQuotedText "Tar bort citerad text">
@@ -260,12 +262,10 @@
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
 <!ENTITY table_note.label "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabel">
 <!ENTITY table_new.label "Nytt">
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
@@ -281,7 +281,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
 <!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "skriva Mail to Support">
 <!ENTITY support.type "Typ:">
 <!ENTITY support.type.selectOne "Välj ett ämne!">

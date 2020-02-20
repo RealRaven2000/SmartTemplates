@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Assinatura das configurações da conta sem o '--'">
 <!ENTITY fileHTML.label "Arquivo HTML ou texto simples. UTF-8 é assumido ao omitir o parâmetro opcional 'charset'.">
 <!ENTITY fileImage.label "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada.">
+<!ENTITY fileCSS.label "Folha de estilos externa (css). Inclua suas regras CSS favoritas para compartilhar entre diferentes modelos.">
 <!ENTITY attach.label "Adicionar arquivo como anexo">
+<!ENTITY basepath.desc "Se o seu modelo contiver imagens com a tag 'img' presente na unidade local, você precisará informar ao SmartTemplate onde encontrá-las.">
+<!ENTITY basepath.desc2 "A variável 'basepath' irá inserir uma tag 'base' html para encontrar todas as imagens com base em um local de início - ela só pode ser usada uma vez em um email.">
+<!ENTITY basepath.relative "Use esta variável para encontrar as imagens no mesmo local que o modelo de arquivo html.">
+<!ENTITY basepath.absolute "Clique aqui para selecionar uma pasta específica na sua unidade local.">
 <!ENTITY cursor.label "Definir a posição do cursor">
 <!ENTITY spellcheck.label "Define o idioma da verificação ortográfica. Valores de exemplo: (en, de-DE, es-ES, ru) - o dicionário deve estar instalado.">
 <!ENTITY to_var.cap "Variáveis de destinatário (Para)">
@@ -65777,12 +65782,10 @@
 <!ENTITY html_note.label "Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!">
 <!ENTITY table.cap "Uso das variáveis">
 <!ENTITY table_note.label "Usar variáveis incorretamente gerará mensagens de erro no 'console de erros'!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variáveis">
 <!ENTITY table_new.label "Nova">
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Encaminhar">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Insira sua licença pessoal aqui:">
 <!ENTITY label.insertLicense.tooltip "Sua chave de licença foi enviada no e-mail de confirmação de compra da Fastspring.">
@@ -65798,7 +65801,6 @@
 <!ENTITY licenseValidation.notMatchedMail "O endereço de e-mail criptografado não corresponde ao legível.">
 <!ENTITY premiumConfig "Recursos Premium">
 <!ENTITY label.premiumFeaturesSite "Leia mais sobre os Recursos Premium em nosso site…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Enviar email para o suporte">
 <!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "Selecione um topico!">
