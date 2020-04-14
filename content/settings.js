@@ -647,19 +647,19 @@ SmartTemplate4.Settings = {
 					editBox = headerBox;
 				}
 			}
-      if (code.indexOf('%file')==0) {
+      if (code.includes('%file') || code.includes('%style')) {
         code = settings.getFileName(code, editBox, "file");
         return; // cancel
       }
-      if (code.indexOf('%basepath(')==0) {
+      if (code.includes('%basepath(')) {
         code = settings.getFileName(code, editBox, "basepath");
         return; // cancel
       }
-      if (code.indexOf('%attach')==0) {
+      if (code.includes('%attach')) {
         code = settings.getFileName(code, editBox, "attach");
         return; // cancel
       }
-      if (code.indexOf('%header.')==0) {
+      if (code.includes('%header.')) {
         code = settings.getHeaderArgument(code);
       }
 			
@@ -682,8 +682,14 @@ SmartTemplate4.Settings = {
         filterText;
     switch (functionName) {
       case "file":
-        fileType = (code.indexOf('filePath')>0) ? 'html' :
-                     ((code.indexOf('imagePath')>0) ? 'image' : 'unknown');	
+        if (code.includes('filePath'))
+          fileType = "html";
+        else if (code.includes('style'))
+          fileType = "style";
+        else if (code.includes('imagePath'))
+          fileType = "image";
+        else
+          fileType = "unknown";	
         break;
       case "basepath":
         fileType = "folder";
@@ -703,6 +709,10 @@ SmartTemplate4.Settings = {
       case 'folder':
         filterText = bundle.GetStringFromName("fpFolder");
         fp.appendFilter(filterText, "*.");
+        break;
+      case 'style':
+        filterText = bundle.GetStringFromName("fpStyle");
+        fp.appendFilter(filterText, "*.css");
         break;
       case 'html':
         filterText = bundle.GetStringFromName("fpHTMLFile");

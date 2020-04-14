@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.9.1",
+	HARDCODED_CURRENTVERSION : "2.10.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1386,6 +1386,29 @@ SmartTemplate4.Util = {
 		}
   } ,
 	
+  isFilePathAbsolute : function isFilePathAbsolute(path) {
+    if (!path) return false;
+    // check for user folder / drive letter or double slash
+    return (path.toLowerCase().startsWith('/user') || 
+      /([a-zA-Z]:)/.test(path) || 
+      path.startsWith("\\") || path.startsWith("/"));
+  },
+  
+  // retrieve the folder path of a full file location (e.g. C:\user\myTemplate.html)
+  // filePath - name of file or relative path of file to append or empty
+  getPathFolder: function getPathFolder(path, filePath) {
+    let slash = path.includes("/") ? "/" : "\\",
+        noSlash = (slash=='/') ? "\\" : "/",
+        fPart = path.lastIndexOf(slash),
+        newPath = "",
+        appendedPath = "";
+    if (fPart)
+      newPath = path.substr(0,fPart) + slash;
+    if (filePath && newPath) 
+      appendedPath =filePath.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
+    return newPath + appendedPath;
+  },
+  
   hasLicense: function hasLicense(reset) {
 		const util = SmartTemplate4.Util,
 					licenser = util.Licenser;
@@ -1484,10 +1507,16 @@ SmartTemplate4.Util = {
 	* getAccountsPostbox() return an Array of mail Accounts for Postbox
 	*/   
 	getAccountsPostbox: function getAccountsPostbox() {
-	  let accounts=[],
-        actManager = this.Mail3PaneWindow.accountManager,
-        Ci = Components.interfaces,
-		    smartServers = actManager.allSmartServers;
+    const util = SmartTemplate4.Util,
+          Ci = Components.interfaces,
+          actManager = util.Mail3PaneWindow.accountManager || MailServices.accounts;
+	  let accounts=[];
+        
+    if (!actManager) {
+      util.logDebug("cannot retrieve Postbox accountManager from main window:" + util.Mail3PaneWindow);
+      debugger;
+    }
+		let smartServers = actManager.allSmartServers;
 		for (let i = 0; i < smartServers.Count(); i++) {
 			let smartServer = smartServers.QueryElementAt(i, Ci.nsIMsgIncomingServer),
 			    account_groups = smartServer.getCharValue("group_accounts");
@@ -1687,13 +1716,31 @@ SmartTemplate4.Util = {
 						if(generalFunction=='from')
 							addressValue = identityList.value;
 						else {
-							// first column of widget:  addr_to, addr_bss, addr_bcc
-							for (let i=1; i<aw.getRowCount(); i++) {
-								let id = 'addressCol1#' + i;
-								if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
-									id = 'addressCol2#' + i;
-									addressValue = document.getElementById(id).value;
-									break;
+              if (this.Application=="Postbox") {
+                let hbox = document.getElementById('addr_' + generalFunction),  // e.g. addr_to
+                    bubbleContainer = hbox.firstChild;
+                for (let i=0; i<bubbleContainer.childNodes.length; i++) {
+                  let bubble = bubbleContainer.childNodes[i];
+                  if(i>0) {  // first one is empty for entry only
+                    let em = bubble.getAttribute("emailAddress"),
+                        nm = bubble.getAttribute("displayName"),
+                        fa = bubble.getAttribute("fullAddress"); // this one is htmlencoded.
+                    if (em) {
+                      addressValue = nm + " <" + em + ">";
+                    }
+                  }
+                }
+                
+              }
+              else {
+								// first column of widget:  addr_to, addr_bss, addr_bcc
+								for (let i=1; i<aw.getRowCount(); i++) {
+									let id = 'addressCol1#' + i;
+									if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
+										id = 'addressCol2#' + i;
+										addressValue = document.getElementById(id).value;
+										break;
+									}
 								}
 							}
 						}
@@ -1913,7 +1960,7 @@ SmartTemplate4.Util = {
 	
 	prTime2Str : function st4_prTime2Str(time, timeType, timezone) {
 		const util = SmartTemplate4.Util,
-					prefs = SmartTemplate4.Preferences;
+					prefs = SmartTemplate4.Preferences,
 		      Ci = Components.interfaces,
 		      Cc = Components.classes;
 		function getDateFormat(field) {

@@ -160,7 +160,7 @@ function async_driver(val) {
 var { XPCOMUtils } = 
   ChromeUtils.import ?
   ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") :
-	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");  // Fix for THunderbird 52
+	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");  // Fix for THunderbird 52 / Postbox
 // not used (yet)
 var SmartTemplate4_streamListener =
 {
@@ -653,7 +653,8 @@ SmartTemplate4.mimeDecoder = {
           firstName, lastName,
           fullName = '',
           emailAddress = '',
-          addressField = array[i];
+          addressField = array[i],
+          isFirstNameFromDisplay = false;
 					
       // [Bug 25816] - missing names caused by differing encoding
       // MIME decode (moved into the loop)
@@ -706,8 +707,11 @@ SmartTemplate4.mimeDecoder = {
 					else
 						firstName = card.getProperty("NickName", card.firstName);
 				}
-				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName'))
+				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName')) {
 					firstName = card.displayName;
+          // displayName is usually the full name, so we may have to remove that portion for firstname.
+          isFirstNameFromDisplay = true;
+        }
       }
       lastName = (isResolveNamesAB && card)  ? card.lastName : '';
       fullName = (isResolveNamesAB && card && card.displayName) ? card.displayName : fullName;
@@ -785,6 +789,10 @@ SmartTemplate4.mimeDecoder = {
 			if (!lastName && !isOnlyOneName) {
 				lastName = ncount ? names[ncount-1] : '';
 			}
+      if (isFirstNameFromDisplay && firstName.endsWith(lastName)) {
+        // cut off last name to avoid duplication.
+        firstName = firstName.replace(lastName,"").trim();
+      }
       
       if (prefs.getMyBoolPref('names.capitalize')) {
         fullName = util.toTitleCase(fullName);
@@ -1706,7 +1714,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
     "matchTextFromSubject", "matchTextFromBody",
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
-		"messageRaw", "file", "attach", "basepath",//depends on the original message, but not on any header
+		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
@@ -2388,7 +2396,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           attachFile(arg);
 					return "";
         case "file":
-					util.addUsedPremiumFunction('file');
+        case "style":
+					util.addUsedPremiumFunction(token);
 					// do not process images that are returned - insertFileLink will already turn them into a DataURI
           // we are using pathArray to keep track of "where we are" in terms of relative paths
           let pathArray = SmartTemplate4.PreprocessingFlags.filePaths || [],
@@ -2398,11 +2407,19 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               // and they will be resolved during this function call using the new stack
               // recursively:
               fileContents = insertFileLink(arg, composeType), 
-              parsedContent = fileContents.startsWith("<img") 
-							  ? fileContents
-							  : SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
-          // internally, we may have used another relative (sub)path
-          // allow nested %file%  variables + relative paths
+              parsedContent;
+          if (token=='style') {
+            parsedContent = "<style type='text/css'>\n" + fileContents + "\n</style>\n";
+          }
+          else if (fileContents.startsWith("<img")) {
+            parsedContent = fileContents;
+          }
+          else {
+            // internally, we may have used another relative (sub)path
+            // allow nested %file%  variables + relative paths
+            parsedContent = SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
+          }
+          // if a path was added in the meantime, we can now pop it off the stack.
           if (pL<pathArray.length) pathArray.pop(); 
           return parsedContent;
         case "basepath":
@@ -2548,7 +2565,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   function insertBasePath(arg) {
     let filePath, html; 
     if (arg) {
-      filePath = "file:///" + arg.replace('\\','/');
+      filePath = "file:///" + arg.replace(/\\/gm,'/');
     }
     else {
       filePath = ""; // get path from last %file% location!
@@ -2569,7 +2586,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           isFU = FileUtils && FileUtils.File;
 								
     // determine file type:
-    let html,
+    let html = "",
         arr = txt.substr(1,txt.length-2).split(','),  // strip parentheses and get optional params
         path = arr[0].replace(/"/g, ''),  // strip quotes
         type = path.toLowerCase().substr(path.lastIndexOf('.')+1),
@@ -2578,14 +2595,15 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         currentPath = flags.filePaths ? 
                      (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
                      ""; // top of stack
-                     
+    /*                 
     let slash = currentPath.includes("/") ? "/" : "\\",
         noSlash = (slash=='/') ? "\\" : "/",
         fPart = currentPath.lastIndexOf(slash),
         newPath = "";
     if (fPart)
       newPath = currentPath.substr(0,fPart) + slash + path.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
-
+      */
+    let newPath = util.getPathFolder(currentPath, path);
                      
     if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
       type = 'image';
@@ -2593,12 +2611,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       isHTML = true;
     util.logDebug("insertFile - type detected: " + type);
     // find out whether path is relative:
-    let isAbsolute = 
-      (path.toLowerCase().startsWith('/user') || 
-      /([a-zA-Z]:)/.test(path) || 
-      path.startsWith("\\"));
-    if (type=='image' && !isAbsolute) {
-      util.logDebug("%File% - image path may be relative: " + path  +
+    let isAbsolute = util.isFilePathAbsolute(path);
+    if (type=='image' || type=='css' && !isAbsolute) {
+      let dbgCmdType = (type=="css") ? "%style%" : "%file%";
+      util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
         "\n flags.isFileTemplate = " + flags.isFileTemplate +
         "\n template path = " + currentPath || '?');
       let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
@@ -2615,7 +2631,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           // new code for path of template - failed on Rob's Mac as unknown.
           // I think this is only set when a template is opened from the submenus!
           if (flags.isFileTemplate && currentPath) {
-            let pathArray = newPath.split(slash);
+            let slash = newPath.includes("/") ? "/" : "\\",
+                pathArray = newPath.split(slash);
             try {
               let ff = new FileUtils.File(newPath);
               if (!ff.exists()){
@@ -2640,103 +2657,120 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         }
       }
     }
-    switch(type) {
-      case 'htm':
-      case 'html':
-      case 'txt':
-        if (!isAbsolute) 
-          path = newPath;
-			  //try our new method
-				if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
-					let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
-						{
-							composeType: composeType, 
-							path: path, 
-							label: "data inserted from %file%"
-						}
-					);
-					if (!tmpTemplate.failed) {
-						html = tmpTemplate.HTML;
-						if (!html)
-							html = tmpTemplate.Text;
-					}
-				}
-				if (!html) {
-					// OLD Method
-					// find / load file and expand?
-					let data = "",
-							//read file into a string so the correct identifier can be added
-							fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
-							cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
-							countRead = 0;
-					// let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
-					try {
-						let localFile = isFU ?   // not in Postbox
-														new FileUtils.File(path) :
-														Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-								str = {};
-						util.logDebug("localFile.initWithPath(" + path + ")");
-						if (!isFU)
-							localFile.initWithPath(path);
-						
-						fstream.init(localFile, -1, 0, 0);
-						/* sigEncoding: The character encoding you want, default is using UTF-8 here */
-						let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
-						util.logDebug("initializing stream with " + encoding + " encoding…");
-						cstream.init(fstream, encoding, 0, 0);
-						let read = 0;
-						do {
-							read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
-							data += str.value;
-							countRead += read;
-						} while (read != 0);
-						cstream.close(); // this closes fstream
-						html = data.toString();
-					}
-					catch (ex) {
-						util.logException("insertFileLink() - read " + countRead + " characters.", ex);
-						if (countRead) {
-							html = data.toString();
-						}
-						else
-							html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
-										 + "Please check error console for detail</div>";
-					}					
-				}
-				// if we compose in html and file is txt we need to replace all line breaks with <br>
-				if (type=='txt') {
-					html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
-				}
-        
-        flags.isFileTemplate = true;
-        // prepare for using relative paths from here...
-        // assume we are within a template, to make matching subsequent relative paths possible.
-        // should work for using %file(template.html) in a SmartTemplate.
-        if (!flags.filePaths) 
-          flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
-        flags.filePaths.push(path);
-        break;
-      case 'image':
-        let alt = (arr.length>1) ? 
-                  (" alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
-                  "",
-						filePath;
-        if (!isAbsolute && currentPath) {
-          //
-          util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
-          let lastSlash = currentPath.lastIndexOf("\\");
-          if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
-          path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
-        }
-        filePath = "file:///" + path.replace('\\','/');
-				// change to data URL
-				filePath = util.getFileAsDataURI(filePath)
-        html = "<img src='" + filePath + "'" + alt + " >";
-        break;
-      default:
-        alert('unsupported file type in %file()%: ' + type + '.');
-        html='';
-        break;
+    try {
+      switch(type) {
+        case 'htm':
+        case 'html':
+        case 'txt':
+        case 'css':
+          if (!isAbsolute) 
+            path = newPath;
+          //try our new method
+          if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
+            let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
+              {
+                composeType: composeType, 
+                path: path, 
+                label: "data inserted from " + (type=='css') ? "%style%" : "%file%"
+              }
+            );
+            if (!tmpTemplate.failed) {
+              html = tmpTemplate.HTML;
+              if (!html)
+                html = tmpTemplate.Text;
+            }
+          }
+          if (!html) {
+            // OLD Method
+            // find / load file and expand?
+            let data = "",
+                //read file into a string so the correct identifier can be added
+                fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream),
+                cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream),
+                countRead = 0;
+            // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
+            try {
+              let localFile = isFU ?   // not in Postbox
+                              new FileUtils.File(path) :
+                              Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+                  str = {};
+              util.logDebug("localFile.initWithPath(" + path + ")");
+              if (!isFU)
+                localFile.initWithPath(path);
+              
+              fstream.init(localFile, -1, 0, 0);
+              /* sigEncoding: The character encoding you want, default is using UTF-8 here */
+              let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
+              util.logDebug("initializing stream with " + encoding + " encoding…");
+              cstream.init(fstream, encoding, 0, 0);
+              let read = 0;
+              do {
+                read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
+                data += str.value;
+                countRead += read;
+              } while (read != 0);
+              cstream.close(); // this closes fstream
+              html = data.toString();
+            }
+            catch (ex) {
+              util.logException("insertFileLink() - read " + countRead + " characters.", ex);
+              if (countRead) {
+                html = data.toString();
+              }
+              else
+                html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
+                       + "Please check error console for detail</div>";
+            }					
+          }
+          // if we compose in html and file is txt we need to replace all line breaks with <br>
+          if (type=='txt') {
+            html = html.replace(/(?:\r\n|\r|\n)/g, '<br>');
+          }
+          if (type=='css') {
+            
+          }
+          else {
+            flags.isFileTemplate = true;
+            // prepare for using relative paths from here...
+            // assume we are within a template, to make matching subsequent relative paths possible.
+            // should work for using %file(template.html) in a SmartTemplate.
+            if (!flags.filePaths) 
+              flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+            flags.filePaths.push(path);
+          }
+          break;
+        case 'image':
+          let alt = (arr.length>1) ? 
+                    (" alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
+                    "",
+              filePath;
+          if (!isAbsolute && currentPath) {
+            //
+            util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
+            let lastSlash = currentPath.lastIndexOf("\\");
+            if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
+            path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
+          }
+          filePath = "file:///" + path.replace(/\\/gm,'/');
+          // change to data URL
+          filePath = util.getFileAsDataURI(filePath)
+          html = "<img src='" + filePath + "'" + alt + " >";
+          break;
+        default:
+          alert('unsupported file type in %file()%: ' + type + '.');
+          html='';
+          break;
+      }
+    }
+    catch(ex) {
+      var { Services } =
+        ChromeUtils.import ?
+        ChromeUtils.import('resource://gre/modules/Services.jsm') :
+        Components.utils.import('resource://gre/modules/Services.jsm');
+      
+      util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
+      Services.prompt.alert(null, "SmartTemplate⁴", "Something went wrong trying to read a file: " + txt + "\n" +
+        "Please check Javascript error console for detailed error message.");
     }
     return html;
   } 

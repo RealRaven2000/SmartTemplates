@@ -43,8 +43,13 @@ var EXPORTED_SYMBOLS = [];
 				service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
 				consoleService = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);			
 
-	let isStationery = service.getBoolPref('extensions.smartTemplate4.stationery.supported'),
-	    isDebugStationery = service.getBoolPref('extensions.smartTemplate4.debug.stationery');
+	let isStationery = false,
+      isDebugStationery = false;
+  
+  try {
+    isStationery = service.getBoolPref('extensions.smartTemplate4.stationery.supported'),
+    isDebugStationery = service.getBoolPref('extensions.smartTemplate4.debug.stationery');
+  } catch(ex) {;}
 
 	try {
 					

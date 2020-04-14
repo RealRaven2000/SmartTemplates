@@ -32,7 +32,7 @@
    em:icon64URL="chrome://smartTemplate4/skin/icon64x64.png"
    em:optionsURL="chrome://smartTemplate4/content/settings.xul"
    em:aboutURL="chrome://smartTemplate4/content/about.xul">
-	  <em:version>2.9.1</em:version>
+	  <em:version>2.10.1</em:version>
     <em:homepageURL>http://smarttemplate4.mozdev.org/index.html</em:homepageURL>
     <em:type>2</em:type>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>

@@ -290,7 +290,7 @@ END LICENSE BLOCK
 	  # [Bug 26523] Remove extra <br> before blockquote if standard quote header is used.
 		# [Bug 26524] %datelocal% and %dateshort% are broken in Tb 60
 		# Completed various translations (ru, pl, nl, sr)
-		# [Bug 26526] %file% causes rogue errors "The Variable %5C.. can not be used for new meessages" when including images
+		# [Bug 26526] %file% causes rogue errors "The Variable %5C.. can not be used for new messages" when including images
 		# [Bug 26551] Add Domain License key support for SmartTemplate⁴ Pro
 		# [Bug 26552] %attach% Variable for attaching [pdf] files
 		# Moved links from addons.mozilla.org to addons.thunderbird.net
@@ -431,6 +431,13 @@ END LICENSE BLOCK
   Version 2.9.1 - WIP
     # since v2.9: template may not work if signature path is invalid  
     
+  Version 2.10.1 - 14/04/2020
+    # [issue 59] supports image tags with relative location
+    # [issue 54] Support including external style sheet with %style()%
+    # [issue 51] Fixed: Outgoing SMTP always using DEFAULT account.
+    # [issue 54] Remove unwanted empty lines in reply/forward headers in plain-text emails
+    # [issue 55] Added back some of the support for Postbox
+    # [issue 58] Guessing firstName is from AB can  lead to last name duplication 
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -693,7 +700,7 @@ var SmartTemplate4 = {
 		let ownerWin = util.Mail3PaneWindow,
 		    fileTemplateSource = null; // for fileTemplates, echeck if null and o.failed, otherwise o.HTML shoulde be the tempalte
 		
-		// check if a file tempalte is active. we need to get the window from the originating event!
+		// check if a file template is active. we need to get the window from the originating event!
 		let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
 		    stationeryTemplate = null,
 		    flags = this.PreprocessingFlags;
@@ -891,6 +898,8 @@ var SmartTemplate4 = {
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
 			if (!isBodyModified) {
+        // [issue 51]
+        this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
 				// Add template message - will also remove previous template and quoteHeader.
 			  this.smartTemplate.insertTemplate(false);
 				// [Bug 25104] when switching identity, old sig does not get removed.

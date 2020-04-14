@@ -1,38 +1,27 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplate4.mozdev.org/version.html#2.9">can be found here</a>
+Full change log with screen shots <a href="http://smarttemplate4.mozdev.org/version.html#2.10.1">can be found here</a>
 
-<b>Improvements</b>
+You can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!
+
+<b>Enhancements</b>
 <ul>
 
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/45">[issue 45]</a> Support for using <code >%file()%</code>  with relative paths and nesting <code>%file()%</code> variables within a template. Also supports this for including more html parts and images in subfolders relative to the template.</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/48">[issue 48]</a> Support [[optional double brackets]] syntax for all extended address book fields. This will make it possible to show more informationn from the Addressbook without  causing half-empty lines:
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/59">[issue 59]</a> External templates: SmartTemplate&#8308 now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.
 
-<pre>
-&lt;h3&gt;Sender Info&lt;/h3&gt;
-Sender: %from% 
-[[Mail: %from(mail)% &lt;br&gt;]]
-[[First Name: %from(firstname)% &lt;br&gt;]]
-[[Name: %from(name)% &lt;br&gt;]]
-[[Additional mail: %from(additionalmail)% &lt;br&gt;]]
-[[Work City: %from(work.city)%&lt;br&gt;]]
-[[Web Page: %from(work.webpage)%&lt;br&gt;]]
-</pre>
-</li>
+In order to use relative image paths, such as &lt;img src="images/img1.jpg"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.
+
+After placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code class="inline">%file()%</code> variable and select a file from disk.</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/54">[issue 54]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li>
 <li>Remember the last path separately for opening templates from the menu directly.</li>
+<li>Plain text
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-   <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/42">[issue 42]</a> The <code class="inline">(lastname)</code> switch uses first name from address book if only a single name is matched from the received address. This affects any address book switch of the format <code class="inline">%from(lastname)%</code>, provided there is only a single name in the transmitted email address, e.g. john@mail.com.</li>
-  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/41">[issue 41]</a>       No file template menus in single message window
-  Single message windows (not tabs) did not support replying / writing mails using the external HTML template files.</li>
-  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/43">[issue 43]</a>      <code class="inline">%file(template)%</code> doesn't work on Mac for paths that start with "/user". Unfortunately, it is still not supported to use relative <code class="html">&lt;img&gt;</code> paths in a html file, but when using <code class="inline">%file(img)%</code> using a path relative to the location of the template should be possible now when used from within an external HTML template file. 
-
-  Ideally we will need this to support <code class="html">&lt;img&gt;</code> paths as well.</li>
-  <li>Fix: Remove double quote from alt attribute in %file(image,alttext)%</li>
-  <li>Fixed: Do not run cleanupDeferredFields() on quoted elements. This leads to problems with <code class="inline">%file()%</code> variables in replied emails (both correspondents have to use SmartTemplate&#8308; for this problem to occur.    </li>
-  <li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/46">[issue 46]</a> In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate&#8308; do not work.</li>
-  <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/49">[issue 49]</a> CSS pattern <code class="html">%;-ms-text-size-adjust:100%;</code> is falsely recognized as header variable. </li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/51">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/54">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/55">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/58">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code class="inline">%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li>
 </ul>

@@ -122,7 +122,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     // find signature node...
 		if (isSignatureTb) {
-			util.logDebugOptional('functions.extractSignature','find moz-signature...');
+			util.logDebugOptional('functions.extractSignature','find moz-signature…');
 			// try to extract already inserted signature manually - well we need the last one!!
 			// get the signature straight from the bodyElement!
 			//signature from top
@@ -252,7 +252,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// remove previous signature (fallback). 
 		if (!removed) {
-			util.logDebugOptional('functions.extractSignature', 'Not removed. 2nd attempt to remove previous sig...');
+			util.logDebugOptional('functions.extractSignature', 'Not removed. 2nd attempt to remove previous sig…');
 			for (let i = 0; i < nodes.length; i++) {
 				if (nodes[i].className && nodes[i].className == "moz-signature" ) {
 					let pBr = nodes[i].previousElementSibling;
@@ -305,7 +305,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			sig.className = 'moz-signature';
 			// if our signature is text only, we need to replace \n with <br>
 			if (!isSignatureHTML) {
-				util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>...');
+				util.logDebugOptional('functions.extractSignature', 'Replace text sig line breaks with <br>…');
 				// prettify: txt -> html
 				// first replace CRLF then LF
 				// ASCII signature
@@ -527,7 +527,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			// recursive search from root element
 			let node = findChildNode(rootEl, quoteHeaderCls);
 			if (node) {
-				util.logDebugOptional('functions.delReplyHeader','found ' + quoteHeaderCls +', calling deleteHeaderNode()...');
+				util.logDebugOptional('functions.delReplyHeader','found ' + quoteHeaderCls +', calling deleteHeaderNode()…');
 				deleteHeaderNode(node);
 			}
 			if (!foundReplyHeader) {
@@ -736,7 +736,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 
 			// remove the original Mail Header
-		util.logDebugOptional('functions.delForwardHeader','Remove the original header...');
+		util.logDebugOptional('functions.delForwardHeader','Remove the original header…');
 		if (util.versionGreaterOrEqual(util.PlatformVer, "12")) {
 			// recursive search from root element
 			node = findChildNode(rootEl, 'moz-email-headers-table');
@@ -831,7 +831,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		// fix DataURLs from other template (Stationery)
 		// This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
 		// we can fix the Data urls for file:/// images now
-		// assume they are enclosed in single quote, double quote or terminated by &gt;
+		// assume the URL is terminated by a single quote, double quote or &gt;
     const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
 		regular = regular.replace(Frex,   // /file:\/\/\/[^\"\'\>]*/g
 		  function(match) {
@@ -839,6 +839,46 @@ SmartTemplate4.classSmartTemplate = function() {
 				return util.getFileAsDataURI(match);
 			}
 		);
+    
+    // find & fix relative <img> paths:
+    const Irex = new RegExp(/(<img[^>]+src=[\"'])([^"'>]+)([\"'][^>]*>)/, "g"); // make 3 groups, g2=path
+    let currentPath = flags.filePaths ? 
+                       (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
+                       ""; // top of stack
+        
+		regular = regular.replace(Irex,   // /file:\/\/\/[^\"\'\>]*/g
+		  function(match, g1, g2, g3) {
+				// util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
+        if (!util.isFilePathAbsolute(g2)) {
+          debugger;
+          if (currentPath) {
+            let newP = util.getPathFolder(currentPath, g2);
+            if (newP) {
+              let startQuote = g1 ? g1[g1.length-1] : "",  // does source start with (double / single) quote mark?  <img src=\"
+                  endQuote =   g1 ? g3[0] : "";
+              util.logDebug("replacing relative img path: " + newP + "…");
+              let filePath = "file:///" + newP.replace(/\\/gm,'/')
+              try {
+                let dataUrl = util.getFileAsDataURI(filePath);
+                if (dataUrl) {
+                  return g1 + dataUrl + g3;
+                }
+                else
+                  util.logDebug("Could not resolve image path! Returning unchanged img tag.");
+              }
+              catch(ex) {
+                util.logException(ex, "Failed to read image file " + filePath);
+              }
+            }
+            else {
+              util.logDebug("Could not convert relative path: " + g2)
+            }
+          }
+        }
+        return match;
+			}
+		);
+    
 
 		
     util.logDebugOptional('functions.getProcessedText','regular:\n' + regular);		
@@ -886,6 +926,14 @@ SmartTemplate4.classSmartTemplate = function() {
 	// -----------------------------------
 	// Add template message
 	function insertTemplate(startup, flags, fileTemplateSource)	{
+    
+    function cleanPlainTextNewLines(myHtml) {
+      let lc = myHtml.toLocaleLowerCase();
+      if (lc.includes("<br") || lc.includes("<p"))
+        return myHtml.replace(/(\r\n)+|\r+|\n+|^[ \t]+/gm,""); 
+      return myHtml;
+    }
+    
 		let isDebugComposer = prefs.isDebugOption('composer');
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
@@ -1076,6 +1124,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
 					quoteHeader = getQuoteHeader(st4composeType, idKey);
 				}
+        
 				let isQuoteHeader = quoteHeader ? true : false;
 				switch(composeCase) {
 					case 'new':
@@ -1119,6 +1168,11 @@ SmartTemplate4.classSmartTemplate = function() {
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = util.mailDocument.createElement("div");
 						qd.id = "smartTemplate4-quoteHeader";
+            if (!IsHTMLEditor()) {
+              // [issue 54] extra line spaces in (html) quote header when replying text only.
+              // if template contains <br> or <p> let's strip out "formatting" text content line breaks.
+              quoteHeader = cleanPlainTextNewLines(quoteHeader);
+            }
 						qd.innerHTML = quoteHeader;
 						return qd;
 					}
@@ -1190,6 +1244,10 @@ SmartTemplate4.classSmartTemplate = function() {
 		    bodyEl = gMsgCompose.editor.rootElement,
 				bodyContent = '';
 		
+    if (!IsHTMLEditor()) {
+      template = cleanPlainTextNewLines(template);
+    }
+
 		// [Bug 26260] only remove body for mailto case if active on account
 		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
 			// back up the mailto body  (was  bodyContent = bodyEl.innerHTML;  )
@@ -1216,7 +1274,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb
 		if (isActiveOnAccount)	{
-			util.logDebugOptional('composer','isActiveOnAccount: creating template Div...');
+			util.logDebugOptional('composer','isActiveOnAccount: creating template Div…');
 			templateDiv = util.mailDocument.createElement("div");
 			// now insert quote Header separately
 			try {
@@ -1239,7 +1297,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				// ****************************
 				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
 				if (!flags.isStationery) {
-					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML...\n' + template);
+					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML…\n' + template);
 					templateDiv.innerHTML = template;
 				}
 				else {
@@ -1287,7 +1345,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 		}
 		
-		util.logDebugOptional('composer','finding cursor node...');
+		util.logDebugOptional('composer','finding cursor node…');
 		// before we handle the sig, lets search for the cursor one time
 		// moved code for moving selection to top / bottom
 		let caretContainer = findChildNodeOrParent(targetNode, 'st4cursor'),
@@ -1296,6 +1354,10 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// insert the signature that was removed in extractSignature() if the user did not have %sig% in their template
 		let theSignature = SmartTemplate4.signature;
+    
+    if (!IsHTMLEditor()) {
+      theSignature = cleanPlainTextNewLines(theSignature);
+    }
 		
 		SmartTemplate4.Sig.init(theIdentity);
 		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,		
@@ -1342,7 +1404,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			{
 				try {
 					if (!SmartTemplate4.sigInTemplate && theSignature) {
-						util.logDebugOptional('functions.insertTemplate', ' Add Signature... ' );
+						util.logDebugOptional('functions.insertTemplate', ' Add Signature… ' );
 		
 						let pref = SmartTemplate4.pref;
 						// add Signature and replace the BR that was removed in extractSignature
@@ -1416,7 +1478,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
 					if (sigNode) {
 						if (isDebugComposer) debugger;
-            util.logDebugOptional ('signatures','found signature node, removing...');
+            util.logDebugOptional ('signatures','found signature node, removing…');
 						sigNode.parentNode.removeChild(sigNode);
 					}
 				}
@@ -1631,7 +1693,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	function resetDocument(editor, withUndo) {
 		gMsgCompose.editor.resetModificationCount();
 		if (withUndo) {
-			util.logDebugOptional('functions', ' resetting Undo... ' );
+			util.logDebugOptional('functions', ' resetting Undo… ' );
 			gMsgCompose.editor.enableUndo(false);
 			gMsgCompose.editor.enableUndo(true);
 		}
