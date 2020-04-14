@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "アカウントに設定されている署名 ('-- ' 無し)">
 <!ENTITY fileHTML.label "HTML ファイルあるいはプレーンテキストファイル。文字エンコーディングが指定されない場合は、UTF-8 と仮定します。">
 <!ENTITY fileImage.label "画像ファイル (png,jpg,gif,bmp,svg)。画像が見つからない場合は、altText を代わりに表示します。">
+<!ENTITY fileCSS.label "External style sheet (css). Include your favorite CSS rules to share between different templates.">
 <!ENTITY attach.label "添付ファイルとして追加する">
+<!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
+<!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
+<!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
+<!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "カーソルの位置を設定する">
 <!ENTITY spellcheck.label "スペルチェックの言語を指定してください。例：(en, de-DE, es-ES, ru) - スペルチェック辞書をインストールする必要があります。">
 <!ENTITY to_var.cap "受信者 (To)">
@@ -260,10 +265,12 @@
 <!ENTITY html_note.label "HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
 <!ENTITY table.cap "変数の使用">
 <!ENTITY table_note.label "変数の使用が適切でない場合には、エラーコンソールにエラーが表示されます。">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "変数">
 <!ENTITY table_new.label "新規">
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
 <!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
@@ -279,6 +286,7 @@
 <!ENTITY licenseValidation.notMatchedMail "暗号化されたメールアドレスが読めるメールアドレスと一致しません。">
 <!ENTITY premiumConfig "プレミアム機能">
 <!ENTITY label.premiumFeaturesSite "プレミアム機能についての詳細はウェブサイトをご覧ください…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "サポートにメール">
 <!ENTITY support.type "タイプ:">
 <!ENTITY support.type.selectOne "トピックを選択してください！">

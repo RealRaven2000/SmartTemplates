@@ -265,10 +265,12 @@
 <!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML !">
 <!ENTITY table.cap "Utilizzo delle variabili">
 <!ENTITY table_note.label "Se una variabile viene utilizzata in modo non corretto viene registrato un errore nella console degli errori !">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabile">
 <!ENTITY table_new.label "Nuovi">
 <!ENTITY table_reply.label "Risposta">
 <!ENTITY table_fwd.label "Inoltrare">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Inserire la propria chiave di licenza qui:">
 <!ENTITY label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">
@@ -284,6 +286,7 @@
 <!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
 <!ENTITY premiumConfig "Caratteristiche Premium">
 <!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Posta al supporto">
 <!ENTITY support.type "Genere:">
 <!ENTITY support.type.selectOne "Seleziona un argomento!">

@@ -265,10 +265,12 @@
 <!ENTITY html_note.label "Merci de n'utiliser que le jeu de caractère UTF-8 (Unicode) dans le HTML !">
 <!ENTITY table.cap "Utilisation des variables">
 <!ENTITY table_note.label "Si une variable est utilisée de manière incorrecte, un message d'erreur sera envoyé vers la console d'erreur.">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Nouveau">
 <!ENTITY table_reply.label "Répondre">
 <!ENTITY table_fwd.label "Transférer">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Insérez votre clé de licence personnelle ici :">
 <!ENTITY label.insertLicense.tooltip "Votre clé de licence se trouve dans votre courriel de confirmation de commande émanant de FastSpring.">
@@ -284,6 +286,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Une adresse électronique chiffrée ne peut être reconnue.">
 <!ENTITY premiumConfig "Fonctionnalités Premium">
 <!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Courrier au support">
 <!ENTITY support.type "Genre:">
 <!ENTITY support.type.selectOne "Choisissez un sujet!">
