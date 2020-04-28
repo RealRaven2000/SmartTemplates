@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Aktualizujte obsah SmartTemplate⁴">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Aktualizace a nahrazení obsahem">
 <!ENTITY smartTemplate4.deferredcontext.delete "Odebrat proměnnou SmartTemplate⁴">
+<!ENTITY smartTemplate4.changetemplate.label "Změnit šablonu…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Vybere jinou šablonu - použijte před úpravami v těle pošty!">

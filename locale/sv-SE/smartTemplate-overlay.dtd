@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Uppdatera SmartTemplate⁴-innehåll">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Uppdatera och ersätt med innehåll">
 <!ENTITY smartTemplate4.deferredcontext.delete "Ta bort SmartTemplate⁴-variabel">
+<!ENTITY smartTemplate4.changetemplate.label "Ändra mall…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Väljer en annan mall - använd innan du redigerar i e-postkroppen!">

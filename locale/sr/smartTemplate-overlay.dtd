@@ -1,8 +1,10 @@
 <!-- #### OVERLAYS #### -->
 <!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
 <!ENTITY smartTemplate4.settings.tooltip "Подешавања SmartTemplate⁴-а">
-<!ENTITY smartTemplate4.cleandeferred.label "Clean up!">
-<!ENTITY smartTemplate4.cleandeferred.tooltip "Clean up all SmartTemplate variables">
-<!ENTITY smartTemplate4.deferredcontext.update "Update SmartTemplate⁴ contents">
-<!ENTITY smartTemplate4.deferredcontext.cleanup "Update and Replace with Content">
-<!ENTITY smartTemplate4.deferredcontext.delete "Remove SmartTemplate⁴ variable">
+<!ENTITY smartTemplate4.cleandeferred.label "Поспремити!">
+<!ENTITY smartTemplate4.cleandeferred.tooltip "Очистите све променљиве СмартТемплате">
+<!ENTITY smartTemplate4.deferredcontext.update "Ажурирајте садржај СмартТемплате⁴">
+<!ENTITY smartTemplate4.deferredcontext.cleanup "Ажурирајте и замените садржајем">
+<!ENTITY smartTemplate4.deferredcontext.delete "Уклоните променљиву СмартТемплате⁴">
+<!ENTITY smartTemplate4.changetemplate.label "Промена шаблона…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Изаберите други предложак - користите пре уређивања у тијелу поште!">

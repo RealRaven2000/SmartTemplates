@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Aggiorna i contenuti di SmartTemplate⁴">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Aggiorna e sostituisci con contenuto">
 <!ENTITY smartTemplate4.deferredcontext.delete "Rimuovere la variabile SmartTemplate⁴">
+<!ENTITY smartTemplate4.changetemplate.label "Cambia modello…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Seleziona un modello diverso: utilizzalo prima di modificarlo nel corpo della posta!">

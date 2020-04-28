@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Обновить содержимое SmartTemplate⁴">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Обновить и заменить контентом">
 <!ENTITY smartTemplate4.deferredcontext.delete "Удалить переменную SmartTemplate⁴">
+<!ENTITY smartTemplate4.changetemplate.label "Изменить шаблон…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Выбирает другой шаблон - используйте перед редактированием в теле письма!">

@@ -132,12 +132,12 @@
 <!ENTITY sig2.label "Ondertekening uit accountinstellingen maar zonder ‘--’">
 <!ENTITY fileHTML.label "HTML of platte tekst. Bij ontbreken van een optionele tekensetparameter wordt UTF-8 aangenomen.">
 <!ENTITY fileImage.label "Afbeeldingesbestand (png, jpg, gif, bmp, svg). De optionele altText wordt weergegeven als het bestand niet kan worden gevonden.">
-<!ENTITY fileCSS.label "External style sheet (css). Include your favorite CSS rules to share between different templates.">
+<!ENTITY fileCSS.label "Extern stijlblad (CSS). Voeg uw favoriete CSS-regels toe om tussen verschillende sjablonen te delen.">
 <!ENTITY attach.label "Bestand als bijlage toevoegen">
-<!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
-<!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
-<!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
-<!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
+<!ENTITY basepath.desc "Als uw sjabloon afbeeldingen met de tag ‘img’ bevat die op uw lokale station staan, dient u SmartTemplate te vertellen waar deze zijn te vinden.">
+<!ENTITY basepath.desc2 "De variabele ‘basepath’ voegt een HTML-tag ‘base’ in om alle afbeeldingen te vinden op basis van een beginlocatie - deze kan maar één keer worden gebruikt in een e-mailbericht.">
+<!ENTITY basepath.relative "Gebruik deze variabele om de afbeeldingen op dezelfde locatie te vinden als de HTML-bestandssjabloon.">
+<!ENTITY basepath.absolute "Klik hier om een specifieke map op uw lokale station te selecteren.">
 <!ENTITY cursor.label "Stelt de cursorpositie in">
 <!ENTITY spellcheck.label "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd.">
 <!ENTITY to_var.cap "Ontvanger (Aan)">
@@ -265,12 +265,10 @@
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
 <!ENTITY table_note.label "Onjuist gebruik van variabelen zal foutmeldingen in de Foutconsole genereren!">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variabele">
 <!ENTITY table_new.label "Nieuw">
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
 <!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">
@@ -286,7 +284,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Versleutelde e-mailadres komt niet overeen met het leesbare e-mailadres.">
 <!ENTITY premiumConfig "Premium-functies">
 <!ENTITY label.premiumFeaturesSite "Lees meer over Premium-functies op onze website…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "E-mailbericht voor ondersteuning">
 <!ENTITY support.type "Type:">
 <!ENTITY support.type.selectOne "Selecteer een onderwerp!">

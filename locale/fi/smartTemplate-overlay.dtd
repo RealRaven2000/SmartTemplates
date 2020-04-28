@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Päivitä SmartTemplate⁴ -sisältö">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Päivitä ja korvaa sisältö">
 <!ENTITY smartTemplate4.deferredcontext.delete "Poista SmartTemplate⁴-muuttuja">
+<!ENTITY smartTemplate4.changetemplate.label "Muuta mallia…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Valitsee toisen mallin - käytä ennen muokkaamista postilaatikossa!">

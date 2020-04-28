@@ -160,6 +160,8 @@
 <!-- #### TABLE #### -->
 <!ENTITY ab_fields "Поља адресара">
 <!ENTITY ab_fields.desc "122/5000
+
+
 Када одговарате на одговарајућу адресу е-поште, сада можете користити додатна поља за променљиве адресе, као што је &#37;from&#37;, као што су:">
 <!ENTITY ab_contact "Контакт">
 <!ENTITY ab_private "Приватни">
@@ -266,12 +268,10 @@
 <!ENTITY html_note.label "Користите само UTF-8 (уникод) кодирање у HTML шаблонима.">
 <!ENTITY table.cap "Употреба променљивих">
 <!ENTITY table_note.label "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“.">
-<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Променљива">
 <!ENTITY table_new.label "Састави">
 <!ENTITY table_reply.label "Одговори">
 <!ENTITY table_fwd.label "Проследи">
-<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Унесите свој лични број лиценце овде:">
 <!ENTITY label.insertLicense.tooltip "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а.">
@@ -287,7 +287,6 @@
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
 <!ENTITY label.premiumFeaturesSite "Прочитајте више о Премиум могућностима на нашој веб локацији…">
-<!-- #####  Support ##### -->
 <!ENTITY support.title "Пошаљи на подршку">
 <!ENTITY support.type "Тип:">
 <!ENTITY support.type.selectOne "Изаберите тему!">

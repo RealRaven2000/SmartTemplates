@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Zaktualizuj zawartość SmartTemplate⁴">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Zaktualizuj i zamień na treść">
 <!ENTITY smartTemplate4.deferredcontext.delete "Usuń zmienną SmartTemplate⁴">
+<!ENTITY smartTemplate4.changetemplate.label "Zmień szablon…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Wybiera inny szablon - użyj przed edycją w treści wiadomości!">
