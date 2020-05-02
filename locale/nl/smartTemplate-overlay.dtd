@@ -6,3 +6,5 @@
 <!ENTITY smartTemplate4.deferredcontext.update "SmartTemplate⁴-inhoud bijwerken">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Bijwerken en vervangen door inhoud">
 <!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplate⁴-variabele verwijderen">
+<!ENTITY smartTemplate4.changetemplate.label "Sjabloon wisselen…">
+<!ENTITY smartTemplate4.changetemplate.tooltip "Selecteert een andere sjabloon - gebruik dit vóór bewerking in de berichttekst!">

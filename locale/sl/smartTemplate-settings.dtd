@@ -280,10 +280,12 @@ Send feedback">
 <!ENTITY html_note.label "V predlogah HTML uporabite samo nabor znakov UTF-8 (Unicode)!">
 <!ENTITY table.cap "Uporaba spremenljivk">
 <!ENTITY table_note.label "Nepravilna uporaba spremenljivk bo ustvarila sporočila o napakah v 'konzoli za napake'!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Spremenljivka">
 <!ENTITY table_new.label "Sestavi">
 <!ENTITY table_reply.label "Odgovori">
 <!ENTITY table_fwd.label "Posreduj">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
 <!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">
@@ -299,6 +301,7 @@ Send feedback">
 <!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
 <!ENTITY premiumConfig "Lastnosti premium">
 <!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Pošlji na podporo">
 <!ENTITY support.type "Vrsta:">
 <!ENTITY support.type.selectOne "Izberite temo!">

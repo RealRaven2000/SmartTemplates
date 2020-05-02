@@ -265,10 +265,12 @@
 <!ENTITY html_note.label "Используйте только UTF-8 (Уникод) в HTML шаблонах!">
 <!ENTITY table.cap "Использование переменных">
 <!ENTITY table_note.label "Неправильное использование переменных приведет к выводу сообщений об ошибках в 'консоли ошибок'!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Переменная">
 <!ENTITY table_new.label "Создать">
 <!ENTITY table_reply.label "Ответить">
 <!ENTITY table_fwd.label "Переслать">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Вставить лицензионный ключ сюда:">
 <!ENTITY label.insertLicense.tooltip "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ.">
@@ -284,6 +286,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Зашифрованный адрес не совпадает с имеющимся.">
 <!ENTITY premiumConfig "Премиум-функции">
 <!ENTITY label.premiumFeaturesSite "Узнать больше о премиум-функциях на нашей странице…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Почта в службу поддержки">
 <!ENTITY support.type "Тип:">
 <!ENTITY support.type.selectOne "Выберите тему!">

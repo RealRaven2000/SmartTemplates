@@ -192,6 +192,7 @@
 <!ENTITY matchTextFromSubject "W temacie znajdź wzorzec wyrażenia regularnego i umieścić w miejscu funkcji.">
 <!ENTITY stringmanip.match.comment "match Functions: Pierwszy parametr (wyrażenie regularne) musi być zawarte w cudzysłowie. Drugim parametrem jest numer grupy. Użyj 0 dla całego wyrażenia, 1 dla pierwszej grupy itd.">
 <!ENTITY stringmanip.alttext "[parametr opcjonalny] Tekst alternatywny: jeśli nie znaleziono dopasowania, zamiast tego wstawia tekst alternatywny.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Cytuj manipulację">
 <!ENTITY quote_changers.desc "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca.">
 <!ENTITY deleteQuotedText "Usuwa cytowany tekst">
@@ -264,10 +265,12 @@
 <!ENTITY html_note.label "W szablonach HTML należy używać kodowania znaków UTF-8 (Unicode)!">
 <!ENTITY table.cap "Zastosowanie zmiennych">
 <!ENTITY table_note.label "Jeśli zmienna zostanie użyta niepoprawnie, w konsoli błędów będzie wyświetlana odpowiednia informacja!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Zmienna">
 <!ENTITY table_new.label "Nowa">
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
@@ -283,6 +286,7 @@
 <!ENTITY licenseValidation.notMatchedMail "Zaszyfrowany adres e-mail nie odpowiada oryginałowi.">
 <!ENTITY premiumConfig "Funkcje premium">
 <!ENTITY label.premiumFeaturesSite "Przeczytaj więcej o funkcjach Premium na naszej stronie internetowej…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Wyślij pocztą do wsparcia">
 <!ENTITY support.type "Rodzaj:">
 <!ENTITY support.type.selectOne "Wybierz temat!">

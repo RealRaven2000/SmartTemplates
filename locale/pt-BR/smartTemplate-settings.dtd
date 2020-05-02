@@ -65782,10 +65782,12 @@
 <!ENTITY html_note.label "Por favor, use somente caracteres UTF-8 (Unicode) nos modelos em HTML!">
 <!ENTITY table.cap "Uso das variáveis">
 <!ENTITY table_note.label "Usar variáveis incorretamente gerará mensagens de erro no 'console de erros'!">
+<!-- #### TABLE #### -->
 <!ENTITY table_keyword.label "Variáveis">
 <!ENTITY table_new.label "Nova">
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Encaminhar">
+<!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplate⁴ Pro">
 <!ENTITY label.insertLicense "Insira sua licença pessoal aqui:">
 <!ENTITY label.insertLicense.tooltip "Sua chave de licença foi enviada no e-mail de confirmação de compra da Fastspring.">
@@ -65801,6 +65803,7 @@
 <!ENTITY licenseValidation.notMatchedMail "O endereço de e-mail criptografado não corresponde ao legível.">
 <!ENTITY premiumConfig "Recursos Premium">
 <!ENTITY label.premiumFeaturesSite "Leia mais sobre os Recursos Premium em nosso site…">
+<!-- #####  Support ##### -->
 <!ENTITY support.title "Enviar email para o suporte">
 <!ENTITY support.type "Tipo:">
 <!ENTITY support.type.selectOne "Selecione um topico!">
