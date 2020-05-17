@@ -5,9 +5,9 @@ jobs:
   build_deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@web
+      - uses: actions/checkout@master
       - name: Build
-        uses: TartanLlama/actions-eleventy@v1.1
+        uses: cagov/actions-eleventy@v1.3.1
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
