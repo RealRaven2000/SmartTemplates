@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/preloader");
   eleventyConfig.addPassthroughCopy("src/screenshots");
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   return {
     dir: {
