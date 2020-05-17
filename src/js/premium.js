@@ -1,0 +1,65 @@
+
+/* functions that remove elements depending on the user type (from user=pro querystring ) */
+
+	function getQueryVariable(variable)	{
+		var query = window.location.search.substring(1),
+				vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] == variable) 
+				return pair[1];
+		}
+		return(null);
+	}
+
+	function removeClassItems(name) {
+		var dbuttons = document.getElementsByClassName(name);
+		for (var i=dbuttons.length-1; i>=0; i--) {
+			// dbuttons[i].style.display='none';
+			dbuttons[i].parentNode.removeChild(dbuttons[i]);
+		}
+	}
+	
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		var user = getQueryVariable("user");
+		if (typeof user!='undefined') {
+			// propagate user type to all internal links
+			if (user) {
+				var navMenu = document.getElementsByClassName('navigation-list');
+				if (navMenu.length) {
+					var links = navMenu[0].children;
+					for (var i=0; i<links.length; i++) {
+						var href = links[i].getAttribute("href");
+						if (href && href.indexOf("user="==-1)) {
+							if (href.indexOf("?"==-1))
+								links[i].setAttribute("href", href + "?user=" + user);
+							else
+								links[i].setAttribute("href", href + "&user=" + user);
+						}
+							
+					}
+				}
+			}
+			
+			switch (user) {
+				case 'pro':
+				  removeClassItems('shilling');
+					removeClassItems('donateButton');
+					removeClassItems('smartTemplateFreeUser');
+				  removeClassItems('smartTemplateProRenew');
+					break;
+				case 'proRenew':
+					removeClassItems('donateButton');
+					removeClassItems('smartTemplateFreeUser');
+				  break;
+				default:
+				  removeClassItems('smartTemplateProRenew');
+				  removeClassItems('smartTemplateProUser');
+			}
+			
+		}
+	});
+	
+	
+
+	
