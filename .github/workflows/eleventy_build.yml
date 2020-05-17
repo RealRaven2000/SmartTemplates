@@ -3,11 +3,15 @@ on: [push]
 
 jobs:
   build_deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Build
-        uses: cagov/actions-eleventy@v1.3.1
+      - name: Build using node.ks
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm run build --if-present
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
