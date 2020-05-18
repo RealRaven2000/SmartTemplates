@@ -1,0 +1,173 @@
+---
+layout: base.njk
+title: FAQ
+permalink: faq.html
+---
+<!-- FAQ.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("faq.html");
+</script>
+
+<h2 class="page-header">SmartTemplate<sup>4</sup> :: Frequently Asked Questions</h2>
+
+<ul class="collapsible">
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Can i use SmartTemplate<sup>4</sup> for a auto responder?
+      </p>
+    <div style="display: none;" class="answer"> 
+      <blockquote class="answer_block">
+        <p>
+			No, for technical reasons this is not possible.<br>
+			All contents which we modify will be created only if you open the e-Mail inside the compose window and this can't be automated. 
+        </p> 
+      </blockquote>
+    </div>
+  </li>
+  
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Can i create templates or signatures per recipient?
+      </p>
+    <div style="display: none;" class="answer"> 
+      <blockquote class="answer_block">
+        <p>
+			No this is not possible.<br>
+			SmartTemplate<sup>4</sup> bind Templates and signatures at the Account ID only which you have set up in your Account Settings.
+        </p>
+        <div class="attention">
+          <a href="/templates.html?jquery=on">See our examples page</a>
+        </div>
+      </blockquote>
+    </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		I don't have any space to type my reply or forwarded message?
+      </p>
+    <div style="display: none;" class="answer"> 
+      <blockquote class="answer_block">
+        <p>
+			You just need to add some line-breaks &lt;br&gt;&lt;br&gt; to the top of your template!
+        </p>
+        <div class="attention">
+          <a href="/templates.html?jquery=on"> See our examples page</a>
+        </div>
+      </blockquote>
+    </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		I am using <code class="inline">%sig%</code> in my template but it isn't showing up?
+      </p>
+      <div style="display: none;" class="answer"> 
+        <blockquote class="answer_block">
+          <p>
+			'Include Signature on Reply (or Forward)' must be checked in Thunderbird options for the <code class="inline">%sig%</code> variable to work as expected.
+          </p>
+        </blockquote>
+      </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Why does SmartTemplate<sup>4</sup> only work in Inbox with IMAP Accounts?
+      </p>
+    <div style="display: none;" class="answer">
+      <blockquote class="answer_block">
+        <p>
+			Go to Tools &#8658; Account Settings &#8658; Synchronization &amp; Storage.<br>
+			Make sure 'Keep messages for this account on this computer' is checked, then click 'Advanced...'.  Make sure all folders are checked.
+        </p>
+      </blockquote>
+    </div>
+  </li>
+
+    <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Why does my language not work properly in Prereleases &amp; Prototypes?
+      </p>
+    <div style="display: none;" class="answer"> 
+      <blockquote class="answer_block">
+        <p>
+			All Prereleases &amp; Prototypes include the full en-US and de locale for the current pre release.<br>
+			Other locales can cause trouble as the translation is usually still ongoing! In the heat of the moment
+			we often post prerelease versions where strings are missing in other languages.
+        </p>
+      </blockquote>
+    </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Why are some texts of SmartTemplate<sup>4</sup> in English although I have a different language?
+      </p>
+    <div style="display: none;" class="answer">
+      <blockquote class="answer_block">
+        <p>
+			Our translation team at Babelzilla is notified before a new version gets released,<br>
+			but if a translator can not make the deadline, we put in the English Phrases so that we can publish our new version on ATN.<br>
+			Depending on the translator, new strings will usually be translated in the following version.
+        </p>
+        <div class="attention">
+          <a href="/templates.html?jquery=on">See our examples page</a>
+        </div>
+      </blockquote>
+    </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Why are attached images not displayed on replies or forwarded messages?
+      </p>
+    <div style="display: none;" class="answer">
+      <blockquote class="answer_block">
+        <p>
+			This behaviour is by design, if you have 'Message Synchronizing' in Thunderbird disabled.<br> 
+			The images in this case are not local on the computer and must be downloaded each time he view/reply/forward the message.<br>
+			When you click reply, Thunderbird starts downloading the message and it can take longer depending on how big the email or attachment is.<br>
+			To solve this Problem: Go to Tools &#8658; Account Settings &#8658; Synchronization &amp; Storage and turn them ON to work as expected.
+        </p>
+        <div class="attention">
+          <a href="/templates.html" target="_blank">
+			See our examples page</a>
+        </div>
+      </blockquote>
+    </div>
+  </li>
+
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Why can't I import your example templates from the examples page?
+      </p>
+    <div style="display: none;" class="answer">
+      <blockquote class="answer_block">
+        <p>
+			Import and Export (Template Sharing) is a new feature which we have planned for SmartTemplate<sup>4</sup> 1.0.<br>
+			If you use an older Version of SmartTemplate<sup>4</sup> you can copy & paste our example templates...
+        </p>
+        <div class="attention">
+          <a href="/templates.html?jquery=on">See our examples page</a>
+        </div>
+      </blockquote>
+    </div>
+  </li>
+</ul>
+
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  collapseQA(true); // based on jQuery
+</script>
+<!-- END FAQ.HTML -->

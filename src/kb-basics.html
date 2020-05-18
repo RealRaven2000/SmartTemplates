@@ -1,0 +1,171 @@
+---
+layout: base.njk
+title: Knowledge Base Basics
+permalink: kb-basics.html
+---
+
+<!-- KB-BASICS.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("kb-basics.html");
+  /* Apply this site specific file to <head> element */
+  loadStyleSheet("kb.css");
+</script>
+
+  <h2 class="page-header">SmartTemplate<sup>4</sup> :: Knowledgebase: Basics</h2>
+	
+	<br>
+	<a name="fragment"> </a>
+  <h3>Making a HTML Fragment</h3>	
+
+  <p>
+   If you write html templates for your e-Mail you should first have to know that you don't write complete html files like for websites.<br>
+   Please don't write something like this in your e-Mail template:
+  </p>
+
+  <pre class="code_block bad_example">
+   &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd"&gt;
+   &lt;html&gt;
+     &lt;head&gt;
+      &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+      &lt;title&gt; &lt;/title&gt;
+     &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+   &lt;/html&gt;</pre>
+
+  <p>
+   If you write this you cause some trouble because your mail client inserts the elements 
+   <code class="html tag">&lt;body&gt;</code> and <code class="html tag">&lt;head&gt;</code> automatically.<br>  
+   Your e-Mail content itself will be embedded only.
+  </p>
+ 
+  <pre class="code_block bad_example">
+   &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd"&gt;
+    &lt;html&gt;
+     &lt;head&gt;
+      &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+      &lt;title&gt; &lt;/title&gt;
+     &lt;/head&gt;
+    &lt;body&gt;
+     <span style="color: #31B404;">&lt;div&gt;your content inside div tag&lt;/div&gt;
+     &lt;span&gt;your content inside span tag&lt;/span&gt;</span>
+    &lt;/body&gt;
+   &lt;/html&gt;</pre>
+
+
+  <a name="font-tag-bad">&nbsp;</a>
+  <h3>Why the <span class="tag">&lt;font&gt;</span> tag is bad</h3>
+  
+  <p>Thunderbird achieves its default font settings in composer by inserting a pair of 
+     <code class="html tag">&lt;font&gt;</code> tags, like this:</p>
+  <pre class="code_block">
+  &lt;font size="-1"&gt;&lt;font face="Calibri"&gt; [Your Cursor here]  &lt;/font&gt;&lt;/font&gt;</pre>
+
+  
+  <p>Any <code class="html tag">&lt;font&gt;</code> tag needs a closing 
+    <code class="html tag">&lt;/font&gt;</code> tag. 
+  </p>
+  <p><span class="tag">&lt;font&gt;</span> is bad and wasteful because it requires these tags to be inserted for every new 
+	   paragraph / block level element and it cannot be wrapped around paragraphs. It is easily error prone and leads
+		 to a lot of extra work especially if you are quoting text while writing your email. Every time you change the 
+		 font or font size within composer, more  <code class="html tag">&lt;/font&gt;</code> tags are added, leading
+		 to a quite error-prone mess of html.
+	</p>
+	<p>
+		Therefore, when composing a new email, SmartTemplate will always remove these codes and relies on the user 
+		to make their own font choices within the template code. Instead of using this deprecated tag, one would be 
+		much better off wrapping the whole SmartTemplate template in a <code class="html tag">&lt;div&gt;</code> 
+    with a <i>style attribute</i>.
+	</p>
+  <pre class="code_block">
+&lt;div <span style="color:rgb(160,0,0);">style=</span><span style="color:#C1510B;">"font-family: Calibri; font-size: 13pt;"</span>&gt;
+  &lt;p&gt;Dear %from(name)%,&lt;/p&gt;
+  &lt;p&gt;Your template text here...&lt;/p&gt;
+&lt;/div&gt;</pre>  
+
+  <a name="inline-or-style">&nbsp;</a>
+  <h3>Inline style or the style tag</h3>
+
+  <p>
+	  You can either style elements directly as in the example of wrapping everything in a <code class="tag">&lt;div&gt;</code> 
+		above, or you can specify a section rules for specific parts of your html. This is entirely up to 
+		personal preference - inline styles potentially are more work if you need to copy sections whereas
+		style blocks can be a little harder to trouble shoot. If your HTML styles do not behave as expected
+		take a look at our <a href="kb-inspector.html">troubleshooting styles</a> section.
+  </p>
+
+  <a name="style-tag">&nbsp;</a>
+  <h4>The <span class="tag">&lt;style&gt;</span> tag</h4>
+
+  <p>
+    A nice of way of styling is using CSS classes. A css class is a name of your choice, starting with a full stop (.)
+    It can be used in any html tag by adding the html attribute <code class="html tag">class="<i>name of the class</i>"</code>.<br>
+    <b>Advantage: it can be used on multiple elements to make them look the same without lots of copying and pasting of style attributes.</b>
+  </p>
+  
+<pre class="code_block">
+   &lt;style type="text/css"&gt;
+   .veryLegible {
+     font-family: "Comic Sans MS",cursive;
+     font-size: 30pt;
+   }
+   &lt;/style&gt;
+   ...
+   ...
+   &lt;p class="veryLegible"&gt;
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+   &lt;/p&gt;
+   &lt;p class="veryLegible"&gt;
+   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+   eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+   sunt in culpa qui officia deserunt mollit anim id est laborum.
+   &lt;/p&gt;</pre>
+   
+<pre class="code_block">
+   &lt;style type="text/css"&gt;
+   #introduction {
+     color: #888888;
+     font-family: Arial,sans-serif;
+     font-size: 1em;
+   }
+   &lt;/style&gt;
+   ...
+   ...
+   &lt;p id="introduction"&gt;Dear John,&lt;br&gt;
+   how have you been?&lt;/p&gt;</pre>  
+   
+  <p>
+    Apart from class selectors e.g. <code class="html selector">.myLine</code> the most important CSS selectors are 
+    id selectors e.g. <code class="html selector">#introduction</code> which are meant for single elements, such as
+    <code class="html tag">&lt;p id="introduction"&gt;</code>
+  </p>
+   
+
+  <a name="inline-style">&nbsp;</a>
+  <h4>"Inline" Styling</h4>
+
+  <p>
+   This is the most robust way of styling because it will always "stay" with the element (here: div) no matter where you move it
+   or whether it is quoted in another email.<br>
+   <b>Disadvantage: If you want to style 2 elements the same way you have to copy/paste the whole lot.</b>
+  </p>
+
+  <pre class="code_block">
+   &lt;div style="font-family: 'Comic Sans MS',cursive; font-size: 30pt;"&gt;my line&lt;/div&gt;</pre>
+
+  <p>
+   The visual result is for both variants the same<br>
+   <img src="/screenshots/kb/style_tags.png" class="screenshot query" alt="Style tag results" style="border: 1px solid #000000;"/>
+  </p>
+
+  <p class="tip">
+   <em>TIP:</em> The only difference between both variants is the way you write font names with white-space<br>
+   style tag = "inside double quote marks"<br>
+   inline = 'inside single quote marks'.
+  </p>
+<!-- END KB-BASICS.HTML -->

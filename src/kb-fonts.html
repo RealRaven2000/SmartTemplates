@@ -1,0 +1,341 @@
+---
+layout: base.njk
+title: Knowledge Base Fonts
+permalink: kb-fonts.html
+---
+<!-- KB-FONTS.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("kb-fonts.html");
+  /* Apply this site specific file to <head> element */
+  loadStyleSheet("kb.css");
+</script>
+
+<h2 class="page-header">SmartTemplate<sup>4</sup> :: knowledgebase :: Fonts</h2>
+<br>
+<h3>font family on windows and Mac</h3>
+
+<p>
+  If you write html templates for your e-Mail you should first think about which kind of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family" title="Explanation font-family on MDN" target="_blank">font-family</a> you will use.<br>
+  Not all font-families are given in common operating systems and in this case the recipient get another font displayed (default).<br>
+  It's suggested to use one of the more popular font-families insteat of "special fonts" e.g. SimSun.<br>
+  Some Windows-Fonts have a equivalent on Mac OS X (selection):
+</p>
+<table class="fonts">
+  <tr class="TRfonts">
+    <td>Windows:</td>
+    <td>Arial *</td>
+    <td>Arial Black *</td>
+    <td>Comic Sans MS</td>
+    <td>Courier New *</td>
+    <td>Impact *</td>
+    <td>Lucida Console</td>
+    <td>MS Sans Serif</td>
+    <td>MS Serif</td>
+    <td>Palatino Linotype</td>
+    <td>Tahoma</td>
+    <td>Times New Roman</td>
+    <td>Verdana *</td>
+  </tr>
+  <tr class="TRfonts">
+    <td>Mac OS X:</td>
+    <td>Helvetica</td>
+    <td>Gadget</td>
+    <td>Comic Sans MS</td>
+    <td>Courier</td>
+    <td>Charcoal</td>
+    <td>Monaco</td>
+    <td>Geneva</td>
+    <td>New York</td>
+    <td>Palatino</td>
+    <td>Geneva</td>
+    <td>Times</td>
+    <td>Geneva</td>
+  </tr>
+  <tr class="TRfontsBG">
+    <td>font-family:</td>
+    <td>Arial,<br>Helvetica,<br><span class="important">sans-serif</span>;</td>
+    <td>"Arial Black",<br>Gadget,<br><span class="important">sans-serif</span>;</td>
+    <td>"Comic Sans MS",<br><span class="important">cursive</span>;</td>
+    <td>"Courier New",<br>Courier,<br><span class="important">monospace</span>;</td>
+    <td>Impact,<br>Charcoal,<br><span class="important">fantasy</span>;</td>
+    <td>"Lucida Console",<br>Monaco,<br><span class="important">monospace</span>;</td>
+    <td>"MS Sans Serif",<br>Geneva,<br><span class="important">sans-serif</span>;</td>
+    <td>"MS Serif",<br>"New York",<br><span class="important">serif</span>;</td>
+    <td>"Palatino Linotype",<br>Palatino,<br><span class="important">serif</span>;</td>
+    <td>Tahoma,<br>Geneva,<br><span class="important">sans-serif</span>;</td>
+    <td>"Times New Roman",<br>Times,<br><span class="important">serif</span>;</td>
+    <td>Verdana,<br>Geneva,<br><span class="important">sans-serif</span>;</td>
+  </tr>
+</table>
+<p>
+  Starred (*) fonts are typically available on both Windows and Macintosh systems, even if a different font is displayed as a Macintosh alternative.<br>
+  Based on: Comparison of Macintosh Common Fonts to Windows Common Fonts <a href="http://webdesign.about.com/od/fonts/l/bl_compare_fonts.htm" title="Font comparsion table" target="_blank">Table</a>.<br>
+  Fonts with white-space in its name e.g. Arial Black will be note inside quoting marks "Arial Black" in your css code.
+</p>
+
+<br>
+<h3>generic fonts (fallback fonts)</h3>
+<br>
+
+<p>
+  In your css code you should set different font-families and at least one of the <span class="important">gerneric fonts</span> as fallback.<br>
+  <br>
+  <span class="important">serif</span> = Glyphs have finishing strokes, flared or tapering ends, or have actual serifed endings<br>
+  <span class="important">sans-serif</span> = Glyphs have stroke endings that are plain<br>
+  <span class="important">cursive</span> = Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of italic typefaces.<br>
+  The glyphs are partially or completely connected, and the result looks more like handwritten pen or brush writing than printed letterwork.<br>
+  <span class="important">fantasy</span> = Fantasy fonts are primarily decorative fonts that contain playful representations of characters<br>
+  <span class="important">monospace</span> = All glyphs have the same fixed width.
+</p>
+
+<h2 class="page-header">Font size table</h2>
+
+<p>
+ Fonts in web design are given in different units.<br>
+ But there are good reasons not to use pt or any other absolute units and only use em and px.<br>
+ Here is a table that point, pixel, Ems and percentages is converted.<br>
+ It is an approach that depends on font, browser and the operating system.<br>
+ This is at least a good starting point.
+</p>
+
+<table class="fonts">
+ <tr class="TRfontsBGbold">
+  <td style="width: 10%;">points</td>
+  <td style="width: 10%;">pixels</td>
+  <td style="width: 10%;">em</td>
+  <td style="width: 10%;">percent</td>
+  <td style="width: 10%;">size</td>
+  <td style="width: 10%;">font size</td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">6pt</td>
+  <td style="width: 10%;">8px</td>
+  <td style="width: 10%;">0.500em</td>
+  <td style="width: 10%;">50%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">7pt</td>
+  <td style="width: 10%;">9px</td>
+  <td style="width: 10%;">0.550em</td>
+  <td style="width: 10%;">55%</td>
+  <td style="width: 10%;">xx-small</td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">7.5pt</td>
+  <td style="width: 10%;">10px</td>
+  <td style="width: 10%;">0.625em</td>
+  <td style="width: 10%;">62,5%</td>
+  <td style="width: 10%;">x-small</td>
+  <td style="width: 10%;">size="1"</td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">8pt</td>
+  <td style="width: 10%;">11px</td>
+  <td style="width: 10%;">0.700em</td>
+  <td style="width: 10%;">70%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">9pt</td>
+  <td style="width: 10%;">12px</td>
+  <td style="width: 10%;">0.750em</td>
+  <td style="width: 10%;">75%</td>
+  <td style="width: 10%;">smaller</td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">10pt</td>
+  <td style="width: 10%;">13px</td>
+  <td style="width: 10%;">0.800em</td>
+  <td style="width: 10%;">80%</td>
+  <td style="width: 10%;">small</td>
+  <td style="width: 10%;">size="2"</td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">10.5pt</td>
+  <td style="width: 10%;">14px</td>
+  <td style="width: 10%;">0.875em</td>
+  <td style="width: 10%;">87,5%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">11pt</td>
+  <td style="width: 10%;">15px</td>
+  <td style="width: 10%;">0.950em</td>
+  <td style="width: 10%;">95%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr style="color: #E33; text-shadow: #F0E0E0 0px 0px 1px; border: 1px solid #000000;">
+  <td style="width: 10%;">12pt</td>
+  <td style="width: 10%;">16px</td>
+  <td style="width: 10%;">1.000em</td>
+  <td style="width: 10%;">100%</td>
+  <td style="width: 10%;">medium</td>
+  <td style="width: 10%;">size="3" (user&nbsp;preferred&nbsp;size)</td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">13pt</td>
+  <td style="width: 10%;">17px</td>
+  <td style="width: 10%;">1.050em</td>
+  <td style="width: 10%;">105%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">13.5pt</td>
+  <td style="width: 10%;">18px</td>
+  <td style="width: 10%;">1.125em</td>
+  <td style="width: 10%;">112,5%</td>
+  <td style="width: 10%;">large</td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">14pt</td>
+  <td style="width: 10%;">19px</td>
+  <td style="width: 10%;">1.200em</td>
+  <td style="width: 10%;">120%</td>
+  <td style="width: 10%;">larger</td>
+  <td style="width: 10%;">size="4"</td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">14.5pt</td>
+  <td style="width: 10%;">20px</td>
+  <td style="width: 10%;">1.250em</td>
+  <td style="width: 10%;">125%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">15pt</td>
+  <td style="width: 10%;">21px</td>
+  <td style="width: 10%;">1.300em</td>
+  <td style="width: 10%;">130%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;">size="5"</td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">16pt</td>
+  <td style="width: 10%;">22px</td>
+  <td style="width: 10%;">1.400em</td>
+  <td style="width: 10%;">140%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">17pt</td>
+  <td style="width: 10%;">23px</td>
+  <td style="width: 10%;">1.450em</td>
+  <td style="width: 10%;">145%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">18pt</td>
+  <td style="width: 10%;">24px</td>
+  <td style="width: 10%;">1.500em</td>
+  <td style="width: 10%;">150%</td>
+  <td style="width: 10%;">x-large</td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">20pt</td>
+  <td style="width: 10%;">26px</td>
+  <td style="width: 10%;">1.600em</td>
+  <td style="width: 10%;">160%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">22pt</td>
+  <td style="width: 10%;">29px</td>
+  <td style="width: 10%;">1.800em</td>
+  <td style="width: 10%;">180%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">24pt</td>
+  <td style="width: 10%;">32px</td>
+  <td style="width: 10%;">2.000em</td>
+  <td style="width: 10%;">200%</td>
+  <td style="width: 10%;">xx-large</td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">26pt</td>
+  <td style="width: 10%;">35px</td>
+  <td style="width: 10%;">2.200em</td>
+  <td style="width: 10%;">220%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">27pt</td>
+  <td style="width: 10%;">36px</td>
+  <td style="width: 10%;">2.250em</td>
+  <td style="width: 10%;">225%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">28pt</td>
+  <td style="width: 10%;">37px</td>
+  <td style="width: 10%;">2.300em</td>
+  <td style="width: 10%;">230%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">29pt</td>
+  <td style="width: 10%;">38px</td>
+  <td style="width: 10%;">2.350em</td>
+  <td style="width: 10%;">235%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">30pt</td>
+  <td style="width: 10%;">40px</td>
+  <td style="width: 10%;">2.450em</td>
+  <td style="width: 10%;">245%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">32pt</td>
+  <td style="width: 10%;">42px</td>
+  <td style="width: 10%;">2.550em</td>
+  <td style="width: 10%;">255%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfonts">
+  <td style="width: 10%;">34pt</td>
+  <td style="width: 10%;">45px</td>
+  <td style="width: 10%;">2.750em</td>
+  <td style="width: 10%;">275%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+ <tr class="TRfontsBG">
+  <td style="width: 10%;">36pt</td>
+  <td style="width: 10%;">48px</td>
+  <td style="width: 10%;">3.000em</td>
+  <td style="width: 10%;">300%</td>
+  <td style="width: 10%;"></td>
+  <td style="width: 10%;"></td>
+ </tr>
+</table>
+<p>
+   Maincontent of this Table is published on <a href="http://esx.ch/index.php?page=380" title="pt-px-em converting table (german)" target="_blank">ESX.ch</a> by Erich Schumacher.<br>
+   If you like to convert your own pixel to em, you can use the web-based PXtoEM <a href="http://pxtoem.com/" title="web-based PXtoEM converting tool" target="_blank">converting tool</a> by Brian Cray.<br>
+   Further Documentation to <a title="Further Documentation for font-sizes and units" href="http://www.w3.org/Style/Examples/007/units.en.html" target="_blank">font-sizes and units by Bert Bos</a>.
+</p> 
+<!-- END KB-FONTS.HTML -->

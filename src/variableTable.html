@@ -1,0 +1,249 @@
+---
+layout: base.njk
+title: Variable table
+permalink: variableTable.html
+---
+<!-- VARIABLETABLE.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+
+ /* add .active class to current navbar element (jquery) */
+ jQuery('#resources').find('[href="/variableTable.html"]').addClass('active');
+</script>
+
+<h2 class="page-header">SmartTemplate⁴ :: Variable Table</h2>
+<div id="pageContent">
+  <p>This is a table of all existing variables for SmartTemplate⁴ and in which case they can be used.</p>
+    <p class="attention">
+      <em>ATTENTION:</em> When Variables are used incorrectly an error is logged to Thunderbird's Error Console. 
+    </p>
+
+    <table id="keywords">
+      <tr>
+        <th><img src="/img/key.png" alt="">Keyword</th>
+        <th><img src="/img/mail-open.png" alt="">New</th>
+        <th><img src="/img/mail-reply.png" alt="">Reply</th>
+        <th><img src="/img/mail-forward.png" alt="">Forward</th>
+      </tr>
+      <tr>
+        <td><code>%A%</code><code>%a%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code>%B%</code><code>%b%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code class="noWrite">%cc(firstname)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code class="noWrite">%cc(mail)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code class="noWrite">%cc(name)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code class="noWrite">%cc%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+      <tr>
+        <td><code>%d%</code><code>%e%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%date_tz%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%date%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%datelocal%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%dateshort%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%from(firstname)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%from(mail)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%from(name)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%from%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%H%</code><code>%k%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%l%</code><code>%i%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%M%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%m%</code><code>%n%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%Message-ID%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%Newsgroups%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%ownmail%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%ownname%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%p(1)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%p(2)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%p(3)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%p%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%S%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+    <!-- 18.09.12 OBSOLETE
+      <tr>
+        <td><code class="noWrite">%sig%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%sig(2)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+    -->
+      <tr>
+        <td><code class="noWrite">%subject%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%subject(2)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%T%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%to(firstname)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%to(mail)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%to(name)%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%to%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code>%tz_name%</code></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%X-Mailer%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%X:=sent%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%X:=today%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td></tr>
+      <tr>
+        <td><code class="noWrite">%Y%</code></td>
+        <td><div class="no">&#10007;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+        <td><div class="yes">&#10003;</div></td>
+      </tr>
+    </table>
+</div>
+<!-- END VARIABLETABLE.HTML -->

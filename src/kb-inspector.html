@@ -1,0 +1,67 @@
+---
+layout: base.njk
+title: Knowledge Base Inspector
+permalink: kb-inspector.html
+---
+<!-- KB-INSPECTOR.HTML -->
+
+
+<h2 class="page-header">SmartTemplate<sup>4</sup> :: knowledgebase :: Inspector</h2>
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("kb-inspector.html");
+  /* Apply this site specific file to <head> element */
+  loadStyleSheet("kb.css");
+</script>
+
+
+<br>
+<h3>troubleshooting fonts and layout</h3>
+
+<p>Sometimes when composing / reading emails, fonts or colors do not turn out as expected. 
+This is hard to troubleshoot for us but you can use the built in tools of Thunderbird to investigate.</p>
+
+        <p>If you need to find out what causes the font "look" on
+          a specific section in your emails, open <i>Tools / Developer Tools &gt; Developer Toolbox </i>on
+          the Thunderbird main menu (or press CTRL+SHIFT+I):<br>
+        </p>
+        <p><img src="screenshots/kb/menu-inspector.png" class="screenshot" alt="starting inspector"></p>
+        <p>(1) Next, click on the "inspector" tab:</p>
+        <p><img src="screenshots/kb/inspector.png" class="screenshot" alt="starting inspector"></p>
+        <p>(2) optional step - you only need this if you want to click
+          in Composer or a separate "single message window" - select a
+          target document. By default this is the mail 3pane
+          (<i>messenger.xul</i>). To investigate the composer window, pick <i>messengercompose.xul</i><br>
+        </p>
+        </p>
+        <p><img src="screenshots/kb/kb-inspector-target-doc.png" class="screenshot" alt="target document selector"></p>
+        <p></p>(3) Picker<br>
+				   use this to select what you are interested in with your mouse. regions of interest will be highlighted
+					 with a red frame.
+				</p>
+        <p>(4) Click on the writing on the page in composer / preview</p>
+        <p>On the left of Inspector, you see the "document tree" - the different parts that make up your email 
+				   - click any element to select a different paragraph which will be highlighted on screen</p>
+        <p>On the right hand of the screen you can select different views:</p>
+        <h2>Rules <br>
+        </h2>
+        <p>this shows all style rules that apply to the selected element<br></p>				
+        <p><img src="screenshots/kb/kb-inspector-rules.png" class="screenshot" alt="rules section"></p>
+				
+        <p>If a rule is overridden by another, it will be "crossed out":<br/>
+           <img src="screenshots/kb/kb-inspector-style-override.png" class="screenshot" alt="overridden styles"></p>
+        <p>You can filter for specific rules with the "Filter Styles"
+          box on top:</p>
+        <p><img src="screenshots/kb/kb-inspector-filter-styles.png" class="screenshot" alt="filter style rules"></p>
+        <p>You can try out other values by double-clicking the values of ach rule and then typing over. 
+				   Make sure to transfer the new rules to your template.<br>
+        </p>
+        <h2>Computed Styles</h2>
+        <p>Shows only the styles that "survive" in the hierarchy of styles<br></p>
+        <p><img src="screenshots/kb/kb-inspector-computed.png" class="screenshot" alt="computed styles section">
+				</p>
+        <h2>Layout</h2>
+        <p>This section deals mainly with positioning of the element on
+          screen:<br>
+        </p>
+        <p><img src="screenshots/kb/kb-inspector-layout.png" class="screenshot" alt="layout section">

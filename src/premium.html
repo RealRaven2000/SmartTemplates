@@ -1,0 +1,310 @@
+---
+layout: base.njk
+title: Premium
+permalink: premium.html
+---
+<!-- PREMIUM.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("premium.html");
+  /* Apply this site specific file to <head> element */
+  loadStyleSheet("premium.css");
+</script>
+
+<h2 class="page-header">SmartTemplate<sup>4</sup> Pro :: Premium Features</h2>
+
+<article>
+	<p class="attention">
+	 <em>ATTENTION:</em> This information is under Review - Feature currently Work In Progress, but planned for release 
+	 <a href="version.html#1.5">1.5</a>.<br>
+	</p>
+</article>
+
+<p>
+  Premium features are power functions which are an incentive for users 
+  to regularly support the SmartTemplate<sup>4</sup> project through a yearly contribution, 
+	called SmartTemplate⁴ Pro license. 
+	My aim is that instead of very few people trying to carry the project with sometimes large donations to 
+	try involving more supporters. It is a lot of work to keep the project going and up to date with all the 
+	latest code changes which happen every 6 weeks on the Mozilla code base. Staying in sync with the 
+	three applications (Thunderbird, Postbox and SeaMonkey) and to support multiple platforms (Windows, Linux and Mac) 
+	and languages and writing support emails and fixing bugs is actually a lot of work. 
+	I would rather actually spend more time on this as opposed to maybe 6 to 12 hours / week, but for this it 
+	needs to be financially viable.
+</p> 
+
+<a name="featureList"> </a>
+<h3 class="helpchapter">What Premium Features exist?</h3>
+<p>Here is a list of Premium features that are unrestricted to licensed users.</p> 
+<p>For non-licensed users, the premium features can be restricted and, when used, will show a notification bar
+  in order to promote buying a license. I feel this is the best way as it gives you a chance to try them out and 
+  get an idea on what other great future functionality will be funded by supporters:<p>
+
+
+
+<!-- ##### String Functions #### -->
+<a name="stringManipulation"> </a>
+<h3 class="helpchapter">String Manipulation</h3>
+<article>
+	<ul>
+		<li><code>%deleteText("text")%</code> = Remove some text from the Quote Header, such as deleteText("via Paypal")- "John via Paypal wrote" =&gt; "John wrote"</li>
+		<li><code>%replaceText("find","replace")%</code> = Replace some text with something else (similar to deleteText).</li>
+		<li><code>%matchTextFromBody("Regular Expression",MatchGroup)%</code> = 
+		    Finds a pattern in quoted Email and insert at function location.<br>
+				E.g. <code class="inline">%matchTextFromBody("Delivery from ([-'a-zA-Z\u00C0-\u024F]*\s[-'a-zA-Z\u00C0-\u024F]*)",1)%</code> 
+				will retrieve 'John Doe' from the line 'Delivery from John Doe' - (included unicode characters for diacritics)</li>
+		<li><code>%matchTextFromSubject("Regular Expression",MatchGroup)%</code> = 
+		    Finds a pattern in subject and insert at function location.<br>
+				E.g. <code class="inline">%matchTextFromSubject("\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b",0)%</code> 
+				will retrieve an Email address from the Subject line</li>
+	</ul>
+	<p>Note: the new <code class="inline">%matchTextFromBody%</code> and <code class="inline">%matchTextFromSubject%</code> functions 
+	   use <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">regular expressions</a> - these are powerful keys for finding text patterns.
+		 The first parameter must be the regular expression within double quotes. The second parameter is a number which denotes the "match group". 
+		 Match groups are usually designated with round parentheses (). Use 0 to match the complete expression, 1 for the first group etc.
+	</p>
+	<p>To learn about regular expressions, please visit: <a href="http://www.regular-expressions.info/quickstart.html" target="_blank">www.regular-expressions.info</a>.
+	   For testing your patterns, I recommend this online tester: <a href="https://regex101.com/" target="_blank">regex101.com</a>
+	</p>
+	
+</article>
+
+
+<!-- ##### Header Functions #### -->
+<a name="dateManipulation"> </a>
+<h3 class="helpchapter">Advanced Date Functions</h3>
+<article>
+	<ul>
+		<li>
+			<p>
+			  <code class="deferable">%dateformat%</code> function for inserting / updating current time. 
+				<a name="26588" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26588" target="_blank">[Bug 26588]</a>
+			</p>
+			<p>
+				The format variables are taken from the regular formats such as %Y% for 4-digit
+				Years, with the % symbols stripped. Use as follows: <br>
+				%dateformat(<i>formatString</i>)%
+			</p>
+			<p>
+				Supported Formats:
+				Y, y, n, m, e, d, k, H, l, I, M, S, tz_name, B, b, A, a, p1, p2, p
+			</p>
+			<p>
+				Examples:<br>
+				<code class="inline">%dateformat(A, e/n/Y, H:M)%</code> creates: Wednesday, 23/02/2018, 14:23
+			</p>
+		</li>
+		<li>
+			<code>%X:=calculated()%</code> Switch for modifying date & time displayed. <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26307" target="_blank">[Bug 26307]</a>
+			<p>
+			<code>%X:=calculated(d,h:mm)%</code> where <i>d</i> = is the number of days to add. <i>h</i> = number of hours and <i>mm</i> number of minutes.
+			Note this needs to be reset using
+			<code>%X:=calculated(0)%</code> to reset it for the rest of the Email.
+			</p>
+		</li>
+	</ul>
+</article>
+
+<!-- ##### Header Functions #### -->
+<a name="headerManipulation"> </a>
+<h3 class="helpchapter">Mail Header Manipulation</h3>
+<article>
+	<ul>
+		<li><code>%header.set(<i>hdr</i>,"text")%</code> = Set the header <i>hdr</i> (eg. to, from, subject) with the text.</li>
+		<li><code>%header.set(subject,"text")%</code> = Replace complete subject with the text</li>
+		<li><code>%header.prefix(subject,"text")%</code> = Prefix subject with the text</li>
+		<li><code>%header.append(subject,"text")%</code> = Append text to subject</li>
+		<li><code>%header.delete(subject,"text")%</code> = Delete text from subject</li>
+	</ul>
+	<p>
+		The following functions are using Regular Expressions (search patterns) - these are for 
+		advanced users only but can give you great rewards in automating emails. More info below.
+	</p>
+	<ul>
+    <li><code>%header.set.matchFromSubject(<i>hdr,regex,group</i>)%</code> = Set the header if a matching regular expression is found in subject line.</li>
+    <li><code>%header.append.matchFromSubject(<i>hdr,regex,group</i>)%</code> = Append text to header / recipient if a matching regular expression is found in subject line.</li>
+    <li><code>%header.prefix.matchFromSubject(<i>hdr,regex,group</i>)%</code> = Prefix text to header if a matching regular expression is found in subject line.</li>
+    <li><code>%header.set.matchFromBody(<i>hdr,regex,group</i>)%</code> = Set the header if a matching regular expression is found in quoted email.</li>
+    <li><code>%header.append.matchFromBody(<i>hdr,regex,group</i>)%</code> = Append text to header / recipient if a matching regular expression is found in quoted email.</li>
+    <li><code>%header.prefix.matchFromBody(<i>hdr,regex,group</i>)%</code> = Prefix text to header if a matching regular expression is found in quoted email.</li>
+	</ul>
+<p>
+	The <i>hdr</i> parameter represents a mail header that has textual content, such as (to, from, subject). 
+	This cannot be used for headers containing dates such as the sent time.
+</p>
+<p>
+	The <i>regex</i> parameter is a search pattern in the form of a regular expression; 
+	for more documentation, please check the site
+	<a href="https://www.regular-expressions.info/.">Regular-expressions.info</a>.
+	There is also a useful <a href="https://regex101.com/">regular expressions tester</a> 
+	for trying out your search patterns. For best results, make sure to switch the "Flavor" 
+	field to <i>ECMAScript (JavaScript)</i>.
+</p>
+<p>
+	The <i>group</i> parameter is the number of the matched expression, for an explanation 
+  <a href="https://www.regular-expressions.info/refcapture.html">see here.</a> 
+	Usually setting this to 1 will do what is needed most of the time 
+	(replaces first found expression with first match).
+</p>
+<p>	
+<p> Additionally, you can now use the matchFromSubject and matchFromBody functions in the following way:</p>
+<code>%header.set.matchFromBody(<i>hdr,regex</i>,"replacement text")%</code></p>
+<p>
+  The main difference is that match group is a number - which will insert / set / append 
+  The matched text found during the search, whereas replacement text is a text that is used 
+	instead if the search pattern is found. For usage simply add the double quotation marks around the 3rd parameter. 	
+</p>	
+	
+</article>
+	<h4>Examples</h4>
+	<p>To learn about regular expressions, please visit: <a href="http://www.regular-expressions.info/quickstart.html" target="_blank">www.regular-expressions.info</a>.
+	   For testing your patterns, I recommend this online tester: <a href="https://regex101.com/" target="_blank">regex101.com</a>
+	</p>
+<article>
+	<ul>
+		<li><code class="inline">%header.set(to,"abc@de.com")%</code> = Replace recipient with email address</li>
+		<li><code class="inline">%header.append(to,"abc@de.com")%</code> = Add email to recipient list</li>
+		<li><code class="inline">%header.set.matchFromSubject(to,"Donation from .* \((\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b)\)",1)%</code><br>
+		Looks for a pattern "Donation from <i>Name</i> (<i>email</i>)" and extracts email address to set the recipient (to) header.<br>
+		.* is a group of any arbitrary character(s) in order to omit the Name portion of the email address<br>
+		\(  and \)  match the parentheses,<br>
+		\b means the result of the match group (...) starts at the beginning of the email address and ends before the closing parenthesis.<br>
+		[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4} is a standard email matching expression. <br>
+		1 - means the result from the first <a href="http://www.regular-expressions.info/brackets.html" target="_blank">match group</a> (...) is used for setting the header.
+		</li>
+	</ul>
+</article>
+
+
+<!-- ##### Header Functions #### -->
+<a name="fileInsert"> </a>
+<h3 class="helpchapter">Files and Images</h3>
+<article>
+	<ul>
+    <li>
+		  <code>%file(<i>filePath</i>,<i>encoding</i>)%</code> = Include HTML or plain text file. When omitting the <i>encoding</i> 
+			parameter, SmartTemplate<sup>4</sup> will assume <tt>UTF-8</tt>. If the file contains more SmartTemplate<sup>4</sup> 
+			variables such as <code class="inline">%from%</code>, these will be resolved.
+		</li>
+    <li>
+		  <code>%file(<i>imagePath</i>,<i>altText</i>)%</code> = Inserts an image file (png,jpg,gif,bmp,svg). 
+			The optional altText is displayed if the image can't be found.
+		</li>
+	</ul>
+	<p>
+		For the correct <i>file path</i> syntax, click the 
+		<code>%file%</code> label in the Variables tab in the SmartTemplate<sup>4</sup> settings window. 
+		This will open a standard file prompt and then insert the correct code into the template.
+	</p:>
+	
+</article>
+
+<!-- ##### String Functions #### -->
+<a name="deferredVariables"> </a>
+<h3 class="helpchapter">Deferred Variables - Fields in New Emails</h3>
+<article>
+  <p>This was a premium feature, but will be added as a feature for Standard License users from version 2.1.1 onwards. It only works in <b>HTML emails</b> - plain text emails are <i>not supported</i> for technical reasons.</p>
+	<ul>
+		<li><div class="new">NEW</div>
+			<p>When writing new mails, headers such as to, from are not available - therefore these 
+				 functions had to be written from scratch. 
+			</p>
+			<p><a name="24993" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24993" target="_blank">[Bug 24993]</a>
+					Supports using the following fields when composing a *new* Email:</p>
+			<ul>
+				<li><code class="inline">%subject%</code></li>
+				<li><code class="inline">%from%</code></li>
+				<li><code class="inline">%to%</code> <code class="inline">%cc%</code> <code class="inline">%bcc%</code></li>
+				<li><code class="inline">%date%</code></li>
+				<li><code class="deferable">%dateformat()%</code>New function for building date strings for current date, <a href="#26588">see below</a>.</li>
+			</ul>
+			<p>Note, to  insert the real recipient in a <i>forwarded</i> email, you can now use the <tt>fwd</tt> argument:
+				 e.g. <code class="deferable">%to(firstname,fwd)%</code> </p>
+			<p>The variables are shown as colored placeholder blocks and can be updated with a simple mouse-click: <br>
+				<img class="screenshot" src="/img/deferred-vars-example.png" alt="deferred variables"><br>
+				This will pull in the correct information when available and can be clicked multiple times.
+			</p>
+			<p>A new button for a final clean up - for "tidying up ALL variables" can also be added to the Composer toolbar:<br>
+				<img class="screenshot" src="/img/clean-up-button.png" alt="clean up">
+			</p>	
+		</li>
+	</ul>
+</article>
+
+
+<!-- ##### Export/Import added in 1.0.0 ####
+<h3 class="helpchapter">Settings and Templates Export/Import</h3>
+<p>You can export and import your settings and templates associated with each account.</p>
+<br />
+<br />
+##### Export ####
+<b>Export:</b>
+<br />
+<p>First select the account you want to export in the SmartTemplate<sup>4</sup> settings dropdown box.</p>
+<br />
+<img class="screenshot" alt="" src="/screenshots/identity_select.png">
+<br />
+<p>Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.</p>
+<br />
+<img class="screenshot" alt="" src="/screenshots/export.png">
+<br />
+##### Import ####
+<b>Import:</b>
+<br />
+<p>To import a file, select the account you want to import in the SmartTemplate<sup>4</sup> settings dropdown box.<br>
+Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.</p>
+<br />
+<img class="screenshot" alt="" src="/screenshots/import.png">
+<br />
+<p>Select the SmartTemplate<sup>4</sup> file (xxx.st4) you want to import.</p>
+<p class="attention">NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate<sup>4</sup> Options window.<br>
+This is normal behavior on this platforms and can't be changed.</p>
+<br />
+<br />-->
+
+<!-- https://sites.fastspring.com/quickfolders/instant/smarttemplate4?referrer=st-premium-page -->
+
+<h3 class="helpchapter">Other Benefits of having a Yearly License</h3>
+	<p>
+		You know that you support the project and that the development and support will be continue.
+		There is a huge amount of work involved not just programming and keeping SmartTemplate<sup>4</sup> up to date 
+		but also supporting users, coming up with better ways of doing things, fixing bugs, and keeping 
+		SmartTemplate<sup>4</sup> usable across various platforms and host programs (at the moment I support Thunderbird, 
+		SeaMonkey and Postbox). I am constantly helping people with using SmartTemplate<sup>4</sup> and their mail program 
+		and how to get the most out of email on the desktop.
+	</p>
+	<p>
+		All notification messages that indicate premium features are omitted.
+	</p>
+	<p>
+		The donation screen (which is normally shown after every Update) is hidden.
+	</p>
+<h3 class="helpchapter">Alternative Monetisation Models</h3>
+	<p>
+		There are quite a few software developers (and also some users) who believe
+		that software should generally financed by advertisement or even by selling 
+		information about their users. 
+		I am firmly opposed to this way of making money as it impacts 
+		both productivity and privacy rights; also in the world of Email I would 
+		find this way of generating value deeply problematic - even if it was 
+		strictly opt-in. There is a lot of personal information in our daily mail 
+		and a lot of knowledge that is being stored and retrieved with this powerful 
+		tool. 
+	</p>
+	<p>
+		One of the reasons for a personal Email Client on the desktop 
+		is the fact that we can store our data on our personal hardware and use it 
+		any way we like. On the other hand, if we use a web mail client (like gmail) 
+		we can never be sure whether the information is used otherwise and whether 
+		we get targeted with distracting information (be it by injecting advertisements or via 
+		targeted advertisement emails) - it is one of the goals of any mail desktop client 
+		to eliminiate these distractions as much as possible, and focus on one thing only:
+		managing communication.
+	</p>
+	<p>
+		SmartTemplate<sup>4</sup> is an especially powerful set of tools to harness this 
+		information and it will evolve and keep saving time and make your experience 
+		of mail more meaningful and intuitive.
+	</p>
+
+<!-- END PREMIUM.HTML -->

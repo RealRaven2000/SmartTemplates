@@ -1,0 +1,125 @@
+---
+layout: base.njk
+title: Support
+permalink: support.html
+---
+<!-- SUPPORT.HTML -->
+<script type="text/javascript">
+"use strict"; // use ECMAScript5 strict mode
+  markActiveNavigation("support.html");
+  /* Apply this site specific file to <head> element */
+  loadStyleSheet("kb.css");
+</script>
+
+<h2 class="page-header">SmartTemplate<sup>4</sup> :: Add-on Troubleshooting</h2>
+
+<p>No Software is without trouble.</p>
+<p>
+  We try to publish software with less of trouble for you but if you have some, we <i>highly recommend</i> to install the 
+  <a href="https://addons.thunderbird.net/thunderbird/addon/1815/" title="Console&#178; Add-on on ATN" target="_blank">Console&#178;  Add-on</a> first.
+  <br>
+	<b>Thunderbird 60 and earlier:</b> Please install the <a href="http://downloads.mozdev.org/smarttemplate4/console2-1.0a10.xpi">patched version here</a> for contemporary builds 
+	of Thunderbird (45 and higher - now compatible with Thunderbird 60.4.0).<br>
+  Console&#178; has more detailed options for the logging process than the default error console of Thunderbird.
+	If you do want to use the built in error console, be aware that it may be a little harder to
+	set up what it actually displays. By default it may not give you what you need for Add-on troubleshooting.</p>
+  <p><b>Thunderbird 68 and later</b>
+    you have to use the built in Javascript error console, which cnan be invokled from the Tools menu: 
+    Select Developer Tools / Error console or press Ctrl+Shift+J
+  
+
+<h3>Console&#178; Configuration - Thunderbird 60 and earlier only</h3>
+<p><b>1.</b> Click on "<u>O</u>ptions" in the top right corner of Console&#178; Window and select the following options:<br>
+  <img src="/screenshots/support/console2Options.png" class="screenshot" title="Console2 Options" alt="">
+</p>
+<p><b>2.</b> Click the "<u>A</u>ll" button on top left of Console&#178; Window to see those entries inside the Log Window only<br>
+</p>
+
+<p><b>3.</b> Disable the  "Content" logging using the 5th button on the second toolbar below. This will make sure to remove any "noise"
+      introduced by errors in the emails themselves. Usually we do not need these error messages as they only muddy the waters<br>
+  <img src="/screenshots/support/console-optimal-settings.png" class="screenshot" title="Console2 Window Options" alt="">
+</p>
+
+
+<p><b>4.</b> Often it is necessary to provide more context - you can tell SmartTemplate<sup>4</sup> to log more information of what it does. 
+</p>
+<ul>
+<li>
+  Please activate the debug option on the bottom of SmartTemplate<sup>4</sup> &#8658; Advanced &#8658; Global Settings Tab.<br>
+<img src="/screenshots/support/st4GlobalSettingsTab.png" class="screenshot" title="SmartTemplate⁴ Global Seetings Tab" alt=""><br>
+  Note: there may be a warning on "voiding the warranty" - you can ignore this as I made it safe by displaying
+	our debug options only.
+</li>
+<a name ="debugOptions"> </a>
+<li> You can create additional more specific messages by right-clicking the debug checkbox and activating additional options (double click on the entry).
+     Please do not activate everything as this will make the log unreadable also - if you send us a support email
+		 we can usually advise what debug options to activate.<br>
+<img src="/screenshots/support/st4DebugOptions.png" class="screenshot" title="SmartTemplate⁴ Debug Options" alt="">
+</li>
+</ul>
+
+<h3>Investigating the Error Log</h3>
+
+<p>So once you have the error console set up, what can you do it? 
+  Remember you have to always open the log window to start logging errors / activity so make sure you do this
+	with Tools / Devloper Tools / Error Console just before you do the trouble shooting. 
+</p>
+
+<h4>STEP 1 - Setting up the Investigation</h4>
+
+<p>If you want to start a fresh clean log it is always good to click the "Clear" button at the top immediately
+   before you carry out the actions you investigate. Also make sure to not repeat the action do it once until
+	 the problem happens. </p>
+
+<h4>STEP 2 - Saving the Error Log</h4>
+
+<p>
+	 Then you need to copy the error log into a text file or email. Simply use the console
+	 right-click menu and choose "Select All". Then "Copy". Do not take a screenshot of the error log as it is much 
+	 harder to investigate - text is nice as you can search and order it!
+	 You can always send us error logs in an email if you are having problems.	<br>
+	 <img src="/screenshots/support/errorCopy.png" class="screenshot" title="Error Rightclick" alt=""><br>
+	 <p>A note on typical Error messages: If there is a problem somewhere in Thunderbird code or an Add-on
+	 then warnings and errors usually provide a location of where this happened.
+	 If the location starts with "chrome://" you will know this happens in Thunderbird or and Add-on and not 
+	 in a web page or within an email. The line number is also very helpful in tracking down particular issues.
+	 </p>
+	 <p>Any messages that we generate during "debug" logging typically look like this:
+	 </p>
+<pre class="code_block">SmartTemplate<sup>4</sup> {FUNCTIONS.INSERTTEMPLATE} 14:2:39.705  [0 ms]	 
+Add Signature... 
+</pre>
+<p>As you can see we start all our debug logs with the name of the addon (SmartTemplate<sup>4</sup>).
+   This can be followed by an optional {OPTION} which shows <a href="#debugOptions">which additional area we are debugging</a>.
+	 This is then followed by a time stamp (14:2:39.705) and a time measurement [0 ms] since any previous operation. 
+	 This makes it possible to pin point any operations that take unusually long. Underneath we show 
+	 additional information about what smartTemplate is doing at the moment.
+</p>
+
+<h4>STEP 3 - Looking for Particular Problems</h4>
+<p>When you have completed the logging phase, you can now use the "Errors", "Warnings" and "Messages" buttons 
+   to filter out particular problems. You can also use the Search box if you like, e.g. you could type a keyword 
+	 like "smarttemplate":<br>
+  <img src="/screenshots/support/console2Search.png" class="screenshot" title="Console2 Search" alt="">
+	<br>
+	Note however this might actually hide the real cause of the problem so this is only for advanced users. 
+	If you decide to send us a log, do not remove anything from it. To help us, just follow the initial instructions
+	above and disable content logging and start with an empty log (only test one thing at a time).
+</p>
+
+<p>Now you get error entries inside Log Window listed like this example<br>
+&#8658; This example shows a warning "yellow triangle" as result of JavaScript strict mode ("use strict"; &#8658; ECMAScript5) which we use<br>
+  <img src="/screenshots/support/errorExample.png" class="screenshot" title="Error Example" alt="">
+</p>
+
+<p class="tip">
+  <em>TIP:</em> By selecting Edit &#8658; Paste, these log entries can be inserted directly from your clipboard into your e-Mail to us or into a bug report on Bugzilla.
+</p>
+
+<p class="attention">
+  <em>ATTENTION:</em> Please try not to send screen shots of error logs, but just the plain text messages 
+	(console has select all / copy entries in it's right--click menu).
+	It is likely that messages not constaining with  "chrome://<u>smarttemplate4</u>/.." are probably unrelated,
+	but if they are errors or warning close to one of our own operations they may still be helpful.
+</p>
+<!-- END SUPPORT.HTML -->

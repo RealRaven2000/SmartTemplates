@@ -1,0 +1,141 @@
+---
+layout: base.njk
+title: Stationery
+permalink: stationery.html
+---
+<!-- STATIONERY.HTML -->
+<h2 class="page-header">Stationery Support / External HTML Template Files</h2>
+
+<p>Latest news: for Thunderbird 68, SmartTemplate&#8308; has successfully added a file templating system. 
+  This replaces Stationery which is not supporting Thunderbird 68 anymore. If you are still using 
+	Thunderbird 60.8 or an earlier verison at this stage, you can read the documentation below. To move 
+	forward into 2020, check out the "template files" feature in SmartTemplate&#8308; instead:
+</p>
+<h3>How to use Template Files (instead of Stationery Ad-on)</h3>
+<p>You select an external template via a dropdown on the reply / write or forward button:
+  <br>
+	<img src="/img/file-templates-reply-dropdown.png" class="screenshot" alt="Templates on reply" />
+  <br>
+	<img src="/img/file-templates-steps.png" class="screenshot" alt="How to add template files" />
+  <ol>
+    <li>In Account, select "Template Files"</li>
+    <li>Click "Select Template File from disk" <img
+src="data:image/png;filename=cbbcdhchmmcihlkb.png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAC30lEQVQ4jdXR20/ScRjH8foHWl11202HWVlmtg4q6QrMVpBrTVsXWlnzosPWYd4g/XAM0nLMDGmlZhrL7LTONnNUlksnySQiCJgwXaiIGFEG+O6i1dZKpbUu+myfu+f72p7nO4N/kBn/H+q+v4e3hgzsV8TYGtOnrPve7vhQa0MqoXcafMZ8Bo0FhF6riXlrYODSzx00YG1IjQ+1XFwLwetMBJr57DmL/+VB3jZlMfFO/1Ppr/82Gw9qrltNbKSJqK+RqK+RWOAq5vpMgmYtEbuOmKOamKOaCW8d5rrV8aGmC6uIDhmIDNQTGagnOmTgVU0qnnY1nnY1UbuOqF1HzFOL6cKq+NAufTKR9w2Me2sY99YQed/A86oU+p6q6Huq4outCt3l3chKM8gqXoa+RT892nF2OeP9tYTdesJuPeP9tRi1K3AbS3EbS/lsrUSmXM+mQAqFg5vZImROj7ZXLuVT33lCjipCjio+9Z2n9fRynG0CzjaBsEWLVCkiy5vMwY9FSI4nTo8aKxIIu6oZs2kZs2kJu6p5cHIpp87tZLM8DakgQiqIyHKvpMi/F8nxRGQaGTKN7JdT/EBbyxYSslcyailn1FJOyF7JHdVitpaIyHiSiLgr6VstKeR5ctnv3MIR/wGOjhxCppH9Hn2ons+YtQJ/jxp/j5oxawU3lYvIlqeR2ZzExlvJiO+uJPvZGtY4t5HrSCN/eCf7hgsmR28L8xjtLWOoW8lQt5LR3jKaSxag0u0gW56KVEhHKqSz7ZGITG8eG4/Fsf6lI3MJ9GjwdSrwdSoI9Khpki/A0arA0argg/k0UkFEbouEXS4JG4rX4ff7p/6o0sIlPNam4HxYxHCXkhGTivJdMzmRN4sTebM4s38OosMJ5FxPI9+Wg1ghxuVyTY0CdDQf44o8gRvKBLoN29EWzsZkMhH6EARA36KfdOVJ0e9588LAtZMSaouTCAaDkz7+I/Rv80/Qr8HH7vafHjbjAAAAAElFTkSuQmCC"
+        alt="" class=""></li>
+    <li>[Optional step] change the title</li>
+    <li>Click Add, to add to the Write / Reply or Forward list.</li>
+  </ol>
+</p>
+
+<p>
+  You can add a list of external HTML templates, integrated into the Write / Reply and Forward buttons, just like 
+	with Stationery, by selecting the item <i>Template Files</i> from the accounts drop down:<br>
+	<img src="/screenshots/fileTemplates.png" class="screenshot" alt="SmartTemplate - Template Files Integration" />
+</p>
+<p>
+  Note: when using an external template file (just like with Stationery), then the account specific quote header 
+  and template are ignored. If you need any SmartTemplate&#8308 variables, you can insert them directly in the
+  HTML template file.
+</p>
+
+<p>Official Stationery page: <a href="https://addons.thunderbird.net/thunderbird/addon/stationery" target="_blank" title="Get Stationery!">Stationery for Thunderbird</a></p>
+
+<a id="whatIsStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
+ <h3>What is Stationery?</h3>
+ 
+<p>From version 0.9.3 onwards, SmartTemplate&#8308; supports integration with the Stationery addon. 
+This is made possible through some changes that <a href="https://addons.mozilla.org/thunderbird/user/98987/" target="_blank" title="Visit arivald ATN Page">Arivald</a>, the owner of the Stationery extensions kindly added, 
+and is available from version 0.8 of Stationery. 
+</p>
+
+ 
+ <p>Stationery is an addon that allows adding "outlook-style" stationery to your emails. 
+    What's more, it can be very well used to create powerful mail templates for repetitive tasks
+    such as sending out standard mails or replies; one thing that is missing in its functionality is
+    the ability to add in a variety of mail header based variables, this is where SmartTemplate&#8308; comes in.</p>
+
+<p>Stationery uses HTML files as templates for mail. It allows using different templates in replies / forwarded mail
+   and makes it possible to select the template using a simple click on a chevron beside the reply button:
+   <br>
+   <img src="/screenshots/stationery-dropDown.png" class="screenshot" alt="template selection" />
+</p>
+
+<p>Stationery also adds a handy html editing pane to the composer window; this alone makes it worth installing, 
+   as it allows both simplifying and learning the html behind your email compositions:
+   <br>
+   <img src="/screenshots/stationery-html.png" class="screenshot" alt="template selection" />
+</p>
+   
+
+ <a id="howDoesSt4ImproveStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
+<h3>How does SmartTemplate&#8308; improve Stationery?</h3>
+ 
+ <p>With the new global option "Support Stationery addon", SmartTemplate&#8308; is now able to replace variables 
+    from within Stationery files, like it does in your SmartTemplate&#8308; settings. Once a user selects a Stationery template,
+    the (identity-based) template of SmartTemplate&#8308; will be ignored, and it will instead do its replacement
+    work on the template provided by Stationery. This means you can now use all variables that you have been 
+    using from within SmartTemplate&#8308;, also within the Stationery.</p>
+
+<p>To enable stationery support, go to <i>Stationery Options, Global Settings</i> and activate the option "Support Stationery addon": 
+   <br>
+   <img src="/screenshots/settingsStationery.png" class="screenshot" alt="enable stationery support" />
+</p>
+
+<p>We believe this is a very powerful feature which will benefit the users of both addons.
+   I am already using it on a daily basis for replying to support mails.</p>
+   
+ <a id="howtoUse"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
+ <h3>How do I use SmartTemplate&#8308; with Stationery?</h3>
+ 
+ <p>You can use pretty much all <a href="/variables.html">variables</a> directly in your stationery files. When you select a Stationery 
+    during writing or replying to mail, then the <a href="/templates.html">SmartTemplate&#8308; templates</a> which are bound to the account identity of
+    your current email will be temporarily <i>ignored</i>. This means you do not need any special settings in quote / template as your Stationery 
+	file supplies everything.
+</P>
+<p>	Instead SmartTemplate&#8308; will search and replace the special
+    header variables in the Stationery itself. This turns Stationery into a full blown templating application.</p>
+<p> Additionally, you can use the following powerful <a href="/variables.html">variables</a> to control the content and behavior of your Stationery Template:</p>
+
+<article>
+ <ul>
+   <li><code>%sig(HTML)%</code> / <code>%sig(Text)%</code> = Inserts Signature (will be read from Account Settings). Your signature may also contain other variables. 
+          If you want st4 to replace variables in the signature, make sure to enable the option <i>Process signature</i> in
+          SmartTemplate&#8308;'s advanced settings:<br>
+          <img src="/screenshots/settings-process-sig.png" class="screenshot" alt="process signature" />
+  </li>
+  <li><code>%cursor%</code> = Controls where your cursor will go when the email body gets the focus</li>
+  <li><code>%quotePlaceholder%</code> = Use this to determine where the text of the replied to mail should go. 
+          Note that this can also be used by just selecting some text from the original email and then hitting reply: 
+          only the selected portion will be quoted. Also, if you write a <i>new</i> email, the variable will simply be removed 
+					(as there is nothing to quote).
+  </li>
+  <li><code>%quoteHeader%</code> = From version 0.9.4 we will support injecting the (processed) contents of our quote header box into the 
+	    body of the Stationery. Interestingly the variable will only be filled in the cases <i>reply</i> and <i>forward</i>, and will simply
+			be removed when writing a <i>new</i> email. This way you can use the same stationery for all cases.
+	</li>
+  <br>
+   <span class="attention"><em>ATTENTION:</em>
+     You cannot use <code class="inline">%quotePlaceholder%</code> or <code class="inline">%quoteHeader%</code> in SmartTemplate&#8308; directly; it is only allowed in your Stationery files.
+   </span>			
+ </ul>
+ <p>For a more complete list of variables that you can use in your Stationery, please read the <a href="/variables.html">variables page</a>.</p>
+</article>
+
+ <a id="example"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
+ <h3>Example of a Stationery with SmartTemplate&#8308; variables</h3>
+ 
+ <p>Here is an example of a Stationery I use when I write support email. The quoted text is automatically inserted into the inner 
+    container via <code class="inline">%quotePlaceholder%</code>. Also, <code class="inline">%subject%</code> is used to show the conversation title 
+    in the top. Note that the signature (green box) is injected into the stationery using the <code class="inline">%sig(HTML)%</code> / <code class="inline">%sig(Text)%</code> variable. The signature
+    itself also contains SmartTemplate&#8308; variables (<code class="inline">%identity(name)%</code>).</p>
+
+<p>
+ <img src="/screenshots/stationery-example.png" class="screenshot" alt="stationery example" style="border-radius: 0 !important; padding: 2em 1em; background: white;" />
+</p>
+
+<p>We hope you enjoy this new and powerful features of SmartTemplate&#8308;.</p>
+
+<p class="scream">
+ Please, <a href="https://addons.thunderbird.net/thunderbird/addon/324497/reviews" title="Leave some Feedback for SmartTemplate⁴ on ATN" target="_blank">leave some feedback</a> at the Mozilla Addons Page - spread the word so more people start using it!
+</p>
+<!-- END STATIONERY.HTML -->
