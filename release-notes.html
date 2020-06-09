@@ -1,27 +1,23 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplate4.mozdev.org/version.html#2.10.1">can be found here</a>
+Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.11">can be found here</a>
 
-You can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!
+You can also find there a discounted sale for Pro and Standard licenses for the 2 weeks until June 25th.
 
 <b>Enhancements</b>
 <ul>
 
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/59">[issue 59]</a> External templates: SmartTemplate&#8308 now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.
-
-In order to use relative image paths, such as &lt;img src="images/img1.jpg"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.
-
-After placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code class="inline">%file()%</code> variable and select a file from disk.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/54">[issue 54]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li>
-<li>Remember the last path separately for opening templates from the menu directly.</li>
-<li>Plain text
-</ul>
+  <ul>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/24">[issue 24]</a> Select a different html template file while composer is open. Note that <i>any manually entered text will be discarded</i> when you change the template, so do this before you start typing.
+    
+    In order to do this the new <i>Change Template</i> button can be added via right-click and <i>Customize</i> on the composer toolbar. After adding the button, reopen the Composer window to update it with the appropriate template list (write / reply or forward).
+    </li>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/60">[issue 60]</a> Fixed some barriers with screenreader navigation in Settings Dialog. All buttons on the settings screen can now be executed without mouse clicks. Also the licensing message will be displayed as a OS notification which will be read out by the widely accepted JAWS reader. It appears that NVDA still cannot read these. Many thanks to my user Rüdiger L. for testing this with me.</li>
+    <li>Completed translations for Serbian locale.</li>
+  </ul>
 
 <b>Bug Fixes</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/51">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/54">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/55">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/58">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code class="inline">%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li>
+  <li></li>
 </ul>

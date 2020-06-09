@@ -16,8 +16,8 @@
 <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
 <script type="application/javascript" src="chrome://shimSmartTemplate/content/smartTemplate-shim-ecma.js" />
 <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
-<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-composer.js"/>
 <script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-fileTemplates.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-composer.js"/>
 	
 	<!-- Toolbar -->
 	<toolbarpalette id="MsgComposeToolbarPalette">
@@ -30,15 +30,19 @@
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
 		</toolbarbutton>
-		<!-- [issue 24] Select a different template in Composer..
-    toolbarbutton 
+		<!-- [issue 24] Select a different template in Composer..	-->
+
+    <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
 			class="toolbarbutton-1 AG"
-			label="change template…"
-			tooltiptext="Select a different template"
+			label="Change template…"
+			tooltiptext="Selects a different template - use before editing in the mail body!"
+      type="menu-button"
 			context=""
-			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
-			-->
+			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">
+        <menupopup id="button-TemplatePopup">
+        </menupopup>      
+      </toolbarbutton>
     
     
 	</toolbarpalette>

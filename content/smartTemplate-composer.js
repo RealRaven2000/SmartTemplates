@@ -52,7 +52,93 @@ SmartTemplate4.composer = {
 				, 4000
 			);
 		}
-	} // load ()
+    
+   
+    
+	}, // load ()
+  
+  initTemplateMenu: function initTemplateMenu() {
+    // load menu with templates to button-save
+    const Ci = Components.interfaces,
+          fT = SmartTemplate4.fileTemplates,
+          prefs = SmartTemplate4.Preferences;
+    let templatePopup = window.document.getElementById('button-TemplatePopup');
+    
+    // clear previous menu (in case we haven't added the button to the toolbar)
+    // the Template Menu is rebuilt if it is being clicked
+    for (let j=templatePopup.childNodes.length-1; j>=0; j--) {
+      let cN = templatePopup.childNodes[j];
+      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem")
+        templatePopup.removeChild(cN);
+    }
+    
+    fT.loadCustomMenu(false).then(
+      function smartTemplatesLoaded() {
+        let compCase = "",
+            entries = null;
+        const msgComposeType = Ci.nsIMsgCompType;
+        switch(gMsgCompose.type) {
+          case msgComposeType.Template: // Tb template
+          case msgComposeType.New:
+          case msgComposeType.NewsPost:
+          case msgComposeType.MailToUrl:
+            compCase="new";
+            entries = fT.Entries.templatesNew;
+            break;
+          case msgComposeType.Reply:
+          case msgComposeType.ReplyAll:
+          case msgComposeType.ReplyToSender:
+          case msgComposeType.ReplyToGroup:
+          case msgComposeType.ReplyToSenderAndGroup:
+          case msgComposeType.ReplyToList:
+            compCase="rsp";
+            entries = fT.Entries.templatesRsp;
+            break;
+          case msgComposeType.ForwardAsAttachment:
+          case msgComposeType.ForwardInline:
+            compCase="fwd";
+            entries = fT.Entries.templatesFwd;
+            break;
+          case msgComposeType.EditAsNew: // do we allow this? not now.
+          case msgComposeType.EditTemplate:
+          case msgComposeType.Draft:
+            break;
+        }
+        if (compCase) {
+          fT.configureMenu(entries, templatePopup, compCase, false); // build appropriate menu, minus the configuration option.
+        }
+        else
+          templatePopup.disabled = true;
+      }
+    );
+  } ,
+  
+  selectTemplateFromMenu : function selectTemplateFromMenu() {
+    const fT = SmartTemplate4.fileTemplates,
+          util = SmartTemplate4.Util;
+    if (!fT.armedEntry || !fT.armedEntry.path) {
+      let wrn = util.getBundleString("SmartTemplate4.fileTemplates.selectFromMenu", "Please select a template from the dropdown menu.");
+      SmartTemplate4.Message.display(
+        wrn,
+        "centerscreen,titlebar,modal,dialog",
+        { ok: function() {  
+                // get last composer window and bring to foreground
+                let composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
+                  .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose");
+                if (composerWin) {
+                  // refresh the template menu
+                  SmartTemplate4.composer.initTemplateMenu(); // make sure there are some menu items now.
+                  composerWin.focus();
+                }
+              }
+        }, 
+        window
+      );
+    }
+    else
+      SmartTemplate4.notifyComposeBodyReady(null, true, window);
+    // fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
+  }
 };
 
 // window.setTimeout (
@@ -85,6 +171,7 @@ function()
 					SmartTemplate4.ComposeStartup();
 					logDebugOptional('composer','Calling initListener');
 					SmartTemplate4.initListener(true);
+          SmartTemplate4.composer.initTemplateMenu();
 				}
 			}
 		}

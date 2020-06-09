@@ -246,6 +246,8 @@ SmartTemplate4.fileTemplates = {
       lb.ensureIndexIsVisible(existingIndex);
       lb.getItemAtIndex(existingIndex).firstChild.value = label;
       FT.CurrentEntries[existingIndex].label = label;
+      // update path!
+      lb.getItemAtIndex(existingIndex).value = path;
     }
       
     SmartTemplate4.fileTemplates.repopulate(false); // rebuild menu
@@ -487,9 +489,10 @@ SmartTemplate4.fileTemplates = {
 	},
 	
 	// lbl: [new, rsp, fwd]
-	configureMenu: function (templates, msgPopup, composeType) {
+	configureMenu: function (templates, msgPopup, composeType, showConfigureItem = true) {
 		const util = SmartTemplate4.Util,
 					fT = SmartTemplate4.fileTemplates,
+          prefs = SmartTemplate4.Preferences,
 					maxFreeItems = 3,
 					isLicensed = util.hasLicense(false);
 		let parent = msgPopup.parentNode;			
@@ -520,8 +523,9 @@ SmartTemplate4.fileTemplates = {
 			
 			// if this is a non-native menupopup (we created it)
 			// we need to add an event handler to notify the parent button.
-			menuitem.addEventListener("click", 
+			menuitem.addEventListener("command", 
 				function(event) { 
+          if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					if (event.target.disabled) {
 						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplate⁴ license to use more than {1} templates!");
@@ -544,7 +548,7 @@ SmartTemplate4.fileTemplates = {
 				{capture:true } , 
 				true);
 			// stop command event from bubbling up.
-			menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
+			// menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
 			
 			msgPopup.appendChild(menuitem);									 
 		}
@@ -562,7 +566,7 @@ SmartTemplate4.fileTemplates = {
 		menuitem.classList.add("st4templatePicker");
 		menuitem.classList.add("menuitem-iconic");
 		// add a file open mechanism
-		menuitem.addEventListener("click", 
+		menuitem.addEventListener("command", 
 			function(event) { 
 			  event.stopImmediatePropagation();
 				util.logDebugOptional("fileTemplates", "Click event for open file Template - stopped propagation.\n"
@@ -573,43 +577,35 @@ SmartTemplate4.fileTemplates = {
 			}, 
 			{capture:true } , 
 			true);
-		// stop the oncommand event bubbling up.
-		menuitem.addEventListener("command",
-			function(event) { 
-				event.stopImmediatePropagation();
-			}
-		);
+      
 		msgPopup.appendChild(menuitem);	
     
 		/* [item 29]  Add configuration item to file template menus. */
-    menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
-		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
-		menuitem.setAttribute("label", menuTitle);
-		menuitem.setAttribute("st4composeType", composeType);
-		menuitem.classList.add("menuitem-iconic");
-		menuitem.classList.add("st4templateConfig");
+    if (showConfigureItem) {
+      menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+      menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
+      menuitem.setAttribute("label", menuTitle);
+      menuitem.setAttribute("st4composeType", composeType);
+      menuitem.classList.add("menuitem-iconic");
+      menuitem.classList.add("st4templateConfig");
 
-		menuitem.addEventListener("click", 
-			function(event) { 
-			  event.stopImmediatePropagation();
-        let win = SmartTemplate4.Util.Mail3PaneWindow,
-            params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
-				win.openDialog('chrome://smarttemplate4/content/settings.xul', 
-          'Preferences', 
-          'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
-          null,
-					params);
-				return false; 
-			}, 
-			{capture:true } , 
-			true);
-		// stop the oncommand event bubbling up.
-		menuitem.addEventListener("command",
-			function(event) { 
-				event.stopImmediatePropagation();
-			}
-		);
-		msgPopup.appendChild(menuitem);	
+      menuitem.addEventListener("command", 
+        function(event) { 
+          event.stopImmediatePropagation();
+          let win = SmartTemplate4.Util.Mail3PaneWindow,
+              params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
+          win.openDialog('chrome://smarttemplate4/content/settings.xul', 
+            'Preferences', 
+            'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
+            null,
+            params);
+          return false; 
+        }, 
+        { capture:true } , 
+        true);
+
+      msgPopup.appendChild(menuitem);	
+    }
     
 		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
@@ -1002,8 +998,11 @@ SmartTemplate4.fileTemplates = {
         isSmartReplyBtn = 
           (btn.parentElement.id == "hdrSmartReplyButton"); // contains all "smart" buttons
         
-    
-		if (popup.getAttribute("st4nonNative") 
+    if (btn.id=="smarttemplate4-changeTemplate") {  
+      // [issue 24] select differente template from composer window
+      SmartTemplate4.notifyComposeBodyReady(null, true, window);
+    }
+    else if (popup.getAttribute("st4nonNative") 
 			  || btn.id=="button-newmsg"
 			  || btn.id=="button-forward"  
 			  || btn.id=="button-reply"

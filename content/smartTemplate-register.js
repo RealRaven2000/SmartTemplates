@@ -477,7 +477,7 @@ SmartTemplate4.Licenser =
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    util.openURL(event,'http://smarttemplate4.mozdev.org/premium.html');
+    util.openURL(event,'http://smarttemplates.quickfolders.org/premium.html');
   },
   
   // format ST-EMAIL:DATE;SmartTemplate4.Crypto

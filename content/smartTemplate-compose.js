@@ -983,8 +983,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		else {
 			if (gMsgCompose.type != msgComposeType.Template) {
-				// Check identity changed or not
-				if (!flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
+				// Check identity changed or not; also check whether new template was requested from composer window
+				if (!flags.isChangeTemplate && 
+            !flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
 					return;
 				}
 				// Undo template messages (does _not_ remove signature!)

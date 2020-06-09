@@ -51,22 +51,22 @@
 							 customizable="false">
         <toolbarbutton id="helpTemplates"
             class="toolbarbutton-1 chromeclass-toolbar-additional"
-            onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+            oncommand = "SmartTemplate4.Util.showStationeryHelpPage();" 
             label = ""
             tooltiptext="&tip.fileTemplates;"
             />
 				<toolbarbutton id="btnSaveTemplate"
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnSaveTemplate.tooltip;"
-											 onclick = "SmartTemplate4.Settings.store();"/>
+											 oncommand = "SmartTemplate4.Settings.store();"/>
 				<toolbarbutton id="btnLoadTemplate"
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnLoadTemplate.tooltip;"
-											 onclick="SmartTemplate4.Settings.load();"/>
+											 oncommand="SmartTemplate4.Settings.load();"/>
 				<toolbarbutton id="btnYouTube"
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnYouTube.tooltip;"
-											 onclick="SmartTemplate4.Util.showYouTubePage();" 
+											 oncommand="SmartTemplate4.Util.showYouTubePage();" 
 											 />
       </toolbar>
 
@@ -74,11 +74,11 @@
 			<button id="btnAdvanced"
 			        class = "buttonIcon"
 			        label="&advanced.label;"
-			        onclick = "SmartTemplate4.Settings.openAdvanced();"/>
+			        oncommand = "SmartTemplate4.Settings.openAdvanced();"/>
 			<button id="btnCloseAdvanced"
 			        class = "buttonIcon"
 			        label="&close.label;"
-			        onclick="SmartTemplate4.Settings.closeAdvanced();"
+			        oncommand="SmartTemplate4.Settings.closeAdvanced();"
 			        hidden = "true"/>
 		</hbox>
 
@@ -329,7 +329,7 @@
 												style="min-height: 10em;" 
 												flex="1"
 												seltype="single"
-												onclick="SmartTemplate4.fileTemplates.onSelect(this);"
+												onselect="SmartTemplate4.fileTemplates.onSelect(this);"
 												> <!-- note selTyope is camelCase in JS -->
 										</richlistbox>
 										<!-- we will move this around to the active tab -->
@@ -385,7 +385,7 @@
 																<toolbarbutton 
 																				id="btnPickTemplate" 
 																				tooltiptext="&fileTemplates.file.open;" 
-																				onclick="SmartTemplate4.fileTemplates.pickFileFromSettings();"
+																				oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
 																				/>
 															</hbox>
 														</row>
@@ -418,7 +418,7 @@
 											id="templateList.rsp" 
 											style="min-height: 10em;" 
 											flex="1"
-										  onclick="SmartTemplate4.fileTemplates.onSelect(this);">
+										  onselect="SmartTemplate4.fileTemplates.onSelect(this);">
 										</richlistbox>
 									</vbox>
 								</groupbox>
@@ -436,7 +436,7 @@
 											id="templateList.fwd" 
 											style="min-height: 10em;" 
 											flex="1"
-											onclick="SmartTemplate4.fileTemplates.onSelect(this);">
+											onselect="SmartTemplate4.fileTemplates.onSelect(this);">
 										</richlistbox>
 									</vbox>									
 								</groupbox>
@@ -570,20 +570,20 @@
 												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.stationery');"
 												preference = "pref_stationerySupport"/>
 									<toolbarbutton id="helpStationery"
-											onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+											oncommand = "SmartTemplate4.Util.showStationeryHelpPage();" 
 											label = ""
 											/>
 									<spacer/>
 									<toolbarbutton 
 									    id = "btnGetStationery"
-									    onclick = "SmartTemplate4.Util.showStationeryPage();"
+									    oncommand = "SmartTemplate4.Util.showStationeryPage();"
 											class = "stationeryURL"
 											label = "&pref_stationeryLink;" 
 											tooltiptext = "&pref_stationeryLink_tip;"/>
 									<spacer flex="1" id="spcStationery"/>
 									<toolbarbutton 
 									    id = "stationerySettings"
-									    onclick = "SmartTemplate4.Util.showStationerySettings();"
+									    oncommand = "SmartTemplate4.Util.showStationerySettings();"
 											label = "" 
 											tooltiptext = "Settings…"/>
 									<spacer flex="10" />
@@ -606,7 +606,7 @@
 												label = "&pref_showStatusIcon.label;"
 												preference = "pref_showStatusIcon"
 												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
-												onclick="SmartTemplate4.updateStatusBar(!this.checked);"/>
+												oncommand="SmartTemplate4.updateStatusBar(!this.checked);"/>
 									<spacer flex="1" />
 									<menulist id = "iconType"
 												label = ""
@@ -626,11 +626,11 @@
 									<label  id = "lblFontSettings"
 											value="&pref_fontSettings.label;" />
 									<toolbarbutton id = "fontSmaller"
-											onclick = "SmartTemplate4.Settings.fontSize(-1);" 
+											oncommand = "SmartTemplate4.Settings.fontSize(-1);" 
 											label = "" />
 									<spacer id = "fontButtonSpacer" />
 									<toolbarbutton id = "fontLarger"
-											onclick = "SmartTemplate4.Settings.fontSize(+1);" 
+											oncommand = "SmartTemplate4.Settings.fontSize(+1);" 
 											label = "" />
 									<spacer width = "2px" />
 									<textbox id = "txtFontSize"
@@ -677,8 +677,8 @@
 								<checkbox id = "chkResolveAB"
 											label = "&resolveNamesFromAB;"
 											preference = "pref_resolveNamesFromAB"
-												tooltiptext = "&resolveNamesFromAB_tip;"
-											onclick = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
+											tooltiptext = "&resolveNamesFromAB_tip;"
+											oncommand = "SmartTemplate4.Settings.resolveAB_onClick(this);"/>
 								<hbox>
 									<spacer style="width:2em;"/>
 									<vbox>
@@ -759,15 +759,15 @@
 							<spacer flex = "1" />
 							<vbox class="buttonLinks">
 							<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
-								<button onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
+								<button oncommand = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "supportURL text-link"
 								        label = "&url.supportPage.label;" />
 								<spacer flex="1"/>
-								<button onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
+								<button oncommand = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "homePageURL text-link"
 								        label = "&url.homePage.label;" />
 								<spacer flex="1"/>
-								<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
+								<button oncommand = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "bugsURL text-link"
 								        label = "&url.bugsAndFeaturesPage.label;" />
 							</vbox>
@@ -830,7 +830,7 @@
 							<hbox class="groupbox-title"><label class="header">&premiumConfig;</label></hbox>
 							<hbox>
 								<label class="plain-link" 
-											 tooltiptext="http://smarttemplate4.mozdev.org/"
+											 tooltiptext="http://smarttemplates.quickfolders.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">&label.premiumFeaturesSite;</label>
 							</hbox>
               <checkbox id = "chkSilentUpdates"
@@ -878,7 +878,7 @@
 													disabled = "true"
 													class = "buttonIcon"
 													label="&support.compose;"
-													onclick = "SmartTemplate4.Settings.sendMail('axelg@gofree.indigo.ie');"/>
+													oncommand = "SmartTemplate4.Settings.sendMail('axelg@gofree.indigo.ie');"/>
 									<spacer flex="1" />
 								</hbox>
 							</vbox>
@@ -889,15 +889,15 @@
 							  <spacer flex="1" />
 								<vbox class="buttonLinks">
 								<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
-									<button onclick = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
+									<button oncommand = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
 													class = "supportURL text-link"
 													label = "&url.supportPage.label;" />
 									<spacer flex="1"/>
-									<button onclick = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
+									<button oncommand = "SmartTemplate4.Util.showHomePage(); setTimeout( function() {window.close();}, 200 );"
 													class = "homePageURL text-link"
 													label = "&url.homePage.label;" />
 									<spacer flex="1"/>
-									<button onclick = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
+									<button oncommand = "SmartTemplate4.Util.showBugsAndFeaturesPage(); setTimeout( function() {window.close();}, 200 );"
 													class = "bugsURL text-link"
 													label = "&url.bugsAndFeaturesPage.label;" />
 								</vbox>

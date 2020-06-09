@@ -13,12 +13,12 @@ END LICENSE BLOCK
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://smarttemplate4.mozdev.org");
+		return this._thunderbirdRegExp = new RegExp("^http://smarttemplates.quickfolders.org");
 	}
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.10.1",
+	HARDCODED_CURRENTVERSION : "2.11",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -29,12 +29,12 @@ SmartTemplate4.Util = {
 	ConsoleService: null,
 	lastTime: 0,
 	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
-	PremiumFeaturesPage: "http://smarttemplate4.mozdev.org/premium.html",
-	SupportHomepage:  "http://smarttemplate4.mozdev.org/index.html",
-	BugPage:          "http://smarttemplate4.mozdev.org/bugs.html",
-	LicensePage:      "http://smarttemplate4.mozdev.org/contribute.html",
-	VersionPage:      "http://smarttemplate4.mozdev.org/version.html",
-	StationeryHelpPage: "http://smarttemplate4.mozdev.org/stationery.html",
+	PremiumFeaturesPage: "http://smarttemplates.quickfolders.org/premium.html",
+	SupportHomepage:  "http://smarttemplates.quickfolders.org/index.html",
+	BugPage:          "http://smarttemplates.quickfolders.org/bugs.html",
+	LicensePage:      "http://smarttemplates.quickfolders.org/contribute.html",
+	VersionPage:      "http://smarttemplates.quickfolders.org/version.html",
+	StationeryHelpPage: "http://smarttemplates.quickfolders.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
 	MarkyAMOPage:     "https://addons.thunderbird.net/thunderbird/user/2448736/",
 	ArisAMOPage:      "https://addons.thunderbird.net/firefox/user/5641642/",
@@ -1469,7 +1469,7 @@ SmartTemplate4.Util = {
 			// make sure we can sanitize all pages for our premium users!
 			if (   uType
 			    && URL.indexOf("user=")==-1 
-					&& URL.indexOf("smarttemplate4.mozdev.org")>0 ) {
+					&& URL.indexOf("smarttemplate4.quickfolders.org")>0 ) {
 				// remove #NAMED anchors
 				let x = URL.indexOf("#"),
 				    anchor = '';
@@ -2880,7 +2880,7 @@ SmartTemplate4.Util.firstRun =
 				// on very first run, we go to the index page - welcome blablabla
 				util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
 				window.setTimeout(function() {
-					util.openURL(null, "http://smarttemplate4.mozdev.org/index.html");
+					util.openURL(null, "http://smarttemplates.quickfolders.org/index.html");
 				}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 			}
 			else {
