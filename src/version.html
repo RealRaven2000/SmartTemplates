@@ -588,7 +588,7 @@ Sender: %from%
     <li>
       <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/32">[issue 30]</a>,
       <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/32">[issue 32]</a>, 
-      <a name="26755" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26755" target="_blank">[Bug 26755]</a>
+      <a name="26755" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26755" target="_blank">[Bug 26755]</a>
       Fixed: some reply / forward buttons were missing the file template dropdowns<br>
       In some cases the reply / forward buttons in the header area were not configured
       with file templates. This could happen if no preview area was configured and no
@@ -940,7 +940,7 @@ Sender: %from%
 		</li>
     <li>
 			<p>
-			<a name="26689" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26689" target="_blank">[Bug 26689]</a>
+			<a name="26689" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26689" target="_blank">[Bug 26689]</a>
 		  New function to set E-mail priority </p>
 			<p>
 			  Add a function to set the priority of the composed Email.
@@ -1069,7 +1069,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			If the language pack is missing or disabled, this will be indicated
 			in JavaScript error console - not a potentially disruptive message box.
 		</li>
-    <li><a name="26688" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26688" target="_blank">[Bug 26688]</a> 
+    <li><a name="26688" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26688" target="_blank">[Bug 26688]</a> 
 		  Multiple <code class="inline">%matchTextFromBody%</code> in a line yielded only a single result. 
 			This is now fixed also for <code class="inline">%matchTextFromSubject%</code>, so they can better be used 
 			multiple times in the same template.
@@ -1103,10 +1103,10 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	<p>Change Log for Version 2.1, released on 29/07/2019:</p>
 	<h5 class="inList"><span class="inListTitle">2.1 - Enhancements</span></h5>
   <ul>
-    <li><a name="26536" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26536" target="_blank">[Bug 26536]</a> 
+    <li><a name="26536" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26536" target="_blank">[Bug 26536]</a> 
 			Support using SmartTemplate&#8308; variables in Thunderbird Templates (Tb 60).
 		</li>
-    <li><a name="26626" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26629" target="_blank">[Bug 26629]</a> 
+    <li><a name="26626" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a> 
 			Added a variable to set a specific time zone (e.g. GMT) for date/time variables.<br>
 			Use the new <code>%X:=timezone(<i>timezone</i>)%</code> switch to force displaying the time with a fixed time zone.
 			<br>
@@ -1115,7 +1115,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			<code class="inline">%dateshort%</code> or <code class="inline">%dateformat()%</code>
 		</li>
     <li><p>
-		  <a name="26634" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26634" target="_blank">[Bug 26634]</a> 
+		  <a name="26634" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26634" target="_blank">[Bug 26634]</a> 
 			header.*.matchFrom* functions: append/prepend arbitrary text to field based on match.
 			</p>
 			<p>You can now use the matchFromSubject and matchFromBody functions in the following way:<br>
@@ -1128,7 +1128,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			</p>
 		</li>
 		<li> 
-		  <a name="26677" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26677" target="_blank">[Bug 26677]</a> 
+		  <a name="26677" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26677" target="_blank">[Bug 26677]</a> 
 			<code>%header.set.matchFromBody()</code> improvements for use with subject line.
 			It is now possible to quote the first n characters of the quoted email like this:<br>
 			<tt>%header.set.matchFromBody(subject,"(\s*\S){1,75}",0)%</tt>
@@ -1149,10 +1149,10 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
   </ul>
 	<h5 class="inList"><span class="inListTitle">2.1 - Bug Fixes</span></h5>
   <ul>
-    <li><a name="26626" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26626" target="_blank">[Bug 26626]</a> 
+    <li><a name="26626" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26626" target="_blank">[Bug 26626]</a> 
 			Edit As New duplicated email content unless Stationery is installed.
 		</li>
-		<li><a name="26627" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26627" target="_blank">[Bug 26627]</a> 
+		<li><a name="26627" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26627" target="_blank">[Bug 26627]</a> 
 			Signature was always removed when creating message from templates. With this fix, 
 			when creating a mail from a thunderbird template the signature will be treated according to
 			the rules set up in account settings composition section. <br>
@@ -1163,21 +1163,21 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		  Fixed: <code class="inline">%attach()%</code> command previously had a filter to only append HTML files.
 		</li>
 		<li>
-			<a name="26628" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26628" target="_blank">[Bug 26628]</a>
+			<a name="26628" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26628" target="_blank">[Bug 26628]</a>
 			Fixed: <code class="inline">%dateshort%</code> and <code class="inline">%datelocal%</code> left out time portion.
 		</li>
 		<li>
-			<a name="26632" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26632" target="_blank">[Bug 26632]</a>
+			<a name="26632" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26632" target="_blank">[Bug 26632]</a>
 			Using <code class="inline">%dateformat%</code> in reply / forward: deferred fields are not automatically tidied up.
 		</li>
 		<li>
-			<a name="26635" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26635" target="_blank">[Bug 26635]</a>
+			<a name="26635" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26635" target="_blank">[Bug 26635]</a>
 			Cursor not placed in "To:" Row when writing/forwarding email. <br>
 			Fix: SmartTemplate⁴ will now check when writing new emails if the "To:" address is already set. If not,
 			the cursor will be placed into the address widget and <code class="inline">%cursor%</code> ignored.
 		</li>
 		<li>
-			<a name="26636" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26636" target="_blank">[Bug 26636]</a>
+			<a name="26636" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26636" target="_blank">[Bug 26636]</a>
 			Stationery broken with %sig(text)%. When using a Stationery template with the 
 			"Use instead of default quote header" option switched off, some of the template text may be accidentally
 			deleted from the Email.
@@ -1193,12 +1193,12 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		<li>
 		  Raised minimum version for Postbox to 5.0.
 		</li>
-		<li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26667" target="_blank">[Bug 26667]</a> 
+		<li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26667" target="_blank">[Bug 26667]</a> 
 				 ESR 2019 Readiness - compatibility with Thunderbird 68
 			 <p>Made SmartTemplate&#8308; compatible with Thunderbird 68 - part of the ongoing effort to 
 				 future proof SmartTemplate&#8308; for 2020. This will also mean eventually making the minimum requirement 
 				 using Thunderbird version 60. <br>
-				 The latest test version (2.1 pre 244) can be be found <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26667#c2">here</a>.
+				 The latest test version (2.1 pre 244) can be be found <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26667#c2">here</a>.
 				 </p>
 			 <p>
 				 I may back-port new features to older versions on demand - these will be handled on 
@@ -1226,7 +1226,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		<li>Added the premium feature <a href="premium.html#deferredVariables">'deferred variables in "Write" template'</a> (such as %to%) to standard features. Important: this only works in HTML mode - plain text is not supported.</li>
 		<li>Improved panel sizing on Preferences dialog. </li>
 		<li>ESR - Eliminated deprecated getCharPref / setCharPref functions</li>
-		<li>Fixed regression caused by ESR work for Thunderbird 68 <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26657" target="_blank">[Bug 26657]</a>, 
+		<li>Fixed regression caused by ESR work for Thunderbird 68 <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26657" target="_blank">[Bug 26657]</a>, 
 			some account specific options (use HTML, replace BR) were greyed out when opening 
 			the dialog and had to be reactivated by enabling / disabling "Apply the following template".
 			Use Common should always disable account specific settings for clarity. </li>
@@ -1257,7 +1257,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<iframe class="youtube"  src="https://www.youtube.com/embed/Iah85SdtqNE" frameborder="0" allowfullscreen></iframe>
 		</li>	
 		<li>
-		  <p><a name="24993" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24993" target="_blank">[Bug 24993]</a> 
+		  <p><a name="24993" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24993" target="_blank">[Bug 24993]</a> 
 			   <span class="premium">Premium Feature</span>
 			   Added support for using the following fields when composing a *new* Email:</p>
 			<ul>
@@ -1280,7 +1280,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			</p>
 		</li>
 		<li><p>
-		   <a name="26588" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26588" target="_blank">[Bug 26588]</a>
+		   <a name="26588" href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>
 			   <code class="deferable">%dateformat%</code> <span class="premium">Premium Feature</span> Function for inserting / updating current time.
 			</p>
 			<p>
@@ -1298,7 +1298,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			</p>
 		</li>
 
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26597" target="_blank">[Bug 26597]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26597" target="_blank">[Bug 26597]</a>
 				Added new ?? operator to make parts of address header arguments optional, e.g. 
 				<code>%from(name,??mail)%</code> - this will omit the mail part if a name part is given in the 
 				from address.
@@ -1333,7 +1333,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<i>name,fullname,firstname,lastname,mail,bracketMail(),bracketName(),initial</i>.
 		</li>
 		
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26307" target="_blank">[Bug 26307]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26307" target="_blank">[Bug 26307]</a>
 		    <span class="premium">Premium Feature</span>
 				Improved switch for adding (subtracting) days from date fields:<br>
 				<code>%X:=calculated(d,h:mm)%</code> where <i>d</i> = is the number of days to add. <i>h</i> = number of hours and <i>mm</i> number of minutes.
@@ -1341,12 +1341,12 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 				<code>%X:=calculated(0)%</code> to unapply it to the rest of the Email.
 		</li>				
 		
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26552" target="_blank">[Bug 26552]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26552" target="_blank">[Bug 26552]</a>
 		    <code>%attach(<i>filePath</i>)%</code> added function for attaching files.
 		</li>
 
 		<li>Address Book: Added option to replace firstname with Display Name if no first name is recorded.</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26595" target="_blank">[Bug 26595]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26595" target="_blank">[Bug 26595]</a>
 				Option to disable guessing Name functionality.
 		</li>
 		<li>
@@ -1358,7 +1358,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		</li>
 		
 
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26536" target="_blank">[Bug 26536]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26536" target="_blank">[Bug 26536]</a>
 		  Support using SmartTemplate&#8308; variables in Thunderbird Templates. 
 			<p>You can now use things like <code class="inline">%datelocal%</code> within a 
 				Thunderbird template. However when editing Templates using Thunderbird composer, 
@@ -1374,7 +1374,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 			</p>
 		</li>
 		
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26551" target="_blank">[Bug 26551]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26551" target="_blank">[Bug 26551]</a>
 			Add Domain License key support for SmartTemplate&#8308; Pro
 		</li>
 		<li>
@@ -1385,21 +1385,21 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	
 	<h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
 	<ul>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26524" target="_blank">[Bug 26524]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26524" target="_blank">[Bug 26524]</a>
 		    <code class="inline">%datelocal%</code> and <code class="inline">%dateshort%</code> are broken in Thunderbird 60
 		</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26526" target="_blank">[Bug 26526]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26526" target="_blank">[Bug 26526]</a>
 		    <code class="inline">%file(<i>imageFile</i>)%</code> falsely creates 
 				"The Variable %5C.. can not be used for new messages" when including 
 				images in a NEW Email (in Windows Only).
 		</li>
 		<li>Fixed: When adding inline text using <code class="inline">%file%</code>, new lines were not expanded in Composer (HTML view). </li>
 		
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26523" target="_blank">[Bug 26523]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26523" target="_blank">[Bug 26523]</a>
 		    Extra <code class="html">&lt;br&gt;</code> before blockquote if standard quote header is used
 		</li>
 				
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26541" target="_blank">[Bug 26541]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26541" target="_blank">[Bug 26541]</a>
 			SmartTemplate&#8308; 1.5 not working correctly in Postbox 5.0
 		</li>
 
@@ -1421,10 +1421,10 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
   </h4>
 	
   <ul>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26434" target="_blank">[Bug 26434]</a>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26434" target="_blank">[Bug 26434]</a>
 		    Forwarding email with embedded images removes images
 		</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26465" target="_blank">[Bug 26465]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26465" target="_blank">[Bug 26465]</a>
 		    Composer does not focus into body of mail.
 		</li>
     <li>Updated locales for French and Slovenian language. Thanks to Jo&euml;l Bauer and Peter Klofutar at Babelzilla.</li>
@@ -1460,17 +1460,17 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	<a name="features1_5">&nbsp;</a>
 	<h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
   <ul>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26340" target="_blank">[Bug 26340]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26340" target="_blank">[Bug 26340]</a>
 		    New "unmodified field" option for %To()%, %CC()% and %From()%
 		    <code>%from(<i>initial</i>)%</code> New <i>initial</i> keyword to avoid any changes of header; just displays the header as received.</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26307" target="_blank">[Bug 26307]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26307" target="_blank">[Bug 26307]</a>
 		    <span class="premium">Premium Feature</span>
 				New switch for adding (subtracting) days from date fields:<br>
 				<code>%X:=calculated(n)%</code> where n = is the number of days to add. Note this needs to be reset using
 				<code>%X:=calculated(0)%</code> to unapply it to the rest of the Email.
         </li>				
 				<hr>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26411" target="_blank">Bug 26411</a>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26411" target="_blank">Bug 26411</a>
 				New: Expanded functions for manipulation of headers, based on 
 		    <a href="http://www.regular-expressions.info/quickstart.html" target="_blank">Regular Expressions</a>.<span class="premium">Premium Feature</span></li>
     <li><code>%header.set.matchFromSubject(<i>hdr,regex,group</i>)%</code> Set the header if a matching regular expression is found in subject line.</li>
@@ -1494,11 +1494,11 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	   <a href="variables.html#stringManipulation">variables page</a>.</p>
 	<h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
 	<ul>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26494" target="_blank">[Bug 26494]</a> 
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26494" target="_blank">[Bug 26494]</a> 
 			ESR 2018 readiness - Make SmartTemplate&#8308; compatible with Thunderbird 60
 		</li>
 	  <li>
-			<a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26446" target="_blank">[Bug 26446]</a>
+			<a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26446" target="_blank">[Bug 26446]</a>
 			Thunderbird 57 hangs on start with SmartTemplate&#8308; enabled.<br>
 			See also the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1417209">Related Thunderbird bug </a>
 		</li>
@@ -1508,17 +1508,17 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		<li>
 			(Gecko 57) Most date functions (datelocal, dateshort) Caused by deprecated <a href="https://dxr.mozilla.org/comm-central/search?q=nsIScriptableDateFormat&redirect=false">nsIScriptableDateFormat</a>
 		</li>
-	  <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26300" target="_blank">[Bug 26300]</a>
+	  <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26300" target="_blank">[Bug 26300]</a>
         %cursor% leaves an unnecessary space character </li>
-	  <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26345" target="_blank">[Bug 26345]</a>
+	  <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26345" target="_blank">[Bug 26345]</a>
         Unexpected "Â" character in mail body </li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26356" target="_blank">[Bug 26356]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26356" target="_blank">[Bug 26356]</a>
 				Thunderbird 52 - Forwarding an email inline adds empty paragraph on top.</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25571" target="_blank">[Bug 25571]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25571" target="_blank">[Bug 25571]</a>
 		    "Replace line breaks with <code class="html">&lt;br&gt;</code>" on when not enabled - if Common settings are used:
 				this inserted unwanted extra line breaks causing ugly spacing issues when forwarding email.
 				</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26364" target="_blank">[Bug 26364]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26364" target="_blank">[Bug 26364]</a>
 				Inline Images are not shown. The fix will look for file:\\\ paths and replace with the 
 				raw image data. This won't work if there is no "file:\\\" portion given (relative path / 
 				current folder not supported)
@@ -1527,7 +1527,7 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	
 	<h5 class="inList"><span class="inListTitle">Postbox</span></h5>
 	<ul>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26485" target="_blank">[Bug 26485]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26485" target="_blank">[Bug 26485]</a>
 				 Make SmartTemplate&#8308; compatible with the next Postbox build - 5.52 beta 6 (modern Gecko build) - as of beta 7, Postbox is following Mozilla Quantum in <a href="https://support.postbox-inc.com/hc/en-us/articles/115004234013" target="_blank">dropping 3rd party Addons support altogether</a>:
 				 <quote>
 					 <p> Postbox is based on Mozilla code, and as of Firefox Quantum, Mozilla has discontinued support for add-ons. As such, a decision has been made to remove add-ons functionality from Postbox at this time.</p>
@@ -1582,13 +1582,13 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		    Thunderbird and Addons on a regular basis. Click on the YouTube link in the bottom
 				right corner to visit my channel:
 				<a href="https://www.youtube.com/c/thunderbirddaily">Thunderbird Daily</a></li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26260" target="_blank">[Bug 26260]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26260" target="_blank">[Bug 26260]</a>
 		    Browser's "EMail Link" feature doesn't copy link
 				<p>In some circumstances choosing the browser feature to email a link will
 				   generate a new email but  not copy in the actual link into the body of the
 					 email. I haven't been able to reproduce this yet but assume it is related to
 					 plain text email.</p></li>
-	  <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26261" target="_blank">[Bug 26261]</a>
+	  <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26261" target="_blank">[Bug 26261]</a>
 		    Quote header not inserted in plain text mode.
 				</li>
   </ul>
@@ -1612,21 +1612,21 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		    Thunderbird and Addons on a regular basis. Click on the YouTube link in the bottom
 				right corner to visit my channel.<br>
 				<iframe class="youtube" src="https://www.youtube.com/embed/xKh7FkU8A1w" frameborder="0" allowfullscreen></iframe></li>
-	  <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26207" target="_blank">[Bug 26207]</a>
+	  <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26207" target="_blank">[Bug 26207]</a>
 		    Add option to delimit address list with semicolons<br>
 				<img class="screenshot" src="/img/multi-correspondents-demiliter.png" alt="multi c delimiter">
 				</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26208" target="_blank">[Bug 26208]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26208" target="_blank">[Bug 26208]</a>
 		    Lastname and Firstname arguments omit part of the name when broken up</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26257" target="_blank">[Bug 26257]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26257" target="_blank">[Bug 26257]</a>
 		    Default quote header not removed in complex Stationery</li>
 		<li>Force Replacing default quote header in Stationery even if no <code class="inline">%quoteHeader%</code> variable is contained</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26215" target="_blank">[Bug 26215]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26215" target="_blank">[Bug 26215]</a>
 		    Bad interaction between SmartTemplate&#8308; and "When using paragraph format, the enter key creates a new paragraph".
 				With this new option, we can force SmartTemplate&#8308; to always start in a Paragraph to better integrate
 				with the recently updated behavior of Thunderbird 45.<br>
 				<img class="screenshot" src="/img/force-paragraph.png" alt="force paragraph mode"></li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26209" target="_blank">[Bug 26209]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26209" target="_blank">[Bug 26209]</a>
 		    Add option to wrap full name in double quotes if it contains comma or semicolon<br>
 				Set <span class="codeLine">extensions.smartTemplate4.names.quoteIfComma = true</span> </li>
 		<li>When clicking on a mailto link from a web browser with a given text body, this was replaced by SmartTemplate&#8308;.
@@ -1654,17 +1654,17 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 		    Thunderbird and Addons on a regular basis. Click on the YouTube link in the bottom
 				right corner to visit my channel.<br>
 				<iframe class="youtube" src="https://www.youtube.com/embed/Rk-T465fkEw" frameborder="0" allowfullscreen></iframe></li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26100" target="_blank">[Bug 26061]</a> 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26100" target="_blank">[Bug 26061]</a> 
 				Thunderbird doesn't remember to disable Icon on status bar</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26100" target="_blank">[Bug 26100]</a> 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26100" target="_blank">[Bug 26100]</a> 
 		    Double brackets not working with <code class="inline">%cc(name,bracketMail(angle))%</code></li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26159" target="_blank">[Bug 26159]</a> 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26159" target="_blank">[Bug 26159]</a> 
 		    <code class="inline">%cursor%</code> variable breaks paragraphs style</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26126" target="_blank">[Bug 26126]</a> 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26126" target="_blank">[Bug 26126]</a> 
 		    Unwanted space added after cursor</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26139" target="_blank">[Bug 26139]</a> 
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26139" target="_blank">[Bug 26139]</a> 
 		    Fix position of warning message for variables that are not supported in New Emails.</li>
-		<li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26197" target="_blank">[Bug 26197]</a>
+		<li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26197" target="_blank">[Bug 26197]</a>
 		    Thunderbird 45 - unwanted paragraph after quote header.</li>
   </ul>
 </li> 
@@ -1682,12 +1682,12 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
 	<p class="shilling box">Please <a href="contribute.html">contribute to SmartTemplate&#8308;</a> once a year to make sure the project thrives!</p>
   <ul>
 	  <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26043" target="_blank">[Bug 26043]</a> 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26043" target="_blank">[Bug 26043]</a> 
 		    Save Template / Load Template feature<br>
 				<img class="screenshot" src="/img/Save-Template.png" alt="Save and Restore Templates"><br>
 				Save / load the current template to / from a file.
 				</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25904" target="_blank">[Bug 25904]</a> Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others<br>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a> Functions to Modify Mail Headers: To, Cc, Bcc, Subject and Others<br>
 		    <code>%header.set(name,"value")%</code> replaces the field of the Email.<br>
 		    <code>%header.append(name,"value")%</code> appends text or recipient to the field of the Email.<br>
 		    <code>%header.prefix(name,"value")%</code> prefixes text to the field of the Email.<br>
@@ -1717,13 +1717,13 @@ extensions.smartTemplate4.dateformat.year = "numeric" <br></tt>
   </h4>
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25902" target="_blank">[Bug 25902]</a>  
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25902" target="_blank">[Bug 25902]</a>  
 		    <code class="inline">%from%</code> and <code class="inline">%to%</code> fail if no argument is given. While addressing this bug 
         I also revised the treatment of variables within the arguments so multiple elements 
         can be added e.g. <code class="inline">%from(firstname,lastname,mail)%</code> This also helps when adding a list
         of multiple addresses (as multiple <code class="inline">%from%</code> statements are expanded individually which is 
         unusable as list.</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26020" target="_blank">[Bug 26020]</a>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26020" target="_blank">[Bug 26020]</a>
         Added bracketMail() and bracketName() functions use  within from() to() cc() etc. 
         to "wrap" mail address with non-standard characters<br>
     
@@ -1739,7 +1739,7 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
        bracketMail(square)  =  [mail@domain.com]
        bracketMail(;)        =  mail@domain.com</pre>
     </li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25871">[Bug 25871]</a> Added <code>%file()%</code> <span class="premium">Premium Feature</span>- insert html, text or image from file (for customized signatures)
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25871">[Bug 25871]</a> Added <code>%file()%</code> <span class="premium">Premium Feature</span>- insert html, text or image from file (for customized signatures)
           use a local file path in order to insert a file from the computer you are sending from.
           You can also use it to insert an image file. To insert the correct file path / name, simply click 
           on the %file% link in the "Variables" window.<br>
@@ -1750,22 +1750,22 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
     </li>
 		<li> Added Slovenian Locale - thanks to <a href="http://beta.babelzilla.org/accounts/profile/Klofutar/">Klofutar</a> for providing the translation!</li>
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25903" target="_blank">[Bug 25903]</a> In address fields Quotation marks are escaped: \"</li>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25903" target="_blank">[Bug 25903]</a> In address fields Quotation marks are escaped: \"</li>
     <li>Fixed: Capitalize Names doesn't work if string is quoted. Makes the whole string lowercase. 
         Also capitalisation should work with Names in brackets now.</li>
     <li>Fixed: getSignatureInner inserts "undefined" in Postbox if no signature is defined for current identity.</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25951" target="_blank">[Bug 25951]</a> ST4 not working in SeaMonkey 2.32 - Temporal Deadzone - This was caused by some code 
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25951" target="_blank">[Bug 25951]</a> ST4 not working in SeaMonkey 2.32 - Temporal Deadzone - This was caused by some code 
         changes in the Mozilla code base that established different rules for variables declared with "var" 
         causing addons to break which have the same variable declared with let or var multiple times </li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25976" target="_blank">[Bug 25976]</a> Reply to List: variables not resolved - Stationery Patch available</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089" target="_blank">[Bug 25089]</a> Default forward quote not hidden - in Postbox "Fred wrote:" was not removed in plain text mode.
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25976" target="_blank">[Bug 25976]</a> Reply to List: variables not resolved - Stationery Patch available</li>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" target="_blank">[Bug 25089]</a> Default forward quote not hidden - in Postbox "Fred wrote:" was not removed in plain text mode.
         Set <span class="codeLine">extensions.smartTemplate4.plainText.preserveTextNodes = true</span> for roll back to previous behavior.</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26008" target="_blank">[Bug 26008]</a> Inserting Template in Postbox may fail with "XPCOMUtils not defined"</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26013" target="_blank">[Bug 26013]</a> ST4 picks template from common settings instead of identity (Tb38)</li>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26008" target="_blank">[Bug 26008]</a> Inserting Template in Postbox may fail with "XPCOMUtils not defined"</li>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26013" target="_blank">[Bug 26013]</a> ST4 picks template from common settings instead of identity (Tb38)</li>
     <li>Fixed: SmartTemplate&#8308; was reported to fail in Postbox 3.0.11 in some cases - this version fixes the issue.</li>
     
     <h5 class="inList"><span class="inListTitle">Known Issues</span></h5>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25911" target="_blank">[Bug 25911]</a> Extra Spaces in long subject headers [Decoding Problem] - Work In Progress</li>
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25911" target="_blank">[Bug 25911]</a> Extra Spaces in long subject headers [Decoding Problem] - Work In Progress</li>
   </ul>
 </li>
 
@@ -1782,9 +1782,9 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
   
     <li> Added a switch for removing emails when replacing Names from Address book</li>
     <li> Added format <code>%sig(none)%</code> to completely remove the signature, overriding account settings.</li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089" target="_blank">[Bug 25089]</a> (reopened) default quote header wasn't removed anymore in Tb 31.0</li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25816" target="_blank">[Bug 25816]</a> Missing names in reply caused by different Encodings - the Mime decoder fails when multiple addresses with varying encodings are contained </li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089" target="_blank">[Bug 25089]</a> Default forward quote not hidden </li>
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" target="_blank">[Bug 25089]</a> (reopened) default quote header wasn't removed anymore in Tb 31.0</li>
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25816" target="_blank">[Bug 25816]</a> Missing names in reply caused by different Encodings - the Mime decoder fails when multiple addresses with varying encodings are contained </li>
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" target="_blank">[Bug 25089]</a> Default forward quote not hidden </li>
     <li> variable <code>%matchTextFromBody()%</code> to find and replace pattern <span class="premium">Premium Feature</span><br>
          e.g. <code class="inline">%matchTextFromBody(TEST *)%</code> will retrieve '123' from 'TEST 123' </li>
   </ul>
@@ -1801,29 +1801,29 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
   </h4>
 <ul>
     <li>Improved locale matching (allow matching en as en-US etc.)</li>
-    <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25571" target="_blank">[Bug 25571]</a>  
+    <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25571" target="_blank">[Bug 25571]</a>  
         "replace line breaks with <code class="html">&lt;br&gt;</code>" on when not enabled</li>
     <li> Made sure that debug settings window stays on top.</li>
     <li> Added <i>advanced</i> tab to settings dialog </li>
     <li> Added option to disabling space for <code class="inline">%cursor%</code> </li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25676" target="_blank">[Bug 25676]</a> 
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676" target="_blank">[Bug 25676]</a> 
          JavaScript parser added by Benito van der Zander </li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25710" target="_blank">[Bug 25710]</a> 
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25710" target="_blank">[Bug 25710]</a> 
          <code class="html">&lt;div id="smartTemplate4-template"&gt;</code> is inserted in Stationery body </li>
-    <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25643" target="_blank">[Bug 25643]</a> 
+    <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25643" target="_blank">[Bug 25643]</a> 
          Display Names from Address book: if the email-address can be found in the Address books, use
          the name information from there for variables like <code class="inline">%from(firstname)%</code> etc.<br>
          <img class="screenshot" src="/img/options-resolveNames.png" alt="Resolve Names from Address book">
          </li>
     <li> Added option to use Nickname where it exists </li>
     <li> Added option to capitalize all names </li>
-    <li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25191" target="_blank">[Bug 25191]</a> 
+    <li> Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25191" target="_blank">[Bug 25191]</a> 
          Conflict with add-on Account Colors</li>
     <li> Fixed a problem with name matching signature files -  depending on file name some 
          textual signatures might be accidentally treated as images.</li>
     <li> Fixed reading plain text signature files (linefeeds where lost) by inserting html line breaks - to disable this behavior toggle 
          <span class="codeLine">extensions.smartTemplate4.signature.replaceLF.plaintext.br</span> in about:config</li>
-    <li> 0.9.5.2 Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25762" target="_blank">[Bug 25762]</a> 
+    <li> 0.9.5.2 Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25762" target="_blank">[Bug 25762]</a> 
        Address variables To and Cc replaced with ??  - this happened on remote address books and also in Postbox generally
        of the option "Replace Names from Address book" was activated.</li>
   </ul>
@@ -1837,14 +1837,14 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
     </h4>
     <ul>
        <li> Added <code>%quoteHeader%</code> variable for Stationery Users - adds the quote header only in reply/forward case and is removed in new mail</li>
-       <li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25523" target="_blank">[Bug 25523]</a>  Cannot use image as signature .</li>
-       <li> Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25526" target="_blank">[Bug 25526]</a>  If no signature is defined, <code class="inline">%sig%</code> is not removed.</li>
+       <li> Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25523" target="_blank">[Bug 25523]</a>  Cannot use image as signature .</li>
+       <li> Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25526" target="_blank">[Bug 25526]</a>  If no signature is defined, <code class="inline">%sig%</code> is not removed.</li>
        <li> Added user interface for forcing adding '-- ' delimiters before signature </li>
        <li> Redesigned Global Settings tab:<br>
        <img class="screenshot" src="/screenshots/global-settings.png" alt="global settings tab">
        </li>
-       <li> Added islinkable switch to address variables (to, from, cc, bcc, identity) to fix <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25538" target="_blank">[Bug 25538]</a></li>
-       <li> Reopened <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25088" target="_blank">[Bug 25088]</a> by making status bar icon status more resilient</li>
+       <li> Added islinkable switch to address variables (to, from, cc, bcc, identity) to fix <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25538" target="_blank">[Bug 25538]</a></li>
+       <li> Reopened <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25088" target="_blank">[Bug 25088]</a> by making status bar icon status more resilient</li>
        <li> Fixed <code class="inline">%subject%</code> removing expressions in <code class="html">&lt;brackets&gt;</code></li>
     </ul>
 </li>
@@ -1867,15 +1867,15 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
       <li> Added toolbar button<br>
            <img class="screenshot" src="/screenshots/cutomize_toolbar_drag.png" alt="Drag &amp; Drop Toolbar Button">
       </li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24990" target="_blank">[FR 24990]</a>  Added <code>%cursor%</code> variable</li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25083" target="_blank">[FR 25083]</a> New option "Correct Lastname, Firstname" to swap firstname to the front. </li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24990" target="_blank">[FR 24990]</a>  Added <code>%cursor%</code> variable</li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25083" target="_blank">[FR 25083]</a> New option "Correct Lastname, Firstname" to swap firstname to the front. </li>
       <li> <code>%deleteText()%</code> and <code>%replaceText()%</code> functions - <span class="premium">Premium Feature</span></li>
       <li> Replacement of variables in Signature</li>
       <li> Added <a href="http://www.postbox-inc.com/index.php" target="_blank" title="Visit Postbox Website">Postbox</a> support</li>
       <li> Mailto link support for the main header fields that hold email address data: 
       <code>%to(mail,link)%</code> <code>%to(name,link)%</code> <code>%to(firstname,link)%</code>  etc.</li>
       <li> new <code>%identity(name,link)%</code> function</li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25248" target="_blank">[FR 25248]</a><code>%y%</code> for two digit years</li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25248" target="_blank">[FR 25248]</a><code>%y%</code> for two digit years</li>
       <li> added preferences textbox for default charset </li>
       <li> added Examples tab:<br>
            <img class="screenshot" src="/screenshots/examples.png" alt="examples tab"><br>
@@ -1891,10 +1891,10 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
       <li> stabilised signature code base</li>
       <li> fixed: Redefinition of Thunderbird's nsIMsgAccount interface broke account dropdown in settings</li>
       <li> suppressed displaying string conversion prompt when clicking on the version number in advanced options</li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25483" target="_blank">[Bug 25483]</a> when using <code class="inline">%sig(2)%</code> (option for removing dashes) - signature is missing on new mails in HTML mode </li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25104" target="_blank">[Bug 25104]</a> when switching identity, old sig does not get removed.</li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25486" target="_blank">[Bug 25486]</a> attaching a plain text file as signature leads to double spaces in signature</li>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25272" target="_blank">[Bug 25272]</a> reply below quote with signature placed curorsor below signature (should be above signature and below quote)</li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25483" target="_blank">[Bug 25483]</a> when using <code class="inline">%sig(2)%</code> (option for removing dashes) - signature is missing on new mails in HTML mode </li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25104" target="_blank">[Bug 25104]</a> when switching identity, old sig does not get removed.</li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25486" target="_blank">[Bug 25486]</a> attaching a plain text file as signature leads to double spaces in signature</li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25272" target="_blank">[Bug 25272]</a> reply below quote with signature placed curorsor below signature (should be above signature and below quote)</li>
    </ul>
    <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
    <ul>
@@ -1908,7 +1908,7 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
    </ul>
    <h5 class="inList"><span class="inListTitle">Known Issues</span></h5>
    <ul>
-      <li> <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25523" target="_blank">[Bug 25523]</a> Cannot use image as signature (fix available) </li>
+      <li> <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25523" target="_blank">[Bug 25523]</a> Cannot use image as signature (fix available) </li>
    </ul>
 </li>
 
@@ -1926,7 +1926,7 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
       <li>Added support for Seamonkey</li>
       <li>Added global settings in advanced options pane; includes new font size setting for template editor.<br/>
           <img class="screenshot" src="/screenshots/global-settings.png" alt="Global settings">
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25088" title="Show Details" target="_blank">[FR 25088]</a>: add option to hide status icon. You can also use right-click on the option to change label behavior through the configuration setting 
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25088" title="Show Details" target="_blank">[FR 25088]</a>: add option to hide status icon. You can also use right-click on the option to change label behavior through the configuration setting 
 			    <span class="codeLine">extensions.smartTemplate4.statusIconLabelMode</span> (it's not needed to change anything but you can do)<br>
         <ul>
           <li><span class="codeLine">0</span> - never show label
@@ -1935,22 +1935,22 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
           <img class="screenshot" src="/screenshots/statusLabelConfig.png" alt="Status label configuration">
         </ul>
       </li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25012" title="Show Details" target="_blank">[FR 25012]</a> Added <code>%cwIso(offset)%</code> for week # of current year</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25012" title="Show Details" target="_blank">[FR 25012]</a> Added <code>%cwIso(offset)%</code> for week # of current year</li>
       <li>Redesigned About Window (Add-On Manager &#8658; rightclick on SmartTemplate&#8308; &#8658; About)<br>
       <img class="screenshot" src="/screenshots/aboutWindow.png" alt="aboutWindow"></li>
     </ul>
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <ul> 
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25103" title="Show Details" target="_blank">[Bug 25103]</a>: 0.9.1 inserts unwanted line break top of &lt;body&gt; in html mode</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25099" title="Show Details" target="_blank">[Bug 25099]</a>: Support bottom reply with headers on top</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25097" title="Show Details" target="_blank">[Bug 25097]</a>: Forward text message results in double header</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25095" title="Show Details" target="_blank">[Bug 25095]</a>: 2 blank lines in plain text between header and quote</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25093" title="Show Details" target="_blank">[Bug 25093]</a>: Signatur missing when replying below quote</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25092" title="Show Details" target="_blank">[Bug 25092]</a>: Option window broken in Italian version</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25084" title="Show Details" target="_blank">[Bug 25084]</a>: 0.9.1 regression: blank line is added before Reply template</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25089" title="Show Details" target="_blank">[Bug 25089]</a>: Default forward quote can't be completely hidden - thanks to PeterM for providing a solution</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25117" title="Show Details" target="_blank">[Bug 25117]</a>: Plaintext: Template always below the quoted message when replying</li>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25155" title="Show Details" target="_blank">[Bug 25155]</a>: 0.9.1 regression - blank line is added AFTER Reply template</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25103" title="Show Details" target="_blank">[Bug 25103]</a>: 0.9.1 inserts unwanted line break top of &lt;body&gt; in html mode</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25099" title="Show Details" target="_blank">[Bug 25099]</a>: Support bottom reply with headers on top</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25097" title="Show Details" target="_blank">[Bug 25097]</a>: Forward text message results in double header</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25095" title="Show Details" target="_blank">[Bug 25095]</a>: 2 blank lines in plain text between header and quote</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25093" title="Show Details" target="_blank">[Bug 25093]</a>: Signatur missing when replying below quote</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25092" title="Show Details" target="_blank">[Bug 25092]</a>: Option window broken in Italian version</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25084" title="Show Details" target="_blank">[Bug 25084]</a>: 0.9.1 regression: blank line is added before Reply template</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25089" title="Show Details" target="_blank">[Bug 25089]</a>: Default forward quote can't be completely hidden - thanks to PeterM for providing a solution</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25117" title="Show Details" target="_blank">[Bug 25117]</a>: Plaintext: Template always below the quoted message when replying</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25155" title="Show Details" target="_blank">[Bug 25155]</a>: 0.9.1 regression - blank line is added AFTER Reply template</li>
     </ul>
     <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
     <ul>
@@ -1974,7 +1974,7 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
     </h4>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <ul>
-      <li><a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25109" title="Show Details" target="_blank">[Bug 25109]</a>: Automatically select Current Identity</li>
+      <li><a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25109" title="Show Details" target="_blank">[Bug 25109]</a>: Automatically select Current Identity</li>
       <li>Integrated variables help into options dialog</li>
       <li>Statusbar button for quickly accessing template settings<br>
       <img class="screenshot" src="/screenshots/statusbar-Button.png" alt="Statusbar Button"></li>
@@ -1986,10 +1986,10 @@ usage: bracketMail(startDel;endDel)  startDel = characters before the mail porti
     </ul>
       <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <ul>
-      <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24997" title="Show Details" target="_blank">[Bug 24997]</a>: "Edit as New" Sometimes Loses Message Body</li>
-      <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=25002" title="Show Details" target="_blank">[Bug 25002]</a>: Signature will displayed two times</li>
-      <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24988" title="Show Details" target="_blank">[Bug 24988]</a>: Message body not included replying to "plain-text" messages</li>
-      <li>Fixed <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=24991" title="Show Details" target="_blank">[Bug 24991]</a>: Replace default quote header not working in some cases</li>
+      <li>Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24997" title="Show Details" target="_blank">[Bug 24997]</a>: "Edit as New" Sometimes Loses Message Body</li>
+      <li>Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25002" title="Show Details" target="_blank">[Bug 25002]</a>: Signature will displayed two times</li>
+      <li>Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24988" title="Show Details" target="_blank">[Bug 24988]</a>: Message body not included replying to "plain-text" messages</li>
+      <li>Fixed <a href="http://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=24991" title="Show Details" target="_blank">[Bug 24991]</a>: Replace default quote header not working in some cases</li>
     </ul>
   </li>
 
