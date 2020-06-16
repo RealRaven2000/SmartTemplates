@@ -3,6 +3,8 @@
 <!ENTITY smartTemplate4.settings.tooltip "Настройки SmartTemplate⁴">
 <!ENTITY smartTemplate4.cleandeferred.label "Убирайся!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Очистить все переменные SmartTemplate">
+<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
 <!ENTITY smartTemplate4.deferredcontext.update "Обновить содержимое SmartTemplate⁴">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Обновить и заменить контентом">
 <!ENTITY smartTemplate4.deferredcontext.delete "Удалить переменную SmartTemplate⁴">

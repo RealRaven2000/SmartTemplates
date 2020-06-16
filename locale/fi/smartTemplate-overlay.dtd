@@ -3,6 +3,8 @@
 <!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴ - Asetukset">
 <!ENTITY smartTemplate4.cleandeferred.label "Siivota!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Siivoa kaikki SmartTemplate-muuttujat">
+<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
 <!ENTITY smartTemplate4.deferredcontext.update "Päivitä SmartTemplate⁴ -sisältö">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Päivitä ja korvaa sisältö">
 <!ENTITY smartTemplate4.deferredcontext.delete "Poista SmartTemplate⁴-muuttuja">
