@@ -50,6 +50,8 @@ pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 pref("extensions.smartTemplate4.expandSettings", false);
 
+/* add change template button automatically when installing for first time */
+pref("extensions.smartTemplate4.changeTemplate.button.install", true);
 
 pref("extensions.smartTemplate4.stationery.supported", false);
 pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);

@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.11",
+	HARDCODED_CURRENTVERSION : "2.11.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1467,9 +1467,10 @@ SmartTemplate4.Util = {
 			else if (isPremiumLicense)
 			  uType = "pro";
 			// make sure we can sanitize all pages for our premium users!
+      // [issue 68] After update to 2.11, SmartTemplate⁴ always displays nonlicensed support site
 			if (   uType
 			    && URL.indexOf("user=")==-1 
-					&& URL.indexOf("smarttemplate4.quickfolders.org")>0 ) {
+					&& URL.indexOf("smarttemplates.quickfolders.org")>0 ) {
 				// remove #NAMED anchors
 				let x = URL.indexOf("#"),
 				    anchor = '';

@@ -7,6 +7,7 @@ SmartTemplate4.composer = {
 					Cc = Components.classes,
 					util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences;
+          
 		
 		util.logDebug("SmartTemplate4.composer.load");
 		
@@ -29,29 +30,43 @@ SmartTemplate4.composer = {
 			  util.composerSendMessage(e); // pass on event in case we need it.
 			}
 	  );
+    
+    let toolbarId;
+    switch(util.Application) {
+      case 'Thunderbird':
+        toolbarId = "composeToolbar2";
+        break;
+      case 'SeaMonkey':
+        toolbarId = "composeToolbar";
+        break;
+      case 'Postbox':
+        toolbarId = "composeToolbar5";
+        break;
+    }
+    
+		// add toolbarbutton for changing template
+    if (prefs.getMyBoolPref ('changeTemplate.button.install')) {
+			setTimeout (
+				function st4_installChangeTemplateBtn() {
+					if (util.installButton(toolbarId, "smarttemplate4-changeTemplate", "button-save"))
+						prefs.setMyBoolPref('changeTemplate.button.install', false); // log the fact we installed it to avoid re-adding it.
+				}
+				, 1000
+			);
+    }
 		
 		// add toolbarbutton for deferred variables
 		if (!prefs.getMyBoolPref('cleanDeferredButton.installer')) {
 			setTimeout (
-				function st4_setToolbarId() {
-					let toolbarId;
-					switch(util.Application) {
-						case 'Thunderbird':
-							toolbarId = "composeToolbar2";
-							break;
-						case 'SeaMonkey':
-							toolbarId = "composeToolbar";
-							break;
-						case 'Postbox':
-							toolbarId = "composeToolbar5";
-							break;
-					}
+				function st4_installCleanBtn() {
 					if (util.installButton(toolbarId, "smarttemplate4-cleandeferred", "button-save"))
 						prefs.setMyBoolPref('cleanDeferredButton.installer', true); // log the fact we installed it to avoid re-adding it.
 				}
 				, 4000
 			);
 		}
+    
+    
     
    
     
@@ -63,6 +78,7 @@ SmartTemplate4.composer = {
           fT = SmartTemplate4.fileTemplates,
           prefs = SmartTemplate4.Preferences;
     let templatePopup = window.document.getElementById('button-TemplatePopup');
+    if (!templatePopup) return;
     
     // clear previous menu (in case we haven't added the button to the toolbar)
     // the Template Menu is rebuilt if it is being clicked
@@ -148,6 +164,7 @@ function()
 		const util = SmartTemplate4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
 					isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
+          
 		let txt = "unknown";
 		try { txt	= window.document.firstElementChild.getAttribute('windowtype'); }
 		catch(ex) {;}

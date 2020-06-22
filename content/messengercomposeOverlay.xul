@@ -35,8 +35,8 @@
     <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
 			class="toolbarbutton-1 AG"
-			label="Change template…"
-			tooltiptext="Selects a different template - use before editing in the mail body!"
+			label="&smartTemplate4.changeTemplate.label;"
+			tooltiptext="&smartTemplate4.changeTemplate.tooltip;"
       type="menu-button"
 			context=""
 			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">

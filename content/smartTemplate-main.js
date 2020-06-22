@@ -439,11 +439,16 @@ END LICENSE BLOCK
     # [issue 55] Added back some of the support for Postbox
     # [issue 58] Guessing firstName is from AB can  lead to last name duplication 
 
-  Version 2.10.2 - WIP
+  Version 2.11 - 09/06/2020
     # [issue 60] Fixed difficulties with screenreader navigation in Settings Dialog
     # [issue 24] Allow changing template from Composer screen
     # Completed Serbian Locale  
-  
+
+  Version 2.11.1 - WIP
+    # [issue 64] Regression: external template is removed when changing "from:" address
+    # Change Template button - translate to 19 languages.
+    # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
+    # [issue 68] Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -752,6 +757,9 @@ var SmartTemplate4 = {
 				flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) flags.filePaths = [];
         flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
+        /**********      GLOBAL VARIABLE!!! - SCOPED TO COMPOSER WINDOW      **********/
+        // [issue 64] memorize the file template path in Composer! So we can change from address and reload it.
+        window.SmartTemplate4.CurrentTemplate = theFileTemplate;
 			}
 		}
 				
@@ -931,7 +939,19 @@ var SmartTemplate4 = {
         // [issue 51]
         this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
 				// Add template message - will also remove previous template and quoteHeader.
-			  this.smartTemplate.insertTemplate(false);
+        if (window.SmartTemplate4.CurrentTemplate) {
+          //[issue 64] reload the same template if it was remembered.
+          let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
+          if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
+				    let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+				      "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+            alert(text); 
+          }
+          else
+            this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+        }
+        else
+			    this.smartTemplate.insertTemplate(false);
 				// [Bug 25104] when switching identity, old sig does not get removed.
 				//             (I think what really happens is that it is inserted twice)
 				isTemplateProcessed = true;
