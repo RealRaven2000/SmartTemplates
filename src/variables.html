@@ -539,7 +539,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 
 <!-- ##### Quote Manipulation #### -->
 <a name="quoteManipulation"> </a>
-<h3 class="helpchapter">Quote Manipulation (Premium Function)</h3>
+<h3 class="helpchapter">Quote Manipulation (Pro Function)</h3>
 <article>
   <ul>
     <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/31">[issue 31]</a> 
@@ -649,6 +649,43 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 	Read up on the full functionality on the <a href="premium.html#headerManipulation">premium features</a>
 	page.
 </article>
+
+
+<!-- ##### deferred variables #### -->
+<a name="deferredVariables"> </a>
+<h3 class="helpchapter">Deferred Variables - Fields in New Emails</h3>
+<article>
+  <p>These are a subset of standard SmartTemplate&#8308 variables, which perform in a specidal way 
+     when used in a "Write" situation: In this, certain information which is readily available when 
+     replying or following up / forwarding, is simply not present when opening the Email editor.
+  </p>
+	<ul>
+		<li><div class="new">NEW</div>
+			<p>When writing new mails, headers such as to, from are not available - therefore these 
+				 functions had to be written from scratch. 
+			</p>
+			<p><a name="24993" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24993" target="_blank">[Bug 24993]</a>
+					Supports using the following fields when composing a *new* Email:</p>
+			<ul>
+				<li><code class="inline">%subject%</code></li>
+				<li><code class="inline">%from%</code></li>
+				<li><code class="inline">%to%</code> <code class="inline">%cc%</code> <code class="inline">%bcc%</code></li>
+				<li><code class="inline">%date%</code></li>
+				<li><code class="deferable">%dateformat()%</code>New function for building date strings for current date, <a href="#26588">see below</a>.</li>
+			</ul>
+			<p>Note, to  insert the real recipient in a <i>forwarded</i> email, you can now use the <tt>fwd</tt> argument:
+				 e.g. <code class="deferable">%to(firstname,fwd)%</code> </p>
+			<p>The variables are shown as colored placeholder blocks and can be updated with a simple mouse-click: <br>
+				<img class="screenshot" src="/img/deferred-vars-example.png" alt="deferred variables"><br>
+				This will pull in the correct information when available and can be clicked multiple times.
+			</p>
+			<p>A new button for a final clean up - for "tidying up ALL variables" can also be added to the Composer toolbar:<br>
+				<img class="screenshot" src="/img/clean-up-button.png" alt="clean up">
+			</p>	
+		</li>
+	</ul>
+</article>
+
 
 
 

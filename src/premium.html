@@ -69,6 +69,38 @@ permalink: premium.html
 	
 </article>
 
+<a name="quoteManipulation"> </a>
+<h3 class="helpchapter">Quote Manipulation</h3>
+<article>
+  <ul>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/31">[issue 31]</a> 
+      From SmartTemplate&#8308 2.8: New variables to remove text / tags from quoted parts 
+      and save space.
+      <p>
+        <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
+        <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
+        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
+        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
+        <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
+        Note that whitespace can be best represented as \s because it can also contain line breaks. 
+        Commas and double quote characters cannot be used.<br>
+        <i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.
+        <i>quoteLevel</i> - optional, (number) which minimal quote level to start from
+        <br>
+        <i>selector</i> -  what you would use to address the tag in css. simplest case "img", or "p" but attribute selectors 
+        can be added as long as double quotes can be avoided.<br>
+        <i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. This way you can 
+        keep smaller images like icons / emojis while discarding large images.
+      </p>
+      <p>
+        A note on <i>quoteLevel</i>, for images I would recommend 2 if you want to 
+        remove images to retain some context in your replies. This will dramatically decrease email 
+        sizes in long threads which contain a lot of images (e.g. screenshots).
+      </p>
+    </li>
+   </ul>
+</article>
+
 
 <!-- ##### Header Functions #### -->
 <a name="dateManipulation"> </a>
@@ -199,37 +231,6 @@ permalink: premium.html
 	
 </article>
 
-<!-- ##### String Functions #### -->
-<a name="deferredVariables"> </a>
-<h3 class="helpchapter">Deferred Variables - Fields in New Emails</h3>
-<article>
-  <p>This was a premium feature, but will be added as a feature for Standard License users from version 2.1.1 onwards. It only works in <b>HTML emails</b> - plain text emails are <i>not supported</i> for technical reasons.</p>
-	<ul>
-		<li><div class="new">NEW</div>
-			<p>When writing new mails, headers such as to, from are not available - therefore these 
-				 functions had to be written from scratch. 
-			</p>
-			<p><a name="24993" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24993" target="_blank">[Bug 24993]</a>
-					Supports using the following fields when composing a *new* Email:</p>
-			<ul>
-				<li><code class="inline">%subject%</code></li>
-				<li><code class="inline">%from%</code></li>
-				<li><code class="inline">%to%</code> <code class="inline">%cc%</code> <code class="inline">%bcc%</code></li>
-				<li><code class="inline">%date%</code></li>
-				<li><code class="deferable">%dateformat()%</code>New function for building date strings for current date, <a href="#26588">see below</a>.</li>
-			</ul>
-			<p>Note, to  insert the real recipient in a <i>forwarded</i> email, you can now use the <tt>fwd</tt> argument:
-				 e.g. <code class="deferable">%to(firstname,fwd)%</code> </p>
-			<p>The variables are shown as colored placeholder blocks and can be updated with a simple mouse-click: <br>
-				<img class="screenshot" src="/img/deferred-vars-example.png" alt="deferred variables"><br>
-				This will pull in the correct information when available and can be clicked multiple times.
-			</p>
-			<p>A new button for a final clean up - for "tidying up ALL variables" can also be added to the Composer toolbar:<br>
-				<img class="screenshot" src="/img/clean-up-button.png" alt="clean up">
-			</p>	
-		</li>
-	</ul>
-</article>
 
 
 <!-- ##### Export/Import added in 1.0.0 ####
