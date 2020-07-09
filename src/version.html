@@ -168,6 +168,55 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
+<a id="2.11.2"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 2.11.2 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">60.0 - 68.*</span> 
+			<span class="seamonkey">2.0.0 - 2.49.*</span> 
+		</span>
+  </h4>
+  <ul>
+    <li class="psa smartTemplateFreeUser">
+      <p> 
+        I have started to rewrite all mail Add-ons for compatibility with Thunderbird 78. I have hired
+        a developer and am currently thinking of ways to fund raise the development effort - probably several
+        man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will 
+        not happen until September 2020.
+        If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78,
+        consider         
+        <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
+        to support the project.
+      </p>
+      <p>
+        On other news we have just successfully migrated all Add-on support sites away from the free host on 
+        <span class="emphasis">mozdev.org, which is now closed</span>. 
+        To keep having support sites and ongoing development, please 
+        <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a license</a>
+        (the migration has cost around $650, so there are some expense I hope to recover from the 
+        community of users).
+      </p>
+    </li>  
+  
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/75">[issue 75]</a> 
+      Clicking %style% from variables tabs inserts %file% instead.
+      This is not intended, as only the %style(file.css)% command will produce
+      predictable results for including file names. With this fix, clicking on 
+      the %file()% variable in the variables tab will now insert the correct syntax
+      in the template area.
+    </li>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/74">[issue 74]</a> 
+      In some cases the menu templates in compact header reply buttons are doubled up
+    </li>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/73">[issue 73]</a> 
+      Improve Name Capitalization: support double names, such as "Klaus-Dieter"
+    </li>
+  </ul>
+</li>
+
 <a id="2.11.1"> &nbsp; </a>
 <li>
   <h4>
@@ -191,9 +240,9 @@ permalink: version.html
       <p> 
         I will also have to rewrite all mail Add-ons as web extensions, which is currently 
         not yet possible as all necessary APIs to replace the deprecated tech has not been implemented.
-        As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+
+        As in between step I plan to release SmartTemplate&#8308 as a "web experiment" for Thunderbird 78+
         but this will take a few weeks of work. If you are interested in using a version of 
-        QuickFolders that works with Thunderbird 78, 
+        SmartTemplate&#8308 that works with Thunderbird 78, 
         <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a license</a> to support the project.
       </p>
     </li>  
