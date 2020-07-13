@@ -1,28 +1,35 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.11.1">can be found here</a>
+Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.11.2">can be found here</a>
 
-You can also find there a discounted sale for Pro and Standard licenses for the 2 weeks until June 25th.
+You can also find there a discounted sale for Pro and Standard licenses for 2 weeks in July.
 
-<b>Enhancements</b>
+<b>Latest News</b>
+
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/24">[issue 24]</a> Select a different html template file while composer is open. Note that <i>any manually entered text will be discarded</i> when you change the template, so do this before you start typing.
-  
-  In order to do this the new <i>Change Template</i> button can be added via right-click and <i>Customize</i> on the composer toolbar. After adding the button, reopen the Composer window to update it with the appropriate template list (write / reply or forward).
+  <li>
+    I have started to rewrite all mail Add-ons for compatibility with Thunderbird 78. I have hired a developer and am currently thinking of ways to fund raise the development effort - probably several man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will not happen until September 2020.
+    
+    If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78, consider         
+    <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
+    to support the project.
+
+    In other news we have just successfully migrated all Add-on support sites away from the free host on <span class="emphasis">mozdev.org, which is now closed</span>. To keep having support sites and ongoing development, please 
+    <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a license</a>
+    (the migration has cost around $650, so there are some expense I hope to recover from the community of users).
   </li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/60">[issue 60]</a> Fixed some barriers with screenreader navigation in Settings Dialog. All buttons on the settings screen can now be executed without mouse clicks. Also the licensing message will be displayed as a OS notification which will be read out by the widely accepted JAWS reader. It appears that NVDA still cannot read these. Many thanks to my user Rüdiger L. for testing this with me.</li>
-  <li>Completed translations for Serbian locale.</li>
-  <li>2.11.1: Add change template button to toolbar automatically. I don't think many people have actually seen or tried it even though it was a much requested feature. Keep forgetting that nobody has time to read change logs - a feature that cannot be seen might as well not be there.</li>
-  <li>Add translations for the new "change template" button in Composer.</li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-    <li>2.11 <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/64">[issue 64]</a> Regression: external template is removed when changing "from:" address. This was caused by changes in [<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/24">issue 24</a>].
-    </li>  
-    <li>2.11.1 <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/67">[issue 67]</a> Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
-    </li>  
-    <li>2.11.1 <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/68">[issue 68]</a> Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
-    </li>  
-</ul>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/75">[issue 75]</a> 
+    Clicking %style% from variables tabs inserts %file% instead.
+    
+    This is not intended, as only the %style(file.css)% command will produce predictable results for including file names. With this fix, clicking on  the %file()% variable in the variables tab will now insert the correct syntax in the template area.
+  </li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/74">[issue 74]</a> In some cases the menu templates in compact header reply buttons are doubled up
+  </li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/73">[issue 73]</a> Improve Name Capitalization: support double names, such as "Klaus-Dieter"
+  </li>
+ </ul>

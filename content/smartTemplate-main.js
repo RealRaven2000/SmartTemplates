@@ -444,11 +444,17 @@ END LICENSE BLOCK
     # [issue 24] Allow changing template from Composer screen
     # Completed Serbian Locale  
 
-  Version 2.11.1 - WIP
+  Version 2.11.1 - 21/06/2020
     # [issue 64] Regression: external template is removed when changing "from:" address
     # Change Template button - translate to 19 languages.
     # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
     # [issue 68] Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
+    
+  Version 2.11.2 - WIP  
+    # [issue 74] In some cases the menu templates in compact header reply buttons are doubled up
+    # [issue 73] Improve Name Capitalization: support double names, such as Klaus-Dieter
+    # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
+    
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -523,18 +529,6 @@ var SmartTemplate4 = {
 					isNotify = true;					
 					prefs.setMyBoolPref("stationery.supported",false);
 					util.showStationeryWarning();
-					/*
-					SmartTemplate4.Message.display(
-						"Stationery is not installed or was not loaded, so Stationery support is disabled!\n" +
-						"To re-activate, you have to open SmartTemplate⁴ Global Settings and check [x] Support Stationery.",
-						{  
-							ok: function() { 
-								prefs.setMyBoolPref("stationery.supported",false);
-							}
-						},
-						window
-					);
-					*/
 				}
 				else {
 					// test existence of Stationery 0.8 specific function to test if we need to use the new event model.
@@ -589,7 +583,9 @@ var SmartTemplate4 = {
 				// [BUG 26434] forwarding email with embedded images removes images
 				// test delaying call for forward case
 				window.setTimeout(
-					function(){ SmartTemplate4.notifyComposeBodyReady(event); }, 
+					function(){ 
+            SmartTemplate4.notifyComposeBodyReady(event); 
+          }, 
 					eventDelay);
 			}
 		},

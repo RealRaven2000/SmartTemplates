@@ -495,7 +495,17 @@ SmartTemplate4.fileTemplates = {
           prefs = SmartTemplate4.Preferences,
 					maxFreeItems = 3,
 					isLicensed = util.hasLicense(false);
-		let parent = msgPopup.parentNode;			
+		let parent = msgPopup.parentNode, 
+        singleParentWindow = null;
+    try {
+      let singleM = Cc["@mozilla.org/appshell/window-mediator;1"]
+        .getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:messageWindow");
+      if (window == singleM)
+        singleParentWindow = window;
+    }
+    catch(ex) {
+      
+    }
 					
 		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
 		// first clear entries:
@@ -534,7 +544,7 @@ SmartTemplate4.fileTemplates = {
 							txt.replace("{1}", maxFreeItems), 
 							"centerscreen,titlebar,modal,dialog",
 							{ ok: function() { ; }},
-							util.Mail3PaneWindow
+							singleParentWindow || util.Mail3PaneWindow
 						);
 						return false;
 					}
@@ -542,7 +552,7 @@ SmartTemplate4.fileTemplates = {
 					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
-					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
+					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event, singleParentWindow); 
 					return false; 
 				}, 
 				{capture:true } , 
@@ -572,7 +582,7 @@ SmartTemplate4.fileTemplates = {
 				util.logDebugOptional("fileTemplates", "Click event for open file Template - stopped propagation.\n"
 					+ "composeType=" + composeType);
 				// fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, "File Template"); 
-				fT.onSelectAdHoc(fT, composeType, msgPopup, msgPopup.parentNode);
+				fT.onSelectAdHoc(fT, composeType, msgPopup, msgPopup.parentNode, singleParentWindow);
 				return false; 
 			}, 
 			{capture:true } , 
@@ -680,6 +690,13 @@ SmartTemplate4.fileTemplates = {
       if (reset) return true;
       return (!menu.getAttribute('st4configured'));
     }
+    function isInHeaderArea(popup) {
+      let p=popup.parentNode;
+      if (p) p=p.parentNode;
+      if (p && p.id && p.id.startsWith("header-"))
+        return true;
+      return false;
+    }
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
@@ -725,24 +742,28 @@ SmartTemplate4.fileTemplates = {
 							} 
 						);
 					} catch (ex) {;}
-			
+          
 					// 1) write new entries --------------------
 					let newMsgPopup = document.getElementById('button-newMsgPopup');
 					if (!newMsgPopup) {
 						let btn = document.getElementById("button-newmsg");
-						newMsgPopup = fT.getPopup(btn.id); 
-						if (!newMsgPopup.id) {
-							newMsgPopup.id='button-newMsgPopup';
-							btn.type = "menu-button";
-							// we have a problem of a duplicate composer window in Tb60:
-							if (util.versionSmaller(util.AppverFull, "68")) {
-								logDebug("Remove st4nonNative flag from newMsgPopup");
-								newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
-							}
-							// attach the menupopup
-							btn.appendChild(newMsgPopup);
-						}
+            if (btn) {
+              newMsgPopup = fT.getPopup(btn.id); 
+              if (newMsgPopup && !newMsgPopup.id) {
+                newMsgPopup.id='button-newMsgPopup';
+                btn.type = "menu-button";
+                // we have a problem of a duplicate composer window in Tb60:
+                if (util.versionSmaller(util.AppverFull, "68")) {
+                  logDebug("Remove st4nonNative flag from newMsgPopup");
+                  newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
+                }
+                // attach the menupopup
+                btn.appendChild(newMsgPopup);
+              }
+            }
+            
 					}
+
           
 					if (needsConfig(newMsgPopup)) {
 						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
@@ -751,7 +772,7 @@ SmartTemplate4.fileTemplates = {
 					// 2a) reply entries     --------------------
 					//    calling getPopup() - if it doesn't exist, the popup will be automatically created & appended to button
 					let replyPopup = fT.getPopup("button-reply"); 
-					if (replyPopup) {
+					if (replyPopup && !isInHeaderArea(replyPopup)) {
 						let btn = document.getElementById("button-reply");
 						if (!replyPopup.id) {
 							replyPopup.id='button-replyMsgPopup';
@@ -765,7 +786,7 @@ SmartTemplate4.fileTemplates = {
 					
 					// 2b) reply all entries     --------------------
 					replyPopup = fT.getPopup("button-replyall"); 
-					if (replyPopup) {
+					if (replyPopup && !isInHeaderArea(replyPopup)) {
 						let btn = document.getElementById("button-replyall");
 						if (!replyPopup.id) {
 							replyPopup.id='button-replyAllPopup';
@@ -779,16 +800,33 @@ SmartTemplate4.fileTemplates = {
 					
 					// 3) forwarding entries --------------------
 					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
-					if (needsConfig(fwdMsgPopup)) {
+					if (needsConfig(fwdMsgPopup) && !isInHeaderArea(fwdMsgPopup)) {
             fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
           }
 					
-					// ====  preview header area ==== //
+					// 4) ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
-						logDebug("headerToolbox found; adding template file menus…");
+						logDebug("=============================\n"+
+                     "headerToolbox found; adding its template file menus…");
+            
+						// 4.a) (header) write entries --------------------
+            let hwBtns=['button-newmsg'];
+            for (let b=0; b<hwBtns.length; b++) {
+              let id=hwBtns[b];
+              if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+              newMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 
+              if (needsConfig(newMsgPopup)) {
+                let btn = newMsgPopup.parentNode;
+                btn.type = "menu-button";
+                fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "fwd");
+                btn.insertBefore(newMsgPopup, btn.firstChild);
+                logDebug("added newMsgPopup to: " + id);
+              }
+              if(!fwdMsgPopup) logDebug("not found: " + id);
+            }             
 						
-						// 4) (header) reply entries     -------------------- 
+						// 4.b) (header) reply entries     -------------------- 
             let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton","hdrReplyToSenderButton","button-reply","button-replyall"];
             for (let b=0; b<hrBtns.length; b++) {
               let id = hrBtns[b],
@@ -812,7 +850,7 @@ SmartTemplate4.fileTemplates = {
               if(!replyPopup) logDebug("not found: " + id);            
             }
             
-            // 4.1) smart reply button - submenus! parent is
+            // 4.c) smart reply button - submenus! parent is
             let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
             for (let b=0; b<smartSM.length; b++) {
               let id=smartSM[b];
@@ -831,7 +869,7 @@ SmartTemplate4.fileTemplates = {
             }
 
 						
-						// 5) (header) forwarding entries --------------------
+						// 4.d) (header) forwarding entries --------------------
 						// what about hdrDualForwardButton ?
             let hfBtns=['hdrForwardButton','hdrDualForwardButton','button-forward'];
             for (let b=0; b<hfBtns.length; b++) {
@@ -847,6 +885,9 @@ SmartTemplate4.fileTemplates = {
               }
               if(!fwdMsgPopup) logDebug("not found: " + id);
             }
+
+
+           
 
 					}
 					else {
@@ -979,16 +1020,26 @@ SmartTemplate4.fileTemplates = {
   }  ,
 	
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent) {
+	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
-		// now remember the correct template for the next composer window!
+    
 		fileTemplateInstance.armedEntry = 
 		  { 
 				composeType: composeType, 
 				path: path, 
 				label: label
+        // ,        isSingleMessage: isSingleMessage
 			};
+		// now remember the correct template for the next composer window!
+    // - note: in single messafe windows this won't work as it cannot determine its "real" parent window
+    //         therefore we must copy this into the most recent 3pane window to marshall this info through
+    ////  originalEvent.view ? originalEvent.view.window.URL.endsWith("messageWindow.xul") : false;
+    let isSingleMessage = singleMwindow ? true : false;
+    if (isSingleMessage && singleMwindow == window) {
+      let fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
+      fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
+    }
 			
 		util.logDebug("fileTemplate_onItemClick\n" 
 		  + "template:" + label + "\n"
@@ -1070,11 +1121,12 @@ SmartTemplate4.fileTemplates = {
 		// are clicked.
 	} ,
 	
-	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn) {
+	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info
 		this.pickFile(
 		  function(localFile) {
-				const prefs = SmartTemplate4.Preferences;
+				const prefs = SmartTemplate4.Preferences,
+              util = SmartTemplate4.Util;
 				if (localFile) {
 					// we could potentially parse the file 
 					// and find the <title> tag!
@@ -1089,6 +1141,11 @@ SmartTemplate4.fileTemplates = {
 							path: localFile.path, 
 							label: name
 						};
+            
+          if (singleMsgWindow) {
+            let fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
+            fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
+          }
             
           prefs.setStringPref('fileTemplates.instantPath',localFile.parent.path); // store folder as default for next time.
 					// we need to trigger the button.

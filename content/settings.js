@@ -654,8 +654,12 @@ SmartTemplate4.Settings = {
 					editBox = headerBox;
 				}
 			}
-      if (code.includes('%file') || code.includes('%style')) {
+      if (code.includes('%file')) {
         code = settings.getFileName(code, editBox, "file");
+        return; // cancel
+      }
+      if (code.includes('%style')) {
+        code = settings.getFileName(code, editBox, "style");
         return; // cancel
       }
       if (code.includes('%basepath(')) {
@@ -688,6 +692,9 @@ SmartTemplate4.Settings = {
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
     switch (functionName) {
+      case "style":
+        fileType = "style";
+        break;
       case "file":
         if (code.includes('filePath'))
           fileType = "html";

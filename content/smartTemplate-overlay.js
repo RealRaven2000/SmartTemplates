@@ -2619,7 +2619,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         "\n template path = " + currentPath || '?');
       let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
       if (isFU) {
-        if (prefs.isDebugOption("fileTemplates")) debugger;
+        // if (prefs.isDebugOption("fileTemplates")) debugger;
         try {
           // on Mac systems nsIDirectoryService key may NOT be empty!
           // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
