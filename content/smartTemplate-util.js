@@ -1404,8 +1404,10 @@ SmartTemplate4.Util = {
         appendedPath = "";
     if (fPart)
       newPath = path.substr(0,fPart) + slash;
-    if (filePath && newPath) 
-      appendedPath =filePath.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
+    if (filePath && newPath) {
+		let relativeFilePath = filePath.substr(path[0] == slash ? 1 : 0) // strip leading slash
+		appendedPath = relativeFilePath.replace(noSlash, slash)
+	}
     return newPath + appendedPath;
   },
   
