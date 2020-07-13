@@ -1,4 +1,3 @@
-<<<<<<< .mine
 "use strict";
 
 /* 
@@ -1408,6 +1407,8 @@ SmartTemplate4.Util = {
     return (path.toLowerCase().startsWith('/user') || 
       /([a-zA-Z]:)/.test(path) || 
       path.startsWith("\\") || path.startsWith("/"));
+      
+
   },
   
   // retrieve the folder path of a full file location (e.g. C:\user\myTemplate.html)
@@ -9713,4 +9714,4 @@ SmartTemplate4.Message = {
 	} 
 	
 };  // ST4.Message
->>>>>>> .r978
+
