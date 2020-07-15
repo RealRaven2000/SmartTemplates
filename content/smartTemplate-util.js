@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.11.2",
+	HARDCODED_CURRENTVERSION : "2.12",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1421,7 +1421,7 @@ SmartTemplate4.Util = {
         appendedPath = "";
     if (fPart)
       newPath = path.substr(0,fPart) + slash;
-    // issue 16 - %file()% path truncated at front by 1 letter on Mac OS
+    // issue 77 - %file()% path truncated at front by 1 letter on Mac OS
     if (filePath && newPath) {
       let slashUnifiedFilePath = filePath.replace(noSlash, slash);
       appendedPath = slashUnifiedFilePath.substr(slashUnifiedFilePath[0] == slash ? 1 : 0); // strip leading slash
