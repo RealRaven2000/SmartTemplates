@@ -24,9 +24,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		let sigEncoding = prefs.getMyStringPref('signature.encoding'), // usually UTF-8
 		    htmlSigText = '',
 		    fileName = '';
-	  if (util.Application == 'Postbox') {
-			throw('readSignatureFile - reading signature from file is not supported in Postbox!');
-		}
 		util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile()');
 		// test code for reading local sig file (WIP)
 		try {
@@ -376,10 +373,6 @@ SmartTemplate4.classSmartTemplate = function() {
 				break;
       case 'span':  // Postbox
         // Postbox 4 simple check whether string ends with :
-        if (SmartTemplate4.Util.Application == 'Postbox') {
-          if (node.innerHTML && node.innerHTML.lastIndexOf(':') == node.innerHTML.length-1)
-            match = true;
-        }
         break;
 			case 'div': // tb 13++
 				if (node.className &&
@@ -491,7 +484,6 @@ SmartTemplate4.classSmartTemplate = function() {
         preserve = prefs.getMyBoolPref('plainText.preserveTextNodes'),
 				foundReplyHeader = false;
 		// delete everything except (or until in plaintext?) quoted part
-		// in Postbox, just delete class=__pbConvHr - there is no cite-prefix in Postbox!
 		while (node) {
 			let n = node.nextSibling;
 			// skip the forwarded part
@@ -523,7 +515,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// remove quote header elemenbt
 		if (!onlySpace) {
-			const quoteHeaderCls = (util.Application != 'Postbox') ? 'moz-email-headers-table' : '__pbConvHr';
+			const quoteHeaderCls =  'moz-email-headers-table';
 			// recursive search from root element
 			let node = findChildNode(rootEl, quoteHeaderCls);
 			if (node) {
@@ -659,30 +651,27 @@ SmartTemplate4.classSmartTemplate = function() {
     catch(ex) {
     }
 		// [Bug 25089] default forward quote can't be completely hidden
-		if ((util.Application === "Thunderbird" || util.Application === "SeaMonkey")
-		    && util.versionGreaterOrEqual(util.PlatformVer, "14"))
-		{
-      try {
-        // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
-        let fwdId = 'mailnews.forward_header_originalmessage', // from Tb 31.0 onwards?
-            replyId = 'mailnews.reply_header_originalmessage', //  [Bug 25089] Default forward quote not hidden
-            service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
-        
-        Id = fwdId;
+    try {
+      // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
+      let fwdId = 'mailnews.forward_header_originalmessage', // from Tb 31.0 onwards?
+          replyId = 'mailnews.reply_header_originalmessage', //  [Bug 25089] Default forward quote not hidden
+          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+      
+      Id = fwdId;
+      origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+      // fallback to replyId if it doesn't exist.
+      if (!origMsgDelimiter) {
+        Id = replyId
         origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
-        // fallback to replyId if it doesn't exist.
-        if (!origMsgDelimiter) {
-          Id = replyId
-          origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
-        }
       }
-      catch(ex) {
-        if (!origMsgDelimiter) {
-          util.logException("Could not retrieve delimiter {" + Id + "}; attempt original method.", ex)
-          origMsgDelimiter = bndl.GetStringFromID(1041);
-        }
+    }
+    catch(ex) {
+      if (!origMsgDelimiter) {
+        util.logException("Could not retrieve delimiter {" + Id + "}; attempt original method.", ex)
+        origMsgDelimiter = bndl.GetStringFromID(1041);
       }
-		}
+    }
+
 		util.logDebugOptional('functions.delForwardHeader','Retrieved Delimiter Token from mime properties: ' + origMsgDelimiter);
 
 		// Delete original headers
@@ -1547,14 +1536,12 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (isDebugComposer) debugger;
 						if (caretContainer && caretContainer.outerHTML) {
 							try {
-								//if (util.Application=='Postbox') util.debugVar(caretContainer);
 								
 								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
 										cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
 								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
 									try {
-										if (util.Application=='Postbox') util.logDebug("cursorParent:\n" + cursorParent);
 										// refind the caret Container.
 										// wrap internals in <p>
 										let parentSrchHTML = cursorParent.innerHTML.toLowerCase(),

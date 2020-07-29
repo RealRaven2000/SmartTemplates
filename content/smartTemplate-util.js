@@ -441,20 +441,10 @@ SmartTemplate4.Util = {
 		}
 		else {
 			let notificationId;
-			switch(util.Application) {
-				case 'Postbox': 
-					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-					break;
-				case 'Thunderbird': 
-					if (window.location.toString().endsWith("messengercompose.xul"))
-						notificationId = 'attachmentNotificationBox';
-					else
-						notificationId = 'mail-notification-box';
-					break;
-				case 'SeaMonkey':
-					notificationId = null;
-					break;
-			}
+      if (window.location.toString().endsWith("messengercompose.xul"))
+        notificationId = 'attachmentNotificationBox';
+      else
+        notificationId = 'mail-notification-box';
 			notifyBox = document.getElementById (notificationId);
 			// composer/dialog windows fallback - show in main window if notification is not available in this window
 			if (!notifyBox) { 
@@ -542,7 +532,7 @@ SmartTemplate4.Util = {
                 theUtil.showLicensePage(); 
 								// remove this message?
                 // let item = notifyBox.getNotificationWithValue(notificationKey);
-                // notifyBox.removeNotification(item, (theUtil.Application == 'Postbox'))
+                // notifyBox.removeNotification(item, false);
               },
               popup: null
             }
@@ -567,7 +557,7 @@ SmartTemplate4.Util = {
 			if (notifyBox) {
 				let item = notifyBox.getNotificationWithValue(notificationKey);
 				if (item)
-					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
+					notifyBox.removeNotification(item, false);
 			}
 		
 		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
@@ -578,9 +568,6 @@ SmartTemplate4.Util = {
 					isProFeature ? "chrome://smarttemplate4/skin/proFeature.png" : "chrome://smarttemplate4/skin/licensing.png" , 
 					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
 					nbox_buttons ); // , eventCallback
-			if (util.Application == 'Postbox') {
-				this.fixLineWrap(notifyBox, notificationKey);
-			}
 		}
 		else {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
@@ -681,9 +668,6 @@ SmartTemplate4.Util = {
 		    scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 		scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
 		consoleService.logMessage(scriptError);
-    if (this.Application == 'Postbox') { // apparently logMessage is ignored here.
-      this.logToConsole(aMessage, 'EXCEPTION in ' + aSourceName + ' @ line ' + aLineNumber + '\n');
-    }
 	} ,
 
 	logException: function (aMessage, ex) {
@@ -730,19 +714,6 @@ SmartTemplate4.Util = {
 	
 	getTabMode: function getTabMode(tab) {
 	  if (tab.mode) {   // Tb / Sm
-		  if (this.Application=='SeaMonkey' && (typeof tab.modeBits != 'undefined')) {
-				const kTabShowFolderPane  = 1 << 0;
-				const kTabShowMessagePane = 1 << 1;
-				const kTabShowThreadPane  = 1 << 2;			
-				// SM: maybe also check	tab.getAttribute("type")=='folder'
-				// check for single message shown - SeaMonkey always uses 3pane!
-				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
-			  if ( (tab.modeBits & kTabShowMessagePane) 
-             && 
-             !(tab.modeBits & kTabShowFolderPane)) {
-				  return 'message';
-				}
-			}
 			return tab.mode.name;
 		}
 		if (tab.type)  // Pb
@@ -794,29 +765,7 @@ SmartTemplate4.Util = {
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
 			linkURI = util.makeUriPremium(linkURI);
-			if (util.Application==='SeaMonkey') {
-				let windowManager = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator),
-				    browserWin = windowManager.getMostRecentWindow( "navigator:browser" );
-				if (browserWin) {
-					let URI = linkURI;
-					browserWin.setTimeout(
-						function sm_openBrowser() {  
-					    let browser = browserWin.getBrowser();
-							browser.selectedTab = browser.addTab(URI); 
-							if (browser.selectedTab.reload) 
-								browser.selectedTab.reload(); 
-							browserWin.focus();
-						}, 
-						250
-					);
-					
-				}
-				else {
-					this.Mail3PaneWindow.window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'SmartTemplate4');
-				}
 
-				return;
-			}
 			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
 			    ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
 			    uri = ioservice.newURI(linkURI, null, null);
@@ -851,18 +800,10 @@ SmartTemplate4.Util = {
 	openURL: function(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
 		const util = SmartTemplate4.Util;
 		let ioservice, iuri, eps;
-
-		if (util.Application==='SeaMonkey' || util.Application==='Postbox')
-		{
-			util.openLinkInBrowserForced(util.makeUriPremium(URL));
-			if(null!=evt) evt.stopPropagation();
-		}
-		else {
-			if (util.openURLInTab(URL) && null!=evt) {
-				if (evt.preventDefault)  evt.preventDefault();
-				if (evt.stopPropagation)	evt.stopPropagation();
-			}
-		}
+    if (util.openURLInTab(URL) && null!=evt) {
+      if (evt.preventDefault)  evt.preventDefault();
+      if (evt.stopPropagation)	evt.stopPropagation();
+    }
 	},
 
 	openURLInTab: function (URL) {
@@ -1523,37 +1464,7 @@ SmartTemplate4.Util = {
 				null,
 				params).focus();
 	}	,
-	
-  /** 
-	* getAccountsPostbox() return an Array of mail Accounts for Postbox
-	*/   
-	getAccountsPostbox: function getAccountsPostbox() {
-    const util = SmartTemplate4.Util,
-          Ci = Components.interfaces,
-          actManager = util.Mail3PaneWindow.accountManager || MailServices.accounts;
-	  let accounts=[];
-        
-    if (!actManager) {
-      util.logDebug("cannot retrieve Postbox accountManager from main window:" + util.Mail3PaneWindow);
-      debugger;
-    }
-		let smartServers = actManager.allSmartServers;
-		for (let i = 0; i < smartServers.Count(); i++) {
-			let smartServer = smartServers.QueryElementAt(i, Ci.nsIMsgIncomingServer),
-			    account_groups = smartServer.getCharValue("group_accounts");
-			if (account_groups) {
-				let groups = account_groups.split(",");
-				for (let k=0; k<groups.length; k++) {
-          let account = actManager.getAccount(groups[k]); // groups returns accountkey
-					if (account) {
-						accounts.push(account);
-					}
-				}
-			}
-		}
-		return accounts;
-	} ,
-	
+		
   // safe wrapper to get member from account.identities array
   getIdentityByIndex: function getIdentityByIndex(ids, index) {
     const Ci = Components.interfaces;
@@ -1737,33 +1648,15 @@ SmartTemplate4.Util = {
 						if(generalFunction=='from')
 							addressValue = identityList.value;
 						else {
-              if (this.Application=="Postbox") {
-                let hbox = document.getElementById('addr_' + generalFunction),  // e.g. addr_to
-                    bubbleContainer = hbox.firstChild;
-                for (let i=0; i<bubbleContainer.childNodes.length; i++) {
-                  let bubble = bubbleContainer.childNodes[i];
-                  if(i>0) {  // first one is empty for entry only
-                    let em = bubble.getAttribute("emailAddress"),
-                        nm = bubble.getAttribute("displayName"),
-                        fa = bubble.getAttribute("fullAddress"); // this one is htmlencoded.
-                    if (em) {
-                      addressValue = nm + " <" + em + ">";
-                    }
-                  }
+              // first column of widget:  addr_to, addr_bss, addr_bcc
+              for (let i=1; i<aw.getRowCount(); i++) {
+                let id = 'addressCol1#' + i;
+                if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
+                  id = 'addressCol2#' + i;
+                  addressValue = document.getElementById(id).value;
+                  break;
                 }
-                
               }
-              else {
-								// first column of widget:  addr_to, addr_bss, addr_bcc
-								for (let i=1; i<aw.getRowCount(); i++) {
-									let id = 'addressCol1#' + i;
-									if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
-										id = 'addressCol2#' + i;
-										addressValue = document.getElementById(id).value;
-										break;
-									}
-								}
-							}
 						}
 						
 						if (addressValue) {
@@ -2551,7 +2444,6 @@ SmartTemplate4.Util = {
 	installButton: function installButton(toolbarId, id, afterId) {
     // if (!document.getElementById(id)) {
       this.logDebug("installButton(" + toolbarId + "," + id + "," + afterId + ")");
-			if (this.Application=="Postbox") return; // something is going wrong in Pb, so we are not doing this.
 
       let toolbar = document.getElementById(toolbarId),
           before = null;
@@ -3249,3 +3141,86 @@ SmartTemplate4.Message = {
 	} 
 	
 };  // ST4.Message
+
+
+
+
+// Code migrated from smartTemplate-shim-ecma.js
+if (!SmartTemplate4.Shim) {
+	var { fixIterator } = 
+	  ChromeUtils.import ?
+	  ChromeUtils.import("resource:///modules/iteratorUtils.jsm", null) :
+	  Components.utils.import("resource:///modules/iteratorUtils.jsm");
+		
+	SmartTemplate4.Shim = {
+		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {
+			const Util = SmartTemplate4.Util,
+						Ci = Components.interfaces,
+						acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+													.getService(Ci.nsIMsgAccountManager);
+													
+			for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+				try {
+					let idMail = '';
+					if (account.defaultIdentity) {
+						idMail = account.defaultIdentity.email;
+					}
+					else if (account.identities.length) {
+						idMail = account.identities[0].email; // outgoing identities
+					}
+					else {
+						Util.logDebug('getIdentityMailAddresses() found account without identities: ' + account.key);
+					}
+					if (idMail) {
+						idMail = idMail.toLowerCase();
+						if (idMail && MailAddresses.indexOf(idMail)==-1) 
+							MailAddresses.push(idMail);
+					}
+				}
+				catch(ex) {
+					Util.logException ('getIdentityMailAddresses()', ex);
+				}
+			}
+		} ,
+
+		cloneHeaders: function cloneHeaders(msgHdr, messageClone, dbg, appendProperty) {
+			for (let [propertyName, prop] of Object.entries(msgHdr)) {
+				// propertyName is what you want
+				// you can get the value like this: myObject[propertyName]
+				try {
+					let hasOwn = msgHdr.hasOwnProperty(propertyName),
+							isCopied = false;  // replace msgHdr[propertyName] with prop
+					if (hasOwn && typeof prop != "function" && typeof prop != "object") {
+						messageClone[propertyName] = msgHdr[propertyName]; // copy to the clone!
+						if (messageClone[propertyName])  // make sure we have some data! (e.g. author, subject, recipient, date, charset, messageId)
+							dbg.countInit ++;
+						isCopied = true;
+					}
+					if (isCopied) {
+						dbg.test = appendProperty(dbg.test, msgHdr, propertyName);
+					}
+					else {
+						dbg.test2 = appendProperty(dbg.test2, msgHdr, propertyName);
+					}
+				}
+				catch(ex) { ; }
+			}
+		} ,
+		
+		get Accounts() {
+			const Ci = Components.interfaces,
+						Cc = Components.classes,
+						util = SmartTemplate4.Util;
+			let aAccounts=[],
+          accounts = Cc["@mozilla.org/messenger/account-manager;1"]
+                   .getService(Ci.nsIMsgAccountManager).accounts;
+      aAccounts = [];
+      for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+        aAccounts.push(ac);
+      };
+			return aAccounts;
+		} ,
+		
+		dummy: ', <== end Shim properties here'
+	} // end of Shim definition
+};

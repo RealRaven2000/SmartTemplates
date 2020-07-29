@@ -31,18 +31,7 @@ SmartTemplate4.composer = {
 			}
 	  );
     
-    let toolbarId;
-    switch(util.Application) {
-      case 'Thunderbird':
-        toolbarId = "composeToolbar2";
-        break;
-      case 'SeaMonkey':
-        toolbarId = "composeToolbar";
-        break;
-      case 'Postbox':
-        toolbarId = "composeToolbar5";
-        break;
-    }
+    let toolbarId = "composeToolbar2";
     
 		// add toolbarbutton for changing template
     if (prefs.getMyBoolPref ('changeTemplate.button.install')) {

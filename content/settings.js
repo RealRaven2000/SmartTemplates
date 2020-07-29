@@ -10,16 +10,6 @@
 */
 
 
-if (SmartTemplate4.Util.Application == 'Postbox'){ 
-  if (typeof XPCOMUtils != 'undefined') {
-    XPCOMUtils.defineLazyGetter(this, "NetUtil", function() {
-    Components.utils.import("resource://gre/modules/NetUtil.jsm");
-    return NetUtil;
-    });
-  }
-}
-
-
 SmartTemplate4.Settings = {
   dialogHeight: 0,
 	accountKey : ".common",  // default to common; .file for files
@@ -499,19 +489,14 @@ SmartTemplate4.Settings = {
     let nickBox = getElement('chkResolveABNick'),
 		    displayNameBox = getElement('chkResolveABDisplay'),
         replaceMail = getElement('chkResolveABRemoveMail'),
-        abBox = getElement('chkResolveAB'),
-        isPostbox = (util.Application === "Postbox");
-    if (isPostbox) {
-      prefs.setMyBoolPref('mime.resolveAB', false);
-      prefs.setMyBoolPref('mime.resolveAB.preferNick', false);
-    }
+        abBox = getElement('chkResolveAB');
 		
 		let isResolveAddressBook = prefs.getMyBoolPref('mime.resolveAB');
     
-    nickBox.disabled = !isResolveAddressBook || isPostbox;
-		displayNameBox.disabled = !isResolveAddressBook || isPostbox;
-    replaceMail.disabled = !isResolveAddressBook || isPostbox;
-    abBox.disabled = isPostbox;
+    nickBox.disabled = !isResolveAddressBook || false;
+		displayNameBox.disabled = !isResolveAddressBook || false;
+    replaceMail.disabled = !isResolveAddressBook || false;
+    abBox.disabled = false;
 		
 		const licenser = SmartTemplate4.Licenser; // problem?
 					
@@ -760,9 +745,6 @@ SmartTemplate4.Settings = {
     
 		if (fp.open)
 			fp.open(fpCallback);		
-		else { // Postbox
-		  fpCallback(fp.show());
-		}
     
     return true;    
   } ,
@@ -1386,18 +1368,6 @@ SmartTemplate4.Settings = {
       if (aResult == Ci.nsIFilePicker.returnOK || aResult == Ci.nsIFilePicker.returnReplace) {
         if (fp.file) {
           let path = fp.file.path;
-          if (util.Application=='Postbox') {
-            switch (mode) {
-              case 'load':
-                let settings = SmartTemplate4.Settings.Postbox_readFile(path);
-                readData(settings);
-                return;
-              case 'save':
-                SmartTemplate4.Settings.Postbox_writeFile(path, jsonData)
-                return;
-            }
-            throw ('invalid mode: ' + mode);
-          }
           
 					const {OS} = (typeof ChromeUtils.import == "undefined") ?
 						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
@@ -1457,65 +1427,10 @@ SmartTemplate4.Settings = {
     
 		if (fp.open)
 			fp.open(fpCallback);		
-		else { // Postbox
-		  fpCallback(fp.show());
-		}
     
     return true;    
   } ,
-  
-  Postbox_writeFile: function Pb_writeFile(path, jsonData) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes;
     
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-    // stateString.data = aData;
-    // Initialize the file output stream.
-    let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-    ostream.init(file, 
-                 0x02 | 0x08 | 0x20,   // write-only,create file, reset if exists
-                 0x600,   // read+write permissions
-                 ostream.DEFER_OPEN); 
-
-    // Obtain a converter to convert our data to a UTF-8 encoded input stream.
-    let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
-    converter.charset = "UTF-8";
-
-		var { NetUtil } = 
-			ChromeUtils.import ?
-			ChromeUtils.import("resource://gre/modules/NetUtil.jsm") :
-			Components.utils.import("resource://gre/modules/NetUtil.jsm");
-			
-    // Asynchronously copy the data to the file.
-    let istream = converter.convertToInputStream(jsonData); // aData
-    NetUtil.asyncCopy(istream, ostream, function(rc) {
-      if (Components.isSuccessCode(rc)) {
-        // do something for success
-      }
-    });
-  } ,
-  
-  Postbox_readFile: function Pb_readFile(path) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes;
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-          
-    let fstream = Cc["@mozilla.org/network/file-input-stream;1"].
-                  createInstance(Ci.nsIFileInputStream);
-    fstream.init(file, -1, 0, 0);
-
-    let cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].
-                  createInstance(Ci.nsIConverterInputStream);
-    cstream.init(fstream, "UTF-8", 0, 0);
-
-    let string  = {};
-    cstream.readString(-1, string);
-    cstream.close();
-    return string.value;    
-  }, 
-  
   store: function store() {
       // let's get all the settings from the key and then put them in a json structure:
     const util = SmartTemplate4.Util,

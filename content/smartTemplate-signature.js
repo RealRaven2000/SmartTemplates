@@ -51,55 +51,26 @@ SmartTemplate4.Sig = {
 	get isSignatureSetup() {
 		this._checkIdentity();
 		let id = this.Identity;
-		switch (SmartTemplate4.Util.Application) {
-			case 'Thunderbird': case 'SeaMonkey':
-				// see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
-			  return (id.htmlSigText && (id.htmlSigText.length > 0) && !id.attachSignature)
-		            ||
-		           (id.attachSignature && id.signature && id.signature.exists());
-				break;
-
-			case 'Postbox':
-			  // am-main.xul => pbSignature.js => editSignature()
-			  // see pbSignatureService.js...
-				if (!this.Postbox.SignatureKey)
-					return false;
-				try {
-				  // for more detail, see pbSignatureEditor.js
-					let postboxSig = this.Postbox.getSignature();
-					// signature has at least body and name attributes
-					let s = postboxSig.toString();
-					SmartTemplate4.Util.logDebug('Postbox Sig:' + s);
-				}
-				catch(ex) {
-				  return false;
-				}
-				return true;
-		} 
-		return false;
+    // see also: http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgIdentity.idl
+    return (id.htmlSigText && (id.htmlSigText.length > 0) && !id.attachSignature)
+            ||
+           (id.attachSignature && id.signature && id.signature.exists());
 	} ,
 	
 	get htmlSigFormat() {
 		this._checkIdentity();
-		if (SmartTemplate4.Util.Application == "Postbox")
-			return this.Postbox.htmlSigFormat;
-		else
-		  return this.Identity.htmlSigFormat;
+    return this.Identity.htmlSigFormat;
 	} ,
 	
 	get htmlSigText() {
 		this._checkIdentity();
-	  if (SmartTemplate4.Util.Application == 'Postbox')
-			return this.Postbox.htmlSigText;
-		else
-		  return this.Identity.htmlSigText;
+    return this.Identity.htmlSigText;
 	} ,
   
   get htmlSigPath() {
     const util = SmartTemplate4.Util;
     try {
       this._checkIdentity();
-      if (util.Application == 'Postbox') return ""; // i don't know right now
       if (!this.Identity.signature) return "";
       let sig = this.Identity.signature;
       if (sig) {

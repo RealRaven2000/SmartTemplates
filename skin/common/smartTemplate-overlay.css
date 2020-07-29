@@ -138,7 +138,6 @@ xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover {
 	background-color: rgba(255, 255, 255, 1);
 }
 
-/* postbox - this description simply won't wrap! */
 notification[value="SmartTemplate4-license"] description.messageText,
 xbl-notification[value="SmartTemplate4-license"] description.messageText,
 notification[value="SmartTemplate4-proFeature"] description.messageText,

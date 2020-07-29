@@ -158,9 +158,8 @@ function async_driver(val) {
 // We use this as a display consumer
 // nsIStreamListener
 var { XPCOMUtils } = 
-  ChromeUtils.import ?
-  ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") :
-	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");  // Fix for THunderbird 52 / Postbox
+  ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") ;
+  
 // not used (yet)
 var SmartTemplate4_streamListener =
 {
@@ -488,19 +487,9 @@ SmartTemplate4.mimeDecoder = {
       // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
       // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
       
-      let allAddressBooks;
-
-      if (util.Application === "Postbox") {
-         // mailCore.js:2201 
-         // abCardForEmailAddress(aEmailAddress, aAddressBookOperations, aAddressBook)
-         let card = abCardForEmailAddress(mail,  Components.interfaces.nsIAbDirectory.opRead, {});
-         if (card) return card;
-         return null;
-      }
-      else {
-        let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
-        allAddressBooks = abManager.directories; 
-      }
+      let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
+          allAddressBooks = abManager.directories; 
+          
       while (allAddressBooks.hasMoreElements()) {
         let addressBook = allAddressBooks.getNext()
                                          .QueryInterface(Components.interfaces.nsIAbDirectory);
@@ -700,12 +689,7 @@ SmartTemplate4.mimeDecoder = {
       firstName = (isResolveNamesAB && card) ? card.firstName : '';
       if (isResolveNamesAB && card) {
 				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
-					if (util.Application === "Postbox") {
-						if (card.nickName) 
-							firstName = card.nickName;
-					}
-					else
-						firstName = card.getProperty("NickName", card.firstName);
+          firstName = card.getProperty("NickName", card.firstName);
 				}
 				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName')) {
 					firstName = card.displayName;

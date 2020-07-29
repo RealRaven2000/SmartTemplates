@@ -1012,9 +1012,6 @@ SmartTemplate4.fileTemplates = {
     
 		if (fp.open)
 			fp.open(fpCallback);		
-		else { // Postbox
-		  fpCallback(fp.show());
-		}
     
     return true;    
   }  ,

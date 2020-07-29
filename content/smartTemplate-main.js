@@ -455,6 +455,13 @@ END LICENSE BLOCK
     # [issue 73] Improve Name Capitalization: support double names, such as Klaus-Dieter
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
     
+  Version 3.0 (ESR78) - WIP
+    # [issue 69] - Make SmartTemplate⁴ compatible with Thunderbird 78 ESR
+    #            - Remove Shim Code
+    #            - Remove support for SeaMonkey
+    #            -
+    #            -
+    
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

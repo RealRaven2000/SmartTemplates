@@ -31,12 +31,6 @@ override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://sma
 override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/default/smartTemplate-overlay.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/default/smartTemplate-about.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
 override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/default/messageWindow.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-#Pb 3.0.8 still on old linear-gradient!
-override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/legacy/style.css application=postbox@postbox-inc.com
-override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/legacy/smartTemplate-accounts.css application=postbox@postbox-inc.com
-override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/legacy/smartTemplate-overlay.css application=postbox@postbox-inc.com
-override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/legacy/smartTemplate-about.css application=postbox@postbox-inc.com
-override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/legacy/messageWindow.css application=postbox@postbox-inc.com
 
 ## add style rules to editor
 style   chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/compose-overlay.css appversion<59.0a1
@@ -82,7 +76,6 @@ style  chrome://messenger/content/messengercompose/messengercompose.xul chrome:/
 style  chrome://smarttemplate4/content/settings.xul chrome://SmartTemplate4/skin/unix/styleOS.css os=Linux
 
 #### SeaMonkey XUL OVERLAYS application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} ####
-#### PostBox XUL OVERLAYS application=postbox@postbox-inc.com ####
 
 #### Thunderbird XUL OVERLAYS application={3550f703-e582-4d05-9a08-453d09bdfdc6} ####
 # messengercompose.xul (MailCompose Window)
@@ -95,14 +88,4 @@ overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/conten
 overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/content/messengerOverlay65.xul appversion>=65.0
 overlay chrome://messenger/content/messageWindow.xul chrome://SmartTemplate4/content/messageWindowOverlay.xul
 
-
-# shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
-# while also avoid Postbox crashing us for syntax when we use for..of
-#tb (for..of)
-content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#sm (for..of)
-content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-#postbox (for in)
-content shimSmartTemplate chrome://SmartTemplate4/content/shimEcmaOld/ application=postbox@postbox-inc.com appversion<5.5
-content shimSmartTemplate chrome://SmartTemplate4/content/shimEcma/ application=postbox@postbox-inc.com appversion>=5.5
 
