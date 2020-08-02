@@ -51,10 +51,18 @@ permalink: version.html
     box-shadow: inset 0.5em 0.5em 10px rgba(0,0,0,0.7);
   }  
   
-  .psa .emphasis {
+  .psa .emphasis,
+  .psa78 .emphasis {
     color: yellow;
     font-weight: bold;
   }  
+  
+  
+  .psa78 {
+    padding: 0.1em 1em !important;
+    background-color: #3A3D41 !important;
+    box-shadow: inset 0.5em 0.5em 10px rgba(0,0,0,0.7);
+  }
 </style>
 
 <!-- note &#8308; is the same as <sup>4</sup>  -->
@@ -157,10 +165,10 @@ permalink: version.html
   </ul>
 </li> 
 
-<a id="3.0"> &nbsp; </a>
+<a id="3.*"> &nbsp; </a>
 <li>
   <h4>
-		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.0 - WIP</a>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.* - WIP</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">68.* - 78.*</span> 
@@ -195,10 +203,17 @@ permalink: version.html
 		</span>
   </h4>
   
+  <ul>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/69">[issue 69]
+      Make SmartTemplate4 compatible with Thunderbird 78 - Work In Progress
+    </li>
+  </ul>
+  <div class="psa78">
+    <p style="text-align: center;">
+      <img src="/img/esr78/logo-pro.png" alt="logo"/>
+    </p>
 
-  <div class="psa">
-
-    <p>The Add-on is planned to be ready for release Thunderbird 78.2 - (End of
+    <p>SmartTemplates is planned to be ready for release Thunderbird 78.2 - (End of
       September) - Mozilla will not push the update until then because they
       know that all Add-on authors are struggling converting their Add-ons.
       I have 1000s of lines of code which I am currently rewriting with a
@@ -267,11 +282,7 @@ permalink: version.html
     
   </div>
   
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
+
 </li> 
 
 <a id="2.11.2"> &nbsp; </a>
