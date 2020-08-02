@@ -229,8 +229,8 @@ permalink: version.html
     <p><b>Just like last year the Thunderbird team will not be pushing
         automatic updates for 2 releases, so the first candidate for
         "automatic update" will be 78.2 - if you use _any_ legacy Add-ons at
-        all, <font color="#ff0000"><u>please stay on the official release
-            train - trust the automatic update</u></font>. <i>Do not
+        all, <span class="emphasis">please stay on the official release
+            train - trust the automatic update</span>. <i>Do not
           upgrade manually.</i></b> </p>
     <p>It took me several months to find a developer who is able to
       help with the migration, it's challenging because many of
@@ -262,7 +262,7 @@ permalink: version.html
     <p><b>Rolling Back to 68</b></p>
     <p>
       If you already happen to have upgraded manually, it is still possible to roll back
-      to 68. Make sure to <span class="important">first backup your complete mail profile 
+      to 68. Make sure to <span class="important emphasis">first backup your complete mail profile 
       and export all addressbooks!</span>. After installing 68 
       over 78 to complete the downgrade you must run Thunderbird 68 with the command
       line parameters:
@@ -273,8 +273,7 @@ permalink: version.html
     <p>
       In Windows you can achieve this by opening the shortcut properties 
       and editing the "Target" line:<br>
-      
-      %file(img/downgrade.png)%<br>
+      <img src="img/esr78/downgrade.png" alt="downgrade shorcut target"/>
     <p>
       <tt>"C:\Program Files\Mozilla Thunderbird\thunderbird.exe" --allow-downgrades -purgecaches</tt>
     </p>
