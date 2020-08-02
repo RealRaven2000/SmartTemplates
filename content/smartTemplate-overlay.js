@@ -1590,7 +1590,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		
 		if ((composeType != "new") && !gMsgCompose.originalMsgURI)  {
-			util.popupAlert ("SmartTemplate4", "Missing message URI - SmartTemplate4 cannot process this message!");
+			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplate4 cannot process this message!");
 			return aString;
 		}
 

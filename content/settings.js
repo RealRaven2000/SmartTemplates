@@ -1491,7 +1491,7 @@ SmartTemplate4.Settings = {
     if (el.collapsed != false) {
       el.collapsed = false;
       if (!silent)
-        util.popupAlert ("SmartTemplate4", el.textContent);
+        util.popupAlert (util.ADDON_TITLE, el.textContent);
     }
   } ,
   
@@ -1645,7 +1645,7 @@ SmartTemplate4.Settings = {
           SmartTemplate4.Settings.showValidationMessage(validationEmailNoMatch, silent);
           break;
         default:
-          Services.prompt.alert(null,"SmartTemplate4",'Unknown license status: ' + result);
+          Services.prompt.alert(null,util.ADDON_TITLE,'Unknown license status: ' + result);
           break;
       }
 			

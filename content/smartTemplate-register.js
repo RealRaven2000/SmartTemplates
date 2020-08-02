@@ -583,7 +583,7 @@ SmartTemplate4.Licenser =
        if (crypto.key_type!=1) { // not currently a domain key?
          let txt = util.getBundleString("SmartTemplate4.prompt.switchDomainLicense", "Switch to Domain License?");
 				  
-         if (Services.prompt.confirm(null, "SmartTemplate4", txt)) {
+         if (Services.prompt.confirm(null, util.ADDON_TITLE, txt)) {
            crypto.key_type=1; // switch to volume license
          }
        }

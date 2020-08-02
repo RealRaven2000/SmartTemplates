@@ -21,6 +21,7 @@ SmartTemplate4.Util = {
 	HARDCODED_CURRENTVERSION : "2.12",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
+  ADDON_TITLE: "SmartTemplates",
 	VersionProxyRunning: false,
 	mAppver: null,
 	mAppName: null,
@@ -2824,7 +2825,7 @@ SmartTemplate4.Util.firstRun =
 					// Display the modeless update message
 					// To Do: We need to make this more generic for charging for a standard version!
 					window.setTimeout(function(){
-						util.popupAlert ("SmartTemplate4", updateVersionMessage); // OS notification
+						util.popupAlert (util.ADDON_TITLE, updateVersionMessage); // OS notification
 					}, 3000);
 
 				}

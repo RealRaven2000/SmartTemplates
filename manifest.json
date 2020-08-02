@@ -1,9 +1,9 @@
 {
   "author": "Axel Grude",
   "manifest_version": 2,
-  "name": "SmartTemplate4",
-	"description": "SmartTemplate4 customizes quote headers and mail template per account. It also replaces Stationery in Tb 68.",
-  "version": "3.0pre6",
+  "name": "SmartTemplates",
+	"description": "SmartTemplates customizes quote headers and mail template per account. It also replaces Stationery in Tb 68.",
+  "version": "3.0pre8",
   "developer": {
 	  "name": "Axel Grude",
     "url": "http://smarttemplates.quickfolders.org/index.html"

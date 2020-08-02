@@ -33,7 +33,7 @@ var EXPORTED_SYMBOLS = [];
 // protect global scope. We do not reference SmartTemplate4 objects from here.
 (function() {
 	function log(msg) {
-		const title = "SmartTemplate4";
+		const title = "SmartTemplates";
 		if (!isDebugStationery) return;
 		consoleService.logStringMessage(title + "\n"+ msg);
 	}
