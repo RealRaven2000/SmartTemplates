@@ -450,10 +450,14 @@ END LICENSE BLOCK
     # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
     # [issue 68] Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
     
-  Version 2.11.2 - WIP  
+  Version 2.11.2 - 10/07/2020  
     # [issue 74] In some cases the menu templates in compact header reply buttons are doubled up
     # [issue 73] Improve Name Capitalization: support double names, such as Klaus-Dieter
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
+    
+  Version 2.12 - WIP
+    # [issue 77] - %file()% path truncated at front by 1 letter on Mac OS
+    # [issue 37] - SmartTemplate destroys default Bcc switching on account change as configured in TB
     
     
 =========================
