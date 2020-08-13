@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://smartTemplate4/locale/smartTemplate-overlay.dtd">		
+
+<?xml-stylesheet href="chrome://smarttemplate4/skin/smartTemplate-overlay.css" type="text/css"?>
+
+<overlay id="stMessengercomposeOverlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+				 
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-compose.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-overlay.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-register.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-signature.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-fileTemplates.js"/>
+<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-composer.js"/>
+	
+	<!-- Toolbar -->
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton 
+		  id="smarttemplate4-cleandeferred" 
+			class="toolbarbutton-1 AG"
+			label="&smartTemplate4.cleandeferred.label;"
+			tooltiptext="&smartTemplate4.cleandeferred.tooltip;"
+			context=""
+			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
+			>
+		</toolbarbutton>
+		<!-- [issue 24] Select a different template in Composer..	-->
+
+    <toolbarbutton 
+		  id="smarttemplate4-changeTemplate" 
+			class="toolbarbutton-1 AG"
+			label="&smartTemplate4.changeTemplate.label;"
+			tooltiptext="&smartTemplate4.changeTemplate.tooltip;"
+      type="menu-button"
+			context=""
+			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">
+        <menupopup id="button-TemplatePopup">
+        </menupopup>      
+      </toolbarbutton>
+    
+    
+	</toolbarpalette>
+	
+  <window id="msgcomposeWindow">
+		<popupset id="SmartTemplate4-ComposerPopupSet">
+			<menupopup id="SmartTemplate4-ComposerPopup" 
+			           class="SmartTemplate4-ComposerPopup">
+				<menuitem id="SmartTemplate4-replaceDeferred"
+				          label="&smartTemplate4.deferredcontext.update;"
+				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, false);" 
+				          class="cmd menuitem-iconic"
+				          />
+				<menuitem id="SmartTemplate4-cleanupDeferred"
+				          label="&smartTemplate4.deferredcontext.cleanup;"
+				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, true);" 
+				          class="cmd menuitem-iconic"
+				          />
+				<menuitem id="SmartTemplate4-deleteDeferred"
+				          label="&smartTemplate4.deferredcontext.delete;"
+				          oncommand="SmartTemplate4.Util.removeDeferred(event.originalTarget.parentElement.targetNode);" 
+				          class="cmd menuitem-iconic"
+				          />
+			</menupopup>
+		</popupset>
+	</window>
+		
+</overlay>
+
