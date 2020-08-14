@@ -1,24 +1,14 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", window, "UTF-8");
-//Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-register.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-rsa.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-register.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-bookmarks.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-change-order.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-model.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-advancedTab.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folderTree.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
+
+//original lds this after xul!!
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content//smartTemplate-prefs.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa..js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/settings.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
