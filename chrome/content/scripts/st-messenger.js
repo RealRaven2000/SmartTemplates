@@ -5,7 +5,7 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content//smartTemplate-prefs.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa..js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/settings.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
@@ -14,14 +14,7 @@ function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
     let layout = WL.injectCSS("chrome://smarttemplate4/skin/smartTemplate-overlay.css");
     
-    let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
-    // tb.setAttribute("title", "QuickFolderStyles");
-    
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
-    WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
-
+ 
 
 
     //messengeroverlay65
