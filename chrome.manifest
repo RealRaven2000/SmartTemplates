@@ -86,6 +86,6 @@ overlay chrome://messenger/content/am-addressing.xul  chrome://smarttemplate4/co
 # messenger.xul (Mainwindow -> "Statusbar")
 #overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/content/messengerOverlay.xul appversion<65.0
 #overlay chrome://messenger/content/messenger.xul  chrome://SmartTemplate4/content/messengerOverlay65.xul appversion>=65.0
-overlay chrome://messenger/content/messageWindow.xul chrome://SmartTemplate4/content/messageWindowOverlay.xul
+#overlay chrome://messenger/content/messageWindow.xul chrome://SmartTemplate4/content/messageWindowOverlay.xul
 
 
