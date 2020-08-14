@@ -604,7 +604,7 @@ SmartTemplate4.fileTemplates = {
           event.stopImmediatePropagation();
           let win = SmartTemplate4.Util.Mail3PaneWindow,
               params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
-          win.openDialog('chrome://smarttemplate4/content/settings.xul', 
+          win.openDialog('chrome://smarttemplate4/content/settings.xhtml', 
             'Preferences', 
             'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
             null,

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://smarttemplate4/skin/common/smartTemplate-register.css" title="SmartTemplateRegStyles" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://smartTemplate4/locale/register.dtd" >
+
+<dialog 
+  title="&licenseWindow.title;"
+	id="smarttemplate-register"
+	buttons="none"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	ondialogcancel="var cancel=SmartTemplate4.Licenser.cancel.bind(SmartTemplate4.Licenser); cancel();"
+	onload="var load=SmartTemplate4.Licenser.load.bind(SmartTemplate4.Licenser); load();"
+>
+
+	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
+	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-util.js" />
+	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-prefs.js" />
+	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-rsa.js" />
+	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-register.js" />
+	
+	<vbox id="thePage">
+		<hbox>
+			<div class="product">&getSmartTemplate4;</div>
+			<spacer flex="1" />
+			<vbox align="center">
+				<spacer flex="1" />
+				<hbox id="LicenseTerm" class="para">
+					<label id="licenseDateLabel">&label.licenseValid;</label>
+					<label id="licenseDate" value="-" />
+				</hbox>
+				<spacer flex="1" />
+			</vbox>
+			<spacer flex="1"/>
+			<vbox>
+				<spacer flex="1"/>
+				<!-- align buttons bottom right -->
+				<label id="haveLicense">&label.haveLicense;</label>
+				<hbox>
+					<button id="btnEnterCode"
+									label="&enterLicenseKey.button;"
+									tooltiptext="&enterLicenseKey.tooltip;"
+									oncommand="SmartTemplate4.Util.viewLicense();window.close();" />
+				</hbox>
+			</vbox>
+			
+		</hbox>
+		
+		<description class="para">&licenseTypes;</description>
+		
+		<description class="para">&intro;</description>
+
+		<description class="para">&testDriveS;</description>
+			
+		<table>
+			<tr>
+			  <td>
+					<div class="heading">&yearlyLicense.title;</div>
+					<spacer flex="1" />
+				</td>
+			  <td>
+					<description class="para">&yearlyLicense.premiumFeatures;</description>
+					<label class="para link" 
+					onclick="SmartTemplate4.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
+					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
+				</td>
+			</tr>	
+			<tr>	
+				<td>
+					<div class="heading">&updates.title;</div>
+					<spacer flex="1" />
+				</td>
+			  <td>
+					<description class="para">&updatesExpiry;</description>
+				</td>
+			</tr>	
+			<tr>	
+				<td>
+					<div class="heading">&vouchers.title;</div>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<description class="para">&freeLicense;</description>
+				</td>
+			</tr>	
+		</table>
+	</vbox>
+	
+	<hbox class="form">
+	  <vbox>
+			<hbox>
+				<label class="ref">&account.label;</label>
+				<menulist id="mailIdentity"
+					sizetopopup="none"
+					oncommand="SmartTemplate4.Licenser.selectIdentity(this);"
+					>
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</hbox>
+			<hbox>
+				<label control="email"
+							 class="ref"
+							 value="&email.label;" 
+							 />
+				<textbox id="email" />
+			</hbox>
+		</vbox>
+	  <spacer flex="1"/>
+	  <vbox>
+			<hbox>
+				<label control="firstName"
+							 class="ref"
+							 value="&firstName.label;" 
+							 />
+				<textbox id="firstName" />
+			</hbox>
+			<hbox>
+				<label control="lastName"
+				       class="ref"
+							 value="&lastName.label;" 
+							 />
+				<textbox id="lastName" />
+			</hbox>
+		</vbox>
+		<spacer flex="3" />
+	</hbox>
+	<vbox id="buyBox">
+		<table class="buyAction">
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyPremiumLicense.instruct;</label>
+				</td>
+				<td class="btnLicenseContainer">
+					<button id="btnLicense"
+					  class="register"
+						label="&buyPremiumLicense.button;"
+						oncommand="SmartTemplate4.Licenser.goPro(0);" />
+				</td>
+			</tr>
+			
+			<tr align="center" id="StandardLicenseRow">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyStandardLicense.instruct;</label>
+				</td>
+				<td class="btnLicenseContainer">
+					<button id="btnStdLicense"
+					  class="register"
+						label="&buyStandardLicense.button;"
+						oncommand="SmartTemplate4.Licenser.goPro(2);" />
+				</td>
+			</tr>
+			
+			
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyDomainLicense.instruct;</label>
+				</td>
+				<td>
+					<button id="btnDomainLicense"
+						label="&buyDomainLicense.button;"
+						oncommand="SmartTemplate4.Licenser.goPro(1);" />
+				</td>
+			</tr>
+		</table>
+	</vbox>
+	<textbox id="referrer" collapsed="true"/>
+</dialog>

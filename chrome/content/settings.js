@@ -422,7 +422,7 @@ SmartTemplate4.Settings = {
 				if (util.HostSystem.toLowerCase().startsWith("linux"))
 					window.resizeBy(0,55); // show Ok / Cancel buttons.
 				// make sure we are not moved partly off screen
-				if (window.opener && window.opener.document.documentURI.endsWith("messenger.xul")) {
+				if (window.opener && window.opener.document.documentURI.endsWith("messenger.xhtml")) {
 					let parentWidth = window.opener.outerWidth,
 					    parentX = window.opener.screenX,
 							parentRight = parentX + parentWidth;

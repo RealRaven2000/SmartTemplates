@@ -927,7 +927,7 @@ SmartTemplate4.Util = {
 						// open options and open the last tab!
 						// first param = identity (not set, unimportant)
 						// second param = mode to open correct setting 
-						win.openDialog('chrome://smarttemplate4/content/settings.xul',
+						win.openDialog('chrome://smarttemplate4/content/settings.xhtml',
 								'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
 								null,
 								params).focus();
@@ -961,7 +961,7 @@ SmartTemplate4.Util = {
 
 	showAboutConfig: function(clickedElement, filter) {
 		const name = "Preferences:ConfigManager";
-		const uri = "chrome://global/content/config.xul";
+		const uri = "chrome://global/content/config.xhtml";
 
 		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
 		let w = mediator.getMostRecentWindow(name);
@@ -1460,7 +1460,7 @@ SmartTemplate4.Util = {
 		// open options and open the last tab!
 		// first param = identity (not set, unimportant)
 		// second param = mode to open correct setting 
-    win.openDialog('chrome://smarttemplate4/content/settings.xul',
+    win.openDialog('chrome://smarttemplate4/content/settings.xhtml',
 				'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
 				null,
 				params).focus();
@@ -2925,7 +2925,7 @@ SmartTemplate4.Message = {
 
 		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow,
 		    dispFeatures = "chrome,alwaysRaised,dependent,close=no," + features; //  close=no,
-		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xul", "st4message", dispFeatures, params)
+		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xhtml", "st4message", dispFeatures, params)
 		    .QueryInterface(Components.interfaces.nsIDOMWindow);
 		this.parentWindow = null;
 
