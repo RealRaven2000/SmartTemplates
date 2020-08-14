@@ -31,7 +31,7 @@ function onLoad(activatedWhileWindowOpen) {
                      label="&smartTemplate4.settings.label;"
                      tooltiptext="&smartTemplate4.settings.tooltip;"
                      class="toolbarbutton-1 chromeclass-toolbar-additional"
-                     oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+                     oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
     </toolbarpalette>
  
     <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
@@ -42,7 +42,7 @@ function onLoad(activatedWhileWindowOpen) {
                                            label="&smartTemplate4.settings.label;"
                                            tooltiptext="&smartTemplate4.settings.tooltip;"
                                            insertafter="totalMessageCount"
-                                           oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
+                                           oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
   <!-- </statusbarpanel> -->
     </hbox>
   
