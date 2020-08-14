@@ -3,7 +3,12 @@
  * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
  */
 
-async function main() {
+
+//TODO
+// skin
+
+
+ async function main() {
     messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
     
     messenger.WindowListener.registerChromeUrl([ 
