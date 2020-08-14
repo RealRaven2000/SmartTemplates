@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "SmartTemplates customizes quote headers and mail template per account. It also replaces Stationery in Tb 68.",
-  "version": "3.0pre8",
+  "version": "ESR78",
   "developer": {
 	  "name": "Axel Grude",
     "url": "http://smarttemplates.quickfolders.org/index.html"
@@ -11,19 +11,35 @@
   "applications": {
     "gecko": {
       "id": "smarttemplate4@thunderbird.extension",
-      "strict_min_version": "60.0",
-      "strict_max_version": "69.0"
+      "strict_min_version": "68.0",
+      "strict_max_version": "80.0"
+    }
+  },
+
+  "background": {
+    "scripts": ["st-background.js"]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    },  
+    "LegacyPrefs": {
+      "schema": "chrome/content/api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "chrome/content/api/LegacyPrefs/implementation.js"
+      
+      }
     }
   },
   "icons": {
     "32": "skin/icon32x32.png",
     "64": "skin/icon64x64.png"
-  },
-	
-  "legacy": {
-    "options": {
-      "page": "chrome://SmartTemplate4/content/settings.xul",
-      "open_in_tab": false
-    }
   }	
 }
