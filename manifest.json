@@ -5,7 +5,7 @@
 	"description": "SmartTemplates customizes quote headers and mail template per account. It also replaces Stationery in Tb 68.",
   "version": "ESR78",
   "developer": {
-	  "name": "Axel Grude",
+	  "name": "Axel Grude (author), Klaus Buecher/opto",
     "url": "http://smarttemplates.quickfolders.org/index.html"
 	},
   "applications": {
