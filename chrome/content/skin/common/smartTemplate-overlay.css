@@ -1,0 +1,183 @@
+/* ################################################################################### */
+/* ############################# TOOLBAR BUTTON OVERLAY ############################## */
+/* ################################################################################### */
+#SmartTemplate4Button,
+#mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
+{
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon24x24.png");
+}
+
+[iconsize="small"] #SmartTemplate4Button,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #SmartTemplate4Button.toolbarbutton-1
+{
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
+}
+
+/* avoid the 'squashed' look in Nuvola */
+toolbar:not([iconsize="small"]) #SmartTemplate4Button image
+{
+  width: 24px;
+  height: 24px;
+}
+
+
+/* ################################################################################### */
+/* ################################ STATUSBAR OVERLAY ################################ */
+/* ################################################################################### */
+
+/* ################################## ICON BINDINGS ################################## */
+/* @import url("chrome://messenger/skin/shared/messenger.css"); for --toolbarbutton-border-radius */
+#SmartTemplate4Messenger {
+	-moz-appearance: none;
+	border: 1px solid transparent;
+	border-radius: 2px; /* var(--toolbarbutton-border-radius, 3px); from messenger.css - 2px win 3px osx */
+  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
+	margin: 0;
+	padding: 1px 2px 0 !important;
+}
+#SmartTemplate4Messenger:hover {
+  border-color: ThreeDShadow;
+}
+#SmartTemplate4Messenger image {
+	max-height: 16px;
+}
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+#SmartTemplate4Messenger label 
+{
+	margin-left: 0.3em !important;
+	max-width: 350px;
+	width: auto;
+}
+
+#SmartTemplate4Messenger.always:not(:hover) label
+{
+	width: auto !important;
+}
+
+
+#SmartTemplate4Messenger:not(:hover):not(.always) label,
+#SmartTemplate4Messenger.hidden label,
+#SmartTemplate4Messenger.hidden:hover label
+{
+	width: 0 !important;
+	max-width: 0 !important;
+	display: none;
+}
+
+#SmartTemplate4Messenger:not(:hover):not(.always):not(.hidden)
+/* padding instead margin for Noia eXtreme Theme */
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+
+
+/* replace notification tag for Tb 64 and later to also match xbl-notification */
+notification[value="SmartTemplate4-license"] .notification-button[accesskey],
+xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey],
+notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey],
+xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey] {
+	-moz-appearance: none;
+	background-color: rgb(7, 97, 48) !important;
+	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
+	border: 1px solid white;
+	border-radius: 1px;
+	box-shadow: 0 0 0 0 rgba(188, 132, 32, 0.7);
+	color: #FFFFFF;
+	cursor: pointer !important;
+	font-weight: bold;
+	transition-property: box-shadow, margin;
+	transition-duration: 0.75s, 0.2s;
+	height: 135% !important;
+	width: 135% !important;
+}
+
+/* moved animation to windows specific style sheet */
+
+notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
+xbl-notification[value="SmartTemplate4-license"] .notification-button[accesskey]:hover,
+notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey]:hover,
+xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accesskey]:hover {
+	background: -moz-linear-gradient(top, #dbe42e 0%,#a8cc16 50%,#8fba00 51%,#b6d917 100%)  !important;
+}
+
+
+notification[value="SmartTemplate4-license"] image.messageImage,
+xbl-notification[value="SmartTemplate4-license"] image.messageImage {
+	min-width: 107px !important;
+	width: 107px !important;
+	min-height: 36px !important;
+	height: 36px !important;
+	background-image: none !important; /* remove attachment icon in composer */
+}
+
+notification[value="SmartTemplate4-proFeature"] image.messageImage,
+xbl-notification[value="SmartTemplate4-proFeature"] image.messageImage {
+	min-width: 72px !important;
+	width: 72px !important;
+	min-height: 36px !important;
+	height: 36px !important;
+	background-image: none !important; /* remove attachment icon in composer */
+}
+
+notification[value="SmartTemplate4-license"] .messageCloseButton,
+xbl-notification[value="SmartTemplate4-license"] .messageCloseButton,
+notification[value="SmartTemplate4-proFeature"] .messageCloseButton,
+xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 2px;
+	border-radius: 2px;
+	margin: 0 1em;
+}
+
+notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
+xbl-notification[value="SmartTemplate4-license"] .messageCloseButton:hover,
+notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover,
+xbl-notification[value="SmartTemplate4-proFeature"] .messageCloseButton:hover {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+notification[value="SmartTemplate4-license"] description.messageText,
+xbl-notification[value="SmartTemplate4-license"] description.messageText,
+notification[value="SmartTemplate4-proFeature"] description.messageText,
+xbl-notification[value="SmartTemplate4-proFeature"] description.messageText {
+	font-family: Consolas,monaco,monospace;
+	font-size: 10pt;
+	height: auto;
+	white-space: normal !important;
+}
+
+#mail-notification-box,
+#pbSearchThresholdNotifcationBar {
+	height: auto;
+}
+
+/* fix some accidental truncations */
+#mail-notification-box notification[value=SmartTemplate4-license],
+#pbSearchThresholdNotifcationBar notification[value=SmartTemplate4-license],
+#mail-notification-box notification[value=SmartTemplate4-proFeature],
+#pbSearchThresholdNotifcationBar notification[value=SmartTemplate4-proFeature] {
+	min-height: 44px;
+}
+
+notification[value="SmartTemplate4-proFeature"] hbox.notification-inner,
+notification[value="SmartTemplate4-license"] hbox.notification-inner  {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+menuitem.st4templatePicker,
+menuitem.st4templateEntry:hover {
+	list-style-image : url('chrome://smartTemplate4/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4templateConfig {
+	list-style-image : url('chrome://smartTemplate4/skin/icons/settings.png') !important;
+}
+
+
+menuitem.st4templatePicker:hover {
+	list-style-image : url('chrome://smartTemplate4/skin/icons/file-load.png') !important;
+}
+
