@@ -53,7 +53,7 @@ var EXPORTED_SYMBOLS = [];
 
 	try {
 					
-		Cu.import("resource://stationery/content/stationery.jsm");
+		ChromeUtils.import("resource://stationery/content/stationery.jsm");
 		
 		if (isStationery) {
 			var { Services } =
@@ -84,4 +84,9 @@ var EXPORTED_SYMBOLS = [];
 		//no Stationery installed
 		log('stationery', 'Stationery not Installed?' + ex.toString());
 	}
-})();
+}
+/**/
+)();
+
+
+
