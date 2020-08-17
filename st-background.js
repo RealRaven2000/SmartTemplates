@@ -13,6 +13,7 @@
     
     messenger.WindowListener.registerChromeUrl([ 
         ["content", "smarttemplate4", "chrome/content/"],
+        ["resource", "smarttemplate4", "chrome/content/"],
         ["override", "chrome://smarttemplate4/skin/style.css", "chrome://smarttemplate4/skin/default/style.css"],
         ["override", "chrome://smarttemplate4/skin/smartTemplate-accounts.css", "chrome://smarttemplate4/skin/default/smartTemplate-accounts.css"],
         ["override", "chrome://smarttemplate4/skin/smartTemplate-overlay.css", "chrome://smarttemplate4/skin/default/smartTemplate-overlay.css"],

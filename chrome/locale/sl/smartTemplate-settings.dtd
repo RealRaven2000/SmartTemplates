@@ -1,0 +1,331 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "Datoteka">
+<!ENTITY tools.label "Orodja">
+<!ENTITY edit.label "Uredi">
+<!ENTITY help.label "Pomoč">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Kopiraj">
+<!ENTITY paste.label "Prilepi">
+<!ENTITY insert.label "Vstavi spremenljivko">
+<!ENTITY close.label "Osnovno">
+<!ENTITY advanced.label "Napredno">
+<!ENTITY export.label "Izvozi">
+<!ENTITY import.label "Uvozi">
+<!ENTITY menu.template_import.label "Uvozi predlogo">
+<!ENTITY menu.template_export.label "Izvozi predlogo">
+<!ENTITY settings.label "Nastavitve in predloge">
+<!ENTITY url.homePage.label "Domača stran dodatka">
+<!ENTITY url.supportPage.label "Stran za podporo">
+<!ENTITY url.bugsAndFeaturesPage.label "Poročila o hroščih / Želje po značilnostih">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Sestavi">
+<!ENTITY pref_rsp.tab "Odgovori">
+<!ENTITY pref_fwd.tab "Posreduj">
+<!ENTITY pref_help.tab "Pomoč">
+<!ENTITY pref_about.tab "O dodatku">
+<!ENTITY pref_global.tab "Splošne nastavitve">
+<!ENTITY pref_advanced.tab "Napredne nastavitve">
+<!ENTITY pref_variables.tab "Spremenljivke">
+<!ENTITY pref_examples.tab "Primeri (samo v povezanem načinu)">
+<!ENTITY pref_examples.tooltip "Prikaži primere predlog iz http://smarttemplates.quickfolders.org/templates.html. Na voljo samo v povezanem načinu.">
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "V redu">
+<!ENTITY cancel_button "Prekliči">
+<!ENTITY contribute_button "Prispevajte">
+<!ENTITY button.updateThunderbird "Posodobi Thunderbird!">
+<!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Vsebina pošte">
+<!ENTITY pref_groupSignatures "Podpisi">
+<!ENTITY pref_groupAdvanced "Napredne možnosti">
+<!ENTITY pref_groupUI "Uporabniški vmesnik">
+<!ENTITY pref_groupNameRules "Pravila za imena">
+<!ENTITY pref_groupTroubleShooting "Reševanje težav">
+<!ENTITY pref_addSigBreakHTML.label "Dodaj - - v pošto HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Vedno dodaj ločilo - - pred podpis (v poštah HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Dodaj - - v pošto z golim besedilom">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Vedno dodaj ločilo - - pred podpis (v poštah z golim besedilom)">
+<!ENTITY pref_quoteHeaderBox.label "Glava navedka">
+<!ENTITY pref_quoteHeaderBox_tip "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. &#37;date&#37;, &#37;from(name)&#37; je napisal:">
+<!ENTITY pref_templateBox.label "Predloga">
+<!ENTITY pref_dialog.title "Nastavitve SmartTemplate⁴">
+<!ENTITY pref_breaksOnTop.label "Število prelomov vrstic na vrhu:">
+<!ENTITY pref_removeSig.label "Nadomesti podpis ob spremembi e-poštne identitete">
+<!ENTITY pref_showStatusIcon.label "Prikaži gumb v vrstici stanja">
+<!ENTITY pref_StatusIcon.IconOnly "Samo ikona">
+<!ENTITY pref_StatusIcon.IconText "Ikona in besedilo">
+<!ENTITY pref_StatusIcon.IconHoverText "Besedilo ob prehodu z miško">
+<!ENTITY pref_fontSettings.label "Pisava urejevalnika predlog">
+<!ENTITY pref_server_desc "Račun">
+<!ENTITY btnSaveTemplate.tooltip "Shrani predlogo ...">
+<!ENTITY btnLoadTemplate.tooltip "Naloži predlogo ...">
+<!ENTITY btnYouTube.tooltip "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih">
+<!ENTITY tip.fileTemplates "Kliknite in preberite celotno dokumentacijo o pisarniških materialih in zunanjih predlog HTML na našem spletnem mestu za podporo…">
+<!ENTITY pref_server_def "Splošno">
+<!ENTITY pref_def.label "Uporabi splošno">
+<!ENTITY pref_def.cap "Odznačite 'Uporabi splošno' za ustvarjanje glave navedka po meri za ta račun,">
+<!ENTITY pref_newmsg.cap "Sestavi">
+<!ENTITY pref_new.label "Uveljavi naslednjo predlogo za novo sporočilo">
+<!ENTITY pref_rspmsg.cap "Odgovori">
+<!ENTITY pref_rsp.label "Uveljavi naslednjo predlogo za odgovor">
+<!ENTITY pref_rsphead.label "Uporabi namesto privzete glave navedka">
+<!ENTITY pref_fwdmsg.cap "Posreduj">
+<!ENTITY pref_fwd.label "Uveljavi naslednjo predlogo za posredovano sporočilo">
+<!ENTITY pref_fwdhead.label "Onemogoči privzeto Thunderbirdovo glavo navedka">
+<!ENTITY pref_quotehead_tip "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje.">
+<!ENTITY pref_template_tip "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti.">
+<!ENTITY help_dialog_title "Pomoč SmartTemplate⁴">
+<!ENTITY help_keyword.cap "Pomoč">
+<!ENTITY pref_debug_check "Razhroščevalni način">
+<!ENTITY pref_hideExamples "Skrij zavihek s primeri">
+<!ENTITY pref_silentUpdates "Tihe posodobitve">
+<!ENTITY pref_silentUpdates_tip "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplate⁴.">
+<!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
+<!ENTITY pref_nameSwap "Pravilni priimek, ime">
+<!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
+<!ENTITY defaultMimeFormat "Privzeta oblika naslova:">
+<!ENTITY defaultMimeFormat_tip "Oblika za uporabo pri zamenjavi navadnih&#37; do&#37;&#37; iz&#37;&#37; cc&#37; naslovov. Npr. (firstname,lastname,??mail), bo prikazano ime, ki mu sledi priimek; če oba nista na voljo, bo prikazan e-poštni naslov.">
+<!ENTITY pref_addressDelimiter "Loči dopisnike s/z:">
+<!ENTITY pref_addressDelimiter_tip "Ločilo med dopisniki. Outlook uporablja podpičje (;). Privzeto za Thunderbird je vejica (,).">
+<!ENTITY resolveNamesFromAB "Razreši imena iz imenika">
+<!ENTITY resolveNamesFromAB_tip "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP.">
+<!ENTITY resolveNamesFromABNick "Nadomesti ime, če je prisoten vzdevek">
+<!ENTITY resolveNamesFromABDisplay "Uporabite prikazno ime, če manjka ime">
+<!ENTITY resolveABRemoveMail "Odstrani e-poštni naslov, razen če je določen parameter oblike">
+<!ENTITY suppressMailtToLink "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave.">
+<!ENTITY capitalizeNames "Vstavi imena z velikim črkami">
+<!ENTITY guessNameFromMail "Uganite, poimenujte dele iz e-poštnega naslova, če manjkajo">
+<!ENTITY pref_parseSignature "Podpis opravila">
+<!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
+<!ENTITY pref_cursorInsertSpace "Vstavi presledek za označitev &#37;cursor&#37;">
+<!ENTITY pref_stationerySupport "Podpri dodatek Stationary">
+<!ENTITY pref_stationerySupport_tip "Podpira skupno uporabo dodatka Stationary in SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip2 "To omogoča uporabo spremenljivk predlog v Dodatku Stationary.">
+<!ENTITY pref_stationeryLink "Dodatek Stationary">
+<!ENTITY pref_forceParagraph "Vsili odstavkovni način">
+<!ENTITY pref_forceParagraph_tip "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter].">
+<!ENTITY pref_stationeryLink_tip "Dobi Stationary ...">
+<!ENTITY pref_defaultCharset.label "Privzeti nabor znakov">
+<!ENTITY pref_defaultCharset_tip "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati.">
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap "O dodatku SmartTemplate⁴">
+<!ENTITY support.tab "Podpora">
+<!ENTITY creator.label "Avtor">
+<!ENTITY developer.label "Razvijalec">
+<!ENTITY localename.label "sl-SI">
+<!ENTITY localized.label "Prevajalec">
+<!ENTITY translatorNickname.label "Peter Klofutar">
+<!ENTITY contributor.label "Sodelavci">
+<!ENTITY about.label "SmartTemplate omogoča preprost način prilagajanja Thunderbirdove privzete glave navedka z uporabo predlog. Predloge lahko ustvarite za vsak račun posebej kot tudi skupno predlogo.">
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap "Stalne spremenljivke">
+<!ENTITY ownname.label "Vaše ime">
+<!ENTITY ownmail.label "Vaš e-poštni naslov">
+<!ENTITY identity_ab "Uporabite ključno besedo 'addressbook', da iz naslova najdete dodatne podatke o identiteti.">
+<!ENTITY identity_ab.field "Za dodatne vrednosti polja glejte poglavje 'Polja adresarja' spodaj.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Send feedback">
+<!ENTITY identity_ab.example "Primer">
+<!ENTITY identity_ab.phoneno "Telefon št">
+<!ENTITY date.label "Datum / Čas (isto kot izvirna 'glava pošte')">
+<!ENTITY tomail.label "E-poštni naslov prejemnika">
+<!ENTITY frommail.label "E-poštni naslov pošiljatelja">
+<!ENTITY ccmail.label "Kp - e-poštni naslov prejemnika">
+<!ENTITY sig.label "Podpis iz nastavitev računa">
+<!ENTITY sig2.label "Podpis iz nastavitev računa, toda brez '- -'">
+<!ENTITY fileHTML.label "Datoteka HTML ali z golim besedilom. Med izpustitvijo parametra za izbirni znak je predpostavljeno UTF-8.">
+<!ENTITY fileImage.label "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText.">
+<!ENTITY fileCSS.label "Zunanji slog slog (css). Vključite svoja najljubša pravila CSS, ki jih želite deliti med različnimi predlogami.">
+<!ENTITY attach.label "Dodaj datoteko kot prilogo">
+<!ENTITY basepath.desc "Če vaša predloga vsebuje slike z oznako 'img', ki so na vašem lokalnem pogonu, boste morali povedati SmartTemplate, kje jih lahko najdete.">
+<!ENTITY basepath.desc2 "Spremenljivka 'basepath' bo vdelala html oznako 'base' in poiskala vse slike na podlagi začetne lokacije - v e-pošti jih je mogoče uporabiti samo enkrat.">
+<!ENTITY basepath.relative "S to spremenljivko poiščite slike na istem mestu kot predlogo datoteke html.">
+<!ENTITY basepath.absolute "Kliknite tukaj, da izberete določeno mapo na vašem lokalnem pogonu.">
+<!ENTITY cursor.label "Nastavi položaj kazalca">
+<!ENTITY spellcheck.label "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen.">
+<!ENTITY to_var.cap "Prejemnik (Za)">
+<!ENTITY to_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
+<!ENTITY to.label "Prejemnikovo ime (privzeto)">
+<!ENTITY standardformat.config "Konfiguriraj privzeto obliko…">
+<!ENTITY tofirstname.label "Prejemnikovo ime">
+<!ENTITY toname.label "Prejemnikov priimek">
+<!ENTITY tofwd.label "Uporabite 'fwd', da v posredovano pošto dodate prejemnika, ki ga je mogoče klikniti">
+<!ENTITY from_var.cap "Pošiljatelj (Od)">
+<!ENTITY from_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
+<!ENTITY from.label "Pošiljateljevo ime (privzeto)">
+<!ENTITY fromfirstname.label "Pošiljateljevo ime">
+<!ENTITY fromname.label "Pošiljateljev priimek">
+<!ENTITY cc_var.cap "Prejemnik (Kp)">
+<!ENTITY cc_note.label "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov">
+<!ENTITY cc.label "Prejemnikovo ime (privzeto)">
+<!ENTITY ccfirstname.label "Prejemnikovo ime">
+<!ENTITY ccname.label "Prejemnikov priimek">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Polja Adresarja">
+<!ENTITY ab_fields.desc "Ko odgovarjate na ustrezen e-poštni naslov, lahko zdaj uporabite dodatna polja za spremenljivke naslova, kot je &#37;from&#37;, na primer:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Zasebno">
+<!ENTITY ab_other "Drugo">
+<!ENTITY ab_work "Delo">
+<!ENTITY spec_form.cap "Posebna oblika">
+<!ENTITY specform_note.label "Odseki z dvojnimi oglatimi oklepaji [[Cc: &#37;cc(name)&#37;]] bodo prikazani samo, če se spremenljivko &#37;cc(name)&#37; lahko nadomesti!">
+<!ENTITY ex_brack.label "Primer: Za: Jože | Kp: Jure">
+<!ENTITY brack_with_var.label "Naslednje spremenljivke lahko uporabite v [[...]]">
+<!ENTITY sub_var.cap "Zadeva">
+<!ENTITY sub.label "Zadeva odgovora / posredovane pošte">
+<!ENTITY sub2.label "Zadeva trenutnega sporočila v sestavljanju">
+<!ENTITY spec_var.cap "Posebno">
+<!ENTITY messid.label "ID sporočila">
+<!ENTITY newsgr.label "Novičarske skupine">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Katerakoli vrstica glave">
+<!ENTITY header_function.cap "Spremeni glavo pošte">
+<!ENTITY header_function.explain "To funkcijo lahko uporabite za spreminjanje glav sporočil, kot je to opisano tukaj:">
+<!ENTITY header_function.scope "Lahko jo uporabite s temi glavami:">
+<!ENTITY header.set.subject "nadomesti zadevo z besedilom">
+<!ENTITY header.prefix.subject "predpni zadevo z besedilom">
+<!ENTITY header.append.subject "pripni besedilo k zadevi">
+<!ENTITY header.set.to "nadomesti prejemnika z e-poštnim naslovom">
+<!ENTITY header.append.to "dodaj e-pošto na seznam prejemnikov">
+<!ENTITY stringmanip_function.cap "Ravnanje z nizi">
+<!ENTITY stringmanip_function.explain "Te funkcije lahko uporabite za brisanje ali menjavo besedila v e-poštni predlogi ali glavi navedka.">
+<!ENTITY deleteText "Odstrani besedilo iz navedka, npr. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Zamenjaj besedilo z drugim besedilom.">
+<!ENTITY matchTextFromBody "Poišči vzorec RegEx v e-pošti z navedkom in vstavi na mestu funkcije.">
+<!ENTITY matchTextFromSubject "Poišči vzorec RegEx v zadevi in vstavi na mestu funkcije.">
+<!ENTITY stringmanip.match.comment "Funkcije ujemanja: prvi parameter (običajni izraz) mora biti v dvojnih narekovajih. Drugi parameter je število skupine ujemanja. Uporabite 0 za ujemanje celotnega izraza, 1 za prvo skupino itd.">
+<!ENTITY stringmanip.alttext "[izbirni parameter] Alternativno besedilo: če ni najdeno nobenega ujemanja, namesto tega vstavi alternativno besedilo.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipulacija citatov">
+<!ENTITY quote_changers.desc "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor.">
+<!ENTITY deleteQuotedText "Izbriše citirano besedilo">
+<!ENTITY replaceQuotedText "Nadomešča citirano besedilo s HTML">
+<!ENTITY deleteQuotedTags "Izbriše oznake iz ponudbe">
+<!ENTITY replaceQuotedTags "Zamenja oznake iz citata z besedilom ali html-jem">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Vsako besedilo - reden izraz - mora biti v dvojnih narekovajih.">
+<!ENTITY replacementHTML "mora biti v dvojnih narekovajih - bodisi besedilu ali html oznaki, ki bo vstavljen v narekovaje, kjer koli se najde ujemanje.">
+<!ENTITY quoteLevel "[izbirno, numerično]: od katere najnižje ravni ponudbe naj se začne">
+<!ENTITY selector "- kaj bi uporabil za naslov v css. najpreprostejši primer 'img' ali 'p', vendar se lahko dodajo izbirniki atributov, dokler se ni mogoče izogniti dvojnim narekovajem.">
+<!ENTITY minSize "[neobvezno, številčno] - število kByte, najmanjša velikost za odstranjevanje oznake. Tako lahko ob zavračanju večjih slik obdržite manjše slike, kot so ikone / emojis.">
+<!ENTITY whitespace_note "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \ s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti.">
+<!ENTITY minSize_detail "Velikosti ni vedno mogoče določiti, še posebej, če Thunderbird še vedno nalaga sliko, pogosto zaradi velike velikosti - v tem primeru bo oznaka vseeno odstranjena.">
+<!ENTITY fix_vartz.cap "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'">
+<!ENTITY fix_vartz_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
+<!ENTITY datelocal.label "Datum / Čas (oblika trenutnega jezika)">
+<!ENTITY dateshort.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
+<!ENTITY datetz.label "Časovni pas (+0100, +0200, ... )">
+<!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Prisilno določite časovni pas za spremenljivke datuma z zamenjavo parametra tz (GMT, EST, CST, PST itd.)">
+<!ENTITY dateoffset_note.label "Ta funkcija doda odmik vsem naslednjim prikazanim časom.">
+<!ENTITY calculate.explain "DD = število dni za dodajanje. H = število ur za dodajanje (neobvezno). MM = minut za dodajanje (neobvezno)">
+<!ENTITY calculate.reset "Nastavite argument na 0, da ustavite spreminjanje datumov.">
+<!ENTITY var_custom.cap "Spremenljivke za 'obliko datuma' po meri">
+<!ENTITY customdf_note.label "Se lahko kombinira z &#37;X:=sent&#37;">
+<!ENTITY A.label "Dan v tednu (petek)">
+<!ENTITY a.label "Dan v tednu (pet.)">
+<!ENTITY d.label "Dan v mesecu (01 do 31) - z vodilno ničlo">
+<!ENTITY e.label "Dan v mesecu (1 do 31)">
+<!ENTITY n.label "Mesec (1 do 12)">
+<!ENTITY B.label "Mesec (Januar)">
+<!ENTITY b.label "Mesec (Jan.)">
+<!ENTITY m.label "Mesec (01 do 12) - z vodilno ničlo">
+<!ENTITY Y.label "Leto (1970)">
+<!ENTITY M.label "Minute (00 do 59)">
+<!ENTITY s.label "Sekunde (00 do 59)">
+<!ENTITY h.label "Ura, 24-urna oblika (00 do 23) - z vodilno ničlo">
+<!ENTITY k.label "Ura, 24-urna oblika (0 do 23)">
+<!ENTITY l.label "Ura 12-urna oblika (1 do 12)">
+<!ENTITY i.label "Ura 12-urna oblika (01 do 12) - z vodilno ničlo">
+<!ENTITY p.label "dop. / pop.">
+<!ENTITY p1.label "dop.">
+<!ENTITY p2.label "dop.">
+<!ENTITY p3.label "dop.">
+<!ENTITY dateformat.label "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti).">
+<!ENTITY dateformat.explain "Večino časovnih spremenljivk lahko zgoraj v nizu parametrov uporabimo tako, da izpustimo '&#37;'. Poglej tudi:">
+<!ENTITY dateformat.example "Primer:">
+<!ENTITY var_xsent.cap "Spremenilnik  - z vodilno ničlo">
+<!ENTITY xsent_note.label "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z &#37;X:=sent&#37; bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila.">
+<!ENTITY xsent_long.cap "Primer dolgega niza">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; ob &#37;H&#37;:&#37;M&#37;">
+<!ENTITY xsent_long_result.label "Rezultat: Nedelja, 20/12/2011 ob 16:24">
+<!ENTITY xsent_short.cap "Primer kratkega niza">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Rezultat: Nedelja, 20/12/2011 08:54:21">
+<!ENTITY xsent_short_note.label "Naslednje spremenljivke lahko uporabljate z obema različicama">
+<!ENTITY localedate.label "Datum / Čas (oblika trenutnega jezika)">
+<!ENTITY shortdate.label "Datum / Čas kratko (npr. 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label "Časovni pas (+0100, +0200, ... )">
+<!ENTITY timezonename.label "GMT, PST, EST, ... ">
+<!ENTITY im-ex.cap "Nastavitve in predloge Uvoz/Izvoz">
+<!ENTITY im-ex_note1.label "Svoje nastavitve in predloge za posamezni račun lahko izvozite ali uvozite.">
+<!ENTITY im-ex_note2.label "Najprej v spustnem polju nastavitev SmartTemplate⁴ izberite račun, ki ga želite izvoziti.">
+<!ENTITY im-ex_note3.label "Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Izvozi' ⇒ 'Nastavitve in predloge' in shranite datoteko (xxx.st4) na svoj računalnik.">
+<!ENTITY im-ex_note4.label "Za uvoz datoteke v spustnem polju nastavitev SmartTemplate⁴ izberite račun za uvoz. Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Uvozi' ⇒ 'Nastavitve in predloge'.">
+<!ENTITY im-ex_note5.label "Izberite datoteko SmartTemplate 4 (xxx.st4) za uvoz.">
+<!ENTITY im-ex_note6.label "OPOMBA: Okolja Apple/Macintosh  bodo imela menijsko vrstico v nazivnem traku namesto v oknu možnosti SmartTemplate⁴. To je običajno v teh okoljih in se ne da spremeniti.">
+<!ENTITY html_note.cap "Opomba za predloge HTML">
+<!ENTITY html_note.label "V predlogah HTML uporabite samo nabor znakov UTF-8 (Unicode)!">
+<!ENTITY table.cap "Uporaba spremenljivk">
+<!ENTITY table_note.label "Nepravilna uporaba spremenljivk bo ustvarila sporočila o napakah v 'konzoli za napake'!">
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label "Spremenljivka">
+<!ENTITY table_new.label "Sestavi">
+<!ENTITY table_reply.label "Odgovori">
+<!ENTITY table_fwd.label "Posreduj">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
+<!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">
+<!ENTITY button.pasteLicense "prilepi">
+<!ENTITY button.validateLicense "potrdi">
+<!ENTITY label.licenseValid "Dovoljenje velja do:">
+<!ENTITY licenseValidation.passed "Hvala, ker ste registrirali SmartTemplate⁴ Pro! Vse lastnosti premium so sedaj odklenjene.">
+<!ENTITY licenseValidation.standard "Hvala za registracijo SmartTemplate⁴ Standard - Pomagate Add-on izjemno! Prav tako lahko zdaj preskusite vse premijske funkcije.">
+<!ENTITY licenseValidation.failed "Vneseni ključ ni veljaven. Za navodila si oglejte e-pošto od FastSpringa. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora.">
+<!ENTITY licenseValidation.expired "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb.">
+<!ENTITY licenseValidation.invalidAddon "Vneseni ključ je lahko za drug dodatek. Ključi za {0} se začnejo s/z {1}.">
+<!ENTITY licenseValidation.invalidMail "Vaši e-poštni računi trenutno ne vsebujejo e-poštnega naslova, na katerega je vezan na ključ [{1}]. Za pomoč navežite stik z mano preko zavihka Podpora.">
+<!ENTITY licenseValidation.notMatchedMail "Šifriran e-poštni naslov se ne ujema z berljivim.">
+<!ENTITY premiumConfig "Lastnosti premium">
+<!ENTITY label.premiumFeaturesSite "Več o lastnostih premium lahko preberete na naši spletni strani…">
+<!-- #####  Support ##### -->
+<!ENTITY support.title "Pošlji na podporo">
+<!ENTITY support.type "Vrsta:">
+<!ENTITY support.type.selectOne "Izberite temo!">
+<!ENTITY support.type.license "Povezane z licenciranjem">
+<!ENTITY support.type.tech "Tehnična podpora">
+<!ENTITY support.type.html "Pomoč pri HTML / CSS">
+<!ENTITY support.type.other "Drugo">
+<!ENTITY support.subject "Zadeva:">
+<!ENTITY support.mail.instructions "Kliknite spodnji gumb, da odprete novo e-pošto za podporo. Če imate tehnične težave, razmislite o dodajanju zaslona.">
+<!ENTITY support.compose "Napišite v podporo…">
+<!ENTITY support.links "Povezave za podporo">

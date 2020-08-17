@@ -2,23 +2,25 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
 //original lds this after xul!!
+
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content//smartTemplate-prefs.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/settings.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
-
+/**/
 function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
-    let layout = WL.injectCSS("chrome://smarttemplate4/skin/smartTemplate-overlay.css");
+    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/default/smartTemplate-overlay.css");
     
  
 
 
     //messengeroverlay65
 //------------------------------------
+
     WL.injectElements(`
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
     <stringbundleset id="stringbundleset">
@@ -53,10 +55,10 @@ function onLoad(activatedWhileWindowOpen) {
 
     SmartTemplate4.startUp();
 	
-window.setTimeout(function() {
-  if (window.document.URL.endsWith("messenger.xhtml"))
-        SmartTemplate4.updateStatusBar("default");
-}, 2000);
+///window.setTimeout(function() {
+ /// if (window.document.URL.endsWith("messenger.xhtml"))
+ ///       SmartTemplate4.updateStatusBar("default");
+///}, 2000);
 
 }
 
@@ -65,4 +67,4 @@ function onUnload(isAddOnShutDown) {
  
 
   }
-}
+

@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "Dalam kotak ini,tempatkan template email Anda, mis. Halo &#37;from(name)&#37;, &lt;br&gt; Terima kasih atas pesan Anda &lt;br&gt; Salam, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_html.label "Gunakan HTML (mis., &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Gunakan karakter escape untuk &quot; , &amp; , &lt; , &gt; , spasi. Lihat &quot;help&quot; untuk lebih jelasnya.">
+<!ENTITY pref_rep_br.cap "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan &lt;br&gt; satu kali.">
+<!ENTITY pref_rep_br.label "Ganti jeda baris dengan &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Ganti jeda baris tanda tangan dalam teks biasa dengan &lt;br&gt;">

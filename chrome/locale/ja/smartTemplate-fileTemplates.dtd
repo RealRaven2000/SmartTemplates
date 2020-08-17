@@ -1,0 +1,13 @@
+<!ENTITY fileTemplates.title "テンプレートファイル">
+<!ENTITY fileTemplates.new.tooltip "「新規メッセージ作成」ボタンから適用できる外部テンプレートファイルの一覧">
+<!ENTITY fileTemplates.rsp.tooltip "「返信」ボタンから適用できる外部テンプレートファイルの一覧">
+<!ENTITY fileTemplates.fwd.tooltip "「転送」ボタンから適用できる外部テンプレートファイルの一覧">
+<!ENTITY fileTemplates.add "追加">
+<!ENTITY fileTemplates.update "更新">
+<!ENTITY fileTemplates.remove "除去">
+<!ENTITY fileTemplates.up "上へ">
+<!ENTITY fileTemplates.down "下へ">
+<!ENTITY fileTemplates.file.path "テンプレートの場所">
+<!ENTITY fileTemplates.file.open "ディスクからテンプレートファイルを選択">
+<!ENTITY fileTemplates.file.title "タイトル:">
+<!ENTITY fileTemplates.file.title.tooltip "このタイトルはテンプレートの選択メニューに表示されます。">

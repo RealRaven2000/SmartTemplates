@@ -1,0 +1,12 @@
+<!-- #### OVERLAYS #### -->
+<!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
+<!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴ 設定">
+<!ENTITY smartTemplate4.cleandeferred.label "除去！">
+<!ENTITY smartTemplate4.cleandeferred.tooltip "SmartTemplate のすべての変数を除去します">
+<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
+<!ENTITY smartTemplate4.deferredcontext.update "SmartTemplate⁴ のコンテンツを更新します">
+<!ENTITY smartTemplate4.deferredcontext.cleanup "コンテンツを更新・置換します">
+<!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplate⁴ の変数を除去します">
+<!ENTITY smartTemplate4.changetemplate.label "テンプレートの変更...">
+<!ENTITY smartTemplate4.changetemplate.tooltip "違うテンプレートを選択 - 本文の編集の前に選択してください！">

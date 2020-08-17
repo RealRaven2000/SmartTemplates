@@ -4,7 +4,7 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-accounts.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://smarttemplate4/skin/smartTemplate-accounts.css");
+    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/default/smartTemplate-accounts.css");
  
     WL.injectElements(`
     

@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "Inserire il modello in questa area di testo, ad esempio Ciao &#37;from(name)&#37;, &lt;br&gt; grazie per il tuo messaggio &lt;br&gt; saluti, &lt;br&gt;&#37;ownname&#37;">
+<!ENTITY pref_html.label "Utilizza il codice HTML (es.: &lt;b&gt;bold&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Utilizza i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni">
+<!ENTITY pref_rep_br.cap "Attivando l'opzione verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui segue il codice HTML contenente &lt;br&gt;">
+<!ENTITY pref_rep_br.label "Sostituisci il ritorno a capo con &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Sostituisci le interruzioni di riga con &lt;br&gt; nelle firme in testo semplice">

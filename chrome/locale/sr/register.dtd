@@ -1,0 +1,32 @@
+<!ENTITY licenseWindow.title "Лиценца SmartTemplate⁴">
+<!ENTITY label.licenseValid "Ваша лиценца важи до:">
+<!ENTITY label.haveLicense "Већ имате лиценцу?">
+<!ENTITY getSmartTemplate4 "Набавите лиценцу за СмартТемплате⁴">
+<!ENTITY licenseTypes "Даље SmartTemplate⁴ нуди две лиценце, Standard и Pro; они су неопходни да би били у току са променама на Тхундербирд платформи и финансирали Иновације и поправке додатка. Како се промене промене извршавају током једногодишњег циклуса, лиценца ће такође важити 1 годину.">
+<!ENTITY intro "Годишња лиценца за SmartTemplate⁴ вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи.">
+<!ENTITY testDriveS "Можете тестирати возити премиум карактеристике са стандардном лиценцом, али оне могу бити мало ограничене.">
+<!ENTITY yearlyLicense.title "Годишња лиценца">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије SmartTemplate⁴-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике.">
+<!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Више о премијум могућностима.">
+<!ENTITY yearlyLicense.usageTerm "Лиценца је за вашу личну употрету и везана је за вашу ел. адресу. Можете је инсталирати на више програма, док год су подешени за рад са том ел. адресом.">
+<!ENTITY yearlyLicense.usageTerm1 "Све додатне адресе е-поште нису проблем - за њих није потребна посебна лиценца. У случају питања можете ме контактирати преко картице за подршку.">
+<!ENTITY domainLicense.email "Контактират ћемо вас помоћу ове адресе е-поште за генерисање лиценце за ваш домен; дозволите да нам се јавите два радна дана. На следећој страници унесите име домене за лиценцу.">
+<!ENTITY domainLicense.header "Лиценцирани домен е-поште">
+<!ENTITY domainLicense.instruct "Licenca je ključna za domenu vaše kompanije. Licenca će omogućiti korisnicima sa adresama e-pošte koja se završavaju na ovoj domeni e-pošte da koriste SmartTemplate⁴ Pro. Na primer. ako unesete ime domena 'abc.com', korisnicima e-pošte poput fred@abc.com, martha@abc.com, mike.doe@abc.com itd. dozvoljeno je da koriste licencu. Maksimalan broj važećih pojedinačnih korisnika je broj koji ste uneli na početnom ekranu.">
+<!ENTITY domainLicense.validate "Обавезно унесите име домене * тачно онако како јесте * на е-адресе ваше компаније (део * после * знака @), јер ће се користити за ауторизацију адреса е-поште ваших корисника.">
+<!ENTITY updates.title "Ажурирања">
+<!ENTITY updatesExpiry "SmartTemplate⁴ Pro ће аутоматски бити ажуриран преко addons.thunderbird.net, као и обично. Након годину дана, можете обновити лиценцу или наставити да користите премијум могућности под истим условима као и корисници бесплатне верзије. Премијум могућности ће захтевати регистрациони кључ.">
+<!ENTITY vouchers.title "Купони">
+<!ENTITY freeLicense "Ако сте недавно донирали за SmartTemplate⁴ или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка SmartTemplate⁴.">
+<!ENTITY account.label "Изаберите налог:">
+<!ENTITY email.label "Ел. адреса:">
+<!ENTITY firstName.label "Име:">
+<!ENTITY lastName.label "Презиме:">
+<!ENTITY buyPremiumLicense.instruct "Желите да користите све премиум функције без ограничења? Набавите СмартТемплате⁴ Про лиценцу. Везан је за вашу личну адресу е-поште и може се користити у више инсталација.">
+<!ENTITY buyPremiumLicense.button "Купите Про лиценцу!">
+<!ENTITY buyStandardLicense.instruct "Не можете приуштити премиум функције? Набавите високо приступачну стандардну лиценцу и наставите да тестирате премиум функције.">
+<!ENTITY buyStandardLicense.button "Купите стандардну лиценцу!">
+<!ENTITY buyDomainLicense.instruct "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:">
+<!ENTITY buyDomainLicense.button "Купи групну лиценцу">
+<!ENTITY enterLicenseKey.button "Унесите број лиценце...">
+<!ENTITY enterLicenseKey.tooltip "Унесите број лиценце који сте примили ел. поруком">

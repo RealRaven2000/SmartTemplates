@@ -4,8 +4,8 @@
 # see: https://developer.mozilla.org/en-US/docs/Chrome_Registration #
 
 #### MISC FILES CONTENT FOLDER ####
-content     smarttemplate4            content/
-resource    smarttemplate4            content/
+#content     smarttemplate4            content/
+#resource    smarttemplate4            content/
 
 #### SKIN ####
 #skin       packagename        [skinname] path/to/files

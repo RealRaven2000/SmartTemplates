@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;&lt;br&gt; Kiitos viestistäsi toivoien, &#37;ownname&#37;">
+<!ENTITY pref_html.label "Käytä HTML:ää (esim. &lt;b&gt;lihavoitu&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Käytä koodinvaihtomerkkejä merkeille &quot;, &amp;, &lt;, &gt;, välilyönti. Yksityiskohdat ohjeessa.">
+<!ENTITY pref_rep_br.cap "HUOM! Ei korvaa uutta riviä, jota seuraa &lt;br&gt;.">
+<!ENTITY pref_rep_br.label "Korvaa uusi rivi &lt;br&gt;-merkillä">
+<!ENTITY pref_sigReplaceBR.label "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä &lt;br&gt;">

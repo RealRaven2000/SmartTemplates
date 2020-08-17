@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "在此框中写下您的模板，例如： Hello &#37;from(name)&#37;&lt;br&gt; Thanks for your message&lt;br&gt; regards, &#37;ownname&#37;">
+<!ENTITY pref_html.label "使用 HTML （例如，&lt;b&gt;bold&lt;/b&gt;）">
+<!ENTITY pref_html.cap "使用转义字符 &quot; , &amp; , &lt; , &gt;，空格。详见帮助。">
+<!ENTITY pref_rep_br.cap "注意：如果 &lt;br&gt; 后面跟着一个 HTML 标签则将不能换行">
+<!ENTITY pref_rep_br.label "用 &lt;br&gt; 换行">
+<!ENTITY pref_sigReplaceBR.label "用 &lt;br&gt; 替换纯文本签名中的换行符">

@@ -10,7 +10,7 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/settings.js
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://smarttemplate4/skin/smartTemplate-overlay.css");
+    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/default/smartTemplate-overlay.css");
     
 
     WL.injectElements(`

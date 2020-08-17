@@ -1,0 +1,300 @@
+<!-- #### MENU MAIN ITEMS #### -->
+<!ENTITY file.label "File">
+<!ENTITY tools.label "Strumenti">
+<!ENTITY edit.label "Modifica">
+<!ENTITY help.label "Aiuto">
+<!-- #### MENU OWN ITEMS #### -->
+<!ENTITY copy.label "Copia">
+<!ENTITY paste.label "Incolla">
+<!ENTITY insert.label "Inserisci variabile">
+<!ENTITY close.label "Chiudi">
+<!ENTITY advanced.label "Avanzate">
+<!ENTITY export.label "Esporta">
+<!ENTITY import.label "Importa">
+<!ENTITY menu.template_import.label "Importa modello">
+<!ENTITY menu.template_export.label "Esporta modello">
+<!ENTITY settings.label "Impostazioni e modelli">
+<!ENTITY url.homePage.label "Pagina iniziale estensione">
+<!ENTITY url.supportPage.label "Pagina supporto">
+<!ENTITY url.bugsAndFeaturesPage.label "Segnala errori / Richiedi funzionalità">
+<!-- #### TABS #### -->
+<!ENTITY pref_new.tab "Messaggi nuovi">
+<!ENTITY pref_rsp.tab "Messaggi in risposta">
+<!ENTITY pref_fwd.tab "Messaggi da inoltrare">
+<!ENTITY pref_help.tab "Aiuto">
+<!ENTITY pref_about.tab "Informazioni su">
+<!ENTITY pref_global.tab "Impostazioni globali">
+<!ENTITY pref_advanced.tab "Impostazioni avanzate">
+<!ENTITY pref_variables.tab "Variabili">
+<!ENTITY pref_examples.tab "Esempi (solo su Internet)">
+<!ENTITY pref_examples.tooltip "Visualizza modelli di esempio su http://smarttemplates.quickfolders.orgrs.org/templates.html. Disponibili solo su Internet.">
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Annulla">
+<!ENTITY contribute_button "Contribuisci">
+<!ENTITY button.updateThunderbird "Aggiorna Thunderbird !">
+<!-- #### GUI #### -->
+<!ENTITY pref_groupMailContent "Contenuto Mail">
+<!ENTITY pref_groupSignatures "Signatures">
+<!ENTITY pref_groupAdvanced "Funzioni avanzate">
+<!ENTITY pref_groupUI "User Interface">
+<!ENTITY pref_groupNameRules "Regole per il nome">
+<!ENTITY pref_groupTroubleShooting "Risoluzione dei problemi">
+<!ENTITY pref_addSigBreakHTML.label "Aggiungi -- nei messaggi HTML">
+<!ENTITY pref_addSigBreakHTML.tooltip "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi HTML)">
+<!ENTITY pref_addSigBreakPlaintext.label "Aggiungi -- nei messaggi di testo semplice">
+<!ENTITY pref_addSigBreakPlaintext.tooltip "Aggiungi sempre il delimitatore -- prima della firma (nei messaggi di testo semplice)">
+<!ENTITY pref_quoteHeaderBox.label "Intestazione">
+<!ENTITY pref_quoteHeaderBox_tip "Inserire l'intestazione in questa area di testo, ad esempio Il &#37;date&#37; &#37;from(name)&#37; ha scritto:">
+<!ENTITY pref_templateBox.label "Modello">
+<!ENTITY pref_dialog.title "Impostazioni di SmartTemplate⁴">
+<!ENTITY pref_breaksOnTop.label "Numero di linee vuote nella testata:">
+<!ENTITY pref_removeSig.label "Sostituisci la firma quando cambia l'identità dell'account">
+<!ENTITY pref_showStatusIcon.label "Visualizza il pulsante nella barra di stato">
+<!ENTITY pref_StatusIcon.IconOnly "Icone">
+<!ENTITY pref_StatusIcon.IconText "Icone e testo">
+<!ENTITY pref_StatusIcon.IconHoverText "Testo al passaggio del mouse">
+<!ENTITY pref_fontSettings.label "Carattere editor modello">
+<!ENTITY pref_server_desc "Account">
+<!ENTITY btnSaveTemplate.tooltip "Esporta modello...">
+<!ENTITY btnLoadTemplate.tooltip "Importa modello...">
+<!ENTITY btnYouTube.tooltip "Visita il canale YouTube 'Thunderbird Daily' - per suggerimenti e guide per usare Stationery e altre estensioni">
+<!ENTITY tip.fileTemplates "Fai clic per leggere la documentazione completa su Stationery e modelli HTML esterni sul nostro sito di supporto ...">
+<!ENTITY pref_server_def "Utilizza posta in arrivo globale">
+<!ENTITY pref_def.label "Utilizza la cartella di posta in arrivo globale">
+<!ENTITY pref_def.cap "Deselezionare 'Utilizza la cartella di posta in arrivo globale' per creare un'intestazione personalizzata per questo account">
+<!ENTITY pref_newmsg.cap "Messaggi nuovi">
+<!ENTITY pref_new.label "Applica il seguente modello di intestazione personalizzata per i messaggi nuovi">
+<!ENTITY pref_rspmsg.cap "Messaggi in risposta">
+<!ENTITY pref_rsp.label "Applica il seguente modello di intestazione personalizzata per i messaggi in risposta">
+<!ENTITY pref_rsphead.label "Utilizza l'intestazione personalizzata invece di quella predefinita">
+<!ENTITY pref_fwdmsg.cap "Messaggi da inoltrare">
+<!ENTITY pref_fwd.label "Applica il seguente modello di intestazione personalizzata per i messaggi da inoltrare">
+<!ENTITY pref_fwdhead.label "Disabilita l'intestazione predefinita di Thunderbird">
+<!ENTITY pref_quotehead_tip "Attivando l'opzione non verrà utilizzata l'intestazione predefinita. Formulare l'intestazione personalizzata all'interno dell'area di testo qui sopra">
+<!ENTITY pref_template_tip "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni">
+<!ENTITY help_dialog_title "Contenuti guida di SmartTemplate⁴">
+<!ENTITY help_keyword.cap "Contenuti guida">
+<!ENTITY pref_debug_check "Modalità debug">
+<!ENTITY pref_hideExamples "Non visualizzare la scheda degli esempi">
+<!ENTITY pref_silentUpdates "Aggiornamenti silenziosi">
+<!ENTITY pref_silentUpdates_tip "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplate⁴.">
+<!ENTITY pref_debug_tip "Fare clic con il tasto destro per le impostazioni di debug avanzate">
+<!ENTITY pref_nameSwap "Sostituisci Cognome, Nome">
+<!ENTITY pref_nameSwap_tip "Sostituisci 'Cognome, Nome' con 'Nome Cognome'">
+<!ENTITY defaultMimeFormat "Formato indirizzo predefinito:">
+<!ENTITY defaultMimeFormat_tip "Formato da utilizzare quando si sostituiscono gli indirizzi da &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Per (firstname,lastname,??mail) mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta.">
+<!ENTITY pref_addressDelimiter "Usa il carattere seguente per separare più destinatari:">
+<!ENTITY pref_addressDelimiter_tip "Carattere da usare per delimitare più destinatari. Outlook usa il punto e virgola (;). Il carattere predefinito per Thunderbird è la virgola (,).">
+<!ENTITY resolveNamesFromAB "Individua i nomi nella rubrica">
+<!ENTITY resolveNamesFromAB_tip "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP.">
+<!ENTITY resolveNamesFromABNick "Sostituisci il nome di battesimo se è presente il soprannome">
+<!ENTITY resolveNamesFromABDisplay "Usa il nome visualizzato se il nome proprio è assente">
+<!ENTITY resolveABRemoveMail "Rimuovi l'indirizzo email a meno che sia specificato il parametro di formato">
+<!ENTITY suppressMailtToLink "Non richiamare i programmi di posta se si aggiunge un riferimento ad un indirizzo di posta elettronica.">
+<!ENTITY capitalizeNames "Nomi con lettera iniziale in maiuscolo">
+<!ENTITY guessNameFromMail "Se mancante, indovina le parti di un nome dall'indirizzo email.">
+<!ENTITY pref_parseSignature "Elabora firma">
+<!ENTITY pref_parseSignature_tip "Sostituisci le variabili nella firma.">
+<!ENTITY pref_cursorInsertSpace "Inserisci uno spazio per evidenziare il &#37;cursor&#37;">
+<!ENTITY pref_stationerySupport "Supporta l'estensione Stationery">
+<!ENTITY pref_stationerySupport_tip "Supporta l'uso dell'estensione Stationery insieme a SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip2 "Permette di utilizzare le variabili dei modelli nell'estensione Stationery.">
+<!ENTITY pref_stationeryLink "Estensione Stationery">
+<!ENTITY pref_forceParagraph "Imposta la modalità Paragrafo">
+<!ENTITY pref_forceParagraph_tip "Controlla che il cursore si posizioni all'inizio di un paragrafo. Si consiglia l'opzione Composizione di Thunderbird per creare un nuovo paragrafo premendo il tasto Invio.">
+<!ENTITY pref_stationeryLink_tip "Vai a estensione Stationery...">
+<!ENTITY pref_defaultCharset.label "Codifica dei caratteri predefinita">
+<!ENTITY pref_defaultCharset_tip "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata.">
+<!-- #### ABOUT #### -->
+<!ENTITY about.cap "A proposito di SmartTemplate⁴">
+<!ENTITY support.tab "Supporto">
+<!ENTITY creator.label "Creatore">
+<!ENTITY developer.label "Sviluppatore">
+<!ENTITY localename.label "it">
+<!ENTITY localized.label "Traduttore">
+<!ENTITY translatorNickname.label "A35G, Luana e Lucky &amp; Danilo Fortunato (BabelZilla)">
+<!ENTITY contributor.label "Contributo">
+<!ENTITY about.label "SmartTemplate⁴ permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account.">
+<!-- #### HELP #### -->
+<!ENTITY fix_var.cap "Variabili di base">
+<!ENTITY ownname.label "Nome">
+<!ENTITY ownmail.label "Indirizzo e-mail">
+<!ENTITY identity_ab "Utilizzare la parola chiave  'addressbook' per recuperare ulteriori informazioni sull'identità dalla rubrica.">
+<!ENTITY identity_ab.field "Per ulteriori valori dei campi, vedere il capitolo 'Campi della rubrica' di seguito.">
+<!ENTITY identity_ab.example "Esempio">
+<!ENTITY identity_ab.phoneno "Numero di telefono">
+<!ENTITY date.label "Data/ora (come nell'intestazione originaria)">
+<!ENTITY tomail.label "Indirizzo e-mail del destinatario">
+<!ENTITY frommail.label "Indirizzo e-mail del mittente">
+<!ENTITY ccmail.label "Indirizzo e-mail del destinatario in copia">
+<!ENTITY sig.label "Firma da impostazion account">
+<!ENTITY sig2.label "Firma da impostazioni account ma senza il '--'">
+<!ENTITY fileHTML.label "File HTML o in testo semplice. Utilizza UTF-8 se il parametro opzionale della codifica dei caratteri è omesso.">
+<!ENTITY fileImage.label "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata.">
+<!ENTITY fileCSS.label "Foglio di stile esterno (css). Includi le tue regole CSS preferite da condividere tra diversi modelli.">
+<!ENTITY attach.label "Aggiungi un file come allegato">
+<!ENTITY basepath.desc "Se il tuo modello contiene immagini con il tag 'img' che si trovano sul tuo disco locale, dovrai dire a SmartTemplate dove trovarle.">
+<!ENTITY basepath.desc2 "La variabile 'basepath' inserirà un tag html 'base' per trovare tutte le immagini in base a una posizione iniziale - può essere usata una sola volta in una e-mail.">
+<!ENTITY basepath.relative "Utilizzare questa variabile per trovare le immagini nella stessa posizione del modello di file html.">
+<!ENTITY basepath.absolute "Fare clic qui per selezionare una cartella specifica sull'unità locale.">
+<!ENTITY cursor.label "Imposta la posizione del cursore">
+<!ENTITY spellcheck.label "Imposta la lingua per il controllo ortografico. Valori di esempio: (en, de-DE, es-ES, it) - nota che il dizionario deve essere installato.">
+<!ENTITY to_var.cap "Variabili del destinatario (A)">
+<!ENTITY to_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
+<!ENTITY to.label "Nome del destinatario (predefinito)">
+<!ENTITY standardformat.config "Configura formato predefinito…">
+<!ENTITY tofirstname.label "Cognome del destinatario">
+<!ENTITY toname.label "Nome del destinatario">
+<!ENTITY tofwd.label "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate">
+<!ENTITY from_var.cap "Variabili del mittente (Da)">
+<!ENTITY from_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
+<!ENTITY from.label "Nome del mittente (predefinito)">
+<!ENTITY fromfirstname.label "Cognome del mittente">
+<!ENTITY fromname.label "Nome del mittente">
+<!ENTITY cc_var.cap "Variabili del destinatario (Cc)">
+<!ENTITY cc_note.label "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail">
+<!ENTITY cc.label "Nome del destinatario (predefinito)">
+<!ENTITY ccfirstname.label "Cognome del destinatario">
+<!ENTITY ccname.label "Nome del destinatario">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Campi della rubrica">
+<!ENTITY ab_fields.desc "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare campi aggiuntivi per variabili di indirizzo come &#37;from&#37;, ad esempio:">
+<!ENTITY ab_contact "Contatto">
+<!ENTITY ab_private "Privato">
+<!ENTITY ab_other "Altro">
+<!ENTITY ab_work "Lavoro">
+<!ENTITY spec_form.cap "Formati speciali">
+<!ENTITY specform_note.label "Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!">
+<!ENTITY ex_brack.label "Esempio: A: Gianni | Cc: Zola">
+<!ENTITY brack_with_var.label "Le seguenti variabili possono essere usate tra [[...]]">
+<!ENTITY sub_var.cap "Oggetto">
+<!ENTITY sub.label "Oggetto del messaggio di risposta o inoltrato">
+<!ENTITY sub2.label "Oggetto del messaggio in corso di redazione">
+<!ENTITY spec_var.cap "Variabili speciali">
+<!ENTITY messid.label "Message ID">
+<!ENTITY newsgr.label "Newsgroups">
+<!ENTITY xmail.label "X-Mailer">
+<!ENTITY any.label "Qualsiasi Header-line">
+<!ENTITY header_function.cap "Modifica l'intestazione del messaggio.">
+<!ENTITY header_function.explain "Questa funzione può essere usata per modificare l'intestazione dei messaggi, come descritto di seguito:">
+<!ENTITY header_function.scope "Può essere usata con queste intestazioni:">
+<!ENTITY header.set.subject "Sostituisce l'oggetto con il testo">
+<!ENTITY header.prefix.subject "Antepone il testo all'oggetto">
+<!ENTITY header.append.subject "Aggiunge il testo all'oggetto">
+<!ENTITY header.set.to "Sostituisce il destinatario con l'indirizzo di posta elettronica">
+<!ENTITY header.append.to "Aggiunge l'indirizzo di posta elettronica alla lista dei destinatari">
+<!ENTITY stringmanip_function.cap "Gestione stringhe di testo">
+<!ENTITY stringmanip_function.explain "Funzioni per cancellare o sostituire un testo nel modello del messaggio o nell'intestazione.">
+<!ENTITY deleteText "Elimina un testo dall'intestazione. Per esempio: deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Sostituisce un testo con un altro.">
+<!ENTITY matchTextFromBody "Trova una espressione regolare nel messaggio citato ed inserisce una funzione.">
+<!ENTITY matchTextFromSubject "Trova una espressione regolare nell'oggetto ed inserisce una funzione.">
+<!ENTITY stringmanip.match.comment "Funzioni di abbinamento: il primo parametro (l'espressione regolare) deve essere racchiuso tra doppi apici. Il secondo parametro è il numero del gruppo di abbinamento. Utilizza 0 per abbinare l'espressione completa, 1 per il primo gruppo, e così via.">
+<!ENTITY stringmanip.alttext "[parametro opzionale] Testo alternativo: se non viene trovata alcuna corrispondenza, inserisce invece il testo alternativo.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipolazione delle citazioni">
+<!ENTITY quote_changers.desc "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio.">
+<!ENTITY deleteQuotedText "Elimina il testo citato">
+<!ENTITY replaceQuotedText "Sostituisce il testo citato con HTML">
+<!ENTITY deleteQuotedTags "Elimina i tag dalla citazione">
+<!ENTITY replaceQuotedTags "Sostituisce i tag della citazione con testo o HTML">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Qualsiasi testo - espressione regolare - deve essere racchiuso tra virgolette.">
+<!ENTITY replacementHTML "deve essere racchiuso tra virgolette: un tag di testo o html che verrà inserito tra virgolette ogni volta che viene trovata una corrispondenza.">
+<!ENTITY quoteLevel "[opzionale, numerico]: da quale livello minimo di preventivo iniziare">
+<!ENTITY selector "- cosa useresti per indirizzare il tag in CSS. il caso più semplice 'img' o 'p' ma i selettori di attributo possono essere aggiunti purché si possano evitare virgolette doppie.">
+<!ENTITY minSize "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni.">
+<!ENTITY whitespace_note "Si noti che gli spazi bianchi possono essere meglio rappresentati come \ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie.">
+<!ENTITY minSize_detail "Non è sempre possibile determinare le dimensioni, soprattutto se Thunderbird sta ancora caricando l'immagine, spesso a causa delle grandi dimensioni - in questo caso il tag verrà rimosso comunque.">
+<!ENTITY fix_vartz.cap "Variabili per il formato data/ora e fuso orario">
+<!ENTITY fix_vartz_note.label "È possibile associarle con &#37;X:=sent&#37;">
+<!ENTITY datelocal.label "Data/ora (formato locale)">
+<!ENTITY dateshort.label "Data/ora abbreviata (es: 01.01.2000 1:23:45)">
+<!ENTITY datetz.label "Fuso orario (+0100, +0200, ... )">
+<!ENTITY tzname.label "GMT, PST, EST, ... ">
+<!ENTITY timezone.explain "Forza il fuso orario specifico per le variabili di data sostituendo il parametro tz (GMT, EST, CST, PST ecc.)">
+<!ENTITY dateoffset_note.label "Questa funzione aggiunge un intervallo temporale a tutte le ore visualizzate">
+<!ENTITY calculate.explain "DD=numero di giorni da aggiungere. H=numero di ore da aggiungere (opzionale). MM=minuti da aggiungere (opzionale) ">
+<!ENTITY calculate.reset "Imposta il parametro a 0 per interrompere la modifica delle ore.">
+<!ENTITY var_custom.cap "Variabili per data/ora personalizzata ">
+<!ENTITY customdf_note.label "È possibile associarle con &#37;X:=sent&#37;">
+<!ENTITY A.label "Nome del giorno (Venerdì)">
+<!ENTITY a.label "Nome del giorno (Ven)">
+<!ENTITY d.label "Giorno del mese (da 01 a 31) espresso con due cifre">
+<!ENTITY e.label "Giorno del mese (da 1 a 31)">
+<!ENTITY n.label "Mese (da 1 a 12)">
+<!ENTITY B.label "Mese (Gennaio)">
+<!ENTITY b.label "Mese (Gen)">
+<!ENTITY m.label "Mese (da 01 a 12) espresso con due cifre">
+<!ENTITY Y.label "Anno (1970)">
+<!ENTITY M.label "Minuto (da 00 a 59)">
+<!ENTITY s.label "Secondo (00 a 59)">
+<!ENTITY h.label "Ora nel formato 24 ore (da 00 a 23) espressa con due cifre">
+<!ENTITY k.label "Ora nel formato 24 ore (da 0 a 23)">
+<!ENTITY l.label "Ora nel formato 12 ore (da 1 a 12)">
+<!ENTITY i.label "Ora nel formato 12 ore (da 01 a 12) espressa con due cifre">
+<!ENTITY p.label "AM o PM">
+<!ENTITY p1.label "a.m.">
+<!ENTITY p2.label "A.M.">
+<!ENTITY p3.label "AM">
+<!ENTITY dateformat.label "Funzione per l'inserimento del tempo corrente (campo cliccabile).">
+<!ENTITY dateformat.explain "La maggior parte delle variabili temporali di cui sopra possono essere utilizzate nella stringa di parametri omettendo &#37;. Guarda anche:">
+<!ENTITY dateformat.example "Esempio:">
+<!ENTITY var_xsent.cap "Variabile &#37;X:=sent&#37;">
+<!ENTITY xsent_note.label "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile &#37;X:=sent&#37;#37; vengono utilizzati i valori di quando il messaggio è stato inviato">
+<!ENTITY xsent_long.cap "Esempio di Longstring">
+<!ENTITY xsent_long.label "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; alle ore &#37;H&#37;:&#37;M&#37;">
+<!ENTITY xsent_long_result.label "Risultato:  Domenica, 16.02.2011 alle ore 12:15">
+<!ENTITY xsent_short.cap "Esempio di Shortstring:">
+<!ENTITY xsent_short.label "&#37;X:=sent&#37; &#37;datelocal&#37;">
+<!ENTITY xsent_short_result.label "Risultato: Domenica, 16.02.2011 12:15:25">
+<!ENTITY xsent_short_note.label "Le seguenti variabili si possono utilizzare in entrambe le varianti">
+<!ENTITY localedate.label "Data/ora (formato locale)">
+<!ENTITY shortdate.label "Data/ora abbreviata (es.: 01.01.2000 1:23:45)">
+<!ENTITY datetimezone.label "Fuso orario (+0100, +0200, ... )">
+<!ENTITY timezonename.label "GMT, PST, EST, ... ">
+<!ENTITY im-ex.cap "Importa / esporta impostazioni e modelli">
+<!ENTITY im-ex_note1.label "Si possono esportare ed importare le impostazioni ed i modelli associati ad ogni account.">
+<!ENTITY im-ex_note2.label "Per prima cosa seleziona l'account che desideri esportare nel menu a tendina delle impostazioni di SmartTemplate⁴.">
+<!ENTITY im-ex_note3.label "Successivamente seleziona 'File' ⇒ 'Esporta' ⇒ 'Impostazioni e modelli' dalla barra del menu e salva il file (xxx.st4) sul computer.">
+<!ENTITY im-ex_note4.label "Per importare un file, seleziona l'account da importare nel menu a tendina delle impostazioni di SmartTemplate⁴. Successivamente, seleziona 'File' ⇒ 'Importa' ⇒ 'Impostazioni e modelli' dalla barra del menu.">
+<!ENTITY im-ex_note5.label "Seleziona il file SmartTemplate⁴ (xxx.st4) da importare.">
+<!ENTITY im-ex_note6.label "NOTA: su Apple/Macintosh viene visualizzata la barra del menu nel pannello del titolo, anzichè la finestra Impostazioni di SmartTemplate⁴. Questo è il comportamento predefinito su questa piattaforma e non può essere cambiato.">
+<!ENTITY html_note.cap "Note per i modelli di intestazione personalizzata in HTML">
+<!ENTITY html_note.label "Utilizzare solamente la codifica UTF-8 (Unicode) all'interno dei modelli di intestazione personalizzata in HTML !">
+<!ENTITY table.cap "Utilizzo delle variabili">
+<!ENTITY table_note.label "Se una variabile viene utilizzata in modo non corretto viene registrato un errore nella console degli errori !">
+<!-- #### TABLE #### -->
+<!ENTITY table_keyword.label "Variabile">
+<!ENTITY table_new.label "Nuovi">
+<!ENTITY table_reply.label "Risposta">
+<!ENTITY table_fwd.label "Inoltrare">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY label.insertLicense "Inserire la propria chiave di licenza qui:">
+<!ENTITY label.insertLicense.tooltip "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring.">
+<!ENTITY button.pasteLicense "Incolla">
+<!ENTITY button.validateLicense "Convalida">
+<!ENTITY label.licenseValid "La licenza è valida fino a:">
+<!ENTITY licenseValidation.passed "Grazie per aver registrato SmartTemplate⁴ Pro. Tutte le caratteristiche della versione Premium sono ora disponibili.">
+<!ENTITY licenseValidation.standard "Grazie per aver registrato SmartTemplate4 Standard. Stai aiutando immensamente lo sviluppo di questa estensione! Adesso puoi anche testare tutte le caratteristiche Premium">
+<!ENTITY licenseValidation.failed "La chiave di licenza inserita non è valida. Controllare il messaggio di email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY licenseValidation.expired "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza.">
+<!ENTITY licenseValidation.invalidAddon "La chiave di licenza inserita potrebbe essere relativa a un'altra estensione. Le chiavi di licenza per {0} iniziano con  {1}">
+<!ENTITY licenseValidation.invalidMail "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'.">
+<!ENTITY licenseValidation.notMatchedMail "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro">
+<!ENTITY premiumConfig "Caratteristiche Premium">
+<!ENTITY label.premiumFeaturesSite "Maggiori informazioni sulle funzionalità Premium sul nostro sito Web…">
+<!-- #####  Support ##### -->
+<!ENTITY support.title "Posta al supporto">
+<!ENTITY support.type "Genere:">
+<!ENTITY support.type.selectOne "Seleziona un argomento!">
+<!ENTITY support.type.license "In relazione alle licenze">
+<!ENTITY support.type.tech "Supporto tecnico">
+<!ENTITY support.type.html "Aiuto con HTML / CSS">
+<!ENTITY support.type.other "Altra">
+<!ENTITY support.subject "Soggetto:">
+<!ENTITY support.mail.instructions "Fai clic sul pulsante in basso per aprire una nuova e-mail per il supporto. In caso di problemi tecnici, considerare l'aggiunta di uno screenshot.">
+<!ENTITY support.compose "Scrivi per supportare…">
+<!ENTITY support.links "Link di supporto">

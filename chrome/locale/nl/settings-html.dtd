@@ -1,0 +1,6 @@
+<!ENTITY pref_templateBox_tip "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;,&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;">
+<!ENTITY pref_html.label "HTML gebruiken (bv. &lt;b&gt;vet&lt;/b&gt;)">
+<!ENTITY pref_html.cap "Escape-tekens gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details.">
+<!ENTITY pref_rep_br.cap "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig &lt;br&gt; te gebruiken.">
+<!ENTITY pref_rep_br.label "Regelafbrekingen vervangen door &lt;br&gt;">
+<!ENTITY pref_sigReplaceBR.label "Regelafbrekingen in ondertekening in platte tekst vervangen door &lt;br&gt;">

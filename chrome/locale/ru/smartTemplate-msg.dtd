@@ -1,0 +1,6 @@
+<!-- #### BUTTONS #### -->
+<!ENTITY accept_button "OK">
+<!ENTITY cancel_button "Отмена">
+<!ENTITY yes_button "Да">
+<!ENTITY no_button "нет">
+<!ENTITY message_default_title "SmartTemplate⁴">

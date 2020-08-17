@@ -4,13 +4,13 @@
 #SmartTemplate4Button,
 #mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
 {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon24x24.png");
+  list-style-image: url("chrome://smartTemplate4/content/content/skin/icons/icon24x24.png");
 }
 
 [iconsize="small"] #SmartTemplate4Button,
 #mail-toolbox > toolbar[brighttext][iconsize="small"] #SmartTemplate4Button.toolbarbutton-1
 {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png");
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png");
 }
 
 /* avoid the 'squashed' look in Nuvola */
@@ -31,7 +31,7 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image
 	-moz-appearance: none;
 	border: 1px solid transparent;
 	border-radius: 2px; /* var(--toolbarbutton-border-radius, 3px); from messenger.css - 2px win 3px osx */
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
 	margin: 0;
 	padding: 1px 2px 0 !important;
 }
@@ -169,15 +169,15 @@ notification[value="SmartTemplate4-license"] hbox.notification-inner  {
 
 menuitem.st4templatePicker,
 menuitem.st4templateEntry:hover {
-	list-style-image : url('chrome://smartTemplate4/skin/icons/template-load.png') !important;
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
 }
 
 menuitem.st4templateConfig {
-	list-style-image : url('chrome://smartTemplate4/skin/icons/settings.png') !important;
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/settings.png') !important;
 }
 
 
 menuitem.st4templatePicker:hover {
-	list-style-image : url('chrome://smartTemplate4/skin/icons/file-load.png') !important;
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/file-load.png') !important;
 }
 
