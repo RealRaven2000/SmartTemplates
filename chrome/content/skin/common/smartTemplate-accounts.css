@@ -5,7 +5,7 @@
 /* ################################## ICON BINDINGS ################################## */
 #smartTemplate4_settings 
 {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
 }
 /* ############################# SPACE BETWEEN LABEL&ICON ############################ */
 .buttonIcon label 

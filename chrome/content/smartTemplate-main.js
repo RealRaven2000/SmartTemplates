@@ -484,7 +484,7 @@ END LICENSE BLOCK
 */
 
  
-ChromeUtils.import("chrome://smarttemplate4/content/smartTemplate-stationery.jsm");
+//SChromeUtils.import("chrome://smarttemplate4/content/smartTemplate-stationery.jsm");
 
 
 var SmartTemplate4 = {
