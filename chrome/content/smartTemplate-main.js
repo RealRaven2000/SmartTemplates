@@ -483,7 +483,7 @@ END LICENSE BLOCK
 =========================
 */
 
-Components.utils.import("resource://smarttemplate4/content/smartTemplate-stationery.jsm");
+//TODO unexpected error:  ChromeUtils.import("chrome://smarttemplate4/content/smartTemplate-stationery.jsm");
 
 
 var SmartTemplate4 = {

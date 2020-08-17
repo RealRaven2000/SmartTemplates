@@ -281,10 +281,12 @@ SmartTemplate4.Settings = {
 		const Ci = Components.interfaces;
 		switch (this.prefService.getPrefType(prefstring)) {
 			case Ci.nsIPrefBranch.PREF_STRING:
-				return 
-					(this.prefService.setStringPref ?
-						this.prefService.setStringPref(prefstring, value) :
-						this.prefService.setCharPref(prefstring, value));
+				let retval;//otherwise "unreachable code after return statement"
+				(this.prefService.setStringPref ?
+						retval=this.prefService.setStringPref(prefstring, value) :
+						retval=this.prefService.setCharPref(prefstring, value));
+				return retval;
+					;
 			case Ci.nsIPrefBranch.PREF_INT:
 				return this.prefService.setIntPref(prefstring, value);
 			case Ci.nsIPrefBranch.PREF_BOOL:
