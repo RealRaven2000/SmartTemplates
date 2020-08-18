@@ -1938,3 +1938,7 @@ SmartTemplate4.Settings = {
 	
 
 };
+
+
+window.addEventListener('load', SmartTemplate4.Settings.onLoad);
+
