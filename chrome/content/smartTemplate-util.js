@@ -56,7 +56,29 @@ SmartTemplate4.Util = {
 		this.logDebug("CurrentEditor failed!");
 		return null;
 	} ,
-	
+
+	getAnonymousNodes(doc,el) {
+		let aN = [];
+		for (let i = el.childNodes.length-1; i>0; i--) {
+		  if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
+			aN.push(el);
+		}
+		return aN;
+	  } ,
+
+
+	  getAnonymousElementByAttribute(el, attrName , attrValue ) {
+		//let aN = [];
+		for (let i = el.childNodes.length-1; i>0; i--) {
+		  if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
+			if (el.childNodes[i].getAttribute(attrName ) == attrValue )   return el.childNodes[i]; 
+		}
+		return ;
+	  } ,
+
+
+
+
   /* premiumFeatures: array of premium function used during getProcessedText calls.
    * this gathers all into a single consolidated notification.	
 	 */
@@ -384,7 +406,7 @@ SmartTemplate4.Util = {
 	popupAlert: function (title, text, icon) {
 		try {
 			if (!icon)
-				icon = "chrome://smarttemplate4/skin/icon32x32.png";
+				icon = "chrome://smarttemplate4/content/skin/icon32x32.png";
 			Components.classes['@mozilla.org/alerts-service;1'].
 								getService(Components.interfaces.nsIAlertsService).
 								showAlertNotification(icon, title, text, false, '', null);
@@ -566,7 +588,7 @@ SmartTemplate4.Util = {
 			notifyBox.appendNotification( 
 			    theText, 
 					notificationKey, 
-					isProFeature ? "chrome://smarttemplate4/skin/proFeature.png" : "chrome://smarttemplate4/skin/licensing.png" , 
+					isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png" , 
 					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
 					nbox_buttons ); // , eventCallback
 		}
@@ -2965,6 +2987,8 @@ SmartTemplate4.Message = {
 		}
 		window.close();
 	} ,
+
+
   
   windowKeyPress: function(e,dir) {
     function logEvent(eventTarget) {

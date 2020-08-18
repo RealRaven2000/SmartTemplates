@@ -1,6 +1,6 @@
 /** STYLES FOR THE MODELESS message window smarteTemplate-msg.xul ****/
 #titleBox {
-  background-image: url("chrome://smartTemplate4/skin/logo.png") !important;
+  background-image: url("chrome://content//logo.png") !important;
   background-position: center;
   background-repeat: no-repeat;
   width: 320px;
@@ -9,7 +9,7 @@
 #messageCanvas {
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-image: url("chrome://smartTemplate4/skin/icons/large/ST4-icon-128.png");
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon-128.png");
 	max-width: 850px;
 	min-width: 200px;
 	min-height: 200px;

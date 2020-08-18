@@ -18,26 +18,26 @@
 }
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4CloseItem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/close.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/CuteMenus/close.png") !important;
 }
 #SmartTemplate4ExportItem, #SmartTemplate4ImportItem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/icon16x16.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/CuteMenus/icon16x16.png") !important;
 }
 #menuHomePage {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozilla.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/CuteMenus/mozilla.png") !important;
 }
 #menuSupportPage, #menuBugsAndFeaturesPage {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozdev.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/CuteMenus/mozdev.png") !important;
 }
 #helpTemplates {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/fugue-question.png");
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 #helpStationery {
   -moz-appearance: none !important; 
-  background-image: url("chrome://smartTemplate4/skin/icons/fugue-question.png");
+  background-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
   background-repeat: no-repeat;
   cursor: pointer;
   margin-top: 3px;
@@ -144,7 +144,7 @@ button.text-link:hover {
 
 #stationerySettings {
 	-moz-appearance: none !important;
-	background-image: url("chrome://smartTemplate4/skin/icons/settings.png");
+	background-image: url("chrome://smartTemplate4/content/skin/icons/settings.png");
 	background-repeat: no-repeat;
 	cursor: pointer;
 	width: 16px !important;
@@ -163,7 +163,7 @@ button.bugsURL:focus {
 
 
 #SmartTemplate4RightClickCopyItem {
-  list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/copy.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/CuteMenus/copy.png") !important;
 }
 
 #SmartTemplate4HelpMenuitem { float: right; }
@@ -228,18 +228,18 @@ groupbox.transparent .groupbox-title {
 
 #globalSettings {
 	width: 100%;
-	background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
+	background-image: url(chrome:///icon128x128.png);
 	background-repeat: no-repeat;
 	background-position: 92% 2%;
 	/* background-size: 200px; */
 }
 
 #fontSmaller {
-	list-style-image: url("chrome://smartTemplate4/skin/icons/edit-size-down.png") !important;
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-down.png") !important;
 }
 
 #fontLarger {
-	list-style-image: url("chrome://smartTemplate4/skin/icons/edit-size-up.png") !important;
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-up.png") !important;
 }
 
 #lblFontSettings {
@@ -327,7 +327,7 @@ groupbox.transparent .groupbox-title {
 
 /* ################################## ICON BINDINGS ################################## */
 #SmartTemplate4AccountmanagerButton {
-  list-style-image: url("chrome://smartTemplate4/skin/icons/configure.png") !important;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/configure.png") !important;
 }
 
 

@@ -1,7 +1,7 @@
 window.dialog {
   -moz-appearance: none;
   padding: 4px;
-  /* background-image: url(chrome://smarttemplate4/skin/SmartTemplate4-watermark.png); */
+  /* background-image: url(chrome://smarttemplate4/content/skin/SmartTemplate4-watermark.png); */
 }
 
 vbox.about-content {
@@ -10,7 +10,7 @@ vbox.about-content {
   padding: 6px;
   margin: 5px;
   border: 1px solid rgb(128,128,128);
-  background-image: url(chrome://smarttemplate4/skin/icon128x128.png);
+  background-image: url(chrome://smarttemplate4/content/skin/icon128x128.png);
   background-repeat: no-repeat;
   background-position: center top 45px;
   background-size: 200px;

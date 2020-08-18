@@ -448,7 +448,8 @@ SmartTemplate4.Settings = {
 				
 				// let's test if we can get this element
 				let prefDialog = getElement('smartTemplate_prefDialog'),
-						hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
+						hbox = SmartTemplate4.Util.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
+//						hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
 						buttons = [],
 						maxHeight = 0,
 						i = 0;
@@ -1769,14 +1770,14 @@ SmartTemplate4.Settings = {
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
-					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
           silentUpdateOption.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');
-					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo.png");
+					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
 					beautyTitle.classList.add('aboutLogo');
 					beautyTitle.classList.remove('aboutLogoPro');
 			}
