@@ -942,18 +942,18 @@ SmartTemplate4.Settings = {
 		}
 				
 		for (let idx = 0; idx < iAccounts; idx++) {
-			let account = accounts.queryElementAt ?
-				accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
-				accounts.GetElementAt(idx).QueryInterface(this.Ci.nsIMsgAccount);
+			let account = accounts[idx];//.queryElementAt ?
+				//accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
+				//accounts.GetElementAt(idx).QueryInterface(this.Ci.nsIMsgAccount);
 
 			if (!account.incomingServer)
 				continue;
 
 			let iIdentities = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
 			for (let j = 0; j < iIdentities; j++) {
-				let identity = account.identities.queryElementAt ?
-					account.identities.queryElementAt(j, this.Ci.nsIMsgIdentity) :
-					account.identities.GetElementAt(j).QueryInterface(this.Ci.nsIMsgIdentity);
+				let identity = account.identities[j];//.queryElementAt ?
+					//account.identities.queryElementAt(j, this.Ci.nsIMsgIdentity) :
+					//account.identities.GetElementAt(j).QueryInterface(this.Ci.nsIMsgIdentity);
 
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
