@@ -9,7 +9,7 @@
 
 
  async function main() {
-    messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
+    messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
     
     messenger.WindowListener.registerChromeUrl([ 
         ["content", "smarttemplate4", "chrome/content/"],
@@ -41,7 +41,7 @@
         ["locale", "smarttemplate4", "oc", "chrome/locale/oc/"],
    ]);
  
-    messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+    messenger.WindowListener.registerOptionsPage("chrome://smarttemplate4/content/settings.xhtml"); 
     
  //attention: each target window (like messenger.xul) can appear only once
  // this is different from chrome.manifest

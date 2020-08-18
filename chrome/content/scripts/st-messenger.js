@@ -54,7 +54,7 @@ function onLoad(activatedWhileWindowOpen) {
 
 
 
-    SmartTemplate4.startUp();
+    window.SmartTemplate4.startUp();
 	
 ///window.setTimeout(function() {
  /// if (window.document.URL.endsWith("messenger.xhtml"))
