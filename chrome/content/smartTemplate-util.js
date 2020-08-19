@@ -61,22 +61,27 @@ SmartTemplate4.Util = {
 		let aN = [];
 		for (let i = el.childNodes.length-1; i>0; i--) {
 		  if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
-			aN.push(el);
+        aN.push(el);
 		}
 		return aN;
-	  } ,
+  } ,
 
 
-	  getAnonymousElementByAttribute(el, attrName , attrValue ) {
+  getAnonymousElementByAttribute(el, attrName, attrValue) {
 		//let aN = [];
 		for (let i = el.childNodes.length-1; i>0; i--) {
-		  if (!el.childNodes[i].getAttribute("id") && !el.childNodes[i].getAttribute("name"))
-			if (el.childNodes[i].getAttribute(attrName ) == attrValue )   return el.childNodes[i]; 
+      let child = el.childNodes[i];
+      if (child.getAttribute("id")) // anonymous - should we add name, too?
+        continue;
+			if (child.getAttribute(attrName ) == attrValue ) 
+        return child; 
+      if (child.childElementCount) {
+        let x = this.getAnonymousElementByAttribute(child, attrName, attrValue);
+        if (x) return x;
+      }
 		}
-		return ;
-	  } ,
-
-
+		return null;
+  } ,
 
 
   /* premiumFeatures: array of premium function used during getProcessedText calls.

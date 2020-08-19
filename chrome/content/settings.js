@@ -370,8 +370,9 @@ SmartTemplate4.Settings = {
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
 
-		// Set account popup
+		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
+    this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
 
 		this.cleanupUnusedPrefs();
 
@@ -448,7 +449,7 @@ SmartTemplate4.Settings = {
 				
 				// let's test if we can get this element
 				let prefDialog = getElement('smartTemplate_prefDialog'),
-						hbox = SmartTemplate4.Util.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
+						hbox = util.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
 //						hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
 						buttons = [],
 						maxHeight = 0,
@@ -1104,6 +1105,9 @@ SmartTemplate4.Settings = {
 		}
 
 		util.logDebugOptional("identities", "" + (searchDeckName ? "found" : "could not find") + " deck:" + searchDeckName);
+    let chkUseCommon = document.getElementById('use_default' + this.currentIdSelector);
+    if (chkUseCommon && found && !isShowTemplateSelector)
+      chkUseCommon.checked = prefs.getBoolPref("extensions.smartTemplate4" + this.currentIdSelector + ".def");
 
 		//reactivate the current tab: new / respond or forward!
 		currentDeck = this.getCurrentDeck(settings.accountId);
@@ -1116,7 +1120,7 @@ SmartTemplate4.Settings = {
         txtDump += tabboxArray[i].value;  // append all texts
       // disable / enable Save button in case template is empty
 			try {
-				let disableSave = (txtDump.length===0) && (document.getElementById('use_default' + this.currentIdSelector).checked === true);
+				let disableSave = (txtDump.length===0) && (chkUseCommon.checked === true);
 				document.getElementById('btnSaveTemplate').disabled = disableSave;
 			}
 			catch (ex) {;}
