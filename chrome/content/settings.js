@@ -378,7 +378,8 @@ SmartTemplate4.Settings = {
     
     Preferences.onDOMContentLoaded(); // calling it manually - it is too late for the COMContentLoaded event
     
-		this.cleanupUnusedPrefs();
+    // let's take this one out, to see...
+		// this.cleanupUnusedPrefs();
 
 		let args = window.arguments,
 		    mode = null;
@@ -1948,6 +1949,7 @@ SmartTemplate4.Settings = {
 };
 
 
+/*
 window.addEventListener('load', 
   function st4_loadEvent() {
     SmartTemplate4.Settings.onLoad();
@@ -1959,7 +1961,7 @@ window.addEventListener('unload',
     SmartTemplate4.Settings.onUnload();
   }
 );
-
+*/
 
 
 
