@@ -372,8 +372,12 @@ SmartTemplate4.Settings = {
 
 		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
+    
+    Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", window, "UTF-8");
     this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
-
+    
+    Preferences.onDOMContentLoaded(); // calling it manually - it is too late for the COMContentLoaded event
+    
 		this.cleanupUnusedPrefs();
 
 		let args = window.arguments,
@@ -1944,5 +1948,18 @@ SmartTemplate4.Settings = {
 };
 
 
-window.addEventListener('load', SmartTemplate4.Settings.onLoad);
+window.addEventListener('load', 
+  function st4_loadEvent() {
+    SmartTemplate4.Settings.onLoad();
+  }
+);
+
+window.addEventListener('unload', 
+  function st4_unloadEvent() {
+    SmartTemplate4.Settings.onUnload();
+  }
+);
+
+
+
 

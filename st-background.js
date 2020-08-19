@@ -57,8 +57,8 @@
 //    messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
   
-    messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
-    messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
+   // messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
+   // messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
 
  /*
   * Start listening for opened windows. Whenever a window is opened, the registered

@@ -21,8 +21,6 @@
 				title = "&pref_dialog.title; (&localename.label;)"
 				buttons = "extra2,accept"
 				buttonlabelextra2 = "&contribute_button;"
-				onload = "(function(){var st4Load=SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings); st4Load();})();"
-				onunload = "SmartTemplate4.Settings.onUnload();"
 				windowtype = "addon:SmartTemplate4"
 				>
 				<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
@@ -930,12 +928,6 @@
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileTemplates.js"/>
-
-	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
-	<script>
-	 // SmartTemplate4.Settings.loadPreferences(); 
-   /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
-	</script>
 
 
 </dialog>
