@@ -14,11 +14,6 @@
     messenger.WindowListener.registerChromeUrl([ 
         ["content", "smarttemplate4", "chrome/content/"],
         ["resource", "smarttemplate4", "chrome/content/"],
-        ["override", "chrome://smarttemplate4/skin/style.css", "chrome://smarttemplate4/skin/default/style.css"],
-        ["override", "chrome://smarttemplate4/skin/smartTemplate-accounts.css", "chrome://smarttemplate4/skin/default/smartTemplate-accounts.css"],
-        ["override", "chrome://smarttemplate4/skin/smartTemplate-overlay.css", "chrome://smarttemplate4/skin/default/smartTemplate-overlay.css"],
-        ["override", " chrome://smarttemplate4/skin/smartTemplate-about.css", "chrome://smarttemplate4/skin/default/smartTemplate-about.css"],
-        ["override", "chrome://smarttemplate4/skin/messageWindow.css", "chrome://smarttemplate4/skin/default/messageWindow.css"],
         ["locale", "smarttemplate4", "en-US", "chrome/locale/en-US/"],
         ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
         ["locale", "smarttemplate4", "de", "chrome/locale/de/"],

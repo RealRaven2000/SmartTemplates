@@ -18,7 +18,7 @@ SmartTemplate4.composer = {
 		// reserved to the composing stage
 		const sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService),
 		      ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
-		      uri = ios.newURI("chrome://SmartTemplate4/content/skin/default/compose-overlay.css", null, null);
+		      uri = ios.newURI("chrome://SmartTemplate4/content/skin/compose-overlay.css", null, null);
 					
 		// for some reason this affects the 3pane window, too
 		if(!sss.sheetRegistered(uri, sss.USER_SHEET))

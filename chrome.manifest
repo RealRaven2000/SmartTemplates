@@ -14,21 +14,9 @@
 skin        smarttemplate4     classic/1.0  skin/
 skin        st4common          classic/1.0  skin/common
 
-#Tb
-override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/legacy/style.css appversion<16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#override    chrome://smarttemplate4/skin/style.css chrome://smarttemplate4/skin/default/style.css appversion>=16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/default/smartTemplate-accounts.css appversion>=16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-override    chrome://smarttemplate4/skin/smartTemplate-accounts.css chrome://smarttemplate4/skin/legacy/smartTemplate-accounts.css appversion<16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/default/smartTemplate-overlay.css appversion>=16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-override    chrome://smarttemplate4/skin/smartTemplate-overlay.css chrome://smarttemplate4/skin/legacy/smartTemplate-overlay.css appversion<16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/default/smartTemplate-about.css appversion>=16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-override    chrome://smarttemplate4/skin/smartTemplate-about.css chrome://smarttemplate4/skin/legacy/smartTemplate-about.css appversion<16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-#override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/default/messageWindow.css appversion>=16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
-override    chrome://smarttemplate4/skin/messageWindow.css chrome://smarttemplate4/skin/legacy/messageWindow.css appversion<16 application={3550f703-e582-4d05-9a08-453d09bdfdc6}
 
 ## add style rules to editor
-style   chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/compose-overlay.css appversion<59.0a1
-style   chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/default/compose-overlay.css appversion>=59.0a1
+style   chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/compose-overlay.css 
 
 
 #### LOCALIZATIONS (alphabetical by localename) ####
@@ -58,10 +46,9 @@ content smarttemplate4-locales locale/
 
 #### OVERLAYS ####
 # Style Overlay for Toolbar Button # 
-style  chrome://global/content/customizeToolbar.xul    chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion<59.0a1
-style  chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/default/smartTemplate-overlay.css appversion>=59.0a1
-style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/default/compose-overlay.css
-style  chrome://smarttemplate4/content/settings.xul  chrome://SmartTemplate4/skin/default/st4-settings68.css  appversion>=61
+style  chrome://messenger/content/customizeToolbar.xul chrome://SmartTemplate4/skin/smartTemplate-overlay.css 
+style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/compose-overlay.css
+style  chrome://smarttemplate4/content/settings.xul  chrome://SmartTemplate4/skin/st4-settings68.css  
 
 ## OS specific styling
 style  chrome://messenger/content/messengercompose/messengercompose.xul chrome://SmartTemplate4/skin/win/styleOS.css os=WINNT
