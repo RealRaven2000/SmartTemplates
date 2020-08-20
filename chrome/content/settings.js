@@ -582,7 +582,7 @@ SmartTemplate4.Settings = {
 // 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
 		if (SmartTemplate4.fileTemplates.isModified) {
 			let parentWin = 
-			  (window.opener && window.opener.document.URL.endsWith("messenger.xul")) ?
+			  (window.opener && window.opener.document.URL.endsWith("messenger.xhtml")) ?
 					window.opener :
 					SmartTemplate4.Util.Mail3PaneWindow;
 			parentWin.setTimeout (

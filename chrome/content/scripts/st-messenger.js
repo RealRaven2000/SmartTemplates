@@ -52,14 +52,12 @@ function onLoad(activatedWhileWindowOpen) {
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
 
-
-
     window.SmartTemplate4.startUp();
 	
-///window.setTimeout(function() {
- /// if (window.document.URL.endsWith("messenger.xhtml"))
- ///       SmartTemplate4.updateStatusBar("default");
-///}, 2000);
+    window.setTimeout(function() {
+      if (window.document.URL.endsWith("messenger.xhtml"))
+          window.SmartTemplate4.updateStatusBar("default");
+    }, 2000);
 
 }
 
@@ -67,5 +65,5 @@ function onUnload(isAddOnShutDown) {
     // remove my own function and restore the original
  
 
-  }
+}
 

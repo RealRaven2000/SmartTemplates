@@ -56,7 +56,7 @@
   SmartTemplate4.startUp();
 	
 	window.setTimeout(function() {
-	  if (window.document.URL.endsWith("messenger.xul"))
+	  if (window.document.URL.endsWith("messenger.xhtml"))
 			SmartTemplate4.updateStatusBar("default");
 	}, 2000);
 </script>
