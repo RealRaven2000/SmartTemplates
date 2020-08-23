@@ -39,7 +39,7 @@
     }
   },
   "icons": {
-    "32": "skin/icon32x32.png",
-    "64": "skin/icon64x64.png"
+    "32": "chrome/content/skin/icon32x32.png",
+    "64": "chrome/content/skin/icon64x64.png"
   }	
 }
