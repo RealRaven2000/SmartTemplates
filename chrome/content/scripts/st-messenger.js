@@ -23,9 +23,12 @@ function onLoad(activatedWhileWindowOpen) {
 //------------------------------------
 
     WL.injectElements(`
-    <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="stwrite" insertafter="button-newmsg"
+    <toolbar id="mail-bar3">
+     <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="stwrite" insertafter="button-newmsg"
     oncommand="MsgNewMessage(event)" class= "toolbarbutton-1">
     </toolbarbutton>
+    </toolbar>
+    
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
     <stringbundleset id="stringbundleset">
       <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />

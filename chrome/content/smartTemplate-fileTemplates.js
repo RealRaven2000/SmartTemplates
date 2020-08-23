@@ -763,7 +763,11 @@ SmartTemplate4.fileTemplates = {
                   newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
                 }
                 // attach the menupopup
-                btn.appendChild(newMsgPopup);
+				btn.appendChild(newMsgPopup);
+				//let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
+				//subButton.
+				btn.firstChild.hidden="true";
+
               }
             }
             
