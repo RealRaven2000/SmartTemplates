@@ -23,7 +23,8 @@ function onLoad(activatedWhileWindowOpen) {
 //------------------------------------
 
     WL.injectElements(`
-    <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="test" insertafter="button-newmsg">
+    <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="stWrite" insertafter="button-newmsg"
+    oncommand="MsgNewMessage(event)" class= "toolbarbutton-1">
     </toolbarbutton>
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
     <stringbundleset id="stringbundleset">
