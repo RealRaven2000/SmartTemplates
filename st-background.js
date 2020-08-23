@@ -43,7 +43,7 @@
  // xhtml for Tb78
     
     messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
-    messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
+    messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
     messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
   
    // messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");

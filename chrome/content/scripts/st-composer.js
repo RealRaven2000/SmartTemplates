@@ -1,18 +1,22 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 //original lds this after xul!!
+
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
+
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-compose.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content//smartTemplate-overlay.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-overlay.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content//smartTemplate-prefs.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-signature.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-composer.js", window, "UTF-8");
 
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-composer.js", window, "UTF-8");
+/**/
 function onLoad(activatedWhileWindowOpen) {
+ console.log("st-compose");
     let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
     
     WL.injectElements(`
@@ -71,7 +75,9 @@ function onLoad(activatedWhileWindowOpen) {
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
  
-    window.QuickFolders.Util.logDebug('Adding Compose xul...');
+ //   window.QuickFolders.Util.logDebug('Adding Compose xul...');
+ //window.SmartTemplate4.composer.onLoad();
+ 
 }
 
 function onUnload(isAddOnShutDown) {
