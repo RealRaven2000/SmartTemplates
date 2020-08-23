@@ -751,8 +751,13 @@ SmartTemplate4.fileTemplates = {
               newMsgPopup = fT.getPopup(btn.id); 
               if (newMsgPopup && !newMsgPopup.id) {
                 newMsgPopup.id='button-newMsgPopup';
-                btn.type = "menu-button";
-                // we have a problem of a duplicate composer window in Tb60:
+				btn.type = "menu-button";
+				let oldCommand=btn.command;
+				btn.removeAttribute("command");
+				btn.observes=oldCommand;
+				btn.setAttribute("is", "folder-menupopup");
+				newMsgPopup.setAttribute("is", "toolbarbutton-menu-button");
+				// we have a problem of a duplicate composer window in Tb60:
                 if (util.versionSmaller(util.AppverFull, "68")) {
                   logDebug("Remove st4nonNative flag from newMsgPopup");
                   newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
