@@ -746,7 +746,7 @@ SmartTemplate4.fileTemplates = {
 					// 1) write new entries --------------------
 					let newMsgPopup = document.getElementById('button-newMsgPopup');
 					if (!newMsgPopup) {
-						let btn = document.getElementById("button-newmsg");
+						let btn = document.getElementById("button-newmsg1");
             if (btn) {
               newMsgPopup = fT.getPopup(btn.id); 
               if (newMsgPopup && !newMsgPopup.id) {
@@ -754,9 +754,9 @@ SmartTemplate4.fileTemplates = {
 				btn.type = "menu-button";
 				let oldCommand=btn.command;
 				btn.removeAttribute("command");
-				btn.observes=oldCommand;
-				btn.setAttribute("is", "folder-menupopup");
-				newMsgPopup.setAttribute("is", "toolbarbutton-menu-button");
+				//btn.observes=oldCommand;
+				newMsgPopup.setAttribute("is", "folder-menupopup");
+				//btn.setAttribute("is", "toolbarbutton-menu-button");
 				// we have a problem of a duplicate composer window in Tb60:
                 if (util.versionSmaller(util.AppverFull, "68")) {
                   logDebug("Remove st4nonNative flag from newMsgPopup");

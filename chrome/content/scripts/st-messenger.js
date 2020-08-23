@@ -23,6 +23,8 @@ function onLoad(activatedWhileWindowOpen) {
 //------------------------------------
 
     WL.injectElements(`
+    <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="test" insertafter="button-newmsg">
+    </toolbarbutton>
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
     <stringbundleset id="stringbundleset">
       <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />
@@ -35,8 +37,9 @@ function onLoad(activatedWhileWindowOpen) {
                      tooltiptext="&smartTemplate4.settings.tooltip;"
                      class="toolbarbutton-1 chromeclass-toolbar-additional"
                      oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+   
+    
     </toolbarpalette>
- 
     <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
     <hbox id="status-bar">
   <!-- <statusbarpanel insertafter="totalMessageCount" id="SmartTemplate4Panel" class="statusbarpanel"> -->
