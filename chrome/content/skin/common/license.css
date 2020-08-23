@@ -172,8 +172,9 @@
 }
 
 #txtLicenseKey {
+  display: block;
 	height: 6.6em !important;
-	/*! min-width: 420px; */ /* avoid "shrinking" too much in licenseKey only mode */
+  min-width: 420px;  /* avoid "shrinking" too much in licenseKey only mode */
 	/*! max-width: 420px; */ 
 	width: 96%;
 	position: relative;

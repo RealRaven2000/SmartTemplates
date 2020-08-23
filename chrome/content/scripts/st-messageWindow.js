@@ -21,7 +21,7 @@ function onLoad(activatedWhileWindowOpen) {
   `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
    
-SmartTemplate4.startUp();
+  window.SmartTemplate4.startUp();
 }
 
 function onUnload(isAddOnShutDown) {
