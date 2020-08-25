@@ -514,12 +514,14 @@ SmartTemplate4.fileTemplates = {
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
 			// this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
+      /*
 			if (i==0 && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
 				let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
 				menuseparator.id = "fileTemplates-" + composeType + "msg-top";
 				menuseparator.classList.add ("st4templateSeparator");
 				msgPopup.appendChild(menuseparator);
 			}
+      */
 			
       /* insert one item for each listed html template */
 			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
@@ -563,10 +565,12 @@ SmartTemplate4.fileTemplates = {
 			msgPopup.appendChild(menuitem);									 
 		}
 		/* add an item for choosing ad hoc file template - uses file picker */
+    /*
 		let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
 		menuseparator.id = "fileTemplates-" + composeType + "msg-bottom";
 		menuseparator.classList.add ("st4templateSeparator");
 		msgPopup.appendChild(menuseparator);
+    */
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
 		    menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplate⁴ file template…");
@@ -751,23 +755,24 @@ SmartTemplate4.fileTemplates = {
               newMsgPopup = fT.getPopup(btn.id); 
               if (newMsgPopup && !newMsgPopup.id) {
                 newMsgPopup.id='button-newMsgPopup';
-				btn.type = "menu-button";
-				let oldCommand=btn.command;
-				btn.removeAttribute("command");
-				//btn.observes=oldCommand;
-				newMsgPopup.setAttribute("is", "folder-menupopup");
-				//btn.setAttribute("is", "toolbarbutton-menu-button");
-				// we have a problem of a duplicate composer window in Tb60:
+                btn.type = "menu-button";
+                let oldCommand=btn.command;
+                btn.removeAttribute("command");
+                //btn.observes=oldCommand;
+                newMsgPopup.setAttribute("is", "folder-menupopup");
+                //btn.setAttribute("is", "toolbarbutton-menu-button");
+                // we have a problem of a duplicate composer window in Tb60:
                 if (util.versionSmaller(util.AppverFull, "68")) {
                   logDebug("Remove st4nonNative flag from newMsgPopup");
                   newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
                 }
                 // attach the menupopup
-				btn.appendChild(newMsgPopup);
-				//let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
-				//subButton.
-				btn.firstChild.hidden="true";
-
+                btn.appendChild(newMsgPopup);
+                //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
+                
+                // hide the main button:
+                // btn.firstChild.collapsed="true";
+                btn.firstChild.classList.add("STfakePopupBtn");
               }
             }
             

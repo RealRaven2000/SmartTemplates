@@ -24,10 +24,30 @@ function onLoad(activatedWhileWindowOpen) {
 
     WL.injectElements(`
     <toolbar id="mail-bar3">
-     <toolbarbutton id="button-newmsg1" is="toolbarbutton-menu-button" observes="cmd_newMessage" label="stwrite" insertafter="button-newmsg"
-    oncommand="MsgNewMessage(event)" class= "toolbarbutton-1">
-    </toolbarbutton>
+      <toolbarbutton 
+        id="button-newmsg1" 
+        is="toolbarbutton-menu-button" 
+        observes="cmd_newMessage" 
+        label="X" 
+        insertafter="button-newmsg"
+        oncommand="MsgNewMessage(event)" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
     </toolbar>
+     `);
+    
+    /*
+    setTimeout(function() {
+      debugger;
+      let b1 = document.getElementById('button-newmsg'),
+          b2 = document.getElementById('button-newmsg1');
+      b1.parentNode.insertbefore(b2,b1.nextSibling);
+    },15000);
+    */
+    
+    
+
+    WL.injectElements(`
     
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
     <stringbundleset id="stringbundleset">

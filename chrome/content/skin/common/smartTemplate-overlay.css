@@ -1,10 +1,18 @@
+/* fake the button to move it underneath the previous one 
+   - this needs to be done per script for correct width
+   when button labels are shown this pixel value is just a guess */
+toolbarbutton.STfakePopupBtn {
+  margin-left: -34px !important;
+  width: 34px !important;
+}
+
 /* ################################################################################### */
 /* ############################# TOOLBAR BUTTON OVERLAY ############################## */
 /* ################################################################################### */
 #SmartTemplate4Button,
 #mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
 {
-  list-style-image: url("chrome://smartTemplate4/content/content/skin/icons/icon24x24.png");
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon24x24.png");
 }
 
 [iconsize="small"] #SmartTemplate4Button,
