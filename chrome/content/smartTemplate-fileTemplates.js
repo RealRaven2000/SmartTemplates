@@ -750,7 +750,9 @@ SmartTemplate4.fileTemplates = {
 					// 1) write new entries --------------------
 					let newMsgPopup = document.getElementById('button-newMsgPopup');
 					if (!newMsgPopup) {
-						let btn = document.getElementById("button-newmsg1");
+            let id = "button-newmsg-ST",
+						    btn = document.getElementById(id),
+                originalBtn = null;
             if (btn) {
               newMsgPopup = fT.getPopup(btn.id); 
               if (newMsgPopup && !newMsgPopup.id) {
@@ -774,8 +776,19 @@ SmartTemplate4.fileTemplates = {
                 // btn.firstChild.collapsed="true";
                 btn.firstChild.classList.add("STfakePopupBtn");
               }
+              let originId = btn.getAttribute("insertafter");
+              originalBtn = document.getElementById(originId);
             }
-            
+            // only show if the "original button" actually exists / is shown on toolbar.
+            if (originalBtn) {
+              if (originalBtn.collapsed)
+                btn.collapsed=true;
+              else
+                btn.collapsed=false;
+            }
+            else
+               btn.collapsed=true;
+            debugger;
 					}
 
           

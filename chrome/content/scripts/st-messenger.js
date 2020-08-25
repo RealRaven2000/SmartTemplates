@@ -25,7 +25,7 @@ function onLoad(activatedWhileWindowOpen) {
     WL.injectElements(`
     <toolbar id="mail-bar3">
       <toolbarbutton 
-        id="button-newmsg1" 
+        id="button-newmsg-ST" 
         is="toolbarbutton-menu-button" 
         observes="cmd_newMessage" 
         label="X" 
@@ -40,7 +40,7 @@ function onLoad(activatedWhileWindowOpen) {
     setTimeout(function() {
       debugger;
       let b1 = document.getElementById('button-newmsg'),
-          b2 = document.getElementById('button-newmsg1');
+          b2 = document.getElementById('button-newmsg-ST');
       b1.parentNode.insertbefore(b2,b1.nextSibling);
     },15000);
     */
