@@ -940,7 +940,7 @@ SmartTemplate4.Settings = {
 		}
 		
 		let theMenu = document.getElementById("msgIdentity"),
-		    iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+		    iAccounts = accounts.length;
 				
 		// (Stationery replacement) file lists: menupopup add below common?
 		if (SmartTemplate4.Settings.isFileTemplates) {
