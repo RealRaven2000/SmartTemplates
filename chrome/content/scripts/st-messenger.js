@@ -28,7 +28,7 @@ function onLoad(activatedWhileWindowOpen) {
         id="button-newmsg-ST" 
         is="toolbarbutton-menu-button" 
         observes="cmd_newMessage" 
-        label="X" 
+        label="" 
         insertafter="button-newmsg"
         oncommand="MsgNewMessage(event)" 
         class= "toolbarbutton-1">
