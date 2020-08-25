@@ -763,11 +763,6 @@ SmartTemplate4.fileTemplates = {
                 //btn.observes=oldCommand;
                 newMsgPopup.setAttribute("is", "folder-menupopup");
                 //btn.setAttribute("is", "toolbarbutton-menu-button");
-                // we have a problem of a duplicate composer window in Tb60:
-                if (util.versionSmaller(util.AppverFull, "68")) {
-                  logDebug("Remove st4nonNative flag from newMsgPopup");
-                  newMsgPopup.removeAttribute("st4nonNative"); // Tb60: avoid triggering btn.click again.
-                }
                 // attach the menupopup
                 btn.appendChild(newMsgPopup);
                 //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
@@ -783,8 +778,12 @@ SmartTemplate4.fileTemplates = {
             if (originalBtn) {
               if (originalBtn.collapsed)
                 btn.collapsed=true;
-              else
+              else {
                 btn.collapsed=false;
+                // move to the correct position!
+                originalBtn.parentNode.insertBefore(btn,originalBtn.nextSibling);                
+                
+              }
             }
             else
                btn.collapsed=true;

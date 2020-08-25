@@ -41,7 +41,7 @@ function onLoad(activatedWhileWindowOpen) {
       debugger;
       let b1 = document.getElementById('button-newmsg'),
           b2 = document.getElementById('button-newmsg-ST');
-      b1.parentNode.insertbefore(b2,b1.nextSibling);
+      b1.parentNode.insertBefore(b2,b1.nextSibling);
     },15000);
     */
     
