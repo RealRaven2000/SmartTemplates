@@ -191,10 +191,7 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	setPref1st : function setPref1st(prefbranch) {
 		function setStringPref(pref, val) {
-			if (prefService.setStringPref)
-				prefService.setStringPref(pref, val);
-			else
-				prefService.setCharPref(pref, val);
+      prefService.setStringPref(pref, val);
 		}
 		function getStringPref(pref) {
 			if (prefService.getStringPref)
@@ -281,12 +278,8 @@ SmartTemplate4.Settings = {
 		const Ci = Components.interfaces;
 		switch (this.prefService.getPrefType(prefstring)) {
 			case Ci.nsIPrefBranch.PREF_STRING:
-				let retval;//otherwise "unreachable code after return statement"
-				(this.prefService.setStringPref ?
-						retval=this.prefService.setStringPref(prefstring, value) :
-						retval=this.prefService.setCharPref(prefstring, value));
+				let retval = this.prefService.setStringPref(prefstring, value);
 				return retval;
-					;
 			case Ci.nsIPrefBranch.PREF_INT:
 				return this.prefService.setIntPref(prefstring, value);
 			case Ci.nsIPrefBranch.PREF_BOOL:
@@ -370,13 +363,14 @@ SmartTemplate4.Settings = {
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
 
+   // Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", window, "UTF-8");
+    
 		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
     
-    Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", window, "UTF-8");
     this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
     
-    Preferences.onDOMContentLoaded(); // calling it manually - it is too late for the COMContentLoaded event
+    // Preferences.onDOMContentLoaded(); // calling it manually - it is too late for the COMContentLoaded event
     
     // let's take this one out, to see...
 		// this.cleanupUnusedPrefs();
@@ -786,12 +780,9 @@ SmartTemplate4.Settings = {
 		// AG added .common to the preference names to make it easier to add and manipulate global/debug settings
 		function replacePrefName(_el,  key) {
 			try {
-				const _str = "smartTemplate4.common"; // was "smarttemplate"
-				if (_el.hasAttribute("name")) {
-					let _attr = _el.getAttribute("name");
-					if (_attr.indexOf(_str, 0) >= 0) {
-						_el.setAttribute("name", _attr.replace(_str, "smartTemplate4." + key));
-					}
+				if (_el.hasAttribute("preference")) {
+					let _attr = _el.getAttribute("preference");
+          _el.setAttribute("preference", _attr.replace(".common", key));
 				}
 			} catch(ex) {}
 		}
@@ -816,15 +807,17 @@ SmartTemplate4.Settings = {
 			// Set id, name, prefname
 			if (el.nodeType == ELEMENT_NODE) {
 				replaceAttribute(el, "id", branch);
-				replacePrefName(el, key); // applies only to preference nodes themselves
+				replacePrefName(el, branch); // applies only to preference nodes themselves
 				// build an array for adding to Preferences
 				if (el.tagName == "preference") {
 					newPrefs.push(el);
 				}
+        /*
 				let prefName = el.getAttribute("preference");
 				if (prefName) {
 					replaceAttribute(el, "preference", branch);
 				}
+        */
 			}
 
 			// Get next node or parent's next node
@@ -841,16 +834,17 @@ SmartTemplate4.Settings = {
 			}
 		}
 		// add to Preferences object
+    
 		if (newPrefs.length && typeof Preferences != "undefined") {
 			for (let i=0; i<newPrefs.length; i++) {
 				let it = newPrefs[i],
 						p = { 
-							id: it.id, 
-							name: it.getAttribute('name'), 
-							type: it.getAttribute('type'), 
-							instantApply: true 
+							id: it.getAttribute('name').replace('.common', branch), 
+							type: it.getAttribute('type')
 						}
+            
 				let pref = Preferences.add(p);
+        
 				this.preferenceElements.push (pref);
 				// pref.updateElements();  // is not called automatically because domecontentloaded is OVER
 				util.logDebugOptional("settings.prefs", "Added Preference: " + p.id);
@@ -1908,14 +1902,24 @@ SmartTemplate4.Settings = {
 		}		
 		let myprefs = document.getElementsByTagName("preference");
 		if (myprefs.length) {
-			let prefArray = [];
+			let prefArray = [],
+          foundPreferences = [];
+      
+      
 			for (let i=0; i<myprefs.length; i++) {
 				let it = myprefs.item(i),
-				    p = { id: it.id, name: it.getAttribute('name'), type: it.getAttribute('type') };
-				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
-				prefArray.push(p);
+				    p = { id:   it.getAttribute('name'), 
+                  type: it.getAttribute('type') };
+                  
+        // if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+        if (!foundPreferences.includes(p.id)) {
+          prefArray.push(p);
+          foundPreferences.push(p.id);
+        }
+        
 			}
-			if (Preferences)
+      
+			if (Preferences) 
 				Preferences.addAll(prefArray);
 		}							
 	},
