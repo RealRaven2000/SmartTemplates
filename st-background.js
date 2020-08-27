@@ -9,7 +9,36 @@
 
 
  async function main() {
-    messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
+    
+   
+   
+   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
+     // if (temporary) return; // skip during development
+      switch (reason) {
+        case "install":
+          {
+            const url = browser.runtime.getURL("popup/installed.html");
+            //await browser.tabs.create({ url });
+            await browser.windows.create({ url, type: "popup", height: 600, width: 600, });
+          }
+          break;
+        // see below
+        case "update":
+          {
+            const url = browser.runtime.getURL("popup/update.html");
+            //await browser.tabs.create({ url });
+            await browser.windows.create({ url, type: "popup", height: 600, width: 600, });
+          }
+          break;
+        // see below
+        }
+    });
+   
+   
+   
+   
+   
+   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
     
     messenger.WindowListener.registerChromeUrl([ 
         ["content", "smarttemplate4", "chrome/content/"],
