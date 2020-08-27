@@ -1179,13 +1179,6 @@ SmartTemplate4.Util = {
 		let Ci = Components.interfaces;
 		let serverInfo = '';
 		try {
-      /*
-			let account = null,
-			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-														.getService(Ci.nsIMsgAccountManager),  
-			    accounts = acctMgr.accounts,
-			    iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
-          */
       let found=false;
       for (let account of MailServices.accounts.accounts) {
         if (account.defaultIdentity && account.defaultIdentity.key == idKey) {
@@ -1195,18 +1188,6 @@ SmartTemplate4.Util = {
 					break;
         }
       }        
-          
-      /*
-			for (let i = 0; i < iAccounts; i++) {
-				account = accounts.queryElementAt ?
-					accounts.queryElementAt(i, Ci.nsIMsgAccount) :
-					accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
-				if (account.defaultIdentity && account.defaultIdentity.key == idKey)
-					break;
-			}
-      */
-			
-			
 		}
 		catch(ex) { this.logException("could not find server for identity " + idKey , ex); }
     return serverInfo;
