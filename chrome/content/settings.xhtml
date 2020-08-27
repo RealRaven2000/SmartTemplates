@@ -384,9 +384,12 @@
 														<row align="left" id="labelRow">
 															<label>&fileTemplates.file.path;</label>
 															<hbox flex="3">
-																<textbox id="txtTemplatePath" 
-																				 flex="2"
-																				 />
+                                <vbox flex="2">
+                                  <html:input
+                                        type="text"
+                                        id="txtTemplatePath" 
+                                        />
+                                </vbox>
 																<toolbarbutton 
 																				id="btnPickTemplate" 
 																				tooltiptext="&fileTemplates.file.open;" 
@@ -396,11 +399,14 @@
 														</row>
 														<row align="left" id="labelRow">
 															<label >&fileTemplates.file.title;</label>
-															<textbox id="txtTemplateTitle" 
-																			 flex="3" 
-																			 tooltiptext="&fileTemplates.file.title.tooltip;"
-																			 onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
-																			 />
+                              <vbox flex="3" >
+                                <html:input
+                                    type="text"
+                                    id="txtTemplateTitle" 
+                                    tooltiptext="&fileTemplates.file.title.tooltip;"
+                                    onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+                                   />
+                              </vbox>
 														</row>
 													</rows>
 												</grid>
@@ -523,17 +529,21 @@
 								<hbox class = "labeledBox">
 									<label   class = "textboxLabel"
 											 value="&pref_breaksOnTop.label;" />
-									<textbox id = "txtBreaks"
-											 preference = "extensions.smartTemplate4.breaksAtTop"
-											 instantApply="true" />
+									<html:input
+                        type="text" 
+                        id = "txtBreaks"
+											  preference = "extensions.smartTemplate4.breaksAtTop"
+											  instantApply="true" />
 								</hbox>
 								<hbox class = "labeledBox">
-									<label   class = "textboxLabel"
-											 value="&pref_defaultCharset.label;:" />
-									<textbox id = "txtCharset"
-											 preference = "extensions.smartTemplate4.defaultCharset"
-											 instantApply="true" 
-											 tooltiptext = "&pref_defaultCharset_tip;"/>
+									<label class = "textboxLabel"
+											   value="&pref_defaultCharset.label;:" />
+									<html:input
+                        type="text" 
+                        id = "txtCharset"
+											  preference = "extensions.smartTemplate4.defaultCharset"
+											  instantApply="true" 
+											  tooltiptext = "&pref_defaultCharset_tip;"/>
 								</hbox>
 							</vbox>
 						</groupbox>
@@ -638,9 +648,11 @@
 											oncommand = "SmartTemplate4.Settings.fontSize(+1);" 
 											label = "" />
 									<spacer width = "2px" />
-									<textbox id = "txtFontSize"
-											 preference = "extensions.smartTemplate4.font.size"
-											 disabled = "true"/>
+									<html:input
+                        type="text" 
+                        id = "txtFontSize"
+											  preference = "extensions.smartTemplate4.font.size"
+											  disabled = "true"/>
 								</hbox>
 							</vbox>
 						</groupbox>
@@ -665,18 +677,22 @@
 								<hbox  align="center">
 									<label value="&defaultMimeFormat;"
 												 control="default_address_format"/>
-									<textbox flex="1"
-                           id="default_address_format"
-													 preference = "extensions.smartTemplate4.mime.defaultFormat"
-													 tooltiptext= "&defaultMimeFormat_tip;"/>
+									<html:input
+                        type="text" 
+                        id="default_address_format"
+                        size="50"
+                        preference = "extensions.smartTemplate4.mime.defaultFormat"
+                        tooltiptext= "&defaultMimeFormat_tip;"/>
 								</hbox>
 								<hbox  align="center">
 									<label value="&pref_addressDelimiter;"
 												 control="txtNameDelimiter"/>
-									<textbox id="txtNameDelimiter"
-													 style="width:2em;"
-													 tooltiptext = "&pref_addressDelimiter_tip;"
-													 preference = "extensions.smartTemplate4.names.delimiter"/>
+									<html:input
+                        type="text" 
+                        id="txtNameDelimiter"
+                        style="width:2em;"
+                        tooltiptext = "&pref_addressDelimiter_tip;"
+                        preference = "extensions.smartTemplate4.names.delimiter"/>
 								</hbox>
 								<separator />		  
 								<checkbox id = "chkResolveAB"
@@ -870,7 +886,12 @@
 								</hbox>
 								<hbox class = "labeledBox">
 									<label class = "textboxLabel" value="&support.subject;" />
-									<textbox id = "txtSupportSubject" flex="1" maxlength="60"/>
+									<html:input
+                        type="text" 
+                        id = "txtSupportSubject" 
+                        flex="1" 
+                        maxlength="60"
+                        />
 								</hbox>
 								<label>&support.mail.instructions;</label>
 								<label>

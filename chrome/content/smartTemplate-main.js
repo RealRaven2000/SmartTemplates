@@ -519,8 +519,7 @@ var SmartTemplate4 = {
 	} ,
 
 	stateListener: {
-		NotifyComposeFieldsReady: function() {},
-		NotifyComposeBodyReady: function(event) {
+    NotifyComposeBodyReady_AllCases: function ST_NotifyComposeFieldsReady(event, composeCase) {
 			const util = SmartTemplate4.Util,
 			      prefs = SmartTemplate4.Preferences,
 						msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -597,87 +596,22 @@ var SmartTemplate4 = {
 					eventDelay);
 			}
 		},
-///neu
-NotifyComposeBodyReadyNew: function(event) {
-	const util = SmartTemplate4.Util,
-		  prefs = SmartTemplate4.Preferences,
-				msgComposeType = Components.interfaces.nsIMsgCompType;
-  let eventDelay = (gMsgCompose.type != msgComposeType.ForwardInline) 
-				   ? 10 
-								 : prefs.getMyIntPref("forwardInlineImg.delay"),
-		isNotify = false;
-	util.logDebug('NotifyComposeBodyReady');
-	// For Stationery integration, we need to  
-	// its method of overwriting  stateListener.NotifyComposeBodyReady 
-	if (prefs.isStationerySupported) {
-		
-		if (typeof Stationery_ == 'undefined') {
-			isNotify = true;					
-			prefs.setMyBoolPref("stationery.supported",false);
-			util.showStationeryWarning();
-		}
-		else {
-			// test existence of Stationery 0.8 specific function to test if we need to use the new event model.
-			// added: New Stationery 0.9 uses promises
-			
-			if (Stationery.fireAsyncEvent || Stationery.waitForPromise) {
-				if (gMsgCompose.type == msgComposeType.Template) {
-					// force calling compose ready as Stationery does not support "template" case
-					window.setTimeout(
-						function(){ 
-							util.logDebug("Template case with Stationery enabled: calling notifyComposeBodyReady()")
-							SmartTemplate4.notifyComposeBodyReady(); 
-						}, 
-						eventDelay);					
-				}
-				else {
-					// new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
-					util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
-				}
-				return;
-			}
+    
+		NotifyComposeBodyReady: function(event) { 
+      const msgComposeType = Components.interfaces.nsIMsgCompType;
+      this.NotifyComposeBodyReady_AllCases(event, null);
+    },
+    
+    // neu
+    NotifyComposeBodyReadyNew: function(event) {
+      const msgComposeType = Components.interfaces.nsIMsgCompType;
+      this.NotifyComposeBodyReady_AllCases(event, msgComposeType.New);
+    },
+    
+		NotifyComposeFieldsReady: function() {},
 
-			// Stationery 0.7.8 and older
-			let bypass = true,
-					oldTemplate = '';
-			
-			if (typeof Stationery.Templates.OnceOverride != "undefined") {
-				if (Stationery.Templates.OnceOverride == '')
-					bypass = false;
-				else
-					oldTemplate = Stationery.Templates.OnceOverride;
-			}
-			else { 
-				if (Stationery.Templates.Current =='')  
-					bypass = false;
-				else
-					oldTemplate = Stationery.Templates.Current;
-			}
-			if (bypass)
-				util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
-					 + 'As you have selected the Stationery template ' + oldTemplate 
-					 + ', SmartTemplate4 will be not used for this email.' );
-			else {
-				isNotify = true;
-			}
-		}
-	}
-	else
-		isNotify = true;
-		
-	if (isNotify) {
-		// [BUG 26434] forwarding email with embedded images removes images
-		// test delaying call for forward case
-		window.setTimeout(
-			function(){ 
-	SmartTemplate4.notifyComposeBodyReady(event); 
-  }, 
-			eventDelay);
-	}
-},
-
-
-///ende neu
+    //ende neu
+    
 		ComposeProcessDone: function(aResult) {
 			const util = SmartTemplate4.Util;
 			util.logDebug('ComposeProcessDone');
@@ -709,7 +643,12 @@ NotifyComposeBodyReadyNew: function(event) {
 			// stateListener is defined in components/compose/content/MsgComposeCommands.js
 			if (stateListener && stateListener.NotifyComposeBodyReady) {
 				if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
-					util.OrigNotify = stateListener.NotifyComposeBodyReady;
+          
+					util.OrigNotify = 
+            (gComposeType == msgComposeType.New)
+            ? stateListener.NotifyComposeBodyReadyNew 
+            : stateListener.NotifyComposeBodyReady;
+            
 					let idKey = util.getIdentityKey(document);
 					stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
 						// Bug 26356 - no notification on forward w. empty template  !!!!wrong bug number??? this was closed 21 years ago

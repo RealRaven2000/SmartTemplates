@@ -768,7 +768,6 @@ SmartTemplate4.fileTemplates = {
                 //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
                 
                 // hide the main button:
-                // btn.firstChild.collapsed="true";
                 btn.firstChild.classList.add("STfakePopupBtn");
               }
               let originId = btn.getAttribute("insertafter");
