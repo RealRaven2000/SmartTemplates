@@ -912,6 +912,7 @@ tab#SmartTemplate4-Pro.expired {
 
 label.plain-link:hover {
 	text-decoration: underline;
+  cursor: pointer;
 }
 
 
