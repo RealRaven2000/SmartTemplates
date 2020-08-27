@@ -711,8 +711,6 @@ NotifyComposeBodyReadyNew: function(event) {
 				if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
 					util.OrigNotify = stateListener.NotifyComposeBodyReady;
 					let idKey = util.getIdentityKey(document);
-//TODO   wenn wir dies lassen, ist im orig statelistener notifycomposebodyreadynew == null 
-/*
 					stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
 						// Bug 26356 - no notification on forward w. empty template  !!!!wrong bug number??? this was closed 21 years ago
 						if (gComposeType !== msgComposeType.ForwardInline
@@ -724,8 +722,7 @@ NotifyComposeBodyReadyNew: function(event) {
 							util.OrigNotify();
 						}
 					}
-				*/
-							}
+        }
 			}
     }
     catch (ex) {
