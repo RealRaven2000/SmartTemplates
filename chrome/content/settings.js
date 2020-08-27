@@ -355,24 +355,30 @@ SmartTemplate4.Settings = {
 					settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document);
     
-    let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
+		let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
         composeType = null;
 					
 		util.logDebugOptional("functions", "onLoad() …");
+
+		// preferencesBindings waits for all its actions on DOMContentLoaded, 
+		// not only for the init, but also for the load of values.
+		// We need to wait with init until AFTER onDOMContentLoaded,
+		// because we need to manipulate the DOM
+		// When we are ready, we need to retrigger onDOMContentLoaded
+		Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", window, "UTF-8");
+
 		// Check and set common preference
 		this.setPref1st("extensions.smartTemplate4.");
 		this.disableWithCheckbox();
-
-   // Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", window, "UTF-8");
     
 		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
+		this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
+		// DOM is manipulated now, trigger preferencesBindings.js
+		let fakeOnDOMContentLoaded = new Event('DOMContentLoaded');
+		window.dispatchEvent(fakeOnDOMContentLoaded);
     
-    this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
-    
-    // Preferences.onDOMContentLoaded(); // calling it manually - it is too late for the COMContentLoaded event
-    
-    // let's take this one out, to see...
+		// let's take this one out, to see...
 		// this.cleanupUnusedPrefs();
 
 		let args = window.arguments,
