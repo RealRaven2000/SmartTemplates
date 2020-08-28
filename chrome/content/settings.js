@@ -289,21 +289,6 @@ SmartTemplate4.Settings = {
 		}
 		return false;
 	} ,	
-
-	// Reload preferences and update elements.
-	//--------------------------------------------------------------------
-	reloadPrefs : function reloadPrefs(el) {
-		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs()…");
-		el = el.firstChild;
-		while (el) {
-			// Load preference
-			if (el.tagName == "preference") {
-				el.value = this.getPref(el.getAttribute("name"));
-			}
-			el = el.nextSibling;
-		}
-		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs() COMPLETE");
-	} ,
   
   resizeSettings: function(evt) {
 		const util = SmartTemplate4.Util,
@@ -813,17 +798,11 @@ SmartTemplate4.Settings = {
 			// Set id, name, prefname
 			if (el.nodeType == ELEMENT_NODE) {
 				replaceAttribute(el, "id", branch);
-				replacePrefName(el, branch); // applies only to preference nodes themselves
-				// build an array for adding to Preferences
+				replacePrefName(el, branch); 
+				// build an array of all preference nodes which contain the preference types
 				if (el.tagName == "preference") {
 					newPrefs.push(el);
 				}
-        /*
-				let prefName = el.getAttribute("preference");
-				if (prefName) {
-					replaceAttribute(el, "preference", branch);
-				}
-        */
 			}
 
 			// Get next node or parent's next node
@@ -839,8 +818,8 @@ SmartTemplate4.Settings = {
 				el = el.nextSibling;
 			}
 		}
-		// add to Preferences object
-    
+
+		// add pref type definitions to Preferences object
 		if (newPrefs.length && typeof Preferences != "undefined") {
 			for (let i=0; i<newPrefs.length; i++) {
 				let it = newPrefs[i],
@@ -852,7 +831,6 @@ SmartTemplate4.Settings = {
 				let pref = Preferences.add(p);
         
 				this.preferenceElements.push (pref);
-				// pref.updateElements();  // is not called automatically because domecontentloaded is OVER
 				util.logDebugOptional("settings.prefs", "Added Preference: " + p.id);
 			}
 		}
@@ -883,9 +861,6 @@ SmartTemplate4.Settings = {
 
 			this.prefCloneAndSetup(clone, branch);
 			el.parentNode.appendChild(clone);
-
-			// Reload preferences
-			this.reloadPrefs(document.getElementById("templates" + branch));
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
