@@ -63,22 +63,32 @@ SmartTemplate4.fileTemplates = {
 	get optionsWindow() {
 		const Ci = Components.interfaces,
 		      util = SmartTemplate4.Util;
-					
+          
+    try {
+      let windowManager = Services.wm,
+          optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
+      return optionsWindow;
+    }
+		catch(ex) { ; }
+		
     let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
         getWindowEnumerator = 
             (util.isLinux) ?
             mediator.getXULWindowEnumerator :
             mediator.getZOrderXULWindowEnumerator;
 		// Thunderbird 63 getNext throws!	
+    /*
 		let en =getWindowEnumerator ('addon:SmartTemplate4', true); 		
 		if (en.hasMoreElements()) {
 			try {
+        windowManager.getMostRecentWindow(null); 
 				let optionsWindow = en.getNext().QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIDOMWindow);
 				return optionsWindow;
 			}
 			catch(ex) { ; }
 		}
 		return null;
+    */
 	} , 
 	
   get ListBox() {
@@ -498,8 +508,7 @@ SmartTemplate4.fileTemplates = {
 		let parent = msgPopup.parentNode, 
         singleParentWindow = null;
     try {
-      let singleM = Cc["@mozilla.org/appshell/window-mediator;1"]
-        .getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:messageWindow");
+      let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
       if (window == singleM)
         singleParentWindow = window;
     }
@@ -701,6 +710,52 @@ SmartTemplate4.fileTemplates = {
         return true;
       return false;
     }
+    // use a fake parent button for inserting
+    function insertMenuTb78(popupId, btnId) {
+      const fT = SmartTemplate4.fileTemplates; 
+      let theMsgPopup = document.getElementById(popupId);
+      if (!theMsgPopup) {
+        let btn = document.getElementById(btnId),
+            originalBtn = null;
+        if (btn) {
+          theMsgPopup = fT.getPopup(btn.id); 
+          if (theMsgPopup && !theMsgPopup.id) {
+            theMsgPopup.id=popupId;
+            btn.type = "menu-button";
+            let oldCommand=btn.command;
+            btn.removeAttribute("command");
+            //btn.observes=oldCommand;
+            theMsgPopup.setAttribute("is", "folder-menupopup");
+            //btn.setAttribute("is", "toolbarbutton-menu-button");
+            // attach the menupopup
+            btn.appendChild(theMsgPopup);
+            //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
+            
+            // hide the main button:
+            btn.firstChild.classList.add("STfakePopupBtn");
+          }
+          let originId = btn.getAttribute("insertafter");
+          originalBtn = document.getElementById(originId);
+        }
+        // only show if the "original button" actually exists / is shown on toolbar.
+        if (originalBtn) {
+          if (originalBtn.collapsed)
+            btn.collapsed=true;
+          else {
+            btn.collapsed=false;
+            // move to the correct position!
+            originalBtn.parentNode.insertBefore(btn,originalBtn.nextSibling);                
+            
+          }
+        }
+        else
+           btn.collapsed=true;
+        debugger;
+      }
+      return theMsgPopup;
+    }
+    
+    
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
@@ -748,56 +803,18 @@ SmartTemplate4.fileTemplates = {
 					} catch (ex) {;}
           
 					// 1) write new entries --------------------
-					let newMsgPopup = document.getElementById('button-newMsgPopup');
-					if (!newMsgPopup) {
-            let id = "button-newmsg-ST",
-						    btn = document.getElementById(id),
-                originalBtn = null;
-            if (btn) {
-              newMsgPopup = fT.getPopup(btn.id); 
-              if (newMsgPopup && !newMsgPopup.id) {
-                newMsgPopup.id='button-newMsgPopup';
-                btn.type = "menu-button";
-                let oldCommand=btn.command;
-                btn.removeAttribute("command");
-                //btn.observes=oldCommand;
-                newMsgPopup.setAttribute("is", "folder-menupopup");
-                //btn.setAttribute("is", "toolbarbutton-menu-button");
-                // attach the menupopup
-                btn.appendChild(newMsgPopup);
-                //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
-                
-                // hide the main button:
-                btn.firstChild.classList.add("STfakePopupBtn");
-              }
-              let originId = btn.getAttribute("insertafter");
-              originalBtn = document.getElementById(originId);
-            }
-            // only show if the "original button" actually exists / is shown on toolbar.
-            if (originalBtn) {
-              if (originalBtn.collapsed)
-                btn.collapsed=true;
-              else {
-                btn.collapsed=false;
-                // move to the correct position!
-                originalBtn.parentNode.insertBefore(btn,originalBtn.nextSibling);                
-                
-              }
-            }
-            else
-               btn.collapsed=true;
-            debugger;
-					}
-
-          
+          let newMsgPopup = insertMenuTb78('button-newMsgPopup', 'button-newmsg-ST');
 					if (needsConfig(newMsgPopup)) {
 						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
           }
 					
 					// 2a) reply entries     --------------------
 					//    calling getPopup() - if it doesn't exist, the popup will be automatically created & appended to button
-					let replyPopup = fT.getPopup("button-reply"); 
+					let replyPopup = // fT.getPopup("button-reply"); 
+            insertMenuTb78('button-replyMsgPopup', 'button-reply-ST');
+          
 					if (replyPopup && !isInHeaderArea(replyPopup)) {
+            /*
 						let btn = document.getElementById("button-reply");
 						if (!replyPopup.id) {
 							replyPopup.id='button-replyMsgPopup';
@@ -805,13 +822,16 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
+            */
             if (needsConfig(replyPopup))
 						  fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
 					// 2b) reply all entries     --------------------
-					replyPopup = fT.getPopup("button-replyall"); 
-					if (replyPopup && !isInHeaderArea(replyPopup)) {
+					let replyAllPopup // = fT.getPopup("button-replyall"); 
+            = insertMenuTb78('button-replyAllPopup', 'button-replyall-ST');
+					if (replyAllPopup && !isInHeaderArea(replyPopup)) {
+            /*
 						let btn = document.getElementById("button-replyall");
 						if (!replyPopup.id) {
 							replyPopup.id='button-replyAllPopup';
@@ -819,8 +839,9 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
-            if (needsConfig(replyPopup))
-              fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+            */
+            if (needsConfig(replyAllPopup))
+              fT.configureMenu(fT.Entries.templatesRsp, replyAllPopup, "rsp");
 					}
 					
 					// 3) forwarding entries --------------------
@@ -1195,7 +1216,7 @@ SmartTemplate4.fileTemplates = {
 				return converter.ConvertToUnicode(data);
 			}
 			catch(ex) {
-				let parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose"),
+				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
 				    errText = util.getBundleString("SmartTemplate4.fileTemplates.error.charSet",
 						  "Problems converting a HTML template from charset [{1}]\n"
 							+ "Using raw string data instead.\n"
@@ -1205,8 +1226,7 @@ SmartTemplate4.fileTemplates = {
 					"centerscreen,titlebar,modal,dialog",
 				  { ok: function() {  
 					        // get last composer window and bring to foreground
-									let composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-										.getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose");
+									let composerWin = Services.wm.getMostRecentWindow("msgcompose");
 									if (composerWin)
 										composerWin.focus();
 					      }

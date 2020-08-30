@@ -128,8 +128,7 @@ SmartTemplate4.composer = {
         "centerscreen,titlebar,modal,dialog",
         { ok: function() {  
                 // get last composer window and bring to foreground
-                let composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-                  .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose");
+                let composerWin = Services.wm.getMostRecentWindow("msgcompose");
                 if (composerWin) {
                   // refresh the template menu
                   SmartTemplate4.composer.initTemplateMenu(); // make sure there are some menu items now.

@@ -767,8 +767,7 @@ var SmartTemplate4 = {
 					"centerscreen,titlebar,modal,dialog",
 				  { ok: function() {  
 					        // get last composer window and bring to foreground
-									let composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-										.getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose");
+									let composerWin = Services.wm.getMostRecentWindow("msgcompose");
 									if (composerWin)
 										composerWin.focus();
 					      }

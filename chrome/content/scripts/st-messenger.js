@@ -24,15 +24,47 @@ function onLoad(activatedWhileWindowOpen) {
 
     WL.injectElements(`
     <toolbar id="mail-bar3">
+    
       <toolbarbutton 
         id="button-newmsg-ST" 
         is="toolbarbutton-menu-button" 
-        observes="cmd_newMessage" 
         label="" 
         insertafter="button-newmsg"
         oncommand="MsgNewMessage(event)" 
         class= "toolbarbutton-1">
       </toolbarbutton>
+      
+      <toolbarbutton 
+        id="button-reply-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="button-reply"
+        oncommand="MsgReplySender(event)" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+      
+      <toolbarbutton 
+        id="button-replyall-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="button-replyall"
+        oncommand="MsgReplyToAllRecipients(event)" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>      
+      
+      <toolbarbutton 
+        id="button-replylist-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="button-replylist"
+        oncommand="MsgReplyList((event)" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>      
+            
+      
+      
+ 
+      
     </toolbar>
      `);
     

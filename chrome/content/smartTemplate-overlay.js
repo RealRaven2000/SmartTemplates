@@ -1471,7 +1471,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					
 			// show a fancier "branded" alert;
       // add countdown  - isLicenseWarning=true
-      const parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window;
+      const parentWin = Services.wm.getMostRecentWindow("msgcompose") || window;
 			SmartTemplate4.Message.display(
         txtAlert + '\n\n' + parseString, 
 				"centerscreen,titlebar,modal,dialog",
@@ -1622,7 +1622,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			hdr = null;
 			
   if (gMsgCompose.originalMsgURI.indexOf(".eml")>0) { 
-		let messageWindow = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:messageWindow"),
+		let messageWindow = Services.wm.getMostRecentWindow("mail:messageWindow"),
 				messageHeaderSink = messageWindow.messageHeaderSink;
 		charset = gMsgCompose.compFields.characterSet;
 		// with .eml file, use gExpandedHeaderView[hdrName] collection?

@@ -195,8 +195,7 @@ SmartTemplate4.Util = {
 	} ,
 
 	get Mail3PaneWindow() {
-		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
-				.getService(Components.interfaces.nsIWindowMediator),
+		let windowManager = Services.wm,
 		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
@@ -990,8 +989,8 @@ SmartTemplate4.Util = {
 		const name = "Preferences:ConfigManager";
 		const uri = "chrome://global/content/config.xhtml";
 
-		let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-		let w = mediator.getMostRecentWindow(name);
+		let mediator = Services.wm,
+		    w = mediator.getMostRecentWindow(name);
 		// parent window
 		let win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
          		? clickedElement.ownerDocument.defaultView 
