@@ -1,3 +1,17 @@
+.testversion {
+  padding: 1em;
+  font-style: italic;
+  background-color: rgb(0,0,30); /* dark blue */
+  box-shadow: inset 0 0 10px #000000;
+}
+
+.testversion p {
+  background-color: rgb(0,0,30); /* dark blue */
+  color: brightyellow;
+}
+
+
+
 ul.actions {
   
 }
@@ -21,25 +35,41 @@ ul.actions {
   background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
 }
 
-body * {
-  background-color: white;
+body, body * {
+  background-color: rgb(20,15,05);
+  color: white;
 }
 
+body > p {
+  background-color: rgb(20,15,05);
+  color: white;
+}
+
+
+
+
+
 h1, h2, h3, h4 {
-  color: #1a566d;
+  /* color: #1a566d; */
   font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
   text-align: center;
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
 }
 
 h1 {
-  font-size: 24pt;
+  font-size: 34pt;
 }
 
 h2 {
-  font-size: 20pt;
+  font-size: 30pt;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 16pt;
+  font-size: 20pt;
 }
