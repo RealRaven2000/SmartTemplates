@@ -394,7 +394,7 @@ SmartTemplate4.Licenser =
   } ,
   
   goPro: function goPro(license_type, forceRenew) {
-    const productDetail = "http://sites.fastspring.com/quickfolders/product/smarttemplate4";
+    const productDetail = "https://sites.fastspring.com/quickfolders/product/smarttemplate4";
     // redirect to registration site; pass in the feature that brought user here
     // short order process
     let shortOrder,
@@ -405,7 +405,7 @@ SmartTemplate4.Licenser =
     switch	(license_type) {
 			case 0:  // pro license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?
@@ -415,22 +415,22 @@ SmartTemplate4.Licenser =
 			  break;
 				
 			case 1: // domain license
-				shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
+				shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
 			  break;
 				
 			case 2: // standard license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?
 				}
 				else // NEW
-					shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
+					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
 			  break;
 
 			case 3: // upgrade pro to standard
-				shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade"; // product to be created
+				shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplateupgrade"; // product to be created
 				featureName = encodeURI(prefs.getStringPref('LicenseKey')); // original license to upgrade!
 			  break;
 			
@@ -456,7 +456,7 @@ SmartTemplate4.Licenser =
 
    /* obsolete form submission from code */
   postForm  : function postForm_obsolete(util) {
-    let url ="http://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
+    let url ="https://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
         oReq;
     
     if (util.PlatformVersion >=16.0) {
@@ -477,7 +477,7 @@ SmartTemplate4.Licenser =
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    util.openURL(event,'http://smarttemplates.quickfolders.org/premium.html');
+    util.openURL(event,'https://smarttemplates.quickfolders.org/premium.html');
   },
   
   // format ST-EMAIL:DATE;SmartTemplate4.Crypto

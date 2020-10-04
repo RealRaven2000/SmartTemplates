@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Geavanceerde instellingen">
 <!ENTITY pref_variables.tab "Variabelen">
 <!ENTITY pref_examples.tab "Voorbeelden (alleen online)">
-<!ENTITY pref_examples.tooltip "Voorbeeldsjablonen van http://smarttemplates.quickfolders.org/templates.html weergeven. Alleen beschikbaar in online-modus.">
+<!ENTITY pref_examples.tooltip "Voorbeeldsjablonen van https://smarttemplates.quickfolders.org/templates.html weergeven. Alleen beschikbaar in online-modus.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Accepteren">
 <!ENTITY cancel_button "Annuleren">

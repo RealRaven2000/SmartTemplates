@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Avancerade inställningar">
 <!ENTITY pref_variables.tab "Variabler">
 <!ENTITY pref_examples.tab "Exempel (endast online)">
-<!ENTITY pref_examples.tooltip "Visa exempelmallar från http://smarttemplate4.mozdev.org/templates.html. Endast tillgängligt i onlineläget.">
+<!ENTITY pref_examples.tooltip "Visa exempelmallar från https://smarttemplate4.mozdev.org/templates.html. Endast tillgängligt i onlineläget.">
 <!-- #### HELP #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">

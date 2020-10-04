@@ -589,7 +589,7 @@ SmartTemplate4.Settings = {
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
     if (!templatesIFrame.getAttribute("src"))
-      templatesIFrame.setAttribute("src", "http://smarttemplates.quickfolders.org/templates.html");
+      templatesIFrame.setAttribute("src", "https://smarttemplates.quickfolders.org/templates.html");
 	} ,
 
 	onCodeWord : function onCodeWord(code, className) {

@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Impostazioni avanzate">
 <!ENTITY pref_variables.tab "Variabili">
 <!ENTITY pref_examples.tab "Esempi (solo su Internet)">
-<!ENTITY pref_examples.tooltip "Visualizza modelli di esempio su http://smarttemplates.quickfolders.orgrs.org/templates.html. Disponibili solo su Internet.">
+<!ENTITY pref_examples.tooltip "Visualizza modelli di esempio su https://smarttemplates.quickfolders.orgrs.org/templates.html. Disponibili solo su Internet.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Annulla">

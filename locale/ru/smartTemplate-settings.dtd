@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Дополнительные параметры">
 <!ENTITY pref_variables.tab "Переменные">
 <!ENTITY pref_examples.tab "Примеры (только при наличии подключения к Интернету)">
-<!ENTITY pref_examples.tooltip "Показывать примеры с http://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. ">
+<!ENTITY pref_examples.tooltip "Показывать примеры с https://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. ">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">

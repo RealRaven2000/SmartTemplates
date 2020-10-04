@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "詳細設定">
 <!ENTITY pref_variables.tab "変数">
 <!ENTITY pref_examples.tab "テンプレート例 (オンラインのみ)">
-<!ENTITY pref_examples.tooltip "テンプレートの例を http://smarttemplates.quickfolders.org/templates.html より表示します。オンラインである必要があります。">
+<!ENTITY pref_examples.tooltip "テンプレートの例を https://smarttemplates.quickfolders.org/templates.html より表示します。オンラインである必要があります。">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "キャンセル">

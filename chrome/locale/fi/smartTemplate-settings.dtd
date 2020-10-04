@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Lisäasetukset">
 <!ENTITY pref_variables.tab "Muuttujat">
 <!ENTITY pref_examples.tab "Esimerkkejä">
-<!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla http://smarttemplates.quickfolders.org/templates.html. Vaatii Internet-yhteyden.">
+<!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla https://smarttemplates.quickfolders.org/templates.html. Vaatii Internet-yhteyden.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">

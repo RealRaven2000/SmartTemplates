@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Setelan Lanjutan">
 <!ENTITY pref_variables.tab "Variabel">
 <!ENTITY pref_examples.tab "Contoh (butuh koneksi internet)">
-<!ENTITY pref_examples.tooltip "Tampilkan contoh template dari http://smarttemplates.quickfolders.org/templates.html. Hanya tersedia dalam mode online.">
+<!ENTITY pref_examples.tooltip "Tampilkan contoh template dari https://smarttemplates.quickfolders.org/templates.html. Hanya tersedia dalam mode online.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Batal">

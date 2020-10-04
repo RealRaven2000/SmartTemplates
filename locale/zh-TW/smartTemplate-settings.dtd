@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Advanced Settings">
 <!ENTITY pref_variables.tab "變數">
 <!ENTITY pref_examples.tab "Examples (online only)">
-<!ENTITY pref_examples.tooltip "Show example templates from http://smarttemplates.quickfolders.org/templates.html. Only available in online mode.">
+<!ENTITY pref_examples.tooltip "Show example templates from https://smarttemplates.quickfolders.org/templates.html. Only available in online mode.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "確定">
 <!ENTITY cancel_button "取消">

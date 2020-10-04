@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Напредне поставке">
 <!ENTITY pref_variables.tab "Променљиве">
 <!ENTITY pref_examples.tab "Примери (само на мрежи)">
-<!ENTITY pref_examples.tooltip "Прикажите примере шаблона са http://smarttemplate4.mozdev.org/templates.html. Доступно само док сте повезани на интернет.">
+<!ENTITY pref_examples.tooltip "Прикажите примере шаблона са https://smarttemplate4.mozdev.org/templates.html. Доступно само док сте повезани на интернет.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "У реду">
 <!ENTITY cancel_button "Откажи">

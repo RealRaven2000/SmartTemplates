@@ -38,7 +38,7 @@
    
    
    
-   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
+    messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
     
     messenger.WindowListener.registerChromeUrl([ 
         ["content", "smarttemplate4", "chrome/content/"],

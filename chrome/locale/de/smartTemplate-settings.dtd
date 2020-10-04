@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Erweiterte Einstellungen">
 <!ENTITY pref_variables.tab "Variablen">
 <!ENTITY pref_examples.tab "Beispiele (nur online)">
-<!ENTITY pref_examples.tooltip "Zeigt Beispielvorlagen von http://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar.">
+<!ENTITY pref_examples.tooltip "Zeigt Beispielvorlagen von https://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Abbrechen">

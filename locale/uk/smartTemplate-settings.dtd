@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Додаткові налаштування">
 <!ENTITY pref_variables.tab "Змінні">
 <!ENTITY pref_examples.tab "Приклади (тільки через мережу)">
-<!ENTITY pref_examples.tooltip "Показати приклади шаблонів з http://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа.">
+<!ENTITY pref_examples.tooltip "Показати приклади шаблонів з https://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">

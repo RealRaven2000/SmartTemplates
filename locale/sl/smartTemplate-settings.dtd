@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Napredne nastavitve">
 <!ENTITY pref_variables.tab "Spremenljivke">
 <!ENTITY pref_examples.tab "Primeri (samo v povezanem načinu)">
-<!ENTITY pref_examples.tooltip "Prikaži primere predlog iz http://smarttemplates.quickfolders.org/templates.html. Na voljo samo v povezanem načinu.">
+<!ENTITY pref_examples.tooltip "Prikaži primere predlog iz https://smarttemplates.quickfolders.org/templates.html. Na voljo samo v povezanem načinu.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "V redu">
 <!ENTITY cancel_button "Prekliči">

@@ -13,7 +13,7 @@ END LICENSE BLOCK
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://smarttemplates.quickfolders.org");
+		return this._thunderbirdRegExp = new RegExp("^https://smarttemplates.quickfolders.org");
 	}
 };
 
@@ -30,12 +30,12 @@ SmartTemplate4.Util = {
 	ConsoleService: null,
 	lastTime: 0,
 	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
-	PremiumFeaturesPage: "http://smarttemplates.quickfolders.org/premium.html",
-	SupportHomepage:  "http://smarttemplates.quickfolders.org/index.html",
-	BugPage:          "http://smarttemplates.quickfolders.org/bugs.html",
-	LicensePage:      "http://smarttemplates.quickfolders.org/contribute.html",
-	VersionPage:      "http://smarttemplates.quickfolders.org/version.html",
-	StationeryHelpPage: "http://smarttemplates.quickfolders.org/stationery.html",
+	PremiumFeaturesPage: "https://smarttemplates.quickfolders.org/premium.html",
+	SupportHomepage:  "https://smarttemplates.quickfolders.org/index.html",
+	BugPage:          "https://smarttemplates.quickfolders.org/bugs.html",
+	LicensePage:      "https://smarttemplates.quickfolders.org/contribute.html",
+	VersionPage:      "https://smarttemplates.quickfolders.org/version.html",
+	StationeryHelpPage: "https://smarttemplates.quickfolders.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
 	MarkyAMOPage:     "https://addons.thunderbird.net/thunderbird/user/2448736/",
 	ArisAMOPage:      "https://addons.thunderbird.net/firefox/user/5641642/",
@@ -2815,7 +2815,7 @@ SmartTemplate4.Util.firstRun =
 				// on very first run, we go to the index page - welcome blablabla
 				util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
 				window.setTimeout(function() {
-					util.openURL(null, "http://smarttemplates.quickfolders.org/index.html");
+					util.openURL(null, "https://smarttemplates.quickfolders.org/index.html");
 				}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 			}
 			else {

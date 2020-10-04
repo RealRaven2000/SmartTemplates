@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Rozšířené nastavení">
 <!ENTITY pref_variables.tab "Proměnné">
 <!ENTITY pref_examples.tab "Příklady (pouze on-line)">
-<!ENTITY pref_examples.tooltip "Zobraz příklady šablon z http://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu.">
+<!ENTITY pref_examples.tooltip "Zobraz příklady šablon z https://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Zrušit">
