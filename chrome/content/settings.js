@@ -339,6 +339,9 @@ SmartTemplate4.Settings = {
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document);
+		let mutObsDebug=false;
+
+		
     
 		let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
         composeType = null;
@@ -358,6 +361,43 @@ SmartTemplate4.Settings = {
     
 		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
+
+
+		if (mutObsDebug) {
+			// create an observer instance
+			var target = window.document.getElementById("deckB.nodef.id1");
+			console.log(target);
+			//console.log(target);
+			var observer = new (window.MutationObserver)(function (mutations) {
+				//debugger;
+				mutations.forEach(function (mutation) {
+				//console.log(mutation.currentTarget );//console.log("Success");
+					//$('#log').text('input text changed: "' + target.text() + '"');
+					//console.log(mutation, mutation.type);
+				});
+				try 
+			{
+				//console.log(mutation);
+				console.log("mutation observer:");
+				console.log(target);console.log(target.getAttribute("selectedIndex"))
+				let selInd = target.selectedIndex;
+				//target.setAttribute("selectedIndex",0);
+				console.log(" target.selectedIndex " + selInd);
+				console.log(" target.selectedPanel " + target.selectedPanel);
+				
+			}
+			catch(e) {console.log("deckB.nodef.id1 catch");}; 
+			/*   */   
+			});
+			observer.observe(target, { attributes: true,  childList: true, characterData: true, subtree: true });
+			console.log("deckB.nodef.id1-observer");//observer.disconnect(); - to stop observing
+
+
+
+		}
+
+
+
 		this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
 		// DOM is manipulated now, trigger preferencesBindings.js
 		let fakeOnDOMContentLoaded = new Event('DOMContentLoaded');
@@ -857,10 +897,22 @@ SmartTemplate4.Settings = {
 
 			// Clone and setup a preference window tags.
 			const el = document.getElementById("deckA.per_account"),
-			      clone = el.cloneNode(true);
+				  clone = el.cloneNode(true);
 
 			this.prefCloneAndSetup(clone, branch);
-			el.parentNode.appendChild(clone);
+			let appendedChild = el.parentNode.appendChild(clone);
+			let spacers = appendedChild.querySelectorAll(".tabs-left");
+			
+			//oder spacers.length==2 ??
+			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
+				console.log("got you, first spacer");
+				spacers[0].remove();
+			}
+
+			//let spacer = tabs.querySelectorAll(".");
+			//tabs.firstChild.remove();
+			//tabs.lastChild.remove();
+			//clone=tabs;
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
@@ -1045,7 +1097,9 @@ SmartTemplate4.Settings = {
 		    tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
-		let tabIndex = tabbox.selectedIndex;
+		let tabIndex = tabbox.getAttribute("selectedIndex");//selectedIndex;
+		console.log("tabIndex is "+tabIndex);
+		if (tabIndex<0) tabIndex=0;
 
 		const branch = (idkey == "common") ? ".common" : "." + idkey;
 
@@ -1093,7 +1147,9 @@ SmartTemplate4.Settings = {
 		currentDeck = this.getCurrentDeck(settings.accountId);
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox) {
-			tabbox.selectedIndex = tabIndex;
+			console.log("set selectedIndex");
+			tabbox.selectedIndex = tabIndex; //must b set this way because it is custom element, need to call setter
+			//tabbox.setAttribute("selectedIndex",tabIndex);
       let txtDump = '',
           tabboxArray = tabbox.getElementsByTagName('html:textarea'); // changed from textbox
       for (let i=0; i<tabboxArray.length; i++)
