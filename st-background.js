@@ -19,7 +19,7 @@
           {
             const url = browser.runtime.getURL("popup/installed.html");
             //await browser.tabs.create({ url });
-            await browser.windows.create({ url, type: "popup", height: 600, width: 600, });
+            await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
           }
           break;
         // see below
@@ -27,7 +27,7 @@
           {
             const url = browser.runtime.getURL("popup/update.html");
             //await browser.tabs.create({ url });
-            await browser.windows.create({ url, type: "popup", height: 600, width: 600, });
+            await browser.windows.create({ url, type: "popup", width: 910, height: 810, });
           }
           break;
         // see below

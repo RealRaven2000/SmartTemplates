@@ -1,65 +1,75 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Update Landing Screen</title>
-  <link rel="stylesheet" href="popup.css" type="text/css">
+  	<title id="window-title">__MSG_window-title__</title>
+  	<link rel="stylesheet" href="popup.css" type="text/css">
+		<script type="application/javascript" src="popup.js"></script>
+    <script type="application/javascript" src="animation.js"></script>
+		<script type="application/javascript" src="update.js"></script>
+    <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+    
   </head>
-  
   <body>
-    <div class="testversion">
+    <div id="innerwrapper">
+      <h1 id="heading-updated"> __MSG_heading-updated__</h1>
       <p>
-        This is a prerelease version - the links and buttons below are probably not working at this stage.
-        If you want to support the development team please us the links in the
-        SmartTemplate options dialog! You can find answers to most questions on our new support site at
-        https://smarttemplates.quickfolders.org/
+        <span id="thanks-for-updating-intro">__MSG_thanks-for-updating-intro__</span>
+        <span id="active-version-info">__MSG_active-version-info__</span>
+      </p>
+      
+      <p id="time-and-effort">
+        __MSG_time-and-effort__
+      </p>
+        
+      <p id="hours-effort">
+        __MSG_hours-effort__
+      </p>
+      
+      <p id="support-suggestion">
+        __MSG_support-suggestion__
+      </p>
+      <ul class="actions">
+        <li id="purchaseLicenseListItem"> __MSG_purchase-a-license__ </li>
+        <li id="renewLicenseListItem" collapsed="true"> __MSG_renew-your-license__ </li>
+        <li id="extendLicenseListItem" collapsed="true"> __MSG_extend-your-license__ </li>
+        <li> __MSG_donate__</li>
+      </ul>
+        
+      <h2>__MSG_purchase-heading__</h2>
+      
+      <p>
+        <span id="support-preference">__MSG_support-preference__</span>
+        __MSG_ongoing-work__
+      </p>
+        
+      <p class="actionlinks">
+        <a id="register">__MSG_btn-want-a-license__</a>
+        <a id="extend" collapsed="true">__MSG_btn-extend-license__</a>
+        <a id="renew" collapsed="true">__MSG_btn-renew-license__</a>
+      </p>  
+        
+      <h2>__MSG_donate-heading__</h2>
+      
+      <p>
+        __MSG_cost-of-independence__
+        
+        __MSG_mozillas-basic-platform__
+      </p>
+        
+      <p> __MSG_addon-authors-struggle__ </p>
+        
+      <p class="actionlinks">
+        <a id="donate">__MSG_btn-want-to-donate__</a>
+      </p>
+      
+      <p style="visibility: collapse;">
+        
+        <input type="checkbox" id= "remind"  name="remind"
+        checked>
+        <label for = "remind" id="label-remind-me"> __MSG_label-remind-me__ </label>
       </p>
     </div>
-     
-    <h1>{addon} Update</h1>
-    <p>Thank you for updating {addon}. You are now running v. {version} on Thunderbird {appver}.</p>
-    
-    <p>My Add-ons are currently undergoing fundamental changes in order to
-      remain compatible with the Mozilla platform. Changes there have been
-      increasingly more complex to the point that the annual conversion 
-      effort to the new ESR period takes a considerable amount of time
-      and resources.</p>
-      
-    <p>In the case of {addon}, alterations to the new legacy-less
-      model already took multiple weeks and are still ongoing, while 
-      it is likely that we will be losing some functionality. With a 
-      complex Add-on like this its inevitable.</p>
-      
-    <p class="actionlinks">
-      <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update" target=_blank>
-      I want to buy a license</a>
-    </p>
-    
-    <h2>Cost and Benefit</h2>
-    
-    <p>Software  development costs time and money - unlike many platform apps,
-      Add-ons are not written
-      by large corporations, nor are they sponsored in any way by Mozilla.
-      Mozilla only provide us with a platform to bring our software to you,
-      the end users - if we need to charge or ask for help we cannot do
-      this from addons.thunderbird.net - it is not an "app store" with built in
-      paywalls or license management like iTunes or google play.</p>
-      
-    <p>In order to remain useful, Add-on authors have to now raise the funds
-      necessary to repair and rewrite so that our users can keep benefiting
-      from the functionality we bring to the table. </p>
-      
-    <p>To help {addon} stay functional and alive:</p>
-      <ul class="actions">
-        <li>Purchase a license</li>
-        <li>Help out with a one time donation.</li>
-      </ul>
-      
-    <p class="actionlinks">
-      <a href="http://quickfolders.org/donate.html" target=_blank>I want to contribute with a one time donation</a>
-    </p>
-    
-
   </body>
 </html>

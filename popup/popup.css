@@ -8,10 +8,13 @@
 .testversion p {
   background-color: rgb(0,0,90); /* dark blue */
   color: yellow !important;
-  font-weight: 500;
+  font-weight: bold;
 }
 
-
+#innerwrapper {
+  padding-left: 10%;
+  padding-right: 10%;
+}
 
 ul.actions {
   
@@ -49,27 +52,58 @@ ul.actions {
   background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
 }
 
+ul.actions *[collapsed=true],
+.actionlinks a[collapsed=true] {
+  visibility: collapse;
+  display :none;
+}
+#purchaseLicenseListItem { /* test */
+/*
+  background-color: lightyellow;
+  color: rgb(120,0,0);
+  */
+}
+
+
 body, body * {
-  background-color: rgb(20,15,05);
-  color: white;
+  background-color: white;
+  color: rgb(20,15,05);
 }
 
-body > p {
-  background-color: rgb(20,15,05);
-  color: white;
+body p, body li {
+  background-color: white;
+  color: rgb(20,15,05);
+  font-size: 12pt;
 }
 
+.versionnumber {
+  color: darkblue;
+}
+
+/* animation */
+#gimmick {
+    display:block;
+    pointer-events:none;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0.13;
+}
 
 
 
 /*
   https://designshack.net/articles/css/inner-shadows-in-css-images-text-and-beyond/
 */
+
+
 h1, h2, h3, h4 {
   /* color: #1a566d; */
   font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
   text-align: center;
   color: rgba(20,30,50,0.6);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   
   text-shadow:
        3px 3px 0 #EEE,
@@ -89,14 +123,14 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 34pt;
+  font-size: 25pt;
 }
 
 h2 {
-  font-size: 30pt;
+  font-size: 20pt;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 20pt;
+  font-size: 16pt;
 }
