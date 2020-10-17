@@ -1492,12 +1492,9 @@ SmartTemplate4.Util = {
     const Ci = Components.interfaces;
     if (!ids) return null;
     try {
-      if (ids.queryElementAt) {
-        return ids.queryElementAt(index, Ci.nsIMsgIdentity);
-      }
-      if (ids.QueryElementAt) {  // Postbox
-        return ids.QueryElementAt(index, Ci.nsIMsgIdentity);
-      }
+      // replace queryElementAt with array[index].QueryInterface!
+      if (ids[index])
+        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
       return null;
     }
     catch(ex) {
