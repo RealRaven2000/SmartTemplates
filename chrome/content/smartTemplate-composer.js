@@ -144,9 +144,7 @@ SmartTemplate4.composer = {
     // fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
 
-  onLoad:  function() 
-  {
-    debugger;
+  onLoad:  function() {
 		const util = SmartTemplate4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
 					isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
