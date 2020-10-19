@@ -8,7 +8,7 @@ addEventListener("click", async (event) => {
     window.close();
 	}
 	if (event.target.id.startsWith("donate")) {
-	  messenger.Utilities.openLinkExternally("https://smarttemplates.quickfolders.org/donate.html");
+	  messenger.Utilities.openLinkExternally("https://smarttemplates.quickfolders.org/contribute.html#donate");
 	}
 });  
 

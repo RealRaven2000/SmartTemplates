@@ -34,6 +34,7 @@ SmartTemplate4.Util = {
 	SupportHomepage:  "https://smarttemplates.quickfolders.org/index.html",
 	BugPage:          "https://smarttemplates.quickfolders.org/bugs.html",
 	LicensePage:      "https://smarttemplates.quickfolders.org/contribute.html",
+  DonationsPage:    "https://smarttemplates.quickfolders.org/contribute.html#donate",
 	VersionPage:      "https://smarttemplates.quickfolders.org/version.html",
 	StationeryHelpPage: "https://smarttemplates.quickfolders.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
