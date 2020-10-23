@@ -16,8 +16,7 @@
       case "install":
         {
           const url = browser.runtime.getURL("popup/installed.html");
-          //await browser.tabs.create({ url });
-          await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
+          await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
         }
         break;
       // see below
@@ -27,7 +26,7 @@
           //await browser.tabs.create({ url });
         let screenH = window.screen.height,
             windowHeight = (screenH > 830) ? 830 : screenH;
-        await browser.windows.create({ url, type: "popup", width: 950, height: windowHeight, });
+        await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
         }
         break;
       // see below

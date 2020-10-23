@@ -186,12 +186,12 @@ SmartTemplate4.composer = {
 (
 function() 
   {
-    debugger;
 		const util = SmartTemplate4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
 					isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
           
 		let txt = "unknown";
+    if (isDebugComposer) debugger;
 		try { txt	= window.document.firstElementChild.getAttribute('windowtype'); }
 		catch(ex) {;}
 		logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
