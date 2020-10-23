@@ -16,12 +16,13 @@ function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
     let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
     
- 
+    const util = window.SmartTemplate4.Util;
+    util.logDebug("onLoad(" + activatedWhileWindowOpen + ")...");
 
 
     //messengeroverlay65
 //------------------------------------
-
+    // clone the write / reply / forward buttons on main toolbar
     WL.injectElements(`
     <toolbar id="mail-bar3">
     
@@ -30,7 +31,7 @@ function onLoad(activatedWhileWindowOpen) {
         is="toolbarbutton-menu-button" 
         label="" 
         insertafter="button-newmsg"
-        oncommand="MsgNewMessage(event)" 
+        oncommand="MsgNewMessage(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>
       
@@ -39,7 +40,7 @@ function onLoad(activatedWhileWindowOpen) {
         is="toolbarbutton-menu-button" 
         label="" 
         insertafter="button-reply"
-        oncommand="MsgReplySender(event)" 
+        oncommand="MsgReplySender(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>
       
@@ -48,7 +49,7 @@ function onLoad(activatedWhileWindowOpen) {
         is="toolbarbutton-menu-button" 
         label="" 
         insertafter="button-replyall"
-        oncommand="MsgReplyToAllRecipients(event)" 
+        oncommand="MsgReplyToAllRecipients(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>      
       
@@ -57,25 +58,64 @@ function onLoad(activatedWhileWindowOpen) {
         is="toolbarbutton-menu-button" 
         label="" 
         insertafter="button-replylist"
-        oncommand="MsgReplyList((event)" 
+        oncommand="MsgReplyList(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>      
-            
-      
-      
- 
       
     </toolbar>
      `);
     
-    /*
-    setTimeout(function() {
-      debugger;
-      let b1 = document.getElementById('button-newmsg'),
-          b2 = document.getElementById('button-newmsg-ST');
-      b1.parentNode.insertBefore(b2,b1.nextSibling);
-    },15000);
-    */
+    // clone the write / reply / forward buttons on header toolbar
+    WL.injectElements(` 
+    <hbox  id="header-view-toolbox">
+    
+      <toolbarbutton 
+        id="hdrSmartReplyButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrSmartReplyButton"
+        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+  
+      <toolbarbutton 
+        id="hdrReplyAllButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrReplyAllButton"
+        oncommand="MsgReplyToAllMessage(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+  
+      <toolbarbutton 
+        id="hdrReplyListButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrReplyListButton"
+        oncommand="MsgReplyToListMessage(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+  
+      <toolbarbutton 
+        id="hdrFollowupButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrFollowupButton"
+        oncommand="MsgReplyGroup(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+  
+      <toolbarbutton 
+        id="hdrForwardButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrForwardButton"
+        oncommand="MsgForwardMessage(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+    
+    </hbox>
+     `);
     
     
 
@@ -121,8 +161,26 @@ function onLoad(activatedWhileWindowOpen) {
 }
 
 function onUnload(isAddOnShutDown) {
-    // remove my own function and restore the original
- 
-
+  const util = window.SmartTemplate4.Util;
+  util.logDebug("onUnload(" + isAddOnShutDown + ")...");
+  // remove my own function and restore the original
+  function removeElements(list) {
+    for (let b=0; b<list.length; b++) {
+      let id = list[b],
+          el = document.getElementById(id);
+      if(el)
+        el.remove()
+    }
+  }
+  util.logDebug("Remove main toolbar elements...");
+  let mainButtons=["button-newmsg-ST", "button-reply-ST", "button-replyall-ST", "button-replylist-ST"];
+  removeElements(mainButtons);
+  
+  util.logDebug("Remove header toolbar elements...");
+  let hrBtns = ["hdrSmartReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST", "hdrForwardButton-ST",
+                "hdrReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST",
+                "hdrReplyToSenderButton-ST","button-reply-ST","button-replyall-ST", "button-replylist-ST"];
+  removeElements(hrBtns);
+  util.logDebug("onUnload(" + isAddOnShutDown + ") FINISHED");
 }
 
