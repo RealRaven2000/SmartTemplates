@@ -29,7 +29,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         // we check for the license
         isLicensed(forceValidation) {
           let hasLicense =  // (win.quickFilters.Licenser).isValidated;
-            win.SmartTemplate4.Util.hasPremiumLicense(forceValidation);
+            win.SmartTemplate4.Util.hasLicense(forceValidation);
           if (!hasLicense)
             return win.SmartTemplate4.Licenser.isExpired; // if it is expired, we say it is still "licensed" for the purposes of this api!
           return hasLicense;
@@ -40,7 +40,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         LicenseIsProUser() {
-          return  win.SmartTemplate4.Util.hasPremiumLicense(false);
+          return  win.SmartTemplate4.Util.hasLicense(false);
         },
 
         getAddonVersion: function() {
