@@ -639,7 +639,7 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
 	// find menupopup in button's childNodes. If there is no menupopup, then append a new one.
-	getPopup: function (buttonName, parent) {
+	getPopup: function (buttonName, parent = null) {
 		let doc = document,
 				element;
 		if (parent) {
@@ -714,45 +714,43 @@ SmartTemplate4.fileTemplates = {
     function insertMenuTb78(popupId, btnId) {
       const fT = SmartTemplate4.fileTemplates; 
       let theMsgPopup = document.getElementById(popupId);
-      if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
-        let btn = document.getElementById(btnId),
-            originalBtn = null;
-        if (btn) {
-          theMsgPopup = fT.getPopup(btn.id); 
-          if (theMsgPopup && !theMsgPopup.id) {
-            theMsgPopup.id=popupId;
-            btn.type = "menu-button";
-            let oldCommand=btn.command;
-            btn.removeAttribute("command");
-            //btn.observes=oldCommand;
-            // theMsgPopup.setAttribute("is", "folder-menupopup");
-            //btn.setAttribute("is", "toolbarbutton-menu-button");
-            // attach the menupopup
-            btn.appendChild(theMsgPopup);
-            //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
-            
-            // hide the main button, add negative margin using te class STfakePopupBtn:
-            btn.firstChild.classList.add("STfakePopupBtn");
+      try {
+        if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
+          let btn = document.getElementById(btnId),
+              originalBtn = null;
+          if (btn) {
+            theMsgPopup = fT.getPopup(btn.id); 
+            // TEST TEST TB78
+            if (theMsgPopup.id) debugger;
+            if (theMsgPopup && !theMsgPopup.id) {
+              theMsgPopup.id=popupId;
+              btn.type = "menu-button";
+              // let oldCommand=btn.command;
+              // btn.removeAttribute("command");
+              // btn.observes=oldCommand;
+              // theMsgPopup.setAttribute("is", "folder-menupopup");
+              // btn.setAttribute("is", "toolbarbutton-menu-button");
+              // attach the menupopup
+              btn.appendChild(theMsgPopup);
+              //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
+              
+              // hide the main button, add negative margin using te class STfakePopupBtn:
+              btn.firstChild.classList.add("STfakePopupBtn");
+            }
+            let originId = btn.getAttribute("insertafter");
+            originalBtn = document.getElementById(originId);
           }
-          let originId = btn.getAttribute("insertafter");
-          originalBtn = document.getElementById(originId);
-        }
-        // only show if the "original button" actually exists / is shown on toolbar.
-        if (originalBtn) {
-          btn.hidden = originalBtn.hidden || false;
-          // btn.setAttribute("hidden", originalBtn.getAttribute("hidden"));
-          
-          if (originalBtn.collapsed)
-            btn.collapsed=true;
-          else {
-            btn.collapsed=false;
+          // only show if the "original button" actually exists / is shown on toolbar.
+          if (originalBtn) {
+            btn.hidden = originalBtn.hidden || false;
+            // btn.setAttribute("hidden", originalBtn.getAttribute("hidden"));
             // move to the correct position!
             originalBtn.parentNode.insertBefore(btn, originalBtn.nextSibling);                
-            
           }
         }
-        else
-           btn.collapsed=true;
+      }
+      catch(ex) {
+        util.logException("insertMenuTb78(" + popupId + ", " + btnId + ")", ex);
       }
       return theMsgPopup;
     }
@@ -875,11 +873,12 @@ SmartTemplate4.fileTemplates = {
 						
 						// 4.b) (header) reply entries     -------------------- 
             let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
-                        "hdrReplyToSenderButton","button-reply","button-replyall", "button-replylist"];
+                        "hdrReplyToSenderButton"]; // ,"button-reply","button-replyall", "button-replylist"
             for (let b=0; b<hrBtns.length; b++) {
               let id = hrBtns[b],
                   fakeId = id + "-ST",
-                  theBtn = document.getElementById(id);
+                  theBtn = document.getElementById(id),
+                  hdrReplyPopup;
                   
               if(!theBtn) {
                 logDebug ("Omitting button: " + id)
@@ -887,42 +886,50 @@ SmartTemplate4.fileTemplates = {
               }
               if (theBtn && theBtn.parentNode.id == 'hdrSmartReplyButton') { // skip these and deal with them directly
                 if (prefs.isDebugOption("fileTemplates.menus")) debugger;
-                replyPopup = fT.getPopup(id, null);
+                hdrReplyPopup = fT.getPopup(id);
               }
               else {
-                replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
+                hdrReplyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
               }
-              if (needsConfig(replyPopup)) {
-                let btn = replyPopup.parentNode;
-                debugger; // test test test
-                if (!replyPopup.id) {
-                  replyPopup.id='button-replyMsgPopup' + b; // make unique
-                  // attach the menupopup
-                  insertMenuTb78(replyPopup.id, fakeId);   // we need to inject one button  with WL for each!
-                  // btn.insertBefore(replyPopup, btn.firstChild);
+              if (needsConfig(hdrReplyPopup)) {
+                let btn = hdrReplyPopup.parentNode;
+                if (!hdrReplyPopup.id) {
+                  hdrReplyPopup.id='button-hdrReplyPopup' + b; // make unique
+                  // btn.insertBefore(hdrReplyPopup, btn.firstChild);
                 }
-                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+                // attach the menupopup
+                if (!insertMenuTb78(hdrReplyPopup.id, fakeId))
+                  logDebug("insertMenuTb78(" + hdrReplyPopup.id + ") failed!");
+                   // we need to inject one button  with WL for each!
+                fT.configureMenu(fT.Entries.templatesRsp, hdrReplyPopup, "rsp");
               }
-              if(!replyPopup) logDebug("not found: " + id);            
+              if(!hdrReplyPopup) logDebug("not found: " + id);            
             }
             
             // 4.c) smart reply button - submenus! parent is
             let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
             for (let b=0; b<smartSM.length; b++) {
               let id = smartSM[b],
-                  fakeId = id + "-ST";
-              replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
-              if (needsConfig(replyPopup)) {
-                let btn = replyPopup.parentNode;
-                if (!replyPopup.id) {
-                  replyPopup.id='button-smartReplyMsgPopup' + b; // make unique
-                  // attach the menupopup
-                  // btn.insertBefore(replyPopup, btn.firstChild);
-                  insertMenuTb78(replyPopup.id, fakeId); // we need to inject one button  with WL for each!
-                }
-                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+                  fakeId = id + "-ST",
+                  theBtn = document.getElementById(id),
+                  hdrReplyAllPopup;
+                  
+              if(!theBtn) {
+                logDebug ("Omitting button: " + id)
+                continue;
               }
-              if(!replyPopup) {
+              hdrReplyAllPopup = fT.getPopup(id); // 2nd param 'headerToolbox' compactHeader support
+              if (needsConfig(hdrReplyAllPopup)) {
+                let btn = hdrReplyAllPopup.parentNode;
+                if (!hdrReplyAllPopup.id) {
+                  hdrReplyAllPopup.id='button-smartReplyMsgPopup' + b; // make unique
+                }
+                // btn.insertBefore(replyPopup, btn.firstChild);
+                if (!insertMenuTb78(hdrReplyAllPopup.id, fakeId)) // we need to inject one button  with WL for each!
+                  logDebug("insertMenuTb78(" + hdrReplyAllPopup.id + ") failed!");
+                fT.configureMenu(fT.Entries.templatesRsp, hdrReplyAllPopup, "rsp");
+              }
+              if(!hdrReplyAllPopup) {
                 logDebug("not found: " + id);
               }
             }
@@ -934,25 +941,30 @@ SmartTemplate4.fileTemplates = {
             for (let b=0; b<hfBtns.length; b++) {
               let id = hfBtns[b],
                   fakeId = id + "-ST",
-                  theBtn = document.getElementById(id);
+                  theBtn = document.getElementById(id),
+                  hdrFwdMsgPopup;
               if(!theBtn) {
                 logDebug ("Omitting button: " + id)
                 continue;
               }
               
               if (prefs.isDebugOption("fileTemplates.menus")) debugger;
-              fwdMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 'hdrDualForwardButton'
-              if (needsConfig(fwdMsgPopup)) {
-                let btn = fwdMsgPopup.parentNode;
+              hdrFwdMsgPopup = fT.getPopup(id); // end param 'headerToolbox' compactHeader support 'hdrDualForwardButton'
+              if (needsConfig(hdrFwdMsgPopup)) {
+                let btn = hdrFwdMsgPopup.parentNode;
                 btn.type = "menu-button";
-                fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+                fT.configureMenu(fT.Entries.templatesFwd, hdrFwdMsgPopup, "fwd");
+                if (!hdrFwdMsgPopup.id) {
+                  hdrFwdMsgPopup.id='button-fwdMsgPopup' + b; // make unique
+                }
                 
-                insertMenuTb78(replyPopup.id, fakeId); // we need to inject one button with WL for each! Then add a popup button element
-                // btn.insertBefore(fwdMsgPopup, btn.firstChild);
-                logDebug("added fwdMsgPopup to: " + id);
+                if (!insertMenuTb78(hdrFwdMsgPopup.id, fakeId))
+                  logDebug("insertMenuTb78(" + hdrFwdMsgPopup.id + ") failed!"); // we need to inject one button with WL for each! Then add a popup button element
+                // btn.insertBefore(hdrFwdMsgPopup, btn.firstChild);
+                logDebug("added hdrFwdMsgPopup to: " + id);
 
               }
-              if(!fwdMsgPopup) logDebug("not found: " + id);
+              if (!hdrFwdMsgPopup) logDebug("not found: " + id);
             }
 
 					}

@@ -46,6 +46,15 @@ function onLoad(activatedWhileWindowOpen) {
       </toolbarbutton>
       
       <toolbarbutton 
+        id="button-replylist-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="button-replylist"
+        oncommand="MsgReplyList(event);" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+      
+      <toolbarbutton 
         id="button-replyall-ST" 
         is="toolbarbutton-menu-button" 
         label="" 
@@ -53,15 +62,7 @@ function onLoad(activatedWhileWindowOpen) {
         oncommand="MsgReplyToAllRecipients(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>      
-      
-      <toolbarbutton 
-        id="button-replylist-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="button-replylist"
-        oncommand="MsgReplyList(event);" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>      
+
       
     </toolbar>
      `);
@@ -80,17 +81,6 @@ function onLoad(activatedWhileWindowOpen) {
         class= "toolbarbutton-1">
       </toolbarbutton>
     
-<!--    
-      <toolbarbutton 
-        id="hdrSmartReplyButton-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="hdrSmartReplyButton"
-        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>
--->
-  
       <toolbarbutton 
         id="hdrReplyAllButton-ST" 
         is="toolbarbutton-menu-button" 
@@ -126,7 +116,17 @@ function onLoad(activatedWhileWindowOpen) {
         oncommand="MsgForwardMessage(event); RestoreFocusAfterHdrButton();" 
         class= "toolbarbutton-1">
       </toolbarbutton>
-    
+      
+<!--    
+      <toolbarbutton 
+        id="hdrSmartReplyButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrSmartReplyButton"
+        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+-->    
     </hbox>
      `);
     

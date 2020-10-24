@@ -1143,8 +1143,8 @@ var SmartTemplate4 = {
       const util = SmartTemplate4.Util;
       util.logDebug("onEndHeaders");
       let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
-                  "hdrReplyToSenderButton","button-reply","button-replyall", "button-replylist",
-                  "hdrForwardButton","hdrDualForwardButton","button-forward"];
+                  "hdrReplyToSenderButton", "hdrForwardButton","hdrDualForwardButton"];
+                  // ,"button-reply","button-replyall", "button-replylist", "button-forward" // are these from CompactHeaders?
       for (let b=0; b<hrBtns.length; b++) {
         let id = hrBtns[b],
             fakeId = id + "-ST",
