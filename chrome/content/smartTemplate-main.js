@@ -934,7 +934,7 @@ var SmartTemplate4 = {
 				root.setAttribute("smartTemplateInserted","true");
 		}
 		util.logDebugOptional('stationery', 'notifyComposeBodyReady() ended.');
-},
+  },
 
 	// -------------------------------------------------------------------
 	// A handler to switch identity
@@ -1063,6 +1063,7 @@ var SmartTemplate4 = {
 
 
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
+    
 	} ,
 	
 	setStatusIconMode: function setStatusIconMode(elem) {
@@ -1110,11 +1111,58 @@ var SmartTemplate4 = {
 		}
 	} ,
 
-	startUp: function startUp() {
-		let v = SmartTemplate4.Util.VersionProxy();
+	startUp: function ST_startUp() {
+    const util = SmartTemplate4.Util;
+		let v = util.VersionProxy();
+
+    //  a hack for the status bar icon:	
+    window.setTimeout(function() {
+      if (window.document.URL.endsWith("messenger.xhtml"))
+          window.SmartTemplate4.updateStatusBar("default");
+    }, 2000);
+    
+    gMessageListeners.push(SmartTemplate4.messageListener);
+    util.logDebug("startUp complete");
 	} ,
+  
+  shutDown: function ST_shutDown() {
+    const util = SmartTemplate4.Util;
+    gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener);
+    util.logDebug("shutDown complete");
+  } ,
 	
-	signatureDelimiter:  '-- <br>'
+	signatureDelimiter:  '-- <br>',
+  
+  // this listener is in charge of all dynamic changes (hiding / showing buttons) in the header toolbar
+  // see: onEndHeaders.
+  messageListener : {
+    onStartHeaders() {
+      
+    },
+    onEndHeaders() {
+      const util = SmartTemplate4.Util;
+      util.logDebug("onEndHeaders");
+      let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
+                  "hdrReplyToSenderButton","button-reply","button-replyall", "button-replylist",
+                  "hdrForwardButton","hdrDualForwardButton","button-forward"];
+      for (let b=0; b<hrBtns.length; b++) {
+        let id = hrBtns[b],
+            fakeId = id + "-ST",
+            theBtn = document.getElementById(id);
+        if(!theBtn) continue;
+        let btn = document.getElementById(fakeId); // unneeded "fake" buttons need to be hidden
+        if(!btn) continue;
+        btn.hidden = theBtn.hidden || false;
+        if (btn.hidden) {
+          util.logDebug("Hiding button: " + fakeId);
+        }
+      }
+      
+    },
+    beforeStartHeaders() {
+      return true;
+    }
+  }
 
 };  // Smarttemplate4
 

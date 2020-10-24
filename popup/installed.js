@@ -19,7 +19,6 @@ addEventListener("click", async (event) => {
           hoursWorked = 250;
     const mxUtilties = messenger.Utilities;
 
-    console.log("load event install case.");
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
@@ -32,8 +31,6 @@ addEventListener("click", async (event) => {
     
     let thanksInfo = document.getElementById('thanks-for-installing-intro');
     if (thanksInfo) {
-      console.log("thanksInfo = v v v ");
-      console.log(thanksInfo);
       thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-installing-intro", addonName);
     }
     

@@ -714,7 +714,7 @@ SmartTemplate4.fileTemplates = {
     function insertMenuTb78(popupId, btnId) {
       const fT = SmartTemplate4.fileTemplates; 
       let theMsgPopup = document.getElementById(popupId);
-      if (!theMsgPopup) {
+      if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
         let btn = document.getElementById(btnId),
             originalBtn = null;
         if (btn) {
@@ -725,7 +725,7 @@ SmartTemplate4.fileTemplates = {
             let oldCommand=btn.command;
             btn.removeAttribute("command");
             //btn.observes=oldCommand;
-            theMsgPopup.setAttribute("is", "folder-menupopup");
+            // theMsgPopup.setAttribute("is", "folder-menupopup");
             //btn.setAttribute("is", "toolbarbutton-menu-button");
             // attach the menupopup
             btn.appendChild(theMsgPopup);
@@ -756,8 +756,7 @@ SmartTemplate4.fileTemplates = {
       }
       return theMsgPopup;
     }
-    
-    
+        
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
@@ -861,7 +860,7 @@ SmartTemplate4.fileTemplates = {
 						// 4.a) (header) write entries --------------------
             let hwBtns=['button-newmsg'];
             for (let b=0; b<hwBtns.length; b++) {
-              let id=hwBtns[b];
+              let id = hwBtns[b];
               if (prefs.isDebugOption("fileTemplates.menus")) debugger;
               newMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 
               if (needsConfig(newMsgPopup)) {
@@ -879,6 +878,7 @@ SmartTemplate4.fileTemplates = {
                         "hdrReplyToSenderButton","button-reply","button-replyall", "button-replylist"];
             for (let b=0; b<hrBtns.length; b++) {
               let id = hrBtns[b],
+                  fakeId = id + "-ST",
                   theBtn = document.getElementById(id);
                   
               if(!theBtn) {
@@ -894,11 +894,11 @@ SmartTemplate4.fileTemplates = {
               }
               if (needsConfig(replyPopup)) {
                 let btn = replyPopup.parentNode;
+                debugger; // test test test
                 if (!replyPopup.id) {
-                  replyPopup.id='button-replyMsgPopup'+b;
-                  btn.type = "menu-button";
+                  replyPopup.id='button-replyMsgPopup' + b; // make unique
                   // attach the menupopup
-                  insertMenuTb78(replyPopup.id, replyPopup.id + '-ST');   // we need to inject one button  with WL for each!
+                  insertMenuTb78(replyPopup.id, fakeId);   // we need to inject one button  with WL for each!
                   // btn.insertBefore(replyPopup, btn.firstChild);
                 }
                 fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
@@ -909,16 +909,16 @@ SmartTemplate4.fileTemplates = {
             // 4.c) smart reply button - submenus! parent is
             let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
             for (let b=0; b<smartSM.length; b++) {
-              let id = smartSM[b];
+              let id = smartSM[b],
+                  fakeId = id + "-ST";
               replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
               if (needsConfig(replyPopup)) {
                 let btn = replyPopup.parentNode;
                 if (!replyPopup.id) {
-                  replyPopup.id='button-replyMsgPopup'+b;
-                  btn.type = "menu-button";
+                  replyPopup.id='button-smartReplyMsgPopup' + b; // make unique
                   // attach the menupopup
                   // btn.insertBefore(replyPopup, btn.firstChild);
-                  insertMenuTb78(replyPopup.id, replyPopup.id + '-ST'); // we need to inject one button  with WL for each!
+                  insertMenuTb78(replyPopup.id, fakeId); // we need to inject one button  with WL for each!
                 }
                 fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
               }
@@ -933,6 +933,7 @@ SmartTemplate4.fileTemplates = {
             let hfBtns=['hdrForwardButton','hdrDualForwardButton','button-forward'];
             for (let b=0; b<hfBtns.length; b++) {
               let id = hfBtns[b],
+                  fakeId = id + "-ST",
                   theBtn = document.getElementById(id);
               if(!theBtn) {
                 logDebug ("Omitting button: " + id)
@@ -946,7 +947,7 @@ SmartTemplate4.fileTemplates = {
                 btn.type = "menu-button";
                 fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
                 
-                insertMenuTb78(replyPopup.id, replyPopup.id + '-ST'); // we need to inject one button with WL for each! Then add a popup button element
+                insertMenuTb78(replyPopup.id, fakeId); // we need to inject one button with WL for each! Then add a popup button element
                 // btn.insertBefore(fwdMsgPopup, btn.firstChild);
                 logDebug("added fwdMsgPopup to: " + id);
 

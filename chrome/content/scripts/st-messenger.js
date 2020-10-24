@@ -22,7 +22,8 @@ function onLoad(activatedWhileWindowOpen) {
 
     //messengeroverlay65
 //------------------------------------
-    // clone the write / reply / forward buttons on main toolbar
+    // replicate the write / reply / forward buttons on main toolbar
+    // these are used for the dropdown functionality of file templates in the main toolbar.
     WL.injectElements(`
     <toolbar id="mail-bar3">
     
@@ -65,10 +66,21 @@ function onLoad(activatedWhileWindowOpen) {
     </toolbar>
      `);
     
-    // clone the write / reply / forward buttons on header toolbar
+    // replicate the write / reply / forward buttons on header toolbar
+    // these are used for the dropdown functionality of file templates in the header area.
     WL.injectElements(` 
-    <hbox  id="header-view-toolbox">
+    <hbox id="header-view-toolbar" class="toolbar">
     
+      <toolbarbutton 
+        id="hdrReplyButton-ST" 
+        is="toolbarbutton-menu-button" 
+        label="" 
+        insertafter="hdrReplyButton"
+        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1">
+      </toolbarbutton>
+    
+<!--    
       <toolbarbutton 
         id="hdrSmartReplyButton-ST" 
         is="toolbarbutton-menu-button" 
@@ -77,6 +89,7 @@ function onLoad(activatedWhileWindowOpen) {
         oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
         class= "toolbarbutton-1">
       </toolbarbutton>
+-->
   
       <toolbarbutton 
         id="hdrReplyAllButton-ST" 
@@ -151,18 +164,15 @@ function onLoad(activatedWhileWindowOpen) {
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
 
+    
     window.SmartTemplate4.startUp();
-	
-    window.setTimeout(function() {
-      if (window.document.URL.endsWith("messenger.xhtml"))
-          window.SmartTemplate4.updateStatusBar("default");
-    }, 2000);
 
 }
 
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   util.logDebug("onUnload(" + isAddOnShutDown + ")...");
+  
   // remove my own function and restore the original
   function removeElements(list) {
     for (let b=0; b<list.length; b++) {
@@ -182,5 +192,8 @@ function onUnload(isAddOnShutDown) {
                 "hdrReplyToSenderButton-ST","button-reply-ST","button-replyall-ST", "button-replylist-ST"];
   removeElements(hrBtns);
   util.logDebug("onUnload(" + isAddOnShutDown + ") FINISHED");
+  
+  // clean up all listeners
+  window.SmartTemplate4.shutDown(); 
 }
 
