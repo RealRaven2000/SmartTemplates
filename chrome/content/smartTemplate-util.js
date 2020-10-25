@@ -2869,7 +2869,7 @@ SmartTemplate4.Util.firstRun =
 			setTimeout(
 			  function() {
 					SmartTemplate4.fileTemplates.initMenus(true); // force a reset of menus!!
-				}, 8000
+				}, 500
 			);
       
       util.initTabListener(); // need this for initialising fileTemplate menus in single message window

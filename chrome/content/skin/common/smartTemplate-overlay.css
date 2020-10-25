@@ -6,6 +6,15 @@ toolbarbutton.STfakePopupBtn {
   width: 34px !important;
 }
 
+#header-view-toolbox toolbarbutton.STfakePopupBtn {
+  margin-left: -26px !important;
+  width: 25px !important;
+}
+
+#header-view-toolbox toolbarbutton.smarttemplateHdr[type="menu-button"] {
+  margin-left: 0px;
+}
+
 /* ################################################################################### */
 /* ############################# TOOLBAR BUTTON OVERLAY ############################## */
 /* ################################################################################### */
