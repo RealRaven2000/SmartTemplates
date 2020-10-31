@@ -1618,6 +1618,7 @@ SmartTemplate4.Util = {
 		const util = SmartTemplate4.Util,
 		      Ci = Components.interfaces,
 		      Cc = Components.classes;
+    if (!nodeList) nodeList = []; // create a dummy node list for now.
 		let div = el,
 				st4 = div.getAttribute('st4variable'),
 				alreadyResolved = (el.className == 'resolved'), // for removing _all_ smarttemplate divs
@@ -1647,11 +1648,13 @@ SmartTemplate4.Util = {
 					generalFunction = 'dateshort';
 				if (generalFunction=='identity')
 					generalFunction = 'from';
+        
+        let composeDetails = GetComposeDetails(); // Tb78
 				switch(generalFunction) {
 					case 'subject':
-						let sub = GetMsgSubjectElement();
-						if (sub.value) {
-							el.innerText = sub.value;
+						let sub = composeDetails.subject; // GetMsgSubjectElement();
+						if (sub) {
+							el.innerText = sub;
 							resolved = true;
 						}
 						break;
@@ -1659,24 +1662,16 @@ SmartTemplate4.Util = {
 					case 'to':    // fall through
 					case 'cc':    // fall through
 					case 'bcc':
-						let aw = getAddressingWidget(),
-								identityList = GetMsgIdentityElement(),
-								messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+            
+						let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 								charset = null,
 								addressValue; // messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
 						
 						if(generalFunction=='from')
-							addressValue = identityList.value;
+							addressValue = composeDetails[generalFunction];
 						else {
-              // first column of widget:  addr_to, addr_bss, addr_bcc
-              for (let i=1; i<aw.getRowCount(); i++) {
-                let id = 'addressCol1#' + i;
-                if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
-                  id = 'addressCol2#' + i;
-                  addressValue = document.getElementById(id).value;
-                  break;
-                }
-              }
+              // should be a comma separated scrint in case of multiple to / cc / bcc values
+              addressValue = composeDetails[generalFunction];
 						}
 						
 						if (addressValue) {
@@ -1701,7 +1696,11 @@ SmartTemplate4.Util = {
 						resolved = true;
 						break;
 					default:
-						alert('NOT SUPPORTED: Replace deferred smartTemplate variable: %' + generalFunction + '%');
+            if (composeDetails[generalFunction]) {
+              el.innerText = composeDetails[generalFunction];
+            }
+            else
+              alert('NOT SUPPORTED: Replace deferred smartTemplate variable: %' + generalFunction + '%');
 						break;
 				}
 			}
