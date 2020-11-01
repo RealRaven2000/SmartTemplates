@@ -25,6 +25,8 @@
 #compose-toolbox > toolbar[brighttext] #smarttemplate4-changeTemplate.toolbarbutton-1 {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/select-template.png");
   -moz-image-region: rect(0px 24px 24px 0px);
+  max-height: 18px;
+  height: 18px;
 }
 
 

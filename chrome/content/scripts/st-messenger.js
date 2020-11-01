@@ -59,7 +59,7 @@ function onLoad(activatedWhileWindowOpen) {
         is="toolbarbutton-menu-button" 
         label="" 
         insertafter="button-replylist"
-        oncommand="MsgReplyList(event);" 
+        oncommand="MsgReplyToListMessage(event);" 
         class= "toolbarbutton-1">
       </toolbarbutton>
       
@@ -194,7 +194,7 @@ function onUnload(isAddOnShutDown) {
   util.logDebug("Remove header toolbar elements...");
   let hrBtns = ["hdrSmartReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST", "hdrForwardButton-ST",
                 "hdrReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST",
-                "hdrReplyToSenderButton-ST","button-reply-ST","button-replyall-ST", "button-replylist-ST"];
+                "hdrReplyToSenderButton-ST"];
   removeElements(hrBtns);
   util.logDebug("onUnload(" + isAddOnShutDown + ") FINISHED");
   

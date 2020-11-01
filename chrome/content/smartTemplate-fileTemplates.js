@@ -818,12 +818,19 @@ SmartTemplate4.fileTemplates = {
 					}
 					
 					// 2b) reply all entries     --------------------
-					let replyAllPopup // = fT.getPopup("button-replyall"); 
-            = insertMenuTb78('button-replyAllPopup', 'button-replyall-ST');
+					let replyAllPopup = // = fT.getPopup("button-replyall"); 
+            insertMenuTb78('button-replyAllPopup', 'button-replyall-ST');
 					if (replyAllPopup && !isInHeaderArea(replyPopup)) {
             if (needsConfig(replyAllPopup))
               fT.configureMenu(fT.Entries.templatesRsp, replyAllPopup, "rsp");
 					}
+          
+          // 2c) reply to list
+          let replyListPopup =
+            insertMenuTb78('button-replyListPopup', 'button-replylist-ST');
+          if (replyListPopup && needsConfig(replyListPopup)) {
+            fT.configureMenu(fT.Entries.templatesRsp, replyListPopup, "rsp");
+          }
 					
 					// 3) forwarding entries --------------------
 					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
