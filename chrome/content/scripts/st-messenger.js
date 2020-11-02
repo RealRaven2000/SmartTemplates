@@ -5,6 +5,7 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
 
+Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
@@ -21,55 +22,10 @@ function onLoad(activatedWhileWindowOpen) {
 
 
     //messengeroverlay65
-//------------------------------------
-    // replicate the write / reply / forward buttons on main toolbar
-    // these are used for the dropdown functionality of file templates in the main toolbar.
-    WL.injectElements(`
-    <toolbar id="mail-bar3">
-    
-      <toolbarbutton 
-        id="button-newmsg-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="button-newmsg"
-        oncommand="MsgNewMessage(event);" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>
-      
-      <toolbarbutton 
-        id="button-reply-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="button-reply"
-        oncommand="MsgReplySender(event);" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>
-      
-      <toolbarbutton 
-        id="button-replyall-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="button-replyall"
-        oncommand="MsgReplyToAllRecipients(event);" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>      
-
-      <toolbarbutton 
-        id="button-replylist-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="button-replylist"
-        oncommand="MsgReplyToListMessage(event);" 
-        class= "toolbarbutton-1">
-      </toolbarbutton>
-      
-      
-    </toolbar>
-     `);
-    
+//------------------------------------   
     // replicate the write / reply / forward buttons on header toolbar
     // these are used for the dropdown functionality of file templates in the header area.
-    WL.injectElements(` 
+/*    WL.injectElements(` 
     <hbox id="header-view-toolbar" class="toolbar">
     
       <toolbarbutton 
@@ -137,7 +93,7 @@ function onLoad(activatedWhileWindowOpen) {
     </hbox>
      `);
     
-    
+    */
 
     WL.injectElements(`
     
@@ -179,25 +135,34 @@ function onLoad(activatedWhileWindowOpen) {
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   util.logDebug("onUnload(" + isAddOnShutDown + ")...");
-  
-  // remove my own function and restore the original
-  function removeElements(list) {
-    for (let b=0; b<list.length; b++) {
-      let id = list[b],
-          el = document.getElementById(id);
-      if(el)
-        el.remove()
-    }
+    
+  util.logDebug("Remove added custom UI elements ...");
+  let elements = Array.from(window.document.querySelectorAll('[s4uiElement]'));
+  for (let element of elements) {
+    element.remove();
   }
-  util.logDebug("Remove main toolbar elements...");
-  let mainButtons=["button-newmsg-ST", "button-reply-ST", "button-replyall-ST", "button-replylist-ST"];
-  removeElements(mainButtons);
+        
+  util.logDebug("Cleanup/Downgrade toolbar buttons ...");
+  let manipulatedButtons = [
+    "button-newmsg",
+    "button-reply",
+    "button-replyall",
+    "button-replylist",
+    "hdrReplyButton",
+    "hdrReplyAllButton",
+    "hdrReplyListButton",
+    "hdrFollowupButton",
+    "hdrReplyToSenderButton"];
   
+  for (let btn of manipulatedButtons) {
+    window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);
+  }
+
   util.logDebug("Remove header toolbar elements...");
-  let hrBtns = ["hdrSmartReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST", "hdrForwardButton-ST",
+  /*let hrBtns = ["hdrSmartReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST", "hdrForwardButton-ST",
                 "hdrReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST",
-                "hdrReplyToSenderButton-ST"];
-  removeElements(hrBtns);
+                "hdrReplyToSenderButton-ST"]; */
+  
   util.logDebug("onUnload(" + isAddOnShutDown + ") FINISHED");
   
   // clean up all listeners
