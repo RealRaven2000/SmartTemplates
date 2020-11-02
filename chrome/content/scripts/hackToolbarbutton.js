@@ -2,40 +2,47 @@ var hackToolbarbutton = {
   
   // enable/disable the default action of the button
   allowDefaultAction(window, buttonId, allow = true) {
-    window.document.getElementById(`${buttonId}-inner-button`).setAttribute("allowevents", allow ? "true" : "false")
+    let innerButton = window.document.getElementById(`${buttonId}-inner-button`);
+    if (innerButton) {
+      innerButton.setAttribute("allowevents", allow ? "true" : "false");
+    }
   },
   
   //check if the button still contains menuitems and downgrade the button if that is not the case anymore
   cleanupIfNeeded(window, buttonId) {
     let button = window.document.getElementById(buttonId);
-    let popup = button.querySelector("menupopup");
-    if (button && popup) {
-      let menuitems = popup.querySelectorAll("menuitem");
-      if (menuitems.length == 0) {
-        popup.remove();
-        button.removeAttribute("is");
-        button.removeAttribute("type");
-        button.removeAttribute("wantdropmarker");
+    if (button) {
+      let popup = button.querySelector("menupopup");
+      if (popup) {
+        let menuitems = popup.querySelectorAll("menuitem");
+        if (menuitems.length == 0) {
+          popup.remove();
+          button.removeAttribute("is");
+          button.removeAttribute("type");
+          button.removeAttribute("wantdropmarker");
 
-        let toolbarbutton = button.querySelector("toolbarbutton");
-        if (toolbarbutton) {
-          toolbarbutton.remove();
+          let toolbarbutton = button.querySelector("toolbarbutton");
+          if (toolbarbutton) {
+            toolbarbutton.remove();
+          }
+          let dropmarker = button.querySelector("dropmarker");
+          if (dropmarker) {
+            dropmarker.remove();
+          }
+          
+          button.querySelector("label").hidden = false;
+          button.querySelector("image").hidden = false;        
         }
-        let dropmarker = button.querySelector("dropmarker");
-        if (dropmarker) {
-          dropmarker.remove();
-        }
-        
-        button.querySelector("label").hidden = false;
-        button.querySelector("image").hidden = false;        
       }
-    }    
+    }      
   },
   
   // returns the menupopup element of the button, 
   // check if the button needs to converted beforehand and adds the menupopup element if needed first
-  getMenupopupElement(window, buttonId) {
+  getMenupopupElement(window, buttonId) {   
     let button = window.document.getElementById(buttonId);
+    if (!button) 
+      return null;
 
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
@@ -75,7 +82,9 @@ var hackToolbarbutton = {
   },
   
   addMenuitem(window, buttonId, menuitemId, attributes = null) {
-    let popup = this.getMenupopupElement(window, buttonId);
+    let popup = this.getMenupopupElement(window, buttonId); 
+    if (!popup)
+      return null;
     
     // add menuitem
     let menuitem = window.document.createXULElement("menuitem");
