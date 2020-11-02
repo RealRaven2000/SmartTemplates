@@ -505,8 +505,8 @@ SmartTemplate4.fileTemplates = {
           prefs = SmartTemplate4.Preferences,
 					maxFreeItems = 3,
 					isLicensed = util.hasLicense(false);
-		let parent = msgPopup.parentNode, 
-        singleParentWindow = null;
+					let parent = msgPopup.parentNode, 
+					singleParentWindow = null;
     try {
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
       if (window == singleM)
@@ -535,6 +535,7 @@ SmartTemplate4.fileTemplates = {
       /* insert one item for each listed html template */
 			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
 			menuitem.setAttribute("label", theTemplate.label);
+			menuitem.setAttribute("s4uiElement", "true");
 			menuitem.setAttribute("st4composeType", composeType);
 			menuitem.classList.add("st4templateEntry");
 			menuitem.classList.add("menuitem-iconic");
@@ -582,9 +583,9 @@ SmartTemplate4.fileTemplates = {
     */
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
-		    menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplate⁴ file template…");
-		
+		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplate⁴ file template…");		
 		menuitem.setAttribute("label", menuTitle);
+		menuitem.setAttribute("s4uiElement", "true");
 		menuitem.setAttribute("st4composeType", composeType);
 		menuitem.classList.add("st4templatePicker");
 		menuitem.classList.add("menuitem-iconic");
@@ -608,6 +609,7 @@ SmartTemplate4.fileTemplates = {
       menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
       menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
       menuitem.setAttribute("label", menuTitle);
+			menuitem.setAttribute("s4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
       menuitem.classList.add("menuitem-iconic");
       menuitem.classList.add("st4templateConfig");
@@ -816,49 +818,34 @@ SmartTemplate4.fileTemplates = {
 					} catch (ex) {;}
           
 					// 1) write new entries --------------------
-          let newMsgPopup = insertMenuTb78('button-newMsgPopup', 'button-newmsg-ST');
+					let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
 					if (needsConfig(newMsgPopup)) {
 						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
-          }
-					
-					// 2a) reply entries     --------------------
-					//    calling getPopup() - if it doesn't exist, the popup will be automatically created & appended to button
-					let replyPopup = // fT.getPopup("button-reply"); 
-            insertMenuTb78('button-replyMsgPopup', 'button-reply-ST');
-          
-					if (replyPopup && !isInHeaderArea(replyPopup)) {
-            if (needsConfig(replyPopup))
-						  fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
-					// 2b) reply all entries     --------------------
-					let replyAllPopup = // = fT.getPopup("button-replyall"); 
-            insertMenuTb78('button-replyAllPopup', 'button-replyall-ST');
-					if (replyAllPopup && !isInHeaderArea(replyPopup)) {
-            if (needsConfig(replyAllPopup))
-              fT.configureMenu(fT.Entries.templatesRsp, replyAllPopup, "rsp");
+					// 2) reply entries     --------------------
+					let rspBtns=["button-reply","button-replyall", "button-replylist"];
+					for (let rspBtn of rspBtns) {
+						//    calling getPopupElement() - if it doesn't exist, the popup will be automatically created & appended to button
+						let replyPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, rspBtn);
+						if (replyPopup && !isInHeaderArea(replyPopup) && needsConfig(replyPopup)) {
+								fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+						}
 					}
-          
-          // 2c) reply to list
-          let replyListPopup =
-            insertMenuTb78('button-replyListPopup', 'button-replylist-ST');
-          if (replyListPopup && needsConfig(replyListPopup)) {
-            fT.configureMenu(fT.Entries.templatesRsp, replyListPopup, "rsp");
-          }
-					
+/*					
 					// 3) forwarding entries --------------------
 					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
 					if (needsConfig(fwdMsgPopup) && !isInHeaderArea(fwdMsgPopup)) {
             fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
           }
-					
+*/					
 					// 4) ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
 						logDebug("=============================\n"+
                      "headerToolbox found; adding its template file menus…");
             
-						// 4.a) (header) write entries --------------------
+/*						// 4.a) (header) write entries --------------------
             let hwBtns=['button-newmsg'];
             for (let b=0; b<hwBtns.length; b++) {
               let id = hwBtns[b];
@@ -872,35 +859,18 @@ SmartTemplate4.fileTemplates = {
                 logDebug("added newMsgPopup to: " + id);
               }
               if(!fwdMsgPopup) logDebug("not found: " + id);
-            }             
+            }           */  
 						
 						// 4.b) (header) reply entries     -------------------- 
-            let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
+            let hdrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
                         "hdrReplyToSenderButton"]; // ,"button-reply","button-replyall", "button-replylist"
-            for (let b=0; b<hrBtns.length; b++) {
-              let id = hrBtns[b],
-                  fakeId = id + '-ST',
-                  theBtn = document.getElementById(id);
-                  
-              if(!theBtn) {
-                logDebug ("Omitting button: " + id)
-                continue;
-              }
-              // note hdrReplyListButton is already a toolbarbutton-menu-button!!
-              let popupId = 'button-hdrReplyPopup' + b,
-                  origButton = null;
-              if (id=='hdrReplyListButton') {
-                origButton = document.getElementById(id);
-                // find out clientWidth and clientHeight
-              }
-              let hdrReplyPopup = insertMenuTb78(popupId, fakeId, origButton);
-              if (!hdrReplyPopup)
-                logDebug("insertMenuTb78(" + popupId + ") failed!");
-              if (needsConfig(hdrReplyPopup)) {
-                fT.configureMenu(fT.Entries.templatesRsp, hdrReplyPopup, "rsp");
+            for (let hdrBtn of hdrBtns) {
+							let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
+              if (needsConfig(popup)) {
+                fT.configureMenu(fT.Entries.templatesRsp, popup, "rsp");
               }
             }
-            
+/*
             // 4.c) smart reply button - submenus! parent is
             let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
             for (let b=0; b<smartSM.length; b++) {
@@ -945,7 +915,7 @@ SmartTemplate4.fileTemplates = {
                 fT.configureMenu(fT.Entries.templatesFwd, hdrFwdMsgPopup, "fwd");
               }
             }
-
+*/
 					}
 					else {
 						logDebug("headerToolbox NOT found!");
@@ -1117,7 +1087,7 @@ SmartTemplate4.fileTemplates = {
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
       // we may want to control which of these 2 are triggered (inline or attach), but I guess 
 			// without specifying it will likely be the Thunderbird account defaults
-			util.logDebugOptional("fileTemplates","firing btn.click() …");
+			console.log("fileTemplates","firing btn.click() …");
       if (isSmartReplyBtn) {
         const isAlt = originalEvent.altKey, 
               isCtrl = originalEvent.ctrlKey, 
