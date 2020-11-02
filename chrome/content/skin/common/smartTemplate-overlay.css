@@ -2,17 +2,19 @@
    - this needs to be done per script for correct width
    when button labels are shown this pixel value is just a guess */
 toolbarbutton.STfakePopupBtn {
-  margin-left: -34px !important;
-  width: 34px !important;
+  margin-left: -34px ;
+  width: 34px ;
 }
 
 #header-view-toolbox toolbarbutton.STfakePopupBtn {
-  margin-left: -26px !important;
-  width: 25px !important;
+  margin-left: -26px ;
+  width: 25px ;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 #header-view-toolbox toolbarbutton.smarttemplateHdr[type="menu-button"] {
-  margin-left: 0px;
+  margin-left: 0px !important;
 }
 
 /* ################################################################################### */
@@ -31,8 +33,7 @@ toolbarbutton.STfakePopupBtn {
 }
 
 /* avoid the 'squashed' look in Nuvola */
-toolbar:not([iconsize="small"]) #SmartTemplate4Button image
-{
+toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   width: 24px;
   height: 24px;
 }

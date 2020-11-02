@@ -711,13 +711,26 @@ SmartTemplate4.fileTemplates = {
       return false;
     }
     // use a fake parent button for inserting
-    function insertMenuTb78(popupId, btnId) {
+    // if we pass original btn, check if it is already a toolbarbuttion-menu-button and thus already has a menu
+    function insertMenuTb78(popupId, btnId, originalBtn = null) {
       const fT = SmartTemplate4.fileTemplates; 
-      let theMsgPopup = document.getElementById(popupId);
+      let theMsgPopup = document.getElementById(popupId),
+          originalPopup = null;
       try {
         if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
-          let btn = document.getElementById(btnId),
-              originalBtn = null;
+          if (originalBtn && originalBtn.getAttribute("is")=="toolbarbutton-menu-button") {
+            // already have a menu, find matching childElement
+            for (let m of originalBtn.childNodes) {
+              if (m.tagName == 'menupopup') {
+                // originalPopup = m;
+                return m; // return original popup
+                break;
+              }
+            }
+            
+          }
+          
+          let btn = document.getElementById(btnId);
           if (btn) {
             theMsgPopup = fT.getPopup(btn.id); 
             // TEST TEST TB78
@@ -745,7 +758,8 @@ SmartTemplate4.fileTemplates = {
             btn.hidden = originalBtn.hidden || false;
             // btn.setAttribute("hidden", originalBtn.getAttribute("hidden"));
             // move to the correct position!
-            originalBtn.parentNode.insertBefore(btn, originalBtn.nextSibling);                
+            originalBtn.parentNode.insertBefore(btn, originalBtn.nextSibling);
+            // btn
           }
         }
       }
@@ -872,8 +886,14 @@ SmartTemplate4.fileTemplates = {
                 logDebug ("Omitting button: " + id)
                 continue;
               }
+              // note hdrReplyListButton is already a toolbarbutton-menu-button!!
               let popupId = 'button-hdrReplyPopup' + b,
-                  hdrReplyPopup = insertMenuTb78(popupId, fakeId);
+                  origButton = null;
+              if (id=='hdrReplyListButton') {
+                origButton = document.getElementById(id);
+                // find out clientWidth and clientHeight
+              }
+              let hdrReplyPopup = insertMenuTb78(popupId, fakeId, origButton);
               if (!hdrReplyPopup)
                 logDebug("insertMenuTb78(" + popupId + ") failed!");
               if (needsConfig(hdrReplyPopup)) {

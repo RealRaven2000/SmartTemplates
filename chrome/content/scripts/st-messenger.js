@@ -79,7 +79,7 @@ function onLoad(activatedWhileWindowOpen) {
         label="" 
         insertafter="hdrReplyButton"
         oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
       </toolbarbutton>
     
       <toolbarbutton 
@@ -89,9 +89,11 @@ function onLoad(activatedWhileWindowOpen) {
         label="" 
         insertafter="hdrReplyAllButton"
         oncommand="MsgReplyToAllMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
       </toolbarbutton>
-  
+
+      
+<!--      
       <toolbarbutton 
         id="hdrReplyListButton-ST" 
         is="toolbarbutton-menu-button" 
@@ -99,7 +101,18 @@ function onLoad(activatedWhileWindowOpen) {
         label="" 
         insertafter="hdrReplyListButton"
         oncommand="MsgReplyToListMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
+      </toolbarbutton>
+-->      
+      
+      <toolbarbutton 
+        id="hdrReplyToSenderButton-ST" 
+        is="toolbarbutton-menu-button" 
+        type = "menu-button"
+        label="" 
+        insertafter="hdrReplyToSenderButton"
+        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
       </toolbarbutton>
   
       <toolbarbutton 
@@ -109,7 +122,7 @@ function onLoad(activatedWhileWindowOpen) {
         label="" 
         insertafter="hdrFollowupButton"
         oncommand="MsgReplyGroup(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
       </toolbarbutton>
   
       <toolbarbutton 
@@ -119,19 +132,8 @@ function onLoad(activatedWhileWindowOpen) {
         label="" 
         insertafter="hdrForwardButton"
         oncommand="MsgForwardMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
+        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
       </toolbarbutton>
-      
-<!--    
-      <toolbarbutton 
-        id="hdrSmartReplyButton-ST" 
-        is="toolbarbutton-menu-button" 
-        label="" 
-        insertafter="hdrSmartReplyButton"
-        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr">
-      </toolbarbutton>
--->    
     </hbox>
      `);
     
