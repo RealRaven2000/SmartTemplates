@@ -712,6 +712,7 @@ SmartTemplate4.fileTemplates = {
         return true;
       return false;
     }
+    // obsolete workaround (now replaced with TbSync's hackToolbarbutton script)
     // use a fake parent button for inserting
     // if we pass original btn, check if it is already a toolbarbuttion-menu-button and thus already has a menu
     function insertMenuTb78(popupId, btnId, originalBtn = null) {
@@ -729,7 +730,6 @@ SmartTemplate4.fileTemplates = {
                 break;
               }
             }
-            
           }
           
           let btn = document.getElementById(btnId);
@@ -740,11 +740,6 @@ SmartTemplate4.fileTemplates = {
             if (theMsgPopup && !theMsgPopup.id) {
               theMsgPopup.id = popupId;
               btn.type = "menu-button";
-              // let oldCommand=btn.command;
-              // btn.removeAttribute("command");
-              // btn.observes=oldCommand;
-              // theMsgPopup.setAttribute("is", "folder-menupopup");
-              // btn.setAttribute("is", "toolbarbutton-menu-button");
               // attach the menupopup
               btn.appendChild(theMsgPopup);
               //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
@@ -848,7 +843,6 @@ SmartTemplate4.fileTemplates = {
                 fT.configureMenu(fT.Entries.templatesRsp, popup, "rsp");
               }
             }
-
 						
 						// 4.d) (header) forwarding entries --------------------
 						// what about hdrDualForwardButton => this one was from compactHeader.
