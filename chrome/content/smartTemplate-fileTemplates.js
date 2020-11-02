@@ -1087,7 +1087,7 @@ SmartTemplate4.fileTemplates = {
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
       // we may want to control which of these 2 are triggered (inline or attach), but I guess 
 			// without specifying it will likely be the Thunderbird account defaults
-			console.log("fileTemplates","firing btn.click() …");
+			util.logDebugOptional("fileTemplates","firing btn.click() …");
       if (isSmartReplyBtn) {
         const isAlt = originalEvent.altKey, 
               isCtrl = originalEvent.ctrlKey, 
