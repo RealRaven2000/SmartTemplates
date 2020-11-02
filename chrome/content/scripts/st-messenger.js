@@ -148,11 +148,13 @@ function onUnload(isAddOnShutDown) {
     "button-reply",
     "button-replyall",
     "button-replylist",
+    "button-forward",
     "hdrReplyButton",
     "hdrReplyAllButton",
     "hdrReplyListButton",
     "hdrFollowupButton",
-    "hdrReplyToSenderButton"];
+    "hdrReplyToSenderButton",
+    "hdrForwardButton"];
   
   for (let btn of manipulatedButtons) {
     window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);

@@ -832,35 +832,13 @@ SmartTemplate4.fileTemplates = {
 								fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 						}
 					}
-/*					
-					// 3) forwarding entries --------------------
-					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
-					if (needsConfig(fwdMsgPopup) && !isInHeaderArea(fwdMsgPopup)) {
-            fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
-          }
-*/					
+
 					// 4) ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
 						logDebug("=============================\n"+
                      "headerToolbox found; adding its template file menus…");
             
-/*						// 4.a) (header) write entries --------------------
-            let hwBtns=['button-newmsg'];
-            for (let b=0; b<hwBtns.length; b++) {
-              let id = hwBtns[b];
-              if (prefs.isDebugOption("fileTemplates.menus")) debugger;
-              newMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 
-              if (needsConfig(newMsgPopup)) {
-                let btn = newMsgPopup.parentNode;
-                btn.type = "menu-button";
-                fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "fwd");
-                btn.insertBefore(newMsgPopup, btn.firstChild);
-                logDebug("added newMsgPopup to: " + id);
-              }
-              if(!fwdMsgPopup) logDebug("not found: " + id);
-            }           */  
-						
 						// 4.b) (header) reply entries     -------------------- 
             let hdrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
                         "hdrReplyToSenderButton"]; // ,"button-reply","button-replyall", "button-replylist"
@@ -870,52 +848,17 @@ SmartTemplate4.fileTemplates = {
                 fT.configureMenu(fT.Entries.templatesRsp, popup, "rsp");
               }
             }
-/*
-            // 4.c) smart reply button - submenus! parent is
-            let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
-            for (let b=0; b<smartSM.length; b++) {
-              let id = smartSM[b],
-                  fakeId = id + '-ST',
-                  theBtn = document.getElementById(id);
-                  
-              if(!theBtn) {
-                logDebug ("Omitting button: " + id)
-                continue;
-              }
-              
-              let popupId = 'button-smartReplyMsgPopup' + b,
-                  hdrReplyAllPopup = insertMenuTb78(popupId, fakeId);
-              if (!hdrReplyAllPopup)
-                logDebug("insertMenuTb78(" + popupId + ") failed!");
-              if (needsConfig(hdrReplyAllPopup)) {
-                fT.configureMenu(fT.Entries.templatesRsp, hdrReplyAllPopup, "rsp");
-              }
-            }
 
 						
 						// 4.d) (header) forwarding entries --------------------
-						// what about hdrDualForwardButton ?
-            let hfBtns=['hdrForwardButton','hdrDualForwardButton','button-forward'];
-            for (let b=0; b<hfBtns.length; b++) {
-              let id = hfBtns[b],
-                  fakeId = id + '-ST',
-                  theBtn = document.getElementById(id);
-              
-              if(!theBtn) {
-                logDebug ("Omitting button: " + id)
-                continue;
-              }
-              
-              // hdrFwdMsgPopup = fT.getPopup(id); // end param 'headerToolbox' compactHeader support 'hdrDualForwardButton'
-              let popupId = 'button-fwdMsgPopup' + b,
-                  hdrFwdMsgPopup = insertMenuTb78(popupId, fakeId);
-              if (!hdrFwdMsgPopup)
-                logDebug("insertMenuTb78(" + popupId + ") failed!");
-              if (needsConfig(hdrFwdMsgPopup)) {
-                fT.configureMenu(fT.Entries.templatesFwd, hdrFwdMsgPopup, "fwd");
+						// what about hdrDualForwardButton => this one was from compactHeader.
+            let hfBtns=['hdrForwardButton','button-forward','hdrDualForwardButton'];
+            for (let hdrBtn of hfBtns) {
+              let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
+              if (needsConfig(popup)) {
+                fT.configureMenu(fT.Entries.templatesFwd, popup, "fwd");
               }
             }
-*/
 					}
 					else {
 						logDebug("headerToolbox NOT found!");
@@ -1071,17 +1014,19 @@ SmartTemplate4.fileTemplates = {
 			
 		let popup = menuitem.parentNode,
         isSmartReplyBtn = 
-          (btn.parentElement.id == "hdrSmartReplyButton"); // contains all "smart" buttons
+          (btn.parentElement.id == "hdrSmartReplyButton") ||
+          (btn.id == "button-forward"); // contains all "smart" buttons
         
     if (btn.id=="smarttemplate4-changeTemplate") {  
       // [issue 24] select differente template from composer window
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
     }
-    else if (popup.getAttribute("st4nonNative") 
-			  || btn.id=="button-newmsg"
-			  || btn.id=="button-forward"  
-			  || btn.id=="button-reply"
+    else if (popup.getAttribute("st4configured")
         || isSmartReplyBtn) {
+      //    popup.getAttribute("st4nonNative") 
+			//  || btn.id=="button-newmsg"
+			//  || btn.id=="button-forward"  
+			//  || btn.id=="button-reply"
 			// we need to trigger the button.
 			// in Thunderbird 68 for some reason it is not done on the message header page buttons automatically. 
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
@@ -1121,6 +1066,8 @@ SmartTemplate4.fileTemplates = {
               case "hdrReplyList_ReplyAllSubButton":  // in case they fix it :)
               case "hdrReplySubButton":
               case "hdrReplyList_ReplySubButton":
+              case "button-ForwardAsInlineMenu":
+              case "button-ForwardAsAttachmentMenu":
                 util.logDebugOptional("fileTemplates","Clicking the menu item: " + popupMenuItems[c].id);
                 return popupMenuItems[c].click();
               default:
