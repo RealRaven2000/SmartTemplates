@@ -584,13 +584,6 @@ SmartTemplate4.Settings = {
 		// window.addEventListener('dialogcancel', function () { });
 		this.configExtra2Button();
 		
-		// hide get Stationery button in modern Thunderbird builds. 
-		if (util.versionGreaterOrEqual(util.AppverFull, "61")) {
-			getElement('btnGetStationery').collapsed = true;
-			getElement('spcStationery').collapsed = true;
-		}
-		
-		
 		// Stationery replacement :)
 		SmartTemplate4.fileTemplates.loadCustomMenu(true);
     
