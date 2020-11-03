@@ -73,9 +73,18 @@
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
-
-  // messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
-  // messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
+  
+  
+  
+  /*
+  TbSync "As manipulating Thunderbirds own preference page is probably not going to be possible with 
+          WebExtensions, I also did not add support for that into the WL. 
+          Your own options have to go in your own options dialog."
+    NICE TO HAVE: A panel under Composition & addressing going to 
+  
+    messenger.WindowListener.registerWindow("chrome://messenger/content/am-addressing.xhtml", "chrome/content/scripts/st-am-adressing.js");
+    messenger.WindowListener.registerWindow("chrome://messenger/content/am-identity-edit.xhtml", "chrome/content/scripts/st-am-adressing.js");
+  */
 
  /*
   * Start listening for opened windows. Whenever a window is opened, the registered

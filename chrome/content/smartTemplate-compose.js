@@ -797,7 +797,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (!templateText) return "";
     const flags = SmartTemplate4.PreprocessingFlags;
 
-		let isStationery = flags.isStationery;
+		let isStationery = false;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -1074,12 +1074,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				else
 					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
 				
-				if (!flags.isStationery) {
-					// if %sig% is in Stationery, it is already taken care of in Stationery's handler!!
-					sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
-				}
-				else
-					sigType = flags.sigType; // initialised in notifyComposeBodyReady if tested in stationery
+        sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
 				
 				// if Stationery has %sig(none)% then flags.omitSignature == true
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
@@ -1126,15 +1121,9 @@ SmartTemplate4.classSmartTemplate = function() {
 					case 'reply':
 						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							// stationery has a placeholder for the original quote text.
-							if (
-									(pref.isDeleteHeaders(idKey, st4composeType, false) || flags.isStationery)
-									&&
-									(!flags.isStationery || flags.hasQuotePlaceholder ||
-									 flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) 
-								)
-							{
+							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
 								// when in stationery we only delete the quote header and not all preceding quotes!
-								delReplyHeader(idKey, flags.isStationery);
+								delReplyHeader(idKey, false);
 							}
 							else
 								delReplyHeader(idKey, false, true); // remove just spaces [Bug 26523]
@@ -1143,13 +1132,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
-						if (  (pref.isDeleteHeaders(idKey, st4composeType, false) || flags.isStationery)
-								  &&
-									(!flags.isStationery || flags.hasQuotePlaceholder || 
-									  flags.isStationery && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader'))
-								)
-						{
-							delForwardHeader(idKey, flags.isStationery);
+						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+							delForwardHeader(idKey, false);
 						}
 						break;
 				}
@@ -1167,9 +1151,7 @@ SmartTemplate4.classSmartTemplate = function() {
 						return qd;
 					}
 					// new behavior: always replace the standard quote header [forceReplaceQuoteHeader]
-					if (!flags.isStationery
-					   ||
-						 !flags.hasQuoteHeader && prefs.getMyBoolPref('stationery.forceReplaceQuoteHeader')) {
+					if (true) {
 						let firstQuote = 
 						  (st4composeType=='fwd') ?
 							editor.rootElement.firstChild :
@@ -1230,7 +1212,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		let targetNode = 0,
 		    templateDiv,
 		    // new global settings to deal with [Bug 25084]
-		    breaksAtTop = flags.isStationery ? 0 : prefs.getMyIntPref("breaksAtTop"), // no breaks if Stationery is used!
+		    breaksAtTop = prefs.getMyIntPref("breaksAtTop"), 
 		    bodyEl = gMsgCompose.editor.rootElement,
 				bodyContent = '';
 		
@@ -1282,20 +1264,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					templateDiv.style.backgroundColor = "#FFF4CC";
 					templateDiv.style.border = "1px solid #FFE070";
 				} */
-				// ****************************
-				// ***  STATIONERY SUPPORT  ***
-				// ****************************
-				// we only add the template if Stationery is not selected, otherwise, we leave our div empty! 
-				if (!flags.isStationery) {
-					util.logDebugOptional('composer','isStationery=false: setting template Div innerHTML…\n' + template);
-					templateDiv.innerHTML = template;
-				}
-				else {
-					util.logDebugOptional('composer','isStationery=true: processing left to Stationery');
-					// to do:	template processing in body provided by Stationery!
-				  // ** => replace stationeryBodyText 
-					// **    with getProcessedText(stationeryBodyText, idKey, st4composeType) 
-				}
+        util.logDebugOptional('composer','Setting template Div innerHTML…\n' + template);
+        templateDiv.innerHTML = template;
 				if (theIdentity.replyOnTop) {
 					// this is where we lose the default "paragraph" style
 					editor.beginningOfDocument();
@@ -1373,7 +1343,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		       + 'SmartTemplate4: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
-		       + 'Stationery used: ' + flags.isStationery + '\n'
 		       );
 
 		/* SIGNATURE HANDLING */
@@ -1410,13 +1379,6 @@ SmartTemplate4.classSmartTemplate = function() {
 						    && gMsgCompose.type != msgComposeType.MailToUrl) { 
 						  // find and replace <sig>%sig%</sig> in body.
 							let sigNode;
-							if(flags.isStationery) { 
-							  sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
-							}
-							else if(composeCase == 'tbtemplate') {
-								// find %sig(..)% text?
-								
-							}
 							if (sigNode) {
 								let isRemoveDashes = sigNode.getAttribute('removeDashes');
 								theSignature.innerHTML = util.getSignatureInner(theSignature, isRemoveDashes); // remove dashes hard coded for now
@@ -1461,8 +1423,6 @@ SmartTemplate4.classSmartTemplate = function() {
 			// active, but empty signature?
 			else {
 				if(flags.omitSignature
-           ||
-           flags.isStationery 
 				   && 
 					 (theSignature.innerHTML == '' || theSignature.innerHTML ==  SmartTemplate4.signatureDelimiter )) { // in %sig(2)% case, the delimiter is built in.
 					let sigNode = findChildNode(bodyEl, 'st4-signature'); // find <sig>
@@ -1644,11 +1604,6 @@ SmartTemplate4.classSmartTemplate = function() {
 			util.logException("editor.selectionController command failed - editor = " + editor + "\n", ex);
 		}
 		
-		if (flags.isStationery && targetNode) {
-			if (isDebugComposer) debugger;
-			if (targetNode.parentNode)
-				targetNode.parentNode.removeChild(targetNode);  // Bug 25710
-		}
 		//[] prepend mailto "body" part if missing, in case something went wrong
 		if (gMsgCompose.type == msgComposeType.MailToUrl && bodyContent) {
 			if (!bodyEl.innerHTML) {

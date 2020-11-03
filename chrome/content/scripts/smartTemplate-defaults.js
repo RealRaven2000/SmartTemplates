@@ -53,9 +53,7 @@ pref("extensions.smartTemplate4.expandSettings", false);
 /* add change template button automatically when installing for first time */
 pref("extensions.smartTemplate4.changeTemplate.button.install", true);
 
-pref("extensions.smartTemplate4.stationery.supported", false);
 pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);
-pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */
 
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
@@ -90,7 +88,6 @@ pref("extensions.smartTemplate4.debug.identities", false);
 pref("extensions.smartTemplate4.debug.css.styleSheets", false);
 pref("extensions.smartTemplate4.debug.css.detailed", false);
 pref("extensions.smartTemplate4.debug.css.AddRule", false);
-pref("extensions.smartTemplate4.debug.stationery", false);
 pref("extensions.smartTemplate4.debug.timeZones", false);
 pref("extensions.smartTemplate4.debug.timeStrings", false);
 pref("extensions.smartTemplate4.debug.headers", false);

@@ -182,10 +182,10 @@ SmartTemplate4.composer = {
   
 };
 
-// window.setTimeout (
 (
 function() 
   {
+    // return; // let's do this from the background script!
 		const util = SmartTemplate4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
 					isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
@@ -218,10 +218,7 @@ function()
 				}
 			}
 		}
-    // add the style sheet.
+    // add the style sheet, buttons for cleaning and template selector
 		SmartTemplate4.composer.load();
   }
 )();
-//,10 
-// );
-

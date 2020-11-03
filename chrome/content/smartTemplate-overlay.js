@@ -2295,18 +2295,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "sig":
 				  if (arg && arg.indexOf('none')>=0) return "";
 					let isRemoveDashes = arg ? (arg=="(2)") : false;
-          let retVal;
-				  if (isStationery) {
-            retVal = '<sig class="st4-signature" removeDashes=' + isRemoveDashes + '>' + dmy + '</sig>' // 
-					}
-          else {
-					  // BIG FAT SIDE EFFECT!
-						if (prefs.isDebugOption('composer')) debugger;
-            let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
-						retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true);
-            if (!retVal) retVal=''; // empty signature
-            util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
-          }
+          
+          // BIG FAT SIDE EFFECT!
+          if (prefs.isDebugOption('composer')) debugger;
+          let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes),
+              retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true) || "";
+              
+          util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
           util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
 					return retVal;
 				case "subject":
@@ -2367,8 +2362,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				  return "";
 				case "cursor":
 					util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
-					//if(isStationery)
-					//	return dmy;
 					return '<span class="st4cursor">&nbsp;</span>'; 
 			  case "internal-javascript-ref":
 			    return javascriptResults[/\((.*)\)/.exec(arg)[1]];

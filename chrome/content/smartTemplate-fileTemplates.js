@@ -480,24 +480,6 @@ SmartTemplate4.fileTemplates = {
 
   // =====================   UI   ===================== //	
 
-	prepareAddTemplateButton_STationery : function() {
-		let button = document.getElementById('stationery-button-add-template');
-		let menupopup = document.getElementById('stationery-button-add-template-menupopup');
-		
-		//delete all old items
-		for (let i = 0; i < menupopup.childNodes.length; ++i)
-			menupopup.childNodes[i].parentNode.removeChild(menupopup.childNodes[i]);
-		
-		//iterate handlers and add menus
-		for (let menuitem of Stationery.templates.getHandlerOptionsAddMenuitemIterator(document)) {
-			menupopup.appendChild(
-			  Stationery.setupElement(menuitem, {
-				  events: [ {name: 'command', value: addTemplateHandler } ],
-				}) 
-			);
-		}
-	},
-	
 	// lbl: [new, rsp, fwd]
 	configureMenu: function (templates, msgPopup, composeType, showConfigureItem = true) {
 		const util = SmartTemplate4.Util,
@@ -676,10 +658,6 @@ SmartTemplate4.fileTemplates = {
 		if (nodes.length) {
 			for (let i = 0; i < nodes.length; ++i) {
 				if (nodes[i].nodeName == 'menupopup') {
-          // Stationery hack for Tb60:
-          // make sure the click event fires even if menu has been enhanced by Stationery too.
-          if (nodes[i].getAttribute('stationery-related-id'))
-            nodes[i].setAttribute("st4nonNative", true);
 					return nodes[i];
 				}
 			}

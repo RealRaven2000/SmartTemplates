@@ -973,15 +973,7 @@ SmartTemplate4.Util = {
 		);			
 		
 	},
-	showStationerySettings: function () {
-		let win = this.Mail3PaneWindow;
-		if (win.Stationery)
-			win.Stationery.showOptions(win);
-		else {
-			this.showStationeryWarning(window);
-		}
-	},
-	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
+
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
 	

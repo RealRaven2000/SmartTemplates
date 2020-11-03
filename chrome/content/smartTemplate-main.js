@@ -484,9 +484,6 @@ END LICENSE BLOCK
 */
 
  
-//SChromeUtils.import("chrome://smarttemplate4/content/smartTemplate-stationery.jsm");
-
-
 var SmartTemplate4 = {
 	// definitions for whatIsX (time of %A-Za-z%)
 	XisToday : 0,
@@ -528,64 +525,7 @@ var SmartTemplate4 = {
 										 : prefs.getMyIntPref("forwardInlineImg.delay"),
 			    isNotify = false;
 			util.logDebug('NotifyComposeBodyReady');
-			// For Stationery integration, we need to  
-			// its method of overwriting  stateListener.NotifyComposeBodyReady 
-			if (prefs.isStationerySupported) {
-				
-				if (typeof Stationery_ == 'undefined') {
-					isNotify = true;					
-					prefs.setMyBoolPref("stationery.supported",false);
-					util.showStationeryWarning();
-				}
-				else {
-					// test existence of Stationery 0.8 specific function to test if we need to use the new event model.
-					// added: New Stationery 0.9 uses promises
-					
-					if (Stationery.fireAsyncEvent || Stationery.waitForPromise) {
-						if (gMsgCompose.type == msgComposeType.Template) {
-							// force calling compose ready as Stationery does not support "template" case
-							window.setTimeout(
-								function(){ 
-									util.logDebug("Template case with Stationery enabled: calling notifyComposeBodyReady()")
-									SmartTemplate4.notifyComposeBodyReady(); 
-								}, 
-								eventDelay);					
-						}
-						else {
-							// new Stationery will instead call preprocessHTMLStationery through its preprocessHTML method
-							util.logDebug('NotifyComposeBodyReady: Stationery 0.8+ - no action required.');
-						}
-						return;
-					}
-
-					// Stationery 0.7.8 and older
-					let bypass = true,
-							oldTemplate = '';
-					
-					if (typeof Stationery.Templates.OnceOverride != "undefined") {
-						if (Stationery.Templates.OnceOverride == '')
-							bypass = false;
-						else
-							oldTemplate = Stationery.Templates.OnceOverride;
-					}
-					else { 
-						if (Stationery.Templates.Current =='')  
-							bypass = false;
-						else
-							oldTemplate = Stationery.Templates.Current;
-					}
-					if (bypass)
-						util.logToConsole('An older version of Stationery (pre 0.8) is installed.\n'
-							 + 'As you have selected the Stationery template ' + oldTemplate 
-							 + ', SmartTemplate4 will be not used for this email.' );
-					else {
-						isNotify = true;
-					}
-				}
-			}
-			else
-				isNotify = true;
-				
+      isNotify = true;
 			if (isNotify) {
 				// [BUG 26434] forwarding email with embedded images removes images
 				// test delaying call for forward case
@@ -667,56 +607,7 @@ var SmartTemplate4 = {
     catch (ex) {
       util.logException("Could not register status listener", ex);
     }
-		// alternative events when 
-		if (prefs.isStationerySupported) {
-      log('composer' , 'Adding Listener for stationery-template-loaded...');
-			window.addEventListener('stationery-template-loaded', function(event) {
-				// Thunderbird uses gComposeType
-				let eventDelay = (gMsgCompose.type != msgComposeType.ForwardInline) 
-											 ? 10 
-											 : prefs.getMyIntPref("forwardInlineImg.delay");
-			  // async event
-				log('composer,events', 'EVENT: stationery-template-loaded');
-				// [BUG 26434] forwarding email with embedded images removes images
-				// test delaying call for forward case
-				window.setTimeout(
-					function(){ notifyComposeBodyReady(event); },  // let's pass the window handle so we know where we come from!
-					eventDelay
-				);
-			}, false);		
-		}
-    else {
-      log('composer', 'not registering stationery-template-loaded event Preferences.isStationerySupported=false?');
-    }
 	},
-	
-	// Stationery 0.8 support!
-  preprocessHTMLStationery: function preprocessHTMLStationery(t) {
-    let util = SmartTemplate4.Util;
-    util.logDebugOptional('stationery',
-		     '=========================================\n'
-		   + '=========================================\n'
-			 + 'preprocessor for Stationery running...');
-    let idKey = util.getIdentityKey(document);
-    if(!idKey)
-      idKey = gMsgCompose.identity.key;
-    let st4composeType = util.getComposeType();
-    if (st4composeType.indexOf('(draft)')) {
-      st4composeType = st4composeType.substr(0,3);
-    }
-    // ignore html!
-		SmartTemplate4.StationeryTemplateText = t.HTML;
-		// do not do HTML escaping!
-		// pass in a flag to leave %sig% untouched
-		util.clearUsedPremiumFunctions();
-		SmartTemplate4.PreprocessingFlags.isStationery = true;
-    t.HTML = SmartTemplate4.smartTemplate.getProcessedText(t.HTML, idKey, st4composeType, true); 
-		util.logDebugOptional('stationery', 'Processed text: ' + t.HTML);
-    util.logDebugOptional('stationery',
-		     '=========================================\n'
-		   + '=========================================\n'
-			 + 'Stationery preprocessor complete.');
-  },	
 	
 	// -------------------------------------------------------------------
 	// A handler to add template message
@@ -787,8 +678,7 @@ var SmartTemplate4 = {
 				
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
-		if (prefs.isDebugOption('stationery') || prefs.isDebugOption('composer')) debugger;
-		util.logDebugOptional('stationery', 'notifyComposeBodyReady()...');
+		if (prefs.isDebugOption('composer')) debugger;
 		
 		dbg += "\ngMsgCompose type: "  + gMsgCompose.type;
 		// see https://dxr.mozilla.org/comm-central/source/comm/mailnews/compose/public/nsIMsgComposeParams.idl
@@ -804,47 +694,18 @@ var SmartTemplate4 = {
 			util.logDebug("omitting processing - composetype is set to Template and there is no EditTemplate defined (pre Tb60)")
 		  return;
 		}
-			// this also means the hacky code around flags.isThunderbirdTemplate will now be obsolete.
-		if (evt) {
-			let targ = evt.currentTarget || evt.target;
-			if (targ.Stationery_ && prefs.isStationerySupported) {
-			  let stationeryInstance = targ.Stationery_,
-				    cur = null;
-				stationeryTemplate = stationeryInstance.currentTemplate;
-				dbg += '\nStationery is active';
-				dbg += '\nTemplate used is:' + stationeryTemplate.url;
-				if (stationeryTemplate.type !== 'blank') {
-					try {
-						let stationeryText = SmartTemplate4.StationeryTemplateText;
-						flags.isStationery = true;
-            let sigTest = this.smartTemplate.testSignatureVar(stationeryText);
-						flags.sigType = sigTest;
-						flags.hasSignature = (!!sigTest);
-            flags.omitSignature = (sigTest=='omit');
-						flags.hasCursor = this.smartTemplate.testCursorVar(stationeryText);
-						flags.hasQuotePlaceholder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quotePlaceholder');
-						flags.hasQuoteHeader = this.smartTemplate.testSmartTemplateToken(stationeryText, 'quoteHeader');
-						flags.hasTemplatePlaceHolder = this.smartTemplate.testSmartTemplateToken(stationeryText, 'smartTemplate');
-					}
-					catch(ex) {
-						util.logException("notifyComposeBodyReady - Stationery Template Processing", ex);
-					}
-				}
-			}			
-		}
+    // this also means the hacky code around flags.isThunderbirdTemplate will now be obsolete.
 		flags.isThunderbirdTemplate = 
 		  (gMsgCompose.type == msgComposeType.Template);
 		SmartTemplate4.StationeryTemplateText = ''; // discard it to be safe?
 		util.logDebug(dbg);
 		// Add template message
-		/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
 		// guard against this being called multiple times from stationery
 		// avoid this being called multiple times
     let editor = util.CurrentEditor.QueryInterface(Ci.nsIEditor),
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
-			if (prefs.isDebugOption('stationery')) debugger;
 			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
@@ -896,27 +757,23 @@ var SmartTemplate4 = {
 				  if (gMsgCompose.type == msgComposeType.MailToUrl) // this would have the to address already set
 						FocusId = 'content-frame'; // Editor
 					else {
-						let foundTo = false;
+            FocusId = 'content-frame'; // editor is fallback
 						// find the "to" line
-						for (let rowAddress=1; foundTo==false; rowAddress++) {
-							let adColElement = window.document.getElementById("addressCol1#" + rowAddress.toString());
-							if (adColElement.value=="addr_to") {
-								foundTo = true;
-								FocusId = 'addressCol2#' + rowAddress.toString();
-								FocusElement = window.document.getElementById(FocusId);
-								//test if to-address already contains a valid email address:
-								let r = new RegExp(/(\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,8}\b)/);
-								if (r.test(FocusElement.value)) { // found valid email!
-									FocusId = 'content-frame';
-									break;
-								}
-							}
-							// nothing found? assume something went wrong, go to default behavior
-							if (!adColElement || rowAddress>1000) {
-								FocusId = 'addressCol2#1'; 
-								break;
-							}
-						}
+						let foundTo = false;
+            let adContainer = window.document.getElementById("toAddrContainer");
+            if (adContainer) {
+              let adPill = 
+                adContainer.querySelector("mail-address-pill"); // first match if an address pill exists
+              if (!adPill) {
+                let input = window.document.getElementById("toAddrInput");
+                if (input) {
+                  if (input) {
+                    input
+                  }
+                  FocusId = input.id;
+                }
+              }
+            }
 					}
 					break;
 				default: // 'reply'  - what about mailto?
@@ -933,7 +790,7 @@ var SmartTemplate4 = {
 			if (isInserted)
 				root.setAttribute("smartTemplateInserted","true");
 		}
-		util.logDebugOptional('stationery', 'notifyComposeBodyReady() ended.');
+		util.logDebugOptional('composer', 'notifyComposeBodyReady() ended.');
   },
 
 	// -------------------------------------------------------------------

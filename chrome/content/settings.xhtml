@@ -483,7 +483,6 @@
 			<preference name = "extensions.smartTemplate4.font.size"  type = "int" instantApply="true" />
 			<preference name = "extensions.smartTemplate4.firstLastSwap" type = "bool" instantApply="true"/>
 			<preference name = "extensions.smartTemplate4.names.delimiter" type = "string" instantApply="true"/>
-			<preference name = "extensions.smartTemplate4.stationery.supported" type = "bool" instantApply="true" />
 			<preference name = "extensions.smartTemplate4.cursor.insertSpace" type = "bool" instantApply="true"/>
 			<preference name = "extensions.smartTemplate4.forceParagraph" type = "bool" instantApply="true"/>
 			<preference name = "extensions.smartTemplate4.defaultCharset" type = "string" instantApply="true"/>
@@ -578,35 +577,10 @@
 						<groupbox class="transparent">
 							<hbox class="groupbox-title"><label class="header">&pref_groupAdvanced;</label></hbox>
 							<vbox>
-								<hbox>
-									<checkbox id = "chkStationery"
-												label = "&pref_stationerySupport;"
-												tooltiptext = "&pref_stationerySupport_tip; &pref_stationerySupport_tip2;"
-												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.stationery');"
-												preference = "extensions.smartTemplate4.stationery.supported"/>
-									<toolbarbutton id="helpStationery"
-											oncommand = "SmartTemplate4.Util.showStationeryHelpPage();" 
-											label = ""
-											/>
-									<spacer/>
-									<toolbarbutton 
-									    id = "btnGetStationery"
-									    oncommand = "SmartTemplate4.Util.showStationeryPage();"
-											class = "stationeryURL"
-											label = "&pref_stationeryLink;" 
-											tooltiptext = "&pref_stationeryLink_tip;"/>
-									<spacer flex="1" id="spcStationery"/>
-									<toolbarbutton 
-									    id = "stationerySettings"
-									    oncommand = "SmartTemplate4.Util.showStationerySettings();"
-											label = "" 
-											tooltiptext = "Settings…"/>
-									<spacer flex="10" />
-								</hbox>
-								<checkbox id = "chkStationery"
+								<checkbox 
 											label = "&pref_cursorInsertSpace;"
 											preference = "extensions.smartTemplate4.cursor.insertSpace"/>
-								<checkbox id = "chkStationery"
+								<checkbox 
 											preference = "extensions.smartTemplate4.forceParagraph"
 											label = "&pref_forceParagraph;"
 											tooltiptext = "&pref_forceParagraph_tip;"/>

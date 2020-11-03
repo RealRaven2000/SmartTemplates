@@ -74,11 +74,49 @@ function onLoad(activatedWhileWindowOpen) {
 	    
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
- 
- //   window.QuickFolders.Util.logDebug('Adding Compose xul...');
- //window.SmartTemplate4.composer.onLoad();
- 
+    let test = false;
+    if (test) {
+		const st4 = window.SmartTemplate4,
+          util = st4.Util,
+					logDebugOptional = util.logDebugOptional.bind(util),
+					isDebugComposer = st4.Preferences.isDebugOption('composer');
+          
+		let txt = "unknown";
+    if (isDebugComposer) debugger;
+		try { txt	= window.document.firstElementChild.getAttribute('windowtype'); }
+		catch(ex) {;}
+		logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
+		
+		let composer = document.getElementById("msgcomposeWindow");
+		composer.addEventListener("compose-window-init", st4.initListener, false);
+		
+		st4.init();
+		// debugger;
+		
+		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
+		// safety for when the compose-window-init event does not fire (Tb 67+)
+		if (typeof ComposeStartup == 'function') {
+			// if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
+			if (!st4.ComposeStartup) {
+				if (isDebugComposer) debugger;
+				st4.ComposeStartup = ComposeStartup;
+				ComposeStartup = function() {
+					logDebugOptional('composer','Calling ComposeStartup Wrapper');
+					st4.ComposeStartup();
+					logDebugOptional('composer','Calling initListener');
+					st4.initListener(true);
+          st4.composer.initTemplateMenu();
+				}
+			}
+		}
+    // add the style sheet.
+		st4.composer.load();
+    }
+
 }
 
 function onUnload(isAddOnShutDown) {
+  window.document.getElementById('smarttemplate4-cleandeferred').remove();  
+  window.document.getElementById('smarttemplate4-changeTemplate').remove();  
+  window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
 }
