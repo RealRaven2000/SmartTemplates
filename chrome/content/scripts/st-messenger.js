@@ -20,81 +20,6 @@ function onLoad(activatedWhileWindowOpen) {
     const util = window.SmartTemplate4.Util;
     util.logDebug("onLoad(" + activatedWhileWindowOpen + ")...");
 
-
-    //messengeroverlay65
-//------------------------------------   
-    // replicate the write / reply / forward buttons on header toolbar
-    // these are used for the dropdown functionality of file templates in the header area.
-/*    WL.injectElements(` 
-    <hbox id="header-view-toolbar" class="toolbar">
-    
-      <toolbarbutton 
-        id="hdrReplyButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrReplyButton"
-        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
-    
-      <toolbarbutton 
-        id="hdrReplyAllButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrReplyAllButton"
-        oncommand="MsgReplyToAllMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
-
-      
-<!--      
-      <toolbarbutton 
-        id="hdrReplyListButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrReplyListButton"
-        oncommand="MsgReplyToListMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
--->      
-      
-      <toolbarbutton 
-        id="hdrReplyToSenderButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrReplyToSenderButton"
-        oncommand="MsgReplySender(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
-  
-      <toolbarbutton 
-        id="hdrFollowupButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrFollowupButton"
-        oncommand="MsgReplyGroup(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
-  
-      <toolbarbutton 
-        id="hdrForwardButton-ST" 
-        is="toolbarbutton-menu-button" 
-        type = "menu-button"
-        label="" 
-        insertafter="hdrForwardButton"
-        oncommand="MsgForwardMessage(event); RestoreFocusAfterHdrButton();" 
-        class= "toolbarbutton-1 smarttemplateHdr msgHeaderView-button">
-      </toolbarbutton>
-    </hbox>
-     `);
-    
-    */
-
     WL.injectElements(`
     
     <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
@@ -127,47 +52,16 @@ function onLoad(activatedWhileWindowOpen) {
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
 
 
-    
     window.SmartTemplate4.startUp();
-
 }
 
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   util.logDebug("onUnload(" + isAddOnShutDown + ")...");
     
-  util.logDebug("Remove added custom UI elements ...");
-  let elements = Array.from(window.document.querySelectorAll('[s4uiElement]'));
-  for (let element of elements) {
-    element.remove();
-  }
-        
-  util.logDebug("Cleanup/Downgrade toolbar buttons ...");
-  let manipulatedButtons = [
-    "button-newmsg",
-    "button-reply",
-    "button-replyall",
-    "button-replylist",
-    "button-forward",
-    "hdrReplyButton",
-    "hdrReplyAllButton",
-    "hdrReplyListButton",
-    "hdrFollowupButton",
-    "hdrReplyToSenderButton",
-    "hdrForwardButton"];
-  
-  for (let btn of manipulatedButtons) {
-    window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);
-  }
-
-  util.logDebug("Remove header toolbar elements...");
-  /*let hrBtns = ["hdrSmartReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST", "hdrForwardButton-ST",
-                "hdrReplyButton-ST","hdrReplyAllButton-ST","hdrReplyListButton-ST","hdrFollowupButton-ST",
-                "hdrReplyToSenderButton-ST"]; */
+  // remove UI modifications + clean up all listeners
+  window.SmartTemplate4.shutDown(true); // true = this is a main window - remove all message listeners established
   
   util.logDebug("onUnload(" + isAddOnShutDown + ") FINISHED");
-  
-  // clean up all listeners
-  window.SmartTemplate4.shutDown(); 
 }
 

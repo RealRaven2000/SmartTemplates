@@ -1125,10 +1125,40 @@ var SmartTemplate4 = {
     util.logDebug("startUp complete");
 	} ,
   
-  shutDown: function ST_shutDown() {
+  shutDown: function ST_shutDown(isMainWindow = false) {
     const util = SmartTemplate4.Util;
-    gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener);
+    if (isMainWindow) {
+      util.logDebug("removing message listeners…");
+      gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener);
+    }
+    
+    util.logDebug("Remove added custom UI elements …");
+    let elements = Array.from(window.document.querySelectorAll('[s4uiElement]'));
+    for (let element of elements) {
+      element.remove();
+    }
+          
+    util.logDebug("Cleanup/Downgrade toolbar buttons …");
+    let manipulatedButtons = [
+      "button-newmsg",
+      "button-reply",
+      "button-replyall",
+      "button-replylist",
+      "button-forward",
+      "hdrReplyButton",
+      "hdrReplyAllButton",
+      "hdrReplyListButton",
+      "hdrFollowupButton",
+      "hdrReplyToSenderButton",
+      "hdrForwardButton"];
+    
+    for (let btn of manipulatedButtons) {
+      window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);
+    }
+    
     util.logDebug("shutDown complete");
+    
+    
   } ,
 	
 	signatureDelimiter:  '-- <br>',
