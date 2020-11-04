@@ -205,7 +205,7 @@ permalink: version.html
     onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.0 - WIP</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">68.* - 78.*</span> 
+			<span class="thunderbird">72.* - 78.*</span> 
 		</span>
   </h4>
   
@@ -213,7 +213,30 @@ permalink: version.html
     <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/69">[issue 69]</a>
       Make SmartTemplate4 compatible with Thunderbird 78 - Work In Progress
     </li>
+    <li>
+      Use the new mail extension with experiment APIs method (WindowLoader).
+      This loads the overlay dynamically -  the advantage being that the Add-ons now 
+      works without restarting. You can also disable / uninstall without having to 
+      restart Thunderbird.
+    </li>
+    <li>
+      Remove Shim Code - this was code for backwards compatibilty with older Thundebrird versions 
+      as well as SeaMonkey and Postbox
+    </li>
+    <li>
+      Remove support for SeaMonkey
+    </li>
+    <li>
+      Remove Stationery references & configuration
+    </li>
+    <li>
+      Rewrote filling in variables and focus method to work with new address widgets
+    </li>
+    <li>
+      Rewrite all template dropdowns. This is based on a hack supplied by John Bieling, thanks very much for all the help.
+    </li>
   </ul>
+  
   <div class="psa78">
     <p style="text-align: center;">
       <img src="img/esr78/logo-pro.png" alt="logo"/>
@@ -230,7 +253,7 @@ permalink: version.html
     <p>please do not install Thunderbird 78 manually, wait for the
       auto-update!</p>
     <p>If you have already been upgrade to Thunderbird 78, you can install the latest beta from here:
-      <b>download</b> the xpi file <a href="https://github.com/RealRaven2000/SmartTemplate4/releases/tag/3.0pre56"
+      <b>download</b> the xpi file <a href="https://github.com/RealRaven2000/SmartTemplate4/releases/tag/3.0pre69"
     rel="nofollow" class="d-flex flex-items-center min-width-0">
     <svg class="octicon octicon-package flex-shrink-0 text-gray"
       viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path
@@ -242,7 +265,7 @@ permalink: version.html
         4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625
         2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0
         00.125-.216V5.677L8.75 8.432v5.516z"></path></svg> 
-      <span class="pl-2 flex-auto min-width-0 text-bold">smartTemplate-fx-3.0pre56.xpi</span>
+      <span class="pl-2 flex-auto min-width-0 text-bold">smartTemplate-fx-3.0pre69.xpi</span>
       </a> from the site to hard drive and then <b>drag the file</b> into
       Thunderbird's <b>Add-ons manager</b>.
     </p>
@@ -254,6 +277,11 @@ permalink: version.html
       is a mail add-on and think it is "broken web extension" - as it has the same file name extension. 
       </i>
     </p> 
+    
+    
+    Changes
+    
+    
   
     <p><b>Just like last year the Thunderbird team will not be pushing
         automatic updates for 2 releases, so the first candidate for
