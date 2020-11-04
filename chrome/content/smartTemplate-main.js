@@ -457,10 +457,11 @@ END LICENSE BLOCK
     
   Version 3.0 (ESR78) - WIP
     # [issue 69] - Make SmartTemplate⁴ compatible with Thunderbird 78 ESR
-    #            - Remove Shim Code
+    #            - Remove Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox support
     #            - Remove support for SeaMonkey
-    #            -
-    #            -
+    #            - Remove Stationery references & configuration
+    #            - Rewrote filling in variables and focus method to work with new address widgets
+    #            - rewrite all template dropdowns
     
     
 =========================

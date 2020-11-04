@@ -489,7 +489,8 @@ SmartTemplate4.mimeDecoder = {
       
       let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
           allAddressBooks = abManager.directories; 
-          
+      
+      // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
       while (allAddressBooks.hasMoreElements()) {
         let addressBook = allAddressBooks.getNext()
                                          .QueryInterface(Components.interfaces.nsIAbDirectory);
