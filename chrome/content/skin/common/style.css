@@ -228,7 +228,7 @@ groupbox.transparent .groupbox-title {
 
 #globalSettings {
 	width: 100%;
-	background-image: url(chrome:///icon128x128.png);
+	background-image: url("chrome://smartTemplate4/content/skin/icon128x128.png");
 	background-repeat: no-repeat;
 	background-position: 92% 2%;
 	/* background-size: 200px; */

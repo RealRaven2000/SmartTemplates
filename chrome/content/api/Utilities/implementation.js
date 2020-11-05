@@ -43,19 +43,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return  win.SmartTemplate4.Util.hasLicense(false);
         },
 
-        getAddonVersion: function() {
-          return win.SmartTemplate4.Util.Version;
-        },
-
-        getTBVersion : function() { //somehow(??), we can also get this in MX
-          return Services.appinfo.version;//win.SmartTemplate4.Util.VersionSanitized;
-        },
-
-
-        getAddonName : function() {
-          return win.SmartTemplate4.Util.ADDON_NAME;
-        },
-        
         openLinkExternally: function(url) {
           let uri = url;
           if (!(uri instanceof Ci.nsIURI)) {

@@ -12,6 +12,8 @@
    
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     // if (temporary) return; // skip during development
+    debugger;
+    console.log("main st-background - reason:" + reason);
     switch (reason) {
       case "install":
         {
