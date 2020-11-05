@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Заголовок цитат">
 <!ENTITY pref_quoteHeaderBox_tip "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_dialog.title "Настройки SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Настройки SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Количество переводов строк в начале:">
 <!ENTITY pref_removeSig.label "Стирать подпись при смене адреса электронной почты">
 <!ENTITY pref_showStatusIcon.label "Кнопка в строке состояния">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Отключить стандартный заголовок цитат">
 <!ENTITY pref_quotehead_tip "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат.">
 <!ENTITY pref_template_tip "Вы можете использовать переменные, описанные в справке.">
-<!ENTITY help_dialog_title "Справка SmartTemplate⁴">
+<!ENTITY help_dialog_title "Справка SmartTemplates">
 <!ENTITY help_keyword.cap "Справка">
 <!ENTITY pref_debug_check "Режим отладки">
 <!ENTITY pref_hideExamples "Спрятать вкладку с примерами">
 <!ENTITY pref_silentUpdates "Тихие обновления">
-<!ENTITY pref_silentUpdates_tip "Не открывайте журнал изменений после обновления SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Не открывайте журнал изменений после обновления SmartTemplates.">
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
 <!ENTITY pref_nameSwap "Исправить фамилию, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Стандартная кодировка">
 <!ENTITY pref_defaultCharset_tip "Использовать эту кодировку при чтении заголовков, если кодировка не определяется.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "О SmartTemplate⁴">
+<!ENTITY about.cap "О SmartTemplates">
 <!ENTITY support.tab "Служба поддержки">
 <!ENTITY creator.label "Создатель">
 <!ENTITY developer.label "Разработчик">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Переводчик">
 <!ENTITY translatorNickname.label "Anton Pinsky (BabelZilla)">
 <!ENTITY contributor.label "Участник">
-<!ENTITY about.label "SmartTemplate⁴ позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи.">
+<!ENTITY about.label "SmartTemplates позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Переменные">
 <!ENTITY ownname.label "Ваше имя">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "Ответить">
 <!ENTITY table_fwd.label "Переслать">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Вставить лицензионный ключ сюда:">
 <!ENTITY label.insertLicense.tooltip "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ.">
 <!ENTITY button.pasteLicense "вставить">
 <!ENTITY button.validateLicense "проверить">
 <!ENTITY label.licenseValid "Лицензионный ключ действителен до:">
 <!ENTITY licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
-<!ENTITY licenseValidation.standard "Спасибо за регистрацию SmartTemplate⁴ Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса.">
+<!ENTITY licenseValidation.standard "Спасибо за регистрацию SmartTemplates Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса.">
 <!ENTITY licenseValidation.failed "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
 <!ENTITY licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
 <!ENTITY licenseValidation.invalidAddon "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}.">

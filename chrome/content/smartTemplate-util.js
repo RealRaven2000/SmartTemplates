@@ -485,9 +485,9 @@ SmartTemplate4.Util = {
 			theText = 
 				  isList 
 						? util.getBundleString("SmartTemplate4.notification.premium.text.plural",
-																 "{1} are Premium features, please upgrade to a SmartTemplate⁴ Pro License for using them permanently.")
+																 "{1} are Premium features, please upgrade to a SmartTemplates Pro License for using them permanently.")
 						: util.getBundleString("SmartTemplate4.notification.premium.text",
-																 "{1} is a Premium feature, please upgrade to a SmartTemplate⁴ Pro License for using it permanently.");
+																 "{1} is a Premium feature, please upgrade to a SmartTemplates Pro License for using it permanently.");
         featureTitle = 
 				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
 						// util.getBundleString('SmartTemplate4.premium.title.' + featureName, featureName); 
@@ -499,7 +499,7 @@ SmartTemplate4.Util = {
 			title = "Licensing";
 			theText = 
 				util.getBundleString("SmartTemplate4.notification.license.text",
-					"From now on, SmartTemplate⁴ requires at least a standard license. " +
+					"From now on, SmartTemplates requires at least a standard license. " +
 					"Read more about it on our licensing page.");
 			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
 			theText = theText + '  ' + txtGracePeriod;
@@ -676,7 +676,7 @@ SmartTemplate4.Util = {
 		if (util.ConsoleService === null)
 			util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									.getService(Components.interfaces.nsIConsoleService);
-		let title = "SmartTemplate⁴";
+		let title = "SmartTemplates";
 		if (typeof optionalTitle !== 'undefined')
 			title += " {" + optionalTitle.toUpperCase() + "}"
 
@@ -942,7 +942,7 @@ SmartTemplate4.Util = {
 		let warnText = noStationery,
 				txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
 				"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
-				+ "Therefore SmartTemplate⁴ now offers its own HTML template management system; click Ok to set it up.");
+				+ "Therefore SmartTemplates now offers its own HTML template management system; click Ok to set it up.");
 		SmartTemplate4.Message.display(
 			warnText  + "\n" + txtSuggestion,
 			"centerscreen,titlebar",
@@ -1444,7 +1444,7 @@ SmartTemplate4.Util = {
 			else if (isPremiumLicense)
 			  uType = "pro";
 			// make sure we can sanitize all pages for our premium users!
-      // [issue 68] After update to 2.11, SmartTemplate⁴ always displays nonlicensed support site
+      // [issue 68] After update to 2.11, SmartTemplates always displays nonlicensed support site
 			if (   uType
 			    && URL.indexOf("user=")==-1 
 					&& URL.indexOf("smarttemplates.quickfolders.org")>0 ) {
@@ -1789,7 +1789,7 @@ SmartTemplate4.Util = {
 				return true;
 			}
 		}
-		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplate⁴ header:\n" + tok);
+		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplates header:\n" + tok);
 		return false;
 	}	,
 

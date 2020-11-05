@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate⁴ is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -24,7 +24,7 @@ END LICENSE BLOCK
     # Some users reported subject lines not being displayed correctly. Specifically there were line breaks causing the subject to span more than one line. This could also occur with other  headers but subject was the only one reported.
     # corrected issue where headers longer than 4096 were being truncated.
     # An option was added in settings called "Use OS date/time format instead of Thunderbird".
-          Some users reported that SmartTemplate⁴ was not using the custom date format they had set in their operating system.
+          Some users reported that SmartTemplates was not using the custom date format they had set in their operating system.
     # updated all helpfiles 'added recent changes'
     # implemented some coding changes suggested by the Mozilla AMO review team.
 		
@@ -44,7 +44,7 @@ END LICENSE BLOCK
   Version 0.7.8 - Released 04/11/2011
 	  # Supports: Tb 1.5 - 10.0a1
 		#  paste an list of all variables and in which case they can be used to all help files.
-    #  SmartTemplate⁴ no longer crashes when variables are used incorrectly; an error is logged to the Error Console.
+    #  SmartTemplates no longer crashes when variables are used incorrectly; an error is logged to the Error Console.
     # added a new variable %sig% to allow users to put their signature where it should be placed in the template. If %sig% is not defined in the template it will be placed in the default Thunderbird location (above reply or below reply based on TB settings). 'Include Signature on Reply/Forward" must be checked in Thunderbird options for the %sig% to work as expected.
     # added a new option to variable %subject% to show the subject of the message being replied to/forwarded or the subject of the current message being composed
     # %tz_name% variable has been added but it is system dependent and will have limited support. Some users will see abbreviated time zone names (EST, CDT) and some will see long names(Eastern Standard Time...) and some will not have any return depending on their operating system or the mailserver of the email being replied to.
@@ -89,7 +89,7 @@ END LICENSE BLOCK
 		              0 - never show label
 									1 - expand label on hover (default)
 									2 - always show label
-    # Redesigned About Window (Add-On Manager &#8658; rightclick on SmartTemplate⁴ &#8658; About)
+    # Redesigned About Window (Add-On Manager &#8658; rightclick on SmartTemplates &#8658; About)
 		# Added uk-UA locale
 		# Fixed Bug 25103]	0.9.1 inserts unwanted line break top of &lt;body&gt; in html mode
 		# [Bug 25099] Support bottom reply with headers on top
@@ -233,10 +233,10 @@ END LICENSE BLOCK
 		# [Bug 26208] Lastname and Firstname arguments omit part of the name when broken up - WIP
 		# [Bug 26257] Default quote header not removed in complex Stationery
 		# Force Replacing default quote header in Stationery even if no %quoteHeader% variable is contained
-		# [Bug 26215] Bad interaction between SmartTemplate⁴ and "When using paragraph format, the enter key creates a new paragraph"
+		# [Bug 26215] Bad interaction between SmartTemplates and "When using paragraph format, the enter key creates a new paragraph"
 		# [Bug 26209] Add option to wrap name in double quotes if it contains commas - WIP
-    # When clicking on a mailto link from a web browser with a given text body, this was overwritten by SmartTemplate⁴
-		  new behavior: bypass the SmartTemplate⁴ to avoid losing information from the web site. 
+    # When clicking on a mailto link from a web browser with a given text body, this was overwritten by SmartTemplates
+		  new behavior: bypass the SmartTemplates to avoid losing information from the web site. 
 		# Added button to visit our Thunderbird Daily Youtube channel
 		# Updated outdated links to language libraries from ftp to https
 		# Release Video at: https://www.youtube.com/watch?v=xKh7FkU8A1w
@@ -267,10 +267,10 @@ END LICENSE BLOCK
     # [Bug 26345] Unexpected "Â" character in mail body
 		# [Bug 26356] Thunderbird 52 - Forwarding an email inline adds empty paragraph on top
 		# [Bug 26364] Inline Images are not shown
-		# [Bug 26494] ESR 2018 readiness - Make SmartTemplate⁴ compatible with Tb 60
-		# [Bug 26446] Thunderbird 57 hangs on start with SmartTemplate⁴ enabled 
-		# [Bug 26483] Opening an .eml file SmartTemplate⁴ doesn't apply templates
-		# Adding SmartTemplate⁴ Pro License
+		# [Bug 26494] ESR 2018 readiness - Make SmartTemplates compatible with Tb 60
+		# [Bug 26446] Thunderbird 57 hangs on start with SmartTemplates enabled 
+		# [Bug 26483] Opening an .eml file SmartTemplates doesn't apply templates
+		# Adding SmartTemplates Pro License
 		# Thunderbird 57 deprecated nsILocaleService causing local date to fail
 		# Thunderbird 57 deprecated nsIScriptableDateFormat causing most date functions (datelocal, dateshort) to dail [prTime2Str()]
 		# Remember expanded / contracted status of setting dialog 
@@ -286,12 +286,12 @@ END LICENSE BLOCK
 		# [Bug 26465] Composer does not focus into body of mail
 		
 	Version 2.0 - 23/12/2018
-		# [Bug 26494] ESR 2018 readiness - Make SmartTemplate⁴ compatible with Tb 60
+		# [Bug 26494] ESR 2018 readiness - Make SmartTemplates compatible with Tb 60
 	  # [Bug 26523] Remove extra <br> before blockquote if standard quote header is used.
 		# [Bug 26524] %datelocal% and %dateshort% are broken in Tb 60
 		# Completed various translations (ru, pl, nl, sr)
 		# [Bug 26526] %file% causes rogue errors "The Variable %5C.. can not be used for new messages" when including images
-		# [Bug 26551] Add Domain License key support for SmartTemplate⁴ Pro
+		# [Bug 26551] Add Domain License key support for SmartTemplates Pro
 		# [Bug 26552] %attach% Variable for attaching [pdf] files
 		# Moved links from addons.mozilla.org to addons.thunderbird.net
 		# Address Book: Added feature to replace firstname with Display Name if no first name is recorded.
@@ -303,7 +303,7 @@ END LICENSE BLOCK
 		# [Bug 24993]</a> Premium Feature: Added support for using the following fields when composing a *new* Email:%subject% %from% %to% %cc% %bcc% %date% %dateformat()%
 		
 	Version 2.1 - 28/07/2019
-	  # [Bug 26536] Support using SmartTemplate⁴ variables in Thunderbird Templates (Tb 60)
+	  # [Bug 26536] Support using SmartTemplates variables in Thunderbird Templates (Tb 60)
 		# [Bug 26634] header.*.matchFrom* functions: append/prepend arbitrary text to field based on match.
 		# [Bug 26677] %header.set.matchFromBody()% improvements for use with subject line.
 		# [Bug 26629] %X:=timezone()% switch to set a specific time zone with date variables
@@ -315,7 +315,7 @@ END LICENSE BLOCK
 		# %attach% command defaults to only append HTML files - should accept all file types.
 		# Removed display of donate page on update.
 		# Remember path for file picker when saving / loading templates
-		# [Bug 26667] ESR 2019 Readyness - make SmartTemplate⁴ compatible with Thunderbird 68
+		# [Bug 26667] ESR 2019 Readyness - make SmartTemplates compatible with Thunderbird 68
 		# Added mandatory Standard license	
 
 	Version 2.1.1 - 03/08/2019
@@ -330,7 +330,7 @@ END LICENSE BLOCK
 	  # [issue #5] 2.2.2 - Fixed %timezone% to subtract the offset hours rather than falsely add it.
 		  also added CEDT and MESZ
 		  https://github.com/RealRaven2000/SmartTemplate4/issues/4
-		# [issue #4] Fixed locale problem. SmartTemplate⁴ due to a regression in 2.0 the current
+		# [issue #4] Fixed locale problem. SmartTemplates due to a regression in 2.0 the current
 		  locale of the mail client cannot be determind currectly.
 			The %language()% switch works now better and gives more precise error messages
 			in JavaScript console where needed.			
@@ -368,7 +368,7 @@ END LICENSE BLOCK
     # [issue 20] If a template file starts with UTF detection character "missing file" is wrongly displayed
     # Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676]
       stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing... 
-      for now, SmartTemplate⁴ allows using these again for versions smaller than 69
+      for now, SmartTemplates allows using these again for versions smaller than 69
       
 		
 	Version 2.5 - 11/11/2019
@@ -426,7 +426,7 @@ END LICENSE BLOCK
     # [issue 43] %file(template)% doesn't work on Mac for paths that start with "/user". 
     # Fixed: Do not run cleanupDeferredFields() on quoted elements
     # Remove double quote from alt attribute in %file(image,alttext)%
-    # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work. 
+    # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplates do not work. 
     
   Version 2.9.1 - 14/02/2020
     # since v2.9: template may not work if signature path is invalid  
@@ -448,7 +448,7 @@ END LICENSE BLOCK
     # [issue 64] Regression: external template is removed when changing "from:" address
     # Change Template button - translate to 19 languages.
     # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
-    # [issue 68] Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
+    # [issue 68] Regression (2.11): After update SmartTemplates always displays nonlicensed support sites
     
   Version 2.11.2 - WIP  
     # [issue 74] In some cases the menu templates in compact header reply buttons are doubled up
@@ -456,7 +456,7 @@ END LICENSE BLOCK
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
     
   Version 3.0 (ESR78) - WIP
-    # [issue 69] - Make SmartTemplate⁴ compatible with Thunderbird 78 ESR
+    # [issue 69] - Make SmartTemplates compatible with Thunderbird 78 ESR
     #            - Remove Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox support
     #            - Remove support for SeaMonkey
     #            - Remove Stationery references & configuration

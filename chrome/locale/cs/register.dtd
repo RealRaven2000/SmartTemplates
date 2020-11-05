@@ -1,28 +1,28 @@
-<!ENTITY licenseWindow.title "SmartTemplate⁴ Licence">
+<!ENTITY licenseWindow.title "SmartTemplates Licence">
 <!ENTITY label.licenseValid "Vaše licence je platná do:">
 <!ENTITY label.haveLicense "Už máte licenci?">
-<!ENTITY getSmartTemplate4 "Získejte licenci SmartTemplate⁴">
-<!ENTITY licenseTypes "V budoucnu SmartTemplate⁴ nabízí dvě licence, Standard a Pro; je nutné držet krok se změnami v platformě Thunderbird a financovat inovace a opravy doplňku. Vzhledem k tomu, že se v průběhu ročního cyklu zavádějí zásadní změny, bude licence platná také po dobu 1 roku.">
-<!ENTITY intro "Roční licence pro SmartTemplate⁴ Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější.">
+<!ENTITY getSmartTemplate4 "Získejte licenci SmartTemplates">
+<!ENTITY licenseTypes "V budoucnu SmartTemplates nabízí dvě licence, Standard a Pro; je nutné držet krok se změnami v platformě Thunderbird a financovat inovace a opravy doplňku. Vzhledem k tomu, že se v průběhu ročního cyklu zavádějí zásadní změny, bude licence platná také po dobu 1 roku.">
+<!ENTITY intro "Roční licence pro SmartTemplates Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější.">
 <!ENTITY testDriveS "Můžete otestovat prémiové funkce se standardní licencí, ale mohou být mírně omezeny.">
 <!ENTITY yearlyLicense.title "Roční licence">
-<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro vám poskytuje neomezený přístup k prémiovým funkcím.">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplates Pro vám poskytuje neomezený přístup k prémiovým funkcím.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Další informace o prémiových funkcích.">
 <!ENTITY yearlyLicense.usageTerm "Licence je určena pro vaše osobní použití a je vázána na vaši e-mailovou adresu. Můžete ji nainstalovat na více e-mailových klientů, pokud jsou nakonfigurováni pro použití této adresy.">
 <!ENTITY yearlyLicense.usageTerm1 "Jakékoliv další e-mailové adresy nejsou problém - nevyžadují samostatnou licenci. V případě dotazů mě můžete kontaktovat na záložce Podpora.">
 <!ENTITY domainLicense.email "Budeme vás kontaktovat pomocí této e-mailové adresy pro vygenerování vaší domény licence; Prosím, dejte nám dva pracovní dny, abychom se dostali do kontaktu. Na následující stránce zadejte název domény licence.">
 <!ENTITY domainLicense.header "Licencovaná e-mailová doména">
-<!ENTITY domainLicense.instruct "Licence je určena pro vaši firemní doménu. Licence umožní uživatelům s e-mailovými adresami končícími na této e-mailové doméně používat aplikaci SmartTemplate⁴ Pro. Např. Pokud zadáte doménové jméno 'abc.com', pak mohou uživatelé používat poštu jako fred@abc.com, martha@abc.com, mike.doe@abc.com atd. Maximální počet platných individuálních uživatelů je číslo, které jste zadali na úvodní obrazovce.">
+<!ENTITY domainLicense.instruct "Licence je určena pro vaši firemní doménu. Licence umožní uživatelům s e-mailovými adresami končícími na této e-mailové doméně používat aplikaci SmartTemplates Pro. Např. Pokud zadáte doménové jméno 'abc.com', pak mohou uživatelé používat poštu jako fred@abc.com, martha@abc.com, mike.doe@abc.com atd. Maximální počet platných individuálních uživatelů je číslo, které jste zadali na úvodní obrazovce.">
 <!ENTITY domainLicense.validate "Ujistěte se, že zadáváte název domény * přesně tak, jak je * na e-mailové adresy vaší společnosti (část * za znakem * the @), protože bude použita k autorizaci e-mailových adres vašich uživatelů.">
 <!ENTITY updates.title "Aktualizace">
-<!ENTITY updatesExpiry "SmartTemplate⁴ Pro bude automaticky aktualizován jako obvykle pomocí addons.thunderbird.net. Po uplynutí roku můžete obnovit licenci nebo zachovat používání prémiových funkcí za stejných podmínek jako uživatelé, kteří jsou zdarma. Funkce „Premium Exclusive“ budou vyžadovat platný registrační klíč.">
+<!ENTITY updatesExpiry "SmartTemplates Pro bude automaticky aktualizován jako obvykle pomocí addons.thunderbird.net. Po uplynutí roku můžete obnovit licenci nebo zachovat používání prémiových funkcí za stejných podmínek jako uživatelé, kteří jsou zdarma. Funkce „Premium Exclusive“ budou vyžadovat platný registrační klíč.">
 <!ENTITY vouchers.title "Poukazy">
-<!ENTITY freeLicense "Pokud jste nedávno přispěli na projekt SmartTemplate⁴ nebo jste přispěli příspěvkovou prací, jako je například překlad nebo psaní záplat, můžete mít nárok na bezplatný licenční klíč. Kontaktujte mě na kartě Podpora v možnostech SmartTemplate⁴.">
+<!ENTITY freeLicense "Pokud jste nedávno přispěli na projekt SmartTemplates nebo jste přispěli příspěvkovou prací, jako je například překlad nebo psaní záplat, můžete mít nárok na bezplatný licenční klíč. Kontaktujte mě na kartě Podpora v možnostech SmartTemplates.">
 <!ENTITY account.label "Vyberte účet:">
 <!ENTITY email.label "e-mailem:">
 <!ENTITY firstName.label "Jméno:">
 <!ENTITY lastName.label "Příjmení:">
-<!ENTITY buyPremiumLicense.instruct "Chcete používat všechny prémiové funkce bez omezení? Získejte licenci SmartTemplate⁴ Pro. Je vázán na vaši osobní e-mailovou adresu a lze jej použít ve více instalacích.">
+<!ENTITY buyPremiumLicense.instruct "Chcete používat všechny prémiové funkce bez omezení? Získejte licenci SmartTemplates Pro. Je vázán na vaši osobní e-mailovou adresu a lze jej použít ve více instalacích.">
 <!ENTITY buyPremiumLicense.button "Koupit licenci Pro!">
 <!ENTITY buyStandardLicense.instruct "Nemůžete si dovolit prémiové funkce? Získejte levnější standardní licenci a udržujte testování prémiových funkcí.">
 <!ENTITY buyStandardLicense.button "Koupit Standardní licenci!">

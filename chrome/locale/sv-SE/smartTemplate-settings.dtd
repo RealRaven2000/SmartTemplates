@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Citationssidhuvud">
 <!ENTITY pref_quoteHeaderBox_tip "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den &#37;date&#37; skrev &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Mall">
-<!ENTITY pref_dialog.title "Inställningar för SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Inställningar för SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Antal radbrytningar i början:">
 <!ENTITY pref_removeSig.label "Ersätt signaturen när e-postidentiteten ändras">
 <!ENTITY pref_showStatusIcon.label "Visa knapp i statusfältet">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Använd istället för standardcitathuvudet">
 <!ENTITY pref_quotehead_tip "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan.">
 <!ENTITY pref_template_tip "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information.">
-<!ENTITY help_dialog_title "Hjälp med SmartTemplate⁴">
+<!ENTITY help_dialog_title "Hjälp med SmartTemplates">
 <!ENTITY help_keyword.cap "Hjälp">
 <!ENTITY pref_debug_check "Felsökningsläge">
 <!ENTITY pref_hideExamples "Dölj flik med exempel">
 <!ENTITY pref_silentUpdates "Tyst uppdateringar">
-<!ENTITY pref_silentUpdates_tip "Öppna inte ändringsloggen efter att SmartTemplate⁴ har uppdaterats.">
+<!ENTITY pref_silentUpdates_tip "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats.">
 <!ENTITY pref_debug_tip "Högerklicka för avancerade felsökningsalternativ">
 <!ENTITY pref_nameSwap "Korrigera Efternamn, Förnamn">
 <!ENTITY pref_nameSwap_tip "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Ersätt variabler i signaturen.">
 <!ENTITY pref_cursorInsertSpace "Infoga mellanslag för att markera &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Stöd tillägget Stationery">
-<!ENTITY pref_stationerySupport_tip "Stöd för att använda Stationery samtidigt som SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Stöd för att använda Stationery samtidigt som SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "Detta gör det möjligt att använda variabler i din Stationery.">
 <!ENTITY pref_stationeryLink "Brevpapperstillägg">
 <!ENTITY pref_forceParagraph "Tvinga paragrafläge">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Standardteckenkodning">
 <!ENTITY pref_defaultCharset_tip "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras.">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY about.cap "Ca SmartTemplate⁴">
+<!ENTITY about.cap "Ca SmartTemplates">
 <!ENTITY support.tab "Stöd">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Translator">
 <!ENTITY translatorNickname.label "Lakrits (BabelZilla)">
 <!ENTITY contributor.label "Contributor">
-<!ENTITY about.label "SmartTemplate⁴ erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
+<!ENTITY about.label "SmartTemplates erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
@@ -256,11 +256,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Exportering/importering av inställningar och mallar">
 <!ENTITY im-ex_note1.label "Du kan exportera och importera dina inställningar och mallar som associeras med varje konto.">
-<!ENTITY im-ex_note2.label "Välj först kontot du vill exportera i SmartTemplate⁴-inställningarnas rullgardinslist.">
+<!ENTITY im-ex_note2.label "Välj först kontot du vill exportera i SmartTemplates-inställningarnas rullgardinslist.">
 <!ENTITY im-ex_note3.label "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator.">
-<!ENTITY im-ex_note4.label "För att importera en fil, välj kontot du vill importera i SmartTemplate⁴-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet.">
-<!ENTITY im-ex_note5.label "Välj den SmartTemplate⁴-fil (xxx.st4) du vill importera.">
-<!ENTITY im-ex_note6.label "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplate⁴s alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras.">
+<!ENTITY im-ex_note4.label "För att importera en fil, välj kontot du vill importera i SmartTemplates-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet.">
+<!ENTITY im-ex_note5.label "Välj den SmartTemplates-fil (xxx.st4) du vill importera.">
+<!ENTITY im-ex_note6.label "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplatess alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras.">
 <!ENTITY html_note.cap "Kommentarer rörande HTML-mallar">
 <!ENTITY html_note.label "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!">
 <!ENTITY table.cap "ExampleUsage av variablerna">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "Svara">
 <!ENTITY table_fwd.label "Framåt">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Infoga din personliga licensnyckel here:">
 <!ENTITY label.insertLicense.tooltip "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring.">
 <!ENTITY button.pasteLicense "klistra in">
 <!ENTITY button.validateLicense "verifiera">
 <!ENTITY label.licenseValid "Din licens är giltig t.o.m.:">
-<!ENTITY licenseValidation.passed "Tack för att du registrerar SmartTemplate⁴ Pro! Alla licensbelagda funktioner är nu tillgängliga.">
-<!ENTITY licenseValidation.standard "Tack för att du registrerade SmartTemplate⁴ Standard - Du hjälper tillägget oerhört! Du kan nu också testa alla premiumfunktioner.">
+<!ENTITY licenseValidation.passed "Tack för att du registrerar SmartTemplates Pro! Alla licensbelagda funktioner är nu tillgängliga.">
+<!ENTITY licenseValidation.standard "Tack för att du registrerade SmartTemplates Standard - Du hjälper tillägget oerhört! Du kan nu också testa alla premiumfunktioner.">
 <!ENTITY licenseValidation.failed "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår.">
 <!ENTITY licenseValidation.expired "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens.">
 <!ENTITY licenseValidation.invalidAddon "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}.">

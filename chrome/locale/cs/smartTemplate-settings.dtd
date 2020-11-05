@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Uvození citace">
 <!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
 <!ENTITY pref_templateBox.label "Šablona">
-<!ENTITY pref_dialog.title "Nastavení SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Nastavení SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
 <!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
 <!ENTITY pref_showStatusIcon.label "Zobraz tlačítko v řádku statusu">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Zakázat implicitní uvození citace v Thunderbirdu">
 <!ENTITY pref_quotehead_tip "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. ">
 <!ENTITY pref_template_tip "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. ">
-<!ENTITY help_dialog_title "SmartTemplate⁴ Nápověda">
+<!ENTITY help_dialog_title "SmartTemplates Nápověda">
 <!ENTITY help_keyword.cap "Nápověda">
 <!ENTITY pref_debug_check "Ladicí mód">
 <!ENTITY pref_hideExamples "Skrýt záložku s příklady">
 <!ENTITY pref_silentUpdates "Tiché aktualizace">
-<!ENTITY pref_silentUpdates_tip "Neotevírejte protokol změn po aktualizaci SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Neotevírejte protokol změn po aktualizaci SmartTemplates.">
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
 <!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Podpora &quot;Stationery&quot; rozšíření">
-<!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "Toto vytváří možnost použít šablonu proměných ve tvém &quot;Stationery&quot;.">
 <!ENTITY pref_stationeryLink "Stationery rozšíření">
 <!ENTITY pref_forceParagraph "Vynucený mód odstavce">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Výchozí znakové sada">
 <!ENTITY pref_defaultCharset_tip "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "O SmartTemplate⁴">
+<!ENTITY about.cap "O SmartTemplates">
 <!ENTITY support.tab "Podpěra">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programátor">
@@ -256,11 +256,11 @@
 <!ENTITY timezonename.label "Značka časové zóny GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Export/Import nastavení šablon">
 <!ENTITY im-ex_note1.label "Můžeš exportovat a importovat tvé nastavení a šablony pro každý účet.">
-<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate⁴ v rozbalovacím poli.">
+<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplates v rozbalovacím poli.">
 <!ENTITY im-ex_note3.label "Dále vyber 'Soubor' ⇒ 'Export' ⇒ 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
-<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate⁴ nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
-<!ENTITY im-ex_note5.label "Vyber SmartTemplate⁴ soubor (xxx.st4) který chceš naimportovat.">
-<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplate⁴. To je standardní na této platformě a nebůže být změněno.">
+<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplates nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
+<!ENTITY im-ex_note5.label "Vyber SmartTemplates soubor (xxx.st4) který chceš naimportovat.">
+<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplates. To je standardní na této platformě a nebůže být změněno.">
 <!ENTITY html_note.cap "Poznámka pro HTML šablonu.">
 <!ENTITY html_note.label "Prosím používej pouze UTF-8 (Unicode) znaky v HTML šabloně!">
 <!ENTITY table.cap "Použití promněnných">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Sem vložte svůj osobní licenční klíč:">
 <!ENTITY label.insertLicense.tooltip "Váš licenční klíč je obsažen v e-mailu s potvrzením objednávky od Fastspring.">
 <!ENTITY button.pasteLicense "vložit">
 <!ENTITY button.validateLicense "legalizovat">
 <!ENTITY label.licenseValid "Vaše licence je platná do:">
-<!ENTITY licenseValidation.passed "Děkujeme za registraci SmartTemplate⁴ Pro! Všechny prémiové funkce jsou nyní odemčeny.">
-<!ENTITY licenseValidation.standard "Děkujeme za registraci SmartTemplate⁴ Standard - doplňku nesmírně pomáháte! Nyní můžete také otestovat všechny prémiové funkce.">
+<!ENTITY licenseValidation.passed "Děkujeme za registraci SmartTemplates Pro! Všechny prémiové funkce jsou nyní odemčeny.">
+<!ENTITY licenseValidation.standard "Děkujeme za registraci SmartTemplates Standard - doplňku nesmírně pomáháte! Nyní můžete také otestovat všechny prémiové funkce.">
 <!ENTITY licenseValidation.failed "Zadaný licenční klíč není platný. Pokyny naleznete ve svém e-mailu od FastSpring. Pokud problémy přetrvávají, kontaktujte mě na kartě Podpora.">
 <!ENTITY licenseValidation.expired "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci.">
 <!ENTITY licenseValidation.invalidAddon "Zadaný licenční klíč může být pro jiný doplněk. Licenční klíče pro {0} začínají {1}.">

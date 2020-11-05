@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Quote Header">
 <!ENTITY pref_quoteHeaderBox_tip "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Template">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ settings">
+<!ENTITY pref_dialog.title "SmartTemplates settings">
 <!ENTITY pref_breaksOnTop.label "Number of line breaks at top:">
 <!ENTITY pref_removeSig.label "Replace signature when changing email identity">
 <!ENTITY pref_showStatusIcon.label "Display button in status bar">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Disable default Thunderbird quote header">
 <!ENTITY pref_quotehead_tip "Disable default quote header. Please place your own header in the textbox above.">
 <!ENTITY pref_template_tip "You can enhance the template with 'variables'. Click advanced / variables for more information.">
-<!ENTITY help_dialog_title "SmartTemplate⁴ Help">
+<!ENTITY help_dialog_title "SmartTemplates Help">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Debug mode">
 <!ENTITY pref_hideExamples "Hide examples tab">
 <!ENTITY pref_silentUpdates "Silent updates">
-<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
+<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplates was updated.">
 <!ENTITY pref_debug_tip "Right-click for advanced debug options">
 <!ENTITY pref_nameSwap "Correct LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Changes 'LastName, FirstName' to 'First Last'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Replace variables in signature.">
 <!ENTITY pref_cursorInsertSpace "Insert Space to highlight &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Support Stationery addon">
-<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Supports using Stationery at the same time with SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "This makes it possible to use template variables in your Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Addon">
 <!ENTITY pref_forceParagraph "Force Paragraph Mode">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Default charset">
 <!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "About SmartTemplate⁴">
+<!ENTITY about.cap "About SmartTemplates">
 <!ENTITY support.tab "Support">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Translator">
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "Contributor">
-<!ENTITY about.label "SmartTemplate⁴ offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all.">
+<!ENTITY about.label "SmartTemplates offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Fixed variables">
 <!ENTITY ownname.label "Your name">
@@ -257,11 +257,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Settings and Templates Export/Import">
 <!ENTITY im-ex_note1.label "You can export and import your settings and templates associated with each account.">
-<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplate⁴ settings dropdown box.">
+<!ENTITY im-ex_note2.label "First select the account you want to export in the SmartTemplates settings dropdown box.">
 <!ENTITY im-ex_note3.label "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer.">
-<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplate⁴ settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
-<!ENTITY im-ex_note5.label "Select the SmartTemplate⁴ file (xxx.st4) you want to import.">
-<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplate⁴ Options window. This is normal behavior on this platforms and can't be changed.">
+<!ENTITY im-ex_note4.label "To import a file, select the account you want to import in the SmartTemplates settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar.">
+<!ENTITY im-ex_note5.label "Select the SmartTemplates file (xxx.st4) you want to import.">
+<!ENTITY im-ex_note6.label "NOTE: Apple/Macintosh platforms will have the menu bar in the title ribbon instead of the SmartTemplates Options window. This is normal behavior on this platforms and can't be changed.">
 <!ENTITY html_note.cap "Note for HTML templates">
 <!ENTITY html_note.label "Please use only UTF-8 (Unicode) charset inside HTML templates!">
 <!ENTITY table.cap "Usage of variables">
@@ -272,14 +272,14 @@
 <!ENTITY table_reply.label "Reply">
 <!ENTITY table_fwd.label "Forward">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Insert your personal License key here:">
 <!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
 <!ENTITY button.pasteLicense "paste">
 <!ENTITY button.validateLicense "validate">
 <!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplate⁴ Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
+<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplates Pro! All premium features are now unlocked.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
 <!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
 <!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">

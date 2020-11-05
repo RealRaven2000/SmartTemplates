@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Encabezado de cita">
 <!ENTITY pref_quoteHeaderBox_tip "Escriba aquí su encabezado de cita, por ejemplo: El &#37;date&#37; &#37;from(name)&#37; escribió:">
 <!ENTITY pref_templateBox.label "Plantilla">
-<!ENTITY pref_dialog.title "Opciones de SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Opciones de SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Saltos de línea en la parte superior:">
 <!ENTITY pref_removeSig.label "Cambiar firma al cambiar la identidad del correo">
 <!ENTITY pref_showStatusIcon.label "Mostrar botón en barra de estado">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Desactivar el encabezado de respuesta predeterminado de Thunderbird">
 <!ENTITY pref_quotehead_tip "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto.">
 <!ENTITY pref_template_tip "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles.">
-<!ENTITY help_dialog_title "Ayuda de SmartTemplate⁴">
+<!ENTITY help_dialog_title "Ayuda de SmartTemplates">
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
 <!ENTITY pref_hideExamples "Ocultar pestaña de ejemplos">
 <!ENTITY pref_silentUpdates "Actualizaciones silenciosas">
-<!ENTITY pref_silentUpdates_tip "No abra el registro de cambios después de actualizar SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "No abra el registro de cambios después de actualizar SmartTemplates.">
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Reemplazar variables en firma">
 <!ENTITY pref_cursorInsertSpace "Insertar espacio para resaltar el &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Apoyar la extensión Stationery">
-<!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a SmartTemplate⁴">
+<!ENTITY pref_stationerySupport_tip "Apoye utilizando Stationery junto a SmartTemplates">
 <!ENTITY pref_stationerySupport_tip2 "Así podrá usar variables de plantilla en su Stationery.">
 <!ENTITY pref_stationeryLink "Extensión Stationery">
 <!ENTITY pref_forceParagraph "Forzar modo párrafo">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Juego caracteres por defecto">
 <!ENTITY pref_defaultCharset_tip "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Acerca de SmartTemplate⁴">
+<!ENTITY about.cap "Acerca de SmartTemplates">
 <!ENTITY support.tab "Apoyo">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Desarrollador">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Traductor">
 <!ENTITY translatorNickname.label "urko (BabelZilla)">
 <!ENTITY contributor.label "Colaboradores">
-<!ENTITY about.label "SmartTemplate⁴ ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes).">
+<!ENTITY about.label "SmartTemplates ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes).">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Variables fijas">
 <!ENTITY ownname.label "Su nombre">
@@ -256,11 +256,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Importar/Exportar predisposiciones y plantillas">
 <!ENTITY im-ex_note1.label "Puede exportar e importar las predisposiciones y plantillas asociadas a cada cuenta.">
-<!ENTITY im-ex_note2.label "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplate⁴.">
+<!ENTITY im-ex_note2.label "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplates.">
 <!ENTITY im-ex_note3.label "Seleccione a continuación 'Archivo' ⇒ 'Exportar' ⇒ 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador.">
-<!ENTITY im-ex_note4.label "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplate⁴. Seleccione después 'Herramientas' =&gt; 'Importar' =&gt; 'Predisposiciones y plantillas' de la barra de menú.">
-<!ENTITY im-ex_note5.label "Seleccione el archivo SmartTemplate⁴ (xxx.st4) a importar.">
-<!ENTITY im-ex_note6.label "NOTA: En las plataformas Apple/Macintosh la barra de menú estará en la barra del título en vez de en la ventana de Opciones de SmartTemplate⁴. Es el comportamiento estándar en esas plataformas por lo que no se puede modificar.">
+<!ENTITY im-ex_note4.label "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplates. Seleccione después 'Herramientas' =&gt; 'Importar' =&gt; 'Predisposiciones y plantillas' de la barra de menú.">
+<!ENTITY im-ex_note5.label "Seleccione el archivo SmartTemplates (xxx.st4) a importar.">
+<!ENTITY im-ex_note6.label "NOTA: En las plataformas Apple/Macintosh la barra de menú estará en la barra del título en vez de en la ventana de Opciones de SmartTemplates. Es el comportamiento estándar en esas plataformas por lo que no se puede modificar.">
 <!ENTITY html_note.cap "Notas sobre las plantillas de HTML">
 <!ENTITY html_note.label "¡Por favor, utilice únicamente caracteres UTF-8 (Unicode) en las plantillas de HTML!">
 <!ENTITY table.cap "Uso de las variables">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "Responder">
 <!ENTITY table_fwd.label "Reenviar">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Introduzca su clave personal de Licencia:">
 <!ENTITY label.insertLicense.tooltip "Su clave de licencia está incluida en su correo de confirmación de pedido de Fastspring.">
 <!ENTITY button.pasteLicense "pegar">
 <!ENTITY button.validateLicense "validar">
 <!ENTITY label.licenseValid "Su licencia tiene validez hasta:">
-<!ENTITY licenseValidation.passed "Gracias por registrarse en SmartTemplate⁴ Pro. Ya se han activado todas las funcionalidades premium.">
-<!ENTITY licenseValidation.standard "Gracias por registrarte en SmartTemplate⁴ Standard - ¡Estás ayudando al complemento enormemente! Ahora también puedes probar todas las funciones premium.">
+<!ENTITY licenseValidation.passed "Gracias por registrarse en SmartTemplates Pro. Ya se han activado todas las funcionalidades premium.">
+<!ENTITY licenseValidation.standard "Gracias por registrarte en SmartTemplates Standard - ¡Estás ayudando al complemento enormemente! Ahora también puedes probar todas las funciones premium.">
 <!ENTITY licenseValidation.failed "La clave de licencia introducida no es válida. Compruebe las instrucciones que venían con el correo de Fastspring. Si sigue teniendo problemas, por favor contacte conmigo a través de la pestaña de Ayuda.">
 <!ENTITY licenseValidation.expired "La clave de licencia introducida está caducada. Por favor pulse el botón de la parte inferior para renovar su licencia.">
 <!ENTITY licenseValidation.invalidAddon "La clave de licencia introducida puede pertenecer a otra extensión. Las claves de licencia para {0} comienzan por {1}.">

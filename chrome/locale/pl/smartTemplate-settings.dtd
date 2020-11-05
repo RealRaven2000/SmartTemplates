@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Nagłówek cytatu">
 <!ENTITY pref_quoteHeaderBox_tip "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:">
 <!ENTITY pref_templateBox.label "Szablon">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ – ustawienia">
+<!ENTITY pref_dialog.title "SmartTemplates – ustawienia">
 <!ENTITY pref_breaksOnTop.label "Liczba wierszy odstępu na górze:">
 <!ENTITY pref_removeSig.label "Usuwaj podpis, gdy jest zmieniana tożsamość">
 <!ENTITY pref_showStatusIcon.label "Wyświetlaj przycisk na pasku stanu">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Użyj zamiast standardowego nagłówka">
 <!ENTITY pref_quotehead_tip "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym.">
 <!ENTITY pref_template_tip "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc.">
-<!ENTITY help_dialog_title "Pomoc SmartTemplate⁴">
+<!ENTITY help_dialog_title "Pomoc SmartTemplates">
 <!ENTITY help_keyword.cap "Pomoc">
 <!ENTITY pref_debug_check "Tryb debugowania">
 <!ENTITY pref_hideExamples "Ukryj kartę przykładów">
 <!ENTITY pref_silentUpdates "Ciche aktualizacje">
-<!ENTITY pref_silentUpdates_tip "Nie otwieraj dziennika zmian po aktualizacji SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Nie otwieraj dziennika zmian po aktualizacji SmartTemplates.">
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Domyślny zestaw znaków">
 <!ENTITY pref_defaultCharset_tip "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "SmartTemplate⁴ – informacje">
+<!ENTITY about.cap "SmartTemplates – informacje">
 <!ENTITY support.tab "Wsparcie">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programiosta">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Tłumacz">
 <!ENTITY translatorNickname.label "Leszek(teo)Życzkowski (BabelZilla)">
 <!ENTITY contributor.label "Współautor">
-<!ENTITY about.label "SmartTemplate⁴ oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.">
+<!ENTITY about.label "SmartTemplates oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Zmienne podstawowe">
 <!ENTITY ownname.label "Twoje imię">
@@ -256,11 +256,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST,… ">
 <!ENTITY im-ex.cap "Import/eksport ustawień i szablonów">
 <!ENTITY im-ex_note1.label "Można zaimportować i wyeksportować ustawienia i szablony skojarzone z każdym kontem.">
-<!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplate⁴ wybierz konto, które chcesz wyeksportować.">
+<!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplates wybierz konto, które chcesz wyeksportować.">
 <!ENTITY im-ex_note3.label "Następnie na pasku menu wybierz Narzędzia ⇒ Eksportuj ⇒ Ustawienia i szablony i zapisz plik (xxx.st4) na swoim komputerze.">
-<!ENTITY im-ex_note4.label "Aby zaimportować plik, z menu rozwijanego ustawień SmartTemplate⁴ wybierz konto, które chcesz zaimportować, a następnie na pasku menu wybierz Narzędzia ⇒ Importuj ⇒ Ustawienia i szablony.">
-<!ENTITY im-ex_note5.label "Wybierz plik SmartTemplate⁴ (xxx.st4), który chcesz zaimportować.">
-<!ENTITY im-ex_note6.label "Informacja: W systemach Apple/Macintosh pasek menu znajduje się na górnym pasku systemowym, a nie w oknie ustawień SmartTemplate⁴. Jest to standardowy wygląd w tych systemach i nie można go zmienić.">
+<!ENTITY im-ex_note4.label "Aby zaimportować plik, z menu rozwijanego ustawień SmartTemplates wybierz konto, które chcesz zaimportować, a następnie na pasku menu wybierz Narzędzia ⇒ Importuj ⇒ Ustawienia i szablony.">
+<!ENTITY im-ex_note5.label "Wybierz plik SmartTemplates (xxx.st4), który chcesz zaimportować.">
+<!ENTITY im-ex_note6.label "Informacja: W systemach Apple/Macintosh pasek menu znajduje się na górnym pasku systemowym, a nie w oknie ustawień SmartTemplates. Jest to standardowy wygląd w tych systemach i nie można go zmienić.">
 <!ENTITY html_note.cap "Informacje dla stosowania szablonów HTML">
 <!ENTITY html_note.label "W szablonach HTML należy używać kodowania znaków UTF-8 (Unicode)!">
 <!ENTITY table.cap "Zastosowanie zmiennych">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
 <!ENTITY button.validateLicense "Zatwierdź">
 <!ENTITY label.licenseValid "Twoja licencja jest ważna do:">
-<!ENTITY licenseValidation.passed "Dziękujemy za rejestrację SmartTemplate⁴ Pro! Wszystkie funkcje premium są teraz odblokowane.">
-<!ENTITY licenseValidation.standard "Dziękujemy za zarejestrowanie SmartTemplate⁴ Standard - Ogromnie pomagasz dodatkowi! Możesz teraz przetestować wszystkie funkcje premium.">
+<!ENTITY licenseValidation.passed "Dziękujemy za rejestrację SmartTemplates Pro! Wszystkie funkcje premium są teraz odblokowane.">
+<!ENTITY licenseValidation.standard "Dziękujemy za zarejestrowanie SmartTemplates Standard - Ogromnie pomagasz dodatkowi! Możesz teraz przetestować wszystkie funkcje premium.">
 <!ENTITY licenseValidation.failed "Wprowadzony klucz licencyjny jest nieprawidłowy. Sprawdź wiadomość od FastSpring zawierającą instrukcje. Jeśli problem występuje nadal, skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję.">
 <!ENTITY licenseValidation.invalidAddon "Podany klucz licencyjny może dotyczyć innego dodatku. Klucze licencyjne dla {0} zaczynają się od {1}.">

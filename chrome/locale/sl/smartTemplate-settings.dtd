@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Glava navedka">
 <!ENTITY pref_quoteHeaderBox_tip "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. &#37;date&#37;, &#37;from(name)&#37; je napisal:">
 <!ENTITY pref_templateBox.label "Predloga">
-<!ENTITY pref_dialog.title "Nastavitve SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Nastavitve SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Število prelomov vrstic na vrhu:">
 <!ENTITY pref_removeSig.label "Nadomesti podpis ob spremembi e-poštne identitete">
 <!ENTITY pref_showStatusIcon.label "Prikaži gumb v vrstici stanja">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Onemogoči privzeto Thunderbirdovo glavo navedka">
 <!ENTITY pref_quotehead_tip "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje.">
 <!ENTITY pref_template_tip "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti.">
-<!ENTITY help_dialog_title "Pomoč SmartTemplate⁴">
+<!ENTITY help_dialog_title "Pomoč SmartTemplates">
 <!ENTITY help_keyword.cap "Pomoč">
 <!ENTITY pref_debug_check "Razhroščevalni način">
 <!ENTITY pref_hideExamples "Skrij zavihek s primeri">
 <!ENTITY pref_silentUpdates "Tihe posodobitve">
-<!ENTITY pref_silentUpdates_tip "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates.">
 <!ENTITY pref_debug_tip "Desno kliknite za napredne razhroščevalne možnosti">
 <!ENTITY pref_nameSwap "Pravilni priimek, ime">
 <!ENTITY pref_nameSwap_tip "Spremeni 'priimek, ime' v 'ime priimek'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Nadomesti spremenljivke v podpisu.">
 <!ENTITY pref_cursorInsertSpace "Vstavi presledek za označitev &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Podpri dodatek Stationary">
-<!ENTITY pref_stationerySupport_tip "Podpira skupno uporabo dodatka Stationary in SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Podpira skupno uporabo dodatka Stationary in SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "To omogoča uporabo spremenljivk predlog v Dodatku Stationary.">
 <!ENTITY pref_stationeryLink "Dodatek Stationary">
 <!ENTITY pref_forceParagraph "Vsili odstavkovni način">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Privzeti nabor znakov">
 <!ENTITY pref_defaultCharset_tip "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "O dodatku SmartTemplate⁴">
+<!ENTITY about.cap "O dodatku SmartTemplates">
 <!ENTITY support.tab "Podpora">
 <!ENTITY creator.label "Avtor">
 <!ENTITY developer.label "Razvijalec">
@@ -287,11 +287,11 @@ Send feedback">
 <!ENTITY timezonename.label "GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Nastavitve in predloge Uvoz/Izvoz">
 <!ENTITY im-ex_note1.label "Svoje nastavitve in predloge za posamezni račun lahko izvozite ali uvozite.">
-<!ENTITY im-ex_note2.label "Najprej v spustnem polju nastavitev SmartTemplate⁴ izberite račun, ki ga želite izvoziti.">
+<!ENTITY im-ex_note2.label "Najprej v spustnem polju nastavitev SmartTemplates izberite račun, ki ga želite izvoziti.">
 <!ENTITY im-ex_note3.label "Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Izvozi' ⇒ 'Nastavitve in predloge' in shranite datoteko (xxx.st4) na svoj računalnik.">
-<!ENTITY im-ex_note4.label "Za uvoz datoteke v spustnem polju nastavitev SmartTemplate⁴ izberite račun za uvoz. Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Uvozi' ⇒ 'Nastavitve in predloge'.">
+<!ENTITY im-ex_note4.label "Za uvoz datoteke v spustnem polju nastavitev SmartTemplates izberite račun za uvoz. Potem iz menijske vrstice izberite 'Datoteka' ⇒ 'Uvozi' ⇒ 'Nastavitve in predloge'.">
 <!ENTITY im-ex_note5.label "Izberite datoteko SmartTemplate 4 (xxx.st4) za uvoz.">
-<!ENTITY im-ex_note6.label "OPOMBA: Okolja Apple/Macintosh  bodo imela menijsko vrstico v nazivnem traku namesto v oknu možnosti SmartTemplate⁴. To je običajno v teh okoljih in se ne da spremeniti.">
+<!ENTITY im-ex_note6.label "OPOMBA: Okolja Apple/Macintosh  bodo imela menijsko vrstico v nazivnem traku namesto v oknu možnosti SmartTemplates. To je običajno v teh okoljih in se ne da spremeniti.">
 <!ENTITY html_note.cap "Opomba za predloge HTML">
 <!ENTITY html_note.label "V predlogah HTML uporabite samo nabor znakov UTF-8 (Unicode)!">
 <!ENTITY table.cap "Uporaba spremenljivk">
@@ -302,14 +302,14 @@ Send feedback">
 <!ENTITY table_reply.label "Odgovori">
 <!ENTITY table_fwd.label "Posreduj">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Sem vstavite ključ osebnega dovoljenja:">
 <!ENTITY label.insertLicense.tooltip "Ključ dovoljenja se nahaja v e-pošti za potrditev naročila od Fastspringa.">
 <!ENTITY button.pasteLicense "prilepi">
 <!ENTITY button.validateLicense "potrdi">
 <!ENTITY label.licenseValid "Dovoljenje velja do:">
-<!ENTITY licenseValidation.passed "Hvala, ker ste registrirali SmartTemplate⁴ Pro! Vse lastnosti premium so sedaj odklenjene.">
-<!ENTITY licenseValidation.standard "Hvala za registracijo SmartTemplate⁴ Standard - Pomagate Add-on izjemno! Prav tako lahko zdaj preskusite vse premijske funkcije.">
+<!ENTITY licenseValidation.passed "Hvala, ker ste registrirali SmartTemplates Pro! Vse lastnosti premium so sedaj odklenjene.">
+<!ENTITY licenseValidation.standard "Hvala za registracijo SmartTemplates Standard - Pomagate Add-on izjemno! Prav tako lahko zdaj preskusite vse premijske funkcije.">
 <!ENTITY licenseValidation.failed "Vneseni ključ ni veljaven. Za navodila si oglejte e-pošto od FastSpringa. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora.">
 <!ENTITY licenseValidation.expired "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb.">
 <!ENTITY licenseValidation.invalidAddon "Vneseni ključ je lahko za drug dodatek. Ključi za {0} se začnejo s/z {1}.">

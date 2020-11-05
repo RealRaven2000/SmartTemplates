@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Заглавље цитирања">
 <!ENTITY pref_quoteHeaderBox_tip "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_dialog.title "Поставке SmartTemplate⁴-а">
+<!ENTITY pref_dialog.title "Поставке SmartTemplates-а">
 <!ENTITY pref_breaksOnTop.label "Број прелома на врху:">
 <!ENTITY pref_removeSig.label "Замени потпис при промени идентитета е-поште">
 <!ENTITY pref_showStatusIcon.label "Прикажи дугме у статусној траци">
@@ -73,7 +73,7 @@
 <!ENTITY pref_fwdhead.label "Онемогући подразумевано заглавље цитирања Thunderbird-а">
 <!ENTITY pref_quotehead_tip "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље.">
 <!ENTITY pref_template_tip "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација.">
-<!ENTITY help_dialog_title "Помоћ за SmartTemplate⁴">
+<!ENTITY help_dialog_title "Помоћ за SmartTemplates">
 <!ENTITY help_keyword.cap "Помоћ">
 <!ENTITY pref_debug_check "Отклањање грешака">
 <!ENTITY pref_hideExamples "Сакриј картицу са примерима">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Замените променљиве у потпису.">
 <!ENTITY pref_cursorInsertSpace "Убаци размак ради истицања &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Подршка за додатак Stationery">
-<!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplate⁴-ом.">
+<!ENTITY pref_stationerySupport_tip "Подржава коришћење додатка Stationery упоредо са SmartTemplates-ом.">
 <!ENTITY pref_stationerySupport_tip2 "Ово вам омогућава да користите променљиве шаблона у Stationery-ју.">
 <!ENTITY pref_stationeryLink "Додатак Stationery">
 <!ENTITY pref_forceParagraph "Force Paragraph Mode">
@@ -115,7 +115,7 @@
 <!ENTITY localized.label "Преводилац">
 <!ENTITY translatorNickname.label "Rancher">
 <!ENTITY contributor.label "Сарадник">
-<!ENTITY about.label "SmartTemplate⁴ вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
+<!ENTITY about.label "SmartTemplates вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
 <!-- #### HELP #### -->
 <!ENTITY fix_var.cap "Контролне променљиве">
 <!ENTITY ownname.label "Ваше име">
@@ -263,11 +263,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST…">
 <!ENTITY im-ex.cap "Увоз/извоз подешавања и шаблона">
 <!ENTITY im-ex_note1.label "Можете да извезете и увезете ваша подешавања и шаблоне који су повезани са сваким налогом.">
-<!ENTITY im-ex_note2.label "Прво изаберите налог који желите да извезете у падајућем менију са поставкама SmartTemplate⁴-а.">
+<!ENTITY im-ex_note2.label "Прво изаберите налог који желите да извезете у падајућем менију са поставкама SmartTemplates-а.">
 <!ENTITY im-ex_note3.label "Након тога, из менија изаберите „Датотека ⇒ Извези ⇒ Поставке и шаблони“ и сачувајте датотеку (xxx.st4) на рачунар.">
-<!ENTITY im-ex_note4.label "Да бисте увезли датотеку, изаберите налог из падајућег менија са поставкама SmartTemplate⁴-а. Након тога, из менија изаберите „Датотека ⇒ Увези ⇒ Поставке и шаблони“.">
-<!ENTITY im-ex_note5.label "Изаберите датотеку SmartTemplate⁴-а (xxx.st4) коју желите да увезете.">
-<!ENTITY im-ex_note6.label "Напомена: На Apple/Macintosh платформама, трака са менијем се налази у насловној траци уместо у прозору са опцијама SmartTemplate⁴-а.">
+<!ENTITY im-ex_note4.label "Да бисте увезли датотеку, изаберите налог из падајућег менија са поставкама SmartTemplates-а. Након тога, из менија изаберите „Датотека ⇒ Увези ⇒ Поставке и шаблони“.">
+<!ENTITY im-ex_note5.label "Изаберите датотеку SmartTemplates-а (xxx.st4) коју желите да увезете.">
+<!ENTITY im-ex_note6.label "Напомена: На Apple/Macintosh платформама, трака са менијем се налази у насловној траци уместо у прозору са опцијама SmartTemplates-а.">
 <!ENTITY html_note.cap "Напомена за HTML шаблоне">
 <!ENTITY html_note.label "Користите само UTF-8 (уникод) кодирање у HTML шаблонима.">
 <!ENTITY table.cap "Употреба променљивих">
@@ -278,14 +278,14 @@
 <!ENTITY table_reply.label "Одговори">
 <!ENTITY table_fwd.label "Проследи">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Унесите свој лични број лиценце овде:">
 <!ENTITY label.insertLicense.tooltip "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а.">
 <!ENTITY button.pasteLicense "налепи">
 <!ENTITY button.validateLicense "потврди">
 <!ENTITY label.licenseValid "Ваша лиценца важи до:">
-<!ENTITY licenseValidation.passed "Хвала што сте регистровали SmartTemplate⁴ про! Све могућности су сада откључане.">
-<!ENTITY licenseValidation.standard "Хвала што сте регистровали SmartTemplate⁴ Standard - Неизмерно помажете додатак! Сада можете тестирати и све премиум функције.">
+<!ENTITY licenseValidation.passed "Хвала што сте регистровали SmartTemplates про! Све могућности су сада откључане.">
+<!ENTITY licenseValidation.standard "Хвала што сте регистровали SmartTemplates Standard - Неизмерно помажете додатак! Сада можете тестирати и све премиум функције.">
 <!ENTITY licenseValidation.failed "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка.">
 <!ENTITY licenseValidation.expired "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу.">
 <!ENTITY licenseValidation.invalidAddon "Кључ лиценце који сте унели можда је за други додатак. Лиценчни кључеви за {0} почињу са {1}.">

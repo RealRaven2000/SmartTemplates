@@ -1,12 +1,12 @@
 <!-- #### OVERLAYS #### -->
-<!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
-<!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴ Einstellungen">
+<!ENTITY smartTemplate4.settings.label "SmartTemplates">
+<!ENTITY smartTemplate4.settings.tooltip "SmartTemplates Einstellungen">
 <!ENTITY smartTemplate4.cleandeferred.label "Variablen räumen!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Räumt alle SmartTemplate Variablen auf">
 <!ENTITY smartTemplate4.changeTemplate.label "Vorlage wechseln…">
 <!ENTITY smartTemplate4.changeTemplate.tooltip "Eine andere Vorlage laden - vor dem Editieren der Mail verwenden!">
-<!ENTITY smartTemplate4.deferredcontext.update "SmartTemplate⁴ Inhalt aktualisieren">
+<!ENTITY smartTemplate4.deferredcontext.update "SmartTemplates Inhalt aktualisieren">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Aktualisieren und durch Inhalt ersetzen">
-<!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplate⁴ Variable löschen">
+<!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplates Variable löschen">
 <!ENTITY smartTemplate4.changetemplate.label "Vorlage ersetzen…">
 <!ENTITY smartTemplate4.changetemplate.tooltip "Eine andere Vorlage auswählen - vor manuellem Editieren ausführen!">

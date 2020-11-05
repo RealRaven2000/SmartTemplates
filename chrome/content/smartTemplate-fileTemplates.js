@@ -390,7 +390,7 @@ SmartTemplate4.fileTemplates = {
           else {
             // Some other error
 						Components.utils.import("resource://gre/modules/Services.jsm");
-            Services.prompt.alert(null, 'SmartTemplate⁴ - loadCustomMenu', 'Reading the fileTemplates file failed\n' + ex);
+            Services.prompt.alert(null, 'SmartTemplates - loadCustomMenu', 'Reading the fileTemplates file failed\n' + ex);
           }     
           // no changes to Entries array
         }
@@ -409,7 +409,7 @@ SmartTemplate4.fileTemplates = {
 					function promise2_onFail(ex) {
 						util.logDebug ('promise2.then onFail():\n' + ex); 
 						Components.utils.import("resource://gre/modules/Services.jsm");
-						Services.prompt.alert(null, 'SmartTemplate⁴ - promise2.then', 'Did not load main menu\n' + ex);
+						Services.prompt.alert(null, 'SmartTemplates - promise2.then', 'Did not load main menu\n' + ex);
 						return promise2; // make loadCustomMenu chainable
 					}
 				);
@@ -532,7 +532,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					if (event.target.disabled) {
-						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplate⁴ license to use more than {1} templates!");
+						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplates license to use more than {1} templates!");
 						
 						SmartTemplate4.Message.display(
 							txt.replace("{1}", maxFreeItems), 
@@ -565,7 +565,7 @@ SmartTemplate4.fileTemplates = {
     */
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
-		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplate⁴ file template…");		
+		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplates file template…");		
 		menuitem.setAttribute("label", menuTitle);
 		menuitem.setAttribute("s4uiElement", "true");
 		menuitem.setAttribute("st4composeType", composeType);

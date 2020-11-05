@@ -22,7 +22,7 @@
 <!ENTITY pref_rsp.tab "返信">
 <!ENTITY pref_fwd.tab "転送">
 <!ENTITY pref_help.tab "ヘルプ">
-<!ENTITY pref_about.tab "SmartTemplate⁴ について">
+<!ENTITY pref_about.tab "SmartTemplates について">
 <!ENTITY pref_global.tab "グローバル設定">
 <!ENTITY pref_advanced.tab "詳細設定">
 <!ENTITY pref_variables.tab "変数">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "引用ヘッダー">
 <!ENTITY pref_quoteHeaderBox_tip "引用部冒頭のヘッダーを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "テンプレート">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ 設定">
+<!ENTITY pref_dialog.title "SmartTemplates 設定">
 <!ENTITY pref_breaksOnTop.label "ヘッダー上部の改行の数:">
 <!ENTITY pref_removeSig.label "差出人を変更したときに署名を削除する">
 <!ENTITY pref_showStatusIcon.label "ステータスバーにアイコンを表示する">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "既定の転送ヘッダーの代わりに使用する">
 <!ENTITY pref_quotehead_tip "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。">
 <!ENTITY pref_template_tip "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。">
-<!ENTITY help_dialog_title "SmartTemplate⁴ ヘルプ">
+<!ENTITY help_dialog_title "SmartTemplates ヘルプ">
 <!ENTITY help_keyword.cap "ヘルプ">
 <!ENTITY pref_debug_check "デバッグモード">
 <!ENTITY pref_hideExamples "テンプレート例のタブを隠す">
 <!ENTITY pref_silentUpdates "更新履歴の非表示">
-<!ENTITY pref_silentUpdates_tip "SmartTemplate⁴ の更新後に、更新履歴を表示しません">
+<!ENTITY pref_silentUpdates_tip "SmartTemplates の更新後に、更新履歴を表示しません">
 <!ENTITY pref_debug_tip "右クリックで詳細なデバッグオプションを表示します。">
 <!ENTITY pref_nameSwap "'姓, 名' 形式の表記を修正する">
 <!ENTITY pref_nameSwap_tip "'姓, 名' 形式の表記を '名 姓' 形式の表記に修正します。">
@@ -95,11 +95,11 @@
 <!ENTITY capitalizeNames "名前の最初の文字を大文字にする">
 <!ENTITY guessNameFromMail "名前をメールアドレスから推測します">
 <!ENTITY pref_parseSignature "署名での変数の使用を許可する">
-<!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplate⁴ の変数を利用可能にします。">
+<!ENTITY pref_parseSignature_tip "アカウント設定で設定した署名の中で SmartTemplates の変数を利用可能にします。">
 <!ENTITY pref_cursorInsertSpace "ハイライト表示された &#37;cursor&#37; にスペースを挿入する">
 <!ENTITY pref_stationerySupport "Stationery をサポートする">
-<!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplate⁴ の同時使用をサポートします。">
-<!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplate⁴ の変数を使用できます。">
+<!ENTITY pref_stationerySupport_tip "Stationery アドオンと SmartTemplates の同時使用をサポートします。">
+<!ENTITY pref_stationerySupport_tip2 "Stationery アドオンで SmartTemplates の変数を使用できます。">
 <!ENTITY pref_stationeryLink "Stationery アドオン">
 <!ENTITY pref_forceParagraph "強制的に段落モードを使用する">
 <!ENTITY pref_forceParagraph_tip "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "既定の文字エンコーディング">
 <!ENTITY pref_defaultCharset_tip "ヘッダーの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "SmartTemplate⁴ について">
+<!ENTITY about.cap "SmartTemplates について">
 <!ENTITY support.tab "サポート">
 <!ENTITY creator.label "作者">
 <!ENTITY developer.label "開発者">
@@ -257,10 +257,10 @@
 <!ENTITY im-ex.cap "インポート/エクスポート">
 <!ENTITY im-ex_note1.label "アカウントごとに設定とテンプレートをエクスポート/インポートできます。">
 <!ENTITY im-ex_note2.label "エクスポートしたいアカウントを選択します。">
-<!ENTITY im-ex_note3.label "'ツール' ⇒ 'エクスポート' ⇒ '設定とテンプレート' を選択し、SmartTemplate⁴ ファイル (拡張子 st4) を保存します。">
+<!ENTITY im-ex_note3.label "'ツール' ⇒ 'エクスポート' ⇒ '設定とテンプレート' を選択し、SmartTemplates ファイル (拡張子 st4) を保存します。">
 <!ENTITY im-ex_note4.label "インポート先のアカウントを選択します。次に、'ツール' ⇒ 'インポート' ⇒ '設定とテンプレート' を選択します。">
-<!ENTITY im-ex_note5.label "インポートしたい SmartTemplate⁴ ファイル (拡張子 st4) を選択します">
-<!ENTITY im-ex_note6.label "注: Apple/Macintosh 環境では、メニューバーはSmartTemplate⁴ 設定ウインドウではなくタイトルリボンにあります。">
+<!ENTITY im-ex_note5.label "インポートしたい SmartTemplates ファイル (拡張子 st4) を選択します">
+<!ENTITY im-ex_note6.label "注: Apple/Macintosh 環境では、メニューバーはSmartTemplates 設定ウインドウではなくタイトルリボンにあります。">
 <!ENTITY html_note.cap "HTML テンプレートについて">
 <!ENTITY html_note.label "HTML テンプレートでは UTF-8 (Unicode) のみ利用可能です。">
 <!ENTITY table.cap "変数の使用">
@@ -271,14 +271,14 @@
 <!ENTITY table_reply.label "返信">
 <!ENTITY table_fwd.label "転送">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "個人ライセンスキーをここに記入してください:">
 <!ENTITY label.insertLicense.tooltip "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。">
 <!ENTITY button.pasteLicense "貼り付け">
 <!ENTITY button.validateLicense "認証">
 <!ENTITY label.licenseValid "ライセンスの有効期限:">
-<!ENTITY licenseValidation.passed "SmartTemplate⁴ Pro のご登録ありがとうございます！ すべてのプレミアム機能がロック解除されました。">
-<!ENTITY licenseValidation.standard "SmartTemplate⁴ Standard のご登録ありがとうございます！ プレミアム機能のテストが行えるようになりました。">
+<!ENTITY licenseValidation.passed "SmartTemplates Pro のご登録ありがとうございます！ すべてのプレミアム機能がロック解除されました。">
+<!ENTITY licenseValidation.standard "SmartTemplates Standard のご登録ありがとうございます！ プレミアム機能のテストが行えるようになりました。">
 <!ENTITY licenseValidation.failed "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。">
 <!ENTITY licenseValidation.expired "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。">
 <!ENTITY licenseValidation.invalidAddon "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。">

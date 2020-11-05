@@ -1460,7 +1460,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			      startVars = msg.search(/%\S*%/),
 						isTruncateStart = (startVars > 10); // cut off text before first %var%
 			let txtAlert = util.getBundleString("SmartTemplate4.notification.license.required", 
-			                 "SmartTemplate⁴ requires a license to continue working. Read more at the bottom of the compose window."),
+			                 "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
 					txtParseTitle = util.getBundleString("SmartTemplate4.notification.parsing", "Parsing variables:"),
 			    parseString = 
 						(isTruncateStart ? "…" : "") +
@@ -2747,7 +2747,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         Components.utils.import('resource://gre/modules/Services.jsm');
       
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
-      Services.prompt.alert(null, "SmartTemplate⁴", "Something went wrong trying to read a file: " + txt + "\n" +
+      Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
         "Please check Javascript error console for detailed error message.");
     }
     return html;

@@ -1657,7 +1657,7 @@ SmartTemplate4.Settings = {
 					if (addonName) {
 						SmartTemplate4.Settings.showValidationMessage(validationInvalidAddon, silent);
 						let txt = validationInvalidAddon.textContent;
-						txt = txt.replace('{0}','SmartTemplate⁴').replace('{1}','ST'); // keys for {0} start with {1}
+						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
 							txt += " " + util.getBundleString("SmartTemplate4.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
 						}
