@@ -4,16 +4,20 @@
   font-size: 1.4em;
   font-weight: bold;
   margin: 0 0 0.5em;
-  padding: 0.2em 0 0.8em;
+  padding: 0.2em 0 0.4em;
+  line-height: 32px;
   text-align: center;
   text-shadow: black 0px 0px 2px, rgba(0, 0, 0, 0.85) 1px 1px 2px;
 }
 .project-name:before {
-  content: url('/img/icon16x16.png'); /* IE8 or higher */
-  vertical-align: middle;
+  content: url('/img/icon32x32.png'); 
+  vertical-align: bottom;
   padding-right: 0.3em;
+  line-height: 32px;
 }
-
+.project-name img {
+  vertical-align: bottom;
+}
 
 /* Navbar Style URL order left to right */
 td.navigation-list {
