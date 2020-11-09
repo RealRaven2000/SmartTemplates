@@ -49,8 +49,8 @@ var dateUK_WeekdayNameLong = weekdayNameLong[now.getDay()] + ', ' + dayPre0 + da
 /******************************************************************/
 
 // vanilla's
-var vanillaWelcome = 'Welcome to the SmartTemplate<sup>4</sup> Project'; // basic greeting phrase without "!" on end
-var vanillaThanks = 'Thanks for updating SmartTemplate<sup>4</sup>'; // basic thanks phrase without "!" on end
+var vanillaWelcome = 'Welcome to the SmartTemplates Project'; // basic greeting phrase without "!" on end
+var vanillaThanks = 'Thanks for updating SmartTemplates'; // basic thanks phrase without "!" on end
 // additional for seasons
 var halloween = ' and a Spooky Halloween everyone!'; // additional halloween phrase
 var christmas = ' and a Merry Christmas everyone!'; // additional christmas phrase

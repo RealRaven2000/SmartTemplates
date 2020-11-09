@@ -6,10 +6,10 @@ permalink: stationery.html
 <!-- STATIONERY.HTML -->
 <h2 class="page-header">Stationery Support / External HTML Template Files</h2>
 
-<p>Latest news: for Thunderbird 68, SmartTemplate&#8308; has successfully added a file templating system. 
+<p>Latest news: for Thunderbird 68, SmartTemplates has successfully added a file templating system. 
   This replaces Stationery which is not supporting Thunderbird 68 anymore. If you are still using 
 	Thunderbird 60.8 or an earlier verison at this stage, you can read the documentation below. To move 
-	forward into 2020, check out the "template files" feature in SmartTemplate&#8308; instead:
+	forward into 2020, check out the "template files" feature in SmartTemplates instead:
 </p>
 <h3>How to use Template Files (instead of Stationery Ad-on)</h3>
 <p>You select an external template via a dropdown on the reply / write or forward button:
@@ -43,7 +43,7 @@ src="data:image/png;filename=cbbcdhchmmcihlkb.png;base64,iVBORw0KGgoAAAANSUhEUgA
 <a id="whatIsStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
  <h3>What is Stationery?</h3>
  
-<p>From version 0.9.3 onwards, SmartTemplate&#8308; supports integration with the Stationery addon. 
+<p>From version 0.9.3 onwards, SmartTemplates supports integration with the Stationery addon. 
 This is made possible through some changes that <a href="https://addons.mozilla.org/thunderbird/user/98987/" target="_blank" title="Visit arivald ATN Page">Arivald</a>, the owner of the Stationery extensions kindly added, 
 and is available from version 0.8 of Stationery. 
 </p>
@@ -52,7 +52,7 @@ and is available from version 0.8 of Stationery.
  <p>Stationery is an addon that allows adding "outlook-style" stationery to your emails. 
     What's more, it can be very well used to create powerful mail templates for repetitive tasks
     such as sending out standard mails or replies; one thing that is missing in its functionality is
-    the ability to add in a variety of mail header based variables, this is where SmartTemplate&#8308; comes in.</p>
+    the ability to add in a variety of mail header based variables, this is where SmartTemplates comes in.</p>
 
 <p>Stationery uses HTML files as templates for mail. It allows using different templates in replies / forwarded mail
    and makes it possible to select the template using a simple click on a chevron beside the reply button:
@@ -68,13 +68,13 @@ and is available from version 0.8 of Stationery.
    
 
  <a id="howDoesSt4ImproveStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
-<h3>How does SmartTemplate&#8308; improve Stationery?</h3>
+<h3>How does SmartTemplates improve Stationery?</h3>
  
- <p>With the new global option "Support Stationery addon", SmartTemplate&#8308; is now able to replace variables 
-    from within Stationery files, like it does in your SmartTemplate&#8308; settings. Once a user selects a Stationery template,
-    the (identity-based) template of SmartTemplate&#8308; will be ignored, and it will instead do its replacement
+ <p>With the new global option "Support Stationery addon", SmartTemplates is now able to replace variables 
+    from within Stationery files, like it does in your SmartTemplates settings. Once a user selects a Stationery template,
+    the (identity-based) template of SmartTemplates will be ignored, and it will instead do its replacement
     work on the template provided by Stationery. This means you can now use all variables that you have been 
-    using from within SmartTemplate&#8308;, also within the Stationery.</p>
+    using from within SmartTemplates, also within the Stationery.</p>
 
 <p>To enable stationery support, go to <i>Stationery Options, Global Settings</i> and activate the option "Support Stationery addon": 
    <br>
@@ -85,14 +85,14 @@ and is available from version 0.8 of Stationery.
    I am already using it on a daily basis for replying to support mails.</p>
    
  <a id="howtoUse"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
- <h3>How do I use SmartTemplate&#8308; with Stationery?</h3>
+ <h3>How do I use SmartTemplates with Stationery?</h3>
  
  <p>You can use pretty much all <a href="/variables.html">variables</a> directly in your stationery files. When you select a Stationery 
-    during writing or replying to mail, then the <a href="/templates.html">SmartTemplate&#8308; templates</a> which are bound to the account identity of
+    during writing or replying to mail, then the <a href="/templates.html">SmartTemplates templates</a> which are bound to the account identity of
     your current email will be temporarily <i>ignored</i>. This means you do not need any special settings in quote / template as your Stationery 
 	file supplies everything.
 </P>
-<p>	Instead SmartTemplate&#8308; will search and replace the special
+<p>	Instead SmartTemplates will search and replace the special
     header variables in the Stationery itself. This turns Stationery into a full blown templating application.</p>
 <p> Additionally, you can use the following powerful <a href="/variables.html">variables</a> to control the content and behavior of your Stationery Template:</p>
 
@@ -100,7 +100,7 @@ and is available from version 0.8 of Stationery.
  <ul>
    <li><code>%sig(HTML)%</code> / <code>%sig(Text)%</code> = Inserts Signature (will be read from Account Settings). Your signature may also contain other variables. 
           If you want st4 to replace variables in the signature, make sure to enable the option <i>Process signature</i> in
-          SmartTemplate&#8308;'s advanced settings:<br>
+          SmartTemplates's advanced settings:<br>
           <img src="/screenshots/settings-process-sig.png" class="screenshot" alt="process signature" />
   </li>
   <li><code>%cursor%</code> = Controls where your cursor will go when the email body gets the focus</li>
@@ -115,27 +115,27 @@ and is available from version 0.8 of Stationery.
 	</li>
   <br>
    <span class="attention"><em>ATTENTION:</em>
-     You cannot use <code class="inline">%quotePlaceholder%</code> or <code class="inline">%quoteHeader%</code> in SmartTemplate&#8308; directly; it is only allowed in your Stationery files.
+     You cannot use <code class="inline">%quotePlaceholder%</code> or <code class="inline">%quoteHeader%</code> in SmartTemplates directly; it is only allowed in your Stationery files.
    </span>			
  </ul>
  <p>For a more complete list of variables that you can use in your Stationery, please read the <a href="/variables.html">variables page</a>.</p>
 </article>
 
  <a id="example"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
- <h3>Example of a Stationery with SmartTemplate&#8308; variables</h3>
+ <h3>Example of a Stationery with SmartTemplates variables</h3>
  
  <p>Here is an example of a Stationery I use when I write support email. The quoted text is automatically inserted into the inner 
     container via <code class="inline">%quotePlaceholder%</code>. Also, <code class="inline">%subject%</code> is used to show the conversation title 
     in the top. Note that the signature (green box) is injected into the stationery using the <code class="inline">%sig(HTML)%</code> / <code class="inline">%sig(Text)%</code> variable. The signature
-    itself also contains SmartTemplate&#8308; variables (<code class="inline">%identity(name)%</code>).</p>
+    itself also contains SmartTemplates variables (<code class="inline">%identity(name)%</code>).</p>
 
 <p>
  <img src="/screenshots/stationery-example.png" class="screenshot" alt="stationery example" style="border-radius: 0 !important; padding: 2em 1em; background: white;" />
 </p>
 
-<p>We hope you enjoy this new and powerful features of SmartTemplate&#8308;.</p>
+<p>We hope you enjoy this new and powerful features of SmartTemplates.</p>
 
 <p class="scream">
- Please, <a href="https://addons.thunderbird.net/thunderbird/addon/324497/reviews" title="Leave some Feedback for SmartTemplate⁴ on ATN" target="_blank">leave some feedback</a> at the Mozilla Addons Page - spread the word so more people start using it!
+ Please, <a href="https://addons.thunderbird.net/thunderbird/addon/324497/reviews" title="Leave some Feedback for SmartTemplates on ATN" target="_blank">leave some feedback</a> at the Mozilla Addons Page - spread the word so more people start using it!
 </p>
 <!-- END STATIONERY.HTML -->
