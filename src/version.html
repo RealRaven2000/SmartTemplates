@@ -88,7 +88,7 @@ permalink: version.html
   <h3>Prereleases &amp; Prototypes (no warantees!)</h3>
 
   <p>Prereleases &amp; Prototypes are currently only released via our
-	   <a href="https://www.mozdev.org/bugs/buglist.cgi?product=smarttemplate4" title="Mozdev Bugs Database" target="_blank" >Bugzilla Bug Tracker</a>.
+	   <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/" title="Github issue tracker" target="_blank" >github issue tracker</a>.
 		 All latest changes including ongoing work on bugs you have reported can be found on the Change Log of <a href="#head">latest version</a>.
    <br><!-- old mozdev download url http://downloads.mozdev.org/SmartTemplates -->
    A full list of mozdev download Mirrors can also be found <a href="http://mirrors.mozdev.org/" title="Full Mozdev Mirror List" target="_blank">here</a>.
@@ -102,16 +102,15 @@ permalink: version.html
   <div class="infoTab" id="breaking-news">
    <h5 class="infoHeader"><script type="text/javascript">latestNewsHeadline();</script></h5><!-- Latest News Headline filled by JavaScript -->
     <p class="miniquote">
-		  SmartTemplates is now available to support the next ESR release Thunderbird 68, which will be released
-			in closer to the end of 2019. 
+		  SmartTemplates is now available to support the next ESR release Thunderbird 78, which has been released in November 2020. 
 			SmartTemplates Pro licenses will fund ongoing work to support future compatibility with Thunderbird.
 		</p>
     <p class="miniquote">
-      As latest feature I improved the new <code class="inline">%spellcheck()%</code> function, 
-		  you can now also toggle automatic proofing on / off. 
+      As latest feature I improved the new <code class="inline">%style()%</code> function, 
+		  which can be used to include and share external style sheets.
     </p>
     <p class="miniquote">
-      There are also more improvements for former Stationery users, to make the workflow in SmartTemplate&#8308 more obvious.
+      There are also more improvements for former Stationery users, to make the workflow in SmartTemplates  more obvious.
       There is a <img src="/img/fugue-question.png" alt="question mark"/> help button that links to the
       <a href="http://smarttemplate4.mozdev.org/stationery.html" target="_blank">Stationery users support page</a>.
     </p>
@@ -336,7 +335,7 @@ permalink: version.html
         a developer and am currently thinking of ways to fund raise the development effort - probably several
         man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will 
         not happen until September 2020.
-        If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78,
+        If you are interested in using a version of SmartTemplates  that works with Thunderbird 78,
         consider         
         <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
         to support the project.
@@ -449,15 +448,15 @@ permalink: version.html
       <p> 
         I will also have to rewrite all mail Add-ons as web extensions, which is currently 
         not yet possible as all necessary APIs to replace the deprecated tech has not been implemented.
-        As in between step I plan to release SmartTemplate&#8308 as a "web experiment" for Thunderbird 78+
+        As in between step I plan to release SmartTemplates  as a "web experiment" for Thunderbird 78+
         but this will take a few weeks of work. If you are interested in using a version of 
-        SmartTemplate&#8308 that works with Thunderbird 78, 
+        SmartTemplates  that works with Thunderbird 78, 
         <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a license</a> to support the project.
       </p>
     </li>  
     
     <li> 2.11.1
-       <p> SmartTemplate&#8308 now adds the new <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/24">change template button</a> 
+       <p> SmartTemplates  now adds the new <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/24">change template button</a> 
        to toolbar automatically. I don't think many people have actually seen or tried it so far
        even though it was a much requested feature. Keep forgetting that nobody has time to read change logs - 
        a feature that cannot be seen might as well not be there.</p>
@@ -614,7 +613,7 @@ permalink: version.html
   <ul>
     <li>
       <p><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/59">[issue 59]</a>
-        External templates: SmartTemplate&#8308 now supports image tags with relative location. 
+        External templates: SmartTemplates  now supports image tags with relative location. 
         This will make external templates management more compatible with Stationery and make it 
         easier to preview / trouble shoot our templates in a web browser.
       </p>
@@ -1020,12 +1019,12 @@ Sender: %from%
   <ul>
     <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/7">[issue 7]</a> 
       Losing all typed text in compose window when changing identity / signature not updated correctly.
-      <p>Normally, SmartTemplate&#8308 is designed to do all processing (building the email and replacing variables)
+      <p>Normally, SmartTemplates  is designed to do all processing (building the email and replacing variables)
       when opening the compose window; it also does this when you change identity provided you have not typed
       any text in the body of the email. In that case, Thunderbird rebuilds the email itself, 
       thereby ignoring SmartTemplate and reusing the typed text. This could also lead to losing typed text 
       and variables within the signature not being replaced.</p>
-      <p>In this new version this behavior is improved: SmartTemplate&#8308 will now process the (replaced) Signature 
+      <p>In this new version this behavior is improved: SmartTemplates  will now process the (replaced) Signature 
         if it contains SmartTemplate variables. It will also replace all "late resolved" variable fields (such as
         <code class="inline">%to(name)%</code>) when changing the identity. Since Thunderbird cannot recreate the JavaScript
         necessary for these advanced functions all "late resolved" variables will be replaced; they will be removed if they
@@ -1040,7 +1039,7 @@ Sender: %from%
       </p>
     </li>
     <li>Remember that you can disable update messages - once you have a license you can set the change log tab 
-        not to open after a SmartTemplate&#8308 update. The setting can be found on the
+        not to open after a SmartTemplates  update. The setting can be found on the
         license tab:<br>
       <img class="screenshot" src="img/silentUpdates.png" alt="silent updates option"/>
     </li>    
@@ -1068,7 +1067,7 @@ Sender: %from%
     </li>
     <li>Fixed "cut off descriptions in extended settings" in Linux </li>
     <li>Added silent update feature - if you have a license you can now disable the change log tab 
-        which is normally opened after a SmartTemplate&#8308 update. The setting can be found on the
+        which is normally opened after a SmartTemplates  update. The setting can be found on the
         license tab:<br>
         <img class="screenshot" src="img/silentUpdates.png" alt="silent updates option"/>
         </li>
@@ -1312,7 +1311,7 @@ Sender: %from%
   <ul>
 		<li>
 		  Increased the trial period to 28 days. As adoption of the Standard License were decent I want 
-			to give more users a chance to test SmartTemplate&#8308 with the next version of Thunderbird.
+			to give more users a chance to test SmartTemplates  with the next version of Thunderbird.
 		</li>
 		<li>
 		  On popular demand, I localized the license shop for Japanase, Russian, German, Polish, Italian,
