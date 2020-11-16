@@ -365,8 +365,11 @@ SmartTemplate4.fileTemplates = {
 					}
           
           let data = JSON.parse(CustomMenuData);  
+          util.logDebugOptional ("fileTemplates", "fill Write entries...");
 					fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, fromOptions ? fileTemplates.RichList('new') : null);
+          util.logDebugOptional ("fileTemplates", "fill Reply entries...");
 					fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, fromOptions ? fileTemplates.RichList('rsp') : null);
+          util.logDebugOptional ("fileTemplates", "fill Forward entries...");
 					fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, fromOptions ? fileTemplates.RichList('fwd') : null);
 					
 					

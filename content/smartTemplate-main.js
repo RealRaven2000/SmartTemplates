@@ -454,10 +454,14 @@ END LICENSE BLOCK
     # [issue 74] In some cases the menu templates in compact header reply buttons are doubled up
     # [issue 73] Improve Name Capitalization: support double names, such as Klaus-Dieter
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
+    # [issue 62] reply with template doesn't work from "single message" window 
     
   Version 2.12 - WIP
     # [issue 77] - %file()% path truncated at front by 1 letter on Mac OS
     # [issue 37] - SmartTemplate destroys default Bcc switching on account change as configured in TB
+    # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
+    # [issue 85] - Dead link on addons homepage 
+    
     
     
 =========================
@@ -823,7 +827,8 @@ var SmartTemplate4 = {
 		    isInserted = false;
 		try {
 			if (prefs.isDebugOption('stationery')) debugger;
-			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			if (!root.getAttribute('smartTemplateInserted') || gMsgCompose.type == msgComposeType.ForwardInline // issue 94
+        || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
 				// if insertTemplate throws, we avoid calling it again
