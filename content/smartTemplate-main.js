@@ -456,13 +456,13 @@ END LICENSE BLOCK
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
     # [issue 62] reply with template doesn't work from "single message" window 
     
-  Version 2.12 - WIP
+  Version 2.12 - 16/11/2020
     # [issue 77] - %file()% path truncated at front by 1 letter on Mac OS
     # [issue 37] - SmartTemplate destroys default Bcc switching on account change as configured in TB
     # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
     # [issue 85] - Dead link on addons homepage 
     
-    
+  Versino 2.13 - ???
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
