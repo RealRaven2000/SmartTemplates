@@ -42,7 +42,7 @@ pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-di
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
 pref("extensions.smartTemplate4.dateformat.year", "numeric"); // change to "2-digit" for forcing 2digit dateshort only
-
+pref("extensions.smartTemplate4.allowScripts", false); // prohibit running Javascript unless users know what they are doing and set this to true
 
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);

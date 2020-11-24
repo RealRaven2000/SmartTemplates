@@ -1,16 +1,18 @@
 /* shared module for installation popups */
 
 async function updateActions(addonName) {
-  const mxUtilties = messenger.Utilities;
+  const mxUtilties = messenger.Utilities,
+        manifest = await messenger.runtime.getManifest(),
+        addonVer = manifest.version;
   // LICENSING FLOW
   
   let isLicensed = await mxUtilties.isLicensed(true),
-    isExpired = await mxUtilties.LicenseIsExpired();
+      isExpired = await mxUtilties.LicenseIsExpired();
         
-  console.log("Addon " + addonName + "\n" +
-    "isLicensed = " + isLicensed + "\n" +
-    "isExpired = " + isExpired + "\n"
-  );
+  //console.log("Addon " + addonName + "\n" +
+  //  "isLicensed = " + isLicensed + "\n" +
+  //  "isExpired = " + isExpired + "\n"
+  //);
   
   function hide(id) {
     document.getElementById(id).setAttribute('collapsed',true);
@@ -21,9 +23,12 @@ async function updateActions(addonName) {
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
   // purchaseLicenseListItem - not collapsed
+  hide('licenseExtended');
+  
   if (isLicensed) {
     hide('purchaseLicenseListItem');
     hide('register');
+    
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
       hide('extend');
@@ -33,8 +38,16 @@ async function updateActions(addonName) {
     else { // License Extension
       hide('renewLicenseListItem');
       hide('renew');
-      show('extendLicenseListItem');
-      show('extend');
+      let gpdays = await mxUtilties.LicensedDaysLeft();
+      if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
+        show('extendLicenseListItem');
+        show('extend');
+      }
+      else {
+        show('licenseExtended');
+        hide('extendLicenseListItem');
+        hide('extend');
+      }
     }
   }  
   

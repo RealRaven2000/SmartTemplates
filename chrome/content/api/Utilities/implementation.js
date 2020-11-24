@@ -42,6 +42,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         LicenseIsProUser() {
           return  win.SmartTemplate4.Util.hasLicense(false);
         },
+        
+        LicensedDaysLeft() {
+          let today = new Date(),
+              licensedDate = new Date(win.SmartTemplate4.Licenser.DecryptedDate),
+              daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
+          return daysLeft;
+        },
 
         openLinkExternally: function(url) {
           let uri = url;

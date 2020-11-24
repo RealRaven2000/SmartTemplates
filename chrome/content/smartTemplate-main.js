@@ -450,12 +450,13 @@ END LICENSE BLOCK
     # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
     # [issue 68] Regression (2.11): After update SmartTemplates always displays nonlicensed support sites
     
-  Version 2.11.2 - WIP  
+  Version 2.11.2 - 10/07/2020
     # [issue 74] In some cases the menu templates in compact header reply buttons are doubled up
     # [issue 73] Improve Name Capitalization: support double names, such as Klaus-Dieter
     # [issue 75] Clicking %style% from variables tabs inserted %file% instead.
+    # [issue 62] reply with template doesn't work from "single message" window 
     
-  Version 3.0 (ESR78) - WIP
+  Version 3.0 (ESR78) - 04/11/2020
     # [issue 69] - Make SmartTemplates compatible with Thunderbird 78 ESR
     #            - Remove Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox support
     #            - Remove support for SeaMonkey
@@ -463,6 +464,12 @@ END LICENSE BLOCK
     #            - Rewrote filling in variables and focus method to work with new address widgets
     #            - rewrite all template dropdowns
     
+  Version 3.1 - WIP
+    # version bump was necessary after release 2.12.1 for my legacy Thunderbird users (Tb60 and older)    
+    # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
+    # [issue 85] - fixed some dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)
+    # Reenable the sandboxed string script by Benito van der Zander. Set extensions.smartTemplate4.allowScripts = true 
+    #   to get them back!
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -707,7 +714,9 @@ var SmartTemplate4 = {
 		    root = editor.rootElement,
 		    isInserted = false;
 		try {
-			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+      // guard against forwarding my own message (body may have the smartTemplateInserted flag already)
+			if ( !root.getAttribute('smartTemplateInserted') || gMsgCompose.type == msgComposeType.ForwardInline
+          || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
 				// if insertTemplate throws, we avoid calling it again

@@ -28,16 +28,13 @@ END LICENSE BLOCK */
           addonName = manifest.name, // or mxUtilties.getAddonName()); == 'quickFilters'
           addonVer = manifest.version,
           appVer = browserInfo.version,
-          hoursWorked = 290,
+          hoursWorked = 300,
           remindInDays = 10;
-    const mxUtilties = messenger.Utilities; // helper functions for content,  see api/Utilities
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
     
-        
-      
     let h1 = document.getElementById('heading-updated');
     if (h1) {
       // this api function can do replacements for us

@@ -11,9 +11,7 @@
  async function main() {
    
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
-    // if (temporary) return; // skip during development
-    debugger;
-    console.log("main st-background - reason:" + reason);
+    // console.log("main st-background - reason:" + reason);
     switch (reason) {
       case "install":
         {
@@ -26,9 +24,9 @@
         {
           const url = browser.runtime.getURL("popup/update.html");
           //await browser.tabs.create({ url });
-        let screenH = window.screen.height,
-            windowHeight = (screenH > 830) ? 830 : screenH;
-        await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
+          let screenH = window.screen.height,
+              windowHeight = (screenH > 870) ? 870 : screenH;
+          await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
         }
         break;
       // see below
@@ -42,7 +40,7 @@
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
   
   messenger.WindowListener.registerChromeUrl([ 
-      ["content", "smarttemplate4", "chrome/content/"],
+      ["content",  "smarttemplate4", "chrome/content/"],
       ["resource", "smarttemplate4", "chrome/content/"],
       ["locale", "smarttemplate4", "en-US", "chrome/locale/en-US/"],
       ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],

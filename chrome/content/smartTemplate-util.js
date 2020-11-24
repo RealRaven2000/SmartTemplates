@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.0",
+	HARDCODED_CURRENTVERSION : "3.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -2576,11 +2576,14 @@ SmartTemplate4.Util = {
     
     let retry = util.retrySpellCheck || 0;
     try {
-      let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
-          o1 = {}, 
-          o2 = {};
+      let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker;
       if (language=='on') {
-        gSpellChecker.enabled = true;
+        if (enableInlineSpellCheck) {
+          enableInlineSpellCheck(false);
+          enableInlineSpellCheck(true);
+        }
+        else
+          gSpellChecker.enabled = true;
         util.logDebug('Enabled automatic spellcheck');
         return;
       }
@@ -2609,41 +2612,60 @@ SmartTemplate4.Util = {
         }
       }
       if (language=='off') {
+        if (enableInlineSpellCheck)
+          enableInlineSpellCheck(false);
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
         util.logDebug('Disabled automatic spellcheck');
         return;
       }
       
-      spellChecker.GetDictionaryList(o1, o2);
+      
       util.retrySpellCheck=0;
       // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
-      let dictList = o1.value, 
-          count = o2.value,
+      let dictList = spellChecker.GetDictionaryList(), 
+          count = dictList.length,
           found = false;
       if (count==0) {
         let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
         throw wrn;
       }
       
-      if (language.length>=2) 
+      if (language.length>=2) {
+        // exact match
         for (let i = 0; i < dictList.length; i++) {
-          if (dictList[i].startsWith(language)) {
+          if (dictList[i] == language) {
             found = true;
             language = dictList[i];
             break;
           }
         }
+        // partial match
+        if (!found)
+          for (let i = 0; i < dictList.length; i++) {
+            if (dictList[i].startsWith(language)) {
+              found = true;
+              language = dictList[i];
+              break;
+            }
+          }
+      }
       
       if (found) {
-        // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
-        // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
-        // this should trigger gLanguageObserver to select the correct spell checker.
         util.logDebug("Setting spellchecker / document language to: " + language);
-        document.documentElement.setAttribute("lang", language); 
-        spellChecker.SetCurrentDictionary(language);
-        // force re-checking:
-        if (gSpellChecker.enabled) {
-          gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+        if (ComposeChangeLanguage) {
+          document.documentElement.setAttribute("lang",""); // force resetting
+          ComposeChangeLanguage(language);
+        }
+        else {
+          // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
+          // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
+          // this should trigger gLanguageObserver to select the correct spell checker.
+          document.documentElement.setAttribute("lang", language); 
+          spellChecker.SetCurrentDictionary(language);
+          // force re-checking:
+          if (gSpellChecker.enabled) {
+            gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+          }
         }
         if (isDisabled) { // force restoring disabled status
           gSpellChecker.enabled = false; 

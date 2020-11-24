@@ -2801,16 +2801,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 	}
 	
-  let supportEval = true;
-  // it still works in 68.1.2, not sure when they will deprecate it...
-  if (util.versionGreaterOrEqual(util.AppverFull, "69")) 
-    supportEval = false;
-  let sandbox,
+  // sandboxing strings still works in 68.1.2, not sure when they will deprecate it...
+  let supportEval = prefs.getMyBoolPref('allowScripts'), // disabled and hidden by default.
+      sandbox,
       javascriptResults = [];
     
   if (supportEval) {
     // [Bug 25676]	Turing Complete Templates - Benito van der Zander
-    // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
+    // https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676
     // we are allowing certain (string) Javascript functions in concatenation to our %variable%
     // as long as they are in a script block %{%    %}%
     // local variables can be defined within these blocks, only 1 expression line is allowed per block,
@@ -2828,7 +2826,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           });
           
         //useful functions (especially if you want to change the template depending on the received message)
-        sandbox.choose = function(a){return a[Math.floor(Math.random()*a.length)]};
+        sandbox.choose = function(a){ return a[Math.floor(Math.random()*a.length)] };
         sandbox.String.prototype.contains = function(s, startIndex){return this.indexOf(s, startIndex) >= 0};
         sandbox.String.prototype.containsSome = function(a){return a.some(function(s){return this.indexOf(s) >= 0}, this)};
         sandbox.String.prototype.count = function(s, startIndex){
@@ -2852,7 +2850,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         var implicitNull = {},
             stringFunctionHack = new Function(),
         // overloading our strings using sandbox
-            props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
+            props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", 
+                     "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", 
+                     "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", 
+                     "toUpperCase", "trim", "trimLeft", "trimRight", "containsSome", "count",
+                     "includes"];
         for (let i=0; i<props.length; i++) {
           let s = props[i];
           stringFunctionHack[s] = sandbox.String.prototype[s];
@@ -2875,8 +2877,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               return sbVal;
             };
           })(name);
-          sandbox[name].__proto__ = stringFunctionHack; //complex hack so that sandbox[name] is a function that can be called with (sandbox[name]) and (sandbox[name](...))
-          //does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
+          // Complex hack so that sandbox[name] is a function that can be called with 
+          // (sandbox[name]) and (sandbox[name](...))
+          sandbox[name].__proto__ = stringFunctionHack; 
+          // does not work:( sandbox[name].__defineGetter__("length", (function(aname){return function(){return sandbox[aname].toString().length}})(name));
         }  // for
       };  // (!sandbox)
       //  alert(script);

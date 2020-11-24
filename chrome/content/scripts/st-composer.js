@@ -116,7 +116,12 @@ function onLoad(activatedWhileWindowOpen) {
 }
 
 function onUnload(isAddOnShutDown) {
-  window.document.getElementById('smarttemplate4-cleandeferred').remove();  
-  window.document.getElementById('smarttemplate4-changeTemplate').remove();  
-  window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
+  try {
+    window.document.getElementById('smarttemplate4-cleandeferred').remove();  
+    window.document.getElementById('smarttemplate4-changeTemplate').remove();  
+    window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
+  }
+  catch(ex) {
+    
+  }
 }
