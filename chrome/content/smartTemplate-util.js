@@ -177,6 +177,11 @@ SmartTemplate4.Util = {
 		return st4composeType;
 
 	} ,
+
+	isComposeTypeIsForwardInline: function() {
+		const Ci = Components.interfaces;
+		return gMsgCompose.type === Ci.nsIMsgCompType.ForwardInline;		
+	},
 	
 	getBundleString: function(id, defaultText) {
     const Ci = Components.interfaces;
