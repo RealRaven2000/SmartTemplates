@@ -25,7 +25,7 @@ END LICENSE BLOCK */
   addEventListener("load", async (event) => {
     const manifest = await messenger.runtime.getManifest(),
           browserInfo = await messenger.runtime.getBrowserInfo(),
-          addonName = manifest.name, // or mxUtilties.getAddonName()); == 'quickFilters'
+          addonName = manifest.name,
           addonVer = manifest.version,
           appVer = browserInfo.version,
           hoursWorked = 300,

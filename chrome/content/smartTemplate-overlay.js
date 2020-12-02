@@ -2059,10 +2059,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
           // rebuild all addresses - for this we need to remove all [dummy] rows
           // except for the very first one.
-          let listbox = document.getElementById("addressingWidget");
-          while (listbox.itemCount>1) { // remove everything apart from first item:
-            listbox.getItemAtIndex(listbox.itemCount-1).remove();
+          // [issue 98] - %header.set(to,"[addressee]")% no longer working
+          //            - addressingWidget was retired!
+          let adContainer = window.document.getElementById("toAddrContainer");
+          if (adContainer) {
+            let adPills = adContainer.querySelectorAll("mail-address-pill"); // first match if an address pill exists
+            for (let pill of adPills) {
+              adContainer.removeChild(pill);
+            }
           }
+          
           CompFields2Recipients(ComposeFields);
         }
       }

@@ -464,12 +464,15 @@ END LICENSE BLOCK
     #            - Rewrote filling in variables and focus method to work with new address widgets
     #            - rewrite all template dropdowns
     
-  Version 3.1 - WIP
+  Version 3.1 - 24/11/2020
     # version bump was necessary after release 2.12.1 for my legacy Thunderbird users (Tb60 and older)    
     # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
     # [issue 85] - fixed some dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)
     # Reenable the sandboxed string script by Benito van der Zander. Set extensions.smartTemplate4.allowScripts = true 
     #   to get them back!
+    
+  Version 3.2 - WIP
+    # [issue 98] %header.set(to,"[addressee]")% no longer working
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.1",
+	HARDCODED_CURRENTVERSION : "3.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -1617,12 +1617,7 @@ SmartTemplate4.Util = {
 				alreadyResolved = (el.className == 'resolved'), // for removing _all_ smarttemplate divs
 				resolved = false,
 				tm;
-		function getAddressingWidget() {
-      if (typeof GetMsgAddressingWidgetTreeElement == 'function')
-				return GetMsgAddressingWidgetTreeElement(); // returns #addressingWidgetTree
-			return GetMsgAddressingWidgetElement();  // legacy, SeaMonkey fallback, gets #addressingWidget
-		}
-				
+
 		if (st4) {
 			// isReplaceField is the final call where the deferred smarttemplate element is removed.
 			// it's false when we click on the element (manual) so that we can refresh the content
