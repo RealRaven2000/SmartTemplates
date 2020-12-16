@@ -65,6 +65,7 @@ SmartTemplate4.fileTemplates = {
 		      util = SmartTemplate4.Util;
           
     try {
+      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let windowManager = Services.wm,
           optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
       return optionsWindow;
@@ -205,11 +206,7 @@ SmartTemplate4.fileTemplates = {
 		      getBundleString = util.getBundleString.bind(util),
 					FT = SmartTemplate4.fileTemplates;
 					
-		var { Services } = 
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/Services.jsm') :
-			Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
-
+    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     let path = document.getElementById('txtTemplatePath').value,
         label = document.getElementById('txtTemplateTitle').value,
         existingEntry = null, 
@@ -384,12 +381,12 @@ SmartTemplate4.fileTemplates = {
         },
         function onFailure(ex) {
           util.logDebug ('readStringFile() - Failure: ' + ex); 
+          var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
           if (ex.becauseNoSuchFile) {
             // File does not exist);
           }
           else {
             // Some other error
-						Components.utils.import("resource://gre/modules/Services.jsm");
             Services.prompt.alert(null, 'SmartTemplates - loadCustomMenu', 'Reading the fileTemplates file failed\n' + ex);
           }     
           // no changes to Entries array
@@ -408,7 +405,7 @@ SmartTemplate4.fileTemplates = {
 					},
 					function promise2_onFail(ex) {
 						util.logDebug ('promise2.then onFail():\n' + ex); 
-						Components.utils.import("resource://gre/modules/Services.jsm");
+            var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 						Services.prompt.alert(null, 'SmartTemplates - promise2.then', 'Did not load main menu\n' + ex);
 						return promise2; // make loadCustomMenu chainable
 					}
@@ -490,6 +487,7 @@ SmartTemplate4.fileTemplates = {
 					let parent = msgPopup.parentNode, 
 					singleParentWindow = null;
     try {
+      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
       if (window == singleM)
         singleParentWindow = window;
@@ -1116,6 +1114,7 @@ SmartTemplate4.fileTemplates = {
 				return converter.ConvertToUnicode(data);
 			}
 			catch(ex) {
+        var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
 				    errText = util.getBundleString("SmartTemplate4.fileTemplates.error.charSet",
 						  "Problems converting a HTML template from charset [{1}]\n"

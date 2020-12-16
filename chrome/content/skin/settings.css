@@ -1,0 +1,877 @@
+@import url("chrome://smarttemplate4/content/skin/style.css");
+
+#smartTemplate_prefDialog {
+	min-width: 550px;
+	min-height: 525px;
+}
+
+
+#helpTemplates {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+#helpStationery {
+  -moz-appearance: none !important; 
+  background-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-top: 3px;
+  width: 16px !important;
+  min-width: 22px;
+}
+
+
+/* custom buttons linking to website */
+.buttonLinks button.text-link {
+	min-width: 25em;
+}
+
+button.text-link {
+	-moz-appearance: none !important;
+	color: #ffffff !important;
+}
+
+/* fix noia buttonbox styling */
+button.text-link, button.dialog-button[dlgtype=extra2] {
+	background-image: none;
+}
+button.text-link hbox.button-box,
+button.dialog-button[dlgtype=extra2] hbox.button-box {
+	background-image: none !important;
+}
+
+button.text-link[href] > * {
+	text-decoration: underline !important;
+	color: #ffffff !important;
+}
+
+button.text-link {
+	color: #ffffff !important;
+	display: inline-block;
+	border: 1px solid rgb(100,120,120);
+	text-shadow:#BBBBBB 0px 0px 2px;
+	padding: 1px 1px !important;
+	margin-top: 0.3em !important;
+	margin-bottom: 0.3em !important;
+	max-width: 22em;
+	vertical-align: middle !important;
+}
+
+button.text-link hbox {
+	padding: 3px !important;
+}
+
+button.text-link:hover {
+	margin-top: 0.35em !important;
+	margin-bottom: 0.25em !important;
+	color: #FFFFFF !important;
+}
+
+
+.text-link label {
+	margin-left: 0.2em;
+}
+.homePageURL, .homePageURL:focus {
+	/* list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important; */
+	color: #ffffff !important;
+}
+
+.homePageURL:hover, .homePageURL:hover:focus {
+	text-shadow: rgba(100, 0, 100, 0.8) 0px 0px 2px;
+	color: #ffaaff !important;
+}
+
+.supportURL, .supportURL:focus {
+	text-decoration: underline;
+	color: #ffffff !important;
+}
+.supportURL:hover, .supportURL:focus:hover {
+	text-decoration: underline;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+	color: #006600 !important;
+}
+
+.bugsURL, .bugsURL:focus {
+	text-decoration: underline;
+	color: #ffffff !important;
+}
+.bugsURL:hover, .bugsURL:focus:hover {
+	text-decoration: underline !important;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px !important;
+	color: #ffffaa !important;
+}
+
+.stationeryURL, .stationeryURL:focus {
+	-moz-appearance: none !important;
+  border: 1px solid rgb(187, 204, 238) !important;
+	color: #ffffff;
+  text-shadow: 0px 0px 3px rgba(230, 230, 255, 0.9);
+}
+
+.bugsURL:hover, .bugsURL:focus:hover {
+	text-decoration: underline;
+	text-shadow: rgba(100, 50, 0, 0.8) 0px 0px 2px;
+}
+
+/* highlight keyboard focus */
+button.homePageURL:focus,
+button.supportURL:focus,
+button.bugsURL:focus {
+	border: 2px solid #666 !important;
+}
+
+
+
+/** GUI + GROUPING */
+
+/*  MAIN CONTAINERS: LEFT, RIGHT */
+#topOptions, #bottomOptions { 
+  height: 5px ; 
+}
+#bottomOptions { 
+  bottom: 0; 
+}
+#optionsContainer {
+	-moz-box-align: stretch;
+	height: 100%;
+}
+
+#decksContainer {
+	height: 99%;
+	-moz-box-align: stretch;
+}
+#decksWrapper { 
+	height: 99%; 
+	-moz-box-align: stretch;
+}
+
+#advancedContainer {
+	height: auto;
+}
+#rightPane {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+#account_deckA, .templateDeck {
+	min-width: 400px;
+}
+
+#account_deckA {
+	max-width: 1000px;
+}
+
+groupbox.transparent {
+  background-image: none;
+  background-color: transparent !important;
+}
+
+groupbox.transparent .groupbox-title {
+  background-color: transparent;
+}
+
+#globalSettings {
+	width: 100%;
+	background-image: url("chrome://smartTemplate4/content/skin/icon128x128.png");
+	background-repeat: no-repeat;
+	background-position: 92% 2%;
+	/* background-size: 200px; */
+}
+
+#fontSmaller {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-down.png") !important;
+}
+
+#fontLarger {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/edit-size-up.png") !important;
+}
+
+#lblFontSettings {
+	margin-top: 0.7em;
+	vertical-align: middle;
+}
+
+#fontSmaller, #fontLarger {
+  -moz-appearance: none;
+  background-image: linear-gradient(to top, #E9E9E9 30%, #FAFAFA 50%); /* taken from silvermel */
+	box-shadow: #333 0px 0px 3px;
+	margin-top: 5px;
+	height: 20px;
+	min-height: 10px;
+	width: 35px !important;
+	min-width: 25px !important;
+	cursor: pointer;
+} 
+#fontSmaller label, #fontLarger label {
+  display:none;
+}
+#fontSmaller:hover, #fontLarger:hover {
+	border: 1px solid #49C0E7; /* taken from silvermel */
+}
+
+#fontSmaller {
+	margin-right: 0;
+}
+
+#fontLarger {
+	margin-left: 2px;
+}
+#fontButtonSpacer {
+  width: 2px;
+}
+
+#txtFontSize {
+	margin-top: 7px;
+	text-align: center !important;
+	width: 2em;
+	margin-left: 1em;
+}
+#txtBreaks {
+	width: 3em;
+}
+.textboxLabel {
+	margin-top: 5px;
+}
+.labeledBox {
+	margin-left: 0.5em;
+}
+
+/* ##########################M MULTILINE TEXTBOXES ################################## */
+#smartTemplate_prefDialog .indent textbox:not(.templateBox) {
+  font-size: 10pt;
+}
+
+/* ############################### DeckB Description ################################# */
+.SmartTemplate4DeckBDesc {
+  font-size: 11pt !important;
+  display: block;
+  margin-left: 30px;
+}
+
+/* ################################################################################### */
+/* ##################################### BUTTONS ##################################### */
+/* ################################################################################### */
+
+.AccountmanagerButton {
+  cursor: pointer;
+  font-size: 10pt !important;
+}
+
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+#SmartTemplate4AccountmanagerButton label {
+  margin-left: 5px !important;
+}
+
+/* ################################## ICON BINDINGS ################################## */
+#SmartTemplate4AccountmanagerButton {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/configure.png") !important;
+}
+
+
+#smartTemplatePane {
+	padding: 0;
+	margin: 0;
+}
+
+/* ################################################################################### */
+/* ####################################### TABS ###################################### */
+/* ################################################################################### */
+
+#advancedTabs > tab:not([selected]) label {
+  display:none !important;
+}
+
+/* ############################ SPACE BETWEEN LABEL&ICON ############################# */
+/* Space between label and Icon in our Tabs */
+.NewTab label,.RespondTab label,.ForwardTab label,
+#fieldsTab label, #settingsTab label, #aboutTab label, #templatesTab label, #advancedSettingsTab label {
+  margin-left:5px !important;
+}
+
+/* ################################## ICON BINDINGS ################################## */
+/* Icon Binding in the decked (multiple) tabs is only possible over class! */
+
+/** left hand tabs **/
+.NewTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-new.png") !important;
+}
+.RespondTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-reply.png") !important;
+}
+.ForwardTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-fwd.png") !important;
+}
+
+/** right hand tabs **/
+#fieldsTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/variable.png") !important;
+}
+#settingsTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/global.png") !important;
+}
+#advancedSettingsTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/advanced.png") !important;
+}
+#aboutTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/info.png") !important;
+}
+#templatesTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png") !important;
+}
+#supportTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fg-user-support.png") !important;
+}
+
+.newGroup, .forwardGroup , .replyGroup, .aboutGroup {
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+.newGroup {
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_new.png");
+}
+
+.forwardGroup {
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_forward.png");
+}
+
+.replyGroup {
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_replay.png");
+}
+.aboutGroup {
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon.png");
+}
+
+#btnAdvanced {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-right.png") !important;
+}
+
+#btnCloseAdvanced {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
+}
+
+
+.pasteFocus {
+	position: absolute;
+	margin-left: 16px;
+	padding-right: 13px;
+}
+
+.pasteFocus.hasFocus {
+	background-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
+	background-repeat: no-repeat;
+	background-position: right 5px;
+}
+
+/* editboxes for templates */
+.templateBox {
+	background: rgba(255, 255, 255, 0.5);
+	color: #000000;
+	text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.9); /* white shadow for dark themes */
+	min-height: 7em;
+	font-family: consolas,"courier new",monospace;
+	font-size: 9pt;
+}
+
+.templateBox[disabled=true] {
+	color: GrayText;
+}
+
+/* height of flexible textboxes */
+.templateWrite.templateBox {
+	min-height: 9em;
+}
+
+.fileTemplatePanel richlistbox {
+  min-height: 7em;
+}
+
+
+
+
+.indent .templateBox {
+  position: relative;
+  right: 12px;
+	width: 100%;
+}
+
+.buttonIcon label {
+ margin-left: 0.313em !important;
+}
+
+/* ############################# SPACE BETWEEN LABEL&ICON ############################ */
+/* Space between label and Icon in Caps inside tabs only over class possible! */
+.NewMsgCap label,.RspMsgCap label,.FwdMsgCap label,.AboutCap label,.AccountCap label,
+.AccountmanagerCap label {
+  margin-left: 5px !important;
+}
+
+/* ################################################################################### */
+/* ################################# About Tab CONTENT ############################### */
+/* ################################################################################### */
+
+
+.aboutPanel, .aboutGroup {
+	max-width:70em;
+}
+
+#versionBox {
+	border: 1px solid rgba(200,225,250,0.9);
+	color: #EEEEEE;
+	display: inline-block;
+	padding: 0.3em 0.6em !important;
+	text-align: center;
+	vertical-align: top;
+	max-height: 2em;
+	cursor: pointer;
+}
+
+#versionBox:hover {
+	color: #FFFFFF;
+}
+
+
+/* ##################################### ABOUTLOGO ################################### */
+/* Icon Binding inside tab only over class possible! */
+
+#SmartTemplate4AboutLogo {
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 250px;
+  min-height: 45px;
+  text-align: right;
+}
+
+#SmartTemplate4AboutLogo.aboutLogo {
+	background-image: url("chrome://smartTemplate4/content/skin/logo.png") !important;
+}
+#SmartTemplate4AboutLogo.aboutLogoPro {
+	background-image: url("chrome://smartTemplate4/content/skin/logo-pro.png") !important;
+}
+
+/* ################################## AboutDeveloper ################################# */
+
+
+.aboutPersonnel description {
+  color: #ffffff; /* #ffffff for TT DeepDark Theme */
+  font-weight: bold;
+  line-height: 1.4em;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  text-align: center;
+  text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
+}
+
+.aboutHeader {
+	text-align: center;
+	width:100%;
+}
+
+.aboutWrapper {
+	text-align: center;
+	padding: 0.5em;
+	width:100%;
+}
+
+.aboutPersonnel {
+  font-size: 10pt;
+  line-height: 10pt;
+	border: 1px solid #CCCCCC;
+	max-width: 60em; /* wenn tab min-width darf hier nicht fixiert werden */
+	min-height: 8em;
+	vertical-align: middle;
+	padding: 1em;
+}
+/* ############################## SmartTemplate4AboutDesc ############################ */
+.aboutContent  {
+  font-size: 9pt;
+  display: block;
+  margin-top: 0.5em;
+  line-height: 1.3em;
+}
+
+/* ################################################################################### */
+/* ################################ Help Iframe CONTENT ############################## */
+/* ################################################################################### */
+
+/* ####################################### BODY ###################################### */
+.help, h1, h2, aside, li,
+.aboutPersonnel {
+  font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+}
+
+.help {
+  font-size: 9pt;
+  display: block;
+  background: rgb(250,250,250);
+	border-left: #ccc 1px;
+	border-right: #ccc 1px;
+	font-size: 10pt;
+	min-height: 950px;
+ /* padding: 5px 10px; */
+}
+
+.help ul {
+	margin-bottom: 1.8em;
+	margin-top: 0.2em;
+	padding-left: 0;
+}
+.help ul li {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+p#allexpander {
+  margin: 2px 0;
+}
+
+/* ################################ CHAPTER (HEADLINES)  ############################# */
+h1.helpchapter {
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff; /* #ffffff for TT DeepDark Theme */
+  text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  cursor: pointer;
+  padding: 4px 0px;
+  margin: 7px 0;
+}
+
+.help ul.chapterBody {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.chapterBody {
+  height: auto;
+  max-height: 1500px;
+  transition: max-height 0.4s ease-in;
+}
+
+.chapterBody.collapsed {
+  background-color: light-gray;
+  margin-top: -0.5em;  
+  max-height: 0;
+  transition: max-height 0.12s ease-out;
+  overflow: hidden;  
+}
+.chapterBody.collapsed ul, 
+.chapterBody.collapsed li, 
+.chapterBody.collapsed aside,
+.chapterBody.collapsed table,
+.chapterBody.collapsed h4 {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;  
+  color: #ffffff;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.chapterBody .chapterbreak {
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(144,144,144,0.1) 0%,rgba(144,144,144,0.7) 20%,rgba(144,144,144,1) 50%,rgba(144,144,144,0.7) 80%,rgba(144,144,144,0.1) 100%);
+  margin: 4px 25px 8px;
+}
+
+/* style the gear emoji to go to standard address format settings... */
+.config_default {
+  color: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  padding-bottom: 2px;
+  text-shadow: 0 0 0 rgba(109,140,200,0.9);
+  vertical-align: middle;
+}
+
+
+/* ############################# HTML TAG ASIDE (BELOW CHAPTER) ######################### */
+aside {
+  display: block;
+  font-weight: normal;
+  font-size: 10pt !important;
+  /* font-style: italic; */ /* its kind of ugly having italics everywhere... */
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 0px 0px 4px;
+}
+
+/* ##################################### HTML TAG b  ################################# */
+b {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+
+/* #################################### HTML TAG CODE ################################ */
+/* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+#keywords code, code {
+  border: 1px solid #bbb;
+  margin: 2px 4px 2px 0px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
+}
+
+table div.yes, table div.no {
+	list-style-position: inside;
+	display: list-item;
+}
+table div.yes {
+	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/enabled.png");
+}
+table div.no {
+	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/disabled.png");
+}
+
+/* #################################### TABLE FOR VARS ############################### */
+#keywords {
+  border: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tr-keywords td {
+  font-size: 11pt !important;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #808080;
+  padding: 0;
+}
+
+/* ################################## SCREENSHOT CLASS ############################### */
+.screenshot_help {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* ################################## SMALL ICON CLASS ############################### */
+.small_icon {
+  height: 16px;/*max 16px */
+  width: 16px; /*max 16px */
+  margin-right: 3px;
+}
+
+/* ############################## CHECKMARK & X IN VARTABLE ########################## */
+.no {
+  color: #ff0000;
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
+}
+.yes {
+  color: #7cfc00;
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
+}
+
+
+/* right hand panels widths */
+#rightPane tabpanel , #aboutPanel {
+  min-width: 420px;
+  max-width: 460px;
+}
+ 
+
+/* #### help frame  #### */
+#helpFrame {
+	min-height: 300px;
+	height: auto;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+
+/* ############################     CONTRIBUTE BUTTON      ############################# */
+
+button.dialog-button[dlgtype=extra2] {
+	background-color: rgb(241,116,50) !important;
+}
+.dialog-button[dlgtype=extra2] {
+	-moz-appearance: none;
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #fff;
+	background: rgb(254,204,177);
+}
+
+.dialog-button[dlgtype=extra2]:hover
+{
+	/* margin: 1px -1px -1px 1px; */
+	background: rgb(254,222,178);
+}
+
+.dialog-button[dlgtype=extra2]:active
+{
+	/* margin: 1px -1px -1px 1px; */
+	background: rgb(254,222,178);
+}
+
+/* we will wrap these in parenthesis to indicate outdated status */
+#keywords code.deprecated, code.deprecated {
+	margin-right: 0;
+}
+
+#globalSettingsVbox, #advancedSettingsVbox {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#btnSaveTemplate, #btnLoadTemplate, #btnYouTube {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	display: -moz-box;
+}
+#smartTemplatePane #btnSaveTemplate,
+#smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/fugue-disk.png") !important;
+}
+#smartTemplatePane #btnLoadTemplate,
+#smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/template-load.png") !important;
+}
+
+#smartTemplatePane #btnYouTube,
+#smartTemplatePane toolbar[brighttext] #btnYouTube {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/youtube.png") !important;
+}
+
+#templateTools {
+	background-image: none;
+	border: none;
+	-moz-appearance: none;
+}
+
+/* Pro  Tab */	
+@keyframes SmartTemplate4RotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
+
+#SmartTemplate4-Pro.free .tab-icon {
+  animation: SmartTemplate4RotateY 3s linear 0.3s infinite ;
+	height: 19px;
+	width: 30px;
+}
+
+#SmartTemplate4-Pro.paid .tab-icon {
+	animation: none !important;
+}
+
+
+@keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
+
+#SmartTemplate4-Pro.expired .tab-icon,
+#btnLicense {
+  animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+#btnLicense:hover {
+	animation: none;
+}
+
+
+/* to attract attention to Pick template button: */
+@keyframes SmartTemplate4RedPulse {
+  0%   { background-color: rgba(180,0,0.0.1);  }
+  50%  { background-color: rgba(180,0,0,0.9);  }
+  100% { background-color: rgba(180,0,0,0.1);  }
+}
+.pulseRed image {
+  animation: SmartTemplate4RedPulse;
+	animation-iteration-count: infinite;
+	animation-duration: 4s;
+	animation-timing-function: ease-in-out;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+/* ICON RULE TO OVERWRITE IN PRO VERSION */
+/* menuitem.cmd[tagName="qfRegister"],  */
+tab#SmartTemplate4-Pro {
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro.png') !important;
+}
+
+tab#SmartTemplate4-Pro.paid {
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.png') !important;
+}
+
+tab#SmartTemplate4-Pro.expired {
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.png') !important;
+}
+
+/* vbox in a fieldset */
+.vfield {
+	width: 100%;
+}
+
+label.plain-link:hover {
+	text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.templateList #btnAdd {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/add.png");
+}
+
+.templateList #btnUpdate {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-update.png");
+}
+
+.templateList #btnRemove {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-cross.png");
+}
+
+.templateList #btnUp {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+.templateList #btnDown {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+.templateList #btnUp[disabled="true"],
+.templateList #btnDown[disabled="true"] 
+{
+  -moz-image-region: rect(16px 16px 32px 0px) !important;
+}
+
+.templateLabel {
+	min-width: 80px;
+}
+
+#btnPickTemplate {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/file-load.png");
+}
+
+#txtTemplatePath {
+	min-width: 160px;
+}
+
+#txtTemplateTitle
+{
+	min-width: 200px;
+}
+
+#txtSupportSubject {
+  min-width: 25em;
+}
+#ST4-Panels {
+  padding-top: 4px;
+}

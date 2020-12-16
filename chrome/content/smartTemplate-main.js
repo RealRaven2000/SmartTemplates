@@ -473,6 +473,11 @@ END LICENSE BLOCK
     
   Version 3.2 - WIP
     # [issue 98] %header.set(to,"[addressee]")% no longer working
+    # [pr 97] %conditionalText(forwardMode,"text1","text2")% inserts text based on forwarding inline vs attached
+    #         Function added by Artem (conductor111 on github)
+    # Some minor improvements in layout for settings dialog and license screen
+    # Fixed: Reopening existing tabs on support site did not jump to in page links (such as #donate)
+    # Omit update popup for users with licenses > 40days
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
