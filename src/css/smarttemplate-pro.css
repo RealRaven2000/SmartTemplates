@@ -29,6 +29,7 @@ table.smartTemplateProRenew,
 	background: rgba(20,20,20,0.8) !important;
 	color: rgb(240,240,240) !important;
   box-shadow: inset 4px 4px 3px rgba(20,20,20,0.3);
+  padding: 1em;
 }
 
 .bargain a[href], 
