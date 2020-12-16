@@ -26,8 +26,9 @@ table.smartTemplateProRenew,
 
 .bargain,
 .psa {
-	background: rgba(0,0,0,0.9) !important;
-	color: white !important;
+	background: rgba(20,20,20,0.8) !important;
+	color: rgb(240,240,240) !important;
+  box-shadow: inset 4px 4px 3px rgba(20,20,20,0.3);
 }
 
 .bargain a[href], 
