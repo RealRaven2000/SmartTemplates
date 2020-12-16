@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -23,7 +23,7 @@ SmartTemplate4.IO = {
 		try{ //try reading the localized string; if it fails write it in English
 			var filterText = bundle.GetStringFromName("fpFilterName");
 		} catch (e) {
-			var filterText = "SmartTemplate4 File";
+			var filterText = "SmartTemplates File";
 		}
 
 		var fp = Components.classes['@mozilla.org/filepicker;1'].createInstance(Components.interfaces.nsIFilePicker);
@@ -86,7 +86,7 @@ SmartTemplate4.IO = {
 		try{ //try reading the localized string; if it fails write it in English
 			var filterText = bundle.GetStringFromName("fpFilterName");
 		} catch (e) {
-			var filterText = "SmartTemplate4 File";
+			var filterText = "SmartTemplates File";
 		}
 
 		//Choose file

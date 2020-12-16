@@ -1,16 +1,15 @@
 LICENSE
 
-
-SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 
 Terms: 
-The Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it
+The Program - the SmartTemplates Add-on (distributed as a XPI file) and all files contained within it
 Premium Feature - a feature or function of the software which is protected by the mechanism outlined below
-SmartTemplate4 Pro - Refers to the registered version of SmartTemplate4
+SmartTemplates Pro - Refers to the registered version of SmartTemplates
 
 
-All contents of The Program are subject to the GNU General Public License Version 3
+All contents of The Program are subject to the Creative Commons License (CC BY-ND 4.0)
 (the "License"); you may not use the file except in compliance with
 the License. You may obtain a copy of the complete License at
 http://creativecommons.org/licenses/by-nd/4.0/legalcode
@@ -19,11 +18,10 @@ http://creativecommons.org/licenses/by-nd/4.0/
 
 
 
-
 Pro Version
 This Program contains a subset of features "Premium Features" which are protected by 
 a paid registration scheme. Registration keys can be obtained via various licensing links
-from within the software (Settings > Advanced > SmartTemplate4 Pro tab, SmartTemplate4 context menu, 
+from within the software (Settings > Advanced > SmartTemplates Pro tab, SmartTemplates context menu, 
 premium notification messages). The profits from Registration are used to develop
 and distribute the program further and to feed the author, as he would like to spend
 more time developing open source software. Some Premium features may be available in 
@@ -57,19 +55,27 @@ Creative Commons (CC BY-ND 4.0) License for more details.
 
 ATTRIBUTIONS
 
-SmartTemplate4 includes work by
+SmartTemplates includes work by
 
 Current developer: 
 Axel Grude
 Marky Mark DE
 
+
 Contributors: 
 Aris - style support
 tool8 - development, Version 0.7.2 - 0.8.0
+Benito van der Zander - Turing patch [Bug 25676]
+Klaus Buecher - conversion to Thunderbird 78
 
 Translations: 
-The current list of translators is listed in the install.rdf (Add-ons Manager / About) and
-displayed on the "about" Tab.
+Translators were listed in the legacy versions of SmartTemplates (before 2.2)
+Since the Babelzilla project cannot parse the new installation manifest
+from now on translations are now made by Axel Grude with the help of google translate.
+
+Source Code:
+The source code and current issue tracker can be found here:
+https://github.com/RealRaven2000/SmartTemplate4
 
 NOIA ICON SET:
 This Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE 

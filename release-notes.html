@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.1">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.2">can be found here</a>
 
 <b>Latest News</b>
 
@@ -9,9 +9,18 @@ We had to rewrite much of the code to become compatible with Thunderbird 78. To 
 
 Migration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.
 
+<b>Improvements</b>
+<ul>
+  <li>New function: <tt>%conditionalText(forwardMode,"text1","text2")%</tt> inserts text based on forwarding inline vs attached; added by Artem (conductor111 on github).</li>
+  <li>Omit update popup for users with licenses > 40days</li>
+  <li>Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.</li>
+  <li>Reopening existing tabs on support site now correctly jumps to in page links (such as #donate)</li>
+  <li>Some minor improvements in layout for settings dialog and license screen.</li>
+</ul>
+
 <b>Changes / Bug Fixes</b>
 <ul>
-  <li>This new early version after release of 3.0 for Thunderbird 78 was necessary after releasing 2.12.1 for my legacy users (Thunderbird 60 and older)</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/94">[issue 94]</li> - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/85">[issue 85]</li> - fixed more dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/98">[issue 98]</a> - Fixed: %header.set(to,"[addressee]")% no longer working</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/100">[issue 100]</a> - Trial period should restart on license expiry</li>
+  <li></li>
 </ul>

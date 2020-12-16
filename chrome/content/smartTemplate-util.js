@@ -3,7 +3,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -302,8 +302,8 @@ SmartTemplate4.Util = {
 					if (versionLabel) versionLabel.setAttribute("value", addon.version);
 
 					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
-					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version " + util.mExtensionVer + "\n"
+					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
+					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplates Version " + util.mExtensionVer + "\n"
 					           + "Running on " + util.Application
 					           + " Version " + util.AppverFull);
 					// make sure we are not in options window
@@ -311,7 +311,7 @@ SmartTemplate4.Util = {
 						util.firstRun.init();
 
 					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
+					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
 					versionLabel = window.document.getElementById("smartTemplate-options-version");
 					if(versionLabel)
 						versionLabel.setAttribute("value", addon.version);
@@ -326,7 +326,7 @@ SmartTemplate4.Util = {
 
 		}
 		catch(ex) {
-			util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + util.Application + "?"
+			util.logToConsole("SmartTemplates VersionProxy failed - are you using an old version of " + util.Application + "?"
 				+ "\n" + ex);
 		}
 		finally {
@@ -426,15 +426,16 @@ SmartTemplate4.Util = {
 		}
 	},
 	
-  /* SmartTemplate4 Pro / licensing features */
+  /* SmartTemplates Pro / licensing features */
 	// default to isRegister from now = show button for buying a license.
 	// was popupProFeature, now renamed to popupLicenseNotification
 	// isProFeature = true - show notification based on function used
 	//              = false - show fact that a license is needed.
 	popupLicenseNotification: function popupLicenseNotification(featureList, isRegister, isProFeature, additionalText) {
-		const util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util,
+          Licenser = util.Licenser,
+          State = Licenser.ELicenseState;
 		let notifyBox,
-				State = util.Licenser.ELicenseState,
 				featureName = '',
 				isList = false,
 				hasLicense = util.hasLicense(false),
@@ -514,12 +515,12 @@ SmartTemplate4.Util = {
         hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.hotKey", "L"),
 				nbox_buttons = [];
 				
-		switch(util.Licenser.ValidationStatus) {
+		switch(Licenser.ValidationStatus) {
 			case State.Expired:
 				regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
 			  break;
 			default:
-			  if (util.Licenser.key_type==2) { // standard license
+			  if (Licenser.key_type==2) { // standard license
 					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
 					hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade.hotKey", "U");
 				}
@@ -1424,7 +1425,7 @@ SmartTemplate4.Util = {
 		// ======================================
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
-			let validate = licenser.validateLicense.bind(SmartTemplate4.Util.Licenser);
+			let validate = licenser.validateLicense.bind(licenser);
       validate(licenseKey);
     }
     if (licenser.isValidated) {
@@ -2770,7 +2771,7 @@ SmartTemplate4.Util.firstRun =
 		}
 
 		let current = util.Version;
-		util.logDebug("Current SmartTemplate4 Version: " + current);
+		util.logDebug("Current SmartTemplates Version: " + current);
 
 		try {
 			util.logDebugOptional ("firstRun","try to get setting: getCharPref(version)");
@@ -2826,7 +2827,7 @@ SmartTemplate4.Util.firstRun =
 			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
 			                             "SmartTemplate4.updateMessageVersion",
-			                             "SmartTemplate4 was successfully upgraded to version {1}!").replace("{1}",current);
+			                             "SmartTemplates was successfully upgraded to version {1}!").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){
@@ -2846,7 +2847,7 @@ SmartTemplate4.Util.firstRun =
 					
 					/* EXTENSION UPDATED */
 					util.logDebug("===========================\n"+
-					              "ST4 Test  - SmartTemplate4 Update Detected:\n" +
+					              "ST4 Test  - SmartTemplates Update Detected:\n" +
 												" **PREVIOUS**:" + prev + 
 												"\npure Version: " + pureVersion + 
 												"\ncurrent: " + current +

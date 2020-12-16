@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1591,7 +1591,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		
 		if ((composeType != "new") && !gMsgCompose.originalMsgURI)  {
-			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplate4 cannot process this message!");
+			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplates cannot process this message!");
 			return aString;
 		}
 

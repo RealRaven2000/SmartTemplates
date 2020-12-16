@@ -156,7 +156,8 @@
 	height: 60px;
 }
 
-#btnLicense {
+#btnLicense.register,
+#btnDomainLicense.register {
   animation: st4pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 #btnLicense.upgrade {
