@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Spoluautor">
 <!ENTITY about.label "SmartTemplat4 nabízí snadný způsob pro přizpůsobení Thunderbirdích standardních záhlaví použitím šablon. Vlastní šablony můžou být vytvořeny pro každ účet a také společné pro všechny.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klikněte na nadpis nebo">
+<!ENTITY heading.expandAll "rozbalte všechny položky">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Něměnné proměnné">
 <!ENTITY ownname.label "Tvé jméno">
 <!ENTITY ownmail.label "Tvůj e-mail">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Klepnutím sem vyberte konkrétní složku na místní jednotce.">
 <!ENTITY cursor.label "nastav pozici kurzoru">
 <!ENTITY spellcheck.label "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Příjemce (To)">
 <!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
 <!ENTITY to.label "Jméno příjemce (defaultní)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Jméno příjemce (defaultní)">
 <!ENTITY ccfirstname.label "Křestní jméno příjemce">
 <!ENTITY ccname.label "Jméno příjemce">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Pole Adresáře">
 <!ENTITY ab_fields.desc "Při odpovídání na odpovídající e-mailovou adresu můžete nyní použít další pole pro proměnné adresy, například &#37;from&#37;, například:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Soukromé">
 <!ENTITY ab_other "Ostatní">
 <!ENTITY ab_work "Zaměstnání">
-<!ENTITY spec_form.cap "Speciální formát">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Přepínače adresního pole">
 <!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
 <!ENTITY ex_brack.label "Příklad: To: BEDŘICH | Cc: LUBOŠ">
 <!ENTITY brack_with_var.label "V [[...]] mohou být použity následující proměnné">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Mailová skupina">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Jakákoliv řádka hlavičky">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Uprav hlavičku e-mailu ">
 <!ENTITY header_function.explain "Funkce může být použita k úpravě hlavičky e-mailu, jak je popsáno zde:">
 <!ENTITY header_function.scope "Toto může být použito s těmito hlavičkami:">
@@ -192,7 +198,11 @@
 <!ENTITY matchTextFromSubject "Najdi RegEx vzor v předmětu a vlož do funkce.">
 <!ENTITY stringmanip.match.comment "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd.">
 <!ENTITY stringmanip.alttext "[nepovinný parametr] Alternativní text: pokud není nalezena žádná shoda, místo toho vloží alternativní text.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Podmíněný text">
+<!ENTITY conditionals.note "Tuto třídu proměnných lze použít k vložení textu v závislosti na tom, jak odesíláte poštu. K tomu potřebujete licenci SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Pokud je e-mail přeposlán inline, je vložen první textový parametr. Druhý textový parametr se používá, když je pošta přeposílána jako příloha.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Nabídka manipulace">
 <!ENTITY quote_changers.desc "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa.">
 <!ENTITY deleteQuotedText "Odstraní citovaný text">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[nepovinné, číselné] - počet kByte, minimální velikost pro odstranění značky. Tímto způsobem můžete při likvidaci velkých obrázků uchovávat menší obrázky, jako jsou ikony / ikony emodži.">
 <!ENTITY whitespace_note "Všimněte si, že mezeru lze nejlépe reprezentovat jako \ s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky.">
 <!ENTITY minSize_detail "Není vždy možné určit velikost, zejména pokud Thunderbird stále načítá obrázek, často kvůli velké velikosti - v tomto případě bude značka stejně odstraněna.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "Následující funkce přidává offset ke všem následujícím zobrazeným časům.">
 <!ENTITY calculate.explain "DD = počet dní, které se mají přidat. H = počet hodin, které lze přidat (volitelné). MM = minuty pro přidání (volitelné) ">
 <!ENTITY calculate.reset "Nastavením argumentu na 0 přestanete měnit všechna data.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Proměnné pro přizpůsobený formát data">
 <!ENTITY customdf_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY A.label "Den týdne (pátek)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Funkce pro vložení aktuálního času (pole, na které lze kliknout).">
 <!ENTITY dateformat.explain "Většina výše uvedených proměnných může být použita v řetězci parametrů vynecháním '&#37;'. Viz také:">
 <!ENTITY dateformat.example "Příklad: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy.">
 <!ENTITY xsent_long.cap "Příklad pro dlouhý řetězec">

@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Kontibutor">
 <!ENTITY about.label "SmartTemplate4 menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klik sebuah tajuk atau">
+<!ENTITY heading.expandAll "luaskan semua entri">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Variabel tetap">
 <!ENTITY ownname.label "Nama anda">
 <!ENTITY ownmail.label "Alamat email anda">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Setel posisi kursor">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Penerima (Untuk)">
 <!ENTITY to_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
 <!ENTITY to.label "Nama penerima (bawaan)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Nama Penerima (Bawaan)">
 <!ENTITY ccfirstname.label "Nama depan penerima">
 <!ENTITY ccname.label "Nama penerima">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
 <!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "Format khusus">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Address Field Switches">
 <!ENTITY specform_note.label "Bagian dalam kurung ganda  [[Cc: &#37;cc(name)&#37;]] hanya akan ditampilkan jika variabel &#37;cc(name)&#37; bisa diganti!">
 <!ENTITY ex_brack.label "Contoh: Untuk: Fred | Cc: Jane">
 <!ENTITY brack_with_var.label "Variabel berikut dapat digunakan di dalam [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Grup diskusi">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Setiap Baris Tajuk">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Ubah Header Surat">
 <!ENTITY header_function.explain "Fungsi-fungsi ini dapat digunakan untuk mengubah header mail, seperti yang dijelaskan di sini:">
 <!ENTITY header_function.scope "Ini dapat digunakan dengan header ini:">
@@ -192,7 +198,11 @@
 <!ENTITY matchTextFromSubject "Temukan pola RegEx dalam subjek dan masukkan di lokasi fungsi.">
 <!ENTITY stringmanip.match.comment "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Teks Bersyarat">
+<!ENTITY conditionals.note "Kelas variabel ini dapat digunakan untuk memasukkan teks tergantung pada cara Anda mengirim email. Anda memerlukan lisensi SmartTemplates Pro untuk ini.">
+<!ENTITY conditional.forwardMode "Jika email diteruskan sebaris, parameter teks pertama dimasukkan. Parameter teks kedua digunakan saat email diteruskan sebagai lampiran.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
 <!ENTITY deleteQuotedText "Deletes quoted Text">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Variabel tetap untuk 'Format Tanggal' / 'Zona Waktu'">
 <!ENTITY fix_vartz_note.label "Dapat digabung dengan &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Tanggal / Waktu (format lokal)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "Fungsi berikut menambahkan offset ke semua waktu yang ditampilkan.">
 <!ENTITY calculate.explain "HH=jumlah hari untuk ditambahkan. J=jumlah jam untuk ditambahkan (opsional). MM=menit untuk ditambahkan (opsional)">
 <!ENTITY calculate.reset "Setel argumen ke 0 untuk berhenti memodifikasi tanggal apa pun.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variabel untuk menyesuaikan 'Format tanggal'">
 <!ENTITY customdf_note.label "Dapat digabung dengan &#37;X:=sent&#37;">
 <!ENTITY A.label "Hari dalam Seminggu (Jumat)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)">
 <!ENTITY dateformat.explain "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan &#37;. Lihat pula:">
 <!ENTITY dateformat.example "Contoh:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Pengubah &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan &#37;X:=sent&#37;, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli.">
 <!ENTITY xsent_long.cap "Contoh untuk longstring">

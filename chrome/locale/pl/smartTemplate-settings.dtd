@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Współautor">
 <!ENTITY about.label "SmartTemplates oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Kliknij nagłówek lub">
+<!ENTITY heading.expandAll "rozwiń wszystkie wpisy">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Zmienne podstawowe">
 <!ENTITY ownname.label "Twoje imię">
 <!ENTITY ownmail.label "Twój adres e-mail">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Kliknij tutaj, aby wybrać określony folder na dysku lokalnym.">
 <!ENTITY cursor.label "Określ pozycję kursora">
 <!ENTITY spellcheck.label "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Nazwa odbiorcy (domyślna)">
 <!ENTITY ccfirstname.label "Imię odbiorcy">
 <!ENTITY ccname.label "Nazwisko odbiorcy">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Pola książki adresowej">
 <!ENTITY ab_fields.desc "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych pól dla zmiennych adresu, takich jak &#37;from&#37;, takich jak:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Prywatny">
 <!ENTITY ab_other "Inne">
 <!ENTITY ab_work "Służbowy">
-<!ENTITY spec_form.cap "Format specjalny">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Przełączniki pola adresu>
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
 <!ENTITY ex_brack.label "Przykład: Do: Jakub | Kopia: Zuzanna">
 <!ENTITY brack_with_var.label "Następujące zmienne mogą być używane wewnątrz [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Grupy dyskusyjne">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Każdy wiersz nagłówka">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modyfikuj nagłówek wiadomości">
 <!ENTITY header_function.explain "Funkcja ta może być stosowana do modyfikowania nagłówków w następujący sposób">
 <!ENTITY header_function.scope "Funkcja może być używana z następującymi nagłówkami:">
@@ -192,6 +198,10 @@
 <!ENTITY matchTextFromSubject "W temacie znajdź wzorzec wyrażenia regularnego i umieścić w miejscu funkcji.">
 <!ENTITY stringmanip.match.comment "match Functions: Pierwszy parametr (wyrażenie regularne) musi być zawarte w cudzysłowie. Drugim parametrem jest numer grupy. Użyj 0 dla całego wyrażenia, 1 dla pierwszej grupy itd.">
 <!ENTITY stringmanip.alttext "[parametr opcjonalny] Tekst alternatywny: jeśli nie znaleziono dopasowania, zamiast tego wstawia tekst alternatywny.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Tekst warunkowy">
+<!ENTITY conditionals.note "Ta klasa zmiennych może służyć do wstawiania tekstu w zależności od sposobu wysyłania poczty. Potrzebujesz do tego licencji SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Jeśli wiadomość e-mail jest przekazywana w tekście, wstawiany jest pierwszy parametr tekstowy. Drugi parametr tekstowy jest używany, gdy wiadomość jest przekazywana jako załącznik.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Cytuj manipulację">
 <!ENTITY quote_changers.desc "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca.">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[opcjonalnie, numerycznie] - liczba kB, minimalny rozmiar do usunięcia tagu. W ten sposób możesz przechowywać mniejsze obrazy, takie jak ikony / emotikony, jednocześnie odrzucając duże obrazy.">
 <!ENTITY whitespace_note "Zauważ, że białe znaki można najlepiej przedstawić jako \ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu.">
 <!ENTITY minSize_detail "Nie zawsze jest możliwe określenie rozmiaru, szczególnie jeśli Thunderbird wciąż ładuje obraz, często ze względu na duży rozmiar - w tym przypadku tag i tak zostanie usunięty.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "Poniższa funkcja dodaje przesunięcie do wszystkich kolejnych wyświetlanych czasów.">
 <!ENTITY calculate.explain "DD = liczba dni do dodania. H = liczba godzin do dodania (opcjonalnie). MM = minuty do dodania (opcjonalnie)">
 <!ENTITY calculate.reset "Ustaw argument na 0, aby zatrzymać modyfikowanie dowolnych dat.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Funkcja wstawiania aktualnego czasu (pole klikalne).">
 <!ENTITY dateformat.explain "Większość zmiennych czasowych powyżej może być użytych w ciągu parametrów, pomijając &#37;. Zobacz też:">
 <!ENTITY dateformat.example "Przykład:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
 <!ENTITY xsent_long.cap "Przykład długiego formatu:">

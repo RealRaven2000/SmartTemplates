@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Сарадник">
 <!ENTITY about.label "SmartTemplates вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Кликните наслов или">
+<!ENTITY heading.expandAll "проширите све уносе">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Контролне променљиве">
 <!ENTITY ownname.label "Ваше име">
 <!ENTITY ownmail.label "Е-адреса">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Кликните овде да изаберете одређену фасциклу на вашем локалном диску.">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY spellcheck.label "Поставља језик за проверу правописа. Примјер вриједности: (ен, де-ДЕ, ес-ЕС, ру) - имајте на уму да рјечник мора бити инсталиран.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY to.label "Име примаоца (подразумевано)">
@@ -157,21 +161,15 @@
 <!ENTITY cc.label "Име примаоца (подразумевано)">
 <!ENTITY ccfirstname.label "Име примаоца">
 <!ENTITY ccname.label "Име примаоца">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Поља адресара">
-<!ENTITY ab_fields.desc "122/5000
-
-
-
-
-
-
-Када одговарате на одговарајућу адресу е-поште, сада можете користити додатна поља за променљиве адресе, као што је &#37;from&#37;, као што су:">
+<!ENTITY ab_fields.desc "Када одговарате на одговарајућу адресу е-поште, сада можете користити додатна поља за променљиве адресе, као што је &#37;from&#37;, као што су:">
 <!ENTITY ab_contact "Контакт">
 <!ENTITY ab_private "Приватни">
 <!ENTITY ab_other "Остало">
 <!ENTITY ab_work "Посао">
-<!ENTITY spec_form.cap "Посебан формат">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Прекидачи поља адресе">
 <!ENTITY specform_note.label "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени.">
 <!ENTITY ex_brack.label "Пример: „За: Анђелка | CC: Илинка“">
 <!ENTITY brack_with_var.label "Унутра можете да користите следеће променљиве [[...]]">
@@ -183,6 +181,7 @@
 <!ENTITY newsgr.label "Дискусионе групе">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Било који ред заглавља">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modify Mail Header">
 <!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
 <!ENTITY header_function.scope "It can be used with the these headers:">
@@ -199,7 +198,11 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[опционални параметар] Алтернативни текст: ако није пронађено подударање, уместо њега се убацује алтернативни текст.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Условный текст">
+<!ENTITY conditionals.note "Ова класа променљивих може се користити за уметање текста у зависности од начина слања поште. За њих вам је потребна лиценца СмартТемплатес Про.">
+<!ENTITY conditional.forwardMode "Ако се е-пошта прослеђује у реду, убацује се први параметар текста. Други параметар текста користи се када се пошта прослеђује као прилог.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Манипулација цитата">
 <!ENTITY quote_changers.desc "Премиум променљиве за уклањање текста / тагова из цитираних делова и штеди простор">
 <!ENTITY deleteQuotedText "Брисање цитираног текста">
@@ -214,6 +217,7 @@
 <!ENTITY minSize "[изборно, нумерички] - број кБите-а, минимална величина за уклањање ознаке. На овај начин можете задржати мање слике попут икона / емојиса док одбацујете велике слике.">
 <!ENTITY whitespace_note "Имајте на уму да се бели простор може најбоље представити као \s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити.">
 <!ENTITY minSize_detail "Није увек могуће одредити величину, посебно ако Тхундербирд још увек учитава слику, често због велике величине - у овом случају ће се тага ионако уклонити.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Контролне променљиве за „Формат датума/временска зона“">
 <!ENTITY fix_vartz_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Датум/време (локални формат)">
@@ -224,6 +228,7 @@
 <!ENTITY dateoffset_note.label "Следећа функција додаје одступање свим следећим приказаним временима.">
 <!ENTITY calculate.explain "DD = број дана за додавање. H = број сати за додавање (изборно). ММ = минута за додавање (необвезно)">
 <!ENTITY calculate.reset "Подесите аргумент на 0 да бисте зауставили модификацију било којег датума.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY A.label "Дан у недељи (пун назив)">
@@ -248,6 +253,7 @@
 <!ENTITY dateformat.label "Функција за уметање тренутног времена (поље на које се може кликнути).">
 <!ENTITY dateformat.explain "Већина горњих варијабли времена може се користити у низу параметара изостављањем '&#37;'. Такође видети:">
 <!ENTITY dateformat.example "Пример:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука.">
 <!ENTITY xsent_long.cap "Пример LongString-а">

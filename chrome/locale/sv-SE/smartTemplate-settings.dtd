@@ -28,7 +28,6 @@
 <!ENTITY pref_variables.tab "Variabler">
 <!ENTITY pref_examples.tab "Exempel (endast online)">
 <!ENTITY pref_examples.tooltip "Visa exempelmallar från https://smarttemplates.quickfolders.org/templates.html. Endast tillgängligt i onlineläget.">
-<!-- #### HELP #### -->
 <!ENTITY accept_button "Acceptera">
 <!ENTITY cancel_button "Kassera">
 <!ENTITY contribute_button "Bidra">
@@ -117,6 +116,9 @@
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplates erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton).">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klicka på en rubrik eller">
+<!ENTITY heading.expandAll "expandera alla sektioner">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
@@ -140,6 +142,7 @@
 <!ENTITY basepath.absolute "Klicka här för att välja en specifik mapp på din lokala enhet.">
 <!ENTITY cursor.label "Ändrar pekarpositionen">
 <!ENTITY spellcheck.label "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
@@ -164,7 +167,8 @@
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Annat">
 <!ENTITY ab_work "Arbete">
-<!ENTITY spec_form.cap "Specialformat">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Adressfältväljare">
 <!ENTITY specform_note.label "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!">
 <!ENTITY ex_brack.label "Exempelvis: To: ALFHILD | Cc: HENRIKA">
 <!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
@@ -176,6 +180,7 @@
 <!ENTITY newsgr.label "Diskussionsgrupper">
 <!ENTITY xmail.label "X-Mailer-adresshuvud">
 <!ENTITY any.label "Alla Header-line">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modifiera e-postsidhuvud">
 <!ENTITY header_function.explain "Dessa funktioner kan användas för att modifiera e-postsidhuvuden, som beskrivs nedan:">
 <!ENTITY header_function.scope "Den kan användas med dessa sidhuvuden:">
@@ -192,6 +197,10 @@
 <!ENTITY matchTextFromSubject "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen.">
 <!ENTITY stringmanip.match.comment "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc.">
 <!ENTITY stringmanip.alttext "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Villkorlig text">
+<!ENTITY conditionals.note "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa.">
+<!ENTITY conditional.forwardMode "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Citat Manipulation">
 <!ENTITY quote_changers.desc "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme.">
@@ -207,6 +216,7 @@
 <!ENTITY minSize "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder.">
 <!ENTITY whitespace_note "Observera att whitespace bäst kan representeras som '\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas.">
 <!ENTITY minSize_detail "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">
@@ -217,6 +227,7 @@
 <!ENTITY dateoffset_note.label "Följande funktion lägger till ett offset till alla följande synliga timers.">
 <!ENTITY calculate.explain "DD=antal dagar att lägga till. H=antal timmar att lägga till (valfritt). MM=minuter att lägga till (valfritt)">
 <!ENTITY calculate.reset "Ändra argumentet till 0 för att sluta modifiera några datum.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variabler för anpassat datumformat">
 <!ENTITY customdf_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY A.label "Veckodag (Fredag)">
@@ -241,6 +252,7 @@
 <!ENTITY dateformat.label "Funktion för att infoga nuvarande tid (klickbart fält).">
 <!ENTITY dateformat.explain "De flesta tidsvariablerna ovan kan användas i parametersträngen genom att utesluta &#37;. Se även:">
 <!ENTITY dateformat.example "Exempel:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Att använda &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas.">
 <!ENTITY xsent_long.cap "Exempel på en långsträng:">

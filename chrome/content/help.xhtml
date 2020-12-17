@@ -13,7 +13,7 @@
 	<body style="margin: 0;">
   
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
-    <p id="allexpander">Click a heading or <a href="#" onclick="expandAll(event);">expand all.</a></p>
+    <p id="allexpander">&heading.click; <a href="#" onclick="expandAll(event);">&heading.expandAll;</a>.</p>
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter">&fix_var.cap;</h1>
     <div class="chapterBody">
@@ -199,7 +199,17 @@
 				<li><code class="noWrite">%...%</code> = &any.label;</li>
 			</ul>
     </div>
-		<!-- ##### header.set / header.append / header.prefix #### -->
+    
+		<!-- ##### conditional text #### -->
+    <h1 class="helpchapter">&conditionals.cap;</h1>
+    <div class="chapterBody">
+      <p>&conditionals.note;</p>
+			<ul>
+        <li><code>%conditionalText(forwardMode,"text1","text2")%</code> = &conditional.forwardMode;</li>
+      </ul>
+    </div>
+    
+		<!-- ##### mail header manipulation #### -->
 		<h1 class="helpchapter">&header_function.cap;</h1>
     <div class="chapterBody">
 			<aside>&header_function.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>

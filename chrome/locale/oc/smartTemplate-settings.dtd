@@ -106,7 +106,6 @@
 <!ENTITY pref_stationeryLink_tip "Get Stationery…">
 <!ENTITY pref_defaultCharset.label "Default charset">
 <!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
-<!-- #### HELP #### -->
 <!ENTITY about.cap "A prepaus de SmartTemplates">
 <!ENTITY support.tab "Support">
 <!ENTITY creator.label "Creator">
@@ -116,7 +115,10 @@
 <!ENTITY translatorNickname.label "Cédric Valmary (totenoc.org)">
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplates permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global (per l'ensemble dels comptes).">
-<!-- #### TABLE #### -->
+<!-- #### HELP #### -->
+<!ENTITY heading.click "Click a Heading or">
+<!ENTITY heading.expandAll "Expand All">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Variablas fixas">
 <!ENTITY ownname.label "Vòstre nom">
 <!ENTITY ownmail.label "Vòstra adreça electronica">
@@ -140,6 +142,7 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Destinataris (Per)">
 <!ENTITY to_note.label "Quand lo nom es pas disponible, l'adreça electronica serà pas afichada a la plaça">
 <!ENTITY to.label "Noms dels destinataris (defaut)">
@@ -164,7 +167,8 @@
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "Formats especials">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Address Field Switches">
 <!ENTITY specform_note.label "La frasa [[Cc: &#37;cc(name)&#37;]] s'aficharà pas que se la variabla &#37;cc(name)&#37; pòt èsser remplaçada !">
 <!ENTITY ex_brack.label "Exemple : Per : ANAÏS | Còpia a : ESTÈVE">
 <!ENTITY brack_with_var.label "Las variablas seguentas pòdon èsser utilizadas dins de [[…]]">
@@ -176,6 +180,7 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Quina entèsta que siá">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modify Mail Header">
 <!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
 <!ENTITY header_function.scope "It can be used with the these headers:">
@@ -192,6 +197,10 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Conditional Text">
+<!ENTITY conditionals.note "This class of variables can be used to insert text depending on how you send mail. You need a SmartTemplates Pro license for these.">
+<!ENTITY conditional.forwardMode "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
@@ -207,6 +216,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Variablas fixas pel format de data e la zòna orària">
 <!ENTITY fix_vartz_note.label "Pòt èsser combinada amb &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data e ora (format local)">
@@ -217,6 +227,7 @@
 <!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
 <!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variablas per personalizar lo format de data ">
 <!ENTITY customdf_note.label "Pòt èsser combinada amb &#37;X:=sent&#37;">
 <!ENTITY A.label "Jorn de la setmana (Divendres)">
@@ -241,6 +252,7 @@
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Lo modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Per defaut, las variablas de data e ora seràn totjorn inicializadas amb las valors correntas (al moment de la creacion del messatge). Combinat amb &#37;X:=sent&#37;, las variablas de data e ora seràn las del messatge original.">
 <!ENTITY xsent_long.cap "Exemple d'un format long:">

@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "贡献者">
 <!ENTITY about.label "SmartTemplates 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "点击标题或">
+<!ENTITY heading.expandAll "展开所有条目">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "基础变量">
 <!ENTITY ownname.label "你的名字">
 <!ENTITY ownmail.label "你的邮件地址">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "设置光标位置">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY to.label "收件人姓名 (默认)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "抄送人姓名 (默认)">
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
 <!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "特殊形式">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "地址字段变量">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
 <!ENTITY ex_brack.label "例子: To: Li | Cc: Wu">
 <!ENTITY brack_with_var.label "以下变量可以用在 [[...]] 里面">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "新闻组">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何标题行">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "修改邮件头">
 <!ENTITY header_function.explain "此功能可以用来修改邮件头，如下所述：">
 <!ENTITY header_function.scope "它可以修改下列邮件头：">
@@ -192,6 +198,10 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "条件文字">
+<!ENTITY conditionals.note "根据您发送邮件的方式，此类变量可用于插入文本。 您需要获得SmartTemplates Pro许可证。">
+<!ENTITY conditional.forwardMode "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
 <!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "自定义日期格式的变量">
 <!ENTITY customdf_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY A.label "一周里的一天 (Friday)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
 <!ENTITY xsent_long.cap "长字符串的例子：">

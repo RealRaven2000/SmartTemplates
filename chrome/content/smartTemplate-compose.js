@@ -1437,11 +1437,10 @@ SmartTemplate4.classSmartTemplate = function() {
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
 			// all used functions are stored in the main instance of SmartTemplates (3pane window)
-			if (util.mainInstance.Util.premiumFeatures.length 
-			    && (!util.hasLicense(false)
-					   || 
-						 prefs.isDebugOption('premium.testNotification'))) {
-				util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
+			if (util.mainInstance.Util.premiumFeatures.length)
+      {
+        if (!util.hasLicense(false) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
+          util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance

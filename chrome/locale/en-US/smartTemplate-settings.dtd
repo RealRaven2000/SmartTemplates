@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Contributor">
 <!ENTITY about.label "SmartTemplates offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Click a heading or">
+<!ENTITY heading.expandAll "Expand All">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Fixed variables">
 <!ENTITY ownname.label "Your name">
 <!ENTITY ownmail.label "Your email address">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Recipient (To)">
 <!ENTITY to_note.label "When the name is not available, email address will be displayed instead">
 <!ENTITY to.label "Recipient's name (default)">
@@ -164,7 +168,8 @@
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "Special format">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Address Field Switches">
 <!ENTITY specform_note.label "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!">
 <!ENTITY ex_brack.label "Example: To: John | Cc: Alison">
 <!ENTITY brack_with_var.label "The following variables can be used within [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Newsgroups">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Any Header-line">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modify Mail Header">
 <!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
 <!ENTITY header_function.scope "It can be used with the these headers:">
@@ -192,6 +198,10 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Conditional Text">
+<!ENTITY conditionals.note "This class of variables can be used to insert text depending on how you send mail. You need a SmartTemplates Pro license for these.">
+<!ENTITY conditional.forwardMode "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
@@ -207,7 +217,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
-
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Fixed variables for 'Date format' / 'Timezone'">
 <!ENTITY fix_vartz_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Date / Time (locale format)">
@@ -218,6 +228,7 @@
 <!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
 <!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variables for customized 'Date format'">
 <!ENTITY customdf_note.label "Can be combined with &#37;X:=sent&#37;">
 <!ENTITY A.label "Day of Week (Friday)">
@@ -242,6 +253,7 @@
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">
 <!ENTITY xsent_note.label "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time.">
 <!ENTITY xsent_long.cap "Example for a longstring">

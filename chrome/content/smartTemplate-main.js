@@ -471,7 +471,7 @@ END LICENSE BLOCK
     # Reenable the sandboxed string script by Benito van der Zander. Set extensions.smartTemplate4.allowScripts = true 
     #   to get them back!
     
-  Version 3.2 - WIP
+  Version 3.2 - 17/12/2020
     # [issue 98] %header.set(to,"[addressee]")% no longer working
     # [pr 97] %conditionalText(forwardMode,"text1","text2")% inserts text based on forwarding inline vs attached
     #         Function added by Artem (conductor111 on github)
@@ -480,6 +480,8 @@ END LICENSE BLOCK
     # Omit update popup for users with licenses > 40days
     # [issue 100] Trial period should restart on license expiry
     # Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.
+    # Fixed some errors in Serbian and Portuguese help section
+    # Fixed reminder for standard license holders using premium functions 
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

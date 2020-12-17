@@ -2452,6 +2452,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           }
           break;
         case "conditionalText":
+          util.addUsedPremiumFunction('conditionalText');
           return insertConditionalText(arg);
 				default:
           // [Bug 25904]
@@ -2821,7 +2822,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     }
     const patternArgs = [...args[0].matchAll( /\"(.*?)\"/g )]; // get arguments (excludes quotation marks) ? non greedy
     if (!patternArgs)
-          return "";
+      return "";
 
     switch(args[1]) {
       case 'forwardMode':    

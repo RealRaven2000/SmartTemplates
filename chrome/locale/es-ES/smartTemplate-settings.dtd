@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Colaboradores">
 <!ENTITY about.label "SmartTemplates ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes).">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Haga clic en un encabezado o">
+<!ENTITY heading.expandAll "expandir todas las entradas">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Variables fijas">
 <!ENTITY ownname.label "Su nombre">
 <!ENTITY ownmail.label "Su dirección de correo">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Haga clic aquí para seleccionar una carpeta específica en su disco local.">
 <!ENTITY cursor.label "Establece la posición del cursor">
 <!ENTITY spellcheck.label "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Nombre de destinatario (predeterminado)">
 <!ENTITY ccfirstname.label "Nombre de pila del destinatario">
 <!ENTITY ccname.label "Apellido del destinatario">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Variables de la libreta de direcciones">
 <!ENTITY ab_fields.desc "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como &#37;from&#37;, como:">
 <!ENTITY ab_contact "Contacto">
 <!ENTITY ab_private "Privado">
 <!ENTITY ab_other "Otros">
 <!ENTITY ab_work "Trabajo">
-<!ENTITY spec_form.cap "Formato especial">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Conmutadores de campo de dirección">
 <!ENTITY specform_note.label "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;">
 <!ENTITY ex_brack.label "Ejemplo: Para: ÁGUEDA | Cc: BENIGNO">
 <!ENTITY brack_with_var.label "Las siguientes variables pueden usarse dentro de [[…]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Grupos de noticias">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Cualquier cabecera de línea">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modificar el encabezado del correo">
 <!ENTITY header_function.explain "Se puede usar esta función para modificar encabezados de correo, según se describe a continuación:">
 <!ENTITY header_function.scope "Se puede usar en los encabezados:">
@@ -192,7 +198,11 @@
 <!ENTITY matchTextFromSubject "Encontrar una patrón de RegEx en el asunto e insertar en la ubicación de la función.">
 <!ENTITY stringmanip.match.comment "Funciones de coincidencia: El primer parámetro (expresión regular) debe estar dentro de comillas. El segundo es el el número de grupo de coincidencia. Use 0 para que coincida toda la expresión, 1 para el primer grupo, etc.">
 <!ENTITY stringmanip.alttext "[parámetro opcional] Texto alternativo: si no se encuentra ninguna coincidencia, inserta el texto alternativo en su lugar.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Testo condizionale">
+<!ENTITY conditionals.note "Esta clase de variables se puede utilizar para insertar texto dependiendo de cómo envíe el correo. Necesita una licencia SmartTemplates Pro para estos.">
+<!ENTITY conditional.forwardMode "Si el correo electrónico se reenvía en línea, se inserta el primer parámetro de texto. El segundo parámetro de texto se utiliza cuando el correo se reenvía como archivo adjunto.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipulación de cotizaciones">
 <!ENTITY quote_changers.desc "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio.">
 <!ENTITY deleteQuotedText "Elimina el texto citado">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes.">
 <!ENTITY whitespace_note "Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
 <!ENTITY minSize_detail "No siempre es posible determinar el tamaño, especialmente si Thunderbird todavía está cargando la imagen, a menudo debido al gran tamaño; en este caso, la etiqueta se eliminará de todos modos.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "La siguiente función inserta un retardo a todas las fechas mostradas a continuación.">
 <!ENTITY calculate.explain "DD=días a añadir. H=horas a añadir (opcional). MM=minutos a añadir (opcional).">
 <!ENTITY calculate.reset "Deje el valor a 0 para no modificar más fechas.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variables para formatos de fecha personalizados">
 <!ENTITY customdf_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY A.label "Día de la semana (Viernes)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
 <!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '&#37;'. Ver también:">
 <!ENTITY dateformat.example "Ejemplo: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">

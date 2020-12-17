@@ -106,7 +106,7 @@
 <!ENTITY pref_stationeryLink_tip "Get Stationery…">
 <!ENTITY pref_defaultCharset.label "Default charset">
 <!ENTITY pref_defaultCharset_tip "When reading the headers, fall back to this character set if it cannot be determined.">
-<!-- #### HELP #### -->
+<!-- #### ABOUT #### -->
 <!ENTITY about.cap "有關 SmartTemplates">
 <!ENTITY support.tab "Support">
 <!ENTITY creator.label "建立者">
@@ -116,7 +116,10 @@
 <!ENTITY translatorNickname.label "Aris-T (AMO)">
 <!ENTITY contributor.label "貢獻者">
 <!ENTITY about.label "SmartTemplates 提供簡單的方法,讓您在使用樣板時可以自訂 Thunderbird 的預設引用表頭.單一樣板可以建立給每個帳號或是通用樣板來使用.">
-<!-- #### TABLE #### -->
+<!-- #### HELP #### -->
+<!ENTITY heading.click "點擊標題或">
+<!ENTITY heading.expandAll "展開所有條目">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "固定的變數">
 <!ENTITY ownname.label "您的姓名">
 <!ENTITY ownmail.label "您的電子郵件">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Sets the cursor position">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "收件者(到)">
 <!ENTITY to_note.label "當姓名無法使用時,將會顯示電子郵件地址">
 <!ENTITY to.label "收件者姓名 (預設)">
@@ -164,7 +168,8 @@
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "特殊格式">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "地址字段變量">
 <!ENTITY specform_note.label "假如變數 &#37;cc(name)&#37; 可以被置換時,將會顯示插入兩個中括號的 [[Cc: &#37;cc(name)&#37;]]!">
 <!ENTITY ex_brack.label "例如: 到:晨 | 副本:芳">
 <!ENTITY brack_with_var.label "以下的變數可以插入 [[...]] 來使用">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "新聞群組">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何 Header-line">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modify Mail Header">
 <!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
 <!ENTITY header_function.scope "It can be used with the these headers:">
@@ -192,6 +198,10 @@
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
 <!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "條件文字">
+<!ENTITY conditionals.note "根據您發送郵件的方式，此類變量可用於插入文本。 您需要獲得SmartTemplates Pro許可證。">
+<!ENTITY conditional.forwardMode "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "'日期格式'/'時區'為固定變數">
 <!ENTITY fix_vartz_note.label "可以跟 &#37;X:=sent&#37; 整合">
 <!ENTITY datelocal.label "日期/時間 (本地格式)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
 <!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
 <!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
 <!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">
 <!ENTITY A.label "Day of Week (Friday)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; 修改者">
 <!ENTITY xsent_note.label "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 &#37;X:=sent&#37;,則日期/時間變數將會對應原來郵件的日期/時間.">
 <!ENTITY xsent_long.cap "長字串的範例">

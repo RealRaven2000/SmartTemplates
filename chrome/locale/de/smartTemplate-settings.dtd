@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Mitwirkende">
 <!ENTITY about.label "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klicken Sie auf eine Überschrift oder">
+<!ENTITY heading.expandAll "alle erweitern">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
 <!ENTITY ownmail.label "Ihre E-Mail Adresse">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Klicken Sie hier, um einen bestimmten Ordner auf Ihrem lokalen Laufwerk festzulegen.">
 <!ENTITY cursor.label "Bestimmt die Position des Cursors">
 <!ENTITY spellcheck.label "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Empfängername (Standardformat)">
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Felder für Adressbuch">
 <!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Sonstiges">
 <!ENTITY ab_work "Dienstlich">
-<!ENTITY spec_form.cap "Sonderformatierung">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Adressfeldschalter">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
 <!ENTITY ex_brack.label "Beispiel: An: Friedrich | Cc: Eva">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Nachrichtengruppen">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Beliebige Kopfzeile">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Mail Header Abändern">
 <!ENTITY header_function.explain "Diese Funktionen können zum ändern bestimmter Mail Header verwendet werden, wie hier beschrieben:">
 <!ENTITY header_function.scope "Kann mit den folgenden Feldern benutzt werden: ">
@@ -192,7 +198,11 @@
 <!ENTITY matchTextFromSubject "Findet einen Regulären Ausdruck in der Betreff-Zeile and und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY stringmanip.match.comment "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw.">
 <!ENTITY stringmanip.alttext "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Bedingter Text">
+<!ENTITY conditionals.note "Diese Klasse von Variablen kann verwendet werden, um Text einzufügen, je nachdem, wie Sie E-Mails senden. Für diese benötigen Sie eine SmartTemplates Pro-Lizenz.">
+<!ENTITY conditional.forwardMode "Wenn die E-Mail inline weitergeleitet wird, wird der erste Textparameter eingefügt. Der zweite Textparameter wird verwendet, wenn die E-Mail als Anhang weitergeleitet wird.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Zitat-Bearbeitung">
 <!ENTITY quote_changers.desc "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen.">
 <!ENTITY deleteQuotedText "Löscht Text im Zitat">
@@ -207,6 +217,7 @@
 <!ENTITY minSize "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
 <!ENTITY whitespace_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
 <!ENTITY minSize_detail "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
@@ -217,6 +228,7 @@
 <!ENTITY dateoffset_note.label "Die folgende Funktion addiert einen Zeitabstand zu allen folgenden Zeiten.">
 <!ENTITY calculate.explain "DD=Anzahl der addierten Tage. H=Anzahl addierter Stunden (optional). MM=Anzahl addierter Minuten (optional).">
 <!ENTITY calculate.reset "0 setzt alle nachfolgenden Zeiten zurück.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variablen für angepasstes Datumsformat">
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY A.label "Wochentag (Freitag)">
@@ -241,6 +253,7 @@
 <!ENTITY dateformat.label "Funktion um die aktuelle Zeit einzufügen (klickbares Feld).">
 <!ENTITY dateformat.explain "Die meisten oben gelisteten Zeitvariablen können unter weglassen des &#37; Symbols als Parameter verwendet werden, siehe:">
 <!ENTITY dateformat.example "Beispiel: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Die Verwendung von &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
 <!ENTITY xsent_long.cap "Beispiel eines Langstrings">
