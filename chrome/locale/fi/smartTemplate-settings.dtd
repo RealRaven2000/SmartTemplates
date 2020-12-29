@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Lainaa manipulointia">
 <!ENTITY quote_changers.desc "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi.">
+<!ENTITY quotePlaceholder "Tämä siirtää lainatun osan itse tekstitekstiin. Tilimallien tarjouksen otsikko-osio siirretään lainauksen yläosaan.">
+<!ENTITY quotePlaceholder.level "[valinnainen, numeerinen] Enimmäislainaustaso vanhempien lainausten poistamiseksi keskustelusta.">
 <!ENTITY deleteQuotedText "Poistaa lainatun tekstin">
 <!ENTITY replaceQuotedText "Korvaa lainatun tekstin HTML-koodilla">
 <!ENTITY deleteQuotedTags "Poistaa tunnisteet tarjouksesta">

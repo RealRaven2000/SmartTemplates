@@ -204,6 +204,8 @@
 <!ENTITY conditional.forwardMode "Als de e-mail inline wordt doorgestuurd, wordt de eerste tekstparameter ingevoegd. De tweede tekstparameter wordt gebruikt wanneer de e-mail als bijlage wordt doorgestuurd.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Aanhalingsmanipulatie">
+<!ENTITY quotePlaceholder "Dit verplaatst het geciteerde deel naar de sjabloontekst zelf. Het citaatkopgedeelte van rekeningsjablonen wordt naar de bovenkant van het citaat verplaatst.">
+<!ENTITY quotePlaceholder.level "[optioneel, numeriek] Maximaal citatieniveau om oudere citaten uit het gesprek te verwijderen.">
 <!ENTITY quote_changers.desc "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen.">
 <!ENTITY deleteQuotedText "Verwijdert aangehaalde tekst">
 <!ENTITY replaceQuotedText "Vervangt aangehaalde tekst door HTML">

@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "引用部の操作">
 <!ENTITY quote_changers.desc "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。">
+<!ENTITY quotePlaceholder "これにより、引用部分がテンプレートテキスト自体に移動します。 アカウントテンプレートの見積もりヘッダーセクションは、引用の先頭に移動されます。">
+<!ENTITY quotePlaceholder.level "[オプション、数値]会話から古い引用を削除するための最大引用レベル。">
 <!ENTITY deleteQuotedText "引用文の消去">
 <!ENTITY replaceQuotedText "引用文を HTML で置換">
 <!ENTITY deleteQuotedTags "引用部からタグを消去">

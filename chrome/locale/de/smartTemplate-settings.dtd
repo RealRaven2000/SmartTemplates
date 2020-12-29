@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Zitat-Bearbeitung">
 <!ENTITY quote_changers.desc "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen.">
+<!ENTITY quotePlaceholder "Verschiebt den zitierten Teil in den Vorlagentext selbst. Der Kopfzeilen-Block aus Kontovorlagen wird an den Anfang des Zitats verschoben.">
+<!ENTITY quotePlaceholder.level "[optional, numerisch] Maximale Zitierstufe, um ältere Zitate aus der Konversation zu entfernen.">
 <!ENTITY deleteQuotedText "Löscht Text im Zitat">
 <!ENTITY replaceQuotedText "Ersetzt Text im Zitat mit HTML">
 <!ENTITY deleteQuotedTags "Löscht HTML Tags aus Zitaten">

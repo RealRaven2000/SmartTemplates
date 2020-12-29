@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipulação de Cotação">
 <!ENTITY quote_changers.desc "Variáveis premium para remover texto / tags das partes citadas e economizar espaço.">
+<!ENTITY quotePlaceholder "Isso move a parte citada para o próprio texto do modelo. A seção do cabeçalho da citação dos modelos de conta será movida para o topo da citação.">
+<!ENTITY quotePlaceholder.level "[opcional, numérico] Nível máximo de citação para remover citações mais antigas da conversa.">
 <!ENTITY deleteQuotedText "Exclui o texto citado">
 <!ENTITY replaceQuotedText "Substitui o texto citado por HTML">
 <!ENTITY deleteQuotedTags "Exclui tags da cotação">

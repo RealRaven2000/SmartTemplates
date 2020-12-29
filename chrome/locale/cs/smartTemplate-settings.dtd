@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Nabídka manipulace">
 <!ENTITY quote_changers.desc "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa.">
+<!ENTITY quotePlaceholder "Toto přesune citovanou část do samotného textu šablony. Část záhlaví nabídky ze šablon účtů bude přesunuta na začátek citace.">
+<!ENTITY quotePlaceholder.level "[volitelný, číselný] Maximální úroveň citace k odstranění starších citací z konverzace.">
 <!ENTITY deleteQuotedText "Odstraní citovaný text">
 <!ENTITY replaceQuotedText "Nahrazuje citovaný text HTML">
 <!ENTITY deleteQuotedTags "Odstraní značky z nabídky">

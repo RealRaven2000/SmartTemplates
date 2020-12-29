@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Изменение цитаты">
 <!ENTITY quote_changers.desc "Премиум переменные для удаления текста / тегов из указанных частей и экономии места.">
+<!ENTITY quotePlaceholder "Это перемещает цитируемую часть в сам текст шаблона. Раздел заголовка цитаты из шаблонов аккаунтов будет перемещен в верхнюю часть цитаты.">
+<!ENTITY quotePlaceholder.level "[необязательно, числовой] Максимальный уровень цитирования для удаления старых цитат из беседы.">
 <!ENTITY deleteQuotedText "Удаляет цитируемый текст">
 <!ENTITY replaceQuotedText "Заменяет цитируемый текст HTML">
 <!ENTITY deleteQuotedTags "Удаляет теги из цитаты">

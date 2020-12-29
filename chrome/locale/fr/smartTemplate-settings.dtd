@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipulation de devis">
 <!ENTITY quote_changers.desc "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace.">
+<!ENTITY quotePlaceholder "Cela déplace la partie citée dans le texte du modèle lui-même. La section d'en-tête de devis des modèles de compte sera déplacée vers le haut de la référence.">
+<!ENTITY quotePlaceholder.level "[facultatif, numérique] Niveau de citation maximal pour supprimer les anciennes citations de la conversation.">
 <!ENTITY deleteQuotedText "Supprime le texte cité">
 <!ENTITY replaceQuotedText "Remplace le texte cité par HTML">
 <!ENTITY deleteQuotedTags "Supprime les balises du devis">

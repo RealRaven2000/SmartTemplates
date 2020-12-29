@@ -147,7 +147,7 @@
 <!ENTITY to_var.cap "Penerima (Untuk)">
 <!ENTITY to_note.label "Ketika nama tidak tersedia, alamat email akan ditampilkan">
 <!ENTITY to.label "Nama penerima (bawaan)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "Konfigurasi format default…">
 <!ENTITY tofirstname.label "Nama depan penerima">
 <!ENTITY toname.label "Nama penerima">
 <!ENTITY tofwd.label "Gunakan fwd untuk menambahkan penerima yang dapat diklik dalam email yang diteruskan">
@@ -162,8 +162,8 @@
 <!ENTITY ccfirstname.label "Nama depan penerima">
 <!ENTITY ccname.label "Nama penerima">
 <!-- AB switch section -->
-<!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields "Kolom Buku Alamat">
+<!ENTITY ab_fields.desc "Saat membalas ke alamat email yang cocok, Anda sekarang dapat menggunakan bidang tambahan untuk variabel alamat seperti &#37;from&#37;, seperti:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
@@ -197,7 +197,7 @@
 <!ENTITY matchTextFromBody "Temukan pola RegEx di Email yang dikutip dan masukkan di lokasi fungsi.">
 <!ENTITY matchTextFromSubject "Temukan pola RegEx dalam subjek dan masukkan di lokasi fungsi.">
 <!ENTITY stringmanip.match.comment "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!ENTITY stringmanip.alttext "[parameter opsional] Teks Alternatif: jika tidak ada yang cocok, masukkan teks alternatif sebagai gantinya.">
 <!-- conditionals section -->
 <!ENTITY conditionals.cap "Teks Bersyarat">
 <!ENTITY conditionals.note "Kelas variabel ini dapat digunakan untuk memasukkan teks tergantung pada cara Anda mengirim email. Anda memerlukan lisensi SmartTemplates Pro untuk ini.">
@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY quotePlaceholder "Ini memindahkan bagian yang dikutip ke dalam teks templat itu sendiri. Bagian header kutipan dari templat akun akan dipindahkan ke atas kutipan.">
+<!ENTITY quotePlaceholder.level "[opsional, numerik] Tingkat kutipan maksimum untuk menghapus kutipan lama dari percakapan.">
 <!ENTITY deleteQuotedText "Deletes quoted Text">
 <!ENTITY replaceQuotedText "Replaces quoted text with HTML">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">

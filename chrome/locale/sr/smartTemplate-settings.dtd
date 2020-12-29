@@ -182,21 +182,21 @@
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Било који ред заглавља">
 <!-- Mail Header Manipulation -->
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
-<!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
+<!ENTITY header_function.cap "Измените заглавље поште">
+<!ENTITY header_function.explain "Ове функције се могу користити за модификовање заглавља поште, како је овде описано:">
+<!ENTITY header_function.scope "Може се користити са овим заглављима:">
+<!ENTITY header.set.subject "заменити предмет текстом">
+<!ENTITY header.prefix.subject "префикс субјекта уз текст">
+<!ENTITY header.append.subject "додати текст на тему">
+<!ENTITY header.set.to "замените примаоца адресом е-поште">
+<!ENTITY header.append.to "додајте е-адресу на листу прималаца">
+<!ENTITY stringmanip_function.cap "Стринг Манипулатион">
+<!ENTITY stringmanip_function.explain "Ове функције се могу користити за брисање или замену текста у предлошку е-поште или заглављу цитата.">
+<!ENTITY deleteText "Уклоните неки текст из цитата, нпр.deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "Замените неки текст нечим другим.">
+<!ENTITY matchTextFromBody "Пронађите RegEx образац у наведеном имејлу и уметните на место функције.">
+<!ENTITY matchTextFromSubject "Пронађите RegEx образац у предмету и уметните на место функције.">
+<!ENTITY stringmanip.match.comment "Функције подударања: Први параметар (регуларни израз) мора бити унутар двоструких наводника. Други параметар је број групе подударања. Користите 0 да се подударате са комплетним изразом, 1 за прву групу итд.">
 <!ENTITY stringmanip.alttext "[опционални параметар] Алтернативни текст: ако није пронађено подударање, уместо њега се убацује алтернативни текст.">
 <!-- conditionals section -->
 <!ENTITY conditionals.cap "Условный текст">
@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Манипулација цитата">
 <!ENTITY quote_changers.desc "Премиум променљиве за уклањање текста / тагова из цитираних делова и штеди простор">
+<!ENTITY quotePlaceholder "Овим се цитирани део премешта у сам текст предлошка. Одељак заглавља цитата из шаблона налога биће премештен на врх цитата.">
+<!ENTITY quotePlaceholder.level "[опционално, нумерички] Максимални ниво цитирања за уклањање старијих цитата из разговора.">
 <!ENTITY deleteQuotedText "Брисање цитираног текста">
 <!ENTITY replaceQuotedText "Замењује цитирани текст ХТМЛ-ом">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">

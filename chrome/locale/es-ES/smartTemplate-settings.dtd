@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipulación de cotizaciones">
 <!ENTITY quote_changers.desc "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio.">
+<!ENTITY quotePlaceholder "Esto mueve la parte citada al texto de la plantilla. La sección del encabezado de la cita de las plantillas de cuenta se moverá a la parte superior de la cita.">
+<!ENTITY quotePlaceholder.level "[opcional, numérico] Nivel máximo de citas para eliminar citas antiguas de la conversación.">
 <!ENTITY deleteQuotedText "Elimina el texto citado">
 <!ENTITY replaceQuotedText "Reemplaza el texto citado con HTML">
 <!ENTITY deleteQuotedTags "Elimina tags de la cita.">

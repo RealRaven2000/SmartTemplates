@@ -147,7 +147,7 @@
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY to.label "收件人姓名 (默认)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "配置默认格式...">
 <!ENTITY tofirstname.label "收件人名字">
 <!ENTITY toname.label "收件人姓名">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -162,8 +162,8 @@
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
 <!-- AB switch section -->
-<!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields "地址簿字段">
+<!ENTITY ab_fields.desc "现在，当回复匹配的电子邮件地址时，您可以将其他字段用于地址变量，例如 &#37;from&#37;, 例如：">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
@@ -191,28 +191,30 @@
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
 <!ENTITY stringmanip_function.cap "文本操作">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY stringmanip_function.explain "这些功能可用于删除或替换电子邮件模板或报价标题中的文本。">
+<!ENTITY deleteText "从报价中删除一些文字，例如 deleteText(&quot;via Paypal&quot;)">
 <!ENTITY replaceText "用其他东西替换一些文本。">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!ENTITY matchTextFromBody "在带引号的电子邮件中找到一个RegEx模式，并在函数位置插入。">
+<!ENTITY matchTextFromSubject "在主题中找到一个RegEx模式，然后将其插入功能位置。">
+<!ENTITY stringmanip.match.comment "match函数：第一个参数（正则表达式）必须在双引号内。 第二个参数是匹配组号。 使用0来匹配完整的表达式，使用1来匹配第一组，依此类推。">
+<!ENTITY stringmanip.alttext "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。">
 <!-- conditionals section -->
 <!ENTITY conditionals.cap "条件文字">
 <!ENTITY conditionals.note "根据您发送邮件的方式，此类变量可用于插入文本。 您需要获得SmartTemplates Pro许可证。">
 <!ENTITY conditional.forwardMode "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
-<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
-<!ENTITY deleteQuotedText "Deletes quoted Text">
-<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
-<!ENTITY deleteQuotedTags "Deletes tags from the quote">
-<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
-<!ENTITY Parameters "Parameters">
+<!ENTITY quote_changers.desc "高级变量，用于从引用的零件中删除文本/标签并节省空间。">
+<!ENTITY quotePlaceholder "这会将引用的部分移入模板文本本身。 帐户模板中的报价标题部分将移至引用的顶部。">
+<!ENTITY quotePlaceholder.level "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。">
+<!ENTITY deleteQuotedText "删除引用文字">
+<!ENTITY replaceQuotedText "用HTML替换带引号的文本">
+<!ENTITY deleteQuotedTags "从引用中删除标签">
+<!ENTITY replaceQuotedTags "用文本或HTML替换引文中的标签">
+<!ENTITY Parameters "参量">
 <!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
 <!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
-<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
+<!ENTITY quoteLevel "[可选，数字]：从哪个最低报价水平开始">
 <!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
@@ -224,10 +226,10 @@
 <!ENTITY dateshort.label "日期和时间的简写 (例如 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "时区 (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!ENTITY timezone.explain "通过替换tz参数为日期变量强制指定时区 (GMT, EST, CST, PST etc.)">
+<!ENTITY dateoffset_note.label "以下功能将偏移量添加到所有随后显示的时间。">
+<!ENTITY calculate.explain "DD =要添加的天数。 H =要添加的小时数（可选）。 MM =添加分钟（可选）">
+<!ENTITY calculate.reset "将参数设置为0以停止修改任何日期。">
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "自定义日期格式的变量">
 <!ENTITY customdf_note.label "可以和 &#37;X:=sent&#37; 组合">
@@ -250,7 +252,7 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.label "插入当前时间的功能（可单击字段）。">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
 <!-- x=sent section -->

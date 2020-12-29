@@ -169,7 +169,7 @@
 <!ENTITY ab_other "Inne">
 <!ENTITY ab_work "Służbowy">
 <!-- address field switches -->
-<!ENTITY spec_form.cap "Przełączniki pola adresu>
+<!ENTITY spec_form.cap "Przełączniki pola adresu">
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
 <!ENTITY ex_brack.label "Przykład: Do: Jakub | Kopia: Zuzanna">
 <!ENTITY brack_with_var.label "Następujące zmienne mogą być używane wewnątrz [[...]]">
@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Cytuj manipulację">
 <!ENTITY quote_changers.desc "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca.">
+<!ENTITY quotePlaceholder "Spowoduje to przeniesienie cytowanej części do samego tekstu szablonu. Sekcja nagłówka oferty z szablonów kont zostanie przeniesiona na początek cytatu.">
+<!ENTITY quotePlaceholder.level "[opcjonalne, numeryczne] Maksymalny poziom cytowań, aby usunąć starsze cytaty z rozmowy.">
 <!ENTITY deleteQuotedText "Usuwa cytowany tekst">
 <!ENTITY replaceQuotedText "Zamienia cytowany tekst na HTML">
 <!ENTITY deleteQuotedTags "Usuwa tagi z cytatu">

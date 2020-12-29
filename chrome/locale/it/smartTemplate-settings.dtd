@@ -204,6 +204,8 @@
 <!ENTITY conditional.forwardMode "Se l'email viene inoltrata in linea, viene inserito il primo parametro di testo. Il secondo parametro di testo viene utilizzato quando la posta viene inoltrata come allegato.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipolazione delle citazioni">
+<!ENTITY quotePlaceholder "Questo sposta la parte citata nel testo del modello stesso. La sezione dell'intestazione della citazione dai modelli di account verrà spostata all'inizio della citazione.">
+<!ENTITY quotePlaceholder.level "[facoltativo, numerico] Livello massimo di citazioni per rimuovere le citazioni meno recenti dalla conversazione.">
 <!ENTITY quote_changers.desc "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio.">
 <!ENTITY deleteQuotedText "Elimina il testo citato">
 <!ENTITY replaceQuotedText "Sostituisce il testo citato con HTML">

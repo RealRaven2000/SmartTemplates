@@ -133,10 +133,10 @@
 <!ENTITY ccmail.label "副本收件者電子郵件">
 <!ENTITY sig.label "從帳號設定的簽名檔">
 <!ENTITY sig2.label "從帳號設定的簽名檔但不要 '--'">
-<!ENTITY fileHTML.label "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter.">
-<!ENTITY fileImage.label "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found.">
-<!ENTITY fileCSS.label "External style sheet (css). Include your favorite CSS rules to share between different templates.">
-<!ENTITY attach.label "Add file as attachment">
+<!ENTITY fileHTML.label "HTML或純文本文件。 省略可選的charset參數時，假定使用UTF-8。">
+<!ENTITY fileImage.label "圖片文件（png，jpg，gif，bmp，svg）。 如果找不到圖像，則顯示可選的altText。">
+<!ENTITY fileCSS.label "外部樣式表（css）。 包括您喜歡的CSS規則以在不同模板之間共享。">
+<!ENTITY attach.label "將文件添加為附件">
 <!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
 <!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
 <!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
@@ -147,7 +147,7 @@
 <!ENTITY to_var.cap "收件者(到)">
 <!ENTITY to_note.label "當姓名無法使用時,將會顯示電子郵件地址">
 <!ENTITY to.label "收件者姓名 (預設)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "配置默認格式...">
 <!ENTITY tofirstname.label "收件者名字">
 <!ENTITY toname.label "收件者姓名">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -162,8 +162,8 @@
 <!ENTITY ccfirstname.label "收件者名字">
 <!ENTITY ccname.label "收件者姓名">
 <!-- AB switch section -->
-<!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields "地址簿字段">
+<!ENTITY ab_fields.desc "現在，當回复匹配的電子郵件地址時，您可以將其他字段用於地址變量，例如 &#37;from&#37;，例如：">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
@@ -182,38 +182,40 @@
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何 Header-line">
 <!-- Mail Header Manipulation -->
-<!ENTITY header_function.cap "Modify Mail Header">
-<!ENTITY header_function.explain "These functions can be used to modify mail headers, as described here:">
-<!ENTITY header_function.scope "It can be used with the these headers:">
-<!ENTITY header.set.subject "replace subject with the text">
-<!ENTITY header.prefix.subject "prefix subject with the text">
-<!ENTITY header.append.subject "append text to subject">
-<!ENTITY header.set.to "replace recipient with email address">
-<!ENTITY header.append.to "add email to recipient list">
+<!ENTITY header_function.cap "修改郵件標題">
+<!ENTITY header_function.explain "這些功能可用於修改郵件頭，如下所述：">
+<!ENTITY header_function.scope "可以與以下標頭一起使用：">
+<!ENTITY header.set.subject "用文本替換主題">
+<!ENTITY header.prefix.subject "在主題之前加上文字">
+<!ENTITY header.append.subject "將文字附加到主題">
+<!ENTITY header.set.to "用電子郵件地址替換收件人">
+<!ENTITY header.append.to "將電子郵件地址添加到收件人列表">
 <!ENTITY stringmanip_function.cap "String Manipulation">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
-<!ENTITY replaceText "Replace some text with something else.">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!ENTITY stringmanip_function.explain "這些功能可用於刪除或替換電子郵件模板或引用標題中的文本。">
+<!ENTITY deleteText "從報價中刪除一些文字，例如 deleteText(&quot;via Paypal&quot;)">
+<!ENTITY replaceText "用其他內容替換一些文本。">
+<!ENTITY matchTextFromBody "在帶引號的電子郵件中找到一個RegEx模式，並在函數位置插入。">
+<!ENTITY matchTextFromSubject "在主題中找到一個RegEx模式，然後將其插入功能位置。">
+<!ENTITY stringmanip.match.comment "match函數：第一個參數（正則表達式）必須在雙引號內。 第二個參數是匹配組號。 使用0來匹配完整的表達式，使用1來匹配第一組，依此類推。">
+<!ENTITY stringmanip.alttext "[可選參數]替代文本：如果未找到匹配項，則插入替代文本。">
 <!-- conditionals section -->
 <!ENTITY conditionals.cap "條件文字">
 <!ENTITY conditionals.note "根據您發送郵件的方式，此類變量可用於插入文本。 您需要獲得SmartTemplates Pro許可證。">
 <!ENTITY conditional.forwardMode "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
-<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
-<!ENTITY deleteQuotedText "Deletes quoted Text">
-<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
-<!ENTITY deleteQuotedTags "Deletes tags from the quote">
-<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
-<!ENTITY Parameters "Parameters">
-<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
-<!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
-<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
-<!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
+<!ENTITY quote_changers.desc "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。">
+<!ENTITY quotePlaceholder "這會將引用的部分移入模板文本本身。 帳戶模板中的報價標題部分將移至引用的頂部。">
+<!ENTITY quotePlaceholder.level "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。">
+<!ENTITY deleteQuotedText "刪除引用文字">
+<!ENTITY replaceQuotedText "用HTML替換帶引號的文本">
+<!ENTITY deleteQuotedTags "從引用中刪除標籤">
+<!ENTITY replaceQuotedTags "用文本或HTML替換引文中的標籤">
+<!ENTITY Parameters "參量">
+<!ENTITY regexpAnyText "任何文本（正則表達式）都必須用雙引號引起來。">
+<!ENTITY replacementHTML "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。">
+<!ENTITY quoteLevel "[可選，數字]：從哪個最低報價水平開始">
+<!ENTITY selector "- what you would use to address the tag in CSS. Simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
@@ -224,10 +226,10 @@
 <!ENTITY dateshort.label "簡短的日期/時間 (例如. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "時區 (+0100,+0200,...)">
 <!ENTITY tzname.label "GMT, PST, EST, ... ">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!ENTITY timezone.explain "通過替換tz參數為日期變量強制指定時區 (GMT, EST, CST, PST 等等)">
+<!ENTITY dateoffset_note.label "以下功能將偏移量添加到所有隨後顯示的時間。">
+<!ENTITY calculate.explain "DD =要添加的天數。 H =要添加的小時數（可選）。 MM =添加分鐘（可選）">
+<!ENTITY calculate.reset "將參數設置為0以停止修改任何日期。">
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
 <!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">

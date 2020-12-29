@@ -147,7 +147,7 @@
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "Налаштування формату за замовчуванням ...">
 <!ENTITY tofirstname.label "Ім'я отримувача">
 <!ENTITY toname.label "Прізвище отримувача">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -163,7 +163,7 @@
 <!ENTITY ccname.label "Прізвище отримувача копії повідомлення">
 <!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields.desc "Відповідаючи на відповідну електронну адресу, тепер ви можете використовувати додаткові поля для змінних адреси, наприклад &#37;from&#37;, наприклад:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
@@ -197,7 +197,7 @@
 <!ENTITY matchTextFromBody "Знаходження за шаблоном RegEx у цитованому Email та вставлення результату в місце розташування функції.">
 <!ENTITY matchTextFromSubject "Знайти за шаблоном RegEx у темі та вставити результат в місце розташування функції.">
 <!ENTITY stringmanip.match.comment "Функції відповідності: Перший параметр (регулярний вираз) повинен бути в межах подвійних лапок. Другий параметр - це номер групи відповідності. Використовуйте 0 для повного виразу, 1 для першої групи тощо.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!ENTITY stringmanip.alttext "[необов’язковий параметр] Альтернативний текст: якщо не знайдено збігу, замість нього вставляється альтернативний текст.">
 <!-- conditionals section -->
 <!ENTITY conditionals.cap "Умовний текст">
 <!ENTITY conditionals.note "Цей клас змінних можна використовувати для вставки тексту залежно від способу надсилання пошти. Для них вам потрібна ліцензія SmartTemplates Pro.">
@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY quotePlaceholder "Це переміщує цитовану частину до самого тексту шаблону. Розділ заголовка котирувань із шаблонів рахунків буде переміщено у верхню частину цитати.">
+<!ENTITY quotePlaceholder.level "[необов’язково, числове] Максимальний рівень цитування для видалення старих цитат із розмови.">
 <!ENTITY deleteQuotedText "Deletes quoted Text">
 <!ENTITY replaceQuotedText "Replaces quoted text with HTML">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">

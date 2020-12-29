@@ -204,6 +204,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Citat Manipulation">
 <!ENTITY quote_changers.desc "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme.">
+<!ENTITY quotePlaceholder "Detta flyttar den citerade delen till själva malltexten. Offertrubriksavsnittet från kontomallar flyttas till toppen av citatet.">
+<!ENTITY quotePlaceholder.level "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen.">
 <!ENTITY deleteQuotedText "Tar bort citerad text">
 <!ENTITY replaceQuotedText "Ersätter citerad text med HTML">
 <!ENTITY deleteQuotedTags "Tar bort taggar från offerten">

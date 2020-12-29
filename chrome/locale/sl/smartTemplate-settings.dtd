@@ -205,6 +205,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Manipulacija citatov">
 <!ENTITY quote_changers.desc "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor.">
+<!ENTITY quotePlaceholder "S tem se citirani del premakne v samo besedilo predloge. Odsek glave ponudbe iz predlog računa bo premaknjen na vrh citata.">
+<!ENTITY quotePlaceholder.level "[neobvezno, številčno] Najvišja stopnja navajanja za odstranitev starejših citatov iz pogovora.">
 <!ENTITY deleteQuotedText "Izbriše citirano besedilo">
 <!ENTITY replaceQuotedText "Nadomešča citirano besedilo s HTML">
 <!ENTITY deleteQuotedTags "Izbriše oznake iz ponudbe">

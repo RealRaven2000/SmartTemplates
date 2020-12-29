@@ -162,7 +162,7 @@
 <!ENTITY ccname.label "Noms dels destinataris en còpia">
 <!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables like &#37;from&#37;, such as:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
@@ -204,6 +204,8 @@
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY quotePlaceholder "This moves the quoted part into the template text itself. The quote header block from account templates will be moved to the top of this quote.">
+<!ENTITY quotePlaceholder.level "[optional, numeric] Maximum citation level to remove older quotes from the conversation.">
 <!ENTITY deleteQuotedText "Deletes quoted Text">
 <!ENTITY replaceQuotedText "Replaces quoted text with HTML">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">
