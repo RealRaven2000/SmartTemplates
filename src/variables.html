@@ -542,8 +542,15 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 <h3 class="helpchapter">Quote Manipulation (Pro Function)</h3>
 <article>
   <ul>
+    <li>
+      <p><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> Variable for quoted text.<br>
+        <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> This moves the quoted part into the template text itself. 
+        The quote header section from account templates will be moved to the top of this quote. 
+        The optional numerical parameter <i>quoteLevel</i> is the maximum citation level to exclude 
+        older quote parts from the conversation.
+      </p>
     <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/31">[issue 31]</a> 
-      From SmartTemplates 2.8: New variables to remove text / tags from quoted parts 
+      From SmartTemplates 2.8: Variables to remove text / tags from quoted parts 
       and save space.
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
