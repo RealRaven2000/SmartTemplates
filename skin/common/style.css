@@ -293,10 +293,6 @@ groupbox.transparent .groupbox-title {
 }
 
 
-/* ########################## CONTENT IDENT. SELECT POPUP ############################ */
-#smartTemplate_prefDialog #msgIdentityPopup menuitem {
-
-}
 
 /* ################################## TEXTBOXES ###################################### */
 #smartTemplate_prefDialog .indent textbox:not(.templateBox) {
@@ -457,8 +453,15 @@ groupbox.transparent .groupbox-title {
 }
 
 .templateWrite.templateBox {
-	min-height: 11em;
+	min-height: 9em;
 }
+
+.fileTemplatePanel richlistbox {
+  min-height: 7em;
+}
+
+
+
 
 .indent .templateBox {
   position: relative;
@@ -536,15 +539,24 @@ groupbox.transparent .groupbox-title {
 
 /* ################################## AboutDeveloper ################################# */
 .aboutPersonnel description {
-  font-weight: bold;
-  text-align: center;
   color: #ffffff; /* #ffffff for TT DeepDark Theme */
+  font-weight: bold;
+  line-height: 1.4em;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  text-align: center;
   text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
 }
 
+.aboutHeader {
+	text-align: center;
+	width:100%;
+}
+
+
 .aboutWrapper {
 	text-align: center;
-	padding: 1em;
+	padding: 0.5em;
 	width:100%;
 }
 
@@ -562,6 +574,7 @@ groupbox.transparent .groupbox-title {
   font-size: 9pt;
   display: block;
   margin-top: 0.5em;
+  line-height: 1.3em;
 }
 
 /* ################################################################################### */
@@ -577,7 +590,7 @@ groupbox.transparent .groupbox-title {
 .help {
   font-size: 9pt;
   display: block;
-  background: rgb(208,228,247);
+  background: rgb(250,250,250);
 	border-left: #ccc 1px;
 	border-right: #ccc 1px;
 	font-size: 10pt;
@@ -959,3 +972,9 @@ txtTemplateTitle
 	min-width: 200px;
 }
 
+#txtSupportSubject {
+  min-width: 25em;
+}
+#ST4-Panels {
+  padding-top: 4px;
+}

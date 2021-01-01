@@ -1,28 +1,31 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.12">can be found here</a>
+Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.13">can be found here</a>
 
 <b>Latest News</b>
 
-<ul>
-  <li>
-    I have started to rewrite all mail Add-ons for compatibility with Thunderbird 78. I have hired a developer and am currently thinking of ways to fund raise the development effort - probably several man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will not happen until September 2020.
-    
-    If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78, consider         
-    <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
-    to support the project.
+I have rewritten SmartTemplates for compatibility with Thunderbird 78. We had a few 1000$ costs for my Add-on migrations. The main effort for new features and bug fixes will go into this new version - latest version is <a href="https://addons.thunderbird.net/thunderbird/addon/smarttemplate4/versions/?page=1#version-3.2">3.2</a>. 
 
-    In other news we have just successfully migrated all Add-on support sites away from the free host on <span class="emphasis">mozdev.org, which is now closed</span>. To keep having support sites and ongoing development, please 
-    <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a license</a>
-    (the migration has cost around $650, so there are some expense I hope to recover from the community of users).
-  </li>
+I may backport some fixes / features for Thunderbird 60-68 in the SmartTemplate version 2.*. See the item lists below for more detail.
+
+If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78 and later, consider         
+<a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
+to support the project.
+
+
+<b>Improvements</b>
+<ul>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> new function for including quoted mail within the template for styling - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. If a quote Header is configured in the account template this will be moved with the top of the quote.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> Provide keyboard accelerators for Template picker.</li>
+  <li>Rebranded from SmartTemplate4 to SmartTemplates for simplification.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/100">[issue 100]</a> Trial period should restart on license expiry for registered users who had a valid license before.</li>
+  <li>Improved shop integration for extending / renewing Domain licenses</li>
+  <li>Fixed support links to use secure protocol.</li>
+  <li>Made toggling spellcheck through %spellcheck()% function more reliable.</li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/77">[issue 77]</a> %file()% path truncated at front by 1 letter on Mac OS
-  </li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/94">[issue 94]</a> SmartTemplates does not insert template when Forwarding inline based on an Email written with ST</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/59">[issue 58]</a> removed dead links to mozdev.org</li>
- </ul>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a>Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer</li>
+</ul>

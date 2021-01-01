@@ -469,7 +469,7 @@ END LICENSE BLOCK
     # [issue 100] Trial period should restart count on license expiry
     # [issue 108] Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer
     # Fixed support links to use https
-    # make toggline spellcheck more reliable if %spellcheck()% variable is used
+    # make toggling spellcheck more reliable if %spellcheck()% variable is used
     # show premium variables if used with standard license more consistently
     # Improved Scrolling behavior if %cursor% is used.
 
