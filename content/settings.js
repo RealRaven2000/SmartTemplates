@@ -2,7 +2,7 @@
 /* 
   BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1576,33 +1576,15 @@ SmartTemplate4.Settings = {
     if (el.collapsed != false) {
       el.collapsed = false;
       if (!silent)
-        util.popupAlert ("SmartTemplate4", el.textContent);
+        util.popupAlert (util.ADDON_TITLE, el.textContent);
     }
   } ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
 		/* future function: enables premium configuration UI
     let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement('premiumConfig'),
-        quickJump       = getElement('chkQuickJumpHotkey'),
-        quickMove       = getElement('chkQuickMoveHotkey'),
-        quickCopy       = getElement('chkQuickCopyHotkey'),
-        quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
-        quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
-        quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
-        quickMoveFormat = getElement('menuQuickMoveFormat'),
-        quickMoveDepth  = getElement('quickmove-path-depth'),
-        multiCategories = getElement('chkCategories');
+        premiumConfig   = getElement('premiumConfig');
     premiumConfig.disabled = !isEnabled;
-    quickJump.disabled = !isEnabled;
-    quickMove.disabled = !isEnabled;
-    quickCopy.disabled = !isEnabled;
-    quickJumpTxt.disabled = !isEnabled;
-    quickMoveTxt.disabled = !isEnabled;
-    quickCopyTxt.disabled = !isEnabled;
-    quickMoveFormat.disabled = !isEnabled;
-    quickMoveDepth.disabled = !isEnabled;
-    multiCategories.disabled = !isEnabled;
 		*/
   },
   
@@ -1706,7 +1688,7 @@ SmartTemplate4.Settings = {
 					if (addonName) {
 						SmartTemplate4.Settings.showValidationMessage(validationInvalidAddon, silent);
 						let txt = validationInvalidAddon.textContent;
-						txt = txt.replace('{0}','SmartTemplate⁴').replace('{1}','ST'); // keys for {0} start with {1}
+						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
 							txt += " " + util.getBundleString("SmartTemplate4.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
 						}
@@ -1730,7 +1712,7 @@ SmartTemplate4.Settings = {
           SmartTemplate4.Settings.showValidationMessage(validationEmailNoMatch, silent);
           break;
         default:
-          Services.prompt.alert(null,"SmartTemplate4",'Unknown license status: ' + result);
+          Services.prompt.alert(null,util.ADDON_TITLE,'Unknown license status: ' + result);
           break;
       }
 			

@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1475,7 +1475,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			      startVars = msg.search(/%\S*%/),
 						isTruncateStart = (startVars > 10); // cut off text before first %var%
 			let txtAlert = util.getBundleString("SmartTemplate4.notification.license.required", 
-			                 "SmartTemplate⁴ requires a license to continue working. Read more at the bottom of the compose window."),
+			                 "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
 					txtParseTitle = util.getBundleString("SmartTemplate4.notification.parsing", "Parsing variables:"),
 			    parseString = 
 						(isTruncateStart ? "…" : "") +
@@ -2212,15 +2212,24 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "quoteHeader":  // is this useful when Stationery does not exist?
 					return "<span class=\"quoteHeader-placeholder\"></span>";
 					
-				case "quotePlaceholder":  // currently only useful when put into a Stationery template.
-          // apparently Stationery inserts the blockquote after
-          // <span class="quoteHeader-placeholder"></span> <br>
-				  return isStationery ?
-  					"<span stationery=\"content-placeholder\">"
-					       +   "<blockquote type=\"cite\"> ... "
-								 +   "</blockquote>"
-							   + "</span>" 
-						: "";
+				case "quotePlaceholder":  
+				  if (isStationery) {
+            // only useful when put into a Stationery template.
+            // apparently Stationery inserts the blockquote after
+            // <span class="quoteHeader-placeholder"></span> <br>
+            return
+              "<span stationery=\"content-placeholder\">"
+                   +   "<blockquote type=\"cite\"> ... "
+                   +   "</blockquote>"
+                   + "</span>";
+          }
+					else { // [issue 61] - internal implementation
+            // move the quote up to level n. use "all"
+            let maxQuoteLevel = removeParentheses(arg),
+                levelAtt = maxQuoteLevel ? (" quotelevel=" + maxQuoteLevel) : "";
+            return "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n"
+                 + "</blockquote>";
+          }
 				  break;
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
@@ -2769,7 +2778,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         Components.utils.import('resource://gre/modules/Services.jsm');
       
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
-      Services.prompt.alert(null, "SmartTemplate⁴", "Something went wrong trying to read a file: " + txt + "\n" +
+      Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
         "Please check Javascript error console for detailed error message.");
     }
     return html;
@@ -2832,7 +2841,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     
   if (supportEval) {
     // [Bug 25676]	Turing Complete Templates - Benito van der Zander
-    // https://www.mozdev.org/bugs/show_bug.cgi?id=25676
+    // https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676
     // we are allowing certain (string) Javascript functions in concatenation to our %variable%
     // as long as they are in a script block %{%    %}%
     // local variables can be defined within these blocks, only 1 expression line is allowed per block,
@@ -2874,7 +2883,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         var implicitNull = {},
             stringFunctionHack = new Function(),
         // overloading our strings using sandbox
-            props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", "toUpperCase", "trim", "trimLeft", "trimRight",  "contains", "containsSome", "count"];
+            props = ["charAt", "charCodeAt", "concat", "contains", "endsWith", "indexOf", "lastIndexOf", 
+                     "localeCompare", "match", "quote", "repeat", "replace", "search", "slice", "split", 
+                     "startsWith", "substr", "substring", "toLocaleLowerCase", "toLocaleUpperCase", "toLowerCase", 
+                     "toUpperCase", "trim", "trimLeft", "trimRight", "containsSome", "count",
+                     "includes"];
         for (let i=0; i<props.length; i++) {
           let s = props[i];
           stringFunctionHack[s] = sandbox.String.prototype[s];

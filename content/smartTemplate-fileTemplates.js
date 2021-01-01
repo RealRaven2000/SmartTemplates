@@ -2,7 +2,7 @@
 /* 
 	BEGIN LICENSE BLOCK
 	
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 	
@@ -383,7 +383,7 @@ SmartTemplate4.fileTemplates = {
           else {
             // Some other error
 						Components.utils.import("resource://gre/modules/Services.jsm");
-            Services.prompt.alert(null, 'SmartTemplate⁴ - loadCustomMenu', 'Reading the fileTemplates file failed\n' + ex);
+            Services.prompt.alert(null, 'SmartTemplates - loadCustomMenu', 'Reading the fileTemplates file failed\n' + ex);
           }     
           // no changes to Entries array
         }
@@ -402,7 +402,7 @@ SmartTemplate4.fileTemplates = {
 					function promise2_onFail(ex) {
 						util.logDebug ('promise2.then onFail():\n' + ex); 
 						Components.utils.import("resource://gre/modules/Services.jsm");
-						Services.prompt.alert(null, 'SmartTemplate⁴ - promise2.then', 'Did not load main menu\n' + ex);
+						Services.prompt.alert(null, 'SmartTemplates - promise2.then', 'Did not load main menu\n' + ex);
 						return promise2; // make loadCustomMenu chainable
 					}
 				);
@@ -509,11 +509,20 @@ SmartTemplate4.fileTemplates = {
     catch(ex) {
       
     }
+    
+    function getAccessKey(acCode) {
+      if (acCode<10)
+        return acCode.toString();
+      if (acCode>34) 
+        return "";
+      return String.fromCharCode(65+acCode-10); // continue with A,B,C
+    }    
 					
 		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
 		// first clear entries:
 							
-		let lastChild = msgPopup.lastChild;
+		let lastChild = msgPopup.lastChild,
+        accelerator = 1; // [issue 96]
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
 			// this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
@@ -525,8 +534,12 @@ SmartTemplate4.fileTemplates = {
 			}
 			
       /* insert one item for each listed html template */
-			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
-			menuitem.setAttribute("label", theTemplate.label);
+			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
+          acKey = getAccessKey(accelerator++);
+      if (acKey) {
+        menuitem.setAttribute("accesskey", acKey);
+      }
+			menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
 			menuitem.setAttribute("st4composeType", composeType);
 			menuitem.classList.add("st4templateEntry");
 			menuitem.classList.add("menuitem-iconic");
@@ -541,7 +554,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					if (event.target.disabled) {
-						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplate⁴ license to use more than {1} templates!");
+						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplates license to use more than {1} templates!");
 						
 						SmartTemplate4.Message.display(
 							txt.replace("{1}", maxFreeItems), 
@@ -572,7 +585,7 @@ SmartTemplate4.fileTemplates = {
 		msgPopup.appendChild(menuseparator);
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
-		    menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplate⁴ file template…");
+		    menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplates file template…");
 		
 		menuitem.setAttribute("label", menuTitle);
 		menuitem.setAttribute("st4composeType", composeType);

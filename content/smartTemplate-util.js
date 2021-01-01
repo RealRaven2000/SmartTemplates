@@ -3,7 +3,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -18,9 +18,10 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.12.1",
+	HARDCODED_CURRENTVERSION : "2.13",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
+  ADDON_TITLE: "SmartTemplates",
 	VersionProxyRunning: false,
 	mAppver: null,
 	mAppName: null,
@@ -467,9 +468,9 @@ SmartTemplate4.Util = {
 			theText = 
 				  isList 
 						? util.getBundleString("SmartTemplate4.notification.premium.text.plural",
-																 "{1} are Premium features, please upgrade to a SmartTemplate⁴ Pro License for using them permanently.")
+																 "{1} are Premium features, please upgrade to a SmartTemplates Pro License for using them permanently.")
 						: util.getBundleString("SmartTemplate4.notification.premium.text",
-																 "{1} is a Premium feature, please upgrade to a SmartTemplate⁴ Pro License for using it permanently.");
+																 "{1} is a Premium feature, please upgrade to a SmartTemplates Pro License for using it permanently.");
         featureTitle = 
 				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
 						// util.getBundleString('SmartTemplate4.premium.title.' + featureName, featureName); 
@@ -481,7 +482,7 @@ SmartTemplate4.Util = {
 			title = "Licensing";
 			theText = 
 				util.getBundleString("SmartTemplate4.notification.license.text",
-					"From now on, SmartTemplate⁴ requires at least a standard license. " +
+					"From now on, SmartTemplates requires at least a standard license. " +
 					"Read more about it on our licensing page.");
 			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
 			theText = theText + '  ' + txtGracePeriod;
@@ -661,7 +662,7 @@ SmartTemplate4.Util = {
 		if (util.ConsoleService === null)
 			util.ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									.getService(Components.interfaces.nsIConsoleService);
-		let title = "SmartTemplate⁴";
+		let title = "SmartTemplates";
 		if (typeof optionalTitle !== 'undefined')
 			title += " {" + optionalTitle.toUpperCase() + "}"
 
@@ -973,7 +974,7 @@ SmartTemplate4.Util = {
 		let warnText = noStationery,
 				txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
 				"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
-				+ "Therefore SmartTemplate⁴ now offers its own HTML template management system; click Ok to set it up.");
+				+ "Therefore SmartTemplates now offers its own HTML template management system; click Ok to set it up.");
 		SmartTemplate4.Message.display(
 			warnText  + "\n" + txtSuggestion,
 			"centerscreen,titlebar",
@@ -1487,7 +1488,7 @@ SmartTemplate4.Util = {
 			else if (isPremiumLicense)
 			  uType = "pro";
 			// make sure we can sanitize all pages for our premium users!
-      // [issue 68] After update to 2.11, SmartTemplate⁴ always displays nonlicensed support site
+      // [issue 68] After update to 2.11, SmartTemplates always displays nonlicensed support site
 			if (   uType
 			    && URL.indexOf("user=")==-1 
 					&& URL.indexOf("smarttemplates.quickfolders.org")>0 ) {
@@ -1884,7 +1885,7 @@ SmartTemplate4.Util = {
 				return true;
 			}
 		}
-		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplate⁴ header:\n" + tok);
+		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplates header:\n" + tok);
 		return false;
 	}	,
 
@@ -2676,7 +2677,12 @@ SmartTemplate4.Util = {
           o1 = {}, 
           o2 = {};
       if (language=='on') {
-        gSpellChecker.enabled = true;
+        if (enableInlineSpellCheck) {
+          enableInlineSpellCheck(false);
+          enableInlineSpellCheck(true);
+        }
+        else        
+          gSpellChecker.enabled = true;
         util.logDebug('Enabled automatic spellcheck');
         return;
       }
@@ -2705,6 +2711,8 @@ SmartTemplate4.Util = {
         }
       }
       if (language=='off') {
+        if (enableInlineSpellCheck)
+          enableInlineSpellCheck(false);
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
         util.logDebug('Disabled automatic spellcheck');
         return;
@@ -2721,25 +2729,42 @@ SmartTemplate4.Util = {
         throw wrn;
       }
       
-      if (language.length>=2) 
+      if (language.length>=2) {
+        // exact match
         for (let i = 0; i < dictList.length; i++) {
-          if (dictList[i].startsWith(language)) {
+          if (dictList[i] == language) {
             found = true;
             language = dictList[i];
             break;
           }
         }
+        // partial match
+        if (!found)
+          for (let i = 0; i < dictList.length; i++) {
+            if (dictList[i].startsWith(language)) {
+              found = true;
+              language = dictList[i];
+              break;
+            }
+          }
+      }
       
       if (found) {
-        // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
-        // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
-        // this should trigger gLanguageObserver to select the correct spell checker.
         util.logDebug("Setting spellchecker / document language to: " + language);
-        document.documentElement.setAttribute("lang", language); 
-        spellChecker.SetCurrentDictionary(language);
-        // force re-checking:
-        if (gSpellChecker.enabled) {
-          gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+        if (ComposeChangeLanguage) {
+          document.documentElement.setAttribute("lang",""); // force resetting
+          ComposeChangeLanguage(language);
+        }
+        else {
+          // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
+          // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
+          // this should trigger gLanguageObserver to select the correct spell checker.
+          document.documentElement.setAttribute("lang", language); 
+          spellChecker.SetCurrentDictionary(language);
+          // force re-checking:
+          if (gSpellChecker.enabled) {
+            gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+          }
         }
         if (isDisabled) { // force restoring disabled status
           gSpellChecker.enabled = false; 
@@ -2932,7 +2957,7 @@ SmartTemplate4.Util.firstRun =
 					// Display the modeless update message
 					// To Do: We need to make this more generic for charging for a standard version!
 					window.setTimeout(function(){
-						util.popupAlert ("SmartTemplate4", updateVersionMessage); // OS notification
+						util.popupAlert (util.ADDON_TITLE, updateVersionMessage); // OS notification
 					}, 3000);
 
 				}

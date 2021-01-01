@@ -2,7 +2,7 @@
 /* 
 	BEGIN LICENSE BLOCK
 	
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 	
@@ -149,7 +149,12 @@ SmartTemplate4.Licenser =
 		const period = 28,
 		      SINGLE_DAY = 1000*60*60*24; 
 		try {
-		  graceDate = prefs.getStringPref("license.gracePeriodDate");
+      if (this.ValidationStatus == this.ELicenseState.Expired) {
+        // [issue 100] Trial period should restart on license expiry
+        graceDate = this.DecryptedDate;
+      }
+      else
+        graceDate = prefs.getStringPref("license.gracePeriodDate");
 			if (!graceDate) graceDate = this.graceDate(); // create the date
 		}
 		catch(ex) { 
@@ -267,30 +272,57 @@ SmartTemplate4.Licenser =
 			if (this.isExpired || this.isValidated) { // A LICENSE EXISTS ALREADY
 				// LICENSE IS EITHER EXPIRED OR UP FOR RENEWAL SOON
 				let btnProLicense = getElement('btnLicense'),
+            btnDomainLicense = getElement('btnDomainLicense'),
 				    btnStdLicense = getElement('btnStdLicense');
 						
+				if (this.isExpired) {  // EXPIRED
+          switch (licenser.key_type) {
+            case 0: // Pro
+              btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+						
 				btnProLicense.removeAttribute('oncommand');
-				if (!this.isValidated) {  // EXPIRED
-					if (licenser.key_type==2) { // standard
-						// this should be renewal instead?
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              break;
+            case 1: // Domain
+              btnDomainLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              btnDomainLicense.classList.add('register');
+              btnProLicense.classList.remove('register');
+              break;
+            case 2: // Standard
 						btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
-						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);');
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);'); // upgrade fropm standard
 						btnProLicense.classList.add('upgrade'); // no flashing
-					}
-					else {
-						btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
-						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
-					}
+              break;
+          }
 					
-				}
-				else { // RENEWAL
-					let extBtn;
-					if (licenser.key_type==2) { // standard
+					}
+				else { // EXTEND
+					let extBtn, extText;
+          switch(licenser.key_type) {
+            case 0:
+              extBtn = btnProLicense;
+              btnProLicense.removeAttribute('oncommand');
+						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!")
+              break;
+            case 1:
+              extBtn = btnDomainLicense;
+              btnProLicense.classList.remove('register'); // not flashing
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
+              break;
+            case 2:
 						btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.removeAttribute('oncommand');
 						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3, true);');
 						extBtn = btnStdLicense;
 						btnStdLicense.removeAttribute('oncommand');
 						btnStdLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(2, true);');
+              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!")
 						// check whether renewal is up within 30 days
 						let today = new Date(),
 								later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
@@ -300,12 +332,11 @@ SmartTemplate4.Licenser =
 							let standardRow = getElement('StandardLicenseRow');
 							standardRow.collapsed=true;
 						}
+              break;
 					}
-					else {
-						extBtn = btnProLicense;
-						btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
-					}
-					extBtn.label = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!");
+
+					extBtn.label = extText;
+          extBtn.classList.add("register");
 					// add tooltip
 					extBtn.setAttribute('tooltiptext',
 					  util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense.tooltip", 
@@ -393,19 +424,18 @@ SmartTemplate4.Licenser =
     document.getElementById('email').value = email;
   } ,
   
-  goPro: function goPro(license_type, forceRenew) {
-    const productDetail = "http://sites.fastspring.com/quickfolders/product/smarttemplate4";
+  goPro: function goPro(license_type, isRenew = false) {
+    const productDetail = "https://sites.fastspring.com/quickfolders/product/smarttemplate4";
     // redirect to registration site; pass in the feature that brought user here
     // short order process
     let shortOrder,
 		    addQuery = '',
-				featureName = document.getElementById('referrer').value,
-				isRenew = forceRenew || false; // hidden field
+				featureName = document.getElementById('referrer').value; // hidden field
 				
     switch	(license_type) {
 			case 0:  // pro license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?
@@ -415,22 +445,29 @@ SmartTemplate4.Licenser =
 			  break;
 				
 			case 1: // domain license
-				shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
-			  break;
-				
-			case 2: // standard license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
+					shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?
 				}
 				else // NEW
-					shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
+          shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
+			  break;
+				
+			case 2: // standard license
+				if (isRenew) { // RENEWAL
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
+					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
+					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
+					// should we autoselect the correct email address?
+				}
+				else // NEW
+					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
 			  break;
 
 			case 3: // upgrade pro to standard
-				shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade"; // product to be created
+				shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplateupgrade"; // product to be created
 				featureName = encodeURI(prefs.getStringPref('LicenseKey')); // original license to upgrade!
 			  break;
 			
@@ -456,7 +493,7 @@ SmartTemplate4.Licenser =
 
    /* obsolete form submission from code */
   postForm  : function postForm_obsolete(util) {
-    let url ="http://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
+    let url ="https://sites.fastspring.com/quickfolders/product/smarttemplate4?action=order",
         oReq;
     
     if (util.PlatformVersion >=16.0) {
@@ -477,7 +514,7 @@ SmartTemplate4.Licenser =
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    util.openURL(event,'http://smarttemplates.quickfolders.org/premium.html');
+    util.openURL(event,'https://smarttemplates.quickfolders.org/premium.html');
   },
   
   // format ST-EMAIL:DATE;SmartTemplate4.Crypto
@@ -583,7 +620,7 @@ SmartTemplate4.Licenser =
        if (crypto.key_type!=1) { // not currently a domain key?
          let txt = util.getBundleString("SmartTemplate4.prompt.switchDomainLicense", "Switch to Domain License?");
 				  
-         if (Services.prompt.confirm(null, "SmartTemplate4", txt)) {
+         if (Services.prompt.confirm(null, util.ADDON_TITLE, txt)) {
            crypto.key_type=1; // switch to volume license
          }
        }

@@ -317,7 +317,7 @@
 						           orient = "vertical"
 											 onselect="SmartTemplate4.Settings.selectFileCase(this, event);"
 											 >
-							<tabpanel class = "newGroup" id="new-fileTemplates">
+							<tabpanel class = "newGroup fileTemplatePanel" id="new-fileTemplates">
 								<groupbox flex = "1" orient = "vertical" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -326,7 +326,6 @@
 													 />
 										<richlistbox 
 												id="templateList.new" 
-												style="min-height: 10em;" 
 												flex="1"
 												seltype="single"
 												onselect="SmartTemplate4.fileTemplates.onSelect(this);"
@@ -407,7 +406,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Reply] Tab ######## -->
-							<tabpanel class = "replyGroup" id="rsp-fileTemplates">
+							<tabpanel class = "replyGroup fileTemplatePanel" id="rsp-fileTemplates">
 								<groupbox flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -416,7 +415,6 @@
 													 />										
 										<richlistbox 
 											id="templateList.rsp" 
-											style="min-height: 10em;" 
 											flex="1"
 										  onselect="SmartTemplate4.fileTemplates.onSelect(this);">
 										</richlistbox>
@@ -425,7 +423,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Forward] File Tab ######## -->
-							<tabpanel class = "forwardGroup" id="fwd-fileTemplates">
+							<tabpanel class = "forwardGroup fileTemplatePanel" id="fwd-fileTemplates">
 								<groupbox  flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -434,7 +432,6 @@
 													 />
 										<richlistbox 
 											id="templateList.fwd" 
-											style="min-height: 10em;" 
 											flex="1"
 											onselect="SmartTemplate4.fileTemplates.onSelect(this);">
 										</richlistbox>
@@ -497,7 +494,7 @@
 				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "&pref_examples.tooltip;" />
 				<tab id = "aboutTab"  label = "&about.cap;" /> 
-				<tab id = "SmartTemplate4-Pro" label="SmartTemplate⁴ License"  class="free" />
+				<tab id = "SmartTemplate4-Pro" label="SmartTemplates License"  class="free" />
 				<tab id = "supportTab" label = "&support.tab;" collapsed="true" /> 
 			</tabs>
 	
@@ -732,7 +729,7 @@
 				
 				<tabpanel flex = "1" id = "aboutPanel">
 					<vbox flex = "1">
-						<hbox class = "aboutWrapper" flex="1" align = "center" > 
+						<hbox class = "aboutHeader" flex="1" align = "center" > 
 							<hbox id = "SmartTemplate4AboutLogo" 
 							      class = "aboutLogo" 
 										onclick="SmartTemplate4.Settings.clickLogo();" 
@@ -754,7 +751,6 @@
 								<description class = "aboutContent">&about.label;</description>
 							</vbox>
 						</hbox>
-						<spacer flex="2"/>
 						<hbox>
 							<spacer flex = "1" />
 							<vbox class="buttonLinks">
@@ -830,7 +826,7 @@
 							<hbox class="groupbox-title"><label class="header">&premiumConfig;</label></hbox>
 							<hbox>
 								<label class="plain-link" 
-											 tooltiptext="http://smarttemplates.quickfolders.org/"
+											 tooltiptext="https://smarttemplates.quickfolders.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">&label.premiumFeaturesSite;</label>
 							</hbox>
               <checkbox id = "chkSilentUpdates"
@@ -856,10 +852,10 @@
 												oncommand = "SmartTemplate4.Settings.setSupportMode(this);">
 										<menupopup>
 											<menuitem label = "&support.type.selectOne;" value = ""/>
-											<menuitem label = "&support.type.license;" value = "[SmartTemplate4 Licensing]"/>
-											<menuitem label = "&support.type.tech;" value = "[SmartTemplate4 Technical]"/>
-											<menuitem label = "&support.type.html;" value = "[SmartTemplate4 HTML]"/>
-											<menuitem label = "&support.type.other;" value = "[SmartTemplate4 Support]"/>
+											<menuitem label = "&support.type.license;" value = "[SmartTemplates Licensing]"/>
+											<menuitem label = "&support.type.tech;" value = "[SmartTemplates Technical]"/>
+											<menuitem label = "&support.type.html;" value = "[SmartTemplates HTML]"/>
+											<menuitem label = "&support.type.other;" value = "[SmartTemplates Support]"/>
 										</menupopup>
 									</menulist>
 								</hbox>
@@ -878,7 +874,7 @@
 													disabled = "true"
 													class = "buttonIcon"
 													label="&support.compose;"
-													oncommand = "SmartTemplate4.Settings.sendMail('axelg@gofree.indigo.ie');"/>
+													oncommand = "SmartTemplate4.Settings.sendMail('axel.grude@gmail.com');"/>
 									<spacer flex="1" />
 								</hbox>
 							</vbox>

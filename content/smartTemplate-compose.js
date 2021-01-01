@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1327,6 +1327,75 @@ SmartTemplate4.classSmartTemplate = function() {
 					targetNode = editor.rootElement.appendChild(templateDiv); // after BLOCKQUOTE (hopefully)
 					editor.endOfDocument();
 				}
+
+        // %quotePlaceholder(quotelevel)%
+        let quoteNode = templateDiv.querySelector("blockquote[class=SmartTemplate]");
+        if (quoteNode) {
+          function quoteLevel(element, level) {
+            if (!element || !element.parentNode)
+              return level;
+            let p = element.parentNode;
+            if (p.tagName && p.tagName.toLowerCase()=="blockquote")
+              return quoteLevel(p, level + 1); // increase level and check grandparent
+            return quoteLevel(p, level);
+          }          
+          
+          let lev = quoteNode.getAttribute('quotelevel'),
+              quoteLevels = 100;
+          if (lev) {
+            if (lev=="all") 
+              quoteLevels = 100;
+            else {
+              quoteLevels = parseInt(lev,10);
+            }
+          } 
+          let quotePart = bodyEl.querySelector("blockquote[_moz_dirty]");
+          if (quotePart) {
+            quoteNode.parentNode.insertBefore(quotePart, quoteNode);
+            let blocks = quotePart.querySelectorAll("blockquote");
+                
+            // remove lower quote levels
+            for (let i=0; i<blocks.length; i++) {
+              let p = blocks.item(i),
+                  lv = quoteLevel(p, 1);
+                  
+              if (lv>quoteLevels) {
+                p.parentNode.removeChild(p);
+              }
+            }
+            
+            // move quote Header above:
+            function distanceBody(el) {
+              let d = 0;
+              if (el) {
+                while (el.tagName.toLowerCase() != "body" && el.parentNode) {
+                  d++;
+                  el = el.parentNode;
+                }
+              }
+              return d;
+            }
+            
+            let topHeader,
+                topDist = 1000,
+                qHs = bodyEl.querySelectorAll("#smartTemplate4-quoteHeader");
+            for (let i=0; i<qHs.length; i++) {
+              let e = qHs.item(i),
+                  l = distanceBody(e);
+              if (l<topDist) {
+                topDist = l;
+                topHeader = e;
+              }
+            }           
+            if (topHeader && quoteLevel(topHeader, 1)<2) {
+              quotePart.parentNode.insertBefore(topHeader, quotePart);
+            }
+                
+            
+          }
+          quoteNode.parentNode.removeChild(quoteNode);
+        }
+        
 			}
 			catch (ex) {
 				let errorText = 'Could not insert Template as HTML; please check for syntax errors.'
@@ -1487,11 +1556,10 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
-			// all used functions are stored in the main instance of SmartTemplate4 (3pane window)
-			if (util.mainInstance.Util.premiumFeatures.length 
-			    && (!util.hasLicense(false)
-					   || 
-						 prefs.isDebugOption('premium.testNotification'))) {
+			// all used functions are stored in the main instance of SmartTemplates (3pane window)
+			if (util.mainInstance.Util.premiumFeatures.length)
+      {
+        if (!util.hasLicense(false) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
 				util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
@@ -1521,18 +1589,21 @@ SmartTemplate4.classSmartTemplate = function() {
 			if (targetNode) { // usually <body>
 				let selCtrl = editor.selectionController,  // Ci.nsISelectionController
             isReplyOnTop = theIdentity.replyOnTop,
-            forward = !isReplyOnTop;
-        try {
-          selCtrl.completeMove(forward, false); // forward, extend
-        }
-        catch(ex) {
-          util.logException("editor.selectionController completeMove(forward = " + forward + ") failed", ex);
-        }
-        try {
-          selCtrl.completeScroll(forward);
-        }
-        catch(ex) {
-          util.logException("editor.selectionController completeScroll(forward = " + forward + ") failed", ex);
+            forward = !isReplyOnTop; // isReplyOnTop is unreliable if the identity was changed by an Add-on
+            
+        if (!isCursor) { // if a cursor is set, let's not move to the end / top at all, leave it to the selection controller.
+          try {
+            selCtrl.completeMove(forward, false); // forward, extend
+          }
+          catch(ex) {
+            util.logException("editor.selectionController completeMove(forward = " + forward + ") failed", ex);
+          }
+          try {
+            selCtrl.completeScroll(forward);
+          }
+          catch(ex) {
+            util.logException("editor.selectionController completeScroll(forward = " + forward + ") failed", ex);
+          }
         }
 				
 				let theParent = targetNode.parentNode;
@@ -1549,7 +1620,7 @@ SmartTemplate4.classSmartTemplate = function() {
 							try {
 								//if (util.Application=='Postbox') util.debugVar(caretContainer);
 								
-								let scrollFlags = selCtrl.SCROLL_FIRST_ANCESTOR_ONLY | selCtrl.SCROLL_OVERFLOW_HIDDEN,
+								let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
 										cursorParent = caretContainer.parentNode; // usually a <p>
                 // =========== FORCE CURSOR IN <PARA> ==================================== [[[[
 								if (prefs.getMyBoolPref('forceParagraph') && cursorParent.tagName=='DIV' || cursorParent.tagName=='BODY') {
@@ -1670,7 +1741,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 		}
 		
-		
+		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
 		resetDocument(gMsgCompose.editor, startup);
 		
 		// no license => show license notification.
