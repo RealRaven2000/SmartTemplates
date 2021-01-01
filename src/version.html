@@ -208,7 +208,7 @@ permalink: version.html
   </h4>
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/105">[issue 105]</a> 
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> 
       <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> new function for including quoted mail within the template for styling
       - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. 
       If a quote Header is configured in the account template this will be moved with the top of the quote.
@@ -226,6 +226,10 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/98">[issue 98]</a> Fixed: %dateformat()% fails if month 
       name / day name variables are included and %language()% set.
     </li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a> Fixed: Other Add-ons may accidentally 
+      lead to duplicated template if they change the from address in Composer.
+    </li>  
   </ul>
 </li> 
 
@@ -418,6 +422,45 @@ permalink: version.html
   </ul>
   
 </li> 
+
+
+
+<a id="2.13"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 2.13</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">60.0 - 68.*</span> 
+			<span class="seamonkey">2.0.0 - 2.49.*</span> 
+		</span>
+  </h4>
+  <p>Backported features for users of Thunderbird 68. Thisa a selection of the more important features implemented in the Tb78 compatible versions 3.x</p>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> 
+      <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> new function for including quoted mail within the template for styling
+      - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. 
+      If a quote Header is configured in the account template this will be moved with the top of the quote.
+    </li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> Provide keyboard accelerators for Template picker.
+    </li>
+    <li>Rebranded from SmartTemplate4 to SmartTemplates for simplification.</li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/100">[issue 100]</a> 
+      Trial period should restart on license expiry for registered users who had a valid license before.
+      This way there will be no disruptive waiting periods when opening Composer after license expiry.
+    </li>
+  </ul>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a>
+      Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer.
+    </li>
+  </ul>
+</li> 
+
 
 <a id="2.12"> &nbsp; </a>
 <a id="2.12.1"> &nbsp; </a>
