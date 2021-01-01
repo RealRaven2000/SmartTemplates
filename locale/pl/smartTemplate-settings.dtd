@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Ustawienia zaawansowane">
 <!ENTITY pref_variables.tab "Zmienne">
 <!ENTITY pref_examples.tab "Przykłady (tylko online)">
-<!ENTITY pref_examples.tooltip "Wyświetla przykładowe szablony z witryny http://smarttemplates.quickfolders.org/templates.html. Dostępne tylko w trybie online.">
+<!ENTITY pref_examples.tooltip "Wyświetla przykładowe szablony z witryny https://smarttemplates.quickfolders.org/templates.html. Dostępne tylko w trybie online.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Anuluj">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Nagłówek cytatu">
 <!ENTITY pref_quoteHeaderBox_tip "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:">
 <!ENTITY pref_templateBox.label "Szablon">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ – ustawienia">
+<!ENTITY pref_dialog.title "SmartTemplates – ustawienia">
 <!ENTITY pref_breaksOnTop.label "Liczba wierszy odstępu na górze:">
 <!ENTITY pref_removeSig.label "Usuwaj podpis, gdy jest zmieniana tożsamość">
 <!ENTITY pref_showStatusIcon.label "Wyświetlaj przycisk na pasku stanu">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Użyj zamiast standardowego nagłówka">
 <!ENTITY pref_quotehead_tip "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym.">
 <!ENTITY pref_template_tip "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc.">
-<!ENTITY help_dialog_title "Pomoc SmartTemplate⁴">
+<!ENTITY help_dialog_title "Pomoc SmartTemplates">
 <!ENTITY help_keyword.cap "Pomoc">
 <!ENTITY pref_debug_check "Tryb debugowania">
 <!ENTITY pref_hideExamples "Ukryj kartę przykładów">
 <!ENTITY pref_silentUpdates "Ciche aktualizacje">
-<!ENTITY pref_silentUpdates_tip "Nie otwieraj dziennika zmian po aktualizacji SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Nie otwieraj dziennika zmian po aktualizacji SmartTemplates.">
 <!ENTITY pref_debug_tip "Kliknij prawym przyciskiem myszy, by przejść do opcji zaawansowanych">
 <!ENTITY pref_nameSwap "Zamieniaj nazwisko i imię miejscami">
 <!ENTITY pref_nameSwap_tip "Zmienia kolejność Nazwisko, Imię na Imię, Nazwisko.">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Domyślny zestaw znaków">
 <!ENTITY pref_defaultCharset_tip "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "SmartTemplate⁴ – informacje">
+<!ENTITY about.cap "SmartTemplates – informacje">
 <!ENTITY support.tab "Wsparcie">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programiosta">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Tłumacz">
 <!ENTITY translatorNickname.label "Leszek(teo)Życzkowski (BabelZilla)">
 <!ENTITY contributor.label "Współautor">
-<!ENTITY about.label "SmartTemplate⁴ oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.">
+<!ENTITY about.label "SmartTemplates oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Kliknij nagłówek lub">
+<!ENTITY heading.expandAll "rozwiń wszystkie wpisy">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Zmienne podstawowe">
 <!ENTITY ownname.label "Twoje imię">
 <!ENTITY ownmail.label "Twój adres e-mail">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Kliknij tutaj, aby wybrać określony folder na dysku lokalnym.">
 <!ENTITY cursor.label "Określ pozycję kursora">
 <!ENTITY spellcheck.label "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Zmienne odbiorcy (Do:)">
 <!ENTITY to_note.label "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail">
 <!ENTITY to.label "Nazwa odbiorcy (domyślna)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Nazwa odbiorcy (domyślna)">
 <!ENTITY ccfirstname.label "Imię odbiorcy">
 <!ENTITY ccname.label "Nazwisko odbiorcy">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Pola książki adresowej">
 <!ENTITY ab_fields.desc "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych pól dla zmiennych adresu, takich jak &#37;from&#37;, takich jak:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Prywatny">
 <!ENTITY ab_other "Inne">
 <!ENTITY ab_work "Służbowy">
-<!ENTITY spec_form.cap "Format specjalny">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Przełączniki pola adresu">
 <!ENTITY specform_note.label "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!">
 <!ENTITY ex_brack.label "Przykład: Do: Jakub | Kopia: Zuzanna">
 <!ENTITY brack_with_var.label "Następujące zmienne mogą być używane wewnątrz [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Grupy dyskusyjne">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Każdy wiersz nagłówka">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Modyfikuj nagłówek wiadomości">
 <!ENTITY header_function.explain "Funkcja ta może być stosowana do modyfikowania nagłówków w następujący sposób">
 <!ENTITY header_function.scope "Funkcja może być używana z następującymi nagłówkami:">
@@ -192,9 +198,15 @@
 <!ENTITY matchTextFromSubject "W temacie znajdź wzorzec wyrażenia regularnego i umieścić w miejscu funkcji.">
 <!ENTITY stringmanip.match.comment "match Functions: Pierwszy parametr (wyrażenie regularne) musi być zawarte w cudzysłowie. Drugim parametrem jest numer grupy. Użyj 0 dla całego wyrażenia, 1 dla pierwszej grupy itd.">
 <!ENTITY stringmanip.alttext "[parametr opcjonalny] Tekst alternatywny: jeśli nie znaleziono dopasowania, zamiast tego wstawia tekst alternatywny.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Tekst warunkowy">
+<!ENTITY conditionals.note "Ta klasa zmiennych może służyć do wstawiania tekstu w zależności od sposobu wysyłania poczty. Potrzebujesz do tego licencji SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Jeśli wiadomość e-mail jest przekazywana w tekście, wstawiany jest pierwszy parametr tekstowy. Drugi parametr tekstowy jest używany, gdy wiadomość jest przekazywana jako załącznik.">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Cytuj manipulację">
 <!ENTITY quote_changers.desc "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca.">
+<!ENTITY quotePlaceholder "Spowoduje to przeniesienie cytowanej części do samego tekstu szablonu. Sekcja nagłówka oferty z szablonów kont zostanie przeniesiona na początek cytatu.">
+<!ENTITY quotePlaceholder.level "[opcjonalne, numeryczne] Maksymalny poziom cytowań, aby usunąć starsze cytaty z rozmowy.">
 <!ENTITY deleteQuotedText "Usuwa cytowany tekst">
 <!ENTITY replaceQuotedText "Zamienia cytowany tekst na HTML">
 <!ENTITY deleteQuotedTags "Usuwa tagi z cytatu">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[opcjonalnie, numerycznie] - liczba kB, minimalny rozmiar do usunięcia tagu. W ten sposób możesz przechowywać mniejsze obrazy, takie jak ikony / emotikony, jednocześnie odrzucając duże obrazy.">
 <!ENTITY whitespace_note "Zauważ, że białe znaki można najlepiej przedstawić jako \ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu.">
 <!ENTITY minSize_detail "Nie zawsze jest możliwe określenie rozmiaru, szczególnie jeśli Thunderbird wciąż ładuje obraz, często ze względu na duży rozmiar - w tym przypadku tag i tak zostanie usunięty.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Zmienne dla formatu daty i strefy czasowej">
 <!ENTITY fix_vartz_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Data i czas (lokalny format)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Poniższa funkcja dodaje przesunięcie do wszystkich kolejnych wyświetlanych czasów.">
 <!ENTITY calculate.explain "DD = liczba dni do dodania. H = liczba godzin do dodania (opcjonalnie). MM = minuty do dodania (opcjonalnie)">
 <!ENTITY calculate.reset "Ustaw argument na 0, aby zatrzymać modyfikowanie dowolnych dat.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
 <!ENTITY A.label "Dzień tygodnia (Piątek)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Funkcja wstawiania aktualnego czasu (pole klikalne).">
 <!ENTITY dateformat.explain "Większość zmiennych czasowych powyżej może być użytych w ciągu parametrów, pomijając &#37;. Zobacz też:">
 <!ENTITY dateformat.example "Przykład:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu.">
 <!ENTITY xsent_long.cap "Przykład długiego formatu:">
@@ -256,11 +271,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST,… ">
 <!ENTITY im-ex.cap "Import/eksport ustawień i szablonów">
 <!ENTITY im-ex_note1.label "Można zaimportować i wyeksportować ustawienia i szablony skojarzone z każdym kontem.">
-<!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplate⁴ wybierz konto, które chcesz wyeksportować.">
+<!ENTITY im-ex_note2.label "Z menu rozwijanego ustawień SmartTemplates wybierz konto, które chcesz wyeksportować.">
 <!ENTITY im-ex_note3.label "Następnie na pasku menu wybierz Narzędzia ⇒ Eksportuj ⇒ Ustawienia i szablony i zapisz plik (xxx.st4) na swoim komputerze.">
-<!ENTITY im-ex_note4.label "Aby zaimportować plik, z menu rozwijanego ustawień SmartTemplate⁴ wybierz konto, które chcesz zaimportować, a następnie na pasku menu wybierz Narzędzia ⇒ Importuj ⇒ Ustawienia i szablony.">
-<!ENTITY im-ex_note5.label "Wybierz plik SmartTemplate⁴ (xxx.st4), który chcesz zaimportować.">
-<!ENTITY im-ex_note6.label "Informacja: W systemach Apple/Macintosh pasek menu znajduje się na górnym pasku systemowym, a nie w oknie ustawień SmartTemplate⁴. Jest to standardowy wygląd w tych systemach i nie można go zmienić.">
+<!ENTITY im-ex_note4.label "Aby zaimportować plik, z menu rozwijanego ustawień SmartTemplates wybierz konto, które chcesz zaimportować, a następnie na pasku menu wybierz Narzędzia ⇒ Importuj ⇒ Ustawienia i szablony.">
+<!ENTITY im-ex_note5.label "Wybierz plik SmartTemplates (xxx.st4), który chcesz zaimportować.">
+<!ENTITY im-ex_note6.label "Informacja: W systemach Apple/Macintosh pasek menu znajduje się na górnym pasku systemowym, a nie w oknie ustawień SmartTemplates. Jest to standardowy wygląd w tych systemach i nie można go zmienić.">
 <!ENTITY html_note.cap "Informacje dla stosowania szablonów HTML">
 <!ENTITY html_note.label "W szablonach HTML należy używać kodowania znaków UTF-8 (Unicode)!">
 <!ENTITY table.cap "Zastosowanie zmiennych">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Odpowiedz">
 <!ENTITY table_fwd.label "Przekaż">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Wklej tutaj twój osobisty klucz licencji:">
 <!ENTITY label.insertLicense.tooltip "Twój klucz licencyjny zawarty jest w mailu od Fastspring potwierdzającym zamówienie">
 <!ENTITY button.pasteLicense "Wklej">
 <!ENTITY button.validateLicense "Zatwierdź">
 <!ENTITY label.licenseValid "Twoja licencja jest ważna do:">
-<!ENTITY licenseValidation.passed "Dziękujemy za rejestrację SmartTemplate⁴ Pro! Wszystkie funkcje premium są teraz odblokowane.">
-<!ENTITY licenseValidation.standard "Dziękujemy za zarejestrowanie SmartTemplate⁴ Standard - Ogromnie pomagasz dodatkowi! Możesz teraz przetestować wszystkie funkcje premium.">
+<!ENTITY licenseValidation.passed "Dziękujemy za rejestrację SmartTemplates Pro! Wszystkie funkcje premium są teraz odblokowane.">
+<!ENTITY licenseValidation.standard "Dziękujemy za zarejestrowanie SmartTemplates Standard - Ogromnie pomagasz dodatkowi! Możesz teraz przetestować wszystkie funkcje premium.">
 <!ENTITY licenseValidation.failed "Wprowadzony klucz licencyjny jest nieprawidłowy. Sprawdź wiadomość od FastSpring zawierającą instrukcje. Jeśli problem występuje nadal, skontaktuj się z autorem dodatku, używając przycisku „Kontakt z autorem” znajdującego się na karcie „Pomoc techniczna” w ustawieniach dodatku.">
 <!ENTITY licenseValidation.expired "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję.">
 <!ENTITY licenseValidation.invalidAddon "Podany klucz licencyjny może dotyczyć innego dodatku. Klucze licencyjne dla {0} zaczynają się od {1}.">

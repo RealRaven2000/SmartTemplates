@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "高级设置">
 <!ENTITY pref_variables.tab "变量">
 <!ENTITY pref_examples.tab "示例（联网可用）">
-<!ENTITY pref_examples.tooltip "显示来自 http://smarttemplates.quickfolders.org/templates.html 的示例模板，仅联机模式可用。">
+<!ENTITY pref_examples.tooltip "显示来自 https://smarttemplates.quickfolders.org/templates.html 的示例模板，仅联机模式可用。">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "确定">
 <!ENTITY cancel_button "取消">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "引用头">
 <!ENTITY pref_quoteHeaderBox_tip "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "模板">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ 选项">
+<!ENTITY pref_dialog.title "SmartTemplates 选项">
 <!ENTITY pref_breaksOnTop.label "顶部换行符数量：">
 <!ENTITY pref_removeSig.label "更改邮件身份时删除签名">
 <!ENTITY pref_showStatusIcon.label "在状态栏显示按钮">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "使用以替换标准引用头文件">
 <!ENTITY pref_quotehead_tip "禁用标准引用头文件。请将你的引用头文件填入文本框。">
 <!ENTITY pref_template_tip "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。">
-<!ENTITY help_dialog_title "SmartTemplate⁴ 帮助">
+<!ENTITY help_dialog_title "SmartTemplates 帮助">
 <!ENTITY help_keyword.cap "帮助">
 <!ENTITY pref_debug_check "调试模式">
 <!ENTITY pref_hideExamples "隐藏示例选项卡">
 <!ENTITY pref_silentUpdates "靜默更新">
-<!ENTITY pref_silentUpdates_tip "SmartTemplate⁴更新後，請勿打開更改日誌。">
+<!ENTITY pref_silentUpdates_tip "SmartTemplates更新後，請勿打開更改日誌。">
 <!ENTITY pref_debug_tip "右击打开高级调试选项">
 <!ENTITY pref_nameSwap "纠正 LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "更改 'LastName, FirstName' 到 'First Last'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "替换签名中的变量。">
 <!ENTITY pref_cursorInsertSpace "插入空格到高亮的“光标”">
 <!ENTITY pref_stationerySupport "支持附加组件 Stationery">
-<!ENTITY pref_stationerySupport_tip "支持同时使用 Stationery 与 SmartTemplate⁴。">
+<!ENTITY pref_stationerySupport_tip "支持同时使用 Stationery 与 SmartTemplates。">
 <!ENTITY pref_stationerySupport_tip2 "让你在 Stationery 中使用模板变量是可能的。">
 <!ENTITY pref_stationeryLink "附加组件 Stationery">
 <!ENTITY pref_forceParagraph "强制段落模式">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "翻译">
 <!ENTITY translatorNickname.label "yliu &amp; yfdyh000 (BabelZilla)">
 <!ENTITY contributor.label "贡献者">
-<!ENTITY about.label "SmartTemplate⁴ 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
+<!ENTITY about.label "SmartTemplates 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "点击标题或">
+<!ENTITY heading.expandAll "展开所有条目">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "基础变量">
 <!ENTITY ownname.label "你的名字">
 <!ENTITY ownmail.label "你的邮件地址">
@@ -140,10 +143,11 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "设置光标位置">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "收件人变量 (To)">
 <!ENTITY to_note.label "当姓名不可用时，将显示邮件地址">
 <!ENTITY to.label "收件人姓名 (默认)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "配置默认格式...">
 <!ENTITY tofirstname.label "收件人名字">
 <!ENTITY toname.label "收件人姓名">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "抄送人姓名 (默认)">
 <!ENTITY ccfirstname.label "抄送人名字">
 <!ENTITY ccname.label "抄送人姓名">
-<!-- #### TABLE #### -->
-<!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!-- AB switch section -->
+<!ENTITY ab_fields "地址簿字段">
+<!ENTITY ab_fields.desc "现在，当回复匹配的电子邮件地址时，您可以将其他字段用于地址变量，例如 &#37;from&#37;, 例如：">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "特殊形式">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "地址字段变量">
 <!ENTITY specform_note.label "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!">
 <!ENTITY ex_brack.label "例子: To: Li | Cc: Wu">
 <!ENTITY brack_with_var.label "以下变量可以用在 [[...]] 里面">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "新闻组">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "任何标题行">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "修改邮件头">
 <!ENTITY header_function.explain "此功能可以用来修改邮件头，如下所述：">
 <!ENTITY header_function.scope "它可以修改下列邮件头：">
@@ -185,38 +191,46 @@
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
 <!ENTITY stringmanip_function.cap "文本操作">
-<!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
-<!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
+<!ENTITY stringmanip_function.explain "这些功能可用于删除或替换电子邮件模板或报价标题中的文本。">
+<!ENTITY deleteText "从报价中删除一些文字，例如 deleteText(&quot;via Paypal&quot;)">
 <!ENTITY replaceText "用其他东西替换一些文本。">
-<!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
-<!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
-<!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!ENTITY matchTextFromBody "在带引号的电子邮件中找到一个RegEx模式，并在函数位置插入。">
+<!ENTITY matchTextFromSubject "在主题中找到一个RegEx模式，然后将其插入功能位置。">
+<!ENTITY stringmanip.match.comment "match函数：第一个参数（正则表达式）必须在双引号内。 第二个参数是匹配组号。 使用0来匹配完整的表达式，使用1来匹配第一组，依此类推。">
+<!ENTITY stringmanip.alttext "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "条件文字">
+<!ENTITY conditionals.note "根据您发送邮件的方式，此类变量可用于插入文本。 您需要获得SmartTemplates Pro许可证。">
+<!ENTITY conditional.forwardMode "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。">
 <!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
-<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
-<!ENTITY deleteQuotedText "Deletes quoted Text">
-<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
-<!ENTITY deleteQuotedTags "Deletes tags from the quote">
-<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
-<!ENTITY Parameters "Parameters">
+<!ENTITY quote_changers.desc "高级变量，用于从引用的零件中删除文本/标签并节省空间。">
+<!ENTITY quotePlaceholder "这会将引用的部分移入模板文本本身。 帐户模板中的报价标题部分将移至引用的顶部。">
+<!ENTITY quotePlaceholder.level "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。">
+<!ENTITY deleteQuotedText "删除引用文字">
+<!ENTITY replaceQuotedText "用HTML替换带引号的文本">
+<!ENTITY deleteQuotedTags "从引用中删除标签">
+<!ENTITY replaceQuotedTags "用文本或HTML替换引文中的标签">
+<!ENTITY Parameters "参量">
 <!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
 <!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
-<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
+<!ENTITY quoteLevel "[可选，数字]：从哪个最低报价水平开始">
 <!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY datelocal.label "日期和时间（本地格式）">
 <!ENTITY dateshort.label "日期和时间的简写 (例如 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "时区 (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, ...">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!ENTITY timezone.explain "通过替换tz参数为日期变量强制指定时区 (GMT, EST, CST, PST etc.)">
+<!ENTITY dateoffset_note.label "以下功能将偏移量添加到所有随后显示的时间。">
+<!ENTITY calculate.explain "DD =要添加的天数。 H =要添加的小时数（可选）。 MM =添加分钟（可选）">
+<!ENTITY calculate.reset "将参数设置为0以停止修改任何日期。">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "自定义日期格式的变量">
 <!ENTITY customdf_note.label "可以和 &#37;X:=sent&#37; 组合">
 <!ENTITY A.label "一周里的一天 (Friday)">
@@ -238,9 +252,10 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
+<!ENTITY dateformat.label "插入当前时间的功能（可单击字段）。">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">
 <!ENTITY xsent_long.cap "长字符串的例子：">
@@ -256,9 +271,9 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ...">
 <!ENTITY im-ex.cap "设置和模板导出/导入">
 <!ENTITY im-ex_note1.label "您可以导出和导入与您的每个账号相关的设置和模板。">
-<!ENTITY im-ex_note2.label "首先从 SmartTemplate⁴ 的设置下拉框中选择您想要导出的账号。">
+<!ENTITY im-ex_note2.label "首先从 SmartTemplates 的设置下拉框中选择您想要导出的账号。">
 <!ENTITY im-ex_note3.label "接下来从菜单栏中选择'工具' ⇒ '导出' ⇒ '设置和模板'，将文件（xxx.st4）保存到您的电脑中。">
-<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplate⁴ 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'">
+<!ENTITY im-ex_note4.label "想要导入一个文件，首先从 SmartTemplates 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'">
 <!ENTITY im-ex_note5.label "选择您想要导入的SmartTemplate4文件（xxx.st4）。">
 <!ENTITY im-ex_note6.label "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。">
 <!ENTITY html_note.cap "HTML 模板说明">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "回复">
 <!ENTITY table_fwd.label "转发">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "在此处插入您的个人许可密钥：">
 <!ENTITY label.insertLicense.tooltip "您的许可证密钥包含在Fastspring的订单确认电子邮件中。">
 <!ENTITY button.pasteLicense "贴">
 <!ENTITY button.validateLicense "验证">
 <!ENTITY label.licenseValid "您的许可有效期至：">
-<!ENTITY licenseValidation.passed "感谢您注册SmartTemplate⁴Pro！ 所有高级功能现已解锁。">
-<!ENTITY licenseValidation.standard "感谢您注册SmartTemplate⁴标准版 - 您正在极大地帮助加载项！ 您现在也可以测试所有高级功能。">
+<!ENTITY licenseValidation.passed "感谢您注册SmartTemplatesPro！ 所有高级功能现已解锁。">
+<!ENTITY licenseValidation.standard "感谢您注册SmartTemplates标准版 - 您正在极大地帮助加载项！ 您现在也可以测试所有高级功能。">
 <!ENTITY licenseValidation.failed "您输入的许可证密钥无效。 有关说明，请查看FastSpring的电子邮件。 如果您仍有问题，请通过“支持”选项卡与我联系。">
 <!ENTITY licenseValidation.expired "您输入的许可密钥已过期。 请按下面的按钮续订许可证。">
 <!ENTITY licenseValidation.invalidAddon "您输入的许可证密钥可能适用于其他附加组件。 {0}的许可证密钥以{1}开头。">

@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Lisäasetukset">
 <!ENTITY pref_variables.tab "Muuttujat">
 <!ENTITY pref_examples.tab "Esimerkkejä">
-<!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla http://smarttemplates.quickfolders.org/templates.html. Vaatii Internet-yhteyden.">
+<!ENTITY pref_examples.tooltip "Näyttää esimerkkipohjia sivulla https://smarttemplates.quickfolders.org/templates.html. Vaatii Internet-yhteyden.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Peruuta">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Otsake">
 <!ENTITY pref_quoteHeaderBox_tip "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Pohja">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ - Asetukset">
+<!ENTITY pref_dialog.title "SmartTemplates - Asetukset">
 <!ENTITY pref_breaksOnTop.label "Yläreunassa olevat rivivälit:">
 <!ENTITY pref_removeSig.label "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä">
 <!ENTITY pref_showStatusIcon.label "Näytä painike tilapalkilla">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Käytä perusotsakkeen sijasta">
 <!ENTITY pref_quotehead_tip "Poistaa perusotsakeen käytöstä. Muodosta lainausotsake tekstilaatikossa.">
 <!ENTITY pref_template_tip "Voit muuttaa lainauksen otsaketta muuttujilla. Ohjeessa lisätietoa.">
-<!ENTITY help_dialog_title "SmartTemplate⁴ - Ohje">
+<!ENTITY help_dialog_title "SmartTemplates - Ohje">
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
 <!ENTITY pref_hideExamples "Piilota esimerkit-välilehti">
 <!ENTITY pref_silentUpdates "Hiljaiset päivitykset">
-<!ENTITY pref_silentUpdates_tip "Älä avaa muutoslokea SmartTemplate⁴: n päivityksen jälkeen.">
+<!ENTITY pref_silentUpdates_tip "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen.">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Korvaa muuttujat allekirjoituksessa ">
 <!ENTITY pref_cursorInsertSpace "Lisää väli korostamaan &#37;osoitin&#37;">
 <!ENTITY pref_stationerySupport "Tue Stationary-lisäosaa">
-<!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplate⁴:n kanssa.">
+<!ENTITY pref_stationerySupport_tip "Tukee Stationaryn samanaikaista käyttöä SmartTemplates:n kanssa.">
 <!ENTITY pref_stationerySupport_tip2 "Tämä mahdollistaa pohjamuuttujien käytön Stationaryssa.">
 <!ENTITY pref_stationeryLink "Stationary-lisäosa">
 <!ENTITY pref_forceParagraph "Pakota Kappale-tila">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Oletusmerkistö">
 <!ENTITY pref_defaultCharset_tip "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "SmartTemplate⁴ - Tietoja">
+<!ENTITY about.cap "SmartTemplates - Tietoja">
 <!ENTITY support.tab "Tuki">
 <!ENTITY creator.label "Tekijä">
 <!ENTITY developer.label "Kehittäjä">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Kääntäjä">
 <!ENTITY translatorNickname.label "Akilles (BabelZilla)">
 <!ENTITY contributor.label "Avustaja">
-<!ENTITY about.label "SmartTemplate⁴ tarjoaa helpon tavan muokata Thunderbirdin perusotsaketietoja lainauksille. Pohjia (lainausotsakkeiden) voi käyttää tileittäin tai yleisesti (oletustilit).">
+<!ENTITY about.label "SmartTemplates tarjoaa helpon tavan muokata Thunderbirdin perusotsaketietoja lainauksille. Pohjia (lainausotsakkeiden) voi käyttää tileittäin tai yleisesti (oletustilit).">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Napsauta otsikkoa tai">
+<!ENTITY heading.expandAll "laajenna kaikki merkinnät">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Määrätyt muuttujat">
 <!ENTITY ownname.label "Nimesi">
 <!ENTITY ownmail.label "Sähköpostiosoitteesi">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Napsauta tätä valitaksesi tietyn kansion paikalliselta asemalta.">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
 <!ENTITY spellcheck.label "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Vastaanottajan nimi (oletus)">
 <!ENTITY ccfirstname.label "Vastaanottajan etunimi">
 <!ENTITY ccname.label "Vastaanottajan nimi">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Osoitekirjan kentät">
 <!ENTITY ab_fields.desc "Kun vastaat vastaavaan sähköpostiosoitteeseen, voit nyt käyttää lisäkenttiä osoitemuuttujille, &#37;from&#37;: sta, kuten:">
 <!ENTITY ab_contact "Yhteyshenkilö">
 <!ENTITY ab_private "Yksityinen">
 <!ENTITY ab_other "Muu">
 <!ENTITY ab_work "Työ">
-<!ENTITY spec_form.cap "Erikoismuotoilu">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Osoitekentän kytkimet">
 <!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
 <!ENTITY ex_brack.label "Esim: To: AKSELI | Cc: JAAKOB">
 <!ENTITY brack_with_var.label "Seuraavia muuttujia voidaan käyttää [[..]]-sulkeiden sisällä">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Uutisryhmät">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Mikä tahansa otsakerivi">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Muunna viestin otsake">
 <!ENTITY header_function.explain "Tällä toiminolla voidaan muuttaa viestin otsakkeita, kuten tässä on kuvattu:">
 <!ENTITY header_function.scope "Voidaan käyttää näiden otsakkeiden kanssa:">
@@ -192,9 +198,15 @@
 <!ENTITY matchTextFromSubject "Etsi RegEx-kaava aiheesta ja lisää se funktioihin.">
 <!ENTITY stringmanip.match.comment "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne.">
 <!ENTITY stringmanip.alttext "[valinnainen parametri] Vaihtoehtoinen teksti: Jos vastaavuutta ei löydy, lisää vaihtoehtoisen tekstin.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Ehdollinen teksti">
+<!ENTITY conditionals.note "Tätä muuttujien luokkaa voidaan käyttää tekstin lisäämiseen sen mukaan, miten lähetät sähköpostia. Tarvitset SmartTemplates Pro -lisenssin näihin.">
+<!ENTITY conditional.forwardMode "Jos sähköposti välitetään edelleen, ensimmäinen tekstiparametri lisätään. Toista tekstiparametria käytetään, kun posti välitetään edelleen liitteenä.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Lainaa manipulointia">
 <!ENTITY quote_changers.desc "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi.">
+<!ENTITY quotePlaceholder "Tämä siirtää lainatun osan itse tekstitekstiin. Tilimallien tarjouksen otsikko-osio siirretään lainauksen yläosaan.">
+<!ENTITY quotePlaceholder.level "[valinnainen, numeerinen] Enimmäislainaustaso vanhempien lainausten poistamiseksi keskustelusta.">
 <!ENTITY deleteQuotedText "Poistaa lainatun tekstin">
 <!ENTITY replaceQuotedText "Korvaa lainatun tekstin HTML-koodilla">
 <!ENTITY deleteQuotedTags "Poistaa tunnisteet tarjouksesta">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[valinnainen, numeerinen] - ktby-lukumäärä, vähimmäiskoko tunnisteen poistamiseen. Tällä tavalla voit pitää pienempiä kuvia, kuten kuvakkeita / hymiöitä, hylkäämättä suuria kuvia.">
 <!ENTITY whitespace_note "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \ s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää.">
 <!ENTITY minSize_detail "Kokoa ei aina voida määrittää oikein, varsinkin jos Thunderbird lataa kuvaa edelleen, usein suuren koon takia - tässä tapauksessa tunniste poistetaan joka tapauksessa.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Seuraava toiminto lisää siirtymän kaikkiin seuraaviin näytettyihin aikoihin.">
 <!ENTITY calculate.explain "DD = lisättävien päivien lukumäärä. H = lisättävien tuntien määrä (valinnainen). MM = lisättävät minuutit (valinnainen)">
 <!ENTITY calculate.reset "Aseta argumentti arvoon 0 lopettaaksesi päivämäärien muokkaamisen.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä).">
 <!ENTITY dateformat.explain "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrijonoon jättämällä &#37; pois. Katso myös:">
 <!ENTITY dateformat.example "Esimerkki:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
 <!ENTITY xsent_long.cap "Esimerkki pitkästä muotoilusta:">
@@ -256,11 +271,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Asetusten ja pohjien vieminen/tuominen">
 <!ENTITY im-ex_note1.label "Asetuksia ja pohjia voi viedä ja tuoda tileittän.">
-<!ENTITY im-ex_note2.label "Aluksi valitse tili, jonka asetukset viedään SmartTemplate⁴:n asetuksien pudotusvalikosta.">
+<!ENTITY im-ex_note2.label "Aluksi valitse tili, jonka asetukset viedään SmartTemplates:n asetuksien pudotusvalikosta.">
 <!ENTITY im-ex_note3.label "Seuraavaksi valitse valikkopalkilta 'Tiedosto' ⇒ 'Vie' ⇒ 'Asetukset ja pohjat' ja tallenna tiedosto (xxx.st4) tietokoneelle.">
-<!ENTITY im-ex_note4.label "Tuodaksesi asetuksia ja pohjia, valitse ensin tili, johon asetukset tuodaan, SmartTemplate⁴:n asetuksien pudotusvalikosta. Seuraavaksi valitse valikkopalkilta 'Työkalut' ⇒ 'Tuo' ⇒ 'Asetukset ja pohjat'.">
+<!ENTITY im-ex_note4.label "Tuodaksesi asetuksia ja pohjia, valitse ensin tili, johon asetukset tuodaan, SmartTemplates:n asetuksien pudotusvalikosta. Seuraavaksi valitse valikkopalkilta 'Työkalut' ⇒ 'Tuo' ⇒ 'Asetukset ja pohjat'.">
 <!ENTITY im-ex_note5.label "Valitse tiedosto (xxx.st4), josta asetukset tuodaan.">
-<!ENTITY im-ex_note6.label "HUOM: Apple/Macintosh-alustoilla on valikkopalkki otsikkonauhalla SmartTemplate⁴-asetusikkunan sijaan. Tämä on alustalle ominaista käyttäytymistä, eikä sitä voida muuttaa.">
+<!ENTITY im-ex_note6.label "HUOM: Apple/Macintosh-alustoilla on valikkopalkki otsikkonauhalla SmartTemplates-asetusikkunan sijaan. Tämä on alustalle ominaista käyttäytymistä, eikä sitä voida muuttaa.">
 <!ENTITY html_note.cap "Huomio HTML-pohjiin">
 <!ENTITY html_note.label "Käytä vain UTF-8-merkistökoodausta (Unicode) HTML-pohjissa!">
 <!ENTITY table.cap "Muuttujien käyttö">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Vastaa">
 <!ENTITY table_fwd.label "Välitä">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Syötä henkilökohtainen lisenssiavain tähän:">
 <!ENTITY label.insertLicense.tooltip "Lisenssiavain löytyy Fatspringiltä tulleessa varmistussähköpostissa">
 <!ENTITY button.pasteLicense "liitä">
 <!ENTITY button.validateLicense "validoi">
 <!ENTITY label.licenseValid "Lisenssi on vanhenee:">
-<!ENTITY licenseValidation.passed "Kiitos, että rekisteröit SmartTemplate⁴ Pro -version! Kaikki maksulliset lisätoiminnot on nyt käytössä.">
-<!ENTITY licenseValidation.standard "Kiitos, että rekisteröit SmartTemplate⁴ Standardin - Autat Add-onia valtavasti! Voit myös testata kaikki premium-toiminnot.">
+<!ENTITY licenseValidation.passed "Kiitos, että rekisteröit SmartTemplates Pro -version! Kaikki maksulliset lisätoiminnot on nyt käytössä.">
+<!ENTITY licenseValidation.standard "Kiitos, että rekisteröit SmartTemplates Standardin - Autat Add-onia valtavasti! Voit myös testata kaikki premium-toiminnot.">
 <!ENTITY licenseValidation.failed "Syöttämäsi lisenssiavain ei ole voimassa. Tarkista sähköpostisi FatSpringiltä saadaksesi ohjeistusta. Jos ongelmia edelleen ilmenee, ota yhteyttä minuun Tuki-välilehdeltä.">
 <!ENTITY licenseValidation.expired "Syöttämäsi lisenssiavain on vanhentunut. Paina alla olevaa painiketta uusiaksesi lisenssin.">
 <!ENTITY licenseValidation.invalidAddon "Syöttämäsi lisenssiavain saattaa olla toiselle lisäosalle. Lisenssiavaimet lisäosalle {0} alkavat: {1}.">

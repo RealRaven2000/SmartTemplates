@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Додаткові налаштування">
 <!ENTITY pref_variables.tab "Змінні">
 <!ENTITY pref_examples.tab "Приклади (тільки через мережу)">
-<!ENTITY pref_examples.tooltip "Показати приклади шаблонів з http://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа.">
+<!ENTITY pref_examples.tooltip "Показати приклади шаблонів з https://smarttemplates.quickfolders.org/templates.html. Тільки якщо доступна мережа.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Добре">
 <!ENTITY cancel_button "Відміна">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Цитата заголовка">
 <!ENTITY pref_quoteHeaderBox_tip "Напишіть цитату заголовка в цій графі, наприклад, Від &#37;from(name)&#37; написано було &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ налаштування">
+<!ENTITY pref_dialog.title "SmartTemplates налаштування">
 <!ENTITY pref_breaksOnTop.label "Кількість переносів рядків з початку">
 <!ENTITY pref_removeSig.label "Заміняти підпис коли змінюються данні поштового аканту">
 <!ENTITY pref_showStatusIcon.label "Показувати кнопку у статусному рядку">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Заборонити Thunderbird заголовк по-замовчуванню">
 <!ENTITY pref_quotehead_tip "Відключення заголовку за замовчуванням. Будь ласка, сформуйте свій заголовок всередині текстового поля.">
 <!ENTITY pref_template_tip "Ви можете змінити заголовки з 'змінним'. Див. довідку для отримання додаткової інформації.">
-<!ENTITY help_dialog_title "SmartTemplate⁴ допомога">
+<!ENTITY help_dialog_title "SmartTemplates допомога">
 <!ENTITY help_keyword.cap "Допомога">
 <!ENTITY pref_debug_check "Налагоджувальний режим">
 <!ENTITY pref_hideExamples "Сховати закладку з прикладами">
 <!ENTITY pref_silentUpdates "Silent updates">
-<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplate⁴ was updated.">
+<!ENTITY pref_silentUpdates_tip "Don't open change log after SmartTemplates was updated.">
 <!ENTITY pref_debug_tip "Клацніть правою кнопкою миші для виклику додаткових опцій відладки">
 <!ENTITY pref_nameSwap "Змінювати Прізвище, Ім'я">
 <!ENTITY pref_nameSwap_tip "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Заміна змінних у підпису">
 <!ENTITY pref_cursorInsertSpace "Вставити пробіл, щоб виділити &#37;курсор&#37;">
 <!ENTITY pref_stationerySupport "Додано підтримку додатку Stationery ">
-<!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Підтримка використання Stationery водночас з SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "Це робить можливим використання змінних з шаблонів у Вашому додатку Stationery.">
 <!ENTITY pref_stationeryLink "Додаток Stationery ">
 <!ENTITY pref_forceParagraph "Увімкнути режим абревіатури">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "кодова сторінка по замовчуванні ">
 <!ENTITY pref_defaultCharset_tip "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Про SmartTemplate⁴">
+<!ENTITY about.cap "Про SmartTemplates">
 <!ENTITY support.tab "Support">
 <!ENTITY creator.label "Автор">
 <!ENTITY developer.label "Розробник">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Перекладач">
 <!ENTITY translatorNickname.label "tymofiy (BabelZilla)">
 <!ENTITY contributor.label "Спонсори">
-<!ENTITY about.label "SmartTemplate⁴ пропонує простий спосіб налаштування Thunderbirds заголовків за замовчуванням за допомогою шаблонів. Індивідуальні шаблони можуть бути створені для кожного запису, а також загальний шаблон для всіх.">
+<!ENTITY about.label "SmartTemplates пропонує простий спосіб налаштування Thunderbirds заголовків за замовчуванням за допомогою шаблонів. Індивідуальні шаблони можуть бути створені для кожного запису, а також загальний шаблон для всіх.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Клацніть заголовок або">
+<!ENTITY heading.expandAll "розгорнути всі записи">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Фіксовані змінні">
 <!ENTITY ownname.label "Ваше ім'я">
 <!ENTITY ownmail.label "Адреса Вашого email">
@@ -140,10 +143,11 @@
 <!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Позиції курсора">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Отримувач (To)">
 <!ENTITY to_note.label "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї">
 <!ENTITY to.label "Прізвище отримувача (за замовчуванням)">
-<!ENTITY standardformat.config "Configure default format…">
+<!ENTITY standardformat.config "Налаштування формату за замовчуванням ...">
 <!ENTITY tofirstname.label "Ім'я отримувача">
 <!ENTITY toname.label "Прізвище отримувача">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Прізвище отримувача копії повідомлення (за замовчуванням)">
 <!ENTITY ccfirstname.label "Ім'я отримувача копії повідомлення">
 <!ENTITY ccname.label "Прізвище отримувача копії повідомлення">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Address Book Fields">
-<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_fields.desc "Відповідаючи на відповідну електронну адресу, тепер ви можете використовувати додаткові поля для змінних адреси, наприклад &#37;from&#37;, наприклад:">
 <!ENTITY ab_contact "Contact">
 <!ENTITY ab_private "Private">
 <!ENTITY ab_other "Other">
 <!ENTITY ab_work "Work">
-<!ENTITY spec_form.cap "Спеціальний формат">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Перемикачі полів адреси">
 <!ENTITY specform_note.label "Розділи всередині подвійних квадратних дужок [[Cc: &#37;cc(name)&#37;]] будуть відображатися тільки в тому випадку, якщо змінна &#37;cc(name)&#37; може бути замінена!">
 <!ENTITY ex_brack.label "Приклад: To: Аліна | Cc: Август">
 <!ENTITY brack_with_var.label "Наступні змінні можуть використовуватися всередині [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Група новин">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "любий рядок з заголовка">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Зміна заголовка поштового повідомлення">
 <!ENTITY header_function.explain "Ця функція може бути використана для зміни заголовків поштового повідомлення, як описано тут:">
 <!ENTITY header_function.scope "Це може бути використано з цими заголовками:">
@@ -191,10 +197,16 @@
 <!ENTITY matchTextFromBody "Знаходження за шаблоном RegEx у цитованому Email та вставлення результату в місце розташування функції.">
 <!ENTITY matchTextFromSubject "Знайти за шаблоном RegEx у темі та вставити результат в місце розташування функції.">
 <!ENTITY stringmanip.match.comment "Функції відповідності: Перший параметр (регулярний вираз) повинен бути в межах подвійних лапок. Другий параметр - це номер групи відповідності. Використовуйте 0 для повного виразу, 1 для першої групи тощо.">
-<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
-<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY stringmanip.alttext "[необов’язковий параметр] Альтернативний текст: якщо не знайдено збігу, замість нього вставляється альтернативний текст.">
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Умовний текст">
+<!ENTITY conditionals.note "Цей клас змінних можна використовувати для вставки тексту залежно від способу надсилання пошти. Для них вам потрібна ліцензія SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Якщо електронне повідомлення пересилається вбудованим, вставляється перший текстовий параметр. Другий текстовий параметр використовується, коли лист пересилається як вкладення.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Quote Manipulation">
 <!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY quotePlaceholder "Це переміщує цитовану частину до самого тексту шаблону. Розділ заголовка котирувань із шаблонів рахунків буде переміщено у верхню частину цитати.">
+<!ENTITY quotePlaceholder.level "[необов’язково, числове] Максимальний рівень цитування для видалення старих цитат із розмови.">
 <!ENTITY deleteQuotedText "Deletes quoted Text">
 <!ENTITY replaceQuotedText "Replaces quoted text with HTML">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
 <!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
 <!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Фіксовані змінні для 'формату дати'/'часового поясу'">
 <!ENTITY fix_vartz_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / Час (місцевий формат)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Наступна функція додає зміщення на всі наступні відображення часу.">
 <!ENTITY calculate.explain "DD=кількість днів до додавання. H=кількість годин для додавання (необов'язково). MM=хвилини для додавання (необов'язково)">
 <!ENTITY calculate.reset "Встановіть аргумент на 0, щоб зупинити зміну будь-яких дат.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Змінні для персоналізації 'Date format'">
 <!ENTITY customdf_note.label "Може бути комбіновано з &#37;X:=sent&#37;">
 <!ENTITY A.label "День неділі (П'ятниця)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
 <!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; модифікатор">
 <!ENTITY xsent_note.label "За замовчуванням, змінні дата / час завжди ініціалізувалися за поточними значеннями (час, коли ви створюєте електронну пошту). У поєднанні з &#37;X:=sent&#37;, дата / час змінні відображають первісну дату або час повідомлень.">
 <!ENTITY xsent_long.cap "Приклад для довго рядка">
@@ -256,11 +271,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, ...">
 <!ENTITY im-ex.cap "Налаштування та Шаблони Експорт/Імпорт">
 <!ENTITY im-ex_note1.label "Ви можете експортувати та імпортувати налаштування і шаблони, пов'язані з кожного запису.">
-<!ENTITY im-ex_note2.label "Спочатку виберіть в випадаючому списку потрібний обліковий запис для експорту в SmartTemplate⁴.">
+<!ENTITY im-ex_note2.label "Спочатку виберіть в випадаючому списку потрібний обліковий запис для експорту в SmartTemplates.">
 <!ENTITY im-ex_note3.label "Потім виберіть з меню 'Файл' ⇒ 'Експорт' ⇒ 'Налагодження та шаблони' і збережіть файл (xxx.st4) до комп'ютера.">
-<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplate⁴ з випадаючого списку. Потім виберіть з меню 'Файл' ⇒ 'Import' ⇒ 'Налагодження та шаблони'">
-<!ENTITY im-ex_note5.label "Виберіть той файл SmartTemplate⁴ (xxx.st4) що ви бажаєте імпортувати.">
-<!ENTITY im-ex_note6.label "ПРИМІТКА: Apple / Macintosh платформи матимуть в меню в назву стрічки, замість вікна 'Налаштувань' в SmartTemplate⁴ . Це нормальна поведінка цієї платформи і не може бути змінена.">
+<!ENTITY im-ex_note4.label "Щоб імпортувати файл, виберіть той обліковий запис що ви хочете імпортувати в SmartTemplates з випадаючого списку. Потім виберіть з меню 'Файл' ⇒ 'Import' ⇒ 'Налагодження та шаблони'">
+<!ENTITY im-ex_note5.label "Виберіть той файл SmartTemplates (xxx.st4) що ви бажаєте імпортувати.">
+<!ENTITY im-ex_note6.label "ПРИМІТКА: Apple / Macintosh платформи матимуть в меню в назву стрічки, замість вікна 'Налаштувань' в SmartTemplates . Це нормальна поведінка цієї платформи і не може бути змінена.">
 <!ENTITY html_note.cap "ПРИМІТКА для HTML шаблонів">
 <!ENTITY html_note.label "Будь ласка використовуйте тільки UTF-8 (Unicode) кодування всередині HTML шаблонів!">
 <!ENTITY table.cap "Використання змінних">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Відповідь">
 <!ENTITY table_fwd.label "Переслати">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro stuff ">
+<!ENTITY tab.gopro "SmartTemplates Pro stuff ">
 <!ENTITY label.insertLicense "Введіть свій особистий ліцензійний ключ тут:">
 <!ENTITY label.insertLicense.tooltip "Ваш ліцензійний ключ міститься в електронному листі з підтвердженням замовлення від Fastspring.">
 <!ENTITY button.pasteLicense "вставити">
 <!ENTITY button.validateLicense "перевірити">
 <!ENTITY label.licenseValid "Ваша ліцензія дійсна до:">
-<!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplate⁴ Pro! Всі преміум-функції тепер розблоковано.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplate⁴ Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
+<!ENTITY licenseValidation.passed "Дякуємо за реєстрацію SmartTemplates Pro! Всі преміум-функції тепер розблоковано.">
+<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
 <!ENTITY licenseValidation.failed "Введений ліцензійний ключ недійсний. Перевірте свою електронну пошту з FastSpring за інструкціями. Якщо у вас все ще є проблеми, зв'яжіться зі мною на вкладці Підтримка.">
 <!ENTITY licenseValidation.expired "Термін дії ліцензійного ключа закінчився. Будь ласка, натисніть кнопку нижче, щоб оновити свою ліцензію.">
 <!ENTITY licenseValidation.invalidAddon "Введений ліцензійний ключ може бути для іншого надбудови. Ліцензійні ключі для {0} починаються з {1}.">

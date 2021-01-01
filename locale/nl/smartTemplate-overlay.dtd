@@ -1,12 +1,12 @@
 <!-- #### OVERLAYS #### -->
-<!ENTITY smartTemplate4.settings.label "SmartTemplate⁴">
-<!ENTITY smartTemplate4.settings.tooltip "SmartTemplate⁴-instellingen">
+<!ENTITY smartTemplate4.settings.label "SmartTemplates">
+<!ENTITY smartTemplate4.settings.tooltip "SmartTemplates-instellingen">
 <!ENTITY smartTemplate4.cleandeferred.label "Opschonen!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Alle SmartTemplate-variabelen opschonen">
 <!ENTITY smartTemplate4.changeTemplate.label "Change template…">
 <!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
-<!ENTITY smartTemplate4.deferredcontext.update "SmartTemplate⁴-inhoud bijwerken">
+<!ENTITY smartTemplate4.deferredcontext.update "SmartTemplates-inhoud bijwerken">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Bijwerken en vervangen door inhoud">
-<!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplate⁴-variabele verwijderen">
+<!ENTITY smartTemplate4.deferredcontext.delete "SmartTemplates-variabele verwijderen">
 <!ENTITY smartTemplate4.changetemplate.label "Sjabloon wisselen…">
 <!ENTITY smartTemplate4.changetemplate.tooltip "Selecteert een andere sjabloon - gebruik dit vóór bewerking in de berichttekst!">

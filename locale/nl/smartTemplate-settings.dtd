@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Geavanceerde instellingen">
 <!ENTITY pref_variables.tab "Variabelen">
 <!ENTITY pref_examples.tab "Voorbeelden (alleen online)">
-<!ENTITY pref_examples.tooltip "Voorbeeldsjablonen van http://smarttemplates.quickfolders.org/templates.html weergeven. Alleen beschikbaar in online-modus.">
+<!ENTITY pref_examples.tooltip "Voorbeeldsjablonen van https://smarttemplates.quickfolders.org/templates.html weergeven. Alleen beschikbaar in online-modus.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "Accepteren">
 <!ENTITY cancel_button "Annuleren">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Aanhalingstekst">
 <!ENTITY pref_quoteHeaderBox_tip "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Sjabloon">
-<!ENTITY pref_dialog.title "SmartTemplate⁴-instellingen">
+<!ENTITY pref_dialog.title "SmartTemplates-instellingen">
 <!ENTITY pref_breaksOnTop.label "Aantal regeleinden aan de bovenkant:">
 <!ENTITY pref_removeSig.label "Ondertekening vervangen bij wijzigen van e-mailidentiteit">
 <!ENTITY pref_showStatusIcon.label "Knop weergeven in statusbalk">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Gebruiken in plaats van standaard aanhalingskoptekst">
 <!ENTITY pref_quotehead_tip "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld.">
 <!ENTITY pref_template_tip "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie.">
-<!ENTITY help_dialog_title "SmartTemplate⁴-hulp">
+<!ENTITY help_dialog_title "SmartTemplates-hulp">
 <!ENTITY help_keyword.cap "Help">
 <!ENTITY pref_debug_check "Foutopsporingsmodus">
 <!ENTITY pref_hideExamples "Tabblad met voorbeelden verbergen">
 <!ENTITY pref_silentUpdates "Stille updates">
-<!ENTITY pref_silentUpdates_tip "Geen wijzigingslijst openen nadat SmartTemplate⁴ is bijgewerkt">
+<!ENTITY pref_silentUpdates_tip "Geen wijzigingslijst openen nadat SmartTemplates is bijgewerkt">
 <!ENTITY pref_debug_tip "Klik met de rechtermuisknop voor geavanceerde foutopsporingsopties">
 <!ENTITY pref_nameSwap "Achternaam, Voornaam corrigeren">
 <!ENTITY pref_nameSwap_tip "Wijzigt ‘Achternaam, Voornaam’ in ‘Voornaam Achternaam’">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Variabelen in ondertekening vervangen">
 <!ENTITY pref_cursorInsertSpace "Spatie invoegen om &#37;cursor&#37; te accentueren">
 <!ENTITY pref_stationerySupport "Ondersteuning van Stationery-add-on">
-<!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Ondersteunt gelijktijdig gebruik van Stationery met SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "Dit maakt het mogelijk om sjabloonvariabelen te gebruiken in uw Stationery.">
 <!ENTITY pref_stationeryLink "Stationery-add-on">
 <!ENTITY pref_forceParagraph "Alineamodus afdwingen">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Standaardtekenset">
 <!ENTITY pref_defaultCharset_tip "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Over SmartTemplate⁴">
+<!ENTITY about.cap "Over SmartTemplates">
 <!ENTITY support.tab "Ondersteuning">
 <!ENTITY creator.label "Bedenker">
 <!ENTITY developer.label "Ontwikkelaar">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Vertaler">
 <!ENTITY translatorNickname.label "markh (BabelZilla)">
 <!ENTITY contributor.label "Medewerker">
-<!ENTITY about.label "SmartTemplate⁴ biedt een makkelijke manier om sjablonen te gebruiken die de standaard aanhalingskoptekst in Thunderbird aanpassen. Individuele sjablonen kunnen zowel voor een losse account als alle accounts worden gemaakt.">
+<!ENTITY about.label "SmartTemplates biedt een makkelijke manier om sjablonen te gebruiken die de standaard aanhalingskoptekst in Thunderbird aanpassen. Individuele sjablonen kunnen zowel voor een losse account als alle accounts worden gemaakt.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klik op een kop of">
+<!ENTITY heading.expandAll "vouw alle vermeldingen uit">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Vaste variabelen">
 <!ENTITY ownname.label "Uw naam">
 <!ENTITY ownmail.label "Uw e-mailadres">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Klik hier om een specifieke map op uw lokale station te selecteren.">
 <!ENTITY cursor.label "Stelt de cursorpositie in">
 <!ENTITY spellcheck.label "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Ontvanger (Aan)">
 <!ENTITY to_note.label "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven">
 <!ENTITY to.label "Naam van ontvanger (standaard)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Naam van ontvanger (Standaard)">
 <!ENTITY ccfirstname.label "Voornaam van ontvanger">
 <!ENTITY ccname.label "Achternaam van ontvanger">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Adresboekvelden">
 <!ENTITY ab_fields.desc "Bij het antwoorden naar een overeenkomend e-mailadres kunt u nu aanvullende velden gebruiken voor adresvariabelen zoals &#37;from&#37;, bijvoorbeeld:">
 <!ENTITY ab_contact "Contactpersoon">
 <!ENTITY ab_private "Privé">
 <!ENTITY ab_other "Overig">
 <!ENTITY ab_work "Werk">
-<!ENTITY spec_form.cap "Speciale opmaak">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Adresveldschakelaars">
 <!ENTITY specform_note.label "De zin tussen dubbele accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!">
 <!ENTITY ex_brack.label "Voorbeeld: Aan: Pieter | Cc: Sanne">
 <!ENTITY brack_with_var.label "De volgende variabelen kunnen worden gebruikt binnen [[…]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Nieuwsgroepen">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Elke headerregel">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "E-mailkoptekst aanpassen">
 <!ENTITY header_function.explain "Deze functies kunnen worden gebruikt om e-mailkopteksten aan te passen, zoals hier beschreven:">
 <!ENTITY header_function.scope "Het kan worden gebruikt met deze kopteksten:">
@@ -192,8 +198,14 @@
 <!ENTITY matchTextFromSubject "Een RexEx-patroon in het onderwerp zoeken en invoegen op de functielocatie.">
 <!ENTITY stringmanip.match.comment "Functies matchen: de eerste parameter (de reguliere expressie) dient tussen dubbele aanhalingstekens te staan. De tweede parameter in het te matchen groepsnummer. Gebruik 0 om de volledige expressie te matchen, 1 voor de eerste groep, enz.">
 <!ENTITY stringmanip.alttext "[optionele parameter] Alternatieve tekst: als geen overeenkomst wordt gevonden, wordt de alternatieve tekst ingevoegd.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Voorwaardelijke tekst">
+<!ENTITY conditionals.note "Deze klasse variabelen kan worden gebruikt om tekst in te voegen, afhankelijk van hoe u e-mail verzendt. Hiervoor heeft u een SmartTemplates Pro-licentie nodig.">
+<!ENTITY conditional.forwardMode "Als de e-mail inline wordt doorgestuurd, wordt de eerste tekstparameter ingevoegd. De tweede tekstparameter wordt gebruikt wanneer de e-mail als bijlage wordt doorgestuurd.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Aanhalingsmanipulatie">
+<!ENTITY quotePlaceholder "Dit verplaatst het geciteerde deel naar de sjabloontekst zelf. Het citaatkopgedeelte van rekeningsjablonen wordt naar de bovenkant van het citaat verplaatst.">
+<!ENTITY quotePlaceholder.level "[optioneel, numeriek] Maximaal citatieniveau om oudere citaten uit het gesprek te verwijderen.">
 <!ENTITY quote_changers.desc "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen.">
 <!ENTITY deleteQuotedText "Verwijdert aangehaalde tekst">
 <!ENTITY replaceQuotedText "Vervangt aangehaalde tekst door HTML">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[optioneel, numeriek]: aantal kByte, minimale grootte voor het verwijderen van het label. Op deze manier behoudt u kleinere afbeeldingen als pictogrammen en emoji’s, terwijl grote afbeeldingen worden verwijderd.">
 <!ENTITY whitespace_note "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt.">
 <!ENTITY minSize_detail "De grootte kan niet altijd worden vastgesteld, helemaal als Thunderbird de afbeelding nog laadt, vaak door de grootte ervan - in dit geval wordt de tag toch verwijderd.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Vaste variabelen voor datumopmaak en tijdzone">
 <!ENTITY fix_vartz_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum en tijd (lokale opmaak)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "De volgende functie voegt een startwaarde toe aan alle volgende weergegeven tijden.">
 <!ENTITY calculate.explain "DD=aantal toe te voegen dagen. H=aantal toe te voegen uren (optioneel). MM=aantal toe te voegen minuten (optioneel)">
 <!ENTITY calculate.reset "Stel het argument op 0 in om te stoppen met aanpassen van data.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variabelen voor aangepaste datumopmaak">
 <!ENTITY customdf_note.label "Kan worden gecombineerd met &#37;X:=sent&#37;">
 <!ENTITY A.label "Weekdag (Vrijdag)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Functie voor het invoegen van de huidige tijd (aanklikbaar veld).">
 <!ENTITY dateformat.explain "De meeste tijdsvariabelen hierboven kunnen in de parameterstring worden gebruikt door &#37; weg te laten. Lees ook:">
 <!ENTITY dateformat.example "Voorbeeld:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Gebruik van &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met &#37;X:=sent&#37; combineert, worden de oorspronkelijke waarden weergegeven.">
 <!ENTITY xsent_long.cap "Voorbeeld van een lange zin:">
@@ -256,11 +271,11 @@
 <!ENTITY timezonename.label "GMT, PST, EST, …">
 <!ENTITY im-ex.cap "Exporteren/importeren van instellingen en sjablonen">
 <!ENTITY im-ex_note1.label "U kunt uw aan elke account verbonden instellingen en sjablonen exporteren en importeren.">
-<!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplate⁴-instellingen.">
+<!ENTITY im-ex_note2.label "Selecteer eerst de account die u wilt exporteren in het dropdownveld van de SmartTemplates-instellingen.">
 <!ENTITY im-ex_note3.label "Selecteer vervolgens ‘Bestand’ ⇒ ‘Exporteren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk en sla het bestand (xxx.st4) op op uw computer.">
-<!ENTITY im-ex_note4.label "Selecteer de account die u wilt importeren in het dropdownveld van de SmartTemplate⁴-instellingen om een bestand te importeren. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
-<!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplate⁴-bestand (xxx.st4).">
-<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platformen hebben de menubalk in de titelregel in plaats van in het SmartTemplate⁴-optiesvenster. Dit is normaal op deze platformen en kan niet worden gewijzigd.">
+<!ENTITY im-ex_note4.label "Selecteer de account die u wilt importeren in het dropdownveld van de SmartTemplates-instellingen om een bestand te importeren. Selecteer vervolgens ‘Bestand’ ⇒ ‘Importeren’ ⇒ ‘Instellingen en sjablonen’ in de menubalk.">
+<!ENTITY im-ex_note5.label "Selecteer het te importeren SmartTemplates-bestand (xxx.st4).">
+<!ENTITY im-ex_note6.label "OPMERKING: Apple/Macintosh-platformen hebben de menubalk in de titelregel in plaats van in het SmartTemplates-optiesvenster. Dit is normaal op deze platformen en kan niet worden gewijzigd.">
 <!ENTITY html_note.cap "Opmerkingen voor HTML-sjablonen">
 <!ENTITY html_note.label "Gebruik alleen UTF-8 (Unicode) in HTML-sjablonen!">
 <!ENTITY table.cap "Gebruik van variabelen">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Beantwoorden">
 <!ENTITY table_fwd.label "Doorsturen">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Voeg hier uw persoonlijke licentiesleutel in:">
 <!ENTITY label.insertLicense.tooltip "U vindt uw licentiesleutel in uw orderbevestiging die u per e-mail van FastSpring hebt ontvangen.">
 <!ENTITY button.pasteLicense "plakken">
 <!ENTITY button.validateLicense "valideren">
 <!ENTITY label.licenseValid "Uw licentie is geldig tot:">
-<!ENTITY licenseValidation.passed "Bedankt voor het registreren van SmartTemplate⁴ Pro! Alle premiumfuncties zijn nu ontgrendeld.">
-<!ENTITY licenseValidation.standard "Bedankt voor het registreren van SmartTemplate⁴ Standaard – hiermee helpt u de add-on enorm! U kunt nu ook alle premiumfuncties uitproberen.">
+<!ENTITY licenseValidation.passed "Bedankt voor het registreren van SmartTemplates Pro! Alle premiumfuncties zijn nu ontgrendeld.">
+<!ENTITY licenseValidation.standard "Bedankt voor het registreren van SmartTemplates Standaard – hiermee helpt u de add-on enorm! U kunt nu ook alle premiumfuncties uitproberen.">
 <!ENTITY licenseValidation.failed "De ingevoerde licentiesleutel is ongeldig. Lees uw e-mailbericht van FastSpring voor instructies. Als de problemen aanhouden, neem dan contact met mij op via het tabblad Ondersteuning.">
 <!ENTITY licenseValidation.expired "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen.">
 <!ENTITY licenseValidation.invalidAddon "De door u ingevoerde licentiesleutel dient mogelijk voor een andere add-on. Licentiesleutels voor {0} beginnen met {1}.">

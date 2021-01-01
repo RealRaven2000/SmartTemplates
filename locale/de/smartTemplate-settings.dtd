@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Erweiterte Einstellungen">
 <!ENTITY pref_variables.tab "Variablen">
 <!ENTITY pref_examples.tab "Beispiele (nur online)">
-<!ENTITY pref_examples.tooltip "Zeigt Beispielvorlagen von http://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar.">
+<!ENTITY pref_examples.tooltip "Zeigt Beispielvorlagen von https://smarttemplates.quickfolders.org/templates.html. Nur im online Modus sichtbar.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Abbrechen">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Kopfzeilen">
 <!ENTITY pref_quoteHeaderBox_tip "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:">
 <!ENTITY pref_templateBox.label "Nachrichtenvorlage">
-<!ENTITY pref_dialog.title "SmartTemplate⁴ Einstellungen">
+<!ENTITY pref_dialog.title "SmartTemplates Einstellungen">
 <!ENTITY pref_breaksOnTop.label "Zeilenumbrüche am Anfang der Vorlagen:">
 <!ENTITY pref_removeSig.label "Signatur bei Identitätswechsel ersetzen">
 <!ENTITY pref_showStatusIcon.label "Button in der Statuszeile anzeigen">
@@ -73,7 +73,7 @@
 <!ENTITY pref_fwdhead.label "Standard Thunderbird Kopfzeilen deaktivieren">
 <!ENTITY pref_quotehead_tip "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld">
 <!ENTITY pref_template_tip "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen.">
-<!ENTITY help_dialog_title "SmartTemplate⁴ Hilfe">
+<!ENTITY help_dialog_title "SmartTemplates Hilfe">
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_hideExamples "Beispiele nicht anzeigen">
@@ -99,7 +99,7 @@
 <!ENTITY pref_cursorInsertSpace "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben">
 <!ENTITY pref_stationerySupport "Das Stationery addon unterstützen">
 <!ENTITY pref_stationerySupport_tip "Variablen werden auch in Stationery Templates ersetzt">
-<!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SmartTemplate⁴ Variablen in den Vorlagen von Stationery.">
+<!ENTITY pref_stationerySupport_tip2 "Ermöglicht die Benutzung von SmartTemplates Variablen in den Vorlagen von Stationery.">
 <!ENTITY pref_stationeryLink "Stationery Erweiterung">
 <!ENTITY pref_forceParagraph "Anfangs Absatz einfügen">
 <!ENTITY pref_forceParagraph_tip "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen.">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Charset Standardwert">
 <!ENTITY pref_defaultCharset_tip "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "Über SmartTemplate⁴">
+<!ENTITY about.cap "Über SmartTemplates">
 <!ENTITY support.tab "Support">
 <!ENTITY creator.label "Ersteller">
 <!ENTITY developer.label "Entwickler">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Übersetzer">
 <!ENTITY translatorNickname.label "Marky Mark DE">
 <!ENTITY contributor.label "Mitwirkende">
-<!ENTITY about.label "SmartTemplate⁴ ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
+<!ENTITY about.label "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klicken Sie auf eine Überschrift oder">
+<!ENTITY heading.expandAll "alle erweitern">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
 <!ENTITY ownmail.label "Ihre E-Mail Adresse">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Klicken Sie hier, um einen bestimmten Ordner auf Ihrem lokalen Laufwerk festzulegen.">
 <!ENTITY cursor.label "Bestimmt die Position des Cursors">
 <!ENTITY spellcheck.label "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Empfängername (Standardformat)">
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Felder für Adressbuch">
 <!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Privat">
 <!ENTITY ab_other "Sonstiges">
 <!ENTITY ab_work "Dienstlich">
-<!ENTITY spec_form.cap "Sonderformatierung">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Adressfeldschalter">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
 <!ENTITY ex_brack.label "Beispiel: An: Friedrich | Cc: Eva">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Nachrichtengruppen">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Beliebige Kopfzeile">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Mail Header Abändern">
 <!ENTITY header_function.explain "Diese Funktionen können zum ändern bestimmter Mail Header verwendet werden, wie hier beschrieben:">
 <!ENTITY header_function.scope "Kann mit den folgenden Feldern benutzt werden: ">
@@ -192,9 +198,15 @@
 <!ENTITY matchTextFromSubject "Findet einen Regulären Ausdruck in der Betreff-Zeile and und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY stringmanip.match.comment "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw.">
 <!ENTITY stringmanip.alttext "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Bedingter Text">
+<!ENTITY conditionals.note "Diese Klasse von Variablen kann verwendet werden, um Text einzufügen, je nachdem, wie Sie E-Mails senden. Für diese benötigen Sie eine SmartTemplates Pro-Lizenz.">
+<!ENTITY conditional.forwardMode "Wenn die E-Mail inline weitergeleitet wird, wird der erste Textparameter eingefügt. Der zweite Textparameter wird verwendet, wenn die E-Mail als Anhang weitergeleitet wird.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Zitat-Bearbeitung">
 <!ENTITY quote_changers.desc "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen.">
+<!ENTITY quotePlaceholder "Verschiebt den zitierten Teil in den Vorlagentext selbst. Der Kopfzeilen-Block aus Kontovorlagen wird an den Anfang des Zitats verschoben.">
+<!ENTITY quotePlaceholder.level "[optional, numerisch] Maximale Zitierstufe, um ältere Zitate aus der Konversation zu entfernen.">
 <!ENTITY deleteQuotedText "Löscht Text im Zitat">
 <!ENTITY replaceQuotedText "Ersetzt Text im Zitat mit HTML">
 <!ENTITY deleteQuotedTags "Löscht HTML Tags aus Zitaten">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
 <!ENTITY whitespace_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
 <!ENTITY minSize_detail "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Die folgende Funktion addiert einen Zeitabstand zu allen folgenden Zeiten.">
 <!ENTITY calculate.explain "DD=Anzahl der addierten Tage. H=Anzahl addierter Stunden (optional). MM=Anzahl addierter Minuten (optional).">
 <!ENTITY calculate.reset "0 setzt alle nachfolgenden Zeiten zurück.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variablen für angepasstes Datumsformat">
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY A.label "Wochentag (Freitag)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Funktion um die aktuelle Zeit einzufügen (klickbares Feld).">
 <!ENTITY dateformat.explain "Die meisten oben gelisteten Zeitvariablen können unter weglassen des &#37; Symbols als Parameter verwendet werden, siehe:">
 <!ENTITY dateformat.example "Beispiel: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Die Verwendung von &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt.">
 <!ENTITY xsent_long.cap "Beispiel eines Langstrings">
@@ -260,7 +275,7 @@
 <!ENTITY im-ex_note3.label "Dann klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Exportieren' ⇒ 'Einstellungen und Vorlagen' und speichern Sie die Datei (xxx.st4) auf Ihrem Computer.">
 <!ENTITY im-ex_note4.label "Um eine Datei zu importieren, wählen Sie zuerst in der Dropdown Box das Konto für das Sie die Einstellungen und Vorlagen importieren wollen. Danach klicken Sie in der Menüleiste auf 'Extras' ⇒ 'Importieren' ⇒ 'Einstellungen und Vorlagen'.">
 <!ENTITY im-ex_note5.label "Wählen Sie nun die Datei (xxx.st4) die Sie importieren wollen.">
-<!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplate⁴ Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
+<!ENTITY im-ex_note6.label "HINWEIS: Apple/Macintosh Plattformen haben die Menüleiste im Titelband und nicht innerhalb des SmartTemplates Einstellungsfensters. Das ist auf diesen Plattformen ein normales Verhalten und kann nicht geändert werden.">
 <!ENTITY html_note.cap "Hinweise für Vorlagen im HTML-Format">
 <!ENTITY html_note.label "Verwenden Sie bitte ausschließlich den UTF-8 (Unicode) Zeichensatz innerhalb des HTML Quellcodes!">
 <!ENTITY table.cap "Anwenden der Variablen">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Antworten">
 <!ENTITY table_fwd.label "Weiterleiten">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Lizenzschlüssel hier eintragen:">
 <!ENTITY label.insertLicense.tooltip "Der Lizenzschlüssel wird Ihnen von Fastspring zugeschickt.">
 <!ENTITY button.pasteLicense "einfügen">
 <!ENTITY button.validateLicense "bestätigen">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
-<!ENTITY licenseValidation.passed "Danke für die Registrierung von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
-<!ENTITY licenseValidation.standard "Danke für die Registrierung von SmartTemplate⁴ Standard - damit helfen Sie dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
+<!ENTITY licenseValidation.passed "Danke für die Registrierung von SmartTemplates Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.standard "Danke für die Registrierung von SmartTemplates Standard - damit helfen Sie dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
 <!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY licenseValidation.invalidAddon "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}.">

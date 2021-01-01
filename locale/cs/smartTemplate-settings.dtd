@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Rozšířené nastavení">
 <!ENTITY pref_variables.tab "Proměnné">
 <!ENTITY pref_examples.tab "Příklady (pouze on-line)">
-<!ENTITY pref_examples.tooltip "Zobraz příklady šablon z http://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu.">
+<!ENTITY pref_examples.tooltip "Zobraz příklady šablon z https://smarttemplates.quickfolders.org/templates.html. Dostupné pouze v on-line módu.">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Zrušit">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Uvození citace">
 <!ENTITY pref_quoteHeaderBox_tip "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):">
 <!ENTITY pref_templateBox.label "Šablona">
-<!ENTITY pref_dialog.title "Nastavení SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Nastavení SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Počet prázdných řádků nahoře:">
 <!ENTITY pref_removeSig.label "Změň podpis pokud měníš identitu">
 <!ENTITY pref_showStatusIcon.label "Zobraz tlačítko v řádku statusu">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Zakázat implicitní uvození citace v Thunderbirdu">
 <!ENTITY pref_quotehead_tip "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. ">
 <!ENTITY pref_template_tip "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. ">
-<!ENTITY help_dialog_title "SmartTemplate⁴ Nápověda">
+<!ENTITY help_dialog_title "SmartTemplates Nápověda">
 <!ENTITY help_keyword.cap "Nápověda">
 <!ENTITY pref_debug_check "Ladicí mód">
 <!ENTITY pref_hideExamples "Skrýt záložku s příklady">
 <!ENTITY pref_silentUpdates "Tiché aktualizace">
-<!ENTITY pref_silentUpdates_tip "Neotevírejte protokol změn po aktualizaci SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Neotevírejte protokol změn po aktualizaci SmartTemplates.">
 <!ENTITY pref_debug_tip "Pravé-tlačítko pro rozšiřené volby ladění.">
 <!ENTITY pref_nameSwap "Správné Příjmení, Jméno">
 <!ENTITY pref_nameSwap_tip "Zaměň pořadí 'Příjmění, Jméno'">
@@ -98,7 +98,7 @@
 <!ENTITY pref_parseSignature_tip "Nahraď proměnné v podpisu">
 <!ENTITY pref_cursorInsertSpace "Vlož mezeru pro zvýraznění &#37;cursor&#37;">
 <!ENTITY pref_stationerySupport "Podpora &quot;Stationery&quot; rozšíření">
-<!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s SmartTemplate⁴.">
+<!ENTITY pref_stationerySupport_tip "Podpora používá &quot;Stationery&quot; společně s SmartTemplates.">
 <!ENTITY pref_stationerySupport_tip2 "Toto vytváří možnost použít šablonu proměných ve tvém &quot;Stationery&quot;.">
 <!ENTITY pref_stationeryLink "Stationery rozšíření">
 <!ENTITY pref_forceParagraph "Vynucený mód odstavce">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Výchozí znakové sada">
 <!ENTITY pref_defaultCharset_tip "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "O SmartTemplate⁴">
+<!ENTITY about.cap "O SmartTemplates">
 <!ENTITY support.tab "Podpěra">
 <!ENTITY creator.label "Autor">
 <!ENTITY developer.label "Programátor">
@@ -117,6 +117,9 @@
 <!ENTITY contributor.label "Spoluautor">
 <!ENTITY about.label "SmartTemplat4 nabízí snadný způsob pro přizpůsobení Thunderbirdích standardních záhlaví použitím šablon. Vlastní šablony můžou být vytvořeny pro každ účet a také společné pro všechny.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Klikněte na nadpis nebo">
+<!ENTITY heading.expandAll "rozbalte všechny položky">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Něměnné proměnné">
 <!ENTITY ownname.label "Tvé jméno">
 <!ENTITY ownmail.label "Tvůj e-mail">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Klepnutím sem vyberte konkrétní složku na místní jednotce.">
 <!ENTITY cursor.label "nastav pozici kurzoru">
 <!ENTITY spellcheck.label "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Příjemce (To)">
 <!ENTITY to_note.label "Když jméno není dostupné, e-mail bude zobrazen místo něj">
 <!ENTITY to.label "Jméno příjemce (defaultní)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Jméno příjemce (defaultní)">
 <!ENTITY ccfirstname.label "Křestní jméno příjemce">
 <!ENTITY ccname.label "Jméno příjemce">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Pole Adresáře">
 <!ENTITY ab_fields.desc "Při odpovídání na odpovídající e-mailovou adresu můžete nyní použít další pole pro proměnné adresy, například &#37;from&#37;, například:">
 <!ENTITY ab_contact "Kontakt">
 <!ENTITY ab_private "Soukromé">
 <!ENTITY ab_other "Ostatní">
 <!ENTITY ab_work "Zaměstnání">
-<!ENTITY spec_form.cap "Speciální formát">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Přepínače adresního pole">
 <!ENTITY specform_note.label "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!">
 <!ENTITY ex_brack.label "Příklad: To: BEDŘICH | Cc: LUBOŠ">
 <!ENTITY brack_with_var.label "V [[...]] mohou být použity následující proměnné">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Mailová skupina">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Jakákoliv řádka hlavičky">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Uprav hlavičku e-mailu ">
 <!ENTITY header_function.explain "Funkce může být použita k úpravě hlavičky e-mailu, jak je popsáno zde:">
 <!ENTITY header_function.scope "Toto může být použito s těmito hlavičkami:">
@@ -192,9 +198,15 @@
 <!ENTITY matchTextFromSubject "Najdi RegEx vzor v předmětu a vlož do funkce.">
 <!ENTITY stringmanip.match.comment "relevance Funkcí: První parametr (regulární výraz) musí být s uvozovkami. Druhý parametr je vztažený k číslu skupiny. Použíj 0 pro shodu s celým vzorem, 1 pro první skupinu atd.">
 <!ENTITY stringmanip.alttext "[nepovinný parametr] Alternativní text: pokud není nalezena žádná shoda, místo toho vloží alternativní text.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Podmíněný text">
+<!ENTITY conditionals.note "Tuto třídu proměnných lze použít k vložení textu v závislosti na tom, jak odesíláte poštu. K tomu potřebujete licenci SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Pokud je e-mail přeposlán inline, je vložen první textový parametr. Druhý textový parametr se používá, když je pošta přeposílána jako příloha.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Nabídka manipulace">
 <!ENTITY quote_changers.desc "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa.">
+<!ENTITY quotePlaceholder "Toto přesune citovanou část do samotného textu šablony. Část záhlaví nabídky ze šablon účtů bude přesunuta na začátek citace.">
+<!ENTITY quotePlaceholder.level "[volitelný, číselný] Maximální úroveň citace k odstranění starších citací z konverzace.">
 <!ENTITY deleteQuotedText "Odstraní citovaný text">
 <!ENTITY replaceQuotedText "Nahrazuje citovaný text HTML">
 <!ENTITY deleteQuotedTags "Odstraní značky z nabídky">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[nepovinné, číselné] - počet kByte, minimální velikost pro odstranění značky. Tímto způsobem můžete při likvidaci velkých obrázků uchovávat menší obrázky, jako jsou ikony / ikony emodži.">
 <!ENTITY whitespace_note "Všimněte si, že mezeru lze nejlépe reprezentovat jako \ s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky.">
 <!ENTITY minSize_detail "Není vždy možné určit velikost, zejména pokud Thunderbird stále načítá obrázek, často kvůli velké velikosti - v tomto případě bude značka stejně odstraněna.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Pevné proměnné pro formát data a časové zóny">
 <!ENTITY fix_vartz_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum / čas (formát dle nastavení locale)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Následující funkce přidává offset ke všem následujícím zobrazeným časům.">
 <!ENTITY calculate.explain "DD = počet dní, které se mají přidat. H = počet hodin, které lze přidat (volitelné). MM = minuty pro přidání (volitelné) ">
 <!ENTITY calculate.reset "Nastavením argumentu na 0 přestanete měnit všechna data.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Proměnné pro přizpůsobený formát data">
 <!ENTITY customdf_note.label "Může být použito s &#37;X:=sent&#37;">
 <!ENTITY A.label "Den týdne (pátek)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Funkce pro vložení aktuálního času (pole, na které lze kliknout).">
 <!ENTITY dateformat.explain "Většina výše uvedených proměnných může být použita v řetězci parametrů vynecháním '&#37;'. Viz také:">
 <!ENTITY dateformat.example "Příklad: ">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy.">
 <!ENTITY xsent_long.cap "Příklad pro dlouhý řetězec">
@@ -256,11 +271,11 @@
 <!ENTITY timezonename.label "Značka časové zóny GMT, PST, EST, ... ">
 <!ENTITY im-ex.cap "Export/Import nastavení šablon">
 <!ENTITY im-ex_note1.label "Můžeš exportovat a importovat tvé nastavení a šablony pro každý účet.">
-<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplate⁴ v rozbalovacím poli.">
+<!ENTITY im-ex_note2.label "Prní vyber účet, který chceš exportovat z SmartTemplates v rozbalovacím poli.">
 <!ENTITY im-ex_note3.label "Dále vyber 'Soubor' ⇒ 'Export' ⇒ 'Nastavení a Šablony' z menu a ulož soubor (xxx.st4) do tvého počítače.">
-<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplate⁴ nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
-<!ENTITY im-ex_note5.label "Vyber SmartTemplate⁴ soubor (xxx.st4) který chceš naimportovat.">
-<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplate⁴. To je standardní na této platformě a nebůže být změněno.">
+<!ENTITY im-ex_note4.label "Pro import souboru vyber účet, do kterého chceš importovat SmartTemplates nastavení, v rozbalovacím poli. dále vyber 'Soubor' ⇒ 'Import' ⇒ 'Nastavení a Šablony' z menu.">
+<!ENTITY im-ex_note5.label "Vyber SmartTemplates soubor (xxx.st4) který chceš naimportovat.">
+<!ENTITY im-ex_note6.label "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplates. To je standardní na této platformě a nebůže být změněno.">
 <!ENTITY html_note.cap "Poznámka pro HTML šablonu.">
 <!ENTITY html_note.label "Prosím používej pouze UTF-8 (Unicode) znaky v HTML šabloně!">
 <!ENTITY table.cap "Použití promněnných">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Odpovědět">
 <!ENTITY table_fwd.label "Přeposlat">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Sem vložte svůj osobní licenční klíč:">
 <!ENTITY label.insertLicense.tooltip "Váš licenční klíč je obsažen v e-mailu s potvrzením objednávky od Fastspring.">
 <!ENTITY button.pasteLicense "vložit">
 <!ENTITY button.validateLicense "legalizovat">
 <!ENTITY label.licenseValid "Vaše licence je platná do:">
-<!ENTITY licenseValidation.passed "Děkujeme za registraci SmartTemplate⁴ Pro! Všechny prémiové funkce jsou nyní odemčeny.">
-<!ENTITY licenseValidation.standard "Děkujeme za registraci SmartTemplate⁴ Standard - doplňku nesmírně pomáháte! Nyní můžete také otestovat všechny prémiové funkce.">
+<!ENTITY licenseValidation.passed "Děkujeme za registraci SmartTemplates Pro! Všechny prémiové funkce jsou nyní odemčeny.">
+<!ENTITY licenseValidation.standard "Děkujeme za registraci SmartTemplates Standard - doplňku nesmírně pomáháte! Nyní můžete také otestovat všechny prémiové funkce.">
 <!ENTITY licenseValidation.failed "Zadaný licenční klíč není platný. Pokyny naleznete ve svém e-mailu od FastSpring. Pokud problémy přetrvávají, kontaktujte mě na kartě Podpora.">
 <!ENTITY licenseValidation.expired "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci.">
 <!ENTITY licenseValidation.invalidAddon "Zadaný licenční klíč může být pro jiný doplněk. Licenční klíče pro {0} začínají {1}.">

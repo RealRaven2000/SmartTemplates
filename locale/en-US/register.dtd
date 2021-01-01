@@ -1,28 +1,28 @@
-<!ENTITY licenseWindow.title "SmartTemplate⁴ License">
+<!ENTITY licenseWindow.title "SmartTemplates License">
 <!ENTITY label.licenseValid "Your license is valid until:">
 <!ENTITY label.haveLicense "Already have a License?">
-<!ENTITY getSmartTemplate4 "Get SmartTemplate⁴ License">
-<!ENTITY licenseTypes "Going forward, SmartTemplate⁴ offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
-<!ENTITY intro "An annual license for SmartTemplate⁴ Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome.">
+<!ENTITY getSmartTemplate4 "Get SmartTemplates License">
+<!ENTITY licenseTypes "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year.">
+<!ENTITY intro "An annual license for SmartTemplates Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome.">
 <!ENTITY testDriveS "You can test drive the premium features with the standard license, but they may be slightly restricted.">
 <!ENTITY yearlyLicense.title "Annual License">
-<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro gives you full unrestricted access to the premium features.">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplates Pro gives you full unrestricted access to the premium features.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "More about premium features.">
 <!ENTITY yearlyLicense.usageTerm "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use the licensed addres, too.">
 <!ENTITY yearlyLicense.usageTerm1 "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab.">
 <!ENTITY domainLicense.email "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page.">
 <!ENTITY domainLicense.header "Licensed Email Domain">
-<!ENTITY domainLicense.instruct "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use SmartTemplate⁴ Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen.">
+<!ENTITY domainLicense.instruct "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use SmartTemplates Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen.">
 <!ENTITY domainLicense.validate "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users.">
 <!ENTITY updates.title "Updates">
-<!ENTITY updatesExpiry "SmartTemplate⁴ will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep testing premium features under same terms as standard users. 'Premium Exclusive' features will require a valid registration key.">
+<!ENTITY updatesExpiry "SmartTemplates will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep testing premium features under same terms as standard users. 'Premium Exclusive' features will require a valid registration key.">
 <!ENTITY vouchers.title "Vouchers">
-<!ENTITY freeLicense "If you have recently donated to the SmartTemplate⁴ project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in SmartTemplate⁴ Options.">
+<!ENTITY freeLicense "If you have recently donated to the SmartTemplates project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in SmartTemplates Options.">
 <!ENTITY account.label "Select account:">
 <!ENTITY email.label "Email:">
 <!ENTITY firstName.label "First Name:">
 <!ENTITY lastName.label "Last Name:">
-<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplate⁴ Pro license. It is bound to your personal Email address and can be used in multiple installations.">
+<!ENTITY buyPremiumLicense.instruct "Want to use all premium features without restrictions? Get a SmartTemplates Pro license. It is bound to your personal Email address and can be used in multiple installations.">
 <!ENTITY buyPremiumLicense.button "Buy Pro License!">
 <!ENTITY buyStandardLicense.instruct "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions.">
 <!ENTITY buyStandardLicense.button "Buy Standard License!">

@@ -1,23 +1,23 @@
-<!ENTITY licenseWindow.title "Dovoljenje SmartTemplate⁴">
+<!ENTITY licenseWindow.title "Dovoljenje SmartTemplates">
 <!ENTITY label.licenseValid "Vaše dovoljenje velja do:">
 <!ENTITY label.haveLicense "Že imate dovoljenje?">
-<!ENTITY getSmartTemplate4 "Pridobite licenco si SmartTemplate⁴">
-<!ENTITY licenseTypes "V prihodnosti SmartTemplate⁴ ponuja dve licenci, Standard in Pro; ti so potrebni za sledenje spremembam v platformi Thunderbird in financiranje inovacij in popravil dodatka. Ker se spremembe lomljenja izvajajo v letnem ciklu, bo licenca veljala tudi za eno leto.">
-<!ENTITY intro "Letno dovoljenje za SmartTemplate⁴ Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega.">
+<!ENTITY getSmartTemplate4 "Pridobite licenco si SmartTemplates">
+<!ENTITY licenseTypes "V prihodnosti SmartTemplates ponuja dve licenci, Standard in Pro; ti so potrebni za sledenje spremembam v platformi Thunderbird in financiranje inovacij in popravil dodatka. Ker se spremembe lomljenja izvajajo v letnem ciklu, bo licenca veljala tudi za eno leto.">
+<!ENTITY intro "Letno dovoljenje za SmartTemplates Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega.">
 <!ENTITY testDriveS "Preskusno vožnjo lahko opravite s standardno licenco, vendar so lahko rahlo omejeni.">
 <!ENTITY yearlyLicense.title "Letno dovoljenje">
-<!ENTITY yearlyLicense.premiumFeatures "SmartTemplate⁴ Pro omogoča poln in neomejen dostop do lastnosti premium.">
+<!ENTITY yearlyLicense.premiumFeatures "SmartTemplates Pro omogoča poln in neomejen dostop do lastnosti premium.">
 <!ENTITY yearlyLicense.premiumFeatures.moreInfoLink "Več o lastnostih premium.">
 <!ENTITY yearlyLicense.usageTerm "Dovoljenje je za osebno uporabo in je vezano na vaš e-poštni naslov. Lahko ga namestite na več odjemalcev, dokler so le-ti nastavljeni na uporabo tega naslova.">
 <!ENTITY yearlyLicense.usageTerm1 "Dodatni e-poštni naslovi niso problem - ne potrebujejo ločene licence. V primeru vprašanj me lahko dobite na zavihku za podporo.">
 <!ENTITY domainLicense.email "Za ustvarjanje domenskega dovoljenja vam bomo pisali na ta e-poštni naslov. Prosimo, dovolite nam dva delovna dneva za stik z vami. Na naslednji strani vnesite ime domene dovoljenja.">
 <!ENTITY domainLicense.header "E-poštna domena dovoljenja">
-<!ENTITY domainLicense.instruct "Dovoljenje je zaklenjeno na domeno vašega podjetja. To bo uporabnikom z e-poštnimi naslovi, ki se končajo na to domeno, omogočalo uporabo dodatka SmartTemplate⁴ Pro. Npr., če vnesete ime domene 'abc.com', potem bodo uporabniki kot so fredi@abc.com, marta@abc.com, miha.novak@abc.com itd., lahko uporabljali dovoljenje. Največje število veljavnih posameznih uporabnikov je število, ki ste ga vnesli na začetnem zaslonu.">
+<!ENTITY domainLicense.instruct "Dovoljenje je zaklenjeno na domeno vašega podjetja. To bo uporabnikom z e-poštnimi naslovi, ki se končajo na to domeno, omogočalo uporabo dodatka SmartTemplates Pro. Npr., če vnesete ime domene 'abc.com', potem bodo uporabniki kot so fredi@abc.com, marta@abc.com, miha.novak@abc.com itd., lahko uporabljali dovoljenje. Največje število veljavnih posameznih uporabnikov je število, ki ste ga vnesli na začetnem zaslonu.">
 <!ENTITY domainLicense.validate "Prepričajte se, da ste ime domene vnesli *natanko tako*, kot ga vsebuje e-poštni naslov vašega podjetja (del *za* znakom @), ker se bo uporabljalo  za odobritev e-poštnih naslovov vaših uporabnikov.">
 <!ENTITY updates.title "Posodobitve">
-<!ENTITY updatesExpiry "SmartTemplate⁴ Pro se bo samodejno posodabljal preko strani addons.thunderbird.net kot običajno. Po preteku enega leta lahko dovoljenje obnovite ali pa še naprej uporabljate lastnosti premium pod pogoji, ki veljajo za brezplačno različico. Ekskluzivne lastnosti 'premium' zahtevajo veljaven registracijski ključ.">
+<!ENTITY updatesExpiry "SmartTemplates Pro se bo samodejno posodabljal preko strani addons.thunderbird.net kot običajno. Po preteku enega leta lahko dovoljenje obnovite ali pa še naprej uporabljate lastnosti premium pod pogoji, ki veljajo za brezplačno različico. Ekskluzivne lastnosti 'premium' zahtevajo veljaven registracijski ključ.">
 <!ENTITY vouchers.title "Boni">
-<!ENTITY freeLicense "Če ste že darovali za projekt SmartTemplate⁴ ali ste k njemu prispevali (npr. s prevajanjem ali pisanjem popravkov), ste morda upravičeni do brezplačnega dovoljenja. Navežite stik z mano preko zavihka Podpora v možnostih dodatka SmartTemplate⁴.">
+<!ENTITY freeLicense "Če ste že darovali za projekt SmartTemplates ali ste k njemu prispevali (npr. s prevajanjem ali pisanjem popravkov), ste morda upravičeni do brezplačnega dovoljenja. Navežite stik z mano preko zavihka Podpora v možnostih dodatka SmartTemplates.">
 <!ENTITY account.label "Izberite račun:">
 <!ENTITY email.label "E-pošta:">
 <!ENTITY firstName.label "Ime:">

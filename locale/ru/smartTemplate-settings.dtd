@@ -27,7 +27,7 @@
 <!ENTITY pref_advanced.tab "Дополнительные параметры">
 <!ENTITY pref_variables.tab "Переменные">
 <!ENTITY pref_examples.tab "Примеры (только при наличии подключения к Интернету)">
-<!ENTITY pref_examples.tooltip "Показывать примеры с http://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. ">
+<!ENTITY pref_examples.tooltip "Показывать примеры с https://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. ">
 <!-- #### BUTTONS #### -->
 <!ENTITY accept_button "OK">
 <!ENTITY cancel_button "Отмена">
@@ -47,7 +47,7 @@
 <!ENTITY pref_quoteHeaderBox.label "Заголовок цитат">
 <!ENTITY pref_quoteHeaderBox_tip "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:">
 <!ENTITY pref_templateBox.label "Шаблон">
-<!ENTITY pref_dialog.title "Настройки SmartTemplate⁴">
+<!ENTITY pref_dialog.title "Настройки SmartTemplates">
 <!ENTITY pref_breaksOnTop.label "Количество переводов строк в начале:">
 <!ENTITY pref_removeSig.label "Стирать подпись при смене адреса электронной почты">
 <!ENTITY pref_showStatusIcon.label "Кнопка в строке состояния">
@@ -73,12 +73,12 @@
 <!ENTITY pref_fwdhead.label "Отключить стандартный заголовок цитат">
 <!ENTITY pref_quotehead_tip "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат.">
 <!ENTITY pref_template_tip "Вы можете использовать переменные, описанные в справке.">
-<!ENTITY help_dialog_title "Справка SmartTemplate⁴">
+<!ENTITY help_dialog_title "Справка SmartTemplates">
 <!ENTITY help_keyword.cap "Справка">
 <!ENTITY pref_debug_check "Режим отладки">
 <!ENTITY pref_hideExamples "Спрятать вкладку с примерами">
 <!ENTITY pref_silentUpdates "Тихие обновления">
-<!ENTITY pref_silentUpdates_tip "Не открывайте журнал изменений после обновления SmartTemplate⁴.">
+<!ENTITY pref_silentUpdates_tip "Не открывайте журнал изменений после обновления SmartTemplates.">
 <!ENTITY pref_debug_tip "Для настроек режима отладки нажмите правую кнопку мыши">
 <!ENTITY pref_nameSwap "Исправить фамилию, имя">
 <!ENTITY pref_nameSwap_tip "Меняет 'фамилия, имя' на 'имя, фамилия'">
@@ -107,7 +107,7 @@
 <!ENTITY pref_defaultCharset.label "Стандартная кодировка">
 <!ENTITY pref_defaultCharset_tip "Использовать эту кодировку при чтении заголовков, если кодировка не определяется.">
 <!-- #### ABOUT #### -->
-<!ENTITY about.cap "О SmartTemplate⁴">
+<!ENTITY about.cap "О SmartTemplates">
 <!ENTITY support.tab "Служба поддержки">
 <!ENTITY creator.label "Создатель">
 <!ENTITY developer.label "Разработчик">
@@ -115,8 +115,11 @@
 <!ENTITY localized.label "Переводчик">
 <!ENTITY translatorNickname.label "Anton Pinsky (BabelZilla)">
 <!ENTITY contributor.label "Участник">
-<!ENTITY about.label "SmartTemplate⁴ позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи.">
+<!ENTITY about.label "SmartTemplates позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи.">
 <!-- #### HELP #### -->
+<!ENTITY heading.click "Щелкните заголовок или">
+<!ENTITY heading.expandAll "развернуть все записи">
+<!-- fixed variables section -->
 <!ENTITY fix_var.cap "Переменные">
 <!ENTITY ownname.label "Ваше имя">
 <!ENTITY ownmail.label "Ваш адрес">
@@ -140,6 +143,7 @@
 <!ENTITY basepath.absolute "Нажмите здесь, чтобы выбрать конкретную папку на вашем локальном диске.">
 <!ENTITY cursor.label "Установить позицию курсора">
 <!ENTITY spellcheck.label "Устанавливает язык проверки правописания. Примеры значений: (en, de-DE, es-ES, ru) - обратите внимание, что словарь должен быть установлен.">
+<!-- recipient section -->
 <!ENTITY to_var.cap "Получатель (Кому)">
 <!ENTITY to_note.label "Если имя отсутствует, будет использован адрес">
 <!ENTITY to.label "Инициалы получателя (стандарт)">
@@ -157,14 +161,15 @@
 <!ENTITY cc.label "Инициалы получателя (стандарт)">
 <!ENTITY ccfirstname.label "Имя получателя">
 <!ENTITY ccname.label "Фамилия получателя">
-<!-- #### TABLE #### -->
+<!-- AB switch section -->
 <!ENTITY ab_fields "Поля адресной книги">
 <!ENTITY ab_fields.desc "При ответе на соответствующий адрес электронной почты вы можете теперь использовать дополнительные поля для переменных адреса, таких как &#37;from&#37;, таких как:">
 <!ENTITY ab_contact "контакт">
 <!ENTITY ab_private "личный">
 <!ENTITY ab_other "Прочее">
 <!ENTITY ab_work "Работа">
-<!ENTITY spec_form.cap "Специальный формат">
+<!-- address field switches -->
+<!ENTITY spec_form.cap "Переключатели адресного поля">
 <!ENTITY specform_note.label "Выражение в скобках [[Cc: &#37;cc(name)&#37;]] будет выведено, если переменная &#37;cc(name)&#37; имеет значение!">
 <!ENTITY ex_brack.label "Пример: To: Адриан | Cc: Алёша">
 <!ENTITY brack_with_var.label "Следующие переменные можно использовать внутри [[...]]">
@@ -176,6 +181,7 @@
 <!ENTITY newsgr.label "Группа новостей">
 <!ENTITY xmail.label "X-Mailer">
 <!ENTITY any.label "Любой заголовок строки">
+<!-- Mail Header Manipulation -->
 <!ENTITY header_function.cap "Изменять заголовок сообщения">
 <!ENTITY header_function.explain "Эта функция может изменять заголовки сообщения как описано далее:">
 <!ENTITY header_function.scope "Могут быть изменены следующие элементы заголовка:">
@@ -192,9 +198,15 @@
 <!ENTITY matchTextFromSubject "Найти шаблон регулярного выражения в заголовке и добавить найденное в месте использования функции.">
 <!ENTITY stringmanip.match.comment "Функции поиска шаблона регулярного выражения: первый параметр (регулярное выражение) должен быть в кавычках. Второй параметр - номер группы совпадения. 0 используется для всего выражения, 1 для первой группы и т. д.">
 <!ENTITY stringmanip.alttext "[необязательный параметр] Альтернативный текст: если совпадение не найдено, вместо него вставляется альтернативный текст.">
-<!-- SmartTemplate4 Pro stuff -->
+<!-- conditionals section -->
+<!ENTITY conditionals.cap "Условный текст">
+<!ENTITY conditionals.note "Этот класс переменных может использоваться для вставки текста в зависимости от того, как вы отправляете почту. Необходимо наличие лицензии SmartTemplates Pro.">
+<!ENTITY conditional.forwardMode "Если письмо пересылается внутри сообщения, то будет вставлен первый текстовый параметр. Второй текстовый параметр будет использован в том случае, если письмо пересылается как вложение.">
+<!-- quote manipulation section -->
 <!ENTITY quote_changers.cap "Изменение цитаты">
 <!ENTITY quote_changers.desc "Премиум переменные для удаления текста / тегов из указанных частей и экономии места.">
+<!ENTITY quotePlaceholder "Это перемещает цитируемую часть в сам текст шаблона. Раздел заголовка цитаты из шаблонов аккаунтов будет перемещен в верхнюю часть цитаты.">
+<!ENTITY quotePlaceholder.level "[необязательно, числовой] Максимальный уровень цитирования для удаления старых цитат из беседы.">
 <!ENTITY deleteQuotedText "Удаляет цитируемый текст">
 <!ENTITY replaceQuotedText "Заменяет цитируемый текст HTML">
 <!ENTITY deleteQuotedTags "Удаляет теги из цитаты">
@@ -207,6 +219,7 @@
 <!ENTITY minSize "[необязательный, числовой] - количество килобайт, минимальный размер для удаления тега. Таким образом, вы можете сохранить меньшие изображения, такие как значки / смайлики, отказываясь от больших изображений.">
 <!ENTITY whitespace_note "Обратите внимание, что пробел может быть лучше всего представлен как \ s, потому что он также может содержать разрывы строк. Запятые и двойные кавычки не могут быть использованы.">
 <!ENTITY minSize_detail "Не всегда возможно определить размер, особенно если Thunderbird все еще загружает изображение, часто из-за большого размера - в этом случае тег будет удален в любом случае.">
+<!-- fixed date section -->
 <!ENTITY fix_vartz.cap "Переменные для даты и часового пояса">
 <!ENTITY fix_vartz_note.label "Может быть использована с &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Дата / время (локальный формат)">
@@ -217,6 +230,7 @@
 <!ENTITY dateoffset_note.label "Следующая функция добавляет смещение ко всем следующим отображаемым временам.">
 <!ENTITY calculate.explain "DD = количество дней для добавления. H = количество добавляемых часов (необязательно). MM = минуты для добавления (необязательно)">
 <!ENTITY calculate.reset "Установите переменную в 0, чтобы прекратить изменять любые даты.">
+<!-- custom date vars section -->
 <!ENTITY var_custom.cap "Переменные для настраиваемой даты">
 <!ENTITY customdf_note.label "Может быть использована с &#37;X:=sent&#37;">
 <!ENTITY A.label "День недели(Пятница)">
@@ -241,6 +255,7 @@
 <!ENTITY dateformat.label "Функция для вставки текущего времени (кликабельное поле).">
 <!ENTITY dateformat.explain "Большинство указанных выше временных переменных можно использовать в строке параметров, пропустив «&#37;». Смотрите также:">
 <!ENTITY dateformat.example "Пример:">
+<!-- x=sent section -->
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения.">
 <!ENTITY xsent_long.cap "Пример длинной строки:">
@@ -271,14 +286,14 @@
 <!ENTITY table_reply.label "Ответить">
 <!ENTITY table_fwd.label "Переслать">
 <!-- SmartTemplate4 Pro stuff -->
-<!ENTITY tab.gopro "SmartTemplate⁴ Pro">
+<!ENTITY tab.gopro "SmartTemplates Pro">
 <!ENTITY label.insertLicense "Вставить лицензионный ключ сюда:">
 <!ENTITY label.insertLicense.tooltip "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ.">
 <!ENTITY button.pasteLicense "вставить">
 <!ENTITY button.validateLicense "проверить">
 <!ENTITY label.licenseValid "Лицензионный ключ действителен до:">
 <!ENTITY licenseValidation.passed "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями.">
-<!ENTITY licenseValidation.standard "Спасибо за регистрацию SmartTemplate⁴ Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса.">
+<!ENTITY licenseValidation.standard "Спасибо за регистрацию SmartTemplates Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса.">
 <!ENTITY licenseValidation.failed "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;).">
 <!ENTITY licenseValidation.expired "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии.">
 <!ENTITY licenseValidation.invalidAddon "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}.">
