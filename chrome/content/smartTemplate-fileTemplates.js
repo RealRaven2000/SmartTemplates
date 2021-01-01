@@ -486,6 +486,14 @@ SmartTemplate4.fileTemplates = {
 					isLicensed = util.hasLicense(false);
 					let parent = msgPopup.parentNode, 
 					singleParentWindow = null;
+          
+    function getAccessKey(acCode) {
+      if (acCode<10)
+        return acCode.toString();
+      if (acCode>34) 
+        return "";
+      return String.fromCharCode(65+acCode-10); // continue with A,B,C
+    }
     try {
       var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
@@ -499,7 +507,8 @@ SmartTemplate4.fileTemplates = {
 		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
 		// first clear entries:
 							
-		let lastChild = msgPopup.lastChild;
+		let lastChild = msgPopup.lastChild,
+        accelerator = 1; // [issue 96]
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
 			// this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
@@ -513,8 +522,12 @@ SmartTemplate4.fileTemplates = {
       */
 			
       /* insert one item for each listed html template */
-			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
-			menuitem.setAttribute("label", theTemplate.label);
+			let menuitem = document.createXULElement("menuitem"),
+          acKey = getAccessKey(accelerator++);
+      if (acKey) {
+        menuitem.setAttribute("accesskey", acKey);
+      }
+			menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
 			menuitem.setAttribute("s4uiElement", "true");
 			menuitem.setAttribute("st4composeType", composeType);
 			menuitem.classList.add("st4templateEntry");

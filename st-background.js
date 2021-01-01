@@ -51,9 +51,12 @@
    
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
   
+  // content smarttemplate4-locales locale/
+  
   messenger.WindowListener.registerChromeUrl([ 
       ["content",  "smarttemplate4", "chrome/content/"],
       ["resource", "smarttemplate4", "chrome/content/"],
+      ["content", "smarttemplate4-locales", "chrome/locale/"],
       ["locale", "smarttemplate4", "en-US", "chrome/locale/en-US/"],
       ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
       ["locale", "smarttemplate4", "de", "chrome/locale/de/"],

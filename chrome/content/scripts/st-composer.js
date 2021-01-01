@@ -120,6 +120,12 @@ function onUnload(isAddOnShutDown) {
     window.document.getElementById('smarttemplate4-cleandeferred').remove();  
     window.document.getElementById('smarttemplate4-changeTemplate').remove();  
     window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();
+    // see: SmartTemplate4.init()
+    let origLoadIdFunc = window.SmartTemplate4.original_LoadIdentity;
+    if (origLoadIdFunc && LoadIdentity!=origLoadIdFunc) {
+      // restore original LoadIdentity function
+      LoadIdentity = origLoadIdFunc;
+    }    
   }
   catch(ex) {
     

@@ -483,6 +483,16 @@ END LICENSE BLOCK
     # Fixed some errors in Serbian and Portuguese help section
     # Fixed reminder for standard license holders using premium functions 
     
+  Version 3.3 - WIP
+    # [issue 104] Polish locale crashes settings dialog 
+    # [issue 96]  Provide keyboard accelerators for Template picker
+    # [issue 102] Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set
+    # [issue 61] %quotePlaceholder(level)% new function for including quoted mail within the template for styling
+    #             - use the quoteLevel parameter to exclude older quotes from the conversation                  
+    # [issue 108] Other Add-ons may accidentally duplicate template if they change the from address in Composer
+    # Improved Scrolling behavior if %cursor% is used.
+    # Fixed: Resolve Names from AB / Remove email address - this happened even when a "mail" or "bracketMail" parameter is specified
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
 	
@@ -724,10 +734,16 @@ var SmartTemplate4 = {
 		    isInserted = false;
 		try {
       // guard against forwarding my own message (body may have the smartTemplateInserted flag already)
-			if ( !root.getAttribute('smartTemplateInserted') || gMsgCompose.type == msgComposeType.ForwardInline
-          || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			if ( !root.getAttribute('smartTemplateInserted') 
+          || gMsgCompose.type == msgComposeType.ForwardInline
+          || flags.isThunderbirdTemplate || isChangeTemplate)  
 			{ 
 				isInserted = true;
+        // [issue 108] avoid duplicating in case external Add-on changes from identity
+        if ((gMsgCompose.type == msgComposeType.ForwardInline || gMsgCompose.type == msgComposeType.ForwardAsAttachment)
+            && root.getAttribute('smartTemplateInserted'))
+          isChangeTemplate = true;
+        
 				// if insertTemplate throws, we avoid calling it again
         let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
         if (isChangeTemplate && gMsgCompose.bodyModified) {
@@ -751,9 +767,8 @@ var SmartTemplate4 = {
         flags.isChangeTemplate = isChangeTemplate;
 				this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
 				// store a flag in the document
-			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
-				root.setAttribute("smartTemplateInserted","true");
-				//editor.insertNode(div, editor.rootElement, 0);
+        // [issue 108] Other Add-ons may accidentally duplicate template if they set from identity
+				// root.setAttribute("smartTemplateInserted","true"); <== moved into the insertTemplate function!
 				// window.smartTemplateInserted = true;
 				this.smartTemplate.resetDocument(editor, true);
 				if (isChangeTemplate)
@@ -913,7 +928,7 @@ var SmartTemplate4 = {
 			return;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
 		SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
-		this.original_LoadIdentity = LoadIdentity;
+		this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
 		// overwriting a global function within composer instance scope
 		// this is intentional, as we needed to replace Tb's processing
 		// with our own (?)
@@ -1084,11 +1099,11 @@ SmartTemplate4.calendar = {
 		list: function list() {
 			let str = "";
 			for (let i=0;i<7 ;i++){
-				str+=(cal.dayName(i)  +"("+cal.shortDayName(i)  +")/");
+				str+=(cal.dayName(i)  +"("+ cal.shortDayName(i) + ")/");
 			} 
 			str += "\n";
 			for (let i=0;i<12;i++){
-				str+=(cal.monthName(i)+"("+cal.shortMonthName(i)+")/");
+				str+=(cal.monthName(i)+"("+ cal.shortMonthName(i) + ")/");
 			}
 			return str;
 		},

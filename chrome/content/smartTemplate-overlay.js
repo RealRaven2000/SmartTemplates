@@ -710,6 +710,10 @@ SmartTemplate4.mimeDecoder = {
 						suppressMail = true;
 					}
 				}
+				for (let f=0; f<formatArray.length; f++) {
+					if (formatArray[f].field=='mail' || formatArray[f].field.startsWith('bracketMail')) 
+            suppressMail = false;
+        }
 			}
               
 					
@@ -1698,7 +1702,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
     "matchTextFromSubject", "matchTextFromBody",
-		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "smartTemplate", "internal-javascript-ref",
+		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
 		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
     "header.deleteFromSubject",
@@ -2197,22 +2201,15 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "ownmail": // own email address
 					token = identity.email;
 					break;
-				case "smartTemplate":  // currently only useful when put into a Stationery template.
-				  return isStationery ? 
-					  "<span class=\"smartTemplate-placeholder\"></span>" : "";
-						
 				case "quoteHeader":  // is this useful when Stationery does not exist?
 					return "<span class=\"quoteHeader-placeholder\"></span>";
 					
-				case "quotePlaceholder":  // currently only useful when put into a Stationery template.
-          // apparently Stationery inserts the blockquote after
-          // <span class="quoteHeader-placeholder"></span> <br>
-				  return isStationery ?
-  					"<span stationery=\"content-placeholder\">"
-					       +   "<blockquote type=\"cite\"> ... "
-								 +   "</blockquote>"
-							   + "</span>" 
-						: "";
+				case "quotePlaceholder":  
+          // move  the quote up to level n. use "all"
+          let maxQuoteLevel = removeParentheses(arg),
+              levelAtt = maxQuoteLevel ? (" quotelevel=" + maxQuoteLevel) : "";
+				  return "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n"
+					     + "</blockquote>";
 				  break;
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
@@ -2768,9 +2765,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		const util = SmartTemplate4.Util,
 		      Ci = Components.interfaces,
 					Cc = Components.classes,
-					{OS} = (typeof ChromeUtils.import == "undefined") ?
-						Cu.import("resource://gre/modules/osfile.jsm", {}) :
-						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+					{OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
 						
 		// msgcompose was msgcomposeWindow
     let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params

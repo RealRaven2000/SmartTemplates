@@ -480,7 +480,6 @@ SmartTemplate4.Settings = {
 				// let's test if we can get this element
 				let prefDialog = getElement('smartTemplate_prefDialog'),
 						hbox = util.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
-//						hbox = document.getAnonymousElementByAttribute(prefDialog, 'class', 'prefWindow-dlgbuttons'),
 						buttons = [],
 						maxHeight = 0,
 						i = 0;
@@ -898,14 +897,9 @@ SmartTemplate4.Settings = {
 			
 			//oder spacers.length==2 ??
 			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
-				console.log("got you, first spacer");
+				util.logDebug("got you, first spacer");
 				spacers[0].remove();
 			}
-
-			//let spacer = tabs.querySelectorAll(".");
-			//tabs.firstChild.remove();
-			//tabs.lastChild.remove();
-			//clone=tabs;
 
 			// Disabled or Hidden DOM node
 			this.accountKey = branch;    // change current id for pref library
@@ -969,18 +963,14 @@ SmartTemplate4.Settings = {
 		}
 				
 		for (let idx = 0; idx < iAccounts; idx++) {
-			let account = accounts[idx];//.queryElementAt ?
-				//accounts.queryElementAt(idx, this.Ci.nsIMsgAccount) :
-				//accounts.GetElementAt(idx).QueryInterface(this.Ci.nsIMsgAccount);
+			let account = accounts[idx];
 
 			if (!account.incomingServer)
 				continue;
 
 			let iIdentities = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
 			for (let j = 0; j < iIdentities; j++) {
-				let identity = account.identities[j];//.queryElementAt ?
-					//account.identities.queryElementAt(j, this.Ci.nsIMsgIdentity) :
-					//account.identities.GetElementAt(j).QueryInterface(this.Ci.nsIMsgIdentity);
+				let identity = account.identities[j];
 
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
@@ -1090,8 +1080,7 @@ SmartTemplate4.Settings = {
 		    tabbox = document.getElementById(currentDeck);
 		if (!tabbox)
 			alert("A problem has occured: Cannot find account settings: " + currentDeck); // this shouldn't happen, ever!
-		let tabIndex = tabbox.getAttribute("selectedIndex");//selectedIndex;
-		console.log("tabIndex is "+tabIndex);
+		let tabIndex = tabbox.getAttribute("selectedIndex"); 
 		if (tabIndex<0) tabIndex=0;
 
 		const branch = (idkey == "common") ? ".common" : "." + idkey;
@@ -1140,7 +1129,6 @@ SmartTemplate4.Settings = {
 		currentDeck = this.getCurrentDeck(settings.accountId);
 		tabbox = document.getElementById(currentDeck);
 		if (tabbox) {
-			console.log("set selectedIndex");
 			tabbox.selectedIndex = tabIndex; //must b set this way because it is custom element, need to call setter
 			//tabbox.setAttribute("selectedIndex",tabIndex);
       let txtDump = '',
@@ -1534,26 +1522,8 @@ SmartTemplate4.Settings = {
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
 		/* future function: enables premium configuration UI
     let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement('premiumConfig'),
-        quickJump       = getElement('chkQuickJumpHotkey'),
-        quickMove       = getElement('chkQuickMoveHotkey'),
-        quickCopy       = getElement('chkQuickCopyHotkey'),
-        quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
-        quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
-        quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
-        quickMoveFormat = getElement('menuQuickMoveFormat'),
-        quickMoveDepth  = getElement('quickmove-path-depth'),
-        multiCategories = getElement('chkCategories');
+        premiumConfig   = getElement('premiumConfig');
     premiumConfig.disabled = !isEnabled;
-    quickJump.disabled = !isEnabled;
-    quickMove.disabled = !isEnabled;
-    quickCopy.disabled = !isEnabled;
-    quickJumpTxt.disabled = !isEnabled;
-    quickMoveTxt.disabled = !isEnabled;
-    quickCopyTxt.disabled = !isEnabled;
-    quickMoveFormat.disabled = !isEnabled;
-    quickMoveDepth.disabled = !isEnabled;
-    multiCategories.disabled = !isEnabled;
 		*/
   },
   
@@ -1981,21 +1951,4 @@ SmartTemplate4.Settings = {
 	
 
 };
-
-
-/*
-window.addEventListener('load', 
-  function st4_loadEvent() {
-    SmartTemplate4.Settings.onLoad();
-  }
-);
-
-window.addEventListener('unload', 
-  function st4_unloadEvent() {
-    SmartTemplate4.Settings.onUnload();
-  }
-);
-*/
-
-
 
