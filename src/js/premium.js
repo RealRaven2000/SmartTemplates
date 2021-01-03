@@ -42,17 +42,24 @@
 			}
 			
 			switch (user) {
+        case 'std':
 				case 'pro':
 				  removeClassItems('shilling');
 					removeClassItems('donateButton');
+          if (user != 'std')
+            removeClassItems('smartTemplateStdUser');
+          else 
+            removeClassItems('smartTemplateProUser');
 					removeClassItems('smartTemplateFreeUser');
 				  removeClassItems('smartTemplateProRenew');
 					break;
 				case 'proRenew':
+					removeClassItems('smartTemplateStdUser');
 					removeClassItems('donateButton');
 					removeClassItems('smartTemplateFreeUser');
 				  break;
 				default:
+          removeClassItems('smartTemplateStdUser');
 				  removeClassItems('smartTemplateProRenew');
 				  removeClassItems('smartTemplateProUser');
 			}
