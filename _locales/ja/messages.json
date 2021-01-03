@@ -89,6 +89,15 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "license-is-standard" : {
+    "message": "SmartTemplates標準ライセンスの所有者として、割引アップデートと1年間の延長の資格があります。 詳細については、標準ライセンスの下にある [Proにアップグレード] ボタンをクリックしてください。",
+    "description": "Special message for standard license holders"
+  },  
+  
+  "btn-upgrade-to-pro" : {
+    "message": "ライセンスを改善したい"
+  },
+  
   "time-and-effort": { 
     "message": "私のアドオンは、Mozilla プラットフォームとの互換性を維持するために、根本的な変更を必要としています。Github の私の開発チーム (Realraven2000、opto、paenglab) は、$addonName$ の全機能を復元するために熱心に取り組んでいます。",
     "placeholders": {

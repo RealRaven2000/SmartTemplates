@@ -39,8 +39,8 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return  win.SmartTemplate4.Licenser.isExpired;
         },
 
-        LicenseIsProUser() {
-          return  win.SmartTemplate4.Util.hasLicense(false);
+        LicenseIsStandardUser() {
+          return (win.SmartTemplate4.Licenser.key_type == 2);
         },
         
         LicensedDaysLeft() {

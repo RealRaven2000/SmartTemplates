@@ -118,6 +118,18 @@ body p, body li {
     opacity: 0.13;
 }
 
+.psa {
+	background: rgba(20,20,20,0.8) !important;
+	color: rgb(240,240,240) !important;
+  box-shadow: inset 4px 4px 3px rgba(20,20,20,0.3);
+  margin: 1em 0;
+  padding: 0.4em 1em;  
+}
+
+.psa .actionlinks a {
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
 
 
 /*

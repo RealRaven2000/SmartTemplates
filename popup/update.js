@@ -11,7 +11,7 @@ END LICENSE BLOCK */
     if (event.target.id.startsWith("register")) {
       messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
     }
-    if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
+    if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
       window.close(); // not allowed by content script!
     }

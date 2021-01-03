@@ -89,6 +89,15 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "license-is-standard" : {
+    "message": "Là chủ sở hữu của giấy phép tiêu chuẩn SmartTemplates, bạn hiện đủ điều kiện nhận bản cập nhật chiết khấu cộng với gia hạn cả năm. Nhấp vào nút [Nâng cấp lên Pro] bên dưới giấy phép tiêu chuẩn của bạn để biết thêm thông tin.",
+    "description": "Special message for standard license holders"
+  },  
+  
+  "btn-upgrade-to-pro" : {
+    "message": "Tôi muốn nâng cấp giấy phép của mình"
+  },
+  
   "time-and-effort": { 
     "message": "Tiện ích bổ sung của tôi yêu cầu những thay đổi cơ bản để vẫn tương thích với nền tảng Mozilla. Nhóm phát triển của tôi tại Github (Realraven2000, opto và paenglab) đang làm việc siêng năng để khôi phục toàn bộ chức năng cho $addonName$.",
     "placeholders": {

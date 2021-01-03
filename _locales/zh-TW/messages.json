@@ -89,6 +89,15 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "license-is-standard" : {
+    "message": "作為SmartTemplates標准許可證的持有人，您現在有資格獲得折扣更新以及全年的延期。 單擊標准許可證下方的 [升級到Pro] 按鈕以獲取更多信息。",
+    "description": "Special message for standard license holders"
+  },  
+  
+  "btn-upgrade-to-pro" : {
+    "message": "我想升級我的許可證"
+  },
+  
   "time-and-effort": { 
     "message": "我的附加組件需要進行基本更改，以保持與Mozilla平台的兼容性。 我在Github的開發團隊（Realraven2000，opto和paenglab）正在努力恢復$addonName$的全部功能。",
     "placeholders": {

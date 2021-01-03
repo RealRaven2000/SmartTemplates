@@ -23,7 +23,7 @@
       },
 
       {
-        "name": "LicenseIsProUser",
+        "name": "LicenseIsStandardUser",
         "type": "function",
         "async": true,
         "parameters": []

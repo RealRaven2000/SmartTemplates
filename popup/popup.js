@@ -13,7 +13,8 @@ async function updateActions(addonName) {
   // LICENSING FLOW
   
   let isLicensed = await mxUtilties.isLicensed(true),
-      isExpired = await mxUtilties.LicenseIsExpired();
+      isExpired = await mxUtilties.LicenseIsExpired(),
+      isStandardUser = await mxUtilties.LicenseIsStandardUser();
         
   //console.log("Addon " + addonName + "\n" +
   //  "isLicensed = " + isLicensed + "\n" +
@@ -30,6 +31,9 @@ async function updateActions(addonName) {
   // renewLicenseListItem - already collapsed
   // purchaseLicenseListItem - not collapsed
   hide('licenseExtended');
+  if (!isStandardUser) {
+    hide('standardLicense');
+  }
   
   if (isLicensed) {
     hide('purchaseLicenseListItem');
@@ -44,15 +48,20 @@ async function updateActions(addonName) {
     else { // License Extension
       hide('renewLicenseListItem');
       hide('renew');
-      let gpdays = await mxUtilties.LicensedDaysLeft();
-      if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
-        show('extendLicenseListItem');
-        show('extend');
+      if (isStandardUser) {
+        show('standardLicense'); // this contains a button to upgrade
       }
       else {
-        show('licenseExtended');
-        hide('extendLicenseListItem');
-        hide('extend');
+        let gpdays = await mxUtilties.LicensedDaysLeft();
+        if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
+          show('extendLicenseListItem');
+          show('extend');
+        }
+        else {
+          show('licenseExtended');
+          hide('extendLicenseListItem');
+          hide('extend');
+        }
       }
     }
   }  

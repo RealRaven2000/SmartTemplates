@@ -23,12 +23,13 @@
       case "update":
         {
           const mxUtilties = messenger.Utilities;
-          let isLicensed = await mxUtilties.isLicensed(true);
+          let isLicensed = await mxUtilties.isLicensed(true),
+              isStandardLicense = await mxUtilties.LicenseIsStandardUser();
           if (isLicensed) {
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = await mxUtilties.LicensedDaysLeft();
             console.log("Licensed - " + gpdays  + " Days left.");
-            if (gpdays>40) {
+            if (gpdays>40 && !isStandardLicense) {
               console.log("Omitting update popup!");
               return;
             }

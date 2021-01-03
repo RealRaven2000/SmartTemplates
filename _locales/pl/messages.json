@@ -89,6 +89,15 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "license-is-standard" : {
+    "message": "Jako posiadacz standardowej licencji SmartTemplates masz teraz prawo do obniżonej ceny aktualizacji oraz przedłużenia o cały rok. Kliknij przycisk [Przejść na wersje Pro] poniżej standardowej licencji, aby uzyskać więcej informacji.",
+    "description": "Special message for standard license holders"
+  },  
+  
+  "btn-upgrade-to-pro" : {
+    "message": "Chcę uaktualnić licencję"
+  },
+  
   "time-and-effort": { 
     "message": "Moje dodatki wymagają fundamentalnych zmian, aby pozostać kompatybilnymi z platformą Mozilla. Mój zespół programistów w Github (Realraven2000, opto i paenglab) pilnie pracuje, aby przywrócić pełną funkcjonalność $addonName$.",
     "placeholders": {

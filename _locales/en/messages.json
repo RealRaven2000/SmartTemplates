@@ -79,14 +79,22 @@
       "appVer" : {
         "content" : "$2",
         "example" : "78.0b4"
-      }
-      
+      }      
     }
   },  
   
   "license-is-extended" : {
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window.",
     "description": "Shown if license expires more than a year from now"
+  },
+  
+  "license-is-standard" : {
+    "message": "As holder of a SmartTemplates standard license, you are now eligible for a discounted update plus full year extension. Click on the [Upgrade to Pro] button below your standard license for more information.",
+    "description": "Special message for standard license holders"
+  },
+  
+  "btn-upgrade-to-pro" : {
+    "message": "I want to Upgrade my License"
   },
   
   "time-and-effort": { 

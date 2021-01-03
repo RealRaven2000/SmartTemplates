@@ -89,6 +89,15 @@
     "description": "Shown if license expires more than a year from now"
   },
   
+  "license-is-standard" : {
+    "message": "Als houder van een SmartTemplates-standaardlicentie komt u nu in aanmerking voor een update met korting plus een verlenging van een heel jaar. Klik op de knop [Upgraden naar Pro] onder uw standaardlicentie voor meer informatie.",
+    "description": "Special message for standard license holders"
+  },  
+  
+  "btn-upgrade-to-pro" : {
+    "message": "Ik wil mijn licentie upgraden"
+  },
+  
   "time-and-effort": { 
     "message": "Mijn add-ons vereisen fundamentele wijzigingen om compatibel te blijven met het Mozilla-platform. Mijn ontwikkelingsteam bij Github (Realraven2000, opto en paenglab) werkt hard om de volledige functionaliteit voor $addonName$ te herstellen.",
     "placeholders": {
