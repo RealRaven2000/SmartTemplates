@@ -1456,8 +1456,9 @@ SmartTemplate4.Util = {
 			let uType = "";
 			if (isExpired) 
 				uType = "proRenew"
-			else if (isPremiumLicense)
-			  uType = "pro";
+			else if (isPremiumLicense) {
+			  uType = (util.Licenser.key_type == 2) ? "std" : "pro";
+      }
 			// make sure we can sanitize all pages for our premium users!
       // [issue 68] After update to 2.11, SmartTemplates always displays nonlicensed support site
 			if (   uType
