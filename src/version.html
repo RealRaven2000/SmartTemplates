@@ -206,37 +206,100 @@ permalink: version.html
 			<span class="thunderbird">74.* - 78.*</span> 
 		</span>
   </h4>
-  <div class="psa smartTemplateFreeUser">
+  <div class="psa smartTemplateProUser">
+    Thank you for supporting SmartTemplates with a Pro License! Some of the new features
+    and bug fixes below were also now back ported into 2.13 for the benefit of my legacy users
+    who decided to stay with Thunderbrid 68.
+  </div>
+  <div class="psa smartTemplateFreeUser">  
     If you don't have a SmartTemplates license yet, please consider 
     <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">getting one</a> 
     to support the project. There are a lot of helpful changes done in this version and more to come 
     - see the github <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/">issues tracker</a>
     for what's planned next.
   </div>  
+    <table class="smartTemplateFreeUser bargain psa"> 
+      <tr>
+        <td style="vertical-align:top;">
+        <!--  -->
+          <h3 class="shillBox">SmartTemplates New Years Sale - 04/01 - 17/Jan</h3>
+          <p>
+            A new discounted offer for 2021 - 
+            you can now get the Pro License for <span class="emphasis">20% off - [around $12.00 USD saving $3.00!] </span> 
+            for <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-bargain">SmartTemplates Pro</a> and 
+            <span class="emphasis">15% off</span> for 
+            <a href="https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=st-versionpage-explain">SmartTemplates Standard</a>
+          </p>
+          <p>
+           Within this period, you can also <span class="emphasis">upgrade</span> from SmartTemplates Standard to Pro 
+           for $7  <span class="emphasis">to get the cheaper rate!</span>
+          </p>
+           
+          <p>
+            Make sure to catch this occasion while it is up, this is the cheapest way to use all 
+            <a target="_blank" href="premium.html">premium features</a> for 2021!
+            This removes all messages that pop up after the trial period is expired.
+          </p>
+        </td>
+        <td style="vertical-align:top; max-width:0;">
+          <a class="nohover" href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-versionpage-bargain">
+            <img id="bargainStar" src="img/bargain-new-year-2021.png" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Alternatively, you can buy the <a href="https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=st-versionpage-explain">standard license here</a>. 
+          <p>
+             This is now available at a special intro price for Thunderbird 78. Already much cheaper than the pro license.
+             Plus an additional <span class="emphasis">15% off</span> from  <span class="emphasis">January 4th</span>
+             until <span class="emphasis">January 17th</span> for our <span class="emphasis">New Years Sale</span>. 
+             
+             The license is valid for one full year after purchase, after which 
+             it can be extended for a lower than regular price. It is highly likely that at this stage the 
+             Add-on needs to be completely rewritten to keep working on a future version of Thunderbird, 
+             as the "classic Add-on" system will be replaced with a different technology. Only through funding 
+             this work can SmartTemplates survive - it may be the price of a cup of coffee to you but consider 
+             whether you think it is not worth  supporting the many features that SmartTemplates gives you.
+          </p>
+          <p>
+            To make a choice - click the <i>Buy License</i> item from the SmartTemplate License tab on the Options dialog.
+          </p>
+          <img class="screenshot" src="img/smartTemplate-license.png" />
+        </td>
+      </tr>
+    </table>
+  
+  
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> 
-      <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> new function for including quoted mail within the template for styling
-      - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. 
-      If a quote Header is configured in the account template this will be moved with the top of the quote.
+      <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> newly implemented function for 
+      including quoted mail within the template for styling - use the numeric <i>quoteLevel</i>
+      parameter to exclude older quotes from the conversation. 
+      If a quote Header is configured in the account template settings this will also be moved 
+      to the top of the first quote.
     </li>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> Provide keyboard accelerators for Template picker.
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> 
+      Provide keyboard accelerators for Template picker.
     </li>
     <li>Improved Scrolling behavior if %cursor% is used.</li>
   </ul>
   <ul>
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/104">[issue 104]</a> Fixed: Polish locale crashes settings dialog.
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/104">[issue 104]</a> 
+      Fixed: Polish locale crashes settings dialog.
     </li>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/98">[issue 98]</a> Fixed: %dateformat()% fails if month 
-      name / day name variables are included and %language()% set.
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/98">[issue 98]</a> 
+      Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set.
     </li>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a> Fixed: Other Add-ons may accidentally 
-      lead to duplicated template if they change the from address in Composer.
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a> 
+      Fixed: Other Add-ons may accidentally lead to duplicated template if they change the 
+      from address in Composer.
     </li>      
   </ul>
 </li> 
