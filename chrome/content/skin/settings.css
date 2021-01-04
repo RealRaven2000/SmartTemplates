@@ -343,13 +343,6 @@ groupbox.transparent .groupbox-title {
 	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon.png");
 }
 
-#btnAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-right.png") !important;
-}
-
-#btnCloseAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
-}
 
 
 .pasteFocus {
@@ -741,6 +734,31 @@ button.dialog-button[dlgtype=extra2] {
 #smartTemplatePane toolbar[brighttext] #btnYouTube {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/youtube.png") !important;
 }
+
+
+#identityToolBar {
+  display: flex;
+  flex-direction: row;
+  /* fix vertical alignment problems: */
+  align-items: center;
+  justify-content: center;
+}
+
+#msgIdentity {
+  flex-direction: row;
+  flex-grow: 10; /* make this as wide as possible [issue 110] */
+  flex-shrink: 1;
+}
+
+#btnAdvanced {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-right.png") !important;
+  padding-right: 1em;
+}
+
+#btnCloseAdvanced {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
+}
+
 
 #templateTools {
 	background-image: none;

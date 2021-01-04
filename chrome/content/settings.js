@@ -937,19 +937,8 @@ SmartTemplate4.Settings = {
 		if (window.opener && window.opener.GetSelectedMsgFolders) { 
 			let folders = window.opener.GetSelectedMsgFolders();
 			if (folders.length > 0) { // select the correct server that applies to the current folder.
-			  
-				const mailUtilsName =
-				  util.versionGreaterOrEqual(util.AppverFull, "61") ?
-					"MailUtils.jsm" : "MailUtils.js"; // why o why? 
-			
-				var { MailUtils } = 
-				  ChromeUtils.import ?
-					ChromeUtils.import("resource:///modules/" + mailUtilsName) :
-					Components.utils.import("resource:///modules/" + mailUtilsName);
-					
-				CurId = (MailUtils && MailUtils.getIdentityForServer) ?
-				  MailUtils.getIdentityForServer(folders[0].server) :
-					window.opener.getIdentityForServer(folders[0].server);
+				var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+				[CurId] = MailUtils.getIdentityForServer(folders[0].server);
 			}
 		}
 		

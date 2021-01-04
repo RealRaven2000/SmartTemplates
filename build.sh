@@ -10,4 +10,4 @@ sed -i "s/pre$oldRev/pre$smartTemplateRev/g" manifest.json
 
 echo $smartTemplateRev > revision.txt
 mv smartTemplate-*.xpi "../../../Test Versions/3.3/"
-mv smartTemplateWeb.zip smartTemplate-fx-3.3pre$smartTemplateRev.xpi
+mv smartTemplateWeb.zip smartTemplate-fx-3.3.1pre$smartTemplateRev.xpi

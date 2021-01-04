@@ -483,7 +483,7 @@ END LICENSE BLOCK
     # Fixed some errors in Serbian and Portuguese help section
     # Fixed reminder for standard license holders using premium functions 
     
-  Version 3.3 - WIP
+  Version 3.3 - 03/01/2020
     # [issue 104] Polish locale crashes settings dialog 
     # [issue 96]  Provide keyboard accelerators for Template picker
     # [issue 102] Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set
@@ -492,6 +492,10 @@ END LICENSE BLOCK
     # [issue 108] Other Add-ons may accidentally duplicate template if they change the from address in Composer
     # Improved Scrolling behavior if %cursor% is used.
     # Fixed: Resolve Names from AB / Remove email address - this happened even when a "mail" or "bracketMail" parameter is specified
+    
+  Version 3.4 - WIP
+    # [issue 110] Maximize "Account" selector dropdown
+    # [issue 112] Tb78: current mail account is not preselected - this worked in Thunderbird 68
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
