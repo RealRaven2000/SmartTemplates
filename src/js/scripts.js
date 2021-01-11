@@ -144,8 +144,8 @@ function mailtoLine(subject, body, text) {
   var ag2 = 'de@';
   var ag3 = 'gma';
   var ag4 = 'il.com';
-  subject = subject ? subject : '[SmartTemplate4] - <type subject here>';
-  body = body ? body : 'Dear SmartTemplate4 Developers,';
+  subject = subject ? subject : '[SmartTemplates] - <type subject here>';
+  body = body ? body : 'Dear SmartTemplates Developers,';
   text = text ? text : 'Contact&nbsp;us&nbsp;via&nbsp;e-Mail'; // &nbsp; needed for mouseover
   document.write('<a href=\"mailto:' + mm1 + mm2 + mm3 + mm4 + '?cc=' + ag1 + ag2 + ag3 + ag4
                  + '&subject=' + subject 
