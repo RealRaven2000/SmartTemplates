@@ -493,9 +493,18 @@ END LICENSE BLOCK
     # Improved Scrolling behavior if %cursor% is used.
     # Fixed: Resolve Names from AB / Remove email address - this happened even when a "mail" or "bracketMail" parameter is specified
     
-  Version 3.4 - WIP
+  Version 3.3.1 - 04/01/2020
     # [issue 110] Maximize "Account" selector dropdown
     # [issue 112] Tb78: current mail account is not preselected - this worked in Thunderbird 68
+    
+  Version 3.4 - WIP
+    # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
+                 in plain text mode (quote level argument will be ignored)
+    # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
+    # [issue 71] Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
+    # Improved / fixed warning messages for users with expired licenses 
+    # [issue 82] Added an notice about soon-to-expire license in status bar
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -973,7 +982,8 @@ var SmartTemplate4 = {
 	
 	updateStatusBar: function updateStatusBar(show) {
 		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		      util = SmartTemplate4.Util,
+          licenser = SmartTemplate4.Licenser;
 		try {
 			util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
 			let isDefault = (typeof show == 'undefined' || show == 'default'),
@@ -981,9 +991,33 @@ var SmartTemplate4 = {
 			    doc = isDefault ? document : util.Mail3PaneWindow.document,
 			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
-				btn.collapsed =  !isVisible;
 				let labelMode = prefs.getMyIntPref('statusIconLabelMode'),
 				    theClass = 'statusbarpanel-iconic-text';
+        if (licenser.LicenseKey) {
+          let days = licenser.LicensedDaysLeft,
+              wrn = null;
+          if (licenser.isExpired)  
+            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", -days);
+          else if (days<15) {
+            wrn = "SmartTemplates License will expire in {0} days!".replace("{0}", days);
+          }
+          if (wrn) {
+            btn.label = wrn;
+            isVisible = true;
+            theClass += " alert";
+            labelMode = 2;
+          }
+          else {
+            if (licenser.key_type==2)
+              btn.label = "SmartTemplates";
+            else
+              btn.label = "SmartTemplates Pro";
+          }
+        }
+        else
+          btn.label = "SmartTemplates";
+				btn.collapsed = !isVisible;
+        
 				switch(labelMode) {
 					case 0:
 						theClass +=' hidden';

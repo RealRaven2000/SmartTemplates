@@ -1289,6 +1289,13 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
         // %quotePlaceholder(quotelevel)%
         let quoteNode = templateDiv.querySelector("blockquote[class=SmartTemplate]");
+        // [issue 91] - probably better solved by modifying ReFwdFormatter
+        // reFwdFormatter: uses <div class="replaced-blockquote"> for quote in HTML mode
+        // if (!quoteNode && IsHTMLEditor()) {
+        //   quoteNode = gMsgCompose.editor.rootElemen.querySelector("div.replaced-blockquote");
+        // }
+        
+        // clean old quotes
         if (quoteNode) {
           function quoteLevel(element, level) {
             if (!element || !element.parentNode)
@@ -1508,7 +1515,8 @@ SmartTemplate4.classSmartTemplate = function() {
 			// all used functions are stored in the main instance of SmartTemplates (3pane window)
 			if (util.mainInstance.Util.premiumFeatures.length)
       {
-        if (!util.hasLicense(false) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
+        // let's reset the local license
+        if (!util.hasLicense(true) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
           util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn

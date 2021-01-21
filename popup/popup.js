@@ -22,10 +22,12 @@ async function updateActions(addonName) {
   //);
   
   function hide(id) {
-    document.getElementById(id).setAttribute('collapsed',true);
+    let el = document.getElementById(id);
+    if (el) el.setAttribute('collapsed',true);
   }
   function show(id) {
-    document.getElementById(id).setAttribute('collapsed',false);
+    let el = document.getElementById(id);
+    if (el) el.setAttribute('collapsed',false);
   }
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed

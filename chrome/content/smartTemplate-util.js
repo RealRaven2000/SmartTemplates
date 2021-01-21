@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.3.1",
+	HARDCODED_CURRENTVERSION : "3.4",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -1303,7 +1303,8 @@ SmartTemplate4.Util = {
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
 			return new RegExp( quoteLess, 'ig');
-		return quoteLess;
+    // allow using \n and \t for new line and tabs characters
+		return quoteLess.replace(/\\n/gi,"\n").replace(/\\t/gi,"\t");
 	} ,
 	
 	// see MsgComposeCommands, loadBlockedImage()
@@ -2712,6 +2713,20 @@ SmartTemplate4.Util = {
 		}
 		return null;
 	},  
+  
+  removeHtmlEntities: function removeHtmlEntities(input){
+    let text = input.replace(/&\w+?;/g, function( e ) {
+      switch(e) {
+        case '&nbsp;': return ' ';
+        case '&tab;': return '  ';  // can't use literal \t at the moment.
+        case '&copy;': return String.fromCharCode(169);
+        case '&lt;': return '<';
+        case '&gt;': return '>';
+        default: return e;
+      }
+    }); 
+    return text;    
+  },
 	
 	
 	/* 

@@ -1270,6 +1270,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
   if (quoteMatches) {
 		try {
       util.addUsedPremiumFunction('deleteQuotedText');
+      const isHTML = IsHTMLEditor();
+
 			for (let i=0; i<quoteMatches.length; i++) {
 				// parse out the argument (string to delete)
 				msg = msg.replace(quoteMatches[i],'');  // remove from template
@@ -1277,19 +1279,30 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
             rootEl = gMsgCompose.editor.rootElement;
-            
+        
         if (dText && dText.length) {
           let s = util.unquotedRegex(dText[0], true),
               quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-          for (let i=0; i<quotes.length; i++) {
-            let q = quotes.item(i),
-                lv = quoteLevel(q, 1);
-            if (lv == minQuoteLevel) {
-              // replaces everything on this level and higher (all its child blockquotes)
-              util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
-              q.innerHTML = q.innerHTML.replace(s, "");
+              
+          if (!isHTML) {
+            // plain text:
+            // look for <span style="white-space: pre-wrap; display: block;">
+            quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
+            for (let q of quotes) {
+              q.innerText = q.innerText.replace(s, "");
             }
-          }            
+          }
+          else {
+            for (let i=0; i<quotes.length; i++) {
+              let q = quotes.item(i),
+                  lv = isHTML ? quoteLevel(q, 1) : 1;
+              if (lv == minQuoteLevel) {
+                // replaces everything on this level and higher (all its child blockquotes)
+                util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
+                q.innerHTML = q.innerHTML.replace(s, "");
+              }
+            }
+          }          
         }
 			}
 		}
@@ -1302,6 +1315,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 	if (quoteMatchesR) { // replacements in quote
     try {
       util.addUsedPremiumFunction('replaceQuotedText');
+      const isHTML = IsHTMLEditor(); 
+      
       for (let i=0; i<quoteMatchesR.length; i++) {
         // parse out the argument (string to delete)
         msg = msg.replace(quoteMatchesR[i], '');  // remove from template
@@ -1310,17 +1325,27 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
           // now replace text in quote body:
           let minQuoteLevel = params.p3 || 1,
               s = util.unquotedRegex(params.p1, true),
-              r = util.unquotedRegex(params.p2),
+              r = util.unquotedRegex(params.p2), 
               rootEl = gMsgCompose.editor.rootElement;
               
-          let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-          for (let i=0; i<quotes.length; i++) {
-            let q = quotes.item(i),
-                lv = quoteLevel(q, 1);
-            if (lv == minQuoteLevel) {
-              // replaces everything on this level and higher (all its child blockquotes)
-              util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
-              q.innerHTML = q.innerHTML.replace(s, r);
+          if (!isHTML) {
+            // plain text:
+            // look for <span style="white-space: pre-wrap; display: block;">
+            let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
+            for (let q of quotes) {
+              q.innerText = q.innerText.replace(s, r);
+            }
+          }
+          else {
+            let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+            for (let i=0; i<quotes.length; i++) {
+              let q = quotes.item(i),
+                  lv = quoteLevel(q, 1);
+              if (lv == minQuoteLevel) {
+                // replaces everything on this level and higher (all its child blockquotes)
+                util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
+                q.innerHTML = q.innerHTML.replace(s, r);
+              }
             }
           }
         }
@@ -1648,9 +1673,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		try {
 			msgDbHdr = (composeType != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
 			charset = (composeType != "new") ? msgDbHdr.Charset : null;
-			// try falling back to folder charset:
+			// -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
+      //    defaulting to folder's charset would have been probably wrong anyway
 			if (!charset && msgDbHdr) {
-				msgDbHdr.folder.charset; 
+				charset = gMsgCompose.compFields.characterSet; // 
 			}
 		}
 		catch (ex) {
@@ -1909,11 +1935,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           return '';
 			}
       try {
+        let isClobberHeader = false;
+       
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
-          util.logToConsole("invalid header - no permission to modify: " + hdr + 
-					  "\nSupported headers: " + whiteList.join(', '));
-          return '';
+          // not in whitelist
+          if (hdr.toLowerCase().startsWith("list"))
+            isClobberHeader = true
+          else {
+            util.logToConsole("invalid header - no permission to modify: " + hdr + 
+              "\nSupported headers: " + whiteList.join(', '));
+            return '';
+          }
         }
         // get
         modType = 'address';
@@ -1938,7 +1971,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             targetString = ComposeFields.replyTo;
             break;
           default:
-            modType = '';
+            if (isClobberHeader) {
+              debugger;
+              modType = 'string';
+              targetString = gMsgCompose.compFields.getHeader(hdr) || "";
+            }
+            else modType = '';
             break;
         }
         // modify
@@ -2041,8 +2079,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 							util.logDebug("Invalid Priority: '" + targetString + "'\n" 
 						    + "Must be one of [" + validVals.join() +  "]");
 						
-						
 					  break;
+          default:
+            if (isClobberHeader) {
+              if (targetString) {
+                util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
+                gMsgCompose.compFields.setHeader(hdr, targetString);
+              }
+              else {
+                util.logDebug("Deleting clobbered header [" + hdr + "]");
+                gMsgCompose.compFields.deleteHeader(hdr);
+              }
+            }
         }
         // try to update headers - ComposeFieldsReady()
         // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
@@ -2172,6 +2220,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					const dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
 					if (dateFormatSent)
 						tm.setTime((date / 1000));
+          // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
+          arg = util.removeHtmlEntities(arg);
 					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
 					if (dateFormatSent)
 						token = defaultTime;
@@ -2456,6 +2506,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           if (token.indexOf('header')==0) {
             let args = arg.split(","),
                 modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
+                
+            if (modHdr.startsWith("list")) modHdr = args[0].substr(1); // add case back.
             if (args.length<2 && token!="header.deleteFromSubject") {
               util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
               return '';

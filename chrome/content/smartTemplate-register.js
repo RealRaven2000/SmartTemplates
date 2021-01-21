@@ -167,6 +167,13 @@ SmartTemplate4.Licenser =
 		// later.setDate(later.getDate()-period);
     return (period-days); // returns number of days left, or -days since trial expired if past period
 	},
+  
+  get LicensedDaysLeft() {
+    let today = new Date(),
+        licensedDate = new Date(this.DecryptedDate),
+        daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
+    return daysLeft;
+  },
 	
   ValidationStatus: 0,
   // enumeration for Validated state

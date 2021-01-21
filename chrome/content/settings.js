@@ -1776,6 +1776,8 @@ SmartTemplate4.Settings = {
 			util.logDebug('validateLicense - result = ' + result);
 			// make sure to refresh the file template menus!
 			SmartTemplate4.fileTemplates.isModified = true; 
+      util.Mail3PaneWindow.SmartTemplate4.updateStatusBar();
+      
     }
     catch(ex) {
       util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);

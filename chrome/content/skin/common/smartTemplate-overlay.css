@@ -70,6 +70,10 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 	padding-right: 6px;
 }
 
+#SmartTemplate4Messenger.alert {
+  background-color: rgb(120,0,0) !important;
+  color: white !important;
+}
 
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */

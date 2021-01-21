@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.3.1">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.4">can be found here</a>
 
 <b>Latest News</b>
 
@@ -11,16 +11,13 @@ Migration to the Thunderbird 78 Add-ons system - mail extensions with experiment
 
 <b>Improvements</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> %quotePlaceholder(<i>quoteLevel</i>)% new function for including quoted mail within the template for styling - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. If a quote header block is configured in the account template this will be moved with the top of the quote.</li>     
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> Provide keyboard accelerators for Template picker.</li>
-  <li>Improved Scrolling behavior if %cursor% is used.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/110">[issue 110]</a> Enhancement: Maximize "Account" selector in settings.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/112">[issue 112]</a> Enhancement: Preselect account of current folder when opening settings (like in Tb68).</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a>Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored)</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe</li>
+<li> Improved / fixed warning messages for users with expired licenses. <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Added a notice about soon-to-expire license in status bar.</li>
+
 </ul>
 
 <b>Changes / Bug Fixes</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/104">[issue 104]</a> Polish locale crashes settings dialog </li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/102">[issue 102]</a> Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a> Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer.</li><li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a>Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer.</li>
+  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
 </ul>
