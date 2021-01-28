@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "korvaa aihe tekstillä">
 <!ENTITY header.prefix.subject "liitä teksti aiheen eteen">
 <!ENTITY header.append.subject "liitä teksti aiheen jälkeen">
+<!ENTITY header.delete.subject "Poista teksti aiheesta (säännöllinen lauseke)">
 <!ENTITY header.set.to "korvaa vastaanottaja sähköpostiosoitteella">
 <!ENTITY header.append.to "lisää sähköpostiosoite vastaanottajien listaan">
+<!ENTITY header.set.from "asettaa 'from'-osoitteen. Tämä hyväksyy vain sähköpostiosoitteet henkilöllisyysluettelosta.">
 <!ENTITY stringmanip_function.cap "Merkkijonon manipulointi">
 <!ENTITY stringmanip_function.explain "Näitä toimintoja voidaan käyttää sähköpostin pohjien tai otsakkeiden poistamiseksi tai muokkaamiseksi">
 <!ENTITY deleteText "Poista tekstiä otsakkeesta, esim. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä).">
-<!ENTITY dateformat.explain "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrijonoon jättämällä &#37; pois. Katso myös:">
+<!ENTITY dateformat.explain "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrimerkkijonossa jättämällä pois &#37; Katso myös:">
 <!ENTITY dateformat.example "Esimerkki:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">

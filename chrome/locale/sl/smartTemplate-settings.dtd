@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "nadomesti zadevo z besedilom">
 <!ENTITY header.prefix.subject "predpni zadevo z besedilom">
 <!ENTITY header.append.subject "pripni besedilo k zadevi">
+<!ENTITY header.delete.subject "odstrani besedilo iz teme (regularni izraz)">
 <!ENTITY header.set.to "nadomesti prejemnika z e-poštnim naslovom">
 <!ENTITY header.append.to "dodaj e-pošto na seznam prejemnikov">
+<!ENTITY header.set.from "nastavi naslov 'od'. To sprejema samo e-poštne naslove s seznama identitet.">
 <!ENTITY stringmanip_function.cap "Ravnanje z nizi">
 <!ENTITY stringmanip_function.explain "Te funkcije lahko uporabite za brisanje ali menjavo besedila v e-poštni predlogi ali glavi navedka.">
 <!ENTITY deleteText "Odstrani besedilo iz navedka, npr. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "dop.">
 <!ENTITY p3.label "dop.">
 <!ENTITY dateformat.label "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti).">
-<!ENTITY dateformat.explain "Večino časovnih spremenljivk lahko zgoraj v nizu parametrov uporabimo tako, da izpustimo '&#37;'. Poglej tudi:">
+<!ENTITY dateformat.explain "Večino zgornjih časovnih spremenljivk lahko v nizu parametrov uporabimo tako, da izpustimo '&#37;'. Poglej tudi:">
 <!ENTITY dateformat.example "Primer:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Spremenilnik  - z vodilno ničlo">

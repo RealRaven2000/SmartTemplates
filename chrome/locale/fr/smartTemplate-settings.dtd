@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "remplacer le sujet par le texte">
 <!ENTITY header.prefix.subject "préfixer le sujet avec le texte">
 <!ENTITY header.append.subject "ajouter le texte au sujet">
+<!ENTITY header.delete.subject "supprimer le texte du sujet (expression régulière)">
 <!ENTITY header.set.to "remplacer le destinataire par l'adresse électronique">
 <!ENTITY header.append.to "ajouter le courriel à la liste des destinataires">
+<!ENTITY header.set.from "définit l'adresse «de». Cela n'accepte que les adresses e-mail de la liste d'identités.">
 <!ENTITY stringmanip_function.cap "Manipulation des chaînes de caractères">
 <!ENTITY stringmanip_function.explain "Ces fonctions peuvent être utilisées afin de supprimer ou remplacer du texte dans le modèle de courriel ou l'entête.">
 <!ENTITY deleteText "Supprimer du texte de l'entête. Exemple : deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Fonction pour insérer l'horaire actuel (champ cliquable).">
-<!ENTITY dateformat.explain "La plupart des variables de temps ci-dessus peuvent être utilisés dans la chaîne de paramètres en omettant &#37;. Voir également :">
+<!ENTITY dateformat.explain "La plupart des variables de temps ci-dessus peuvent être utilisées dans la chaîne de paramètres en omettant «&#37;». Voir également :">
 <!ENTITY dateformat.example "Exemple :">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Le modificateur &#37;X:=sent&#37;">

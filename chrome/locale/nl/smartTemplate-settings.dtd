@@ -188,6 +188,7 @@
 <!ENTITY header.set.subject "onderwerp vervangen door de tekst">
 <!ENTITY header.prefix.subject "onderwerp vooraf laten gaan door de tekst">
 <!ENTITY header.append.subject "tekst aan onderwerp toevoegen">
+<!ENTITY header.delete.subject "verwijder tekst uit onderwerp (reguliere expressie)">
 <!ENTITY header.set.to "ontvanger vervangen door e-mailadres">
 <!ENTITY header.append.to "e-mailadres aan ontvangerslijst toevoegen">
 <!ENTITY stringmanip_function.cap "Stringmanipulatie">
@@ -253,7 +254,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Functie voor het invoegen van de huidige tijd (aanklikbaar veld).">
-<!ENTITY dateformat.explain "De meeste tijdsvariabelen hierboven kunnen in de parameterstring worden gebruikt door &#37; weg te laten. Lees ook:">
+<!ENTITY dateformat.explain "De meeste van de bovenstaande tijdvariabelen kunnen in de parameterreeks worden gebruikt door '&#37;' weg te laten. Zie ook:">
 <!ENTITY dateformat.example "Voorbeeld:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Gebruik van &#37;X:=sent&#37;">

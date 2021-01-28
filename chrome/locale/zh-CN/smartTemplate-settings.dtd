@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "替换主题文本">
 <!ENTITY header.prefix.subject "替换主题前缀">
 <!ENTITY header.append.subject "追加文本到主题">
+<!ENTITY header.delete.subject "从主题中删除文本（正则表达式）">
 <!ENTITY header.set.to "替换回复地址">
 <!ENTITY header.append.to "添加回复地址">
+<!ENTITY header.set.from "设置“发件人”地址。 这仅接受身份列表中的电子邮件地址。">
 <!ENTITY stringmanip_function.cap "文本操作">
 <!ENTITY stringmanip_function.explain "这些功能可用于删除或替换电子邮件模板或报价标题中的文本。">
 <!ENTITY deleteText "从报价中删除一些文字，例如 deleteText(&quot;via Paypal&quot;)">
@@ -212,13 +214,13 @@
 <!ENTITY deleteQuotedTags "从引用中删除标签">
 <!ENTITY replaceQuotedTags "用文本或HTML替换引文中的标签">
 <!ENTITY Parameters "参量">
-<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
-<!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
+<!ENTITY regexpAnyText "任何文本（正则表达式）都必须用双引号引起来。">
+<!ENTITY replacementHTML "必须用双引号引起来-文本或html标记都将在找到匹配项的地方插入引号中。">
 <!ENTITY quoteLevel "[可选，数字]：从哪个最低报价水平开始">
 <!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
-<!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
-<!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
-<!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
+<!ENTITY minSize "[可选，数字]-kByte的数量，用于删除标签的最小大小。 这样，您可以保留较小的图像，例如图标/表情符号，而丢弃较大的图像。">
+<!ENTITY whitespace_note "请注意，空格最好用\ s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。">
+<!ENTITY minSize_detail "并非总是可以确定大小，尤其是由于大尺寸而导致Thunderbird仍在加载图像的情况下-在这种情况下，无论如何都将删除标签。">
 <!-- fixed date section -->
 <!ENTITY fix_vartz.cap "固定的日期格式和时区变量">
 <!ENTITY fix_vartz_note.label "可以和 &#37;X:=sent&#37; 组合">
@@ -253,8 +255,8 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "插入当前时间的功能（可单击字段）。">
-<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.explain "通过省略“＆＃37;”，可以在参数字符串中使用以上大多数时间变量。 也可以看看：">
+<!ENTITY dateformat.example "例: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "使用 &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。">

@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "nahraď předmět tímto textem">
 <!ENTITY header.prefix.subject "předpona předmětu s textem">
 <!ENTITY header.append.subject "přidej text do předmětu">
+<!ENTITY header.delete.subject "odebrat text z předmětu (regulární výraz)">
 <!ENTITY header.set.to "nahraď příjemce e-mailovou adresou">
 <!ENTITY header.append.to "přidej e-mail do seznamu příjemců">
+<!ENTITY header.set.from "nastavuje adresu „od“. To přijímá pouze e-mailové adresy ze seznamu identit.">
 <!ENTITY stringmanip_function.cap "změna řetězce">
 <!ENTITY stringmanip_function.explain "Tato funkce může být použita pro smazání nebo přepsání textu šablonou e-mailu nebo hlavičky.">
 <!ENTITY deleteText "Smaže nějaký text z hlavičky, např. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "Dop.">
 <!ENTITY p3.label "Dop.">
 <!ENTITY dateformat.label "Funkce pro vložení aktuálního času (pole, na které lze kliknout).">
-<!ENTITY dateformat.explain "Většina výše uvedených proměnných může být použita v řetězci parametrů vynecháním '&#37;'. Viz také:">
+<!ENTITY dateformat.explain "Většinu výše uvedených časových proměnných lze v řetězci parametrů použít vynecháním znaku '&#37;'. Viz také:">
 <!ENTITY dateformat.example "Příklad: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Datum a čas dle &#37;X:=sent&#37;">

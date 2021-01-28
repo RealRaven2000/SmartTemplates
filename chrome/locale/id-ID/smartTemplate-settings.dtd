@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "ganti subjek dengan teks">
 <!ENTITY header.prefix.subject "awalan subjek dengan teks">
 <!ENTITY header.append.subject "tambahkan teks ke subjek">
+<!ENTITY header.delete.subject "hapus teks dari subjek (ekspresi reguler)">
 <!ENTITY header.set.to "ganti penerima dengan alamat email">
 <!ENTITY header.append.to "tambahkan email ke daftar penerima">
+<!ENTITY header.set.from "setel alamat 'dari'. Ini hanya menerima alamat email dari daftar identitas.">
 <!ENTITY stringmanip_function.cap "Manipulasi String">
 <!ENTITY stringmanip_function.explain "Fungsi-fungsi ini dapat digunakan untuk menghapus atau mengganti teks dalam template Email atau kutipan header.">
 <!ENTITY deleteText "Hapus beberapa teks dari Kutipan, mis., deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)">
-<!ENTITY dateformat.explain "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan &#37;. Lihat pula:">
+<!ENTITY dateformat.explain "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan '&#37;'. Lihat juga:">
 <!ENTITY dateformat.example "Contoh:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Pengubah &#37;X:=sent&#37;">

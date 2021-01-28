@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "用文本替換主題">
 <!ENTITY header.prefix.subject "在主題之前加上文字">
 <!ENTITY header.append.subject "將文字附加到主題">
+<!ENTITY header.delete.subject "從主題中刪除文本（正則表達式）">
 <!ENTITY header.set.to "用電子郵件地址替換收件人">
 <!ENTITY header.append.to "將電子郵件地址添加到收件人列表">
+<!ENTITY header.set.from "設置“發件人”地址。 這僅接受身份列表中的電子郵件地址。">
 <!ENTITY stringmanip_function.cap "String Manipulation">
 <!ENTITY stringmanip_function.explain "這些功能可用於刪除或替換電子郵件模板或引用標題中的文本。">
 <!ENTITY deleteText "從報價中刪除一些文字，例如 deleteText(&quot;via Paypal&quot;)">
@@ -252,9 +254,9 @@
 <!ENTITY p1.label "上午.">
 <!ENTITY p2.label "上午.">
 <!ENTITY p3.label "上午">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.label "插入當前時間的功能（可單擊字段）。">
+<!ENTITY dateformat.explain "通過省略“＆＃37;”，可以在參數字符串中使用以上大多數時間變量。 也可以看看：">
+<!ENTITY dateformat.example "例: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; 修改者">
 <!ENTITY xsent_note.label "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 &#37;X:=sent&#37;,則日期/時間變數將會對應原來郵件的日期/時間.">
@@ -287,29 +289,29 @@
 <!ENTITY table_fwd.label "轉寄">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY tab.gopro "SmartTemplates Pro">
-<!ENTITY label.insertLicense "Insert your personal License key here:">
-<!ENTITY label.insertLicense.tooltip "Your license key is contained in your order confirmation email from Fastspring.">
-<!ENTITY button.pasteLicense "paste">
-<!ENTITY button.validateLicense "validate">
-<!ENTITY label.licenseValid "Your license is valid until:">
-<!ENTITY licenseValidation.passed "Thanks for registering SmartTemplates Pro! All premium features are now unlocked.">
-<!ENTITY licenseValidation.standard "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions.">
-<!ENTITY licenseValidation.failed "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab.">
-<!ENTITY licenseValidation.expired "The license key you entered is expired. Please press the button below to renew your license.">
-<!ENTITY licenseValidation.invalidAddon "The license key you entered may be for a different Add-on. License keys for {0} start with {1}.">
-<!ENTITY licenseValidation.invalidMail "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance.">
-<!ENTITY licenseValidation.notMatchedMail "Encrypted Email address does not match readable one.">
+<!ENTITY label.insertLicense "在此處插入您的個人許可證密鑰：">
+<!ENTITY label.insertLicense.tooltip "您的許可證密鑰包含在Fastspring的訂單確認電子郵件中。">
+<!ENTITY button.pasteLicense "糊">
+<!ENTITY button.validateLicense "驗證">
+<!ENTITY label.licenseValid "您的許可證有效期至：">
+<!ENTITY licenseValidation.passed "感謝您註冊SmartTemplates Pro！ 所有高級功能現已解鎖。">
+<!ENTITY licenseValidation.standard "感謝您註冊SmartTemplates Standard-您正在幫助附加組件！ 現在，您還可以測試驅動所有高級功能。">
+<!ENTITY licenseValidation.failed "您輸入的許可證密鑰無效。 查看來自FastSpring的電子郵件以獲取說明。 如果仍有問題，請通過“支持”標籤與我聯繫。
+<!ENTITY licenseValidation.expired "您輸入的許可證密鑰已過期。 請按下面的按鈕續訂您的許可證。">
+<!ENTITY licenseValidation.invalidAddon "您輸入的許可證密鑰可能用於其他附件。 {0}的許可證密鑰以{1}開頭。">
+<!ENTITY licenseValidation.invalidMail "當前未在任何郵件帳戶中列出與許可證密鑰[{1}]綁定的電子郵件地址。 請從“支持”標籤與我聯繫以獲取幫助。">
+<!ENTITY licenseValidation.notMatchedMail "加密的電子郵件地址不可讀。">
 <!ENTITY premiumConfig "Premium Features">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
+<!ENTITY label.premiumFeaturesSite "在我們的網站上了解有關高級功能的更多信息…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
+<!ENTITY support.type.selectOne "選擇一個話題！">
 <!ENTITY support.type.license "Licensing related">
 <!ENTITY support.type.tech "Technical">
 <!ENTITY support.type.html "Help with HTML / CSS">
 <!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">
+<!ENTITY support.subject "主题:">
+<!ENTITY support.mail.instructions "单击下面的按钮以打开一个新的电子邮件以支持。 如果您遇到技术问题，请考虑添加屏幕截图。">
+<!ENTITY support.compose "写信给支持…">
+<!ENTITY support.links "支持链接">

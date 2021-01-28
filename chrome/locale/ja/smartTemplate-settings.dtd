@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "件名をテキストで置換する">
 <!ENTITY header.prefix.subject "件名の前にテキストを追記する">
 <!ENTITY header.append.subject "件名の後にテキストを追記する">
+<!ENTITY header.delete.subject "件名からテキストを削除する（正規表現）">
 <!ENTITY header.set.to "受信者をメールアドレスで置換する">
 <!ENTITY header.append.to "メールアドレスを受信者に追加する">
+<!ENTITY header.set.from "'from'アドレスを設定します。 これは、IDのリストからの電子メールアドレスのみを受け入れます。">
 <!ENTITY stringmanip_function.cap "文字列操作">
 <!ENTITY stringmanip_function.explain "これらの関数は、テンプレートおよび返信ヘッダーにおいて、文字列の消去や置換に用いることができます">
 <!ENTITY deleteText "引用部から特定の文字列を消去します 例: deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "現在の時刻を挿入する関数 (クリック可能な領域)">
-<!ENTITY dateformat.explain "日時に関する変数の多くは、&#37; を付けなくても機能します。以下も参照ください:">
+<!ENTITY dateformat.explain "上記の時間変数のほとんどは、「＆＃37;」を省略することでパラメータ文字列で使用できます。 参照：">
 <!ENTITY dateformat.example "例:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; の使用">

@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "замінити тему повідомлення цим текстом">
 <!ENTITY header.prefix.subject "префікс теми повідомлення">
 <!ENTITY header.append.subject "додати текст до теми повідомлення">
+<!ENTITY header.delete.subject "видалити текст із теми (регулярний вираз)">
 <!ENTITY header.set.to "замінити тему повідомлення електронною адресою">
 <!ENTITY header.append.to "Додати електронну адресу до переліку отримувачів">
+<!ENTITY header.set.from "встановлює адресу "з". Це приймає лише адреси електронної пошти зі списку ідентифікаційних даних.">
 <!ENTITY stringmanip_function.cap "Маніпуляції з рядками">
 <!ENTITY stringmanip_function.explain "Ці функції можуть бути використані для видалення або заміни тексту в шаблоні електронної пошти або у заголовку цитат.">
 <!ENTITY deleteText "Видалення тексту з цитати, наприклад deleteText (&quot;через Paypal&quot;)">
@@ -252,9 +254,9 @@
 <!ENTITY p1.label "д.о">
 <!ENTITY p2.label "Д.О.">
 <!ENTITY p3.label "ДО">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.label "Функція для вставки поточного часу (інтерактивне поле).">
+<!ENTITY dateformat.explain "Більшість наведених вище змінних часу можна використовувати в рядку параметрів, опустивши '&#37;'. Дивитися також:">
+<!ENTITY dateformat.example "Приклад: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37; модифікатор">
 <!ENTITY xsent_note.label "За замовчуванням, змінні дата / час завжди ініціалізувалися за поточними значеннями (час, коли ви створюєте електронну пошту). У поєднанні з &#37;X:=sent&#37;, дата / час змінні відображають первісну дату або час повідомлень.">

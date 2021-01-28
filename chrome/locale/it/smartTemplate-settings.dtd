@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "Sostituisce l'oggetto con il testo">
 <!ENTITY header.prefix.subject "Antepone il testo all'oggetto">
 <!ENTITY header.append.subject "Aggiunge il testo all'oggetto">
+<!ENTITY header.delete.subject "rimuove il testo dall'oggetto (espressione regolare)">
 <!ENTITY header.set.to "Sostituisce il destinatario con l'indirizzo di posta elettronica">
 <!ENTITY header.append.to "Aggiunge l'indirizzo di posta elettronica alla lista dei destinatari">
+<!ENTITY header.set.from "imposta l'indirizzo "da". Questo accetta solo indirizzi e-mail dall'elenco di identità.">
 <!ENTITY stringmanip_function.cap "Gestione stringhe di testo">
 <!ENTITY stringmanip_function.explain "Funzioni per cancellare o sostituire un testo nel modello del messaggio o nell'intestazione.">
 <!ENTITY deleteText "Elimina un testo dall'intestazione. Per esempio: deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Funzione per l'inserimento del tempo corrente (campo cliccabile).">
-<!ENTITY dateformat.explain "La maggior parte delle variabili temporali di cui sopra possono essere utilizzate nella stringa di parametri omettendo &#37;. Guarda anche:">
+<!ENTITY dateformat.explain "La maggior parte delle variabili temporali sopra possono essere utilizzate nella stringa del parametro omettendo '&#37;'. Guarda anche:">
 <!ENTITY dateformat.example "Esempio:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Variabile &#37;X:=sent&#37;">
