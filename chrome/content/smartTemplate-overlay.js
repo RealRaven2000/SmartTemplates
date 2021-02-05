@@ -1941,7 +1941,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         if (whiteList.indexOf(hdr)<0) {
           // not in whitelist
           if (hdr.toLowerCase().startsWith("list"))
-            isClobberHeader = true
+            isClobberHeader = true;
           else {
             util.logToConsole("invalid header - no permission to modify: " + hdr + 
               "\nSupported headers: " + whiteList.join(', '));
@@ -2092,18 +2092,40 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               }
             }
         }
-        // try to update headers - ComposeFieldsReady()
-        // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
-				// [issue 9] : setting from doesn't work
-				if (hdr=='from' && ComposeFields.from && cmd=='set') {
-					let identityList = GetMsgIdentityElement(),
-					    fromAddress = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null).join(", ");
-					if (fromAddress != identityList.value)
-					{
-						MakeFromFieldEditable(true);
-						identityList.value = fromAddress;
-					}
-					LoadIdentity(true);			
+        // try to update headers - ComposeStartup() /  ComposeFieldsReady()
+        // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
+        // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
+				// [issue 117] : setting from doesn't work
+        if (hdr=='from' && ComposeFields.from && cmd=='set') {
+          // %header.set(from,"postmaster@hotmail.com")%
+          // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
+          // only accepts mail addresses from existing identities - aliases included
+					let identityList = document.getElementById("msgIdentity"), // GetMsgIdentityElement(), FAILED
+              fE = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null),
+					    fromAddress = (fE && fE.length) ? fE[0].email : ComposeFields.from, 
+              fromName = (fE && fE.length) ? fE[0].name : null,
+              idKey = util.getIdentityKeyFromMail(fromAddress); 
+          
+          if (!idKey) {
+            util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
+          }
+          else {
+            let curId = identityList.selectedItem.getAttribute('identitykey'),
+                currentHeader = MailServices.headerParser.parseEncodedHeader(identityList.selectedItem.getAttribute('value'))[0];
+            
+            // support - if we want to change the name:
+            if (curId != idKey || 
+                fromName && currentHeader.name != fromName)
+            {
+              MakeFromFieldEditable(true);
+              if (fromName) {
+                identityList.value = fromName + " <" + fromAddress + ">";
+              }
+              else
+                identityList.value = fromAddress;
+            }
+            LoadIdentity(true);
+          }
 					// there is a problem with dark themes - when editing the from address the text remains black.
 					// identityList.setAttribute("editable", "false");
 					// identityList.removeAttribute("editable");

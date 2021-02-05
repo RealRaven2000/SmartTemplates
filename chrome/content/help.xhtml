@@ -213,13 +213,15 @@
 		<h1 class="helpchapter">&header_function.cap;</h1>
     <div class="chapterBody">
 			<aside>&header_function.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
-			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to</aside>
+			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to, list-*</aside>
 			<ul>
 				<li><code>%header.set(subject,"text")%</code> = &header.set.subject;</li>
 				<li><code>%header.prefix(subject,"text")%</code> = &header.prefix.subject;</li>
 				<li><code>%header.append(subject,"text")%</code> = &header.append.subject;</li>
+				<li><code>%header.delete(subject,"regex")%</code> = &header.delete.subject;</li>
 				<li><code>%header.set(to,"abc@de.com")%</code> = &header.set.to;</li>
 				<li><code>%header.append(to,"abc@de.com")%</code> = &header.append.to;</li>
+        <li><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = &header.set.from;</li>
 			</ul>
     </div>
       

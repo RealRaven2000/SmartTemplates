@@ -39,14 +39,12 @@ function onLoad(activatedWhileWindowOpen) {
     </toolbarpalette>
     <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
     <hbox id="status-bar">
-  <!-- <statusbarpanel insertafter="totalMessageCount" id="SmartTemplate4Panel" class="statusbarpanel"> -->
-              <toolbarbutton id="SmartTemplate4Messenger"
-                                           class="statusbarpanel-iconic"
-                                           label="&smartTemplate4.settings.label;"
-                                           tooltiptext="&smartTemplate4.settings.tooltip;"
-                                           insertafter="totalMessageCount"
-                                           oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
-  <!-- </statusbarpanel> -->
+      <toolbarbutton id="SmartTemplate4Messenger"
+                     class="statusbarpanel-iconic"
+                     label="&smartTemplate4.settings.label;"
+                     tooltiptext="&smartTemplate4.settings.tooltip;"
+                     insertafter="totalMessageCount"
+                     oncommand="SmartTemplate4.Util.clickStatusIcon(this);"/>
     </hbox>
   
     `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);

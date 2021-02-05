@@ -957,8 +957,7 @@ SmartTemplate4.Settings = {
 			if (!account.incomingServer)
 				continue;
 
-			let iIdentities = (typeof account.identities.Count === 'undefined') ? account.identities.length : account.identities.Count();
-			for (let j = 0; j < iIdentities; j++) {
+			for (let j = 0; j < account.identities.length; j++) {
 				let identity = account.identities[j];
 
 				if (CurId == identity)

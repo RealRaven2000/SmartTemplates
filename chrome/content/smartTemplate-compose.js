@@ -82,6 +82,9 @@ SmartTemplate4.classSmartTemplate = function() {
 			   + "Either save your signature with this charset or can change it through the config setting extensions.smartTemplate4.signature.encoding\n" 
          + "Also make sure this file path is correct and set: [" + fileName + "] \n"
 			   , ex);
+      if (!Ident.signature) {
+        util.logToConsole("Ident.signature is null - this is usually caused by faulty / inconsistent Account Settings.");
+      }
 		}
 		util.logDebugOptional('functions.extractSignature','SmartTemplate4.readSignatureFile() ends - charset = ' + sigEncoding  +'; htmlSigText:\n'
 		                                   + htmlSigText + '[EOF]');
@@ -156,6 +159,7 @@ SmartTemplate4.classSmartTemplate = function() {
     }
     else {
       if (Ident.attachSignature) { // Postbox never gets here:
+        util.logDebugOptional('signatures,functions.extractSignature', 'attachSignature is set for Identity [' + Ident.key + '] ' + Ident.identityName + "\nPath: " + sigPath);
         let fileSig = readSignatureFile(Ident);
         if (fileSig) {
           htmlSigText = fileSig;

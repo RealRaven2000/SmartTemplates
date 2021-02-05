@@ -11,13 +11,15 @@ Migration to the Thunderbird 78 Add-ons system - mail extensions with experiment
 
 <b>Improvements</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a>Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored)</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a> Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored). In plain text mode, you can now use this to remove quote marks, with the command %deleteQuotedText("\>\s")% or use %replaceQuotedText("\>\s","| ")% to replace the quote marks with straight vertical lines</li>
 <li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe</li>
-<li> Improved / fixed warning messages for users with expired licenses. <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Added a notice about soon-to-expire license in status bar.</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Improved / fixed warning messages for users with expired licenses. Added a notice about soon-to-expire license in status bar.</li>
 
 </ul>
 
 <b>Changes / Bug Fixes</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/117">[issue 117]</a> <code class=inline>%header.set(from,"some@address.com")%</code> not working in Thunderbird 78. You can now also add a name when setting the from address. For example <code>%header.set(from,"Postmaster <postm@address.com>")%</code> This function only works if the Email address is listed in any identity (including aliases).</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
+<li> Fixed: With option "Remove email address unless format parameter is specified", mail parts such as %from(...,mail)%, %from(...,bracketMail())% were removed </li>
 </ul>

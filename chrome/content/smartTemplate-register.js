@@ -452,7 +452,7 @@ SmartTemplate4.Licenser =
 				
 			case 1: // domain license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
+					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?

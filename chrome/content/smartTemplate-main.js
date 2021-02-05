@@ -503,7 +503,13 @@ END LICENSE BLOCK
     # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
     # [issue 71] Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
     # Improved / fixed warning messages for users with expired licenses 
-    # [issue 82] Added an notice about soon-to-expire license in status bar
+    # [issue 82] Added a notice about soon-to-expire license in the status bar
+    # [issue 117] %header.set(from,"some@address.com")% not working in Thunderbird 78
+    # Added examples in variables window for %header.delete(subject)% and %header.set(from)% in 
+      (Modify Mail Header) section
+    # with option "Remove email address unless format parameter is specified", mail parts such as 
+      %from(...,mail)%, %from(...,bracketMail())% were removed
+
 
     
 =========================
@@ -991,20 +997,23 @@ var SmartTemplate4 = {
 			    doc = isDefault ? document : util.Mail3PaneWindow.document,
 			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
-				let labelMode = prefs.getMyIntPref('statusIconLabelMode'),
-				    theClass = 'statusbarpanel-iconic-text';
+				let labelMode = prefs.getMyIntPref('statusIconLabelMode');
+        btn.classList.remove(...btn.classList); // clear classlist array
+        btn.classList.add('statusbarpanel-iconic-text');
         if (licenser.LicenseKey) {
           let days = licenser.LicensedDaysLeft,
               wrn = null;
-          if (licenser.isExpired)  
+          if (licenser.isExpired)  {
             wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", -days);
+            btn.classList.add("alertExpired");
+          }
           else if (days<15) {
             wrn = "SmartTemplates License will expire in {0} days!".replace("{0}", days);
+            btn.classList.add("alert");
           }
           if (wrn) {
             btn.label = wrn;
             isVisible = true;
-            theClass += " alert";
             labelMode = 2;
           }
           else {
@@ -1020,17 +1029,16 @@ var SmartTemplate4 = {
         
 				switch(labelMode) {
 					case 0:
-						theClass +=' hidden';
+						btn.classList.add('hidden');
 						break;
 					case 1:
 						//NOP;
 						break;
 					case 2:
-						theClass +=' always';
+						btn.classList.add('always');
 						break;
 				}
-				btn.className = theClass;
-				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
+				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + btn.className + ' , collapsed = ' + btn.collapsed);		
 			}
 			else
 				util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);

@@ -426,7 +426,7 @@ SmartTemplate4.Util = {
 		}
 	},
 	
-  /* SmartTemplates Pro / licensing features */
+  /* SmartTemplate4 Pro / licensing features */
 	// default to isRegister from now = show button for buying a license.
 	// was popupProFeature, now renamed to popupLicenseNotification
 	// isProFeature = true - show notification based on function used
@@ -507,7 +507,7 @@ SmartTemplate4.Util = {
 				util.getBundleString("SmartTemplate4.notification.license.text",
 					"From now on, SmartTemplates requires at least a standard license. " +
 					"Read more about it on our licensing page.");
-			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
+			let txtGracePeriod = util.gracePeriodText(util.mainInstance.Licenser.GracePeriod); // use Licenser from main window.
 			theText = theText + '  ' + txtGracePeriod;
 		}
 		
@@ -965,7 +965,7 @@ SmartTemplate4.Util = {
 				  if (!win) {
 						// open ST4 options with the file templates panel open:
 						let win = SmartTemplate4.Util.Mail3PaneWindow,
-								params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4}, out:null};
+								params = {inn:{mode:"fileTemplates", message: "", instance: win.SmartTemplate4}, out:null};
 						// open options and open the last tab!
 						// first param = identity (not set, unimportant)
 						// second param = mode to open correct setting 
@@ -1184,7 +1184,6 @@ SmartTemplate4.Util = {
 	} ,
 	
 	getServerInfo: function(idKey) {
-		let Ci = Components.interfaces;
 		let serverInfo = '';
 		try {
       let found=false;
@@ -1199,6 +1198,19 @@ SmartTemplate4.Util = {
 		}
 		catch(ex) { this.logException("could not find server for identity " + idKey , ex); }
     return serverInfo;
+  },
+  
+  getIdentityKeyFromMail: function(email) {
+    for (let account of MailServices.accounts.accounts) {
+      
+			for (let j = 0; j < account.identities.length; j++) {
+				let identity = account.identities[j];
+        if (identity.email.toLowerCase() == email.toLowerCase()) {
+          return identity.key;
+        }
+			}
+    }
+    return null;    
   },
 
 	getSignatureInner: function(sig, isRemoveDashes) {
@@ -1488,7 +1500,7 @@ SmartTemplate4.Util = {
   
 	viewLicense: function viewLicense() {
 		let win = SmartTemplate4.Util.Mail3PaneWindow,
-        params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.SmartTemplate4}, out:null};
+        params = {inn:{mode:"licenseKey", message: "", instance: win.SmartTemplate4}, out:null};
 		// open options and open the last tab!
 		// first param = identity (not set, unimportant)
 		// second param = mode to open correct setting 
@@ -2728,7 +2740,29 @@ SmartTemplate4.Util = {
     return text;    
   },
 	
+  clickStatusIcon: function(el) {
+    let isLicenseWarning = false;
+    event.stopImmediatePropagation();
+    if (el.classList.contains("alert")) {
+      isLicenseWarning = true;
+    }
+    let c = el.className,
+        params = {
+          inn:{ 
+            mode: isLicenseWarning ? "licenseKey" : "",
+            message: "Test!", 
+            instance: window.SmartTemplate4
+          }, out:null
+        };
+    window.openDialog('chrome://smarttemplate4/content/settings.xhtml', 
+      'Preferences', 
+      'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
+      null,
+      params);
+
+  },
 	
+  
 	/* 
 	,
 	
@@ -3201,7 +3235,7 @@ SmartTemplate4.Message = {
 		}
 		win.close();
 	} 
-	
+  
 };  // ST4.Message
 
 

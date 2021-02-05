@@ -1,39 +1,11 @@
 "use strict";
 
 /******
-   Special interface to wrap Postbox signature stuff vs. the much simpler Thunderbird / SeaMonkey interface 
 	 - Tb/Sm integrates everything signature related within identity
-	 - Postbox creates its own interface class/
 ****/
 
 SmartTemplate4.Sig = {
   Identity: null,
-	Postbox: {
-	  get SignatureService() {
-		  return Components.classes["@postbox-inc.com/signatures;1"].getService(Components.interfaces.pbISignatureService);
-		},
-		get SignatureKey() {
-		  return SmartTemplate4.Sig.Identity.pbSignatureKey; // cannot dereference an object's parent in Javascript
-		} ,
-		get htmlSigFormat() {
-			if (!this.SignatureKey) 
-				return null;
-			let sig = this.getSignature();
-			if(!sig)
-				return false;
-			
-		  return RegExp("<*.>", "i").test(sig.body); // simple HTML test.
-		},
-		getSignature: function() {
-		  let k = this.SignatureKey;
-			return this.SignatureService.getSignatureForKey(k);
-		},
-		get htmlSigText() {
-		  let sig = this.getSignature();
-			return sig ? (sig.body ? sig.body : '') : '';
-		}
-	} ,
-	
 	init: function(mailIdentity) {
 		this.Identity = mailIdentity;
 	} ,
@@ -59,7 +31,7 @@ SmartTemplate4.Sig = {
 	
 	get htmlSigFormat() {
 		this._checkIdentity();
-    return this.Identity.htmlSigFormat;
+    return this.Identity.htmlSigFormat; // straight from Account Settings
 	} ,
 	
 	get htmlSigText() {

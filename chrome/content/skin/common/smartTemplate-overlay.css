@@ -75,6 +75,12 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   color: white !important;
 }
 
+#SmartTemplate4Messenger.alertExpired {
+  background-color: rgb(120,0,0) !important;
+  color: yellow !important;
+}
+
+
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */
 notification[value="SmartTemplate4-license"] .notification-button[accesskey],
