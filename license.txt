@@ -13,11 +13,9 @@ SmartTemplate4 Pro - Refers to the registered version of SmartTemplate4
 All contents of The Program are subject to the GNU General Public License Version 3
 (the "License"); you may not use the file except in compliance with
 the License. You may obtain a copy of the complete License at
-http://creativecommons.org/licenses/by-nd/4.0/legalcode
+https://creativecommons.org/licenses/by-nd/4.0/legalcode
 For a  human-readable summary thereof please refer
-http://creativecommons.org/licenses/by-nd/4.0/
-
-
+https://creativecommons.org/licenses/by-nd/4.0/
 
 
 Pro Version

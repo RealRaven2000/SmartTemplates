@@ -20,7 +20,7 @@ if (!SmartTemplate4.Shim) {
 						idMail = account.defaultIdentity.email;
 					}
 					else if (account.identities.length) {
-						idMail = account.identities[0].email; // outgoing identities
+						idMail = account.identities.queryElementAt(0, Ci.nsIMsgIdentity).email; // outgoing identities
 					}
 					else {
 						Util.logDebug('getIdentityMailAddresses() found account without identities: ' + account.key);

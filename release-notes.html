@@ -1,31 +1,32 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="http://smarttemplates.quickfolders.org/version.html#2.13">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#2.14">can be found here</a>
 
 <b>Latest News</b>
 
-I have rewritten SmartTemplates for compatibility with Thunderbird 78. We had a few 1000$ costs for my Add-on migrations. The main effort for new features and bug fixes will go into this new version - latest version is <a href="https://addons.thunderbird.net/thunderbird/addon/smarttemplate4/versions/?page=1#version-3.2">3.2</a>. 
+I have rewritten SmartTemplates for compatibility with Thunderbird 78. We had a few 1000$ costs for my Add-on migrations. The main effort for new features and bug fixes will go into this new version - latest version is <a href="https://addons.thunderbird.net/thunderbird/addon/smarttemplate4/versions/?page=1#version-3.4">3.4</a>. 
 
 I may backport some fixes / features for Thunderbird 60-68 in the SmartTemplate version 2.*. See the item lists below for more detail.
 
-If you are interested in using a version of SmartTemplate&#8308 that works with Thunderbird 78 and later, consider         
-<a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
+If you are interested in using a version of SmartTemplates that works with Thunderbird 78 and later, consider         
+<a href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buying a license</a>
 to support the project.
 
 
 <b>Improvements</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/61">[issue 61]</a> <code>%quotePlaceholder(<i>quoteLevel</i>)%</code> new function for including quoted mail within the template for styling - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. If a quote Header is configured in the account template this will be moved with the top of the quote.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/96">[issue 96]</a> Provide keyboard accelerators for Template picker.</li>
-  <li>Rebranded from SmartTemplate4 to SmartTemplates for simplification.</li>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/100">[issue 100]</a> Trial period should restart on license expiry for registered users who had a valid license before.</li>
-  <li>Improved shop integration for extending / renewing Domain licenses</li>
-  <li>Fixed support links to use secure protocol.</li>
-  <li>Made toggling spellcheck through %spellcheck()% function more reliable.</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a> Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored). In plain text mode, you can now use this to remove quote marks, with the command %deleteQuotedText("\>\s")% or use %replaceQuotedText("\>\s","| ")% to replace the quote marks with straight vertical lines</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Improved / fixed warning messages for users with expired licenses. Added a notice about soon-to-expire license in status bar.</li>
+<li>Reopening existing tabs on support site now correctly jumps to in page links (such as #donate)</li>
+<li>Support using \n and \t for new line and tab characters in regular expressions</li>
 </ul>
 
-<b>Bug Fixes</b>
+<b>Changes / Bug Fixes</b>
 <ul>
-  <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/108">[issue 108]</a>Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/117">[issue 117]</a> <code class=inline>%header.set(from,"some@address.com")%</code> not working in Thunderbird 78. You can now also add a name when setting the from address. For example <code>%header.set(from,"Postmaster <postm@address.com>")%</code> This function only works if the Email address is listed in any identity (including aliases). </li>
+<li> Fixed: With option "Remove email address unless format parameter is specified", mail parts such as %from(...,mail)%, %from(...,bracketMail())% were removed </li>
+</li>
 </ul>

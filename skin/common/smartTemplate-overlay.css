@@ -71,6 +71,16 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image
 	padding-right: 6px;
 }
 
+#SmartTemplate4Messenger.alert {
+  background-color: rgb(120,0,0) !important;
+  color: white !important;
+}
+
+#SmartTemplate4Messenger.alertExpired {
+  background-color: rgb(120,0,0) !important;
+  color: yellow !important;
+}
+
 
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */
@@ -84,7 +94,7 @@ xbl-notification[value="SmartTemplate4-proFeature"] .notification-button[accessk
 	border: 1px solid white;
 	border-radius: 1px;
 	box-shadow: 0 0 0 0 rgba(188, 132, 32, 0.7);
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 	cursor: pointer !important;
 	font-weight: bold;
 	transition-property: box-shadow, margin;

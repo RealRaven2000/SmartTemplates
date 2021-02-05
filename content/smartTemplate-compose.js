@@ -850,7 +850,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		  function(match, g1, g2, g3) {
 				// util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
         if (!util.isFilePathAbsolute(g2)) {
-          debugger;
           if (currentPath) {
             let newP = util.getPathFolder(currentPath, g2);
             if (newP) {

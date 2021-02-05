@@ -168,6 +168,13 @@ SmartTemplate4.Licenser =
     return (period-days); // returns number of days left, or -days since trial expired if past period
 	},
 	
+  get LicensedDaysLeft() {
+    let today = new Date(),
+        licensedDate = new Date(this.DecryptedDate),
+        daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
+    return daysLeft;
+  },
+	
   ValidationStatus: 0,
   // enumeration for Validated state
   ELicenseState: {
@@ -446,7 +453,7 @@ SmartTemplate4.Licenser =
 				
 			case 1: // domain license
 				if (isRenew) { // RENEWAL
-					shortOrder = "http://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
+					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
 					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 					// should we autoselect the correct email address?

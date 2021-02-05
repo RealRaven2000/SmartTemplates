@@ -13,12 +13,12 @@ END LICENSE BLOCK
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^http://smarttemplates.quickfolders.org");
+		return this._thunderbirdRegExp = new RegExp("^https://smarttemplates.quickfolders.org");
 	}
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.13",
+	HARDCODED_CURRENTVERSION : "2.14",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -30,12 +30,13 @@ SmartTemplate4.Util = {
 	ConsoleService: null,
 	lastTime: 0,
 	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
-	PremiumFeaturesPage: "http://smarttemplates.quickfolders.org/premium.html",
-	SupportHomepage:  "http://smarttemplates.quickfolders.org/index.html",
-	BugPage:          "http://smarttemplates.quickfolders.org/bugs.html",
-	LicensePage:      "http://smarttemplates.quickfolders.org/contribute.html",
-	VersionPage:      "http://smarttemplates.quickfolders.org/version.html",
-	StationeryHelpPage: "http://smarttemplates.quickfolders.org/stationery.html",
+	PremiumFeaturesPage: "https://smarttemplates.quickfolders.org/premium.html",
+	SupportHomepage:  "https://smarttemplates.quickfolders.org/index.html",
+	BugPage:          "https://smarttemplates.quickfolders.org/bugs.html",
+	LicensePage:      "https://smarttemplates.quickfolders.org/contribute.html",
+  DonationsPage:    "https://smarttemplates.quickfolders.org/contribute.html#donate",
+	VersionPage:      "https://smarttemplates.quickfolders.org/version.html",
+	StationeryHelpPage: "https://smarttemplates.quickfolders.org/stationery.html",
 	AxelAMOPage:      "https://addons.thunderbird.net/thunderbird/user/66492/",
 	MarkyAMOPage:     "https://addons.thunderbird.net/thunderbird/user/2448736/",
 	ArisAMOPage:      "https://addons.thunderbird.net/firefox/user/5641642/",
@@ -149,6 +150,11 @@ SmartTemplate4.Util = {
 		return st4composeType;
 
 	} ,
+
+	isComposeTypeIsForwardInline: function() {
+		const Ci = Components.interfaces;
+		return gMsgCompose.type === Ci.nsIMsgCompType.ForwardInline;		
+	},
 	
 	getBundleString: function(id, defaultText) {
     const Ci = Components.interfaces;
@@ -270,8 +276,8 @@ SmartTemplate4.Util = {
 					if (versionLabel) versionLabel.setAttribute("value", addon.version);
 
 					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
-					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplate4 Version " + util.mExtensionVer + "\n"
+					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
+					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplates Version " + util.mExtensionVer + "\n"
 					           + "Running on " + util.Application
 					           + " Version " + util.AppverFull);
 					// make sure we are not in options window
@@ -279,7 +285,7 @@ SmartTemplate4.Util = {
 						util.firstRun.init();
 
 					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplate4 extension's version is " + addon.version);
+					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
 					versionLabel = window.document.getElementById("smartTemplate-options-version");
 					if(versionLabel)
 						versionLabel.setAttribute("value", addon.version);
@@ -294,7 +300,7 @@ SmartTemplate4.Util = {
 
 		}
 		catch(ex) {
-			util.logToConsole("SmartTemplate4 VersionProxy failed - are you using an old version of " + util.Application + "?"
+			util.logToConsole("SmartTemplates VersionProxy failed - are you using an old version of " + util.Application + "?"
 				+ "\n" + ex);
 		}
 		finally {
@@ -400,9 +406,10 @@ SmartTemplate4.Util = {
 	// isProFeature = true - show notification based on function used
 	//              = false - show fact that a license is needed.
 	popupLicenseNotification: function popupLicenseNotification(featureList, isRegister, isProFeature, additionalText) {
-		const util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util,
+          Licenser = util.Licenser,
+          State = Licenser.ELicenseState;
 		let notifyBox,
-				State = util.Licenser.ELicenseState,
 				featureName = '',
 				isList = false,
 				hasLicense = util.hasLicense(false),
@@ -484,7 +491,7 @@ SmartTemplate4.Util = {
 				util.getBundleString("SmartTemplate4.notification.license.text",
 					"From now on, SmartTemplates requires at least a standard license. " +
 					"Read more about it on our licensing page.");
-			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
+			let txtGracePeriod = util.gracePeriodText(util.mainInstance.Licenser.GracePeriod);
 			theText = theText + '  ' + txtGracePeriod;
 		}
 		
@@ -492,12 +499,12 @@ SmartTemplate4.Util = {
         hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.hotKey", "L"),
 				nbox_buttons = [];
 				
-		switch(util.Licenser.ValidationStatus) {
+		switch(Licenser.ValidationStatus) {
 			case State.Expired:
 				regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
 			  break;
 			default:
-			  if (util.Licenser.key_type==2) { // standard license
+			  if (Licenser.key_type==2) { // standard license
 					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
 					hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade.hotKey", "U");
 				}
@@ -767,6 +774,7 @@ SmartTemplate4.Util = {
 	
 	findMailTab: function findMailTab(tabmail, URL) {
 		const util = SmartTemplate4.Util;
+    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 		// mail: tabmail.tabInfo[n].browser		
 		let baseURL = util.getBaseURI(URL),
 				numTabs = util.getTabInfoLength(tabmail);
@@ -777,7 +785,15 @@ SmartTemplate4.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					info.browser.loadURI(URL);
+          try {
+            let params = {
+              triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal()
+            }
+            info.browser.loadURI(URL, params);
+          }
+          catch(ex) {
+            util.logException(ex);
+          }
 					return true;
 				}
 			}
@@ -1229,6 +1245,31 @@ SmartTemplate4.Util = {
 		catch(ex) { this.logException("could not find server for identity " + idKey , ex); }
     return serverInfo;
   },
+  
+  getIdentityKeyFromMail: function(email) {
+		let Ci = Components.interfaces,
+        Cc = Components.classes,
+        account = null,
+        acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),  
+        accounts = acctMgr.accounts,
+        iAccounts = (typeof accounts.Count === 'undefined') ? accounts.length : accounts.Count();
+    try {
+      for (let i = 0; i < iAccounts; i++) {
+        account = accounts.queryElementAt ?
+          accounts.queryElementAt(i, Ci.nsIMsgAccount) :
+          accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
+        
+        for (let j = 0; j < account.identities.length; j++) {
+          let identity = account.identities.queryElementAt(j, Ci.nsIMsgIdentity);
+          if (identity.email.toLowerCase() == email.toLowerCase()) {
+            return identity.key;
+          }
+        }
+      }
+    }
+		catch(ex) { this.logException("could not identity for email " + email , ex); }
+    return null;    
+  },
 
 	getSignatureInner: function(sig, isRemoveDashes) {
 		function removeDashes(elem, isPlainText) {
@@ -1332,7 +1373,8 @@ SmartTemplate4.Util = {
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
 			return new RegExp( quoteLess, 'ig');
-		return quoteLess;
+    // allow using \n and \t for new line and tabs characters
+		return quoteLess.replace(/\\n/gi,"\n").replace(/\\t/gi,"\t");
 	} ,
 	
 	// see MsgComposeCommands, loadBlockedImage()
@@ -1454,7 +1496,7 @@ SmartTemplate4.Util = {
 		// ======================================
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
-			let validate = licenser.validateLicense.bind(SmartTemplate4.Util.Licenser);
+			let validate = licenser.validateLicense.bind(licenser);
       validate(licenseKey);
     }
     if (licenser.isValidated) {
@@ -1485,8 +1527,9 @@ SmartTemplate4.Util = {
 			let uType = "";
 			if (isExpired) 
 				uType = "proRenew"
-			else if (isPremiumLicense)
-			  uType = "pro";
+			else if (isPremiumLicense) {
+			  uType = (util.Licenser.key_type == 2) ? "std" : "pro";
+      }
 			// make sure we can sanitize all pages for our premium users!
       // [issue 68] After update to 2.11, SmartTemplates always displays nonlicensed support site
 			if (   uType
@@ -2800,6 +2843,42 @@ SmartTemplate4.Util = {
 		}
 		return null;
 	},  
+  
+  removeHtmlEntities: function removeHtmlEntities(input){
+    let text = input.replace(/&\w+?;/g, function( e ) {
+      switch(e) {
+        case '&nbsp;': return ' ';
+        case '&tab;': return '  ';  // can't use literal \t at the moment.
+        case '&copy;': return String.fromCharCode(169);
+        case '&lt;': return '<';
+        case '&gt;': return '>';
+        default: return e;
+      }
+    }); 
+    return text;    
+  },  
+	
+  clickStatusIcon: function(el) {
+    let isLicenseWarning = false;
+    event.stopImmediatePropagation();
+    if (el.classList.contains("alert")) {
+      isLicenseWarning = true;
+    }
+    let c = el.className,
+        params = {
+          inn:{ 
+            mode: isLicenseWarning ? "licenseKey" : "",
+            message: "Test!", 
+            instance: window.SmartTemplate4
+          }, out:null
+        };
+    window.openDialog('chrome://smarttemplate4/content/settings.xul', 
+      'Preferences', 
+      'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
+      null,
+      params);
+
+  },
 	
 	
 	/* 
@@ -2916,7 +2995,7 @@ SmartTemplate4.Util.firstRun =
 			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
 			                             "SmartTemplate4.updateMessageVersion",
-			                             "SmartTemplate4 was successfully upgraded to version {1}!").replace("{1}",current);
+			                             "SmartTemplates was successfully upgraded to version {1}!").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){
@@ -2926,7 +3005,7 @@ SmartTemplate4.Util.firstRun =
 				// on very first run, we go to the index page - welcome blablabla
 				util.logDebugOptional ("firstRun","setTimeout for content tab (index.html)");
 				window.setTimeout(function() {
-					util.openURL(null, "http://smarttemplates.quickfolders.org/index.html");
+					util.openURL(null, "https://smarttemplates.quickfolders.org/index.html");
 				}, 1500); //Firefox 2 fix - or else tab will get closed (leave it in....)
 			}
 			else {
@@ -2936,7 +3015,7 @@ SmartTemplate4.Util.firstRun =
 					
 					/* EXTENSION UPDATED */
 					util.logDebug("===========================\n"+
-					              "ST4 Test  - SmartTemplate4 Update Detected:\n" +
+					              "ST4 Test  - SmartTemplates Update Detected:\n" +
 												" **PREVIOUS**:" + prev + 
 												"\npure Version: " + pureVersion + 
 												"\ncurrent: " + current +
@@ -2982,10 +3061,13 @@ SmartTemplate4.Util.firstRun =
 			setTimeout(
 			  function() {
 					SmartTemplate4.fileTemplates.initMenus();
-				}, 3000
+				}, 1000
 			);
       
       util.initTabListener(); // need this for initialising fileTemplate menus in single message window
+      
+      if (window.document.URL.endsWith("messenger.xul")) 
+        window.SmartTemplate4.updateStatusBar("default");
 
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally

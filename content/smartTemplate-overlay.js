@@ -725,6 +725,10 @@ SmartTemplate4.mimeDecoder = {
 						suppressMail = true;
 					}
 				}
+				for (let f=0; f<formatArray.length; f++) {
+					if (formatArray[f].field=='mail' || formatArray[f].field.startsWith('bracketMail')) 
+            suppressMail = false;
+        }
 			}
               
 					
@@ -1281,6 +1285,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
   if (quoteMatches) {
 		try {
       util.addUsedPremiumFunction('deleteQuotedText');
+      const isHTML = IsHTMLEditor();
+
 			for (let i=0; i<quoteMatches.length; i++) {
 				// parse out the argument (string to delete)
 				msg = msg.replace(quoteMatches[i],'');  // remove from template
@@ -1292,16 +1298,27 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
         if (dText && dText.length) {
           let s = util.unquotedRegex(dText[0], true),
               quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-          for (let i=0; i<quotes.length; i++) {
-            let q = quotes.item(i),
-                lv = quoteLevel(q, 1);
-            if (lv == minQuoteLevel) {
-              // replaces everything on this level and higher (all its child blockquotes)
-              util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
-              q.innerHTML = q.innerHTML.replace(s, "");
+              
+          if (!isHTML) {
+            // plain text:
+            // look for <span style="white-space: pre-wrap; display: block;">
+            quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
+            for (let q of quotes) {
+              q.innerText = q.innerText.replace(s, "");
             }
-          }            
-        }
+          }
+          else {
+	          for (let i=0; i<quotes.length; i++) {
+	            let q = quotes.item(i),
+	                  lv = isHTML ? quoteLevel(q, 1) : 1;
+	            if (lv == minQuoteLevel) {
+	              // replaces everything on this level and higher (all its child blockquotes)
+	              util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
+	              q.innerHTML = q.innerHTML.replace(s, "");
+	            }
+	          }            
+	        }
+				}
 			}
 		}
 		catch (ex) {
@@ -1313,6 +1330,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 	if (quoteMatchesR) { // replacements in quote
     try {
       util.addUsedPremiumFunction('replaceQuotedText');
+      const isHTML = IsHTMLEditor(); 
+      
       for (let i=0; i<quoteMatchesR.length; i++) {
         // parse out the argument (string to delete)
         msg = msg.replace(quoteMatchesR[i], '');  // remove from template
@@ -1324,18 +1343,28 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
               r = util.unquotedRegex(params.p2),
               rootEl = gMsgCompose.editor.rootElement;
               
-          let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
-          for (let i=0; i<quotes.length; i++) {
-            let q = quotes.item(i),
-                lv = quoteLevel(q, 1);
-            if (lv == minQuoteLevel) {
-              // replaces everything on this level and higher (all its child blockquotes)
-              util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
-              q.innerHTML = q.innerHTML.replace(s, r);
+          if (!isHTML) {
+            // plain text:
+            // look for <span style="white-space: pre-wrap; display: block;">
+            let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
+            for (let q of quotes) {
+              q.innerText = q.innerText.replace(s, r);
             }
           }
-        }
-      }
+          else {         
+	          let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+	          for (let i=0; i<quotes.length; i++) {
+	            let q = quotes.item(i),
+	                lv = quoteLevel(q, 1);
+	            if (lv == minQuoteLevel) {
+	              // replaces everything on this level and higher (all its child blockquotes)
+	              util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
+	              q.innerHTML = q.innerHTML.replace(s, r);
+	            }
+	          }
+	        }
+	      }
+	    }
     }
     catch (ex) {
       util.logException('%replaceQuotedText()%', ex);
@@ -1606,7 +1635,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		
 		if ((composeType != "new") && !gMsgCompose.originalMsgURI)  {
-			util.popupAlert ("SmartTemplate4", "Missing message URI - SmartTemplate4 cannot process this message!");
+			util.popupAlert ("SmartTemplates", "Missing message URI - SmartTemplates cannot process this message!");
 			return aString;
 		}
 
@@ -1718,7 +1747,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"header.set", "header.append", "header.prefix, header.delete",
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
-		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
+		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
+    "conditionalText"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -1919,11 +1949,18 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           return '';
 			}
       try {
+        let isClobberHeader = false;
+       
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
-          util.logToConsole("invalid header - no permission to modify: " + hdr + 
-					  "\nSupported headers: " + whiteList.join(', '));
-          return '';
+          // not in whitelist
+          if (hdr.toLowerCase().startsWith("list"))
+            isClobberHeader = true;
+          else {
+	          util.logToConsole("invalid header - no permission to modify: " + hdr + 
+						  "\nSupported headers: " + whiteList.join(', '));
+	          return '';
+	        }
         }
         // get
         modType = 'address';
@@ -2053,19 +2090,45 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						
 						
 					  break;
+          default:
+            if (isClobberHeader) {
+              if (targetString) {
+                util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
+                gMsgCompose.compFields.setHeader(hdr, targetString);
+              }
+              else {
+                util.logDebug("Deleting clobbered header [" + hdr + "]");
+                gMsgCompose.compFields.deleteHeader(hdr);
+              }
+						}
         }
         // try to update headers - ComposeFieldsReady()
         // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3971
 				// [issue 9] : setting from doesn't work
 				if (hdr=='from' && ComposeFields.from && cmd=='set') {
+          // %header.set(from,"postmaster@hotmail.com")%
+          // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
+          // only accepts mail addresses from existing identities - aliases included
 					let identityList = GetMsgIdentityElement(),
-					    fromAddress = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null).join(", ");
-					if (fromAddress != identityList.value)
-					{
-						MakeFromFieldEditable(true);
-						identityList.value = fromAddress;
-					}
-					LoadIdentity(true);			
+              fE = MailServices.headerParser.parseEncodedHeader(ComposeFields.from, null),
+					    fromAddress = (fE && fE.length) ? fE[0].email : ComposeFields.from, 
+              fromName = (fE && fE.length) ? fE[0].name : null,
+              idKey = util.getIdentityKeyFromMail(fromAddress); 
+          if (!idKey) {
+            util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
+          }
+          else {
+						if (fromAddress != identityList.value)
+						{
+							MakeFromFieldEditable(true);
+	            if (fromName) {
+	              identityList.value = fromName + " <" + fromAddress + ">";
+	            }
+	            else
+								identityList.value = fromAddress;
+						}
+						LoadIdentity(true);			
+          }
 					// there is a problem with dark themes - when editing the from address the text remains black.
 					// identityList.setAttribute("editable", "false");
 					// identityList.removeAttribute("editable");
@@ -2176,6 +2239,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					const dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
 					if (dateFormatSent)
 						tm.setTime((date / 1000));
+          // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
+          arg = util.removeHtmlEntities(arg);
 					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
 					if (dateFormatSent)
 						token = defaultTime;
@@ -2328,8 +2393,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					  // BIG FAT SIDE EFFECT!
 						if (prefs.isDebugOption('composer')) debugger;
             let rawsig = util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes);
-						retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true);
-            if (!retVal) retVal=''; // empty signature
+						retVal = SmartTemplate4.smartTemplate.getProcessedText(rawsig, idkey, composeType, true) || "";
             util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
           }
           util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
@@ -2392,8 +2456,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				  return "";
 				case "cursor":
 					util.logDebugOptional ('replaceReservedWords', "%Cursor% found");
-					//if(isStationery)
-					//	return dmy;
 					return '<span class="st4cursor">&nbsp;</span>'; 
 			  case "internal-javascript-ref":
 			    return javascriptResults[/\((.*)\)/.exec(arg)[1]];
@@ -2475,11 +2537,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             }
           }
           break;
+        case "conditionalText":
+          util.addUsedPremiumFunction('conditionalText');
+          return insertConditionalText(arg);
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
             let args = arg.split(","),
                 modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
+                
+            if (modHdr.startsWith("list")) modHdr = args[0].substr(1); // add case back.
             if (args.length<2 && token!="header.deleteFromSubject") {
               util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
               return '';
@@ -2829,6 +2896,29 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		catch(ex) {
 			util.logException("attachFile(" + pathUri + ")", ex);
+		}
+	}
+  
+  function insertConditionalText(rawArgs) {
+    if (rawArgs === null || rawArgs.length == 0) {
+      return "";
+    }
+    // get arguments such as: (forwardMode,"text1","text2"), args[1] - is a "switching" parameter
+    let args = rawArgs.match( /\( *(\w+) *\,.*?\)/ );
+    if (!args) {
+      return "";
+    }
+    const patternArgs = [...args[0].matchAll( /\"(.*?)\"/g )]; // get arguments (excludes quotation marks) ? non greedy
+    if (!patternArgs)
+      return "";
+
+    switch(args[1]) {
+      case 'forwardMode':    
+        if (util.getComposeType()!='fwd')
+          return "";
+        return util.isComposeTypeIsForwardInline() ? patternArgs[0][1] : (patternArgs.length > 1 ? patternArgs[1][1] : "");
+      default:
+        return "";
 		}
 	}
 	

@@ -462,7 +462,7 @@ END LICENSE BLOCK
     # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
     # [issue 85] - Dead link on addons homepage 
     
-  Version 2.13 - WIP
+  Version 2.13 - 01/01/2021
     # [issue 96] Added keyboard accelerators for Template picker
     # [issue 61] %quotePlaceholder(level)% new function for including quoted mail within the template for styling
     #            - use the quoteLevel parameter to exclude older quotes from the conversation
@@ -472,6 +472,14 @@ END LICENSE BLOCK
     # make toggling spellcheck more reliable if %spellcheck()% variable is used
     # show premium variables if used with standard license more consistently
     # Improved Scrolling behavior if %cursor% is used.
+    
+  Version 2.14 - WIP
+    # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
+    # Added examples in variables window for %header.delete(subject)%, %header.set(from)% and documentation for %conditionalText()%
+    # With option "Remove email address unless format parameter is specified", mail parts such as 
+      %from(...,mail)%, %from(...,bracketMail())% were removed
+    # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
+                 in plain text mode (quote level argument will be ignored)
 
     
 =========================
@@ -1074,7 +1082,8 @@ var SmartTemplate4 = {
 	
 	updateStatusBar: function updateStatusBar(show) {
 		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		      util = SmartTemplate4.Util,
+          licenser = SmartTemplate4.Licenser;
 		try {
 			util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
 			let isDefault = (typeof show == 'undefined' || show == 'default'),
@@ -1082,22 +1091,51 @@ var SmartTemplate4 = {
 			    doc = isDefault ? document : util.Mail3PaneWindow.document,
 			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
+				let labelMode = prefs.getMyIntPref('statusIconLabelMode');
+        while (btn.classList.length) {
+           btn.classList.remove(btn.classList.item(0));
+        } // clear all classes
+
+        btn.classList.add('statusbarpanel-iconic-text');
+        if (licenser.LicenseKey) {
+          let days = licenser.LicensedDaysLeft,
+              wrn = null;
+          if (licenser.isExpired)  {
+            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", -days);
+            btn.classList.add("alertExpired");
+          }
+          else if (days<15) {
+            wrn = "SmartTemplates License will expire in {0} days!".replace("{0}", days);
+            btn.classList.add("alert");
+          }
+          if (wrn) {
+            btn.label = wrn;
+            isVisible = true;
+            labelMode = 2;
+          }
+          else {
+            if (licenser.key_type==2)
+              btn.label = "SmartTemplates";
+            else
+              btn.label = "SmartTemplates Pro";
+          }
+        }
+        else
+          btn.label = "SmartTemplates";
 				btn.collapsed =  !isVisible;
-				let labelMode = prefs.getMyIntPref('statusIconLabelMode'),
-				    theClass = 'statusbarpanel-iconic-text';
+        
 				switch(labelMode) {
 					case 0:
-						theClass +=' hidden';
+						btn.classList.add('hidden');
 						break;
 					case 1:
 						//NOP;
 						break;
 					case 2:
-						theClass +=' always';
+						btn.classList.add('always');
 						break;
 				}
-				btn.className = theClass;
-				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
+				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + btn.className + ' , collapsed = ' + btn.collapsed);		
 			}
 			else
 				util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
@@ -1108,7 +1146,8 @@ var SmartTemplate4 = {
 	} ,
 
 	startUp: function startUp() {
-		let v = SmartTemplate4.Util.VersionProxy();
+    // this will call util.firstRun.init()
+		let v = SmartTemplate4.Util.VersionProxy(); 
 	} ,
 	
 	signatureDelimiter:  '-- <br>'

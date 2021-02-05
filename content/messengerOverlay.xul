@@ -37,7 +37,7 @@
 										 class="statusbarpanel-iconic"
 										 label="&smartTemplate4.settings.label;"
 										 tooltiptext="&smartTemplate4.settings.tooltip;"
-										 oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xul', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');"/>
+										 oncommand="SmartTemplate4.Util.clickStatusIcon(this);"/>
 	  </statusbarpanel>
   </statusbar>
 

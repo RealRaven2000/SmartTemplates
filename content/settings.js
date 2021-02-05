@@ -610,7 +610,7 @@ SmartTemplate4.Settings = {
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
     if (!templatesIFrame.getAttribute("src"))
-      templatesIFrame.setAttribute("src", "http://smarttemplates.quickfolders.org/templates.html");
+      templatesIFrame.setAttribute("src", "https://smarttemplates.quickfolders.org/templates.html");
 	} ,
 
 	onCodeWord : function onCodeWord(code, className) {
@@ -1848,6 +1848,8 @@ SmartTemplate4.Settings = {
 			util.logDebug('validateLicense - result = ' + result);
 			// make sure to refresh the file template menus!
 			SmartTemplate4.fileTemplates.isModified = true; 
+      util.Mail3PaneWindow.SmartTemplate4.updateStatusBar();
+      
     }
     catch(ex) {
       util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);
