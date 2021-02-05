@@ -218,6 +218,10 @@ permalink: version.html
       </p>
     </li>
     <li>
+      Added examples in variables window for %header.delete(subject)% and %header.set(from)% 
+      in (Modify Mail Header) section.
+    </li>
+    <li>
       <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> 
       Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
     </li>
@@ -241,6 +245,10 @@ permalink: version.html
       You can now also add a name when setting the from address. For example
       <code>%header.set(from,"Postmaster <postm@address.com>")%</code>
       This function only works if the Email address is listed in any identity (including aliases).
+    </li>
+    <li>
+      With option "Remove email address unless format parameter is specified", mail parts such as 
+      %from(...,mail)%, %from(...,bracketMail())% were removed
     </li>
   </ul>
 </li> 
@@ -281,7 +289,7 @@ permalink: version.html
   <div class="psa smartTemplateProUser">
     Thank you for supporting SmartTemplates with a Pro License! Some of the new features
     and bug fixes below were also now back ported into 2.13 for the benefit of my legacy users
-    who decided to stay with Thunderbrid 68.
+    who decided to stay with Thunderbird 68.
   </div>
   <div class="psa smartTemplateFreeUser">  
     If you don't have a SmartTemplates license yet, please consider 
@@ -568,7 +576,73 @@ permalink: version.html
   
 </li> 
 
+<h3>Versions for Thunderbird 68 and older.</h3>
 
+<a id="2.14"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 2.13 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">60.0 - 68.*</span> 
+			<span class="seamonkey">2.0.0 - 2.49.*</span> 
+		</span>
+  </h4>
+  <div class="psa smartTemplateProUser">
+    Thank you for supporting SmartTemplates with a Pro License! Some of the new features
+    and bug fixes below were also now back ported into 2.4 for the benefit of my legacy users
+    who decided to stay with Thunderbird 68.
+  </div>
+  <div class="psa smartTemplateFreeUser">  
+    If you don't have a SmartTemplates license yet, please consider 
+    <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">getting one</a> 
+    to support the project. There are a lot of helpful changes done in this version and more to come 
+    - see the github <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/">issues tracker</a>
+    for what's planned next.
+  </div>  
+
+
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      Added examples in variables window for %header.delete(subject)% and %header.set(from)% 
+      in (Modify Mail Header) section and documentation for %conditionalText()%.
+    </li>
+    <li>
+      Improved / fixed warning messages for users with expired licenses.
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a>
+      Added a notice about soon-to-expire license in status bar.<br>
+      <img class="screenshot" src="img/status-license-expiry.png">
+    </li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> 
+      Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
+    </li>
+    
+    
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a> 
+      Improved the functions <code class="inline">%deleteQuotedText%</code> and <code class="inline">%replaceQuotedText%</code> 
+      so they can  be used in plain text mode (quote level argument will be ignored).
+      <p>
+       In plain text mode, you can now use this to remove quote marks, with the command<code> %deleteQuotedText("\>\s")%</code> 
+       or use <code>%replaceQuotedText("\>\s","| ")%</code> to replace the quote marks with straight vertical lines
+      </p>
+    </li>
+  </ul>
+
+  
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> 
+      Fixed - Erratic <code>%datetime()%</code> results when forcing HTML with Shift.
+      This was caused by converting Spaces to html entities.
+    </li>
+    <li>
+      With option "Remove email address unless format parameter is specified", mail parts such as 
+      %from(...,mail)%, %from(...,bracketMail())% were removed
+    </li>
+  </ul>
+</li> 
 
 <a id="2.13"> &nbsp; </a>
 <li>
