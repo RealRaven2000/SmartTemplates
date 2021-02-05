@@ -497,7 +497,7 @@ END LICENSE BLOCK
     # [issue 110] Maximize "Account" selector dropdown
     # [issue 112] Tb78: current mail account is not preselected - this worked in Thunderbird 68
     
-  Version 3.4 - WIP
+  Version 3.4.1 - 05/02/2021
     # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
                  in plain text mode (quote level argument will be ignored)
     # [issue 115] Erratic %datetime()% results when forcing HTML with Shift

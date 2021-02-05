@@ -191,6 +191,7 @@
 <!ENTITY header.delete.subject "verwijder tekst uit onderwerp (reguliere expressie)">
 <!ENTITY header.set.to "ontvanger vervangen door e-mailadres">
 <!ENTITY header.append.to "e-mailadres aan ontvangerslijst toevoegen">
+<!ENTITY header.set.from "sets 'van'-adres. Dit accepteert alleen e-mailadressen uit een lijst met identiteiten.">
 <!ENTITY stringmanip_function.cap "Stringmanipulatie">
 <!ENTITY stringmanip_function.explain "Deze functies kunnen worden gebruikt om tekst binnen de e-mailsjabloon of aanhalingskoptekst te verwijderen of te vervangen.">
 <!ENTITY deleteText "Tekst uit de aanhaling verwijderen, bv. deleteText(‘via Paypal’)">
