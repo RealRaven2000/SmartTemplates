@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "заменити предмет текстом">
 <!ENTITY header.prefix.subject "префикс субјекта уз текст">
 <!ENTITY header.append.subject "додати текст на тему">
+<!ENTITY header.delete.subject "уклони текст из теме (регуларни израз)">
 <!ENTITY header.set.to "замените примаоца адресом е-поште">
 <!ENTITY header.append.to "додајте е-адресу на листу прималаца">
+<!ENTITY header.set.from "поставља адресу „од“. Ово прихвата само адресе е-поште са листе идентитета.">
 <!ENTITY stringmanip_function.cap "Стринг Манипулатион">
 <!ENTITY stringmanip_function.explain "Ове функције се могу користити за брисање или замену текста у предлошку е-поште или заглављу цитата.">
 <!ENTITY deleteText "Уклоните неки текст из цитата, нпр.deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Функција за уметање тренутног времена (поље на које се може кликнути).">
-<!ENTITY dateformat.explain "Већина горњих варијабли времена може се користити у низу параметара изостављањем '&#37;'. Такође видети:">
+<!ENTITY dateformat.explain "Већина горе наведених временских променљивих може се користити у низу параметара изостављањем '&#37;'. Такође видети:">
 <!ENTITY dateformat.example "Пример:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">

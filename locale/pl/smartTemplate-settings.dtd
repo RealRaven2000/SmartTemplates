@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "zamień temay z tekstem">
 <!ENTITY header.prefix.subject "dodaj prefiks do tekstu">
 <!ENTITY header.append.subject "dołączyć tekst do tematu">
+<!ENTITY header.delete.subject "usuń tekst z tematu (wyrażenie regularne)">
 <!ENTITY header.set.to "zamień odbiorcę z adresem wiadomości">
 <!ENTITY header.append.to "dodaj wiadomość do listy odbiorców">
+<!ENTITY header.set.from "ustawia adres „od”. To akceptuje tylko adresy e-mail z listy tożsamości.">
 <!ENTITY stringmanip_function.cap "Manipulacja stringami">
 <!ENTITY stringmanip_function.explain "Te funkcje mogą być użwane do usuwania lub zamiany tekstu w szablonie wiadomości lub nagłówku cytatu.">
 <!ENTITY deleteText "Usunięcie tekstu z cytatu np. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Funkcja wstawiania aktualnego czasu (pole klikalne).">
-<!ENTITY dateformat.explain "Większość zmiennych czasowych powyżej może być użytych w ciągu parametrów, pomijając &#37;. Zobacz też:">
+<!ENTITY dateformat.explain "Większość powyższych zmiennych czasowych można użyć w ciągu parametrów, pomijając „&#37;”. Zobacz też:">
 <!ENTITY dateformat.example "Przykład:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Użycie &#37;X:=sent&#37;">

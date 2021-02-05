@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "заменить тему на текст">
 <!ENTITY header.prefix.subject "добавить текст перед темой">
 <!ENTITY header.append.subject "добавить к теме текст">
+<!ENTITY header.delete.subject "удалить текст из темы (регулярное выражение)">
 <!ENTITY header.set.to "заменить адресата сообщения">
 <!ENTITY header.append.to "добавить адресата сообщения">
+<!ENTITY header.set.from "устанавливает адрес отправителя. Это принимает только адреса электронной почты из списка личностей.">
 <!ENTITY stringmanip_function.cap "Работа со строками">
 <!ENTITY stringmanip_function.explain "С помощью этих функций можно удалять или заменять текст в шаблоне или в заголовке цитат.">
 <!ENTITY deleteText "Удалить текст,  к примеру deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "Д.П.">
 <!ENTITY p3.label "ДП">
 <!ENTITY dateformat.label "Функция для вставки текущего времени (кликабельное поле).">
-<!ENTITY dateformat.explain "Большинство указанных выше временных переменных можно использовать в строке параметров, пропустив «&#37;». Смотрите также:">
+<!ENTITY dateformat.explain "Большинство временных переменных, указанных выше, можно использовать в строке параметров, опуская '&#37;'. Смотрите также:">
 <!ENTITY dateformat.example "Пример:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Использовать &#37;X:=sent&#37;">

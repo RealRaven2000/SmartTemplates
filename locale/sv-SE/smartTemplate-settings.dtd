@@ -187,8 +187,10 @@
 <!ENTITY header.set.subject "ersätt ämnet med texten">
 <!ENTITY header.prefix.subject "prefigera ämnet med text">
 <!ENTITY header.append.subject "lägg till text efter ämnet">
+<!ENTITY header.delete.subject "ta bort text från ämnet (reguljärt uttryck)">
 <!ENTITY header.set.to "ersätt mottagare med e-postadress">
 <!ENTITY header.append.to "lägg till e-postadress i mottagarlistan">
+<!ENTITY header.set.from "ställer in "från" -adressen. Detta accepterar endast e-postadresser från listan över identiteter.">
 <!ENTITY stringmanip_function.cap "Strängmanipulering">
 <!ENTITY stringmanip_function.explain "Dessa funktioner kan användas för att radera eller ersätta text inom e-postmallen eller citationssidhuvudet.">
 <!ENTITY deleteText "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)">
@@ -252,7 +254,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Funktion för att infoga nuvarande tid (klickbart fält).">
-<!ENTITY dateformat.explain "De flesta tidsvariablerna ovan kan användas i parametersträngen genom att utesluta &#37;. Se även:">
+<!ENTITY dateformat.explain "De flesta av tidsvariablerna ovan kan användas i parametersträngen genom att utelämna '&#37;'. Se även:">
 <!ENTITY dateformat.example "Exempel:">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Att använda &#37;X:=sent&#37;">

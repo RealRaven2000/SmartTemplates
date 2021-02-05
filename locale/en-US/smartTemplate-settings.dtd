@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "replace subject with the text">
 <!ENTITY header.prefix.subject "prefix subject with the text">
 <!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.delete.subject "remove text from subject (regular expression)">
 <!ENTITY header.set.to "replace recipient with email address">
 <!ENTITY header.append.to "add email to recipient list">
+<!ENTITY header.set.from "sets 'from' address. This only accepts mail addresses from list of identities.">
 <!ENTITY stringmanip_function.cap "String Manipulation">
 <!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
 <!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
+<!ENTITY dateformat.explain "Most of the time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "The &#37;X:=sent&#37; Modifier">

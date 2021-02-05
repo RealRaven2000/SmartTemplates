@@ -187,8 +187,10 @@
 <!ENTITY header.set.subject "replace subject with the text">
 <!ENTITY header.prefix.subject "prefix subject with the text">
 <!ENTITY header.append.subject "append text to subject">
+<!ENTITY header.delete.subject "remove text from subject (regular expression)">
 <!ENTITY header.set.to "replace recipient with email address">
 <!ENTITY header.append.to "add email to recipient list">
+<!ENTITY header.set.from "sets the 'from' address. This only accepts email addresses from list of identities.">
 <!ENTITY stringmanip_function.cap "String Manipulation">
 <!ENTITY stringmanip_function.explain "These functions can be used to delete or replace text within the Email template or quote header.">
 <!ENTITY deleteText "Remove some text from the Quote, e.g. deleteText(&quot;via Paypal&quot;)">

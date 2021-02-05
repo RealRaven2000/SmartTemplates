@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "reemplazando el asunto con el texto">
 <!ENTITY header.prefix.subject "añadiendo el texto antes del asunto">
 <!ENTITY header.append.subject "añadiendo el texto después del asunto">
+<!ENTITY header.delete.subject "eliminar texto del asunto (expresión regular)">
 <!ENTITY header.set.to "reemplazando el receptor con la dirección de correo">
 <!ENTITY header.append.to "añadiendo el correo a la lista de recibidos">
+<!ENTITY header.set.from "establece la dirección 'de'. Esto solo acepta direcciones de correo electrónico de la lista de identidades.">
 <!ENTITY stringmanip_function.cap "Manipulación de cadena de texto">
 <!ENTITY stringmanip_function.explain "Estas funciones pueden usarse para borrar o reemplazar texto de la plantilla del correo o del encabezado de cita.">
 <!ENTITY deleteText "Eliminar texto de la cita, p. ej. deleteText(&quot;via Paypal&quot;)">
@@ -253,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
-<!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '&#37;'. Ver también:">
+<!ENTITY dateformat.explain "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '&37;'. Ver también:">
 <!ENTITY dateformat.example "Ejemplo: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">

@@ -188,8 +188,10 @@
 <!ENTITY header.set.subject "Betreff durch den Text ersetzen">
 <!ENTITY header.prefix.subject "Den Text dem Betreff voranstellen">
 <!ENTITY header.append.subject "Text an den Betreff anhängen">
+<!ENTITY header.delete.subject "Text aus Betreff entfernen (regulärer Ausdruck)">
 <!ENTITY header.set.to "Empfänger durch Email-Adresse ersetzen">
 <!ENTITY header.append.to "Email-Adresse zu Empfängern hinzufügen">
+<!ENTITY header.set.from "Legt die Absenderadresse fest. Dies akzeptiert nur E-Mail-Adressen aus der Liste der Identitäten.">
 <!ENTITY stringmanip_function.cap "Textmanipulation">
 <!ENTITY stringmanip_function.explain "Funktionen zum Löschen oder Ersetzen von Text innerhalb der Nachrichtenvorlage oder Kopfzeilen.">
 <!ENTITY deleteText "Löscht Text aus der Kopfzeile, z.B. deleteText(&quot;via Paypal&quot;)">
