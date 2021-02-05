@@ -473,7 +473,7 @@ END LICENSE BLOCK
     # show premium variables if used with standard license more consistently
     # Improved Scrolling behavior if %cursor% is used.
     
-  Version 2.14 - WIP
+  Version 2.14.1 - 05/02/2021
     # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
     # Added examples in variables window for %header.delete(subject)%, %header.set(from)% and documentation for %conditionalText()%
     # With option "Remove email address unless format parameter is specified", mail parts such as 

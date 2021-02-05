@@ -13,7 +13,7 @@
   <!-- SeaMonkey -->
 	<RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
-   em:minVersion="2.14"
+   em:minVersion="2.14.1"
    em:maxVersion="2.49.*"/>
 
   <!-- Postbox, from now all specific development is frozen -->
