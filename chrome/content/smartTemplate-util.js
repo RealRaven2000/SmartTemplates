@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.4.1",
+	HARDCODED_CURRENTVERSION : "3.4.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",

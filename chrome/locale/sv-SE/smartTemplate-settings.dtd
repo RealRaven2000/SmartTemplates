@@ -190,7 +190,7 @@
 <!ENTITY header.delete.subject "ta bort text från ämnet (reguljärt uttryck)">
 <!ENTITY header.set.to "ersätt mottagare med e-postadress">
 <!ENTITY header.append.to "lägg till e-postadress i mottagarlistan">
-<!ENTITY header.set.from "ställer in "från" -adressen. Detta accepterar endast e-postadresser från listan över identiteter.">
+<!ENTITY header.set.from "ställer in 'från' -adressen. Detta accepterar endast e-postadresser från listan över identiteter.">
 <!ENTITY stringmanip_function.cap "Strängmanipulering">
 <!ENTITY stringmanip_function.explain "Dessa funktioner kan användas för att radera eller ersätta text inom e-postmallen eller citationssidhuvudet.">
 <!ENTITY deleteText "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)">

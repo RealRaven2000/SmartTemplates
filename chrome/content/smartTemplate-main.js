@@ -509,6 +509,10 @@ END LICENSE BLOCK
       (Modify Mail Header) section
     # with option "Remove email address unless format parameter is specified", mail parts such as 
       %from(...,mail)%, %from(...,bracketMail())% were removed
+   
+  Version 3.4.2 - 07/02/2020 
+    # Broken entities in the translations for Italisan, Ukrainian and Swedish locale lead to the settings dialog not loading
+    # this is caused by google translate injecting double quotes into the strings where it shouldn't have.
 
 
     
