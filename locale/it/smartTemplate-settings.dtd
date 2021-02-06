@@ -191,7 +191,7 @@
 <!ENTITY header.delete.subject "rimuove il testo dall'oggetto (espressione regolare)">
 <!ENTITY header.set.to "Sostituisce il destinatario con l'indirizzo di posta elettronica">
 <!ENTITY header.append.to "Aggiunge l'indirizzo di posta elettronica alla lista dei destinatari">
-<!ENTITY header.set.from "imposta l'indirizzo "da". Questo accetta solo indirizzi e-mail dall'elenco di identità.">
+<!ENTITY header.set.from "imposta l'indirizzo 'da'. Questo accetta solo indirizzi e-mail dall'elenco di identità.">
 <!ENTITY stringmanip_function.cap "Gestione stringhe di testo">
 <!ENTITY stringmanip_function.explain "Funzioni per cancellare o sostituire un testo nel modello del messaggio o nell'intestazione.">
 <!ENTITY deleteText "Elimina un testo dall'intestazione. Per esempio: deleteText(&quot;via Paypal&quot;)">

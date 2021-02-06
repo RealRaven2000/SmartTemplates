@@ -13,7 +13,7 @@
   <!-- SeaMonkey -->
 	<RDF:Description RDF:about="rdf:#$Vsomv2"
    em:id="{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}"
-   em:minVersion="2.14.1"
+   em:minVersion="2.14.2"
    em:maxVersion="2.49.*"/>
 
   <!-- Postbox, from now all specific development is frozen -->
@@ -32,7 +32,7 @@
    em:icon64URL="chrome://smartTemplate4/skin/icon64x64.png"
    em:optionsURL="chrome://smartTemplate4/content/settings.xul"
    em:aboutURL="chrome://smartTemplate4/content/about.xul">
-	  <em:version>2.14</em:version>
+	  <em:version>2.15pre3</em:version>
     <em:homepageURL>https://smarttemplates.quickfolders.org/index.html</em:homepageURL>
     <em:type>2</em:type>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
