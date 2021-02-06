@@ -481,6 +481,9 @@ END LICENSE BLOCK
     # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
                  in plain text mode (quote level argument will be ignored)
 
+  Version 2.14.2.1 - 06/02/2021
+    # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
