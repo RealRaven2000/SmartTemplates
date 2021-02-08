@@ -483,6 +483,9 @@ END LICENSE BLOCK
 
   Version 2.14.2.1 - 06/02/2021
     # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
+    
+  Version 2.15 - WIP
+    # 
 
     
 =========================
