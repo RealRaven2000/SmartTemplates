@@ -510,10 +510,16 @@ END LICENSE BLOCK
     # with option "Remove email address unless format parameter is specified", mail parts such as 
       %from(...,mail)%, %from(...,bracketMail())% were removed
    
-  Version 3.4.2 - 07/02/2020 
-    # Broken entities in the translations for Italisan, Ukrainian and Swedish locale lead to the settings dialog not loading
+  Version 3.4.2 - 06/02/2020 
+    # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
+    # Broken entities in the translations for Italian, Ukrainian and Swedish locale lead to the settings dialog not loading
     # this is caused by google translate injecting double quotes into the strings where it shouldn't have.
+    
+  Version 3.4.3 - 08/02/2020 
+    # Open the license tab when status icon is clicked with expired license to make renewal easier.
 
+  Version 3.5 - WIP
+    #
 
     
 =========================

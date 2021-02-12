@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.4.2",
+	HARDCODED_CURRENTVERSION : "3.4.3",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -2743,7 +2743,7 @@ SmartTemplate4.Util = {
   clickStatusIcon: function(el) {
     let isLicenseWarning = false;
     event.stopImmediatePropagation();
-    if (el.classList.contains("alert")) {
+    if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }
     let c = el.className,
