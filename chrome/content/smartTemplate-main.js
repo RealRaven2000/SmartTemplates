@@ -517,6 +517,10 @@ END LICENSE BLOCK
     
   Version 3.4.3 - 08/02/2020 
     # Open the license tab when status icon is clicked with expired license to make renewal easier.
+    
+  Version 3.4.4 - 
+    # [issue 120] Spanish locale broken which creates an error when options screen is displayed
+    
 
   Version 3.5 - WIP
     #
