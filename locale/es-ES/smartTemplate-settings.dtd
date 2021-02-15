@@ -255,7 +255,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
-<!ENTITY dateformat.explain "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '&37;'. Ver también:">
+<!ENTITY dateformat.explain "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '&#37;'. Ver también:">
 <!ENTITY dateformat.example "Ejemplo: ">
 <!-- x=sent section -->
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">

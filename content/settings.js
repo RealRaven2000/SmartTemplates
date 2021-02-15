@@ -384,25 +384,31 @@ SmartTemplate4.Settings = {
 		this.cleanupUnusedPrefs();
 
 		let args = window.arguments,
-		    mode = null;
+		    mode = null,
+        isSwitchCurrentIdentity = true;
 		// Switch account (from account setting)  // add 0.4.0
     try {
       if (args && args.length >= 1) {
-        if (args[0])
-          this.switchIdentity(args[0]);
+        if (args[0] && typeof args[0] == "string") {// not sure when this is actually used properly
+          if (this.switchIdentity(args[0]))
+            isSwitchCurrentIdentity = false;
+        }
         if (args.length >=2) {
           let inParams = args[1].inn;
           mode = inParams.mode;
-          if (mode == "fileTemplates")
+          if (mode == "fileTemplates") {
             isAdvancedPanelOpen = false; // simplify the window.
+            // [issue 121] current shown
+            isSwitchCurrentIdentity = false;
+          }
           if (inParams.composeType) {
             composeType = inParams.composeType;
           }
         }
       }
-      else {
+
+      if (isSwitchCurrentIdentity)
         this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
-      }
     }
     catch(ex) {
       util.logException("Settings onLoad() switching account", ex);
@@ -1027,7 +1033,8 @@ SmartTemplate4.Settings = {
 	//--------------------------------------------------------------------
 	switchIdentity : function switchIdentity(idKey, composeType)	{
 		let el = document.getElementById("msgIdentityPopup").firstChild,
-		    index = 0;
+		    index = 0,
+        wasSwitched = false;
     composeType = composeType || null;
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
@@ -1036,6 +1043,7 @@ SmartTemplate4.Settings = {
 				document.getElementById("msgIdentity").selectedIndex = index;
 				// no fire event with set selectedIndex/selectedItem.. why??
 				this.selectIdentity(idKey);
+        wasSwitched = true;
 				break;
 			}
 			el = el.nextSibling; index++;
@@ -1057,6 +1065,7 @@ SmartTemplate4.Settings = {
     }
     
 		SmartTemplate4.Util.logDebugOptional("functions", "switchIdentity(" + idKey + ") COMPLETE");
+    return wasSwitched;
 
 	} , // add 0.4.0 E
 

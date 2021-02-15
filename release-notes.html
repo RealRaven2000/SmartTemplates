@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#2.14.3">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#2.14.4">can be found here</a>
 
 <b>Latest News</b>
 
@@ -21,14 +21,16 @@ to support the project.
 <li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Improved / fixed warning messages for users with expired licenses. Added a notice about soon-to-expire license in status bar.</li>
 <li>Reopening existing tabs on support site now correctly jumps to in page links (such as #donate)</li>
 <li>Support using \n and \t for new line and tab characters in regular expressions</li>
+<li>2.14.3 - open the license tab when status icon is clicked with expired license to make renewal easier.</li>
 </ul>
 
 <b>Changes / Bug Fixes</b>
 <ul>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/120">[issue 120]</a> Fixed in 2.14.4: Spanish locale broken which creates an error when options screen is displayed (since 3.4.1)</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/121">[issue 121]</a> Fixed in 2.14.4: Common settings are shown even though the correct account seems to be selected!</li>
 <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
 <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/117">[issue 117]</a> <code class=inline>%header.set(from,"some@address.com")%</code> not working in Thunderbird 78. You can now also add a name when setting the from address. For example <code>%header.set(from,"Postmaster <postm@address.com>")%</code> This function only works if the Email address is listed in any identity (including aliases). </li>
 <li> Fixed: With option "Remove email address unless format parameter is specified", mail parts such as %from(...,mail)%, %from(...,bracketMail())% were removed </li>
 </li>
 <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/119">[issue 119]</a> (fixed in 2.14.2.1) XML Parsing Error settings dialog (it / sv / uk locales)</li>
-<li>2.14.3 - open the license tab when status icon is clicked with expired license to make renewal easier.</li>
 </ul>
