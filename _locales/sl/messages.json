@@ -108,16 +108,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Za projekt pretvorbe smo že porabili pomembna sredstva (več kot $hoursSpent$ ur) - in še veliko dela je pri odpravljanju regresij in težav, ki jih povzročajo spremembe v storitvi Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Da bo $addonName$ ostal funkcionalen in živ, storite to zelo pomembno:",
     "placeholders": {
@@ -159,7 +149,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Potrebne spremembe za prehod na novi model, ki ne vsebuje starejših različic (eksperiment s pošto), so trajale že več tednov in še vedno potekajo, medtem ko bi to lahko vplivalo na nekatere funkcije. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem."
+    "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
   
   "btn-want-a-license": {

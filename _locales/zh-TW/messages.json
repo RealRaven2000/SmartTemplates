@@ -108,16 +108,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "我們已經在轉換項目上花費了大量資源（超過$hoursSpent$小時），並且還有很多工作可以解決由Thunderbird更改引起的回歸和問題。",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "為了使$addonName$保持功能性和活躍性，請務必這樣做：",
     "placeholders": {
@@ -159,7 +149,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "切換到新的無遺留模型的必要更改（郵件實驗）已經花費了數週時間，並且仍在進行中，同時某些功能可能會受到影響。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。"
+    "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
   
   "btn-want-a-license": {

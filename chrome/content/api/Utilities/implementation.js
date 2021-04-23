@@ -49,6 +49,19 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
           return daysLeft;
         },
+        
+        getUserName : function () {
+          const util = win.SmartTemplate4.Util;
+          let Accounts = util.Accounts; 
+          for (let account of Accounts) {
+            if (account.defaultIdentity) 
+            { 
+              let name = account.defaultIdentity.fullName;
+              if (name) return name;
+            }
+          }    
+          return "user"; // anonymous
+        },
 
         openLinkExternally: function(url) {
           let uri = url;
@@ -61,11 +74,16 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             .loadURI(uri);
         },
 
+        showVersionHistory: function() {
+          const util = win.SmartTemplate4.Util;
+          util.showVersionHistory(false); // no prompt before showing
+        },
+        
         showXhtmlPage: function(uri) {
           let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
             .getService(Components.interfaces.nsIWindowMediator)
             .getMostRecentWindow("mail:3pane");  
-          mail3PaneWindow.openDialog(uri);
+          mail3PaneWindow.openDialog(uri).focus();
         }
   
         // get may only return something, if a value is set

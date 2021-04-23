@@ -42,9 +42,15 @@
 #validationResults description {
   max-width: 420px;
 }
+
 #validationResults:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+#licenseDate {
+  margin-left: 1.5em;
+}
+
 
 #validationStandard,
 #validationPassed {

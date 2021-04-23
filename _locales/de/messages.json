@@ -109,16 +109,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Wir haben bereits erhebliche Ressourcen (über $hoursSpent$ Stunden) für das Konvertierungsprojekt aufgewendet - und es gibt mehr Arbeit bei der Behebung von Regressionen und Problemen, die durch Änderungen in Thunderbird verursacht werden.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }
-  },
-  
   "support-suggestion" : {
     "message": "Damit $addonName$ weiterhin funktionsfähig und lebendig bleiben kann, tun Sie ihm bitte einen entscheidenden Gefallen:",
     "placeholders": {
@@ -160,7 +150,13 @@
   }, 
   
   "ongoing-work": {
-    "message": "Die notwendigen Änderungen, um auf das neue Modell ohne Legacy Support (Mail-Experiment) umzusteigen, dauerten bereits mehrere Wochen und dauern noch an, während einige Funktionen beeinträchtigt werden könnten. Mit einem komplexen Add-On wie diesem wird aufwendige Arbeit unvermeidlich. Bitte helfen Sie uns dabei."
+    "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
 
   

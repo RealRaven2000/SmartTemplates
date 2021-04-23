@@ -23,11 +23,25 @@ async function updateActions(addonName) {
   
   function hide(id) {
     let el = document.getElementById(id);
-    if (el) el.setAttribute('collapsed',true);
+    if (el) {
+      el.setAttribute('collapsed',true);
+      return el;
+  }
+    return null;
+  }
+  function hideSelectorItems(cId) {
+    let elements = document.querySelectorAll(cId);
+		for (let el of elements) {
+      el.setAttribute('collapsed',true);
+  }
   }
   function show(id) {
     let el = document.getElementById(id);
-    if (el) el.setAttribute('collapsed',false);
+    if (el) {
+	      el.setAttribute('collapsed',false);
+	      return el;
+	  }
+	  return null;
   }
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
@@ -37,6 +51,8 @@ async function updateActions(addonName) {
     hide('standardLicense');
   }
   
+  let isActionList = true;
+
   if (isLicensed) {
     hide('purchaseLicenseListItem');
     hide('register');
@@ -55,7 +71,7 @@ async function updateActions(addonName) {
       }
       else {
         let gpdays = await mxUtilties.LicensedDaysLeft();
-        if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
+        if (gpdays<100) { // they may have seen this popup. Only show extend License section if it is < 100 days away
           show('extendLicenseListItem');
           show('extend');
         }
@@ -63,9 +79,21 @@ async function updateActions(addonName) {
           show('licenseExtended');
           hide('extendLicenseListItem');
           hide('extend');
+        isActionList = false;
         }
       }
     }
+  }
+  else {
+    let currentTime=new Date(),
+        endSale = new Date("2021-04-16");
+    if (currentTime < endSale) {
+      show('specialOffer');
+      hideSelectorItems('.donations');
+    }
+  }  
+  if (!isActionList) {
+    hide('actionBox');
   }  
   
 }

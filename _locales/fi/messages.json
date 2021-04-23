@@ -108,16 +108,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Olemme jo käyttäneet huomattavia resursseja (yli $hoursSpent$ tuntia) konversioprojektiin - ja Thunderbirdin muutosten aiheuttamien regressioiden ja ongelmien korjaamisessa on paljon enemmän työtä.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Jotta $addonName$ pysyisi toiminnassa ja elossa, tee se elintärkeäksi palvelukseksi:",
     "placeholders": {
@@ -159,7 +149,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Tarvittavat muutokset siirtymiseksi uuteen vanhaan malliin (postikokeilu) kesti jo useita viikkoja ja ovat edelleen käynnissä, vaikka joihinkin toimintoihin voi olla vaikutusta. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä."
+    "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
   
   "btn-want-a-license": {

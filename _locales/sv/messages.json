@@ -108,16 +108,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Vi har redan spenderat betydande resurser (över $hoursSpent$ timmar) på konverteringsprojektet - och det finns mycket mer arbete med att fixa regressioner och problem som orsakas av förändringar i Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
     "placeholders": {
@@ -159,7 +149,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "De nödvändiga ändringarna för att byta till den nya arvslösa modellen (mailexperiment) tog redan flera veckor och pågår fortfarande, medan vissa funktioner kan påverkas. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
   
   "btn-want-a-license": {

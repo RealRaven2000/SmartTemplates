@@ -108,16 +108,6 @@
     }
   },
   
-  "hours-effort" : {
-    "message": "Abbiamo già speso risorse significative (oltre $hoursSpent$ ore) sul progetto di conversione e c'è ancora molto lavoro da fare per correggere regressioni e problemi causati dalle modifiche in Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
-  },
-  
   "support-suggestion" : {
     "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di fare un favore fondamentale:",
     "placeholders": {
@@ -159,7 +149,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Le modifiche necessarie per passare al nuovo modello senza legacy (esperimento di posta) hanno già richiesto diverse settimane e sono ancora in corso, mentre alcune funzioni potrebbero risentirne. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo."
+    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "SmartTemplates"
+      }    
+    }
   },
   
   "btn-want-a-license": {

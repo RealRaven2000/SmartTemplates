@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.4.4",
+	HARDCODED_CURRENTVERSION : "3.5",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -2761,6 +2761,18 @@ SmartTemplate4.Util = {
       params);
 
   },
+  
+  get Accounts() {
+    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
+    
+    let acMgr = MailServices.accounts,
+        aAccounts = [];
+        
+    for (let ac of acMgr.accounts) {
+      aAccounts.push(ac);
+    };
+    return aAccounts;    
+  }
 	
   
 	/* 
@@ -2780,6 +2792,7 @@ SmartTemplate4.Util = {
 	
 
 };  // ST4.Util
+
 
 
 SmartTemplate4.Util.firstRun =

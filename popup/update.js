@@ -8,8 +8,11 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
   addEventListener("click", async (event) => {
-    if (event.target.id.startsWith("register")) {
+    if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
       messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+    }
+    if (event.target.id=='whatsNew') {
+      messenger.Utilities.showVersionHistory(false);    
     }
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
@@ -61,10 +64,6 @@ END LICENSE BLOCK */
       timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
     }
     
-    let measuredEffort =  document.getElementById('hours-effort');
-    if (measuredEffort) {
-      measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
-    }
     
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
@@ -79,6 +78,35 @@ END LICENSE BLOCK */
     let remind = document.getElementById('label-remind-me');
     if (remind) {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
+      
+    }
+    
+    let specialOffer = document.getElementById('specialOfferTxt');
+    if (specialOffer)
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>");
+          
+    let specialIntro = document.getElementById('specialOfferIntro');
+    if (specialIntro) {
+      let userName = await messenger.Utilities.getUserName();
+      specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>")
+        .replace("{name}", userName);
+    }
+    
+    let whatsNewLst = document.getElementById('whatsNewList');
+    if (whatsNewLst) {
+      whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
+        .replace(/\{L1\}/g,"<li>")
+        .replace(/\{L2\}/g,"</li>");
+      
+    }
+    
+    let ongoing = document.getElementById('ongoing-work');
+    if (ongoing) {
+      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
       
     }
     
