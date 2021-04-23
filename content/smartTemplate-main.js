@@ -484,8 +484,17 @@ END LICENSE BLOCK
   Version 2.14.2.1 - 06/02/2021
     # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
     
+  Version 2.14.3 - 08/02/2021
+    # open the license tab when status icon is clicked with expired license to make renewal easier.
+
+  Version 2.14.4 - 15/02/2021
+    # [issue 120] Spanish locale broken which creates an error when options screen is displayed
+    # [issue 121] Common settings are shown even though the correct account seems to be selected!
+    
   Version 2.15 - WIP
-    # 
+    # [issue 125] Cardbook address names are resolved with weird characters
+    # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
+    # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
 
     
 =========================

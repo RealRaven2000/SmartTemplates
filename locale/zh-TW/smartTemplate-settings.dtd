@@ -296,7 +296,7 @@
 <!ENTITY label.licenseValid "您的許可證有效期至：">
 <!ENTITY licenseValidation.passed "感謝您註冊SmartTemplates Pro！ 所有高級功能現已解鎖。">
 <!ENTITY licenseValidation.standard "感謝您註冊SmartTemplates Standard-您正在幫助附加組件！ 現在，您還可以測試驅動所有高級功能。">
-<!ENTITY licenseValidation.failed "您輸入的許可證密鑰無效。 查看來自FastSpring的電子郵件以獲取說明。 如果仍有問題，請通過“支持”標籤與我聯繫。
+<!ENTITY licenseValidation.failed "您輸入的許可證密鑰無效。 查看來自FastSpring的電子郵件以獲取說明。 如果仍有問題，請通過“支持”標籤與我聯繫。">
 <!ENTITY licenseValidation.expired "您輸入的許可證密鑰已過期。 請按下面的按鈕續訂您的許可證。">
 <!ENTITY licenseValidation.invalidAddon "您輸入的許可證密鑰可能用於其他附件。 {0}的許可證密鑰以{1}開頭。">
 <!ENTITY licenseValidation.invalidMail "當前未在任何郵件帳戶中列出與許可證密鑰[{1}]綁定的電子郵件地址。 請從“支持”標籤與我聯繫以獲取幫助。">

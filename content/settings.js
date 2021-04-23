@@ -1267,12 +1267,17 @@ SmartTemplate4.Settings = {
     let nickBox = document.getElementById('chkResolveABNick'),
 		    displayNameBox = document.getElementById('chkResolveABDisplay'),
         replaceMail = document.getElementById('chkResolveABRemoveMail');
-    if (el.checked) {
-      nickBox.checked = false;
-		}
-		displayNameBox.disabled = el.checked;
-		nickBox.disabled = el.checked;
-		replaceMail.disabled = el.checked;
+    setTimeout(
+      function() {
+        let isResolveAB = el.checked;
+        if (!isResolveAB) {
+          nickBox.checked = false;
+        }
+        displayNameBox.disabled = !isResolveAB;
+        nickBox.disabled = !isResolveAB;
+        replaceMail.disabled = !isResolveAB;
+      }
+    );
   } ,
   
   get currentId() {

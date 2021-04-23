@@ -847,7 +847,7 @@ SmartTemplate4.fileTemplates = {
             for (let b=0; b<hrBtns.length; b++) {
               let id = hrBtns[b],
                   theB = document.getElementById(id);
-              if (theB && theB.parentNode.Id == 'hdrSmartReplyButton') { // skip these and deal with them directly
+              if (theB && theB.parentNode.id == 'hdrSmartReplyButton') { // skip these and deal with them directly
                 if (prefs.isDebugOption("fileTemplates.menus")) debugger;
                 replyPopup = fT.getPopup(id, null);
               }
