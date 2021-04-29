@@ -25,7 +25,7 @@ function onLoad(activatedWhileWindowOpen) {
     </vbox>
 	
     
-    `, ["chrome://smartTemplate4/locale/smartTemplate-accountManager.dtd"]);
+    `);
 
 }
 
