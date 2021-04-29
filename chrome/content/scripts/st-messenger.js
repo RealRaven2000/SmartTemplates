@@ -21,16 +21,11 @@ function onLoad(activatedWhileWindowOpen) {
 
     WL.injectElements(`
     
-    <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
-    <stringbundleset id="stringbundleset">
-      <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />
-    </stringbundleset>
-    
     <!-- # THUNDERBIRD (TOOLBAR) # -->
     <toolbarpalette id="MailToolbarPalette">
       <toolbarbutton id="SmartTemplate4Button"
-                     label="&smartTemplate4.settings.label;"
-                     tooltiptext="&smartTemplate4.settings.tooltip;"
+                     label="__MSG_smartTemplate4.settings.label__"
+                     tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
                      class="toolbarbutton-1 chromeclass-toolbar-additional"
                      oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
    
@@ -40,13 +35,13 @@ function onLoad(activatedWhileWindowOpen) {
     <hbox id="status-bar">
       <toolbarbutton id="SmartTemplate4Messenger"
                      class="statusbarpanel-iconic"
-                     label="&smartTemplate4.settings.label;"
-                     tooltiptext="&smartTemplate4.settings.tooltip;"
+                     label="__MSG_smartTemplate4.settings.label__"
+                     tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
                      insertafter="totalMessageCount"
                      oncommand="SmartTemplate4.Util.clickStatusIcon(this);"/>
     </hbox>
   
-    `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
+    `);
 
 
     window.SmartTemplate4.startUp();

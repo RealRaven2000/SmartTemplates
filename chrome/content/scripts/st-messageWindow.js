@@ -10,17 +10,8 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
-    
+  let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
 
-    WL.injectElements(`
-    <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
-    <stringbundleset id="stringbundleset">
-      <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />
-    </stringbundleset>
-  `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
-
-   
   window.SmartTemplate4.startUp();
 }
 

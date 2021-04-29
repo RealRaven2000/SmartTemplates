@@ -26,8 +26,8 @@ function onLoad(activatedWhileWindowOpen) {
 		<toolbarbutton 
 		  id="smarttemplate4-cleandeferred" 
 			class="toolbarbutton-1 AG"
-			label="&smartTemplate4.cleandeferred.label;"
-			tooltiptext="&smartTemplate4.cleandeferred.tooltip;"
+			label="__MSG_smartTemplate4.cleandeferred.label__"
+			tooltiptext="__MSG_smartTemplate4.cleandeferred.tooltip__"
 			context=""
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
@@ -37,8 +37,8 @@ function onLoad(activatedWhileWindowOpen) {
     <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
 			class="toolbarbutton-1 AG"
-			label="&smartTemplate4.changeTemplate.label;"
-			tooltiptext="&smartTemplate4.changeTemplate.tooltip;"
+			label="__MSG_smartTemplate4.changeTemplate.label__"
+			tooltiptext="__MSG_smartTemplate4.changeTemplate.tooltip__"
       type="menu-button"
 			context=""
 			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">
@@ -54,17 +54,17 @@ function onLoad(activatedWhileWindowOpen) {
 			<menupopup id="SmartTemplate4-ComposerPopup" 
 			           class="SmartTemplate4-ComposerPopup">
 				<menuitem id="SmartTemplate4-replaceDeferred"
-				          label="&smartTemplate4.deferredcontext.update;"
+				          label="__MSG_smartTemplate4.deferredcontext.update__"
 				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, false);" 
 				          class="cmd menuitem-iconic"
 				          />
 				<menuitem id="SmartTemplate4-cleanupDeferred"
-				          label="&smartTemplate4.deferredcontext.cleanup;"
+				          label="__MSG_smartTemplate4.deferredcontext.cleanup__"
 				          oncommand="SmartTemplate4.Util.resolveDeferred(gMsgCompose.editor, event.originalTarget.parentElement.targetNode, true);" 
 				          class="cmd menuitem-iconic"
 				          />
 				<menuitem id="SmartTemplate4-deleteDeferred"
-				          label="&smartTemplate4.deferredcontext.delete;"
+				          label="__MSG_smartTemplate4.deferredcontext.delete__"
 				          oncommand="SmartTemplate4.Util.removeDeferred(event.originalTarget.parentElement.targetNode);" 
 				          class="cmd menuitem-iconic"
 				          />
@@ -72,7 +72,7 @@ function onLoad(activatedWhileWindowOpen) {
 		</popupset>
 	</window>
 	    
-    `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
+    `);
 
     let test = false;
     if (test) {
