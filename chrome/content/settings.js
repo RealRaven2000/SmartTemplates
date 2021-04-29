@@ -774,11 +774,11 @@ SmartTemplate4.Settings = {
   getHeaderArgument: function getHeaderArgument(code) {
     let txtArg;
     if (code.indexOf('subject')>0)  {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.text',"Enter the text to add or set"));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.text', "Enter the text to add or set"));
       return code.replace("text", txtArg);
     }
     else {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.email'."Enter an email address"));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.email', "Enter an email address"));
       return code.replace("abc@de.com", txtArg);
     }
   } ,

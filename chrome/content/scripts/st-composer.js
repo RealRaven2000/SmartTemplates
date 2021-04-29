@@ -21,7 +21,6 @@ function onLoad(activatedWhileWindowOpen) {
     
     WL.injectElements(`
  
-	<!-- Toolbar -->
 	<toolbarpalette id="MsgComposeToolbarPalette">
 		<toolbarbutton 
 		  id="smarttemplate4-cleandeferred" 
@@ -32,7 +31,6 @@ function onLoad(activatedWhileWindowOpen) {
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
 		</toolbarbutton>
-		<!-- [issue 24] Select a different template in Composer..	-->
 
     <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
@@ -42,10 +40,9 @@ function onLoad(activatedWhileWindowOpen) {
       type="menu-button"
 			context=""
 			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">
-        <menupopup id="button-TemplatePopup">
-        </menupopup>      
-      </toolbarbutton>
-    
+      <menupopup id="button-TemplatePopup">
+      </menupopup>      
+    </toolbarbutton>
     
 	</toolbarpalette>
 	
@@ -74,8 +71,8 @@ function onLoad(activatedWhileWindowOpen) {
 	    
     `);
 
-    let test = false;
-    if (test) {
+  let test = false;
+  if (test) {
 		const st4 = window.SmartTemplate4,
           util = st4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
@@ -111,7 +108,7 @@ function onLoad(activatedWhileWindowOpen) {
 		}
     // add the style sheet.
 		st4.composer.load();
-    }
+  }
 
 }
 
