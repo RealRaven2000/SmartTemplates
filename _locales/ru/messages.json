@@ -1,208 +1,1552 @@
 {
-  "extensionName": {
-    "message": "SmartTemplates",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Мощный способ создавать индивидуальные ответы путем автоматической вставки различных заголовков сообщений. Шаблоны могут быть созданы для каждого почтового идентификатора, также поддерживаются внешние файлы html и таблицы стилей.",
-    "description": "Description of the extension."
-  },
-
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
-  },
-  
-  "window-title": {
-    "message": "Добро пожаловать в $addonName$",
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+    "A.label": {
+        "message": "День недели(Пятница)"
+    },
+    "B.label": {
+        "message": "Месяц (Январь)"
+    },
+    "M.label": {
+        "message": "Минуты (00-59)"
+    },
+    "Parameters": {
+        "message": "параметры"
+    },
+    "SmartTemplate4.confirmVersionLink": {
+        "message": "Показать список изменений SmartTemplates?"
+    },
+    "SmartTemplate4.fileFunction.notExists": {
+        "message": "Функция {0} не может найти или получить доступ к файлу. Проверьте путь ниже:"
+    },
+    "SmartTemplate4.fileTemplates": {
+        "message": "Файлы шаблонов"
+    },
+    "SmartTemplate4.fileTemplates.configureMenu": {
+        "message": "Настроить пункты меню…"
+    },
+    "SmartTemplate4.fileTemplates.error.charSet": {
+        "message": "Проблемы с преобразованием шаблона HTML из набора символов [{1}] \\nВместо использования необработанных строковых данных. \\nЕсли это приводит к искаженным символам, попробуйте добавить явный 'meta charset"
+    },
+    "SmartTemplate4.fileTemplates.error.filePath": {
+        "message": "Не удалось загрузить шаблон файла '{0}' по пути: \\n{1} \\nФайл, возможно, был удален или переименован."
+    },
+    "SmartTemplate4.fileTemplates.openFile": {
+        "message": "Открыть файл шаблона SmartTemplates…"
+    },
+    "SmartTemplate4.fileTemplates.replaceStationery": {
+        "message": "Начиная с Thunderbird 68 и далее, к сожалению, канцелярские товары больше не работают.\\nПоэтому SmartTemplates теперь предлагает свою собственную систему управления шаблонами HTML; нажмите Ok, чтобы настроить его."
+    },
+    "SmartTemplate4.fileTemplates.restrictTemplates": {
+        "message": "Вам нужна лицензия SmartTemplates, чтобы использовать более {1} шаблонов!"
+    },
+    "SmartTemplate4.fileTemplates.selectFromMenu": {
+        "message": "Пожалуйста, выберите шаблон из выпадающего меню."
+    },
+    "SmartTemplate4.fileTemplates.wrnEnterPath": {
+        "message": "Пожалуйста, выберите правильный путь!"
+    },
+    "SmartTemplate4.fileTemplates.wrnEnterTitle": {
+        "message": "Пожалуйста, введите название!"
+    },
+    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem": {
+        "message": "Вы должны выбрать элемент из списка для обновления!"
+    },
+    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem.caption": {
+        "message": "Обновить шаблоны"
+    },
+    "SmartTemplate4.licenseValidation.expired": {
+        "message": "Ваша лицензия истекает:"
+    },
+    "SmartTemplate4.licenseValidation.guessAddon": {
+        "message": "(Введённый ключ может быть для {2})."
+    },
+    "SmartTemplate4.notification.donate": {
+        "message": "Пожертвовать"
+    },
+    "SmartTemplate4.notification.dontShowAgain": {
+        "message": "Не показывать это сообщение снова."
+    },
+    "SmartTemplate4.notification.editedChangeChallenge": {
+        "message": "Любой текст, введенный вами вручную с момента открытия композитора, будет удален без отмены. Продолжить в любом случае?"
+    },
+    "SmartTemplate4.notification.editedChangeWarning": {
+        "message": "Вы уже набрали текст и хотите перейти на шаблон {0}"
+    },
+    "SmartTemplate4.notification.license.required": {
+        "message": "SmartTemplates требует лицензии для продолжения работы. Подробнее читайте в нижней части окна составления электронной почты."
+    },
+    "SmartTemplate4.notification.license.text": {
+        "message": "Отныне SmartTemplates требует как минимум стандартную лицензию. Узнайте больше об этом на нашей странице лицензирования."
+    },
+    "SmartTemplate4.notification.licensing": {
+        "message": "Подробнее о лицензировании"
+    },
+    "SmartTemplate4.notification.noStationery": {
+        "message": "Не удалось найти надстройку «Канцелярские товары» - она установлена?"
+    },
+    "SmartTemplate4.notification.parsing": {
+        "message": "Анализ переменных:"
+    },
+    "SmartTemplate4.notification.premium.btn.extendDomainLicense": {
+        "message": "Продлить лицензию на домен"
+    },
+    "SmartTemplate4.notification.premium.btn.extendLicense": {
+        "message": "Продлить лицензию"
+    },
+    "SmartTemplate4.notification.premium.btn.extendLicense.tooltip": {
+        "message": "Продление срока действия текущей лицензии на 1 год. Обычно это дешевле, чем новая лицензия."
+    },
+    "SmartTemplate4.notification.premium.btn.getLicense": {
+        "message": "Купить лицензию!"
+    },
+    "SmartTemplate4.notification.premium.btn.hotKey": {
+        "message": "л"
+    },
+    "SmartTemplate4.notification.premium.btn.renewDomainLicense": {
+        "message": "Продлить лицензию на домен"
+    },
+    "SmartTemplate4.notification.premium.btn.renewLicense": {
+        "message": "Обновить лицензию"
+    },
+    "SmartTemplate4.notification.premium.btn.upgrade": {
+        "message": "Обновление до Pro"
+    },
+    "SmartTemplate4.notification.premium.btn.upgrade.hotKey": {
+        "message": "P"
+    },
+    "SmartTemplate4.notification.premium.text": {
+        "message": "Зарегистрируйте SmartTemplates для постоянного пользования премиум-функцией {1}."
+    },
+    "SmartTemplate4.notification.premium.text.plural": {
+        "message": "{1} являются премиальными функциями, пожалуйста, обновите их до лицензии SmartTemplates Pro для постоянного использования."
+    },
+    "SmartTemplate4.notification.premium.title": {
+        "message": "Премиум-функция"
+    },
+    "SmartTemplate4.notification.spellcheck.error": {
+        "message": "Не удается переключить язык проверки орфографии. Вы установили правильный словарь?"
+    },
+    "SmartTemplate4.notification.spellcheck.noDictionary": {
+        "message": "Словари не установлены."
+    },
+    "SmartTemplate4.notification.spellcheck.notFound": {
+        "message": "Словарь '{0}' не найден."
+    },
+    "SmartTemplate4.prompt.switchDomainLicense": {
+        "message": "SПерейти на доменную лицензию?"
+    },
+    "SmartTemplate4.trialDays": {
+        "message": "У вас осталось {0} пробных дней."
+    },
+    "SmartTemplate4.trialExpiry": {
+        "message": "Пробный период истек {0} дней назад."
+    },
+    "SmartTemplate4.updateMessageNewBrackets1": {
+        "message": "Дорогой пользователь! С радостью сообщаем, что с этой версии поддерживаются фигурные скобки {} и тэг < style >, так что теперь можно пользоваться CSS в шаблоне."
+    },
+    "SmartTemplate4.updateMessageNewBrackets2": {
+        "message": "Синтаксис выражений в скобках был изменен: вместо фигурных {%cc(name)%} пользуйтесь двойными квадратными скобками [[%cc(name)%]]. Подробнее в помощи."
+    },
+    "SmartTemplate4.updateMessageNewBrackets3": {
+        "message": "Шаблоны будут конвертированы для совместимости с новой версией. Нажмите [OK] для продолжения."
+    },
+    "SmartTemplate4.updateMessageVersion": {
+        "message": "SmartTemplates был успешно обновлен до версии {1}!"
+    },
+    "Y.label": {
+        "message": "Год (1970)"
+    },
+    "a.label": {
+        "message": "День недели(Пт)"
+    },
+    "ab_contact": {
+        "message": "контакт"
+    },
+    "ab_fields": {
+        "message": "Поля адресной книги"
+    },
+    "ab_fields.desc": {
+        "message": "При ответе на соответствующий адрес электронной почты вы можете теперь использовать дополнительные поля для переменных адреса, таких как &#37;from&#37;, таких как:"
+    },
+    "ab_other": {
+        "message": "Прочее"
+    },
+    "ab_private": {
+        "message": "личный"
+    },
+    "ab_work": {
+        "message": "Работа"
+    },
+    "about.cap": {
+        "message": "О SmartTemplates"
+    },
+    "about.label": {
+        "message": "SmartTemplates позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи."
+    },
+    "accept_button": {
+        "message": "OK"
+    },
+    "account.label": {
+        "message": "Учётная запись:"
+    },
+    "active-version-info": {
+        "description": "The boldStart and boldEnd parts will be replaced with html tags",
+        "message": "Теперь вы используете {boldStart} версию $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+        "placeholders": {
+            "addonVer": {
+                "content": "$1",
+                "example": "Version 1.1"
+            },
+            "appVer": {
+                "content": "$2",
+                "example": "78.0b4"
+            }
+        }
+    },
+    "addon-authors-struggle": {
+        "message": "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
+    },
+    "advanced.label": {
+        "message": "Дополнительные настройки"
+    },
+    "any.label": {
+        "message": "Любой заголовок строки"
+    },
+    "attach.label": {
+        "message": "Добавить файл как вложение"
+    },
+    "b.label": {
+        "message": "Месяц (Янв.)"
+    },
+    "basepath.absolute": {
+        "message": "Нажмите здесь, чтобы выбрать конкретную папку на вашем локальном диске."
+    },
+    "basepath.desc": {
+        "message": "Если ваш шаблон содержит изображения с тегом «img», которые находятся на вашем локальном диске, вам нужно указать SmartTemplate, где их найти."
+    },
+    "basepath.desc2": {
+        "message": "Переменная 'basepath' вставит HTML-тег 'base', чтобы найти все изображения, основанные на начальном местоположении - его можно использовать только один раз в электронном письме."
+    },
+    "basepath.relative": {
+        "message": "Используйте эту переменную, чтобы найти изображения в том же месте, что и шаблон HTML-файла."
+    },
+    "brack_with_var.label": {
+        "message": "Следующие переменные можно использовать внутри [[...]]"
+    },
+    "btn-extend-license": {
+        "message": "Я хочу продлить лицензию на один год"
+    },
+    "btn-renew-license": {
+        "message": "Я хочу продлить свою лицензию"
+    },
+    "btn-upgrade-to-pro": {
+        "message": "Я хочу улучшить свою лицензию"
+    },
+    "btn-want-a-license": {
+        "message": "Я хочу купить лицензию"
+    },
+    "btn-want-to-donate": {
+        "message": "Я хочу помочь разовым пожертвованием."
+    },
+    "btnLoadTemplate.tooltip": {
+        "message": "Загрузить шаблон…"
+    },
+    "btnSaveTemplate.tooltip": {
+        "message": "Сохранить шаблон…"
+    },
+    "btnYouTube.tooltip": {
+        "message": "Посетите YouTube канал 'Thunderbird ежедневно' - для советов и руководств по использованию Stationery и других дополнений"
+    },
+    "button.pasteLicense": {
+        "message": "вставить"
+    },
+    "button.updateThunderbird": {
+        "message": "Обновить Thunderbird!"
+    },
+    "button.validateLicense": {
+        "message": "проверить"
+    },
+    "buyDomainLicense.button": {
+        "message": "Купить групповую лицензию"
+    },
+    "buyDomainLicense.instruct": {
+        "message": "Нужна лицензия для группы с пятью пользователями и более? Групповая лицензия будет дешевле:"
+    },
+    "buyPremiumLicense.button": {
+        "message": "Купить Pro License!"
+    },
+    "buyPremiumLicense.instruct": {
+        "message": "Хотите использовать все премиальные функции без ограничений? Получите лицензию SmartTemplate® Pro. Он привязан к вашему личному адресу электронной почты и может использоваться в нескольких установках."
+    },
+    "buyStandardLicense.button": {
+        "message": "Купить стандартную лицензию!"
+    },
+    "buyStandardLicense.instruct": {
+        "message": "Не можете позволить себе премиум функции? Получите очень доступную стандартную лицензию и продолжайте тестировать премиальные функции."
+    },
+    "calculate.explain": {
+        "message": "DD = количество дней для добавления. H = количество добавляемых часов (необязательно). MM = минуты для добавления (необязательно)"
+    },
+    "calculate.reset": {
+        "message": "Установите переменную в 0, чтобы прекратить изменять любые даты."
+    },
+    "cancel_button": {
+        "message": "Отмена"
+    },
+    "capitalizeNames": {
+        "message": "Имена - заглавными буквами"
+    },
+    "cc.label": {
+        "message": "Инициалы получателя (стандарт)"
+    },
+    "cc_note.label": {
+        "message": "Если имя отсутствует, будет использован адрес"
+    },
+    "cc_var.cap": {
+        "message": "Получатель (Копия)"
+    },
+    "ccfirstname.label": {
+        "message": "Имя получателя"
+    },
+    "ccmail.label": {
+        "message": "Адрес получателя копии"
+    },
+    "ccname.label": {
+        "message": "Фамилия получателя"
+    },
+    "close.label": {
+        "message": "Закрыть"
+    },
+    "conditional.forwardMode": {
+        "message": "Если письмо пересылается внутри сообщения, то будет вставлен первый текстовый параметр. Второй текстовый параметр будет использован в том случае, если письмо пересылается как вложение."
+    },
+    "conditionals.cap": {
+        "message": "Условный текст"
+    },
+    "conditionals.note": {
+        "message": "Этот класс переменных может использоваться для вставки текста в зависимости от того, как вы отправляете почту. Необходимо наличие лицензии SmartTemplates Pro."
+    },
+    "contextError": {
+        "message": "Переменная {1} не может быть использована для НОВЫХ сообщений!\\nСписок возможных переменных указан в справке"
+    },
+    "contribute_button": {
+        "message": "Поддержать"
+    },
+    "contributor.label": {
+        "message": "Участник"
+    },
+    "copy.label": {
+        "message": "Копировать"
+    },
+    "cost-of-independence": {
+        "message": "Разработка программного обеспечения требует времени и денег - в отличие от многих приложений на платформе, надстройки не разрабатываются крупными корпорациями и никоим образом не спонсируются Mozilla."
+    },
+    "creator.label": {
+        "message": "Создатель"
+    },
+    "cursor.label": {
+        "message": "Установить позицию курсора"
+    },
+    "customdf_note.label": {
+        "message": "Может быть использована с &#37;X:=sent&#37;"
+    },
+    "d.label": {
+        "message": "День месяца (01-31)"
+    },
+    "date.label": {
+        "message": "Дата / Время (из сообщения)"
+    },
+    "dateformat.example": {
+        "message": "Пример:"
+    },
+    "dateformat.explain": {
+        "message": "Большинство временных переменных, указанных выше, можно использовать в строке параметров, опуская '&#37;'. Смотрите также:"
+    },
+    "dateformat.label": {
+        "message": "Функция для вставки текущего времени (кликабельное поле)."
+    },
+    "datelocal.label": {
+        "message": "Дата / время (локальный формат)"
+    },
+    "dateoffset_note.label": {
+        "message": "Следующая функция добавляет смещение ко всем следующим отображаемым временам."
+    },
+    "dateshort.label": {
+        "message": "Дата / время кратко (01.01.2000 1:23:45)"
+    },
+    "datetimezone.label": {
+        "message": "Часовогй пояс (+0100, +0200, ...)"
+    },
+    "datetz.label": {
+        "message": "Часовогй пояс (+0100, +0200, ...)"
+    },
+    "day.1.name": {
+        "message": "Воскресенье"
+    },
+    "day.1.short": {
+        "message": "Вс"
+    },
+    "day.2.name": {
+        "message": "Понедельник"
+    },
+    "day.2.short": {
+        "message": "Пн"
+    },
+    "day.3.name": {
+        "message": "Вторник"
+    },
+    "day.3.short": {
+        "message": "Вт"
+    },
+    "day.4.name": {
+        "message": "Среда"
+    },
+    "day.4.short": {
+        "message": "Ср"
+    },
+    "day.5.name": {
+        "message": "Четверг"
+    },
+    "day.5.short": {
+        "message": "Чт"
+    },
+    "day.6.name": {
+        "message": "Пятница"
+    },
+    "day.6.short": {
+        "message": "Пт"
+    },
+    "day.7.name": {
+        "message": "Суббота"
+    },
+    "day.7.short": {
+        "message": "Сб"
+    },
+    "defaultMimeFormat": {
+        "message": "Формат адреса по умолчанию:"
+    },
+    "defaultMimeFormat_tip": {
+        "message": "Формат для использования при замене обычных &#37;to&#37; &#37;from&#37; &#37;cc&#37; адресов. Например. 'firstname,lastname,??mail' покажет имя, за которым следует фамилия; если оба недоступны, он покажет адрес электронной почты."
+    },
+    "deleteQuotedTags": {
+        "message": "Удаляет теги из цитаты"
+    },
+    "deleteQuotedText": {
+        "message": "Удаляет цитируемый текст"
+    },
+    "deleteText": {
+        "message": "Удалить текст,  к примеру deleteText(&quot;via Paypal&quot;)"
+    },
+    "developer.label": {
+        "message": "Разработчик"
+    },
+    "domainLicense.email": {
+        "message": "Мы свяжемся с вами в течении 2 рабочих дней по указанному адресу электронной почты для генерирования групповой лицензии. Укажите имя домена для лицензии на следующей странице."
+    },
+    "domainLicense.header": {
+        "message": "Имя домена для лицензии"
+    },
+    "domainLicense.instruct": {
+        "message": "Эта лицензия привязана к имени домена вашей компании. Эта лицензия позволяет пользователям с адресами электронной почты, начинающимеся на это доменное имя, пользоваться SmartTemplates Pro. К примеру, если указано доменное имя  'abc.com', то пользователи с адресами fred@abc.com, martha@abc.com, mike.doe@abc.com могут пользоваться этой лицензией. Максимальное число пользователей этой лицензии было указано в первом диалоге."
+    },
+    "domainLicense.validate": {
+        "message": "Введите доменное имя точно так, как оно указано в адресе электронной почты вашей компании (часть после знака @), так как мы будем использовать его для авторизации адресов электронной почты ваших пользователей."
+    },
+    "donate": {
+        "message": "Помогите с разовым пожертвованием."
+    },
+    "donate-heading": {
+        "message": "Помогите пожертвованием!"
+    },
+    "e.label": {
+        "message": "День месяца (1-31)"
+    },
+    "edit.label": {
+        "message": "Правка"
+    },
+    "email.label": {
+        "message": "Адрес:"
+    },
+    "enterLicenseKey.button": {
+        "message": "Ввести лицензионный ключ…"
+    },
+    "enterLicenseKey.tooltip": {
+        "message": "Ввести присланный лицензионный ключ."
+    },
+    "ex_brack.label": {
+        "message": "Пример: To: Адриан | Cc: Алёша"
+    },
+    "export.label": {
+        "message": "Экспорт"
+    },
+    "extend-your-license": {
+        "message": "Рассмотрите возможность продления лицензии на год."
+    },
+    "extensionDescription": {
+        "description": "Description of the extension.",
+        "message": "Мощный способ создавать индивидуальные ответы путем автоматической вставки различных заголовков сообщений. Шаблоны могут быть созданы для каждого почтового идентификатора, также поддерживаются внешние файлы html и таблицы стилей."
+    },
+    "extensionName": {
+        "description": "Name of the extension.",
+        "message": "SmartTemplates"
+    },
+    "extensions.smarttemplate4@thunderbird.extension.description": {
+        "message": "SmartTemplates настраивает заголовок цитат для каждой учётной записи."
+    },
+    "file.label": {
+        "message": "Файл"
+    },
+    "fileCSS.label": {
+        "message": "Внешняя таблица стилей (CSS). Включите ваши любимые правила CSS для обмена между различными шаблонами."
+    },
+    "fileHTML.label": {
+        "message": "HTML или текстовый файл. Если кодировка не указана, будет использована UTF-8."
+    },
+    "fileImage.label": {
+        "message": "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText."
+    },
+    "fileTemplates.add": {
+        "message": "Add"
+    },
+    "fileTemplates.down": {
+        "message": "Down"
+    },
+    "fileTemplates.file.open": {
+        "message": "Select template file from disk"
+    },
+    "fileTemplates.file.path": {
+        "message": "Template location:"
+    },
+    "fileTemplates.file.title": {
+        "message": "Title:"
+    },
+    "fileTemplates.file.title.tooltip": {
+        "message": "This will be displayed in the template selection menu."
+    },
+    "fileTemplates.fwd.tooltip": {
+        "message": "List of external template files that can be launched from the 'Forward' button."
+    },
+    "fileTemplates.new.tooltip": {
+        "message": "List of external template files that can be launched from the 'Create new Message' button."
+    },
+    "fileTemplates.remove": {
+        "message": "Remove"
+    },
+    "fileTemplates.rsp.tooltip": {
+        "message": "List of external template files that can be launched from the 'Reply' button."
+    },
+    "fileTemplates.title": {
+        "message": "Template Files"
+    },
+    "fileTemplates.up": {
+        "message": "Up"
+    },
+    "fileTemplates.update": {
+        "message": "Update"
+    },
+    "firstName.label": {
+        "message": "Имя:"
+    },
+    "fix_var.cap": {
+        "message": "Переменные"
+    },
+    "fix_vartz.cap": {
+        "message": "Переменные для даты и часового пояса"
+    },
+    "fix_vartz_note.label": {
+        "message": "Может быть использована с &#37;X:=sent&#37;"
+    },
+    "fpFilterHtmlTemplate": {
+        "message": "HTML шаблон"
+    },
+    "fpFilterName": {
+        "message": "Файл SmartTemplate4"
+    },
+    "fpFolder": {
+        "message": "скоросшиватель"
+    },
+    "fpHTMLFile": {
+        "message": "HTML-файл / Текстовый файл"
+    },
+    "fpImageFile": {
+        "message": "Картинка"
+    },
+    "fpJsonFile": {
+        "message": "Файл JSON"
+    },
+    "fpStyle": {
+        "message": "Страница таблицы стилей"
+    },
+    "freeLicense": {
+        "message": "Если вы недавно поддержали проект или помогли переводом или исправлением, возможно вам положен бесплатный лицензионный ключ.  Свяжитесь со мной, контактные данные можно найти в настройках."
+    },
+    "from.label": {
+        "message": "Инициалы отправителя (стандарт)"
+    },
+    "from_note.label": {
+        "message": "Если имя отсутствует, будет использован адрес"
+    },
+    "from_var.cap": {
+        "message": "Отправитель (От)"
+    },
+    "fromfirstname.label": {
+        "message": "Имя отправителя"
+    },
+    "frommail.label": {
+        "message": "Адрес отправителя"
+    },
+    "fromname.label": {
+        "message": "Фамилия отправителя"
+    },
+    "getSmartTemplate4": {
+        "message": "Получить лицензию SmartTemplates"
+    },
+    "guessNameFromMail": {
+        "message": "Угадайте название части из адреса электронной почты, если отсутствует"
+    },
+    "h.label": {
+        "message": "Часы (00-23)"
+    },
+    "header.append.subject": {
+        "message": "добавить к теме текст"
+    },
+    "header.append.to": {
+        "message": "добавить адресата сообщения"
+    },
+    "header.delete.subject": {
+        "message": "удалить текст из темы (регулярное выражение)"
+    },
+    "header.prefix.subject": {
+        "message": "добавить текст перед темой"
+    },
+    "header.set.from": {
+        "message": "устанавливает адрес отправителя. Это принимает только адреса электронной почты из списка личностей."
+    },
+    "header.set.subject": {
+        "message": "заменить тему на текст"
+    },
+    "header.set.to": {
+        "message": "заменить адресата сообщения"
+    },
+    "header_function.cap": {
+        "message": "Изменять заголовок сообщения"
+    },
+    "header_function.explain": {
+        "message": "Эта функция может изменять заголовки сообщения как описано далее:"
+    },
+    "header_function.scope": {
+        "message": "Могут быть изменены следующие элементы заголовка:"
+    },
+    "heading-installed": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "Успешно установлено $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "heading-updated": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ успешно обновлен",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "heading.click": {
+        "message": "Щелкните заголовок или"
+    },
+    "heading.expandAll": {
+        "message": "развернуть все записи"
+    },
+    "help.label": {
+        "message": "Справка"
+    },
+    "help_dialog_title": {
+        "message": "Справка SmartTemplates"
+    },
+    "help_keyword.cap": {
+        "message": "Справка"
+    },
+    "html_note.cap": {
+        "message": "Замечание для HTML шаблонов."
+    },
+    "html_note.label": {
+        "message": "Используйте только UTF-8 (Уникод) в HTML шаблонах!"
+    },
+    "i.label": {
+        "message": "Часы (01-12)"
+    },
+    "identity_ab": {
+        "message": "Используйте ключевое слово «addressbook», чтобы получить дополнительную идентификационную информацию из адресной книги."
+    },
+    "identity_ab.example": {
+        "message": "пример"
+    },
+    "identity_ab.field": {
+        "message": "Дополнительные значения полей см. В главе «Поля адресной книги» ниже."
+    },
+    "identity_ab.phoneno": {
+        "message": "Телефонный номер"
+    },
+    "im-ex.cap": {
+        "message": "Экспорт / импорт настроек и шаблонов"
+    },
+    "im-ex_note1.label": {
+        "message": "Вы можете экспортировать и импортировать настройки и шаблоны любой учетной записи."
+    },
+    "im-ex_note2.label": {
+        "message": "Для начала выберите желаемую учетную запись."
+    },
+    "im-ex_note3.label": {
+        "message": "Далее выберите в меню 'Инструменты' ⇒ 'Экспорт' ⇒ 'Настройки и шаблоны' и сохраните файл (xxx.st4)."
+    },
+    "im-ex_note4.label": {
+        "message": "Для импорта сначала выберите учетную запись, а потом в меню 'Инструменты' ⇒ 'Импорт' ⇒ 'Настройки и шаблоны'."
+    },
+    "im-ex_note5.label": {
+        "message": "Выберите файл (xxx.st4) для импорта."
+    },
+    "im-ex_note6.label": {
+        "message": "Внимание: На Apple/Macintosh меню находится в ленте, а не в окне. Это нормальная особенность этой платформы."
+    },
+    "import.label": {
+        "message": "Импорт"
+    },
+    "insert.label": {
+        "message": "Вставить поле"
+    },
+    "intro": {
+        "message": "Годовая лицензия позволяет использовать премиум-функции один год. У нас же появляется возможность поддерживать и расширять продукт, делая его более значимым."
+    },
+    "k.label": {
+        "message": "Часы (0-23)"
+    },
+    "l.label": {
+        "message": "Часы (1-12)"
+    },
+    "label-remind-me": {
+        "message": "Напомнить мне снова через $countDays$ дн.",
+        "placeholders": {
+            "countDays": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    },
+    "label.haveLicense": {
+        "message": "Уже есть лицензионный ключ?"
+    },
+    "label.insertLicense": {
+        "message": "Вставить лицензионный ключ сюда:"
+    },
+    "label.insertLicense.tooltip": {
+        "message": "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ."
+    },
+    "label.licenseValid": {
+        "message": "Лицензионный ключ действителен до:"
+    },
+    "label.premiumFeaturesSite": {
+        "message": "Узнать больше о премиум-функциях на нашей странице…"
+    },
+    "lastName.label": {
+        "message": "Фамилия:"
+    },
+    "license-is-extended": {
+        "description": "Shown if license expires more than a year from now",
+        "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно."
+    },
+    "license-is-standard": {
+        "description": "Special message for standard license holders",
+        "message": "Как обладатель стандартной лицензии SmartTemplates, вы теперь имеете право на обновление со скидкой и продление на целый год. Для получения дополнительных сведений нажмите кнопку [Обновить до Pro] под стандартной лицензией."
+    },
+    "licenseTypes": {
+        "message": "В дальнейшем SmartTemplates предлагает две лицензии, Standard и Pro; это необходимо для того, чтобы не отставать от изменений в платформе Thunderbird и финансировать инновации и ремонт дополнения. Поскольку критические изменения внедряются в годовом цикле, лицензия также будет действовать в течение 1 года."
+    },
+    "licenseValidation.expired": {
+        "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
+    },
+    "licenseValidation.failed": {
+        "message": "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring . Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;)."
+    },
+    "licenseValidation.invalidAddon": {
+        "message": "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}."
+    },
+    "licenseValidation.invalidMail": {
+        "message": "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках."
+    },
+    "licenseValidation.notMatchedMail": {
+        "message": "Зашифрованный адрес не совпадает с имеющимся."
+    },
+    "licenseValidation.passed": {
+        "message": "Спасибо за регистрацию! Вы можете пользоваться всеми премиум функциями."
+    },
+    "licenseValidation.standard": {
+        "message": "Спасибо за регистрацию SmartTemplates Standard - Вы очень помогаете дополнению! Теперь вы также можете протестировать все функции премиум-класса."
+    },
+    "licenseWindow.title": {
+        "message": "SmartTemplates Лицензия"
+    },
+    "localedate.label": {
+        "message": "Дата / время (локальный формат)"
+    },
+    "localename.label": {
+        "message": "ru"
+    },
+    "localized.label": {
+        "message": "Переводчик"
+    },
+    "m.label": {
+        "message": "Месяц (01-12)"
+    },
+    "matchTextFromBody": {
+        "message": "Найти шаблон регулярного выражения в цитируемом сообщении и добавить найденное в месте использования функции."
+    },
+    "matchTextFromSubject": {
+        "message": "Найти шаблон регулярного выражения в заголовке и добавить найденное в месте использования функции."
+    },
+    "menu.template_export.label": {
+        "message": "Экспорт шаблона"
+    },
+    "menu.template_import.label": {
+        "message": "Импорт шаблона"
+    },
+    "message_default_title": {
+        "message": "SmartTemplates"
+    },
+    "messid.label": {
+        "message": "Идентификатор"
+    },
+    "minSize": {
+        "message": "[необязательный, числовой] - количество килобайт, минимальный размер для удаления тега. Таким образом, вы можете сохранить меньшие изображения, такие как значки / смайлики, отказываясь от больших изображений."
+    },
+    "minSize_detail": {
+        "message": "Не всегда возможно определить размер, особенно если Thunderbird все еще загружает изображение, часто из-за большого размера - в этом случае тег будет удален в любом случае."
+    },
+    "month.1.name": {
+        "message": "Января"
+    },
+    "month.1.short": {
+        "message": "Янв"
+    },
+    "month.10.name": {
+        "message": "Октября"
+    },
+    "month.10.short": {
+        "message": "Окт"
+    },
+    "month.11.name": {
+        "message": "Ноября"
+    },
+    "month.11.short": {
+        "message": "Нояб"
+    },
+    "month.12.name": {
+        "message": "Декабря"
+    },
+    "month.12.short": {
+        "message": "Дек"
+    },
+    "month.2.name": {
+        "message": "Февраля"
+    },
+    "month.2.short": {
+        "message": "Фев"
+    },
+    "month.3.name": {
+        "message": "Марта"
+    },
+    "month.3.short": {
+        "message": "Март"
+    },
+    "month.4.name": {
+        "message": "Апреля"
+    },
+    "month.4.short": {
+        "message": "Апр"
+    },
+    "month.5.name": {
+        "message": "Мая"
+    },
+    "month.5.short": {
+        "message": "Май"
+    },
+    "month.6.name": {
+        "message": "Июня"
+    },
+    "month.6.short": {
+        "message": "Июнь"
+    },
+    "month.7.name": {
+        "message": "Июля"
+    },
+    "month.7.short": {
+        "message": "Июль"
+    },
+    "month.8.name": {
+        "message": "Августа"
+    },
+    "month.8.short": {
+        "message": "Авг"
+    },
+    "month.9.name": {
+        "message": "Сентября"
+    },
+    "month.9.short": {
+        "message": "Сен"
+    },
+    "mozillas-basic-platform": {
+        "message": "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."
+    },
+    "n.label": {
+        "message": "Месяц (1-12)"
+    },
+    "newsgr.label": {
+        "message": "Группа новостей"
+    },
+    "no_button": {
+        "message": "нет"
+    },
+    "notificationTitle": {
+        "description": "Title of the click notification.",
+        "message": "Click notification"
+    },
+    "ongoing-work": {
+        "message": "Изменения для преобразования $addonName$ в новую модель программирования заняли недели и были дорогостоящими. В следующей версии 2022 года есть еще много изменений. С таким сложным дополнением дорогостоящая работа становится неизбежной. Пожалуйста, помогите нам с этим.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "ownmail.label": {
+        "message": "Ваш адрес"
+    },
+    "ownname.label": {
+        "message": "Ваше имя"
+    },
+    "p.label": {
+        "message": "до / после полудня"
+    },
+    "p1.label": {
+        "message": "д.п."
+    },
+    "p2.label": {
+        "message": "Д.П."
+    },
+    "p3.label": {
+        "message": "ДП"
+    },
+    "paste.label": {
+        "message": "Вставить"
+    },
+    "pref_StatusIcon.IconHoverText": {
+        "message": "Текст под мышкой"
+    },
+    "pref_StatusIcon.IconOnly": {
+        "message": "Только значок"
+    },
+    "pref_StatusIcon.IconText": {
+        "message": "Значок  и текст"
+    },
+    "pref_about.tab": {
+        "message": "О"
+    },
+    "pref_addSigBreakHTML.label": {
+        "message": "Вставка -- в HTML сообщение"
+    },
+    "pref_addSigBreakHTML.tooltip": {
+        "message": "Всегда добавлять разделитель -- перед подписью (в письмах в формате HTML)"
+    },
+    "pref_addSigBreakPlaintext.label": {
+        "message": "Вставка -- в обычнoe сообщение"
+    },
+    "pref_addSigBreakPlaintext.tooltip": {
+        "message": "Всегда добавлять разделитель -- перед подписью (в обычных текстовых письмах)"
+    },
+    "pref_addressDelimiter": {
+        "message": "Разделитель в списке корреспондентов:"
+    },
+    "pref_addressDelimiter_tip": {
+        "message": "Разделитель между несколькими корреспондентами. Outlook использует точку с запятой (;), Thunderbird  стандартно запятую (,)"
+    },
+    "pref_advanced.tab": {
+        "message": "Дополнительные параметры"
+    },
+    "pref_breaksOnTop.label": {
+        "message": "Количество переводов строк в начале:"
+    },
+    "pref_cursorInsertSpace": {
+        "message": "Вставлять пробел для подчеркивания &#37;cursor&#37;"
+    },
+    "pref_debug_check": {
+        "message": "Режим отладки"
+    },
+    "pref_debug_tip": {
+        "message": "Для настроек режима отладки нажмите правую кнопку мыши"
+    },
+    "pref_def.cap": {
+        "message": "Отключить 'Использовать общие настройки' для создания индивидуального заголовка цитат для этой учётной записи."
+    },
+    "pref_def.label": {
+        "message": "Использовать общие настройки"
+    },
+    "pref_defaultCharset.label": {
+        "message": "Стандартная кодировка"
+    },
+    "pref_defaultCharset_tip": {
+        "message": "Использовать эту кодировку при чтении заголовков, если кодировка не определяется."
+    },
+    "pref_dialog.title": {
+        "message": "Настройки SmartTemplates"
+    },
+    "pref_examples.tab": {
+        "message": "Примеры (только при наличии подключения к Интернету)"
+    },
+    "pref_examples.tooltip": {
+        "message": "Показывать примеры с https://smarttemplates.quickfolders.org/templates.html. Доступно только при наличии подключения к Интернету. "
+    },
+    "pref_fontSettings.label": {
+        "message": "Шрифт редактора шаблонов"
+    },
+    "pref_forceParagraph": {
+        "message": "Принудительный режим абзаца"
+    },
+    "pref_forceParagraph_tip": {
+        "message": "Курсор всегда устанавливается в пределах абзаца. Мы рекомендуем использовать настройку составления в Thunderbird, для создания нового абзаца при нажатии клавиши [Ввод]"
+    },
+    "pref_fwd.label": {
+        "message": "Использовать следующий шаблон при пересылке сообщений"
+    },
+    "pref_fwd.tab": {
+        "message": "Переслать"
+    },
+    "pref_fwdhead.label": {
+        "message": "Отключить стандартный заголовок цитат"
+    },
+    "pref_fwdmsg.cap": {
+        "message": "Переслать"
+    },
+    "pref_global.tab": {
+        "message": "Общие настройки"
+    },
+    "pref_groupAdvanced": {
+        "message": "Дополнительные функции"
+    },
+    "pref_groupMailContent": {
+        "message": "Содержимое сообщения"
+    },
+    "pref_groupNameRules": {
+        "message": "Правила для имен"
+    },
+    "pref_groupSignatures": {
+        "message": "Подпись"
+    },
+    "pref_groupTroubleShooting": {
+        "message": "Решение проблем"
+    },
+    "pref_groupUI": {
+        "message": "Интерфейс пользователя"
+    },
+    "pref_help.tab": {
+        "message": "Справка"
+    },
+    "pref_hideExamples": {
+        "message": "Спрятать вкладку с примерами"
+    },
+    "pref_html.cap": {
+        "message": "В данном случае шаблон используется как HTML-код. К примеру, новые строки, если не содержат &lt;br&gt;, не переносятся (если не включена опция ниже). Также могут использоваться HTML-символы:  &quot; , &amp; , &lt; , &gt; , пробел. Если отключено, все HTML-теги будут отображаться в сообщении в виде обычного текста. См. в справке."
+    },
+    "pref_html.label": {
+        "message": "Шаблон в формате HTML (например &lt; b &gt;жирный &lt; /b &gt;)"
+    },
+    "pref_nameSwap": {
+        "message": "Исправить фамилию, имя"
+    },
+    "pref_nameSwap_tip": {
+        "message": "Меняет 'фамилия, имя' на 'имя, фамилия'"
+    },
+    "pref_new.label": {
+        "message": "Использовать следующий шаблон при создании нового сообщения"
+    },
+    "pref_new.tab": {
+        "message": "Создать"
+    },
+    "pref_newmsg.cap": {
+        "message": "Создать"
+    },
+    "pref_parseSignature": {
+        "message": "Обрабатывать подпись"
+    },
+    "pref_parseSignature_tip": {
+        "message": "Заменять переменные в подписи"
+    },
+    "pref_quoteHeaderBox.label": {
+        "message": "Заголовок цитат"
+    },
+    "pref_quoteHeaderBox_tip": {
+        "message": "Напишите свой заголовок цитат, к примеру &#37;from(name)&#37; писал &#37;date&#37;:"
+    },
+    "pref_quotehead_tip": {
+        "message": "Отключить стандартный заголовок цитат. Пожалуйста создайте свой заголовок цитат."
+    },
+    "pref_removeSig.label": {
+        "message": "Стирать подпись при смене адреса электронной почты"
+    },
+    "pref_rep_br.cap": {
+        "message": "Внимание: при одноразовом использовании &lt;br&gt; пробелы не будут вставлены."
+    },
+    "pref_rep_br.label": {
+        "message": "Заменять новые строки (в тексте шаблона) HTML-тегом &lt;br&gt; (в сообщении). См. в справке."
+    },
+    "pref_rsp.label": {
+        "message": "Использовать следующий шаблон при ответе на сообщение"
+    },
+    "pref_rsp.tab": {
+        "message": "Ответить"
+    },
+    "pref_rsphead.label": {
+        "message": "Использовать вместо стандартного заголовка цитат"
+    },
+    "pref_rspmsg.cap": {
+        "message": "Ответить"
+    },
+    "pref_server_def": {
+        "message": "Общие настройки"
+    },
+    "pref_server_desc": {
+        "message": "Учётная запись"
+    },
+    "pref_showStatusIcon.label": {
+        "message": "Кнопка в строке состояния"
+    },
+    "pref_sigReplaceBR.label": {
+        "message": "&lt;br&gt; вместо перевода строк в текстовой подписи"
+    },
+    "pref_silentUpdates": {
+        "message": "Тихие обновления"
+    },
+    "pref_silentUpdates_tip": {
+        "message": "Не открывайте журнал изменений после обновления SmartTemplates."
+    },
+    "pref_stationeryLink": {
+        "message": "Расширение Stationery"
+    },
+    "pref_stationeryLink_tip": {
+        "message": "Загрузить расширение"
+    },
+    "pref_stationerySupport": {
+        "message": "Поддержка расширения Stationery"
+    },
+    "pref_stationerySupport_tip": {
+        "message": "Совместное использование с расширением Stationery."
+    },
+    "pref_stationerySupport_tip2": {
+        "message": "Позволяет использовать переменные в шаблонах Stationery."
+    },
+    "pref_templateBox.label": {
+        "message": "Шаблон"
+    },
+    "pref_templateBox_tip": {
+        "message": "Напишите свой шаблон, к примеру Привет &#37;from(name)&#37;&lt;br&gt; Спасибо за сообщение &lt;br&gt; Всего наилучшего, &#37;ownname&#37;"
+    },
+    "pref_template_tip": {
+        "message": "Вы можете использовать переменные, описанные в справке."
+    },
+    "pref_variables.tab": {
+        "message": "Переменные"
+    },
+    "premiumConfig": {
+        "message": "Премиум-функции"
+    },
+    "prompt.email": {
+        "message": "Введите адрес"
+    },
+    "prompt.text": {
+        "message": "Введите текст"
+    },
+    "purchase-a-license": {
+        "message": "Купите лицензию."
+    },
+    "purchase-heading": {
+        "message": "Покупка лицензии!"
+    },
+    "quoteLevel": {
+        "message": "[необязательный, числовой]: с какого минимального уровня котировки начинать"
+    },
+    "quotePlaceholder": {
+        "message": "Это перемещает цитируемую часть в сам текст шаблона. Раздел заголовка цитаты из шаблонов аккаунтов будет перемещен в верхнюю часть цитаты."
+    },
+    "quotePlaceholder.level": {
+        "message": "[необязательно, числовой] Максимальный уровень цитирования для удаления старых цитат из беседы."
+    },
+    "quote_changers.cap": {
+        "message": "Изменение цитаты"
+    },
+    "quote_changers.desc": {
+        "message": "Премиум переменные для удаления текста / тегов из указанных частей и экономии места."
+    },
+    "regexpAnyText": {
+        "message": "Любой текст - регулярное выражение - должен быть в двойных кавычках."
+    },
+    "renew-your-license": {
+        "message": "Продлите лицензию."
+    },
+    "replaceQuotedTags": {
+        "message": "Заменяет теги из цитаты текстом или html"
+    },
+    "replaceQuotedText": {
+        "message": "Заменяет цитируемый текст HTML"
+    },
+    "replaceText": {
+        "message": "Заменить один текст на другой."
+    },
+    "replacementHTML": {
+        "message": "должен быть в двойных кавычках - либо текст, либо HTML-тег, который будет вставлен в кавычки, когда совпадение найдено."
+    },
+    "resolveABRemoveMail": {
+        "message": "Скрыть адрес если он не используется как параметр в шаблоне"
+    },
+    "resolveNamesFromAB": {
+        "message": "Брать имена из адресных книг"
+    },
+    "resolveNamesFromABDisplay": {
+        "message": "Используйте отображаемое имя, если имя отсутствует"
+    },
+    "resolveNamesFromABNick": {
+        "message": "При наличии псевдонима пользоваться им вместо имени"
+    },
+    "resolveNamesFromAB_tip": {
+        "message": "Эта функция работает не со всеми удалёнными адресными книгами, как то каталог LDAP"
+    },
+    "s.label": {
+        "message": "Секунды (00-59)"
+    },
+    "selector": {
+        "message": "- что бы вы использовали для адресации тега в css. в простейшем случае 'img' или 'p', но можно добавлять селекторы атрибутов, если можно избежать двойных кавычек."
+    },
+    "settings.label": {
+        "message": "Настройки и Шаблоны"
+    },
+    "shortdate.label": {
+        "message": "Дата / время кратко (01.01.2000 1:23:45)"
+    },
+    "sig.label": {
+        "message": "Подпись"
+    },
+    "sig2.label": {
+        "message": "Подпись, но без '--'"
+    },
+    "smartTemplate4.changeTemplate.label": {
+        "message": "Change template…"
+    },
+    "smartTemplate4.changeTemplate.tooltip": {
+        "message": "Load a different template - use before editing the Email!"
+    },
+    "smartTemplate4.changetemplate.label": {
+        "message": "Изменить шаблон…"
+    },
+    "smartTemplate4.changetemplate.tooltip": {
+        "message": "Выбирает другой шаблон - используйте перед редактированием в теле письма!"
+    },
+    "smartTemplate4.cleandeferred.label": {
+        "message": "Убирайся!"
+    },
+    "smartTemplate4.cleandeferred.tooltip": {
+        "message": "Очистить все переменные SmartTemplate"
+    },
+    "smartTemplate4.deferredcontext.cleanup": {
+        "message": "Обновить и заменить контентом"
+    },
+    "smartTemplate4.deferredcontext.delete": {
+        "message": "Удалить переменную SmartTemplates"
+    },
+    "smartTemplate4.deferredcontext.update": {
+        "message": "Обновить содержимое SmartTemplates"
+    },
+    "smartTemplate4.settings.label": {
+        "message": "SmartTemplates"
+    },
+    "smartTemplate4.settings.tooltip": {
+        "message": "Настройки SmartTemplates"
+    },
+    "smarttemplate4_button": {
+        "message": "Правка шаблона / заголовок цитат"
+    },
+    "smarttemplate4_title": {
+        "message": "SmartTemplates"
+    },
+    "spec_form.cap": {
+        "message": "Переключатели адресного поля"
+    },
+    "spec_var.cap": {
+        "message": "Специальное"
+    },
+    "specform_note.label": {
+        "message": "Выражение в скобках [[Cc: &#37;cc(name)&#37;]] будет выведено, если переменная &#37;cc(name)&#37; имеет значение!"
+    },
+    "spellcheck.label": {
+        "message": "Устанавливает язык проверки правописания. Примеры значений: (en, de-DE, es-ES, ru) - обратите внимание, что словарь должен быть установлен."
+    },
+    "standardformat.config": {
+        "message": "Настроить формат по умолчанию…"
+    },
+    "stringmanip.alttext": {
+        "message": "[необязательный параметр] Альтернативный текст: если совпадение не найдено, вместо него вставляется альтернативный текст."
+    },
+    "stringmanip.match.comment": {
+        "message": "Функции поиска шаблона регулярного выражения: первый параметр (регулярное выражение) должен быть в кавычках. Второй параметр - номер группы совпадения. 0 используется для всего выражения, 1 для первой группы и т. д."
+    },
+    "stringmanip_function.cap": {
+        "message": "Работа со строками"
+    },
+    "stringmanip_function.explain": {
+        "message": "С помощью этих функций можно удалять или заменять текст в шаблоне или в заголовке цитат."
+    },
+    "sub.label": {
+        "message": "тема отвечаемого / пересылаемого сообщения"
+    },
+    "sub2.label": {
+        "message": "тема нового сообщения"
+    },
+    "sub_var.cap": {
+        "message": "Тема"
+    },
+    "support-preference": {
+        "message": "Это предпочтительный способ поддержки $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "support-suggestion": {
+        "message": "Чтобы $addonName$ оставался работоспособным и живым, сделайте ему жизненно важную услугу:",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "support.compose": {
+        "message": "Написать в поддержку…"
+    },
+    "support.links": {
+        "message": "Ссылки поддержки"
+    },
+    "support.mail.instructions": {
+        "message": "Нажмите кнопку ниже, чтобы открыть новое письмо для поддержки. Если у вас возникли технические проблемы, рассмотрите возможность добавления снимка экрана."
+    },
+    "support.subject": {
+        "message": "Предмет:"
+    },
+    "support.tab": {
+        "message": "Служба поддержки"
+    },
+    "support.title": {
+        "message": "Почта в службу поддержки"
+    },
+    "support.type": {
+        "message": "Тип:"
+    },
+    "support.type.html": {
+        "message": "Помогите с HTML / CSS"
+    },
+    "support.type.license": {
+        "message": "Лицензирование связано"
+    },
+    "support.type.other": {
+        "message": "Другой"
+    },
+    "support.type.selectOne": {
+        "message": "Выберите тему!"
+    },
+    "support.type.tech": {
+        "message": "технический"
+    },
+    "suppressMailtToLink": {
+        "message": "Предотвращать добавление ссылок на адреса электронной почты."
+    },
+    "tab.gopro": {
+        "message": "SmartTemplates Pro"
+    },
+    "table.cap": {
+        "message": "Использование переменных"
+    },
+    "table_fwd.label": {
+        "message": "Переслать"
+    },
+    "table_keyword.label": {
+        "message": "Переменная"
+    },
+    "table_new.label": {
+        "message": "Создать"
+    },
+    "table_note.label": {
+        "message": "Неправильное использование переменных приведет к выводу сообщений об ошибках в 'консоли ошибок'!"
+    },
+    "table_reply.label": {
+        "message": "Ответить"
+    },
+    "testDriveS": {
+        "message": "Вы можете протестировать премиум-функции со стандартной лицензией, но они могут быть слегка ограничены."
+    },
+    "thanks-for-installing-intro": {
+        "message": "Спасибо за установку $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "thanks-for-updating-intro": {
+        "message": "Спасибо за обновление $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "time-and-effort": {
+        "message": "Мои дополнения требуют фундаментальных изменений, чтобы оставаться совместимыми с платформой Mozilla. Моя команда разработчиков в Github (Realraven2000, opto и paenglab) усердно работает над восстановлением полной функциональности для $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "timezone.explain": {
+        "message": "Принудительно установить часовой пояс для переменных даты, заменив параметр tz (GMT, EST, CST, PST и т. Д.)"
+    },
+    "timezonename.label": {
+        "message": "GMT, PST, EST, ..."
+    },
+    "tip.fileTemplates": {
+        "message": "Нажмите, чтобы прочитать полную документацию о канцелярских товарах и внешних шаблонах HTML на нашем сайте поддержки…"
+    },
+    "to.label": {
+        "message": "Инициалы получателя (стандарт)"
+    },
+    "to_note.label": {
+        "message": "Если имя отсутствует, будет использован адрес"
+    },
+    "to_var.cap": {
+        "message": "Получатель (Кому)"
+    },
+    "tofirstname.label": {
+        "message": "Имя получателя"
+    },
+    "tofwd.label": {
+        "message": "Используйте fwd для добавления интерактивного получателя в переадресованные письма"
+    },
+    "tomail.label": {
+        "message": "Адрес получателя"
+    },
+    "toname.label": {
+        "message": "Фамилия получателя"
+    },
+    "tools.label": {
+        "message": "Инструменты"
+    },
+    "translated-by-google": {
+        "description": "disclaimer.",
+        "message": "переводы предоставлены google"
+    },
+    "translatorNickname.label": {
+        "message": "Anton Pinsky (BabelZilla)"
+    },
+    "tzname.label": {
+        "message": "GMT, PST, EST, ..."
+    },
+    "updates.title": {
+        "message": "Обновления"
+    },
+    "updatesExpiry": {
+        "message": "SmartTemplates Pro обновляется автоматически. Через год можно будет либо продлить лицензию, либо пользоваться премиум-возможностями в ограниченном режиме. 'Эксклюзивные' возможности требуют регистрационный ключ."
+    },
+    "url.bugsAndFeaturesPage.label": {
+        "message": "Сообщение об ошибке / пожелание"
+    },
+    "url.homePage.label": {
+        "message": "Домашняя страница дополнения"
+    },
+    "url.supportPage.label": {
+        "message": "Страница поддержки"
+    },
+    "var_custom.cap": {
+        "message": "Переменные для настраиваемой даты"
+    },
+    "var_xsent.cap": {
+        "message": "Использовать &#37;X:=sent&#37;"
+    },
+    "vouchers.title": {
+        "message": "Ваучеры"
+    },
+    "whitespace_note": {
+        "message": "Обратите внимание, что пробел может быть лучше всего представлен как \\ s, потому что он также может содержать разрывы строк. Запятые и двойные кавычки не могут быть использованы."
+    },
+    "window-title": {
+        "description": "page title. first placeholder will be replaced with Add-on name",
+        "message": "Добро пожаловать в $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "xmail.label": {
+        "message": "X-Mailer"
+    },
+    "xsent_long.cap": {
+        "message": "Пример длинной строки:"
+    },
+    "xsent_long.label": {
+        "message": "&#37;X:=sent&#37; &#37;A&#37;, &#37;d&#37; &#37;8&#37;, &#37;Y&#37; в &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;"
+    },
+    "xsent_long_result.label": {
+        "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
+    },
+    "xsent_note.label": {
+        "message": "Дата / время имеют изначально текущие значения. В комбинации с &#37;X:=sent&#37; будет использовано значение из сообщения."
+    },
+    "xsent_short.cap": {
+        "message": "Пример короткой строки:"
+    },
+    "xsent_short.label": {
+        "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    },
+    "xsent_short_note.label": {
+        "message": "Следующие переменные могут быть использованы в обоих вариантах:"
+    },
+    "xsent_short_result.label": {
+        "message": "Результат: Вторник, 20 Декабря, 2011 в 4:11пп"
+    },
+    "yearlyLicense.premiumFeatures": {
+        "message": "SmartTemplates Pro позволяет неограниченно пользоваться премиум-функциями."
+    },
+    "yearlyLicense.premiumFeatures.moreInfoLink": {
+        "message": "Ещё о премиум-функциях."
+    },
+    "yearlyLicense.title": {
+        "message": "Годовая лицензия"
+    },
+    "yearlyLicense.usageTerm": {
+        "message": "Лицензия предназначена для частного пользования и привязана к адресу электронной почты. Её можно использовать на нескольких клиентах, если они используют зарегистрированный адрес."
+    },
+    "yearlyLicense.usageTerm1": {
+        "message": "Дополнительные адреса электронной почты не являются проблемой - они не требуют отдельной лицензии. В случае возникновения вопросов вы можете связаться со мной через вкладку 'Поддержка'."
+    },
+    "yes_button": {
+        "message": "Да"
     }
-  },
-
-  "heading-updated": {
-    "message": "$addonName$ успешно обновлен",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "heading-installed": {
-    "message": "Успешно установлено $addonName$",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  
-  "thanks-for-updating-intro": {
-    "message": "Спасибо за обновление $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "thanks-for-installing-intro": {
-    "message": "Спасибо за установку $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },  
-  
- "active-version-info" : {
-    "message": "Теперь вы используете {boldStart} версию $addonVer$ {boldEnd} на Thunderbird $appVer$.",
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
-      },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
-      }
-      
-    }
-  },  
-  
-  "license-is-extended" : {
-    "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно.",
-    "description": "Shown if license expires more than a year from now"
-  },
-  
-  "license-is-standard" : {
-    "message": "Как обладатель стандартной лицензии SmartTemplates, вы теперь имеете право на обновление со скидкой и продление на целый год. Для получения дополнительных сведений нажмите кнопку [Обновить до Pro] под стандартной лицензией.",
-    "description": "Special message for standard license holders"
-  },  
-  
-  "btn-upgrade-to-pro" : {
-    "message": "Я хочу улучшить свою лицензию"
-  },
-  
-  "time-and-effort": { 
-    "message": "Мои дополнения требуют фундаментальных изменений, чтобы оставаться совместимыми с платформой Mozilla. Моя команда разработчиков в Github (Realraven2000, opto и paenglab) усердно работает над восстановлением полной функциональности для $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "support-suggestion" : {
-    "message": "Чтобы $addonName$ оставался работоспособным и живым, сделайте ему жизненно важную услугу:",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "purchase-a-license" : {
-    "message" : "Купите лицензию."
-  }, 
-      
-  "renew-your-license" : {
-    "message" : "Продлите лицензию."
-  },  
-  
-  "extend-your-license" : {
-    "message" : "Рассмотрите возможность продления лицензии на год."
-  },  
-      
-  "donate" : {
-    "message" : "Помогите с разовым пожертвованием."
-  },   
-   
-  "purchase-heading" : {
-    "message" : "Покупка лицензии!"
-  }, 
-  
-  "support-preference" : {
-    "message": "Это предпочтительный способ поддержки $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  }, 
-
-  "ongoing-work": {
-    "message": "Изменения для преобразования $addonName$ в новую модель программирования заняли недели и были дорогостоящими. В следующей версии 2022 года есть еще много изменений. С таким сложным дополнением дорогостоящая работа становится неизбежной. Пожалуйста, помогите нам с этим.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "btn-want-a-license": {
-    "message" : "Я хочу купить лицензию"
-  } ,
-
-  "btn-extend-license": {
-    "message" : "Я хочу продлить лицензию на один год"
-  } ,
-
-
-  "btn-renew-license": {
-    "message" : "Я хочу продлить свою лицензию"
-  } ,
-
-  "donate-heading" : {
-    "message" : "Помогите пожертвованием!"
-  } ,
-
-  "cost-of-independence" : {
-    "message" : "Разработка программного обеспечения требует времени и денег - в отличие от многих приложений на платформе, надстройки не разрабатываются крупными корпорациями и никоим образом не спонсируются Mozilla."
-  } ,
-  
-  "mozillas-basic-platform" : {
-    "message" : "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."
-  } ,
-  
-  "addon-authors-struggle" : {
-    "message" : "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
-  } ,
-  
-  "btn-want-to-donate" : {
-    "message" : "Я хочу помочь разовым пожертвованием."
-  } ,
-  
-  "translated-by-google" : {
-    "message": "переводы предоставлены google",
-    "description": "disclaimer."
-  },
-  
-  "label-remind-me" : {
-    "message": "Напомнить мне снова через $countDays$ дн.",
-    "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
-  }
 }
