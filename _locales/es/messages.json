@@ -1,208 +1,1552 @@
 {
-  "extensionName": {
-    "message": "SmartTemplates",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Una forma poderosa de crear respuestas personalizadas insertando automáticamente varios encabezados de correo. Se pueden crear plantillas para cada identidad de correo, también admite archivos html externos y hojas de estilo.",
-    "description": "Description of the extension."
-  },
-
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
-  },
-  
-  "window-title": {
-    "message": "Bienvenido a $addonName$",
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+    "A.label": {
+        "message": "Día de la semana (Viernes)"
+    },
+    "B.label": {
+        "message": "Mes (Enero)"
+    },
+    "M.label": {
+        "message": "Minuto (00 a 59)"
+    },
+    "Parameters": {
+        "message": "Parámetros"
+    },
+    "SmartTemplate4.confirmVersionLink": {
+        "message": "¿Quiere que se muestre la lista de cambios de SmartTemplates?"
+    },
+    "SmartTemplate4.fileFunction.notExists": {
+        "message": "La función {0} no pudo encontrar o acceder al archivo. Verifique la ruta a continuación:"
+    },
+    "SmartTemplate4.fileTemplates": {
+        "message": "Archivos de plantilla"
+    },
+    "SmartTemplate4.fileTemplates.configureMenu": {
+        "message": "Configurar elementos de menú…"
+    },
+    "SmartTemplate4.fileTemplates.error.charSet": {
+        "message": "Problemas al convertir una plantilla HTML del juego de caracteres [{1}] \\nUsando datos de cadena sin formato en su lugar. \\nSi esto da como resultado caracteres ilegibles, intente agregar un 'meta charset"
+    },
+    "SmartTemplate4.fileTemplates.error.filePath": {
+        "message": "No se pudo cargar la plantilla de archivo '{0}' desde la ruta: \\n{1}\\nEl archivo puede haber sido eliminado o renombrado."
+    },
+    "SmartTemplate4.fileTemplates.openFile": {
+        "message": "Abra el archivo de plantilla SmartTemplates ..."
+    },
+    "SmartTemplate4.fileTemplates.replaceStationery": {
+        "message": "Desde Thunderbird 68 en adelante, desafortunadamente 'Stationery' ya no funciona.\\nPor lo tanto, SmartTemplates ahora ofrece su propio sistema de administración de plantillas HTML; haga clic en Aceptar para configurarlo."
+    },
+    "SmartTemplate4.fileTemplates.restrictTemplates": {
+        "message": "¡Necesita una licencia SmartTemplates para usar más de {1} plantillas!"
+    },
+    "SmartTemplate4.fileTemplates.selectFromMenu": {
+        "message": "Seleccione una plantilla del menú desplegable."
+    },
+    "SmartTemplate4.fileTemplates.wrnEnterPath": {
+        "message": "Por favor, seleccione una ruta válida!"
+    },
+    "SmartTemplate4.fileTemplates.wrnEnterTitle": {
+        "message": "Por favor ingrese un título!"
+    },
+    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem": {
+        "message": "¡Debe seleccionar un elemento de la lista para actualizar!"
+    },
+    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem.caption": {
+        "message": "Actualizar plantillas"
+    },
+    "SmartTemplate4.licenseValidation.expired": {
+        "message": "Su licencia expiró el:"
+    },
+    "SmartTemplate4.licenseValidation.guessAddon": {
+        "message": "(La clave introducida puede ser para {2})."
+    },
+    "SmartTemplate4.notification.donate": {
+        "message": "Donar"
+    },
+    "SmartTemplate4.notification.dontShowAgain": {
+        "message": "No mostrar este mensaje de nuevo."
+    },
+    "SmartTemplate4.notification.editedChangeChallenge": {
+        "message": "Cualquier texto que haya ingresado manualmente desde que abrió Composer será eliminado, sin Deshacer. ¿De todas maneras, continúe?"
+    },
+    "SmartTemplate4.notification.editedChangeWarning": {
+        "message": "Ya ha escrito texto y desea cambiar a la plantilla {0}"
+    },
+    "SmartTemplate4.notification.license.required": {
+        "message": "SmartTemplates requiere una licencia para continuar trabajando. Lea más información en la parte inferior de la ventana de composición del correo electrónico."
+    },
+    "SmartTemplate4.notification.license.text": {
+        "message": "De ahora en adelante, SmartTemplates requiere al menos una licencia estándar. Lea más sobre esto en nuestra página de licencias."
+    },
+    "SmartTemplate4.notification.licensing": {
+        "message": "Más sobre licencias"
+    },
+    "SmartTemplate4.notification.noStationery": {
+        "message": "No se pudo encontrar el complemento 'Stationery': ¿está instalado?"
+    },
+    "SmartTemplate4.notification.parsing": {
+        "message": "Estoy analizando variables:"
+    },
+    "SmartTemplate4.notification.premium.btn.extendDomainLicense": {
+        "message": "Ampliar licencia de dominio"
+    },
+    "SmartTemplate4.notification.premium.btn.extendLicense": {
+        "message": "Extender licencia"
+    },
+    "SmartTemplate4.notification.premium.btn.extendLicense.tooltip": {
+        "message": "Esto ampliará la fecha actual de la licencia en 1 año. Es típicamente más barato que una nueva licencia."
+    },
+    "SmartTemplate4.notification.premium.btn.getLicense": {
+        "message": "Comprar Licencia"
+    },
+    "SmartTemplate4.notification.premium.btn.hotKey": {
+        "message": "L"
+    },
+    "SmartTemplate4.notification.premium.btn.renewDomainLicense": {
+        "message": "Renovar licencia de dominio"
+    },
+    "SmartTemplate4.notification.premium.btn.renewLicense": {
+        "message": "Renovar Licencia"
+    },
+    "SmartTemplate4.notification.premium.btn.upgrade": {
+        "message": "Actualizar a Pro"
+    },
+    "SmartTemplate4.notification.premium.btn.upgrade.hotKey": {
+        "message": "A"
+    },
+    "SmartTemplate4.notification.premium.text": {
+        "message": "{1} es una funcionalidad premium, debe obtener una Licencia pro de SmartTemplates para usarla de forma permanente."
+    },
+    "SmartTemplate4.notification.premium.text.plural": {
+        "message": "{1} son características Premium, debe obtener una Licencia SmartTemplates Pro para usarlas permanentemente."
+    },
+    "SmartTemplate4.notification.premium.title": {
+        "message": "Función premium"
+    },
+    "SmartTemplate4.notification.spellcheck.error": {
+        "message": "No se puede cambiar el idioma del corrector ortográfico. ¿Has instalado el diccionario correcto?"
+    },
+    "SmartTemplate4.notification.spellcheck.noDictionary": {
+        "message": "No hay diccionarios instalados."
+    },
+    "SmartTemplate4.notification.spellcheck.notFound": {
+        "message": "Diccionario '{0}' no encontrado."
+    },
+    "SmartTemplate4.prompt.switchDomainLicense": {
+        "message": "¿Cambiar a Licencia de Dominio?"
+    },
+    "SmartTemplate4.trialDays": {
+        "message": "Te quedan {0} días de prueba."
+    },
+    "SmartTemplate4.trialExpiry": {
+        "message": "Su período de prueba expiró hace {0} días."
+    },
+    "SmartTemplate4.updateMessageNewBrackets1": {
+        "message": "Querido usuario de SmartTemplate4, nos complace anunciar que a partir de esta versión SmartTemplates también soporta el uso de llaves {} y la etiqueta <style>, así que podrá usar estilos avanzados con CSS en su plantilla."
+    },
+    "SmartTemplate4.updateMessageNewBrackets2": {
+        "message": "A partir de ahora, se ha modificado la sintaxis específica para expresiones con corchetes: en vez de llaves, {%cc(name)%} debe usar corchetes dobles [[%cc(name)%]]. Consulte la ayuda para más información."
+    },
+    "SmartTemplate4.updateMessageNewBrackets3": {
+        "message": "SmartTemplates va a modificar sus plantillas ya existentes para que pueda seguir usándolas es la nueva versión. Pulse [Aceptar] para continuar."
+    },
+    "SmartTemplate4.updateMessageVersion": {
+        "message": "SmartTemplates se ha actualizado correctamente a la versión {1}."
+    },
+    "Y.label": {
+        "message": "Año (1970)"
+    },
+    "a.label": {
+        "message": "Día de la semana (Vie.)"
+    },
+    "ab_contact": {
+        "message": "Contacto"
+    },
+    "ab_fields": {
+        "message": "Variables de la libreta de direcciones"
+    },
+    "ab_fields.desc": {
+        "message": "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como &#37;from&#37;, como:"
+    },
+    "ab_other": {
+        "message": "Otros"
+    },
+    "ab_private": {
+        "message": "Privado"
+    },
+    "ab_work": {
+        "message": "Trabajo"
+    },
+    "about.cap": {
+        "message": "Acerca de SmartTemplates"
+    },
+    "about.label": {
+        "message": "SmartTemplates ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes)."
+    },
+    "accept_button": {
+        "message": "Aceptar"
+    },
+    "account.label": {
+        "message": "Seleccionar cuenta:"
+    },
+    "active-version-info": {
+        "description": "The boldStart and boldEnd parts will be replaced with html tags",
+        "message": "Ahora está ejecutando la versión de {boldStart} $addonVer$ {boldEnd} en Thunderbird $appVer$.",
+        "placeholders": {
+            "addonVer": {
+                "content": "$1",
+                "example": "Version 1.1"
+            },
+            "appVer": {
+                "content": "$2",
+                "example": "78.0b4"
+            }
+        }
+    },
+    "addon-authors-struggle": {
+        "message": "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
+    },
+    "advanced.label": {
+        "message": "Avanzado"
+    },
+    "any.label": {
+        "message": "Cualquier cabecera de línea"
+    },
+    "attach.label": {
+        "message": "Añadir archivo como adjunto"
+    },
+    "b.label": {
+        "message": "Mes (Ene.)"
+    },
+    "basepath.absolute": {
+        "message": "Haga clic aquí para seleccionar una carpeta específica en su disco local."
+    },
+    "basepath.desc": {
+        "message": "Si su plantilla contiene imágenes con la etiqueta 'img' que se encuentran en su disco local, deberá decirle a SmartTemplate dónde encontrarlas."
+    },
+    "basepath.desc2": {
+        "message": "La variable 'basepath' insertará una etiqueta html 'base' para encontrar todas las imágenes basadas en una ubicación de inicio; solo se puede usar una vez en un correo electrónico."
+    },
+    "basepath.relative": {
+        "message": "Use esta variable para buscar las imágenes en la misma ubicación que la plantilla de archivo html."
+    },
+    "brack_with_var.label": {
+        "message": "Las siguientes variables pueden usarse dentro de [[…]]"
+    },
+    "btn-extend-license": {
+        "message": "Quiero extender mi licencia por un año"
+    },
+    "btn-renew-license": {
+        "message": "Quiero renovar mi licencia"
+    },
+    "btn-upgrade-to-pro": {
+        "message": "Quiero mejorar mi licencia"
+    },
+    "btn-want-a-license": {
+        "message": "Quiero comprar una licencia"
+    },
+    "btn-want-to-donate": {
+        "message": "Quiero ayudar con una donación única."
+    },
+    "btnLoadTemplate.tooltip": {
+        "message": "Cargar plantilla…"
+    },
+    "btnSaveTemplate.tooltip": {
+        "message": "Guardar plantilla…"
+    },
+    "btnYouTube.tooltip": {
+        "message": "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos."
+    },
+    "button.pasteLicense": {
+        "message": "pegar"
+    },
+    "button.updateThunderbird": {
+        "message": "Actualizar Thunderbird"
+    },
+    "button.validateLicense": {
+        "message": "validar"
+    },
+    "buyDomainLicense.button": {
+        "message": "Adquirir licencia de dominio"
+    },
+    "buyDomainLicense.instruct": {
+        "message": "¿Necesita licencias para una compañía con más de 5 usuarios? Obtener una licencia de dominio le saldrá más barato:"
+    },
+    "buyPremiumLicense.button": {
+        "message": "Comprar licencia Pro!"
+    },
+    "buyPremiumLicense.instruct": {
+        "message": "¿Quieres usar todas las funciones premium sin restricciones? Obtenga una licencia SmartTemplates Pro. Está vinculado a su dirección de correo electrónico personal y se puede utilizar en varias instalaciones."
+    },
+    "buyStandardLicense.button": {
+        "message": "¡Comprar licencia estándar!"
+    },
+    "buyStandardLicense.instruct": {
+        "message": "¿No puede permitirse el lujo de las funciones premium? Obtenga una licencia estándar altamente asequible y siga probando funciones premium."
+    },
+    "calculate.explain": {
+        "message": "DD=días a añadir. H=horas a añadir (opcional). MM=minutos a añadir (opcional)."
+    },
+    "calculate.reset": {
+        "message": "Deje el valor a 0 para no modificar más fechas."
+    },
+    "cancel_button": {
+        "message": "Cancelar"
+    },
+    "capitalizeNames": {
+        "message": "Nombres en mayúsculas"
+    },
+    "cc.label": {
+        "message": "Nombre de destinatario (predeterminado)"
+    },
+    "cc_note.label": {
+        "message": "Si no se dispone del nombre, se mostrará la dirección de correo"
+    },
+    "cc_var.cap": {
+        "message": "Destinatario en copia (CC)"
+    },
+    "ccfirstname.label": {
+        "message": "Nombre de pila del destinatario"
+    },
+    "ccmail.label": {
+        "message": "Dirección de destinatario en copia"
+    },
+    "ccname.label": {
+        "message": "Apellido del destinatario"
+    },
+    "close.label": {
+        "message": "Cerrar"
+    },
+    "conditional.forwardMode": {
+        "message": "Si el correo electrónico se reenvía en línea, se inserta el primer parámetro de texto. El segundo parámetro de texto se utiliza cuando el correo se reenvía como archivo adjunto."
+    },
+    "conditionals.cap": {
+        "message": "Testo condizionale"
+    },
+    "conditionals.note": {
+        "message": "Esta clase de variables se puede utilizar para insertar texto dependiendo de cómo envíe el correo. Necesita una licencia SmartTemplates Pro para estos."
+    },
+    "contextError": {
+        "message": "La variable {1} no se puede utilizar para mensajes NUEVOS.\\nVea la lista de variables utilizables en Ayuda"
+    },
+    "contribute_button": {
+        "message": "Contribuir"
+    },
+    "contributor.label": {
+        "message": "Colaboradores"
+    },
+    "copy.label": {
+        "message": "Copiar"
+    },
+    "cost-of-independence": {
+        "message": "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
+    },
+    "creator.label": {
+        "message": "Creator"
+    },
+    "cursor.label": {
+        "message": "Establece la posición del cursor"
+    },
+    "customdf_note.label": {
+        "message": "Se pueden combinar con &#37;X:=sent&#37;"
+    },
+    "d.label": {
+        "message": "Día del mes (01 a 31)"
+    },
+    "date.label": {
+        "message": "Fecha y hora (las de la cabecera original del correo)"
+    },
+    "dateformat.example": {
+        "message": "Ejemplo: "
+    },
+    "dateformat.explain": {
+        "message": "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '&#37;'. Ver también:"
+    },
+    "dateformat.label": {
+        "message": "Función para insertar la hora actual (campo en el que se puede hacer clic)."
+    },
+    "datelocal.label": {
+        "message": "Fecha y hora (formato local)"
+    },
+    "dateoffset_note.label": {
+        "message": "La siguiente función inserta un retardo a todas las fechas mostradas a continuación."
+    },
+    "dateshort.label": {
+        "message": "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)"
+    },
+    "datetimezone.label": {
+        "message": "Zona horaria (+0100, +0200, … )"
+    },
+    "datetz.label": {
+        "message": "Zona horaria (+0100, +0200, … )"
+    },
+    "day.1.name": {
+        "message": "Domingo"
+    },
+    "day.1.short": {
+        "message": "Dom"
+    },
+    "day.2.name": {
+        "message": "Lunes"
+    },
+    "day.2.short": {
+        "message": "Lun"
+    },
+    "day.3.name": {
+        "message": "Martes"
+    },
+    "day.3.short": {
+        "message": "Mar"
+    },
+    "day.4.name": {
+        "message": "Miércoles"
+    },
+    "day.4.short": {
+        "message": "Mié"
+    },
+    "day.5.name": {
+        "message": "Jueves"
+    },
+    "day.5.short": {
+        "message": "Jue"
+    },
+    "day.6.name": {
+        "message": "Viernes"
+    },
+    "day.6.short": {
+        "message": "Vie"
+    },
+    "day.7.name": {
+        "message": "Sábado"
+    },
+    "day.7.short": {
+        "message": "Sáb"
+    },
+    "defaultMimeFormat": {
+        "message": "Default address format:"
+    },
+    "defaultMimeFormat_tip": {
+        "message": "Formato para usar al reemplazar de las direcciones &#37;to&#37; &#37;from&#37; &#37;cc&#37;.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
+    },
+    "deleteQuotedTags": {
+        "message": "Elimina tags de la cita."
+    },
+    "deleteQuotedText": {
+        "message": "Elimina el texto citado"
+    },
+    "deleteText": {
+        "message": "Eliminar texto de la cita, p. ej. deleteText(&quot;via Paypal&quot;)"
+    },
+    "developer.label": {
+        "message": "Desarrollador"
+    },
+    "domainLicense.email": {
+        "message": "Contactaremos con usted usando esta dirección de correo electrónico para generar la licencia de su dominio; por favor, concédanos dos días laborables para que nos pongamos en contacto con usted. Introduzca el nombre del dominio para la licencia en la página siguiente."
+    },
+    "domainLicense.header": {
+        "message": "Dominio de correo electrónico licenciado"
+    },
+    "domainLicense.instruct": {
+        "message": "La licencia tiene una clave ligada al dominio de su compañía. La licencia permitirá que los usuarios cuyas direcciones de correo electrónico acaben con este dominio de correo usen SmartTemplates Pro. Por ejemplo, si introduce el nombre de dominio 'abc.com' entonces los usuarios de correo como fred@abc.com, marta@abc.com, miki.nadie@abc.com, etc., tendrán permitido usar la licencia. El número máximo de usuarios individuales válidos es el número que introdujo en la pantalla inicial."
+    },
+    "domainLicense.validate": {
+        "message": "Asegúrese de que introduce el nombre del dominio &quot;exactamente tal como es&quot; en las direcciones de correo electrónico de su compañía (la parte *a continuación* del signo @), ya que se usará para autorizar las direcciones de correo electrónico de sus usuarios."
+    },
+    "donate": {
+        "message": "Ayude con una donación única."
+    },
+    "donate-heading": {
+        "message": "¡Ayuda donando!"
+    },
+    "e.label": {
+        "message": "Día del mes (1 a 31)"
+    },
+    "edit.label": {
+        "message": "Editar"
+    },
+    "email.label": {
+        "message": "Correo electrónico:"
+    },
+    "enterLicenseKey.button": {
+        "message": "Introducir clave de licencia…"
+    },
+    "enterLicenseKey.tooltip": {
+        "message": "Introduzca el código de la clave de licencia que se le envió por correo electrónico."
+    },
+    "ex_brack.label": {
+        "message": "Ejemplo: Para: ÁGUEDA | Cc: BENIGNO"
+    },
+    "export.label": {
+        "message": "Exportar"
+    },
+    "extend-your-license": {
+        "message": "Considere extender su licencia por un año."
+    },
+    "extensionDescription": {
+        "description": "Description of the extension.",
+        "message": "Una forma poderosa de crear respuestas personalizadas insertando automáticamente varios encabezados de correo. Se pueden crear plantillas para cada identidad de correo, también admite archivos html externos y hojas de estilo."
+    },
+    "extensionName": {
+        "description": "Name of the extension.",
+        "message": "SmartTemplates"
+    },
+    "extensions.smarttemplate4@thunderbird.extension.description": {
+        "message": "La plantilla inteligente que permite personalizar el encabezado de cita para cada cuenta."
+    },
+    "file.label": {
+        "message": "Archivo"
+    },
+    "fileCSS.label": {
+        "message": "Hoja de estilo externa (css). Incluya sus reglas de CSS favoritas para compartir entre diferentes plantillas."
+    },
+    "fileHTML.label": {
+        "message": "Archivo HTML o de texto. Si se omite el parámetro opcional de juego de caracteres se supone qie es UTF-8."
+    },
+    "fileImage.label": {
+        "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
+    },
+    "fileTemplates.add": {
+        "message": "Add"
+    },
+    "fileTemplates.down": {
+        "message": "Down"
+    },
+    "fileTemplates.file.open": {
+        "message": "Select template file from disk"
+    },
+    "fileTemplates.file.path": {
+        "message": "Template location:"
+    },
+    "fileTemplates.file.title": {
+        "message": "Title:"
+    },
+    "fileTemplates.file.title.tooltip": {
+        "message": "This will be displayed in the template selection menu."
+    },
+    "fileTemplates.fwd.tooltip": {
+        "message": "List of external template files that can be launched from the 'Forward' button."
+    },
+    "fileTemplates.new.tooltip": {
+        "message": "List of external template files that can be launched from the 'Create new Message' button."
+    },
+    "fileTemplates.remove": {
+        "message": "Remove"
+    },
+    "fileTemplates.rsp.tooltip": {
+        "message": "List of external template files that can be launched from the 'Reply' button."
+    },
+    "fileTemplates.title": {
+        "message": "Template Files"
+    },
+    "fileTemplates.up": {
+        "message": "Up"
+    },
+    "fileTemplates.update": {
+        "message": "Update"
+    },
+    "firstName.label": {
+        "message": "Nombre:"
+    },
+    "fix_var.cap": {
+        "message": "Variables fijas"
+    },
+    "fix_vartz.cap": {
+        "message": "Variables fijas para formatos de fecha y zona horaria"
+    },
+    "fix_vartz_note.label": {
+        "message": "Se pueden combinar con &#37;X:=sent&#37;"
+    },
+    "fpFilterHtmlTemplate": {
+        "message": "Plantilla HTML"
+    },
+    "fpFilterName": {
+        "message": "Archivo SmartTemplate4"
+    },
+    "fpFolder": {
+        "message": "Carpeta"
+    },
+    "fpHTMLFile": {
+        "message": "Archivo HTML / Texto"
+    },
+    "fpImageFile": {
+        "message": "Archivo de imagen"
+    },
+    "fpJsonFile": {
+        "message": "Archivo JSON"
+    },
+    "fpStyle": {
+        "message": "Página de hoja de estilo"
+    },
+    "freeLicense": {
+        "message": "Si recientemente ha donado al proyecto SmartTemplates o ha trabajado realizando contribuciones, como traducir o escribir parches, puede cumplir los requisitos para obtener una clave gratuita. Contacte conmigo desde la pestaña Soporte en las Opciones de SmartTemplates."
+    },
+    "from.label": {
+        "message": "Nombre de remitente (predeterminado)"
+    },
+    "from_note.label": {
+        "message": "Si no se dispone del nombre, se mostrará la dirección de correo"
+    },
+    "from_var.cap": {
+        "message": "Remitente (De)"
+    },
+    "fromfirstname.label": {
+        "message": "Nombre de pila del remitente"
+    },
+    "frommail.label": {
+        "message": "Dirección del remitente"
+    },
+    "fromname.label": {
+        "message": "Apellido del remitente"
+    },
+    "getSmartTemplate4": {
+        "message": "Obtener Licencia SmartTemplates "
+    },
+    "guessNameFromMail": {
+        "message": "Adivina el nombre de las partes de la dirección de correo electrónico si falta"
+    },
+    "h.label": {
+        "message": "Hora en formato 24 horas (00 a 23)"
+    },
+    "header.append.subject": {
+        "message": "añadiendo el texto después del asunto"
+    },
+    "header.append.to": {
+        "message": "añadiendo el correo a la lista de recibidos"
+    },
+    "header.delete.subject": {
+        "message": "eliminar texto del asunto (expresión regular)"
+    },
+    "header.prefix.subject": {
+        "message": "añadiendo el texto antes del asunto"
+    },
+    "header.set.from": {
+        "message": "establece la dirección 'de'. Esto solo acepta direcciones de correo electrónico de la lista de identidades."
+    },
+    "header.set.subject": {
+        "message": "reemplazando el asunto con el texto"
+    },
+    "header.set.to": {
+        "message": "reemplazando el receptor con la dirección de correo"
+    },
+    "header_function.cap": {
+        "message": "Modificar el encabezado del correo"
+    },
+    "header_function.explain": {
+        "message": "Se puede usar esta función para modificar encabezados de correo, según se describe a continuación:"
+    },
+    "header_function.scope": {
+        "message": "Se puede usar en los encabezados:"
+    },
+    "heading-installed": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ instalado correctamente",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "heading-updated": {
+        "description": "page heading. first placeholder will be replaced with Add-on name",
+        "message": "$addonName$ actualizado con éxito",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "heading.click": {
+        "message": "Haga clic en un encabezado o"
+    },
+    "heading.expandAll": {
+        "message": "expandir todas las entradas"
+    },
+    "help.label": {
+        "message": "Ayuda"
+    },
+    "help_dialog_title": {
+        "message": "Ayuda de SmartTemplates"
+    },
+    "help_keyword.cap": {
+        "message": "Ayuda"
+    },
+    "html_note.cap": {
+        "message": "Notas sobre las plantillas de HTML"
+    },
+    "html_note.label": {
+        "message": "¡Por favor, utilice únicamente caracteres UTF-8 (Unicode) en las plantillas de HTML!"
+    },
+    "i.label": {
+        "message": "Hora en formato 12 horas (01 a 12)"
+    },
+    "identity_ab": {
+        "message": "Use la palabra clave 'addressbook' para recuperar información de identidad adicional de la libreta de direcciones."
+    },
+    "identity_ab.example": {
+        "message": "Ejemplo"
+    },
+    "identity_ab.field": {
+        "message": "Para valores de campo adicionales, consulte el capítulo 'Campos de la libreta de direcciones' a continuación."
+    },
+    "identity_ab.phoneno": {
+        "message": "Telefono no"
+    },
+    "im-ex.cap": {
+        "message": "Importar/Exportar predisposiciones y plantillas"
+    },
+    "im-ex_note1.label": {
+        "message": "Puede exportar e importar las predisposiciones y plantillas asociadas a cada cuenta."
+    },
+    "im-ex_note2.label": {
+        "message": "Primero seleccione la cuenta que quiere exportar en la caja desplegable de predisposiciones de SmartTemplates."
+    },
+    "im-ex_note3.label": {
+        "message": "Seleccione a continuación 'Archivo' ⇒ 'Exportar' ⇒ 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador."
+    },
+    "im-ex_note4.label": {
+        "message": "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplates. Seleccione después 'Herramientas' =&gt; 'Importar' =&gt; 'Predisposiciones y plantillas' de la barra de menú."
+    },
+    "im-ex_note5.label": {
+        "message": "Seleccione el archivo SmartTemplates (xxx.st4) a importar."
+    },
+    "im-ex_note6.label": {
+        "message": "NOTA: En las plataformas Apple/Macintosh la barra de menú estará en la barra del título en vez de en la ventana de Opciones de SmartTemplates. Es el comportamiento estándar en esas plataformas por lo que no se puede modificar."
+    },
+    "import.label": {
+        "message": "Importar"
+    },
+    "insert.label": {
+        "message": "Insertar campo"
+    },
+    "intro": {
+        "message": "Una licencia anual para SmartTemplates Pro le proporciona todas las funcionalidades Premium durante un año. También nos permite mantener y seguir desarrollando el producto y convertirlo en algo aún mejor."
+    },
+    "k.label": {
+        "message": "Hora en formato 24 horas (0 a 23)"
+    },
+    "l.label": {
+        "message": "Hora en formato 12 horas (1 a 12)"
+    },
+    "label-remind-me": {
+        "message": "Recordármelo de nuevo en $countDays$ días.",
+        "placeholders": {
+            "countDays": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    },
+    "label.haveLicense": {
+        "message": "¿Ya tiene una licencia?"
+    },
+    "label.insertLicense": {
+        "message": "Introduzca su clave personal de Licencia:"
+    },
+    "label.insertLicense.tooltip": {
+        "message": "Su clave de licencia está incluida en su correo de confirmación de pedido de Fastspring."
+    },
+    "label.licenseValid": {
+        "message": "Su licencia tiene validez hasta:"
+    },
+    "label.premiumFeaturesSite": {
+        "message": "Para saber más sobre las funcionalidades premium visite nuestre página web…"
+    },
+    "lastName.label": {
+        "message": "Apellidos:"
+    },
+    "license-is-extended": {
+        "description": "Shown if license expires more than a year from now",
+        "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana."
+    },
+    "license-is-standard": {
+        "description": "Special message for standard license holders",
+        "message": "Como titular de una licencia estándar de SmartTemplates, ahora es elegible para una actualización con descuento más una extensión de un año completo. Haga clic en el botón [Actualizar a Pro] debajo de su licencia estándar para obtener más información."
+    },
+    "licenseTypes": {
+        "message": "En el futuro, SmartTemplates ofrece dos licencias, Standard y Pro; estos son necesarios para mantenerse al día con los cambios en la plataforma Thunderbird y para financiar innovaciones y reparaciones del complemento. Como los cambios de última hora se implementan en un ciclo anual, la licencia también será válida por 1 año."
+    },
+    "licenseValidation.expired": {
+        "message": "La clave de licencia introducida está caducada. Por favor pulse el botón de la parte inferior para renovar su licencia."
+    },
+    "licenseValidation.failed": {
+        "message": "La clave de licencia introducida no es válida. Compruebe las instrucciones que venían con el correo de Fastspring. Si sigue teniendo problemas, por favor contacte conmigo a través de la pestaña de Ayuda."
+    },
+    "licenseValidation.invalidAddon": {
+        "message": "La clave de licencia introducida puede pertenecer a otra extensión. Las claves de licencia para {0} comienzan por {1}."
+    },
+    "licenseValidation.invalidMail": {
+        "message": "La dirección de correo electrónico asociada a la clave de licencia [{1}] no está en este momento asociada ningua de sus cuentas de correo. Por favor contacte conmigo a través de la pestaña de Ayuda para que poder solucionarlo."
+    },
+    "licenseValidation.notMatchedMail": {
+        "message": "La dirección de correo encriptada no coincide con la legible."
+    },
+    "licenseValidation.passed": {
+        "message": "Gracias por registrarse en SmartTemplates Pro. Ya se han activado todas las funcionalidades premium."
+    },
+    "licenseValidation.standard": {
+        "message": "Gracias por registrarte en SmartTemplates Standard - ¡Estás ayudando al complemento enormemente! Ahora también puedes probar todas las funciones premium."
+    },
+    "licenseWindow.title": {
+        "message": "Licencia de SmartTemplates Pro"
+    },
+    "localedate.label": {
+        "message": "Fecha y hora (formato local)"
+    },
+    "localename.label": {
+        "message": "es-ES"
+    },
+    "localized.label": {
+        "message": "Traductor"
+    },
+    "m.label": {
+        "message": "Mes (01 a 12)"
+    },
+    "matchTextFromBody": {
+        "message": "Encontrar una patrón de RegEx en el correco citado e insertar en la ubicación de la función."
+    },
+    "matchTextFromSubject": {
+        "message": "Encontrar una patrón de RegEx en el asunto e insertar en la ubicación de la función."
+    },
+    "menu.template_export.label": {
+        "message": "Exportar plantilla"
+    },
+    "menu.template_import.label": {
+        "message": "Importar plantilla"
+    },
+    "message_default_title": {
+        "message": "SmartTemplates"
+    },
+    "messid.label": {
+        "message": "ID de mensaje"
+    },
+    "minSize": {
+        "message": "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes."
+    },
+    "minSize_detail": {
+        "message": "No siempre es posible determinar el tamaño, especialmente si Thunderbird todavía está cargando la imagen, a menudo debido al gran tamaño; en este caso, la etiqueta se eliminará de todos modos."
+    },
+    "month.1.name": {
+        "message": "Enero"
+    },
+    "month.1.short": {
+        "message": "Ene"
+    },
+    "month.10.name": {
+        "message": "Octubre"
+    },
+    "month.10.short": {
+        "message": "Oct"
+    },
+    "month.11.name": {
+        "message": "Noviembre"
+    },
+    "month.11.short": {
+        "message": "Nov"
+    },
+    "month.12.name": {
+        "message": "Diciembre"
+    },
+    "month.12.short": {
+        "message": "Dic"
+    },
+    "month.2.name": {
+        "message": "Febrero"
+    },
+    "month.2.short": {
+        "message": "Feb"
+    },
+    "month.3.name": {
+        "message": "Marzo"
+    },
+    "month.3.short": {
+        "message": "Mar"
+    },
+    "month.4.name": {
+        "message": "Abril"
+    },
+    "month.4.short": {
+        "message": "Abr"
+    },
+    "month.5.name": {
+        "message": "Mayo"
+    },
+    "month.5.short": {
+        "message": "May"
+    },
+    "month.6.name": {
+        "message": "Junio"
+    },
+    "month.6.short": {
+        "message": "Jun"
+    },
+    "month.7.name": {
+        "message": "Julio"
+    },
+    "month.7.short": {
+        "message": "Jul"
+    },
+    "month.8.name": {
+        "message": "Agosto"
+    },
+    "month.8.short": {
+        "message": "Ago"
+    },
+    "month.9.name": {
+        "message": "Septiembre"
+    },
+    "month.9.short": {
+        "message": "Sep"
+    },
+    "mozillas-basic-platform": {
+        "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
+    },
+    "n.label": {
+        "message": "Mes (1 a 12)"
+    },
+    "newsgr.label": {
+        "message": "Grupos de noticias"
+    },
+    "no_button": {
+        "message": "No"
+    },
+    "notificationTitle": {
+        "description": "Title of the click notification.",
+        "message": "Click notification"
+    },
+    "ongoing-work": {
+        "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "ownmail.label": {
+        "message": "Su dirección de correo"
+    },
+    "ownname.label": {
+        "message": "Su nombre"
+    },
+    "p.label": {
+        "message": "AM / PM"
+    },
+    "p1.label": {
+        "message": "a.m."
+    },
+    "p2.label": {
+        "message": "A.M."
+    },
+    "p3.label": {
+        "message": "AM"
+    },
+    "paste.label": {
+        "message": "Pegar"
+    },
+    "pref_StatusIcon.IconHoverText": {
+        "message": "Texto con el paso de ratón"
+    },
+    "pref_StatusIcon.IconOnly": {
+        "message": "Sólo icono"
+    },
+    "pref_StatusIcon.IconText": {
+        "message": "Icono y texto"
+    },
+    "pref_about.tab": {
+        "message": "Acerca de"
+    },
+    "pref_addSigBreakHTML.label": {
+        "message": "Añadir -- en correo HTML"
+    },
+    "pref_addSigBreakHTML.tooltip": {
+        "message": "Añadir siempre el delimitador -- antes de la firma (in correos HTML)"
+    },
+    "pref_addSigBreakPlaintext.label": {
+        "message": "Añadir -- en correo de texto plano"
+    },
+    "pref_addSigBreakPlaintext.tooltip": {
+        "message": "Añadir siempre el delimitador -- antes de la firma (en correos de texto plano)"
+    },
+    "pref_addressDelimiter": {
+        "message": "Delimitar corresponsales múltiples con:"
+    },
+    "pref_addressDelimiter_tip": {
+        "message": "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,)."
+    },
+    "pref_advanced.tab": {
+        "message": "Predisposiciones avanzadas"
+    },
+    "pref_breaksOnTop.label": {
+        "message": "Saltos de línea en la parte superior:"
+    },
+    "pref_cursorInsertSpace": {
+        "message": "Insertar espacio para resaltar el &#37;cursor&#37;"
+    },
+    "pref_debug_check": {
+        "message": "Modo depuración"
+    },
+    "pref_debug_tip": {
+        "message": "Haga clic derecho para opciones avanzadas de depuración"
+    },
+    "pref_def.cap": {
+        "message": "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta."
+    },
+    "pref_def.label": {
+        "message": "Usar común"
+    },
+    "pref_defaultCharset.label": {
+        "message": "Juego caracteres por defecto"
+    },
+    "pref_defaultCharset_tip": {
+        "message": "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar."
+    },
+    "pref_dialog.title": {
+        "message": "Opciones de SmartTemplates"
+    },
+    "pref_examples.tab": {
+        "message": "Ejemplos (sólo online)"
+    },
+    "pref_examples.tooltip": {
+        "message": "Mostrar plantillas de ejemplo desde https://smarttemplates.quickfolders.org/templates.html. Sólo disponible estando online."
+    },
+    "pref_fontSettings.label": {
+        "message": "Fuente del editor de plantillas"
+    },
+    "pref_forceParagraph": {
+        "message": "Forzar modo párrafo"
+    },
+    "pref_forceParagraph_tip": {
+        "message": "Garantiza que la posición del cursor se inicia dentro de un párrafo. También recomendamos seleccionar en Opciones - Redacción de Thunderbird la opción crear un nuevo párrafo al presionar la tecla [Intro]."
+    },
+    "pref_fwd.label": {
+        "message": "Aplicar esta plantilla al mensaje reenviado"
+    },
+    "pref_fwd.tab": {
+        "message": "Reenviar"
+    },
+    "pref_fwdhead.label": {
+        "message": "Desactivar el encabezado de respuesta predeterminado de Thunderbird"
+    },
+    "pref_fwdmsg.cap": {
+        "message": "Reenviar"
+    },
+    "pref_global.tab": {
+        "message": "Predisposiciones globales"
+    },
+    "pref_groupAdvanced": {
+        "message": "Funciones avanzadas"
+    },
+    "pref_groupMailContent": {
+        "message": "Contenido del correo"
+    },
+    "pref_groupNameRules": {
+        "message": "Reglas para nombres"
+    },
+    "pref_groupSignatures": {
+        "message": "Firmas"
+    },
+    "pref_groupTroubleShooting": {
+        "message": "Resolución de problemas"
+    },
+    "pref_groupUI": {
+        "message": "Interfaz de usuario"
+    },
+    "pref_help.tab": {
+        "message": "Ayuda"
+    },
+    "pref_hideExamples": {
+        "message": "Ocultar pestaña de ejemplos"
+    },
+    "pref_html.cap": {
+        "message": "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la Ayuda para más detalles."
+    },
+    "pref_html.label": {
+        "message": "Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)"
+    },
+    "pref_nameSwap": {
+        "message": "Corregir Apellido, Nombre"
+    },
+    "pref_nameSwap_tip": {
+        "message": "Camiba 'Apellido, Nombre' a 'Nombre Apellido'"
+    },
+    "pref_new.label": {
+        "message": "Aplicar esta plantilla al nuevo mensaje"
+    },
+    "pref_new.tab": {
+        "message": "Redactar"
+    },
+    "pref_newmsg.cap": {
+        "message": "Redactar"
+    },
+    "pref_parseSignature": {
+        "message": "Procesar firma"
+    },
+    "pref_parseSignature_tip": {
+        "message": "Reemplazar variables en firma"
+    },
+    "pref_quoteHeaderBox.label": {
+        "message": "Encabezado de cita"
+    },
+    "pref_quoteHeaderBox_tip": {
+        "message": "Escriba aquí su encabezado de cita, por ejemplo: El &#37;date&#37; &#37;from(name)&#37; escribió:"
+    },
+    "pref_quotehead_tip": {
+        "message": "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto."
+    },
+    "pref_removeSig.label": {
+        "message": "Cambiar firma al cambiar la identidad del correo"
+    },
+    "pref_rep_br.cap": {
+        "message": "NOTA: No se insertará un espacio en la etiqueta HTML si se usa &lt;br&gt; una vez."
+    },
+    "pref_rep_br.label": {
+        "message": "Sustituir salto de línea por &lt;br&gt;"
+    },
+    "pref_rsp.label": {
+        "message": "Aplicar esta plantilla al mensaje de respuesta"
+    },
+    "pref_rsp.tab": {
+        "message": "Responder"
+    },
+    "pref_rsphead.label": {
+        "message": "Usar en vez del encabezado de cita estándar"
+    },
+    "pref_rspmsg.cap": {
+        "message": "Responder"
+    },
+    "pref_server_def": {
+        "message": "Común"
+    },
+    "pref_server_desc": {
+        "message": "Cuenta"
+    },
+    "pref_showStatusIcon.label": {
+        "message": "Mostrar botón en barra de estado"
+    },
+    "pref_sigReplaceBR.label": {
+        "message": "Reemplazar salto de línea por &lt;br&gt; en la firma de texto simple"
+    },
+    "pref_silentUpdates": {
+        "message": "Actualizaciones silenciosas"
+    },
+    "pref_silentUpdates_tip": {
+        "message": "No abra el registro de cambios después de actualizar SmartTemplates."
+    },
+    "pref_stationeryLink": {
+        "message": "Extensión Stationery"
+    },
+    "pref_stationeryLink_tip": {
+        "message": "Instalar Stationery…"
+    },
+    "pref_stationerySupport": {
+        "message": "Apoyar la extensión Stationery"
+    },
+    "pref_stationerySupport_tip": {
+        "message": "Apoye utilizando Stationery junto a SmartTemplates"
+    },
+    "pref_stationerySupport_tip2": {
+        "message": "Así podrá usar variables de plantilla en su Stationery."
+    },
+    "pref_templateBox.label": {
+        "message": "Plantilla"
+    },
+    "pref_templateBox_tip": {
+        "message": "Escriba su plantilla aquí, como: Hola &#37;from(name)&#37;&lt;br&gt; Gracias por tu mensaje&lt;br&gt; un saludo, &#37;ownname&#37;"
+    },
+    "pref_template_tip": {
+        "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
+    },
+    "pref_variables.tab": {
+        "message": "Variables"
+    },
+    "premiumConfig": {
+        "message": "Funcionalidades premium"
+    },
+    "prompt.email": {
+        "message": "Introduzca una dirección de correo"
+    },
+    "prompt.text": {
+        "message": "Introduzca el texto a añadir o cambiar"
+    },
+    "purchase-a-license": {
+        "message": "Compra una licencia."
+    },
+    "purchase-heading": {
+        "message": "Comprar una licencia"
+    },
+    "quoteLevel": {
+        "message": "[opcional, numérico]: desde qué nivel mínimo de presupuesto comenzar"
+    },
+    "quotePlaceholder": {
+        "message": "Esto mueve la parte citada al texto de la plantilla. La sección del encabezado de la cita de las plantillas de cuenta se moverá a la parte superior de la cita."
+    },
+    "quotePlaceholder.level": {
+        "message": "[opcional, numérico] Nivel máximo de citas para eliminar citas antiguas de la conversación."
+    },
+    "quote_changers.cap": {
+        "message": "Manipulación de cotizaciones"
+    },
+    "quote_changers.desc": {
+        "message": "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio."
+    },
+    "regexpAnyText": {
+        "message": "Cualquier texto, expresión regular, debe estar entre comillas dobles."
+    },
+    "renew-your-license": {
+        "message": "Renueva tu licencia."
+    },
+    "replaceQuotedTags": {
+        "message": "Reemplaza las etiquetas html de la cita con texto o html"
+    },
+    "replaceQuotedText": {
+        "message": "Reemplaza el texto citado con HTML"
+    },
+    "replaceText": {
+        "message": "Reemplazar texto por otra cosa."
+    },
+    "replacementHTML": {
+        "message": "debe estar entre comillas dobles, ya sea un texto o una etiqueta html que se insertará entre comillas donde se encuentre una coincidencia."
+    },
+    "resolveABRemoveMail": {
+        "message": "Eliminar dirección de correo si no está especificado el parámetro de formato"
+    },
+    "resolveNamesFromAB": {
+        "message": "Resolver nombres a partir de la agenda"
+    },
+    "resolveNamesFromABDisplay": {
+        "message": "Usar Mostrar nombre si falta el nombre de pila"
+    },
+    "resolveNamesFromABNick": {
+        "message": "Reemplazar nombre si hay un apodo"
+    },
+    "resolveNamesFromAB_tip": {
+        "message": "Esta funcionalidad no funciona con algunas agendas remotas como LDAP"
+    },
+    "s.label": {
+        "message": "Segundo (00 a 59)"
+    },
+    "selector": {
+        "message": "- lo que usarías para direccionar la etiqueta en css. caso más simple 'img' o 'p' pero los selectores de atributos se pueden agregar siempre que se puedan evitar las comillas dobles."
+    },
+    "settings.label": {
+        "message": "Opciones y Plantillas"
+    },
+    "shortdate.label": {
+        "message": "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)"
+    },
+    "sig.label": {
+        "message": "Firma de la Configuración de cuentas de TB"
+    },
+    "sig2.label": {
+        "message": "Firma de la Configuración de cuentas de TB pero sin '--'"
+    },
+    "smartTemplate4.changeTemplate.label": {
+        "message": "Change template…"
+    },
+    "smartTemplate4.changeTemplate.tooltip": {
+        "message": "Load a different template - use before editing the Email!"
+    },
+    "smartTemplate4.changetemplate.label": {
+        "message": "Cambiar plantilla…"
+    },
+    "smartTemplate4.changetemplate.tooltip": {
+        "message": "Selecciona una plantilla diferente: ¡úsela antes de editar en el cuerpo del correo!"
+    },
+    "smartTemplate4.cleandeferred.label": {
+        "message": "¡Limpiar!"
+    },
+    "smartTemplate4.cleandeferred.tooltip": {
+        "message": "Limpiar todas las variables de SmartTemplate"
+    },
+    "smartTemplate4.deferredcontext.cleanup": {
+        "message": "Actualizar y reemplazar con contenido"
+    },
+    "smartTemplate4.deferredcontext.delete": {
+        "message": "Eliminar la variable SmartTemplates"
+    },
+    "smartTemplate4.deferredcontext.update": {
+        "message": "Actualizar contenido de SmartTemplates"
+    },
+    "smartTemplate4.settings.label": {
+        "message": "SmartTemplates"
+    },
+    "smartTemplate4.settings.tooltip": {
+        "message": "Opciones de SmartTemplates"
+    },
+    "smarttemplate4_button": {
+        "message": "Editar plantillas y encabezados de respuesta"
+    },
+    "smarttemplate4_title": {
+        "message": "SmartTemplates"
+    },
+    "spec_form.cap": {
+        "message": "Conmutadores de campo de dirección"
+    },
+    "spec_var.cap": {
+        "message": "Especiales"
+    },
+    "specform_note.label": {
+        "message": "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;"
+    },
+    "spellcheck.label": {
+        "message": "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado."
+    },
+    "standardformat.config": {
+        "message": "Configurar formato predeterminado…"
+    },
+    "stringmanip.alttext": {
+        "message": "[parámetro opcional] Texto alternativo: si no se encuentra ninguna coincidencia, inserta el texto alternativo en su lugar."
+    },
+    "stringmanip.match.comment": {
+        "message": "Funciones de coincidencia: El primer parámetro (expresión regular) debe estar dentro de comillas. El segundo es el el número de grupo de coincidencia. Use 0 para que coincida toda la expresión, 1 para el primer grupo, etc."
+    },
+    "stringmanip_function.cap": {
+        "message": "Manipulación de cadena de texto"
+    },
+    "stringmanip_function.explain": {
+        "message": "Estas funciones pueden usarse para borrar o reemplazar texto de la plantilla del correo o del encabezado de cita."
+    },
+    "sub.label": {
+        "message": "asunto del correo que se responde o reenvía."
+    },
+    "sub2.label": {
+        "message": "asunto del mensaje que se está redactando"
+    },
+    "sub_var.cap": {
+        "message": "Asunto"
+    },
+    "support-preference": {
+        "message": "Esta es la forma preferida de admitir $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "support-suggestion": {
+        "message": "Para que $addonName$ permanezca funcional y vivo, hágalo un favor vital:",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "support.compose": {
+        "message": "Escribe para apoyar…"
+    },
+    "support.links": {
+        "message": "Enlaces de soporte"
+    },
+    "support.mail.instructions": {
+        "message": "Haga clic en el botón de abajo para abrir un nuevo correo electrónico para soporte. Si tiene problemas técnicos, considere agregar una captura de pantalla."
+    },
+    "support.subject": {
+        "message": "Tema:"
+    },
+    "support.tab": {
+        "message": "Apoyo"
+    },
+    "support.title": {
+        "message": "Escribir un correo electrónico a Soporte"
+    },
+    "support.type": {
+        "message": "Tipo:"
+    },
+    "support.type.html": {
+        "message": "Ayuda con HTML / CSS"
+    },
+    "support.type.license": {
+        "message": "Licencias relacionadas"
+    },
+    "support.type.other": {
+        "message": "Otra"
+    },
+    "support.type.selectOne": {
+        "message": "¡Seleccione un tema!"
+    },
+    "support.type.tech": {
+        "message": "Soporte técnico"
+    },
+    "suppressMailtToLink": {
+        "message": "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo"
+    },
+    "tab.gopro": {
+        "message": "SmartTemplates Pro"
+    },
+    "table.cap": {
+        "message": "Uso de las variables"
+    },
+    "table_fwd.label": {
+        "message": "Reenviar"
+    },
+    "table_keyword.label": {
+        "message": "Variable"
+    },
+    "table_new.label": {
+        "message": "Redactar"
+    },
+    "table_note.label": {
+        "message": "Si se usa incorrectamente una variable aparecerá un error en la Consola de error."
+    },
+    "table_reply.label": {
+        "message": "Responder"
+    },
+    "testDriveS": {
+        "message": "Puede probar las funciones premium con la licencia estándar, pero pueden estar ligeramente restringidas."
+    },
+    "thanks-for-installing-intro": {
+        "message": "Gracias por instalar $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "thanks-for-updating-intro": {
+        "message": "Gracias por actualizar $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "time-and-effort": {
+        "message": "Mis complementos requieren cambios fundamentales para seguir siendo compatibles con la plataforma Mozilla. Mi equipo de desarrollo en Github (Realraven2000, opto y paenglab) está trabajando diligentemente para restaurar la funcionalidad completa de $addonName$.",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "timezone.explain": {
+        "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
+    },
+    "timezonename.label": {
+        "message": "GMT, PST, EST, …"
+    },
+    "tip.fileTemplates": {
+        "message": "Haga clic para leer la documentación completa sobre Papelería y plantillas HTML externas en nuestro sitio de soporte…"
+    },
+    "to.label": {
+        "message": "Nombre del destinatario (predeterminado)"
+    },
+    "to_note.label": {
+        "message": "Si no se dispone del nombre, se mostrará la dirección de correo"
+    },
+    "to_var.cap": {
+        "message": "Destinatario (Para)"
+    },
+    "tofirstname.label": {
+        "message": "Nombre de pila del destinatario"
+    },
+    "tofwd.label": {
+        "message": "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados"
+    },
+    "tomail.label": {
+        "message": "Dirección del destinatario"
+    },
+    "toname.label": {
+        "message": "Apellido del destinatario"
+    },
+    "tools.label": {
+        "message": "Herramientas"
+    },
+    "translated-by-google": {
+        "description": "disclaimer.",
+        "message": "traducciones proporcionadas por google"
+    },
+    "translatorNickname.label": {
+        "message": "urko (BabelZilla)"
+    },
+    "tzname.label": {
+        "message": "GMT, PST, EST, …"
+    },
+    "updates.title": {
+        "message": "Actualizaciones"
+    },
+    "updatesExpiry": {
+        "message": "SmartTemplates Pro se actualizará automáticamente vía addons.thunderbird.net de la forma habitual. Transcurrido el año puede renovar la licencia o seguir usando las características Premium bajo los mismos términos que los usuarios con licencia gratuita. Las características 'Premium Exclusivas' requerirán una clave de registro válida."
+    },
+    "url.bugsAndFeaturesPage.label": {
+        "message": "Informes de errores / mejoras"
+    },
+    "url.homePage.label": {
+        "message": "Sitio web de la extensión"
+    },
+    "url.supportPage.label": {
+        "message": "Ayudar al sitio web"
+    },
+    "var_custom.cap": {
+        "message": "Variables para formatos de fecha personalizados"
+    },
+    "var_xsent.cap": {
+        "message": "Modificador &#37;X:=sent&#37;"
+    },
+    "vouchers.title": {
+        "message": "Abonos"
+    },
+    "whitespace_note": {
+        "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
+    },
+    "window-title": {
+        "description": "page title. first placeholder will be replaced with Add-on name",
+        "message": "Bienvenido a $addonName$",
+        "placeholders": {
+            "addonName": {
+                "content": "$1",
+                "example": "SmartTemplates"
+            }
+        }
+    },
+    "xmail.label": {
+        "message": "X-Mailer"
+    },
+    "xsent_long.cap": {
+        "message": "Ejemplo de una cadena de texto larga:"
+    },
+    "xsent_long.label": {
+        "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; a las &#37;H&#37;:&#37;M&#37;"
+    },
+    "xsent_long_result.label": {
+        "message": "Resultado: domingo 20/12/2011 a las 16:24"
+    },
+    "xsent_note.label": {
+        "message": "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original."
+    },
+    "xsent_short.cap": {
+        "message": "Ejemplo de cadena de texto corta:"
+    },
+    "xsent_short.label": {
+        "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    },
+    "xsent_short_note.label": {
+        "message": "Además, puede usar en ambos casos las siguientes variables:"
+    },
+    "xsent_short_result.label": {
+        "message": "Resultado: domingo 20/12/2011 a las 16:24"
+    },
+    "yearlyLicense.premiumFeatures": {
+        "message": "SmartTemplates Pro le proporciona acceso completo sin restricciones a las funciones Premium."
+    },
+    "yearlyLicense.premiumFeatures.moreInfoLink": {
+        "message": "Más acerca de las funciones Premium."
+    },
+    "yearlyLicense.title": {
+        "message": "Licencia anual"
+    },
+    "yearlyLicense.usageTerm": {
+        "message": "La licencia es para su uso personal y está ligada a su dirección de correo electrónico. Puede instalarla en múltiples clientes de correo siempre que estén configurados para usar esa dirección."
+    },
+    "yearlyLicense.usageTerm1": {
+        "message": "Cualquier dirección de correo electrónico adicional no es un problema, no requieren una licencia por separado. En caso de preguntas puedes contactarme a través de la pestaña de soporte."
+    },
+    "yes_button": {
+        "message": "Sí"
     }
-  },
-
-  "heading-updated": {
-    "message": "$addonName$ actualizado con éxito",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "heading-installed": {
-    "message": "$addonName$ instalado correctamente",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  
-  "thanks-for-updating-intro": {
-    "message": "Gracias por actualizar $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "thanks-for-installing-intro": {
-    "message": "Gracias por instalar $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },  
-  
- "active-version-info" : {
-    "message": "Ahora está ejecutando la versión de {boldStart} $addonVer$ {boldEnd} en Thunderbird $appVer$.",
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
-      },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
-      }
-      
-    }
-  },  
-  
-  "license-is-extended" : {
-    "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana.",
-    "description": "Shown if license expires more than a year from now"
-  },
-  
-  "license-is-standard" : {
-    "message": "Como titular de una licencia estándar de SmartTemplates, ahora es elegible para una actualización con descuento más una extensión de un año completo. Haga clic en el botón [Actualizar a Pro] debajo de su licencia estándar para obtener más información.",
-    "description": "Special message for standard license holders"
-  },  
-  
-  "btn-upgrade-to-pro" : {
-    "message": "Quiero mejorar mi licencia"
-  },
-  
-  "time-and-effort": { 
-    "message": "Mis complementos requieren cambios fundamentales para seguir siendo compatibles con la plataforma Mozilla. Mi equipo de desarrollo en Github (Realraven2000, opto y paenglab) está trabajando diligentemente para restaurar la funcionalidad completa de $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "support-suggestion" : {
-    "message": "Para que $addonName$ permanezca funcional y vivo, hágalo un favor vital:",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "purchase-a-license" : {
-    "message" : "Compra una licencia."
-  }, 
-      
-  "renew-your-license" : {
-    "message" : "Renueva tu licencia."
-  },  
-  
-  "extend-your-license" : {
-    "message" : "Considere extender su licencia por un año."
-  },  
-      
-  "donate" : {
-    "message" : "Ayude con una donación única."
-  },   
-   
-  "purchase-heading" : {
-    "message" : "Comprar una licencia"
-  }, 
-  
-  "support-preference" : {
-    "message": "Esta es la forma preferida de admitir $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  }, 
-
-  "ongoing-work": {
-    "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "btn-want-a-license": {
-    "message" : "Quiero comprar una licencia"
-  } ,
-
-  "btn-extend-license": {
-    "message" : "Quiero extender mi licencia por un año"
-  } ,
-
-
-  "btn-renew-license": {
-    "message" : "Quiero renovar mi licencia"
-  } ,
-
-  "donate-heading" : {
-    "message" : "¡Ayuda donando!"
-  } ,
-
-  "cost-of-independence" : {
-    "message" : "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
-  } ,
-  
-  "mozillas-basic-platform" : {
-    "message" : "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
-  } ,
-  
-  "addon-authors-struggle" : {
-    "message" : "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
-  } ,
-  
-  "btn-want-to-donate" : {
-    "message" : "Quiero ayudar con una donación única."
-  } ,
-  
-  "translated-by-google" : {
-    "message": "traducciones proporcionadas por google",
-    "description": "disclaimer."
-  },
-  
-  "label-remind-me" : {
-    "message": "Recordármelo de nuevo en $countDays$ días.",
-    "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
-  }
 }
