@@ -285,19 +285,19 @@ SmartTemplate4.Licenser =
 				if (this.isExpired) {  // EXPIRED
           switch (licenser.key_type) {
             case 0: // Pro
-              btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
               break;
             case 1: // Domain
-              btnDomainLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
+              btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
               btnDomainLicense.removeAttribute('oncommand');
               btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
               btnDomainLicense.classList.add('register');
               btnProLicense.classList.remove('register');
               break;
             case 2: // Standard
-              btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);'); // upgrade fropm standard
               btnProLicense.classList.add('upgrade'); // no flashing
@@ -312,23 +312,23 @@ SmartTemplate4.Licenser =
               extBtn = btnProLicense;
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
-              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!")
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
               break;
             case 1:
               extBtn = btnDomainLicense;
               btnProLicense.classList.remove('register'); // not flashing
               btnDomainLicense.removeAttribute('oncommand');
               btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
-              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
+              extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
               break;
             case 2:
-              btnProLicense.label = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3, true);');
               extBtn = btnStdLicense;
               btnStdLicense.removeAttribute('oncommand');
               btnStdLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(2, true);');
-              extText = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!")
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
               // check whether renewal is up within 30 days
               let today = new Date(),
                   later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
@@ -345,7 +345,7 @@ SmartTemplate4.Licenser =
           extBtn.classList.add("register");
 					// add tooltip
 					extBtn.setAttribute('tooltiptext',
-					  util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense.tooltip", 
+					  util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
 						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
 				}
 
@@ -361,7 +361,7 @@ SmartTemplate4.Licenser =
 		
 		switch(this.ValidationStatus) {
 			case ELS.Expired:
-			  getElement('licenseDateLabel').value = util.getBundleString("SmartTemplate4.licenseValidation.expired","Your license expired on:")
+			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:")
 				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case ELS.Valid:
@@ -624,7 +624,7 @@ SmartTemplate4.Licenser =
     }
     if (LicenseKey.indexOf('STD')==0) {
        if (crypto.key_type!=1) { // not currently a domain key?
-         let txt = util.getBundleString("SmartTemplate4.prompt.switchDomainLicense", "Switch to Domain License?");
+         let txt = util.getBundleString("st.prompt.switchDomainLicense", "Switch to Domain License?");
 				  
          if (Services.prompt.confirm(null, util.ADDON_TITLE, txt)) {
            crypto.key_type=1; // switch to volume license

@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "Sostituisce il testo citato con HTML">
 <!ENTITY deleteQuotedTags "Elimina i tag dalla citazione">
 <!ENTITY replaceQuotedTags "Sostituisce i tag della citazione con testo o HTML">
-<!ENTITY Parameters "Parametri">
+<!ENTITY parameters "Parametri">
 <!ENTITY regexpAnyText "Qualsiasi testo - espressione regolare - deve essere racchiuso tra virgolette.">
 <!ENTITY replacementHTML "deve essere racchiuso tra virgolette: un tag di testo o html che verrà inserito tra virgolette ogni volta che viene trovata una corrispondenza.">
 <!ENTITY quoteLevel "[opzionale, numerico]: da quale livello minimo di preventivo iniziare">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variabili per data/ora personalizzata ">
 <!ENTITY customdf_note.label "È possibile associarle con &#37;X:=sent&#37;">
-<!ENTITY A.label "Nome del giorno (Venerdì)">
+<!ENTITY a.up.label "Nome del giorno (Venerdì)">
 <!ENTITY a.label "Nome del giorno (Ven)">
 <!ENTITY d.label "Giorno del mese (da 01 a 31) espresso con due cifre">
 <!ENTITY e.label "Giorno del mese (da 1 a 31)">
 <!ENTITY n.label "Mese (da 1 a 12)">
-<!ENTITY B.label "Mese (Gennaio)">
+<!ENTITY b.up.label "Mese (Gennaio)">
 <!ENTITY b.label "Mese (Gen)">
 <!ENTITY m.label "Mese (da 01 a 12) espresso con due cifre">
-<!ENTITY Y.label "Anno (1970)">
-<!ENTITY M.label "Minuto (da 00 a 59)">
+<!ENTITY y.up.label "Anno (1970)">
+<!ENTITY m.up.label "Minuto (da 00 a 59)">
 <!ENTITY s.label "Secondo (00 a 59)">
 <!ENTITY h.label "Ora nel formato 24 ore (da 00 a 23) espressa con due cifre">
 <!ENTITY k.label "Ora nel formato 24 ore (da 0 a 23)">

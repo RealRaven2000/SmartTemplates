@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "Zamienia cytowany tekst na HTML">
 <!ENTITY deleteQuotedTags "Usuwa tagi z cytatu">
 <!ENTITY replaceQuotedTags "Zamienia tagi z cytatu na tekst lub HTML">
-<!ENTITY Parameters "Parametry">
+<!ENTITY parameters "Parametry">
 <!ENTITY regexpAnyText "Każdy tekst - wyrażenie regularne - musi być w cudzysłowie.">
 <!ENTITY replacementHTML "muszą być w cudzysłowach - tag tekstowy lub html, który zostanie wstawiony w cudzysłowie wszędzie tam, gdzie znaleziono dopasowanie.">
 <!ENTITY quoteLevel "[opcjonalnie, numerycznie]: od którego minimalnego poziomu wyceny zacząć">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Zmienne dla dostosowania formatu daty">
 <!ENTITY customdf_note.label "Mogą być łączone z &#37;X:=sent&#37;">
-<!ENTITY A.label "Dzień tygodnia (Piątek)">
+<!ENTITY a.up.label "Dzień tygodnia (Piątek)">
 <!ENTITY a.label "Dzień tygodnia (Pi)">
 <!ENTITY d.label "Dzień miesiąca (01 do 31)">
 <!ENTITY e.label "Dzień miesiąca (1 do 31)">
 <!ENTITY n.label "Miesiąc (1 do 12)">
-<!ENTITY B.label "Miesiąc (Styczeń)">
+<!ENTITY b.up.label "Miesiąc (Styczeń)">
 <!ENTITY b.label "Miesiąc (Sty)">
 <!ENTITY m.label "Miesiąc (01 do 12)">
-<!ENTITY Y.label "Rok (1970)">
-<!ENTITY M.label "Minuta (00 do 59)">
+<!ENTITY y.up.label "Rok (1970)">
+<!ENTITY m.up.label "Minuta (00 do 59)">
 <!ENTITY s.label "Sekunda (00 do 59)">
 <!ENTITY h.label "Godzina, format 24-godzinny (00 do 23)">
 <!ENTITY k.label "Godzina, format 24-godzinny (0 do 23)">

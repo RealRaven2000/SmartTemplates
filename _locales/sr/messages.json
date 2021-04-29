@@ -1,1552 +1,1561 @@
 {
-    "A.label": {
-        "message": "Дан у недељи (пун назив)"
-    },
-    "B.label": {
-        "message": "Месец (пун назив)"
-    },
-    "M.label": {
-        "message": "Минут"
-    },
-    "Parameters": {
-        "message": "Параметри"
-    },
-    "SmartTemplate4.confirmVersionLink": {
-        "message": "Приказати дневник измена за SmartTemplates?"
-    },
-    "SmartTemplate4.fileFunction.notExists": {
-        "message": "Функција {0} није могла пронаћи или приступити датотеци. Проверите стазу испод:"
-    },
-    "SmartTemplate4.fileTemplates": {
-        "message": "Датотеке шаблона"
-    },
-    "SmartTemplate4.fileTemplates.configureMenu": {
-        "message": "Конфигуришите ставке менија…"
-    },
-    "SmartTemplate4.fileTemplates.error.charSet": {
-        "message": "Проблеми с конверзијом ХТМЛ предлошка из скупа [{1}].\\nКористећи необрађене податке стринга Ако ово резултира исписаним словима, покушајте да додате експлицитни 'мета цхарсет"
-    },
-    "SmartTemplate4.fileTemplates.error.filePath": {
-        "message": "Није могуће учитати датотеку шаблона '{0}' са путање:\\n{1}\\nДатотека је можда уклоњена или преименована."
-    },
-    "SmartTemplate4.fileTemplates.openFile": {
-        "message": "Отворите датотеку шаблона SmartTemplates …"
-    },
-    "SmartTemplate4.fileTemplates.replaceStationery": {
-        "message": "Нажалост, од Тхундербирд-а 68 даље, нажалост, „Stationery“ више не ради.\\nСтога СмартТемплате⁴ сада нуди свој властити ХТМЛ систем за управљање шаблонима; кликните ОК да бисте га поставили."
-    },
-    "SmartTemplate4.fileTemplates.restrictTemplates": {
-        "message": "Потребна вам је лиценца SmartTemplates да бисте користили више од {1} шаблона!"
-    },
-    "SmartTemplate4.fileTemplates.selectFromMenu": {
-        "message": "Изаберите предложак из падајућег менија."
-    },
-    "SmartTemplate4.fileTemplates.wrnEnterPath": {
-        "message": "Одаберите исправну стазу!"
-    },
-    "SmartTemplate4.fileTemplates.wrnEnterTitle": {
-        "message": "Молимо унесите наслов!"
-    },
-    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem": {
-        "message": "Морате одабрати ставку са листе да бисте је ажурирали!"
-    },
-    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem.caption": {
-        "message": "Ажурирај предлошке"
-    },
-    "SmartTemplate4.licenseValidation.expired": {
-        "message": "Ваша лиценца је истекла:"
-    },
-    "SmartTemplate4.licenseValidation.guessAddon": {
-        "message": "(Унети кључ може бити за {2})."
-    },
-    "SmartTemplate4.notification.donate": {
-        "message": "Донирајте"
-    },
-    "SmartTemplate4.notification.dontShowAgain": {
-        "message": "Не показуј ову поруку."
-    },
-    "SmartTemplate4.notification.editedChangeChallenge": {
-        "message": "Сваки текст који сте унели ручно од отварања композитора биће обрисан, без поништења. Наставити у сваком случају?"
-    },
-    "SmartTemplate4.notification.editedChangeWarning": {
-        "message": "Текст сте већ унели и желите да пређете на образац {0}"
-    },
-    "SmartTemplate4.notification.license.required": {
-        "message": "SmartTemplates захтева лиценцу за наставак рада. Прочитајте више на дну прозора поруке."
-    },
-    "SmartTemplate4.notification.license.text": {
-        "message": "Од сада SmartTemplates захтева најмање стандардну лиценцу. Више о томе прочитајте на нашој страници за лиценцирање."
-    },
-    "SmartTemplate4.notification.licensing": {
-        "message": "Више о лиценцирању"
-    },
-    "SmartTemplate4.notification.noStationery": {
-        "message": "Не можете пронаћи додатак „Stationery“ - да ли је инсталиран?"
-    },
-    "SmartTemplate4.notification.parsing": {
-        "message": "Анализа променљивих:"
-    },
-    "SmartTemplate4.notification.premium.btn.extendDomainLicense": {
-        "message": "Прошири лиценцу за домен"
-    },
-    "SmartTemplate4.notification.premium.btn.extendLicense": {
-        "message": "Продужите лиценцу"
-    },
-    "SmartTemplate4.notification.premium.btn.extendLicense.tooltip": {
-        "message": "То ће продужити тренутни датум лиценце за годину дана. Обично је јефтинија од нове лиценце."
-    },
-    "SmartTemplate4.notification.premium.btn.getLicense": {
-        "message": "Набави лиценцу"
-    },
-    "SmartTemplate4.notification.premium.btn.hotKey": {
-        "message": "л"
-    },
-    "SmartTemplate4.notification.premium.btn.renewDomainLicense": {
-        "message": "Обнови лиценцу за домен"
-    },
-    "SmartTemplate4.notification.premium.btn.renewLicense": {
-        "message": "Обнови лиценцу"
-    },
-    "SmartTemplate4.notification.premium.btn.upgrade": {
-        "message": "Унапреди се у професионалца"
-    },
-    "SmartTemplate4.notification.premium.btn.upgrade.hotKey": {
-        "message": "У"
-    },
-    "SmartTemplate4.notification.premium.text": {
-        "message": "{1} је доступна у премијум верзији. Региструјете SmartTemplates Pro, ако желите трајно да користите."
-    },
-    "SmartTemplate4.notification.premium.text.plural": {
-        "message": "{1} су Премиум функције, надоградите на SmartTemplates Pro лиценцу за њихово трајно коришћење."
-    },
-    "SmartTemplate4.notification.premium.title": {
-        "message": "Премијум могућност"
-    },
-    "SmartTemplate4.notification.spellcheck.error": {
-        "message": "Није могуће променити језик провере правописа. Да ли сте инсталирали исправан речник?"
-    },
-    "SmartTemplate4.notification.spellcheck.noDictionary": {
-        "message": "Није инсталиран речник."
-    },
-    "SmartTemplate4.notification.spellcheck.notFound": {
-        "message": "Речник '{0}' није пронађен."
-    },
-    "SmartTemplate4.prompt.switchDomainLicense": {
-        "message": "Прелазите на лиценцу домена?"
-    },
-    "SmartTemplate4.trialDays": {
-        "message": "Остало вам је {0} пробних дана."
-    },
-    "SmartTemplate4.trialExpiry": {
-        "message": "Пробни период вам је истекао пре {0} дана."
-    },
-    "SmartTemplate4.updateMessageNewBrackets1": {
-        "message": "Драги корисниче, са узбуђењем вам саопштавамо да, почев од ове верзије, SmartTemplates подржава и употребу витичастих заграда { } и ознаку <style>, тако да од сада можете детаљније да подешавате CSS унутар шаблона."
-    },
-    "SmartTemplate4.updateMessageNewBrackets2": {
-        "message": "Промењена је одређена синтакса за изразе уоквирене заградама; уместо витичастих {%cc(name)%} користите угласте заграде [[%cc(name)%]]. За више информација погледајте помоћ."
-    },
-    "SmartTemplate4.updateMessageNewBrackets3": {
-        "message": "SmartTemplates ће сада претворити постојеће шаблоне у формат сагласан са новом верзијом. Кликните на „У реду“ да наставите."
-    },
-    "SmartTemplate4.updateMessageVersion": {
-        "message": "SmartTemplates је успешно дограђен на верзију {1}."
-    },
-    "Y.label": {
-        "message": "Година"
-    },
-    "a.label": {
-        "message": "Дан у недељи (скраћени назив)"
-    },
-    "ab_contact": {
-        "message": "Контакт"
-    },
-    "ab_fields": {
-        "message": "Поља адресара"
-    },
-    "ab_fields.desc": {
-        "message": "Када одговарате на одговарајућу адресу е-поште, сада можете користити додатна поља за променљиве адресе, као што је &#37;from&#37;, као што су:"
-    },
-    "ab_other": {
-        "message": "Остало"
-    },
-    "ab_private": {
-        "message": "Приватни"
-    },
-    "ab_work": {
-        "message": "Посао"
-    },
-    "about.cap": {
-        "message": "О додатку"
-    },
-    "about.label": {
-        "message": "SmartTemplates вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге."
-    },
-    "accept_button": {
-        "message": "У реду"
-    },
-    "account.label": {
-        "message": "Изаберите налог:"
-    },
-    "active-version-info": {
-        "description": "The boldStart and boldEnd parts will be replaced with html tags",
-        "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
-        "placeholders": {
-            "addonVer": {
-                "content": "$1",
-                "example": "Version 1.1"
-            },
-            "appVer": {
-                "content": "$2",
-                "example": "78.0b4"
-            }
-        }
-    },
-    "addon-authors-struggle": {
-        "message": "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
-    },
-    "advanced.label": {
-        "message": "Напредно"
-    },
-    "any.label": {
-        "message": "Било који ред заглавља"
-    },
-    "attach.label": {
-        "message": "Додајте датотеку као прилог"
-    },
-    "b.label": {
-        "message": "Месец (скраћени назив)"
-    },
-    "basepath.absolute": {
-        "message": "Кликните овде да изаберете одређену фасциклу на вашем локалном диску."
-    },
-    "basepath.desc": {
-        "message": "Ако ваш предложак садржи слике са ознаком 'имг' које се налазе на вашем локалном диску, мораћете да кажете СмартТемплате где да их пронађете."
-    },
-    "basepath.desc2": {
-        "message": "Варијабла 'басепатх' ће уметнути хтмл ознаку 'басе' да би пронашла све слике на основу почетне локације - може се користити само једном у е-поруци."
-    },
-    "basepath.relative": {
-        "message": "Помоћу ове променљиве пронађите слике на истој локацији као и предложак хтмл датотеке."
-    },
-    "brack_with_var.label": {
-        "message": "Унутра можете да користите следеће променљиве [[...]]"
-    },
-    "btn-extend-license": {
-        "message": "Желим да продужим лиценцу за годину дана"
-    },
-    "btn-renew-license": {
-        "message": "Желим да обновим лиценцу"
-    },
-    "btn-upgrade-to-pro": {
-        "message": "Желим да надоградим своју лиценцу"
-    },
-    "btn-want-a-license": {
-        "message": "Желим да купим лиценцу"
-    },
-    "btn-want-to-donate": {
-        "message": "Желим да помогнем једнократном донацијом."
-    },
-    "btnLoadTemplate.tooltip": {
-        "message": "Load Template…"
-    },
-    "btnSaveTemplate.tooltip": {
-        "message": "Save Template…"
-    },
-    "btnYouTube.tooltip": {
-        "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
-    },
-    "button.pasteLicense": {
-        "message": "налепи"
-    },
-    "button.updateThunderbird": {
-        "message": "Ажурирај Thunderbird!"
-    },
-    "button.validateLicense": {
-        "message": "потврди"
-    },
-    "buyDomainLicense.button": {
-        "message": "Купи групну лиценцу"
-    },
-    "buyDomainLicense.instruct": {
-        "message": "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:"
-    },
-    "buyPremiumLicense.button": {
-        "message": "Купите Про лиценцу!"
-    },
-    "buyPremiumLicense.instruct": {
-        "message": "Желите да користите све премиум функције без ограничења? Набавите СмартТемплате⁴ Про лиценцу. Везан је за вашу личну адресу е-поште и може се користити у више инсталација."
-    },
-    "buyStandardLicense.button": {
-        "message": "Купите стандардну лиценцу!"
-    },
-    "buyStandardLicense.instruct": {
-        "message": "Не можете приуштити премиум функције? Набавите високо приступачну стандардну лиценцу и наставите да тестирате премиум функције."
-    },
-    "calculate.explain": {
-        "message": "DD = број дана за додавање. H = број сати за додавање (изборно). ММ = минута за додавање (необвезно)"
-    },
-    "calculate.reset": {
-        "message": "Подесите аргумент на 0 да бисте зауставили модификацију било којег датума."
-    },
-    "cancel_button": {
-        "message": "Откажи"
-    },
-    "capitalizeNames": {
-        "message": "Капитализуј имена"
-    },
-    "cc.label": {
-        "message": "Име примаоца (подразумевано)"
-    },
-    "cc_note.label": {
-        "message": "Када име није доступно, користиће се е-адреса"
-    },
-    "cc_var.cap": {
-        "message": "Прималац (CC)"
-    },
-    "ccfirstname.label": {
-        "message": "Име примаоца"
-    },
-    "ccmail.label": {
-        "message": "Е-адреса примаоца"
-    },
-    "ccname.label": {
-        "message": "Име примаоца"
-    },
-    "close.label": {
-        "message": "Основно"
-    },
-    "conditional.forwardMode": {
-        "message": "Ако се е-пошта прослеђује у реду, убацује се први параметар текста. Други параметар текста користи се када се пошта прослеђује као прилог."
-    },
-    "conditionals.cap": {
-        "message": "Условный текст"
-    },
-    "conditionals.note": {
-        "message": "Ова класа променљивих може се користити за уметање текста у зависности од начина слања поште. За њих вам је потребна лиценца СмартТемплатес Про."
-    },
-    "contextError": {
-        "message": "Променљива {1} не може да се користи за *нове* поруке.\\nПогледајте помоћ за списак дозвољених променљивих."
-    },
-    "contribute_button": {
-        "message": "Допринеси"
-    },
-    "contributor.label": {
-        "message": "Сарадник"
-    },
-    "copy.label": {
-        "message": "Копирај"
-    },
-    "cost-of-independence": {
-        "message": "Развој софтвера кошта време и новац - за разлику од многих апликација на платформи, додатке не пишу велике корпорације, нити их Мозилла спонзорише на било који начин."
-    },
-    "creator.label": {
-        "message": "Аутор"
-    },
-    "cursor.label": {
-        "message": "Sets the cursor position"
-    },
-    "customdf_note.label": {
-        "message": "Може да се комбинује са &#37;X:=sent&#37;"
-    },
-    "d.label": {
-        "message": "Дан у месецу (од 01 до 31) са нулом на почетку"
-    },
-    "date.label": {
-        "message": "Датум/време (као и заглавље е-поруке)"
-    },
-    "dateformat.example": {
-        "message": "Пример:"
-    },
-    "dateformat.explain": {
-        "message": "Већина горе наведених временских променљивих може се користити у низу параметара изостављањем '&#37;'. Такође видети:"
-    },
-    "dateformat.label": {
-        "message": "Функција за уметање тренутног времена (поље на које се може кликнути)."
-    },
-    "datelocal.label": {
-        "message": "Датум/време (локални формат)"
-    },
-    "dateoffset_note.label": {
-        "message": "Следећа функција додаје одступање свим следећим приказаним временима."
-    },
-    "dateshort.label": {
-        "message": "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)"
-    },
-    "datetimezone.label": {
-        "message": "Временска зона (+0100, +0200…)"
-    },
-    "datetz.label": {
-        "message": "Временска зона (+0100, +0200…)"
-    },
-    "day.1.name": {
-        "message": "недеља"
-    },
-    "day.1.short": {
-        "message": "нед"
-    },
-    "day.2.name": {
-        "message": "понедељак"
-    },
-    "day.2.short": {
-        "message": "пон"
-    },
-    "day.3.name": {
-        "message": "уторак"
-    },
-    "day.3.short": {
-        "message": "уто"
-    },
-    "day.4.name": {
-        "message": "среда"
-    },
-    "day.4.short": {
-        "message": "сре"
-    },
-    "day.5.name": {
-        "message": "четвртак"
-    },
-    "day.5.short": {
-        "message": "чет"
-    },
-    "day.6.name": {
-        "message": "петак"
-    },
-    "day.6.short": {
-        "message": "пет"
-    },
-    "day.7.name": {
-        "message": "субота"
-    },
-    "day.7.short": {
-        "message": "суб"
-    },
-    "defaultMimeFormat": {
-        "message": "Подразумевани формат адресе:"
-    },
-    "defaultMimeFormat_tip": {
-        "message": "Формат за употребу приликом замене обичних &#37;to&#37; &#37;from&#37; &#37;cc&#37; адреса. На пример. (име,презиме,??пошта) приказат ће име које слиједи презиме; ако оба нису доступна, приказаће се адреса поште."
-    },
-    "deleteQuotedTags": {
-        "message": "Deletes tags from the quote"
-    },
-    "deleteQuotedText": {
-        "message": "Брисање цитираног текста"
-    },
-    "deleteText": {
-        "message": "Уклоните неки текст из цитата, нпр.deleteText(&quot;via Paypal&quot;)"
-    },
-    "developer.label": {
-        "message": "Програмер"
-    },
-    "domainLicense.email": {
-        "message": "Контактират ћемо вас помоћу ове адресе е-поште за генерисање лиценце за ваш домен; дозволите да нам се јавите два радна дана. На следећој страници унесите име домене за лиценцу."
-    },
-    "domainLicense.header": {
-        "message": "Лиценцирани домен е-поште"
-    },
-    "domainLicense.instruct": {
-        "message": "Licenca je ključna za domenu vaše kompanije. Licenca će omogućiti korisnicima sa adresama e-pošte koja se završavaju na ovoj domeni e-pošte da koriste SmartTemplates Pro. Na primer. ako unesete ime domena 'abc.com', korisnicima e-pošte poput fred@abc.com, martha@abc.com, mike.doe@abc.com itd. dozvoljeno je da koriste licencu. Maksimalan broj važećih pojedinačnih korisnika je broj koji ste uneli na početnom ekranu."
-    },
-    "domainLicense.validate": {
-        "message": "Обавезно унесите име домене * тачно онако како јесте * на е-адресе ваше компаније (део * после * знака @), јер ће се користити за ауторизацију адреса е-поште ваших корисника."
-    },
-    "donate": {
-        "message": "Помозите једнократном донацијом."
-    },
-    "donate-heading": {
-        "message": "Помоћ донацијом!"
-    },
-    "e.label": {
-        "message": "Дан у месецу"
-    },
-    "edit.label": {
-        "message": "Уређивање"
-    },
-    "email.label": {
-        "message": "Ел. адреса:"
-    },
-    "enterLicenseKey.button": {
-        "message": "Унесите број лиценце..."
-    },
-    "enterLicenseKey.tooltip": {
-        "message": "Унесите број лиценце који сте примили ел. поруком"
-    },
-    "ex_brack.label": {
-        "message": "Пример: „За: Анђелка | CC: Илинка“"
-    },
-    "export.label": {
-        "message": "Извези"
-    },
-    "extend-your-license": {
-        "message": "Размислите о продужењу лиценце за годину дана."
-    },
-    "extensionDescription": {
-        "description": "Description of the extension.",
-        "message": "Моћан начин за стварање прилагођених одговора аутоматским уметањем различитих заглавља поште. Предлошци се могу креирати за сваки идентитет поште, такође подржава спољне хтмл датотеке и табеле стилова."
-    },
-    "extensionName": {
-        "description": "Name of the extension.",
-        "message": "SmartTemplates"
-    },
-    "extensions.smarttemplate4@thunderbird.extension.description": {
-        "message": "Додатак SmartTemplates може да прилагоди „заглавља цитата“ по налогу."
-    },
-    "file.label": {
-        "message": "Датотека"
-    },
-    "fileCSS.label": {
-        "message": "Спољни стил стила (цсс). Укључите своја омиљена ЦСС правила која желите да делите између различитих предложака."
-    },
-    "fileHTML.label": {
-        "message": "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8."
-    },
-    "fileImage.label": {
-        "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
-    },
-    "fileTemplates.add": {
-        "message": "Add"
-    },
-    "fileTemplates.down": {
-        "message": "Down"
-    },
-    "fileTemplates.file.open": {
-        "message": "Select template file from disk"
-    },
-    "fileTemplates.file.path": {
-        "message": "Template location:"
-    },
-    "fileTemplates.file.title": {
-        "message": "Title:"
-    },
-    "fileTemplates.file.title.tooltip": {
-        "message": "This will be displayed in the template selection menu."
-    },
-    "fileTemplates.fwd.tooltip": {
-        "message": "List of external template files that can be launched from the 'Forward' button."
-    },
-    "fileTemplates.new.tooltip": {
-        "message": "List of external template files that can be launched from the 'Create new Message' button."
-    },
-    "fileTemplates.remove": {
-        "message": "Remove"
-    },
-    "fileTemplates.rsp.tooltip": {
-        "message": "List of external template files that can be launched from the 'Reply' button."
-    },
-    "fileTemplates.title": {
-        "message": "Template Files"
-    },
-    "fileTemplates.up": {
-        "message": "Up"
-    },
-    "fileTemplates.update": {
-        "message": "Update"
-    },
-    "firstName.label": {
-        "message": "Име:"
-    },
-    "fix_var.cap": {
-        "message": "Контролне променљиве"
-    },
-    "fix_vartz.cap": {
-        "message": "Контролне променљиве за „Формат датума/временска зона“"
-    },
-    "fix_vartz_note.label": {
-        "message": "Може да се комбинује са &#37;X:=sent&#37;"
-    },
-    "fpFilterHtmlTemplate": {
-        "message": "ХТМЛ предложак"
-    },
-    "fpFilterName": {
-        "message": "Датотека SmartTemplate4-а"
-    },
-    "fpFolder": {
-        "message": "Фолдер"
-    },
-    "fpHTMLFile": {
-        "message": "HTML датотека/текстуална датотека"
-    },
-    "fpImageFile": {
-        "message": "Датотека слике"
-    },
-    "fpJsonFile": {
-        "message": "ЈSON Филе"
-    },
-    "fpStyle": {
-        "message": "Стил листа"
-    },
-    "freeLicense": {
-        "message": "Ако сте недавно донирали за SmartTemplates или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка SmartTemplates."
-    },
-    "from.label": {
-        "message": "Име пошиљаоца (подразумевано)"
-    },
-    "from_note.label": {
-        "message": "Када име није доступно, биће приказана е-адреса"
-    },
-    "from_var.cap": {
-        "message": "Пошиљалац"
-    },
-    "fromfirstname.label": {
-        "message": "Име пошиљаоца"
-    },
-    "frommail.label": {
-        "message": "Е-адреса пошиљаоца"
-    },
-    "fromname.label": {
-        "message": "Име пошиљаоца"
-    },
-    "getSmartTemplate4": {
-        "message": "Набавите лиценцу за СмартТемплате⁴"
-    },
-    "guessNameFromMail": {
-        "message": "Погодите Назовите делове са адресе е-поште ако их нема"
-    },
-    "h.label": {
-        "message": "Време, 24-часовни формат (од 00 до 23) са нулом на почетку"
-    },
-    "header.append.subject": {
-        "message": "додати текст на тему"
-    },
-    "header.append.to": {
-        "message": "додајте е-адресу на листу прималаца"
-    },
-    "header.delete.subject": {
-        "message": "уклони текст из теме (регуларни израз)"
-    },
-    "header.prefix.subject": {
-        "message": "префикс субјекта уз текст"
-    },
-    "header.set.from": {
-        "message": "поставља адресу „од“. Ово прихвата само адресе е-поште са листе идентитета."
-    },
-    "header.set.subject": {
-        "message": "заменити предмет текстом"
-    },
-    "header.set.to": {
-        "message": "замените примаоца адресом е-поште"
-    },
-    "header_function.cap": {
-        "message": "Измените заглавље поште"
-    },
-    "header_function.explain": {
-        "message": "Ове функције се могу користити за модификовање заглавља поште, како је овде описано:"
-    },
-    "header_function.scope": {
-        "message": "Може се користити са овим заглављима:"
-    },
-    "heading-installed": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "Успешно инсталиран $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "heading-updated": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "$addonName$ је успешно ажурирано",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "heading.click": {
-        "message": "Кликните наслов или"
-    },
-    "heading.expandAll": {
-        "message": "проширите све уносе"
-    },
-    "help.label": {
-        "message": "Помоћ"
-    },
-    "help_dialog_title": {
-        "message": "Помоћ за SmartTemplates"
-    },
-    "help_keyword.cap": {
-        "message": "Помоћ"
-    },
-    "html_note.cap": {
-        "message": "Напомена за HTML шаблоне"
-    },
-    "html_note.label": {
-        "message": "Користите само UTF-8 (уникод) кодирање у HTML шаблонима."
-    },
-    "i.label": {
-        "message": "Време, 12-часовни формат (од 01 до 12) са нулом на почетку"
-    },
-    "identity_ab": {
-        "message": "Употријебите кључну ријеч  'addressbook' да бисте из адресара пронашли додатне информације о идентитету."
-    },
-    "identity_ab.example": {
-        "message": "Пример"
-    },
-    "identity_ab.field": {
-        "message": "За додатне вредности поља погледајте поглавље 'Поља адресара' у наставку."
-    },
-    "identity_ab.phoneno": {
-        "message": "Бр. телефона"
-    },
-    "im-ex.cap": {
-        "message": "Увоз/извоз подешавања и шаблона"
-    },
-    "im-ex_note1.label": {
-        "message": "Можете да извезете и увезете ваша подешавања и шаблоне који су повезани са сваким налогом."
-    },
-    "im-ex_note2.label": {
-        "message": "Прво изаберите налог који желите да извезете у падајућем менију са поставкама SmartTemplates-а."
-    },
-    "im-ex_note3.label": {
-        "message": "Након тога, из менија изаберите „Датотека ⇒ Извези ⇒ Поставке и шаблони“ и сачувајте датотеку (xxx.st4) на рачунар."
-    },
-    "im-ex_note4.label": {
-        "message": "Да бисте увезли датотеку, изаберите налог из падајућег менија са поставкама SmartTemplates-а. Након тога, из менија изаберите „Датотека ⇒ Увези ⇒ Поставке и шаблони“."
-    },
-    "im-ex_note5.label": {
-        "message": "Изаберите датотеку SmartTemplates-а (xxx.st4) коју желите да увезете."
-    },
-    "im-ex_note6.label": {
-        "message": "Напомена: На Apple/Macintosh платформама, трака са менијем се налази у насловној траци уместо у прозору са опцијама SmartTemplates-а."
-    },
-    "import.label": {
-        "message": "Увези"
-    },
-    "insert.label": {
-        "message": "Убаци променљиву"
-    },
-    "intro": {
-        "message": "Годишња лиценца за SmartTemplates вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи."
-    },
-    "k.label": {
-        "message": "Време, 24-часовни формат (од 0 до 23)"
-    },
-    "l.label": {
-        "message": "Време, 12-часовни формат (од 1 до 12)"
-    },
-    "label-remind-me": {
-        "message": "Подсети ме поново за {цоунтДаис} дана.",
-        "placeholders": {
-            "countDays": {
-                "content": "$1",
-                "example": "10"
-            }
-        }
-    },
-    "label.haveLicense": {
-        "message": "Већ имате лиценцу?"
-    },
-    "label.insertLicense": {
-        "message": "Унесите свој лични број лиценце овде:"
-    },
-    "label.insertLicense.tooltip": {
-        "message": "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а."
-    },
-    "label.licenseValid": {
-        "message": "Ваша лиценца важи до:"
-    },
-    "label.premiumFeaturesSite": {
-        "message": "Прочитајте више о Премиум могућностима на нашој веб локацији…"
-    },
-    "lastName.label": {
-        "message": "Презиме:"
-    },
-    "license-is-extended": {
-        "description": "Shown if license expires more than a year from now",
-        "message": "Хвала вам што сте недавно продужили лиценцу или ако сте донирали. Као што сте помогли у будућем доказивању овог додатка, можете једноставно затворити овај прозор."
-    },
-    "license-is-standard": {
-        "description": "Special message for standard license holders",
-        "message": "Као носилац стандардне лиценце СмартТемплатес, сада испуњавате услове за ажурирање с попустом и продужење за целу годину. За више информација кликните на дугме [Упграде то Про] испод ваше стандардне лиценце."
-    },
-    "licenseTypes": {
-        "message": "Даље SmartTemplates нуди две лиценце, Standard и Pro; они су неопходни да би били у току са променама на Тхундербирд платформи и финансирали Иновације и поправке додатка. Како се промене промене извршавају током једногодишњег циклуса, лиценца ће такође важити 1 годину."
-    },
-    "licenseValidation.expired": {
-        "message": "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу."
-    },
-    "licenseValidation.failed": {
-        "message": "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка."
-    },
-    "licenseValidation.invalidAddon": {
-        "message": "Кључ лиценце који сте унели можда је за други додатак. Лиценчни кључеви за {0} почињу са {1}."
-    },
-    "licenseValidation.invalidMail": {
-        "message": "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ."
-    },
-    "licenseValidation.notMatchedMail": {
-        "message": "Шифроване ел. адресе се не подударају са читљивима."
-    },
-    "licenseValidation.passed": {
-        "message": "Хвала што сте регистровали SmartTemplates про! Све могућности су сада откључане."
-    },
-    "licenseValidation.standard": {
-        "message": "Хвала што сте регистровали SmartTemplates Standard - Неизмерно помажете додатак! Сада можете тестирати и све премиум функције."
-    },
-    "licenseWindow.title": {
-        "message": "Лиценца SmartTemplates"
-    },
-    "localedate.label": {
-        "message": "Датум/време (локални формат)"
-    },
-    "localename.label": {
-        "message": "sr-RS"
-    },
-    "localized.label": {
-        "message": "Преводилац"
-    },
-    "m.label": {
-        "message": "Месец (од 01 до 12) – са нулом на почетку"
-    },
-    "matchTextFromBody": {
-        "message": "Пронађите RegEx образац у наведеном имејлу и уметните на место функције."
-    },
-    "matchTextFromSubject": {
-        "message": "Пронађите RegEx образац у предмету и уметните на место функције."
-    },
-    "menu.template_export.label": {
-        "message": "Извези шаблон"
-    },
-    "menu.template_import.label": {
-        "message": "Увези шаблон"
-    },
-    "message_default_title": {
-        "message": "SmartTemplates"
-    },
-    "messid.label": {
-        "message": "ID поруке"
-    },
-    "minSize": {
-        "message": "[изборно, нумерички] - број кБите-а, минимална величина за уклањање ознаке. На овај начин можете задржати мање слике попут икона / емојиса док одбацујете велике слике."
-    },
-    "minSize_detail": {
-        "message": "Није увек могуће одредити величину, посебно ако Тхундербирд још увек учитава слику, често због велике величине - у овом случају ће се тага ионако уклонити."
-    },
-    "month.1.name": {
-        "message": "јануар"
-    },
-    "month.1.short": {
-        "message": "јан"
-    },
-    "month.10.name": {
-        "message": "октобар"
-    },
-    "month.10.short": {
-        "message": "окт"
-    },
-    "month.11.name": {
-        "message": "новембар"
-    },
-    "month.11.short": {
-        "message": "нов"
-    },
-    "month.12.name": {
-        "message": "децембар"
-    },
-    "month.12.short": {
-        "message": "дец"
-    },
-    "month.2.name": {
-        "message": "фебруар"
-    },
-    "month.2.short": {
-        "message": "феб"
-    },
-    "month.3.name": {
-        "message": "март"
-    },
-    "month.3.short": {
-        "message": "мар"
-    },
-    "month.4.name": {
-        "message": "април"
-    },
-    "month.4.short": {
-        "message": "апр"
-    },
-    "month.5.name": {
-        "message": "мај"
-    },
-    "month.5.short": {
-        "message": "мај"
-    },
-    "month.6.name": {
-        "message": "јун"
-    },
-    "month.6.short": {
-        "message": "јун"
-    },
-    "month.7.name": {
-        "message": "јул"
-    },
-    "month.7.short": {
-        "message": "јул"
-    },
-    "month.8.name": {
-        "message": "август"
-    },
-    "month.8.short": {
-        "message": "авг"
-    },
-    "month.9.name": {
-        "message": "септембар"
-    },
-    "month.9.short": {
-        "message": "сеп"
-    },
-    "mozillas-basic-platform": {
-        "message": "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са аддонс.тхундербирд.нет - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."
-    },
-    "n.label": {
-        "message": "Месец (од 1 до 12)"
-    },
-    "newsgr.label": {
-        "message": "Дискусионе групе"
-    },
-    "no_button": {
-        "message": "Не"
-    },
-    "notificationTitle": {
-        "description": "Title of the click notification.",
-        "message": "Click notification"
-    },
-    "ongoing-work": {
-        "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "ownmail.label": {
-        "message": "Е-адреса"
-    },
-    "ownname.label": {
-        "message": "Ваше име"
-    },
-    "p.label": {
-        "message": "AM/PM"
-    },
-    "p1.label": {
-        "message": "a.m."
-    },
-    "p2.label": {
-        "message": "A.M."
-    },
-    "p3.label": {
-        "message": "AM"
-    },
-    "paste.label": {
-        "message": "Налепи"
-    },
-    "pref_StatusIcon.IconHoverText": {
-        "message": "Текст при задржавању курсора"
-    },
-    "pref_StatusIcon.IconOnly": {
-        "message": "Само икона"
-    },
-    "pref_StatusIcon.IconText": {
-        "message": "Икона и текст"
-    },
-    "pref_about.tab": {
-        "message": "О додатку"
-    },
-    "pref_addSigBreakHTML.label": {
-        "message": "Додај „--“ у HTML е-поруку"
-    },
-    "pref_addSigBreakHTML.tooltip": {
-        "message": "Увек додајте граничник „--“ пре потписа (у HTML е-порукама)"
-    },
-    "pref_addSigBreakPlaintext.label": {
-        "message": "Додај „--“ у обичну е-поруку"
-    },
-    "pref_addSigBreakPlaintext.tooltip": {
-        "message": "Увек додајте граничник „--“ пре потписа (у обичним е-порукама)"
-    },
-    "pref_addressDelimiter": {
-        "message": "Delimit multiple correspondents with:"
-    },
-    "pref_addressDelimiter_tip": {
-        "message": "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)"
-    },
-    "pref_advanced.tab": {
-        "message": "Напредне поставке"
-    },
-    "pref_breaksOnTop.label": {
-        "message": "Број прелома на врху:"
-    },
-    "pref_cursorInsertSpace": {
-        "message": "Убаци размак ради истицања &#37;cursor&#37;"
-    },
-    "pref_debug_check": {
-        "message": "Отклањање грешака"
-    },
-    "pref_debug_tip": {
-        "message": "Притисните десним тастером миша за напредније опције отклањања грешака."
-    },
-    "pref_def.cap": {
-        "message": "Демаркирајте „Користи подразумевано“ да бисте направили прилагођено заглавље цитирања на овом налогу."
-    },
-    "pref_def.label": {
-        "message": "Користи подразумевано"
-    },
-    "pref_defaultCharset.label": {
-        "message": "Подразумевано кодирање"
-    },
-    "pref_defaultCharset_tip": {
-        "message": "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди."
-    },
-    "pref_dialog.title": {
-        "message": "Поставке SmartTemplates-а"
-    },
-    "pref_examples.tab": {
-        "message": "Примери (само на мрежи)"
-    },
-    "pref_examples.tooltip": {
-        "message": "Прикажите примере шаблона са https://smarttemplates.quickfolders.org/templates.html. Доступно само док сте повезани на интернет."
-    },
-    "pref_fontSettings.label": {
-        "message": "Фонт у уређивачу шаблона"
-    },
-    "pref_forceParagraph": {
-        "message": "Force Paragraph Mode"
-    },
-    "pref_forceParagraph_tip": {
-        "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
-    },
-    "pref_fwd.label": {
-        "message": "Примени следећи шаблон на прослеђену поруку"
-    },
-    "pref_fwd.tab": {
-        "message": "Проследи"
-    },
-    "pref_fwdhead.label": {
-        "message": "Онемогући подразумевано заглавље цитирања Thunderbird-а"
-    },
-    "pref_fwdmsg.cap": {
-        "message": "Проследи"
-    },
-    "pref_global.tab": {
-        "message": "Глобалне поставке"
-    },
-    "pref_groupAdvanced": {
-        "message": "Напредне функције"
-    },
-    "pref_groupMailContent": {
-        "message": "Садржај е-поруке"
-    },
-    "pref_groupNameRules": {
-        "message": "Правила за именовање"
-    },
-    "pref_groupSignatures": {
-        "message": "Потписи"
-    },
-    "pref_groupTroubleShooting": {
-        "message": "Решавање проблема"
-    },
-    "pref_groupUI": {
-        "message": "Корисничко окружење"
-    },
-    "pref_help.tab": {
-        "message": "Помоћ"
-    },
-    "pref_hideExamples": {
-        "message": "Сакриј картицу са примерима"
-    },
-    "pref_html.cap": {
-        "message": "Користите командне знакове за &quot;, &amp;, &lt;, &gt; и space. За више информација, погледајте помоћ."
-    },
-    "pref_html.label": {
-        "message": "Користи HTML (нпр. &lt;b&gt;bold&lt;/b&gt;)"
-    },
-    "pref_nameSwap": {
-        "message": "Исправи LastName, FirstName"
-    },
-    "pref_nameSwap_tip": {
-        "message": "Мења „LastName, FirstName“ у „First Last“"
-    },
-    "pref_new.label": {
-        "message": "Примени следећи шаблон на нову поруку"
-    },
-    "pref_new.tab": {
-        "message": "Састави"
-    },
-    "pref_newmsg.cap": {
-        "message": "Састави"
-    },
-    "pref_parseSignature": {
-        "message": "Обради потпис"
-    },
-    "pref_parseSignature_tip": {
-        "message": "Замените променљиве у потпису."
-    },
-    "pref_quoteHeaderBox.label": {
-        "message": "Заглавље цитирања"
-    },
-    "pref_quoteHeaderBox_tip": {
-        "message": "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:"
-    },
-    "pref_quotehead_tip": {
-        "message": "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље."
-    },
-    "pref_removeSig.label": {
-        "message": "Замени потпис при промени идентитета е-поште"
-    },
-    "pref_rep_br.cap": {
-        "message": "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем &lt;br&gt;."
-    },
-    "pref_rep_br.label": {
-        "message": "Замени преломе са &lt;br&gt;"
-    },
-    "pref_rsp.label": {
-        "message": "Примени следећи шаблон на одговорену поруку"
-    },
-    "pref_rsp.tab": {
-        "message": "Одговори"
-    },
-    "pref_rsphead.label": {
-        "message": "Користи уместо подразумеваног заглавља цитата"
-    },
-    "pref_rspmsg.cap": {
-        "message": "Одговори"
-    },
-    "pref_server_def": {
-        "message": "Уобичајено"
-    },
-    "pref_server_desc": {
-        "message": "Налог"
-    },
-    "pref_showStatusIcon.label": {
-        "message": "Прикажи дугме у статусној траци"
-    },
-    "pref_sigReplaceBR.label": {
-        "message": "Замени нови ред у текстуалном потпису са &lt;br&gt;"
-    },
-    "pref_silentUpdates": {
-        "message": "Тиха ажурирања"
-    },
-    "pref_silentUpdates_tip": {
-        "message": "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран."
-    },
-    "pref_stationeryLink": {
-        "message": "Додатак Stationery"
-    },
-    "pref_stationeryLink_tip": {
-        "message": "Преузми Stationery…"
-    },
-    "pref_stationerySupport": {
-        "message": "Подршка за додатак Stationery"
-    },
-    "pref_stationerySupport_tip": {
-        "message": "Подржава коришћење додатка Stationery упоредо са SmartTemplates-ом."
-    },
-    "pref_stationerySupport_tip2": {
-        "message": "Ово вам омогућава да користите променљиве шаблона у Stationery-ју."
-    },
-    "pref_templateBox.label": {
-        "message": "Шаблон"
-    },
-    "pref_templateBox_tip": {
-        "message": "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;“"
-    },
-    "pref_template_tip": {
-        "message": "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација."
-    },
-    "pref_variables.tab": {
-        "message": "Променљиве"
-    },
-    "premiumConfig": {
-        "message": "Премијум могућности"
-    },
-    "prompt.email": {
-        "message": "Унесите емаил адресу"
-    },
-    "prompt.text": {
-        "message": "Унесите текст који желите додати или подесити"
-    },
-    "purchase-a-license": {
-        "message": "Купите лиценцу."
-    },
-    "purchase-heading": {
-        "message": "Куповина лиценце!"
-    },
-    "quoteLevel": {
-        "message": "[изборно, нумерички]: од којег минималног нивоа цитата треба почети"
-    },
-    "quotePlaceholder": {
-        "message": "Овим се цитирани део премешта у сам текст предлошка. Одељак заглавља цитата из шаблона налога биће премештен на врх цитата."
-    },
-    "quotePlaceholder.level": {
-        "message": "[опционално, нумерички] Максимални ниво цитирања за уклањање старијих цитата из разговора."
-    },
-    "quote_changers.cap": {
-        "message": "Манипулација цитата"
-    },
-    "quote_changers.desc": {
-        "message": "Премиум променљиве за уклањање текста / тагова из цитираних делова и штеди простор"
-    },
-    "regexpAnyText": {
-        "message": "Било који текст - регуларни израз - мора бити у двоструким наводницима."
-    },
-    "renew-your-license": {
-        "message": "Обновите лиценцу."
-    },
-    "replaceQuotedTags": {
-        "message": "Замењује ознаке из цитата текстом или хтмл-ом"
-    },
-    "replaceQuotedText": {
-        "message": "Замењује цитирани текст ХТМЛ-ом"
-    },
-    "replaceText": {
-        "message": "Замените неки текст нечим другим."
-    },
-    "replacementHTML": {
-        "message": "мора бити у двоструким наводницима - било текст или хтмл таг који ће бити убачен у наводнике где год се подударање нађе."
-    },
-    "resolveABRemoveMail": {
-        "message": "Уклони е-адресу ако формат није наведен"
-    },
-    "resolveNamesFromAB": {
-        "message": "Разреши имена из адресара"
-    },
-    "resolveNamesFromABDisplay": {
-        "message": "Употријебите приказно име ако недостаје име"
-    },
-    "resolveNamesFromABNick": {
-        "message": "Замени име ако је доступан надимак"
-    },
-    "resolveNamesFromAB_tip": {
-        "message": "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP."
-    },
-    "s.label": {
-        "message": "Секунд"
-    },
-    "selector": {
-        "message": "- шта бисте користили за адресирање ознаке у цсс-у. најједноставнији случај 'имг' или 'п', али селектори атрибута могу се додати све док се могу избећи двоструки наводници."
-    },
-    "settings.label": {
-        "message": "Поставке и шаблони"
-    },
-    "shortdate.label": {
-        "message": "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)"
-    },
-    "sig.label": {
-        "message": "Потпис из подешавања налога"
-    },
-    "sig2.label": {
-        "message": "Потпис из подешавања налога, али без две цртице (--)"
-    },
-    "smartTemplate4.changeTemplate.label": {
-        "message": "Change template…"
-    },
-    "smartTemplate4.changeTemplate.tooltip": {
-        "message": "Load a different template - use before editing the Email!"
-    },
-    "smartTemplate4.changetemplate.label": {
-        "message": "Промена шаблона…"
-    },
-    "smartTemplate4.changetemplate.tooltip": {
-        "message": "Изаберите други предложак - користите пре уређивања у тијелу поште!"
-    },
-    "smartTemplate4.cleandeferred.label": {
-        "message": "Поспремити!"
-    },
-    "smartTemplate4.cleandeferred.tooltip": {
-        "message": "Очистите све променљиве СмартТемплате"
-    },
-    "smartTemplate4.deferredcontext.cleanup": {
-        "message": "Ажурирајте и замените садржајем"
-    },
-    "smartTemplate4.deferredcontext.delete": {
-        "message": "Уклоните променљиву СмартТемплате⁴"
-    },
-    "smartTemplate4.deferredcontext.update": {
-        "message": "Ажурирајте садржај СмартТемплате⁴"
-    },
-    "smartTemplate4.settings.label": {
-        "message": "SmartTemplates"
-    },
-    "smartTemplate4.settings.tooltip": {
-        "message": "Подешавања SmartTemplates-а"
-    },
-    "smarttemplate4_button": {
-        "message": "Уреди шаблоне/заглавље цитата…"
-    },
-    "smarttemplate4_title": {
-        "message": "SmartTemplates"
-    },
-    "spec_form.cap": {
-        "message": "Прекидачи поља адресе"
-    },
-    "spec_var.cap": {
-        "message": "Посебна"
-    },
-    "specform_note.label": {
-        "message": "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени."
-    },
-    "spellcheck.label": {
-        "message": "Поставља језик за проверу правописа. Примјер вриједности: (ен, де-ДЕ, ес-ЕС, ру) - имајте на уму да рјечник мора бити инсталиран."
-    },
-    "standardformat.config": {
-        "message": "Конфигуришите подразумевани формат…"
-    },
-    "stringmanip.alttext": {
-        "message": "[опционални параметар] Алтернативни текст: ако није пронађено подударање, уместо њега се убацује алтернативни текст."
-    },
-    "stringmanip.match.comment": {
-        "message": "Функције подударања: Први параметар (регуларни израз) мора бити унутар двоструких наводника. Други параметар је број групе подударања. Користите 0 да се подударате са комплетним изразом, 1 за прву групу итд."
-    },
-    "stringmanip_function.cap": {
-        "message": "Стринг Манипулатион"
-    },
-    "stringmanip_function.explain": {
-        "message": "Ове функције се могу користити за брисање или замену текста у предлошку е-поште или заглављу цитата."
-    },
-    "sub.label": {
-        "message": "наслов одговорене/прослеђене поруке"
-    },
-    "sub2.label": {
-        "message": "наслов поруке коју тренутно састављате"
-    },
-    "sub_var.cap": {
-        "message": "Наслов"
-    },
-    "support-preference": {
-        "message": "Ово је преферирани начин подршке $ аддонНаме $.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "support-suggestion": {
-        "message": "Да би $ аддонНаме $ остао функционалан и жив, учините му виталну услугу:",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "support.compose": {
-        "message": "Пишите за подршку…"
-    },
-    "support.links": {
-        "message": "Линкови за подршку"
-    },
-    "support.mail.instructions": {
-        "message": "Кликните на дугме доле да бисте отворили нови емаил за подршку. Ако имате техничких проблема, размислите о додавању снимка заслона."
-    },
-    "support.subject": {
-        "message": "Предмет:"
-    },
-    "support.tab": {
-        "message": "Подршка"
-    },
-    "support.title": {
-        "message": "Пошаљи на подршку"
-    },
-    "support.type": {
-        "message": "Тип:"
-    },
-    "support.type.html": {
-        "message": "Помоћ са ХТМЛ / ЦСС"
-    },
-    "support.type.license": {
-        "message": "везано за лиценцирање"
-    },
-    "support.type.other": {
-        "message": "Остало"
-    },
-    "support.type.selectOne": {
-        "message": "Изаберите тему!"
-    },
-    "support.type.tech": {
-        "message": "Технички"
-    },
-    "suppressMailtToLink": {
-        "message": "Suppress Mail Clients adding links to Email addresses."
-    },
-    "tab.gopro": {
-        "message": "SmartTemplates Pro"
-    },
-    "table.cap": {
-        "message": "Употреба променљивих"
-    },
-    "table_fwd.label": {
-        "message": "Проследи"
-    },
-    "table_keyword.label": {
-        "message": "Променљива"
-    },
-    "table_new.label": {
-        "message": "Састави"
-    },
-    "table_note.label": {
-        "message": "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“."
-    },
-    "table_reply.label": {
-        "message": "Одговори"
-    },
-    "testDriveS": {
-        "message": "Можете тестирати возити премиум карактеристике са стандардном лиценцом, али оне могу бити мало ограничене."
-    },
-    "thanks-for-installing-intro": {
-        "message": "Хвала вам што сте инсталирали $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "thanks-for-updating-intro": {
-        "message": "Хвала вам што сте ажурирали $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "time-and-effort": {
-        "message": "Моји додаци захтевају темељне промене како би остали компатибилни са Мозилла платформом. Мој развојни тим у Гитхуб-у (Realraven2000, opto и paenglab) марљиво ради на обнављању пуне функционалности за $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "timezone.explain": {
-        "message": "Присилите одређену временску зону за варијабле датума замјеном параметра тз (GMT, EST, CST, PST итд.)"
-    },
-    "timezonename.label": {
-        "message": "GMT, PST, EST…"
-    },
-    "tip.fileTemplates": {
-        "message": "Кликните да бисте прочитали потпуну документацију о дописништву и спољним ХТМЛ предлошцима на нашој веб локацији ..."
-    },
-    "to.label": {
-        "message": "Име примаоца (подразумевано)"
-    },
-    "to_note.label": {
-        "message": "Када име није доступно, биће приказана е-адреса"
-    },
-    "to_var.cap": {
-        "message": "Прималац"
-    },
-    "tofirstname.label": {
-        "message": "Име примаоца"
-    },
-    "tofwd.label": {
-        "message": "Помоћу фвд додајте приматеља који се може кликнути у прослеђене маилове"
-    },
-    "tomail.label": {
-        "message": "Е-адреса примаоца"
-    },
-    "toname.label": {
-        "message": "Име примаоца"
-    },
-    "tools.label": {
-        "message": "Алатке"
-    },
-    "translated-by-google": {
-        "description": "disclaimer.",
-        "message": "преводи које пружа гоогле"
-    },
-    "translatorNickname.label": {
-        "message": "Rancher"
-    },
-    "tzname.label": {
-        "message": "GMT, PST, EST…"
-    },
-    "updates.title": {
-        "message": "Ажурирања"
-    },
-    "updatesExpiry": {
-        "message": "SmartTemplates Pro ће аутоматски бити ажуриран преко addons.thunderbird.net, као и обично. Након годину дана, можете обновити лиценцу или наставити да користите премијум могућности под истим условима као и корисници бесплатне верзије. Премијум могућности ће захтевати регистрациони кључ."
-    },
-    "url.bugsAndFeaturesPage.label": {
-        "message": "Пријаве о грешкама / захтеви за могућности"
-    },
-    "url.homePage.label": {
-        "message": "Сајт додатка"
-    },
-    "url.supportPage.label": {
-        "message": "Подршка"
-    },
-    "var_custom.cap": {
-        "message": "Променљиве за прилагођени формат датума"
-    },
-    "var_xsent.cap": {
-        "message": "Модификатор &#37;X:=sent&#37;"
-    },
-    "vouchers.title": {
-        "message": "Купони"
-    },
-    "whitespace_note": {
-        "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
-    },
-    "window-title": {
-        "description": "page title. first placeholder will be replaced with Add-on name",
-        "message": "Добродошли у $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "xmail.label": {
-        "message": "X-Mailer"
-    },
-    "xsent_long.cap": {
-        "message": "Пример LongString-а"
-    },
-    "xsent_long.label": {
-        "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; у &#37;H&#37;:&#37;M&#37; сати"
-    },
-    "xsent_long_result.label": {
-        "message": "Резултат: недеља, 20/12/2011 у 16:24 сати"
-    },
-    "xsent_note.label": {
-        "message": "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука."
-    },
-    "xsent_short.cap": {
-        "message": "Пример ShortString-а"
-    },
-    "xsent_short.label": {
-        "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
-    },
-    "xsent_short_note.label": {
-        "message": "Следеће променљиве се могу користити у обе варијанте"
-    },
-    "xsent_short_result.label": {
-        "message": "Резултат: недеља, 20/12/2011 08:54:21"
-    },
-    "yearlyLicense.premiumFeatures": {
-        "message": "SmartTemplates Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије SmartTemplates-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике."
-    },
-    "yearlyLicense.premiumFeatures.moreInfoLink": {
-        "message": "Више о премијум могућностима."
-    },
-    "yearlyLicense.title": {
-        "message": "Годишња лиценца"
-    },
-    "yearlyLicense.usageTerm": {
-        "message": "Лиценца је за вашу личну употрету и везана је за вашу ел. адресу. Можете је инсталирати на више програма, док год су подешени за рад са том ел. адресом."
-    },
-    "yearlyLicense.usageTerm1": {
-        "message": "Све додатне адресе е-поште нису проблем - за њих није потребна посебна лиценца. У случају питања можете ме контактирати преко картице за подршку."
-    },
-    "yes_button": {
-        "message": "Да"
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
+  "a.label": {
+    "message": "Дан у недељи (скраћени назив)"
+  },
+  "a.up.label": {
+    "message": "Дан у недељи (пун назив)"
+  },
+  "ab_contact": {
+    "message": "Контакт"
+  },
+  "ab_fields": {
+    "message": "Поља адресара"
+  },
+  "ab_fields.desc": {
+    "message": "Када одговарате на одговарајућу адресу е-поште, сада можете користити додатна поља за променљиве адресе, као што је &#37;from&#37;, као што су:"
+  },
+  "ab_other": {
+    "message": "Остало"
+  },
+  "ab_private": {
+    "message": "Приватни"
+  },
+  "ab_work": {
+    "message": "Посао"
+  },
+  "about.cap": {
+    "message": "О додатку"
+  },
+  "about.label": {
+    "message": "SmartTemplates вам омогућава да прилагодите Тандербердово подразумевано заглавље цитата коришћењем шаблона. Можете да направите појединачне шаблоне по сваком налогу, а можете и да користите један шаблон за све налоге."
+  },
+  "accept_button": {
+    "message": "У реду"
+  },
+  "account.label": {
+    "message": "Изаберите налог:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
     }
+  },
+  "addon-authors-struggle": {
+    "message": "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
+  },
+  "advanced.label": {
+    "message": "Напредно"
+  },
+  "any.label": {
+    "message": "Било који ред заглавља"
+  },
+  "attach.label": {
+    "message": "Додајте датотеку као прилог"
+  },
+  "b.label": {
+    "message": "Месец (скраћени назив)"
+  },
+  "b.up.label": {
+    "message": "Месец (пун назив)"
+  },
+  "basepath.absolute": {
+    "message": "Кликните овде да изаберете одређену фасциклу на вашем локалном диску."
+  },
+  "basepath.desc": {
+    "message": "Ако ваш предложак садржи слике са ознаком 'имг' које се налазе на вашем локалном диску, мораћете да кажете СмартТемплате где да их пронађете."
+  },
+  "basepath.desc2": {
+    "message": "Варијабла 'басепатх' ће уметнути хтмл ознаку 'басе' да би пронашла све слике на основу почетне локације - може се користити само једном у е-поруци."
+  },
+  "basepath.relative": {
+    "message": "Помоћу ове променљиве пронађите слике на истој локацији као и предложак хтмл датотеке."
+  },
+  "brack_with_var.label": {
+    "message": "Унутра можете да користите следеће променљиве [[...]]"
+  },
+  "btn-extend-license": {
+    "message": "Желим да продужим лиценцу за годину дана"
+  },
+  "btn-renew-license": {
+    "message": "Желим да обновим лиценцу"
+  },
+  "btn-upgrade-to-pro": {
+    "message": "Желим да надоградим своју лиценцу"
+  },
+  "btn-want-a-license": {
+    "message": "Желим да купим лиценцу"
+  },
+  "btn-want-to-donate": {
+    "message": "Желим да помогнем једнократном донацијом."
+  },
+  "btnLoadTemplate.tooltip": {
+    "message": "Load Template…"
+  },
+  "btnSaveTemplate.tooltip": {
+    "message": "Save Template…"
+  },
+  "btnYouTube.tooltip": {
+    "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
+  },
+  "button.pasteLicense": {
+    "message": "налепи"
+  },
+  "button.updateThunderbird": {
+    "message": "Ажурирај Thunderbird!"
+  },
+  "button.validateLicense": {
+    "message": "потврди"
+  },
+  "buyDomainLicense.button": {
+    "message": "Купи групну лиценцу"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Треба вам лиценца за предузеће или више од пет корисника? Куповина групне лиценце је исплативија:"
+  },
+  "buyPremiumLicense.button": {
+    "message": "Купите Про лиценцу!"
+  },
+  "buyPremiumLicense.instruct": {
+    "message": "Желите да користите све премиум функције без ограничења? Набавите СмартТемплате⁴ Про лиценцу. Везан је за вашу личну адресу е-поште и може се користити у више инсталација."
+  },
+  "buyStandardLicense.button": {
+    "message": "Купите стандардну лиценцу!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Не можете приуштити премиум функције? Набавите високо приступачну стандардну лиценцу и наставите да тестирате премиум функције."
+  },
+  "calculate.explain": {
+    "message": "DD = број дана за додавање. H = број сати за додавање (изборно). ММ = минута за додавање (необвезно)"
+  },
+  "calculate.reset": {
+    "message": "Подесите аргумент на 0 да бисте зауставили модификацију било којег датума."
+  },
+  "cancel_button": {
+    "message": "Откажи"
+  },
+  "capitalizeNames": {
+    "message": "Капитализуј имена"
+  },
+  "cc.label": {
+    "message": "Име примаоца (подразумевано)"
+  },
+  "cc_note.label": {
+    "message": "Када име није доступно, користиће се е-адреса"
+  },
+  "cc_var.cap": {
+    "message": "Прималац (CC)"
+  },
+  "ccfirstname.label": {
+    "message": "Име примаоца"
+  },
+  "ccmail.label": {
+    "message": "Е-адреса примаоца"
+  },
+  "ccname.label": {
+    "message": "Име примаоца"
+  },
+  "close.label": {
+    "message": "Основно"
+  },
+  "conditional.forwardMode": {
+    "message": "Ако се е-пошта прослеђује у реду, убацује се први параметар текста. Други параметар текста користи се када се пошта прослеђује као прилог."
+  },
+  "conditionals.cap": {
+    "message": "Условный текст"
+  },
+  "conditionals.note": {
+    "message": "Ова класа променљивих може се користити за уметање текста у зависности од начина слања поште. За њих вам је потребна лиценца СмартТемплатес Про."
+  },
+  "contextError": {
+    "message": "Променљива {1} не може да се користи за *нове* поруке.\\nПогледајте помоћ за списак дозвољених променљивих."
+  },
+  "contribute_button": {
+    "message": "Допринеси"
+  },
+  "contributor.label": {
+    "message": "Сарадник"
+  },
+  "copy.label": {
+    "message": "Копирај"
+  },
+  "cost-of-independence": {
+    "message": "Развој софтвера кошта време и новац - за разлику од многих апликација на платформи, додатке не пишу велике корпорације, нити их Мозилла спонзорише на било који начин."
+  },
+  "creator.label": {
+    "message": "Аутор"
+  },
+  "cursor.label": {
+    "message": "Sets the cursor position"
+  },
+  "customdf_note.label": {
+    "message": "Може да се комбинује са &#37;X:=sent&#37;"
+  },
+  "d.label": {
+    "message": "Дан у месецу (од 01 до 31) са нулом на почетку"
+  },
+  "date.label": {
+    "message": "Датум/време (као и заглавље е-поруке)"
+  },
+  "dateformat.example": {
+    "message": "Пример:"
+  },
+  "dateformat.explain": {
+    "message": "Већина горе наведених временских променљивих може се користити у низу параметара изостављањем '&#37;'. Такође видети:"
+  },
+  "dateformat.label": {
+    "message": "Функција за уметање тренутног времена (поље на које се може кликнути)."
+  },
+  "datelocal.label": {
+    "message": "Датум/време (локални формат)"
+  },
+  "dateoffset_note.label": {
+    "message": "Следећа функција додаје одступање свим следећим приказаним временима."
+  },
+  "dateshort.label": {
+    "message": "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)"
+  },
+  "datetimezone.label": {
+    "message": "Временска зона (+0100, +0200…)"
+  },
+  "datetz.label": {
+    "message": "Временска зона (+0100, +0200…)"
+  },
+  "day.1.name": {
+    "message": "недеља"
+  },
+  "day.1.short": {
+    "message": "нед"
+  },
+  "day.2.name": {
+    "message": "понедељак"
+  },
+  "day.2.short": {
+    "message": "пон"
+  },
+  "day.3.name": {
+    "message": "уторак"
+  },
+  "day.3.short": {
+    "message": "уто"
+  },
+  "day.4.name": {
+    "message": "среда"
+  },
+  "day.4.short": {
+    "message": "сре"
+  },
+  "day.5.name": {
+    "message": "четвртак"
+  },
+  "day.5.short": {
+    "message": "чет"
+  },
+  "day.6.name": {
+    "message": "петак"
+  },
+  "day.6.short": {
+    "message": "пет"
+  },
+  "day.7.name": {
+    "message": "субота"
+  },
+  "day.7.short": {
+    "message": "суб"
+  },
+  "defaultMimeFormat": {
+    "message": "Подразумевани формат адресе:"
+  },
+  "defaultMimeFormat_tip": {
+    "message": "Формат за употребу приликом замене обичних &#37;to&#37; &#37;from&#37; &#37;cc&#37; адреса. На пример. (име,презиме,??пошта) приказат ће име које слиједи презиме; ако оба нису доступна, приказаће се адреса поште."
+  },
+  "deleteQuotedTags": {
+    "message": "Deletes tags from the quote"
+  },
+  "deleteQuotedText": {
+    "message": "Брисање цитираног текста"
+  },
+  "deleteText": {
+    "message": "Уклоните неки текст из цитата, нпр.deleteText(&quot;via Paypal&quot;)"
+  },
+  "developer.label": {
+    "message": "Програмер"
+  },
+  "domainLicense.email": {
+    "message": "Контактират ћемо вас помоћу ове адресе е-поште за генерисање лиценце за ваш домен; дозволите да нам се јавите два радна дана. На следећој страници унесите име домене за лиценцу."
+  },
+  "domainLicense.header": {
+    "message": "Лиценцирани домен е-поште"
+  },
+  "domainLicense.instruct": {
+    "message": "Licenca je ključna za domenu vaše kompanije. Licenca će omogućiti korisnicima sa adresama e-pošte koja se završavaju na ovoj domeni e-pošte da koriste SmartTemplates Pro. Na primer. ako unesete ime domena 'abc.com', korisnicima e-pošte poput fred@abc.com, martha@abc.com, mike.doe@abc.com itd. dozvoljeno je da koriste licencu. Maksimalan broj važećih pojedinačnih korisnika je broj koji ste uneli na početnom ekranu."
+  },
+  "domainLicense.validate": {
+    "message": "Обавезно унесите име домене * тачно онако како јесте * на е-адресе ваше компаније (део * после * знака @), јер ће се користити за ауторизацију адреса е-поште ваших корисника."
+  },
+  "donate": {
+    "message": "Помозите једнократном донацијом."
+  },
+  "donate-heading": {
+    "message": "Помоћ донацијом!"
+  },
+  "e.label": {
+    "message": "Дан у месецу"
+  },
+  "edit.label": {
+    "message": "Уређивање"
+  },
+  "email.label": {
+    "message": "Ел. адреса:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Унесите број лиценце..."
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Унесите број лиценце који сте примили ел. поруком"
+  },
+  "ex_brack.label": {
+    "message": "Пример: „За: Анђелка | CC: Илинка“"
+  },
+  "export.label": {
+    "message": "Извези"
+  },
+  "extend-your-license": {
+    "message": "Размислите о продужењу лиценце за годину дана."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Моћан начин за стварање прилагођених одговора аутоматским уметањем различитих заглавља поште. Предлошци се могу креирати за сваки идентитет поште, такође подржава спољне хтмл датотеке и табеле стилова."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "SmartTemplates"
+  },
+  "extensions.smarttemplate4@thunderbird.extension.description": {
+    "message": "Додатак SmartTemplates може да прилагоди „заглавља цитата“ по налогу."
+  },
+  "file.label": {
+    "message": "Датотека"
+  },
+  "fileCSS.label": {
+    "message": "Спољни стил стила (цсс). Укључите своја омиљена ЦСС правила која желите да делите између различитих предложака."
+  },
+  "fileHTML.label": {
+    "message": "HTML или обична текстуална датотека. Ако не наведете кодирање, користиће се UTF-8."
+  },
+  "fileImage.label": {
+    "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
+  },
+  "fileTemplates.add": {
+    "message": "Add"
+  },
+  "fileTemplates.down": {
+    "message": "Down"
+  },
+  "fileTemplates.file.open": {
+    "message": "Select template file from disk"
+  },
+  "fileTemplates.file.path": {
+    "message": "Template location:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Title:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "This will be displayed in the template selection menu."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "List of external template files that can be launched from the 'Forward' button."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "List of external template files that can be launched from the 'Create new Message' button."
+  },
+  "fileTemplates.remove": {
+    "message": "Remove"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "List of external template files that can be launched from the 'Reply' button."
+  },
+  "fileTemplates.title": {
+    "message": "Template Files"
+  },
+  "fileTemplates.up": {
+    "message": "Up"
+  },
+  "fileTemplates.update": {
+    "message": "Update"
+  },
+  "firstName.label": {
+    "message": "Име:"
+  },
+  "fix_var.cap": {
+    "message": "Контролне променљиве"
+  },
+  "fix_vartz.cap": {
+    "message": "Контролне променљиве за „Формат датума/временска зона“"
+  },
+  "fix_vartz_note.label": {
+    "message": "Може да се комбинује са &#37;X:=sent&#37;"
+  },
+  "fpFilterHtmlTemplate": {
+    "message": "ХТМЛ предложак"
+  },
+  "fpFilterName": {
+    "message": "Датотека SmartTemplate4-а"
+  },
+  "fpFolder": {
+    "message": "Фолдер"
+  },
+  "fpHTMLFile": {
+    "message": "HTML датотека/текстуална датотека"
+  },
+  "fpImageFile": {
+    "message": "Датотека слике"
+  },
+  "fpJsonFile": {
+    "message": "ЈSON Филе"
+  },
+  "fpStyle": {
+    "message": "Стил листа"
+  },
+  "freeLicense": {
+    "message": "Ако сте недавно донирали за SmartTemplates или помогли радом на пројекту, попут превођења или програмирања, имате право на бесплатну лиценцу. Контактирајте ме из језичка за подршку у опцијама додатка SmartTemplates."
+  },
+  "from.label": {
+    "message": "Име пошиљаоца (подразумевано)"
+  },
+  "from_note.label": {
+    "message": "Када име није доступно, биће приказана е-адреса"
+  },
+  "from_var.cap": {
+    "message": "Пошиљалац"
+  },
+  "fromfirstname.label": {
+    "message": "Име пошиљаоца"
+  },
+  "frommail.label": {
+    "message": "Е-адреса пошиљаоца"
+  },
+  "fromname.label": {
+    "message": "Име пошиљаоца"
+  },
+  "getSmartTemplate4": {
+    "message": "Набавите лиценцу за СмартТемплате⁴"
+  },
+  "guessNameFromMail": {
+    "message": "Погодите Назовите делове са адресе е-поште ако их нема"
+  },
+  "h.label": {
+    "message": "Време, 24-часовни формат (од 00 до 23) са нулом на почетку"
+  },
+  "header.append.subject": {
+    "message": "додати текст на тему"
+  },
+  "header.append.to": {
+    "message": "додајте е-адресу на листу прималаца"
+  },
+  "header.delete.subject": {
+    "message": "уклони текст из теме (регуларни израз)"
+  },
+  "header.prefix.subject": {
+    "message": "префикс субјекта уз текст"
+  },
+  "header.set.from": {
+    "message": "поставља адресу „од“. Ово прихвата само адресе е-поште са листе идентитета."
+  },
+  "header.set.subject": {
+    "message": "заменити предмет текстом"
+  },
+  "header.set.to": {
+    "message": "замените примаоца адресом е-поште"
+  },
+  "header_function.cap": {
+    "message": "Измените заглавље поште"
+  },
+  "header_function.explain": {
+    "message": "Ове функције се могу користити за модификовање заглавља поште, како је овде описано:"
+  },
+  "header_function.scope": {
+    "message": "Може се користити са овим заглављима:"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Успешно инсталиран $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ је успешно ажурирано",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading.click": {
+    "message": "Кликните наслов или"
+  },
+  "heading.expandAll": {
+    "message": "проширите све уносе"
+  },
+  "help.label": {
+    "message": "Помоћ"
+  },
+  "help_dialog_title": {
+    "message": "Помоћ за SmartTemplates"
+  },
+  "help_keyword.cap": {
+    "message": "Помоћ"
+  },
+  "html_note.cap": {
+    "message": "Напомена за HTML шаблоне"
+  },
+  "html_note.label": {
+    "message": "Користите само UTF-8 (уникод) кодирање у HTML шаблонима."
+  },
+  "i.label": {
+    "message": "Време, 12-часовни формат (од 01 до 12) са нулом на почетку"
+  },
+  "identity_ab": {
+    "message": "Употријебите кључну ријеч  'addressbook' да бисте из адресара пронашли додатне информације о идентитету."
+  },
+  "identity_ab.example": {
+    "message": "Пример"
+  },
+  "identity_ab.field": {
+    "message": "За додатне вредности поља погледајте поглавље 'Поља адресара' у наставку."
+  },
+  "identity_ab.phoneno": {
+    "message": "Бр. телефона"
+  },
+  "im-ex.cap": {
+    "message": "Увоз/извоз подешавања и шаблона"
+  },
+  "im-ex_note1.label": {
+    "message": "Можете да извезете и увезете ваша подешавања и шаблоне који су повезани са сваким налогом."
+  },
+  "im-ex_note2.label": {
+    "message": "Прво изаберите налог који желите да извезете у падајућем менију са поставкама SmartTemplates-а."
+  },
+  "im-ex_note3.label": {
+    "message": "Након тога, из менија изаберите „Датотека ⇒ Извези ⇒ Поставке и шаблони“ и сачувајте датотеку (xxx.st4) на рачунар."
+  },
+  "im-ex_note4.label": {
+    "message": "Да бисте увезли датотеку, изаберите налог из падајућег менија са поставкама SmartTemplates-а. Након тога, из менија изаберите „Датотека ⇒ Увези ⇒ Поставке и шаблони“."
+  },
+  "im-ex_note5.label": {
+    "message": "Изаберите датотеку SmartTemplates-а (xxx.st4) коју желите да увезете."
+  },
+  "im-ex_note6.label": {
+    "message": "Напомена: На Apple/Macintosh платформама, трака са менијем се налази у насловној траци уместо у прозору са опцијама SmartTemplates-а."
+  },
+  "import.label": {
+    "message": "Увези"
+  },
+  "insert.label": {
+    "message": "Убаци променљиву"
+  },
+  "intro": {
+    "message": "Годишња лиценца за SmartTemplates вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи."
+  },
+  "k.label": {
+    "message": "Време, 24-часовни формат (од 0 до 23)"
+  },
+  "l.label": {
+    "message": "Време, 12-часовни формат (од 1 до 12)"
+  },
+  "label-remind-me": {
+    "message": "Подсети ме поново за {цоунтДаис} дана.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "label.haveLicense": {
+    "message": "Већ имате лиценцу?"
+  },
+  "label.insertLicense": {
+    "message": "Унесите свој лични број лиценце овде:"
+  },
+  "label.insertLicense.tooltip": {
+    "message": "Ваш број лиценце се налази у ел. поруци о потврди наруџбе од Fastspring-а."
+  },
+  "label.licenseValid": {
+    "message": "Ваша лиценца важи до:"
+  },
+  "label.premiumFeaturesSite": {
+    "message": "Прочитајте више о Премиум могућностима на нашој веб локацији…"
+  },
+  "lastName.label": {
+    "message": "Презиме:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Хвала вам што сте недавно продужили лиценцу или ако сте донирали. Као што сте помогли у будућем доказивању овог додатка, можете једноставно затворити овај прозор."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Као носилац стандардне лиценце СмартТемплатес, сада испуњавате услове за ажурирање с попустом и продужење за целу годину. За више информација кликните на дугме [Упграде то Про] испод ваше стандардне лиценце."
+  },
+  "licenseTypes": {
+    "message": "Даље SmartTemplates нуди две лиценце, Standard и Pro; они су неопходни да би били у току са променама на Тхундербирд платформи и финансирали Иновације и поправке додатка. Како се промене промене извршавају током једногодишњег циклуса, лиценца ће такође важити 1 годину."
+  },
+  "licenseValidation.expired": {
+    "message": "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу."
+  },
+  "licenseValidation.failed": {
+    "message": "Кључ лиценце који сте унели је неважећи. Проверите своју ел. пошту од FastSpring-а за упутства. Ако још увек имате проблема, контактирајте ме преко језичка Подршка."
+  },
+  "licenseValidation.invalidAddon": {
+    "message": "Кључ лиценце који сте унели можда је за други додатак. Лиценчни кључеви за {0} почињу са {1}."
+  },
+  "licenseValidation.invalidMail": {
+    "message": "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ."
+  },
+  "licenseValidation.notMatchedMail": {
+    "message": "Шифроване ел. адресе се не подударају са читљивима."
+  },
+  "licenseValidation.passed": {
+    "message": "Хвала што сте регистровали SmartTemplates про! Све могућности су сада откључане."
+  },
+  "licenseValidation.standard": {
+    "message": "Хвала што сте регистровали SmartTemplates Standard - Неизмерно помажете додатак! Сада можете тестирати и све премиум функције."
+  },
+  "licenseWindow.title": {
+    "message": "Лиценца SmartTemplates"
+  },
+  "localedate.label": {
+    "message": "Датум/време (локални формат)"
+  },
+  "localename.label": {
+    "message": "sr-RS"
+  },
+  "localized.label": {
+    "message": "Преводилац"
+  },
+  "m.label": {
+    "message": "Месец (од 01 до 12) – са нулом на почетку"
+  },
+  "m.up.label": {
+    "message": "Минут"
+  },
+  "matchTextFromBody": {
+    "message": "Пронађите RegEx образац у наведеном имејлу и уметните на место функције."
+  },
+  "matchTextFromSubject": {
+    "message": "Пронађите RegEx образац у предмету и уметните на место функције."
+  },
+  "menu.template_export.label": {
+    "message": "Извези шаблон"
+  },
+  "menu.template_import.label": {
+    "message": "Увези шаблон"
+  },
+  "message_default_title": {
+    "message": "SmartTemplates"
+  },
+  "messid.label": {
+    "message": "ID поруке"
+  },
+  "minSize": {
+    "message": "[изборно, нумерички] - број кБите-а, минимална величина за уклањање ознаке. На овај начин можете задржати мање слике попут икона / емојиса док одбацујете велике слике."
+  },
+  "minSize_detail": {
+    "message": "Није увек могуће одредити величину, посебно ако Тхундербирд још увек учитава слику, често због велике величине - у овом случају ће се тага ионако уклонити."
+  },
+  "month.1.name": {
+    "message": "јануар"
+  },
+  "month.1.short": {
+    "message": "јан"
+  },
+  "month.10.name": {
+    "message": "октобар"
+  },
+  "month.10.short": {
+    "message": "окт"
+  },
+  "month.11.name": {
+    "message": "новембар"
+  },
+  "month.11.short": {
+    "message": "нов"
+  },
+  "month.12.name": {
+    "message": "децембар"
+  },
+  "month.12.short": {
+    "message": "дец"
+  },
+  "month.2.name": {
+    "message": "фебруар"
+  },
+  "month.2.short": {
+    "message": "феб"
+  },
+  "month.3.name": {
+    "message": "март"
+  },
+  "month.3.short": {
+    "message": "мар"
+  },
+  "month.4.name": {
+    "message": "април"
+  },
+  "month.4.short": {
+    "message": "апр"
+  },
+  "month.5.name": {
+    "message": "мај"
+  },
+  "month.5.short": {
+    "message": "мај"
+  },
+  "month.6.name": {
+    "message": "јун"
+  },
+  "month.6.short": {
+    "message": "јун"
+  },
+  "month.7.name": {
+    "message": "јул"
+  },
+  "month.7.short": {
+    "message": "јул"
+  },
+  "month.8.name": {
+    "message": "август"
+  },
+  "month.8.short": {
+    "message": "авг"
+  },
+  "month.9.name": {
+    "message": "септембар"
+  },
+  "month.9.short": {
+    "message": "сеп"
+  },
+  "mozillas-basic-platform": {
+    "message": "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са аддонс.тхундербирд.нет - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."
+  },
+  "n.label": {
+    "message": "Месец (од 1 до 12)"
+  },
+  "newsgr.label": {
+    "message": "Дискусионе групе"
+  },
+  "no_button": {
+    "message": "Не"
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "ownmail.label": {
+    "message": "Е-адреса"
+  },
+  "ownname.label": {
+    "message": "Ваше име"
+  },
+  "p.label": {
+    "message": "AM/PM"
+  },
+  "p1.label": {
+    "message": "a.m."
+  },
+  "p2.label": {
+    "message": "A.M."
+  },
+  "p3.label": {
+    "message": "AM"
+  },
+  "parameters": {
+    "message": "Параметри"
+  },
+  "paste.label": {
+    "message": "Налепи"
+  },
+  "pref_StatusIcon.IconHoverText": {
+    "message": "Текст при задржавању курсора"
+  },
+  "pref_StatusIcon.IconOnly": {
+    "message": "Само икона"
+  },
+  "pref_StatusIcon.IconText": {
+    "message": "Икона и текст"
+  },
+  "pref_about.tab": {
+    "message": "О додатку"
+  },
+  "pref_addSigBreakHTML.label": {
+    "message": "Додај „--“ у HTML е-поруку"
+  },
+  "pref_addSigBreakHTML.tooltip": {
+    "message": "Увек додајте граничник „--“ пре потписа (у HTML е-порукама)"
+  },
+  "pref_addSigBreakPlaintext.label": {
+    "message": "Додај „--“ у обичну е-поруку"
+  },
+  "pref_addSigBreakPlaintext.tooltip": {
+    "message": "Увек додајте граничник „--“ пре потписа (у обичним е-порукама)"
+  },
+  "pref_addressDelimiter": {
+    "message": "Delimit multiple correspondents with:"
+  },
+  "pref_addressDelimiter_tip": {
+    "message": "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)"
+  },
+  "pref_advanced.tab": {
+    "message": "Напредне поставке"
+  },
+  "pref_breaksOnTop.label": {
+    "message": "Број прелома на врху:"
+  },
+  "pref_cursorInsertSpace": {
+    "message": "Убаци размак ради истицања &#37;cursor&#37;"
+  },
+  "pref_debug_check": {
+    "message": "Отклањање грешака"
+  },
+  "pref_debug_tip": {
+    "message": "Притисните десним тастером миша за напредније опције отклањања грешака."
+  },
+  "pref_def.cap": {
+    "message": "Демаркирајте „Користи подразумевано“ да бисте направили прилагођено заглавље цитирања на овом налогу."
+  },
+  "pref_def.label": {
+    "message": "Користи подразумевано"
+  },
+  "pref_defaultCharset.label": {
+    "message": "Подразумевано кодирање"
+  },
+  "pref_defaultCharset_tip": {
+    "message": "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди."
+  },
+  "pref_dialog.title": {
+    "message": "Поставке SmartTemplates-а"
+  },
+  "pref_examples.tab": {
+    "message": "Примери (само на мрежи)"
+  },
+  "pref_examples.tooltip": {
+    "message": "Прикажите примере шаблона са https://smarttemplates.quickfolders.org/templates.html. Доступно само док сте повезани на интернет."
+  },
+  "pref_fontSettings.label": {
+    "message": "Фонт у уређивачу шаблона"
+  },
+  "pref_forceParagraph": {
+    "message": "Force Paragraph Mode"
+  },
+  "pref_forceParagraph_tip": {
+    "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
+  },
+  "pref_fwd.label": {
+    "message": "Примени следећи шаблон на прослеђену поруку"
+  },
+  "pref_fwd.tab": {
+    "message": "Проследи"
+  },
+  "pref_fwdhead.label": {
+    "message": "Онемогући подразумевано заглавље цитирања Thunderbird-а"
+  },
+  "pref_fwdmsg.cap": {
+    "message": "Проследи"
+  },
+  "pref_global.tab": {
+    "message": "Глобалне поставке"
+  },
+  "pref_groupAdvanced": {
+    "message": "Напредне функције"
+  },
+  "pref_groupMailContent": {
+    "message": "Садржај е-поруке"
+  },
+  "pref_groupNameRules": {
+    "message": "Правила за именовање"
+  },
+  "pref_groupSignatures": {
+    "message": "Потписи"
+  },
+  "pref_groupTroubleShooting": {
+    "message": "Решавање проблема"
+  },
+  "pref_groupUI": {
+    "message": "Корисничко окружење"
+  },
+  "pref_help.tab": {
+    "message": "Помоћ"
+  },
+  "pref_hideExamples": {
+    "message": "Сакриј картицу са примерима"
+  },
+  "pref_html.cap": {
+    "message": "Користите командне знакове за &quot;, &amp;, &lt;, &gt; и space. За више информација, погледајте помоћ."
+  },
+  "pref_html.label": {
+    "message": "Користи HTML (нпр. &lt;b&gt;bold&lt;/b&gt;)"
+  },
+  "pref_nameSwap": {
+    "message": "Исправи LastName, FirstName"
+  },
+  "pref_nameSwap_tip": {
+    "message": "Мења „LastName, FirstName“ у „First Last“"
+  },
+  "pref_new.label": {
+    "message": "Примени следећи шаблон на нову поруку"
+  },
+  "pref_new.tab": {
+    "message": "Састави"
+  },
+  "pref_newmsg.cap": {
+    "message": "Састави"
+  },
+  "pref_parseSignature": {
+    "message": "Обради потпис"
+  },
+  "pref_parseSignature_tip": {
+    "message": "Замените променљиве у потпису."
+  },
+  "pref_quoteHeaderBox.label": {
+    "message": "Заглавље цитирања"
+  },
+  "pref_quoteHeaderBox_tip": {
+    "message": "У овом пољу напишите шта желите да прикажете пре цитираног дела тј. оригиналне поруке. На пример: &#37;date&#37;, &#37;from(name)&#37; wrote:"
+  },
+  "pref_quotehead_tip": {
+    "message": "Онемогућите подразумевано заглавље цитирања. Поставите сопствено заглавље у горње поље."
+  },
+  "pref_removeSig.label": {
+    "message": "Замени потпис при промени идентитета е-поште"
+  },
+  "pref_rep_br.cap": {
+    "message": "Напомена: Размак неће бити уметнут у HTML ознаку коришћењем &lt;br&gt;."
+  },
+  "pref_rep_br.label": {
+    "message": "Замени преломе са &lt;br&gt;"
+  },
+  "pref_rsp.label": {
+    "message": "Примени следећи шаблон на одговорену поруку"
+  },
+  "pref_rsp.tab": {
+    "message": "Одговори"
+  },
+  "pref_rsphead.label": {
+    "message": "Користи уместо подразумеваног заглавља цитата"
+  },
+  "pref_rspmsg.cap": {
+    "message": "Одговори"
+  },
+  "pref_server_def": {
+    "message": "Уобичајено"
+  },
+  "pref_server_desc": {
+    "message": "Налог"
+  },
+  "pref_showStatusIcon.label": {
+    "message": "Прикажи дугме у статусној траци"
+  },
+  "pref_sigReplaceBR.label": {
+    "message": "Замени нови ред у текстуалном потпису са &lt;br&gt;"
+  },
+  "pref_silentUpdates": {
+    "message": "Тиха ажурирања"
+  },
+  "pref_silentUpdates_tip": {
+    "message": "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран."
+  },
+  "pref_stationeryLink": {
+    "message": "Додатак Stationery"
+  },
+  "pref_stationeryLink_tip": {
+    "message": "Преузми Stationery…"
+  },
+  "pref_stationerySupport": {
+    "message": "Подршка за додатак Stationery"
+  },
+  "pref_stationerySupport_tip": {
+    "message": "Подржава коришћење додатка Stationery упоредо са SmartTemplates-ом."
+  },
+  "pref_stationerySupport_tip2": {
+    "message": "Ово вам омогућава да користите променљиве шаблона у Stationery-ју."
+  },
+  "pref_templateBox.label": {
+    "message": "Шаблон"
+  },
+  "pref_templateBox_tip": {
+    "message": "У ово поље ставите шаблон поруке, нпр. „Здраво, &#37;from(name)&#37;, &lt;br&gt; Хвала вам на поруци &lt;br&gt; Срдачан поздрав, &lt;br&gt;&#37;ownname&#37;“"
+  },
+  "pref_template_tip": {
+    "message": "Заглавље цитата можете да промените „променљивим“. Погледајте помоћ за више информација."
+  },
+  "pref_variables.tab": {
+    "message": "Променљиве"
+  },
+  "premiumConfig": {
+    "message": "Премијум могућности"
+  },
+  "prompt.email": {
+    "message": "Унесите емаил адресу"
+  },
+  "prompt.text": {
+    "message": "Унесите текст који желите додати или подесити"
+  },
+  "purchase-a-license": {
+    "message": "Купите лиценцу."
+  },
+  "purchase-heading": {
+    "message": "Куповина лиценце!"
+  },
+  "quoteLevel": {
+    "message": "[изборно, нумерички]: од којег минималног нивоа цитата треба почети"
+  },
+  "quotePlaceholder": {
+    "message": "Овим се цитирани део премешта у сам текст предлошка. Одељак заглавља цитата из шаблона налога биће премештен на врх цитата."
+  },
+  "quotePlaceholder.level": {
+    "message": "[опционално, нумерички] Максимални ниво цитирања за уклањање старијих цитата из разговора."
+  },
+  "quote_changers.cap": {
+    "message": "Манипулација цитата"
+  },
+  "quote_changers.desc": {
+    "message": "Премиум променљиве за уклањање текста / тагова из цитираних делова и штеди простор"
+  },
+  "regexpAnyText": {
+    "message": "Било који текст - регуларни израз - мора бити у двоструким наводницима."
+  },
+  "renew-your-license": {
+    "message": "Обновите лиценцу."
+  },
+  "replaceQuotedTags": {
+    "message": "Замењује ознаке из цитата текстом или хтмл-ом"
+  },
+  "replaceQuotedText": {
+    "message": "Замењује цитирани текст ХТМЛ-ом"
+  },
+  "replaceText": {
+    "message": "Замените неки текст нечим другим."
+  },
+  "replacementHTML": {
+    "message": "мора бити у двоструким наводницима - било текст или хтмл таг који ће бити убачен у наводнике где год се подударање нађе."
+  },
+  "resolveABRemoveMail": {
+    "message": "Уклони е-адресу ако формат није наведен"
+  },
+  "resolveNamesFromAB": {
+    "message": "Разреши имена из адресара"
+  },
+  "resolveNamesFromABDisplay": {
+    "message": "Употријебите приказно име ако недостаје име"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Замени име ако је доступан надимак"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Ова функција не ради с одређеним удаљеним адресарима као што је LDAP."
+  },
+  "s.label": {
+    "message": "Секунд"
+  },
+  "selector": {
+    "message": "- шта бисте користили за адресирање ознаке у цсс-у. најједноставнији случај 'имг' или 'п', али селектори атрибута могу се додати све док се могу избећи двоструки наводници."
+  },
+  "settings.label": {
+    "message": "Поставке и шаблони"
+  },
+  "shortdate.label": {
+    "message": "Скраћени датум/време (нпр. 01. 01. 2000. 1:23:45)"
+  },
+  "sig.label": {
+    "message": "Потпис из подешавања налога"
+  },
+  "sig2.label": {
+    "message": "Потпис из подешавања налога, али без две цртице (--)"
+  },
+  "smartTemplate4.changeTemplate.label": {
+    "message": "Change template…"
+  },
+  "smartTemplate4.changeTemplate.tooltip": {
+    "message": "Load a different template - use before editing the Email!"
+  },
+  "smartTemplate4.changetemplate.label": {
+    "message": "Промена шаблона…"
+  },
+  "smartTemplate4.changetemplate.tooltip": {
+    "message": "Изаберите други предложак - користите пре уређивања у тијелу поште!"
+  },
+  "smartTemplate4.cleandeferred.label": {
+    "message": "Поспремити!"
+  },
+  "smartTemplate4.cleandeferred.tooltip": {
+    "message": "Очистите све променљиве СмартТемплате"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "Ажурирајте и замените садржајем"
+  },
+  "smartTemplate4.deferredcontext.delete": {
+    "message": "Уклоните променљиву СмартТемплате⁴"
+  },
+  "smartTemplate4.deferredcontext.update": {
+    "message": "Ажурирајте садржај СмартТемплате⁴"
+  },
+  "smartTemplate4.settings.label": {
+    "message": "SmartTemplates"
+  },
+  "smartTemplate4.settings.tooltip": {
+    "message": "Подешавања SmartTemplates-а"
+  },
+  "smarttemplate4_button": {
+    "message": "Уреди шаблоне/заглавље цитата…"
+  },
+  "smarttemplate4_title": {
+    "message": "SmartTemplates"
+  },
+  "spec_form.cap": {
+    "message": "Прекидачи поља адресе"
+  },
+  "spec_var.cap": {
+    "message": "Посебна"
+  },
+  "specform_note.label": {
+    "message": "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени."
+  },
+  "spellcheck.label": {
+    "message": "Поставља језик за проверу правописа. Примјер вриједности: (ен, де-ДЕ, ес-ЕС, ру) - имајте на уму да рјечник мора бити инсталиран."
+  },
+  "st.confirmVersionLink": {
+    "message": "Приказати дневник измена за SmartTemplates?"
+  },
+  "st.fileFunction.notExists": {
+    "message": "Функција {0} није могла пронаћи или приступити датотеци. Проверите стазу испод:"
+  },
+  "st.fileTemplates": {
+    "message": "Датотеке шаблона"
+  },
+  "st.fileTemplates.configureMenu": {
+    "message": "Конфигуришите ставке менија…"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "Проблеми с конверзијом ХТМЛ предлошка из скупа [{1}].\\nКористећи необрађене податке стринга Ако ово резултира исписаним словима, покушајте да додате експлицитни 'мета цхарсет"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "Није могуће учитати датотеку шаблона '{0}' са путање:\\n{1}\\nДатотека је можда уклоњена или преименована."
+  },
+  "st.fileTemplates.openFile": {
+    "message": "Отворите датотеку шаблона SmartTemplates …"
+  },
+  "st.fileTemplates.restrictTemplates": {
+    "message": "Потребна вам је лиценца SmartTemplates да бисте користили више од {1} шаблона!"
+  },
+  "st.fileTemplates.selectFromMenu": {
+    "message": "Изаберите предложак из падајућег менија."
+  },
+  "st.fileTemplates.wrnEnterPath": {
+    "message": "Одаберите исправну стазу!"
+  },
+  "st.fileTemplates.wrnEnterTitle": {
+    "message": "Молимо унесите наслов!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "Морате одабрати ставку са листе да бисте је ажурирали!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Ажурирај предлошке"
+  },
+  "st.licenseValidation.expired": {
+    "message": "Ваша лиценца је истекла:"
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "(Унети кључ може бити за {2})."
+  },
+  "st.notification.donate": {
+    "message": "Донирајте"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "Не показуј ову поруку."
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "Сваки текст који сте унели ручно од отварања композитора биће обрисан, без поништења. Наставити у сваком случају?"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "Текст сте већ унели и желите да пређете на образац {0}"
+  },
+  "st.notification.license.required": {
+    "message": "SmartTemplates захтева лиценцу за наставак рада. Прочитајте више на дну прозора поруке."
+  },
+  "st.notification.license.text": {
+    "message": "Од сада SmartTemplates захтева најмање стандардну лиценцу. Више о томе прочитајте на нашој страници за лиценцирање."
+  },
+  "st.notification.licensing": {
+    "message": "Више о лиценцирању"
+  },
+  "st.notification.parsing": {
+    "message": "Анализа променљивих:"
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "Прошири лиценцу за домен"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "Продужите лиценцу"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "То ће продужити тренутни датум лиценце за годину дана. Обично је јефтинија од нове лиценце."
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "Набави лиценцу"
+  },
+  "st.notification.premium.btn.hotKey": {
+    "message": "л"
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "Обнови лиценцу за домен"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "Обнови лиценцу"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "Унапреди се у професионалца"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "У"
+  },
+  "st.notification.premium.text": {
+    "message": "{1} је доступна у премијум верзији. Региструјете SmartTemplates Pro, ако желите трајно да користите."
+  },
+  "st.notification.premium.text.plural": {
+    "message": "{1} су Премиум функције, надоградите на SmartTemplates Pro лиценцу за њихово трајно коришћење."
+  },
+  "st.notification.premium.title": {
+    "message": "Премијум могућност"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "Није могуће променити језик провере правописа. Да ли сте инсталирали исправан речник?"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "Није инсталиран речник."
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "Речник '{0}' није пронађен."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "Прелазите на лиценцу домена?"
+  },
+  "st.trialDays": {
+    "message": "Остало вам је {0} пробних дана."
+  },
+  "st.trialExpiry": {
+    "message": "Пробни период вам је истекао пре {0} дана."
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "Драги корисниче, са узбуђењем вам саопштавамо да, почев од ове верзије, SmartTemplates подржава и употребу витичастих заграда { } и ознаку <style>, тако да од сада можете детаљније да подешавате CSS унутар шаблона."
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "Промењена је одређена синтакса за изразе уоквирене заградама; уместо витичастих {%cc(name)%} користите угласте заграде [[%cc(name)%]]. За више информација погледајте помоћ."
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "SmartTemplates ће сада претворити постојеће шаблоне у формат сагласан са новом верзијом. Кликните на „У реду“ да наставите."
+  },
+  "st.updateMessageVersion": {
+    "message": "SmartTemplates је успешно дограђен на верзију {1}."
+  },
+  "standardformat.config": {
+    "message": "Конфигуришите подразумевани формат…"
+  },
+  "stringmanip.alttext": {
+    "message": "[опционални параметар] Алтернативни текст: ако није пронађено подударање, уместо њега се убацује алтернативни текст."
+  },
+  "stringmanip.match.comment": {
+    "message": "Функције подударања: Први параметар (регуларни израз) мора бити унутар двоструких наводника. Други параметар је број групе подударања. Користите 0 да се подударате са комплетним изразом, 1 за прву групу итд."
+  },
+  "stringmanip_function.cap": {
+    "message": "Стринг Манипулатион"
+  },
+  "stringmanip_function.explain": {
+    "message": "Ове функције се могу користити за брисање или замену текста у предлошку е-поште или заглављу цитата."
+  },
+  "sub.label": {
+    "message": "наслов одговорене/прослеђене поруке"
+  },
+  "sub2.label": {
+    "message": "наслов поруке коју тренутно састављате"
+  },
+  "sub_var.cap": {
+    "message": "Наслов"
+  },
+  "support-preference": {
+    "message": "Ово је преферирани начин подршке $ аддонНаме $.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Да би $ аддонНаме $ остао функционалан и жив, учините му виталну услугу:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support.compose": {
+    "message": "Пишите за подршку…"
+  },
+  "support.links": {
+    "message": "Линкови за подршку"
+  },
+  "support.mail.instructions": {
+    "message": "Кликните на дугме доле да бисте отворили нови емаил за подршку. Ако имате техничких проблема, размислите о додавању снимка заслона."
+  },
+  "support.subject": {
+    "message": "Предмет:"
+  },
+  "support.tab": {
+    "message": "Подршка"
+  },
+  "support.title": {
+    "message": "Пошаљи на подршку"
+  },
+  "support.type": {
+    "message": "Тип:"
+  },
+  "support.type.html": {
+    "message": "Помоћ са ХТМЛ / ЦСС"
+  },
+  "support.type.license": {
+    "message": "везано за лиценцирање"
+  },
+  "support.type.other": {
+    "message": "Остало"
+  },
+  "support.type.selectOne": {
+    "message": "Изаберите тему!"
+  },
+  "support.type.tech": {
+    "message": "Технички"
+  },
+  "suppressMailtToLink": {
+    "message": "Suppress Mail Clients adding links to Email addresses."
+  },
+  "tab.gopro": {
+    "message": "SmartTemplates Pro"
+  },
+  "table.cap": {
+    "message": "Употреба променљивих"
+  },
+  "table_fwd.label": {
+    "message": "Проследи"
+  },
+  "table_keyword.label": {
+    "message": "Променљива"
+  },
+  "table_new.label": {
+    "message": "Састави"
+  },
+  "table_note.label": {
+    "message": "Неправилно коришћење променљивих створиће поруке о грешкама унутар „Конзоле за грешке“."
+  },
+  "table_reply.label": {
+    "message": "Одговори"
+  },
+  "testDriveS": {
+    "message": "Можете тестирати возити премиум карактеристике са стандардном лиценцом, али оне могу бити мало ограничене."
+  },
+  "thanks-for-installing-intro": {
+    "message": "Хвала вам што сте инсталирали $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Хвала вам што сте ажурирали $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$аддонНаме$ ће у великој мери бити преписано како би остало компатибилно са Тхундербирдом. То је неопходно, јер Мозиллине промене траже да додаци постану матичне екстензије поште које се интерно веома разликују. Само путем ваше лиценце може се финансирати много потребних развојних сати.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "timezone.explain": {
+    "message": "Присилите одређену временску зону за варијабле датума замјеном параметра тз (GMT, EST, CST, PST итд.)"
+  },
+  "timezonename.label": {
+    "message": "GMT, PST, EST…"
+  },
+  "tip.fileTemplates": {
+    "message": "Кликните да бисте прочитали потпуну документацију о дописништву и спољним ХТМЛ предлошцима на нашој веб локацији ..."
+  },
+  "to.label": {
+    "message": "Име примаоца (подразумевано)"
+  },
+  "to_note.label": {
+    "message": "Када име није доступно, биће приказана е-адреса"
+  },
+  "to_var.cap": {
+    "message": "Прималац"
+  },
+  "tofirstname.label": {
+    "message": "Име примаоца"
+  },
+  "tofwd.label": {
+    "message": "Помоћу фвд додајте приматеља који се може кликнути у прослеђене маилове"
+  },
+  "tomail.label": {
+    "message": "Е-адреса примаоца"
+  },
+  "toname.label": {
+    "message": "Име примаоца"
+  },
+  "tools.label": {
+    "message": "Алатке"
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "преводи које пружа гоогле"
+  },
+  "translatorNickname.label": {
+    "message": "Rancher"
+  },
+  "tzname.label": {
+    "message": "GMT, PST, EST…"
+  },
+  "updates.title": {
+    "message": "Ажурирања"
+  },
+  "updatesExpiry": {
+    "message": "SmartTemplates Pro ће аутоматски бити ажуриран преко addons.thunderbird.net, као и обично. Након годину дана, можете обновити лиценцу или наставити да користите премијум могућности под истим условима као и корисници бесплатне верзије. Премијум могућности ће захтевати регистрациони кључ."
+  },
+  "url.bugsAndFeaturesPage.label": {
+    "message": "Пријаве о грешкама / захтеви за могућности"
+  },
+  "url.homePage.label": {
+    "message": "Сајт додатка"
+  },
+  "url.supportPage.label": {
+    "message": "Подршка"
+  },
+  "var_custom.cap": {
+    "message": "Променљиве за прилагођени формат датума"
+  },
+  "var_xsent.cap": {
+    "message": "Модификатор &#37;X:=sent&#37;"
+  },
+  "vouchers.title": {
+    "message": "Купони"
+  },
+  "whats-new-btn": {
+    "message": "Шта је ново?"
+  },
+  "whats-new-head": {
+    "message": "Издвајамо"
+  },
+  "whats-new-intro": {
+    "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
+  },
+  "whats-new-list": {
+    "message": "{L1} Побољшана подршка за претварање кодираних знакова који се користе у пољима адресе као што је „из“ {L2} {L1} Грешка у локализацији за традиционални кинески (зх-ТВ) покварен дијалог подешавања. {L2} {L1} Текући посао на изради СмартТемплатес компатибилан са Тхундербирд 91, који је планиран за лето 2021. {L2}"
+  },
+  "whitespace_note": {
+    "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Добродошли у $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "xmail.label": {
+    "message": "X-Mailer"
+  },
+  "xsent_long.cap": {
+    "message": "Пример LongString-а"
+  },
+  "xsent_long.label": {
+    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; у &#37;H&#37;:&#37;M&#37; сати"
+  },
+  "xsent_long_result.label": {
+    "message": "Резултат: недеља, 20/12/2011 у 16:24 сати"
+  },
+  "xsent_note.label": {
+    "message": "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука."
+  },
+  "xsent_short.cap": {
+    "message": "Пример ShortString-а"
+  },
+  "xsent_short.label": {
+    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+  },
+  "xsent_short_note.label": {
+    "message": "Следеће променљиве се могу користити у обе варијанте"
+  },
+  "xsent_short_result.label": {
+    "message": "Резултат: недеља, 20/12/2011 08:54:21"
+  },
+  "y.up.label": {
+    "message": "Година"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "SmartTemplates Pro пружа вам приступ свим премијум могућностима. Осим тога, биће искључене напомене за донацију, које се приказују након ажурирања бесплатне верзије SmartTemplates-а. Неке нове премијум могућности ће бити додаване у том периоду, а и „ексклузивне премијум” могућности, невидљиве за обичне кориснике."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Више о премијум могућностима."
+  },
+  "yearlyLicense.title": {
+    "message": "Годишња лиценца"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Лиценца је за вашу личну употрету и везана је за вашу ел. адресу. Можете је инсталирати на више програма, док год су подешени за рад са том ел. адресом."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Све додатне адресе е-поште нису проблем - за њих није потребна посебна лиценца. У случају питања можете ме контактирати преко картице за подршку."
+  },
+  "yes_button": {
+    "message": "Да"
+  }
 }

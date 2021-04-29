@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "Замењује цитирани текст ХТМЛ-ом">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">
 <!ENTITY replaceQuotedTags "Замењује ознаке из цитата текстом или хтмл-ом">
-<!ENTITY Parameters "Параметри">
+<!ENTITY parameters "Параметри">
 <!ENTITY regexpAnyText "Било који текст - регуларни израз - мора бити у двоструким наводницима.">
 <!ENTITY replacementHTML "мора бити у двоструким наводницима - било текст или хтмл таг који ће бити убачен у наводнике где год се подударање нађе.">
 <!ENTITY quoteLevel "[изборно, нумерички]: од којег минималног нивоа цитата треба почети">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Променљиве за прилагођени формат датума">
 <!ENTITY customdf_note.label "Може да се комбинује са &#37;X:=sent&#37;">
-<!ENTITY A.label "Дан у недељи (пун назив)">
+<!ENTITY a.up.label "Дан у недељи (пун назив)">
 <!ENTITY a.label "Дан у недељи (скраћени назив)">
 <!ENTITY d.label "Дан у месецу (од 01 до 31) са нулом на почетку">
 <!ENTITY e.label "Дан у месецу">
 <!ENTITY n.label "Месец (од 1 до 12)">
-<!ENTITY B.label "Месец (пун назив)">
+<!ENTITY b.up.label "Месец (пун назив)">
 <!ENTITY b.label "Месец (скраћени назив)">
 <!ENTITY m.label "Месец (од 01 до 12) – са нулом на почетку">
-<!ENTITY Y.label "Година">
-<!ENTITY M.label "Минут">
+<!ENTITY y.up.label "Година">
+<!ENTITY m.up.label "Минут">
 <!ENTITY s.label "Секунд">
 <!ENTITY h.label "Време, 24-часовни формат (од 00 до 23) са нулом на почетку">
 <!ENTITY k.label "Време, 24-часовни формат (од 0 до 23)">

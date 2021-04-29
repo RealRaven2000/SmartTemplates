@@ -272,7 +272,7 @@ var SmartTemplate4 = {
 			// composer context:
 			fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
 			if (fileTemplateSource.failed) {
-				let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+				let text = util.getBundleString("st.fileTemplates.error.filePath",
 				   "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
 				  
 				SmartTemplate4.Message.display(
@@ -343,9 +343,9 @@ var SmartTemplate4 = {
         let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
         if (isChangeTemplate && gMsgCompose.bodyModified) {
           let cancelled = false,
-              w1 = util.getBundleString("SmartTemplate4.notification.editedChangeWarning",
+              w1 = util.getBundleString("st.notification.editedChangeWarning",
                    "You have already typed text and want to change to template {0}"),
-              q1 = util.getBundleString("SmartTemplate4.notification.editedChangeChallenge",
+              q1 = util.getBundleString("st.notification.editedChangeChallenge",
                    "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?");            
           SmartTemplate4.Message.display(
             w1.replace("{0}", fileTemplateSource.label) + "\n" + q1, 
@@ -451,7 +451,7 @@ var SmartTemplate4 = {
           //[issue 64] reload the same template if it was remembered.
           let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
           if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
-				    let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+				    let text = util.getBundleString("st.fileTemplates.error.filePath",
 				      "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
             alert(text); 
           }

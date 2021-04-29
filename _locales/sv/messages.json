@@ -1,1552 +1,1561 @@
 {
-    "A.label": {
-        "message": "Veckodag (Fredag)"
-    },
-    "B.label": {
-        "message": "Månad (Januari)"
-    },
-    "M.label": {
-        "message": "Minut (00 till 59)"
-    },
-    "Parameters": {
-        "message": "Parametrar"
-    },
-    "SmartTemplate4.confirmVersionLink": {
-        "message": "Display change log for SmartTemplates?"
-    },
-    "SmartTemplate4.fileFunction.notExists": {
-        "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
-    },
-    "SmartTemplate4.fileTemplates": {
-        "message": "Mallfiler"
-    },
-    "SmartTemplate4.fileTemplates.configureMenu": {
-        "message": "Konfigurera menyalternativ…"
-    },
-    "SmartTemplate4.fileTemplates.error.charSet": {
-        "message": "Problem som konverterar en HTML-mall från charset [{1}] \\nAnvänder rå strängdata istället. \\nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
-    },
-    "SmartTemplate4.fileTemplates.error.filePath": {
-        "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \\n{1} \\nFilen kan ha tagits bort eller bytt namn."
-    },
-    "SmartTemplate4.fileTemplates.openFile": {
-        "message": "Öppna SmartTemplates-mallfilen…"
-    },
-    "SmartTemplate4.fileTemplates.replaceStationery": {
-        "message": "Från Thunderbird 68 och framåt fungerar tyvärr inte \"Stationery\" längre.\\nDärför erbjuder SmartTemplates nu sitt eget HTML-mallhanteringssystem; klicka på OK för att ställa in det."
-    },
-    "SmartTemplate4.fileTemplates.restrictTemplates": {
-        "message": "Du behöver en SmartTemplates-licens för att kunna använda fler än {1} mallar!"
-    },
-    "SmartTemplate4.fileTemplates.selectFromMenu": {
-        "message": "Välj en mall från rullgardinsmenyn."
-    },
-    "SmartTemplate4.fileTemplates.wrnEnterPath": {
-        "message": "Välj en giltig sökväg!"
-    },
-    "SmartTemplate4.fileTemplates.wrnEnterTitle": {
-        "message": "Ange en titel!"
-    },
-    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem": {
-        "message": "Du måste välja ett objekt från listan för att uppdatera!"
-    },
-    "SmartTemplate4.fileTemplates.wrnSelectUpdateItem.caption": {
-        "message": "Uppdatera mallarna"
-    },
-    "SmartTemplate4.licenseValidation.expired": {
-        "message": "Din licens löpte ut:"
-    },
-    "SmartTemplate4.licenseValidation.guessAddon": {
-        "message": "(Den angivna nyckeln kan vara för {2})."
-    },
-    "SmartTemplate4.notification.donate": {
-        "message": "Donera"
-    },
-    "SmartTemplate4.notification.dontShowAgain": {
-        "message": "Visa inte detta meddelande igen."
-    },
-    "SmartTemplate4.notification.editedChangeChallenge": {
-        "message": "All text du har matat in manuellt sedan kompositören öppnas kommer att raderas utan Ångra. Fortsätt ändå?"
-    },
-    "SmartTemplate4.notification.editedChangeWarning": {
-        "message": "Du har redan skrivit text och vill ändra till mall {0}"
-    },
-    "SmartTemplate4.notification.license.required": {
-        "message": "SmartTemplates kräver en licens för att fortsätta arbeta. Läs mer information längst ner i fönstret för e-postkomposition."
-    },
-    "SmartTemplate4.notification.license.text": {
-        "message": "Från och med nu kräver SmartTemplates minst en standardlicens. Läs mer om detta på vår licensieringssida."
-    },
-    "SmartTemplate4.notification.licensing": {
-        "message": "Mer om licensiering"
-    },
-    "SmartTemplate4.notification.noStationery": {
-        "message": "Hittade inte tillägget \"Stationery\" - är det installerat?"
-    },
-    "SmartTemplate4.notification.parsing": {
-        "message": "Analysera variabler:"
-    },
-    "SmartTemplate4.notification.premium.btn.extendDomainLicense": {
-        "message": "Utöka domänlicensen"
-    },
-    "SmartTemplate4.notification.premium.btn.extendLicense": {
-        "message": "Förläng licens"
-    },
-    "SmartTemplate4.notification.premium.btn.extendLicense.tooltip": {
-        "message": "Detta förlänger datumet för den nuvarande licensen med 1 år. Det är vanligtvis billigare än en ny licens."
-    },
-    "SmartTemplate4.notification.premium.btn.getLicense": {
-        "message": "Skaffa en licens!"
-    },
-    "SmartTemplate4.notification.premium.btn.hotKey": {
-        "message": "l"
-    },
-    "SmartTemplate4.notification.premium.btn.renewDomainLicense": {
-        "message": "Förnya domänlicens"
-    },
-    "SmartTemplate4.notification.premium.btn.renewLicense": {
-        "message": "Förnya licens"
-    },
-    "SmartTemplate4.notification.premium.btn.upgrade": {
-        "message": "Uppgradera till PRO"
-    },
-    "SmartTemplate4.notification.premium.btn.upgrade.hotKey": {
-        "message": "U"
-    },
-    "SmartTemplate4.notification.premium.text": {
-        "message": "{1} är en funktion kopplad till SmartTemplates Pro. Registrera SmartTemplates för att använda den permanent."
-    },
-    "SmartTemplate4.notification.premium.text.plural": {
-        "message": "{1} är Premiumfunktioner, skaffa en Pro-licens till SmartTemplates för att använda dem permanent."
-    },
-    "SmartTemplate4.notification.premium.title": {
-        "message": "Licensbelagd funktion"
-    },
-    "SmartTemplate4.notification.spellcheck.error": {
-        "message": "Det går inte att byta språk för stavkontroll. Har du installerat rätt ordbok?"
-    },
-    "SmartTemplate4.notification.spellcheck.noDictionary": {
-        "message": "Inga ordböcker installerade."
-    },
-    "SmartTemplate4.notification.spellcheck.notFound": {
-        "message": "Ordbok '{0}' hittades inte."
-    },
-    "SmartTemplate4.prompt.switchDomainLicense": {
-        "message": "Byt till domänlicens?"
-    },
-    "SmartTemplate4.trialDays": {
-        "message": "Du har {0} testdagar kvar."
-    },
-    "SmartTemplate4.trialExpiry": {
-        "message": "Din provperiod löpt ut för {0} dagar sedan."
-    },
-    "SmartTemplate4.updateMessageNewBrackets1": {
-        "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
-    },
-    "SmartTemplate4.updateMessageNewBrackets2": {
-        "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
-    },
-    "SmartTemplate4.updateMessageNewBrackets3": {
-        "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
-    },
-    "SmartTemplate4.updateMessageVersion": {
-        "message": "SmartTemplates was successfully upgraded to version {1}!"
-    },
-    "Y.label": {
-        "message": "År (1970)"
-    },
-    "a.label": {
-        "message": "Veckodag (Fre.)"
-    },
-    "ab_contact": {
-        "message": "Kontakt"
-    },
-    "ab_fields": {
-        "message": "Adressbokfält"
-    },
-    "ab_fields.desc": {
-        "message": "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:"
-    },
-    "ab_other": {
-        "message": "Annat"
-    },
-    "ab_private": {
-        "message": "Privat"
-    },
-    "ab_work": {
-        "message": "Arbete"
-    },
-    "about.cap": {
-        "message": "Ca SmartTemplates"
-    },
-    "about.label": {
-        "message": "SmartTemplates erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton)."
-    },
-    "accept_button": {
-        "message": "Acceptera"
-    },
-    "account.label": {
-        "message": "Välj konto:"
-    },
-    "active-version-info": {
-        "description": "The boldStart and boldEnd parts will be replaced with html tags",
-        "message": "Du kör nu {boldStart} version $addonVer$ {boldEnd} på Thunderbird $appVer$.",
-        "placeholders": {
-            "addonVer": {
-                "content": "$1",
-                "example": "Version 1.1"
-            },
-            "appVer": {
-                "content": "$2",
-                "example": "78.0b4"
-            }
-        }
-    },
-    "addon-authors-struggle": {
-        "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
-    },
-    "advanced.label": {
-        "message": "Avancerat"
-    },
-    "any.label": {
-        "message": "Alla Header-line"
-    },
-    "attach.label": {
-        "message": "Lägg till bifogad fil"
-    },
-    "b.label": {
-        "message": "Månad (Jan.)"
-    },
-    "basepath.absolute": {
-        "message": "Klicka här för att välja en specifik mapp på din lokala enhet."
-    },
-    "basepath.desc": {
-        "message": "Om din mall innehåller bilder med 'img' -taggen som finns på din lokala enhet måste du berätta för SmartTemplate var du kan hitta dessa."
-    },
-    "basepath.desc2": {
-        "message": "Variabeln 'basepath' kommer att infoga en html-bas-tagg för att hitta alla bilder baserade på en startplats - den kan bara användas en gång i ett e-postmeddelande."
-    },
-    "basepath.relative": {
-        "message": "Använd denna variabel för att hitta bilderna på samma plats som html-filmallen."
-    },
-    "brack_with_var.label": {
-        "message": "The following variables can be used inside [[...]]"
-    },
-    "btn-extend-license": {
-        "message": "Jag vill förlänga min licens med ett år"
-    },
-    "btn-renew-license": {
-        "message": "Jag vill förnya min licens"
-    },
-    "btn-upgrade-to-pro": {
-        "message": "Jag vill uppgradera min licens"
-    },
-    "btn-want-a-license": {
-        "message": "Jag vill köpa en licens"
-    },
-    "btn-want-to-donate": {
-        "message": "Jag vill hjälpa till med en engångs donation."
-    },
-    "btnLoadTemplate.tooltip": {
-        "message": "Läs in mall…"
-    },
-    "btnSaveTemplate.tooltip": {
-        "message": "Spara mall…"
-    },
-    "btnYouTube.tooltip": {
-        "message": "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg"
-    },
-    "button.pasteLicense": {
-        "message": "klistra in"
-    },
-    "button.updateThunderbird": {
-        "message": "Uppdatera Thunderbird!"
-    },
-    "button.validateLicense": {
-        "message": "verifiera"
-    },
-    "buyDomainLicense.button": {
-        "message": "Köp domänlicens"
-    },
-    "buyDomainLicense.instruct": {
-        "message": "Behöver du licenser för ett företag med fler än fem användare? Då är en domänlicens billigare:"
-    },
-    "buyPremiumLicense.button": {
-        "message": "Köp Pro-licens!"
-    },
-    "buyPremiumLicense.instruct": {
-        "message": "Vill du använda alla premiumfunktioner utan begränsningar? Få en SmartTemplateT Pro-licens. Den är bunden till din personliga e-postadress och kan användas i flera installationer."
-    },
-    "buyStandardLicense.button": {
-        "message": "Köp standardlicens!"
-    },
-    "buyStandardLicense.instruct": {
-        "message": "Har du inte råd med premiumfunktionerna? Få en mycket prisvärd standardlicens och testa premiumfunktioner."
-    },
-    "calculate.explain": {
-        "message": "DD=antal dagar att lägga till. H=antal timmar att lägga till (valfritt). MM=minuter att lägga till (valfritt)"
-    },
-    "calculate.reset": {
-        "message": "Ändra argumentet till 0 för att sluta modifiera några datum."
-    },
-    "cancel_button": {
-        "message": "Kassera"
-    },
-    "capitalizeNames": {
-        "message": "Versalisera namn"
-    },
-    "cc.label": {
-        "message": "Mottagarens namn (Standard)"
-    },
-    "cc_note.label": {
-        "message": "När inget namn finns tillgängligt visas e-postadressen"
-    },
-    "cc_var.cap": {
-        "message": "Mottagarvariabler (Kopia)"
-    },
-    "ccfirstname.label": {
-        "message": "Mottagarens förnamn"
-    },
-    "ccmail.label": {
-        "message": "Mottagarens e-postadress (kopia)"
-    },
-    "ccname.label": {
-        "message": "Mottagarens namn"
-    },
-    "close.label": {
-        "message": "Grundläggande"
-    },
-    "conditional.forwardMode": {
-        "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
-    },
-    "conditionals.cap": {
-        "message": "Villkorlig text"
-    },
-    "conditionals.note": {
-        "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
-    },
-    "contextError": {
-        "message": "The Variable {1} can not be used for *new* messages!\\nPlease refer to help for a list of permitted variables"
-    },
-    "contribute_button": {
-        "message": "Bidra"
-    },
-    "contributor.label": {
-        "message": "Contributor"
-    },
-    "copy.label": {
-        "message": "Kopiera"
-    },
-    "cost-of-independence": {
-        "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
-    },
-    "creator.label": {
-        "message": "Creator"
-    },
-    "cursor.label": {
-        "message": "Ändrar pekarpositionen"
-    },
-    "customdf_note.label": {
-        "message": "Kan kombineras med &#37;X:=sent&#37;"
-    },
-    "d.label": {
-        "message": "Dag i månaden (01 till 31)"
-    },
-    "date.label": {
-        "message": "Datum och tid (samma som originalmeddelandehuvudet)"
-    },
-    "dateformat.example": {
-        "message": "Exempel:"
-    },
-    "dateformat.explain": {
-        "message": "De flesta av tidsvariablerna ovan kan användas i parametersträngen genom att utelämna '&#37;'. Se även:"
-    },
-    "dateformat.label": {
-        "message": "Funktion för att infoga nuvarande tid (klickbart fält)."
-    },
-    "datelocal.label": {
-        "message": "Datum och tid (lokalt format)"
-    },
-    "dateoffset_note.label": {
-        "message": "Följande funktion lägger till ett offset till alla följande synliga timers."
-    },
-    "dateshort.label": {
-        "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
-    },
-    "datetimezone.label": {
-        "message": "Tidszon (+0100, +0200, ... )"
-    },
-    "datetz.label": {
-        "message": "Tidszon (+0100, +0200, ... )"
-    },
-    "day.1.name": {
-        "message": "söndag"
-    },
-    "day.1.short": {
-        "message": "sön"
-    },
-    "day.2.name": {
-        "message": "måndag"
-    },
-    "day.2.short": {
-        "message": "mån"
-    },
-    "day.3.name": {
-        "message": "tisdag"
-    },
-    "day.3.short": {
-        "message": "tis"
-    },
-    "day.4.name": {
-        "message": "onsdag"
-    },
-    "day.4.short": {
-        "message": "ons"
-    },
-    "day.5.name": {
-        "message": "torsdag"
-    },
-    "day.5.short": {
-        "message": "tor"
-    },
-    "day.6.name": {
-        "message": "fredag"
-    },
-    "day.6.short": {
-        "message": "fre"
-    },
-    "day.7.name": {
-        "message": "lördag"
-    },
-    "day.7.short": {
-        "message": "lör"
-    },
-    "defaultMimeFormat": {
-        "message": "Standardformat för adress:"
-    },
-    "defaultMimeFormat_tip": {
-        "message": "Format att använda när adresserna &#37;to&#37; &#37;from&#37; &#37;cc&#37; ersätts. T.ex. förnamn,efternamn,??post kommer att visa förnamnet följt av efternamnet; om båda är otillgängliga kommer e-postadressen visas."
-    },
-    "deleteQuotedTags": {
-        "message": "Tar bort taggar från offerten"
-    },
-    "deleteQuotedText": {
-        "message": "Tar bort citerad text"
-    },
-    "deleteText": {
-        "message": "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)"
-    },
-    "developer.label": {
-        "message": "Developer"
-    },
-    "domainLicense.email": {
-        "message": "Vi kontaktar dig genom denna e-post adress för att generera din domänlicens; Det kan ta upp till två arbetsdagar för oss att återkomma. Ange domännamnet för licensen på nästa sida."
-    },
-    "domainLicense.header": {
-        "message": "Licensierad e-postdomän"
-    },
-    "domainLicense.instruct": {
-        "message": "Licensen är knuten till ditt företags domän. Licensen ger användare med samma e-postdomän möjlighet att använda SmartTemplates Pro. T.ex. om du anger domännamnet 'abc.com', så kommer användare så som fred@abc.com, martha@abc.com, mike.doe@abc.com etc. få använda licensen. Det högsta antalet giltiga användare är numret du har angivit på första sidan."
-    },
-    "domainLicense.validate": {
-        "message": "Se till att du skriver domännamnet *exakt som det står* på ditt företags e-post adresser (delen *efter* @ tecknet), för att det kommer att användas till auktorisera din användares e-post adresser."
-    },
-    "donate": {
-        "message": "Hjälp med en engångs donation."
-    },
-    "donate-heading": {
-        "message": "Hjälp genom att donera!"
-    },
-    "e.label": {
-        "message": "Dag i månaden (1 till 31)"
-    },
-    "edit.label": {
-        "message": "Redigera"
-    },
-    "email.label": {
-        "message": "E-post:"
-    },
-    "enterLicenseKey.button": {
-        "message": "Ange licensnyckel …"
-    },
-    "enterLicenseKey.tooltip": {
-        "message": "Skriv in den licensnyckel du fick i ditt e-postmeddelande från oss."
-    },
-    "ex_brack.label": {
-        "message": "Exempelvis: To: ALFHILD | Cc: HENRIKA"
-    },
-    "export.label": {
-        "message": "Exportera"
-    },
-    "extend-your-license": {
-        "message": "Överväg att förlänga din licens med ett år."
-    },
-    "extensionDescription": {
-        "description": "Description of the extension.",
-        "message": "Ett kraftfullt sätt att skapa anpassade svar genom att automatiskt infoga olika e-postrubriker. Mallar kan skapas för varje e-postidentitet, stöder också externa html-filer och stilark."
-    },
-    "extensionName": {
-        "description": "Name of the extension.",
-        "message": "SmartTemplates"
-    },
-    "extensions.smarttemplate4@thunderbird.extension.description": {
-        "message": "Den smarta mallen som kan anpassa citathuvuden för varje enskilt konto."
-    },
-    "file.label": {
-        "message": "Arkiv"
-    },
-    "fileCSS.label": {
-        "message": "Externt formatmall (css). Inkludera dina favorit CSS-regler för att dela mellan olika mallar."
-    },
-    "fileHTML.label": {
-        "message": "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts."
-    },
-    "fileImage.label": {
-        "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
-    },
-    "fileTemplates.add": {
-        "message": "Add"
-    },
-    "fileTemplates.down": {
-        "message": "Down"
-    },
-    "fileTemplates.file.open": {
-        "message": "Select template file from disk"
-    },
-    "fileTemplates.file.path": {
-        "message": "Template location:"
-    },
-    "fileTemplates.file.title": {
-        "message": "Title:"
-    },
-    "fileTemplates.file.title.tooltip": {
-        "message": "This will be displayed in the template selection menu."
-    },
-    "fileTemplates.fwd.tooltip": {
-        "message": "List of external template files that can be launched from the 'Forward' button."
-    },
-    "fileTemplates.new.tooltip": {
-        "message": "List of external template files that can be launched from the 'Create new Message' button."
-    },
-    "fileTemplates.remove": {
-        "message": "Remove"
-    },
-    "fileTemplates.rsp.tooltip": {
-        "message": "List of external template files that can be launched from the 'Reply' button."
-    },
-    "fileTemplates.title": {
-        "message": "Template Files"
-    },
-    "fileTemplates.up": {
-        "message": "Up"
-    },
-    "fileTemplates.update": {
-        "message": "Update"
-    },
-    "firstName.label": {
-        "message": "Förnamn:"
-    },
-    "fix_var.cap": {
-        "message": "Fasta variabler"
-    },
-    "fix_vartz.cap": {
-        "message": "Fasta variabler för datumformat och tidszon "
-    },
-    "fix_vartz_note.label": {
-        "message": "Kan kombineras med &#37;X:=sent&#37;"
-    },
-    "fpFilterHtmlTemplate": {
-        "message": "HTML-mall"
-    },
-    "fpFilterName": {
-        "message": "SmartTemplates File"
-    },
-    "fpFolder": {
-        "message": "Mapp"
-    },
-    "fpHTMLFile": {
-        "message": "HTML-fil / Textfil"
-    },
-    "fpImageFile": {
-        "message": "Bildfil"
-    },
-    "fpJsonFile": {
-        "message": "JSON-fil"
-    },
-    "fpStyle": {
-        "message": "Stilblad"
-    },
-    "freeLicense": {
-        "message": "Om du tidigare har donerat till SmartTemplates-projektet eller har bidragit med arbetsinsatser inom projektet, t.ex. genom att översätta eller skriva korrigeringskod, så kan du vara berättigad till en gratis licensnyckel. Kontakta oss via supportfliken i SmartTemplates inställningar."
-    },
-    "from.label": {
-        "message": "Avsändarens namn (Standard)"
-    },
-    "from_note.label": {
-        "message": "När inget namn finns tillgängligt visas e-postadressen"
-    },
-    "from_var.cap": {
-        "message": "Avsändarvariabler (Från) "
-    },
-    "fromfirstname.label": {
-        "message": "Avsändarens förnamn"
-    },
-    "frommail.label": {
-        "message": "Avsändarens e-postadress"
-    },
-    "fromname.label": {
-        "message": "Avsändarens namn"
-    },
-    "getSmartTemplate4": {
-        "message": "Få SmartTemplates-licens"
-    },
-    "guessNameFromMail": {
-        "message": "Gissa delar av namnet från e-postadresser om det saknas"
-    },
-    "h.label": {
-        "message": "Timmar, 24-timmarsformat (00 till 23)"
-    },
-    "header.append.subject": {
-        "message": "lägg till text efter ämnet"
-    },
-    "header.append.to": {
-        "message": "lägg till e-postadress i mottagarlistan"
-    },
-    "header.delete.subject": {
-        "message": "ta bort text från ämnet (reguljärt uttryck)"
-    },
-    "header.prefix.subject": {
-        "message": "prefigera ämnet med text"
-    },
-    "header.set.from": {
-        "message": "ställer in 'från' -adressen. Detta accepterar endast e-postadresser från listan över identiteter."
-    },
-    "header.set.subject": {
-        "message": "ersätt ämnet med texten"
-    },
-    "header.set.to": {
-        "message": "ersätt mottagare med e-postadress"
-    },
-    "header_function.cap": {
-        "message": "Modifiera e-postsidhuvud"
-    },
-    "header_function.explain": {
-        "message": "Dessa funktioner kan användas för att modifiera e-postsidhuvuden, som beskrivs nedan:"
-    },
-    "header_function.scope": {
-        "message": "Den kan användas med dessa sidhuvuden:"
-    },
-    "heading-installed": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "$addonName$ installerades med framgång",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "heading-updated": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "$addonName$ uppdaterades med framgång",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "heading.click": {
-        "message": "Klicka på en rubrik eller"
-    },
-    "heading.expandAll": {
-        "message": "expandera alla sektioner"
-    },
-    "help.label": {
-        "message": "Hjälp"
-    },
-    "help_dialog_title": {
-        "message": "Hjälp med SmartTemplates"
-    },
-    "help_keyword.cap": {
-        "message": "Hjälp"
-    },
-    "html_note.cap": {
-        "message": "Kommentarer rörande HTML-mallar"
-    },
-    "html_note.label": {
-        "message": "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!"
-    },
-    "i.label": {
-        "message": "Timmar, 12-timmarsformat (01 till 12)"
-    },
-    "identity_ab": {
-        "message": "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken."
-    },
-    "identity_ab.example": {
-        "message": "Exempel"
-    },
-    "identity_ab.field": {
-        "message": "För ytterligare fältvärden, se kapitlet 'Adressbokfält' nedan."
-    },
-    "identity_ab.phoneno": {
-        "message": "Telefonnr"
-    },
-    "im-ex.cap": {
-        "message": "Exportering/importering av inställningar och mallar"
-    },
-    "im-ex_note1.label": {
-        "message": "Du kan exportera och importera dina inställningar och mallar som associeras med varje konto."
-    },
-    "im-ex_note2.label": {
-        "message": "Välj först kontot du vill exportera i SmartTemplates-inställningarnas rullgardinslist."
-    },
-    "im-ex_note3.label": {
-        "message": "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator."
-    },
-    "im-ex_note4.label": {
-        "message": "För att importera en fil, välj kontot du vill importera i SmartTemplates-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet."
-    },
-    "im-ex_note5.label": {
-        "message": "Välj den SmartTemplates-fil (xxx.st4) du vill importera."
-    },
-    "im-ex_note6.label": {
-        "message": "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplatess alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras."
-    },
-    "import.label": {
-        "message": "Importera"
-    },
-    "insert.label": {
-        "message": "Infoga variabel"
-    },
-    "intro": {
-        "message": "En årslicens för SmartTemplates Pro ger dig tillgång till alla licensbelagda funktioner under ett års tid. Det ger oss även medel, som vi kan använda för att vidareutveckla produkten."
-    },
-    "k.label": {
-        "message": "Timmar, 24-timmarsformat (0 till 23)"
-    },
-    "l.label": {
-        "message": "Timmar, 12-timmarsformat (1 till 12)"
-    },
-    "label-remind-me": {
-        "message": "Påminn mig igen om $countDays$ dagar.",
-        "placeholders": {
-            "countDays": {
-                "content": "$1",
-                "example": "10"
-            }
-        }
-    },
-    "label.haveLicense": {
-        "message": "Har du redan en licens?"
-    },
-    "label.insertLicense": {
-        "message": "Infoga din personliga licensnyckel here:"
-    },
-    "label.insertLicense.tooltip": {
-        "message": "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring."
-    },
-    "label.licenseValid": {
-        "message": "Din licens är giltig t.o.m.:"
-    },
-    "label.premiumFeaturesSite": {
-        "message": "Läs mer om premiumfunktioner på vår webbplats…"
-    },
-    "lastName.label": {
-        "message": "Efternamn:"
-    },
-    "license-is-extended": {
-        "description": "Shown if license expires more than a year from now",
-        "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
-    },
-    "license-is-standard": {
-        "description": "Special message for standard license holders",
-        "message": "Som innehavare av en SmartTemplates-standardlicens är du nu berättigad till en rabatterad uppdatering plus helårsförlängning. Klicka på knappen [Uppgradera till PRO] under din standardlicens för mer information."
-    },
-    "licenseTypes": {
-        "message": "Framöver erbjuder SmartTemplates två licenser, Standard och Pro; dessa är nödvändiga för att hålla jämna steg med ändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom brytande förändringar rullas ut i en årlig cykel kommer licensen också att gälla i ett år."
-    },
-    "licenseValidation.expired": {
-        "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
-    },
-    "licenseValidation.failed": {
-        "message": "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår."
-    },
-    "licenseValidation.invalidAddon": {
-        "message": "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}."
-    },
-    "licenseValidation.invalidMail": {
-        "message": "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans."
-    },
-    "licenseValidation.notMatchedMail": {
-        "message": "Den krypterade e-postadressen matchar inte den läsbara adressen."
-    },
-    "licenseValidation.passed": {
-        "message": "Tack för att du registrerar SmartTemplates Pro! Alla licensbelagda funktioner är nu tillgängliga."
-    },
-    "licenseValidation.standard": {
-        "message": "Tack för att du registrerade SmartTemplates Standard - Du hjälper tillägget oerhört! Du kan nu också testa alla premiumfunktioner."
-    },
-    "licenseWindow.title": {
-        "message": "Licens för SmartTemplates"
-    },
-    "localedate.label": {
-        "message": "Datum och tid (lokalt format)"
-    },
-    "localename.label": {
-        "message": "sv-SE"
-    },
-    "localized.label": {
-        "message": "Translator"
-    },
-    "m.label": {
-        "message": "Månad (01 till 12)"
-    },
-    "matchTextFromBody": {
-        "message": "Hitta ett RegEx-mönster i citerat e-post och infoga i funktionsplatsen."
-    },
-    "matchTextFromSubject": {
-        "message": "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen."
-    },
-    "menu.template_export.label": {
-        "message": "Exportera mall"
-    },
-    "menu.template_import.label": {
-        "message": "Importera mall"
-    },
-    "message_default_title": {
-        "message": "SmartTemplates"
-    },
-    "messid.label": {
-        "message": "Meddelande-ID"
-    },
-    "minSize": {
-        "message": "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder."
-    },
-    "minSize_detail": {
-        "message": "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå."
-    },
-    "month.1.name": {
-        "message": "januari"
-    },
-    "month.1.short": {
-        "message": "jan"
-    },
-    "month.10.name": {
-        "message": "oktober"
-    },
-    "month.10.short": {
-        "message": "okt"
-    },
-    "month.11.name": {
-        "message": "november"
-    },
-    "month.11.short": {
-        "message": "nov"
-    },
-    "month.12.name": {
-        "message": "december"
-    },
-    "month.12.short": {
-        "message": "dec"
-    },
-    "month.2.name": {
-        "message": "februari"
-    },
-    "month.2.short": {
-        "message": "feb"
-    },
-    "month.3.name": {
-        "message": "mars"
-    },
-    "month.3.short": {
-        "message": "mar"
-    },
-    "month.4.name": {
-        "message": "april"
-    },
-    "month.4.short": {
-        "message": "apr"
-    },
-    "month.5.name": {
-        "message": "maj"
-    },
-    "month.5.short": {
-        "message": "maj"
-    },
-    "month.6.name": {
-        "message": "juni"
-    },
-    "month.6.short": {
-        "message": "jun"
-    },
-    "month.7.name": {
-        "message": "juli"
-    },
-    "month.7.short": {
-        "message": "jul"
-    },
-    "month.8.name": {
-        "message": "augusti"
-    },
-    "month.8.short": {
-        "message": "aug"
-    },
-    "month.9.name": {
-        "message": "september"
-    },
-    "month.9.short": {
-        "message": "sep"
-    },
-    "mozillas-basic-platform": {
-        "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
-    },
-    "n.label": {
-        "message": "Månad (1 till 12)"
-    },
-    "newsgr.label": {
-        "message": "Diskussionsgrupper"
-    },
-    "no_button": {
-        "message": "Ingen"
-    },
-    "notificationTitle": {
-        "description": "Title of the click notification.",
-        "message": "Click notification"
-    },
-    "ongoing-work": {
-        "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "ownmail.label": {
-        "message": "Din e-postadress"
-    },
-    "ownname.label": {
-        "message": "Ditt namn"
-    },
-    "p.label": {
-        "message": "AM och PM"
-    },
-    "p1.label": {
-        "message": "a.m."
-    },
-    "p2.label": {
-        "message": "A.M."
-    },
-    "p3.label": {
-        "message": "AM"
-    },
-    "paste.label": {
-        "message": "Klistra in"
-    },
-    "pref_StatusIcon.IconHoverText": {
-        "message": "Text vid hovring"
-    },
-    "pref_StatusIcon.IconOnly": {
-        "message": "Endast ikon"
-    },
-    "pref_StatusIcon.IconText": {
-        "message": "Ikon och text"
-    },
-    "pref_about.tab": {
-        "message": "Ca"
-    },
-    "pref_addSigBreakHTML.label": {
-        "message": "Lägg till -- i e-post med HTML"
-    },
-    "pref_addSigBreakHTML.tooltip": {
-        "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med HTML)"
-    },
-    "pref_addSigBreakPlaintext.label": {
-        "message": "Lägg till -- i e-post med vanlig text"
-    },
-    "pref_addSigBreakPlaintext.tooltip": {
-        "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med vanlig text)"
-    },
-    "pref_addressDelimiter": {
-        "message": "Avgränsa flera korrespondenter med:"
-    },
-    "pref_addressDelimiter_tip": {
-        "message": "Avgränsare mellan flera korrespondenter. Outlook använder semikolon (;) Standard för Thunderbird är komma (,)"
-    },
-    "pref_advanced.tab": {
-        "message": "Avancerade inställningar"
-    },
-    "pref_breaksOnTop.label": {
-        "message": "Antal radbrytningar i början:"
-    },
-    "pref_cursorInsertSpace": {
-        "message": "Infoga mellanslag för att markera &#37;cursor&#37;"
-    },
-    "pref_debug_check": {
-        "message": "Felsökningsläge"
-    },
-    "pref_debug_tip": {
-        "message": "Högerklicka för avancerade felsökningsalternativ"
-    },
-    "pref_def.cap": {
-        "message": "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot."
-    },
-    "pref_def.label": {
-        "message": "Använd allmänna inställningar"
-    },
-    "pref_defaultCharset.label": {
-        "message": "Standardteckenkodning"
-    },
-    "pref_defaultCharset_tip": {
-        "message": "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras."
-    },
-    "pref_dialog.title": {
-        "message": "Inställningar för SmartTemplates"
-    },
-    "pref_examples.tab": {
-        "message": "Exempel (endast online)"
-    },
-    "pref_examples.tooltip": {
-        "message": "Visa exempelmallar från https://smarttemplates.quickfolders.org/templates.html. Endast tillgängligt i onlineläget."
-    },
-    "pref_fontSettings.label": {
-        "message": "Typsnitt för mallredigerare"
-    },
-    "pref_forceParagraph": {
-        "message": "Tvinga paragrafläge"
-    },
-    "pref_forceParagraph_tip": {
-        "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
-    },
-    "pref_fwd.label": {
-        "message": "Tillämpa följande mall på det vidarebefordrade meddelandet"
-    },
-    "pref_fwd.tab": {
-        "message": "Framåt"
-    },
-    "pref_fwdhead.label": {
-        "message": "Använd istället för standardcitathuvudet"
-    },
-    "pref_fwdmsg.cap": {
-        "message": "Vidarebefordrat meddelande"
-    },
-    "pref_global.tab": {
-        "message": "Globala inställningar"
-    },
-    "pref_groupAdvanced": {
-        "message": "Avancerade funktioner"
-    },
-    "pref_groupMailContent": {
-        "message": "E-postinnehåll"
-    },
-    "pref_groupNameRules": {
-        "message": "Namnregler"
-    },
-    "pref_groupSignatures": {
-        "message": "Signaturer"
-    },
-    "pref_groupTroubleShooting": {
-        "message": "Felsökning"
-    },
-    "pref_groupUI": {
-        "message": "Användargränssnitt"
-    },
-    "pref_help.tab": {
-        "message": "Hjälp"
-    },
-    "pref_hideExamples": {
-        "message": "Dölj flik med exempel"
-    },
-    "pref_html.cap": {
-        "message": "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer."
-    },
-    "pref_html.label": {
-        "message": "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)"
-    },
-    "pref_nameSwap": {
-        "message": "Korrigera Efternamn, Förnamn"
-    },
-    "pref_nameSwap_tip": {
-        "message": "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;"
-    },
-    "pref_new.label": {
-        "message": "Tillämpa följande mall på det nya meddelandet"
-    },
-    "pref_new.tab": {
-        "message": "Nytt"
-    },
-    "pref_newmsg.cap": {
-        "message": "Nytt meddelande"
-    },
-    "pref_parseSignature": {
-        "message": "Bearbeta signatur"
-    },
-    "pref_parseSignature_tip": {
-        "message": "Ersätt variabler i signaturen."
-    },
-    "pref_quoteHeaderBox.label": {
-        "message": "Citationssidhuvud"
-    },
-    "pref_quoteHeaderBox_tip": {
-        "message": "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den &#37;date&#37; skrev &#37;from(name)&#37;:"
-    },
-    "pref_quotehead_tip": {
-        "message": "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan."
-    },
-    "pref_removeSig.label": {
-        "message": "Ersätt signaturen när e-postidentiteten ändras"
-    },
-    "pref_rep_br.cap": {
-        "message": "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;."
-    },
-    "pref_rep_br.label": {
-        "message": "Ersätt ny rad med &lt;br&gt;"
-    },
-    "pref_rsp.label": {
-        "message": "Tillämpa följande mall på svarsmeddelandet"
-    },
-    "pref_rsp.tab": {
-        "message": "Svara"
-    },
-    "pref_rsphead.label": {
-        "message": "Använd istället för standardcitathuvudet"
-    },
-    "pref_rspmsg.cap": {
-        "message": "Svarsmeddelande"
-    },
-    "pref_server_def": {
-        "message": "Allmänna inställningar"
-    },
-    "pref_server_desc": {
-        "message": "Konto"
-    },
-    "pref_showStatusIcon.label": {
-        "message": "Visa knapp i statusfältet"
-    },
-    "pref_sigReplaceBR.label": {
-        "message": "Ersätt radbrytningar i signaturer med vanlig text med &lt;br&gt;"
-    },
-    "pref_silentUpdates": {
-        "message": "Tyst uppdateringar"
-    },
-    "pref_silentUpdates_tip": {
-        "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
-    },
-    "pref_stationeryLink": {
-        "message": "Brevpapperstillägg"
-    },
-    "pref_stationeryLink_tip": {
-        "message": "Hämta brevpapper..."
-    },
-    "pref_stationerySupport": {
-        "message": "Stöd tillägget Stationery"
-    },
-    "pref_stationerySupport_tip": {
-        "message": "Stöd för att använda Stationery samtidigt som SmartTemplates."
-    },
-    "pref_stationerySupport_tip2": {
-        "message": "Detta gör det möjligt att använda variabler i din Stationery."
-    },
-    "pref_templateBox.label": {
-        "message": "Mall"
-    },
-    "pref_templateBox_tip": {
-        "message": "Skriv din e-postmall i detta fält, t.ex. Hej &#37;from(name)&#37;, &lt;br&gt; tack för ditt meddelande &lt;br&gt; hälsningar, &lt;br&gt;&#37;ownname&#37;"
-    },
-    "pref_template_tip": {
-        "message": "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information."
-    },
-    "pref_variables.tab": {
-        "message": "Variabler"
-    },
-    "premiumConfig": {
-        "message": "Premiumfunktioner"
-    },
-    "prompt.email": {
-        "message": "Ange en e-postadress"
-    },
-    "prompt.text": {
-        "message": "Ange texten att lägg till eller ändra"
-    },
-    "purchase-a-license": {
-        "message": "Köp en licens."
-    },
-    "purchase-heading": {
-        "message": "Att köpa en licens!"
-    },
-    "quoteLevel": {
-        "message": "[valfritt, numeriskt]: vilken lägsta offertnivå att börja med"
-    },
-    "quotePlaceholder": {
-        "message": "Detta flyttar den citerade delen till själva malltexten. Offertrubriksavsnittet från kontomallar flyttas till toppen av citatet."
-    },
-    "quotePlaceholder.level": {
-        "message": "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen."
-    },
-    "quote_changers.cap": {
-        "message": "Citat Manipulation"
-    },
-    "quote_changers.desc": {
-        "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
-    },
-    "regexpAnyText": {
-        "message": "All text - regelbundet uttryck - måste vara i dubbla citat."
-    },
-    "renew-your-license": {
-        "message": "Förnya din licens."
-    },
-    "replaceQuotedTags": {
-        "message": "Ersätter taggar från offerten med text eller html"
-    },
-    "replaceQuotedText": {
-        "message": "Ersätter citerad text med HTML"
-    },
-    "replaceText": {
-        "message": "Ersätt lite text med någonting annat."
-    },
-    "replacementHTML": {
-        "message": "måste vara i dubbla citat - antingen en text eller en html-tagg som kommer att infogas i citat varhelst en matchning hittas."
-    },
-    "resolveABRemoveMail": {
-        "message": "Ta bort e-postadresser om formatparametern anges"
-    },
-    "resolveNamesFromAB": {
-        "message": "Lös namn från adressböcker"
-    },
-    "resolveNamesFromABDisplay": {
-        "message": "Använd visningsnamn om förnamnet saknas"
-    },
-    "resolveNamesFromABNick": {
-        "message": "Ersätt förnamn med smeknamn om det finns"
-    },
-    "resolveNamesFromAB_tip": {
-        "message": "Denna funktioner fungerar inte med vissa fjärradressböcker, som LDAP."
-    },
-    "s.label": {
-        "message": "Sekund (00 till 59)"
-    },
-    "selector": {
-        "message": "- vad du skulle använda för att adressera taggen i css. enklaste fallet 'img' eller 'p' men attributväljare kan läggas till så länge dubbla citat kan undvikas."
-    },
-    "settings.label": {
-        "message": "Inställningar och mallar"
-    },
-    "shortdate.label": {
-        "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
-    },
-    "sig.label": {
-        "message": "Underskrift (från TB hänsyn inställningar)"
-    },
-    "sig2.label": {
-        "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
-    },
-    "smartTemplate4.changeTemplate.label": {
-        "message": "Change template…"
-    },
-    "smartTemplate4.changeTemplate.tooltip": {
-        "message": "Load a different template - use before editing the Email!"
-    },
-    "smartTemplate4.changetemplate.label": {
-        "message": "Ändra mall…"
-    },
-    "smartTemplate4.changetemplate.tooltip": {
-        "message": "Väljer en annan mall - använd innan du redigerar i e-postkroppen!"
-    },
-    "smartTemplate4.cleandeferred.label": {
-        "message": "Städa!"
-    },
-    "smartTemplate4.cleandeferred.tooltip": {
-        "message": "Städa upp alla SmartTemplate-variabler"
-    },
-    "smartTemplate4.deferredcontext.cleanup": {
-        "message": "Uppdatera och ersätt med innehåll"
-    },
-    "smartTemplate4.deferredcontext.delete": {
-        "message": "Ta bort SmartTemplates-variabel"
-    },
-    "smartTemplate4.deferredcontext.update": {
-        "message": "Uppdatera SmartTemplates-innehåll"
-    },
-    "smartTemplate4.settings.label": {
-        "message": "SmartTemplates"
-    },
-    "smartTemplate4.settings.tooltip": {
-        "message": "SmartTemplates settings"
-    },
-    "smarttemplate4_button": {
-        "message": "Redigera mallar och citathuvuden…"
-    },
-    "smarttemplate4_title": {
-        "message": "SmartTemplates"
-    },
-    "spec_form.cap": {
-        "message": "Adressfältväljare"
-    },
-    "spec_var.cap": {
-        "message": "Specialvariabler"
-    },
-    "specform_note.label": {
-        "message": "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"
-    },
-    "spellcheck.label": {
-        "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
-    },
-    "standardformat.config": {
-        "message": "Konfigurera standardformat…"
-    },
-    "stringmanip.alttext": {
-        "message": "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället."
-    },
-    "stringmanip.match.comment": {
-        "message": "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc."
-    },
-    "stringmanip_function.cap": {
-        "message": "Strängmanipulering"
-    },
-    "stringmanip_function.explain": {
-        "message": "Dessa funktioner kan användas för att radera eller ersätta text inom e-postmallen eller citationssidhuvudet."
-    },
-    "sub.label": {
-        "message": "Ämne (Samma som original Mailheader)"
-    },
-    "sub2.label": {
-        "message": "Ämne (samma som TB Message Editor)"
-    },
-    "sub_var.cap": {
-        "message": "Ämne"
-    },
-    "support-preference": {
-        "message": "Detta är det föredragna sättet att stödja $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "support-suggestion": {
-        "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "support.compose": {
-        "message": "Skriv för att stödja…"
-    },
-    "support.links": {
-        "message": "Support Länkar"
-    },
-    "support.mail.instructions": {
-        "message": "Klicka på knappen nedan för att öppna en ny e-post som ska stödjas. Om du har tekniska problem kan du överväga att lägga till en skärmdump."
-    },
-    "support.subject": {
-        "message": "Ämne:"
-    },
-    "support.tab": {
-        "message": "Stöd"
-    },
-    "support.title": {
-        "message": "skriva Mail to Support"
-    },
-    "support.type": {
-        "message": "Typ:"
-    },
-    "support.type.html": {
-        "message": "Hjälp med HTML / CSS"
-    },
-    "support.type.license": {
-        "message": "Licensrelaterade"
-    },
-    "support.type.other": {
-        "message": "Övrig"
-    },
-    "support.type.selectOne": {
-        "message": "Välj ett ämne!"
-    },
-    "support.type.tech": {
-        "message": "Teknisk"
-    },
-    "suppressMailtToLink": {
-        "message": "Förhindra att e-postklienter lägger till länkar i e-postadresser."
-    },
-    "tab.gopro": {
-        "message": "SmartTemplates Pro"
-    },
-    "table.cap": {
-        "message": "ExampleUsage av variablerna"
-    },
-    "table_fwd.label": {
-        "message": "Framåt"
-    },
-    "table_keyword.label": {
-        "message": "Variabel"
-    },
-    "table_new.label": {
-        "message": "Nytt"
-    },
-    "table_note.label": {
-        "message": "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!"
-    },
-    "table_reply.label": {
-        "message": "Svara"
-    },
-    "testDriveS": {
-        "message": "Du kan provköra premiumfunktionerna med standardlicensen, men de kan vara något begränsade."
-    },
-    "thanks-for-installing-intro": {
-        "message": "Tack för att du installerade $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "thanks-for-updating-intro": {
-        "message": "Tack för att du uppdaterade $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "time-and-effort": {
-        "message": "Mina tillägg kräver grundläggande ändringar för att förbli kompatibla med Mozilla-plattformen. Mitt utvecklingsteam på Github (Realraven2000, opto och paenglab) arbetar flitigt med att återställa full funktionalitet för  $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "timezone.explain": {
-        "message": "Tvinga en specifik tidszon för datumvariabler genom att ersätta parametern tz (GMT, EST, CST, PST, etc.)"
-    },
-    "timezonename.label": {
-        "message": "GMT, PST, EST, ... "
-    },
-    "tip.fileTemplates": {
-        "message": "Klicka för att läsa full dokumentation om brevpapper och externa HTML-mallar på vår supportwebbplats…"
-    },
-    "to.label": {
-        "message": "Mottagarens namn (Standard)"
-    },
-    "to_note.label": {
-        "message": "När inget namn finns tillgängligt visas e-postadressen"
-    },
-    "to_var.cap": {
-        "message": "Mottagarvariabler (Till)"
-    },
-    "tofirstname.label": {
-        "message": "Mottagarens förnamn"
-    },
-    "tofwd.label": {
-        "message": "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden"
-    },
-    "tomail.label": {
-        "message": "Mottagarens e-postadress"
-    },
-    "toname.label": {
-        "message": "Mottagarens namn"
-    },
-    "tools.label": {
-        "message": "Verktyg"
-    },
-    "translated-by-google": {
-        "description": "disclaimer.",
-        "message": "översättningar från google"
-    },
-    "translatorNickname.label": {
-        "message": "Lakrits (BabelZilla)"
-    },
-    "tzname.label": {
-        "message": "GMT, PST, EST, ... "
-    },
-    "updates.title": {
-        "message": "Uppdateringar"
-    },
-    "updatesExpiry": {
-        "message": "SmartTemplates Pro kommer, som vanligt, att uppdateras via addons.thunderbird.net. När licensen förfaller kan du förnya den eller använda de licensbelagda funktionerna under villkoren för gratisanvändare. Exklusiva funktioner kommer att kräva en giltig licensnyckel."
-    },
-    "url.bugsAndFeaturesPage.label": {
-        "message": "Buggrapporter/funktionsbegäran"
-    },
-    "url.homePage.label": {
-        "message": "Hemsida för tillägg"
-    },
-    "url.supportPage.label": {
-        "message": "Supportsida"
-    },
-    "var_custom.cap": {
-        "message": "Variabler för anpassat datumformat"
-    },
-    "var_xsent.cap": {
-        "message": "Att använda &#37;X:=sent&#37;"
-    },
-    "vouchers.title": {
-        "message": "Tillgodokvitton"
-    },
-    "whitespace_note": {
-        "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
-    },
-    "window-title": {
-        "description": "page title. first placeholder will be replaced with Add-on name",
-        "message": "Välkommen till $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "SmartTemplates"
-            }
-        }
-    },
-    "xmail.label": {
-        "message": "X-Mailer-adresshuvud"
-    },
-    "xsent_long.cap": {
-        "message": "Exempel på en långsträng:"
-    },
-    "xsent_long.label": {
-        "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; kl. &#37;H&#37;:&#37;M&#37;:"
-    },
-    "xsent_long_result.label": {
-        "message": "Resultat: 16.02.2011 kl. 12:15: "
-    },
-    "xsent_note.label": {
-        "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas."
-    },
-    "xsent_short.cap": {
-        "message": "Exempel på en kortsträng:"
-    },
-    "xsent_short.label": {
-        "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
-    },
-    "xsent_short_note.label": {
-        "message": "Du kan dessutom använda dessa variabler:"
-    },
-    "xsent_short_result.label": {
-        "message": "Resultat: onsdag, 16.02.2011 12:15:25"
-    },
-    "yearlyLicense.premiumFeatures": {
-        "message": "SmartTemplates Pro ger dig obegränsad tillgång till de licensbelagda funktionerna."
-    },
-    "yearlyLicense.premiumFeatures.moreInfoLink": {
-        "message": "Mer om licensbelagda funktioner."
-    },
-    "yearlyLicense.title": {
-        "message": "Årslicens"
-    },
-    "yearlyLicense.usageTerm": {
-        "message": "Licensen är för personligt bruk och är knuten till din e-postadress. Du kan använda den i flera e-postklienter, under förutsättning att de är konfigurerade att använda den adressen."
-    },
-    "yearlyLicense.usageTerm1": {
-        "message": "Några ytterligare e-postadresser är inget problem - de kräver inte en separat licens. Om du har frågor kan du nå mig via supportfliken."
-    },
-    "yes_button": {
-        "message": "Ja"
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
+  "a.label": {
+    "message": "Veckodag (Fre.)"
+  },
+  "a.up.label": {
+    "message": "Veckodag (Fredag)"
+  },
+  "ab_contact": {
+    "message": "Kontakt"
+  },
+  "ab_fields": {
+    "message": "Adressbokfält"
+  },
+  "ab_fields.desc": {
+    "message": "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:"
+  },
+  "ab_other": {
+    "message": "Annat"
+  },
+  "ab_private": {
+    "message": "Privat"
+  },
+  "ab_work": {
+    "message": "Arbete"
+  },
+  "about.cap": {
+    "message": "Ca SmartTemplates"
+  },
+  "about.label": {
+    "message": "SmartTemplates erbjuder en intelligent / enkelt sätt mallar att använda som anpassar standard Thunderbird quote-Header. Mallar (citat-Header) kan användas för enda konto eller globala inställningar (gemensamma konton)."
+  },
+  "accept_button": {
+    "message": "Acceptera"
+  },
+  "account.label": {
+    "message": "Välj konto:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Du kör nu {boldStart} version $addonVer$ {boldEnd} på Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
     }
+  },
+  "addon-authors-struggle": {
+    "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
+  },
+  "advanced.label": {
+    "message": "Avancerat"
+  },
+  "any.label": {
+    "message": "Alla Header-line"
+  },
+  "attach.label": {
+    "message": "Lägg till bifogad fil"
+  },
+  "b.label": {
+    "message": "Månad (Jan.)"
+  },
+  "b.up.label": {
+    "message": "Månad (Januari)"
+  },
+  "basepath.absolute": {
+    "message": "Klicka här för att välja en specifik mapp på din lokala enhet."
+  },
+  "basepath.desc": {
+    "message": "Om din mall innehåller bilder med 'img' -taggen som finns på din lokala enhet måste du berätta för SmartTemplate var du kan hitta dessa."
+  },
+  "basepath.desc2": {
+    "message": "Variabeln 'basepath' kommer att infoga en html-bas-tagg för att hitta alla bilder baserade på en startplats - den kan bara användas en gång i ett e-postmeddelande."
+  },
+  "basepath.relative": {
+    "message": "Använd denna variabel för att hitta bilderna på samma plats som html-filmallen."
+  },
+  "brack_with_var.label": {
+    "message": "The following variables can be used inside [[...]]"
+  },
+  "btn-extend-license": {
+    "message": "Jag vill förlänga min licens med ett år"
+  },
+  "btn-renew-license": {
+    "message": "Jag vill förnya min licens"
+  },
+  "btn-upgrade-to-pro": {
+    "message": "Jag vill uppgradera min licens"
+  },
+  "btn-want-a-license": {
+    "message": "Jag vill köpa en licens"
+  },
+  "btn-want-to-donate": {
+    "message": "Jag vill hjälpa till med en engångs donation."
+  },
+  "btnLoadTemplate.tooltip": {
+    "message": "Läs in mall…"
+  },
+  "btnSaveTemplate.tooltip": {
+    "message": "Spara mall…"
+  },
+  "btnYouTube.tooltip": {
+    "message": "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg"
+  },
+  "button.pasteLicense": {
+    "message": "klistra in"
+  },
+  "button.updateThunderbird": {
+    "message": "Uppdatera Thunderbird!"
+  },
+  "button.validateLicense": {
+    "message": "verifiera"
+  },
+  "buyDomainLicense.button": {
+    "message": "Köp domänlicens"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Behöver du licenser för ett företag med fler än fem användare? Då är en domänlicens billigare:"
+  },
+  "buyPremiumLicense.button": {
+    "message": "Köp Pro-licens!"
+  },
+  "buyPremiumLicense.instruct": {
+    "message": "Vill du använda alla premiumfunktioner utan begränsningar? Få en SmartTemplateT Pro-licens. Den är bunden till din personliga e-postadress och kan användas i flera installationer."
+  },
+  "buyStandardLicense.button": {
+    "message": "Köp standardlicens!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Har du inte råd med premiumfunktionerna? Få en mycket prisvärd standardlicens och testa premiumfunktioner."
+  },
+  "calculate.explain": {
+    "message": "DD=antal dagar att lägga till. H=antal timmar att lägga till (valfritt). MM=minuter att lägga till (valfritt)"
+  },
+  "calculate.reset": {
+    "message": "Ändra argumentet till 0 för att sluta modifiera några datum."
+  },
+  "cancel_button": {
+    "message": "Kassera"
+  },
+  "capitalizeNames": {
+    "message": "Versalisera namn"
+  },
+  "cc.label": {
+    "message": "Mottagarens namn (Standard)"
+  },
+  "cc_note.label": {
+    "message": "När inget namn finns tillgängligt visas e-postadressen"
+  },
+  "cc_var.cap": {
+    "message": "Mottagarvariabler (Kopia)"
+  },
+  "ccfirstname.label": {
+    "message": "Mottagarens förnamn"
+  },
+  "ccmail.label": {
+    "message": "Mottagarens e-postadress (kopia)"
+  },
+  "ccname.label": {
+    "message": "Mottagarens namn"
+  },
+  "close.label": {
+    "message": "Grundläggande"
+  },
+  "conditional.forwardMode": {
+    "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
+  },
+  "conditionals.cap": {
+    "message": "Villkorlig text"
+  },
+  "conditionals.note": {
+    "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
+  },
+  "contextError": {
+    "message": "The Variable {1} can not be used for *new* messages!\\nPlease refer to help for a list of permitted variables"
+  },
+  "contribute_button": {
+    "message": "Bidra"
+  },
+  "contributor.label": {
+    "message": "Contributor"
+  },
+  "copy.label": {
+    "message": "Kopiera"
+  },
+  "cost-of-independence": {
+    "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
+  },
+  "creator.label": {
+    "message": "Creator"
+  },
+  "cursor.label": {
+    "message": "Ändrar pekarpositionen"
+  },
+  "customdf_note.label": {
+    "message": "Kan kombineras med &#37;X:=sent&#37;"
+  },
+  "d.label": {
+    "message": "Dag i månaden (01 till 31)"
+  },
+  "date.label": {
+    "message": "Datum och tid (samma som originalmeddelandehuvudet)"
+  },
+  "dateformat.example": {
+    "message": "Exempel:"
+  },
+  "dateformat.explain": {
+    "message": "De flesta av tidsvariablerna ovan kan användas i parametersträngen genom att utelämna '&#37;'. Se även:"
+  },
+  "dateformat.label": {
+    "message": "Funktion för att infoga nuvarande tid (klickbart fält)."
+  },
+  "datelocal.label": {
+    "message": "Datum och tid (lokalt format)"
+  },
+  "dateoffset_note.label": {
+    "message": "Följande funktion lägger till ett offset till alla följande synliga timers."
+  },
+  "dateshort.label": {
+    "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
+  },
+  "datetimezone.label": {
+    "message": "Tidszon (+0100, +0200, ... )"
+  },
+  "datetz.label": {
+    "message": "Tidszon (+0100, +0200, ... )"
+  },
+  "day.1.name": {
+    "message": "söndag"
+  },
+  "day.1.short": {
+    "message": "sön"
+  },
+  "day.2.name": {
+    "message": "måndag"
+  },
+  "day.2.short": {
+    "message": "mån"
+  },
+  "day.3.name": {
+    "message": "tisdag"
+  },
+  "day.3.short": {
+    "message": "tis"
+  },
+  "day.4.name": {
+    "message": "onsdag"
+  },
+  "day.4.short": {
+    "message": "ons"
+  },
+  "day.5.name": {
+    "message": "torsdag"
+  },
+  "day.5.short": {
+    "message": "tor"
+  },
+  "day.6.name": {
+    "message": "fredag"
+  },
+  "day.6.short": {
+    "message": "fre"
+  },
+  "day.7.name": {
+    "message": "lördag"
+  },
+  "day.7.short": {
+    "message": "lör"
+  },
+  "defaultMimeFormat": {
+    "message": "Standardformat för adress:"
+  },
+  "defaultMimeFormat_tip": {
+    "message": "Format att använda när adresserna &#37;to&#37; &#37;from&#37; &#37;cc&#37; ersätts. T.ex. förnamn,efternamn,??post kommer att visa förnamnet följt av efternamnet; om båda är otillgängliga kommer e-postadressen visas."
+  },
+  "deleteQuotedTags": {
+    "message": "Tar bort taggar från offerten"
+  },
+  "deleteQuotedText": {
+    "message": "Tar bort citerad text"
+  },
+  "deleteText": {
+    "message": "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)"
+  },
+  "developer.label": {
+    "message": "Developer"
+  },
+  "domainLicense.email": {
+    "message": "Vi kontaktar dig genom denna e-post adress för att generera din domänlicens; Det kan ta upp till två arbetsdagar för oss att återkomma. Ange domännamnet för licensen på nästa sida."
+  },
+  "domainLicense.header": {
+    "message": "Licensierad e-postdomän"
+  },
+  "domainLicense.instruct": {
+    "message": "Licensen är knuten till ditt företags domän. Licensen ger användare med samma e-postdomän möjlighet att använda SmartTemplates Pro. T.ex. om du anger domännamnet 'abc.com', så kommer användare så som fred@abc.com, martha@abc.com, mike.doe@abc.com etc. få använda licensen. Det högsta antalet giltiga användare är numret du har angivit på första sidan."
+  },
+  "domainLicense.validate": {
+    "message": "Se till att du skriver domännamnet *exakt som det står* på ditt företags e-post adresser (delen *efter* @ tecknet), för att det kommer att användas till auktorisera din användares e-post adresser."
+  },
+  "donate": {
+    "message": "Hjälp med en engångs donation."
+  },
+  "donate-heading": {
+    "message": "Hjälp genom att donera!"
+  },
+  "e.label": {
+    "message": "Dag i månaden (1 till 31)"
+  },
+  "edit.label": {
+    "message": "Redigera"
+  },
+  "email.label": {
+    "message": "E-post:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Ange licensnyckel …"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Skriv in den licensnyckel du fick i ditt e-postmeddelande från oss."
+  },
+  "ex_brack.label": {
+    "message": "Exempelvis: To: ALFHILD | Cc: HENRIKA"
+  },
+  "export.label": {
+    "message": "Exportera"
+  },
+  "extend-your-license": {
+    "message": "Överväg att förlänga din licens med ett år."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Ett kraftfullt sätt att skapa anpassade svar genom att automatiskt infoga olika e-postrubriker. Mallar kan skapas för varje e-postidentitet, stöder också externa html-filer och stilark."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "SmartTemplates"
+  },
+  "extensions.smarttemplate4@thunderbird.extension.description": {
+    "message": "Den smarta mallen som kan anpassa citathuvuden för varje enskilt konto."
+  },
+  "file.label": {
+    "message": "Arkiv"
+  },
+  "fileCSS.label": {
+    "message": "Externt formatmall (css). Inkludera dina favorit CSS-regler för att dela mellan olika mallar."
+  },
+  "fileHTML.label": {
+    "message": "Fil med HTML eller vanlig text. UTF-8 antas när den valfria teckenkodningsparametern utesluts."
+  },
+  "fileImage.label": {
+    "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
+  },
+  "fileTemplates.add": {
+    "message": "Add"
+  },
+  "fileTemplates.down": {
+    "message": "Down"
+  },
+  "fileTemplates.file.open": {
+    "message": "Select template file from disk"
+  },
+  "fileTemplates.file.path": {
+    "message": "Template location:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Title:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "This will be displayed in the template selection menu."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "List of external template files that can be launched from the 'Forward' button."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "List of external template files that can be launched from the 'Create new Message' button."
+  },
+  "fileTemplates.remove": {
+    "message": "Remove"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "List of external template files that can be launched from the 'Reply' button."
+  },
+  "fileTemplates.title": {
+    "message": "Template Files"
+  },
+  "fileTemplates.up": {
+    "message": "Up"
+  },
+  "fileTemplates.update": {
+    "message": "Update"
+  },
+  "firstName.label": {
+    "message": "Förnamn:"
+  },
+  "fix_var.cap": {
+    "message": "Fasta variabler"
+  },
+  "fix_vartz.cap": {
+    "message": "Fasta variabler för datumformat och tidszon "
+  },
+  "fix_vartz_note.label": {
+    "message": "Kan kombineras med &#37;X:=sent&#37;"
+  },
+  "fpFilterHtmlTemplate": {
+    "message": "HTML-mall"
+  },
+  "fpFilterName": {
+    "message": "SmartTemplates File"
+  },
+  "fpFolder": {
+    "message": "Mapp"
+  },
+  "fpHTMLFile": {
+    "message": "HTML-fil / Textfil"
+  },
+  "fpImageFile": {
+    "message": "Bildfil"
+  },
+  "fpJsonFile": {
+    "message": "JSON-fil"
+  },
+  "fpStyle": {
+    "message": "Stilblad"
+  },
+  "freeLicense": {
+    "message": "Om du tidigare har donerat till SmartTemplates-projektet eller har bidragit med arbetsinsatser inom projektet, t.ex. genom att översätta eller skriva korrigeringskod, så kan du vara berättigad till en gratis licensnyckel. Kontakta oss via supportfliken i SmartTemplates inställningar."
+  },
+  "from.label": {
+    "message": "Avsändarens namn (Standard)"
+  },
+  "from_note.label": {
+    "message": "När inget namn finns tillgängligt visas e-postadressen"
+  },
+  "from_var.cap": {
+    "message": "Avsändarvariabler (Från) "
+  },
+  "fromfirstname.label": {
+    "message": "Avsändarens förnamn"
+  },
+  "frommail.label": {
+    "message": "Avsändarens e-postadress"
+  },
+  "fromname.label": {
+    "message": "Avsändarens namn"
+  },
+  "getSmartTemplate4": {
+    "message": "Få SmartTemplates-licens"
+  },
+  "guessNameFromMail": {
+    "message": "Gissa delar av namnet från e-postadresser om det saknas"
+  },
+  "h.label": {
+    "message": "Timmar, 24-timmarsformat (00 till 23)"
+  },
+  "header.append.subject": {
+    "message": "lägg till text efter ämnet"
+  },
+  "header.append.to": {
+    "message": "lägg till e-postadress i mottagarlistan"
+  },
+  "header.delete.subject": {
+    "message": "ta bort text från ämnet (reguljärt uttryck)"
+  },
+  "header.prefix.subject": {
+    "message": "prefigera ämnet med text"
+  },
+  "header.set.from": {
+    "message": "ställer in 'från' -adressen. Detta accepterar endast e-postadresser från listan över identiteter."
+  },
+  "header.set.subject": {
+    "message": "ersätt ämnet med texten"
+  },
+  "header.set.to": {
+    "message": "ersätt mottagare med e-postadress"
+  },
+  "header_function.cap": {
+    "message": "Modifiera e-postsidhuvud"
+  },
+  "header_function.explain": {
+    "message": "Dessa funktioner kan användas för att modifiera e-postsidhuvuden, som beskrivs nedan:"
+  },
+  "header_function.scope": {
+    "message": "Den kan användas med dessa sidhuvuden:"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ installerades med framgång",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ uppdaterades med framgång",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading.click": {
+    "message": "Klicka på en rubrik eller"
+  },
+  "heading.expandAll": {
+    "message": "expandera alla sektioner"
+  },
+  "help.label": {
+    "message": "Hjälp"
+  },
+  "help_dialog_title": {
+    "message": "Hjälp med SmartTemplates"
+  },
+  "help_keyword.cap": {
+    "message": "Hjälp"
+  },
+  "html_note.cap": {
+    "message": "Kommentarer rörande HTML-mallar"
+  },
+  "html_note.label": {
+    "message": "Använd endast teckenuppsättningen UTF-8 (Unicode) i HTML-mallar!"
+  },
+  "i.label": {
+    "message": "Timmar, 12-timmarsformat (01 till 12)"
+  },
+  "identity_ab": {
+    "message": "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken."
+  },
+  "identity_ab.example": {
+    "message": "Exempel"
+  },
+  "identity_ab.field": {
+    "message": "För ytterligare fältvärden, se kapitlet 'Adressbokfält' nedan."
+  },
+  "identity_ab.phoneno": {
+    "message": "Telefonnr"
+  },
+  "im-ex.cap": {
+    "message": "Exportering/importering av inställningar och mallar"
+  },
+  "im-ex_note1.label": {
+    "message": "Du kan exportera och importera dina inställningar och mallar som associeras med varje konto."
+  },
+  "im-ex_note2.label": {
+    "message": "Välj först kontot du vill exportera i SmartTemplates-inställningarnas rullgardinslist."
+  },
+  "im-ex_note3.label": {
+    "message": "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator."
+  },
+  "im-ex_note4.label": {
+    "message": "För att importera en fil, välj kontot du vill importera i SmartTemplates-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet."
+  },
+  "im-ex_note5.label": {
+    "message": "Välj den SmartTemplates-fil (xxx.st4) du vill importera."
+  },
+  "im-ex_note6.label": {
+    "message": "OBS: Apple/Macintosh-plattformar kommer att placera menyfältet i menyfliksområdet istället för SmartTemplatess alternativfönster. Detta är vanligt beteende på dessa plattformar och kan inte ändras."
+  },
+  "import.label": {
+    "message": "Importera"
+  },
+  "insert.label": {
+    "message": "Infoga variabel"
+  },
+  "intro": {
+    "message": "En årslicens för SmartTemplates Pro ger dig tillgång till alla licensbelagda funktioner under ett års tid. Det ger oss även medel, som vi kan använda för att vidareutveckla produkten."
+  },
+  "k.label": {
+    "message": "Timmar, 24-timmarsformat (0 till 23)"
+  },
+  "l.label": {
+    "message": "Timmar, 12-timmarsformat (1 till 12)"
+  },
+  "label-remind-me": {
+    "message": "Påminn mig igen om $countDays$ dagar.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "label.haveLicense": {
+    "message": "Har du redan en licens?"
+  },
+  "label.insertLicense": {
+    "message": "Infoga din personliga licensnyckel here:"
+  },
+  "label.insertLicense.tooltip": {
+    "message": "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring."
+  },
+  "label.licenseValid": {
+    "message": "Din licens är giltig t.o.m.:"
+  },
+  "label.premiumFeaturesSite": {
+    "message": "Läs mer om premiumfunktioner på vår webbplats…"
+  },
+  "lastName.label": {
+    "message": "Efternamn:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Som innehavare av en SmartTemplates-standardlicens är du nu berättigad till en rabatterad uppdatering plus helårsförlängning. Klicka på knappen [Uppgradera till PRO] under din standardlicens för mer information."
+  },
+  "licenseTypes": {
+    "message": "Framöver erbjuder SmartTemplates två licenser, Standard och Pro; dessa är nödvändiga för att hålla jämna steg med ändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom brytande förändringar rullas ut i en årlig cykel kommer licensen också att gälla i ett år."
+  },
+  "licenseValidation.expired": {
+    "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
+  },
+  "licenseValidation.failed": {
+    "message": "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår."
+  },
+  "licenseValidation.invalidAddon": {
+    "message": "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}."
+  },
+  "licenseValidation.invalidMail": {
+    "message": "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans."
+  },
+  "licenseValidation.notMatchedMail": {
+    "message": "Den krypterade e-postadressen matchar inte den läsbara adressen."
+  },
+  "licenseValidation.passed": {
+    "message": "Tack för att du registrerar SmartTemplates Pro! Alla licensbelagda funktioner är nu tillgängliga."
+  },
+  "licenseValidation.standard": {
+    "message": "Tack för att du registrerade SmartTemplates Standard - Du hjälper tillägget oerhört! Du kan nu också testa alla premiumfunktioner."
+  },
+  "licenseWindow.title": {
+    "message": "Licens för SmartTemplates"
+  },
+  "localedate.label": {
+    "message": "Datum och tid (lokalt format)"
+  },
+  "localename.label": {
+    "message": "sv-SE"
+  },
+  "localized.label": {
+    "message": "Translator"
+  },
+  "m.label": {
+    "message": "Månad (01 till 12)"
+  },
+  "m.up.label": {
+    "message": "Minut (00 till 59)"
+  },
+  "matchTextFromBody": {
+    "message": "Hitta ett RegEx-mönster i citerat e-post och infoga i funktionsplatsen."
+  },
+  "matchTextFromSubject": {
+    "message": "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen."
+  },
+  "menu.template_export.label": {
+    "message": "Exportera mall"
+  },
+  "menu.template_import.label": {
+    "message": "Importera mall"
+  },
+  "message_default_title": {
+    "message": "SmartTemplates"
+  },
+  "messid.label": {
+    "message": "Meddelande-ID"
+  },
+  "minSize": {
+    "message": "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder."
+  },
+  "minSize_detail": {
+    "message": "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå."
+  },
+  "month.1.name": {
+    "message": "januari"
+  },
+  "month.1.short": {
+    "message": "jan"
+  },
+  "month.10.name": {
+    "message": "oktober"
+  },
+  "month.10.short": {
+    "message": "okt"
+  },
+  "month.11.name": {
+    "message": "november"
+  },
+  "month.11.short": {
+    "message": "nov"
+  },
+  "month.12.name": {
+    "message": "december"
+  },
+  "month.12.short": {
+    "message": "dec"
+  },
+  "month.2.name": {
+    "message": "februari"
+  },
+  "month.2.short": {
+    "message": "feb"
+  },
+  "month.3.name": {
+    "message": "mars"
+  },
+  "month.3.short": {
+    "message": "mar"
+  },
+  "month.4.name": {
+    "message": "april"
+  },
+  "month.4.short": {
+    "message": "apr"
+  },
+  "month.5.name": {
+    "message": "maj"
+  },
+  "month.5.short": {
+    "message": "maj"
+  },
+  "month.6.name": {
+    "message": "juni"
+  },
+  "month.6.short": {
+    "message": "jun"
+  },
+  "month.7.name": {
+    "message": "juli"
+  },
+  "month.7.short": {
+    "message": "jul"
+  },
+  "month.8.name": {
+    "message": "augusti"
+  },
+  "month.8.short": {
+    "message": "aug"
+  },
+  "month.9.name": {
+    "message": "september"
+  },
+  "month.9.short": {
+    "message": "sep"
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
+  },
+  "n.label": {
+    "message": "Månad (1 till 12)"
+  },
+  "newsgr.label": {
+    "message": "Diskussionsgrupper"
+  },
+  "no_button": {
+    "message": "Ingen"
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "ownmail.label": {
+    "message": "Din e-postadress"
+  },
+  "ownname.label": {
+    "message": "Ditt namn"
+  },
+  "p.label": {
+    "message": "AM och PM"
+  },
+  "p1.label": {
+    "message": "a.m."
+  },
+  "p2.label": {
+    "message": "A.M."
+  },
+  "p3.label": {
+    "message": "AM"
+  },
+  "parameters": {
+    "message": "Parametrar"
+  },
+  "paste.label": {
+    "message": "Klistra in"
+  },
+  "pref_StatusIcon.IconHoverText": {
+    "message": "Text vid hovring"
+  },
+  "pref_StatusIcon.IconOnly": {
+    "message": "Endast ikon"
+  },
+  "pref_StatusIcon.IconText": {
+    "message": "Ikon och text"
+  },
+  "pref_about.tab": {
+    "message": "Ca"
+  },
+  "pref_addSigBreakHTML.label": {
+    "message": "Lägg till -- i e-post med HTML"
+  },
+  "pref_addSigBreakHTML.tooltip": {
+    "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med HTML)"
+  },
+  "pref_addSigBreakPlaintext.label": {
+    "message": "Lägg till -- i e-post med vanlig text"
+  },
+  "pref_addSigBreakPlaintext.tooltip": {
+    "message": "Lägg alltid till avgränsaren -- innan signaturen (i e-post med vanlig text)"
+  },
+  "pref_addressDelimiter": {
+    "message": "Avgränsa flera korrespondenter med:"
+  },
+  "pref_addressDelimiter_tip": {
+    "message": "Avgränsare mellan flera korrespondenter. Outlook använder semikolon (;) Standard för Thunderbird är komma (,)"
+  },
+  "pref_advanced.tab": {
+    "message": "Avancerade inställningar"
+  },
+  "pref_breaksOnTop.label": {
+    "message": "Antal radbrytningar i början:"
+  },
+  "pref_cursorInsertSpace": {
+    "message": "Infoga mellanslag för att markera &#37;cursor&#37;"
+  },
+  "pref_debug_check": {
+    "message": "Felsökningsläge"
+  },
+  "pref_debug_tip": {
+    "message": "Högerklicka för avancerade felsökningsalternativ"
+  },
+  "pref_def.cap": {
+    "message": "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot."
+  },
+  "pref_def.label": {
+    "message": "Använd allmänna inställningar"
+  },
+  "pref_defaultCharset.label": {
+    "message": "Standardteckenkodning"
+  },
+  "pref_defaultCharset_tip": {
+    "message": "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras."
+  },
+  "pref_dialog.title": {
+    "message": "Inställningar för SmartTemplates"
+  },
+  "pref_examples.tab": {
+    "message": "Exempel (endast online)"
+  },
+  "pref_examples.tooltip": {
+    "message": "Visa exempelmallar från https://smarttemplates.quickfolders.org/templates.html. Endast tillgängligt i onlineläget."
+  },
+  "pref_fontSettings.label": {
+    "message": "Typsnitt för mallredigerare"
+  },
+  "pref_forceParagraph": {
+    "message": "Tvinga paragrafläge"
+  },
+  "pref_forceParagraph_tip": {
+    "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
+  },
+  "pref_fwd.label": {
+    "message": "Tillämpa följande mall på det vidarebefordrade meddelandet"
+  },
+  "pref_fwd.tab": {
+    "message": "Framåt"
+  },
+  "pref_fwdhead.label": {
+    "message": "Använd istället för standardcitathuvudet"
+  },
+  "pref_fwdmsg.cap": {
+    "message": "Vidarebefordrat meddelande"
+  },
+  "pref_global.tab": {
+    "message": "Globala inställningar"
+  },
+  "pref_groupAdvanced": {
+    "message": "Avancerade funktioner"
+  },
+  "pref_groupMailContent": {
+    "message": "E-postinnehåll"
+  },
+  "pref_groupNameRules": {
+    "message": "Namnregler"
+  },
+  "pref_groupSignatures": {
+    "message": "Signaturer"
+  },
+  "pref_groupTroubleShooting": {
+    "message": "Felsökning"
+  },
+  "pref_groupUI": {
+    "message": "Användargränssnitt"
+  },
+  "pref_help.tab": {
+    "message": "Hjälp"
+  },
+  "pref_hideExamples": {
+    "message": "Dölj flik med exempel"
+  },
+  "pref_html.cap": {
+    "message": "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer."
+  },
+  "pref_html.label": {
+    "message": "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)"
+  },
+  "pref_nameSwap": {
+    "message": "Korrigera Efternamn, Förnamn"
+  },
+  "pref_nameSwap_tip": {
+    "message": "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;"
+  },
+  "pref_new.label": {
+    "message": "Tillämpa följande mall på det nya meddelandet"
+  },
+  "pref_new.tab": {
+    "message": "Nytt"
+  },
+  "pref_newmsg.cap": {
+    "message": "Nytt meddelande"
+  },
+  "pref_parseSignature": {
+    "message": "Bearbeta signatur"
+  },
+  "pref_parseSignature_tip": {
+    "message": "Ersätt variabler i signaturen."
+  },
+  "pref_quoteHeaderBox.label": {
+    "message": "Citationssidhuvud"
+  },
+  "pref_quoteHeaderBox_tip": {
+    "message": "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den &#37;date&#37; skrev &#37;from(name)&#37;:"
+  },
+  "pref_quotehead_tip": {
+    "message": "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan."
+  },
+  "pref_removeSig.label": {
+    "message": "Ersätt signaturen när e-postidentiteten ändras"
+  },
+  "pref_rep_br.cap": {
+    "message": "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;."
+  },
+  "pref_rep_br.label": {
+    "message": "Ersätt ny rad med &lt;br&gt;"
+  },
+  "pref_rsp.label": {
+    "message": "Tillämpa följande mall på svarsmeddelandet"
+  },
+  "pref_rsp.tab": {
+    "message": "Svara"
+  },
+  "pref_rsphead.label": {
+    "message": "Använd istället för standardcitathuvudet"
+  },
+  "pref_rspmsg.cap": {
+    "message": "Svarsmeddelande"
+  },
+  "pref_server_def": {
+    "message": "Allmänna inställningar"
+  },
+  "pref_server_desc": {
+    "message": "Konto"
+  },
+  "pref_showStatusIcon.label": {
+    "message": "Visa knapp i statusfältet"
+  },
+  "pref_sigReplaceBR.label": {
+    "message": "Ersätt radbrytningar i signaturer med vanlig text med &lt;br&gt;"
+  },
+  "pref_silentUpdates": {
+    "message": "Tyst uppdateringar"
+  },
+  "pref_silentUpdates_tip": {
+    "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
+  },
+  "pref_stationeryLink": {
+    "message": "Brevpapperstillägg"
+  },
+  "pref_stationeryLink_tip": {
+    "message": "Hämta brevpapper..."
+  },
+  "pref_stationerySupport": {
+    "message": "Stöd tillägget Stationery"
+  },
+  "pref_stationerySupport_tip": {
+    "message": "Stöd för att använda Stationery samtidigt som SmartTemplates."
+  },
+  "pref_stationerySupport_tip2": {
+    "message": "Detta gör det möjligt att använda variabler i din Stationery."
+  },
+  "pref_templateBox.label": {
+    "message": "Mall"
+  },
+  "pref_templateBox_tip": {
+    "message": "Skriv din e-postmall i detta fält, t.ex. Hej &#37;from(name)&#37;, &lt;br&gt; tack för ditt meddelande &lt;br&gt; hälsningar, &lt;br&gt;&#37;ownname&#37;"
+  },
+  "pref_template_tip": {
+    "message": "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information."
+  },
+  "pref_variables.tab": {
+    "message": "Variabler"
+  },
+  "premiumConfig": {
+    "message": "Premiumfunktioner"
+  },
+  "prompt.email": {
+    "message": "Ange en e-postadress"
+  },
+  "prompt.text": {
+    "message": "Ange texten att lägg till eller ändra"
+  },
+  "purchase-a-license": {
+    "message": "Köp en licens."
+  },
+  "purchase-heading": {
+    "message": "Att köpa en licens!"
+  },
+  "quoteLevel": {
+    "message": "[valfritt, numeriskt]: vilken lägsta offertnivå att börja med"
+  },
+  "quotePlaceholder": {
+    "message": "Detta flyttar den citerade delen till själva malltexten. Offertrubriksavsnittet från kontomallar flyttas till toppen av citatet."
+  },
+  "quotePlaceholder.level": {
+    "message": "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen."
+  },
+  "quote_changers.cap": {
+    "message": "Citat Manipulation"
+  },
+  "quote_changers.desc": {
+    "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
+  },
+  "regexpAnyText": {
+    "message": "All text - regelbundet uttryck - måste vara i dubbla citat."
+  },
+  "renew-your-license": {
+    "message": "Förnya din licens."
+  },
+  "replaceQuotedTags": {
+    "message": "Ersätter taggar från offerten med text eller html"
+  },
+  "replaceQuotedText": {
+    "message": "Ersätter citerad text med HTML"
+  },
+  "replaceText": {
+    "message": "Ersätt lite text med någonting annat."
+  },
+  "replacementHTML": {
+    "message": "måste vara i dubbla citat - antingen en text eller en html-tagg som kommer att infogas i citat varhelst en matchning hittas."
+  },
+  "resolveABRemoveMail": {
+    "message": "Ta bort e-postadresser om formatparametern anges"
+  },
+  "resolveNamesFromAB": {
+    "message": "Lös namn från adressböcker"
+  },
+  "resolveNamesFromABDisplay": {
+    "message": "Använd visningsnamn om förnamnet saknas"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Ersätt förnamn med smeknamn om det finns"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Denna funktioner fungerar inte med vissa fjärradressböcker, som LDAP."
+  },
+  "s.label": {
+    "message": "Sekund (00 till 59)"
+  },
+  "selector": {
+    "message": "- vad du skulle använda för att adressera taggen i css. enklaste fallet 'img' eller 'p' men attributväljare kan läggas till så länge dubbla citat kan undvikas."
+  },
+  "settings.label": {
+    "message": "Inställningar och mallar"
+  },
+  "shortdate.label": {
+    "message": "Datum och tid, kortform (t.ex. 01.01.2000 1:23:45)"
+  },
+  "sig.label": {
+    "message": "Underskrift (från TB hänsyn inställningar)"
+  },
+  "sig2.label": {
+    "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
+  },
+  "smartTemplate4.changeTemplate.label": {
+    "message": "Change template…"
+  },
+  "smartTemplate4.changeTemplate.tooltip": {
+    "message": "Load a different template - use before editing the Email!"
+  },
+  "smartTemplate4.changetemplate.label": {
+    "message": "Ändra mall…"
+  },
+  "smartTemplate4.changetemplate.tooltip": {
+    "message": "Väljer en annan mall - använd innan du redigerar i e-postkroppen!"
+  },
+  "smartTemplate4.cleandeferred.label": {
+    "message": "Städa!"
+  },
+  "smartTemplate4.cleandeferred.tooltip": {
+    "message": "Städa upp alla SmartTemplate-variabler"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "Uppdatera och ersätt med innehåll"
+  },
+  "smartTemplate4.deferredcontext.delete": {
+    "message": "Ta bort SmartTemplates-variabel"
+  },
+  "smartTemplate4.deferredcontext.update": {
+    "message": "Uppdatera SmartTemplates-innehåll"
+  },
+  "smartTemplate4.settings.label": {
+    "message": "SmartTemplates"
+  },
+  "smartTemplate4.settings.tooltip": {
+    "message": "SmartTemplates settings"
+  },
+  "smarttemplate4_button": {
+    "message": "Redigera mallar och citathuvuden…"
+  },
+  "smarttemplate4_title": {
+    "message": "SmartTemplates"
+  },
+  "spec_form.cap": {
+    "message": "Adressfältväljare"
+  },
+  "spec_var.cap": {
+    "message": "Specialvariabler"
+  },
+  "specform_note.label": {
+    "message": "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"
+  },
+  "spellcheck.label": {
+    "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
+  },
+  "st.confirmVersionLink": {
+    "message": "Display change log for SmartTemplates?"
+  },
+  "st.fileFunction.notExists": {
+    "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
+  },
+  "st.fileTemplates": {
+    "message": "Mallfiler"
+  },
+  "st.fileTemplates.configureMenu": {
+    "message": "Konfigurera menyalternativ…"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "Problem som konverterar en HTML-mall från charset [{1}] \\nAnvänder rå strängdata istället. \\nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \\n{1} \\nFilen kan ha tagits bort eller bytt namn."
+  },
+  "st.fileTemplates.openFile": {
+    "message": "Öppna SmartTemplates-mallfilen…"
+  },
+  "st.fileTemplates.restrictTemplates": {
+    "message": "Du behöver en SmartTemplates-licens för att kunna använda fler än {1} mallar!"
+  },
+  "st.fileTemplates.selectFromMenu": {
+    "message": "Välj en mall från rullgardinsmenyn."
+  },
+  "st.fileTemplates.wrnEnterPath": {
+    "message": "Välj en giltig sökväg!"
+  },
+  "st.fileTemplates.wrnEnterTitle": {
+    "message": "Ange en titel!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "Du måste välja ett objekt från listan för att uppdatera!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Uppdatera mallarna"
+  },
+  "st.licenseValidation.expired": {
+    "message": "Din licens löpte ut:"
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "(Den angivna nyckeln kan vara för {2})."
+  },
+  "st.notification.donate": {
+    "message": "Donera"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "Visa inte detta meddelande igen."
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "All text du har matat in manuellt sedan kompositören öppnas kommer att raderas utan Ångra. Fortsätt ändå?"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "Du har redan skrivit text och vill ändra till mall {0}"
+  },
+  "st.notification.license.required": {
+    "message": "SmartTemplates kräver en licens för att fortsätta arbeta. Läs mer information längst ner i fönstret för e-postkomposition."
+  },
+  "st.notification.license.text": {
+    "message": "Från och med nu kräver SmartTemplates minst en standardlicens. Läs mer om detta på vår licensieringssida."
+  },
+  "st.notification.licensing": {
+    "message": "Mer om licensiering"
+  },
+  "st.notification.parsing": {
+    "message": "Analysera variabler:"
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "Utöka domänlicensen"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "Förläng licens"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Detta förlänger datumet för den nuvarande licensen med 1 år. Det är vanligtvis billigare än en ny licens."
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "Skaffa en licens!"
+  },
+  "st.notification.premium.btn.hotKey": {
+    "message": "l"
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "Förnya domänlicens"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "Förnya licens"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "Uppgradera till PRO"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "st.notification.premium.text": {
+    "message": "{1} är en funktion kopplad till SmartTemplates Pro. Registrera SmartTemplates för att använda den permanent."
+  },
+  "st.notification.premium.text.plural": {
+    "message": "{1} är Premiumfunktioner, skaffa en Pro-licens till SmartTemplates för att använda dem permanent."
+  },
+  "st.notification.premium.title": {
+    "message": "Licensbelagd funktion"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "Det går inte att byta språk för stavkontroll. Har du installerat rätt ordbok?"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "Inga ordböcker installerade."
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "Ordbok '{0}' hittades inte."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "Byt till domänlicens?"
+  },
+  "st.trialDays": {
+    "message": "Du har {0} testdagar kvar."
+  },
+  "st.trialExpiry": {
+    "message": "Din provperiod löpt ut för {0} dagar sedan."
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
+  },
+  "st.updateMessageVersion": {
+    "message": "SmartTemplates was successfully upgraded to version {1}!"
+  },
+  "standardformat.config": {
+    "message": "Konfigurera standardformat…"
+  },
+  "stringmanip.alttext": {
+    "message": "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället."
+  },
+  "stringmanip.match.comment": {
+    "message": "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc."
+  },
+  "stringmanip_function.cap": {
+    "message": "Strängmanipulering"
+  },
+  "stringmanip_function.explain": {
+    "message": "Dessa funktioner kan användas för att radera eller ersätta text inom e-postmallen eller citationssidhuvudet."
+  },
+  "sub.label": {
+    "message": "Ämne (Samma som original Mailheader)"
+  },
+  "sub2.label": {
+    "message": "Ämne (samma som TB Message Editor)"
+  },
+  "sub_var.cap": {
+    "message": "Ämne"
+  },
+  "support-preference": {
+    "message": "Detta är det föredragna sättet att stödja $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support.compose": {
+    "message": "Skriv för att stödja…"
+  },
+  "support.links": {
+    "message": "Support Länkar"
+  },
+  "support.mail.instructions": {
+    "message": "Klicka på knappen nedan för att öppna en ny e-post som ska stödjas. Om du har tekniska problem kan du överväga att lägga till en skärmdump."
+  },
+  "support.subject": {
+    "message": "Ämne:"
+  },
+  "support.tab": {
+    "message": "Stöd"
+  },
+  "support.title": {
+    "message": "skriva Mail to Support"
+  },
+  "support.type": {
+    "message": "Typ:"
+  },
+  "support.type.html": {
+    "message": "Hjälp med HTML / CSS"
+  },
+  "support.type.license": {
+    "message": "Licensrelaterade"
+  },
+  "support.type.other": {
+    "message": "Övrig"
+  },
+  "support.type.selectOne": {
+    "message": "Välj ett ämne!"
+  },
+  "support.type.tech": {
+    "message": "Teknisk"
+  },
+  "suppressMailtToLink": {
+    "message": "Förhindra att e-postklienter lägger till länkar i e-postadresser."
+  },
+  "tab.gopro": {
+    "message": "SmartTemplates Pro"
+  },
+  "table.cap": {
+    "message": "ExampleUsage av variablerna"
+  },
+  "table_fwd.label": {
+    "message": "Framåt"
+  },
+  "table_keyword.label": {
+    "message": "Variabel"
+  },
+  "table_new.label": {
+    "message": "Nytt"
+  },
+  "table_note.label": {
+    "message": "Om en variabel som används felaktigt ett fel är inloggad Errorconsole!"
+  },
+  "table_reply.label": {
+    "message": "Svara"
+  },
+  "testDriveS": {
+    "message": "Du kan provköra premiumfunktionerna med standardlicensen, men de kan vara något begränsade."
+  },
+  "thanks-for-installing-intro": {
+    "message": "Tack för att du installerade $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Tack för att du uppdaterade $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$addonName$ kommer till stor del att skrivas om för att förbli kompatibel med Thunderbird. Detta är en nödvändighet, eftersom ändringar av Mozilla ber om tillägg för att bli inbyggda e-posttillägg som är mycket olika internt. Endast genom din licens kan de många nödvändiga utvecklingstimmarna finansieras.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "timezone.explain": {
+    "message": "Tvinga en specifik tidszon för datumvariabler genom att ersätta parametern tz (GMT, EST, CST, PST, etc.)"
+  },
+  "timezonename.label": {
+    "message": "GMT, PST, EST, ... "
+  },
+  "tip.fileTemplates": {
+    "message": "Klicka för att läsa full dokumentation om brevpapper och externa HTML-mallar på vår supportwebbplats…"
+  },
+  "to.label": {
+    "message": "Mottagarens namn (Standard)"
+  },
+  "to_note.label": {
+    "message": "När inget namn finns tillgängligt visas e-postadressen"
+  },
+  "to_var.cap": {
+    "message": "Mottagarvariabler (Till)"
+  },
+  "tofirstname.label": {
+    "message": "Mottagarens förnamn"
+  },
+  "tofwd.label": {
+    "message": "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden"
+  },
+  "tomail.label": {
+    "message": "Mottagarens e-postadress"
+  },
+  "toname.label": {
+    "message": "Mottagarens namn"
+  },
+  "tools.label": {
+    "message": "Verktyg"
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "översättningar från google"
+  },
+  "translatorNickname.label": {
+    "message": "Lakrits (BabelZilla)"
+  },
+  "tzname.label": {
+    "message": "GMT, PST, EST, ... "
+  },
+  "updates.title": {
+    "message": "Uppdateringar"
+  },
+  "updatesExpiry": {
+    "message": "SmartTemplates Pro kommer, som vanligt, att uppdateras via addons.thunderbird.net. När licensen förfaller kan du förnya den eller använda de licensbelagda funktionerna under villkoren för gratisanvändare. Exklusiva funktioner kommer att kräva en giltig licensnyckel."
+  },
+  "url.bugsAndFeaturesPage.label": {
+    "message": "Buggrapporter/funktionsbegäran"
+  },
+  "url.homePage.label": {
+    "message": "Hemsida för tillägg"
+  },
+  "url.supportPage.label": {
+    "message": "Supportsida"
+  },
+  "var_custom.cap": {
+    "message": "Variabler för anpassat datumformat"
+  },
+  "var_xsent.cap": {
+    "message": "Att använda &#37;X:=sent&#37;"
+  },
+  "vouchers.title": {
+    "message": "Tillgodokvitton"
+  },
+  "whats-new-btn": {
+    "message": "Vad är nytt?"
+  },
+  "whats-new-head": {
+    "message": "Höjdpunkter"
+  },
+  "whats-new-intro": {
+    "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
+  },
+  "whats-new-list": {
+    "message": "{L1} Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2} {L1} Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2} {L1} Pågående arbete med att skapa SmartTemplates kompatibel med Thunderbird 91, som planeras sommaren 2021 {L2}"
+  },
+  "whitespace_note": {
+    "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Välkommen till $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "xmail.label": {
+    "message": "X-Mailer-adresshuvud"
+  },
+  "xsent_long.cap": {
+    "message": "Exempel på en långsträng:"
+  },
+  "xsent_long.label": {
+    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; kl. &#37;H&#37;:&#37;M&#37;:"
+  },
+  "xsent_long_result.label": {
+    "message": "Resultat: 16.02.2011 kl. 12:15: "
+  },
+  "xsent_note.label": {
+    "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas."
+  },
+  "xsent_short.cap": {
+    "message": "Exempel på en kortsträng:"
+  },
+  "xsent_short.label": {
+    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+  },
+  "xsent_short_note.label": {
+    "message": "Du kan dessutom använda dessa variabler:"
+  },
+  "xsent_short_result.label": {
+    "message": "Resultat: onsdag, 16.02.2011 12:15:25"
+  },
+  "y.up.label": {
+    "message": "År (1970)"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "SmartTemplates Pro ger dig obegränsad tillgång till de licensbelagda funktionerna."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Mer om licensbelagda funktioner."
+  },
+  "yearlyLicense.title": {
+    "message": "Årslicens"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Licensen är för personligt bruk och är knuten till din e-postadress. Du kan använda den i flera e-postklienter, under förutsättning att de är konfigurerade att använda den adressen."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Några ytterligare e-postadresser är inget problem - de kräver inte en separat licens. Om du har frågor kan du nå mig via supportfliken."
+  },
+  "yes_button": {
+    "message": "Ja"
+  }
 }

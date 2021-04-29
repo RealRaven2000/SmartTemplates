@@ -104,14 +104,14 @@ div[collapsed=true]{
   background-color: transparent;
 }
 
-#specialOffer {
+#specialBox {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;
   padding: 0.1em 1em;
 }
 
-#specialOffer h2 {
+#specialBox h2 {
   background: none !important;
   margin-top: 16px;
   text-shadow:
@@ -121,6 +121,7 @@ div[collapsed=true]{
        1px 1px 0 #EEE !important;
   
 }
+
 
 #specialOffer #bargainIcon {
   background: transparent !important;

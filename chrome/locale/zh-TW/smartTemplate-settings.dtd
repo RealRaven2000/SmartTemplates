@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "用HTML替換帶引號的文本">
 <!ENTITY deleteQuotedTags "從引用中刪除標籤">
 <!ENTITY replaceQuotedTags "用文本或HTML替換引文中的標籤">
-<!ENTITY Parameters "參量">
+<!ENTITY parameters "參量">
 <!ENTITY regexpAnyText "任何文本（正則表達式）都必須用雙引號引起來。">
 <!ENTITY replacementHTML "參數必須用雙引號引起來-文本或html標記都將在找到匹配項時插入引號中。">
 <!ENTITY quoteLevel "[可選，數字]：從哪個最低報價水平開始">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "自訂 '日期格式' 的變數">
 <!ENTITY customdf_note.label "可以跟 &#37;X:=sent&#37; 整合">
-<!ENTITY A.label "Day of Week (Friday)">
+<!ENTITY a.up.label "Day of Week (Friday)">
 <!ENTITY a.label "Day of Week (Fri.)">
 <!ENTITY d.label "Day of Month (01 to 31) - with leading zero">
 <!ENTITY e.label "Day of Month (1 to 31)">
 <!ENTITY n.label "月 (1到12)">
-<!ENTITY B.label "月 (一月)">
+<!ENTITY b.up.label "月 (一月)">
 <!ENTITY b.label "月 (一月)">
 <!ENTITY m.label "月 (01到12) - 前面加零">
-<!ENTITY Y.label "年 (1970)">
-<!ENTITY M.label "分 (00到59)">
+<!ENTITY y.up.label "年 (1970)">
+<!ENTITY m.up.label "分 (00到59)">
 <!ENTITY s.label "秒 (00到59)">
 <!ENTITY h.label "小時,24小時制 (00到23) - 前面加零">
 <!ENTITY k.label "小時,24小時制 (0到23)">

@@ -44,7 +44,6 @@ SmartTemplate4.Util = {
 	NoiaHomepage:     "http://carlitus.deviantart.com/",
 	FlagsHomepage:    "http://flags.blogpotato.de/",
 	BeniBelaHomepage: "http://www.benibela.de/",
-	StationeryPage:   "https://addons.thunderbird.net/thunderbird/addon/stationery",
 	YouTubePage:      "https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A",
 	
   get mainInstance() {
@@ -487,12 +486,12 @@ SmartTemplate4.Util = {
 		}
 		let title, theText, featureTitle='';
 		if (isProFeature) {
-			title = util.getBundleString("SmartTemplate4.notification.premium.title", "Premium Feature");
+			title = util.getBundleString("st.notification.premium.title", "Premium Feature");
 			theText = 
 				  isList 
-						? util.getBundleString("SmartTemplate4.notification.premium.text.plural",
+						? util.getBundleString("st.notification.premium.text.plural",
 																 "{1} are Premium features, please upgrade to a SmartTemplates Pro License for using them permanently.")
-						: util.getBundleString("SmartTemplate4.notification.premium.text",
+						: util.getBundleString("st.notification.premium.text",
 																 "{1} is a Premium feature, please upgrade to a SmartTemplates Pro License for using it permanently.");
         featureTitle = 
 				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
@@ -504,7 +503,7 @@ SmartTemplate4.Util = {
 		else {
 			title = "Licensing";
 			theText = 
-				util.getBundleString("SmartTemplate4.notification.license.text",
+				util.getBundleString("st.notification.license.text",
 					"From now on, SmartTemplates requires at least a standard license. " +
 					"Read more about it on our licensing page.");
 			let txtGracePeriod = util.gracePeriodText(util.mainInstance.Licenser.GracePeriod); // use Licenser from main window.
@@ -512,20 +511,20 @@ SmartTemplate4.Util = {
 		}
 		
 		let regBtn,
-        hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.hotKey", "L"),
+        hotKey = util.getBundleString("st.notification.premium.btn.hotKey", "L"),
 				nbox_buttons = [];
 				
 		switch(Licenser.ValidationStatus) {
 			case State.Expired:
-				regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+				regBtn = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
 			  break;
 			default:
 			  if (Licenser.key_type==2) { // standard license
-					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
-					hotKey = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade.hotKey", "U");
+					regBtn = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+					hotKey = util.getBundleString("st.notification.premium.btn.upgrade.hotKey", "U");
 				}
 				else
-					regBtn = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+					regBtn = util.getBundleString("st.notification.premium.btn.getLicense", "Buy License!");
 		}
 				
 		if (notifyBox) {
@@ -556,7 +555,7 @@ SmartTemplate4.Util = {
         
         // licensing buttons
         if (!isProFeature) {
-          let donateMsg = util.getBundleString("SmartTemplate4.notification.licensing", "More about licensing");
+          let donateMsg = util.getBundleString("st.notification.licensing", "More about licensing");
           nbox_buttons.push(
             {
               label: donateMsg,
@@ -577,7 +576,7 @@ SmartTemplate4.Util = {
 			}
 			else {
 				// obsolete: button for disabling this notification in the future
-				let dontShow = util.getBundleString("SmartTemplate4.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']'
+				let dontShow = util.getBundleString("st.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']'
 				nbox_buttons.push(
 					{
 						label: dontShow,
@@ -607,7 +606,7 @@ SmartTemplate4.Util = {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
 			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),  
 			    check = {value: false},   // default the checkbox to true  
-					dontShow = util.getBundleString("SmartTemplate4.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']',
+					dontShow = util.getBundleString("st.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']',
 			    result = prompts.alert(null, title, theText); // , dontShow, check
 			// if (check.value==true) util.disableFeatureNotification(featureName);
 		}
@@ -646,8 +645,8 @@ SmartTemplate4.Util = {
 	
   gracePeriodText: function gracePeriodText(days) {
     let txt = (days>=0) ?
-      this.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", days) :
-      this.getBundleString("SmartTemplate4.trialExpiry", "Your trial period expired {0} days ago.").replace("{0}", -days);
+      this.getBundleString("st.trialDays", "You have {0} trial days left.").replace("{0}", days) :
+      this.getBundleString("st.trialExpiry", "Your trial period expired {0} days ago.").replace("{0}", -days);
     return txt;
   },
   
@@ -927,7 +926,7 @@ SmartTemplate4.Util = {
 		let mainWindow = SmartTemplate4.Util.Mail3PaneWindow,
 		    util = mainWindow.SmartTemplate4.Util,
 		    version = util.VersionSanitized,
-		    sPrompt = util.getBundleString("SmartTemplate4.confirmVersionLink", "Display the change log?")+" [version {1}]";
+		    sPrompt = util.getBundleString("st.confirmVersionLink", "Display the change log?")+" [version {1}]";
 		sPrompt = sPrompt.replace("{1}", version);
 		if (!ask || confirm(sPrompt)) {
 			util.openURL(null, util.VersionPage + "#" + version);
@@ -950,45 +949,6 @@ SmartTemplate4.Util = {
 	showTool8AMOPage: function () { SmartTemplate4.Util.openURLInTab(this.Tool8AMOPage); } ,
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
-	showStationeryPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryPage); } ,
-	showStationeryWarning: function(win) {
-		let noStationery = this.getBundleString("SmartTemplate4.notification.noStationery", 
-		  "Could not find Stationery - is Stationery installed?");
-		let warnText = noStationery,
-				txtSuggestion = this.getBundleString("SmartTemplate4.fileTemplates.replaceStationery",
-				"From Thunderbird 68 onward, unfortunately Stationery does not work anymore.\n"
-				+ "Therefore SmartTemplates now offers its own HTML template management system; click Ok to set it up.");
-		SmartTemplate4.Message.display(
-			warnText  + "\n" + txtSuggestion,
-			"centerscreen,titlebar",
-			{ ok: function() {
-				  if (!win) {
-						// open ST4 options with the file templates panel open:
-						let win = SmartTemplate4.Util.Mail3PaneWindow,
-								params = {inn:{mode:"fileTemplates", message: "", instance: win.SmartTemplate4}, out:null};
-						// open options and open the last tab!
-						// first param = identity (not set, unimportant)
-						// second param = mode to open correct setting 
-						win.openDialog('chrome://smarttemplate4/content/settings.xhtml',
-								'Preferences','chrome,titlebar,centerscreen,dependent,resizable,alwaysRaised ',
-								null,
-								params).focus();
-					}
-					else {
-						// select from dropdown + open file templates
-						let idMenu = document.getElementById("msgIdentity");
-						if (idMenu)
-							idMenu.selectedIndex = 1;
-						SmartTemplate4.Settings.switchIdentity("fileTemplates");
-					}
-				},
-				cancel: function() { ;/* cancel NOP */ }
-			}
-			, win
-		);			
-		
-	},
-
 	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
@@ -2650,7 +2610,7 @@ SmartTemplate4.Util = {
           count = dictList.length,
           found = false;
       if (count==0) {
-        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
+        let wrn = util.getBundleString("st.notification.spellcheck.noDictionary", "No dictionaries installed.");
         throw wrn;
       }
       
@@ -2697,12 +2657,12 @@ SmartTemplate4.Util = {
         }
       }
       else {
-        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
+        let wrn = util.getBundleString("st.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
         throw wrn.replace("{0}", language);
       }
     }
     catch(ex) {
-      let msg = util.getBundleString("SmartTemplate4.notification.spellcheck.error", 
+      let msg = util.getBundleString("st.notification.spellcheck.error", 
                   "Cannot switch spell checker language. Have you installed the correct dictionary?");
       SmartTemplate4.Message.display(msg + "\n" + ex, 
         "centerscreen,titlebar,modal,dialog",
@@ -2889,7 +2849,7 @@ SmartTemplate4.Util.firstRun =
 			
 			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
-			                             "SmartTemplate4.updateMessageVersion",
+			                             "st.updateMessageVersion",
 			                             "SmartTemplates was successfully upgraded to version {1}!").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.

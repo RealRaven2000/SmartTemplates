@@ -950,7 +950,7 @@ SmartTemplate4.Settings = {
 				
 		// (Stationery replacement) file lists: menupopup add below common?
 		if (SmartTemplate4.Settings.isFileTemplates) {
-			const label = util.getBundleString("SmartTemplate4.fileTemplates", "File Templates");
+			const label = util.getBundleString("st.fileTemplates", "File Templates");
 			theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
 		}
 				
@@ -1628,7 +1628,7 @@ SmartTemplate4.Settings = {
 						let txt = validationInvalidAddon.textContent;
 						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
-							txt += " " + util.getBundleString("SmartTemplate4.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
+							txt += " " + util.getBundleString("st.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
 						}
 						validationInvalidAddon.textContent = txt;
 					}
@@ -1870,23 +1870,23 @@ SmartTemplate4.Settings = {
 					
 		switch(validStatus) {
 			case  "extend":
-				let txtExtend = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!");
+				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!");
 				btnLicense.collapsed = false
 				btnLicense.label = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
-					util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense.tooltip", 
+					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
 						"This will extend the current license date by 1 year. It's typically cheaper than a new license."));
 				return txtExtend;
 			case "renew":
-				let txtRenew = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
 				btnLicense.label = txtRenew;
 			  return txtRenew;
 			case "buy":
-				let buyLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense", "Buy License!");
 				btnLicense.label = buyLabel;
 			  return buyLabel;
 			case "upgrade":
-				let upgradeLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
 				btnLicense.label = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;

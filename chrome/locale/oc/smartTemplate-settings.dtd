@@ -212,7 +212,7 @@
 <!ENTITY replaceQuotedText "Replaces quoted text with HTML">
 <!ENTITY deleteQuotedTags "Deletes tags from the quote">
 <!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
-<!ENTITY Parameters "Parameters">
+<!ENTITY parameters "Parameters">
 <!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
 <!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
 <!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
@@ -234,16 +234,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variablas per personalizar lo format de data ">
 <!ENTITY customdf_note.label "Pòt èsser combinada amb &#37;X:=sent&#37;">
-<!ENTITY A.label "Jorn de la setmana (Divendres)">
+<!ENTITY a.up.label "Jorn de la setmana (Divendres)">
 <!ENTITY a.label "Jorn de la setmana (Ven.)">
 <!ENTITY d.label "Jorn del mes (01 a 31)">
 <!ENTITY e.label "Jorn del mes (1 a 31)">
 <!ENTITY n.label "Numèro del mes (1 a 12)">
-<!ENTITY B.label "Mes (Genièr)">
+<!ENTITY b.up.label "Mes (Genièr)">
 <!ENTITY b.label "Mes (Gen.)">
 <!ENTITY m.label "Mes (01 a 12)">
-<!ENTITY Y.label "Annada (1970)">
-<!ENTITY M.label "Minutas (00 a 59)">
+<!ENTITY y.up.label "Annada (1970)">
+<!ENTITY m.up.label "Minutas (00 a 59)">
 <!ENTITY s.label "Segondas (00 a 59)">
 <!ENTITY h.label "Oras, format 24h (00 a 23)">
 <!ENTITY k.label "Oras, format 24h (0 a 23)">

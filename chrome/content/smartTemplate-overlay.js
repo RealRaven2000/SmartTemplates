@@ -1538,9 +1538,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			const PreviewLength = 320,
 			      startVars = msg.search(/%\S*%/),
 						isTruncateStart = (startVars > 10); // cut off text before first %var%
-			let txtAlert = util.getBundleString("SmartTemplate4.notification.license.required", 
+			let txtAlert = util.getBundleString("st.notification.license.required", 
 			                 "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
-					txtParseTitle = util.getBundleString("SmartTemplate4.notification.parsing", "Parsing variables:"),
+					txtParseTitle = util.getBundleString("st.notification.parsing", "Parsing variables:"),
 			    parseString = 
 						(isTruncateStart ? "…" : "") +
 						msg.substr(isTruncateStart ? startVars : 0);
@@ -2908,7 +2908,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       let localFile = new FileUtils.File(pathUri);				
 			
 			if (!localFile.exists()) {
-        let wrn = util.getBundleString("SmartTemplate4.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
+        let wrn = util.getBundleString("st.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
 				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + pathUri);
 				return;
 			}

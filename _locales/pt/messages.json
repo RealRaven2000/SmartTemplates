@@ -1,208 +1,190 @@
 {
-  "extensionName": {
-    "message": "SmartTemplates",
-    "description": "Name of the extension."
+  "_l10nstatus": {
+    "message": "SPLASH"
   },
-
+  "active-version-info" : {
+    "message": "Agora você está executando a versão {boldStart} $addonVer$ {boldEnd} no Thunderbird $appVer$.",
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "placeholders": {
+      "addonVer" : {
+      "content" : "$1", 
+      "example" : "Version 1.1"
+      },
+      "appVer" : {
+      "content" : "$2",
+      "example" : "78.0b4"
+      }   
+    }
+  },  
+  "addon-authors-struggle" : {
+    "message" : "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
+  },
+  "btn-extend-license": {
+    "message" : "Eu quero estender minha licença por um ano"
+  },
+  "btn-renew-license": {
+    "message" : "Eu quero renovar minha licença"
+  },
+  "btn-upgrade-to-pro" : {
+    "message": "Eu quero melhorar minha licença"
+  },
+  "btn-want-a-license": {
+    "message" : "Eu quero comprar uma licença"
+  },
+  "btn-want-to-donate" : {
+    "message" : "Eu quero ajudar com uma doação única."
+  },
+  "cost-of-independence" : {
+    "message" : "O desenvolvimento de software custa tempo e dinheiro - ao contrário de muitos aplicativos de plataforma, add-ons não são escritos por grandes corporações, nem são patrocinados de forma alguma pela Mozilla."
+  },
+  "donate" : {
+    "message" : "Ajude com uma doação única."
+  },   
+  "donate-heading" : {
+    "message" : "Ajude doando!"
+  },
+  "extend-your-license" : {
+    "message" : "Considere estender sua licença por um ano."
+  },
   "extensionDescription": {
     "message": "Uma maneira poderosa de criar respostas personalizadas com a inserção automática de vários cabeçalhos de e-mail. Os modelos podem ser criados para cada identidade de e-mail, também oferece suporte a arquivos html externos e folhas de estilo.",
     "description": "Description of the extension."
   },
-
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
+  "extensionName": {
+    "message": "SmartTemplates",
+    "description": "Name of the extension."
   },
-  
-  "window-title": {
-    "message": "Bem-vindo a $addonName$",
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-
   "heading-updated": {
     "message": "$addonName$ atualizado com sucesso",
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
     }
-  },
-  
+  },  
   "heading-installed": {
     "message": "Instalado com sucesso $addonName$",
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
     }
   },
-  
-  
-  "thanks-for-updating-intro": {
-    "message": "Obrigado por atualizar $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "thanks-for-installing-intro": {
-    "message": "Obrigado por instalar $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },  
-  
- "active-version-info" : {
-    "message": "Agora você está executando a versão {boldStart} $addonVer$ {boldEnd} no Thunderbird $appVer$.",
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
-      },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
-      }
-      
-    }
-  },  
-  
-  "license-is-extended" : {
-    "message": "Obrigado por estender recentemente sua licença ou se você fez uma doação. Como você ajudou a preparar este complemento para o futuro, basta fechar esta janela.",
-    "description": "Shown if license expires more than a year from now"
-  },
-  
-  "license-is-standard" : {
-    "message": "Como detentor de uma licença padrão SmartTemplates, você agora tem direito a uma atualização com desconto mais uma extensão de um ano. Clique no botão [Atualize para o Pro] abaixo de sua licença padrão para obter mais informações.",
-    "description": "Special message for standard license holders"
-  },  
-  
-  "btn-upgrade-to-pro" : {
-    "message": "Eu quero melhorar minha licença"
-  },
-  
-  "time-and-effort": { 
-    "message": "Meus add-ons requerem mudanças fundamentais para permanecerem compatíveis com a plataforma Mozilla. Minha equipe de desenvolvimento no Github (Realraven2000, opto e paenglab) está trabalhando diligentemente para restaurar a funcionalidade completa de $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "support-suggestion" : {
-    "message": "Para que $addonName$ permaneça funcional e vivo, faça um favor vital:",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "purchase-a-license" : {
-    "message" : "Compre uma licença."
-  }, 
-      
-  "renew-your-license" : {
-    "message" : "Renove sua licença."
-  },  
-  
-  "extend-your-license" : {
-    "message" : "Considere estender sua licença por um ano."
-  },  
-      
-  "donate" : {
-    "message" : "Ajude com uma doação única."
-  },   
-   
-  "purchase-heading" : {
-    "message" : "Comprando uma licença!"
-  }, 
-  
-  "support-preference" : {
-    "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  }, 
-
-  "ongoing-work": {
-    "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
-    }
-  },
-  
-  "btn-want-a-license": {
-    "message" : "Eu quero comprar uma licença"
-  } ,
-
-  "btn-extend-license": {
-    "message" : "Eu quero estender minha licença por um ano"
-  } ,
-
-
-  "btn-renew-license": {
-    "message" : "Eu quero renovar minha licença"
-  } ,
-
-  "donate-heading" : {
-    "message" : "Ajude doando!"
-  } ,
-
-  "cost-of-independence" : {
-    "message" : "O desenvolvimento de software custa tempo e dinheiro - ao contrário de muitos aplicativos de plataforma, add-ons não são escritos por grandes corporações, nem são patrocinados de forma alguma pela Mozilla."
-  } ,
-  
-  "mozillas-basic-platform" : {
-    "message" : "A Mozilla fornece apenas uma plataforma básica para entregar nosso software a vocês, usuários finais. Se precisarmos pedir aos nossos usuários pagamento ou suporte, não podemos fazer isso em addons.thunderbird.net - não é uma 'loja de aplicativos' com paywalls integrados ou gerenciamento de licenças como iTunes ou Google Play."
-  } ,
-  
-  "addon-authors-struggle" : {
-    "message" : "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
-  } ,
-  
-  "btn-want-to-donate" : {
-    "message" : "Eu quero ajudar com uma doação única."
-  } ,
-  
-  "translated-by-google" : {
-    "message": "traduções fornecidas pelo google",
-    "description": "disclaimer."
-  },
-  
   "label-remind-me" : {
     "message": "Lembre-me novamente em $countDays$ dias.",
     "placeholders": {
       "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
+      "content" : "$1", 
+      "example" : "10"
+      }  
+    }  
+  },
+  "license-is-extended" : {
+    "message": "Obrigado por estender recentemente sua licença ou se você fez uma doação. Como você ajudou a preparar este complemento para o futuro, basta fechar esta janela.",
+    "description": "Shown if license expires more than a year from now"
+  },
+  "license-is-standard" : {
+    "message": "Como detentor de uma licença padrão SmartTemplates, você agora tem direito a uma atualização com desconto mais uma extensão de um ano. Clique no botão [Atualize para o Pro] abaixo de sua licença padrão para obter mais informações.",
+    "description": "Special message for standard license holders"
+  },  
+  "mozillas-basic-platform" : {
+    "message" : "A Mozilla fornece apenas uma plataforma básica para entregar nosso software a vocês, usuários finais. Se precisarmos pedir aos nossos usuários pagamento ou suporte, não podemos fazer isso em addons.thunderbird.net - não é uma 'loja de aplicativos' com paywalls integrados ou gerenciamento de licenças como iTunes ou Google Play."
+  },
+  "notificationTitle": {
+    "message": "Click notification",
+    "description": "Title of the click notification."
+  },
+  "ongoing-work": {
+    "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },
+  "purchase-a-license" : {
+    "message" : "Compre uma licença."
+  }, 
+  "purchase-heading" : {
+    "message" : "Comprando uma licença!"
+  },  
+  "renew-your-license" : {
+    "message" : "Renove sua licença."
+  },  
+  "support-preference" : {
+    "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },   
+  "support-suggestion" : {
+    "message": "Para que $addonName$ permaneça funcional e vivo, faça um favor vital:",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Obrigado por atualizar $addonName$.",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },
+  "thanks-for-installing-intro": {
+    "message": "Obrigado por instalar $addonName$.",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },  
+  "time-and-effort": { 
+    "message": "$addonName$ será amplamente reescrito para permanecer compatível com o Thunderbird. Isso é uma necessidade, já que as mudanças feitas pela Mozilla pedem que os complementos se tornem extensões de e-mail nativas, que são muito diferentes internamente. Somente através de sua licença, as muitas horas de desenvolvimento necessárias podem ser financiadas.",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },    
+  "translated-by-google" : {
+    "message": "traduções fornecidas pelo google",
+    "description": "disclaimer."
+  },  
+  "whats-new-btn": {
+    "message": "O que há de novo?"
+  },
+  "whats-new-head": {
+    "message": "Luzes"
+  },
+  "whats-new-intro": {
+    "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
+  },
+  "whats-new-list": {
+    "message": "{L1} Suporte aprimorado para a conversão de caracteres codificados usados em campos de endereço, como 'de' {L2} {L1} Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2} {L1} Trabalho contínuo para fazer SmartTemplates compatível com Thunderbird 91, que está planejado para o verão de 2021 {L2}"
+  },
+  "window-title": {
+    "message": "Bem-vindo a $addonName$",
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
   }
 }

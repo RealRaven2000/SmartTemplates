@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "Ersetzt Text im Zitat mit HTML">
 <!ENTITY deleteQuotedTags "Löscht HTML Tags aus Zitaten">
 <!ENTITY replaceQuotedTags "Ersetzt HTML Tags in Zitaten mit Text oder HTML">
-<!ENTITY Parameters "Parameter">
+<!ENTITY parameters "Parameter">
 <!ENTITY regexpAnyText "Beliebiger Text - regulärer Ausdruck - muß in doppelten Anführungszeichen sein.">
 <!ENTITY replacementHTML "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt.">
 <!ENTITY quoteLevel "[optional, numerisch]: minimaler Zitatlevel ab dem ersetzt werden soll">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variablen für angepasstes Datumsformat">
 <!ENTITY customdf_note.label "kombinierbar mit &#37;X:=sent&#37;">
-<!ENTITY A.label "Wochentag (Freitag)">
+<!ENTITY a.up.label "Wochentag (Freitag)">
 <!ENTITY a.label "Wochentag (Fri.)">
 <!ENTITY d.label "Tag des Monats (01 bis 31) - mit führender null">
 <!ENTITY e.label "Tag des Monats (1 bis 31)">
 <!ENTITY n.label "Monat (1 bis 12)">
-<!ENTITY B.label "Monat (Januar)">
+<!ENTITY b.up.label "Monat (Januar)">
 <!ENTITY b.label "Monat (Jan.)">
 <!ENTITY m.label "Monat (01 bis 12) - mit führender null">
-<!ENTITY Y.label "Jahr (1970)">
-<!ENTITY M.label "Minuten (00 bis 59)">
+<!ENTITY y.up.label "Jahr (1970)">
+<!ENTITY m.up.label "Minuten (00 bis 59)">
 <!ENTITY s.label "Sekunden (00 bis 59)">
 <!ENTITY h.label "Stunde, 24-Stunden Format (00 bis 23) - mit führender null">
 <!ENTITY k.label "Stunde, 24-Stunden Format (0 bis 23)">

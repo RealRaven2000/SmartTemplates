@@ -213,7 +213,7 @@
 <!ENTITY replaceQuotedText "Remplace le texte cité par HTML">
 <!ENTITY deleteQuotedTags "Supprime les balises du devis">
 <!ENTITY replaceQuotedTags "Remplace les balises du devis par du texte ou du HTML">
-<!ENTITY Parameters "Paramètres">
+<!ENTITY parameters "Paramètres">
 <!ENTITY regexpAnyText "Tout texte - expression régulière - doit être entre guillemets.">
 <!ENTITY replacementHTML "doit être entre guillemets doubles - soit un texte, soit une balise html qui sera insérée entre guillemets partout où une correspondance sera trouvée.">
 <!ENTITY quoteLevel "[facultatif, numérique]: à partir de quel niveau de devis minimal">
@@ -235,16 +235,16 @@
 <!-- custom date vars section -->
 <!ENTITY var_custom.cap "Variables pour personnaliser le format de date">
 <!ENTITY customdf_note.label "Peut être combinée avec &#37;X:=sent&#37;">
-<!ENTITY A.label "Jour de la semaine (Vendredi)">
+<!ENTITY a.up.label "Jour de la semaine (Vendredi)">
 <!ENTITY a.label "Jour de la semaine (Vend.)">
 <!ENTITY d.label "Jour du mois (01 à 31)">
 <!ENTITY e.label "Jour du mois (1 à 31)">
 <!ENTITY n.label "Numéro du mois (1 à 12)">
-<!ENTITY B.label "Mois (Janvier)">
+<!ENTITY b.up.label "Mois (Janvier)">
 <!ENTITY b.label "Mois (Jan.)">
 <!ENTITY m.label "Mois (01 à 12)">
-<!ENTITY Y.label "Année (1970)">
-<!ENTITY M.label "Minutes (00 à 59)">
+<!ENTITY y.up.label "Année (1970)">
+<!ENTITY m.up.label "Minutes (00 à 59)">
 <!ENTITY s.label "Secondes (00 à 59)">
 <!ENTITY h.label "Heures, format 24h (00 à 23)">
 <!ENTITY k.label "Heures, format 24h (0 à 23)">
