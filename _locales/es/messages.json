@@ -15,7 +15,7 @@
     "message": "Variables de la libreta de direcciones"
   },
   "ab_fields.desc": {
-    "message": "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como &#37;from&#37;, como:"
+    "message": "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como %from%, como:"
   },
   "ab_other": {
     "message": "Otros"
@@ -200,7 +200,7 @@
     "message": "Establece la posición del cursor"
   },
   "customdf_note.label": {
-    "message": "Se pueden combinar con &#37;X:=sent&#37;"
+    "message": "Se pueden combinar con %X:=sent%"
   },
   "d.label": {
     "message": "Día del mes (01 a 31)"
@@ -212,7 +212,7 @@
     "message": "Ejemplo: "
   },
   "dateformat.explain": {
-    "message": "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '&#37;'. Ver también:"
+    "message": "La mayoría de las variables de tiempo anteriores se pueden utilizar en la cadena de parámetros omitiendo '%'. Ver también:"
   },
   "dateformat.label": {
     "message": "Función para insertar la hora actual (campo en el que se puede hacer clic)."
@@ -278,7 +278,7 @@
     "message": "Default address format:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Formato para usar al reemplazar de las direcciones &#37;to&#37; &#37;from&#37; &#37;cc&#37;.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
+    "message": "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
   },
   "deleteQuotedTags": {
     "message": "Elimina tags de la cita."
@@ -406,7 +406,7 @@
     "message": "Variables fijas para formatos de fecha y zona horaria"
   },
   "fix_vartz_note.label": {
-    "message": "Se pueden combinar con &#37;X:=sent&#37;"
+    "message": "Se pueden combinar con %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "Plantilla HTML"
@@ -558,7 +558,7 @@
     "message": "Seleccione a continuación 'Archivo' ⇒ 'Exportar' ⇒ 'Predisposiciones y plantillas' en la barra de menú y guarde el archivo (xxx.st4) en su ordenador."
   },
   "im-ex_note4.label": {
-    "message": "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplates. Seleccione después 'Herramientas' =&gt; 'Importar' =&gt; 'Predisposiciones y plantillas' de la barra de menú."
+    "message": "Para importar un archivo, seleccione la cuenta de la que quiere importar en la caja desplegable de predisposiciones de SmartTemplates. Seleccione después 'Herramientas' => 'Importar' => 'Predisposiciones y plantillas' de la barra de menú."
   },
   "im-ex_note5.label": {
     "message": "Seleccione el archivo SmartTemplates (xxx.st4) a importar."
@@ -840,7 +840,7 @@
     "message": "Saltos de línea en la parte superior:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Insertar espacio para resaltar el &#37;cursor&#37;"
+    "message": "Insertar espacio para resaltar el %cursor%"
   },
   "pref_debug_check": {
     "message": "Modo depuración"
@@ -918,10 +918,10 @@
     "message": "Ocultar pestaña de ejemplos"
   },
   "pref_html.cap": {
-    "message": "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espacio. Consulte la Ayuda para más detalles."
+    "message": "Usar caracteres de escape para &quot; , & , < , > , espacio. Consulte la Ayuda para más detalles."
   },
   "pref_html.label": {
-    "message": "Usar HTML (p.ej. &lt;b&gt;bold&lt;/b&gt;)"
+    "message": "Usar HTML (p.ej. <b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Corregir Apellido, Nombre"
@@ -948,7 +948,7 @@
     "message": "Encabezado de cita"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Escriba aquí su encabezado de cita, por ejemplo: El &#37;date&#37; &#37;from(name)&#37; escribió:"
+    "message": "Escriba aquí su encabezado de cita, por ejemplo: El %date% %from(name)% escribió:"
   },
   "pref_quotehead_tip": {
     "message": "Desactivar el encabezado estándar de respuesta. Por favor configure su encabezado de respuesta en el cuadro de texto."
@@ -957,10 +957,10 @@
     "message": "Cambiar firma al cambiar la identidad del correo"
   },
   "pref_rep_br.cap": {
-    "message": "NOTA: No se insertará un espacio en la etiqueta HTML si se usa &lt;br&gt; una vez."
+    "message": "NOTA: No se insertará un espacio en la etiqueta HTML si se usa <br> una vez."
   },
   "pref_rep_br.label": {
-    "message": "Sustituir salto de línea por &lt;br&gt;"
+    "message": "Sustituir salto de línea por <br>"
   },
   "pref_rsp.label": {
     "message": "Aplicar esta plantilla al mensaje de respuesta"
@@ -984,7 +984,7 @@
     "message": "Mostrar botón en barra de estado"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Reemplazar salto de línea por &lt;br&gt; en la firma de texto simple"
+    "message": "Reemplazar salto de línea por <br> en la firma de texto simple"
   },
   "pref_silentUpdates": {
     "message": "Actualizaciones silenciosas"
@@ -1011,7 +1011,7 @@
     "message": "Plantilla"
   },
   "pref_templateBox_tip": {
-    "message": "Escriba su plantilla aquí, como: Hola &#37;from(name)&#37;&lt;br&gt; Gracias por tu mensaje&lt;br&gt; un saludo, &#37;ownname&#37;"
+    "message": "Escriba su plantilla aquí, como: Hola %from(name)%<br> Gracias por tu mensaje<br> un saludo, %ownname%"
   },
   "pref_template_tip": {
     "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
@@ -1146,7 +1146,7 @@
     "message": "Especiales"
   },
   "specform_note.label": {
-    "message": "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;"
+    "message": "Sólo se mostrará la frase [[Cc: %cc(name)%]] si se puede sustituir la variable %cc(name)%"
   },
   "spellcheck.label": {
     "message": "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado."
@@ -1480,7 +1480,7 @@
     "message": "Variables para formatos de fecha personalizados"
   },
   "var_xsent.cap": {
-    "message": "Modificador &#37;X:=sent&#37;"
+    "message": "Modificador %X:=sent%"
   },
   "vouchers.title": {
     "message": "Abonos"
@@ -1517,19 +1517,19 @@
     "message": "Ejemplo de una cadena de texto larga:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; a las &#37;H&#37;:&#37;M&#37;"
+    "message": "%X:=sent%%d%/%m%/%Y% a las %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Resultado: domingo 20/12/2011 a las 16:24"
   },
   "xsent_note.label": {
-    "message": "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original."
+    "message": "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con %X:=sent%, adoptarán los valores del mensaje original."
   },
   "xsent_short.cap": {
     "message": "Ejemplo de cadena de texto corta:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Además, puede usar en ambos casos las siguientes variables:"

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://smarttemplate4/content/skin/settings.css" type = "text/css" title = "SmartTemplateSettings" ?>
 
-<!DOCTYPE prefwindow SYSTEM "chrome://smarttemplate4/locale/smartTemplate-settings.dtd">
-
 <!-- #### Help Content #### -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -13,33 +11,33 @@
 	<body style="margin: 0;">
   
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
-    <p id="allexpander">&heading.click; <a href="#" onclick="expandAll(event);">&heading.expandAll;</a>.</p>
+    <p id="allexpander">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
 		<!-- ##### Fix Variables #### -->
-		<h1 class="helpchapter">&fix_var.cap;</h1>
+		<h1 class="helpchapter">__MSG_fix_var.cap__</h1>
     <div class="chapterBody">
 			<ul>
-				<li><code>%identity(name)%</code> = &ownname.label; (<code class="deprecated">%ownname%</code>)</li>
-				<li><code>%identity(mail)%</code> = &ownmail.label; (<code class="deprecated">%ownmail%</code>)</li>
+				<li><code>%identity(name)%</code> = __MSG_ownname.label__ (<code class="deprecated">%ownname%</code>)</li>
+				<li><code>%identity(mail)%</code> = __MSG_ownmail.label__ (<code class="deprecated">%ownmail%</code>)</li>
 				<li><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
-				<li><code>%identity(addressbook,<i>fieldId</i>)%</code> = &identity_ab;<br/>
-        <span class="param">fieldId</span> : &identity_ab.field;
+				<li><code>%identity(addressbook,<i>fieldId</i>)%</code> = __MSG_identity_ab__<br/>
+        <span class="param">fieldId</span> : __MSG_identity_ab.field__
         </li>
-        <aside><b>&identity_ab.example;</b><br/> &identity_ab.phoneno;: %identity(addressbook,workphone)%</aside>
+        <aside><b>__MSG_identity_ab.example__</b><br/> __MSG_identity_ab.phoneno__: %identity(addressbook,workphone)%</aside>
         
         <div class="chapterbreak" />
-				<li><code class="deferable">%date%</code> = &date.label;</li>
-				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
-				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
-				<li><code class="deferable">%cc(mail)%</code> = &ccmail.label;</li>
+				<li><code class="deferable">%date%</code> = __MSG_date.label__</li>
+				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
+				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
+				<li><code class="deferable">%cc(mail)%</code> = __MSG_ccmail.label__</li>
         
         <div class="chapterbreak" />
-				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = &sig.label;</li>
-				<li><code>%sig(2)%</code> = &sig2.label;</li>
+				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
+				<li><code>%sig(2)%</code> = __MSG_sig2.label__</li>
         <div class="chapterbreak" />
-				<li><code>%file(filePath,encoding)%</code> = &fileHTML.label;</li>
-				<li><code>%file(imagePath,altText)%</code> = &fileImage.label;</li>
-				<li><code>%style(styleSheetPath)%</code> = &fileCSS.label;</li>
-				<li><code>%attach(filePath)%</code> = &attach.label;</li>
+				<li><code>%file(filePath,encoding)%</code> = __MSG_fileHTML.label__</li>
+				<li><code>%file(imagePath,altText)%</code> = __MSG_fileImage.label__</li>
+				<li><code>%style(styleSheetPath)%</code> = __MSG_fileCSS.label__</li>
+				<li><code>%attach(filePath)%</code> = __MSG_attach.label__</li>
         
       <div style="display:none;">
         <div class="chapterbreak"  />
@@ -49,64 +47,64 @@
       </div>
 
         <div class="chapterbreak" />
-				<li><code>%spellcheck(language)%</code> = &spellcheck.label;</li>
-				<li><code>%cursor%</code> = &cursor.label;</li>
+				<li><code>%spellcheck(language)%</code> = __MSG_spellcheck.label__</li>
+				<li><code>%cursor%</code> = __MSG_cursor.label__</li>
 			</ul>
     </div>
 
 		<!-- ##### "To" Variables #### -->
-		<h1 class="helpchapter">&to_var.cap;</h1>
+		<h1 class="helpchapter">__MSG_to_var.cap__</h1>
     <div class="chapterBody">
-			<aside>(&to_note.label;)</aside>
+			<aside>(__MSG_to_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%to%</code> = &to.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
-				<li><code class="deferable">%to(firstname)%</code> = &tofirstname.label;</li>
-				<li><code class="deferable">%to(name)%</code> = &toname.label;</li>
-				<li><code class="deferable">%to(mail)%</code> = &tomail.label;</li>
-				<li><code class="deferable">%to(name,bracketMail())%</code> = &toname.label; &lt;&tomail.label;&gt;</li>
-				<li><code class="deferable">%to(name,fwd)%</code> = &tofwd.label;</li>
+				<li><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config__">&#x2699;</span></li>
+				<li><code class="deferable">%to(firstname)%</code> = __MSG_tofirstname.label__</li>
+				<li><code class="deferable">%to(name)%</code> = __MSG_toname.label__</li>
+				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
+				<li><code class="deferable">%to(name,bracketMail())%</code> = __MSG_toname.label__ &lt;__MSG_tomail.label__&gt;</li>
+				<li><code class="deferable">%to(name,fwd)%</code> = __MSG_tofwd.label__</li>
 			</ul>
     </div>
 			
 			<!-- ##### "From" Variables #### -->
-    <h1 class="helpchapter">&from_var.cap;</h1>
+    <h1 class="helpchapter">__MSG_from_var.cap__</h1>
     <div class="chapterBody">
-			<aside>(&from_note.label;)</aside>
+			<aside>(__MSG_from_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%from%</code> = &from.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
-				<li><code class="deferable">%from(firstname)%</code> = &fromfirstname.label;</li>
-				<li><code class="deferable">%from(name)%</code> = &fromname.label;</li>
-				<li><code class="deferable">%from(mail)%</code> = &frommail.label;</li>
-				<li><code class="deferable">%from(name,mail)%</code> = &fromname.label; &frommail.label;</li>
-				<li><code class="deferable">%from(name,bracketMail())%</code> = &fromname.label; &lt;&frommail.label;&gt;</li>
-				<li><code class="deferable">%from(name,bracketMail(+;+))%</code> = &fromname.label; +&frommail.label;+</li>
-				<li><code class="deferable">%from(name,bracketMail(square))%</code> = &fromname.label; [&frommail.label;]</li>
-				<li><code class="deferable">%from(name,bracketMail(round))%</code> = &fromname.label; (&frommail.label;)</li>
+				<li><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config;">&#x2699;</span></li>
+				<li><code class="deferable">%from(firstname)%</code> = __MSG_fromfirstname.label__</li>
+				<li><code class="deferable">%from(name)%</code> = __MSG_fromname.label__</li>
+				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
+				<li><code class="deferable">%from(name,mail)%</code> = __MSG_fromname.label__ __MSG_frommail.label__</li>
+				<li><code class="deferable">%from(name,bracketMail())%</code> = __MSG_fromname.label__ &lt;__MSG_frommail.label__&gt;</li>
+				<li><code class="deferable">%from(name,bracketMail(+;+))%</code> = __MSG_fromname.label__ +__MSG_frommail.label__+</li>
+				<li><code class="deferable">%from(name,bracketMail(square))%</code> = __MSG_fromname.label__ [__MSG_frommail.label__]</li>
+				<li><code class="deferable">%from(name,bracketMail(round))%</code> = __MSG_fromname.label__ (__MSG_frommail.label__)</li>
 			</ul>
     </div>
     
 		<!-- ##### "CC" Variables #### -->
-		<h1 class="helpchapter">&cc_var.cap;</h1>
+		<h1 class="helpchapter">__MSG_cc_var.cap__</h1>
     <div class="chapterBody">
-			<aside>(&cc_note.label;)</aside>
+			<aside>(__MSG_cc_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%cc%</code> = &cc.label; <span class="config_default" tooltiptext="&standardformat.config;">&#x2699;</span></li>
-				<li><code class="deferable">%cc(firstname)%</code> = &ccfirstname.label;</li>
-				<li><code class="deferable">%cc(name)%</code> = &ccname.label;</li>
-				<li><code class="deferable">%cc(name,bracketMail())%</code> = &ccname.label; &lt;&ccmail.label;&gt;</li>
+				<li><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config__">&#x2699;</span></li>
+				<li><code class="deferable">%cc(firstname)%</code> = __MSG_ccfirstname.label__</li>
+				<li><code class="deferable">%cc(name)%</code> = __MSG_ccname.label__</li>
+				<li><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>
 			</ul>
     </div>
     
     <!-- ##### AB switches #### -->  
-		<h1 class="helpchapter">&ab_fields;</h1>
+		<h1 class="helpchapter">__MSG_ab_fields__</h1>
     <div class="chapterBody">
 
-      <aside>&ab_fields.desc; <code>%from(firstname,workphone)%</code></aside>
+      <aside>__MSG_ab_fields.desc__ <code>%from(firstname,workphone)%</code></aside>
       
       <table class="ab_fields">
         <tr>
           <td>
-      <h4>&ab_contact;</h4>
+      <h4>__MSG_ab_contact__</h4>
       <ul class="contact_switches">
         <li>firstname</li>
         <li>lastname</li>
@@ -122,7 +120,7 @@
       </ul>
           </td>
           <td>
-      <h4>&ab_private;</h4>
+      <h4>__MSG_ab_private__</h4>
       <ul class="contact_switches">
         <li>private.city</li>
         <li>private.address1</li>
@@ -137,7 +135,7 @@
         </tr>
         <tr>
           <td>
-      <h4>&ab_work;</h4>
+      <h4>__MSG_ab_work__</h4>
       <ul class="contact_switches">
         <li>work.title</li>
         <li>work.department</li>
@@ -152,7 +150,7 @@
       </ul>
           </td>
           <td>
-      <h4>&ab_other;</h4>
+      <h4>__MSG_ab_other__</h4>
       <ul class="contact_switches">
         <li>other.custom1</li>
         <li>other.custom2</li>
@@ -166,12 +164,12 @@
     </div>    
       
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
-		<h1 class="helpchapter">&spec_form.cap;</h1>
+		<h1 class="helpchapter">__MSG_spec_form.cap__</h1>
     <div class="chapterBody">
-			<aside>&specform_note.label;
-				<br /><b>&ex_brack.label;</b><br />
+			<aside>__MSG_specform_note.label__
+				<br /><b>__MSG_ex_brack.label__</b><br />
 			</aside>
-			<aside>&brack_with_var.label;:
+			<aside>__MSG_brack_with_var.label__:
 			</aside>
 			<ul>
 				<li><code class="deferable">%to%</code> <code class="deferable">%to(firstname)%</code> <code class="deferable">%to(name)%</code> <code class="deferable">%to(mail)%</code></li>
@@ -181,139 +179,139 @@
     </div>
     
 		<!-- ##### Subject Variables #### -->
-		<h1 class="helpchapter">&sub_var.cap;</h1>
+		<h1 class="helpchapter">__MSG_sub_var.cap__</h1>
     <div class="chapterBody">
 			<ul>
-				<li><code class="deferable">%subject%</code> = &sub.label;</li>
-				<li><code class="deferable">%subject(2)%</code> = &sub2.label;</li>
+				<li><code class="deferable">%subject%</code> = __MSG_sub.label__</li>
+				<li><code class="deferable">%subject(2)%</code> = __MSG_sub2.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### Special Variables (Message-Headerkeys) #### -->
-		<h1 class="helpchapter">&spec_var.cap;</h1>
+		<h1 class="helpchapter">__MSG_spec_var.cap__</h1>
     <div class="chapterBody">
 			<ul>
-				<li><code class="noWrite">%Message-ID%</code> = &messid.label;</li>
-				<li><code class="noWrite">%Newsgroups%</code> = &newsgr.label;</li>
-				<li><code class="noWrite">%X-Mailer%</code> = &xmail.label;</li>
-				<li><code class="noWrite">%...%</code> = &any.label;</li>
+				<li><code class="noWrite">%Message-ID%</code> = __MSG_messid.label__</li>
+				<li><code class="noWrite">%Newsgroups%</code> = __MSG_newsgr.label__</li>
+				<li><code class="noWrite">%X-Mailer%</code> = __MSG_xmail.label__</li>
+				<li><code class="noWrite">%...%</code> = __MSG_any.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### conditional text #### -->
-    <h1 class="helpchapter">&conditionals.cap;</h1>
+    <h1 class="helpchapter">__MSG_conditionals.cap__</h1>
     <div class="chapterBody">
-      <p>&conditionals.note;</p>
+      <p>__MSG_conditionals.note__</p>
 			<ul>
-        <li><code>%conditionalText(forwardMode,"inline text","attach text")%</code> = &conditional.forwardMode;</li>
+        <li><code>%conditionalText(forwardMode,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
       </ul>
     </div>
     
 		<!-- ##### mail header manipulation #### -->
-		<h1 class="helpchapter">&header_function.cap;</h1>
+		<h1 class="helpchapter">__MSG_header_function.cap__</h1>
     <div class="chapterBody">
-			<aside>&header_function.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
-			<aside>&header_function.scope; subject, from, to, cc, bcc, reply-to, list-*</aside>
+			<aside>__MSG_header_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
+			<aside>__MSG_header_function.scope__ subject, from, to, cc, bcc, reply-to, list-*</aside>
 			<ul>
-				<li><code>%header.set(subject,"text")%</code> = &header.set.subject;</li>
-				<li><code>%header.prefix(subject,"text")%</code> = &header.prefix.subject;</li>
-				<li><code>%header.append(subject,"text")%</code> = &header.append.subject;</li>
-				<li><code>%header.delete(subject,"regex")%</code> = &header.delete.subject;</li>
-				<li><code>%header.set(to,"abc@de.com")%</code> = &header.set.to;</li>
-				<li><code>%header.append(to,"abc@de.com")%</code> = &header.append.to;</li>
-        <li><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = &header.set.from;</li>
+				<li><code>%header.set(subject,"text")%</code> = __MSG_header.set.subject__</li>
+				<li><code>%header.prefix(subject,"text")%</code> = __MSG_header.prefix.subject__</li>
+				<li><code>%header.append(subject,"text")%</code> = __MSG_header.append.subject__</li>
+				<li><code>%header.delete(subject,"regex")%</code> = __MSG_header.delete.subject__</li>
+				<li><code>%header.set(to,"abc@de.com")%</code> = __MSG_header.set.to__</li>
+				<li><code>%header.append(to,"abc@de.com")%</code> = __MSG_header.append.to__</li>
+        <li><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = __MSG_header.set.from__</li>
 			</ul>
     </div>
       
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
-		<h1 class="helpchapter">&stringmanip_function.cap;</h1>
+		<h1 class="helpchapter">__MSG_stringmanip_function.cap__</h1>
     <div class="chapterBody">
-			<aside>&stringmanip_function.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904 " target="_blank">[Bug 25904]</a>.</aside>
+			<aside>__MSG_stringmanip_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904 " target="_blank">[Bug 25904]</a>.</aside>
 			<ul>
-				<li><code>%deleteText("text")%</code> = &deleteText;</li>
-				<li><code>%replaceText("find","replace")%</code> = &replaceText;</li>
-				<li><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = &matchTextFromBody;</li>
-				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = &matchTextFromSubject;</li>
+				<li><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
+				<li><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
+				<li><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
+				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
 			</ul>
-			<aside>&stringmanip.match.comment;</aside>
-      <aside><span class="param">altText</span> : &stringmanip.alttext;</aside>
+			<aside>__MSG_stringmanip.match.comment__</aside>
+      <aside><span class="param">altText</span> : __MSG_stringmanip.alttext__</aside>
     </div>
     <div class="chapterbreak" />
 
-		<h1 class="helpchapter">&quote_changers.cap;</h1>
+		<h1 class="helpchapter">__MSG_quote_changers.cap__</h1>
     <div class="chapterBody">
       <ul>
-        <aside>&quote_changers.desc; <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Docs</a>.</aside>
-        <code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> &quotePlaceholder;<br/>
-        <h4>&parameters;</h4>
-        <li class="paramList"><span class="param">quoteLevel</span> &quotePlaceholder.level;</li>
-        <code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> &deleteQuotedText;<br/>
-        <code>%replaceQuotedText("<span class="param">searchText</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>)%</code> &replaceQuotedText; <br/>
-        <code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> &deleteQuotedTags; <br/>
-        <code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> &replaceQuotedTags; <br/>
+        <aside>__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Docs</a>.</aside>
+        <code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> __MSG_quotePlaceholder__<br/>
+        <h4>__MSG_parameters__</h4>
+        <li class="paramList"><span class="param">quoteLevel</span> __MSG_quotePlaceholder.level__</li>
+        <code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> __MSG_deleteQuotedText__<br/>
+        <code>%replaceQuotedText("<span class="param">searchText</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>)%</code> __MSG_replaceQuotedText__ <br/>
+        <code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_deleteQuotedTags__ <br/>
+        <code>%replaceQuotedTags("<span class="param">selector</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_replaceQuotedTags__ <br/>
         
-        <h4>&parameters;</h4>
-        <li class="paramList"><span class="param">searchText</span> &regexpAnyText;
-        <aside>&whitespace_note;</aside>
+        <h4>__MSG_parameters__</h4>
+        <li class="paramList"><span class="param">searchText</span> __MSG_regexpAnyText__
+        <aside>__MSG_whitespace_note__</aside>
         </li>
-        <li class="paramList"><span class="param">replacementHTML</span>  &replacementHTML;</li>
-        <li class="paramList"><span class="param">quoteLevel</span> &quoteLevel;</li>
-        <li class="paramList"><span class="param">selector</span> &selector;</li>
-        <li class="paramList"><span class="param">minSize</span> &minSize;
-        <aside>&minSize_detail;</aside></li>        
+        <li class="paramList"><span class="param">replacementHTML</span>  __MSG_replacementHTML__</li>
+        <li class="paramList"><span class="param">quoteLevel</span> __MSG_quoteLevel__</li>
+        <li class="paramList"><span class="param">selector</span> __MSG_selector__</li>
+        <li class="paramList"><span class="param">minSize</span> __MSG_minSize__
+        <aside>__MSG_minSize_detail__</aside></li>        
         
       </ul>
     </div>
 
 			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
-		<h1 class="helpchapter">&fix_vartz.cap;</h1>
+		<h1 class="helpchapter">__MSG_fix_vartz.cap__</h1>
     <div class="chapterBody">
-			<aside>(&fix_vartz_note.label;)</aside>
+			<aside>(__MSG_fix_vartz_note.label__)</aside>
 			<ul>
-				<li><code>%datelocal%</code> = &datelocal.label;</li>
-				<li><code>%dateshort%</code> = &dateshort.label;</li>
-				<li><code>%date_tz%</code> = &datetz.label;</li>
-				<li><code>%tz_name%</code> = &tzname.label;</li>
-				<li><code>%X:=timezone(tz)%</code> = &timezone.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
+				<li><code>%datelocal%</code> = __MSG_datelocal.label__</li>
+				<li><code>%dateshort%</code> = __MSG_dateshort.label__</li>
+				<li><code>%date_tz%</code> = __MSG_datetz.label__</li>
+				<li><code>%tz_name%</code> = __MSG_tzname.label__</li>
+				<li><code>%X:=timezone(tz)%</code> = __MSG_timezone.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
 			</ul>
-			<aside>(&dateoffset_note.label;)</aside>
+			<aside>(__MSG_dateoffset_note.label__)</aside>
 			<ul>
-				<li><code>%X:=calculated(DD,HH:MM)%</code> = &calculate.explain;</li>
-				<li><code>%X:=calculated(0)%</code> = &calculate.reset;</li>
+				<li><code>%X:=calculated(DD,HH:MM)%</code> = __MSG_calculate.explain__</li>
+				<li><code>%X:=calculated(0)%</code> = __MSG_calculate.reset__</li>
 			</ul>
 		</div>	
 			
 		<!-- ##### Custom Variables #### -->
-		<h1 class="helpchapter">&var_custom.cap;</h1>
+		<h1 class="helpchapter">__MSG_var_custom.cap__</h1>
     <div class="chapterBody">
-			<aside>(&customdf_note.label;)</aside>
+			<aside>(__MSG_customdf_note.label__)</aside>
 			<ul>
-				<li><code>%A%</code> = &a.up.label;</li>
-				<li><code>%a%</code> = &a.label;</li>
-				<li><code>%B%</code> = &b.up.label;</li>
-				<li><code>%b%</code> = &b.label;</li>
-				<li><code>%d%</code> = &d.label;</li>
-				<li><code>%e%</code> = &e.label;</li>
-				<li><code>%m%</code> = &m.label;</li>
-				<li><code>%n%</code> = &n.label;</li>
-				<li><code>%Y%</code> = &y.up.label;</li>
-				<li><code>%M%</code> = &m.up.label;</li>
-				<li><code>%S%</code> = &s.label;</li>
-				<li><code>%H%</code> = &h.label;</li>
-				<li><code>%k%</code> = &k.label;</li>
-				<li><code>%I%</code> = &i.label;</li>
-				<li><code>%l%</code> = &l.label;</li>
-				<li><code class="noWrite">%p%</code> = &p.label;</li>
-				<li><code class="noWrite">%p(1)%</code> = &p1.label;</li>
-				<li><code class="noWrite">%p(2)%</code> = &p2.label;</li>
-				<li><code class="deferable">%dateformat()%</code> = &dateformat.label;
-					<aside>&dateformat.explain; <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>.</aside>
-					<aside><b>&dateformat.example;</b></aside>
+				<li><code>%A%</code> = __MSG_a.up.label__</li>
+				<li><code>%a%</code> = __MSG_a.label__</li>
+				<li><code>%B%</code> = __MSG_b.up.label__</li>
+				<li><code>%b%</code> = __MSG_b.label__</li>
+				<li><code>%d%</code> = __MSG_d.label__</li>
+				<li><code>%e%</code> = __MSG_e.label__</li>
+				<li><code>%m%</code> = __MSG_m.label__</li>
+				<li><code>%n%</code> = __MSG_n.label__</li>
+				<li><code>%Y%</code> = __MSG_y.up.label__</li>
+				<li><code>%M%</code> = __MSG_m.up.label__</li>
+				<li><code>%S%</code> = __MSG_s.label__</li>
+				<li><code>%H%</code> = __MSG_h.label__</li>
+				<li><code>%k%</code> = __MSG_k.label__</li>
+				<li><code>%I%</code> = __MSG_i.label__</li>
+				<li><code>%l%</code> = __MSG_l.label__</li>
+				<li><code class="noWrite">%p%</code> = __MSG_p.label__</li>
+				<li><code class="noWrite">%p(1)%</code> = __MSG_p1.label__</li>
+				<li><code class="noWrite">%p(2)%</code> = __MSG_p2.label__</li>
+				<li><code class="deferable">%dateformat()%</code> = __MSG_dateformat.label__
+					<aside>__MSG_dateformat.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>.</aside>
+					<aside><b>__MSG_dateformat.example__</b></aside>
           <table class="date_examples">
             <tr>
               <th>ST⁴ Variable</th>
-              <th>&dateformat.example;</th>
+              <th>__MSG_dateformat.example__</th>
               <th>Countries</th>
             </tr>
             <tr>
@@ -348,9 +346,9 @@
     </div>
 
 		<!-- ##### X:=Sent Variable #### -->
-		<h1 class="helpchapter">&var_xsent.cap;</h1>
+		<h1 class="helpchapter">__MSG_var_xsent.cap__</h1>
     <div class="chapterBody">
-			<aside>&xsent_note.label;</aside>
+			<aside>__MSG_xsent_note.label__</aside>
 			<ul>
 				<li><code class="noWrite">%X:=sent%</code></li>
 			</ul>
@@ -358,49 +356,49 @@
     
     
 		<!-- ##### Longstring Description #### -->
-		<h1 class="helpchapter">&xsent_long.cap;</h1>
+		<h1 class="helpchapter">__MSG_xsent_long.cap__</h1>
     <div class="chapterBody">
 			<ul>
 				<li><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
-				    <br />&xsent_long_result.label;</li>
+				    <br />__MSG_xsent_long_result.label__</li>
 			</ul>
     </div>
     
     
 		<!-- ##### Shortstring Description #### -->
-		<h1 class="helpchapter">&xsent_short.cap;</h1>
+		<h1 class="helpchapter">__MSG_xsent_short.cap__</h1>
     <div class="chapterBody">
 			<ul>
 				<li><code class="noWrite">%X:=sent% %datelocal%</code>
-				    <br />&xsent_short_result.label;</li>
+				    <br />__MSG_xsent_short_result.label__</li>
 			</ul>
-			<aside>&xsent_short_note.label;</aside>
+			<aside>__MSG_xsent_short_note.label__</aside>
 			<ul>
-				<li><code>%datelocal%</code> = &localedate.label;</li>
-				<li><code>%dateshort%</code> = &shortdate.label;</li>
-				<li><code>%date_tz%</code> = &datetimezone.label;</li>
-				<li><code>%tz_name%</code> = &timezonename.label;</li>
+				<li><code>%datelocal%</code> = __MSG_localedate.label__</li>
+				<li><code>%dateshort%</code> = __MSG_shortdate.label__</li>
+				<li><code>%date_tz%</code> = __MSG_datetimezone.label__</li>
+				<li><code>%tz_name%</code> = __MSG_timezonename.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### HTML -> UTF-8 Note #### -->
-		<h1 class="helpchapter">&html_note.cap;</h1>
+		<h1 class="helpchapter">__MSG_html_note.cap__</h1>
     <div class="chapterBody">
-			<aside>&html_note.label;</aside>
+			<aside>__MSG_html_note.label__</aside>
     </div>
     
 		<!-- ##### Variable Table Note #### -->
-		<h1 class="helpchapter">&table.cap;</h1>
+		<h1 class="helpchapter">__MSG_table.cap__</h1>
     <div class="chapterBody">
-			<aside>&table_note.label;</aside>
+			<aside>__MSG_table_note.label__</aside>
 			<!-- ##### Variable Table #### -->
 			<table id="keywords">
 				<tbody>
 					<tr class="tr-keywords">
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/variable-keyword.png" />&table_keyword.label;</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-new.png" />&table_new.label;</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-reply.png" />&table_reply.label;</th>
-						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-fwd.png" />&table_fwd.label;</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/variable-keyword.png" />__MSG_table_keyword.label__</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-new.png" />__MSG_table_new.label__</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-reply.png" />__MSG_table_reply.label__</th>
+						<th><img class="small_icon" alt="" src="chrome://smarttemplate4/content/skin/icons/mail-fwd.png" />__MSG_table_fwd.label__</th>
 					</tr>
 					<tr class="tr-keywords">
 						<td><code>%A%</code> <code>%a%</code></td>
@@ -660,128 +658,6 @@
   </div>
     
     
+  <script type = "application/javascript" src = "chrome://smarttemplate4/content/help.js"/>
 	</body>
-	<script type="text/javascript">
-  //<![CDATA[
-		function containerClick(el, evt) {
-			var code = evt.target;
-      
-      if (code && code.classList.contains("helpchapter")) {
-        /*  
-        // not needed
-          var newClick = new MouseEvent('click', { view: window, bubbles: false, cancelable: true })
-          window.setTimeout( function clickHelpChapter() {
-            code.dispatchEvent(newClick);
-          }, 25);
-        */
-        return;
-      }
-      
-			if (typeof code !='undefined') {
-        var classList = code.classList,
-            isAddressConfig = (classList && classList.contains('config_default'));
-            
-				if (code.tagName == 'code' || code.tagName == 'a' || isAddressConfig) {
-					var exists = true,
-					    element = document.getElementById('ST4Dispatcher');
-					if (!element) {
-						exists = false;
-						element = document.createElement("CodeEventDispatcher");
-						element.id = 'ST4Dispatcher';
-					}
-
-          switch(code.tagName) {
-            case 'code':
-              /* this used to use innerHTML unnecessarily */
-              element.setAttribute("codeWord", code.innerText); // now, add the payload
-              element.setAttribute("class", code.className);    // class="noWrite" = cannot be used in new mail!!
-              break;
-            case 'span':
-              if (isAddressConfig) {
-                element.removeAttribute("codeWord");
-                element.setAttribute("class", code.className);
-              }
-              break;
-            case 'a':
-            default: // probably anchor
-              element.setAttribute("href", code.getAttribute('href'));
-              break;
-          }
-
-					if (!exists)
-						document.documentElement.appendChild(element);
-
-					// make a new custom event
-					var customEvent = document.createEvent("Events");
-          
-          switch(code.tagName) {
-            case 'code':
-              customEvent.initEvent("SmartTemplate4CodeWord", true, false);
-              break;
-            case 'span':
-              if (isAddressConfig)
-                customEvent.initEvent("SmartTemplate4CAD", true, false);
-              break;
-            default:
-              customEvent.initEvent("SmartTemplate4Website", true, false);
-              break;
-          }
-						
-					element.dispatchEvent(customEvent);
-				}
-			}
-		}
-    
-    function expandAll(evt) {
-      evt.preventDefault();
-      event.stopPropagation();
-      var allchapters = Array.from(document.getElementsByClassName('chapterBody'));
-      allchapters.forEach(function(el) {
-        el.classList.remove('collapsed');
-      });
-    }    
-    
-    // Accordion:
-    var mychapters = Array.from(document.getElementsByClassName('chapterBody'));
-    mychapters.forEach(function(el) {
-      var hd = el.previousElementSibling,
-          xalert = window.alert.bind(window);
-      
-      /* alert("adding event listener: " + el.tagName + " "  + el.textContent);  */
-      hd.addEventListener('click', 
-        function(e) { 
-          var isCollapsed = el.classList.contains('collapsed');
-          if (isCollapsed) {
-            // collapse all other chapters
-            Array.from(document.getElementsByClassName('chapterBody')).forEach(
-              function(x) {
-                if (x!=el)
-                  x.classList.add('collapsed');
-              }
-            )
-            el.classList.remove('collapsed'); // uncollapse chapter below this heading
-            window.setTimeout( function() { hd.scrollIntoView(true); }, 150 );
-            
-          }
-          else
-            el.classList.add('collapsed');
-        }
-      );
-      el.classList.add('collapsed');
-    });
-    
-    // address standard configurators
-    /*
-    var configLinks = Array.from(document.getElementsByClassName('config_default'));
-    configLinks.forEach(function(el) {
-      var newClick = new MouseEvent('click', { view: window, bubbles: false, cancelable: true });
-      window.setTimeout( function clickConfigDefault() {
-        alert('test');
-      }, 25);
-    });
-    */
-    
-
-  //]]>
-	</script>
 </html>

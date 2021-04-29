@@ -15,7 +15,7 @@
     "message": "Polja Adresarja"
   },
   "ab_fields.desc": {
-    "message": "Ko odgovarjate na ustrezen e-poštni naslov, lahko zdaj uporabite dodatna polja za spremenljivke naslova, kot je &#37;from&#37;, na primer:"
+    "message": "Ko odgovarjate na ustrezen e-poštni naslov, lahko zdaj uporabite dodatna polja za spremenljivke naslova, kot je %from%, na primer:"
   },
   "ab_other": {
     "message": "Drugo"
@@ -200,7 +200,7 @@
     "message": "Nastavi položaj kazalca"
   },
   "customdf_note.label": {
-    "message": "Se lahko kombinira z &#37;X:=sent&#37;"
+    "message": "Se lahko kombinira z %X:=sent%"
   },
   "d.label": {
     "message": "Dan v mesecu (01 do 31) - z vodilno ničlo"
@@ -212,7 +212,7 @@
     "message": "Primer:"
   },
   "dateformat.explain": {
-    "message": "Večino zgornjih časovnih spremenljivk lahko v nizu parametrov uporabimo tako, da izpustimo '&#37;'. Poglej tudi:"
+    "message": "Večino zgornjih časovnih spremenljivk lahko v nizu parametrov uporabimo tako, da izpustimo '%'. Poglej tudi:"
   },
   "dateformat.label": {
     "message": "Funkcija za vstavljanje trenutnega časa (polje, ki ga je mogoče klikniti)."
@@ -278,7 +278,7 @@
     "message": "Privzeta oblika naslova:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Oblika za uporabo pri zamenjavi navadnih&#37; do&#37;&#37; iz&#37;&#37; cc&#37; naslovov. Npr. (firstname,lastname,??mail), bo prikazano ime, ki mu sledi priimek; če oba nista na voljo, bo prikazan e-poštni naslov."
+    "message": "Oblika za uporabo pri zamenjavi navadnih% do%% iz%% cc% naslovov. Npr. (firstname,lastname,??mail), bo prikazano ime, ki mu sledi priimek; če oba nista na voljo, bo prikazan e-poštni naslov."
   },
   "deleteQuotedTags": {
     "message": "Izbriše oznake iz ponudbe"
@@ -406,7 +406,7 @@
     "message": "Stalne spremenljivke za 'obliko datuma' / 'časovni pas'"
   },
   "fix_vartz_note.label": {
-    "message": "Se lahko kombinira z &#37;X:=sent&#37;"
+    "message": "Se lahko kombinira z %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "Predloga HTML"
@@ -840,7 +840,7 @@
     "message": "Število prelomov vrstic na vrhu:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Vstavi presledek za označitev &#37;cursor&#37;"
+    "message": "Vstavi presledek za označitev %cursor%"
   },
   "pref_debug_check": {
     "message": "Razhroščevalni način"
@@ -918,10 +918,10 @@
     "message": "Skrij zavihek s primeri"
   },
   "pref_html.cap": {
-    "message": "Uporabi ubežne znake za  &quot; , &amp; , &lt; , &gt; , presledek. Glejte &quot;Pomoč&quot; za več podorbnosti."
+    "message": "Uporabi ubežne znake za  &quot; , &amp; , < , > , presledek. Glejte &quot;Pomoč&quot; za več podorbnosti."
   },
   "pref_html.label": {
-    "message": "Uporabi HTML (npr., &lt;b&gt;bold&lt;/b&gt;)"
+    "message": "Uporabi HTML (npr., <b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Pravilni priimek, ime"
@@ -948,7 +948,7 @@
     "message": "Glava navedka"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. &#37;date&#37;, &#37;from(name)&#37; je napisal:"
+    "message": "V to polje napišite, kaj naj bo prikazano pred navedenim delom (izvirno sporočilo) - npr. %date%, %from(name)% je napisal:"
   },
   "pref_quotehead_tip": {
     "message": "Onemogoči privzeto glavo navedka. Umestite svojo glavo v zgornje besedilno polje."
@@ -957,10 +957,10 @@
     "message": "Nadomesti podpis ob spremembi e-poštne identitete"
   },
   "pref_rep_br.cap": {
-    "message": "OPOMBA: presledek ne bo vstavljen v oznako HTML ob enkratni uporabi &lt;br&gt;."
+    "message": "OPOMBA: presledek ne bo vstavljen v oznako HTML ob enkratni uporabi <br>."
   },
   "pref_rep_br.label": {
-    "message": "Nadomesti prelome vrstic z &lt;br&gt;"
+    "message": "Nadomesti prelome vrstic z <br>"
   },
   "pref_rsp.label": {
     "message": "Uveljavi naslednjo predlogo za odgovor"
@@ -984,7 +984,7 @@
     "message": "Prikaži gumb v vrstici stanja"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Nadomesti prelome vrstic v podpisu z golim besedilom s &lt;br&gt;"
+    "message": "Nadomesti prelome vrstic v podpisu z golim besedilom s <br>"
   },
   "pref_silentUpdates": {
     "message": "Tihe posodobitve"
@@ -1011,7 +1011,7 @@
     "message": "Predloga"
   },
   "pref_templateBox_tip": {
-    "message": "V to polje vstavite svojo poštno predlogo npr. Hello &#37;from(name)&#37;, &lt;br&gt; Hvala za vaše sporočilo &lt;br&gt; Lep pozdrav, &lt;br&gt;&#37;ownname&#37;"
+    "message": "V to polje vstavite svojo poštno predlogo npr. Hello %from(name)%, <br> Hvala za vaše sporočilo <br> Lep pozdrav, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "Predlogo lahko izboljšate s 'spremenljivkami'. Kliknite napredno / spremenljivke za več podrobnosti."
@@ -1146,7 +1146,7 @@
     "message": "Posebno"
   },
   "specform_note.label": {
-    "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: &#37;cc(name)&#37;]] bodo prikazani samo, če se spremenljivko &#37;cc(name)&#37; lahko nadomesti!"
+    "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."
@@ -1275,7 +1275,7 @@
     "message": "Poskusno obdobje se je izteklo pred {0} dnevi."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Dragi uporabnik dodatka SmartTemplates, veseli smo, da lahko najavimo, da SmartTemplates od te različice naprej podpira uporabo zavitih oklepajev in oznake &lt;style&gt;, tako da lahko sedaj uporabite napredno oblikovanje slogov v predlogah."
+    "message": "Dragi uporabnik dodatka SmartTemplates, veseli smo, da lahko najavimo, da SmartTemplates od te različice naprej podpira uporabo zavitih oklepajev in oznake <style>, tako da lahko sedaj uporabite napredno oblikovanje slogov v predlogah."
   },
   "st.updateMessageNewBrackets2": {
     "message": "Od sedaj naprej je določena skladnost za izraze v oglatih oklepajih spremenjena: namesto zavitih oklepajev {%cc(name)%} uporabite dvojne oglate oklepaje [[%cc(name)%]] - za več podrobnosti glejte pomoč."
@@ -1505,19 +1505,19 @@
     "message": "Primer dolgega niza"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; ob &#37;H&#37;:&#37;M&#37;"
+    "message": "%X:=sent%%d%/%m%/%Y% ob %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Rezultat: Nedelja, 20/12/2011 ob 16:24"
   },
   "xsent_note.label": {
-    "message": "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z &#37;X:=sent&#37; bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila."
+    "message": "Privzeto bodo spremenljivke za datum/čas vedno vzpostavljene s trenutnimi vrednostmi (trenutno je ob času ustvarjanja e-pošte). Ob kombinaciji z %X:=sent% bodo spremenljivke za datum/čas odražale izvirni datum/čas sporočila."
   },
   "xsent_short.cap": {
     "message": "Primer kratkega niza"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Naslednje spremenljivke lahko uporabljate z obema različicama"

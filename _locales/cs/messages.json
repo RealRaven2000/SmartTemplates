@@ -15,7 +15,7 @@
     "message": "Pole Adresáře"
   },
   "ab_fields.desc": {
-    "message": "Při odpovídání na odpovídající e-mailovou adresu můžete nyní použít další pole pro proměnné adresy, například &#37;from&#37;, například:"
+    "message": "Při odpovídání na odpovídající e-mailovou adresu můžete nyní použít další pole pro proměnné adresy, například %from%, například:"
   },
   "ab_other": {
     "message": "Ostatní"
@@ -200,7 +200,7 @@
     "message": "nastav pozici kurzoru"
   },
   "customdf_note.label": {
-    "message": "Může být použito s &#37;X:=sent&#37;"
+    "message": "Může být použito s %X:=sent%"
   },
   "d.label": {
     "message": "Den v měsíci uvozený nulou (01 až 31)"
@@ -212,7 +212,7 @@
     "message": "Příklad: "
   },
   "dateformat.explain": {
-    "message": "Většinu výše uvedených časových proměnných lze v řetězci parametrů použít vynecháním znaku '&#37;'. Viz také:"
+    "message": "Většinu výše uvedených časových proměnných lze v řetězci parametrů použít vynecháním znaku '%'. Viz také:"
   },
   "dateformat.label": {
     "message": "Funkce pro vložení aktuálního času (pole, na které lze kliknout)."
@@ -278,7 +278,7 @@
     "message": "Výchozí formát adresy:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Formát, který se použije při nahrazení obyčejného &#37;to&#37;; &#37;from&#37;; &#37;cc&#37; adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu."
+    "message": "Formát, který se použije při nahrazení obyčejného %to%; %from%; %cc% adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu."
   },
   "deleteQuotedTags": {
     "message": "Odstraní značky z nabídky"
@@ -406,7 +406,7 @@
     "message": "Pevné proměnné pro formát data a časové zóny"
   },
   "fix_vartz_note.label": {
-    "message": "Může být použito s &#37;X:=sent&#37;"
+    "message": "Může být použito s %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML šablona"
@@ -831,7 +831,7 @@
     "message": "Počet prázdných řádků nahoře:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Vlož mezeru pro zvýraznění &#37;cursor&#37;"
+    "message": "Vlož mezeru pro zvýraznění %cursor%"
   },
   "pref_debug_check": {
     "message": "Ladicí mód"
@@ -909,10 +909,10 @@
     "message": "Skrýt záložku s příklady"
   },
   "pref_html.cap": {
-    "message": "Použij únikové znaky pro  &quot; , &amp; , &lt; , &gt;; , mezeru. Pro více detailů se podívejte do nápovědy."
+    "message": "Použij únikové znaky pro  &quot; , & , < , >; , mezeru. Pro více detailů se podívejte do nápovědy."
   },
   "pref_html.label": {
-    "message": "Použij HTML (např. &lt;b&gt;bold&lt;/b&gt;)"
+    "message": "Použij HTML (např. <b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Správné Příjmení, Jméno"
@@ -939,7 +939,7 @@
     "message": "Uvození citace"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne &#37;date&#37; &#37;from(name)&#37; napsal(a):"
+    "message": "Do tohoto pole napište, co chcete vkládat před citovaný text - např. Dne %date% %from(name)% napsal(a):"
   },
   "pref_quotehead_tip": {
     "message": "Vypnout standardní záhlaví. Prosím, vlož vlastní záhlaví to pole nad. "
@@ -948,10 +948,10 @@
     "message": "Změň podpis pokud měníš identitu"
   },
   "pref_rep_br.cap": {
-    "message": "Poznámka: Mezera nebude vložena do HTML tagu použitím &lt;br&gt; ."
+    "message": "Poznámka: Mezera nebude vložena do HTML tagu použitím <br> ."
   },
   "pref_rep_br.label": {
-    "message": "Nahraď konece řádků &lt;br&gt;"
+    "message": "Nahraď konece řádků <br>"
   },
   "pref_rsp.label": {
     "message": "Zvolit následující šablonu pro psaní odpovědi"
@@ -975,7 +975,7 @@
     "message": "Zobraz tlačítko v řádku statusu"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Nahraď oddělovače řádků za &lt;br&gt; v textovém podpisu "
+    "message": "Nahraď oddělovače řádků za <br> v textovém podpisu "
   },
   "pref_silentUpdates": {
     "message": "Tiché aktualizace"
@@ -1002,7 +1002,7 @@
     "message": "Šablona"
   },
   "pref_templateBox_tip": {
-    "message": "Do tohoto pole napište šablonu zprávy, např.: Dobrý den &#37;from(name)&#37;, &lt;br&gt; Díky za Vaši zprávu &lt;br&gt; S pozdravem, &lt;br&gt;&#37;ownname&#37;"
+    "message": "Do tohoto pole napište šablonu zprávy, např.: Dobrý den %from(name)%, <br> Díky za Vaši zprávu <br> S pozdravem, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "Můžeš rozšířit šablonu proměnými. Klikni na rozšířené / proměné pro více informací. "
@@ -1137,7 +1137,7 @@
     "message": "Speciální"
   },
   "specform_note.label": {
-    "message": "Sekce mezi dvojtými závorkami [[Cc: &#37;cc(name)&#37;]] bude zobrazena pokud promněná &#37;cc(name)&#37; může být nahrazena!"
+    "message": "Sekce mezi dvojtými závorkami [[Cc: %cc(name)%]] bude zobrazena pokud promněná %cc(name)% může být nahrazena!"
   },
   "spellcheck.label": {
     "message": "Nastaví jazyk kontroly pravopisu. Příklad hodnot: (en, de-DE, es-ES, ru) - pamatujte, že slovník musí být nainstalován."
@@ -1266,7 +1266,7 @@
     "message": "Vaše zkušební doba vypršela před {0} dny."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Vážený SmartTemplates uživateli, jsme potěšení vám oznámit, že od této verze, SmartTemplates také podporuje spožené závorky {} a &lt;style&gt; tag. Tak teď můžeš použit rozšířené ccs styly v šablonách."
+    "message": "Vážený SmartTemplates uživateli, jsme potěšení vám oznámit, že od této verze, SmartTemplates také podporuje spožené závorky {} a <style> tag. Tak teď můžeš použit rozšířené ccs styly v šablonách."
   },
   "st.updateMessageNewBrackets2": {
     "message": "Od teď, specifická syntaxe pro výrazy v závorkách je změněna. Místo složených závorek {%cc(name)%} použij dvojté hranaté závorky [[%cc(name)%]] - viz více v nápovědě."
@@ -1471,7 +1471,7 @@
     "message": "Proměnné pro přizpůsobený formát data"
   },
   "var_xsent.cap": {
-    "message": "Datum a čas dle &#37;X:=sent&#37;"
+    "message": "Datum a čas dle %X:=sent%"
   },
   "vouchers.title": {
     "message": "Poukazy"
@@ -1508,19 +1508,19 @@
     "message": "Příklad pro dlouhý řetězec"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; v &#37;H&#37;:&#37;M&#37; hodin"
+    "message": "%X:=sent%%d%/%m%/%Y% v %H%:%M% hodin"
   },
   "xsent_long_result.label": {
     "message": "Výsledek: Neděle 20.12.2011 v 16.24 hodin"
   },
   "xsent_note.label": {
-    "message": "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte &#37;X:=sent&#37;, budou proměnné data a času nastaveny dle data a času původní zprávy."
+    "message": "Běžně jsou proměnné data a času nastavována podle hodnoty, kdy se odesílá mail. Pokud přidáte %X:=sent%, budou proměnné data a času nastaveny dle data a času původní zprávy."
   },
   "xsent_short.cap": {
     "message": "Příklad krátkého řetězce"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Následující proměnné lze použít v obou variantách"

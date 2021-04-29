@@ -183,21 +183,34 @@ SmartTemplate4.Util = {
 	},
 	
 	getBundleString: function(id, defaultText) {
-    const Ci = Components.interfaces;
-		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-						getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties"),
-		    theText = '';
-		try{
-			//try writing an error to the Error Console using the localized string; if it fails write it in English
-			theText = bundle.GetStringFromName(id);
-		} catch (e) {
-			theText = defaultText;
-			this.logException ("Could not retrieve bundle string: " + id, e);
+    // [mx-l10n]
+    let localized = SmartTemplate4.Util.extension.localeData.localizeMessage(id);
+    
+		let theText = "";
+		if (localized) {
+			theText = localized;
 		}
-		theText = theText.replace("&lt;","<");
-		return theText.replace("&gt;",">");
+		else {
+			theText = defaultText;
+			this.logToConsole ("Could not retrieve bundle string: " + id + "");
+		}
+		// theText = theText.replace("&lt;","<");
+		return theText;
 	} ,
+  
+  localize: function(window, buttons = null) {
+		Services.scriptloader.loadSubScript(
+		  SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
+		  window,
+		  "UTF-8"
+		);
+	  window.i18n.updateDocument({extension: SmartTemplate4.Util.extension});
+		if (buttons) {
+			for (let [name, label] of Object.entries(buttons)) {
+		    window.document.documentElement.getButton(name).label =  SmartTemplate4.Util.extension.localeData.localizeMessage(label); // apply
+			}
+		}
+  } ,  
 
 	get Mail3PaneWindow() {
 		let windowManager = Services.wm,
@@ -1052,84 +1065,6 @@ SmartTemplate4.Util = {
 		}
 		SmartTemplate4.Util.logDebugOptional('functions', 'Util.getIsoWeek() returns weeknum: ' + weeknum);
 		return weeknum;
-	},
-	
-  // moved from settings diaLog as there were problems calling this on program start
-	cancelConvert : function() {
-		// conversion routine to 0.9 was cancelled
-		// user will have to create new settings from scratch!
-		// this is a dummy function, it doesn't do anything
-	} ,
-	
-	// convert a extension.smarttemplate. setting to an extension.smartTemplate4. one
-	convertPrefValue : function (oldPrefName, test, realString) {
-		let converted = true,
-		    debugText = "";
-		debugText += 'CONVERT: ' + oldPrefName;
-		
-		let thePreference = realString ? realString : SmartTemplate4.Settings.getPref(oldPrefName),
-		    newPrefString = oldPrefName.indexOf('smarttemplate.id') > 0 ?
-		                    oldPrefName.replace('smarttemplate', 'smartTemplate4') :
-		                    oldPrefName.replace('smarttemplate', 'smartTemplate4.common');
-
-		debugText += ' => ' + newPrefString + '\n';
-		SmartTemplate4.Settings.setPref(newPrefString, thePreference);
-		switch (typeof thePreference) {
-			case 'string':
-				if (thePreference.indexOf('{')>0 || thePreference.indexOf('}')>0) {
-					convertedBracketExpressions++;
-					// hmmmffff....
-					thePreference = thePreference
-					                .replace("\{","[[").replace("{","[[")
-					                .replace("\}","]]").replace("}","]]");
-					debugText += '\nbracketed conversion:\n:   ' + thePreference;
-				}
-				if (test) 
-					alert(newPrefString + "\n" + thePreference);
-				else
-					SmartTemplate4.Settings.prefService.setCharPref(newPrefString, thePreference);
-				break;
-			case 'number':
-				SmartTemplate4.Settings.prefService.setIntPref(newPrefString, thePreference);
-				break;
-			case 'boolean':
-				SmartTemplate4.Settings.prefService.setBoolPref(newPrefString, thePreference);
-				break;
-			default:
-				converted = false;
-				break;
-		}
-		SmartTemplate4.Util.logDebug(debugText);
-		return converted;
-	},
-
-	convertOldPrefs : function() {
-		let countConverted = 0,
-		    convertedBracketExpressions = 0;
-		SmartTemplate4.Util.logDebug('CONVERSION OF OLD SMARTTEMPLATE PREFERENCES');
-
-		try {
-			let array = SmartTemplate4.Settings.prefService.getChildList("extensions.smarttemplate.", {});
-
-			// AG new: import settings to new format
-			for (var i in array) {
-
-				let oldPrefName = array[i];
-				if (this.convertPrefValue(oldPrefName))
-					countConverted ++;
-				
-				// keep a backup, for now ??
-				// this.prefService.deleteBranch(array[i]);
-			}
-		}
-		catch (ex) {
-			SmartTemplate4.Util.logException("convertOldPrefs failed: ", ex);
-		}
-		if (countConverted)
-			SmartTemplate4.Settings.prefService.setIntPref("extensions.smartTemplate4.conversions.total", countConverted);
-		if (convertedBracketExpressions)
-			SmartTemplate4.Settings.prefService.setIntPref("extensions.smartTemplate4.conversions.curlyBrackets", convertedBracketExpressions);
-
 	},
 
 	isFormatLink : function(format) {
@@ -2774,7 +2709,7 @@ SmartTemplate4.Util.firstRun =
 
 	init: function() {
 		// avoid running firstRun.init in messenger compose again!
-		if (typeof SmartTemplate4.Settings === 'undefined')
+		if (typeof SmartTemplate4.composer !== 'undefined')
 			return;
 			
   	const util = SmartTemplate4.Util,
@@ -2991,8 +2926,7 @@ SmartTemplate4.Message = {
 
 		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow,
 		    dispFeatures = "chrome,alwaysRaised,dependent,close=no," + features; //  close=no,
-		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xhtml", "st4message", dispFeatures, params)
-		    .QueryInterface(Components.interfaces.nsIDOMWindow);
+		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xhtml", "st4message", dispFeatures, params);
 		this.parentWindow = null;
 
 	} ,
@@ -3293,3 +3227,16 @@ if (!SmartTemplate4.Shim) {
 		dummy: ', <== end Shim properties here'
 	} // end of Shim definition
 };
+
+
+
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
+/*
+Services.scriptloader.loadSubScript(
+  SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+  SmartTemplate4.Util,
+  "UTF-8"
+);
+*/

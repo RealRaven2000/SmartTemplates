@@ -15,7 +15,7 @@
     "message": "Osoitekirjan kentät"
   },
   "ab_fields.desc": {
-    "message": "Kun vastaat vastaavaan sähköpostiosoitteeseen, voit nyt käyttää lisäkenttiä osoitemuuttujille, &#37;from&#37;: sta, kuten:"
+    "message": "Kun vastaat vastaavaan sähköpostiosoitteeseen, voit nyt käyttää lisäkenttiä osoitemuuttujille, %from%: sta, kuten:"
   },
   "ab_other": {
     "message": "Muu"
@@ -200,7 +200,7 @@
     "message": "Aseta osoittimen sijainti"
   },
   "customdf_note.label": {
-    "message": "Voidaan yhdistää &#37;X:=sent&#37; kanssa"
+    "message": "Voidaan yhdistää %X:=sent% kanssa"
   },
   "d.label": {
     "message": "Kuukauden päivä (01-31)"
@@ -212,7 +212,7 @@
     "message": "Esimerkki:"
   },
   "dateformat.explain": {
-    "message": "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrimerkkijonossa jättämällä pois &#37; Katso myös:"
+    "message": "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrimerkkijonossa jättämällä pois % Katso myös:"
   },
   "dateformat.label": {
     "message": "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä)."
@@ -278,7 +278,7 @@
     "message": "Oletusosoitteen muoto:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Käytettävä muoto korvaamalla tavallinen &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Esim. (firstname,lastname,??mail) näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen."
+    "message": "Käytettävä muoto korvaamalla tavallinen %to% %from% %cc%. Esim. (firstname,lastname,??mail) näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen."
   },
   "deleteQuotedTags": {
     "message": "Poistaa tunnisteet tarjouksesta"
@@ -406,7 +406,7 @@
     "message": "Määrätty päiväyksen muoto / Aikavyöhyke"
   },
   "fix_vartz_note.label": {
-    "message": "Voidaan yhdistää &#37;X:=sent&#37; kanssa"
+    "message": "Voidaan yhdistää %X:=sent% kanssa"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-malli"
@@ -840,7 +840,7 @@
     "message": "Yläreunassa olevat rivivälit:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Lisää väli korostamaan &#37;osoitin&#37;"
+    "message": "Lisää väli korostamaan %osoitin%"
   },
   "pref_debug_check": {
     "message": "Debug-tila"
@@ -918,10 +918,10 @@
     "message": "Piilota esimerkit-välilehti"
   },
   "pref_html.cap": {
-    "message": "Käytä koodinvaihtomerkkejä merkeille &quot;, &amp;, &lt;, &gt;, välilyönti. Yksityiskohdat ohjeessa."
+    "message": "Käytä koodinvaihtomerkkejä merkeille &quot;, &, <, >, välilyönti. Yksityiskohdat ohjeessa."
   },
   "pref_html.label": {
-    "message": "Käytä HTML:ää (esim. &lt;b&gt;lihavoitu&lt;/b&gt;)"
+    "message": "Käytä HTML:ää (esim. <b>lihavoitu</b>)"
   },
   "pref_nameSwap": {
     "message": "Korjaa LastName, FirstName"
@@ -948,7 +948,7 @@
     "message": "Otsake"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. &#37;from(name)&#37; kirjoitti &#37;date&#37;:"
+    "message": "Kirjoita muokattu otsake tähän tekstilaatikkoon esim. %from(name)% kirjoitti %date%:"
   },
   "pref_quotehead_tip": {
     "message": "Poistaa perusotsakeen käytöstä. Muodosta lainausotsake tekstilaatikossa."
@@ -957,10 +957,10 @@
     "message": "Poista allekirjoitus vaihdettaessa lähettävää sähköpostitiliä"
   },
   "pref_rep_br.cap": {
-    "message": "HUOM! Ei korvaa uutta riviä, jota seuraa &lt;br&gt;."
+    "message": "HUOM! Ei korvaa uutta riviä, jota seuraa <br>."
   },
   "pref_rep_br.label": {
-    "message": "Korvaa uusi rivi &lt;br&gt;-merkillä"
+    "message": "Korvaa uusi rivi <br>-merkillä"
   },
   "pref_rsp.label": {
     "message": "Käytä seuraava pohjaa vastattaessa viesteihin"
@@ -984,7 +984,7 @@
     "message": "Näytä painike tilapalkilla"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä &lt;br&gt;"
+    "message": "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä <br>"
   },
   "pref_silentUpdates": {
     "message": "Hiljaiset päivitykset"
@@ -1011,7 +1011,7 @@
     "message": "Pohja"
   },
   "pref_templateBox_tip": {
-    "message": "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei &#37;from(name)&#37;&lt;br&gt; Kiitos viestistäsi toivoien, &#37;ownname&#37;"
+    "message": "Kirjoita pohjasi tähän tekstilaatikkoon esim. Hei %from(name)%<br> Kiitos viestistäsi toivoien, %ownname%"
   },
   "pref_template_tip": {
     "message": "Voit muuttaa lainauksen otsaketta muuttujilla. Ohjeessa lisätietoa."
@@ -1146,7 +1146,7 @@
     "message": "Erikoismuuttujat"
   },
   "specform_note.label": {
-    "message": "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!"
+    "message": "Lauseke tuplahakasulkeiden sisällä [[Cc: %cc(name)%]] näytetään vain, jos %cc(name)% voidaan korvata!"
   },
   "spellcheck.label": {
     "message": "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava."
@@ -1480,7 +1480,7 @@
     "message": "Muuttujat muokatulle päiväyksen muotoilulle"
   },
   "var_xsent.cap": {
-    "message": "&#37;X:=sent&#37;:n käyttö"
+    "message": "%X:=sent%:n käyttö"
   },
   "vouchers.title": {
     "message": "Tositteita"
@@ -1517,19 +1517,19 @@
     "message": "Esimerkki pitkästä muotoilusta:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37; &#37;A&#37;na, &#37;d&#37;. &#37;B&#37;, &#37;Y&#37; klo &#37;k&#37;:&#37;M&#37;"
+    "message": "%X:=sent% %A%na, %d%. %B%, %Y% klo %k%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Lopputulos: tiistai, 20.06.2011 4:11 +0300"
   },
   "xsent_note.label": {
-    "message": "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua."
+    "message": "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä %X:=sent% kanssa, käytetään alkuperäisen viestin muotoilua."
   },
   "xsent_short.cap": {
     "message": "Esimerkki lyhyestä muotoilusta:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;a&#37; &#37;dateshort&#37;"
+    "message": "%X:=sent% %a% %dateshort%"
   },
   "xsent_short_note.label": {
     "message": "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:"

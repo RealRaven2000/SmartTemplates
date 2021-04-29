@@ -200,7 +200,7 @@
     "message": "カーソルの位置を設定する"
   },
   "customdf_note.label": {
-    "message": "&#37;X:=sent&#37; と組み合わせることが可能"
+    "message": "%X:=sent% と組み合わせることが可能"
   },
   "d.label": {
     "message": "日 (01 から 31)"
@@ -278,7 +278,7 @@
     "message": "既定のアドレスのフォーマット"
   },
   "defaultMimeFormat_tip": {
-    "message": "&#37;to&#37; &#37;from&#37; &#37;cc&#37; といったアドレスを置換する際のフォーマットです。例：名,姓,?? の場合には、アドレスは名を最初に示し、次に姓を示します。どちらも利用できない場合、メールアドレスを表示します。"
+    "message": "%to% %from% %cc% といったアドレスを置換する際のフォーマットです。例：名,姓,?? の場合には、アドレスは名を最初に示し、次に姓を示します。どちらも利用できない場合、メールアドレスを表示します。"
   },
   "deleteQuotedTags": {
     "message": "引用部からタグを消去"
@@ -406,7 +406,7 @@
     "message": "日時・タイムゾーンに関する固定変数"
   },
   "fix_vartz_note.label": {
-    "message": "&#37;X:=sent&#37; と組み合わせることが可能"
+    "message": "%X:=sent% と組み合わせることが可能"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML テンプレート"
@@ -840,7 +840,7 @@
     "message": "ヘッダー上部の改行の数:"
   },
   "pref_cursorInsertSpace": {
-    "message": "ハイライト表示された &#37;cursor&#37; にスペースを挿入する"
+    "message": "ハイライト表示された %cursor% にスペースを挿入する"
   },
   "pref_debug_check": {
     "message": "デバッグモード"
@@ -918,10 +918,10 @@
     "message": "テンプレート例のタブを隠す"
   },
   "pref_html.cap": {
-    "message": "&quot; , &amp; , &lt; , &gt; , space はエスケープしてください。詳細はヘルプを参照してください。"
+    "message": "&quot; , & , < , > , space はエスケープしてください。詳細はヘルプを参照してください。"
   },
   "pref_html.label": {
-    "message": "HTML として挿入する (&lt;b&gt;bold&lt;/b&gt; など)"
+    "message": "HTML として挿入する (<b>bold</b> など)"
   },
   "pref_nameSwap": {
     "message": "'姓, 名' 形式の表記を修正する"
@@ -948,7 +948,7 @@
     "message": "引用ヘッダー"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "引用部冒頭のヘッダーを入力してください。例：On &#37;date&#37; wrote &#37;from(name)&#37;:"
+    "message": "引用部冒頭のヘッダーを入力してください。例：On %date% wrote %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "既定の引用ヘッダーを無効にします。テキストボックスで好きな引用ヘッダーを入力してください。"
@@ -957,10 +957,10 @@
     "message": "差出人を変更したときに署名を削除する"
   },
   "pref_rep_br.cap": {
-    "message": "注：HTML タグに続く改行は &lt;br&gt; に変換されません。"
+    "message": "注：HTML タグに続く改行は <br> に変換されません。"
   },
   "pref_rep_br.label": {
-    "message": "改行を &lt;br&gt; に変換する"
+    "message": "改行を <br> に変換する"
   },
   "pref_rsp.label": {
     "message": "返信メッセージに以下のテンプレートを適用する"
@@ -984,7 +984,7 @@
     "message": "ステータスバーにアイコンを表示する"
   },
   "pref_sigReplaceBR.label": {
-    "message": "プレーンテキスト形式の署名に含まれる改行を &lt;br&gt; で置換する"
+    "message": "プレーンテキスト形式の署名に含まれる改行を <br> で置換する"
   },
   "pref_silentUpdates": {
     "message": "更新履歴の非表示"
@@ -1011,7 +1011,7 @@
     "message": "テンプレート"
   },
   "pref_templateBox_tip": {
-    "message": "メッセージのテンプレートを入力してください。例：こんにちは、&#37;from(name)&#37;さん。&lt;br&gt;メッセージありがとうございました。&lt;br&gt;敬具 &#37;ownname&#37;"
+    "message": "メッセージのテンプレートを入力してください。例：こんにちは、%from(name)%さん。<br>メッセージありがとうございました。<br>敬具 %ownname%"
   },
   "pref_template_tip": {
     "message": "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。"
@@ -1146,7 +1146,7 @@
     "message": "特殊"
   },
   "specform_note.label": {
-    "message": "括弧 [[Cc: &#37;cc(name)&#37;]] 内のテンプレートは、その中の変数 &#37;cc(name)&#37; が利用可能である時のみ有効となります。"
+    "message": "括弧 [[Cc: %cc(name)%]] 内のテンプレートは、その中の変数 %cc(name)% が利用可能である時のみ有効となります。"
   },
   "spellcheck.label": {
     "message": "スペルチェックの言語を指定してください。例：(en, de-DE, es-ES, ru) - スペルチェック辞書をインストールする必要があります。"
@@ -1480,7 +1480,7 @@
     "message": "日時に関する変数"
   },
   "var_xsent.cap": {
-    "message": "&#37;X:=sent&#37; の使用"
+    "message": "%X:=sent% の使用"
   },
   "vouchers.title": {
     "message": "支払い免除"
@@ -1517,19 +1517,19 @@
     "message": "長い書式の例"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37; &#37;A&#37;, &#37;8&#37; &#37;d&#37;, &#37;Y&#37; at &#37;1&#37;:&#37;M&#37;&#37;p(3)&#37;"
+    "message": "%X:=sent% %A%, %8% %d%, %Y% at %1%:%M%%p(3)%"
   },
   "xsent_long_result.label": {
     "message": "結果: Tuesday, December 20, 2011 at 4:11PM"
   },
   "xsent_note.label": {
-    "message": "日時に関する変数は通常現在の日時が反映されます。&#37;X:=sent&#37; と組み合わせた場合のみ、元のメッセージの日時が反映されます。"
+    "message": "日時に関する変数は通常現在の日時が反映されます。%X:=sent% と組み合わせた場合のみ、元のメッセージの日時が反映されます。"
   },
   "xsent_short.cap": {
     "message": "短い書式の例"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "次の変数はどちらの形式でも使用可能です:"

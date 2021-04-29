@@ -15,7 +15,7 @@
     "message": "Address Book Fields"
   },
   "ab_fields.desc": {
-    "message": "When replying to a matching email address you can now use additional fields for address variables like &#37;from&#37;, such as:"
+    "message": "When replying to a matching email address you can now use additional fields for address variables like %from%, such as:"
   },
   "ab_other": {
     "message": "Other"
@@ -200,7 +200,7 @@
     "message": "Sets the cursor position"
   },
   "customdf_note.label": {
-    "message": "Can be combined with &#37;X:=sent&#37;"
+    "message": "Can be combined with %X:=sent%"
   },
   "d.label": {
     "message": "Day of Month (01 to 31) - with leading zero"
@@ -212,7 +212,7 @@
     "message": "Example: "
   },
   "dateformat.explain": {
-    "message": "Most of the time variables above can be used in the parameter string by omitting '&#37;'. See also:"
+    "message": "Most of the time variables above can be used in the parameter string by omitting '%'. See also:"
   },
   "dateformat.label": {
     "message": "Function for inserting current time (clickable field)."
@@ -278,7 +278,7 @@
     "message": "Default address format:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
+    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
   },
   "deleteQuotedTags": {
     "message": "Deletes tags from the quote"
@@ -406,7 +406,7 @@
     "message": "Fixed variables for 'Date format' / 'Timezone'"
   },
   "fix_vartz_note.label": {
-    "message": "Can be combined with &#37;X:=sent&#37;"
+    "message": "Can be combined with %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -555,10 +555,10 @@
     "message": "First select the account you want to export in the SmartTemplates settings dropdown box."
   },
   "im-ex_note3.label": {
-    "message": "Next select 'File' &#8658; 'Export' &#8658; 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer."
+    "message": "Next select 'File' ⇒ 'Export' ⇒ 'Settings and Templates' from the menu bar and save the file (xxx.st4) to your computer."
   },
   "im-ex_note4.label": {
-    "message": "To import a file, select the account you want to import in the SmartTemplates settings dropdown box. Next, select 'File' &#8658; 'Import' &#8658; 'Settings and Templates' from the menu bar."
+    "message": "To import a file, select the account you want to import in the SmartTemplates settings dropdown box. Next, select 'File' ⇒ 'Import' ⇒ 'Settings and Templates' from the menu bar."
   },
   "im-ex_note5.label": {
     "message": "Select the SmartTemplates file (xxx.st4) you want to import."
@@ -840,7 +840,7 @@
     "message": "Number of line breaks at top:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Insert Space to highlight &#37;cursor&#37;"
+    "message": "Insert Space to highlight %cursor%"
   },
   "pref_debug_check": {
     "message": "Debug mode"
@@ -918,10 +918,10 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "Use escape characters for  &quot; , &amp; , &lt; , &gt; , space. See &quot;help&quot; for more details."
+    "message": "Use escape characters for  &quot; , & , < , > , space. See &quot;help&quot; for more details."
   },
   "pref_html.label": {
-    "message": "Use HTML (e.g., &lt;b&gt; bold &lt;/b&gt;)"
+    "message": "Use HTML (e.g., <b> bold </b>)"
   },
   "pref_nameSwap": {
     "message": "Correct LastName, FirstName"
@@ -948,7 +948,7 @@
     "message": "Quote Header"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "In this box, write what should be displayed before the quoted part (original mail) - e.g. On &#37;date&#37;, &#37;from(name)&#37; wrote:"
+    "message": "In this box, write what should be displayed before the quoted part (original mail) - e.g. On %date%, %from(name)% wrote:"
   },
   "pref_quotehead_tip": {
     "message": "Disable default quote header. Please place your own header in the textbox above."
@@ -957,10 +957,10 @@
     "message": "Replace signature when changing email identity"
   },
   "pref_rep_br.cap": {
-    "message": "NOTE: No space will be inserted into the HTML tag by using &lt;br&gt; once."
+    "message": "NOTE: No space will be inserted into the HTML tag by using <br> once."
   },
   "pref_rep_br.label": {
-    "message": "Replace line breaks with &lt;br&gt;"
+    "message": "Replace line breaks with <br>"
   },
   "pref_rsp.label": {
     "message": "Apply the following template to the replied message"
@@ -984,7 +984,7 @@
     "message": "Display button in status bar"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Replace line breaks in plain text signature with &lt;br&gt;"
+    "message": "Replace line breaks in plain text signature with <br>"
   },
   "pref_silentUpdates": {
     "message": "Silent updates"
@@ -1011,7 +1011,7 @@
     "message": "Template"
   },
   "pref_templateBox_tip": {
-    "message": "In this box, put your mail template e.g. Hello &#37;from(name)&#37;, &lt;br&gt; Thanks for your message &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;"
+    "message": "In this box, put your mail template e.g. Hello %from(name)%, <br> Thanks for your message <br> regards, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "You can enhance the template with 'variables'. Click advanced / variables for more information."
@@ -1146,7 +1146,7 @@
     "message": "Special Mail Headers"
   },
   "specform_note.label": {
-    "message": "Sections within double brackets [[Cc: &#37;cc(name)&#37;]] will only be displayed if the variable &#37;cc(name)&#37; can be replaced!"
+    "message": "Sections within double brackets [[Cc: %cc(name)%]] will only be displayed if the variable %cc(name)% can be replaced!"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
@@ -1275,7 +1275,7 @@
     "message": "Your trial period expired {0} days ago."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the &lt;style&gt; tag so that you can now do advanced css styling within your Template."
+    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
   },
   "st.updateMessageNewBrackets2": {
     "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
@@ -1480,7 +1480,7 @@
     "message": "Variables for customized 'Date format'"
   },
   "var_xsent.cap": {
-    "message": "The &#37;X:=sent&#37; Modifier"
+    "message": "The %X:=sent% Modifier"
   },
   "vouchers.title": {
     "message": "Vouchers"
@@ -1517,19 +1517,19 @@
     "message": "Example for a longstring"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock"
+    "message": "%X:=sent%%d%/%m%/%Y% at %H%:%M% o'clock"
   },
   "xsent_long_result.label": {
     "message": "Result: Sunday, 20/12/2011 at 16:24 o'clock"
   },
   "xsent_note.label": {
-    "message": "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with &#37;X:=sent&#37;, the date/time variables will reflect the original messages date/time."
+    "message": "By Default, Date/Time variables will always be initialized with current values (current = the time when you create the email). When combined with %X:=sent%, the date/time variables will reflect the original messages date/time."
   },
   "xsent_short.cap": {
     "message": "Example of a shortstring"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "The following variables can be used in both variants"

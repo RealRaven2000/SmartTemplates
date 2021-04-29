@@ -15,7 +15,7 @@
     "message": "Address Book Fields"
   },
   "ab_fields.desc": {
-    "message": "When replying to a matching email address you can now use additional fields for address variables like &#37;from&#37;, such as:"
+    "message": "When replying to a matching email address you can now use additional fields for address variables like %from%, such as:"
   },
   "ab_other": {
     "message": "Other"
@@ -165,7 +165,7 @@
     "message": "Sets the cursor position"
   },
   "customdf_note.label": {
-    "message": "Pòt èsser combinada amb &#37;X:=sent&#37;"
+    "message": "Pòt èsser combinada amb %X:=sent%"
   },
   "d.label": {
     "message": "Jorn del mes (01 a 31)"
@@ -177,7 +177,7 @@
     "message": "Example: "
   },
   "dateformat.explain": {
-    "message": "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:"
+    "message": "Most time variables above can be used in the parameter string by omitting '%'. See also:"
   },
   "dateformat.label": {
     "message": "Function for inserting current time (clickable field)."
@@ -243,7 +243,7 @@
     "message": "Default address format:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
+    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
   },
   "deleteQuotedTags": {
     "message": "Deletes tags from the quote"
@@ -354,7 +354,7 @@
     "message": "Variablas fixas pel format de data e la zòna orària"
   },
   "fix_vartz_note.label": {
-    "message": "Pòt èsser combinada amb &#37;X:=sent&#37;"
+    "message": "Pòt èsser combinada amb %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -483,10 +483,10 @@
     "message": "D'en primièr, causissètz lo compte que volètz exportar dins lo menú desenrotlant dels reglatges de SmartTemplates."
   },
   "im-ex_note3.label": {
-    "message": "Puèi, seleccionatz « Aisinas  &amp;#8658; Exportar &amp;#8658; Reglatges e modèls » de la barra de menú e salvatz lo fichièr (xxx.st4) sus vòstre ordenador."
+    "message": "Puèi, seleccionatz « Aisinas  ⇒ Exportar ⇒ Reglatges e modèls » de la barra de menú e salvatz lo fichièr (xxx.st4) sus vòstre ordenador."
   },
   "im-ex_note4.label": {
-    "message": "Per importar un fichièr, seleccionatz lo compte que volètz importar dins lo menut desenrotlant dels reglatges de SmartTemplates. Puèi, seleccionatz « Aisinas &amp;#8658; Importar &amp;#8658; Reglatges e modèls » de la barra de menú."
+    "message": "Per importar un fichièr, seleccionatz lo compte que volètz importar dins lo menut desenrotlant dels reglatges de SmartTemplates. Puèi, seleccionatz « Aisinas ⇒ Importar ⇒ Reglatges e modèls » de la barra de menú."
   },
   "im-ex_note5.label": {
     "message": "Seleccionatz lo fichièr SmartTemplates (xxx.st4) que volètz importar."
@@ -735,7 +735,7 @@
     "message": "Nombre de retorns a la linha en naut :"
   },
   "pref_cursorInsertSpace": {
-    "message": "Insert Space to highlight &#37;cursor&#37;"
+    "message": "Insert Space to highlight %cursor%"
   },
   "pref_debug_check": {
     "message": "Mòde desbugatge"
@@ -813,10 +813,10 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "Utilizar de caractèrs d'escapament per  &quot; , &amp; , &lt; , &gt; , espaci. Veire l'ajuda per mai d'informacions."
+    "message": "Utilizar de caractèrs d'escapament per  &quot; , &amp; , < , > , espaci. Veire l'ajuda per mai d'informacions."
   },
   "pref_html.label": {
-    "message": "Utilizar HTML (per ex., &lt;b&gt;gras&lt;/b&gt;)"
+    "message": "Utilizar HTML (per ex., <b>gras</b>)"
   },
   "pref_nameSwap": {
     "message": "Correct LastName, FirstName"
@@ -843,7 +843,7 @@
     "message": "Títol de citacion"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo &#37;date&#37; a escrich &#37;from(name)&#37; :"
+    "message": "Escrivètz vòstra entèsta dins aquesta bóstia, ex. : Lo %date% a escrich %from(name)% :"
   },
   "pref_quotehead_tip": {
     "message": "Desactiva l'entèsta per defaut. Mercé d'indicar vòstra entèsta dins la zòna de tèxte."
@@ -852,10 +852,10 @@
     "message": "Suprimir la signatura al moment del cambiament de compte de mail"
   },
   "pref_rep_br.cap": {
-    "message": "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant &lt;br&gt; un còp."
+    "message": "Remarca : cap d'espaci serà pas apondut dins la balisa HTML en utilizant <br> un còp."
   },
   "pref_rep_br.label": {
-    "message": "Remplaçatz los sauts de linha per &lt;br&gt;"
+    "message": "Remplaçatz los sauts de linha per <br>"
   },
   "pref_rsp.label": {
     "message": "Aplicar lo modèl seguent per las responsas"
@@ -879,7 +879,7 @@
     "message": "Afichar un boton dins la barra dels moduls"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Replace line breaks in plain text signature with &lt;br&gt;"
+    "message": "Replace line breaks in plain text signature with <br>"
   },
   "pref_silentUpdates": {
     "message": "Silent updates"
@@ -906,7 +906,7 @@
     "message": "Modèl"
   },
   "pref_templateBox_tip": {
-    "message": "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu &#37;from(name)&#37;&lt;br&gt; Mercé per ton messatge&lt;br&gt; salutacions, &#37;ownname&#37;"
+    "message": "Escrivètz vòstre modèl dins aquesta bóstia, ex. : Adieu %from(name)%<br> Mercé per ton messatge<br> salutacions, %ownname%"
   },
   "pref_template_tip": {
     "message": "Podètz modificar una entèsta amb de variablas. Veire l'ajuda per mai d'informacions."
@@ -1032,7 +1032,7 @@
     "message": "Variablas Especialas"
   },
   "specform_note.label": {
-    "message": "La frasa [[Cc: &#37;cc(name)&#37;]] s'aficharà pas que se la variabla &#37;cc(name)&#37; pòt èsser remplaçada !"
+    "message": "La frasa [[Cc: %cc(name)%]] s'aficharà pas que se la variabla %cc(name)% pòt èsser remplaçada !"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
@@ -1317,7 +1317,7 @@
     "message": "Variablas per personalizar lo format de data "
   },
   "var_xsent.cap": {
-    "message": "Lo modificador &#37;X:=sent&#37;"
+    "message": "Lo modificador %X:=sent%"
   },
   "vouchers.title": {
     "message": "Vouchers"
@@ -1332,19 +1332,19 @@
     "message": "Exemple d'un format long:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; a &#37;H&#37;:&#37;M&#37;"
+    "message": "%X:=sent%%d%/%m%/%Y% a %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Resultat : Dimenge, 20/12/2011 a 12:15"
   },
   "xsent_note.label": {
-    "message": "Per defaut, las variablas de data e ora seràn totjorn inicializadas amb las valors correntas (al moment de la creacion del messatge). Combinat amb &#37;X:=sent&#37;, las variablas de data e ora seràn las del messatge original."
+    "message": "Per defaut, las variablas de data e ora seràn totjorn inicializadas amb las valors correntas (al moment de la creacion del messatge). Combinat amb %X:=sent%, las variablas de data e ora seràn las del messatge original."
   },
   "xsent_short.cap": {
     "message": "Exemple de format cort:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Amai, podètz utilizar aquelas variablas amb las doas variantas :"

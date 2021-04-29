@@ -15,7 +15,7 @@
     "message": "Adressbokfält"
   },
   "ab_fields.desc": {
-    "message": "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:"
+    "message": "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som %from%, till exempel:"
   },
   "ab_other": {
     "message": "Annat"
@@ -200,7 +200,7 @@
     "message": "Ändrar pekarpositionen"
   },
   "customdf_note.label": {
-    "message": "Kan kombineras med &#37;X:=sent&#37;"
+    "message": "Kan kombineras med %X:=sent%"
   },
   "d.label": {
     "message": "Dag i månaden (01 till 31)"
@@ -212,7 +212,7 @@
     "message": "Exempel:"
   },
   "dateformat.explain": {
-    "message": "De flesta av tidsvariablerna ovan kan användas i parametersträngen genom att utelämna '&#37;'. Se även:"
+    "message": "De flesta av tidsvariablerna ovan kan användas i parametersträngen genom att utelämna '%'. Se även:"
   },
   "dateformat.label": {
     "message": "Funktion för att infoga nuvarande tid (klickbart fält)."
@@ -278,7 +278,7 @@
     "message": "Standardformat för adress:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format att använda när adresserna &#37;to&#37; &#37;from&#37; &#37;cc&#37; ersätts. T.ex. förnamn,efternamn,??post kommer att visa förnamnet följt av efternamnet; om båda är otillgängliga kommer e-postadressen visas."
+    "message": "Format att använda när adresserna %to% %from% %cc% ersätts. T.ex. förnamn,efternamn,??post kommer att visa förnamnet följt av efternamnet; om båda är otillgängliga kommer e-postadressen visas."
   },
   "deleteQuotedTags": {
     "message": "Tar bort taggar från offerten"
@@ -406,7 +406,7 @@
     "message": "Fasta variabler för datumformat och tidszon "
   },
   "fix_vartz_note.label": {
-    "message": "Kan kombineras med &#37;X:=sent&#37;"
+    "message": "Kan kombineras med %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-mall"
@@ -840,7 +840,7 @@
     "message": "Antal radbrytningar i början:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Infoga mellanslag för att markera &#37;cursor&#37;"
+    "message": "Infoga mellanslag för att markera %cursor%"
   },
   "pref_debug_check": {
     "message": "Felsökningsläge"
@@ -918,10 +918,10 @@
     "message": "Dölj flik med exempel"
   },
   "pref_html.cap": {
-    "message": "Använd undantagstecken för &quot; , &amp; , &lt; , &gt; och blanksteg. Se Hjälp för närmare detaljer."
+    "message": "Använd undantagstecken för &quot; , &amp; , < , > och blanksteg. Se Hjälp för närmare detaljer."
   },
   "pref_html.label": {
-    "message": "Använd HTML (t.ex. &lt;b&gt;fetstil&lt;/b&gt;)"
+    "message": "Använd HTML (t.ex. <b>fetstil</b>)"
   },
   "pref_nameSwap": {
     "message": "Korrigera Efternamn, Förnamn"
@@ -948,7 +948,7 @@
     "message": "Citationssidhuvud"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den &#37;date&#37; skrev &#37;from(name)&#37;:"
+    "message": "I detta fält skriver du vad som bär visas innan den citerade delen (ursprungliga e-posten) - d.v.s. Den %date% skrev %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "Inaktivera standardcitathuvudet. Formulera ditt citathuvud i textrutan."
@@ -957,10 +957,10 @@
     "message": "Ersätt signaturen när e-postidentiteten ändras"
   },
   "pref_rep_br.cap": {
-    "message": "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med &lt;br&gt;."
+    "message": "Obs: Kommer inte att ersätta ny rad som följer på en HTML-tagg med <br>."
   },
   "pref_rep_br.label": {
-    "message": "Ersätt ny rad med &lt;br&gt;"
+    "message": "Ersätt ny rad med <br>"
   },
   "pref_rsp.label": {
     "message": "Tillämpa följande mall på svarsmeddelandet"
@@ -984,7 +984,7 @@
     "message": "Visa knapp i statusfältet"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Ersätt radbrytningar i signaturer med vanlig text med &lt;br&gt;"
+    "message": "Ersätt radbrytningar i signaturer med vanlig text med <br>"
   },
   "pref_silentUpdates": {
     "message": "Tyst uppdateringar"
@@ -1011,7 +1011,7 @@
     "message": "Mall"
   },
   "pref_templateBox_tip": {
-    "message": "Skriv din e-postmall i detta fält, t.ex. Hej &#37;from(name)&#37;, &lt;br&gt; tack för ditt meddelande &lt;br&gt; hälsningar, &lt;br&gt;&#37;ownname&#37;"
+    "message": "Skriv din e-postmall i detta fält, t.ex. Hej %from(name)%, <br> tack för ditt meddelande <br> hälsningar, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "Du kan ändra citathuvudet med reserverade ord. Se Hjälp för mer information."
@@ -1146,7 +1146,7 @@
     "message": "Specialvariabler"
   },
   "specform_note.label": {
-    "message": "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!"
+    "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
@@ -1480,7 +1480,7 @@
     "message": "Variabler för anpassat datumformat"
   },
   "var_xsent.cap": {
-    "message": "Att använda &#37;X:=sent&#37;"
+    "message": "Att använda %X:=sent%"
   },
   "vouchers.title": {
     "message": "Tillgodokvitton"
@@ -1517,19 +1517,19 @@
     "message": "Exempel på en långsträng:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; kl. &#37;H&#37;:&#37;M&#37;:"
+    "message": "%X:=sent%%d%.%m%.%Y% kl. %H%:%M%:"
   },
   "xsent_long_result.label": {
     "message": "Resultat: 16.02.2011 kl. 12:15: "
   },
   "xsent_note.label": {
-    "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med &#37;X:=sent&#37; kommer tidigare angivna värden att användas."
+    "message": "Variablerna som nämns ovan kommer vanligtvis ange de aktuella värdena. När du kombinerar dem med %X:=sent% kommer tidigare angivna värden att användas."
   },
   "xsent_short.cap": {
     "message": "Exempel på en kortsträng:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Du kan dessutom använda dessa variabler:"

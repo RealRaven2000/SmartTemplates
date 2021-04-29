@@ -15,7 +15,7 @@
     "message": "Pola książki adresowej"
   },
   "ab_fields.desc": {
-    "message": "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych pól dla zmiennych adresu, takich jak &#37;from&#37;, takich jak:"
+    "message": "Odpowiadając na pasujący adres e-mail, możesz teraz użyć dodatkowych pól dla zmiennych adresu, takich jak %from%, takich jak:"
   },
   "ab_other": {
     "message": "Inne"
@@ -200,7 +200,7 @@
     "message": "Określ pozycję kursora"
   },
   "customdf_note.label": {
-    "message": "Mogą być łączone z &#37;X:=sent&#37;"
+    "message": "Mogą być łączone z %X:=sent%"
   },
   "d.label": {
     "message": "Dzień miesiąca (01 do 31)"
@@ -212,7 +212,7 @@
     "message": "Przykład:"
   },
   "dateformat.explain": {
-    "message": "Większość powyższych zmiennych czasowych można użyć w ciągu parametrów, pomijając „&#37;”. Zobacz też:"
+    "message": "Większość powyższych zmiennych czasowych można użyć w ciągu parametrów, pomijając „%”. Zobacz też:"
   },
   "dateformat.label": {
     "message": "Funkcja wstawiania aktualnego czasu (pole klikalne)."
@@ -278,7 +278,7 @@
     "message": "Domyślny format adresu:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format używany podczas zastępowania zwykłych adresów  &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Na przykład. (firstname,lastname,??mail) pokaże imię, a następnie nazwisko; jeśli oba są niedostępne, wyświetli się adres e-mail."
+    "message": "Format używany podczas zastępowania zwykłych adresów  %to% %from% %cc%. Na przykład. (firstname,lastname,??mail) pokaże imię, a następnie nazwisko; jeśli oba są niedostępne, wyświetli się adres e-mail."
   },
   "deleteQuotedTags": {
     "message": "Usuwa tagi z cytatu"
@@ -406,7 +406,7 @@
     "message": "Zmienne dla formatu daty i strefy czasowej"
   },
   "fix_vartz_note.label": {
-    "message": "Mogą być łączone z &#37;X:=sent&#37;"
+    "message": "Mogą być łączone z %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "Szablon HTML"
@@ -840,7 +840,7 @@
     "message": "Liczba wierszy odstępu na górze:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Wstaw spacje do wyróżnienia &#37;cursor&#37;"
+    "message": "Wstaw spacje do wyróżnienia %cursor%"
   },
   "pref_debug_check": {
     "message": "Tryb debugowania"
@@ -918,10 +918,10 @@
     "message": "Ukryj kartę przykładów"
   },
   "pref_html.cap": {
-    "message": "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , &lt; , &gt; oraz spacją. Zobacz pomoc."
+    "message": "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , < , > oraz spacją. Zobacz pomoc."
   },
   "pref_html.label": {
-    "message": "Użyj HTML, np. &lt;b&gt;bold&lt;/b&gt;"
+    "message": "Użyj HTML, np. <b>bold</b>"
   },
   "pref_nameSwap": {
     "message": "Zamieniaj nazwisko i imię miejscami"
@@ -948,7 +948,7 @@
     "message": "Nagłówek cytatu"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "W tym polu podaj swój nagłówek cytatu, np. Dnia &#37;date&#37; &#37;from(name)&#37; napisał:"
+    "message": "W tym polu podaj swój nagłówek cytatu, np. Dnia %date% %from(name)% napisał:"
   },
   "pref_quotehead_tip": {
     "message": "Wyłącz standardowy nagłówek. Utwórz swój nagłówek w polu tekstowym."
@@ -957,10 +957,10 @@
     "message": "Usuwaj podpis, gdy jest zmieniana tożsamość"
   },
   "pref_rep_br.cap": {
-    "message": "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z &lt;br&gt;."
+    "message": "Uwaga! Nowy wiersz nie zostanie zamieniony, jeśli jest poprzedzony znacznikiem HTML z <br>."
   },
   "pref_rep_br.label": {
-    "message": "Zamieniaj nowy wiersz znakiem &lt;br&gt;"
+    "message": "Zamieniaj nowy wiersz znakiem <br>"
   },
   "pref_rsp.label": {
     "message": "Stosuj poniższy szablon dla odpowiedzi"
@@ -984,7 +984,7 @@
     "message": "Wyświetlaj przycisk na pasku stanu"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Zamień w podpisie tekstowym podziały wiersza na &lt;br&gt;"
+    "message": "Zamień w podpisie tekstowym podziały wiersza na <br>"
   },
   "pref_silentUpdates": {
     "message": "Ciche aktualizacje"
@@ -1011,7 +1011,7 @@
     "message": "Szablon"
   },
   "pref_templateBox_tip": {
-    "message": "W tym polu podaj swój szablon, np.  Witaj &#37;from(name).&#37;&lt;br&gt; Dziękuję za Twoją wiadomość.&lt;br&gt; Pozdrowienia &#37;ownname&#37;"
+    "message": "W tym polu podaj swój szablon, np.  Witaj %from(name).%<br> Dziękuję za Twoją wiadomość.<br> Pozdrowienia %ownname%"
   },
   "pref_template_tip": {
     "message": "Możesz zmienić nagłówek za pomocą słów kluczowych 'zmienne'. Zobacz pomoc."
@@ -1146,7 +1146,7 @@
     "message": "Zmienne specjalne"
   },
   "specform_note.label": {
-    "message": "Fraza w nawiasach klamrowych [[Cc: &#37;cc(name)&#37;]] będzie wyświetlana tylko, jeśli zmienna &#37;cc(name)&#37; może być zamieniana!"
+    "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."
@@ -1480,7 +1480,7 @@
     "message": "Zmienne dla dostosowania formatu daty"
   },
   "var_xsent.cap": {
-    "message": "Użycie &#37;X:=sent&#37;"
+    "message": "Użycie %X:=sent%"
   },
   "vouchers.title": {
     "message": "Vouchery"
@@ -1517,19 +1517,19 @@
     "message": "Przykład długiego formatu:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; o godz. &#37;H&#37;:&#37;M&#37;:"
+    "message": "%X:=sent%%d%.%m%.%Y% o godz. %H%:%M%:"
   },
   "xsent_long_result.label": {
     "message": "Wynik: 16.02.2011 o godz. 12:15:"
   },
   "xsent_note.label": {
-    "message": "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z &#37;X:=sent&#37;, będą zmiennymi dolnego poziomu."
+    "message": "Zmienne określane przez aktualne wartości będą zmiennymi górnego poziomu. Jeśli będą łączone z %X:=sent%, będą zmiennymi dolnego poziomu."
   },
   "xsent_short.cap": {
     "message": "Przykład krótkiego formatu:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Dodatkowo można również używać w obu wariantach następujących zmiennych:"

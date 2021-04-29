@@ -15,7 +15,7 @@
     "message": "Campi della rubrica"
   },
   "ab_fields.desc": {
-    "message": "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare campi aggiuntivi per variabili di indirizzo come &#37;from&#37;, ad esempio:"
+    "message": "Quando si risponde a un indirizzo e-mail corrispondente ora è possibile utilizzare campi aggiuntivi per variabili di indirizzo come %from%, ad esempio:"
   },
   "ab_other": {
     "message": "Altro"
@@ -200,7 +200,7 @@
     "message": "Imposta la posizione del cursore"
   },
   "customdf_note.label": {
-    "message": "È possibile associarle con &#37;X:=sent&#37;"
+    "message": "È possibile associarle con %X:=sent%"
   },
   "d.label": {
     "message": "Giorno del mese (da 01 a 31) espresso con due cifre"
@@ -212,7 +212,7 @@
     "message": "Esempio:"
   },
   "dateformat.explain": {
-    "message": "La maggior parte delle variabili temporali sopra possono essere utilizzate nella stringa del parametro omettendo '&#37;'. Guarda anche:"
+    "message": "La maggior parte delle variabili temporali sopra possono essere utilizzate nella stringa del parametro omettendo '%'. Guarda anche:"
   },
   "dateformat.label": {
     "message": "Funzione per l'inserimento del tempo corrente (campo cliccabile)."
@@ -278,7 +278,7 @@
     "message": "Formato indirizzo predefinito:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Formato da utilizzare quando si sostituiscono gli indirizzi da &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Per (firstname,lastname,??mail) mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta."
+    "message": "Formato da utilizzare quando si sostituiscono gli indirizzi da %to% %from% %cc%. Per (firstname,lastname,??mail) mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta."
   },
   "deleteQuotedTags": {
     "message": "Elimina i tag dalla citazione"
@@ -406,7 +406,7 @@
     "message": "Variabili per il formato data/ora e fuso orario"
   },
   "fix_vartz_note.label": {
-    "message": "È possibile associarle con &#37;X:=sent&#37;"
+    "message": "È possibile associarle con %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "Modello HTML"
@@ -840,7 +840,7 @@
     "message": "Numero di linee vuote nella testata:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Inserisci uno spazio per evidenziare il &#37;cursor&#37;"
+    "message": "Inserisci uno spazio per evidenziare il %cursor%"
   },
   "pref_debug_check": {
     "message": "Modalità debug"
@@ -918,10 +918,10 @@
     "message": "Non visualizzare la scheda degli esempi"
   },
   "pref_html.cap": {
-    "message": "Utilizza i caratteri escape per &quot;, &amp;, &lt;, &gt; e per lo spazio. Consultare i contenuti guida per ulteriori informazioni"
+    "message": "Utilizza i caratteri escape per &quot;, &, <, > e per lo spazio. Consultare i contenuti guida per ulteriori informazioni"
   },
   "pref_html.label": {
-    "message": "Utilizza il codice HTML (es.: &lt;b&gt;bold&lt;/b&gt;)"
+    "message": "Utilizza il codice HTML (es.: <b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Sostituisci Cognome, Nome"
@@ -948,7 +948,7 @@
     "message": "Intestazione"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Inserire l'intestazione in questa area di testo, ad esempio Il &#37;date&#37; &#37;from(name)&#37; ha scritto:"
+    "message": "Inserire l'intestazione in questa area di testo, ad esempio Il %date% %from(name)% ha scritto:"
   },
   "pref_quotehead_tip": {
     "message": "Attivando l'opzione non verrà utilizzata l'intestazione predefinita. Formulare l'intestazione personalizzata all'interno dell'area di testo qui sopra"
@@ -957,10 +957,10 @@
     "message": "Sostituisci la firma quando cambia l'identità dell'account"
   },
   "pref_rep_br.cap": {
-    "message": "Attivando l'opzione verrà sostituito con &lt;br&gt;, ad eccezione dei casi in cui segue il codice HTML contenente &lt;br&gt;"
+    "message": "Attivando l'opzione verrà sostituito con <br>, ad eccezione dei casi in cui segue il codice HTML contenente <br>"
   },
   "pref_rep_br.label": {
-    "message": "Sostituisci il ritorno a capo con &lt;br&gt;"
+    "message": "Sostituisci il ritorno a capo con <br>"
   },
   "pref_rsp.label": {
     "message": "Applica il seguente modello di intestazione personalizzata per i messaggi in risposta"
@@ -984,7 +984,7 @@
     "message": "Visualizza il pulsante nella barra di stato"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Sostituisci le interruzioni di riga con &lt;br&gt; nelle firme in testo semplice"
+    "message": "Sostituisci le interruzioni di riga con <br> nelle firme in testo semplice"
   },
   "pref_silentUpdates": {
     "message": "Aggiornamenti silenziosi"
@@ -1011,7 +1011,7 @@
     "message": "Modello"
   },
   "pref_templateBox_tip": {
-    "message": "Inserire il modello in questa area di testo, ad esempio Ciao &#37;from(name)&#37;, &lt;br&gt; grazie per il tuo messaggio &lt;br&gt; saluti, &lt;br&gt;&#37;ownname&#37;"
+    "message": "Inserire il modello in questa area di testo, ad esempio Ciao %from(name)%, <br> grazie per il tuo messaggio <br> saluti, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "È possibile modificare l'intestazione utilizzando molteplici variabili. Consultare i contenuti guida per ulteriori informazioni"
@@ -1146,7 +1146,7 @@
     "message": "Variabili speciali"
   },
   "specform_note.label": {
-    "message": "Verrà visualizzata la frase [[Cc: &#37;cc(name)&#37;]] solo se è possibile sostituire la variabile &#37;cc(name)&#37;!"
+    "message": "Verrà visualizzata la frase [[Cc: %cc(name)%]] solo se è possibile sostituire la variabile %cc(name)%!"
   },
   "spellcheck.label": {
     "message": "Imposta la lingua per il controllo ortografico. Valori di esempio: (en, de-DE, es-ES, it) - nota che il dizionario deve essere installato."
@@ -1275,7 +1275,7 @@
     "message": "Il tuo periodo di prova è scaduto {0} giorni fa."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Caro utente di SmartTemplates, abbiamo il piacere di annunciarti che, a partire da questa versione, SmartTemplates supporta anche l'uso delle parentesi graffe { } e del tag &lt;style&gt;, e consente quindi di utilizzare nel modello una formattazione CSS avanzata."
+    "message": "Caro utente di SmartTemplates, abbiamo il piacere di annunciarti che, a partire da questa versione, SmartTemplates supporta anche l'uso delle parentesi graffe { } e del tag <style>, e consente quindi di utilizzare nel modello una formattazione CSS avanzata."
   },
   "st.updateMessageNewBrackets2": {
     "message": "D'ora in avanti, la sintassi specifica per le espressioni tra parentesi è cambiata: invece delle parentesi graffe {%cc(name)%} utilizzare le doppie parentesi quadre [[%cc(name)%]]. Consultare la guida per ulteriori dettagli."
@@ -1456,7 +1456,7 @@
     "message": "traduzioni fornite da google"
   },
   "translatorNickname.label": {
-    "message": "A35G, Luana e Lucky &amp; Danilo Fortunato (BabelZilla)"
+    "message": "A35G, Luana e Lucky & Danilo Fortunato (BabelZilla)"
   },
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
@@ -1480,7 +1480,7 @@
     "message": "Variabili per data/ora personalizzata "
   },
   "var_xsent.cap": {
-    "message": "Variabile &#37;X:=sent&#37;"
+    "message": "Variabile %X:=sent%"
   },
   "vouchers.title": {
     "message": "Buoni"
@@ -1517,19 +1517,19 @@
     "message": "Esempio di Longstring"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; alle ore &#37;H&#37;:&#37;M&#37;"
+    "message": "%X:=sent%%d%.%m%.%Y% alle ore %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Risultato:  Domenica, 16.02.2011 alle ore 12:15"
   },
   "xsent_note.label": {
-    "message": "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile &#37;X:=sent&#37;#37; vengono utilizzati i valori di quando il messaggio è stato inviato"
+    "message": "Le variabili per data e ora vengono sempre impostate al valore attuale, ovvero la data e ora in cui si redige il messaggio. Se associate alla variabile %X:=sent%#37; vengono utilizzati i valori di quando il messaggio è stato inviato"
   },
   "xsent_short.cap": {
     "message": "Esempio di Shortstring:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Le seguenti variabili si possono utilizzare in entrambe le varianti"

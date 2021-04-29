@@ -80,12 +80,12 @@ END LICENSE BLOCK
     # [issue 120] Spanish locale broken which creates an error when options screen is displayed
     # [issue 121] Common settings are shown even though the correct account seems to be selected!
     
-
   Version 3.5 - WIP
     # [issue 125] Improved support for converting encoded characters used in address fields such as "from"
     # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
-    # [issue 127] Make SmartTemplates compatible with Thunderbird 88.0b1
+    # [issue 127] Make SmartTemplates compatible with Thunderbird 89
     # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
+    # New localization scheme implemented
  
     
 =========================

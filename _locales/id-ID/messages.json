@@ -15,7 +15,7 @@
     "message": "Kolom Buku Alamat"
   },
   "ab_fields.desc": {
-    "message": "Saat membalas ke alamat email yang cocok, Anda sekarang dapat menggunakan bidang tambahan untuk variabel alamat seperti &#37;from&#37;, seperti:"
+    "message": "Saat membalas ke alamat email yang cocok, Anda sekarang dapat menggunakan bidang tambahan untuk variabel alamat seperti %from%, seperti:"
   },
   "ab_other": {
     "message": "Other"
@@ -165,7 +165,7 @@
     "message": "Setel posisi kursor"
   },
   "customdf_note.label": {
-    "message": "Dapat digabung dengan &#37;X:=sent&#37;"
+    "message": "Dapat digabung dengan %X:=sent%"
   },
   "d.label": {
     "message": "Hari dalam Sebulan (01 - 31) - dengan nol"
@@ -177,7 +177,7 @@
     "message": "Contoh:"
   },
   "dateformat.explain": {
-    "message": "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan '&#37;'. Lihat juga:"
+    "message": "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan '%'. Lihat juga:"
   },
   "dateformat.label": {
     "message": "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)"
@@ -243,7 +243,7 @@
     "message": "Format alamat bawaan:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format yang digunakan saat mengganti alamat &#37;to&#37; &#37;from&#37; &#37;cc&#37; biasa. Mis, Nama depan, nama belakang, ?? pesan akan ditampilkan nama depan diikuti nama belakang; jika keduanya tak tersedia, akan menampilakn alamat email sebagai gantinya."
+    "message": "Format yang digunakan saat mengganti alamat %to% %from% %cc% biasa. Mis, Nama depan, nama belakang, ?? pesan akan ditampilkan nama depan diikuti nama belakang; jika keduanya tak tersedia, akan menampilakn alamat email sebagai gantinya."
   },
   "deleteQuotedTags": {
     "message": "Deletes tags from the quote"
@@ -354,7 +354,7 @@
     "message": "Variabel tetap untuk 'Format Tanggal' / 'Zona Waktu'"
   },
   "fix_vartz_note.label": {
-    "message": "Dapat digabung dengan &#37;X:=sent&#37;"
+    "message": "Dapat digabung dengan %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -735,7 +735,7 @@
     "message": "Jumlah jeda baris di atas:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Sisipkan Ruang untuk menyorot &#37;cursor&#37;"
+    "message": "Sisipkan Ruang untuk menyorot %cursor%"
   },
   "pref_debug_check": {
     "message": "Mode Debug"
@@ -813,10 +813,10 @@
     "message": "Sembunyikan tab contoh"
   },
   "pref_html.cap": {
-    "message": "Gunakan karakter escape untuk &quot; , &amp; , &lt; , &gt; , spasi. Lihat &quot;help&quot; untuk lebih jelasnya."
+    "message": "Gunakan karakter escape untuk &quot; , & , < , > , spasi. Lihat &quot;help&quot; untuk lebih jelasnya."
   },
   "pref_html.label": {
-    "message": "Gunakan HTML (mis., &lt;b&gt;bold&lt;/b&gt;)"
+    "message": "Gunakan HTML (mis., <b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Koreksi LastName, FirstName"
@@ -843,7 +843,7 @@
     "message": "Kutipan Tajuk"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada &#37;date&#37;, &#37;from(name)&#37; menulis:"
+    "message": "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada %date%, %from(name)% menulis:"
   },
   "pref_quotehead_tip": {
     "message": "Nonaktifkan kutipan header standar. Silakan tempatkan header anda di kotak teks di atas."
@@ -852,10 +852,10 @@
     "message": "Ganti tanda tangan saat mengubah identitas email"
   },
   "pref_rep_br.cap": {
-    "message": "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan &lt;br&gt; satu kali."
+    "message": "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan <br> satu kali."
   },
   "pref_rep_br.label": {
-    "message": "Ganti jeda baris dengan &lt;br&gt;"
+    "message": "Ganti jeda baris dengan <br>"
   },
   "pref_rsp.label": {
     "message": "Terapkan template berikut ke pesan yang dibalas"
@@ -879,7 +879,7 @@
     "message": "Tampilkan tombol di bilah status"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Ganti jeda baris tanda tangan dalam teks biasa dengan &lt;br&gt;"
+    "message": "Ganti jeda baris tanda tangan dalam teks biasa dengan <br>"
   },
   "pref_silentUpdates": {
     "message": "Silent updates"
@@ -906,7 +906,7 @@
     "message": "Template"
   },
   "pref_templateBox_tip": {
-    "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo &#37;from(name)&#37;, &lt;br&gt; Terima kasih atas pesan Anda &lt;br&gt; Salam, &lt;br&gt;&#37;ownname&#37;"
+    "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo %from(name)%, <br> Terima kasih atas pesan Anda <br> Salam, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut."
@@ -1032,7 +1032,7 @@
     "message": "Khusus"
   },
   "specform_note.label": {
-    "message": "Bagian dalam kurung ganda  [[Cc: &#37;cc(name)&#37;]] hanya akan ditampilkan jika variabel &#37;cc(name)&#37; bisa diganti!"
+    "message": "Bagian dalam kurung ganda  [[Cc: %cc(name)%]] hanya akan ditampilkan jika variabel %cc(name)% bisa diganti!"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
@@ -1317,7 +1317,7 @@
     "message": "Variabel untuk menyesuaikan 'Format tanggal'"
   },
   "var_xsent.cap": {
-    "message": "Pengubah &#37;X:=sent&#37;"
+    "message": "Pengubah %X:=sent%"
   },
   "vouchers.title": {
     "message": "Voucher"
@@ -1332,19 +1332,19 @@
     "message": "Contoh untuk longstring"
   },
   "xsent_long.label": {
-    "message": "pukul &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37;"
+    "message": "pukul %X:=sent%%d%/%m%/%Y% at %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"
   },
   "xsent_note.label": {
-    "message": "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan &#37;X:=sent&#37;, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli."
+    "message": "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan %X:=sent%, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli."
   },
   "xsent_short.cap": {
     "message": "Contoh dari shortstring"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Variabel berikut dapat digunakan dikedua varian"

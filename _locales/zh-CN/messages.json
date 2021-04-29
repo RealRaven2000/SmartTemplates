@@ -15,7 +15,7 @@
     "message": "地址簿字段"
   },
   "ab_fields.desc": {
-    "message": "现在，当回复匹配的电子邮件地址时，您可以将其他字段用于地址变量，例如 &#37;from&#37;, 例如："
+    "message": "现在，当回复匹配的电子邮件地址时，您可以将其他字段用于地址变量，例如 %from%, 例如："
   },
   "ab_other": {
     "message": "Other"
@@ -200,7 +200,7 @@
     "message": "设置光标位置"
   },
   "customdf_note.label": {
-    "message": "可以和 &#37;X:=sent&#37; 组合"
+    "message": "可以和 %X:=sent% 组合"
   },
   "d.label": {
     "message": "一个月里的一天 (01 至 31)"
@@ -278,7 +278,7 @@
     "message": "默认地址格式："
   },
   "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
+    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
   },
   "deleteQuotedTags": {
     "message": "从引用中删除标签"
@@ -406,7 +406,7 @@
     "message": "固定的日期格式和时区变量"
   },
   "fix_vartz_note.label": {
-    "message": "可以和 &#37;X:=sent&#37; 组合"
+    "message": "可以和 %X:=sent% 组合"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -918,10 +918,10 @@
     "message": "隐藏示例选项卡"
   },
   "pref_html.cap": {
-    "message": "使用转义字符 &quot; , &amp; , &lt; , &gt;，空格。详见帮助。"
+    "message": "使用转义字符 &quot; , &amp; , < , >，空格。详见帮助。"
   },
   "pref_html.label": {
-    "message": "使用 HTML （例如，&lt;b&gt;bold&lt;/b&gt;）"
+    "message": "使用 HTML （例如，<b>bold</b>）"
   },
   "pref_nameSwap": {
     "message": "纠正 LastName, FirstName"
@@ -948,7 +948,7 @@
     "message": "引用头"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "在此框中写下您的引用头，例如：On &#37;date&#37; wrote &#37;from(name)&#37;:"
+    "message": "在此框中写下您的引用头，例如：On %date% wrote %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "禁用标准引用头文件。请将你的引用头文件填入文本框。"
@@ -957,10 +957,10 @@
     "message": "更改邮件身份时删除签名"
   },
   "pref_rep_br.cap": {
-    "message": "注意：如果 &lt;br&gt; 后面跟着一个 HTML 标签则将不能换行"
+    "message": "注意：如果 <br> 后面跟着一个 HTML 标签则将不能换行"
   },
   "pref_rep_br.label": {
-    "message": "用 &lt;br&gt; 换行"
+    "message": "用 <br> 换行"
   },
   "pref_rsp.label": {
     "message": "将以下模板应用于回复消息"
@@ -984,7 +984,7 @@
     "message": "在状态栏显示按钮"
   },
   "pref_sigReplaceBR.label": {
-    "message": "用 &lt;br&gt; 替换纯文本签名中的换行符"
+    "message": "用 <br> 替换纯文本签名中的换行符"
   },
   "pref_silentUpdates": {
     "message": "靜默更新"
@@ -1011,7 +1011,7 @@
     "message": "模板"
   },
   "pref_templateBox_tip": {
-    "message": "在此框中写下您的模板，例如： Hello &#37;from(name)&#37;&lt;br&gt; Thanks for your message&lt;br&gt; regards, &#37;ownname&#37;"
+    "message": "在此框中写下您的模板，例如： Hello %from(name)%<br> Thanks for your message<br> regards, %ownname%"
   },
   "pref_template_tip": {
     "message": "您可以通过关键词'变量'更改引用头文件。更多信息请查看帮助。"
@@ -1146,7 +1146,7 @@
     "message": "特殊变量"
   },
   "specform_note.label": {
-    "message": "在弧面括号内的短语 [[Cc: &#37;cc(name)&#37;]] 将只显示，如果变量 &#37;cc(name)&#37; 可以更换!"
+    "message": "在弧面括号内的短语 [[Cc: %cc(name)%]] 将只显示，如果变量 %cc(name)% 可以更换!"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
@@ -1480,7 +1480,7 @@
     "message": "自定义日期格式的变量"
   },
   "var_xsent.cap": {
-    "message": "使用 &#37;X:=sent&#37;"
+    "message": "使用 %X:=sent%"
   },
   "vouchers.title": {
     "message": "凭证"
@@ -1517,19 +1517,19 @@
     "message": "长字符串的例子："
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock"
+    "message": "%X:=sent%%d%/%m%/%Y% at %H%:%M% o'clock"
   },
   "xsent_long_result.label": {
     "message": "Result: Sunday, 20/12/2011 at 16:24 o'clock"
   },
   "xsent_note.label": {
-    "message": "上面的变量将正常设置当前的值。当与 &#37;X:=sent&#37; 组合时，将设置过去的值。"
+    "message": "上面的变量将正常设置当前的值。当与 %X:=sent% 组合时，将设置过去的值。"
   },
   "xsent_short.cap": {
     "message": "短字符串的例子："
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "额外的，你可以在以下两个变种变量使用："

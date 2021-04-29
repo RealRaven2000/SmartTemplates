@@ -15,7 +15,7 @@
     "message": "地址簿字段"
   },
   "ab_fields.desc": {
-    "message": "現在，當回复匹配的電子郵件地址時，您可以將其他字段用於地址變量，例如 &#37;from&#37;，例如："
+    "message": "現在，當回复匹配的電子郵件地址時，您可以將其他字段用於地址變量，例如 %from%，例如："
   },
   "ab_other": {
     "message": "Other"
@@ -200,7 +200,7 @@
     "message": "Sets the cursor position"
   },
   "customdf_note.label": {
-    "message": "可以跟 &#37;X:=sent&#37; 整合"
+    "message": "可以跟 %X:=sent% 整合"
   },
   "d.label": {
     "message": "Day of Month (01 to 31) - with leading zero"
@@ -278,7 +278,7 @@
     "message": "Default address format:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
+    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
   },
   "deleteQuotedTags": {
     "message": "從引用中刪除標籤"
@@ -406,7 +406,7 @@
     "message": "'日期格式'/'時區'為固定變數"
   },
   "fix_vartz_note.label": {
-    "message": "可以跟 &#37;X:=sent&#37; 整合"
+    "message": "可以跟 %X:=sent% 整合"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -840,7 +840,7 @@
     "message": "從頭算起的換行數:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Insert Space to highlight &#37;cursor&#37;"
+    "message": "Insert Space to highlight %cursor%"
   },
   "pref_debug_check": {
     "message": "除錯模式"
@@ -918,10 +918,10 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "使用 ESC 字元來做 &quot; , &amp; , &lt; , &gt; , space. 請查看 &quot;求助&quot; 來取得更完整資訊."
+    "message": "使用 ESC 字元來做 &quot; , &amp; , < , > , space. 請查看 &quot;求助&quot; 來取得更完整資訊."
   },
   "pref_html.label": {
-    "message": "使用HTML (例如.,&lt;b&gt;bold&lt;/b&gt;)"
+    "message": "使用HTML (例如.,<b>bold</b>)"
   },
   "pref_nameSwap": {
     "message": "Correct LastName, FirstName"
@@ -948,7 +948,7 @@
     "message": "引用表頭"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "將引用表頭寫在這個對話框,例如.在&#37;date&#37; wrote &#37;from(name)&#37;:"
+    "message": "將引用表頭寫在這個對話框,例如.在%date% wrote %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "停用預設的引用表頭.請插入您的預設表頭到文字方塊."
@@ -957,10 +957,10 @@
     "message": "當改變電子郵件身份時置換簽名檔"
   },
   "pref_rep_br.cap": {
-    "message": "提醒: 當使用了 &lt;br&gt; 後將沒有空間再插入到 HTML 標籤中."
+    "message": "提醒: 當使用了 <br> 後將沒有空間再插入到 HTML 標籤中."
   },
   "pref_rep_br.label": {
-    "message": "用 &lt;br&gt; 來取代換行"
+    "message": "用 <br> 來取代換行"
   },
   "pref_rsp.label": {
     "message": "套用以下的樣板到已回覆的郵件"
@@ -984,7 +984,7 @@
     "message": "在狀態列顯示按鈕"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Replace line breaks in plain text signature with &lt;br&gt;"
+    "message": "Replace line breaks in plain text signature with <br>"
   },
   "pref_silentUpdates": {
     "message": "Silent updates"
@@ -1011,7 +1011,7 @@
     "message": "樣板"
   },
   "pref_templateBox_tip": {
-    "message": "將樣板寫在這個對話框,例如.您好 &#37;from(name)&#37;, &lt;br&gt; 感謝您的郵件 &lt;br&gt; regards, &lt;br&gt;&#37;ownname&#37;"
+    "message": "將樣板寫在這個對話框,例如.您好 %from(name)%, <br> 感謝您的郵件 <br> regards, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "您可以用'變數'來變更引用表頭.請用求助取得更多資訊."
@@ -1146,7 +1146,7 @@
     "message": "特殊"
   },
   "specform_note.label": {
-    "message": "假如變數 &#37;cc(name)&#37; 可以被置換時,將會顯示插入兩個中括號的 [[Cc: &#37;cc(name)&#37;]]!"
+    "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
@@ -1480,7 +1480,7 @@
     "message": "自訂 '日期格式' 的變數"
   },
   "var_xsent.cap": {
-    "message": "&#37;X:=sent&#37; 修改者"
+    "message": "%X:=sent% 修改者"
   },
   "vouchers.title": {
     "message": "优惠券"
@@ -1517,19 +1517,19 @@
     "message": "長字串的範例"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; at &#37;H&#37;:&#37;M&#37; o'clock"
+    "message": "%X:=sent%%d%/%m%/%Y% at %H%:%M% o'clock"
   },
   "xsent_long_result.label": {
     "message": "答案: 星期日, 20/12/2011 at 16:24 o'clock"
   },
   "xsent_note.label": {
-    "message": "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 &#37;X:=sent&#37;,則日期/時間變數將會對應原來郵件的日期/時間."
+    "message": "一般來說,日期/時間的變數都會設定為目前的值(目前=指當您建立這封郵件的時候).當合併了 %X:=sent%,則日期/時間變數將會對應原來郵件的日期/時間."
   },
   "xsent_short.cap": {
     "message": "短字串的範例"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "The following variables can be used in both variants"

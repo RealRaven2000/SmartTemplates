@@ -15,7 +15,7 @@
     "message": "Campos do Catálogo de Endereços"
   },
   "ab_fields.desc": {
-    "message": "Ao responder a um endereço de e-mail correspondente, agora você pode usar campos adicionais para variáveis de endereço como &#37;from&#37;, como:"
+    "message": "Ao responder a um endereço de e-mail correspondente, agora você pode usar campos adicionais para variáveis de endereço como %from%, como:"
   },
   "ab_other": {
     "message": "Outro"
@@ -165,7 +165,7 @@
     "message": "Definir a posição do cursor"
   },
   "customdf_note.label": {
-    "message": "Podem ser combinadas com &#37;X:=sent&#37;"
+    "message": "Podem ser combinadas com %X:=sent%"
   },
   "d.label": {
     "message": "Dia do mês (de 01 a 31)"
@@ -177,7 +177,7 @@
     "message": "Exemplo:"
   },
   "dateformat.explain": {
-    "message": "A maioria das variáveis de tempo acima podem ser usadas na string de parâmetro omitindo '&#37;'. Veja também:"
+    "message": "A maioria das variáveis de tempo acima podem ser usadas na string de parâmetro omitindo '%'. Veja também:"
   },
   "dateformat.label": {
     "message": "Function for inserting current time (clickable field)."
@@ -243,7 +243,7 @@
     "message": "Formato de endereço padrão:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Formato a ser usado ao substituir endereços simples &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Por exemplo. (firstname,lastname,??mail) mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email."
+    "message": "Formato a ser usado ao substituir endereços simples %to% %from% %cc%. Por exemplo. (firstname,lastname,??mail) mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email."
   },
   "deleteQuotedTags": {
     "message": "Exclui tags da cotação"
@@ -354,7 +354,7 @@
     "message": "Variáveis para data e hora"
   },
   "fix_vartz_note.label": {
-    "message": "Podem ser combinadas com &#37;X:=sent&#37;"
+    "message": "Podem ser combinadas com %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "Modelo HTML"
@@ -735,7 +735,7 @@
     "message": "Número de quebra de linhas no topo:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Inserir espaço para destacar &#37;cursor&#37;"
+    "message": "Inserir espaço para destacar %cursor%"
   },
   "pref_debug_check": {
     "message": "Modo de depuração"
@@ -813,10 +813,10 @@
     "message": "Ocultar aba de exemplos"
   },
   "pref_html.cap": {
-    "message": "Usar caracteres de escape para &quot; , &amp; , &lt; , &gt; , espaço. Veja a ajuda para detalhes."
+    "message": "Usar caracteres de escape para &quot; , &amp; , < , > , espaço. Veja a ajuda para detalhes."
   },
   "pref_html.label": {
-    "message": "Usar HTML (por exemplo, &lt;b&gt;negrito&lt;/b&gt;)"
+    "message": "Usar HTML (por exemplo, <b>negrito</b>)"
   },
   "pref_nameSwap": {
     "message": "Corrigir sobrenome, nome"
@@ -843,7 +843,7 @@
     "message": "Citação de cabeçalho"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em &#37;date&#37; escreva &#37;from(name)&#37;:"
+    "message": "Escreva sua Citação de Cabeçalho nesta Caixa ex.:. Em %date% escreva %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "Desativar o cabeçalho da mensagem anterior padrão, substituindo pelo modelo informado."
@@ -852,10 +852,10 @@
     "message": "Substituir assinatura ao mudar identidade de e-mail"
   },
   "pref_rep_br.cap": {
-    "message": "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por &lt;br&gt;."
+    "message": "OBSERVAÇÃO: Isso não vai substituir quebras de linha após tags de HTML por <br>."
   },
   "pref_rep_br.label": {
-    "message": "Substituir quebra de linha por &lt;br&gt;"
+    "message": "Substituir quebra de linha por <br>"
   },
   "pref_rsp.label": {
     "message": "Aplicar o seguinte modelo ao responder mensagens"
@@ -879,7 +879,7 @@
     "message": "Exibir botão na barra de status"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Substiuir quebras de linhas na assinatura de texto simples por &lt;br&gt;"
+    "message": "Substiuir quebras de linhas na assinatura de texto simples por <br>"
   },
   "pref_silentUpdates": {
     "message": "Atualizações silenciosas"
@@ -906,7 +906,7 @@
     "message": "Modelo"
   },
   "pref_templateBox_tip": {
-    "message": "Escreva seu modelo nest caixa ex.: Olá &#37;de(nome)&#37;, &lt;br&gt; Obrigado pela sua mensagem &lt;br&gt; cumprimentos, &lt;br&gt;&#37;próprio nome&#37;"
+    "message": "Escreva seu modelo nest caixa ex.: Olá %de(nome)%, <br> Obrigado pela sua mensagem <br> cumprimentos, <br>%próprio nome%"
   },
   "pref_template_tip": {
     "message": "Você pode alterar o cabeçalho da mensagem anterior usando variáveis. Veja a ajuda para mais detalhes."
@@ -1032,7 +1032,7 @@
     "message": "Variáveis especiais"
   },
   "specform_note.label": {
-    "message": "A frase entre parênteses abaulados [[Cc: &#37;cc(name)&#37;]] somente será exibida, se a variável &#37;cc(name)&#37; não for vazia!"
+    "message": "A frase entre parênteses abaulados [[Cc: %cc(name)%]] somente será exibida, se a variável %cc(name)% não for vazia!"
   },
   "spellcheck.label": {
     "message": "Define o idioma da verificação ortográfica. Valores de exemplo: (en, de-DE, es-ES, ru) - o dicionário deve estar instalado."
@@ -1161,7 +1161,7 @@
     "message": "Seu período de avaliação expirou {0} dias atrás."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Caro usuário do SmartTemplates, estamos animados em anunciar que a partir desta versão, o SmartTemplates também suporta o uso de colchetes { } e a tag &lt;style&gt; de modo que agora você pode criar um estilo css avançado dentro do seu Modelo."
+    "message": "Caro usuário do SmartTemplates, estamos animados em anunciar que a partir desta versão, o SmartTemplates também suporta o uso de colchetes { } e a tag <style> de modo que agora você pode criar um estilo css avançado dentro do seu Modelo."
   },
   "st.updateMessageNewBrackets2": {
     "message": "A partir de agora, a sintaxe específica para expressões entre colchetes foi alterada: em vez de chaves {%cc(name)%} use colchetes duplos [[%cc(name)%]] - para mais detalhes, consulte a ajuda."
@@ -1317,7 +1317,7 @@
     "message": "Variáveis para data e hora personalizáveis "
   },
   "var_xsent.cap": {
-    "message": "Uso do &#37;X:=sent&#37;"
+    "message": "Uso do %X:=sent%"
   },
   "vouchers.title": {
     "message": "Vouchers"
@@ -1332,19 +1332,19 @@
     "message": "Exemplo com variáveis personalizáveis:"
   },
   "xsent_long.label": {
-    "message": "A frase &#37;X:=sent&#37;&#37;d&#37;/&#37;m&#37;/&#37;Y&#37; às &#37;H&#37;:&#37;M&#37;"
+    "message": "A frase %X:=sent%%d%/%m%/%Y% às %H%:%M%"
   },
   "xsent_long_result.label": {
     "message": "Resultado: 20/12/2011 às 16:24"
   },
   "xsent_note.label": {
-    "message": "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com &#37;X:=sent&#37;, elas são exibidas com os valores anteriores."
+    "message": "As variáveis acima são exibidas normalmente com os valores atuais. Quando combinadas com %X:=sent%, elas são exibidas com os valores anteriores."
   },
   "xsent_short.cap": {
     "message": "Exemplos com variáveis fixas:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "As seguintes variáveis podem ser usadas em ambas as variantes também"

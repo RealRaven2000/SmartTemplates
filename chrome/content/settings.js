@@ -149,19 +149,6 @@ SmartTemplate4.Settings = {
 		}
 	},
 	
-	clickLogo : function clickLogo() {
-		const util = SmartTemplate4.Util;
-		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg"),
-		    result = "";
-		if (testString == '') {
-			testString = prompt("Enter a string");
-			result = util.convertPrefValue(testString, true);
-		}
-		else
-			result = util.convertPrefValue(testString, true);
-		
-	},
-
 	// Delete unused preferences.
 	//--------------------------------------------------------------------
 	cleanupUnusedPrefs : function cleanupUnusedPrefs() {
@@ -615,6 +602,11 @@ SmartTemplate4.Settings = {
 		}
 		
 	} ,
+
+  l10n: function() {
+    // [mx l10n] 
+    SmartTemplate4.Util.localize(window, {extra2: 'contribute_button'}); 
+  },
 	
 	toggleExamples: function toggleExamples(el) {
 		document.getElementById('templatesTab').collapsed = (el.checked);
@@ -1953,3 +1945,13 @@ SmartTemplate4.Settings = {
 
 };
 
+
+
+window.document.addEventListener('DOMContentLoaded', 
+  SmartTemplate4.Settings.l10n.bind(SmartTemplate4.Settings) , 
+  { once: true });
+  
+window.addEventListener('load', 
+  SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings) , 
+  { once: true });
+  

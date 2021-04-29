@@ -15,7 +15,7 @@
     "message": "Felder für Adressbuch"
   },
   "ab_fields.desc": {
-    "message": "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:"
+    "message": "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie %from% folgende zusätzliche Felder hinzugefügt werden:"
   },
   "ab_other": {
     "message": "Sonstiges"
@@ -200,7 +200,7 @@
     "message": "Bestimmt die Position des Cursors"
   },
   "customdf_note.label": {
-    "message": "kombinierbar mit &#37;X:=sent&#37;"
+    "message": "kombinierbar mit %X:=sent%"
   },
   "d.label": {
     "message": "Tag des Monats (01 bis 31) - mit führender null"
@@ -212,7 +212,7 @@
     "message": "Beispiel: "
   },
   "dateformat.explain": {
-    "message": "Die meisten oben gelisteten Zeitvariablen können unter weglassen des &#37; Symbols als Parameter verwendet werden, siehe:"
+    "message": "Die meisten oben gelisteten Zeitvariablen können unter weglassen des % Symbols als Parameter verwendet werden, siehe:"
   },
   "dateformat.label": {
     "message": "Funktion um die aktuelle Zeit einzufügen (klickbares Feld)."
@@ -278,7 +278,7 @@
     "message": "Standardformat für Adressen:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Format beim Ersetzen von &#37;to&#37; &#37;from&#37; &#37;cc&#37; Addressen. z.B. (firstname,lastname,??mail) ersetzt durch Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt."
+    "message": "Format beim Ersetzen von %to% %from% %cc% Addressen. z.B. (firstname,lastname,??mail) ersetzt durch Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt."
   },
   "deleteQuotedTags": {
     "message": "Löscht HTML Tags aus Zitaten"
@@ -406,7 +406,7 @@
     "message": "Feste Variablen für Datumsformate und Zeitzone"
   },
   "fix_vartz_note.label": {
-    "message": "kombinierbar mit &#37;X:=sent&#37;"
+    "message": "kombinierbar mit %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Vorlage"
@@ -837,7 +837,7 @@
     "message": "Zeilenumbrüche am Anfang der Vorlagen:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Leerzeichen einfügen um &#37;cursor&#37; hervorzuheben"
+    "message": "Leerzeichen einfügen um %cursor% hervorzuheben"
   },
   "pref_debug_check": {
     "message": "Debug Modus"
@@ -915,10 +915,10 @@
     "message": "Beispiele nicht anzeigen"
   },
   "pref_html.cap": {
-    "message": "Für &quot;, &amp;, &lt;, &gt; bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe."
+    "message": "Für &quot;, &, <, > bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe."
   },
   "pref_html.label": {
-    "message": "HTML Tags verwenden (z.B. &lt;b&gt;fett&lt;/b&gt;)"
+    "message": "HTML Tags verwenden (z.B. <b>fett</b>)"
   },
   "pref_nameSwap": {
     "message": "Tausche Reihenfolge Nachname, Vorname"
@@ -945,7 +945,7 @@
     "message": "Kopfzeilen"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "In diese Box kommen die Kopfzeilen z.b. Am &#37;date&#37; schrieb &#37;from(name)&#37;:"
+    "message": "In diese Box kommen die Kopfzeilen z.b. Am %date% schrieb %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "Standard Thunderbird Kopfzeilen deaktiviert. Bitte schreiben Sie Ihren 'quote-Header' Text in das Textfeld"
@@ -954,10 +954,10 @@
     "message": "Signatur bei Identitätswechsel ersetzen"
   },
   "pref_rep_br.cap": {
-    "message": "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch &lt;br&gt; ersetzt werden, sollte diese Option aktiviert werden."
+    "message": "Wenn Ihre Vorlage Zeilenumbrüche enthält und diese nicht durch <br> ersetzt werden, sollte diese Option aktiviert werden."
   },
   "pref_rep_br.label": {
-    "message": "Ersetze Zeilenumbrüche durch &lt;br&gt;"
+    "message": "Ersetze Zeilenumbrüche durch <br>"
   },
   "pref_rsp.label": {
     "message": "Folgende Vorlage beim Antworten hinzufügen"
@@ -981,7 +981,7 @@
     "message": "Button in der Statuszeile anzeigen"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Zeilenumbrüche in Text-Signatur durch &lt;br&gt; ersetzen"
+    "message": "Zeilenumbrüche in Text-Signatur durch <br> ersetzen"
   },
   "pref_silentUpdates": {
     "message": "Stille Updates"
@@ -1008,7 +1008,7 @@
     "message": "Nachrichtenvorlage"
   },
   "pref_templateBox_tip": {
-    "message": "In diese Box kommt die Nachrichtenvorlage z.b. Hallo &#37;from(name)&#37;&lt;br&gt; Danke für Ihre Nachricht&lt;br&gt; Gruß, &lt;br&gt;&#37;ownname&#37;"
+    "message": "In diese Box kommt die Nachrichtenvorlage z.b. Hallo %from(name)%<br> Danke für Ihre Nachricht<br> Gruß, <br>%ownname%"
   },
   "pref_template_tip": {
     "message": "Sie können auch Schlüsselwörter 'Variablen' verwenden. Für Details klicken Sie Mehr / Variablen."
@@ -1143,7 +1143,7 @@
     "message": "Spezialheader"
   },
   "specform_note.label": {
-    "message": "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!"
+    "message": "Der Satz in der Doppelklammer [[Cc: %cc(name)%]] wird nur dann gezeigt, wenn die Variable %cc(name)% ersetzt werden konnte!"
   },
   "spellcheck.label": {
     "message": "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein."
@@ -1275,7 +1275,7 @@
     "message": "Ihre Probezeit ist vor {0} Tagen abgelaufen."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Liebe Nutzer, wir freuen uns bekanntzugeben zu können, dass diese Version erweitert wurde, so daß Sie nun innerhalb Ihrer Templates &lt;style&gt; Tags verwenden können und somit ist nun auch css formatierung möglich."
+    "message": "Liebe Nutzer, wir freuen uns bekanntzugeben zu können, dass diese Version erweitert wurde, so daß Sie nun innerhalb Ihrer Templates <style> Tags verwenden können und somit ist nun auch css formatierung möglich."
   },
   "st.updateMessageNewBrackets2": {
     "message": "Von nun an ändert sich die Sonderformatierung: anstelle von geschweiften Klammern {%cc(name)%} nutzen wir nun Doppelklammern [[%cc(name)%]] - näheres hierzu können Sie der Hilfe entnehmen."
@@ -1477,7 +1477,7 @@
     "message": "Variablen für angepasstes Datumsformat"
   },
   "var_xsent.cap": {
-    "message": "Die Verwendung von &#37;X:=sent&#37;"
+    "message": "Die Verwendung von %X:=sent%"
   },
   "vouchers.title": {
     "message": "Gutscheine"
@@ -1514,19 +1514,19 @@
     "message": "Beispiel eines Langstrings"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; um &#37;H&#37;:&#37;M&#37; Uhr"
+    "message": "%X:=sent%%d%.%m%.%Y% um %H%:%M% Uhr"
   },
   "xsent_long_result.label": {
     "message": "Ergebnis: Sonntag, 20.12.2011 16:24 +0100"
   },
   "xsent_note.label": {
-    "message": "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit &#37;X:=sent&#37;, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt."
+    "message": "Datum/Zeit Variablen werden immer durch aktuelle Werte ersetzt (aktuell = Zeitpunkt der Mailerstellung). Kombiniert man sie aber mit %X:=sent%, werden die Datum/Zeit Variablen durch die Originalwerte aus der Nachricht ersetzt."
   },
   "xsent_short.cap": {
     "message": "Beispiel eines Kurzstrings"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Folgende Variablen lassen sich in beiden Varianten ebenso verwenden"

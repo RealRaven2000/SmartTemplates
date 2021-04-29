@@ -15,7 +15,7 @@
     "message": "Adresboekvelden"
   },
   "ab_fields.desc": {
-    "message": "Bij het antwoorden naar een overeenkomend e-mailadres kunt u nu aanvullende velden gebruiken voor adresvariabelen zoals &#37;from&#37;, bijvoorbeeld:"
+    "message": "Bij het antwoorden naar een overeenkomend e-mailadres kunt u nu aanvullende velden gebruiken voor adresvariabelen zoals %from%, bijvoorbeeld:"
   },
   "ab_other": {
     "message": "Overig"
@@ -200,7 +200,7 @@
     "message": "Stelt de cursorpositie in"
   },
   "customdf_note.label": {
-    "message": "Kan worden gecombineerd met &#37;X:=sent&#37;"
+    "message": "Kan worden gecombineerd met %X:=sent%"
   },
   "d.label": {
     "message": "Dag van de maand (01 tot 31) - incl. nul"
@@ -212,7 +212,7 @@
     "message": "Voorbeeld:"
   },
   "dateformat.explain": {
-    "message": "De meeste van de bovenstaande tijdvariabelen kunnen in de parameterreeks worden gebruikt door '&#37;' weg te laten. Zie ook:"
+    "message": "De meeste van de bovenstaande tijdvariabelen kunnen in de parameterreeks worden gebruikt door '%' weg te laten. Zie ook:"
   },
   "dateformat.label": {
     "message": "Functie voor het invoegen van de huidige tijd (aanklikbaar veld)."
@@ -278,7 +278,7 @@
     "message": "Standaard adresnotatie:"
   },
   "defaultMimeFormat_tip": {
-    "message": "Te gebruiken notatie bij vervanging van platte &#37;to&#37;/&#37;from&#37;/&#37;cc&#37;-adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond."
+    "message": "Te gebruiken notatie bij vervanging van platte %to%/%from%/%cc%-adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond."
   },
   "deleteQuotedTags": {
     "message": "Verwijdert labels uit het aangehaalde gedeelte"
@@ -406,7 +406,7 @@
     "message": "Vaste variabelen voor datumopmaak en tijdzone"
   },
   "fix_vartz_note.label": {
-    "message": "Kan worden gecombineerd met &#37;X:=sent&#37;"
+    "message": "Kan worden gecombineerd met %X:=sent%"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-sjabloon"
@@ -840,7 +840,7 @@
     "message": "Aantal regeleinden aan de bovenkant:"
   },
   "pref_cursorInsertSpace": {
-    "message": "Spatie invoegen om &#37;cursor&#37; te accentueren"
+    "message": "Spatie invoegen om %cursor% te accentueren"
   },
   "pref_debug_check": {
     "message": "Foutopsporingsmodus"
@@ -918,10 +918,10 @@
     "message": "Tabblad met voorbeelden verbergen"
   },
   "pref_html.cap": {
-    "message": "Escape-tekens gebruiken voor &quot;, &amp;, &lt;, &gt; en spatie. Lees de hulptekst voor details."
+    "message": "Escape-tekens gebruiken voor &quot;, &, <, > en spatie. Lees de hulptekst voor details."
   },
   "pref_html.label": {
-    "message": "HTML gebruiken (bv. &lt;b&gt;vet&lt;/b&gt;)"
+    "message": "HTML gebruiken (bv. <b>vet</b>)"
   },
   "pref_nameSwap": {
     "message": "Achternaam, Voornaam corrigeren"
@@ -948,7 +948,7 @@
     "message": "Aanhalingstekst"
   },
   "pref_quoteHeaderBox_tip": {
-    "message": "Schrijf uw aanhalingstekst in dit veld, bv. Op &#37;date&#37; schreef &#37;from(name)&#37;:"
+    "message": "Schrijf uw aanhalingstekst in dit veld, bv. Op %date% schreef %from(name)%:"
   },
   "pref_quotehead_tip": {
     "message": "Standaard aanhalingskoptekst uitschakelen. Schrijf uw aanhalingskoptekst in het tekstveld."
@@ -957,10 +957,10 @@
     "message": "Ondertekening vervangen bij wijzigen van e-mailidentiteit"
   },
   "pref_rep_br.cap": {
-    "message": "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig &lt;br&gt; te gebruiken."
+    "message": "OPMERKING: er wordt in het HTML-label geen spatie ingevoegd door eenmalig <br> te gebruiken."
   },
   "pref_rep_br.label": {
-    "message": "Regelafbrekingen vervangen door &lt;br&gt;"
+    "message": "Regelafbrekingen vervangen door <br>"
   },
   "pref_rsp.label": {
     "message": "Volgende sjabloon toepassen op antwoordbericht"
@@ -984,7 +984,7 @@
     "message": "Knop weergeven in statusbalk"
   },
   "pref_sigReplaceBR.label": {
-    "message": "Regelafbrekingen in ondertekening in platte tekst vervangen door &lt;br&gt;"
+    "message": "Regelafbrekingen in ondertekening in platte tekst vervangen door <br>"
   },
   "pref_silentUpdates": {
     "message": "Stille updates"
@@ -1011,7 +1011,7 @@
     "message": "Sjabloon"
   },
   "pref_templateBox_tip": {
-    "message": "Schrijf uw sjabloon in dit veld, bv. Hallo &#37;from(name)&#37;,&lt;br&gt; Bedankt voor uw bericht&lt;br&gt; Met vriendelijke groet, &#37;ownname&#37;"
+    "message": "Schrijf uw sjabloon in dit veld, bv. Hallo %from(name)%,<br> Bedankt voor uw bericht<br> Met vriendelijke groet, %ownname%"
   },
   "pref_template_tip": {
     "message": "U kunt de aanhalingskoptekst wijzigen met ‘variabelen’. Klik op Geavanceerd / Variabelen voor meer informatie."
@@ -1146,7 +1146,7 @@
     "message": "Speciale variabelen"
   },
   "specform_note.label": {
-    "message": "De zin tussen dubbele accolades [[Cc: &#37;cc(name)&#37;]] wordt alleen weergegeven als de variabele &#37;cc(name)&#37; kan worden vervangen!"
+    "message": "De zin tussen dubbele accolades [[Cc: %cc(name)%]] wordt alleen weergegeven als de variabele %cc(name)% kan worden vervangen!"
   },
   "spellcheck.label": {
     "message": "Stelt de taal voor spellingcontrole in. Voorbeeldwaarden: (en, de-DE, es-ES, ru) – hiervoor moet het woordenboek zijn geïnstalleerd."
@@ -1480,7 +1480,7 @@
     "message": "Variabelen voor aangepaste datumopmaak"
   },
   "var_xsent.cap": {
-    "message": "Gebruik van &#37;X:=sent&#37;"
+    "message": "Gebruik van %X:=sent%"
   },
   "vouchers.title": {
     "message": "Tegoedbonnen"
@@ -1517,19 +1517,19 @@
     "message": "Voorbeeld van een lange zin:"
   },
   "xsent_long.label": {
-    "message": "&#37;X:=sent&#37;&#37;d&#37;.&#37;m&#37;.&#37;Y&#37; om &#37;H&#37;:&#37;M&#37;:"
+    "message": "%X:=sent%%d%.%m%.%Y% om %H%:%M%:"
   },
   "xsent_long_result.label": {
     "message": "Resultaat: Zondag, 20.12.2011 om 16:24:"
   },
   "xsent_note.label": {
-    "message": "De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met &#37;X:=sent&#37; combineert, worden de oorspronkelijke waarden weergegeven."
+    "message": "De bovenstaande variabelen zullen normaliter op de huidige waarden staan ingesteld. Wanneer u dit met %X:=sent% combineert, worden de oorspronkelijke waarden weergegeven."
   },
   "xsent_short.cap": {
     "message": "Voorbeeld van een korte zin:"
   },
   "xsent_short.label": {
-    "message": "&#37;X:=sent&#37; &#37;datelocal&#37;"
+    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "In beide varianten kunt u de volgende variabelen gebruiken:"
