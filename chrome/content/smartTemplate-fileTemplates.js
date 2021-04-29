@@ -918,10 +918,7 @@ SmartTemplate4.fileTemplates = {
 					prefs = SmartTemplate4.Preferences,
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		
-    let //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
-        filterText;
+    let filterText = util.getBundleString("fpFilterHtmlTemplate", "HTML Template"); //localized text for filePicker filter menu
 		
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
@@ -938,12 +935,7 @@ SmartTemplate4.fileTemplates = {
 		} 
 		
 		fp.init(window, "", fp.modeOpen);
-		try {
-			filterText = bundle.GetStringFromName("fpFilterHtmlTemplate");
-		}
-		catch (ex) { 
-			filterText ="HTML Template"; 
-		}
+
     fp.appendFilter(filterText, "*.html; *.htm");
     fp.defaultExtension = 'html';
 		

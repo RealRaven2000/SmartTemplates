@@ -17,14 +17,7 @@ SmartTemplate4.IO = {
 //******************************************************************************
 	export : function() {
 		//localized text for filePicker filter menu
-		var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-			 getService(Components.interfaces.nsIStringBundleService);
-		var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties");
-		try{ //try reading the localized string; if it fails write it in English
-			var filterText = bundle.GetStringFromName("fpFilterName");
-		} catch (e) {
-			var filterText = "SmartTemplates File";
-		}
+    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName", "SmartTemplates File");
 
 		var fp = Components.classes['@mozilla.org/filepicker;1'].createInstance(Components.interfaces.nsIFilePicker);
 		fp.init(window, "", fp.modeSave);
@@ -80,14 +73,7 @@ SmartTemplate4.IO = {
 //--------------------------------------------------------------------
 	import : function () {
 		//localized text for filePicker filter menu
-		var strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-			 getService(Components.interfaces.nsIStringBundleService);
-		var bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties");
-		try{ //try reading the localized string; if it fails write it in English
-			var filterText = bundle.GetStringFromName("fpFilterName");
-		} catch (e) {
-			var filterText = "SmartTemplates File";
-		}
+    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName", "SmartTemplates File");
 
 		//Choose file
 		var fp = Components.classes['@mozilla.org/filepicker;1'].createInstance(Components.interfaces.nsIFilePicker);

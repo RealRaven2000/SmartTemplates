@@ -691,11 +691,10 @@ SmartTemplate4.Settings = {
   // @functionName: file / basepath / attach - corresponding to the ST4 variables %file% / %basepath% / %attach%
   getFileName: function getFileName(code, editBox, functionName='file') {
     const Cc = Components.classes,
-          Ci = Components.interfaces;
+          Ci = Components.interfaces,
+          util = SmartTemplate4.Util;
     let fileType = "all",
 		    //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
     switch (functionName) {
       case "style":
@@ -727,19 +726,19 @@ SmartTemplate4.Settings = {
       fp.init(window, "", fp.modeOpen); // second parameter: prompt
     switch (fileType) {
       case 'folder':
-        filterText = bundle.GetStringFromName("fpFolder");
+        filterText = util.getBundleString("fpFolder","Folder");
         fp.appendFilter(filterText, "*.");
         break;
       case 'style':
-        filterText = bundle.GetStringFromName("fpStyle");
+        filterText = util.getBundleString("fpStyle", "Style Sheet");
         fp.appendFilter(filterText, "*.css");
         break;
       case 'html':
-        filterText = bundle.GetStringFromName("fpHTMLFile");
+        filterText = util.getBundleString("fpHTMLFile", "HTML File / Text File");
         fp.appendFilter(filterText, "*.htm;*.html;*.txt");
         break;
       case 'image':
-        filterText = bundle.GetStringFromName("fpImageFile");
+        filterText = util.getBundleString("fpImageFile", "Image File");
          // fp.appendFilter(filterText, "*.png;*.jpg;*.jpeg;*.bmp;*.dib;*.ico;*.svg;*.gif;*.tif");
         fp.appendFilters(Ci.nsIFilePicker.filterImages);
         break;
@@ -773,17 +772,13 @@ SmartTemplate4.Settings = {
   // header.set(subject,"text")
   // header.set(to,"abc@de.com")
   getHeaderArgument: function getHeaderArgument(code) {
-		const Cc = Components.classes,
-          Ci = Components.interfaces,
-          strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		      bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties");
     let txtArg;
     if (code.indexOf('subject')>0)  {
-      txtArg = prompt(bundle.GetStringFromName('prompt.text'));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.text',"Enter the text to add or set"));
       return code.replace("text", txtArg);
     }
     else {
-      txtArg = prompt(bundle.GetStringFromName('prompt.email'));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.email'."Enter an email address"));
       return code.replace("abc@de.com", txtArg);
     }
   } ,
@@ -1357,10 +1352,7 @@ SmartTemplate4.Settings = {
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
 					
-    let //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
-        filterText;
+    let filterText; //localized text for filePicker filter menu
     
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
         fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
@@ -1372,7 +1364,7 @@ SmartTemplate4.Settings = {
 			fp.displayDirectory = defaultPath; // nsILocalFile
 		}    
 		fp.init(window, "", fileOpenMode); // second parameter: prompt
-    filterText = bundle.GetStringFromName("fpJsonFile");
+    filterText = util.getBundleString("fpJsonFile", "JSON File");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';
     if (mode == 'save') {
@@ -1945,8 +1937,6 @@ SmartTemplate4.Settings = {
 
 };
 
-
-
 window.document.addEventListener('DOMContentLoaded', 
   SmartTemplate4.Settings.l10n.bind(SmartTemplate4.Settings) , 
   { once: true });
@@ -1955,3 +1945,7 @@ window.addEventListener('load',
   SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings) , 
   { once: true });
   
+window.addEventListener('unload', 
+  SmartTemplate4.Settings.onUnload.bind(SmartTemplate4.Settings) , 
+  { once: true });
+    

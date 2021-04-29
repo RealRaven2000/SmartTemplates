@@ -3,32 +3,28 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://smarttemplate4/content/skin/common/smartTemplate-register.css" title="SmartTemplateRegStyles" type="text/css"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://smartTemplate4/locale/register.dtd" >
-
 <dialog 
-  title="&licenseWindow.title;"
+  title="__MSG_licenseWindow.title__"
 	id="smarttemplate-register"
 	buttons="none"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-	ondialogcancel="var cancel=SmartTemplate4.Licenser.cancel.bind(SmartTemplate4.Licenser); cancel();"
-	onload="var load=SmartTemplate4.Licenser.load.bind(SmartTemplate4.Licenser); load();"
 >
 
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-util.js" />
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-prefs.js" />
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-rsa.js" />
-	<script type="application/x-javascript" src="chrome://smartTemplate4/content/smartTemplate-register.js" />
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-main.js" />
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-util.js" />
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-prefs.js" />
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-rsa.js" />
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-register.js" />
 	
 	<vbox id="thePage">
 		<hbox>
-			<div class="product">&getSmartTemplate4;</div>
+			<div class="product">__MSG_getSmartTemplate4__</div>
 			<spacer flex="1" />
 			<vbox align="center">
 				<spacer flex="1" />
 				<hbox id="LicenseTerm" class="para">
-					<label id="licenseDateLabel">&label.licenseValid;</label>
+					<label id="licenseDateLabel">__MSG_label.licenseValid__</label>
 					<label id="licenseDate" value="-" />
 				</hbox>
 				<spacer flex="1" />
@@ -37,52 +33,52 @@
 			<vbox>
 				<spacer flex="1"/>
 				<!-- align buttons bottom right -->
-				<label id="haveLicense">&label.haveLicense;</label>
+				<label id="haveLicense">__MSG_label.haveLicense__</label>
 				<hbox>
 					<button id="btnEnterCode"
-									label="&enterLicenseKey.button;"
-									tooltiptext="&enterLicenseKey.tooltip;"
+									label="__MSG_enterLicenseKey.button__"
+									tooltiptext="__MSG_enterLicenseKey.tooltip__"
 									oncommand="SmartTemplate4.Util.viewLicense();window.close();" />
 				</hbox>
 			</vbox>
 			
 		</hbox>
 		
-		<description class="para">&licenseTypes;</description>
+		<description class="para">__MSG_licenseTypes__</description>
 		
-		<description class="para">&intro;</description>
+		<description class="para">__MSG_intro__</description>
 
-		<description class="para">&testDriveS;</description>
+		<description class="para">__MSG_testDriveS__</description>
 			
 		<table>
 			<tr>
 			  <td>
-					<div class="heading">&yearlyLicense.title;</div>
+					<div class="heading">__MSG_yearlyLicense.title__</div>
 					<spacer flex="1" />
 				</td>
 			  <td>
-					<description class="para">&yearlyLicense.premiumFeatures;</description>
+					<description class="para">__MSG_yearlyLicense.premiumFeatures__</description>
 					<label class="para link" 
-					onclick="SmartTemplate4.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
-					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
+					onclick="Register.premiumInfo(event);">__MSG_yearlyLicense.premiumFeatures.moreInfoLink__</label>
+					<description class="para">__MSG_yearlyLicense.usageTerm__ __MSG_yearlyLicense.usageTerm1__</description>
 				</td>
 			</tr>	
 			<tr>	
 				<td>
-					<div class="heading">&updates.title;</div>
+					<div class="heading">__MSG_updates.title__</div>
 					<spacer flex="1" />
 				</td>
 			  <td>
-					<description class="para">&updatesExpiry;</description>
+					<description class="para">__MSG_updatesExpiry__</description>
 				</td>
 			</tr>	
 			<tr>	
 				<td>
-					<div class="heading">&vouchers.title;</div>
+					<div class="heading">__MSG_vouchers.title__</div>
 					<spacer flex="1" />
 				</td>
 				<td>
-					<description class="para">&freeLicense;</description>
+					<description class="para">__MSG_freeLicense__</description>
 				</td>
 			</tr>	
 		</table>
@@ -91,10 +87,10 @@
 	<hbox class="form">
 	  <vbox>
 			<hbox>
-				<label class="ref">&account.label;</label>
+				<label class="ref">__MSG_account.label__</label>
 				<menulist id="mailIdentity"
 					sizetopopup="none"
-					oncommand="SmartTemplate4.Licenser.selectIdentity(this);"
+					oncommand="Register.selectIdentity(this);"
 					>
 					<menupopup>
 					</menupopup>
@@ -103,7 +99,7 @@
 			<hbox>
 				<label control="email"
 							 class="ref"
-							 value="&email.label;" 
+							 value="__MSG_email.label__" 
 							 />
 				<html:input id="email" type="text"/>
 			</hbox>
@@ -113,14 +109,14 @@
 			<hbox>
 				<label control="firstName"
 							 class="ref"
-							 value="&firstName.label;" 
+							 value="__MSG_firstName.label__" 
 							 />
 				<html:input id="firstName" type="text" />
 			</hbox>
 			<hbox>
 				<label control="lastName"
 				       class="ref"
-							 value="&lastName.label;" 
+							 value="__MSG_lastName.label__" 
 							 />
 				<html:input id="lastName" type="text"/>
 			</hbox>
@@ -134,13 +130,13 @@
 					<spacer flex="1" />
 				</td>
 				<td>
-					<label class="shilling">&buyPremiumLicense.instruct;</label>
+					<label class="shilling">__MSG_buyPremiumLicense.instruct__</label>
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnLicense"
 					  class="register"
-						label="&buyPremiumLicense.button;"
-						oncommand="SmartTemplate4.Licenser.goPro(0);" />
+						label="__MSG_buyPremiumLicense.button__"
+						oncommand="Register.goPro(0);" />
 				</td>
 			</tr>
 			
@@ -149,13 +145,13 @@
 					<spacer flex="1" />
 				</td>
 				<td>
-					<label class="shilling">&buyStandardLicense.instruct;</label>
+					<label class="shilling">__MSG_buyStandardLicense.instruct__</label>
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnStdLicense"
 					  class="register"
-						label="&buyStandardLicense.button;"
-						oncommand="SmartTemplate4.Licenser.goPro(2);" />
+						label="__MSG_buyStandardLicense.button__"
+						oncommand="Register.goPro(2);" />
 				</td>
 			</tr>
 			
@@ -165,15 +161,17 @@
 					<spacer flex="1" />
 				</td>
 				<td>
-					<label class="shilling">&buyDomainLicense.instruct;</label>
+					<label class="shilling">__MSG_buyDomainLicense.instruct__</label>
 				</td>
 				<td>
 					<button id="btnDomainLicense"
-						label="&buyDomainLicense.button;"
-						oncommand="SmartTemplate4.Licenser.goPro(1);" />
+						label="__MSG_buyDomainLicense.button__"
+						oncommand="Register.goPro(1);" />
 				</td>
 			</tr>
 		</table>
 	</vbox>
 	<html:input id="referrer"  type="text"  collapsed="true"/>
+	<script type="application/javascript" src="chrome://smartTemplate4/content/smartTemplate-register-dlg.js" />
+  
 </dialog>
