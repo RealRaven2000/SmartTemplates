@@ -3,14 +3,10 @@
 <?xml-stylesheet href = "chrome://global/skin/global.css" type = "text/css"?>
 <?xml-stylesheet href = "chrome://smarttemplate4/content/skin/messageWindow.css" type = "text/css"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://smarttemplate4/locale/smartTemplate-msg.dtd">
-
 <dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         id = "smarttemplate4-msg"
-        title = "&message_default_title;"
+        title = "__MSG_message_default_title__"
         orient = "vertical"
-        onload = "SmartTemplate4.Message.loadMessage();"
-        onunload = "SmartTemplate4.Message.unloadMessage(this);"
         width = "750"
         height = "200">
   <key id="key-esc" keycode="VK_ESCAPE" oncommand="(function doEscape(event) { alert(event); if(event) { event.preventDefault(); event.stopPropagation(); } })();" />
@@ -26,18 +22,18 @@
 		<hbox id = "commands">
 			<spacer flex = "1"/>
 			<button id = "ok"
-			        label = "&accept_button;"
+			        label = "__MSG_accept_button__"
 			        onclick = "if (!this.disabled) SmartTemplate4.Message.okMessage();"/>
 			<button id = "yes"
-			        label = "&yes_button;"
+			        label = "__MSG_yes_button__"
 			        onclick = "if (!this.disabled) SmartTemplate4.Message.yesMessage();"
 			        hidden = "true" />
 			<button id = "no"
-			        label = "&no_button;"
+			        label = "__MSG_no_button__"
 			        onclick = "if (!this.disabled) SmartTemplate4.Message.noMessage();"
 			        hidden = "true" />
 			<button id = "cancel"
-			        label = "&cancel_button;"
+			        label = "__MSG_cancel_button__"
 			        onclick = "if (!this.disabled) SmartTemplate4.Message.cancelMessage();"
 			        hidden = "true" />
       <label id="countDown"> </label>
@@ -46,8 +42,8 @@
 		</hbox>
 	</vbox>
 
-	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-
+	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-msg.js"/>
 </dialog>

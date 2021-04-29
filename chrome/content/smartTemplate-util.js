@@ -2966,8 +2966,6 @@ SmartTemplate4.Message = {
 		window.close();
 	} ,
 
-
-  
   windowKeyPress: function(e,dir) {
     function logEvent(eventTarget) {
 			try {
@@ -3141,8 +3139,13 @@ SmartTemplate4.Message = {
 			document.getElementById('no').removeEventListener("click", win.st4NoListener, false);
 		}
 		win.close();
-	} 
+	} ,
   
+  l10n: function() {
+    // [mx l10n] 
+    SmartTemplate4.Util.localize(window); 
+  },
+	
 };  // ST4.Message
 
 
