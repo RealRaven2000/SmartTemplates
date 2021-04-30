@@ -179,7 +179,7 @@
     "message": "Ta razred spremenljivk lahko uporabite za vstavljanje besedila, odvisno od načina pošiljanja pošte. Za to potrebujete licenco SmartTemplates Pro."
   },
   "contextError": {
-    "message": "Spremenljivke {1} ni mogoče uporabiti za *nova* sporočila!\\nPosvetujte se z dokumentacijo pomoči za dovoljene spremenljivke."
+    "message": "Spremenljivke {1} ni mogoče uporabiti za *nova* sporočila!\nPosvetujte se z dokumentacijo pomoči za dovoljene spremenljivke."
   },
   "contribute_button": {
     "message": "Prispevajte"
@@ -287,7 +287,7 @@
     "message": "Izbriše citirano besedilo"
   },
   "deleteText": {
-    "message": "Odstrani besedilo iz navedka, npr. deleteText(&quot;via Paypal&quot;)"
+    "message": "Odstrani besedilo iz navedka, npr. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Razvijalec"
@@ -918,7 +918,7 @@
     "message": "Skrij zavihek s primeri"
   },
   "pref_html.cap": {
-    "message": "Uporabi ubežne znake za  &quot; , &amp; , < , > , presledek. Glejte &quot;Pomoč&quot; za več podorbnosti."
+    "message": "Uporabi ubežne znake za  \" , &amp; , < , > , presledek. Glejte \"Pomoč\" za več podorbnosti."
   },
   "pref_html.label": {
     "message": "Uporabi HTML (npr., <b>bold</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Konfiguriranje elementov menija…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Težave s pretvarjanjem predloge HTML iz črtice [{1}] \\nNamesto tega uporabljate neobdelane nizke podatke. \\nČe v tem primeru nastanejo nadomestni znaki, poskusite v glavno poglavje dodati izrecno 'meta charset"
+    "message": "Težave s pretvarjanjem predloge HTML iz črtice [{1}] \nNamesto tega uporabljate neobdelane nizke podatke. \nČe v tem primeru nastanejo nadomestni znaki, poskusite v glavno poglavje dodati izrecno 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Datoteke predloge '{0}' ni mogoče naložiti s poti: \\n{1} \\nDatoteka je bila morda odstranjena ali preimenovana."
+    "message": "Datoteke predloge '{0}' ni mogoče naložiti s poti: \n{1} \nDatoteka je bila morda odstranjena ali preimenovana."
   },
   "st.fileTemplates.openFile": {
     "message": "Odpri datoteko predloge SmartTemplates…"
@@ -1486,7 +1486,7 @@
     "message": "Boni"
   },
   "whitespace_note": {
-    "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\ s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
+    "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

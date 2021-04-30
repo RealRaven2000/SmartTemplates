@@ -107,7 +107,7 @@
     "message": "Guardar plantilla…"
   },
   "btnYouTube.tooltip": {
-    "message": "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos."
+    "message": "Visite el canal \"Thunderbird Daily\" en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos."
   },
   "button.pasteLicense": {
     "message": "pegar"
@@ -179,7 +179,7 @@
     "message": "Esta clase de variables se puede utilizar para insertar texto dependiendo de cómo envíe el correo. Necesita una licencia SmartTemplates Pro para estos."
   },
   "contextError": {
-    "message": "La variable {1} no se puede utilizar para mensajes NUEVOS.\\nVea la lista de variables utilizables en Ayuda"
+    "message": "La variable {1} no se puede utilizar para mensajes NUEVOS.\nVea la lista de variables utilizables en Ayuda"
   },
   "contribute_button": {
     "message": "Contribuir"
@@ -287,7 +287,7 @@
     "message": "Elimina el texto citado"
   },
   "deleteText": {
-    "message": "Eliminar texto de la cita, p. ej. deleteText(&quot;via Paypal&quot;)"
+    "message": "Eliminar texto de la cita, p. ej. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Desarrollador"
@@ -302,7 +302,7 @@
     "message": "La licencia tiene una clave ligada al dominio de su compañía. La licencia permitirá que los usuarios cuyas direcciones de correo electrónico acaben con este dominio de correo usen SmartTemplates Pro. Por ejemplo, si introduce el nombre de dominio 'abc.com' entonces los usuarios de correo como fred@abc.com, marta@abc.com, miki.nadie@abc.com, etc., tendrán permitido usar la licencia. El número máximo de usuarios individuales válidos es el número que introdujo en la pantalla inicial."
   },
   "domainLicense.validate": {
-    "message": "Asegúrese de que introduce el nombre del dominio &quot;exactamente tal como es&quot; en las direcciones de correo electrónico de su compañía (la parte *a continuación* del signo @), ya que se usará para autorizar las direcciones de correo electrónico de sus usuarios."
+    "message": "Asegúrese de que introduce el nombre del dominio \"exactamente tal como es\" en las direcciones de correo electrónico de su compañía (la parte *a continuación* del signo @), ya que se usará para autorizar las direcciones de correo electrónico de sus usuarios."
   },
   "donate": {
     "message": "Ayude con una donación única."
@@ -918,7 +918,7 @@
     "message": "Ocultar pestaña de ejemplos"
   },
   "pref_html.cap": {
-    "message": "Usar caracteres de escape para &quot; , & , < , > , espacio. Consulte la Ayuda para más detalles."
+    "message": "Usar caracteres de escape para \" , & , < , > , espacio. Consulte la Ayuda para más detalles."
   },
   "pref_html.label": {
     "message": "Usar HTML (p.ej. <b>bold</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Configurar elementos de menú…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problemas al convertir una plantilla HTML del juego de caracteres [{1}] \\nUsando datos de cadena sin formato en su lugar. \\nSi esto da como resultado caracteres ilegibles, intente agregar un 'meta charset"
+    "message": "Problemas al convertir una plantilla HTML del juego de caracteres [{1}] \nUsando datos de cadena sin formato en su lugar. \nSi esto da como resultado caracteres ilegibles, intente agregar un 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "No se pudo cargar la plantilla de archivo '{0}' desde la ruta: \\n{1}\\nEl archivo puede haber sido eliminado o renombrado."
+    "message": "No se pudo cargar la plantilla de archivo '{0}' desde la ruta: \n{1}\nEl archivo puede haber sido eliminado o renombrado."
   },
   "st.fileTemplates.openFile": {
     "message": "Abra el archivo de plantilla SmartTemplates ..."
@@ -1498,7 +1498,7 @@
     "message": "{L1} Soporte mejorado para convertir caracteres codificados usados en campos de direcciones como 'from' {L2} {L1} Error en la localización para chino tradicional (zh-TW) que rompió el diálogo de configuración. {L2} {L1} Trabajo en curso para hacer SmartTemplates compatible con Thunderbird 91, que está previsto para el verano de 2021 {L2}"
   },
   "whitespace_note": {
-    "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
+    "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

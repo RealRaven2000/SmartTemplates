@@ -179,7 +179,7 @@
     "message": "根据您发送邮件的方式，此类变量可用于插入文本。 您需要获得SmartTemplates Pro许可证。"
   },
   "contextError": {
-    "message": "变量 {1} 不能对*新的*消息使用！\\n请参阅帮助了解允许的变量"
+    "message": "变量 {1} 不能对*新的*消息使用！\n请参阅帮助了解允许的变量"
   },
   "contribute_button": {
     "message": "捐助"
@@ -287,7 +287,7 @@
     "message": "删除引用文字"
   },
   "deleteText": {
-    "message": "从报价中删除一些文字，例如 deleteText(&quot;via Paypal&quot;)"
+    "message": "从报价中删除一些文字，例如 deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "开发人员"
@@ -918,7 +918,7 @@
     "message": "隐藏示例选项卡"
   },
   "pref_html.cap": {
-    "message": "使用转义字符 &quot; , &amp; , < , >，空格。详见帮助。"
+    "message": "使用转义字符 \" , &amp; , < , >，空格。详见帮助。"
   },
   "pref_html.label": {
     "message": "使用 HTML （例如，<b>bold</b>）"
@@ -1164,10 +1164,10 @@
     "message": "Configure menu items…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\\nUsing raw string data instead.\\nIf this results in garbled characters, try adding an explicit 'meta charset"
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\\n{1}\\nThe file may have been removed or renamed."
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
@@ -1498,7 +1498,7 @@
     "message": "{L1}改进了对转换地址字段（例如'from'）中使用的编码字符的支持。{L2} {L1}繁体中文（zh-TW）本地化错误打破了设置对话框。{L2} {L1}正在制作SmartTemplates 与计划于2021年夏季推出的Thunderbird 91兼容{L2}"
   },
   "whitespace_note": {
-    "message": "请注意，空格最好用\\ s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
+    "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

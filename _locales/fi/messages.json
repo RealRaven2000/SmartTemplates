@@ -107,7 +107,7 @@
     "message": "Tallenna pohja…"
   },
   "btnYouTube.tooltip": {
-    "message": "Käy &quot;Thunderbird Daily&quot; -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen"
+    "message": "Käy \"Thunderbird Daily\" -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen"
   },
   "button.pasteLicense": {
     "message": "liitä"
@@ -179,7 +179,7 @@
     "message": "Tätä muuttujien luokkaa voidaan käyttää tekstin lisäämiseen sen mukaan, miten lähetät sähköpostia. Tarvitset SmartTemplates Pro -lisenssin näihin."
   },
   "contextError": {
-    "message": "Muuttuujaa {1} ei voida käyttää *uusille* viesteille!\\nKatso lista sallituista muuttujista ohjeesta"
+    "message": "Muuttuujaa {1} ei voida käyttää *uusille* viesteille!\nKatso lista sallituista muuttujista ohjeesta"
   },
   "contribute_button": {
     "message": "Avusta"
@@ -287,7 +287,7 @@
     "message": "Poistaa lainatun tekstin"
   },
   "deleteText": {
-    "message": "Poista tekstiä otsakkeesta, esim. deleteText(&quot;via Paypal&quot;)"
+    "message": "Poista tekstiä otsakkeesta, esim. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Kehittäjä"
@@ -849,7 +849,7 @@
     "message": "Oikea napsautus avaa debug-tilan lisäasetukset"
   },
   "pref_def.cap": {
-    "message": "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä."
+    "message": "Poista valinta kohdasta \"Käytä oletusta\", käyttääksesi muokattuja otsakkeita tällä tilillä."
   },
   "pref_def.label": {
     "message": "Käytä oletusta"
@@ -918,7 +918,7 @@
     "message": "Piilota esimerkit-välilehti"
   },
   "pref_html.cap": {
-    "message": "Käytä koodinvaihtomerkkejä merkeille &quot;, &, <, >, välilyönti. Yksityiskohdat ohjeessa."
+    "message": "Käytä koodinvaihtomerkkejä merkeille \", &, <, >, välilyönti. Yksityiskohdat ohjeessa."
   },
   "pref_html.label": {
     "message": "Käytä HTML:ää (esim. <b>lihavoitu</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Määritä valikkokohteet…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Ongelmia HTML-mallin muuntamisessa merkistöstä [{1}] \\nKäytä sen sijaan raa'ita merkkijonotietoja. \\nJos tämä johtaa vääristyneisiin merkkeihin, yritä lisätä otsikko-osaan nimenomainen 'meta charset"
+    "message": "Ongelmia HTML-mallin muuntamisessa merkistöstä [{1}] \nKäytä sen sijaan raa'ita merkkijonotietoja. \nJos tämä johtaa vääristyneisiin merkkeihin, yritä lisätä otsikko-osaan nimenomainen 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Tiedostomallia '{0}' ei voitu ladata polusta: \\n{1} \\nTiedosto on ehkä poistettu tai nimetty uudelleen."
+    "message": "Tiedostomallia '{0}' ei voitu ladata polusta: \n{1} \nTiedosto on ehkä poistettu tai nimetty uudelleen."
   },
   "st.fileTemplates.openFile": {
     "message": "Avaa SmartTemplates-mallitiedosto…"
@@ -1498,7 +1498,7 @@
     "message" : "{L1} Parannettu tuki koodattujen merkkien muuntamiseen, joita käytetään osoitekentissä, kuten 'mistä' {L2} {L1} Virhe perinteisen kiinan (zh-TW) lokalisoinnissa rikkoi asetusten valintaikkunan. {L2} {L1} Jatkuva työ SmartTemplatesin tekemiseksi yhteensopiva Thunderbird 91: n kanssa, joka on tarkoitus suunnitella kesäksi 2021 {L2}"
   },
   "whitespace_note": {
-    "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\ s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
+    "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -179,7 +179,7 @@
     "message": "Tuto třídu proměnných lze použít k vložení textu v závislosti na tom, jak odesíláte poštu. K tomu potřebujete licenci SmartTemplates Pro."
   },
   "contextError": {
-    "message": "Promněnná {1} nemůže být použita pro novou zprávu!\\nPoužij nápovědu pro seznam nepovolených promněnných"
+    "message": "Promněnná {1} nemůže být použita pro novou zprávu!\nPoužij nápovědu pro seznam nepovolených promněnných"
   },
   "contribute_button": {
     "message": "Přispět"
@@ -287,7 +287,7 @@
     "message": "Odstraní citovaný text"
   },
   "deleteText": {
-    "message": "Smaže nějaký text z hlavičky, např. deleteText(&quot;via Paypal&quot;)"
+    "message": "Smaže nějaký text z hlavičky, např. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Programátor"
@@ -909,7 +909,7 @@
     "message": "Skrýt záložku s příklady"
   },
   "pref_html.cap": {
-    "message": "Použij únikové znaky pro  &quot; , & , < , >; , mezeru. Pro více detailů se podívejte do nápovědy."
+    "message": "Použij únikové znaky pro  \" , & , < , >; , mezeru. Pro více detailů se podívejte do nápovědy."
   },
   "pref_html.label": {
     "message": "Použij HTML (např. <b>bold</b>)"
@@ -987,16 +987,16 @@
     "message": "Stationery rozšíření"
   },
   "pref_stationeryLink_tip": {
-    "message": "Získat &quot;Stationery&quot;..."
+    "message": "Získat \"Stationery\"..."
   },
   "pref_stationerySupport": {
-    "message": "Podpora &quot;Stationery&quot; rozšíření"
+    "message": "Podpora \"Stationery\" rozšíření"
   },
   "pref_stationerySupport_tip": {
-    "message": "Podpora používá &quot;Stationery&quot; společně s SmartTemplates."
+    "message": "Podpora používá \"Stationery\" společně s SmartTemplates."
   },
   "pref_stationerySupport_tip2": {
-    "message": "Toto vytváří možnost použít šablonu proměných ve tvém &quot;Stationery&quot;."
+    "message": "Toto vytváří možnost použít šablonu proměných ve tvém \"Stationery\"."
   },
   "pref_templateBox.label": {
     "message": "Šablona"
@@ -1155,10 +1155,10 @@
     "message": "Konfigurovat položky nabídky…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problémy s převodem šablony HTML z znakové sady [{1}] \\nMísto toho použijte data surového řetězce. \\nPokud to má za následek zkomolené znaky, zkuste do hlavní části přidat explicitní 'meta charset"
+    "message": "Problémy s převodem šablony HTML z znakové sady [{1}] \nMísto toho použijte data surového řetězce. \nPokud to má za následek zkomolené znaky, zkuste do hlavní části přidat explicitní 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Soubor šablony '{0}' nelze načíst z cesty: \\n{1}\\n Soubor byl pravděpodobně odstraněn nebo přejmenován."
+    "message": "Soubor šablony '{0}' nelze načíst z cesty: \n{1}\n Soubor byl pravděpodobně odstraněn nebo přejmenován."
   },
   "st.fileTemplates.openFile": {
     "message": "Otevřít soubor šablony SmartTemplates…"
@@ -1489,7 +1489,7 @@
     "message" : "{L1} Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1} Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1} Probíhající práce na vytváření SmartTemplates kompatibilní s Thunderbirdem 91, který je plánován na léto 2021 {L2}"
   },
   "whitespace_note": {
-    "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\ s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
+    "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

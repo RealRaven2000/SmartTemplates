@@ -179,7 +179,7 @@
     "message": "根據您發送郵件的方式，此類變量可用於插入文本。 您需要獲得SmartTemplates Pro許可證。"
   },
   "contextError": {
-    "message": "此變數 {1} 無法使用在 *新* 郵件中!\\n請參考允許的變數列表"
+    "message": "此變數 {1} 無法使用在 *新* 郵件中!\n請參考允許的變數列表"
   },
   "contribute_button": {
     "message": "貢獻"
@@ -287,7 +287,7 @@
     "message": "刪除引用文字"
   },
   "deleteText": {
-    "message": "從報價中刪除一些文字，例如 deleteText(&quot;via Paypal&quot;)"
+    "message": "從報價中刪除一些文字，例如 deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "開發者"
@@ -918,7 +918,7 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "使用 ESC 字元來做 &quot; , &amp; , < , > , space. 請查看 &quot;求助&quot; 來取得更完整資訊."
+    "message": "使用 ESC 字元來做 \" , &amp; , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
   },
   "pref_html.label": {
     "message": "使用HTML (例如.,<b>bold</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Configure menu items…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\\nUsing raw string data instead.\\nIf this results in garbled characters, try adding an explicit 'meta charset"
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\\n{1}\\nThe file may have been removed or renamed."
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"

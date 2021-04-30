@@ -179,7 +179,7 @@
     "message": "Diese Klasse von Variablen kann verwendet werden, um Text einzufügen, je nachdem, wie Sie E-Mails senden. Für diese benötigen Sie eine SmartTemplates Pro-Lizenz."
   },
   "contextError": {
-    "message": "Die Variable {1} kann nicht für neue Nachrichten genutzt werden!\\nListe der verwendbaren Variablen siehe Hilfe"
+    "message": "Die Variable {1} kann nicht für neue Nachrichten genutzt werden!\nListe der verwendbaren Variablen siehe Hilfe"
   },
   "contribute_button": {
     "message": "Einen Beitrag leisten"
@@ -287,7 +287,7 @@
     "message": "Löscht Text im Zitat"
   },
   "deleteText": {
-    "message": "Löscht Text aus der Kopfzeile, z.B. deleteText(&quot;via Paypal&quot;)"
+    "message": "Löscht Text aus der Kopfzeile, z.B. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Entwickler"
@@ -915,7 +915,7 @@
     "message": "Beispiele nicht anzeigen"
   },
   "pref_html.cap": {
-    "message": "Für &quot;, &, <, > bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe."
+    "message": "Für \", &, <, > bitte HTML (UTF-8) Zeichen verwenden. Details siehe Hilfe."
   },
   "pref_html.label": {
     "message": "HTML Tags verwenden (z.B. <b>fett</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Menü konfigurieren…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Konnte die HTML Vorlage nicht vom Zeichensatz [{1}] konvertieren.\\nBenutze stattdessen die Rohdaten.\\nWenn dies zu verstümmelten Zeichen führt, fügen Sie dem head-Abschnitt einen expliziten 'meta charset"
+    "message": "Konnte die HTML Vorlage nicht vom Zeichensatz [{1}] konvertieren.\nBenutze stattdessen die Rohdaten.\nWenn dies zu verstümmelten Zeichen führt, fügen Sie dem head-Abschnitt einen expliziten 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Die Dateivorlage '{0}' konnte nicht aus dem folgenden Pfad geladen werden:\\n{1}\\nDie Datei wurde möglicherweise entfernt oder umbenannt."
+    "message": "Die Dateivorlage '{0}' konnte nicht aus dem folgenden Pfad geladen werden:\n{1}\nDie Datei wurde möglicherweise entfernt oder umbenannt."
   },
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates Dateivorlage öffnen…"

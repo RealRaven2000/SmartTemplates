@@ -75,7 +75,7 @@
     "message": "Зберегти шаблон..."
   },
   "btnYouTube.tooltip": {
-    "message": "Відвідайте YouTube канал &quot;Thunderbird Daily&quot; - для поради та навчальні посібників з використання додатків"
+    "message": "Відвідайте YouTube канал \"Thunderbird Daily\" - для поради та навчальні посібників з використання додатків"
   },
   "button.pasteLicense": {
     "message": "вставити"
@@ -147,7 +147,7 @@
     "message": "Цей клас змінних можна використовувати для вставки тексту залежно від способу надсилання пошти. Для них вам потрібна ліцензія SmartTemplates Pro."
   },
   "contextError": {
-    "message": "Змінна {1} не може бути використана для *нових* повідомлень!\\nБудь ласка, зверніться до довідки з переліком дозволених змінних"
+    "message": "Змінна {1} не може бути використана для *нових* повідомлень!\nБудь ласка, зверніться до довідки з переліком дозволених змінних"
   },
   "contribute_button": {
     "message": "По жертвувати"
@@ -252,7 +252,7 @@
     "message": "Deletes quoted Text"
   },
   "deleteText": {
-    "message": "Видалення тексту з цитати, наприклад deleteText (&quot;через Paypal&quot;)"
+    "message": "Видалення тексту з цитати, наприклад deleteText (\"через Paypal\")"
   },
   "developer.label": {
     "message": "Розробник"
@@ -264,7 +264,7 @@
     "message": "Ліцензійний Email Домен"
   },
   "domainLicense.instruct": {
-    "message": "Ліцензія додається до домену вашої компанії. Ліцензія дозволить користувачам з адресами електронної пошти, що закінчуються цим доменом електронної пошти, використовувати SmartTemplates Pro. Наприклад, якщо ви вводите доменне ім'я &quot;abc.com&quot;, тоді користувачі електронної пошти, такі як fred@abc.com, martha@abc.com, mike.doe@abc.com тощо, можуть використовувати ліцензію. Максимальна кількість дійсних окремих користувачів - це номер, який ви ввели на початковому екрані."
+    "message": "Ліцензія додається до домену вашої компанії. Ліцензія дозволить користувачам з адресами електронної пошти, що закінчуються цим доменом електронної пошти, використовувати SmartTemplates Pro. Наприклад, якщо ви вводите доменне ім'я \"abc.com\", тоді користувачі електронної пошти, такі як fred@abc.com, martha@abc.com, mike.doe@abc.com тощо, можуть використовувати ліцензію. Максимальна кількість дійсних окремих користувачів - це номер, який ви ввели на початковому екрані."
   },
   "domainLicense.validate": {
     "message": "Переконайтеся, що на електронну адресу вашої компанії (частина * після * знака @) ви вводите ім'я домену * точно так, як це було *, оскільки воно буде використовуватися для авторизації електронних адрес ваших користувачів."
@@ -822,7 +822,7 @@
     "message": "Змінювати Прізвище, Ім'я"
   },
   "pref_nameSwap_tip": {
-    "message": "Змінювати &quot;Прізвище, Ім'я&quot; на Ім'я"
+    "message": "Змінювати \"Прізвище, Ім'я\" на Ім'я"
   },
   "pref_new.label": {
     "message": "Застосувати наступний шаблон до нового повідомлення"
@@ -1050,10 +1050,10 @@
     "message": "Configure menu items…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\\nUsing raw string data instead.\\nIf this results in garbled characters, try adding an explicit 'meta charset"
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\\n{1}\\nThe file may have been removed or renamed."
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
@@ -1302,7 +1302,7 @@
     "message": "Оновлення"
   },
   "updatesExpiry": {
-    "message": "SmartTemplates Pro буде автоматично оновлюватися за допомогою addons.thunderbird.net як завжди. Після закінчення року Ви можете оновити ліцензію або продовжувати користуватись преміум-функціями на тих самих умовах, що й безкоштовні користувачі. Функції &quot;Premium Exclusive&quot; вимагатимуть дійсний реєстраційний ключ."
+    "message": "SmartTemplates Pro буде автоматично оновлюватися за допомогою addons.thunderbird.net як завжди. Після закінчення року Ви можете оновити ліцензію або продовжувати користуватись преміум-функціями на тих самих умовах, що й безкоштовні користувачі. Функції \"Premium Exclusive\" вимагатимуть дійсний реєстраційний ключ."
   },
   "url.bugsAndFeaturesPage.label": {
     "message": "Звіти про помилки/надсилання побажань"

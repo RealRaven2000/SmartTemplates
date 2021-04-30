@@ -252,7 +252,7 @@
     "message": "Exclui o texto citado"
   },
   "deleteText": {
-    "message": "Remove algum texto da Citação, ex.: deleteText(&quot;via Paypal&quot;)"
+    "message": "Remove algum texto da Citação, ex.: deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Desenvolvimento"
@@ -813,7 +813,7 @@
     "message": "Ocultar aba de exemplos"
   },
   "pref_html.cap": {
-    "message": "Usar caracteres de escape para &quot; , &amp; , < , > , espaço. Veja a ajuda para detalhes."
+    "message": "Usar caracteres de escape para \" , &amp; , < , > , espaço. Veja a ajuda para detalhes."
   },
   "pref_html.label": {
     "message": "Usar HTML (por exemplo, <b>negrito</b>)"
@@ -1050,10 +1050,10 @@
     "message": "Configurar itens de menu…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problemas ao converter um modelo HTML do conjunto de caracteres [{1}] \\nEm vez disso, usando dados brutos da string. \\nSe isso resultar em caracteres ilegíveis, tente adicionar um 'meta charset"
+    "message": "Problemas ao converter um modelo HTML do conjunto de caracteres [{1}] \nEm vez disso, usando dados brutos da string. \nSe isso resultar em caracteres ilegíveis, tente adicionar um 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Não foi possível carregar o arquivo de modelo '{0}' do caminho: \\n{1}\\nO arquivo pode ter sido removido ou renomeado."
+    "message": "Não foi possível carregar o arquivo de modelo '{0}' do caminho: \n{1}\nO arquivo pode ter sido removido ou renomeado."
   },
   "st.fileTemplates.openFile": {
     "message": "Abra o arquivo de modelo do SmartTemplates…"
@@ -1281,7 +1281,7 @@
     "message": "Primeiro nome do destinatário"
   },
   "tofwd.label": {
-    "message": "Usar &quot;fwd&quot; para adicionar o destinatário clicável nos emails encaminhados"
+    "message": "Usar \"fwd\" para adicionar o destinatário clicável nos emails encaminhados"
   },
   "tomail.label": {
     "message": "Nome e endereço do destinatário"
@@ -1302,7 +1302,7 @@
     "message": "Atualizações"
   },
   "updatesExpiry": {
-    "message": "O SmartTemplates Pro será automaticamente atualizado via addons.thunderbird.net como de costume. Após o término do ano, você poderá renovar a licença ou continuar usando os recursos premium sob os mesmos termos que os usuários gratuitos. Os recursos &quot;Premium Exclusive&quot; exigirão uma chave de registro válida."
+    "message": "O SmartTemplates Pro será automaticamente atualizado via addons.thunderbird.net como de costume. Após o término do ano, você poderá renovar a licença ou continuar usando os recursos premium sob os mesmos termos que os usuários gratuitos. Os recursos \"Premium Exclusive\" exigirão uma chave de registro válida."
   },
   "url.bugsAndFeaturesPage.label": {
     "message": "Relatar bug / Solicitar recursos"
@@ -1323,7 +1323,7 @@
     "message": "Vouchers"
   },
   "whitespace_note": {
-    "message": "Observe que o espaço em branco pode ser melhor representado como \\ s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
+    "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },
   "xmail.label": {
     "message": "X-Mailer"

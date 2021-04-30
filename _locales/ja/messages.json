@@ -179,7 +179,7 @@
     "message": "このクラスの変数は、メールの送信方法に応じてテキストを挿入するために使用できます。 これらにはSmartTemplatesProライセンスが必要です。"
   },
   "contextError": {
-    "message": "変数 {1} は新規メッセージには利用できません！\\n利用可能な変数の一覧はヘルプを参照してください。"
+    "message": "変数 {1} は新規メッセージには利用できません！\n利用可能な変数の一覧はヘルプを参照してください。"
   },
   "contribute_button": {
     "message": "支援"
@@ -287,7 +287,7 @@
     "message": "引用文の消去"
   },
   "deleteText": {
-    "message": "引用部から特定の文字列を消去します 例: deleteText(&quot;via Paypal&quot;)"
+    "message": "引用部から特定の文字列を消去します 例: deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "開発者"
@@ -816,16 +816,16 @@
     "message": "SmartTemplates について"
   },
   "pref_addSigBreakHTML.label": {
-    "message": "&quot;--&quot; を追加する (HTML メール)"
+    "message": "\"--\" を追加する (HTML メール)"
   },
   "pref_addSigBreakHTML.tooltip": {
-    "message": "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (HTML 形式の場合)。"
+    "message": "署名の冒頭に \"--\" を区切りとして常に追加します (HTML 形式の場合)。"
   },
   "pref_addSigBreakPlaintext.label": {
-    "message": "&quot;--&quot; を追加する (テキストメール)"
+    "message": "\"--\" を追加する (テキストメール)"
   },
   "pref_addSigBreakPlaintext.tooltip": {
-    "message": "署名の冒頭に &quot;--&quot; を区切りとして常に追加します (プレーンテキスト形式の場合)。"
+    "message": "署名の冒頭に \"--\" を区切りとして常に追加します (プレーンテキスト形式の場合)。"
   },
   "pref_addressDelimiter": {
     "message": "複数の通信相手の区切りに以下のデリミターを使用する:"
@@ -918,7 +918,7 @@
     "message": "テンプレート例のタブを隠す"
   },
   "pref_html.cap": {
-    "message": "&quot; , & , < , > , space はエスケープしてください。詳細はヘルプを参照してください。"
+    "message": "\" , & , < , > , space はエスケープしてください。詳細はヘルプを参照してください。"
   },
   "pref_html.label": {
     "message": "HTML として挿入する (<b>bold</b> など)"
@@ -1164,10 +1164,10 @@
     "message": "メニューアイテムの設定..."
   },
   "st.fileTemplates.error.charSet": {
-    "message": "文字セット [{1}] からの HTML テンプレートの変換に問題が発生しました。\\n文字列の生データを使用します。\\n文字化けが発生する場合には、ヘッダー部に  'meta charset"
+    "message": "文字セット [{1}] からの HTML テンプレートの変換に問題が発生しました。\n文字列の生データを使用します。\n文字化けが発生する場合には、ヘッダー部に  'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "以下のパスから テンプレート '{0}' を読み込めませんでした:\\n{1}\\nファイルが削除されたか名前が変更された可能性があります。"
+    "message": "以下のパスから テンプレート '{0}' を読み込めませんでした:\n{1}\nファイルが削除されたか名前が変更された可能性があります。"
   },
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates のテンプレートファイルを開く…"

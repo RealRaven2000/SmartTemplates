@@ -179,7 +179,7 @@
     "message": "Ta klasa zmiennych może służyć do wstawiania tekstu w zależności od sposobu wysyłania poczty. Potrzebujesz do tego licencji SmartTemplates Pro."
   },
   "contextError": {
-    "message": "Zmienna {1} nie może być używana dla nowych wiadomości!\\nWykaz dozwolonych zmiennych znajduje się w pomocy."
+    "message": "Zmienna {1} nie może być używana dla nowych wiadomości!\nWykaz dozwolonych zmiennych znajduje się w pomocy."
   },
   "contribute_button": {
     "message": "Zaangażuj się"
@@ -287,7 +287,7 @@
     "message": "Usuwa cytowany tekst"
   },
   "deleteText": {
-    "message": "Usunięcie tekstu z cytatu np. deleteText(&quot;via Paypal&quot;)"
+    "message": "Usunięcie tekstu z cytatu np. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Programiosta"
@@ -299,10 +299,10 @@
     "message": "Licencjonowany Email domeny"
   },
   "domainLicense.instruct": {
-    "message": "Licencja jest przypisana do domeny Twojej firmy. Licencja umożliwia korzystanie z wersji SmartTemplates Pro użytkownikom z adresem e-mail kończącym się domeną. Dla przykładu, jeśli podasz nazwę domeny &quot;abc.com&quot; wówczas użytkownicy mający adresy takie jak: fred@abc.com, martha@abc.com, mike.doe@abc.com, mogą używać licencji. Maksymalną ilość uprawnionych użytkowników stanowi liczba podana na ekranie początkowym."
+    "message": "Licencja jest przypisana do domeny Twojej firmy. Licencja umożliwia korzystanie z wersji SmartTemplates Pro użytkownikom z adresem e-mail kończącym się domeną. Dla przykładu, jeśli podasz nazwę domeny \"abc.com\" wówczas użytkownicy mający adresy takie jak: fred@abc.com, martha@abc.com, mike.doe@abc.com, mogą używać licencji. Maksymalną ilość uprawnionych użytkowników stanowi liczba podana na ekranie początkowym."
   },
   "domainLicense.validate": {
-    "message": "Upewnij się, że wpisałeś właściwą nazwę domeny adresu e-mail Twojej firmy (część za znakiem &quot;@&quot;), ponieważ będzie ona używana do autoryzacji adresów e-mail użytkowników."
+    "message": "Upewnij się, że wpisałeś właściwą nazwę domeny adresu e-mail Twojej firmy (część za znakiem \"@\"), ponieważ będzie ona używana do autoryzacji adresów e-mail użytkowników."
   },
   "donate": {
     "message": "Pomóż w postaci jednorazowej darowizny."
@@ -918,7 +918,7 @@
     "message": "Ukryj kartę przykładów"
   },
   "pref_html.cap": {
-    "message": "Używaj odwróconego ukośnika przed znakami: &quot; , &amp; , < , > oraz spacją. Zobacz pomoc."
+    "message": "Używaj odwróconego ukośnika przed znakami: \" , &amp; , < , > oraz spacją. Zobacz pomoc."
   },
   "pref_html.label": {
     "message": "Użyj HTML, np. <b>bold</b>"
@@ -1164,10 +1164,10 @@
     "message": "Konfiguruj elementy menu…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problemy z konwersją szablonu HTML z zestawu znaków [{1}] \\n Zamiast tego używa się nieprzetworzonych danych ciągu. \\nJeśli powoduje to zniekształcone znaki, spróbuj dodać wyraźny „meta charset"
+    "message": "Problemy z konwersją szablonu HTML z zestawu znaków [{1}] \n Zamiast tego używa się nieprzetworzonych danych ciągu. \nJeśli powoduje to zniekształcone znaki, spróbuj dodać wyraźny „meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Nie można załadować szablonu pliku „{0}” ze ścieżki: \\n{1}\\nPlik mógł zostać usunięty lub zmieniono jego nazwę."
+    "message": "Nie można załadować szablonu pliku „{0}” ze ścieżki: \n{1}\nPlik mógł zostać usunięty lub zmieniono jego nazwę."
   },
   "st.fileTemplates.openFile": {
     "message": "Otwórz plik szablonu SmartTemplates…"
@@ -1498,7 +1498,7 @@
     "message": "{L1} Ulepszona obsługa konwersji zakodowanych znaków używanych w polach adresowych, takich jak „from” {L2} {L1} Błąd w lokalizacji dla języka chińskiego tradycyjnego (zh-TW) złamał okno dialogowe ustawień. {L2} {L1} Trwają prace nad stworzeniem SmartTemplates kompatybilny z Thunderbird 91, który jest planowany na lato 2021 r. {L2}"
   },
   "whitespace_note": {
-    "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\ s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
+    "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

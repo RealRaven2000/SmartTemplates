@@ -107,7 +107,7 @@
     "message": "Spara mall…"
   },
   "btnYouTube.tooltip": {
-    "message": "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg"
+    "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder Stationery och andra tillägg"
   },
   "button.pasteLicense": {
     "message": "klistra in"
@@ -179,7 +179,7 @@
     "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
   },
   "contextError": {
-    "message": "The Variable {1} can not be used for *new* messages!\\nPlease refer to help for a list of permitted variables"
+    "message": "The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables"
   },
   "contribute_button": {
     "message": "Bidra"
@@ -287,7 +287,7 @@
     "message": "Tar bort citerad text"
   },
   "deleteText": {
-    "message": "Ta bort en del text från citatet, t.ex. deleteText(&quot;via Paypal&quot;)"
+    "message": "Ta bort en del text från citatet, t.ex. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Developer"
@@ -555,10 +555,10 @@
     "message": "Välj först kontot du vill exportera i SmartTemplates-inställningarnas rullgardinslist."
   },
   "im-ex_note3.label": {
-    "message": "Välj sedan &quot;Arkiv&quot; ⇒ &quot;Exportera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet och spara filen (xxx.st4) på din dator."
+    "message": "Välj sedan \"Arkiv\" ⇒ \"Exportera\" ⇒ \"Inställningar och mallar\" från menyfältet och spara filen (xxx.st4) på din dator."
   },
   "im-ex_note4.label": {
-    "message": "För att importera en fil, välj kontot du vill importera i SmartTemplates-inställningarnas rullgardinslist. Välj sedan &quot;Arkiv&quot; ⇒ &quot;Importera&quot; ⇒ &quot;Inställningar och mallar&quot; från menyfältet."
+    "message": "För att importera en fil, välj kontot du vill importera i SmartTemplates-inställningarnas rullgardinslist. Välj sedan \"Arkiv\" ⇒ \"Importera\" ⇒\"Inställningar och mallar\" från menyfältet."
   },
   "im-ex_note5.label": {
     "message": "Välj den SmartTemplates-fil (xxx.st4) du vill importera."
@@ -849,7 +849,7 @@
     "message": "Högerklicka för avancerade felsökningsalternativ"
   },
   "pref_def.cap": {
-    "message": "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot."
+    "message": "Avmarkera \"Använd allmänna inställningar\" om du vill ändra inställningarna för det här kontot."
   },
   "pref_def.label": {
     "message": "Använd allmänna inställningar"
@@ -918,7 +918,7 @@
     "message": "Dölj flik med exempel"
   },
   "pref_html.cap": {
-    "message": "Använd undantagstecken för &quot; , &amp; , < , > och blanksteg. Se Hjälp för närmare detaljer."
+    "message": "Använd undantagstecken för \" , &amp; , < , > och blanksteg. Se Hjälp för närmare detaljer."
   },
   "pref_html.label": {
     "message": "Använd HTML (t.ex. <b>fetstil</b>)"
@@ -927,7 +927,7 @@
     "message": "Korrigera Efternamn, Förnamn"
   },
   "pref_nameSwap_tip": {
-    "message": "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;"
+    "message": "Ändrar \"Efternamn, Förnamn\" till \"Förnamn Efternamn\""
   },
   "pref_new.label": {
     "message": "Tillämpa följande mall på det nya meddelandet"
@@ -1164,10 +1164,10 @@
     "message": "Konfigurera menyalternativ…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problem som konverterar en HTML-mall från charset [{1}] \\nAnvänder rå strängdata istället. \\nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
+    "message": "Problem som konverterar en HTML-mall från charset [{1}] \nAnvänder rå strängdata istället. \nOm detta resulterar i förvirrade tecken kan du försöka lägga till ett uttryckligt 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \\n{1} \\nFilen kan ha tagits bort eller bytt namn."
+    "message": "Det gick inte att ladda filmallen '{0}' från sökvägen: \n{1} \nFilen kan ha tagits bort eller bytt namn."
   },
   "st.fileTemplates.openFile": {
     "message": "Öppna SmartTemplates-mallfilen…"

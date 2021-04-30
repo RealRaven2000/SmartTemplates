@@ -179,7 +179,7 @@
     "message": "Deze klasse variabelen kan worden gebruikt om tekst in te voegen, afhankelijk van hoe u e-mail verzendt. Hiervoor heeft u een SmartTemplates Pro-licentie nodig."
   },
   "contextError": {
-    "message": "De variabele {1} mag niet worden gebruikt voor *nieuwe* berichten!\\nKijk in de helptekst voor toegestane variabelen"
+    "message": "De variabele {1} mag niet worden gebruikt voor *nieuwe* berichten!\nKijk in de helptekst voor toegestane variabelen"
   },
   "contribute_button": {
     "message": "Bijdragen"
@@ -287,7 +287,7 @@
     "message": "Verwijdert aangehaalde tekst"
   },
   "deleteText": {
-    "message": "Tekst uit de aanhaling verwijderen, bv. deleteText(‘via Paypal’)"
+    "message": "Tekst uit de aanhaling verwijderen, bv. deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Ontwikkelaar"
@@ -918,7 +918,7 @@
     "message": "Tabblad met voorbeelden verbergen"
   },
   "pref_html.cap": {
-    "message": "Escape-tekens gebruiken voor &quot;, &, <, > en spatie. Lees de hulptekst voor details."
+    "message": "Escape-tekens gebruiken voor \", &, <, > en spatie. Lees de hulptekst voor details."
   },
   "pref_html.label": {
     "message": "HTML gebruiken (bv. <b>vet</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Menu-items configureren…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problemen bij het converteren van een HTML-sjabloon vanuit tekenset [{1}]\\nRuwe stringgegevens worden gebruikt.\\nAls dit resulteert in verhaspelde tekens, probeer dan een expliciet ‘meta charset"
+    "message": "Problemen bij het converteren van een HTML-sjabloon vanuit tekenset [{1}]\nRuwe stringgegevens worden gebruikt.\nAls dit resulteert in verhaspelde tekens, probeer dan een expliciet ‘meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Kon de bestandssjabloon ‘{0}’ niet laden vanuit pad:\\n{1}\\nHet bestand is mogelijk verplaatst of hernoemd."
+    "message": "Kon de bestandssjabloon ‘{0}’ niet laden vanuit pad:\n{1}\nHet bestand is mogelijk verplaatst of hernoemd."
   },
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates-bestandssjabloon openen…"

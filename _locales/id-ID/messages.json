@@ -252,7 +252,7 @@
     "message": "Deletes quoted Text"
   },
   "deleteText": {
-    "message": "Hapus beberapa teks dari Kutipan, mis., deleteText(&quot;via Paypal&quot;)"
+    "message": "Hapus beberapa teks dari Kutipan, mis., deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Pengembang"
@@ -813,7 +813,7 @@
     "message": "Sembunyikan tab contoh"
   },
   "pref_html.cap": {
-    "message": "Gunakan karakter escape untuk &quot; , & , < , > , spasi. Lihat &quot;help&quot; untuk lebih jelasnya."
+    "message": "Gunakan karakter escape untuk \" , & , < , > , spasi. Lihat \"help\" untuk lebih jelasnya."
   },
   "pref_html.label": {
     "message": "Gunakan HTML (mis., <b>bold</b>)"
@@ -1050,10 +1050,10 @@
     "message": "Configure menu items…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\\nUsing raw string data instead.\\nIf this results in garbled characters, try adding an explicit 'meta charset"
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\\n{1}\\nThe file may have been removed or renamed."
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"

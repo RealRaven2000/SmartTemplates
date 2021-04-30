@@ -179,7 +179,7 @@
     "message": "Questa classe di variabili può essere utilizzata per inserire testo a seconda di come si invia la posta. È necessaria una licenza SmartTemplates Pro per questi."
   },
   "contextError": {
-    "message": "La variabile {1} non può essere usata per i nuovi messaggi !\\nConsultare la guida per la lista delle variabili utilizzabili."
+    "message": "La variabile {1} non può essere usata per i nuovi messaggi !\nConsultare la guida per la lista delle variabili utilizzabili."
   },
   "contribute_button": {
     "message": "Contribuisci"
@@ -287,7 +287,7 @@
     "message": "Elimina il testo citato"
   },
   "deleteText": {
-    "message": "Elimina un testo dall'intestazione. Per esempio: deleteText(&quot;via Paypal&quot;)"
+    "message": "Elimina un testo dall'intestazione. Per esempio: deleteText(\"via Paypal\")"
   },
   "developer.label": {
     "message": "Sviluppatore"
@@ -918,7 +918,7 @@
     "message": "Non visualizzare la scheda degli esempi"
   },
   "pref_html.cap": {
-    "message": "Utilizza i caratteri escape per &quot;, &, <, > e per lo spazio. Consultare i contenuti guida per ulteriori informazioni"
+    "message": "Utilizza i caratteri escape per \", &, <, > e per lo spazio. Consultare i contenuti guida per ulteriori informazioni"
   },
   "pref_html.label": {
     "message": "Utilizza il codice HTML (es.: <b>bold</b>)"
@@ -1164,10 +1164,10 @@
     "message": "Configura voci di menu…"
   },
   "st.fileTemplates.error.charSet": {
-    "message": "Problemi durante la conversione di un modello HTML da charset [{1}]. \\nUtilizzando invece dati di stringa grezzi. \\NSe ciò risulta in caratteri confusi, prova ad aggiungere un 'meta charset"
+    "message": "Problemi durante la conversione di un modello HTML da charset [{1}]. \nUtilizzando invece dati di stringa grezzi. \nSe ciò risulta in caratteri confusi, prova ad aggiungere un 'meta charset"
   },
   "st.fileTemplates.error.filePath": {
-    "message": "Impossibile caricare il modello di file '{0}' dal percorso: \\n{1} \\nIl file potrebbe essere stato rimosso o rinominato."
+    "message": "Impossibile caricare il modello di file '{0}' dal percorso: \n{1} \nIl file potrebbe essere stato rimosso o rinominato."
   },
   "st.fileTemplates.openFile": {
     "message": "Apri il file modello SmartTemplates…"
@@ -1498,7 +1498,7 @@
     "message": "{L1} Supporto migliorato per la conversione di caratteri codificati utilizzati nei campi indirizzo come 'da' {L2} {L1} Errore nella localizzazione per la finestra di dialogo delle impostazioni di interruzione del cinese tradizionale (zh-TW). {L2} {L1} Lavoro in corso per creare SmartTemplates compatibile con Thunderbird 91, previsto per l'estate 2021 {L2}"
   },
   "whitespace_note": {
-    "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\ s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."
+    "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
