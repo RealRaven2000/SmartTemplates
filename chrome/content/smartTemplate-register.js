@@ -203,7 +203,12 @@ SmartTemplate4.Licenser =
   
   showDialog: function showDialog(featureName) {
 		let params = {inn:{referrer:featureName, instance: SmartTemplate4}, out:null};
-		util.Mail3PaneWindow.openDialog('chrome://SmartTemplate4/content/register.xhtml','smarttemplate4-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',SmartTemplate4,params).focus();
+		util.Mail3PaneWindow.openDialog(
+      "chrome://SmartTemplate4/content/register.xhtml",
+      "smarttemplate4-register",
+      "chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
+      SmartTemplate4,
+      params).focus();
   },
   
   // list of eligible accounts

@@ -48,3 +48,19 @@
 	margin-bottom: 0.6em;
 	max-width: 850px;
 }
+
+#innerMessage #code {
+  background-color: #FFFFFF;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  font-size: 10pt;
+  font-family: Consolas,monaco,monospace !important;
+  min-heigt: 50px;
+  max-height: 250px !important;
+  overflow-y: scroll;
+  text-color: rgb(40,40,40);
+}
+
+#innerMessage #code p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}

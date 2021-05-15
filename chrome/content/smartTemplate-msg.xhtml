@@ -3,13 +3,15 @@
 <?xml-stylesheet href = "chrome://global/skin/global.css" type = "text/css"?>
 <?xml-stylesheet href = "chrome://smarttemplate4/content/skin/messageWindow.css" type = "text/css"?>
 
-<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         id = "smarttemplate4-msg"
         title = "__MSG_message_default_title__"
         orient = "vertical"
         width = "750"
         height = "200">
-  <key id="key-esc" keycode="VK_ESCAPE" oncommand="(function doEscape(event) { alert(event); if(event) { event.preventDefault(); event.stopPropagation(); } })();" />
+  <key id="key-esc" 
+       keycode="VK_ESCAPE" 
+       oncommand="(function doEscape(event) { alert(event); if(event) { event.preventDefault(); event.stopPropagation(); } })();" />
 	<vbox id="messageCanvas" >
 		<hbox id = "titleBox" align = "center" height = "45px">
 		</hbox>
@@ -46,4 +48,4 @@
 	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
 	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-msg.js"/>
-</dialog>
+</window>

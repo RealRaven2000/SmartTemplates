@@ -12,4 +12,12 @@ window.addEventListener('unload',
   function () { SmartTemplate4.Message.unloadMessage(window); },
   { once: true });
   
+window.addEventListener("close", 
+  (e) => {
+     e.preventDefault();
+    // could be needed as well 
+    //e.stopPropagation();
+  }
+);  
+  
   

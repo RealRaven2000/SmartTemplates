@@ -885,9 +885,12 @@ SmartTemplate4.Util = {
 			// note: findMailTab will activate the tab if it is already open
 			if (tabmail) {
 				if (!util.findMailTab(tabmail, URL)) {
-					sTabMode = (util.Application === "Thunderbird") ? "contentTab" : "3pane";
-					tabmail.openTab(sTabMode,
-					{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"});
+					tabmail.openTab("contentTab",
+            {
+              contentPage: URL, 
+              clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"
+            }
+          );
 				}
 			}
 			else {
@@ -896,7 +899,10 @@ SmartTemplate4.Util = {
 					"chrome,dialog=no,all", 
 					null,
 					{ tabType: "contentTab", 
-					  tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", id:"gSmartTemplate_Weblink"} 
+					  tabParams: {
+              contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", 
+              id:"gSmartTemplate_Weblink"
+            }
 					} 
 				);
 			}
@@ -2870,7 +2876,7 @@ SmartTemplate4.Message = {
 	noCALLBACK : null ,
 	myWindow : null,
 	parentWindow : null,
-	display : function(text, features, callbacksObj, parent) {
+	display : function(text, features, callbacksObj, parent, parsedVars="") {
     let countDown = callbacksObj.countDown || 0,
         isLicenseWarning = callbacksObj.isLicenseWarning,
         licenser = callbacksObj.licenser || null;
@@ -2908,6 +2914,7 @@ SmartTemplate4.Message = {
 		let params =
 		{
 			messageText:    text,
+      parsedVars:     parsedVars,
       countDown:      countDown,
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
 			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
@@ -2918,7 +2925,7 @@ SmartTemplate4.Message = {
 		// open message with main as parent
 
 		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow,
-		    dispFeatures = "chrome,alwaysRaised,dependent,close=no," + features; //  close=no,
+		    dispFeatures = "chrome,alwaysRaised,dependent,dialog=no,close=no," + features; //  close=no,
 		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xhtml", "st4message", dispFeatures, params);
 		this.parentWindow = null;
 
@@ -3044,12 +3051,12 @@ SmartTemplate4.Message = {
       }
       
 			if (window.arguments && window.arguments.length) {
-				let params = window.arguments[0],  // leads to errors in tb3?
+				let params = window.arguments[0],
 				    msgDiv = document.getElementById('innerMessage'),
 				    theMessage = params.messageText,
             // split text (passed in with /n as delimiter) into paragraphs
 				    textNodes = theMessage.split("\n");
-            
+        
         countDown = params.countDown || 0;
         if (countDown) {
           let cdLabel = document.getElementById('countDown');
@@ -3066,6 +3073,21 @@ SmartTemplate4.Message = {
 						par.textContent = textNodes[i]; // we want this to wrap. won't use unescape for the moment
 					msgDiv.appendChild(par);
 				}
+        if (params.parsedVars) {
+          let div = document.createElement("div");
+          div.id = "code";
+          let parsedVars = params.parsedVars,
+              varNodes = parsedVars.split("\n");
+          for (let i = 0; i < varNodes.length; i++) {
+            // empty nodes will be <br>
+            let par = varNodes[i].length ? document.createElement('p') : document.createElement('br');
+            if (varNodes[i].length)
+              par.textContent = varNodes[i]; // we want this to wrap. won't use unescape for the moment
+            div.appendChild(par);
+          }
+          msgDiv.appendChild(div);
+        }
+
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
         let buttons = [];
 

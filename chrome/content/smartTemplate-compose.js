@@ -1374,13 +1374,13 @@ SmartTemplate4.classSmartTemplate = function() {
 				      + '\n' + 'Copy template contents to clipboard?';
 							
 				SmartTemplate4.Message.display(errorText,
-				              "centerscreen,titlebar",
-											{ ok: function() {
-				              	let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
-				              	oClipBoard.copyString(template); },
-												cancel: function() { ;/* cancel NOP */ }
-											}
-				              , gMsgCompose.editor.document.defaultView
+          "centerscreen,titlebar",
+          { ok: function() {
+            let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+            oClipBoard.copyString(template); },
+            cancel: function() { ;/* cancel NOP */ }
+          }, 
+          gMsgCompose.editor.document.defaultView
 				);
 			}
 		}

@@ -59,7 +59,6 @@ var Register = {
       }
     }
     
-		
 		if (licenser.ValidationStatus == ELS.NotValidated) {
 			licenser.validateLicense(prefs.getStringPref('LicenseKey'));
 			util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
@@ -314,8 +313,6 @@ var Register = {
     document.getElementById('lastName').value = names.length > 1 ? names[names.length-1] : "";
     document.getElementById('email').value = email;
   } ,
-  
-  
   
 }
 

@@ -163,7 +163,7 @@ var SmartTemplate4 = {
       const msgComposeType = Components.interfaces.nsIMsgCompType;
       this.NotifyComposeBodyReady_AllCases(event, null);
     },
-    
+
     // neu
     NotifyComposeBodyReadyNew: function(event) {
       const msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -208,8 +208,8 @@ var SmartTemplate4 = {
           
 					util.OrigNotify = 
             (gComposeType == msgComposeType.New)
-            ? stateListener.NotifyComposeBodyReadyNew 
-            : stateListener.NotifyComposeBodyReady;
+            ? stateListener.NotifyComposeBodyReadyNew.bind(stateListener)
+            : stateListener.NotifyComposeBodyReady.bind(stateListener);
             
 					let idKey = util.getIdentityKey(document);
 					stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
@@ -760,7 +760,6 @@ SmartTemplate4.calendar = {
 					                + "Available in SmartTemplate4: " + listLocales.substring(0, listLocales.length-2) + "\n"
 													+ "This will affect the following variables: %A% %a% %B% %b% (week days and months) ";
 					util.logToConsole(errorText);
-					/* SmartTemplate4.Message.display(errorText, "centerscreen,titlebar", { ok: function() { ; } }); */
 					this.bundleLocale = null;
 				}
 				else {
