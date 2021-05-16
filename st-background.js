@@ -183,6 +183,11 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info}); // part of generic onBackgroundUpdates called in Util.init()
         return true;
         
+      case "updateTemplateMenus":
+        // Broadcast main windows to run updateQuickFoldersLabel
+        messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
+        break
+        
       case "initLicensedUI":
         // main window update reacting to license status change
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 

@@ -542,17 +542,7 @@ SmartTemplate4.Settings = {
 	
 	onUnload : function() {
 		if (SmartTemplate4.fileTemplates.isModified) {
-			let parentWin = 
-			  (window.opener && window.opener.document.URL.endsWith("messenger.xhtml")) ?
-					window.opener :
-					SmartTemplate4.Util.Mail3PaneWindow;
-			parentWin.setTimeout (
-				function() {
-					const st4 = parentWin.SmartTemplate4;
-					st4.Util.logDebug("Refreshing fileTemplate menus...");
-					st4.fileTemplates.initMenus(true); // force reset!
-				} , 100
-			);
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 		}
     window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseInOptions);
 	} ,

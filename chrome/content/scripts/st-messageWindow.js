@@ -13,11 +13,19 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
+  
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer));
+  window.SmartTemplate4.fileTemplates.initMenusWithReset();
+  
 }
 
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   util.logDebug("Single Message Window - onUnload(" + isAddOnShutDown + ")…");
+  
+  window.SmartTemplate4.Util.notifyTools.disable();
+  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu);
+  
   if(isAddOnShutDown) {
     window.SmartTemplate4.shutDown();
   }

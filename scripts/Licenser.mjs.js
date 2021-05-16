@@ -154,7 +154,6 @@ export class Licenser {
 
   isIdMatchedLicense(idMail, licenseMail) {
     try {
-      debugger;
       switch(this.key_type) {
         case 0: // pro license
         case 2: // standard license

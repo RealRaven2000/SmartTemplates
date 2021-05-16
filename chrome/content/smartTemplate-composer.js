@@ -58,6 +58,7 @@ SmartTemplate4.composer = {
 	}, // load ()
   
   initTemplateMenu: function initTemplateMenu() {
+    SmartTemplate4.Util.logDebug("composer.initTemplateMenu() ...");
     // load menu with templates to button-save
     const Ci = Components.interfaces,
           fT = SmartTemplate4.fileTemplates,
@@ -154,7 +155,6 @@ SmartTemplate4.composer = {
 		composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
 		
 		SmartTemplate4.init();
-		// debugger;
 		
 		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)
@@ -200,7 +200,6 @@ function()
 		composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
 		
 		SmartTemplate4.init();
-		// debugger;
 		
 		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)

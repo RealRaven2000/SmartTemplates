@@ -682,6 +682,11 @@ SmartTemplate4.fileTemplates = {
 		return menupopup;		
 	} ,
 	
+  initMenusWithReset: function() {
+    SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
+    SmartTemplate4.fileTemplates.initMenus(true);
+  },
+  
   initMenus: function (reset = false) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;

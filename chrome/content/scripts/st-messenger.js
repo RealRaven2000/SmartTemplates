@@ -51,6 +51,8 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.Util.firstRun.init();
   
   window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4));
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates));
+  window.SmartTemplate4.fileTemplates.initMenusWithReset();
   
 }
 
@@ -58,6 +60,7 @@ function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   window.SmartTemplate4.Util.notifyTools.disable();
   window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.initLicensedUI);
+  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset);
   
   util.logDebug("onUnload(" + isAddOnShutDown + ")...");
     

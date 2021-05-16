@@ -2829,11 +2829,14 @@ SmartTemplate4.Util.firstRun =
 			}
 			
 			// load the templates file and initialize the dropdown menus for write / reply / forward
+      /*
 			setTimeout(
 			  function() {
+          util.logDebug("OLD CALL TO FILETEMPLATES.INITMENUS()...")
 					SmartTemplate4.fileTemplates.initMenus(true); // force a reset of menus!!
 				}, 500
 			);
+      */
       
       util.initTabListener(); // need this for initialising fileTemplate menus in single message window
 
