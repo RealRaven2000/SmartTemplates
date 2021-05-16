@@ -1373,27 +1373,33 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,		
 		    serverInfo = util.getServerInfo(idKey), // find out server name and type (IMAP / POP3 etc.)
 		    common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : ''; // our "compact log" to assist our users more effective
-		util.logDebugOptional('functions.insertTemplate',
-		         'identityName:   ' + theIdentity.identityName + '\n'
-		       + 'key:            ' + theIdentity.key + common + '\n'
-		       + serverInfo
-		       + '------------------------------------------------\n'
-		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
-		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
-		       + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
-		       + 'attachSignature:' + theIdentity.attachSignature + '\n'
-		       + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
-		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
-		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
-		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
-		       + '%sig% type: [' + sigType + ']\n'
-		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
-		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4: ' + util.Version + '\n'
-		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
-		       + 'HostSystem: ' + util.HostSystem + '\n'
-		       );
+        
+    try {
+      util.logDebugOptional('functions.insertTemplate',
+               'identityName:   ' + theIdentity.identityName + '\n'
+             + 'key:            ' + theIdentity.key + common + '\n'
+             + serverInfo
+             + '------------------------------------------------\n'
+             + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
+             + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
+             + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
+             + 'attachSignature:' + theIdentity.attachSignature + '\n'
+             + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
+             + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
+             + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
+             + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
+             + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
+             + '%sig% type: [' + sigType + ']\n'
+             + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
+             + '------------------------------------------------\n'
+             + 'SmartTemplate4: ' + util.Version + '\n'
+             + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
+             + 'HostSystem: ' + util.HostSystem + '\n'
+             );
+    }
+    catch(ex) {
+      util.logException("Logging detail failed", ex);
+    }
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
@@ -1677,8 +1683,12 @@ SmartTemplate4.classSmartTemplate = function() {
 			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
 		
 		if (SmartTemplate4.hasDeferredVars) {
+      util.logDebug("Setting up listeners for deferred field variables!");
 			util.setupDeferredListeners(gMsgCompose.editor);
 		}
+    else {
+      util.logDebug("No deferred variables so we do not setup listeners...")
+    }
 		
 		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 		// remember  compose case for outside world

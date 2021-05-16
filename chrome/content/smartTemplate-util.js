@@ -67,11 +67,21 @@ SmartTemplate4.Util = {
         }       
       }      
     } 
+    SmartTemplate4.Util.logDebugOptional("notifications","Util.init() STARTS... in window " + window.location)
     SmartTemplate4.Util.notifyTools.registerListener(onBackgroundUpdates);
+    
+    // SmartTemplate4.composer.onLoad happens here!!!! (too early!!!)
+    // can we register the Listener later?? 
+    // Or do we need it to call the following notifyBackground functions??
+    
+    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.registerListener.");
     SmartTemplate4.Util.licenseInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
+    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.getLicenseInfo", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.Util.platformInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
+    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.getPlatformInfo");
     SmartTemplate4.Util.browserInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
     SmartTemplate4.Util.addonInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
+    SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.getAddonInfo", SmartTemplate4.Util.addonInfo);
     SmartTemplate4.Util.logDebugOptional("notifications",
     {
       platformInfo: SmartTemplate4.Util.platformInfo,
@@ -761,11 +771,12 @@ SmartTemplate4.Util = {
 	},
 
 	logDebugOptional: function (optionString, msg) {
+    optionString = arguments[0];
     let options = optionString.split(','); // allow multiple switches
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (SmartTemplate4.Preferences.isDebugOption(option)) {
-        this.logWithOption(option, msg);
+        this.logWithOption(...arguments);
         break; // only log once, in case multiple log switches are on
       }
     }

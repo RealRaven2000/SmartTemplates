@@ -108,13 +108,13 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
   // possibly reload the file template dropdown from toolbar button
-  window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.composer));
+  window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.SmartTemplate4.composer));
 }
 
 function onUnload(isAddOnShutDown) {
   try {
     window.SmartTemplate4.Util.notifyTools.disable();
-    window.removeEventListener("SmartTemplates.BackgroundUpdate", window.composer.initLicensedUI);
+    window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI);
     
     window.document.getElementById('smarttemplate4-cleandeferred').remove();  
     window.document.getElementById('smarttemplate4-changeTemplate').remove();  
