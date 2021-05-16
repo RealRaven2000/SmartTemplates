@@ -141,6 +141,7 @@ SmartTemplate4.composer = {
     // fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
 
+/*
   onLoad:  function() {
 		const util = SmartTemplate4.Util,
 					logDebugOptional = util.logDebugOptional.bind(util),
@@ -174,6 +175,7 @@ SmartTemplate4.composer = {
     // add the style sheet.
     SmartTemplate4.composer.load();
   },
+*/
   
   // update for license changes
   initLicensedUI: function () {
