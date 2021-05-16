@@ -5,13 +5,13 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
-function onLoad(activatedWhileWindowOpen) {
+async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
 
+  window.SmartTemplate4.Util.notifyTools.enable();
+  await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
 }
 

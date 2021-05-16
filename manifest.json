@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "3.5pre96",
+  "version": "3.5pre142",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author), Klaus Buecher/opto",
@@ -13,13 +13,16 @@
     "gecko": {
       "id": "smarttemplate4@thunderbird.extension",
       "strict_min_version": "74.0",
-      "strict_max_version": "89.0"
+      "strict_max_version": "90.0"
     }
   },
-
   "background": {
-    "scripts": ["st-background.js"]
+    "page": "st-background.html"
   },
+  "permissions": [
+    "notifications",
+    "accountsRead"
+  ],  
   "experiment_apis": {
     "WindowListener": {
       "schema": "chrome/content/api/WindowListener/schema.json",
@@ -36,6 +39,15 @@
         "paths": [["LegacyPrefs"]],
         "script": "chrome/content/api/LegacyPrefs/implementation.js"
       
+      }
+    },
+    "NotifyTools": {
+      "schema": "chrome/content/api/NotifyTools/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["NotifyTools"]],
+        "script": "chrome/content/api/NotifyTools/implementation.js"
+
       }
     },
     "Utilities": {

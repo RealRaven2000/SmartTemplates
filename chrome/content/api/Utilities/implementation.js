@@ -24,32 +24,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           win.SmartTemplate4.Util.logDebug(text);
         },
         
-        // returns true if a valid license is there, but also when the license is expired.
-        // this gives us an option to check whether to show extension links instead after 
-        // we check for the license
-        isLicensed(forceValidation) {
-          let hasLicense =  // (win.quickFilters.Licenser).isValidated;
-            win.SmartTemplate4.Util.hasLicense(forceValidation);
-          if (!hasLicense)
-            return win.SmartTemplate4.Licenser.isExpired; // if it is expired, we say it is still "licensed" for the purposes of this api!
-          return hasLicense;
-        },
-        
-        LicenseIsExpired() {
-          return  win.SmartTemplate4.Licenser.isExpired;
-        },
-
-        LicenseIsStandardUser() {
-          return (win.SmartTemplate4.Licenser.key_type == 2);
-        },
-        
-        LicensedDaysLeft() {
-          let today = new Date(),
-              licensedDate = new Date(win.SmartTemplate4.Licenser.DecryptedDate),
-              daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
-          return daysLeft;
-        },
-        
         getUserName : function () {
           const util = win.SmartTemplate4.Util;
           let Accounts = util.Accounts; 

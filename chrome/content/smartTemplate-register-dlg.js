@@ -15,21 +15,149 @@
 
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 				
-// removed UI functionde from QuickFolders.Licenser
+// removed UI function from SmartTemplate4.Licenser
 var Register = {
   l10n: function() {
     SmartTemplate4.Util.localize(document);
   },
   
-  load: function load() {
+  load: async function load() {
     const getElement = document.getElementById.bind(document),
           util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences,
-					licenser = util.Licenser,
-          ELS = licenser.ELicenseState;
+          prefs = SmartTemplate4.Preferences;
         
-    let dropdownCount = 0;
 		util.logDebug("Register.load() started");
+    
+    await SmartTemplate4.Util.init();
+    this.updateUI();
+    this.updateLicenseUI();
+    window.addEventListener("SmartTemplates.BackgroundUpdate", this.updateLicenseUI.bind(this));
+		util.logDebug("Register.load() complete");
+  } ,
+  
+  updateLicenseUI: async function updateLicenseUI() {  
+    const licenseInfo = SmartTemplate4.Util.licenseInfo,
+          getElement = document.getElementById.bind(document),
+          util = SmartTemplate4.Util;
+		// for renewals, referrer is always the old license!
+		if (licenseInfo.status=="Valid")
+			referrerTxt.value = licenseInfo.licenseKey;
+		
+		// Renewal Logic.
+    let decryptedDate = licenseInfo.expiryDate;
+    if (decryptedDate) {
+			if (prefs.isDebug) {
+				util.logDebug('SmartTemplate4.Register.load()\n' + 'ValidationStatus = ' + licenseInfo.description)
+			}
+				
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+			if (licenseInfo.isExpired || licenseInfo.isValid) { // A LICENSE EXISTS ALREADY
+				// LICENSE IS EITHER EXPIRED OR UP FOR RENEWAL SOON
+				let btnProLicense = getElement('btnLicense'),
+            btnDomainLicense = getElement('btnDomainLicense'),
+				    btnStdLicense = getElement('btnStdLicense');
+						
+				if (licenseInfo.isExpired) {  // EXPIRED
+          switch (licenseInfo.keyType) {
+            case 0: // Pro
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              break;
+            case 1: // Domain
+              btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              btnDomainLicense.classList.add('register');
+              btnProLicense.classList.remove('register');
+              break;
+            case 2: // Standard
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);'); // upgrade fropm standard
+              btnProLicense.classList.add('upgrade'); // no flashing
+              break;
+          }
+					
+				}
+				else { // EXTEND
+					let extBtn, extText;
+          switch(licenseInfo.keyType) {
+            case 0:
+              extBtn = btnProLicense;
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
+              break;
+            case 1:
+              extBtn = btnDomainLicense;
+              btnProLicense.classList.remove('register'); // not flashing
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
+              break;
+            case 2:
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3, true);');
+              extBtn = btnStdLicense;
+              btnStdLicense.removeAttribute('oncommand');
+              btnStdLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(2, true);');
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
+              // check whether renewal is up within 30 days
+              let today = new Date(),
+                  later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+                  dateString = later.toISOString().substr(0, 10);
+              
+              if (!(licenseInfo.expiryDate < dateString)) { // not close to expiry yet. let's hide this path.
+                let standardRow = getElement('StandardLicenseRow');
+                standardRow.collapsed=true;
+              }
+              break;
+          }
+
+					extBtn.label = extText;
+          extBtn.classList.add("register");
+					// add tooltip
+					extBtn.setAttribute('tooltiptext',
+					  util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
+						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+				}
+
+				// hide the "Enter License Key…" button + label
+				if (!licenseInfo.isExpired) {
+					getElement('haveLicense').collapsed=true;
+					getElement('btnEnterCode').collapsed=true;
+				}
+			}
+		}
+    else
+      getElement('licenseDate').collapsed = true;
+		
+		switch(licenseInfo.status) {
+			case "Expired":
+			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:")
+				getElement('LicenseTerm').classList.add('expired');
+			  break;
+			case "Valid":
+			  getElement('btnLicense').classList.remove('register'); // remove the "breathing effect" if license is valid.
+			  break;
+			case "Empty":
+      case "NotValidated":
+				getElement('licenseDateLabel').value = " ";
+			  break;
+			default: // default class=register will animate the button
+				getElement('licenseDateLabel').value = licenseInfo.description + ":";
+		}
+  
+  },
+  
+  updateUI: async function updateUI() {
+    const getElement = document.getElementById.bind(document),
+          util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences;
+          
+    let dropdownCount = 0;
 		
     function appendIdentity(dropdown, id, account) {
       if (!id) {
@@ -58,128 +186,12 @@ var Register = {
         util.logException('appendIdentity failed: ', ex);
       }
     }
-    
-		if (licenser.ValidationStatus == ELS.NotValidated) {
-			licenser.validateLicense(prefs.getStringPref('LicenseKey'));
-			util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
-		}
-		
+          
 		let referrerTxt = getElement('referrer');
 		if (window.arguments && window.arguments[1].inn.referrer) {
       referrerTxt.value = window.arguments[1].inn.referrer;
     }
-		// for renewals, referrer is always the old license!
-		if (licenser.isValidated)
-			referrerTxt.value = licenser.LicenseKey;
-		
-		// Renewal Logic.
-    let decryptedDate = licenser.DecryptedDate;
-    if (decryptedDate) {
-			if (prefs.isDebug) {
-				util.logDebug('SmartTemplate4.Register.load()\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
-			}
-				
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-			if (licenser.isExpired || licenser.isValidated) { // A LICENSE EXISTS ALREADY
-				// LICENSE IS EITHER EXPIRED OR UP FOR RENEWAL SOON
-				let btnProLicense = getElement('btnLicense'),
-            btnDomainLicense = getElement('btnDomainLicense'),
-				    btnStdLicense = getElement('btnStdLicense');
-						
-				if (licenser.isExpired) {  // EXPIRED
-          switch (licenser.key_type) {
-            case 0: // Pro
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
-              break;
-            case 1: // Domain
-              btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
-              btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
-              btnDomainLicense.classList.add('register');
-              btnProLicense.classList.remove('register');
-              break;
-            case 2: // Standard
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);'); // upgrade fropm standard
-              btnProLicense.classList.add('upgrade'); // no flashing
-              break;
-          }
-					
-				}
-				else { // EXTEND
-					let extBtn, extText;
-          switch(licenser.key_type) {
-            case 0:
-              extBtn = btnProLicense;
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
-              break;
-            case 1:
-              extBtn = btnDomainLicense;
-              btnProLicense.classList.remove('register'); // not flashing
-              btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
-              break;
-            case 2:
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
-              btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3, true);');
-              extBtn = btnStdLicense;
-              btnStdLicense.removeAttribute('oncommand');
-              btnStdLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(2, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
-              // check whether renewal is up within 30 days
-              let today = new Date(),
-                  later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-                  dateString = later.toISOString().substr(0, 10);
-              
-              if (!(licenser.DecryptedDate < dateString)) { // not close to expiry yet. let's hide this path.
-                let standardRow = getElement('StandardLicenseRow');
-                standardRow.collapsed=true;
-              }
-              break;
-          }
-
-					extBtn.label = extText;
-          extBtn.classList.add("register");
-					// add tooltip
-					extBtn.setAttribute('tooltiptext',
-					  util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
-						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
-				}
-
-				// hide the "Enter License Key…" button + label
-				if (!licenser.isExpired) {
-					getElement('haveLicense').collapsed=true;
-					getElement('btnEnterCode').collapsed=true;
-				}
-			}
-		}
-    else
-      getElement('licenseDate').collapsed = true;
-		
-		switch(licenser.ValidationStatus) {
-			case ELS.Expired:
-			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:")
-				getElement('LicenseTerm').classList.add('expired');
-			  break;
-			case ELS.Valid:
-			  getElement('btnLicense').classList.remove('register'); // remove the "breathing effect" if license is valid.
-			  break;
-			case ELS.Empty:
-      case ELS.NotValidated:
-				getElement('licenseDateLabel').value = " ";
-			  break;
-			default: // default class=register will animate the button
-				getElement('licenseDateLabel').value = licenser.licenseDescription(licenser.ValidationStatus) + ":";
-		}
-
-
+          
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
@@ -212,9 +224,9 @@ var Register = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
-		util.logDebug("Register.load() complete");
-    
-  } ,
+    if (prefs.isDebugOption('premium.licenser')) getElement('referrer').collapsed=false;    
+  },
+  
   
   goPro: function goPro(license_type, isRenew = false) {
     const productDetail = "https://sites.fastspring.com/quickfolders/product/smarttemplate4",
@@ -303,10 +315,18 @@ var Register = {
     SmartTemplate4.Util.openURL(event,'https://smarttemplates.quickfolders.org/premium.html');
   },
   
+  sanitizeName: function sanitizeName(name) {
+    // remove bracketed stuff: "fred jones (freddy)" => "fred jones"
+    let x = name.replace(/ *\([^)]*\) */g, "");
+    if (x.trim)
+      return x.trim();
+    return x;
+  },  
+  
   selectIdentity: function selectIdentity(element) {
     // get selectedItem attributes
     let it = element.selectedItem,
-        fName = SmartTemplate4.Licenser.sanitizeName(it.getAttribute('fullName')),
+        fName = Register.sanitizeName(it.getAttribute('fullName')),
         email = it.getAttribute('value'),
         names = fName.split(' ');
     document.getElementById('firstName').value = names[0];

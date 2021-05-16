@@ -537,32 +537,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 				
 		}
-		/*   // OLD CODE
-		else {
-			switch (pref.getCom("mailnews.reply_header_type", 1)) {
-				case 3:	// LFLF + author + separator + ondate + colon+LF
-				case 2:	// LFLF + ondate + separator + author + colon+LF
-					lines += countLF(pref.getCom("mailnews.reply_header_separator", ","));
-					lines += countLF(pref.getCom("mailnews.reply_header_ondate", "(%s)"));
-				case 1:	// LFLF + author + colon+LF
-				default:	// Handle same as 1
-					lines += countLF(pref.getCom("mailnews.reply_header_authorwrote", "%s wrote"));
-					lines += countLF(pref.getCom("mailnews.reply_header_colon", ":"));
-				case 0:	// LFLF + LF
-					lines++;
-					break;
-			}
-			util.logDebugOptional('functions.delReplyHeader','older version of Tb [' + util.AppverFull + '], deleting ' + lines + ' lines');
 
-			// Delete original headers .. eliminates all #text nodes but deletes the others
-			while (rootEl.firstChild && lines > 0) {
-				if (rootEl.firstChild.nodeName != "#text") {
-					lines--;
-				}
-				deleteNodeTextOrBR(rootEl.firstChild, idKey);
-			}
-		}
-		*/
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
 	};
 
@@ -632,7 +607,6 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
 				else {
 					// only older versions of Tb have 2 consecutive <BR>?? Tb13 has <br> <header> <br>
-					//if (util.versionSmaller(util.AppverFull, "10"))
 					brcnt = 0;
 				}
 				deleteHeaderNode(root.firstChild);
@@ -731,26 +705,22 @@ SmartTemplate4.classSmartTemplate = function() {
 
 			// remove the original Mail Header
 		util.logDebugOptional('functions.delForwardHeader','Remove the original header…');
-		if (util.versionGreaterOrEqual(util.PlatformVer, "12")) {
-			// recursive search from root element
-			node = findChildNode(rootEl, 'moz-email-headers-table');
-			if (node) {
-				util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
-				let nextNode = node.nextSibling;
-				deleteHeaderNode(node);
-				// delete trailing newlines!
-				deleteWhiteSpaceNodes(nextNode);
-			}
-			else {
-				util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
-				if (!gMsgCompose.composeHTML) {
-					truncateTo2BR(rootEl.firstChild);
-				}
-			}
-		}
-		else {
-			truncateTo2BR(rootEl);
-		}
+    // recursive search from root element
+    node = findChildNode(rootEl, 'moz-email-headers-table');
+    if (node) {
+      util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
+      let nextNode = node.nextSibling;
+      deleteHeaderNode(node);
+      // delete trailing newlines!
+      deleteWhiteSpaceNodes(nextNode);
+    }
+    else {
+      util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
+      if (!gMsgCompose.composeHTML) {
+        truncateTo2BR(rootEl.firstChild);
+      }
+    }
+		
 		util.logDebugOptional('functions','SmartTemplate4.delForwardHeader() ENDS');
 	}
 
@@ -1520,7 +1490,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			if (util.mainInstance.Util.premiumFeatures.length)
       {
         // let's reset the local license
-        if (!util.hasLicense(true) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
+        if (!util.hasLicense() ||  util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
           util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
@@ -1699,7 +1669,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		resetDocument(gMsgCompose.editor, startup);
 		
 		// no license => show license notification.
-		if (!util.mainInstance.Licenser.isValidated) {
+		if (util.licenseInfo.status!="Valid") {
 			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
 			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
 		}

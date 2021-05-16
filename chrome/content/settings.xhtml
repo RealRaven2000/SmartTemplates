@@ -577,7 +577,7 @@
 									<checkbox id = "chkStatusButton"
 												label = "__MSG_pref_showStatusIcon.label__"
 												preference = "extensions.smartTemplate4.showStatusIcon"
-												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode');SmartTemplate4.updateStatusBar(this.checked);"
+												oncontextmenu = "SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode'); SmartTemplate4.updateStatusBar(this.checked);"
 												oncommand="SmartTemplate4.updateStatusBar(!this.checked);"/>
 									<spacer flex="1" />
 									<menulist id = "iconType"
@@ -725,7 +725,7 @@
 								<description>__MSG_developer.label__: Axel Grude, Klaus Buecher/opto, Marky Mark DE</description>
 								<description>__MSG_localized.label__ __MSG_translatorNickname.label__</description>
 								<description>__MSG_contributor.label__:</description>
-								<description>Aris - Style Support __MSG_amp__ Bug Report,</description>
+								<description>Aris - Style Support + Bug Report,</description>
 								<description>tool8 - Development, Version 0.7.2 - 0.8.0,</description>
 								<description>Peter Macej - Development Support</description>
 								<description class = "aboutContent">__MSG_about.label__</description>
@@ -772,7 +772,7 @@
 										oncommand="SmartTemplate4.Settings.pasteLicense();" />
 						<button id="btnValidateLicense"
 										label="__MSG_button.validateLicense__"
-										oncommand="SmartTemplate4.Settings.validateLicenseInOptions();" />
+										oncommand="SmartTemplate4.Settings.validateNewKey(this);" />
 					</hbox>
 					<separator class="licenseSeparator" />
 					<hbox id="validationDate" align="center">
@@ -900,8 +900,6 @@
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-util.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/settings.js"/>
-<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-rsa.js"/>
-<script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-register.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-styles.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-fileIO.js"/>
 <script type = "application/javascript" src = "chrome://smarttemplate4/content/smartTemplate-help.js"/>

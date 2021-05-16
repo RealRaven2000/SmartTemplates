@@ -55,10 +55,6 @@ SmartTemplate4.composer = {
 			);
 		}
     
-    
-    
-   
-    
 	}, // load ()
   
   initTemplateMenu: function initTemplateMenu() {
@@ -163,7 +159,6 @@ SmartTemplate4.composer = {
 		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)
 		if (typeof ComposeStartup == 'function') {
-			// if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
 			if (!SmartTemplate4.ComposeStartup) {
 				if (isDebugComposer) debugger;
 				SmartTemplate4.ComposeStartup = ComposeStartup;
@@ -178,6 +173,11 @@ SmartTemplate4.composer = {
 		}
     // add the style sheet.
     SmartTemplate4.composer.load();
+  },
+  
+  // update for license changes
+  initLicensedUI: function () {
+   
   }
   
 };
@@ -205,7 +205,6 @@ function()
 		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)
 		if (typeof ComposeStartup == 'function') {
-			// if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
 			if (!SmartTemplate4.ComposeStartup) {
 				if (isDebugComposer) debugger;
 				SmartTemplate4.ComposeStartup = ComposeStartup;

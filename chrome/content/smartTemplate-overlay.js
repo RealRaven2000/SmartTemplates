@@ -1528,11 +1528,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         Cc = Components.classes,
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
-        prefs = SmartTemplate4.Preferences,
-				mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
+        prefs = SmartTemplate4.Preferences;
 				
 	// make sure to use the licenser from main window, to save time.
-	if (!mainLicenser.isValidated && mainLicenser.GracePeriod<=0) {
+	if (SmartTemplate4.Util.licenseInfo.status != "Valid" && SmartTemplate4.Util.licenseInfo.trialDays<=0) {
 		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
 		if (varX.test(msg)) {
 			const PreviewLength = 500,
@@ -1557,8 +1556,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				"centerscreen,modal",
 				{ 
           ok: function() { ; } , 
-          isLicenseWarning: true, 
-          licenser: mainLicenser
+          isLicenseWarning: true
         },
 				parentWin,
         parseString

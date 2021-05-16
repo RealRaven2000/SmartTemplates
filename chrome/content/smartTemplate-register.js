@@ -144,7 +144,7 @@ SmartTemplate4.Licenser =
 		return graceDate;
 	},
 	
-	get GracePeriod() {
+	get TrialDays() {
 		let graceDate; // actually the install date for 2.1 or later.
 		const period = 28,
 		      SINGLE_DAY = 1000*60*60*24; 

@@ -9,18 +9,13 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 
 async function updateActions(addonName) {
-  const mxUtilties = messenger.Utilities;
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  
   // LICENSING FLOW
-  
-  let isLicensed = await mxUtilties.isLicensed(true),
-      isExpired = await mxUtilties.LicenseIsExpired(),
-      isStandardUser = await mxUtilties.LicenseIsStandardUser();
+  let isStandardUser = (licenseInfo.keyType == 2),
+      isExpired = licenseInfo.isExpired,
+      isValid = licenseInfo.isValid;
         
-  //console.log("Addon " + addonName + "\n" +
-  //  "isLicensed = " + isLicensed + "\n" +
-  //  "isExpired = " + isExpired + "\n"
-  //);
-  
   function hide(id) {
     let el = document.getElementById(id);
     if (el) {
@@ -53,7 +48,7 @@ async function updateActions(addonName) {
   
   let isActionList = true;
 
-  if (isLicensed) {
+  if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hide('register');
     
@@ -70,7 +65,7 @@ async function updateActions(addonName) {
         show('standardLicense'); // this contains a button to upgrade
       }
       else {
-        let gpdays = await mxUtilties.LicensedDaysLeft();
+        let gpdays = licenseInfo.licensedDaysLeft;
         if (gpdays<100) { // they may have seen this popup. Only show extend License section if it is < 100 days away
           show('extendLicenseListItem');
           show('extend');

@@ -16,39 +16,6 @@
       },
 
       {
-        "name": "LicenseIsExpired",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-      {
-        "name": "LicenseIsStandardUser",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-      
-      {
-        "name": "LicensedDaysLeft",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-    
-      {
-        "name": "isLicensed",
-        "type": "function",
-        "async": true,
-        "parameters": [
-          {
-            "name" : "forceValidation",
-            "type" : "boolean"
-          }
-        ]
-      },
-
-      {
         "name": "showXhtmlPage",
         "type": "function",
         "parameters": [

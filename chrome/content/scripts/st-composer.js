@@ -3,23 +3,19 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 //original lds this after xul!!
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
-
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-compose.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-overlay.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-signature.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-composer.js", window, "UTF-8");
 /**/
-function onLoad(activatedWhileWindowOpen) {
- console.log("st-compose");
-    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+async function onLoad(activatedWhileWindowOpen) {
+  let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
     
-    WL.injectElements(`
+  WL.injectElements(`
  
 	<toolbarpalette id="MsgComposeToolbarPalette">
 		<toolbarbutton 
@@ -93,7 +89,6 @@ function onLoad(activatedWhileWindowOpen) {
 		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)
 		if (typeof ComposeStartup == 'function') {
-			// if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
 			if (!st4.ComposeStartup) {
 				if (isDebugComposer) debugger;
 				st4.ComposeStartup = ComposeStartup;
@@ -110,10 +105,17 @@ function onLoad(activatedWhileWindowOpen) {
 		st4.composer.load();
   }
 
+  window.SmartTemplate4.Util.notifyTools.enable();
+  await window.SmartTemplate4.Util.init();
+  // possibly reload the file template dropdown from toolbar button
+  window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.composer));
 }
 
 function onUnload(isAddOnShutDown) {
   try {
+    window.SmartTemplate4.Util.notifyTools.disable();
+    window.removeEventListener("SmartTemplates.BackgroundUpdate", window.composer.initLicensedUI);
+    
     window.document.getElementById('smarttemplate4-cleandeferred').remove();  
     window.document.getElementById('smarttemplate4-changeTemplate').remove();  
     window.document.getElementById('SmartTemplate4-ComposerPopupSet').remove();

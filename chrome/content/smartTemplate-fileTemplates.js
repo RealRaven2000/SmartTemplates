@@ -625,7 +625,6 @@ SmartTemplate4.fileTemplates = {
       msgPopup.appendChild(menuitem);	
     }
     
-		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
 		if (lastChild && lastChild.tagName == 'menuseparator') {
 			msgPopup.appendChild(lastChild);
@@ -686,6 +685,8 @@ SmartTemplate4.fileTemplates = {
   initMenus: function (reset = false) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
+          
+    util.logDebugOptional("notifications.menus", "fileTemplates.initMenus()...");
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 

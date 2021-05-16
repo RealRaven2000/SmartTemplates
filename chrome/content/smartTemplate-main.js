@@ -503,8 +503,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// Escape to HTML character references
 	// -------------------------------------------------------------------
-	escapeHtml: function escapeHtml(str)
-	{
+	escapeHtml: function escapeHtml(str) {
 		return str.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>"); // remove quote replacements
 	},
 
@@ -522,7 +521,7 @@ var SmartTemplate4 = {
 		if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
 			return;
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
-		SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
+		//  SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
 		this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
 		// overwriting a global function within composer instance scope
 		// this is intentional, as we needed to replace Tb's processing
@@ -547,7 +546,6 @@ var SmartTemplate4 = {
 		// (avoids having the function there multiple times)
 		this.hasDeferredVars = false; 
 
-
 		SmartTemplate4.Util.logDebug('SmartTemplate4.init() ends.');
     
 	} ,
@@ -565,9 +563,9 @@ var SmartTemplate4 = {
 	updateStatusBar: function updateStatusBar(show) {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
-          licenser = SmartTemplate4.Licenser;
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
 		try {
-			util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
+			util.logDebug('SmartTemplate4.updateStatusBar(' + show +') ... with licenseInfo = ', licenseInfo);
 			let isDefault = (typeof show == 'undefined' || show == 'default'),
 			    isVisible = isDefault ? prefs.getMyBoolPref('showStatusIcon') : show,
 			    doc = isDefault ? document : util.Mail3PaneWindow.document,
@@ -576,11 +574,11 @@ var SmartTemplate4 = {
 				let labelMode = prefs.getMyIntPref('statusIconLabelMode');
         btn.classList.remove(...btn.classList); // clear classlist array
         btn.classList.add('statusbarpanel-iconic-text');
-        if (licenser.LicenseKey) {
-          let days = licenser.LicensedDaysLeft,
+        if (licenseInfo.licenseKey) {
+          let days = licenseInfo.licensedDaysLeft,
               wrn = null;
-          if (licenser.isExpired)  {
-            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", -days);
+          if (licenseInfo.isExpired)  {
+            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", licenseInfo.expiredDays);
             btn.classList.add("alertExpired");
           }
           else if (days<15) {
@@ -593,7 +591,7 @@ var SmartTemplate4 = {
             labelMode = 2;
           }
           else {
-            if (licenser.key_type==2)
+            if (licenseInfo.keyType==2)
               btn.label = "SmartTemplates";
             else
               btn.label = "SmartTemplates Pro";
@@ -624,9 +622,15 @@ var SmartTemplate4 = {
 		}
 	} ,
 
+  // all main window elements that change depending on license status 
+  initLicensedUI: function ST_initLicensedUI() {
+    SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
+    SmartTemplate4.updateStatusBar();
+  },
+
 	startUp: function ST_startUp() {
     const util = SmartTemplate4.Util;
-		let v = util.VersionProxy();
+		// let v = util.VersionProxy();
 
     //  a hack for the status bar icon:	
     window.setTimeout(function() {
@@ -670,8 +674,6 @@ var SmartTemplate4 = {
     }
     
     util.logDebug("shutDown complete");
-    
-    
   } ,
 	
 	signatureDelimiter:  '-- <br>',
@@ -777,19 +779,19 @@ SmartTemplate4.calendar = {
 		// these will affect the following variables: %A% %a% %B% %b% (week days and months)
 		// OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
 		dayName: function dayName(n){ 
-			return this.bundle.GetStringFromName("day." + (n + 1) + ".name"); 
+			return this.bundle.GetStringFromName("day." + (n + 1) + ".name");  // SmartTemplate4.Util.getBundleString("day." + (n + 1) + ".name"); 
 		},
 		
 		shortDayName: function shortDayName(n) { 
-			return this.bundle.GetStringFromName("day." + (n + 1) + ".short"); 
+			return this.bundle.GetStringFromName("day." + (n + 1) + ".short");  // SmartTemplate4.Util.getBundleString("day." + (n + 1) + ".short");
 		},
 		
 		monthName: function monthName(n){ 
-			return this.bundle.GetStringFromName("month." + (n + 1) + ".name"); 
+			return this.bundle.GetStringFromName("month." + (n + 1) + ".name"); // SmartTemplate4.Util.getBundleString("month." + (n + 1) + ".name");
 		},
 		
 		shortMonthName: function shortMonthName(n) { 
-			return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); 
+			return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); // SmartTemplate4.Util.getBundleString("month." + (n + 1) + ".short");
 		}
 };   // SmartTemplate4.calendar 
 	
