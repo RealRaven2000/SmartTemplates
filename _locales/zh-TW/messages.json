@@ -918,7 +918,7 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "使用 ESC 字元來做 \" , &amp; , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
+    "message": "使用 ESC 字元來做 \" , & , < , > , space. 請查看 \"求助\" 來取得更完整資訊."
   },
   "pref_html.label": {
     "message": "使用HTML (例如.,<b>bold</b>)"

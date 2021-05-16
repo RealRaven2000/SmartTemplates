@@ -909,7 +909,7 @@
     "message": "Skrýt záložku s příklady"
   },
   "pref_html.cap": {
-    "message": "Použij únikové znaky pro  \" , & , < , >; , mezeru. Pro více detailů se podívejte do nápovědy."
+    "message": "Použij únikové znaky pro  \" , & , < , > , mezeru. Pro více detailů se podívejte do nápovědy."
   },
   "pref_html.label": {
     "message": "Použij HTML (např. <b>bold</b>)"

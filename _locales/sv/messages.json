@@ -918,7 +918,7 @@
     "message": "Dölj flik med exempel"
   },
   "pref_html.cap": {
-    "message": "Använd undantagstecken för \" , &amp; , < , > och blanksteg. Se Hjälp för närmare detaljer."
+    "message": "Använd undantagstecken för \" , & , < , > och blanksteg. Se Hjälp för närmare detaljer."
   },
   "pref_html.label": {
     "message": "Använd HTML (t.ex. <b>fetstil</b>)"

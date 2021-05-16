@@ -813,7 +813,7 @@
     "message": "Ocultar aba de exemplos"
   },
   "pref_html.cap": {
-    "message": "Usar caracteres de escape para \" , &amp; , < , > , espaço. Veja a ajuda para detalhes."
+    "message": "Usar caracteres de escape para \" , & , < , > , espaço. Veja a ajuda para detalhes."
   },
   "pref_html.label": {
     "message": "Usar HTML (por exemplo, <b>negrito</b>)"

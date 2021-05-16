@@ -918,7 +918,7 @@
     "message": "隐藏示例选项卡"
   },
   "pref_html.cap": {
-    "message": "使用转义字符 \" , &amp; , < , >，空格。详见帮助。"
+    "message": "使用转义字符 \" , & , < , >，空格。详见帮助。"
   },
   "pref_html.label": {
     "message": "使用 HTML （例如，<b>bold</b>）"
@@ -1456,7 +1456,7 @@
     "message": "谷歌提供的翻译"
   },
   "translatorNickname.label": {
-    "message": "yliu &amp; yfdyh000 (BabelZilla)"
+    "message": "yliu & yfdyh000 (BabelZilla)"
   },
   "tzname.label": {
     "message": "GMT, PST, EST, ..."

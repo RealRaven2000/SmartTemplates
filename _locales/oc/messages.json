@@ -813,7 +813,7 @@
     "message": "Hide examples tab"
   },
   "pref_html.cap": {
-    "message": "Utilizar de caractèrs d'escapament per  \" , &amp; , < , > , espaci. Veire l'ajuda per mai d'informacions."
+    "message": "Utilizar de caractèrs d'escapament per  \" , & , < , > , espaci. Veire l'ajuda per mai d'informacions."
   },
   "pref_html.label": {
     "message": "Utilizar HTML (per ex., <b>gras</b>)"

@@ -918,7 +918,7 @@
     "message": "Ukryj kartę przykładów"
   },
   "pref_html.cap": {
-    "message": "Używaj odwróconego ukośnika przed znakami: \" , &amp; , < , > oraz spacją. Zobacz pomoc."
+    "message": "Używaj odwróconego ukośnika przed znakami: \" , & , < , > oraz spacją. Zobacz pomoc."
   },
   "pref_html.label": {
     "message": "Użyj HTML, np. <b>bold</b>"

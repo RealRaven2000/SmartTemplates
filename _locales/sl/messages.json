@@ -918,7 +918,7 @@
     "message": "Skrij zavihek s primeri"
   },
   "pref_html.cap": {
-    "message": "Uporabi ubežne znake za  \" , &amp; , < , > , presledek. Glejte \"Pomoč\" za več podorbnosti."
+    "message": "Uporabi ubežne znake za  \" , & , < , > , presledek. Glejte \"Pomoč\" za več podorbnosti."
   },
   "pref_html.label": {
     "message": "Uporabi HTML (npr., <b>bold</b>)"
