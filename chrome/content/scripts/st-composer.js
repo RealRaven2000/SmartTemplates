@@ -107,8 +107,13 @@ async function onLoad(activatedWhileWindowOpen) {
 
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
+  // window.SmartTemplate4.composer.onLoad(); // TOO LATE FOR WRAPPING ComposeStartup !!!
   // possibly reload the file template dropdown from toolbar button
   window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI.bind(window.SmartTemplate4.composer));
+  // add the style sheet, buttons for cleaning and template selector
+	//	util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
+	window.SmartTemplate4.composer.load();
+  window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
 }
 
 function onUnload(isAddOnShutDown) {

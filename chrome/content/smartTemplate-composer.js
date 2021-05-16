@@ -182,6 +182,7 @@ SmartTemplate4.composer = {
   
 };
 
+
 (
 function() 
   {
@@ -201,22 +202,19 @@ function()
 		
 		SmartTemplate4.init();
 		
-		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 		// safety for when the compose-window-init event does not fire (Tb 67+)
 		if (typeof ComposeStartup == 'function') {
 			if (!SmartTemplate4.ComposeStartup) {
 				if (isDebugComposer) debugger;
 				SmartTemplate4.ComposeStartup = ComposeStartup;
 				ComposeStartup = function() {
-					logDebugOptional('composer','Calling ComposeStartup Wrapper');
+					logDebugOptional('composer','Calling ComposeStartup from Wrapper');
 					SmartTemplate4.ComposeStartup();
 					logDebugOptional('composer','Calling initListener');
 					SmartTemplate4.initListener(true);
-          SmartTemplate4.composer.initTemplateMenu();
+          // SmartTemplate4.composer.initTemplateMenu();
 				}
 			}
 		}
-    // add the style sheet, buttons for cleaning and template selector
-		SmartTemplate4.composer.load();
   }
 )();
