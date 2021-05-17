@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "As holder of a SmartTemplates standard license, you are now eligible for a discounted update plus full year extension. Click on the [Upgrade to Pro] button below your standard license for more information."
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates License has expired $countDays$ days ago.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates License will expire in $countDays$ days!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },  
   "licenseTypes": {
     "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
   },

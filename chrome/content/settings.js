@@ -519,7 +519,7 @@ SmartTemplate4.Settings = {
 		let panels = getElement('ST4-Panels');
 		panels.addEventListener('select', function(evt) { SmartTemplate4.Settings.onTabSelect(panels,evt); } );
 		
-		if (!util.hasLicense(false)) {
+		if (!util.hasLicense(false) && SmartTemplate4.Util.licenseInfo.status != "Expired") {
       settings.showTrialDate();
 		}
 
@@ -1497,6 +1497,8 @@ SmartTemplate4.Settings = {
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
 				validationDate         = getElement('validationDate'),
 				validationDateSpace    = getElement('validationDateSpace'),
+        licenseDate            = getElement('licenseDate'),
+        licenseDateLabel       = getElement('licenseDateLabel'),
         decryptedMail = SmartTemplate4.Util.licenseInfo.email, 
         decryptedDate = SmartTemplate4.Util.licenseInfo.expiryDate,
 				result = SmartTemplate4.Util.licenseInfo.status;
@@ -1512,6 +1514,14 @@ SmartTemplate4.Settings = {
     this.enablePremiumConfig(false);
     try {
 			var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+      let niceDate = decryptedDate;
+      if (decryptedDate) {
+        try { 
+          let d = new Date(decryptedDate);
+          niceDate =d.toLocaleDateString();
+        }
+        catch(ex) { niceDate = decryptedDate; }
+      }
       switch(result) {
         case "Valid":
           this.enablePremiumConfig(true);
@@ -1519,6 +1529,8 @@ SmartTemplate4.Settings = {
             SmartTemplate4.Settings.showValidationMessage(validationStandard, silent);
 					else
 						SmartTemplate4.Settings.showValidationMessage(validationPassed, silent);
+          licenseDate.value = niceDate;
+          licenseDateLabel.value = util.getBundleString("label.licenseValid", "Your license is valid until:");
           break;
         case "Invalid":
 				  validationDate.collapsed=true;
@@ -1549,6 +1561,8 @@ SmartTemplate4.Settings = {
 					}
           break;
         case "Expired":
+          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired","Your license expired on:");
+          licenseDate.value = niceDate;
           SmartTemplate4.Settings.showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":

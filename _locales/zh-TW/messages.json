@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "作為SmartTemplates標准許可證的持有人，您現在有資格獲得折扣更新以及全年的延期。 單擊標准許可證下方的 [升級到Pro] 按鈕以獲取更多信息。"
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates許可將在 $countDays$ 天后過期！",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "展望未來，SmartTemplates提供兩個許可證，Standard和Pro; 這些對於跟上Thunderbird平台的變化以及為附加組件的創新和修復提供資金是必要的。 由於重大變更按年度週期推出，許可證的有效期也為1年。"
   },

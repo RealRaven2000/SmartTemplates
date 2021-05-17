@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "Jako posiadacz standardowej licencji SmartTemplates masz teraz prawo do obniżonej ceny aktualizacji oraz przedłużenia o cały rok. Kliknij przycisk [Przejść na wersje Pro] poniżej standardowej licencji, aby uzyskać więcej informacji."
   },
+  "licenseStatus.expired" : {
+    "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "Licencja SmartTemplates wygaśnie za $countDays$ dni!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "Idąc dalej, SmartTemplates oferuje dwie licencje: Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird i finansować innowacje i naprawy dodatku. Ponieważ zmiany w toku są wprowadzane w cyklu rocznym, licencja będzie ważna przez 1 rok."
   },

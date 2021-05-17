@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "SmartTemplates-vakiolisenssin haltijana voit nyt saada päivitetyn hinnan alennuksella ja koko vuoden jatkolla. Napsauta tavallisen käyttöoikeuden alapuolella olevaa [Päivitä Pro] painiketta saadaksesi lisätietoja."
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates-lisenssi vanhenee $countDays$ päivässä!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "SmartTemplates tarjoaa kaksi lisenssiä: Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten ja lisäosien innovaatioiden ja korjausten rahoittamiseksi. Koska rikkomisen muutokset toteutetaan vuosittain, lisenssi on voimassa 1 vuosi."
   },

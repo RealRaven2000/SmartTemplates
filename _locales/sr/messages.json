@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "Као носилац стандардне лиценце СмартТемплатес, сада испуњавате услове за ажурирање с попустом и продужење за целу годину. За више информација кликните на дугме [Упграде то Про] испод ваше стандардне лиценце."
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates Лиценца је истекла пре $countDays$ дана.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates Лиценца истиче за $countDays$ дана!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "Даље SmartTemplates нуди две лиценце, Standard и Pro; они су неопходни да би били у току са променама на Тхундербирд платформи и финансирали Иновације и поправке додатка. Како се промене промене извршавају током једногодишњег циклуса, лиценца ће такође важити 1 годину."
   },

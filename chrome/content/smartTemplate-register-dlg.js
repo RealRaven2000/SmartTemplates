@@ -138,7 +138,7 @@ var Register = {
 		
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:")
+			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:");
 				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case "Valid":

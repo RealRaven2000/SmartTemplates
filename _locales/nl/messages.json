@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "Als houder van een SmartTemplates-standaardlicentie komt u nu in aanmerking voor een update met korting plus een verlenging van een heel jaar. Klik op de knop [Upgraden naar Pro] onder uw standaardlicentie voor meer informatie."
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates-licentie vervalt over $countDays$ dagen!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "Vanaf nu biedt SmartTemplates twee licenties, Standaard en Pro; deze zijn nodig om de wijzigingen in het Thunderbird-platform bij te houden en innovaties en reparaties aan de add-on te financieren. Aangezien grote wijzigingen in een jaarlijkse cyclus worden doorgevoerd, zal de licentie ook een geldigheidsduur van een jaar hebben."
   },

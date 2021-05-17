@@ -527,6 +527,24 @@
   "lastName.label": {
     "message": "Sobrenome:"
   },
+  "licenseStatus.expired" : {
+    "message": "A licença do SmartTemplates expirou em $countDays$ dias atrás.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "A licença do SmartTemplates expira em $countDays$ dias!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "No futuro, o SmartTemplate oferece duas licenças, Standard e Pro; estes são necessários para acompanhar as mudanças na plataforma Thunderbird e financiar Inovações e reparos do Add-on. Como as alterações de quebra são lançadas em um ciclo anual, a licença também será válida por 1 ano."
   },

@@ -527,6 +527,24 @@
   "lastName.label": {
     "message": "Nama Belakang:"
   },
+  "licenseStatus.expired" : {
+    "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "Lisensi SmartTemplates akan kedaluwarsa dalam $countDays$ hari!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
   },

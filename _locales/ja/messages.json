@@ -616,6 +616,24 @@
     "description": "Special message for standard license holders",
     "message": "SmartTemplates標準ライセンスの所有者として、割引アップデートと1年間の延長の資格があります。 詳細については、標準ライセンスの下にある [Proにアップグレード] ボタンをクリックしてください。"
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplatesライセンスは $countDays$ 日で期限切れになります！",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
   "licenseTypes": {
     "message": "SmartTemplates には、標準とプロの 2 つのライセンスがあります。Thunderbird プラットフォームの変更への対応のため、継続的な支援が必要です。大幅な変更は 1 年ごととなるため、ライセンスの有効期間も 1 年間となります。"
   },

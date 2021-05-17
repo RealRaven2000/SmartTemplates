@@ -578,11 +578,13 @@ var SmartTemplate4 = {
           let days = licenseInfo.licensedDaysLeft,
               wrn = null;
           if (licenseInfo.isExpired)  {
-            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", licenseInfo.expiredDays);
+            let def = "SmartTemplates License has expired {0} days ago.".replace("{0}", licenseInfo.expiredDays);
+            wrn =  util.getBundleString("licenseStatus.expired", def, [licenseInfo.expiredDays]);
             btn.classList.add("alertExpired");
           }
           else if (days<15) {
-            wrn = "SmartTemplates License will expire in {0} days!".replace("{0}", days);
+            let def = "SmartTemplates License will expire in {0} days!".replace("{0}", days)
+            wrn = util.getBundleString("licenseStatus.willExpire", def, [days]);
             btn.classList.add("alert");
           }
           if (wrn) {

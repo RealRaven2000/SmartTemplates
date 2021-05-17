@@ -616,17 +616,35 @@
     "description": "Special message for standard license holders",
     "message": "Als Inhaber einer SmartTemplates-Standardlizenz haben Sie jetzt Anspruch auf ein ermäßigtes Update sowie eine Verlängerung um ein volles Jahr. Klicken Sie unter Ihrer Standardlizenz auf die Schaltfläche [Upgrade auf Pro], um weitere Informationen zu erhalten."
   },
+  "licenseStatus.expired" : {
+    "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "SmartTemplates Lizenz läuft in $countDays$ ab!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },  
   "licenseTypes": {
     "message": "In Zukunft bietet SmartTemplates zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und die Reparaturen und Innovationen zu finanzieren. Da Funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig."
   },
   "licenseValidation.expired": {
-    "message": "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten."
+    "message": "Der angegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten."
   },
   "licenseValidation.failed": {
-    "message": "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab."
+    "message": "Der angegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab."
   },
   "licenseValidation.invalidAddon": {
-    "message": "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}."
+    "message": "Der angegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}."
   },
   "licenseValidation.invalidMail": {
     "message": "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab."
