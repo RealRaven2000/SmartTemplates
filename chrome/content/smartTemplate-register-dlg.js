@@ -38,8 +38,10 @@ var Register = {
   updateLicenseUI: async function updateLicenseUI() {  
     const licenseInfo = SmartTemplate4.Util.licenseInfo,
           getElement = document.getElementById.bind(document),
+          prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;
 		// for renewals, referrer is always the old license!
+    let referrerTxt = getElement('referrer');
 		if (licenseInfo.status=="Valid")
 			referrerTxt.value = licenseInfo.licenseKey;
 		

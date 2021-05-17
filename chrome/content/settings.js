@@ -542,6 +542,7 @@ SmartTemplate4.Settings = {
 	
 	onUnload : function() {
 		if (SmartTemplate4.fileTemplates.isModified) {
+      SmartTemplate4.Util.logDebug("fileTemplates were modified - notify to update all menus...");
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 		}
     window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseInOptions);
