@@ -146,18 +146,6 @@ SmartTemplate4.Util = {
 		}
 	},
 	
-	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
-		const util = SmartTemplate4.Util;
-	  try { 
-			return util.Mail3PaneWindow.SmartTemplate4.Licenser;
-		}
-		catch(ex) {
-			util.logException('Retrieve Licenser failed: ', ex);
-		}
-		return SmartTemplate4.Licenser;
-	} ,
-
-
 	get mailDocument() {
 	  return gMsgCompose.editor.document;
 	} ,
@@ -584,7 +572,7 @@ SmartTemplate4.Util = {
 							label: regBtn,
 							accessKey: hotKey,   
 							callback: function() {  
-                util.showLicenseDialog(featureName); // util.mainInstance.Util.Licenser.showDialog(featureName); 
+                util.showLicenseDialog(featureName); 
 							},
 							popup: null
 						}
@@ -1353,7 +1341,7 @@ SmartTemplate4.Util = {
   } ,
 	
 	get hasStandardLicense() {
-    if (true) {  // we assume this always has happened! SmartTemplate4.Util.Licenser.isValidated
+    if (true) {  
 			let result = (SmartTemplate4.Util.licenseInfo.keyType==2);
 			SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasStandardLicense = " + result);
 			return result; // standard license - true 

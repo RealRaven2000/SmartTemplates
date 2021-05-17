@@ -1598,7 +1598,7 @@ SmartTemplate4.Settings = {
 				}
 			}
 			
-			// show support tab if license is not empty - util.Licenser uses global licenser object!
+			// show support tab if license is not empty 
 			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.LicenseKey) ? true : false;
 			document.getElementById('supportTab').collapsed = !(isSupportEnabled);
       
@@ -1655,7 +1655,7 @@ SmartTemplate4.Settings = {
 		}
 		const util = SmartTemplate4.Util,
 					settings = SmartTemplate4.Settings,
-          licenseInfo = SmartTemplate4.Util.licenseInfo; // replaces old Licenser object
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
 					
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),

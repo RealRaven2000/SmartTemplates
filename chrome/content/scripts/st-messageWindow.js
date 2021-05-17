@@ -14,7 +14,7 @@ async function onLoad(activatedWhileWindowOpen) {
   await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
   
-  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer));
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates));
   window.SmartTemplate4.fileTemplates.initMenusWithReset();
   
 }
@@ -24,7 +24,7 @@ function onUnload(isAddOnShutDown) {
   util.logDebug("Single Message Window - onUnload(" + isAddOnShutDown + ")…");
   
   window.SmartTemplate4.Util.notifyTools.disable();
-  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu);
+  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset);
   
   if(isAddOnShutDown) {
     window.SmartTemplate4.shutDown();
