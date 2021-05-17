@@ -493,7 +493,7 @@ SmartTemplate4.Settings = {
     settings.labelLicenseBtn(getElement("btnLicense"), "buy");
     getElement('txtLicenseKey').value = SmartTemplate4.Util.licenseInfo.licenseKey;
     if (SmartTemplate4.Util.licenseInfo.licenseKey) {
-      SmartTemplate4.Settings.validateLicenseInOptions(true);
+      SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
     }
 		
 		if (isAdvancedPanelOpen) {
@@ -535,7 +535,7 @@ SmartTemplate4.Settings = {
       setTimeout(function() {txtLicense.focus();}, 200);
     }
     
-    window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseInOptions.bind(SmartTemplate4.Settings));
+    window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
 	} ,
@@ -545,7 +545,7 @@ SmartTemplate4.Settings = {
       SmartTemplate4.Util.logDebug("fileTemplates were modified - notify to update all menus...");
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 		}
-    window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseInOptions);
+    window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
 	} ,
 
   l10n: function() {
@@ -1637,6 +1637,10 @@ SmartTemplate4.Settings = {
     }
   } ,
   
+  validateLicenseFromEvent: function() {
+    SmartTemplate4.Settings.validateLicenseInOptions(false);
+  },
+  
   validateLicenseInOptions: function validateLicenseInOptions(silent = false) {
 		function replaceCssClass(el,addedClass) {
 			try {
@@ -1666,7 +1670,7 @@ SmartTemplate4.Settings = {
     try {
       
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
-      this.updateLicenseOptionsUI();  // async! // was settings.decryptLicense
+      this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
       let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(licenseInfo.status) {

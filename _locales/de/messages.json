@@ -626,7 +626,7 @@
     }
   },
   "licenseStatus.willExpire" : {
-    "message": "SmartTemplates Lizenz läuft in $countDays$ ab!",
+    "message": "SmartTemplates Lizenz läuft in $countDays$ Tagen ab!",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -653,7 +653,7 @@
     "message": "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein."
   },
   "licenseValidation.passed": {
-    "message": "Danke für die Registrierung von SmartTemplates Pro! Alle Premium-Funktionen sind nun freigeschaltet."
+    "message": "Danke für Ihre Registrierung von SmartTemplates Pro! Alle Premium-Funktionen sind nun freigeschaltet."
   },
   "licenseValidation.standard": {
     "message": "Danke für die Registrierung von SmartTemplates Standard - damit helfen Sie dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren."
