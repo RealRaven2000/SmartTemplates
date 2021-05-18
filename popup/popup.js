@@ -81,7 +81,7 @@ async function updateActions(addonName) {
   }
   else {
     let currentTime=new Date(),
-        endSale = new Date("2021-04-16");
+        endSale = new Date("2021-06-01"); // Next Sale End Date
     if (currentTime < endSale) {
       show('specialOffer');
       hideSelectorItems('.donations');

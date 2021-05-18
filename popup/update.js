@@ -12,7 +12,7 @@ END LICENSE BLOCK */
       messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
     }
     if (event.target.id=='whatsNew') {
-      messenger.Utilities.showVersionHistory(false);    
+      messenger.Utilities.showVersionHistory();    
     }
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
@@ -82,10 +82,12 @@ END LICENSE BLOCK */
     }
     
     let specialOffer = document.getElementById('specialOfferTxt');
-    if (specialOffer)
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+    if (specialOffer) {
+      let discount = "33%";
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [discount])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>");
+    }
           
     let specialIntro = document.getElementById('specialOfferIntro');
     if (specialIntro) {

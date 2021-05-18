@@ -117,6 +117,21 @@
   "renew-your-license" : {
     "message" : "Gia hạn giấy phép của bạn."
   },  
+  "special-offer-content": {
+    "message": "Làm cho SmartTemplates bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm $discount$ {boldEnd} về giá của SmartTemplates Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 1 tháng 5 {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Làm cho SmartTemplates bằng chứng trong tương lai!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ SmartTemplates trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+  },
   "support-preference" : {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
     "placeholders": {

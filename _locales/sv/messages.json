@@ -1166,6 +1166,21 @@
   "specform_note.label": {
     "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
+  "special-offer-content": {
+    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 1 maj {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Gör SmartTemplates framtida bevis!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Kära {name} {boldEnd}, om du inte har någon licens ännu, kan du överväga att stödja SmartTemplates för framtiden. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att fortsätta!"
+  },
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
   },

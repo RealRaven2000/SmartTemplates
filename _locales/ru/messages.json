@@ -1166,6 +1166,21 @@
   "specform_note.label": {
     "message": "Выражение в скобках [[Cc: %cc(name)%]] будет выведено, если переменная %cc(name)% имеет значение!"
   },
+  "special-offer-content": {
+    "message": "Сделайте SmartTemplates перспективным для будущего и получите лицензию, а цена SmartTemplates Pro будет {boldStart} $discount$ {boldEnd}! Это специальное предложение будет доступно до {boldStart} 1 мая {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Сделайте SmartTemplates перспективным!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Уважаемый {name} {boldEnd}, если у вас еще нет лицензии, подумайте о поддержке SmartTemplates в будущем. Грядут еще большие изменения в Thunderbird, и мне нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!"
+  },
   "spellcheck.label": {
     "message": "Устанавливает язык проверки правописания. Примеры значений: (en, de-DE, es-ES, ru) - обратите внимание, что словарь должен быть установлен."
   },

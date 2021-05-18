@@ -1328,6 +1328,21 @@
   "sub_var.cap": {
     "message": "Sujet"
   },
+  "special-offer-content": {
+    "message": "Assurez la pérennité de SmartTemplates et récupérez une licence tout en bénéficiant d'une {boldStart} réduction de $discount$ {boldEnd} sur le prix de SmartTemplates Pro! Cette offre spéciale sera disponible jusqu'au {boldStart} 1er mai {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Rendez SmartTemplates à l'épreuve du futur!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Cher {name} {boldEnd}, si vous n'avez pas encore de licence, pensez à prendre en charge SmartTemplates à l'avenir. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!"
+  },
   "support-preference": {
     "message": "C'est la manière préférée de prendre en charge $addonName$.",
     "placeholders": {

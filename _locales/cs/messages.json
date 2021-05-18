@@ -1319,6 +1319,21 @@
   "sub_var.cap": {
     "message": "Předmět"
   },
+  "special-offer-head": {
+    "message": "Udělejte důkaz SmartTemplates do budoucna!"
+  },    
+  "special-offer-intro": {
+    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory SmartTemplates pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+  },  
+  "special-offer-content": {
+    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} 1. Května {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
     "placeholders": {

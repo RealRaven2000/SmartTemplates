@@ -1328,6 +1328,21 @@
   "sub_var.cap": {
     "message": "Subject"
   },
+  "special-offer-content": {
+    "message": "Future proof SmartTemplates and get a License. Get a {boldStart}$discount$ reduction{boldEnd} on the price of SmartTemplates Pro! This special offer will be available until {boldStart}May 30th{boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Future Proof SmartTemplates!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Dear {name}{boldEnd}, if you haven't got a license yet, please consider supporting SmartTemplates for the future. More big changes on Thunderbird are coming and I need {boldStart}your help{boldEnd} to keep up!"
+  },
   "support-preference": {
     "message": "This is the preferred way of supporting $addonName$.",
     "placeholders": {

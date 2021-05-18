@@ -1166,6 +1166,21 @@
   "specform_note.label": {
     "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
+  "special-offer-content": {
+    "message": "Pripravite SmartTemplates v prihodnje in pridobite licenco, medtem ko je cena programa SmartTemplates Pro {boldStart} $discount$ znižana {boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} 1. maja {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Naj bodo SmartTemplates prihodnji dokaz!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, če še nimate licence, razmislite o podpori SmartTemplates za prihodnost. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!"
+  },
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."
   },

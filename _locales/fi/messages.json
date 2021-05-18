@@ -1328,6 +1328,21 @@
   "sub_var.cap": {
     "message": "Aihe"
   },
+  "special-offer-head" : {
+    "message": "Tee SmartTemplatesista tulevaisuuden todiste!"
+  } ,  
+  "special-offer-intro" : {
+    "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
+  } , 
+  "special-offer-content" : {
+    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tämä erikoistarjous on saatavilla {boldStart} 1. toukokuuta {boldEnd} asti.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {

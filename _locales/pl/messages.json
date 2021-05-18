@@ -1166,6 +1166,21 @@
   "specform_note.label": {
     "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
+  "special-offer-content": {
+    "message": "Przygotuj SmartTemplates na przyszłość i pobierz licencję, dopóki cena SmartTemplates Pro jest {boldStart} $discount$ obniżona {boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart} 1 maja {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Przygotuj SmartTemplates na przyszłość!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Drogi {name} {boldEnd}, jeśli nie masz jeszcze licencji, rozważ obsługę SmartTemplates w przyszłości. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!"
+  },
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."
   },
