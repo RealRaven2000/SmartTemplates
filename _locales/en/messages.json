@@ -1544,7 +1544,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Improved support for converting encoded characters used in address fields such as 'from'{L2}{L1}Error in localization for Traditional Chinese (zh-TW) broke settings dialog.{L2}{L1}Ongoing work to make SmartTemplates compatible with Thunderbird 91, which ist planned for Summer 2021{L2}{L1}SmartTemplates now supports multiple Thunderbird windows, via the new background script notifications.{L2}"
+    "message": "{L1}Improved support for converting encoded characters used in address fields such as 'from'{L2}{L1}Error in localization for Traditional Chinese (zh-TW) broke settings dialog.{L2}{L1}Ongoing work to make SmartTemplates compatible with Thunderbird version 91, which is planned for release in summer 2021.{L2}{L1}Improved support for multiple Thunderbird windows, via the new background script notifications.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

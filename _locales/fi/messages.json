@@ -1544,7 +1544,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list" : {
-    "message" : "{L1} Parannettu tuki koodattujen merkkien muuntamiseen, joita käytetään osoitekentissä, kuten 'mistä' {L2} {L1} Virhe perinteisen kiinan (zh-TW) lokalisoinnissa rikkoi asetusten valintaikkunan. {L2} {L1} Jatkuva työ SmartTemplatesin tekemiseksi yhteensopiva Thunderbird 91: n kanssa, joka on tarkoitus suunnitella kesäksi 2021 {L2}"
+    "message" : "{L1} Parannettu tuki koodattujen merkkien muuntamiseen, joita käytetään osoitekentissä, kuten 'mistä' {L2} {L1} Virhe perinteisen kiinan (zh-TW) lokalisoinnissa rikkoi asetusten valintaikkunan. {L2} {L1} Käynnissä oleva työ SmartTemplates-yhteensopivuuden saavuttamiseksi Thunderbird-version 91 kanssa, joka on tarkoitus julkaista kesällä 2021. {L2} {L1} Parannettu tuki useille Thunderbird-ikkunoille uusien taustakomentoilmoitusten avulla. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

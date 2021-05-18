@@ -1544,7 +1544,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Supporto migliorato per la conversione di caratteri codificati utilizzati nei campi indirizzo come 'da' {L2} {L1} Errore nella localizzazione per la finestra di dialogo delle impostazioni di interruzione del cinese tradizionale (zh-TW). {L2} {L1} Lavoro in corso per creare SmartTemplates compatibile con Thunderbird 91, previsto per l'estate 2021 {L2}"
+    "message": "{L1} Supporto migliorato per la conversione di caratteri codificati utilizzati nei campi indirizzo come 'da' {L2} {L1} Errore nella localizzazione per la finestra di dialogo delle impostazioni di interruzione del cinese tradizionale (zh-TW). {L2} {L1} Lavoro in corso per rendere SmartTemplates compatibile con Thunderbird versione 91, il cui rilascio è previsto per l'estate 2021. {L2} {L1} Supporto migliorato per più finestre Thunderbird, tramite le nuove notifiche di script in background. {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

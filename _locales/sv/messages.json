@@ -1544,7 +1544,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2} {L1} Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2} {L1} Pågående arbete med att skapa SmartTemplates kompatibel med Thunderbird 91, som planeras sommaren 2021 {L2}"
+    "message": "{L1} Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2} {L1} Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2} {L1} Pågående arbete för att göra SmartTemplates kompatibla med Thunderbird version 91, som planeras släppas sommaren 2021. {L2} {L1} Förbättrat stöd för flera Thunderbird-fönster via de nya meddelandena om bakgrundsskript. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

@@ -1541,7 +1541,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Verbesserte Unterstützung für die Konvertierung von codierten Zeichen, die in Adressfeldern wie 'von' verwendet werden. {L2} {L1} Fehler bei der Lokalisierung für traditionelles Chinesisch (zh-TW) hat den Einstellungsdialog unterbrochen. {L2} {L1} Laufende Arbeit um SmartTemplates kompatibel mit Thunderbird 91 zu machen, welches für Sommer 2021 geplant ist. {L2}"
+    "message": "{L1} Verbesserte Unterstützung für die Konvertierung von kodierten Zeichen, die in Adressfeldern wie 'von' verwendet werden. {L2} {L1} Repariert: Fehler bei der Lokalisierung für traditionelles Chinesisch (zh-TW) hat den Einstellungsdialog unterbrochen. {L2} {L1} Laufende Arbeiten an der Kompatibilität von SmartTemplates mit Thunderbird Version 91, welche für Sommer 2021 geplant ist. {L2} {L1} Verbesserte Unterstützung für mehrere Thunderbird-Fenster durch die neuen Hintergrundskriptbenachrichtigungen. {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

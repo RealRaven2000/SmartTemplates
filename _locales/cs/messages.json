@@ -1535,7 +1535,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1} Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1} Probíhající práce na vytváření SmartTemplates kompatibilní s Thunderbirdem 91, který je plánován na léto 2021 {L2}"
+    "message" : "{L1} Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1} Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1} Probíhají práce na kompatibilitě SmartTemplate s Thunderbirdem verze 91, jehož vydání je plánováno na léto 2021. {L2} {L1} Vylepšená podpora více oken Thunderbirdu prostřednictvím nových oznámení skriptu na pozadí. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

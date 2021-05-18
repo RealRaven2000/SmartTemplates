@@ -175,7 +175,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Suporte aprimorado para a conversão de caracteres codificados usados em campos de endereço, como 'de' {L2} {L1} Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2} {L1} Trabalho contínuo para fazer SmartTemplates compatível com Thunderbird 91, que está planejado para o verão de 2021 {L2}"
+    "message": "{L1} Suporte aprimorado para a conversão de caracteres codificados usados em campos de endereço, como 'de' {L2} {L1} Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2} {L1} Trabalho contínuo para tornar os SmartTemplates compatíveis com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021. {L2} {L1} Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano. {L2}"
   },
   "window-title": {
     "message": "Bem-vindo a $addonName$",

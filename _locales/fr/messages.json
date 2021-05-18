@@ -1544,7 +1544,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Amélioration de la prise en charge de la conversion des caractères codés utilisés dans les champs d'adresse tels que 'from' {L2} {L1} Une erreur de localisation pour le chinois traditionnel (zh-TW) a interrompu la boîte de dialogue des paramètres. {L2} {L1} Travail en cours pour créer des SmartTemplates compatible avec Thunderbird 91, prévu pour l'été 2021 {L2}"
+    "message": "{L1} Amélioration de la prise en charge de la conversion des caractères codés utilisés dans les champs d'adresse tels que 'from' {L2} {L1} Une erreur de localisation pour le chinois traditionnel (zh-TW) a interrompu la boîte de dialogue des paramètres. {L2} {L1} Travail en cours pour rendre les SmartTemplates compatibles avec Thunderbird version 91, dont la sortie est prévue pour l'été 2021. {L2} {L1} Amélioration de la prise en charge de plusieurs fenêtres Thunderbird, via les nouvelles notifications de script en arrière-plan. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -1544,7 +1544,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} {L2}"
+    "message": "{L1} Izboljšana podpora za pretvorbo kodiranih znakov, uporabljenih v naslovnih poljih, na primer 'iz' {L2} {L1} Napaka pri lokalizaciji za pokvareno okno z nastavitvami tradicionalne kitajščine (zh-TW). {L2}{L1} V teku je prizadevanje za združljivost SmartTemplates z različico 91 Thunderbird, ki naj bi izšla poleti 2021 {L2} {L1} Izboljšana podpora za več oken Thunderbird z novimi obvestili o skriptih v ozadju. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
