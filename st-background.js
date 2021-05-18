@@ -116,7 +116,7 @@ async function main() {
           const url = browser.runtime.getURL("popup/update.html");
           //await browser.tabs.create({ url });
           let screenH = window.screen.height,
-              windowHeight = (screenH > 870) ? 870 : screenH;
+              windowHeight = (screenH > 870) ? 870 : screenH-20;
           await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
         }
         break;

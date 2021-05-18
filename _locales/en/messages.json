@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "As holder of a SmartTemplates standard license, you are now eligible for a discounted update plus full year extension. Click on the [Upgrade to Pro] button below your standard license for more information."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart}Dear $username${boldEnd}, you can now upgrade to SmartTemplates Pro for {boldStart}$discount$ less{boldEnd} - while also extending your license by a full year. More big changes on Thunderbird are coming and I need {boldStart}your help{boldEnd} to keep up!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available from {boldStart}May 20th to May 31st{boldEnd}."
+  },
   "licenseStatus.expired" : {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
     "placeholders": {
@@ -1528,7 +1544,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Improved support for converting encoded characters used in address fields such as 'from'{L2}{L1}Error in localization for Traditional Chinese (zh-TW) broke settings dialog.{L2}{L1}Ongoing work to make SmartTemplates compatible with Thunderbird 91, which ist planned for Summer 2021{L2}"
+    "message": "{L1}Improved support for converting encoded characters used in address fields such as 'from'{L2}{L1}Error in localization for Traditional Chinese (zh-TW) broke settings dialog.{L2}{L1}Ongoing work to make SmartTemplates compatible with Thunderbird 91, which ist planned for Summer 2021{L2}{L1}SmartTemplates now supports multiple Thunderbird windows, via the new background script notifications.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

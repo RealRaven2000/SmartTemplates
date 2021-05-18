@@ -21,22 +21,28 @@ async function updateActions(addonName) {
     if (el) {
       el.setAttribute('collapsed',true);
       return el;
-  }
+    }
     return null;
   }
   function hideSelectorItems(cId) {
     let elements = document.querySelectorAll(cId);
 		for (let el of elements) {
       el.setAttribute('collapsed',true);
-  }
+    }
   }
   function show(id) {
     let el = document.getElementById(id);
     if (el) {
-	      el.setAttribute('collapsed',false);
-	      return el;
+      el.setAttribute('collapsed',false);
+      return el;
 	  }
 	  return null;
+  }
+  function showSelectorItems(cId) {
+    let elements = document.querySelectorAll(cId);
+		for (let el of elements) {
+      el.setAttribute('collapsed',false);
+    }
   }
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
@@ -47,10 +53,18 @@ async function updateActions(addonName) {
   }
   
   let isActionList = true;
+  let currentTime=new Date(),
+      endSale = new Date("2021-06-01"); // Next Sale End Date
+  let isSale = (currentTime < endSale);
 
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hide('register');
+    
+    if (isSale && isStandardUser) {
+      showSelectorItems('.standardUpgradeSale');
+      hide('offerStandardUpgrade');
+    }
     
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
@@ -74,15 +88,13 @@ async function updateActions(addonName) {
           show('licenseExtended');
           hide('extendLicenseListItem');
           hide('extend');
-        isActionList = false;
+          isActionList = false;
         }
       }
     }
   }
   else {
-    let currentTime=new Date(),
-        endSale = new Date("2021-06-01"); // Next Sale End Date
-    if (currentTime < endSale) {
+    if (isSale) {
       show('specialOffer');
       hideSelectorItems('.donations');
     }

@@ -569,6 +569,22 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Obrigado por estender recentemente sua licença ou se você fez uma doação. Como você ajudou a preparar este complemento para o futuro, basta fechar esta janela."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Prezado $username${boldEnd}, agora você pode atualizar para SmartTemplates Pro por {boldStart} $discount$ menos {boldEnd} - enquanto também estende sua licença por um ano inteiro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart} 20 de maio a 31 de maio {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "A licença do SmartTemplates expirou em $countDays$ dias atrás.",
     "placeholders": {

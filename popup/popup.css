@@ -82,7 +82,9 @@ ul.actions {
 ul.actions *[collapsed=true],
 .actionlinks a[collapsed=true],
 p[collapsed=true],
-div[collapsed=true]{
+div[collapsed=true],
+img[collapsed=true]
+{
   visibility: collapse;
   display :none;
 }
@@ -122,7 +124,7 @@ div[collapsed=true]{
   
 }
 
-
+#standardLicense #bargainIcon,
 #specialOffer #bargainIcon {
   background: transparent !important;
   cursor: pointer;
@@ -132,6 +134,7 @@ div[collapsed=true]{
   top: -2em;
 }
 
+#specialBox #standardLicense,
 #specialBox #specialOffer {
   background: transparent !important;
 }

@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "En tant que titulaire d'une licence standard SmartTemplates, vous pouvez désormais bénéficier d'une mise à jour à prix réduit et d'une extension d'un an. Cliquez sur le bouton [Passer à Pro] sous votre licence standard pour plus d'informations."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Cher $username$ {boldEnd}, vous pouvez désormais passer à SmartTemplates Pro pour {boldStart} $discount$ de moins {boldEnd} - tout en prolongeant votre licence d'une année complète. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Payez seulement 5,15 € au lieu de 8,35 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart} 20 mai au 31 mai {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
     "placeholders": {

@@ -89,14 +89,27 @@ END LICENSE BLOCK */
           .replace(/\{boldEnd\}/g,"</b>");
     }
           
+    let userName = await messenger.Utilities.getUserName();
     let specialIntro = document.getElementById('specialOfferIntro');
     if (specialIntro) {
-      let userName = await messenger.Utilities.getUserName();
       specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>")
         .replace("{name}", userName);
     }
+    let specialOfferStandard = document.getElementById('specialOfferStandard');
+    if (specialOfferStandard) {
+      let discount = "40%";
+      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discount])
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>");
+    }
+    let specialOfferTerms = document.getElementById('specialOfferTerms');
+    if (specialOfferTerms) {
+      specialOfferTerms.innerHTML =  messenger.i18n.getMessage('license-standard-special-terms')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>");
+    } 
     
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {

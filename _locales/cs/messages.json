@@ -607,6 +607,22 @@
     "description": "Special message for standard license holders",
     "message": "Jako držitel standardní licence SmartTemplates máte nyní nárok na zlevněnou aktualizaci plus prodloužení o celý rok. Další informace získáte kliknutím na tlačítko [Upgradujte na Pro] pod vaší standardní licencí."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Vážené $username$ {boldEnd}, nyní můžete upgradovat na SmartTemplates Pro za {boldStart} o $discount$ méně {boldEnd} - a zároveň si prodloužit licenci o celý rok. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. Května do 31. Května {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
     "placeholders": {

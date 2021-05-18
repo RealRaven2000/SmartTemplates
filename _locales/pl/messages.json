@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "Jako posiadacz standardowej licencji SmartTemplates masz teraz prawo do obniżonej ceny aktualizacji oraz przedłużenia o cały rok. Kliknij przycisk [Przejść na wersje Pro] poniżej standardowej licencji, aby uzyskać więcej informacji."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Drogi $ username $ {boldEnd}, możesz teraz uaktualnić do SmartTemplates Pro za {boldStart} $discount$ mniej {boldEnd} - jednocześnie przedłużając swoją licencję o cały rok. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Zapłać tylko 5,15 € zamiast 8,35 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart} 20 do 31 maja {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
     "placeholders": {

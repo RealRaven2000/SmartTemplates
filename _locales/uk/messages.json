@@ -527,6 +527,22 @@
   "lastName.label": {
     "message": "Прізвище:"
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Шановний $username${boldEnd}, тепер ви можете перейти на SmartTemplates Pro за {boldStart} на $discount$ дешевше {boldEnd}, одночасно продовживши свою ліцензію на цілий рік. Наближаються ще великі зміни в Thunderbird, і мені потрібна {boldStart} ваша допомога {boldEnd}, щоб не відставати!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Сплатіть лише € 5,15 замість € 8,35 та отримайте повний доступ до функцій Pro. Ця спеціальна пропозиція діє з {boldStart} 20 травня по 31 травня {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "Ліцензія SmartTemplates закінчилась $countDays$ днів тому.",
     "placeholders": {

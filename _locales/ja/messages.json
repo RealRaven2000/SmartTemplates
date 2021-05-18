@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "SmartTemplates標準ライセンスの所有者として、割引アップデートと1年間の延長の資格があります。 詳細については、標準ライセンスの下にある [Proにアップグレード] ボタンをクリックしてください。"
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart}親愛なる $username$ {boldEnd} 、ライセンスを1年間延長しながら、{boldStart}を$discount$削減{boldEnd}するためにSmartTemplates Proにアップグレードできるようになりました。 Thunderbirdのさらに大きな変更が予定されており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart} 5月20日から5月31日{boldEnd}までご利用いただけます。"
+  }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
     "placeholders": {

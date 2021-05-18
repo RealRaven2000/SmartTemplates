@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "Као носилац стандардне лиценце СмартТемплатес, сада испуњавате услове за ажурирање с попустом и продужење за целу годину. За више информација кликните на дугме [Упграде то Про] испод ваше стандардне лиценце."
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Драги $username${boldEnd}, сада можете да надоградите на СмартТемплатес Про за {boldStart} $discount$ мање {boldEnd} - а истовремено продужити лиценцу за целу годину. Долазе још велике промене на Тхундербирду и потребна ми је {boldStart} ваша помоћ {boldEnd} да бих наставио!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Платите само 5,15 € уместо 8,35 € и остварите пуни приступ Про функцијама. Ова посебна понуда доступна је од {boldStart} 20. маја до 31. маја {boldEnd}."
+  }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates Лиценца је истекла пре $countDays$ дана.",
     "placeholders": {

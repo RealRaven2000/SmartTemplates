@@ -616,6 +616,22 @@
     "description": "Special message for standard license holders",
     "message": "作為SmartTemplates標准許可證的持有人，您現在有資格獲得折扣更新以及全年的延期。 單擊標准許可證下方的 [升級到Pro] 按鈕以獲取更多信息。"
   },
+  "license-standard-special-offer": {
+    "message": "{boldStart}親愛的 $username${boldEnd}，您現在可以以{boldStart}$discount${boldEnd} 的價格**升級到SmartTemplates Pro，同時還可以將許可證延長一整年。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}跟上！",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠的有效期為{boldStart} 5月20日至5月31日{boldEnd}。"
+  }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
     "placeholders": {
