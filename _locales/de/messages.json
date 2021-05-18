@@ -617,7 +617,7 @@
     "message": "Als Inhaber einer SmartTemplates-Standardlizenz haben Sie jetzt Anspruch auf ein ermäßigtes Update sowie eine Verlängerung um ein volles Jahr. Klicken Sie unter Ihrer Standardlizenz auf die Schaltfläche [Upgrade auf Pro], um weitere Informationen zu erhalten."
   },
   "license-standard-special-offer": {
-    "message": "{boldStart} Lieber $username$ {boldEnd}, Sie können jetzt ein Upgrade auf SmartTemplates Pro für {boldStart} $discount$ weniger {boldEnd} durchführen - und gleichzeitig Ihre Lizenz um ein ganzes Jahr verlängern. Weitere große Änderungen an Thunderbird sind am kommen und ich brauche {boldStart} Ihre Hilfe {boldEnd}, um weiter Schritt zu halten!",
+    "message": "{boldStart} Liebe(r) $username$ {boldEnd}, Sie können jetzt ein Upgrade auf SmartTemplates Pro für {boldStart} $discount$ weniger {boldEnd} durchführen - und gleichzeitig Ihre Lizenz um ein ganzes Jahr verlängern. Weitere große Änderungen an Thunderbird sind am kommen und ich brauche {boldStart} Ihre Hilfe {boldEnd}, um weiter Schritt zu halten!",
     "placeholders": {
       "username" : {
         "content": "$1",
