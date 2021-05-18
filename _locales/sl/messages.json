@@ -1,6 +1,6 @@
 {
   "_l10nstatus": {
-    "message": "UI"
+    "message": "SPLASH+UI"
   },
   "a.label": {
     "message": "Dan v tednu (pet.)"
@@ -1517,6 +1517,18 @@
   },
   "vouchers.title": {
     "message": "Boni"
+  },
+  "whats-new-btn": {
+    "message": "Kaj je novega?"
+  },
+  "whats-new-head": {
+    "message": "Pomembne spremembe"
+  },
+  "whats-new-intro": {
+    "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
+  },
+  "whats-new-list": {
+    "message": "{L1} {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
