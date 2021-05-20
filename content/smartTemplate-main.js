@@ -492,6 +492,7 @@ END LICENSE BLOCK
     # [issue 121] Common settings are shown even though the correct account seems to be selected!
     
   Version 2.15 - WIP
+    # [issue 125] Improved support for converting encoded characters used in address fields such as "from"
     # [issue 125] Cardbook address names are resolved with weird characters
     # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
     # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
@@ -662,7 +663,7 @@ var SmartTemplate4 = {
 			// stateListener is defined in components/compose/content/MsgComposeCommands.js
 			if (stateListener && stateListener.NotifyComposeBodyReady) {
 				if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
-					util.OrigNotify = stateListener.NotifyComposeBodyReady;
+					util.OrigNotify = stateListener.NotifyComposeBodyReady.bind(stateListener);
 					let idKey = util.getIdentityKey(document);
 					stateListener.NotifyComposeBodyReady = function() {
 						// Bug 26356 - no notification on forward w. empty template
@@ -860,8 +861,9 @@ var SmartTemplate4 = {
 		    isInserted = false;
 		try {
 			if (prefs.isDebugOption('stationery')) debugger;
-			if (!root.getAttribute('smartTemplateInserted') || gMsgCompose.type == msgComposeType.ForwardInline // issue 94
-        || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			if (!root.getAttribute('smartTemplateInserted') 
+        || gMsgCompose.type == msgComposeType.ForwardInline // issue 94
+        || flags.isThunderbirdTemplate || isChangeTemplate)
 			{ 
 				isInserted = true;
         // [issue 108] avoid duplicating in case external Add-on changes from identity
@@ -953,7 +955,7 @@ var SmartTemplate4 = {
 			if (isInserted)
 				root.setAttribute("smartTemplateInserted","true");
 		}
-		util.logDebugOptional('stationery', 'notifyComposeBodyReady() ended.');
+		util.logDebugOptional('composer', 'notifyComposeBodyReady() ended.');
 },
 
 	// -------------------------------------------------------------------

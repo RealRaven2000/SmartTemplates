@@ -14,11 +14,10 @@
    em:icon64URL="chrome://smartTemplate4/skin/icon64x64.png"
    em:optionsURL="chrome://smartTemplate4/content/settings.xul"
    em:aboutURL="chrome://smartTemplate4/content/about.xul">
-	  <em:version>2.15pre26</em:version>
+	  <em:version>2.15</em:version>
     <em:homepageURL>https://smarttemplates.quickfolders.org/index.html</em:homepageURL>
     <em:type>2</em:type>
     <em:targetApplication RDF:resource="rdf:#$Vsomz2"/>
-    <em:targetApplication RDF:resource="rdf:#$Vsomt2"/>
     <em:targetApplication RDF:resource="rdf:#$Vsomv2"/>
 		
 		
@@ -157,7 +156,6 @@
 			</Description>
 		</em:localized>
 		
-
 		<em:localized>
 			<Description>
 				<em:locale>pl</em:locale>

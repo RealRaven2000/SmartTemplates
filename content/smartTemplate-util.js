@@ -2860,7 +2860,7 @@ SmartTemplate4.Util = {
 	
   clickStatusIcon: function(el) {
     let isLicenseWarning = false;
-    event.stopImmediatePropagation();
+    if (typeof event != "undefined") event.stopImmediatePropagation();
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }

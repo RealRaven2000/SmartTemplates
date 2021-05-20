@@ -1,6 +1,5 @@
 /* specify locale descriptions for addon-manager */
 pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://smartTemplate4/locale/settings.properties");
-
 /* global settings */
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
@@ -34,29 +33,22 @@ pref("extensions.smartTemplate4.forwardInlineImg.delay", 200); /* [BUG 26434] de
 pref("extensions.smartTemplate4.xtodaylegacy", false); /* old way of processing which temporarily inserted  %X:=today% on _EVERY_ new line */
 pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); /* location of last saved / loaded json template  */
-// pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
 pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" for next menu config action */
 pref("extensions.smartTemplate4.fileTemplates.instantPath", "") /* location for path used for adhoc html template selection */
-pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
-pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
-pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
-pref("extensions.smartTemplate4.dateformat.year", "numeric"); // change to "2-digit" for forcing 2digit dateshort only
-
-
+pref("extensions.smartTemplate4.dateformat.hour", "numeric");
+pref("extensions.smartTemplate4.dateformat.day", "numeric"); 
+pref("extensions.smartTemplate4.dateformat.month", "numeric"); 
+pref("extensions.smartTemplate4.dateformat.year", "numeric"); 
 /* this is a convenience function - if I change from after or during composing, delete sig */
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
-/* header replacement rules */
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 pref("extensions.smartTemplate4.expandSettings", false);
-
 /* add change template button automatically when installing for first time */
 pref("extensions.smartTemplate4.changeTemplate.button.install", true);
-
 pref("extensions.smartTemplate4.stationery.supported", false);
 pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);
 pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */
-
 /* debug settings */
 pref("extensions.smartTemplate4.debug", false);
 pref("extensions.smartTemplate4.debug.default", true); /* to disable standard log messages */
@@ -98,8 +90,7 @@ pref("extensions.smartTemplate4.debug.sandbox", false);
 pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
-
-// SmartTemplate License specific:
+/* SmartTemplate License specific: */
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
