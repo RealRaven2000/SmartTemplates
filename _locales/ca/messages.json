@@ -10,22 +10,22 @@
     "message": "Jorn de la setmana (Divendres)"
   },
   "ab_contact": {
-    "message": "Contact"
+    "message": "Contacte"
   },
   "ab_fields": {
-    "message": "Address Book Fields"
+    "message": "Camps de la llibreta d'adreces"
   },
   "ab_fields.desc": {
     "message": "Quan responeu a una adreça de correu electrònic coincident, ara podeu utilitzar camps addicionals per a variables d'adreça, com ara en% de%, com ara:"
   },
   "ab_other": {
-    "message": "Other"
+    "message": "Altres"
   },
   "ab_private": {
-    "message": "Private"
+    "message": "Privat"
   },
   "ab_work": {
-    "message": "Work"
+    "message": "Treball"
   },
   "about.cap": {
     "message": "A prepaus de SmartTemplates"
@@ -37,7 +37,24 @@
     "message": "Acceptar"
   },
   "account.label": {
-    "message": "Select account:"
+    "message": "Seleccioneu un compte:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Ara esteu executant la versió {boldStart} $addonVer$ {boldEnd} a Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Per continuar sent útils, ara els desenvolupadors de complements han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
   "advanced.label": {
     "message": "Avançats"
@@ -55,7 +72,7 @@
     "message": "Mes (Genièr)"
   },
   "basepath.absolute": {
-    "message": "Click here to select a specific folder on your local drive."
+    "message": "Feu clic aquí per seleccionar una carpeta específica a la vostra unitat local."
   },
   "basepath.desc": {
     "message": "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these."
@@ -64,16 +81,31 @@
     "message": "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email."
   },
   "basepath.relative": {
-    "message": "Use this variable to find the images in the same location as the html file template."
+    "message": "Utilitzeu aquesta variable per trobar les imatges a la mateixa ubicació que la plantilla de fitxer html."
   },
   "brack_with_var.label": {
     "message": "Las variablas seguentas pòdon èsser utilizadas dins de [[…]]"
   },
+  "btn-extend-license": {
+    "message": "Vull ampliar la llicència un any"
+  },
+  "btn-renew-license": {
+    "message": "Vull renovar la meva llicència"
+  },
+  "btn-upgrade-to-pro": {
+    "message": "Vull actualitzar la meva llicència"
+  },
+  "btn-want-a-license": {
+    "message": "Vull comprar una llicència"
+  },
+  "btn-want-to-donate": {
+    "message": "Vull ajudar amb una donació única."
+  },
   "btnLoadTemplate.tooltip": {
-    "message": "Load Template…"
+    "message": "Carrega la plantilla…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Save Template…"
+    "message": "Desa la plantilla…"
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
@@ -115,7 +147,7 @@
     "message": "Anullar"
   },
   "capitalizeNames": {
-    "message": "Capitalize Names"
+    "message": "Noms amb majúscules"
   },
   "cc.label": {
     "message": "Noms dels destinataris en còpia (Defaut)"
@@ -139,7 +171,7 @@
     "message": "Tampar"
   },
   "conditional.forwardMode": {
-    "message": "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment."
+    "message": "Si el correu electrònic es reenvia en línia, s'insereix el primer paràmetre de text. El segon paràmetre de text s'utilitza quan el correu es reenvia com a fitxer adjunt."
   },
   "conditionals.cap": {
     "message": "Text condicional"
@@ -154,16 +186,19 @@
     "message": "Contribuir"
   },
   "contributor.label": {
-    "message": "Contributor"
+    "message": "Collaborador"
   },
   "copy.label": {
     "message": "Copiar"
+  },
+  "cost-of-independence": {
+    "message": "El desenvolupament de programari costa temps i diners: a diferència de moltes aplicacions de plataformes, els complements no són escrits per grans empreses, ni Mozilla els patrocina de cap manera."
   },
   "creator.label": {
     "message": "Creator"
   },
   "cursor.label": {
-    "message": "Sets the cursor position"
+    "message": "Estableix la posició del cursor"
   },
   "customdf_note.label": {
     "message": "Pòt èsser combinada amb %X:=sent%"
@@ -175,7 +210,7 @@
     "message": "Data e ora (las del messatge original)"
   },
   "dateformat.example": {
-    "message": "Example: "
+    "message": "Exemple: "
   },
   "dateformat.explain": {
     "message": "La majoria de les variables de temps anteriors es poden utilitzar a la cadena de paràmetres ometent '%'. Vegeu també:"
@@ -187,7 +222,7 @@
     "message": "Data e ora (format local)"
   },
   "dateoffset_note.label": {
-    "message": "The following function adds an offset to all following displayed times."
+    "message": "La funció següent afegeix un desplaçament a tots els temps mostrats següents."
   },
   "dateshort.label": {
     "message": "Data e ora cortas (ex. : 01.01.2000 1:23:45)"
@@ -241,7 +276,7 @@
     "message": "Sab"
   },
   "defaultMimeFormat": {
-    "message": "Default address format:"
+    "message": "Format d'adreça predeterminat:"
   },
   "defaultMimeFormat_tip": {
     "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
@@ -270,6 +305,12 @@
   "domainLicense.validate": {
     "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
   },
+  "donate": {
+    "message": "Ajudeu amb una donació única."
+  },
+  "donate-heading": {
+    "message": "Ajuda donant!"
+  },
   "e.label": {
     "message": "Jorn del mes (1 a 31)"
   },
@@ -280,16 +321,28 @@
     "message": "Email:"
   },
   "enterLicenseKey.button": {
-    "message": "Enter License Key…"
+    "message": "Introduïu la clau de llicència…"
   },
   "enterLicenseKey.tooltip": {
-    "message": "Enter the License Key code sent to you via Email."
+    "message": "Introduïu el codi de clau de llicència que us ha estat enviat per correu electrònic."
   },
   "ex_brack.label": {
     "message": "Exemple : Per : ANAÏS | Còpia a : ESTÈVE"
   },
   "export.label": {
     "message": "Exportacion"
+  },
+  "extend-your-license": {
+    "message": "Penseu en ampliar la llicència un any."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Una manera poderosa de crear respostes personalitzades mitjançant la inserció automàtica de diverses capçaleres de correu. Es poden crear plantilles per a cada identitat de correu, també admeten fitxers html externs i fulls d'estil."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "SmartTemplates"
+  },
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Lo smart modèl que pòt personalizar l'entèsta de la citacion pels comptes."
@@ -438,6 +491,26 @@
   "header_function.scope": {
     "message": "Es pot utilitzar amb aquestes capçaleres:"
   },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ s'ha installat correctament",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ s'ha actualitzat correctament",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "heading.click": {
     "message": "Feu clic a un encapçalament o"
   },
@@ -510,35 +583,86 @@
   "l.label": {
     "message": "Oras, format 12h (1 a 12)"
   },
+  "label-remind-me": {
+    "message": "Torneu a recordar-ho d'aquí a $countDays$ dies.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "label.haveLicense": {
-    "message": "Already have a License?"
+    "message": "Ja teniu una llicència?"
   },
   "label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "Introduïu aquí la vostra clau de llicència personal:"
   },
   "label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "La vostra clau de llicència es troba al correu electrònic de confirmació de comanda de Fastspring."
   },
   "label.licenseValid": {
-    "message": "Your license is valid until:"
+    "message": "La vostra llicència és vàlida fins al:"
   },
   "label.premiumFeaturesSite": {
-    "message": "Read more about Premium Features on our Website…"
+    "message": "Llegiu més informació sobre les funcions premium al nostre lloc web…"
   },
   "lastName.label": {
     "message": "Cognom:"
   },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Com a titular d’una llicència estàndard SmartTemplates, ara podeu optar a una actualització amb descompte i una extensió de l’any complet. Feu clic al botó [Actualitza a Pro] a sota de la llicència estàndard per obtenir més informació."
+  },
+  "license-standard-special-offer": {
+    "message": "{boldStart} Benvolgut $userName$ {boldEnd}, ara podeu actualitzar a SmartTemplates Pro per obtenir {boldStart} $discount$ menys {boldEnd}, alhora que també amplieu la llicència un any complet. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia.",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 al 31 de maig {boldEnd}."
+  },
+  "licenseStatus.expired" : {
+    "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "La llicència SmartTemplates caducarà d'aquí a $countDays$ dies!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "licenseTypes": {
-    "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
+    "message": "En endavant, SmartTemplates ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que es produeixen canvis de ruptura en un cicle anual, la llicència també serà vàlida durant un any."
   },
   "licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "La clau de llicència que heu introduït ha caducat. Si us plau, premeu el botó següent per renovar la vostra llicència."
   },
   "licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "La clau de llicència que heu introduït no és vàlida. Consulteu el vostre correu electrònic de FastSpring per obtenir instruccions. Si encara teniu problemes, poseu-vos en contacte amb mi des de la pestanya Assistència."
   },
   "licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "La clau de llicència que heu introduït pot ser per a un complement diferent. Les claus de llicència per a {0} comencen per {1}."
   },
   "licenseValidation.invalidMail": {
     "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
@@ -547,13 +671,13 @@
     "message": "Encrypted Email address does not match readable one."
   },
   "licenseValidation.passed": {
-    "message": "Thanks for registering SmartTemplates Pro! All premium features are now unlocked."
+    "message": "Gràcies per registrar SmartTemplates Pro. Ara totes les funcions premium estan desbloquejades."
   },
   "licenseValidation.standard": {
-    "message": "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions."
+    "message": "Gràcies per registrar SmartTemplates Standard: esteu ajudant enormement el complement. Ara també podeu provar totes les funcions premium."
   },
   "licenseWindow.title": {
-    "message": "SmartTemplates Pro License"
+    "message": "SmartTemplates License"
   },
   "localedate.label": {
     "message": "Data e ora (format local)"
@@ -666,14 +790,30 @@
   "month.9.short": {
     "message": "Set"
   },
+  "mozillas-basic-platform": {
+    "message": "Mozilla només proporciona una plataforma bàsica per lliurar-vos el nostre programari als vostres usuaris finals. Si hem de demanar pagament o assistència als nostres usuaris, no podem fer-ho des de addons.thunderbird.net: no és una "botiga d'aplicacions" amb taulers de pagament integrats o gestió de llicències com iTunes o Google Play."
+  },
   "n.label": {
     "message": "Numèro del mes (1 a 12)"
   },
   "newsgr.label": {
-    "message": "Newsgroups"
+    "message": "Grups de notícies"
   },
   "no_button": {
     "message": "Non"
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "ownmail.label": {
     "message": "Vòstra adreça electronica"
@@ -694,7 +834,7 @@
     "message": "AM"
   },
   "parameters": {
-    "message": "Parameters"
+    "message": "Paràmetres"
   },
   "paste.label": {
     "message": "Pegar"
@@ -835,7 +975,7 @@
     "message": "Messatges novèls"
   },
   "pref_parseSignature": {
-    "message": "Process signature"
+    "message": "Processament de la signatura"
   },
   "pref_parseSignature_tip": {
     "message": "Substitueix les variables a la signatura."
@@ -924,6 +1064,12 @@
   "prompt.text": {
     "message": "Introduïu el text per afegir o definir"
   },
+  "purchase-a-license": {
+    "message": "Compreu una llicència."
+  },
+  "purchase-heading": {
+    "message": "Comprant una llicència"
+  },
   "quoteLevel": {
     "message": "[optional, numeric]:  which minimal quote level to start from"
   },
@@ -937,10 +1083,13 @@
     "message": "Manipulació de pressupostos"
   },
   "quote_changers.desc": {
-    "message": "Premium variables to remove text / tags from quoted parts and save space."
+    "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."
   },
   "regexpAnyText": {
-    "message": "Any text - regular expression - must be in double quotes."
+    "message": "Qualsevol text (expressió regular) ha d’estar entre cometes dobles."
+  },
+  "renew-your-license": {
+    "message": "Renoveu la llicència."
   },
   "replaceQuotedTags": {
     "message": "Substitueix les etiquetes html de la cita per text o html"
@@ -952,7 +1101,7 @@
     "message": "Substitueix algun text per una altra cosa."
   },
   "replacementHTML": {
-    "message": "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found."
+    "message": "ha d'estar entre cometes dobles: ja sigui un text o una etiqueta html que s'inserirà entre cometes sempre que es trobi una coincidència."
   },
   "resolveABRemoveMail": {
     "message": "Elimineu l'adreça de correu electrònic tret que s'especifiqui un paràmetre de format"
@@ -1021,7 +1170,7 @@
     "message": "SmartTemplates"
   },
   "spec_form.cap": {
-    "message": "Address Field Switches"
+    "message": "Canviadors de camp d’adreça"
   },
   "spec_var.cap": {
     "message": "Variablas Especialas"
@@ -1030,7 +1179,7 @@
     "message": "La frasa [[Cc: %cc(name)%]] s'aficharà pas que se la variabla %cc(name)% pòt èsser remplaçada !"
   },
   "spellcheck.label": {
-    "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
+    "message": "Estableix l'idioma de correcció ortogràfica. Valors d’exemple: (en, de-DE, es-ES, ru): tingueu en compte que s’ha d’instal·lar el diccionari."
   },
   "st.confirmVersionLink": {
     "message": "Afichar la lista de las modificacions per SmartTemplates ?"
@@ -1039,7 +1188,7 @@
     "message": "Function {0} could not find or access file. Check the path below:"
   },
   "st.fileTemplates": {
-    "message": "Template Files"
+    "message": "Fitxers de plantilla"
   },
   "st.fileTemplates.configureMenu": {
     "message": "Configura els elements del menú ..."
@@ -1051,7 +1200,7 @@
     "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
-    "message": "Open SmartTemplates template file…"
+    "message": "Obriu el fitxer de plantilla SmartTemplates…"
   },
   "st.fileTemplates.restrictTemplates": {
     "message": "Necessiteu una llicència SmartTemplates per utilitzar més de {1} plantilles."
@@ -1087,7 +1236,7 @@
     "message": "Qualsevol text que hàgiu introduït manualment des que vau obrir el compositor se suprimirà sense desfer. Voleu continuar igualment?"
   },
   "st.notification.editedChangeWarning": {
-    "message": "You have already typed text and want to change to template {0}"
+    "message": "Ja heu escrit text i voleu canviar a plantilla {0}"
   },
   "st.notification.license.required": {
     "message": "SmartTemplates requereix una llicència per continuar treballant. Llegiu-ne més a la part inferior de la finestra de redacció."
@@ -1191,6 +1340,39 @@
   "sub_var.cap": {
     "message": "Subjècte"
   },
+  "special-offer-content": {
+    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial estarà disponible fins al {boldStart} 30 de maig {boldEnd}.",
+    "placeholders": {
+      "discount": {
+        "content": "$1",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "SmartTemplates a prova de futur!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Benvolgut {name} {boldEnd}, si encara no teniu una llicència, penseu en donar suport a SmartTemplates per al futur. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia."
+  },
+  "support-preference": {
+    "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Perquè $addonName$ es mantingui viu i funcional, faci un favor vital:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "support.compose": {
     "message": "Write to support…"
   },
@@ -1254,8 +1436,35 @@
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
   },
+  "thanks-for-installing-intro": {
+    "message": "Gràcies per installar $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Gràcies per actualitzar $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$addonName$ es reescriurà en gran part per continuar sent compatible amb el Thunderbird. Això és una necessitat, ja que els canvis de Mozilla demanen que els complements es converteixin en extensions de correu natives que siguin molt diferents internament. Només mitjançant la vostra llicència es poden finançar les moltes hores de desenvolupament necessàries.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "timezone.explain": {
-    "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
+    "message": "Força la zona horària específica per a les variables de data substituint el paràmetre tz (GMT, EST, CST, PST etc.)"
   },
   "timezonename.label": {
     "message": "GMT, PST, EST, ... "
@@ -1287,6 +1496,10 @@
   "tools.label": {
     "message": "Aisinas"
   },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "traduccions proporcionades per google"
+  },
   "translatorNickname.label": {
     "message": "Cédric Valmary (totenoc.org)"
   },
@@ -1294,7 +1507,7 @@
     "message": "GMT, PST, EST,…"
   },
   "updates.title": {
-    "message": "Updates"
+    "message": "Actualitzacions"
   },
   "updatesExpiry": {
     "message": "SmartTemplates Pro will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key."
@@ -1317,8 +1530,30 @@
   "vouchers.title": {
     "message": "Vouchers"
   },
+  "whats-new-btn": {
+    "message": "Que hi ha de nou?"
+  },
+  "whats-new-head": {
+    "message": "Canvis importants"
+  },
+  "whats-new-intro": {
+    "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
+  },
+  "whats-new-list": {
+    "message": "{L1} S'ha millorat la compatibilitat amb la conversió de caràcters codificats que s'utilitzen en camps d'adreces com ara 'de' {L2} {L1} S'ha produït un error en la ubicació del diàleg de configuració del xinès tradicional (zh-TW). {L2} {L1} S'ha afegit la localització per a la llengua catalana . {L2} {L1} Treball en curs per fer compatibles SmartTemplates amb la versió 91 de Thunderbird, que es preveu llançar a l'estiu de 2021. {L2} {L1} Millora del suport per a diverses finestres de Thunderbird, mitjançant les noves notificacions de scripts de fons. {L2}"
+  },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Benvingut a $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "xmail.label": {
     "message": "X-Mailer"
@@ -1351,19 +1586,19 @@
     "message": "Annada (1970)"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "SmartTemplates Pro gives you full unrestricted access to the premium features."
+    "message": "SmartTemplates Pro us proporciona un accés total i sense restriccions a les funcions premium."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "More about premium features."
+    "message": "Més informació sobre les funcions premium."
   },
   "yearlyLicense.title": {
-    "message": "Annual License"
+    "message": "Llicència anual"
   },
   "yearlyLicense.usageTerm": {
     "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "Les adreces de correu electrònic addicionals no són cap problema, ja que no requereixen una llicència diferent. En cas de preguntes, podeu contactar amb mi mitjançant la pestanya d'assistència."
   },
   "yes_button": {
     "message": "Òc"
