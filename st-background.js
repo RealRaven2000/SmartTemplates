@@ -1,10 +1,65 @@
 import * as util from "./scripts/st-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
+var currentLicense;
+const GRACEPERIOD_DAYS = 28;
+const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
+
+
+var startupFinished = false;
+var callbacks = [];
+
+  messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
+    
+    // Wait until the main startup routine has finished!
+    await new Promise((resolve) => {
+      if (startupFinished) {
+        console.log("No need to wait, main() has already finished.");
+        resolve();
+        // Looks like we missed the one sent by main()
+      }
+      callbacks.push(resolve);
+    });
+    console.log("Startup has finished");
+    console.log("currentLicense", currentLicense);
+    
+    switch (reason) {
+      case "install":
+        {
+          const url = browser.runtime.getURL("popup/installed.html");
+          await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
+        }
+        break;
+      // see below
+      case "update":
+        {
+      // TypeError: currentLicense is undefined
+          console.log("2. update() case");
+          let currentLicenseInfo = currentLicense.info;
+          let isLicensed = (currentLicenseInfo.status == "Valid"),  
+              isStandardLicense = (currentLicenseInfo.keyType == 2); 
+          if (isLicensed) {
+            // suppress update popup for users with licenses that have been recently renewed
+            let gpdays = currentLicenseInfo.licensedDaysLeft; 
+            console.log("Licensed - " + gpdays  + " Days left.");
+            if (gpdays>40 && !isStandardLicense) {
+              console.log("Omitting update popup!");
+              return;
+            }
+          }
+          
+          const url = browser.runtime.getURL("popup/update.html");
+          //await browser.tabs.create({ url });
+          let screenH = window.screen.height,
+              windowHeight = (screenH > 870) ? 870 : screenH-20;
+          await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
+        }
+        break;
+      // see below
+    }
+  });
+
 async function main() {
-  var currentLicense;
-  const GRACEPERIOD_DAYS = 28;
-  const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
   
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
@@ -67,62 +122,7 @@ async function main() {
    *   finished the init routine
    * -> emit a custom event once we are done and let onInstall await that
    */
-  var startupFinished = false;
-  function emitStartupFinished() {
-    startupFinished = true;
-    const event = new CustomEvent("WebExtStartupFinished");
-    window.dispatchEvent(event);
-  }  
-   
-  messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
-    
-    // Wait until the main startup routine has finished!
-    await new Promise((resolve) => {
-      window.addEventListener("WebExtStartupFinished", resolve, { once: true });
-      if (startupFinished) {
-        // Looks like we missed the one send by main()
-        emitStartupFinished();
-      }
-    });
-    console.log("Startup has finished");
-    console.log("currentLicense", currentLicense);
-    
-    switch (reason) {
-      case "install":
-        {
-          const url = browser.runtime.getURL("popup/installed.html");
-          await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
-        }
-        break;
-      // see below
-      case "update":
-        {
-      // TypeError: currentLicense is undefined
-          console.log("2. update() case");
-          let currentLicenseInfo = currentLicense.info;
-          const mxUtilties = messenger.Utilities;
-          let isLicensed = (currentLicenseInfo.status == "Valid"),  // await mxUtilties.isLicensed(true),
-              isStandardLicense = (currentLicenseInfo.keyType == 2); //  await mxUtilties.LicenseIsStandardUser();
-          if (isLicensed) {
-            // suppress update popup for users with licenses that have been recently renewed
-            let gpdays = currentLicenseInfo.licensedDaysLeft; //  await mxUtilties.LicensedDaysLeft();
-            console.log("Licensed - " + gpdays  + " Days left.");
-            if (gpdays>40 && !isStandardLicense) {
-              console.log("Omitting update popup!");
-              return;
-            }
-          }
-          
-          const url = browser.runtime.getURL("popup/update.html");
-          //await browser.tabs.create({ url });
-          let screenH = window.screen.height,
-              windowHeight = (screenH > 870) ? 870 : screenH-20;
-          await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
-        }
-        break;
-      // see below
-    }
-  });
+
    
   let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey");
   let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity");
@@ -130,6 +130,13 @@ async function main() {
   await currentLicense.validate();
   currentLicense.GraceDate = await getGraceDate();
   currentLicense.TrialDays = await getTrialDays();
+  
+  // All important stuff has been done.
+  // resolve all promises on the stack
+  console.log("Main has finished and will now call all callbacks on the stack, which will resolve the associated promises");
+  callbacks.forEach(callback => callback());
+  startupFinished = true;
+  
   
   messenger.runtime.onMessage.addListener(async (data, sender) => {
     if (data.command) {
@@ -256,8 +263,6 @@ async function main() {
   */
 
   messenger.WindowListener.startListening();
-  
-  emitStartupFinished();
 }
 
 main();

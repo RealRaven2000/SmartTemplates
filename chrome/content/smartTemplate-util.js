@@ -916,6 +916,7 @@ SmartTemplate4.Util = {
 					tabmail.openTab("contentTab",
             {
               contentPage: URL, 
+              url: URL,
               clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);"
             }
           );
@@ -928,7 +929,9 @@ SmartTemplate4.Util = {
 					null,
 					{ tabType: "contentTab", 
 					  tabParams: {
-              contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", 
+              contentPage: URL, 
+              url: URL,
+              clickHandler: "specialTabs.siteClickHandler(event, SmartTemplate4_TabURIregexp._thunderbirdRegExp);", 
               id:"gSmartTemplate_Weblink"
             }
 					} 
