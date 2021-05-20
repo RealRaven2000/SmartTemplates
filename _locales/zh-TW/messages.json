@@ -1538,7 +1538,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}改進了對轉換地址字段中使用的編碼字符的支持，例如“來自” {L2} {L1}繁體中文（zh-TW）的本地化錯誤打破了設置對話框。{L2} {L1}正在進行使SmartTemplates與Thunderbird 91版兼容的工作，該版本計劃於2021年夏天發布。{L2} {L1}通過新的後台腳本通知改進了對多個Thunderbird窗口的支持。{L2}"
+    "message": "{L1}改進了對轉換地址字段中使用的編碼字符的支持，例如“來自” {L2} {L1}繁體中文（zh-TW）的本地化錯誤打破了設置對話框。{L2} {L1}添加了加泰羅尼亞語的本地化版本。{L2}{L1}正在進行使SmartTemplates與Thunderbird 91版兼容的工作，該版本計劃於2021年夏天發布。{L2} {L1}通過新的後台腳本通知改進了對多個Thunderbird窗口的支持。{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

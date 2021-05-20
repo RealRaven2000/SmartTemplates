@@ -1538,7 +1538,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Verbeterde ondersteuning voor het converteren van gecodeerde tekens die worden gebruikt in adresvelden zoals 'van' {L2} {L1} Fout bij lokalisatie voor traditioneel Chinees (zh-TW) brak instellingenvenster. {L2} {{L1} Lopende werkzaamheden om SmartTemplates compatibel te maken met Thunderbird versie 91, die gepland staat voor release in de zomer van 2021. {L2} {L1} Verbeterde ondersteuning voor meerdere Thunderbird-vensters, via de nieuwe scriptmeldingen op de achtergrond. {L2}"
+    "message": "{L1} Verbeterde ondersteuning voor het converteren van gecodeerde tekens die worden gebruikt in adresvelden zoals 'van' {L2} {L1} Fout bij lokalisatie voor traditioneel Chinees (zh-TW) brak instellingenvenster. {L2}{L1} Lokalisatie voor de Catalaanse taal toegevoegd.{L2}{{L1} Lopende werkzaamheden om SmartTemplates compatibel te maken met Thunderbird versie 91, die gepland staat voor release in de zomer van 2021. {L2} {L1} Verbeterde ondersteuning voor meerdere Thunderbird-vensters, via de nieuwe scriptmeldingen op de achtergrond. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

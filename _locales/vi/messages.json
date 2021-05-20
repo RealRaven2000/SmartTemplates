@@ -191,7 +191,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Cải thiện hỗ trợ chuyển đổi các ký tự được mã hóa được sử dụng trong các trường địa chỉ, chẳng hạn như 'from' {L2} {L1} Lỗi trong bản địa hóa cho hộp thoại cài đặt tiếng Trung Phồn thể (zh-TW) bị hỏng. {L2} {L1} Công việc đang diễn ra để làm cho SmartTemplates tương thích với Thunderbird phiên bản 91, được lên kế hoạch phát hành vào mùa hè năm 2021.{L2}{L1} Cải thiện hỗ trợ cho nhiều cửa sổ Thunderbird, thông qua thông báo tập lệnh nền mới. {L2}"
+    "message": "{L1} Cải thiện hỗ trợ chuyển đổi các ký tự được mã hóa được sử dụng trong các trường địa chỉ, chẳng hạn như 'from' {L2} {L1} Lỗi trong bản địa hóa cho hộp thoại cài đặt tiếng Trung Phồn thể (zh-TW) bị hỏng. {L2}{L1} Đã thêm bản địa hóa cho ngôn ngữ Catalan. {L2}{L1} Công việc đang diễn ra để làm cho SmartTemplates tương thích với Thunderbird phiên bản 91, được lên kế hoạch phát hành vào mùa hè năm 2021.{L2}{L1} Cải thiện hỗ trợ cho nhiều cửa sổ Thunderbird, thông qua thông báo tập lệnh nền mới. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",
