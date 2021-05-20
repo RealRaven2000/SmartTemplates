@@ -205,6 +205,7 @@ async function main() {
       ["resource", "smarttemplate4", "chrome/content/"],
       ["content", "smarttemplate4-locales", "chrome/locale/"],
       ["locale", "smarttemplate4", "en", "chrome/locale/en/"],
+      ["locale", "smarttemplate4", "ca", "chrome/locale/ca/"],
       ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
       ["locale", "smarttemplate4", "de", "chrome/locale/de/"],
       ["locale", "smarttemplate4", "es", "chrome/locale/es/"],
@@ -223,7 +224,6 @@ async function main() {
       ["locale", "smarttemplate4", "uk", "chrome/locale/uk/"],
       ["locale", "smarttemplate4", "zh-CN", "chrome/locale/zh-CN/"],
       ["locale", "smarttemplate4", "zh-TW", "chrome/locale/zh-TW/"],
-      ["locale", "smarttemplate4", "oc", "chrome/locale/oc/"],
   ]);
 
   messenger.WindowListener.registerOptionsPage("chrome://smarttemplate4/content/settings.xhtml"); 
