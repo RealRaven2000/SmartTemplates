@@ -1135,15 +1135,9 @@
     "message": "Underskrift (från TB hänsyn inställningar men utan '--')"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.changetemplate.label": {
     "message": "Ändra mall…"
   },
-  "smartTemplate4.changetemplate.tooltip": {
+  "smartTemplate4.changeTemplate.tooltip": {
     "message": "Väljer en annan mall - använd innan du redigerar i e-postkroppen!"
   },
   "smartTemplate4.cleandeferred.label": {

@@ -1021,22 +1021,16 @@
     "message": "Підпис з налаштувань запису але без '--'"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
+    "message": "Змінити шаблон…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.changetemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changetemplate.tooltip": {
-    "message": "Selects a different template - use before editing in the mail body!"
+    "message": "Завантажте інший шаблон - використовуйте перед редагуванням електронного листа!"
   },
   "smartTemplate4.cleandeferred.label": {
-    "message": "Clean up!"
+    "message": "прибирати!"
   },
   "smartTemplate4.cleandeferred.tooltip": {
-    "message": "Clean up all SmartTemplate variables"
+    "message": "Очистіть усі змінні SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
     "message": "Update and Replace with Content"

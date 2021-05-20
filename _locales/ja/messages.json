@@ -1135,15 +1135,9 @@
     "message": "アカウントに設定されている署名 ('-- ' 無し)"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.changetemplate.label": {
     "message": "テンプレートの変更..."
   },
-  "smartTemplate4.changetemplate.tooltip": {
+  "smartTemplate4.changeTemplate.tooltip": {
     "message": "違うテンプレートを選択 - 本文の編集の前に選択してください！"
   },
   "smartTemplate4.cleandeferred.label": {

@@ -1135,15 +1135,9 @@
     "message": "Signature issue des paramètres du compte, mais sans '--'"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.changetemplate.label": {
     "message": "Changer de modèle…"
   },
-  "smartTemplate4.changetemplate.tooltip": {
+  "smartTemplate4.changeTemplate.tooltip": {
     "message": "Sélectionne un modèle différent - utilisez-le avant de le modifier dans le corps du courrier!"
   },
   "smartTemplate4.cleandeferred.label": {

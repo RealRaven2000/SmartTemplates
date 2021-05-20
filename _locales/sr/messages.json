@@ -1135,15 +1135,9 @@
     "message": "Потпис из подешавања налога, али без две цртице (--)"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changeTemplate.tooltip": {
-    "message": "Load a different template - use before editing the Email!"
-  },
-  "smartTemplate4.changetemplate.label": {
     "message": "Промена шаблона…"
   },
-  "smartTemplate4.changetemplate.tooltip": {
+  "smartTemplate4.changeTemplate.tooltip": {
     "message": "Изаберите други предложак - користите пре уређивања у тијелу поште!"
   },
   "smartTemplate4.cleandeferred.label": {

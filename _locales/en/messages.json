@@ -1140,12 +1140,6 @@
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "Load a different template - use before editing the Email!"
   },
-  "smartTemplate4.changetemplate.label": {
-    "message": "Change template…"
-  },
-  "smartTemplate4.changetemplate.tooltip": {
-    "message": "Selects a different template - use before editing in the mail body!"
-  },
   "smartTemplate4.cleandeferred.label": {
     "message": "Clean up!"
   },

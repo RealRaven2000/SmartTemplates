@@ -1137,12 +1137,6 @@
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "Eine andere Vorlage laden - vor dem Editieren der Mail verwenden!"
   },
-  "smartTemplate4.changetemplate.label": {
-    "message": "Vorlage ersetzen…"
-  },
-  "smartTemplate4.changetemplate.tooltip": {
-    "message": "Eine andere Vorlage auswählen - vor manuellem Editieren ausführen!"
-  },
   "smartTemplate4.cleandeferred.label": {
     "message": "Variablen räumen!"
   },
@@ -1456,7 +1450,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ wird größtenteils neu geschrieben, um mit dem Thunderbird kompatibel zu bleiben. Dies ist eine Notwendigkeit, da Änderungen von Mozilla verlangen, dass Add-Ons zu nativen Mail-Erweiterungen werden, die intern sehr unterschiedlich sind. Nur durch Ihre Lizenz können die vielen notwendigen Entwicklungsstunden finanziert werden.",
+    "message": "$addonName$ wird größtenteils neu geschrieben, um mit Thunderbird kompatibel zu bleiben. Dies ist eine Notwendigkeit, da Änderungen von Mozilla verlangen, dass Add-Ons zu nativen Mail-Erweiterungen werden, die intern sehr unterschiedlich sind. Nur durch Ihre Lizenz können die vielen notwendigen Entwicklungsstunden finanziert werden.",
     "placeholders": {
       "addonName": {
         "content": "$1",
