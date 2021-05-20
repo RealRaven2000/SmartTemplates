@@ -1,31 +1,22 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.4.4">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.5">can be found here</a>
 
-<b>Latest News</b>
-
-3.4.4 is a maintenance patch release that fixes a important problem [issue 121] in settings dialog, and also a broken Spanish locale - for details see below.
-
-We had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page">buy a Pro license</a>
-
-Migration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.
-
-<b>Improvements</b>
+<b>Enhancements</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/91">[issue 91]</a> Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored). In plain text mode, you can now use this to remove quote marks, with the command %deleteQuotedText("\>\s")% or use %replaceQuotedText("\>\s","| ")% to replace the quote marks with straight vertical lines</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/71">[issue 71]</a> Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/82">[issue 82]</a> Improved / fixed warning messages for users with expired licenses. Added a notice about soon-to-expire license in status bar.</li>
-
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/125">[issue 125]</a> Improved support for converting encoded characters used in address fields such as "from" </li>
+</ul>
+<b>Bug Fixes</span></b>
+<ul>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/126">[issue 126]</a> Fixed: Enabling 'Resolve names from Address book' falsely disables advanced options</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/130">[issue 130]</a> Fixed: Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.</li>
+<li> Added Localization for Catalan language - this is partly derived from the Occitan locale of an older version.</li>
 </ul>
 
-<b>Changes / Bug Fixes</b>
+<b>Miscellaneous</b>
 <ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/117">[issue 117]</a> <code class=inline>%header.set(from,"some@address.com")%</code> not working in Thunderbird 78. You can now also add a name when setting the from address. For example <code>%header.set(from,"Postmaster <postm@address.com>")%</code> This function only works if the Email address is listed in any identity (including aliases).</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/115">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li>
-<li> Fixed: With option "Remove email address unless format parameter is specified", mail parts such as %from(...,mail)%, %from(...,bracketMail())% were removed </li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/119">[issue 119]</a> (fixed in 3.4.2) XML Parsing Error settings dialog (it / sv / uk locales)</li>
-<li>3.4.3 - open the license tab when status icon is clicked with expired license to make renewal easier.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/120">[issue 120]</a> Spanish locale broken which creates an error when options screen is displayed (since 3.4.1)</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/121">[issue 121]</a> Common settings are shown even though the correct account seems to be selected!</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/127">[issue 127]</a> Make SmartTemplates compatible with Thunderbird 89.0 - this is ongoing work which aims for a smooth transition toward the next ESR version, Thunderbird 91 which is planned to be released in Summer 2022.</li>
+<li> SmartTemplates now supports multiple Thunderbird windows, via the new background script notifications. Using the new background script notification mechanism for all template menus. When configuring the menus, these are now updated properly across all windows once the settings dialog is closed. Even with multiple Thunderbird windows opened. </li>
 </ul>
