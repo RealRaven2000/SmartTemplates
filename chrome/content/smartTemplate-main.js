@@ -718,6 +718,7 @@ var SmartTemplate4 = {
 // locale optional for locale
 // -------------------------------------------------------------------
 // this was classCalIDateTimeFormatter
+// replace with --  const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
 SmartTemplate4.calendar = {
     currentLocale : null, // whatever was passed into %language()%
     bundleLocale: null,

@@ -1356,8 +1356,9 @@ SmartTemplate4.Util = {
 					isExpired = SmartTemplate4.Util.licenseInfo.isExpired;
 		try {
 			let uType = "";
-			if (isExpired) 
-				uType = "proRenew"
+			if (isExpired)  {
+				uType = (SmartTemplate4.Util.licenseInfo.keyType == 2) ? "std" : "proRenew";
+      }
 			else if (isLicensed) {
 			  uType = (SmartTemplate4.Util.licenseInfo.keyType == 2) ? "std" : "pro";
       }
