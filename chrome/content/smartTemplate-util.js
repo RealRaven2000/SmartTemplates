@@ -134,15 +134,13 @@ SmartTemplate4.Util = {
 	 */
 	premiumFeatures: new Array(),  // only the array in the main instance Util will be used
 	addUsedPremiumFunction: function addUsedPremiumFunction(f) {
-		const mainUtil = SmartTemplate4.Util.mainInstance.Util;
-		// avoid duplicates
-		if (!mainUtil.premiumFeatures.some(function(e) {return e==f;} ))  // e => e == f    OLD POSTBOX IS TOO STUPID FOR THIS SYNTAX
-			mainUtil.premiumFeatures.push(f);
+		if (!SmartTemplate4.Util.premiumFeatures.some(e => e == f))
+			SmartTemplate4.Util.premiumFeatures.push(f);
 	},
 	
 	clearUsedPremiumFunctions: function clearUsedPremiumFunctions() {
-		while (SmartTemplate4.Util.mainInstance.Util.premiumFeatures.length) {
-			SmartTemplate4.Util.mainInstance.Util.premiumFeatures.pop();
+		while (SmartTemplate4.Util.premiumFeatures.length) {
+			SmartTemplate4.Util.premiumFeatures.pop();
 		}
 	},
 	
@@ -412,8 +410,11 @@ SmartTemplate4.Util = {
   },
 
 	get Version() {
-    console.log("Version() getter. addonInfo:", SmartTemplate4.Util.addonInfo);
-    return SmartTemplate4.Util.addonInfo.version;    
+    if (SmartTemplate4.Util.addonInfo) {
+      SmartTemplate4.Util.logDebug("Version() getter. addonInfo:", SmartTemplate4.Util.addonInfo);
+      return SmartTemplate4.Util.addonInfo.version;    
+    }
+    return "N/A"; // if we log this too early (before Util.init() is complete)
 	} ,
 
 	get VersionSanitized() {

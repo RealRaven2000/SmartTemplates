@@ -4,24 +4,27 @@ import {Licenser} from "./scripts/Licenser.mjs.js";
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
+const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 
 
 var startupFinished = false;
 var callbacks = [];
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
-    
+    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
     // Wait until the main startup routine has finished!
     await new Promise((resolve) => {
       if (startupFinished) {
-        console.log("No need to wait, main() has already finished.");
+        if (isDebug) console.log("SmartTemplates - startup code finished.");
         resolve();
         // Looks like we missed the one sent by main()
       }
       callbacks.push(resolve);
     });
-    console.log("Startup has finished");
-    console.log("currentLicense", currentLicense);
+    if (isDebug) {
+      console.log("SmartTemplates Startup has finished\n"
+        + "currentLicense", currentLicense);
+    }
     
     switch (reason) {
       case "install":
@@ -34,16 +37,16 @@ var callbacks = [];
       case "update":
         {
       // TypeError: currentLicense is undefined
-          console.log("2. update() case");
+          if (isDebug) console.log("2. update() case");
           let currentLicenseInfo = currentLicense.info;
           let isLicensed = (currentLicenseInfo.status == "Valid"),  
               isStandardLicense = (currentLicenseInfo.keyType == 2); 
           if (isLicensed) {
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = currentLicenseInfo.licensedDaysLeft; 
-            console.log("Licensed - " + gpdays  + " Days left.");
+            if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
             if (gpdays>40 && !isStandardLicense) {
-              console.log("Omitting update popup!");
+              if (isDebug) console.log("Omitting update popup!");
               return;
             }
           }
@@ -63,9 +66,10 @@ async function main() {
   
   // we need these helper functions for calculating an extension to License.info
   async function getGraceDate() {
-    let graceDate = "", isResetDate = false;
+    let graceDate = "", isResetDate = false, isDebug = false;
     try {
       graceDate = await messenger.LegacyPrefs.getPref(GRACEDATE_STORAGE);
+      isDebug =  await messenger.LegacyPrefs.getPref(DEBUGLICENSE_STORAGE);
     }
     catch(ex) { 
       isResetDate = true; 
@@ -79,7 +83,7 @@ async function main() {
       // if a license exists & is expired long ago, use the last day of expiration date.
       if (currentLicense.info.status == "Expired") {
         if (graceDate < currentLicense.info.expiryDate) {
-          console.log("Extending graceDate from {0} to {1}".replace("{0}",graceDate).replace("{1}", currentLicense.info.expiryDate)); // logDebugOptional("premium.licenser", 
+          if (isDebug) console.log("Extending graceDate from {0} to {1}".replace("{0}",graceDate).replace("{1}", currentLicense.info.expiryDate)); 
           graceDate = currentLicense.info.expiryDate;
           isResetDate = true;
         }
@@ -87,7 +91,7 @@ async function main() {
     }
     if (isResetDate)
       await messenger.LegacyPrefs.setPref(GRACEDATE_STORAGE, graceDate);
-    console.log("Returning Grace Period Date: " + graceDate); // util.logDebugOptional("premium.licenser",
+    if (isDebug) console.log("Returning Grace Period Date: " + graceDate); 
     return graceDate;
   }
   
@@ -124,16 +128,19 @@ async function main() {
    */
 
    
-  let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey");
-  let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity");
-  currentLicense = new Licenser(key, { forceSecondaryIdentity});
+  let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
+      forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
+      isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug"),
+      isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
+
+  currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser});
   await currentLicense.validate();
   currentLicense.GraceDate = await getGraceDate();
   currentLicense.TrialDays = await getTrialDays();
   
   // All important stuff has been done.
   // resolve all promises on the stack
-  console.log("Main has finished and will now call all callbacks on the stack, which will resolve the associated promises");
+  if (isDebug) console.log("Finished setting up license startup code");
   callbacks.forEach(callback => callback());
   startupFinished = true;
   
@@ -172,9 +179,10 @@ async function main() {
         break;
 
       case "updateLicense":
-        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity");
+        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
+            isDebugLicenser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.premium.licenser");
         // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-        let newLicense = new Licenser(data.key, { forceSecondaryIdentity });
+        let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug:isDebugLicenser });
         await newLicense.validate();
         newLicense.GraceDate = await getGraceDate();
         newLicense.TrialDays = await getTrialDays();

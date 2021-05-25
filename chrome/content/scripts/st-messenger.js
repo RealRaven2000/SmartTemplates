@@ -11,7 +11,6 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
 async function onLoad(activatedWhileWindowOpen) {
-  console.log (Services.appinfo.version);
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   
   const util = window.SmartTemplate4.Util;

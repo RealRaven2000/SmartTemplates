@@ -140,42 +140,6 @@ SmartTemplate4.composer = {
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
     // fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
-
-/*
-  onLoad:  function() {
-    const util = SmartTemplate4.Util,
-          logDebugOptional = util.logDebugOptional.bind(util),
-          isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
-          
-    let txt = "unknown";
-    try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
-    catch(ex) {;}
-    logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
-    
-    let composer = document.getElementById("msgcomposeWindow");
-    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
-    
-    SmartTemplate4.init();
-    
-    util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
-    // safety for when the compose-window-init event does not fire (Tb 67+)
-    if (typeof ComposeStartup == 'function') {
-      if (!SmartTemplate4.ComposeStartup) {
-        if (isDebugComposer) debugger;
-        SmartTemplate4.ComposeStartup = ComposeStartup;
-        ComposeStartup = function() {
-          logDebugOptional('composer','Calling ComposeStartup Wrapper');
-          SmartTemplate4.ComposeStartup();
-          logDebugOptional('composer','Calling initListener');
-          SmartTemplate4.initListener(true);
-          SmartTemplate4.composer.initTemplateMenu();
-        }
-      }
-    }
-    // add the style sheet.
-    SmartTemplate4.composer.load();
-  },
-*/
   
   // update for license changes
   initLicensedUI: function () {

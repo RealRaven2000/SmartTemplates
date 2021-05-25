@@ -931,8 +931,7 @@ SmartTemplate4.Settings = {
 		prefs.setMyBoolPref('expandSettings', true);
 
 		let versionBox = document.getElementById('versionBox');
-		// let's get the "top" instance of st4, as we know that already knows the version number!!
-		versionBox.value = SmartTemplate4.Util.Mail3PaneWindow.SmartTemplate4.Util.Version;
+		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
 	} ,
 
 	closeAdvanced: function closeAdvanced() {

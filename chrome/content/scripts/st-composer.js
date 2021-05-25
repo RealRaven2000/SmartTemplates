@@ -10,6 +10,7 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-signature.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
+// this script will call initListener in order to be ready for NotifyComposeBodyReady:
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-composer.js", window, "UTF-8");
 /**/
 async function onLoad(activatedWhileWindowOpen) {
@@ -67,43 +68,7 @@ async function onLoad(activatedWhileWindowOpen) {
 	    
     `);
 
-  let test = false;
-  if (test) {
-		const st4 = window.SmartTemplate4,
-          util = st4.Util,
-					logDebugOptional = util.logDebugOptional.bind(util),
-					isDebugComposer = st4.Preferences.isDebugOption('composer');
-          
-		let txt = "unknown";
-    if (isDebugComposer) debugger;
-		try { txt	= window.document.firstElementChild.getAttribute('windowtype'); }
-		catch(ex) {;}
-		logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
-		
-		let composer = document.getElementById("msgcomposeWindow");
-		composer.addEventListener("compose-window-init", st4.initListener, false);
-		
-		st4.init();
-		// debugger;
-		
-		util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
-		// safety for when the compose-window-init event does not fire (Tb 67+)
-		if (typeof ComposeStartup == 'function') {
-			if (!st4.ComposeStartup) {
-				if (isDebugComposer) debugger;
-				st4.ComposeStartup = ComposeStartup;
-				ComposeStartup = function() {
-					logDebugOptional('composer','Calling ComposeStartup Wrapper');
-					st4.ComposeStartup();
-					logDebugOptional('composer','Calling initListener');
-					st4.initListener(true);
-          st4.composer.initTemplateMenu();
-				}
-			}
-		}
-    // add the style sheet.
-		st4.composer.load();
-  }
+  // tried to call initListener here but it was too late already ... 
 
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
@@ -114,12 +79,15 @@ async function onLoad(activatedWhileWindowOpen) {
 	//	util.logDebug("Calling SmartTemplate4.composer.load from window: " + txt);
 	window.SmartTemplate4.composer.load();
   window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer));
+  
 }
 
 function onUnload(isAddOnShutDown) {
   try {
     window.SmartTemplate4.Util.notifyTools.disable();
     window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.composer.initLicensedUI);
+    window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.composer.initTemplateMenu);
     
     window.document.getElementById('smarttemplate4-cleandeferred').remove();  
     window.document.getElementById('smarttemplate4-changeTemplate').remove();  

@@ -30,13 +30,13 @@ function getDate(license) {
   // get mail+date portion
   let arr = license.split(';');
   if (!arr.length) {
-    log("getDate()", "failed - no ; found");
+    log("SmartTemplates Licenser", "getDate() failed - no ; found");
     return ""; 
   }
   // get date portion
   let arr1=arr[0].split(':');
   if (arr1.length<2) {
-    log("getDate()", "failed - no : found");
+    log("SmartTemplates Licenser", "getDate() failed - no : found");
     return '';
   }
   return arr1[1];
@@ -45,7 +45,7 @@ function getDate(license) {
 function getMail(license) {
   let arr1 = license.split(':');
   if (!arr1.length) {
-    log("getMail()", "failed - no : found");
+    log("SmartTemplates Licenser", "getMail() failed - no : found");
     return '';
   }
   let pos = arr1[0].indexOf('-') + 1;
@@ -61,6 +61,7 @@ export class Licenser {
     this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
       ? options.forceSecondaryIdentity
       : false;
+    this.debug = options.debug || false;
       
     this.SettingsRoot = options.hasOwnProperty("settingsRoot") ? options.settingsRoot : ""; // Legacy Place to store trial period
       
@@ -69,7 +70,7 @@ export class Licenser {
     
     if (this.key_type == 1 && this.ForceSecondaryIdentity) {
       this.ForceSecondaryIdentity = false;
-      log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
+      this.logDebug("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
     }
   }
   
@@ -177,7 +178,7 @@ export class Licenser {
   getCrypto() {
     let arr = this.LicenseKey.split(';');
     if (arr.length<2) {
-      log("getCrypto()","failed - no ; found");
+      this.logDebug("getCrypto()","failed - no ; found");
       return null;
     }
     return arr[1];
@@ -185,19 +186,19 @@ export class Licenser {
   
   // Testing purpose, may be removed
   encryptLicense () {
-    log('encryptLicense - initialising with maxDigits:', this.RSA_maxDigits);
+    this.logDebug('encryptLicense - initialising with maxDigits:', this.RSA_maxDigits);
     RSA.initialise(this.RSA_maxDigits);
     // 64bit key pair
-    log('encryptLicense - creating key pair object with bit length:', this.RSA_keylength);
+    this.logDebug('encryptLicense - creating key pair object with bit length:', this.RSA_keylength);
     let key = new RSA.RSAKeyPair(
       this.RSA_encryption,
       this.RSA_decryption,
       this.RSA_modulus,
       this.RSA_keylength
     );
-    log('encryptLicense - starting encryption…');
+    this.logDebug('encryptLicense - starting encryption…');
     let Encrypted = RSA.encryptedString(key, this.LicenseKey, 'OHDave');
-    log('encryptLicense - finished encrypting registration key', {
+    this.logDebug('encryptLicense - finished encrypting registration key', {
       length: Encrypted.length,
       Encrypted
     });
@@ -238,41 +239,41 @@ export class Licenser {
 
   async validate() {
     this.reset();
-    log("validateLicense", { LicenseKey: this.LicenseKey });
+    this.logDebug("validateLicense", { LicenseKey: this.LicenseKey });
     
     if (!this.LicenseKey) {
       this.ValidationStatus = LicenseStates.Empty;
-      log(this);
+      this.logDebug(this);
       return [this.ValidationStatus, ''];
     }    
 
     let encrypted = this.getCrypto();  
     if (!encrypted) {
       this.ValidationStatus = LicenseStates.Invalid;
-      log('validateLicense()\n returns ', [
+      this.logDebug('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
       return [this.ValidationStatus, ''];
     }
     
-    log("RSA.initialise", this.RSA_maxDigits);
+    this.logDebug("RSA.initialise", this.RSA_maxDigits);
     RSA.initialise(this.RSA_maxDigits);
-    log('Creating RSA key + decrypting');
+    this.logDebug('Creating RSA key + decrypting');
     let key = new RSA.RSAKeyPair("", this.RSA_decryption, this.RSA_modulus, this.RSA_keylength);
 
     // verify against remainder of string
     try {
-      log("get RSA.decryptedString()");
+      this.logDebug("get RSA.decryptedString()");
       this.RealLicense = RSA.decryptedString(key, encrypted);
-      log("Decryption Complete", { RealLicense: this.RealLicense });
+      this.logDebug("Decryption Complete", { RealLicense: this.RealLicense });
     } catch (ex) {
-      log('RSA Decryption failed: ', ex);
+      log('SmartTemplates Licenser: RSA Decryption failed ', ex);
     }
     
     if (!this.RealLicense) {
       this.ValidationStatus = LicenseStates.Invalid;
-      log('validateLicense()\n returns ', [
+      this.logDebug('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
@@ -284,8 +285,8 @@ export class Licenser {
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
     if (!this.decryptedDate.match(regEx)) {
       this.ValidationStatus = LicenseStates.Invalid;
-      log('encountered garbage date: ', this.decryptedDate);
-      log('validateLicense()\n returns ', [
+      this.logDebug('encountered garbage date: ', this.decryptedDate);
+      this.logDebug('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
@@ -298,7 +299,7 @@ export class Licenser {
     this.decryptedMail = this.getDecryptedMail().toLocaleLowerCase();
     if (clearTextEmail != this.decryptedMail) {
       this.ValidationStatus = LicenseStates.MailDifferent;
-      log('validateLicense()\n returns ', [
+      this.logDebug('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
@@ -312,7 +313,7 @@ export class Licenser {
     if (this.decryptedDate < dateString) {
       let licDate = new Date(this.decryptedDate);
       this.ExpiredDays = parseInt((today - licDate) / (1000 * 60 * 60 * 24)); 
-      log('validateLicense()\n returns ', [
+      this.logDebug('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
@@ -349,7 +350,8 @@ export class Licenser {
         }
         if (!hasDefaultIdentity) {
           AllowFallbackToSecondaryIdentiy = true;
-          log("Premium License Check: There is no account with default identity!\n" +
+          this.logDebug("SmartTemplates Licenser\n",
+              "Premium License Check: There is no account with default identity!\n" +
               "You may want to check your account configuration as this might impact some functionality.\n" + 
               "Allowing use of secondary email addresses...");
         }
@@ -360,17 +362,17 @@ export class Licenser {
       let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
       if (defaultIdentity && !this.ForceSecondaryIdentity) {
 
-        log("premium.licenser", {
+        this.logDebug("premium.licenser", {
             "Iterate accounts" : account.name,
             "Default Identity" : defaultIdentity.id,
         });
         if (!defaultIdentity.email) {
-          log("Default Identity of this account has no associated email!", {account: account.name, defaultIdentity});
+          this.logDebug("Default Identity of this account has no associated email!", {account: account.name, defaultIdentity});
           continue;
         }
         if (this.isIdMatchedLicense(defaultIdentity.email, this.decryptedMail)) {
           this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
-          log("Default Identity of this account matched!", {
+          this.logDebug("Default Identity of this account matched!", {
             account: account.name, 
             identity: defaultIdentity.email,
             status: this.ValidationStatusDescription
@@ -380,22 +382,22 @@ export class Licenser {
 
       } else if (AllowFallbackToSecondaryIdentiy) {
 
-        log("premium.licenser", {
+        this.logDebug("SmartTemplates Licenser", {
             "Iterate all identities of account" : account.name,
             "Identities" : account.identities,
         });
         for (let identity of account.identities) {
           if (this.ForceSecondaryIdentity && defaultIdentity && defaultIdentity.id == identity.id) {
-            log("Skipping default identity!", {identity});
+            this.logDebug("Skipping default identity!", {identity});
             continue;
           }          
           if (!identity.email) {
-            log("Identity has no associated email!", {identity});
+            this.logDebug("Identity has no associated email!", {identity});
             continue;
           }
           if (this.isIdMatchedLicense(identity.email, this.decryptedMail)) {
             this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
-            log("Identity of this account matched!", {
+            this.logDebug("Identity of this account matched!", {
               account: account.name, 
               identity: identity.email,
               status: this.ValidationStatusDescription
@@ -409,6 +411,16 @@ export class Licenser {
     
     this.ValidationStatus = LicenseStates.MailNotConfigured;
     return this.info;
+  }
+  
+  logDebug(msg, detail) {
+    if (this.debug) {
+      if(!detail) {
+        detail = msg;
+        msg = "SmartTemplates Licenser\n";
+      }
+      log(msg, detail);
+    }
   }
 }
 

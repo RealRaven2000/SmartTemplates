@@ -114,10 +114,9 @@ SmartTemplate4.fileTemplates = {
 		return this.document.getElementById('templateList.' + flavour)
 	},
 	
-  populateMenu: function populateMenu(doc, menu) {	
-		const util = SmartTemplate4.Util,
-		      createElement = doc.createXULElement ? doc.createXULElement.bind(doc) : doc.createElement.bind(doc);
-		// alert("to do: populate Menus under write / reply buttons (main window)");
+  // obsolete?
+  populateMenus: function populateMenu() {	
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 	},
 	
 	// adds an item to currently visible list
@@ -160,10 +159,7 @@ SmartTemplate4.fileTemplates = {
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
-    // main menu
-    let win = SmartTemplate4.Util.Mail3PaneWindow,
-        doc = win.document;
-    win.SmartTemplate4.fileTemplates.populateMenu(doc);
+    // SmartTemplate4.fileTemplates.populateMenus(); 
   },
 	
 	// label was changed, auto update the list!
@@ -397,10 +393,8 @@ SmartTemplate4.fileTemplates = {
 			if (!fromOptions) {
 				promise3 = promise2.then(
 					function promise2_populateMenu() {
-						const mwin = util.Mail3PaneWindow,
-									doc = mwin.document;
-						util.logDebug ('promise2.then populateMenu() ...'); 
-						mwin.SmartTemplate4.fileTemplates.populateMenu(doc);
+						util.logDebug ('promise2.then populateMenus() ...'); 
+						// SmartTemplate4.fileTemplates.populateMenus();
 						return promise2; // make loadCustomMenu chainable
 					},
 					function promise2_onFail(ex) {
@@ -690,8 +684,14 @@ SmartTemplate4.fileTemplates = {
   initMenus: function (reset = false) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
+    let loc = "";
+    try { 
+      if (window)
+        loc = window.document.URL; 
+    }
+    catch(ex) {;}
           
-    util.logDebugOptional("notifications.menus", "fileTemplates.initMenus()...");
+    util.logDebugOptional("notifications.menus", "fileTemplates.initMenus()...[" + loc + "]");
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 

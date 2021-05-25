@@ -1392,7 +1392,7 @@ SmartTemplate4.classSmartTemplate = function() {
              + '%sig% type: [' + sigType + ']\n'
              + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
              + '------------------------------------------------\n'
-             + 'SmartTemplate4: ' + util.Version + '\n'
+             + 'SmartTemplates version: ' + util.Version + '\n'
              + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
              + 'HostSystem: ' + util.HostSystem + '\n'
              );
@@ -1492,12 +1492,11 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
-			// all used functions are stored in the main instance of SmartTemplates (3pane window)
-			if (util.mainInstance.Util.premiumFeatures.length)
+			if (util.premiumFeatures.length)
       {
         // let's reset the local license
-        if (!util.hasLicense() ||  util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
-          util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
+        if (!util.hasLicense() || util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
+          util.popupLicenseNotification(util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance
