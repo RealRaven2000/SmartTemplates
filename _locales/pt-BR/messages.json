@@ -1480,7 +1480,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Suporte aprimorado para conversão de caracteres codificados usados em campos de endereço, como 'de'. {L2} {L1} Corrigido: Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2}{L1} Localização adicionada para o idioma catalão. {L2}{L1}Trabalho em andamento para tornar o SmartTemplates compatível com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021.{L2}{L1}Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano.{L2}"
+    "message": "{L1} 3.5.3 - Problema com a caixa de diálogo de licenciamento que não conseguia abrir a loja da web se uma licença válida já tivesse sido inserida. {L2}{L1} Suporte aprimorado para conversão de caracteres codificados usados em campos de endereço, como 'de'. {L2} {L1} Corrigido: Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2}{L1} Localização adicionada para o idioma catalão. {L2}{L1}Trabalho em andamento para tornar o SmartTemplates compatível com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021.{L2}{L1}Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

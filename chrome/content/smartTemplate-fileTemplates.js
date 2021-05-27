@@ -307,21 +307,14 @@ SmartTemplate4.fileTemplates = {
     let path = new Array("extensions", "smartTemplates.json");
     // http://dxr.mozilla.org/comm-central/source/mozilla/toolkit/modules/FileUtils.jsm?from=FileUtils.jsm&case=true#41
 		
-		const { FileUtils } = 
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
+		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 		
 		return FileUtils.getFile("ProfD", path); // implements nsIFile
   } ,	
   	
   readStringFile: function readStringFile() {
     // To read content from file
-    // const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {}); // TextDecoder
-		
-		const {OS} = (typeof ChromeUtils.import == "undefined") ?
-		  Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-		  ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+		const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
     // To read & write content to file
     // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
     
@@ -416,10 +409,7 @@ SmartTemplate4.fileTemplates = {
     const util = SmartTemplate4.Util;
     
     try {
-      // const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
-			const {OS} = (typeof ChromeUtils.import == "undefined") ?
-				Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-				ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+			const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
 				
       let fileTemplates = this, // closure this
           profileDir = OS.Constants.Path.profileDir,

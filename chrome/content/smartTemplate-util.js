@@ -18,11 +18,8 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "3.5",
-	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
-	VersionProxyRunning: false,
 	mAppver: null,
 	mAppName: null,
 	mHost: null,
@@ -315,63 +312,6 @@ SmartTemplate4.Util = {
     return (xulRuntime.OS.indexOf('Linux')>=0);
   } ,
 
-	// this is done asynchronously, so it respawns itself
-	VersionProxy: function() {
-		const util = SmartTemplate4.Util;
-		try {
-			if (util.mExtensionVer // early exit, we got the version!
-				||
-					util.VersionProxyRunning) // no recursion...
-				return;
-
-			util.logDebug("Util.VersionProxy()…");
-			util.VersionProxyRunning = true;
-			util.logDebug("Util.VersionProxy() started.");
-			let myId = util.ADDON_ID;
-			if (Components.utils.import) {
-				var { AddonManager } = 
-					ChromeUtils.import ?
-					ChromeUtils.import("resource://gre/modules/AddonManager.jsm") :
-					Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				
-				let versionCallback = function(addon) {
-					let versionLabel = window.document.getElementById("qf-options-header-description");
-					if (versionLabel) versionLabel.setAttribute("value", addon.version);
-
-					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
-					util.logDebug("SmartTemplate4.VersionProxy() - DETECTED SmartTemplates Version " + util.mExtensionVer + "\n"
-					           + "Running on " + util.Application
-					           + " Version " + util.AppverFull);
-					// make sure we are not in options window
-					if (!versionLabel)
-						util.firstRun.init();
-
-					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: SmartTemplates extension's version is " + addon.version);
-					versionLabel = window.document.getElementById("smartTemplate-options-version");
-					if(versionLabel)
-						versionLabel.setAttribute("value", addon.version);
-				}
-				
-				if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
-					AddonManager.getAddonByID(myId).then(versionCallback); // this function is now a promise
-				else
-					AddonManager.getAddonByID(myId, versionCallback);
-			}
-			util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
-
-		}
-		catch(ex) {
-			util.logToConsole("SmartTemplates VersionProxy failed - are you using an old version of " + util.Application + "?"
-				+ "\n" + ex);
-		}
-		finally {
-			util.VersionProxyRunning = false;
-			util.logDebug("Util.VersionProxy ends()");
-		}
-	},
-  
   initTabListener: function() {
     const util = SmartTemplate4.Util;
     try {
@@ -414,7 +354,7 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.logDebug("Version() getter. addonInfo:", SmartTemplate4.Util.addonInfo);
       return SmartTemplate4.Util.addonInfo.version;    
     }
-    return "N/A"; // if we log this too early (before Util.init() is complete)
+    return "?"; // if we log this too early (before Util.init() is complete)
 	} ,
 
 	get VersionSanitized() {
@@ -2786,7 +2726,7 @@ SmartTemplate4.Util.firstRun =
 			else {
 
 				// check for update of pure version (everything before pre, beta, alpha)
-				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
+				if (prev!=pureVersion) {
 					
 					/* EXTENSION UPDATED */
 					util.logDebug("===========================\n"+
@@ -2819,7 +2759,7 @@ SmartTemplate4.Util.firstRun =
 
 			// =============================================
 			// STORE CURRENT VERSION NUMBER!
-			if (prev != pureVersion && current != '?' && (current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+			if (prev != pureVersion && current != '?') {
 				util.logDebug ("Storing new version number " + current);
 				// STORE VERSION CODE!
 				prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
@@ -2828,8 +2768,7 @@ SmartTemplate4.Util.firstRun =
 				util.logDebugOptional ("firstRun","No need to store current version: " + current
 					+ "\nprevious: " + prev.toString()
 					+ "\ncurrent!='?' = " + (current!='?').toString()
-					+ "\nprev!=current = " + (prev!=current).toString()
-					+ "\ncurrent.indexOf(" + util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(util.HARDCODED_EXTENSION_TOKEN).toString());
+					+ "\nprev!=current = " + (prev!=current).toString());
 			}
 			
 			// load the templates file and initialize the dropdown menus for write / reply / forward
@@ -3161,10 +3100,7 @@ SmartTemplate4.Message = {
 
 // Code migrated from smartTemplate-shim-ecma.js
 if (!SmartTemplate4.Shim) {
-	var { fixIterator } = 
-	  ChromeUtils.import ?
-	  ChromeUtils.import("resource:///modules/iteratorUtils.jsm", null) :
-	  Components.utils.import("resource:///modules/iteratorUtils.jsm");
+	var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm", null);
 		
 	SmartTemplate4.Shim = {
 		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {

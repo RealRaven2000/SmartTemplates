@@ -89,6 +89,13 @@ END LICENSE BLOCK
     # Added catalan locale (transformed from occitan)
     # fixed openTab in Tb80 (added url parameter)
     
+  Version 3.5.3 - 27/05/2021
+    # Ongoing work Remove usage of main window instance - for premium feature messages
+    # Removed many entries (especially in new Licenser module + background pages) to keep the error console clean 
+    # - these are now dependent on debug settings and can be added according to troubleshooting requirements.
+    # Added event listener to composer windows so the template menus can be reconfigured in real time.
+    # Fixed a regression with links from the Registration dialog caused by the migration to the new licensing modul 
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   

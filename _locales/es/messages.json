@@ -1538,7 +1538,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Soporte mejorado para convertir caracteres codificados usados en campos de direcciones como 'from' {L2} {L1} Error en la localización para chino tradicional (zh-TW) que rompió el diálogo de configuración. {L2}{L1} Se agregó la localización para el idioma catalán. {L2}{L1} Trabajo en curso para que SmartTemplates sea compatible con Thunderbird versión 91, cuyo lanzamiento está previsto para el verano de 2021. {L2} {L1} Soporte mejorado para múltiples ventanas Thunderbird, a través de las nuevas notificaciones de secuencias de comandos en segundo plano. {L2}"
+    "message": "{L1} 3.5.3 - Problema con el cuadro de diálogo de licencias que no podía abrir la tienda web si ya se había ingresado una licencia válida. {L2}{L1} Soporte mejorado para convertir caracteres codificados usados en campos de direcciones como 'from' {L2} {L1} Error en la localización para chino tradicional (zh-TW) que rompió el diálogo de configuración. {L2}{L1} Se agregó la localización para el idioma catalán. {L2}{L1} Trabajo en curso para que SmartTemplates sea compatible con Thunderbird versión 91, cuyo lanzamiento está previsto para el verano de 2021. {L2} {L1} Soporte mejorado para múltiples ventanas Thunderbird, a través de las nuevas notificaciones de secuencias de comandos en segundo plano. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

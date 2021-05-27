@@ -2690,10 +2690,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   // [Bug 25871] %file()% function
   function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-    const { FileUtils } = 
-            ChromeUtils.import ?
-            ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-            Components.utils.import("resource://gre/modules/FileUtils.jsm"),
+    const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm'),
           isFU = FileUtils && FileUtils.File;
 								
     // determine file type:
@@ -2874,10 +2871,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       }
     }
     catch(ex) {
-      var { Services } =
-        ChromeUtils.import ?
-        ChromeUtils.import('resource://gre/modules/Services.jsm') :
-        Components.utils.import('resource://gre/modules/Services.jsm');
+      var { Services } =ChromeUtils.import('resource://gre/modules/Services.jsm');
       
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
       Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +

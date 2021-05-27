@@ -49,7 +49,7 @@ var Register = {
     let decryptedDate = licenseInfo.expiryDate;
     if (decryptedDate) {
 			if (prefs.isDebug) {
-				util.logDebug('SmartTemplate4.Register.load()\n' + 'ValidationStatus = ' + licenseInfo.description)
+				util.logDebug('Register.updateLicenseUI()\n' + 'ValidationStatus = ' + licenseInfo.description)
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
@@ -64,19 +64,19 @@ var Register = {
             case 0: // Pro
               btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
               btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
               break;
             case 1: // Domain
               btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
               btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
               btnDomainLicense.classList.add('register');
               btnProLicense.classList.remove('register');
               break;
             case 2: // Standard
               btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
               btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3);'); // upgrade fropm standard
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(3);'); // upgrade fropm standard
               btnProLicense.classList.add('upgrade'); // no flashing
               break;
           }
@@ -88,23 +88,23 @@ var Register = {
             case 0:
               extBtn = btnProLicense;
               btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(0, true);');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
               extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
               break;
             case 1:
               extBtn = btnDomainLicense;
               btnProLicense.classList.remove('register'); // not flashing
               btnDomainLicense.removeAttribute('oncommand');
-              btnDomainLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(1, true);');
+              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
               extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
               break;
             case 2:
               btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
               btnProLicense.removeAttribute('oncommand');
-              btnProLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(3, true);');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(3, true);');
               extBtn = btnStdLicense;
               btnStdLicense.removeAttribute('oncommand');
-              btnStdLicense.setAttribute('oncommand', 'SmartTemplate4.Licenser.goPro(2, true);');
+              btnStdLicense.setAttribute('oncommand', 'Register.goPro(2, true);');
               extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
               // check whether renewal is up within 30 days
               let today = new Date(),

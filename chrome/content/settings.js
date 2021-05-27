@@ -1320,9 +1320,7 @@ SmartTemplate4.Settings = {
         if (fp.file) {
           let path = fp.file.path;
           
-					const {OS} = (typeof ChromeUtils.import == "undefined") ?
-						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+					const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
 					
 					// Remember last path
 					let lastSlash = path.lastIndexOf("/");
@@ -1615,10 +1613,7 @@ SmartTemplate4.Settings = {
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
 		
-		var { Services } =
-		  ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/Services.jsm') :
-			Components.utils.import('resource://gre/modules/Services.jsm');
+		var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm') ;
 		
     Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
 
