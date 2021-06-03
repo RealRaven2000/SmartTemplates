@@ -631,7 +631,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 al 31 de maig {boldEnd}."
+    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 de maig a l'11 de juny {boldEnd}."
   },
   "licenseStatus.expired" : {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
@@ -1340,7 +1340,7 @@
     "message": "Subjècte"
   },
   "special-offer-content": {
-    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial estarà disponible fins al {boldStart} 30 de maig {boldEnd}.",
+    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial s'estén fins al {boldStart} 11 de juny {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1539,7 +1539,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} S'ha millorat la compatibilitat amb la conversió de caràcters codificats que s'utilitzen en camps d'adreces com ara 'de' {L2} {L1} S'ha produït un error en la ubicació del diàleg de configuració del xinès tradicional (zh-TW). {L2} {L1} S'ha afegit la localització per a la llengua catalana . {L2} {L1} Treball en curs per fer compatibles SmartTemplates amb la versió 91 de Thunderbird, que es preveu llançar a l'estiu de 2021. {L2} {L1} Millora del suport per a diverses finestres de Thunderbird, mitjançant les noves notificacions de scripts de fons. {L2}"
+    "message": "{L1}3.5.4: s'ha afegit un botó de clau anglesa per obrir fàcilment la configuració del gestor de complements{l2}{L1}S'ha millorat la compatibilitat amb la conversió de caràcters codificats que s'utilitzen en camps d'adreces com ara 'de' {L2} {L1}S'ha produït un error en la ubicació del diàleg de configuració del xinès tradicional (zh-TW). {L2} {L1}S'ha afegit la localització per a la llengua catalana . {L2} {L1}Treball en curs per fer compatibles SmartTemplates amb la versió 91 de Thunderbird, que es preveu llançar a l'estiu de 2021. {L2} {L1}Millora del suport per a diverses finestres de Thunderbird, mitjançant les noves notificacions de scripts de fons. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

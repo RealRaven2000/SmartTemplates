@@ -621,7 +621,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. Května do 31. Května {boldEnd}."
+    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. května do 11. června {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
@@ -1336,7 +1336,7 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory SmartTemplates pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} 1. Května {boldEnd}.",
+    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 11. Června {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1529,7 +1529,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1} Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1} Přidána lokalizace pro katalánský jazyk {L2} {L1} Probíhají práce na kompatibilitě SmartTemplate s Thunderbirdem verze 91, jehož vydání je plánováno na léto 2021. {L2} {L1} Vylepšená podpora více oken Thunderbirdu prostřednictvím nových oznámení skriptu na pozadí. {L2}"
+    "message" : "{L1}3.5.4 - Přidáno tlačítko pro snadné otevření nastavení ze Správce doplňků{L2}{L1}Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1}Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1}Přidána lokalizace pro katalánský jazyk {L2} {L1}Probíhají práce na kompatibilitě SmartTemplate s Thunderbirdem verze 91, jehož vydání je plánováno na léto 2021. {L2} {L1}Vylepšená podpora více oken Thunderbirdu prostřednictvím nových oznámení skriptu na pozadí. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

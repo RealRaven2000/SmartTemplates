@@ -54,7 +54,7 @@ async function updateActions(addonName) {
   
   let isActionList = true;
   let currentTime=new Date(),
-      endSale = new Date("2021-06-01"); // Next Sale End Date
+      endSale = new Date("2021-06-12"); // Next Sale End Date
   let isSale = (currentTime < endSale);
 
   if (isValid || isExpired) {

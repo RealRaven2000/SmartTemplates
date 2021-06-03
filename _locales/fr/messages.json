@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Payez seulement 5,15 € au lieu de 8,35 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart} 20 mai au 31 mai {boldEnd}."
+    "message": "Payez seulement 5,15 € au lieu de 8,35 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}20 mai au 11 juin{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
@@ -1339,7 +1339,7 @@
     "message": "Sujet"
   },
   "special-offer-content": {
-    "message": "Assurez la pérennité de SmartTemplates et récupérez une licence tout en bénéficiant d'une {boldStart} réduction de $discount$ {boldEnd} sur le prix de SmartTemplates Pro! Cette offre spéciale sera disponible jusqu'au {boldStart} 1er mai {boldEnd}.",
+    "message": "Assurez la pérennité de SmartTemplates et récupérez une licence tout en bénéficiant d'une {boldStart} réduction de $discount$ {boldEnd} sur le prix de SmartTemplates Pro! Cette offre spéciale est prolongée jusqu'au {boldStart}11 juin{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1538,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} 3.5.3 - Problème avec la boîte de dialogue de licence qui n'a pas pu ouvrir la boutique en ligne si une licence valide était déjà entrée. {L2}{L1} Amélioration de la prise en charge de la conversion des caractères codés utilisés dans les champs d'adresse tels que 'from' {L2} {L1} Une erreur de localisation pour le chinois traditionnel (zh-TW) a interrompu la boîte de dialogue des paramètres. {L2}{L1} Ajout de la localisation pour la langue catalane. {L2}{L1} Travail en cours pour rendre les SmartTemplates compatibles avec Thunderbird version 91, dont la sortie est prévue pour l'été 2021. {L2} {L1} Amélioration de la prise en charge de plusieurs fenêtres Thunderbird, via les nouvelles notifications de script en arrière-plan. {L2}"
+    "message": "{L1}3.5.4 - Ajout d'un bouton clé pour ouvrir facilement les paramètres du gestionnaire de modules complémentaires{L2}{L1}3.5.3 - Problème avec la boîte de dialogue de licence qui n'a pas pu ouvrir la boutique en ligne si une licence valide était déjà entrée. {L2}{L1}Amélioration de la prise en charge de la conversion des caractères codés utilisés dans les champs d'adresse tels que 'from' {L2} {L1}Une erreur de localisation pour le chinois traditionnel (zh-TW) a interrompu la boîte de dialogue des paramètres. {L2}{L1}Ajout de la localisation pour la langue catalane. {L2}{L1}Travail en cours pour rendre les SmartTemplates compatibles avec Thunderbird version 91, dont la sortie est prévue pour l'été 2021. {L2} {L1}Amélioration de la prise en charge de plusieurs fenêtres Thunderbird, via les nouvelles notifications de script en arrière-plan. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zapłać tylko 5,15 € zamiast 8,35 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart} 20 do 31 maja {boldEnd}."
+    "message": "Zapłać tylko 5,15 € zamiast 8,35 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart}20 maja do 11 czerwca{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
@@ -1177,7 +1177,7 @@
     "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
   "special-offer-content": {
-    "message": "Przygotuj SmartTemplates na przyszłość i pobierz licencję, dopóki cena SmartTemplates Pro jest {boldStart} $discount$ obniżona {boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart} 1 maja {boldEnd}.",
+    "message": "Przygotuj SmartTemplates na przyszłość i pobierz licencję, dopóki cena SmartTemplates Pro jest {boldStart} $discount$ obniżona {boldEnd}! Ta oferta specjalna jest przedłużona do {boldStart}11 czerwca{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1538,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 3.5.3 - Problem z oknem licencjonowania, który nie mógł otworzyć sklepu internetowego, jeśli została już wprowadzona ważna licencja. {L2}{L1} Ulepszona obsługa konwersji zakodowanych znaków używanych w polach adresowych, takich jak „from” {L2} {L1} Błąd w lokalizacji dla języka chińskiego tradycyjnego (zh-TW) złamał okno dialogowe ustawień. {L2}{L1} Dodano lokalizację dla języka katalońskiego. {L2}{L1} Trwające prace nad kompatybilnością SmartTemplates z Thunderbirdem w wersji 91, która ma zostać wydana latem 2021 roku. {L2} {L1} Ulepszona obsługa wielu okien Thunderbirda dzięki nowym powiadomieniom skryptów w tle. {L2}"
+    "message": "{L1}3.5.4 - Dodano przycisk klucza do łatwego otwierania ustawień z Menedżera dodatków{L2} {L1}3.5.3 - Problem z oknem licencjonowania, który nie mógł otworzyć sklepu internetowego, jeśli została już wprowadzona ważna licencja. {L2}{L1}Ulepszona obsługa konwersji zakodowanych znaków używanych w polach adresowych, takich jak „from” {L2} {L1}Błąd w lokalizacji dla języka chińskiego tradycyjnego (zh-TW) złamał okno dialogowe ustawień. {L2}{L1}Dodano lokalizację dla języka katalońskiego. {L2}{L1}Trwające prace nad kompatybilnością SmartTemplates z Thunderbirdem w wersji 91, która ma zostać wydana latem 2021 roku. {L2} {L1}Ulepszona obsługa wielu okien Thunderbirda dzięki nowym powiadomieniom skryptów w tle. {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

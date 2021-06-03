@@ -96,6 +96,9 @@ END LICENSE BLOCK
     # Added event listener to composer windows so the template menus can be reconfigured in real time.
     # Fixed a regression with links from the Registration dialog caused by the migration to the new licensing modul 
     
+  Version 3.5.4 - 03/06/2021
+    # New version of WindowListener to support wrench button to access Add-on settings
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   

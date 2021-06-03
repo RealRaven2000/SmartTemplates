@@ -583,7 +583,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart} 20 de maio a 31 de maio {boldEnd}."
+    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart} 20 de maio a 11 de junho {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "A licença do SmartTemplates expirou em $countDays$ dias atrás.",
@@ -1141,7 +1141,7 @@
     "message": "A frase entre parênteses abaulados [[Cc: %cc(name)%]] somente será exibida, se a variável %cc(name)% não for vazia!"
   },
   "special-offer-content": {
-    "message": "Torne o SmartTemplates à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de $discount$ {boldEnd} no preço do SmartTemplates Pro! Esta oferta especial estará disponível até {boldStart} 1º de maio {boldEnd}.",
+    "message": "Torne o SmartTemplates à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de $discount$ {boldEnd} no preço do SmartTemplates Pro! Esta oferta especial é estendida até {boldStart} 11 de junho {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1480,7 +1480,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} 3.5.3 - Problema com a caixa de diálogo de licenciamento que não conseguia abrir a loja da web se uma licença válida já tivesse sido inserida. {L2}{L1} Suporte aprimorado para conversão de caracteres codificados usados em campos de endereço, como 'de'. {L2} {L1} Corrigido: Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2}{L1} Localização adicionada para o idioma catalão. {L2}{L1}Trabalho em andamento para tornar o SmartTemplates compatível com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021.{L2}{L1}Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano.{L2}"
+    "message": "{L1}3.5.4 - Botão de chave inglesa adicionado para abrir facilmente as configurações do Gerenciador de Complementos{L2}{L1}3.5.3 - Problema com a caixa de diálogo de licenciamento que não conseguia abrir a loja da web se uma licença válida já tivesse sido inserida. {L2}{L1}Suporte aprimorado para conversão de caracteres codificados usados em campos de endereço, como 'de'. {L2} {L1}Corrigido: Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2}{L1}Localização adicionada para o idioma catalão. {L2}{L1}Trabalho em andamento para tornar o SmartTemplates compatível com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021.{L2}{L1}Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

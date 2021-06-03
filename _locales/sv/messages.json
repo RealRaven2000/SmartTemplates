@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} 20 maj till 31 maj {boldEnd}."
+    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} 20 maj till 11 juni {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
@@ -1177,7 +1177,7 @@
     "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
   "special-offer-content": {
-    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 1 maj {boldEnd}.",
+    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande förlängs till {boldStart} 11 juni {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1538,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 3.5.3 - Problem med licensdialogrutan som inte kunde öppna webbshoppen om giltig licens redan var angiven. {L2}{L1} Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2}{L1} Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2}{L1} Lade till lokalisering för katalanska språk. {L2}{L1} Pågående arbete för att göra SmartTemplates kompatibla med Thunderbird version 91, som planeras släppas sommaren 2021. {L2}{L1} Förbättrat stöd för flera Thunderbird-fönster via de nya meddelandena om bakgrundsskript. {L2}"
+    "message": "{L1}3.5.4 - Skiftnyckel har lagts till för att enkelt öppna inställningar från Add-ons Manager{L2}{L1}3.5.3 - Problem med licensdialogrutan som inte kunde öppna webbshoppen om giltig licens redan var angiven. {L2}{L1}Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2}{L1}Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2}{L1}Lade till lokalisering för katalanska språk. {L2}{L1}Pågående arbete för att göra SmartTemplates kompatibla med Thunderbird version 91, som planeras släppas sommaren 2021. {L2}{L1}Förbättrat stöd för flera Thunderbird-fönster via de nya meddelandena om bakgrundsskript. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
