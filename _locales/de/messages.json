@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} vom 20. bis 11. Juni {boldEnd} verfügbar."
+    "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} vom 20. bis 20. Juni {boldEnd} verfügbar."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
@@ -1336,7 +1336,7 @@
     "message": "Betreff"
   },
   "special-offer-content": {
-    "message": "Machen Sie SmartTemplates zukunftssicher und holen Sie sich eine Lizenz, während der Preis von SmartTemplates Pro {boldStart}um $discount$ gesenkt{boldEnd} ist! Dieses Sonderangebot wird bis zum {boldStart}11. Juni{boldEnd} verlängert.",
+    "message": "Machen Sie SmartTemplates zukunftssicher und holen Sie sich eine Lizenz, während der Preis von SmartTemplates Pro {boldStart}um $discount$ gesenkt{boldEnd} ist! Dieses Sonderangebot wird bis zum {boldStart}20. Juni{boldEnd} verlängert.",
     "placeholders": {
       "discount": {
         "content": "$1",

@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} 20. toukokuuta - 11. kesäkuuta {boldEnd}."
+    "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} 20. toukokuuta - 20. kesäkuuta {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
@@ -1345,7 +1345,7 @@
     "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
   } , 
   "special-offer-content" : {
-    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tätä erikoistarjousta jatketaan {boldStart} 11. kesäkuuta {boldEnd} asti.",
+    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tätä erikoistarjousta jatketaan {boldStart} 20. kesäkuuta {boldEnd} asti.",
     "placeholders": {
       "discount": {
         "content": "$1",

@@ -118,7 +118,7 @@
     "message" : "Gia hạn giấy phép của bạn."
   },  
   "special-offer-content": {
-    "message": "Làm cho SmartTemplates bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm $discount$ {boldEnd} về giá của SmartTemplates Pro! Ưu đãi đặc biệt này được kéo dài đến {boldStart} ngày 11 tháng 6 {boldEnd}.",
+    "message": "Làm cho SmartTemplates bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm $discount$ {boldEnd} về giá của SmartTemplates Pro! Ưu đãi đặc biệt này được kéo dài đến {boldStart} ngày 20 tháng 6 {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

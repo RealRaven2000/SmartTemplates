@@ -621,7 +621,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. května do 11. června {boldEnd}."
+    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. května do 20. června {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
@@ -1336,7 +1336,7 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory SmartTemplates pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 11. Června {boldEnd}.",
+    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 20. Června {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

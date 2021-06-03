@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}5 月 20 日至 6 月 11 日{boldEnd}。"
+    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}5 月 20 日至 6 月 20 日{boldEnd}。"
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
@@ -1177,7 +1177,7 @@
     "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
   "special-offer-content": {
-    "message": "使SmartTemplates成為將來的證明並獲取許可，同時SmartTemplates Pro的價格降低{boldStart}$discount${boldEnd}！ 此特別優惠將延長至 {boldStart}6 月 11 日{boldEnd}。",
+    "message": "使SmartTemplates成為將來的證明並獲取許可，同時SmartTemplates Pro的價格降低{boldStart}$discount${boldEnd}！ 此特別優惠將延長至 {boldStart}6 月 20 日{boldEnd}。",
     "placeholders": {
       "discount": {
         "content": "$1",

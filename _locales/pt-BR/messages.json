@@ -583,7 +583,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart} 20 de maio a 11 de junho {boldEnd}."
+    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart} 20 de maio a 20 de junho {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "A licença do SmartTemplates expirou em $countDays$ dias atrás.",
@@ -1141,7 +1141,7 @@
     "message": "A frase entre parênteses abaulados [[Cc: %cc(name)%]] somente será exibida, se a variável %cc(name)% não for vazia!"
   },
   "special-offer-content": {
-    "message": "Torne o SmartTemplates à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de $discount$ {boldEnd} no preço do SmartTemplates Pro! Esta oferta especial é estendida até {boldStart} 11 de junho {boldEnd}.",
+    "message": "Torne o SmartTemplates à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de $discount$ {boldEnd} no preço do SmartTemplates Pro! Esta oferta especial é estendida até {boldStart} 20 de junho {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}20 mei tot 11 juni{boldEnd}."
+    "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}20 mei tot 20 juni{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
@@ -1339,7 +1339,7 @@
     "message": "Onderwerp"
   },
   "special-offer-content": {
-    "message": "Maak SmartTemplates toekomstbestendig en haal een licentie op terwijl er {boldStart} $discount$ korting {boldEnd} is op de prijs van SmartTemplates Pro! Deze speciale aanbieding is verlengd tot {boldStart}11 juni{boldEnd}.",
+    "message": "Maak SmartTemplates toekomstbestendig en haal een licentie op terwijl er {boldStart} $discount$ korting {boldEnd} is op de prijs van SmartTemplates Pro! Deze speciale aanbieding is verlengd tot {boldStart}20 juni{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

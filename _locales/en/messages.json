@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available from {boldStart}May 20th to June 11th{boldEnd}."
+    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available from {boldStart}May 20th to June 20th{boldEnd}."
   },
   "licenseStatus.expired" : {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
@@ -1339,7 +1339,7 @@
     "message": "Subject"
   },
   "special-offer-content": {
-    "message": "Future proof SmartTemplates and get a License. Get a {boldStart}$discount$ reduction{boldEnd} on the price of SmartTemplates Pro! This special offer is extended until {boldStart}June 11th{boldEnd}.",
+    "message": "Future proof SmartTemplates and get a License. Get a {boldStart}$discount$ reduction{boldEnd} on the price of SmartTemplates Pro! This special offer is extended until {boldStart}June 20th{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
