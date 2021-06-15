@@ -6,7 +6,9 @@
  
 /* 
   ORIGINAL CODE:
-  https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-accounts.js
+  https://searchfox.org/comm-esr78/source/mail/components/extensions/parent/ext-accounts.js
+  SCHEMA:
+  https://searchfox.org/comm-esr78/source/mail/components/extensions/schemas/accounts.json
   
   This is a workaround for [Bug 1715968] - which doesn't prompt user to update a legacy add-on whgen it requires new permissions. Since we already have full permissions, we need to copy the code from the original API module for now.
   
@@ -20,14 +22,48 @@
   
   */
   
-var { MailServices } =  ChromeUtils.import("resource:///modules/MailServices.jsm");
-var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
+ChromeUtils.defineModuleGetter(
+  this,
+  "MailServices",
+  "resource:///modules/MailServices.jsm"
+);
+ChromeUtils.defineModuleGetter(
+  this,
+  "toXPCOMArray",
+  "resource:///modules/iteratorUtils.jsm"
+);
 
-var ex_accounts = class extends ExtensionCommon.ExtensionAPI {
+function convertAccount(account) {
+  if (!account) {
+    return null;
+  }
+
+  account = account.QueryInterface(Ci.nsIMsgAccount);
+  let server = account.incomingServer;
+  if (server.type == "im") {
+    return null;
+  }
+
+  let folders = traverseSubfolders(
+    account.incomingServer.rootFolder,
+    account.key
+  ).subFolders;
+
+  return {
+    id: account.key,
+    name: account.incomingServer.prettyName,
+    type: account.incomingServer.type,
+    folders,
+    identities: account.identities.map(id => convertMailIdentity(account, id)),
+  };
+}
+
+var ex_accounts = class extends ExtensionAPI {
   getAPI(context) {
     return {
       accounts: {
         async list() {
+          debugger;
           let accounts = [];
           for (let account of MailServices.accounts.accounts) {
             account = convertAccount(account);

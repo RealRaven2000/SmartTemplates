@@ -1,136 +1,61 @@
 [
   {
     "namespace": "ex_notifications",
-    "functions": [ 
+    "functions": [
       {
-       {
-        "name": "create",
+        "name": "list",
         "type": "function",
-        "description": "Creates and displays a notification.",
-        "async": "callback",
+        "description": "Returns all mail accounts.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "description": "Returns details of the requested account, or null if it doesn't exist.",
+        "async": true,
         "parameters": [
           {
-            "optional": true,
-            "type": "string",
-            "name": "notificationId",
-            "description": "Identifier of the notification. If it is empty, this method generates an id. If it matches an existing notification, this method first clears that notification before proceeding with the create operation."
-          },
-          {
-            "$ref": "CreateNotificationOptions",
-            "name": "options",
-            "description": "Contents of the notification."
-          },
-          {
-            "optional": true,
-            "type": "function",
-            "name": "callback",
-            "parameters": [
-              {
-                "name": "notificationId",
-                "type": "string",
-                "description": "The notification id (either supplied or generated) that represents the created notification."
-              }
-            ]
+            "name": "accountId",
+            "type": "string"
           }
         ]
       },
       {
-        "name": "update",
-        "unsupported": true,
+        "name": "getDefault",
         "type": "function",
-        "description": "Updates an existing notification.",
-        "async": "callback",
+        "description": "Returns the default account, or null if it is not defined.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setDefaultIdentity",
+        "type": "function",
+        "description": "Sets the default identity for an account.",
+        "async": true,
         "parameters": [
           {
-            "type": "string",
-            "name": "notificationId",
-            "description": "The id of the notification to be updated."
+            "name": "accountId",
+            "type": "string"
           },
           {
-            "$ref": "UpdateNotificationOptions",
-            "name": "options",
-            "description": "Contents of the notification to update to."
-          },
-          {
-            "optional": true,
-            "type": "function",
-            "name": "callback",
-            "parameters": [
-              {
-                "name": "wasUpdated",
-                "type": "boolean",
-                "description": "Indicates whether a matching notification existed."
-              }
-            ]
+            "name": "identityId",
+            "type": "string"
           }
         ]
       },
       {
-        "name": "clear",
+        "name": "getDefaultIdentity",
         "type": "function",
-        "description": "Clears an existing notification.",
-        "async": "callback",
+        "description": "Returns the default identity for an account, or null if it is not defined.",
+        "async": true,
         "parameters": [
           {
-            "type": "string",
-            "name": "notificationId",
-            "description": "The id of the notification to be updated."
-          },
-          {
-            "optional": true,
-            "type": "function",
-            "name": "callback",
-            "parameters": [
-              {
-                "name": "wasCleared",
-                "type": "boolean",
-                "description": "Indicates whether a matching notification existed."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "getAll",
-        "type": "function",
-        "description": "Retrieves all the notifications.",
-        "async": "callback",
-        "parameters": [
-          {
-            "type": "function",
-            "name": "callback",
-            "parameters": [
-              {
-                "name": "notifications",
-                "type": "object",
-                "additionalProperties": {"$ref": "CreateNotificationOptions"},
-                "description": "The set of notifications currently in the system."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "getPermissionLevel",
-        "unsupported": true,
-        "type": "function",
-        "description": "Retrieves whether the user has enabled notifications from this app or extension.",
-        "async": "callback",
-        "parameters": [
-          {
-            "type": "function",
-            "name": "callback",
-            "parameters": [
-              {
-                "name": "level",
-                "$ref": "PermissionLevel",
-                "description": "The current permission level."
-              }
-            ]
+            "name": "accountId",
+            "type": "string"
           }
         ]
       }
-   ],
-   
+    ]   
   }
 ]
