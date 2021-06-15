@@ -33,6 +33,118 @@ ChromeUtils.defineModuleGetter(
   "resource:///modules/iteratorUtils.jsm"
 );
 
+/**
+ * Converts an nsIMsgIdentity to a simple object for use in messages.
+ * @param {nsIMsgAccount} account
+ * @param {nsIMsgIdentity} identity
+ * @return {Object}
+ */
+ function convertMailIdentity(account, identity) {
+  if (!account || !identity) {
+    return null;
+  }
+  identity = identity.QueryInterface(Ci.nsIMsgIdentity);
+  return {
+    accountId: account.key,
+    id: identity.key,
+    label: identity.label || "",
+    name: identity.fullName || "",
+    email: identity.email || "",
+    replyTo: identity.replyTo || "",
+    organization: identity.organization || "",
+    composeHtml: identity.composeHtml,
+    signature: identity.htmlSigText || "",
+    signatureIsPlainText: !identity.htmlSigFormat,
+  };
+}
+
+/**
+ * Convert a folder URI to a human-friendly path.
+ * @return {String}
+ */
+ function folderURIToPath(accountId, uri) {
+  let server = MailServices.accounts.getAccount(accountId).incomingServer;
+  let rootURI = server.rootFolder.URI;
+  if (rootURI == uri) {
+    return "/";
+  }
+  // The .URI property of an IMAP folder doesn't have %-encoded characters, but
+  // may include literal % chars. Services.io.newURI(uri) applies encodeURI to
+  // the returned filePath, but will not encode any literal % chars, which will
+  // cause decodeURIComponent to fail (bug 1707408).
+  if (server.type == "imap") {
+    return uri.substring(rootURI.length);
+  }
+  let path = Services.io.newURI(uri).filePath;
+  return path
+    .split("/")
+    .map(decodeURIComponent)
+    .join("/");
+}
+
+
+const folderTypeMap = new Map([
+  [Ci.nsMsgFolderFlags.Inbox, "inbox"],
+  [Ci.nsMsgFolderFlags.Drafts, "drafts"],
+  [Ci.nsMsgFolderFlags.SentMail, "sent"],
+  [Ci.nsMsgFolderFlags.Trash, "trash"],
+  [Ci.nsMsgFolderFlags.Templates, "templates"],
+  [Ci.nsMsgFolderFlags.Archive, "archives"],
+  [Ci.nsMsgFolderFlags.Junk, "junk"],
+  [Ci.nsMsgFolderFlags.Queue, "outbox"],
+]);
+
+/**
+ * Converts an nsIMsgFolder to a simple object for use in API messages.
+ *
+ * @param {nsIMsgFolder} folder - The folder to convert.
+ * @param {string} [accountId] - An optimization to avoid looking up the
+ *     account. The value from nsIMsgHdr.accountKey must not be used here.
+ * @return {Object}
+ */
+ function convertFolder(folder, accountId) {
+  if (!folder) {
+    return null;
+  }
+  if (!accountId) {
+    let server = folder.server;
+    let account = MailServices.accounts.FindAccountForServer(server);
+    accountId = account.key;
+  }
+
+  let folderObject = {
+    accountId,
+    name: folder.prettyName,
+    path: folderURIToPath(accountId, folder.URI),
+  };
+
+  for (let [flag, typeName] of folderTypeMap.entries()) {
+    if (folder.flags & flag) {
+      folderObject.type = typeName;
+    }
+  }
+
+  return folderObject;
+}
+
+/**
+ * Converts an nsIMsgFolder and all subfolders to a simple object for use in
+ * API messages.
+ *
+ * @param {nsIMsgFolder} folder - The folder to convert.
+ * @param {string} [accountId] - An optimization to avoid looking up the
+ *     account. The value from nsIMsgHdr.accountKey must not be used here.
+ * @return {Array}
+ */
+ function traverseSubfolders(folder, accountId) {
+  let f = convertFolder(folder, accountId);
+  f.subFolders = [];
+  for (let subFolder of folder.subFolders) {
+    f.subFolders.push(traverseSubfolders(subFolder, accountId || f.accountId));
+  }
+  return f;
+}
+
 function convertAccount(account) {
   if (!account) {
     return null;
@@ -61,7 +173,7 @@ function convertAccount(account) {
 var ex_accounts = class extends ExtensionAPI {
   getAPI(context) {
     return {
-      accounts: {
+      ex_accounts: {
         async list() {
           debugger;
           let accounts = [];
