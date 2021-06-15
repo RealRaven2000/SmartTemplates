@@ -18,11 +18,10 @@
   
   Do undo, and use the "real" module we can later replace messenger.ex_accounts with messenger.accounts
   
-  
   */
-
+  
+var { MailServices } =  ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var ex_accounts = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
