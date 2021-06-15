@@ -98,6 +98,10 @@ END LICENSE BLOCK
     
   Version 3.5.4 - 03/06/2021
     # New version of WindowListener to support wrench button to access Add-on settings
+
+  Version 3.6 - WIP
+    # [issue 134] Support tab missing in version 3.5.4
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

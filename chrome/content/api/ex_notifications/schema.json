@@ -1,0 +1,136 @@
+[
+  {
+    "namespace": "ex_notifications",
+    "functions": [ 
+      {
+       {
+        "name": "create",
+        "type": "function",
+        "description": "Creates and displays a notification.",
+        "async": "callback",
+        "parameters": [
+          {
+            "optional": true,
+            "type": "string",
+            "name": "notificationId",
+            "description": "Identifier of the notification. If it is empty, this method generates an id. If it matches an existing notification, this method first clears that notification before proceeding with the create operation."
+          },
+          {
+            "$ref": "CreateNotificationOptions",
+            "name": "options",
+            "description": "Contents of the notification."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "notificationId",
+                "type": "string",
+                "description": "The notification id (either supplied or generated) that represents the created notification."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "unsupported": true,
+        "type": "function",
+        "description": "Updates an existing notification.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The id of the notification to be updated."
+          },
+          {
+            "$ref": "UpdateNotificationOptions",
+            "name": "options",
+            "description": "Contents of the notification to update to."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "wasUpdated",
+                "type": "boolean",
+                "description": "Indicates whether a matching notification existed."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "clear",
+        "type": "function",
+        "description": "Clears an existing notification.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The id of the notification to be updated."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "wasCleared",
+                "type": "boolean",
+                "description": "Indicates whether a matching notification existed."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "description": "Retrieves all the notifications.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "notifications",
+                "type": "object",
+                "additionalProperties": {"$ref": "CreateNotificationOptions"},
+                "description": "The set of notifications currently in the system."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getPermissionLevel",
+        "unsupported": true,
+        "type": "function",
+        "description": "Retrieves whether the user has enabled notifications from this app or extension.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "level",
+                "$ref": "PermissionLevel",
+                "description": "The current permission level."
+              }
+            ]
+          }
+        ]
+      }
+   ],
+   
+  }
+]

@@ -1521,7 +1521,7 @@ SmartTemplate4.Util = {
 						if(generalFunction=='from')
 							addressValue = composeDetails[generalFunction];
 						else {
-              // should be a comma separated scrint in case of multiple to / cc / bcc values
+              // should be a comma separated string in case of multiple to / cc / bcc values
               addressValue = composeDetails[generalFunction];
 						}
 						

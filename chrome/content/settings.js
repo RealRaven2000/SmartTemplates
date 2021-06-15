@@ -1596,7 +1596,7 @@ SmartTemplate4.Settings = {
 			}
 			
 			// show support tab if license is not empty 
-			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.LicenseKey) ? true : false;
+			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.licenseKey) ? true : false;
 			document.getElementById('supportTab').collapsed = !(isSupportEnabled);
       
     }    
