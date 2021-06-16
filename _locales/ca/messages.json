@@ -1548,7 +1548,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Ara podeu ampliar diversos destinataris amb% a (firstname)% en una plantilla d'escriptura. {L2} {L1} Per a molts usuaris, SmartTemplates no s'ha actualitzat automàticament des de la versió 3.4.4. Això es deu als permisos afegits necessaris per a la conversió continuada a una extensió de correu basada en API. He eliminat temporalment aquestes funcions per tornar a fer possible l'actualització automàtica. {L2} {L1} S'ha afegit una opció per ometre la pantalla inicial. {L2}"
+    "message": "{L1} Ara podeu ampliar diversos destinataris amb %to(firstname)% en una plantilla d'escriptura. {L2} {L1} Per a molts usuaris, SmartTemplates no s'ha actualitzat automàticament des de la versió 3.4.4. Això es deu als permisos afegits necessaris per a la conversió continuada a una extensió de correu basada en API. He eliminat temporalment aquestes funcions per tornar a fer possible l'actualització automàtica. {L2} {L1} S'ha afegit una opció per ometre la pantalla inicial. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

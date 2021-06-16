@@ -1547,7 +1547,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Ahora puede expandir varios destinatarios con% a (nombre)% en una plantilla de escritura. {L2} {L1} Para muchos usuarios, SmartTemplates no se actualizó automáticamente desde la versión 3.4.4. Esto se debe a los permisos agregados que eran necesarios para la conversión continua a una extensión de correo basada en API. Eliminé temporalmente estas funciones para hacer posible la actualización automática nuevamente. {L2} {L1} Agregué una opción para omitir la pantalla de presentación. {L2}"
+    "message": "{L1} Ahora puede expandir varios destinatarios con %to(firstname)% en una plantilla de escritura. {L2} {L1} Para muchos usuarios, SmartTemplates no se actualizó automáticamente desde la versión 3.4.4. Esto se debe a los permisos agregados que eran necesarios para la conversión continua a una extensión de correo basada en API. Eliminé temporalmente estas funciones para hacer posible la actualización automática nuevamente. {L2} {L1} Agregué una opción para omitir la pantalla de presentación. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

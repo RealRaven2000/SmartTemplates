@@ -1547,7 +1547,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Du kan nu utöka flera mottagare med% till (förnamn)% i en skrivmall. {L2} {L1} För många användare uppdaterades inte SmartTemplates automatiskt sedan v 3.4.4. Detta orsakas av tillåtna behörigheter som var nödvändiga för den fortsatta konverteringen till ett API-baserat e-tillägg. Jag har tillfälligt tagit bort dessa funktioner för att göra automatisk uppdatering möjlig igen. {L2} {L1} Har lagt till ett alternativ för att hoppa över stänkskärmen. {L2}"
+    "message": "{L1} Du kan nu utöka flera mottagare med %to(firstname)% i en skrivmall. {L2} {L1} För många användare uppdaterades inte SmartTemplates automatiskt sedan v 3.4.4. Detta orsakas av tillåtna behörigheter som var nödvändiga för den fortsatta konverteringen till ett API-baserat e-tillägg. Jag har tillfälligt tagit bort dessa funktioner för att göra automatisk uppdatering möjlig igen. {L2} {L1} Har lagt till ett alternativ för att hoppa över stänkskärmen. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

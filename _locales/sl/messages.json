@@ -1547,7 +1547,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Zdaj lahko razširite več prejemnikov z% na (firstname)% v predlogi za pisanje. {L2} {L1} Za številne uporabnike SmartTemplates ni bil samodejno posodobljen od različice 3.4.4. To je posledica dodanih dovoljenj, ki so bila potrebna za nadaljnjo pretvorbo v razširitev pošte, ki temelji na API-ju. Te funkcije sem začasno odstranil, da sem znova omogočil samodejno posodabljanje. {L2} {L1} Dodana je možnost preskakovanja začetnega zaslona. {L2}"
+    "message": "{L1} Zdaj lahko razširite več prejemnikov z %to(firstname)% v predlogi za pisanje. {L2} {L1} Za številne uporabnike SmartTemplates ni bil samodejno posodobljen od različice 3.4.4. To je posledica dodanih dovoljenj, ki so bila potrebna za nadaljnjo pretvorbo v razširitev pošte, ki temelji na API-ju. Te funkcije sem začasno odstranil, da sem znova omogočil samodejno posodabljanje. {L2} {L1} Dodana je možnost preskakovanja začetnega zaslona. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

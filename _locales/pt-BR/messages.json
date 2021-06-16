@@ -1489,7 +1489,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Agora você pode expandir vários destinatários com% para (nome)% em um modelo de gravação. {L2} {L1} Para muitos usuários, SmartTemplates não foi atualizado automaticamente desde a versão 3.4.4. Isso é causado por permissões adicionadas que eram necessárias para a conversão contínua em uma extensão de e-mail baseada em API. Removi temporariamente essas funções para tornar a atualização automática possível novamente. {L2} {L1} Adicionada uma opção para pular a tela inicial. {L2}"
+    "message": "{L1} Agora você pode expandir vários destinatários com %to(firstname)% em um modelo de gravação. {L2} {L1} Para muitos usuários, SmartTemplates não foi atualizado automaticamente desde a versão 3.4.4. Isso é causado por permissões adicionadas que eram necessárias para a conversão contínua em uma extensão de e-mail baseada em API. Removi temporariamente essas funções para tornar a atualização automática possível novamente. {L2} {L1} Adicionada uma opção para pular a tela inicial. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

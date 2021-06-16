@@ -1538,7 +1538,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}Nyní můžete v šabloně zápisu rozšířit více příjemců s% na (křestní jméno)%. {L2} {L1}Pro mnoho uživatelů nebyla SmartTemplates od verze 3.4.4 automaticky aktualizována. To je způsobeno přidanými oprávněními, která byla nezbytná pro pokračující převod na příponu pošty založené na API. Dočasně jsem tyto funkce odstranil, abych znovu umožnil automatickou aktualizaci. {L2} {L1}Přidána možnost přeskočení úvodní obrazovky. {L2}"
+    "message" : "{L1}Nyní můžete v šabloně zápisu rozšířit více příjemců s %to(firstname)%. {L2} {L1}Pro mnoho uživatelů nebyla SmartTemplates od verze 3.4.4 automaticky aktualizována. To je způsobeno přidanými oprávněními, která byla nezbytná pro pokračující převod na příponu pošty založené na API. Dočasně jsem tyto funkce odstranil, abych znovu umožnil automatickou aktualizaci. {L2} {L1}Přidána možnost přeskočení úvodní obrazovky. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
