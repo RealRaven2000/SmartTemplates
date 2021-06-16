@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.15",
+	HARDCODED_CURRENTVERSION : "2.16",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -1781,6 +1781,7 @@ SmartTemplate4.Util = {
 						if(generalFunction=='from')
 							addressValue = identityList.value;
 						else {
+              let adArray = [];
               if (this.Application=="Postbox") {
                 let hbox = document.getElementById('addr_' + generalFunction),  // e.g. addr_to
                     bubbleContainer = hbox.firstChild;
@@ -1791,7 +1792,7 @@ SmartTemplate4.Util = {
                         nm = bubble.getAttribute("displayName"),
                         fa = bubble.getAttribute("fullAddress"); // this one is htmlencoded.
                     if (em) {
-                      addressValue = nm + " <" + em + ">";
+                      adArray.push( nm + " <" + em + ">");
                     }
                   }
                 }
@@ -1803,11 +1804,15 @@ SmartTemplate4.Util = {
 									let id = 'addressCol1#' + i;
 									if (document.getElementById(id) && document.getElementById(id).value == 'addr_' + generalFunction) {
 										id = 'addressCol2#' + i;
-										addressValue = document.getElementById(id).value;
-										break;
+                    let address = document.getElementById(id).value.trim();
+                    if (address)
+                      adArray.push(address);
 									}
 								}
 							}
+              // concatenate multiple addresses.
+              if (adArray.length)
+                addressValue = adArray.join(",");
 						}
 						
 						if (addressValue) {

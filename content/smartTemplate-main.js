@@ -491,11 +491,14 @@ END LICENSE BLOCK
     # [issue 120] Spanish locale broken which creates an error when options screen is displayed
     # [issue 121] Common settings are shown even though the correct account seems to be selected!
     
-  Version 2.15 - WIP
+  Version 2.15 - 20/05/2021
     # [issue 125] Improved support for converting encoded characters used in address fields such as "from"
     # [issue 125] Cardbook address names are resolved with weird characters
     # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
     # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
+    
+  Version 2.16 - WIP
+    # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template
 
     
 =========================
