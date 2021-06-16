@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} 20 maj till 20 juni {boldEnd}."
+    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} 20 maj till 30 juni {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "VIKTIGT: Automatiska uppdateringar kanske inte ber dig att installera när en ny tilläggsversion kräver ytterligare behörigheter. Istället ser du denna varningsikon på Thunderbird-huvudmenyknappen, som du måste klicka för att slutföra uppdateringen. Begäran om behörighet krävs för att migrera till det nya tilläggssystemet. Annars kan vi inte leverera buggfixar / nya funktioner!"
+  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "Nytt meddelande"
   },
+  "pref_noSplash": {
+    "message": "Utelämna stänkskärmen"
+  },
+  "pref_noSplash_tip": {
+    "message": "Dölj informationsdialogruta som visar nya funktioner och buggfixar när du uppdaterar."
+  },  
   "pref_parseSignature": {
     "message": "Bearbeta signatur"
   },
@@ -1177,7 +1186,7 @@
     "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
   "special-offer-content": {
-    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande förlängs till {boldStart} 20 juni {boldEnd}.",
+    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande förlängs till {boldStart} 30 juni {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4 - Skiftnyckel har lagts till för att enkelt öppna inställningar från Add-ons Manager{L2}{L1}3.5.3 - Problem med licensdialogrutan som inte kunde öppna webbshoppen om giltig licens redan var angiven. {L2}{L1}Förbättrat stöd för konvertering av kodade tecken som används i adressfält som 'från' {L2}{L1}Fel vid lokalisering för traditionell kinesiska (zh-TW) bröt inställningsdialogen. {L2}{L1}Lade till lokalisering för katalanska språk. {L2}{L1}Pågående arbete för att göra SmartTemplates kompatibla med Thunderbird version 91, som planeras släppas sommaren 2021. {L2}{L1}Förbättrat stöd för flera Thunderbird-fönster via de nya meddelandena om bakgrundsskript. {L2}"
+    "message": "{L1} Du kan nu utöka flera mottagare med% till (förnamn)% i en skrivmall. {L2} {L1} För många användare uppdaterades inte SmartTemplates automatiskt sedan v 3.4.4. Detta orsakas av tillåtna behörigheter som var nödvändiga för den fortsatta konverteringen till ett API-baserat e-tillägg. Jag har tillfälligt tagit bort dessa funktioner för att göra automatisk uppdatering möjlig igen. {L2} {L1} Har lagt till ett alternativ för att hoppa över stänkskärmen. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

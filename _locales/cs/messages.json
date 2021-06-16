@@ -621,7 +621,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. května do 20. června {boldEnd}."
+    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} 20. května do 30. června {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
@@ -795,6 +795,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "DŮLEŽITÉ: Automatické aktualizace vás nemusí požádat o instalaci, kdykoli nová verze doplňku vyžaduje další oprávnění. Místo toho uvidíte tuto ikonu varování na tlačítku hlavní nabídky Thunderbirdu, na které musíte klepnutím dokončit aktualizaci. K migraci na nový systém rozšíření je vyžadováno povolení. Jinak nemůžeme dodat žádné opravy chyb / nové funkce!"
+  },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
     "placeholders": {
@@ -963,6 +966,12 @@
   "pref_newmsg.cap": {
     "message": "Zapsat"
   },
+  "pref_noSplash": {
+    "message": "Vynechat úvodní obrazovku"
+  },
+  "pref_noSplash_tip": {
+    "message": "Skrýt informační dialog, který při aktualizaci zobrazuje nové funkce a opravy chyb."
+  },  
   "pref_parseSignature": {
     "message": "Proces podpisu"
   },
@@ -1336,7 +1345,7 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory SmartTemplates pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 20. Června {boldEnd}.",
+    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 30. Června {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1529,7 +1538,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}3.5.4 - Přidáno tlačítko pro snadné otevření nastavení ze Správce doplňků{L2}{L1}Vylepšená podpora pro převod kódovaných znaků použitých v adresních polích, jako je „from“ {L2} {L1}Chyba v lokalizaci pro tradiční čínštinu (zh-TW), přerušila dialogové okno nastavení. {L2} {L1}Přidána lokalizace pro katalánský jazyk {L2} {L1}Probíhají práce na kompatibilitě SmartTemplate s Thunderbirdem verze 91, jehož vydání je plánováno na léto 2021. {L2} {L1}Vylepšená podpora více oken Thunderbirdu prostřednictvím nových oznámení skriptu na pozadí. {L2}"
+    "message" : "{L1}Nyní můžete v šabloně zápisu rozšířit více příjemců s% na (křestní jméno)%. {L2} {L1}Pro mnoho uživatelů nebyla SmartTemplates od verze 3.4.4 automaticky aktualizována. To je způsobeno přidanými oprávněními, která byla nezbytná pro pokračující převod na příponu pošty založené na API. Dočasně jsem tyto funkce odstranil, abych znovu umožnil automatickou aktualizaci. {L2} {L1}Přidána možnost přeskočení úvodní obrazovky. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

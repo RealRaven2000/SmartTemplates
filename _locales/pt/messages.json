@@ -98,6 +98,9 @@
     "message": "Click notification",
     "description": "Title of the click notification."
   },
+  "on-permissions": {
+    "message": "IMPORTANTE: As atualizações automáticas podem não solicitar a instalação sempre que uma nova versão do complemento exigir permissões adicionais. Em vez disso, você verá este ícone de aviso no botão do menu principal do Thunderbird, no qual você deve clicar para concluir a atualização. Solicitar permissões é necessário para migrar para o novo sistema de extensão. Caso contrário, não podemos fornecer nenhuma correção de bugs / novos recursos!"
+  },
   "ongoing-work": {
     "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
     "placeholders": {
@@ -175,7 +178,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4 - Botão de chave inglesa adicionado para abrir facilmente as configurações do Gerenciador de Complementos{L2}{L1}3.5.3 - Problema com a caixa de diálogo de licenciamento que não conseguia abrir a loja da web se uma licença válida já tivesse sido inserida. {L2}{L1}Suporte aprimorado para a conversão de caracteres codificados usados em campos de endereço, como 'de' {L2} {L1}Erro na localização para chinês tradicional (zh-TW) quebrou a caixa de diálogo de configurações. {L2}{L1}Localização adicionada para o idioma catalão. {L2}{L1}Trabalho contínuo para tornar os SmartTemplates compatíveis com o Thunderbird versão 91, que está planejado para lançamento no verão de 2021. {L2} {L1}Suporte aprimorado para várias janelas do Thunderbird, por meio das novas notificações de script em segundo plano. {L2}"
+    "message": "{L1} Agora você pode expandir vários destinatários com% para (nome)% em um modelo de gravação. {L2} {L1} Para muitos usuários, SmartTemplates não foi atualizado automaticamente desde a versão 3.4.4. Isso é causado por permissões adicionadas que eram necessárias para a conversão contínua em uma extensão de e-mail baseada em API. Removi temporariamente essas funções para tornar a atualização automática possível novamente. {L2} {L1} Adicionada uma opção para pular a tela inicial. {L2}"
   },
   "window-title": {
     "message": "Bem-vindo a $addonName$",

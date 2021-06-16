@@ -631,7 +631,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 de maig a l'20 de juny {boldEnd}."
+    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 de maig a l'30 de juny {boldEnd}."
   },
   "licenseStatus.expired" : {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
@@ -805,6 +805,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "IMPORTANT: és possible que les actualitzacions automàtiques no us demanin la instal·lació sempre que una nova versió del complement requereixi permisos addicionals. En lloc d'això, veureu aquesta icona d'advertència al botó del menú principal del Thunderbird, al qual heu de fer clic per completar l'actualització. Cal sol·licitar permisos per migrar al nou sistema d’extensions. En cas contrari, no podem oferir cap correcció d’errors / noves funcions."
+  },
   "ongoing-work": {
     "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
     "placeholders": {
@@ -973,6 +976,12 @@
   "pref_newmsg.cap": {
     "message": "Messatges novèls"
   },
+  "pref_noSplash": {
+    "message": "Omet la pantalla de presentació"
+  },
+  "pref_noSplash_tip": {
+    "message": "Amaga el quadre de diàleg d'informació que mostra noves funcions i correccions d'errors quan s'actualitza."
+  },  
   "pref_parseSignature": {
     "message": "Processament de la signatura"
   },
@@ -1340,7 +1349,7 @@
     "message": "Subjècte"
   },
   "special-offer-content": {
-    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial s'estén fins al {boldStart} 20 de juny {boldEnd}.",
+    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial s'estén fins al {boldStart} 30 de juny {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1539,7 +1548,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4: s'ha afegit un botó de clau anglesa per obrir fàcilment la configuració del gestor de complements{l2}{L1}S'ha millorat la compatibilitat amb la conversió de caràcters codificats que s'utilitzen en camps d'adreces com ara 'de' {L2} {L1}S'ha produït un error en la ubicació del diàleg de configuració del xinès tradicional (zh-TW). {L2} {L1}S'ha afegit la localització per a la llengua catalana . {L2} {L1}Treball en curs per fer compatibles SmartTemplates amb la versió 91 de Thunderbird, que es preveu llançar a l'estiu de 2021. {L2} {L1}Millora del suport per a diverses finestres de Thunderbird, mitjançant les noves notificacions de scripts de fons. {L2}"
+    "message": "{L1} Ara podeu ampliar diversos destinataris amb% a (firstname)% en una plantilla d'escriptura. {L2} {L1} Per a molts usuaris, SmartTemplates no s'ha actualitzat automàticament des de la versió 3.4.4. Això es deu als permisos afegits necessaris per a la conversió continuada a una extensió de correu basada en API. He eliminat temporalment aquestes funcions per tornar a fer possible l'actualització automàtica. {L2} {L1} S'ha afegit una opció per ometre la pantalla inicial. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

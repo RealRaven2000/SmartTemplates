@@ -53,8 +53,8 @@ async function updateActions(addonName) {
   }
   
   let isActionList = true;
-  let currentTime=new Date(),
-      endSale = new Date("2021-06-12"); // Next Sale End Date
+  let currentTime = new Date(),
+      endSale = new Date("2021-07-01"); // Next Sale End Date
   let isSale = (currentTime < endSale);
 
   if (isValid || isExpired) {
@@ -80,7 +80,7 @@ async function updateActions(addonName) {
       }
       else {
         let gpdays = licenseInfo.licensedDaysLeft;
-        if (gpdays<100) { // they may have seen this popup. Only show extend License section if it is < 100 days away
+        if (gpdays<40) { // they may have seen this popup. Only show extend License section if it is < 100 days away
           show('extendLicenseListItem');
           show('extend');
         }

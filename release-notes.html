@@ -5,9 +5,24 @@ Full change log with screen shots <a href="https://smarttemplates.quickfolders.o
 
 <b>Enhancements</b>
 <ul>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/135">[issue 135]</a> Expand multiple recipients with %to(firstname)% in New Mail Template.
+
+When replying to an email we expect the variable %from(firstname)% to fill in all recipient names, using the address widget. They will be delimited by the character entered in advanced settings under the Name Rules box.
+</li>
 <li>
-<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/125">[issue 125]</a> Improved support for converting encoded characters used in address fields such as "from" </li>
+<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/137">[issue 137]</a>
+SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
+
+After adding necessary permissions for using the new mail extension APIs (for accounts and notifications), the user isn't prompted to install the updated Add-on anymore. Instead there is a small yellow "warning" icon added to the main menu button, which must be clicked to reveal questions about adding permissions.
+
+I noticed that the majority of users suddenly stopped updating and found that the permissions was the likely cause. As this is now standard behavior in Thunderbird in order to prevent users being distracted from their   daily workflow, I had to remove the permissions and modern API code and create my own version so I could make sure my users are updated with the latest version. I have no final satisfactory solution for this behavior as conversion to the new APIs is 100% necessary in order to rewrite SmartTemplates for future versions of Thunderbird. 
+
+The main menu button currently has a little yellow warning triangle if Add-ons are awaiting new permissions.
+
+I hope to either educate my users to complete upgrades by clicking this button or code another method of directly alerting the user from the previous version of SmartTemplates when a new version is available.
+</li>
 </ul>
+
 <b>Bug Fixes</b>
 <ul>
 <li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/133">[issue 133]</a> Fixed in 3.5.3 - a Problem with Licensing Dialog that couldn't open the web shop if valid license was already entered.</li>

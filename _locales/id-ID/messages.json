@@ -541,7 +541,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Bayar hanya $ 5,75 daripada $ 10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart} 20 Mei hingga 11 Juni{boldEnd}."
+    "message": "Bayar hanya $ 5,75 daripada $ 10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart} 20 Mei hingga 30 Juni{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
@@ -867,6 +867,12 @@
   "pref_newmsg.cap": {
     "message": "Tulis"
   },
+  "pref_noSplash": {
+    "message": "Abaikan Layar Percikan"
+  },
+  "pref_noSplash_tip": {
+    "message": "Sembunyikan dialog informasi yang menampilkan fitur baru dan perbaikan bug saat memperbarui."
+  },  
   "pref_parseSignature": {
     "message": "Proses Tanda tangan"
   },

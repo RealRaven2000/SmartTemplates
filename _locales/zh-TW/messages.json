@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}5 月 20 日至 6 月 20 日{boldEnd}。"
+    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}5 月 20 日至 6 月 30 日{boldEnd}。"
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "重要提示：每當新的附加版本需要額外權限時，自動更新可能不會要求您安裝。 相反，您將在 Thunderbird 主菜單按鈕上看到此警告圖標，您必須單擊該按鈕才能完成更新。 遷移到新的擴展系統需要請求權限。 否則我們無法提供任何錯誤修復/新功能！"
+  },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "編寫"
   },
+  "pref_noSplash": {
+    "message": "省略啟動畫面"
+  },
+  "pref_noSplash_tip": {
+    "message": "隱藏信息對話框，在更新時顯示新功能和錯誤修復。"
+  },  
   "pref_parseSignature": {
     "message": "Process signature"
   },
@@ -1177,7 +1186,7 @@
     "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
   "special-offer-content": {
-    "message": "使SmartTemplates成為將來的證明並獲取許可，同時SmartTemplates Pro的價格降低{boldStart}$discount${boldEnd}！ 此特別優惠將延長至 {boldStart}6 月 20 日{boldEnd}。",
+    "message": "使SmartTemplates成為將來的證明並獲取許可，同時SmartTemplates Pro的價格降低{boldStart}$discount${boldEnd}！ 此特別優惠將延長至 {boldStart}6 月 30 日{boldEnd}。",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4 - 添加了扳手按鈕以從附加組件管理器輕鬆打開設置{L2} {L1}3.5.3-“許可問題”對話框，如果已經輸入有效的許可證，則無法打開網上商店。{L2}{L1}改進了對轉換地址字段中使用的編碼字符的支持，例如“來自” {L2} {L1}繁體中文（zh-TW）的本地化錯誤打破了設置對話框。{L2} {L1}添加了加泰羅尼亞語的本地化版本。{L2}{L1}正在進行使SmartTemplates與Thunderbird 91版兼容的工作，該版本計劃於2021年夏天發布。{L2} {L1}通過新的後台腳本通知改進了對多個Thunderbird窗口的支持。{L2}"
+    "message": "{L1}您現在可以在寫入模板中使用 %to(firstname)% 擴展多個收件人。{L2}{L1}對於許多用戶而言，自 v 3.4.4 以來，SmartTemplates 未自動更新。 這是由於添加了繼續轉換為基於 API 的郵件擴展所需的權限所致。 我暫時刪除了這些功能，以便再次自動更新。{L2}{L1}添加了跳過初始屏幕的選項。{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

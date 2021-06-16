@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} 20. toukokuuta - 20. kesäkuuta {boldEnd}."
+    "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} 20. toukokuuta - 30. kesäkuuta {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "TÄRKEÄÄ: Automaattiset päivitykset eivät välttämättä pyydä sinua asentamaan, kun uusi lisäosaversio vaatii lisäoikeuksia. Sen sijaan näet tämän varoituskuvakkeen Thunderbird-päävalikkopainikkeessa, jota sinun on napsautettava päivityksen viimeistelemiseksi. Uuteen laajennusjärjestelmään siirtyminen edellyttää käyttöoikeuksien pyytämistä. Muuten emme voi toimittaa virhekorjauksia / uusia ominaisuuksia!"
+  },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "Uusi viesti"
   },
+  "pref_noSplash": {
+    "message": "Ohita Splash-näyttö"
+  },
+  "pref_noSplash_tip": {
+    "message": "Piilota tiedot-valintaikkuna, joka näyttää uudet ominaisuudet ja virhekorjaukset päivitettäessä."
+  },  
   "pref_parseSignature": {
     "message": "Allekirjoitus"
   },
@@ -1345,7 +1354,7 @@
     "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
   } , 
   "special-offer-content" : {
-    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tätä erikoistarjousta jatketaan {boldStart} 20. kesäkuuta {boldEnd} asti.",
+    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tätä erikoistarjousta jatketaan {boldStart} 30. kesäkuuta {boldEnd} asti.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list" : {
-    "message" : "{L1}3.5.4 - Lisätty jakoavaimen painike avaa asetukset helposti Lisäosien hallinnasta{L2}{L1}3.5.3 - Ongelma lisensointivalintaikkunassa, joka ei voinut avata verkkokauppaa, jos voimassa oleva lisenssi oli jo annettu. {L2}{L1}Parannettu tuki koodattujen merkkien muuntamiseen, joita käytetään osoitekentissä, kuten 'mistä' {L2} {L1}Virhe perinteisen kiinan (zh-TW) lokalisoinnissa rikkoi asetusten valintaikkunan. {L2}{L1}Lisätty lokalisointi katalaanin kielelle. {L2}{L1}Käynnissä oleva työ SmartTemplates-yhteensopivuuden saavuttamiseksi Thunderbird-version 91 kanssa, joka on tarkoitus julkaista kesällä 2021. {L2} {L1}Parannettu tuki useille Thunderbird-ikkunoille uusien taustakomentoilmoitusten avulla. {L2}"
+    "message" : "{L1} Voit nyt laajentaa useita vastaanottajia%: lla (etunimi)%: iin kirjoitusmallissa. {L2} {L1} Monille käyttäjille SmartTemplatesia ei päivitetty automaattisesti version 3.4.4 jälkeen. Tämä johtuu lisättyistä käyttöoikeuksista, jotka olivat välttämättömiä jatkoa muuntamista API-pohjaiseksi postilaajennukseksi. Poistin nämä toiminnot väliaikaisesti, jotta automaattinen päivitys olisi mahdollista uudelleen. {L2} {L1} Lisäsi vaihtoehdon tilanäytön ohittamiseen. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

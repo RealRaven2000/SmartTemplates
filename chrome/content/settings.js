@@ -1666,13 +1666,15 @@ SmartTemplate4.Settings = {
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
-      let silentUpdateOption = getElement("chkSilentUpdates");
+      let silentUpdateOption = getElement("chkSilentUpdates"),
+          hideSplash = getElement("chkNoSplash");
 			switch(licenseInfo.status) {
 				case "Valid":
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
           silentUpdateOption.disabled = false;
+          hideSplash.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1692,6 +1694,7 @@ SmartTemplate4.Settings = {
 				  break;
 				case "Expired":
           silentUpdateOption.disabled = true;
+          hideSplash.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
@@ -1700,6 +1703,7 @@ SmartTemplate4.Settings = {
 					break;
 				default: // no license
           silentUpdateOption.disabled = true;
+          hideSplash.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');

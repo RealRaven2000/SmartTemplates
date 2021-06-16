@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} vom 20. bis 20. Juni {boldEnd} verfügbar."
+    "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} vom 20. bis 30. Juni {boldEnd} verfügbar."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
@@ -801,6 +801,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "WICHTIG: Automatische Updates werden Sie möglicherweise nicht zur Installation auffordern, wenn eine neue Add-on-Version zusätzliche Berechtigungen erfordert. Stattdessen sehen Sie dann dieses Warnsymbol auf der Thunderbird-Hauptmenüschaltfläche, auf die Sie klicken müssen, um das Update abzuschließen. Für die Migration auf das neue Erweiterungssystem ist das Anfordern von Berechtigungen erforderlich. Ansonsten können wir keine Bugfixes / neue Features liefern!"
+  },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -969,6 +972,12 @@
   "pref_newmsg.cap": {
     "message": "Verfassen"
   },
+  "pref_noSplash": {
+    "message": "Begrüßungsbildschirm auslassen"
+  },
+  "pref_noSplash_tip": {
+    "message": "Informationsdialog ausblenden, der beim Aktualisieren neue Funktionen und Fehlerbehebungen anzeigt."
+  },  
   "pref_parseSignature": {
     "message": "Signatur verarbeiten"
   },
@@ -1336,7 +1345,7 @@
     "message": "Betreff"
   },
   "special-offer-content": {
-    "message": "Machen Sie SmartTemplates zukunftssicher und holen Sie sich eine Lizenz, während der Preis von SmartTemplates Pro {boldStart}um $discount$ gesenkt{boldEnd} ist! Dieses Sonderangebot wird bis zum {boldStart}20. Juni{boldEnd} verlängert.",
+    "message": "Machen Sie SmartTemplates zukunftssicher und holen Sie sich eine Lizenz, während der Preis von SmartTemplates Pro {boldStart}um $discount$ gesenkt{boldEnd} ist! Dieses Sonderangebot wird bis zum {boldStart}30. Juni{boldEnd} verlängert.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1535,7 +1544,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-"message": "{L1}3.5.4 - Schraubenschlüssel-Schaltfläche zum einfachen Öffnen der Einstellungen aus dem Add-ons-Manager hinzugefügt{L2}{L1}3.5.3 - Problem mit dem Lizenzierungsdialog, bei dem der Webshop nicht geöffnet werden konnte, wenn bereits eine gültige Lizenz eingegeben war. {L2}{L1} Verbesserte Unterstützung für die Konvertierung von kodierten Zeichen, die in Adressfeldern wie 'von' verwendet werden. {L2} {L1} Repariert: Fehler bei der Lokalisierung für traditionelles Chinesisch (zh-TW) hat den Einstellungsdialog unterbrochen. {L2} {L1} Lokalisierung für katalanische Sprache. {L2}{L1} Laufende Arbeiten an der Kompatibilität von SmartTemplates mit Thunderbird Version 91, welche für Sommer 2021 geplant ist. {L2} {L1} Verbesserte Unterstützung für mehrere Thunderbird-Fenster durch die neuen Hintergrundskriptbenachrichtigungen. {L2}"
+    "message": "{L1}Sie können jetzt mehrere Empfänger mit %to(firstname)% in einer Schreibvorlage expandieren.{L2}{L1}Für viele Benutzer wurde SmartTemplates seit Version 3.4.4 nicht automatisch aktualisiert. Dies liegt an zusätzlichen Berechtigungen, die für die weitere Umstellung auf eine API-basierte Mail-Erweiterung notwendig waren. Ich habe diese Funktionen vorübergehend entfernt, um ein automatisches Update wieder zu ermöglichen.{L2}{L1}Option zum Überspringen des Begrüßungsbildschirms hinzugefügt.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

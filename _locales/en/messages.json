@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available from {boldStart}May 20th to June 20th{boldEnd}."
+    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available from {boldStart}May 20th to June 30th{boldEnd}."
   },
   "licenseStatus.expired" : {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "IMPORTANT: Automatic updates might not ask you to install whenever a new Add-on version requires additional permissions. Instead you will see this warning icon on the Thunderbird main menu button, which you must click to complete the update. Requesting permissions is required for migrating to the new extension system. Otherwise we cannot deliver any bug fixes / new features!"
+  },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
@@ -971,6 +974,12 @@
   },
   "pref_newmsg.cap": {
     "message": "Write"
+  },
+  "pref_noSplash": {
+    "message": "Omit Splash Screen"
+  },
+  "pref_noSplash_tip": {
+    "message": "Hide information dialog that displays new features and bug fixes when updating."
   },
   "pref_parseSignature": {
     "message": "Process signature"
@@ -1339,7 +1348,7 @@
     "message": "Subject"
   },
   "special-offer-content": {
-    "message": "Future proof SmartTemplates and get a License. Get a {boldStart}$discount$ reduction{boldEnd} on the price of SmartTemplates Pro! This special offer is extended until {boldStart}June 20th{boldEnd}.",
+    "message": "Future proof SmartTemplates and get a License. Get a {boldStart}$discount$ reduction{boldEnd} on the price of SmartTemplates Pro! This special offer is extended until {boldStart}June 30th{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}3.5.4 - Added wrench button to easily open settings from Add-ons Manager{L2}{L1}3.5.3 - Problem with Licensing Dialog that couldn't open the web shop if valid license was already entered.{L2}{L1}Improved support for converting encoded characters used in address fields such as 'from'{L2}{L1}Error in localization for Traditional Chinese (zh-TW) broke settings dialog.{L2}{L1}Added Localization for Catalan language.{L2}{L1}Ongoing work to make SmartTemplates compatible with Thunderbird version 91, which is planned for release in summer 2021.{L2}{L1}Improved support for multiple Thunderbird windows, via the new background script notifications.{L2}"
+  "message": "{L1}You can now expand multiple recipients with %to(firstname)% in a Write Template.{L2}{L1}For many users, SmartTemplates was not auto-updated since v 3.4.4. This is caused by added permissions which were necessary for the continuing conversion to a API-based mail extension. I temporarily removed these functions to make automatic update possible again.{L2}{L1}Added an option for skipping the splash screen.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

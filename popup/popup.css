@@ -89,10 +89,22 @@ img[collapsed=true]
   display :none;
 }
 
-/* sales and other important announcments */
+/* sales and other important announcements */
 .importantInfo {
   background-color: rgba(0,0,0,0.9);
   color: white;
+}
+
+#permissions-note.importantInfo {
+  background-color: rgba(50,0,0,1.0);
+  margin-bottom: 1.2em;
+}
+#permissions-note.importantInfo * {
+  background-color: rgba(50,0,0,1.0);
+  color: white;
+}
+#permissionsText {
+  padding-left: 1em; 
 }
 
 .importantInfo p, 
@@ -106,7 +118,8 @@ img[collapsed=true]
   background-color: transparent;
 }
 
-#specialBox {
+#specialBox,
+#permissions-note {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;

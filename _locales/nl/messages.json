@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}20 mei tot 20 juni{boldEnd}."
+    "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}20 mei tot 30 juni{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "BELANGRIJK: Automatische updates vragen u mogelijk niet om te installeren wanneer een nieuwe Add-on-versie aanvullende machtigingen vereist. In plaats daarvan ziet u dit waarschuwingspictogram op de Thunderbird-hoofdmenuknop, waarop u moet klikken om de update te voltooien. Voor het migreren naar het nieuwe uitbreidingssysteem is het aanvragen van machtigingen vereist. Anders kunnen we geen bugfixes / nieuwe functies leveren!"
+  },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "Nieuw bericht"
   },
+  "pref_noSplash": {
+    "message": "Splash-scherm weglaten"
+  },
+  "pref_noSplash_tip": {
+    "message": "Dialoogvenster met informatie verbergen dat nieuwe functies en bugfixes weergeeft tijdens het updaten."
+  },  
   "pref_parseSignature": {
     "message": "Ondertekening verwerken"
   },
@@ -1339,7 +1348,7 @@
     "message": "Onderwerp"
   },
   "special-offer-content": {
-    "message": "Maak SmartTemplates toekomstbestendig en haal een licentie op terwijl er {boldStart} $discount$ korting {boldEnd} is op de prijs van SmartTemplates Pro! Deze speciale aanbieding is verlengd tot {boldStart}20 juni{boldEnd}.",
+    "message": "Maak SmartTemplates toekomstbestendig en haal een licentie op terwijl er {boldStart} $discount$ korting {boldEnd} is op de prijs van SmartTemplates Pro! Deze speciale aanbieding is verlengd tot {boldStart}30 juni{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}3.5.4 - Sleutelknop toegevoegd om instellingen gemakkelijk te openen vanuit Add-ons Manager{L2} {L1}3.5.3 - Probleem met het licentiedialoogvenster waardoor de webwinkel niet kon worden geopend als er al een geldige licentie was ingevoerd. {L2} {L1}Verbeterde ondersteuning voor het converteren van gecodeerde tekens die worden gebruikt in adresvelden zoals 'van' {L2} {L1}Fout bij lokalisatie voor traditioneel Chinees (zh-TW) brak instellingenvenster. {L2}{L1}Lokalisatie voor de Catalaanse taal toegevoegd.{L2}{{L1}Lopende werkzaamheden om SmartTemplates compatibel te maken met Thunderbird versie 91, die gepland staat voor release in de zomer van 2021. {L2} {L1}Verbeterde ondersteuning voor meerdere Thunderbird-vensters, via de nieuwe scriptmeldingen op de achtergrond. {L2}"
+  "message": "{L1}U kunt nu meerdere ontvangers uitbreiden met %to(firstname)% in een schrijfsjabloon.{L2}{L1}Voor veel gebruikers is SmartTemplates niet automatisch bijgewerkt sinds v 3.4.4. Dit wordt veroorzaakt door toegevoegde rechten die nodig waren voor de voortdurende conversie naar een op API gebaseerde e-mailextensie. Ik heb deze functies tijdelijk verwijderd om automatisch updaten weer mogelijk te maken.{L2}{L1}Een optie toegevoegd om het welkomstscherm over te slaan.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

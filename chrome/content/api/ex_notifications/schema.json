@@ -3,59 +3,213 @@
     "namespace": "ex_notifications",
     "functions": [
       {
-        "name": "list",
+        "name": "create",
         "type": "function",
-        "description": "Returns all mail accounts.",
-        "async": true,
-        "parameters": []
-      },
-      {
-        "name": "get",
-        "type": "function",
-        "description": "Returns details of the requested account, or null if it doesn't exist.",
-        "async": true,
+        "description": "Creates and displays a notification.",
+        "async": "callback",
         "parameters": [
           {
-            "name": "accountId",
-            "type": "string"
-          }
-        ]
-      },
-      {
-        "name": "getDefault",
-        "type": "function",
-        "description": "Returns the default account, or null if it is not defined.",
-        "async": true,
-        "parameters": []
-      },
-      {
-        "name": "setDefaultIdentity",
-        "type": "function",
-        "description": "Sets the default identity for an account.",
-        "async": true,
-        "parameters": [
-          {
-            "name": "accountId",
-            "type": "string"
+            "optional": true,
+            "type": "string",
+            "name": "notificationId",
+            "description": "Identifier of the notification. If it is empty, this method generates an id. If it matches an existing notification, this method first clears that notification before proceeding with the create operation."
           },
           {
-            "name": "identityId",
-            "type": "string"
+            "$ref": "CreateNotificationOptions",
+            "name": "options",
+            "description": "Contents of the notification."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "notificationId",
+                "type": "string",
+                "description": "The notification id (either supplied or generated) that represents the created notification."
+              }
+            ]
           }
         ]
       },
       {
-        "name": "getDefaultIdentity",
+        "name": "update",
+        "unsupported": true,
         "type": "function",
-        "description": "Returns the default identity for an account, or null if it is not defined.",
-        "async": true,
+        "description": "Updates an existing notification.",
+        "async": "callback",
         "parameters": [
           {
-            "name": "accountId",
-            "type": "string"
+            "type": "string",
+            "name": "notificationId",
+            "description": "The id of the notification to be updated."
+          },
+          {
+            "$ref": "UpdateNotificationOptions",
+            "name": "options",
+            "description": "Contents of the notification to update to."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "wasUpdated",
+                "type": "boolean",
+                "description": "Indicates whether a matching notification existed."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "clear",
+        "type": "function",
+        "description": "Clears an existing notification.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The id of the notification to be updated."
+          },
+          {
+            "optional": true,
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "wasCleared",
+                "type": "boolean",
+                "description": "Indicates whether a matching notification existed."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "description": "Retrieves all the notifications.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "notifications",
+                "type": "object",
+                "additionalProperties": {"$ref": "CreateNotificationOptions"},
+                "description": "The set of notifications currently in the system."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "getPermissionLevel",
+        "unsupported": true,
+        "type": "function",
+        "description": "Retrieves whether the user has enabled notifications from this app or extension.",
+        "async": "callback",
+        "parameters": [
+          {
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "level",
+                "$ref": "PermissionLevel",
+                "description": "The current permission level."
+              }
+            ]
           }
         ]
       }
-    ]   
+    ],
+    "events": [
+      {
+        "name": "onClosed",
+        "type": "function",
+        "description": "Fired when the notification closed, either by the system or by user action.",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The notificationId of the closed notification."
+          },
+          {
+            "type": "boolean",
+            "name": "byUser",
+            "description": "True if the notification was closed by the user."
+          }
+        ]
+      },
+      {
+        "name": "onClicked",
+        "type": "function",
+        "description": "Fired when the user clicked in a non-button area of the notification.",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The notificationId of the clicked notification."
+          }
+        ]
+      },
+      {
+        "name": "onButtonClicked",
+        "type": "function",
+        "description": "Fired when the  user pressed a button in the notification.",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The notificationId of the clicked notification."
+          },
+          {
+            "type": "number",
+            "name": "buttonIndex",
+            "description": "The index of the button clicked by the user."
+          }
+        ]
+      },
+      {
+        "name": "onPermissionLevelChanged",
+        "unsupported": true,
+        "type": "function",
+        "description": "Fired when the user changes the permission level.",
+        "parameters": [
+          {
+            "$ref": "PermissionLevel",
+            "name": "level",
+            "description": "The new permission level."
+          }
+        ]
+      },
+      {
+        "name": "onShowSettings",
+        "unsupported": true,
+        "type": "function",
+        "description": "Fired when the user clicked on a link for the app's notification settings.",
+        "parameters": [
+        ]
+      },
+      {
+        "name": "onShown",
+        "type": "function",
+        "description": "Fired when the notification is shown.",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "notificationId",
+            "description": "The notificationId of the shown notification."
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -5,6 +5,7 @@ var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
 const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
+const SPLASHSCREENOPTION = "extensions.smartTemplate4.noSplash";
 
 
 var startupFinished = false;
@@ -45,7 +46,8 @@ var callbacks = [];
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = currentLicenseInfo.licensedDaysLeft; 
             if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
-            if (gpdays>40 && !isStandardLicense) {
+            let isNoSplash = await messenger.LegacyPrefs.getPref(SPLASHSCREENOPTION);
+            if (isNoSplash) {  // was: gpdays > 40 for only Pro Users...  maybe add gpdays > 14?
               if (isDebug) console.log("Omitting update popup!");
               return;
             }

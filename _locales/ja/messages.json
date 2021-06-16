@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}5 月 20 日から 6 月 11 日{boldEnd}までご利用いただけます。"
+    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}5 月 20 日から 6 月 30 日{boldEnd}までご利用いただけます。"
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "重要：新しいアドオンバージョンで追加の権限が必要な場合は、自動更新でインストールを求められない場合があります。 代わりに、Thunderbirdのメインメニューボタンにこの警告アイコンが表示されます。更新を完了するには、このアイコンをクリックする必要があります。 新しい拡張システムに移行するには、権限をリクエストする必要があります。 そうしないと、バグ修正や新機能を提供できません。"
+  },
   "ongoing-work": {
     "message": "$addonName$を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "新規メッセージ作成の設定"
   },
+  "pref_noSplash": {
+    "message": "スプラッシュ画面を省略"
+  },
+  "pref_noSplash_tip": {
+    "message": "更新時に新機能とバグ修正を表示する情報ダイアログを非表示にします。"
+  },  
   "pref_parseSignature": {
     "message": "署名での変数の使用を許可する"
   },
@@ -1339,7 +1348,7 @@
     "message": "件名"
   },
   "special-offer-content": {
-    "message": "SmartTemplates Proの価格が{boldStart} $discount$割引{boldEnd}されている間に、SmartTemplatesを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは {boldStart}6 月 11 日{boldEnd}まで延長されます。",
+    "message": "SmartTemplates Proの価格が{boldStart} $discount$割引{boldEnd}されている間に、SmartTemplatesを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは {boldStart}6 月 30 日{boldEnd}まで延長されます。",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4 - アドオン マネージャーから設定を簡単に開くレンチ ボタンを追加{L2} {L1}3.5.3-有効なライセンスがすでに入力されているとWebショップを開くことができない[ライセンス]ダイアログの問題。{L2} {L1}'から'などのアドレスフィールドで使用されるエンコードされた文字の変換のサポートが改善されました{L2} {L1}繁体字中国語（zh-TW）のローカリゼーションエラーが設定ダイアログを壊しました。{L2}{L1}カタロニア語のローカリゼーションを追加しました。{L2}{L1}SmartTemplatesをThunderbirdバージョン91と互換性を持たせるための進行中の作業。これは2021年夏にリリースされる予定です。{L2} {L1}新しいバックグラウンドスクリプト通知により、複数のThunderbirdウィンドウのサポートが改善されました。{L2}"
+    "message": "{L1}書き込みテンプレートで％to（firstname）％を使用して複数の受信者を展開できるようになりました。{L2} {L1}多くのユーザーにとって、SmartTemplatesはv3.4.4以降自動更新されませんでした。 これは、APIベースのメール拡張機能への継続的な変換に必要な追加のアクセス許可が原因で発生します。 自動更新を再度可能にするために、これらの機能を一時的に削除しました。{L2} {L1}スプラッシュ画面をスキップするオプションを追加しました。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

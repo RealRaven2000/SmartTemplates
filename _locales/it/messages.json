@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Paga solo € 5,15 invece di € 8,35 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}dal 20 maggio all'20 giugno{boldEnd}."
+    "message": "Paga solo € 5,15 invece di € 8,35 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}dal 20 maggio all'30 giugno{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "La licenza SmartTemplates è scaduta $countDays$ giorni fa.",
@@ -804,6 +804,9 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
+  "on-permissions": {
+    "message": "IMPORTANTE: gli aggiornamenti automatici potrebbero non richiedere l'installazione ogni volta che una nuova versione del componente aggiuntivo richiede autorizzazioni aggiuntive. Invece vedrai questa icona di avviso sul pulsante del menu principale di Thunderbird, che devi fare clic per completare l'aggiornamento. La richiesta delle autorizzazioni è necessaria per la migrazione al nuovo sistema di estensione. Altrimenti non possiamo fornire correzioni di bug/nuove funzionalità!"
+  },
   "ongoing-work": {
     "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
     "placeholders": {
@@ -972,6 +975,12 @@
   "pref_newmsg.cap": {
     "message": "Messaggi nuovi"
   },
+  "pref_noSplash": {
+    "message": "Ometti schermata iniziale"
+  },
+  "pref_noSplash_tip": {
+    "message": "Nascondi la finestra di dialogo delle informazioni che mostra nuove funzionalità e correzioni di bug durante l'aggiornamento."
+  },  
   "pref_parseSignature": {
     "message": "Elabora firma"
   },
@@ -1339,7 +1348,7 @@
     "message": "Oggetto"
   },
   "special-offer-content": {
-    "message": "Rendi SmartTemplates a prova di futuro e prendi una licenza mentre c'è una {boldStart} riduzione del $discount$ {boldEnd} sul prezzo di SmartTemplates Pro! Questa offerta speciale è estesa fino all'{boldStart} 20 giugno{boldEnd}.",
+    "message": "Rendi SmartTemplates a prova di futuro e prendi una licenza mentre c'è una {boldStart} riduzione del $discount$ {boldEnd} sul prezzo di SmartTemplates Pro! Questa offerta speciale è estesa fino all'{boldStart} 30 giugno{boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
@@ -1538,7 +1547,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}3.5.4 - Aggiunto pulsante chiave inglese per aprire facilmente le impostazioni da Gestione componenti aggiuntivi{L2}{L1}3.5.3 - Problema con la finestra di dialogo delle licenze che non poteva aprire il negozio web se era già stata inserita una licenza valida. {L2}{L1}Supporto migliorato per la conversione di caratteri codificati utilizzati nei campi indirizzo come 'da' {L2} {L1}Errore nella localizzazione per la finestra di dialogo delle impostazioni di interruzione del cinese tradizionale (zh-TW).{L2}{L1}Aggiunta la localizzazione per la lingua catalana.{L2}{L1}Menambahkan Lokalisasi untuk bahasa Catalan.{L2}{L1}Lavoro in corso per rendere SmartTemplates compatibile con Thunderbird versione 91, il cui rilascio è previsto per l'estate 2021.{L2}{L1}Supporto migliorato per più finestre Thunderbird, tramite le nuove notifiche di script in background.{L2}"
+    "message": "{L1}Ora puoi espandere più destinatari con %to(firstname)% in un modello di scrittura.{L2}{L1}Per molti utenti, SmartTemplates non è stato aggiornato automaticamente dalla v 3.4.4. Ciò è causato dalle autorizzazioni aggiuntive necessarie per la conversione continua in un'estensione di posta basata su API. Ho temporaneamente rimosso queste funzioni per rendere nuovamente possibile l'aggiornamento automatico.{L2}{L1}Aggiunta un'opzione per saltare la schermata iniziale.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."
