@@ -20,7 +20,6 @@
     "page": "st-background.html"
   },
   "permissions": [
-    "notifications"
   ],  
   "experiment_apis": {
     "ex_accounts": {

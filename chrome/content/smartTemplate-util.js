@@ -2637,7 +2637,6 @@ SmartTemplate4.Util.firstRun =
 			return;
     }
     
-		debugger;	
   	const util = SmartTemplate4.Util,
 		      prefs = SmartTemplate4.Preferences;
 		util.logDebug("Util.firstRun.init()");

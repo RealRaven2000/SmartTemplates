@@ -59,6 +59,7 @@ async function updateActions(addonName) {
 
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
+    hideSelectorItems('.donations');
     hide('register');
     
     if (isSale && isStandardUser) {
@@ -77,17 +78,26 @@ async function updateActions(addonName) {
       hide('renew');
       if (isStandardUser) {
         show('standardLicense'); // this contains a button to upgrade
+        hide('purchaseHeader');
+        hide('whyPurchase');
+        isActionList = false;
       }
       else {
         let gpdays = licenseInfo.licensedDaysLeft;
-        if (gpdays<40) { // they may have seen this popup. Only show extend License section if it is < 100 days away
+        if (gpdays<40) { // they may have seen this popup. Only show extend License section if it is < 40 days away
           show('extendLicenseListItem');
           show('extend');
         }
         else {
           show('licenseExtended');
+	        hide('time-and-effort');
+	        hide('purchaseHeader');
+	        hide('whyPurchase');
           hide('extendLicenseListItem');
           hide('extend');
+	        let animation = document.getElementById('gimmick');
+	        if (animation)
+	          animation.parentNode.removeChild(animation);
           isActionList = false;
         }
       }
@@ -97,10 +107,23 @@ async function updateActions(addonName) {
     if (isSale) {
       show('specialOffer');
       hideSelectorItems('.donations');
+      hide('whyPurchase');
+			isActionList = false;
     }
   }  
   if (!isActionList) {
     hide('actionBox');
   }  
+  // resize to contents if necessary...
+  let win = await browser.windows.getCurrent(),
+      wrapper = document.getElementById('innerwrapper'),
+      r = wrapper.getBoundingClientRect(),
+      newHeight = Math.round(r.height) + 80,
+      maxHeight = window.screen.height;
+      
+  if (newHeight>maxHeight) newHeight = maxHeight-15;
+  browser.windows.update(win.id, 
+    {height: newHeight}
+  );
   
 }

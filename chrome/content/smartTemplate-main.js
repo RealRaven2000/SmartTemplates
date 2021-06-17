@@ -99,8 +99,11 @@ END LICENSE BLOCK
   Version 3.5.4 - 03/06/2021
     # New version of WindowListener to support wrench button to access Add-on settings
 
-  Version 3.6 - WIP
+  Version 3.6 - 17/06/2021
     # [issue 134] Support tab missing in version 3.5.4
+    # [issue 137] SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
+    # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template.
+    # Removed all permissions for accounts, notifications
 
     
 =========================

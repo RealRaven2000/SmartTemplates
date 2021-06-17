@@ -810,16 +810,18 @@
 											 tooltiptext="https://smarttemplates.quickfolders.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">__MSG_label.premiumFeaturesSite__</label>
 							</hbox>
-              <checkbox id = "chkSilentUpdates"
-                    label = "__MSG_pref_silentUpdates__"
-                    tooltiptext = "__MSG_pref_silentUpdates_tip__"
-                    preference = "extensions.smartTemplate4.silentUpdate"
-                    disabled = "true" /> 
-              <checkbox id = "chkNoSplash"
-                    label = "__MSG_pref_noSplash__"
-                    tooltiptext = "__MSG_pref_noSplash_tip__"
-                    preference = "extensions.smartTemplate4.noSplash"
-                    disabled = "true" /> 
+              <hbox>
+                <checkbox id = "chkSilentUpdates"
+                      label = "__MSG_pref_silentUpdates__"
+                      tooltiptext = "__MSG_pref_silentUpdates_tip__"
+                      preference = "extensions.smartTemplate4.silentUpdate"
+                      disabled = "true" /> 
+                <checkbox id = "chkNoSplash"
+                      label = "__MSG_pref_noSplash__"
+                      tooltiptext = "__MSG_pref_noSplash_tip__"
+                      preference = "extensions.smartTemplate4.noSplash"
+                      disabled = "true" /> 
+              </hbox>
 						</groupbox>
 					</hbox>
 					<!-- will be populated / modified from bundle in code -->
