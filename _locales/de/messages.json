@@ -651,7 +651,7 @@
     }
   },  
   "licenseTypes": {
-    "message": "In Zukunft bietet SmartTemplates zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und die Reparaturen und Innovationen zu finanzieren. Da Funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig."
+    "message": "In Zukunft bietet SmartTemplates zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig."
   },
   "licenseValidation.expired": {
     "message": "Der angegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten."
