@@ -156,10 +156,16 @@ function convertAccount(account) {
     return null;
   }
 
-  let folders = traverseSubfolders(
-    account.incomingServer.rootFolder,
-    account.key
-  ).subFolders;
+  let folders;
+  try {
+    folders = traverseSubfolders(
+      account.incomingServer.rootFolder,
+      account.key
+    ).subFolders;
+  }
+  catch (ex) {
+    console.log("traverseSubfolders failed:", account, ex);
+  }
 
   return {
     id: account.key,
@@ -175,12 +181,16 @@ var ex_accounts = class extends ExtensionAPI {
     return {
       ex_accounts: {
         async list() {
-          debugger;
           let accounts = [];
           for (let account of MailServices.accounts.accounts) {
-            account = convertAccount(account);
-            if (account) {
-              accounts.push(account);
+            try {
+              account = convertAccount(account);
+              if (account) {
+                accounts.push(account);
+              }
+            }
+            catch(ex) {
+              console.log("convertAccount failed:", account, ex);
             }
           }
           return accounts;

@@ -37,17 +37,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return "user"; // anonymous
         },
 
-        openLinkExternally: function(url) {
-          let uri = url;
-          if (!(uri instanceof Ci.nsIURI)) {
-            uri = Services.io.newURI(url);
-          }
-          
-          Cc["@mozilla.org/uriloader/external-protocol-service;1"]
-            .getService(Ci.nsIExternalProtocolService)
-            .loadURI(uri);
-        },
-
         showVersionHistory: function() {
           const util = win.SmartTemplate4.Util;
           util.showVersionHistory(false); // no prompt before showing

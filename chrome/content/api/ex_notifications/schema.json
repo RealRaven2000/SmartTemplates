@@ -1,6 +1,215 @@
 [
   {
     "namespace": "ex_notifications",
+    "types": [
+      {
+        "id": "TemplateType",
+        "type": "string",
+        "enum": [
+          "basic",
+          "image",
+          "list",
+          "progress"
+        ]
+      },
+      {
+        "id": "PermissionLevel",
+        "type": "string",
+        "enum": [
+          "granted",
+          "denied"
+        ]
+      },
+      {
+        "id": "NotificationItem",
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "Title of one item of a list notification.",
+            "type": "string"
+          },
+          "message": {
+            "description": "Additional details about this item.",
+            "type": "string"
+          }
+        }
+      },
+      {
+        "id": "CreateNotificationOptions",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Which type of notification to display.",
+            "$ref": "TemplateType"
+          },
+          "iconUrl": {
+            "optional": true,
+            "description": "A URL to the sender's avatar, app icon, or a thumbnail for image notifications.",
+            "type": "string"
+          },
+          "appIconMaskUrl": {
+            "optional": true,
+            "description": "A URL to the app icon mask.",
+            "type": "string"
+          },
+          "title": {
+            "description": "Title of the notification (e.g. sender name for email).",
+            "type": "string"
+          },
+          "message": {
+            "description": "Main notification content.",
+            "type": "string"
+          },
+          "contextMessage": {
+            "optional": true,
+            "description": "Alternate notification content with a lower-weight font.",
+            "type": "string"
+          },
+          "priority": {
+            "optional": true,
+            "description": "Priority ranges from -2 to 2. -2 is lowest priority. 2 is highest. Zero is default.",
+            "type": "integer",
+            "minimum": -2,
+            "maximum": 2
+          },
+          "eventTime": {
+            "optional": true,
+            "description": "A timestamp associated with the notification, in milliseconds past the epoch.",
+            "type": "number"
+          },
+          "buttons": {
+            "unsupported": true,
+            "optional": true,
+            "description": "Text and icons for up to two notification action buttons.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "iconUrl": {
+                  "optional": true,
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "imageUrl": {
+            "optional": true,
+            "description": "A URL to the image thumbnail for image-type notifications.",
+            "type": "string"
+          },
+          "items": {
+            "optional": true,
+            "description": "Items for multi-item notifications.",
+            "type": "array",
+            "items": { "$ref": "NotificationItem" }
+          },
+          "progress": {
+            "optional": true,
+            "description": "Current progress ranges from 0 to 100.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "isClickable": {
+            "optional": true,
+            "description": "Whether to show UI indicating that the app will visibly respond to clicks on the body of a notification.",
+            "type": "boolean"
+          }
+        }
+      },
+      {
+        "id": "UpdateNotificationOptions",
+        "type": "object",
+        "properties": {
+          "type": {
+            "optional": true,
+            "description": "Which type of notification to display.",
+            "$ref": "TemplateType"
+          },
+          "iconUrl": {
+            "optional": true,
+            "description": "A URL to the sender's avatar, app icon, or a thumbnail for image notifications.",
+            "type": "string"
+          },
+          "appIconMaskUrl": {
+            "optional": true,
+            "description": "A URL to the app icon mask.",
+            "type": "string"
+          },
+          "title": {
+            "optional": true,
+            "description": "Title of the notification (e.g. sender name for email).",
+            "type": "string"
+          },
+          "message": {
+            "optional": true,
+            "description": "Main notification content.",
+            "type": "string"
+          },
+          "contextMessage": {
+            "optional": true,
+            "description": "Alternate notification content with a lower-weight font.",
+            "type": "string"
+          },
+          "priority": {
+            "optional": true,
+            "description": "Priority ranges from -2 to 2. -2 is lowest priority. 2 is highest. Zero is default.",
+            "type": "integer",
+            "minimum": -2,
+            "maximum": 2
+          },
+          "eventTime": {
+            "optional": true,
+            "description": "A timestamp associated with the notification, in milliseconds past the epoch.",
+            "type": "number"
+          },
+          "buttons": {
+            "unsupported": true,
+            "optional": true,
+            "description": "Text and icons for up to two notification action buttons.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "iconUrl": {
+                  "optional": true,
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "imageUrl": {
+            "optional": true,
+            "description": "A URL to the image thumbnail for image-type notifications.",
+            "type": "string"
+          },
+          "items": {
+            "optional": true,
+            "description": "Items for multi-item notifications.",
+            "type": "array",
+            "items": { "$ref": "NotificationItem" }
+          },
+          "progress": {
+            "optional": true,
+            "description": "Current progress ranges from 0 to 100.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "isClickable": {
+            "optional": true,
+            "description": "Whether to show UI indicating that the app will visibly respond to clicks on the body of a notification.",
+            "type": "boolean"
+          }
+        }
+      }
+    ],
     "functions": [
       {
         "name": "create",
