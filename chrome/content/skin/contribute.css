@@ -1,0 +1,25 @@
+/* ############################     CONTRIBUTE BUTTON      ############################# */
+
+button[dlgtype=extra2] {
+	background-color: rgb(241,116,50) !important;
+}
+
+button[dlgtype=extra2] {
+	-moz-appearance: none;
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #fff;
+	background: rgb(254,204,177);
+}
+
+button[dlgtype=extra2]:hover
+{
+	/* margin: 1px -1px -1px 1px; */
+	background: rgb(254,222,178);
+}
+
+button[dlgtype=extra2]:active
+{
+	/* margin: 1px -1px -1px 1px; */
+	background: rgb(254,222,178);
+}

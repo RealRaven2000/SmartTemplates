@@ -682,30 +682,6 @@ table div.no {
 }
 
 
-/* ############################     CONTRIBUTE BUTTON      ############################# */
-
-button.dialog-button[dlgtype=extra2] {
-	background-color: rgb(241,116,50) !important;
-}
-.dialog-button[dlgtype=extra2] {
-	-moz-appearance: none;
-	color: #fff;
-	font-weight: bold;
-	border: 1px solid #fff;
-	background: rgb(254,204,177);
-}
-
-.dialog-button[dlgtype=extra2]:hover
-{
-	/* margin: 1px -1px -1px 1px; */
-	background: rgb(254,222,178);
-}
-
-.dialog-button[dlgtype=extra2]:active
-{
-	/* margin: 1px -1px -1px 1px; */
-	background: rgb(254,222,178);
-}
 
 /* we will wrap these in parenthesis to indicate outdated status */
 #keywords code.deprecated, code.deprecated {
@@ -841,6 +817,9 @@ label.plain-link:hover {
   cursor: pointer;
 }
 
+#fileTemplateToolbar.templateList > toolbarbutton.chromeclass-toolbar-additional {
+  display: inline-block;
+}
 
 .templateList #btnAdd {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/add.png");
