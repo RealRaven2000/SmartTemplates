@@ -7,6 +7,8 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
+let updateTemplateMenus;
+
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
 
@@ -14,7 +16,8 @@ async function onLoad(activatedWhileWindowOpen) {
   await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
   
-  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates));
+  updateTemplateMenus = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", updateTemplateMenus);
   window.SmartTemplate4.fileTemplates.initMenusWithReset();
   
 }
@@ -24,7 +27,7 @@ function onUnload(isAddOnShutDown) {
   util.logDebug("Single Message Window - onUnload(" + isAddOnShutDown + ")…");
   
   window.SmartTemplate4.Util.notifyTools.disable();
-  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset);
+  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", updateTemplateMenus);
   
   if(isAddOnShutDown) {
     window.SmartTemplate4.shutDown();

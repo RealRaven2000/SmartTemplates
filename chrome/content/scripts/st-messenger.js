@@ -10,6 +10,8 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
+var mylisteners = {};
+
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   
@@ -49,8 +51,18 @@ async function onLoad(activatedWhileWindowOpen) {
   util.logDebug("Util.firstRun.init...");
   window.SmartTemplate4.Util.firstRun.init();
   
-  window.addEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4));
-  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates));
+  mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
+  mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
+  
+  for (let m in mylisteners) {
+    if (m == "BackgroundUpdate")
+      window.addEventListener("SmartTemplates.BackgroundUpdate" , mylisteners[m]);
+    else {
+      window.addEventListener(`SmartTemplates.BackgroundUpdate.${m}` , mylisteners[m]); 
+      // add more listeners here...
+    }
+  }
+  
   window.SmartTemplate4.fileTemplates.initMenusWithReset();
   
 }
@@ -58,6 +70,14 @@ async function onLoad(activatedWhileWindowOpen) {
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   window.SmartTemplate4.Util.notifyTools.disable();
+  
+  for (let m in mylisteners) {
+    if (m == "BackgroundUpdate")
+      window.removeEventListener("SmartTemplates.BackgroundUpdate", mylisteners[m]);
+    else
+      window.removeEventListener(`SmartTemplates.BackgroundUpdate.${m}`, mylisteners[m]);
+  }
+  
   window.removeEventListener("SmartTemplates.BackgroundUpdate", window.SmartTemplate4.initLicensedUI);
   window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset);
   
