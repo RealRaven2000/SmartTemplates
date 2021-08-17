@@ -22,9 +22,7 @@ var Register = {
   },
   
   load: async function load() {
-    const getElement = document.getElementById.bind(document),
-          util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences;
+    const util = SmartTemplate4.Util;
         
 		util.logDebug("Register.load() started");
     
@@ -239,14 +237,13 @@ var Register = {
     let shortOrder,
 		    addQuery = '',
 				featureName = document.getElementById('referrer').value; // hidden field
-				
+    if (isRenew || license_type==3) {
+      featureName = encodeURI(prefs.getStringPref('LicenseKey'));
+    }				
     switch	(license_type) {
 			case 0:  // pro license
 				if (isRenew) { // RENEWAL
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4renew";
-					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
-					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
-					// should we autoselect the correct email address?
 				}
 				else // NEW
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplate4";
@@ -255,9 +252,6 @@ var Register = {
 			case 1: // domain license
 				if (isRenew) { // RENEWAL
 					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatesdomainrenewal";
-					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
-					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
-					// should we autoselect the correct email address?
 				}
 				else // NEW
           shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplate4domain";
@@ -266,9 +260,6 @@ var Register = {
 			case 2: // standard license
 				if (isRenew) { // RENEWAL
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/smarttemplateStdrenew"; // product to be created
-					// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
-					featureName = encodeURI(prefs.getStringPref('LicenseKey'));
-					// should we autoselect the correct email address?
 				}
 				else // NEW
 					shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplatestandard";
@@ -276,7 +267,6 @@ var Register = {
 
 			case 3: // upgrade pro to standard
 				shortOrder = "https://sites.fastspring.com/quickfolders/product/smarttemplateupgrade"; // product to be created
-				featureName = encodeURI(prefs.getStringPref('LicenseKey')); // original license to upgrade!
 			  break;
 			
 		}
