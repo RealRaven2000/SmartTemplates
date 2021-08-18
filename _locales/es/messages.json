@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "¡SmartTemplates fue actualizado!"
+  },
   "spec_form.cap": {
     "message": "Conmutadores de campo de dirección"
   },

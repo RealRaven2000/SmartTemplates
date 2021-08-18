@@ -1059,6 +1059,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates оновлено!"
+  },
   "spec_form.cap": {
     "message": "Перемикачі полів адреси"
   },

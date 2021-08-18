@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates が更新されました！"
+  },
   "spec_form.cap": {
     "message": "アドレスフィールドスイッチ"
   },

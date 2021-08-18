@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates 已更新！"
+  },
   "spec_form.cap": {
     "message": "地址字段变量"
   },

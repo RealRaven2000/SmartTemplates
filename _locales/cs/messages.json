@@ -1167,6 +1167,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates byl aktualizován!"
+  },
   "spec_form.cap": {
     "message": "Přepínače adresního pole"
   },

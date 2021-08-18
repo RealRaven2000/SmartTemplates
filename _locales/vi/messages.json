@@ -120,6 +120,9 @@
   "renew-your-license" : {
     "message" : "Gia hạn giấy phép của bạn."
   },  
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates đã được cập nhật!"
+  },
   "special-offer-content": {
     "message": "Làm cho SmartTemplates bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm $discount$ {boldEnd} về giá của SmartTemplates Pro! Ưu đãi đặc biệt này được kéo dài đến {boldStart} ngày 30 tháng 6 {boldEnd}.",
     "placeholders": {

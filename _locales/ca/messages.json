@@ -1177,6 +1177,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates s'ha actualitzat."
+  },
   "spec_form.cap": {
     "message": "Canviadors de camp d’adreça"
   },

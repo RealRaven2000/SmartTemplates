@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates is bijgewerkt!"
+  },
   "spec_form.cap": {
     "message": "Adresveldschakelaars"
   },

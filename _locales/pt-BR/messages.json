@@ -1140,6 +1140,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates foi atualizado!"
+  },
   "spec_form.cap": {
     "message": "Mudanças de campo de endereço"
   },

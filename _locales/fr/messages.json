@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates a été mis à jour "
+  },
   "spec_form.cap": {
     "message": "Commutateurs de champ d'adresse"
   },

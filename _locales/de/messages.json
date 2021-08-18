@@ -1173,6 +1173,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates wurde aktualisiert!"
+  },
   "spec_form.cap": {
     "message": "Adressfeldschalter"
   },

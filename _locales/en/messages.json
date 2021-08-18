@@ -1176,6 +1176,9 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates was updated!"
+  },
   "spec_form.cap": {
     "message": "Address Field Switches"
   },
