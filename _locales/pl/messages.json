@@ -1137,6 +1137,9 @@
   "shortdate.label": {
     "message": "Data i czas (np. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Pokaż zmiany + aktualności (ekran powitalny)."
+  },
   "sig.label": {
     "message": "Podpis (z ustawień konta)"
   },
@@ -1550,7 +1553,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Możesz teraz rozszerzyć wielu odbiorców o %to(firstname)% w szablonie zapisu.{L2}{L1}Dla wielu użytkowników SmartTemplates nie było automatycznie aktualizowane od wersji 3.4.4. Jest to spowodowane dodanymi uprawnieniami, które były niezbędne do kontynuowania konwersji na rozszerzenie poczty oparte na interfejsie API. Tymczasowo usunąłem te funkcje, aby umożliwić ponowne automatyczne aktualizowanie.{L2}{L1}Dodano opcję pomijania ekranu powitalnego.{L2}"
+    "message": "{L1}SmartTemplates jest teraz kompatybilne z Thunderbirdem 91. Ta praca została opłacona licencjami, bardzo dziękuję za pomoc!{L2} {L1}Nowa zmienna %clipboard% do wstawiania zawartości schowka.{L2} {L1} Ten ekran powitalny nie jest wyświetlany natychmiast po aktualizacji. Możesz go otworzyć w dowolnym momencie z zakładki Informacje.{L2} {L1}Jak zwykle naprawiono wiele błędów - zobacz poniższy link, aby uzyskać więcej informacji.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

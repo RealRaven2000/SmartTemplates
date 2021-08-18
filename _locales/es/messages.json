@@ -1137,6 +1137,9 @@
   "shortdate.label": {
     "message": "Fecha y hora abreviadas (p.ej. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Mostrar cambios + noticias (pantalla de bienvenida)."
+  },
   "sig.label": {
     "message": "Firma de la Configuración de cuentas de TB"
   },
@@ -1550,7 +1553,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Ahora puede expandir varios destinatarios con %to(firstname)% en una plantilla de escritura. {L2} {L1} Para muchos usuarios, SmartTemplates no se actualizó automáticamente desde la versión 3.4.4. Esto se debe a los permisos agregados que eran necesarios para la conversión continua a una extensión de correo basada en API. Eliminé temporalmente estas funciones para hacer posible la actualización automática nuevamente. {L2} {L1} Agregué una opción para omitir la pantalla de presentación. {L2}"
+    "message": "{L1} SmartTemplates ahora es compatible con Thunderbird 91. Este trabajo se pagó a través de licencias, ¡muchas gracias por ayudar con esto! {L2} {L1} Nueva variable% clipboard% para insertar contenido del portapapeles. {L2} {L1} Esta pantalla de bienvenida no se muestra inmediatamente después de la actualización. Puede abrirlo en cualquier momento desde la pestaña Acerca de. {L2} {L1} Como de costumbre, se corrigieron numerosos errores; consulte el enlace a continuación para obtener más información. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

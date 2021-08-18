@@ -1138,6 +1138,9 @@
   "shortdate.label": {
     "message": "Data e ora cortas (ex. : 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Mostra canvis + notícies (pantalla de presentació)."
+  },
   "sig.label": {
     "message": "Signatura eissida dels paramètres del compte"
   },
@@ -1551,7 +1554,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Ara podeu ampliar diversos destinataris amb %to(firstname)% en una plantilla d'escriptura. {L2} {L1} Per a molts usuaris, SmartTemplates no s'ha actualitzat automàticament des de la versió 3.4.4. Això es deu als permisos afegits necessaris per a la conversió continuada a una extensió de correu basada en API. He eliminat temporalment aquestes funcions per tornar a fer possible l'actualització automàtica. {L2} {L1} S'ha afegit una opció per ometre la pantalla inicial. {L2}"
+    "message": "{L1} SmartTemplates ara és compatible amb Thunderbird 91. Aquest treball s'ha pagat mitjançant llicències, moltes gràcies per ajudar-vos amb això. {L2} {L1} Nova variable% portapapers% per inserir contingut del portapapers. {L2} {L1} Aquesta pantalla inicial no es mostra immediatament després de l'actualització. Podeu obrir-la en qualsevol moment des de la pestanya Quant a la informació. {L2} {L1} Com és habitual, s’han corregit nombrosos errors; consulteu l’enllaç següent per obtenir més informació. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

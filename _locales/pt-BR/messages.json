@@ -1101,6 +1101,9 @@
   "shortdate.label": {
     "message": "Data e hora curta (por exemplo, 01/01/2000 01:23:45)"
   },
+  "showSplash": {
+    "message": "Mostrar mudanças + notícias (tela inicial)."
+  },
   "sig.label": {
     "message": "Assinatura das configurações da conta"
   },
@@ -1492,7 +1495,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Agora você pode expandir vários destinatários com %to(firstname)% em um modelo de gravação. {L2} {L1} Para muitos usuários, SmartTemplates não foi atualizado automaticamente desde a versão 3.4.4. Isso é causado por permissões adicionadas que eram necessárias para a conversão contínua em uma extensão de e-mail baseada em API. Removi temporariamente essas funções para tornar a atualização automática possível novamente. {L2} {L1} Adicionada uma opção para pular a tela inicial. {L2}"
+    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Nova variável% clipboard% para inserir conteúdo da área de transferência. {L2} {L1} Esta tela inicial não é exibida imediatamente após a atualização. Você pode abri-lo a qualquer momento na guia Sobre. {L2} {L1} Como de costume, vários bugs foram corrigidos - consulte o link abaixo para obter mais informações. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

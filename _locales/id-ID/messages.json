@@ -1020,6 +1020,9 @@
   "shortdate.label": {
     "message": "Tanggal / Waktu singkat (mis. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Tampilkan perubahan + berita (Layar Splash)."
+  },
   "sig.label": {
     "message": "Tanda tangan dari Setelan Akun"
   },

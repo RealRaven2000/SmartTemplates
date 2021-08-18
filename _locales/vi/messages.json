@@ -197,7 +197,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Giờ đây, bạn có thể mở rộng nhiều người nhận với %yo(firstname)% trong Mẫu Viết. {L2} {L1} Đối với nhiều người dùng, SmartTemplates không được tự động cập nhật kể từ phiên bản 3.4.4. Điều này là do các quyền được bổ sung cần thiết để tiếp tục chuyển đổi sang tiện ích mở rộng thư dựa trên API. Tôi đã tạm thời xóa các chức năng này để có thể cập nhật tự động trở lại. {L2} {L1} Đã thêm một tùy chọn để bỏ qua màn hình hiển thị. {L2}"
+    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Biến% clipboard% mới để chèn nội dung khay nhớ tạm. {L2} {L1} Màn hình giật gân này không hiển thị ngay sau khi cập nhật. Bạn có thể mở nó bất cứ lúc nào từ Tab Giới thiệu. {L2} {L1} Như thường lệ, nhiều lỗi đã được sửa - hãy xem liên kết bên dưới để biết thêm thông tin. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

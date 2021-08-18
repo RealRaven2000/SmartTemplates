@@ -1137,6 +1137,9 @@
   "shortdate.label": {
     "message": "Päiväys / Aika lyhyt muotoilu (esim. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Näytä muutokset + uutiset (aloitusnäyttö)."
+  },
   "sig.label": {
     "message": "Allekirjoitus (TB:n tilitiedoista)"
   },
@@ -1550,7 +1553,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list" : {
-    "message" : "{L1} Voit nyt laajentaa useita vastaanottajia %to(firstname)% iin kirjoitusmallissa. {L2} {L1} Monille käyttäjille SmartTemplatesia ei päivitetty automaattisesti version 3.4.4 jälkeen. Tämä johtuu lisättyistä käyttöoikeuksista, jotka olivat välttämättömiä jatkoa muuntamista API-pohjaiseksi postilaajennukseksi. Poistin nämä toiminnot väliaikaisesti, jotta automaattinen päivitys olisi mahdollista uudelleen. {L2} {L1} Lisäsi vaihtoehdon tilanäytön ohittamiseen. {L2}"
+    "message" : "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Uusi muuttuja % leikepöydälle % leikepöydän sisällön lisäämiseksi. {L2} {L1} Tämä aloitusnäyttö ei näy heti päivityksen jälkeen. Voit avata sen milloin tahansa Tietoja -välilehdeltä. {L2} {L1} Kuten tavallista, lukuisia virheitä korjattiin - katso lisätietoja alla olevasta linkistä. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

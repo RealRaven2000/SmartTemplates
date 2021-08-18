@@ -1137,6 +1137,9 @@
   "shortdate.label": {
     "message": "Date / Time short (e.g. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Show changes + news (Splash Screen)."
+  },
   "sig.label": {
     "message": "Signature from Account Settings"
   },
@@ -1550,7 +1553,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}You can now expand multiple recipients with %to(firstname)% in a Write Template.{L2}{L1}For many users, SmartTemplates was not auto-updated since v 3.4.4. This is caused by added permissions which were necessary for the continuing conversion to a API-based mail extension. I temporarily removed these functions to make automatic update possible again.{L2}{L1}Added an option for skipping the splash screen.{L2}"
+    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}New variable %clipboard% to insert clipboard contents.{L2} {L1}This splash screen is not shown immediately after update. You can open it any time from the About Tab.{L2} {L1}As usual, numerous bugs were fixed - see the link below for more info.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

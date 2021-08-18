@@ -1128,6 +1128,9 @@
   "shortdate.label": {
     "message": "Krátký datum / čas (např. 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Zobrazit změny + zprávy (úvodní obrazovka)."
+  },
   "sig.label": {
     "message": "Podpis z nastavení účtu"
   },
@@ -1541,7 +1544,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}Nyní můžete v šabloně zápisu rozšířit více příjemců s %to(firstname)%. {L2} {L1}Pro mnoho uživatelů nebyla SmartTemplates od verze 3.4.4 automaticky aktualizována. To je způsobeno přidanými oprávněními, která byla nezbytná pro pokračující převod na příponu pošty založené na API. Dočasně jsem tyto funkce odstranil, abych znovu umožnil automatickou aktualizaci. {L2} {L1}Přidána možnost přeskočení úvodní obrazovky. {L2}"
+    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nová proměnná % clipboard % pro vložení obsahu schránky. {L2} {L1} Tato úvodní obrazovka se nezobrazí bezprostředně po aktualizaci. Můžete jej kdykoli otevřít na kartě O aplikaci. {L2} {L1} Jako obvykle bylo opraveno mnoho chyb - další informace najdete v odkazu níže. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

@@ -1137,6 +1137,9 @@
   "shortdate.label": {
     "message": "Date et heure courtes (ex. : 01.01.2000 1:23:45)"
   },
+  "showSplash": {
+    "message": "Afficher les changements + les nouvelles (écran de démarrage)."
+  },
   "sig.label": {
     "message": "Signature issue des paramètres du compte"
   },
@@ -1550,7 +1553,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Vous pouvez désormais développer plusieurs destinataires avec %to(firstname)% dans un modèle d'écriture.{L2}{L1}Pour de nombreux utilisateurs, SmartTemplates n'a pas été mis à jour automatiquement depuis la v 3.4.4. Cela est dû à des autorisations supplémentaires qui étaient nécessaires pour la conversion continue vers une extension de messagerie basée sur l'API. J'ai temporairement supprimé ces fonctions pour rendre la mise à jour automatique à nouveau possible.{L2}{L1}Ajout d'une option pour ignorer l'écran de démarrage.{L2}"
+    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Nouvelle variable %clipboard% pour insérer le contenu du presse-papiers.{L2} {L1} Cet écran de démarrage ne s'affiche pas immédiatement après la mise à jour. Vous pouvez l'ouvrir à tout moment depuis l'onglet À propos.{L2} {L1}Comme d'habitude, de nombreux bugs ont été corrigés - voir le lien ci-dessous pour plus d'informations.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
