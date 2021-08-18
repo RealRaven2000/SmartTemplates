@@ -193,12 +193,19 @@ permalink: version.html
 		</span>
   </h4>
   <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/118">[issue 118]</a>
+      New variable <code>%clipboard%</code> to insert clipboard contents - this will be inserted 
+      as HTML if copied from a HTML source such as a webpage or a Word Document.
+      You can also insert HTML source code which will be converted to HTML.
+    </li>
     <li> 
       <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/127">[issue 127]</a> 
       Make SmartTemplates compatible with Thunderbird 91:
       <ul>
-        <li> removed fixIterator. </li>
-        <li> replaced Array types where necessary. </li>
+        <li> Replaced deprecated fixIterator function. </li>
+        <li> Replaced Array types where necessary. </li>
         <li> Fixed sliding notifications in composer and icons in all sliding notifications. </li>
         <li> 
           Fixed <i>about:config</i> dialogs. These are used for adding hidden settings that do not have dedicated 
@@ -208,10 +215,14 @@ permalink: version.html
         </li>
       </ul>
     </li>
+    
+    <li> Splash screen: this is now not shown immediately on update anymore; instead the Statusbar panel and main toolbar button will turn blue and show the splash screen once when clicked. Also simplified contents: removed message about permissions. </li>
+
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
     <li> Removed Utilities.openLinkExternally and replaced with messenger.windows.openDefaultBrowser</li>
     <li> Fixed "Buy License" button at bottom of Settings window</li>
     <li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/143">[issue 143]</a> Template Files - Toolbar buttons missing </li>
-    <li></li>
+    <li> Only display standard license upgrade special offer when within the reduction period. </li>
   </ul>
 </li> 
 
