@@ -12,10 +12,10 @@ END LICENSE BLOCK */
       if (event.target.classList.contains("upgrade")) {
         let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
 
-        messenger.Utilities.openLinkExternally("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
+        messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
       }
       else {
-        messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
       }
     }
     if (event.target.id=='whatsNew') {
@@ -26,7 +26,7 @@ END LICENSE BLOCK */
       window.close(); // not allowed by content script!
     }
     if (event.target.id.startsWith("donate")) {
-      messenger.Utilities.openLinkExternally("https://smarttemplates.quickfolders.org/contribute.html#donate");
+      messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/contribute.html#donate");
     }
   });  
 

@@ -9,14 +9,14 @@ END LICENSE BLOCK */
 
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
-	  messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-install");
+	  messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-install");
 	}
 	if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
 	  messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
     window.close();
 	}
 	if (event.target.id.startsWith("donate")) {
-	  messenger.Utilities.openLinkExternally("https://smarttemplates.quickfolders.org/contribute.html#donate");
+	  messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/contribute.html#donate");
 	}
 });  
 

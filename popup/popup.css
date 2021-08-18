@@ -34,12 +34,13 @@
   z-index: 1;
   opacity: 0.5;
   background-image: url("../chrome/content/skin/icon128x128.png");
-  background-position: 2em 3em; 
+  background-position: top right; 
   background-repeat: no-repeat; 
-  background-size: 47%;
+  background-size: 10em;
   margin-left: -10%;
-  height: 45%;
-  width: 50%;
+  height: 40%;
+  width: 100%;
+  pointer-events: none;
 }
 
 
@@ -147,6 +148,7 @@ canvas[collapsed=true]
   position: relative;
   right: -2em;
   top: -2em;
+  z-index: 10000;
 }
 
 #specialBox #standardLicense,
