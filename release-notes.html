@@ -1,34 +1,32 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.6">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.7">can be found here</a>
 
 <b>Enhancements</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/135">[issue 135]</a> Expand multiple recipients with %to(firstname)% in New Mail Template.
-
-When replying to an email we expect the variable %to(firstname)% to fill in all recipient names, using the address widget. They will be delimited by the character entered in advanced settings under the Name Rules box.
+<li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/118">[issue 118]</a> New variable <code>%clipboard%</code> to insert clipboard contents - this will be inserted 
+as HTML if copied from a HTML source such as a webpage or a Word Document. You can also insert HTML source code which will be converted to HTML.</li>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/127">[issue 127]</a> Make SmartTemplates compatible with Thunderbird 91:
+<ul>
+<li> Replaced deprecated fixIterator function. </li>
+<li> Replaced Array types where necessary. </li>
+<li> Fixed sliding notifications in composer and icons in all sliding notifications. </li>
+<li> Fixed <i>about:config</i> dialogs. These are used for adding hidden settings that do not have dedicated User Interface, such as the Debug Settings. Typically they are displayed by right-clicking on an option in the settings dialog.</li>
+</ul>
 </li>
-<li>
-<a href="https://github.com/RealRaven2000/SmartTemplate4/issues/137">[issue 137]</a>
-SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
-
-After adding necessary permissions for using the new mail extension APIs (for accounts and notifications), the user isn't prompted to install the updated Add-on anymore. Instead there is a small yellow "warning" icon added to the main menu button, which must be clicked to reveal questions about adding permissions.
-
-I noticed that the majority of users suddenly stopped updating and found that the permissions was the likely cause. As this is now standard behavior in Thunderbird in order to prevent users being distracted from their   daily workflow, I had to remove the permissions and modern API code and create my own version so I could make sure my users are updated with the latest version. I have no final satisfactory solution for this behavior as conversion to the new APIs is 100% necessary in order to rewrite SmartTemplates for future versions of Thunderbird. 
-
-The main menu button currently has a little yellow warning triangle if Add-ons are awaiting new permissions.
-
-I hope to either educate my users to complete upgrades by clicking this button or code another method of directly alerting the user from the previous version of SmartTemplates when a new version is available.
-</li>
+<li> Removed Utilities.openLinkExternally and replaced with messenger.windows.openDefaultBrowser.</li>
+<li> Splash screen: this is now not shown immediately on update anymore; instead the Statusbar panel and main toolbar button will turn blue and show the splash screen once when clicked. Also simplified contents: removed message about permissions. </li>
 </ul>
 
 <b>Bug Fixes</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/134">[issue 134]</a> Support tab missing in version 3.5.4</li>
+<li> Fixed "Buy License" button at bottom of Settings window.</li>
+<li> Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/143">[issue 143]</a> Template Files - Toolbar buttons missing.</li>
+<li> Only display standard license upgrade special offer when within the reduction period</li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
-<li> Removed animation on Splash screen for licensed users.</li>
+<li> </li>
 </ul>
