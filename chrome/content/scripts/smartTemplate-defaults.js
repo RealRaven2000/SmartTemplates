@@ -1,5 +1,6 @@
 /* global settings */
 pref("extensions.smartTemplate4.firstRun", true);
+pref("extensions.smartTemplate4.hasNews", false);
 pref("extensions.smartTemplate4.version", "?");
 pref("extensions.smartTemplate4.breaksAtTop", 0);
 pref("extensions.smartTemplate4.forceParagraph", true);
@@ -100,4 +101,3 @@ pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
 pref("extensions.smartTemplate4.silentUpdate", false);
-pref("extensions.smartTemplate4.noSplash", false);
