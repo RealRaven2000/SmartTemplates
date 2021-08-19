@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Plačajte samo 5,15 € namesto 8,35 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} 20. maja do 30. junija {boldEnd}."
+    "message": "Plačajte samo 5,15 € namesto 8,35 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do 31. avgusta {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Licenca za SmartTemplates je potekla pred $countDays$ dnevi.",
@@ -1192,7 +1192,7 @@
     "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
   "special-offer-content": {
-    "message": "Pripravite SmartTemplates v prihodnje in pridobite licenco, medtem ko je cena programa SmartTemplates Pro {boldStart} $discount$ znižana {boldEnd}! Ta posebna ponudba je podaljšana do {boldStart} 30. junija {boldEnd}.",
+    "message": "Pripravite SmartTemplates v prihodnje in pridobite licenco, medtem ko je cena programa SmartTemplates Pro {boldStart} $discount$ znižana {boldEnd}! Ta posebna ponudba je podaljšana do {boldStart} 31. avgusta {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

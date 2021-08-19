@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} 20 maj till 30 juni {boldEnd}."
+    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till 31 augusti {boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
@@ -1192,7 +1192,7 @@
     "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
   "special-offer-content": {
-    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande förlängs till {boldStart} 30 juni {boldEnd}.",
+    "message": "Gör SmartTemplates framtidssäkra och hämta en licens medan det finns en {boldStart} $discount$ rabatt {boldEnd} på priset på SmartTemplates Pro! Detta specialerbjudande förlängs till {boldStart} 31 augusti {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",

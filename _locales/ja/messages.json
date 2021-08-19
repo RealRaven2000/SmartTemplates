@@ -630,7 +630,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}5 月 20 日から 6 月 30 日{boldEnd}までご利用いただけます。"
+    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}から8月31日{boldEnd}までご利用いただけます。"
   }, 
   "licenseStatus.expired" : {
     "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
@@ -1354,7 +1354,7 @@
     "message": "件名"
   },
   "special-offer-content": {
-    "message": "SmartTemplates Proの価格が{boldStart} $discount$割引{boldEnd}されている間に、SmartTemplatesを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは {boldStart}6 月 30 日{boldEnd}まで延長されます。",
+    "message": "SmartTemplates Proの価格が{boldStart} $discount$割引{boldEnd}されている間に、SmartTemplatesを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは {boldStart}8 月 31 日{boldEnd}まで延長されます。",
     "placeholders": {
       "discount": {
         "content": "$1",

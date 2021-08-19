@@ -541,7 +541,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Bayar hanya $ 5,75 daripada $ 10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart} 20 Mei hingga 30 Juni{boldEnd}."
+    "message": "Bayar hanya $ 5,75 daripada $ 10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart}hingga 31 Agustus{boldEnd}."
   }, 
   "licenseStatus.expired" : {
     "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",

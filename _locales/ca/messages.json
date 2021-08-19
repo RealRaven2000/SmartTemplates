@@ -631,7 +631,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} del 20 de maig a l'30 de juny {boldEnd}."
+    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al 31 d'agost {boldEnd}."
   },
   "licenseStatus.expired" : {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
@@ -1355,7 +1355,7 @@
     "message": "Subjècte"
   },
   "special-offer-content": {
-    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial s'estén fins al {boldStart} 30 de juny {boldEnd}.",
+    "message": "SmartTemplates a prova de futur i obtenir una llicència. Obteniu un {boldStart} $discount$ de reducció {boldEnd} en el preu de SmartTemplates Pro. Aquesta oferta especial s'estén fins al {boldStart} 31 d'agost {boldEnd}.",
     "placeholders": {
       "discount": {
         "content": "$1",
