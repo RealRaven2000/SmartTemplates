@@ -60,22 +60,23 @@ var Register = {
 				if (licenseInfo.isExpired) {  // EXPIRED
           switch (licenseInfo.keyType) {
             case 0: // Pro
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
               break;
             case 1: // Domain
-              btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense", "Renew Domain License!");
+              btnDomainLicense.label = util.getBundleString("st.notification.premium.btn.renewDomainLicense");
               btnDomainLicense.removeAttribute('oncommand');
               btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
               btnDomainLicense.classList.add('register');
               btnProLicense.classList.remove('register');
               break;
             case 2: // Standard
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'Register.goPro(3);'); // upgrade fropm standard
               btnProLicense.classList.add('upgrade'); // no flashing
+              btnStdLicense.label = util.getBundleString("st.notification.premium.btn.renewLicense");
               break;
           }
 					
@@ -87,23 +88,23 @@ var Register = {
               extBtn = btnProLicense;
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense")
               break;
             case 1:
               extBtn = btnDomainLicense;
               btnProLicense.classList.remove('register'); // not flashing
               btnDomainLicense.removeAttribute('oncommand');
               btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense", "Extend Domain License!");
+              extText = util.getBundleString("st.notification.premium.btn.extendDomainLicense");
               break;
             case 2:
-              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+              btnProLicense.label = util.getBundleString("st.notification.premium.btn.upgrade");
               btnProLicense.removeAttribute('oncommand');
               btnProLicense.setAttribute('oncommand', 'Register.goPro(3, true);');
               extBtn = btnStdLicense;
               btnStdLicense.removeAttribute('oncommand');
               btnStdLicense.setAttribute('oncommand', 'Register.goPro(2, true);');
-              extText = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!")
+              extText = util.getBundleString("st.notification.premium.btn.extendLicense")
               // check whether renewal is up within 30 days
               let today = new Date(),
                   later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
@@ -120,8 +121,7 @@ var Register = {
           extBtn.classList.add("register");
 					// add tooltip
 					extBtn.setAttribute('tooltiptext',
-					  util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
-						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+					  util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
 				}
 
 				// hide the "Enter License Key…" button + label
@@ -136,7 +136,7 @@ var Register = {
 		
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired","Your license expired on:");
+			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired");
 				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case "Valid":

@@ -210,12 +210,12 @@ SmartTemplate4.fileTemplates = {
 		
 		
     // check if it exists and replace label
-		const msgTitle = getBundleString('st.fileTemplates.wrnSelectUpdateItem.caption','Templates - update')
+		const msgTitle = getBundleString("st.fileTemplates.wrnSelectUpdateItem.caption")
     if (!isNew) {
       let lb = FT.ListBox;      
       existingIndex = lb.selectedIndex;
       if (existingIndex<0) {
-				let txt = getBundleString('st.fileTemplates.wrnSelectUpdateItem','You have to select an item from the list to update!');
+				let txt = getBundleString("st.fileTemplates.wrnSelectUpdateItem");
         Services.prompt.alert(null, msgTitle, txt);
         return;
       }
@@ -225,12 +225,12 @@ SmartTemplate4.fileTemplates = {
     }
 				
     if (!label.trim()) {
-			let txt = getBundleString('st.fileTemplates.wrnEnterTitle','Please enter a title!');
+			let txt = getBundleString("st.fileTemplates.wrnEnterTitle");
       Services.prompt.alert(null, msgTitle, txt);
       return;
     }
     if (!path.trim()) {
-			let txt = getBundleString('st.fileTemplates.wrnEnterPath','Please enter a valid path!');
+			let txt = getBundleString("st.fileTemplates.wrnEnterPath");
       Services.prompt.alert(null, msgTitle, txt);
       return;
     }
@@ -527,7 +527,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					if (event.target.disabled) {
-						let txt = util.getBundleString("st.notification.restrictTemplates", "You need a SmartTemplates license to use more than {1} templates!");
+						let txt = util.getBundleString("st.notification.restrictTemplates");
 						
 						SmartTemplate4.Message.display(
 							txt.replace("{1}", maxFreeItems), 
@@ -560,7 +560,7 @@ SmartTemplate4.fileTemplates = {
     */
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
-		menuTitle = util.getBundleString("st.fileTemplates.openFile","Open SmartTemplates file template…");		
+		menuTitle = util.getBundleString("st.fileTemplates.openFile");		
 		menuitem.setAttribute("label", menuTitle);
 		menuitem.setAttribute("s4uiElement", "true");
 		menuitem.setAttribute("st4composeType", composeType);
@@ -584,7 +584,7 @@ SmartTemplate4.fileTemplates = {
 		/* [item 29]  Add configuration item to file template menus. */
     if (showConfigureItem) {
       menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
-      menuTitle = util.getBundleString("st.fileTemplates.configureMenu","Configure menu items…");
+      menuTitle = util.getBundleString("st.fileTemplates.configureMenu");
       menuitem.setAttribute("label", menuTitle);
 			menuitem.setAttribute("s4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
@@ -914,7 +914,7 @@ SmartTemplate4.fileTemplates = {
 					prefs = SmartTemplate4.Preferences,
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		
-    let filterText = util.getBundleString("fpFilterHtmlTemplate", "HTML Template"); //localized text for filePicker filter menu
+    let filterText = util.getBundleString("fpFilterHtmlTemplate"); //localized text for filePicker filter menu
 		
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
@@ -1117,10 +1117,7 @@ SmartTemplate4.fileTemplates = {
 			catch(ex) {
         var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
-				    errText = util.getBundleString("st.fileTemplates.error.charSet",
-						  "Problems converting a HTML template from charset [{1}]\n"
-							+ "Using raw string data instead.\n"
-							+ "If this results in garbled characters, try adding an explicit 'meta charset=' to the head section. Maybe try ISO-8859-1?");
+				    errText = util.getBundleString("st.fileTemplates.error.charSet");
 				SmartTemplate4.Message.display(
 				  errText.replace("{1}", charset),
 					"centerscreen,titlebar,modal,dialog",
@@ -1167,8 +1164,7 @@ SmartTemplate4.fileTemplates = {
 				
 				if (!localFile.exists()) {
 					// template.loadingError = Stationery._f('template.file.not.exists', [template.url])
-					let text = util.getBundleString("st.fileTemplates.error.filePath",
-						 "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+					let text = util.getBundleString("st.fileTemplates.error.filePath");
 					
 					this.lastError = text.replace('{0}', template.label).replace('{1}', template.path);
 					return false;

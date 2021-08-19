@@ -5,8 +5,6 @@ var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
 const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
-const SPLASHSCREENOPTION = "extensions.smartTemplate4.noSplash";
-
 
 var startupFinished = false;
 var callbacks = [];
@@ -37,7 +35,16 @@ var callbacks = [];
       // see below
       case "update":
         {
-      // TypeError: currentLicense is undefined
+          
+          setTimeout(
+            function() {
+              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+            },
+            200
+          ); 
+          
+          // TypeError: currentLicense is undefined
           if (isDebug) console.log("2. update() case");
           let currentLicenseInfo = currentLicense.info;
           let isLicensed = (currentLicenseInfo.status == "Valid"),  
@@ -46,23 +53,24 @@ var callbacks = [];
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = currentLicenseInfo.licensedDaysLeft; 
             if (isDebug) console.log("Licensed - " + gpdays  + " Days left.");
-            let isNoSplash = await messenger.LegacyPrefs.getPref(SPLASHSCREENOPTION);
-            if (isNoSplash) {  // was: gpdays > 40 for only Pro Users...  maybe add gpdays > 14?
-              if (isDebug) console.log("Omitting update popup!");
-              return;
-            }
           }
-          
-          const url = browser.runtime.getURL("popup/update.html");
-          //await browser.tabs.create({ url });
-          let screenH = window.screen.height,
-              windowHeight = (screenH > 870) ? 870 : screenH-20;
-          await messenger.windows.create({ url, type: "popup", width: 950, height: windowHeight, allowScriptsToClose : true});
         }
         break;
+      default:
+        messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
       // see below
     }
   });
+
+
+function showSplash() {
+  // alternatively display this info in a tab with browser.tabs.create(...)  
+  const url = browser.runtime.getURL("popup/update.html");
+  let screenH = window.screen.height,
+      windowHeight = (screenH > 870) ? 870 : screenH-20;  
+  messenger.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+}
+
 
 async function main() {
   
@@ -129,6 +137,7 @@ async function main() {
    * -> emit a custom event once we are done and let onInstall await that
    */
 
+  messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
    
   let key = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.LicenseKey"),
       forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
@@ -179,6 +188,10 @@ async function main() {
       case "initKeyListeners": // might be needed
         // messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
         break;
+        
+      case "splashScreen":
+        showSplash();
+        break;
 
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.licenser.forceSecondaryIdentity"),
@@ -201,9 +214,14 @@ async function main() {
         return true;
         
       case "updateTemplateMenus":
-        // Broadcast main windows to run updateQuickFoldersLabel
+        // Broadcast main windows to run updateTemplateMenus
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
         break
+        
+      case "updateNewsLabels":
+        messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+        break
+        
         
       case "initLicensedUI":
         // main window update reacting to license status change
@@ -213,8 +231,6 @@ async function main() {
   });
    
    
-  messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
-  
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
   messenger.WindowListener.registerChromeUrl([ 

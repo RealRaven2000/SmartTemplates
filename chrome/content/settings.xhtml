@@ -478,7 +478,6 @@
 			<preference name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" instantApply="true"/>
 			<preference name = "extensions.smartTemplate4.mail.suppressLink" type = "bool" instantApply="true"/>
 			<preference name = "extensions.smartTemplate4.silentUpdate" type = "bool" instantApply="true"/>
-			<preference name = "extensions.smartTemplate4.noSplash" type = "bool" instantApply="true"/>
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -736,6 +735,9 @@
 							<spacer flex = "1" />
 							<vbox class="buttonLinks">
 							<!-- ######## Our Buttons "Supportpage - Homepage - Bugs/Feature Request" inside About Tab ######## -->
+                <button oncommand="SmartTemplate4.Util.viewSplashScreen(); window.close();"
+                        label="__MSG_showSplash__"
+                        class = "showSplash text-link" />              
 								<button oncommand = "SmartTemplate4.Util.showSupportPage(); setTimeout( function() {window.close();}, 200 );"
 								        class = "supportURL text-link"
 								        label = "__MSG_url.supportPage.label__" />
@@ -815,11 +817,6 @@
                       label = "__MSG_pref_silentUpdates__"
                       tooltiptext = "__MSG_pref_silentUpdates_tip__"
                       preference = "extensions.smartTemplate4.silentUpdate"
-                      disabled = "true" /> 
-                <checkbox id = "chkNoSplash"
-                      label = "__MSG_pref_noSplash__"
-                      tooltiptext = "__MSG_pref_noSplash_tip__"
-                      preference = "extensions.smartTemplate4.noSplash"
                       disabled = "true" /> 
               </hbox>
 						</groupbox>

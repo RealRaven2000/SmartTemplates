@@ -136,7 +136,7 @@ END LICENSE BLOCK */
            
     updateActions(addonName);
 
-    addAnimation('body');
+    // addAnimation('body');
 
   });  
 

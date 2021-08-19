@@ -119,7 +119,7 @@ SmartTemplate4.composer = {
     const fT = SmartTemplate4.fileTemplates,
           util = SmartTemplate4.Util;
     if (!fT.armedEntry || !fT.armedEntry.path) {
-      let wrn = util.getBundleString("st.fileTemplates.selectFromMenu", "Please select a template from the dropdown menu.");
+      let wrn = util.getBundleString("st.fileTemplates.selectFromMenu");
       SmartTemplate4.Message.display(
         wrn,
         "centerscreen,titlebar,modal,dialog",

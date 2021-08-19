@@ -1537,10 +1537,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			const PreviewLength = 500,
 			      startVars = msg.search(/%\S*%/),
 						isTruncateStart = (startVars > 10); // cut off text before first %var%
-			let txtAlert = util.getBundleString(
-            "st.notification.license.required", 
-            "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
-					txtParseTitle = util.getBundleString("st.notification.parsing", "Parsing variables:"),
+			let txtAlert = util.getBundleString("st.notification.license.required"),
+					txtParseTitle = util.getBundleString("st.notification.parsing"),
 			    parseString = 
 						(isTruncateStart ? "…\n" : "") +
 						msg.substr(isTruncateStart ? startVars : 0);
@@ -1786,7 +1784,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText"
+    "conditionalText", "clipboard"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -2575,6 +2573,49 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         case "conditionalText":
           util.addUsedPremiumFunction('conditionalText');
           return insertConditionalText(arg);
+        case "clipboard":
+          {
+            let cp = "";
+            const flavor = "text/unicode",
+                  flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
+                  xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+            if (!xferable) {
+              util.logToConsole("%clipboard% Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
+            }
+            else {
+              xferable.init(null);
+              let finalFlavor = "";
+              if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
+                finalFlavor = flavorHTML;
+              }
+              else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
+                finalFlavor = flavor;
+              }
+              
+              if (finalFlavor) {
+                xferable.addDataFlavor(finalFlavor);
+                // Get the data into our transferable.
+                Services.clipboard.getData(xferable, Services.clipboard.kGlobalClipboard);
+                
+                const data = {};
+                try {
+                  xferable.getTransferData(finalFlavor, data);
+                } catch (e) {
+                  // Clipboard doesn't contain data in flavor, return null.
+                  return "";
+                }
+
+                // There's no data available, return.
+                if (!data.value) {
+                  return "";
+                }
+
+                cp = data.value.QueryInterface(Ci.nsISupportsString).data;              
+              }
+              return cp;
+            }
+          }
+        
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
@@ -2903,7 +2944,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       let localFile = new FileUtils.File(pathUri);				
 			
 			if (!localFile.exists()) {
-        let wrn = util.getBundleString("st.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
+        let wrn = util.getBundleString("st.fileFunction.notExists");
 				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + pathUri);
 				return;
 			}

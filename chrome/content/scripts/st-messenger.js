@@ -26,7 +26,7 @@ async function onLoad(activatedWhileWindowOpen) {
                    label="__MSG_smartTemplate4.settings.label__"
                    tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
                    class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="window.openDialog('chrome://SmartTemplate4/content/settings.xhtml', 'Preferences', 'chrome,titlebar,toolbar,dependent,centerscreen,resizable');" />
+                   oncommand="SmartTemplate4.Util.openPreferences();" />
  
   
   </toolbarpalette>
@@ -53,6 +53,7 @@ async function onLoad(activatedWhileWindowOpen) {
   
   mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
+  mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
   
   for (let m in mylisteners) {
     if (m == "BackgroundUpdate")

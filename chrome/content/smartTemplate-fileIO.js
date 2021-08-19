@@ -17,7 +17,7 @@ SmartTemplate4.IO = {
 //******************************************************************************
 	export : function() {
 		//localized text for filePicker filter menu
-    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName", "SmartTemplates File");
+    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName");
 
 		var fp = Components.classes['@mozilla.org/filepicker;1'].createInstance(Components.interfaces.nsIFilePicker);
 		fp.init(window, "", fp.modeSave);
@@ -73,7 +73,7 @@ SmartTemplate4.IO = {
 //--------------------------------------------------------------------
 	import : function () {
 		//localized text for filePicker filter menu
-    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName", "SmartTemplates File");
+    var filterText = SmartTemplate4.Util.getBundleString("fpFilterName");
 
 		//Choose file
 		var fp = Components.classes['@mozilla.org/filepicker;1'].createInstance(Components.interfaces.nsIFilePicker);

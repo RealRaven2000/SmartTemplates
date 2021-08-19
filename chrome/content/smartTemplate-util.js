@@ -210,7 +210,7 @@ SmartTemplate4.Util = {
 		return gMsgCompose.type === Ci.nsIMsgCompType.ForwardInline;		
 	},
 	
-	getBundleString: function(id, defaultText, substitions = []) {
+	getBundleString: function(id, substitions = []) {
     // [mx-l10n]
     let localized = SmartTemplate4.Util.extension.localeData.localizeMessage(id, substitions);
     
@@ -219,7 +219,7 @@ SmartTemplate4.Util = {
 			theText = localized;
 		}
 		else {
-			theText = defaultText;
+			theText = "Error in getBundleString";
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
 		}
 		// theText = theText.replace("&lt;","<");
@@ -440,58 +440,50 @@ SmartTemplate4.Util = {
 			notifyBox = gNotification.notificationbox;
 		}
 		else {
-			let notificationId;
-      if (window.location.toString().endsWith("messengercompose.xhtml"))
-        notificationId = 'attachmentNotificationBox';
-      else
-        notificationId = 'mail-notification-box';
-			notifyBox = document.getElementById (notificationId);
+      if (window.location.toString().endsWith("messengercompose.xhtml")) {
+        notifyBox = gComposeNotification || document.getElementById ("attachmentNotificationBox"); // Tb91 vs 78
+      }
 			// composer/dialog windows fallback - show in main window if notification is not available in this window
 			if (!notifyBox) { 
-				notifyBox = util.Mail3PaneWindow.document.getElementById (notificationId);
+				notifyBox = util.Mail3PaneWindow.gNotification.notificationbox;
 			}
 		}
 		let title, theText, featureTitle='';
 		if (isProFeature) {
-			title = util.getBundleString("st.notification.premium.title", "Premium Feature");
+			title = util.getBundleString("st.notification.premium.title");
 			theText = 
 				  isList 
-						? util.getBundleString("st.notification.premium.text.plural",
-																 "{1} are Premium features, please upgrade to a SmartTemplates Pro License for using them permanently.")
-						: util.getBundleString("st.notification.premium.text",
-																 "{1} is a Premium feature, please upgrade to a SmartTemplates Pro License for using it permanently.");
+						? util.getBundleString("st.notification.premium.text.plural")
+						: util.getBundleString("st.notification.premium.text");
         featureTitle = 
 				  isList ? featureList.join(', ') : featureName; // nice l10n name for pro features
-						// util.getBundleString('SmartTemplate4.premium.title.' + featureName, featureName); 
+
 			theText = theText.replace ("{1}", "'" + featureTitle + "'");
 			if (additionalText)
 				theText = theText + '  ' + additionalText;
 		}
 		else {
 			title = "Licensing";
-			theText = 
-				util.getBundleString("st.notification.license.text",
-					"From now on, SmartTemplates requires at least a standard license. " +
-					"Read more about it on our licensing page.");
+			theText = util.getBundleString("st.notification.license.text");
 			let txtGracePeriod = util.gracePeriodText(util.licenseInfo.trialDays); 
 			theText = theText + '  ' + txtGracePeriod;
 		}
 		
 		let regBtn,
-        hotKey = util.getBundleString("st.notification.premium.btn.hotKey", "L"),
+        hotKey = util.getBundleString("st.notification.premium.btn.hotKey"),
 				nbox_buttons = [];
 				
 		switch(SmartTemplate4.Util.licenseInfo.status) {
 			case "Expired":
-				regBtn = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
+				regBtn = util.getBundleString("st.notification.premium.btn.renewLicense");
 			  break;
 			default:
 			  if (SmartTemplate4.Util.licenseInfo.keyType==2) { // standard license
-					regBtn = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
-					hotKey = util.getBundleString("st.notification.premium.btn.upgrade.hotKey", "U");
+					regBtn = util.getBundleString("st.notification.premium.btn.upgrade");
+					hotKey = util.getBundleString("st.notification.premium.btn.upgrade.hotKey");
 				}
 				else
-					regBtn = util.getBundleString("st.notification.premium.btn.getLicense", "Buy License!");
+					regBtn = util.getBundleString("st.notification.premium.btn.getLicense");
 		}
 				
 		if (notifyBox) {
@@ -522,7 +514,7 @@ SmartTemplate4.Util = {
         
         // licensing buttons
         if (!isProFeature) {
-          let donateMsg = util.getBundleString("st.notification.licensing", "More about licensing");
+          let donateMsg = util.getBundleString("st.notification.licensing");
           nbox_buttons.push(
             {
               label: donateMsg,
@@ -543,7 +535,7 @@ SmartTemplate4.Util = {
 			}
 			else {
 				// obsolete: button for disabling this notification in the future
-				let dontShow = util.getBundleString("st.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']'
+				let dontShow = util.getBundleString("st.notification.dontShowAgain") + ' [' + featureTitle + ']'
 				nbox_buttons.push(
 					{
 						label: dontShow,
@@ -562,18 +554,30 @@ SmartTemplate4.Util = {
 		
 		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
 			// it contains the number of free / trial days left
-			notifyBox.appendNotification( 
+      const imgSrc = isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png";
+      let newNotification = 
+        notifyBox.appendNotification( 
 			    theText, 
 					notificationKey, 
-					isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png" , 
+					imgSrc, 
 					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
-					nbox_buttons ); // , eventCallback
+					nbox_buttons );
+
+      // setting img was removed in Tb91  
+      if (newNotification.messageImage.tagName == "span") {
+        let container = newNotification.shadowRoot.querySelector(".container");
+        if (container) {
+          let im = document.createElement("img");
+          im.setAttribute("src", imgSrc);
+          container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
+        }
+      }          
 		}
 		else {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
 			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),  
 			    check = {value: false},   // default the checkbox to true  
-					dontShow = util.getBundleString("st.notification.dontShowAgain", "Do not show this message again.") + ' [' + featureTitle + ']',
+					dontShow = util.getBundleString("st.notification.dontShowAgain") + ' [' + featureTitle + ']',
 			    result = prompts.alert(null, title, theText); // , dontShow, check
 			// if (check.value==true) util.disableFeatureNotification(featureName);
 		}
@@ -623,8 +627,8 @@ SmartTemplate4.Util = {
 	
   gracePeriodText: function gracePeriodText(days) {
     let txt = (days>=0) ?
-      this.getBundleString("st.trialDays", "You have {0} trial days left.").replace("{0}", days) :
-      this.getBundleString("st.trialExpiry", "Your trial period expired {0} days ago.").replace("{0}", -days);
+      this.getBundleString("st.trialDays").replace("{0}", days) :
+      this.getBundleString("st.trialExpiry").replace("{0}", -days);
     return txt;
   },
   
@@ -917,7 +921,7 @@ SmartTemplate4.Util = {
 		let mainWindow = SmartTemplate4.Util.Mail3PaneWindow,
 		    util = mainWindow.SmartTemplate4.Util,
 		    version = util.VersionSanitized,
-		    sPrompt = util.getBundleString("st.confirmVersionLink", "Display the change log?")+" [version {1}]";
+		    sPrompt = util.getBundleString("st.confirmVersionLink")+" [version {1}]";
 		sPrompt = sPrompt.replace("{1}", version);
 		if (!ask || confirm(sPrompt)) {
 			util.openURL(null, util.VersionPage + "#" + version);
@@ -946,13 +950,13 @@ SmartTemplate4.Util = {
 	
 
 	showAboutConfig: function(clickedElement, filter) {
-		const name = "Preferences:ConfigManager";
-		const uri = "chrome://global/content/config.xhtml";
-
-		let mediator = Services.wm,
-		    w = mediator.getMostRecentWindow(name);
-		// parent window
-		let win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
+		const name = "Preferences:ConfigManager",
+		      mediator = Services.wm,
+          isTbModern = SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "85"),
+          uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
+		
+		let w = mediator.getMostRecentWindow(name),
+        win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
          		? clickedElement.ownerDocument.defaultView 
 						: window;
 
@@ -963,7 +967,8 @@ SmartTemplate4.Util = {
 		w.focus();
     w.addEventListener('load', 
       function () {
-        let flt = w.document.getElementById("textbox");
+        let id = (isTbModern) ? "about-config-search" : "textbox",
+            flt = w.document.getElementById(id);
         if (flt) {
           flt.value=filter;
           // make filter box readonly to prevent damage!
@@ -982,9 +987,7 @@ SmartTemplate4.Util = {
 			+ reservedWord
 			+ ((reservedWord[reservedWord.length - 1] != '%') ? '%' : '');
 
-		let ErrorString1 = SmartTemplate4.Util.getBundleString("contextError", 
-      "The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables"
-    );
+		let ErrorString1 = SmartTemplate4.Util.getBundleString("contextError");
 		let errorText = ErrorString1.replace("{1}", decoratedWord);
 
 		SmartTemplate4.Message.display(errorText,
@@ -2484,7 +2487,7 @@ SmartTemplate4.Util = {
           count = dictList.length,
           found = false;
       if (count==0) {
-        let wrn = util.getBundleString("st.notification.spellcheck.noDictionary", "No dictionaries installed.");
+        let wrn = util.getBundleString("st.notification.spellcheck.noDictionary");
         throw wrn;
       }
       
@@ -2531,13 +2534,12 @@ SmartTemplate4.Util = {
         }
       }
       else {
-        let wrn = util.getBundleString("st.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
+        let wrn = util.getBundleString("st.notification.spellcheck.notFound");
         throw wrn.replace("{0}", language);
       }
     }
     catch(ex) {
-      let msg = util.getBundleString("st.notification.spellcheck.error", 
-                  "Cannot switch spell checker language. Have you installed the correct dictionary?");
+      let msg = util.getBundleString("st.notification.spellcheck.error");
       SmartTemplate4.Message.display(msg + "\n" + ex, 
         "centerscreen,titlebar,modal,dialog",
         { ok: function() { ; }},
@@ -2580,6 +2582,12 @@ SmartTemplate4.Util = {
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }
+    if (el.classList.contains("newsflash")) {
+      SmartTemplate4.Util.openPreferences(); // will show splash screen instead.
+      return;
+    }
+    
+    
     let c = el.className,
         params = {
           inn:{ 
@@ -2594,6 +2602,22 @@ SmartTemplate4.Util = {
       null,
       params);
 
+  },
+  
+  openPreferences: function() {
+    if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
+      SmartTemplate4.Util.viewSplashScreen();
+      SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+      return;
+    }
+    
+    window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+    
+  },
+  
+  viewSplashScreen: function() {
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "splashScreen" });
   },
   
   get Accounts() {
@@ -2707,9 +2731,7 @@ SmartTemplate4.Util.firstRun =
 			util.logDebugOptional ("firstRun","finally - versionPage=" + util.VersionPage + "#" + pureVersion);
 			
 			let isPremium = util.hasLicense(true),
-			    updateVersionMessage = util.getBundleString (
-			                             "st.updateMessageVersion",
-			                             "SmartTemplates was successfully upgraded to version {1}!").replace("{1}",current);
+			    updateVersionMessage = util.getBundleString ("st.updateMessageVersion").replace("{1}",current);
 
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstRun){
@@ -3099,38 +3121,7 @@ SmartTemplate4.Message = {
 
 // Code migrated from smartTemplate-shim-ecma.js
 if (!SmartTemplate4.Shim) {
-	var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm", null);
-		
 	SmartTemplate4.Shim = {
-		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {
-			const Util = SmartTemplate4.Util,
-						Ci = Components.interfaces,
-						acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
-													.getService(Ci.nsIMsgAccountManager);
-													
-			for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-				try {
-					let idMail = '';
-					if (account.defaultIdentity) {
-						idMail = account.defaultIdentity.email;
-					}
-					else if (account.identities.length) {
-						idMail = account.identities[0].email; // outgoing identities
-					}
-					else {
-						Util.logDebug('getIdentityMailAddresses() found account without identities: ' + account.key);
-					}
-					if (idMail) {
-						idMail = idMail.toLowerCase();
-						if (idMail && MailAddresses.indexOf(idMail)==-1) 
-							MailAddresses.push(idMail);
-					}
-				}
-				catch(ex) {
-					Util.logException ('getIdentityMailAddresses()', ex);
-				}
-			}
-		} ,
 
 		cloneHeaders: function cloneHeaders(msgHdr, messageClone, dbg, appendProperty) {
 			for (let [propertyName, prop] of Object.entries(msgHdr)) {
@@ -3161,10 +3152,9 @@ if (!SmartTemplate4.Shim) {
 						Cc = Components.classes,
 						util = SmartTemplate4.Util;
 			let aAccounts=[],
-          accounts = Cc["@mozilla.org/messenger/account-manager;1"]
-                   .getService(Ci.nsIMsgAccountManager).accounts;
+          accounts = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
       aAccounts = [];
-      for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+      for (let ac in accounts) {
         aAccounts.push(ac);
       };
 			return aAccounts;

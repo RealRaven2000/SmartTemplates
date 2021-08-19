@@ -101,16 +101,13 @@ async function updateActions(addonName) {
 	        hide('whyPurchase');
           hide('extendLicenseListItem');
           hide('extend');
-	        let animation = document.getElementById('gimmick');
-	        if (animation)
-	          animation.parentNode.removeChild(animation);
           isActionList = false;
         }
       }
     }
   }
   else {
-    if (isSale) {
+    if (isSale && !isValid) { // not shown with Standard license either.
       show('specialOffer');
       hideSelectorItems('.donations');
       hide('whyPurchase');
@@ -120,6 +117,11 @@ async function updateActions(addonName) {
   if (!isActionList) {
     hide('actionBox');
   }  
+
+  let animation = document.getElementById('gimmick');
+  if (animation)
+    animation.parentNode.removeChild(animation);
+  
   // resize to contents if necessary...
   let win = await browser.windows.getCurrent(),
       wrapper = document.getElementById('innerwrapper'),

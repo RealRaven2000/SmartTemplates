@@ -104,10 +104,26 @@ END LICENSE BLOCK
     # [issue 137] SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
     # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template.
     # Removed all permissions for accounts, notifications
+    
+  Version 3.7 - WIP
+    # Make SmartTemplates compatible with Thunderbird 91
+    # - removed fixIterator
+    # - replaced Array types where necessary
+    # - Fixed sliding notifications in composer and icons in all sliding notifications
+    # - Fixed about:config dialogs
+    # Removed Utilities.openLinkExternally and replaced with messenger.windows.openDefaultBrowser
+    # Fixed "Buy License" button at bottom of Settings window
+    # Fixed: [issue 143] Template Files - Toolbar buttons missing
+    # [issue 118] new variable %clipboard% to insert clipboard contents (will be inserted as HTML)
+    # Splash screen: not shown immediately on update; removed message about permissions
+    # only show standard license upgrade special offer when within the date
 
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
+    # [issue 118] Feature Request: Insert clipboard contents
+    # [issue 142] Add feature to insert html Smart snippets within Composer
+  
   
   Version 2.x
     # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
@@ -290,8 +306,7 @@ var SmartTemplate4 = {
       // composer context:
       fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
       if (fileTemplateSource.failed) {
-        let text = util.getBundleString("st.fileTemplates.error.filePath",
-           "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+        let text = util.getBundleString("st.fileTemplates.error.filePath");
           
         SmartTemplate4.Message.display(
           text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
@@ -361,10 +376,8 @@ var SmartTemplate4 = {
         let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
         if (isChangeTemplate && gMsgCompose.bodyModified) {
           let cancelled = false,
-              w1 = util.getBundleString("st.notification.editedChangeWarning",
-                   "You have already typed text and want to change to template {0}"),
-              q1 = util.getBundleString("st.notification.editedChangeChallenge",
-                   "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?");            
+              w1 = util.getBundleString("st.notification.editedChangeWarning"),
+              q1 = util.getBundleString("st.notification.editedChangeChallenge");            
           SmartTemplate4.Message.display(
             w1.replace("{0}", fileTemplateSource.label) + "\n" + q1, 
             "centerscreen,titlebar,modal,dialog",
@@ -447,17 +460,22 @@ var SmartTemplate4 = {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
-    SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
+    SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup + ', ' , previousIdentity + ')');
     if (startup) {
       // Old function call
       this.original_LoadIdentity(startup);
     }
     else {
+      let isBodyModified = gMsgCompose.bodyModified,
+          composeType = util.getComposeType();
+      if (!previousIdentity) {
+        util.logDebug("loadIdenty called to change but without previous Identity; bailing out as something may have went wrong...");
+        this.original_LoadIdentity(false);
+        return;
+      }
       let newSig;
       // change identity on an existing message:
       // Check body modified or not
-      let isBodyModified = gMsgCompose.bodyModified,
-          composeType = util.getComposeType();
       // we can only reliable roll back the previous template and insert
       // a new one if the user did not start composing yet (otherwise danger
       // of removing newly composed content)
@@ -469,8 +487,7 @@ var SmartTemplate4 = {
           //[issue 64] reload the same template if it was remembered.
           let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
           if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
-            let text = util.getBundleString("st.fileTemplates.error.filePath",
-              "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+            let text = util.getBundleString("st.fileTemplates.error.filePath");
             alert(text); 
           }
           else
@@ -592,17 +609,21 @@ var SmartTemplate4 = {
         let labelMode = prefs.getMyIntPref('statusIconLabelMode');
         btn.classList.remove(...btn.classList); // clear classlist array
         btn.classList.add('statusbarpanel-iconic-text');
+        if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
+          btn.classList.add("newsflash"); // this should have precedence over other settings!
+          btn.classList.add('always');
+          return;
+        }
+        
         if (licenseInfo.licenseKey) {
           let days = licenseInfo.licensedDaysLeft,
               wrn = null;
           if (licenseInfo.isExpired)  {
-            let def = "SmartTemplates License has expired {0} days ago.".replace("{0}", licenseInfo.expiredDays);
-            wrn =  util.getBundleString("licenseStatus.expired", def, [licenseInfo.expiredDays]);
+            wrn =  util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
             btn.classList.add("alertExpired");
           }
           else if (days<15) {
-            let def = "SmartTemplates License will expire in {0} days!".replace("{0}", days)
-            wrn = util.getBundleString("licenseStatus.willExpire", def, [days]);
+            wrn = util.getBundleString("licenseStatus.willExpire", [days]);
             btn.classList.add("alert");
           }
           if (wrn) {
@@ -659,6 +680,8 @@ var SmartTemplate4 = {
     }, 2000);
     
     gMessageListeners.push(SmartTemplate4.messageListener);
+    
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels"}); // initialize new-related buttons in case there was an ignored update!
     util.logDebug("startUp complete");
   } ,
   
@@ -727,7 +750,33 @@ var SmartTemplate4 = {
     beforeStartHeaders() {
       return true;
     }
-  }
+  } ,
+  
+  // show news on update
+  updateNewsLabels: function() {
+    const util  = SmartTemplate4.Util;
+    let hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
+        btn = document.getElementById("SmartTemplate4Button"),
+        btnStatus = document.getElementById("SmartTemplate4Messenger");
+    if (btn) {
+      if (hasNews) {
+        let txt = util.getBundleString("SmartTemplateMainButton.updated")
+        btn.classList.add("newsflash");
+        btn.label = txt;
+        btn.setAttribute("tooltiptext", "Click this once to see the Splash screen and what's new in quickFilters.");
+        btnStatus.classList.add("newsflash");
+        btnStatus.label = txt;
+      }
+      else {
+        let txt = util.getBundleString("smartTemplate4.settings.label");
+        btn.classList.remove("newsflash");
+        btn.label = txt;
+        btn.setAttribute("tooltiptext", util.getBundleString("smartTemplate4.settings.tooltip"));
+        btnStatus.classList.remove("newsflash");
+        btnStatus.label = txt;
+      }
+    }
+  }  
 
 };  // Smarttemplate4
 
@@ -800,19 +849,19 @@ SmartTemplate4.calendar = {
     // these will affect the following variables: %A% %a% %B% %b% (week days and months)
     // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
     dayName: function dayName(n){ 
-      return this.bundle.GetStringFromName("day." + (n + 1) + ".name");  // SmartTemplate4.Util.getBundleString("day." + (n + 1) + ".name"); 
+      return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
     },
     
     shortDayName: function shortDayName(n) { 
-      return this.bundle.GetStringFromName("day." + (n + 1) + ".short");  // SmartTemplate4.Util.getBundleString("day." + (n + 1) + ".short");
+      return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
     },
     
     monthName: function monthName(n){ 
-      return this.bundle.GetStringFromName("month." + (n + 1) + ".name"); // SmartTemplate4.Util.getBundleString("month." + (n + 1) + ".name");
+      return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
     },
     
     shortMonthName: function shortMonthName(n) { 
-      return this.bundle.GetStringFromName("month." + (n + 1) + ".short"); // SmartTemplate4.Util.getBundleString("month." + (n + 1) + ".short");
+      return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
     }
 };   // SmartTemplate4.calendar 
   

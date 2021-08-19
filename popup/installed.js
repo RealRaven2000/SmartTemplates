@@ -75,7 +75,7 @@ addEventListener("click", async (event) => {
     
     updateActions(addonName);
 
-    addAnimation('body');
+    // addAnimation('body');
   });  
   
 

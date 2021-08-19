@@ -9,6 +9,8 @@
   END LICENSE BLOCK 
 */
 
+var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+
 
 SmartTemplate4.Settings = {
   dialogHeight: 0,
@@ -536,6 +538,15 @@ SmartTemplate4.Settings = {
     }
     
     window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
+    
+    // dialog buttons are in a shadow DOM which needs to load its own css.
+    // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
+    let linkEl = document.createElement("link");
+    linkEl.setAttribute("href", "chrome://smarttemplate4/content/skin/contribute.css");
+    linkEl.setAttribute("type", "text/css");
+    linkEl.setAttribute("rel", "stylesheet");
+    document.documentElement.shadowRoot.appendChild(linkEl);
+    
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
 	} ,
@@ -671,19 +682,19 @@ SmartTemplate4.Settings = {
       fp.init(window, "", fp.modeOpen); // second parameter: prompt
     switch (fileType) {
       case 'folder':
-        filterText = util.getBundleString("fpFolder","Folder");
+        filterText = util.getBundleString("fpFolder");
         fp.appendFilter(filterText, "*.");
         break;
       case 'style':
-        filterText = util.getBundleString("fpStyle", "Style Sheet");
+        filterText = util.getBundleString("fpStyle");
         fp.appendFilter(filterText, "*.css");
         break;
       case 'html':
-        filterText = util.getBundleString("fpHTMLFile", "HTML File / Text File");
+        filterText = util.getBundleString("fpHTMLFile");
         fp.appendFilter(filterText, "*.htm;*.html;*.txt");
         break;
       case 'image':
-        filterText = util.getBundleString("fpImageFile", "Image File");
+        filterText = util.getBundleString("fpImageFile");
          // fp.appendFilter(filterText, "*.png;*.jpg;*.jpeg;*.bmp;*.dib;*.ico;*.svg;*.gif;*.tif");
         fp.appendFilters(Ci.nsIFilePicker.filterImages);
         break;
@@ -719,11 +730,11 @@ SmartTemplate4.Settings = {
   getHeaderArgument: function getHeaderArgument(code) {
     let txtArg;
     if (code.indexOf('subject')>0)  {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.text', "Enter the text to add or set"));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.text"));
       return code.replace("text", txtArg);
     }
     else {
-      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.email', "Enter an email address"));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString("prompt.email"));
       return code.replace("abc@de.com", txtArg);
     }
   } ,
@@ -882,7 +893,7 @@ SmartTemplate4.Settings = {
 				
 		// (Stationery replacement) file lists: menupopup add below common?
 		if (SmartTemplate4.Settings.isFileTemplates) {
-			const label = util.getBundleString("st.fileTemplates", "File Templates");
+			const label = util.getBundleString("st.fileTemplates");
 			theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
 		}
 				
@@ -1308,7 +1319,7 @@ SmartTemplate4.Settings = {
 			fp.displayDirectory = defaultPath; // nsILocalFile
 		}    
 		fp.init(window, "", fileOpenMode); // second parameter: prompt
-    filterText = util.getBundleString("fpJsonFile", "JSON File");
+    filterText = util.getBundleString("fpJsonFile");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';
     if (mode == 'save') {
@@ -1482,7 +1493,8 @@ SmartTemplate4.Settings = {
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function updateLicenseOptionsUI(silent = false) {
-		const util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util,
+          showValidationMessage = SmartTemplate4.Settings.showValidationMessage;
 					
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
@@ -1510,7 +1522,6 @@ SmartTemplate4.Settings = {
 		validationDateSpace.collapsed = false;
     this.enablePremiumConfig(false);
     try {
-			var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
       let niceDate = decryptedDate;
       if (decryptedDate) {
         try { 
@@ -1523,11 +1534,11 @@ SmartTemplate4.Settings = {
         case "Valid":
           this.enablePremiumConfig(true);
 					if (SmartTemplate4.Util.licenseInfo.keyType==2) // standard license
-            SmartTemplate4.Settings.showValidationMessage(validationStandard, silent);
+            showValidationMessage(validationStandard, silent);
 					else
-						SmartTemplate4.Settings.showValidationMessage(validationPassed, silent);
+						showValidationMessage(validationPassed, silent);
           licenseDate.value = niceDate;
-          licenseDateLabel.value = util.getBundleString("label.licenseValid", "Your license is valid until:");
+          licenseDateLabel.value = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
 				  validationDate.collapsed=true;
@@ -1545,38 +1556,38 @@ SmartTemplate4.Settings = {
 						case 'ST':
 						case 'S1':
 						default: 
-						  SmartTemplate4.Settings.showValidationMessage(validationFailed, silent);
+						  showValidationMessage(validationFailed, silent);
 					}
 					if (addonName) {
-						SmartTemplate4.Settings.showValidationMessage(validationInvalidAddon, silent);
 						let txt = validationInvalidAddon.textContent;
 						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
-							txt += " " + util.getBundleString("st.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
+							txt += " " + util.getBundleString("st.licenseValidation.guessAddon").replace('{2}',addonName);
 						}
 						validationInvalidAddon.textContent = txt;
+						showValidationMessage(validationInvalidAddon, silent);
 					}
           break;
         case "Expired":
-          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired","Your license expired on:");
+          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired");
           licenseDate.value = niceDate;
-          SmartTemplate4.Settings.showValidationMessage(validationExpired, false); // always show
+          showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":
 				  validationDate.collapsed=true;
 					validationDateSpace.collapsed=true;
-          SmartTemplate4.Settings.showValidationMessage(validationInvalidEmail, silent);
+          showValidationMessage(validationInvalidEmail, silent);
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
         case "MailDifferent":
 				  validationDate.collapsed=true;
 					validationDateSpace.collapsed=true;
-          SmartTemplate4.Settings.showValidationMessage(validationFailed, silent);
-          SmartTemplate4.Settings.showValidationMessage(validationEmailNoMatch, silent);
+          showValidationMessage(validationFailed, true);
+          showValidationMessage(validationEmailNoMatch, silent);
           break;
         case "Empty":
-          SmartTemplate4.Settings.showTrialDate();
+          showTrialDate();
 				  // validationDate.collapsed=true;
 					// validationDateSpace.collapsed=true;
           break;
@@ -1612,8 +1623,6 @@ SmartTemplate4.Settings = {
         strLength = {},
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
-		
-		var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm') ;
 		
     Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
 
@@ -1666,15 +1675,13 @@ SmartTemplate4.Settings = {
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
-      let silentUpdateOption = getElement("chkSilentUpdates"),
-          hideSplash = getElement("chkNoSplash");
+      let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(licenseInfo.status) {
 				case "Valid":
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
           silentUpdateOption.disabled = false;
-          hideSplash.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1694,7 +1701,6 @@ SmartTemplate4.Settings = {
 				  break;
 				case "Expired":
           silentUpdateOption.disabled = true;
-          hideSplash.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
@@ -1703,7 +1709,6 @@ SmartTemplate4.Settings = {
 					break;
 				default: // no license
           silentUpdateOption.disabled = true;
-          hideSplash.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');
@@ -1738,7 +1743,8 @@ SmartTemplate4.Settings = {
 			util.logDebug("Cannot configure extra2 button, likely because this is a modern version of Thunderbird.");
 			return;
 		}
-		let donateButton = document.documentElement.getButton('extra2');
+    let dialog = document.getElementsByTagName("dialog")[0],
+        donateButton = dialog.getButton('extra2');
 		// el.selectedPanel is schroedingers cat; it may not exist on load 
 		// if the right hand side dialog is not expanded yet
 		//setTimeout(
@@ -1748,9 +1754,11 @@ SmartTemplate4.Settings = {
 				switch (selectedPanelId) {
 					case 'SmartTemplate4-Options-goPro':
 						donateButton.collapsed = true;
+            donateButton.setAttribute("hidden",true);
 						break;
 					default:
 						donateButton.collapsed = false;
+            donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
 							donateButton.addEventListener(
@@ -1796,23 +1804,22 @@ SmartTemplate4.Settings = {
 					
 		switch(validStatus) {
 			case  "extend":
-				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!");
+				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense");
 				btnLicense.collapsed = false
 				btnLicense.label = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
-					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
-						"This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));
 				return txtExtend;
 			case "renew":
-				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
+				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense");
 				btnLicense.label = txtRenew;
 			  return txtRenew;
 			case "buy":
-				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense", "Buy License!");
+				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense");
 				btnLicense.label = buyLabel;
 			  return buyLabel;
 			case "upgrade":
-				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
+				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade");
 				btnLicense.label = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;
