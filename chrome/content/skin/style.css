@@ -10,6 +10,24 @@
 	background: linear-gradient(to bottom, rgba(203,96,179,1) 0%, rgba(193,70,161,1) 50%, rgba(168,0,119,1) 51%, rgba(219,54,164,1) 100%) !important;
 }
 
+.showSplash, .showSplash:focus {
+  background-color: #006EB7 !important; /* blue */
+  background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+}
+.showSplash label, .showSplash:focus label {
+  color: white;
+}
+
+.showSplash:hover, .showSplash:focus:hover {
+	background-color: #ffd65e !important; /* yellow */
+	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+}
+
+.showSplash:hover label, .showSplash:focus:hover label {
+  color: rgb(60,0,0) !important;
+}
+
+
 .supportURL, .supportURL:focus {
 	background-image: linear-gradient(to bottom , rgb(100, 154, 174) 0%, rgb(79, 160, 181) 33%, rgb(43, 142, 169) 51%, rgb(47, 178, 217) 100%) !important;
 }
