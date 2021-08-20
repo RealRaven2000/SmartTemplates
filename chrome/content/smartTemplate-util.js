@@ -3117,55 +3117,6 @@ SmartTemplate4.Message = {
 };  // ST4.Message
 
 
-
-
-// Code migrated from smartTemplate-shim-ecma.js
-if (!SmartTemplate4.Shim) {
-	SmartTemplate4.Shim = {
-
-		cloneHeaders: function cloneHeaders(msgHdr, messageClone, dbg, appendProperty) {
-			for (let [propertyName, prop] of Object.entries(msgHdr)) {
-				// propertyName is what you want
-				// you can get the value like this: myObject[propertyName]
-				try {
-					let hasOwn = msgHdr.hasOwnProperty(propertyName),
-							isCopied = false;  // replace msgHdr[propertyName] with prop
-					if (hasOwn && typeof prop != "function" && typeof prop != "object") {
-						messageClone[propertyName] = msgHdr[propertyName]; // copy to the clone!
-						if (messageClone[propertyName])  // make sure we have some data! (e.g. author, subject, recipient, date, charset, messageId)
-							dbg.countInit ++;
-						isCopied = true;
-					}
-					if (isCopied) {
-						dbg.test = appendProperty(dbg.test, msgHdr, propertyName);
-					}
-					else {
-						dbg.test2 = appendProperty(dbg.test2, msgHdr, propertyName);
-					}
-				}
-				catch(ex) { ; }
-			}
-		} ,
-		
-		get Accounts() {
-			const Ci = Components.interfaces,
-						Cc = Components.classes,
-						util = SmartTemplate4.Util;
-			let aAccounts=[],
-          accounts = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).accounts;
-      aAccounts = [];
-      for (let ac in accounts) {
-        aAccounts.push(ac);
-      };
-			return aAccounts;
-		} ,
-		
-		dummy: ', <== end Shim properties here'
-	} // end of Shim definition
-}; // Shim code
-
-
-
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");

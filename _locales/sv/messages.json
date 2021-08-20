@@ -804,9 +804,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "VIKTIGT: Automatiska uppdateringar kanske inte ber dig att installera när en ny tilläggsversion kräver ytterligare behörigheter. Istället ser du denna varningsikon på Thunderbird-huvudmenyknappen, som du måste klicka för att slutföra uppdateringen. Begäran om behörighet krävs för att migrera till det nya tilläggssystemet. Annars kan vi inte leverera buggfixar / nya funktioner!"
-  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {

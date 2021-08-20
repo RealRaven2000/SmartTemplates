@@ -795,9 +795,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "DŮLEŽITÉ: Automatické aktualizace vás nemusí požádat o instalaci, kdykoli nová verze doplňku vyžaduje další oprávnění. Místo toho uvidíte tuto ikonu varování na tlačítku hlavní nabídky Thunderbirdu, na které musíte klepnutím dokončit aktualizaci. K migraci na nový systém rozšíření je vyžadováno povolení. Jinak nemůžeme dodat žádné opravy chyb / nové funkce!"
-  },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
     "placeholders": {

@@ -98,9 +98,6 @@
     "message": "Click notification",
     "description": "Title of the click notification."
   },
-  "on-permissions": {
-    "message": "IMPORTANTE: As atualizações automáticas podem não solicitar a instalação sempre que uma nova versão do complemento exigir permissões adicionais. Em vez disso, você verá este ícone de aviso no botão do menu principal do Thunderbird, no qual você deve clicar para concluir a atualização. Solicitar permissões é necessário para migrar para o novo sistema de extensão. Caso contrário, não podemos fornecer nenhuma correção de bugs / novos recursos!"
-  },
   "ongoing-work": {
     "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
     "placeholders": {

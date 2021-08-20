@@ -804,9 +804,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "BELANGRIJK: Automatische updates vragen u mogelijk niet om te installeren wanneer een nieuwe Add-on-versie aanvullende machtigingen vereist. In plaats daarvan ziet u dit waarschuwingspictogram op de Thunderbird-hoofdmenuknop, waarop u moet klikken om de update te voltooien. Voor het migreren naar het nieuwe uitbreidingssysteem is het aanvragen van machtigingen vereist. Anders kunnen we geen bugfixes / nieuwe functies leveren!"
-  },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
     "placeholders": {

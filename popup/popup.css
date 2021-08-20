@@ -98,17 +98,6 @@ canvas[collapsed=true]
   color: white;
 }
 
-#permissions-note.importantInfo {
-  background-color: rgba(50,0,0,1.0);
-  margin-bottom: 1.2em;
-}
-#permissions-note.importantInfo * {
-  background-color: rgba(50,0,0,1.0);
-  color: white;
-}
-#permissionsText {
-  padding-left: 1em; 
-}
 
 .importantInfo p, 
 .importantInfo ul, 
@@ -121,8 +110,7 @@ canvas[collapsed=true]
   background-color: transparent;
 }
 
-#specialBox,
-#permissions-note {
+#specialBox {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;

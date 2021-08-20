@@ -105,7 +105,7 @@ END LICENSE BLOCK
     # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template.
     # Removed all permissions for accounts, notifications
     
-  Version 3.7 - WIP
+  Version 3.7 - 20/08/2021
     # Make SmartTemplates compatible with Thunderbird 91
     # - removed fixIterator
     # - replaced Array types where necessary
@@ -118,6 +118,9 @@ END LICENSE BLOCK
     # Splash screen: not shown immediately on update; removed message about permissions
     # only show standard license upgrade special offer when within the date
 
+  Version 3.7.1 - WIP
+    # removed "workaround" experimental APIs (notifications, accounts)
+    # removed obsolete "Shim" code
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

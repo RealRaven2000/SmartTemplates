@@ -804,9 +804,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "WAŻNE: Aktualizacje automatyczne mogą nie wymagać instalacji za każdym razem, gdy nowa wersja dodatku wymaga dodatkowych uprawnień. Zamiast tego zobaczysz tę ikonę ostrzeżenia na przycisku menu głównego Thunderbirda, który musisz kliknąć, aby zakończyć aktualizację. Żądanie uprawnień jest wymagane do migracji do nowego systemu rozszerzeń. W przeciwnym razie nie możemy dostarczyć żadnych poprawek / nowych funkcji!"
-  },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
     "placeholders": {

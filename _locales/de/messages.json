@@ -801,9 +801,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "WICHTIG: Automatische Updates werden Sie möglicherweise nicht zur Installation auffordern, wenn eine neue Add-on-Version zusätzliche Berechtigungen erfordert. Stattdessen sehen Sie dann dieses Warnsymbol auf der Thunderbird-Hauptmenüschaltfläche, auf die Sie klicken müssen, um das Update abzuschließen. Für die Migration auf das neue Erweiterungssystem ist das Anfordern von Berechtigungen erforderlich. Ansonsten können wir keine Bugfixes / neue Features liefern!"
-  },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {

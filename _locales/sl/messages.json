@@ -804,9 +804,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "POMEMBNO: Samodejne posodobitve morda ne bodo zahtevale namestitve, kadar nova različica dodatka zahteva dodatna dovoljenja. Namesto tega boste na gumbu glavnega menija Thunderbirda videli to opozorilno ikono, ki jo morate klikniti za dokončanje posodobitve. Zahteva dovoljenj je potrebna za prehod na nov sistem razširitev. V nasprotnem primeru ne moremo dostaviti nobenih popravkov napak / novih funkcij!"
-  },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
     "placeholders": {

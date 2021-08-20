@@ -804,9 +804,6 @@
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
-  "on-permissions": {
-    "message": "TÄRKEÄÄ: Automaattiset päivitykset eivät välttämättä pyydä sinua asentamaan, kun uusi lisäosaversio vaatii lisäoikeuksia. Sen sijaan näet tämän varoituskuvakkeen Thunderbird-päävalikkopainikkeessa, jota sinun on napsautettava päivityksen viimeistelemiseksi. Uuteen laajennusjärjestelmään siirtyminen edellyttää käyttöoikeuksien pyytämistä. Muuten emme voi toimittaa virhekorjauksia / uusia ominaisuuksia!"
-  },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
     "placeholders": {
