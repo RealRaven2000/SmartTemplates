@@ -500,6 +500,12 @@
   "insert.label": {
     "message": "Sisipkan Variabel"
   },
+  "insertSnippet.button": {
+    "message": "Sisipkan Cuplikan"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Masukkan Cuplikan HTML Cerdas"
+  },
   "intro": {
     "message": "Lisensi tahunan SmartTemplates Pro memberikan anda semua fitur premium selama setahun. Itu juga memungkinkan kami untuk mendukung dan menumbuhkan produk lebih lanjut dan mengubahnya menjadi sesuatu yang bahkan lebih menakjubkan."
   },
@@ -1064,6 +1070,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates telah diperbarui!"
+  },
+  "snippets.head": {
+    "message": "Cuplikan Cerdas"
+  },
+  "snippets.label": {
+    "message": "Fragmen HTML untuk dimasukkan ke dalam Komposer"
   },
   "spec_form.cap": {
     "message": "Address Field Switches"

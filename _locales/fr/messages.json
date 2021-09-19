@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Insérer une variable"
   },
+  "insertSnippet.button": {
+    "message": "Insérer un extrait"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Insérer un extrait HTML intelligent"
+  },
   "intro": {
     "message": "Une licence annuelle SmartTemplates Pro vous donne accès aux fonctionnalités premium pour un an. Elle nous permet également de fournir de l'aide et faire évoluer le produit pour en faire quelque chose d'encore plus incroyable."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates a été mis à jour "
+  },
+  "snippets.head": {
+    "message": "Extraits intelligents"
+  },
+  "snippets.label": {
+    "message": "Fragments HTML à insérer dans Composer"
   },
   "spec_form.cap": {
     "message": "Commutateurs de champ d'adresse"

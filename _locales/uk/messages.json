@@ -500,6 +500,12 @@
   "insert.label": {
     "message": "Вставити змінну"
   },
+  "insertSnippet.button": {
+    "message": "Вставити фрагмент"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Вставте розумний фрагмент HTML"
+  },
   "intro": {
     "message": "Щорічна ліцензія SmartTemplates Pro надає вам всі преміум-функції протягом року. Це також дозволяє нам підтримувати та розвивати продукт ще більше і перетворити його на щось ще більш приголомшливе."
   },
@@ -1064,6 +1070,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates оновлено!"
+  },
+  "snippets.head": {
+    "message": "Розумні фрагменти"
+  },
+  "snippets.label": {
+    "message": "HTML -фрагменти для вставки в Composer"
   },
   "spec_form.cap": {
     "message": "Перемикачі полів адреси"

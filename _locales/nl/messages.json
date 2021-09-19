@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Variabele invoegen"
   },
+  "insertSnippet.button": {
+    "message": "Fragment invoegen"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Een slim HTML-fragment invoegen"
+  },
   "intro": {
     "message": "Een jaarlicentie voor SmartTemplates Pro geeft u een jaar lang alle premiumfuncties. U stelt ons er ook mee in staat het product verder te ondersteunen en laten groeien en het te veranderen in iets dat nog geweldiger is."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates is bijgewerkt!"
+  },
+  "snippets.head": {
+    "message": "Slimme fragmenten"
+  },
+  "snippets.label": {
+    "message": "HTML-fragmenten om in Composer in te voegen"
   },
   "spec_form.cap": {
     "message": "Adresveldschakelaars"

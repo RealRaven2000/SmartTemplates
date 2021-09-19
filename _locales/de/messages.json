@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Variable einfügen"
   },
+  "insertSnippet.button": {
+    "message": "Fragment einfügen"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Intelligentes HTML-Fragments einfügen"
+  },
   "intro": {
     "message": "Eine Jahreslizenz für SmartTemplates Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Add-on weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplates weiter fantastisch!"
   },
@@ -1175,6 +1181,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates wurde aktualisiert!"
+  },
+  "snippets.head": {
+    "message": "Intelligente Fragmente"
+  },
+  "snippets.label": {
+    "message": "HTML-Fragmente zum Einfügen in Composer"
   },
   "spec_form.cap": {
     "message": "Adressfeldschalter"

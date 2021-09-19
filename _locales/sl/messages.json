@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Vstavi spremenljivko"
   },
+  "insertSnippet.button": {
+    "message": "Vstavi izrezek"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Vstavite pameten delček HTML"
+  },
   "intro": {
     "message": "Letno dovoljenje za SmartTemplates Pro vam omogoča dostop do vseh lastnosti premium za eno leto. Omogoča nam tudi, da izdelek še naprej razvijamo in podpiramo in ga preobrazimo v še nekaj bolj čudovitega."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates je bil posodobljen!"
+  },
+  "snippets.head": {
+    "message": "Pametni izrezki"
+  },
+  "snippets.label": {
+    "message": "Odlomki HTML za vstavljanje v Composer"
   },
   "spec_form.cap": {
     "message": "Stikala za naslovno polje"

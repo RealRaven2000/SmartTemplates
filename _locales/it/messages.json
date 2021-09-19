@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Inserisci variabile"
   },
+  "insertSnippet.button": {
+    "message": "Inserisci snippet"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Inserisci uno snippet HTML intelligente"
+  },
   "intro": {
     "message": "Una licenza annuale di SmartTemplates Pro consente l'accesso a tutte le caratteristiche della versione Premium per un periodo di un anno. Inoltre favorisce il supporto e l'ulteriore sviluppo del prodotto, così da renderlo ancor più completo."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates è stato aggiornato!"
+  },
+  "snippets.head": {
+    "message": "Frammenti intelligenti"
+  },
+  "snippets.label": {
+    "message": "Frammenti HTML da inserire in Composer"
   },
   "spec_form.cap": {
     "message": "Campi indirizzo"

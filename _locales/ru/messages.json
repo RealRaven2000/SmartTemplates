@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Вставить поле"
   },
+  "insertSnippet.button": {
+    "message": "Вставить фрагмент"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Вставьте смарт-фрагмент HTML"
+  },
   "intro": {
     "message": "Годовая лицензия позволяет использовать премиум-функции один год. У нас же появляется возможность поддерживать и расширять продукт, делая его более значимым."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates обновлен!"
+  },
+  "snippets.head": {
+    "message": "Умные сниппеты"
+  },
+  "snippets.label": {
+    "message": "HTML-фрагменты для вставки в Composer"
   },
   "spec_form.cap": {
     "message": "Переключатели адресного поля"

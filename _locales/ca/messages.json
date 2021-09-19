@@ -573,6 +573,12 @@
   "insert.label": {
     "message": "Inserir una variabla"
   },
+  "insertSnippet.button": {
+    "message": "Inseriu un fragment"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Inseriu un fragment HTML intel·ligent"
+  },
   "intro": {
     "message": "Una llicència anual per a SmartTemplates Pro us ofereix totes les funcions premium durant un any. També ens permet donar suport i fer créixer el producte i convertir-lo en quelcom encara més impressionant."
   },
@@ -1179,6 +1185,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates s'ha actualitzat."
+  },
+  "snippets.head": {
+    "message": "Fragments intelligents"
+  },
+  "snippets.label": {
+    "message": "Fragments HTML per inserir a Composer"
   },
   "spec_form.cap": {
     "message": "Canviadors de camp d’adreça"

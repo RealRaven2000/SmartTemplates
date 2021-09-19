@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Lisää kenttä"
   },
+  "insertSnippet.button": {
+    "message": "Lisää fragmentti"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Lisää älykäs HTML -katkelma"
+  },
   "intro": {
     "message": "SmartTemplates Pro tarjoaa vuosittaisen lisenssin kaikille premium-ominaisuuksille vuodeksi. Sen avulla voimme myös tukea ja kasvattaa tuotetta entisestään ja kääntää sen entistäkin mahtavammaksi."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates päivitettiin!"
+  },
+  "snippets.head": {
+    "message": "Älykkäät katkelmat"
+  },
+  "snippets.label": {
+    "message": "HTML-fragmentit, jotka lisätään säveltäjään"
   },
   "spec_form.cap": {
     "message": "Osoitekentän kytkimet"

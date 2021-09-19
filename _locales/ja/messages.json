@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "挿入"
   },
+  "insertSnippet.button": {
+    "message": "スニペットを挿入"
+  },
+  "insertSnippet.tooltip": {
+    "message": "スマートHTMLスニペットを挿入する"
+  },
   "intro": {
     "message": "SmartTemplates Pro の年間ライセンスは、すべてのプレミアム機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。"
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates が更新されました！"
+  },
+  "snippets.head": {
+    "message": "スマートスニペット"
+  },
+  "snippets.label": {
+    "message": "Composerに挿入するためのHTMLフラグメント"
   },
   "spec_form.cap": {
     "message": "アドレスフィールドスイッチ"

@@ -299,9 +299,10 @@
 									onchange="SmartTemplate4.Settings.selectFileCase(this, event);"
 					>
 						<tabs class="actionTabs">
-							<tab id = "file.newTab"     label = "__MSG_pref_new.tab__" class = "NewTab"/>
-							<tab id = "file.respondTab" label = "__MSG_pref_rsp.tab__" class = "RespondTab" />
-							<tab id = "file.forwardTab" label = "__MSG_pref_fwd.tab__" class = "ForwardTab" />
+							<tab id = "file.newTab"      label = "__MSG_pref_new.tab__" class = "NewTab"/>
+							<tab id = "file.respondTab"  label = "__MSG_pref_rsp.tab__" class = "RespondTab" />
+							<tab id = "file.forwardTab"  label = "__MSG_pref_fwd.tab__" class = "ForwardTab" />
+              <tab id = "file.snippetsTab" label = "Smart Snippets" class = "SnippetsTab" />
 						</tabs>
 						
 						<tabpanels flex = "1" 
@@ -358,44 +359,40 @@
 													<spacer flex="1" />
 												</toolbar>						
 											</hbox>
-											<hbox>
-											
-												<grid flex="1">
-													<columns>
-														<column id="colFileTemplates1" />
-														<column id="colFileTemplates2" flex = "2" />
-													</columns>
-													<rows>
-														<row align="left" id="labelRow">
-															<label>__MSG_fileTemplates.file.path__</label>
-															<hbox flex="3">
-                                <vbox flex="2">
-                                  <html:input
-                                        type="text"
-                                        id="txtTemplatePath" 
-                                        />
-                                </vbox>
-																<toolbarbutton 
-																				id="btnPickTemplate" 
-																				tooltiptext="__MSG_fileTemplates.file.open__" 
-																				oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
-																				/>
-															</hbox>
-														</row>
-														<row align="left" id="labelRow">
-															<label >__MSG_fileTemplates.file.title__</label>
-                              <vbox flex="3" >
-                                <html:input
-                                    type="text"
-                                    id="txtTemplateTitle" 
-                                    tooltiptext="__MSG_fileTemplates.file.title.tooltip__"
-                                    onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
-                                   />
-                              </vbox>
-														</row>
-													</rows>
-												</grid>
-											</hbox>
+                      <div id="fileSettings" >
+                        <div>
+                          <div class="settingsRow">
+                            <label>__MSG_fileTemplates.file.path__</label>
+                            <html:input
+                                  type="text"
+                                  id="txtTemplatePath" 
+                                  />
+                            <toolbarbutton 
+                                    id="btnPickTemplate" 
+                                    tooltiptext="__MSG_fileTemplates.file.open__" 
+                                    oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
+                                    />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="settingsRow">
+                            <label>__MSG_fileTemplates.file.title__</label>
+                            <html:input
+                              type="text"
+                              id="txtTemplateTitle" 
+                              title="__MSG_fileTemplates.file.title.tooltip__"
+                              onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+                              />
+                            <label>Category:</label>
+                            <html:input
+                              type="text"
+                              id="txtTemplateCategory"
+                              title="Create a submenu to group templates"
+                              onblur="SmartTemplate4.fileTemplates.onEditLabel();"
+                              />
+                          </div>
+                        </div>
+                      </div>
 											<spacer flex="1" />
 										</vbox>
 									</vbox>
@@ -435,6 +432,22 @@
 									</vbox>									
 								</groupbox>
 							</tabpanel>
+              
+							<!-- ######## Content [Snippets] File Tab ######## -->
+							<tabpanel class = "snippetsGroup fileTemplatePanel" id="snippets-fileTemplates">
+								<groupbox  flex = "1" class="transparent">
+									<hbox class="groupbox-title"><label class="header">__MSG_snippets.head__</label></hbox>
+									<vbox flex="1" class="vfield">
+										<label value="__MSG_snippets.label__" />
+										<richlistbox 
+											id="templateList.snippets" 
+											flex="1"
+											onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+										</richlistbox>
+									</vbox>									
+								</groupbox>
+							</tabpanel>
+                            
 						</tabpanels>
 						
 						

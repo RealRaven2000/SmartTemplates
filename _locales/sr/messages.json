@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Убаци променљиву"
   },
+  "insertSnippet.button": {
+    "message": "Уметни исечак"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Уметните паметни ХТМЛ исечак"
+  },
   "intro": {
     "message": "Годишња лиценца за SmartTemplates вам пружа све премијум могућности годину дана. Такође, помаже нам да развијемо и усавршимо производ, како би био још бољи."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates је ажуриран!"
+  },
+  "snippets.head": {
+    "message": "Паметни исечци"
+  },
+  "snippets.label": {
+    "message": "ХТМЛ фрагменти за уметање у Цомпосер"
   },
   "spec_form.cap": {
     "message": "Прекидачи поља адресе"

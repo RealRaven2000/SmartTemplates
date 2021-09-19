@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Vložit proměnnou"
   },
+  "insertSnippet.button": {
+    "message": "Vložte úryvek"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Vložte úryvek Smart HTML"
+  },
   "intro": {
     "message": "Roční licence pro SmartTemplates Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější."
   },
@@ -1169,6 +1175,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates byl aktualizován!"
+  },
+  "snippets.head": {
+    "message": "Chytré úryvky"
+  },
+  "snippets.label": {
+    "message": "Fragmenty HTML pro vkládání do Composeru"
   },
   "spec_form.cap": {
     "message": "Přepínače adresního pole"

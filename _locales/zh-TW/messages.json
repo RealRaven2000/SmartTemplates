@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "插入變數"
   },
+  "insertSnippet.button": {
+    "message": "插入片段"
+  },
+  "insertSnippet.tooltip": {
+    "message": "插入智能 HTML 片段"
+  },
   "intro": {
     "message": "SmartTemplate®Pro的年度许可证为您提供一年的所有高级功能。 它还使我们能够进一步支持和发展产品，并将其变得更加令人敬畏。"
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "智能模板已更新！"
+  },
+  "snippets.head": {
+    "message": "智能片段"
+  },
+  "snippets.label": {
+    "message": "用於在 Composer 中插入的 HTML 片段"
   },
   "spec_form.cap": {
     "message": "地址字段變量"

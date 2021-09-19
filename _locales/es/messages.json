@@ -572,6 +572,12 @@
   "insert.label": {
     "message": "Insertar campo"
   },
+  "insertSnippet.button": {
+    "message": "Insertar fragmento"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Insertar un fragmento de HTML inteligente"
+  },
   "intro": {
     "message": "Una licencia anual para SmartTemplates Pro le proporciona todas las funcionalidades Premium durante un año. También nos permite mantener y seguir desarrollando el producto y convertirlo en algo aún mejor."
   },
@@ -1178,6 +1184,12 @@
   },
   "SmartTemplateMainButton.updated": {
     "message": "¡SmartTemplates fue actualizado!"
+  },
+  "snippets.head": {
+    "message": "Fragmentos inteligentes"
+  },
+  "snippets.label": {
+    "message": "Fragmentos HTML para insertar en Composer"
   },
   "spec_form.cap": {
     "message": "Conmutadores de campo de dirección"
