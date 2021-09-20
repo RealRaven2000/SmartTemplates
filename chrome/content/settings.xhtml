@@ -382,13 +382,15 @@
                               id="txtTemplateTitle" 
                               title="__MSG_fileTemplates.file.title.tooltip__"
                               onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+                              onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
                               />
-                            <label>Category:</label>
+                            <label>__MSG_template.category__:</label>
                             <html:input
                               type="text"
                               id="txtTemplateCategory"
-                              title="Create a submenu to group templates"
+                              title="__MSG_template.category.tooltip__"
                               onblur="SmartTemplate4.fileTemplates.onEditLabel();"
+                              onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
                               />
                           </div>
                         </div>

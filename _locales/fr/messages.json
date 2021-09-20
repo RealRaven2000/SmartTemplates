@@ -1458,6 +1458,9 @@
   "testDriveS": {
     "message": "Vous pouvez tester les fonctionnalités premium avec la licence standard, mais elles peuvent être légèrement limitées."
   },
+  "template.category": {
+    "message": "Catégorie"
+  },
   "thanks-for-installing-intro": {
     "message": "Merci d'avoir installé $addonName$.",
     "placeholders": {
@@ -1562,7 +1565,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Nouvelle variable %clipboard% pour insérer le contenu du presse-papiers.{L2} {L1} Cet écran de démarrage ne s'affiche pas immédiatement après la mise à jour. Vous pouvez l'ouvrir à tout moment depuis l'onglet À propos.{L2} {L1}Comme d'habitude, de nombreux bugs ont été corrigés - voir le lien ci-dessous pour plus d'informations.{L2}"
+    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Vous pouvez désormais insérer des extraits HTML intelligents lors de la modification de votre e-mail. Consultez le journal des modifications ci-dessous pour plus de détails.{image1}{L2} {L1}Ajout de sous-menus de catégorie aux listes de modèles de structure.{L2} {L1}Corrigé : l'enregistrement/le chargement des modèles de compte échouait sans licence Pro.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

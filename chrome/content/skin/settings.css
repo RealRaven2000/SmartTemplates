@@ -304,6 +304,14 @@ groupbox.transparent .groupbox-title {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/mail-fwd.png") !important;
 }
 
+.SnippetsTab {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg") !important;
+}
+.SnippetsTab .tab-icon {
+  height: 16px;
+  width: 16px;
+}
+
 /** right hand tabs **/
 #fieldsTab {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/variable.png") !important;
@@ -324,7 +332,7 @@ groupbox.transparent .groupbox-title {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/fg-user-support.png") !important;
 }
 
-.newGroup, .forwardGroup , .replyGroup, .aboutGroup {
+.newGroup, .forwardGroup , .replyGroup, .aboutGroup, .snippetsGroup {
 	background-position: top right;
 	background-repeat: no-repeat;
 }
@@ -339,6 +347,13 @@ groupbox.transparent .groupbox-title {
 .replyGroup {
 	background-image: url("chrome://smartTemplate4/content/skin/icons/large/mail_replay.png");
 }
+
+.snippetsGroup {
+  background-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg");
+  background-size: 48px 48px;
+  background-repeat: no-repeat !important;
+}
+
 .aboutGroup {
 	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon.png");
 }
@@ -871,4 +886,26 @@ label.plain-link:hover {
 }
 #ST4-Panels {
   padding-top: 4px;
+}
+
+#fileSettings {
+  display: block;
+}
+#fileSettings > div {
+  display: block;
+}
+
+
+#fileSettings div.settingsRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#fileSettings div.settingsRow input[type="text"] {
+  flex: 3;
+}
+
+#fileSettings div.settingsRow #txtTemplateCategory[type="text"] {
+  flex: 1;
 }

@@ -1458,6 +1458,9 @@
   "testDriveS": {
     "message": "Voit testata premium-ominaisuuksia tavallisella lisenssillä, mutta ne voivat olla hieman rajoitettuja."
   },
+  "template.category": {
+    "message": "Kategoria"
+  },
   "thanks-for-installing-intro": {
     "message": "Kiitos $addonName$ -asennuksesta.",
     "placeholders": {
@@ -1562,7 +1565,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list" : {
-    "message" : "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Uusi muuttuja % leikepöydälle % leikepöydän sisällön lisäämiseksi. {L2} {L1} Tämä aloitusnäyttö ei näy heti päivityksen jälkeen. Voit avata sen milloin tahansa Tietoja -välilehdeltä. {L2} {L1} Kuten tavallista, lukuisia virheitä korjattiin - katso lisätietoja alla olevasta linkistä. {L2}"
+    "message" : "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

@@ -58,7 +58,6 @@ async function updateActions(addonName) {
   let isSale = (currentTime < endSale);
   
   if (!isSale) { 
-    debugger;
     hide('specialOffer');
     hideSelectorItems('.standardUpgradeSale');
   }

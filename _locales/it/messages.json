@@ -1458,6 +1458,9 @@
   "testDriveS": {
     "message": "È possibile testare le caratteristiche 'Premium' sottoscrivendo la licenza 'standard', con delle piccole restrizioni."
   },
+  "template.category": {
+    "message": "Categoria"
+  },
   "thanks-for-installing-intro": {
     "message": "Grazie per aver installato $addonName$.",
     "placeholders": {
@@ -1562,7 +1565,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ora è compatibile con Thunderbird 91. Questo lavoro è stato pagato tramite licenze, grazie mille per l'aiuto!{L2} {L1}Nuova variabile %clipboard% per inserire il contenuto degli appunti.{L2} {L1} Questa schermata iniziale non viene visualizzata immediatamente dopo l'aggiornamento. Puoi aprirlo in qualsiasi momento dalla scheda Informazioni.{L2} {L1}Come al solito, sono stati corretti numerosi bug: consulta il link sottostante per maggiori informazioni.{L2}"
+    "message": "{L1}SmartTemplates ora è compatibile con Thunderbird 91. Questo lavoro è stato pagato tramite licenze, grazie mille per l'aiuto!{L2} {L1}Ora puoi inserire frammenti di HTML Smart durante la modifica della tua email. Vedere il registro delle modifiche di seguito per tutti i dettagli.{image1}{L2} {L1}Aggiunto sottomenu di categoria agli elenchi di modelli di struttura.{L2} {L1}Risolto: salvataggio/caricamento di modelli di account non riusciti senza licenza Pro.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

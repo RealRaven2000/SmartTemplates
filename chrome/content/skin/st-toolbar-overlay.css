@@ -1,0 +1,35 @@
+	
+#smarttemplate4-cleandeferred,	
+#compose-toolbox > toolbar[brighttext] #smarttemplate4-cleandeferred.toolbarbutton-1 {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/st4-cleandeferred.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}	
+
+
+#smarttemplate4-changeTemplate,
+#compose-toolbox > toolbar[brighttext] #smarttemplate4-changeTemplate.toolbarbutton-1 {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/select-template.svg");
+}
+
+#smarttemplate4-changeTemplate .toolbarbutton-icon,
+#smarttemplate4-insertSnippet .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#smarttemplate4-insertSnippet,
+#compose-toolbox > toolbar[brighttext] #smarttemplate4-insertSnippet.toolbarbutton-1 {
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/snippets.svg");
+}
+
+
+toolbar[brighttext="true"] #smarttemplate4-cleandeferred.toolbarbutton-1 {
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/st4-cleandeferred-bright.png") !important;
+}
+
+#smarttemplate4-cleandeferred:hover,
+#compose-toolbox > toolbar[brighttext]  #smarttemplate4-cleandeferred.toolbarbutton-1:hover { 
+  -moz-image-region: rect(24px 24px 48px 0px); 
+}
+
+

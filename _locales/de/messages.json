@@ -1455,6 +1455,9 @@
   "testDriveS": {
     "message": "Premium Funktionen können in der Standardlizenz getestet werden, in manchen Fällen mit eingeschränktem Funktionsumfang."
   },
+  "template.category": {
+    "message": "Kategorie"
+  },
   "thanks-for-installing-intro": {
     "message": "Danke dass Sie $addonName$ installiert haben.",
     "placeholders": {
@@ -1559,7 +1562,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Neue Variable %clipboard% zum Einfügen von Inhalten der Zwischenablage.{L2} {L1} Dieser Begrüßungsbildschirm wird nicht sofort nach dem Update angezeigt. Sie können es jederzeit über die Registerkarte 'Info' öffnen.{L2} {L1}Wie üblich wurden zahlreiche Fehler behoben - siehe den Link unten für weitere Informationen.{L2}"
+    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

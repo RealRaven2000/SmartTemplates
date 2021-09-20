@@ -1458,6 +1458,9 @@
   "testDriveS": {
     "message": "Du kan provköra premiumfunktionerna med standardlicensen, men de kan vara något begränsade."
   },
+  "template.category": {
+    "message": "Kategori"
+  },
   "thanks-for-installing-intro": {
     "message": "Tack för att du installerade $addonName$.",
     "placeholders": {
@@ -1562,7 +1565,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Ny variabel % urklipp % för att infoga urklippsinnehåll. {L2} {L1} Denna stänkskärm visas inte omedelbart efter uppdateringen. Du kan öppna den när som helst från fliken Om. {L2} {L1} Som vanligt har många buggar åtgärdats - se länken nedan för mer information. {L2}"
+    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

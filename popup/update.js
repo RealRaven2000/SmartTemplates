@@ -121,7 +121,8 @@ END LICENSE BLOCK */
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>");
+        .replace(/\{L2\}/g,"</li>")
+        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");
       
     }
     

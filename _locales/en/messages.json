@@ -1458,6 +1458,12 @@
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
   },
+  "template.category": {
+    "message": "Category"
+  },
+  "template.category.tooltip": {
+    "message": "Create a submenu to group templates"
+  },
   "thanks-for-installing-intro": {
     "message": "Thank you for installing $addonName$.",
     "placeholders": {
@@ -1562,7 +1568,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}New variable %clipboard% to insert clipboard contents.{L2} {L1}This splash screen is not shown immediately after update. You can open it any time from the About Tab.{L2} {L1}As usual, numerous bugs were fixed - see the link below for more info.{L2}"
+    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail.{image1}{L2} {L1}Added category submenus to structure template lists.{L2} {L1}Fixed: Saving / Loading account templates failed without Pro License.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

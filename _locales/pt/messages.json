@@ -143,6 +143,9 @@
       }  
     }
   },
+  "template.category": {
+    "message": "Categoria"
+  },
   "thanks-for-installing-intro": {
     "message": "Obrigado por instalar $addonName$.",
     "placeholders": {
@@ -175,7 +178,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Nova variável% clipboard% para inserir conteúdo da área de transferência. {L2} {L1} Esta tela inicial não é exibida imediatamente após a atualização. Você pode abri-lo a qualquer momento na guia Sobre. {L2} {L1} Como de costume, vários bugs foram corrigidos - consulte o link abaixo para obter mais informações. {L2}"
+    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o registro de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Adicionados submenus de categoria às listas de modelos de estrutura. {L2} {L1} Corrigido: falha ao salvar / carregar modelos de conta sem licença Pro. {L2}"
   },
   "window-title": {
     "message": "Bem-vindo a $addonName$",

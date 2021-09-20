@@ -1458,6 +1458,9 @@
   "testDriveS": {
     "message": "Preskusno vožnjo lahko opravite s standardno licenco, vendar so lahko rahlo omejeni."
   },
+  "template.category": {
+    "message": "Kategorija"
+  },
   "thanks-for-installing-intro": {
     "message": "Hvala, ker ste namestili $addonName$.",
     "placeholders": {
@@ -1562,7 +1565,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Nova spremenljivka %clipboard% za vstavljanje vsebine odložišča. {L2} {L1} Ta začetni zaslon se ne prikaže takoj po posodobitvi. Odprete ga lahko kadar koli na zavihku »Vizitka«. {L2} {L1} Kot običajno so bile odpravljene številne napake - za več informacij glejte spodnjo povezavo. {L2}"
+    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Zdaj lahko med urejanjem e -pošte vstavljate pametne delčke HTML. Za vse podrobnosti glejte spodnji dnevnik sprememb. {image1} {L2} {L1} Podmeniji kategorij so bili dodani na seznam predlogov za strukturo. {L2} {L1} Odpravljeno: shranjevanje / nalaganje predlog računa ni uspelo brez licence Pro. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
