@@ -27,6 +27,16 @@
   -moz-image-region: rect(0px 24px 24px 0px);
 }
 
+#smarttemplate4-changeTemplate .toolbarbutton-icon,
+#smarttemplate4-insertSnippet .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#smarttemplate4-insertSnippet,
+#compose-toolbox > toolbar[brighttext] #smarttemplate4-insertSnippet.toolbarbutton-1 {
+  list-style-image: url("chrome://smartTemplate4/skin/icons/snippets.svg");
+}
 
 
 toolbar[brighttext="true"] #smarttemplate4-cleandeferred.toolbarbutton-1 {
@@ -42,6 +52,7 @@ toolbar[brighttext="true"] #smarttemplate4-cleandeferred.toolbarbutton-1 {
 #SmartTemplate4-replaceDeferred * {
 	font-weight: bold !important;
 }
+
 
 	
 smarttemplate { /* green tokens */
