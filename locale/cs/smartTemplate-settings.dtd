@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Kliknutím na tlačítko níže otevřete nový e-mail na podporu. Pokud máte technické problémy, zvažte přidání snímku obrazovky.">
 <!ENTITY support.compose "Napište na podporu…">
 <!ENTITY support.links "Odkazy na podporu">
+<!ENTITY snippets.head "Chytré úryvky">
+<!ENTITY snippets.label "Fragmenty HTML pro vkládání do Composeru">
+<!ENTITY template.category "Kategorie">
+<!ENTITY template.category.tooltip "Vytvořte podnabídku pro seskupení šablon">

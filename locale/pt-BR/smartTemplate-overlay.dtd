@@ -3,10 +3,10 @@
 <!ENTITY smartTemplate4.settings.tooltip "Opções do SmartTemplates">
 <!ENTITY smartTemplate4.cleandeferred.label "Limpar!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Limpe todas as variáveis do SmartTemplate">
-<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
-<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
 <!ENTITY smartTemplate4.deferredcontext.update "Atualize o conteúdo da variável SmartTemplates">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Atualizar e substituir pelo conteúdo">
 <!ENTITY smartTemplate4.deferredcontext.delete "Remova essa variável SmartTemplates">
-<!ENTITY smartTemplate4.changetemplate.label "Alterar modelo…">
-<!ENTITY smartTemplate4.changetemplate.tooltip "Seleciona um modelo diferente - use antes de editar no corpo do email!">
+<!ENTITY smartTemplate4.changeTemplate.label "Alterar modelo…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Seleciona um modelo diferente - use antes de editar no corpo do email!">
+<!ENTITY smartTemplate4.insertSnippet.button "Inserir fragmento">
+<!ENTITY smartTemplate4.insertSnippet.tooltip "Insira um snippet de HTML inteligente">

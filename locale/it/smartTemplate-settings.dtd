@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Fai clic sul pulsante in basso per aprire una nuova e-mail per il supporto. In caso di problemi tecnici, considerare l'aggiunta di uno screenshot.">
 <!ENTITY support.compose "Scrivi per supportare…">
 <!ENTITY support.links "Link di supporto">
+<!ENTITY snippets.head "Frammenti intelligenti">
+<!ENTITY snippets.label "Frammenti HTML da inserire in Composer">
+<!ENTITY template.category "Categoria">
+<!ENTITY template.category.tooltip "Crea un sottomenu per raggruppare i modelli">

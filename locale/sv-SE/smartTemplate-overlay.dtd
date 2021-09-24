@@ -3,10 +3,10 @@
 <!ENTITY smartTemplate4.settings.tooltip "SmartTemplates settings">
 <!ENTITY smartTemplate4.cleandeferred.label "Städa!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Städa upp alla SmartTemplate-variabler">
-<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
-<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
 <!ENTITY smartTemplate4.deferredcontext.update "Uppdatera SmartTemplates-innehåll">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Uppdatera och ersätt med innehåll">
 <!ENTITY smartTemplate4.deferredcontext.delete "Ta bort SmartTemplates-variabel">
-<!ENTITY smartTemplate4.changetemplate.label "Ändra mall…">
-<!ENTITY smartTemplate4.changetemplate.tooltip "Väljer en annan mall - använd innan du redigerar i e-postkroppen!">
+<!ENTITY smartTemplate4.changeTemplate.label "Ändra mall…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Väljer en annan mall - använd innan du redigerar i e-postkroppen!">
+<!ENTITY smartTemplate4.insertSnippet.button "Infoga kodavsnitt">
+<!ENTITY smartTemplate4.insertSnippet.tooltip "Infoga ett smart HTML -kodavsnitt">

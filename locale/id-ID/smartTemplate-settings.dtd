@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
 <!ENTITY support.compose "Write to support…">
 <!ENTITY support.links "Support Links">
+<!ENTITY snippets.head "Cuplikan Cerdas">
+<!ENTITY snippets.label "Fragmen HTML untuk dimasukkan ke dalam Komposer">
+<!ENTITY template.category "Kategori">
+<!ENTITY template.category.tooltip "Buat submenu untuk mengelompokkan template">

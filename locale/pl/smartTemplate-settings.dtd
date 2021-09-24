@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Kliknij poniższy przycisk, aby otworzyć nowy e-mail do obsługi. Jeśli masz problemy techniczne, rozważ dodanie zrzutu ekranu.">
 <!ENTITY support.compose "Napisz do wsparcia…">
 <!ENTITY support.links "Linki pomocnicze">
+<!ENTITY snippets.head "Inteligentne fragmenty">
+<!ENTITY snippets.label "Fragmenty HTML do wstawienia w Composer">
+<!ENTITY template.category "Kategoria">
+<!ENTITY template.category.tooltip "Tworzy podmenu do grupowania szablonów">

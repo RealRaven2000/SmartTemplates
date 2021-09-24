@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Napsauta alla olevaa painiketta avataksesi uuden tuettavan sähköpostin. Jos sinulla on teknisiä ongelmia, harkitse kuvakaappauksen lisäämistä.">
 <!ENTITY support.compose "Kirjoita tukeaksesi…">
 <!ENTITY support.links "Tukilinkit">
+<!ENTITY snippets.head "Älykkäät katkelmat">
+<!ENTITY snippets.label "HTML-fragmentit, jotka lisätään säveltäjään">
+<!ENTITY template.category "Kategoria">
+<!ENTITY template.category.tooltip "Luo alivalikon ryhmämalleille">

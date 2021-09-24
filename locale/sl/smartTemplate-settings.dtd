@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Kliknite spodnji gumb, da odprete novo e-pošto za podporo. Če imate tehnične težave, razmislite o dodajanju zaslona.">
 <!ENTITY support.compose "Napišite v podporo…">
 <!ENTITY support.links "Povezave za podporo">
+<!ENTITY snippets.head "Pametni izrezki">
+<!ENTITY snippets.label "Odlomki HTML za vstavljanje v Composer">
+<!ENTITY template.category "Kategorija">
+<!ENTITY template.category.tooltip "Ustvari podmeni za predloge skupine">

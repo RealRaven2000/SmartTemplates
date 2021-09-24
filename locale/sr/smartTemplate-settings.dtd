@@ -78,7 +78,7 @@
 <!ENTITY pref_debug_check "Отклањање грешака">
 <!ENTITY pref_hideExamples "Сакриј картицу са примерима">
 <!ENTITY pref_silentUpdates "Тиха ажурирања">
-<!ENTITY pref_silentUpdates_tip "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран.">
+<!ENTITY pref_silentUpdates_tip "Не отварајте дневник промена након што је SmartTemplates ажуриран.">
 <!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Кликните на дугме доле да бисте отворили нови емаил за подршку. Ако имате техничких проблема, размислите о додавању снимка заслона.">
 <!ENTITY support.compose "Пишите за подршку…">
 <!ENTITY support.links "Линкови за подршку">
+<!ENTITY snippets.head "Паметни исечци">
+<!ENTITY snippets.label "ХТМЛ фрагменти за уметање у Цомпосер">
+<!ENTITY template.category "Категорија">
+<!ENTITY template.category.tooltip "Креира подмени за груписање шаблона">

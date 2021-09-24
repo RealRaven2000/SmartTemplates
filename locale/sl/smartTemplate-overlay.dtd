@@ -3,10 +3,10 @@
 <!ENTITY smartTemplate4.settings.tooltip "Nastavitve SmartTemplates">
 <!ENTITY smartTemplate4.cleandeferred.label "Pospravi!">
 <!ENTITY smartTemplate4.cleandeferred.tooltip "Očistite vse spremenljivke SmartTemplate">
-<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
-<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
 <!ENTITY smartTemplate4.deferredcontext.update "Posodobite vsebino SmartTemplates">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Posodobite in nadomestite z vsebino">
 <!ENTITY smartTemplate4.deferredcontext.delete "Odstranite spremenljivko SmartTemplates">
-<!ENTITY smartTemplate4.changetemplate.label "Spremeni predlogo…">
-<!ENTITY smartTemplate4.changetemplate.tooltip "Izbere drugo predlogo - uporabite pred urejanjem v telesu pošte!">
+<!ENTITY smartTemplate4.changeTemplate.label "Spremeni predlogo…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Izbere drugo predlogo - uporabite pred urejanjem v telesu pošte!">
+<!ENTITY smartTemplate4.insertSnippet.button "Vstavi izrezek">
+<!ENTITY smartTemplate4.insertSnippet.tooltip "Vstavite pameten delček HTML">

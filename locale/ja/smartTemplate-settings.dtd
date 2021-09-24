@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "下のボタンをクリックすると、サポートへのメールの作成ウインドウが開かれます。技術的な質問の場合には、スクリーンショットの添付も検討してください。">
 <!ENTITY support.compose "サポートへメールを送信">
 <!ENTITY support.links "サポートへのリンク">
+<!ENTITY snippets.head "スマートスニペット">
+<!ENTITY snippets.label "Composerに挿入するためのHTMLフラグメント">
+<!ENTITY template.category "カテゴリー">
+<!ENTITY template.category.tooltip "テンプレートをグループ化するためのサブメニューを作成します">

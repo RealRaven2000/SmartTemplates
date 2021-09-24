@@ -1,12 +1,12 @@
 <!-- #### OVERLAYS #### -->
 <!ENTITY smartTemplate4.settings.label "SmartTemplates">
 <!ENTITY smartTemplate4.settings.tooltip "SmartTemplates 設定">
-<!ENTITY smartTemplate4.cleandeferred.label "Clean up!">
-<!ENTITY smartTemplate4.cleandeferred.tooltip "Clean up all SmartTemplate variables">
-<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
-<!ENTITY smartTemplate4.changeTemplate.tooltip "Load a different template - use before editing the Email!">
-<!ENTITY smartTemplate4.deferredcontext.update "Update SmartTemplates contents">
-<!ENTITY smartTemplate4.deferredcontext.cleanup "Update and Replace with Content">
-<!ENTITY smartTemplate4.deferredcontext.delete "Remove SmartTemplates variable">
-<!ENTITY smartTemplate4.changetemplate.label "Change template…">
-<!ENTITY smartTemplate4.changetemplate.tooltip "Selects a different template - use before editing in the mail body!">
+<!ENTITY smartTemplate4.cleandeferred.label "清理！">
+<!ENTITY smartTemplate4.cleandeferred.tooltip "清理所有SmartTemplate變量">
+<!ENTITY smartTemplate4.deferredcontext.update "更新SmartTemplates內容">
+<!ENTITY smartTemplate4.deferredcontext.cleanup "更新並替換為內容">
+<!ENTITY smartTemplate4.deferredcontext.delete "刪除SmartTemplates變量">
+<!ENTITY smartTemplate4.changeTemplate.label "變更範本...">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "加載其他模板-在編輯電子郵件之前使用！">
+<!ENTITY smartTemplate4.insertSnippet.button "插入片段">
+<!ENTITY smartTemplate4.insertSnippet.tooltip "插入智能 HTML 片段">

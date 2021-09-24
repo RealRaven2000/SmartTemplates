@@ -315,3 +315,8 @@
 <!ENTITY support.mail.instructions "单击下面的按钮以打开一个新的电子邮件以支持。 如果您遇到技术问题，请考虑添加屏幕截图。">
 <!ENTITY support.compose "写信给支持…">
 <!ENTITY support.links "支持链接">
+<!ENTITY snippets.head "智能片段">
+<!ENTITY snippets.label "用於在 Composer 中插入的 HTML 片段">
+<!ENTITY template.category "類別">
+<!ENTITY template.category.tooltip "創建子菜單以對模板進行分組">
+

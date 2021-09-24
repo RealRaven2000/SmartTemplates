@@ -314,3 +314,7 @@
 <!ENTITY support.mail.instructions "Klicka på knappen nedan för att öppna en ny e-post som ska stödjas. Om du har tekniska problem kan du överväga att lägga till en skärmdump.">
 <!ENTITY support.compose "Skriv för att stödja…">
 <!ENTITY support.links "Support Länkar">
+<!ENTITY snippets.head "Smarta utdrag">
+<!ENTITY snippets.label "HTML-fragment för infogning i Composer">
+<!ENTITY template.category "Kategori">
+<!ENTITY template.category.tooltip "Skapar en undermeny för gruppmallar">

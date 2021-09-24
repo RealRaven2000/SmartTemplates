@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Нажмите кнопку ниже, чтобы открыть новое письмо для поддержки. Если у вас возникли технические проблемы, рассмотрите возможность добавления снимка экрана.">
 <!ENTITY support.compose "Написать в поддержку…">
 <!ENTITY support.links "Ссылки поддержки">
+<!ENTITY snippets.head "Умные сниппеты">
+<!ENTITY snippets.label "HTML-фрагменты для вставки в Composer">
+<!ENTITY template.category "Категория">
+<!ENTITY template.category.tooltip "Создает подменю для групповых шаблонов">

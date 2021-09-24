@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Klicken Sie die Schaltfläche unterhalb um eine neue Email an Support zu schreiben. Falls Sie technische Probleme haben, kann ein Screenshot hilfreich sein.">
 <!ENTITY support.compose "An Support schreiben…">
 <!ENTITY support.links "Support Links">
+<!ENTITY snippets.head "Intelligente Fragmente">
+<!ENTITY snippets.label "HTML-Fragmente zum Einfügen in Composer">
+<!ENTITY template.category "Kategorie">
+<!ENTITY template.category.tooltip "Erstellt ein Untermenü zum Gruppieren von Vorlagen">

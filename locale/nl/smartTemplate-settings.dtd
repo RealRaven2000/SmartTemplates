@@ -315,3 +315,7 @@
 <!ENTITY support.mail.instructions "Klik op onderstaande knop om een nieuw e-mailbericht voor ondersteuning te openen. Als u technische problemen ondervindt, overweeg dan een schermafbeelding toe te voegen.">
 <!ENTITY support.compose "Aan ondersteuning schrijven…">
 <!ENTITY support.links "Koppelingen voor ondersteuning">
+<!ENTITY snippets.head "Inteligentne fragmenty">
+<!ENTITY snippets.label "HTML-fragmenten om in Composer in te voegen">
+<!ENTITY template.category "Categorie">
+<!ENTITY template.category.tooltip "Creëert een submenu om sjablonen te groeperen">
