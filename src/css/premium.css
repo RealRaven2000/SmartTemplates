@@ -1,8 +1,8 @@
 /* feature list */
-#featureTbl a {
+#featureTbl th a {
   font-weight: bold;
 }
-#featureTbl {
+#featureTbl th {
   font-weight: normal;
 }
 #featureTbl  {
