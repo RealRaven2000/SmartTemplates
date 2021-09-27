@@ -6,7 +6,7 @@
 <!ENTITY smartTemplate4.deferredcontext.update "Update SmartTemplates contents">
 <!ENTITY smartTemplate4.deferredcontext.cleanup "Update and Replace with Content">
 <!ENTITY smartTemplate4.deferredcontext.delete "Remove SmartTemplates variable">
-<!ENTITY smartTemplate4.changeTemplate.label "Change template…">
-<!ENTITY smartTemplate4.changeTemplate.tooltip "Selects a different template - use before editing in the mail body!">
-<!ENTITY smartTemplate4.insertSnippet.button "Insert Snippet">
-<!ENTITY smartTemplate4.insertSnippet.tooltip "Insert a Smart HTML Snippet">
+<!ENTITY smartTemplate4.changeTemplate.label "Canvia la plantilla…">
+<!ENTITY smartTemplate4.changeTemplate.tooltip "Carregueu una plantilla diferent: utilitzeu-la abans d'editar el correu electrònic.">
+<!ENTITY smartTemplate4.insertSnippet.button "Inseriu un fragment">
+<!ENTITY smartTemplate4.insertSnippet.tooltip "Inseriu un fragment HTML intelligent">
