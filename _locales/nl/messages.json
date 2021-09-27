@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}tot 31 augustus{boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nieuw licentiesysteem"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "Vanaf nu biedt SmartTemplates twee licenties, Standaard en Pro; deze zijn nodig om de wijzigingen in het Thunderbird-platform bij te houden en innovaties en reparaties aan de add-on te financieren. Aangezien grote wijzigingen in een jaarlijkse cyclus worden doorgevoerd, zal de licentie ook een geldigheidsduur van een jaar hebben."
-  },
+    "message": "SmartTemplates biedt twee licenties, Standard en Pro; deze zijn nodig om de veranderingen in het Thunderbird-platform bij te houden en om Innovaties en reparaties van de Add-on te financieren. Omdat wijzigingen die mogelijk de extensiefunctionaliteit verbreken jaarlijks worden uitgerold, is de licentie ook 1 jaar geldig."
+  },  
   "licenseValidation.expired": {
     "message": "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen."
   },
@@ -1224,8 +1230,30 @@
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates-bestandssjabloon openen…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Waarom zijn sommige sjablonen in dit menu uitgeschakeld?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "U hebt een SmartTemplates-licentie nodig om meer dan {1} sjablonen te gebruiken!"
+    "message": "Het aantal sjablonen per menu is beperkt. U kunt tot $max_free$ menu-items configureren zonder licentie, en $max_std$ menu-items met een SmartTemplates Standard-licentie! SmartTemplates Pro is onbeperkt.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Als u meer dan $max_Cats$ categorieën wilt configureren, moet u een SmartTemplates Pro-licentie aanschaffen…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Selecteer een sjabloon in het vervolgkeuzemenu."
@@ -1460,6 +1488,12 @@
   },
   "template.category": {
     "message": "Categorie"
+  },
+  "template.category.other": {
+    "message": "Anderen"
+  },
+  "template.category.tooltip": {
+    "message": "Creëert een submenu om sjablonen te groeperen"
   },
   "thanks-for-installing-intro": {
     "message": "Bedankt voor het installeren van  $addonName$.",

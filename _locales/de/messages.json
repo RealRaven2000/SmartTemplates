@@ -576,7 +576,7 @@
     "message": "Fragment einfügen"
   },
   "insertSnippet.tooltip": {
-    "message": "Intelligentes HTML-Fragments einfügen"
+    "message": "Smart HTML-Fragment einfügen"
   },
   "intro": {
     "message": "Eine Jahreslizenz für SmartTemplates Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht uns dieses Add-on weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe wird SmartTemplates weiter fantastisch!"
@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis 31. August {boldEnd} verfügbar."
   }, 
+  "licenseComparison" : {
+    "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Neues Lizenzsystem"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
     "placeholders": {
@@ -657,7 +663,7 @@
     }
   },  
   "licenseTypes": {
-    "message": "In Zukunft bietet SmartTemplates zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig."
+    "message": "SmartTemplates bietet zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da Änderungen, die möglicherweise die Erweiterungsfunktionalität beeinträchtigen, jährlich eingeführt werden, ist die Lizenz auch 1 Jahr gültig."
   },
   "licenseValidation.expired": {
     "message": "Der angegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten."
@@ -1224,8 +1230,30 @@
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates Dateivorlage öffnen…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Warum sind manche Vorlagen in diesem Menü deaktiviert?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Sie brauchen eine SmartTemplates Lizeenz um mehr als {1} Vorlagen zu nutzen!"
+    "message": "Die Anzahl der Vorlagen pro Menü ist begrenzt. Sie können bis zu $max_free$ Menüpunkte ohne Lizenz und $max_std$ Menüpunkte mit einer SmartTemplates Standard Lizenz konfigurieren! SmartTemplates Pro ist uneingeschränkt.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Um mehr als $max_Cats$ Kategorien zu konfigurieren, besorgen Sie sich bitte eine SmartTemplates Pro-Lizenz…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Bitte wählen Sie eine Vorlage aus dem Dropdown-Menü."
@@ -1457,6 +1485,12 @@
   },
   "template.category": {
     "message": "Kategorie"
+  },
+  "template.category.other": {
+    "message": "Sonstige"
+  },
+  "template.category.tooltip": {
+    "message": "Erstellt ein Untermenü, um Vorlagen zu gruppieren"
   },
   "thanks-for-installing-intro": {
     "message": "Danke dass Sie $addonName$ installiert haben.",

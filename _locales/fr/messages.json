@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Payez seulement 5,15 € au lieu de 8,35 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}jusqu'au 31 août{boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nouveau système de licence"
+  },  
   "licenseStatus.expired" : {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "À l'avenir, SmartTemplates propose deux licences, Standard et Pro; Celles-ci sont nécessaires pour suivre l'évolution de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'add-on. Au fur et à mesure que les changements de rupture sont déployés sur un cycle annuel, la licence sera également valable 1 an."
-  },
+    "message": "SmartTemplates propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
+  },  
   "licenseValidation.expired": {
     "message": "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence."
   },
@@ -1224,10 +1230,31 @@
   "st.fileTemplates.openFile": {
     "message": "Ouvrir le fichier de modèle SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Pourquoi certains modèles de ce menu sont-ils désactivés ?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Vous avez besoin d'une licence SmartTemplates pour utiliser plus de {1} modèles!"
+    "message": "Le nombre de modèles par menu est limité. Vous pouvez configurer jusqu'à $max_free$ éléments de menu sans licence et $max_std$ éléments de menu avec une licence SmartTemplates Standard ! SmartTemplates Pro est illimité.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Pour configurer plus de $max_Cats$ Catégories, veuillez obtenir une licence SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Veuillez sélectionner un modèle dans le menu déroulant."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Catégorie"
+  },
+  "template.category.other": {
+    "message": "Autres"
+  },
+  "template.category.tooltip": {
+    "message": "Crée un sous-menu pour regrouper les modèles"
   },
   "thanks-for-installing-intro": {
     "message": "Merci d'avoir installé $addonName$.",

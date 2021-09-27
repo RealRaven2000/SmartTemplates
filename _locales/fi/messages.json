@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - 31. elokuuta {boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Uusi lisenssijärjestelmä"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "SmartTemplates tarjoaa kaksi lisenssiä: Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten ja lisäosien innovaatioiden ja korjausten rahoittamiseksi. Koska rikkomisen muutokset toteutetaan vuosittain, lisenssi on voimassa 1 vuosi."
-  },
+    "message": "SmartTemplates tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
+  },  
   "licenseValidation.expired": {
     "message": "Syöttämäsi lisenssiavain on vanhentunut. Paina alla olevaa painiketta uusiaksesi lisenssin."
   },
@@ -1224,10 +1230,31 @@
   "st.fileTemplates.openFile": {
     "message": "Avaa SmartTemplates-mallitiedosto…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Miksi jotkin tämän valikon mallit on poistettu käytöstä?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Tarvitset SmartTemplates -lisenssin käyttääksesi enemmän kuin {1} mallia!"
+    "message": "Mallien määrä valikkoa kohden on rajoitettu. Voit määrittää enintään $max_free$ -valikkokohteita ilman lisenssiä ja $max_std$ -valikkokohteita SmartTemplates Standard -lisenssillä! SmartTemplates Pro on rajoittamaton.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Jos haluat määrittää yli $max_Cats$ -luokkaa, hanki SmartTemplates Pro -lisenssi…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Valitse malli avattavasta valikosta."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Kategoria"
+  },
+  "template.category.other": {
+    "message": "Muut"
+  },
+  "template.category.tooltip": {
+    "message": "Luo alivalikon ryhmämalleille"
   },
   "thanks-for-installing-intro": {
     "message": "Kiitos $addonName$ -asennuksesta.",

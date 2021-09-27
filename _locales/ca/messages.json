@@ -129,7 +129,7 @@
     "message": "Comprar llicència Pro!"
   },
   "buyPremiumLicense.instruct": {
-    "message": "Voleu utilitzar totes les funcions premium sense restriccions? Obteniu una llicència SmartTemplates Pro. Està vinculat a la vostra adreça de correu electrònic personal i es pot utilitzar en diverses instal·lacions."
+    "message": "Voleu utilitzar totes les funcions premium sense restriccions? Obteniu una llicència SmartTemplates Pro. Està vinculat a la vostra adreça de correu electrònic personal i es pot utilitzar en diverses installacions."
   },
   "buyStandardLicense.button": {
     "message": "Compra una llicència estàndard!"
@@ -577,7 +577,7 @@
     "message": "Inseriu un fragment"
   },
   "insertSnippet.tooltip": {
-    "message": "Inseriu un fragment HTML intel·ligent"
+    "message": "Inseriu un fragment HTML intelligent"
   },
   "intro": {
     "message": "Una llicència anual per a SmartTemplates Pro us ofereix totes les funcions premium durant un any. També ens permet donar suport i fer créixer el producte i convertir-lo en quelcom encara més impressionant."
@@ -639,6 +639,12 @@
   "license-standard-special-terms": {
     "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al 31 d'agost {boldEnd}."
   },
+  "licenseComparison" : {
+    "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nou sistema de llicències"
+  },  
   "licenseStatus.expired" : {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
     "placeholders": {
@@ -658,8 +664,8 @@
     }
   },
   "licenseTypes": {
-    "message": "En endavant, SmartTemplates ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que es produeixen canvis de ruptura en un cicle anual, la llicència també serà vàlida durant un any."
-  },
+    "message": "SmartTemplates ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis que poden trencar la funcionalitat de l'extensió es presenten anualment, la llicència també serà vàlida durant un any."
+  }, 
   "licenseValidation.expired": {
     "message": "La clau de llicència que heu introduït ha caducat. Si us plau, premeu el botó següent per renovar la vostra llicència."
   },
@@ -1151,7 +1157,7 @@
     "message": "Signatura eissida dels paramètres del compte, mas sens '--'"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "Canvia la plantilla ..."
+    "message": "Canvia la plantilla…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "Carregueu una plantilla diferent: utilitzeu-la abans d'editar el correu electrònic."
@@ -1214,7 +1220,7 @@
     "message": "Fitxers de plantilla"
   },
   "st.fileTemplates.configureMenu": {
-    "message": "Configura els elements del menú ..."
+    "message": "Configura els elements del menú …"
   },
   "st.fileTemplates.error.charSet": {
     "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
@@ -1225,8 +1231,30 @@
   "st.fileTemplates.openFile": {
     "message": "Obriu el fitxer de plantilla SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Per què estan desactivades algunes plantilles d’aquest menú?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Necessiteu una llicència SmartTemplates per utilitzar més de {1} plantilles."
+    "message": "El nombre de plantilles per menú està restringit. Podeu configurar fins a $max_free$ elements de menú sense llicència i $max_std$ elements de menú amb una llicència SmartTemplates Standard. SmartTemplates Pro no té restriccions.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Per configurar més de $max_Cats$ Categories, obtingueu una llicència SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Seleccioneu una plantilla al menú desplegable."
@@ -1313,10 +1341,10 @@
     "message": "No es pot canviar l'idioma del corrector ortogràfic. Heu instal·lat el diccionari correcte?"
   },
   "st.notification.spellcheck.noDictionary": {
-    "message": "No hi ha diccionaris instal·lats."
+    "message": "No hi ha diccionaris installats."
   },
   "st.notification.spellcheck.notFound": {
-    "message": "Dictionary '{0}' not found."
+    "message": "No s'ha trobat el diccionari '{0}'."
   },
   "st.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
@@ -1461,6 +1489,12 @@
   },
   "template.category": {
     "message": "Categoria"
+  },
+  "template.category.other": {
+    "message": "Altres"
+  },
+  "template.category.tooltip": {
+    "message": "Crea un submenú per agrupar plantilles"
   },
   "thanks-for-installing-intro": {
     "message": "Gràcies per installar $addonName$.",

@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Заплатите всего 5,15 евро вместо 8,35 евро и получите полный доступ к функциям Pro. Это специальное предложение действует с {boldStart} до 31 августа {boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Чтобы сравнить функции разных версий, {linkStart}прочтите этот список{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Новая система лицензирования"
+  },  
   "licenseStatus.expired" : {
     "message": "Срок действия лицензии SmartTemplates истек $countDays$ дн. Назад.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "В дальнейшем SmartTemplates предлагает две лицензии, Standard и Pro; это необходимо для того, чтобы не отставать от изменений в платформе Thunderbird и финансировать инновации и ремонт дополнения. Поскольку критические изменения внедряются в годовом цикле, лицензия также будет действовать в течение 1 года."
-  },
+    "message": "SmartTemplates предлагает две лицензии: Standard и Pro; они необходимы, чтобы идти в ногу с изменениями в платформе Thunderbird и финансировать инновации и ремонт надстройки. Поскольку изменения, которые могут нарушить функциональность расширений, вносятся ежегодно, лицензия также будет действительна в течение 1 года."
+  },  
   "licenseValidation.expired": {
     "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
   },
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Открыть файл шаблона SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Почему некоторые шаблоны в этом меню отключены?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Вам нужна лицензия SmartTemplates, чтобы использовать более {1} шаблонов!"
+    "message": "Количество шаблонов в меню ограничено. Вы можете настроить до $max_free$ пунктов меню без лицензии и до $max_std$ пунктов меню со стандартной лицензией SmartTemplates! SmartTemplates Pro не имеет ограничений.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Чтобы настроить более $max_Cats$ категорий, получите лицензию SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Пожалуйста, выберите шаблон из выпадающего меню."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Категория"
+  },
+  "template.category.other": {
+    "message": "Другие"
+  },
+  "template.category.tooltip": {
+    "message": "Создает подменю для групповых шаблонов"
   },
   "thanks-for-installing-intro": {
     "message": "Спасибо за установку $addonName$.",

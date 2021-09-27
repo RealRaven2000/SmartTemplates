@@ -27,7 +27,7 @@
     "message": "Work"
   },
   "about.cap": {
-    "message": "关于SmartTemplate4"
+    "message": "关于SmartTemplates"
   },
   "about.label": {
     "message": "SmartTemplates 提供了一个智能/简单的方法模板使用自订的标准的雷鸟报价头。模板（报价头），可用于单个帐户或全局设置（普通帐户）。"
@@ -561,7 +561,7 @@
     "message": "想要导入一个文件，首先从 SmartTemplates 的设置下拉框中选择您想要导入的账号。下一步，从菜单栏中选择'工具' ⇒ '导入' ⇒ '设置和模板'"
   },
   "im-ex_note5.label": {
-    "message": "选择您想要导入的SmartTemplate4文件（xxx.st4）。"
+    "message": "选择您想要导入的SmartTemplates文件（xxx.st4）。"
   },
   "im-ex_note6.label": {
     "message": "注意：苹果/Macintosh平台的菜单栏显示在标题栏上而不在SmartTemplate4的选项窗口中。这是该平台的正常表现且不能被改变。"
@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特别优惠适用于{boldStart}至 8 月 31 日{boldEnd}。"
   }, 
+  "licenseComparison" : {
+    "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
+  },  
+  "licenseHead": {
+    "message": "新的许可制度"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates许可已在 $countDays$ 天前过期。",
     "placeholders": {
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "为什么此菜单中的某些模板被禁用？"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "You need a SmartTemplates license to use more than {1} templates!"
+    "message": "每个菜单的模板数量受到限制。 您可以在没有许可证的情况下配置最多 $max_free$ 菜单项，以及使用 SmartTemplates Standard 许可证配置 $max_std$ 菜单项！ SmartTemplates Pro 不受限制。",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "要配置超过 $max_Cats$ 的类别，请获取 SmartTemplates Pro 许可证…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "类别"
+  },
+  "template.category.other": {
+    "message": "其他"
+  },
+  "template.category.tooltip": {
+    "message": "创建子菜单以对模板进行分组"
   },
   "thanks-for-installing-intro": {
     "message": "感谢您安装 $addonName$.",

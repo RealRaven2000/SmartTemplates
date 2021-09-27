@@ -1093,13 +1093,13 @@
     "message": "Відображати журнал змін для SmartTemplates?"
   },
   "st.fileFunction.notExists": {
-    "message": "Function {0} could not find or access file. Check the path below:"
+    "message": "Функції {0} не вдалося знайти файл або отримати доступ до нього. Перевірте шлях нижче:"
   },
   "st.fileTemplates": {
-    "message": "Template Files"
+    "message": "Файли шаблонів"
   },
   "st.fileTemplates.configureMenu": {
-    "message": "Configure menu items…"
+    "message": "Налаштування пунктів меню…"
   },
   "st.fileTemplates.error.charSet": {
     "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
@@ -1108,12 +1108,33 @@
     "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
   },
   "st.fileTemplates.openFile": {
-    "message": "Open SmartTemplates template file…"
+    "message": "Відкрийте файл шаблону SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Чому деякі шаблони в цьому меню відключені?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "You need a SmartTemplates license to use more than {1} templates!"
+    "message": "Кількість шаблонів у меню обмежена. Ви можете налаштувати до $max_free$ пунктів меню без ліцензії та $max_std$ пунктів меню зі стандартною ліцензією SmartTemplates! SmartTemplates Pro є необмеженим.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Щоб налаштувати більше ніж $max_Cats$ Категорії, будь ласка, отримайте ліцензію SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1310,6 +1331,15 @@
   },
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
+  },
+  "template.category": {
+    "message": "Категорія"
+  },
+  "template.category.other": {
+    "message": "Інші"
+  },
+  "template.category.tooltip": {
+    "message": "Створює підменю для групування шаблонів"
   },
   "timezone.explain": {
     "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"

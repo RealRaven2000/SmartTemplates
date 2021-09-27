@@ -629,6 +629,12 @@
   "license-standard-special-terms": {
     "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do 31. srpna{boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Nový licenční systém"
+  },  
   "licenseStatus.expired" : {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
     "placeholders": {
@@ -648,8 +654,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "V budoucnu SmartTemplates nabízí dvě licence, Standard a Pro; je nutné držet krok se změnami v platformě Thunderbird a financovat inovace a opravy doplňku. Vzhledem k tomu, že se v průběhu ročního cyklu zavádějí zásadní změny, bude licence platná také po dobu 1 roku."
-  },
+    "message": "SmartTemplates nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
+  },  
   "licenseValidation.expired": {
     "message": "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci."
   },
@@ -1215,8 +1221,30 @@
   "st.fileTemplates.openFile": {
     "message": "Otevřít soubor šablony SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Proč jsou některé šablony v této nabídce deaktivovány?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Abyste mohli používat více než {1} šablon, potřebujete licenci SmartTemplates!"
+    "message": "Počet šablon v nabídce je omezen. Pomocí licence SmartTemplates Standard můžete konfigurovat až $max_free$ položky nabídky bez licence a $max_std$ položky nabídky! SmartTemplates Pro není omezen.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Chcete -li konfigurovat více než $max_Cats$ kategorií, získejte licenci SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Vyberte šablonu z rozbalovací nabídky."
@@ -1451,6 +1479,12 @@
   },
   "template.category": {
     "message": "Kategorie"
+  },
+  "template.category.other": {
+    "message": "Ostatní"
+  },
+  "template.category.tooltip": {
+    "message": "Vytvoří podnabídku ke seskupení šablon"
   },
   "thanks-for-installing-intro": {
     "message": "Děkujeme, že jste nainstalovali $addonName$.",

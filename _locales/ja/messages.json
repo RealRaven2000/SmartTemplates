@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}から8月31日{boldEnd}までご利用いただけます。"
   }, 
+  "licenseComparison" : {
+    "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
+  },  
+  "licenseHead": {
+    "message": "新しいライセンスシステム"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "SmartTemplates には、標準とプロの 2 つのライセンスがあります。Thunderbird プラットフォームの変更への対応のため、継続的な支援が必要です。大幅な変更は 1 年ごととなるため、ライセンスの有効期間も 1 年間となります。"
-  },
+    "message": "SmartTemplatesは、StandardとProの2つのライセンスを提供します。 これらは、Thunderbirdプラットフォームの変更に対応し、アドオンのイノベーションと修理に資金を提供するために必要です。 拡張機能を壊す可能性のある変更は毎年展開されるため、ライセンスも1年間有効です。"
+  },  
   "licenseValidation.expired": {
     "message": "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。"
   },
@@ -1224,10 +1230,31 @@
   "st.fileTemplates.openFile": {
     "message": "SmartTemplates のテンプレートファイルを開く…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "このメニューの一部のテンプレートが無効になっているのはなぜですか？"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "{1} 個を超えるテンプレートを使用するには SmartTemplates ライセンスが必要です！"
+    "message": "メニューごとのテンプレートの数は制限されています。 ライセンスなしで最大 $max_free$ メニュー項目を構成でき、SmartTemplatesStandardライセンスで $max_std$ メニュー項目を構成できます。 SmartTemplatesProには制限がありません。",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "$max_Cats$を超えるカテゴリを構成するには、SmartTemplatesProライセンスを取得してください…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "ドロップダウンメニューからテンプレートを選択してください。"
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "カテゴリー"
+  },
+  "template.category.other": {
+    "message": "その他"
+  },
+  "template.category.tooltip": {
+    "message": "テンプレートをグループ化するためのサブメニューを作成します"
   },
   "thanks-for-installing-intro": {
     "message": "$addonName$ をインストールしていただきありがとうございます。",

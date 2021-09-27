@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Zapłać tylko 5,15 € zamiast 8,35 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart}do 31 sierpnia{boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nowy system licencjonowania"
+  },  
   "licenseStatus.expired" : {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "Idąc dalej, SmartTemplates oferuje dwie licencje: Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird i finansować innowacje i naprawy dodatku. Ponieważ zmiany w toku są wprowadzane w cyklu rocznym, licencja będzie ważna przez 1 rok."
-  },
+    "message": "SmartTemplates oferuje dwie licencje, Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird oraz sfinansować innowacje i naprawy dodatku. Ponieważ zmiany, które potencjalnie zakłócają funkcjonalność rozszerzenia, są wprowadzane co roku, licencja będzie również ważna przez 1 rok."
+  },  
   "licenseValidation.expired": {
     "message": "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję."
   },
@@ -1189,7 +1195,7 @@
     "message": "Inteligentne fragmenty"
   },
   "snippets.label": {
-    "message": "Inteligentne fragmenty"
+    "message": "Fragmenty HTML do wstawienia w Composer"
   },
   "spec_form.cap": {
     "message": "Przełączniki pola adresu"
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Otwórz plik szablonu SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Dlaczego niektóre szablony w tym menu są wyłączone?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Aby korzystać z więcej niż {1} szablonów, potrzebujesz licencji SmartTemplate!!"
+    "message": "Liczba szablonów w menu jest ograniczona. Możesz skonfigurować do $max_free$ pozycji menu bez licencji oraz $max_std$ z licencją SmartTemplates Standard! SmartTemplates Pro jest nieograniczone.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Aby skonfigurować więcej niż $max_Cats$ Categories, zdobądź licencję SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Wybierz szablon z menu rozwijanego."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Kategoria"
+  },
+  "template.category.other": {
+    "message": "Inni"
+  },
+  "template.category.tooltip": {
+    "message": "Tworzy podmenu do grupowania szablonów"
   },
   "thanks-for-installing-intro": {
     "message": "Dziękujemy za zainstalowanie programu $addonName$.",

@@ -552,7 +552,7 @@
     "message": "您可以匯出及匯入設定和關聯每一個帳號的樣板."
   },
   "im-ex_note2.label": {
-    "message": "第一,選擇您想要匯出從SmartTemplate4設定下拉視窗的帳號."
+    "message": "第一,選擇您想要匯出從SmartTemplates設定下拉視窗的帳號."
   },
   "im-ex_note3.label": {
     "message": "下一步,從選單列點選'檔案' ⇒ '匯出' ⇒ '設定及樣板'然後儲存檔案 (xxx.st4) 到您的電腦."
@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}至 8 月 31 日{boldEnd}。"
   }, 
+  "licenseComparison" : {
+    "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
+  },  
+  "licenseHead": {
+    "message": "新的許可製度"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
     "placeholders": {
@@ -1219,7 +1225,7 @@
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
   },
   "st.confirmVersionLink": {
-    "message": "要顯示SmartTemplate4的更改紀錄嗎?"
+    "message": "要顯示SmartTemplates的更改紀錄嗎?"
   },
   "st.fileFunction.notExists": {
     "message": "Function {0} could not find or access file. Check the path below:"
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "為什麼此菜單中的某些模板被禁用？"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "You need a SmartTemplates license to use more than {1} templates!"
+    "message": "每個菜單的模板數量受到限制。 您可以在沒有許可證的情況下配置最多 $max_free$ 菜單項，以及使用 SmartTemplates Standard 許可證配置 $max_std$ 菜單項！ SmartTemplates Pro 不受限制。",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "要配置超過 $max_Cats$ 的類別，請獲取 SmartTemplates Pro 許可證…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1351,7 +1378,7 @@
     "message": "SmartTemplates 將會轉換您現有的樣板,所以您可以在新版本中繼續使用.請按[確定]繼續."
   },
   "st.updateMessageVersion": {
-    "message": "SmartTemplate4已成功升級到版本 {1}!"
+    "message": "SmartTemplates已成功升級到版本 {1}!"
   },
   "standardformat.config": {
     "message": "配置默認格式..."
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "類別"
+  },
+  "template.category.other": {
+    "message": "其他"
+  },
+  "template.category.tooltip": {
+    "message": "創建子菜單以對模板進行分組"
   },
   "thanks-for-installing-intro": {
     "message": "感謝您安裝 $addonName$.",

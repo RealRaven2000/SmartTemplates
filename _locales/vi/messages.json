@@ -156,6 +156,12 @@
   "template.category": {
     "message": "Loại"
   },
+  "template.category.other": {
+    "message": "Khác"
+  },
+  "template.category.tooltip": {
+    "message": "Tạo menu con để nhóm các mẫu"
+  },
   "thanks-for-installing-intro": {
     "message": "Cảm ơn bạn đã cài đặt $addonName$.",
     "placeholders": {

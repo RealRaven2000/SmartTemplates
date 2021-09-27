@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Платите само 5,15 € уместо 8,35 € и остварите пуни приступ Про функцијама. Ова посебна понуда доступна је од {болдСтарт} до 31. августа {болдЕнд}."
   }, 
+  "licenseComparison" : {
+    "message": "Да бисте упоредили карактеристике различитих верзија, {linkStart}прочитајте ову листу{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Нови систем лиценцирања"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates Лиценца је истекла пре $countDays$ дана.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "Даље SmartTemplates нуди две лиценце, Standard и Pro; они су неопходни да би били у току са променама на Тхундербирд платформи и финансирали Иновације и поправке додатка. Како се промене промене извршавају током једногодишњег циклуса, лиценца ће такође важити 1 годину."
-  },
+    "message": "SmartTemplates нуди две лиценце, Стандард и Про; они су неопходни како би били у току са променама на платформи Тхундербирд и за финансирање иновација и поправки додатка. Будући да се промене које потенцијално крше функционалност проширења уводе годишње, лиценца ће важити и годину дана."
+  },  
   "licenseValidation.expired": {
     "message": "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу."
   },
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Отворите датотеку шаблона SmartTemplates …"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Зашто су неки предлошци у овом менију онемогућени?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Потребна вам је лиценца SmartTemplates да бисте користили више од {1} шаблона!"
+    "message": "Број шаблона по менију је ограничен. Можете конфигурирати до $max_free$ ставке менија без лиценце, и $max_std$ ставке менија са стандардном лиценцом СмартТемплатес! СмартТемплатес Про је неограничен.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Да бисте конфигурисали више од $max_Cats$ категорија, набавите лиценцу СмартТемплатес Про…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Изаберите предложак из падајућег менија."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Категорија"
+  },
+  "template.category.other": {
+    "message": "Други"
+  },
+  "template.category.tooltip": {
+    "message": "Креира подмени за груписање шаблона"
   },
   "thanks-for-installing-intro": {
     "message": "Хвала вам што сте инсталирали $addonName$.",

@@ -451,7 +451,7 @@
     "message": "Sender's name"
   },
   "getSmartTemplate4": {
-    "message": "Get SmartTemplates License"
+    "message": "SmartTemplates License"
   },
   "guessNameFromMail": {
     "message": "Guess Name parts from email address if missing"
@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}to August 31st{boldEnd}."
   },
+  "licenseComparison" : {
+    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "New Licensing System"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates License has expired $countDays$ days ago.",
     "placeholders": {
@@ -657,7 +663,7 @@
     }
   },  
   "licenseTypes": {
-    "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
+    "message": "SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
   },
   "licenseValidation.expired": {
     "message": "The license key you entered is expired. Please press the button below to renew your license."
@@ -1224,8 +1230,30 @@
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Why are some templates in this menu disabled?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "You need a SmartTemplates license to use more than {1} templates!"
+    "message": "The number of templates per menu is restricted. You can configure up to $max_free$ menu items without a license, and $max_std$ menu items with a SmartTemplates Standard license! SmartTemplates Pro is unrestricted.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "To configure more than $max_Cats$ Categories, please get a SmartTemplates Pro license…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
@@ -1461,8 +1489,11 @@
   "template.category": {
     "message": "Category"
   },
+  "template.category.other": {
+    "message": "Others"
+  },
   "template.category.tooltip": {
-    "message": "Create a submenu to group templates"
+    "message": "Creates a submenu to group templates"
   },
   "thanks-for-installing-intro": {
     "message": "Thank you for installing $addonName$.",

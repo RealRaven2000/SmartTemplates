@@ -1110,10 +1110,31 @@
   "st.fileTemplates.openFile": {
     "message": "Open SmartTemplates template file…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Mengapa beberapa template dalam menu ini dinonaktifkan?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "You need a SmartTemplates license to use more than {1} templates!"
+    "message": "Jumlah template per menu dibatasi. Anda dapat mengonfigurasi hingga $max_free$ item menu tanpa lisensi, dan item menu $max_std$ dengan lisensi SmartTemplates Standard! SmartTemplates Pro tidak dibatasi.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Untuk mengonfigurasi lebih dari $max_Cats$ Kategori, dapatkan lisensi SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1310,6 +1331,15 @@
   },
   "testDriveS": {
     "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
+  },
+  "template.category": {
+    "message": "Kategori"
+  },
+  "template.category.other": {
+    "message": "Yang lain"
+  },
+  "template.category.tooltip": {
+    "message": "Buat submenu untuk mengelompokkan template"
   },
   "timezone.explain": {
     "message": "Paksa zona waktu khusus untuk variabel tanggal dengan mengganti parameter tz (GMT, EST, CST, PST, dll.)"

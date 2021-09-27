@@ -146,6 +146,12 @@
   "template.category": {
     "message": "Categoria"
   },
+  "template.category.other": {
+    "message": "Outros"
+  },
+  "template.category.tooltip": {
+    "message": "Cria um submenu para agrupar modelos"
+  },
   "thanks-for-installing-intro": {
     "message": "Obrigado por instalar $addonName$.",
     "placeholders": {

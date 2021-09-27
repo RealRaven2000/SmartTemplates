@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Plačajte samo 5,15 € namesto 8,35 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do 31. avgusta {boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nov sistem licenciranja"
+  },  
   "licenseStatus.expired" : {
     "message": "Licenca za SmartTemplates je potekla pred $countDays$ dnevi.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "V prihodnosti SmartTemplates ponuja dve licenci, Standard in Pro; ti so potrebni za sledenje spremembam v platformi Thunderbird in financiranje inovacij in popravil dodatka. Ker se spremembe lomljenja izvajajo v letnem ciklu, bo licenca veljala tudi za eno leto."
-  },
+    "message": "SmartTemplates ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
+  },  
   "licenseValidation.expired": {
     "message": "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb."
   },
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Odpri datoteko predloge SmartTemplates…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Zakaj so nekatere predloge v tem meniju onemogočene?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Za uporabo več kot {1} predlog potrebujete licenco SmartTemplates!"
+    "message": "Število predlog na meni je omejeno. Brez licence lahko konfigurirate do $max_free$ menijskih elementov in $max_std$ menijskih postavk s standardno licenco SmartTemplates! SmartTemplates Pro je neomejen.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Če želite konfigurirati več kot $max_Cats$ kategorij, pridobite licenco SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Izberite predlogo v spustnem meniju."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Kategorija"
+  },
+  "template.category.other": {
+    "message": "Drugi"
+  },
+  "template.category.tooltip": {
+    "message": "Ustvari podmeni za predloge skupine"
   },
   "thanks-for-installing-intro": {
     "message": "Hvala, ker ste namestili $addonName$.",

@@ -638,6 +638,12 @@
   "license-standard-special-terms": {
     "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till 31 augusti {boldEnd}."
   }, 
+  "licenseComparison" : {
+    "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nytt licenssystem"
+  },  
   "licenseStatus.expired" : {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
     "placeholders": {
@@ -657,8 +663,8 @@
     }
   }, 
   "licenseTypes": {
-    "message": "Framöver erbjuder SmartTemplates två licenser, Standard och Pro; dessa är nödvändiga för att hålla jämna steg med ändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom brytande förändringar rullas ut i en årlig cykel kommer licensen också att gälla i ett år."
-  },
+    "message": "SmartTemplates erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hänga med i förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom ändringar som eventuellt bryter tilläggsfunktioner distribueras årligen, kommer licensen också att vara giltig i 1 år."
+  },  
   "licenseValidation.expired": {
     "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
   },
@@ -1239,10 +1245,31 @@
   "st.fileTemplates.openFile": {
     "message": "Öppna SmartTemplates-mallfilen…"
   },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Varför är vissa mallar i den här menyn inaktiverade?"
+  }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "Du behöver en SmartTemplates-licens för att kunna använda fler än {1} mallar!"
+    "message": "Antalet mallar per meny är begränsat. Du kan konfigurera upp till $max_free$ menyalternativ utan licens och $max_std$ menyalternativ med en SmartTemplates Standardlicens! SmartTemplates Pro är obegränsat.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
   },
-  "st.fileTemplates.selectFromMenu": {
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "För att konfigurera mer än $max_Cats$ -kategorier, skaffa en SmartTemplates Pro -licens…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
     "message": "Välj en mall från rullgardinsmenyn."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1460,6 +1487,12 @@
   },
   "template.category": {
     "message": "Kategori"
+  },
+  "template.category.other": {
+    "message": "Andra"
+  },
+  "template.category.tooltip": {
+    "message": "Skapar en undermeny för gruppmallar"
   },
   "thanks-for-installing-intro": {
     "message": "Tack för att du installerade $addonName$.",
