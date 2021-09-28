@@ -29,7 +29,7 @@
 #menuSupportPage, #menuBugsAndFeaturesPage {
   list-style-image: url("chrome://smartTemplate4/skin/CuteMenus/mozdev.png") !important;
 }
-#helpTemplates {
+#helpTemplates, #helpSnippets {
   list-style-image: url("chrome://smartTemplate4/skin/icons/fugue-question.png");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;

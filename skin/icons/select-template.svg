@@ -47,8 +47,8 @@
      inkscape:guide-bbox="true"
      inkscape:window-width="1707"
      inkscape:window-height="1198"
-     inkscape:window-x="634"
-     inkscape:window-y="1659"
+     inkscape:window-x="359"
+     inkscape:window-y="121"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -79,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -91,22 +91,22 @@
     <ellipse
        style="fill:none;stroke:#000000;stroke-width:12.6034;stroke-opacity:1"
        id="path1450"
-       cx="59.153271"
-       cy="59.909218"
+       cx="62.177082"
+       cy="64.444931"
        rx="27.713556"
        ry="28.639505" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:13.303;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="ellipse1452"
-       cx="59.153271"
-       cy="138.90625"
+       cx="62.933033"
+       cy="136.26042"
        rx="27.713556"
        ry="28.639505" />
     <text
        xml:space="preserve"
        id="text849"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Andalus;-inkscape-font-specification:Andalus;white-space:pre;shape-inside:url(#rect851);fill:#f84b39;fill-opacity:1;stroke:#ffffff;stroke-width:0.244222;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
-       transform="matrix(12.292226,0,0,11.285601,-1293.2903,-601.29518)"><tspan
+       transform="matrix(12.292226,0,0,11.285601,-1299.3379,-591.84578)"><tspan
          x="113.58984"
          y="61.382563"><tspan
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#f84b39;fill-opacity:1;stroke:#ffffff;stroke-width:0.244222;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">a</tspan></tspan></text>
@@ -114,7 +114,7 @@
        xml:space="preserve"
        id="text849-9"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Andalus;-inkscape-font-specification:Andalus;white-space:pre;shape-inside:url(#rect851-3);fill:#396df8;fill-opacity:1;stroke:#ffffff;stroke-width:0.244222;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
-       transform="matrix(12.292226,0,0,11.285601,-1291.5895,-521.92013)"><tspan
+       transform="matrix(12.292226,0,0,11.285601,-1298.771,-521.92013)"><tspan
          x="113.58984"
          y="61.382563"><tspan
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#396df8;fill-opacity:1;stroke:#ffffff;stroke-width:0.244222;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">a</tspan></tspan></text>

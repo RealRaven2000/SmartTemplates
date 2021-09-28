@@ -21,7 +21,7 @@
 	display: none;
 }
 
-#ok, #cancel, #yes, #no, #countDown  {
+#ok, #cancel, #yes, #no, #countDown, #btnShowLicenser, #btnFeatureCompare {
 	font-size: 12pt;
 }
 
@@ -48,3 +48,28 @@
 	margin-bottom: 0.6em;
 	max-width: 850px;
 }
+
+#licensing {
+  display: flex;
+  justify-content: space-evenly;
+}
+#btnShowLicenser, #btnFeatureCompare {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.actionlinks {
+  background-color: darkred;
+  box-shadow: 5px 5px 5px rgba(50,50,50,0.5);
+  color: white;
+}
+
+.actionlinks:hover {
+  background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
+}
+
+.actionlinks:active {
+  background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
+}
+
