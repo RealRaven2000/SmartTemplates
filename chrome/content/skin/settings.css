@@ -6,7 +6,7 @@
 }
 
 
-#helpTemplates {
+#helpTemplates, #helpSnippets {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
