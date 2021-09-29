@@ -51,7 +51,7 @@
 							 customizable="false">
         <toolbarbutton id="helpTemplates"
             class="toolbarbutton-1 chromeclass-toolbar-additional"
-            oncommand = "SmartTemplate4.Util.showStationeryHelpPage();" 
+            oncommand = "SmartTemplate4.Util.showStationeryHelpPage('templateFiles');" 
             label = ""
             tooltiptext="&tip.fileTemplates;"
             />
@@ -311,6 +311,7 @@
 							<tab id = "file.newTab"     label = "&pref_new.tab;" class = "NewTab"/>
 							<tab id = "file.respondTab" label = "&pref_rsp.tab;" class = "RespondTab" />
 							<tab id = "file.forwardTab" label = "&pref_fwd.tab;" class = "ForwardTab" />
+              <tab id = "file.snippetsTab" label = "&snippets.head;" class = "SnippetsTab" />
 						</tabs>
 						
 						<tabpanels flex = "1" 
@@ -367,38 +368,47 @@
 													<spacer flex="1" />
 												</toolbar>						
 											</hbox>
-											<hbox>
-											
-												<grid flex="1">
-													<columns>
-														<column id="colFileTemplates1" />
-														<column id="colFileTemplates2" flex = "2" />
-													</columns>
-													<rows>
-														<row align="left" id="labelRow">
-															<label>&fileTemplates.file.path;</label>
-															<hbox flex="3">
-																<textbox id="txtTemplatePath" 
-																				 flex="2"
-																				 />
-																<toolbarbutton 
-																				id="btnPickTemplate" 
-																				tooltiptext="&fileTemplates.file.open;" 
-																				oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
-																				/>
-															</hbox>
-														</row>
-														<row align="left" id="labelRow">
-															<label >&fileTemplates.file.title;</label>
-															<textbox id="txtTemplateTitle" 
-																			 flex="3" 
-																			 tooltiptext="&fileTemplates.file.title.tooltip;"
-																			 onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
-																			 />
-														</row>
-													</rows>
-												</grid>
-											</hbox>
+                      <div id="fileSettings" >
+                        <div>
+                          <div class="settingsRow">
+                            <label>&fileTemplates.file.path;</label>
+                            <html:input
+                                  type="text"
+                                  id="txtTemplatePath" 
+                                  />
+                            <toolbarbutton 
+                                    id="btnPickTemplate" 
+                                    tooltiptext="&fileTemplates.file.open;" 
+                                    oncommand="SmartTemplate4.fileTemplates.pickFileFromSettings();"
+                                    />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="settingsRow">
+                            <label>&fileTemplates.file.title;</label>
+                            <html:input
+                              type="text"
+                              id="txtTemplateTitle" 
+                              title="&fileTemplates.file.title.tooltip;"
+                              onblur="SmartTemplate4.fileTemplates.onEditLabel(this);"
+                              flex="2"
+                              />
+                            <label>&template.category;:</label>
+                            <html:input
+                              type="text"
+                              id="txtTemplateCategory"
+                              title="&template.category.tooltip;"
+                              onblur="SmartTemplate4.fileTemplates.onEditLabel();"
+                              flex="0"
+                              />
+                            	<toolbarbutton id="helpSnippets"
+                              oncommand = "SmartTemplate4.Util.showStationeryHelpPage('snippets');" 
+                              label = ""
+                              tooltiptext="&template.category.tooltip;"
+                              />
+                          </div>
+                        </div>
+                      </div>                      
 											<spacer flex="1" />
 										</vbox>
 									</vbox>
@@ -438,6 +448,22 @@
 									</vbox>									
 								</groupbox>
 							</tabpanel>
+              
+							<!-- ######## Content [Snippets] File Tab ######## -->
+							<tabpanel class = "snippetsGroup fileTemplatePanel" id="snippets-fileTemplates">
+								<groupbox  flex = "1" class="transparent">
+									<hbox class="groupbox-title"><label class="header">&snippets.head;</label></hbox>
+									<vbox flex="1" class="vfield">
+										<label value="&snippets.label;" />
+										<richlistbox 
+											id="templateList.snippets" 
+											flex="1"
+											onselect="SmartTemplate4.fileTemplates.onSelect(this);">
+										</richlistbox>
+									</vbox>									
+								</groupbox>
+							</tabpanel>
+                            
 						</tabpanels>
 						
 						

@@ -267,7 +267,25 @@ SmartTemplate4.Licenser =
 		// for renewals, referrer is always the old license!
 		if (this.isValidated)
 			referrerTxt.value = this.LicenseKey;
-		
+    
+    // link to feature comparison
+    let featureComparison = getElement("featureComparison");
+    if (featureComparison) {
+      let htmlFragment = "<label class='para' id='featureComparison'>"
+        + SmartTemplate4.Util.getBundleString("register.licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink' class='link'>")
+          .replace(/\{linkEnd\}/, "</a>")
+        + "</label>";
+      let e = featureComparison.ownerGlobal.MozXULElement.parseXULToFragment(htmlFragment);
+      
+      featureComparison.parentElement.insertBefore(e, featureComparison);
+      featureComparison.parentElement.removeChild(featureComparison);
+      window.addEventListener("click", async (event) => {
+        if (event.target.id == "compLink") {
+          SmartTemplate4.Util.openLinkInBrowser(event,"https://smarttemplates.quickfolders.org/premium.html#featureComparison");
+        }         
+      });
+    } 		
 		// Renewal Logic.
     let decryptedDate = this.DecryptedDate;
     if (decryptedDate) {

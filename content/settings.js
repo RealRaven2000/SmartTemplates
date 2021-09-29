@@ -19,6 +19,13 @@ if (SmartTemplate4.Util.Application == 'Postbox'){
   }
 }
 
+var LastInput = {
+  id: null,
+  value: "",
+  selectedIndex: null,
+  listbox: null
+}
+
 
 SmartTemplate4.Settings = {
   dialogHeight: 0,
@@ -1057,6 +1064,7 @@ SmartTemplate4.Settings = {
         case 'new': idx = 0; break;
         case 'rsp': idx = 1; break;
         case 'fwd': idx = 2; break;
+        case 'snippets': idx = 3; break;
       }
       fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
       fileTemplatesTabs.selectedIndex = idx;
@@ -1173,6 +1181,9 @@ SmartTemplate4.Settings = {
 				break;
 			case 2:
 				moveFileControls('templateList.fwd');
+				break;
+			case 3:
+				moveFileControls('templateList.snippets');
 				break;
 			default:
 		}

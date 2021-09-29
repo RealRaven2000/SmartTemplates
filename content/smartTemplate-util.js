@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.16",
+	HARDCODED_CURRENTVERSION : "2.17",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
   ADDON_TITLE: "SmartTemplates",
@@ -161,7 +161,7 @@ SmartTemplate4.Util = {
 		let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
 						getService(Ci.nsIStringBundleService),
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/messages.properties"),
-		    theText = '';
+		    theText = "";
 		try{
 			//try writing an error to the Error Console using the localized string; if it fails write it in English
 			theText = bundle.GetStringFromName(id);
@@ -179,6 +179,13 @@ SmartTemplate4.Util = {
 		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
 		return win3pane;
 	} ,
+  
+  get lastComposerWindow() {
+		let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
+				.getService(Components.interfaces.nsIWindowMediator),
+		    win3pane = windowManager.getMostRecentWindow("msgcompose");
+		return win3pane;
+  },
 
 	get PlatformVer() {
 		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
@@ -1029,7 +1036,10 @@ SmartTemplate4.Util = {
 			this.showStationeryWarning(window);
 		}
 	},
-	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
+	showStationeryHelpPage: function (inPageLink) { 
+    let urlLink= inPageLink ? ("#" + inPageLink) : "";
+    SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage + urlLink); 
+  } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
 	
@@ -1515,8 +1525,20 @@ SmartTemplate4.Util = {
 			                               // pro / domain license - false
 		}
 		return false;
-		
 	}, 
+  
+  get hasProLicense() {
+		const util = SmartTemplate4.Util,
+					licenser = util.Licenser;
+    if (licenser.isValidated) {
+			let result = (licenser.key_type==0 || licenser.key_type==1);
+			util.logDebugOptional("premium.licenser", "util.hasProLicense = " + result);
+			return result; // standard license - true 
+			                               // pro / domain license - false
+		}
+		return false;
+  },
+	  
 	
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
@@ -3134,6 +3156,8 @@ SmartTemplate4.Message = {
 		{
 			messageText:    text,
       countDown:      countDown,
+      showLicenseButton: callbacksObj ? (callbacksObj.showLicenseButton || false) : false,
+      feature: callbacksObj ? (callbacksObj.feature || ""): "",
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
 			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
 			yesCallback:    SmartTemplate4.Message.yesCALLBACK,
@@ -3284,7 +3308,6 @@ SmartTemplate4.Message = {
         else 
           SmartTemplate4.Message.allowClose = true;
         
-						
 				for (let i = 0; i < textNodes.length; i++) {
 					// empty nodes will be <br>
 					let par = textNodes[i].length ? document.createElement('p') : document.createElement('br');
@@ -3292,6 +3315,34 @@ SmartTemplate4.Message = {
 						par.textContent = textNodes[i]; // we want this to wrap. won't use unescape for the moment
 					msgDiv.appendChild(par);
 				}
+        let licenseBtnRow = document.getElementById("licensing");
+        if (licenseBtnRow) {
+          const ST4 = SmartTemplate4.Util.mainInstance,
+                showDialog = ST4.Licenser.showDialog.bind(ST4.Licenser),
+                openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
+                featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
+          if (params.showLicenseButton) {
+            let btnLicense = document.getElementById("btnShowLicenser"),
+                btnFeatureCompare = document.getElementById("btnFeatureCompare"),
+                feature = params.feature || "";
+            btnLicense.addEventListener("click", 
+              function() {
+                showDialog(feature);
+                window.close();  
+              }, true
+            );
+            btnFeatureCompare.addEventListener("click", 
+              function() {
+                openURLInTab(featureCompUrl);
+                window.close();  
+              }, true
+            );
+            msgDiv.appendChild(licenseBtnRow);
+          }
+          else
+            licenseBtnRow.parentNode.removeChild(licenseBtnRow);
+        }
+        
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
         let buttons = [];
 

@@ -497,21 +497,26 @@ END LICENSE BLOCK
     # [issue 126] Enabling Resolve names from Address book falsely disables advanced options
     # [issue 130] Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.
     
-  Version 2.16 - WIP
+  Version 2.16 - 16/06/2021
+    # [issue 139] Double template inserted when replying to own email
     # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template
+    
+  Version 2.17 - WIP
+    # [issue 142] [issue 28] Add feature to insert html Smart snippets within Composer
+    # [issue 147] Add categories / folders to structure template menus
+    # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
+    # Fixed some strings in Occitan locale
 
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
+    # [issue 142]/[issue 28] Add feature to insert html Smart snippets within Composer
 	
 	Version 2.x
     # [issue 30] Reply button loses template menu items
-    # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
     # [issue 27] Insert external HTML Templates from a web page URL
-    # [issue 24] Allow selecting different file template after opening composer. 
-      As starting point, we could just do a file open mechanism and an optional single toolbar button.
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
-    # [issue 12] <head> section is merged into <body>
+    # [issue 12] <head> section from templates should be merged into <body>
 		# ...
 			
   Version 2.2
@@ -623,6 +628,11 @@ var SmartTemplate4 = {
 			}
 			else
 				isNotify = true;
+      
+      // avoid race conditions that cause concurrent / nested calling of our notifyComposeBodyReady function
+      if (SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired) 
+        isNotify = false; // [issue 139] duplication of template
+      SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired = true;
 				
 			if (isNotify) {
 				// [BUG 26434] forwarding email with embedded images removes images
@@ -895,7 +905,7 @@ var SmartTemplate4 = {
           }
         }
         flags.isChangeTemplate = isChangeTemplate;
-				this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
+        this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
 				// store a flag in the document
         // [issue 108] Other Add-ons may accidentally duplicate template if they set from identity
 				// root.setAttribute("smartTemplateInserted","true"); <== moved into the insertTemplate function!
@@ -968,7 +978,7 @@ var SmartTemplate4 = {
 		const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
 		let isTemplateProcessed = false;
-		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
+		SmartTemplate4.Util.logDebug('SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
 			// Old function call
 			this.original_LoadIdentity(startup);
@@ -1225,7 +1235,6 @@ SmartTemplate4.calendar = {
 					                + "Available in SmartTemplate4: " + listLocales.substring(0, listLocales.length-2) + "\n"
 													+ "This will affect the following variables: %A% %a% %B% %b% (week days and months) ";
 					util.logToConsole(errorText);
-					/* SmartTemplate4.Message.display(errorText, "centerscreen,titlebar", { ok: function() { ; } }); */
 					this.bundleLocale = null;
 				}
 				else {

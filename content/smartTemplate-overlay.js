@@ -1561,6 +1561,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				"centerscreen,titlebar,modal,dialog",
 				{ ok: function() { ; } , 
           isLicenseWarning: true, 
+          showLicenseButton: true,
           licenser: mainLicenser},
 				parentWin
 			);

@@ -30,7 +30,6 @@
 			onclick="SmartTemplate4.Util.cleanupDeferredFields();"
 			>
 		</toolbarbutton>
-		<!-- [issue 24] Select a different template in Composer..	-->
 
     <toolbarbutton 
 		  id="smarttemplate4-changeTemplate" 
@@ -39,11 +38,23 @@
 			tooltiptext="&smartTemplate4.changeTemplate.tooltip;"
       type="menu-button"
 			context=""
-			oncommand="SmartTemplate4.composer.selectTemplateFromMenu();">
+			oncommand="SmartTemplate4.composer.selectTemplateFromMenu(this);">
         <menupopup id="button-TemplatePopup">
         </menupopup>      
-      </toolbarbutton>
+    </toolbarbutton>
     
+    <toolbarbutton 
+		  id="smarttemplate4-insertSnippet" 
+			class="toolbarbutton-1 AG"
+			label="&smartTemplate4.insertSnippet.button;"
+			tooltiptext="&smartTemplate4.insertSnippet.tooltip;"
+      type="menu-button"
+      is="toolbarbutton-menu-button"
+			oncommand="SmartTemplate4.composer.selectSnippetFromMenu(this);">
+      <menupopup id="button-SnippetPopup">
+      </menupopup>      
+    </toolbarbutton>
+            
     
 	</toolbarpalette>
 	

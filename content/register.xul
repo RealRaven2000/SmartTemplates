@@ -23,7 +23,7 @@
 	
 	<vbox id="thePage">
 		<hbox>
-			<div class="product">&getSmartTemplate4;</div>
+			<span class="productcontainer"><div class="product">&getSmartTemplate4;</div></span>
 			<spacer flex="1" />
 			<vbox align="center">
 				<spacer flex="1" />
@@ -64,6 +64,7 @@
 					<description class="para">&yearlyLicense.premiumFeatures;</description>
 					<label class="para link" 
 					onclick="SmartTemplate4.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
+          <description class="para" id="featureComparison">To compare features of the different versions, {linkStart}read this list{linkEnd}.</description>          
 					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
 				</td>
 			</tr>	
@@ -74,15 +75,6 @@
 				</td>
 			  <td>
 					<description class="para">&updatesExpiry;</description>
-				</td>
-			</tr>	
-			<tr>	
-				<td>
-					<div class="heading">&vouchers.title;</div>
-					<spacer flex="1" />
-				</td>
-				<td>
-					<description class="para">&freeLicense;</description>
 				</td>
 			</tr>	
 		</table>

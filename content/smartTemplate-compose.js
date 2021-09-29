@@ -1119,7 +1119,22 @@ SmartTemplate4.classSmartTemplate = function() {
 					}
 				  else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
-						template = getSmartTemplate(st4composeType, idKey);
+            try {
+              // [issue 139]
+              // disable notification because streaming the message can trigger during this time
+              SmartTemplate4.pref.disableNotification = true;
+              // if LoadIdentity was called because we are in a different account, this can trigger the file template!
+              // in this case we do not need to insert the standard template anymore.
+              template = getSmartTemplate(st4composeType, idKey); 
+            }
+            catch(ex) {
+              util.logException("insertTemplate - exception during getSmartTemplate()", ex);
+            }
+            finally {
+              SmartTemplate4.pref.disableNotification = false;
+              if (SmartTemplate4.PreprocessingFlags.isFileTemplate && !flags.isFileTemplate)
+                return null;
+            }
 					}
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
 					quoteHeader = getQuoteHeader(st4composeType, idKey);
@@ -1408,8 +1423,8 @@ SmartTemplate4.classSmartTemplate = function() {
 				              	let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 				              	oClipBoard.copyString(template); },
 												cancel: function() { ;/* cancel NOP */ }
-											}
-				              , gMsgCompose.editor.document.defaultView
+          }, 
+          gMsgCompose.editor.document.defaultView
 				);
 			}
 		}
@@ -1432,7 +1447,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,		
 		    serverInfo = util.getServerInfo(idKey), // find out server name and type (IMAP / POP3 etc.)
 		    common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : ''; // our "compact log" to assist our users more effective
-		util.logDebugOptional('functions.insertTemplate',
+        
+    try {
+			util.logDebugOptional('functions.insertTemplate',
 		         'identityName:   ' + theIdentity.identityName + '\n'
 		       + 'key:            ' + theIdentity.key + common + '\n'
 		       + serverInfo
@@ -1449,11 +1466,15 @@ SmartTemplate4.classSmartTemplate = function() {
 		       + '%sig% type: [' + sigType + ']\n'
 		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
 		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4: ' + util.Version + '\n'
+		       + 'SmartTemplates: ' + util.Version + '\n'
 		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
 		       + 'HostSystem: ' + util.HostSystem + '\n'
 		       + 'Stationery used: ' + flags.isStationery + '\n'
 		       );
+    }
+    catch(ex) {
+      util.logException("Logging detail failed", ex);
+    }
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
@@ -1617,7 +1638,6 @@ SmartTemplate4.classSmartTemplate = function() {
 						if (isDebugComposer) debugger;
 						if (caretContainer && caretContainer.outerHTML) {
 							try {
-								//if (util.Application=='Postbox') util.debugVar(caretContainer);
 								
 								let scrollFlags = selCtrl.SCROLL_FOR_CARET_MOVE | selCtrl.SCROLL_OVERFLOW_HIDDEN,
 										cursorParent = caretContainer.parentNode; // usually a <p>
@@ -1632,8 +1652,13 @@ SmartTemplate4.classSmartTemplate = function() {
 												caretEndPos = caretStartPos + caretContainer.outerHTML.length,
 												para = doc.createElement('P'),
 												nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
-												previousBlock = parentSrchHTML.lastIndexOf('</p', caretStartPos) + 1 || parentSrchHTML.lastIndexOf('<br',caretStartPos) + 1 || parentSrchHTML.lastIndexOf('</div',caretStartPos) + 1; // where the previous Block ends
-										if (!previousBlock) 
+                        // [issue 149] table rows / cells were removed if last element
+												previousBlock = Math.max(
+                            parentSrchHTML.lastIndexOf('</p', caretStartPos) 
+                          , parentSrchHTML.lastIndexOf('<br', caretStartPos) 
+                          , parentSrchHTML.lastIndexOf('</div', caretStartPos)
+                          , parentSrchHTML.lastIndexOf('</table', caretStartPos)) + 1; // where the previous Block ends
+                    if (previousBlock==0) 
 											previousBlock = caretStartPos;
 										else {
 											previousBlock = parentSrchHTML.indexOf('>', previousBlock)+1 || caretStartPos; // find end of closing tag

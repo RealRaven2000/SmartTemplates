@@ -21,6 +21,12 @@
 			<div id = "innerMessage" width="600" height="25">
 
 			</div>
+      <div id="licensing">
+        <div id = "btnShowLicenser" 
+             class="actionlinks">&message.licenseScreen;</div>
+        <div id = "btnFeatureCompare" 
+             class="actionlinks">&message.features;</div>
+      </div>
 		</vbox>
 		<spacer flex = "1"/>
 		<hbox id = "commands">
