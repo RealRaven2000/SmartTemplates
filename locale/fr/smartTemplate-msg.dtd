@@ -4,3 +4,5 @@
 <!ENTITY yes_button "Oui">
 <!ENTITY no_button "Non">
 <!ENTITY message_default_title "SmartTemplates">
+<!ENTITY message.licenseScreen "Afficher les options de licence…">
+<!ENTITY message.features "Comparer les fonctionnalités…">

@@ -4,3 +4,5 @@
 <!ENTITY yes_button "Да">
 <!ENTITY no_button "Не">
 <!ENTITY message_default_title "SmartTemplates">
+<!ENTITY message.licenseScreen "Прикажи опције лиценце…">
+<!ENTITY message.features "Упоредите карактеристике…">

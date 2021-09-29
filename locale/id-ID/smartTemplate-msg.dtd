@@ -4,3 +4,5 @@
 <!ENTITY yes_button "Ya">
 <!ENTITY no_button "Tidak">
 <!ENTITY message_default_title "SmartTemplate4">
+<!ENTITY message.licenseScreen "Tampilkan Opsi Lisensi…">
+<!ENTITY message.features "Bandingkan Fitur…">

@@ -4,3 +4,5 @@
 <!ENTITY yes_button "是">
 <!ENTITY no_button "否">
 <!ENTITY message_default_title "SmartTemplates">
+<!ENTITY message.licenseScreen "顯示許可選項…">
+<!ENTITY message.features "比較功能…">

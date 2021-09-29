@@ -4,3 +4,5 @@
 <!ENTITY yes_button "Kyllä">
 <!ENTITY no_button "Ei">
 <!ENTITY message_default_title "SmartTemplates">
+<!ENTITY message.licenseScreen "Näytä lisenssiasetukset…">
+<!ENTITY message.features "Vertaa ominaisuuksia…">

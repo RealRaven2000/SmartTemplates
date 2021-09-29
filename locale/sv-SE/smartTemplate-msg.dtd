@@ -4,3 +4,5 @@
 <!ENTITY yes_button "Ja">
 <!ENTITY no_button "Ingen">
 <!ENTITY message_default_title "SmartTemplates">
+<!ENTITY message.licenseScreen "Visa licensalternativ…">
+<!ENTITY message.features "Jämför funktioner…">
