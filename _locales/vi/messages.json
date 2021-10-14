@@ -92,6 +92,12 @@
     "message": "Là chủ sở hữu của giấy phép tiêu chuẩn SmartTemplates, bạn hiện đủ điều kiện nhận bản cập nhật chiết khấu cộng với gia hạn cả năm. Nhấp vào nút [Nâng cấp lên Pro] bên dưới giấy phép tiêu chuẩn của bạn để biết thêm thông tin.",
     "description": "Special message for standard license holders"
   },  
+  "message.licenseScreen": {
+    "message": "Hiển thị Tùy chọn Giấy phép…"
+  },
+  "message.features": {
+    "message": "So sánh các tính năng…"
+  },
   "mozillas-basic-platform" : {
     "message" : "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
@@ -203,7 +209,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}"
+    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Bây giờ bạn có thể sử dụng %quotePlaceholder% để chèn văn bản thư được chuyển tiếp trong mẫu {L2}{L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

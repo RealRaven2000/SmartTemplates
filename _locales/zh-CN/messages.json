@@ -719,6 +719,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "显示许可选项…"
+  },
+  "message.features": {
+    "message": "比较功能…"
+  },
   "messid.label": {
     "message": "消息 ID"
   },
@@ -1598,7 +1604,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates 现在与 Thunderbird 91 兼容。这项工作是通过许可证支付的，非常感谢您的帮助！{L2} {L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。{image1}{L2} {L1}为结构模板列表添加了类别子菜单。{L2} {L1}已修复：在没有 Pro 许可证的情况下保存/加载帐户模板失败。{L2}"
+    "message": "{L1}SmartTemplates 现在与 Thunderbird 91 兼容。这项工作是通过许可证支付的，非常感谢您的帮助！{L2} {L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。{image1}{L2} {L1}为结构模板列表添加了类别子菜单。{L2} {L1}您现在可以使用 %quotePlaceholder% 在模板中插入转发的邮件文本{L2}{L1}已修复：在没有 Pro 许可证的情况下保存/加载帐户模板失败。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

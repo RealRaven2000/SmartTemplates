@@ -719,6 +719,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Näytä lisenssiasetukset…"
+  },
+  "message.features": {
+    "message": "Vertaa ominaisuuksia…"
+  },
   "messid.label": {
     "message": "Viestin tunnus (ID)"
   },
@@ -1597,8 +1603,8 @@
   "whats-new-intro" : {
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
-  "whats-new-list" : {
-    "message" : "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}"
+  "whats-new-list": {
+    "message": "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Voit nyt käyttää %quotePlaceholder% -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

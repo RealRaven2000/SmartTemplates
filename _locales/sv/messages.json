@@ -719,6 +719,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Visa licensalternativ…"
+  },
+  "message.features": {
+    "message": "Jämför funktioner…"
+  },
   "messid.label": {
     "message": "Meddelande-ID"
   },
@@ -1598,7 +1604,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}"
+    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Du kan nu använda %quotePlaceholder% för att infoga vidarebefordrad e -posttext i mallen {L2}{L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

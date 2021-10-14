@@ -719,6 +719,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Afficher les options de licence…"
+  },
+  "message.features": {
+    "message": "Comparer les fonctionnalités…"
+  },
   "messid.label": {
     "message": "ID du message"
   },
@@ -1598,7 +1604,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Vous pouvez désormais insérer des extraits HTML intelligents lors de la modification de votre e-mail. Consultez le journal des modifications ci-dessous pour plus de détails.{image1}{L2} {L1}Ajout de sous-menus de catégorie aux listes de modèles de structure.{L2} {L1}Corrigé : l'enregistrement/le chargement des modèles de compte échouait sans licence Pro.{L2}"
+    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Vous pouvez désormais insérer des extraits HTML intelligents lors de la modification de votre e-mail. Consultez le journal des modifications ci-dessous pour plus de détails.{image1}{L2} {L1}Ajout de sous-menus de catégorie aux listes de modèles de structure.{L2} {L1} Voit nyt käyttää % quotePlaceholder % -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1}Vous pouvez désormais utiliser %quotePlaceholder% pour insérer le texte du courrier transféré dans le modèle{L2}{L1}Corrigé : l'enregistrement/le chargement des modèles de compte échouait sans licence Pro.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -719,6 +719,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Licentie-opties weergeven…"
+  },
+  "message.features": {
+    "message": "Vergelijk functies…"
+  },
   "messid.label": {
     "message": "Bericht-ID"
   },
@@ -1599,7 +1605,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}SmartTemplates is nu compatibel met Thunderbird 91. Dit werk is betaald via licenties, hartelijk dank voor uw hulp hierbij!{L2} {L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor volledige details.{image1}{L2} {L1}Categoriesubmenu's toegevoegd om sjabloonlijsten te structureren.{L2} {L1}Opgelost: opslaan/laden van accountsjablonen mislukt zonder Pro-licentie.{L2}"
+  "message": "{L1}SmartTemplates is nu compatibel met Thunderbird 91. Dit werk is betaald via licenties, hartelijk dank voor uw hulp hierbij!{L2} {L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor volledige details.{image1}{L2} {L1}Categoriesubmenu's toegevoegd om sjabloonlijsten te structureren.{L2} {L1}U kunt nu %quotePlaceholder% gebruiken om doorgestuurde e-mailtekst in de sjabloon in te voegen{L2}{L1}Opgelost: opslaan/laden van accountsjablonen mislukt zonder Pro-licentie.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

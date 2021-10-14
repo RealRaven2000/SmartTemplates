@@ -720,6 +720,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Mostra les opcions de llicència…"
+  },
+  "message.features": {
+    "message": "Compareu les funcions…"
+  },
   "messid.label": {
     "message": "ID del messatge"
   },
@@ -1600,7 +1606,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates ara és compatible amb Thunderbird 91. Aquest treball s'ha pagat mitjançant llicències, moltes gràcies per ajudar-vos amb això. {L2} {L1} Ara podeu inserir fragments HTML Smart HTML mentre editeu el correu electrònic. Consulteu el registre de canvis següent per obtenir més informació. {image1} {L2} {L1} S'han afegit submenús de categories a les llistes de plantilles d'estructura. {L2} {L1} Solucionat: s'ha desat / carregat les plantilles del compte sense la llicència Pro. {L2}"
+    "message": "{L1} SmartTemplates ara és compatible amb Thunderbird 91. Aquest treball s'ha pagat mitjançant llicències, moltes gràcies per ajudar-vos amb això. {L2} {L1} Ara podeu inserir fragments HTML Smart HTML mentre editeu el correu electrònic. Consulteu el registre de canvis següent per obtenir més informació. {image1} {L2} {L1} Ara podeu utilitzar %quotePlaceholder% per inserir text de correu reenviat dins de la plantilla {L2}{L1} S'han afegit submenús de categories a les llistes de plantilles d'estructura. {L2} {L1} Solucionat: s'ha desat / carregat les plantilles del compte sense la llicència Pro. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -184,7 +184,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o registro de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Adicionados submenus de categoria às listas de modelos de estrutura. {L2} {L1} Corrigido: falha ao salvar / carregar modelos de conta sem licença Pro. {L2}"
+    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o registro de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Adicionados submenus de categoria às listas de modelos de estrutura. {L2} {L1} Agora você pode usar %quotePlaceholder% para inserir o texto do correio encaminhado dentro do modelo {L2}{L1} Corrigido: falha ao salvar / carregar modelos de conta sem licença Pro. {L2}"
   },
   "window-title": {
     "message": "Bem-vindo a $addonName$",

@@ -624,6 +624,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Показати параметри ліцензії…"
+  },
+  "message.features": {
+    "message": "Порівняйте функції…"
+  },
   "messid.label": {
     "message": "ID Повідомлення"
   },

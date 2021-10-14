@@ -716,6 +716,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Lizenzoptionen anzeigen…"
+  },
+  "message.features": {
+    "message": "Funktionen vergleichen…"
+  },
   "messid.label": {
     "message": "Nachrichten ID"
   },
@@ -1596,7 +1602,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}"
+    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Sie können jetzt %quotePlaceholder% verwenden, um weitergeleiteten E-Mail-Text in die Vorlage einzufügen{L2}{L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

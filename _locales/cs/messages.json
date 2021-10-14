@@ -710,6 +710,12 @@
   "message_default_title": {
     "message": "SmartTemplates"
   },
+  "message.licenseScreen": {
+    "message": "Zobrazit možnosti licence…"
+  },
+  "message.features": {
+    "message": "Porovnat funkce…"
+  },
   "messid.label": {
     "message": "ID zprávy"
   },
@@ -1590,7 +1596,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nyní můžete při úpravě e -mailu vkládat inteligentní fragmenty HTML. Úplné podrobnosti najdete níže v protokolu změn. {image1} {L2} {L1} Přidáno podnabídky kategorií do seznamů šablon struktur. {L2} {L1} Opraveno: Ukládání / načítání šablon účtů se nezdařilo bez licence Pro. {L2}"
+    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nyní můžete při úpravě e -mailu vkládat inteligentní fragmenty HTML. Úplné podrobnosti najdete níže v protokolu změn. {image1} {L2} {L1} Nyní můžete použít %quotePlaceholder% k vložení textu přeposlané pošty do šablony {L2}{L1} Přidáno podnabídky kategorií do seznamů šablon struktur. {L2} {L1} Opraveno: Ukládání / načítání šablon účtů se nezdařilo bez licence Pro. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
