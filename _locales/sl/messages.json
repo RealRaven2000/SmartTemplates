@@ -1213,19 +1213,38 @@
     "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
   "special-offer-content": {
-    "message": "Pripravite SmartTemplates v prihodnje in pridobite licenco, medtem ko je cena programa SmartTemplates Pro {boldStart} $discount$ znižana {boldEnd}! Ta posebna ponudba je podaljšana do {boldStart} 31. avgusta {boldEnd}.",
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "16. aprila"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31. oktobra"
+  },
   "special-offer-head": {
-    "message": "Naj bodo SmartTemplates prihodnji dokaz!"
+    "message": "Pomagajte ohraniti združljivost $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, če še nimate licence, razmislite o podpori SmartTemplates za prihodnost. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!"
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."

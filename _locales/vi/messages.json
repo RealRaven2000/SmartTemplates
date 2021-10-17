@@ -127,19 +127,38 @@
     "message": "SmartTemplates đã được cập nhật!"
   },
   "special-offer-content": {
-    "message": "Làm cho SmartTemplates bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm $discount$ {boldEnd} về giá của SmartTemplates Pro! Ưu đãi đặc biệt này được kéo dài đến {boldStart} ngày 31 tháng 8 {boldEnd}.",
+    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép {linkStartPro}SmartTemplates Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": " ngày 16 tháng 4"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "Ngày 31 tháng 10"    
+  },
   "special-offer-head": {
-    "message": "Làm cho SmartTemplates bằng chứng trong tương lai!"
+    "message": "Giúp giữ cho $addon$ tương thích",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ SmartTemplates trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "support-preference" : {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",

@@ -1213,19 +1213,38 @@
     "message": "Одељци унутар угластих заграда [[Cc: %cc(name)%]] биће приказани само ако променљива %cc(name)% може да се замени."
   },
   "special-offer-content": {
-    "message": "Направите КуицкФолдерс доказ у будућности и преузмите лиценцу док постоји {boldStart} попуст од $discount$ {boldEnd} на цени КуицкФолдерс Про! Ова посебна понуда продужава се до {болдСтарт} 31. августа {болдЕнд}.",
+    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}SmartTemplates Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "16. априла"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31. октобра"
+  },
   "special-offer-head": {
-    "message": "Нека SmartTemplates буду будући доказ!"
+    "message": "Помозите да $addon$ буде компатибилан",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Поштовани {name} {boldEnd}, ако још увек немате лиценцу, размислите о подршци КуицкФолдерс-у за будућност. Долазе још велике промене на Тхундербирду и треба ми {boldStart} ваша помоћ {boldEnd} да наставим!"
+    "message": "{boldStart} Поштовани {name} {boldEnd}, подржите $addon$ кроз добијање лиценце. Тхундербирд код се непрестано развија и потребна нам је {boldStart} ваша помоћ {boldEnd} да наставимо!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "spellcheck.label": {
     "message": "Поставља језик за проверу правописа. Примјер вриједности: (ен, де-ДЕ, ес-ЕС, ру) - имајте на уму да рјечник мора бити инсталиран."

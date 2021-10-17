@@ -1387,17 +1387,36 @@
   "sub_var.cap": {
     "message": "Předmět"
   },
+  "special-offer-expiry": {
+    "message": "31. října"
+  },
   "special-offer-head": {
-    "message": "Udělejte důkaz SmartTemplates do budoucna!"
-  },    
+    "message": "Pomozte zachovat kompatibilitu $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
   "special-offer-intro": {
-    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory SmartTemplates pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },  
   "special-offer-content": {
-    "message": "Udělejte SmartTemplates budoucí důkaz a získejte licenci, zatímco u ceny SmartTemplates Pro je {boldStart} $discount$ snížení {boldEnd}! Tato speciální nabídka je prodloužena do {boldStart} 31. srpna {boldEnd}.",
+    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "16. Dubna"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }

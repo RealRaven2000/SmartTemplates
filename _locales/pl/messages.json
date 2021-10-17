@@ -1213,19 +1213,38 @@
     "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
   "special-offer-content": {
-    "message": "Przygotuj SmartTemplates na przyszłość i pobierz licencję, dopóki cena SmartTemplates Pro jest {boldStart} $discount$ obniżona {boldEnd}! Ta oferta specjalna jest przedłużona do {boldStart}31 sierpnia{boldEnd}.",
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję SmartTemplates Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "22 sierpnia"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31 października"    
+  },
   "special-offer-head": {
-    "message": "Przygotuj SmartTemplates na przyszłość!"
+    "message": "Pomóż zachować zgodność $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Drogi {name} {boldEnd}, jeśli nie masz jeszcze licencji, rozważ obsługę SmartTemplates w przyszłości. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!"
+    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."

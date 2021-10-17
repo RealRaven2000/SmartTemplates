@@ -412,7 +412,7 @@
     "message": "HTML-malli"
   },
   "fpFilterName": {
-    "message": "SmartTemplate4-tiedosto"
+    "message": "SmartTemplates-tiedosto"
   },
   "fpFolder": {
     "message": "Kansio"
@@ -1395,21 +1395,40 @@
   "sub_var.cap": {
     "message": "Aihe"
   },
-  "special-offer-head" : {
-    "message": "Tee SmartTemplatesista tulevaisuuden todiste!"
-  } ,  
-  "special-offer-intro" : {
-    "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
-  } , 
-  "special-offer-content" : {
-    "message": "Tee SmartTemplates-sovelluksista tulevaisuuden todisteita ja hae lisenssi, kun SmartTemplates Pron hinta on {boldStart} $discount$ alhaisempi {boldEnd}! Tätä erikoistarjousta jatketaan {boldStart} 31. elokuuta {boldEnd} asti.",
+  "special-offer-expiry": {
+    "message": "31. lokakuuta"
+  }, 
+  "special-offer-head": {
+    "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
-      "discount": {
+      "addon": {
         "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro" : {
+    "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi. Thunderbird -koodi kehittyy jatkuvasti, ja tarvitsemme {boldStart} apuasi {boldEnd} pysyäksesi ajan tasalla!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
+  "special-offer-content" : {
+    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {

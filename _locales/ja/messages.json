@@ -1396,19 +1396,38 @@
     "message": "件名"
   },
   "special-offer-content": {
-    "message": "SmartTemplates Proの価格が{boldStart} $discount$割引{boldEnd}されている間に、SmartTemplatesを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは {boldStart}8 月 31 日{boldEnd}まで延長されます。",
+    "message": "ライセンスを選択機能をアップグレードし、{linkStartPro}SmartTemplates Pro{linkEnd}ライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。 または、新しい{linkStart}標準ライセンス{linkEnd}で標準機能を選択します。",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "8月22日"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "10月31日"    
+  },
   "special-offer-head": {
-    "message": "SmartTemplatesを将来の証拠にしましょう！"
+    "message": "$addon$の互換性を維持するのに役立ちます",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart}親愛なる{name} {boldEnd}、まだライセンスを取得していない場合は、将来のためにSmartTemplatesをサポートすることを検討してください。 Thunderbirdのさらに大きな変更が予定されており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！"
+    "message": "{boldStart}親愛なる{name} {boldEnd}、ライセンスを取得して $addon$ をサポートしてください。 Thunderbirdのコードは絶えず進化しており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "support-preference": {
     "message": "これは、$addonName$ をサポートするために推奨される方法です。",

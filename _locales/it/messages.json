@@ -1396,19 +1396,38 @@
     "message": "Oggetto"
   },
   "special-offer-content": {
-    "message": "Rendi SmartTemplates a prova di futuro e prendi una licenza mentre c'è una {boldStart} riduzione del $discount$ {boldEnd} sul prezzo di SmartTemplates Pro! Questa offerta speciale è estesa fino all' {boldStart}31 agosto{boldEnd}.",
+    "message": "Aggiorna le tue funzionalità e risparmia {boldStart}$reduction${boldEnd} acquistando una licenza {linkStartPro}SmartTemplates Pro{linkEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}. Oppure scegli le funzioni standard con la nuova {linkStart}Licenza Standard{linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "22 agosto"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31 ottobre"    
+  },
   "special-offer-head": {
-    "message": "Rendi SmartTemplates una prova per il futuro!"
+    "message": "Aiutaci a mantenere la compatibilità con $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Gentile {name} {boldEnd}, se non hai ancora una licenza, considera di supportare SmartTemplates per il futuro. Sono in arrivo altri grandi cambiamenti su Thunderbird e ho bisogno del tuo {boldStart} del tuo aiuto {boldEnd} per stare al passo!"
+    "message": "{boldStart}Gentile {name}{boldEnd}, supporta $addon$ ottenendo una licenza. Il codice di Thunderbird si evolve continuamente e abbiamo bisogno del {boldStart}tuo aiuto{boldEnd} per stare al passo!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "support-preference": {
     "message": "Questo è il modo migliore per supportare $addonName$.",

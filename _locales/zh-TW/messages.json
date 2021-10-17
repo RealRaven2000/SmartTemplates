@@ -1212,20 +1212,39 @@
   "specform_note.label": {
     "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
+  "special-offer-expiry": {
+    "message": "10 月 31 日"    
+  },
   "special-offer-content": {
-    "message": "使SmartTemplates成為將來的證明並獲取許可，同時SmartTemplates Pro的價格降低{boldStart}$discount${boldEnd}！ 此特別優惠將延長至 {boldStart}8 月 31 日{boldEnd}。",
+    "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "4月16日"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
   "special-offer-head": {
-    "message": "使SmartTemplates成為未來的證明！"
+    "message": "幫助保持 $addon$ 兼容",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart}尊敬的{name} {boldEnd}：如果您尚未獲得許可，請考慮將來支持SmartTemplates。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}來跟上！"
+    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{boldStart}您的幫助{boldEnd}來跟上！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."

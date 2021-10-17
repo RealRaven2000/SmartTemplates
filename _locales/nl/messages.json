@@ -1397,19 +1397,38 @@
     "message": "Onderwerp"
   },
   "special-offer-content": {
-    "message": "Maak SmartTemplates toekomstbestendig en haal een licentie op terwijl er {boldStart} $discount$ korting {boldEnd} is op de prijs van SmartTemplates Pro! Deze speciale aanbieding is verlengd tot {boldStart}31 augustus{boldEnd}.",
+    "message": "Upgrade uw functies en bespaar {boldStart}$reduction${boldEnd} door een {linkStartPro}SmartTemplates Pro-licentie{linkEnd} te kopen! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}. Of kies voor de standaardfuncties met de nieuwe {linkStart}Standaardlicentie{linkEnd}.",
     "placeholders": {
-      "discount": {
+      "expirydate": {
         "content": "$1",
+        "example": "22 augustus"
+      },
+      "reduction": {
+        "content": "$2",
         "example": "30%"
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31 oktober"    
+  },
   "special-offer-head": {
-    "message": "Maak SmartTemplates toekomstbestendig!"
+    "message": "Help $addon$ compatibel te houden",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om SmartTemplates voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
+    "message": "{boldStart}Beste {name}{boldEnd}, steun alstublieft $addon$ door een licentie aan te schaffen. De Thunderbird-code evolueert voortdurend en we hebben {boldStart}uw hulp{boldEnd} nodig om bij te blijven!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "support-preference": {
     "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
