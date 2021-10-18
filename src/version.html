@@ -68,6 +68,37 @@ permalink: version.html
     max-width: 950px;
     padding: 0.2em 1em !important;
   }
+  
+  
+  #version-history div.announcement {
+    background: rgba(40,30,30,.85) !important;
+    border-radius: 4px;
+    box-shadow: inset 0.5em 0.5em 10px rgba(0,0,0,0.7);
+    margin: 0.5em 2em 2em;
+    max-width: 835px;
+    padding: 0.5em 0.8em;
+  }
+    
+  .reinstallInstructions img {
+    margin-top: 0.8em;
+    max-width: 720px;
+  }
+  
+  .expandInstructions {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #006EB7; /* blue */
+    background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+    border-radius: 0.6em;
+    color: white;
+    font: 10pt arial,verdana,sans-serif bold;
+    padding: 0.4em 0.3em;
+  }
+  
+  .reinstallInstructions {
+    display: none;
+  }
+  
 </style>
 
 <!-- note &#8308; is the same as <sup>4</sup>  -->
@@ -190,6 +221,33 @@ permalink: version.html
 			<span class="thunderbird">74.* - 90.0</span> 
 		</span>
   </h4>
+  
+  <div class="psa announcement">
+    <p>
+      Please note that <span class="emphasis">SmartTemplates is compatible with the latest version of Thunderbird (91.2)</span> - if you get a message 
+      that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if SmartTemplates cannot be enabled</b> with 
+      the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+    </p>
+    <div class="reinstallInstructions">
+      <p>First try if you can enable SmartTemplates using the slider: <br>
+        <img class="screenshot" src="img/enable-st.png" alt="enable SmartTemplates" /> 
+      </p>
+      <p> 
+        If this doesn't work, then removing the Add-on via Thunderbird the Add-ons Manager will still retain your settings:<br>
+        <img class="screenshot" src="img/remove-st.png" alt="remove to reinstall" /> 
+      </p>
+      <p>
+        In the Search box, enter the term <i>SmartTemplates</i>, and press the Enter key:<br>
+        <img class="screenshot" src="img/search-st-addon.png" alt="force reinstallation via Addon Manager" /> 
+      </p>
+      <p>
+        Then click on the <i>Add to Thunderbird</i> button:<br>
+        <img class="screenshot" src="img/install-from-atn.png" alt="Add to Thunderbird" />
+      </p>
+    </div>
+    <div class="expandInstructions">Click to read instructions for reinstalling:</div> <br>
+  </div>  
+  
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
@@ -3372,4 +3430,26 @@ A toolbar button to remove the tabs from the Windows titlebar back to their orig
 <p>
 Moves the Thunderbird menu bar to the top. Choose from a selection of visual styles. It is convenient to have the menu on top of the tabs like Firefox; this is also a good area for placing "global" toolbar buttons like Navigation or get mail.
 </p>
+
+<script>
+  let expandBtns = document.querySelectorAll(".expandInstructions");
+  for (let el of expandBtns) {
+    el.addEventListener("click", function() {
+      let container = el.parentNode;
+      console.log(container);
+      let instruct = container.querySelector(".reinstallInstructions");
+      console.log(instruct);
+      if (instruct.style.display != "block") {
+        instruct.style.display = "block";
+        el.textContent = "Hide instructions";
+      }
+      else {
+        instruct.style.display = "none";
+        el.textContent = "Click to read instructions for reinstalling";
+      }
+    });
+  }    
+  
+</script>  
+
 <!-- END VERSION.HTML -->
