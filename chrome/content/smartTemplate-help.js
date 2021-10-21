@@ -26,6 +26,7 @@ SmartTemplate4.Listener = {
 				tabbox.selectedIndex = 2;
         
         txtDefaultFormat.classList.add('highlighted');
+        txtDefaultFormat.focus();
         break;
       case "SmartTemplate4Website":
         const href = evt.target.getAttribute('href');

@@ -11,6 +11,12 @@
 
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
+var LastInput = {
+  id: null,
+  value: "",
+  selectedIndex: null,
+  listbox: null
+}
 
 SmartTemplate4.Settings = {
   dialogHeight: 0,
@@ -522,7 +528,7 @@ SmartTemplate4.Settings = {
 		panels.addEventListener('select', function(evt) { SmartTemplate4.Settings.onTabSelect(panels,evt); } );
 		
 		if (!util.hasLicense(false) && SmartTemplate4.Util.licenseInfo.status != "Expired") {
-      settings.showTrialDate();
+      SmartTemplate4.Settings.showTrialDate();
 		}
 
 		// window.addEventListener('dialogaccept', function () {  });
@@ -985,6 +991,7 @@ SmartTemplate4.Settings = {
         case 'new': idx = 0; break;
         case 'rsp': idx = 1; break;
         case 'fwd': idx = 2; break;
+        case 'snippets': idx = 3; break;
       }
       fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
       fileTemplatesTabs.selectedIndex = idx;
@@ -1096,7 +1103,7 @@ SmartTemplate4.Settings = {
 		if (!el)
 			el = document.getElementById('fileTemplatesTabs');
 		
-		util.logDebug("Selected " + el.id); // tabbox value
+		util.logDebug(`Selected [${el.selectedIndex}] ${el.id}`, el); // tabbox value
 		switch (el.selectedIndex) {
 			case 0:
 				moveFileControls('templateList.new');
@@ -1106,6 +1113,9 @@ SmartTemplate4.Settings = {
 				break;
 			case 2:
 				moveFileControls('templateList.fwd');
+				break;
+			case 3:
+				moveFileControls('templateList.snippets');
 				break;
 			default:
 		}
@@ -1587,7 +1597,7 @@ SmartTemplate4.Settings = {
           showValidationMessage(validationEmailNoMatch, silent);
           break;
         case "Empty":
-          showTrialDate();
+          SmartTemplate4.Settings.showTrialDate();
 				  // validationDate.collapsed=true;
 					// validationDateSpace.collapsed=true;
           break;

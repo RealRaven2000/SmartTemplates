@@ -26,6 +26,7 @@
         
         <div class="chapterbreak" />
 				<li><code class="deferable">%date%</code> = __MSG_date.label__</li>
+				<li><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
 				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
 				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
 				<li><code class="deferable">%cc(mail)%</code> = __MSG_ccmail.label__</li>
@@ -57,7 +58,8 @@
     <div class="chapterBody">
 			<aside>(__MSG_to_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config__">&#x2699;</span></li>
+				<li><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
+				<li><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
 				<li><code class="deferable">%to(firstname)%</code> = __MSG_tofirstname.label__</li>
 				<li><code class="deferable">%to(name)%</code> = __MSG_toname.label__</li>
 				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
@@ -71,7 +73,7 @@
     <div class="chapterBody">
 			<aside>(__MSG_from_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config;">&#x2699;</span></li>
+				<li><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
 				<li><code class="deferable">%from(firstname)%</code> = __MSG_fromfirstname.label__</li>
 				<li><code class="deferable">%from(name)%</code> = __MSG_fromname.label__</li>
 				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
@@ -88,7 +90,7 @@
     <div class="chapterBody">
 			<aside>(__MSG_cc_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default" tooltiptext="__MSG_standardformat.config__">&#x2699;</span></li>
+				<li><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
 				<li><code class="deferable">%cc(firstname)%</code> = __MSG_ccfirstname.label__</li>
 				<li><code class="deferable">%cc(name)%</code> = __MSG_ccname.label__</li>
 				<li><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>
@@ -413,19 +415,13 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="deferable">%cc(firstname)%</code></td>
+						<td><code class="deferable">%recipient%%</code></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="deferable">%cc(mail)%</code></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="deferable">%cc(name)%</code></td>
+						<td><code class="deferable">identity%</code></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
@@ -462,24 +458,6 @@
 					</tr>
 					<tr class="tr-keywords">
 						<td><code>%dateshort%</code></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="deferable">%from(firstname)%</code></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="deferable">%from(mail)%</code></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-						<td><div class="yes"></div></td>
-					</tr>
-					<tr class="tr-keywords">
-						<td><code class="deferable">%from(name)%</code></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
@@ -599,7 +577,7 @@
 						<td><div class="yes"></div></td>
 					</tr>
 					<tr class="tr-keywords">
-						<td><code class="deferable">%to(firstname)%</code></td>
+						<td><code class="deferable">%to%</code></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>
 						<td><div class="yes"></div></td>

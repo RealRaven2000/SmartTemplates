@@ -118,21 +118,27 @@ END LICENSE BLOCK
     # Splash screen: not shown immediately on update; removed message about permissions
     # only show standard license upgrade special offer when within the date
 
-  Version 3.7.1 - WIP
-    # removed "workaround" experimental APIs (notifications, accounts)
-    # removed obsolete "Shim" code
+  Version 3.8 - WIP
+    # [issue 142]/[issue 28] Add feature to insert html Smart snippets within Composer
+    # [issue 147] Add categories / folders to structure template menus
+    # [issue 148] Regression: Saving / Loading account templates from settings doesn't work without Pro License
+    # [issue 139] Double template inserted when replying to own email
+    # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
+    # [issue 153] Fixed: Recipient Names which are only 1 Character long are dropped
+    # [issue 156] Fixed: When FORWARDING, %quotePlaceholder% doesn't position forwarded mail text correctly
+    # [issue 158] Fixed: Could not switch spell checker language with %spellchecker% command
+    # Fixed displaying trial date on license tab
+    # Removed "workaround" experimental APIs (notifications, accounts)
+    # Removed obsolete "Shim" code
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
-    # [issue 118] Feature Request: Insert clipboard contents
-    # [issue 142] Add feature to insert html Smart snippets within Composer
-  
+    # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
   
   Version 2.x
-    # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
     # [issue 27] Insert external HTML Templates from a web page URL
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
-    # [issue 12] <head> section is merged into <body>
+    # [issue 12] <head> section from templates should be merged into <body>
     # ...
       
   Version 2.2
@@ -185,6 +191,12 @@ var SmartTemplate4 = {
           isNotify = false;
       util.logDebug('NotifyComposeBodyReady');
       isNotify = true;
+      
+      // avoid race conditions that cause concurrent / nested calling of our notifyComposeBodyReady function
+      if (SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired) 
+        isNotify = false; // [issue 139] duplication of template
+      SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired = true;
+      
       if (isNotify) {
         // [BUG 26434] forwarding email with embedded images removes images
         // test delaying call for forward case
@@ -696,7 +708,7 @@ var SmartTemplate4 = {
     }
     
     util.logDebug("Remove added custom UI elements …");
-    let elements = Array.from(window.document.querySelectorAll('[s4uiElement]'));
+    let elements = Array.from(window.document.querySelectorAll('[st4uiElement]'));
     for (let element of elements) {
       element.remove();
     }

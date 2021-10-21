@@ -325,6 +325,7 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 			case "from":
 			  hdr = "author";
 				break;
+			case "recipient": // [issue 151] placeholder for target recipient
 			case "to":
 			  hdr = "recipients";
 				break;
@@ -1049,7 +1050,7 @@ SmartTemplate4.mimeDecoder = {
 				if (aElement.optional && foundNonOptionalParts)
 					continue;
         // append the next part if not empty
-        if (aElement.part.length>1) {
+        if (aElement.part.length>0) {  // [issue 153]
           if (addressField.length) addressField += ' '; // space to append next parts
 					// if there is only one element and brackets param is prefixed with ??
 					// e.g. %from(name,bracketMail(??- {,}))%
@@ -1554,7 +1555,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				"centerscreen,modal",
 				{ 
           ok: function() { ; } , 
-          isLicenseWarning: true
+          isLicenseWarning: true,
+          showLicenseButton: true
         },
 				parentWin,
         parseString
@@ -1599,6 +1601,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     // reserved words : these are words about which we know are not headers!
 		function classifyReservedWord(str, reservedWord, param) {
 			try {
+        let removeParentheses = (arg) => {return arg ? arg.substr(1,arg.length-2) : ""},
+		        paramArray = removeParentheses(param).split(',');
 				if (str!="%X:=today%") {
 				  util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param || '' + ')');
 				}
@@ -1627,9 +1631,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         }
 				else { // it's a reserved word, likely a header
 					if (prefs.isDebugOption("tokens.deferred")) debugger;
-					if (typeof s =='undefined' || (s=="" && composeType=='new')) {
+					if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
 						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
+            // do this also when using the "fwd" modifier as the initial address string may be empty or wrong.
 						// wrap into <smarttemplate > for later deferral (works only in HTML)
+            // [issue 153] the same probem also applies when forwarding and using the "fwd" switch.
 						// use pink fields for new emails for the New Mail case - this var can not be used in...
 						if (!isReserved && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
 							s = str;
@@ -1666,11 +1672,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       // util.isAddressHeader(token) ?
       if (isOptionalAB)
         return str.replace(/^[^%]*$/, "");
-			return  generalFunction.replace(/^[^%]*$/, "");
+			return generalFunction.replace(/^[^%]*$/, "");
 		}
 		
-		if ((composeType != "new") && !gMsgCompose.originalMsgURI)  {
-			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplates cannot process this message!");
+		if ((composeType != "new") && (composeType != "snippets") && !gMsgCompose.originalMsgURI)  {
+			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplates cannot process this message! composeType=" + composeType);
 			return aString;
 		}
 
@@ -1721,8 +1727,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	}
 	else {
 		try {
-			msgDbHdr = (composeType != "new") ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
-			charset = (composeType != "new") ? msgDbHdr.Charset : null;
+			msgDbHdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI) : null;
+      if (msgDbHdr) {
+        charset = (composeType != "new") ? msgDbHdr.Charset : null;
+      }
+      else
+        charset = gMsgCompose.compFields.characterSet; // snippets
+      
 			// -- this line wasn't doing anything before "msgDbHdr.folder.charset; "
       //    defaulting to folder's charset would have been probably wrong anyway
 			if (!charset && msgDbHdr) {
@@ -1735,7 +1746,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			charset = gMsgCompose.compFields.characterSet;
 		}
 		try {
-			hdr = (composeType != "new") ? 
+			hdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? 
 			  new this.classGetHeaders(gMsgCompose.originalMsgURI) : 
 				new this.clsGetAltHeader(gMsgCompose.compFields);
 		}
@@ -1751,8 +1762,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   
 
   if (prefs.isDebugOption('regularize')) debugger;
-	let date = (composeType != "new") ? msgDbHdr.date : null;
-	if (composeType != "new") {
+	let date = (composeType != "new") && msgDbHdr ? msgDbHdr.date : null;
+	if (composeType != "new" && msgDbHdr) {
 		// for Reply/Forward message
 		let tz = new function(date) {
 			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
@@ -1795,7 +1806,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   addTokens("reserved.optional", "identity"); // non-headers but support [[ optional syntax ]] (remove part if empty)
 
 	// Reserved words which depend on headers of the original message.
-	addTokens("To", "to", "toname", "tomail");
+	addTokens("To", "to", "toname", "tomail", "recipient");
 	addTokens("Cc", "cc", "ccname", "ccmail");
   addTokens("Date", "X:=sent");
 	addTokens("From", "from", "fromname", "frommail");
@@ -1858,7 +1869,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 								extractSource = '',
 								rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
 
-						hdr =	(gMsgCompose.originalMsgURI.indexOf(".eml")>0) ?
+						hdr =	(gMsgCompose.originalMsgURI.indexOf(".eml")>0 && msgDbHdr) ?
 							new SmartTemplate4.clsGetAltHeader(msgDbHdr) :
 							new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI);
 						switch(fromPart) {
@@ -1947,7 +1958,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
     function modifyHeader(hdr, cmd, argString, matchFunction="") {
-      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
+      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","tofinal"],
             ComposeFields = gMsgCompose.compFields;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
@@ -2005,6 +2016,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             targetString = ComposeFields.subject;
             modType = 'string';
             break;
+          case 'recipient':
           case 'to':
             targetString = ComposeFields.to;
             break;
@@ -2272,6 +2284,29 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "tomail":    token = "To";   arg = "(mail)";   break;
 				case "ccname":    token = "Cc";   arg = "(name)";   break;
 				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
+        // [issue 151] universal placeholder for target recipient
+        case "recipient":   
+          {
+            switch(util.getComposeType()) {
+              case "new":
+                token = "to";
+                break;
+              case "rsp":
+                token = "from";
+                break;
+              case "fwd":
+                token = "to";
+                // make sure to add / append "fwd" switch:
+                if (!arg)
+                  arg = "(fwd)";
+                else {
+                  arg = arg.substr(0,arg.length-1) + ",fwd)";
+                }
+                break;
+            }
+            
+          }
+          break;
 			}
 
       if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;
@@ -2882,7 +2917,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             flags.isFileTemplate = true;
             // prepare for using relative paths from here...
             // assume we are within a template, to make matching subsequent relative paths possible.
-            // should work for using %file(template.html) in a SmartTemplate.
+            // should work for using %file(template.html)% in a SmartTemplate.
             if (!flags.filePaths) 
               flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
             flags.filePaths.push(path);
@@ -2912,7 +2947,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       }
     }
     catch(ex) {
-      var { Services } =ChromeUtils.import('resource://gre/modules/Services.jsm');
+      var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
       
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
       Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
@@ -3166,5 +3201,4 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
 	return msg;
 }; // regularize
-
 

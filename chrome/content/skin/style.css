@@ -151,7 +151,7 @@ h1.helpchapter {
 }
 
 /* highlight a textbox */
-.highlighted * {
+.highlighted *, .highlighted {
   background-color: #ffb6c1 !important;
 }
 #default_address_format.highlighted {

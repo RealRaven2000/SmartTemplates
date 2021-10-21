@@ -585,13 +585,21 @@ h1.helpchapter {
 }
 
 /* style the gear emoji to go to standard address format settings... */
+.config_default:hover {
+  background-color: rgba(80,80,80,0.15);
+  border: 1px solid rgba(40,40,40,0.8);
+  border-radius: 3px;
+}
 .config_default {
-  color: transparent;
   cursor: pointer;
-  font-size: 22px;
-  padding-bottom: 2px;
+  font-size: 1.6em;
   text-shadow: 0 0 0 rgba(109,140,200,0.9);
   vertical-align: middle;
+}
+.config_default lbl {
+  color: rgba(40,40,40,0.8);
+  font-size: 0.625em;
+  vertical-align: text-top;
 }
 
 

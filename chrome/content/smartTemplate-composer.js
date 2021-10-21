@@ -11,6 +11,12 @@ SmartTemplate4.composer = {
     
     util.logDebug("SmartTemplate4.composer.load");
     
+    // NOTE: tried to remove this and replace with 
+    //       WL.injectCSS("chrome://SmartTemplate4/content/skin/compose-overlay.css");
+    //       in st-copmposer.js
+    //       BUT IT DIDN'T WORK
+    // **********>>
+    
     // we cannot use the old way of adding the style shee in the xul overlay...
     // .. because it doesn't affect the content area
     // I do not want to inject any of these rules into the Editor's document
@@ -22,7 +28,9 @@ SmartTemplate4.composer = {
           
     // for some reason this affects the 3pane window, too
     if(!sss.sheetRegistered(uri, sss.USER_SHEET))
-      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);    
+    
+    // <<**********
     
     // thanks to Joerg K. for pointing this one out:
     window.document.getElementById("msgcomposeWindow").addEventListener("compose-send-message", 
@@ -55,6 +63,19 @@ SmartTemplate4.composer = {
       );
     }
     
+    // add toolbarbutton for insert snippet
+    if (prefs.getMyBoolPref ('insertSnippet.button.install')) {
+      setTimeout (
+        function st4_installChangeTemplateBtn() {
+          util.logDebug("Adding insert Snippet button...")
+          if (util.installButton(toolbarId, "smarttemplate4-insertSnippet", "button-save"))
+            prefs.setMyBoolPref('insertSnippet.button.install', false); // log the fact we installed it to avoid re-adding it.
+        }
+        , 1000
+      );
+    }
+    
+    
   }, // load ()
   
   initTemplateMenu: function initTemplateMenu() {
@@ -70,7 +91,7 @@ SmartTemplate4.composer = {
     // the Template Menu is rebuilt if it is being clicked
     for (let j=templatePopup.childNodes.length-1; j>=0; j--) {
       let cN = templatePopup.childNodes[j];
-      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem")
+      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
         templatePopup.removeChild(cN);
     }
     
@@ -115,30 +136,85 @@ SmartTemplate4.composer = {
     );
   } ,
   
-  selectTemplateFromMenu : function selectTemplateFromMenu() {
-    const fT = SmartTemplate4.fileTemplates,
-          util = SmartTemplate4.Util;
-    if (!fT.armedEntry || !fT.armedEntry.path) {
-      let wrn = util.getBundleString("st.fileTemplates.selectFromMenu");
-      SmartTemplate4.Message.display(
-        wrn,
-        "centerscreen,titlebar,modal,dialog",
-        { ok: function() {  
-                // get last composer window and bring to foreground
-                let composerWin = Services.wm.getMostRecentWindow("msgcompose");
-                if (composerWin) {
-                  // refresh the template menu
-                  SmartTemplate4.composer.initTemplateMenu(); // make sure there are some menu items now.
-                  composerWin.focus();
+  initSnippetMenu : function() {
+    SmartTemplate4.Util.logDebug("composer.initSnippetMenu() ...");
+    // load menu with templates to button-save
+    const Ci = Components.interfaces,
+          fT = SmartTemplate4.fileTemplates,
+          prefs = SmartTemplate4.Preferences;
+    let snippetPopup = window.document.getElementById('button-SnippetPopup');
+    if (!snippetPopup) return;
+    // clear previous menu (in case we haven't added the button to the toolbar)
+    // the Template Menu is rebuilt if it is being clicked
+    for (let j=snippetPopup.childNodes.length-1; j>=0; j--) {
+      let cN = snippetPopup.childNodes[j];
+      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
+        snippetPopup.removeChild(cN);
+    }    
+    
+    fT.loadCustomMenu(false).then(
+      function smartTemplatesLoaded() {
+        let compCase = "snippets",
+            entries = fT.Entries.snippets;
+        fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PLUS the configuration option.
+      }
+    );    
+  } , 
+  
+  
+  selectTemplateFromMenu : function selectTemplateFromMenu(element) {
+    const util = SmartTemplate4.Util;
+    let isHandled = false;
+    if (!SmartTemplate4.fileTemplates.armedEntry || !SmartTemplate4.fileTemplates.armedEntry.path) {
+      if (element && element.id == "smarttemplate4-changeTemplate") {
+        if (element.hasMenu()) {
+          element.setAttribute("open","true");
+          element.openMenu(true);
+          isHandled = true;
+        }
+      }
+      if (!isHandled) {
+        let wrn = util.getBundleString("st.fileTemplates.selectFromMenu");
+        SmartTemplate4.Message.display(
+          wrn,
+          "centerscreen,titlebar,modal,dialog",
+          { ok: function() {  
+                  // get last composer window and bring to foreground
+                  let composerWin = Services.wm.getMostRecentWindow("msgcompose");
+                  if (composerWin) {
+                    // refresh the template menu
+                    SmartTemplate4.composer.initTemplateMenu(); // make sure there are some menu items now.
+                    composerWin.focus();
+                  }
                 }
-              }
-        }, 
-        window
-      );
+          }, 
+          window
+        );
+      }
     }
     else
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
-    // fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
+    // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
+  },
+  
+  selectSnippetFromMenu: function(element) {
+    let isHandled = false;
+    if (!SmartTemplate4.fileTemplates.armedEntry || !SmartTemplate4.fileTemplates.armedEntry.path) {
+      if (element && element.id == "smarttemplate4-insertSnippet") {
+        if (element.hasMenu()) {
+          element.setAttribute("open","true");
+          element.openMenu(true);
+          isHandled = true;
+        }
+      }
+      if (!isHandled)        
+        SmartTemplate4.Util.popupAlert("SmartTemplates", 
+          "An error occured with the selected file. Either it can't be found or there was a problem accessing it.");
+        
+    }
+    else {
+      SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
+    }
   },
   
   // update for license changes

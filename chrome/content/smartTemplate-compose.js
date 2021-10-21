@@ -814,7 +814,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		  function(match, g1, g2, g3) {
 				// util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
         if (!util.isFilePathAbsolute(g2)) {
-          debugger;
           if (currentPath) {
             let newP = util.getPathFolder(currentPath, g2);
             if (newP) {
@@ -1114,6 +1113,8 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
 				
 				if (isQuoteHeader) {
+          // this function extracts the quoted part (when replying)
+          // it should catch the "whole" email when forwarding...
 					let qdiv = function() { // closure to avoid unnecessary processing
 						let qd = util.mailDocument.createElement("div");
 						qd.id = "smartTemplate4-quoteHeader";
@@ -1263,11 +1264,6 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
         // %quotePlaceholder(quotelevel)%
         let quoteNode = templateDiv.querySelector("blockquote[class=SmartTemplate]");
-        // [issue 91] - probably better solved by modifying ReFwdFormatter
-        // reFwdFormatter: uses <div class="replaced-blockquote"> for quote in HTML mode
-        // if (!quoteNode && IsHTMLEditor()) {
-        //   quoteNode = gMsgCompose.editor.rootElemen.querySelector("div.replaced-blockquote");
-        // }
         
         // clean old quotes
         if (quoteNode) {
@@ -1289,7 +1285,10 @@ SmartTemplate4.classSmartTemplate = function() {
               quoteLevels = parseInt(lev,10);
             }
           } 
-          let quotePart = bodyEl.querySelector("blockquote[_moz_dirty]");
+          
+          let quotePart = (st4composeType=='fwd') ?
+							bodyEl.querySelector(".moz-forward-container") :  // [issue 156]
+              bodyEl.querySelector("blockquote[_moz_dirty]");
           if (quotePart) {
             quoteNode.parentNode.insertBefore(quotePart, quoteNode);
             let blocks = quotePart.querySelectorAll("blockquote");
@@ -1567,11 +1566,16 @@ SmartTemplate4.classSmartTemplate = function() {
 												caretEndPos = caretStartPos + caretContainer.outerHTML.length,
 												para = doc.createElement('P'),
 												nextBlock = parentSrchHTML.indexOf('<p', caretEndPos), // offset at the end of caret
-												previousBlock = parentSrchHTML.lastIndexOf('</p', caretStartPos) + 1 || parentSrchHTML.lastIndexOf('<br',caretStartPos) + 1 || parentSrchHTML.lastIndexOf('</div',caretStartPos) + 1; // where the previous Block ends
-										if (!previousBlock) 
+                        // [issue 149] table rows / cells were removed if last element
+												previousBlock = Math.max(
+                            parentSrchHTML.lastIndexOf('</p', caretStartPos) 
+                          , parentSrchHTML.lastIndexOf('<br', caretStartPos) 
+                          , parentSrchHTML.lastIndexOf('</div', caretStartPos)
+                          , parentSrchHTML.lastIndexOf('</table', caretStartPos)) + 1; // where the previous Block ends
+                    if (previousBlock==0) 
 											previousBlock = caretStartPos;
 										else {
-											previousBlock = parentSrchHTML.indexOf('>', previousBlock)+1 || caretStartPos; // find end of closing tag
+											previousBlock = parentSrchHTML.indexOf('>', previousBlock) + 1 || caretStartPos; // find end of closing tag
 											if (previousBlock < 0) previousBlock = 0;
 										}
 										

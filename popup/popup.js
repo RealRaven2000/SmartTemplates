@@ -13,6 +13,7 @@ async function updateActions(addonName) {
   
   // LICENSING FLOW
   let isStandardUser = (licenseInfo.keyType == 2),
+      isProUser = (licenseInfo.keyType == 0 || licenseInfo.keyType == 1),
       isExpired = licenseInfo.isExpired,
       isValid = licenseInfo.isValid;
         
@@ -54,8 +55,10 @@ async function updateActions(addonName) {
   
   let isActionList = true;
   let currentTime = new Date(),
-      endSale = new Date("2021-08-31"); // Next Sale End Date 
+      endSale = new Date("2021-10-31"); // Next Sale End Date
   let isSale = (currentTime < endSale);
+
+  hideSelectorItems('.donations');
   
   if (!isSale) { 
     hide('specialOffer');
@@ -66,6 +69,7 @@ async function updateActions(addonName) {
     hide('purchaseLicenseListItem');
     hideSelectorItems('.donations');
     hide('register');
+    hide('new-licensing'); // hide box that explains new licensing system..
     
     if (isSale && isStandardUser) {
       showSelectorItems('.standardUpgradeSale');
@@ -75,8 +79,15 @@ async function updateActions(addonName) {
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
       hide('extend');
+      if (isProUser && isSale) {
+        show('specialOfferRenew');
+      }
       show('renewLicenseListItem');
       show('renew');
+      hide('purchaseHeader');
+      hide('whyPurchase');
+      hide('support-suggestion');
+      isActionList = false;
     }
     else { // License Extension
       hide('renewLicenseListItem');

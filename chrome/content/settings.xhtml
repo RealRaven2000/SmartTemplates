@@ -42,7 +42,7 @@
 							 customizable="false">
         <toolbarbutton id="helpTemplates"
             class="toolbarbutton-1 chromeclass-toolbar-additional"
-            oncommand = "SmartTemplate4.Util.showStationeryHelpPage();" 
+            oncommand = "SmartTemplate4.Util.showStationeryHelpPage('templateFiles');" 
             label = ""
             tooltiptext="__MSG_tip.fileTemplates__"
             />
@@ -391,6 +391,11 @@
                               title="__MSG_template.category.tooltip__"
                               onblur="SmartTemplate4.fileTemplates.onEditLabel();"
                               onfocus="SmartTemplate4.fileTemplates.updateInputGlobal(this);"
+                              />
+                            <toolbarbutton id="helpSnippets"
+                              oncommand = "SmartTemplate4.Util.showStationeryHelpPage('snippets');" 
+                              label = ""
+                              tooltiptext="__MSG_template.category.tooltip__"
                               />
                           </div>
                         </div>

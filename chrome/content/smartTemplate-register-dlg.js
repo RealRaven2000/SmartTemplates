@@ -19,6 +19,23 @@ var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 var Register = {
   l10n: function() {
     SmartTemplate4.Util.localize(document);
+    let featureComparison = document.getElementById("featureComparison");
+    if (featureComparison) {
+      let htmlFragment = "<label class='para' id='featureComparison'>"
+        + SmartTemplate4.Util.getBundleString("licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink' class='link'>")
+          .replace(/\{linkEnd\}/, "</a>")
+        + "</label>";
+      let e = featureComparison.ownerGlobal.MozXULElement.parseXULToFragment(htmlFragment);
+      
+      featureComparison.parentElement.insertBefore(e, featureComparison);
+      featureComparison.parentElement.removeChild(featureComparison);
+      window.addEventListener("click", async (event) => {
+        if (event.target.id == "compLink") {
+          SmartTemplate4.Util.openLinkInBrowser(event,"https://smarttemplates.quickfolders.org/premium.html#featureComparison");
+        }         
+      });
+    } 
   },
   
   load: async function load() {

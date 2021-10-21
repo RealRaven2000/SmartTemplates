@@ -14,7 +14,7 @@
     
     if (typeof code !='undefined') {
       var classList = code.classList,
-          isAddressConfig = (classList && classList.contains('config_default'));
+          isAddressConfig = ((classList && classList.contains('config_default')) || (code.parentElement && code.parentElement.classList.contains('config_default')));
           
       if (code.tagName == 'code' || code.tagName == 'a' || isAddressConfig) {
         var exists = true,
@@ -31,7 +31,7 @@
             element.setAttribute("codeWord", code.innerText); // now, add the payload
             element.setAttribute("class", code.className);    // class="noWrite" = cannot be used in new mail!!
             break;
-          case 'span':
+          case 'span': case 'lbl':
             if (isAddressConfig) {
               element.removeAttribute("codeWord");
               element.setAttribute("class", code.className);
@@ -53,7 +53,7 @@
           case 'code':
             customEvent.initEvent("SmartTemplate4CodeWord", true, false);
             break;
-          case 'span':
+          case 'span': case 'lbl':
             if (isAddressConfig)
               customEvent.initEvent("SmartTemplate4CAD", true, false);
             break;

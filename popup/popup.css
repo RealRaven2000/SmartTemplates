@@ -43,6 +43,20 @@
   pointer-events: none;
 }
 
+.importantInfo a
+ {
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  color: orange;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.importantInfo a:hover {
+  color: yellow;
+}
+
 
 ul.actions {
   
@@ -53,13 +67,14 @@ ul.actions {
 }
 
 .actionlinks a {
-  background-color: darkred;
+  background-color: darkred !important;
   box-shadow: 5px 5px 5px rgba(50,50,50,0.5);
-  color: white;
+  color: white !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
   padding: 5px 8px;
   cursor: pointer;
 }
-
 
 .actionlinks div {
   background-color: darkred;
@@ -70,10 +85,12 @@ ul.actions {
 
 .actionlinks a:hover {
   background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
+  color: lightyellow !important;
 }
 
 .actionlinks a:active {
   background-image: linear-gradient(to bottom, #633b00 0%,#750202 34%,#ef8204 100%);
+  color: orange !important;
 }
 
 .actionlinks div:active {
@@ -97,7 +114,16 @@ canvas[collapsed=true]
   background-color: rgba(0,0,0,0.9);
   color: white;
 }
+#changesList {
+  background-color: transparent;
+}
 
+.importantInfo a {
+  background-color: transparent;
+  color: lightyellow;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .importantInfo p, 
 .importantInfo ul, 
@@ -105,19 +131,27 @@ canvas[collapsed=true]
   color: white;
 }
 
-.importantInfo p b {
+.importantInfo p b,
+.importantInfo li b {
   color: yellow !important;
   background-color: transparent;
 }
 
-#specialBox {
+#new-licensing.announcement {
+  background-color: rgba(0,0,50,0.9); 
+  margin-bottom: 1.2em;
+}
+
+#specialBox,
+.announcement {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;
   padding: 0.1em 1em;
 }
 
-#specialBox h2 {
+#specialBox h2,
+#new-licensing h2   {
   background: none !important;
   margin-top: 16px;
   text-shadow:
@@ -128,8 +162,7 @@ canvas[collapsed=true]
   
 }
 
-#standardLicense #bargainIcon,
-#specialOffer #bargainIcon {
+.specialOffer .bargainIcon {
   animation: border-pulsate 3s ease infinite;  
   background: transparent !important;
   cursor: pointer;
@@ -151,18 +184,29 @@ canvas[collapsed=true]
   100% { background-color: rgba(60, 60, 90, 0.6); border-color: rgba(60, 60, 90, 0.2); }
 }
 
-#standardLicense #bargainIcon:hover,
-#specialOffer #bargainIcon:hover {
+.specialOffer .bargainIcon:hover {
   transform: rotate(25deg);  
   animation: none;
   border-color: transparent;
   background-color: transparent;
 }
 
+code {
+  background: linear-gradient(to bottom,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+  border: 1px solid #bbb;
+  border-radius: 0.3em;
+  margin: 2px 4px 2px 0px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
+}
+
 
 
 #specialBox #standardLicense,
-#specialBox #specialOffer {
+#specialBox .specialOffer {
   background: transparent !important;
 }
 

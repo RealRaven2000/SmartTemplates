@@ -48,12 +48,11 @@ async function onLoad(activatedWhileWindowOpen) {
   await window.SmartTemplate4.Util.init();
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
-  util.logDebug("Util.firstRun.init...");
-  window.SmartTemplate4.Util.firstRun.init();
   
   mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
+  mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
   
   for (let m in mylisteners) {
     if (m == "BackgroundUpdate")

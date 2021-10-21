@@ -339,7 +339,7 @@ SmartTemplate4.Util = {
           if (util.getTabMode(tabInfo)=='message') {
             util.logDebug("tabListener event:" + event);
             // main window.
-            SmartTemplate4.fileTemplates.initMenus();
+            SmartTemplate4.fileTemplates.initMenus(true);
           }
         });
       }
@@ -436,7 +436,7 @@ SmartTemplate4.Util = {
 		if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
 			notifyBox = specialTabs.msgNotificationBar;
 		}
-		else if( typeof gNotification == 'object' && gNotification.notificationbox) { // Tb 68
+		else if(typeof gNotification == 'object' && gNotification.notificationbox) { // Tb 68
 			notifyBox = gNotification.notificationbox;
 		}
 		else {
@@ -445,7 +445,7 @@ SmartTemplate4.Util = {
       }
 			// composer/dialog windows fallback - show in main window if notification is not available in this window
 			if (!notifyBox) { 
-				notifyBox = util.Mail3PaneWindow.gNotification.notificationbox;
+        notifyBox = util.Mail3PaneWindow.specialTabs.msgNotificationBar;        
 			}
 		}
 		let title, theText, featureTitle='';
@@ -944,7 +944,10 @@ SmartTemplate4.Util = {
 	showTool8AMOPage: function () { SmartTemplate4.Util.openURLInTab(this.Tool8AMOPage); } ,
 	showNoiaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.NoiaHomepage); } ,
 	showFlagsHomepage: function () { SmartTemplate4.Util.openURLInTab(this.FlagsHomepage); } ,
-	showStationeryHelpPage: function () { SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage); } ,
+	showStationeryHelpPage: function (inPageLink) { 
+    let urlLink = inPageLink ? ("#" + inPageLink) : "";
+    SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage + urlLink); 
+  } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
 	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
 	
@@ -1225,20 +1228,10 @@ SmartTemplate4.Util = {
     }
 
 		try {
-			let LoadInfoFlags, channel;
-			
-			if (Services.io.newChannelFromURI2) { // Thunderbird 60 + older
-				url = url.QueryInterface(Ci.nsIURL);
-				//  Allow loads from any origin, but require CORS for cross-origin loads.
-				LoadInfoFlags = Ci.nsILoadInfo.SEC_REQUIRE_CORS_DATA_INHERITS; // SEC_NORMAL  was removed
-			  channel = 
-					  Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
-			}
-			else { // Thunderbird 68 + 
-				LoadInfoFlags = Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL; // SEC_NORMAL has been removed.
-			  channel = 
-					  Services.io.newChannelFromURI(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
-			}
+			let LoadInfoFlags = Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL   // Tb91
+                      ||  Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL;         // Tb78
+      let channel = 
+          Services.io.newChannelFromURI(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
 			let stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 			stream.setInputStream(channel.open());
 			util.logDebugOptional('images',"opening image stream…");
@@ -1288,13 +1281,16 @@ SmartTemplate4.Util = {
   } ,
 	
 	get hasStandardLicense() {
-    if (true) {  
-			let result = (SmartTemplate4.Util.licenseInfo.keyType==2);
-			SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasStandardLicense = " + result);
-			return result; // standard license - true 
-		}
-		return false;
+    let result = (SmartTemplate4.Util.licenseInfo.keyType==2);
+    SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasStandardLicense = " + result);
+    return result; // standard license - true 
 	}, 
+  
+  get hasProLicense() {
+    let result = (SmartTemplate4.Util.licenseInfo.keyType==1 || SmartTemplate4.Util.licenseInfo.keyType==0);
+    SmartTemplate4.Util.logDebugOptional("premium.licenser", "util.hasProLicense = " + result);
+    return result; // premium / domain license - true 
+  },
 	
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
@@ -2435,9 +2431,10 @@ SmartTemplate4.Util = {
 		      Cc = Components.classes,
 		      util = SmartTemplate4.Util;
     
-    let retry = util.retrySpellCheck || 0;
+    let retry = util.retrySpellCheck || 0,
+        inlineSpellChecker = gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
     try {
-      let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker;
+      let spellChecker = inlineSpellChecker.spellChecker;
       if (language=='on') {
         if (enableInlineSpellCheck) {
           enableInlineSpellCheck(false);
@@ -2453,7 +2450,7 @@ SmartTemplate4.Util = {
       if (isDisabled && language!='off') {
         // temporarily enable
         gSpellChecker.enabled = true;
-        spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker;
+        spellChecker = inlineSpellChecker.spellChecker;
       }
       if (!spellChecker) {
         if (retry<5) {
@@ -2525,7 +2522,7 @@ SmartTemplate4.Util = {
           spellChecker.SetCurrentDictionary(language);
           // force re-checking:
           if (gSpellChecker.enabled) {
-            gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+            inlineSpellChecker.spellCheckRange(null);
           }
         }
         if (isDisabled) { // force restoring disabled status
@@ -2642,10 +2639,7 @@ SmartTemplate4.Util.firstRun =
 	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
-		if ( p=="2.2" && (n=="2.2.1" || n=="2.2.2")
-         || 
-         p=="2.5.1" && n=="2.5.2"
-    ) {
+		if ( p=="3.8" && (n=="3.8.999")) {
 			SmartTemplate4.Util.logToConsole(
 				"Silent Update - no version history displayed because v{0} is a maintenance release for v{1}"
 				.replace("{0}",n).replace("{1}",p));
@@ -2654,7 +2648,7 @@ SmartTemplate4.Util.firstRun =
 		return false;
 	} ,
 
-	init: function() {
+	init: async function() {
 		// avoid running firstRun.init in messenger compose again!
 		if (typeof SmartTemplate4.composer !== 'undefined') {
       util.logDebug("Util.firstRun.init() - early exit - SmartTemplate4.composer exists");
@@ -2865,6 +2859,8 @@ SmartTemplate4.Message = {
 			messageText:    text,
       parsedVars:     parsedVars,
       countDown:      countDown,
+      showLicenseButton: callbacksObj ? (callbacksObj.showLicenseButton || false) : false,
+      feature: callbacksObj ? (callbacksObj.feature || ""): "",
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
 			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
 			yesCallback:    SmartTemplate4.Message.yesCALLBACK,
@@ -3039,6 +3035,34 @@ SmartTemplate4.Message = {
             div.appendChild(par);
           }
           msgDiv.appendChild(div);
+
+	        let licenseBtnRow = document.getElementById("licensing");
+	        if (licenseBtnRow) {
+	          const ST4 = SmartTemplate4.Util.mainInstance,
+	                showDialog = SmartTemplate4.Util.showLicenseDialog.bind(SmartTemplate4.Util),
+	                openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
+	                featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
+	          if (params.showLicenseButton) {
+	            let btnLicense = document.getElementById("btnShowLicenser"),
+	                btnFeatureCompare = document.getElementById("btnFeatureCompare"),
+	                feature = params.feature || "";
+	            btnLicense.addEventListener("click", 
+	              function() {
+	                showDialog(feature);
+	                window.close();  
+	              }, true
+	            );
+	            btnFeatureCompare.addEventListener("click", 
+	              function() {
+	                openURLInTab(featureCompUrl);
+	                window.close();  
+	              }, true
+	            );
+	            msgDiv.appendChild(licenseBtnRow);
+	          }
+	          else
+	            licenseBtnRow.parentNode.removeChild(licenseBtnRow);
+          }
         }
 
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';

@@ -9,8 +9,7 @@
 	END LICENSE BLOCK 
 */
 
-// replace basic Stationery functionality:
-// support external files that can be selected during the button press
+// Support external HTML files that can be selected during the button press
 // write / reply and forward.
 
 
@@ -19,7 +18,8 @@ SmartTemplate4.fileTemplates = {
 	Entries: {
 		templatesNew : [],
 		templatesRsp : [],
-		templatesFwd : []
+		templatesFwd : [],
+    snippets: []
 	},
 	armedEntry: null,
 	lastError: null,
@@ -46,6 +46,9 @@ SmartTemplate4.fileTemplates = {
 					break;
 				case 2:
 					entries = this.Entries.templatesFwd;
+					break;
+        case 3:
+					entries = this.Entries.snippets;
 					break;
 			}
 		} catch(ex){;}
@@ -77,19 +80,6 @@ SmartTemplate4.fileTemplates = {
             (util.isLinux) ?
             mediator.getXULWindowEnumerator :
             mediator.getZOrderXULWindowEnumerator;
-		// Thunderbird 63 getNext throws!	
-    /*
-		let en =getWindowEnumerator ('addon:SmartTemplate4', true); 		
-		if (en.hasMoreElements()) {
-			try {
-        windowManager.getMostRecentWindow(null); 
-				let optionsWindow = en.getNext().QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIDOMWindow);
-				return optionsWindow;
-			}
-			catch(ex) { ; }
-		}
-		return null;
-    */
 	} , 
 	
   get ListBox() {
@@ -104,6 +94,9 @@ SmartTemplate4.fileTemplates = {
 			case 2:
 			  flavor = 'fwd';
 				break;
+      case 3:
+			  flavor = 'snippets';
+				break;
 			default:
 				return null;
 		}
@@ -114,16 +107,11 @@ SmartTemplate4.fileTemplates = {
 		return this.document.getElementById('templateList.' + flavour)
 	},
 	
-  // obsolete?
-  populateMenus: function populateMenu() {	
-    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
-	},
-	
 	// adds an item to currently visible list
-  addItem: function addItem(path, label, lb) {
+  addItem: function addItem(path, label, cat="", lb) {
     let listbox = lb || this.ListBox;
     if (listbox)
-      listbox.appendItem(label, path);
+      listbox.appendItem(label, JSON.stringify({path:path, category:cat})  );
   },
 	
 	// delete list (only of currently selected flavor)
@@ -153,23 +141,24 @@ SmartTemplate4.fileTemplates = {
     if (isRichList) {
       this.clearList(true);
       for (let i=0; i<this.CurrentEntries.length; i++) {
-        let entry = this.CurrentEntries[i];
-        // populate the options list
-        this.addItem(entry.path, entry.label);
+        let entry = this.CurrentEntries[i],
+            cat = entry.category || "";
+        this.addItem(entry.path, entry.label, cat);
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
-    // SmartTemplate4.fileTemplates.populateMenus(); 
   },
 	
 	// label was changed, auto update the list!
-  onEditLabel: function onEditLabel(txt) {
+  onEditLabel: function onEditLabel(txt, forceIndex=null) {
     const util = SmartTemplate4.Util;
+    SmartTemplate4.Util.logDebug("onEditLabel", txt);
     // check if one is selected and we just changed it]
     let path = this.document.getElementById('txtTemplatePath').value,
-        label = this.document.getElementById('txtTemplateTitle').value,
+        label = this.document.getElementById('txtTemplateTitle').value.trim(),
+        category = this.document.getElementById('txtTemplateCategory').value.trim(),
         listbox = this.ListBox,
-        idx = listbox.selectedIndex;
+        idx = forceIndex || listbox.selectedIndex;
 		util.logDebugOptional("fileTemplates","onEdit();");
     if (idx ==-1) return;
     let e = this.CurrentEntries[idx];
@@ -177,22 +166,76 @@ SmartTemplate4.fileTemplates = {
 		if (e.path != this.document.getElementById("txtTemplatePath").value)
 			return; // this is not a match. Let's not change the label
 		
-		if (e.label == label) {
+		if (e.label == label && e.category == category) {
 			return;
 		}
 		
-		// change label in listm then savee & reload.
-		e.label = txt.value;
+		// change label in list then save & reload.
+    if (txt)
+      e.label = txt.value;
+    e.category = category;
 
+    if (forceIndex) {
+      let item = listbox.getItemAtIndex(forceIndex);
+      let v = JSON.parse(item.value),
+          p = v.path,
+          c = v.category || "";
+      switch(LastInput.id) {
+        case "txtTemplateCategory":
+          c = document.getElementById("txtTemplateCategory").value; // update with new value
+          item.value = JSON.stringify({path:p, category:c});
+          break;
+        case "txtTemplateTitle":
+          let txt = document.getElementById("txtTemplateTitle").value;
+          e.label = txt;
+          item.firstChild.value = txt; 
+          break;
+      }
+      this.saveCustomMenu();
+      return;
+    }
     this.saveCustomMenu();
     this.repopulate(true); // rebuild menu
 		listbox.selectedIndex = idx; // reselect item
-  } ,  	
-	
+  } , 
+  
+  updateInputGlobal: function(input) {
+    LastInput.id = input.id;
+    LastInput.value = input.value;
+    let listbox = this.ListBox,
+        idx = listbox.selectedIndex;
+    LastInput.listbox = listbox; // remember this listbox. we only update if clicking a different item in the same.
+    LastInput.selectedIndex = idx;
+  },
+  
+  checkModifications: function(evt) {
+    // debugger;
+    SmartTemplate4.Util.logDebug("checkModifications", evt);
+  } ,
+  
 	onSelect: function(rlb) {
+    SmartTemplate4.Util.logDebug("onSelect", rlb);
+    if (LastInput.listbox == rlb) {
+      if (LastInput.value != document.getElementById(LastInput.id).value) {
+        // let lastListItem = rlb.getItemAtIndex(LastInput.selectedIndex);
+        this.onEditLabel(null, LastInput.selectedIndex);
+      }
+    }
 		let richlistitem = rlb.getSelectedItem(0);
 		if (richlistitem) {
-			document.getElementById('txtTemplatePath').value = richlistitem.value;
+      let p, 
+          c = "", 
+          v = richlistitem.value;
+      try {
+        v = JSON.parse(richlistitem.value);
+        p = v.path;
+        c = v.category || "";
+      }
+      catch(ex) {
+        p = v;
+      }
+			document.getElementById('txtTemplatePath').value = p;
+			document.getElementById('txtTemplateCategory').value = c;
 			document.getElementById('txtTemplateTitle').value = richlistitem.label;
 		}
 	} ,
@@ -205,6 +248,7 @@ SmartTemplate4.fileTemplates = {
     var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     let path = document.getElementById('txtTemplatePath').value,
         label = document.getElementById('txtTemplateTitle').value,
+        category = this.document.getElementById('txtTemplateCategory').value,
         existingEntry = null, 
         existingIndex = null;
 		
@@ -222,6 +266,7 @@ SmartTemplate4.fileTemplates = {
       existingEntry = FT.CurrentEntries[existingIndex];
       existingEntry.path = path;
       existingEntry.label = label;
+      existingEntry.category = category || ""; 
     }
 				
     if (!label.trim()) {
@@ -239,18 +284,18 @@ SmartTemplate4.fileTemplates = {
     // should we allow changing the URL ? (for selected item only)
     // do a match of first n characters and display a confirmation?
     if (!existingEntry) {
-      FT.addItem(path, label);
-      FT.CurrentEntries.push({path:path, label:label});
+      FT.addItem(path, label, category);
+      FT.CurrentEntries.push({path:path, label:label, category:category});
     }
     else {
       // update existing item (label)
-      util.logDebug('Updating existing item: ' + existingEntry.label + '  [' + existingEntry.path +']');
+      util.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
       let lb = FT.ListBox;
       lb.ensureIndexIsVisible(existingIndex);
-      lb.getItemAtIndex(existingIndex).firstChild.value = label;
+      lb.getItemAtIndex(existingIndex).firstChild.value = label; // hack to update the label. IMPLEMENTATION DEPENDENT! if we chanbge from richlist we need to rewrite this one
       FT.CurrentEntries[existingIndex].label = label;
       // update path!
-      lb.getItemAtIndex(existingIndex).value = path;
+      lb.getItemAtIndex(existingIndex).value = JSON.stringify({path:path, category:category});
     }
       
     SmartTemplate4.fileTemplates.repopulate(false); // rebuild menu
@@ -349,13 +394,14 @@ SmartTemplate4.fileTemplates = {
 						}
 						if (!E) return;
 						for (let i=0; i<E.length; i++) {
-							let entry = E[i];
+							let entry = E[i],
+                  c = entry.category || "";
 							// populate the options list(s)
 							if (fromOptions) {
-								fileTemplates.addItem(entry.path, entry.label, lb);
+								fileTemplates.addItem(entry.path, entry.label, c, lb);
 							}
 							// populate the Entries array from read data
-							T.push({ path:entry.path, label:entry.label });
+							T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
 						}
 						
 					}
@@ -364,6 +410,7 @@ SmartTemplate4.fileTemplates = {
 					fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, fromOptions ? fileTemplates.RichList('new') : null);
 					fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, fromOptions ? fileTemplates.RichList('rsp') : null);
 					fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, fromOptions ? fileTemplates.RichList('fwd') : null);
+          fillEntries(data.snippets, fileTemplates.Entries.snippets, fromOptions ? fileTemplates.RichList('snippets') : null);
 					
 					
           // util.logDebug ('parsed ' + entries.length + ' entries'); 
@@ -386,8 +433,7 @@ SmartTemplate4.fileTemplates = {
 			if (!fromOptions) {
 				promise3 = promise2.then(
 					function promise2_populateMenu() {
-						util.logDebug ('promise2.then populateMenus() ...'); 
-						// SmartTemplate4.fileTemplates.populateMenus();
+						util.logDebug ('promise2.then populateMenus() [obsolete]'); 
 						return promise2; // make loadCustomMenu chainable
 					},
 					function promise2_onFail(ex) {
@@ -405,6 +451,7 @@ SmartTemplate4.fileTemplates = {
     return promise3;
   } ,
 
+  // save to file
   saveCustomMenu: function saveCustomMenu()  {
     const util = SmartTemplate4.Util;
     
@@ -438,6 +485,8 @@ SmartTemplate4.fileTemplates = {
               function saveSuccess(byteCount) {
                 util.logDebug ('successfully saved ' + fileTemplates.entriesLength + ' bookmarks [' + byteCount + ' bytes] to file');
 								fileTemplates.isModified = true;
+                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
               },
               function saveReject(fileError) {  // OS.File.Error
                 util.logDebug ('saveCustomMenu error:' + fileError);
@@ -466,10 +515,12 @@ SmartTemplate4.fileTemplates = {
 		const util = SmartTemplate4.Util,
 					fT = SmartTemplate4.fileTemplates,
           prefs = SmartTemplate4.Preferences,
-					maxFreeItems = 3,
-					isLicensed = util.hasLicense(false);
-					let parent = msgPopup.parentNode, 
-					singleParentWindow = null;
+					MAX_FREE_TEMPLATES = 5,
+          MAX_STANDARD_TEMPLATES = 25,
+					MAX_STANDARD_CATEGORIES=3,
+          isLicensed = util.hasLicense(false);
+		let parent = msgPopup.parentNode, 
+				singleParentWindow = null;
           
     function getAccessKey(acCode) {
       if (acCode<10)
@@ -492,33 +543,100 @@ SmartTemplate4.fileTemplates = {
 		// first clear entries:
 							
 		let lastChild = msgPopup.lastChild,
-        accelerator = 1; // [issue 96]
+        accelerator = 1, // [issue 96]
+        acceleratorCat = 10,
+        categories = [],
+        catAccelerator = []; // [issue 147]
+        
+    // if this will be underneath any commands e.g. "new Message" / "Event" / "Task", then a separator is nice
+    if (templates.length && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
+      let menuseparator = document.createXULElement("menuseparator");
+      menuseparator.id = "fileTemplates-" + composeType + "msg-top";
+      menuseparator.classList.add ("st4templateSeparator");
+      msgPopup.appendChild(menuseparator);
+    } 
+    
+    for (let i=0; i<templates.length; i++) {
+      let cat = templates[i].category,
+          isAddNewCategory = false,
+          isAddMaxCategoriesWarning = false;
+      // if maximum number of "free / standard" submenus is exceeded, group into "other"
+      if (cat && !categories.includes(cat)) {
+        if (!util.hasProLicense && categories.length>=MAX_STANDARD_CATEGORIES) {
+          cat = "Other";
+          templates[i].category = cat;  // write back to data!
+          if (!categories.includes(cat)) {
+            categories.push(cat);
+            isAddNewCategory = true;
+            isAddMaxCategoriesWarning = true;
+          }
+        }
+        else {
+          categories.push(cat);
+          isAddNewCategory = true;
+        }
+      }
+      if (isAddNewCategory) {
+        catAccelerator.push(1);
+        // add a menupopup for the category
+        let menu = document.createXULElement("menu"),
+            acCat = getAccessKey(acceleratorCat++);
+        menu.classList.add("menuitem-iconic");
+        menu.classList.add("st4templateCategory");
+        menu.setAttribute("st4uiElement", "true");
+        menu.setAttribute("accesskey", acCat); // A,B,C
+        let lbl = acCat ? (acCat + " " + cat) : cat;
+        if (cat == "Other") {
+          // localized label
+          lbl = util.getBundleString("template.category.other");
+        }
+        menu.setAttribute("label", lbl);
+        let menupopup = document.createXULElement("menupopup");
+        menupopup.setAttribute("templateCategory", cat);
+        menupopup.setAttribute("st4uiElement", "true");
+        if (isAddMaxCategoriesWarning) {
+          let wrn = util.getBundleString("st.fileTemplates.restrictTemplateCats", [MAX_STANDARD_CATEGORIES.toString()]);
+          let menuitem = document.createXULElement("menuitem");
+          menuitem.classList.add("st4templateEntry");
+          menuitem.classList.add("menuitem-iconic");
+          menuitem.setAttribute("label", wrn);
+          menuitem.addEventListener("command",
+            function(event) { 
+              event.stopImmediatePropagation();
+              // open licenser
+              util.showLicenseDialog("MAX_STANDARD_CATEGORIES"); 
+              return false; 
+            }, 
+            {capture:true } ,  
+            true
+          );
+          menupopup.appendChild(menuitem);
+        }
+
+        menu.appendChild(menupopup);
+        msgPopup.appendChild(menu);
+      }
+    }
+      
+    let menuHasRestrictions = false; // set this if any maximum is exceeded!
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
-			// this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
-      /*
-			if (i==0 && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
-				let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
-				menuseparator.id = "fileTemplates-" + composeType + "msg-top";
-				menuseparator.classList.add ("st4templateSeparator");
-				msgPopup.appendChild(menuseparator);
-			}
-      */
-			
       /* insert one item for each listed html template */
 			let menuitem = document.createXULElement("menuitem"),
-          acKey = getAccessKey(accelerator++);
-      if (acKey) {
-        menuitem.setAttribute("accesskey", acKey);
-      }
-			menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
-			menuitem.setAttribute("s4uiElement", "true");
+          acKey = "";
+
+			menuitem.setAttribute("st4uiElement", "true");
 			menuitem.setAttribute("st4composeType", composeType);
 			menuitem.classList.add("st4templateEntry");
 			menuitem.classList.add("menuitem-iconic");
-			if (!isLicensed && i>=maxFreeItems) {
+			if (!isLicensed && i>=MAX_FREE_TEMPLATES) {
 				menuitem.disabled = true;
+        menuHasRestrictions = true;
 			}
+      else if (!(util.hasProLicense) && i>=MAX_STANDARD_TEMPLATES) {
+        menuitem.disabled = true;
+        menuHasRestrictions = true;
+      }
 			
 			// if this is a non-native menupopup (we created it)
 			// we need to add an event handler to notify the parent button.
@@ -526,17 +644,6 @@ SmartTemplate4.fileTemplates = {
 				function(event) { 
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
-					if (event.target.disabled) {
-						let txt = util.getBundleString("st.notification.restrictTemplates");
-						
-						SmartTemplate4.Message.display(
-							txt.replace("{1}", maxFreeItems), 
-							"centerscreen,titlebar,modal,dialog",
-							{ ok: function() { ; }},
-							singleParentWindow || util.Mail3PaneWindow
-						);
-						return false;
-					}
 					
 					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
@@ -549,20 +656,67 @@ SmartTemplate4.fileTemplates = {
 			// stop command event from bubbling up.
 			// menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
 			
-			msgPopup.appendChild(menuitem);									 
+      let cat = theTemplate.category;
+      if (cat) {
+        let popup = msgPopup.querySelector(`[templateCategory=${cat}]`);
+        if (popup) {
+          popup.appendChild(menuitem);
+          acKey = getAccessKey(popup.childElementCount);
+        }
+        else { // fail
+          acKey = getAccessKey(accelerator++);
+          if (acKey) {
+            menuitem.setAttribute("accesskey", acKey);
+          }        
+          msgPopup.appendChild(menuitem);
+        }
+      }
+      else {
+        acKey = getAccessKey(accelerator++);
+        if (acKey) {
+          menuitem.setAttribute("accesskey", acKey);
+        }        
+        msgPopup.appendChild(menuitem);
+      }
+      menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
+      
 		}
-		/* add an item for choosing ad hoc file template - uses file picker */
-    /*
-		let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
-		menuseparator.id = "fileTemplates-" + composeType + "msg-bottom";
-		menuseparator.classList.add ("st4templateSeparator");
-		msgPopup.appendChild(menuseparator);
-    */
+    if (menuHasRestrictions) {
+      // add an explanation about why some template items are disabled.
+      let menuItem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+      menuItem.setAttribute("label", util.getBundleString("st.fileTemplates.restrictionQuestion"));
+      menuItem.setAttribute("st4uiElement", "true");
+      menuItem.setAttribute("st4composeType", composeType);
+      menuItem.classList.add("menuItem-iconic");
+      menuItem.classList.add("st4templateInfo");      
+      menuItem.addEventListener("command", 
+        function(event) { 
+          event.stopImmediatePropagation();
+          let txt = util.getBundleString("st.fileTemplates.restrictTemplates",[MAX_FREE_TEMPLATES.toString(), MAX_STANDARD_TEMPLATES.toString()]);
+          let mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
+          SmartTemplate4.Message.display(
+            txt, 
+            "centerscreen,titlebar,modal,dialog",
+            { showLicenseButton: true, 
+              feature: "FileTemplatesRestricted",
+              ok: function() { ; }},
+            
+            
+            singleParentWindow || util.Mail3PaneWindow
+          );
+          return false;
+        }, 
+        {capture:true } , 
+        true
+      );
+      msgPopup.appendChild(menuItem);	
+    }
 		
+		/* add an item for choosing ad hoc file template - uses file picker */
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
 		menuTitle = util.getBundleString("st.fileTemplates.openFile");		
 		menuitem.setAttribute("label", menuTitle);
-		menuitem.setAttribute("s4uiElement", "true");
+		menuitem.setAttribute("st4uiElement", "true");
 		menuitem.setAttribute("st4composeType", composeType);
 		menuitem.classList.add("st4templatePicker");
 		menuitem.classList.add("menuitem-iconic");
@@ -586,11 +740,11 @@ SmartTemplate4.fileTemplates = {
       menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
       menuTitle = util.getBundleString("st.fileTemplates.configureMenu");
       menuitem.setAttribute("label", menuTitle);
-			menuitem.setAttribute("s4uiElement", "true");
+			menuitem.setAttribute("st4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
       menuitem.classList.add("menuitem-iconic");
       menuitem.classList.add("st4templateConfig");
-
+      
       menuitem.addEventListener("command", 
         function(event) { 
           event.stopImmediatePropagation();
@@ -691,8 +845,8 @@ SmartTemplate4.fileTemplates = {
       return (!menu.getAttribute('st4configured'));
     }
     function isInHeaderArea(popup) {
-      let p=popup.parentNode;
-      if (p) p=p.parentNode;
+      let p = popup.parentNode;
+      if (p) p = p.parentNode;
       if (p && p.id && p.id.startsWith("header-"))
         return true;
       return false;
@@ -701,7 +855,6 @@ SmartTemplate4.fileTemplates = {
     // use a fake parent button for inserting
     // if we pass original btn, check if it is already a toolbarbuttion-menu-button and thus already has a menu
     function insertMenuTb78(popupId, btnId, originalBtn = null) {
-      const fT = SmartTemplate4.fileTemplates; 
       let theMsgPopup = document.getElementById(popupId),
           originalPopup = null;
       try {
@@ -719,7 +872,7 @@ SmartTemplate4.fileTemplates = {
           
           let btn = document.getElementById(btnId);
           if (btn) {
-            theMsgPopup = fT.getPopup(btn.id); 
+            theMsgPopup = SmartTemplate4.fileTemplates.getPopup(btn.id); 
             // TEST TEST TB78
             if (theMsgPopup.id) debugger;
             if (theMsgPopup && !theMsgPopup.id) {
@@ -756,17 +909,19 @@ SmartTemplate4.fileTemplates = {
 		logDebug("initMenus() - toolbar: " + toolbar);
 		if (toolbar) {
 			// load current template list
-			const fT = SmartTemplate4.fileTemplates; // closure for the promise, just in case
-			fT.loadCustomMenu(false).then(
+			const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
+			fileTemplates.loadCustomMenu(false).then(
 				function smartTemplatesLoaded() {
-					let count = fT.entriesLength;
+					let count = fileTemplates.entriesLength;
 					logDebug("Loaded " + count + " templates, now preparing compose button submenus…");
 					
 					// 0) clear all old items if they exist
 					let separators = document.getElementsByClassName("st4templateSeparator"),
 							items = document.getElementsByClassName("st4templateEntry"),
+              categories = document.getElementsByClassName("st4templateCategory"),
 							pickers = document.getElementsByClassName("st4templatePicker"),
-              configurators = document.getElementsByClassName("st4templateConfig");
+              configurators = document.getElementsByClassName("st4templateConfig"),
+              infoitems = document.getElementsByClassName("st4templateInfo");
 					logDebug("Resetting all menus…");
           
 					try {
@@ -795,12 +950,24 @@ SmartTemplate4.fileTemplates = {
                   el.parentNode.removeChild(el); 
 							} 
 						);
-					} catch (ex) {;}
+            Array.from(categories).forEach(el => { 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
+							} 
+						);
+            Array.from(infoitems).forEach(el => { 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
+							} 
+						);
+          } catch (ex) {;}
           
 					// 1) write new entries --------------------
 					let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
 					if (needsConfig(newMsgPopup)) {
-						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
+						fileTemplates.configureMenu(fileTemplates.Entries.templatesNew, newMsgPopup, "new");
 					}
 					
 					// 2) reply entries     --------------------
@@ -809,7 +976,7 @@ SmartTemplate4.fileTemplates = {
 						//    calling getPopupElement() - if it doesn't exist, the popup will be automatically created & appended to button
 						let replyPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, rspBtn);
 						if (replyPopup && !isInHeaderArea(replyPopup) && needsConfig(replyPopup)) {
-								fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+								fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, replyPopup, "rsp");
 						}
 					}
 
@@ -825,7 +992,7 @@ SmartTemplate4.fileTemplates = {
             for (let hdrBtn of hdrBtns) {
 							let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
               if (needsConfig(popup)) {
-                fT.configureMenu(fT.Entries.templatesRsp, popup, "rsp");
+                fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, popup, "rsp");
               }
             }
 						
@@ -835,7 +1002,7 @@ SmartTemplate4.fileTemplates = {
             for (let hdrBtn of hfBtns) {
               let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
               if (needsConfig(popup)) {
-                fT.configureMenu(fT.Entries.templatesFwd, popup, "fwd");
+                fileTemplates.configureMenu(fileTemplates.Entries.templatesFwd, popup, "fwd");
               }
             }
 					}
@@ -847,43 +1014,6 @@ SmartTemplate4.fileTemplates = {
 		}
 		
 	}	,
-	
-	makeElement: function(doc, elementName, v) {
-		if (!('createElement' in doc)) doc = doc.ownerDocument; 
-		return this.setupElement(doc.createElement('' + elementName), v);
-  },
-	
-	generateMenuitem: function(document, context) {
-    return this.makeElement(document, 'menuitem', {
-      label: Stationery._('template.file.menuitem.label'), 
-      tooltip: Stationery._('template.file.menuitem.tip'),
-    });
-  },
-	
-	setupElement: function(element, v) {
-		v = v || {};
-		if ('id' in v) element.setAttribute('id', v.id);
-		if ('label' in v) element.setAttribute('label', v.label);
-		if ('tooltip' in v) element.tooltipText = v.tooltip;
-		if ('class' in v) Stationery.addClass(element, v.class);
-
-		if ('attr' in v) for (let a of fixIterator(v.attr)) {
-			if ('remove' in a) element.removeAttribute(a.name);
-			if ('value' in a) {
-				if (('checkbox' in a && a.checkbox && !a.value) || (a.value === null)) {
-					Stationery.setCheckboxLikeAttributeToElement(element, a.name, a.value);
-				} else {
-					element.setAttribute(a.name, a.value);
-				}
-			}
-		}
-		if ('events' in v) {
-			for (let e of fixIterator(v.events)) {
-				element.addEventListener(e.name, e.value, 'useCapture' in e ? e.useCapture : false );
-			}
-		}
-		return element;
-	} ,
 	
 	pickFileFromSettings: function pickFileFromSettings() {
     let el = document ?
@@ -961,22 +1091,30 @@ SmartTemplate4.fileTemplates = {
 	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
+    let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
+    if (isSnippet) {
+      // overwrite with correct compose type
+      composeType = util.getComposeType();
+    }
     
-		fileTemplateInstance.armedEntry = 
+    let entry = 
 		  { 
 				composeType: composeType, 
 				path: path, 
 				label: label
-        // ,        isSingleMessage: isSingleMessage
 			};
-		// now remember the correct template for the next composer window!
-    // - note: in single messafe windows this won't work as it cannot determine its "real" parent window
-    //         therefore we must copy this into the most recent 3pane window to marshall this info through
-    ////  originalEvent.view ? originalEvent.view.window.URL.endsWith("messageWindow.xul") : false;
-    let isSingleMessage = singleMwindow ? true : false;
-    if (isSingleMessage && singleMwindow == window) {
-      let fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
-      fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
+      
+    if (!isSnippet) {
+      fileTemplateInstance.armedEntry = entry
+      // now remember the correct template for the next composer window!
+      // - note: in single messafe windows this won't work as it cannot determine its "real" parent window
+      //         therefore we must copy this into the most recent 3pane window to marshall this info through
+      ////  originalEvent.view ? originalEvent.view.window.URL.endsWith("messageWindow.xul") : false;
+      let isSingleMessage = singleMwindow ? true : false;
+      if (isSingleMessage && singleMwindow == window) {
+        let fTMain = util.Mail3PaneWindow.SmartTemplate4.fileTemplates;
+        fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
+      }
     }
 			
 		util.logDebug("fileTemplate_onItemClick\n" 
@@ -989,8 +1127,12 @@ SmartTemplate4.fileTemplates = {
           (btn.id == "button-forward"); // contains all "smart" buttons
         
     if (btn.id=="smarttemplate4-changeTemplate") {  
-      // [issue 24] select differente template from composer window
+      // [issue 24] select different template from composer window
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
+    }
+    else if (btn.id == "smarttemplate4-insertSnippet") {
+      // [issue 142] insert html Smart snippets within Composer at cursor
+      SmartTemplate4.fileTemplates.insertFileEntryInComposer(entry);
     }
     else if (popup.getAttribute("st4configured")
         || isSmartReplyBtn) {
@@ -1063,6 +1205,47 @@ SmartTemplate4.fileTemplates = {
 		// are clicked.
 	} ,
 	
+  insertFileEntryInComposer: function (entry) {
+    let theFileTemplate = entry;
+    let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
+    let html = fileTemplateSource.HTML;
+    if (!html)
+      html = tmpTemplate.Text;
+    
+    let flags = SmartTemplate4.PreprocessingFlags;
+    SmartTemplate4.initFlags(flags);
+    if (fileTemplateSource.failed) {
+      let text = SmartTemplate4.Util.getBundleString("st.fileTemplates.error.filePath");
+      SmartTemplate4.Message.display(
+        text.replace("{0}", theFileTemplate.label).replace("{1}", theFileTemplate.path),
+        "centerscreen,titlebar,modal,dialog",
+        { ok: function() {  
+                // get last composer window and bring to foreground
+                let composerWin = Services.wm.getMostRecentWindow("msgcompose");
+                if (composerWin)
+                  composerWin.focus();
+              }
+        }, 
+        ownerWin
+      );
+    }
+    else {
+      flags.isFileTemplate = true;
+      if (!flags.filePaths) flags.filePaths = [];
+      flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
+      //SmartTemplate4.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+      let idkey = SmartTemplate4.Util.getIdentityKey(document);
+      const ignoreHTML = true;
+      let code =  
+        SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
+      // GetCurrentEditor().insertHTML(code);
+      gMsgCompose.editor.insertHTML(code); 
+      // we should probably place the cursor at the end of the inserted HTML afterwards!
+      
+      flags.filePaths.pop();
+    }    
+  } ,
+  
 	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info
 		this.pickFile(
@@ -1148,8 +1331,6 @@ SmartTemplate4.fileTemplates = {
 					inStream =		Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream),
 					countRead = 0;
 			
-			
-			// let file = Stationery.XPCOM('nsIFile');
 			try {
 				let isFU = FileUtils && FileUtils.File,
 						localFile;
@@ -1163,7 +1344,6 @@ SmartTemplate4.fileTemplates = {
 				}
 				
 				if (!localFile.exists()) {
-					// template.loadingError = Stationery._f('template.file.not.exists', [template.url])
 					let text = util.getBundleString("st.fileTemplates.error.filePath");
 					
 					this.lastError = text.replace('{0}', template.label).replace('{1}', template.path);
@@ -1263,11 +1443,9 @@ SmartTemplate4.fileTemplates = {
   // retrieve a html structure from the file template
 	retrieveTemplate: function(aFileTemplateArmedEntry) {
 		const util = SmartTemplate4.Util;
-		// Stationery_.ApplyHTMLTemplate code
-		// 
 		let template = { 
-			Text:"", 
-			HTML:"", 
+			Text: "", 
+			HTML: "", 
 			path: aFileTemplateArmedEntry.path, 
 			label: aFileTemplateArmedEntry.label,
       failed: false,
@@ -1275,15 +1453,13 @@ SmartTemplate4.fileTemplates = {
 		};
 		if (this.readHTMLTemplateFile(template)) {
 			try { 
-				// gMsgCompose.editor.beginTransaction();
-
 				// let HTMLEditor = gMsgCompose.editor.QueryInterface(Components.interfaces.nsIHTMLEditor);
-				let html = '';
+				let html = "";
 				if ('HTML' in template) 
 					html = template.HTML;
 				else 
 					if ('Text' in template)
-						html = Stationery.plainText2HTML(template.Text);
+						html = template.Text; // Stationery.plainText2HTML()
 								
 				// HTMLEditor.rebuildDocumentFromSource(html);
 			}

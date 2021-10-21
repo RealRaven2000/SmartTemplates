@@ -8,19 +8,36 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
   addEventListener("click", async (event) => {
-    if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
-      if (event.target.classList.contains("upgrade")) {
-        let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
-
-        messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
-      }
-      else {
-        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
-      }
+    switch(event.target.id) {
+      case "register":    // fall-through
+      case "bargainIcon":
+        if (event.target.classList.contains("upgrade")) {
+          let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+          messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
+        }
+        else {
+          messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+        }
+        break;
+	    case "bargainRenewIcon":
+	    case "bargainUpgradeIcon":
+	      messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
+	      window.close(); 
+	      break;
+      case "stdLink":
+        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=splashScreen-standard");
+        break;
+      case "proLink":
+        messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=splashScreen-standard");
+        break;
+      case "compLink":
+        messenger.windows.openDefaultBrowser("https://smarttemplates.quickfolders.org/premium.html#featureComparison");
+        break;
+      case "whatsNew":
+        messenger.Utilities.showVersionHistory();
+        break;
     }
-    if (event.target.id=='whatsNew') {
-      messenger.Utilities.showVersionHistory();    
-    }
+  
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
       window.close(); // not allowed by content script!
@@ -36,18 +53,26 @@ END LICENSE BLOCK */
     const manifest = await messenger.runtime.getManifest(),
           browserInfo = await messenger.runtime.getBrowserInfo(),
           addonName = manifest.name,
+          userName = await messenger.Utilities.getUserName(),
           addonVer = manifest.version,
           appVer = browserInfo.version,
           remindInDays = 10;
 
+    // internal functions
+    function hideSelectorItems(cId) {
+      let elements = document.querySelectorAll(cId);
+      for (let el of elements) {
+        el.setAttribute('collapsed',true);
+      }	    
+    }
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
     
-    let h1 = document.getElementById('heading-updated');
+    let h1 = document.getElementById("heading-updated");
     if (h1) {
       // this api function can do replacements for us
-      h1.innerText = messenger.i18n.getMessage('heading-updated', addonName);
+      h1.innerText = messenger.i18n.getMessage("heading-updated", addonName);
     }
     
     let thanksInfo = document.getElementById('thanks-for-updating-intro');
@@ -89,30 +114,78 @@ END LICENSE BLOCK */
     
     let specialOffer = document.getElementById('specialOfferTxt');
     if (specialOffer) {
-      let discount = "33%";
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [discount])
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          discount = "25%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, discount])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink'>")
+          .replace(/\{linkEnd\}/g, "</a>")
+          .replace(/\{linkStartPro\}/, "<a id='proLink'>");
+          
+    }
+    
+    let specialRenew = document.getElementById("specialOfferRenewTxt");
+    if (specialRenew) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "25%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialRenew.innerHTML = 
+        messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>");
     }
-          
-    let userName = await messenger.Utilities.getUserName();
-    let specialIntro = document.getElementById('specialOfferIntro');
-    if (specialIntro) {
-      specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>")
-        .replace("{name}", userName);
+        
+    
+    let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
+    if (specialOfferUpgrade) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "50%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, reduction])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
     }
+    
+    
+    let elementsC = document.querySelectorAll(".featureComparison"),
+        txtComp = messenger.i18n.getMessage("licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
+    for (let el of elementsC) {
+      el.innerHTML = txtComp;
+    }
+    
+    let elements = document.querySelectorAll(".specialOfferHead"),
+        txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
+    for (let el of elements) {
+      el.textContent = txtHead;
+    }    
+          
+    let elementsSI = document.querySelectorAll(".specialOfferIntro"),
+        txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
+                .replace(/\{boldStart\}/g,"<b>")
+                .replace(/\{boldEnd\}/g,"</b>")
+                .replace("{name}", userName);
+    for (let el of elementsSI) {
+      el.innerHTML = txtSI;
+    }
+
+    //
     let specialOfferStandard = document.getElementById('specialOfferStandard');
     if (specialOfferStandard) {
-      let discount = "40%";
+      let discount = "50%"; // Upgrade to Pro!
       specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discount])
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>");
     }
     let specialOfferTerms = document.getElementById('specialOfferTerms');
     if (specialOfferTerms) {
-      specialOfferTerms.innerHTML =  messenger.i18n.getMessage('license-standard-special-terms')
+      let expiry = messenger.i18n.getMessage("special-offer-expiry");
+      specialOfferTerms.innerHTML =  messenger.i18n.getMessage('license-standard-special-terms', [expiry])
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>");
     } 
@@ -122,8 +195,10 @@ END LICENSE BLOCK */
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{L1\}/g,"<li>")
         .replace(/\{L2\}/g,"</li>")
-        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");
-      
+        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>")
+        .replace("%recipient%","<code>%recipient%</code>")
+        .replace("%spellcheck%","<code>%spellcheck()%</code>")
+        .replace("%quotePlaceholder%","<code>%quotePlaceholder%</code>");
     }
     
     let ongoing = document.getElementById('ongoing-work');

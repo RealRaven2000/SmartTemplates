@@ -1,9 +1,11 @@
+// Import any needed modules.
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-
-function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
- 
+async function onLoad(activatedWhileWindowOpen) {
+  // WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  WL.injectCSS("chrome://Smarttemplate4/content/skin/st-toolbar-overlay.css");
 }
 
-function onUnload(isAddOnShutDown) {
+async function onUnload(isAddOnShutDown) {
+  
 }

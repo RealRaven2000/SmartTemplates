@@ -30,16 +30,17 @@ var callbacks = [];
         {
           const url = browser.runtime.getURL("popup/installed.html");
           await messenger.windows.create({ url, type: "popup", width: 910, height: 750, allowScriptsToClose : true});
+          messenger.NotifyTools.notifyExperiment({event: "firstRun"});
         }
         break;
       // see below
       case "update":
         {
-          
           setTimeout(
             function() {
               messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+              messenger.NotifyTools.notifyExperiment({event: "firstRun"});
             },
             200
           ); 
@@ -216,6 +217,10 @@ async function main() {
       case "updateTemplateMenus":
         // Broadcast main windows to run updateTemplateMenus
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
+        break
+        
+      case "updateSnippetMenus":
+        messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});
         break
         
       case "updateNewsLabels":
