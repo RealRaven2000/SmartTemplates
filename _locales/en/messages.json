@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.75 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}to August 31st{boldEnd}."
+    "message": "Pay only $$5.00 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}to $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   },
   "licenseComparison" : {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."
   },
+  "recipient.label": {
+    "message": "Final Recipient"
+  },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
   },
@@ -1373,7 +1382,7 @@
     "message": "SmartTemplates was successfully upgraded to version {1}!"
   },
   "standardformat.config": {
-    "message": "Configure default format…"
+    "message": "Default format…"
   },
   "stringmanip.alttext": {
     "message": "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead."
@@ -1430,6 +1439,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Upgrade now from SmartTemplates Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "support-preference": {
     "message": "This is the preferred way of supporting $addonName$.",
     "placeholders": {
@@ -1557,13 +1592,13 @@
     "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
   },
   "to.label": {
-    "message": "Recipient's name (default)"
+    "message": "Original Recipient"
   },
   "to_note.label": {
     "message": "When the name is not available, email address will be displayed instead"
   },
   "to_var.cap": {
-    "message": "Recipient (To)"
+    "message": "Recipient (To, recipient)"
   },
   "tofirstname.label": {
     "message": "Recipient's first name"
@@ -1572,7 +1607,7 @@
     "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
   "tomail.label": {
-    "message": "Recipient's email address"
+    "message": "Original Recipient's email address"
   },
   "toname.label": {
     "message": "Recipient's name"
@@ -1624,7 +1659,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail.{image1}{L2} {L1}Added category submenus to structure template lists.{L2} {L1}You can now use %quotePlaceholder% to insert forwarded mail text within the template.{L2}{L1}Fixed: Saving / Loading account templates failed without Pro License.{L2}"
+    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail.{image1}{L2}{L1}Use the new %recipient% variable to insert the final recipient in all compose cases (Write, Reply, Forward).{L2}{L1}Added category submenus to structure template lists.{L2} {L1}You can now use %quotePlaceholder% to insert forwarded mail text within the template.{L2}{L1}Fixed: Saving / Loading account templates failed without Pro License.{L2}{L1}Setting the spell check language with %spellcheck% stopped working in Tb 91.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

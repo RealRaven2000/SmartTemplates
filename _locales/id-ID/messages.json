@@ -547,7 +547,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Bayar hanya $ 5,75 daripada $ 10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart}hingga 31 Agustus{boldEnd}."
+    "message": "Bayar hanya $$5,75 daripada $$10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart}hingga $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseStatus.expired" : {
     "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
@@ -990,6 +996,9 @@
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."
   },
+  "recipient.label": {
+    "message": "Penerima Akhir"
+  },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
   },
@@ -1252,7 +1261,7 @@
     "message": "SmartTemplates berhasil diperbarui ke versi {1}!"
   },
   "standardformat.config": {
-    "message": "Konfigurasi format default…"
+    "message": "Format standar…"
   },
   "stringmanip.alttext": {
     "message": "[parameter opsional] Teks Alternatif: jika tidak ada yang cocok, masukkan teks alternatif sebagai gantinya."
@@ -1363,7 +1372,7 @@
     "message": "Ketika nama tidak tersedia, alamat email akan ditampilkan"
   },
   "to_var.cap": {
-    "message": "Penerima (Untuk)"
+    "message": "Penerima (Untuk, recipient)"
   },
   "tofirstname.label": {
     "message": "Nama depan penerima"
@@ -1372,7 +1381,7 @@
     "message": "Gunakan fwd untuk menambahkan penerima yang dapat diklik dalam email yang diteruskan"
   },
   "tomail.label": {
-    "message": "Alamat email penerima"
+    "message": "Alamat email Penerima Asli"
   },
   "toname.label": {
     "message": "Nama penerima"

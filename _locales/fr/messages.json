@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Payez seulement 5,15 € au lieu de 8,35 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}jusqu'au 31 août{boldEnd}."
+    "message": "Payez seulement 4,30 € au lieu de 8,60 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}jusqu'au  $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."
   },
+  "recipient.label": {
+    "message": "Bénéficiaire final"
+  },
   "regexpAnyText": {
     "message": "Tout texte - expression régulière - doit être entre guillemets."
   },
@@ -1372,7 +1381,7 @@
     "message": "SmartTemplates a été mise à niveau à la version {1} avec succès !"
   },
   "standardformat.config": {
-    "message": "Configurer le format par défaut…"
+    "message": "Format par défaut…"
   },
   "stringmanip.alttext": {
     "message": "[paramètre facultatif] Texte alternatif: si aucune correspondance n'est trouvée, insère le texte alternatif à la place."
@@ -1429,6 +1438,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renouvelez votre licence maintenant et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Passez maintenant de SmartTemplates Standard à Pro et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "C'est la manière préférée de prendre en charge $addonName$.",
     "placeholders": {
@@ -1562,7 +1597,7 @@
     "message": "Quand le nom n'est pas disponible, l'adresse électronique sera affichée à la place"
   },
   "to_var.cap": {
-    "message": "Destinataires (Pour)"
+    "message": "Destinataires (Pour, recipient)"
   },
   "tofirstname.label": {
     "message": "Prénoms des destinataires"
@@ -1571,7 +1606,7 @@
     "message": "Utiliser « transférer » pour ajouter un destinataire cliquable dans les courriels transférés"
   },
   "tomail.label": {
-    "message": "Adresse électronique des destinataires"
+    "message": "Adresse e-mail du destinataire d'origine"
   },
   "toname.label": {
     "message": "Noms des destinataires"
@@ -1623,7 +1658,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Vous pouvez désormais insérer des extraits HTML intelligents lors de la modification de votre e-mail. Consultez le journal des modifications ci-dessous pour plus de détails.{image1}{L2} {L1}Ajout de sous-menus de catégorie aux listes de modèles de structure.{L2} {L1} Voit nyt käyttää % quotePlaceholder % -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1}Vous pouvez désormais utiliser %quotePlaceholder% pour insérer le texte du courrier transféré dans le modèle{L2}{L1}Corrigé : l'enregistrement/le chargement des modèles de compte échouait sans licence Pro.{L2}"
+    "message": "{L1}SmartTemplates est désormais compatible avec Thunderbird 91. Ce travail a été payé via des licences, merci beaucoup pour votre aide !{L2} {L1}Vous pouvez désormais insérer des extraits HTML intelligents lors de la modification de votre e-mail. Consultez le journal des modifications ci-dessous pour plus de détails.{image1}{L2}{L1}Utilisez la nouvelle variable %recipient% pour insérer le destinataire final dans tous les cas de composition (Écrire, Répondre, Transférer).{L2} {L1}Ajout de sous-menus de catégorie aux listes de modèles de structure.{L2} {L1} Voit nyt käyttää % quotePlaceholder % -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1}Vous pouvez désormais utiliser %quotePlaceholder% pour insérer le texte du courrier transféré dans le modèle{L2}{L1}Corrigé : l'enregistrement/le chargement des modèles de compte échouait sans licence Pro.{L2}{L1}Corrigé : la définition de la langue de vérification orthographique avec %spellcheck% ne fonctionnait plus dans Tb 91.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

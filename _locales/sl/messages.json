@@ -412,7 +412,7 @@
     "message": "Predloga HTML"
   },
   "fpFilterName": {
-    "message": "Datoteka SmartTemplate4"
+    "message": "Datoteka SmartTemplate"
   },
   "fpFolder": {
     "message": "Mapa"
@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Plačajte samo 5,15 € namesto 8,35 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do 31. avgusta {boldEnd}."
+    "message": "Plačajte samo 4,30 € namesto 8,60 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor."
   },
+  "recipient.label": {
+    "message": "Končni prejemnik"
+  },
   "regexpAnyText": {
     "message": "Vsako besedilo - reden izraz - mora biti v dvojnih narekovajih."
   },
@@ -1246,6 +1255,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."
   },
@@ -1406,7 +1441,7 @@
     "message": "SmartTemplates je bil uspešno nadgrajen na različico {1}!"
   },
   "standardformat.config": {
-    "message": "Konfiguriraj privzeto obliko…"
+    "message": "Privzeta oblika…"
   },
   "stringmanip.alttext": {
     "message": "[izbirni parameter] Alternativno besedilo: če ni najdeno nobenega ujemanja, namesto tega vstavi alternativno besedilo."
@@ -1562,7 +1597,7 @@
     "message": "Kadar ime ni na voljo, bo namesto tega prikazan e-poštni naslov"
   },
   "to_var.cap": {
-    "message": "Prejemnik (Za)"
+    "message": "Prejemnik (Za, recipient)"
   },
   "tofirstname.label": {
     "message": "Prejemnikovo ime"
@@ -1571,7 +1606,7 @@
     "message": "Uporabite 'fwd', da v posredovano pošto dodate prejemnika, ki ga je mogoče klikniti"
   },
   "tomail.label": {
-    "message": "E-poštni naslov prejemnika"
+    "message": "E-poštni naslov prvotnega prejemnika"
   },
   "toname.label": {
     "message": "Prejemnikov priimek"
@@ -1623,7 +1658,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Zdaj lahko med urejanjem e -pošte vstavljate pametne delčke HTML. Za vse podrobnosti glejte spodnji dnevnik sprememb. {image1} {L2} {L1} Podmeniji kategorij so bili dodani na seznam predlogov za strukturo. {L2}{L1} Zdaj lahko uporabite %quotePlaceholder% za vstavljanje besedila posredovane pošte v predlogo {L2} {L1} Odpravljeno: shranjevanje / nalaganje predlog računa ni uspelo brez licence Pro. {L2}"
+    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Zdaj lahko med urejanjem e -pošte vstavljate pametne delčke HTML. Za vse podrobnosti glejte spodnji dnevnik sprememb. {image1} {L2} {L1} Z novo spremenljivko %recipient% vstavite končnega prejemnika v vse primere sestavljanja (pisanje, odgovor, posredovanje). {L2} {L1} Podmeniji kategorij so bili dodani na seznam predlogov za strukturo. {L2}{L1} Zdaj lahko uporabite %quotePlaceholder% za vstavljanje besedila posredovane pošte v predlogo {L2} {L1} Odpravljeno: shranjevanje / nalaganje predlog računa ni uspelo brez licence Pro. {L2}{L1} Popravljeno: nastavitev jezika preverjanja črkovanja s %spellcheck% je prenehala delovati v Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

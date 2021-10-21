@@ -637,7 +637,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pagueu només 5,15 € en lloc de 8,35 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al 31 d'agost {boldEnd}."
+    "message": "Pagueu només 4,30 € en lloc de 8,60 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   },
   "licenseComparison" : {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
@@ -1108,6 +1114,9 @@
   "quote_changers.desc": {
     "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."
   },
+  "recipient.label": {
+    "message": "Destinatari final"
+  },
   "regexpAnyText": {
     "message": "Qualsevol text (expressió regular) ha d’estar entre cometes dobles."
   },
@@ -1374,7 +1383,7 @@
     "message": "SmartTemplates es estada mesa al nivèl a la version {1} amb succès !"
   },
   "standardformat.config": {
-    "message": "Configura el format predeterminat ..."
+    "message": "Format estàndard…"
   },
   "stringmanip.alttext": {
     "message": "[paràmetre opcional] Text alternatiu: si no es troba cap coincidència, s'insereix el text alternatiu."
@@ -1431,6 +1440,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renoveu la llicència ara i estalvieu reducció de {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Actualitzeu ara de SmartTemplates Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11th"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
     "placeholders": {
@@ -1564,7 +1599,7 @@
     "message": "Quand lo nom es pas disponible, l'adreça electronica serà pas afichada a la plaça"
   },
   "to_var.cap": {
-    "message": "Destinataris (Per)"
+    "message": "Destinataris (Per, recipient)"
   },
   "tofirstname.label": {
     "message": "Pichons noms dels destinataris"
@@ -1573,7 +1608,7 @@
     "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
   "tomail.label": {
-    "message": "Adreça electronica dels destinataris"
+    "message": "Adreça de correu electrònic del destinatari original"
   },
   "toname.label": {
     "message": "Noms dels destinataris"
@@ -1625,7 +1660,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates ara és compatible amb Thunderbird 91. Aquest treball s'ha pagat mitjançant llicències, moltes gràcies per ajudar-vos amb això. {L2} {L1} Ara podeu inserir fragments HTML Smart HTML mentre editeu el correu electrònic. Consulteu el registre de canvis següent per obtenir més informació. {image1} {L2} {L1} Ara podeu utilitzar %quotePlaceholder% per inserir text de correu reenviat dins de la plantilla {L2}{L1} S'han afegit submenús de categories a les llistes de plantilles d'estructura. {L2} {L1} Solucionat: s'ha desat / carregat les plantilles del compte sense la llicència Pro. {L2}"
+    "message": "{L1} SmartTemplates ara és compatible amb Thunderbird 91. Aquest treball s'ha pagat mitjançant llicències, moltes gràcies per ajudar-vos amb això. {L2} {L1} Ara podeu inserir fragments HTML Smart HTML mentre editeu el correu electrònic. Consulteu el registre de canvis següent per obtenir més informació. {image1} {L2} {L1} Utilitzeu la nova variable %recipient% per inserir el destinatari final en tots els casos de redacció (escriure, respondre, reenviar). {L2}{L1} Ara podeu utilitzar %quotePlaceholder% per inserir text de correu reenviat dins de la plantilla {L2}{L1} S'han afegit submenús de categories a les llistes de plantilles d'estructura. {L2} {L1} Solucionat: s'ha desat / carregat les plantilles del compte sense la llicència Pro. {L2}{L1} S'ha corregit: definir l'idioma de la correcció ortogràfica amb% spellcheck% que deixava de funcionar al Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

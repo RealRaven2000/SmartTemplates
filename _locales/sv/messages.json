@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 5,15 € istället för 8,35 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till 31 augusti {boldEnd}."
+    "message": "Betala endast 4,30 € istället för 8,60 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
   },
+  "recipient.label": {
+    "message": "Slutmottagare"
+  },
   "regexpAnyText": {
     "message": "All text - regelbundet uttryck - måste vara i dubbla citat."
   },
@@ -1246,6 +1255,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Förnya din licens nu och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Uppgradera nu från SmartTemplates Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
   },
@@ -1406,7 +1441,7 @@
     "message": "SmartTemplates was successfully upgraded to version {1}!"
   },
   "standardformat.config": {
-    "message": "Konfigurera standardformat…"
+    "message": "Standardformat…"
   },
   "stringmanip.alttext": {
     "message": "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället."
@@ -1562,7 +1597,7 @@
     "message": "När inget namn finns tillgängligt visas e-postadressen"
   },
   "to_var.cap": {
-    "message": "Mottagarvariabler (Till)"
+    "message": "Mottagarvariabler (Till, recipient)"
   },
   "tofirstname.label": {
     "message": "Mottagarens förnamn"
@@ -1571,7 +1606,7 @@
     "message": "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden"
   },
   "tomail.label": {
-    "message": "Mottagarens e-postadress"
+    "message": "Originalmottagarens e-postadress"
   },
   "toname.label": {
     "message": "Mottagarens namn"
@@ -1623,7 +1658,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Du kan nu använda %quotePlaceholder% för att infoga vidarebefordrad e -posttext i mallen {L2}{L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}"
+    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2}{L1} Använd den nya varianten %recipient% för att infoga den slutliga mottagaren i alla skrivfall (Skriv, Svara, Vidarebefordra). {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Du kan nu använda %quotePlaceholder% för att infoga vidarebefordrad e -posttext i mallen {L2}{L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}{L1} Åtgärdad: Ställ in stavningskontrollspråket med %spellcheck% slutade fungera i Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

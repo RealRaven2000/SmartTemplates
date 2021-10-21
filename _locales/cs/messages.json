@@ -627,7 +627,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 5,15 EUR namísto 8,35 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do 31. srpna{boldEnd}."
+    "message": "Zaplaťte pouze 4,30 EUR namísto 8,60 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
@@ -1098,6 +1104,9 @@
   "quote_changers.desc": {
     "message": "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa."
   },
+  "recipient.label": {
+    "message": "Konečný příjemce"
+  },
   "regexpAnyText": {
     "message": "Jakýkoli text - regulární výraz - musí být ve dvojitých uvozovkách."
   },
@@ -1364,7 +1373,7 @@
     "message": "SmartTemplates byl úspěšně aktualizován na verzi {1}!"
   },
   "standardformat.config": {
-    "message": "Konfigurovat výchozí formát…"
+    "message": "Výchozí formát…"
   },
   "stringmanip.alttext": {
     "message": "[nepovinný parametr] Alternativní text: pokud není nalezena žádná shoda, místo toho vloží alternativní text."
@@ -1390,6 +1399,19 @@
   "special-offer-expiry": {
     "message": "31. října"
   },
+  "special-offer-content": {
+    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. Dubna"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -1408,19 +1430,32 @@
       }
     }
   },  
-  "special-offer-content": {
-    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+  "special-offer-renew": {
+    "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. Dubna"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
-        "example": "30%"
+        "example": "50%"
       }
     }
-  },
+  },   
+  "special-offer-upgrade": {
+    "message": "Upgradujte nyní z SmartTemplates Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
     "placeholders": {
@@ -1554,7 +1589,7 @@
     "message": "Když jméno není dostupné, e-mail bude zobrazen místo něj"
   },
   "to_var.cap": {
-    "message": "Příjemce (To)"
+    "message": "Příjemce (To, recipient)"
   },
   "tofirstname.label": {
     "message": "Křestní jméno příjemce"
@@ -1563,7 +1598,7 @@
     "message": "Pomocí fwd přidejte příjemce, na který lze kliknout, do předávaných e-mailů"
   },
   "tomail.label": {
-    "message": "e-mail příjemce"
+    "message": "E-mailová adresa původního příjemce"
   },
   "toname.label": {
     "message": "Jméno příjemce"
@@ -1615,7 +1650,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nyní můžete při úpravě e -mailu vkládat inteligentní fragmenty HTML. Úplné podrobnosti najdete níže v protokolu změn. {image1} {L2} {L1} Nyní můžete použít %quotePlaceholder% k vložení textu přeposlané pošty do šablony {L2}{L1} Přidáno podnabídky kategorií do seznamů šablon struktur. {L2} {L1} Opraveno: Ukládání / načítání šablon účtů se nezdařilo bez licence Pro. {L2}"
+    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nyní můžete při úpravě e -mailu vkládat inteligentní fragmenty HTML. Úplné podrobnosti najdete níže v protokolu změn. {image1} {L2} {L1} Pomocí nové proměnné % recipient % vložte konečného příjemce ve všech případech psaní (psaní, odpovídání, přeposílání). {L2}{L1} Nyní můžete použít %quotePlaceholder% k vložení textu přeposlané pošty do šablony {L2}{L1} Přidáno podnabídky kategorií do seznamů šablon struktur. {L2} {L1} Opraveno: Ukládání / načítání šablon účtů se nezdařilo bez licence Pro. {L2}{L1} Opraveno: Nastavení jazyka kontroly pravopisu pomocí % spellcheck % přestalo fungovat v Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

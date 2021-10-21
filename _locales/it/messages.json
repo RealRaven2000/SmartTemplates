@@ -412,7 +412,7 @@
     "message": "Modello HTML"
   },
   "fpFilterName": {
-    "message": "File SmartTemplate4"
+    "message": "File SmartTemplates"
   },
   "fpFolder": {
     "message": "Cartella"
@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Paga solo € 5,15 invece di € 8,35 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}fino al 31 agosto{boldEnd}."
+    "message": "Paga solo € 4,30 invece di € 8,60 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}fino al $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
@@ -684,7 +690,7 @@
     "message": "Grazie per aver registrato SmartTemplates Pro. Tutte le caratteristiche della versione Premium sono ora disponibili."
   },
   "licenseValidation.standard": {
-    "message": "Grazie per aver registrato SmartTemplate4 Standard. Stai aiutando immensamente lo sviluppo di questa estensione! Adesso puoi anche testare tutte le caratteristiche Premium"
+    "message": "Grazie per aver registrato SmartTemplates Standard. Stai aiutando immensamente lo sviluppo di questa estensione! Adesso puoi anche testare tutte le caratteristiche Premium"
   },
   "licenseWindow.title": {
     "message": "Licenza di SmartTemplates"
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio."
   },
+  "recipient.label": {
+    "message": "Destinatario finale"
+  },
   "regexpAnyText": {
     "message": "Qualsiasi testo - espressione regolare - deve essere racchiuso tra virgolette."
   },
@@ -1372,7 +1381,7 @@
     "message": "SmartTemplates è stato aggiornato correttamente alla versione {1} !"
   },
   "standardformat.config": {
-    "message": "Configura formato predefinito…"
+    "message": "Formato predefinito…"
   },
   "stringmanip.alttext": {
     "message": "[parametro opzionale] Testo alternativo: se non viene trovata alcuna corrispondenza, inserisce invece il testo alternativo."
@@ -1429,6 +1438,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Rinnova ora la tua licenza e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Esegui subito l'upgrade da SmartTemplates Standard a Pro e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Questo è il modo migliore per supportare $addonName$.",
     "placeholders": {
@@ -1562,7 +1597,7 @@
     "message": "Quando queste variabili non sono disponibili, verrà visualizzato l'indirizzo e-mail"
   },
   "to_var.cap": {
-    "message": "Variabili del destinatario (A)"
+    "message": "Variabili del destinatario (A, recipient)"
   },
   "tofirstname.label": {
     "message": "Cognome del destinatario"
@@ -1571,7 +1606,7 @@
     "message": "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate"
   },
   "tomail.label": {
-    "message": "Indirizzo e-mail del destinatario"
+    "message": "Indirizzo email del destinatario originale"
   },
   "toname.label": {
     "message": "Nome del destinatario"
@@ -1623,7 +1658,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ora è compatibile con Thunderbird 91. Questo lavoro è stato pagato tramite licenze, grazie mille per l'aiuto!{L2} {L1}Ora puoi inserire frammenti di HTML Smart durante la modifica della tua email. Vedere il registro delle modifiche di seguito per tutti i dettagli.{image1}{L2} {L1}Aggiunto sottomenu di categoria agli elenchi di modelli di struttura.{L2} {L1}Ora puoi usare %quotePlaceholder% per inserire il testo della posta inoltrata all'interno del modello{L2}{L1}Risolto: salvataggio/caricamento di modelli di account non riusciti senza licenza Pro.{L2}"
+    "message": "{L1}SmartTemplates ora è compatibile con Thunderbird 91. Questo lavoro è stato pagato tramite licenze, grazie mille per l'aiuto!{L2} {L1}Ora puoi inserire frammenti di HTML Smart durante la modifica della tua email. Vedere il registro delle modifiche di seguito per tutti i dettagli.{image1}{L2}{L1}Utilizzare la nuova variabile %recipient% per inserire il destinatario finale in tutti i casi di composizione (Scrivi, Rispondi, Inoltra).{L2} {L1}Aggiunto sottomenu di categoria agli elenchi di modelli di struttura.{L2} {L1}Ora puoi usare %quotePlaceholder% per inserire il testo della posta inoltrata all'interno del modello{L2}{L1}Risolto: salvataggio/caricamento di modelli di account non riusciti senza licenza Pro.{L2}{L1}Risolto: l'impostazione della lingua del controllo ortografico con %spellcheck% ha smesso di funzionare in Tb 91.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

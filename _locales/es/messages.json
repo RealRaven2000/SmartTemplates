@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague solo 5,15 € en lugar de 8,35 € y obtenga acceso completo a las funciones Pro. Esta oferta especial está disponible desde el {boldStart} hasta el 31 de agosto {boldEnd}."
+    "message": "Pague solo 4,30 € en lugar de 8,60 € y obtenga acceso completo a las funciones Pro. Esta oferta especial está disponible desde el {boldStart} hasta el $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Para comparar las características de las diferentes versiones, {linkStart}lea esta lista{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio."
   },
+  "recipient.label": {
+    "message": "Destinatario final"
+  },
   "regexpAnyText": {
     "message": "Cualquier texto, expresión regular, debe estar entre comillas dobles."
   },
@@ -1372,7 +1381,7 @@
     "message": "SmartTemplates se ha actualizado correctamente a la versión {1}."
   },
   "standardformat.config": {
-    "message": "Configurar formato predeterminado…"
+    "message": "Formato predeterminado…"
   },
   "stringmanip.alttext": {
     "message": "[parámetro opcional] Texto alternativo: si no se encuentra ninguna coincidencia, inserta el texto alternativo en su lugar."
@@ -1429,6 +1438,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "¡Renueve su licencia ahora y ahorre {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponible hasta el {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "¡Actualice ahora de SmartTemplates Standard a Pro y ahorre {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponible hasta el {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Esta es la forma preferida de admitir $addonName$.",
     "placeholders": {
@@ -1562,7 +1597,7 @@
     "message": "Si no se dispone del nombre, se mostrará la dirección de correo"
   },
   "to_var.cap": {
-    "message": "Destinatario (Para)"
+    "message": "Destinatario (Para, recipient)"
   },
   "tofirstname.label": {
     "message": "Nombre de pila del destinatario"
@@ -1571,7 +1606,7 @@
     "message": "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados"
   },
   "tomail.label": {
-    "message": "Dirección del destinatario"
+    "message": "Dirección de correo electrónico del destinatario original"
   },
   "toname.label": {
     "message": "Apellido del destinatario"
@@ -1623,7 +1658,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates ahora es compatible con Thunderbird 91. Este trabajo se pagó a través de licencias, ¡muchas gracias por ayudar con esto! {L2} {L1} Ahora puede insertar fragmentos de HTML Smart mientras edita su correo electrónico. Consulte el registro de cambios a continuación para obtener todos los detalles. {image1} {L2} {L1} Se agregaron submenús de categorías a las listas de plantillas de estructura. {L2} {L1} Ahora puede usar %quotePlaceholder% para insertar el texto del correo reenviado dentro de la plantilla {L2}{L1} Corregido: Error al guardar / cargar plantillas de cuenta sin la licencia Pro. {L2}"
+    "message": "{L1} SmartTemplates ahora es compatible con Thunderbird 91. Este trabajo se pagó a través de licencias, ¡muchas gracias por ayudar con esto! {L2} {L1} Ahora puede insertar fragmentos de HTML Smart mientras edita su correo electrónico. Consulte el registro de cambios a continuación para obtener todos los detalles. {image1} {L2} {L1} Utilice la nueva variable %recipient% para insertar el destinatario final en todos los casos de redacción (escribir, responder, reenviar). {L2}{L1} Se agregaron submenús de categorías a las listas de plantillas de estructura. {L2} {L1} Ahora puede usar %quotePlaceholder% para insertar el texto del correo reenviado dentro de la plantilla {L2}{L1} Corregido: Error al guardar / cargar plantillas de cuenta sin la licencia Pro. {L2}{L1} Corregido: la configuración del idioma del corrector ortográfico con %spellcheck% dejó de funcionar en Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

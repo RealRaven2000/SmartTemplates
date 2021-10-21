@@ -547,7 +547,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Сплатіть лише € 5,15 замість € 8,35 та отримайте повний доступ до функцій Pro. Ця спеціальна пропозиція доступна з {boldStart} до 31 серпня {boldEnd}."
+    "message": "Сплатіть лише € 4,30 замість € 8,60 та отримайте повний доступ до функцій Pro. Ця спеціальна пропозиція доступна з {boldStart} до $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseStatus.expired" : {
     "message": "Ліцензія SmartTemplates закінчилась $countDays$ днів тому.",
@@ -990,6 +996,9 @@
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."
   },
+  "recipient.label": {
+    "message": "Кінцевий одержувач"
+  },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
   },
@@ -1252,7 +1261,7 @@
     "message": "SmartTemplates був успішно оновлений до версії {1}!"
   },
   "standardformat.config": {
-    "message": "Налаштування формату за замовчуванням ..."
+    "message": "Формат за умовчанням…"
   },
   "stringmanip.alttext": {
     "message": "[необов’язковий параметр] Альтернативний текст: якщо не знайдено збігу, замість нього вставляється альтернативний текст."
@@ -1363,7 +1372,7 @@
     "message": "Якщо ім'я відсутнє, адреса електронної пошти відображатиметься замість неї"
   },
   "to_var.cap": {
-    "message": "Отримувач (To)"
+    "message": "Отримувач (To, recipient)"
   },
   "tofirstname.label": {
     "message": "Ім'я отримувача"
@@ -1372,7 +1381,7 @@
     "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
   "tomail.label": {
-    "message": "Адреса електронної пошти отримувача"
+    "message": "Електронна адреса оригінального одержувача"
   },
   "toname.label": {
     "message": "Прізвище отримувача"

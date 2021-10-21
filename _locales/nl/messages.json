@@ -412,7 +412,7 @@
     "message": "HTML-sjabloon"
   },
   "fpFilterName": {
-    "message": "SmartTemplate4-bestand"
+    "message": "SmartTemplates-bestand"
   },
   "fpFolder": {
     "message": "Map"
@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betaal slechts € 5,15 in plaats van € 8,35 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}tot 31 augustus{boldEnd}."
+    "message": "Betaal slechts € 4,30 in plaats van € 8,60 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}tot $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen."
   },
+  "recipient.label": {
+    "message": "Eindontvanger"
+  },
   "regexpAnyText": {
     "message": "Alle tekst - reguliere expressie - dient tussen dubbele aanhalingstekens te staan."
   },
@@ -1373,7 +1382,7 @@
     "message": "SmartTemplates is met succes bijgewerkt naar versie {1}!"
   },
   "standardformat.config": {
-    "message": "Standaardnotatie configureren…"
+    "message": "Standaard formaat…"
   },
   "stringmanip.alttext": {
     "message": "[optionele parameter] Alternatieve tekst: als geen overeenkomst wordt gevonden, wordt de alternatieve tekst ingevoegd."
@@ -1430,6 +1439,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Verleng nu uw licentie en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },    
+  "special-offer-upgrade": {
+    "message": "Upgrade nu van SmartTemplates Standard naar Pro en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
     "placeholders": {
@@ -1563,7 +1598,7 @@
     "message": "Wanneer de naam niet beschikbaar is, wordt het e-mailadres weergegeven"
   },
   "to_var.cap": {
-    "message": "Ontvanger (Aan)"
+    "message": "Ontvanger (Aan, recipient)"
   },
   "tofirstname.label": {
     "message": "Voornaam van ontvanger"
@@ -1572,7 +1607,7 @@
     "message": "Gebruik fwd om een aanklikbare ontvanger in doorgestuurde e-mailberichten toe te voegen"
   },
   "tomail.label": {
-    "message": "E-mailadres van ontvanger"
+    "message": "E-mailadres van oorspronkelijke ontvanger"
   },
   "toname.label": {
     "message": "Achternaam van ontvanger"
@@ -1624,7 +1659,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}SmartTemplates is nu compatibel met Thunderbird 91. Dit werk is betaald via licenties, hartelijk dank voor uw hulp hierbij!{L2} {L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor volledige details.{image1}{L2} {L1}Categoriesubmenu's toegevoegd om sjabloonlijsten te structureren.{L2} {L1}U kunt nu %quotePlaceholder% gebruiken om doorgestuurde e-mailtekst in de sjabloon in te voegen{L2}{L1}Opgelost: opslaan/laden van accountsjablonen mislukt zonder Pro-licentie.{L2}"
+  "message": "{L1}SmartTemplates is nu compatibel met Thunderbird 91. Dit werk is betaald via licenties, hartelijk dank voor uw hulp hierbij!{L2} {L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor volledige details.{image1}{L2}{L1}Gebruik de nieuwe %recipient% variabele om de uiteindelijke ontvanger in alle opstelgevallen in te voegen (schrijven, beantwoorden, doorsturen).{L2} {L1}Categoriesubmenu's toegevoegd om sjabloonlijsten te structureren.{L2} {L1}U kunt nu %quotePlaceholder% gebruiken om doorgestuurde e-mailtekst in de sjabloon in te voegen{L2}{L1}Opgelost: opslaan/laden van accountsjablonen mislukt zonder Pro-licentie.{L2}{L1}Opgelost: het instellen van de taal voor spellingcontrole met %spellcheck% werkt niet meer in Tb 91.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

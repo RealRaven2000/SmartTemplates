@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "$ 10.00ではなく$ 5.75を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}から8月31日{boldEnd}までご利用いただけます。"
+    "message": "$$10.00ではなく$$5.00を支払うだけで、Pro機能へのフルアクセスを取得できます。 この特別オファーは、{boldStart}から $expiry${boldEnd}までご利用いただけます。",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。"
   },
+  "recipient.label": {
+    "message": "最終受信者"
+  },
   "regexpAnyText": {
     "message": "任意のテキスト - 正規表現 - ダブルクオートで囲まれている必要があります。"
   },
@@ -1372,7 +1381,7 @@
     "message": "SmartTemplates  は正常にバージョン {1} に更新されました！"
   },
   "standardformat.config": {
-    "message": "既定のフォーマットを設定しています..."
+    "message": "デフォルトのフォーマット…"
   },
   "stringmanip.alttext": {
     "message": "[オプションパラメーター] 代替テキスト: マッチするものが見つからない場合、代わりに代替テキストを挿入します"
@@ -1429,6 +1438,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "今すぐライセンスを更新して、{boldStart}$reduction${boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "今すぐSmartTemplates StandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "これは、$addonName$ をサポートするために推奨される方法です。",
     "placeholders": {
@@ -1562,7 +1597,7 @@
     "message": "受信者の名前が設定されていない場合、メールアドレスが表示されます"
   },
   "to_var.cap": {
-    "message": "受信者 (To)"
+    "message": "受信者 (To, recipient)"
   },
   "tofirstname.label": {
     "message": "受信者の名前 (名字を除く)"
@@ -1571,7 +1606,7 @@
     "message": "転送メッセージの受信者の追加に fwd を使用する"
   },
   "tomail.label": {
-    "message": "受信者のメールアドレス"
+    "message": "元の受信者のメールアドレス"
   },
   "toname.label": {
     "message": "受信者の名前"
@@ -1623,7 +1658,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplatesはThunderbird91と互換性があります。この作業はライセンスを通じて支払われました。これを手伝ってくれてありがとう！{L2} {L1}メールの編集中にHTMLスマートスニペットを挿入できるようになりました。 詳細については、以下の変更ログを参照してください。{image1} {L2} {L1}構造テンプレートリストにカテゴリサブメニューを追加しました。{L2}{L1}％quotePlaceholder％を使用して、転送されたメールテキストをテンプレート内に挿入できるようになりました{L2} {L1}修正済み：アカウントテンプレートの保存/読み込みがProライセンスなしで失敗しました。{L2}"
+    "message": "{L1} SmartTemplatesはThunderbird91と互換性があります。この作業はライセンスを通じて支払われました。これを手伝ってくれてありがとう！{L2} {L1}メールの編集中にHTMLスマートスニペットを挿入できるようになりました。 詳細については、以下の変更ログを参照してください。{image1} {L2} {L1}新しい％recipient％変数を使用して、すべての作成ケース（書き込み、返信、転送）で最終受信者を挿入します。{L2} {L1}構造テンプレートリストにカテゴリサブメニューを追加しました。{L2}{L1}％quotePlaceholder％を使用して、転送されたメールテキストをテンプレート内に挿入できるようになりました{L2} {L1}修正済み：アカウントテンプレートの保存/読み込みがProライセンスなしで失敗しました。{L2}{L1}修正済み：％spellcheck％でスペルチェック言語を設定すると、Tb91で機能しなくなりました。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

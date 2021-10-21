@@ -100,6 +100,9 @@
   "btn-renew-license": {
     "message": "Eu quero renovar minha licença"
   },
+  "btn-upgrade-to-pro" : {
+    "message": "Eu quero melhorar minha licença"
+  },
   "btn-want-a-license": {
     "message": "Eu quero comprar uma licença"
   },
@@ -328,6 +331,17 @@
   "export.label": {
     "message": "Exportar"
   },
+  "extend-your-license" : {
+    "message" : "Considere estender sua licença por um ano."
+  },
+  "extensionDescription": {
+    "message": "Uma maneira poderosa de criar respostas personalizadas com a inserção automática de vários cabeçalhos de e-mail. Os modelos podem ser criados para cada identidade de e-mail, também oferece suporte a arquivos html externos e folhas de estilo.",
+    "description": "Description of the extension."
+  },
+  "extensionName": {
+    "message": "SmartTemplates",
+    "description": "Name of the extension."
+  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Modelos de mensagens inteligentes que permitem personalizar o cabeçalho das mensagens anteriores para cada conta de e-mail."
   },
@@ -481,6 +495,26 @@
   "heading.expandAll": {
     "message": "expandir todas as entradas"
   },
+  "heading-updated": {
+    "message": "$addonName$ atualizado com sucesso",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },  
+  "heading-installed": {
+    "message": "Instalado com sucesso $addonName$",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "placeholders": {
+      "addonName" : {
+      "content" : "$1", 
+      "example" : "SmartTemplates"
+      }  
+    }
+  },
   "help.label": {
     "message": "Ajuda"
   },
@@ -571,9 +605,22 @@
   "lastName.label": {
     "message": "Sobrenome:"
   },
+  "label-remind-me" : {
+    "message": "Lembre-me novamente em $countDays$ dias.",
+    "placeholders": {
+      "countDays" : {
+      "content" : "$1", 
+      "example" : "10"
+      }  
+    }  
+  },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
     "message": "Obrigado por estender recentemente sua licença ou se você fez uma doação. Como você ajudou a preparar este complemento para o futuro, basta fechar esta janela."
+  },
+  "license-is-standard" : {
+    "message": "Como detentor de uma licença padrão SmartTemplates, você agora tem direito a uma atualização com desconto mais uma extensão de um ano. Clique no botão [Atualize para o Pro] abaixo de sua licença padrão para obter mais informações.",
+    "description": "Special message for standard license holders"
   },
   "license-standard-special-offer": {
     "message": "{boldStart} Prezado $username${boldEnd}, agora você pode atualizar para SmartTemplates Pro por {boldStart} $discount$ menos {boldEnd} - enquanto também estende sua licença por um ano inteiro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!",
@@ -589,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague apenas € 5,15 em vez de € 8,35 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart}a 31 de agosto{boldEnd}."
+    "message": "Pague apenas € 4,30 em vez de € 8,60 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Para comparar os recursos das diferentes versões, {linkStart}leia esta lista{linkEnd}."
@@ -758,6 +811,9 @@
   },
   "month.9.short": {
     "message": "Set"
+  },
+  "mozillas-basic-platform" : {
+    "message" : "A Mozilla fornece apenas uma plataforma básica para entregar nosso software a vocês, usuários finais. Se precisarmos pedir aos nossos usuários pagamento ou suporte, não podemos fazer isso em addons.thunderbird.net - não é uma 'loja de aplicativos' com paywalls integrados ou gerenciamento de licenças como iTunes ou Google Play."
   },
   "n.label": {
     "message": "Mês (de 1 a 12)"
@@ -1053,29 +1109,14 @@
   "quote_changers.desc": {
     "message": "Variáveis premium para remover texto / tags das partes citadas e economizar espaço."
   },
+  "recipient.label": {
+    "message": "Destinatário Final"
+  },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
   },
   "renew-your-license": {
     "message": "Renove sua licença."
-  },
-  "support-preference": {
-    "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "support-suggestion": {
-    "message": "Para que $addonName$ permaneça funcional e vivo, faça um favor vital:",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "replaceQuotedTags": {
     "message": "Substitui as tags da citação por texto ou html"
@@ -1104,6 +1145,25 @@
   "resolveNamesFromAB_tip": {
     "message": "Este recurso não funciona com certos catálogos de endereços, como LDAP."
   },
+  "support-preference": {
+    "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Para que $addonName$ permaneça funcional e vivo, faça um favor vital:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+
   "s.label": {
     "message": "Segundo (00 a 59)"
   },
@@ -1210,6 +1270,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Atualize agora do SmartTemplates Standard para o Pro e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "spellcheck.label": {
     "message": "Define o idioma da verificação ortográfica. Valores de exemplo: (en, de-DE, es-ES, ru) - o dicionário deve estar instalado."
   },
@@ -1370,7 +1456,7 @@
     "message": "SmartTemplates foi atualizado com sucesso para a versão {1}!"
   },
   "standardformat.config": {
-    "message": "Configurar formato padrão…"
+    "message": "Formato padrão…"
   },
   "stringmanip.alttext": {
     "message": "[parâmetro opcional] Texto alternativo: se nenhuma correspondência for encontrada, insere o texto alternativo."
@@ -1490,7 +1576,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requer mudanças contínuas para permanecer compatível com a plataforma Mozilla. Trabalho constantemente para reter o máximo de funcionalidade possível para versões futuras do Thunderbird.",
+    "message": "$addonName$ será amplamente reescrito para permanecer compatível com o Thunderbird. Isso é uma necessidade, já que as mudanças feitas pela Mozilla pedem que os complementos se tornem extensões de e-mail nativas, que são muito diferentes internamente. Somente através de sua licença, as muitas horas de desenvolvimento necessárias podem ser financiadas.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1508,7 +1594,7 @@
     "message": "Quando o nome não estiver disponível, o endereço de e-mail será exibido no lugar"
   },
   "to_var.cap": {
-    "message": "Variáveis de destinatário (Para)"
+    "message": "Variáveis de destinatário (Para, recipient)"
   },
   "tofirstname.label": {
     "message": "Primeiro nome do destinatário"
@@ -1517,7 +1603,7 @@
     "message": "Usar \"fwd\" para adicionar o destinatário clicável nos emails encaminhados"
   },
   "tomail.label": {
-    "message": "Nome e endereço do destinatário"
+    "message": "Endereço de e-mail do destinatário original"
   },
   "toname.label": {
     "message": "Nome do destinatário"
@@ -1531,6 +1617,10 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
+  "translated-by-google" : {
+    "message": "traduções fornecidas pelo google",
+    "description": "disclaimer."
+  },  
   "updates.title": {
     "message": "Atualizações"
   },
@@ -1565,17 +1655,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o registro de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Adicionados submenus de categoria às listas de modelos de estrutura. {L2}{L1} Agora você pode usar %quotePlaceholder% para inserir o texto do correio encaminhado dentro do modelo {L2} {L1} Corrigido: falha ao salvar / carregar modelos de conta sem licença Pro. {L2}"
-  },
-  "window-title": {
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Bem-vindo a $addonName$",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
+    "message": "{L1} SmartTemplates agora é compatível com Thunderbird 91. Este trabalho foi pago por meio de licenças, muito obrigado por ajudar com isso! {L2} {L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o registro de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Use a nova variável %recipient% para inserir o destinatário final em todos os casos de composição (Escrever, Responder, Encaminhar). {L2}{L1} Adicionados submenus de categoria às listas de modelos de estrutura. {L2}{L1} Agora você pode usar %quotePlaceholder% para inserir o texto do correio encaminhado dentro do modelo {L2} {L1} Corrigido: falha ao salvar / carregar modelos de conta sem licença Pro. {L2}{L1} Corrigido: a configuração do idioma de verificação ortográfica com %spellcheck% parou de funcionar no Tb 91. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 5,15 € statt 8,35 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis 31. August {boldEnd} verfügbar."
+    "message": "Zahlen Sie nur 4,30 € statt 8,60 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
@@ -1104,6 +1110,9 @@
   "quote_changers.desc": {
     "message": "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen."
   },
+  "recipient.label": {
+    "message": "Endempfänger"
+  },
   "regexpAnyText": {
     "message": "Beliebiger Text - regulärer Ausdruck - muß in doppelten Anführungszeichen sein."
   },
@@ -1213,7 +1222,7 @@
     "message": "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein."
   },
   "standardformat.config": {
-    "message": "Standardformat setzen…"
+    "message": "Standardformat…"
   },
   "st.confirmVersionLink": {
     "message": "Changelog für SmartTemplates zeigen?"
@@ -1427,6 +1436,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {boldStart}$reduction${boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Jetzt von SmartTemplates Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Dies ist die bevorzugte Methode zur Unterstützung von $addonName$.",
     "placeholders": {
@@ -1560,7 +1595,7 @@
     "message": "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt"
   },
   "to_var.cap": {
-    "message": "Empfängervariablen (An)"
+    "message": "Empfängervariablen (An, recipient)"
   },
   "tofirstname.label": {
     "message": "Empfängervorname"
@@ -1569,7 +1604,7 @@
     "message": "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen"
   },
   "tomail.label": {
-    "message": "Empfänger E-Mail Adresse"
+    "message": "E-Mail-Adresse des ursprünglichen Empfängers"
   },
   "toname.label": {
     "message": "Empfängername"
@@ -1621,7 +1656,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Sie können jetzt %quotePlaceholder% verwenden, um weitergeleiteten E-Mail-Text in die Vorlage einzufügen{L2}{L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}"
+    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Verwenden Sie die neue %recipient%-Variable, um den endgültigen Empfänger in allen Fällen (Verfassen, Antworten, Weiterleiten) einzufügen.{L2}{L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Sie können jetzt %quotePlaceholder% verwenden, um den Text der weitergeleiteten E-Mail innerhalb der Vorlage einzufügen{L2}{L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}{L1}Behoben: Das Einstellen der Rechtschreibprüfungssprache mit %spellcheck% funktionierte in Tb 91 nicht mehr.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

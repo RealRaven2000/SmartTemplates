@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$ 5.75而不是$ 10.00，即可完全使用Pro功能。 此特别优惠适用于{boldStart}至 8 月 31 日{boldEnd}。"
+    "message": "只需支付$$5.00而不是$$10.00，即可完全使用Pro功能。 此特别优惠适用于{boldStart}至 $expiry${boldEnd}。",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"
   },
+  "recipient.label": {
+    "message": "最终收件人"
+  },
   "regexpAnyText": {
     "message": "任何文本（正则表达式）都必须用双引号引起来。"
   },
@@ -1246,6 +1255,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "立即续订您的许可证并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "立即从 SmartTemplates Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "spellcheck.label": {
     "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
   },
@@ -1406,7 +1441,7 @@
     "message": "SmartTemplates 成功升级到了 {1} 版本!"
   },
   "standardformat.config": {
-    "message": "配置默认格式..."
+    "message": "默认格式..."
   },
   "stringmanip.alttext": {
     "message": "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。"
@@ -1562,7 +1597,7 @@
     "message": "当姓名不可用时，将显示邮件地址"
   },
   "to_var.cap": {
-    "message": "收件人变量 (To)"
+    "message": "收件人变量 (To, recipient)"
   },
   "tofirstname.label": {
     "message": "收件人名字"
@@ -1571,7 +1606,7 @@
     "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
   "tomail.label": {
-    "message": "收件人邮件地址"
+    "message": "原始收件人的电子邮件地址"
   },
   "toname.label": {
     "message": "收件人姓名"
@@ -1623,7 +1658,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates 现在与 Thunderbird 91 兼容。这项工作是通过许可证支付的，非常感谢您的帮助！{L2} {L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。{image1}{L2} {L1}为结构模板列表添加了类别子菜单。{L2} {L1}您现在可以使用 %quotePlaceholder% 在模板中插入转发的邮件文本{L2}{L1}已修复：在没有 Pro 许可证的情况下保存/加载帐户模板失败。{L2}"
+    "message": "{L1}SmartTemplates 现在与 Thunderbird 91 兼容。这项工作是通过许可证支付的，非常感谢您的帮助！{L2} {L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。{image1}{L2} {L1}使用新的 %recipient% 变量在所有撰写案例（写、回复、转发）中插入最终收件人。{L2}{L1}为结构模板列表添加了类别子菜单。{L2} {L1}您现在可以使用 %quotePlaceholder% 在模板中插入转发的邮件文本{L2}{L1}已修复：在没有 Pro 许可证的情况下保存/加载帐户模板失败。{L2}{L1}已修复：使用 %spellcheck% 设置拼写检查语言在 Tb 91 中停止工作。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

@@ -412,7 +412,7 @@
     "message": "Szablon HTML"
   },
   "fpFilterName": {
-    "message": "Plik SmartTemplate4"
+    "message": "Plik SmartTemplates"
   },
   "fpFolder": {
     "message": "Teczka"
@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zapłać tylko 5,15 € zamiast 8,35 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart}do 31 sierpnia{boldEnd}."
+    "message": "Zapłać tylko 4,30 € zamiast 8,60 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart}do $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca."
   },
+  "recipient.label": {
+    "message": "Ostateczny odbiorca"
+  },
   "regexpAnyText": {
     "message": "Każdy tekst - wyrażenie regularne - musi być w cudzysłowie."
   },
@@ -1246,6 +1255,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Przejdź teraz z SmartTemplates Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."
   },
@@ -1406,7 +1441,7 @@
     "message": "Dodatek SmartTemplates został zaktualizowany do wersji {1}!"
   },
   "standardformat.config": {
-    "message": "Skonfiguruj domyślny format…"
+    "message": "Format domyślny…"
   },
   "stringmanip.alttext": {
     "message": "[parametr opcjonalny] Tekst alternatywny: jeśli nie znaleziono dopasowania, zamiast tego wstawia tekst alternatywny."
@@ -1562,7 +1597,7 @@
     "message": "Gdy nazwisko jest niedostępne, będzie wyświetlany adres e-mail"
   },
   "to_var.cap": {
-    "message": "Zmienne odbiorcy (Do:)"
+    "message": "Zmienne odbiorcy (Do, recipient)"
   },
   "tofirstname.label": {
     "message": "Imię odbiorcy"
@@ -1571,7 +1606,7 @@
     "message": "Użyj programu fwd, aby dodać klikalnego odbiorcę w przesłanych wiadomościach e-mail"
   },
   "tomail.label": {
-    "message": "Adres e-mail odbiorcy"
+    "message": "Adres e-mail pierwotnego odbiorcy"
   },
   "toname.label": {
     "message": "Nazwisko odbiorcy"
@@ -1623,7 +1658,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates jest teraz kompatybilne z Thunderbirdem 91. Ta praca została opłacona licencjami, bardzo dziękuję za pomoc!{L2} {L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje.{image1}{L2} {L1}Dodano podmenu kategorii do list szablonów struktury.{L2} {L1}Możesz teraz użyć %quotePlaceholder%, aby wstawić tekst przekazywanej wiadomości e-mail w szablonie{L2}{L1}Naprawiono: Zapisywanie / ładowanie szablonów kont nie powiodło się bez licencji Pro.{L2}"
+    "message": "{L1}SmartTemplates jest teraz kompatybilne z Thunderbirdem 91. Ta praca została opłacona licencjami, bardzo dziękuję za pomoc!{L2} {L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje.{image1}{L2} {L1}Użyj nowej zmiennej %recipient%, aby wstawić ostatecznego odbiorcę we wszystkich sprawach redagowania (Napisz, Odpowiedz, Prześlij dalej).{L2}{L1}Dodano podmenu kategorii do list szablonów struktury.{L2} {L1}Możesz teraz użyć %quotePlaceholder%, aby wstawić tekst przekazywanej wiadomości e-mail w szablonie{L2}{L1}Naprawiono: Zapisywanie / ładowanie szablonów kont nie powiodło się bez licencji Pro.{L2}{L1}Naprawiono: Ustawienie języka sprawdzania pisowni za pomocą %spellcheck% przestało działać w Tb 91.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

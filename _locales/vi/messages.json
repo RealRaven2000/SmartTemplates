@@ -160,6 +160,32 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
+  "special-offer-upgrade": {
+    "message": "Nâng cấp ngay từ SmartTemplates Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference" : {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
     "placeholders": {
@@ -228,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Bây giờ bạn có thể sử dụng %quotePlaceholder% để chèn văn bản thư được chuyển tiếp trong mẫu {L2}{L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}"
+    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Sử dụng biến %recipient% mới để chèn người nhận cuối cùng trong tất cả các trường hợp soạn thư (Viết, Trả lời, Chuyển tiếp). {L2}{L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Bây giờ bạn có thể sử dụng %quotePlaceholder% để chèn văn bản thư được chuyển tiếp trong mẫu {L2}{L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}{L1} Đã khắc phục: Cài đặt ngôn ngữ kiểm tra chính tả với %spellcheck% đã ngừng hoạt động trong Tb 91. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

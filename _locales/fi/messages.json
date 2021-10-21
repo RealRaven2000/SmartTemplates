@@ -343,7 +343,7 @@
     "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
-    "message": "SmartTempalate4:n avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille."
+    "message": "SmartTemplates avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille."
   },
   "file.label": {
     "message": "Tiedosto"
@@ -636,7 +636,13 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Maksa vain 5,15 euroa 8,35 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - 31. elokuuta {boldEnd}."
+    "message": "Maksa vain 4,30 euroa 8,60 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
   }, 
   "licenseComparison" : {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
@@ -1107,6 +1113,9 @@
   "quote_changers.desc": {
     "message": "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi."
   },
+  "recipient.label": {
+    "message": "Lopullinen vastaanottaja"
+  },
   "regexpAnyText": {
     "message": "Minkä tahansa tekstin - säännöllisen lausekkeen - on oltava lainausmerkeissä."
   },
@@ -1333,7 +1342,7 @@
     "message": "P"
   },
   "st.notification.premium.text": {
-    "message": "{1} on maksullinen lisätoiminto. Hanki SmartTempalte4 Pro lisenssi ja voit käyttää sitä pysyvästi."
+    "message": "{1} on maksullinen lisätoiminto. Hanki SmartTemplates Pro lisenssi ja voit käyttää sitä pysyvästi."
   },
   "st.notification.premium.text.plural": {
     "message": "{1} ovat maksullisia lisätoimintoja. Hanki SmartTemplates Pro lisenssi ja voit käyttää niitä pysyvästi."
@@ -1372,7 +1381,7 @@
     "message": "SmartTemplates päivitettiin onnistuneesti versioon {1}!"
   },
   "standardformat.config": {
-    "message": "Määritä oletusmuoto…"
+    "message": "Oletusmuoto…"
   },
   "stringmanip.alttext": {
     "message": "[valinnainen parametri] Vaihtoehtoinen teksti: Jos vastaavuutta ei löydy, lisää vaihtoehtoisen tekstin."
@@ -1398,6 +1407,19 @@
   "special-offer-expiry": {
     "message": "31. lokakuuta"
   }, 
+  "special-offer-content" : {
+    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1416,19 +1438,32 @@
       }
     }
   },  
-  "special-offer-content" : {
-    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+  "special-offer-renew": {
+    "message": "Uusi lisenssi nyt ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "August 22"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
-        "example": "30%"
+        "example": "50%"
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Päivitä nyt SmartTemplates Standardista Pro -versioon ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart}$expirydate${boldEnd} asti.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "support-preference": {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {
@@ -1562,7 +1597,7 @@
     "message": "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite"
   },
   "to_var.cap": {
-    "message": "Vastaanottajan muuttujat (To-kenttä)"
+    "message": "Vastaanottajan muuttujat (To-kenttä, recipient)"
   },
   "tofirstname.label": {
     "message": "Vastaanottaja etunimi"
@@ -1571,7 +1606,7 @@
     "message": "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin"
   },
   "tomail.label": {
-    "message": "Vastaanottajan sähköpostiosoite"
+    "message": "Alkuperäisen vastaanottajan sähköpostiosoite"
   },
   "toname.label": {
     "message": "Vastaanottajan nimi"
@@ -1623,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Voit nyt käyttää %quotePlaceholder% -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}"
+    "message": "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Käytä uutta %recipient% -muuttujaa lopullisen vastaanottajan lisäämiseen kaikkiin kirjoitustapauksiin (Kirjoita, Vastaa, Välitä). {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Voit nyt käyttää %quotePlaceholder% -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}{L1} Korjattu: Oikeinkirjoituksen tarkistuskielen asettaminen %spellcheck%: lla lakkasi toimimasta Tb 91: ssä. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
