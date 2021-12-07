@@ -505,12 +505,12 @@ END LICENSE BLOCK
     # [issue 142] [issue 28] Add feature to insert html Smart snippets within Composer
     # [issue 164] Feature: Add *selection* placeholder for inserting HTML snippets (fragments)    
     # [issue 147] Add categories / folders to structure template menus
-    # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
-    # [issue 153] Fixed: Recipient Names which are only 1 Character long are dropped
-    # [issue 156] Fixed: When FORWARDING, %quotePlaceholder% doesn't position forwarded mail text correctly
-    # Fixed some strings in Occitan locale
     # [issue 155] Fixed: reply template applied twice in thunderbird 91.2.0
     # [issue 139] Fixed: Double template inserted when replying to own email - Tb Conversations Add-on!
+    # [issue 156] Fixed: When FORWARDING, %quotePlaceholder% doesn't position forwarded mail text correctly
+    # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
+    # [issue 153] Fixed: Recipient Names which are only 1 Character long are dropped
+    # Fixed some strings in Occitan locale
     # [issue 163] Fixed: With Cardbook installed, SmartTemplates statusbar icon may not be shown
 
     

@@ -1,11 +1,11 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#2.16">can be found here</a>
+Full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#2.17">can be found here</a>
 
 <b>Latest News</b>
 
-I have rewritten SmartTemplates for compatibility with Thunderbird 91. The main effort for new features and bug fixes will go into this new version - latest version is <a href="https://addons.thunderbird.net/thunderbird/addon/smarttemplate4/versions/?page=1#version-3.5.4">3.5.4</a>. 
+ATN (addons.thunderbird.net) does not accept versions for Thunderbird 68 anymore - so any future version for legacy Add-ons will now be released to <a href="https://github.com/RealRaven2000/SmartTemplates/releases">the SmartTemplates github releases page</a>. 
 
 I may backport some fixes / features for Thunderbird 68 only in the SmartTemplate version 2.*. See the item lists below for more detail.
 
@@ -17,17 +17,24 @@ to support the project.
 <b>Enhancements</b>
 <ul>
 <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/142">[issue 142]</a> New feature to insert html Smart snippets within Composer.</li>
+<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/164">[issue 164]</a> Feature: Added *selection* placeholder for inserting HTML snippets (fragments).</li>
 <li><a href="https://github.com/RealRaven2000/SmartTemplate4/issues/147">[issue 147]</a> Added categories / folders to structure template menus</li>
 </ul>
 
 <b>Bug Fixes</span></b>
 <ul>
-<li></li>
+<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/155">[issue 155]</a> reply template applied twice in thunderbird 91.2.0.</li>
+<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/139">[issue 139]</a> Double template inserted when replying to own email - Tb Conversations Add-on!</li>
+<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/156">[issue 156]</a> When FORWARDING, <code class="inline">%quotePlaceholder%</code> doesn't position forwarded mail text correctly.</li>
+<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/153">[issue 153]</a> Recipient Names which are only 1 Character long are dropped.</li>
+<li>Fixed: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/163">[issue 163]</a> With Cardbook installed, SmartTemplates statusbar icon may not be shown.</li>
+<li>Fixed: Fixed: <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/149">[issue 149]</a>If no <code class="inline">%cursor%</code> is entered, HTML template may be truncated / reformatted at the end</li>
+<li>Fixed: Fixed some strings in Occitan locale.</li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
 <li>
 <a href="https://github.com/RealRaven2000/SmartTemplate4/issues/127">[issue 127]</a> Make SmartTemplates compatible with Thunderbird 91.0 - this is mostly complete and you can upgrade to Thunderbird 91 already.</li>
-<li>dropped support for Thunderbird versions older than 68. Bugfixes will only be done on request for Tb68 (and Tb78 and later). Most new features will go into the current-compatible version which runs both on Thunderbird 78 and 91.</li>
+<li>ATN dropped support for Thunderbird versions older than 78. Bugfixes will only be done on request for Tb68 (and Tb78 and later). Most new features will go into the current-compatible version which runs both on Thunderbird 78 and 91.</li>
 </ul>
