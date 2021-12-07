@@ -275,8 +275,26 @@ permalink: version.html
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/164">[issue 164]</a> 
-      Feature: Added *selection* placeholder for inserting HTML snippets (fragments).</li>
+      <p>
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/164">[issue 164]</a> 
+        Feature: Added *selection* placeholder for inserting HTML snippets (fragments).
+      </p>
+      Example: <br>
+      <pre>
+        <code class="html">&lt;*selection*&gt;</code>
+      </pre>
+      <p>
+        If you highlight the text "div" in composer and then load the above template,
+        it will insert a HTML code tag which looks like a HTML tag:<br>
+        <pre>
+          <code class="html">&lt;div&gt;</code>
+        </pre>
+        <br>
+        This can be also used to generate styled containers such as headings, boxes, callout containers etc.
+        I highly recommend adding an external stylesheet using the <code>%style()%</code> variable.
+        
+      </p>
+    </li>
     <li>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/161">[issue 161]</a> 
       remove text shadow in html edit boxes for dark themes - this makes the text better readable.
