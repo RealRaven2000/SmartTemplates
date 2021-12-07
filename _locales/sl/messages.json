@@ -1658,7 +1658,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Zdaj lahko med urejanjem e -pošte vstavljate pametne delčke HTML. Za vse podrobnosti glejte spodnji dnevnik sprememb. {image1} {L2} {L1} Z novo spremenljivko %recipient% vstavite končnega prejemnika v vse primere sestavljanja (pisanje, odgovor, posredovanje). {L2} {L1} Podmeniji kategorij so bili dodani na seznam predlogov za strukturo. {L2}{L1} Zdaj lahko uporabite %quotePlaceholder% za vstavljanje besedila posredovane pošte v predlogo {L2} {L1} Odpravljeno: shranjevanje / nalaganje predlog računa ni uspelo brez licence Pro. {L2}{L1} Popravljeno: nastavitev jezika preverjanja črkovanja s %spellcheck% je prenehala delovati v Tb 91. {L2}"
+    "message": "{L1}Zdaj lahko med urejanjem e-pošte vstavite pametne izrezke HTML. Za vse podrobnosti si oglejte spodnji dnevnik sprememb. {image1}{L2} {L1}Z najnovejšo različico pametnih izrezkov vstavite besedilo *selection*, da vstavite trenutno izbrani del besedila v delček.{L2}{L1}Popravljeno: podvojena predloga je bila vstavljena, ko odgovarjate na lastno e-pošto ali ko uporabljate gumb za odgovor v dodatku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

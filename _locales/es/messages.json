@@ -1658,7 +1658,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates ahora es compatible con Thunderbird 91. Este trabajo se pagó a través de licencias, ¡muchas gracias por ayudar con esto! {L2} {L1} Ahora puede insertar fragmentos de HTML Smart mientras edita su correo electrónico. Consulte el registro de cambios a continuación para obtener todos los detalles. {image1} {L2} {L1} Utilice la nueva variable %recipient% para insertar el destinatario final en todos los casos de redacción (escribir, responder, reenviar). {L2}{L1} Se agregaron submenús de categorías a las listas de plantillas de estructura. {L2} {L1} Ahora puede usar %quotePlaceholder% para insertar el texto del correo reenviado dentro de la plantilla {L2}{L1} Corregido: Error al guardar / cargar plantillas de cuenta sin la licencia Pro. {L2}{L1} Corregido: la configuración del idioma del corrector ortográfico con %spellcheck% dejó de funcionar en Tb 91. {L2}"
+    "message": "{L1} Ahora puede insertar fragmentos HTML Smart mientras edita su correo electrónico. Consulte el registro de cambios a continuación para obtener todos los detalles. {image1} {L2} {L1} Con la última versión de Smart Snippets, inserta el texto *selection* para inyectar la porción de texto actualmente seleccionada dentro del Snippet. {L2} {L1} Corregido: plantilla duplicada insertada al responder a tu propio correo electrónico o al usar el botón de respuesta del complemento Thunderbird Conversations. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

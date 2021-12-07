@@ -1658,7 +1658,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates är nu kompatibel med Thunderbird 91. Detta arbete har betalats med licenser, tack så mycket för att du hjälpte till med detta! {L2} {L1} Du kan nu infoga HTML -smarta snuttar medan du redigerar din e -post. Se ändringsloggen nedan för fullständig information. {image1} {L2}{L1} Använd den nya varianten %recipient% för att infoga den slutliga mottagaren i alla skrivfall (Skriv, Svara, Vidarebefordra). {L2} {L1} Lade till kategoriundermenyer i listor med strukturmallar. {L2} {L1} Du kan nu använda %quotePlaceholder% för att infoga vidarebefordrad e -posttext i mallen {L2}{L1} Åtgärdad: Spara / ladda kontomallar misslyckades utan Pro -licens. {L2}{L1} Åtgärdad: Ställ in stavningskontrollspråket med %spellcheck% slutade fungera i Tb 91. {L2}"
+    "message": "{L1}Nu kan du infoga smarta HTML-kodavsnitt medan du redigerar din e-post. Se ändringsloggen nedan för fullständig information. {image1}{L2} {L1}Med den senaste versionen av Smart Snippets, infoga texten *selection* för att injicera den för närvarande markerade textdelen i Snippets.{L2}{L1}Fast: Dubblettmall infogas när du svarar på egen e-post eller när du använder svarsknappen i Thunderbird Conversations-tillägget.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

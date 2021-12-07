@@ -1658,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Käytä uutta %recipient% -muuttujaa lopullisen vastaanottajan lisäämiseen kaikkiin kirjoitustapauksiin (Kirjoita, Vastaa, Välitä). {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Voit nyt käyttää %quotePlaceholder% -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}{L1} Korjattu: Oikeinkirjoituksen tarkistuskielen asettaminen %spellcheck%: lla lakkasi toimimasta Tb 91: ssä. {L2}"
+    "message": "{L1}Voit nyt lisätä älykkäitä HTML-koodinpätkiä, kun muokkaat sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1}{L2} {L1}Kun käytät Smart Snippets -sovellusta uusimmassa versiossa, lisää teksti *selection* lisätäksesi valitun tekstiosan katkelmaan.{L2}{L1}Korjattu: päällekkäinen malli lisättiin, kun vastaat omaan sähköpostiin tai kun käytät Thunderbird Conversations -lisäosan vastauspainiketta.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

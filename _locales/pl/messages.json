@@ -1658,7 +1658,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates jest teraz kompatybilne z Thunderbirdem 91. Ta praca została opłacona licencjami, bardzo dziękuję za pomoc!{L2} {L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje.{image1}{L2} {L1}Użyj nowej zmiennej %recipient%, aby wstawić ostatecznego odbiorcę we wszystkich sprawach redagowania (Napisz, Odpowiedz, Prześlij dalej).{L2}{L1}Dodano podmenu kategorii do list szablonów struktury.{L2} {L1}Możesz teraz użyć %quotePlaceholder%, aby wstawić tekst przekazywanej wiadomości e-mail w szablonie{L2}{L1}Naprawiono: Zapisywanie / ładowanie szablonów kont nie powiodło się bez licencji Pro.{L2}{L1}Naprawiono: Ustawienie języka sprawdzania pisowni za pomocą %spellcheck% przestało działać w Tb 91.{L2}"
+    "message": "{L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje. {image1}{L2} {L1}W najnowszej wersji Smart Snippets, wstaw *selection* tekstu, aby wstawić aktualnie zaznaczoną część tekstu we fragmencie.{L2}{L1}Naprawiono: Duplikat szablonu wstawiony podczas odpowiadania na własny e-mail lub podczas korzystania z przycisku odpowiedzi w dodatku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

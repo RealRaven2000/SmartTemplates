@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Sử dụng biến %recipient% mới để chèn người nhận cuối cùng trong tất cả các trường hợp soạn thư (Viết, Trả lời, Chuyển tiếp). {L2}{L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Bây giờ bạn có thể sử dụng %quotePlaceholder% để chèn văn bản thư được chuyển tiếp trong mẫu {L2}{L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}{L1} Đã khắc phục: Cài đặt ngôn ngữ kiểm tra chính tả với %spellcheck% đã ngừng hoạt động trong Tb 91. {L2}"
+    "message": "{L1} Giờ đây, bạn có thể chèn các đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết đầy đủ chi tiết. {image1} {L2} {L1} Với phiên bản Đoạn mã thông minh mới nhất, hãy chèn văn bản *selection* để đưa phần văn bản hiện được chọn vào trong Đoạn mã. {L2} {L1} Đã khắc phục: Đã chèn mẫu trùng lặp khi trả lời email của chính mình hoặc khi sử dụng nút trả lời của Tiện ích bổ sung Cuộc trò chuyện Thunderbird. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

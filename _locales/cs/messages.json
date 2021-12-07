@@ -1650,7 +1650,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} SmartTemplates je nyní kompatibilní s Thunderbird 91. Tato práce byla zaplacena prostřednictvím licencí, moc vám děkuji za pomoc s tím! {L2} {L1} Nyní můžete při úpravě e -mailu vkládat inteligentní fragmenty HTML. Úplné podrobnosti najdete níže v protokolu změn. {image1} {L2} {L1} Pomocí nové proměnné % recipient % vložte konečného příjemce ve všech případech psaní (psaní, odpovídání, přeposílání). {L2}{L1} Nyní můžete použít %quotePlaceholder% k vložení textu přeposlané pošty do šablony {L2}{L1} Přidáno podnabídky kategorií do seznamů šablon struktur. {L2} {L1} Opraveno: Ukládání / načítání šablon účtů se nezdařilo bez licence Pro. {L2}{L1} Opraveno: Nastavení jazyka kontroly pravopisu pomocí % spellcheck % přestalo fungovat v Tb 91. {L2}"
+    "message" : "{L1}Nyní můžete při úpravě e-mailu vkládat úryvky HTML Smart. Úplné podrobnosti naleznete v protokolu změn níže. {image1} {L2} {L1}S nejnovější verzí inteligentních úryvků vložte text *selection* pro vložení aktuálně vybrané části textu do úryvku.{L2}{L1}Opraveno: Při odpovídání na vlastní e-mail vložena duplicitní šablona nebo při použití tlačítka odpovědět v doplňku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
