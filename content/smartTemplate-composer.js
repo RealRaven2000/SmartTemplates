@@ -66,9 +66,17 @@ SmartTemplate4.composer = {
 			);
 		}
     
-    
-    
-   
+    // add toolbarbutton for insert snippet
+    if (prefs.getMyBoolPref ('insertSnippet.button.install')) {
+      setTimeout (
+        function st4_installChangeTemplateBtn() {
+          util.logDebug("Adding insert Snippet button...")
+          if (util.installButton(toolbarId, "smarttemplate4-insertSnippet", "button-save"))
+            prefs.setMyBoolPref('insertSnippet.button.install', false); // log the fact we installed it to avoid re-adding it.
+        }
+        , 1000
+      );
+    }   
     
 	}, // load ()
   
@@ -84,7 +92,7 @@ SmartTemplate4.composer = {
     // the Template Menu is rebuilt if it is being clicked
     for (let j=templatePopup.childNodes.length-1; j>=0; j--) {
       let cN = templatePopup.childNodes[j];
-      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem")
+      if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
         templatePopup.removeChild(cN);
     }
     

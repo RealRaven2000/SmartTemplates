@@ -44,8 +44,10 @@ pref("extensions.smartTemplate4.dateformat.year", "numeric");
 pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 pref("extensions.smartTemplate4.expandSettings", false);
-/* add change template button automatically when installing for first time */
-pref("extensions.smartTemplate4.changeTemplate.button.install", true);
+
+pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add change template button automatically when installing for first time */
+pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */
+
 pref("extensions.smartTemplate4.stationery.supported", false);
 pref("extensions.smartTemplate4.stationery.forceReplaceQuoteHeader", true);
 pref("extensions.smartTemplate4.stationery.test.disableST4notification", false); /* notifications when Stationery events happen */

@@ -941,6 +941,8 @@ SmartTemplate4.classSmartTemplate = function() {
 			SmartTemplate4.initFlags(flags);
 			flags.identitySwitched = true;  // new flag
 		}
+    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
+    SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates    
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
 			+ 'gMsgCompose.type = ' + gMsgCompose.type);
@@ -985,6 +987,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				// Check identity changed or not; also check whether new template was requested from composer window
 				if (!flags.isChangeTemplate && 
             !flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				}
 				// Undo template messages (does _not_ remove signature!)
@@ -1054,10 +1057,12 @@ SmartTemplate4.classSmartTemplate = function() {
 				case msgComposeType.EditAsNew: // Tb 60+
 				  // no processing should be done
 					util.logDebug("Edit As New - exit insertTemplate() without processing")
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				case msgComposeType.EditTemplate: // Tb 60+
 				  // no processing should be done
 					util.logDebug("Edit Template - exit insertTemplate() without processing")
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				default:
 					st4composeType = "";
@@ -1132,8 +1137,10 @@ SmartTemplate4.classSmartTemplate = function() {
             }
             finally {
               SmartTemplate4.pref.disableNotification = false;
-              if (SmartTemplate4.PreprocessingFlags.isFileTemplate && !flags.isFileTemplate)
+              if (SmartTemplate4.PreprocessingFlags.isFileTemplate && !flags.isFileTemplate) {
+                SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // issue 139 avoid duplicates
                 return null;
+              }
             }
 					}
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
@@ -1363,7 +1370,9 @@ SmartTemplate4.classSmartTemplate = function() {
               quoteLevels = parseInt(lev,10);
             }
           } 
-          let quotePart = bodyEl.querySelector("blockquote[_moz_dirty]");
+          let quotePart = (st4composeType=='fwd') ?
+							bodyEl.querySelector(".moz-forward-container") :  // [issue 156]
+              bodyEl.querySelector("blockquote[_moz_dirty]");
           if (quotePart) {
             quoteNode.parentNode.insertBefore(quotePart, quoteNode);
             let blocks = quotePart.querySelectorAll("blockquote");
@@ -1784,6 +1793,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		// remember  compose case for outside world
 		this.composeCase = composeCase;      // 'undefined', 'new', 'reply', 'forward', 'draft'
 		this.composeType = st4composeType;   // '', 'new', 'rsp', 'fwd'
+    SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
 	};
 
 	function resetDocument(editor, withUndo) {

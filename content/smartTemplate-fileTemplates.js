@@ -578,6 +578,16 @@ SmartTemplate4.fileTemplates = {
         acceleratorCat = 10,
         categories = [],
         catAccelerator = []; // [issue 147]
+        
+    // this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
+    if (templates.length && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
+      let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
+      menuseparator.id = "fileTemplates-" + composeType + "msg-top";
+      menuseparator.classList.add ("st4templateSeparator");
+      msgPopup.appendChild(menuseparator);
+    }        
+        
+        
     for (let i=0; i<templates.length; i++) {
       let cat = templates[i].category,
           isAddNewCategory = false,
@@ -645,13 +655,7 @@ SmartTemplate4.fileTemplates = {
     let menuHasRestrictions = false; // set this if any maximum is exceeded!
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
-			// this will be underneath any commands e.g. "new Message" / "Event" / "Task", so a separator is nice
-			if (i==0 && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
-				let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
-				menuseparator.id = "fileTemplates-" + composeType + "msg-top";
-				menuseparator.classList.add ("st4templateSeparator");
-				msgPopup.appendChild(menuseparator);
-			}
+
 			
       /* insert one item for each listed html template */
 			let menuitem = document.createXULElement("menuitem"),
@@ -690,10 +694,11 @@ SmartTemplate4.fileTemplates = {
 			
       let cat = theTemplate.category;
       if (cat) {
-        let popup = msgPopup.querySelector(`[templateCategory=${cat}`);
+        let popup = msgPopup.querySelector(`[templateCategory=${cat}]`);
         if (popup) {
           popup.appendChild(menuitem);
           acKey = getAccessKey(popup.childElementCount);
+          util.logDebugOptional("fileTemplates.menus", `Add item to Category ${cat}: ${theTemplate.label} - accelerator = ${acKey}`);
         }
         else { // fail
           acKey = getAccessKey(accelerator++);
@@ -710,8 +715,7 @@ SmartTemplate4.fileTemplates = {
         }        
 			  msgPopup.appendChild(menuitem);									 
 			}
-      if (acKey)
-        menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
+      menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
       
 		}
     if (menuHasRestrictions) {
@@ -803,6 +807,27 @@ SmartTemplate4.fileTemplates = {
       msgPopup.appendChild(menuitem);	
     }
     
+    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates")) {
+      // [issue 152] when starting Thunderbird, the template menus are not populated intermittently
+      menuitem = document.createXULElement("menuitem");
+      menuTitle = "Rebuild Menu!"; // util.getBundleString(...);
+      menuitem.setAttribute("label", menuTitle);
+      menuitem.classList.add("st4templateConfig");
+      
+      menuitem.addEventListener("command", 
+        function(event) { 
+          event.stopImmediatePropagation();
+          setTimeout(
+            function() {
+              SmartTemplate4.fileTemplates.initMenus(true);
+            }, 1500);
+          return false; 
+        }, 
+        { capture:true } , 
+        true
+      );
+      msgPopup.appendChild(menuitem);	
+    }
 		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
 		if (lastChild && lastChild.tagName == 'menuseparator') {
@@ -1302,6 +1327,25 @@ SmartTemplate4.fileTemplates = {
     let html = fileTemplateSource.HTML;
     if (!html)
       html = tmpTemplate.Text;
+    
+    // [issue 164] - placeholder for selected text
+    if (html.includes("*selection*")) {
+      debugger;
+      let sel = gMsgCompose.editor.selection,
+          selectedText = "";
+      if (sel && sel.anchorNode) {
+        if (sel.rangeCount) {
+          let range = sel.getRangeAt(0);
+          selectedText = range.toString();
+        }
+        if (selectedText && selectedText.length)
+          html = html.replace("*selection*", selectedText);
+        else
+          html = html.replace("*selection*", "%cursor%");
+      }
+      else
+        html = html.replace("*selection*", "%cursor%");
+    }
     
     let flags = SmartTemplate4.PreprocessingFlags;
     SmartTemplate4.initFlags(flags);

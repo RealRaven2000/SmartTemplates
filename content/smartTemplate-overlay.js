@@ -1053,7 +1053,7 @@ SmartTemplate4.mimeDecoder = {
 				if (aElement.optional && foundNonOptionalParts)
 					continue;
         // append the next part if not empty
-        if (aElement.part.length>1) {
+        if (aElement.part.length>0) {  // [issue 153]
           if (addressField.length) addressField += ' '; // space to append next parts
 					// if there is only one element and brackets param is prefixed with ??
 					// e.g. %from(name,bracketMail(??- {,}))%
@@ -1605,6 +1605,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     // reserved words : these are words about which we know are not headers!
 		function classifyReservedWord(str, reservedWord, param) {
 			try {
+        let removeParentheses = (arg) => {return arg ? arg.substr(1,arg.length-2) : ""},
+		        paramArray = removeParentheses(param).split(',');
 				if (str!="%X:=today%") {
 				  util.logDebugOptional('regularize','regularize.classifyReservedWord(' + str + ', ' +  reservedWord + ', ' + param || '' + ')');
 				}
@@ -1633,9 +1635,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         }
 				else { // it's a reserved word, likely a header
 					if (prefs.isDebugOption("tokens.deferred")) debugger;
-					if (typeof s =='undefined' || (s=="" && composeType=='new')) {
+					if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
 						// if we are writing a NEW mail, we should insert some placeholders for resolving later.
 						// wrap into <smarttemplate > for later deferral (works only in HTML)
+            // [issue 153] the same probem also applies when forwarding and using the "fwd" switch.
 						// use pink fields for new emails for the New Mail case - this var can not be used in...
 						if (!isReserved && util.checkIsURLencoded(str)) { // unknown header? make sure it is not an URL encoded thing
 							s = str;

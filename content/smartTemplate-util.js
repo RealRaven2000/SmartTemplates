@@ -344,7 +344,7 @@ SmartTemplate4.Util = {
           if (util.getTabMode(tabInfo)=='message') {
             util.logDebug("tabListener event:" + event);
             // main window.
-            SmartTemplate4.fileTemplates.initMenus();
+            SmartTemplate4.fileTemplates.initMenus(true);
           }
         });
       }
@@ -3087,10 +3087,11 @@ SmartTemplate4.Util.firstRun =
 			// load the templates file and initialize the dropdown menus for write / reply / forward
 			setTimeout(
 			  function() {
-					SmartTemplate4.fileTemplates.initMenus();
+					SmartTemplate4.fileTemplates.initMenus(true);
 				}, 1000
 			);
-      
+
+
       util.initTabListener(); // need this for initialising fileTemplate menus in single message window
       
       if (window.document.URL.endsWith("messenger.xul")) 
