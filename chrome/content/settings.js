@@ -1689,7 +1689,7 @@ SmartTemplate4.Settings = {
 			switch(licenseInfo.status) {
 				case "Valid":
 					let today = new Date(),
-					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+					    later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
           silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?

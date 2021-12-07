@@ -90,15 +90,15 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 
 
 #SmartTemplate4Messenger:not(:hover):not(.always) label,
-#SmartTemplate4Messenger.hidden label,
-#SmartTemplate4Messenger.hidden:hover label
+#SmartTemplate4Messenger.labelHidden label,
+#SmartTemplate4Messenger.labelHidden:hover label
 {
 	width: 0 !important;
 	max-width: 0 !important;
 	display: none;
 }
 
-#SmartTemplate4Messenger:not(:hover):not(.always):not(.hidden)
+#SmartTemplate4Messenger:not(:hover):not(.always):not(.labelHidden)
 /* padding instead margin for Noia eXtreme Theme */
 {
 	padding-left: 6px;
