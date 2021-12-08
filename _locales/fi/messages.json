@@ -1405,7 +1405,7 @@
     "message": "Aihe"
   },
   "special-offer-expiry": {
-    "message": "31. lokakuuta"
+    "message": "joulukuuta 26"
   }, 
   "special-offer-content" : {
     "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",

@@ -8,6 +8,8 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
+const endSale = new Date("2021-12-26"); // Next Sale End Date
+
 async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   
@@ -54,9 +56,8 @@ async function updateActions(addonName) {
   }
   
   let isActionList = true;
-  let currentTime = new Date(),
-      endSale = new Date("2021-10-31"); // Next Sale End Date
-  let isSale = (currentTime < endSale);
+  let currentTime = new Date();
+  let isSale = (currentTime <= endSale);
 
   hideSelectorItems('.donations');
   
