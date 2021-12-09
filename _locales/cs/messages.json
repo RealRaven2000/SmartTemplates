@@ -1650,7 +1650,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}Nyní můžete při úpravě e-mailu vkládat úryvky HTML Smart. Úplné podrobnosti naleznete v protokolu změn níže. {image1} {L2} {L1}S nejnovější verzí inteligentních úryvků vložte text *selection* pro vložení aktuálně vybrané části textu do úryvku.{L2}{L1}Opraveno: Při odpovídání na vlastní e-mail vložena duplicitní šablona nebo při použití tlačítka odpovědět v doplňku Thunderbird Conversations.{L2}"
+    "message" : "{L1}Nyní můžete při úpravě e-mailu vkládat úryvky HTML Smart. Úplné podrobnosti naleznete v protokolu změn níže. {image1} {L2} {L1}S nejnovější verzí inteligentních úryvků vložte text *selection* pro vložení aktuálně vybrané části textu do úryvku.(Funkce SmartTemplates Pro){L2}{L1}Opraveno: Při odpovídání na vlastní e-mail vložena duplicitní šablona nebo při použití tlačítka odpovědět v doplňku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

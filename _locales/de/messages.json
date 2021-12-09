@@ -1656,7 +1656,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Ausführliche Informationen finden Sie im Änderungsprotokoll unten. {image1}{L2} {L1}Bei der neuesten Version von Smart Snippets fügen Sie den Text *selection* ein, um den aktuell markierten Textteil in das Snippet einzufügen.{L2}{L1}Behoben: Doppelte Vorlage eingefügt, wenn auf eigene E-Mail geantwortet wird oder wenn Sie die Antwort-Schaltfläche des Thunderbird Conversations Add-ons verwenden.{L2}"
+    "message": "{L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Ausführliche Informationen finden Sie im Änderungsprotokoll unten. {image1}{L2} {L1}Bei der neuesten Version von Smart Snippets fügen Sie den Text *selection* ein, um den aktuell markierten Textteil in das Snippet einzufügen.(SmartTemplates Pro-Funktion){L2}{L1}Behoben: Doppelte Vorlage eingefügt, wenn auf eigene E-Mail geantwortet wird oder wenn Sie die Antwort-Schaltfläche des Thunderbird Conversations Add-ons verwenden.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

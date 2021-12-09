@@ -1658,7 +1658,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje. {image1}{L2} {L1}W najnowszej wersji Smart Snippets, wstaw *selection* tekstu, aby wstawić aktualnie zaznaczoną część tekstu we fragmencie.{L2}{L1}Naprawiono: Duplikat szablonu wstawiony podczas odpowiadania na własny e-mail lub podczas korzystania z przycisku odpowiedzi w dodatku Thunderbird Conversations.{L2}"
+    "message": "{L1}Możesz teraz wstawiać inteligentne fragmenty kodu HTML podczas edytowania wiadomości e-mail. Zobacz dziennik zmian poniżej, aby uzyskać szczegółowe informacje. {image1}{L2} {L1}W najnowszej wersji Smart Snippets, wstaw *selection* tekstu, aby wstawić aktualnie zaznaczoną część tekstu we fragmencie. (Funkcja SmartTemplates Pro){L2}{L1}Naprawiono: Duplikat szablonu wstawiony podczas odpowiadania na własny e-mail lub podczas korzystania z przycisku odpowiedzi w dodatku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

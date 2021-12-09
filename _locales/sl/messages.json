@@ -1658,7 +1658,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Zdaj lahko med urejanjem e-pošte vstavite pametne izrezke HTML. Za vse podrobnosti si oglejte spodnji dnevnik sprememb. {image1}{L2} {L1}Z najnovejšo različico pametnih izrezkov vstavite besedilo *selection*, da vstavite trenutno izbrani del besedila v delček.{L2}{L1}Popravljeno: podvojena predloga je bila vstavljena, ko odgovarjate na lastno e-pošto ali ko uporabljate gumb za odgovor v dodatku Thunderbird Conversations.{L2}"
+    "message": "{L1}Zdaj lahko med urejanjem e-pošte vstavite pametne izrezke HTML. Za vse podrobnosti si oglejte spodnji dnevnik sprememb. {image1}{L2} {L1}Z najnovejšo različico pametnih izrezkov vstavite besedilo *selection*, da vstavite trenutno izbrani del besedila v delček. (Funkcija SmartTemplates Pro){L2}{L1}Popravljeno: podvojena predloga je bila vstavljena, ko odgovarjate na lastno e-pošto ali ko uporabljate gumb za odgovor v dodatku Thunderbird Conversations.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

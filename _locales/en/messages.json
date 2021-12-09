@@ -1659,7 +1659,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail. {image1}{L2} {L1}With the latest version of Smart Snippets, insert the text *selection* to inject the currently selected text portion within the Snippet.{L2}{L1}Fixed:  Duplicate template inserted when replying to own email or when using the reply button of the Thunderbird Conversations Add-on.{L2}"
+  "message": "{L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail. {image1}{L2} {L1}With the latest version of Smart Snippets, insert the text *selection* to inject the currently selected text portion within the Snippet. (SmartTemplates Pro Feature){L2}{L1}Fixed:  Duplicate template inserted when replying to own email or when using the reply button of the Thunderbird Conversations Add-on.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

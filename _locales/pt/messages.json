@@ -1655,7 +1655,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o log de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Com a versão mais recente dos Smart Snippets, insira o texto *selection* para injetar a parte do texto atualmente selecionada no Snippet. {L2} {L1} Corrigido: modelo duplicado inserido ao responder ao próprio e-mail ou ao usar o botão de resposta do complemento de conversas do Thunderbird. {L2}"
+    "message": "{L1} Agora você pode inserir snippets HTML Smart enquanto edita seu e-mail. Consulte o log de alterações abaixo para obter todos os detalhes. {image1} {L2} {L1} Com a versão mais recente dos Smart Snippets, insira o texto *selection* para injetar a parte do texto atualmente selecionada no Snippet. (Recurso SmartTemplates Pro){L2} {L1} Corrigido: modelo duplicado inserido ao responder ao próprio e-mail ou ao usar o botão de resposta do complemento de conversas do Thunderbird. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

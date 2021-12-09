@@ -1658,7 +1658,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}您現在可以在編輯電子郵件時插入 HTML 智能代碼段。 有關完整詳細信息，請參閱下面的更改日誌。 {image1}{L2} {L1}使用最新版本的 Smart Snippets，插入文本 *selection* 以在 Snippet 中插入當前選定的文本部分。{L2}{L1}已修復：回復自己的電子郵件時插入重複模板 或使用 Thunderbird Conversations Add-on 的回复按鈕時。{L2}"
+    "message": "{L1}您現在可以在編輯電子郵件時插入 HTML 智能代碼段。 有關完整詳細信息，請參閱下面的更改日誌。 {image1}{L2} {L1}使用最新版本的 Smart Snippets，插入文本 *selection* 以在 Snippet 中插入當前選定的文本部分。 （SmartTemplates Pro 功能）{L2}{L1}已修復：回復自己的電子郵件時插入重複模板 或使用 Thunderbird Conversations Add-on 的回复按鈕時。{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

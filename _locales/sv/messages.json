@@ -1658,7 +1658,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Nu kan du infoga smarta HTML-kodavsnitt medan du redigerar din e-post. Se ändringsloggen nedan för fullständig information. {image1}{L2} {L1}Med den senaste versionen av Smart Snippets, infoga texten *selection* för att injicera den för närvarande markerade textdelen i Snippets.{L2}{L1}Fast: Dubblettmall infogas när du svarar på egen e-post eller när du använder svarsknappen i Thunderbird Conversations-tillägget.{L2}"
+    "message": "{L1}Nu kan du infoga smarta HTML-kodavsnitt medan du redigerar din e-post. Se ändringsloggen nedan för fullständig information. {image1}{L2} {L1}Med den senaste versionen av Smart Snippets, infoga texten *selection* för att injicera den för närvarande markerade textdelen i Snippets. (SmartTemplates Pro-funktion){L2}{L1}Fast: Dubblettmall infogas när du svarar på egen e-post eller när du använder svarsknappen i Thunderbird Conversations-tillägget.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

@@ -1215,7 +1215,6 @@ SmartTemplate4.fileTemplates = {
     
     // [issue 164] - placeholder for selected text
     if (html.includes("*selection*")) {
-      debugger;
       let sel = gMsgCompose.editor.selection,
           selectedText = "";
       if (sel && sel.anchorNode) {
@@ -1230,6 +1229,15 @@ SmartTemplate4.fileTemplates = {
       }
       else
         html = html.replace("*selection*", "%cursor%");
+      
+      if (!SmartTemplate4.Util.hasProLicense) {
+        SmartTemplate4.Util.addUsedPremiumFunction("snippetSelection");
+        if (!SmartTemplate4.Util.hasLicense() || SmartTemplate4.Util.licenseInfo.keyType==2) {
+          SmartTemplate4.Util.popupLicenseNotification(SmartTemplate4.Util.premiumFeatures, true, true);
+        }  
+        SmartTemplate4.Util.clearUsedPremiumFunctions();
+      }
+      
     }
     
     let flags = SmartTemplate4.PreprocessingFlags;

@@ -1660,7 +1660,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Ara podeu inserir fragments intel·ligents HTML mentre editeu el vostre correu electrònic. Consulteu el registre de canvis a continuació per obtenir tots els detalls. {image1}{L2} {L1}Amb la darrera versió de Smart Snippets, inseriu el text *selection* per injectar la part de text seleccionada actualment dins del fragment.{L2}{L1}Corregit: s'ha inserit una plantilla duplicada en respondre al correu electrònic propi. o quan utilitzeu el botó de resposta del complement de converses de Thunderbird.{L2}"
+    "message": "{L1}Ara podeu inserir fragments intel·ligents HTML mentre editeu el vostre correu electrònic. Consulteu el registre de canvis a continuació per obtenir tots els detalls. {image1}{L2} {L1}Amb la darrera versió de Smart Snippets, inseriu el text *selection* per injectar la part de text seleccionada actualment dins del fragment.(Funció SmartTemplates Pro){L2}{L1}Corregit: s'ha inserit una plantilla duplicada en respondre al correu electrònic propi. o quan utilitzeu el botó de resposta del complement de converses de Thunderbird.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

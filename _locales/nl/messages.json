@@ -1659,7 +1659,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor alle details. {image1}{L2} {L1}In de nieuwste versie van Smart Snippets voegt u de tekst *selection* in om het momenteel geselecteerde tekstgedeelte in het fragment te injecteren.{L2}{L1}Opgelost: dubbele sjabloon ingevoegd bij het beantwoorden van eigen e-mail of wanneer u de antwoordknop van de Thunderbird Conversations-add-on gebruikt.{L2}"
+  "message": "{L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor alle details. {image1}{L2} {L1}In de nieuwste versie van Smart Snippets voegt u de tekst *selection* in om het momenteel geselecteerde tekstgedeelte in het fragment te injecteren. (SmartTemplates Pro-functie){L2}{L1}Opgelost: dubbele sjabloon ingevoegd bij het beantwoorden van eigen e-mail of wanneer u de antwoordknop van de Thunderbird Conversations-add-on gebruikt.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

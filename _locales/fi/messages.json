@@ -1658,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}Voit nyt lisätä älykkäitä HTML-koodinpätkiä, kun muokkaat sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1}{L2} {L1}Kun käytät Smart Snippets -sovellusta uusimmassa versiossa, lisää teksti *selection* lisätäksesi valitun tekstiosan katkelmaan.{L2}{L1}Korjattu: päällekkäinen malli lisättiin, kun vastaat omaan sähköpostiin tai kun käytät Thunderbird Conversations -lisäosan vastauspainiketta.{L2}"
+    "message": "{L1}Voit nyt lisätä älykkäitä HTML-koodinpätkiä, kun muokkaat sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1}{L2} {L1}Kun käytät Smart Snippets -sovellusta uusimmassa versiossa, lisää teksti *selection* lisätäksesi valitun tekstiosan katkelmaan. (SmartTemplates Pro-ominaisuus){L2}{L1}Korjattu: päällekkäinen malli lisättiin, kun vastaat omaan sähköpostiin tai kun käytät Thunderbird Conversations -lisäosan vastauspainiketta.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

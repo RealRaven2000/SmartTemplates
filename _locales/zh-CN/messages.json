@@ -1658,7 +1658,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。 {image1}{L2} {L1}使用最新版本的 Smart Snippets，插入文本 *selection* 以在 Snippet 中插入当前选定的文本部分。{L2}{L1}已修复：回复自己的电子邮件时插入重复模板 或使用 Thunderbird Conversations Add-on 的回复按钮时。{L2}"
+    "message": "{L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。 {image1}{L2} {L1}使用最新版本的 Smart Snippets，插入文本 *selection* 以在 Snippet 中插入当前选定的文本部分。 （SmartTemplates Pro 功能）{L2}{L1}已修复：回复自己的电子邮件时插入重复模板 或使用 Thunderbird Conversations Add-on 的回复按钮时。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
