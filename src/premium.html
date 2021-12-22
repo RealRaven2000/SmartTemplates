@@ -13,14 +13,6 @@ permalink: premium.html
 
 <h2 class="page-header">SmartTemplates Pro :: Premium Features</h2>
 
-<article>
-	<p class="attention">
-	 <em>ATTENTION:</em> This information is under Review - Feature currently Work In Progress, but planned for release 
-	 <a href="version.html#1.5">1.5</a>.<br>
-	</p>
-</article>
-
-
 <p>Premium features are power functions which are an incentive for users to regularly support 
   the SmartTemplates project through an annual contribution, called SmartTemplates Pro / SmartTemplates Standard license. 
   My aim is that instead of very few people trying to carry the project with sometimes large
@@ -63,6 +55,13 @@ permalink: premium.html
     <td>unlimited</td>
   </tr>
   <tr>
+    <th><a href="#snippets">Smart Snippets</a></th>
+    <td>Test only</td>
+    <td><span class="check">Some restrictions</span></td>
+    <td><span class="check">✔</span></td>
+  </tr>
+  
+  <tr>
     <th><a href="variables.html" target="_blank">Standard Variables</a><br>
     this includes most standard headers, such as <code>%subject%</code> <code>%from%</code> <code>%to%</code> <code>%cc%</code></th>
     <td><span class="check">✔</span></td>
@@ -76,7 +75,7 @@ permalink: premium.html
     <td><span class="check">✔</span></td>
   </tr>
   <tr>
-    <th><a href="#dateManipulation" target="_blank">Date Formatting function</a> <code>%dateformat()%</code></th>
+    <th><a href="#dateManipulation">Date Formatting function</a> <code>%dateformat()%</code></th>
     <td><span class="check negative">✘</span> trial only</td>
     <td><span class="check">✔</span></td>
     <td><span class="check">✔</span></td>
@@ -127,7 +126,22 @@ permalink: premium.html
   </tr>
 </table>
       
-
+<!-- ##### HTML Snippets -->
+<a name="snippets"> </a>
+<h3 class="helpchapter">Insert Snippets in Composer</h3>
+<article>
+  <p>
+    While writing emails, use the insert Snippet button to inject a section of html at the cursor position.
+    In the Pro version of SmartTemplates this menu has no restrictions and can be subdivided in as many categories as you like:
+    <br>
+    <img class="screenshot" alt="" src="img/snippets-menu.png">
+  </p>
+  <p>
+    SmartTempaltes Pro only: You can use the placeholder text <code class="html">*selection*</code> to insert 
+    the currently highlighted text in the Email. This can be used to wrap / decorate text or build other
+    HTML containers around information you have already inserted in the Email.
+  </p>
+</p>
 
 <!-- ##### String Functions #### -->
 <a name="stringManipulation"> </a>
@@ -314,8 +328,7 @@ permalink: premium.html
 		For the correct <i>file path</i> syntax, click the 
 		<code>%file%</code> label in the Variables tab in the SmartTemplates settings window. 
 		This will open a standard file prompt and then insert the correct code into the template.
-	</p:>
-	
+	</p>
 </article>
 
 
