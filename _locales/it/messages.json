@@ -1418,7 +1418,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 dicembre"    
+    "message": "20 gennaio"    
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1658,7 +1658,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Ora puoi inserire frammenti di HTML Smart durante la modifica della tua email. Vedere il registro delle modifiche di seguito per tutti i dettagli. {image1}{L2} {L1}Con l'ultima versione di Smart Snippet, inserisci il testo *selection* per inserire la porzione di testo attualmente selezionata all'interno dello snippet. (Funzione SmartTemplates Pro){L2}{L1}Risolto: modello duplicato inserito quando si risponde alla propria email o quando si utilizza il pulsante di risposta del componente aggiuntivo Thunderbird Conversations.{L2}"
+    "message": "{L1}Supporto dell'intestazione di risposta con la variabile %recipient%.{L2} {L1}Avviso semplificato quando il modello viene modificato dopo la modifica - supporta anche il push di ESCAPE per chiudere la finestra di dialogo.{L2}{L1}Risolto: utilizzo di mailing list nei campi a, cc e bcc. Consulta il registro delle modifiche riportato di seguito per un esempio di newsletter per un gruppo di destinatari non divulgati.{L2}{L1}Risolto: sfondo personalizzato e colori del testo ignorati durante la scrittura di nuovi messaggi. Ciò potrebbe causare problemi all'editor durante l'utilizzo di temi scuri.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

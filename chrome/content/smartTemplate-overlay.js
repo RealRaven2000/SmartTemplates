@@ -1959,14 +1959,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			return "";
 		}
 		
-		// modify a number of header with either a string literal 
+		// modify a number of headers with either a string literal 
 		// or a regex match (depending on matchFunction argument)
 		// hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
 		// cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
     function modifyHeader(hdr, cmd, argString, matchFunction="") {
-      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","tofinal"],
+      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
             ComposeFields = gMsgCompose.compFields;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
@@ -2300,7 +2300,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
                 token = "to";
                 break;
               case "rsp":
-                token = "from";
+                let isReplyTo = (hdr && hdr.get("reply-to") != "");
+                token = isReplyTo ? "reply-to" : "from";
                 break;
               case "fwd":
                 token = "to";

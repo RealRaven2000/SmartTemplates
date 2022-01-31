@@ -1420,7 +1420,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 de desembre"
+    "message": "20 de gener"
   },    
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1660,7 +1660,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Ara podeu inserir fragments intel·ligents HTML mentre editeu el vostre correu electrònic. Consulteu el registre de canvis a continuació per obtenir tots els detalls. {image1}{L2} {L1}Amb la darrera versió de Smart Snippets, inseriu el text *selection* per injectar la part de text seleccionada actualment dins del fragment.(Funció SmartTemplates Pro){L2}{L1}Corregit: s'ha inserit una plantilla duplicada en respondre al correu electrònic propi. o quan utilitzeu el botó de resposta del complement de converses de Thunderbird.{L2}"
+    "message": "{L1}Suport de la capçalera de resposta amb la variable %recipient%.{L2} {L1}Avís simplificat quan es canvia la plantilla després de l'edició; també admet pressionar ESCAPE per tancar el diàleg.{L2}{L1}Corregit: utilitzant llistes de correu als camps a, cc i cco. Consulteu el registre de canvis a continuació per obtenir un exemple de butlletí per a un grup de destinataris no revelats.{L2}{L1}Corregit: el fons personalitzat i els colors del text s'ignoren quan s'escriuen missatges nous. Això podria provocar problemes a l'editor mentre utilitza temes foscos.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

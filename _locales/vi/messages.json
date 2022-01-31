@@ -140,7 +140,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "Ngày 26 tháng 12"    
+    "message": "20 tháng 1"    
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Giờ đây, bạn có thể chèn các đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết đầy đủ chi tiết. {image1} {L2} {L1} Với phiên bản Đoạn mã thông minh mới nhất, hãy chèn văn bản *selection* để đưa phần văn bản hiện được chọn vào trong Đoạn mã. (Tính năng SmartTemplates Pro){L2} {L1} Đã khắc phục: Đã chèn mẫu trùng lặp khi trả lời email của chính mình hoặc khi sử dụng nút trả lời của Tiện ích bổ sung Cuộc trò chuyện Thunderbird. {L2}"
+    "message": "{L1} Hỗ trợ tiêu đề trả lời với biến %recipient%. {L2} {L1} Cảnh báo sắp xếp hợp lý khi mẫu được thay đổi sau khi chỉnh sửa - cũng hỗ trợ đẩy ESCAPE để đóng hộp thoại. {L2} {L1} Đã sửa: sử dụng danh sách gửi thư trong các trường tới, cc và bcc. Xem nhật ký thay đổi bên dưới để biết ví dụ về bản tin cho một nhóm người nhận không được tiết lộ. {L2}{L1} Đã sửa: màu nền và màu văn bản tùy chỉnh bị bỏ qua khi viết thư mới. Điều này có thể dẫn đến sự cố với trình chỉnh sửa khi sử dụng các chủ đề tối. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

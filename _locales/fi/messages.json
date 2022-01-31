@@ -1405,7 +1405,7 @@
     "message": "Aihe"
   },
   "special-offer-expiry": {
-    "message": "joulukuuta 26"
+    "message": "tammikuuta 20"
   }, 
   "special-offer-content" : {
     "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
@@ -1658,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}Voit nyt lisätä älykkäitä HTML-koodinpätkiä, kun muokkaat sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1}{L2} {L1}Kun käytät Smart Snippets -sovellusta uusimmassa versiossa, lisää teksti *selection* lisätäksesi valitun tekstiosan katkelmaan. (SmartTemplates Pro-ominaisuus){L2}{L1}Korjattu: päällekkäinen malli lisättiin, kun vastaat omaan sähköpostiin tai kun käytät Thunderbird Conversations -lisäosan vastauspainiketta.{L2}"
+    "message": "{L1}Vastausotsikon tuki muuttujalla %recipient%.{L2} {L1}Sujuva varoitus, kun mallia muutetaan muokkauksen jälkeen – tukee myös ESCAPE-näppäintä sulkeaksesi valintaikkunan.{L2}{L1}Korjattu: käyttämällä postituslistat vastaanottaja-, kopio- ja piilokopio-kenttiin. Katso alla olevasta muutoslokista esimerkki uutiskirjeestä julkistamattomille vastaanottajille.{L2}{L1}Korjattu: mukautettuja tausta- ja tekstivärejä ei huomioida uusia viestejä kirjoitettaessa. Tämä voi aiheuttaa ongelmia editorissa käytettäessä tummia teemoja.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

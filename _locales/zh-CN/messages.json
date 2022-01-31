@@ -1235,7 +1235,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12 月 26 日"    
+    "message": "1月20日"    
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1658,7 +1658,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}您现在可以在编辑电子邮件时插入 HTML 智能代码段。 有关完整详细信息，请参阅下面的更改日志。 {image1}{L2} {L1}使用最新版本的 Smart Snippets，插入文本 *selection* 以在 Snippet 中插入当前选定的文本部分。 （SmartTemplates Pro 功能）{L2}{L1}已修复：回复自己的电子邮件时插入重复模板 或使用 Thunderbird Conversations Add-on 的回复按钮时。{L2}"
+    "message": "{L1}支持带有变量 %recipient% 的回复标头。{L2} {L1}编辑后更改模板时的简化警告 - 还支持推动 ESCAPE 以关闭对话框。{L2}{L1}修复：使用 收件人、抄送和密送字段中的邮件列表。 有关一组未公开收件人的简报示例，请参阅下面的更改日志。{L2} {L1}更正：编写新邮件时忽略自定义背景和文本颜色。 这可能会导致编辑器在使用深色主题时出现问题。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

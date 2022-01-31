@@ -121,6 +121,7 @@ END LICENSE BLOCK
   Version 3.8 - 21/10/2021
     # [issue 142]/[issue 28] Add feature to insert html Smart snippets within Composer
     # [issue 147] Add categories / folders to structure template menus
+    # [issue 151] New single variable %recipient% for final recipient to replace %to% / %from% in all templates
     # [issue 148] Regression: Saving / Loading account templates from settings doesn't work without Pro License
     # [issue 139] Double template inserted when replying to own email
     # [issue 149] Fixed: If no %cursor% is entered, HTML template may be truncated / reformatted at the end
@@ -131,7 +132,7 @@ END LICENSE BLOCK
     # Removed "workaround" experimental APIs (notifications, accounts)
     # Removed obsolete "Shim" code
 
-  Version 3.9 - WIP
+  Version 3.9 - 09/12/2021
     # [issue 164] Feature: Add *selection* placeholder for inserting HTML snippets (fragments)
     # [issue 161] remove text shadow in html edit boxes for dark themes - this makes the text better readable.
     # make sure the Snippets button is being added automatically in Composer {WIP}
@@ -140,6 +141,12 @@ END LICENSE BLOCK
     # [issue 155] Fixed: reply template applied twice in thunderbird 91.2.0
     # [issue 163] Fixed: With Cardbook installed, SmartTemplates statusbar icon may not be shown
     
+
+  Version 3.10 - WIP
+    # [issue 166] %recipient% should use reply-to header if present when replying
+    # [issue 154] Support pushing [Esc] to close template change confirmation
+    # [issue 167] Address Book list entries are not expanded with empty "To:" address
+    # [issue 168] Fixed: custom background and text colors ignored in composer when writing new mails
 
     
 =========================
@@ -284,6 +291,17 @@ var SmartTemplate4 = {
             {
               util.OrigNotify();
             }
+            // [issue 168] non-default text+background color not set
+            if (gComposeType == msgComposeType.New) {
+              if (gMsgCompose.composeHTML) {
+                loadHTMLMsgPrefs();
+              }
+              // from MsgComposeCommands.js#557 - add encryption support?
+              if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
+                window.composeEditorReady = true;
+                window.dispatchEvent(new CustomEvent("compose-editor-ready"));
+              }              
+            }            
           }
         }
       }
