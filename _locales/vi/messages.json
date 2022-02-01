@@ -140,7 +140,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "Ngày 31 tháng 10"    
+    "message": "20 tháng 1"    
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates hiện tương thích với Thunderbird 91. Công việc này đã được trả tiền thông qua giấy phép, cảm ơn bạn rất nhiều vì đã trợ giúp điều này! {L2} {L1} Giờ đây, bạn có thể chèn đoạn mã HTML Smart trong khi chỉnh sửa Email của mình. Xem nhật ký thay đổi bên dưới để biết chi tiết đầy đủ. {image1} {L2} {L1} Sử dụng biến %recipient% mới để chèn người nhận cuối cùng trong tất cả các trường hợp soạn thư (Viết, Trả lời, Chuyển tiếp). {L2}{L1} Đã thêm menu con danh mục vào danh sách mẫu cấu trúc. {L2} {L1} Bây giờ bạn có thể sử dụng %quotePlaceholder% để chèn văn bản thư được chuyển tiếp trong mẫu {L2}{L1} Đã khắc phục: Không thể lưu / tải mẫu tài khoản mà không có Giấy phép Chuyên nghiệp. {L2}{L1} Đã khắc phục: Cài đặt ngôn ngữ kiểm tra chính tả với %spellcheck% đã ngừng hoạt động trong Tb 91. {L2}"
+    "message": "{L1} Hỗ trợ tiêu đề trả lời với biến %recipient%. {L2} {L1} Cảnh báo sắp xếp hợp lý khi mẫu được thay đổi sau khi chỉnh sửa - cũng hỗ trợ đẩy ESCAPE để đóng hộp thoại. {L2} {L1} Đã sửa: sử dụng danh sách gửi thư trong các trường tới, cc và bcc. Xem nhật ký thay đổi bên dưới để biết ví dụ về bản tin cho một nhóm người nhận không được tiết lộ. {L2}{L1} Đã sửa: màu nền và màu văn bản tùy chỉnh bị bỏ qua khi viết thư mới. Điều này có thể dẫn đến sự cố với trình chỉnh sửa khi sử dụng các chủ đề tối. {L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

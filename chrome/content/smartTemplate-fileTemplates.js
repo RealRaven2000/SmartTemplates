@@ -1105,7 +1105,7 @@ SmartTemplate4.fileTemplates = {
 			};
       
     if (!isSnippet) {
-      fileTemplateInstance.armedEntry = entry
+      fileTemplateInstance.armedEntry = entry;
       // now remember the correct template for the next composer window!
       // - note: in single messafe windows this won't work as it cannot determine its "real" parent window
       //         therefore we must copy this into the most recent 3pane window to marshall this info through
@@ -1134,7 +1134,8 @@ SmartTemplate4.fileTemplates = {
       // [issue 142] insert html Smart snippets within Composer at cursor
       SmartTemplate4.fileTemplates.insertFileEntryInComposer(entry);
     }
-    else if (popup.getAttribute("st4configured")
+    else if (popup.getAttribute("st4configured") 
+        || popup.getAttribute("templateCategory")  // [issue 162] reply button in main toolbar not working!
         || isSmartReplyBtn) {
       //    popup.getAttribute("st4nonNative") 
 			//  || btn.id=="button-newmsg"
@@ -1212,6 +1213,33 @@ SmartTemplate4.fileTemplates = {
     if (!html)
       html = tmpTemplate.Text;
     
+    // [issue 164] - placeholder for selected text
+    if (html.includes("*selection*")) {
+      let sel = gMsgCompose.editor.selection,
+          selectedText = "";
+      if (sel && sel.anchorNode) {
+        if (sel.rangeCount) {
+          let range = sel.getRangeAt(0);
+          selectedText = range.toString();
+        }
+        if (selectedText && selectedText.length)
+          html = html.replace("*selection*", selectedText);
+        else
+          html = html.replace("*selection*", "%cursor%");
+      }
+      else
+        html = html.replace("*selection*", "%cursor%");
+      
+      if (!SmartTemplate4.Util.hasProLicense) {
+        SmartTemplate4.Util.addUsedPremiumFunction("snippetSelection");
+        if (!SmartTemplate4.Util.hasLicense() || SmartTemplate4.Util.licenseInfo.keyType==2) {
+          SmartTemplate4.Util.popupLicenseNotification(SmartTemplate4.Util.premiumFeatures, true, true);
+        }  
+        SmartTemplate4.Util.clearUsedPremiumFunctions();
+      }
+      
+    }
+    
     let flags = SmartTemplate4.PreprocessingFlags;
     SmartTemplate4.initFlags(flags);
     if (fileTemplateSource.failed) {
@@ -1238,7 +1266,6 @@ SmartTemplate4.fileTemplates = {
       const ignoreHTML = true;
       let code =  
         SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
-      // GetCurrentEditor().insertHTML(code);
       gMsgCompose.editor.insertHTML(code); 
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       

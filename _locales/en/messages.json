@@ -1419,7 +1419,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "January 20th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1659,7 +1659,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates is now compatible with Thunderbird 91. This work was paid for through licenses, thank you very much for helping with this!{L2} {L1}You can now insert HTML Smart snippets while editing your Email. See the change log below for full detail.{image1}{L2}{L1}Use the new %recipient% variable to insert the final recipient in all compose cases (Write, Reply, Forward).{L2}{L1}Added category submenus to structure template lists.{L2} {L1}You can now use %quotePlaceholder% to insert forwarded mail text within the template.{L2}{L1}Fixed: Saving / Loading account templates failed without Pro License.{L2}{L1}Setting the spell check language with %spellcheck% stopped working in Tb 91.{L2}"
+  "message": "{L1}Support of the reply-to header with the variable %recipient%.{L2} {L1}Streamlined warning when template is changed after editing - also supports pushing ESCAPE to close the dialog.{L2}{L1}Fixed: using mailing lists in to, cc and bcc fields. See the change log below for an example of a newsletter for a group of undisclosed recipients.{L2}{L1}Fixed: custom background and text colors ignored when writing new mails. This could lead to problems the editor while using dark themes.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

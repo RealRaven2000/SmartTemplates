@@ -1222,7 +1222,7 @@
     "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
   "special-offer-expiry": {
-    "message": "10 月 31 日"    
+    "message": "1月20日"    
   },
   "special-offer-content": {
     "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
@@ -1658,7 +1658,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates 現在與 Thunderbird 91 兼容。這項工作是通過許可證支付的，非常感謝您的幫助！{L2} {L1}您現在可以在編輯電子郵件時插入 HTML 智能代碼段。 有關完整詳細信息，請參閱下面的更改日誌。{image1}{L2} {L1}使用新的 %recipient% 變量在所有撰寫案例（寫、回复、轉發）中插入最終收件人。{L2}{L1}為結構模板列表添加了類別子菜單。{L2} {L1}您現在可以使用 %quotePlaceholder% 在模板中插入轉發的郵件文本{L2}{L1}已修復：在沒有 Pro 許可證的情況下保存/加載帳戶模板失敗。{L2}{L1}已修復：使用 %spellcheck% 設置拼寫檢查語言在 Tb 91 中停止工作。{L2}"
+    "message": "{L1}支持帶有變量 %recipient% 的回复標頭。{L2} {L1}編輯後更改模板時的簡化警告 - 還支持推動 ESCAPE 以關閉對話框。{L2}{L1}修復：使用 收件人、抄送和密送字段中的郵件列表。 有關一組未公開收件人的簡報示例，請參閱下面的更改日誌。{L2} {L1}更正：編寫新郵件時忽略自定義背景和文本顏色。 這可能會導致編輯器在使用深色主題時出現問題。{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

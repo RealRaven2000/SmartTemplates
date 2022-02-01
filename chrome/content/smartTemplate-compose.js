@@ -905,6 +905,10 @@ SmartTemplate4.classSmartTemplate = function() {
 			SmartTemplate4.initFlags(flags);
 			flags.identitySwitched = true;  // new flag
 		}
+    if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
+    SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
+    if (SmartTemplate4.PreprocessingFlags.isLoadIdentity)
+      flags.isLoadIdentity = true; // issue 139 duplication of template
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
 			+ 'gMsgCompose.type = ' + gMsgCompose.type);
@@ -949,6 +953,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				// Check identity changed or not; also check whether new template was requested from composer window
 				if (!flags.isChangeTemplate && 
             !flags.identitySwitched && gCurrentIdentity && gCurrentIdentity.key == idKey) {
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				}
 				// Undo template messages (does _not_ remove signature!)
@@ -1017,11 +1022,13 @@ SmartTemplate4.classSmartTemplate = function() {
 					break;
 				case msgComposeType.EditAsNew: // Tb 60+
 				  // no processing should be done
-					util.logDebug("Edit As New - exit insertTemplate() without processing")
+					util.logDebug("Edit As New - exit insertTemplate() without processing");
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				case msgComposeType.EditTemplate: // Tb 60+
 				  // no processing should be done
-					util.logDebug("Edit Template - exit insertTemplate() without processing")
+					util.logDebug("Edit Template - exit insertTemplate() without processing");
+          SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false;
 					return;
 				default:
 					st4composeType = "";
@@ -1697,7 +1704,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		// remember  compose case for outside world
 		this.composeCase = composeCase;      // 'undefined', 'new', 'reply', 'forward', 'draft'
 		this.composeType = st4composeType;   // '', 'new', 'rsp', 'fwd'
-	};
+    
+    SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
+	}; // insertTemplate
 
 	function resetDocument(editor, withUndo) {
 		gMsgCompose.editor.resetModificationCount();

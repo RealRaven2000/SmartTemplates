@@ -1419,7 +1419,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 oktober"    
+    "message": "20 januari"    
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1659,7 +1659,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}SmartTemplates is nu compatibel met Thunderbird 91. Dit werk is betaald via licenties, hartelijk dank voor uw hulp hierbij!{L2} {L1}U kunt nu HTML Smart-fragmenten invoegen tijdens het bewerken van uw e-mail. Zie het wijzigingslogboek hieronder voor volledige details.{image1}{L2}{L1}Gebruik de nieuwe %recipient% variabele om de uiteindelijke ontvanger in alle opstelgevallen in te voegen (schrijven, beantwoorden, doorsturen).{L2} {L1}Categoriesubmenu's toegevoegd om sjabloonlijsten te structureren.{L2} {L1}U kunt nu %quotePlaceholder% gebruiken om doorgestuurde e-mailtekst in de sjabloon in te voegen{L2}{L1}Opgelost: opslaan/laden van accountsjablonen mislukt zonder Pro-licentie.{L2}{L1}Opgelost: het instellen van de taal voor spellingcontrole met %spellcheck% werkt niet meer in Tb 91.{L2}"
+  "message": "{L1}Ondersteuning van de reply-to-header met de variabele %recipient%.{L2} {L1}Gestroomlijnde waarschuwing wanneer sjabloon wordt gewijzigd na bewerking - ondersteunt ook push ESCAPE om het dialoogvenster te sluiten.{L2}{L1}Opgelost: gebruik mailinglijsten in de velden to, cc en bcc. Zie het wijzigingslogboek hieronder voor een voorbeeld van een nieuwsbrief voor een groep niet-openbaar gemaakte ontvangers.{L2} {L1}Opgelost: aangepaste achtergrond- en tekstkleuren genegeerd bij het schrijven van nieuwe e-mails. Dit kan leiden tot problemen met de editor bij het gebruik van donkere thema's.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

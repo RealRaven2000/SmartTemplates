@@ -1416,7 +1416,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31. Oktober"    
+    "message": "20. Januar"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1656,7 +1656,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ist jetzt mit Thunderbird 91 kompatibel. Diese Arbeit wurde über Lizenzen bezahlt, vielen Dank für Ihre Hilfe!{L2} {L1}Sie können jetzt HTML-Smart-Snippets einfügen, während Sie Ihre E-Mail bearbeiten. Weitere Informationen finden Sie im Änderungsprotokoll unten.{image1}{L2} {L1}Verwenden Sie die neue %recipient%-Variable, um den endgültigen Empfänger in allen Fällen (Verfassen, Antworten, Weiterleiten) einzufügen.{L2}{L1}Kategorie-Untermenüs zu Strukturvorlagenlisten hinzugefügt.{L2} {L1}Sie können jetzt %quotePlaceholder% verwenden, um den Text der weitergeleiteten E-Mail innerhalb der Vorlage einzufügen{L2}{L1}Behoben: Speichern / Laden von Kontovorlagen ohne Pro-Lizenz fehlgeschlagen.{L2}{L1}Behoben: Das Einstellen der Rechtschreibprüfungssprache mit %spellcheck% funktionierte in Tb 91 nicht mehr.{L2}"
+    "message": "{L1}Unterstützung des Reply-to-Headers mit der Variable %recipient%.{L2} {L1}Optimierte Warnung, wenn die Vorlage nach der Bearbeitung geändert wird – unterstützt auch das Drücken von ESCAPE, um den Dialog zu schließen.{L2}{L1}Behoben: Verwendung Mailinglisten in den Feldern to, cc und bcc. Siehe das Änderungsprotokoll unten für ein Beispiel eines Newsletters für eine Gruppe nicht offengelegter Empfänger.{L2}{L1}Behoben: benutzerdefinierte Hintergrund- und Textfarben werden beim Schreiben neuer E-Mails ignoriert. Dies könnte zu Problemen mit dem Editor führen, wenn dunkle Themen verwendet werden.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -1405,7 +1405,7 @@
     "message": "Aihe"
   },
   "special-offer-expiry": {
-    "message": "31. lokakuuta"
+    "message": "tammikuuta 20"
   }, 
   "special-offer-content" : {
     "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
@@ -1658,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates on nyt yhteensopiva Thunderbird 91: n kanssa. Tämä työ on maksettu lisensseillä, kiitos paljon avusta tässä! {L2} {L1} Voit nyt lisätä HTML Smart -katkelmia muokatessasi sähköpostiasi. Katso tarkemmat tiedot alla olevasta muutoslokista. {image1} {L2} {L1} Käytä uutta %recipient% -muuttujaa lopullisen vastaanottajan lisäämiseen kaikkiin kirjoitustapauksiin (Kirjoita, Vastaa, Välitä). {L2} {L1} Lisätty luokka -alivalikot rakennepohjamalliluetteloihin. {L2} {L1} Voit nyt käyttää %quotePlaceholder% -kohtaa lisätäksesi edelleenlähetetyn sähköpostin tekstin malliin {L2}{L1} Korjattu: Tilimallien tallentaminen / lataaminen epäonnistui ilman Pro -lisenssiä. {L2}{L1} Korjattu: Oikeinkirjoituksen tarkistuskielen asettaminen %spellcheck%: lla lakkasi toimimasta Tb 91: ssä. {L2}"
+    "message": "{L1}Vastausotsikon tuki muuttujalla %recipient%.{L2} {L1}Sujuva varoitus, kun mallia muutetaan muokkauksen jälkeen – tukee myös ESCAPE-näppäintä sulkeaksesi valintaikkunan.{L2}{L1}Korjattu: käyttämällä postituslistat vastaanottaja-, kopio- ja piilokopio-kenttiin. Katso alla olevasta muutoslokista esimerkki uutiskirjeestä julkistamattomille vastaanottajille.{L2}{L1}Korjattu: mukautettuja tausta- ja tekstivärejä ei huomioida uusia viestejä kirjoitettaessa. Tämä voi aiheuttaa ongelmia editorissa käytettäessä tummia teemoja.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

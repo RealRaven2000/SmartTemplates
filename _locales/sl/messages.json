@@ -1235,7 +1235,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31. oktobra"
+    "message": "20. januarja"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1658,7 +1658,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates je zdaj združljiv s programom Thunderbird 91. To delo je bilo plačano z licencami, najlepša hvala za pomoč pri tem! {L2} {L1} Zdaj lahko med urejanjem e -pošte vstavljate pametne delčke HTML. Za vse podrobnosti glejte spodnji dnevnik sprememb. {image1} {L2} {L1} Z novo spremenljivko %recipient% vstavite končnega prejemnika v vse primere sestavljanja (pisanje, odgovor, posredovanje). {L2} {L1} Podmeniji kategorij so bili dodani na seznam predlogov za strukturo. {L2}{L1} Zdaj lahko uporabite %quotePlaceholder% za vstavljanje besedila posredovane pošte v predlogo {L2} {L1} Odpravljeno: shranjevanje / nalaganje predlog računa ni uspelo brez licence Pro. {L2}{L1} Popravljeno: nastavitev jezika preverjanja črkovanja s %spellcheck% je prenehala delovati v Tb 91. {L2}"
+    "message": "{L1}Podpora za glavo odgovora s spremenljivko %recipient%.{L2} {L1}Poenostavljeno opozorilo, ko se predloga spremeni po urejanju – podpira tudi potiskanje ESCAPE, da zaprete pogovorno okno.{L2}{L1}Popravljeno: uporaba poštni seznami v poljih do, cc in bcc. Oglejte si spodnji dnevnik sprememb za primer glasila za skupino nerazkritih prejemnikov.{L2}{L1}Popravljeno: barve ozadja in besedila po meri so bile prezrte pri pisanju nove pošte. To bi lahko povzročilo težave z urejevalnikom pri uporabi temnih tem.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

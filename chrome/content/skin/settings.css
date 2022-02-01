@@ -376,7 +376,7 @@ groupbox.transparent .groupbox-title {
 .templateBox {
 	background: rgba(255, 255, 255, 0.5);
 	color: #000000;
-	text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.9); /* white shadow for dark themes */
+	/*  text-shadow: 1px 1px 1px rgba(250, 250, 250, 0.9); white shadow for dark themes */
 	min-height: 7em;
 	font-family: consolas,"courier new",monospace;
 	font-size: 9pt;

@@ -1499,7 +1499,9 @@ SmartTemplate4.Util = {
 				if (generalFunction=='identity')
 					generalFunction = 'from';
         
-        let composeDetails = GetComposeDetails(); // Tb78
+        let composeDetails = GetComposeDetails(); // Refresh subject and address fields
+        expandRecipients(); // [issue 167] - refresh lists!
+        
 				switch(generalFunction) {
 					case 'subject':
 						let sub = composeDetails.subject; // GetMsgSubjectElement();
@@ -2942,15 +2944,18 @@ SmartTemplate4.Message = {
     // disable closing window via keyboard:
     // Mac: Command+w
     // Windows,Linux: Alt+F4
-    if (SmartTemplate4.Message.allowClose) return;
     if ( e.keyCode == VK_ESCAPE || 
         (isAlt && e.keyCode == VK_F4) || 
         (theKeyPressed=='w' && e.getModifierState("Meta"))) {
-      e.preventDefault();
-      e.stopPropagation();
+      if (!SmartTemplate4.Message.allowClose) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      else if (e.type=="keyup") {
+        let c = document.getElementById("cancel");
+        if (c) c.click();
+      }
     }
-    
-    
   } ,
   
   boundKeyListener: false,
@@ -2976,7 +2981,7 @@ SmartTemplate4.Message = {
         }, 1000);
     }    
 
-    if(!MSG.boundKeyListener) {
+    if (!MSG.boundKeyListener) {
       window.addEventListener("keypress", this.keyListen = function(e) {
         MSG.windowKeyPress(e,'down');
       }, true);
@@ -3022,6 +3027,8 @@ SmartTemplate4.Message = {
 						par.textContent = textNodes[i]; // we want this to wrap. won't use unescape for the moment
 					msgDiv.appendChild(par);
 				}
+        let licenseBtnRow = document.getElementById("licensing"),
+            removeLicenseButtons = true;
         if (params.parsedVars) {
           let div = document.createElement("div");
           div.id = "code";
@@ -3036,13 +3043,13 @@ SmartTemplate4.Message = {
           }
           msgDiv.appendChild(div);
 
-	        let licenseBtnRow = document.getElementById("licensing");
 	        if (licenseBtnRow) {
 	          const ST4 = SmartTemplate4.Util.mainInstance,
 	                showDialog = SmartTemplate4.Util.showLicenseDialog.bind(SmartTemplate4.Util),
 	                openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
 	                featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
 	          if (params.showLicenseButton) {
+              removeLicenseButtons = false;
 	            let btnLicense = document.getElementById("btnShowLicenser"),
 	                btnFeatureCompare = document.getElementById("btnFeatureCompare"),
 	                feature = params.feature || "";
@@ -3060,10 +3067,10 @@ SmartTemplate4.Message = {
 	            );
 	            msgDiv.appendChild(licenseBtnRow);
 	          }
-	          else
-	            licenseBtnRow.parentNode.removeChild(licenseBtnRow);
           }
         }
+        if (removeLicenseButtons)
+          licenseBtnRow.parentNode.removeChild(licenseBtnRow);
 
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
         let buttons = [];
