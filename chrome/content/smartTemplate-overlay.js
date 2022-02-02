@@ -1540,6 +1540,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         prefs = SmartTemplate4.Preferences;
 				
 	// make sure to use the licenser from main window, to save time.
+  // [issue 150] removed nag screen
+  /*
 	if (SmartTemplate4.Util.licenseInfo.status != "Valid" && SmartTemplate4.Util.licenseInfo.trialDays<=0) {
 		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
 		if (varX.test(msg)) {
@@ -1571,6 +1573,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			);
 		}
 	}
+  */
 				
 	function getSubject(current) {
 		if (prefs.isDebugOption("tokens.deferred")) debugger;

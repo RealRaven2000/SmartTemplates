@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
-const endSale = new Date("2021-12-26"); // Next Sale End Date
+const endSale = new Date("2022-02-20"); // Next Sale End Date
 
 async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});

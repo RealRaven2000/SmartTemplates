@@ -144,6 +144,7 @@ END LICENSE BLOCK
 
   Version 3.10 - WIP
     # [issue 166] %recipient% should use reply-to header if present when replying
+    # [issue 150] removed nag screen which pops up after trial date is expired.
     # [issue 154] Support pushing [Esc] to close template change confirmation
     # [issue 167] Address Book list entries are not expanded with empty "To:" address
     # [issue 168] Fixed: custom background and text colors ignored in composer when writing new mails
