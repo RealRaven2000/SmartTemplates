@@ -40,7 +40,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Thunderbird $appVer$ 上で{boldStart}バージョン $addonVer$ {boldEnd}を実行しています。",
+    "message": "Thunderbird $appVer$ 上で {boldStart} バージョン $addonVer$ {boldEnd} を実行しています。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -122,19 +122,19 @@
     "message": "ドメインライセンスを購入"
   },
   "buyDomainLicense.instruct": {
-    "message": "5 人以上の業務利用向けにプロライセンスが必要ですか？プロライセンスよりもドメインライセンスのほうがお得です:"
+    "message": "5 人以上の業務利用向けに Pro ライセンスが必要ですか？Pro ライセンスよりもドメインライセンスのほうがお得です:"
   },
   "buyPremiumLicense.button": {
-    "message": "プロライセンスを購入します！"
+    "message": "Pro ライセンスを購入します！"
   },
   "buyPremiumLicense.instruct": {
-    "message": "制限なしにすべてのプレミアム機能を使用したいですか？SmartTemplates プロライセンスを購入してください。このライセンスはあなたのメールアドレスに紐づけされ、複数の環境で使用可能です。"
+    "message": "制限なしにすべてのプレミアム機能を使用したいですか？SmartTemplates Pro ライセンスを購入してください。このライセンスはあなたのメールアドレスに紐づけされ、複数の環境で使用可能です。"
   },
   "buyStandardLicense.button": {
-    "message": "標準ライセンスを購入します！"
+    "message": "Standard ライセンスを購入します！"
   },
   "buyStandardLicense.instruct": {
-    "message": "プレミアム機能は必要ではありませんか？標準ライセンスでは、プレミアム機能のテストを行うことができます。"
+    "message": "プレミアム機能は必要ではありませんか？Standard ライセンスでは、プレミアム機能のテストを行うことができます。"
   },
   "calculate.explain": {
     "message": "DD=追加する日数 H=追加する時間数 (オプション) MM=追加する分数 (オプション)"
@@ -212,7 +212,7 @@
     "message": "例:"
   },
   "dateformat.explain": {
-    "message": "上記の時間変数のほとんどは、 '%' を省略することでパラメーター文字列で使用できます。参照："
+    "message": "上記の時間変数のほとんどは、'%' を省略することでパラメーター文字列で使用できます。参照："
   },
   "dateformat.label": {
     "message": "現在の時刻を挿入する関数 (クリック可能な領域)"
@@ -299,7 +299,7 @@
     "message": "ライセンス登録済みのドメイン"
   },
   "domainLicense.instruct": {
-    "message": "このライセンスは、あなたの団体ドメインの鍵になります。ライセンスは、SmartTemplates Pro機能の使用をこのメールドメインが末尾に付くメールアドレスのユーザに許可します。例えば、ドメイン名に 'abc.com' と入力すると、fred@abc.com や martha@abc.com、mike.doe@abc.com などのユーザがライセンスの使用を許可されます。正規ユーザの最大数は、最初の画面で入力した数になります。"
+    "message": "このライセンスは、あなたの団体ドメインの鍵になります。ライセンスは、SmartTemplates Pro 機能の使用をこのメールドメインが末尾に付くメールアドレスのユーザに許可します。例えば、ドメイン名に 'abc.com' と入力すると、fred@abc.com や martha@abc.com、mike.doe@abc.com などのユーザがライセンスの使用を許可されます。正規ユーザの最大数は、最初の画面で入力した数になります。"
   },
   "domainLicense.validate": {
     "message": "あなたの団体のメールアドレスのドメイン名 (@ 記号の後ろ部分) は「正確に入力」してください。これは、ユーザのメールアドレスを認証するのに使用されます。"
@@ -336,7 +336,7 @@
   },
   "extensionDescription": {
     "description": "Description of the extension.",
-    "message": "さまざまなメールヘッダーを自動挿入することにより、返信をカスタマイズできる強力な方法です。 テンプレートはメールの差出人ごとに個別に作成でき、外部の HTML ファイルやスタイルシートもサポートします。"
+    "message": "さまざまなメールヘッダーを自動挿入することにより、返信をカスタマイズできる強力な方法です。テンプレートはメールの差出人ごとに個別に作成でき、外部の HTML ファイルやスタイルシートもサポートします。"
   },
   "extensionName": {
     "description": "Name of the extension.",
@@ -510,7 +510,7 @@
     }
   },
   "heading.click": {
-    "message": "見出しまたは[x]をクリックします"
+    "message": "見出しまたは [x] をクリックします"
   },
   "heading.expandAll": {
     "message": "すべてのエントリを展開します"
@@ -576,10 +576,10 @@
     "message": "スニペットを挿入"
   },
   "insertSnippet.tooltip": {
-    "message": "スマートHTMLスニペットを挿入する"
+    "message": "スマート HTML スニペットを挿入する"
   },
   "intro": {
-    "message": "SmartTemplates Pro 年間ライセンスは、すべてのプレミアム機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。"
+    "message": "SmartTemplates Pro の年間ライセンスは、すべてのプレミアム機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。"
   },
   "k.label": {
     "message": "時 (24 時間表記、0 から 23)"
@@ -603,7 +603,7 @@
     "message": "個人ライセンスキーをここに記入してください:"
   },
   "label.insertLicense.tooltip": {
-    "message": "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。"
+    "message": "ライセンスキーは FastSpring からの支払い確認 (order confirmation) メールに含まれています。"
   },
   "label.licenseValid": {
     "message": "ライセンスの有効期限:"
@@ -620,10 +620,10 @@
   },
   "license-is-standard": {
     "description": "Special message for standard license holders",
-    "message": "SmartTemplates 標準ライセンスの所有者として、割引アップデートと 1 年間の延長の資格があります。詳細については、標準ライセンスの下にある [プロにアップグレード] ボタンをクリックしてください。"
+    "message": "SmartTemplates Standard ライセンスの所有者として、割引アップデートと 1 年間の延長の資格があります。詳細については、Standard ライセンスの下にある [Pro にアップグレード] ボタンをクリックしてください。"
   },
   "license-standard-special-offer": {
-    "message": "{boldStart}親愛なる $username$ さん{boldEnd} 、{boldStart}$discount$ 割引{boldEnd} かつライセンスを 1 年間延長可能な SmartTemplates Proにアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
+    "message": "{boldStart}親愛なる $username$ さん{boldEnd} 、{boldStart}$discount$ 割引{boldEnd} かつライセンスを 1 年間延長可能な SmartTemplates Pro にアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
     "placeholders": {
       "username" : {
         "content": "$1",
@@ -640,7 +640,7 @@
     "placeholders": {
       "expiry": {
         "content": "$1",
-        "example": "16. April"
+        "example": "4 月 16 日"
       }
     }
   }, 
@@ -651,7 +651,7 @@
     "message": "新しいライセンスシステム"
   },  
   "licenseStatus.expired" : {
-    "message": "SmartTemplatesライセンスは $countDays$ 日前に期限切れになりました。",
+    "message": "SmartTemplates ライセンスは $countDays$ 日前に期限切れになりました。",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -669,7 +669,7 @@
     }
   }, 
   "licenseTypes": {
-    "message": "SmartTemplates は、標準ととプロの 2 つのライセンスを提供します。これらは、Thunderbird プラットフォームの変更に対応するためのアドオンの改善と修正を金銭的に支援します。拡張機能が機能しなくなる可能性のある Thunderbird の変更は毎年展開されるため、ライセンスの有効期間も 1 年間となります。"
+    "message": "SmartTemplates は、標準とプロの 2 つのライセンスを提供します。これらは、Thunderbird プラットフォームの変更に対応するためのアドオンの改善と修正を金銭的に支援します。拡張機能が機能しなくなる可能性のある Thunderbird の変更は毎年展開されるため、ライセンスの有効期間も 1 年間となります。"
   },  
   "licenseValidation.expired": {
     "message": "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。"
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "パラメーター"
-  },
   "paste.label": {
     "message": "貼り付け"
+  },
+  "parameters": {
+    "message": "パラメーター"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "マウスオーバーでテキスト表示"
@@ -874,19 +874,19 @@
     "message": "SmartTemplates について"
   },
   "pref_addSigBreakHTML.label": {
-    "message": "\"--\" を追加する (HTML メール)"
+    "message": "-- を追加する (HTML メール)"
   },
   "pref_addSigBreakHTML.tooltip": {
-    "message": "署名の冒頭に \"--\" を区切りとして常に追加します (HTML 形式の場合)。"
+    "message": "署名の冒頭に -- を区切りとして常に追加します (HTML 形式の場合)。"
   },
   "pref_addSigBreakPlaintext.label": {
-    "message": "\"--\" を追加する (テキストメール)"
+    "message": "-- を追加する (テキストメール)"
   },
   "pref_addSigBreakPlaintext.tooltip": {
-    "message": "署名の冒頭に \"--\" を区切りとして常に追加します (プレーンテキスト形式の場合)。"
+    "message": "署名の冒頭に -- を区切りとして常に追加します (プレーンテキスト形式の場合)。"
   },
   "pref_addressDelimiter": {
-    "message": "複数の通信相手の区切りに以下のデリミターを使用する:"
+    "message": "複数の通信相手の区切りに以下を使用する:"
   },
   "pref_addressDelimiter_tip": {
     "message": "複数の通信相手の区切りに使用するデリミタを指定します。Outlook ではセミコロン (;) を、Thunderbird の既定ではカンマ (,) を使用します"
@@ -1075,7 +1075,7 @@
     "message": "テンプレート"
   },
   "pref_templateBox_tip": {
-    "message": "メッセージのテンプレートを入力してください。例：こんにちは、%from(name)%さん。<br>メッセージありがとうございました。<br>敬具 %ownname%"
+    "message": "メッセージのテンプレートを入力してください。例：こんにちは、%from(name)% さん。<br>メッセージありがとうございました。<br>敬具 %ownname%"
   },
   "pref_template_tip": {
     "message": "変数による引用ヘッダーのカスタマイズができます。詳細はヘルプを参照してください。"
@@ -1102,10 +1102,10 @@
     "message": "[オプション, 数値]: 開始する引用レベルの最小値"
   },
   "quotePlaceholder": {
-    "message": "これにより、引用部分がテンプレートテキスト自体に移動します。 アカウントテンプレートの見積もりヘッダーセクションは、引用の先頭に移動されます。"
+    "message": "これにより、引用部分がテンプレートテキスト自体に移動します。アカウントテンプレートの見積もりヘッダーセクションは、引用の先頭に移動されます。"
   },
   "quotePlaceholder.level": {
-    "message": "[オプション、数値]会話から古い引用を削除するための最大引用レベル。"
+    "message": "[オプション、数値] 会話から古い引用を削除するための最大引用レベル。"
   },
   "quote_changers.cap": {
     "message": "引用部の操作"
@@ -1249,7 +1249,7 @@
     "message": "このメニューの一部のテンプレートが無効になっているのはなぜですか？"
   }, 
   "st.fileTemplates.restrictTemplates": {
-    "message": "メニューごとのテンプレートの数は制限されています。ライセンスなしでは $max_free$ のメニュー項目を構成でき、SmartTemplates 標準ライセンスで $max_std$ のメニュー項目を構成できます。SmartTemplates Pro では制限がありません。",
+    "message": "メニューごとのテンプレートの数は制限されています。ライセンスなしでは $max_free$ のメニュー項目を構成でき、SmartTemplates Standard ライセンスで $max_std$ のメニュー項目を構成できます。SmartTemplates Pro では制限がありません。",
     "placeholders": {
       "max_free": {
         "content": "$1",
@@ -1262,7 +1262,7 @@
     }    
   },
   "st.fileTemplates.restrictTemplateCats": {
-    "message": "$max_Cats$を超えるカテゴリを構成するには、SmartTemplatesProライセンスを取得してください…",
+    "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください...",
     "placeholders": {
       "max_Cats": {
         "content": "$1",
@@ -1306,7 +1306,7 @@
     "message": "SmartTemplates の利用にはライセンスが必要です。メッセージ作成ウインドウ下部をご覧ください。"
   },
   "st.notification.license.text": {
-    "message": "今後、SmartTemplates では最低でも標準ライセンスが必要となります。詳細についてはライセンスのページをご覧ください。"
+    "message": "今後、SmartTemplates では最低でも Standard ライセンスが必要となります。詳細についてはライセンスのページをご覧ください。"
   },
   "st.notification.licensing": {
     "message": "ライセンスについての詳細"
@@ -1336,7 +1336,7 @@
     "message": "ライセンスを更新する"
   },
   "st.notification.premium.btn.upgrade": {
-    "message": "プロにアップグレード"
+    "message": "Pro にアップグレード"
   },
   "st.notification.premium.btn.upgrade.hotKey": {
     "message": "U"
@@ -1405,11 +1405,11 @@
     "message": "件名"
   },
   "special-offer-content": {
-    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {boldStart}$reduction${boldEnd} の割引を受けられます！この特別オファーは {boldStart}$expirydate${boldEnd} までご利用いただけます。新しい {linkStart}標準ライセンス{linkEnd} では標準機能のみが提供されます。",
+    "message": "今 {linkStartPro}SmartTemplates Pro ライセンス{linkEnd} にアップグレードすると {boldStart}$reduction${boldEnd} の割引を受けられます！この特別オファーは {boldStart}$expirydate${boldEnd} までご利用いただけます。新しい {linkStart}Standard ライセンス{linkEnd} では標準機能のみが提供されます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "8月22日"
+        "example": "8 月 22 日"
       },
       "reduction": {
         "content": "$2",
@@ -1418,10 +1418,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "1月20日"    
+    "message": "1 月 20 日"    
   },
   "special-offer-head": {
-    "message": "$addon$の互換性を維持するのに役立ちます",
+    "message": "$addon$ の互換性を維持するのに役立ちます",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1443,7 +1443,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "September 11"
+        "example": "9 月 11 日"
       },
       "reduction": {
         "content": "$2",
@@ -1452,11 +1452,11 @@
     }
   },   
   "special-offer-upgrade": {
-    "message": "今すぐSmartTemplates StandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
+    "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $expirydate$ {boldEnd} までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "September 11"
+        "example": "9 月 11 日"
       },
       "reduction": {
         "content": "$2",
@@ -1543,7 +1543,7 @@
     "message": "返信"
   },
   "testDriveS": {
-    "message": "標準ライセンスでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。"
+    "message": "Standard ライセンスでは、プレミアム機能を試しに使うことができますが、一部の機能が制限されています。"
   },
   "template.category": {
     "message": "カテゴリー"
@@ -1658,7 +1658,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}変数％recipient％を使用したreply-toヘッダーのサポート。{L2} {L1}編集後にテンプレートが変更された場合の警告の合理化-ESCAPEを押してダイアログを閉じることもサポートします。{L2} {L1}修正：使用 to、cc、およびbccフィールドのメーリングリスト。 非公開の受信者グループのニュースレターの例については、以下の変更ログを参照してください。{L2} {L1}修正済み：新しいメールを作成するときに、カスタムの背景色とテキストの色が無視される。 これにより、ダークテーマを使用しているときにエディターで問題が発生する可能性があります。{L2}"
+    "message": "{L1}変数 %recipient% を使用した reply-to ヘッダーのサポート。{L2} {L1}編集後にテンプレートが変更された場合の警告の合理化 -ESCAPE を押してダイアログを閉じることもサポートします。{L2} {L1}修正：使用 to、cc、および bcc フィールドのメーリングリスト。非公開の受信者グループのニュースレターの例については、以下の変更ログを参照してください。{L2} {L1}修正済み：新しいメールを作成するときに、カスタムの背景色とテキストの色が無視される。これにより、ダークテーマを使用しているときにエディターで問題が発生する可能性があります。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"
