@@ -3241,15 +3241,18 @@ SmartTemplate4.Message = {
     // disable closing window via keyboard:
     // Mac: Command+w
     // Windows,Linux: Alt+F4
-    if (SmartTemplate4.Message.allowClose) return;
     if ( e.keyCode == VK_ESCAPE || 
         (isAlt && e.keyCode == VK_F4) || 
         (theKeyPressed=='w' && e.getModifierState("Meta"))) {
-      e.preventDefault();
-      e.stopPropagation();
+      if (!SmartTemplate4.Message.allowClose) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      else if (e.type=="keyup") {
+        let c = document.getElementById("cancel");
+        if (c) c.click();
+      }
     }
-    
-    
   } ,
   
   boundKeyListener: false,

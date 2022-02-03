@@ -326,6 +326,7 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 			case "from":
 			  hdr = "author";
 				break;
+			case "recipient": // [issue 151] placeholder for target recipient
 			case "to":
 			  hdr = "recipients";
 				break;
@@ -1803,7 +1804,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   addTokens("reserved.optional", "identity"); // non-headers but support [[ optional syntax ]] (remove part if empty)
 
 	// Reserved words which depend on headers of the original message.
-	addTokens("To", "to", "toname", "tomail");
+	addTokens("To", "to", "toname", "tomail", "recipient");
 	addTokens("Cc", "cc", "ccname", "ccmail");
   addTokens("Date", "X:=sent");
 	addTokens("From", "from", "fromname", "frommail");
@@ -2263,6 +2264,30 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "tomail":    token = "To";   arg = "(mail)";   break;
 				case "ccname":    token = "Cc";   arg = "(name)";   break;
 				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
+        // [issue 151] universal placeholder for target recipient
+        case "recipient":   
+          {
+            switch(util.getComposeType()) {
+              case "new":
+                token = "to";
+                break;
+              case "rsp": 
+                let isReplyTo = (hdr && hdr.get("reply-to") != ""); // [issue 166]
+                token = isReplyTo ? "reply-to" : "from";
+                break;
+              case "fwd":
+                token = "to";
+                // make sure to add / append "fwd" switch:
+                if (!arg)
+                  arg = "(fwd)";
+                else {
+                  arg = arg.substr(0,arg.length-1) + ",fwd)";
+                }
+                break;
+            }
+            
+          }
+          break;        
 			}
 
       if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;

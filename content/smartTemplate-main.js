@@ -501,7 +501,7 @@ END LICENSE BLOCK
     # [issue 139] Double template inserted when replying to own email
     # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template
     
-  Version 2.17 - WIP
+  Version 2.17 - 09/12/2021
     # [issue 142] [issue 28] Add feature to insert html Smart snippets within Composer
     # [issue 164] Feature: Add *selection* placeholder for inserting HTML snippets (fragments)    
     # [issue 147] Add categories / folders to structure template menus
@@ -513,11 +513,17 @@ END LICENSE BLOCK
     # Fixed some strings in Occitan locale
     # [issue 163] Fixed: With Cardbook installed, SmartTemplates statusbar icon may not be shown
 
+  Version 2.18 - WIP
+    # [issue 166] %recipient% should use reply-to header if present when replying
+    # [issue 154] Support pushing [Esc] to close template change confirmation
+
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
-    # [issue 142]/[issue 28] Add feature to insert html Smart snippets within Composer
-	
+    # [issue 167] TEST WHETHER THIS APPLIES IN TB68! => 
+                  Address Book list entries are not expanded with empty "To:" address
+                  Tb 78 uses GetComposeDetails() and must call expandRecipients()	
 	Version 2.x
     # [issue 30] Reply button loses template menu items
     # [issue 27] Insert external HTML Templates from a web page URL
