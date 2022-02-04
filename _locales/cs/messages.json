@@ -1397,7 +1397,7 @@
     "message": "Předmět"
   },
   "special-offer-expiry": {
-    "message": "20. ledna"
+    "message": "20. února"
   },
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",

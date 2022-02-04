@@ -1222,7 +1222,7 @@
     "message": "假如變數 %cc(name)% 可以被置換時,將會顯示插入兩個中括號的 [[Cc: %cc(name)%]]!"
   },
   "special-offer-expiry": {
-    "message": "1月20日"    
+    "message": "2月20日"    
   },
   "special-offer-content": {
     "message": "通過購買 {linkStartPro}SmartTemplates Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
