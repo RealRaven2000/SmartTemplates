@@ -507,7 +507,6 @@
 				<tab id = "settingsTab"  label = "__MSG_pref_global.tab__" />
 				<tab id = "advancedSettingsTab"  label = "__MSG_pref_advanced.tab__" />
 				<tab id = "templatesTab" label = "__MSG_pref_examples.tab__" 
-				     oncommand="SmartTemplate4.Settings.loadTemplatesFrame();"
 				     tooltiptext = "__MSG_pref_examples.tooltip__" />
 				<tab id = "aboutTab"  label = "__MSG_about.cap__" /> 
 				<tab id = "SmartTemplate4-Pro" label="SmartTemplates License"  class="free" />
@@ -721,6 +720,12 @@
 				</tabpanel>
 
 				<tabpanel flex = "1" id = "templatesFrame">
+          <browser id="templatesBrowser"
+					        type="content"
+					        flex = "1"
+					        minheight="300"
+                  remote="true"
+                  seamless="seamless"/>
 					<iframe id="templatesIFrame"
 					        type="content"
 					        flex = "1"

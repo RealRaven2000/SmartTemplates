@@ -400,6 +400,8 @@ SmartTemplate4.Settings = {
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
+    // [issue 170] allow premature extension
+    getElement("licenseDate").addEventListener("click", settings.showExtensionButton);
 
 		window.onCodeWord = function(code, className) {
 			settings.onCodeWord(code, className);
@@ -482,7 +484,7 @@ SmartTemplate4.Settings = {
 			getElement('templatesTab').collapsed = true;
 		}
 		else {
-			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 5000);
+			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 1000);
 		}
     
     let nickBox = getElement('chkResolveABNick'),
@@ -572,13 +574,34 @@ SmartTemplate4.Settings = {
 	
 	toggleExamples: function toggleExamples(el) {
 		document.getElementById('templatesTab').collapsed = (el.checked);
+    if (!el.checked)
+      SmartTemplate4.Settings.loadTemplatesFrame();
 	} ,
 	
 	loadTemplatesFrame: function loadTemplatesFrame() {
+    const url = "https://smarttemplates.quickfolders.org/templates.html";
+    var { MailE10SUtils } = ChromeUtils.import(
+      "resource:///modules/MailE10SUtils.jsm"
+    );
+    
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
-    if (!templatesIFrame.getAttribute("src"))
-      templatesIFrame.setAttribute("src", "https://smarttemplates.quickfolders.org/templates.html");
+    let browser = document.getElementById("templatesBrowser");
+    
+    // with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
+    if (MailE10SUtils && MailE10SUtils.loadURI) {
+      MailE10SUtils.loadURI(
+        browser,
+        url
+      );    
+      templatesIFrame.parentNode.removeChild(templatesIFrame);
+    }
+    else {
+      if (!templatesIFrame.getAttribute("src"))
+        templatesIFrame.setAttribute("src", url);
+      browser.parentNode.removeChild(browser);
+    }
+    
 	} ,
 
 	onCodeWord : function onCodeWord(code, className) {
@@ -1496,9 +1519,23 @@ SmartTemplate4.Settings = {
     }
     licenseDateLbl.textContent = txtGracePeriod;
     licenseDateLbl.classList.add('important');
+    licenseDate.classList.remove('valid'); // [issue 170]
     licenseDate.value = "";
   },
 
+  // [issue 170] allow license extension
+  // show the extension button if user is elligible
+  showExtensionButton: function() {
+    if (SmartTemplate4.Util.licenseInfo.status == "Valid") {
+      if (SmartTemplate4.Util.licenseInfo.keyType!=2) { // PRO +Domain
+        let btnLicense = document.getElementById("btnLicense");
+        SmartTemplate4.Settings.labelLicenseBtn(btnLicense, "extend");
+      }
+      else { // standard function - go to License screen to upgrade!
+        SmartTemplate4.Util.showLicenseDialog("licenseTab");  
+      }
+    }
+  },
       
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
@@ -1548,6 +1585,7 @@ SmartTemplate4.Settings = {
 					else
 						showValidationMessage(validationPassed, silent);
           licenseDate.value = niceDate;
+          licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.value = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":

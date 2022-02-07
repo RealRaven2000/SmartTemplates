@@ -1541,39 +1541,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				
 	// make sure to use the licenser from main window, to save time.
   // [issue 150] removed nag screen
-  /*
-	if (SmartTemplate4.Util.licenseInfo.status != "Valid" && SmartTemplate4.Util.licenseInfo.trialDays<=0) {
-		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
-		if (varX.test(msg)) {
-			const PreviewLength = 500,
-			      startVars = msg.search(/%\S*%/),
-						isTruncateStart = (startVars > 10); // cut off text before first %var%
-			let txtAlert = util.getBundleString("st.notification.license.required"),
-					txtParseTitle = util.getBundleString("st.notification.parsing"),
-			    parseString = 
-						(isTruncateStart ? "…\n" : "") +
-						msg.substr(isTruncateStart ? startVars : 0);
-						
-			parseString = parseString.substr(0, PreviewLength) +
-					(parseString.length>PreviewLength ? "…" : "")
-					
-			// show a fancier "branded" alert;
-      // add countdown  - isLicenseWarning=true
-      const parentWin = Services.wm.getMostRecentWindow("msgcompose") || window;
-			SmartTemplate4.Message.display(
-        txtAlert + '\n' + txtParseTitle, 
-				"centerscreen,modal",
-				{ 
-          ok: function() { ; } , 
-          isLicenseWarning: true,
-          showLicenseButton: true
-        },
-				parentWin,
-        parseString
-			);
-		}
-	}
-  */
 				
 	function getSubject(current) {
 		if (prefs.isDebugOption("tokens.deferred")) debugger;
