@@ -484,7 +484,7 @@ SmartTemplate4.Settings = {
 			getElement('templatesTab').collapsed = true;
 		}
 		else {
-			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 1000);
+			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 500);
 		}
     
     let nickBox = getElement('chkResolveABNick'),
@@ -580,28 +580,32 @@ SmartTemplate4.Settings = {
 	
 	loadTemplatesFrame: function loadTemplatesFrame() {
     const url = "https://smarttemplates.quickfolders.org/templates.html";
-    var { MailE10SUtils } = ChromeUtils.import(
-      "resource:///modules/MailE10SUtils.jsm"
-    );
-    
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
     let browser = document.getElementById("templatesBrowser");
+    let isNewRemoteContent = false;
     
-    // with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
-    if (MailE10SUtils && MailE10SUtils.loadURI) {
-      MailE10SUtils.loadURI(
-        browser,
-        url
-      );    
-      templatesIFrame.parentNode.removeChild(templatesIFrame);
+    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "91")) {
+      // with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
+      var { MailE10SUtils } = ChromeUtils.import(
+        "resource:///modules/MailE10SUtils.jsm"
+      );
+      if (browser && MailE10SUtils && MailE10SUtils.loadURI) {
+        browser.setAttribute("remote", "true");
+        MailE10SUtils.loadURI(
+          browser,
+          url
+        );
+        isNewRemoteContent = true;
+        if (templatesIFrame) templatesIFrame.parentNode.removeChild(templatesIFrame);
+      }
     }
-    else {
+    if (!isNewRemoteContent) {
       if (!templatesIFrame.getAttribute("src"))
         templatesIFrame.setAttribute("src", url);
-      browser.parentNode.removeChild(browser);
+      // the browser element shouldn't be here because we do not inject it
+      if (browser) browser.parentNode.removeChild(browser); 
     }
-    
 	} ,
 
 	onCodeWord : function onCodeWord(code, className) {
