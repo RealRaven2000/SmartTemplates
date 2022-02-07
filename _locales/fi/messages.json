@@ -1658,7 +1658,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}Vastausotsikon tuki muuttujalla %recipient%.{L2} {L1}Sujuva varoitus, kun mallia muutetaan muokkauksen jälkeen – tukee myös ESCAPE-näppäintä sulkeaksesi valintaikkunan.{L2}{L1}Korjattu: käyttämällä postituslistat vastaanottaja-, kopio- ja piilokopio-kenttiin. Katso alla olevasta muutoslokista esimerkki uutiskirjeestä julkistamattomille vastaanottajille.{L2}{L1}Korjattu: mukautettuja tausta- ja tekstivärejä ei huomioida uusia viestejä kirjoitettaessa. Tämä voi aiheuttaa ongelmia editorissa käytettäessä tummia teemoja.{L2}"
+    "message": "{L1}3.10.2 hotfix - esimerkkejä ei näy Thunderbird 91:ssä, kun usean prosessin selaus on käytössä{L2}{L1}Vastausotsikon tuki muuttujalla %recipient%.{L2} {L1}Sujuva varoitus, kun mallia muutetaan muokkauksen jälkeen – tukee myös ESCAPE-näppäintä sulkeaksesi valintaikkunan.{L2}{L1}Korjattu: käyttämällä postituslistat vastaanottaja-, kopio- ja piilokopio-kenttiin. Katso alla olevasta muutoslokista esimerkki uutiskirjeestä julkistamattomille vastaanottajille.{L2}{L1}Korjattu: mukautettuja tausta- ja tekstivärejä ei huomioida uusia viestejä kirjoitettaessa. Tämä voi aiheuttaa ongelmia editorissa käytettäessä tummia teemoja.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

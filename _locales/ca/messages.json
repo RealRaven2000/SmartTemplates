@@ -1660,7 +1660,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Suport de la capçalera de resposta amb la variable %recipient%.{L2} {L1}Avís simplificat quan es canvia la plantilla després de l'edició; també admet pressionar ESCAPE per tancar el diàleg.{L2}{L1}Corregit: utilitzant llistes de correu als camps a, cc i cco. Consulteu el registre de canvis a continuació per obtenir un exemple de butlletí per a un grup de destinataris no revelats.{L2}{L1}Corregit: el fons personalitzat i els colors del text s'ignoren quan s'escriuen missatges nous. Això podria provocar problemes a l'editor mentre utilitza temes foscos.{L2}"
+    "message": "{L1}Reparació ràpida 3.10.2: els exemples no es mostraven a Thunderbird 91 amb la navegació multiprocés activada{L2}{L1}Suport de la capçalera de resposta amb la variable %recipient%.{L2} {L1}Avís simplificat quan es canvia la plantilla després de l'edició; també admet pressionar ESCAPE per tancar el diàleg.{L2}{L1}Corregit: utilitzant llistes de correu als camps a, cc i cco. Consulteu el registre de canvis a continuació per obtenir un exemple de butlletí per a un grup de destinataris no revelats.{L2}{L1}Corregit: el fons personalitzat i els colors del text s'ignoren quan s'escriuen missatges nous. Això podria provocar problemes a l'editor mentre utilitza temes foscos.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

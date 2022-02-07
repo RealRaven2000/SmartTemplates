@@ -1655,7 +1655,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Suporte do cabeçalho de resposta com a variável %recipient%.{L2} {L1}Aviso simplificado quando o modelo é alterado após a edição - também suporta pressionar ESCAPE para fechar a caixa de diálogo.{L2}{L1}Corrigido: usando listas de discussão nos campos para, cc e bcc. Consulte o registro de alterações abaixo para obter um exemplo de boletim informativo para um grupo de destinatários não divulgados.{L2}{L1}Corrigido: fundo personalizado e cores de texto ignoradas ao escrever novos e-mails. Isso pode causar problemas no editor ao usar temas escuros.{L2}"
+    "message": "{L1}3.10.2 hotfix - os exemplos não foram mostrados no Thunderbird 91 com navegação multiprocessada ativada{L2}{L1}Suporte do cabeçalho de resposta com a variável %recipient%.{L2} {L1}Aviso simplificado quando o modelo é alterado após a edição - também suporta pressionar ESCAPE para fechar a caixa de diálogo.{L2}{L1}Corrigido: usando listas de discussão nos campos para, cc e bcc. Consulte o registro de alterações abaixo para obter um exemplo de boletim informativo para um grupo de destinatários não divulgados.{L2}{L1}Corrigido: fundo personalizado e cores de texto ignoradas ao escrever novos e-mails. Isso pode causar problemas no editor ao usar temas escuros.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

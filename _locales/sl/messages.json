@@ -1658,7 +1658,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Podpora za glavo odgovora s spremenljivko %recipient%.{L2} {L1}Poenostavljeno opozorilo, ko se predloga spremeni po urejanju – podpira tudi potiskanje ESCAPE, da zaprete pogovorno okno.{L2}{L1}Popravljeno: uporaba poštni seznami v poljih do, cc in bcc. Oglejte si spodnji dnevnik sprememb za primer glasila za skupino nerazkritih prejemnikov.{L2}{L1}Popravljeno: barve ozadja in besedila po meri so bile prezrte pri pisanju nove pošte. To bi lahko povzročilo težave z urejevalnikom pri uporabi temnih tem.{L2}"
+    "message": "{L1}Popravek 3.10.2 – Primeri niso bili prikazani v Thunderbirdu 91 z omogočenim večprocesnim brskanjem{L2}{L1}Podpora za glavo odgovora s spremenljivko %recipient%.{L2} {L1}Poenostavljeno opozorilo, ko se predloga spremeni po urejanju – podpira tudi potiskanje ESCAPE, da zaprete pogovorno okno.{L2}{L1}Popravljeno: uporaba poštni seznami v poljih do, cc in bcc. Oglejte si spodnji dnevnik sprememb za primer glasila za skupino nerazkritih prejemnikov.{L2}{L1}Popravljeno: barve ozadja in besedila po meri so bile prezrte pri pisanju nove pošte. To bi lahko povzročilo težave z urejevalnikom pri uporabi temnih tem.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

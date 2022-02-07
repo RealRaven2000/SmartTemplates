@@ -1650,7 +1650,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}Podpora hlavičky odpovědi s proměnnou %recipient%.{L2} {L1}Zjednodušené varování při změně šablony po úpravě – podporuje také stisknutí klávesy ESCAPE k uzavření dialogu.{L2}{L1}Opraveno: pomocí seznamy adresátů v polích Komu, Kopie a Skrytá kopie. V níže uvedeném protokolu změn naleznete příklad zpravodaje pro skupinu nezveřejněných příjemců.{L2}{L1}Opraveno: Při psaní nových e-mailů byly ignorovány vlastní barvy pozadí a textu. To by mohlo vést k problémům editoru při používání tmavých motivů.{L2}"
+    "message" : "{L1}Oprava hotfix 3.10.2 – Příklady nebyly zobrazeny v Thunderbirdu 91 s povoleným víceprocesovým procházením{L2}{L1}Podpora hlavičky odpovědi s proměnnou %recipient%.{L2} {L1}Zjednodušené varování při změně šablony po úpravě – podporuje také stisknutí klávesy ESCAPE k uzavření dialogu.{L2}{L1}Opraveno: pomocí seznamy adresátů v polích Komu, Kopie a Skrytá kopie. V níže uvedeném protokolu změn naleznete příklad zpravodaje pro skupinu nezveřejněných příjemců.{L2}{L1}Opraveno: Při psaní nových e-mailů byly ignorovány vlastní barvy pozadí a textu. To by mohlo vést k problémům editoru při používání tmavých motivů.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

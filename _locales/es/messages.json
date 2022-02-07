@@ -1658,7 +1658,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Compatibilidad con el encabezado de respuesta con la variable %destinatario%.{L2} {L1}Advertencia optimizada cuando se cambia la plantilla después de editarla; también se admite presionar ESCAPE para cerrar el cuadro de diálogo.{L2}{L1}Corregido: usando listas de correo en los campos para, cc y bcc. Consulte el registro de cambios a continuación para ver un ejemplo de un boletín informativo para un grupo de destinatarios no revelados.{L2}{L1}Corregido: los colores de fondo y de texto personalizados se ignoraban al escribir correos nuevos. Esto podría ocasionar problemas al editor al usar temas oscuros.{L2}"
+    "message": "{L1}Corrección 3.10.2: los ejemplos no se mostraban en Thunderbird 91 con la navegación multiproceso habilitada{L2}{L1}Compatibilidad con el encabezado de respuesta con la variable %destinatario%.{L2} {L1}Advertencia optimizada cuando se cambia la plantilla después de editarla; también se admite presionar ESCAPE para cerrar el cuadro de diálogo.{L2}{L1}Corregido: usando listas de correo en los campos para, cc y bcc. Consulte el registro de cambios a continuación para ver un ejemplo de un boletín informativo para un grupo de destinatarios no revelados.{L2}{L1}Corregido: los colores de fondo y de texto personalizados se ignoraban al escribir correos nuevos. Esto podría ocasionar problemas al editor al usar temas oscuros.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

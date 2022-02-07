@@ -1658,7 +1658,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Stöd för svarshuvudet med variabeln %recipient%.{L2} {L1}Strömlinjeformad varning när mallen ändras efter redigering - stöder även tryckning av ESCAPE för att stänga dialogen.{L2}{L1}Rättad: med e-postlistor i fälten till, cc och hemlig kopia. Se ändringsloggen nedan för ett exempel på ett nyhetsbrev för en grupp hemliga mottagare.{L2}{L1}Rättad: anpassade bakgrunds- och textfärger ignoreras när du skriver nya e-postmeddelanden. Detta kan leda till problem med redigeraren när du använder mörka teman.{L2}"
+    "message": "{L1}3.10.2 snabbkorrigering – exemplen visades inte i Thunderbird 91 med multi-process surfing aktiverad{L2}{L1}Stöd för svarshuvudet med variabeln %recipient%.{L2} {L1}Strömlinjeformad varning när mallen ändras efter redigering - stöder även tryckning av ESCAPE för att stänga dialogen.{L2}{L1}Rättad: med e-postlistor i fälten till, cc och hemlig kopia. Se ändringsloggen nedan för ett exempel på ett nyhetsbrev för en grupp hemliga mottagare.{L2}{L1}Rättad: anpassade bakgrunds- och textfärger ignoreras när du skriver nya e-postmeddelanden. Detta kan leda till problem med redigeraren när du använder mörka teman.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

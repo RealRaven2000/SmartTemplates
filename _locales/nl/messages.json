@@ -1659,7 +1659,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}Ondersteuning van de reply-to-header met de variabele %recipient%.{L2} {L1}Gestroomlijnde waarschuwing wanneer sjabloon wordt gewijzigd na bewerking - ondersteunt ook push ESCAPE om het dialoogvenster te sluiten.{L2}{L1}Opgelost: gebruik mailinglijsten in de velden to, cc en bcc. Zie het wijzigingslogboek hieronder voor een voorbeeld van een nieuwsbrief voor een groep niet-openbaar gemaakte ontvangers.{L2} {L1}Opgelost: aangepaste achtergrond- en tekstkleuren genegeerd bij het schrijven van nieuwe e-mails. Dit kan leiden tot problemen met de editor bij het gebruik van donkere thema's.{L2}"
+  "message": "{L1}3.10.2 hotfix - de voorbeelden werden niet getoond in Thunderbird 91 met browsen met meerdere processen ingeschakeld{L2}{L1}Ondersteuning van de reply-to-header met de variabele %recipient%.{L2} {L1}Gestroomlijnde waarschuwing wanneer sjabloon wordt gewijzigd na bewerking - ondersteunt ook push ESCAPE om het dialoogvenster te sluiten.{L2}{L1}Opgelost: gebruik mailinglijsten in de velden to, cc en bcc. Zie het wijzigingslogboek hieronder voor een voorbeeld van een nieuwsbrief voor een groep niet-openbaar gemaakte ontvangers.{L2} {L1}Opgelost: aangepaste achtergrond- en tekstkleuren genegeerd bij het schrijven van nieuwe e-mails. Dit kan leiden tot problemen met de editor bij het gebruik van donkere thema's.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
