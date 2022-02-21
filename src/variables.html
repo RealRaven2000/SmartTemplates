@@ -553,7 +553,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
       </p>
     <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/31">[issue 31]</a> 
       From SmartTemplates 2.8: Variables to remove text / tags from quoted parts 
-      and save space.
+      and save space. From 3.11 onwards this also supports changing texts of inline forwarded mail.
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
         <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
@@ -574,6 +574,10 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
         A note on <i>quoteLevel</i>, for images I would recommend 2 if you want to 
         remove images to retain some context in your replies. This will dramatically decrease email 
         sizes in long threads which contain a lot of images (e.g. screenshots).
+      </p>
+      <p>
+        To use the function (v3.11 and later) during forwarding, use the parameter quoteLevel=0 to remove 
+        text from the original mail text.
       </p>
     </li>
    </ul>
