@@ -1273,6 +1273,26 @@ SmartTemplate4.fileTemplates = {
     }    
   } ,
   
+  onExternalMessageRun: function(data, composeType) {
+    // similar to onItemClick / onSelectAdHoc
+    console.log("SmartTemplates.fileTemplates.onExternalMessageRun()");
+    console.log(composeType, data);
+    let msgHeader = data.messageHeader;
+    
+    SmartTemplate4.fileTemplates.armedEntry = 
+    { 
+      composeType: composeType, 
+      path: data.templateURL, 
+      message: msgHeader
+    };
+    // simulate a reply to this message!
+    debugger;
+    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id);
+    let uri = realMessage.folder.getUriForMsg(realMessage);   
+    
+      
+  },
+  
 	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info
 		this.pickFile(

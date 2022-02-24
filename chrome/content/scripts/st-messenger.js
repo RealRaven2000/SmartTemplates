@@ -49,11 +49,25 @@ async function onLoad(activatedWhileWindowOpen) {
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
   
+  // these events are repackaged in util-init() from notifications
   mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
   mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
-  
+  mylisteners["forwardWithTemplate"] = 
+    (event) => {
+      window.SmartTemplate4.fileTemplates.onExternalMessageRun.call(
+        window.SmartTemplate4.fileTemplates, event.detail, "fwd"
+      ); 
+    }
+
+  mylisteners["replyWithTemplate"] = 
+    (event) => { 
+      window.SmartTemplate4.fileTemplates.onExternalMessageRun.call(
+        window.SmartTemplate4.fileTemplates, event.detail, "rsp"
+      ) 
+    }; 
+
   for (let m in mylisteners) {
     if (m == "BackgroundUpdate")
       window.addEventListener("SmartTemplates.BackgroundUpdate" , mylisteners[m]);

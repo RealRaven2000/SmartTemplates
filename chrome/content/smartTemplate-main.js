@@ -149,9 +149,14 @@ END LICENSE BLOCK
     # [issue 167] Address Book list entries are not expanded with empty "To:" address
     # [issue 168] Fixed: custom background and text colors ignored in composer when writing new mails
 
-  Version 3.10.2 - WIP
+  Version 3.10.2 - 07/02/2022
     # [issue 170] UI to view license extension longer than 1 month before expiry of Pro license
     # [issue 171] Settings Dialog: Empty Examples tab in Thunderbird 91
+    
+  Version 3.11 - WIP
+    # [issue 172] Support deleting / replacing text in text of inline forwarded mail
+    # [issue 173] Forward with template -  implement triggering template from filter (using FiltaQuilla)
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

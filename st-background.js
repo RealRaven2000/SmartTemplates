@@ -236,6 +236,34 @@ async function main() {
   });
    
    
+  browser.runtime.onMessageExternal.addListener( (message, sender) =>  
+  {
+    // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
+    switch(message.command) {
+      case "forwardMessageWithTemplate":
+        messenger.NotifyTools.notifyExperiment(
+          {event: "forwardWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
+          (data) => {
+            console.log ("SmartTemplates forwarded message succesfully.");
+            return true;
+          }
+        );
+        break;
+      case "replyMessageWithTemplate":
+        messenger.NotifyTools.notifyExperiment(
+          {event: "replyWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
+          (data) => {
+            console.log ("SmartTemplates forwarded message succesfully.");
+            return true;
+          }
+        );
+        break;      
+    }
+  }
+
+  
+  ); 
+   
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
   messenger.WindowListener.registerChromeUrl([ 

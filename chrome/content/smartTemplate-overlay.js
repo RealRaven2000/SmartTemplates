@@ -1338,10 +1338,14 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 				    dText = theStrings[0].match(   /(\"[^)].*\")/   ), // get argument (includes quotation marks)
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
             rootEl = gMsgCompose.editor.rootElement;
+        const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
         
         if (dText && dText.length) {
           let s = util.unquotedRegex(dText[0], true),
               quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+          // [issue 172] treat forwarded text as "quote"
+          if (isForwardInline) 
+            quotes = rootEl.querySelectorAll("div.moz-forward-container");
               
           if (!isHTML) {
             // plain text:
@@ -1355,6 +1359,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
             for (let i=0; i<quotes.length; i++) {
               let q = quotes.item(i),
                   lv = isHTML ? quoteLevel(q, 1) : 1;
+              if (isForwardInline) lv=0; // [issue 172]
               if (lv == minQuoteLevel) {
                 // replaces everything on this level and higher (all its child blockquotes)
                 util.logDebug('%deleteQuotedText% - Removing quoted text (l=' + lv + '):\n' + s.source);
@@ -1379,27 +1384,36 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
       for (let i=0; i<quoteMatchesR.length; i++) {
         // parse out the argument (string to delete)
         msg = msg.replace(quoteMatchesR[i], '');  // remove from template
-        let params = {p1: null, p2: null, p3: null, p4: 0};
+        let params = {p1: null, p2: null, p3: 1, p4: 0};
         if (parseParams(quoteMatchesR[i], params, 'replaceQuotedText')) {
           // now replace text in quote body:
-          let minQuoteLevel = params.p3 || 1,
+          let minQuoteLevel = params.p3,
               s = util.unquotedRegex(params.p1, true),
               r = util.unquotedRegex(params.p2), 
               rootEl = gMsgCompose.editor.rootElement;
-              
+          const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
+          
           if (!isHTML) {
             // plain text:
             // look for <span style="white-space: pre-wrap; display: block;">
             let quotes = Array.from(rootEl.querySelectorAll("span[style*=white-space]"))
+            // [issue 172]
+            if (isForwardInline) 
+              quotes = rootEl.querySelectorAll("div.moz-forward-container");            
             for (let q of quotes) {
               q.innerText = q.innerText.replace(s, r);
             }
           }
           else {
             let quotes = rootEl.getElementsByTagName("blockquote"); // HTMLCollection
+            // [issue 172] treat forwarded text as "quote"
+            if (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0) 
+              quotes = rootEl.querySelectorAll("div.moz-forward-container");
+            
             for (let i=0; i<quotes.length; i++) {
               let q = quotes.item(i),
                   lv = quoteLevel(q, 1);
+              if (isForwardInline) lv=0; // [issue 172]
               if (lv == minQuoteLevel) {
                 // replaces everything on this level and higher (all its child blockquotes)
                 util.logDebug('%replaceQuotedText% - Replacing quoted text (l=' + lv + '): ' + q.innerText + '\nWith: ' + r.source);
@@ -1427,6 +1441,15 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
             minQuoteLevel = (theStrings.length>1) ? parseInt(theStrings[1]) : 1,
             minSize = (theStrings.length>2) ? parseInt(theStrings[2]) : 0,
             rootEl = gMsgCompose.editor.rootElement;
+        const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
+        
+        // [issue 172] treat forwarded text as "quote"
+        if (isForwardInline) {
+          let quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
+          if (quoteForward.length) {
+            rootEl = quoteForward.item(0);
+          }
+        }
             
         if (dText && dText.length) {
           let s = util.unquotedRegex(dText[0]),
@@ -1435,6 +1458,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
             let n = nodes.item(i),
                 lv = quoteLevel(n, 0),
                 loadingDeferred = false;
+            if (isForwardInline) lv = 0;
+            
             if (lv >= minQuoteLevel) {
               let tagSizeKB = n.outerHTML.length/1000;
               if (n.classList.contains("loading-internal")) {
@@ -1473,50 +1498,59 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 		try {
       util.addUsedPremiumFunction('replaceQuotedTags');
       for (let i=0; i<quoteTagsR.length; i++) {
-        let params = {p1: null, p2: null, p3: null};        
+        let params = {p1: null, p2: null, p3: 1};        
         // parse out the argument (string to delete)
         msg = msg.replace(quoteTagsR[i],''); // remove from template
-        if (parseParams(quoteTagsR[i], params, 'replaceQuotedText')) {
-          let minQuoteLevel = params.p3 || 1,
+        if (parseParams(quoteTagsR[i], params, 'replaceQuotedTags')) {
+          let minQuoteLevel = params.p3,
               minSize = params.p4 || 0,
               s = util.unquotedRegex(params.p1),
               r = util.unquotedRegex(params.p2),
               rootEl = gMsgCompose.editor.rootElement;
+          const isForwardInline = (util.isComposeTypeIsForwardInline() && minQuoteLevel == 0);
           
-            if (s) {
-              let nodes = rootEl.querySelectorAll(s); // NodeList
-              for (let i=0; i<nodes.length; i++) {
-                let n = nodes.item(i),
-                    lv = quoteLevel(n, 0),
-                    loadingDeferred = false;
-                if (lv >= minQuoteLevel) {
-                  let tagSizeKB = n.outerHTML.length/1000;
-                  if (n.classList.contains("loading-internal")) {
-                    let src = n.getAttribute('src');
-                    if (src && src.startsWith("mailbox")) {
-                      loadingDeferred = true; // we don't know it's real size - it is loaded later!
-                    }
-                  } 
-                  
-                  // replaces everything on this level and higher (all its child blockquotes)
-                  if (!loadingDeferred && (minSize && (tagSizeKB < minSize))) {
-                    util.logDebug('%replaceQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
-                    continue;
-                  }
-                  let newEl = htmlToElement(gMsgCompose.editor.document, r),
-                      txtDebug = '%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) +  
-                                ' with ' + displayTag(newEl) + ' \n'; // display tag + attributes
-                  if (loadingDeferred)
-                    txtDebug += "loading deferred, cannot determine size right now.";
-                  else
-                    txtDebug += " saved " + tagSizeKB + " kByte";
-                  
-                  n.parentNode.insertBefore(newEl, n)
-                  n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
-                  util.logDebug(txtDebug);  
-                }
-              }            
+          // [issue 172] treat forwarded text as "quote"
+          if (isForwardInline) {
+            let quoteForward = rootEl.querySelectorAll("div.moz-forward-container");
+            if (quoteForward.length) {
+              rootEl = quoteForward.item(0);
             }
+          }
+          
+          if (s) {
+            let nodes = rootEl.querySelectorAll(s); // NodeList
+            for (let i=0; i<nodes.length; i++) {
+              let n = nodes.item(i),
+                  lv = quoteLevel(n, 0),
+                  loadingDeferred = false;
+              if (lv >= minQuoteLevel) {
+                let tagSizeKB = n.outerHTML.length/1000;
+                if (n.classList.contains("loading-internal")) {
+                  let src = n.getAttribute('src');
+                  if (src && src.startsWith("mailbox")) {
+                    loadingDeferred = true; // we don't know it's real size - it is loaded later!
+                  }
+                } 
+                
+                // replaces everything on this level and higher (all its child blockquotes)
+                if (!loadingDeferred && (minSize && (tagSizeKB < minSize))) {
+                  util.logDebug('%replaceQuotedTags% - keeping tag: ' + displayTag(n) + " size = " + tagSizeKB + " kB");
+                  continue;
+                }
+                let newEl = htmlToElement(gMsgCompose.editor.document, r),
+                    txtDebug = '%replaceQuotedTags - Replacing quoted tag (l=' + lv + '): ' + displayTag(n) +  
+                              ' with ' + displayTag(newEl) + ' \n'; // display tag + attributes
+                if (loadingDeferred)
+                  txtDebug += "loading deferred, cannot determine size right now.";
+                else
+                  txtDebug += " saved " + tagSizeKB + " kByte";
+                
+                n.parentNode.insertBefore(newEl, n)
+                n.remove();  // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+                util.logDebug(txtDebug);  
+              }
+            }            
+          }
         }
       }
     }

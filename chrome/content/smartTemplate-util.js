@@ -59,7 +59,7 @@ SmartTemplate4.Util = {
           SmartTemplate4.Util.logDebugOptional("notifications", 
             `onBackgroundUpdates - dispatching custom event SmartTemplates.BackgroundUpdate.${data.event}\n` +
             `into ${window.document.location.href.toString()}`);
-          const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`);
+          const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`, {detail: data.detail});
           window.dispatchEvent(event); 
         }       
       }      

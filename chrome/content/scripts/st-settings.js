@@ -1,10 +1,9 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 /*
-  this script is necessary for [issue 171] Examples tab needs a bwoser element
+  this script is necessary for [issue 171] Examples tab needs a browser element
 */
 
-//original lds this after xul!!
 async function onLoad(activatedWhileWindowOpen) {
   const util = window.SmartTemplate4.Util;
   if (util.versionGreaterOrEqual(util.AppverFull, "91")) {
