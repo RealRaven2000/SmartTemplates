@@ -101,10 +101,10 @@
     "message": "I want to help with a one time donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Load Template…"
+    "message": "Load Account Settings…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Save Template…"
+    "message": "Save Account Settings…"
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
@@ -937,7 +937,7 @@
     "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
   },
   "pref_fwd.label": {
-    "message": "Apply the following template to the forwarded message"
+    "message": "Apply the following settings to the forwarded message"
   },
   "pref_fwd.tab": {
     "message": "Forward"
@@ -1027,7 +1027,7 @@
     "message": "Replace line breaks with <br>"
   },
   "pref_rsp.label": {
-    "message": "Apply the following template to the replied message"
+    "message": "Apply the following settings to the replied message"
   },
   "pref_rsp.tab": {
     "message": "Reply"
@@ -1519,8 +1519,11 @@
   "support.type.tech": {
     "message": "Technical"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suppress Mail Clients adding links to Email addresses."
+  },
+  "suppressQuoteHdr": {
+    "message": "Completely removes quote header regardless of account settings."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1659,7 +1662,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}3.10.2 hotfix - the examples were not shown in Thunderbird 91 with multi-process browsing enabled{L2}{L1}Support of the reply-to header with the variable %recipient%.{L2} {L1}Streamlined warning when template is changed after editing - also supports pushing ESCAPE to close the dialog.{L2}{L1}Fixed: using mailing lists in to, cc and bcc fields. See the change log below for an example of a newsletter for a group of undisclosed recipients.{L2}{L1}Fixed: custom background and text colors ignored when writing new mails. This could lead to problems the editor while using dark themes.{L2}"
+  "message": "{L1}Modifiy text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4).{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

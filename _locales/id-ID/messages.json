@@ -69,10 +69,10 @@
     "message": "Variabel berikut dapat digunakan di dalam [[...]]"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Memuat Template..."
+    "message": "Muat Pengaturan Akun…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Simpan Template..."
+    "message": "Simpan Pengaturan Akun…"
   },
   "btnYouTube.tooltip": {
     "message": "Kunjungi kanal Youtube 'Thunderbird Daily' - untuk tips dan tutorial dalam penggunaan Peralatan dan Pengaya lainnya"
@@ -279,7 +279,7 @@
     "message": "Email:"
   },
   "enterLicenseKey.button": {
-    "message": "Masukkan Kunci Lisensi..."
+    "message": "Masukkan Kunci Lisensi…"
   },
   "enterLicenseKey.tooltip": {
     "message": "Masukkan kode Kunci Lisensi yang telah dikirim ke Email anda."
@@ -826,7 +826,7 @@
     "message": "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Terapkan template berikut ke pesan yang diteruskan"
+    "message": "Terapkan pengaturan berikut ke pesan yang diteruskan"
   },
   "pref_fwd.tab": {
     "message": "Teruskan"
@@ -916,7 +916,7 @@
     "message": "Ganti jeda baris dengan <br>"
   },
   "pref_rsp.label": {
-    "message": "Terapkan template berikut ke pesan yang dibalas"
+    "message": "Terapkan pengaturan berikut ke pesan yang dibalas"
   },
   "pref_rsp.tab": {
     "message": "Balas"
@@ -949,7 +949,7 @@
     "message": "Pengaya Peralatan"
   },
   "pref_stationeryLink_tip": {
-    "message": "Dapatkan Peralatan..."
+    "message": "Dapatkan Peralatan…"
   },
   "pref_stationerySupport": {
     "message": "Dukungan Peralatan Pengaya"
@@ -1078,7 +1078,7 @@
     "message": "Setelan SmartTemplates"
   },
   "smarttemplate4_button": {
-    "message": "Ubah template / kutipan tajuk..."
+    "message": "Ubah template / kutipan tajuk…"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplate4"
@@ -1320,8 +1320,11 @@
   "support.type.tech": {
     "message": "Technical"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suppress Mail Clients menambahkan tautan ke alamat Email."
+  },
+  "suppressQuoteHdr": {
+    "message": "Benar-benar menghapus tajuk kutipan terlepas dari pengaturan akun."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1360,7 +1363,7 @@
     "message": "Paksa zona waktu khusus untuk variabel tanggal dengan mengganti parameter tz (GMT, EST, CST, PST, dll.)"
   },
   "timezonename.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "tip.fileTemplates": {
     "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
@@ -1393,7 +1396,7 @@
     "message": "Aris-T (AMO)"
   },
   "tzname.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "updates.title": {
     "message": "Pembaruan"

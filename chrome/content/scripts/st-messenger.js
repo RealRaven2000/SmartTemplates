@@ -56,14 +56,14 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
   mylisteners["forwardWithTemplate"] = 
     (event) => {
-      window.SmartTemplate4.fileTemplates.onExternalMessageRun.call(
+      window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
         window.SmartTemplate4.fileTemplates, event.detail, "fwd"
       ); 
     }
 
   mylisteners["replyWithTemplate"] = 
     (event) => { 
-      window.SmartTemplate4.fileTemplates.onExternalMessageRun.call(
+      window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
         window.SmartTemplate4.fileTemplates, event.detail, "rsp"
       ) 
     }; 

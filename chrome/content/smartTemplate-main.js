@@ -155,7 +155,8 @@ END LICENSE BLOCK
     
   Version 3.11 - WIP
     # [issue 172] Support deleting / replacing text in text of inline forwarded mail
-    # [issue 173] Forward with template -  implement triggering template from filter (using FiltaQuilla)
+    # [issue 173] Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
+    # [issue 174] %suppressQuoteHeaders% command to suppress all quote headers
 
     
 =========================

@@ -86,10 +86,10 @@
     "message": "As seguintes variáveis podem ser usadas dentro de [[...]]"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Carregar modelo..."
+    "message": "Carregar configurações da conta…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Salvar modelo..."
+    "message": "Salvar configurações da conta…"
   },
   "btnYouTube.tooltip": {
     "message": "Visite o canal 'Thunderbird Daily' no YouTube - para dicas e tutoriais usando o Stationery e outras complementos"
@@ -320,7 +320,7 @@
     "message": "E-mail:"
   },
   "enterLicenseKey.button": {
-    "message": "Digite a chave de licença..."
+    "message": "Digite a chave de licença…"
   },
   "enterLicenseKey.tooltip": {
     "message": "Digite a chave de licença enviado por e-mail."
@@ -939,7 +939,7 @@
     "message": "Certifique-se de que a posição do cursor comece em um parágrafo. Recomendamos também a opção compor do Thunderbird para criar um novo parágrafo ao pressionar a tecla [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Aplicar o seguinte modelo ao encaminhar mensagens"
+    "message": "Aplique as seguintes configurações à mensagem encaminhada"
   },
   "pref_fwd.tab": {
     "message": "Encaminhar"
@@ -1029,7 +1029,7 @@
     "message": "Substituir quebra de linha por <br>"
   },
   "pref_rsp.label": {
-    "message": "Aplicar o seguinte modelo ao responder mensagens"
+    "message": "Aplique as seguintes configurações à mensagem respondida"
   },
   "pref_rsp.tab": {
     "message": "Responder"
@@ -1062,7 +1062,7 @@
     "message": "Addon Stationery"
   },
   "pref_stationeryLink_tip": {
-    "message": "Obter Stationery..."
+    "message": "Obter Stationery…"
   },
   "pref_stationerySupport": {
     "message": "Apoie o Stationery"
@@ -1213,7 +1213,7 @@
     "message": "Opções do SmartTemplates"
   },
   "smarttemplate4_button": {
-    "message": "Editar modelos e cabeçalhos das mensagens anteriores..."
+    "message": "Editar modelos e cabeçalhos das mensagens anteriores…"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
@@ -1515,8 +1515,11 @@
   "support.type.tech": {
     "message": "Problema técnico"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suprimir cliente de email adicionando links aos endereços de email."
+  },
+  "suppressQuoteHdr": {
+    "message": "Remove completamente o cabeçalho da cotação, independentemente das configurações da conta."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1655,7 +1658,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}3.10.2 hotfix - os exemplos não foram mostrados no Thunderbird 91 com navegação multiprocessada ativada{L2}{L1}Suporte do cabeçalho de resposta com a variável %recipient%.{L2} {L1}Aviso simplificado quando o modelo é alterado após a edição - também suporta pressionar ESCAPE para fechar a caixa de diálogo.{L2}{L1}Corrigido: usando listas de discussão nos campos para, cc e bcc. Consulte o registro de alterações abaixo para obter um exemplo de boletim informativo para um grupo de destinatários não divulgados.{L2}{L1}Corrigido: fundo personalizado e cores de texto ignoradas ao escrever novos e-mails. Isso pode causar problemas no editor ao usar temas escuros.{L2}"
+    "message": "{L1}Modificar texto no corpo do e-mail encaminhado [inline]. Isso agora funciona nas funções: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Encaminhamento automático / Resposta automática com SmartTemplate por meio de regras de filtro - isso significa você pode acionar qualquer modelo usando filtros (usando FiltaQuilla 3.4).{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos os cabeçalhos de cotação.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

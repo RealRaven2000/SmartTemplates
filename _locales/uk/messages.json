@@ -69,10 +69,10 @@
     "message": "Наступні змінні можуть використовуватися всередині [[...]]"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Завантажити шаблон..."
+    "message": "Завантажити налаштування облікового запису…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Зберегти шаблон..."
+    "message": "Зберегти налаштування облікового запису…"
   },
   "btnYouTube.tooltip": {
     "message": "Відвідайте YouTube канал \"Thunderbird Daily\" - для поради та навчальні посібників з використання додатків"
@@ -279,7 +279,7 @@
     "message": "Email:"
   },
   "enterLicenseKey.button": {
-    "message": "Введіть ліцензійний ключ ..."
+    "message": "Введіть ліцензійний ключ …"
   },
   "enterLicenseKey.tooltip": {
     "message": "Введіть код ліцензійного ключа, надісланий Вам електронною поштою."
@@ -826,7 +826,7 @@
     "message": "Переконайтеся, що позиція курсора починається з абзацу. Ми також рекомендуємо опцію Thunderbird Composition, щоб створити новий абзац, натиснувши клавішу [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Застосувати наступний шаблон до переадресованого повідомлення"
+    "message": "Застосуйте наступні налаштування до пересланого повідомлення"
   },
   "pref_fwd.tab": {
     "message": "Переслати"
@@ -916,7 +916,7 @@
     "message": "Замінити позначення нового рядку символом <br>"
   },
   "pref_rsp.label": {
-    "message": "Застосувати наступний шаблон до повідомлення з відповіддю"
+    "message": "Застосуйте наведені нижче налаштування до повідомлення з відповіддю"
   },
   "pref_rsp.tab": {
     "message": "Відповідь"
@@ -949,7 +949,7 @@
     "message": "Додаток Stationery "
   },
   "pref_stationeryLink_tip": {
-    "message": "Завантажити Stationery ..."
+    "message": "Завантажити Stationery …"
   },
   "pref_stationerySupport": {
     "message": "Додано підтримку додатку Stationery "
@@ -1078,7 +1078,7 @@
     "message": "SmartTemplates налаштування"
   },
   "smarttemplate4_button": {
-    "message": "Редагувати шаблони / цитати заголовків ..."
+    "message": "Редагувати шаблони / цитати заголовків …"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
@@ -1320,8 +1320,11 @@
   "support.type.tech": {
     "message": "Technical"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти."
+  },
+  "suppressQuoteHdr": {
+    "message": "Повністю видаляє заголовок цитати незалежно від налаштувань облікового запису."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro stuff "
@@ -1360,7 +1363,7 @@
     "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
   },
   "timezonename.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "tip.fileTemplates": {
     "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
@@ -1393,7 +1396,7 @@
     "message": "tymofiy (BabelZilla)"
   },
   "tzname.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "updates.title": {
     "message": "Оновлення"

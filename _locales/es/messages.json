@@ -101,10 +101,10 @@
     "message": "Quiero ayudar con una donación única."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Cargar plantilla…"
+    "message": "Carrega la configuració del compte…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Guardar plantilla…"
+    "message": "Guardar la configuración de la cuenta…"
   },
   "btnYouTube.tooltip": {
     "message": "Visite el canal \"Thunderbird Daily\" en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos."
@@ -937,7 +937,7 @@
     "message": "Garantiza que la posición del cursor se inicia dentro de un párrafo. También recomendamos seleccionar en Opciones - Redacción de Thunderbird la opción crear un nuevo párrafo al presionar la tecla [Intro]."
   },
   "pref_fwd.label": {
-    "message": "Aplicar esta plantilla al mensaje reenviado"
+    "message": "Aplicar la siguiente configuración al mensaje reenviado"
   },
   "pref_fwd.tab": {
     "message": "Reenviar"
@@ -1027,7 +1027,7 @@
     "message": "Sustituir salto de línea por <br>"
   },
   "pref_rsp.label": {
-    "message": "Aplicar esta plantilla al mensaje de respuesta"
+    "message": "Aplique la siguiente configuración al mensaje respondido"
   },
   "pref_rsp.tab": {
     "message": "Responder"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Soporte técnico"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suprimir los clientes de correo añadiendo enlaces a direcciones de correo"
+  },
+  "suppressQuoteHdr": {
+    "message": "Elimina completamente el encabezado de la cotización independientemente de la configuración de la cuenta."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Corrección 3.10.2: los ejemplos no se mostraban en Thunderbird 91 con la navegación multiproceso habilitada{L2}{L1}Compatibilidad con el encabezado de respuesta con la variable %destinatario%.{L2} {L1}Advertencia optimizada cuando se cambia la plantilla después de editarla; también se admite presionar ESCAPE para cerrar el cuadro de diálogo.{L2}{L1}Corregido: usando listas de correo en los campos para, cc y bcc. Consulte el registro de cambios a continuación para ver un ejemplo de un boletín informativo para un grupo de destinatarios no revelados.{L2}{L1}Corregido: los colores de fondo y de texto personalizados se ignoraban al escribir correos nuevos. Esto podría ocasionar problemas al editor al usar temas oscuros.{L2}"
+    "message": "{L1}Modificar el texto en el cuerpo del correo reenviado [en línea]. Esto ahora funciona en las funciones: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenvío automático/Respuesta automática con SmartTemplate mediante reglas de filtro; esto significa puede activar cualquier plantilla usando filtros (usando FiltaQuilla 3.4).{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos los encabezados de cotizaciones.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

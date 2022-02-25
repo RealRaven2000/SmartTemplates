@@ -101,10 +101,10 @@
     "message": "Ich möchte mit einer einmaligen Spende helfen."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Vorlage laden…"
+    "message": "Kontoeinstellungen laden…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Vorlage speichern…"
+    "message": "Kontoeinstellungen speichern…"
   },
   "btnYouTube.tooltip": {
     "message": "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons."
@@ -934,7 +934,7 @@
     "message": "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen."
   },
   "pref_fwd.label": {
-    "message": "Folgende Vorlage beim Weiterleiten hinzufügen"
+    "message": "Folgende Einstellungen für weitergeleitete Nachrichten anwenden"
   },
   "pref_fwd.tab": {
     "message": "Weiterleiten"
@@ -1024,7 +1024,7 @@
     "message": "Ersetze Zeilenumbrüche durch <br>"
   },
   "pref_rsp.label": {
-    "message": "Folgende Vorlage beim Antworten hinzufügen"
+    "message": "Folgende Einstellungen beim Antworten verwenden"
   },
   "pref_rsp.tab": {
     "message": "Antworten"
@@ -1516,8 +1516,11 @@
   "support.type.tech": {
     "message": "Technisch"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Verhindern dass Mail Programme Email Adressen verlinken."
+  },
+  "suppressQuoteHdr": {
+    "message": "Entfernt den Zitatkopf vollständig, unabhängig von den Kontoeinstellungen."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1656,7 +1659,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}3.10.2 Hotfix – die Beispiele wurden in Thunderbird 91 nicht angezeigt, wenn Multi-Prozess-Browsing aktiviert war{L2}{L1}Unterstützung des Reply-to-Headers mit der Variable %recipient%.{L2} {L1}Optimierte Warnung, wenn die Vorlage nach der Bearbeitung geändert wird – unterstützt auch das Drücken von ESCAPE, um den Dialog zu schließen.{L2}{L1}Behoben: Verwendung Mailinglisten in den Feldern to, cc und bcc. Siehe das Änderungsprotokoll unten für ein Beispiel eines Newsletters für eine Gruppe nicht offengelegter Empfänger.{L2}{L1}Behoben: benutzerdefinierte Hintergrund- und Textfarben werden beim Schreiben neuer E-Mails ignoriert. Dies könnte zu Problemen mit dem Editor führen, wenn dunkle Themen verwendet werden.{L2}"
+    "message": "{L1}Kann den Text im Hauptteil der weitergeleiteten E-Mail verändern [inline]. Das geht jetzt mit den Funktionen: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisches Weiterleiten / Automatisches Antworten mit SmartTemplate durch Filterregeln - das heißt Sie können jede Vorlage mit Filtern auslösen (mit FiltaQuilla 3.4). {L2}{L1} %suppressQuoteHeaders%-Befehl, um alle Zitat-Header zu unterdrücken.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

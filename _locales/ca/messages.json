@@ -102,10 +102,10 @@
     "message": "Vull ajudar amb una donació única."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Carrega la plantilla…"
+    "message": "Carrega la configuració del compte…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Desa la plantilla…"
+    "message": "Desa la configuració del compte…"
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
@@ -938,7 +938,7 @@
     "message": "Assegureu-vos que la posició del cursor comença en un paràgraf. També recomanem l'opció de composició del Thunderbird per crear un paràgraf nou en prémer la tecla [Retorn]."
   },
   "pref_fwd.label": {
-    "message": "Aplicar lo modèl seguent pels messatges transferits."
+    "message": "Apliqueu la configuració següent al missatge reenviat"
   },
   "pref_fwd.tab": {
     "message": "Transferir"
@@ -1028,7 +1028,7 @@
     "message": "Remplaçatz los sauts de linha per <br>"
   },
   "pref_rsp.label": {
-    "message": "Aplicar lo modèl seguent per las responsas"
+    "message": "Apliqueu la configuració següent al missatge contestat"
   },
   "pref_rsp.tab": {
     "message": "Respondre"
@@ -1520,8 +1520,11 @@
   "support.type.tech": {
     "message": "Tècnic"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suppress Mail Clients adding links to Email addresses."
+  },
+  "suppressQuoteHdr": {
+    "message": "Elimina completament la capçalera del pressupost independentment de la configuració del compte."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1660,7 +1663,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Reparació ràpida 3.10.2: els exemples no es mostraven a Thunderbird 91 amb la navegació multiprocés activada{L2}{L1}Suport de la capçalera de resposta amb la variable %recipient%.{L2} {L1}Avís simplificat quan es canvia la plantilla després de l'edició; també admet pressionar ESCAPE per tancar el diàleg.{L2}{L1}Corregit: utilitzant llistes de correu als camps a, cc i cco. Consulteu el registre de canvis a continuació per obtenir un exemple de butlletí per a un grup de destinataris no revelats.{L2}{L1}Corregit: el fons personalitzat i els colors del text s'ignoren quan s'escriuen missatges nous. Això podria provocar problemes a l'editor mentre utilitza temes foscos.{L2}"
+    "message": "{L1}Modificar el text al cos del correu reenviat [en línia]. Això ara funciona a les funcions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenviament automàtic / Resposta automàtica amb SmartTemplate mitjançant regles de filtre, això vol dir podeu activar qualsevol plantilla mitjançant filtres (utilitzant FiltaQuilla 3.4).{L2}{L1} Ordre %suppressQuoteHeaders% per suprimir totes les capçaleres de cites.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

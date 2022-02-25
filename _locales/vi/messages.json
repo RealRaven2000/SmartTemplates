@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} 3.10.2 hotfix - các Ví dụ không được hiển thị trong Thunderbird 91 có bật duyệt qua nhiều quá trình {L2}{L1} Hỗ trợ tiêu đề trả lời với biến %recipient%. {L2} {L1} Cảnh báo sắp xếp hợp lý khi mẫu được thay đổi sau khi chỉnh sửa - cũng hỗ trợ đẩy ESCAPE để đóng hộp thoại. {L2} {L1} Đã sửa: sử dụng danh sách gửi thư trong các trường tới, cc và bcc. Xem nhật ký thay đổi bên dưới để biết ví dụ về bản tin cho một nhóm người nhận không được tiết lộ. {L2}{L1} Đã sửa: màu nền và màu văn bản tùy chỉnh bị bỏ qua khi viết thư mới. Điều này có thể dẫn đến sự cố với trình chỉnh sửa khi sử dụng các chủ đề tối. {L2}"
+    "message": "{L1}Змінити текст у тілі пересланої пошти [inline]. Тепер це працює у функціях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматичне пересилання/автоматична відповідь за допомогою SmartTemplate за допомогою правил фільтрування - це означає, що це означає ви можете запустити будь-який шаблон за допомогою фільтрів (за допомогою FiltaQuilla 3.4).{L2}{L1} Команда %suppressQuoteHeaders% для придушення всіх заголовків цитат.{L2}"
   },
   "window-title": {
     "message": "Chào mừng bạn đến với $addonName$",

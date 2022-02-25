@@ -1273,9 +1273,9 @@ SmartTemplate4.fileTemplates = {
     }    
   } ,
   
-  onExternalMessageRun: function(data, composeType) {
+  onExternalMailProcess: function(data, composeType) {
     // similar to onItemClick / onSelectAdHoc
-    console.log("SmartTemplates.fileTemplates.onExternalMessageRun()");
+    console.log("SmartTemplates.fileTemplates.onExternalMailProcess()");
     console.log(composeType, data);
     let msgHeader = data.messageHeader;
     

@@ -1080,6 +1080,10 @@ SmartTemplate4.classSmartTemplate = function() {
 					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
 					if (flags.isFileTemplate) {
 						util.logDebugOptional('functions.insertTemplate','processing fileTemplate(' + fileTemplateSource + ')');
+            
+            if (rawTemplate.match(/%suppressQuoteHeaders*%/gm)) {
+              flags.suppressQuoteHeaders = true;
+            }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
 						template = getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
 					}
@@ -1091,7 +1095,12 @@ SmartTemplate4.classSmartTemplate = function() {
 					quoteHeader = getQuoteHeader(st4composeType, idKey);
 				}
         
+        if (flags.suppressQuoteHeaders) {
+          util.logDebug("Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)")
+          quoteHeader = "";
+        }
 				let isQuoteHeader = quoteHeader ? true : false;
+        
 				switch(composeCase) {
 					case 'new':
 					case 'tbtemplate':
@@ -1100,7 +1109,10 @@ SmartTemplate4.classSmartTemplate = function() {
 					  // when do we remove old headers?
 						break;
 					case 'reply':
-						if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
+            if (flags.suppressQuoteHeaders) {
+              delReplyHeader(idKey, false);
+            }
+            else if (pref.getCom("mail.identity." + idKey + ".auto_quote", true)) {
 							// stationery has a placeholder for the original quote text.
 							if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
 								// when in stationery we only delete the quote header and not all preceding quotes!
@@ -1113,7 +1125,7 @@ SmartTemplate4.classSmartTemplate = function() {
 					case 'forward':
 						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
 							break;
-						if (pref.isDeleteHeaders(idKey, st4composeType, false)) {
+						if (flags.suppressQuoteHeaders || pref.isDeleteHeaders(idKey, st4composeType, false)) {
 							delForwardHeader(idKey, false);
 						}
 						break;

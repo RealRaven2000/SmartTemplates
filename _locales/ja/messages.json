@@ -101,10 +101,10 @@
     "message": "1 回限りの寄付を行いたい"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "テンプレートを読み込みます..."
+    "message": "アカウント設定の読み込み…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "テンプレートを保存します..."
+    "message": "アカウント設定を保存…"
   },
   "btnYouTube.tooltip": {
     "message": "'Thunderbird Daily' YouTube チャネルを開きます。Stationery やそのほかのアドオンの利用法のチュートリアルを紹介しています"
@@ -320,7 +320,7 @@
     "message": "メールアドレス:"
   },
   "enterLicenseKey.button": {
-    "message": "ライセンスキーを入力..."
+    "message": "ライセンスキーを入力…"
   },
   "enterLicenseKey.tooltip": {
     "message": "メールに書かれたライセンスキーコードを入力してください。"
@@ -937,7 +937,7 @@
     "message": "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します"
   },
   "pref_fwd.label": {
-    "message": "転送メッセージに以下のテンプレートを適用する"
+    "message": "転送されるメッセージに次の設定を適用します"
   },
   "pref_fwd.tab": {
     "message": "転送"
@@ -1027,7 +1027,7 @@
     "message": "改行を <br> に変換する"
   },
   "pref_rsp.label": {
-    "message": "返信メッセージに以下のテンプレートを適用する"
+    "message": "返信されたメッセージに次の設定を適用します"
   },
   "pref_rsp.tab": {
     "message": "返信"
@@ -1171,7 +1171,7 @@
     "message": "アカウントに設定されている署名 (-- 無し)"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "テンプレートの変更..."
+    "message": "テンプレートの変更…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "違うテンプレートを選択 - 本文の編集の前に選択してください！"
@@ -1198,7 +1198,7 @@
     "message": "SmartTemplates 設定"
   },
   "smarttemplate4_button": {
-    "message": "テンプレートと引用ヘッダーの設定..."
+    "message": "テンプレートと引用ヘッダーの設定…"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
@@ -1234,7 +1234,7 @@
     "message": "テンプレートファイル"
   },
   "st.fileTemplates.configureMenu": {
-    "message": "メニューアイテムの設定..."
+    "message": "メニューアイテムの設定…"
   },
   "st.fileTemplates.error.charSet": {
     "message": "文字セット [{1}] からの HTML テンプレートの変換に問題が発生しました。\n文字列の生データを使用します。\n文字化けが発生する場合には、ヘッダー部に  'meta charset"
@@ -1262,7 +1262,7 @@
     }    
   },
   "st.fileTemplates.restrictTemplateCats": {
-    "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください...",
+    "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください…",
     "placeholders": {
       "max_Cats": {
         "content": "$1",
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "技術的な質問"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "メールアドレスにリンクを設定することを抑制する"
+  },
+  "suppressQuoteHdr": {
+    "message": "アカウント設定に関係なく、見積もりヘッダーを完全に削除します。"
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1588,7 +1591,7 @@
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
   "tip.fileTemplates": {
-    "message": "ここをクリックして、Stationery や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください..."
+    "message": "ここをクリックして、Stationery や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください…"
   },
   "to.label": {
     "message": "受信者の名前とメールアドレス (既定)"
@@ -1658,7 +1661,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1} 3.10.2ホットフィックス-マルチプロセスブラウジングが有効になっているThunderbird91では例が表示されませんでした{L2} {L1}変数 %recipient% を使用した reply-to ヘッダーのサポート。{L2} {L1}編集後にテンプレートが変更された場合の警告の合理化 -ESCAPE を押してダイアログを閉じることもサポートします。{L2} {L1}修正：使用 to、cc、および bcc フィールドのメーリングリスト。非公開の受信者グループのニュースレターの例については、以下の変更ログを参照してください。{L2} {L1}修正済み：新しいメールを作成するときに、カスタムの背景色とテキストの色が無視される。これにより、ダークテーマを使用しているときにエディターで問題が発生する可能性があります。{L2}"
+    "message": "{L1}転送されたメールの本文のテキストを変更します[インライン]。 これは次の関数で機能するようになりました：％deleteQuotedText（）％、％replaceQuotedText（）％、％deleteQuotedTags（）％、％replaceQuotedTags（）％。{L2} {L1}フィルタールールによるSmartTemplateによる自動転送/自動応答-これは フィルタを使用して（FiltaQuilla 3.4を使用して）任意のテンプレートをトリガーできます。{L2} {L1}％suppressQuoteHeaders％コマンドを使用して、すべての引用符ヘッダーを抑制します。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

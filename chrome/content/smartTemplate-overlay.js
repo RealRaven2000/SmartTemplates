@@ -1800,7 +1800,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"dbg1", "sig", "newsgroup", 
 		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
-    "matchTextFromSubject", "matchTextFromBody",
+    "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders",
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
 		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
@@ -2373,7 +2373,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					break;
 				case "quoteHeader":  // is this useful when Stationery does not exist?
 					return "<span class=\"quoteHeader-placeholder\"></span>";
-					
 				case "quotePlaceholder":  
           // move  the quote up to level n. use "all"
           let maxQuoteLevel = removeParentheses(arg),
@@ -2381,6 +2380,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				  return "<blockquote type=\"cite\" class='SmartTemplate'" + levelAtt + ">\n"
 					     + "</blockquote>";
 				  break;
+        case "suppressQuoteHeaders":
+          SmartTemplate4.PreprocessingFlags.suppressQuoteHeaders = true;
+          return "";
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
 					return finalize(token, expand("%H%:%M%:%S%"));

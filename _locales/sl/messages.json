@@ -101,10 +101,10 @@
     "message": "Želim pomagati z enkratno donacijo."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Naloži predlogo ..."
+    "message": "Naloži nastavitve računa…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Shrani predlogo ..."
+    "message": "Shrani nastavitve računa…"
   },
   "btnYouTube.tooltip": {
     "message": "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih"
@@ -937,7 +937,7 @@
     "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Uveljavi naslednjo predlogo za posredovano sporočilo"
+    "message": "Za posredovano sporočilo uporabite naslednje nastavitve"
   },
   "pref_fwd.tab": {
     "message": "Posreduj"
@@ -1027,7 +1027,7 @@
     "message": "Nadomesti prelome vrstic z <br>"
   },
   "pref_rsp.label": {
-    "message": "Uveljavi naslednjo predlogo za odgovor"
+    "message": "Za odgovorjeno sporočilo uporabite naslednje nastavitve"
   },
   "pref_rsp.tab": {
     "message": "Odgovori"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Tehnična podpora"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave."
+  },
+  "suppressQuoteHdr": {
+    "message": "Popolnoma odstrani glavo ponudbe ne glede na nastavitve računa."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Popravek 3.10.2 – Primeri niso bili prikazani v Thunderbirdu 91 z omogočenim večprocesnim brskanjem{L2}{L1}Podpora za glavo odgovora s spremenljivko %recipient%.{L2} {L1}Poenostavljeno opozorilo, ko se predloga spremeni po urejanju – podpira tudi potiskanje ESCAPE, da zaprete pogovorno okno.{L2}{L1}Popravljeno: uporaba poštni seznami v poljih do, cc in bcc. Oglejte si spodnji dnevnik sprememb za primer glasila za skupino nerazkritih prejemnikov.{L2}{L1}Popravljeno: barve ozadja in besedila po meri so bile prezrte pri pisanju nove pošte. To bi lahko povzročilo težave z urejevalnikom pri uporabi temnih tem.{L2}"
+    "message": "{L1}Spremenite besedilo v telesu posredovane pošte [inline]. To zdaj deluje v funkcijah: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Samodejno posredovanje/samodejni odgovor s SmartTemplate prek pravil filtra - to pomeni, da to pomeni. lahko sprožite katero koli predlogo s filtri (z uporabo FiltaQuilla 3.4).{L2}{L1} ukaz %suppressQuoteHeaders% za zatiranje vseh glav narekovajev.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

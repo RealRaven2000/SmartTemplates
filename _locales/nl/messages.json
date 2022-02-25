@@ -101,10 +101,10 @@
     "message": "Ik wil helpen met een eenmalige donatie."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Sjabloon laden…"
+    "message": "Accountinstellingen laden…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Sjabloon opslaan…"
+    "message": "Accountinstellingen opslaan…"
   },
   "btnYouTube.tooltip": {
     "message": "Bezoek het YouTube-kanaal ‘Thunderbird Daily’ voor tips en handleidingen voor het gebruik van Stationery en andere add-ons"
@@ -937,7 +937,7 @@
     "message": "Zorgt ervoor dat de cursorpositie met een alinea begint. Het gebruik van de optie voor het maken van een nieuwe alinea bij indrukken van de Enter-toets voor Opstellen in Thunderbird wordt ook aanbevolen."
   },
   "pref_fwd.label": {
-    "message": "Volgende sjabloon toepassen op doorgestuurde berichten"
+    "message": "Pas de volgende instellingen toe op het doorgestuurde bericht:"
   },
   "pref_fwd.tab": {
     "message": "Doorsturen"
@@ -1027,7 +1027,7 @@
     "message": "Regelafbrekingen vervangen door <br>"
   },
   "pref_rsp.label": {
-    "message": "Volgende sjabloon toepassen op antwoordbericht"
+    "message": "Pas de volgende instellingen toe op het beantwoorde bericht"
   },
   "pref_rsp.tab": {
     "message": "Antwoorden"
@@ -1519,8 +1519,11 @@
   "support.type.tech": {
     "message": "Technisch"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Toevoegen van koppelingen aan e-mailadressen door mailclients onderdrukken."
+  },
+  "suppressQuoteHdr": {
+    "message": "Verwijdert de quote-header volledig, ongeacht de accountinstellingen."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1659,7 +1662,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}3.10.2 hotfix - de voorbeelden werden niet getoond in Thunderbird 91 met browsen met meerdere processen ingeschakeld{L2}{L1}Ondersteuning van de reply-to-header met de variabele %recipient%.{L2} {L1}Gestroomlijnde waarschuwing wanneer sjabloon wordt gewijzigd na bewerking - ondersteunt ook push ESCAPE om het dialoogvenster te sluiten.{L2}{L1}Opgelost: gebruik mailinglijsten in de velden to, cc en bcc. Zie het wijzigingslogboek hieronder voor een voorbeeld van een nieuwsbrief voor een groep niet-openbaar gemaakte ontvangers.{L2} {L1}Opgelost: aangepaste achtergrond- en tekstkleuren genegeerd bij het schrijven van nieuwe e-mails. Dit kan leiden tot problemen met de editor bij het gebruik van donkere thema's.{L2}"
+  "message": "{L1}Wijzig tekst in hoofdtekst van doorgestuurde e-mail [inline]. Dit werkt nu in de functies: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisch doorsturen / automatisch beantwoorden met SmartTemplate via filterregels - dit betekent u kunt elke sjabloon activeren met behulp van filters (met behulp van FiltaQuilla 3.4). {L2}{L1} %suppressQuoteHeaders%-opdracht om alle aanhalingstekens te onderdrukken.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

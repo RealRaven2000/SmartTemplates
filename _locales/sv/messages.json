@@ -101,10 +101,10 @@
     "message": "Jag vill hjälpa till med en engångs donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Läs in mall…"
+    "message": "Ladda kontoinställningar..."
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Spara mall…"
+    "message": "Spara kontoinställningar..."
   },
   "btnYouTube.tooltip": {
     "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder Stationery och andra tillägg"
@@ -937,7 +937,7 @@
     "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Tillämpa följande mall på det vidarebefordrade meddelandet"
+    "message": "Tillämpa följande inställningar på det vidarebefordrade meddelandet"
   },
   "pref_fwd.tab": {
     "message": "Framåt"
@@ -1027,7 +1027,7 @@
     "message": "Ersätt ny rad med <br>"
   },
   "pref_rsp.label": {
-    "message": "Tillämpa följande mall på svarsmeddelandet"
+    "message": "Använd följande inställningar på det besvarade meddelandet"
   },
   "pref_rsp.tab": {
     "message": "Svara"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Teknisk"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Förhindra att e-postklienter lägger till länkar i e-postadresser."
+  },
+  "suppressQuoteHdr": {
+    "message": "Tar bort offerthuvudet helt oavsett kontoinställningar."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}3.10.2 snabbkorrigering – exemplen visades inte i Thunderbird 91 med multi-process surfing aktiverad{L2}{L1}Stöd för svarshuvudet med variabeln %recipient%.{L2} {L1}Strömlinjeformad varning när mallen ändras efter redigering - stöder även tryckning av ESCAPE för att stänga dialogen.{L2}{L1}Rättad: med e-postlistor i fälten till, cc och hemlig kopia. Se ändringsloggen nedan för ett exempel på ett nyhetsbrev för en grupp hemliga mottagare.{L2}{L1}Rättad: anpassade bakgrunds- och textfärger ignoreras när du skriver nya e-postmeddelanden. Detta kan leda till problem med redigeraren när du använder mörka teman.{L2}"
+    "message": "{L1}Ändra text i brödtexten i vidarebefordrad e-post [inline]. Detta fungerar nu i funktionerna: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisk vidarebefordran / Automatiskt svar med SmartTemplate genom filterregler - detta betyder du kan trigga vilken mall som helst med hjälp av filter (med FiltaQuilla 3.4).{L2}{L1} kommandot %suppressQuoteHeaders% för att undertrycka alla citattecken.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

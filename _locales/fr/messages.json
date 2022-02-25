@@ -101,10 +101,10 @@
     "message": "Je veux aider avec un don unique."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Charger un modèle…"
+    "message": "Charger les paramètres du compte…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Enregistrer le modèle…"
+    "message": "Enregistrer les paramètres du compte…"
   },
   "btnYouTube.tooltip": {
     "message": "Allez visiter la chaîne YouTube \"Thunderbird Daily\" pour des astuces et tutoriels d'utilisation de Stationery et autres modules"
@@ -937,7 +937,7 @@
     "message": "S'assurer que le curseur se situe dans un paragraphe. Nous demandons également la création d'un nouveau paragraphe lorsque l'on appuie sur la touche [Entrée] à l'option de composition Thunderbird."
   },
   "pref_fwd.label": {
-    "message": "Appliquer le modèle suivant pour les messages transférés."
+    "message": "Appliquer les paramètres suivants au message transféré"
   },
   "pref_fwd.tab": {
     "message": "Transférer"
@@ -1027,7 +1027,7 @@
     "message": "Remplacez les sauts de ligne par <br>"
   },
   "pref_rsp.label": {
-    "message": "Appliquer le modèle suivant pour les réponses"
+    "message": "Appliquer les paramètres suivants au message répondu"
   },
   "pref_rsp.tab": {
     "message": "Répondre"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Support technique"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Supprimer les clients mail qui ajoutent des liens aux adresses électroniques."
+  },
+  "suppressQuoteHdr": {
+    "message": "Supprime complètement l'en-tête de devis, quels que soient les paramètres du compte."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Hotfix 3.10.2 - les exemples n'étaient pas affichés dans Thunderbird 91 avec la navigation multi-processus activée{L2}{L1}Prise en charge de l'en-tête de réponse avec la variable %recipient%.{L2} {L1}Avertissement simplifié lorsque le modèle est modifié après modification - prend également en charge le fait d'appuyer sur ÉCHAP pour fermer la boîte de dialogue.{L2}{L1}Corrigé : utilisation listes de diffusion dans les champs to, cc et bcc. Consultez le journal des modifications ci-dessous pour un exemple de newsletter destinée à un groupe de destinataires non divulgués.{L2}"
+    "message": "{L1}Modifier le texte dans le corps du courrier transféré [en ligne]. Cela fonctionne maintenant dans les fonctions : %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Transfert automatique / Réponse automatique avec SmartTemplate via des règles de filtrage - cela signifie vous pouvez déclencher n'importe quel modèle à l'aide de filtres (à l'aide de FiltaQuilla 3.4).{L2}{L1} Commande %suppressQuoteHeaders% pour supprimer tous les en-têtes de citation.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -101,10 +101,10 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "载入模板…"
+    "message": "加载帐户设置…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存模板…"
+    "message": "保存帐户设置…"
   },
   "btnYouTube.tooltip": {
     "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 Stationery 和其他扩展的技巧与教程"
@@ -937,7 +937,7 @@
     "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [Enter] 键创建新段落。"
   },
   "pref_fwd.label": {
-    "message": "将以下模板应用于转发消息"
+    "message": "将以下设置应用于转发的消息"
   },
   "pref_fwd.tab": {
     "message": "转发"
@@ -1027,7 +1027,7 @@
     "message": "用 <br> 换行"
   },
   "pref_rsp.label": {
-    "message": "将以下模板应用于回复消息"
+    "message": "将以下设置应用于回复的消息"
   },
   "pref_rsp.tab": {
     "message": "回复"
@@ -1060,7 +1060,7 @@
     "message": "附加组件 Stationery"
   },
   "pref_stationeryLink_tip": {
-    "message": "获得 Stationery..."
+    "message": "获得 Stationery…"
   },
   "pref_stationerySupport": {
     "message": "支持附加组件 Stationery"
@@ -1171,7 +1171,7 @@
     "message": "Siganture 签名（来自TB帐户设置，但没有'--'"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "变更范本..."
+    "message": "变更范本…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "加载其他模板-在编辑电子邮件之前使用！"
@@ -1198,7 +1198,7 @@
     "message": "SmartTemplates 选项"
   },
   "smarttemplate4_button": {
-    "message": "编辑模板 / 引用头文件..."
+    "message": "编辑模板 / 引用头文件…"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
@@ -1441,7 +1441,7 @@
     "message": "SmartTemplates 成功升级到了 {1} 版本!"
   },
   "standardformat.config": {
-    "message": "默认格式..."
+    "message": "默认格式…"
   },
   "stringmanip.alttext": {
     "message": "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Technical"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "禁止邮件客户端添加链接到电子邮件地址。"
+  },
+  "suppressQuoteHdr": {
+    "message": "无论帐户设置如何，都完全删除报价标题。"
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1585,7 +1588,7 @@
     "message": "通过替换tz参数为日期变量强制指定时区 (GMT, EST, CST, PST etc.)"
   },
   "timezonename.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "tip.fileTemplates": {
     "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
@@ -1622,7 +1625,7 @@
     "message": "yliu & yfdyh000 (BabelZilla)"
   },
   "tzname.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "updates.title": {
     "message": "更新"
@@ -1658,7 +1661,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}3.10.2 修补程序 - 在启用多进程浏览的 Thunderbird 91 中未显示示例{L2}{L1}支持带有变量 %recipient% 的回复标头。{L2} {L1}编辑后更改模板时的简化警告 - 还支持推动 ESCAPE 以关闭对话框。{L2}{L1}修复：使用 收件人、抄送和密送字段中的邮件列表。 有关一组未公开收件人的简报示例，请参阅下面的更改日志。{L2} {L1}更正：编写新邮件时忽略自定义背景和文本颜色。 这可能会导致编辑器在使用深色主题时出现问题。{L2}"
+    "message": "{L1}修改转发邮件正文中的文本 [inline]。 这现在适用于以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通过过滤规则使用 SmartTemplate 自动转发/自动回复 - 这意味着 您可以使用过滤器触发任何模板（使用 FiltaQuilla 3.4）。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有报价标题。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

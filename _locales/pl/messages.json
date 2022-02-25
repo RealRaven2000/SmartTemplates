@@ -101,10 +101,10 @@
     "message": "Chcę pomóc w sprawie jednorazowej darowizny."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Wczytaj szablon…"
+    "message": "Załaduj ustawienia konta…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Zapisz szablon…"
+    "message": "Zapisz ustawienia konta…"
   },
   "btnYouTube.tooltip": {
     "message": "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze Stationery i innych dodatków."
@@ -937,7 +937,7 @@
     "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter."
   },
   "pref_fwd.label": {
-    "message": "Stosuj poniższy szablon dla przekazywanych wiadomości"
+    "message": "Zastosuj następujące ustawienia do przekazywanej wiadomości"
   },
   "pref_fwd.tab": {
     "message": "Przekazywanie"
@@ -1027,7 +1027,7 @@
     "message": "Zamieniaj nowy wiersz znakiem <br>"
   },
   "pref_rsp.label": {
-    "message": "Stosuj poniższy szablon dla odpowiedzi"
+    "message": "Zastosuj następujące ustawienia do odpowiedzi na wiadomość"
   },
   "pref_rsp.tab": {
     "message": "Odpowiedź"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "Techniczny"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,"
+  },
+  "suppressQuoteHdr": {
+    "message": "Całkowicie usuwa nagłówek oferty niezależnie od ustawień konta."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Poprawka 3.10.2 — przykłady nie zostały pokazane w Thunderbird 91 z włączonym przeglądaniem wieloprocesowym{L2}{L1}Obsługa nagłówka odpowiedzi do nagłówka ze zmienną %recipient%.{L2} {L1}Usprawnione ostrzeżenie o zmianie szablonu po edycji - obsługuje również naciśnięcie ESCAPE w celu zamknięcia okna dialogowego.{L2}{L1}Naprawiono: używanie listy mailingowe w polach do, DW i UDW. Zobacz dziennik zmian poniżej, aby zapoznać się z przykładem biuletynu dla grupy nieujawnionych odbiorców.{L2}{L1}Naprawiono: niestandardowe kolory tła i tekstu są ignorowane podczas pisania nowych wiadomości e-mail. Może to prowadzić do problemów z edytorem podczas używania ciemnych motywów.{L2}"
+    "message": "{L1}Zmodyfikuj tekst w treści przekazywanej poczty [inline]. Działa to teraz w funkcjach: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatyczne przekazywanie dalej / automatyczna odpowiedź za pomocą SmartTemplate przez reguły filtrowania - oznacza to możesz wywołać dowolny szablon za pomocą filtrów (używając FiltaQuilla 3.4).{L2}{L1} polecenie %suppressQuoteHeaders%, aby pominąć wszystkie nagłówki cytatów.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

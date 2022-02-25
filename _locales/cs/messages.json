@@ -101,10 +101,10 @@
     "message": "Chci pomoci s jednorázovým darem."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Nahraj Šablonu..."
+    "message": "Načíst nastavení účtu…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Ulož Šablonu..."
+    "message": "Uložit nastavení účtu…"
   },
   "btnYouTube.tooltip": {
     "message": "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení"
@@ -928,7 +928,7 @@
     "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy."
   },
   "pref_fwd.label": {
-    "message": "Zvolit následující šablonu pro předávanou zprávu"
+    "message": "Na přeposílanou zprávu použijte následující nastavení"
   },
   "pref_fwd.tab": {
     "message": "Přeposlat"
@@ -1018,7 +1018,7 @@
     "message": "Nahraď konece řádků <br>"
   },
   "pref_rsp.label": {
-    "message": "Zvolit následující šablonu pro psaní odpovědi"
+    "message": "Na zprávu s odpovědí použijte následující nastavení"
   },
   "pref_rsp.tab": {
     "message": "Odpovědět"
@@ -1051,7 +1051,7 @@
     "message": "Stationery rozšíření"
   },
   "pref_stationeryLink_tip": {
-    "message": "Získat \"Stationery\"..."
+    "message": "Získat \"Stationery\"…"
   },
   "pref_stationerySupport": {
     "message": "Podpora \"Stationery\" rozšíření"
@@ -1189,7 +1189,7 @@
     "message": "SmartTemplates nastavení"
   },
   "smarttemplate4_button": {
-    "message": "Upravit šablony / hlavičku ..."
+    "message": "Upravit šablony / hlavičku …"
   },
   "smarttemplate4_title": {
     "message": "SmartTemplates"
@@ -1510,8 +1510,11 @@
   "support.type.tech": {
     "message": "Technická podpora"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Omezení mail klienta přidat odkaz do e-mailové adresy."
+  },
+  "suppressQuoteHdr": {
+    "message": "Úplně odstraní hlavičku nabídky bez ohledu na nastavení účtu."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1580,7 +1583,7 @@
     "message": "Značka časové zóny GMT, PST, EST, ... "
   },
   "tip.fileTemplates": {
-    "message": "Klepnutím si můžete přečíst celou dokumentaci o šablonách a externích šablonách HTML na našem webu podpory ..."
+    "message": "Klepnutím si můžete přečíst celou dokumentaci o šablonách a externích šablonách HTML na našem webu podpory …"
   },
   "to.label": {
     "message": "Jméno příjemce (defaultní)"
@@ -1650,7 +1653,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1}Oprava hotfix 3.10.2 – Příklady nebyly zobrazeny v Thunderbirdu 91 s povoleným víceprocesovým procházením{L2}{L1}Podpora hlavičky odpovědi s proměnnou %recipient%.{L2} {L1}Zjednodušené varování při změně šablony po úpravě – podporuje také stisknutí klávesy ESCAPE k uzavření dialogu.{L2}{L1}Opraveno: pomocí seznamy adresátů v polích Komu, Kopie a Skrytá kopie. V níže uvedeném protokolu změn naleznete příklad zpravodaje pro skupinu nezveřejněných příjemců.{L2}{L1}Opraveno: Při psaní nových e-mailů byly ignorovány vlastní barvy pozadí a textu. To by mohlo vést k problémům editoru při používání tmavých motivů.{L2}"
+    "message" : "{L1}Upravte text v těle přeposlané pošty [inline]. Toto nyní funguje ve funkcích: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatické přeposlání / Automatická odpověď pomocí SmartTemplate prostřednictvím pravidel filtru – to znamená můžete spustit jakoukoli šablonu pomocí filtrů (pomocí FiltaQuilla 3.4).{L2}{L1} Příkaz %suppressQuoteHeaders% pro potlačení všech hlaviček uvozovek.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

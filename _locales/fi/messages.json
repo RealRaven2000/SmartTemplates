@@ -101,10 +101,10 @@
     "message": "Haluan auttaa kertalahjoituksella."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Lataa pohja…"
+    "message": "Lataa tilin asetukset…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Tallenna pohja…"
+    "message": "Tallenna tilin asetukset…"
   },
   "btnYouTube.tooltip": {
     "message": "Käy \"Thunderbird Daily\" -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen"
@@ -937,7 +937,7 @@
     "message": "Varmista, että osoittimen aloitussijainti on kappaleessa. Suosittelemme Thunderbirdin kirjoitus -tilaa luodaksesi uusia kappaleita [Enter]-näppäintä painamalla."
   },
   "pref_fwd.label": {
-    "message": "Käytä seuraava pohjaa välitettäessä viestejä"
+    "message": "Käytä seuraavia asetuksia edelleenlähetettyyn viestiin"
   },
   "pref_fwd.tab": {
     "message": "Välitä"
@@ -1027,7 +1027,7 @@
     "message": "Korvaa uusi rivi <br>-merkillä"
   },
   "pref_rsp.label": {
-    "message": "Käytä seuraava pohjaa vastattaessa viesteihin"
+    "message": "Käytä seuraavia asetuksia vastatussa viestissä"
   },
   "pref_rsp.tab": {
     "message": "Vastaa"
@@ -1518,8 +1518,11 @@
   "support.type.tech": {
     "message": "tekninen"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Ehkäise sähköpostisovellusten lisätä linkkejä sähköpostiosoitteisiin."
+  },
+  "suppressQuoteHdr": {
+    "message": "Poistaa lainausotsikon kokonaan tilin asetuksista riippumatta."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1658,7 +1661,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}3.10.2 hotfix - esimerkkejä ei näy Thunderbird 91:ssä, kun usean prosessin selaus on käytössä{L2}{L1}Vastausotsikon tuki muuttujalla %recipient%.{L2} {L1}Sujuva varoitus, kun mallia muutetaan muokkauksen jälkeen – tukee myös ESCAPE-näppäintä sulkeaksesi valintaikkunan.{L2}{L1}Korjattu: käyttämällä postituslistat vastaanottaja-, kopio- ja piilokopio-kenttiin. Katso alla olevasta muutoslokista esimerkki uutiskirjeestä julkistamattomille vastaanottajille.{L2}{L1}Korjattu: mukautettuja tausta- ja tekstivärejä ei huomioida uusia viestejä kirjoitettaessa. Tämä voi aiheuttaa ongelmia editorissa käytettäessä tummia teemoja.{L2}"
+    "message": "{L1}Muokkaa edelleenlähetetyn postin tekstiä [inline]. Tämä toimii nyt seuraavissa funktioissa: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automaattinen edelleenlähetys / automaattinen vastaus SmartTemplatella suodatinsääntöjen kautta - tämä tarkoittaa voit laukaista minkä tahansa mallin suodattimilla (FiltaQuilla 3.4:llä).{L2}{L1} %suppressQuoteHeaders% -komento estää kaikki lainausotsikot.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
