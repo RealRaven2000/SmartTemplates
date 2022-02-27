@@ -1718,6 +1718,18 @@ SmartTemplate4.classSmartTemplate = function() {
 		this.composeType = st4composeType;   // '', 'new', 'rsp', 'fwd'
     
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
+    // [issue 173] - SmartTemplates Pro required.
+    if (SmartTemplate4.PreprocessingFlags.isAutoSend) {
+      if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
+        let msg = util.getBundleString("st.notification.premium.sendByFilter");
+        util.popupLicenseNotification("filterWithTemplate", true, true, msg);
+      }
+      else {
+        // push send button - with timeout?
+        let timeout = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.sendTimeout");
+        setTimeout(function () { SendMessage(); }, timeout);
+      }
+    }
 	}; // insertTemplate
 
 	function resetDocument(editor, withUndo) {

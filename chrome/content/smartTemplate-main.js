@@ -353,6 +353,12 @@ var SmartTemplate4 = {
         ownerWin.SmartTemplate4.fileTemplates && 
         ownerWin.SmartTemplate4.fileTemplates.armedEntry) {
       let theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;       // this is a html file we need to parse.
+      
+      // [issue 173]
+      if (theFileTemplate.isAutoSend) {
+        flags.isAutoSend = true; 
+      }
+      
       ownerWin.SmartTemplate4.fileTemplates.armedEntry = null; 
       util.logDebugOptional("fileTemplates", "notifyComposeBodyReady: \n"
         + "Consuming fileTemplate: " + theFileTemplate.label + "\n"

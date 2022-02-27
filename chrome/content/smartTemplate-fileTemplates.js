@@ -1273,6 +1273,7 @@ SmartTemplate4.fileTemplates = {
     }    
   } ,
   
+  // [issue 173] function to trigger mailing with a template from a filter (FiltaQuilla feature issue 153)
   onExternalMailProcess: function(data, composeType) {
     // similar to onItemClick / onSelectAdHoc
     console.log("SmartTemplates.fileTemplates.onExternalMailProcess()");
@@ -1283,13 +1284,27 @@ SmartTemplate4.fileTemplates = {
     { 
       composeType: composeType, 
       path: data.templateURL, 
-      message: msgHeader
+      message: msgHeader,
+      isAutoSend: true  // new flag 
     };
     // simulate a reply to this message!
-    debugger;
-    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id);
-    let uri = realMessage.folder.getUriForMsg(realMessage);   
-    
+    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id),
+        uri = realMessage.folder.getUriForMsg(realMessage);   
+    SmartTemplate4.Util.logDebug("Sending SmartTemplate triggered by external Add-on", msgHeader);
+
+    let msgUris = new Array(uri);
+    let aCompType;
+    switch(composeType) {
+      case "fwd":
+        aCompType = Ci.nsIMsgCompType.ForwardInline;
+        break;
+      case "rsp":
+        // .ReplyAll  .ReplyToSender  .ReplyToGroup  .ReplyToSenderAndGroup  .ReplyToList:
+        // what about special reply cases, like these?
+        aCompType = Ci.nsIMsgCompType.Reply;
+        break;
+    }
+    ComposeMessage(aCompType, Ci.nsIMsgCompFormat.Default, realMessage.folder, msgUris);
       
   },
   

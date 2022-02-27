@@ -489,7 +489,8 @@ SmartTemplate4.Util = {
 		if (notifyBox) {
 			let notificationKey = 
 			  (isProFeature) ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
-      if (notifyBox.getNotificationWithValue(notificationKey)) {
+      // let's force additional notifications for Pro features
+      if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
         // notification is already shown on screen.
         util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
         return;
