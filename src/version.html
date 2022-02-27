@@ -253,8 +253,8 @@ permalink: version.html
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       <p>
-       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/171">[issue 171]</a> 
-        Support deleting / replacing text in text of inline forwarded mail, using the existing functions:
+       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/172">[issue 172]</a> 
+        Modifiy text in body of forwarded mail [inline]. This now works in the functions:
         <code>%deleteQuotedText()%</code>, <code>%replaceQuotedText()%</code>, <code>%deleteQuotedTags()%</code>,
         <code>%replaceQuotedTags()%</code>. Read the full documentation 
         <href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation">here</a>.
@@ -263,6 +263,20 @@ permalink: version.html
       and then they are able to delete or replace content from the original mail.
       Limitation: parameters cannot contain double quotes ", the percent sign % or parentheses ( ) .
     </li>
+    <li>
+      <p>
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a> 
+        Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
+        this requires the Add-on FiltaQuilla version 3.4 or later. 
+      </p>
+      See also FiltaQuilla <a href="https://github.com/RealRaven2000/SmartTemplates/issues/153">[issue 153]</a>
+      
+    </li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/174">[issue 174]</a> 
+        %suppressQuoteHeaders% command to suppress all quote headers    
+    </li>
+    
     <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
   </ul>
 </li> 
