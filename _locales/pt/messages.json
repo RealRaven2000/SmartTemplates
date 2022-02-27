@@ -1404,6 +1404,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Com uma licença válida do SmartTemplates Pro, o e-mail agora seria enviado automaticamente."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Renovar licença de domínio"
   },
@@ -1658,7 +1661,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Modificar texto no corpo do e-mail encaminhado [inline]. Isso agora funciona nas funções: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Encaminhamento automático / Resposta automática com SmartTemplate por meio de regras de filtro - isso significa você pode acionar qualquer modelo usando filtros (usando FiltaQuilla 3.4).{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos os cabeçalhos de cotação.{L2}"
+    "message": "{L1}Modificar texto no corpo do e-mail encaminhado [inline]. Isso agora funciona nas funções: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Encaminhamento automático / Resposta automática com SmartTemplate por meio de regras de filtro - isso significa você pode acionar qualquer modelo usando filtros (usando FiltaQuilla 3.4). Exclusivo para licenciados do SmartTemplates Pro.{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos os cabeçalhos de cotação.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

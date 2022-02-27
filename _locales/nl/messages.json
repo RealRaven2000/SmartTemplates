@@ -1330,6 +1330,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Met een geldige SmartTemplates Pro-licentie zou de e-mail nu automatisch worden verzonden."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Verleng de domeinlicentie"
   },
@@ -1662,7 +1665,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}Wijzig tekst in hoofdtekst van doorgestuurde e-mail [inline]. Dit werkt nu in de functies: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisch doorsturen / automatisch beantwoorden met SmartTemplate via filterregels - dit betekent u kunt elke sjabloon activeren met behulp van filters (met behulp van FiltaQuilla 3.4). {L2}{L1} %suppressQuoteHeaders%-opdracht om alle aanhalingstekens te onderdrukken.{L2}"
+  "message": "{L1}Wijzig tekst in hoofdtekst van doorgestuurde e-mail [inline]. Dit werkt nu in de functies: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisch doorsturen / automatisch beantwoorden met SmartTemplate via filterregels - dit betekent u kunt elke sjabloon activeren met behulp van filters (met behulp van FiltaQuilla 3.4). Exclusief voor SmartTemplates Pro-licentiehouders.{L2}{L1} %suppressQuoteHeaders%-opdracht om alle aanhalingstekens te onderdrukken.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

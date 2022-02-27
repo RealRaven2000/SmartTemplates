@@ -1389,6 +1389,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "l"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Med en giltig SmartTemplates Pro-licens skulle e-postmeddelandet nu skickas automatiskt."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Förnya domänlicens"
   },
@@ -1661,7 +1664,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Ändra text i brödtexten i vidarebefordrad e-post [inline]. Detta fungerar nu i funktionerna: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisk vidarebefordran / Automatiskt svar med SmartTemplate genom filterregler - detta betyder du kan trigga vilken mall som helst med hjälp av filter (med FiltaQuilla 3.4).{L2}{L1} kommandot %suppressQuoteHeaders% för att undertrycka alla citattecken.{L2}"
+    "message": "{L1}Ändra text i brödtexten i vidarebefordrad e-post [inline]. Detta fungerar nu i funktionerna: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisk vidarebefordran / Automatiskt svar med SmartTemplate genom filterregler - detta betyder du kan trigga vilken mall som helst med hjälp av filter (med FiltaQuilla 3.4). Exklusivt för SmartTemplates Pro-licenstagare.{L2}{L1} kommandot %suppressQuoteHeaders% för att undertrycka alla citattecken.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

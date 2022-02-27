@@ -1329,6 +1329,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "l"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Voimassa olevalla SmartTemplates Pro -lisenssillä sähköposti lähetetään nyt automaattisesti."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Uusi verkkotunnuksen lisenssi"
   },
@@ -1661,7 +1664,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}Muokkaa edelleenlähetetyn postin tekstiä [inline]. Tämä toimii nyt seuraavissa funktioissa: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automaattinen edelleenlähetys / automaattinen vastaus SmartTemplatella suodatinsääntöjen kautta - tämä tarkoittaa voit laukaista minkä tahansa mallin suodattimilla (FiltaQuilla 3.4:llä).{L2}{L1} %suppressQuoteHeaders% -komento estää kaikki lainausotsikot.{L2}"
+    "message": "{L1}Muokkaa edelleenlähetetyn postin tekstiä [inline]. Tämä toimii nyt seuraavissa funktioissa: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automaattinen edelleenlähetys / automaattinen vastaus SmartTemplatella suodatinsääntöjen kautta - tämä tarkoittaa voit laukaista minkä tahansa mallin suodattimilla (FiltaQuilla 3.4:llä). Ainoastaan SmartTemplates Pro -lisenssinhaltijoille.{L2}{L1} %suppressQuoteHeaders% -komento estää kaikki lainausotsikot.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

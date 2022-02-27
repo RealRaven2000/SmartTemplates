@@ -1389,6 +1389,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "使用有效的 SmartTemplates Pro 許可證，現在將自動發送電子郵件。"
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "續訂域許可證"
   },
@@ -1661,7 +1664,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}修改轉發郵件正文中的文本 [inline]。 這現在適用於以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通過過濾規則使用 SmartTemplate 自動轉發/自動回复 - 這意味著 您可以使用過濾器觸發任何模板（使用 FiltaQuilla 3.4）。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有報價標題。{L2}"
+    "message": "{L1}修改轉發郵件正文中的文本 [inline]。 這現在適用於以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通過過濾規則使用 SmartTemplate 自動轉發/自動回复 - 這意味著 您可以使用過濾器觸發任何模板（使用 FiltaQuilla 3.4）。 SmartTemplates Pro 被許可人專有。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有報價標題。{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

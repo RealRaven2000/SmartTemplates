@@ -1389,6 +1389,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "л"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "При наличии действующей лицензии SmartTemplates Pro электронная почта теперь будет отправляться автоматически."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Продлить лицензию на домен"
   },
@@ -1661,7 +1664,7 @@
     "message": "Прочтите подробный журнал изменений здесь (только на английском языке):"
   },
   "whats-new-list": {
-    "message": "{L1}Изменить текст в теле пересылаемой почты [inline]. Теперь это работает в функциях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматическая переадресация/автоматический ответ с помощью SmartTemplate через правила фильтрации - это означает вы можете активировать любой шаблон с помощью фильтров (используя FiltaQuilla 3.4). {L2}{L1} Команда %suppressQuoteHeaders% для подавления всех заголовков котировок.{L2}"
+    "message": "{L1}Изменить текст в теле пересылаемой почты [inline]. Теперь это работает в функциях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматическая переадресация/автоматический ответ с помощью SmartTemplate через правила фильтрации - это означает вы можете активировать любой шаблон с помощью фильтров (используя FiltaQuilla 3.4). Эксклюзивно для лицензиатов SmartTemplates Pro.{L2}{L1} Команда %suppressQuoteHeaders% для подавления всех заголовков котировок.{L2}"
   },
   "whitespace_note": {
     "message": "Обратите внимание, что пробел может быть лучше всего представлен как \\s, потому что он также может содержать разрывы строк. Запятые и двойные кавычки не могут быть использованы."

@@ -1330,6 +1330,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Mit einer gültigen SmartTemplates Pro Lizenz würde die E-Mail nun automatisch versendet."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Domänen-Lizenz erneuern"
   },
@@ -1659,7 +1662,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Kann den Text im Hauptteil der weitergeleiteten E-Mail verändern [inline]. Das geht jetzt mit den Funktionen: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisches Weiterleiten / Automatisches Antworten mit SmartTemplate durch Filterregeln - das heißt Sie können jede Vorlage mit Filtern auslösen (mit FiltaQuilla 3.4). {L2}{L1} %suppressQuoteHeaders%-Befehl, um alle Zitat-Header zu unterdrücken.{L2}"
+    "message": "{L1}Kann den Text im Hauptteil der weitergeleiteten E-Mail verändern [inline]. Das geht jetzt mit den Funktionen: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisches Weiterleiten / Automatisches Antworten mit SmartTemplate durch Filterregeln - das heißt Sie können jede Vorlage mit Filtern auslösen (mit FiltaQuilla 3.4). Exklusiv für SmartTemplates Pro-Lizenznehmer.{L2}{L1} %suppressQuoteHeaders%-Befehl, um alle Zitat-Header zu unterdrücken.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

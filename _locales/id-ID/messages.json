@@ -1209,6 +1209,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Dengan lisensi SmartTemplates Pro yang valid, email sekarang akan dikirim secara otomatis."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Perpanjang Lisensi Domain"
   },

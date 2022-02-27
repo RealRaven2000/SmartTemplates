@@ -1389,6 +1389,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "使用有效的 SmartTemplates Pro 许可证，现在将自动发送电子邮件。"
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "续订域许可证"
   },
@@ -1661,7 +1664,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}修改转发邮件正文中的文本 [inline]。 这现在适用于以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通过过滤规则使用 SmartTemplate 自动转发/自动回复 - 这意味着 您可以使用过滤器触发任何模板（使用 FiltaQuilla 3.4）。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有报价标题。{L2}"
+    "message": "{L1}修改转发邮件正文中的文本 [inline]。 这现在适用于以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通过过滤规则使用 SmartTemplate 自动转发/自动回复 - 这意味着 您可以使用过滤器触发任何模板（使用 FiltaQuilla 3.4）。 SmartTemplates Pro 被许可人专有。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有报价标题。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

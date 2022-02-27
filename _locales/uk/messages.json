@@ -1209,6 +1209,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Поновити ліцензію на домен"
   },
