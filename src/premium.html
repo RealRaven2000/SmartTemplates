@@ -180,10 +180,13 @@ permalink: premium.html
 <a name="quoteManipulation"> </a>
 <h3 class="helpchapter">Quote Manipulation</h3>
 <article>
-  <ul>
-    <li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/31">[issue 31]</a> 
+  <p>
+  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/31">[issue 31]</a> 
       From SmartTemplates  2.8: New variables to remove text / tags from quoted parts 
       and save space.
+  </p>
+  <ul>
+    <li>
       <p>
         <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
         <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
@@ -200,13 +203,18 @@ permalink: premium.html
         <i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. This way you can 
         keep smaller images like icons / emojis while discarding large images.
       </p>
-      <p>
-        A note on <i>quoteLevel</i>, for images I would recommend 2 if you want to 
-        remove images to retain some context in your replies. This will dramatically decrease email 
-        sizes in long threads which contain a lot of images (e.g. screenshots).
-      </p>
     </li>
-   </ul>
+  </ul>
+  <p>
+    A note on <i>quoteLevel</i>, for images I would recommend 2 if you want to 
+    remove images to retain some context in your replies. This will dramatically decrease email 
+    sizes in long threads which contain a lot of images (e.g. screenshots).
+  </p>
+  <p>
+    Update - from version 3.11 of SmartTemplates the above commands can also be used to remove text from the 
+    forwarded email (as long as it is forwarded inline). Use quoteLevel = 0 for this to work:
+    <code>%deleteQuotedText("<i>searchText</i>",0)%</code>.
+  </p>
 </article>
 
 
@@ -214,8 +222,6 @@ permalink: premium.html
 <a name="dateManipulation"> </a>
 <h3 class="helpchapter">Advanced Date Functions</h3>
 <article>
-	<ul>
-		<li>
 			<p>
 			  <code class="deferable">%dateformat%</code> function for inserting / updating current time. 
 				<a name="26588" href="https://www.mozdev.org/bugs/show_bug.cgi?id=26588" target="_blank">[Bug 26588]</a>
@@ -233,16 +239,13 @@ permalink: premium.html
 				Examples:<br>
 				<code class="inline">%dateformat(A, e/n/Y, H:M)%</code> creates: Wednesday, 23/02/2018, 14:23
 			</p>
-		</li>
-		<li>
+      <br>
 			<code>%X:=calculated()%</code> Switch for modifying date & time displayed. <a href="https://www.mozdev.org/bugs/show_bug.cgi?id=26307" target="_blank">[Bug 26307]</a>
 			<p>
 			<code>%X:=calculated(d,h:mm)%</code> where <i>d</i> = is the number of days to add. <i>h</i> = number of hours and <i>mm</i> number of minutes.
 			Note this needs to be reset using
 			<code>%X:=calculated(0)%</code> to reset it for the rest of the Email.
 			</p>
-		</li>
-	</ul>
 </article>
 
 <!-- ##### Header Functions #### -->
