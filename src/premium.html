@@ -340,14 +340,13 @@ permalink: premium.html
 
 <!-- #### FiltaQuilla Support #### -->
 <a name="filterForward"> </a>
+<h3 class="helpchapter">Filter for automatic Forwarding / Replying</h3>
 <article>
   <p>
-    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a> 
-    Auto-Forward / Auto-Reply with template -  implement triggering template from filter-
-    this requires the Add-on FiltaQuilla version 3.4 or later. 
+    Auto-Forward / Auto-Replying Emails with smart template - this requires the Add-on FiltaQuilla version 3.4 or later. 
   </p>
 	<p>
-    To enable the feature, you must first open FiltaQuilla settings on the Actions tab: <br>
+    To enable this feature, you must first open FiltaQuilla settings on the Actions tab: <br>
     <img class="screenshot" alt="" src="img/filtaquilla-fwd-settings.png"><br>
     Next you can create new message filters, activate either Forward or Reply with Smart Template.
     Then create a new message filter from the tools menu; in action select "Forward with SmartTemplate" 
@@ -355,9 +354,8 @@ permalink: premium.html
     <img class="screenshot" alt="" src="img/forward-st-action-in-editor">
   </p>
   <p>
-    When forwarding files, you can use |<code>%header.set(to)%</code> <code>%header.append(to)%</code> to populate
-    the recipients (address book groups should also work)
-    or <code>%header.set(bcc)%</code> for undisclosed recipients.
+    When forwarding files, you can use <code>%header.set(to)%</code> and <code>%header.append(to)%</code> to populate
+    the recipients (address book groups should also work) or <code>%header.set(bcc)%</code> for undisclosed recipients.
 	</p>
   <p>
     The command <code>%suppressQuoteHeaders%</code> will now remove all quote headers - the ones inserted 
