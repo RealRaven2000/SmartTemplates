@@ -126,7 +126,7 @@ permalink: premium.html
     <td><span class="check">✔</span></td>
   </tr>
   <tr>
-    <th><a href="#headerManipulation">Modification of Headers</a><br>Change of headers such as to, from, subject</th>
+    <th><a href="#filterForward">Automatic forwarding</a><br>using FiltaQuilla 3.4</th>
     <td><span class="check negative">✘</span></td>
     <td><span class="check negative">✘</span></td>
     <td><span class="check">✔</span></td>
@@ -338,6 +338,35 @@ permalink: premium.html
 	</p>
 </article>
 
+<!-- #### FiltaQuilla Support #### -->
+<a name="filterForward"> </a>
+<article>
+  <p>
+    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a> 
+    Auto-Forward / Auto-Reply with template -  implement triggering template from filter-
+    this requires the Add-on FiltaQuilla version 3.4 or later. 
+  </p>
+	<p>
+    To enable the feature, you must first open FiltaQuilla settings on the Actions tab: <br>
+    <img class="screenshot" alt="" src="img/filtaquilla-fwd-settings.png"><br>
+    Next you can create new message filters, activate either Forward or Reply with Smart Template.
+    Then create a new message filter from the tools menu; in action select "Forward with SmartTemplate" 
+    and push the open file button to select an external template file:<br>
+    <img class="screenshot" alt="" src="img/forward-st-action-in-editor">
+  </p>
+  <p>
+    When forwarding files, you can use |<code>%header.set(to)%</code> <code>%header.append(to)%</code> to populate
+    the recipients (address book groups should also work)
+    or <code>%header.set(bcc)%</code> for undisclosed recipients.
+	</p>
+  <p>
+    The command <code>%suppressQuoteHeaders%</code> will now remove all quote headers - the ones inserted 
+    by Thunderbird automatically and the ones that may be configured in SmartTemplates account settings.
+    <br>
+    You can also use %sign(none)% to suppress inserting any signatures.
+  </p>
+    
+</article>
 
 
 <!-- ##### Export/Import added in 1.0.0 ####
