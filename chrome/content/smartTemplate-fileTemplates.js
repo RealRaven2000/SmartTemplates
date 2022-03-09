@@ -1276,20 +1276,25 @@ SmartTemplate4.fileTemplates = {
   // [issue 173] function to trigger mailing with a template from a filter (FiltaQuilla feature issue 153)
   onExternalMailProcess: function(data, composeType) {
     // similar to onItemClick / onSelectAdHoc
-    console.log("SmartTemplates.fileTemplates.onExternalMailProcess()");
-    console.log(composeType, data);
+    SmartTemplate4.Util.logDebug("SmartTemplates.fileTemplates.onExternalMailProcess()", "composeType: " + composeType, data);
     let msgHeader = data.messageHeader;
     
-    SmartTemplate4.fileTemplates.armedEntry = 
-    { 
+    // SmartTemplate4.fileTemplates.armedEntry = 
+    if (!SmartTemplate4.fileTemplates.armedQueue)
+      SmartTemplate4.fileTemplates.armedQueue = [];
+
+    // simulate a reply to this message!
+    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id),
+        uri = realMessage.folder.getUriForMsg(realMessage);
+        
+    SmartTemplate4.fileTemplates.armedQueue.push ({ 
       composeType: composeType, 
       path: data.templateURL, 
       message: msgHeader,
-      isAutoSend: true  // new flag 
-    };
-    // simulate a reply to this message!
-    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id),
-        uri = realMessage.folder.getUriForMsg(realMessage);   
+      isAutoSend: true,  // new flag 
+      uri: uri
+    });
+    
     SmartTemplate4.Util.logDebug("Sending SmartTemplate triggered by external Add-on", msgHeader);
 
     let msgUris = new Array(uri);
@@ -1305,7 +1310,7 @@ SmartTemplate4.fileTemplates = {
         break;
     }
     ComposeMessage(aCompType, Ci.nsIMsgCompFormat.Default, realMessage.folder, msgUris);
-      
+    SmartTemplate4.Util.logDebug("After calling ComposeMessage");
   },
   
 	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {

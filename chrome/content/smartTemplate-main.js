@@ -336,6 +336,16 @@ var SmartTemplate4 = {
     // we clicked. 
     // That window stores SmartTemplate4.fileTemplates.armedEntry
     // we need this to retrieve the file Template path and title!
+    function getMsgComposetype() {
+      switch(gMsgCompose.type) {
+        case Ci.nsIMsgCompType.ForwardInline:
+          return "fwd";
+        case Ci.nsIMsgCompType.Reply:
+          return "rsp";
+      }
+      return ""; // unknown
+    }
+    
     let ownerWin = win || util.Mail3PaneWindow, // for changing the template our current composer window is the context
         fileTemplateSource = null; // for fileTemplates, echeck if null and o.failed, otherwise o.HTML shoulde be the tempalte
     
@@ -347,13 +357,28 @@ var SmartTemplate4 = {
         
     // retrieve and consume fileTemplate info
     // I will be very cautious in case composer is called from elsewhere (e.g. a mailto link, or a single message window)
+
+    let theQueue = ownerWin && ownerWin.SmartTemplate4 ? (ownerWin.SmartTemplate4.fileTemplates.armedQueue || []) : [],
+        theFileTemplate = null;
     
     if (ownerWin && 
         ownerWin.SmartTemplate4 && 
         ownerWin.SmartTemplate4.fileTemplates && 
         ownerWin.SmartTemplate4.fileTemplates.armedEntry) {
-      let theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;       // this is a html file we need to parse.
-      
+      theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;
+    } else if(theQueue.length) {
+      let origUri = gMsgCompose.originalMsgURI;
+      // try to find matching item from the queue
+      let found = theQueue.find(el => el.uri == origUri && el.composeType == getMsgComposetype());
+      if (found) {
+        theFileTemplate = found;
+        theQueue = theQueue.filter(el => el != found);
+      }
+      else
+        theFileTemplate = theQueue.pop(); // if we can't find, let's take the last item instead and hope for the best.
+    }
+    
+    if (theFileTemplate) {
       // [issue 173]
       if (theFileTemplate.isAutoSend) {
         flags.isAutoSend = true; 

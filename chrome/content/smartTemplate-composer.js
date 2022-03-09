@@ -17,7 +17,7 @@ SmartTemplate4.composer = {
     //       BUT IT DIDN'T WORK
     // **********>>
     
-    // we cannot use the old way of adding the style shee in the xul overlay...
+    // we cannot use the old way of adding the style sheet in the xul overlay...
     // .. because it doesn't affect the content area
     // I do not want to inject any of these rules into the Editor's document
     // because I want to avoid polluting the markup with stuff that is strictly

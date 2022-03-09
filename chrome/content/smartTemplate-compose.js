@@ -910,8 +910,8 @@ SmartTemplate4.classSmartTemplate = function() {
     if (SmartTemplate4.PreprocessingFlags.isLoadIdentity)
       flags.isLoadIdentity = true; // issue 139 duplication of template
 		util.logDebugOptional('functions,functions.insertTemplate',
-		  'insertTemplate(startup: ' + startup + ', flags: ' + (flags ? flags.toString() : '(none)') + ')\n' 
-			+ 'gMsgCompose.type = ' + gMsgCompose.type);
+		  `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`, 
+      flags);
 		const msgComposeType = Ci.nsIMsgCompType,
 					ed = util.CurrentEditor,
 		      editor = ed.QueryInterface(Ci.nsIEditor);

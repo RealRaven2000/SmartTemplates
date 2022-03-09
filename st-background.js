@@ -236,15 +236,18 @@ async function main() {
   });
    
    
-  browser.runtime.onMessageExternal.addListener( (message, sender) =>  
+  browser.runtime.onMessageExternal.addListener( async  (message, sender) =>  
   {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
+    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
     switch(message.command) {
       case "forwardMessageWithTemplate":
         messenger.NotifyTools.notifyExperiment(
-          {event: "forwardWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
+            {event: "forwardWithTemplate", 
+             detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }
+        ).then(
           (data) => {
-            console.log ("SmartTemplates forwarded message succesfully.");
+            if (isDebug) console.log (`SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`);
             return true;
           }
         );
@@ -253,7 +256,7 @@ async function main() {
         messenger.NotifyTools.notifyExperiment(
           {event: "replyWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
           (data) => {
-            console.log ("SmartTemplates forwarded message succesfully.");
+            if (isDebug) console.log (`SmartTemplates replied to '${message.messageHeader.subject}' successfully.`);
             return true;
           }
         );
