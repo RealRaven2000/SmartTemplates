@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Zkratka dne týdne (Pá)"
   },
@@ -32,9 +29,6 @@
   "about.label": {
     "message": "SmartTemplat4 nabízí snadný způsob pro přizpůsobení Thunderbirdích standardních záhlaví použitím šablon. Vlastní šablony můžou být vytvořeny pro každ účet a také společné pro všechny."
   },
-  "accept_button": {
-    "message": "OK"
-  },
   "account.label": {
     "message": "Vyberte účet:"
   },
@@ -60,9 +54,6 @@
   },
   "any.label": {
     "message": "Jakákoliv řádka hlavičky"
-  },
-  "attach.label": {
-    "message": "Add file as attachment"
   },
   "b.label": {
     "message": "Zkratka měsíce (Led)"
@@ -328,19 +319,12 @@
   "ex_brack.label": {
     "message": "Příklad: To: BEDŘICH | Cc: LUBOŠ"
   },
-  "export.label": {
-    "message": "Export"
-  },
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "Výkonný způsob, jak vytvářet přizpůsobené odpovědi automatickým vkládáním různých záhlaví pošty. Lze vytvořit šablony pro každou identitu pošty, podporuje také externí soubory html a šablony stylů."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates rozšíření umožňuje měnit 'hlavičky' pro každý účet."
@@ -356,45 +340,6 @@
   },
   "fileImage.label": {
     "message": "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Jméno:"
@@ -566,9 +511,6 @@
   "im-ex_note6.label": {
     "message": "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplates. To je standardní na této platformě a nebůže být změněno."
   },
-  "import.label": {
-    "message": "Import"
-  },
   "insert.label": {
     "message": "Vložit proměnnou"
   },
@@ -586,15 +528,6 @@
   },
   "l.label": {
     "message": "Hodina (1 až 12)"
-  },
-  "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
-    "placeholders": {
-      "countDays": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
   },
   "label.haveLicense": {
     "message": "Už máte licenci?"
@@ -722,9 +655,6 @@
   "menu.template_import.label": {
     "message": "Importovat šablonu"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Zobrazit možnosti licence…"
   },
@@ -823,10 +753,6 @@
   },
   "no_button": {
     "message": "Ne"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
@@ -1140,9 +1066,6 @@
   "resolveNamesFromAB": {
     "message": "Získej jméno z adresáře"
   },
-  "resolveNamesFromABDisplay": {
-    "message": "Use Display Name if first name missing"
-  },
   "resolveNamesFromABNick": {
     "message": "Přepiš křestní jméno, když existuje přezdívka"
   },
@@ -1191,17 +1114,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Aktualizujte obsah SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates nastavení"
   },
   "smarttemplate4_button": {
     "message": "Upravit šablony / hlavičku …"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates byl aktualizován!"
@@ -1327,9 +1244,6 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Koupit licenci"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
   "st.notification.premium.sendByFilter": {
     "message": "S platnou licencí SmartTemplates Pro bude nyní e-mail automaticky odeslán."
   },
@@ -1341,9 +1255,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Upgradujte na Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} je prémiová funkce, prosím upgradujte na licenci SmartTemplates Pro, abyste ji mohli trvale používat."
@@ -1528,9 +1439,6 @@
   "suppressQuoteHdr": {
     "message": "Úplně odstraní hlavičku nabídky bez ohledu na nastavení účtu."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Použití promněnných"
   },
@@ -1588,9 +1496,6 @@
       }
     }
   },
-  "timezone.explain": {
-    "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
-  },
   "timezonename.label": {
     "message": "Značka časové zóny GMT, PST, EST, ... "
   },
@@ -1624,9 +1529,6 @@
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "překlady poskytované google"
-  },
-  "translatorNickname.label": {
-    "message": "Aris-T (AMO)"
   },
   "tzname.label": {
     "message": "Zkratka čas. zóny GMT, PST, EST, ... "
@@ -1680,9 +1582,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Příklad pro dlouhý řetězec"
   },
@@ -1697,9 +1596,6 @@
   },
   "xsent_short.cap": {
     "message": "Příklad krátkého řetězce"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Následující proměnné lze použít v obou variantách"
