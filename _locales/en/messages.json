@@ -30,7 +30,7 @@
     "message": "About SmartTemplates"
   },
   "about.label": {
-    "message": "SmartTemplates offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all."
+    "message": "SmartTemplates offers an easy way to customize Thunderbird's default quote header by using templates. Individual templates can be created for each account as well as a common template for all."
   },
   "accept_button": {
     "message": "OK"
