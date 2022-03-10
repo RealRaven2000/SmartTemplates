@@ -175,14 +175,23 @@
   "conditionals.note": {
     "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
   },
+  "contextError": {
+    "message": "Variabeln {1} kan inte användas för *nya* meddelanden!\nSe hjälp för en lista med tillåtna variabler"
+  },
   "contribute_button": {
     "message": "Bidra"
+  },
+  "contributor.label": {
+    "message": "Bidragsgivare"
   },
   "copy.label": {
     "message": "Kopiera"
   },
   "cost-of-independence": {
     "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
+  },
+  "creator.label": {
+    "message": "Skapare"
   },
   "cursor.label": {
     "message": "Ändrar pekarpositionen"
@@ -277,6 +286,9 @@
   "deleteText": {
     "message": "Ta bort en del text från citatet, t.ex. deleteText(\"via Paypal\")"
   },
+  "developer.label": {
+    "message": "Utvecklare"
+  },
   "domainLicense.email": {
     "message": "Vi kontaktar dig genom denna e-post adress för att generera din domänlicens; Det kan ta upp till två arbetsdagar för oss att återkomma. Ange domännamnet för licensen på nästa sida."
   },
@@ -337,6 +349,18 @@
   },
   "fileImage.label": {
     "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
+  },
+  "fileTemplates.add": {
+    "message": "Addera"
+  },
+  "fileTemplates.down": {
+    "message": "Ner"
+  },
+  "fileTemplates.file.open": {
+    "message": "Välj mallfil från disk"
+  },
+  "fileTemplates.file.path": {
+    "message": "Placering av mall:"
   },
   "firstName.label": {
     "message": "Förnamn:"
