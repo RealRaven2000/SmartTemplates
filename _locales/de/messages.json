@@ -44,7 +44,7 @@
     "placeholders": {
       "addonVer": {
         "content": "$1",
-        "example": "5.0.1"
+        "example": "Version 1.1"
       },
       "appVer": {
         "content": "$2",
@@ -490,7 +490,7 @@
     "message": "Kann mit den folgenden Feldern benutzt werden: "
   },
   "heading-installed": {
-    "description": "Seitenheader. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ wurde erfolgreich installiert",
     "placeholders": {
       "addonName": {
@@ -500,7 +500,7 @@
     }
   },
   "heading-updated": {
-    "description": "Seitenheader. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ wurde erfolgreich aktualisiert",
     "placeholders": {
       "addonName": {
@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Liebe(r) $username$ {boldEnd}, Sie können jetzt ein Upgrade auf SmartTemplates Pro für {boldStart} $discount$ weniger {boldEnd} durchführen - und gleichzeitig Ihre Lizenz um ein ganzes Jahr verlängern. Weitere große Änderungen an Thunderbird sind am kommen und ich brauche {boldStart} Ihre Hilfe {boldEnd}, um weiter Schritt zu halten!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Neues Lizenzsystem"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates Lizenz läuft in $countDays$ Tagen ab!",
     "placeholders": {
       "countDays": {
@@ -667,7 +667,7 @@
         "example": "10"
       }
     }
-  },  
+  },
   "licenseTypes": {
     "message": "SmartTemplates bietet zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da Änderungen, die möglicherweise die Erweiterungsfunktionalität beeinträchtigen, jährlich eingeführt werden, ist die Lizenz auch 1 Jahr gültig."
   },
@@ -706,6 +706,9 @@
   },
   "m.label": {
     "message": "Monat (01 bis 12) - mit führender null"
+  },
+  "m.up.label": {
+    "message": "Minute (00 to 59)"
   },
   "matchTextFromBody": {
     "message": "Findet einen Regulären Ausdruck in der zitierten Email und fügt ihn an der Position dieser Funktion ein."
@@ -852,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Parameter"
-  },
   "paste.label": {
     "message": "Einfügen"
+  },
+  "parameters": {
+    "message": "Parameter"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nur unter Mauszeiger"
@@ -998,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Informationsdialog ausblenden, der beim Aktualisieren neue Funktionen und Fehlerbehebungen anzeigt."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Signatur verarbeiten"
   },
@@ -1221,9 +1224,6 @@
   "spellcheck.label": {
     "message": "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein."
   },
-  "standardformat.config": {
-    "message": "Standardformat…"
-  },
   "st.confirmVersionLink": {
     "message": "Changelog für SmartTemplates zeigen?"
   },
@@ -1247,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Warum sind manche Vorlagen in diesem Menü deaktiviert?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Die Anzahl der Vorlagen pro Menü ist begrenzt. Sie können bis zu $max_free$ Menüpunkte ohne Lizenz und $max_std$ Menüpunkte mit einer SmartTemplates Standard Lizenz konfigurieren! SmartTemplates Pro ist uneingeschränkt.",
     "placeholders": {
@@ -1259,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Um mehr als $max_Cats$ Kategorien zu konfigurieren, besorgen Sie sich bitte eine SmartTemplates Pro-Lizenz…",
@@ -1268,7 +1268,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Bitte wählen Sie eine Vorlage aus dem Dropdown-Menü."
@@ -1384,6 +1384,9 @@
   "st.updateMessageVersion": {
     "message": "SmartTemplates wurde erfolgreich auf Version {1} aktualisiert!"
   },
+  "standardformat.config": {
+    "message": "Standardformat…"
+  },
   "stringmanip.alttext": {
     "message": "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt."
   },
@@ -1410,7 +1413,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. April"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1451,7 +1454,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Jetzt von SmartTemplates Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
     "placeholders": {
@@ -1464,7 +1467,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Dies ist die bevorzugte Methode zur Unterstützung von $addonName$.",
     "placeholders": {
@@ -1668,7 +1671,7 @@
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },
   "window-title": {
-    "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Willkommen bei $addonName$",
     "placeholders": {
       "addonName": {
