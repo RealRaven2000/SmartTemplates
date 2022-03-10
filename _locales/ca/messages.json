@@ -1,7 +1,6 @@
 {
   "_l10nstatus": {
-    "message": "SPLASH+UI",
-    "description": "Occitan is a dialect of Catalan, so we are using this for translating missing entities."
+    "message": "SPLASH+UI"
   },
   "a.label": {
     "message": "Jorn de la setmana (Ven.)"
@@ -626,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Benvolgut $userName$ {boldEnd}, ara podeu actualitzar a SmartTemplates Pro per obtenir {boldStart} $discount$ menys {boldEnd}, alhora que també amplieu la llicència un any complet. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia.",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -645,13 +644,13 @@
       }
     }
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nou sistema de llicències"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
     "placeholders": {
       "countDays": {
@@ -660,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "La llicència SmartTemplates caducarà d'aquí a $countDays$ dies!",
     "placeholders": {
       "countDays": {
@@ -671,7 +670,7 @@
   },
   "licenseTypes": {
     "message": "SmartTemplates ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis que poden trencar la funcionalitat de l'extensió es presenten anualment, la llicència també serà vàlida durant un any."
-  }, 
+  },
   "licenseValidation.expired": {
     "message": "La clau de llicència que heu introduït ha caducat. Si us plau, premeu el botó següent per renovar la vostra llicència."
   },
@@ -705,11 +704,11 @@
   "localized.label": {
     "message": "Traductor"
   },
-  "m.up.label": {
-    "message": "Minutas (00 a 59)"
-  },
   "m.label": {
     "message": "Mes (01 a 12)"
+  },
+  "m.up.label": {
+    "message": "Minutas (00 a 59)"
   },
   "matchTextFromBody": {
     "message": "Find a RegEx pattern in quoted Email and insert at function location."
@@ -856,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Paràmetres"
-  },
   "paste.label": {
     "message": "Pegar"
+  },
+  "parameters": {
+    "message": "Paràmetres"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text on Hover"
@@ -1002,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Amaga el quadre de diàleg d'informació que mostra noves funcions i correccions d'errors quan s'actualitza."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Processament de la signatura"
   },
@@ -1248,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Per què estan desactivades algunes plantilles d’aquest menú?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "El nombre de plantilles per menú està restringit. Podeu configurar fins a $max_free$ elements de menú sense llicència i $max_std$ elements de menú amb una llicència SmartTemplates Standard. SmartTemplates Pro no té restriccions.",
     "placeholders": {
@@ -1260,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Per configurar més de $max_Cats$ Categories, obtingueu una llicència SmartTemplates Pro…",
@@ -1269,7 +1268,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Seleccioneu una plantilla al menú desplegable."
@@ -1414,7 +1413,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. Dubna"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1424,7 +1423,7 @@
   },
   "special-offer-expiry": {
     "message": "20 de febrer"
-  },    
+  },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1455,20 +1454,20 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Actualitzeu ara de SmartTemplates Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "September 11th"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
     "placeholders": {
