@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Drogi $ username $ {boldEnd}, możesz teraz uaktualnić do SmartTemplates Pro za {boldStart} $discount$ mniej {boldEnd} - jednocześnie przedłużając swoją licencję o cały rok. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nowy system licencjonowania"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licencja SmartTemplates wygaśnie za $countDays$ dni!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates oferuje dwie licencje, Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird oraz sfinansować innowacje i naprawy dodatku. Ponieważ zmiany, które potencjalnie zakłócają funkcjonalność rozszerzenia, są wprowadzane co roku, licencja będzie również ważna przez 1 rok."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Parametry"
-  },
   "paste.label": {
     "message": "Wklej"
+  },
+  "parameters": {
+    "message": "Parametry"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst po wskazaniu kursorem"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Ukryj okno informacyjne, które wyświetla nowe funkcje i poprawki błędów podczas aktualizacji."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Przetwórz podpis"
   },
@@ -1221,66 +1221,6 @@
   "specform_note.label": {
     "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
-  "special-offer-content": {
-    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję SmartTemplates Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "22 sierpnia"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20 lutego"    
-  },
-  "special-offer-head": {
-    "message": "Pomóż zachować zgodność $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },   
-  "special-offer-upgrade": {
-    "message": "Przejdź teraz z SmartTemplates Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."
   },
@@ -1307,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Dlaczego niektóre szablony w tym menu są wyłączone?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Liczba szablonów w menu jest ograniczona. Możesz skonfigurować do $max_free$ pozycji menu bez licencji oraz $max_std$ z licencją SmartTemplates Standard! SmartTemplates Pro jest nieograniczone.",
     "placeholders": {
@@ -1319,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Aby skonfigurować więcej niż $max_Cats$ Categories, zdobądź licencję SmartTemplates Pro…",
@@ -1328,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Wybierz szablon z menu rozwijanego."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1466,6 +1407,66 @@
   },
   "sub_var.cap": {
     "message": "Temat"
+  },
+  "special-offer-content": {
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję SmartTemplates Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "20 lutego"
+  },
+  "special-offer-head": {
+    "message": "Pomóż zachować zgodność $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Przejdź teraz z SmartTemplates Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
   },
   "support-preference": {
     "message": "Jest to preferowany sposób obsługi $addonName$.",
