@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Драги $username${boldEnd}, сада можете да надоградите на СмартТемплатес Про за {boldStart} $discount$ мање {boldEnd} - а истовремено продужити лиценцу за целу годину. Долазе још велике промене на Тхундербирду и потребна ми је {boldStart} ваша помоћ {boldEnd} да бих наставио!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Да бисте упоредили карактеристике различитих верзија, {linkStart}прочитајте ову листу{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Нови систем лиценцирања"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates Лиценца је истекла пре $countDays$ дана.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates Лиценца истиче за $countDays$ дана!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates нуди две лиценце, Стандард и Про; они су неопходни како би били у току са променама на платформи Тхундербирд и за финансирање иновација и поправки додатка. Будући да се промене које потенцијално крше функционалност проширења уводе годишње, лиценца ће важити и годину дана."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Кључ лиценце који сте унели је истекао. Притисните дугме испод, да бисте обновили своју лиценцу."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Параметри"
-  },
   "paste.label": {
     "message": "Налепи"
+  },
+  "parameters": {
+    "message": "Параметри"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст при задржавању курсора"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Сакриј дијалог са информацијама који приказује нове функције и исправке грешака приликом ажурирања."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Обради потпис"
   },
@@ -1221,66 +1221,6 @@
   "specform_note.label": {
     "message": "Одељци унутар угластих заграда [[Cc: %cc(name)%]] биће приказани само ако променљива %cc(name)% може да се замени."
   },
-  "special-offer-content": {
-    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}SmartTemplates Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "16. априла"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20. фебруара"
-  },
-  "special-offer-head": {
-    "message": "Помозите да $addon$ буде компатибилан",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart} Поштовани {name} {boldEnd}, подржите $addon$ кроз добијање лиценце. Тхундербирд код се непрестано развија и потребна нам је {boldStart} ваша помоћ {boldEnd} да наставимо!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "Надоградите сада са SmartTemplates Standard на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Поставља језик за проверу правописа. Примјер вриједности: (ен, де-ДЕ, ес-ЕС, ру) - имајте на уму да рјечник мора бити инсталиран."
   },
@@ -1307,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Зашто су неки предлошци у овом менију онемогућени?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Број шаблона по менију је ограничен. Можете конфигурирати до $max_free$ ставке менија без лиценце, и $max_std$ ставке менија са стандардном лиценцом СмартТемплатес! СмартТемплатес Про је неограничен.",
     "placeholders": {
@@ -1319,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Да бисте конфигурисали више од $max_Cats$ категорија, набавите лиценцу СмартТемплатес Про…",
@@ -1328,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Изаберите предложак из падајућег менија."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1466,6 +1407,66 @@
   },
   "sub_var.cap": {
     "message": "Наслов"
+  },
+  "special-offer-content": {
+    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце {linkStartPro}SmartTemplates Pro{linkEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "20. фебруара"
+  },
+  "special-offer-head": {
+    "message": "Помозите да $addon$ буде компатибилан",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Поштовани {name} {boldEnd}, подржите $addon$ кроз добијање лиценце. Тхундербирд код се непрестано развија и потребна нам је {boldStart} ваша помоћ {boldEnd} да наставимо!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Надоградите сада са SmartTemplates Standard на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
   },
   "support-preference": {
     "message": "Ово је преферирани начин подршке $ аддонНаме $.",
