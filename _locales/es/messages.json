@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Día de la semana (Vie.)"
   },
@@ -193,9 +190,6 @@
   "cost-of-independence": {
     "message": "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
   },
-  "creator.label": {
-    "message": "Creator"
-  },
   "cursor.label": {
     "message": "Establece la posición del cursor"
   },
@@ -274,9 +268,6 @@
   "day.7.short": {
     "message": "Sáb"
   },
-  "defaultMimeFormat": {
-    "message": "Default address format:"
-  },
   "defaultMimeFormat_tip": {
     "message": "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
   },
@@ -338,10 +329,6 @@
     "description": "Description of the extension.",
     "message": "Una forma poderosa de crear respuestas personalizadas insertando automáticamente varios encabezados de correo. Se pueden crear plantillas para cada identidad de correo, también admite archivos html externos y hojas de estilo."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "La plantilla inteligente que permite personalizar el encabezado de cita para cada cuenta."
   },
@@ -356,45 +343,6 @@
   },
   "fileImage.label": {
     "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Nombre:"
@@ -722,9 +670,6 @@
   "menu.template_import.label": {
     "message": "Importar plantilla"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Mostrar opciones de licencia…"
   },
@@ -749,14 +694,8 @@
   "month.10.name": {
     "message": "Octubre"
   },
-  "month.10.short": {
-    "message": "Oct"
-  },
   "month.11.name": {
     "message": "Noviembre"
-  },
-  "month.11.short": {
-    "message": "Nov"
   },
   "month.12.name": {
     "message": "Diciembre"
@@ -767,14 +706,8 @@
   "month.2.name": {
     "message": "Febrero"
   },
-  "month.2.short": {
-    "message": "Feb"
-  },
   "month.3.name": {
     "message": "Marzo"
-  },
-  "month.3.short": {
-    "message": "Mar"
   },
   "month.4.name": {
     "message": "Abril"
@@ -785,20 +718,11 @@
   "month.5.name": {
     "message": "Mayo"
   },
-  "month.5.short": {
-    "message": "May"
-  },
   "month.6.name": {
     "message": "Junio"
   },
-  "month.6.short": {
-    "message": "Jun"
-  },
   "month.7.name": {
     "message": "Julio"
-  },
-  "month.7.short": {
-    "message": "Jul"
   },
   "month.8.name": {
     "message": "Agosto"
@@ -809,9 +733,6 @@
   "month.9.name": {
     "message": "Septiembre"
   },
-  "month.9.short": {
-    "message": "Sep"
-  },
   "mozillas-basic-platform": {
     "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
   },
@@ -820,13 +741,6 @@
   },
   "newsgr.label": {
     "message": "Grupos de noticias"
-  },
-  "no_button": {
-    "message": "No"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
@@ -842,18 +756,6 @@
   },
   "ownname.label": {
     "message": "Su nombre"
-  },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Pegar"
@@ -1080,9 +982,6 @@
   "pref_template_tip": {
     "message": "Puede cambiar el encabezado de respuesta por 'variables'. Consulte la Ayuda para más detalles."
   },
-  "pref_variables.tab": {
-    "message": "Variables"
-  },
   "premiumConfig": {
     "message": "Funcionalidades premium"
   },
@@ -1191,17 +1090,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Actualizar contenido de SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Opciones de SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Editar plantillas y encabezados de respuesta"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "¡SmartTemplates fue actualizado!"
@@ -1326,9 +1219,6 @@
   },
   "st.notification.premium.btn.getLicense": {
     "message": "Comprar Licencia"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "st.notification.premium.sendByFilter": {
     "message": "Con una licencia válida de SmartTemplates Pro, el correo electrónico ahora se enviará automáticamente."
@@ -1528,17 +1418,11 @@
   "suppressQuoteHdr": {
     "message": "Elimina completamente el encabezado de la cotización independientemente de la configuración de la cuenta."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Uso de las variables"
   },
   "table_fwd.label": {
     "message": "Reenviar"
-  },
-  "table_keyword.label": {
-    "message": "Variable"
   },
   "table_new.label": {
     "message": "Redactar"
@@ -1587,9 +1471,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "timezone.explain": {
-    "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
   },
   "timezonename.label": {
     "message": "GMT, PST, EST, …"
@@ -1680,9 +1561,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Ejemplo de una cadena de texto larga:"
   },
@@ -1697,9 +1575,6 @@
   },
   "xsent_short.cap": {
     "message": "Ejemplo de cadena de texto corta:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Además, puede usar en ambos casos las siguientes variables:"
