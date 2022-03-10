@@ -587,6 +587,15 @@
   "l.label": {
     "message": "Hodina (1 až 12)"
   },
+  "label-remind-me": {
+    "message": "Remind me again in $countDays$ days.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "label.haveLicense": {
     "message": "Už máte licenci?"
   },
@@ -616,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Vážené $username$ {boldEnd}, nyní můžete upgradovat na SmartTemplates Pro za {boldStart} o $discount$ méně {boldEnd} - a zároveň si prodloužit licenci o celý rok. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -634,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
   },
   "licenseHead": {
     "message": "Nový licenční systém"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
     "placeholders": {
       "countDays": {
@@ -650,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licence SmartTemplates vyprší za $countDays$ dní!",
     "placeholders": {
       "countDays": {
@@ -658,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci."
   },
@@ -834,9 +843,6 @@
   "ownname.label": {
     "message": "Tvé jméno"
   },
-  "parameters": {
-    "message": "Parametry"
-  },
   "p.label": {
     "message": "dop. / odp."
   },
@@ -851,6 +857,9 @@
   },
   "paste.label": {
     "message": "Vložit"
+  },
+  "parameters": {
+    "message": "Parametry"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nad"
@@ -992,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Skrýt informační dialog, který při aktualizaci zobrazuje nové funkce a opravy chyb."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Proces podpisu"
   },
@@ -1238,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Proč jsou některé šablony v této nabídce deaktivovány?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Počet šablon v nabídce je omezen. Pomocí licence SmartTemplates Standard můžete konfigurovat až $max_free$ položky nabídky bez licence a $max_std$ položky nabídky! SmartTemplates Pro není omezen.",
     "placeholders": {
@@ -1250,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Chcete -li konfigurovat více než $max_Cats$ kategorií, získejte licenci SmartTemplates Pro…",
@@ -1259,7 +1268,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Vyberte šablonu z rozbalovací nabídky."
@@ -1399,21 +1408,21 @@
   "sub_var.cap": {
     "message": "Předmět"
   },
-  "special-offer-expiry": {
-    "message": "20. února"
-  },
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. Dubna"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
         "example": "30%"
       }
     }
+  },
+  "special-offer-expiry": {
+    "message": "20. února"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -1423,7 +1432,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "special-offer-intro": {
     "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
     "placeholders": {
@@ -1432,7 +1441,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "special-offer-renew": {
     "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
     "placeholders": {
@@ -1445,7 +1454,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Upgradujte nyní z SmartTemplates Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1458,7 +1467,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
     "placeholders": {
@@ -1648,15 +1657,15 @@
   },
   "whats-new-btn": {
     "message": "Co je nového?"
-  }, 
+  },
   "whats-new-head": {
     "message": "Důležité změny"
   },
   "whats-new-intro": {
-    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
+    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message" : "{L1}Upravte text v těle přeposlané pošty [inline]. Toto nyní funguje ve funkcích: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatické přeposlání / Automatická odpověď pomocí SmartTemplate prostřednictvím pravidel filtru – to znamená můžete spustit jakoukoli šablonu pomocí filtrů (pomocí FiltaQuilla 3.4). Exkluzivně pro držitele licence SmartTemplates Pro.{L2}{L1} Příkaz %suppressQuoteHeaders% pro potlačení všech hlaviček uvozovek.{L2}"
+    "message": "{L1}Upravte text v těle přeposlané pošty [inline]. Toto nyní funguje ve funkcích: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatické přeposlání / Automatická odpověď pomocí SmartTemplate prostřednictvím pravidel filtru – to znamená můžete spustit jakoukoli šablonu pomocí filtrů (pomocí FiltaQuilla 3.4). Exkluzivně pro držitele licence SmartTemplates Pro.{L2}{L1} Příkaz %suppressQuoteHeaders% pro potlačení všech hlaviček uvozovek.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
