@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}親愛なる $username$ さん{boldEnd} 、{boldStart}$discount$ 割引{boldEnd} かつライセンスを 1 年間延長可能な SmartTemplates Pro にアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -640,17 +640,17 @@
     "placeholders": {
       "expiry": {
         "content": "$1",
-        "example": "4 月 16 日"
+        "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
-  },  
+  },
   "licenseHead": {
     "message": "新しいライセンスシステム"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates ライセンスは $countDays$ 日前に期限切れになりました。",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplatesライセンスは残り $countDays$ 日で期限切れになります！",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates は、標準とプロの 2 つのライセンスを提供します。これらは、Thunderbird プラットフォームの変更に対応するためのアドオンの改善と修正を金銭的に支援します。拡張機能が機能しなくなる可能性のある Thunderbird の変更は毎年展開されるため、ライセンスの有効期間も 1 年間となります。"
-  },  
+  },
   "licenseValidation.expired": {
     "message": "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。"
   },
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "更新時に新機能とバグ修正を表示する情報ダイアログを非表示にします。"
-  },  
+  },
   "pref_parseSignature": {
     "message": "署名での変数の使用を許可する"
   },
@@ -1247,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "このメニューの一部のテンプレートが無効になっているのはなぜですか？"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "メニューごとのテンプレートの数は制限されています。ライセンスなしでは $max_free$ のメニュー項目を構成でき、SmartTemplates Standard ライセンスで $max_std$ のメニュー項目を構成できます。SmartTemplates Pro では制限がありません。",
     "placeholders": {
@@ -1259,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください…",
@@ -1268,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "ドロップダウンメニューからテンプレートを選択してください。"
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1412,7 +1413,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "8 月 22 日"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1421,7 +1422,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "2 月 20 日"    
+    "message": "2 月 20 日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1446,27 +1447,27 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "9 月 11 日"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $expirydate$ {boldEnd} までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "9 月 11 日"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "これは、$addonName$ をサポートするために推奨される方法です。",
     "placeholders": {
