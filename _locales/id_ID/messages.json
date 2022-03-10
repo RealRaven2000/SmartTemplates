@@ -1,0 +1,1479 @@
+{
+  "_l10nstatus": {
+    "message": "UI"
+  },
+  "a.label": {
+    "message": "Hari dalam Seminggu (Jum.)"
+  },
+  "a.up.label": {
+    "message": "Hari dalam Seminggu (Jumat)"
+  },
+  "ab_contact": {
+    "message": "Contact"
+  },
+  "ab_fields": {
+    "message": "Kolom Buku Alamat"
+  },
+  "ab_fields.desc": {
+    "message": "Saat membalas ke alamat email yang cocok, Anda sekarang dapat menggunakan bidang tambahan untuk variabel alamat seperti %from%, seperti:"
+  },
+  "ab_other": {
+    "message": "Other"
+  },
+  "ab_private": {
+    "message": "Private"
+  },
+  "ab_work": {
+    "message": "Work"
+  },
+  "about.cap": {
+    "message": "Tentang SmartTemplates"
+  },
+  "about.label": {
+    "message": "SmartTemplate4 menawarkan cara mudah untuk menyesuaikan kutipan header standar Thunderbirds dengan menggunakan template. Template individu dapat dibuat untuk setiap akun serta template umum untuk semua."
+  },
+  "accept_button": {
+    "message": "OK"
+  },
+  "account.label": {
+    "message": "Pilih Akun:"
+  },
+  "advanced.label": {
+    "message": "Lanjutan"
+  },
+  "any.label": {
+    "message": "Setiap Baris Tajuk"
+  },
+  "attach.label": {
+    "message": "Tambah berkas lampiran"
+  },
+  "b.label": {
+    "message": "Bulan (Jan.)"
+  },
+  "b.up.label": {
+    "message": "Bulan (Januari)"
+  },
+  "basepath.absolute": {
+    "message": "Click here to select a specific folder on your local drive."
+  },
+  "basepath.desc": {
+    "message": "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these."
+  },
+  "basepath.desc2": {
+    "message": "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email."
+  },
+  "basepath.relative": {
+    "message": "Use this variable to find the images in the same location as the html file template."
+  },
+  "brack_with_var.label": {
+    "message": "Variabel berikut dapat digunakan di dalam [[...]]"
+  },
+  "btnLoadTemplate.tooltip": {
+    "message": "Muat Pengaturan Akun…"
+  },
+  "btnSaveTemplate.tooltip": {
+    "message": "Simpan Pengaturan Akun…"
+  },
+  "btnYouTube.tooltip": {
+    "message": "Kunjungi kanal Youtube 'Thunderbird Daily' - untuk tips dan tutorial dalam penggunaan Peralatan dan Pengaya lainnya"
+  },
+  "button.pasteLicense": {
+    "message": "Tempel"
+  },
+  "button.updateThunderbird": {
+    "message": "Perbarui Thunderbird!"
+  },
+  "button.validateLicense": {
+    "message": "mengesahkan"
+  },
+  "buyDomainLicense.button": {
+    "message": "Beli Lisensi Domain"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Butuh Lisensi untuk perusahaan dengan lebih dari lima pengguna? Mendapatkan lisensi domain yang lebih murah:"
+  },
+  "buyPremiumLicense.button": {
+    "message": "Buy Pro License!"
+  },
+  "buyPremiumLicense.instruct": {
+    "message": "Want to use all premium features without restrictions? Get a SmartTemplates Pro license. It is bound to your personal Email address and can be used in multiple installations."
+  },
+  "buyStandardLicense.button": {
+    "message": "Buy Standard License!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
+  },
+  "calculate.explain": {
+    "message": "HH=jumlah hari untuk ditambahkan. J=jumlah jam untuk ditambahkan (opsional). MM=menit untuk ditambahkan (opsional)"
+  },
+  "calculate.reset": {
+    "message": "Setel argumen ke 0 untuk berhenti memodifikasi tanggal apa pun."
+  },
+  "cancel_button": {
+    "message": "Batal"
+  },
+  "capitalizeNames": {
+    "message": "Nama Huruf Kapital"
+  },
+  "cc.label": {
+    "message": "Nama Penerima (Bawaan)"
+  },
+  "cc_note.label": {
+    "message": "Ketika nama tidak tersedia, alamat email akan ditampilkan"
+  },
+  "cc_var.cap": {
+    "message": "Penerima (CC)"
+  },
+  "ccfirstname.label": {
+    "message": "Nama depan penerima"
+  },
+  "ccmail.label": {
+    "message": "CC-Alamat email penerima"
+  },
+  "ccname.label": {
+    "message": "Nama penerima"
+  },
+  "close.label": {
+    "message": "Dasar"
+  },
+  "conditional.forwardMode": {
+    "message": "Jika email diteruskan sebaris, parameter teks pertama dimasukkan. Parameter teks kedua digunakan saat email diteruskan sebagai lampiran."
+  },
+  "conditionals.cap": {
+    "message": "Teks Bersyarat"
+  },
+  "conditionals.note": {
+    "message": "Kelas variabel ini dapat digunakan untuk memasukkan teks tergantung pada cara Anda mengirim email. Anda memerlukan lisensi SmartTemplates Pro untuk ini."
+  },
+  "contextError": {
+    "message": "Variabel {1} tidak dapat digunakan untuk pesan \"baru\"! Silakan lihat bantuan untuk daftar variabel yang diizinkan"
+  },
+  "contribute_button": {
+    "message": "Kontribusi"
+  },
+  "contributor.label": {
+    "message": "Kontibutor"
+  },
+  "copy.label": {
+    "message": "Salin"
+  },
+  "creator.label": {
+    "message": "Pencipta"
+  },
+  "cursor.label": {
+    "message": "Setel posisi kursor"
+  },
+  "customdf_note.label": {
+    "message": "Dapat digabung dengan %X:=sent%"
+  },
+  "d.label": {
+    "message": "Hari dalam Sebulan (01 - 31) - dengan nol"
+  },
+  "date.label": {
+    "message": "Tanggal / Waktu (sama seperti 'Mailheader' asli)"
+  },
+  "dateformat.example": {
+    "message": "Contoh:"
+  },
+  "dateformat.explain": {
+    "message": "Sebagian besar variabel waktu di atas dapat digunakan dalam string parameter dengan menghilangkan '%'. Lihat juga:"
+  },
+  "dateformat.label": {
+    "message": "Fungsi untuk memasukkan waktu terkini (bidang yang dapat diklik)"
+  },
+  "datelocal.label": {
+    "message": "Tanggal / Waktu (format lokal)"
+  },
+  "dateoffset_note.label": {
+    "message": "Fungsi berikut menambahkan offset ke semua waktu yang ditampilkan."
+  },
+  "dateshort.label": {
+    "message": "Tanggal / Waktu singkat (mis. 01.01.2000 1:23:45)"
+  },
+  "datetimezone.label": {
+    "message": "Zona Waktu (+0100, +0200, ... )"
+  },
+  "datetz.label": {
+    "message": "Zona Waktu (+0100, +0200, ... )"
+  },
+  "day.1.name": {
+    "message": "Minggu"
+  },
+  "day.1.short": {
+    "message": "Ming"
+  },
+  "day.2.name": {
+    "message": "Senin"
+  },
+  "day.2.short": {
+    "message": "Sen"
+  },
+  "day.3.name": {
+    "message": "Selasa"
+  },
+  "day.3.short": {
+    "message": "Sel"
+  },
+  "day.4.name": {
+    "message": "Rabu"
+  },
+  "day.4.short": {
+    "message": "RAb"
+  },
+  "day.5.name": {
+    "message": "Kamis"
+  },
+  "day.5.short": {
+    "message": "Kam"
+  },
+  "day.6.name": {
+    "message": "Jum'at"
+  },
+  "day.6.short": {
+    "message": "Jum"
+  },
+  "day.7.name": {
+    "message": "Sabtu"
+  },
+  "day.7.short": {
+    "message": "Sab"
+  },
+  "defaultMimeFormat": {
+    "message": "Format alamat bawaan:"
+  },
+  "defaultMimeFormat_tip": {
+    "message": "Format yang digunakan saat mengganti alamat %to% %from% %cc% biasa. Mis, Nama depan, nama belakang, ?? pesan akan ditampilkan nama depan diikuti nama belakang; jika keduanya tak tersedia, akan menampilakn alamat email sebagai gantinya."
+  },
+  "deleteQuotedTags": {
+    "message": "Deletes tags from the quote"
+  },
+  "deleteQuotedText": {
+    "message": "Deletes quoted Text"
+  },
+  "deleteText": {
+    "message": "Hapus beberapa teks dari Kutipan, mis., deleteText(\"via Paypal\")"
+  },
+  "developer.label": {
+    "message": "Pengembang"
+  },
+  "domainLicense.email": {
+    "message": "Kami akan menghubungi Anda menggunakan alamat email ini untuk menghasilkan lisensi domain Anda; mohon tunggu dua hari kerja bagi kami untuk berhubungan. Masukkan nama domain untuk lisensi di halaman berikutnya."
+  },
+  "domainLicense.header": {
+    "message": "Domain Email Berlisensi"
+  },
+  "domainLicense.instruct": {
+    "message": "Lisensi ini dikunci untuk domain perusahaan Anda. Lisensi akan memungkinkan pengguna dengan alamat email berakhiran domain email ini untuk menggunakan SmartTemplates Pro. Misalnya. jika Anda memasukkan nama domain 'abc.com' maka pengguna email seperti fred@abc.com, martha@abc.com, mike.doe@abc.com, dll. diizinkan untuk menggunakan lisensi. Jumlah maksimum pengguna individu yang valid adalah nomor yang Anda masukkan pada layar awal."
+  },
+  "domainLicense.validate": {
+    "message": "Pastikan Anda memasukkan nama domain *persis seperti* pada alamat email Perusahaan Anda (bagian *setelah* tanda @), karena akan digunakan untuk mengotorisasi alamat email pengguna Anda."
+  },
+  "e.label": {
+    "message": "Hari dalam Sebulan (01 - 31)"
+  },
+  "edit.label": {
+    "message": "Edit"
+  },
+  "email.label": {
+    "message": "Email:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Masukkan Kunci Lisensi…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Masukkan kode Kunci Lisensi yang telah dikirim ke Email anda."
+  },
+  "ex_brack.label": {
+    "message": "Contoh: Untuk: Fred | Cc: Jane"
+  },
+  "export.label": {
+    "message": "Ekspor"
+  },
+  "extensions.smarttemplate4@thunderbird.extension.description": {
+    "message": "Pengaya SmartTemplates dapat menyesuaikan 'header kutipan' per akun."
+  },
+  "file.label": {
+    "message": "Berkas"
+  },
+  "fileCSS.label": {
+    "message": "External style sheet (css). Include your favorite CSS rules to share between different templates."
+  },
+  "fileHTML.label": {
+    "message": "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset."
+  },
+  "fileImage.label": {
+    "message": "Berkas gambar (png,jpg,gif,bmp,svg). AltText opsional ditampilkan jika gambar tidak dapat ditemukan."
+  },
+  "fileTemplates.add": {
+    "message": "Add"
+  },
+  "fileTemplates.down": {
+    "message": "Down"
+  },
+  "fileTemplates.file.open": {
+    "message": "Select template file from disk"
+  },
+  "fileTemplates.file.path": {
+    "message": "Template location:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Title:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "This will be displayed in the template selection menu."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "List of external template files that can be launched from the 'Forward' button."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "List of external template files that can be launched from the 'Create new Message' button."
+  },
+  "fileTemplates.remove": {
+    "message": "Remove"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "List of external template files that can be launched from the 'Reply' button."
+  },
+  "fileTemplates.title": {
+    "message": "Template Files"
+  },
+  "fileTemplates.up": {
+    "message": "Up"
+  },
+  "fileTemplates.update": {
+    "message": "Update"
+  },
+  "firstName.label": {
+    "message": "Nama Depan:"
+  },
+  "fix_var.cap": {
+    "message": "Variabel tetap"
+  },
+  "fix_vartz.cap": {
+    "message": "Variabel tetap untuk 'Format Tanggal' / 'Zona Waktu'"
+  },
+  "fix_vartz_note.label": {
+    "message": "Dapat digabung dengan %X:=sent%"
+  },
+  "fpFilterHtmlTemplate": {
+    "message": "HTML Template"
+  },
+  "fpFilterName": {
+    "message": "Berkas SmartTemplate4"
+  },
+  "fpFolder": {
+    "message": "Folder"
+  },
+  "fpHTMLFile": {
+    "message": "Berkas HTML / Berkas Teks"
+  },
+  "fpImageFile": {
+    "message": "Berkas Gambar"
+  },
+  "fpJsonFile": {
+    "message": "Berkas JSON"
+  },
+  "fpStyle": {
+    "message": "Style Sheet"
+  },
+  "freeLicense": {
+    "message": "Jika Anda baru saja menyumbang ke proyek SmartTemplates atau telah melakukan pekerjaan kontribusinya, seperti menerjemahkan atau menulis tambalan, Anda mungkin memenuhi syarat untuk mendapatkan kunci lisensi gratis. Hubungi saya dari tab dukungan di Opsi SmartTemplates."
+  },
+  "from.label": {
+    "message": "Nama pengirim (bawaan)"
+  },
+  "from_note.label": {
+    "message": "Ketika nama tidak tersedia, alamat email akan ditampilkan"
+  },
+  "from_var.cap": {
+    "message": "Pengirim (Dari)"
+  },
+  "fromfirstname.label": {
+    "message": "Nama depan pengirim"
+  },
+  "frommail.label": {
+    "message": "Alat email pengirim"
+  },
+  "fromname.label": {
+    "message": "Nama pengirim"
+  },
+  "getSmartTemplate4": {
+    "message": "Dapatkan Lisensi SmartTemplates"
+  },
+  "guessNameFromMail": {
+    "message": "Nama Tamu bagian dari alamat email jika tak ada"
+  },
+  "h.label": {
+    "message": "Jam, Format 24-Jam (00 - 23) - dengan nol"
+  },
+  "header.append.subject": {
+    "message": "tambahkan teks ke subjek"
+  },
+  "header.append.to": {
+    "message": "tambahkan email ke daftar penerima"
+  },
+  "header.delete.subject": {
+    "message": "hapus teks dari subjek (ekspresi reguler)"
+  },
+  "header.prefix.subject": {
+    "message": "awalan subjek dengan teks"
+  },
+  "header.set.from": {
+    "message": "setel alamat 'dari'. Ini hanya menerima alamat email dari daftar identitas."
+  },
+  "header.set.subject": {
+    "message": "ganti subjek dengan teks"
+  },
+  "header.set.to": {
+    "message": "ganti penerima dengan alamat email"
+  },
+  "header_function.cap": {
+    "message": "Ubah Header Surat"
+  },
+  "header_function.explain": {
+    "message": "Fungsi-fungsi ini dapat digunakan untuk mengubah header mail, seperti yang dijelaskan di sini:"
+  },
+  "header_function.scope": {
+    "message": "Ini dapat digunakan dengan header ini:"
+  },
+  "heading.click": {
+    "message": "Klik sebuah tajuk atau"
+  },
+  "heading.expandAll": {
+    "message": "luaskan semua entri"
+  },
+  "help.label": {
+    "message": "Bantuan"
+  },
+  "help_dialog_title": {
+    "message": "Bantuan SmartTemplates"
+  },
+  "help_keyword.cap": {
+    "message": "Bantuan"
+  },
+  "html_note.cap": {
+    "message": "Catatan untuk template HTML"
+  },
+  "html_note.label": {
+    "message": "Mohon gunakan charset UTF-8 (Unicode) didalam template HTML!"
+  },
+  "i.label": {
+    "message": "Jam, Format 12-Jam (1 - 12) - dengan nol"
+  },
+  "identity_ab": {
+    "message": "Use the 'addressbook' keyword to retrieve additional identity information from address book."
+  },
+  "identity_ab.example": {
+    "message": "Example"
+  },
+  "identity_ab.field": {
+    "message": "For additional field values, see chapter 'Address Book Fields' below."
+  },
+  "identity_ab.phoneno": {
+    "message": "Phone No"
+  },
+  "im-ex.cap": {
+    "message": "Ekspor/Impor Setelan dan Template"
+  },
+  "im-ex_note1.label": {
+    "message": "Anda dapat mengekspor dan mengimpor pengaturan dan template anda yang terkait dengan setiap akun."
+  },
+  "im-ex_note2.label": {
+    "message": "Pertama pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplates."
+  },
+  "im-ex_note3.label": {
+    "message": "Lanjut pilih 'File' ⇒ 'Export' ⇒ 'Settings and Templates' dari bilah menu dan simpan berkas (xxx.st4) ke komputer anda."
+  },
+  "im-ex_note4.label": {
+    "message": "Untuk mengimpor berkas. pilih akun yang akan diekspor ke setelan kotak dropdown SmartTemplates. Lanjut, pilih 'File' ⇒ 'Import' ⇒ 'Settings and Templates' dari bilah menu."
+  },
+  "im-ex_note5.label": {
+    "message": "Pilih berkas SmartTemplates (xxx.st4) yang ingin Anda impor."
+  },
+  "im-ex_note6.label": {
+    "message": "CATATAN: perangkat Apple/Macintosh bilah menu akan berada di pita judul alih-alih di Opsi jendela SmartTemplates. Ini adalah perilaku normal pada perangkat ini dan tidak dapat diubah."
+  },
+  "import.label": {
+    "message": "Import"
+  },
+  "insert.label": {
+    "message": "Sisipkan Variabel"
+  },
+  "insertSnippet.button": {
+    "message": "Sisipkan Cuplikan"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Masukkan Cuplikan HTML Cerdas"
+  },
+  "intro": {
+    "message": "Lisensi tahunan SmartTemplates Pro memberikan anda semua fitur premium selama setahun. Itu juga memungkinkan kami untuk mendukung dan menumbuhkan produk lebih lanjut dan mengubahnya menjadi sesuatu yang bahkan lebih menakjubkan."
+  },
+  "k.label": {
+    "message": "Jam, Format 24-Jam (00 - 23)"
+  },
+  "l.label": {
+    "message": "Jam, Format 12-Jam (1 - 12)"
+  },
+  "label.haveLicense": {
+    "message": "Sudah memiliki Lisensi?"
+  },
+  "label.insertLicense": {
+    "message": "Masukkan Kunci Lisensi Personal anda disini:"
+  },
+  "label.insertLicense.tooltip": {
+    "message": "Kunci lisensi anda terdapat dalam email konfirmasi pesanan anda dari Fastspring."
+  },
+  "label.licenseValid": {
+    "message": "Lisensi Anda berlaku hingga:"
+  },
+  "label.premiumFeaturesSite": {
+    "message": "Baca selengkapnya tentang Fitur Premium di Situs Web kami…"
+  },
+  "lastName.label": {
+    "message": "Nama Belakang:"
+  },
+  "license-standard-special-offer": {
+    "message": "{boldStart} $username$ yang terhormat{boldEnd}, Anda sekarang dapat meningkatkan ke SmartTemplates Pro dengan {boldStart} $discount$ lebih murah{boldEnd} - sambil juga memperpanjang lisensi Anda selama setahun penuh. Perubahan besar lainnya di Thunderbird akan segera hadir dan saya butuh {boldStart} bantuan Anda {boldEnd} untuk mengikutinya!",
+    "placeholders": {
+      "username" : {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Bayar hanya $$5,75 daripada $$10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart}hingga $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
+  }, 
+  "licenseStatus.expired" : {
+    "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire" : {
+    "message": "Lisensi SmartTemplates akan kedaluwarsa dalam $countDays$ hari!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  }, 
+  "licenseTypes": {
+    "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
+  },
+  "licenseValidation.expired": {
+    "message": "Kunci lisensi yang Anda masukkan sudah kadaluarsa. Silakan tekan tombol di bawah ini untuk memperbarui lisensi Anda."
+  },
+  "licenseValidation.failed": {
+    "message": "Kunci lisensi yang anda masukkan tidak valid. Periksa email anda dari FastSpring untuk mendapatkan petunjuk. Jika anda masih mengalami masalah, silakan hubungi saya dari tab Dukungan."
+  },
+  "licenseValidation.invalidAddon": {
+    "message": "Kunci lisensi yang Anda masukkan mungkin untuk Pengaya yang berbeda. Kunci lisensi untuk {0} dimulai dengan {1}."
+  },
+  "licenseValidation.invalidMail": {
+    "message": "Alamat email yang terikat ke kunci lisensi [{1}] saat ini tidak terdaftar di salah satu akun email Anda. Silakan hubungi saya dari tab Dukungan untuk bantuan."
+  },
+  "licenseValidation.notMatchedMail": {
+    "message": "Alamat Email terenkripsi tidak cocok dengan yang dapat dibaca."
+  },
+  "licenseValidation.passed": {
+    "message": "Terima kasih telah mendaftar SmartTemplates Pro! Semua fitur premium sekarang terbuka."
+  },
+  "licenseValidation.standard": {
+    "message": "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions."
+  },
+  "licenseWindow.title": {
+    "message": "Lisensi SmartTemplates Pro"
+  },
+  "localedate.label": {
+    "message": "Tanggal / Waktu (Format Lokal)"
+  },
+  "localename.label": {
+    "message": "Ing-AS"
+  },
+  "localized.label": {
+    "message": "Penerjemah"
+  },
+  "m.label": {
+    "message": "Bulan (01 - 12) - dengan nol"
+  },
+  "m.up.label": {
+    "message": "Menit (00 - 59)"
+  },
+  "matchTextFromBody": {
+    "message": "Temukan pola RegEx di Email yang dikutip dan masukkan di lokasi fungsi."
+  },
+  "matchTextFromSubject": {
+    "message": "Temukan pola RegEx dalam subjek dan masukkan di lokasi fungsi."
+  },
+  "menu.template_export.label": {
+    "message": "Ekspor Template"
+  },
+  "menu.template_import.label": {
+    "message": "Impor Template"
+  },
+  "message_default_title": {
+    "message": "SmartTemplate4"
+  },
+  "message.licenseScreen": {
+    "message": "Tampilkan Opsi Lisensi…"
+  },
+  "message.features": {
+    "message": "Bandingkan Fitur…"
+  },
+  "messid.label": {
+    "message": "ID Pesan"
+  },
+  "minSize": {
+    "message": "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images."
+  },
+  "minSize_detail": {
+    "message": "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway."
+  },
+  "month.1.name": {
+    "message": "Januari"
+  },
+  "month.1.short": {
+    "message": "Jan"
+  },
+  "month.10.name": {
+    "message": "Oktober"
+  },
+  "month.10.short": {
+    "message": "Okt"
+  },
+  "month.11.name": {
+    "message": "November"
+  },
+  "month.11.short": {
+    "message": "Nov"
+  },
+  "month.12.name": {
+    "message": "Desember"
+  },
+  "month.12.short": {
+    "message": "Des"
+  },
+  "month.2.name": {
+    "message": "Februari"
+  },
+  "month.2.short": {
+    "message": "Feb"
+  },
+  "month.3.name": {
+    "message": "Maret"
+  },
+  "month.3.short": {
+    "message": "Mar"
+  },
+  "month.4.name": {
+    "message": "April"
+  },
+  "month.4.short": {
+    "message": "Apr"
+  },
+  "month.5.name": {
+    "message": "Mei"
+  },
+  "month.5.short": {
+    "message": "Mei"
+  },
+  "month.6.name": {
+    "message": "Juni"
+  },
+  "month.6.short": {
+    "message": "Jun"
+  },
+  "month.7.name": {
+    "message": "Juli"
+  },
+  "month.7.short": {
+    "message": "Jul"
+  },
+  "month.8.name": {
+    "message": "Agustus"
+  },
+  "month.8.short": {
+    "message": "Agus"
+  },
+  "month.9.name": {
+    "message": "September"
+  },
+  "month.9.short": {
+    "message": "Sep"
+  },
+  "n.label": {
+    "message": "Bulan (1 - 12)"
+  },
+  "newsgr.label": {
+    "message": "Grup diskusi"
+  },
+  "no_button": {
+    "message": "Tidak"
+  },
+  "ownmail.label": {
+    "message": "Alamat email anda"
+  },
+  "ownname.label": {
+    "message": "Nama anda"
+  },
+  "p.label": {
+    "message": "AM / PM"
+  },
+  "p1.label": {
+    "message": "a.m."
+  },
+  "p2.label": {
+    "message": "A.M."
+  },
+  "p3.label": {
+    "message": "AM"
+  },
+  "parameters": {
+    "message": "Parameters"
+  },
+  "paste.label": {
+    "message": "Tempel"
+  },
+  "pref_StatusIcon.IconHoverText": {
+    "message": "Teks Hover"
+  },
+  "pref_StatusIcon.IconOnly": {
+    "message": "Hanya Ikon"
+  },
+  "pref_StatusIcon.IconText": {
+    "message": "Ikon dan Teks"
+  },
+  "pref_about.tab": {
+    "message": "Tentang"
+  },
+  "pref_addSigBreakHTML.label": {
+    "message": "Tambahkan - di email HTML"
+  },
+  "pref_addSigBreakHTML.tooltip": {
+    "message": "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam surat HTML)"
+  },
+  "pref_addSigBreakPlaintext.label": {
+    "message": "Tambahkan - dalam pesan teks biasa"
+  },
+  "pref_addSigBreakPlaintext.tooltip": {
+    "message": "Selalu tambahkan - pemisah sebelum Tanda Tangan (dalam pesan teks biasa)"
+  },
+  "pref_addressDelimiter": {
+    "message": "Batasi beberapa koresponden dengan:"
+  },
+  "pref_addressDelimiter_tip": {
+    "message": "Batasi antara beberapa koresponden. Outlook menggunakan titik koma (;) Standar untuk Thunderbird adalah Koma (,)"
+  },
+  "pref_advanced.tab": {
+    "message": "Setelan Lanjutan"
+  },
+  "pref_breaksOnTop.label": {
+    "message": "Jumlah jeda baris di atas:"
+  },
+  "pref_cursorInsertSpace": {
+    "message": "Sisipkan Ruang untuk menyorot %cursor%"
+  },
+  "pref_debug_check": {
+    "message": "Mode Debug"
+  },
+  "pref_debug_tip": {
+    "message": "Klik-kanan untuk opsi debug lanjutan"
+  },
+  "pref_def.cap": {
+    "message": "Hapus centang 'Gunakan Umum' untuk membuat kutipan tajuk yang disesuaikan untuk akun ini."
+  },
+  "pref_def.label": {
+    "message": "Gunakan Umum"
+  },
+  "pref_defaultCharset.label": {
+    "message": "Charset standar"
+  },
+  "pref_defaultCharset_tip": {
+    "message": "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan."
+  },
+  "pref_dialog.title": {
+    "message": "Setelan SmartTemplates"
+  },
+  "pref_examples.tab": {
+    "message": "Contoh (butuh koneksi internet)"
+  },
+  "pref_examples.tooltip": {
+    "message": "Tampilkan contoh template dari https://smarttemplates.quickfolders.org/templates.html. Hanya tersedia dalam mode online."
+  },
+  "pref_fontSettings.label": {
+    "message": "Editor Huruf Template"
+  },
+  "pref_forceParagraph": {
+    "message": "Paksa Mode Paragraf"
+  },
+  "pref_forceParagraph_tip": {
+    "message": "Memastikan bahwa posisi kursor dimulai dalam paragraf. Kami juga merekomendasikan opsi Komposisi Thunderbird untuk membuat paragraf baru saat menekan tombol [Enter]."
+  },
+  "pref_fwd.label": {
+    "message": "Terapkan pengaturan berikut ke pesan yang diteruskan"
+  },
+  "pref_fwd.tab": {
+    "message": "Teruskan"
+  },
+  "pref_fwdhead.label": {
+    "message": "Nonaktifkan kutipan header Thunderbird standar"
+  },
+  "pref_fwdmsg.cap": {
+    "message": "Teruskan"
+  },
+  "pref_global.tab": {
+    "message": "Setelan Umum"
+  },
+  "pref_groupAdvanced": {
+    "message": "Fungsi Lanjutan"
+  },
+  "pref_groupMailContent": {
+    "message": "Konten Email"
+  },
+  "pref_groupNameRules": {
+    "message": "Tata Tertib"
+  },
+  "pref_groupSignatures": {
+    "message": "Tanda Tangan"
+  },
+  "pref_groupTroubleShooting": {
+    "message": "Penyelesaian masalah"
+  },
+  "pref_groupUI": {
+    "message": "Antarmuka pengguna"
+  },
+  "pref_help.tab": {
+    "message": "Bantuan"
+  },
+  "pref_hideExamples": {
+    "message": "Sembunyikan tab contoh"
+  },
+  "pref_html.cap": {
+    "message": "Gunakan karakter escape untuk \" , & , < , > , spasi. Lihat \"help\" untuk lebih jelasnya."
+  },
+  "pref_html.label": {
+    "message": "Gunakan HTML (mis., <b>bold</b>)"
+  },
+  "pref_nameSwap": {
+    "message": "Koreksi LastName, FirstName"
+  },
+  "pref_nameSwap_tip": {
+    "message": "Ubah 'LastName, FirstName' menjadi 'First Last"
+  },
+  "pref_new.label": {
+    "message": "Terapkan template berikut untuk pesan baru"
+  },
+  "pref_new.tab": {
+    "message": "Tulis"
+  },
+  "pref_newmsg.cap": {
+    "message": "Tulis"
+  },
+  "pref_noSplash": {
+    "message": "Abaikan Layar Percikan"
+  },
+  "pref_noSplash_tip": {
+    "message": "Sembunyikan dialog informasi yang menampilkan fitur baru dan perbaikan bug saat memperbarui."
+  },  
+  "pref_parseSignature": {
+    "message": "Proses Tanda tangan"
+  },
+  "pref_parseSignature_tip": {
+    "message": "Ganti variabel dalam tanda tangan."
+  },
+  "pref_quoteHeaderBox.label": {
+    "message": "Kutipan Tajuk"
+  },
+  "pref_quoteHeaderBox_tip": {
+    "message": "Dalam kotak ini, tulis apa yang harus ditampilkan sebelum bagian yang dikutip (surat asli) - mis. Pada %date%, %from(name)% menulis:"
+  },
+  "pref_quotehead_tip": {
+    "message": "Nonaktifkan kutipan header standar. Silakan tempatkan header anda di kotak teks di atas."
+  },
+  "pref_removeSig.label": {
+    "message": "Ganti tanda tangan saat mengubah identitas email"
+  },
+  "pref_rep_br.cap": {
+    "message": "CATATAN: Tidak ada ruang yang akan dimasukkan ke dalam tag HTML dengan menggunakan <br> satu kali."
+  },
+  "pref_rep_br.label": {
+    "message": "Ganti jeda baris dengan <br>"
+  },
+  "pref_rsp.label": {
+    "message": "Terapkan pengaturan berikut ke pesan yang dibalas"
+  },
+  "pref_rsp.tab": {
+    "message": "Balas"
+  },
+  "pref_rsphead.label": {
+    "message": "Gunakan daripada kutipan header standar"
+  },
+  "pref_rspmsg.cap": {
+    "message": "Balas"
+  },
+  "pref_server_def": {
+    "message": "Umum"
+  },
+  "pref_server_desc": {
+    "message": "Akun"
+  },
+  "pref_showStatusIcon.label": {
+    "message": "Tampilkan tombol di bilah status"
+  },
+  "pref_sigReplaceBR.label": {
+    "message": "Ganti jeda baris tanda tangan dalam teks biasa dengan <br>"
+  },
+  "pref_silentUpdates": {
+    "message": "Silent updates"
+  },
+  "pref_silentUpdates_tip": {
+    "message": "Don't open change log after SmartTemplates was updated."
+  },
+  "pref_stationeryLink": {
+    "message": "Pengaya Peralatan"
+  },
+  "pref_stationeryLink_tip": {
+    "message": "Dapatkan Peralatan…"
+  },
+  "pref_stationerySupport": {
+    "message": "Dukungan Peralatan Pengaya"
+  },
+  "pref_stationerySupport_tip": {
+    "message": "Dukungan pengguanaan Peralatan pada saat yang sama dengan SmartTemplate4."
+  },
+  "pref_stationerySupport_tip2": {
+    "message": "Ini memungkinkan untuk menggunakan variabel template di Peralatan Anda."
+  },
+  "pref_templateBox.label": {
+    "message": "Template"
+  },
+  "pref_templateBox_tip": {
+    "message": "Dalam kotak ini,tempatkan template email Anda, mis. Halo %from(name)%, <br> Terima kasih atas pesan Anda <br> Salam, <br>%ownname%"
+  },
+  "pref_template_tip": {
+    "message": "Anda dapat meningkatkan template dengan 'variabel'. Klik lanjutan / variabel untuk informasi lebih lanjut."
+  },
+  "pref_variables.tab": {
+    "message": "Variabel"
+  },
+  "premiumConfig": {
+    "message": "Fitur Premium"
+  },
+  "prompt.email": {
+    "message": "Masukkan alamat email"
+  },
+  "prompt.text": {
+    "message": "Masukkan teks untuk ditambahkan atau disetel"
+  },
+  "quoteLevel": {
+    "message": "[optional, numeric]:  which minimal quote level to start from"
+  },
+  "quotePlaceholder": {
+    "message": "Ini memindahkan bagian yang dikutip ke dalam teks templat itu sendiri. Bagian header kutipan dari templat akun akan dipindahkan ke atas kutipan."
+  },
+  "quotePlaceholder.level": {
+    "message": "[opsional, numerik] Tingkat kutipan maksimum untuk menghapus kutipan lama dari percakapan."
+  },
+  "quote_changers.cap": {
+    "message": "Quote Manipulation"
+  },
+  "quote_changers.desc": {
+    "message": "Premium variables to remove text / tags from quoted parts and save space."
+  },
+  "recipient.label": {
+    "message": "Penerima Akhir"
+  },
+  "regexpAnyText": {
+    "message": "Any text - regular expression - must be in double quotes."
+  },
+  "replaceQuotedTags": {
+    "message": "Replaces tags from the quote with text or html"
+  },
+  "replaceQuotedText": {
+    "message": "Replaces quoted text with HTML"
+  },
+  "replaceText": {
+    "message": "Ganti beberapa teks dengan yang lain."
+  },
+  "replacementHTML": {
+    "message": "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found."
+  },
+  "resolveABRemoveMail": {
+    "message": "Hapus alamat email kecuali format batasan ditentukan"
+  },
+  "resolveNamesFromAB": {
+    "message": "Pilih nama dari buku alamat"
+  },
+  "resolveNamesFromABDisplay": {
+    "message": "Gunakan Nama Tampilan jika nama depan hilang"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Ganti nama depan dengan Nama panggilan jika ada"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Fitur ini tidak berfungsi dengan buku alamat remote tertentu, seperti LDAP."
+  },
+  "s.label": {
+    "message": "Detik (00 - 59)"
+  },
+  "selector": {
+    "message": "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided."
+  },
+  "settings.label": {
+    "message": "Setelan dan Template"
+  },
+  "shortdate.label": {
+    "message": "Tanggal / Waktu singkat (mis. 01.01.2000 1:23:45)"
+  },
+  "showSplash": {
+    "message": "Tampilkan perubahan + berita (Layar Splash)."
+  },
+  "sig.label": {
+    "message": "Tanda tangan dari Setelan Akun"
+  },
+  "sig2.label": {
+    "message": "Tanda tangan dari Setelan Akun tanpa '--'"
+  },
+  "smartTemplate4.changeTemplate.label": {
+    "message": "Ubah template…"
+  },
+  "smartTemplate4.changeTemplate.tooltip": {
+    "message": "Muat template lain - gunakan sebelum mengedit Email!"
+  },
+  "smartTemplate4.cleandeferred.label": {
+    "message": "Membersihkan!"
+  },
+  "smartTemplate4.cleandeferred.tooltip": {
+    "message": "Membersihkan semua variabel SmartTemplate"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "Perbarui dan Ganti dengan Konten"
+  },
+  "smartTemplate4.deferredcontext.delete": {
+    "message": "Hapus variabel SmartTemplates"
+  },
+  "smartTemplate4.deferredcontext.update": {
+    "message": "Perbarui konten SmartTemplates"
+  },
+  "smartTemplate4.settings.label": {
+    "message": "SmartTemplates"
+  },
+  "smartTemplate4.settings.tooltip": {
+    "message": "Setelan SmartTemplates"
+  },
+  "smarttemplate4_button": {
+    "message": "Ubah template / kutipan tajuk…"
+  },
+  "smarttemplate4_title": {
+    "message": "SmartTemplate4"
+  },
+  "SmartTemplateMainButton.updated": {
+    "message": "SmartTemplates telah diperbarui!"
+  },
+  "snippets.head": {
+    "message": "Cuplikan Cerdas"
+  },
+  "snippets.label": {
+    "message": "Fragmen HTML untuk dimasukkan ke dalam Komposer"
+  },
+  "spec_form.cap": {
+    "message": "Address Field Switches"
+  },
+  "spec_var.cap": {
+    "message": "Khusus"
+  },
+  "specform_note.label": {
+    "message": "Bagian dalam kurung ganda  [[Cc: %cc(name)%]] hanya akan ditampilkan jika variabel %cc(name)% bisa diganti!"
+  },
+  "spellcheck.label": {
+    "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
+  },
+  "st.confirmVersionLink": {
+    "message": "Menampilkan log perubahan untuk SmartTemplates?"
+  },
+  "st.fileFunction.notExists": {
+    "message": "Function {0} could not find or access file. Check the path below:"
+  },
+  "st.fileTemplates": {
+    "message": "Template Files"
+  },
+  "st.fileTemplates.configureMenu": {
+    "message": "Configure menu items…"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
+  },
+  "st.fileTemplates.openFile": {
+    "message": "Open SmartTemplates template file…"
+  },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "Mengapa beberapa template dalam menu ini dinonaktifkan?"
+  }, 
+  "st.fileTemplates.restrictTemplates": {
+    "message": "Jumlah template per menu dibatasi. Anda dapat mengonfigurasi hingga $max_free$ item menu tanpa lisensi, dan item menu $max_std$ dengan lisensi SmartTemplates Standard! SmartTemplates Pro tidak dibatasi.",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }    
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "Untuk mengonfigurasi lebih dari $max_Cats$ Kategori, dapatkan lisensi SmartTemplates Pro…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }    
+  },  "st.fileTemplates.selectFromMenu": {
+    "message": "Please select a template from the dropdown menu."
+  },
+  "st.fileTemplates.wrnEnterPath": {
+    "message": "Please select a valid path!"
+  },
+  "st.fileTemplates.wrnEnterTitle": {
+    "message": "Please enter a title!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "You have to select an item from the list to update!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Update Templates"
+  },
+  "st.licenseValidation.expired": {
+    "message": "Lisensi Anda kedaluwarsa pada:"
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "(Lisensi yang dimasukkan mungkin untuk {2})."
+  },
+  "st.notification.donate": {
+    "message": "Donasi"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "Do not show this message again."
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "You have already typed text and want to change to template {0}"
+  },
+  "st.notification.license.required": {
+    "message": "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."
+  },
+  "st.notification.license.text": {
+    "message": "From now on, SmartTemplates requires at least a standard license. Read more about this on our licensing page."
+  },
+  "st.notification.licensing": {
+    "message": "More about licensing"
+  },
+  "st.notification.parsing": {
+    "message": "Parsing variables:"
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "Perpanjang Lisensi Domain"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "Perpanjang Lisensi"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Ini akan memperpanjang tanggal lisensi saat ini hingga 1 tahun. Ini biasanya lebih murah daripada lisensi baru."
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "Beli Lisensi"
+  },
+  "st.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "st.notification.premium.sendByFilter": {
+    "message": "Dengan lisensi SmartTemplates Pro yang valid, email sekarang akan dikirim secara otomatis."
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "Perpanjang Lisensi Domain"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "Perbarui Lisensi"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "Upgrade to Pro"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "st.notification.premium.text": {
+    "message": "{1} adalah fitur Premium, dapatkan Lisensi SmartTemplates Pro untuk menggunakannya secara permanen."
+  },
+  "st.notification.premium.text.plural": {
+    "message": "{1} adalah fitur Premium, dapatkan Lisensi SmartTemplates Pro untuk menggunakannya secara permanen."
+  },
+  "st.notification.premium.title": {
+    "message": "Fitur Premium"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "No dictionaries installed."
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "Dictionary '{0}' not found."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "Beralih ke Lisensi Domain?"
+  },
+  "st.trialDays": {
+    "message": "You have {0} trial days left."
+  },
+  "st.trialExpiry": {
+    "message": "Your trial period expired {0} days ago."
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "Kepada pengguna SmartTemplates, dengan senang hati kami mengumumkan dari versi ini, SmartTemplates mendukung penggunaan kurung kurawa {} dan tanda <style> sehingga kini anda dapat menerapkan kostumisasi css dalam Template anda."
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "Dari sekarang, syntax spesifik untuk penggunaan tanda kurung diubah: Bukannya kurung kurawa {%cc(name)%} gunakan tanda kurung ganda [[%cc(name)%]] - untuk detail lebih lanjut, lihat Bantuan."
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "Sekarang SmartTemplates akan mengonversi templat yang ada sehingga Anda dapat tetap menggunakannya dalam versi baru. Tekan [OK] untuk lanjut."
+  },
+  "st.updateMessageVersion": {
+    "message": "SmartTemplates berhasil diperbarui ke versi {1}!"
+  },
+  "standardformat.config": {
+    "message": "Format standar…"
+  },
+  "stringmanip.alttext": {
+    "message": "[parameter opsional] Teks Alternatif: jika tidak ada yang cocok, masukkan teks alternatif sebagai gantinya."
+  },
+  "stringmanip.match.comment": {
+    "message": "Fungsi pencocok: Parameter pertama (ekspresi reguler) harus berada dalam tanda kutip ganda. Parameter kedua adalah nomor grup tandingan. Gunakan 0 untuk mencocokkan ekspresi lengkap, 1 untuk grup pertama, dll."
+  },
+  "stringmanip_function.cap": {
+    "message": "Manipulasi String"
+  },
+  "stringmanip_function.explain": {
+    "message": "Fungsi-fungsi ini dapat digunakan untuk menghapus atau mengganti teks dalam template Email atau kutipan header."
+  },
+  "sub.label": {
+    "message": "subjek email yang dijawab / diteruskan"
+  },
+  "sub2.label": {
+    "message": "subjek pesan saat ini sedang disusun"
+  },
+  "sub_var.cap": {
+    "message": "Subjek"
+  },
+  "support.compose": {
+    "message": "Write to support…"
+  },
+  "support.links": {
+    "message": "Support Links"
+  },
+  "support.mail.instructions": {
+    "message": "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot."
+  },
+  "support.subject": {
+    "message": "Subject:"
+  },
+  "support.tab": {
+    "message": "Support"
+  },
+  "support.title": {
+    "message": "Mail to Support"
+  },
+  "support.type": {
+    "message": "Type:"
+  },
+  "support.type.html": {
+    "message": "Help with HTML / CSS"
+  },
+  "support.type.license": {
+    "message": "Licensing related"
+  },
+  "support.type.other": {
+    "message": "Other"
+  },
+  "support.type.selectOne": {
+    "message": "Select a topic!"
+  },
+  "support.type.tech": {
+    "message": "Technical"
+  },
+  "suppressMailToLink": {
+    "message": "Suppress Mail Clients menambahkan tautan ke alamat Email."
+  },
+  "suppressQuoteHdr": {
+    "message": "Benar-benar menghapus tajuk kutipan terlepas dari pengaturan akun."
+  },
+  "tab.gopro": {
+    "message": "SmartTemplates Pro"
+  },
+  "table.cap": {
+    "message": "Penggunaan variabel"
+  },
+  "table_fwd.label": {
+    "message": "Teruskan"
+  },
+  "table_keyword.label": {
+    "message": "Variabel"
+  },
+  "table_new.label": {
+    "message": "Tulis"
+  },
+  "table_note.label": {
+    "message": "Menggunakan variabel secara tidak benar akan menghasilkan pesan kesalahan di 'Error Console'!"
+  },
+  "table_reply.label": {
+    "message": "Balas"
+  },
+  "testDriveS": {
+    "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
+  },
+  "template.category": {
+    "message": "Kategori"
+  },
+  "template.category.other": {
+    "message": "Yang lain"
+  },
+  "template.category.tooltip": {
+    "message": "Buat submenu untuk mengelompokkan template"
+  },
+  "timezone.explain": {
+    "message": "Paksa zona waktu khusus untuk variabel tanggal dengan mengganti parameter tz (GMT, EST, CST, PST, dll.)"
+  },
+  "timezonename.label": {
+    "message": "GMT, PST, EST, …"
+  },
+  "tip.fileTemplates": {
+    "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
+  },
+  "to.label": {
+    "message": "Nama penerima (bawaan)"
+  },
+  "to_note.label": {
+    "message": "Ketika nama tidak tersedia, alamat email akan ditampilkan"
+  },
+  "to_var.cap": {
+    "message": "Penerima (Untuk, recipient)"
+  },
+  "tofirstname.label": {
+    "message": "Nama depan penerima"
+  },
+  "tofwd.label": {
+    "message": "Gunakan fwd untuk menambahkan penerima yang dapat diklik dalam email yang diteruskan"
+  },
+  "tomail.label": {
+    "message": "Alamat email Penerima Asli"
+  },
+  "toname.label": {
+    "message": "Nama penerima"
+  },
+  "tools.label": {
+    "message": "Alat"
+  },
+  "translatorNickname.label": {
+    "message": "Aris-T (AMO)"
+  },
+  "tzname.label": {
+    "message": "GMT, PST, EST, …"
+  },
+  "updates.title": {
+    "message": "Pembaruan"
+  },
+  "updatesExpiry": {
+    "message": "SmartTemplates Pro akan secara otomatis diperbarui melalui addons.thunderbird.net seperti biasa. Setelah tahun berakhir Anda dapat memperbarui lisensi atau tetap menggunakan fitur premium dengan persyaratan yang sama dengan pengguna gratis. Fitur 'Premium Eksklusif' akan membutuhkan kunci pendaftaran yang valid."
+  },
+  "url.bugsAndFeaturesPage.label": {
+    "message": "Laporan Bug / Permintaan Fitur"
+  },
+  "url.homePage.label": {
+    "message": "Beranda Pengaya"
+  },
+  "url.supportPage.label": {
+    "message": "Halaman Dukungan"
+  },
+  "var_custom.cap": {
+    "message": "Variabel untuk menyesuaikan 'Format tanggal'"
+  },
+  "var_xsent.cap": {
+    "message": "Pengubah %X:=sent%"
+  },
+  "vouchers.title": {
+    "message": "Voucher"
+  },
+  "whitespace_note": {
+    "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
+  },
+  "xmail.label": {
+    "message": "X-Mailer"
+  },
+  "xsent_long.cap": {
+    "message": "Contoh untuk longstring"
+  },
+  "xsent_long.label": {
+    "message": "pukul %X:=sent%%d%/%m%/%Y% at %H%:%M%"
+  },
+  "xsent_long_result.label": {
+    "message": "Hasil: Minggu,20/12/2011 pada pukul 16:24"
+  },
+  "xsent_note.label": {
+    "message": "Secara Bawaan, variabel Tanggal/Waktu akan selalu diinisialisasi dengan nilai terkini (terkini = waktu saat anda membuat email). Saat digabungkan dengan %X:=sent%, variabel tanggal/waktu akan akan mencerminkan tanggal / waktu pesan asli."
+  },
+  "xsent_short.cap": {
+    "message": "Contoh dari shortstring"
+  },
+  "xsent_short.label": {
+    "message": "%X:=sent% %datelocal%"
+  },
+  "xsent_short_note.label": {
+    "message": "Variabel berikut dapat digunakan dikedua varian"
+  },
+  "xsent_short_result.label": {
+    "message": "Hasil: Minggu, 20/12/2011 08:54:21"
+  },
+  "y.up.label": {
+    "message": "Tahun (1970)"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "SmartTemplates Pro memberi Anda akses tak terbatas ke fitur premium."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Info tentang fitur premium."
+  },
+  "yearlyLicense.title": {
+    "message": "Lisensi Tahunan"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Lisensi ini untuk penggunaan pribadi Anda dan terkait dengan alamat email Anda. Anda dapat menginstalnya di beberapa klien email selama mereka dikonfigurasi untuk menggunakan alamat itu."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Setiap alamat email tambahan tidak masalah - mereka tidak memerlukan lisensi terpisah. Jika ada pertanyaan, Anda dapat menghubungi saya melalui tab dukungan."
+  },
+  "yes_button": {
+    "message": "Ya"
+  }
+}
