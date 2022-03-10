@@ -1,128 +1,119 @@
 {
   "_l10nstatus": {
     "message": "SPLASH"
-  },  
-  "active-version-info" : {
-    "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
+  },
+  "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
     "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
       },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
       }
-      
     }
-  },  
-  "addon-authors-struggle" : {
-    "message" : "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
+  },
+  "addon-authors-struggle": {
+    "message": "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
   },
   "btn-extend-license": {
-    "message" : "Tôi muốn gia hạn giấy phép của mình thêm một năm"
+    "message": "Tôi muốn gia hạn giấy phép của mình thêm một năm"
   },
   "btn-renew-license": {
-    "message" : "Tôi muốn gia hạn giấy phép của mình"
+    "message": "Tôi muốn gia hạn giấy phép của mình"
   },
-  "btn-upgrade-to-pro" : {
+  "btn-upgrade-to-pro": {
     "message": "Tôi muốn nâng cấp giấy phép của mình"
   },
   "btn-want-a-license": {
-    "message" : "Tôi muốn mua giấy phép"
+    "message": "Tôi muốn mua giấy phép"
   },
-  "btn-want-to-donate" : {
-    "message" : "Tôi muốn giúp đỡ với khoản đóng góp một lần."
+  "btn-want-to-donate": {
+    "message": "Tôi muốn giúp đỡ với khoản đóng góp một lần."
   },
-  "cost-of-independence" : {
-    "message" : "Việc phát triển phần mềm tốn kém thời gian và tiền bạc - không giống như nhiều ứng dụng nền tảng, Tiện ích bổ sung không được viết bởi các tập đoàn lớn, cũng như không được Mozilla tài trợ theo bất kỳ hình thức nào."
+  "cost-of-independence": {
+    "message": "Việc phát triển phần mềm tốn kém thời gian và tiền bạc - không giống như nhiều ứng dụng nền tảng, Tiện ích bổ sung không được viết bởi các tập đoàn lớn, cũng như không được Mozilla tài trợ theo bất kỳ hình thức nào."
   },
-  "donate" : {
-    "message" : "Giúp đỡ với khoản đóng góp một lần."
-  },   
-  "donate-heading" : {
-    "message" : "Giúp đỡ bằng cách quyên góp!"
+  "donate": {
+    "message": "Giúp đỡ với khoản đóng góp một lần."
   },
-  "extend-your-license" : {
-    "message" : "Xem xét gia hạn giấy phép của bạn thêm một năm."
-  },  
-  "extensionName": {
-    "message": "SmartTemplates",
-    "description": "Name of the extension."
+  "donate-heading": {
+    "message": "Giúp đỡ bằng cách quyên góp!"
+  },
+  "extend-your-license": {
+    "message": "Xem xét gia hạn giấy phép của bạn thêm một năm."
   },
   "extensionDescription": {
-    "message": "Một cách mạnh mẽ để tạo các thư trả lời tùy chỉnh bằng cách tự động chèn các tiêu đề thư khác nhau. Mẫu có thể được tạo cho mọi danh tính thư, cũng hỗ trợ các tệp html bên ngoài và các biểu định kiểu.",
-    "description": "Description of the extension."
+    "description": "Description of the extension.",
+    "message": "Một cách mạnh mẽ để tạo các thư trả lời tùy chỉnh bằng cách tự động chèn các tiêu đề thư khác nhau. Mẫu có thể được tạo cho mọi danh tính thư, cũng hỗ trợ các tệp html bên ngoài và các biểu định kiểu."
   },
   "heading-installed": {
-    "message": "Đã cài đặt thành công $addonName$",
     "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Đã cài đặt thành công $addonName$",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
   },
   "heading-updated": {
-    "message": "$addonName$ đã được cập nhật thành côngs",
     "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ đã được cập nhật thành côngs",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
-  },  
-  "label-remind-me" : {
+  },
+  "label-remind-me": {
     "message": "Nhắc lại tôi sau $countDays$ ngày.",
     "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
-  "license-is-extended" : {
-    "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này.",
-    "description": "Shown if license expires more than a year from now"
-  },  
-  "license-is-standard" : {
-    "message": "Là chủ sở hữu của giấy phép tiêu chuẩn SmartTemplates, bạn hiện đủ điều kiện nhận bản cập nhật chiết khấu cộng với gia hạn cả năm. Nhấp vào nút [Nâng cấp lên Pro] bên dưới giấy phép tiêu chuẩn của bạn để biết thêm thông tin.",
-    "description": "Special message for standard license holders"
-  },  
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Là chủ sở hữu của giấy phép tiêu chuẩn SmartTemplates, bạn hiện đủ điều kiện nhận bản cập nhật chiết khấu cộng với gia hạn cả năm. Nhấp vào nút [Nâng cấp lên Pro] bên dưới giấy phép tiêu chuẩn của bạn để biết thêm thông tin."
+  },
   "message.licenseScreen": {
     "message": "Hiển thị Tùy chọn Giấy phép…"
   },
   "message.features": {
     "message": "So sánh các tính năng…"
   },
-  "mozillas-basic-platform" : {
-    "message" : "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
-  },
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
+  "mozillas-basic-platform": {
+    "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
   "ongoing-work": {
     "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
   },
-  "purchase-a-license" : {
-    "message" : "Mua giấy phép."
-  },   
-  "purchase-heading" : {
-    "message" : "Mua Giấy phép!"
-  }, 
-  "renew-your-license" : {
-    "message" : "Gia hạn giấy phép của bạn."
-  },  
+  "purchase-a-license": {
+    "message": "Mua giấy phép."
+  },
+  "purchase-heading": {
+    "message": "Mua Giấy phép!"
+  },
+  "renew-your-license": {
+    "message": "Gia hạn giấy phép của bạn."
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates đã được cập nhật!"
   },
@@ -131,7 +122,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": " ngày 16 tháng 4"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -140,7 +131,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 tháng 2"    
+    "message": "20 tháng 2"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -172,7 +163,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Nâng cấp ngay từ SmartTemplates Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -185,23 +176,23 @@
         "example": "50%"
       }
     }
-  }, 
-  "support-preference" : {
+  },
+  "support-preference": {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
-  }, 
-  "support-suggestion" : {
+  },
+  "support-suggestion": {
     "message": "Để $addonName$ vẫn hoạt động và tồn tại, hãy làm điều đó một cách quan trọng:",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
   },
   "template.category": {
@@ -216,33 +207,33 @@
   "thanks-for-installing-intro": {
     "message": "Cảm ơn bạn đã cài đặt $addonName$.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
-  },  
+  },
   "thanks-for-updating-intro": {
     "message": "Cảm ơn bạn đã cập nhật $addonName$.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
-  },   
-  "time-and-effort": { 
+  },
+  "time-and-effort": {
     "message": "$addonName$ sẽ được viết lại phần lớn để vẫn tương thích với Thunderbird. Đây là một điều cần thiết, vì những thay đổi của Mozilla yêu cầu Tiện ích bổ sung trở thành tiện ích mở rộng thư gốc, rất khác trong nội bộ. Chỉ thông qua giấy phép của bạn, nhiều giờ phát triển cần thiết mới có thể được tài trợ.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
-  },  
-  "translated-by-google" : {
-    "message": "bản dịch do google cung cấp",
-    "description": "disclaimer."
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "bản dịch do google cung cấp"
   },
   "whats-new-btn": {
     "message": "Có gì mới?"
@@ -257,14 +248,13 @@
     "message": "{L1}Змінити текст у тілі пересланої пошти [inline]. Тепер це працює у функціях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматичне пересилання/автоматична відповідь за допомогою SmartTemplate за допомогою правил фільтрування - це означає, що це означає ви можете запустити будь-який шаблон за допомогою фільтрів (за допомогою FiltaQuilla 3.4). Dành riêng cho người được cấp phép SmartTemplates Pro.{L2}{L1} Команда %suppressQuoteHeaders% для придушення всіх заголовків цитат.{L2}"
   },
   "window-title": {
-    "message": "Chào mừng bạn đến với $addonName$",
     "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Chào mừng bạn đến với $addonName$",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "SmartTemplates"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
     }
   }
-
 }
