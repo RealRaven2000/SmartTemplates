@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Cher $username$ {boldEnd}, vous pouvez désormais passer à SmartTemplates Pro pour {boldStart} $discount$ de moins {boldEnd} - tout en prolongeant votre licence d'une année complète. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nouveau système de licence"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "La licence SmartTemplates expirera dans $countDays$ jours!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Paramètres"
-  },
   "paste.label": {
     "message": "Coller"
+  },
+  "parameters": {
+    "message": "Paramètres"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texte au survol"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Masquer la boîte de dialogue d'informations qui affiche les nouvelles fonctionnalités et les corrections de bugs lors de la mise à jour."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Traitement de la signature"
   },
@@ -1247,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Pourquoi certains modèles de ce menu sont-ils désactivés ?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Le nombre de modèles par menu est limité. Vous pouvez configurer jusqu'à $max_free$ éléments de menu sans licence et $max_std$ éléments de menu avec une licence SmartTemplates Standard ! SmartTemplates Pro est illimité.",
     "placeholders": {
@@ -1259,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Pour configurer plus de $max_Cats$ Catégories, veuillez obtenir une licence SmartTemplates Pro…",
@@ -1268,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Veuillez sélectionner un modèle dans le menu déroulant."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1421,7 +1422,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 février"    
+    "message": "20 février"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1466,7 +1467,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "C'est la manière préférée de prendre en charge $addonName$.",
     "placeholders": {
