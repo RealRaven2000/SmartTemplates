@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Gentile $username$ {boldEnd}, ora puoi eseguire l'upgrade a SmartTemplates Pro per {boldStart} $discount$ in meno {boldEnd}, estendendo al contempo la tua licenza di un anno intero. Sono in arrivo altri grandi cambiamenti su Thunderbird e ho bisogno del tuo {boldStart} del tuo aiuto {boldEnd} per stare al passo!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nuovo sistema di licenze"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "La licenza SmartTemplates è scaduta $countDays$ giorni fa.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "La licenza SmartTemplates scadrà tra $countDays$ giorni!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates offre due licenze, Standard e Pro; questi sono necessari per stare al passo con i cambiamenti nella piattaforma Thunderbird e per finanziare Innovazioni e riparazioni dell'Add-on. Poiché le modifiche che potenzialmente interrompono la funzionalità dell'estensione vengono implementate ogni anno, la licenza sarà valida anche per 1 anno."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "La chiave di licenza inserita è scaduta. Prmere il pulsante sottostante per rinnovare la licenza."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Parametri"
-  },
   "paste.label": {
     "message": "Incolla"
+  },
+  "parameters": {
+    "message": "Parametri"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Testo al passaggio del mouse"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Nascondi la finestra di dialogo delle informazioni che mostra nuove funzionalità e correzioni di bug durante l'aggiornamento."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Elabora firma"
   },
@@ -1247,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Perché alcuni modelli in questo menu sono disabilitati?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Il numero di modelli per menu è limitato. Puoi configurare fino a $max_free$ voci di menu senza licenza e $max_std$ voci di menu con una licenza SmartTemplates Standard! SmartTemplates Pro è illimitato.",
     "placeholders": {
@@ -1259,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Per configurare più di $max_Cats$ Categorie, ottenere una licenza SmartTemplates Pro…",
@@ -1268,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Seleziona un modello dal menu a discesa."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1412,7 +1413,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "22 agosto"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1421,7 +1422,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 febbraio"    
+    "message": "20 febbraio"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1466,7 +1467,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Questo è il modo migliore per supportare $addonName$.",
     "placeholders": {
