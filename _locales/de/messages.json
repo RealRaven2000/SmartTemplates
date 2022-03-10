@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Wochentag (Fri.)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können."
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "Konto wählen:"
@@ -316,9 +310,6 @@
   "edit.label": {
     "message": "Editieren"
   },
-  "email.label": {
-    "message": "Email:"
-  },
   "enterLicenseKey.button": {
     "message": "Lizenzschlüssel eingeben…"
   },
@@ -337,10 +328,6 @@
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "Automatisiert das Erstellen von Antworten und Einfügen von verschiedenen Mail-Informationen. Unterstützt Vorlagen per Identität sowie externe HTML Dateien."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates bietet die Option die Standard Mailheader 'quote-header' komfortabel anzupassen."
@@ -707,9 +694,6 @@
   "m.label": {
     "message": "Monat (01 bis 12) - mit führender null"
   },
-  "m.up.label": {
-    "message": "Minute (00 to 59)"
-  },
   "matchTextFromBody": {
     "message": "Findet einen Regulären Ausdruck in der zitierten Email und fügt ihn an der Position dieser Funktion ein."
   },
@@ -721,9 +705,6 @@
   },
   "menu.template_import.label": {
     "message": "Einstellungen und Vorlagen importieren"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "Lizenzoptionen anzeigen…"
@@ -743,20 +724,11 @@
   "month.1.name": {
     "message": "Januar"
   },
-  "month.1.short": {
-    "message": "Jan"
-  },
   "month.10.name": {
     "message": "Oktober"
   },
   "month.10.short": {
     "message": "Okt"
-  },
-  "month.11.name": {
-    "message": "November"
-  },
-  "month.11.short": {
-    "message": "Nov"
   },
   "month.12.name": {
     "message": "Dezember"
@@ -767,20 +739,11 @@
   "month.2.name": {
     "message": "Februar"
   },
-  "month.2.short": {
-    "message": "Feb"
-  },
   "month.3.name": {
     "message": "März"
   },
   "month.3.short": {
     "message": "Mär"
-  },
-  "month.4.name": {
-    "message": "April"
-  },
-  "month.4.short": {
-    "message": "Apr"
   },
   "month.5.name": {
     "message": "Mai"
@@ -791,26 +754,8 @@
   "month.6.name": {
     "message": "Juni"
   },
-  "month.6.short": {
-    "message": "Jun"
-  },
   "month.7.name": {
     "message": "Juli"
-  },
-  "month.7.short": {
-    "message": "Jul"
-  },
-  "month.8.name": {
-    "message": "August"
-  },
-  "month.8.short": {
-    "message": "Aug"
-  },
-  "month.9.name": {
-    "message": "September"
-  },
-  "month.9.short": {
-    "message": "Sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
@@ -823,10 +768,6 @@
   },
   "no_button": {
     "message": "Nein"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
@@ -842,18 +783,6 @@
   },
   "ownname.label": {
     "message": "Ihr Name"
-  },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Einfügen"
@@ -1191,17 +1120,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "SmartTemplates Inhalt aktualisieren"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates Einstellungen"
   },
   "smarttemplate4_button": {
     "message": "Templates und Quote Header bearbeiten..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates wurde aktualisiert!"
@@ -1327,9 +1250,6 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Lizenz erwerben"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
   "st.notification.premium.sendByFilter": {
     "message": "Mit einer gültigen SmartTemplates Pro Lizenz würde die E-Mail nun automatisch versendet."
   },
@@ -1341,9 +1261,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Auf Pro Upgraden"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} ist eine Premium Funktion, bitte kaufen Sie eine SmartTemplates Pro Lizenz um diese permanent zu benutzen."
@@ -1489,17 +1406,11 @@
   "support.compose": {
     "message": "An Support schreiben…"
   },
-  "support.links": {
-    "message": "Support Links"
-  },
   "support.mail.instructions": {
     "message": "Klicken Sie die Schaltfläche unterhalb um eine neue Email an Support zu schreiben. Falls Sie technische Probleme haben, kann ein Screenshot hilfreich sein."
   },
   "support.subject": {
     "message": "Betreff:"
-  },
-  "support.tab": {
-    "message": "Support"
   },
   "support.title": {
     "message": "Email an Support"
@@ -1528,17 +1439,11 @@
   "suppressQuoteHdr": {
     "message": "Entfernt den Zitatkopf vollständig, unabhängig von den Kontoeinstellungen."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Anwenden der Variablen"
   },
   "table_fwd.label": {
     "message": "Weiterleiten"
-  },
-  "table_keyword.label": {
-    "message": "Variable"
   },
   "table_new.label": {
     "message": "Verfassen"
@@ -1621,10 +1526,6 @@
   "tools.label": {
     "message": "Extras"
   },
-  "translated-by-google": {
-    "description": "disclaimer.",
-    "message": "translations provided by google"
-  },
   "translatorNickname.label": {
     "message": "Marky Mark DE"
   },
@@ -1639,9 +1540,6 @@
   },
   "url.bugsAndFeaturesPage.label": {
     "message": "Bugs / Features"
-  },
-  "url.homePage.label": {
-    "message": "Add-On Homepage"
   },
   "url.supportPage.label": {
     "message": "Support Homepage"
@@ -1680,9 +1578,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Beispiel eines Langstrings"
   },
@@ -1697,9 +1592,6 @@
   },
   "xsent_short.cap": {
     "message": "Beispiel eines Kurzstrings"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Folgende Variablen lassen sich in beiden Varianten ebenso verwenden"
