@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Veckodag (Fre.)"
   },
@@ -178,23 +175,14 @@
   "conditionals.note": {
     "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
   },
-  "contextError": {
-    "message": "The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables"
-  },
   "contribute_button": {
     "message": "Bidra"
-  },
-  "contributor.label": {
-    "message": "Contributor"
   },
   "copy.label": {
     "message": "Kopiera"
   },
   "cost-of-independence": {
     "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
-  },
-  "creator.label": {
-    "message": "Creator"
   },
   "cursor.label": {
     "message": "Ändrar pekarpositionen"
@@ -289,9 +277,6 @@
   "deleteText": {
     "message": "Ta bort en del text från citatet, t.ex. deleteText(\"via Paypal\")"
   },
-  "developer.label": {
-    "message": "Developer"
-  },
   "domainLicense.email": {
     "message": "Vi kontaktar dig genom denna e-post adress för att generera din domänlicens; Det kan ta upp till två arbetsdagar för oss att återkomma. Ange domännamnet för licensen på nästa sida."
   },
@@ -338,10 +323,6 @@
     "description": "Description of the extension.",
     "message": "Ett kraftfullt sätt att skapa anpassade svar genom att automatiskt infoga olika e-postrubriker. Mallar kan skapas för varje e-postidentitet, stöder också externa html-filer och stilark."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Den smarta mallen som kan anpassa citathuvuden för varje enskilt konto."
   },
@@ -357,45 +338,6 @@
   "fileImage.label": {
     "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
   },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
-  },
   "firstName.label": {
     "message": "Förnamn:"
   },
@@ -410,9 +352,6 @@
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML-mall"
-  },
-  "fpFilterName": {
-    "message": "SmartTemplates File"
   },
   "fpFolder": {
     "message": "Mapp"
@@ -701,9 +640,6 @@
   "localename.label": {
     "message": "sv-SE"
   },
-  "localized.label": {
-    "message": "Translator"
-  },
   "m.label": {
     "message": "Månad (01 till 12)"
   },
@@ -721,9 +657,6 @@
   },
   "menu.template_import.label": {
     "message": "Importera mall"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "Visa licensalternativ…"
@@ -824,10 +757,6 @@
   "no_button": {
     "message": "Ingen"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
@@ -845,15 +774,6 @@
   },
   "p.label": {
     "message": "AM och PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Klistra in"
@@ -1191,17 +1111,8 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Uppdatera SmartTemplates-innehåll"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
-  "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates settings"
-  },
   "smarttemplate4_button": {
     "message": "Redigera mallar och citathuvuden…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates uppdaterades!"
@@ -1223,9 +1134,6 @@
   },
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
-  },
-  "st.confirmVersionLink": {
-    "message": "Display change log for SmartTemplates?"
   },
   "st.fileFunction.notExists": {
     "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
@@ -1342,9 +1250,6 @@
   "st.notification.premium.btn.upgrade": {
     "message": "Uppgradera till PRO"
   },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
-  },
   "st.notification.premium.text": {
     "message": "{1} är en funktion kopplad till SmartTemplates Pro. Registrera SmartTemplates för att använda den permanent."
   },
@@ -1371,18 +1276,6 @@
   },
   "st.trialExpiry": {
     "message": "Din provperiod löpt ut för {0} dagar sedan."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates was successfully upgraded to version {1}!"
   },
   "standardformat.config": {
     "message": "Standardformat…"
@@ -1528,9 +1421,6 @@
   "suppressQuoteHdr": {
     "message": "Tar bort offerthuvudet helt oavsett kontoinställningar."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "ExampleUsage av variablerna"
   },
@@ -1591,9 +1481,6 @@
   "timezone.explain": {
     "message": "Tvinga en specifik tidszon för datumvariabler genom att ersätta parametern tz (GMT, EST, CST, PST, etc.)"
   },
-  "timezonename.label": {
-    "message": "GMT, PST, EST, ... "
-  },
   "tip.fileTemplates": {
     "message": "Klicka för att läsa full dokumentation om brevpapper och externa HTML-mallar på vår supportwebbplats…"
   },
@@ -1627,9 +1514,6 @@
   },
   "translatorNickname.label": {
     "message": "Lakrits (BabelZilla)"
-  },
-  "tzname.label": {
-    "message": "GMT, PST, EST, ... "
   },
   "updates.title": {
     "message": "Uppdateringar"
@@ -1697,9 +1581,6 @@
   },
   "xsent_short.cap": {
     "message": "Exempel på en kortsträng:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Du kan dessutom använda dessa variabler:"
