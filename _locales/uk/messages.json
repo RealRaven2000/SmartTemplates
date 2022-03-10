@@ -8,23 +8,8 @@
   "a.up.label": {
     "message": "День неділі (П'ятниця)"
   },
-  "ab_contact": {
-    "message": "Contact"
-  },
-  "ab_fields": {
-    "message": "Address Book Fields"
-  },
   "ab_fields.desc": {
     "message": "Відповідаючи на відповідну електронну адресу, тепер ви можете використовувати додаткові поля для змінних адреси, наприклад %from%, наприклад:"
-  },
-  "ab_other": {
-    "message": "Other"
-  },
-  "ab_private": {
-    "message": "Private"
-  },
-  "ab_work": {
-    "message": "Work"
   },
   "about.cap": {
     "message": "Про SmartTemplates"
@@ -53,18 +38,6 @@
   "b.up.label": {
     "message": "Місяць (Січень)"
   },
-  "basepath.absolute": {
-    "message": "Click here to select a specific folder on your local drive."
-  },
-  "basepath.desc": {
-    "message": "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these."
-  },
-  "basepath.desc2": {
-    "message": "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email."
-  },
-  "basepath.relative": {
-    "message": "Use this variable to find the images in the same location as the html file template."
-  },
   "brack_with_var.label": {
     "message": "Наступні змінні можуть використовуватися всередині [[...]]"
   },
@@ -91,18 +64,6 @@
   },
   "buyDomainLicense.instruct": {
     "message": "Потрібні ліцензії для компанії з більш ніж п'ятьма користувачами? Отримання ліцензії на домен буде дешевше:"
-  },
-  "buyPremiumLicense.button": {
-    "message": "Buy Pro License!"
-  },
-  "buyPremiumLicense.instruct": {
-    "message": "Want to use all premium features without restrictions? Get a SmartTemplates Pro license. It is bound to your personal Email address and can be used in multiple installations."
-  },
-  "buyStandardLicense.button": {
-    "message": "Buy Standard License!"
-  },
-  "buyStandardLicense.instruct": {
-    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
   },
   "calculate.explain": {
     "message": "DD=кількість днів до додавання. H=кількість годин для додавання (необов'язково). MM=хвилини для додавання (необов'язково)"
@@ -239,18 +200,6 @@
   "day.7.short": {
     "message": "Сб"
   },
-  "defaultMimeFormat": {
-    "message": "Default address format:"
-  },
-  "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
-  },
-  "deleteQuotedTags": {
-    "message": "Deletes tags from the quote"
-  },
-  "deleteQuotedText": {
-    "message": "Deletes quoted Text"
-  },
   "deleteText": {
     "message": "Видалення тексту з цитати, наприклад deleteText (\"через Paypal\")"
   },
@@ -275,9 +224,6 @@
   "edit.label": {
     "message": "Редагувати"
   },
-  "email.label": {
-    "message": "Email:"
-  },
   "enterLicenseKey.button": {
     "message": "Введіть ліцензійний ключ …"
   },
@@ -296,53 +242,11 @@
   "file.label": {
     "message": "Файл"
   },
-  "fileCSS.label": {
-    "message": "External style sheet (css). Include your favorite CSS rules to share between different templates."
-  },
   "fileHTML.label": {
     "message": "HTML або звичайний текстовий файл. UTF-8 передбачається, як додатковий параметр кодування символів."
   },
   "fileImage.label": {
     "message": "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Ім'я:"
@@ -356,14 +260,8 @@
   "fix_vartz_note.label": {
     "message": "Може бути комбіновано з %X:=sent%"
   },
-  "fpFilterHtmlTemplate": {
-    "message": "HTML Template"
-  },
   "fpFilterName": {
     "message": "SmartTemplates файл"
-  },
-  "fpFolder": {
-    "message": "Folder"
   },
   "fpHTMLFile": {
     "message": "HTML файл / текстовий файл"
@@ -373,9 +271,6 @@
   },
   "fpJsonFile": {
     "message": "JSON файл"
-  },
-  "fpStyle": {
-    "message": "Style Sheet"
   },
   "freeLicense": {
     "message": "Якщо ви нещодавно пожертвували на проект SmartTemplates або зробили допоміжну роботу, наприклад, переклад або написання патчів, ви можете мати право на безкоштовний ліцензійний ключ. Зв'яжіться зі мною на вкладці підтримки SmartTemplates Options."
@@ -400,9 +295,6 @@
   },
   "getSmartTemplate4": {
     "message": "Купити ліцензію SmartTemplates"
-  },
-  "guessNameFromMail": {
-    "message": "Guess Name parts from email address if missing"
   },
   "h.label": {
     "message": "Година, 24-годнинй формат (з 00 до 23) - з попереднім нулем"
@@ -460,18 +352,6 @@
   },
   "i.label": {
     "message": "Година, 12-годнинй формат (від 01 до 12) - з попереднім нулем"
-  },
-  "identity_ab": {
-    "message": "Use the 'addressbook' keyword to retrieve additional identity information from address book."
-  },
-  "identity_ab.example": {
-    "message": "Example"
-  },
-  "identity_ab.field": {
-    "message": "For additional field values, see chapter 'Address Book Fields' below."
-  },
-  "identity_ab.phoneno": {
-    "message": "Phone No"
   },
   "im-ex.cap": {
     "message": "Налаштування та Шаблони Експорт/Імпорт"
@@ -536,7 +416,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Шановний $username${boldEnd}, тепер ви можете перейти на SmartTemplates Pro за {boldStart} на $discount$ дешевше {boldEnd}, одночасно продовживши свою ліцензію на цілий рік. Наближаються ще великі зміни в Thunderbird, і мені потрібна {boldStart} ваша допомога {boldEnd}, щоб не відставати!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -554,8 +434,8 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Ліцензія SmartTemplates закінчилась $countDays$ днів тому.",
     "placeholders": {
       "countDays": {
@@ -564,7 +444,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Ліцензія SmartTemplates закінчується через $countDays$ днів!",
     "placeholders": {
       "countDays": {
@@ -572,7 +452,7 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
   },
@@ -593,9 +473,6 @@
   },
   "licenseValidation.passed": {
     "message": "Дякуємо за реєстрацію SmartTemplates Pro! Всі преміум-функції тепер розблоковано."
-  },
-  "licenseValidation.standard": {
-    "message": "Thanks for registering SmartTemplates Standard - You are helping the Add-on immensely! You also can now test drive all premium functions."
   },
   "licenseWindow.title": {
     "message": "Ліцензія SmartTemplates"
@@ -627,9 +504,6 @@
   "menu.template_import.label": {
     "message": "Імпорт шаблону"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Показати параметри ліцензії…"
   },
@@ -638,12 +512,6 @@
   },
   "messid.label": {
     "message": "ID Повідомлення"
-  },
-  "minSize": {
-    "message": "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images."
-  },
-  "minSize_detail": {
-    "message": "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway."
   },
   "month.1.name": {
     "message": "Січень"
@@ -743,9 +611,6 @@
   },
   "p3.label": {
     "message": "ДО"
-  },
-  "parameters": {
-    "message": "Parameters"
   },
   "paste.label": {
     "message": "Вставити"
@@ -890,7 +755,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Приховати інформаційне діалогове вікно, яке відображає нові функції та виправлення помилок під час оновлення."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Підписання"
   },
@@ -939,12 +804,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Замінити розриви рядків у підпису з форматом простого тексту з <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Silent updates"
-  },
-  "pref_silentUpdates_tip": {
-    "message": "Don't open change log after SmartTemplates was updated."
-  },
   "pref_stationeryLink": {
     "message": "Додаток Stationery "
   },
@@ -981,38 +840,17 @@
   "prompt.text": {
     "message": "Введіть текст для додавання або встановлення"
   },
-  "quoteLevel": {
-    "message": "[optional, numeric]:  which minimal quote level to start from"
-  },
   "quotePlaceholder": {
     "message": "Це переміщує цитовану частину до самого тексту шаблону. Розділ заголовка котирувань із шаблонів рахунків буде переміщено у верхню частину цитати."
   },
   "quotePlaceholder.level": {
     "message": "[необов’язково, числове] Максимальний рівень цитування для видалення старих цитат із розмови."
   },
-  "quote_changers.cap": {
-    "message": "Quote Manipulation"
-  },
-  "quote_changers.desc": {
-    "message": "Premium variables to remove text / tags from quoted parts and save space."
-  },
   "recipient.label": {
     "message": "Кінцевий одержувач"
   },
-  "regexpAnyText": {
-    "message": "Any text - regular expression - must be in double quotes."
-  },
-  "replaceQuotedTags": {
-    "message": "Replaces tags from the quote with text or html"
-  },
-  "replaceQuotedText": {
-    "message": "Replaces quoted text with HTML"
-  },
   "replaceText": {
     "message": "Замінінення деякого тексту на щось інше."
-  },
-  "replacementHTML": {
-    "message": "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found."
   },
   "resolveABRemoveMail": {
     "message": "Видалити адреса електронної пошти, якщо не вказано параметр формату"
@@ -1031,9 +869,6 @@
   },
   "s.label": {
     "message": "Секунда (від 00 до 59)"
-  },
-  "selector": {
-    "message": "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided."
   },
   "settings.label": {
     "message": "Налаштування та шаблони"
@@ -1062,26 +897,11 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Очистіть усі змінні SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Update and Replace with Content"
-  },
-  "smartTemplate4.deferredcontext.delete": {
-    "message": "Remove SmartTemplates variable"
-  },
-  "smartTemplate4.deferredcontext.update": {
-    "message": "Update SmartTemplates contents"
-  },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates налаштування"
   },
   "smarttemplate4_button": {
     "message": "Редагувати шаблони / цитати заголовків …"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates оновлено!"
@@ -1101,9 +921,6 @@
   "specform_note.label": {
     "message": "Розділи всередині подвійних квадратних дужок [[Cc: %cc(name)%]] будуть відображатися тільки в тому випадку, якщо змінна %cc(name)% може бути замінена!"
   },
-  "spellcheck.label": {
-    "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
-  },
   "st.confirmVersionLink": {
     "message": "Відображати журнал змін для SmartTemplates?"
   },
@@ -1116,18 +933,12 @@
   "st.fileTemplates.configureMenu": {
     "message": "Налаштування пунктів меню…"
   },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
-  },
   "st.fileTemplates.openFile": {
     "message": "Відкрийте файл шаблону SmartTemplates…"
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Чому деякі шаблони в цьому меню відключені?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Кількість шаблонів у меню обмежена. Ви можете налаштувати до $max_free$ пунктів меню без ліцензії та $max_std$ пунктів меню зі стандартною ліцензією SmartTemplates! SmartTemplates Pro є необмеженим.",
     "placeholders": {
@@ -1139,7 +950,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Щоб налаштувати більше ніж $max_Cats$ Категорії, будь ласка, отримайте ліцензію SmartTemplates Pro…",
@@ -1148,21 +959,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
-    "message": "Please select a template from the dropdown menu."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Please select a valid path!"
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Please enter a title!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "You have to select an item from the list to update!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Update Templates"
+    }
   },
   "st.licenseValidation.expired": {
     "message": "Термін дії вашої ліцензії минув:"
@@ -1173,41 +970,11 @@
   "st.notification.donate": {
     "message": "Пожертвувати"
   },
-  "st.notification.dontShowAgain": {
-    "message": "Do not show this message again."
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "You have already typed text and want to change to template {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."
-  },
-  "st.notification.license.text": {
-    "message": "From now on, SmartTemplates requires at least a standard license. Read more about this on our licensing page."
-  },
-  "st.notification.licensing": {
-    "message": "More about licensing"
-  },
-  "st.notification.parsing": {
-    "message": "Parsing variables:"
-  },
   "st.notification.premium.btn.extendDomainLicense": {
     "message": "Розширити ліцензію домену"
   },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
-  },
   "st.notification.premium.btn.getLicense": {
     "message": "Купити ліцензію"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "st.notification.premium.sendByFilter": {
     "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
@@ -1218,12 +985,6 @@
   "st.notification.premium.btn.renewLicense": {
     "message": "Оновити ліцензію"
   },
-  "st.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
-  },
   "st.notification.premium.text": {
     "message": "{1} є преміум-функцією, будь ласка, отримайте ліцензію SmartTemplates Pro на постійне використання."
   },
@@ -1233,23 +994,8 @@
   "st.notification.premium.title": {
     "message": "Преміум-функція"
   },
-  "st.notification.spellcheck.error": {
-    "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "No dictionaries installed."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Dictionary '{0}' not found."
-  },
   "st.prompt.switchDomainLicense": {
     "message": "Перейти до ліцензії на домен?"
-  },
-  "st.trialDays": {
-    "message": "You have {0} trial days left."
-  },
-  "st.trialExpiry": {
-    "message": "Your trial period expired {0} days ago."
   },
   "st.updateMessageNewBrackets1": {
     "message": "Шановні користувачі SmartTemplates, ми раді повідомити, що починаючи з цієї версії, SmartTemplates також підтримує використання фігурних дужок {} і <style> тегів, так що тепер ви можете робити записи у Вашому шаблоні використовуючи стилі CSS."
@@ -1287,42 +1033,6 @@
   "sub_var.cap": {
     "message": "Тема"
   },
-  "support.compose": {
-    "message": "Write to support…"
-  },
-  "support.links": {
-    "message": "Support Links"
-  },
-  "support.mail.instructions": {
-    "message": "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot."
-  },
-  "support.subject": {
-    "message": "Subject:"
-  },
-  "support.tab": {
-    "message": "Support"
-  },
-  "support.title": {
-    "message": "Mail to Support"
-  },
-  "support.type": {
-    "message": "Type:"
-  },
-  "support.type.html": {
-    "message": "Help with HTML / CSS"
-  },
-  "support.type.license": {
-    "message": "Licensing related"
-  },
-  "support.type.other": {
-    "message": "Other"
-  },
-  "support.type.selectOne": {
-    "message": "Select a topic!"
-  },
-  "support.type.tech": {
-    "message": "Technical"
-  },
   "suppressMailToLink": {
     "message": "Подавити поштовими клієнтами додавання посилання на адреси електронної пошти."
   },
@@ -1350,9 +1060,6 @@
   "table_reply.label": {
     "message": "Відповідь"
   },
-  "testDriveS": {
-    "message": "You can test drive the premium features with the standard license, but they may be slightly restricted."
-  },
   "template.category": {
     "message": "Категорія"
   },
@@ -1362,14 +1069,8 @@
   "template.category.tooltip": {
     "message": "Створює підменю для групування шаблонів"
   },
-  "timezone.explain": {
-    "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
-  },
   "timezonename.label": {
     "message": "GMT, PST, EST, …"
-  },
-  "tip.fileTemplates": {
-    "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
   },
   "to.label": {
     "message": "Прізвище отримувача (за замовчуванням)"
@@ -1382,9 +1083,6 @@
   },
   "tofirstname.label": {
     "message": "Ім'я отримувача"
-  },
-  "tofwd.label": {
-    "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
   "tomail.label": {
     "message": "Електронна адреса оригінального одержувача"
@@ -1410,9 +1108,6 @@
   "url.bugsAndFeaturesPage.label": {
     "message": "Звіти про помилки/надсилання побажань"
   },
-  "url.homePage.label": {
-    "message": "Add-On Homepage"
-  },
   "url.supportPage.label": {
     "message": "сторінка Підтримки"
   },
@@ -1424,12 +1119,6 @@
   },
   "vouchers.title": {
     "message": "Ваучери"
-  },
-  "whitespace_note": {
-    "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "Приклад для довго рядка"
@@ -1445,9 +1134,6 @@
   },
   "xsent_short.cap": {
     "message": "Приклад для довго рядка"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Наступні змінні можуть бути використані в обох варіантах"
@@ -1469,9 +1155,6 @@
   },
   "yearlyLicense.usageTerm": {
     "message": "Ліцензія призначена для особистого користування та прив'язана до вашої електронної адреси. Ви можете встановити його на декількох клієнтах електронної пошти, якщо вони налаштовані на використання цієї адреси."
-  },
-  "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
   },
   "yes_button": {
     "message": "Так"
