@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Дан у недељи (скраћени назив)"
   },
@@ -196,9 +193,6 @@
   "creator.label": {
     "message": "Аутор"
   },
-  "cursor.label": {
-    "message": "Sets the cursor position"
-  },
   "customdf_note.label": {
     "message": "Може да се комбинује са %X:=sent%"
   },
@@ -280,9 +274,6 @@
   "defaultMimeFormat_tip": {
     "message": "Формат за употребу приликом замене обичних %to% %from% %cc% адреса. На пример. (име,презиме,??пошта) приказат ће име које слиједи презиме; ако оба нису доступна, приказаће се адреса поште."
   },
-  "deleteQuotedTags": {
-    "message": "Deletes tags from the quote"
-  },
   "deleteQuotedText": {
     "message": "Брисање цитираног текста"
   },
@@ -338,10 +329,6 @@
     "description": "Description of the extension.",
     "message": "Моћан начин за стварање прилагођених одговора аутоматским уметањем различитих заглавља поште. Предлошци се могу креирати за сваки идентитет поште, такође подржава спољне хтмл датотеке и табеле стилова."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Додатак SmartTemplates може да прилагоди „заглавља цитата“ по налогу."
   },
@@ -356,45 +343,6 @@
   },
   "fileImage.label": {
     "message": "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Име:"
@@ -722,9 +670,6 @@
   "menu.template_import.label": {
     "message": "Увези шаблон"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Прикажи опције лиценце…"
   },
@@ -824,10 +769,6 @@
   "no_button": {
     "message": "Не"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Измене за претварање $addonName$ у нови програмски модел трајале су недељама и биле су скупе. Постоји много више промена за следећу верзију 2022. године. Са оваквим сложеним додатком, скуп посао постаје неизбежан. Молимо вас да нам помогнете око овога.",
     "placeholders": {
@@ -845,15 +786,6 @@
   },
   "p.label": {
     "message": "AM/PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Налепи"
@@ -884,12 +816,6 @@
   },
   "pref_addSigBreakPlaintext.tooltip": {
     "message": "Увек додајте граничник „--“ пре потписа (у обичним е-порукама)"
-  },
-  "pref_addressDelimiter": {
-    "message": "Delimit multiple correspondents with:"
-  },
-  "pref_addressDelimiter_tip": {
-    "message": "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)"
   },
   "pref_advanced.tab": {
     "message": "Напредне поставке"
@@ -929,12 +855,6 @@
   },
   "pref_fontSettings.label": {
     "message": "Фонт у уређивачу шаблона"
-  },
-  "pref_forceParagraph": {
-    "message": "Force Paragraph Mode"
-  },
-  "pref_forceParagraph_tip": {
-    "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
   },
   "pref_fwd.label": {
     "message": "Примените следећа подешавања на прослеђену поруку"
@@ -1191,17 +1111,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Ажурирајте садржај СмартТемплате⁴"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Подешавања SmartTemplates-а"
   },
   "smarttemplate4_button": {
     "message": "Уреди шаблоне/заглавље цитата…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates је ажуриран!"
@@ -1522,14 +1436,8 @@
   "support.type.tech": {
     "message": "Технички"
   },
-  "suppressMailToLink": {
-    "message": "Suppress Mail Clients adding links to Email addresses."
-  },
   "suppressQuoteHdr": {
     "message": "Потпуно уклања заглавље цитата без обзира на подешавања налога."
-  },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
   },
   "table.cap": {
     "message": "Употреба променљивих"
@@ -1680,9 +1588,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Пример LongString-а"
   },
@@ -1697,9 +1602,6 @@
   },
   "xsent_short.cap": {
     "message": "Пример ShortString-а"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Следеће променљиве се могу користити у обе варијанте"
