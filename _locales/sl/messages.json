@@ -1665,7 +1665,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Spremenite besedilo v telesu posredovane pošte [inline]. To zdaj deluje v funkcijah: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Samodejno posredovanje/samodejni odgovor s SmartTemplate prek pravil filtra - to pomeni, da to pomeni. lahko sprožite katero koli predlogo s filtri (z uporabo FiltaQuilla 3.4). Ekskluzivno za imetnike licenc SmartTemplates Pro.{L2}{L1} ukaz %suppressQuoteHeaders% za zatiranje vseh glav narekovajev.{L2}"
+    "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
