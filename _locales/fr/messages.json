@@ -1,15 +1,9 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Jour de la semaine (Vend.)"
   },
   "a.up.label": {
     "message": "Jour de la semaine (Vendredi)"
-  },
-  "ab_contact": {
-    "message": "Contact"
   },
   "ab_fields": {
     "message": "Variables du carnet d'adresses"
@@ -338,10 +332,6 @@
     "description": "Description of the extension.",
     "message": "Un moyen puissant de créer des réponses personnalisées en insérant automatiquement divers en-têtes de courrier. Des modèles peuvent être créés pour chaque identité de messagerie, prend également en charge les fichiers HTML externes et les feuilles de style."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes."
   },
@@ -356,45 +346,6 @@
   },
   "fileImage.label": {
     "message": "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Prénom :"
@@ -608,9 +559,6 @@
   "label.licenseValid": {
     "message": "Votre licence est valide jusqu'au :"
   },
-  "label.premiumFeaturesSite": {
-    "message": "Read more about Premium Features on our Website…"
-  },
   "lastName.label": {
     "message": "Nom :"
   },
@@ -625,7 +573,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Cher $username$ {boldEnd}, vous pouvez désormais passer à SmartTemplates Pro pour {boldStart} $discount$ de moins {boldEnd} - tout en prolongeant votre licence d'une année complète. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +591,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nouveau système de licence"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "La licence SmartTemplates a expiré il y a $countDays$ jours.",
     "placeholders": {
       "countDays": {
@@ -659,7 +607,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "La licence SmartTemplates expirera dans $countDays$ jours!",
     "placeholders": {
       "countDays": {
@@ -667,10 +615,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "La clé de licence saisie a expiré. Veuillez cliquer sur le bouton ci-dessous pour renouveler votre licence."
   },
@@ -722,9 +670,6 @@
   "menu.template_import.label": {
     "message": "Importer un modèle"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Afficher les options de licence…"
   },
@@ -743,20 +688,11 @@
   "month.1.name": {
     "message": "Janvier"
   },
-  "month.1.short": {
-    "message": "Jan"
-  },
   "month.10.name": {
     "message": "Octobre"
   },
-  "month.10.short": {
-    "message": "Oct"
-  },
   "month.11.name": {
     "message": "Novembre"
-  },
-  "month.11.short": {
-    "message": "Nov"
   },
   "month.12.name": {
     "message": "Décembre"
@@ -773,9 +709,6 @@
   "month.3.name": {
     "message": "Mars"
   },
-  "month.3.short": {
-    "message": "Mar"
-  },
   "month.4.name": {
     "message": "Avril"
   },
@@ -791,14 +724,8 @@
   "month.6.name": {
     "message": "Juin"
   },
-  "month.6.short": {
-    "message": "Jun"
-  },
   "month.7.name": {
     "message": "Juillet"
-  },
-  "month.7.short": {
-    "message": "Jul"
   },
   "month.8.name": {
     "message": "Août"
@@ -809,24 +736,14 @@
   "month.9.name": {
     "message": "Septembre"
   },
-  "month.9.short": {
-    "message": "Sep"
-  },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
   },
   "n.label": {
     "message": "Numéro du mois (1 à 12)"
   },
-  "newsgr.label": {
-    "message": "Newsgroups"
-  },
   "no_button": {
     "message": "Non"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
@@ -846,20 +763,11 @@
   "p.label": {
     "message": "AM ou PM"
   },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
+  "paste.label": {
+    "message": "Coller"
   },
   "parameters": {
     "message": "Paramètres"
-  },
-  "paste.label": {
-    "message": "Coller"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Texte au survol"
@@ -960,9 +868,6 @@
   "pref_groupNameRules": {
     "message": "Règles pour nom"
   },
-  "pref_groupSignatures": {
-    "message": "Signatures"
-  },
   "pref_groupTroubleShooting": {
     "message": "Dépannage"
   },
@@ -1001,7 +906,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Masquer la boîte de dialogue d'informations qui affiche les nouvelles fonctionnalités et les corrections de bugs lors de la mise à jour."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Traitement de la signature"
   },
@@ -1079,9 +984,6 @@
   },
   "pref_template_tip": {
     "message": "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations."
-  },
-  "pref_variables.tab": {
-    "message": "Variables"
   },
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
@@ -1191,17 +1093,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Mettre à jour le contenu SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Options de SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Modifier les modèles/les entêtes…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates a été mis à jour "
@@ -1247,7 +1143,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Pourquoi certains modèles de ce menu sont-ils désactivés ?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Le nombre de modèles par menu est limité. Vous pouvez configurer jusqu'à $max_free$ éléments de menu sans licence et $max_std$ éléments de menu avec une licence SmartTemplates Standard ! SmartTemplates Pro est illimité.",
     "placeholders": {
@@ -1259,7 +1155,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Pour configurer plus de $max_Cats$ Catégories, veuillez obtenir une licence SmartTemplates Pro…",
@@ -1268,8 +1164,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Veuillez sélectionner un modèle dans le menu déroulant."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1421,7 +1318,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 février"    
+    "message": "20 février"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1466,7 +1363,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "C'est la manière préférée de prendre en charge $addonName$.",
     "placeholders": {
@@ -1527,17 +1424,11 @@
   "suppressQuoteHdr": {
     "message": "Supprime complètement l'en-tête de devis, quels que soient les paramètres du compte."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Utilisation des variables"
   },
   "table_fwd.label": {
     "message": "Transférer"
-  },
-  "table_keyword.label": {
-    "message": "Variable"
   },
   "table_new.label": {
     "message": "Nouveau"
@@ -1679,9 +1570,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Exemple d'un format long:"
   },
@@ -1696,9 +1584,6 @@
   },
   "xsent_short.cap": {
     "message": "Exemple de format court:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Vous pouvez en plus utiliser ces variables avec les deux variantes :"
