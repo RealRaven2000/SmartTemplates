@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Nome del giorno (Ven)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "SmartTemplates permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account."
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "Seleziona un account:"
@@ -316,9 +310,6 @@
   "edit.label": {
     "message": "Modifica"
   },
-  "email.label": {
-    "message": "Email:"
-  },
   "enterLicenseKey.button": {
     "message": "Inserire la chiave della licenza…"
   },
@@ -338,15 +329,8 @@
     "description": "Description of the extension.",
     "message": "Un modo efficace per creare risposte personalizzate inserendo automaticamente varie intestazioni di posta. I modelli possono essere creati per ogni identità di posta, supporta anche file html esterni e fogli di stile."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "L'estensione SmartTemplates permette di personalizzare l'intestazione dei messaggi di risposta ed inoltrati per gli account di posta."
-  },
-  "file.label": {
-    "message": "File"
   },
   "fileCSS.label": {
     "message": "Foglio di stile esterno (css). Includi le tue regole CSS preferite da condividere tra diversi modelli."
@@ -356,45 +340,6 @@
   },
   "fileImage.label": {
     "message": "File di immagine (png,jpg,gif,bmp,svg). Visualizza opzionalmente l'etichetta altText se l'immagine non viene trovata."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Nome:"
@@ -722,17 +667,11 @@
   "menu.template_import.label": {
     "message": "Importa modello"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Mostra opzioni di licenza…"
   },
   "message.features": {
     "message": "Confronta caratteristiche…"
-  },
-  "messid.label": {
-    "message": "Message ID"
   },
   "minSize": {
     "message": "[opzionale, numerico] - numero di kByte, dimensione minima per rimuovere il tag. In questo modo puoi mantenere immagini più piccole come icone / emoji scartando immagini di grandi dimensioni."
@@ -755,9 +694,6 @@
   "month.11.name": {
     "message": "Novembre"
   },
-  "month.11.short": {
-    "message": "Nov"
-  },
   "month.12.name": {
     "message": "Dicembre"
   },
@@ -767,20 +703,11 @@
   "month.2.name": {
     "message": "Febbraio"
   },
-  "month.2.short": {
-    "message": "Feb"
-  },
   "month.3.name": {
     "message": "Marzo"
   },
-  "month.3.short": {
-    "message": "Mar"
-  },
   "month.4.name": {
     "message": "Aprile"
-  },
-  "month.4.short": {
-    "message": "Apr"
   },
   "month.5.name": {
     "message": "Maggio"
@@ -818,16 +745,6 @@
   "n.label": {
     "message": "Mese (da 1 a 12)"
   },
-  "newsgr.label": {
-    "message": "Newsgroups"
-  },
-  "no_button": {
-    "message": "No"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
     "placeholders": {
@@ -845,15 +762,6 @@
   },
   "p.label": {
     "message": "AM o PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Incolla"
@@ -960,14 +868,8 @@
   "pref_groupNameRules": {
     "message": "Regole per il nome"
   },
-  "pref_groupSignatures": {
-    "message": "Signatures"
-  },
   "pref_groupTroubleShooting": {
     "message": "Risoluzione dei problemi"
-  },
-  "pref_groupUI": {
-    "message": "User Interface"
   },
   "pref_help.tab": {
     "message": "Aiuto"
@@ -1040,9 +942,6 @@
   },
   "pref_server_def": {
     "message": "Utilizza posta in arrivo globale"
-  },
-  "pref_server_desc": {
-    "message": "Account"
   },
   "pref_showStatusIcon.label": {
     "message": "Visualizza il pulsante nella barra di stato"
@@ -1191,17 +1090,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Aggiorna i contenuti di SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Impostazioni di SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Modifica i modelli di intestazione dei messaggi…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates è stato aggiornato!"
@@ -1326,9 +1219,6 @@
   },
   "st.notification.premium.btn.getLicense": {
     "message": "Acquista la licenza!"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "st.notification.premium.sendByFilter": {
     "message": "Con una licenza SmartTemplates Pro valida, l'e-mail verrà ora inviata automaticamente."
@@ -1528,9 +1418,6 @@
   "suppressQuoteHdr": {
     "message": "Rimuove completamente l'intestazione del preventivo indipendentemente dalle impostazioni dell'account."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Utilizzo delle variabili"
   },
@@ -1591,9 +1478,6 @@
   "timezone.explain": {
     "message": "Forza il fuso orario specifico per le variabili di data sostituendo il parametro tz (GMT, EST, CST, PST ecc.)"
   },
-  "timezonename.label": {
-    "message": "GMT, PST, EST, ... "
-  },
   "tip.fileTemplates": {
     "message": "Fai clic per leggere la documentazione completa su Stationery e modelli HTML esterni sul nostro sito di supporto …"
   },
@@ -1627,9 +1511,6 @@
   },
   "translatorNickname.label": {
     "message": "A35G, Luana e Lucky & Danilo Fortunato (BabelZilla)"
-  },
-  "tzname.label": {
-    "message": "GMT, PST, EST, ... "
   },
   "updates.title": {
     "message": "Aggiornamenti"
@@ -1680,9 +1561,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Esempio di Longstring"
   },
@@ -1697,9 +1575,6 @@
   },
   "xsent_short.cap": {
     "message": "Esempio di Shortstring:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Le seguenti variabili si possono utilizzare in entrambe le varianti"
