@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "曜日 (金)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "Thunderbird の既定の引用ヘッダーをテンプレートによって簡単にカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。"
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "アカウント選択:"
@@ -337,10 +331,6 @@
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "さまざまなメールヘッダーを自動挿入することにより、返信をカスタマイズできる強力な方法です。テンプレートはメールの差出人ごとに個別に作成でき、外部の HTML ファイルやスタイルシートもサポートします。"
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "アカウントごとに引用ヘッダーをカスタマイズします。"
@@ -722,17 +712,11 @@
   "menu.template_import.label": {
     "message": "テンプレートをインポートする"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "ライセンスオプションを表示する…"
   },
   "message.features": {
     "message": "機能の比較…"
-  },
-  "messid.label": {
-    "message": "Message ID"
   },
   "minSize": {
     "message": "[オプション, 数値]) - タグを消去する最小サイズ (kB 単位)。これにより、大きな画像が除去される状況でもアイコンや絵文字のような小さな画像をそのままにできます。"
@@ -818,9 +802,6 @@
   "n.label": {
     "message": "月 (1 から 12)"
   },
-  "newsgr.label": {
-    "message": "Newsgroups"
-  },
   "no_button": {
     "message": "いいえ"
   },
@@ -842,18 +823,6 @@
   },
   "ownname.label": {
     "message": "あなたの名前"
-  },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "貼り付け"
@@ -1191,17 +1160,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "SmartTemplates のコンテンツを更新します"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates 設定"
   },
   "smarttemplate4_button": {
     "message": "テンプレートと引用ヘッダーの設定…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates が更新されました！"
@@ -1327,9 +1290,6 @@
   "st.notification.premium.btn.getLicense": {
     "message": "ライセンス購入"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
   "st.notification.premium.sendByFilter": {
     "message": "有効なSmartTemplatesProライセンスを使用すると、電子メールが自動的に送信されるようになります。"
   },
@@ -1341,9 +1301,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Pro にアップグレード"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} はプレミアム機能です。この機能を永続的に使用するには SmartTemplates Pro ライセンスを購入してください。"
@@ -1528,9 +1485,6 @@
   "suppressQuoteHdr": {
     "message": "アカウント設定に関係なく、見積もりヘッダーを完全に削除します。"
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "変数の使用"
   },
@@ -1680,9 +1634,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "長い書式の例"
   },
@@ -1697,9 +1648,6 @@
   },
   "xsent_short.cap": {
     "message": "短い書式の例"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "次の変数はどちらの形式でも使用可能です:"
