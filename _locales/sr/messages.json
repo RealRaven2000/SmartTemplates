@@ -1665,7 +1665,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
+    "message": "{L1}Измените текст у телу прослеђене поште [инлине]. Ово сада функционише у функцијама: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Аутоматско прослеђивање/Аутоматски одговор са СмартТемплате-ом кроз правила филтера - то значи да се ради о правилима филтера. можете покренути било који шаблон помоћу филтера (користећи ФилтаКуилла 3.4). Ексклузивно за кориснике лиценце SmartTemplates Pro.{L2}{L1} %suppressQuoteHeaders% команда да потисне сва заглавља цитата.{L2}"
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
