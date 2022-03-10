@@ -38,6 +38,23 @@
   "account.label": {
     "message": "Виберіть обліковий запис:"
   },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+  },
   "advanced.label": {
     "message": "Розвинутий"
   },
@@ -67,6 +84,21 @@
   },
   "brack_with_var.label": {
     "message": "Наступні змінні можуть використовуватися всередині [[...]]"
+  },
+  "btn-extend-license": {
+    "message": "I want to extend my license by one year"
+  },
+  "btn-renew-license": {
+    "message": "I want to renew my license"
+  },
+  "btn-upgrade-to-pro": {
+    "message": "I want to Upgrade my License"
+  },
+  "btn-want-a-license": {
+    "message": "I want to buy a license"
+  },
+  "btn-want-to-donate": {
+    "message": "I want to help with a one time donation."
   },
   "btnLoadTemplate.tooltip": {
     "message": "Завантажити налаштування облікового запису…"
@@ -157,6 +189,9 @@
   },
   "copy.label": {
     "message": "Копіювати"
+  },
+  "cost-of-independence": {
+    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
   },
   "creator.label": {
     "message": "Автор"
@@ -269,6 +304,12 @@
   "domainLicense.validate": {
     "message": "Переконайтеся, що на електронну адресу вашої компанії (частина * після * знака @) ви вводите ім'я домену * точно так, як це було *, оскільки воно буде використовуватися для авторизації електронних адрес ваших користувачів."
   },
+  "donate": {
+    "message": "Help out with a one time donation."
+  },
+  "donate-heading": {
+    "message": "Help by Donating!"
+  },
   "e.label": {
     "message": "День місяця (з 1 до 31)"
   },
@@ -289,6 +330,17 @@
   },
   "export.label": {
     "message": "Експорт"
+  },
+  "extend-your-license": {
+    "message": "Consider extending your license by a year."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "A powerful way to create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, also supports external html files and style sheets."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Ідеальний інструмент за допомогою котрого можна налаштувати індивідуальні заголовки в шаблонах для кожного поштового запису."
@@ -437,6 +489,26 @@
   "header_function.scope": {
     "message": "Це може бути використано з цими заголовками:"
   },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Successfully installed $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ Updated Successfully",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "heading.click": {
     "message": "Клацніть заголовок або"
   },
@@ -515,6 +587,15 @@
   "l.label": {
     "message": "Година, 12-годнинй формат (від 1 до 12)"
   },
+  "label-remind-me": {
+    "message": "Remind me again in $countDays$ days.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "label.haveLicense": {
     "message": "Ви вже маєте ліцензію?"
   },
@@ -533,10 +614,18 @@
   "lastName.label": {
     "message": "Прізвище:"
   },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "As holder of a SmartTemplates standard license, you are now eligible for a discounted update plus full year extension. Click on the [Upgrade to Pro] button below your standard license for more information."
+  },
   "license-standard-special-offer": {
     "message": "{boldStart} Шановний $username${boldEnd}, тепер ви можете перейти на SmartTemplates Pro за {boldStart} на $discount$ дешевше {boldEnd}, одночасно продовживши свою ліцензію на цілий рік. Наближаються ще великі зміни в Thunderbird, і мені потрібна {boldStart} ваша допомога {boldEnd}, щоб не відставати!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -554,8 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseStatus.expired" : {
+  },
+  "licenseComparison": {
+    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "New Licensing System"
+  },
+  "licenseStatus.expired": {
     "message": "Ліцензія SmartTemplates закінчилась $countDays$ днів тому.",
     "placeholders": {
       "countDays": {
@@ -564,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Ліцензія SmartTemplates закінчується через $countDays$ днів!",
     "placeholders": {
       "countDays": {
@@ -572,7 +667,7 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "Going forward, SmartTemplates offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in a yearly cycle, the license will also be valid for 1 year."
   },
@@ -717,6 +812,9 @@
   "month.9.short": {
     "message": "Верес"
   },
+  "mozillas-basic-platform": {
+    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+  },
   "n.label": {
     "message": "Місяць (з 1 до 12)"
   },
@@ -725,6 +823,19 @@
   },
   "no_button": {
     "message": "Ні"
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "ownmail.label": {
     "message": "Адреса Вашого email"
@@ -744,11 +855,11 @@
   "p3.label": {
     "message": "ДО"
   },
-  "parameters": {
-    "message": "Parameters"
-  },
   "paste.label": {
     "message": "Вставити"
+  },
+  "parameters": {
+    "message": "Parameters"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст при наведенні"
@@ -890,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Приховати інформаційне діалогове вікно, яке відображає нові функції та виправлення помилок під час оновлення."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Підписання"
   },
@@ -981,6 +1092,12 @@
   "prompt.text": {
     "message": "Введіть текст для додавання або встановлення"
   },
+  "purchase-a-license": {
+    "message": "Purchase a license."
+  },
+  "purchase-heading": {
+    "message": "Buying a License!"
+  },
   "quoteLevel": {
     "message": "[optional, numeric]:  which minimal quote level to start from"
   },
@@ -1001,6 +1118,9 @@
   },
   "regexpAnyText": {
     "message": "Any text - regular expression - must be in double quotes."
+  },
+  "renew-your-license": {
+    "message": "Renew your license."
   },
   "replaceQuotedTags": {
     "message": "Replaces tags from the quote with text or html"
@@ -1127,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Чому деякі шаблони в цьому меню відключені?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Кількість шаблонів у меню обмежена. Ви можете налаштувати до $max_free$ пунктів меню без ліцензії та $max_std$ пунктів меню зі стандартною ліцензією SmartTemplates! SmartTemplates Pro є необмеженим.",
     "placeholders": {
@@ -1139,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Щоб налаштувати більше ніж $max_Cats$ Категорії, будь ласка, отримайте ліцензію SmartTemplates Pro…",
@@ -1148,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Please select a template from the dropdown menu."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1287,6 +1408,84 @@
   "sub_var.cap": {
     "message": "Тема"
   },
+  "special-offer-content": {
+    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}SmartTemplates Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "February 20th"
+  },
+  "special-offer-head": {
+    "message": "Help keep $addon$ compatible",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Upgrade now from SmartTemplates Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "support-preference": {
+    "message": "This is the preferred way of supporting $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "support.compose": {
     "message": "Write to support…"
   },
@@ -1362,6 +1561,33 @@
   "template.category.tooltip": {
     "message": "Створює підменю для групування шаблонів"
   },
+  "thanks-for-installing-intro": {
+    "message": "Thank you for installing $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Thank you for updating $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$addonName$ will be largely rewritten to remain compatible with the Thunderbird. This is a necessity, as changes by Mozilla ask for Add-ons to become native mail extensions which are very different internally. Only through your license the many necessary development hours may be funded.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "timezone.explain": {
     "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
   },
@@ -1395,6 +1621,10 @@
   "tools.label": {
     "message": "Інструментарій"
   },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "translations provided by google"
+  },
   "translatorNickname.label": {
     "message": "tymofiy (BabelZilla)"
   },
@@ -1425,8 +1655,30 @@
   "vouchers.title": {
     "message": "Ваучери"
   },
+  "whats-new-btn": {
+    "message": "What's new?"
+  },
+  "whats-new-head": {
+    "message": "Important Changes"
+  },
+  "whats-new-intro": {
+    "message": "Read the detailed change log here (English only):"
+  },
+  "whats-new-list": {
+    "message": "{L1}Modifiy text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
+  },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Welcome to $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "xmail.label": {
     "message": "X-Mailer"
