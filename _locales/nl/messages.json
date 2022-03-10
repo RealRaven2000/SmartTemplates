@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Beste $username$ {boldEnd}, u kunt nu upgraden naar SmartTemplates Pro voor {boldStart} $discount$ minder {boldEnd} - terwijl u ook uw licentie met een heel jaar verlengt. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nieuw licentiesysteem"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates-licentie vervalt over $countDays$ dagen!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates biedt twee licenties, Standard en Pro; deze zijn nodig om de veranderingen in het Thunderbird-platform bij te houden en om Innovaties en reparaties van de Add-on te financieren. Omdat wijzigingen die mogelijk de extensiefunctionaliteit verbreken jaarlijks worden uitgerold, is de licentie ook 1 jaar geldig."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "De ingevoerde licentiesleutel is verlopen. Klik op de onderstaande knop om uw licentie te vernieuwen."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Parameters"
-  },
   "paste.label": {
     "message": "Plakken"
+  },
+  "parameters": {
+    "message": "Parameters"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst bij aanwijzen"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Dialoogvenster met informatie verbergen dat nieuwe functies en bugfixes weergeeft tijdens het updaten."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Ondertekening verwerken"
   },
@@ -1247,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Waarom zijn sommige sjablonen in dit menu uitgeschakeld?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Het aantal sjablonen per menu is beperkt. U kunt tot $max_free$ menu-items configureren zonder licentie, en $max_std$ menu-items met een SmartTemplates Standard-licentie! SmartTemplates Pro is onbeperkt.",
     "placeholders": {
@@ -1259,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Als u meer dan $max_Cats$ categorieën wilt configureren, moet u een SmartTemplates Pro-licentie aanschaffen…",
@@ -1268,7 +1268,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Selecteer een sjabloon in het vervolgkeuzemenu."
@@ -1413,7 +1413,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "22 augustus"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1422,7 +1422,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 februari"    
+    "message": "20 februari"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1454,7 +1454,7 @@
         "example": "50%"
       }
     }
-  },    
+  },
   "special-offer-upgrade": {
     "message": "Upgrade nu van SmartTemplates Standard naar Pro en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1467,7 +1467,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
     "placeholders": {
@@ -1665,7 +1665,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-  "message": "{L1}Wijzig tekst in hoofdtekst van doorgestuurde e-mail [inline]. Dit werkt nu in de functies: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisch doorsturen / automatisch beantwoorden met SmartTemplate via filterregels - dit betekent u kunt elke sjabloon activeren met behulp van filters (met behulp van FiltaQuilla 3.4). Exclusief voor SmartTemplates Pro-licentiehouders.{L2}{L1} %suppressQuoteHeaders%-opdracht om alle aanhalingstekens te onderdrukken.{L2}"
+    "message": "{L1}Wijzig tekst in hoofdtekst van doorgestuurde e-mail [inline]. Dit werkt nu in de functies: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisch doorsturen / automatisch beantwoorden met SmartTemplate via filterregels - dit betekent u kunt elke sjabloon activeren met behulp van filters (met behulp van FiltaQuilla 3.4). Exclusief voor SmartTemplates Pro-licentiehouders.{L2}{L1} %suppressQuoteHeaders%-opdracht om alle aanhalingstekens te onderdrukken.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
