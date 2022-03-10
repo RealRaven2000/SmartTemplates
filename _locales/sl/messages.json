@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Dan v tednu (pet.)"
   },
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "Zmogljiv način za ustvarjanje prilagojenih odgovorov s samodejnim vstavljanjem različnih naslovov pošte. Predloge lahko ustvarite za vsako identiteto pošte, podpira tudi zunanje datoteke HTML in slogovne liste."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Dodatek SmartTemplates lahko prilagodi 'glave navedkov' za posamezni račun."
   },
@@ -356,45 +349,6 @@
   },
   "fileImage.label": {
     "message": "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Ime:"
@@ -722,9 +676,6 @@
   "menu.template_import.label": {
     "message": "Uvozi predlogo"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Pokaži možnosti licence…"
   },
@@ -752,14 +703,8 @@
   "month.10.short": {
     "message": "Okt."
   },
-  "month.11.name": {
-    "message": "November"
-  },
   "month.11.short": {
     "message": "Nov."
-  },
-  "month.12.name": {
-    "message": "December"
   },
   "month.12.short": {
     "message": "Dec."
@@ -775,9 +720,6 @@
   },
   "month.3.short": {
     "message": "Mar."
-  },
-  "month.4.name": {
-    "message": "April"
   },
   "month.4.short": {
     "message": "Apr."
@@ -806,9 +748,6 @@
   "month.8.short": {
     "message": "Avg."
   },
-  "month.9.name": {
-    "message": "September"
-  },
   "month.9.short": {
     "message": "Sep."
   },
@@ -823,10 +762,6 @@
   },
   "no_button": {
     "message": "Ne"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -1191,17 +1126,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Posodobite vsebino SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Nastavitve SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Uredi predloge / glavo navedka ..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates je bil posodobljen!"
@@ -1528,9 +1457,6 @@
   "suppressQuoteHdr": {
     "message": "Popolnoma odstrani glavo ponudbe ne glede na nastavitve računa."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Uporaba spremenljivk"
   },
@@ -1591,9 +1517,6 @@
   "timezone.explain": {
     "message": "Prisilno določite časovni pas za spremenljivke datuma z zamenjavo parametra tz (GMT, EST, CST, PST itd.)"
   },
-  "timezonename.label": {
-    "message": "GMT, PST, EST, ... "
-  },
   "tip.fileTemplates": {
     "message": "Kliknite in preberite celotno dokumentacijo o pisarniških materialih in zunanjih predlog HTML na našem spletnem mestu za podporo…"
   },
@@ -1627,9 +1550,6 @@
   },
   "translatorNickname.label": {
     "message": "Peter Klofutar"
-  },
-  "tzname.label": {
-    "message": "GMT, PST, EST, ... "
   },
   "updates.title": {
     "message": "Posodobitve"
@@ -1680,9 +1600,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Primer dolgega niza"
   },
@@ -1697,9 +1614,6 @@
   },
   "xsent_short.cap": {
     "message": "Primer kratkega niza"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Naslednje spremenljivke lahko uporabljate z obema različicama"
