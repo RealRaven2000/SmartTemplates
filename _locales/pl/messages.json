@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Dzień tygodnia (Pi)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "SmartTemplates oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont."
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "Wybierz konto:"
@@ -338,10 +332,6 @@
     "description": "Description of the extension.",
     "message": "Potężny sposób tworzenia niestandardowych odpowiedzi przez automatyczne wstawianie różnych nagłówków wiadomości. Szablony można tworzyć dla każdej tożsamości poczty, obsługuje również zewnętrzne pliki html i arkusze stylów."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Inteligentne szablony nagłówków, które można dostosowywać dla każdego konta."
   },
@@ -356,45 +346,6 @@
   },
   "fileImage.label": {
     "message": "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Imię:"
@@ -722,9 +673,6 @@
   "menu.template_import.label": {
     "message": "Importuj szablon"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Pokaż opcje licencji…"
   },
@@ -772,9 +720,6 @@
   },
   "month.3.name": {
     "message": "Marzec"
-  },
-  "month.3.short": {
-    "message": "Mar"
   },
   "month.4.name": {
     "message": "Kwiecień"
@@ -824,10 +769,6 @@
   "no_button": {
     "message": "Nie"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
     "placeholders": {
@@ -842,18 +783,6 @@
   },
   "ownname.label": {
     "message": "Twoje imię"
-  },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "Wklej"
@@ -1191,17 +1120,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Zaktualizuj zawartość SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates - ustawienia"
   },
   "smarttemplate4_button": {
     "message": "Edycja szablonów i nagłówka…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates zostało zaktualizowane!"
@@ -1326,9 +1249,6 @@
   },
   "st.notification.premium.btn.getLicense": {
     "message": "Kup licencję!"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "st.notification.premium.sendByFilter": {
     "message": "Z ważną licencją SmartTemplates Pro wiadomość e-mail zostanie teraz automatycznie wysłana."
@@ -1528,9 +1448,6 @@
   "suppressQuoteHdr": {
     "message": "Całkowicie usuwa nagłówek oferty niezależnie od ustawień konta."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
-  },
   "table.cap": {
     "message": "Zastosowanie zmiennych"
   },
@@ -1680,9 +1597,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Przykład długiego formatu:"
   },
@@ -1697,9 +1611,6 @@
   },
   "xsent_short.cap": {
     "message": "Przykład krótkiego formatu:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Dodatkowo można również używać w obu wariantach następujących zmiennych:"
