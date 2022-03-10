@@ -625,7 +625,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}Dragi $username$ {boldEnd}, zdaj lahko nadgradite na SmartTemplates Pro za {boldStart} $discount$ manj {boldEnd} - hkrati pa licenco podaljšate za celo leto. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +643,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nov sistem licenciranja"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Licenca za SmartTemplates je potekla pred $countDays$ dnevi.",
     "placeholders": {
       "countDays": {
@@ -659,7 +659,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licenca za SmartTemplates poteče čez $countDays$ dni!",
     "placeholders": {
       "countDays": {
@@ -667,10 +667,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb."
   },
@@ -855,11 +855,11 @@
   "p3.label": {
     "message": "dop."
   },
-  "parameters": {
-    "message": "Parametri"
-  },
   "paste.label": {
     "message": "Prilepi"
+  },
+  "parameters": {
+    "message": "Parametri"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Besedilo ob prehodu z miško"
@@ -1001,7 +1001,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Skrij pogovorno okno z informacijami, ki pri posodobitvi prikaže nove funkcije in popravke napak."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Podpis opravila"
   },
@@ -1221,66 +1221,6 @@
   "specform_note.label": {
     "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
-  "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "16. aprila"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20. februarja"
-  },
-  "special-offer-head": {
-    "message": "Pomagajte ohraniti združljivost $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."
   },
@@ -1307,7 +1247,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Zakaj so nekatere predloge v tem meniju onemogočene?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Število predlog na meni je omejeno. Brez licence lahko konfigurirate do $max_free$ menijskih elementov in $max_std$ menijskih postavk s standardno licenco SmartTemplates! SmartTemplates Pro je neomejen.",
     "placeholders": {
@@ -1319,7 +1259,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Če želite konfigurirati več kot $max_Cats$ kategorij, pridobite licenco SmartTemplates Pro…",
@@ -1328,8 +1268,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Izberite predlogo v spustnem meniju."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1466,6 +1407,66 @@
   },
   "sub_var.cap": {
     "message": "Zadeva"
+  },
+  "special-offer-content": {
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "20. februarja"
+  },
+  "special-offer-head": {
+    "message": "Pomagajte ohraniti združljivost $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
   },
   "support-preference": {
     "message": "To je najprimernejši način podpore $addonName$.",
