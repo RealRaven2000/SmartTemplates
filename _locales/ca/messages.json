@@ -1665,7 +1665,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Modificar el text al cos del correu reenviat [en línia]. Això ara funciona a les funcions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenviament automàtic / Resposta automàtica amb SmartTemplate mitjançant regles de filtre, això vol dir podeu activar qualsevol plantilla mitjançant filtres (utilitzant FiltaQuilla 3.4). Exclusiu per a llicències de SmartTemplates Pro.{L2}{L1} Ordre %suppressQuoteHeaders% per suprimir totes les capçaleres de cites.{L2}"
+    "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
