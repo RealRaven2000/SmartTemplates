@@ -1665,7 +1665,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Modifica il testo nel corpo della posta inoltrata [inline]. Questo ora funziona nelle funzioni: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Inoltro automatico/Risposta automatica con SmartTemplate tramite regole di filtro - questo significa puoi attivare qualsiasi modello usando i filtri (usando FiltaQuilla 3.4). Esclusivo per i licenziatari di SmartTemplates Pro.{L2}{L1} Comando %suppressQuoteHeaders% per eliminare tutte le intestazioni delle virgolette.{L2}"
+    "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."
