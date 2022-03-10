@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Weekdag (Vrij)"
   },
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "Een krachtige manier om aangepaste antwoorden te maken door automatisch verschillende mailheaders in te voegen. Sjablonen kunnen worden gemaakt voor elke e-mailidentiteit, ondersteunt ook externe html-bestanden en style sheets."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "De add-on SmartTemplates kan de aanhalingskoptekst per account aanpassen."
   },
@@ -520,9 +513,6 @@
   },
   "help_dialog_title": {
     "message": "SmartTemplates-hulp"
-  },
-  "help_keyword.cap": {
-    "message": "Help"
   },
   "html_note.cap": {
     "message": "Opmerkingen voor HTML-sjablonen"
@@ -722,9 +712,6 @@
   "menu.template_import.label": {
     "message": "Sjabloon importeren"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Licentie-opties weergeven…"
   },
@@ -743,44 +730,20 @@
   "month.1.name": {
     "message": "Januari"
   },
-  "month.1.short": {
-    "message": "Jan"
-  },
   "month.10.name": {
     "message": "Oktober"
   },
   "month.10.short": {
     "message": "Okt"
   },
-  "month.11.name": {
-    "message": "November"
-  },
-  "month.11.short": {
-    "message": "Nov"
-  },
-  "month.12.name": {
-    "message": "December"
-  },
-  "month.12.short": {
-    "message": "Dec"
-  },
   "month.2.name": {
     "message": "Februari"
-  },
-  "month.2.short": {
-    "message": "Feb"
   },
   "month.3.name": {
     "message": "Maart"
   },
   "month.3.short": {
     "message": "Mrt"
-  },
-  "month.4.name": {
-    "message": "April"
-  },
-  "month.4.short": {
-    "message": "Apr"
   },
   "month.5.name": {
     "message": "Mei"
@@ -791,26 +754,11 @@
   "month.6.name": {
     "message": "Juni"
   },
-  "month.6.short": {
-    "message": "Jun"
-  },
   "month.7.name": {
     "message": "Juli"
   },
-  "month.7.short": {
-    "message": "Jul"
-  },
   "month.8.name": {
     "message": "Augustus"
-  },
-  "month.8.short": {
-    "message": "Aug"
-  },
-  "month.9.name": {
-    "message": "September"
-  },
-  "month.9.short": {
-    "message": "Sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
@@ -823,10 +771,6 @@
   },
   "no_button": {
     "message": "Nee"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
@@ -843,23 +787,8 @@
   "ownname.label": {
     "message": "Uw naam"
   },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
-  },
   "paste.label": {
     "message": "Plakken"
-  },
-  "parameters": {
-    "message": "Parameters"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst bij aanwijzen"
@@ -1041,9 +970,6 @@
   "pref_server_def": {
     "message": "Algemeen"
   },
-  "pref_server_desc": {
-    "message": "Account"
-  },
   "pref_showStatusIcon.label": {
     "message": "Knop weergeven in statusbalk"
   },
@@ -1191,17 +1117,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "SmartTemplates-inhoud bijwerken"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates-instellingen"
   },
   "smarttemplate4_button": {
     "message": "Sjablonen en aanhalingskoptekst bewerken…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates is bijgewerkt!"
@@ -1327,9 +1247,6 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Licentie kopen"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
   "st.notification.premium.sendByFilter": {
     "message": "Met een geldige SmartTemplates Pro-licentie zou de e-mail nu automatisch worden verzonden."
   },
@@ -1341,9 +1258,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Upgraden naar Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} is een Premium-functie; schaf een SmartTemplates Pro-licentie aan om deze blijvend te gebruiken."
@@ -1504,9 +1418,6 @@
   "support.title": {
     "message": "E-mailbericht voor ondersteuning"
   },
-  "support.type": {
-    "message": "Type:"
-  },
   "support.type.html": {
     "message": "Hulp met HTML / CSS"
   },
@@ -1527,9 +1438,6 @@
   },
   "suppressQuoteHdr": {
     "message": "Verwijdert de quote-header volledig, ongeacht de accountinstellingen."
-  },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
   },
   "table.cap": {
     "message": "Gebruik van variabelen"
@@ -1631,9 +1539,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
-  "updates.title": {
-    "message": "Updates"
-  },
   "updatesExpiry": {
     "message": "SmartTemplates Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel."
   },
@@ -1680,9 +1585,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Voorbeeld van een lange zin:"
   },
@@ -1697,9 +1599,6 @@
   },
   "xsent_short.cap": {
     "message": "Voorbeeld van een korte zin:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "In beide varianten kunt u de volgende variabelen gebruiken:"
