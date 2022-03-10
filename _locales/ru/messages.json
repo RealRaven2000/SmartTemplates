@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "День недели(Пт)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "SmartTemplates позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи."
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "Учётная запись:"
@@ -338,10 +332,6 @@
     "description": "Description of the extension.",
     "message": "Мощный способ создавать индивидуальные ответы путем автоматической вставки различных заголовков сообщений. Шаблоны могут быть созданы для каждого почтового идентификатора, также поддерживаются внешние файлы html и таблицы стилей."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates настраивает заголовок цитат для каждой учётной записи."
   },
@@ -356,45 +346,6 @@
   },
   "fileImage.label": {
     "message": "Картинка (png,jpg,gif,bmp,svg). Если файл не будет найден, будет показываться указанный altText."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Имя:"
@@ -625,7 +576,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Уважаемый $username${boldEnd}, теперь вы можете перейти на SmartTemplates Pro со скидкой на {boldStart} $discount$ меньше {boldEnd}, а также продлить лицензию на целый год. Грядут еще большие изменения в Thunderbird, и мне нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +594,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Чтобы сравнить функции разных версий, {linkStart}прочтите этот список{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Новая система лицензирования"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Срок действия лицензии SmartTemplates истек $countDays$ дн. Назад.",
     "placeholders": {
       "countDays": {
@@ -659,7 +610,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Лицензия SmartTemplates истекает через $countDays$ дней!",
     "placeholders": {
       "countDays": {
@@ -667,10 +618,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates предлагает две лицензии: Standard и Pro; они необходимы, чтобы идти в ногу с изменениями в платформе Thunderbird и финансировать инновации и ремонт надстройки. Поскольку изменения, которые могут нарушить функциональность расширений, вносятся ежегодно, лицензия также будет действительна в течение 1 года."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
   },
@@ -721,9 +672,6 @@
   },
   "menu.template_import.label": {
     "message": "Импорт шаблона"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "Показать параметры лицензии…"
@@ -824,10 +772,6 @@
   "no_button": {
     "message": "нет"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Изменения для преобразования $addonName$ в новую модель программирования заняли недели и были дорогостоящими. В следующей версии 2022 года есть еще много изменений. С таким сложным дополнением дорогостоящая работа становится неизбежной. Пожалуйста, помогите нам с этим.",
     "placeholders": {
@@ -855,11 +799,11 @@
   "p3.label": {
     "message": "ДП"
   },
-  "parameters": {
-    "message": "параметры"
-  },
   "paste.label": {
     "message": "Вставить"
+  },
+  "parameters": {
+    "message": "параметры"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Текст под мышкой"
@@ -1001,7 +945,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Скрыть информационный диалог, в котором отображаются новые функции и исправления ошибок при обновлении."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Обрабатывать подпись"
   },
@@ -1191,17 +1135,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Обновить содержимое SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Настройки SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Правка шаблона / заголовок цитат"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates обновлен!"
@@ -1221,66 +1159,6 @@
   "specform_note.label": {
     "message": "Выражение в скобках [[Cc: %cc(name)%]] будет выведено, если переменная %cc(name)% имеет значение!"
   },
-  "special-offer-content": {
-    "message": "Обновите свои функции и сэкономьте {boldStart} $reduction$ {boldEnd}, купив лицензию SmartTemplates Pro! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}. Или выберите стандартные функции с новой {linkStart} стандартной лицензией {linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "22 августа"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20 февраля"    
-  },
-  "special-offer-head": {
-    "message": "Помогите сохранить совместимость с $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart} Уважаемый {name} {boldEnd}, пожалуйста, поддержите $ addon $, получив лицензию. Код Thunderbird постоянно развивается, и нам нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Продлите лицензию сейчас и сэкономьте {boldStart}$reduction${boldEnd}! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "Обновите SmartTemplates Standard до Pro и сэкономьте {boldStart}$reduction${boldEnd}! Это специальное предложение будет доступно до {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Устанавливает язык проверки правописания. Примеры значений: (en, de-DE, es-ES, ru) - обратите внимание, что словарь должен быть установлен."
   },
@@ -1307,7 +1185,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Почему некоторые шаблоны в этом меню отключены?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Количество шаблонов в меню ограничено. Вы можете настроить до $max_free$ пунктов меню без лицензии и до $max_std$ пунктов меню со стандартной лицензией SmartTemplates! SmartTemplates Pro не имеет ограничений.",
     "placeholders": {
@@ -1319,7 +1197,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Чтобы настроить более $max_Cats$ категорий, получите лицензию SmartTemplates Pro…",
@@ -1328,8 +1206,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Пожалуйста, выберите шаблон из выпадающего меню."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1467,6 +1346,66 @@
   "sub_var.cap": {
     "message": "Тема"
   },
+  "special-offer-content": {
+    "message": "Обновите свои функции и сэкономьте {boldStart} $reduction$ {boldEnd}, купив лицензию SmartTemplates Pro! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}. Или выберите стандартные функции с новой {linkStart} стандартной лицензией {linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "20 февраля"
+  },
+  "special-offer-head": {
+    "message": "Помогите сохранить совместимость с $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Уважаемый {name} {boldEnd}, пожалуйста, поддержите $ addon $, получив лицензию. Код Thunderbird постоянно развивается, и нам нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Продлите лицензию сейчас и сэкономьте {boldStart}$reduction${boldEnd}! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Обновите SmartTemplates Standard до Pro и сэкономьте {boldStart}$reduction${boldEnd}! Это специальное предложение будет доступно до {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
   "support-preference": {
     "message": "Это предпочтительный способ поддержки $addonName$.",
     "placeholders": {
@@ -1526,9 +1465,6 @@
   },
   "suppressQuoteHdr": {
     "message": "Полностью удаляет заголовок котировки вне зависимости от настроек аккаунта."
-  },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
   },
   "table.cap": {
     "message": "Использование переменных"
@@ -1679,9 +1615,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Пример длинной строки:"
   },
@@ -1696,9 +1629,6 @@
   },
   "xsent_short.cap": {
     "message": "Пример короткой строки:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Следующие переменные могут быть использованы в обоих вариантах:"
