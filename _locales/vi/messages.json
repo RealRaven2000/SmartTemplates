@@ -1665,7 +1665,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}"
+    "message": "{L1}Змінити текст у тілі пересланої пошти [inline]. Тепер це працює у функціях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматичне пересилання/автоматична відповідь за допомогою SmartTemplate за допомогою правил фільтрування - це означає, що це означає ви можете запустити будь-який шаблон за допомогою фільтрів (за допомогою FiltaQuilla 3.4). Dành riêng cho người được cấp phép SmartTemplates Pro.{L2}{L1} Команда %suppressQuoteHeaders% для придушення всіх заголовків цитат.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."
