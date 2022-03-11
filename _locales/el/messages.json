@@ -443,5 +443,78 @@
   "license-is-standard": {
     "description": "Special message for standard license holders",
     "message": "Ως κάτοχος τυπικής άδειας SmartTemples, δικαιούστε έκπτωση για ενημέρωση και μια επέκταση πλήρους έτους. Πατήστε το κουμπί [Αναβάθμιση σε Pro] κάτω από την τυπική άδεια χρήσης σας για περισσότερες πληροφορίες."
+  },
+  "license-standard-special-offer": {
+    "message": "{boldStart}Αγαπητέ $username${boldEnd}, τώρα μπορείτε να αναβαθμίσετε σε SmartTemplates Pro για {boldStart}$discount$ λιγότερο{boldEnd} - επεκτείνοντας ταυτόχρονα την άδειά σας κατά ένα πλήρες έτος. Ακόμα περισσότερες μεγάλες αλλαγές έρχονται στο Thunderbird και χρειάζομαι {boldStart}τη βοήθειά σας{boldEnd} για να συνεχίσω!",
+    "placeholders": {
+      "username": {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Πληρώστε μόνο $$5.00 αντί για $$10.00 και αποκτήστε πλήρη πρόσβαση στις λειτουργίες Pro. Αυτή η ειδική προσφορά είναι διαθέσιμη {boldStart}μέχρι $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
+  },
+  "licenseComparison": {
+    "message": "Για να συγκρίνετε τα χαρακτηριστικά των διαφορετικών εκδόσεων, {linkStart}διαβάστε αυτή τη λίστα{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Νέο Σύστημα Αδειοδότησης"
+  },
+  "licenseStatus.expired": {
+    "message": "Η άδεια SmartTemplates έχει λήξει $countDays$ ημέρες πριν.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire": {
+    "message": "Η άδεια SmartTemplates θα λήξει σε $countDays$ ημέρες!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseTypes": {
+    "message": "Το SmartTemplates προσφέρει δύο άδειες, την Standard και την Pro• είναι απαραίτητο να υπάρχουν, προκειμένου να μπορούμε να ακολουθούμε τις εξελίξεις στην πλατφόρμα Thunderbird και να χρηματοδοτούμε νέες καινοτομίες και διορθώσεις του Προσθέτου. Επειδή περίπου μία φορά το χρόνο εισάγονται αλλαγές που δυνητικά σπάνε τη συμβατότητα των προσθέτων, η άδεια χρήσης θα έχει επίσης ισχύ για 1 έτος."
+  },
+  "licenseValidation.expired": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε έχει λήξει. Παρακαλώ πατήστε το παρακάτω κουμπί για να ανανεώσετε την άδειά σας."
+  },
+  "licenseValidation.failed": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε δεν είναι έγκυρο. Ελέγξτε το email σας από το FastSpring για οδηγίες. Αν εξακολουθείτε να έχετε προβλήματα, παρακαλώ επικοινωνήστε μαζί μου από την καρτέλα Υποστήριξη."
+  },
+  "licenseValidation.invalidAddon": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε μπορεί να είναι για διαφορετικό Πρόσθετο. Τα κλειδιά άδειας για {0} αρχίζουν με {1}."
+  },
+  "licenseValidation.invalidMail": {
+    "message": "Η διεύθυνση email που είναι συνδεδεμένη με το κλειδί άδειας χρήσης [{1}] δεν περιλαμβάνεται επί του παρόντος σε κανέναν από τους λογαριασμούς αλληλογραφίας σας. Παρακαλώ επικοινωνήστε μαζί μου από την καρτέλα Υποστήριξη για βοήθεια."
+  },
+  "licenseValidation.notMatchedMail": {
+    "message": "Η κρυπτογραφημένη διεύθυνση email δεν ταιριάζει με την αναγνώσιμη διεύθυνση."
+  },
+  "licenseValidation.passed": {
+    "message": "Ευχαριστούμε για την εγγραφή στο SmartTemplates Pro! Όλες οι premium λειτουργίες είναι τώρα ξεκλειδωμένες."
+  },
+  "licenseValidation.standard": {
+    "message": "Ευχαριστούμε για την εγγραφή στο SmartTemplates Standard - Βοηθάτε εξαιρετικά το Πρόσθετο σας! Μπορείτε επίσης να δοκιμάσετε όλες τις premium λειτουργίες."
+  },
+  "licenseWindow.title": {
+    "message": "Άδεια SmartTemplates"
   }
 }
