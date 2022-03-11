@@ -291,5 +291,157 @@
   },
   "domainLicense.email": {
     "message": "Θα επικοινωνήσουμε μαζί σας χρησιμοποιώντας αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να δημιουργήσουμε την άδεια χρήσης για τον τομέα σας. Παρακαλούμε δώστε μας δύο εργάσιμες ημέρες για να έρθουμε σε επαφή. Εισάγετε το όνομα τομέα για την άδεια χρήσης στην επόμενη σελίδα."
+  },
+  "domainLicense.header": {
+    "message": "Αδειοδοτημένος Τομέας Email"
+  },
+  "domainLicense.instruct": {
+    "message": "Η άδεια είναι αντιστοιχισμένη στον τομέα της εταιρείας σας. Η άδεια θα επιτρέπει στους χρήστες με διευθύνσεις ηλεκτρονικού ταχυδρομείου που τελειώνουν σε αυτόν τον τομέα ηλεκτρονικού ταχυδρομείου να χρησιμοποιούν το SmartTemplates Pro. Π.χ. αν εισάγετε το όνομα τομέα 'abc.com', τότε χρήστες email όπως fredd@abc.com, martha@abc.com, mike.doe@abc.com κλπ. θα επιτρέπεται να χρησιμοποιούν την άδεια. Ο μέγιστος αριθμός έγκυρων μεμονωμένων χρηστών είναι ο αριθμός που εισάγατε στην αρχική οθόνη."
+  },
+  "domainLicense.validate": {
+    "message": "Βεβαιωθείτε ότι εισάγετε το όνομα τομέα *ακριβώς όπως είναι* στις διευθύνσεις ηλεκτρονικού ταχυδρομείου της Εταιρείας σας (το τμήμα *μετά* το σύμβολο @), καθώς θα χρησιμοποιηθεί για την επικύρωση των διευθύνσεων ηλεκτρονικού ταχυδρομείου των χρηστών σας."
+  },
+  "donate": {
+    "message": "Βοηθήστε με μια εφάπαξ δωρεά."
+  },
+  "donate-heading": {
+    "message": "Βοηθήστε με μία Δωρεά!"
+  },
+  "e.label": {
+    "message": "Ημέρα του Μήνα (1 έως 31)"
+  },
+  "edit.label": {
+    "message": "Επεξεργαστείτε"
+  },
+  "email.label": {
+    "message": "Email:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Εισάγετε κλειδί άδειας χρήσης…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Εισάγετε τον κωδικό κλειδιού άδειας χρήσης που σας απεστάλη μέσω ηλεκτρονικού ταχυδρομείου."
+  },
+  "ex_brack.label": {
+    "message": "Παράδειγμα: To: John | Cc: Alison"
+  },
+  "export.label": {
+    "message": "Εξαγωγή"
+  },
+  "extend-your-license": {
+    "message": "Εξετάστε το ενδεχόμενο επέκτασης της άδειας χρήσης σας κατά ένα έτος."
+  },
+  "file.label": {
+    "message": "Αρχείο"
+  },
+  "fileTemplates.add": {
+    "message": "Πρόσθεσε"
+  },
+  "fileTemplates.down": {
+    "message": "Κάτω"
+  },
+  "fileTemplates.file.open": {
+    "message": "Επιλέξτε αρχείο προτύπου από το δίσκο"
+  },
+  "fileTemplates.file.path": {
+    "message": "Τοποθεσία προτύπου:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Τίτλος:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Αυτό θα εμφανίζεται στο μενού επιλογής προτύπου."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Προώθηση'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Δημιουργία νέου μηνύματος'."
+  },
+  "fileTemplates.remove": {
+    "message": "Αφαιρέστε"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Απάντηση'."
+  },
+  "fileTemplates.title": {
+    "message": "Αρχεία Προτύπων"
+  },
+  "fileTemplates.up": {
+    "message": "Πάνω"
+  },
+  "fileTemplates.update": {
+    "message": "Ενημέρωσε"
+  },
+  "firstName.label": {
+    "message": "Όνομα:"
+  },
+  "fix_var.cap": {
+    "message": "Σταθερές μεταβλητές"
+  },
+  "fix_vartz.cap": {
+    "message": "Σταθερές μεταβλητές για 'Μορφή ημερομηνίας' / 'Ζώνη ώρας'"
+  },
+  "fix_vartz_note.label": {
+    "message": "Μπορεί να συνδυαστεί με %X:=sent%"
+  },
+  "fpFilterHtmlTemplate": {
+    "message": "Πρότυπο HTML"
+  },
+  "fpFilterName": {
+    "message": "Αρχείο SmartTemplates"
+  },
+  "fpFolder": {
+    "message": "Φάκελος"
+  },
+  "fpHTMLFile": {
+    "message": "Αρχείο Html / Αρχείο Κειμένου"
+  },
+  "fpImageFile": {
+    "message": "Αρχείο Εικόνας"
+  },
+  "fpJsonFile": {
+    "message": "Αρχείο JSON"
+  },
+  "fpStyle": {
+    "message": "Φύλλο Στυλ"
+  },
+  "freeLicense": {
+    "message": "Αν έχετε κάνει πρόσφατα δωρεά στο έργο SmartTemplates ή έχετε συνεισφέρει μέσω εργασίας όπως μετάφρασης ή συγγραφής διορθώσεων, μπορεί να δικαιούστε ένα δωρεάν κλειδί αδείας. Επικοινωνήστε μαζί μου από την καρτέλα υποστήριξης στις Επιλογές SmartTemplates."
+  },
+  "from.label": {
+    "message": "Όνομα αποστολέα (προεπιλογή)"
+  },
+  "from_note.label": {
+    "message": "Όταν το όνομα δεν είναι διαθέσιμο, θα εμφανίζεται η διεύθυνση ηλεκτρονικού ταχυδρομείου"
+  },
+  "from_var.cap": {
+    "message": "Αποστολέας (Από)"
+  },
+  "fromfirstname.label": {
+    "message": "Όνομα αποστολέα"
+  },
+  "frommail.label": {
+    "message": "Διεύθυνση email αποστολέα"
+  },
+  "fromname.label": {
+    "message": "Όνομα αποστολέα"
+  },
+  "label.licenseValid": {
+    "message": "Η άδειά σας είναι έγκυρη μέχρι:"
+  },
+  "label.premiumFeaturesSite": {
+    "message": "Διαβάστε περισσότερα σχετικά με τις Premium δυνατότητες στην ιστοσελίδα μας…"
+  },
+  "lastName.label": {
+    "message": "Επώνυμο:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Σας ευχαριστούμε για την πρόσφατη επέκταση της άδειας χρήσης σας ή για τη δωρεά σας. Καθώς έχετε ήδη βοηθήσει στη μελλοντική εξέλιξη του Προσθέτου, μπορείτε απλά να κλείσετε αυτό το παράθυρο."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Ως κάτοχος τυπικής άδειας SmartTemples, δικαιούστε έκπτωση για ενημέρωση και μια επέκταση πλήρους έτους. Πατήστε το κουμπί [Αναβάθμιση σε Pro] κάτω από την τυπική άδεια χρήσης σας για περισσότερες πληροφορίες."
   }
 }
