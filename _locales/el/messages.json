@@ -427,6 +427,92 @@
   "fromname.label": {
     "message": "Όνομα αποστολέα"
   },
+  "header.prefix.subject": {
+    "message": "πρόσθεσε το κείμενο στην αρχή του θέματος"
+  },
+  "header.set.from": {
+    "message": "ορίζει τη διεύθυνση 'από'. Δέχεται μόνο διευθύνσεις email από λίστα ταυτοτήτων."
+  },
+  "header.set.subject": {
+    "message": "αντικατάστησε το θέμα με το κείμενο"
+  },
+  "header.set.to": {
+    "message": "αντικατάστησε τον παραλήπτη με διεύθυνση email"
+  },
+  "header_function.cap": {
+    "message": "Τροποποίησε Κεφαλίδα Email"
+  },
+  "header_function.explain": {
+    "message": "Αυτές οι λειτουργίες μπορούν να χρησιμοποιηθούν για την τροποποίηση κεφαλίδων email, όπως περιγράφεται εδώ:"
+  },
+  "header_function.scope": {
+    "message": "Μπορεί να χρησιμοποιηθεί με αυτές τις κεφαλίδες:"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "To $addonName$ εγκαταστάθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Το $addonName$ ενημερώθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading.click": {
+    "message": "Κάντε κλικ σε μια επικεφαλίδα ή"
+  },
+  "heading.expandAll": {
+    "message": "Αναπτύξτε Όλα"
+  },
+  "help.label": {
+    "message": "Βοήθεια"
+  },
+  "help_dialog_title": {
+    "message": "Βοήθεια SmartTemplates"
+  },
+  "help_keyword.cap": {
+    "message": "Βοήθεια"
+  },
+  "html_note.cap": {
+    "message": "Σημείωση για πρότυπα HTML"
+  },
+  "html_note.label": {
+    "message": "Παρακαλούμε χρησιμοποιήστε μόνο το σύνολο χαρακτήρων UTF-8 (Unicode) μέσα σε πρότυπα HTML!"
+  },
+  "i.label": {
+    "message": "Ώρα, 12-ωρη μορφή (01 έως 12) - με το μηδέν στην αρχή"
+  },
+  "identity_ab": {
+    "message": "Χρησιμοποιήστε τη λέξη-κλειδί 'addressbook' για να ανακτήσετε πρόσθετες πληροφορίες ταυτότητας από το βιβλίο διευθύνσεων."
+  },
+  "identity_ab.example": {
+    "message": "Παράδειγμα"
+  },
+  "identity_ab.field": {
+    "message": "Για πρόσθετες τιμές πεδίων, ανατρέξτε στο κεφάλαιο 'Πεδία Βιβλίου Διευθύνσεων' παρακάτω."
+  },
+  "identity_ab.phoneno": {
+    "message": "Αριθμός Τηλεφώνου"
+  },
+  "im-ex.cap": {
+    "message": "Εξαγωγή/Εισαγωγή Ρυθμίσεων και Προτύπων"
+  },
+  "im-ex_note1.label": {
+    "message": "Μπορείτε να εξάγετε και να εισάγετε τις ρυθμίσεις και τα πρότυπα που σχετίζονται με κάθε λογαριασμό."
+  },
+  "im-ex_note2.label": {
+    "message": "Επιλέξτε πρώτα τον λογαριασμό που θέλετε να εξάγετε στο αναπτυσσόμενο πλαίσιο ρυθμίσεων SmartTemples."
+  },
   "label.licenseValid": {
     "message": "Η άδειά σας είναι έγκυρη μέχρι:"
   },
@@ -515,6 +601,48 @@
     "message": "Ευχαριστούμε για την εγγραφή στο SmartTemplates Standard - Βοηθάτε εξαιρετικά το Πρόσθετο σας! Μπορείτε επίσης να δοκιμάσετε όλες τις premium λειτουργίες."
   },
   "licenseWindow.title": {
-    "message": "Άδεια SmartTemplates"
+    "message": "Άδεια Χρήσης SmartTemplates"
+  },
+  "localedate.label": {
+    "message": "Ημερομηνία / Ώρα (τοπική μορφή)"
+  },
+  "localename.label": {
+    "message": "en-US"
+  },
+  "localized.label": {
+    "message": "Μεταφραστής"
+  },
+  "m.label": {
+    "message": "Μήνας (01 έως 12) - με το μηδέν μπροστά"
+  },
+  "m.up.label": {
+    "message": "Λεπτό (00 έως 59)"
+  },
+  "matchTextFromBody": {
+    "message": "Βρείτε ένα μοτίβο RegEx στο παρατιθέμενο Email και εισάγετε στη θέση της λειτουργίας."
+  },
+  "matchTextFromSubject": {
+    "message": "Βρείτε ένα μοτίβο RegEx στο θέμα και εισάγετε στη θέση της λειτουργίας."
+  },
+  "menu.template_export.label": {
+    "message": "Εξαγωγή Προτύπου"
+  },
+  "menu.template_import.label": {
+    "message": "Εισαγωγή Προτύπου"
+  },
+  "message.licenseScreen": {
+    "message": "Εμφάνιση επιλογών άδειας χρήσης…"
+  },
+  "message.features": {
+    "message": "Σύγκριση Χαρακτηριστικών…"
+  },
+  "messid.label": {
+    "message": "ID Μηνύματος"
+  },
+  "minSize": {
+    "message": "[optional, numeric] - αριθμός kByte, ελάχιστο μέγεθος για την αφαίρεση της ετικέτας. Με αυτόν τον τρόπο μπορείτε να κρατήσετε μικρότερες εικόνες όπως εικονίδια / emojis ενώ απορρίπτετε μεγάλες εικόνες."
+  },
+  "minSize_detail": {
+    "message": "Δεν είναι πάντα δυνατό να προσδιοριστεί το μέγεθος, ειδικά αν το Thunderbird εξακολουθεί να φορτώνει την εικόνα, συχνά λόγω μεγάλου μεγέθους - σε αυτή την περίπτωση η ετικέτα θα αφαιρεθεί ούτως ή άλλως."
   }
 }
