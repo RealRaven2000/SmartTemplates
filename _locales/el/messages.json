@@ -843,5 +843,53 @@
   },
   "pref_quoteHeaderBox.label": {
     "message": "Κεφαλίδα Παράθεσης"
+  },
+  "pref_quoteHeaderBox_tip": {
+    "message": "Σε αυτό το πλαίσιο, γράψτε τι πρέπει να εμφανίζεται πριν από το παρατιθέμενο τμήμα (πρωτότυπο μήνυμα) - π.χ. Στις %date%, ο/η %from(name)% έγραψε:"
+  },
+  "pref_quotehead_tip": {
+    "message": "Απενεργοποιήστε την προεπιλεγμένη κεφαλίδα παράθεσης. Τοποθετήστε τη δική σας κεφαλίδα στο πλαίσιο κειμένου παραπάνω."
+  },
+  "pref_removeSig.label": {
+    "message": "Αντικατάστησε την υπογραφή κατά την αλλαγή ταυτότητας email"
+  },
+  "pref_rep_br.cap": {
+    "message": "ΣΗΜΕΙΩΣΗ: Δεν θα εισαχθεί κενό διάστημα στην ετικέτα HTML χρησιμοποιώντας <br> μία φορά."
+  },
+  "pref_rep_br.label": {
+    "message": "Αντικατάστησε τις αλλαγές γραμμής με <br>"
+  },
+  "pref_rsp.label": {
+    "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο μήνυμα που απαντήθηκε"
+  },
+  "pref_rsp.tab": {
+    "message": "Απάντησε"
+  },
+  "pref_rsphead.label": {
+    "message": "Χρήση αντί της προεπιλεγμένης κεφαλίδας παράθεσης"
+  },
+  "pref_rspmsg.cap": {
+    "message": "Απάντησε"
+  },
+  "pref_server_desc": {
+    "message": "Λογαριασμός"
+  },
+  "pref_showStatusIcon.label": {
+    "message": "Εμφάνιση κουμπιού στη γραμμή κατάστασης"
+  },
+  "pref_sigReplaceBR.label": {
+    "message": "Αντικατάστησε τις αλλαγές γραμμής στην υπογραφή απλού κειμένου με <br>"
+  },
+  "pref_silentUpdates": {
+    "message": "Σιωπηλές ενημερώσεις"
+  },
+  "pref_silentUpdates_tip": {
+    "message": "Να μην ανοίγει το αρχείο καταγραφής αλλαγών μετά την ενημέρωση του SmartTemples."
+  },
+  "pref_stationeryLink": {
+    "message": "Πρόσθετο Επιστολόχαρτων"
+  },
+  "pref_stationeryLink_tip": {
+    "message": "Λήψη γραφικών στοιχείων…"
   }
 }
