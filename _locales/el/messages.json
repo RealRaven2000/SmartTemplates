@@ -331,8 +331,24 @@
   "extend-your-license": {
     "message": "Εξετάστε το ενδεχόμενο επέκτασης της άδειας χρήσης σας κατά ένα έτος."
   },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Ένας ισχυρός τρόπος δημιουργίας προσαρμοσμένων απαντήσεων με αυτόματη εισαγωγή διαφόρων κεφαλίδων ταχυδρομείου. Τα πρότυπα μπορούν να δημιουργηθούν για κάθε ταυτότητα ταχυδρομείου, ενώ υποστηρίζουν επίσης εξωτερικά αρχεία html και φύλλα στυλ."
+  },
+  "extensions.smarttemplate4@thunderbird.extension.description": {
+    "message": "Το πρόσθετο SmartTemplates μπορεί να προσαρμόσει τις κεφαλίδες 'quote headers' ανά λογαριασμό."
+  },
   "file.label": {
     "message": "Αρχείο"
+  },
+  "fileCSS.label": {
+    "message": "Εξωτερικό φύλλο στυλ (css). Συμπεριλάβετε τους αγαπημένους σας κανόνες CSS για να μοιραστείτε μεταξύ διαφορετικών προτύπων."
+  },
+  "fileHTML.label": {
+    "message": "HTML ή απλό αρχείο κειμένου. Χρησιμοποιείται το UTF- 8 όταν παραλείπεται η προαιρετική παράμετρος συνόλου χαρακτήρων."
+  },
+  "fileImage.label": {
+    "message": "Αρχείο εικόνας (png,jpg,gif,bmp,svg). Το προαιρετικό altText εμφανίζεται αν η εικόνα δεν μπορεί να βρεθεί."
   },
   "fileTemplates.add": {
     "message": "Πρόσθεσε"
@@ -427,6 +443,18 @@
   "fromname.label": {
     "message": "Όνομα αποστολέα"
   },
+  "getSmartTemplate4": {
+    "message": "Άδεια Χρήσης SmartTemplates"
+  },
+  "guessNameFromMail": {
+    "message": "Αν λείπει το όνομα, μάντεψε τμήματά του από τη διεύθυνση email"
+  },
+  "h.label": {
+    "message": "Ώρα, 24-ωρη μορφή (00 έως 23) - με το μηδέν στην αρχή"
+  },
+  "header.append.subject": {
+    "message": "πρόσθεσε το κείμενο στο τέλος του θέματος"
+  },
   "header.append.to": {
     "message": "προσθήκη email στη λίστα παραληπτών"
   },
@@ -518,6 +546,45 @@
   },
   "im-ex_note2.label": {
     "message": "Επιλέξτε πρώτα τον λογαριασμό που θέλετε να εξάγετε στο αναπτυσσόμενο πλαίσιο ρυθμίσεων SmartTemples."
+  },
+  "import.label": {
+    "message": "Εισάγαγε"
+  },
+  "insert.label": {
+    "message": "Εισάγαγε μεταβλητή"
+  },
+  "insertSnippet.button": {
+    "message": "Εισάγαγε Απόσπασμα"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Εισάγαγε ένα απόσπασμα Smart HTML"
+  },
+  "intro": {
+    "message": "Μια ετήσια άδεια για το SmartTemplates Pro σας δίνει όλα τα premium χαρακτηριστικά για ένα έτος. Μας δίνει επίσης τη δυνατότητα να υποστηρίξουμε και να αναπτύξουμε περαιτέρω το προϊόν και να το μετατρέψουμε σε κάτι ακόμα πιο εκπληκτικό."
+  },
+  "k.label": {
+    "message": "Ώρα, 24-ωρη μορφή (0 έως 23)"
+  },
+  "l.label": {
+    "message": "Ώρα, 12-ωρη μορφή (1 έως 12)"
+  },
+  "label-remind-me": {
+    "message": "Θύμισέ μου ξανά σε $countDays$ ημέρες.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "label.haveLicense": {
+    "message": "Έχετε ήδη μια άδεια;"
+  },
+  "label.insertLicense": {
+    "message": "Εισάγετε εδώ το προσωπικό σας κλειδί άδειας χρήσης:"
+  },
+  "label.insertLicense.tooltip": {
+    "message": "Το κλειδί άδειας χρήσης σας περιέχεται στο email επιβεβαίωσης της παραγγελίας σας από το Fastspring."
   },
   "label.licenseValid": {
     "message": "Η άδειά σας είναι έγκυρη μέχρι:"
@@ -650,5 +717,107 @@
   },
   "minSize_detail": {
     "message": "Δεν είναι πάντα δυνατό να προσδιοριστεί το μέγεθος, ειδικά αν το Thunderbird εξακολουθεί να φορτώνει την εικόνα, συχνά λόγω μεγάλου μεγέθους - σε αυτή την περίπτωση η ετικέτα θα αφαιρεθεί ούτως ή άλλως."
+  },
+  "month.1.name": {
+    "message": "Ιανουάριος"
+  },
+  "month.1.short": {
+    "message": "Ιαν"
+  },
+  "month.10.name": {
+    "message": "Οκτώβριος"
+  },
+  "month.10.short": {
+    "message": "Οκτ"
+  },
+  "month.11.name": {
+    "message": "Νοέμβριος"
+  },
+  "month.11.short": {
+    "message": "Νοέ"
+  },
+  "month.12.name": {
+    "message": "Δεκέμβριος"
+  },
+  "month.12.short": {
+    "message": "Δεκ"
+  },
+  "month.2.name": {
+    "message": "Φεβρουάριος"
+  },
+  "month.2.short": {
+    "message": "Φεβ"
+  },
+  "month.3.name": {
+    "message": "Μάρτιος"
+  },
+  "month.3.short": {
+    "message": "Μάρ"
+  },
+  "month.4.name": {
+    "message": "Απριλίος"
+  },
+  "month.4.short": {
+    "message": "Απρ"
+  },
+  "month.5.name": {
+    "message": "Μάιος"
+  },
+  "month.5.short": {
+    "message": "Μάιος"
+  },
+  "month.6.name": {
+    "message": "Ιούνιος"
+  },
+  "month.6.short": {
+    "message": "Ιούν"
+  },
+  "month.7.name": {
+    "message": "Ιούλιος"
+  },
+  "month.7.short": {
+    "message": "Ιούλ"
+  },
+  "month.8.name": {
+    "message": "Αύγουστος"
+  },
+  "month.8.short": {
+    "message": "Αύγ"
+  },
+  "month.9.name": {
+    "message": "Σεπτέμβριος"
+  },
+  "month.9.short": {
+    "message": "Σεπ"
+  },
+  "n.label": {
+    "message": "Μήνας (1 έως 12)"
+  },
+  "pref_groupSignatures": {
+    "message": "Υπογραφές"
+  },
+  "pref_groupTroubleShooting": {
+    "message": "Αντιμετώπιση Προβλημάτων"
+  },
+  "pref_groupUI": {
+    "message": "Διεπαφή Χρήστη"
+  },
+  "pref_help.tab": {
+    "message": "Βοήθεια"
+  },
+  "pref_hideExamples": {
+    "message": "Κρύψε την καρτέλα με τα παραδείγματα"
+  },
+  "pref_html.cap": {
+    "message": "Χρησιμοποιήστε χαρακτήρες διαφυγής για \" , & , < , > , κενό. Δείτε \"βοήθεια\" για περισσότερες λεπτομέρειες."
+  },
+  "pref_html.label": {
+    "message": "Χρησιμοποιήστε HTML (π.χ., <b> έντονο </b>)"
+  },
+  "pref_nameSwap": {
+    "message": "Διόρθωσε Επώνυμο, Όνομα"
+  },
+  "pref_nameSwap_tip": {
+    "message": "Αλλάζει το 'Επώνυμο, Όνομα' σε 'Όνομα Επώνυμο'"
   }
 }
