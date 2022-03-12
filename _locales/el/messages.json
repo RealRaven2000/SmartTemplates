@@ -819,5 +819,29 @@
   },
   "pref_nameSwap_tip": {
     "message": "Αλλάζει το 'Επώνυμο, Όνομα' σε 'Όνομα Επώνυμο'"
+  },
+  "pref_new.label": {
+    "message": "Εφαρμογή του παρακάτω προτύπου στο νέο μήνυμα"
+  },
+  "pref_new.tab": {
+    "message": "Γράψε"
+  },
+  "pref_newmsg.cap": {
+    "message": "Γράψε"
+  },
+  "pref_noSplash": {
+    "message": "Παράλειψη Οθόνης Εκκίνησης"
+  },
+  "pref_noSplash_tip": {
+    "message": "Απόκρυψη, κατά την ενημέρωση, του διαλόγου πληροφοριών που εμφανίζει νέες λειτουργίες και διορθώσεις σφαλμάτων."
+  },
+  "pref_parseSignature": {
+    "message": "Επεξεργασία υπογραφής"
+  },
+  "pref_parseSignature_tip": {
+    "message": "Αντικατάστησε τις μεταβλητές στην υπογραφή."
+  },
+  "pref_quoteHeaderBox.label": {
+    "message": "Κεφαλίδα Παράθεσης"
   }
 }
