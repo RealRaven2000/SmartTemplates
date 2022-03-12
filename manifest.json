@@ -3,17 +3,17 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "3.10.1",
+  "version": "3.12pre1",
   "default_locale": "en",
   "developer": {
-	  "name": "Axel Grude (author), Klaus Buecher/opto (Tb78 conversion)",
+	  "name": "Axel Grude (author)",
     "url": "https://smarttemplates.quickfolders.org/index.html"
 	},
   "applications": {
     "gecko": {
       "id": "smarttemplate4@thunderbird.extension",
-      "strict_min_version": "74.0",
-      "strict_max_version": "91.*"
+      "strict_min_version": "91.0",
+      "strict_max_version": "102.*"
     }
   },
   "background": {
