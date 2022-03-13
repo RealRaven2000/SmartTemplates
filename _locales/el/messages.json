@@ -891,5 +891,20 @@
   },
   "pref_stationeryLink_tip": {
     "message": "Λήψη γραφικών στοιχείων…"
+  },
+  "pref_stationerySupport": {
+    "message": "Υποστηρίξτε το Πρόσθετο γραφικών στοιχείων"
+  },
+  "pref_stationerySupport_tip": {
+    "message": "Υποστηρίζει τη χρήση γραφικών στοιχείων ταυτόχρονα με το SmartTemplates."
+  },
+  "pref_stationerySupport_tip2": {
+    "message": "Αυτό καθιστά δυνατή τη χρήση μεταβλητών προτύπου στα γραφικά στοιχεία σας."
+  },
+  "pref_templateBox.label": {
+    "message": "Πρότυπο"
+  },
+  "pref_templateBox_tip": {
+    "message": "Σε αυτό το πλαίσιο, βάλτε το πρότυπο email σας π.χ. Γεια σας %from(name)%, <br> Ευχαριστούμε για το μήνυμά σας <br> με εκτίμηση, <br>%ownname%"
   }
 }
