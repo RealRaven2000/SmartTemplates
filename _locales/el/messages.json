@@ -906,5 +906,26 @@
   },
   "pref_templateBox_tip": {
     "message": "Σε αυτό το πλαίσιο, βάλτε το πρότυπο email σας π.χ. Γεια σας %from(name)%, <br> Ευχαριστούμε για το μήνυμά σας <br> με εκτίμηση, <br>%ownname%"
+  },
+  "pref_template_tip": {
+    "message": "Μπορείτε να βελτιώσετε το πρότυπο με 'μεταβλητές'. Επιλέξτε Προχωρημένα / Μεταβλητές για περισσότερες πληροφορίες."
+  },
+  "pref_variables.tab": {
+    "message": "Μεταβλητές"
+  },
+  "premiumConfig": {
+    "message": "Λειτουργίες Premium"
+  },
+  "prompt.email": {
+    "message": "Εισάγετε μια διεύθυνση email"
+  },
+  "prompt.text": {
+    "message": "Εισάγετε το κείμενο για να προσθέσετε ή να ορίσετε"
+  },
+  "purchase-a-license": {
+    "message": "Αγοράστε μια άδεια χρήσης."
+  },
+  "purchase-heading": {
+    "message": "Αγοράζοντας μια Άδεια!"
   }
 }
