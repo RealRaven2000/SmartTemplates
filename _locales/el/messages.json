@@ -927,5 +927,110 @@
   },
   "purchase-heading": {
     "message": "Αγοράζοντας μια Άδεια!"
+  },
+  "quoteLevel": {
+    "message": "[προαιρετικό, αριθμητικό]: ποιο ελάχιστο επίπεδο παράθεσης για εκκίνηση"
+  },
+  "quotePlaceholder": {
+    "message": "Αυτό μετακινεί το παρατιθέμενο τμήμα μέσα στο ίδιο το κείμενο του προτύπου. Η ενότητα επικεφαλίδας παράθεσης από τα πρότυπα του λογαριασμού θα μεταφερθεί στην κορυφή αυτής της παράθεσης."
+  },
+  "quotePlaceholder.level": {
+    "message": "[προαιρετικό, αριθμητικό] Μέγιστο επίπεδο αναφοράς για τον αποκλεισμό παλαιότερων παραθέσεων από τη συνομιλία."
+  },
+  "quote_changers.cap": {
+    "message": "Επεξεργασία Παραθέσεων"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "Πρέπει να επιλέξετε ένα στοιχείο από τη λίστα για ενημέρωση!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Ενημέρωσε Πρότυπα"
+  },
+  "st.licenseValidation.expired": {
+    "message": "Η άδεια χρήσης σας έληξε την:"
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "(Το κλειδί που εισήχθη μπορεί να είναι για {2})."
+  },
+  "st.notification.donate": {
+    "message": "Δωρίστε"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "Να μην εμφανιστεί ξανά αυτό το μήνυμα."
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "Οποιοδήποτε κείμενο έχετε εισάγει χειροκίνητα από την εκκίνηση του συνθέτη μέχρι τώρα θα διαγραφεί, χωρίς δυναότητα Αναίρεσης. Να προχωρήσω ούτως ή άλλως;"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "Έχετε ήδη πληκτρολογήσει κείμενο και θέλετε να αλλάξετε σε πρότυπο {0}"
+  },
+  "st.notification.license.required": {
+    "message": "Το SmartTemplates απαιτεί μια άδεια χρήσης για να συνεχίσει να λειτουργεί. Διαβάστε περισσότερα στο κάτω μέρος του παραθύρου σύνθεσης."
+  },
+  "st.notification.license.text": {
+    "message": "Από δω και στο εξής, το SmartTemplates απαιτεί τουλάχιστον μια Standard άδεια. Διαβάστε περισσότερα σχετικά με αυτό στη σελίδα αδειοδότησης."
+  },
+  "st.notification.licensing": {
+    "message": "Περισσότερα για την αδειοδότηση"
+  },
+  "st.notification.parsing": {
+    "message": "Ανάλυση μεταβλητών:"
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "Επέκταση Άδειας Τομέα"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "Παράταση Άδειας"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Αυτό θα επεκτείνει την ισχύ της τρέχουσας άδειας χρήσης κατά 1 έτος. Είναι συνήθως φθηνότερο από μια νέα άδεια."
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "Αγοράστε Άδεια Χρήσης"
+  },
+  "st.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "st.notification.premium.sendByFilter": {
+    "message": "Με μια έγκυρη άδεια SmartTemplates Pro το email τώρα θα αποσταλλόταν αυτόματα."
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "Ανανεώστε Άδεια Τομέα"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "Ανανεώστε την Άδεια"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "Αναβαθμίστε σε Pro"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "st.notification.premium.text": {
+    "message": "Το {1} είναι μια λειτουργία Premium• παρακαλώ αναβαθμίστε σε μια άδεια SmartTemplates Pro για να μπορείτε να το χρησιμοποιείτε μόνιμα."
+  },
+  "st.notification.premium.text.plural": {
+    "message": "Τα {1} είναι λειτουργίες Premium• παρακαλώ αναβαθμίστε σε μια άδεια SmartTemplates Pro για να μπορείτε να τα χρησιμοποιείτε μόνιμα."
+  },
+  "st.notification.premium.title": {
+    "message": "Premium Λειτουργία"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "Δεν είναι δυνατή η εναλλαγή γλώσσας ελέγχου ορθογραφίας. Έχετε εγκαταστήσει το σωστό λεξικό;"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "Δεν έχουν εγκατασταθεί λεξικά."
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "Το λεξικό '{0}' δεν βρέθηκε."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "Αλλαγή σε Άδεια Τομέα;"
+  },
+  "st.trialDays": {
+    "message": "Απομένουν {0} ημέρες δοκιμής."
+  },
+  "st.trialExpiry": {
+    "message": "Η δοκιμαστική περίοδος έληξε πριν από {0} ημέρες."
   }
 }
