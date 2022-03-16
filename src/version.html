@@ -256,12 +256,13 @@ permalink: version.html
        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/172">[issue 172]</a> 
         Modifiy text in body of forwarded mail [inline]. This now works in the functions:
         <code>%deleteQuotedText()%</code>, <code>%replaceQuotedText()%</code>, <code>%deleteQuotedTags()%</code>,
-        <code>%replaceQuotedTags()%</code>. Read the full documentation 
-        <href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation">here</a>.
+        <code>%replaceQuotedTags()%</code>. Read the <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation">full documentation here</a>.
       </p> 
-      These have to be called with a parameter of "0" from the template
-      and then they are able to delete or replace content from the original mail.
-      Limitation: parameters cannot contain double quotes ", the percent sign % or parentheses ( ) .
+      <p>
+      These have to be called with a quote level parameter of "0" from the template
+      and then they can be used to delete or replace text or HTML parts from the original mail.
+      </p>
+      Limitation: the string parameters cannot contain double quotes ", the percent sign % or parentheses ( ) .
     </li>
     <a name="filterForward"> </a>
     <li>
@@ -269,6 +270,11 @@ permalink: version.html
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a> 
         Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
         this requires the Add-on FiltaQuilla version 3.4 or later. 
+      </p>
+      <p>
+        In order to use this feature, open Filtaquilla settings and enable the "forward with SmartTemplates" 
+        option on the actions page:<br>
+        <img class="screenshot" alt="adding forward action in a filter" src="img/fq-fwd-with-st.png">
       </p>
       See the documentation on the <a href="https://smarttemplates.quickfolders.org/premium.html#filterForward">premium features page</a>.
     </li>
