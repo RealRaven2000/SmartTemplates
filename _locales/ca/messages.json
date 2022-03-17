@@ -1073,6 +1073,9 @@
   "purchase-heading": {
     "message": "Comprant una llicència"
   },
+  "quoteLevel": {
+    "message": "[opcional, numèric]: el nivell de cotització mínim per començar"
+  },
   "quotePlaceholder": {
     "message": "Això mou la part citada al text de la plantilla. El bloc de capçalera de pressupost de les plantilles de compte es mourà a la part superior d’aquest pressupost."
   },
@@ -1112,8 +1115,20 @@
   "resolveNamesFromAB": {
     "message": "Resoleu noms de llibretes d'adreces"
   },
+  "resolveNamesFromABDisplay": {
+    "message": "Utilitzeu el nom visible si falta el nom"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Substituïu el primer nom pel sobrenom si n'hi ha"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Aquesta funció no funciona amb determinades llibretes d'adreces remotes, com ara LDAP."
+  },
   "s.label": {
     "message": "Segondas (00 a 59)"
+  },
+  "selector": {
+    "message": "- què utilitzaríeu per adreçar l'etiqueta en css. el cas més simple 'img' o 'p', però es poden afegir selectors d'atributs sempre que es puguin evitar cometes dobles."
   },
   "settings.label": {
     "message": "Reglatges e Modèls"
@@ -1181,11 +1196,20 @@
   "st.confirmVersionLink": {
     "message": "Afichar la lista de las modificacions per SmartTemplates ?"
   },
+  "st.fileFunction.notExists": {
+    "message": "La funció {0} no ha pogut trobar ni accedir al fitxer. Comproveu el camí següent:"
+  },
   "st.fileTemplates": {
     "message": "Fitxers de plantilla"
   },
   "st.fileTemplates.configureMenu": {
     "message": "Configura els elements del menú …"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "Problemes en convertir una plantilla HTML des del conjunt de caràcters [{1}]\nUtilitzant dades de cadena en brut.\nSi això provoca caràcters confusos, proveu d'afegir un 'metaconjunt de caràcters' explícit"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "No s'ha pogut carregar el fitxer de plantilla '{0}' des del camí:\n{1}\nÉs possible que el fitxer s'hagi eliminat o canviat de nom."
   },
   "st.fileTemplates.openFile": {
     "message": "Obriu el fitxer de plantilla SmartTemplates…"
@@ -1233,6 +1257,9 @@
   "st.licenseValidation.expired": {
     "message": "La vostra llicència va caducar el:"
   },
+  "st.licenseValidation.guessAddon": {
+    "message": "(La clau introduïda pot ser per a {2})."
+  },
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1253,6 +1280,9 @@
   },
   "st.notification.licensing": {
     "message": "Més informació sobre llicències"
+  },
+  "st.notification.parsing": {
+    "message": "Anàlisi de variables:"
   },
   "st.notification.premium.btn.extendDomainLicense": {
     "message": "Amplieu la llicència de domini"
@@ -1299,6 +1329,9 @@
   "st.notification.spellcheck.notFound": {
     "message": "No s'ha trobat el diccionari '{0}'."
   },
+  "st.prompt.switchDomainLicense": {
+    "message": "Canviar a la llicència de domini?"
+  },
   "st.trialDays": {
     "message": "Us queden {0} dies de prova."
   },
@@ -1322,6 +1355,9 @@
   },
   "stringmanip.alttext": {
     "message": "[paràmetre opcional] Text alternatiu: si no es troba cap coincidència, s'insereix el text alternatiu."
+  },
+  "stringmanip.match.comment": {
+    "message": "Funcions de coincidència: el primer paràmetre (l'expressió regular) ha d'estar entre cometes dobles. El segon paràmetre és el número del grup de concordança. Utilitzeu 0 per fer coincidir l'expressió completa, 1 per al primer grup, etc."
   },
   "stringmanip_function.cap": {
     "message": "Manipulació de cadenes"
@@ -1416,6 +1452,12 @@
       }
     }
   },
+  "support.compose": {
+    "message": "Escriu per donar suport…"
+  },
+  "support.links": {
+    "message": "Enllaços de suport"
+  },
   "support.mail.instructions": {
     "message": "Feu clic al botó següent per obrir un correu electrònic nou per donar suport. Si teniu problemes tècnics, penseu a afegir una captura de pantalla."
   },
@@ -1428,17 +1470,26 @@
   "support.title": {
     "message": "Envia per correu electrònic a l'assistència"
   },
+  "support.type": {
+    "message": "Tipus:"
+  },
   "support.type.html": {
     "message": "Ajuda amb HTML / CSS"
   },
   "support.type.license": {
     "message": "Relacionat amb la concessió de llicències"
   },
+  "support.type.other": {
+    "message": "Altres"
+  },
   "support.type.selectOne": {
     "message": "Seleccioneu un tema!"
   },
   "support.type.tech": {
     "message": "Tècnic"
+  },
+  "suppressMailToLink": {
+    "message": "Suprimeix els clients de correu que afegeixen enllaços a adreces de correu electrònic."
   },
   "suppressQuoteHdr": {
     "message": "Elimina completament la capçalera del pressupost independentment de la configuració del compte."
@@ -1503,6 +1554,9 @@
   "timezone.explain": {
     "message": "Força la zona horària específica per a les variables de data substituint el paràmetre tz (GMT, EST, CST, PST etc.)"
   },
+  "tip.fileTemplates": {
+    "message": "Feu clic per llegir la documentació completa sobre Papereria i plantilles HTML externes al nostre lloc d'assistència…"
+  },
   "to.label": {
     "message": "Noms dels destinataris (defaut)"
   },
@@ -1514,6 +1568,9 @@
   },
   "tofirstname.label": {
     "message": "Pichons noms dels destinataris"
+  },
+  "tofwd.label": {
+    "message": "Utilitzeu fwd per afegir el destinatari clicable als correus reenviats"
   },
   "tomail.label": {
     "message": "Adreça de correu electrònic del destinatari original"
@@ -1555,6 +1612,9 @@
   "var_xsent.cap": {
     "message": "Lo modificador %X:=sent%"
   },
+  "vouchers.title": {
+    "message": "Vals"
+  },
   "whats-new-btn": {
     "message": "Que hi ha de nou?"
   },
@@ -1566,6 +1626,9 @@
   },
   "whats-new-list": {
     "message": "{L1}Modificar el text al cos del correu reenviat [en línia]. Això ara funciona a les funcions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenviament automàtic / Resposta automàtica amb SmartTemplate mitjançant regles de filtre, això vol dir podeu activar qualsevol plantilla mitjançant filtres (utilitzant FiltaQuilla 3.4). Exclusiu per a llicències de SmartTemplates Pro.{L2}{L1} Ordre %suppressQuoteHeaders% per suprimir totes les capçaleres de cites.{L2}"
+  },
+  "whitespace_note": {
+    "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
