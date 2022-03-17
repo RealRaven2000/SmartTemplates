@@ -1311,9 +1311,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "31 de marzo"
-  },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
     "placeholders": {
@@ -1544,9 +1541,6 @@
   },
   "whats-new-intro": {
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Modificar el texto en el cuerpo del correo reenviado [en línea]. Esto ahora funciona en las funciones: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenvío automático/Respuesta automática con SmartTemplate mediante reglas de filtro; esto significa puede activar cualquier plantilla usando filtros (usando FiltaQuilla 3.4). Exclusivo para licenciatarios de SmartTemplates Pro.{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos los encabezados de cotizaciones.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
