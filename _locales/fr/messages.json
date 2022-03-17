@@ -1317,9 +1317,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "31 mars"
-  },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1553,9 +1550,6 @@
   },
   "whats-new-intro": {
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Modifier le texte dans le corps du courrier transféré [en ligne]. Cela fonctionne maintenant dans les fonctions : %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Transfert automatique / Réponse automatique avec SmartTemplate via des règles de filtrage - cela signifie vous pouvez déclencher n'importe quel modèle à l'aide de filtres (à l'aide de FiltaQuilla 3.4). Exclusif aux titulaires de licence SmartTemplates Pro.{L2}{L1} Commande %suppressQuoteHeaders% pour supprimer tous les en-têtes de citation.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
