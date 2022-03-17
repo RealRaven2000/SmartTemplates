@@ -1378,9 +1378,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "3月31日"
-  },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
     "placeholders": {
@@ -1605,9 +1602,6 @@
   },
   "whats-new-intro": {
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
-  },
-  "whats-new-list": {
-    "message": "{L1}修改轉發郵件正文中的文本 [inline]。 這現在適用於以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通過過濾規則使用 SmartTemplate 自動轉發/自動回复 - 這意味著 您可以使用過濾器觸發任何模板（使用 FiltaQuilla 3.4）。 SmartTemplates Pro 被許可人專有。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有報價標題。{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
