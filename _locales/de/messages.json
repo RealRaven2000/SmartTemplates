@@ -1338,9 +1338,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "31. März"
-  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1561,9 +1558,6 @@
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Kann jetxt den Text im Hauptteil von weitergeleiteten E-Mails verändern [inline]. Das geht jetzt mit den Funktionen: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisches Weiterleiten / Automatisches Antworten mit SmartTemplate durch Filterregeln - das heißt Sie können jede Vorlage mit Filtern auslösen (mit FiltaQuilla 3.4). Exklusiv für SmartTemplates Pro-Lizenznehmer.{L2}{L1} %suppressQuoteHeaders%-Befehl, um alle Zitat-Header zu unterdrücken.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
