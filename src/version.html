@@ -118,23 +118,13 @@ permalink: version.html
 -->
 
 
-<h3>Latest News (22/10/2021) - Thunderbird 91 Compatibility</h3>
+<h3>Latest News (22/10/2021) - Thunderbird 102 Compatibility</h3>
 <p>
-  SmartTemplates <a href="#3.8">3.8</a> is <b>fully compatible</b> with Thunderbird 91. 
+  SmartTemplates will be compatible</b> with Thunderbird 102. You can get a prerelease for 
+  running beta versions such as 99.0b1 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/177">here</a>.
   In rare cases there may be problems when updating from older versions of Thunderbird, 
   see their <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1732515" target=_blank>bug 1732515</a>.
   If there are issues when installing, please <a href="#tb91-compatibility">read the instructions here</a>.
-</p>
-
-<h3>Thunderbird 68 support has ended on thunderbird.net</h4>
-<p>
-  Unfortunately thunderbird.net does not accept updates for legacy versions anymore - they only support the new "Mail extension" format and our "mail extension with experimental APIs" which is a workaround for missing advanced features.  
-</p>
-<p>
-  From of version <a href="smarttemplates.quickfolders.org/version.html#2.17">2.17</a> forward you 
-  have to install such legacy versions from the 
-  <a href="https://github.com/RealRaven2000/SmartTemplates/releases">github releases page</a>. 
-  Releases for Thunderbird 68 will always start with major version number 2.
 </p>
 
 
@@ -155,13 +145,16 @@ permalink: version.html
   <div class="infoTab" id="breaking-news">
    <h5 class="infoHeader"><script type="text/javascript">latestNewsHeadline();</script></h5><!-- Latest News Headline filled by JavaScript -->
     <p class="miniquote">
-		  SmartTemplates is now available to support the next ESR release Thunderbird 91, which has been released in November 2021. 
+		  SmartTemplates is now available for Thunderbird 91, which has been released in November 2021. 
 			SmartTemplates Pro and SmartTemplates Standard licenses are funding ongoing work to support 
       future compatibility with Thunderbird. There is ongoing work to replace the experimental API
       structure with native APIs, to one day have a standard permission based mail extension.
 		</p>
     <p class="miniquote">
-      As latest feature I improved the new <code class="inline">%recipient()%</code> function, 
+      As latest feature I added support for automated forwarding / replying to emails from a message filter.
+      This is running in conjunction with the <a href="https://addons.thunderbird.net/thunderbird/addon/filtaquilla/">FiltaQuilla Add-on</a>.
+      
+      new <code class="inline">%recipient()%</code> function, 
 		  which can be used to insert detail of the final recipient of the new email 
       (represented by "%to%" when you write but by "%from%" when you reply) to simplify
       sharing the same external templates for all composition cases.
@@ -399,7 +392,8 @@ permalink: version.html
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a> 
         Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
-        this requires the Add-on FiltaQuilla version 3.4 or later. 
+        this requires the <a href="https://addons.thunderbird.net/thunderbird/addon/filtaquilla/">Add-on FiltaQuilla</a>
+        version 3.4 or later. 
       </p>
       <p>
         In order to use this feature, open Filtaquilla settings and enable the "forward with SmartTemplates" 
