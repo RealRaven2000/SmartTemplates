@@ -153,20 +153,12 @@ permalink: version.html
     <p class="miniquote">
       As latest feature I added support for automated forwarding / replying to emails from a message filter.
       This is running in conjunction with the <a href="https://addons.thunderbird.net/thunderbird/addon/filtaquilla/">FiltaQuilla Add-on</a>.
-      
-      new <code class="inline">%recipient()%</code> function, 
-		  which can be used to insert detail of the final recipient of the new email 
-      (represented by "%to%" when you write but by "%from%" when you reply) to simplify
-      sharing the same external templates for all composition cases.
     </p>
     <p class="miniquote">
-      There is also improved support for generating a mailing list template 
-      using <code class="inline">%header.set(bcc)%</code> see version <a href="#3.10.1">3.10.1 below</a>
-    </p>
-    <p class="miniquote">
-      There is also a new legacy version below for THunderbird 68 users. These cannot be hosted by
-      Mozilla (addons.thunderbird.net) anymore, so I am uploading them to the SmartTemplates github 
-      instead.
+      Modifiy text in body of forwarded mail [inline]. This now works in the functions:
+      <code>&#37;deleteQuotedText()&#37;</code>, <code>&#37;replaceQuotedText()&#37;</code>, 
+      <code>&#37;deleteQuotedTags()&#37;</code>, <code>&#37;replaceQuotedTags()&#37;</code>.
+      Previously these functions only worked in quoted parts when replying to emails.
     </p>
     <p class="miniquote shilling">
 		  Please remember to <a href="contribute.html">support SmartTemplates development</a> by buying a 
