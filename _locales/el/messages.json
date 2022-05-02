@@ -814,6 +814,142 @@
   "no_button": {
     "message": "Όχι"
   },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Επιλέξτε την ειδοποίηση"
+  },
+  "ongoing-work": {
+    "message": "Οι αλλαγές για τη μετατροπή του $addonName$ στο νέο μοντέλο προγραμματισμού πήραν εβδομάδες και ήταν δαπανηρές. Ακόμα περισσότερες αλλαγές είναι προγραμματισμένες για το 2022. Με ένα πολυσύνθετο πρόσθετο όπως αυτό, η κοστοβόρα εργασία είναι αναπόφευκτη. Παρακαλούμε βοηθήστε το έργο μας.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "ownmail.label": {
+    "message": "Η διεύθυνσή σας email"
+  },
+  "ownname.label": {
+    "message": "Το όνομά σας"
+  },
+  "p.label": {
+    "message": "ΠΜ / ΜΜ"
+  },
+  "p1.label": {
+    "message": "π.μ."
+  },
+  "p2.label": {
+    "message": "Π.Μ."
+  },
+  "p3.label": {
+    "message": "ΠΜ"
+  },
+  "paste.label": {
+    "message": "Επικόλλησε"
+  },
+  "parameters": {
+    "message": "Παράμετροι"
+  },
+  "pref_StatusIcon.IconHoverText": {
+    "message": "Κείμενο σε αιώρηση"
+  },
+  "pref_StatusIcon.IconOnly": {
+    "message": "Μόνο Εικονίδιο"
+  },
+  "pref_StatusIcon.IconText": {
+    "message": "Εικονίδιο και Κείμενο"
+  },
+  "pref_about.tab": {
+    "message": "Σχετικά"
+  },
+  "pref_addSigBreakHTML.label": {
+    "message": "Πρόσθεσε -- σε HTML email"
+  },
+  "pref_addSigBreakHTML.tooltip": {
+    "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν από την Υπογραφή (σε μηνύματα HTML)"
+  },
+  "pref_addSigBreakPlaintext.label": {
+    "message": "Πρόσθεσε -- σε μηνύματα απλού κειμένου"
+  },
+  "pref_addSigBreakPlaintext.tooltip": {
+    "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν την Υπογραφή (σε μηνύματα απλού κειμένου)"
+  },
+  "pref_addressDelimiter": {
+    "message": "Να οριοθετείς πολλούς ανταποκριτές με:"
+  },
+  "pref_addressDelimiter_tip": {
+    "message": "Οριοθέτης μεταξύ πολλαπλών ανταποκριτών. Το Outlook χρησιμοποιεί ερωτηματικό (;) Η προεπιλογή για το Thunderbird είναι κόμμα (,)"
+  },
+  "pref_advanced.tab": {
+    "message": "Προχωρημένες Ρυθμίσεις"
+  },
+  "pref_breaksOnTop.label": {
+    "message": "Πλήθος κενών γραμμών στην κορυφή:"
+  },
+  "pref_cursorInsertSpace": {
+    "message": "Εισαγάγετε Διάστημα για να επισημάνετε %cursor%"
+  },
+  "pref_debug_check": {
+    "message": "Λειτουργία Αποσφαλμάτωσης"
+  },
+  "pref_debug_tip": {
+    "message": "Πατήστε δεξί κλίκ για προχωρημένες επιλογές αποσφαλμάτωσης"
+  },
+  "pref_def.cap": {
+    "message": "Καταργήστε την επιλογή «Χρήση Κοινού» για να δημιουργήσετε μια προσαρμοσμένη κεφαλίδα παράθεσης για αυτόν τον λογαριασμό."
+  },
+  "pref_def.label": {
+    "message": "Χρησιμοποίησε το Κοινό"
+  },
+  "pref_defaultCharset.label": {
+    "message": "Προεπιλεγμένο σύνολο χαρακτήρων"
+  },
+  "pref_defaultCharset_tip": {
+    "message": "Εάν δεν μπορεί να προσδιοριστεί κατά την ανάγνωση των κεφαλίδων, χρησιμοποίησε αυτό το σύνολο χαρακτήρων."
+  },
+  "pref_dialog.title": {
+    "message": "Ρυθμίσεις SmartTemplates"
+  },
+  "pref_examples.tab": {
+    "message": "Παραδείγματα (μόνο online)"
+  },
+  "pref_examples.tooltip": {
+    "message": "Εμφάνισε παραδείγματα προτύπων από τη διεύθυνση https://smarttemplates.quickfolders.org/templates.html. Διατίθεται μόνο σε λειτουργία online."
+  },
+  "pref_fontSettings.label": {
+    "message": "Γραμματοσειρά Επεξεργασίας Προτύπων"
+  },
+  "pref_forceParagraph": {
+    "message": "Υποχρεωτική Λειτουργία Παραγράφου"
+  },
+  "pref_forceParagraph_tip": {
+    "message": "Βεβαιωθείτε ότι η θέση του δρομέα ξεκινά σε μια παράγραφο. Συνιστούμε επίσης την επιλογή Σύνθεση Thunderbird για να δημιουργήσετε μια νέα παράγραφο πατώντας το πλήκτρο [Enter]."
+  },
+  "pref_fwd.label": {
+    "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο προωθημένο μήνυμα"
+  },
+  "pref_fwd.tab": {
+    "message": "Προώθησε"
+  },
+  "pref_fwdhead.label": {
+    "message": "Απενεργοποίησε την προεπιλεγμένη κεφαλίδα παράθεσης του Thunderbird"
+  },
+  "pref_fwdmsg.cap": {
+    "message": "Προώθησε"
+  },
+  "pref_global.tab": {
+    "message": "Γενικές Ρυθμίσεις"
+  },
+  "pref_groupAdvanced": {
+    "message": "Προχωρημένες Λειτουργίες"
+  },
+  "pref_groupMailContent": {
+    "message": "Περιεχόμενο Μηνύματος"
+  },
+  "pref_groupNameRules": {
+    "message": "Κανόνες Ονομάτων"
+  },
   "pref_groupSignatures": {
     "message": "Υπογραφές"
   },
@@ -892,6 +1028,9 @@
   "pref_rspmsg.cap": {
     "message": "Απάντησε"
   },
+  "pref_server_def": {
+    "message": "Κοινό"
+  },
   "pref_server_desc": {
     "message": "Λογαριασμός"
   },
@@ -960,6 +1099,69 @@
   },
   "quote_changers.cap": {
     "message": "Επεξεργασία Παραθέσεων"
+  },
+  "quote_changers.desc": {
+    "message": "Μεταβλητές Premium για αφαίρεση κειμένου / ετικετών από παρατιθέμενα τμήματα και εξοικονόμηση χώρου."
+  },
+  "recipient.label": {
+    "message": "Τελικός Αποδέκτης"
+  },
+  "regexpAnyText": {
+    "message": "Οποιοδήποτε κείμενο - κανονική έκφραση - πρέπει να είναι σε διπλά εισαγωγικά."
+  },
+  "renew-your-license": {
+    "message": "Ανανεώστε την άδειά σας."
+  },
+  "replaceQuotedTags": {
+    "message": "Αντικαθστά tags από την παραθεση με κείμενο ή html"
+  },
+  "replaceQuotedText": {
+    "message": "Αντικαθιστά παρατιθέμενο κείμενο με HTML"
+  },
+  "replaceText": {
+    "message": "Αντικατάστησε κείμενο με κάτι άλλο."
+  },
+  "replacementHTML": {
+    "message": "πρέπει να είναι σε διπλά εισαγωγικά - είτε ένα κείμενο, είτε μια ετικέτα html που θα εισαχθεί με εισαγωγικά όπου βρεθεί μια αντιστοίχιση."
+  },
+  "resolveABRemoveMail": {
+    "message": "Αφαίρεσε τη διεύθυνση email εκτός εάν έχει καθοριστεί η παράμετρος μορφής"
+  },
+  "resolveNamesFromAB": {
+    "message": "Προσδιόρισε ονόματα από βιβλία διευθύνσεων"
+  },
+  "resolveNamesFromABDisplay": {
+    "message": "Χρησιμοποίησε το Εμφανιζόμενο Όνομα εάν δεν είναι διαθέσιμο το μικρό όνομα"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Αντικατάστησε το μικρό όνομα εάν υπάρχει Ψευδώνυμο"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Αυτή η δυνατότητα δεν λειτουργεί με ορισμένα απομακρυσμένα βιβλία διευθύνσεων, όπως το LDAP."
+  },
+  "s.label": {
+    "message": "Δευτερόλεπτο (00 ως 59)"
+  },
+  "selector": {
+    "message": "- ό,τι θα χρησιμοποιούσατε για να αναφέρετε την ετικέτα στο css. Η απλούστερη περίπτωση «img» ή «p», αλλά επιλογείς χαρακτηριστικών μπορούν να προστεθούν εφόσον μπορούν να αποφευχθούν τα διπλά εισαγωγικά."
+  },
+  "settings.label": {
+    "message": "Ρυθμίσεις και Πρότυπα"
+  },
+  "shortdate.label": {
+    "message": "Σύντομη Ημερομηνία/Ώρα (π.χ. 01.01.2000 1:23:45)"
+  },
+  "showSplash": {
+    "message": "Εμφάνιση αλλαγών και ειδήσεων (οθόνη εκκίνησης)."
+  },
+  "sig.label": {
+    "message": "Υπογραφή από Ρυθμίσεις Λογαριασμού"
+  },
+  "sig2.label": {
+    "message": "Υπογραφή από Ρυθμίσεις Λογαριασμού, αλλά χωρίς «--»"
+  },
+  "smartTemplate4.changeTemplate.label": {
+    "message": "Άλλαξε πρότυπο…"
   },
   "st.fileTemplates.wrnSelectUpdateItem": {
     "message": "Πρέπει να επιλέξετε ένα στοιχείο από τη λίστα για ενημέρωση!"
@@ -1053,5 +1255,20 @@
   },
   "st.trialExpiry": {
     "message": "Η δοκιμαστική περίοδος έληξε πριν από {0} ημέρες."
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "Αγαπητέ χρήστη SmartTemplates, είμαστε στην ευχάριστη θέση να ανακοινώσουμε ότι ξεκινώντας από αυτήν την έκδοση, το SmartTemplates υποστηρίζει πλέον τη χρήση αγκίστρων { } και την ετικέτα <style> ώστε να μπορείτε πλέον να δημιουργείτε προηγμένα στυλ css στο Πρότυπο σας."
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "Από εδώ και στο εξής, η συγκεκριμένη σύνταξη για τις εκφράσεις με αγκύλες αλλάζει: Αντί για άγκιστρα {%cc(name)%} χρησιμοποιήστε διπλές αγκύλες [[%cc(name)%]] - για περισσότερες λεπτομέρειες, ανατρέξτε στη Βοήθεια."
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "Το SmartTemplates θα μετατρέψει τώρα τα υπάρχοντα πρότυπά σας, ώστε να συνεχίσετε να τα χρησιμοποιείτε στη νέα έκδοση. Πατήστε [OK] για να συνεχίσετε."
+  },
+  "st.updateMessageVersion": {
+    "message": "Το SmartTemplates αναβαθμίστηκε με επιτυχία στην έκδοση {1}!"
+  },
+  "standardformat.config": {
+    "message": "Προεπιλεγμένη μορφή…"
   }
 }
