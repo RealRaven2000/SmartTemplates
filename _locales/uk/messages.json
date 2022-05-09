@@ -146,7 +146,7 @@
     "message": "Відміна"
   },
   "capitalizeNames": {
-    "message": "Назви прописними "
+    "message": "Назви прописними"
   },
   "cc.label": {
     "message": "Прізвище отримувача копії повідомлення (за замовчуванням)"
@@ -1128,6 +1128,9 @@
   "replaceText": {
     "message": "Замінінення деякого тексту на щось інше."
   },
+  "replacementHTML": {
+    "message": "має бути в подвійних лапках - або текстовий, або HTML-тег, який буде вставлено в лапки там, де буде знайдено відповідність."
+  },
   "resolveABRemoveMail": {
     "message": "Видалити адреса електронної пошти, якщо не вказано параметр формату"
   },
@@ -1227,6 +1230,9 @@
   "st.fileTemplates.error.charSet": {
     "message": "Виникла проблема з перетворенням шаблону HTML з символу [{1}]\nВикористання необроблених значень рядка.\nЯкщо це результати у зміненому символі, спробуйте додати явну 'meta charset"
   },
+  "st.fileTemplates.error.filePath": {
+    "message": "Не можу завантажити файл шаблону '{0}' за шляхом:\n{1}\nФайл можливо був видалений або переміщений."
+  },
   "st.fileTemplates.openFile": {
     "message": "Відкрийте файл шаблону SmartTemplates…"
   },
@@ -1312,6 +1318,9 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Купити ліцензію"
   },
+  "st.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
   "st.notification.premium.sendByFilter": {
     "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
   },
@@ -1323,6 +1332,9 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Оновити до Pro"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} є преміум-функцією, будь ласка, отримайте ліцензію SmartTemplates Pro на постійне використання."
@@ -1399,6 +1411,9 @@
         "example": "30%"
       }
     }
+  },
+  "special-offer-expiry": {
+    "message": "Березня, 31"
   },
   "special-offer-head": {
     "message": "Допоможіть зберегти $addon$ сумісним",
@@ -1639,6 +1654,9 @@
   },
   "whats-new-intro": {
     "message": "Прочитайте детальний журнал змін тут (лише англійською):"
+  },
+  "whats-new-list": {
+    "message": "{L1}Змініть текст у тілі пересланого повідомлення [inline]. Це тепер працює у функціях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматична переадресація з SmartTemplate через правила фільтрації - це означає, що Ви можете викликати будь-який шаблон за допомогою фільтрів (використовуючи FiltaQuilla 3.4). Виключно для SmartTemplates Pro ліцензій.{L2}{L1} %suppressQuoteHeaders% команда скине всі заголовки.{L2}"
   },
   "whitespace_note": {
     "message": "Зверніть увагу, що пробіл може бути найкраще представлений як \\s, оскільки він також може містити розриви на рядках. Поля і подвійні лапки не можна використовувати."
