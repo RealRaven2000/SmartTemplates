@@ -243,10 +243,42 @@ permalink: version.html
       Stabilized code when reading external signatures or including files
     </li>
     <li>
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a>
-      Improve *selection* placeholder in Snippets to better support non-text nodes
+      <p>
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/183">[issue 183]</a> 
+        Support using "clipboard" as argument for text and header manipulation functions:
+      </p>
+      <p>
+        <b>header manipulation</b>
+        <ul>
+          <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
+          <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
+          <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
+        </ul>
+      </p>
+      <p>
+        <b>Template text and Quote replacements</b>
+        <ul>
+          <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
+          <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
+        </ul>
+      </p>
     </li>
-    <li></li>
+    <li>
+      <p>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a>
+      Improve *selection* placeholder in Snippets to better support non-text nodes.
+      For example, you can now wrap an image with some HTML to add a shadow with this HTML snippet:
+      </p>
+      <tt>
+        <div style="border: 1px solid rgba(80, 80, 80, 0.3); 
+           box-shadow: rgba(80, 80, 80, 0.3) 5px 5px 5px; 
+           width:max-content;">*selection*</div>
+      </tt>
+      <p> 
+        There are many more creative way to add functionality to the Thunderbird 
+        Composer using the SmartTemplates Snippets button, by using HTML and style rules.
+      </p>
+    </li>
   </ul>
 </li> 
 
