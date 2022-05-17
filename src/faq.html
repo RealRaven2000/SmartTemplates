@@ -202,15 +202,15 @@ permalink: faq.html
           This will execute some (restricted) JavaScript function to generate and insert a string in place.
           <br>
           Here is an example:
-<pre>
-%{% 
-  ( () => {
-  var date = new Date();
-  if (date.getHours() < 12) {return "Good morning";}
-  else { return "Good afternoon"; }
-  } )() 
-%}%
-</pre>  
+  <pre>
+  %{% 
+    ( () => {
+    var date = new Date();
+    if (date.getHours() &lt; 12) {return "Good morning";}
+    else { return "Good afternoon"; }
+    } )() 
+  %}%
+  </pre>  
         </p>
         <p>
           To enable the feature, you must open Thunderbird Config editor and add the setting 
