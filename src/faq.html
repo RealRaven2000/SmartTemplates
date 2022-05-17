@@ -189,8 +189,8 @@ permalink: faq.html
   </li>
 
   
-  <a name="script">
   <li>
+    <a name="script"> </a>
     <img class="collapseDown" src="/img/collapseDown.png" alt="">
       <p class="question">
 		Is it possible to execute Script within the template?
@@ -203,15 +203,15 @@ permalink: faq.html
           This will execute some (restricted) JavaScript function to generate and insert a string in place.
           <br>
           Here is an example:
-  <pre>
-  %&#123;% 
-    ( () => {
-    var date = new Date();
-    if (date.getHours() &lt; 12) {return "Good morning";}
-    else { return "Good afternoon"; }
-    } )() 
-  %&#125;%
-  </pre>  
+          <pre>
+          %&#123;% 
+            ( () => {
+            var date = new Date();
+            if (date.getHours() &lt; 12) {return "Good morning";}
+            else { return "Good afternoon"; }
+            } )() 
+          %&#125;%
+          </pre>  
         </p>
         <p>
           To enable the feature, you must open Thunderbird Config editor and add the setting 
