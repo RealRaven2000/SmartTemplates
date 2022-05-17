@@ -187,6 +187,35 @@ permalink: faq.html
       </blockquote>
     </div>
   </li>
+  
+  <li>
+    <img class="collapseDown" src="/img/collapseDown.png" alt="">
+      <p class="question">
+		Is it possible to use JavaScript within the template?
+      </p>
+    <div style="display: none;" class="answer">
+      <blockquote class="answer_block">
+        <p>
+          While it isn't officially supported this was implemented way back in 2014 by Benito van der Zander  
+          in <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676" target="_blank">[bug 25676]</a>.
+          This will execute some (restricted) JavaScript function to generate and insert a string in place.
+          <br>
+          Here is an example:
+<pre>
+%{% 
+  ( () => {
+  var date = new Date();
+  if (date.getHours() < 12) {return "Good morning";}
+  else { return "Good afternoon"; }
+  } )() 
+%}%
+</pre>          
+        </p>
+      </blockquote>
+    </div>
+  </li>
+  
+  
 </ul>
 
 <script type="text/javascript">
