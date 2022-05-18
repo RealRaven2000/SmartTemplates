@@ -12,7 +12,7 @@ END LICENSE BLOCK
 //             original namespace: SmartTemplate4.Preferences
 
 
-SmartTemplates.Preferences = {
+export let Preferences = {
   isBackgroundParser: async function() {
     return await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
   }

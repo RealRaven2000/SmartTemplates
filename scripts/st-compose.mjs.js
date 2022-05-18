@@ -12,7 +12,7 @@ END LICENSE BLOCK
 //             original namespace: SmartTemplate4.classSmartTemplate
 //             was instanciated in: SmartTemplate4.smartTemplate
 
-SmartTemplates.insertTemplate = 
+export
   async function insertTemplate(startup, flags, fileTemplateSource)	{
     /* LINE NUMBER in smartTemplate-compose.js - what it does */
     /* 900 - check and prepare "flags" to store states - see SmartTemplate4.initFlags()
@@ -31,6 +31,6 @@ SmartTemplates.insertTemplate =
     let composeTab =  await messenger.tabs.getCurrent();  // current tab if we are in composer.
     let composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
     let idKey = composeDetails.identity;
-    SmartTemplates.logDebug("retrieved identity key: " + idKey);
+    // SmartTemplates.logDebug("retrieved identity key: " + idKey);
     
   }

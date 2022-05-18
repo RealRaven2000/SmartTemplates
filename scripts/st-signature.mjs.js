@@ -8,10 +8,10 @@ BEGIN LICENSE BLOCK
 
 END LICENSE BLOCK 
 */
-// [issue 184] Replacement for smartTemplate-util.js - SmartTemplates.Util
-//             original namespace: SmartTemplate4.Util
 
+// this module will replace all SmartTemplate4.Sig 
+// object in smartTemplate-signature.js
 
-SmartTemplates.Util = {
+export let Sig = {
   
 }
