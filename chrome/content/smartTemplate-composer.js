@@ -105,6 +105,7 @@ SmartTemplate4.composer = {
           case msgComposeType.New:
           case msgComposeType.NewsPost:
           case msgComposeType.MailToUrl:
+          case msgComposeType.EditAsNew: // do we allow this? not now.
             compCase="new";
             entries = fT.Entries.templatesNew;
             break;
@@ -122,7 +123,6 @@ SmartTemplate4.composer = {
             compCase="fwd";
             entries = fT.Entries.templatesFwd;
             break;
-          case msgComposeType.EditAsNew: // do we allow this? not now.
           case msgComposeType.EditTemplate:
           case msgComposeType.Draft:
             break;

@@ -1665,7 +1665,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}Modify text in body of forwarded mail [inline]. This now works in the functions: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatic Forward / Automatic Reply with SmartTemplate through filter rules - this means you can trigger any template using filters (using FiltaQuilla 3.4). Exclusive to SmartTemplates Pro licensees.{L2}{L1} %suppressQuoteHeaders% command to suppress all quote headers.{L2}{L1}New Greek translation by StratosL (Work in Progress){L2}"
+  "message": "{L1}Various compatibility fixes for Thunderbird 102.{L2} {L1}SmartTemplates now supports using 'clipboard' as argument for text and header manipulation functions such as %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Improved *selection* placeholder in Snippets to better support non-text nodes. For example, you can now wrap an image with a shadow though inserting a HTML snippet.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

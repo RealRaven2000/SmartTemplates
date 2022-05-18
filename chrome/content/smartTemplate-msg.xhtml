@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-stylesheet href = "chrome://global/skin/global.css" type = "text/css"?>
-<?xml-stylesheet href = "chrome://smarttemplate4/content/skin/messageWindow.css" type = "text/css"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://smarttemplate4/content/skin/messageWindow.css" type="text/css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        id = "smarttemplate4-msg"
-        title = "__MSG_message_default_title__"
-        orient = "vertical"
-        width = "750"
-        height = "200">
+        id="smarttemplate4-msg"
+        title="__MSG_message_default_+title__"
+        orient="vertical"
+        width="750"
+        height="200">
   <key id="key-esc" 
        keycode="VK_ESCAPE" 
        oncommand="(function doEscape(event) { alert(event); if(event) { event.preventDefault(); event.stopPropagation(); } })();" />
 	<vbox id="messageCanvas" >
-		<hbox id = "titleBox" align = "center" height = "45px">
+		<hbox id="titleBox" align="center" height="45px">
 		</hbox>
-		<vbox class = "messageContents" flex="1">
-			<div id = "innerMessage" width="600" height="25">
+		<vbox class="messageContents" flex="1">
+			<div id="innerMessage" width="600" height="25">
 
 			</div>
       <div id="licensing">
-        <div id = "btnShowLicenser" 
+        <div id="btnShowLicenser" 
              class="actionlinks">__MSG_message.licenseScreen__</div>
-        <div id = "btnFeatureCompare" 
+        <div id="btnFeatureCompare" 
              class="actionlinks">__MSG_message.features__</div>
       </div>
 		</vbox>
-		<spacer flex = "1"/>
-		<hbox id = "commands">
-			<spacer flex = "1"/>
-			<button id = "ok"
-			        label = "__MSG_accept_button__"
-			        onclick = "if (!this.disabled) SmartTemplate4.Message.okMessage();"/>
-			<button id = "yes"
-			        label = "__MSG_yes_button__"
-			        onclick = "if (!this.disabled) SmartTemplate4.Message.yesMessage();"
-			        hidden = "true" />
-			<button id = "no"
-			        label = "__MSG_no_button__"
-			        onclick = "if (!this.disabled) SmartTemplate4.Message.noMessage();"
-			        hidden = "true" />
-			<button id = "cancel"
-			        label = "__MSG_cancel_button__"
-			        onclick = "if (!this.disabled) SmartTemplate4.Message.cancelMessage();"
-			        hidden = "true" />
+		<spacer flex="1"/>
+		<hbox id="commands">
+			<spacer flex="1"/>
+			<button id="ok"
+			        label="__MSG_accept_button__"
+			        onclick="if (!this.disabled) SmartTemplate4.Message.okMessage();"/>
+			<button id="yes"
+			        label="__MSG_yes_button__"
+			        onclick="if (!this.disabled) SmartTemplate4.Message.yesMessage();"
+			        hidden="true" />
+			<button id="no"
+			        label="__MSG_no_button__"
+			        onclick="if (!this.disabled) SmartTemplate4.Message.noMessage();"
+			        hidden="true" />
+			<button id="cancel"
+			        label="__MSG_cancel_button__"
+			        onclick="if (!this.disabled) SmartTemplate4.Message.cancelMessage();"
+			        hidden="true" />
       <label id="countDown"> </label>
-			<spacer flex = "1"/>
+			<spacer flex="1"/>
       
 		</hbox>
 	</vbox>
 
-	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
-	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
-	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
-	<script type = "application/javascript" src="chrome://smarttemplate4/content/smartTemplate-msg.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
+	<script type="application/javascript" src="chrome://smarttemplate4/content/smartTemplate-msg.js"/>
 </window>

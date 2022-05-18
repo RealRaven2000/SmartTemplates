@@ -874,7 +874,6 @@ SmartTemplate4.Settings = {
 			let appendedChild = el.parentNode.appendChild(clone);
 			let spacers = appendedChild.querySelectorAll(".tabs-left");
 			
-			//oder spacers.length==2 ??
 			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
 				util.logDebug("addIdentity() - removing first spacer");
 				spacers[0].remove();
@@ -1000,9 +999,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
-			// el.value could not access.. why??
 				document.getElementById("msgIdentity").selectedIndex = index;
-				// no fire event with set selectedIndex/selectedItem.. why??
 				this.selectIdentity(idKey);
         wasSwitched = true;
 				break;

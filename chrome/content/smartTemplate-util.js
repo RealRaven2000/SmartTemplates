@@ -68,8 +68,8 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.notifyTools.registerListener(onBackgroundUpdates);
     
     // SmartTemplate4.composer.onLoad happens here!!!! (too early!!!)
-    // can we register the Listener later?? 
-    // Or do we need it to call the following notifyBackground functions??
+    // can we register the Listener later? 
+    // Or do we need it to call the following notifyBackground functions?
     
     SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.registerListener.");
     SmartTemplate4.Util.licenseInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
@@ -556,13 +556,29 @@ SmartTemplate4.Util = {
 		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
 			// it contains the number of free / trial days left
       const imgSrc = isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png";
-      let newNotification = 
-        notifyBox.appendNotification( 
-			    theText, 
-					notificationKey, 
-					imgSrc, 
-					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
-					nbox_buttons );
+      
+      let newNotification;
+      if (notifyBox.shown) { // new notification format (Post Tb 99)
+        newNotification = 
+          notifyBox.appendNotification( 
+            notificationKey, // "String identifier that can uniquely identify the type of the notification."
+            {
+              priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
+              label: theText,
+              eventCallback: null
+            },
+            nbox_buttons
+          );
+      }
+      else {
+        newNotification = 
+          notifyBox.appendNotification( 
+            theText, 
+            notificationKey, 
+            imgSrc, 
+            isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
+            nbox_buttons );
+      }
 
       // setting img was removed in Tb91  
       if (newNotification.messageImage.tagName == "span") {
@@ -1185,6 +1201,9 @@ SmartTemplate4.Util = {
   // @global=true returns a regular expression from a quoted string
   // @global=false returns a string from a quoted string
   unquotedRegex: function unquotedRegex(s, global) {
+    if (s == "clipboard") { // [issue 183]
+      return SmartTemplate4.Util.clipboardRead();
+    }
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
 			return new RegExp( quoteLess, 'ig');
@@ -2631,8 +2650,58 @@ SmartTemplate4.Util = {
     };
     return aAccounts;    
   }, 
-	
+  
+  clipboardRead: function() {
+		const Ci = Components.interfaces,
+		      Cc = Components.classes;
+    let cp = "";
+    try {
+      const flavor = "text/unicode",
+            flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
+            xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+      if (!xferable) {
+        SmartTemplate4.Util.logToConsole("Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
+      }
+      else {
+        xferable.init(null);
+        let finalFlavor = "";
+        if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
+          finalFlavor = flavorHTML;
+        }
+        else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
+          finalFlavor = flavor;
+        }
+        
+        if (finalFlavor) {
+          xferable.addDataFlavor(finalFlavor);
+          // Get the data into our transferable.
+          Services.clipboard.getData(xferable, Services.clipboard.kGlobalClipboard);
+          
+          const data = {};
+          try {
+            xferable.getTransferData(finalFlavor, data);
+          } catch (e) {
+            // Clipboard doesn't contain data in flavor, return null.
+            SmartTemplate4.Util.logDebug(`No data with flavor ${finalFlavor} in clipboard! `);
+            return "";
+          }
 
+          // There's no data available, return.
+          if (!data.value) {
+            SmartTemplate4.Util.logDebug("Clipboard is empty? ");
+            return "";
+          }
+
+          cp = data.value.QueryInterface(Ci.nsISupportsString).data;              
+        }
+      }      
+    }
+    catch (ex) {
+      SmartTemplate4.Util.logException('util.clipboardRead() failed', ex);
+    }
+    return cp; 
+  }
+  
 };  // ST4.Util
 
 

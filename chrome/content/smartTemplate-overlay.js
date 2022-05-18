@@ -187,7 +187,7 @@ var SmartTemplate4_streamListener =
     // in nsresult aStatusCode
     do_check_eq(aStatusCode, 0);
     do_check_true(this._data.contains("Content-Type"));
-    // async_driver(); //????
+    // async_driver(); 
   },
 
   // concatenate stream data into a string
@@ -255,6 +255,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	let msgContent = "",
 	    contentCache = "";
   try {
+    SmartTemplate4.isStreamingMsg = true; // avoid notifyMsgBody being executed while streaming the main message (too early)!
     while (inputStream.available()) { 
       msgContent = msgContent + inputStream.read(2048); 
       let p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
@@ -272,6 +273,9 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   catch(ex) {
     util.logException('Reading inputStream failed:', ex);
     if (!msgContent) throw(ex);
+  }
+  finally {
+    SmartTemplate4.isStreamingMsg = false;
   }
   
 	headers.initialize(msgContent, msgContent.length);
@@ -804,7 +808,7 @@ SmartTemplate4.mimeDecoder = {
           fullName = firstName + ' ' + lastName ; 
         }
         else {
-          fullName = firstName ? firstName : lastName;  // ???
+          fullName = firstName ? firstName : lastName;  // ?
         }
         if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
       }
@@ -1188,7 +1192,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
     
     if (theStrings.length>=2) {
       dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-      dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+      dText2 = theStrings[1].match(   /\"[^)].*\"/   )
+        || theStrings[1].match(   /clipboard/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
       // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
     
       let errTxt = "Splitting " + functionName + "(a,b) arguments could not be parsed.",
@@ -1807,7 +1812,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText", "clipboard"
+    "conditionalText", "clipboard", "attachments"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -1983,10 +1988,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           if (cmd=="deleteFromSubject") {
             argument = argString.substr(1); // cut off opening parenthesis
           }
-				  if (argument.startsWith("\""))  // string wrapped in double quotes
+				  if (argument.startsWith("\"")) { 
+            // string wrapped in double quotes
 						argument = argument.substr(1, argument.lastIndexOf("\"")-1);
-					else   // literal, only remove the closing parentheses
+          } else { 
+            // literal, only remove the closing parentheses
 						argument = argument.substr(0, argument.lastIndexOf(")"));
+          }
+          // [issue 183]
+          if (argument=="clipboard") {
+            argument = util.clipboardRead();
+          }
 				  break;
 				case "matchFromSubject":
 				case "matchFromBody":
@@ -2371,6 +2383,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "ownmail": // own email address
 					token = identity.email;
 					break;
+        case "attachments":  // e.g. attachments(list)  <ul><li> .. <li> .. <li>  </ul>
+                             // attachments(lines)
+                             // API: messages.listAttachments(messageId)
+          return "list of attachment names...";
+				// for Common (new/reply/forward) message          
 				case "quoteHeader":  // is this useful when Stationery does not exist?
 					return "<span class=\"quoteHeader-placeholder\"></span>";
 				case "quotePlaceholder":  
@@ -2624,48 +2641,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           util.addUsedPremiumFunction('conditionalText');
           return insertConditionalText(arg);
         case "clipboard":
-          {
-            let cp = "";
-            const flavor = "text/unicode",
-                  flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
-                  xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
-            if (!xferable) {
-              util.logToConsole("%clipboard% Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
-            }
-            else {
-              xferable.init(null);
-              let finalFlavor = "";
-              if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
-                finalFlavor = flavorHTML;
-              }
-              else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
-                finalFlavor = flavor;
-              }
-              
-              if (finalFlavor) {
-                xferable.addDataFlavor(finalFlavor);
-                // Get the data into our transferable.
-                Services.clipboard.getData(xferable, Services.clipboard.kGlobalClipboard);
-                
-                const data = {};
-                try {
-                  xferable.getTransferData(finalFlavor, data);
-                } catch (e) {
-                  // Clipboard doesn't contain data in flavor, return null.
-                  return "";
-                }
+          return util.clipboardRead();
 
-                // There's no data available, return.
-                if (!data.value) {
-                  return "";
-                }
-
-                cp = data.value.QueryInterface(Ci.nsISupportsString).data;              
-              }
-              return cp;
-            }
-          }
-        
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
@@ -3151,7 +3128,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	if (prefs.getMyBoolPref('xtodaylegacy')) {
 		//Now do this chaotical stuff:
 		//Reset X to Today after each newline character
-		//except for lines ending in { or }; breaks the omission of non-existent CC??
+		//except for lines ending in { or }; breaks the omission of non-existent CC?
 		msg = msg.replace(/\n/gm, "%X:=today%\n");
 		//replace this later!!
 		// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");

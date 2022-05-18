@@ -153,10 +153,21 @@ END LICENSE BLOCK
     # [issue 170] UI to view license extension longer than 1 month before expiry of Pro license
     # [issue 171] Settings Dialog: Empty Examples tab in Thunderbird 91
     
-  Version 3.11 - WIP
+  Version 3.11 - 17/03/2022
     # [issue 172] Support deleting / replacing text in text of inline forwarded mail
     # [issue 173] Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
     # [issue 174] %suppressQuoteHeaders% command to suppress all quote headers
+    
+  Version 3.12 - WIP
+    # Compatibility changes for Thunderbird ESR 102:
+    #   Fixed notifications
+    #   Fixed id  of composer container for setting focus to email
+    #   Stabilized code when reading external signatures or including external files
+    #   
+    # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
+    # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
+    # Fix xhtml attribute syntax (no spaces allowed in "attribute=value")
+    # Moved clipboard reading to Util module
 
     
 =========================
@@ -279,7 +290,12 @@ var SmartTemplate4 = {
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
-      gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+      let isAPItemplate =  SmartTemplate4.Preferences.getMyBoolPref("API"); // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.API");
+      if (!isAPItemplate) {
+        gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+      }
+      
+      
       // can we overwrite part of global state listener?
       // stateListener is defined in components/compose/content/MsgComposeCommands.js
       if (stateListener && stateListener.NotifyComposeBodyReady) {
@@ -292,7 +308,7 @@ var SmartTemplate4 = {
             
           let idKey = util.getIdentityKey(document);
           stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
-            // Bug 26356 - no notification on forward w. empty template  !!!!wrong bug number??? this was closed 21 years ago
+            // no notification on forward w. empty template
             if (gComposeType !== msgComposeType.ForwardInline
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
@@ -366,6 +382,11 @@ var SmartTemplate4 = {
         ownerWin.SmartTemplate4.fileTemplates && 
         ownerWin.SmartTemplate4.fileTemplates.armedEntry) {
       theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;
+      // to avoid event triggering while we stream the message, postpone this one!
+      if (SmartTemplate4.isStreamingMsg) {
+        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
+        return;
+      }      
     } else if(theQueue.length) {
       let origUri = gMsgCompose.originalMsgURI;
       // try to find matching item from the queue
@@ -494,7 +515,17 @@ var SmartTemplate4 = {
       }
       
       //set focus to editor
+      
       let FocusElement, FocusId;
+      var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
+      var messageEditorID;
+      if (parseInt(AppConstants.MOZ_APP_VERSION, 10) < 100) {
+        messageEditorID = "content-frame";
+      } else {
+        messageEditorID = "messageEditor";
+      }
+      
+      
       // if we load a template ST4 processing will have been done before the template was saved.
       // composeCase is set during insertTemplate
       switch (this.smartTemplate.composeCase) {
@@ -502,9 +533,9 @@ var SmartTemplate4 = {
         case 'new': // includes msgComposeType.Template and msgComposeType.MailToUrl
         case 'forward':
           if (gMsgCompose.type == msgComposeType.MailToUrl) // this would have the to address already set
-            FocusId = 'content-frame'; // Editor
+            FocusId = messageEditorID; // Editor
           else {
-            FocusId = 'content-frame'; // editor is fallback
+            FocusId = messageEditorID; // editor is fallback
             // find the "to" line
             let foundTo = false;
             let adContainer = window.document.getElementById("toAddrContainer");
@@ -524,7 +555,7 @@ var SmartTemplate4 = {
           }
           break;
         default: // 'reply'  - what about mailto?
-          FocusId = 'content-frame'; // Editor
+          FocusId = messageEditorID; // Editor
       }
       FocusElement = window.document.getElementById(FocusId);
       if (FocusElement) {

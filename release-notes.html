@@ -3,23 +3,41 @@
 
 The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.11">can be found here</a>
 
-<b>Enhancements 3.11</b>
+<b>Enhancements 3.12</b>
 <ul>
-<li>
-<a href="https://github.com/RealRaven2000/SmartTemplates/issues/173">[issue 173]</a>  Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla). This requires the Add-on FiltaQuilla version 3.4 or later. 
-
-In order to use this feature, open Filtaquilla settings and enable the "forward with SmartTemplates" option on the actions page. One can then add the new action on any message filter. 
-For detailed documentation refer to the article on the quickFilters <a href="https://smarttemplates.quickfolders.org/premium.html#filterForward">premium features page</a>.
+<li>Compatibility changes for Thunderbird ESR 102:<br>
+Increased minimum version number<br>
+Fixed notifications<br>
+Fixed setting focus in composer<br>
+Stabilized code when reading external signatures or including external files
 </li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/172">[issue 172]</a>  Modifiy text in body of forwarded mail [inline]. This now works in the functions: <code>%deleteQuotedText()%</code>, <code>%replaceQuotedText()%</code>, <code>%deleteQuotedTags()%</code>, <code>%replaceQuotedTags()%</code>. Read the <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation">full documentation here</a>.
-
-These have to be called with a quote level parameter of "0" from the template and then they can be used to delete or replace text or HTML parts from the original mail.
-
-Limitation: the string parameters cannot contain double quotes ", the percent sign % or parentheses ( ) .
-</li>
-
 <li>
-<a href="https://github.com/RealRaven2000/SmartTemplates/issues/174">[issue 174]</a>  <code>%suppressQuoteHeaders%</code> command to suppress all quote headers - the ones inserted by Thunderbird automatically (usally along the lines of <i>"on 12/03/2020 John Doe wrote:"</i>) and also any of the replacement ones configured in SmartTemplates account settings.
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/183">[issue 183]</a> SmartTemplates now supports using "clipboard" as argument for text and header manipulation functions
+
+<b>header manipulation - examples</b>
+<ul>
+  <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
+  <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
+  <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
+</ul>
+
+<b>Template text and Quote replacements</b>
+<ul>
+  <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
+  <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Improved *selection* placeholder in Snippets to better support non-text nodes.
+For example, you can now wrap an image with some HTML to add a shadow with this HTML snippet. Just click on the image and then load the following Smart Template:
+
+<pre>
+  &lt;div style="border: 1px solid rgba(80, 80, 80, 0.3); 
+      box-shadow: rgba(80, 80, 80, 0.3) 5px 5px 5px; 
+      width:max-content;"&gt;*selection*&lt;/div&gt;
+</pre>
+
+This will add a nice outlins and drop shadow. There are many more creative way to add functionality to the Thunderbird Composer using the SmartTemplates Snippets button, by using HTML and style rules.
 </li>
 <li>
 New Greek translation by StratosL (Work in Progress)
