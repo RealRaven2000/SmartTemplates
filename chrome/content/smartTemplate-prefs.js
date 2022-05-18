@@ -51,10 +51,7 @@ SmartTemplate4.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-		if (this.service.setStringPref)
-			return this.service.setStringPref(this.Prefix + p, v);
-		else 
-			return this.service.setCharPref(this.Prefix + p, v);
+    return this.service.setStringPref(this.Prefix + p, v);
 	},
 
 	getIntPref: function(p) {

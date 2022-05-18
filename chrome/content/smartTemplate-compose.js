@@ -1044,7 +1044,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 			
 			
-			isActiveOnAccount = pref.isProcessingActive(idKey, st4composeType, false);
+			isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
 			// draft + startup: do not process!
 			if (startup && composeCase=='draft')
 				isActiveOnAccount = false;

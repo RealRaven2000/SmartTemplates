@@ -11,6 +11,8 @@ END LICENSE BLOCK
 // [issue 184] Replacement for smartTemplate-util.js - SmartTemplates.Util
 //             original namespace: SmartTemplate4.Util
 
+import {Preferences} from "./st-prefs.mjs.js"; // we need this.
+
 
 export function slideAlert(title, text, icon) {
   try {

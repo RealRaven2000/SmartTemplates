@@ -90,7 +90,7 @@ SmartTemplate4.classPref = function() {
 		return getWithIdkey(idKey, composeType + "header", def);
 	};
 
-	function isProcessingActive(idKey, composeType, def) {
+	function isTemplateActive(idKey, composeType, def) {
 		let isActive = getWithIdkey(idKey, composeType, def);
 		if (!isActive) return false; // defaults to empty string
 		return isActive;
@@ -129,7 +129,7 @@ SmartTemplate4.classPref = function() {
 	this.getWithIdkey = getWithIdkey;
 	this.isCommon = isCommon;
 	this.isDeleteHeaders = isDeleteHeaders;
-	this.isProcessingActive = isProcessingActive;
+	this.isTemplateActive = isTemplateActive;
 	this.isReplaceNewLines = isReplaceNewLines;
 	this.isUseHtml = isUseHtml;
 

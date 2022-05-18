@@ -314,7 +314,7 @@ var SmartTemplate4 = {
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
                 && 
-                SmartTemplate4.pref.isProcessingActive(idKey, 'fwd', false))
+                SmartTemplate4.pref.isTemplateActive(idKey, 'fwd', false))
             {
               util.OrigNotify();
             }

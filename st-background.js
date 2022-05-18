@@ -1,5 +1,12 @@
-import * as util from "./scripts/st-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
+import {SmartTemplates} from "./scripts/st-main.mjs.js";
+import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
+
+
+
+var stProcess = new SmartTemplatesProcess();
+console.log(SmartTemplates, stProcess);
+SmartTemplates.Util.log("test", "test2");
 
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
@@ -10,6 +17,8 @@ var startupFinished = false;
 var callbacks = [];
 
 var ComposeAction = {};
+
+
 
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
@@ -236,68 +245,10 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
         
-      // process file or prefs template.
-      case "backgroundParser": // [issue 184]
-        {
-          let [tab] = await messenger.tabs.query({ currentWindow:true, active: true });
-          let composeTab;
-          ComposeAction.template = data.template;
-          switch (data.composeType) {
-            case "new":
-              composeTab = await messenger.compose.beginNew(); //
-              break;
-            case "fwd":
-              {
-                let message = await messenger.messageDisplay.getDisplayedMessage(tab.id);
-                composeTab = await messenger.compose.beginForward(message.id);
-              }
-              break;
-            case "rsp":
-              {
-                let message = await messenger.messageDisplay.getDisplayedMessage(tab.id);
-                composeTab = await messenger.compose.beginReply(message.id);
-              }
-              break;
-          }
-        }
-        break;
     }
   });
   
   
-  browser.tabs.onCreated.addListener(async composeTab => { 
-    if (composeTab.type == "messageCompose") {
-      // get template from id or from ComposeAction.template
-      // api listener for prefs
-      let isBackgroundParser = await SmartTemplates.Preferences.isBackgroundParser();
-      if (!isBackgroundParser || isBackgroundParser=="false") return;
-
-      // process the template:
-      let startup, flags, fileTemplateSource;
-      await SmartTemplates.insertTemplate(startup, flags, fileTemplateSource);
-      
-
-      let template = (ComposeAction?.template) ? ComposeAction.template : "test" ; // if
-      
-      let details = await messenger.compose.getComposeDetails(composeTab.id);
-      // manipulate html
-      if (details.isPlaintext) {
-        delete details.body;
-        details.plainTextBody = template;
-      }
-      else {
-        delete details.plainTextBody;
-        details.body = template;
-      }
-      
-      await messenger.compose.setComposeDetails(composeTab.id, details);
-      
-      
-      
-      ComposeAction = {}; // set to consumed
-    }
-  });
-   
   browser.runtime.onMessageExternal.addListener( async  (message, sender) =>  
   {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
