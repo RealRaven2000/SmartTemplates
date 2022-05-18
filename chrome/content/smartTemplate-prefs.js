@@ -28,6 +28,7 @@ SmartTemplate4.Preferences = {
 	},
   
   isBackgroundParser: function() {
+    // switch for [issue 184] - background parsing & composer processing [mx]
     return SmartTemplate4.Preferences.getMyBoolPref("BackgroundParser");
   },
 	

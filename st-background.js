@@ -269,10 +269,8 @@ async function main() {
     if (composeTab.type == "messageCompose") {
       // get template from id or from ComposeAction.template
       // api listener for prefs
-      let isBackgroundParser = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+      let isBackgroundParser = await SmartTemplates.Preferences.isBackgroundParser();
       if (!isBackgroundParser || isBackgroundParser=="false") return;
-      
-
 
       // process the template:
       let startup, flags, fileTemplateSource;
