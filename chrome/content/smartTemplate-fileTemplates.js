@@ -693,7 +693,6 @@ SmartTemplate4.fileTemplates = {
         function(event) { 
           event.stopImmediatePropagation();
           let txt = util.getBundleString("st.fileTemplates.restrictTemplates",[MAX_FREE_TEMPLATES.toString(), MAX_STANDARD_TEMPLATES.toString()]);
-          let mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
           SmartTemplate4.Message.display(
             txt, 
             "centerscreen,titlebar,modal,dialog",
