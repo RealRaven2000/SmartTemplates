@@ -26,6 +26,10 @@ SmartTemplate4.Preferences = {
 		}
 		catch(e) {return false;}
 	},
+  
+  isBackgroundParser: function() {
+    return SmartTemplate4.Preferences.getMyBoolPref("BackgroundParser");
+  },
 	
 	getStringPref: function getStringPref(p) {
     let prefString ='',

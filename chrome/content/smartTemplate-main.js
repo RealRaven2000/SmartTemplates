@@ -168,6 +168,7 @@ END LICENSE BLOCK
     # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
     # Fix xhtml attribute syntax (no spaces allowed in "attribute=value")
     # Moved clipboard reading to Util module
+    # [issue 184] WIP: Move template processing into background script
 
     
 =========================
@@ -290,8 +291,8 @@ var SmartTemplate4 = {
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
-      let isAPItemplate =  SmartTemplate4.Preferences.getMyBoolPref("API"); // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.API");
-      if (!isAPItemplate) {
+      // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+      if (!SmartTemplate4.Preferences.isBackgroundParser()) {
         gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
       }
       
@@ -345,6 +346,11 @@ var SmartTemplate4 = {
           util = SmartTemplate4.Util,
           Ci = Components.interfaces,
           msgComposeType = Ci.nsIMsgCompType;
+          
+    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
+      alert("To do: replace notifyComposeBodyReady() event - [issue 184]\n");
+      return;
+    }          
           
     isChangeTemplate = isChangeTemplate || false; // we need this for [isue 29] change template in composer window
     // maybe use    GetCurrentEditor() and find out  stuff from there
@@ -672,17 +678,22 @@ var SmartTemplate4 = {
       let prevIdentity = gCurrentIdentity;
       return SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
+    
+    let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
     if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
       return;
     SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
-    //  SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
-    this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
-    // overwriting a global function within composer instance scope
-    // this is intentional, as we needed to replace Tb's processing
-    // with our own (?)
-    LoadIdentity = smartTemplate_loadIdentity;
+    
+    
+    if (!isBackgroundParser) {
+      this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
+      // overwriting a global function within composer instance scope
+      // this is intentional, as we needed to replace Tb's processing
+      // with our own (?)
+      LoadIdentity = smartTemplate_loadIdentity;
+    }
 
     this.pref = new SmartTemplate4.classPref();
 

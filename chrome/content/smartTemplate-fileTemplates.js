@@ -1089,6 +1089,26 @@ SmartTemplate4.fileTemplates = {
 	
 	// origin: "new", "rsp", "fwd"
 	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
+    
+    /*   START NEW CODE -  [issue 184] */
+    // use a pref switch for testing API processing...
+    if (SmartTemplate4.Preferences.isBackgroundParser()) {
+      // [issue 184]
+      // Test string...
+      let rawTemplate = 
+      `<p>Dear %recipient(name)%</p>
+       <p>%cursor%</p>
+       <p>%identity(firstname)%</p>
+      `;
+      SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "backgroundParser", 
+        composeType, 
+        rawTemplate  // to do: read template from disk
+      });
+      return;
+    }
+    /*   END NEW CODE  - [issue 184] */    
+    
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
     let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
@@ -1219,8 +1239,8 @@ SmartTemplate4.fileTemplates = {
           selectedText = "";
       if (sel && sel.anchorNode) {
         if (sel.rangeCount) {
-          let range = sel.getRangeAt(0);
-          selectedText = range.toString();
+          // sel.getRangeAt(0).toString();
+          selectedText = SmartTemplate4.smartTemplate.unpackSelection(sel);  
         }
         if (selectedText && selectedText.length)
           html = html.replace("*selection*", selectedText);
@@ -1277,6 +1297,13 @@ SmartTemplate4.fileTemplates = {
   onExternalMailProcess: function(data, composeType) {
     // similar to onItemClick / onSelectAdHoc
     SmartTemplate4.Util.logDebug("SmartTemplates.fileTemplates.onExternalMailProcess()", "composeType: " + composeType, data);
+    
+    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184]
+      alert("To do: external mail processing through background - [issue 184]\n"
+        +  "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue");
+      return;
+    }
+    
     let msgHeader = data.messageHeader;
     
     // SmartTemplate4.fileTemplates.armedEntry = 
