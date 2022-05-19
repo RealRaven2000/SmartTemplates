@@ -30,13 +30,13 @@ export class SmartTemplatesProcess {
                            " backgroundParser EVENT received: " + data.func + "\n" +
                            "=========================");
             }
-            // let [tab] = await messenger.tabs.query({ currentWindow:true, active: true });
+            let [tab] = await messenger.tabs.query({ currentWindow:true, active: true });
             let composeTab;
             
-            ComposeAction.template = data.template;
+            // ComposeAction.template = data.template;
             switch (data.composeType) {
               case "new":
-                composeTab = await messenger.compose.beginNew(); //
+                composeTab = await messenger.compose.beginNew(); 
                 break;
               case "fwd":
                 {
@@ -51,18 +51,12 @@ export class SmartTemplatesProcess {
                 }
                 break;
             }
-            
-            // create global struct for PreprocessingFlags, armedEntry, armedQueue?
-            let info = { composeType: data.composeType };
-            if (composeTab) {
-              info.composeDetails = await messenger.composer.getComposeDetails(composeTab.id);
-              SmartTemplates.addComposer(composeTab.id, info);
+            if (!this.hasComposer(composeTab.id)) {
+              let info = { rawTemplate: data.rawTemplate };
+              // info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
+              
+              this.addComposer(composeTab.id, info);
             }
-            await messenger.setComposeDetails(composeTab.id, 
-              {
-                subject: "This is a test"
-              }
-            )
             
           }
           break;
@@ -71,7 +65,7 @@ export class SmartTemplatesProcess {
     
     messenger.tabs.onRemoved.addListener(
       (tabId) => {
-        SmartTemplates.discardComposer(tabId);
+        this.discardComposer(tabId);
       }
     );
 
@@ -84,27 +78,39 @@ export class SmartTemplatesProcess {
 
         // process the template:
         let startup, flags, fileTemplateSource;
-        await SmartTemplates.insertTemplate(startup, flags, fileTemplateSource);
+        // await SmartTemplates.insertTemplate(startup, flags, fileTemplateSource);
         
-
-        let template = (ComposeAction?.template) ? ComposeAction.template : "test" ; // if
+        let info = this.hasComposer(composeTab.id) ?  this.getComposer(composeTab.id) : { };
+        info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
+        info.composeDetails.subject = "This is a test";
         
-        let details = await messenger.compose.getComposeDetails(composeTab.id);
+        this.addComposer(composeTab.id, info);
+            
+        //let template = (ComposeAction?.template) ? ComposeAction.template : "test" ; // if
+        let template = info.rawTemplate || "test - messageCompose Listener";
+        
+        // load the real template...
+        // insertTemplate
+        // TO DO NEXT: getProcessedText
+        
+        
+        
         // manipulate html
-        if (details.isPlaintext) {
-          delete details.body;
-          details.plainTextBody = template;
+        if (info.composeDetails.isPlainText) {
+          delete info.composeDetails.body;
+          info.composeDetails.plainTextBody = template;
         }
         else {
-          delete details.plainTextBody;
-          details.body = template;
+          delete info.composeDetails.plainTextBody;
+          info.composeDetails.body = template;
         }
         
-        await messenger.compose.setComposeDetails(composeTab.id, details);
+        // write modified stuff to composer
+        await messenger.compose.setComposeDetails(composeTab.id, info.composeDetails);
         
         
         
-        ComposeAction = {}; // set to consumed
+        // ComposeAction = {}; // set to consumed
       }
     });
   }
@@ -121,8 +127,12 @@ export class SmartTemplatesProcess {
   }
 
   getComposer (tabId) {
-    this.composers.get(tabId);
+    return this.composers.get(tabId);
   } 
+  
+  hasComposer (tabId) {
+    return this.composers.has(tabId);
+  }
 
   /* =============================*/
   /*  from smartTemplates-main.js */

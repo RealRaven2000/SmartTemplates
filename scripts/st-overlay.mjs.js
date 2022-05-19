@@ -12,14 +12,7 @@ END LICENSE BLOCK
 // this module will replace all objects in smartTemplate-overlay.js
 
 
-// possibly move this class (or better make an instance immediately) to st-prefs.msj.js
-// SmartTemplates.Preferences.prefs [= new classPref()] I only need a single instance??
-// so why would I need a class
-export function classPref() { // from smartTemplate.overlay.js
-  // rename to pref and add to SmartTemplates. import from st-prefs.msj.js as needed?
-  // all member functions have account idKey as parameters, so I don't think this object
-  // has statefulness
-}
+import {Preferences} from "./st-prefs.mjs.js"; // we need this.
 
 export function classGetHeaders(messageURI) { // from smartTemplate.overlay.js
   

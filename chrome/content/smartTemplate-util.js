@@ -1213,8 +1213,7 @@ SmartTemplate4.Util = {
 	
 	// see MsgComposeCommands, loadBlockedImage()
 	getFileAsDataURI : function getFileAsDataURI(aURL) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util,
+		const util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
 		      Cc = Components.classes,
           MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
@@ -1446,8 +1445,7 @@ SmartTemplate4.Util = {
   
 	
 	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util,
+		const util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
           
   	function isQuotedNode(node) {
@@ -1603,8 +1601,7 @@ SmartTemplate4.Util = {
 	
 	// add listeners for deferred variables (e.g. "from" in New Email)
 	setupDeferredListeners: function st4_setupDeferredListeners(editor) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util;
 		let body = editor.rootElement,
 		    el = body,
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);

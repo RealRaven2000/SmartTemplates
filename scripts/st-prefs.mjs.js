@@ -94,8 +94,88 @@ export let Preferences = {
 
 	getMyStringPref: async function(p) {
 		return await messenger.LegacyPrefs.getPref(this.Prefix + p);
-	} 
+	} ,
   
+  // possibly move this class (or better make an instance immediately) to st-prefs.msj.js
+  // SmartTemplates.Preferences.prefs [= new classPref()] I only need a single instance??
+  // so why would I need a class
+  identityPrefs: { // was classPref() from smartTemplate.overlay.js
+      // use where ST4.pref is used! Preferences.identityPrefs
+      // rename to pref and add to SmartTemplates. import from st-prefs.msj.js as needed?
+      // all member functions have account idKey as parameters, so I don't think this object
+      // has statefulness
+    // -----------------------------------
+    // get preference
+    // returns default value if preference cannot be found.
+    getCom: async function(prefstring, defaultValue)	{
+      return await messenger.LegacyPrefs.getPref(prefstring, defaultValue);
+    },
+
+    // -----------------------------------
+    // get preference(branch)
+    getWithBranch: async function(idKey, defaultValue)
+    {
+      return await this.getCom(SmartTemplate4.Preferences.Prefix + idKey, defaultValue); //
+    },
+
+    // idKey Account
+    // composeType: rsp, fwd, new
+    // def: true = common
+    // "Disable default quote header"
+    isDeleteHeaders: async function(idKey, composeType, def) {
+      // xxxhead
+      return await this.getWithIdkey(idKey, composeType + "head", def)
+    },
+
+    isReplaceNewLines: async function(idKey, composeType, def) {
+      // xxxnbr
+      return await this.getWithIdkey(idKey, composeType + "nbr", def)
+    },
+
+    isUseHtml: async function(idKey, composeType, def) {
+      // xxxhtml
+      return await this.getWithIdkey(idKey, composeType + "html", def)
+    },
+
+    getTemplate: async function(idKey, composeType, def) {
+      return await this.getWithIdkey(idKey, composeType + "msg", def);
+    },
+
+    getQuoteHeader: async function(idKey, composeType, def) {
+      return await this.getWithIdkey(idKey, composeType + "header", def);
+    },
+
+    isTemplateActive: async function(idKey, composeType, def) {
+      let isActive = await this.getWithIdkey(idKey, composeType, def);
+      if (!isActive) return false; // defaults to empty string
+      return isActive;
+    },
+
+    // whether an Identity uses the common account
+    isCommon: async function(idkey) {
+      return await this.getWithBranch(idkey + ".def", true);
+    },
+    
+
+    // -----------------------------------
+    // Get preference with identity key
+    getWithIdkey: async function(idkey, pref, def) {    
+      // fix problems in draft mode...
+      if (!pref) 
+        return ""; // draft etc.
+      // extensions.smarttemplate.id8.def means account id8 uses common values.
+      if (getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+        // common preference - test with .common!!!!
+        return await this.getWithBranch("common." + pref, def);
+      }
+      else {
+        // Account specific preference
+        return await this.getWithBranch(idkey + "." + pref, def);
+      }
+    }  
+    
+  }
+    
 // OBSOLETE: existsCharPref, existsBoolPref, getBoolPrefSilent
   
 }

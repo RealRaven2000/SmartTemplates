@@ -4,7 +4,7 @@ import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
 
 
 
-var stProcess = new SmartTemplatesProcess();
+var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
 console.log(SmartTemplates, stProcess);
 SmartTemplates.Util.log("test", "test2");
 

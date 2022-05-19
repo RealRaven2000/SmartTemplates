@@ -18,20 +18,22 @@ import * as classSmartTemplate from "./st-compose.mjs.js";
 import {composer} from "./st-composer.mjs.js";
 import {Styles} from "./st-styles.mjs.js";
 import {Sig} from "./st-signature.mjs.js";
-import {classPref, classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize} from "./st-overlay.mjs.js";
+import { classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize} from "./st-overlay.mjs.js";
 
 
 let SmartTemplates = { 
   Util, 
   Preferences, 
   ...classSmartTemplate,
-  classPref, classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize,
+  classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize,
   composer,
-  Sig
+  Sig,
+  prefs : Preferences.identityPrefs
 }
 
-
-SmartTemplates.pref = new SmartTemplates.classPref(); // but what if this is used in one of the sub modules???????
+// **************************************
+// TO DO:  GLOBAL REPLACEMENTS IN MODULES
+//    SmartTemplates.pref = Preferences.identityPrefs; // but what if this is used in one of the sub modules???????
 // this is used in st-compose.mjs.js , st-overlay.mjs.js , st-util.mjs.js
 // but according to John this would be a circular reference.
 
