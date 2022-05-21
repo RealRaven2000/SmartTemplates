@@ -498,6 +498,8 @@
 			<preference name="extensions.smartTemplate4.mime.defaultFormat" type="string" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mail.suppressLink" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.silentUpdate" type="bool" instantApply="true"/>
+      
+      <preference name="extensions.smartTemplate4.BackgroundParser" type="bool" instantApply="true"/>
 		</preferences>
 
 		<tabbox id="rightPane" flex="1">
@@ -709,6 +711,11 @@
 										  oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'smartTemplate4.debug');return false;"
 										  preference="extensions.smartTemplate4.debug"/>
 								<spacer   flex="1"/>
+								<checkbox id="chkHideExamples"
+										  label="mx parser [issue 184]"
+										  preference="extensions.smartTemplate4.BackgroundParser"
+                      oncommand="alert('please reload SmartTemplates to effect this change!');"
+										/>
 								<checkbox id="chkHideExamples"
 										  label="__MSG_pref_hideExamples__"
 										  preference="extensions.smartTemplate4.hideExamples"
