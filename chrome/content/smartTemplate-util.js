@@ -2478,7 +2478,7 @@ SmartTemplate4.Util = {
           util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
           // if spellChecker is not ready, we try again in 2 seconds.
           setTimeout(function() {
-            util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
+            Util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
           }, 2000);
           return;
         }

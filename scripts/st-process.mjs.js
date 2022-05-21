@@ -104,26 +104,26 @@ export class SmartTemplatesProcess {
         info.composeCase = "";
         // can already be set on the way in?
         if (!info.composeType) {
-          switch (composeDetails.type) {
+          switch (info.composeDetails.type) {
             case "draft":
-              info.st4composeType = "new";
+              info.composeType = "new";
               info.composeCase = "draft";
               break;
             case "new":
-              info.st4composeType = "new";
+              info.composeType = "new";
               break;
             case "redirect": // [issue 184] TO DO
-              info.st4composeType = "fwd";  // NEW CASE WE PROBABLY NEED TO BYPASS ST FOR THIS ONE!!
+              info.composeType = "fwd";  // NEW CASE WE PROBABLY NEED TO BYPASS ST FOR THIS ONE!!
               break;
             case "reply":
               info.composeCase = "reply";
-              info.st4composeType = "rsp";
+              info.composeType = "rsp";
               break;
             case "forward":
-              info.st4composeType = "fwd";
+              info.composeType = "fwd";
               break;
             case "template": // NOT SUPPORTED YET??
-              info.st4composeType = "?"; // [issue 184] TO DO
+              info.composeType = "?"; // [issue 184] TO DO
               info.composeCase = 'tbtemplate';
               break;
             default:

@@ -18,7 +18,8 @@ import * as classSmartTemplate from "./st-compose.mjs.js";
 import {composer} from "./st-composer.mjs.js";
 import {Styles} from "./st-styles.mjs.js";
 import {Sig} from "./st-signature.mjs.js";
-import { Parser } from "./st-parser.mjs.js"; // classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize
+// Parser = {classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize, getProcessedText}
+import { Parser } from "./st-parser.mjs.js"; 
 
 
 let SmartTemplates = { 
