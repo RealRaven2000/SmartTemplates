@@ -18,14 +18,14 @@ import * as classSmartTemplate from "./st-compose.mjs.js";
 import {composer} from "./st-composer.mjs.js";
 import {Styles} from "./st-styles.mjs.js";
 import {Sig} from "./st-signature.mjs.js";
-import { classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize} from "./st-overlay.mjs.js";
+import { Parser } from "./st-parser.mjs.js"; // classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize
 
 
 let SmartTemplates = { 
   Util, 
   Preferences, 
   ...classSmartTemplate,
-  classGetHeaders, clsGetAltHeader, mimeDecoder, parseModifier, regularize,
+  Parser, // a class for stuff that was directly in SmartTemplate4 namespace (from smartTemplate-overlay.js)
   composer,
   Sig,
   prefs : Preferences.identityPrefs
@@ -34,8 +34,19 @@ let SmartTemplates = {
 // **************************************
 // TO DO:  GLOBAL REPLACEMENTS IN MODULES
 //    SmartTemplates.pref = Preferences.identityPrefs; // but what if this is used in one of the sub modules???????
-// this is used in st-compose.mjs.js , st-overlay.mjs.js , st-util.mjs.js
+// this is used in st-compose.mjs.js , st-parser.mjs.js , st-util.mjs.js
 // but according to John this would be a circular reference.
+SmartTemplates.PreprocessingFlags = {
+  hasCursor: false,
+  hasSignature: false,
+  omitSignature: false,
+  hasQuotePlaceholder: false,
+  hasQuoteHeader: false,          // WIP
+  hasTemplatePlaceHolder: false,  // future use
+  isStationery: false,
+  isThunderbirdTemplate: false,
+  isFileTemplate: false
+}
 
 
 export { SmartTemplates };

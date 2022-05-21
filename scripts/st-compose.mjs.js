@@ -14,6 +14,7 @@ END LICENSE BLOCK
 
 import {Preferences} from "./st-prefs.mjs.js";
 import {Util} from "./st-util.mjs.js";
+import {Parser} from "./st-parser.mjs.js"; // 
 
 // INTERNAL ONLY FUNCTIONS
 	// -----------------------------------
@@ -137,6 +138,9 @@ import {Util} from "./st-util.mjs.js";
 		return isQuotedNode(node.parentNode); 
 	};
 
+	// -----------------------------------
+	// Get processed template getProcessedText() => moved to st-parser.mjs.js
+
 
 export async function readSignatureFile(Ident) {
   
@@ -147,25 +151,68 @@ export async function extractSignature() {
 }
 
 export async function insertTemplate(startup, flags, fileTemplateSource)	{
+    let rawTemplate = "";
+    // convert this one later. we start with Parser.getProcessedText
+    // rename st-parser.mjs to st-parser.mjs.js !
     /* LINE NUMBER in smartTemplate-compose.js - what it does */
     /* 900 - check and prepare "flags" to store states - see SmartTemplate4.initFlags()
        e.g. has signatur variable, omit sig, had cursor variable, has quote placeholder, 
        has template placeholder, is it a file template?
     */
     
+    /* smartTemplate-compose:908 - check if another template insert process is running to avoid duplication and abort */
     
-    /* 908 - check if another template insert process is running to avoid duplication and abort */
-    
-    /* 909 - set a flag that we are now processing a template! (this is to avoid duplicate processing
+    /* smartTemplate-compose:909 - set a flag that we are now processing a template! (this is to avoid duplicate processing
              while files are streamed). THIS FLAG MUST BE PER COMPOSER WINDOW
        SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; */
     
-    /* 923 - retrieve identity from document / composer */
+    /* smartTemplate-compose:923 - retrieve identity from document / composer */
     let composeTab =  await messenger.tabs.getCurrent();  // current tab if we are in composer.
     let composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
     let idKey = composeDetails.identity;
     // SmartTemplates.logDebug("retrieved identity key: " + idKey);
+ 
+    /* smartTemplate-compose:1059 read file template  |  read thunderbird template  |  read account template */
+    if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
+			rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
+    }
+    else if (flags.isThunderbirdTemplate) {
+      rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
+    }
+    else {
+      rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, ""); 
+    }
+    let parser = new Parser();
+    let st4composeType = "", composeCase = "";
+    switch (composeDetails.type) {
+      case "draft":
+        st4composeType = "new";
+        composeCase = "draft";
+        break;
+      case "new":
+        st4composeType = "new";
+        break;
+      case "redirect": // [issue 184] TO DO
+        st4composeType = "fwd";  // NEW CASE WE PROBABLY NEED TO BYPASS ST FOR THIS ONE!!
+        break;
+      case "reply":
+        composeCase = "reply";
+        st4composeType = "rsp";
+        break;
+      case "forward":
+        st4composeType = "fwd";
+        break;
+      case "template": // NOT SUPPORTED YET??
+        composeCase = 'tbtemplate';
+        break;
+      default:
+        break;
+    }
     
+    let processedText = await getProcessedText(template, idKey, info, ignoreHTML, flags);
+
+
+ 
 }
 
  

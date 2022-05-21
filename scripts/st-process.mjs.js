@@ -13,7 +13,7 @@ END LICENSE BLOCK
 // which are defined in smartTemplate-compose
 
 import {SmartTemplates} from "./st-main.mjs.js";
-
+import {Parser} from "./st-parser.mjs.js"; // imports getProcessedText
 
 export class SmartTemplatesProcess { 
   constructor() {
@@ -52,12 +52,11 @@ export class SmartTemplatesProcess {
                 break;
             }
             if (!this.hasComposer(composeTab.id)) {
-              let info = { rawTemplate: data.rawTemplate };
+              let info = { rawTemplate: data.rawTemplate, composeType: data.composeType };
               // info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
               
               this.addComposer(composeTab.id, info);
             }
-            
           }
           break;
       }
@@ -77,12 +76,12 @@ export class SmartTemplatesProcess {
         if (!isBackgroundParser || isBackgroundParser=="false") return;
 
         // process the template:
-        let startup, flags, fileTemplateSource;
+        // let startup, flags, fileTemplateSource;
         // await SmartTemplates.insertTemplate(startup, flags, fileTemplateSource);
         
         let info = this.hasComposer(composeTab.id) ?  this.getComposer(composeTab.id) : { };
         info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
-        info.composeDetails.subject = "This is a test";
+        // info.composeDetails.subject = "This is a test";
         
         this.addComposer(composeTab.id, info);
             
@@ -91,10 +90,52 @@ export class SmartTemplatesProcess {
         
         // load the real template...
         // insertTemplate
-        // TO DO NEXT: getProcessedText
+        // TO DO NEXT: getProcessedText => move to st-overlay module!!
+        const ignoreHTML = true; // false for quote header, getSmartTemplate; true for Thunderbird & file templates
+        let idKey = info.composeDetails.identityId;
+        // moved flags outside as they are a side effect from a global variable
+        // TO DO - instanciate this!
+        // or integrate into composers / info class
+        let flags = SmartTemplates.PreprocessingFlags; // this needs to be instanciated later from / with / through  
+                                                       // SmartTemplatesProcess.getComposer(tabId).flags
         
+        // 
+        let parser = new Parser();
+        info.composeCase = "";
+        // can already be set on the way in?
+        if (!info.composeType) {
+          switch (composeDetails.type) {
+            case "draft":
+              info.st4composeType = "new";
+              info.composeCase = "draft";
+              break;
+            case "new":
+              info.st4composeType = "new";
+              break;
+            case "redirect": // [issue 184] TO DO
+              info.st4composeType = "fwd";  // NEW CASE WE PROBABLY NEED TO BYPASS ST FOR THIS ONE!!
+              break;
+            case "reply":
+              info.composeCase = "reply";
+              info.st4composeType = "rsp";
+              break;
+            case "forward":
+              info.st4composeType = "fwd";
+              break;
+            case "template": // NOT SUPPORTED YET??
+              info.st4composeType = "?"; // [issue 184] TO DO
+              info.composeCase = 'tbtemplate';
+              break;
+            default:
+              break;
+          }
+        }
+        // changing third parameter to info (instead of info.composeType) 
+        // so  we can also transmit composeDetails
+        let processedTemplate = await parser.getProcessedText(template, idKey, info, ignoreHTML, flags);                
         
-        
+        // Will this call insertTemplate instead / before / after?
+        // for now, write modified stuff to composer.
         // manipulate html
         if (info.composeDetails.isPlainText) {
           delete info.composeDetails.body;
@@ -102,13 +143,10 @@ export class SmartTemplatesProcess {
         }
         else {
           delete info.composeDetails.plainTextBody;
-          info.composeDetails.body = template;
+          info.composeDetails.body = processedTemplate;
         }
         
-        // write modified stuff to composer
         await messenger.compose.setComposeDetails(composeTab.id, info.composeDetails);
-        
-        
         
         // ComposeAction = {}; // set to consumed
       }
@@ -117,7 +155,6 @@ export class SmartTemplatesProcess {
   
   /* ============================= */
   /*  mx specific stuff            */
-
   addComposer (tabId, info) {
     this.composers.set(tabId, info);
   }
@@ -140,21 +177,19 @@ export class SmartTemplatesProcess {
     
   }
 
-
   // -------------------------------------------------------------------
   // A handler to switch identity - in legacy: was a monkeypatch for LoadIdentity
   // -------------------------------------------------------------------
   async loadIdentity(startup, previousIdentity) {
     // previousIdentity = gCurrentIdentity;
     
-      
   }
 
   // Needs to be localizable with explicite locales passed.
   calendar = {
-     // TO DO!!
+    // TO DO!!
     init: function(forcedLocale) {
-      
+      SmartTemplates.Util.log("TO DO: IMPLEMENT SmartTemplatesProcess.calender.init")
     }
   }
   
