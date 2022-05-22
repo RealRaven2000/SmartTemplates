@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "3.12pre22",
+  "version": "3.12pre28",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author)",
@@ -21,6 +21,7 @@
   },
   "permissions": [
     "accountsRead",
+    "addressBooks",
     "compose",
     "messagesRead",
     "notifications"

@@ -24,6 +24,719 @@ export class Parser {
   constructor() {
     this.InvalidReservedWords = []; // Util.displayNotAllowedMessage(reservedWord); after processing!
     this.mimeDecoder = { // from smartTemplate.overlay.js
+      MimePrefs: {
+        defaultCharset: null,
+        defaultFormat : null,
+        debug: false,
+        nameDelimiter: "",
+        guessFromMail: false,
+        extractNameFromParentheses: true,
+        resolveAB: false,
+        resolveAB_preferNick: false
+      },
+      allAddressBooks: null,
+      init: async function() {
+        this.MimePrefs.defaultCharset = await Preferences.getMyStringPref ("defaultCharset");
+        this.MimePrefs.defaultFormat = await Preferences.getMyStringPref("mime.defaultFormat");
+        this.MimePrefs.debug = await Preferences.isDebugOption("mime.split");
+        this.MimePrefs.nameDelimiter = await Preferences.getMyStringPref("names.delimiter");
+        this.MimePrefs.guessFromMail = await Preferences.getMyBoolPref("names.guessFromMail");
+        this.MimePrefs.extractNameFromParentheses = await Preferences.getMyBoolPref("names.extractNameFromParentheses");
+        this.MimePrefs.resolveAB = await Preferences.getMyBoolPref("mime.resolveAB");
+        this.MimePrefs.resolveAB_preferNick = await Preferences.getMyBoolPref("mime.resolveAB.preferNick");
+        this.MimePrefs.resolveAB_displayName = await Preferences.getMyBoolPref("mime.resolveAB.displayName");
+        this.MimePrefs.resolveAB_removeEmail = await Preferences.getMyBoolPref("mime.resolveAB.removeEmail");
+        this.MimePrefs.firstLastSwap = await Preferences.getMyBoolPref("firstLastSwap");
+        this.MimePrefs.namesCapitalize = await Preferences.getMyBoolPref("names.capitalize");
+        this.MimePrefs.namesQuoteIfComma = await Preferences.getMyBoolPref("names.quoteIfComma");
+        this.MimePrefs.mailSuppressLink = await Preferences.getMyBoolPref("mail.suppressLink");
+        // returns array of AddressBookNode
+        this.allAddressBooks = await messenger.addressBooks.list(true);
+      },
+      // -----------------------------------
+      // Detect character set
+      // jcranmer: this is really impossible based on such short fields
+      // see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
+      //           http://encoding.spec.whatwg.org/#interface-textdecoder
+      //           
+      detectCharset: function(str, supressDefault=false) {
+        let charset = "";
+         // not supported                  
+         // #    RFC1555 ISO-8859-8 (Hebrew)
+         // #    RFC1922 iso-2022-cn-ext (Chinese extended)
+        let encodedCharset = str.match(/=\?([^\?]*)\?/);
+        if (encodedCharset.length>1) {
+          // matchgroup 1 is the charset! 
+          charset = encodedCharset[1];
+        }
+
+        if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) {   // RFC1468 (Japanese)
+          charset = "iso-2022-jp"; 
+        } 
+        if (str.search(/\x1b\$\)C/gi) !== -1)                    {   // RFC1557 (Korean)
+          charset = "iso-2022-kr"; 
+        } 
+        if (str.search(/~{/gi) !== -1)                           {   // RFC1842 (Chinese ASCII)
+          charset = "HZ-GB-2312"; 
+        }
+        if (str.search(/\x1b\$\)[AG]|\x1b\$\*H/gi) !== -1)       {   // RFC1922 (Chinese) 
+          charset = "iso-2022-cn"; 
+        }
+        if (str.search(/\x1b\$\(D/gi) !== -1) {  // RFC2237 (Japanese 1)
+          charset = "iso-2022-jp-1"; 
+        }
+        if (!charset && !supressDefault) {
+          charset = this.MimePrefs.defaultCharset || "";  // should we take this from Thunderbird instead?
+        }
+        Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
+        return charset;
+      },
+
+      // -----------------------------------
+      // MIME decoding.
+      decode: function (theString, charset) {
+        let decodedStr = "";
+
+        try {
+          if (/=\?/.test(theString)) {
+            // https://en.wikipedia.org/wiki/MIME#Encoded-Word
+            // RFC2231/2047 encoding.
+            // We need to escape the space and split by line-breaks,
+            // because getParameter stops convert at the space/line-breaks.
+            // => some russian mail servers use tab character as delimiter
+            //    some even use a space character between 2 encoding blocks
+            theString = theString.replace ("?= =?", "?=\n=?"); // space problem
+            let array = theString.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*|\s*\t\s*/g);
+            // detect charset from the string and override if necessary
+            let customCharset = that.mimeDecoder.detectCharset(theString, true) || charset; 
+            // https://searchfox.org/mozilla-central/source/netwerk/mime/nsIMIMEHeaderParam.idl
+            for (let i = 0; i < array.length; i++) {
+              let aHeaderVal = array[i].replace(/%/g, "%%").replace(/ /g, "-%-");
+              decodedStr += 
+                this.headerParam
+                  .getParameter(
+                    aHeaderVal,     // header string 
+                    null,           // name of a MIME header parameter
+                    customCharset,  // fallback charset
+                    true,           // aTryLocaleCharset
+                    { value: null }
+                  ).replace(/-%-/g, " ").replace(/%%/g, "%");
+            }
+          }
+          else {
+            Util.logDebug("Mailer has no manners, trying to decode string: " + theString);
+            decodedStr = decodeURIComponent(escape(theString));
+            Util.logDebug("...decoded string: " + decodedStr);
+          }
+        }
+        catch(ex) {
+          Util.logDebugOptional('mime','mimeDecoder.decode(' + theString + ') failed with charset: ' + charset
+              + '...\n' + ex);
+          return theString;
+        }
+        return decodedStr;
+      } ,
+
+      // -----------------------------------
+      // Split addresses and change encoding.
+      // addrstr - comma separated string of address-parts
+      // charset - character set of target string (probably silly to have one for all)
+      // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail(), initial
+      split: function (addrstr, charset, format, bypassCharsetDecoder)	{
+        let that = this;
+        // jcranmer: you want to use parseHeadersWithArray
+        //           that gives you three arrays
+        //           the first is an array of strings "a@b.com", "b@b.com", etc.
+        //           the second is an array of the display names, I think fully unquoted
+        //           the third is an array of strings "Hello <a@b.com>"
+        //           preserveIntegrity is used, so someone with the string "Dole, Bob" will have that be quoted I think
+        //           if you don't want that, you'd have to pass to unquotePhraseOrAddrWString(value, false)
+        //           oh, and you *don't* need to decode first, though you might want to
+        // see also: https://bugzilla.mozilla.org/show_bug.cgi?id=858337
+        //           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
+        // use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
+        // mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
+        function getEmailAddress(a) {
+          return a.replace(/.*<(\S+)>.*/g, "$1");
+        }
+
+        function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
+        // argType = Mail or Name to support bracketMail and bracketName
+        function getBracketAddressArgs(format, argType) { 
+          let reg = new RegExp('bracket' + argType + '\\<(.+?)\\>', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail<*> !
+              ar = reg.exec(format);
+          if (ar && ar.length>1) {
+            let args = ar[1];
+            Util.logDebugOptional('regularize', 
+              'getBracketAddressArgs(' + format + ',' + argType + ') returns ' + args 
+              + '\n out of ' + ar.length + ' results.');
+            return args;
+          }
+          return '';
+        };
+        function getCardFromAB(mail) { // returns ContactNode
+          if (!mail) return null;
+          // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
+          // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
+          
+          // CARDBOOK
+          // simpleMailRedirection.contacts => can be accesed via the notifyTools
+
+          // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
+          for (let i=0; i<that.allAddressBooks.length; i++ ) {
+            // addressBook.mailingLists // array of MailingListNode)
+            // alert ("Directory Name:" + addressBook.dirName);
+            try {
+              // AddressBookNode 
+              let addressBook = that.allAddressBooks[i];
+              let contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail == mail);  // Array of ContactNode, properties is nsIAbCard.idl
+              return contactNode;
+            }
+            catch(ex) {
+              Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+            }
+          }
+          return null;
+        }
+
+        // return the bracket delimiters
+        function getBracketDelimiters(bracketParams, element) {
+          let del1='', del2='',
+              bracketExp = element.field,
+              isOptional = false;
+          if (bracketExp) {
+            // ??prefix make brackets optional if bracketMail / bracketName is the only element in the address.
+            // e.g. ??bracketName(??round)
+            // bracketMail()% use to "wrap" mail address with non-standard characters
+            // bracketMail(square)%    [email]  - square brackets
+            // bracketMail(round)%     (email)   - round brackets
+            // bracketMail(angle)%     <email>   - angled brackets
+            // bracketMail(;)%      email
+            // bracketMail(<;>)%    <email>
+            // bracketMail(";")%    "email"
+            // bracketMail(= ;)%     = email
+            // etc.
+            // the expression between brackets can also have empty delimiters; e.g. bracketMail(- ;) will prefix "- " and append nothing
+            // we use ; as delimiter between the bracket expressions to avoid wrongly splitting format string elsewhere
+            // (Should we allow escaped round brackets?)
+            if (bracketParams.indexOf('??')==0) {
+              isOptional = true;
+              bracketParams = bracketParams.substring(2);
+            }
+              
+            if (!bracketParams.trim())
+              bracketParams = 'angle';
+            let delimiters = bracketParams.split(';');
+            switch(delimiters.length) {
+              case 0: // error
+                break;
+              case 1: // special case
+                switch(delimiters[0]) {
+                  case 'square':
+                    del1 = '[';
+                    del2 = ']';
+                    break;
+                  case 'round':
+                    del1 = '(';
+                    del2 = ')';
+                    break;
+                  case 'angle': case 'angled':
+                    del1 = '&lt;'; // <
+                    del2 = '&gt;';  // >
+                    break;
+                  default:
+                    del1 = delimiters[0]; // allow single delimiter, such as dash
+                    del2 = '';
+                }
+                break;
+              default: // delimiters separated by ; 3 and more are ignored.
+                del1 = delimiters[0];
+                del2 = delimiters[1];
+                break;
+            }
+          }
+          return [del1, del2, isOptional];
+        }
+        
+        if (typeof addrstr =='undefined')
+          return ""; // no address string (new emails)
+          
+        // fix mime encoded strings (cardbook seems to store these!)
+        // [issue 125] solve encoding problems
+        let isCorrectMime = true,
+            detectCharset = this.detectCharset.bind(this),
+            decode = this.decode.bind(this);
+        function correctMime(str) {
+          if (!isCorrectMime || !str) return str;
+          if (!str.includes("=?")) return str;
+          let cs = detectCharset(str, true);
+          if (cs) {
+            let corrected = decode(str, cs);
+            if (corrected != str) {
+              Util.logDebug("Correcting MIME encoded word from AB: " + str + "  to:" + corrected + "\nGuessed charset: " + cs);
+              return corrected;
+            }
+          }
+          return str;
+        }      
+        
+        //  %from% and %to% default to name followed by bracketed email address
+        if (typeof format=='undefined' || format == '') {
+          format = this.MimePrefs.defaultFormat.replace("(","<").replace(")",">") ; // 'name,bracketMail<angle>'
+        }
+        
+        Util.logDebugOptional('mime.split',
+             '====================================================\n'
+           + 'mimeDecoder.split(charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + ')\n'
+           + '  addrstr:' +  addrstr + '\n'
+           + '  charset: ' + charset + '\n'
+           + '  format: ' + format + '\n'
+           + '====================================================');
+        // if (!bypassCharsetDecoder)
+          // addrstr = this.decode(addrstr, charset);
+        // Escape % and , characters in mail addresses
+        if (this.MimePrefs.debug) debugger;
+        
+        let array = [];
+        if (typeof addrstr == "string") {
+          /** SPLIT ADDRESSES **/
+          addrstr = addrstr.replace(/"[^"]*"/g, function(s){ return s.replace(/%/g, "%%").replace(/,/g, "-%-"); });
+          Util.logDebugOptional('mime.split', 'After escaping special chars in mail address field:\n' + addrstr);
+          array = addrstr.split(/\s*,\s*/);
+        }
+        else if (Array.isArray(addrstr)) {
+          for (let i=0; i<addrstr.length; i++) {
+            array.push( addrstr[i].replace(/"[^"]*"/g, (s) => { return s.replace(/%/g, "%%").replace(/,/g, "-%-"); }));
+          }
+        }
+
+        
+        
+        /** SPLIT FORMAT PLACEHOLDERS **/
+        // possible values for format are:
+        // name, firstname, lastname, mail - fields (to be extended)
+        // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
+        // link, islinkable  - these are "modifiers" for the previous list element
+        let formatArray = Util.splitFormatArgs(format),
+            isForceAB = false;
+        
+        let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
+        for (let i=0; i<formatArray.length; i++) {
+          let fld = formatArray[i];
+          if (fld.field == "addressbook") 
+            isForceAB = true;
+          dbgText += fld.field;
+          if (fld.modifier)  
+            dbgText += '(' + fld.modifier + ')';
+          dbgText += '\n';
+        }
+        Util.logDebugOptional('mime.split', dbgText);
+        
+        const nameDelim = this.MimePrefs.nameDelimiter, // Bug 26207
+              isGuessFromAddressPart = this.MimePrefs.guessFromMail,
+              isReplaceNameFromParens = this.MimePrefs.extractNameFromParentheses; // [Bug 26595] disable name guessing      
+        let addresses = "",
+            address,
+            bracketMailParams = getBracketAddressArgs(format, 'Mail'),
+            bracketNameParams = getBracketAddressArgs(format, 'Name'),
+            card;
+
+          
+        function getCardProperty(p) {
+          if (!card) return '';
+          let r = card.properties(p);
+          if (r) {
+            let d = that.mimeDecoder.decode(r);
+            if (d) return d;
+          }
+          return r;
+        }
+
+
+        /** ITERATE ADDRESSES  **/
+        for (let i = 0; i < array.length; i++) {
+          let suppressMail = false;
+          if (this.MimePrefs.debug) debugger;
+          if (i > 0) {
+            addresses += nameDelim + " ";  // comma or semicolon
+          }
+          let addressee = '',
+              firstName, lastName,
+              fullName = '',
+              emailAddress = '',
+              addressField = array[i],
+              isFirstNameFromDisplay = false;
+              
+          // [Bug 25816] - missing names caused by differing encoding
+          // MIME decode (moved into the loop)
+          // if (!bypassCharsetDecoder) this.decode(array[i], charset);
+          addressField = correctMime(array[i]); 
+          
+          // Escape "," in mail addresses
+          array[i] = addressField.replace(/\r\n|\r|\n/g, "")
+                             .replace(/"[^"]*"/,
+                             function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+          // name or/and address. (wraps email into <  > )
+          address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
+          
+          
+          Util.logDebugOptional('mime.split', 'processing: ' + addressField + ' => ' + array[i] + '\n'
+                                               + 'address: ' + address);
+          // [Bug 25643] get name from Addressbook
+          emailAddress = getEmailAddress(address); // get this always
+          const isResolveNamesAB = isForceAB || this.MimePrefs.resolveAB;
+          card = isResolveNamesAB ? getCardFromAB(emailAddress) : null; // ContactNode
+          
+          // determine name part (left of email)
+          addressee = address.replace(/\s*<\S+>\s*$/, "")
+                          .replace(/^\s*\"|\"\s*$/g, "");  // %to% / %to(name)%
+                          
+          if (isGuessFromAddressPart && !addressee) { // if no addressee part found we probably have only an email address.; take first part before the @
+            addressee = address.slice(0, address.indexOf('@'));
+            if (addressee.charAt('0')=='<')
+              addressee = addressee.slice(1);
+          }
+          // if somebody repeats the email address instead of a name at front, e.g. a.x@tcom, we cut the domain off anyway
+          if (addressee.indexOf('@')>0) {
+            let add_end = addressee.substring(addressee.length-1);
+            addressee = addressee.slice(0, addressee.indexOf('@')); // if we do this we may need to re-add parentheses or special characters at the end!
+          if ([')', ']', '}', '"'].indexOf(add_end) !== -1)
+            addressee += add_end; // re-add ')'
+          }
+          fullName = addressee;
+          
+          // attempt filling first & last name from AB
+          firstName = (isResolveNamesAB && card) ? correctMime(card.properties.FirstName) : '';
+          if (isResolveNamesAB && card) {
+            if (this.MimePrefs.resolveAB_preferNick) {
+              firstName = correctMime(card.getProperty("NickName", card.properties.FirstName));
+            }
+            if (!firstName && this.MimePrefs.resolveAB_displayName) {
+              firstName = correctMime(card.properties.DisplayName);
+              // displayName is usually the full name, so we may have to remove that portion for firstname.
+              isFirstNameFromDisplay = true;
+            }
+          }
+          lastName = (isResolveNamesAB && card)  ? correctMime(card.properties.LastName) : '';
+          fullName = (isResolveNamesAB && card && card.properties.DisplayName) ? correctMime(card.properties.DisplayName) : fullName;
+          
+          
+          let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
+          if ((fullName || isNameFound) && this.MimePrefs.resolveAB_removeEmail) {
+            // remove mail if name found in AB, and a name component is displayed:
+            for (let f=0; f<formatArray.length; f++) {
+              if (["name","firstname","lastname","fullname"].indexOf(formatArray[f].field)>=0) {
+                suppressMail = true;
+              }
+            }
+            for (let f=0; f<formatArray.length; f++) {
+              if (formatArray[f].field=='mail' || formatArray[f].field.startsWith('bracketMail')) 
+                suppressMail = false;
+            }
+          }
+                  
+              
+          if (!isNameFound && this.MimePrefs.firstLastSwap) {
+            // extract Name from left hand side of email address
+            
+            let regex = /\(([^)]+)\)/,
+                nameRes = regex.exec(addressee);
+            // (Name) extraction!
+            if (isReplaceNameFromParens && nameRes  &&  nameRes.length > 1 && !isLastName(format)) {
+              isNameFound = true;
+              firstName = nameRes[1];  // name or firstname will fetch the (Name) from brackets!
+            }
+            else {
+              let iComma = addressee.indexOf(', ');
+              if (iComma>0) {
+                firstName = addressee.substr(iComma + 2);
+                // remove parentheses part from firstnames
+                if (nameRes)
+                  firstName = (firstName.replace(nameRes[0],'')).trim();
+                lastName = addressee.substr(0, iComma);
+                isNameFound = true;
+              }
+            }
+          }
+          
+          if (!fullName) {
+            if (firstName && lastName) { 
+              fullName = firstName + ' ' + lastName ; 
+            }
+            else {
+              fullName = firstName ? firstName : lastName;  // ?
+            }
+            if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
+          }
+          else {
+            if (!card || (card && card.properties.DisplayName && card.properties.DisplayName != fullName)) { // allow a single word from AB as displayName to "survive"
+              // name split / replacements; if there are no spaces lets replace '.' then '_'
+              if (fullName.indexOf(' ')<0) {
+                 fullName = addressee.replace('.',' ');
+              }
+              if (fullName.indexOf(' ')<0) {
+                 fullName = addressee.replace('_',' ');
+              }
+              // replace double quotation marks?
+            }
+          }
+          
+          let names = fullName.split(' '),
+              ncount = names.length,
+              isOnlyOneName = (ncount==1) ? true : false;
+          if (!firstName) {
+            firstName = '';
+            if (isOnlyOneName)
+              firstName = names[0];  // always fill first Name!
+            else for (let n=0; n<ncount-1; n++) {
+              if (n>0) firstName += ' '; // concatenate with space between all first names
+              firstName += names[n];
+            }
+          }
+          // [Bug 26208] ? Omitting middle names
+          if (!lastName && !isOnlyOneName) {
+            lastName = ncount ? names[ncount-1] : '';
+          }
+          if (isFirstNameFromDisplay && firstName.endsWith(lastName)) {
+            // cut off last name to avoid duplication.
+            firstName = firstName.replace(lastName,"").trim();
+          }
+          
+          if (this.MimePrefs.namesCapitalize) {
+            fullName = Util.toTitleCase(fullName);
+            firstName = Util.toTitleCase(firstName);
+            lastName = Util.toTitleCase(lastName);
+          }
+          
+          // build the part!
+          let addressElements = [],
+              foundNonOptionalParts = false,
+              open = '', 
+              close = '',
+              bracketsAreOptional = false; // bracket Elements
+              
+          for (let j=0; j<formatArray.length; j++)  {
+            let element = formatArray[j],
+                part = '',
+                isOptionalPart = false,
+                partKeyWord = element.field; 
+                
+            if (partKeyWord.indexOf('??')==0) {
+              partKeyWord = partKeyWord.substring(2);
+              isOptionalPart = true;
+            }
+            switch(partKeyWord.toLowerCase()) {
+              case 'initial':
+                while (addressElements.length>1) 
+                  addressElements.pop();
+                addressElements.push( {part:addrstr, optional:false, bracketLeft:'', bracketRight:'', bracketsOptional:true}  ); // return unchanged string, ignore all other parameters
+                break;
+              case 'mail':
+                if (suppressMail)
+                  continue;
+                switch (element.modifier) {
+                  case 'linkable':
+                    part = emailAddress;
+                    break;
+                  case 'linkTo': // No special linking, anchor will be modified below like with all other parts
+                    part = emailAddress;
+                    break;
+                  default:
+                    //empty anchor suppresses link; adding angle brackets as default
+                    // TO DO: make default brackets configurable later
+                    if (this.MimePrefs.mailSuppressLink)
+                      part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
+                    else
+                      part = emailAddress;                  
+                }
+                break;
+              case 'fwd': // this is handled on the outside, so we ignore it
+                continue;
+              case 'name':
+              case 'fullname':
+                if (fullName)
+                  part = fullName;
+                else {
+                  if (isGuessFromAddressPart)
+                    part = address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+                  else
+                    part = ''; // [Bug 26595]
+                }
+                // [Bug 26209] wrap name if contains comma
+                if (this.MimePrefs.namesQuoteIfComma) {
+                  if (part.includes(',') || part.includes(';'))
+                    part = '"' + part + '"';
+                }
+                break;
+              case 'firstname':
+                part = firstName;
+                break;
+              case 'lastname':
+                if (card && card.properties.LastName)
+                  part = card.properties.LastName;
+                else if (isOnlyOneName && format.indexOf('firstname')<0) {
+                  part = firstName; // fall back to first name if lastName was 
+                                    // 'emptied' because of duplication
+                }
+                else
+                  part = lastName;
+                break;
+              // [issue 24]
+              // AB stuff - contact
+              case 'nickname':
+                part = getCardProperty("NickName");
+                break;
+              case 'additionalmail':
+                part = getCardProperty("SecondEmail");
+                break;
+              case 'chatname':
+                part = getCardProperty("ChatName");
+                break;
+              case 'workphone':
+                part = getCardProperty("WorkPhone");
+                break;
+              case 'homephone':
+                part = getCardProperty("HomePhone");
+                break;
+              case 'fax':
+                part = getCardProperty("FaxNumber");
+                break;
+              case 'pager':
+                part = getCardProperty("PagerNumber");
+                break;
+              case 'mobile':
+                part = getCardProperty("CellularNumber");
+                break;
+              // AB stuff - private
+              case 'private.address1':
+                part = getCardProperty("HomeAddress");
+                break;
+              case 'private.address2':
+                part = getCardProperty("HomeAddress2");
+                break;
+              case 'private.city':
+                part = getCardProperty("HomeCity");
+                break;
+              case 'private.state':
+                part = getCardProperty("HomeState");
+                break;
+              case 'private.country':
+                part = getCardProperty("HomeCountry");
+                break;
+              case 'private.zip':
+                part = getCardProperty("HomeZipCode");
+                break;
+              // work
+              case 'work.title':
+                part = getCardProperty("JobTitle");
+                break;
+              case 'work.department':
+                part = getCardProperty("Department");
+                break;
+              case 'work.organization':
+                part = getCardProperty("Company");
+                break;
+              case 'work.address1':
+                part = getCardProperty("WorkAddress");
+                break;
+              case 'work.address2':
+                part = getCardProperty("WorkAddress2");
+                break;
+              case 'work.city':
+                part = getCardProperty("WorkCity");
+                break;
+              case 'work.state':
+                part = getCardProperty("WorkState");
+                break;
+              case 'work.country':
+                part = getCardProperty("WorkCountry");
+                break;
+              case 'work.zip':
+                part = getCardProperty("WorkZipCode");          
+                break;
+              case 'work.webpage':
+                part = getCardProperty("WebPage1");          
+                break;
+                
+              // other
+              case 'other.custom1':
+                part = getCardProperty("Custom1");
+                break;
+              case 'other.custom2':
+                part = getCardProperty("Custom2");
+                break;
+              case 'other.custom3':
+                part = getCardProperty("Custom3");
+                break;
+              case 'other.custom4':
+                part = getCardProperty("Custom4");
+                break;
+              case 'other.custom5':
+                part = getCardProperty("Custom5");
+                break;
+              case 'other.notes':
+                part = getCardProperty("Notes");
+                break;
+              case 'addressbook':
+                part = "";          
+              default:
+                let bM = (partKeyWord.indexOf('bracketMail<')==0),
+                    bN = (partKeyWord.indexOf('bracketName<')==0);
+                if (bM || bN) {
+                  if (bM) {
+                    [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
+                    part = emailAddress ?  emailAddress : ''; // adding brackets later!
+                  }
+                  else {
+                    if (isGuessFromAddressPart || fullName) {
+                      [open, close, bracketsAreOptional] = getBracketDelimiters(bracketNameParams, element);
+                      let fN = fullName ? fullName : address.replace(/.*<(\S+)@\S+>.*/g, "$1"); // email first part fallback
+                      part = fN ? fN : '';
+                    }
+                    else
+                      part = '';
+                  }
+                }
+                break;
+            }
+            if (element.modifier =='linkTo') {
+              part = "<a href=mailto:" + emailAddress + ">" + part + "</a>"; // mailto
+            }
+
+            // make array of non-empty parts
+            if (part) {
+              addressElements.push({part:part, optional:isOptionalPart, bracketLeft:open, bracketRight:close, bracketsOptional: bracketsAreOptional});
+              if (!isOptionalPart) 
+                foundNonOptionalParts = true;
+            }
+          }
+          
+          addressField = ''; // reset to finalize
+          for (let j=0; j<addressElements.length; j++)  {
+            let aElement = addressElements[j];
+            // remove optional parts, e.g. to(name,??mail) - will only show name unless missing, in which case it shows mail
+            if (aElement.optional && foundNonOptionalParts)
+              continue;
+            // append the next part if not empty
+            if (aElement.part.length>0) {  // [issue 153]
+              if (addressField.length) addressField += ' '; // space to append next parts
+              // if there is only one element and brackets param is prefixed with ??
+              // e.g. %from(name,bracketMail(??- {,}))%
+              // Name - {email}
+              // then hide the brackets and only show email.
+              if (addressElements.length==1 && aElement.bracketsOptional)
+                addressField += aElement.part; // omit brackets if this is the only bracketed Expression returned
+              else
+                addressField += aElement.bracketLeft + aElement.part + aElement.bracketRight;
+            }
+          }
+          
+          Util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
+          addresses += addressField;
+        }
+        return addresses;
+      } // split
+
       
     }
   }
@@ -41,7 +754,7 @@ export class Parser {
     if (["attachments", "bcc", "body", "plainTextBody", "priority", "cc", "from", "relatedMessageId", "subject"].includes(hd)) {
       return composeDetails[hd];
     }
-    switch (hd) {
+    switch (hd.toLowerCase()) {
       case "newsgroups": 
         return composeDetails.newsgroups;  // string or string array
       case "followupTo": 
@@ -56,6 +769,7 @@ export class Parser {
       if (x) return x;
     }
     Util.logToConsole(`Cannot retrieve header ${hd}`);
+    console.log(`%cCannot retrieve header ${hd}`, "color:red;");
     return ""; // unknown
   }
 
@@ -74,9 +788,6 @@ export class Parser {
   async regularize(msg, composeType, composeDetails, ignoreHTML, isDraftLike, offsets, flags) { 
     let that = this;
     // [issue 184] deal with global side effects: time offsets!
-    if (!offsets) {
-      offsets = Util.defaultOffsets();
-    } 
     // replace SmartTemplate4.signature
     let mailIdentity = await messenger.identities.get(composeDetails.identityId),
         signature = mailIdentity.signature,
@@ -135,7 +846,8 @@ export class Parser {
             // if the header can be found, check if it has parameters and would evaluate to be empty?
             if (addressHdr && param && param.length>2) {  // includes parameters e.g. (firstname)
               Util.logDebugOptional("regularize","check whether " + reservedWord + " " + param + " returns content...");
-              let charset = gMsgCompose.compFields.characterSet,
+              // cannot determine charset currently
+              let charset = null, // gMsgCompose.compFields.characterSet,
                   headerValue = mime.split(addressHdr, charset, param);
               if (!headerValue) {
                 Util.logDebugOptional("regularize","This %" + reservedWord + "% variable returned nothing.");
@@ -146,7 +858,7 @@ export class Parser {
           let s = (isReserved) ? str
                   : (addressHdr != "") ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
           if (!el) {
-            Util.logToConsole('Discarding unknown variable: %' +  reservedWord + '%')
+            Util.logToConsole(`Discarding unknown variable: %${reservedWord}%`)
           }
           else { // it's a reserved word, likely a header
             if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
@@ -220,16 +932,17 @@ export class Parser {
     Util.logDebugOptional('regularize','Parser.regularize(' + msg +')  STARTS...');
     // var parent = SmartTemplate4;
     let idkey = composeDetails.identityId; // Util.getIdentityKey(document),
-    let identity; // = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getIdentity(idkey),
-    let accounts = await messenger.accounts.list(false); // omit folders
+    let identity = mailIdentity; // = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getIdentity(idkey),
+/*    let accounts = await messenger.accounts.list(false); // omit folders
     for (let account of accounts) {
       let id = account.identities.find(m => m.id == idkey);
       if (id) {
         identity =id;
         break;
       }
-    }
+    } */
     let mime = that.mimeDecoder;
+    await mime.init();
 
     // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
     let msgDbHdr = null,
@@ -1683,7 +2396,9 @@ export class Parser {
     Util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
                                          templateText + '[END]');
     
-    Util.logToConsole("[issue 184] getProcessedText - to do: IMPLEMENT SmartTemplates.calendar.init()");
+    if (!info.offsets) {
+      info.offsets = Util.defaultOffsets();
+    }
     // SmartTemplates.calendar.init(); // set for default locale
     let isDraftLike = !composeType 
       || flags.isFileTemplate
@@ -1693,6 +2408,7 @@ export class Parser {
         composeDetails, 
         ignoreHTML, 
         isDraftLike,
+        info.offsets,
         flags);
     
     // now that all replacements were done, lets run our global routines to replace / delete text, (such as J.B. "via Paypal")

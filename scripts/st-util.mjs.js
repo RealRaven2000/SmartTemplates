@@ -304,6 +304,47 @@ export let Util = {
     let fs = format.split(',');
 	  return (fs.indexOf('link') != -1);
 	} ,  
+
+  //1162
+  toTitleCase: function toTitleCase(str) { // international version.
+    let orig = str;
+    try {
+      let words = str.split(' ');
+          
+      for (let i=0; i<words.length; i++) {
+        let word = words[i],
+            findw = 0;
+        while ("\\\"\'\{\[\(\)".indexOf(word.charAt(findw))>=0 && findw<word.length) {
+          findw++; // skip these characters, so we hit alphabetics again
+        }
+        
+        
+        // Titlecase and re-append to Array
+        words[i] = word.substring(0, findw)
+                       .concat(word.charAt(findw).toLocaleUpperCase())
+                       .concat(word.substring(findw + 1).toLocaleLowerCase());
+        // deal with composite names, e.g. Klaus-Dieter
+        let compositeName = words[i].split('-');
+        if (compositeName.length>1) {
+          let cname = '';
+          for (let m=0; m<compositeName.length; m++) {
+            if (m>0)
+              cname += '-';
+            cname += compositeName[m].charAt(0).toLocaleUpperCase() + compositeName[m].substring(1);
+          }
+          words[i] = cname;
+        }
+      }
+      str = words.join(' ');
+      return str;
+    }
+    catch(ex) {
+      this.logException ("toTitleCase(" + orig + ") failed", ex);
+      return orig;
+    }
+  } ,
+	
+
   
   // 1201
   // @global=true returns a regular expression from a quoted string
