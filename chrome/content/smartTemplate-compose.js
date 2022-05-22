@@ -771,7 +771,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (!templateText) return "";
     const flags = SmartTemplate4.PreprocessingFlags;
 
-		let isStationery = false;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -783,7 +782,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
 		let regular = SmartTemplate4.regularize(templateText, 
 				composeType, 
-				isStationery, 
+				false,   // isStationery
 				ignoreHTML, 
 				isDraftLike);
 		
@@ -895,8 +894,6 @@ SmartTemplate4.classSmartTemplate = function() {
       return;
     }
     
-    
-    
     function cleanPlainTextNewLines(myHtml) {
       let lc = myHtml.toLocaleLowerCase();
       if (lc.includes("<br") || lc.includes("<p"))
@@ -908,7 +905,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
 		  flags = {};
-			flags.isStationery = false;
 			SmartTemplate4.initFlags(flags);
 			flags.identitySwitched = true;  // new flag
 		}

@@ -167,9 +167,9 @@ export async function insertTemplate(startup, flags, fileTemplateSource)	{
        SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; */
     
     /* smartTemplate-compose:923 - retrieve identity from document / composer */
-    let composeTab =  await messenger.tabs.getCurrent();  // current tab if we are in composer.
-    let composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
-    let idKey = composeDetails.identity;
+    let composeTab =  await messenger.tabs.getCurrent()   // current tab if we are in composer.
+        composeDetails = await messenger.compose.getComposeDetails(composeTab.id),
+        idKey = composeDetails.identityId;
     // SmartTemplates.logDebug("retrieved identity key: " + idKey);
  
     /* smartTemplate-compose:1059 read file template  |  read thunderbird template  |  read account template */

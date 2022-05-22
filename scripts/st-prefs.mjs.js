@@ -108,14 +108,20 @@ export let Preferences = {
     // get preference
     // returns default value if preference cannot be found.
     getCom: async function(prefstring, defaultValue)	{
-      return await messenger.LegacyPrefs.getPref(prefstring, defaultValue);
+      if (typeof defaultValue == "string") {
+        return await messenger.LegacyPrefs.getPref(prefstring, defaultValue);
+      }
+      else {
+        let v = await messenger.LegacyPrefs.getPref(prefstring);
+        if (v==null) v = defaultValue;
+        return v;
+      }
     },
 
     // -----------------------------------
     // get preference(branch)
-    getWithBranch: async function(idKey, defaultValue)
-    {
-      return await this.getCom(SmartTemplate4.Preferences.Prefix + idKey, defaultValue); //
+    getWithBranch: async function(idKey, defaultValue) {
+      return await this.getCom(Preferences.Prefix + idKey, defaultValue); //
     },
 
     // idKey Account
@@ -164,7 +170,7 @@ export let Preferences = {
       if (!pref) 
         return ""; // draft etc.
       // extensions.smarttemplate.id8.def means account id8 uses common values.
-      if (getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
+      if (await this.getWithBranch(idkey + ".def", true)) { // "extensions.smartTemplate4." + "id12.def"
         // common preference - test with .common!!!!
         return await this.getWithBranch("common." + pref, def);
       }
@@ -174,7 +180,7 @@ export let Preferences = {
       }
     }  
     
-  }
+  } // identityPrefs
     
 // OBSOLETE: existsCharPref, existsBoolPref, getBoolPrefSilent
   

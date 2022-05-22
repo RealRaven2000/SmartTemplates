@@ -14,6 +14,7 @@ END LICENSE BLOCK
 
 import {SmartTemplates} from "./st-main.mjs.js";
 import {Parser} from "./st-parser.mjs.js"; // imports getProcessedText
+import {Preferences} from "./st-prefs.mjs.js"; // needed for account templates
 
 export class SmartTemplatesProcess { 
   constructor() {
@@ -78,15 +79,17 @@ export class SmartTemplatesProcess {
         // process the template:
         // let startup, flags, fileTemplateSource;
         // await SmartTemplates.insertTemplate(startup, flags, fileTemplateSource);
-        
-        let info = this.hasComposer(composeTab.id) ?  this.getComposer(composeTab.id) : { };
+        let isInfoInitialized = this.hasComposer(composeTab.id),
+            info = isInfoInitialized ? this.getComposer(composeTab.id) : { };
         info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
+        // load defaults from pref
+        
         // info.composeDetails.subject = "This is a test";
         
         this.addComposer(composeTab.id, info);
             
         //let template = (ComposeAction?.template) ? ComposeAction.template : "test" ; // if
-        let template = info.rawTemplate || "test - messageCompose Listener";
+        let rawTemplate = info.rawTemplate || "test - messageCompose Listener";
         
         // load the real template...
         // insertTemplate
@@ -96,6 +99,7 @@ export class SmartTemplatesProcess {
         // moved flags outside as they are a side effect from a global variable
         // TO DO - instanciate this!
         // or integrate into composers / info class
+        // instead of initFlags
         let flags = SmartTemplates.PreprocessingFlags; // this needs to be instanciated later from / with / through  
                                                        // SmartTemplatesProcess.getComposer(tabId).flags
         
@@ -124,22 +128,43 @@ export class SmartTemplatesProcess {
               break;
             case "template": // NOT SUPPORTED YET??
               info.composeType = "?"; // [issue 184] TO DO
-              info.composeCase = 'tbtemplate';
+              info.composeCase = "tbtemplate";
               break;
             default:
+              info.composeCase = "undefined";
               break;
           }
         }
+        // insert beginning logic from classSmartTemplate.insertTemplate - in order to load account settings.
+        if (!isInfoInitialized) { // identityPrefs replaces SmartTemplate.prefs
+          let isActiveOnAccount = await Preferences.identityPrefs.isTemplateActive(idKey, info.composeType, false);
+          if (info.composeCase == "draft") { // flags.isFileTemplate
+            isActiveOnAccount = false;
+          }
+          // handle 3rd case of file template outside of (!isInfoInitialized)
+          if (isActiveOnAccount) {
+            if (info.composeCase == "tbtemplate") {
+              rawTemplate = "";
+            }
+            else {
+              rawTemplate = await Preferences.identityPrefs.getTemplate(idKey, info.composeType, "");
+            }
+          }
+        }
+        // TO DO:
+        // we could rewrite insertTemplate to pass in the original mail body as node (or html string)
+        // to do quote / quote header preprocessing.
+        
         // changing third parameter to info (instead of info.composeType) 
         // so  we can also transmit composeDetails
-        let processedTemplate = await parser.getProcessedText(template, idKey, info, ignoreHTML, flags);                
+        let processedTemplate = await parser.getProcessedText(rawTemplate, idKey, info, ignoreHTML, flags);                
         
         // Will this call insertTemplate instead / before / after?
         // for now, write modified stuff to composer.
         // manipulate html
         if (info.composeDetails.isPlainText) {
           delete info.composeDetails.body;
-          info.composeDetails.plainTextBody = template;
+          info.composeDetails.plainTextBody = processedTemplate;
         }
         else {
           delete info.composeDetails.plainTextBody;
@@ -185,13 +210,7 @@ export class SmartTemplatesProcess {
     
   }
 
-  // Needs to be localizable with explicite locales passed.
-  calendar = {
-    // TO DO!!
-    init: function(forcedLocale) {
-      SmartTemplates.Util.log("TO DO: IMPLEMENT SmartTemplatesProcess.calender.init")
-    }
-  }
+
   
 }
 

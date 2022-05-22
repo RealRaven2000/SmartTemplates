@@ -37,6 +37,7 @@ let SmartTemplates = {
 //    SmartTemplates.pref = Preferences.identityPrefs; // but what if this is used in one of the sub modules???????
 // this is used in st-compose.mjs.js , st-parser.mjs.js , st-util.mjs.js
 // but according to John this would be a circular reference.
+// could be a CONST structure
 SmartTemplates.PreprocessingFlags = {
   hasCursor: false,
   hasSignature: false,

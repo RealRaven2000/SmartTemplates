@@ -22,7 +22,7 @@ function escapeHtml(str) {
   
 export class Parser { 
   constructor() {
-    this.InvalidReserverWords = []; // Util.displayNotAllowedMessage(reservedWord); after processing!
+    this.InvalidReservedWords = []; // Util.displayNotAllowedMessage(reservedWord); after processing!
     this.mimeDecoder = { // from smartTemplate.overlay.js
       
     }
@@ -36,8 +36,11 @@ export class Parser {
     Util.logIssue184(`clsGetAltHeader(${msgDummyHeader})`);
   }
   
+  // hdr.get() replacement
   getAPIheader(composeDetails, hd) {
-    if (["attachments", "bcc", "body", "plainTextBody", "priority", "cc", "from", "relatedMessageId", "subject"].includes(hd)) return composeDetailscomposeDetails[hd];
+    if (["attachments", "bcc", "body", "plainTextBody", "priority", "cc", "from", "relatedMessageId", "subject"].includes(hd)) {
+      return composeDetails[hd];
+    }
     switch (hd) {
       case "newsgroups": 
         return composeDetails.newsgroups;  // string or string array
@@ -69,10 +72,15 @@ export class Parser {
   // added offsets to avoid side FX
   // added flags to avoid side FX
   async regularize(msg, composeType, composeDetails, ignoreHTML, isDraftLike, offsets, flags) { 
+    let that = this;
     // [issue 184] deal with global side effects: time offsets!
     if (!offsets) {
       offsets = Util.defaultOffsets();
     } 
+    // replace SmartTemplate4.signature
+    let mailIdentity = await messenger.identities.get(composeDetails.identityId),
+        signature = mailIdentity.signature,
+        signatureIsPlainText = mailIdentity.signatureIsPlainText;
           
     // make sure to use the licenser from main window, to save time.
     // [issue 150] removed nag screen
@@ -141,7 +149,6 @@ export class Parser {
             Util.logToConsole('Discarding unknown variable: %' +  reservedWord + '%')
           }
           else { // it's a reserved word, likely a header
-            if (Preferences.isDebugOption("tokens.deferred")) debugger;
             if (typeof s =='undefined' || (s=="" && composeType=='new') || paramArray.includes("fwd")) {
               // if we are writing a NEW mail, we should insert some placeholders for resolving later.
               // do this also when using the "fwd" modifier as the initial address string may be empty or wrong.
@@ -154,7 +161,7 @@ export class Parser {
               else {
                 let isHTML = !composeDetails.isPlainText;
                 if (isHTML)
-                  SmartTemplate4.hasDeferredVars = true;
+                  flags.hasDeferredVars = true;  // SmartTemplate4.hasDeferredVars
                 s = Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
               }
               Util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
@@ -163,12 +170,11 @@ export class Parser {
           return s;
         } 
         catch (ex) {
-          if (Preferences.isDebugOption("tokens.deferred")) debugger;
           // let's implement later resolving of variables for premium users:
           // throws "hdr is null"
-          Util.logException("classifyReservedWord(" + reservedWord + ")", ex);
-          this.InvalidReserverWords.push(reservedWord);
-          Util.logDebug("[issue 184] TO DO - displayNotAllowedMessage later for " + reservedWord)
+          Util.logException(`classifyReservedWord (${reservedWord})`, ex);
+          that.InvalidReservedWords.push(reservedWord);
+          Util.logIssue184(`Util.displayNotAllowedMessage (${reservedWord})`);
           // SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
           // Util.displayNotAllowedMessage(reservedWord);
           return "";
@@ -210,7 +216,7 @@ export class Parser {
       return aString.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
     }
 
-    this.regularize.headersDump = '';
+    that.regularize.headersDump = '';
     Util.logDebugOptional('regularize','Parser.regularize(' + msg +')  STARTS...');
     // var parent = SmartTemplate4;
     let idkey = composeDetails.identityId; // Util.getIdentityKey(document),
@@ -223,7 +229,7 @@ export class Parser {
         break;
       }
     }
-    let mime = this.mimeDecoder;
+    let mime = that.mimeDecoder;
 
     // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
     let msgDbHdr = null,
@@ -285,9 +291,9 @@ export class Parser {
     }
     
 **/     // HEADER KRAMPF
-    hdr.get = (h) => { return this.getAPIheader(composeDetails, h); }; 
+    hdr.get = (h) => { return that.getAPIheader(composeDetails, h); }; 
 
-    if (Preferences.isDebugOption('regularize')) debugger;
+    if (await Preferences.isDebugOption('regularize')) debugger;
     let date = (composeType != "new") && msgDbHdr ? msgDbHdr.date : null;
     if (composeType != "new" && msgDbHdr) {
       // for Reply/Forward message
@@ -369,7 +375,7 @@ export class Parser {
         try {
           let matchPart = msg.match(regX);
           if (matchPart) {
-            if (Preferences.isDebugOption('parseModifier')) debugger;
+            if (await Preferences.isDebugOption('parseModifier')) debugger;
             for (let i=0; i<matchPart.length; i++) {
               Util.logDebugOptional('parseModifier','matched variable: ' + matchPart);
               let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? for non greedy to match first closing doublequote
@@ -481,7 +487,7 @@ export class Parser {
         const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"];
           // ComposeFields = gMsgCompose.compFields;
               
-        if (Preferences.isDebugOption('headers')) debugger;			
+        if (await Preferences.isDebugOption('headers')) debugger;			
         Util.addUsedPremiumFunction('header.' + cmd);
         let targetString = '',
             modType = '',
@@ -755,9 +761,10 @@ export class Parser {
           expand = async function(str) { 
             return await Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords);  
           };
-      if (!SmartTemplate4.calendar.bundle)
-        SmartTemplate4.calendar.init(null); // default locale
-      let cal = SmartTemplate4.calendar;
+      if (!that.calendar.isInitialized) {
+        await that.calendar.init(null); // default locale
+      }
+      let cal = that.calendar;
         
       // expensive calculations, only necessary if we deal with tokens that do time 
       if (typeof TokenMap[token]!='undefined' && (TokenMap[token] == 'reserved.time')) {
@@ -803,7 +810,7 @@ export class Parser {
       }
       
 
-      let debugTimeStrings = (Preferences.isDebugOption('timeStrings'));
+      let debugTimeStrings = (await Preferences.isDebugOption('timeStrings'));
       if (!arg) arg='';
       try {
         // for backward compatibility
@@ -840,7 +847,7 @@ export class Parser {
             break;
         }
 
-        if (Preferences.isDebugOption('tokens') && token != "X:=today") debugger;
+        if (await Preferences.isDebugOption('tokens') && token != "X:=today") debugger;
         let isUTC = offsets.whatIsUtc, params;
         switch(token) {
           case "deleteText":            // return unchanged
@@ -998,8 +1005,8 @@ export class Parser {
             
             // BIG FAT SIDE EFFECT!
             let GlobalFlags = { sigInTemplate : null }; // [issue 184] this probabaly needs to be read outside - add to composers Map?
-            let rawsig = Util.getSignatureInner(SmartTemplate4.signature, isRemoveDashes, GlobalFlags),
-                retVal = await this.getProcessedText(rawsig, idkey, composeType, true) || ""; // [issue 184] Parser recursion
+            let rawsig = Util.getSignatureInner(signature, isRemoveDashes, GlobalFlags),
+                retVal = await that.getProcessedText(rawsig, idkey, composeType, true) || ""; // [issue 184] Parser recursion
                 
             Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
             Util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
@@ -1013,7 +1020,7 @@ export class Parser {
           case "newsgroup":
             return finalize(token, getNewsgroup());
           case "language":
-            SmartTemplate4.calendar.init(removeParentheses(arg));
+            that.calendar.init(removeParentheses(arg));
             return "";
           case "spellcheck":
             // use first argument to switch dictionary language.
@@ -1037,7 +1044,7 @@ export class Parser {
             return "";
           case "X:=today":
             if (debugTimeStrings) debugger;
-            offsets.whatIsX = SmartTemplate4.XisToday;
+            offsets.whatIsX = offsets.XisToday;
             offsets.whatIsUtc = false;
             //Util.logDebugOptional ('replaceReservedWords', "Switch: Time = NOW");
             return "";
@@ -1094,7 +1101,7 @@ export class Parser {
             else {
               // internally, we may have used another relative (sub)path
               // allow nested %file%  variables + relative paths
-              parsedContent = await this.getProcessedText(fileContents, idkey, composeType, true); // [issue 184] Parser recursion
+              parsedContent = await that.getProcessedText(fileContents, idkey, composeType, true); // [issue 184] Parser recursion
             }
             // if a path was added in the meantime, we can now pop it off the stack.
             if (pL<pathArray.length) pathArray.pop(); 
@@ -1173,7 +1180,7 @@ export class Parser {
                   await modifyHeader(modHdr, 'delete', arg, ''); // no match function - this works within the same header (e.g. subject)
                   return '';
                 case "deleteFromSubject":
-                  if (Preferences.isDebugOption('parseModifier')) debugger;
+                  if (await Preferences.isDebugOption('parseModifier')) debugger;
                   await modifyHeader('subject', toks[1], arg, ''); // no match function - this works within the same header (e.g. subject)
                   return '';
                 default: 
@@ -1293,7 +1300,7 @@ export class Parser {
           "\n template path = " + currentPath || '?');
         let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
         if (isFU) {
-          // if (Preferences.isDebugOption("fileTemplates")) debugger;
+          // if (await Preferences.isDebugOption("fileTemplates")) debugger;
           try {
             // on Mac systems nsIDirectoryService key may NOT be empty!
             // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
@@ -1340,7 +1347,7 @@ export class Parser {
             if (!isAbsolute) 
               path = newPath;
             //try our new method
-            if (Preferences.getMyBoolPref("vars.file.fileTemplateMethod")) {
+            if (await Preferences.getMyBoolPref("vars.file.fileTemplateMethod")) {
               let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
                 {
                   composeType: composeType, 
@@ -1594,7 +1601,7 @@ export class Parser {
 */
  
     /*  deprecating bs code. */
-    if (Preferences.getMyBoolPref('xtodaylegacy')) {
+    if (await Preferences.getMyBoolPref('xtodaylegacy')) {
       //Now do this chaotical stuff:
       //Reset X to Today after each newline character
       //except for lines ending in { or }; breaks the omission of non-existent CC?
@@ -1612,7 +1619,7 @@ export class Parser {
       // for Draft, let's just assume html for the moment.
       if (isDraftLike) {
         msg = msg.replace(/( )+(<)|(>)( )+/gm, "$1$2$3$4");
-        if (SmartTemplate4.pref.isReplaceNewLines(idkey, composeType, false))   // [Bug 25571] let's default to NOT replacing newlines. Common seems to not save the setting!
+        if (await Preferences.identityPrefs.isReplaceNewLines(idkey, composeType, false))   // [Bug 25571] let's default to NOT replacing newlines. Common seems to not save the setting!
         { 
             msg = msg.replace(/>\n/gm, ">").replace(/\n/gm, "<br>"); 
         }
@@ -1635,7 +1642,7 @@ export class Parser {
     msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
     // AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
     msg = simplify(msg);	
-    if (Preferences.isDebugOption('regularize')) debugger;
+    if (await Preferences.isDebugOption('regularize')) debugger;
     msg = // msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); 
       await Util.replaceAsync(msg, /%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords);
       // added . for header.set / header.append / header.prefix
@@ -1660,10 +1667,10 @@ export class Parser {
     }
 
     // dump out all headers that were retrieved during regularize  
-    Util.logDebugOptional('headers', this.regularize.headersDump);
-    Util.logDebugOptional('regularize',"SmartTemplate4.regularize(" + msg + ")  ...ENDS");
+    Util.logDebugOptional('headers', that.regularize.headersDump);
+    Util.logDebugOptional('regularize',"Parser.regularize(" + msg + ")  ...ENDS");
     return msg;
-  }
+  } // regularize
 
   // -----------------------------------
   // Get processed text from template
@@ -1680,7 +1687,7 @@ export class Parser {
     // SmartTemplates.calendar.init(); // set for default locale
     let isDraftLike = !composeType 
       || flags.isFileTemplate
-      || Preferences.identityPrefs.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
+      || await Preferences.identityPrefs.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
     let regular = await this.regularize(templateText, 
         composeType, 
         composeDetails, 
@@ -1747,4 +1754,59 @@ export class Parser {
     return regular;
   }
 
+  // SmartTemplates.Calendar - from smarTempalte-main.js:921
+  // Needs to be localizable with explicite locales passed.
+  calendar = {
+    // TO DO!! 
+    addonName: null,
+    isInitialized: null,
+    init: async function(forcedLocale) {
+      Util.logIssue184(`SmartTemplatesProcess.calender.init(${forcedLocale})`);
+      let cal = this,
+          manifest = await messenger.runtime.getManifest();
+      cal.addonName = await manifest.name;
+      cal.isInitialized = true;
+      if (forcedLocale) {currentLocale = forcedLocale;}
+    },
+    currentLocale : null, // whatever was passed into %language()%
+    bundleLocale: null,
+    bundle: null,
+    list: function list() {
+      let str = "";
+      for (let i=0;i<7 ;i++) {
+        str+= (this.dayName(i)  +"("+ this.shortDayName(i) + ")/");
+      } 
+      str += "\n";
+      for (let i=0;i<12;i++){
+        str+= (this.monthName(i)+"("+ this.shortMonthName(i) + ")/");
+      }
+      return str;
+    },    
+    // the following functions SHOULD retrieve strings from our own language packs (languages supported by SmartTemplate itself)
+    // these will affect the following variables: %A% %a% %B% %b% (week days and months)
+    // OTOH: %dateshort% and %datelocal% extract their names from the language packs installed
+    dayName: function dayName(n){ 
+      Util.logIssue184(`calendar.dayName(${n})`);
+      return messenger.i18n.getMessage(`day.${(n+1)}.name`, this.addonName);
+      // return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
+    },
+    
+    shortDayName: function shortDayName(n) { 
+      Util.logIssue184(`calendar.shortDayName(${n})`);
+      return messenger.i18n.getMessage(`day.${(n+1)}.short`, this.addonName);
+      // return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
+    },
+    
+    monthName: function monthName(n){ 
+      Util.logIssue184(`calendar.monthName(${n})`);
+      return messenger.i18n.getMessage(`month.${(n+1)}.name`, this.addonName);
+      // return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
+    },
+    
+    shortMonthName: function shortMonthName(n) { 
+      Util.logIssue184(`calendar.shortMonthName(${n})`);
+      return messenger.i18n.getMessage(`month.${(n+1)}.short`, this.addonName);
+      // return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
+    }    
+  }
 }
