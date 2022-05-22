@@ -751,21 +751,29 @@ export class Parser {
   
   // hdr.get() replacement
   getAPIheader(composeDetails, hd) {
-    if (["attachments", "bcc", "body", "plainTextBody", "priority", "cc", "from", "relatedMessageId", "subject"].includes(hd)) {
-      return composeDetails[hd];
-    }
     switch (hd.toLowerCase()) {
+      case "attachments": 
+        Util.logIssue184("getAPIheader(attachments)");
+        return "";
+      case "bcc": return composeDetails.bcc;
+      case "from": return composeDetails.from;
+      case "body": return composeDetails.body;
+      case "priority": return composeDetails.priority;
+      case "plaintextbody": return composeDetails.plainTextBody;
+      case "relatedmessageid": return composeDetails.relatedMessageId;
+      case "subject": return composeDetails.subject;
+      case "type": return composeDetails.type;
       case "newsgroups": 
         return composeDetails.newsgroups;  // string or string array
-      case "followupTo": 
+      case "followupto": 
         return composeDetails.followupTo;  // ComposeRecipientList
-      case "replyTo":
+      case "replyto":
         return composeDetails.replyTo;  // ComposeRecipientList
       case "to":
         return composeDetails.to;  // ComposeRecipientList
     }
     if (hd.toLowerCase().startsWith("x-")) {
-      let x = composeDetails.customHeaders.find(x => x.name == hd);
+      let x = composeDetails.customHeaders.find(x => x.name.toLowerCase() == hd.toLowerCase());
       if (x) return x;
     }
     Util.logToConsole(`Cannot retrieve header ${hd}`);
