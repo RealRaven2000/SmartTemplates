@@ -1552,7 +1552,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates agora suporta o uso de 'clipboard' (área de transferência) como argumento para funções de manipulação de texto e cabeçalho, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(expressão regular,clipboard)%{L2}{L1}Aprimoramento do espaço reservado *selection* (seleção) em snippets para oferecer melhor suporte a nós que não são de texto. Por exemplo, agora você pode envolver uma imagem com uma sombra inserindo um snippet HTML.{L2}{L1}Configurações simplificadas para modelos de identidade (lista suspensa de contas){L2}{L1}Várias correções de compatibilidade para Thunderbird 102.{L2}"
+    "message": "{L1}SmartTemplates agora suporta o uso de 'clipboard' (área de transferência) como argumento para funções de manipulação de texto e cabeçalho, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(expressão regular,clipboard)%{L2}{L1}Espaço reservado para *selection* (seleção) aprimorado em snippets para oferecer melhor suporte à integração em seções HTML selecionadas. Por exemplo, agora você pode envolver uma imagem com uma sombra inserindo um snippet HTML.{L2}{L1}Configurações simplificadas para modelos de identidade (lista suspensa de contas){L2}{L1}Várias correções de compatibilidade para Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

@@ -1567,7 +1567,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates nyní podporuje použití 'clipboard' (schránky) jako argumentu pro funkce manipulace s textem a záhlavím, jako je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Vylepšený zástupný symbol *selection* (výběr) ve úryvcích pro lepší podporu netextových uzlů. Nyní můžete například zabalit obrázek do stínu vložením úryvku HTML.{L2}{L1}Zjednodušené nastavení pro šablony identit (rozbalovací nabídka účtů){L2}{L1}Četné opravy kompatibility pro Thunderbird 102.{L2}"
+    "message": "{L1}SmartTemplates nyní podporuje použití 'clipboard' (schránky) jako argumentu pro funkce manipulace s textem a záhlavím, jako je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Vylepšený zástupný symbol *selection* (výběr) ve úryvcích pro lepší podporu integrace do vybraných sekcí HTML. Nyní můžete například zabalit obrázek do stínu vložením úryvku HTML.{L2}{L1}Zjednodušené nastavení pro šablony identit (rozbalovací nabídka účtů){L2}{L1}Četné opravy kompatibility pro Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
