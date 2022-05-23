@@ -27,7 +27,11 @@
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox align="center" id="identityToolBar">
-			<label value="__MSG_pref_server_desc__:"/>
+			<label value="__MSG_pref_server_desc__:" 
+          id="identityLabel"
+          class="contextConfig"
+          oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.identities');"
+          />
 			<menulist id="msgIdentity"
 			          class="identity-menulist"
 			          label="__MSG_pref_server_def__"
@@ -47,30 +51,29 @@
             tooltiptext="__MSG_tip.fileTemplates__"
             />
 				<toolbarbutton id="btnSaveTemplate"
-											 class="toolbarbutton-1 chromeclass-toolbar-additional"
-											 tooltiptext="__MSG_btnSaveTemplate.tooltip__"
-											 oncommand="SmartTemplate4.Settings.store();"/>
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              tooltiptext="__MSG_btnSaveTemplate.tooltip__"
+              oncommand="SmartTemplate4.Settings.store();"/>
 				<toolbarbutton id="btnLoadTemplate"
-											 class="toolbarbutton-1 chromeclass-toolbar-additional"
-											 tooltiptext="__MSG_btnLoadTemplate.tooltip__"
-											 oncommand="SmartTemplate4.Settings.load();"/>
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              tooltiptext="__MSG_btnLoadTemplate.tooltip__"
+              oncommand="SmartTemplate4.Settings.load();"/>
 				<toolbarbutton id="btnYouTube"
-											 class="toolbarbutton-1 chromeclass-toolbar-additional"
-											 tooltiptext="__MSG_btnYouTube.tooltip__"
-											 oncommand="SmartTemplate4.Util.showYouTubePage();" 
-											 />
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              tooltiptext="__MSG_btnYouTube.tooltip__"
+              oncommand="SmartTemplate4.Util.showYouTubePage();"/>
+        <toolbarbutton id="btnAdvanced"
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              tooltiptext="__MSG_advanced.label__"
+              oncommand="SmartTemplate4.Settings.openAdvanced();"/>
+        <toolbarbutton id="btnCloseAdvanced"
+              class="toolbarbutton-1 chromeclass-toolbar-additional"
+              tooltiptext="__MSG_close.label__"
+              oncommand="SmartTemplate4.Settings.closeAdvanced();"
+              hidden="true"/>
       </toolbar>
 
 			<spacer flex="1" />
-			<button id="btnAdvanced"
-			        class="buttonIcon"
-			        label="__MSG_advanced.label__"
-			        oncommand="SmartTemplate4.Settings.openAdvanced();"/>
-			<button id="btnCloseAdvanced"
-			        class="buttonIcon"
-			        label="__MSG_close.label__"
-			        oncommand="SmartTemplate4.Settings.closeAdvanced();"
-			        hidden="true"/>
 		</hbox>
 
 		<vbox id="decksWrapper" flex="1">
@@ -558,6 +561,7 @@
 											label="__MSG_pref_removeSig.label__"
 											preference ="extensions.smartTemplate4.removeSigOnIdChangeAfterEdits"/>
 								<checkbox id="chkSignature"
+                      class="contextConfig"
 											label="__MSG_pref_parseSignature__"
 											tooltiptext="__MSG_pref_parseSignature_tip__"
 											oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.signature');return false;"
@@ -596,6 +600,7 @@
 							<vbox>
 								<hbox>
 									<checkbox id="chkStatusButton"
+                        class="contextConfig"
 												label="__MSG_pref_showStatusIcon.label__"
 												preference="extensions.smartTemplate4.showStatusIcon"
 												oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'extensions.smartTemplate4.statusIconLabelMode'); SmartTemplate4.updateStatusBar(this.checked);"
@@ -707,6 +712,7 @@
 							<hbox>
 								<checkbox id="chkDebug"
 										  label="__MSG_pref_debug_check__"
+                      class="contextConfig"
 										  tooltiptext="__MSG_pref_debug_tip__"
 										  oncontextmenu="SmartTemplate4.Util.showAboutConfig(this, 'smartTemplate4.debug');return false;"
 										  preference="extensions.smartTemplate4.debug"/>

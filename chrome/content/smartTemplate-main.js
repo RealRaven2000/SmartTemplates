@@ -166,6 +166,7 @@ END LICENSE BLOCK
     #   
     # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
     # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
+    # [issue 185] Simplify Settings - Accounts dropdown and toolbar buttons
     # Fix xhtml attribute syntax (no spaces allowed in "attribute=value")
     # Moved clipboard reading to Util module
     # [issue 184] WIP: Move template processing into background script

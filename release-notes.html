@@ -5,12 +5,6 @@ The full change log with screen shots <a href="https://smarttemplates.quickfolde
 
 <b>Enhancements 3.12</b>
 <ul>
-<li>Compatibility changes for Thunderbird ESR 102:<br>
-Increased minimum version number<br>
-Fixed notifications<br>
-Fixed setting focus in composer<br>
-Stabilized code when reading external signatures or including external files
-</li>
 <li>
 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/183">[issue 183]</a> SmartTemplates now supports using "clipboard" as argument for text and header manipulation functions
 
@@ -24,9 +18,10 @@ Stabilized code when reading external signatures or including external files
 <b>Template text and Quote replacements</b>
 <ul>
   <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
-  <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
+  <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part with clipboard contents</li>
 </ul>
 </li>
+
 <li>
 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Improved *selection* placeholder in Snippets to better support non-text nodes.
 For example, you can now wrap an image with some HTML to add a shadow with this HTML snippet. Just click on the image and then load the following Smart Template:
@@ -39,6 +34,35 @@ For example, you can now wrap an image with some HTML to add a shadow with this 
 
 This will add a nice outlins and drop shadow. There are many more creative way to add functionality to the Thunderbird Composer using the SmartTemplates Snippets button, by using HTML and style rules.
 </li>
+
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Simplified and modernized SmartTemplates Settings - Accounts dropdown and toolbar buttons.
+
+The accounts dropdown often showed squashed buttons at the top right due to long labels, also the icons 
+were confusing - I have decided to streamline this by taking the following steps:
+  <ul>
+    <li> removed the "Advanced" label and using the widely used [...] icon to epand dialog to advanced settings</li>
+    <li> used monochrome scaleable svg icons for most of the toolbarbutton </li>
+    <li> removed the account name from the account label - the identity name should be enough</li>
+    <li> reduced space between buttons to save even more space</li>
+  </ul>
+</li>
+
+<li>Compatibility changes for Thunderbird ESR 102:<br>
+Increased minimum version number<br>
+Fixed notifications<br>
+Fixed setting focus in composer<br>
+Stabilized code when reading external signatures or including external files
+</li>
+
+<li>Ongoing work: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/184">[issue 184]</a>
+Move template processing into background script
+
+In order to use ComposeScripts and allow integration of SmartTemplates with other mail extensions (not just legacy) all  template / string processing and the insertion into Composer need to be moved into the background script. The new code will be implemented on the current ESR branch (currently 91, soon to be 102) but not activated until it is ready.
+
+Once the main parser runs within background we are an essential step closer to conversion to a native API mail extension [mx] without legacy code and without requiring full permissions to the user's PC. However it is likely that things like UI integration (3 buttons in composer toolbar), full access to external files, access to certain MIME headers etc. might then still not possible with non-experimental Add-ons.
+</li>
+
 <li>
 New Greek translation by StratosL (Work in Progress)
 </li>

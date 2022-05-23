@@ -940,7 +940,17 @@ SmartTemplate4.Settings = {
 
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
-				theMenu.appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
+        
+        // remove account name 
+        let idText = "", acc = "";
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showIdKey")) {
+          idText = identity.key + " - ";
+        }
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showAccountName")) {
+          acc = account.incomingServer.prettyName + " - ";
+        }
+        let lbl = idText + acc + identity.identityName;
+				theMenu.appendItem(lbl, identity.key, "");
 				this.addIdentity(identity.key);
 			}
 		}

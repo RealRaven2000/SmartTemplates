@@ -1555,7 +1555,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Modifier le texte dans le corps du courrier transféré [en ligne]. Cela fonctionne maintenant dans les fonctions : %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Transfert automatique / Réponse automatique avec SmartTemplate via des règles de filtrage - cela signifie vous pouvez déclencher n'importe quel modèle à l'aide de filtres (à l'aide de FiltaQuilla 3.4). Exclusif aux titulaires de licence SmartTemplates Pro.{L2}{L1} Commande %suppressQuoteHeaders% pour supprimer tous les en-têtes de citation.{L2}"
+    "message": "{L1}SmartTemplates prend désormais en charge l'utilisation de 'clipboard' (presse-papiers) comme argument pour les fonctions de manipulation de texte et d'en-tête telles que %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(Regular Expression,clipboard)%{L2}{L1}Amélioration de l'espace réservé *selection* (sélection) dans les extraits pour mieux prendre en charge les nœuds non textuels. Par exemple, vous pouvez désormais envelopper une image avec une ombre en insérant un extrait de code HTML.{L2}{L1}Paramètres simplifiés pour les modèles d'identité (liste déroulante des comptes){L2}{L1}Nombreux correctifs de compatibilité pour Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

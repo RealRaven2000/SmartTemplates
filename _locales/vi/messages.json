@@ -245,7 +245,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Змінити текст у тілі пересланої пошти [inline]. Тепер це працює у функціях: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Автоматичне пересилання/автоматична відповідь за допомогою SmartTemplate за допомогою правил фільтрування - це означає, що це означає ви можете запустити будь-який шаблон за допомогою фільтрів (за допомогою FiltaQuilla 3.4). Dành riêng cho người được cấp phép SmartTemplates Pro.{L2}{L1} Команда %suppressQuoteHeaders% для придушення всіх заголовків цитат.{L2}"
+    "message": "{L1} SmartTemplates hiện hỗ trợ sử dụng 'clipboard' (clipboard) làm đối số cho các chức năng thao tác văn bản và tiêu đề, chẳng hạn như %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(Biểu thức thông thường,clipboard)% %replaceQuotedText(Biểu thức thông thường,clipboard)% {L2} {L1} Trình giữ chỗ *selection* (lựa chọn) được cải thiện trong Snippets để hỗ trợ tốt hơn các nút không phải văn bản. Ví dụ: bây giờ bạn có thể bọc một hình ảnh bằng bóng dù chèn đoạn mã HTML. {L2} {L1} Cài đặt đơn giản cho các mẫu nhận dạng (tài khoản thả xuống) {L2} {L1} Nhiều bản sửa lỗi về khả năng tương thích cho Thunderbird 102. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

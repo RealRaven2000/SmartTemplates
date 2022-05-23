@@ -21,6 +21,8 @@ pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.mime.resolveAB.displayName", false);
 pref("extensions.smartTemplate4.mime.defaultFormat","name,bracketMail(angle)");
+pref("extensions.smartTemplate4.identities.showAccountName", false);
+pref("extensions.smartTemplate4.identities.showIdKey", false);
 pref("extensions.smartTemplate4.names.delimiter", ",");
 pref("extensions.smartTemplate4.names.capitalize", true);
 pref("extensions.smartTemplate4.names.quoteIfComma", false);

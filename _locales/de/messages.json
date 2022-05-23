@@ -1563,7 +1563,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Kann jetxt den Text im Hauptteil von weitergeleiteten E-Mails verändern [inline]. Das geht jetzt mit den Funktionen: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisches Weiterleiten / Automatisches Antworten mit SmartTemplate durch Filterregeln - das heißt Sie können jede Vorlage mit Filtern auslösen (mit FiltaQuilla 3.4). Exklusiv für SmartTemplates Pro-Lizenznehmer.{L2}{L1} %suppressQuoteHeaders%-Befehl, um alle Zitat-Header zu unterdrücken.{L2}"
+    "message": "{L1}SmartTemplates unterstützt jetzt die Verwendung von 'clipboard' (Zwischenablage) als Argument für Text- und Header-Manipulationsfunktionen wie %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Verbesserter *selection* (Auswahl)-Platzhalter in Snippets, um Nicht-Text-Knoten besser zu unterstützen. Beispielsweise können Sie jetzt ein Bild mit einem Schatten umhüllen, indem Sie ein HTML-Snippet einfügen.{L2}{L1}Vereinfachte Einstellungen für Identitätsvorlagen (Konten-Dropdown){L2}{L1}Zahlreiche Kompatibilitätskorrekturen für Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

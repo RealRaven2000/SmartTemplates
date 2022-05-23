@@ -1619,7 +1619,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}転送されたメールの本文のテキストを変更します[インライン]。 これは次の関数で機能するようになりました：％deleteQuotedText（）％、％replaceQuotedText（）％、％deleteQuotedTags（）％、％replaceQuotedTags（）％。{L2} {L1}フィルタールールによるSmartTemplateによる自動転送/自動応答-これは フィルタを使用して（FiltaQuilla 3.4を使用して）任意のテンプレートをトリガーできます。 SmartTemplatesProライセンシー専用。{L2} {L1}％suppressQuoteHeaders％コマンドを使用して、すべての引用符ヘッダーを抑制します。{L2}"
+    "message": "{L1} SmartTemplatesは、「clipboard」 の使用をサポートするようになりました %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)% などのテキストおよびヘッダー操作関数の引数として{L2} {L1}非テキストノードをより適切にサポートするために、スニペットの *selection* （選択）プレースホルダーを改善しました。 たとえば、HTMLスニペットを挿入しても、画像を影で囲むことができるようになりました。{L2} {L1} IDテンプレートの設定の簡略化（アカウントのドロップダウン）{L2} {L1}Thunderbird102の多数の互換性修正。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

@@ -1546,7 +1546,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Modificar el texto en el cuerpo del correo reenviado [en línea]. Esto ahora funciona en las funciones: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenvío automático/Respuesta automática con SmartTemplate mediante reglas de filtro; esto significa puede activar cualquier plantilla usando filtros (usando FiltaQuilla 3.4). Exclusivo para licenciatarios de SmartTemplates Pro.{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos los encabezados de cotizaciones.{L2}"
+    "message": "{L1}SmartTemplates ahora admite el uso de 'clipboard' (portapapeles) como argumento para funciones de manipulación de texto y encabezado, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Se mejoró el marcador de posición *selection* (selección) en Snippets para admitir mejor los nodos que no son de texto. Por ejemplo, ahora puede envolver una imagen con una sombra mediante la inserción de un fragmento de código HTML.{L2}{L1}Configuración simplificada para plantillas de identidad (menú desplegable de cuentas){L2}{L1}Numerosas correcciones de compatibilidad para Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

@@ -1664,7 +1664,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message": "{L1}Muokkaa edelleenlähetetyn postin tekstiä [inline]. Tämä toimii nyt seuraavissa funktioissa: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automaattinen edelleenlähetys / automaattinen vastaus SmartTemplatella suodatinsääntöjen kautta - tämä tarkoittaa voit laukaista minkä tahansa mallin suodattimilla (FiltaQuilla 3.4:llä). Ainoastaan SmartTemplates Pro -lisenssinhaltijoille.{L2}{L1} %suppressQuoteHeaders% -komento estää kaikki lainausotsikot.{L2}"
+    "message": "{L1}SmartTemplates tukee nyt 'clipboard' (leikepöydän) käyttöä argumenttina tekstin ja otsikon käsittelytoiminnoille, kuten %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Parannettu *selection* (valinta) -paikkamerkki katkelmissa tukemaan paremmin ei-tekstisolmuja. Voit nyt esimerkiksi kääriä kuvan varjolle lisäämällä HTML-koodinpätkän.{L2}{L1}Identiteettimallien yksinkertaistetut asetukset (avattava tilivalikko){L2}{L1}Useita yhteensopivuuskorjauksia Thunderbird 102:lle.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
