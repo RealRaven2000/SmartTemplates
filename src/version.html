@@ -310,7 +310,22 @@ permalink: version.html
       Fixed setting focus in composer<br>
       Stabilized code when reading external signatures or including files
     </li>
-    
+    <li>
+      Ongoing work: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/184">[issue 184]</a>
+      Move template processing into background script
+      <p>
+        In order to use ComposeScripts and avllow integration of SmartTemplates with other mail extensions 
+        (not just legacy) all  template / string processing and the insertion into Composer need to be 
+        moved into the background script. The new code will be implemented on the current ESR 
+        branch (currently 91, soon to be 102) but not activated until it is ready.
+      </p>
+      <p>
+        Once the main parser runs within background we are an essential step closer to conversion to 
+        a native API mail extension [mx] without legacy code and without requiring full permissions 
+        to the user's PC. However it is likely that things like UI integration (3 buttons in composer 
+        toolbar), full access to external files, access to certain MIME headers etc. might then 
+        still not possible with non-experimental Add-ons
+      </p>
   </ul>
 </li> 
 
