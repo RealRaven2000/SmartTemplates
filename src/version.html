@@ -232,7 +232,7 @@ permalink: version.html
 		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.12 - WIP</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">78.0 - 102.0</span> 
+			<span class="thunderbird">78.0 - 102.*</span> 
 		</span>
   </h4>
   <ul>
@@ -304,6 +304,27 @@ permalink: version.html
       </p>
     </li>
     <h5 class="inList"><span class="inListTitle">Bug Fixes / Maintenance</span></h5>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/186">[issue 186]</a>
+      Fixed various issues in <code class="inline">bracketMail</code> parameter in %to% / %from% etc:
+      <ul>
+        <li>
+          You can now use bracketMail without the parentheses: <code>%to(name,bracketMail)%</code> 
+          this will default to wrapping the email in the standard of angled brackets: &lt;mail@domain.com&gt;
+        </li>
+        <li>
+          Explict delimiters given as parameters should not repeat on all following fields. <br>
+          <code>%to(bracketName({;},mail)%</code> this will generate
+          "{Fred} mail@domain.com"  and  not the faulty "{Fred} {mail@domain.com}"
+        </li>
+        <li>
+          When using deferred fields (e.g. when using %to(bracketMail)% within a write template), angle brackets used to be
+          encoded twice leading to an output of "&amplt;mail@domain.com&ampgt;" 
+          instead of the expected "&lt;mail@domain.com&gt;"
+          when the user clicks to update the field.
+        </li>
+      </ul>
+    </li>
     <li>Compatibility changes for Thunderbird ESR 102:<br>
       Increased minimum version number<br>
       Fixed notifications<br>
@@ -326,6 +347,7 @@ permalink: version.html
         toolbar), full access to external files, access to certain MIME headers etc. might then 
         still not possible with non-experimental Add-ons.
       </p>
+    </li>
   </ul>
 </li> 
 
