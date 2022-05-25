@@ -1109,8 +1109,8 @@ export let Util = {
     return await navigator.clipboard.readText();
   },
   
-  clipboardWrite: async function() {
-    return await navigator.clipboard.writeText();
+  clipboardWrite: async function(text) {
+    return await navigator.clipboard.writeText(text);
   },
   
   // async version of string.replace()

@@ -1548,7 +1548,7 @@ SmartTemplate4.Util = {
 							let token = SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
 							// if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
 							if (token || isReplaceField) {
-								el.innerText = token;
+								el.innerHTML = token; // [issue 186] - mimeDecoder already HTML encodes?
 								resolved = true;
 							}
 						}
@@ -2697,8 +2697,19 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.logException('util.clipboardRead() failed', ex);
     }
     return cp; 
-  }
+  },
   
+  clipboardWrite: function(txt) {
+    try {
+      let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+      oClipBoard.copyString(txt);
+      return true;
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logException("Failed copying string to clipboard!", ex);
+      return false;
+    }
+  }
 };  // ST4.Util
 
 

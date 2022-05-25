@@ -1239,7 +1239,7 @@ export class Parser {
             }
             // [issue 183]
             if (argument=="clipboard") {
-              argument = Util.clipboardRead();
+              argument = await Util.clipboardRead();
             }
             break;
           case "matchFromSubject":
@@ -1397,7 +1397,6 @@ export class Parser {
                 try {
                   Util.logDebug("Setting priority to: " + found);
                   composeDetails.priority = found;
-                  updatePriorityToolbarButton(found);
                 }
                 catch(ex) {
                   Util.logException('set priority ', ex);
@@ -1427,33 +1426,14 @@ export class Parser {
           if (hdr=='from' && composeDetails.from && cmd=='set') {
             // %header.set(from,"postmaster@hotmail.com")%
             // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
+            composeDetails.from = fromAddress;
             // only accepts mail addresses from existing identities - aliases included
-            let identityList = document.getElementById("msgIdentity"), // GetMsgIdentityElement(), FAILED
-                fE = MailServices.headerParser.parseEncodedHeader(composeDetails.from, null),
-                fromAddress = (fE && fE.length) ? fE[0].email : composeDetails.from, 
-                fromName = (fE && fE.length) ? fE[0].name : null,
-                idKey = await Util.getIdentityKeyFromMail(fromAddress); 
+            let idKey = util.getIdentityKeyFromMail(fromAddress); 
             
             if (!idKey) {
-              Util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
+              util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
             }
-            else {
-              let curId = identityList.selectedItem.getAttribute('identitykey'),
-                  currentHeader = MailServices.headerParser.parseEncodedHeader(identityList.selectedItem.getAttribute('value'))[0];
-              
-              // support - if we want to change the name:
-              if (curId != idKey || 
-                  fromName && currentHeader.name != fromName)
-              {
-                MakeFromFieldEditable(true);
-                if (fromName) {
-                  identityList.value = fromName + " <" + fromAddress + ">";
-                }
-                else
-                  identityList.value = fromAddress;
-              }
-              LoadIdentity(true);
-            }
+            // after processing LoadIdentity(true) may be triggered by setting messenger.compose.setComposeDetails() !!
             // there is a problem with dark themes - when editing the from address the text remains black.
             // identityList.setAttribute("editable", "false");
             // identityList.removeAttribute("editable");
@@ -1464,15 +1444,8 @@ export class Parser {
             // except for the very first one.
             // [issue 98] - %header.set(to,"[addressee]")% no longer working
             //            - addressingWidget was retired!
-            let adContainer = window.document.getElementById("toAddrContainer");
-            if (adContainer) {
-              let adPills = adContainer.querySelectorAll("mail-address-pill"); // first match if an address pill exists
-              for (let pill of adPills) {
-                adContainer.removeChild(pill);
-              }
-            }
-            
-            CompFields2Recipients(composeDetails);
+            // [mx] DON't DO ANYTHING
+            Util.logIssue184("changed address header ...");
           }
         }
         catch(ex) {
@@ -1891,7 +1864,7 @@ export class Parser {
             Util.addUsedPremiumFunction('conditionalText');
             return insertConditionalText(arg);
           case "clipboard":
-            return Util.clipboardRead();
+            return await Util.clipboardRead();
 
           default:
             // [Bug 25904]

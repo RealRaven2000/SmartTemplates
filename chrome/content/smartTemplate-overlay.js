@@ -475,6 +475,7 @@ SmartTemplate4.mimeDecoder = {
 	split: function (addrstr, charset, format, bypassCharsetDecoder)	{
 		const util = SmartTemplate4.Util,
 		      prefs = SmartTemplate4.Preferences;
+    let isWriteClipboard; // [issue 187]
 	  // jcranmer: you want to use parseHeadersWithArray
 		//           that gives you three arrays
 	  //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -494,7 +495,8 @@ SmartTemplate4.mimeDecoder = {
 		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
     // argType = Mail or Name to support bracketMail and bracketName
     function getBracketAddressArgs(format, argType) { 
-      let reg = new RegExp('bracket' + argType + '\\<(.+?)\\>', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail<*> !
+      //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
+      let reg = new RegExp('bracket' + argType + '\\{(.+?)\\}', 'g'), 
           ar = reg.exec(format);
       if (ar && ar.length>1) {
         let args = ar[1];
@@ -717,7 +719,9 @@ SmartTemplate4.mimeDecoder = {
 			// Escape "," in mail addresses
 			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
-			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+			                   (s) => { 
+                          return s.replace(/-%-/g, ",").replace(/%%/g, "%"); 
+                         });
 			// name or/and address. (wraps email into <  > )
 			address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
 			
@@ -855,13 +859,11 @@ SmartTemplate4.mimeDecoder = {
       // build the part!
 			let addressElements = [],
 			    foundNonOptionalParts = false,
-			    open = '', 
-					close = '',
-					bracketsAreOptional = false; // bracket Elements
+			    bracketsAreOptional = false; // bracket Elements
           
       for (let j=0; j<formatArray.length; j++)  {
         let element = formatArray[j],
-            part = '',
+            part = "", open = "", close = "",
 						isOptionalPart = false,
 						partKeyWord = element.field; 
 						
@@ -1022,14 +1024,19 @@ SmartTemplate4.mimeDecoder = {
             part = getCardProperty("Notes");
             break;
           case 'addressbook':
-            part = "";          
+            part = "";
+          case 'toclipboard':
+            isWriteClipboard = true;
+            part = "";
+            break;
           default:
-            let bM = (partKeyWord.indexOf('bracketMail<')==0),
-                bN = (partKeyWord.indexOf('bracketName<')==0);
+            // [issue 186] allow using bracketMail / bracketName without parentheses
+            let bM = (partKeyWord.indexOf('bracketMail')==0),   // bracketMail{
+                bN = (partKeyWord.indexOf('bracketName')==0);   // bracketName{
             if (bM || bN) {
               if (bM) {
                 [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
-                part = emailAddress ?  emailAddress : ''; // adding brackets later!
+                part = emailAddress || ""; // adding brackets later!
               }
               else {
 								if (isGuessFromAddressPart || fullName) {
@@ -1038,7 +1045,7 @@ SmartTemplate4.mimeDecoder = {
 									part = fN ? fN : '';
 								}
 								else
-									part = '';
+									part = "";
               }
             }
             break;
@@ -1063,7 +1070,7 @@ SmartTemplate4.mimeDecoder = {
 					continue;
         // append the next part if not empty
         if (aElement.part.length>0) {  // [issue 153]
-          if (addressField.length) addressField += ' '; // space to append next parts
+          if (addressField.length) addressField += " "; // space to append next parts
 					// if there is only one element and brackets param is prefixed with ??
 					// e.g. %from(name,bracketMail(??- {,}))%
 					// Name - {email}
@@ -1078,6 +1085,12 @@ SmartTemplate4.mimeDecoder = {
       util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
       addresses += addressField;
 		}
+    
+    if (isWriteClipboard) {
+      util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
+      util.clipboardWrite(addresses);
+      addresses = "";
+    }
 		return addresses;
 	} // split
 };
@@ -3159,11 +3172,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
 	}
-  // replace round brackets of bracketMail() with <> - using the second (=inner) match group
+  // replace round brackets of bracketMail() with {} - using the second (=inner) match group
   // this makes it possible to nest functions!
   // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
-	msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
+	msg = // msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
+        msg.replace(/%(.*)(bracketMail\(([^)]*))\)/gm, "%$1bracketMail\{$3\}")
 	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
+        msg.replace(/%(.*)(bracketName\(([^)]*))\)/gm, "%$1bracketName\{$3\}");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
