@@ -396,7 +396,6 @@ export let Util = {
 			// Set Time - add Timezone offset
 			tm.setTime(time / 1000 + (timezone) * 60 * 1000);
 			let d02 = function(val) { return ("0" + val).replace(/.(..)/, "$1"); },
-			    cal = SmartTemplate4.calendar,
 			    isUTC = offsets.whatIsUtc,
 					year = isUTC ? tm.getUTCFullYear().toString() : tm.getFullYear().toString(),
 					month = isUTC ? tm.getUTCMonth() : tm.getMonth(),
@@ -431,19 +430,24 @@ export let Util = {
 					.replace('a', '##a')
 					.replace('p1', '##p1')
 					.replace('p2', '##p2')
-					.replace('p', '##p')
+					.replace('p', '##p');
 				
 			timeString=
 			  timeString
 				  .replace('##t', isUTC ? 'UTC' : Util.getTimeZoneAbbrev(tm, false))
-					.replace('##B', cal.monthName(month))
-					.replace('##b', cal.shortMonthName(month))
-				  .replace('##A', cal.dayName(tm.getDay()))
-					.replace('##a', cal.shortDayName(tm.getDay()))
 					.replace('##p1', hour < 12 ? "a.m." : "p.m.")
 					.replace('##p2', hour < 12 ? "A.M." : "P.M.")
-					.replace('##p', hour < 12 ? "AM" : "PM")
-					
+					.replace('##p', hour < 12 ? "AM" : "PM");
+      
+      let calendarParams = ['##B','##b','##A','##a'];
+      if (calendarParams.some(par => timeString.includes(par)))  {
+        timeString =
+          timeString		
+            .replace('##B', Util.calendar.monthName(month))
+            .replace('##b', Util.calendar.shortMonthName(month))
+            .replace('##A', Util.calendar.dayName(tm.getDay()))
+            .replace('##a', Util.calendar.shortDayName(tm.getDay()));
+      }
 					
 			Util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
 			return timeString;
@@ -454,6 +458,43 @@ export let Util = {
 		}
 		return '';
 	} ,
+  
+  // from smartTempalte-main.js:921
+  calendar: {
+    addonName: null,
+    isInitialized: null,
+    init: async function(forcedLocale) {
+      Util.logIssue184(`SmartTemplatesProcess.calender.init(${forcedLocale})`);
+      let cal = this,
+          manifest = await messenger.runtime.getManifest();
+      cal.addonName = await manifest.name;
+      cal.isInitialized = true;
+      if (forcedLocale) {currentLocale = forcedLocale;}
+    },
+    dayName: function dayName(n){ 
+      Util.logIssue184(`calendar.dayName(${n})`);
+      return messenger.i18n.getMessage(`day.${(n+1)}.name`, this.addonName);
+      // return this.bundle.GetStringFromName("day." + (n + 1) + ".name");
+    },
+    
+    shortDayName: function shortDayName(n) { 
+      Util.logIssue184(`calendar.shortDayName(${n})`);
+      return messenger.i18n.getMessage(`day.${(n+1)}.short`, this.addonName);
+      // return this.bundle.GetStringFromName("day." + (n + 1) + ".short");
+    },
+    
+    monthName: function monthName(n){ 
+      Util.logIssue184(`calendar.monthName(${n})`);
+      return messenger.i18n.getMessage(`month.${(n+1)}.name`, this.addonName);
+      // return this.bundle.GetStringFromName("month." + (n + 1) + ".name");
+    },
+    
+    shortMonthName: function shortMonthName(n) { 
+      Util.logIssue184(`calendar.shortMonthName(${n})`);
+      return messenger.i18n.getMessage(`month.${(n+1)}.short`, this.addonName);
+      // return this.bundle.GetStringFromName("month." + (n + 1) + ".short");
+    }    
+  },
   
   // create an empty offsets struct, to replace SmartTemplate4.whatIs globals
   defaultOffsets: function() {
@@ -1068,31 +1109,36 @@ export let Util = {
     return await navigator.clipboard.readText();
   },
   
+  clipboardWrite: async function() {
+    return await navigator.clipboard.writeText();
+  },
   
+  // async version of string.replace()
+  // takes an asynchronous callback function as last argument.
   replaceAsync: async function(string, searchValue, replacer) {
     /*
     https://www.npmjs.com/package/string-replace-async/v/3.0.2
     The MIT License (MIT)
 
-Copyright (c) Dmitrii Sobolev <disobolev@icloud.com> (github.com/dsblv)
+    Copyright (c) Dmitrii Sobolev <disobolev@icloud.com> (github.com/dsblv)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
     */
     try {
       if (typeof replacer === "function") {

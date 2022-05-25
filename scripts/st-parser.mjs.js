@@ -21,7 +21,8 @@ function escapeHtml(str) {
 }
   
 export class Parser { 
-  constructor() {
+  constructor(info) {
+    this.info = info;
     this.InvalidReservedWords = []; // Util.displayNotAllowedMessage(reservedWord); after processing!
     this.mimeDecoder = { // from smartTemplate.overlay.js
       MimePrefs: {
@@ -142,8 +143,9 @@ export class Parser {
       // addrstr - comma separated string of address-parts
       // charset - character set of target string (probably silly to have one for all)
       // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail(), initial
-      split: function (addrstr, charset, format, bypassCharsetDecoder)	{
+      split: async function (addrstr, charset, format, bypassCharsetDecoder)	{
         let that = this;
+        let isWriteClipboard; // [issue 187]
         // jcranmer: you want to use parseHeadersWithArray
         //           that gives you three arrays
         //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -163,7 +165,8 @@ export class Parser {
         function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
         // argType = Mail or Name to support bracketMail and bracketName
         function getBracketAddressArgs(format, argType) { 
-          let reg = new RegExp('bracket' + argType + '\\<(.+?)\\>', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail<*> !
+		      //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
+		      let reg = new RegExp('bracket' + argType + '\\{(.+?)\\}', 'g'), 
               ar = reg.exec(format);
           if (ar && ar.length>1) {
             let args = ar[1];
@@ -511,13 +514,11 @@ export class Parser {
           // build the part!
           let addressElements = [],
               foundNonOptionalParts = false,
-              open = '', 
-              close = '',
               bracketsAreOptional = false; // bracket Elements
               
           for (let j=0; j<formatArray.length; j++)  {
             let element = formatArray[j],
-                part = '',
+                part = "", open = "", close = "",
                 isOptionalPart = false,
                 partKeyWord = element.field; 
                 
@@ -679,13 +680,18 @@ export class Parser {
                 break;
               case 'addressbook':
                 part = "";          
+              case 'toclipboard':
+                isWriteClipboard = true;
+                part = "";
+                break;
               default:
-                let bM = (partKeyWord.indexOf('bracketMail<')==0),
-                    bN = (partKeyWord.indexOf('bracketName<')==0);
+                // [issue 186] allow using bracketMail / bracketName without parentheses
+                let bM = (partKeyWord.indexOf('bracketMail')==0),
+                    bN = (partKeyWord.indexOf('bracketName')==0);
                 if (bM || bN) {
                   if (bM) {
                     [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
-                    part = emailAddress ?  emailAddress : ''; // adding brackets later!
+                    part = emailAddress || ""; // adding brackets later!
                   }
                   else {
                     if (isGuessFromAddressPart || fullName) {
@@ -694,7 +700,7 @@ export class Parser {
                       part = fN ? fN : '';
                     }
                     else
-                      part = '';
+                      part = "";
                   }
                 }
                 break;
@@ -719,7 +725,7 @@ export class Parser {
               continue;
             // append the next part if not empty
             if (aElement.part.length>0) {  // [issue 153]
-              if (addressField.length) addressField += ' '; // space to append next parts
+              if (addressField.length) addressField += " "; // space to append next parts
               // if there is only one element and brackets param is prefixed with ??
               // e.g. %from(name,bracketMail(??- {,}))%
               // Name - {email}
@@ -734,10 +740,14 @@ export class Parser {
           Util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
           addresses += addressField;
         }
+        if (isWriteClipboard) {
+          Util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
+          await Util.clipboardWrite(addresses); // need to make split async!
+          addresses = "";
+        }
         return addresses;
       } // split
 
-      
     }
   }
 
@@ -760,7 +770,9 @@ export class Parser {
       case "body": return composeDetails.body;
       case "priority": return composeDetails.priority;
       case "plaintextbody": return composeDetails.plainTextBody;
-      case "relatedmessageid": return composeDetails.relatedMessageId;
+      
+      case "relatedmessageid": return composeDetails.relatedMessageId; // to retrieve original email! call getFull to get headers
+      
       case "subject": return composeDetails.subject;
       case "type": return composeDetails.type;
       case "newsgroups": 
@@ -834,11 +846,11 @@ export class Parser {
 
     // AG: I think this function is designed to break out a more specialized variable
     // such as %toname()% to a simpler one, like %To%
-    function simplify(aString) {
+    async function simplify(aString) {
       // Check existence of a header related to the reserved word.
       // str = smartTemplate token, e.g. %subject%
       // reserved words : these are words about which we know are not headers!
-      function classifyReservedWord(str, reservedWord, param) {
+      async function classifyReservedWord(str, reservedWord, param) {
         try {
           let removeParentheses = (arg) => {return arg ? arg.substr(1,arg.length-2) : ""},
               paramArray = removeParentheses(param).split(',');
@@ -856,7 +868,7 @@ export class Parser {
               Util.logDebugOptional("regularize","check whether " + reservedWord + " " + param + " returns content...");
               // cannot determine charset currently
               let charset = null, // gMsgCompose.compFields.characterSet,
-                  headerValue = mime.split(addressHdr, charset, param);
+                  headerValue = await mime.split(addressHdr, charset, param);
               if (!headerValue) {
                 Util.logDebugOptional("regularize","This %" + reservedWord + "% variable returned nothing.");
                 addressHdr = "";
@@ -901,20 +913,20 @@ export class Parser {
         }
       }
 
-      function checkReservedWords(str, strInBrackets) {
+      async function checkReservedWords(str, strInBrackets) {
         // I think this first step is just replacing special functions with general ones.
         // E.g.: %tomail%(z) = %To%(z)
         // also removes optional [[ CC ]] parts.
         // this replaces empty cc
         // problem if string contains ( or ) it won't work
-        let isOptionalAB = (strInBrackets.includes("%identity") && strInBrackets.includes('addressbook')),
-            generalFunction = strInBrackets.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+        let isOptionalAB = (strInBrackets.includes("%identity") && strInBrackets.includes('addressbook'));
 
         // next: if it doesn't contain %, delete the string
         // preserve square brackets for all genuinely optional stuff
         // Util.isAddressHeader(token) ?
         if (isOptionalAB)
           return str.replace(/^[^%]*$/, "");
+        let generalFunction = await Util.replaceAsync(strInBrackets, /%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
         return generalFunction.replace(/^[^%]*$/, "");
       }
       
@@ -925,19 +937,19 @@ export class Parser {
       }
       */
 
-      Util.logDebugOptional('regularize', 'simplify()');
+      Util.logDebugOptional("regularize", "simplify()");
 
       // [AG] First Step: use the checkReservedWords function to process any "broken out" parts that are embedded in {  .. } pairs
       // aString = aString.replace(/{([^{}]+)}/gm, checkReservedWords);
       // removes [[ double brackets ]]  !!
-      aString = aString.replace(/\[\[([^\[\]]+)\]\]/gm, checkReservedWords);
+      aString = await Util.replaceAsync(aString,/\[\[([^\[\]]+)\]\]/gm, checkReservedWords);
 
       // [AG] Second Step: use classifyReservedWord to categorize reserved words (variables) into one of the 6 classes: reserved, To, Cc, Date, From, Subject
-      return aString.replace(/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
+      return await Util.replaceAsync(aString,/%([\w-:=]+)(\([^)]+\))*%/gm, classifyReservedWord);
     }
 
-    that.regularize.headersDump = '';
-    Util.logDebugOptional('regularize','Parser.regularize(' + msg +')  STARTS...');
+    that.regularize.headersDump = "";
+    Util.logDebugOptional("regularize","Parser.regularize(" + msg +")  STARTS...");
     // var parent = SmartTemplate4;
     let idkey = composeDetails.identityId; // Util.getIdentityKey(document),
     let identity = mailIdentity; // = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager).getIdentity(idkey),
@@ -1588,6 +1600,10 @@ export class Parser {
               tm.setTime((date / 1000));
             // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
             arg = Util.removeHtmlEntities(arg);
+            // we may have to pass in an initialized Calendar to this function!
+            // if (!that.calendar.initialized) {
+            //   await that.calendar.init(null); // default language
+            // }
             let defaultTime = Util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0, offsets); // dateFormat will add offsets itself
             if (dateFormatSent)
               token = defaultTime;
@@ -1727,7 +1743,7 @@ export class Parser {
             // BIG FAT SIDE EFFECT!
             let GlobalFlags = { sigInTemplate : null }; // [issue 184] this probabaly needs to be read outside - add to composers Map?
             let rawsig = Util.getSignatureInner(signature, isRemoveDashes, GlobalFlags),
-                retVal = await that.getProcessedText(rawsig, idkey, composeType, true) || ""; // [issue 184] Parser recursion
+                retVal = await that.getProcessedText(rawsig, idkey, true, flags) || ""; // [issue 184] Parser recursion
                 
             Util.logDebugOptional ('replaceReservedWords', 'replaceReservedWords(%sig%) = getSignatureInner(isRemoveDashes = ' + isRemoveDashes +')');
             Util.logDebugOptional ('signatures', 'replaceReservedWords sig' + arg + ' returns:\n' + retVal);
@@ -1822,7 +1838,7 @@ export class Parser {
             else {
               // internally, we may have used another relative (sub)path
               // allow nested %file%  variables + relative paths
-              parsedContent = await that.getProcessedText(fileContents, idkey, composeType, true); // [issue 184] Parser recursion
+              parsedContent = await that.getProcessedText(fileContents, idkey, true, flags); // [issue 184] Parser recursion
             }
             // if a path was added in the meantime, we can now pop it off the stack.
             if (pL<pathArray.length) pathArray.pop(); 
@@ -1839,7 +1855,7 @@ export class Parser {
                 (isAB) ? identity.email :
                 identity.name + ' <' + identity.email + '>';  // identity.fullName [issue 184]
               // we need the split to support (name,link) etc.
-              token = mime.split(fullId, charset, arg, true); // disable charsets decoding!
+              token = await mime.split(fullId, charset, arg, true); // disable charsets decoding!
               
               if(isAB && !token) { 
                 // let's put in a placeholder so we can delete superfluous [[ lines ]] 
@@ -1951,7 +1967,7 @@ export class Parser {
               }
             }
             let headerValue = isStripQuote ?
-                mime.split(theHeader, charset, arg) :
+                await mime.split(theHeader, charset, arg) :
                 mime.decode(theHeader, charset);
             if (!headerValue && Util.isAddressHeader(token)) {
               let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
@@ -1966,6 +1982,7 @@ export class Parser {
       }
       catch(ex) {
         Util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
+        Util.logIssue184("replaceReservedWords - (exception)");
         if (Util.checkIsURLencoded(dmy))
           return dmy;
         token = Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
@@ -2167,7 +2184,7 @@ export class Parser {
       catch(ex) {
         var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
         
-        Util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
+        Util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more information if you enable debug mode.",ex );
         Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
           "Please check Javascript error console for detailed error message.");
       }
@@ -2356,13 +2373,13 @@ export class Parser {
           { msg = msg.replace(/ /gm, "&nbsp;"); }
       }
     }
-    // replace round brackets of bracketMail() with <> - using the second (=inner) match group
+    // replace round brackets of bracketMail() with {} - using the second (=inner) match group
     // this makes it possible to nest functions!
     // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
-    msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
-    msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
+    msg = msg.replace(/%(.*)(bracketMail\(([^)]*))\)/gm, "%$1bracketMail\{$3\}")
+    msg = msg.replace(/%(.*)(bracketName\(([^)]*))\)/gm, "%$1bracketName\{$3\}");
     // AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
-    msg = simplify(msg);	
+    msg = await simplify(msg);	
     if (await Preferences.isDebugOption('regularize')) debugger;
     msg = // msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); 
       await Util.replaceAsync(msg, /%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords);
@@ -2395,7 +2412,8 @@ export class Parser {
 
   // -----------------------------------
   // Get processed text from template
-  async getProcessedText(templateText, idKey, info, ignoreHTML, flags) 	{
+  async getProcessedText(templateText, idKey, ignoreHTML, flags) 	{
+    let info = this.info;
     let composeType = info.composeType;
     let composeDetails = info.composeDetails;
     if (!templateText) return "";

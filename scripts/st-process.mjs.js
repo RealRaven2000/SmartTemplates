@@ -103,8 +103,6 @@ export class SmartTemplatesProcess {
         let flags = SmartTemplates.PreprocessingFlags; // this needs to be instanciated later from / with / through  
                                                        // SmartTemplatesProcess.getComposer(tabId).flags
         
-        // 
-        let parser = new Parser();
         info.composeCase = "";
         // can already be set on the way in?
         if (!info.composeType) {
@@ -157,7 +155,8 @@ export class SmartTemplatesProcess {
         
         // changing third parameter to info (instead of info.composeType) 
         // so  we can also transmit composeDetails
-        let processedTemplate = await parser.getProcessedText(rawTemplate, idKey, info, ignoreHTML, flags);                
+        let parser = new Parser(info);
+        let processedTemplate = await parser.getProcessedText(rawTemplate, idKey, ignoreHTML, flags);                
         
         // Will this call insertTemplate instead / before / after?
         // for now, write modified stuff to composer.
