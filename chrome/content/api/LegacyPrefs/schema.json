@@ -54,7 +54,7 @@
           },
           {
             "name": "aFallback",
-            "type": "string",
+            "type": "any",
             "description": "Value to be returned, if the requested preference does not exist.",
             "optional": true,
             "default": null

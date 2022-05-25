@@ -2,6 +2,9 @@
  * This file is provided by the addon-developer-support repository at
  * https://github.com/thundernest/addon-developer-support
  *
+ * Version: 1.9
+ * fixed fallback issue reported by Axel Grude
+ *
  * Version: 1.8
  * reworked onChanged event to allow registering multiple branches
  *
