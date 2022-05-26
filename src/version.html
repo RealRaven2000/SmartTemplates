@@ -260,6 +260,25 @@ permalink: version.html
     </li>
     <li>
       <p>
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> 
+        Support transferring headers / variable results to clipboard
+      </p>
+      <p>
+        Use the parameter <tt>toclipboard</tt> to transfer header contents such as email addresses to 
+        the clipboard: <code>%from(mail,toclipboard)%</code>
+      </p>
+      <p>
+        Use it when replying or forwarding messages to extract text from the original message
+        body or subject to the clipboard, for example:
+        <pre class="code">
+          %matchTextFromBody("Please reply until (.*)",1,toclipboard)%
+          %matchTextFromSubject("\[Support\] (.*)",1,toclipboard)%
+        </pre]
+        
+      </p>
+    </li>    
+    <li>
+      <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a>
         Improved *selection* placeholder in Snippets to better support non-text nodes.
         For example, you can now wrap an image with some HTML to add a shadow with this HTML snippet.
@@ -286,16 +305,6 @@ permalink: version.html
         Composer using the SmartTemplates Snippets button, by using HTML and style rules.
       </p>
     </li>
-    <li>
-      <p>
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> 
-        Support transferring headers / variable results to clipboard
-      </p>
-      <p>
-        Use the parameter <tt>toclipboard</tt> to transfer header contents such as email addresses to 
-        the clipboard: <code>%from(mail,toclipboard)%</code>
-      </p>
-    </li>    
     <li>
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/185">[issue 185]</a>
