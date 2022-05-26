@@ -271,10 +271,21 @@ permalink: version.html
         Use it when replying or forwarding messages to extract text from the original message
         body or subject to the clipboard, for example:
         <pre class="code">
-          %matchTextFromBody("Please reply until (.*)",1,toclipboard)%
-          %matchTextFromSubject("\[Support\] (.*)",1,toclipboard)%
-        </pre>
-        
+  %matchTextFromBody("Please reply until (.*)",1,toclipboard)%
+  %matchTextFromSubject("\[Support\] (.*)",1,toclipboard)%</pre>
+      </p>
+      <p>
+        You can use it for copying the date with dateformat as well:
+        Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying 
+        the date to clipboard instead of inserting it into the email. Use the additional 
+        parameter <tt>current</tt> to always enforce current time (without that, it will 
+        interpret it as the timestamp of the replied to / forwarded original mail) - I prefer 
+        this to having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
+        <br>
+        Examples:
+        <pre class="code">
+  %dateformat("A, e/n/Y H:M",toclipboard)%
+  %dateformat("A, e/n/Y H:M",current,toclipboard)%</pre>
       </p>
     </li>    
     <li>
@@ -292,8 +303,8 @@ permalink: version.html
         This will add a nice outline and drop shadow. Another one:
       </p>
       <pre class="code">
-        &lt;span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;"
-        &gt;*selection*&lt;/span&gt;</pre>
+  &lt;span class="number" style="background-color: rgb(180,0,0) !important; color: white !important; border-radius: 1.3em; font-weight: bold; padding: 4px 8px;"
+  &gt;*selection*&lt;/span&gt;</pre>
       <p> 
         You can use this to make red "bullets" around numbers or letters referring to
         screenshot legends. Highlight a number and then select the Smart Template from your 
