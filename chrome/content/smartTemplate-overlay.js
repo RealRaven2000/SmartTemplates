@@ -1169,13 +1169,19 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
                   }
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 								}
-								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
-								msg = msg.replace(matchPart[i], replaceGroupString);
+                if (matchPart[i].lastIndexOf(",toclipboard")>0) {
+                  util.clipboardWrite(replaceGroupString); // [issue 187]
+                  msg = msg.replace(matchPart[i], "");
+                }
+                else {
+                  util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
+                  msg = msg.replace(matchPart[i], replaceGroupString);
+                }
 							}
 							else {       
                 // not matched, insert string from third parameter
 							  let alternative = matchPart[i].match( /[0-9],\"(.*)\"/ ); // get what's between the last double quotes
-                if (alternative) {
+                if (alternative && alternative!="toclipboard") {
                   // if no match found but there is a 3rd parameter, replace with this instead.
                   msg = msg.replace(matchPart[i], alternative[1]);
                 }
