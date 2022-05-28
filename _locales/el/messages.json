@@ -1282,5 +1282,8 @@
   },
   "whats-new-intro": {
     "message": "Διαβάστε το αναλυτικό ημερολόγιο αλλαγών εδώ (μόνο στα Αγγλικά):"
+  },
+  "whats-new-list": {
+    "message": "{L1}Τώρα το SmartTemplates υποστηρίζει τη χρήση του 'clipboard' ως ορίσματος για τη διαχείριση λειτουργιών κειμένου και κεφαλίδας, όπως %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Βελτιωμένο σύμβολο κράτησης θέσης *selection* στα Snippets για καλύτερη υποστήριξη της ενσωμάτωσης σε επιλεγμένες ενότητες HTML. Για παράδειγμα, μπορείτε τώρα να περιβάλετε μια εικόνα με μια σκιά εισάγοντας ένα απόσπασμα HTML.{L2}{L1}Απλουστευμένες ρυθμίσεις για πρότυπα ταυτότητας (αναπτυσσόμενο μενού λογαριασμών){L2}{L1}Πολυάριθμες διορθώσεις συμβατότητας με Thunderbird 102.{L2}"
   }
 }
