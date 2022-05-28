@@ -2368,16 +2368,25 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "dateformat":
 					if (debugTimeStrings) debugger;
 					tm = new Date();
-					const dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
+					let dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
+          if (arg.includes("current")) {
+            dateFormatSent = false; // force using current time!
+          }
 					if (dateFormatSent)
 						tm.setTime((date / 1000));
           // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
           arg = util.removeHtmlEntities(arg);
 					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
-					if (dateFormatSent)
-						token = defaultTime;
-					else
-						token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+          if (arg.includes("toclipboard")) {
+            token = ""; // no deferred variable, just remove the variable silently
+          }
+          else {
+            if (dateFormatSent)
+              token = defaultTime;
+            else {
+              token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+            }
+          }
 					return token; 
 				case "datelocal":
 				case "dateshort":

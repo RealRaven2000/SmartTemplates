@@ -1675,9 +1675,26 @@ SmartTemplate4.Util = {
        " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
        " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
   } ,
+  
 	// new function for manually formatting a time / date string in one go.
-	dateFormat: function dateFormat(time, timeFormat, timezone) {
+  // make additional parameters possible (enclose format string with "" to append 2nd parameter)
+	dateFormat: function dateFormat(time, argument, timezone) {
 		const util = SmartTemplate4.Util;
+    let timeFormat,
+        isClipboard = false;
+    if (argument.startsWith("\"")) {
+      let closeQuote = argument.lastIndexOf("\"");
+      timeFormat = argument.substring(1,closeQuote);
+      let args = argument.substring(closeQuote).split(",");
+      if (args.length>1) {
+        if (args.includes("toclipboard"))
+          isClipboard = true;
+      }
+    }
+    else {
+      timeFormat = argument;
+    }
+    
 		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
 		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= ' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
 		util.addUsedPremiumFunction('dateFormat');
@@ -1751,6 +1768,11 @@ SmartTemplate4.Util = {
 					
 					
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
+      if (isClipboard) {
+        util.clipboardWrite(timeString);
+        util.logDebugOptional('timeStrings', "Copied time to clipboard!");
+        return "";
+      }
 			return timeString;
 			
 		}
