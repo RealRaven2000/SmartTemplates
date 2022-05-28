@@ -1128,6 +1128,9 @@
   "replaceText": {
     "message": "Замінінення деякого тексту на щось інше."
   },
+  "replacementHTML": {
+    "message": "має бути в подвійних лапках - або текстовий, або HTML-тег, який буде вставлено в лапки там, де буде знайдено відповідність."
+  },
   "resolveABRemoveMail": {
     "message": "Видалити адреса електронної пошти, якщо не вказано параметр формату"
   },
@@ -1227,6 +1230,9 @@
   "st.fileTemplates.error.charSet": {
     "message": "Виникла проблема з перетворенням шаблону HTML з символу [{1}]\nВикористання необроблених значень рядка.\nЯкщо це результати у зміненому символі, спробуйте додати явну 'meta charset"
   },
+  "st.fileTemplates.error.filePath": {
+    "message": "Не можу завантажити файл шаблону '{0}' за шляхом:\n{1}\nФайл можливо був видалений або переміщений."
+  },
   "st.fileTemplates.openFile": {
     "message": "Відкрийте файл шаблону SmartTemplates…"
   },
@@ -1312,6 +1318,9 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Купити ліцензію"
   },
+  "st.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
   "st.notification.premium.sendByFilter": {
     "message": "З дійсною ліцензією SmartTemplates Pro тепер електронний лист надсилатиметься автоматично."
   },
@@ -1323,6 +1332,9 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Оновити до Pro"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} є преміум-функцією, будь ласка, отримайте ліцензію SmartTemplates Pro на постійне використання."

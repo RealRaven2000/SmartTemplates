@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Viikonpäivä (pe)"
   },
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "Tehokas tapa luoda räätälöityjä vastauksia lisäämällä automaattisesti eri otsikot. Mallit voidaan luoda jokaiselle sähköpostitunnukselle, tukee myös ulkoisia HTML-tiedostoja ja tyylitaulukoita."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille."
   },
@@ -625,7 +618,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Hyvä $username$ {boldEnd}, voit nyt päivittää versioon SmartTemplates Pro ja {boldStart}säästää $discount${boldEnd} - samalla pidentäen käyttöoikeuttasi vuodella. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +636,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
   "licenseHead": {
     "message": "Uusi lisenssijärjestelmä"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
     "placeholders": {
       "countDays": {
@@ -659,7 +652,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates-lisenssi vanhenee $countDays$ päivässä!",
     "placeholders": {
       "countDays": {
@@ -667,10 +660,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Syöttämäsi lisenssiavain on vanhentunut. Paina alla olevaa painiketta uusiaksesi lisenssin."
   },
@@ -721,9 +714,6 @@
   },
   "menu.template_import.label": {
     "message": "Tuo"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "Näytä lisenssiasetukset…"
@@ -855,11 +845,11 @@
   "p3.label": {
     "message": "AM"
   },
-  "parameters": {
-    "message": "Parametri"
-  },
   "paste.label": {
     "message": "Liitä"
+  },
+  "parameters": {
+    "message": "Parametri"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Teksti hiirellä kohdistettaessa"
@@ -1001,7 +991,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Piilota tiedot-valintaikkuna, joka näyttää uudet ominaisuudet ja virhekorjaukset päivitettäessä."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Allekirjoitus"
   },
@@ -1191,17 +1181,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Päivitä SmartTemplates -sisältö"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates - Asetukset"
   },
   "smarttemplate4_button": {
     "message": "Muokkaa pohjia / lainauksen otsakkeita…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates päivitettiin!"
@@ -1247,7 +1231,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Miksi jotkin tämän valikon mallit on poistettu käytöstä?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Mallien määrä valikkoa kohden on rajoitettu. Voit määrittää enintään $max_free$ -valikkokohteita ilman lisenssiä ja $max_std$ -valikkokohteita SmartTemplates Standard -lisenssillä! SmartTemplates Pro on rajoittamaton.",
     "placeholders": {
@@ -1259,7 +1243,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Jos haluat määrittää yli $max_Cats$ -luokkaa, hanki SmartTemplates Pro -lisenssi…",
@@ -1268,8 +1252,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Valitse malli avattavasta valikosta."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1407,10 +1392,7 @@
   "sub_var.cap": {
     "message": "Aihe"
   },
-  "special-offer-expiry": {
-    "message": "31. maaliskuuta"
-  }, 
-  "special-offer-content" : {
+  "special-offer-content": {
     "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}SmartTemplates Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
     "placeholders": {
       "expirydate": {
@@ -1423,6 +1405,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31. maaliskuuta"
+  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1432,7 +1417,7 @@
       }
     }
   },
-  "special-offer-intro" : {
+  "special-offer-intro": {
     "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi. Thunderbird -koodi kehittyy jatkuvasti, ja tarvitsemme {boldStart} apuasi {boldEnd} pysyäksesi ajan tasalla!",
     "placeholders": {
       "addon": {
@@ -1440,7 +1425,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "special-offer-renew": {
     "message": "Uusi lisenssi nyt ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti.",
     "placeholders": {
@@ -1466,7 +1451,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {
@@ -1526,9 +1511,6 @@
   },
   "suppressQuoteHdr": {
     "message": "Poistaa lainausotsikon kokonaan tilin asetuksista riippumatta."
-  },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
   },
   "table.cap": {
     "message": "Muuttujien käyttö"
@@ -1654,14 +1636,14 @@
   "vouchers.title": {
     "message": "Tositteita"
   },
-  "whats-new-btn" : {
+  "whats-new-btn": {
     "message": "Mikä on uutta?"
-  },  
-  "whats-new-head" : {
+  },
+  "whats-new-head": {
     "message": "Tärkeät muutokset"
-  },  
-  "whats-new-intro" : {
-    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
+  },
+  "whats-new-intro": {
+    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
     "message": "{L1}SmartTemplates tukee nyt 'clipboard' (leikepöydän) käyttöä argumenttina tekstin ja otsikon käsittelytoiminnoille, kuten %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Parannettu *selection* (valinta) -paikkamerkki katkelmissa, mikä tukee paremmin integrointia valittuihin HTML-osiin. Voit nyt esimerkiksi kääriä kuvan varjolle lisäämällä HTML-koodinpätkän.{L2}{L1}Identiteettimallien yksinkertaistetut asetukset (avattava tilivalikko){L2}{L1}Useita yhteensopivuuskorjauksia Thunderbird 102:lle.{L2}"
@@ -1679,9 +1661,6 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "Esimerkki pitkästä muotoilusta:"
   },
@@ -1696,9 +1675,6 @@
   },
   "xsent_short.cap": {
     "message": "Esimerkki lyhyestä muotoilusta:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %a% %dateshort%"
   },
   "xsent_short_note.label": {
     "message": "Lisäksi voit käyttää kummasakin tavassa seuraavia muuttujia:"

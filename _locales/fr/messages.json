@@ -1,9 +1,15 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Jour de la semaine (Vend.)"
   },
   "a.up.label": {
     "message": "Jour de la semaine (Vendredi)"
+  },
+  "ab_contact": {
+    "message": "Contact"
   },
   "ab_fields": {
     "message": "Variables du carnet d'adresses"
@@ -347,6 +353,45 @@
   "fileImage.label": {
     "message": "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable."
   },
+  "fileTemplates.add": {
+    "message": "Ajouter"
+  },
+  "fileTemplates.down": {
+    "message": "Descendre"
+  },
+  "fileTemplates.file.open": {
+    "message": "Sélectionnez le fichier de modèle à partir du disque"
+  },
+  "fileTemplates.file.path": {
+    "message": "Emplacement du modèle :"
+  },
+  "fileTemplates.file.title": {
+    "message": "Titre:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Celui-ci sera affiché dans le menu de sélection des modèles."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Suivant'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Créer un nouveau message'."
+  },
+  "fileTemplates.remove": {
+    "message": "Éliminer"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Répondre'."
+  },
+  "fileTemplates.title": {
+    "message": "Fichiers modèles"
+  },
+  "fileTemplates.up": {
+    "message": "Monter"
+  },
+  "fileTemplates.update": {
+    "message": "Réactualiser"
+  },
   "firstName.label": {
     "message": "Prénom :"
   },
@@ -559,6 +604,9 @@
   "label.licenseValid": {
     "message": "Votre licence est valide jusqu'au :"
   },
+  "label.premiumFeaturesSite": {
+    "message": "En savoir plus sur les fonctionnalités Premium sur notre site Web…"
+  },
   "lastName.label": {
     "message": "Nom :"
   },
@@ -688,11 +736,20 @@
   "month.1.name": {
     "message": "Janvier"
   },
+  "month.1.short": {
+    "message": "Jan"
+  },
   "month.10.name": {
     "message": "Octobre"
   },
+  "month.10.short": {
+    "message": "Oct"
+  },
   "month.11.name": {
     "message": "Novembre"
+  },
+  "month.11.short": {
+    "message": "Nov"
   },
   "month.12.name": {
     "message": "Décembre"
@@ -709,6 +766,9 @@
   "month.3.name": {
     "message": "Mars"
   },
+  "month.3.short": {
+    "message": "Mar"
+  },
   "month.4.name": {
     "message": "Avril"
   },
@@ -724,8 +784,14 @@
   "month.6.name": {
     "message": "Juin"
   },
+  "month.6.short": {
+    "message": "Juin"
+  },
   "month.7.name": {
     "message": "Juillet"
+  },
+  "month.7.short": {
+    "message": "Juil"
   },
   "month.8.name": {
     "message": "Août"
@@ -736,11 +802,17 @@
   "month.9.name": {
     "message": "Septembre"
   },
+  "month.9.short": {
+    "message": "Sep"
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
   },
   "n.label": {
     "message": "Numéro du mois (1 à 12)"
+  },
+  "newsgr.label": {
+    "message": "Groupes de discussion"
   },
   "no_button": {
     "message": "Non"
@@ -762,6 +834,9 @@
   },
   "p.label": {
     "message": "AM ou PM"
+  },
+  "p1.label": {
+    "message": "a.m."
   },
   "paste.label": {
     "message": "Coller"
@@ -867,6 +942,9 @@
   },
   "pref_groupNameRules": {
     "message": "Règles pour nom"
+  },
+  "pref_groupSignatures": {
+    "message": "Signatures"
   },
   "pref_groupTroubleShooting": {
     "message": "Dépannage"
@@ -984,6 +1062,9 @@
   },
   "pref_template_tip": {
     "message": "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations."
+  },
+  "pref_variables.tab": {
+    "message": "Variables"
   },
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
@@ -1429,6 +1510,9 @@
   },
   "table_fwd.label": {
     "message": "Transférer"
+  },
+  "table_keyword.label": {
+    "message": "Variable"
   },
   "table_new.label": {
     "message": "Nouveau"
