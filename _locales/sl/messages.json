@@ -1350,6 +1350,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "31. marca"
+  },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1580,6 +1583,9 @@
   },
   "whats-new-intro": {
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
+  },
+  "whats-new-list": {
+    "message": "{L1}SmartTemplates zdaj podpira uporabo »clipboard« (odložišča) kot argumenta za funkcije manipulacije besedila in glave, kot je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard) )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Izboljšana oznaka mesta *selection* (izbira) v Snippets za boljšo podporo pri integraciji v izbrane razdelke HTML. Zdaj lahko na primer sliko ovijete s senco, čeprav vstavite delček HTML.{L2}{L1}Poenostavljene nastavitve za predloge identitete (spustni meni računov){L2}{L1}Številni popravki združljivosti za Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
