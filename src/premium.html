@@ -11,6 +11,25 @@ permalink: premium.html
   loadStyleSheet("premium.css?v=2");
 </script>
 
+<style>
+  /* inline html code */
+  code.html {
+    background-color: #f6f9f6;
+    background-image: none !important;
+    color: #001010;
+    padding: 0px 6px !important;
+    border-radius: 0;
+  }
+  pre.code { 
+    background-color: #ffffff;
+    color: #303030;
+    font-family: Consolas, 'Courier New', Geneva, sans-serif;
+    font-size: 10pt !important;
+    padding: 1em;
+    box-shadow: inset 4px 4px 10px #000000;
+  }
+</style>
+
 <h2 class="page-header">SmartTemplates Pro :: Premium Features</h2>
 
 <p>Premium features are power functions which are an incentive for users to regularly support 
@@ -402,12 +421,12 @@ permalink: premium.html
 (function() {
   switch(frommail.toString()) {
     case "thunderbirddaily@gmail.com":
-      return "<p>Special text for thunderbirddaily.</p>"
-        + "<p>Another paragraph!</p>";
+      return "&lt;p&gt;Special text for thunderbirddaily.&lt;/p&gt;"
+        + "&lt;p&gt;Another paragraph!&lt;/p&gt;";
     case "axel.grude@gmail.com":
       return file("W:\\_Tb Profiles\\aj1a94hh.axel\\stationery\\QuickFolders - Links (English).html");
     default:
-      return "<p>default case!</p>";
+      return "&lt;p&gt;default case!&lt;/p&gt;";
   }
 })()
 &#37;}&#37;
@@ -417,7 +436,7 @@ permalink: premium.html
 &#37;{&#37; 
 ( () => {
 var date = new Date();
-if (date.getHours() < 12) {return "Good morning";}
+if (date.getHours() &lt; 12) {return "Good morning";}
 else { return "Good afternoon"; }
 } )() &#37;}&#37;
 
