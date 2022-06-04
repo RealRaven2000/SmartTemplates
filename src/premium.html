@@ -368,7 +368,59 @@ permalink: premium.html
     <br>
     You can also use <code>%sig(none)%</code> to suppress inserting any signatures.
   </p>
-    
+</article>
+
+<!-- #### FiltaQuilla Support #### -->
+<a name="filterForward"> </a>
+<h3 class="helpchapter">Running "sandboxed" JavaScript</h3>
+<article>
+  <p>
+    To do more flexible things with SmartTemplates a user (Benito van der Zanders) once 
+    <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25676">contributed a JavaScript
+    feature</a> - this is able to run some user supplied script in order
+    to insert SmartTemplates variables in a flexible manner. While I cannot guarantee
+    that this is going to work forever, it has come in handy for some advanced users.
+    You can currently use it as follows:
+  </p>
+  <p>
+    Enable the Thunderbird config setting <span class="codeLine">extensions.smartTemplate4.allowScripts=true</span>.
+    Then add a code section using the tags <code>%{%</code> and <code>%}%</code>.
+    You need to define an anonymous function that can return a string. E.g.:
+    <pre class="code">
+(function() {
+  /* your code here... */
+  return "something";
+}()</pre>
+  </p>
+  <p>
+    You can use SmartTemplates variables (without the % signs) within code,
+    they should be replaced within the function like a variable would in your HTML template.
+  </p>
+  <b>Example 1: load different template depending on who you reply</b>
+<pre class="code">
+%{%  
+(function() {
+  switch(frommail.toString()) {
+    case "thunderbirddaily@gmail.com":
+      return "<p>Special text for thunderbirddaily.</p>"
+        + "<p>Another paragraph!</p>";
+    case "axel.grude@gmail.com":
+      return file("W:\\_Tb Profiles\\aj1a94hh.axel\\stationery\\QuickFolders - Links (English).html");
+    default:
+      return "<p>default case!</p>";
+  }
+})()
+%}%
+</pre>
+    <b>Example 2: Greeting based on time of day</b>
+<pre class="code">
+%{% 
+( () => {
+var date = new Date();
+if (date.getHours() < 12) {return "Good morning";}
+else { return "Good afternoon"; }
+} )() %}%
+
 </article>
 
 
