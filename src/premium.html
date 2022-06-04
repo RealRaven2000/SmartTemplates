@@ -398,7 +398,7 @@ permalink: premium.html
   </p>
   <b>Example 1: load different template depending on who you reply</b>
 <pre class="code">
-%{%  
+&#37;{&#37;  
 (function() {
   switch(frommail.toString()) {
     case "thunderbirddaily@gmail.com":
@@ -410,16 +410,16 @@ permalink: premium.html
       return "<p>default case!</p>";
   }
 })()
-%}%
+&#37;}&#37;
 </pre>
     <b>Example 2: Greeting based on time of day</b>
 <pre class="code">
-%{% 
+&#37;{&#37; 
 ( () => {
 var date = new Date();
 if (date.getHours() < 12) {return "Good morning";}
 else { return "Good afternoon"; }
-} )() %}%
+} )() &#37;}&#37;
 
 </article>
 
