@@ -125,18 +125,17 @@ pre.maxW {
 </article>
 
 
-<!-- ##### Fix Variables #### -->
+<!-- ##### Fixed Variables #### -->
 <a name="fixed"> </a>
 <h3 class="helpchapter">Fixed variables</h3>
 <article>
 	<ul>
+    <li><code class="deferable">%identity(name)%</code> = Your name (also <code class="inline">%ownname%</code>)  
+    <li><code class="deferable">%identity(mail)%</code> = Your email (also <code class="inline">%ownmail%</code>)  
 		<li><code class="deferable">%date%</code> = Date / Time (same as original 'Mailheader')</li>
-		<li><code class="deferable">%to(mail)%</code> = Recipient's email address (Text only)</li>
-		<li><code class="deferable">%to(mail,link)%</code> = Recipient's email address as mailto link</li>
-		<li><code class="deferable">%from(mail)%</code> = Sender's email address (Text only)</li>
-		<li><code class="deferable">%from(mail,link)%</code> = Sender's email address as mailto link</li>
-		<li><code class="deferable">%cc(mail)%</code> = Recipient's email address (Text only)</li>
-		<li><code class="deferable">%cc(mail,link)%</code> = Recipient's email address as mailto link</li>
+		<li><code class="deferable">%recipient%</code> = Final Recipient's name / mail address. what exactly is shown depends on the advanced setting "Default address format"</li>
+		<li><code class="deferable">%recipient(mail)%</code> = Recipient's email address (Text only)</li>
+		<li><code class="deferable">%recipient(firstname)%</code> = Recipient's First name</li>
     <li><code>%mailto(body)%</code> = use this to insert the body portion of a 
       <a href="mailto:bogus@example.com?subject=test%20subject&amp;body=This%20is%20the%20body%20of%20this%20message.%0D%0ASecond%20Line..%0D%0AAnd%20another%20line!">mailto link</a>.</li>
 	</ul>
@@ -149,7 +148,14 @@ pre.maxW {
 <a name="to"> </a>
 <h3 class="helpchapter">Recipient (To)</h3>
 <article>
-	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
+  <p>
+    In replies / forwarded mails, these variables refer to headers from the original email, so if you 
+    reply to an email it will show your own address info. When you write a <b>new email</b> this variable 
+    will be displayed as a placeholder for your "final recipient" and can be updated by clicking on it 
+    once you have entered a "To:" address above. <br>
+    To always insert the final recipient of your mail regardless on where you use it (Write, Reply, Forward),
+    use <code>%recipient%</code> instead.
+  </p>
 	<ul>
 		<li><code class="deferable">%to%</code> = Recipient's name (default)</li>
 		<li><code class="deferable">%to(firstname)%</code> = Recipient's first name</li>
@@ -159,6 +165,7 @@ pre.maxW {
 		<li><code class="deferable">%to(mail)%</code> = Recipient's email address (Text only)</li>
 		<li><code class="deferable">%to(mail,link)%</code> = Recipient's email address as mailto link</li>
 	</ul>
+	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
 </article>
 
 
@@ -166,7 +173,13 @@ pre.maxW {
 <a name="from"> </a>
 <h3 class="helpchapter">Sender (From)</h3>
 <article>
-	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
+  <p>
+    In replies / forwarded mails, these variables refer to headers from the original email, so if you 
+    reply to an email it will show the original sender's address info. 
+    Only when you write a <b>new email</b> this variable will be replaced with your own from address.<br>
+    To always insert your own information in a template regardless on where you use it (Write, Reply, Forward),
+    use <code>%identity%</code> instead.
+  </p>
 	<ul>
 		<li><code class="deferable">%from%</code> = Sender's name (default)</li>
 		<li><code class="deferable">%from(firstname)%</code> = Sender's firstname</li>
@@ -176,13 +189,19 @@ pre.maxW {
 		<li><code class="deferable">%from(mail)%</code> = Sender's email address (Text only)</li>
 		<li><code class="deferable">%from(mail,link)%</code> = Sender's email address as mailto link</li>
 	</ul>
+	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
 </article>
 
 <!-- ##### "CC" Variables #### -->
 <a name="cc"> </a>
 <h3 class="helpchapter">Recipient (CC)</h3>
 <article>
-	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
+  <p>
+    In replies / forwarded mails, these variables refer to cc parts from the original email.
+    If you use it in a <b>new email</b> this variable will be displayed as a placeholder for 
+    anybody you CC and will be updated once you click it - probably not a useful application in 
+    a real example as the idea of CC is hiding recipients.
+  </p>
 	<ul>
 		<li><code class="deferable">%cc%</code> = Recipient's name (Default)</li>
 		<li><code class="deferable">%cc(firstname)%</code> = Recipient's first name</li>
