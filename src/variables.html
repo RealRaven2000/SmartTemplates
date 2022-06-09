@@ -130,14 +130,18 @@ pre.maxW {
 <h3 class="helpchapter">Fixed variables</h3>
 <article>
 	<ul>
-    <li><code class="deferable">%identity(name)%</code> = Your name (also <code class="inline">%ownname%</code>)  
-    <li><code class="deferable">%identity(mail)%</code> = Your email (also <code class="inline">%ownmail%</code>)  
 		<li><code class="deferable">%date%</code> = Date / Time (same as original 'Mailheader')</li>
+		<li><code class="deferable">%sig%</code> = Signature from account settings</li>
+		<li><code class="deferable">%cursor%</code> = Sets the cursor position.</li>
+    <li><code class="deferable">%identity(name)%</code> = Your name (also <code class="inline">%ownname%</code>) </li> 
+    <li><code class="deferable">%identity(mail)%</code> = Your email (also <code class="inline">%ownmail%</code>) </li> 
 		<li><code class="deferable">%recipient%</code> = Final Recipient's name / mail address. what exactly is shown depends on the advanced setting "Default address format"</li>
 		<li><code class="deferable">%recipient(mail)%</code> = Recipient's email address (Text only)</li>
 		<li><code class="deferable">%recipient(firstname)%</code> = Recipient's First name</li>
     <li><code>%mailto(body)%</code> = use this to insert the body portion of a 
       <a href="mailto:bogus@example.com?subject=test%20subject&amp;body=This%20is%20the%20body%20of%20this%20message.%0D%0ASecond%20Line..%0D%0AAnd%20another%20line!">mailto link</a>.</li>
+    <li><code>%attach()%</code>Attaches a file to the emails.</li>
+    <li><code>%spellcheck(<i>language</i>)%</code> = Sets the spell-checking language. Example values: (en, de, es, ru) - note that the dictionary must be installed.
 	</ul>
   <p>The actual display of email addressing variables such as %to% can be configured in Advanced Settings
     in the box <i>'Default address format'</i>.
@@ -675,8 +679,8 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 <!-- ##### %file()% #### -->
 <h3 class="helpchapter">Inserting HTML files and Images</h3>
 <article>	
-  The <code>%file()%</code> functions can be used for inserting images or HTML / text files which can even 
-	contain more SmartTemplates variables.
+  The <code>%file()%</code> and <code>%style()%</code> functions can be used for inserting 
+  images or HTML / text files which can even contain more SmartTemplates variables.
 	They are included in SmartTemplates Pro for unlimited use. 
 	Read up on the full functionality on the <a href="premium.html#fileInsert">premium features</a>
 	page.
