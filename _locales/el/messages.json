@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Ημέρα της Εβδομάδας (Παρ.)"
   },
@@ -1166,6 +1163,9 @@
   "smartTemplate4.changeTemplate.label": {
     "message": "Άλλαξε πρότυπο…"
   },
+  "st.fileTemplates": {
+    "message": "Αρχεία Προτύπων"
+  },
   "st.fileTemplates.wrnSelectUpdateItem": {
     "message": "Πρέπει να επιλέξετε ένα στοιχείο από τη λίστα για ενημέρωση!"
   },
@@ -1274,7 +1274,16 @@
   "standardformat.config": {
     "message": "Προεπιλεγμένη μορφή…"
   },
+  "whats-new-btn": {
+    "message": "Τι νέο υπάρχει;"
+  },
+  "whats-new-head": {
+    "message": "Σημαντικές Αλλαγές"
+  },
+  "whats-new-intro": {
+    "message": "Διαβάστε το αναλυτικό ημερολόγιο αλλαγών εδώ (μόνο στα Αγγλικά):"
+  },
   "whats-new-list": {
     "message": "{L1}Τώρα το SmartTemplates υποστηρίζει τη χρήση του 'clipboard' ως ορίσματος για τη διαχείριση λειτουργιών κειμένου και κεφαλίδας, όπως %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Βελτιωμένο σύμβολο κράτησης θέσης *selection* στα Snippets για καλύτερη υποστήριξη της ενσωμάτωσης σε επιλεγμένες ενότητες HTML. Για παράδειγμα, μπορείτε τώρα να περιβάλετε μια εικόνα με μια σκιά εισάγοντας ένα απόσπασμα HTML.{L2}{L1}Απλουστευμένες ρυθμίσεις για πρότυπα ταυτότητας (αναπτυσσόμενο μενού λογαριασμών){L2}{L1}Πολυάριθμες διορθώσεις συμβατότητας με Thunderbird 102.{L2}"
-  }  
+  }
 }
