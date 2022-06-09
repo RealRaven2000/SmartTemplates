@@ -345,9 +345,9 @@ permalink: version.html
           this will default to wrapping the email in the standard of angled brackets: &lt;mail@domain.com&gt;
         </li>
         <li>
-          Explict delimiters given as parameters should not repeat on all following fields. <br>
-          <code>%to(bracketName({;},mail)%</code> this will generate
-          "{Fred} mail@domain.com"  and  not the faulty "{Fred} {mail@domain.com}"
+          Fixed: Explict delimiters given as bracket parameters should not repeat on all following fields. <br>
+          For example, <code>%to(bracketName({;}),mail)%</code> will generate
+          "{Fred} mail@domain.com"  and not the faulty "{Fred} {mail@domain.com}"
         </li>
         <li>
           When using deferred fields (e.g. when using %to(bracketMail)% within a write template), angle brackets used to be
