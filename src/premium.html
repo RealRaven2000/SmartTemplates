@@ -419,7 +419,7 @@ permalink: premium.html
 <pre class="code">
 &#37;{&#37;  
 (function() {
-  switch(frommail.toString()) {
+  switch(from('mail').toString()) {
     case "thunderbirddaily@gmail.com":
       return "&lt;p&gt;Special text for thunderbirddaily.&lt;/p&gt;"
         + "&lt;p&gt;Another paragraph!&lt;/p&gt;";
@@ -432,9 +432,11 @@ permalink: premium.html
 &#37;}&#37;
 </pre>
   <p>
-    Here the keywords file and ownmail are replaced in the script with the SmartTemplates
-    variables <code>%file()%</code> and <code>%ownmail%</code> and then resolved by SmartTemplates.
-    Note that backslashes in strings need to be escaped: "\\"
+    Here the keywords file and from('mail') are replaced in the script with the SmartTemplates
+    variables <code>%file(path)%</code> and <code>%from(mail)%</code> and then resolved by SmartTemplates.
+    Notes: backslashes in strings need to be escaped: "\\" <br>
+    Keywords / unquoted parts within smartTemplate functions (such as from() ), such as mail, firstname etc. should be wrapped
+    in single quotes - otherwise the script will think they are undefined variables.
   </p>
   
   <b>Example 2: Greeting based on time of day</b>
