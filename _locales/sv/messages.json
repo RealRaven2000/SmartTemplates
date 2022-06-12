@@ -814,10 +814,6 @@
   "no_button": {
     "message": "Ingen"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Klicka på notifikation"
-  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
