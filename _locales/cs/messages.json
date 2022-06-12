@@ -55,6 +55,9 @@
   "any.label": {
     "message": "Jakákoliv řádka hlavičky"
   },
+  "attach.label": {
+    "message": "Přidat soubor jako přílohu"
+  },
   "b.label": {
     "message": "Zkratka měsíce (Led)"
   },
@@ -319,6 +322,9 @@
   "ex_brack.label": {
     "message": "Příklad: To: BEDŘICH | Cc: LUBOŠ"
   },
+  "export.label": {
+    "message": "Vývozní"
+  },
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
   },
@@ -340,6 +346,42 @@
   },
   "fileImage.label": {
     "message": "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen."
+  },
+  "fileTemplates.add": {
+    "message": "Přidat"
+  },
+  "fileTemplates.down": {
+    "message": "Dolů"
+  },
+  "fileTemplates.file.open": {
+    "message": "Vyberte soubor šablony z disku"
+  },
+  "fileTemplates.file.title": {
+    "message": "Titul:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "To se zobrazí v nabídce výběru šablony."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vpřed'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vytvořit novou zprávu'."
+  },
+  "fileTemplates.remove": {
+    "message": "Odstranit"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Odpovědět'."
+  },
+  "fileTemplates.title": {
+    "message": "Soubory šablon"
+  },
+  "fileTemplates.up": {
+    "message": "Nahoru"
+  },
+  "fileTemplates.update": {
+    "message": "Aktualizace"
   },
   "firstName.label": {
     "message": "Jméno:"
@@ -528,6 +570,15 @@
   },
   "l.label": {
     "message": "Hodina (1 až 12)"
+  },
+  "label-remind-me": {
+    "message": "Připomenout znovu za $countDays$ dní.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "label.haveLicense": {
     "message": "Už máte licenci?"
@@ -1066,6 +1117,9 @@
   "resolveNamesFromAB": {
     "message": "Získej jméno z adresáře"
   },
+  "resolveNamesFromABDisplay": {
+    "message": "Pokud křestní jméno chybí, použijte Zobrazované jméno"
+  },
   "resolveNamesFromABNick": {
     "message": "Přepiš křestní jméno, když existuje přezdívka"
   },
@@ -1532,6 +1586,15 @@
   },
   "tzname.label": {
     "message": "Zkratka čas. zóny GMT, PST, EST, ... "
+  },
+  "update.tooltip": {
+    "message": "Klikněte sem a přečtěte si, co je nového v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "updates.title": {
     "message": "Aktualizace"
