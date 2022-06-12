@@ -1594,6 +1594,15 @@
   "updates.title": {
     "message": "Actualitzacions"
   },
+  "update.tooltip": {
+    "message": "Feu clic aquí una vegada per llegir les novetats de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updatesExpiry": {
     "message": "SmartTemplates Pro s'actualitzarà automàticament a través de addons.thunderbird.net com és habitual. Després que expiri l'any, podeu renovar la llicència o continuar utilitzant funcions premium en els mateixos termes que els usuaris gratuïts. Les funcions 'Premium Exclusive' requeriran una clau de registre vàlida."
   },

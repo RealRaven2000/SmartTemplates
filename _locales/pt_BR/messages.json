@@ -1521,6 +1521,15 @@
   "translatorNickname.label": {
     "message": "Mauro José da Silva (BabelZilla)"
   },
+  "update.tooltip": {
+    "message": "Clique aqui uma vez para ler o que há de novo em $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Atualizações"
   },

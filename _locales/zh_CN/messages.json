@@ -1597,6 +1597,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
+  "update.tooltip": {
+    "message": "单击此处一次以阅读 $addonName$ 中的新功能。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新"
   },

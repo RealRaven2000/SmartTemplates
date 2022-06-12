@@ -1612,6 +1612,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
+  "update.tooltip": {
+    "message": "Napsauta tätä kerran lukeaksesi mitä uutta kohteessa $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Päivitykset"
   },

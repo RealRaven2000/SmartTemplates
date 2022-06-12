@@ -1551,6 +1551,15 @@
   "translatorNickname.label": {
     "message": "Peter Klofutar"
   },
+  "update.tooltip": {
+    "message": "Kliknite tukaj enkrat, če želite prebrati, kaj je novega v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Posodobitve"
   },

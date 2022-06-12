@@ -1585,6 +1585,15 @@
   "tzname.label": {
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
+  "update.tooltip": {
+    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新について"
   },

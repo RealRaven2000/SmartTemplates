@@ -1532,6 +1532,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, … "
   },
+  "update.tooltip": {
+    "message": "Bitte einmal klicken, um zu lesen, was es Neues in $addonName$ gibt.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Aktualisierung"
   },
