@@ -190,6 +190,9 @@
   "cost-of-independence": {
     "message": "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
   },
+  "creator.label": {
+    "message": "Creador"
+  },
   "cursor.label": {
     "message": "Establece la posición del cursor"
   },
@@ -268,6 +271,9 @@
   "day.7.short": {
     "message": "Sáb"
   },
+  "defaultMimeFormat": {
+    "message": "Formato de dirección predeterminado:"
+  },
   "defaultMimeFormat_tip": {
     "message": "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
   },
@@ -343,6 +349,45 @@
   },
   "fileImage.label": {
     "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
+  },
+  "fileTemplates.add": {
+    "message": "Agregar"
+  },
+  "fileTemplates.down": {
+    "message": "Abajo"
+  },
+  "fileTemplates.file.open": {
+    "message": "Seleccione el archivo de plantilla del disco"
+  },
+  "fileTemplates.file.path": {
+    "message": "Ubicación de la plantilla:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Título:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Esto se mostrará en el menú de selección de plantilla."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Adelante'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Crear nuevo mensaje'."
+  },
+  "fileTemplates.remove": {
+    "message": "Remover"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Responder'."
+  },
+  "fileTemplates.title": {
+    "message": "Archivos de plantilla"
+  },
+  "fileTemplates.up": {
+    "message": "Arriba"
+  },
+  "fileTemplates.update": {
+    "message": "Actualizar"
   },
   "firstName.label": {
     "message": "Nombre:"
