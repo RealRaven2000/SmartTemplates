@@ -1654,7 +1654,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates stöder nu användningen av 'clipboard' (urklipp) som argument för text- och rubrikmanipuleringsfunktioner som %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(reguljärt uttryck,clipboard)% %replaceQuotedText(reguljärt uttryck,clipboard)% {L2}{L1}Förbättrad *selection* (selektion) platshållare i Snippets för att bättre stödja integration i utvalda HTML-sektioner. Till exempel kan du nu linda en bild med en skugga genom att infoga ett HTML-kodavsnitt.{L2}{L1}Förenklade inställningar för identitetsmallar (rullgardinsmenyn för konton){L2}{L1}Många kompatibilitetskorrigeringar för Thunderbird 102.{L2}"
+    "message": "{L1}SmartTemplates stöder nu användningen av 'clipboard' (urklipp) som argument för text- och rubrikmanipuleringsfunktioner som %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(reguljärt uttryck,clipboard)% %replaceQuotedText(reguljärt uttryck,clipboard)% {L2}{L1}Förbättrad *selection* (selektion) platshållare i Snippets för att bättre stödja integration i utvalda HTML-sektioner. Till exempel kan du nu linda en bild med en skugga genom att infoga ett HTML-kodavsnitt.{L2}{L1}Förenklade inställningar för identitetsmallar (rullgardinsmenyn för konton){L2}{L1}Många kompatibilitetskorrigeringar för Thunderbird 102. %spellcheck()% kan nu ställa in ordbok för att korrekturläsa text med flera språk.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
