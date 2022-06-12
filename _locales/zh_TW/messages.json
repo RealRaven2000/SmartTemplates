@@ -811,10 +811,6 @@
   "no_button": {
     "message": "否"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "點擊通知"
-  },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
     "placeholders": {
