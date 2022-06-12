@@ -805,10 +805,6 @@
   "no_button": {
     "message": "いいえ"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "通知をクリック"
-  },
   "ongoing-work": {
     "message": "$addonName$ を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。次の 2022 バージョンにはさらに多くの変更があります。このような複雑なアドオンでは、コストのかかる作業が避けられなくなります。私たちを支援してください。",
     "placeholders": {

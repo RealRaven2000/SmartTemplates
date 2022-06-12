@@ -824,10 +824,6 @@
   "no_button": {
     "message": "No"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
