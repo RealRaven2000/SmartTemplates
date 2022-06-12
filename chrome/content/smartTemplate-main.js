@@ -163,6 +163,7 @@ END LICENSE BLOCK
     #   Fixed notifications
     #   Fixed id  of composer container for setting focus to email
     #   Stabilized code when reading external signatures or including external files
+    #   [issue 189] Support multiple spellcheck languages with %spellcheck()%
     #   
     # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
     # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
@@ -898,7 +899,7 @@ var SmartTemplate4 = {
         let txt = util.getBundleString("SmartTemplateMainButton.updated")
         btn.classList.add("newsflash");
         btn.label = txt;
-        btn.setAttribute("tooltiptext", "Click this once to see the Splash screen and what's new in quickFilters.");
+        btn.setAttribute("tooltiptext", "Click this once to see the Splash screen and what's new in SmartTemplates.");
         btnStatus.classList.add("newsflash");
         btnStatus.label = txt;
       }

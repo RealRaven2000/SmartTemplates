@@ -2467,7 +2467,7 @@ SmartTemplate4.Util = {
 	} ,
   
   // isDisabled - force disabled (on retry)
-  setSpellchecker: function(language, isDisabled) {
+  setSpellchecker: function(languages, isDisabled) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,
 		      util = SmartTemplate4.Util;
@@ -2476,7 +2476,7 @@ SmartTemplate4.Util = {
         inlineSpellChecker = gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
     try {
       let spellChecker = inlineSpellChecker.spellChecker;
-      if (language=='on') {
+      if (languages=='on') {
         if (enableInlineSpellCheck) {
           enableInlineSpellCheck(false);
           enableInlineSpellCheck(true);
@@ -2488,7 +2488,7 @@ SmartTemplate4.Util = {
       }
       if (!isDisabled)
         isDisabled = (gSpellChecker.enabled == false);
-      if (isDisabled && language!='off') {
+      if (isDisabled && languages!='off') {
         // temporarily enable
         gSpellChecker.enabled = true;
         spellChecker = inlineSpellChecker.spellChecker;
@@ -2500,7 +2500,7 @@ SmartTemplate4.Util = {
           util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
           // if spellChecker is not ready, we try again in 2 seconds.
           setTimeout(function() {
-            Util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
+            SmartTemplate4.Util.setSpellchecker(languages, isDisabled); // force disabled if this is set globally.
           }, 2000);
           return;
         }
@@ -2510,7 +2510,7 @@ SmartTemplate4.Util = {
           throw wrn;          
         }
       }
-      if (language=='off') {
+      if (languages=='off') {
         if (enableInlineSpellCheck)
           enableInlineSpellCheck(false);
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
@@ -2529,42 +2529,42 @@ SmartTemplate4.Util = {
         throw wrn;
       }
       
-      if (language.length>=2) {
-        // exact match
-        for (let i = 0; i < dictList.length; i++) {
-          if (dictList[i] == language) {
-            found = true;
-            language = dictList[i];
-            break;
-          }
-        }
-        // partial match
-        if (!found)
+      
+      let langArray = languages.split(",");
+      for (let l=0; l<langArray.length; l++) {
+        let foundOne = false;
+        let language = langArray[l];
+        if (language.length>=2) {
+          // exact match
           for (let i = 0; i < dictList.length; i++) {
-            if (dictList[i].startsWith(language)) {
-              found = true;
+            if (dictList[i] == language) {
+              foundOne = true; found = true;
               language = dictList[i];
               break;
             }
           }
+          // partial match
+          if (!foundOne) {
+            for (let i = 0; i < dictList.length; i++) {
+              if (dictList[i].startsWith(language)) {
+                foundOne = true; found = true;
+                language = dictList[i];
+                break;
+              }
+            }
+          }
+        }
+        langArray[l] = language; // write back correct entry
       }
       
       if (found) {
-        util.logDebug("Setting spellchecker / document language to: " + language);
-        if (ComposeChangeLanguage) {
-          document.documentElement.setAttribute("lang",""); // force resetting
-          ComposeChangeLanguage(language);
+        util.logDebug("Setting spellchecker / document language to: " + languages);
+        document.documentElement.setAttribute("lang",""); // force resetting
+        if(gActiveDictionaries) { // Tb102 supports multiple spellcheck languages active at the same time
+          ComposeChangeLanguage(langArray);
         }
         else {
-          // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
-          // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
-          // this should trigger gLanguageObserver to select the correct spell checker.
-          document.documentElement.setAttribute("lang", language); 
-          spellChecker.SetCurrentDictionary(language);
-          // force re-checking:
-          if (gSpellChecker.enabled) {
-            inlineSpellChecker.spellCheckRange(null);
-          }
+          ComposeChangeLanguage(langArray[0]); // Tb91: only 1 single language supported 
         }
         if (isDisabled) { // force restoring disabled status
           gSpellChecker.enabled = false; 
@@ -2573,7 +2573,7 @@ SmartTemplate4.Util = {
       }
       else {
         let wrn = util.getBundleString("st.notification.spellcheck.notFound");
-        throw wrn.replace("{0}", language);
+        throw wrn.replace("{0}", languages);
       }
     }
     catch(ex) {
