@@ -1591,7 +1591,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates obsługuje teraz używanie 'clipboard' (schowek) jako argumentu dla funkcji manipulacji tekstem i nagłówkiem, takich jak %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(wyrażenie regularne,clipboard )% %replaceQuotedText(wyrażenie regularne,clipboard)%{L2}{L1}Ulepszone *selection* (zaznaczanie) zastępcze we fragmentach, aby lepiej obsługiwać integrację z wybranymi sekcjami HTML. Na przykład, możesz teraz owinąć obraz cieniem, wstawiając fragment kodu HTML.{L2}{L1}Uproszczone ustawienia szablonów tożsamości (rozwijane konta){L2}{L1}Liczne poprawki zgodności dla Thunderbird 102.{L2}"
+    "message": "{L1}SmartTemplates obsługuje teraz używanie 'clipboard' (schowek) jako argumentu dla funkcji manipulacji tekstem i nagłówkiem, takich jak %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(wyrażenie regularne,clipboard )% %replaceQuotedText(wyrażenie regularne,clipboard)%{L2}{L1}Ulepszone *selection* (zaznaczanie) zastępcze we fragmentach, aby lepiej obsługiwać integrację z wybranymi sekcjami HTML. Na przykład, możesz teraz owinąć obraz cieniem, wstawiając fragment kodu HTML.{L2}{L1}Uproszczone ustawienia szablonów tożsamości (rozwijane konta){L2}{L1}Liczne poprawki zgodności dla Thunderbird 102. %spellcheck()% może teraz ustawić słownik do sprawdzania tekstu w wielu językach.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
