@@ -192,6 +192,7 @@ pre.maxW {
 		<li><code class="deferable">%from(name,link)%</code> = Sender's name as mailto link</li>
 		<li><code class="deferable">%from(mail)%</code> = Sender's email address (Text only)</li>
 		<li><code class="deferable">%from(mail,link)%</code> = Sender's email address as mailto link</li>
+    <li><code>%from(mail,<b>toclipboard</b>)%</code> = transfer sender's address to clipboard.</li>
 	</ul>
 	<p class="tip"><em>TIP:</em> When the name is not available, email address will be displayed instead</p>
 </article>
@@ -471,6 +472,14 @@ This turns on automatic proofing and switches the spellchecker language to Germa
             <td><code class="inline">%dateformat(d/n/Y k:M:S)%</code></td>
             <td>24/10/2019 21:41:13</td>
           </tr>
+          <tr>
+            <td><code class="inline">%dateformat("A, e/n/Y H:M",<b>toclipboard</b>)%</code></td>
+            <td>(new in v3.12) Copy time to clipboard. use in a reply mail to retrieve datestamp of original mail.</td>
+          </tr>
+          <tr>
+            <td><code class="inline">%dateformat("A, e/n/Y H:M",<b>current</b>,<b>toclipboard</b>)%</code></td>
+            <td>(new in v3.12) Copy current time to clipboard</td>
+          </tr>
         </table>
       </p>
       
@@ -552,6 +561,21 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 				E.g. <code class="inline">%matchTextFromSubject("\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b",0)%</code> 
 				will retrieve an Email address from the Subject line</li>
 	</ul>
+  <b>New feature in SmartTemplates 3.12 - clipboard support</b>
+  <p>The clipboard can now be used by other functions (such as %header.set%) to transfer information to other 
+    headers or insert elsewhere in the template.</p>
+  <ul>
+    <li><code>%replaceText(<i>regularExpression</i>,<b>clipboard</b>)%</code> - (new in v3.12) overwrite placeholder text in template from clipboard.</li>
+    <li><code>%matchTextFromSubject("Regular Expression",MatchGroup,<b>toclipboard</b>)%</code> = 
+      Extract text from the subject and copy to the clipboard. 
+    </li>
+    <li><code>%matchTextFromBody("Please reply until (.*)",1,<b>toclipboard</b>)%</code> = 
+      Extract text from the original mail and copy itr to the clipboard. In this example you can extract
+      a date, and maybe transfer it to the subject line afterwards using 
+      <code class="inline">%header.append(subject,clipboard)%</code>.
+      You can also use <code class="inline">%dateformat("A, e/n/Y H:M",toclipboard)%</code> to copy the time stamp of the original mail
+    </li>
+  </ul>
 	<p>Note: the new <code class="inline">%matchTextFromBody%</code> and <code class="inline">%matchTextFromSubject%</code> functions 
 	   use <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">regular expressions</a> - these are powerful keys for finding text patterns.
 		 The first parameter must be the regular expression within double quotes. The second parameter is a number which denotes the "match group". 
@@ -630,6 +654,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 		<li> <code>%header.append(subject,"text")%</code> = Append text to subject</li>
     <li> <code>%header.delete(subject,<i>pattern</i>)%</code> Remove matching regular expression from text.</li>  
     <li> <code>%header.deleteFromSubject(<i>pattern</i>)%</code> (from v2.8.1) Remove matching pattern from subject.</li>  
+    <li> <code>%header.set(to,<b>clipboard</b>)%</code> - (new in v3.12) set the final recipient from the clipboard</li>
 		<hr/>
 		<li> 
       <p>Special pattern matching functions:</p>

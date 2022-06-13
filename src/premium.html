@@ -176,6 +176,7 @@ permalink: premium.html
 	<ul>
 		<li><code>%deleteText("text")%</code> = Remove some text from the Quote Header, such as deleteText("via Paypal")- "John via Paypal wrote" =&gt; "John wrote"</li>
 		<li><code>%replaceText("find","replace")%</code> = Replace some text with something else (similar to deleteText).</li>
+    <li><code>%replaceText(<i>regularExpression</i>,<b>clipboard</b>)%</code> = (new in v3.12) overwrite placeholder text in template from clipboard</li>
 		<li><code>%matchTextFromBody("Regular Expression",MatchGroup)%</code> = 
 		    Finds a pattern in quoted Email and insert at function location.<br>
 				E.g. <code class="inline">%matchTextFromBody("Delivery from ([-'a-zA-Z\u00C0-\u024F]*\s[-'a-zA-Z\u00C0-\u024F]*)",1)%</code> 
@@ -207,10 +208,16 @@ permalink: premium.html
   <ul>
     <li>
       <p>
-        <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> Deletes quoted Text <br>
-        <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> Replaces quoted text <br>
-        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
-        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<br>
+        <code>%deleteQuotedText("<i>searchText</i>",<i>quoteLevel</i>)%</code> 
+          Deletes quoted Text <br>
+        <code>%replaceQuotedText("<i>searchText</i>","<i>replacementHTML</i>",<i>quoteLevel</i>)%</code> 
+          Replaces quoted text <br>
+        <code>%replaceQuotedText(<i>regularExpression</i>,clipboard)%</code> 
+          (new in v3.12) replace text patterns in the quoted part with clipboard contents.<br>
+        <code>%deleteQuotedTags("<i>selector</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> 
+          Deletes tags from the quote.<br>
+        <code>%replaceQuotedTags("<i>selector</i>","<i>replacementHTML</i>",<i>quoteLevel</i>,<i>minSize</i>)%</code> 
+          Deletes tags from the quote<br>
         <i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. 
         Note that whitespace can be best represented as \s because it can also contain line breaks. 
         Commas and double quote characters cannot be used.<br>
@@ -274,6 +281,8 @@ permalink: premium.html
 	<ul>
 		<li><code>%header.set(<i>hdr</i>,"text")%</code> = Set the header <i>hdr</i> (eg. to, from, subject) with the text.</li>
 		<li><code>%header.set(subject,"text")%</code> = Replace complete subject with the text</li>
+		<li><code>%header.set(to,<b>clipboard</b>)%</code> = (new in v3.12) set the final recipient from the clipboard.</li>
+    
 		<li><code>%header.prefix(subject,"text")%</code> = Prefix subject with the text</li>
 		<li><code>%header.append(subject,"text")%</code> = Append text to subject</li>
 		<li><code>%header.delete(subject,"text")%</code> = Delete text from subject</li>
