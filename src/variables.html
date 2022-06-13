@@ -8,7 +8,7 @@ permalink: variables.html
 "use strict"; // use ECMAScript5 strict mode
   markActiveNavigation("variables.html");
   /* Apply this site specific file to <head> element */
-  loadStyleSheet("variables.css");
+  loadStyleSheet("variables.css?v=2");
 </script>
 
 <style>
@@ -561,7 +561,7 @@ When combined with %X:=sent%, the date/time variables will reflect the original 
 				E.g. <code class="inline">%matchTextFromSubject("\b[a-zA-Z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b",0)%</code> 
 				will retrieve an Email address from the Subject line</li>
 	</ul>
-  <b>New feature in SmartTemplates 3.12 - clipboard support</b>
+  <h4>New feature in SmartTemplates 3.12 - clipboard support</h4>
   <p>The clipboard can now be used by other functions (such as %header.set%) to transfer information to other 
     headers or insert elsewhere in the template.</p>
   <ul>

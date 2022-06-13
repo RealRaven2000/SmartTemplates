@@ -37,6 +37,7 @@ div#pageContent {
 article {
 	display: block;
 	margin: 0.1em 0 0.1em 0;
+  padding: 0.3em;
 }
 
 article ul {
@@ -44,6 +45,17 @@ article ul {
 }
 article ul li {
   padding-bottom: 0.2em;
+}
+
+article h4::before {
+  content: none !important;
+}
+
+article h4 {
+  margin-left: 2.6em;
+  font-size: 0.9em;
+  box-shadow: none !important;
+  padding: 0.3em;
 }
 
 
