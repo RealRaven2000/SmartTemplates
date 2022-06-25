@@ -1765,7 +1765,12 @@ SmartTemplate4.classSmartTemplate = function() {
         case 1: // ELEMENT_NODE
           for (let i=0; i<r.startContainer.childNodes.length; i++) {
             if (i<r.startOffset || i>r.endOffset) continue;
-            html += r.startContainer.childNodes[i].outerHTML;
+            if (r.startContainer.childNodes[i].nodeType == 1) {
+              html += r.startContainer.childNodes[i].outerHTML;  
+            }
+            else if (r.startContainer.childNodes[i].nodeType == 3) {
+              html += r.startContainer.childNodes[i].textContent;
+            }
           }
           break;
         case 3:  // TEXT_NODE
