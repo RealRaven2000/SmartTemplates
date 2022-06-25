@@ -7,14 +7,16 @@
 
 
 #helpTemplates, #helpSnippets {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+	-moz-context-properties: fill;
+	fill: currentColor;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 #helpStationery {
   -moz-appearance: none !important; 
-  background-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+  background-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
   background-repeat: no-repeat;
   cursor: pointer;
   margin-top: 3px;
@@ -729,6 +731,13 @@ table div.no {
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	display: -moz-box;
 }
+#smartTemplatePane toolbarbutton {
+  /* Tb 102 */
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+
 #smartTemplatePane #btnSaveTemplate,
 #smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/save.svg") !important;
