@@ -245,6 +245,7 @@ function()
     SmartTemplate4.init();
     
     // safety for when the compose-window-init event does not fire (Tb 67+)
+    /*
     if (typeof ComposeStartup == 'function') {
       if (!SmartTemplate4.ComposeStartup) {
         if (isDebugComposer) debugger;
@@ -258,5 +259,6 @@ function()
         }
       }
     }
+    */
   }
 )();
