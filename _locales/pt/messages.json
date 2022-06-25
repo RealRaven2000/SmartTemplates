@@ -208,6 +208,9 @@
   "dateformat.explain": {
     "message": "A maioria das variáveis de tempo acima podem ser usadas na string de parâmetro omitindo '%'. Veja também:"
   },
+  "dateformat.label": {
+    "message": "Função para inserir a hora atual (campo clicável)."
+  },
   "datelocal.label": {
     "message": "Data e hora (formato local)"
   },
@@ -343,6 +346,33 @@
   },
   "fileImage.label": {
     "message": "Arquivo de imagem (PNG, JOG, GIF, BMP, SVG). O texto alternativoé exibido se a imagem não pode ser localizada."
+  },
+  "fileTemplates.add": {
+    "message": "Adicionar"
+  },
+  "fileTemplates.down": {
+    "message": "Baixa"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Isso será exibido no menu de seleção de modelos."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Avançar'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Lista de arquivos de modelo externos que podem ser iniciados a partir do botão 'Criar nova mensagem'."
+  },
+  "fileTemplates.remove": {
+    "message": "Remover"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista de arquivos de modelos externos que podem ser iniciados a partir do botão 'Responder'."
+  },
+  "fileTemplates.up": {
+    "message": "Acima"
+  },
+  "fileTemplates.update": {
+    "message": "Atualizar"
   },
   "firstName.label": {
     "message": "Nome:"
@@ -1030,6 +1060,9 @@
   "recipient.label": {
     "message": "Destinatário Final"
   },
+  "regexpAnyText": {
+    "message": "Qualquer texto - expressão regular - deve estar entre aspas duplas."
+  },
   "renew-your-license": {
     "message": "Renove sua licença."
   },
@@ -1565,6 +1598,16 @@
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Bem-vindo ao $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "xsent_long.cap": {
     "message": "Exemplo com variáveis personalizáveis:"

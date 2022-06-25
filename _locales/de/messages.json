@@ -1445,6 +1445,9 @@
   "table_fwd.label": {
     "message": "Weiterleiten"
   },
+  "table_keyword.label": {
+    "message": "Variablen"
+  },
   "table_new.label": {
     "message": "Verfassen"
   },
