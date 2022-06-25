@@ -1994,7 +1994,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
     function modifyHeader(hdr, cmd, argString, matchFunction="") {
-      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
+      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","message-id"],
             ComposeFields = gMsgCompose.compFields;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
@@ -2044,8 +2044,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
           // not in whitelist
-          if (hdr.toLowerCase().startsWith("list"))
+          if (hdr.toLowerCase().startsWith("list") || hdr.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
             isClobberHeader = true;
+          }
           else {
             util.logToConsole("invalid header - no permission to modify: " + hdr + 
               "\nSupported headers: " + whiteList.join(', '));
@@ -2075,9 +2076,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           case 'reply-to':
             targetString = ComposeFields.replyTo;
             break;
+          case "message-id":
+            modType = 'string';
+            targetString = ComposeFields.messageId;
+            break;
           default:
             if (isClobberHeader) {
-              debugger;
               modType = 'string';
               targetString = gMsgCompose.compFields.getHeader(hdr) || "";
             }
@@ -2185,6 +2189,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						    + "Must be one of [" + validVals.join() +  "]");
 						
 					  break;
+          case "message-id":
+            ComposeFields.messageId = targetString;
+            break;
           default:
             if (isClobberHeader) {
               if (targetString) {
@@ -2318,6 +2325,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 		let debugTimeStrings = (prefs.isDebugOption('timeStrings'));
 		if (!arg) arg='';
+    
+    // arg is the arguments string including parentheses, e.g. from(mail) = "(mail)"
+    // create an array of arguments for any variable
+    let args = (arg && arg.startsWith("(")) ? removeParentheses(arg).split(",") : [];
+    
 		try {
 			// for backward compatibility
 			switch (token) {
@@ -2674,10 +2686,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
-            let args = arg.split(","),
-                modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
-                
-            if (modHdr.startsWith("list")) modHdr = args[0].substr(1); // add case back.
+            let modHdr = args.length ? args[0].toLowerCase() : ''; // cut off "("
+            if (modHdr.startsWith("list")) modHdr = args[0]; // add case back.
             if (args.length<2 && token!="header.deleteFromSubject") {
               util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
               return '';
@@ -2751,9 +2761,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
             return newTok;
           }
+          
+          if (args.includes("toclipboard")) {
+            util.clipboardWrite(headerValue);
+            return "";
+          }
+          
 					// allow HTML as to(link) etc. builds a href with mailto
-					if (testHTML(headerValue, arg)) // avoid double escaping
+					if (testHTML(headerValue, arg)) { // avoid double escaping
 						return headerValue;
+          }
 					token = headerValue;
 					break;
 			}
@@ -2765,6 +2782,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
       return token;
 		}
+    
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
 	
