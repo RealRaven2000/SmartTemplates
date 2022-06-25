@@ -1084,10 +1084,40 @@ export let Util = {
 	  
   // 2447
   // isDisabled - force disabled (on retry)
-  setSpellchecker: function(language, isDisabled) {
-    // not supported.
-    // possibly use a notification to legacy code for this one. 
-    Util.logIssue184(`Util.setSpellchecker(${language}, ${isDisabled})`);
+  setSpellchecker: async function(languages, tabId) {
+    let langArray = languages.split(",");
+    let installedDics = await messenger.compose.getActiveDictionaries(tabId);
+    let activeDictionaries = [];
+    for (let [key,item] of Object.entries(installedDics)) {
+      console.log(`${key}: `, item);
+    }
+    
+    if (languages!="off") {
+      for (let [key,item] of Object.entries(installedDics)) {
+        // primary match (full string)
+        let l = langArray.findIndex(el => el == key);
+        if (l>=0) { 
+          langArray.splice(l,1); // remove item
+          activeDictionaries.push(key);
+        }
+        else {
+          // secondary match (start of locale, e.g. "en" when only "en-US" is installed.)
+          // first match found is used!
+          let found = false;
+          for(let j = 0; !found && j<langArray.length; j++) {
+            if (key.startsWith(langArray[j])) {
+              langArray.splice(j,1); // remove item
+              activeDictionaries.push(key);
+              found=true;
+            }
+          }
+        }
+      }
+    }
+    if (languages) {
+      await messenger.compose.setActiveDictionaries(tabId, activeDictionaries);
+    }
+
   },    
   
   // 2581

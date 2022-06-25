@@ -82,6 +82,7 @@ export class SmartTemplatesProcess {
         let isInfoInitialized = this.hasComposer(composeTab.id),
             info = isInfoInitialized ? this.getComposer(composeTab.id) : { };
         info.composeDetails = await messenger.compose.getComposeDetails(composeTab.id);
+        info.composeTabId = composeTab.id;
         // load defaults from pref
         
         // info.composeDetails.subject = "This is a test";

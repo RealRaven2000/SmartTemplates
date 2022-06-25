@@ -152,6 +152,7 @@ export async function extractSignature() {
 
 export async function insertTemplate(startup, flags, fileTemplateSource)	{
     let rawTemplate = "";
+    Util.logIssue184(`st-compose.mjs - insertTemplate() - WIP`);
     // convert this one later. we start with Parser.getProcessedText
     // rename st-parser.mjs to st-parser.mjs.js !
     /* LINE NUMBER in smartTemplate-compose.js - what it does */
@@ -167,7 +168,7 @@ export async function insertTemplate(startup, flags, fileTemplateSource)	{
        SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; */
     
     /* smartTemplate-compose:923 - retrieve identity from document / composer */
-    let composeTab =  await messenger.tabs.getCurrent()   // current tab if we are in composer.
+    let composeTab =  await messenger.tabs.getCurrent(),   // current tab if we are in composer.
         composeDetails = await messenger.compose.getComposeDetails(composeTab.id),
         idKey = composeDetails.identityId;
     // SmartTemplates.logDebug("retrieved identity key: " + idKey);

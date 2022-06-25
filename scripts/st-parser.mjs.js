@@ -1735,7 +1735,7 @@ export class Parser {
           case "spellcheck":
             // use first argument to switch dictionary language.
             let lang = removeParentheses(arg);
-            Util.setSpellchecker(lang);
+            Util.setSpellchecker(lang, that.info.composeTabId); // id of composetab as we need it for the API
             return "";
           case "logMsg": // For testing purposes - add a comment line to email and error console
             Util.logToConsole(removeParentheses(arg));
