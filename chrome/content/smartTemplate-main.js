@@ -899,7 +899,7 @@ var SmartTemplate4 = {
         let txt = util.getBundleString("SmartTemplateMainButton.updated")
         btn.classList.add("newsflash");
         btn.label = txt;
-        btn.setAttribute("tooltiptext", "Click this once to see the Splash screen and what's new in SmartTemplates.");
+        btn.setAttribute("tooltiptext", util.getBundleString("update.tooltip", ["SmartTemplates"]));
         btnStatus.classList.add("newsflash");
         btnStatus.label = txt;
       }
