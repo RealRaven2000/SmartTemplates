@@ -55,7 +55,7 @@ For example, you can now wrap an image with some HTML to add a shadow with this 
       width:max-content;"&gt;*selection*&lt;/div&gt;
 </pre>
 
-This will add a nice outlins and drop shadow. There are many more creative way to add functionality to the Thunderbird Composer using the SmartTemplates Snippets button, by using HTML and style rules.
+This will add a nice outlines and drop shadow. There are many more creative way to add functionality to the Thunderbird Composer using the SmartTemplates Snippets button, by using HTML and style rules.
 </li>
 
 <li>
@@ -71,13 +71,25 @@ were confusing - I have decided to streamline this by taking the following steps
   </ul>
 </li>
 
-
 <li>Compatibility changes for Thunderbird ESR 102:<br>
 Increased minimum version number<br>
 Fixed notifications<br>
 Fixed setting focus in composer<br>
 Stabilized code when reading external signatures or including external files
 </li>
+
+
+<b>Bug Fixes / Maintenance</b>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/186">[issue 186]</a> Fixed various issues in <code class="inline">bracketMail</code> parameter in %to% / %from% etc:
+
+  <ul>
+  <li> You can now use bracketMail without the parentheses: <code>%to(name,bracketMail)%</code> this will default to wrapping the email in the standard of angled brackets: &lt;mail@domain.com&gt; </li>
+  <li> Fixed: Explict delimiters given as bracket parameters should not repeat on all following fields. <br> For example, <code>%to(bracketName({;}),mail)%</code> will generate "{Fred} mail@domain.com"  and not the faulty "{Fred} {mail@domain.com}" </li>
+  <li> When using deferred fields (e.g. when using %to(bracketMail)% within a write template), angle brackets used to be encoded twice leading to an output of "&amplt;mail@domain.com&ampgt;"  instead of the expected "&lt;mail@domain.com&gt;" when the user clicks to update the field.</li>
+  <li> Using multiple <code class="inline">bracketMail</code> functions could lead to  only the last <code class="inline">[[ optional section ]]</code> to be removed as expected. See related <a href="https://github.com/RealRaven2000/SmartTemplates/issues/192">[issue 192]</a></li>
+  </ul>
+</li>
+
 
 <li>Ongoing work: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/184">[issue 184]</a>
 Move template processing into background script

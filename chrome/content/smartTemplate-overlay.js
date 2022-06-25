@@ -635,7 +635,7 @@ SmartTemplate4.mimeDecoder = {
 		
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail<angle>'
+      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail{angle}'
     }
     
 		util.logDebugOptional('mime.split',
@@ -3208,10 +3208,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   // replace round brackets of bracketMail() with {} - using the second (=inner) match group
   // this makes it possible to nest functions!
   // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
-	msg = // msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
-        msg.replace(/%(.*)(bracketMail\(([^)]*))\)/gm, "%$1bracketMail\{$3\}")
-	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
-        msg.replace(/%(.*)(bracketName\(([^)]*))\)/gm, "%$1bracketName\{$3\}");
+  // v1
+  // msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
+  // msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
+  // v2
+	// msg = msg.replaceAll(/%(.*)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
+	// msg = msg.replaceAll(/%(.*)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
+	msg = msg.replaceAll(/%([a-zA-Z][^)]+)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
+	msg = msg.replaceAll(/%([a-zA-Z][^)]+)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
