@@ -2560,7 +2560,7 @@ SmartTemplate4.Util = {
       if (found) {
         util.logDebug("Setting spellchecker / document language to: " + languages);
         document.documentElement.setAttribute("lang",""); // force resetting
-        if(gActiveDictionaries) { // Tb102 supports multiple spellcheck languages active at the same time
+        if(typeof gActiveDictionaries == "object") { // Tb102 supports multiple spellcheck languages active at the same time
           ComposeChangeLanguage(langArray);
         }
         else {
