@@ -1384,7 +1384,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "31 de març"
+    "message": "17 de juliol"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1630,7 +1630,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}SmartTemplates ara admet l'ús de 'clipboard' (porta-retalls) com a argument per a les funcions de manipulació de text i capçaleres, com ara %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(expressió regular,clipboard)% % replaceQuotedText(regular Expression,clipboard)%{L2}{L1}S'ha millorat el marcador de posició *selection* (výběr) als fragments per admetre millor la integració a les seccions HTML seleccionades. Per exemple, ara podeu embolicar una imatge amb una ombra inserint un fragment HTML.{L2}{L1}Configuració simplificada per a plantilles d'identitat (menú desplegable de comptes){L2}{L1}Nombroses correccions de compatibilitat per a Thunderbird 102.{L2}"
+    "message": "{L1}SmartTemplates Pro ara admet l'ús de 'clipboard' (porta-retalls) com a argument per a les funcions de manipulació de text i capçaleres, com ara %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(expressió regular,clipboard)% % replaceQuotedText(regular Expression,clipboard)%{L2} {L1}Utilitzeu 'toclipboard' per copiar diversos resultats al porta-retalls. Per exemple: %from(nom,al porta-retalls)% %dateformat(\"A, e/n/Y H:M\",actual,al porta-retalls)% {L2}{L1}S'ha millorat el marcador de posició *selection* (výběr) als fragments per admetre millor la integració a les seccions HTML seleccionades. Per exemple, ara podeu embolicar una imatge amb una ombra inserint un fragment HTML.{L2}{L1}Configuració simplificada per a plantilles d'identitat (menú desplegable de comptes){L2}{L1}Nombroses correccions de compatibilitat per a Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
