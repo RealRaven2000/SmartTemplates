@@ -150,7 +150,6 @@ export let Util = {
 		}
 			
 		// Add variables in "Write" window to standard features!
-    // util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
 		field = field.replace(/%/g,'');
 		let tag = "<smarttemplate" +
 					 " hdr='" + field + "'" +
@@ -351,6 +350,7 @@ export let Util = {
   // @global=false returns a string from a quoted string
   unquotedRegex: async function unquotedRegex(s, global) {
     if (s == "clipboard") { // [issue 183]
+      Util.logIssue184("Restrict clipboard to Pro Users!");
       return await Util.clipboardRead();
     }
 		let quoteLess = s.substring(1, s.length-1);

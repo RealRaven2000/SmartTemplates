@@ -1239,6 +1239,8 @@ export class Parser {
             }
             // [issue 183]
             if (argument=="clipboard") {
+              // need license check here...
+              Util.logIssue184("Restrict clipboard to Pro Users!");
               argument = await Util.clipboardRead();
             }
             break;
@@ -1864,6 +1866,7 @@ export class Parser {
             Util.addUsedPremiumFunction('conditionalText');
             return insertConditionalText(arg);
           case "clipboard":
+            Util.logIssue184("Restrict clipboard to Pro Users!");
             return await Util.clipboardRead();
 
           default:
