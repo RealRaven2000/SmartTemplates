@@ -628,15 +628,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Maksa vain 4,30 euroa 8,60 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
@@ -1401,9 +1392,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "17. heinäkuuta"
-  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1649,9 +1637,6 @@
   },
   "whats-new-intro": {
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
-  },
-  "whats-new-list": {
-    "message": "{L1}SmartTemplates Pro tukee nyt 'clipboard' (leikepöydän) käyttöä argumenttina tekstin ja otsikon käsittelytoiminnoille, kuten %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Käytä 'toclipboard' erilaisten tulosten kopioimiseen leikepöydälle. Esimerkiksi: %from(nimi,leikepöytä)% %dateformat(\"A, e/n/Y H:M\",current,leikepöytä)% {L2}{L1}Parannettu *selection* (valinta) -paikkamerkki katkelmissa, mikä tukee paremmin integrointia valittuihin HTML-osiin. Voit nyt esimerkiksi kääriä kuvan varjolle lisäämällä HTML-koodinpätkän.{L2}{L1}Identiteettimallien yksinkertaistetut asetukset (avattava tilivalikko){L2}{L1}Useita yhteensopivuuskorjauksia Thunderbird 102:lle. %spellcheck()% voi nyt asettaa sanakirjan oikotekstiksi useilla kielillä.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
