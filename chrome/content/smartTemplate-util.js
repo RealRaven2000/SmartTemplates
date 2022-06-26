@@ -1202,6 +1202,10 @@ SmartTemplate4.Util = {
   // @global=false returns a string from a quoted string
   unquotedRegex: function unquotedRegex(s, global) {
     if (s == "clipboard") { // [issue 183]
+      if (!SmartTemplate4.Util.hasLicense()  || SmartTemplate4.Util.licenseInfo.keyType == 2) { 
+        SmartTemplate4.Util.addUsedPremiumFunction("clipboard");
+        return "";
+      }
       return SmartTemplate4.Util.clipboardRead();
     }
 		let quoteLess = s.substring(1, s.length-1);
@@ -1397,7 +1401,6 @@ SmartTemplate4.Util = {
 		}
 			
 		// Add variables in "Write" window to standard features!
-    // util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
 		field = field.replace(/%/g,'');
 		let tag = "<smarttemplate" +
 					 " hdr='" + field + "'" +
@@ -1687,8 +1690,9 @@ SmartTemplate4.Util = {
       timeFormat = argument.substring(1,closeQuote);
       let args = argument.substring(closeQuote).split(",");
       if (args.length>1) {
-        if (args.includes("toclipboard"))
+        if (args.includes("toclipboard")) {
           isClipboard = true;
+        }
       }
     }
     else {
@@ -1769,8 +1773,13 @@ SmartTemplate4.Util = {
 					
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
       if (isClipboard) {
-        util.clipboardWrite(timeString);
-        util.logDebugOptional('timeStrings', "Copied time to clipboard!");
+        if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+          util.addUsedPremiumFunction("toclipboard");
+        }
+        else {
+          util.clipboardWrite(timeString);
+          util.logDebugOptional("timeStrings", "Copied time to clipboard!");
+        }
         return "";
       }
 			return timeString;

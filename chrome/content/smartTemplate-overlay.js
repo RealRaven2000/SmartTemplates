@@ -1087,8 +1087,13 @@ SmartTemplate4.mimeDecoder = {
 		}
     
     if (isWriteClipboard) {
-      util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
-      util.clipboardWrite(addresses);
+      if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+        util.addUsedPremiumFunction("clipboard");
+      }
+      else {
+        util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
+        util.clipboardWrite(addresses);
+      }
       addresses = "";
     }
 		return addresses;
@@ -2016,7 +2021,13 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           }
           // [issue 183]
           if (argument=="clipboard") {
-            argument = util.clipboardRead();
+            if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+              argument = "";
+              util.addUsedPremiumFunction("clipboard");
+            }
+            else {
+              argument = util.clipboardRead();
+            }
           }
 				  break;
 				case "matchFromSubject":
@@ -2681,6 +2692,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           util.addUsedPremiumFunction('conditionalText');
           return insertConditionalText(arg);
         case "clipboard":
+          if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+            util.addUsedPremiumFunction("clipboard");
+            return "";
+          }
           return util.clipboardRead();
 
 				default:
@@ -2763,7 +2778,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           }
           
           if (args.includes("toclipboard")) {
-            util.clipboardWrite(headerValue);
+            if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+              util.addUsedPremiumFunction("clipboard");
+            }
+            else {
+              util.clipboardWrite(headerValue);
+            }
             return "";
           }
           
