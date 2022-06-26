@@ -619,15 +619,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 4,30 EUR namísto 8,60 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
   },
@@ -1386,9 +1377,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "17. července"
-  },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -1628,9 +1616,6 @@
   },
   "whats-new-intro": {
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
-  },
-  "whats-new-list": {
-    "message": "{L1}SmartTemplates Pro nyní podporuje použití 'clipboard' (schránky) jako argumentu pro funkce manipulace s textem a záhlavím, jako je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Ke zkopírování různých výsledků do schránky použijte 'toclipboard'. Například: %from(name,schlipboard)% %dateformat(\"A, e/n/Y H:M\",current,schlipboard)% {L2}{L1}Vylepšený zástupný symbol *selection* (výběr) ve úryvcích pro lepší podporu integrace do vybraných sekcí HTML. Nyní můžete například zabalit obrázek do stínu vložením úryvku HTML.{L2}{L1}Zjednodušené nastavení pro šablony identit (rozbalovací nabídka účtů){L2}{L1}Četné opravy kompatibility pro Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
