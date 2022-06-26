@@ -622,15 +622,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 4,30 € statt 8,60 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
   },
@@ -1338,9 +1329,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "17. Juli"
-  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1573,9 +1561,6 @@
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
-  },
-  "whats-new-list": {
-    "message": "{L1}SmartTemplates Pro unterstützt jetzt die Verwendung von 'clipboard' (Zwischenablage) als Parameter für Text- und Header-Manipulationsfunktionen wie %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)% {L2}{L1}Verwenden Sie 'toclipboard', um verschiedene Ergebnisse in die Zwischenablage zu kopieren. Zum Beispiel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Verbesserter *selection* (Auswahl)-Platzhalter in Snippets, um die Integration in HTML Sektionen besser zu unterstützen. Beispielsweise können Sie jetzt ein Bild mit einem Schatten umhüllen, indem Sie ein HTML-Snippet einfügen.{L2}{L1}Vereinfachte Einstellungen für Identitätsvorlagen (Konten-Dropdown){L2}{L1}Zahlreiche Kompatibilitätskorrekturen für Thunderbird 102. %spellcheck()% kann jetzt das Wörterbuch so einstellen, dass Text in mehreren Sprachen geprüft wird.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
