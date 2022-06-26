@@ -9,8 +9,14 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 
 let updateTemplateMenus;
 
+
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  
+  // for version specific code / style fixes
+  if (window.SmartTemplate4.Util.versionGreaterOrEqual(window.SmartTemplate4.Util.AppverFull, "102")) {
+    WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
+  }
 
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();

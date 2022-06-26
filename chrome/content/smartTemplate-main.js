@@ -164,6 +164,7 @@ END LICENSE BLOCK
     #   Fixed id  of composer container for setting focus to email
     #   Stabilized code when reading external signatures or including external files
     #   [issue 189] Support multiple spellcheck languages with %spellcheck()%
+    #   Fixed menu spacings for Templates in reply / write / forward / Snippets buttons.
     #   
     # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
     # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
