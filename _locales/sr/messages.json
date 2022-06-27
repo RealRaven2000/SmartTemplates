@@ -583,6 +583,15 @@
       }
     }
   },
+  "license-standard-special-terms": {
+    "message": "Платите само 4,30 € уместо 8,60 € и остварите пуни приступ Про функцијама. Ова посебна понуда доступна је од {болдСтарт} до $expiry$ {болдЕнд}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
+  },
   "licenseComparison": {
     "message": "Да бисте упоредили карактеристике различитих верзија, {linkStart}прочитајте ову листу{linkEnd}."
   },
@@ -1326,6 +1335,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "17. јула"
+  },
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
     "placeholders": {
@@ -1568,6 +1580,9 @@
   },
   "whats-new-intro": {
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
+  },
+  "whats-new-list": {
+    "message": "{L1}SmartTemplates Pro сада подржава коришћење 'clipboard' (цлипбоард) као аргумента за функције манипулације текстом и заглављем, као што је %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Користите 'toclipboard' да копирате различите резултате у међуспремник. На пример: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)%{L2}{L1}Побољшан чувар места за *selection* (избор) у исечцима ради боље подршке за интеграцију у изабране ХТМЛ одељке. На пример, сада можете да обмотате слику сенком уметањем ХТМЛ фрагмента.{L2}{L1}Поједностављена подешавања за шаблоне идентитета (падајући мени налога){L2}{L1}Бројне исправке компатибилности за Тхундербирд 102. %spellcheck()% сада може да подеси речник на пробни текст са више језика.{L2}"
   },
   "whitespace_note": {
     "message": "Имајте на уму да се бели простор може најбоље представити као \\s јер може такође да садржи прекиде линија. Зарези и знакови двоструког цитата се не могу користити."
