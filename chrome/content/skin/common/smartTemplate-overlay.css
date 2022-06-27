@@ -46,9 +46,10 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   fill: rgb(60,0,0) !important;
 }
 
-
+/* force showing the label with news / update text */
 #SmartTemplate4Button.newsflash .toolbarbutton-text,
-#SmartTemplate4Messenger.newsflash .toolbarbutton-text {
+#SmartTemplate4Messenger.newsflash .toolbarbutton-text,
+#SmartTemplate4Button.alertExpired .toolbarbutton-text {
   display: inline-block !important;
 }
 
@@ -115,6 +116,20 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   color: yellow !important;
 }
 
+/* add attrib selector for specificity */
+#SmartTemplate4Button[oncommand].alertExpired {
+  background-color: rgb(120,0,0) !important;
+  background-image: linear-gradient(to bottom, #720001 0%, #bf0003 100%) !important;
+  color: white !important;
+  border-radius: 5px;
+}
+#SmartTemplate4Button[oncommand].alertExpired:hover label {
+  color: yellow !important;
+}
+
+#SmartTemplate4Button.alertExpired:not(.newsflash) {
+  font-weight: bold;
+}
 
 
 /* replace notification tag for Tb 64 and later to also match xbl-notification */

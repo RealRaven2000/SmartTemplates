@@ -31,7 +31,7 @@ async function onLoad(activatedWhileWindowOpen) {
                    label="__MSG_smartTemplate4.settings.label__"
                    tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
                    class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="SmartTemplate4.Util.openPreferences();" />
+                   oncommand="SmartTemplate4.Util.openPreferences(this);" />
  
   
   </toolbarpalette>

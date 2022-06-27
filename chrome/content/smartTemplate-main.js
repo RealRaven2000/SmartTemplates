@@ -804,6 +804,7 @@ var SmartTemplate4 = {
   initLicensedUI: function ST_initLicensedUI() {
     SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.updateStatusBar();
+    SmartTemplate4.updateToolbarIcon();
   },
 
   startUp: function ST_startUp() {
@@ -912,8 +913,33 @@ var SmartTemplate4 = {
         btnStatus.classList.remove("newsflash");
         btnStatus.label = txt;
       }
+      SmartTemplate4.updateToolbarIcon(); // renewal signal!
     }
-  }  
+  } ,
+  
+  updateToolbarIcon: function() {
+    // renewal color overrides news.
+    let btn = document.getElementById("SmartTemplate4Button");
+    if (btn) {
+      let licenseInfo = SmartTemplate4.Util.licenseInfo;
+      if (licenseInfo.licenseKey && licenseInfo.isExpired)  {
+        let wrn = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
+        btn.classList.add("alertExpired");
+        if (!SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
+          btn.setAttribute("tooltiptext", wrn);
+          btn.label = SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense");
+        }
+      }
+      else {
+        if (btn.classList.contains("alertExpired")) {
+          // remove expiry warning & restore label + default tip
+          btn.label = SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label");
+          btn.setAttribute("tooltiptext", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.tooltip"));
+          btn.classList.remove("alertExpired");
+        }
+      }
+    }
+  } 
 
 };  // Smarttemplate4
 
