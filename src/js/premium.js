@@ -44,7 +44,7 @@
 			switch (user) {
         case 'std':
 				case 'pro':
-        case 'stdRenvew':
+        case 'stdRenew':
 				  removeClassItems('shilling');
 					removeClassItems('donateButton');
           if (user == 'pro')
