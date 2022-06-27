@@ -227,6 +227,7 @@ permalink: version.html
 -->
 
 <a id="3.12"> &nbsp; </a>
+<a id="3.12.1"> &nbsp; </a>
 <li>
   <h4>
 		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.12 - WIP</a>
@@ -237,7 +238,7 @@ permalink: version.html
   </h4>
   <ul>
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li>
+    <li> <!--clipboard -->
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/183">[issue 183]</a> 
         SmartTemplates Pro now supports using "clipboard" as argument for text and header manipulation functions:
@@ -259,7 +260,7 @@ permalink: version.html
       </p>
       <p>A valid SmartTemplates Pro License is required for this feature to work.</p>
     </li>
-    <li>
+    <li> <!--toclipboard-->
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> 
         SmartTemplates Pro: Support transferring headers / variable results to clipboard
@@ -290,7 +291,7 @@ permalink: version.html
       </p>
       <p>A valid SmartTemplates Pro License is required for this feature to work.</p>
     </li>    
-    <li>
+    <li> <!--*selection*-->
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a>
         Improved *selection* placeholder in Snippets to better support non-text nodes.
@@ -318,7 +319,7 @@ permalink: version.html
         Composer using the SmartTemplates Snippets button, by using HTML and style rules.
       </p>
     </li>
-    <li>
+    <li> <!-- settings dialog icons -->
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/185">[issue 185]</a>
         Simplified and modernized SmartTemplates Settings - Accounts dropdown and toolbar buttons
@@ -335,14 +336,17 @@ permalink: version.html
       
       </p>
     </li>
-    <li>
+    <li> <!--spellcheck-->
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/189">[issue 189]</a>
       Support multiple spellcheck languages with <code class="inline">%spellcheck()%</code> command - for example: <br>
       use <code>%spellcheck(en,de)%</code> to enable combined English / German dictionary checking.
-    <li>
+    </li>
+    <li> <!--Renew-->
+      v3.12.1: Improved button appearance when "Renew License" is possible
+    </li>
 
     <h5 class="inList"><span class="inListTitle">Bug Fixes / Maintenance</span></h5>
-    <li>
+    <li><!--bracketMail-->
       <p>
         <a href="https://github.com/RealRaven2000/SmartTemplates/issues/186">[issue 186]</a>
         Fixed various issues in <code class="inline">bracketMail</code> parameter in %to% / %from% etc:
@@ -370,14 +374,15 @@ permalink: version.html
         </li>
       </ul>
     </li>
-    <li>Compatibility changes for Thunderbird ESR 102:<br>
+    <li><!--ESR 102-->
+      Compatibility changes for Thunderbird ESR 102:<br>
       Increased minimum version number<br>
       Fixed notifications<br>
       Fixed setting focus in composer<br>
       Stabilized code when reading external signatures or including files<br>
       Fixed menu spacings for Templates in reply / write / forward / Snippets buttons.<br>
     </li>
-    <li>
+    <li><!--#184-->
       <p> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/184">[issue 184]</a> 
         Ongoing work: Move template processing into background script
       </p>
