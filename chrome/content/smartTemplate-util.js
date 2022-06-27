@@ -2651,15 +2651,20 @@ SmartTemplate4.Util = {
 
   },
   
-  openPreferences: function() {
+  openPreferences: function(el=null) {
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
       return;
     }
-    
-    window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+    if (el && el.classList && el.classList.contains("alertExpired")) {
+      SmartTemplate4.Util.viewLicense();
+    }
+    else {
+      window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+      
+    }
     
   },
   
