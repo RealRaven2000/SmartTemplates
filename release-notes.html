@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.11">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.12.1">can be found here</a>
 
 <b>Enhancements 3.12</b>
 <ul>
@@ -46,8 +46,8 @@ Examples:
 <a href="https://github.com/RealRaven2000/SmartTemplates/issues/189">[issue 189]</a> Support multiple spellcheck languages with %spellcheck()% command - for example: 
 use %spellcheck(en,de)% to enable combined English / German dictionary checking.
 <li>
-<a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Improved *selection* placeholder in Snippets to better support non-text nodes.
-For example, you can now wrap an image with some HTML to add a shadow with this HTML snippet. Just click on the image and then load the following Smart Template:
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Improved *selection* placeholder in Snippets to better support processing html elements.
+For example, you can now wrap an image with some HTML to add a shadow. Just click on the image and then load the following Smart Template:
 
 <pre>
   &lt;div style="border: 1px solid rgba(80, 80, 80, 0.3); 
@@ -64,9 +64,11 @@ This will add a nice outlines and drop shadow. There are many more creative way 
 The accounts dropdown often showed squashed buttons at the top right due to long labels, also the icons 
 were confusing - I have decided to streamline this by taking the following steps:
   <ul>
-    <li> removed the "Advanced" label and using the widely used [...] icon to epand dialog to advanced settings</li>
-    <li> used monochrome scaleable svg icons for most of the toolbarbutton </li>
-    <li> removed the account name from the account label - the identity name should be enough</li>
+    <li> removed the "Advanced" label and using the widely used [...] icon to expand dialog to advanced settings</li>
+    <li> used monochrome scalable svg icons for most of the toolbarbutton </li>
+    <li> removed the account name from the account label - the identity name should be enough. 
+      If you need to add it back (or additional info such as the account id) 
+      you can right-click the "Account:" label</li>
     <li> reduced space between buttons to save even more space</li>
   </ul>
 </li>
