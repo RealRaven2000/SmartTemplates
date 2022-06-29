@@ -1635,9 +1635,6 @@
   "whats-new-intro": {
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
-  "whats-new-list": {
-    "message": "{L1}SmartTemplates Pro 现在支持使用 'clipboard'（剪贴板）作为文本和标题操作函数的参数，例如 %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}使用 'toclipboard' 将各种结果复制到剪贴板。 例如： %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}改进了片段中的 *selection*（选择）占位符，以更好地支持集成到选定的 HTML 部分。 例如，您现在可以通过插入 HTML 片段来包裹带有阴影的图像。{L2}{L1}身份模板的简化设置（帐户下拉菜单）{L2}{L1}Thunderbird 102 的许多兼容性修复程序。 %spellcheck()% 现在可以将字典设置为具有多种语言的校对文本。{L2}"
-  },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },
