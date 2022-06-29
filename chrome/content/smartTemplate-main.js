@@ -158,7 +158,7 @@ END LICENSE BLOCK
     # [issue 173] Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
     # [issue 174] %suppressQuoteHeaders% command to suppress all quote headers
     
-  Version 3.12 - WIP
+  Version 3.12.1 - 27/06/2022
     # Compatibility changes for Thunderbird ESR 102:
     #   Fixed notifications
     #   Fixed id  of composer container for setting focus to email
@@ -175,7 +175,10 @@ END LICENSE BLOCK
     # Moved clipboard reading to Util module
     # [issue 184] WIP: Move template processing into background script
 
-    
+  Version 3.12 - 29/06/2022
+    # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
+    # [issue 198] - Renew license button on lower left of settings dialog not working
+
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users

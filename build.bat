@@ -6,4 +6,4 @@ pwsh -Command "(gc -en UTF8NoBOM manifest.json) -replace 'pre%oldRev%', 'pre%sma
 echo %smartTemplateRev% > revision.txt
 move smartTemplate-*.xpi "..\..\..\Test Versions\3.12\"
 pwsh -Command "Start-Sleep -m 150"
-rename smartTemplateWeb.zip smartTemplate-fx-3.12.1pre%smartTemplateRev%.xpi
+rename smartTemplateWeb.zip smartTemplate-fx-3.12.2pre%smartTemplateRev%.xpi

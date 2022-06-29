@@ -1820,15 +1820,6 @@ SmartTemplate4.Settings = {
             donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
-							donateButton.addEventListener(
-								"click", 
-								function(event) { 
-									setTimeout(function() { 
-                    SmartTemplate4.Util.showLicenseDialog("extra2"); 
-										window.close(); 
-									});	
-								}, 
-								false);
 						}
 						else {
 							switch (licenseInfo.status) {
@@ -1846,8 +1837,17 @@ SmartTemplate4.Settings = {
 									options.labelLicenseBtn(donateButton, "buy");
 									break;
 							}
-							
 						}
+            donateButton.addEventListener(
+              "click", 
+              function(event) { 
+                setTimeout(function() { 
+                  SmartTemplate4.Util.showLicenseDialog("extra2"); 
+                  window.close(); 
+                });	
+              }, 
+              false);
+            
 				}			
 		//	}, 500
 		//);

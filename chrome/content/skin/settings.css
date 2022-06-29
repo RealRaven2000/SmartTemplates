@@ -727,10 +727,11 @@ table div.no {
   padding-right: 0px !important;
 }
 
-#btnSaveTemplate, #btnLoadTemplate, #btnYouTube {
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
+/* buttons permanently invisible when opened from Add-ons Manager */
+toolbar toolbarbutton:not([hidden]) {
 	display: -moz-box;
 }
+
 #smartTemplatePane toolbarbutton {
   /* Tb 102 */
   -moz-context-properties: fill;
