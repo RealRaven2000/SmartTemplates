@@ -1623,9 +1623,6 @@
   "whats-new-intro": {
     "message": "詳細な更新履歴 (英語のみ)："
   },
-  "whats-new-list": {
-    "message": "{L1} SmartTemplates Proは、「clipboard」 の使用をサポートするようになりました %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)% などのテキストおよびヘッダー操作関数の引数として{L2} {L1}'toclipboard'を使用して、さまざまな結果をクリップボードにコピーします。 例： %from（name,toclipboard）% %dateformat（\"A,e/n/Y H：M\",current,toclipboard）%{L2} {L1}Snippetsの*selection*（selection）プレースホルダーが改善され、選択したHTMLセクションへの統合がより適切にサポートされるようになりました。 たとえば、HTMLスニペットを挿入しても、画像を影で囲むことができるようになりました。{L2} {L1} IDテンプレートの設定の簡略化（アカウントのドロップダウン）{L2} {L1}Thunderbird102の多数の互換性修正。 %spellcheck()% は、辞書を複数の言語でテキストを校正するように設定できるようになりました。{L2}"
-  },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"
   },
