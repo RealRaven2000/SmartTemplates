@@ -73,6 +73,7 @@ permalink: premium.html
     <td>3</td>
     <td>unlimited</td>
   </tr>
+
   <tr>
     <th><a href="#snippets">Smart Snippets</a></th>
     <td>Test only</td>
@@ -87,18 +88,29 @@ permalink: premium.html
     <td><span class="check">✔</span></td>
     <td><span class="check">✔</span></td>
   </tr>
+
   <tr>
     <th><a href="variables.html#spellcheck" target="_blank">Set Spellcheck Language</a> <code>%spellcheck()%</code></th>
     <td><span class="check">✔</span></td>
     <td><span class="check">✔</span></td>
     <td><span class="check">✔</span></td>
   </tr>
+
+  <tr>
+    <th><a href="#clipboard">Clipboard support</a><br>
+      using clipboard for transferring data.</th>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check negative">✘</span></td>
+    <td><span class="check">✔</span></td>
+  </tr>
+
   <tr>
     <th><a href="#dateManipulation">Date Formatting function</a> <code>%dateformat()%</code></th>
     <td><span class="check negative">✘</span> trial only</td>
     <td><span class="check">✔</span></td>
     <td><span class="check">✔</span></td>
-  </tr>  
+  </tr>
+  
   <tr>
     <th><a href="#fileInsert">HTML File Injection from Template</a><code>%file()%</code></th>
     <td><span class="check negative">✘</span></td>
@@ -272,7 +284,76 @@ permalink: premium.html
 			Note this needs to be reset using
 			<code>%X:=calculated(0)%</code> to reset it for the rest of the Email.
 			</p>
+      <p>
+        Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying 
+        the date to clipboard instead of inserting it into the email. Use the additional 
+        parameter <tt>current</tt> to always enforce current time (without that, it will 
+        interpret it as the timestamp of the replied to / forwarded original mail) - easier
+        than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
+        <br>
+      </p>
+        <pre class="code">
+  %dateformat("A, e/n/Y H:M",toclipboard)%
+  %dateformat("A, e/n/Y H:M",current,toclipboard)%</pre>
+
+  
 </article>
+
+<!-- ##### Clipboard Support #### -->
+<a name="clipboard"> </a>
+<h3 class="helpchapter">Clipboard Support</h3>
+<article>
+  <h5>Insert Data from Clipboard</h5>
+      <p>SmartTemplates Pro now supports using "clipboard" as argument for text and header manipulation functions:</p>
+      <p>
+        <b>header manipulation - examples</b>
+        <ul>
+          <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
+          <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
+          <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
+        </ul>
+      </p>
+      <p>
+        <b>Template text and Quote replacements</b>
+        <ul>
+          <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
+          <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part </li>
+        </ul>
+      </p>
+  <h5>Copy Variable Results to Clipboard</h5>
+      <p>
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> 
+        SmartTemplates Pro: Support transferring headers / variable results to clipboard
+      </p>
+      <p>
+        Use the parameter <tt>toclipboard</tt> to transfer header contents such as email addresses to 
+        the clipboard: <code>%from(mail,toclipboard)%</code>
+      </p>
+      <p>
+        Use it when replying or forwarding messages to extract text from the original message
+        body or subject to the clipboard, for example:
+        <pre class="code">
+  %matchTextFromBody("Please reply until (.*)",1,toclipboard)%
+  %matchTextFromSubject("\[Support\] (.*)",1,toclipboard)%</pre>
+      </p>
+      <p>
+        You can use it for copying the date with dateformat as well:
+        Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying 
+        the date to clipboard instead of inserting it into the email. Use the additional 
+        parameter <tt>current</tt> to always enforce current time (without that, it will 
+        interpret it as the timestamp of the replied to / forwarded original mail) - easier
+        than having to insert the cumbersome <code class="inline">%x:=today%</code> at the start of the line.
+        <br>
+        Examples:
+        <pre class="code">
+  %dateformat("A, e/n/Y H:M",toclipboard)%
+  %dateformat("A, e/n/Y H:M",current,toclipboard)%</pre>
+      </p>
+      <p>A valid SmartTemplates Pro License is required for this feature to work.</p>  
+</article>
+
+
+
 
 <!-- ##### Header Functions #### -->
 <a name="headerManipulation"> </a>
