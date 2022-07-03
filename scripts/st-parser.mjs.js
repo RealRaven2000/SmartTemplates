@@ -145,7 +145,6 @@ export class Parser {
       // format - list of parts for target string: name, firstName, lastName, mail, link, bracketMail(), initial
       split: async function (addrstr, charset, format, bypassCharsetDecoder)	{
         let that = this;
-        let isWriteClipboard; // [issue 187]
         // jcranmer: you want to use parseHeadersWithArray
         //           that gives you three arrays
         //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -244,8 +243,14 @@ export class Parser {
                     del2 = ')';
                     break;
                   case 'angle': case 'angled':
-                    del1 = '&lt;'; // <
-                    del2 = '&gt;';  // >
+                    if (isWriteClipboard) { // [issue 200]
+                      del1 = '<'; 
+                      del2 = '>'; 
+                    }
+                    else {
+                      del1 = '&lt;'; // <
+                      del2 = '&gt;'; // >
+                    }
                     break;
                   default:
                     del1 = delimiters[0]; // allow single delimiter, such as dash
@@ -285,13 +290,13 @@ export class Parser {
         
         //  %from% and %to% default to name followed by bracketed email address
         if (typeof format=='undefined' || format == '') {
-          format = this.MimePrefs.defaultFormat.replace("(","<").replace(")",">") ; // 'name,bracketMail<angle>'
+          format = this.MimePrefs.defaultFormat.replace("(","{").replace(")","}") ; // 'name,bracketMail<angle>'
         }
         
         Util.logDebugOptional('mime.split',
              '====================================================\n'
            + 'mimeDecoder.split(charset decoding=' + (bypassCharsetDecoder ? 'bypassed' : 'active') + ')\n'
-           + '  addrstr:' +  addrstr + '\n'
+           + '  addrstr: ' +  addrstr + '\n'
            + '  charset: ' + charset + '\n'
            + '  format: ' + format + '\n'
            + '====================================================');
@@ -321,8 +326,9 @@ export class Parser {
         // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
         // link, islinkable  - these are "modifiers" for the previous list element
         let formatArray = Util.splitFormatArgs(format),
-            isForceAB = false;
-        
+            isForceAB = false,
+            isWriteClipboard = formatArray.findIndex((e) => e.field=="toclipboard")>-1; // [issue 187]
+
         let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
         for (let i=0; i<formatArray.length; i++) {
           let fld = formatArray[i];
@@ -544,11 +550,12 @@ export class Parser {
                     break;
                   default:
                     //empty anchor suppresses link; adding angle brackets as default
-                    // TO DO: make default brackets configurable later
-                    if (this.MimePrefs.mailSuppressLink)
+                    if (!isWriteClipboard && this.MimePrefs.mailSuppressLink) {
                       part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
-                    else
-                      part = emailAddress;                  
+                    }
+                    else {
+                      part = emailAddress;
+                    }
                 }
                 break;
               case 'fwd': // this is handled on the outside, so we ignore it

@@ -475,7 +475,6 @@ SmartTemplate4.mimeDecoder = {
 	split: function (addrstr, charset, format, bypassCharsetDecoder)	{
 		const util = SmartTemplate4.Util,
 		      prefs = SmartTemplate4.Preferences;
-    let isWriteClipboard; // [issue 187]
 	  // jcranmer: you want to use parseHeadersWithArray
 		//           that gives you three arrays
 	  //           the first is an array of strings "a@b.com", "b@b.com", etc.
@@ -594,8 +593,14 @@ SmartTemplate4.mimeDecoder = {
                 del2 = ')';
                 break;
               case 'angle': case 'angled':
-                del1 = '&lt;'; // <
-                del2 = '&gt;';  // >
+                if (isWriteClipboard) { // [issue 200]
+                  del1 = '<'; 
+                  del2 = '>'; 
+                }
+                else {
+                  del1 = '&lt;'; // <
+                  del2 = '&gt;'; // >
+                }
                 break;
               default:
                 del1 = delimiters[0]; // allow single delimiter, such as dash
@@ -662,7 +667,8 @@ SmartTemplate4.mimeDecoder = {
     // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
     // link, islinkable  - these are "modifiers" for the previous list element
 		let formatArray = util.splitFormatArgs(format),
-        isForceAB = false;
+        isForceAB = false,
+        isWriteClipboard = formatArray.findIndex((e) => e.field=="toclipboard")>-1; // [issue 187]
     
     let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
     for (let i=0; i<formatArray.length; i++) {
@@ -889,11 +895,12 @@ SmartTemplate4.mimeDecoder = {
                 break;
               default:
                 //empty anchor suppresses link; adding angle brackets as default
-                // TO DO: make default brackets configurable later
-                if (prefs.getMyBoolPref('mail.suppressLink'))
+                if (!isWriteClipboard && prefs.getMyBoolPref('mail.suppressLink')) {
                   part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
-                else
-                  part = emailAddress;                  
+                }
+                else {
+                  part = emailAddress;
+                }
             }
             break;
 					case 'fwd': // this is handled on the outside, so we ignore it
@@ -3234,8 +3241,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   // v2
 	// msg = msg.replaceAll(/%(.*)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
 	// msg = msg.replaceAll(/%(.*)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
-	msg = msg.replaceAll(/%([a-zA-Z][^)]+)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
-	msg = msg.replaceAll(/%([a-zA-Z][^)]+)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
+	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
+	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
