@@ -192,8 +192,8 @@ export class Parser {
             try {
               // AddressBookNode 
               let addressBook = that.allAddressBooks[i];
-              let contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail == mail);  // Array of ContactNode, properties is nsIAbCard.idl
-              return contactNode;
+              let contactNode = addressBook.contacts.find(c => c.properties.PrimaryEmail.toLowerCase() == mail.toLowerCase());  // Array of ContactNode, properties is nsIAbCard.idl
+              if (contactNode) return contactNode;
             }
             catch(ex) {
               Util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
@@ -759,9 +759,273 @@ export class Parser {
     Util.logIssue184(`clsGetAltHeader(${msgDummyHeader})`);
   }
   
+      // modify a number of headers with either a string literal 
+      // or a regex match (depending on matchFunction argument)
+      // hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
+      // cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
+      // argString: 
+      // matchFunction: "" | "matchFromSubject" | "matchFromBody" 
+  static async modifyHeader(hdr, cmd, argString, matchFunction="", composeDetails) {
+        const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"];
+          // ComposeFields = gMsgCompose.compFields;
+              
+        if (await Preferences.isDebugOption('headers')) debugger;			
+        Util.addUsedPremiumFunction('header.' + cmd);
+        let targetString = '',
+            modType = '',
+            argument = argString.substr(argString.indexOf(",")+1); 
+        switch (matchFunction) {
+          case "": // no matchFunction, so argString is literal
+            if (cmd=="deleteFromSubject") {
+              argument = argString.substr(1); // cut off opening parenthesis
+            }
+            if (argument.startsWith("\"")) { 
+              // string wrapped in double quotes
+              argument = argument.substr(1, argument.lastIndexOf("\"")-1);
+            } else { 
+              // literal, only remove the closing parentheses
+              argument = argument.substr(0, argument.lastIndexOf(")"));
+            }
+            // [issue 183]
+            if (argument=="clipboard") {
+              // need license check here...
+              Util.logIssue184("Restrict clipboard to Pro Users!");
+              argument = await Util.clipboardRead();
+            }
+            break;
+          case "matchFromSubject":
+          case "matchFromBody":
+            let regX = new RegExp("%header." + cmd + "." + matchFunction + "\(.*\)%", "g");
+            
+            if (matchFunction == 'matchFromBody') {
+              // Insert replacement from body of QUOTED email!
+              argument = await matchText(regX, 'body');
+            }
+            else  {
+              // Insert replacement from subject line
+              argument = await matchText(regX, 'subject');
+            }
+            // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
+            if (argument == '') return '';
+            break;
+          default:
+            Util.logToConsole("invalid matchFunction: " + matchFunction);
+            return '';
+        }
+        try {
+          let isClobberHeader = false;
+         
+          Util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
+          if (whiteList.indexOf(hdr)<0) {
+            // not in whitelist
+            if (hdr.toLowerCase().startsWith("list"))
+              isClobberHeader = true;
+            else {
+              Util.logToConsole("invalid header - no permission to modify: " + hdr + 
+                "\nSupported headers: " + whiteList.join(', '));
+              return '';
+            }
+          }
+          // get
+          modType = 'address';
+          switch (hdr) {
+            case 'subject':
+              targetString = composeDetails.subject;
+              modType = 'string';
+              break;
+            case 'recipient':
+            case 'to':
+              targetString = composeDetails.to;
+              break;
+            case 'cc':
+              targetString = composeDetails.cc;
+              break;
+            case 'bcc':
+              targetString = composeDetails.bcc;
+              break;
+            case 'from':
+              targetString = composeDetails.from;
+              break;
+            case 'reply-to':
+              targetString = composeDetails.replyTo;
+              break;
+            default:
+              if (isClobberHeader) {
+                debugger;
+                modType = 'string';
+                targetString = gMsgCompose.compFields.getHeader(hdr) || "";
+              }
+              else modType = '';
+              break;
+          }
+          // modify
+          switch (modType) {
+            case 'string': // single string
+              switch (cmd) {
+                case 'set':
+                  targetString = argument; 
+                  break;
+                case 'prefix':
+                  let replyPrefix = targetString.lastIndexOf(':'),
+                      testSubject = targetString;
+                  if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
+                    // cut off Re: Fwd: etc.
+                    testSubject = targetString.substr(0, replyPrefix).trim();
+                    if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
+                    // cut off string after last prefix to restore original subject
+                    testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
+                  }
+                  // keyword is immediately after last colon, or start of original subject
+                  if (testSubject.indexOf(argument)!=0)  { // avoid duplication!
+                    targetString = argument + targetString; 
+                  }
+                  break;
+                case 'append':
+                  // problem - if there are encoding breaks, will this comparison fail?
+                  let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
+                  if (argPos < 0 || argPos < targetString.length-argument.length ) 
+                    targetString = targetString + argument; 
+                  break;
+                case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
+                case 'deleteFromSubject':
+                  let pattern = new RegExp(argument, "gm");
+                  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
+                  break;
+              }
+              break;
+            case 'address': // address field
+              switch (cmd) {
+                case 'set': // overwrite address field
+                  targetString = argument.toString(); 
+                  break;
+                case 'prefix':
+                  // targetString = argument.toString() + ' ' + targetString; 
+                  // invalid!
+                  break;
+                case 'append': // append an address field (if not contained already)
+                               // also omit in Cc if already in To and vice versa
+                  if (hdr=='cc' && composeDetails.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                    break;
+                  if (hdr=='to' && composeDetails.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                    break;
+                  
+                  if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
+                    targetString = targetString + ', ' + argument; 
+                  }
+                  break;
+              }
+              break;
+          }
+          
+          // set
+          // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
+          switch (hdr) {
+            case 'subject':
+              // replace newline characters with spaces and trim result!
+              let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
+              document.getElementById("msgSubject").value = subjectString;
+              composeDetails.subject = subjectString;
+              break;
+            case 'to':
+              composeDetails.to = targetString;
+              break;
+            case 'cc':
+              composeDetails.cc = targetString;
+              break;
+            case 'bcc':
+              composeDetails.bcc = targetString;
+              break;
+            case 'from':
+              composeDetails.from = targetString;
+              break;
+            case 'reply-to':
+              composeDetails.replyTo = targetString;
+              break;
+            case 'priority':
+              const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
+              let found = validVals.find(f => f.toLowerCase() == argument);
+              if (found) {
+                try {
+                  Util.logDebug("Setting priority to: " + found);
+                  composeDetails.priority = found;
+                }
+                catch(ex) {
+                  Util.logException('set priority ', ex);
+                }
+              }
+              else 
+                Util.logDebug("Invalid Priority: '" + targetString + "'\n" 
+                  + "Must be one of [" + validVals.join() +  "]");
+              
+              break;
+            default:
+              if (isClobberHeader) {
+                if (targetString) {
+                  Util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
+                  gMsgCompose.compFields.setHeader(hdr, targetString);
+                }
+                else {
+                  Util.logDebug("Deleting clobbered header [" + hdr + "]");
+                  gMsgCompose.compFields.deleteHeader(hdr);
+                }
+              }
+          }
+          // try to update headers - ComposeStartup() /  ComposeFieldsReady()
+          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
+          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
+          // [issue 117] : setting from doesn't work
+          if (hdr=='from' && composeDetails.from && cmd=='set') {
+            // %header.set(from,"postmaster@hotmail.com")%
+            // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
+            composeDetails.from = fromAddress;
+            // only accepts mail addresses from existing identities - aliases included
+            let idKey = util.getIdentityKeyFromMail(fromAddress); 
+            
+            if (!idKey) {
+              util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
+            }
+            // after processing LoadIdentity(true) may be triggered by setting messenger.compose.setComposeDetails() !!
+            // there is a problem with dark themes - when editing the from address the text remains black.
+            // identityList.setAttribute("editable", "false");
+            // identityList.removeAttribute("editable");
+          }
+          else if (modType == 'address') {
+            // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
+            // rebuild all addresses - for this we need to remove all [dummy] rows
+            // except for the very first one.
+            // [issue 98] - %header.set(to,"[addressee]")% no longer working
+            //            - addressingWidget was retired!
+            // [mx] DON't DO ANYTHING
+            Util.logIssue184("changed address header ...");
+          }
+        }
+        catch(ex) {
+          Util.logException('modifyHeader()', ex);
+        }
+        return ''; // consume
+      }
+  
+  
   // hdr.get() replacement
-  getAPIheader(composeDetails, hd) {
-    switch (hd.toLowerCase()) {
+  getAPIheader(composeDetails, hd, originalMsg) {
+    let isOriginalMsg = false, requiresOriginalMsg = false;
+    if (composeDetails.type != "new" && composeDetails.type != "draft") {
+      // to do: implement "perspective" for reply / forward, using composeDetails.relatedMessageId
+      requiresOriginalMsg = true;
+      if (originalMsg) {
+        isOriginalMsg = true;
+      }
+    }
+    let hdr = hd.toLowerCase();
+    if (isOriginalMsg) {
+      if (originalMsg.headers.hasOwnProperty(hdr)) {
+        return originalMsg.headers[hdr];
+      }
+      else {
+        return [];
+      }
+    }
+    switch (hdr) {
       case "attachments": 
         Util.logIssue184("getAPIheader(attachments)");
         return "";
@@ -784,7 +1048,7 @@ export class Parser {
       case "to":
         return composeDetails.to;  // ComposeRecipientList
     }
-    if (hd.toLowerCase().startsWith("x-")) {
+    if (hdr.startsWith("x-")) {
       let x = composeDetails.customHeaders.find(x => x.name.toLowerCase() == hd.toLowerCase());
       if (x) return x;
     }
@@ -1024,7 +1288,17 @@ export class Parser {
     }
     
 **/     // HEADER KRAMPF
-    hdr.get = (h) => { return that.getAPIheader(composeDetails, h); }; 
+    
+    let originalMsg = null;
+    // not ComposeDetails.relatedMessageId was implemented in Thunderbird 95!!!
+    // so it won't work in ESR 91
+    if (typeof composeDetails.relatedMessageId != "undefined" ) {
+      originalMsg = await messenger.messages.getFull(composeDetails.relatedMessageId);
+    }
+
+    hdr.get = (h) => { 
+      return that.getAPIheader(composeDetails, h, originalMsg); 
+    }; 
 
     if (await Preferences.isDebugOption('regularize')) debugger;
     let date = (composeType != "new") && msgDbHdr ? msgDbHdr.date : null;
@@ -1208,252 +1482,6 @@ export class Parser {
           Util.logException('matchText(' + regX + ', ' + fromPart +') failed:', ex);
         }
         return "";
-      }
-      
-      // modify a number of headers with either a string literal 
-      // or a regex match (depending on matchFunction argument)
-      // hdr: "subject" | "to" | "from" | "cc" | "bcc" | "reply-to"
-      // cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
-      // argString: 
-      // matchFunction: "" | "matchFromSubject" | "matchFromBody" 
-      async function modifyHeader(hdr, cmd, argString, matchFunction="") {
-        const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"];
-          // ComposeFields = gMsgCompose.compFields;
-              
-        if (await Preferences.isDebugOption('headers')) debugger;			
-        Util.addUsedPremiumFunction('header.' + cmd);
-        let targetString = '',
-            modType = '',
-            argument = argString.substr(argString.indexOf(",")+1); 
-        switch (matchFunction) {
-          case "": // no matchFunction, so argString is literal
-            if (cmd=="deleteFromSubject") {
-              argument = argString.substr(1); // cut off opening parenthesis
-            }
-            if (argument.startsWith("\"")) { 
-              // string wrapped in double quotes
-              argument = argument.substr(1, argument.lastIndexOf("\"")-1);
-            } else { 
-              // literal, only remove the closing parentheses
-              argument = argument.substr(0, argument.lastIndexOf(")"));
-            }
-            // [issue 183]
-            if (argument=="clipboard") {
-              // need license check here...
-              Util.logIssue184("Restrict clipboard to Pro Users!");
-              argument = await Util.clipboardRead();
-            }
-            break;
-          case "matchFromSubject":
-          case "matchFromBody":
-            let regX = new RegExp("%header." + cmd + "." + matchFunction + "\(.*\)%", "g");
-            
-            if (matchFunction == 'matchFromBody') {
-              // Insert replacement from body of QUOTED email!
-              argument = await matchText(regX, 'body');
-            }
-            else  {
-              // Insert replacement from subject line
-              argument = await matchText(regX, 'subject');
-            }
-            // if our match returns nothing, then do nothing (prevent from overwriting existing headers).
-            if (argument == '') return '';
-            break;
-          default:
-            Util.logToConsole("invalid matchFunction: " + matchFunction);
-            return '';
-        }
-        try {
-          let isClobberHeader = false;
-         
-          Util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
-          if (whiteList.indexOf(hdr)<0) {
-            // not in whitelist
-            if (hdr.toLowerCase().startsWith("list"))
-              isClobberHeader = true;
-            else {
-              Util.logToConsole("invalid header - no permission to modify: " + hdr + 
-                "\nSupported headers: " + whiteList.join(', '));
-              return '';
-            }
-          }
-          // get
-          modType = 'address';
-          switch (hdr) {
-            case 'subject':
-              targetString = composeDetails.subject;
-              modType = 'string';
-              break;
-            case 'recipient':
-            case 'to':
-              targetString = composeDetails.to;
-              break;
-            case 'cc':
-              targetString = composeDetails.cc;
-              break;
-            case 'bcc':
-              targetString = composeDetails.bcc;
-              break;
-            case 'from':
-              targetString = composeDetails.from;
-              break;
-            case 'reply-to':
-              targetString = composeDetails.replyTo;
-              break;
-            default:
-              if (isClobberHeader) {
-                debugger;
-                modType = 'string';
-                targetString = gMsgCompose.compFields.getHeader(hdr) || "";
-              }
-              else modType = '';
-              break;
-          }
-          // modify
-          switch (modType) {
-            case 'string': // single string
-              switch (cmd) {
-                case 'set':
-                  targetString = argument; 
-                  break;
-                case 'prefix':
-                  let replyPrefix = targetString.lastIndexOf(':'),
-                      testSubject = targetString;
-                  if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
-                    // cut off Re: Fwd: etc.
-                    testSubject = targetString.substr(0, replyPrefix).trim();
-                    if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
-                    // cut off string after last prefix to restore original subject
-                    testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
-                  }
-                  // keyword is immediately after last colon, or start of original subject
-                  if (testSubject.indexOf(argument)!=0)  { // avoid duplication!
-                    targetString = argument + targetString; 
-                  }
-                  break;
-                case 'append':
-                  // problem - if there are encoding breaks, will this comparison fail?
-                  let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
-                  if (argPos < 0 || argPos < targetString.length-argument.length ) 
-                    targetString = targetString + argument; 
-                  break;
-                case 'delete': // remove a substring, e.g. header.delete(subject,"re: | Fwd: ")
-                case 'deleteFromSubject':
-                  let pattern = new RegExp(argument, "gm");
-                  targetString = targetString.replace(pattern,"").replace(/\s+/g, ' '); // remove and then collapse multiple white spaces
-                  break;
-              }
-              break;
-            case 'address': // address field
-              switch (cmd) {
-                case 'set': // overwrite address field
-                  targetString = argument.toString(); 
-                  break;
-                case 'prefix':
-                  // targetString = argument.toString() + ' ' + targetString; 
-                  // invalid!
-                  break;
-                case 'append': // append an address field (if not contained already)
-                               // also omit in Cc if already in To and vice versa
-                  if (hdr=='cc' && composeDetails.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
-                    break;
-                  if (hdr=='to' && composeDetails.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
-                    break;
-                  
-                  if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
-                    targetString = targetString + ', ' + argument; 
-                  }
-                  break;
-              }
-              break;
-          }
-          
-          // set
-          // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
-          switch (hdr) {
-            case 'subject':
-              // replace newline characters with spaces and trim result!
-              let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
-              document.getElementById("msgSubject").value = subjectString;
-              composeDetails.subject = subjectString;
-              break;
-            case 'to':
-              composeDetails.to = targetString;
-              break;
-            case 'cc':
-              composeDetails.cc = targetString;
-              break;
-            case 'bcc':
-              composeDetails.bcc = targetString;
-              break;
-            case 'from':
-              composeDetails.from = targetString;
-              break;
-            case 'reply-to':
-              composeDetails.replyTo = targetString;
-              break;
-            case 'priority':
-              const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
-              let found = validVals.find(f => f.toLowerCase() == argument);
-              if (found) {
-                try {
-                  Util.logDebug("Setting priority to: " + found);
-                  composeDetails.priority = found;
-                }
-                catch(ex) {
-                  Util.logException('set priority ', ex);
-                }
-              }
-              else 
-                Util.logDebug("Invalid Priority: '" + targetString + "'\n" 
-                  + "Must be one of [" + validVals.join() +  "]");
-              
-              break;
-            default:
-              if (isClobberHeader) {
-                if (targetString) {
-                  Util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
-                  gMsgCompose.compFields.setHeader(hdr, targetString);
-                }
-                else {
-                  Util.logDebug("Deleting clobbered header [" + hdr + "]");
-                  gMsgCompose.compFields.deleteHeader(hdr);
-                }
-              }
-          }
-          // try to update headers - ComposeStartup() /  ComposeFieldsReady()
-          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
-          // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
-          // [issue 117] : setting from doesn't work
-          if (hdr=='from' && composeDetails.from && cmd=='set') {
-            // %header.set(from,"postmaster@hotmail.com")%
-            // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
-            composeDetails.from = fromAddress;
-            // only accepts mail addresses from existing identities - aliases included
-            let idKey = util.getIdentityKeyFromMail(fromAddress); 
-            
-            if (!idKey) {
-              util.logToConsole("Couldn't find an identity from the email address: <" + fromAddress + ">");
-            }
-            // after processing LoadIdentity(true) may be triggered by setting messenger.compose.setComposeDetails() !!
-            // there is a problem with dark themes - when editing the from address the text remains black.
-            // identityList.setAttribute("editable", "false");
-            // identityList.removeAttribute("editable");
-          }
-          else if (modType == 'address') {
-            // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
-            // rebuild all addresses - for this we need to remove all [dummy] rows
-            // except for the very first one.
-            // [issue 98] - %header.set(to,"[addressee]")% no longer working
-            //            - addressingWidget was retired!
-            // [mx] DON't DO ANYTHING
-            Util.logIssue184("changed address header ...");
-          }
-        }
-        catch(ex) {
-          Util.logException('modifyHeader()', ex);
-        }
-        return ''; // consume
       }
       
       // remove  (  ) from argument string
@@ -1884,21 +1912,21 @@ export class Parser {
                   matchFunction = toks.length>2 ? toks[2] : ""; // matchFromSubject | matchFromBody
               switch (toks[1]) {
                 case "set": // header.set
-                  return await modifyHeader(modHdr, 'set', arg, matchFunction);
+                  return await Parser.modifyHeader(modHdr, "set", arg, matchFunction, composeDetails);
                 case "append":
-                  return await modifyHeader(modHdr, 'append', arg, matchFunction);
+                  return await Parser.modifyHeader(modHdr, "append", arg, matchFunction, composeDetails);
                 case "prefix":
-                  return await modifyHeader(modHdr, 'prefix', arg, matchFunction);
+                  return await Parser.modifyHeader(modHdr, "prefix", arg, matchFunction, composeDetails);
                 case "delete":
-                  await modifyHeader(modHdr, 'delete', arg, ''); // no match function - this works within the same header (e.g. subject)
+                  await Parser.modifyHeader(modHdr, "delete", arg, "", composeDetails); // no match function - this works within the same header (e.g. subject)
                   return '';
                 case "deleteFromSubject":
-                  if (await Preferences.isDebugOption('parseModifier')) debugger;
-                  await modifyHeader('subject', toks[1], arg, ''); // no match function - this works within the same header (e.g. subject)
-                  return '';
+                  if (await Preferences.isDebugOption("parseModifier")) debugger;
+                  await Parser.modifyHeader("subject", toks[1], arg, "", composeDetails); // no match function - this works within the same header (e.g. subject)
+                  return "";
                 default: 
                   Util.logToConsole("invalid header command: " + token);
-                  return '';
+                  return "";
               }
             }
             let isStripQuote = Util.isAddressHeader(token),
