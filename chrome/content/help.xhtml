@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://smarttemplate4/content/skin/settings.css" type = "text/css" title = "SmartTemplateSettings" ?>
+<?xml-stylesheet href="chrome://smarttemplate4/content/skin/settings.css" type="text/css" title="SmartTemplateSettings" ?>
 
 <!-- #### Help Content #### -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -228,7 +228,7 @@
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
 		<h1 class="helpchapter">__MSG_stringmanip_function.cap__</h1>
     <div class="chapterBody">
-			<aside>__MSG_stringmanip_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904 " target="_blank">[Bug 25904]</a>.</aside>
+			<aside>__MSG_stringmanip_function.explain__ <a href="https://smarttemplates.quickfolders.org/variables.html#stringManipulation" target="_blank">[String Manipulation]</a>.</aside>
 			<ul>
 				<li><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
 				<li><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
@@ -243,10 +243,11 @@
 		<h1 class="helpchapter">__MSG_quote_changers.cap__</h1>
     <div class="chapterBody">
       <ul>
-        <aside>__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Docs</a>.</aside>
+        <aside>__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Read Docs</a>.</aside>
         <code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> __MSG_quotePlaceholder__<br/>
         <h4>__MSG_parameters__</h4>
         <li class="paramList"><span class="param">quoteLevel</span> __MSG_quotePlaceholder.level__</li>
+        <code>%suppressQuoteHeaders%</code>__MSG_suppressQuoteHdr__<br/>
         <code>%deleteQuotedText("<span class="param">searchText</span>",<span class="param">quoteLevel</span>)%</code> __MSG_deleteQuotedText__<br/>
         <code>%replaceQuotedText("<span class="param">searchText</span>","<span class="param">replacementHTML</span>",<span class="param">quoteLevel</span>)%</code> __MSG_replaceQuotedText__ <br/>
         <code>%deleteQuotedTags("<span class="param">selector</span>",<span class="param">quoteLevel</span>,<span class="param">minSize</span>)%</code> __MSG_deleteQuotedTags__ <br/>
@@ -636,6 +637,6 @@
   </div>
     
     
-  <script type = "application/javascript" src = "chrome://smarttemplate4/content/help.js"/>
+  <script type="application/javascript" src="chrome://smarttemplate4/content/help.js"/>
 	</body>
 </html>

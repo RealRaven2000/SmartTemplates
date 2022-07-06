@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Dan v tednu (pet.)"
   },
@@ -101,10 +98,10 @@
     "message": "Želim pomagati z enkratno donacijo."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Naloži predlogo ..."
+    "message": "Naloži nastavitve računa…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Shrani predlogo ..."
+    "message": "Shrani nastavitve računa…"
   },
   "btnYouTube.tooltip": {
     "message": "Obiščite kanal 'Thunderbird Daily' na YouTubu za nasvete in vodnike o uporabi dodatkov Stationary in drugih"
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "Zmogljiv način za ustvarjanje prilagojenih odgovorov s samodejnim vstavljanjem različnih naslovov pošte. Predloge lahko ustvarite za vsako identiteto pošte, podpira tudi zunanje datoteke HTML in slogovne liste."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Dodatek SmartTemplates lahko prilagodi 'glave navedkov' za posamezni račun."
   },
@@ -356,45 +349,6 @@
   },
   "fileImage.label": {
     "message": "Slikovna datoteka (png, jpg, gif, bmp, svg). Če slike ni mogoče najti, je prikazano izbirno besedilo altText."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Ime:"
@@ -625,7 +579,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}Dragi $username$ {boldEnd}, zdaj lahko nadgradite na SmartTemplates Pro za {boldStart} $discount$ manj {boldEnd} - hkrati pa licenco podaljšate za celo leto. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +597,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nov sistem licenciranja"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Licenca za SmartTemplates je potekla pred $countDays$ dnevi.",
     "placeholders": {
       "countDays": {
@@ -659,7 +613,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licenca za SmartTemplates poteče čez $countDays$ dni!",
     "placeholders": {
       "countDays": {
@@ -667,10 +621,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Vneseni ključ je potekel. Za obnovitev dovoljenja pritisnite spodnji gumb."
   },
@@ -722,9 +676,6 @@
   "menu.template_import.label": {
     "message": "Uvozi predlogo"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Pokaži možnosti licence…"
   },
@@ -752,14 +703,8 @@
   "month.10.short": {
     "message": "Okt."
   },
-  "month.11.name": {
-    "message": "November"
-  },
   "month.11.short": {
     "message": "Nov."
-  },
-  "month.12.name": {
-    "message": "December"
   },
   "month.12.short": {
     "message": "Dec."
@@ -775,9 +720,6 @@
   },
   "month.3.short": {
     "message": "Mar."
-  },
-  "month.4.name": {
-    "message": "April"
   },
   "month.4.short": {
     "message": "Apr."
@@ -806,9 +748,6 @@
   "month.8.short": {
     "message": "Avg."
   },
-  "month.9.name": {
-    "message": "September"
-  },
   "month.9.short": {
     "message": "Sep."
   },
@@ -823,10 +762,6 @@
   },
   "no_button": {
     "message": "Ne"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -855,11 +790,11 @@
   "p3.label": {
     "message": "dop."
   },
-  "parameters": {
-    "message": "Parametri"
-  },
   "paste.label": {
     "message": "Prilepi"
+  },
+  "parameters": {
+    "message": "Parametri"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Besedilo ob prehodu z miško"
@@ -937,7 +872,7 @@
     "message": "Zagotovi, da se položaj kazalca začne v novem odstavku. Priporočamo tudi, da možnost sestavljanja v Thunderbirdu nastavite na ustvarjanje novega odstavka ob pritisku na tipko [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Uveljavi naslednjo predlogo za posredovano sporočilo"
+    "message": "Za posredovano sporočilo uporabite naslednje nastavitve"
   },
   "pref_fwd.tab": {
     "message": "Posreduj"
@@ -1001,7 +936,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Skrij pogovorno okno z informacijami, ki pri posodobitvi prikaže nove funkcije in popravke napak."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Podpis opravila"
   },
@@ -1027,7 +962,7 @@
     "message": "Nadomesti prelome vrstic z <br>"
   },
   "pref_rsp.label": {
-    "message": "Uveljavi naslednjo predlogo za odgovor"
+    "message": "Za odgovorjeno sporočilo uporabite naslednje nastavitve"
   },
   "pref_rsp.tab": {
     "message": "Odgovori"
@@ -1191,17 +1126,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Posodobite vsebino SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "Nastavitve SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Uredi predloge / glavo navedka ..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates je bil posodobljen!"
@@ -1221,66 +1150,6 @@
   "specform_note.label": {
     "message": "Odseki z dvojnimi oglatimi oklepaji [[Cc: %cc(name)%]] bodo prikazani samo, če se spremenljivko %cc(name)% lahko nadomesti!"
   },
-  "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "16. aprila"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20. februarja"
-  },
-  "special-offer-head": {
-    "message": "Pomagajte ohraniti združljivost $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },
-  "special-offer-upgrade": {
-    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Nastavi jezik za preverjanje črkovanja. Primer vrednosti: (en, de-DE, es-ES, ru) - upoštevajte, da mora biti slovar nameščen."
   },
@@ -1307,7 +1176,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Zakaj so nekatere predloge v tem meniju onemogočene?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Število predlog na meni je omejeno. Brez licence lahko konfigurirate do $max_free$ menijskih elementov in $max_std$ menijskih postavk s standardno licenco SmartTemplates! SmartTemplates Pro je neomejen.",
     "placeholders": {
@@ -1319,7 +1188,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Če želite konfigurirati več kot $max_Cats$ kategorij, pridobite licenco SmartTemplates Pro…",
@@ -1328,8 +1197,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Izberite predlogo v spustnem meniju."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1388,6 +1258,9 @@
   },
   "st.notification.premium.btn.hotKey": {
     "message": "K"
+  },
+  "st.notification.premium.sendByFilter": {
+    "message": "Z veljavno licenco SmartTemplates Pro bi bila e-pošta zdaj samodejno poslana."
   },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Podaljšajte licenco domene"
@@ -1464,6 +1337,66 @@
   "sub_var.cap": {
     "message": "Zadeva"
   },
+  "special-offer-content": {
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom {linkStartPro}licence SmartTemplates Pro{linkEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "17. julij"
+  },
+  "special-offer-head": {
+    "message": "Pomagajte ohraniti združljivost $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Nadgradite zdaj iz SmartTemplates Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
   "support-preference": {
     "message": "To je najprimernejši način podpore $addonName$.",
     "placeholders": {
@@ -1518,11 +1451,11 @@
   "support.type.tech": {
     "message": "Tehnična podpora"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Onemogoči poštne odjemalce, ki e-poštnim naslovom dodajajo povezave."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "Popolnoma odstrani glavo ponudbe ne glede na nastavitve računa."
   },
   "table.cap": {
     "message": "Uporaba spremenljivk"
@@ -1584,9 +1517,6 @@
   "timezone.explain": {
     "message": "Prisilno določite časovni pas za spremenljivke datuma z zamenjavo parametra tz (GMT, EST, CST, PST itd.)"
   },
-  "timezonename.label": {
-    "message": "GMT, PST, EST, ... "
-  },
   "tip.fileTemplates": {
     "message": "Kliknite in preberite celotno dokumentacijo o pisarniških materialih in zunanjih predlog HTML na našem spletnem mestu za podporo…"
   },
@@ -1621,8 +1551,14 @@
   "translatorNickname.label": {
     "message": "Peter Klofutar"
   },
-  "tzname.label": {
-    "message": "GMT, PST, EST, ... "
+  "update.tooltip": {
+    "message": "Kliknite tukaj enkrat, če želite prebrati, kaj je novega v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "updates.title": {
     "message": "Posodobitve"
@@ -1658,7 +1594,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Podpora za glavo odgovora s spremenljivko %recipient%.{L2} {L1}Poenostavljeno opozorilo, ko se predloga spremeni po urejanju – podpira tudi potiskanje ESCAPE, da zaprete pogovorno okno.{L2}{L1}Popravljeno: uporaba poštni seznami v poljih do, cc in bcc. Oglejte si spodnji dnevnik sprememb za primer glasila za skupino nerazkritih prejemnikov.{L2}{L1}Popravljeno: barve ozadja in besedila po meri so bile prezrte pri pisanju nove pošte. To bi lahko povzročilo težave z urejevalnikom pri uporabi temnih tem.{L2}"
+    "message": "{L1}Popravki vzdrževanja za 3.12.2: gumbi za razširitev/strnitev/pomoč so zdaj vidni tudi pri odpiranju nastavitev iz upravitelja dodatkov. Gumb za obnovitev licence na levem dnu pogovornega okna z nastavitvami zdaj deluje po pričakovanjih{L2}{L1}SmartTemplates Pro zdaj podpira uporabo »clipboard« (odložišča) kot argumenta za funkcije manipulacije besedila in glave, kot je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard) )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Uporabite 'toclipboard' za kopiranje različnih rezultatov v odložišče. Na primer: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Izboljšana oznaka mesta *selection* (izbira) v Snippets za boljšo podporo pri integraciji v izbrane razdelke HTML. Zdaj lahko na primer sliko ovijete s senco, čeprav vstavite delček HTML.{L2}{L1}Poenostavljene nastavitve za predloge identitete (spustni meni računov){L2}{L1}Številni popravki združljivosti za Thunderbird 102. %spellcheck()% lahko zdaj nastavi slovar na preizkusno besedilo z več jeziki.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
@@ -1672,9 +1608,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "Primer dolgega niza"
@@ -1690,9 +1623,6 @@
   },
   "xsent_short.cap": {
     "message": "Primer kratkega niza"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Naslednje spremenljivke lahko uporabljate z obema različicama"

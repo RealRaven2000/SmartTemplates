@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Veckodag (Fre.)"
   },
@@ -101,10 +98,10 @@
     "message": "Jag vill hjälpa till med en engångs donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Läs in mall…"
+    "message": "Ladda kontoinställningar..."
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Spara mall…"
+    "message": "Spara kontoinställningar..."
   },
   "btnYouTube.tooltip": {
     "message": "Besök YouTube-kanalen \"Thunderbird Daily\" - för tips och guider om hur man använder Stationery och andra tillägg"
@@ -179,13 +176,13 @@
     "message": "Denna klass av variabler kan användas för att infoga text beroende på hur du skickar e-post. Du behöver en SmartTemplates Pro-licens för dessa."
   },
   "contextError": {
-    "message": "The Variable {1} can not be used for *new* messages!\nPlease refer to help for a list of permitted variables"
+    "message": "Variabeln {1} kan inte användas för *nya* meddelanden!\nSe hjälp för en lista med tillåtna variabler"
   },
   "contribute_button": {
     "message": "Bidra"
   },
   "contributor.label": {
-    "message": "Contributor"
+    "message": "Bidragsgivare"
   },
   "copy.label": {
     "message": "Kopiera"
@@ -194,7 +191,7 @@
     "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
   },
   "creator.label": {
-    "message": "Creator"
+    "message": "Skapare"
   },
   "cursor.label": {
     "message": "Ändrar pekarpositionen"
@@ -290,7 +287,7 @@
     "message": "Ta bort en del text från citatet, t.ex. deleteText(\"via Paypal\")"
   },
   "developer.label": {
-    "message": "Developer"
+    "message": "Utvecklare"
   },
   "domainLicense.email": {
     "message": "Vi kontaktar dig genom denna e-post adress för att generera din domänlicens; Det kan ta upp till två arbetsdagar för oss att återkomma. Ange domännamnet för licensen på nästa sida."
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "Ett kraftfullt sätt att skapa anpassade svar genom att automatiskt infoga olika e-postrubriker. Mallar kan skapas för varje e-postidentitet, stöder också externa html-filer och stilark."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Den smarta mallen som kan anpassa citathuvuden för varje enskilt konto."
   },
@@ -358,43 +351,40 @@
     "message": "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas."
   },
   "fileTemplates.add": {
-    "message": "Add"
+    "message": "Addera"
   },
   "fileTemplates.down": {
-    "message": "Down"
+    "message": "Ner"
   },
   "fileTemplates.file.open": {
-    "message": "Select template file from disk"
+    "message": "Välj mallfil från disk"
   },
   "fileTemplates.file.path": {
-    "message": "Template location:"
+    "message": "Placering av mall:"
   },
   "fileTemplates.file.title": {
-    "message": "Title:"
+    "message": "Titel:"
   },
   "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
+    "message": "Detta kommer att visas i mallvalsmenyn."
   },
   "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
+    "message": "Lista över externa mallfiler som kan startas från knappen \"Vidare\"."
   },
   "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
+    "message": "Lista över externa mallfiler som kan startas från knappen \"Skapa nytt meddelande\"."
   },
   "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
+    "message": "Radera"
   },
   "fileTemplates.title": {
-    "message": "Template Files"
+    "message": "Mallfiler"
   },
   "fileTemplates.up": {
-    "message": "Up"
+    "message": "Upp"
   },
   "fileTemplates.update": {
-    "message": "Update"
+    "message": "Uppdatering"
   },
   "firstName.label": {
     "message": "Förnamn:"
@@ -412,7 +402,7 @@
     "message": "HTML-mall"
   },
   "fpFilterName": {
-    "message": "SmartTemplates File"
+    "message": "SmartTemplates Fil"
   },
   "fpFolder": {
     "message": "Mapp"
@@ -625,7 +615,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Kära $username$ {boldEnd}, nu kan du uppgradera till SmartTemplates Pro för {boldStart $discount$ mindre {boldEnd} - samtidigt som du utökar din licens med ett helt år. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att hålla jämna steg!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +633,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nytt licenssystem"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
     "placeholders": {
       "countDays": {
@@ -659,7 +649,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates-licensen upphör att gälla om $countDays$ dagar!",
     "placeholders": {
       "countDays": {
@@ -667,10 +657,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hänga med i förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom ändringar som eventuellt bryter tilläggsfunktioner distribueras årligen, kommer licensen också att vara giltig i 1 år."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
   },
@@ -824,10 +814,6 @@
   "no_button": {
     "message": "Ingen"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
@@ -847,19 +833,16 @@
     "message": "AM och PM"
   },
   "p1.label": {
-    "message": "a.m."
+    "message": "f.m."
   },
   "p2.label": {
     "message": "A.M."
   },
-  "p3.label": {
-    "message": "AM"
+  "paste.label": {
+    "message": "Klistra in"
   },
   "parameters": {
     "message": "Parametrar"
-  },
-  "paste.label": {
-    "message": "Klistra in"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text vid hovring"
@@ -937,7 +920,7 @@
     "message": "Ser till att pekarpositionen börjar i en paragraf. Vi rekommendera även Thunderbirds skrivalternativ för att skapa en ny paragraf med [Enter]."
   },
   "pref_fwd.label": {
-    "message": "Tillämpa följande mall på det vidarebefordrade meddelandet"
+    "message": "Tillämpa följande inställningar på det vidarebefordrade meddelandet"
   },
   "pref_fwd.tab": {
     "message": "Framåt"
@@ -1001,7 +984,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Dölj informationsdialogruta som visar nya funktioner och buggfixar när du uppdaterar."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Bearbeta signatur"
   },
@@ -1027,7 +1010,7 @@
     "message": "Ersätt ny rad med <br>"
   },
   "pref_rsp.label": {
-    "message": "Tillämpa följande mall på svarsmeddelandet"
+    "message": "Använd följande inställningar på det besvarade meddelandet"
   },
   "pref_rsp.tab": {
     "message": "Svara"
@@ -1195,7 +1178,7 @@
     "message": "SmartTemplates"
   },
   "smartTemplate4.settings.tooltip": {
-    "message": "SmartTemplates settings"
+    "message": "Inställningar för SmartTemplates"
   },
   "smarttemplate4_button": {
     "message": "Redigera mallar och citathuvuden…"
@@ -1221,71 +1204,11 @@
   "specform_note.label": {
     "message": "Frasen i välvda Konsoler [[Cc: %cc(name)%]] kommer endast visas om variabeln %cc(name)% kan ersättas!"
   },
-  "special-offer-content": {
-    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en {linkStartPro}SmartTemplates Pro -licens{linkEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "16 april"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20 februari"    
-  },
-  "special-offer-head": {
-    "message": "Hjälp till att hålla $addon$ kompatibel",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart} Hej {name} {boldEnd}, stöd $addon$ genom att skaffa en licens. Thunderbird -koden utvecklas kontinuerligt och vi behöver {boldStart} din hjälp {boldEnd} för att hänga med!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Förnya din licens nu och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },   
-  "special-offer-upgrade": {
-    "message": "Uppgradera nu från SmartTemplates Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad."
   },
   "st.confirmVersionLink": {
-    "message": "Display change log for SmartTemplates?"
+    "message": "Visa ändringslogg för SmartTemplates?"
   },
   "st.fileFunction.notExists": {
     "message": "Funktion {0} kunde inte hitta eller komma åt filen. Kolla vägen nedan:"
@@ -1307,7 +1230,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Varför är vissa mallar i den här menyn inaktiverade?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Antalet mallar per meny är begränsat. Du kan konfigurera upp till $max_free$ menyalternativ utan licens och $max_std$ menyalternativ med en SmartTemplates Standardlicens! SmartTemplates Pro är obegränsat.",
     "placeholders": {
@@ -1319,7 +1242,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "För att konfigurera mer än $max_Cats$ -kategorier, skaffa en SmartTemplates Pro -licens…",
@@ -1328,8 +1251,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Välj en mall från rullgardinsmenyn."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1389,6 +1313,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "l"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "Med en giltig SmartTemplates Pro-licens skulle e-postmeddelandet nu skickas automatiskt."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Förnya domänlicens"
   },
@@ -1397,9 +1324,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Uppgradera till PRO"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} är en funktion kopplad till SmartTemplates Pro. Registrera SmartTemplates för att använda den permanent."
@@ -1429,16 +1353,16 @@
     "message": "Din provperiod löpt ut för {0} dagar sedan."
   },
   "st.updateMessageNewBrackets1": {
-    "message": "Dear SmartTemplates user, we are excited to announce that from this version on, SmartTemplates also supports the usage of curly braces { } and the <style> tag so that you can now do advanced css styling within your Template."
+    "message": "Kära SmartTemplates användare, vi är glada att meddela att från denna version vidare, SmartTemplates stöder också användningen av lockiga hängslen { } och <style> taggen så att du nu kan göra avancerad css-styling i din mall."
   },
   "st.updateMessageNewBrackets2": {
-    "message": "From now on, the specific syntax for bracketed expressions is changed: Instead of curly braces {%cc(name)%} use double square brackets [[%cc(name)%]] - for further detail, see Help."
+    "message": "Från och med nu den specifika syntaxen för parenteserade uttryck ändras: Istället för lockiga hängslen {%cc(name)%} använder dubbla hakparenteser [[%cc(name)%]] - för ytterligare detaljer, se Hjälp."
   },
   "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates will now convert your existing templates so you can keep using them in the new version. Press [OK] to continue."
+    "message": "SmartTemplates konverterar nu befintliga mallar så att du kan fortsätta använda dem i den nya versionen. Tryck på [OK] för att fortsätta."
   },
   "st.updateMessageVersion": {
-    "message": "SmartTemplates was successfully upgraded to version {1}!"
+    "message": "SmartTemplates har uppgraderats till version {1}!"
   },
   "standardformat.config": {
     "message": "Standardformat…"
@@ -1463,6 +1387,66 @@
   },
   "sub_var.cap": {
     "message": "Ämne"
+  },
+  "special-offer-content": {
+    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en {linkStartPro}SmartTemplates Pro -licens{linkEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "17 juli"
+  },
+  "special-offer-head": {
+    "message": "Hjälp till att hålla $addon$ kompatibel",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Hej {name} {boldEnd}, stöd $addon$ genom att skaffa en licens. Thunderbird -koden utvecklas kontinuerligt och vi behöver {boldStart} din hjälp {boldEnd} för att hänga med!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Förnya din licens nu och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Uppgradera nu från SmartTemplates Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
   },
   "support-preference": {
     "message": "Detta är det föredragna sättet att stödja $addonName$.",
@@ -1518,8 +1502,11 @@
   "support.type.tech": {
     "message": "Teknisk"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Förhindra att e-postklienter lägger till länkar i e-postadresser."
+  },
+  "suppressQuoteHdr": {
+    "message": "Tar bort offerthuvudet helt oavsett kontoinställningar."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1624,6 +1611,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
+  "update.tooltip": {
+    "message": "Klicka här en gång för att läsa vad som är nytt i $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Uppdateringar"
   },
@@ -1658,7 +1654,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Stöd för svarshuvudet med variabeln %recipient%.{L2} {L1}Strömlinjeformad varning när mallen ändras efter redigering - stöder även tryckning av ESCAPE för att stänga dialogen.{L2}{L1}Rättad: med e-postlistor i fälten till, cc och hemlig kopia. Se ändringsloggen nedan för ett exempel på ett nyhetsbrev för en grupp hemliga mottagare.{L2}{L1}Rättad: anpassade bakgrunds- och textfärger ignoreras när du skriver nya e-postmeddelanden. Detta kan leda till problem med redigeraren när du använder mörka teman.{L2}"
+    "message": "{L1}Underhållskorrigeringar för 3.12.2: Utöka/komprimera/hjälp-knappar är nu också synliga när du öppnar inställningar från tilläggshanteraren. Knappen Förnya licens längst ner till vänster i inställningsdialogrutan fungerar nu som förväntat{L2}{L1}SmartTemplates Pro stöder nu användningen av 'clipboard' (urklipp) som argument för text- och rubrikmanipuleringsfunktioner som %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(reguljärt uttryck,clipboard)% %replaceQuotedText(reguljärt uttryck,clipboard)% {L2}{L1}Använd 'toclipboard' för att kopiera olika resultat till urklipp. Till exempel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Förbättrad *selection* (selektion) platshållare i Snippets för att bättre stödja integration i utvalda HTML-sektioner. Till exempel kan du nu linda en bild med en skugga genom att infoga ett HTML-kodavsnitt.{L2}{L1}Förenklade inställningar för identitetsmallar (rullgardinsmenyn för konton){L2}{L1}Många kompatibilitetskorrigeringar för Thunderbird 102. %spellcheck()% kan nu ställa in ordbok för att korrekturläsa text med flera språk.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
@@ -1690,9 +1686,6 @@
   },
   "xsent_short.cap": {
     "message": "Exempel på en kortsträng:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Du kan dessutom använda dessa variabler:"

@@ -26,6 +26,10 @@
   background-color: transparent;
 }
 
+#innerwrapper li {
+  margin-bottom: 0.5em;
+}
+
 /* pseudo element to achieve background opacity */
 #innerwrapper:before {
   content: ' ';

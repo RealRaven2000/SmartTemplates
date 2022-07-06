@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "曜日 (金)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "Thunderbird の既定の引用ヘッダーをテンプレートによって簡単にカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。"
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "アカウント選択:"
@@ -101,10 +95,10 @@
     "message": "1 回限りの寄付を行いたい"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "テンプレートを読み込みます..."
+    "message": "アカウント設定の読み込み…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "テンプレートを保存します..."
+    "message": "アカウント設定を保存…"
   },
   "btnYouTube.tooltip": {
     "message": "'Thunderbird Daily' YouTube チャネルを開きます。Stationery やそのほかのアドオンの利用法のチュートリアルを紹介しています"
@@ -320,7 +314,7 @@
     "message": "メールアドレス:"
   },
   "enterLicenseKey.button": {
-    "message": "ライセンスキーを入力..."
+    "message": "ライセンスキーを入力…"
   },
   "enterLicenseKey.tooltip": {
     "message": "メールに書かれたライセンスキーコードを入力してください。"
@@ -337,10 +331,6 @@
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "さまざまなメールヘッダーを自動挿入することにより、返信をカスタマイズできる強力な方法です。テンプレートはメールの差出人ごとに個別に作成でき、外部の HTML ファイルやスタイルシートもサポートします。"
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "アカウントごとに引用ヘッダーをカスタマイズします。"
@@ -625,7 +615,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}親愛なる $username$ さん{boldEnd} 、{boldStart}$discount$ 割引{boldEnd} かつライセンスを 1 年間延長可能な SmartTemplates Pro にアップグレードできるようになりました。Thunderbird にはさらに大きな変更が予定されており、アドオンがそれに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -640,17 +630,17 @@
     "placeholders": {
       "expiry": {
         "content": "$1",
-        "example": "4 月 16 日"
+        "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
-  },  
+  },
   "licenseHead": {
     "message": "新しいライセンスシステム"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates ライセンスは $countDays$ 日前に期限切れになりました。",
     "placeholders": {
       "countDays": {
@@ -659,7 +649,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplatesライセンスは残り $countDays$ 日で期限切れになります！",
     "placeholders": {
       "countDays": {
@@ -667,10 +657,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates は、標準とプロの 2 つのライセンスを提供します。これらは、Thunderbird プラットフォームの変更に対応するためのアドオンの改善と修正を金銭的に支援します。拡張機能が機能しなくなる可能性のある Thunderbird の変更は毎年展開されるため、ライセンスの有効期間も 1 年間となります。"
-  },  
+  },
   "licenseValidation.expired": {
     "message": "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。"
   },
@@ -722,17 +712,11 @@
   "menu.template_import.label": {
     "message": "テンプレートをインポートする"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "ライセンスオプションを表示する…"
   },
   "message.features": {
     "message": "機能の比較…"
-  },
-  "messid.label": {
-    "message": "Message ID"
   },
   "minSize": {
     "message": "[オプション, 数値]) - タグを消去する最小サイズ (kB 単位)。これにより、大きな画像が除去される状況でもアイコンや絵文字のような小さな画像をそのままにできます。"
@@ -818,15 +802,8 @@
   "n.label": {
     "message": "月 (1 から 12)"
   },
-  "newsgr.label": {
-    "message": "Newsgroups"
-  },
   "no_button": {
     "message": "いいえ"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "通知をクリック"
   },
   "ongoing-work": {
     "message": "$addonName$ を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。次の 2022 バージョンにはさらに多くの変更があります。このような複雑なアドオンでは、コストのかかる作業が避けられなくなります。私たちを支援してください。",
@@ -842,18 +819,6 @@
   },
   "ownname.label": {
     "message": "あなたの名前"
-  },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
   },
   "paste.label": {
     "message": "貼り付け"
@@ -937,7 +902,7 @@
     "message": "カーソルの位置から段落を開始します。Thunderbird の編集オプションのうち「段落書式の使用中は Enter キーで新しい段落を作成する」を有効にすることを推奨します"
   },
   "pref_fwd.label": {
-    "message": "転送メッセージに以下のテンプレートを適用する"
+    "message": "転送されるメッセージに次の設定を適用します"
   },
   "pref_fwd.tab": {
     "message": "転送"
@@ -1001,7 +966,7 @@
   },
   "pref_noSplash_tip": {
     "message": "更新時に新機能とバグ修正を表示する情報ダイアログを非表示にします。"
-  },  
+  },
   "pref_parseSignature": {
     "message": "署名での変数の使用を許可する"
   },
@@ -1027,7 +992,7 @@
     "message": "改行を <br> に変換する"
   },
   "pref_rsp.label": {
-    "message": "返信メッセージに以下のテンプレートを適用する"
+    "message": "返信されたメッセージに次の設定を適用します"
   },
   "pref_rsp.tab": {
     "message": "返信"
@@ -1171,7 +1136,7 @@
     "message": "アカウントに設定されている署名 (-- 無し)"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "テンプレートの変更..."
+    "message": "テンプレートの変更…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "違うテンプレートを選択 - 本文の編集の前に選択してください！"
@@ -1191,17 +1156,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "SmartTemplates のコンテンツを更新します"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates 設定"
   },
   "smarttemplate4_button": {
-    "message": "テンプレートと引用ヘッダーの設定..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
+    "message": "テンプレートと引用ヘッダーの設定…"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates が更新されました！"
@@ -1234,7 +1193,7 @@
     "message": "テンプレートファイル"
   },
   "st.fileTemplates.configureMenu": {
-    "message": "メニューアイテムの設定..."
+    "message": "メニューアイテムの設定…"
   },
   "st.fileTemplates.error.charSet": {
     "message": "文字セット [{1}] からの HTML テンプレートの変換に問題が発生しました。\n文字列の生データを使用します。\n文字化けが発生する場合には、ヘッダー部に  'meta charset"
@@ -1247,7 +1206,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "このメニューの一部のテンプレートが無効になっているのはなぜですか？"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "メニューごとのテンプレートの数は制限されています。ライセンスなしでは $max_free$ のメニュー項目を構成でき、SmartTemplates Standard ライセンスで $max_std$ のメニュー項目を構成できます。SmartTemplates Pro では制限がありません。",
     "placeholders": {
@@ -1259,17 +1218,18 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
-    "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください...",
+    "message": "$max_Cats$ を超えるカテゴリを構成するには、SmartTemplates Pro ライセンスを取得してください…",
     "placeholders": {
       "max_Cats": {
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "ドロップダウンメニューからテンプレートを選択してください。"
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1326,8 +1286,8 @@
   "st.notification.premium.btn.getLicense": {
     "message": "ライセンス購入"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
+  "st.notification.premium.sendByFilter": {
+    "message": "有効なSmartTemplatesProライセンスを使用すると、電子メールが自動的に送信されるようになります。"
   },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "ドメインライセンスを更新する"
@@ -1337,9 +1297,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Pro にアップグレード"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} はプレミアム機能です。この機能を永続的に使用するには SmartTemplates Pro ライセンスを購入してください。"
@@ -1409,7 +1366,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "8 月 22 日"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1418,7 +1375,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "2 月 20 日"    
+    "message": "7月17日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1443,27 +1400,27 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "9 月 11 日"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "今すると SmartTemplates Standard ライセンスから Pro ライセンスにアップグレードすると、{boldStart} $reduction$ {boldEnd} の割引を受けられます！ この特別オファーは、{boldStart} $expirydate$ {boldEnd} までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "9 月 11 日"
+        "example": "September 11"
       },
       "reduction": {
         "content": "$2",
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "これは、$addonName$ をサポートするために推奨される方法です。",
     "placeholders": {
@@ -1518,11 +1475,11 @@
   "support.type.tech": {
     "message": "技術的な質問"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "メールアドレスにリンクを設定することを抑制する"
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "アカウント設定に関係なく、見積もりヘッダーを完全に削除します。"
   },
   "table.cap": {
     "message": "変数の使用"
@@ -1588,7 +1545,7 @@
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
   "tip.fileTemplates": {
-    "message": "ここをクリックして、Stationery や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください..."
+    "message": "ここをクリックして、Stationery や外部 HTML テンプレートに関する完全なドキュメントにアクセスしてください…"
   },
   "to.label": {
     "message": "受信者の名前とメールアドレス (既定)"
@@ -1624,6 +1581,15 @@
   "tzname.label": {
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
+  "update.tooltip": {
+    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新について"
   },
@@ -1658,7 +1624,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}変数 %recipient% を使用した reply-to ヘッダーのサポート。{L2} {L1}編集後にテンプレートが変更された場合の警告の合理化 -ESCAPE を押してダイアログを閉じることもサポートします。{L2} {L1}修正：使用 to、cc、および bcc フィールドのメーリングリスト。非公開の受信者グループのニュースレターの例については、以下の変更ログを参照してください。{L2} {L1}修正済み：新しいメールを作成するときに、カスタムの背景色とテキストの色が無視される。これにより、ダークテーマを使用しているときにエディターで問題が発生する可能性があります。{L2}"
+    "message": "{L1} 3.12.2のメンテナンスの修正：アドオンマネージャーから設定を開くときに、展開/折りたたみ/ヘルプボタンも表示されるようになりました。 設定ダイアログの左下にある[ライセンスの更新]ボタンが期待どおりに機能するようになりました{L2}{L1} SmartTemplates Proは、「clipboard」 の使用をサポートするようになりました %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)% などのテキストおよびヘッダー操作関数の引数として{L2} {L1}'toclipboard'を使用して、さまざまな結果をクリップボードにコピーします。 例： %from（name,toclipboard）% %dateformat（\"A,e/n/Y H：M\",current,toclipboard）%{L2} {L1}Snippetsの*selection*（selection）プレースホルダーが改善され、選択したHTMLセクションへの統合がより適切にサポートされるようになりました。 たとえば、HTMLスニペットを挿入しても、画像を影で囲むことができるようになりました。{L2} {L1} IDテンプレートの設定の簡略化（アカウントのドロップダウン）{L2} {L1}Thunderbird102の多数の互換性修正。 %spellcheck()% は、辞書を複数の言語でテキストを校正するように設定できるようになりました。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"
@@ -1672,9 +1638,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "長い書式の例"
@@ -1690,9 +1653,6 @@
   },
   "xsent_short.cap": {
     "message": "短い書式の例"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "次の変数はどちらの形式でも使用可能です:"

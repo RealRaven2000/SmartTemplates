@@ -193,14 +193,16 @@ const discountUpgrade = "50%";
     } 
     
     let whatsNewLst = document.getElementById('whatsNewList');
+    function replaceVariableCodeTags(txt) {
+      let tags = ["header.set(to,clipboard)", "header.prefix(subject,clipboard)", "replaceText(regular Expression,clipboard)", "replaceQuotedText(regular Expression,clipboard)", "spellcheck()", "from(name,toclipboard)", "dateformat(\"A, e/n/Y H:M\",current,toclipboard)"];
+      for (let x of tags) {
+        txt = txt.replace(`%${x}%`, `<code>%${x}%</code>`);
+      }
+      return txt.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>");
+    }
     if (whatsNewLst) {
-      whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
-        .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>")
-        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>")
-        .replace("%recipient%","<code>%recipient%</code>")
-        .replace("%spellcheck%","<code>%spellcheck()%</code>")
-        .replace("%quotePlaceholder%","<code>%quotePlaceholder%</code>");
+      whatsNewLst.innerHTML =  replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
+        .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");
     }
     
     let ongoing = document.getElementById('ongoing-work');

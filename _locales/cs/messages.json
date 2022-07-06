@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Zkratka dne týdne (Pá)"
   },
@@ -32,9 +29,6 @@
   "about.label": {
     "message": "SmartTemplat4 nabízí snadný způsob pro přizpůsobení Thunderbirdích standardních záhlaví použitím šablon. Vlastní šablony můžou být vytvořeny pro každ účet a také společné pro všechny."
   },
-  "accept_button": {
-    "message": "OK"
-  },
   "account.label": {
     "message": "Vyberte účet:"
   },
@@ -62,7 +56,7 @@
     "message": "Jakákoliv řádka hlavičky"
   },
   "attach.label": {
-    "message": "Add file as attachment"
+    "message": "Přidat soubor jako přílohu"
   },
   "b.label": {
     "message": "Zkratka měsíce (Led)"
@@ -101,10 +95,10 @@
     "message": "Chci pomoci s jednorázovým darem."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Nahraj Šablonu..."
+    "message": "Načíst nastavení účtu…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Ulož Šablonu..."
+    "message": "Uložit nastavení účtu…"
   },
   "btnYouTube.tooltip": {
     "message": "Navštiv 'Thunderbird Daily' YouTube kanál - pro typy a návody jak použít Stationery a ostatní rozšížení"
@@ -329,7 +323,7 @@
     "message": "Příklad: To: BEDŘICH | Cc: LUBOŠ"
   },
   "export.label": {
-    "message": "Export"
+    "message": "Vývozní"
   },
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
@@ -337,10 +331,6 @@
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "Výkonný způsob, jak vytvářet přizpůsobené odpovědi automatickým vkládáním různých záhlaví pošty. Lze vytvořit šablony pro každou identitu pošty, podporuje také externí soubory html a šablony stylů."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates rozšíření umožňuje měnit 'hlavičky' pro každý účet."
@@ -358,43 +348,40 @@
     "message": "Obrázkový soubor(png, jpg, gif, bmp, svg). Volitelný 'altText' je zobrazen pokud obrázek nemůže být nalezen."
   },
   "fileTemplates.add": {
-    "message": "Add"
+    "message": "Přidat"
   },
   "fileTemplates.down": {
-    "message": "Down"
+    "message": "Dolů"
   },
   "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
+    "message": "Vyberte soubor šablony z disku"
   },
   "fileTemplates.file.title": {
-    "message": "Title:"
+    "message": "Titul:"
   },
   "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
+    "message": "To se zobrazí v nabídce výběru šablony."
   },
   "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vpřed'."
   },
   "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Vytvořit novou zprávu'."
   },
   "fileTemplates.remove": {
-    "message": "Remove"
+    "message": "Odstranit"
   },
   "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
+    "message": "Seznam externích souborů šablon, které lze spustit tlačítkem 'Odpovědět'."
   },
   "fileTemplates.title": {
-    "message": "Template Files"
+    "message": "Soubory šablon"
   },
   "fileTemplates.up": {
-    "message": "Up"
+    "message": "Nahoru"
   },
   "fileTemplates.update": {
-    "message": "Update"
+    "message": "Aktualizace"
   },
   "firstName.label": {
     "message": "Jméno:"
@@ -566,9 +553,6 @@
   "im-ex_note6.label": {
     "message": "Poznámka: Apple/macintosh platforma má menu v záhlaví místo v okně Volby SmartTemplates. To je standardní na této platformě a nebůže být změněno."
   },
-  "import.label": {
-    "message": "Import"
-  },
   "insert.label": {
     "message": "Vložit proměnnou"
   },
@@ -586,6 +570,15 @@
   },
   "l.label": {
     "message": "Hodina (1 až 12)"
+  },
+  "label-remind-me": {
+    "message": "Připomenout znovu za $countDays$ dní.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "label.haveLicense": {
     "message": "Už máte licenci?"
@@ -616,7 +609,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Vážené $username$ {boldEnd}, nyní můžete upgradovat na SmartTemplates Pro za {boldStart} o $discount$ méně {boldEnd} - a zároveň si prodloužit licenci o celý rok. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -634,14 +627,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
   },
   "licenseHead": {
     "message": "Nový licenční systém"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
     "placeholders": {
       "countDays": {
@@ -650,7 +643,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licence SmartTemplates vyprší za $countDays$ dní!",
     "placeholders": {
       "countDays": {
@@ -658,10 +651,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Platnost zadaného licenčního klíče vypršela. Stisknutím tlačítka níže obnovte svou licenci."
   },
@@ -712,9 +705,6 @@
   },
   "menu.template_import.label": {
     "message": "Importovat šablonu"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "Zobrazit možnosti licence…"
@@ -815,10 +805,6 @@
   "no_button": {
     "message": "Ne"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
     "placeholders": {
@@ -834,9 +820,6 @@
   "ownname.label": {
     "message": "Tvé jméno"
   },
-  "parameters": {
-    "message": "Parametry"
-  },
   "p.label": {
     "message": "dop. / odp."
   },
@@ -851,6 +834,9 @@
   },
   "paste.label": {
     "message": "Vložit"
+  },
+  "parameters": {
+    "message": "Parametry"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nad"
@@ -928,7 +914,7 @@
     "message": "Ujistise, že kurzoj je na zažátku odstavce. Také doporučujeme Thunderbird Composition volbu pro vytváření nových odstavců a stisknutí [Enter] klávesy."
   },
   "pref_fwd.label": {
-    "message": "Zvolit následující šablonu pro předávanou zprávu"
+    "message": "Na přeposílanou zprávu použijte následující nastavení"
   },
   "pref_fwd.tab": {
     "message": "Přeposlat"
@@ -992,7 +978,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Skrýt informační dialog, který při aktualizaci zobrazuje nové funkce a opravy chyb."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Proces podpisu"
   },
@@ -1018,7 +1004,7 @@
     "message": "Nahraď konece řádků <br>"
   },
   "pref_rsp.label": {
-    "message": "Zvolit následující šablonu pro psaní odpovědi"
+    "message": "Na zprávu s odpovědí použijte následující nastavení"
   },
   "pref_rsp.tab": {
     "message": "Odpovědět"
@@ -1051,7 +1037,7 @@
     "message": "Stationery rozšíření"
   },
   "pref_stationeryLink_tip": {
-    "message": "Získat \"Stationery\"..."
+    "message": "Získat \"Stationery\"…"
   },
   "pref_stationerySupport": {
     "message": "Podpora \"Stationery\" rozšíření"
@@ -1132,7 +1118,7 @@
     "message": "Získej jméno z adresáře"
   },
   "resolveNamesFromABDisplay": {
-    "message": "Use Display Name if first name missing"
+    "message": "Pokud křestní jméno chybí, použijte Zobrazované jméno"
   },
   "resolveNamesFromABNick": {
     "message": "Přepiš křestní jméno, když existuje přezdívka"
@@ -1182,17 +1168,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Aktualizujte obsah SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates nastavení"
   },
   "smarttemplate4_button": {
-    "message": "Upravit šablony / hlavičku ..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
+    "message": "Upravit šablony / hlavičku …"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates byl aktualizován!"
@@ -1238,7 +1218,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Proč jsou některé šablony v této nabídce deaktivovány?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Počet šablon v nabídce je omezen. Pomocí licence SmartTemplates Standard můžete konfigurovat až $max_free$ položky nabídky bez licence a $max_std$ položky nabídky! SmartTemplates Pro není omezen.",
     "placeholders": {
@@ -1250,7 +1230,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Chcete -li konfigurovat více než $max_Cats$ kategorií, získejte licenci SmartTemplates Pro…",
@@ -1259,7 +1239,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Vyberte šablonu z rozbalovací nabídky."
@@ -1318,8 +1298,8 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Koupit licenci"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
+  "st.notification.premium.sendByFilter": {
+    "message": "S platnou licencí SmartTemplates Pro bude nyní e-mail automaticky odeslán."
   },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Obnovit licenci domény"
@@ -1329,9 +1309,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Upgradujte na Pro"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} je prémiová funkce, prosím upgradujte na licenci SmartTemplates Pro, abyste ji mohli trvale používat."
@@ -1396,21 +1373,21 @@
   "sub_var.cap": {
     "message": "Předmět"
   },
-  "special-offer-expiry": {
-    "message": "20. února"
-  },
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence SmartTemplates Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. Dubna"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
         "example": "30%"
       }
     }
+  },
+  "special-offer-expiry": {
+    "message": "17. července"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -1420,7 +1397,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "special-offer-intro": {
     "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
     "placeholders": {
@@ -1429,7 +1406,7 @@
         "example": "SmartTemplates"
       }
     }
-  },  
+  },
   "special-offer-renew": {
     "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
     "placeholders": {
@@ -1442,7 +1419,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Upgradujte nyní z SmartTemplates Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1455,7 +1432,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
     "placeholders": {
@@ -1510,11 +1487,11 @@
   "support.type.tech": {
     "message": "Technická podpora"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Omezení mail klienta přidat odkaz do e-mailové adresy."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "Úplně odstraní hlavičku nabídky bez ohledu na nastavení účtu."
   },
   "table.cap": {
     "message": "Použití promněnných"
@@ -1573,14 +1550,11 @@
       }
     }
   },
-  "timezone.explain": {
-    "message": "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)"
-  },
   "timezonename.label": {
     "message": "Značka časové zóny GMT, PST, EST, ... "
   },
   "tip.fileTemplates": {
-    "message": "Klepnutím si můžete přečíst celou dokumentaci o šablonách a externích šablonách HTML na našem webu podpory ..."
+    "message": "Klepnutím si můžete přečíst celou dokumentaci o šablonách a externích šablonách HTML na našem webu podpory …"
   },
   "to.label": {
     "message": "Jméno příjemce (defaultní)"
@@ -1610,11 +1584,17 @@
     "description": "disclaimer.",
     "message": "překlady poskytované google"
   },
-  "translatorNickname.label": {
-    "message": "Aris-T (AMO)"
-  },
   "tzname.label": {
     "message": "Zkratka čas. zóny GMT, PST, EST, ... "
+  },
+  "update.tooltip": {
+    "message": "Klikněte sem a přečtěte si, co je nového v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "updates.title": {
     "message": "Aktualizace"
@@ -1642,15 +1622,15 @@
   },
   "whats-new-btn": {
     "message": "Co je nového?"
-  }, 
+  },
   "whats-new-head": {
     "message": "Důležité změny"
   },
   "whats-new-intro": {
-    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
+    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message" : "{L1}Podpora hlavičky odpovědi s proměnnou %recipient%.{L2} {L1}Zjednodušené varování při změně šablony po úpravě – podporuje také stisknutí klávesy ESCAPE k uzavření dialogu.{L2}{L1}Opraveno: pomocí seznamy adresátů v polích Komu, Kopie a Skrytá kopie. V níže uvedeném protokolu změn naleznete příklad zpravodaje pro skupinu nezveřejněných příjemců.{L2}{L1}Opraveno: Při psaní nových e-mailů byly ignorovány vlastní barvy pozadí a textu. To by mohlo vést k problémům editoru při používání tmavých motivů.{L2}"
+    "message": "{L1}Opravy údržby pro 3.12.2: Tlačítka pro rozbalení/sbalení/nápovědu jsou nyní viditelná také při otevírání nastavení ze Správce doplňků. Tlačítko pro obnovení licence v levé dolní části dialogu nastavení nyní funguje podle očekávání{L2}{L1}SmartTemplates Pro nyní podporuje použití 'clipboard' (schránky) jako argumentu pro funkce manipulace s textem a záhlavím, jako je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Ke zkopírování různých výsledků do schránky použijte 'toclipboard'. Například: %from(name,schlipboard)% %dateformat(\"A, e/n/Y H:M\",current,schlipboard)% {L2}{L1}Vylepšený zástupný symbol *selection* (výběr) ve úryvcích pro lepší podporu integrace do vybraných sekcí HTML. Nyní můžete například zabalit obrázek do stínu vložením úryvku HTML.{L2}{L1}Zjednodušené nastavení pro šablony identit (rozbalovací nabídka účtů){L2}{L1}Četné opravy kompatibility pro Thunderbird 102.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
@@ -1664,9 +1644,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "Příklad pro dlouhý řetězec"
@@ -1682,9 +1659,6 @@
   },
   "xsent_short.cap": {
     "message": "Příklad krátkého řetězce"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Následující proměnné lze použít v obou variantách"

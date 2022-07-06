@@ -59,7 +59,7 @@ SmartTemplate4.Util = {
           SmartTemplate4.Util.logDebugOptional("notifications", 
             `onBackgroundUpdates - dispatching custom event SmartTemplates.BackgroundUpdate.${data.event}\n` +
             `into ${window.document.location.href.toString()}`);
-          const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`);
+          const event = new CustomEvent(`SmartTemplates.BackgroundUpdate.${data.event}`, {detail: data.detail});
           window.dispatchEvent(event); 
         }       
       }      
@@ -68,8 +68,8 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.notifyTools.registerListener(onBackgroundUpdates);
     
     // SmartTemplate4.composer.onLoad happens here!!!! (too early!!!)
-    // can we register the Listener later?? 
-    // Or do we need it to call the following notifyBackground functions??
+    // can we register the Listener later? 
+    // Or do we need it to call the following notifyBackground functions?
     
     SmartTemplate4.Util.logDebugOptional("notifications","After notifyTools.registerListener.");
     SmartTemplate4.Util.licenseInfo = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
@@ -489,7 +489,8 @@ SmartTemplate4.Util = {
 		if (notifyBox) {
 			let notificationKey = 
 			  (isProFeature) ? "SmartTemplate4-proFeature" : "SmartTemplate4-license";
-      if (notifyBox.getNotificationWithValue(notificationKey)) {
+      // let's force additional notifications for Pro features
+      if (!isProFeature && notifyBox.getNotificationWithValue(notificationKey)) {
         // notification is already shown on screen.
         util.logDebug('notifyBox for [' + notificationKey + '] is already displayed, no action necessary.');
         return;
@@ -555,13 +556,29 @@ SmartTemplate4.Util = {
 		  // the standard license warning will be always shown on top of the other ones [PRIORITY_WARNING_HIGH]
 			// it contains the number of free / trial days left
       const imgSrc = isProFeature ? "chrome://smarttemplate4/content/skin/proFeature.png" : "chrome://smarttemplate4/content/skin/licensing.png";
-      let newNotification = 
-        notifyBox.appendNotification( 
-			    theText, 
-					notificationKey, 
-					imgSrc, 
-					isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
-					nbox_buttons );
+      
+      let newNotification;
+      if (notifyBox.shown) { // new notification format (Post Tb 99)
+        newNotification = 
+          notifyBox.appendNotification( 
+            notificationKey, // "String identifier that can uniquely identify the type of the notification."
+            {
+              priority: isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH,
+              label: theText,
+              eventCallback: null
+            },
+            nbox_buttons
+          );
+      }
+      else {
+        newNotification = 
+          notifyBox.appendNotification( 
+            theText, 
+            notificationKey, 
+            imgSrc, 
+            isProFeature ? notifyBox.PRIORITY_INFO_HIGH : notifyBox.PRIORITY_WARNING_HIGH, 
+            nbox_buttons );
+      }
 
       // setting img was removed in Tb91  
       if (newNotification.messageImage.tagName == "span") {
@@ -1184,6 +1201,13 @@ SmartTemplate4.Util = {
   // @global=true returns a regular expression from a quoted string
   // @global=false returns a string from a quoted string
   unquotedRegex: function unquotedRegex(s, global) {
+    if (s == "clipboard") { // [issue 183]
+      if (!SmartTemplate4.Util.hasLicense()  || SmartTemplate4.Util.licenseInfo.keyType == 2) { 
+        SmartTemplate4.Util.addUsedPremiumFunction("clipboard");
+        return "";
+      }
+      return SmartTemplate4.Util.clipboardRead();
+    }
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
 			return new RegExp( quoteLess, 'ig');
@@ -1193,8 +1217,7 @@ SmartTemplate4.Util = {
 	
 	// see MsgComposeCommands, loadBlockedImage()
 	getFileAsDataURI : function getFileAsDataURI(aURL) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util,
+		const util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
 		      Cc = Components.classes,
           MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
@@ -1378,7 +1401,6 @@ SmartTemplate4.Util = {
 		}
 			
 		// Add variables in "Write" window to standard features!
-    // util.popupLicenseNotification("Wrap_Deferred_Variables", true, true, "%" + field + "%");
 		field = field.replace(/%/g,'');
 		let tag = "<smarttemplate" +
 					 " hdr='" + field + "'" +
@@ -1426,8 +1448,7 @@ SmartTemplate4.Util = {
   
 	
 	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util,
+		const util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
           
   	function isQuotedNode(node) {
@@ -1530,7 +1551,7 @@ SmartTemplate4.Util = {
 							let token = SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
 							// if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
 							if (token || isReplaceField) {
-								el.innerText = token;
+								el.innerHTML = token; // [issue 186] - mimeDecoder already HTML encodes?
 								resolved = true;
 							}
 						}
@@ -1583,8 +1604,7 @@ SmartTemplate4.Util = {
 	
 	// add listeners for deferred variables (e.g. "from" in New Email)
 	setupDeferredListeners: function st4_setupDeferredListeners(editor) {
-		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util;
 		let body = editor.rootElement,
 		    el = body,
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
@@ -1658,9 +1678,27 @@ SmartTemplate4.Util = {
        " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
        " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
   } ,
+  
 	// new function for manually formatting a time / date string in one go.
-	dateFormat: function dateFormat(time, timeFormat, timezone) {
+  // make additional parameters possible (enclose format string with "" to append 2nd parameter)
+	dateFormat: function dateFormat(time, argument, timezone) {
 		const util = SmartTemplate4.Util;
+    let timeFormat,
+        isClipboard = false;
+    if (argument.startsWith("\"")) {
+      let closeQuote = argument.lastIndexOf("\"");
+      timeFormat = argument.substring(1,closeQuote);
+      let args = argument.substring(closeQuote).split(",");
+      if (args.length>1) {
+        if (args.includes("toclipboard")) {
+          isClipboard = true;
+        }
+      }
+    }
+    else {
+      timeFormat = argument;
+    }
+    
 		util.logDebugOptional('timeStrings','dateFormat(' + time + ', ' + timeFormat + ', ' + timezone  +')\n' + 
 		  'Forced Timezone[' + SmartTemplate4.whatIsTimezone + ']= ' + util.getTimezoneOffset(SmartTemplate4.whatIsTimezone));
 		util.addUsedPremiumFunction('dateFormat');
@@ -1734,6 +1772,16 @@ SmartTemplate4.Util = {
 					
 					
 			util.logDebugOptional('timeStrings', 'Created timeString: ' + timeString);
+      if (isClipboard) {
+        if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+          util.addUsedPremiumFunction("toclipboard");
+        }
+        else {
+          util.clipboardWrite(timeString);
+          util.logDebugOptional("timeStrings", "Copied time to clipboard!");
+        }
+        return "";
+      }
 			return timeString;
 			
 		}
@@ -2428,7 +2476,7 @@ SmartTemplate4.Util = {
 	} ,
   
   // isDisabled - force disabled (on retry)
-  setSpellchecker: function(language, isDisabled) {
+  setSpellchecker: function(languages, isDisabled) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,
 		      util = SmartTemplate4.Util;
@@ -2437,7 +2485,7 @@ SmartTemplate4.Util = {
         inlineSpellChecker = gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
     try {
       let spellChecker = inlineSpellChecker.spellChecker;
-      if (language=='on') {
+      if (languages=='on') {
         if (enableInlineSpellCheck) {
           enableInlineSpellCheck(false);
           enableInlineSpellCheck(true);
@@ -2449,7 +2497,7 @@ SmartTemplate4.Util = {
       }
       if (!isDisabled)
         isDisabled = (gSpellChecker.enabled == false);
-      if (isDisabled && language!='off') {
+      if (isDisabled && languages!='off') {
         // temporarily enable
         gSpellChecker.enabled = true;
         spellChecker = inlineSpellChecker.spellChecker;
@@ -2461,7 +2509,7 @@ SmartTemplate4.Util = {
           util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
           // if spellChecker is not ready, we try again in 2 seconds.
           setTimeout(function() {
-            util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
+            SmartTemplate4.Util.setSpellchecker(languages, isDisabled); // force disabled if this is set globally.
           }, 2000);
           return;
         }
@@ -2471,7 +2519,7 @@ SmartTemplate4.Util = {
           throw wrn;          
         }
       }
-      if (language=='off') {
+      if (languages=='off') {
         if (enableInlineSpellCheck)
           enableInlineSpellCheck(false);
         gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
@@ -2490,42 +2538,42 @@ SmartTemplate4.Util = {
         throw wrn;
       }
       
-      if (language.length>=2) {
-        // exact match
-        for (let i = 0; i < dictList.length; i++) {
-          if (dictList[i] == language) {
-            found = true;
-            language = dictList[i];
-            break;
-          }
-        }
-        // partial match
-        if (!found)
+      
+      let langArray = languages.split(",");
+      for (let l=0; l<langArray.length; l++) {
+        let foundOne = false;
+        let language = langArray[l];
+        if (language.length>=2) {
+          // exact match
           for (let i = 0; i < dictList.length; i++) {
-            if (dictList[i].startsWith(language)) {
-              found = true;
+            if (dictList[i] == language) {
+              foundOne = true; found = true;
               language = dictList[i];
               break;
             }
           }
+          // partial match
+          if (!foundOne) {
+            for (let i = 0; i < dictList.length; i++) {
+              if (dictList[i].startsWith(language)) {
+                foundOne = true; found = true;
+                language = dictList[i];
+                break;
+              }
+            }
+          }
+        }
+        langArray[l] = language; // write back correct entry
       }
       
       if (found) {
-        util.logDebug("Setting spellchecker / document language to: " + language);
-        if (ComposeChangeLanguage) {
-          document.documentElement.setAttribute("lang",""); // force resetting
-          ComposeChangeLanguage(language);
+        util.logDebug("Setting spellchecker / document language to: " + languages);
+        document.documentElement.setAttribute("lang",""); // force resetting
+        if(typeof gActiveDictionaries == "object") { // Tb102 supports multiple spellcheck languages active at the same time
+          ComposeChangeLanguage(langArray);
         }
         else {
-          // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
-          // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
-          // this should trigger gLanguageObserver to select the correct spell checker.
-          document.documentElement.setAttribute("lang", language); 
-          spellChecker.SetCurrentDictionary(language);
-          // force re-checking:
-          if (gSpellChecker.enabled) {
-            inlineSpellChecker.spellCheckRange(null);
-          }
+          ComposeChangeLanguage(langArray[0]); // Tb91: only 1 single language supported 
         }
         if (isDisabled) { // force restoring disabled status
           gSpellChecker.enabled = false; 
@@ -2534,7 +2582,7 @@ SmartTemplate4.Util = {
       }
       else {
         let wrn = util.getBundleString("st.notification.spellcheck.notFound");
-        throw wrn.replace("{0}", language);
+        throw wrn.replace("{0}", languages);
       }
     }
     catch(ex) {
@@ -2603,15 +2651,20 @@ SmartTemplate4.Util = {
 
   },
   
-  openPreferences: function() {
+  openPreferences: function(el=null) {
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
       return;
     }
-    
-    window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+    if (el && el.classList && el.classList.contains("alertExpired")) {
+      SmartTemplate4.Util.viewLicense();
+    }
+    else {
+      window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+      
+    }
     
   },
   
@@ -2630,8 +2683,69 @@ SmartTemplate4.Util = {
     };
     return aAccounts;    
   }, 
-	
+  
+  clipboardRead: function() {
+		const Ci = Components.interfaces,
+		      Cc = Components.classes;
+    let cp = "";
+    try {
+      const flavor = "text/unicode",
+            flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
+            xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+      if (!xferable) {
+        SmartTemplate4.Util.logToConsole("Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
+      }
+      else {
+        xferable.init(null);
+        let finalFlavor = "";
+        if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
+          finalFlavor = flavorHTML;
+        }
+        else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
+          finalFlavor = flavor;
+        }
+        
+        if (finalFlavor) {
+          xferable.addDataFlavor(finalFlavor);
+          // Get the data into our transferable.
+          Services.clipboard.getData(xferable, Services.clipboard.kGlobalClipboard);
+          
+          const data = {};
+          try {
+            xferable.getTransferData(finalFlavor, data);
+          } catch (e) {
+            // Clipboard doesn't contain data in flavor, return null.
+            SmartTemplate4.Util.logDebug(`No data with flavor ${finalFlavor} in clipboard! `);
+            return "";
+          }
 
+          // There's no data available, return.
+          if (!data.value) {
+            SmartTemplate4.Util.logDebug("Clipboard is empty? ");
+            return "";
+          }
+
+          cp = data.value.QueryInterface(Ci.nsISupportsString).data;              
+        }
+      }      
+    }
+    catch (ex) {
+      SmartTemplate4.Util.logException('util.clipboardRead() failed', ex);
+    }
+    return cp; 
+  },
+  
+  clipboardWrite: function(txt) {
+    try {
+      let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+      oClipBoard.copyString(txt);
+      return true;
+    }
+    catch(ex) {
+      SmartTemplate4.Util.logException("Failed copying string to clipboard!", ex);
+      return false;
+    }
+  }
 };  // ST4.Util
 
 

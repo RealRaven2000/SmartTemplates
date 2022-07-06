@@ -1,21 +1,119 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.10">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.12.1">can be found here</a>
 
-<b>Enhancements</b>
+<b>Maintenance Version 3.12.2</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/154">[issue 154]</a> Support pushing [Esc] to close template change confirmation. Also removed non-functional buttons from this dialog.</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/166">[issue 166]</a> Implemented: <code>%recipient%</code> should use reply-to header if present when replying.</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/150">[issue 150]</a> Removed nag screen which pops up after trial date is expired. </li>
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/197">[issue 197]</a> - Expand / collapse / help buttons are now also visible when opening settings from Add-ons Manager
+</li>
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/198">[issue 198]</a> - Renew license button on left bottom of settings dialog now works as expected
+</li>
 </ul>
 
-<b>Bug Fixes</b>
+<b>Enhancements 3.12</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/167">[issue 167]</a> Fixed: BCC list entry not expanded with empty "To:" address.</li>
-<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/168">[issue 168]</a> Fixed: custom background and text colors ignored in composer when writing new mails.</li>
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/183">[issue 183]</a> SmartTemplates now supports using "clipboard" as argument for text and header manipulation functions
+
+<b>header manipulation - examples</b>
+<ul>
+  <li><code>%header.set(to,clipboard)%</code> - set the final recipient from the clipboard</li>
+  <li><code>%header.append(to,clipboard)%</code> - add a recipient from clipboard</li>
+  <li><code>%header.prefix(subject,clipboard)%</code> - add some subject prefix from clipboard</li>
 </ul>
 
-<b>Miscellaneous</b>
+<b>Template text and Quote replacements</b>
 <ul>
+  <li><code>%replaceText(regularExpression,clipboard)%</code> - overwrite placeholder text in template from clipboard</li>
+  <li><code>%replaceQuotedText(regularExpression,clipboard)%</code> - replace text in the quoted part with clipboard contents</li>
 </ul>
+</li>
+
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/187">[issue 187]</a> Support transferring headers / variable results to clipboard
+
+Use the parameter <tt>toclipboard</tt> to transfer header contents such as email addresses to the clipboard: <code>%from(mail,toclipboard)%</code>
+
+Use it when replying or forwarding messages to extract text from the original message body or subject to the clipboard, for example:
+
+%matchTextFromBody("Please reply until (.*)",1,toclipboard)%
+%matchTextFromSubject("\[Support\] (.*)",1,toclipboard)%
+
+You can use it for copying the date with dateformat as well:
+
+Wrap the format strings in double quotes, and add the parameter <tt>toclipboard</tt> to force copying the date to clipboard instead of inserting it into the email. Use the additional parameter <tt>current</tt> to always enforce current time (without that, it will interpret it as the timestamp of the replied to / forwarded original mail)
+
+Examples:
+<pre class="code">
+  %dateformat("A, e/n/Y H:M",toclipboard)%
+  %dateformat("A, e/n/Y H:M",current,toclipboard)%</pre>
+</li>
+
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/189">[issue 189]</a> Support multiple spellcheck languages with %spellcheck()% command - for example: 
+use %spellcheck(en,de)% to enable combined English / German dictionary checking.
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/182">[issue 182]</a> Improved *selection* placeholder in Snippets to better support processing html elements.
+For example, you can now wrap an image with some HTML to add a shadow. Just click on the image and then load the following Smart Template:
+
+<pre>
+  &lt;div style="border: 1px solid rgba(80, 80, 80, 0.3); 
+      box-shadow: rgba(80, 80, 80, 0.3) 5px 5px 5px; 
+      width:max-content;"&gt;*selection*&lt;/div&gt;
+</pre>
+
+This will add a nice outlines and drop shadow. There are many more creative way to add functionality to the Thunderbird Composer using the SmartTemplates Snippets button, by using HTML and style rules.
+</li>
+
+<li>
+<a href="https://github.com/RealRaven2000/SmartTemplates/issues/185">[issue 185]</a> Simplified and modernized SmartTemplates Settings - Accounts dropdown and toolbar buttons.
+
+The accounts dropdown often showed squashed buttons at the top right due to long labels, also the icons 
+were confusing - I have decided to streamline this by taking the following steps:
+  <ul>
+    <li> removed the "Advanced" label and using the widely used [...] icon to expand dialog to advanced settings</li>
+    <li> used monochrome scalable svg icons for most of the toolbarbutton </li>
+    <li> removed the account name from the account label - the identity name should be enough. 
+      If you need to add it back (or additional info such as the account id) 
+      you can right-click the "Account:" label</li>
+    <li> reduced space between buttons to save even more space</li>
+  </ul>
+</li>
+
+<li>Compatibility changes for Thunderbird ESR 102:<br>
+Increased minimum version number<br>
+Fixed notifications<br>
+Fixed setting focus in composer<br>
+Stabilized code when reading external signatures or including external files<br>
+Fixed menu spacings for Templates in reply / write / forward / Snippets buttons.<br>
+</li>
+
+
+<b>Bug Fixes / Maintenance</b>
+<li> <a href="https://github.com/RealRaven2000/SmartTemplates/issues/186">[issue 186]</a> Fixed various issues in <code class="inline">bracketMail</code> parameter in %to% / %from% etc:
+
+  <ul>
+  <li> You can now use bracketMail without the parentheses: <code>%to(name,bracketMail)%</code> this will default to wrapping the email in the standard of angled brackets: &lt;mail@domain.com&gt; </li>
+  <li> Fixed: Explict delimiters given as bracket parameters should not repeat on all following fields. <br> For example, <code>%to(bracketName({;}),mail)%</code> will generate "{Fred} mail@domain.com"  and not the faulty "{Fred} {mail@domain.com}" </li>
+  <li> When using deferred fields (e.g. when using %to(bracketMail)% within a write template), angle brackets used to be encoded twice leading to an output of "&amplt;mail@domain.com&ampgt;"  instead of the expected "&lt;mail@domain.com&gt;" when the user clicks to update the field.</li>
+  <li> Using multiple <code class="inline">bracketMail</code> functions could lead to  only the last <code class="inline">[[ optional section ]]</code> to be removed as expected. See related <a href="https://github.com/RealRaven2000/SmartTemplates/issues/192">[issue 192]</a></li>
+  </ul>
+</li>
+
+
+<li>Ongoing work: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/184">[issue 184]</a>
+Move template processing into background script
+
+In order to use ComposeScripts and allow integration of SmartTemplates with other mail extensions (not just legacy) all  template / string processing and the insertion into Composer need to be moved into the background script. The new code will be implemented on the current ESR branch (currently 91, soon to be 102) but not activated until it is ready.
+
+Once the main parser runs within background we are an essential step closer to conversion to a native API mail extension [mx] without legacy code and without requiring full permissions to the user's PC. However it is likely that things like UI integration (3 buttons in composer toolbar), full access to external files, access to certain MIME headers etc. might then still not possible with non-experimental Add-ons.
+</li>
+
+<li>
+New Greek translation by StratosL (Work in Progress)
+</li>
+</ul>
+

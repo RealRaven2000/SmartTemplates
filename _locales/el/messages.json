@@ -1,0 +1,1285 @@
+{
+  "a.label": {
+    "message": "Ημέρα της Εβδομάδας (Παρ.)"
+  },
+  "a.up.label": {
+    "message": "Ημέρα της Εβδομάδας (Παρασκευή)"
+  },
+  "ab_contact": {
+    "message": "Επαφή"
+  },
+  "ab_fields": {
+    "message": "Πεδία Βιβλίου Διευθύνσεων"
+  },
+  "ab_fields.desc": {
+    "message": "Όταν απαντάτε σε μια αντίστοιχη διεύθυνση ηλεκτρονικού ταχυδρομείου, μπορείτε τώρα να χρησιμοποιήσετε πρόσθετα πεδία για μεταβλητές διευθύνσεων σαν το %from%, όπως:"
+  },
+  "ab_other": {
+    "message": "Άλλο"
+  },
+  "ab_private": {
+    "message": "Ιδιωτικό"
+  },
+  "ab_work": {
+    "message": "Εργασία"
+  },
+  "about.cap": {
+    "message": "Σχετικά Με SmartTemplates"
+  },
+  "about.label": {
+    "message": "Το SmartTemplates προσφέρει έναν εύκολο τρόπο για να προσαρμόσετε την προεπιλεγμένη κεφαλίδα παράθεσης που χρησιμοποιεί το Thunderbird, χρησιμοποιώντας πρότυπα. Μπορεί να δημιουργηθεί ένα ξεχωριστό πρότυπο για κάθε λογαριασμό ή ένα κοινό πρότυπο για όλους τους λογαριασμούς."
+  },
+  "accept_button": {
+    "message": "Εντάξει"
+  },
+  "account.label": {
+    "message": "Επιλέξτε λογαριασμό:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Εκτελείτε την {boldStart} έκδοση $addonVer$ {boldEnd} στο Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Για να συνεχίσουμε να είμαστε χρήσιμοι, οι προγραμματιστές πρόσθετων πρέπει τώρα να χρηματοδοτούμε οι ίδιοι τους πόρους που απαιτούνται για να τη διόρθωση και συγγραφή κώδικα, ώστε οι χρήστες μας να μπορούν να συνεχίσουν να επωφελούνται από τη λειτουργικότητα που προσθέτουμε στην εφαρμογή."
+  },
+  "advanced.label": {
+    "message": "Προηγμένο"
+  },
+  "any.label": {
+    "message": "Οποιαδήποτε Γραμμή Κεφαλίδας"
+  },
+  "attach.label": {
+    "message": "Προσθήκη αρχείου ως συνημμένου"
+  },
+  "b.label": {
+    "message": "Μήνας (Ιαν.)"
+  },
+  "b.up.label": {
+    "message": "Μήνας (Ιανουάριος)"
+  },
+  "basepath.absolute": {
+    "message": "Κάντε κλικ εδώ για να επιλέξετε έναν συγκεκριμένο φάκελο στον τοπικό σας δίσκο."
+  },
+  "basepath.desc": {
+    "message": "Αν το πρότυπό σας περιέχει εικόνες με την ετικέτα 'img' που βρίσκονται στον τοπικό σας δίσκο, θα πρέπει να πείτε στο SmartTemplate πού να τα βρει."
+  },
+  "basepath.desc2": {
+    "message": "Η μεταβλητή 'basepath' θα εισάγει μια ετικέτα html 'base', ώστε όλες οι εικόνες να μπορούν να βρεθούν βάσει αυτής της αρχικής διαδρομής - μπορεί να χρησιμοποιηθεί μόνο μία φορά σε ένα email."
+  },
+  "basepath.relative": {
+    "message": "Χρησιμοποιήστε αυτή τη μεταβλητή για να βρείτε τις εικόνες στην ίδια θέση με το πρότυπο αρχείου html."
+  },
+  "brack_with_var.label": {
+    "message": "Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν εντός του [[...]]"
+  },
+  "btn-extend-license": {
+    "message": "Θέλω να παρατείνω την άδεια μου κατά ένα έτος"
+  },
+  "btn-renew-license": {
+    "message": "Θέλω να ανανεώσω την άδειά μου"
+  },
+  "btn-upgrade-to-pro": {
+    "message": "Θέλω να αναβαθμίσω την άδειά μου"
+  },
+  "btn-want-a-license": {
+    "message": "Θέλω να αγοράσω μία άδεια"
+  },
+  "btn-want-to-donate": {
+    "message": "Θέλω να βοηθήσω με μια εφάπαξ δωρεά."
+  },
+  "btnLoadTemplate.tooltip": {
+    "message": "Φόρτωσε ρυθμίσεις λογαριασμού…"
+  },
+  "btnSaveTemplate.tooltip": {
+    "message": "Αποθήκευσε ρυθμίσεις λογαριασμού…"
+  },
+  "btnYouTube.tooltip": {
+    "message": "Επισκεφθείτε στο YouTube το κανάλι 'Thunderbird Daily' για συμβουλές και εκπαιδεύσεις πάνω στη χρήση Επιστολοχάρτων και άλλων Προσθέτων"
+  },
+  "button.pasteLicense": {
+    "message": "επικόλλησε"
+  },
+  "button.updateThunderbird": {
+    "message": "Ενημέρωσε το Thunderbird!"
+  },
+  "button.validateLicense": {
+    "message": "επικύρωσε"
+  },
+  "buyDomainLicense.button": {
+    "message": "Αγοράστε Άδεια Τομέα"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Χρειάζεστε άδειες Pro για μια εταιρεία με περισσότερους από πέντε χρήστες; Η απόκτηση άδειας τομέα θα είναι οικονομικότερη:"
+  },
+  "buyPremiumLicense.button": {
+    "message": "Αγοράστε Άδεια Pro!"
+  },
+  "buyPremiumLicense.instruct": {
+    "message": "Θέλετε να χρησιμοποιήσετε όλα τα premium χαρακτηριστικά χωρίς περιορισμούς; Αποκτήστε μια άδεια SmartTemplates Pro. Θα είναι αντιστοιχισμένη στην προσωπική σας διεύθυνση ηλεκτρονικού ταχυδρομείου και θα μπορεί να χρησιμοποιηθεί σε πολλαπλές εγκαταστάσεις."
+  },
+  "buyStandardLicense.button": {
+    "message": "Αγοράστε την Τυπική Άδεια!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Σας φαίνεται ακριβή η άδεια για τις premium λειτουργίες; Αποκτήστε μια εξαιρετικά προσιτή τυπική άδεια χρήσης και διατηρήστε το δικαίωμα δοκιμαστικής χρήσης premium λειτουργιών."
+  },
+  "calculate.explain": {
+    "message": "DD=αριθμός ημερών που πρέπει να προστεθεί. H=αριθμός ωρών για προσθήκη (προαιρετικό). MM=λεπτά για προσθήκη (προαιρετικά) "
+  },
+  "calculate.reset": {
+    "message": "Θέστε το όρισμα στο 0 για να μην τροποποιούνται οι ημερομηνίες."
+  },
+  "cancel_button": {
+    "message": "Ακύρωσε"
+  },
+  "capitalizeNames": {
+    "message": "Κεφαλαία Ονόματα"
+  },
+  "cc.label": {
+    "message": "Όνομα παραλήπτη (Προεπιλογή)"
+  },
+  "cc_note.label": {
+    "message": "Όταν το όνομα δεν είναι διαθέσιμο, θα εμφανίζεται η διεύθυνση ηλεκτρονικού ταχυδρομείου"
+  },
+  "cc_var.cap": {
+    "message": "Παραλήπτης (CC)"
+  },
+  "ccfirstname.label": {
+    "message": "Όνομα παραλήπτη"
+  },
+  "ccmail.label": {
+    "message": "Email του Παραλήπτη-CC"
+  },
+  "ccname.label": {
+    "message": "Όνομα παραλήπτη"
+  },
+  "close.label": {
+    "message": "Βασικό"
+  },
+  "conditional.forwardMode": {
+    "message": "Αν το email προωθείται inline, εισάγεται η πρώτη παράμετρος κειμένου. Η δεύτερη παράμετρος κειμένου χρησιμοποιείται όταν το μήνυμα προωθείται ως συνημμένο."
+  },
+  "conditionals.cap": {
+    "message": "Υπό Συνθήκη Κείμενο"
+  },
+  "conditionals.note": {
+    "message": "Αυτή η κλάση μεταβλητών μπορεί να χρησιμοποιηθεί για την εισαγωγή κειμένου ανάλογα με το πώς στέλνετε email. Χρειάζεστε μια άδεια SmartTemplates Pro για αυτές."
+  },
+  "contextError": {
+    "message": "Η μεταβλητή {1} δεν μπορεί να χρησιμοποιηθεί για *νέα* μηνύματα!\nΠαρακαλώ ανατρέξτε στη Βοήθεια για μια λίστα επιτρεπόμενων μεταβλητών"
+  },
+  "contribute_button": {
+    "message": "Συνεισφέρετε"
+  },
+  "contributor.label": {
+    "message": "Συνεισφέρων"
+  },
+  "copy.label": {
+    "message": "Αντιγράψτε"
+  },
+  "cost-of-independence": {
+    "message": "Η ανάπτυξη λογισμικού κοστίζει χρόνο και χρήμα - σε αντίθεση με άλλες πλατφόρμες ανάπτυξης, τα Πρόσθετα δε δημιουργούνται από μεγάλες εταιρείες, ούτε επιχορηγούνται με οποιοδήποτε τρόπο από τη Mozilla."
+  },
+  "creator.label": {
+    "message": "Δημιουργός"
+  },
+  "cursor.label": {
+    "message": "Ορίζει τη θέση του δρομέα"
+  },
+  "customdf_note.label": {
+    "message": "Μπορεί να συνδυαστεί με %X:=sent%"
+  },
+  "d.label": {
+    "message": "Ημέρα του Μήνα (01 έως 31) - με το μηδέν μπροστά"
+  },
+  "date.label": {
+    "message": "Ημερομηνία / Ώρα (ίδια με την αρχική 'Mailheader')"
+  },
+  "dateformat.example": {
+    "message": "Παράδειγμα: "
+  },
+  "dateformat.explain": {
+    "message": "Οι περισσότερες από τις παραπάνω μεταβλητές χρόνου μπορούν να χρησιμοποιηθούν στη συμβολοσειρά παραμέτρων παραλείποντας το '%'. Δείτε επίσης:"
+  },
+  "dateformat.label": {
+    "message": "Λειτουργία για την εισαγωγή της τρέχουσας ώρας (ενεργό πεδίο)."
+  },
+  "datelocal.label": {
+    "message": "Ημερομηνία / Ώρα (τοπική μορφή)"
+  },
+  "dateoffset_note.label": {
+    "message": "Η ακόλουθη λειτουργία προσθέτει μια μετατόπιση σε όλες τις επόμενες εμφανιζόμενες ώρες."
+  },
+  "dateshort.label": {
+    "message": "Ημερομηνία / Ώρα σύντομη (π.χ. 01.01.2000 1:23:45)"
+  },
+  "datetimezone.label": {
+    "message": "Ζώνη Ώρας (+0100, +0200, ... )"
+  },
+  "datetz.label": {
+    "message": "Ζώνη Ώρας (+0100, +0200, ... )"
+  },
+  "day.1.name": {
+    "message": "Κυριακή"
+  },
+  "day.1.short": {
+    "message": "Κυρ"
+  },
+  "day.2.name": {
+    "message": "Δευτέρα"
+  },
+  "day.2.short": {
+    "message": "Δευ"
+  },
+  "day.3.name": {
+    "message": "Τρίτη"
+  },
+  "day.3.short": {
+    "message": "Τρί"
+  },
+  "day.4.name": {
+    "message": "Τετάρτη"
+  },
+  "day.4.short": {
+    "message": "Τετ"
+  },
+  "day.5.name": {
+    "message": "Πέμπτη"
+  },
+  "day.5.short": {
+    "message": "Πέμ"
+  },
+  "day.6.name": {
+    "message": "Παρασκευή"
+  },
+  "day.6.short": {
+    "message": "Παρ"
+  },
+  "day.7.name": {
+    "message": "Σάββατο"
+  },
+  "day.7.short": {
+    "message": "Σάβ"
+  },
+  "defaultMimeFormat": {
+    "message": "Προεπιλεγμένη μορφή διεύθυνσης:"
+  },
+  "defaultMimeFormat_tip": {
+    "message": "Μορφότυπο για χρήση κατά την αντικατάσταση απλών διευθύνσεων %to% %from% %cc%. Για παράδειγμα, με το (firstname,lastname,??mail) θα εμφανιστεί το όνομα, ακολουθούμενο από το επώνυμο• εάν κανένα από τα δύο δεν είναι διαθέσιμο, τότε θα εμφανιστεί η διεύθυνση ταχυδρομείου."
+  },
+  "deleteQuotedTags": {
+    "message": "Διαγράφει τις ετικέτες από την παράθεση"
+  },
+  "deleteQuotedText": {
+    "message": "Διαγράφει το παρατιθέμενο κείμενο"
+  },
+  "deleteText": {
+    "message": "Αφαίρεσε συγκεκριμένο κείμενο από την παράθεση, π.χ. deleteText (\"μέσω Paypal\")"
+  },
+  "developer.label": {
+    "message": "Προγραμματιστής"
+  },
+  "domainLicense.email": {
+    "message": "Θα επικοινωνήσουμε μαζί σας χρησιμοποιώντας αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να δημιουργήσουμε την άδεια χρήσης για τον τομέα σας. Παρακαλούμε δώστε μας δύο εργάσιμες ημέρες για να έρθουμε σε επαφή. Εισάγετε το όνομα τομέα για την άδεια χρήσης στην επόμενη σελίδα."
+  },
+  "domainLicense.header": {
+    "message": "Αδειοδοτημένος Τομέας Email"
+  },
+  "domainLicense.instruct": {
+    "message": "Η άδεια είναι αντιστοιχισμένη στον τομέα της εταιρείας σας. Η άδεια θα επιτρέπει στους χρήστες με διευθύνσεις ηλεκτρονικού ταχυδρομείου που τελειώνουν σε αυτόν τον τομέα email να χρησιμοποιούν το SmartTemplates Pro. Π.χ. αν εισάγετε το όνομα τομέα 'abc.com', τότε χρήστες email όπως fredd@abc.com, martha@abc.com, mike.doe@abc.com κλπ. θα επιτρέπεται να χρησιμοποιούν την άδεια. Ο μέγιστος αριθμός έγκυρων μεμονωμένων χρηστών είναι ο αριθμός που εισάγατε στην αρχική οθόνη."
+  },
+  "domainLicense.validate": {
+    "message": "Βεβαιωθείτε ότι εισάγετε το όνομα τομέα *ακριβώς όπως είναι* στις διευθύνσεις email της Εταιρείας σας (το τμήμα *μετά* το σύμβολο @), καθώς θα χρησιμοποιηθεί για την επικύρωση των διευθύνσεων ηλεκτρονικού ταχυδρομείου των χρηστών σας."
+  },
+  "donate": {
+    "message": "Βοηθήστε με μια εφάπαξ δωρεά."
+  },
+  "donate-heading": {
+    "message": "Βοηθήστε με μία Δωρεά!"
+  },
+  "e.label": {
+    "message": "Ημέρα του Μήνα (1 έως 31)"
+  },
+  "edit.label": {
+    "message": "Επεξεργαστείτε"
+  },
+  "email.label": {
+    "message": "Email:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Εισάγετε κλειδί άδειας χρήσης…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Εισάγετε τον κωδικό κλειδιού άδειας χρήσης που σας απεστάλη μέσω email."
+  },
+  "ex_brack.label": {
+    "message": "Παράδειγμα: To: John | Cc: Alison"
+  },
+  "export.label": {
+    "message": "Εξάγαγε"
+  },
+  "extend-your-license": {
+    "message": "Εξετάστε το ενδεχόμενο επέκτασης της άδειας χρήσης σας κατά ένα έτος."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Ένας ισχυρός τρόπος δημιουργίας προσαρμοσμένων απαντήσεων με αυτόματη εισαγωγή διαφόρων κεφαλίδων ταχυδρομείου. Τα πρότυπα μπορούν να δημιουργηθούν για κάθε ταυτότητα ταχυδρομείου, ενώ υποστηρίζουν επίσης εξωτερικά αρχεία html και φύλλα στυλ."
+  },
+  "extensions.smarttemplate4@thunderbird.extension.description": {
+    "message": "Το πρόσθετο SmartTemplates μπορεί να προσαρμόσει τις κεφαλίδες 'quote headers' ανά λογαριασμό."
+  },
+  "file.label": {
+    "message": "Αρχείο"
+  },
+  "fileCSS.label": {
+    "message": "Εξωτερικό φύλλο στυλ (css). Συμπεριλάβετε τους αγαπημένους σας κανόνες CSS για να μοιραστείτε μεταξύ διαφορετικών προτύπων."
+  },
+  "fileHTML.label": {
+    "message": "HTML ή απλό αρχείο κειμένου. Χρησιμοποιείται το UTF- 8 όταν παραλείπεται η προαιρετική παράμετρος συνόλου χαρακτήρων."
+  },
+  "fileImage.label": {
+    "message": "Αρχείο εικόνας (png,jpg,gif,bmp,svg). Το προαιρετικό altText εμφανίζεται αν η εικόνα δεν μπορεί να βρεθεί."
+  },
+  "fileTemplates.add": {
+    "message": "Πρόσθεσε"
+  },
+  "fileTemplates.down": {
+    "message": "Κάτω"
+  },
+  "fileTemplates.file.open": {
+    "message": "Επιλέξτε αρχείο προτύπου από το δίσκο"
+  },
+  "fileTemplates.file.path": {
+    "message": "Τοποθεσία προτύπου:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Τίτλος:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Αυτό θα εμφανίζεται στο μενού επιλογής προτύπου."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Προώθηση'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Δημιουργία νέου μηνύματος'."
+  },
+  "fileTemplates.remove": {
+    "message": "Αφαιρέστε"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Λίστα εξωτερικών αρχείων προτύπων που μπορούν να εκκινηθούν από το κουμπί 'Απάντηση'."
+  },
+  "fileTemplates.title": {
+    "message": "Αρχεία Προτύπων"
+  },
+  "fileTemplates.up": {
+    "message": "Πάνω"
+  },
+  "fileTemplates.update": {
+    "message": "Ενημέρωσε"
+  },
+  "firstName.label": {
+    "message": "Όνομα:"
+  },
+  "fix_var.cap": {
+    "message": "Σταθερές μεταβλητές"
+  },
+  "fix_vartz.cap": {
+    "message": "Σταθερές μεταβλητές για 'Μορφή ημερομηνίας' / 'Ζώνη ώρας'"
+  },
+  "fix_vartz_note.label": {
+    "message": "Μπορεί να συνδυαστεί με %X:=sent%"
+  },
+  "fpFilterHtmlTemplate": {
+    "message": "Πρότυπο HTML"
+  },
+  "fpFilterName": {
+    "message": "Αρχείο SmartTemplates"
+  },
+  "fpFolder": {
+    "message": "Φάκελος"
+  },
+  "fpHTMLFile": {
+    "message": "Αρχείο Html / Αρχείο Κειμένου"
+  },
+  "fpImageFile": {
+    "message": "Αρχείο Εικόνας"
+  },
+  "fpJsonFile": {
+    "message": "Αρχείο JSON"
+  },
+  "fpStyle": {
+    "message": "Φύλλο Στυλ"
+  },
+  "freeLicense": {
+    "message": "Αν έχετε κάνει πρόσφατα δωρεά στο έργο SmartTemplates ή έχετε συνεισφέρει μέσω εργασίας όπως μετάφρασης ή συγγραφής διορθώσεων, μπορεί να δικαιούστε ένα δωρεάν κλειδί αδείας. Επικοινωνήστε μαζί μου από την καρτέλα υποστήριξης στις Επιλογές SmartTemplates."
+  },
+  "from.label": {
+    "message": "Όνομα αποστολέα (προεπιλογή)"
+  },
+  "from_note.label": {
+    "message": "Όταν το όνομα δεν είναι διαθέσιμο, θα εμφανίζεται η διεύθυνση ηλεκτρονικού ταχυδρομείου"
+  },
+  "from_var.cap": {
+    "message": "Αποστολέας (Από)"
+  },
+  "fromfirstname.label": {
+    "message": "Όνομα αποστολέα"
+  },
+  "frommail.label": {
+    "message": "Διεύθυνση email αποστολέα"
+  },
+  "fromname.label": {
+    "message": "Όνομα αποστολέα"
+  },
+  "getSmartTemplate4": {
+    "message": "Άδεια Χρήσης SmartTemplates"
+  },
+  "guessNameFromMail": {
+    "message": "Αν λείπει το όνομα, μάντεψε τμήματά του από τη διεύθυνση email"
+  },
+  "h.label": {
+    "message": "Ώρα, 24-ωρη μορφή (00 έως 23) - με το μηδέν στην αρχή"
+  },
+  "header.append.subject": {
+    "message": "πρόσθεσε το κείμενο στο τέλος του θέματος"
+  },
+  "header.append.to": {
+    "message": "προσθήκη email στη λίστα παραληπτών"
+  },
+  "header.delete.subject": {
+    "message": "αφαίρεσε το κείμενο από το θέμα (κανονική έκφραση)"
+  },
+  "header.prefix.subject": {
+    "message": "πρόσθεσε το κείμενο στην αρχή του θέματος"
+  },
+  "header.set.from": {
+    "message": "ορίζει τη διεύθυνση 'από'. Δέχεται μόνο διευθύνσεις email από λίστα ταυτοτήτων."
+  },
+  "header.set.subject": {
+    "message": "αντικατάστησε το θέμα με το κείμενο"
+  },
+  "header.set.to": {
+    "message": "αντικατάστησε τον παραλήπτη με διεύθυνση email"
+  },
+  "header_function.cap": {
+    "message": "Τροποποίησε Κεφαλίδα Email"
+  },
+  "header_function.explain": {
+    "message": "Αυτές οι λειτουργίες μπορούν να χρησιμοποιηθούν για την τροποποίηση κεφαλίδων email, όπως περιγράφεται εδώ:"
+  },
+  "header_function.scope": {
+    "message": "Μπορεί να χρησιμοποιηθεί με αυτές τις κεφαλίδες:"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "To $addonName$ εγκαταστάθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Το $addonName$ ενημερώθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "heading.click": {
+    "message": "Κάντε κλικ σε μια επικεφαλίδα ή"
+  },
+  "heading.expandAll": {
+    "message": "Αναπτύξτε Όλα"
+  },
+  "help.label": {
+    "message": "Βοήθεια"
+  },
+  "help_dialog_title": {
+    "message": "Βοήθεια SmartTemplates"
+  },
+  "help_keyword.cap": {
+    "message": "Βοήθεια"
+  },
+  "html_note.cap": {
+    "message": "Σημείωση για πρότυπα HTML"
+  },
+  "html_note.label": {
+    "message": "Παρακαλούμε χρησιμοποιήστε μόνο το σύνολο χαρακτήρων UTF-8 (Unicode) μέσα σε πρότυπα HTML!"
+  },
+  "i.label": {
+    "message": "Ώρα, 12-ωρη μορφή (01 έως 12) - με το μηδέν στην αρχή"
+  },
+  "identity_ab": {
+    "message": "Χρησιμοποιήστε τη λέξη-κλειδί 'addressbook' για να ανακτήσετε πρόσθετες πληροφορίες ταυτότητας από το βιβλίο διευθύνσεων."
+  },
+  "identity_ab.example": {
+    "message": "Παράδειγμα"
+  },
+  "identity_ab.field": {
+    "message": "Για πρόσθετες τιμές πεδίων, ανατρέξτε στο κεφάλαιο 'Πεδία Βιβλίου Διευθύνσεων' παρακάτω."
+  },
+  "identity_ab.phoneno": {
+    "message": "Αριθμός Τηλεφώνου"
+  },
+  "im-ex.cap": {
+    "message": "Εξαγωγή/Εισαγωγή Ρυθμίσεων και Προτύπων"
+  },
+  "im-ex_note1.label": {
+    "message": "Μπορείτε να εξάγετε και να εισάγετε τις ρυθμίσεις και τα πρότυπα που σχετίζονται με κάθε λογαριασμό."
+  },
+  "im-ex_note2.label": {
+    "message": "Επιλέξτε πρώτα τον λογαριασμό που θέλετε να εξάγετε στο αναπτυσσόμενο πλαίσιο ρυθμίσεων SmartTemples."
+  },
+  "im-ex_note3.label": {
+    "message": "Στη συνέχεια επιλέξτε «Αρχείο» ⇒ «Εξάγαγε» ⇒ «Ρυθμίσεις και Πρότυπα» από τη γραμμή μενού και σώστε το αρχείο (xxx.st4) στον υπολογιστή σας."
+  },
+  "im-ex_note4.label": {
+    "message": "Για να εισαγάγετε ένα αρχείο, επιλέξτε τον λογαριασμό τον οποίο επιθυμείτε να εισαγάγετε από την αναπτυσσόμενη λίστα στις ρυθμίσεις του SmartTemplates."
+  },
+  "im-ex_note5.label": {
+    "message": "Επιλέξτε το αρχείο SmartTemplates (xxx.st4) που θέλετε να εισαγάγετε."
+  },
+  "im-ex_note6.label": {
+    "message": "ΣΗΜΕΙΩΣΗ: Οι πλατφόρμες Apple/Macintosh θα έχουν τη γραμμή μενού στην κορδέλα τίτλου αντί για το παράθυρο επιλογών του SmartTemplates. Αυτό αποτελεί φυσιολογική συμπεριφορά σε αυτές τις πλατφόρμες και δεν μπορεί να αλλάξει."
+  },
+  "import.label": {
+    "message": "Εισάγαγε"
+  },
+  "insert.label": {
+    "message": "Εισάγαγε μεταβλητή"
+  },
+  "insertSnippet.button": {
+    "message": "Εισάγαγε Απόσπασμα"
+  },
+  "insertSnippet.tooltip": {
+    "message": "Εισάγαγε ένα απόσπασμα Smart HTML"
+  },
+  "intro": {
+    "message": "Μια ετήσια άδεια για το SmartTemplates Pro σας δίνει όλα τα premium χαρακτηριστικά για ένα έτος. Μας δίνει επίσης τη δυνατότητα να υποστηρίξουμε και να αναπτύξουμε περαιτέρω το προϊόν και να το μετατρέψουμε σε κάτι ακόμα πιο εκπληκτικό."
+  },
+  "k.label": {
+    "message": "Ώρα, 24-ωρη μορφή (0 έως 23)"
+  },
+  "l.label": {
+    "message": "Ώρα, 12-ωρη μορφή (1 έως 12)"
+  },
+  "label-remind-me": {
+    "message": "Θύμισέ μου ξανά σε $countDays$ ημέρες.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "label.haveLicense": {
+    "message": "Έχετε ήδη μια άδεια;"
+  },
+  "label.insertLicense": {
+    "message": "Εισάγετε εδώ το προσωπικό σας κλειδί άδειας χρήσης:"
+  },
+  "label.insertLicense.tooltip": {
+    "message": "Το κλειδί άδειας χρήσης σας περιέχεται στο email επιβεβαίωσης της παραγγελίας σας από το Fastspring."
+  },
+  "label.licenseValid": {
+    "message": "Η άδειά σας είναι έγκυρη μέχρι:"
+  },
+  "label.premiumFeaturesSite": {
+    "message": "Διαβάστε περισσότερα σχετικά με τις Premium δυνατότητες στην ιστοσελίδα μας…"
+  },
+  "lastName.label": {
+    "message": "Επώνυμο:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Σας ευχαριστούμε για την πρόσφατη επέκταση της άδειας χρήσης σας ή για τη δωρεά σας. Καθώς έχετε ήδη βοηθήσει στη μελλοντική εξέλιξη του Προσθέτου, μπορείτε απλά να κλείσετε αυτό το παράθυρο."
+  },
+  "license-is-standard": {
+    "description": "Special message for standard license holders",
+    "message": "Ως κάτοχος τυπικής άδειας SmartTemples, δικαιούστε έκπτωση για ενημέρωση και μια επέκταση πλήρους έτους. Πατήστε το κουμπί [Αναβάθμιση σε Pro] κάτω από την τυπική άδεια χρήσης σας για περισσότερες πληροφορίες."
+  },
+  "license-standard-special-offer": {
+    "message": "{boldStart}Αγαπητέ $username${boldEnd}, τώρα μπορείτε να αναβαθμίσετε σε SmartTemplates Pro για {boldStart}$discount$ λιγότερο{boldEnd} - επεκτείνοντας ταυτόχρονα την άδειά σας κατά ένα πλήρες έτος. Ακόμα περισσότερες μεγάλες αλλαγές έρχονται στο Thunderbird και χρειάζομαι {boldStart}τη βοήθειά σας{boldEnd} για να συνεχίσω!",
+    "placeholders": {
+      "username": {
+        "content": "$1",
+        "example": "John Doe"
+      },
+      "discount": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "license-standard-special-terms": {
+    "message": "Πληρώστε μόνο $$5.00 αντί για $$10.00 και αποκτήστε πλήρη πρόσβαση στις λειτουργίες Pro. Αυτή η ειδική προσφορά είναι διαθέσιμη {boldStart}μέχρι $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
+  },
+  "licenseComparison": {
+    "message": "Για να συγκρίνετε τα χαρακτηριστικά των διαφορετικών εκδόσεων, {linkStart}διαβάστε αυτή τη λίστα{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Νέο Σύστημα Αδειοδότησης"
+  },
+  "licenseStatus.expired": {
+    "message": "Η άδεια SmartTemplates έχει λήξει $countDays$ ημέρες πριν.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseStatus.willExpire": {
+    "message": "Η άδεια SmartTemplates θα λήξει σε $countDays$ ημέρες!",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "licenseTypes": {
+    "message": "Το SmartTemplates προσφέρει δύο άδειες, την Standard και την Pro• είναι απαραίτητο να υπάρχουν, προκειμένου να μπορούμε να ακολουθούμε τις εξελίξεις στην πλατφόρμα Thunderbird και να χρηματοδοτούμε νέες καινοτομίες και διορθώσεις του Προσθέτου. Επειδή περίπου μία φορά το χρόνο εισάγονται αλλαγές που δυνητικά σπάνε τη συμβατότητα των προσθέτων, η άδεια χρήσης θα έχει επίσης ισχύ για 1 έτος."
+  },
+  "licenseValidation.expired": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε έχει λήξει. Παρακαλώ πατήστε το παρακάτω κουμπί για να ανανεώσετε την άδειά σας."
+  },
+  "licenseValidation.failed": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε δεν είναι έγκυρο. Ελέγξτε το email σας από το FastSpring για οδηγίες. Αν εξακολουθείτε να έχετε προβλήματα, παρακαλώ επικοινωνήστε μαζί μου από την καρτέλα Υποστήριξη."
+  },
+  "licenseValidation.invalidAddon": {
+    "message": "Το κλειδί άδειας χρήσης που εισάγατε μπορεί να είναι για διαφορετικό Πρόσθετο. Τα κλειδιά άδειας για {0} αρχίζουν με {1}."
+  },
+  "licenseValidation.invalidMail": {
+    "message": "Η διεύθυνση email που είναι συνδεδεμένη με το κλειδί άδειας χρήσης [{1}] δεν περιλαμβάνεται επί του παρόντος σε κανέναν από τους λογαριασμούς αλληλογραφίας σας. Παρακαλώ επικοινωνήστε μαζί μου από την καρτέλα Υποστήριξη για βοήθεια."
+  },
+  "licenseValidation.notMatchedMail": {
+    "message": "Η κρυπτογραφημένη διεύθυνση email δεν ταιριάζει με την αναγνώσιμη διεύθυνση."
+  },
+  "licenseValidation.passed": {
+    "message": "Ευχαριστούμε για την εγγραφή στο SmartTemplates Pro! Όλες οι premium λειτουργίες είναι τώρα ξεκλειδωμένες."
+  },
+  "licenseValidation.standard": {
+    "message": "Ευχαριστούμε για την εγγραφή στο SmartTemplates Standard - Βοηθάτε εξαιρετικά το Πρόσθετο σας! Μπορείτε επίσης να δοκιμάσετε όλες τις premium λειτουργίες."
+  },
+  "licenseWindow.title": {
+    "message": "Άδεια Χρήσης SmartTemplates"
+  },
+  "localedate.label": {
+    "message": "Ημερομηνία / Ώρα (τοπική μορφή)"
+  },
+  "localename.label": {
+    "message": "en-US"
+  },
+  "localized.label": {
+    "message": "Μεταφραστής"
+  },
+  "m.label": {
+    "message": "Μήνας (01 έως 12) - με το μηδέν μπροστά"
+  },
+  "m.up.label": {
+    "message": "Λεπτό (00 έως 59)"
+  },
+  "matchTextFromBody": {
+    "message": "Βρείτε ένα μοτίβο RegEx στο παρατιθέμενο Email και εισάγετε στη θέση της λειτουργίας."
+  },
+  "matchTextFromSubject": {
+    "message": "Βρείτε ένα μοτίβο RegEx στο θέμα και εισάγετε στη θέση της λειτουργίας."
+  },
+  "menu.template_export.label": {
+    "message": "Εξαγωγή Προτύπου"
+  },
+  "menu.template_import.label": {
+    "message": "Εισαγωγή Προτύπου"
+  },
+  "message.licenseScreen": {
+    "message": "Εμφάνιση επιλογών άδειας χρήσης…"
+  },
+  "message.features": {
+    "message": "Σύγκριση Χαρακτηριστικών…"
+  },
+  "messid.label": {
+    "message": "ID Μηνύματος"
+  },
+  "minSize": {
+    "message": "[optional, numeric] - αριθμός kByte, ελάχιστο μέγεθος για την αφαίρεση της ετικέτας. Με αυτόν τον τρόπο μπορείτε να κρατήσετε μικρότερες εικόνες όπως εικονίδια / emojis ενώ απορρίπτετε μεγάλες εικόνες."
+  },
+  "minSize_detail": {
+    "message": "Δεν είναι πάντα δυνατό να προσδιοριστεί το μέγεθος, ειδικά αν το Thunderbird εξακολουθεί να φορτώνει την εικόνα, συχνά λόγω μεγάλου μεγέθους - σε αυτή την περίπτωση η ετικέτα θα αφαιρεθεί ούτως ή άλλως."
+  },
+  "month.1.name": {
+    "message": "Ιανουάριος"
+  },
+  "month.1.short": {
+    "message": "Ιαν"
+  },
+  "month.10.name": {
+    "message": "Οκτώβριος"
+  },
+  "month.10.short": {
+    "message": "Οκτ"
+  },
+  "month.11.name": {
+    "message": "Νοέμβριος"
+  },
+  "month.11.short": {
+    "message": "Νοέ"
+  },
+  "month.12.name": {
+    "message": "Δεκέμβριος"
+  },
+  "month.12.short": {
+    "message": "Δεκ"
+  },
+  "month.2.name": {
+    "message": "Φεβρουάριος"
+  },
+  "month.2.short": {
+    "message": "Φεβ"
+  },
+  "month.3.name": {
+    "message": "Μάρτιος"
+  },
+  "month.3.short": {
+    "message": "Μάρ"
+  },
+  "month.4.name": {
+    "message": "Απριλίος"
+  },
+  "month.4.short": {
+    "message": "Απρ"
+  },
+  "month.5.name": {
+    "message": "Μάιος"
+  },
+  "month.5.short": {
+    "message": "Μάιος"
+  },
+  "month.6.name": {
+    "message": "Ιούνιος"
+  },
+  "month.6.short": {
+    "message": "Ιούν"
+  },
+  "month.7.name": {
+    "message": "Ιούλιος"
+  },
+  "month.7.short": {
+    "message": "Ιούλ"
+  },
+  "month.8.name": {
+    "message": "Αύγουστος"
+  },
+  "month.8.short": {
+    "message": "Αύγ"
+  },
+  "month.9.name": {
+    "message": "Σεπτέμβριος"
+  },
+  "month.9.short": {
+    "message": "Σεπ"
+  },
+  "mozillas-basic-platform": {
+    "message": "Η πλατφόρμα που παρέχει η Mozilla για να προσφέρουμε το λογισμικό μας σε εσάς, τους τελικούς χρήστες, διαθέτει μόνο στοιχειώδη λειτουργικότητα. Εάν χρειάζεται να ζητήσουμε από τους χρήστες μας πληρωμή ή υποστήριξη, δεν μπορούμε να το κάνουμε από το addons.thunderbird.net - δεν είναι «κατάστημα εφαρμογών» με κανάλια πληρωμών ή διαχείριση αδειών όπως το iTunes ή το Google Play."
+  },
+  "n.label": {
+    "message": "Μήνας (1 έως 12)"
+  },
+  "newsgr.label": {
+    "message": "Ομάδες Ειδήσεων"
+  },
+  "no_button": {
+    "message": "Όχι"
+  },
+  "ongoing-work": {
+    "message": "Οι αλλαγές για τη μετατροπή του $addonName$ στο νέο μοντέλο προγραμματισμού πήραν εβδομάδες και ήταν δαπανηρές. Ακόμα περισσότερες αλλαγές είναι προγραμματισμένες για το 2022. Με ένα πολυσύνθετο πρόσθετο όπως αυτό, η κοστοβόρα εργασία είναι αναπόφευκτη. Παρακαλούμε βοηθήστε το έργο μας.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "ownmail.label": {
+    "message": "Η διεύθυνσή σας email"
+  },
+  "ownname.label": {
+    "message": "Το όνομά σας"
+  },
+  "p.label": {
+    "message": "ΠΜ / ΜΜ"
+  },
+  "p1.label": {
+    "message": "π.μ."
+  },
+  "p2.label": {
+    "message": "Π.Μ."
+  },
+  "p3.label": {
+    "message": "ΠΜ"
+  },
+  "paste.label": {
+    "message": "Επικόλλησε"
+  },
+  "parameters": {
+    "message": "Παράμετροι"
+  },
+  "pref_StatusIcon.IconHoverText": {
+    "message": "Κείμενο σε αιώρηση"
+  },
+  "pref_StatusIcon.IconOnly": {
+    "message": "Μόνο Εικονίδιο"
+  },
+  "pref_StatusIcon.IconText": {
+    "message": "Εικονίδιο και Κείμενο"
+  },
+  "pref_about.tab": {
+    "message": "Σχετικά"
+  },
+  "pref_addSigBreakHTML.label": {
+    "message": "Πρόσθεσε -- σε HTML email"
+  },
+  "pref_addSigBreakHTML.tooltip": {
+    "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν από την Υπογραφή (σε μηνύματα HTML)"
+  },
+  "pref_addSigBreakPlaintext.label": {
+    "message": "Πρόσθεσε -- σε μηνύματα απλού κειμένου"
+  },
+  "pref_addSigBreakPlaintext.tooltip": {
+    "message": "Να προσθέτεις πάντα τον οριοθέτη -- πριν την Υπογραφή (σε μηνύματα απλού κειμένου)"
+  },
+  "pref_addressDelimiter": {
+    "message": "Να οριοθετείς πολλούς ανταποκριτές με:"
+  },
+  "pref_addressDelimiter_tip": {
+    "message": "Οριοθέτης μεταξύ πολλαπλών ανταποκριτών. Το Outlook χρησιμοποιεί ερωτηματικό (;) Η προεπιλογή για το Thunderbird είναι κόμμα (,)"
+  },
+  "pref_advanced.tab": {
+    "message": "Προχωρημένες Ρυθμίσεις"
+  },
+  "pref_breaksOnTop.label": {
+    "message": "Πλήθος κενών γραμμών στην κορυφή:"
+  },
+  "pref_cursorInsertSpace": {
+    "message": "Εισαγάγετε Διάστημα για να επισημάνετε %cursor%"
+  },
+  "pref_debug_check": {
+    "message": "Λειτουργία Αποσφαλμάτωσης"
+  },
+  "pref_debug_tip": {
+    "message": "Πατήστε δεξί κλίκ για προχωρημένες επιλογές αποσφαλμάτωσης"
+  },
+  "pref_def.cap": {
+    "message": "Καταργήστε την επιλογή «Χρήση Κοινού» για να δημιουργήσετε μια προσαρμοσμένη κεφαλίδα παράθεσης για αυτόν τον λογαριασμό."
+  },
+  "pref_def.label": {
+    "message": "Χρησιμοποίησε το Κοινό"
+  },
+  "pref_defaultCharset.label": {
+    "message": "Προεπιλεγμένο σύνολο χαρακτήρων"
+  },
+  "pref_defaultCharset_tip": {
+    "message": "Εάν δεν μπορεί να προσδιοριστεί κατά την ανάγνωση των κεφαλίδων, χρησιμοποίησε αυτό το σύνολο χαρακτήρων."
+  },
+  "pref_dialog.title": {
+    "message": "Ρυθμίσεις SmartTemplates"
+  },
+  "pref_examples.tab": {
+    "message": "Παραδείγματα (μόνο online)"
+  },
+  "pref_examples.tooltip": {
+    "message": "Εμφάνισε παραδείγματα προτύπων από τη διεύθυνση https://smarttemplates.quickfolders.org/templates.html. Διατίθεται μόνο σε λειτουργία online."
+  },
+  "pref_fontSettings.label": {
+    "message": "Γραμματοσειρά Επεξεργασίας Προτύπων"
+  },
+  "pref_forceParagraph": {
+    "message": "Υποχρεωτική Λειτουργία Παραγράφου"
+  },
+  "pref_forceParagraph_tip": {
+    "message": "Βεβαιωθείτε ότι η θέση του δρομέα ξεκινά σε μια παράγραφο. Συνιστούμε επίσης την επιλογή Σύνθεση Thunderbird για να δημιουργήσετε μια νέα παράγραφο πατώντας το πλήκτρο [Enter]."
+  },
+  "pref_fwd.label": {
+    "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο προωθημένο μήνυμα"
+  },
+  "pref_fwd.tab": {
+    "message": "Προώθησε"
+  },
+  "pref_fwdhead.label": {
+    "message": "Απενεργοποίησε την προεπιλεγμένη κεφαλίδα παράθεσης του Thunderbird"
+  },
+  "pref_fwdmsg.cap": {
+    "message": "Προώθησε"
+  },
+  "pref_global.tab": {
+    "message": "Γενικές Ρυθμίσεις"
+  },
+  "pref_groupAdvanced": {
+    "message": "Προχωρημένες Λειτουργίες"
+  },
+  "pref_groupMailContent": {
+    "message": "Περιεχόμενο Μηνύματος"
+  },
+  "pref_groupNameRules": {
+    "message": "Κανόνες Ονομάτων"
+  },
+  "pref_groupSignatures": {
+    "message": "Υπογραφές"
+  },
+  "pref_groupTroubleShooting": {
+    "message": "Αντιμετώπιση Προβλημάτων"
+  },
+  "pref_groupUI": {
+    "message": "Διεπαφή Χρήστη"
+  },
+  "pref_help.tab": {
+    "message": "Βοήθεια"
+  },
+  "pref_hideExamples": {
+    "message": "Κρύψε την καρτέλα με τα παραδείγματα"
+  },
+  "pref_html.cap": {
+    "message": "Χρησιμοποιήστε χαρακτήρες διαφυγής για \" , & , < , > , κενό. Δείτε \"βοήθεια\" για περισσότερες λεπτομέρειες."
+  },
+  "pref_html.label": {
+    "message": "Χρησιμοποιήστε HTML (π.χ., <b> έντονο </b>)"
+  },
+  "pref_nameSwap": {
+    "message": "Διόρθωσε Επώνυμο, Όνομα"
+  },
+  "pref_nameSwap_tip": {
+    "message": "Αλλάζει το 'Επώνυμο, Όνομα' σε 'Όνομα Επώνυμο'"
+  },
+  "pref_new.label": {
+    "message": "Εφαρμογή του παρακάτω προτύπου στο νέο μήνυμα"
+  },
+  "pref_new.tab": {
+    "message": "Γράψε"
+  },
+  "pref_newmsg.cap": {
+    "message": "Γράψε"
+  },
+  "pref_noSplash": {
+    "message": "Παράλειψη Οθόνης Εκκίνησης"
+  },
+  "pref_noSplash_tip": {
+    "message": "Απόκρυψη, κατά την ενημέρωση, του διαλόγου πληροφοριών που εμφανίζει νέες λειτουργίες και διορθώσεις σφαλμάτων."
+  },
+  "pref_parseSignature": {
+    "message": "Επεξεργασία υπογραφής"
+  },
+  "pref_parseSignature_tip": {
+    "message": "Αντικατάστησε τις μεταβλητές στην υπογραφή."
+  },
+  "pref_quoteHeaderBox.label": {
+    "message": "Κεφαλίδα Παράθεσης"
+  },
+  "pref_quoteHeaderBox_tip": {
+    "message": "Σε αυτό το πλαίσιο, γράψτε τι πρέπει να εμφανίζεται πριν από το παρατιθέμενο τμήμα (πρωτότυπο μήνυμα) - π.χ. Στις %date%, ο/η %from(name)% έγραψε:"
+  },
+  "pref_quotehead_tip": {
+    "message": "Απενεργοποιήστε την προεπιλεγμένη κεφαλίδα παράθεσης. Τοποθετήστε τη δική σας κεφαλίδα στο πλαίσιο κειμένου παραπάνω."
+  },
+  "pref_removeSig.label": {
+    "message": "Αντικατάστησε την υπογραφή κατά την αλλαγή ταυτότητας email"
+  },
+  "pref_rep_br.cap": {
+    "message": "ΣΗΜΕΙΩΣΗ: Δεν θα εισαχθεί κενό διάστημα στην ετικέτα HTML χρησιμοποιώντας <br> μία φορά."
+  },
+  "pref_rep_br.label": {
+    "message": "Αντικατάστησε τις αλλαγές γραμμής με <br>"
+  },
+  "pref_rsp.label": {
+    "message": "Εφάρμοσε τις ακόλουθες ρυθμίσεις στο μήνυμα που απαντήθηκε"
+  },
+  "pref_rsp.tab": {
+    "message": "Απάντησε"
+  },
+  "pref_rsphead.label": {
+    "message": "Χρήση αντί της προεπιλεγμένης κεφαλίδας παράθεσης"
+  },
+  "pref_rspmsg.cap": {
+    "message": "Απάντησε"
+  },
+  "pref_server_def": {
+    "message": "Κοινό"
+  },
+  "pref_server_desc": {
+    "message": "Λογαριασμός"
+  },
+  "pref_showStatusIcon.label": {
+    "message": "Εμφάνιση κουμπιού στη γραμμή κατάστασης"
+  },
+  "pref_sigReplaceBR.label": {
+    "message": "Αντικατάστησε τις αλλαγές γραμμής στην υπογραφή απλού κειμένου με <br>"
+  },
+  "pref_silentUpdates": {
+    "message": "Σιωπηλές ενημερώσεις"
+  },
+  "pref_silentUpdates_tip": {
+    "message": "Να μην ανοίγει το αρχείο καταγραφής αλλαγών μετά την ενημέρωση του SmartTemples."
+  },
+  "pref_stationeryLink": {
+    "message": "Πρόσθετο Επιστολόχαρτων"
+  },
+  "pref_stationeryLink_tip": {
+    "message": "Λήψη γραφικών στοιχείων…"
+  },
+  "pref_stationerySupport": {
+    "message": "Υποστηρίξτε το Πρόσθετο γραφικών στοιχείων"
+  },
+  "pref_stationerySupport_tip": {
+    "message": "Υποστηρίζει τη χρήση γραφικών στοιχείων ταυτόχρονα με το SmartTemplates."
+  },
+  "pref_stationerySupport_tip2": {
+    "message": "Αυτό καθιστά δυνατή τη χρήση μεταβλητών προτύπου στα γραφικά στοιχεία σας."
+  },
+  "pref_templateBox.label": {
+    "message": "Πρότυπο"
+  },
+  "pref_templateBox_tip": {
+    "message": "Σε αυτό το πλαίσιο, βάλτε το πρότυπο email σας π.χ. Γεια σας %from(name)%, <br> Ευχαριστούμε για το μήνυμά σας <br> με εκτίμηση, <br>%ownname%"
+  },
+  "pref_template_tip": {
+    "message": "Μπορείτε να βελτιώσετε το πρότυπο με 'μεταβλητές'. Επιλέξτε Προχωρημένα / Μεταβλητές για περισσότερες πληροφορίες."
+  },
+  "pref_variables.tab": {
+    "message": "Μεταβλητές"
+  },
+  "premiumConfig": {
+    "message": "Λειτουργίες Premium"
+  },
+  "prompt.email": {
+    "message": "Εισάγετε μια διεύθυνση email"
+  },
+  "prompt.text": {
+    "message": "Εισάγετε το κείμενο για να προσθέσετε ή να ορίσετε"
+  },
+  "purchase-a-license": {
+    "message": "Αγοράστε μια άδεια χρήσης."
+  },
+  "purchase-heading": {
+    "message": "Αγοράζοντας μια Άδεια!"
+  },
+  "quoteLevel": {
+    "message": "[προαιρετικό, αριθμητικό]: ποιο ελάχιστο επίπεδο παράθεσης για εκκίνηση"
+  },
+  "quotePlaceholder": {
+    "message": "Αυτό μετακινεί το παρατιθέμενο τμήμα μέσα στο ίδιο το κείμενο του προτύπου. Η ενότητα επικεφαλίδας παράθεσης από τα πρότυπα του λογαριασμού θα μεταφερθεί στην κορυφή αυτής της παράθεσης."
+  },
+  "quotePlaceholder.level": {
+    "message": "[προαιρετικό, αριθμητικό] Μέγιστο επίπεδο αναφοράς για τον αποκλεισμό παλαιότερων παραθέσεων από τη συνομιλία."
+  },
+  "quote_changers.cap": {
+    "message": "Επεξεργασία Παραθέσεων"
+  },
+  "quote_changers.desc": {
+    "message": "Μεταβλητές Premium για αφαίρεση κειμένου / ετικετών από παρατιθέμενα τμήματα και εξοικονόμηση χώρου."
+  },
+  "recipient.label": {
+    "message": "Τελικός Αποδέκτης"
+  },
+  "regexpAnyText": {
+    "message": "Οποιοδήποτε κείμενο - κανονική έκφραση - πρέπει να είναι σε διπλά εισαγωγικά."
+  },
+  "renew-your-license": {
+    "message": "Ανανεώστε την άδειά σας."
+  },
+  "replaceQuotedTags": {
+    "message": "Αντικαθστά tags από την παραθεση με κείμενο ή html"
+  },
+  "replaceQuotedText": {
+    "message": "Αντικαθιστά παρατιθέμενο κείμενο με HTML"
+  },
+  "replaceText": {
+    "message": "Αντικατάστησε κείμενο με κάτι άλλο."
+  },
+  "replacementHTML": {
+    "message": "πρέπει να είναι σε διπλά εισαγωγικά - είτε ένα κείμενο, είτε μια ετικέτα html που θα εισαχθεί με εισαγωγικά όπου βρεθεί μια αντιστοίχιση."
+  },
+  "resolveABRemoveMail": {
+    "message": "Αφαίρεσε τη διεύθυνση email εκτός εάν έχει καθοριστεί η παράμετρος μορφής"
+  },
+  "resolveNamesFromAB": {
+    "message": "Προσδιόρισε ονόματα από βιβλία διευθύνσεων"
+  },
+  "resolveNamesFromABDisplay": {
+    "message": "Χρησιμοποίησε το Εμφανιζόμενο Όνομα εάν δεν είναι διαθέσιμο το μικρό όνομα"
+  },
+  "resolveNamesFromABNick": {
+    "message": "Αντικατάστησε το μικρό όνομα εάν υπάρχει Ψευδώνυμο"
+  },
+  "resolveNamesFromAB_tip": {
+    "message": "Αυτή η δυνατότητα δεν λειτουργεί με ορισμένα απομακρυσμένα βιβλία διευθύνσεων, όπως το LDAP."
+  },
+  "s.label": {
+    "message": "Δευτερόλεπτο (00 ως 59)"
+  },
+  "selector": {
+    "message": "- ό,τι θα χρησιμοποιούσατε για να αναφέρετε την ετικέτα στο css. Η απλούστερη περίπτωση «img» ή «p», αλλά επιλογείς χαρακτηριστικών μπορούν να προστεθούν εφόσον μπορούν να αποφευχθούν τα διπλά εισαγωγικά."
+  },
+  "settings.label": {
+    "message": "Ρυθμίσεις και Πρότυπα"
+  },
+  "shortdate.label": {
+    "message": "Σύντομη Ημερομηνία/Ώρα (π.χ. 01.01.2000 1:23:45)"
+  },
+  "showSplash": {
+    "message": "Εμφάνιση αλλαγών και ειδήσεων (οθόνη εκκίνησης)."
+  },
+  "sig.label": {
+    "message": "Υπογραφή από Ρυθμίσεις Λογαριασμού"
+  },
+  "sig2.label": {
+    "message": "Υπογραφή από Ρυθμίσεις Λογαριασμού, αλλά χωρίς «--»"
+  },
+  "smartTemplate4.changeTemplate.label": {
+    "message": "Άλλαξε πρότυπο…"
+  },
+  "st.fileTemplates": {
+    "message": "Αρχεία Προτύπων"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "Πρέπει να επιλέξετε ένα στοιχείο από τη λίστα για ενημέρωση!"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "Ενημέρωσε Πρότυπα"
+  },
+  "st.licenseValidation.expired": {
+    "message": "Η άδεια χρήσης σας έληξε την:"
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "(Το κλειδί που εισήχθη μπορεί να είναι για {2})."
+  },
+  "st.notification.donate": {
+    "message": "Δωρίστε"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "Να μην εμφανιστεί ξανά αυτό το μήνυμα."
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "Οποιοδήποτε κείμενο έχετε εισάγει χειροκίνητα από την εκκίνηση του συνθέτη μέχρι τώρα θα διαγραφεί, χωρίς δυναότητα Αναίρεσης. Να προχωρήσω ούτως ή άλλως;"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "Έχετε ήδη πληκτρολογήσει κείμενο και θέλετε να αλλάξετε σε πρότυπο {0}"
+  },
+  "st.notification.license.required": {
+    "message": "Το SmartTemplates απαιτεί μια άδεια χρήσης για να συνεχίσει να λειτουργεί. Διαβάστε περισσότερα στο κάτω μέρος του παραθύρου σύνθεσης."
+  },
+  "st.notification.license.text": {
+    "message": "Από δω και στο εξής, το SmartTemplates απαιτεί τουλάχιστον μια Standard άδεια. Διαβάστε περισσότερα σχετικά με αυτό στη σελίδα αδειοδότησης."
+  },
+  "st.notification.licensing": {
+    "message": "Περισσότερα για την αδειοδότηση"
+  },
+  "st.notification.parsing": {
+    "message": "Ανάλυση μεταβλητών:"
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "Επέκταση Άδειας Τομέα"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "Παράταση Άδειας"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Αυτό θα επεκτείνει την ισχύ της τρέχουσας άδειας χρήσης κατά 1 έτος. Είναι συνήθως φθηνότερο από μια νέα άδεια."
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "Αγοράστε Άδεια Χρήσης"
+  },
+  "st.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "st.notification.premium.sendByFilter": {
+    "message": "Με μια έγκυρη άδεια SmartTemplates Pro το email τώρα θα αποσταλλόταν αυτόματα."
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "Ανανεώστε Άδεια Τομέα"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "Ανανεώστε την Άδεια"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "Αναβαθμίστε σε Pro"
+  },
+  "st.notification.premium.btn.upgrade.hotKey": {
+    "message": "U"
+  },
+  "st.notification.premium.text": {
+    "message": "Το {1} είναι μια λειτουργία Premium• παρακαλώ αναβαθμίστε σε μια άδεια SmartTemplates Pro για να μπορείτε να το χρησιμοποιείτε μόνιμα."
+  },
+  "st.notification.premium.text.plural": {
+    "message": "Τα {1} είναι λειτουργίες Premium• παρακαλώ αναβαθμίστε σε μια άδεια SmartTemplates Pro για να μπορείτε να τα χρησιμοποιείτε μόνιμα."
+  },
+  "st.notification.premium.title": {
+    "message": "Premium Λειτουργία"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "Δεν είναι δυνατή η εναλλαγή γλώσσας ελέγχου ορθογραφίας. Έχετε εγκαταστήσει το σωστό λεξικό;"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "Δεν έχουν εγκατασταθεί λεξικά."
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "Το λεξικό '{0}' δεν βρέθηκε."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "Αλλαγή σε Άδεια Τομέα;"
+  },
+  "st.trialDays": {
+    "message": "Απομένουν {0} ημέρες δοκιμής."
+  },
+  "st.trialExpiry": {
+    "message": "Η δοκιμαστική περίοδος έληξε πριν από {0} ημέρες."
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "Αγαπητέ χρήστη SmartTemplates, είμαστε στην ευχάριστη θέση να ανακοινώσουμε ότι ξεκινώντας από αυτήν την έκδοση, το SmartTemplates υποστηρίζει πλέον τη χρήση αγκίστρων { } και την ετικέτα <style> ώστε να μπορείτε πλέον να δημιουργείτε προηγμένα στυλ css στο Πρότυπο σας."
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "Από εδώ και στο εξής, η συγκεκριμένη σύνταξη για τις εκφράσεις με αγκύλες αλλάζει: Αντί για άγκιστρα {%cc(name)%} χρησιμοποιήστε διπλές αγκύλες [[%cc(name)%]] - για περισσότερες λεπτομέρειες, ανατρέξτε στη Βοήθεια."
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "Το SmartTemplates θα μετατρέψει τώρα τα υπάρχοντα πρότυπά σας, ώστε να συνεχίσετε να τα χρησιμοποιείτε στη νέα έκδοση. Πατήστε [OK] για να συνεχίσετε."
+  },
+  "st.updateMessageVersion": {
+    "message": "Το SmartTemplates αναβαθμίστηκε με επιτυχία στην έκδοση {1}!"
+  },
+  "standardformat.config": {
+    "message": "Προεπιλεγμένη μορφή…"
+  },
+  "whats-new-btn": {
+    "message": "Τι νέο υπάρχει;"
+  },
+  "whats-new-head": {
+    "message": "Σημαντικές Αλλαγές"
+  },
+  "whats-new-intro": {
+    "message": "Διαβάστε το αναλυτικό ημερολόγιο αλλαγών εδώ (μόνο στα Αγγλικά):"
+  },
+  "whats-new-list": {
+    "message": "{L1}Επιδιορθώσεις συντήρησης για την έκδοση 3.12.2: Τα κουμπιά επέκτασης / σύμπτυξης / βοήθειας είναι πλέον ορατά όταν ανοίγετε τις ρυθμίσεις από τη Διαχείριση πρόσθετων. Το κουμπί ανανέωσης άδειας στο αριστερό κάτω μέρος του διαλόγου ρυθμίσεων λειτουργεί πλέον όπως αναμένεται{L2}{L1}Τώρα το SmartTemplates Pro υποστηρίζει τη χρήση του 'clipboard' ως ορίσματος για τη διαχείριση λειτουργιών κειμένου και κεφαλίδας, όπως %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)%{L2} {L1}Χρησιμοποιήστε το 'toclipboard' για να αντιγράψετε διάφορα αποτελέσματα στο πρόχειρο. Για παράδειγμα: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2} {L1}Βελτιωμένο σύμβολο κράτησης θέσης *selection* στα Snippets για καλύτερη υποστήριξη της ενσωμάτωσης σε επιλεγμένες ενότητες HTML. Για παράδειγμα, μπορείτε τώρα να περιβάλετε μια εικόνα με μια σκιά εισάγοντας ένα απόσπασμα HTML.{L2}{L1}Απλουστευμένες ρυθμίσεις για πρότυπα ταυτότητας (αναπτυσσόμενο μενού λογαριασμών){L2}{L1}Πολυάριθμες διορθώσεις συμβατότητας με Thunderbird 102. Το %spellcheck()% μπορεί τώρα να ρυθμίσει το λεξικό σε κείμενο απόδειξης με πολλές γλώσσες.{L2}"
+  }
+}

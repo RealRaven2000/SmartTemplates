@@ -1,5 +1,12 @@
-import * as util from "./scripts/st-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
+import {SmartTemplates} from "./scripts/st-main.mjs.js";
+import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
+
+
+
+var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
+console.log(SmartTemplates, stProcess);
+SmartTemplates.Util.log("test", "test2");
 
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
@@ -8,6 +15,11 @@ const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 
 var startupFinished = false;
 var callbacks = [];
+
+var ComposeAction = {};
+
+
+
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
@@ -232,9 +244,41 @@ async function main() {
         // main window update reacting to license status change
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
+        
     }
   });
-   
+  
+  
+  browser.runtime.onMessageExternal.addListener( async  (message, sender) =>  
+  {
+    // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }
+    let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
+    switch(message.command) {
+      case "forwardMessageWithTemplate":
+        messenger.NotifyTools.notifyExperiment(
+            {event: "forwardWithTemplate", 
+             detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }
+        ).then(
+          (data) => {
+            if (isDebug) console.log (`SmartTemplates forwarded '${message.messageHeader.subject}' successfully.`);
+            return true;
+          }
+        );
+        break;
+      case "replyMessageWithTemplate":
+        messenger.NotifyTools.notifyExperiment(
+          {event: "replyWithTemplate", detail : { messageHeader: message.messageHeader, templateURL: message.templateURL} }).then(
+          (data) => {
+            if (isDebug) console.log (`SmartTemplates replied to '${message.messageHeader.subject}' successfully.`);
+            return true;
+          }
+        );
+        break;      
+    }
+  }
+
+  
+  ); 
    
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
@@ -274,6 +318,9 @@ async function main() {
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/st-customizetoolbar.js");
+  
+  /* add a background script to the settings window - needed for browser element! */
+  messenger.WindowListener.registerWindow("chrome://smarttemplate4/content/settings.xhtml", "chrome/content/scripts/st-settings.js");  
   
   
   /*

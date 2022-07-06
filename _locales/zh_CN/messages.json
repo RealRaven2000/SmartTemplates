@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "一周里的一天 (Fri.)"
   },
@@ -9,7 +6,7 @@
     "message": "一周里的一天 (Friday)"
   },
   "ab_contact": {
-    "message": "Contact"
+    "message": "聯繫人"
   },
   "ab_fields": {
     "message": "地址簿字段"
@@ -18,13 +15,13 @@
     "message": "现在，当回复匹配的电子邮件地址时，您可以将其他字段用于地址变量，例如 %from%, 例如："
   },
   "ab_other": {
-    "message": "Other"
+    "message": "其他"
   },
   "ab_private": {
-    "message": "Private"
+    "message": "非公开的"
   },
   "ab_work": {
-    "message": "Work"
+    "message": "工作"
   },
   "about.cap": {
     "message": "关于SmartTemplates"
@@ -71,16 +68,16 @@
     "message": "月份 (January)"
   },
   "basepath.absolute": {
-    "message": "Click here to select a specific folder on your local drive."
+    "message": "点击这里选择本地驱动器上的特定文件夹。"
   },
   "basepath.desc": {
-    "message": "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these."
+    "message": "如果您的模板含有“img”标签的图像在您的本地驱动器上，您需要告诉Smart模板在哪里查找。"
   },
   "basepath.desc2": {
-    "message": "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email."
+    "message": "'basepath' 变量将插入一个 html 'base' 标签来查找基于起始位置的所有图像 - 它只能在电子邮件中使用一次。"
   },
   "basepath.relative": {
-    "message": "Use this variable to find the images in the same location as the html file template."
+    "message": "使用此变量在与 html 文件模板相同的位置找到图像。"
   },
   "brack_with_var.label": {
     "message": "以下变量可以用在 [[...]] 里面"
@@ -101,10 +98,10 @@
     "message": "我想提供一次捐款。"
   },
   "btnLoadTemplate.tooltip": {
-    "message": "载入模板…"
+    "message": "加载帐户设置…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "保存模板…"
+    "message": "保存帐户设置…"
   },
   "btnYouTube.tooltip": {
     "message": "访问 'Thunderbird Daily' YouTube 频道 - 使用 Stationery 和其他扩展的技巧与教程"
@@ -278,7 +275,7 @@
     "message": "默认地址格式："
   },
   "defaultMimeFormat_tip": {
-    "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
+    "message": "替换普通地址 %to% %from% %cc% 地址时使用的格式。 (firstname,lastname??mail)将显示姓氏后面的名字；如果两者都不可用，则显示邮件地址。"
   },
   "deleteQuotedTags": {
     "message": "从引用中删除标签"
@@ -338,10 +335,6 @@
     "description": "Description of the extension.",
     "message": "通过自动插入各种邮件头来创建自定义回复的有效方法。 可以为每个邮件标识创建模板，还支持外部html文件和样式表。"
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates 扩展能为每个账号自定义引用头文件"
   },
@@ -349,7 +342,7 @@
     "message": "文件"
   },
   "fileCSS.label": {
-    "message": "External style sheet (css). Include your favorite CSS rules to share between different templates."
+    "message": "外部样式表 (css)。包括您最喜欢的 CSS 规则以在不同模板之间分享。"
   },
   "fileHTML.label": {
     "message": "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。"
@@ -358,43 +351,43 @@
     "message": "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。"
   },
   "fileTemplates.add": {
-    "message": "Add"
+    "message": "添加"
   },
   "fileTemplates.down": {
-    "message": "Down"
+    "message": "向下"
   },
   "fileTemplates.file.open": {
-    "message": "Select template file from disk"
+    "message": "从磁盘选择模板文件"
   },
   "fileTemplates.file.path": {
-    "message": "Template location:"
+    "message": "模板位置："
   },
   "fileTemplates.file.title": {
-    "message": "Title:"
+    "message": "标题："
   },
   "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
+    "message": "这将显示在模板选择菜单中。"
   },
   "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
+    "message": "可以从“转发”按钮启动的外部模板文件列表。"
   },
   "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
+    "message": "可以从“创建新消息”按钮启动的外部模板文件列表。"
   },
   "fileTemplates.remove": {
-    "message": "Remove"
+    "message": "删除"
   },
   "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
+    "message": "可以从“回复”按钮启动的外部模板文件列表。"
   },
   "fileTemplates.title": {
-    "message": "Template Files"
+    "message": "模板文件"
   },
   "fileTemplates.up": {
-    "message": "Up"
+    "message": "上移"
   },
   "fileTemplates.update": {
-    "message": "Update"
+    "message": "更新"
   },
   "firstName.label": {
     "message": "名字"
@@ -409,13 +402,13 @@
     "message": "可以和 %X:=sent% 组合"
   },
   "fpFilterHtmlTemplate": {
-    "message": "HTML Template"
+    "message": "HTML 模板"
   },
   "fpFilterName": {
     "message": "SmartTemplates 文件"
   },
   "fpFolder": {
-    "message": "Folder"
+    "message": "文件夹"
   },
   "fpHTMLFile": {
     "message": "HTML 文件 / 文本文件"
@@ -427,7 +420,7 @@
     "message": "JSON 文件"
   },
   "fpStyle": {
-    "message": "Style Sheet"
+    "message": "样式表"
   },
   "freeLicense": {
     "message": "如果您最近捐助了 SmartTemplates 项目或者帮助其完成工作，例如翻译项目或者撰写补丁，您可能有资格获得一个免费的授权密钥。请使用 SmartTemplates 选项中的支持选项卡与我联系。"
@@ -491,7 +484,7 @@
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "成功安装 $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -534,16 +527,16 @@
     "message": "小时，12-小时格式 (01 至 12)"
   },
   "identity_ab": {
-    "message": "Use the 'addressbook' keyword to retrieve additional identity information from address book."
+    "message": "使用 'addressbook' 关键字从地址簿检索额外的身份信息。"
   },
   "identity_ab.example": {
-    "message": "Example"
+    "message": "例"
   },
   "identity_ab.field": {
-    "message": "For additional field values, see chapter 'Address Book Fields' below."
+    "message": "欲了解更多字段值，请参阅以下章节“地址簿字段”。"
   },
   "identity_ab.phoneno": {
-    "message": "Phone No"
+    "message": "手机号"
   },
   "im-ex.cap": {
     "message": "设置和模板导出/导入"
@@ -625,7 +618,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart}尊敬的 $username${boldEnd}，您现在可以升级到SmartTemplates Pro，价格降低了{boldStart}$discount$ 的价格{boldEnd}-同时还可以将许可延长一整年。 雷鸟的更多重大变化即将到来，我需要{boldStart}您的帮助{boldEnd}跟上来！",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +636,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
-  },  
+  },
   "licenseHead": {
     "message": "新的许可制度"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates许可已在 $countDays$ 天前过期。",
     "placeholders": {
       "countDays": {
@@ -659,7 +652,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates许可将在 $countDays$ 天后过期！",
     "placeholders": {
       "countDays": {
@@ -667,7 +660,7 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "展望未来，SmartTemplates提供两个许可证，Standard和Pro; 这些对于跟上Thunderbird平台的变化以及为附加组件的创新和修复提供资金是必要的。 由于重大变更按年度周期推出，许可证的有效期也为1年。"
   },
@@ -721,9 +714,6 @@
   },
   "menu.template_import.label": {
     "message": "导入模板"
-  },
-  "message_default_title": {
-    "message": "SmartTemplates"
   },
   "message.licenseScreen": {
     "message": "显示许可选项…"
@@ -824,10 +814,6 @@
   "no_button": {
     "message": "否"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "将 $addonName$ 转换为新编程模型的更改花费了数周时间，而且成本很高。 下一个2022版本将有更多更改。 有了这样复杂的附加组件，昂贵的工作就变得不可避免。 请帮助我们。",
     "placeholders": {
@@ -846,20 +832,11 @@
   "p.label": {
     "message": "AM 或 PM"
   },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
+  "paste.label": {
+    "message": "粘贴"
   },
   "parameters": {
     "message": "参量"
-  },
-  "paste.label": {
-    "message": "粘贴"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "悬停时显示文字"
@@ -937,7 +914,7 @@
     "message": "确保光标位置在段落开端。我们也推荐 Thunderbird 编写选项之按 [Enter] 键创建新段落。"
   },
   "pref_fwd.label": {
-    "message": "将以下模板应用于转发消息"
+    "message": "将以下设置应用于转发的消息"
   },
   "pref_fwd.tab": {
     "message": "转发"
@@ -1001,7 +978,7 @@
   },
   "pref_noSplash_tip": {
     "message": "隐藏信息对话框，在更新时显示新功能和错误修复。"
-  },  
+  },
   "pref_parseSignature": {
     "message": "签名处理过程"
   },
@@ -1027,7 +1004,7 @@
     "message": "用 <br> 换行"
   },
   "pref_rsp.label": {
-    "message": "将以下模板应用于回复消息"
+    "message": "将以下设置应用于回复的消息"
   },
   "pref_rsp.tab": {
     "message": "回复"
@@ -1060,7 +1037,7 @@
     "message": "附加组件 Stationery"
   },
   "pref_stationeryLink_tip": {
-    "message": "获得 Stationery..."
+    "message": "获得 Stationery…"
   },
   "pref_stationerySupport": {
     "message": "支持附加组件 Stationery"
@@ -1108,7 +1085,7 @@
     "message": "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。"
   },
   "quote_changers.cap": {
-    "message": "Quote Manipulation"
+    "message": "报价操作"
   },
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"
@@ -1153,7 +1130,7 @@
     "message": "第二 (00 至 59)"
   },
   "selector": {
-    "message": "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided."
+    "message": "- 您将使用什么来处理cs中的标签。 最简单的情况“img”或“p”，但只要能避免双重报价，就可以添加属性选择器。"
   },
   "settings.label": {
     "message": "设置和模板"
@@ -1171,7 +1148,7 @@
     "message": "Siganture 签名（来自TB帐户设置，但没有'--'"
   },
   "smartTemplate4.changeTemplate.label": {
-    "message": "变更范本..."
+    "message": "变更范本…"
   },
   "smartTemplate4.changeTemplate.tooltip": {
     "message": "加载其他模板-在编辑电子邮件之前使用！"
@@ -1191,17 +1168,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "更新SmartTemplates内容"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates 选项"
   },
   "smarttemplate4_button": {
-    "message": "编辑模板 / 引用头文件..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
+    "message": "编辑模板 / 引用头文件…"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates 已更新！"
@@ -1221,12 +1192,193 @@
   "specform_note.label": {
     "message": "在弧面括号内的短语 [[Cc: %cc(name)%]] 将只显示，如果变量 %cc(name)% 可以更换!"
   },
+  "spellcheck.label": {
+    "message": "设置拼写检查语言。示例值：(en, de-DE, es-ES, ru) - 注意必须安装字典。"
+  },
+  "st.confirmVersionLink": {
+    "message": "显示 SmartTemplates 的更改日志?"
+  },
+  "st.fileFunction.notExists": {
+    "message": "函数 {0} 无法找到或访问文件。请检查下面的路径："
+  },
+  "st.fileTemplates": {
+    "message": "模板文件"
+  },
+  "st.fileTemplates.configureMenu": {
+    "message": "配置菜单项…"
+  },
+  "st.fileTemplates.error.charSet": {
+    "message": "从字符集 [{1}]\n转换HTML模板时使用原始字符串数据出现问题。\n如果这个结果以加密字符出现，请尝试添加一个显式的 'meta 字符集"
+  },
+  "st.fileTemplates.error.filePath": {
+    "message": "无法从路径加载模板文件{0}':\n{1}\n文件可能已被删除或重命名。"
+  },
+  "st.fileTemplates.openFile": {
+    "message": "打开 SmartTemplate 模板文件…"
+  },
+  "st.fileTemplates.restrictionQuestion": {
+    "message": "为什么此菜单中的某些模板被禁用？"
+  },
+  "st.fileTemplates.restrictTemplates": {
+    "message": "每个菜单的模板数量受到限制。 您可以在没有许可证的情况下配置最多 $max_free$ 菜单项，以及使用 SmartTemplates Standard 许可证配置 $max_std$ 菜单项！ SmartTemplates Pro 不受限制。",
+    "placeholders": {
+      "max_free": {
+        "content": "$1",
+        "example": "5"
+      },
+      "max_std": {
+        "content": "$2",
+        "example": "25"
+      }
+    }
+  },
+  "st.fileTemplates.restrictTemplateCats": {
+    "message": "要配置超过 $max_Cats$ 的类别，请获取 SmartTemplates Pro 许可证…",
+    "placeholders": {
+      "max_Cats": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
+    "message": "请从下拉菜单选择模板。"
+  },
+  "st.fileTemplates.wrnEnterPath": {
+    "message": "请选择一个有效的路径！"
+  },
+  "st.fileTemplates.wrnEnterTitle": {
+    "message": "请输入标题！"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem": {
+    "message": "您必须从列表中选择要更新的项目！"
+  },
+  "st.fileTemplates.wrnSelectUpdateItem.caption": {
+    "message": "更新模板"
+  },
+  "st.licenseValidation.expired": {
+    "message": "您的購買憑證將在後面的日期到期："
+  },
+  "st.licenseValidation.guessAddon": {
+    "message": "輸入的金鑰或許是適用在{2}"
+  },
+  "st.notification.donate": {
+    "message": "捐"
+  },
+  "st.notification.dontShowAgain": {
+    "message": "不要再顯示此消息。"
+  },
+  "st.notification.editedChangeChallenge": {
+    "message": "打开作曲家后您手动输入的任何文本都将被删除，无需撤销。仍要继续吗？"
+  },
+  "st.notification.editedChangeWarning": {
+    "message": "您已经输入了文本并想要更改为模板 {0}"
+  },
+  "st.notification.license.required": {
+    "message": "SmartTemplates需要许可才能继续工作。 阅读电子邮件撰写窗口底部的更多信息。"
+  },
+  "st.notification.license.text": {
+    "message": "从现在开始，SmartTemplates至少需要一个标准许可证。 在我们的许可页面上阅读更多相关信息。"
+  },
+  "st.notification.licensing": {
+    "message": "更多关于许可"
+  },
+  "st.notification.parsing": {
+    "message": "分析变量："
+  },
+  "st.notification.premium.btn.extendDomainLicense": {
+    "message": "扩展域许可证"
+  },
+  "st.notification.premium.btn.extendLicense": {
+    "message": "扩展许可证"
+  },
+  "st.notification.premium.btn.extendLicense.tooltip": {
+    "message": "这将使当前许可日期延长1年。 它通常比新许可证便宜。"
+  },
+  "st.notification.premium.btn.getLicense": {
+    "message": "购买许可证"
+  },
+  "st.notification.premium.sendByFilter": {
+    "message": "使用有效的 SmartTemplates Pro 许可证，现在将自动发送电子邮件。"
+  },
+  "st.notification.premium.btn.renewDomainLicense": {
+    "message": "续订域许可证"
+  },
+  "st.notification.premium.btn.renewLicense": {
+    "message": "续订许可证"
+  },
+  "st.notification.premium.btn.upgrade": {
+    "message": "升级到专业版"
+  },
+  "st.notification.premium.text": {
+    "message": "{1}是高级功能，请升级至SmartTemplate专业版许可证以永久使用。"
+  },
+  "st.notification.premium.text.plural": {
+    "message": "{1}是高级功能，请升级到SmartTemplate专业版许可证以永久使用它们。"
+  },
+  "st.notification.premium.title": {
+    "message": "獨特的功能"
+  },
+  "st.notification.spellcheck.error": {
+    "message": "无法切换拼写检查语言。您是否安装了正确的字典？"
+  },
+  "st.notification.spellcheck.noDictionary": {
+    "message": "没有安装字典。"
+  },
+  "st.notification.spellcheck.notFound": {
+    "message": "找不到字典{0}'."
+  },
+  "st.prompt.switchDomainLicense": {
+    "message": "切换到域许可证？"
+  },
+  "st.trialDays": {
+    "message": "您还剩{0}个试用期。"
+  },
+  "st.trialExpiry": {
+    "message": "您的试用期在 {0} 天前到期。"
+  },
+  "st.updateMessageNewBrackets1": {
+    "message": "尊敬的 SmartTemplates 用户，我们很高兴地宣布，从这个版本开始，SmartTemplates 开始支持大括号 { } 和 <style> 标签的使用，所以您现在可以在您的模板中做高级CSS样式了。"
+  },
+  "st.updateMessageNewBrackets2": {
+    "message": "从现在起，括号表达式内的特定语法已改变：使用两个方括号 [[%cc(name)%]] 代替圆括号 {%cc(name)%} - 进一步信息请参阅帮助。"
+  },
+  "st.updateMessageNewBrackets3": {
+    "message": "SmartTemplates 现在将转换您现有的模板，以便您能在新版本中继续使用它们。请按确定继续。"
+  },
+  "st.updateMessageVersion": {
+    "message": "SmartTemplates 成功升级到了 {1} 版本!"
+  },
+  "standardformat.config": {
+    "message": "默认格式…"
+  },
+  "stringmanip.alttext": {
+    "message": "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。"
+  },
+  "stringmanip.match.comment": {
+    "message": "match函数：第一个参数（正则表达式）必须在双引号内。 第二个参数是匹配组号。 使用0来匹配完整的表达式，使用1来匹配第一组，依此类推。"
+  },
+  "stringmanip_function.cap": {
+    "message": "文本操作"
+  },
+  "stringmanip_function.explain": {
+    "message": "这些功能可用于删除或替换电子邮件模板或报价标题中的文本。"
+  },
+  "sub.label": {
+    "message": "回复/转发的邮件主题"
+  },
+  "sub2.label": {
+    "message": "当前消息的主题"
+  },
+  "sub_var.cap": {
+    "message": "主题"
+  },
   "special-offer-content": {
     "message": "通过购买 {linkStartPro}SmartTemplates Pro{linkEnd} 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "4月16日"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1235,7 +1387,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "2月20日"    
+    "message": "7月17日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1267,7 +1419,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "立即从 SmartTemplates Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
@@ -1280,189 +1432,6 @@
         "example": "50%"
       }
     }
-  }, 
-  "spellcheck.label": {
-    "message": "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed."
-  },
-  "st.confirmVersionLink": {
-    "message": "显示 SmartTemplates 的更改日志?"
-  },
-  "st.fileFunction.notExists": {
-    "message": "Function {0} could not find or access file. Check the path below:"
-  },
-  "st.fileTemplates": {
-    "message": "Template Files"
-  },
-  "st.fileTemplates.configureMenu": {
-    "message": "Configure menu items…"
-  },
-  "st.fileTemplates.error.charSet": {
-    "message": "Problems converting a HTML template from charset [{1}]\nUsing raw string data instead.\nIf this results in garbled characters, try adding an explicit 'meta charset"
-  },
-  "st.fileTemplates.error.filePath": {
-    "message": "Could not load the template file '{0}' from path:\n{1}\nThe file may have been removed or renamed."
-  },
-  "st.fileTemplates.openFile": {
-    "message": "Open SmartTemplates template file…"
-  },
-  "st.fileTemplates.restrictionQuestion": {
-    "message": "为什么此菜单中的某些模板被禁用？"
-  }, 
-  "st.fileTemplates.restrictTemplates": {
-    "message": "每个菜单的模板数量受到限制。 您可以在没有许可证的情况下配置最多 $max_free$ 菜单项，以及使用 SmartTemplates Standard 许可证配置 $max_std$ 菜单项！ SmartTemplates Pro 不受限制。",
-    "placeholders": {
-      "max_free": {
-        "content": "$1",
-        "example": "5"
-      },
-      "max_std": {
-        "content": "$2",
-        "example": "25"
-      }
-    }    
-  },
-  "st.fileTemplates.restrictTemplateCats": {
-    "message": "要配置超过 $max_Cats$ 的类别，请获取 SmartTemplates Pro 许可证…",
-    "placeholders": {
-      "max_Cats": {
-        "content": "$1",
-        "example": "3"
-      }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
-    "message": "Please select a template from the dropdown menu."
-  },
-  "st.fileTemplates.wrnEnterPath": {
-    "message": "Please select a valid path!"
-  },
-  "st.fileTemplates.wrnEnterTitle": {
-    "message": "Please enter a title!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem": {
-    "message": "You have to select an item from the list to update!"
-  },
-  "st.fileTemplates.wrnSelectUpdateItem.caption": {
-    "message": "Update Templates"
-  },
-  "st.licenseValidation.expired": {
-    "message": "您的購買憑證將在後面的日期到期："
-  },
-  "st.licenseValidation.guessAddon": {
-    "message": "輸入的金鑰或許是適用在{2}"
-  },
-  "st.notification.donate": {
-    "message": "捐"
-  },
-  "st.notification.dontShowAgain": {
-    "message": "不要再顯示此消息。"
-  },
-  "st.notification.editedChangeChallenge": {
-    "message": "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?"
-  },
-  "st.notification.editedChangeWarning": {
-    "message": "You have already typed text and want to change to template {0}"
-  },
-  "st.notification.license.required": {
-    "message": "SmartTemplates需要许可才能继续工作。 阅读电子邮件撰写窗口底部的更多信息。"
-  },
-  "st.notification.license.text": {
-    "message": "从现在开始，SmartTemplates至少需要一个标准许可证。 在我们的许可页面上阅读更多相关信息。"
-  },
-  "st.notification.licensing": {
-    "message": "更多关于许可"
-  },
-  "st.notification.parsing": {
-    "message": "分析变量："
-  },
-  "st.notification.premium.btn.extendDomainLicense": {
-    "message": "扩展域许可证"
-  },
-  "st.notification.premium.btn.extendLicense": {
-    "message": "扩展许可证"
-  },
-  "st.notification.premium.btn.extendLicense.tooltip": {
-    "message": "这将使当前许可日期延长1年。 它通常比新许可证便宜。"
-  },
-  "st.notification.premium.btn.getLicense": {
-    "message": "购买许可证"
-  },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
-  },
-  "st.notification.premium.btn.renewDomainLicense": {
-    "message": "续订域许可证"
-  },
-  "st.notification.premium.btn.renewLicense": {
-    "message": "续订许可证"
-  },
-  "st.notification.premium.btn.upgrade": {
-    "message": "升级到专业版"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
-  },
-  "st.notification.premium.text": {
-    "message": "{1}是高级功能，请升级至SmartTemplate专业版许可证以永久使用。"
-  },
-  "st.notification.premium.text.plural": {
-    "message": "{1}是高级功能，请升级到SmartTemplate专业版许可证以永久使用它们。"
-  },
-  "st.notification.premium.title": {
-    "message": "獨特的功能"
-  },
-  "st.notification.spellcheck.error": {
-    "message": "Cannot switch spell checker language. Have you installed the correct dictionary?"
-  },
-  "st.notification.spellcheck.noDictionary": {
-    "message": "No dictionaries installed."
-  },
-  "st.notification.spellcheck.notFound": {
-    "message": "Dictionary '{0}' not found."
-  },
-  "st.prompt.switchDomainLicense": {
-    "message": "切换到域许可证？"
-  },
-  "st.trialDays": {
-    "message": "您还剩{0}个试用期。"
-  },
-  "st.trialExpiry": {
-    "message": "Your trial period expired {0} days ago."
-  },
-  "st.updateMessageNewBrackets1": {
-    "message": "尊敬的 SmartTemplates 用户，我们很高兴地宣布，从这个版本开始，SmartTemplates 开始支持大括号 { } 和 <style> 标签的使用，所以您现在可以在您的模板中做高级CSS样式了。"
-  },
-  "st.updateMessageNewBrackets2": {
-    "message": "从现在起，括号表达式内的特定语法已改变：使用两个方括号 [[%cc(name)%]] 代替圆括号 {%cc(name)%} - 进一步信息请参阅帮助。"
-  },
-  "st.updateMessageNewBrackets3": {
-    "message": "SmartTemplates 现在将转换您现有的模板，以便您能在新版本中继续使用它们。请按确定继续。"
-  },
-  "st.updateMessageVersion": {
-    "message": "SmartTemplates 成功升级到了 {1} 版本!"
-  },
-  "standardformat.config": {
-    "message": "默认格式..."
-  },
-  "stringmanip.alttext": {
-    "message": "[可选参数]替代文本：如果未找到匹配项，则插入替代文本。"
-  },
-  "stringmanip.match.comment": {
-    "message": "match函数：第一个参数（正则表达式）必须在双引号内。 第二个参数是匹配组号。 使用0来匹配完整的表达式，使用1来匹配第一组，依此类推。"
-  },
-  "stringmanip_function.cap": {
-    "message": "文本操作"
-  },
-  "stringmanip_function.explain": {
-    "message": "这些功能可用于删除或替换电子邮件模板或报价标题中的文本。"
-  },
-  "sub.label": {
-    "message": "回复/转发的邮件主题"
-  },
-  "sub2.label": {
-    "message": "当前消息的主题"
-  },
-  "sub_var.cap": {
-    "message": "主题"
   },
   "support-preference": {
     "message": "这是支持$addonName$的首选方式。",
@@ -1483,46 +1452,46 @@
     }
   },
   "support.compose": {
-    "message": "Write to support…"
+    "message": "写支持…"
   },
   "support.links": {
-    "message": "Support Links"
+    "message": "支持链接"
   },
   "support.mail.instructions": {
-    "message": "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot."
+    "message": "点击下面的按钮打开新的电子邮件以支持。如果您有技术问题，请考虑添加屏幕截图。"
   },
   "support.subject": {
-    "message": "Subject:"
+    "message": "主题:"
   },
   "support.tab": {
-    "message": "Support"
+    "message": "支持"
   },
   "support.title": {
-    "message": "Mail to Support"
+    "message": "邮件到支持"
   },
   "support.type": {
-    "message": "Type:"
+    "message": "类型："
   },
   "support.type.html": {
-    "message": "Help with HTML / CSS"
+    "message": "HTML / CSS 帮助"
   },
   "support.type.license": {
-    "message": "Licensing related"
+    "message": "与许可证相关的"
   },
   "support.type.other": {
-    "message": "Other"
+    "message": "其他"
   },
   "support.type.selectOne": {
-    "message": "Select a topic!"
+    "message": "选择一个主题！"
   },
   "support.type.tech": {
-    "message": "Technical"
+    "message": "技术"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "禁止邮件客户端添加链接到电子邮件地址。"
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "无论帐户设置如何，都完全删除报价标题。"
   },
   "table.cap": {
     "message": "变量的使用情况"
@@ -1585,10 +1554,10 @@
     "message": "通过替换tz参数为日期变量强制指定时区 (GMT, EST, CST, PST etc.)"
   },
   "timezonename.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
   },
   "tip.fileTemplates": {
-    "message": "Click to read full documentation about Stationery and external HTML templates on our support site…"
+    "message": "点击阅读我们支持站点上的故事和外部 HTML 模板的完整文档…"
   },
   "to.label": {
     "message": "收件人姓名 (默认)"
@@ -1603,7 +1572,7 @@
     "message": "收件人名字"
   },
   "tofwd.label": {
-    "message": "Use fwd to add the clickable recipient in forwarded mails"
+    "message": "使用 fwd 在转发邮件中添加可点击收件人"
   },
   "tomail.label": {
     "message": "原始收件人的电子邮件地址"
@@ -1622,7 +1591,16 @@
     "message": "yliu & yfdyh000 (BabelZilla)"
   },
   "tzname.label": {
-    "message": "GMT, PST, EST, ..."
+    "message": "GMT, PST, EST, …"
+  },
+  "update.tooltip": {
+    "message": "单击此处一次以阅读 $addonName$ 中的新功能。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "updates.title": {
     "message": "更新"
@@ -1658,7 +1636,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}支持带有变量 %recipient% 的回复标头。{L2} {L1}编辑后更改模板时的简化警告 - 还支持推动 ESCAPE 以关闭对话框。{L2}{L1}修复：使用 收件人、抄送和密送字段中的邮件列表。 有关一组未公开收件人的简报示例，请参阅下面的更改日志。{L2} {L1}更正：编写新邮件时忽略自定义背景和文本颜色。 这可能会导致编辑器在使用深色主题时出现问题。{L2}"
+    "message": "{L1}3.12.2 的维护修复：从加载项管理器打开设置时，展开/折叠/帮助按钮现在也可见。 设置对话框左下角的更新许可证按钮现在可以按预期工作{L2}{L1}SmartTemplates Pro 现在支持使用 'clipboard'（剪贴板）作为文本和标题操作函数的参数，例如 %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}使用 'toclipboard' 将各种结果复制到剪贴板。 例如： %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}改进了片段中的 *selection*（选择）占位符，以更好地支持集成到选定的 HTML 部分。 例如，您现在可以通过插入 HTML 片段来包裹带有阴影的图像。{L2}{L1}身份模板的简化设置（帐户下拉菜单）{L2}{L1}Thunderbird 102 的许多兼容性修复程序。 %spellcheck()% 现在可以将字典设置为具有多种语言的校对文本。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
@@ -1673,17 +1651,8 @@
       }
     }
   },
-  "xmail.label": {
-    "message": "X-Mailer"
-  },
   "xsent_long.cap": {
     "message": "长字符串的例子："
-  },
-  "xsent_long.label": {
-    "message": "%X:=sent%%d%/%m%/%Y% at %H%:%M% o'clock"
-  },
-  "xsent_long_result.label": {
-    "message": "Result: Sunday, 20/12/2011 at 16:24 o'clock"
   },
   "xsent_note.label": {
     "message": "上面的变量将正常设置当前的值。当与 %X:=sent% 组合时，将设置过去的值。"
@@ -1691,14 +1660,8 @@
   "xsent_short.cap": {
     "message": "短字符串的例子："
   },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
-  },
   "xsent_short_note.label": {
     "message": "额外的，你可以在以下两个变种变量使用："
-  },
-  "xsent_short_result.label": {
-    "message": "Result: Sunday, 20/12/2011 08:54:21"
   },
   "y.up.label": {
     "message": "年 (1970)"

@@ -21,6 +21,8 @@ pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
 pref("extensions.smartTemplate4.mime.resolveAB.displayName", false);
 pref("extensions.smartTemplate4.mime.defaultFormat","name,bracketMail(angle)");
+pref("extensions.smartTemplate4.identities.showAccountName", false);
+pref("extensions.smartTemplate4.identities.showIdKey", false);
 pref("extensions.smartTemplate4.names.delimiter", ",");
 pref("extensions.smartTemplate4.names.capitalize", true);
 pref("extensions.smartTemplate4.names.quoteIfComma", false);
@@ -35,7 +37,8 @@ pref("extensions.smartTemplate4.files.path", ""); // location of last saved / lo
 // pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
 pref("extensions.smartTemplate4.fileTemplates.path", ""); // location of external html templates "Stationery" for next menu config action 
-pref("extensions.smartTemplate4.fileTemplates.instantPath", "") // location for path used for adhoc html template selection 
+pref("extensions.smartTemplate4.fileTemplates.instantPath", ""); // location for path used for adhoc html template selection 
+pref("extensions.smartTemplate4.fileTemplates.sendTimeout", 200); // [issue 173] wait before pressing send button
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
@@ -46,6 +49,8 @@ pref("extensions.smartTemplate4.removeSigOnIdChangeAfterEdits", false);
 /* header replacement rules */
 pref("extensions.smartTemplate4.headers.unescape.quotes", true);
 pref("extensions.smartTemplate4.expandSettings", false);
+
+pref("extensions.smartTemplate4.BackgroundParser", false); // [issue 184] new background processing - TEST ONLY for now
 
 pref("extensions.smartTemplate4.changeTemplate.button.install", true); /* add change template button automatically when installing for first time */
 pref("extensions.smartTemplate4.insertSnippet.button.install", true); /* add insert snippets button automatically when installing for first time */

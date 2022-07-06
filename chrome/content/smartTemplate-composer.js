@@ -17,7 +17,7 @@ SmartTemplate4.composer = {
     //       BUT IT DIDN'T WORK
     // **********>>
     
-    // we cannot use the old way of adding the style shee in the xul overlay...
+    // we cannot use the old way of adding the style sheet in the xul overlay...
     // .. because it doesn't affect the content area
     // I do not want to inject any of these rules into the Editor's document
     // because I want to avoid polluting the markup with stuff that is strictly
@@ -105,6 +105,7 @@ SmartTemplate4.composer = {
           case msgComposeType.New:
           case msgComposeType.NewsPost:
           case msgComposeType.MailToUrl:
+          case msgComposeType.EditAsNew: // do we allow this? not now.
             compCase="new";
             entries = fT.Entries.templatesNew;
             break;
@@ -122,7 +123,6 @@ SmartTemplate4.composer = {
             compCase="fwd";
             entries = fT.Entries.templatesFwd;
             break;
-          case msgComposeType.EditAsNew: // do we allow this? not now.
           case msgComposeType.EditTemplate:
           case msgComposeType.Draft:
             break;
@@ -245,6 +245,7 @@ function()
     SmartTemplate4.init();
     
     // safety for when the compose-window-init event does not fire (Tb 67+)
+    /*
     if (typeof ComposeStartup == 'function') {
       if (!SmartTemplate4.ComposeStartup) {
         if (isDebugComposer) debugger;
@@ -258,5 +259,6 @@ function()
         }
       }
     }
+    */
   }
 )();

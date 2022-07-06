@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Wochentag (Fri.)"
   },
@@ -32,9 +29,6 @@
   "about.label": {
     "message": "SmartTemplates ermöglicht auf einfachem Weg die Thunderbird standard Kopfzeilen durch Verwedung von Templates/Variablen anzupassen, welche für jedes Konto getrennt oder auch allgemein für alle Konten erstellt werden können."
   },
-  "accept_button": {
-    "message": "OK"
-  },
   "account.label": {
     "message": "Konto wählen:"
   },
@@ -44,7 +38,7 @@
     "placeholders": {
       "addonVer": {
         "content": "$1",
-        "example": "5.0.1"
+        "example": "Version 1.1"
       },
       "appVer": {
         "content": "$2",
@@ -101,10 +95,10 @@
     "message": "Ich möchte mit einer einmaligen Spende helfen."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Vorlage laden…"
+    "message": "Kontoeinstellungen laden…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Vorlage speichern…"
+    "message": "Kontoeinstellungen speichern…"
   },
   "btnYouTube.tooltip": {
     "message": "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons."
@@ -316,9 +310,6 @@
   "edit.label": {
     "message": "Editieren"
   },
-  "email.label": {
-    "message": "Email:"
-  },
   "enterLicenseKey.button": {
     "message": "Lizenzschlüssel eingeben…"
   },
@@ -337,10 +328,6 @@
   "extensionDescription": {
     "description": "Description of the extension.",
     "message": "Automatisiert das Erstellen von Antworten und Einfügen von verschiedenen Mail-Informationen. Unterstützt Vorlagen per Identität sowie externe HTML Dateien."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
   },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "SmartTemplates bietet die Option die Standard Mailheader 'quote-header' komfortabel anzupassen."
@@ -490,7 +477,7 @@
     "message": "Kann mit den folgenden Feldern benutzt werden: "
   },
   "heading-installed": {
-    "description": "Seitenheader. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ wurde erfolgreich installiert",
     "placeholders": {
       "addonName": {
@@ -500,7 +487,7 @@
     }
   },
   "heading-updated": {
-    "description": "Seitenheader. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ wurde erfolgreich aktualisiert",
     "placeholders": {
       "addonName": {
@@ -625,7 +612,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Liebe(r) $username$ {boldEnd}, Sie können jetzt ein Upgrade auf SmartTemplates Pro für {boldStart} $discount$ weniger {boldEnd} durchführen - und gleichzeitig Ihre Lizenz um ein ganzes Jahr verlängern. Weitere große Änderungen an Thunderbird sind am kommen und ich brauche {boldStart} Ihre Hilfe {boldEnd}, um weiter Schritt zu halten!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +630,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Neues Lizenzsystem"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "SmartTemplates Lizenz ist vor $countDays$ Tagen abgelaufen.",
     "placeholders": {
       "countDays": {
@@ -659,7 +646,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "SmartTemplates Lizenz läuft in $countDays$ Tagen ab!",
     "placeholders": {
       "countDays": {
@@ -667,7 +654,7 @@
         "example": "10"
       }
     }
-  },  
+  },
   "licenseTypes": {
     "message": "SmartTemplates bietet zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da Änderungen, die möglicherweise die Erweiterungsfunktionalität beeinträchtigen, jährlich eingeführt werden, ist die Lizenz auch 1 Jahr gültig."
   },
@@ -719,9 +706,6 @@
   "menu.template_import.label": {
     "message": "Einstellungen und Vorlagen importieren"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Lizenzoptionen anzeigen…"
   },
@@ -740,20 +724,11 @@
   "month.1.name": {
     "message": "Januar"
   },
-  "month.1.short": {
-    "message": "Jan"
-  },
   "month.10.name": {
     "message": "Oktober"
   },
   "month.10.short": {
     "message": "Okt"
-  },
-  "month.11.name": {
-    "message": "November"
-  },
-  "month.11.short": {
-    "message": "Nov"
   },
   "month.12.name": {
     "message": "Dezember"
@@ -764,20 +739,11 @@
   "month.2.name": {
     "message": "Februar"
   },
-  "month.2.short": {
-    "message": "Feb"
-  },
   "month.3.name": {
     "message": "März"
   },
   "month.3.short": {
     "message": "Mär"
-  },
-  "month.4.name": {
-    "message": "April"
-  },
-  "month.4.short": {
-    "message": "Apr"
   },
   "month.5.name": {
     "message": "Mai"
@@ -788,26 +754,8 @@
   "month.6.name": {
     "message": "Juni"
   },
-  "month.6.short": {
-    "message": "Jun"
-  },
   "month.7.name": {
     "message": "Juli"
-  },
-  "month.7.short": {
-    "message": "Jul"
-  },
-  "month.8.name": {
-    "message": "August"
-  },
-  "month.8.short": {
-    "message": "Aug"
-  },
-  "month.9.name": {
-    "message": "September"
-  },
-  "month.9.short": {
-    "message": "Sep"
   },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
@@ -820,10 +768,6 @@
   },
   "no_button": {
     "message": "Nein"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
@@ -840,23 +784,11 @@
   "ownname.label": {
     "message": "Ihr Name"
   },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
+  "paste.label": {
+    "message": "Einfügen"
   },
   "parameters": {
     "message": "Parameter"
-  },
-  "paste.label": {
-    "message": "Einfügen"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Text nur unter Mauszeiger"
@@ -934,7 +866,7 @@
     "message": "Stellt sicher dass der Cursor in einem Absatz beginnt. Wir empfehlen ebenfalls in Thunderbird Einstellungen unter 'Verfassen' die Option bei Druck von [Return] einen neuen Absatz einzufügen."
   },
   "pref_fwd.label": {
-    "message": "Folgende Vorlage beim Weiterleiten hinzufügen"
+    "message": "Folgende Einstellungen für weitergeleitete Nachrichten anwenden"
   },
   "pref_fwd.tab": {
     "message": "Weiterleiten"
@@ -998,7 +930,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Informationsdialog ausblenden, der beim Aktualisieren neue Funktionen und Fehlerbehebungen anzeigt."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Signatur verarbeiten"
   },
@@ -1024,7 +956,7 @@
     "message": "Ersetze Zeilenumbrüche durch <br>"
   },
   "pref_rsp.label": {
-    "message": "Folgende Vorlage beim Antworten hinzufügen"
+    "message": "Folgende Einstellungen beim Antworten verwenden"
   },
   "pref_rsp.tab": {
     "message": "Antworten"
@@ -1188,17 +1120,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "SmartTemplates Inhalt aktualisieren"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates Einstellungen"
   },
   "smarttemplate4_button": {
     "message": "Templates und Quote Header bearbeiten..."
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates wurde aktualisiert!"
@@ -1220,9 +1146,6 @@
   },
   "spellcheck.label": {
     "message": "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein."
-  },
-  "standardformat.config": {
-    "message": "Standardformat…"
   },
   "st.confirmVersionLink": {
     "message": "Changelog für SmartTemplates zeigen?"
@@ -1247,7 +1170,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Warum sind manche Vorlagen in diesem Menü deaktiviert?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Die Anzahl der Vorlagen pro Menü ist begrenzt. Sie können bis zu $max_free$ Menüpunkte ohne Lizenz und $max_std$ Menüpunkte mit einer SmartTemplates Standard Lizenz konfigurieren! SmartTemplates Pro ist uneingeschränkt.",
     "placeholders": {
@@ -1259,7 +1182,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Um mehr als $max_Cats$ Kategorien zu konfigurieren, besorgen Sie sich bitte eine SmartTemplates Pro-Lizenz…",
@@ -1268,7 +1191,7 @@
         "content": "$1",
         "example": "3"
       }
-    }    
+    }
   },
   "st.fileTemplates.selectFromMenu": {
     "message": "Bitte wählen Sie eine Vorlage aus dem Dropdown-Menü."
@@ -1327,8 +1250,8 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Lizenz erwerben"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
+  "st.notification.premium.sendByFilter": {
+    "message": "Mit einer gültigen SmartTemplates Pro Lizenz würde die E-Mail nun automatisch versendet."
   },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Domänen-Lizenz erneuern"
@@ -1338,9 +1261,6 @@
   },
   "st.notification.premium.btn.upgrade": {
     "message": "Auf Pro Upgraden"
-  },
-  "st.notification.premium.btn.upgrade.hotKey": {
-    "message": "U"
   },
   "st.notification.premium.text": {
     "message": "{1} ist eine Premium Funktion, bitte kaufen Sie eine SmartTemplates Pro Lizenz um diese permanent zu benutzen."
@@ -1381,6 +1301,9 @@
   "st.updateMessageVersion": {
     "message": "SmartTemplates wurde erfolgreich auf Version {1} aktualisiert!"
   },
+  "standardformat.config": {
+    "message": "Standardformat…"
+  },
   "stringmanip.alttext": {
     "message": "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt."
   },
@@ -1407,7 +1330,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. April"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1416,7 +1339,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20. Februar"
+    "message": "17. Juli"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1448,7 +1371,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Jetzt von SmartTemplates Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
     "placeholders": {
@@ -1461,7 +1384,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "support-preference": {
     "message": "Dies ist die bevorzugte Methode zur Unterstützung von $addonName$.",
     "placeholders": {
@@ -1483,17 +1406,11 @@
   "support.compose": {
     "message": "An Support schreiben…"
   },
-  "support.links": {
-    "message": "Support Links"
-  },
   "support.mail.instructions": {
     "message": "Klicken Sie die Schaltfläche unterhalb um eine neue Email an Support zu schreiben. Falls Sie technische Probleme haben, kann ein Screenshot hilfreich sein."
   },
   "support.subject": {
     "message": "Betreff:"
-  },
-  "support.tab": {
-    "message": "Support"
   },
   "support.title": {
     "message": "Email an Support"
@@ -1516,11 +1433,11 @@
   "support.type.tech": {
     "message": "Technisch"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Verhindern dass Mail Programme Email Adressen verlinken."
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "Entfernt den Zitatkopf vollständig, unabhängig von den Kontoeinstellungen."
   },
   "table.cap": {
     "message": "Anwenden der Variablen"
@@ -1529,7 +1446,7 @@
     "message": "Weiterleiten"
   },
   "table_keyword.label": {
-    "message": "Variable"
+    "message": "Variablen"
   },
   "table_new.label": {
     "message": "Verfassen"
@@ -1612,15 +1529,20 @@
   "tools.label": {
     "message": "Extras"
   },
-  "translated-by-google": {
-    "description": "disclaimer.",
-    "message": "translations provided by google"
-  },
   "translatorNickname.label": {
     "message": "Marky Mark DE"
   },
   "tzname.label": {
     "message": "GMT, PST, EST, … "
+  },
+  "update.tooltip": {
+    "message": "Bitte einmal klicken, um zu lesen, was es Neues in $addonName$ gibt.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "updates.title": {
     "message": "Aktualisierung"
@@ -1630,9 +1552,6 @@
   },
   "url.bugsAndFeaturesPage.label": {
     "message": "Bugs / Features"
-  },
-  "url.homePage.label": {
-    "message": "Add-On Homepage"
   },
   "url.supportPage.label": {
     "message": "Support Homepage"
@@ -1656,13 +1575,13 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Unterstützung des Reply-to-Headers mit der Variable %recipient%.{L2} {L1}Optimierte Warnung, wenn die Vorlage nach der Bearbeitung geändert wird – unterstützt auch das Drücken von ESCAPE, um den Dialog zu schließen.{L2}{L1}Behoben: Verwendung Mailinglisten in den Feldern to, cc und bcc. Siehe das Änderungsprotokoll unten für ein Beispiel eines Newsletters für eine Gruppe nicht offengelegter Empfänger.{L2}{L1}Behoben: benutzerdefinierte Hintergrund- und Textfarben werden beim Schreiben neuer E-Mails ignoriert. Dies könnte zu Problemen mit dem Editor führen, wenn dunkle Themen verwendet werden.{L2}"
+    "message": "{L1}Wartungskorrekturen in 3.12.2: Schaltflächen zum Erweitern/Reduzieren/Hilfe sind jetzt auch sichtbar, wenn die Einstellungen aus dem Add-ons-Manager geöffnet werden. Schaltfläche „Lizenz erneuern“ links unten im Einstellungsdialog funktioniert jetzt wie erwartet{L2}{L1}SmartTemplates Pro unterstützt jetzt die Verwendung von 'clipboard' (Zwischenablage) als Parameter für Text- und Header-Manipulationsfunktionen wie %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)% {L2}{L1}Verwenden Sie 'toclipboard', um verschiedene Ergebnisse in die Zwischenablage zu kopieren. Zum Beispiel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Verbesserter *selection* (Auswahl)-Platzhalter in Snippets, um die Integration in HTML Sektionen besser zu unterstützen. Beispielsweise können Sie jetzt ein Bild mit einem Schatten umhüllen, indem Sie ein HTML-Snippet einfügen.{L2}{L1}Vereinfachte Einstellungen für Identitätsvorlagen (Konten-Dropdown){L2}{L1}Zahlreiche Kompatibilitätskorrekturen für Thunderbird 102. %spellcheck()% kann jetzt das Wörterbuch so einstellen, dass Text in mehreren Sprachen geprüft wird.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },
   "window-title": {
-    "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",
+    "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Willkommen bei $addonName$",
     "placeholders": {
       "addonName": {
@@ -1670,9 +1589,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "Beispiel eines Langstrings"
@@ -1688,9 +1604,6 @@
   },
   "xsent_short.cap": {
     "message": "Beispiel eines Kurzstrings"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Folgende Variablen lassen sich in beiden Varianten ebenso verwenden"

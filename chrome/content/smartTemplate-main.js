@@ -142,14 +142,43 @@ END LICENSE BLOCK
     # [issue 163] Fixed: With Cardbook installed, SmartTemplates statusbar icon may not be shown
     
 
-  Version 3.10 - WIP
+  Version 3.10.1 - 04/02/2021
     # [issue 166] %recipient% should use reply-to header if present when replying
     # [issue 150] removed nag screen which pops up after trial date is expired.
     # [issue 154] Support pushing [Esc] to close template change confirmation
     # [issue 167] Address Book list entries are not expanded with empty "To:" address
     # [issue 168] Fixed: custom background and text colors ignored in composer when writing new mails
 
+  Version 3.10.2 - 07/02/2022
+    # [issue 170] UI to view license extension longer than 1 month before expiry of Pro license
+    # [issue 171] Settings Dialog: Empty Examples tab in Thunderbird 91
     
+  Version 3.11 - 17/03/2022
+    # [issue 172] Support deleting / replacing text in text of inline forwarded mail
+    # [issue 173] Auto-Forward / Auto-Reply with template -  implement triggering template from filter (using FiltaQuilla)
+    # [issue 174] %suppressQuoteHeaders% command to suppress all quote headers
+    
+  Version 3.12.1 - 27/06/2022
+    # Compatibility changes for Thunderbird ESR 102:
+    #   Fixed notifications
+    #   Fixed id  of composer container for setting focus to email
+    #   Stabilized code when reading external signatures or including external files
+    #   [issue 189] Support multiple spellcheck languages with %spellcheck()%
+    #   Fixed menu spacings for Templates in reply / write / forward / Snippets buttons.
+    #   
+    # [issue 182] Improve *selection* placeholder in Snippets to better support non-text nodes
+    # [issue 183] Support using "clipboard" as argument for text and header manipulation functions
+    # [issue 185] Simplify Settings - Accounts dropdown and toolbar buttons
+    # [issue 187] Support transferring headers / variable results to clipboard
+    # [issue 186] Various Issues in bracketMail parameter in %to% / %from% etc.
+    # Fix xhtml attribute syntax (no spaces allowed in "attribute=value")
+    # Moved clipboard reading to Util module
+    # [issue 184] WIP: Move template processing into background script
+
+  Version 3.12 - 29/06/2022
+    # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
+    # [issue 198] - Renew license button on lower left of settings dialog not working
+
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
@@ -270,7 +299,12 @@ var SmartTemplate4 = {
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
-      gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+      // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+      if (!SmartTemplate4.Preferences.isBackgroundParser()) {
+        gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+      }
+      
+      
       // can we overwrite part of global state listener?
       // stateListener is defined in components/compose/content/MsgComposeCommands.js
       if (stateListener && stateListener.NotifyComposeBodyReady) {
@@ -283,12 +317,12 @@ var SmartTemplate4 = {
             
           let idKey = util.getIdentityKey(document);
           stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
-            // Bug 26356 - no notification on forward w. empty template  !!!!wrong bug number??? this was closed 21 years ago
+            // no notification on forward w. empty template
             if (gComposeType !== msgComposeType.ForwardInline
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
                 && 
-                SmartTemplate4.pref.isProcessingActive(idKey, 'fwd', false))
+                SmartTemplate4.pref.isTemplateActive(idKey, 'fwd', false))
             {
               util.OrigNotify();
             }
@@ -321,12 +355,27 @@ var SmartTemplate4 = {
           Ci = Components.interfaces,
           msgComposeType = Ci.nsIMsgCompType;
           
+    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
+      alert("To do: replace notifyComposeBodyReady() event - [issue 184]\n");
+      return;
+    }          
+          
     isChangeTemplate = isChangeTemplate || false; // we need this for [isue 29] change template in composer window
     // maybe use    GetCurrentEditor() and find out  stuff from there
     // get last opened 3pane window - but we really need the owner of the "write button"
     // we clicked. 
     // That window stores SmartTemplate4.fileTemplates.armedEntry
     // we need this to retrieve the file Template path and title!
+    function getMsgComposetype() {
+      switch(gMsgCompose.type) {
+        case Ci.nsIMsgCompType.ForwardInline:
+          return "fwd";
+        case Ci.nsIMsgCompType.Reply:
+          return "rsp";
+      }
+      return ""; // unknown
+    }
+    
     let ownerWin = win || util.Mail3PaneWindow, // for changing the template our current composer window is the context
         fileTemplateSource = null; // for fileTemplates, echeck if null and o.failed, otherwise o.HTML shoulde be the tempalte
     
@@ -338,12 +387,38 @@ var SmartTemplate4 = {
         
     // retrieve and consume fileTemplate info
     // I will be very cautious in case composer is called from elsewhere (e.g. a mailto link, or a single message window)
+
+    let theQueue = ownerWin && ownerWin.SmartTemplate4 ? (ownerWin.SmartTemplate4.fileTemplates.armedQueue || []) : [],
+        theFileTemplate = null;
     
     if (ownerWin && 
         ownerWin.SmartTemplate4 && 
         ownerWin.SmartTemplate4.fileTemplates && 
         ownerWin.SmartTemplate4.fileTemplates.armedEntry) {
-      let theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;       // this is a html file we need to parse.
+      theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;
+      // to avoid event triggering while we stream the message, postpone this one!
+      if (SmartTemplate4.isStreamingMsg) {
+        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
+        return;
+      }      
+    } else if(theQueue.length) {
+      let origUri = gMsgCompose.originalMsgURI;
+      // try to find matching item from the queue
+      let found = theQueue.find(el => el.uri == origUri && el.composeType == getMsgComposetype());
+      if (found) {
+        theFileTemplate = found;
+        theQueue = theQueue.filter(el => el != found);
+      }
+      else
+        theFileTemplate = theQueue.pop(); // if we can't find, let's take the last item instead and hope for the best.
+    }
+    
+    if (theFileTemplate) {
+      // [issue 173]
+      if (theFileTemplate.isAutoSend) {
+        flags.isAutoSend = true; 
+      }
+      
       ownerWin.SmartTemplate4.fileTemplates.armedEntry = null; 
       util.logDebugOptional("fileTemplates", "notifyComposeBodyReady: \n"
         + "Consuming fileTemplate: " + theFileTemplate.label + "\n"
@@ -454,7 +529,17 @@ var SmartTemplate4 = {
       }
       
       //set focus to editor
+      
       let FocusElement, FocusId;
+      var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
+      var messageEditorID;
+      if (parseInt(AppConstants.MOZ_APP_VERSION, 10) < 100) {
+        messageEditorID = "content-frame";
+      } else {
+        messageEditorID = "messageEditor";
+      }
+      
+      
       // if we load a template ST4 processing will have been done before the template was saved.
       // composeCase is set during insertTemplate
       switch (this.smartTemplate.composeCase) {
@@ -462,9 +547,9 @@ var SmartTemplate4 = {
         case 'new': // includes msgComposeType.Template and msgComposeType.MailToUrl
         case 'forward':
           if (gMsgCompose.type == msgComposeType.MailToUrl) // this would have the to address already set
-            FocusId = 'content-frame'; // Editor
+            FocusId = messageEditorID; // Editor
           else {
-            FocusId = 'content-frame'; // editor is fallback
+            FocusId = messageEditorID; // editor is fallback
             // find the "to" line
             let foundTo = false;
             let adContainer = window.document.getElementById("toAddrContainer");
@@ -484,7 +569,7 @@ var SmartTemplate4 = {
           }
           break;
         default: // 'reply'  - what about mailto?
-          FocusId = 'content-frame'; // Editor
+          FocusId = messageEditorID; // Editor
       }
       FocusElement = window.document.getElementById(FocusId);
       if (FocusElement) {
@@ -601,17 +686,22 @@ var SmartTemplate4 = {
       let prevIdentity = gCurrentIdentity;
       return SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
+    
+    let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
     if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
       return;
     SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
-    //  SmartTemplate4.Util.VersionProxy(); // just in case it wasn't initialized
-    this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
-    // overwriting a global function within composer instance scope
-    // this is intentional, as we needed to replace Tb's processing
-    // with our own (?)
-    LoadIdentity = smartTemplate_loadIdentity;
+    
+    
+    if (!isBackgroundParser) {
+      this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
+      // overwriting a global function within composer instance scope
+      // this is intentional, as we needed to replace Tb's processing
+      // with our own (?)
+      LoadIdentity = smartTemplate_loadIdentity;
+    }
 
     this.pref = new SmartTemplate4.classPref();
 
@@ -717,6 +807,7 @@ var SmartTemplate4 = {
   initLicensedUI: function ST_initLicensedUI() {
     SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.updateStatusBar();
+    SmartTemplate4.updateToolbarIcon();
   },
 
   startUp: function ST_startUp() {
@@ -813,7 +904,7 @@ var SmartTemplate4 = {
         let txt = util.getBundleString("SmartTemplateMainButton.updated")
         btn.classList.add("newsflash");
         btn.label = txt;
-        btn.setAttribute("tooltiptext", "Click this once to see the Splash screen and what's new in quickFilters.");
+        btn.setAttribute("tooltiptext", util.getBundleString("update.tooltip", ["SmartTemplates"]));
         btnStatus.classList.add("newsflash");
         btnStatus.label = txt;
       }
@@ -825,8 +916,33 @@ var SmartTemplate4 = {
         btnStatus.classList.remove("newsflash");
         btnStatus.label = txt;
       }
+      SmartTemplate4.updateToolbarIcon(); // renewal signal!
     }
-  }  
+  } ,
+  
+  updateToolbarIcon: function() {
+    // renewal color overrides news.
+    let btn = document.getElementById("SmartTemplate4Button");
+    if (btn) {
+      let licenseInfo = SmartTemplate4.Util.licenseInfo;
+      if (licenseInfo.licenseKey && licenseInfo.isExpired)  {
+        let wrn = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
+        btn.classList.add("alertExpired");
+        if (!SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
+          btn.setAttribute("tooltiptext", wrn);
+          btn.label = SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense");
+        }
+      }
+      else {
+        if (btn.classList.contains("alertExpired")) {
+          // remove expiry warning & restore label + default tip
+          btn.label = SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label");
+          btn.setAttribute("tooltiptext", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.tooltip"));
+          btn.classList.remove("alertExpired");
+        }
+      }
+    }
+  } 
 
 };  // Smarttemplate4
 

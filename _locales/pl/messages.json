@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "a.label": {
     "message": "Dzień tygodnia (Pi)"
   },
@@ -31,9 +28,6 @@
   },
   "about.label": {
     "message": "SmartTemplates oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont."
-  },
-  "accept_button": {
-    "message": "OK"
   },
   "account.label": {
     "message": "Wybierz konto:"
@@ -101,10 +95,10 @@
     "message": "Chcę pomóc w sprawie jednorazowej darowizny."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Wczytaj szablon…"
+    "message": "Załaduj ustawienia konta…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Zapisz szablon…"
+    "message": "Zapisz ustawienia konta…"
   },
   "btnYouTube.tooltip": {
     "message": "Odwiedź kanał Thunderbird Daily na YouTube, by poznać podpowiedzi i samouczki dotyczące korzystania ze Stationery i innych dodatków."
@@ -338,10 +332,6 @@
     "description": "Description of the extension.",
     "message": "Potężny sposób tworzenia niestandardowych odpowiedzi przez automatyczne wstawianie różnych nagłówków wiadomości. Szablony można tworzyć dla każdej tożsamości poczty, obsługuje również zewnętrzne pliki html i arkusze stylów."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "SmartTemplates"
-  },
   "extensions.smarttemplate4@thunderbird.extension.description": {
     "message": "Inteligentne szablony nagłówków, które można dostosowywać dla każdego konta."
   },
@@ -356,45 +346,6 @@
   },
   "fileImage.label": {
     "message": "Plik obrazka (png,jpg,gif,bmp,svg). Jeśli nie naleziono obrazka, będzie wyświetlany opcjonalny parametr altText."
-  },
-  "fileTemplates.add": {
-    "message": "Add"
-  },
-  "fileTemplates.down": {
-    "message": "Down"
-  },
-  "fileTemplates.file.open": {
-    "message": "Select template file from disk"
-  },
-  "fileTemplates.file.path": {
-    "message": "Template location:"
-  },
-  "fileTemplates.file.title": {
-    "message": "Title:"
-  },
-  "fileTemplates.file.title.tooltip": {
-    "message": "This will be displayed in the template selection menu."
-  },
-  "fileTemplates.fwd.tooltip": {
-    "message": "List of external template files that can be launched from the 'Forward' button."
-  },
-  "fileTemplates.new.tooltip": {
-    "message": "List of external template files that can be launched from the 'Create new Message' button."
-  },
-  "fileTemplates.remove": {
-    "message": "Remove"
-  },
-  "fileTemplates.rsp.tooltip": {
-    "message": "List of external template files that can be launched from the 'Reply' button."
-  },
-  "fileTemplates.title": {
-    "message": "Template Files"
-  },
-  "fileTemplates.up": {
-    "message": "Up"
-  },
-  "fileTemplates.update": {
-    "message": "Update"
   },
   "firstName.label": {
     "message": "Imię:"
@@ -625,7 +576,7 @@
   "license-standard-special-offer": {
     "message": "{boldStart} Drogi $ username $ {boldEnd}, możesz teraz uaktualnić do SmartTemplates Pro za {boldStart} $discount$ mniej {boldEnd} - jednocześnie przedłużając swoją licencję o cały rok. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!",
     "placeholders": {
-      "username" : {
+      "username": {
         "content": "$1",
         "example": "John Doe"
       },
@@ -643,14 +594,14 @@
         "example": "16. April"
       }
     }
-  }, 
-  "licenseComparison" : {
+  },
+  "licenseComparison": {
     "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nowy system licencjonowania"
-  },  
-  "licenseStatus.expired" : {
+  },
+  "licenseStatus.expired": {
     "message": "Licencja SmartTemplates wygasła $countDays$ dni temu.",
     "placeholders": {
       "countDays": {
@@ -659,7 +610,7 @@
       }
     }
   },
-  "licenseStatus.willExpire" : {
+  "licenseStatus.willExpire": {
     "message": "Licencja SmartTemplates wygaśnie za $countDays$ dni!",
     "placeholders": {
       "countDays": {
@@ -667,10 +618,10 @@
         "example": "10"
       }
     }
-  }, 
+  },
   "licenseTypes": {
     "message": "SmartTemplates oferuje dwie licencje, Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird oraz sfinansować innowacje i naprawy dodatku. Ponieważ zmiany, które potencjalnie zakłócają funkcjonalność rozszerzenia, są wprowadzane co roku, licencja będzie również ważna przez 1 rok."
-  },  
+  },
   "licenseValidation.expired": {
     "message": "Wprowadzony klucz licencyjny stracił ważność. Kliknij poniższy przycisk, aby odnowić licencję."
   },
@@ -722,9 +673,6 @@
   "menu.template_import.label": {
     "message": "Importuj szablon"
   },
-  "message_default_title": {
-    "message": "SmartTemplates"
-  },
   "message.licenseScreen": {
     "message": "Pokaż opcje licencji…"
   },
@@ -772,9 +720,6 @@
   },
   "month.3.name": {
     "message": "Marzec"
-  },
-  "month.3.short": {
-    "message": "Mar"
   },
   "month.4.name": {
     "message": "Kwiecień"
@@ -824,10 +769,6 @@
   "no_button": {
     "message": "Nie"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
     "placeholders": {
@@ -843,23 +784,11 @@
   "ownname.label": {
     "message": "Twoje imię"
   },
-  "p.label": {
-    "message": "AM / PM"
-  },
-  "p1.label": {
-    "message": "a.m."
-  },
-  "p2.label": {
-    "message": "A.M."
-  },
-  "p3.label": {
-    "message": "AM"
+  "paste.label": {
+    "message": "Wklej"
   },
   "parameters": {
     "message": "Parametry"
-  },
-  "paste.label": {
-    "message": "Wklej"
   },
   "pref_StatusIcon.IconHoverText": {
     "message": "Tekst po wskazaniu kursorem"
@@ -937,7 +866,7 @@
     "message": "Zapewnia ustawienie kursora na początku akapitu. Zaleca się stosować w oknie komponowania wiadomości tworzenie nowych akapitów po naciśnięciu klawisza Enter."
   },
   "pref_fwd.label": {
-    "message": "Stosuj poniższy szablon dla przekazywanych wiadomości"
+    "message": "Zastosuj następujące ustawienia do przekazywanej wiadomości"
   },
   "pref_fwd.tab": {
     "message": "Przekazywanie"
@@ -1001,7 +930,7 @@
   },
   "pref_noSplash_tip": {
     "message": "Ukryj okno informacyjne, które wyświetla nowe funkcje i poprawki błędów podczas aktualizacji."
-  },  
+  },
   "pref_parseSignature": {
     "message": "Przetwórz podpis"
   },
@@ -1027,7 +956,7 @@
     "message": "Zamieniaj nowy wiersz znakiem <br>"
   },
   "pref_rsp.label": {
-    "message": "Stosuj poniższy szablon dla odpowiedzi"
+    "message": "Zastosuj następujące ustawienia do odpowiedzi na wiadomość"
   },
   "pref_rsp.tab": {
     "message": "Odpowiedź"
@@ -1191,17 +1120,11 @@
   "smartTemplate4.deferredcontext.update": {
     "message": "Zaktualizuj zawartość SmartTemplates"
   },
-  "smartTemplate4.settings.label": {
-    "message": "SmartTemplates"
-  },
   "smartTemplate4.settings.tooltip": {
     "message": "SmartTemplates - ustawienia"
   },
   "smarttemplate4_button": {
     "message": "Edycja szablonów i nagłówka…"
-  },
-  "smarttemplate4_title": {
-    "message": "SmartTemplates"
   },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates zostało zaktualizowane!"
@@ -1221,66 +1144,6 @@
   "specform_note.label": {
     "message": "Fraza w nawiasach klamrowych [[Cc: %cc(name)%]] będzie wyświetlana tylko, jeśli zmienna %cc(name)% może być zamieniana!"
   },
-  "special-offer-content": {
-    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję SmartTemplates Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "22 sierpnia"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "30%"
-      }
-    }
-  },
-  "special-offer-expiry": {
-    "message": "20 lutego"    
-  },
-  "special-offer-head": {
-    "message": "Pomóż zachować zgodność $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },
-  "special-offer-renew": {
-    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  },   
-  "special-offer-upgrade": {
-    "message": "Przejdź teraz z SmartTemplates Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
-    "placeholders": {
-      "expirydate": {
-        "content": "$1",
-        "example": "September 11"
-      },
-      "reduction": {
-        "content": "$2",
-        "example": "50%"
-      }
-    }
-  }, 
   "spellcheck.label": {
     "message": "Ustawia język sprawdzania pisowni. Przykładowe wartości: (en, de-DE, es-ES, pl) - zwróć uwagę, że słownik musi być zainstalowany."
   },
@@ -1307,7 +1170,7 @@
   },
   "st.fileTemplates.restrictionQuestion": {
     "message": "Dlaczego niektóre szablony w tym menu są wyłączone?"
-  }, 
+  },
   "st.fileTemplates.restrictTemplates": {
     "message": "Liczba szablonów w menu jest ograniczona. Możesz skonfigurować do $max_free$ pozycji menu bez licencji oraz $max_std$ z licencją SmartTemplates Standard! SmartTemplates Pro jest nieograniczone.",
     "placeholders": {
@@ -1319,7 +1182,7 @@
         "content": "$2",
         "example": "25"
       }
-    }    
+    }
   },
   "st.fileTemplates.restrictTemplateCats": {
     "message": "Aby skonfigurować więcej niż $max_Cats$ Categories, zdobądź licencję SmartTemplates Pro…",
@@ -1328,8 +1191,9 @@
         "content": "$1",
         "example": "3"
       }
-    }    
-  },  "st.fileTemplates.selectFromMenu": {
+    }
+  },
+  "st.fileTemplates.selectFromMenu": {
     "message": "Wybierz szablon z menu rozwijanego."
   },
   "st.fileTemplates.wrnEnterPath": {
@@ -1386,8 +1250,8 @@
   "st.notification.premium.btn.getLicense": {
     "message": "Kup licencję!"
   },
-  "st.notification.premium.btn.hotKey": {
-    "message": "L"
+  "st.notification.premium.sendByFilter": {
+    "message": "Z ważną licencją SmartTemplates Pro wiadomość e-mail zostanie teraz automatycznie wysłana."
   },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Odnów licencję domeny"
@@ -1464,6 +1328,66 @@
   "sub_var.cap": {
     "message": "Temat"
   },
+  "special-offer-content": {
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję SmartTemplates Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "17 lipca"
+  },
+  "special-offer-head": {
+    "message": "Pomóż zachować zgodność $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Przejdź teraz z SmartTemplates Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
   "support-preference": {
     "message": "Jest to preferowany sposób obsługi $addonName$.",
     "placeholders": {
@@ -1518,11 +1442,11 @@
   "support.type.tech": {
     "message": "Techniczny"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Ukrywa klientów pocztowych dodając odnośniki do adresów wiadomości,"
   },
-  "tab.gopro": {
-    "message": "SmartTemplates Pro"
+  "suppressQuoteHdr": {
+    "message": "Całkowicie usuwa nagłówek oferty niezależnie od ustawień konta."
   },
   "table.cap": {
     "message": "Zastosowanie zmiennych"
@@ -1624,6 +1548,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, … "
   },
+  "update.tooltip": {
+    "message": "Kliknij tutaj raz, aby przeczytać, co nowego w $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Aktualizacje"
   },
@@ -1658,7 +1591,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Obsługa nagłówka odpowiedzi do nagłówka ze zmienną %recipient%.{L2} {L1}Usprawnione ostrzeżenie o zmianie szablonu po edycji - obsługuje również naciśnięcie ESCAPE w celu zamknięcia okna dialogowego.{L2}{L1}Naprawiono: używanie listy mailingowe w polach do, DW i UDW. Zobacz dziennik zmian poniżej, aby zapoznać się z przykładem biuletynu dla grupy nieujawnionych odbiorców.{L2}{L1}Naprawiono: niestandardowe kolory tła i tekstu są ignorowane podczas pisania nowych wiadomości e-mail. Może to prowadzić do problemów z edytorem podczas używania ciemnych motywów.{L2}"
+    "message": "{L1}Poprawki konserwacyjne w wersji 3.12.2: Przyciski rozwijania/zwijania/pomocy są teraz widoczne również podczas otwierania ustawień z Menedżera dodatków. Przycisk odnowienia licencji w lewym dolnym rogu okna ustawień działa teraz zgodnie z oczekiwaniami{L2}{L1}SmartTemplates Pro obsługuje teraz używanie 'clipboard' (schowek) jako argumentu dla funkcji manipulacji tekstem i nagłówkiem, takich jak %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(wyrażenie regularne,clipboard )% %replaceQuotedText(wyrażenie regularne,clipboard)%{L2} {L1}Użyj 'toclipboard', aby skopiować różne wyniki do schowka. Na przykład: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Ulepszone *selection* (zaznaczanie) zastępcze we fragmentach, aby lepiej obsługiwać integrację z wybranymi sekcjami HTML. Na przykład, możesz teraz owinąć obraz cieniem, wstawiając fragment kodu HTML.{L2}{L1}Uproszczone ustawienia szablonów tożsamości (rozwijane konta){L2}{L1}Liczne poprawki zgodności dla Thunderbird 102. %spellcheck()% może teraz ustawić słownik do sprawdzania tekstu w wielu językach.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
@@ -1672,9 +1605,6 @@
         "example": "SmartTemplates"
       }
     }
-  },
-  "xmail.label": {
-    "message": "X-Mailer"
   },
   "xsent_long.cap": {
     "message": "Przykład długiego formatu:"
@@ -1690,9 +1620,6 @@
   },
   "xsent_short.cap": {
     "message": "Przykład krótkiego formatu:"
-  },
-  "xsent_short.label": {
-    "message": "%X:=sent% %datelocal%"
   },
   "xsent_short_note.label": {
     "message": "Dodatkowo można również używać w obu wariantach następujących zmiennych:"

@@ -693,7 +693,6 @@ SmartTemplate4.fileTemplates = {
         function(event) { 
           event.stopImmediatePropagation();
           let txt = util.getBundleString("st.fileTemplates.restrictTemplates",[MAX_FREE_TEMPLATES.toString(), MAX_STANDARD_TEMPLATES.toString()]);
-          let mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
           SmartTemplate4.Message.display(
             txt, 
             "centerscreen,titlebar,modal,dialog",
@@ -1089,6 +1088,26 @@ SmartTemplate4.fileTemplates = {
 	
 	// origin: "new", "rsp", "fwd"
 	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
+    
+    /*   START NEW CODE -  [issue 184] */
+    // use a pref switch for testing API processing...
+    if (SmartTemplate4.Preferences.isBackgroundParser()) {
+      // [issue 184]
+      // Test string...
+      let rawTemplate = 
+      `<p>Dear %recipient(name)%</p>
+       <p>%cursor%</p>
+       <p>%identity(firstname)%</p>
+      `;
+      SmartTemplate4.Util.notifyTools.notifyBackground({ 
+        func: "backgroundParser", 
+        composeType, 
+        rawTemplate  // to do: read template from disk
+      });
+      return;
+    }
+    /*   END NEW CODE  - [issue 184] */    
+    
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
     let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
@@ -1219,8 +1238,8 @@ SmartTemplate4.fileTemplates = {
           selectedText = "";
       if (sel && sel.anchorNode) {
         if (sel.rangeCount) {
-          let range = sel.getRangeAt(0);
-          selectedText = range.toString();
+          // sel.getRangeAt(0).toString();
+          selectedText = SmartTemplate4.smartTemplate.unpackSelection(sel);  
         }
         if (selectedText && selectedText.length)
           html = html.replace("*selection*", selectedText);
@@ -1272,6 +1291,53 @@ SmartTemplate4.fileTemplates = {
       flags.filePaths.pop();
     }    
   } ,
+  
+  // [issue 173] function to trigger mailing with a template from a filter (FiltaQuilla feature issue 153)
+  onExternalMailProcess: function(data, composeType) {
+    // similar to onItemClick / onSelectAdHoc
+    SmartTemplate4.Util.logDebug("SmartTemplates.fileTemplates.onExternalMailProcess()", "composeType: " + composeType, data);
+    
+    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184]
+      alert("To do: external mail processing through background - [issue 184]\n"
+        +  "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue");
+      return;
+    }
+    
+    let msgHeader = data.messageHeader;
+    
+    // SmartTemplate4.fileTemplates.armedEntry = 
+    if (!SmartTemplate4.fileTemplates.armedQueue)
+      SmartTemplate4.fileTemplates.armedQueue = [];
+
+    // simulate a reply to this message!
+    let realMessage = SmartTemplate4.Util.extension.messageManager.get(msgHeader.id),
+        uri = realMessage.folder.getUriForMsg(realMessage);
+        
+    SmartTemplate4.fileTemplates.armedQueue.push ({ 
+      composeType: composeType, 
+      path: data.templateURL, 
+      message: msgHeader,
+      isAutoSend: true,  // new flag 
+      uri: uri
+    });
+    
+    SmartTemplate4.Util.logDebug("Sending SmartTemplate triggered by external Add-on", msgHeader);
+
+    let msgUris = new Array(uri);
+    let aCompType;
+    switch(composeType) {
+      case "fwd":
+        aCompType = Ci.nsIMsgCompType.ForwardInline;
+        break;
+      case "rsp":
+        // .ReplyAll  .ReplyToSender  .ReplyToGroup  .ReplyToSenderAndGroup  .ReplyToList:
+        // what about special reply cases, like these?
+        aCompType = Ci.nsIMsgCompType.Reply;
+        break;
+    }
+    ComposeMessage(aCompType, Ci.nsIMsgCompFormat.Default, realMessage.folder, msgUris);
+    SmartTemplate4.Util.logDebug("After calling ComposeMessage");
+  },
   
 	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info

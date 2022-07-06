@@ -30,7 +30,7 @@
     "message": "About SmartTemplates"
   },
   "about.label": {
-    "message": "SmartTemplates offers an easy way to customize Thunderbirds default quote header by using templates. Individual templates can be created for each account as well as a common template for all."
+    "message": "SmartTemplates offers an easy way to customize Thunderbird's default quote header by using templates. Individual templates can be created for each account as well as a common template for all."
   },
   "accept_button": {
     "message": "OK"
@@ -101,10 +101,10 @@
     "message": "I want to help with a one time donation."
   },
   "btnLoadTemplate.tooltip": {
-    "message": "Load Template…"
+    "message": "Load Account Settings…"
   },
   "btnSaveTemplate.tooltip": {
-    "message": "Save Template…"
+    "message": "Save Account Settings…"
   },
   "btnYouTube.tooltip": {
     "message": "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons"
@@ -636,7 +636,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.00 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}to $expiry${boldEnd}.",
+    "message": "Pay only $$5.00 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}until $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -824,10 +824,6 @@
   "no_button": {
     "message": "No"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
@@ -937,7 +933,7 @@
     "message": "Makes sure that the cursor position starts off in a paragraph. We also recommend the Thunderbird Composition option to create a new paragraph on pressing the [Enter] key."
   },
   "pref_fwd.label": {
-    "message": "Apply the following template to the forwarded message"
+    "message": "Apply the following settings to the forwarded message"
   },
   "pref_fwd.tab": {
     "message": "Forward"
@@ -1027,7 +1023,7 @@
     "message": "Replace line breaks with <br>"
   },
   "pref_rsp.label": {
-    "message": "Apply the following template to the replied message"
+    "message": "Apply the following settings to the replied message"
   },
   "pref_rsp.tab": {
     "message": "Reply"
@@ -1330,6 +1326,9 @@
   "st.notification.premium.btn.hotKey": {
     "message": "L"
   },
+  "st.notification.premium.sendByFilter": {
+    "message": "With a valid SmartTemplates Pro license the email would now automatically be sent."
+  },
   "st.notification.premium.btn.renewDomainLicense": {
     "message": "Renew Domain License"
   },
@@ -1419,7 +1418,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "February 20th"
+    "message": "July 17th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1519,8 +1518,11 @@
   "support.type.tech": {
     "message": "Technical"
   },
-  "suppressMailtToLink": {
+  "suppressMailToLink": {
     "message": "Suppress Mail Clients adding links to Email addresses."
+  },
+  "suppressQuoteHdr": {
+    "message": "Completely removes quote header regardless of account settings."
   },
   "tab.gopro": {
     "message": "SmartTemplates Pro"
@@ -1625,6 +1627,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
+  "update.tooltip": {
+    "message": "Click here once to read what's new in $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
   "updates.title": {
     "message": "Updates"
   },
@@ -1659,7 +1670,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-  "message": "{L1}Support of the reply-to header with the variable %recipient%.{L2} {L1}Streamlined warning when template is changed after editing - also supports pushing ESCAPE to close the dialog.{L2}{L1}Fixed: using mailing lists in to, cc and bcc fields. See the change log below for an example of a newsletter for a group of undisclosed recipients.{L2}{L1}Fixed: custom background and text colors ignored when writing new mails. This could lead to problems the editor while using dark themes.{L2}"
+    "message": "{L1}Maintenance fixes for 3.12.2: Expand / collapse / help buttons are now also visible when opening settings from Add-ons Manager. Renew license button on lower left of settings dialog now works as expected{L2}{L1}SmartTemplates Pro now supports using 'clipboard' as argument for text and header manipulation functions such as %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)% {L2} {L1}Use 'toclipboard' to copy various results to clipboard. For instance: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}  {L1}Improved *selection* placeholder in Snippets to better support integration into selected HTML sections. For example, you can now wrap an image with a shadow though inserting a HTML snippet. {L2} {L1}Simplified  settings for identity templates (accounts dropdown){L2}{L1}Numerous compatibility fixes for Thunderbird 102. %spellcheck()% can now set dictionary to proof text with multiple languages.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

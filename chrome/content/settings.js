@@ -400,6 +400,8 @@ SmartTemplate4.Settings = {
 
 		// disable Use default (common account)
 		getElement("use_default").setAttribute("disabled", "true");
+    // [issue 170] allow premature extension
+    getElement("licenseDate").addEventListener("click", settings.showExtensionButton);
 
 		window.onCodeWord = function(code, className) {
 			settings.onCodeWord(code, className);
@@ -482,7 +484,7 @@ SmartTemplate4.Settings = {
 			getElement('templatesTab').collapsed = true;
 		}
 		else {
-			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 5000);
+			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 500);
 		}
     
     let nickBox = getElement('chkResolveABNick'),
@@ -572,13 +574,38 @@ SmartTemplate4.Settings = {
 	
 	toggleExamples: function toggleExamples(el) {
 		document.getElementById('templatesTab').collapsed = (el.checked);
+    if (!el.checked)
+      SmartTemplate4.Settings.loadTemplatesFrame();
 	} ,
 	
 	loadTemplatesFrame: function loadTemplatesFrame() {
+    const url = "https://smarttemplates.quickfolders.org/templates.html";
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
-    if (!templatesIFrame.getAttribute("src"))
-      templatesIFrame.setAttribute("src", "https://smarttemplates.quickfolders.org/templates.html");
+    let browser = document.getElementById("templatesBrowser");
+    let isNewRemoteContent = false;
+    
+    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.AppverFull, "91")) {
+      // with fission enabled (Tb91 defaults browser.tabs.remote.autostart = true)
+      var { MailE10SUtils } = ChromeUtils.import(
+        "resource:///modules/MailE10SUtils.jsm"
+      );
+      if (browser && MailE10SUtils && MailE10SUtils.loadURI) {
+        browser.setAttribute("remote", "true");
+        MailE10SUtils.loadURI(
+          browser,
+          url
+        );
+        isNewRemoteContent = true;
+        if (templatesIFrame) templatesIFrame.parentNode.removeChild(templatesIFrame);
+      }
+    }
+    if (!isNewRemoteContent) {
+      if (!templatesIFrame.getAttribute("src"))
+        templatesIFrame.setAttribute("src", url);
+      // the browser element shouldn't be here because we do not inject it
+      if (browser) browser.parentNode.removeChild(browser); 
+    }
 	} ,
 
 	onCodeWord : function onCodeWord(code, className) {
@@ -847,7 +874,6 @@ SmartTemplate4.Settings = {
 			let appendedChild = el.parentNode.appendChild(clone);
 			let spacers = appendedChild.querySelectorAll(".tabs-left");
 			
-			//oder spacers.length==2 ??
 			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
 				util.logDebug("addIdentity() - removing first spacer");
 				spacers[0].remove();
@@ -914,7 +940,17 @@ SmartTemplate4.Settings = {
 
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
-				theMenu.appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
+        
+        // remove account name 
+        let idText = "", acc = "";
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showIdKey")) {
+          idText = identity.key + " - ";
+        }
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showAccountName")) {
+          acc = account.incomingServer.prettyName + " - ";
+        }
+        let lbl = idText + acc + identity.identityName;
+				theMenu.appendItem(lbl, identity.key, "");
 				this.addIdentity(identity.key);
 			}
 		}
@@ -973,9 +1009,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
-			// el.value could not access.. why??
 				document.getElementById("msgIdentity").selectedIndex = index;
-				// no fire event with set selectedIndex/selectedItem.. why??
 				this.selectIdentity(idKey);
         wasSwitched = true;
 				break;
@@ -1496,9 +1530,23 @@ SmartTemplate4.Settings = {
     }
     licenseDateLbl.textContent = txtGracePeriod;
     licenseDateLbl.classList.add('important');
+    licenseDate.classList.remove('valid'); // [issue 170]
     licenseDate.value = "";
   },
 
+  // [issue 170] allow license extension
+  // show the extension button if user is elligible
+  showExtensionButton: function() {
+    if (SmartTemplate4.Util.licenseInfo.status == "Valid") {
+      if (SmartTemplate4.Util.licenseInfo.keyType!=2) { // PRO +Domain
+        let btnLicense = document.getElementById("btnLicense");
+        SmartTemplate4.Settings.labelLicenseBtn(btnLicense, "extend");
+      }
+      else { // standard function - go to License screen to upgrade!
+        SmartTemplate4.Util.showLicenseDialog("licenseTab");  
+      }
+    }
+  },
       
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
@@ -1548,6 +1596,7 @@ SmartTemplate4.Settings = {
 					else
 						showValidationMessage(validationPassed, silent);
           licenseDate.value = niceDate;
+          licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.value = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
@@ -1771,15 +1820,6 @@ SmartTemplate4.Settings = {
             donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
-							donateButton.addEventListener(
-								"click", 
-								function(event) { 
-									setTimeout(function() { 
-                    SmartTemplate4.Util.showLicenseDialog("extra2"); 
-										window.close(); 
-									});	
-								}, 
-								false);
 						}
 						else {
 							switch (licenseInfo.status) {
@@ -1797,8 +1837,17 @@ SmartTemplate4.Settings = {
 									options.labelLicenseBtn(donateButton, "buy");
 									break;
 							}
-							
 						}
+            donateButton.addEventListener(
+              "click", 
+              function(event) { 
+                setTimeout(function() { 
+                  SmartTemplate4.Util.showLicenseDialog("extra2"); 
+                  window.close(); 
+                });	
+              }, 
+              false);
+            
 				}			
 		//	}, 500
 		//);
