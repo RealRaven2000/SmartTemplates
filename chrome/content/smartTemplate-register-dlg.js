@@ -67,7 +67,7 @@ var Register = {
 				util.logDebug('Register.updateLicenseUI()\n' + 'ValidationStatus = ' + licenseInfo.description)
 			}
 				
-      getElement('licenseDate').value = decryptedDate; // invalid ??
+      getElement('licenseDate').value = decryptedDate; // invalid ?
 			if (licenseInfo.isExpired || licenseInfo.isValid) { // A LICENSE EXISTS ALREADY
 				// LICENSE IS EITHER EXPIRED OR UP FOR RENEWAL SOON
 				let btnProLicense = getElement('btnLicense'),
@@ -227,7 +227,7 @@ var Register = {
         let idCount = ids ? ids.length : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
         for (let i=0; i<idCount; i++) {
-          // use ac.defaultIdentity ??
+          // use ac.defaultIdentity ?
           // populate the dropdown with nsIMsgIdentity details
           let id = util.getIdentityByIndex(ids, i);
           if (!id) continue;

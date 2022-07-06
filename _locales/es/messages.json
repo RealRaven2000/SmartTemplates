@@ -190,6 +190,9 @@
   "cost-of-independence": {
     "message": "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
   },
+  "creator.label": {
+    "message": "Creador"
+  },
   "cursor.label": {
     "message": "Establece la posición del cursor"
   },
@@ -268,6 +271,9 @@
   "day.7.short": {
     "message": "Sáb"
   },
+  "defaultMimeFormat": {
+    "message": "Formato de dirección predeterminado:"
+  },
   "defaultMimeFormat_tip": {
     "message": "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
   },
@@ -343,6 +349,45 @@
   },
   "fileImage.label": {
     "message": "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen."
+  },
+  "fileTemplates.add": {
+    "message": "Agregar"
+  },
+  "fileTemplates.down": {
+    "message": "Abajo"
+  },
+  "fileTemplates.file.open": {
+    "message": "Seleccione el archivo de plantilla del disco"
+  },
+  "fileTemplates.file.path": {
+    "message": "Ubicación de la plantilla:"
+  },
+  "fileTemplates.file.title": {
+    "message": "Título:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Esto se mostrará en el menú de selección de plantilla."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Adelante'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Crear nuevo mensaje'."
+  },
+  "fileTemplates.remove": {
+    "message": "Remover"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Lista de archivos de plantillas externas que se pueden iniciar desde el botón 'Responder'."
+  },
+  "fileTemplates.title": {
+    "message": "Archivos de plantilla"
+  },
+  "fileTemplates.up": {
+    "message": "Arriba"
+  },
+  "fileTemplates.update": {
+    "message": "Actualizar"
   },
   "firstName.label": {
     "message": "Nombre:"
@@ -1312,7 +1357,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 de febrero"
+    "message": "17 de julio"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1512,6 +1557,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
+  "update.tooltip": {
+    "message": "Haga clic aquí una vez para leer las novedades de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Actualizaciones"
   },
@@ -1546,7 +1600,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Modificar el texto en el cuerpo del correo reenviado [en línea]. Esto ahora funciona en las funciones: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Reenvío automático/Respuesta automática con SmartTemplate mediante reglas de filtro; esto significa puede activar cualquier plantilla usando filtros (usando FiltaQuilla 3.4). Exclusivo para licenciatarios de SmartTemplates Pro.{L2}{L1} Comando %suppressQuoteHeaders% para suprimir todos los encabezados de cotizaciones.{L2}"
+    "message": "{L1}Correcciones de mantenimiento para 3.12.2: los botones de expandir/contraer/ayuda ahora también están visibles al abrir la configuración desde el Administrador de complementos. El botón Renovar licencia en la parte inferior izquierda del cuadro de diálogo de configuración ahora funciona como se esperaba{L2}{L1}SmartTemplates Pro ahora admite el uso de 'clipboard' (portapapeles) como argumento para funciones de manipulación de texto y encabezado, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Use 'toclipboard' para copiar varios resultados al portapapeles. Por ejemplo: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Marcador de posición *selection* (selección) mejorado en Snippets para admitir mejor la integración en secciones HTML seleccionadas. Por ejemplo, ahora puede envolver una imagen con una sombra mediante la inserción de un fragmento de código HTML.{L2}{L1}Configuración simplificada para plantillas de identidad (menú desplegable de cuentas){L2}{L1}Numerosas correcciones de compatibilidad para Thunderbird 102. %spellcheck()% ahora puede configurar el diccionario para revisar el texto con varios idiomas.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

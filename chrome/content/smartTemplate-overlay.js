@@ -90,7 +90,7 @@ SmartTemplate4.classPref = function() {
 		return getWithIdkey(idKey, composeType + "header", def);
 	};
 
-	function isProcessingActive(idKey, composeType, def) {
+	function isTemplateActive(idKey, composeType, def) {
 		let isActive = getWithIdkey(idKey, composeType, def);
 		if (!isActive) return false; // defaults to empty string
 		return isActive;
@@ -129,7 +129,7 @@ SmartTemplate4.classPref = function() {
 	this.getWithIdkey = getWithIdkey;
 	this.isCommon = isCommon;
 	this.isDeleteHeaders = isDeleteHeaders;
-	this.isProcessingActive = isProcessingActive;
+	this.isTemplateActive = isTemplateActive;
 	this.isReplaceNewLines = isReplaceNewLines;
 	this.isUseHtml = isUseHtml;
 
@@ -187,7 +187,7 @@ var SmartTemplate4_streamListener =
     // in nsresult aStatusCode
     do_check_eq(aStatusCode, 0);
     do_check_true(this._data.contains("Content-Type"));
-    // async_driver(); //????
+    // async_driver(); 
   },
 
   // concatenate stream data into a string
@@ -255,6 +255,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	let msgContent = "",
 	    contentCache = "";
   try {
+    SmartTemplate4.isStreamingMsg = true; // avoid notifyMsgBody being executed while streaming the main message (too early)!
     while (inputStream.available()) { 
       msgContent = msgContent + inputStream.read(2048); 
       let p = msgContent.search(/\r\n\r\n|\r\r|\n\n/); //todo: it would be faster to just search in the new block (but also needs to check the last 3 bytes)
@@ -272,6 +273,9 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
   catch(ex) {
     util.logException('Reading inputStream failed:', ex);
     if (!msgContent) throw(ex);
+  }
+  finally {
+    SmartTemplate4.isStreamingMsg = false;
   }
   
 	headers.initialize(msgContent, msgContent.length);
@@ -490,7 +494,8 @@ SmartTemplate4.mimeDecoder = {
 		function isLastName(format) { return (format.search(/^\(lastname[,\)]/, "i") != -1); };
     // argType = Mail or Name to support bracketMail and bracketName
     function getBracketAddressArgs(format, argType) { 
-      let reg = new RegExp('bracket' + argType + '\\<(.+?)\\>', 'g'), //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail<*> !
+      //   /bracketMail\[(.+?)\]/g, // we have previously replaced bracketMail(*) with bracketMail{*} !
+      let reg = new RegExp('bracket' + argType + '\\{(.+?)\\}', 'g'), 
           ar = reg.exec(format);
       if (ar && ar.length>1) {
         let args = ar[1];
@@ -588,8 +593,14 @@ SmartTemplate4.mimeDecoder = {
                 del2 = ')';
                 break;
               case 'angle': case 'angled':
-                del1 = '&lt;'; // <
-                del2 = '&gt;';  // >
+                if (isWriteClipboard) { // [issue 200]
+                  del1 = '<'; 
+                  del2 = '>'; 
+                }
+                else {
+                  del1 = '&lt;'; // <
+                  del2 = '&gt;'; // >
+                }
                 break;
               default:
                 del1 = delimiters[0]; // allow single delimiter, such as dash
@@ -629,7 +640,7 @@ SmartTemplate4.mimeDecoder = {
 		
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
-      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail<angle>'
+      format =  prefs.getMyStringPref('mime.defaultFormat').replace("(","<").replace(")",">") ; // 'name,bracketMail{angle}'
     }
     
 		util.logDebugOptional('mime.split',
@@ -656,7 +667,8 @@ SmartTemplate4.mimeDecoder = {
     // bracketMail(args) - special function (we replaced the round brackets with < > for parsing)
     // link, islinkable  - these are "modifiers" for the previous list element
 		let formatArray = util.splitFormatArgs(format),
-        isForceAB = false;
+        isForceAB = false,
+        isWriteClipboard = formatArray.findIndex((e) => e.field=="toclipboard")>-1; // [issue 187]
     
     let dbgText = 'addrstr.split() found [' + array.length + '] addresses \n' + 'Formats:\n';
     for (let i=0; i<formatArray.length; i++) {
@@ -713,7 +725,9 @@ SmartTemplate4.mimeDecoder = {
 			// Escape "," in mail addresses
 			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
 			                   .replace(/"[^"]*"/,
-			                   function(s){ return s.replace(/-%-/g, ",").replace(/%%/g, "%"); });
+			                   (s) => { 
+                          return s.replace(/-%-/g, ",").replace(/%%/g, "%"); 
+                         });
 			// name or/and address. (wraps email into <  > )
 			address = array[i].replace(/^\s*([^<]\S+[^>])\s*$/, "<$1>").replace(/^\s*(\S+)\s*\((.*)\)\s*$/, "$2 <$1>");
 			
@@ -804,7 +818,7 @@ SmartTemplate4.mimeDecoder = {
           fullName = firstName + ' ' + lastName ; 
         }
         else {
-          fullName = firstName ? firstName : lastName;  // ???
+          fullName = firstName ? firstName : lastName;  // ?
         }
         if (!fullName) fullName = addressee.replace("."," "); // we might have to replace . with a space -  fall back
       }
@@ -851,13 +865,11 @@ SmartTemplate4.mimeDecoder = {
       // build the part!
 			let addressElements = [],
 			    foundNonOptionalParts = false,
-			    open = '', 
-					close = '',
-					bracketsAreOptional = false; // bracket Elements
+			    bracketsAreOptional = false; // bracket Elements
           
       for (let j=0; j<formatArray.length; j++)  {
         let element = formatArray[j],
-            part = '',
+            part = "", open = "", close = "",
 						isOptionalPart = false,
 						partKeyWord = element.field; 
 						
@@ -883,11 +895,12 @@ SmartTemplate4.mimeDecoder = {
                 break;
               default:
                 //empty anchor suppresses link; adding angle brackets as default
-                // TO DO: make default brackets configurable later
-                if (prefs.getMyBoolPref('mail.suppressLink'))
+                if (!isWriteClipboard && prefs.getMyBoolPref('mail.suppressLink')) {
                   part = "<a>" + "&lt;" + emailAddress + "&gt;" + "</a>"; 
-                else
-                  part = emailAddress;                  
+                }
+                else {
+                  part = emailAddress;
+                }
             }
             break;
 					case 'fwd': // this is handled on the outside, so we ignore it
@@ -1018,14 +1031,19 @@ SmartTemplate4.mimeDecoder = {
             part = getCardProperty("Notes");
             break;
           case 'addressbook':
-            part = "";          
+            part = "";
+          case 'toclipboard':
+            isWriteClipboard = true;
+            part = "";
+            break;
           default:
-            let bM = (partKeyWord.indexOf('bracketMail<')==0),
-                bN = (partKeyWord.indexOf('bracketName<')==0);
+            // [issue 186] allow using bracketMail / bracketName without parentheses
+            let bM = (partKeyWord.indexOf('bracketMail')==0),   // bracketMail{
+                bN = (partKeyWord.indexOf('bracketName')==0);   // bracketName{
             if (bM || bN) {
               if (bM) {
                 [open, close, bracketsAreOptional] = getBracketDelimiters(bracketMailParams, element);
-                part = emailAddress ?  emailAddress : ''; // adding brackets later!
+                part = emailAddress || ""; // adding brackets later!
               }
               else {
 								if (isGuessFromAddressPart || fullName) {
@@ -1034,7 +1052,7 @@ SmartTemplate4.mimeDecoder = {
 									part = fN ? fN : '';
 								}
 								else
-									part = '';
+									part = "";
               }
             }
             break;
@@ -1059,7 +1077,7 @@ SmartTemplate4.mimeDecoder = {
 					continue;
         // append the next part if not empty
         if (aElement.part.length>0) {  // [issue 153]
-          if (addressField.length) addressField += ' '; // space to append next parts
+          if (addressField.length) addressField += " "; // space to append next parts
 					// if there is only one element and brackets param is prefixed with ??
 					// e.g. %from(name,bracketMail(??- {,}))%
 					// Name - {email}
@@ -1074,6 +1092,17 @@ SmartTemplate4.mimeDecoder = {
       util.logDebugOptional('mime.split', 'adding formatted address: ' + addressField);
       addresses += addressField;
 		}
+    
+    if (isWriteClipboard) {
+      if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+        util.addUsedPremiumFunction("clipboard");
+      }
+      else {
+        util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
+        util.clipboardWrite(addresses);
+      }
+      addresses = "";
+    }
 		return addresses;
 	} // split
 };
@@ -1152,13 +1181,19 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
                   }
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 								}
-								util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
-								msg = msg.replace(matchPart[i], replaceGroupString);
+                if (matchPart[i].lastIndexOf(",toclipboard")>0) {
+                  util.clipboardWrite(replaceGroupString); // [issue 187]
+                  msg = msg.replace(matchPart[i], "");
+                }
+                else {
+                  util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
+                  msg = msg.replace(matchPart[i], replaceGroupString);
+                }
 							}
 							else {       
                 // not matched, insert string from third parameter
 							  let alternative = matchPart[i].match( /[0-9],\"(.*)\"/ ); // get what's between the last double quotes
-                if (alternative) {
+                if (alternative && alternative!="toclipboard") {
                   // if no match found but there is a 3rd parameter, replace with this instead.
                   msg = msg.replace(matchPart[i], alternative[1]);
                 }
@@ -1188,7 +1223,8 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
     
     if (theStrings.length>=2) {
       dText1 = theStrings[0].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
-      dText2 = theStrings[1].match(   /\"[^)].*\"/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
+      dText2 = theStrings[1].match(   /\"[^)].*\"/   )
+        || theStrings[1].match(   /clipboard/   ); // get 2 arguments (includes quotation marks) "Replace", "With" => double quotes inside are not allowed.
       // %replaceText("xxx", %matchBodyText("yyy *")%)%; // nesting to get word from replied
     
       let errTxt = "Splitting " + functionName + "(a,b) arguments could not be parsed.",
@@ -1807,7 +1843,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText", "clipboard"
+    "conditionalText", "clipboard", "attachments"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -1970,7 +2006,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
     function modifyHeader(hdr, cmd, argString, matchFunction="") {
-      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority"],
+      const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","message-id"],
             ComposeFields = gMsgCompose.compFields;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
@@ -1983,10 +2019,23 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           if (cmd=="deleteFromSubject") {
             argument = argString.substr(1); // cut off opening parenthesis
           }
-				  if (argument.startsWith("\""))  // string wrapped in double quotes
+				  if (argument.startsWith("\"")) { 
+            // string wrapped in double quotes
 						argument = argument.substr(1, argument.lastIndexOf("\"")-1);
-					else   // literal, only remove the closing parentheses
+          } else { 
+            // literal, only remove the closing parentheses
 						argument = argument.substr(0, argument.lastIndexOf(")"));
+          }
+          // [issue 183]
+          if (argument=="clipboard") {
+            if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+              argument = "";
+              util.addUsedPremiumFunction("clipboard");
+            }
+            else {
+              argument = util.clipboardRead();
+            }
+          }
 				  break;
 				case "matchFromSubject":
 				case "matchFromBody":
@@ -2013,8 +2062,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
         if (whiteList.indexOf(hdr)<0) {
           // not in whitelist
-          if (hdr.toLowerCase().startsWith("list"))
+          if (hdr.toLowerCase().startsWith("list") || hdr.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
             isClobberHeader = true;
+          }
           else {
             util.logToConsole("invalid header - no permission to modify: " + hdr + 
               "\nSupported headers: " + whiteList.join(', '));
@@ -2044,9 +2094,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           case 'reply-to':
             targetString = ComposeFields.replyTo;
             break;
+          case "message-id":
+            modType = 'string';
+            targetString = ComposeFields.messageId;
+            break;
           default:
             if (isClobberHeader) {
-              debugger;
               modType = 'string';
               targetString = gMsgCompose.compFields.getHeader(hdr) || "";
             }
@@ -2154,6 +2207,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 						    + "Must be one of [" + validVals.join() +  "]");
 						
 					  break;
+          case "message-id":
+            ComposeFields.messageId = targetString;
+            break;
           default:
             if (isClobberHeader) {
               if (targetString) {
@@ -2287,6 +2343,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 		let debugTimeStrings = (prefs.isDebugOption('timeStrings'));
 		if (!arg) arg='';
+    
+    // arg is the arguments string including parentheses, e.g. from(mail) = "(mail)"
+    // create an array of arguments for any variable
+    let args = (arg && arg.startsWith("(")) ? removeParentheses(arg).split(",") : [];
+    
 		try {
 			// for backward compatibility
 			switch (token) {
@@ -2337,16 +2398,25 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "dateformat":
 					if (debugTimeStrings) debugger;
 					tm = new Date();
-					const dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
+					let dateFormatSent = (SmartTemplate4.whatIsX == SmartTemplate4.XisSent && date);
+          if (arg.includes("current")) {
+            dateFormatSent = false; // force using current time!
+          }
 					if (dateFormatSent)
 						tm.setTime((date / 1000));
           // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
           arg = util.removeHtmlEntities(arg);
 					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
-					if (dateFormatSent)
-						token = defaultTime;
-					else
-						token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+          if (arg.includes("toclipboard")) {
+            token = ""; // no deferred variable, just remove the variable silently
+          }
+          else {
+            if (dateFormatSent)
+              token = defaultTime;
+            else {
+              token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+            }
+          }
 					return token; 
 				case "datelocal":
 				case "dateshort":
@@ -2371,6 +2441,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				case "ownmail": // own email address
 					token = identity.email;
 					break;
+        case "attachments":  // e.g. attachments(list)  <ul><li> .. <li> .. <li>  </ul>
+                             // attachments(lines)
+                             // API: messages.listAttachments(messageId)
+          return "list of attachment names...";
+				// for Common (new/reply/forward) message          
 				case "quoteHeader":  // is this useful when Stationery does not exist?
 					return "<span class=\"quoteHeader-placeholder\"></span>";
 				case "quotePlaceholder":  
@@ -2624,55 +2699,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           util.addUsedPremiumFunction('conditionalText');
           return insertConditionalText(arg);
         case "clipboard":
-          {
-            let cp = "";
-            const flavor = "text/unicode",
-                  flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
-                  xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
-            if (!xferable) {
-              util.logToConsole("%clipboard% Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
-            }
-            else {
-              xferable.init(null);
-              let finalFlavor = "";
-              if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
-                finalFlavor = flavorHTML;
-              }
-              else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
-                finalFlavor = flavor;
-              }
-              
-              if (finalFlavor) {
-                xferable.addDataFlavor(finalFlavor);
-                // Get the data into our transferable.
-                Services.clipboard.getData(xferable, Services.clipboard.kGlobalClipboard);
-                
-                const data = {};
-                try {
-                  xferable.getTransferData(finalFlavor, data);
-                } catch (e) {
-                  // Clipboard doesn't contain data in flavor, return null.
-                  return "";
-                }
-
-                // There's no data available, return.
-                if (!data.value) {
-                  return "";
-                }
-
-                cp = data.value.QueryInterface(Ci.nsISupportsString).data;              
-              }
-              return cp;
-            }
+          if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+            util.addUsedPremiumFunction("clipboard");
+            return "";
           }
-        
+          return util.clipboardRead();
+
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
-            let args = arg.split(","),
-                modHdr = args.length ? args[0].toLowerCase().substr(1) : ''; // cut off "("
-                
-            if (modHdr.startsWith("list")) modHdr = args[0].substr(1); // add case back.
+            let modHdr = args.length ? args[0].toLowerCase() : ''; // cut off "("
+            if (modHdr.startsWith("list")) modHdr = args[0]; // add case back.
             if (args.length<2 && token!="header.deleteFromSubject") {
               util.logToConsole("header modification - second parameter missing in command: %" + token + "%");
               return '';
@@ -2746,9 +2783,21 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
             return newTok;
           }
+          
+          if (args.includes("toclipboard")) {
+            if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+              util.addUsedPremiumFunction("clipboard");
+            }
+            else {
+              util.clipboardWrite(headerValue);
+            }
+            return "";
+          }
+          
 					// allow HTML as to(link) etc. builds a href with mailto
-					if (testHTML(headerValue, arg)) // avoid double escaping
+					if (testHTML(headerValue, arg)) { // avoid double escaping
 						return headerValue;
+          }
 					token = headerValue;
 					break;
 			}
@@ -2760,6 +2809,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
       return token;
 		}
+    
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
 	
@@ -3151,7 +3201,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	if (prefs.getMyBoolPref('xtodaylegacy')) {
 		//Now do this chaotical stuff:
 		//Reset X to Today after each newline character
-		//except for lines ending in { or }; breaks the omission of non-existent CC??
+		//except for lines ending in { or }; breaks the omission of non-existent CC?
 		msg = msg.replace(/\n/gm, "%X:=today%\n");
 		//replace this later!!
 		// msg = msg.replace(/{\s*%X:=today%\n/gm, "{\n");
@@ -3182,11 +3232,17 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				{ msg = msg.replace(/ /gm, "&nbsp;"); }
 		}
 	}
-  // replace round brackets of bracketMail() with <> - using the second (=inner) match group
+  // replace round brackets of bracketMail() with {} - using the second (=inner) match group
   // this makes it possible to nest functions!
   // [Bug 26100] bracketMail wasn't working in optional [[ cc ]] block.
-	msg = msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
-	msg = msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
+  // v1
+  // msg.replace(/(bracketMail\(([^)]*))\)/gm, "bracketMail\<$2\>");
+  // msg.replace(/(bracketName\(([^)]*))\)/gm, "bracketName\<$2\>");
+  // v2
+	// msg = msg.replaceAll(/%(.*)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
+	// msg = msg.replaceAll(/%(.*)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
+	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
+	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;

@@ -814,10 +814,6 @@
   "no_button": {
     "message": "Ingen"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Klicka på notifikation"
-  },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
@@ -1406,7 +1402,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 februari"
+    "message": "17 juli"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1615,6 +1611,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
+  "update.tooltip": {
+    "message": "Klicka här en gång för att läsa vad som är nytt i $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Uppdateringar"
   },
@@ -1649,7 +1654,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Ändra text i brödtexten i vidarebefordrad e-post [inline]. Detta fungerar nu i funktionerna: %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Automatisk vidarebefordran / Automatiskt svar med SmartTemplate genom filterregler - detta betyder du kan trigga vilken mall som helst med hjälp av filter (med FiltaQuilla 3.4). Exklusivt för SmartTemplates Pro-licenstagare.{L2}{L1} kommandot %suppressQuoteHeaders% för att undertrycka alla citattecken.{L2}"
+    "message": "{L1}Underhållskorrigeringar för 3.12.2: Utöka/komprimera/hjälp-knappar är nu också synliga när du öppnar inställningar från tilläggshanteraren. Knappen Förnya licens längst ner till vänster i inställningsdialogrutan fungerar nu som förväntat{L2}{L1}SmartTemplates Pro stöder nu användningen av 'clipboard' (urklipp) som argument för text- och rubrikmanipuleringsfunktioner som %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(reguljärt uttryck,clipboard)% %replaceQuotedText(reguljärt uttryck,clipboard)% {L2}{L1}Använd 'toclipboard' för att kopiera olika resultat till urklipp. Till exempel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Förbättrad *selection* (selektion) platshållare i Snippets för att bättre stödja integration i utvalda HTML-sektioner. Till exempel kan du nu linda en bild med en skugga genom att infoga ett HTML-kodavsnitt.{L2}{L1}Förenklade inställningar för identitetsmallar (rullgardinsmenyn för konton){L2}{L1}Många kompatibilitetskorrigeringar för Thunderbird 102. %spellcheck()% kan nu ställa in ordbok för att korrekturläsa text med flera språk.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

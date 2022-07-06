@@ -1,0 +1,4 @@
+The following Icons are reproduced  under https://www.svgrepo.com/page/licensing:
+three-dots-svgrepo-com.svg         CC0 License - SVG Repo
+left-svgrepo-com.svg               CC Attribution License - salesforce
+youtube-svgrepo-com.svg            CC0 License - SVG Repo

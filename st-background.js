@@ -1,5 +1,12 @@
-import * as util from "./scripts/st-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
+import {SmartTemplates} from "./scripts/st-main.mjs.js";
+import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
+
+
+
+var stProcess = new SmartTemplatesProcess(); // use stProcess.composer
+console.log(SmartTemplates, stProcess);
+SmartTemplates.Util.log("test", "test2");
 
 var currentLicense;
 const GRACEPERIOD_DAYS = 28;
@@ -8,6 +15,11 @@ const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
 
 var startupFinished = false;
 var callbacks = [];
+
+var ComposeAction = {};
+
+
+
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
@@ -232,10 +244,11 @@ async function main() {
         // main window update reacting to license status change
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
+        
     }
   });
-   
-   
+  
+  
   browser.runtime.onMessageExternal.addListener( async  (message, sender) =>  
   {
     // { command: "forwardMessageWithTemplate", messageHeader: msgKey, templateURL: data.fileURL }

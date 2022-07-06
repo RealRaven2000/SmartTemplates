@@ -7,14 +7,16 @@
 
 
 #helpTemplates, #helpSnippets {
-  list-style-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+	-moz-context-properties: fill;
+	fill: currentColor;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 #helpStationery {
   -moz-appearance: none !important; 
-  background-image: url("chrome://smartTemplate4/content/skin/icons/fugue-question.png");
+  background-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
   background-repeat: no-repeat;
   cursor: pointer;
   margin-top: 3px;
@@ -695,6 +697,10 @@ table div.no {
   max-width: 460px;
 }
  
+ 
+.contextConfig:hover {
+  background-color: pink;
+}
 
 /* #### help frame  #### */
 #helpFrame {
@@ -715,23 +721,41 @@ table div.no {
   overflow-y: auto;
   overflow-x: hidden;
 }
+#templateTools toolbarbutton {
+  min-width: unset;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 
-#btnSaveTemplate, #btnLoadTemplate, #btnYouTube {
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
+/* buttons permanently invisible when opened from Add-ons Manager */
+toolbar toolbarbutton:not([hidden]) {
 	display: -moz-box;
 }
+
+#smartTemplatePane toolbarbutton {
+  /* Tb 102 */
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+
 #smartTemplatePane #btnSaveTemplate,
 #smartTemplatePane toolbar[brighttext] #btnSaveTemplate {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/fugue-disk.png") !important;
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/save.svg") !important;
 }
 #smartTemplatePane #btnLoadTemplate,
 #smartTemplatePane toolbar[brighttext] #btnLoadTemplate {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/template-load.png") !important;
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/open.svg") !important;
 }
 
 #smartTemplatePane #btnYouTube,
 #smartTemplatePane toolbar[brighttext] #btnYouTube {
-	list-style-image: url("chrome://smarttemplate4/content/skin/icons/youtube.png") !important;
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/youtube-svgrepo-com.svg") !important;
+  fill: rgb(166,0,0) !important;
+}
+
+#smartTemplatePane #btnYouTube:hover {
+  fill: rgb(255,0,0) !important;
 }
 
 
@@ -750,12 +774,11 @@ table div.no {
 }
 
 #btnAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-right.png") !important;
-  padding-right: 1em;
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/three-dots-svgrepo-com.svg") !important;
 }
 
 #btnCloseAdvanced {
-	list-style-image: url("chrome://smartTemplate4/content/skin/icons/arrow-left.png") !important;
+	list-style-image: url("chrome://smartTemplate4/content/skin/icons/left-svgrepo-com.svg") !important;
 }
 
 

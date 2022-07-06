@@ -805,10 +805,6 @@
   "no_button": {
     "message": "いいえ"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "通知をクリック"
-  },
   "ongoing-work": {
     "message": "$addonName$ を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。次の 2022 バージョンにはさらに多くの変更があります。このような複雑なアドオンでは、コストのかかる作業が避けられなくなります。私たちを支援してください。",
     "placeholders": {
@@ -1379,7 +1375,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "2 月 20 日"
+    "message": "7月17日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1585,6 +1581,15 @@
   "tzname.label": {
     "message": "タイムゾーン (GMT, PST, EST, ... )"
   },
+  "update.tooltip": {
+    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新について"
   },
@@ -1619,7 +1624,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}転送されたメールの本文のテキストを変更します[インライン]。 これは次の関数で機能するようになりました：％deleteQuotedText（）％、％replaceQuotedText（）％、％deleteQuotedTags（）％、％replaceQuotedTags（）％。{L2} {L1}フィルタールールによるSmartTemplateによる自動転送/自動応答-これは フィルタを使用して（FiltaQuilla 3.4を使用して）任意のテンプレートをトリガーできます。 SmartTemplatesProライセンシー専用。{L2} {L1}％suppressQuoteHeaders％コマンドを使用して、すべての引用符ヘッダーを抑制します。{L2}"
+    "message": "{L1} 3.12.2のメンテナンスの修正：アドオンマネージャーから設定を開くときに、展開/折りたたみ/ヘルプボタンも表示されるようになりました。 設定ダイアログの左下にある[ライセンスの更新]ボタンが期待どおりに機能するようになりました{L2}{L1} SmartTemplates Proは、「clipboard」 の使用をサポートするようになりました %header.set(to,clipboard)% %header.prefix(subject,clipboard)%   %replaceText(regular Expression,clipboard)%   %replaceQuotedText(regular Expression,clipboard)% などのテキストおよびヘッダー操作関数の引数として{L2} {L1}'toclipboard'を使用して、さまざまな結果をクリップボードにコピーします。 例： %from（name,toclipboard）% %dateformat（\"A,e/n/Y H：M\",current,toclipboard）%{L2} {L1}Snippetsの*selection*（selection）プレースホルダーが改善され、選択したHTMLセクションへの統合がより適切にサポートされるようになりました。 たとえば、HTMLスニペットを挿入しても、画像を影で囲むことができるようになりました。{L2} {L1} IDテンプレートの設定の簡略化（アカウントのドロップダウン）{L2} {L1}Thunderbird102の多数の互換性修正。 %spellcheck()% は、辞書を複数の言語でテキストを校正するように設定できるようになりました。{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

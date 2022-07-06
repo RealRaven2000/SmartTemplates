@@ -8,7 +8,6 @@ async function onLoad(activatedWhileWindowOpen) {
   const util = window.SmartTemplate4.Util;
   if (util.versionGreaterOrEqual(util.AppverFull, "91")) {
     util.logDebug("Inject Browser element");
-    debugger;
     WL.injectElements(`
     <tabpanel flex = "1" id = "templatesFrame">
         <browser id="templatesBrowser"

@@ -194,8 +194,7 @@ const discountUpgrade = "50%";
     
     let whatsNewLst = document.getElementById('whatsNewList');
     function replaceVariableCodeTags(txt) {
-      let tags = ["suppressQuoteHeaders", "deleteQuotedText()", "replaceQuotedText()", "deleteQuotedTags()", 
-                  "replaceQuotedTags()"];
+      let tags = ["header.set(to,clipboard)", "header.prefix(subject,clipboard)", "replaceText(regular Expression,clipboard)", "replaceQuotedText(regular Expression,clipboard)", "spellcheck()", "from(name,toclipboard)", "dateformat(\"A, e/n/Y H:M\",current,toclipboard)"];
       for (let x of tags) {
         txt = txt.replace(`%${x}%`, `<code>%${x}%</code>`);
       }

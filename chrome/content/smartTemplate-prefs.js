@@ -1,5 +1,4 @@
-"use strict"
-
+"use strict";
 /* 
 BEGIN LICENSE BLOCK
 
@@ -26,6 +25,11 @@ SmartTemplate4.Preferences = {
 		}
 		catch(e) {return false;}
 	},
+  
+  isBackgroundParser: function() {
+    // switch for [issue 184] - background parsing & composer processing [mx]
+    return SmartTemplate4.Preferences.getMyBoolPref("BackgroundParser");
+  },
 	
 	getStringPref: function getStringPref(p) {
     let prefString ='',
@@ -46,10 +50,7 @@ SmartTemplate4.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-		if (this.service.setStringPref)
-			return this.service.setStringPref(this.Prefix + p, v);
-		else 
-			return this.service.setCharPref(this.Prefix + p, v);
+    return this.service.setStringPref(this.Prefix + p, v);
 	},
 
 	getIntPref: function(p) {

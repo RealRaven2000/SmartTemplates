@@ -874,7 +874,6 @@ SmartTemplate4.Settings = {
 			let appendedChild = el.parentNode.appendChild(clone);
 			let spacers = appendedChild.querySelectorAll(".tabs-left");
 			
-			//oder spacers.length==2 ??
 			if (spacers[1] && (spacers[1].previousSibling == spacers[0])) {
 				util.logDebug("addIdentity() - removing first spacer");
 				spacers[0].remove();
@@ -941,7 +940,17 @@ SmartTemplate4.Settings = {
 
 				if (CurId == identity)
 					currentId = theMenu.itemCount; // remember position
-				theMenu.appendItem(account.incomingServer.prettyName + " - " + identity.identityName, identity.key, "");
+        
+        // remove account name 
+        let idText = "", acc = "";
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showIdKey")) {
+          idText = identity.key + " - ";
+        }
+        if (SmartTemplate4.Preferences.getMyBoolPref("identities.showAccountName")) {
+          acc = account.incomingServer.prettyName + " - ";
+        }
+        let lbl = idText + acc + identity.identityName;
+				theMenu.appendItem(lbl, identity.key, "");
 				this.addIdentity(identity.key);
 			}
 		}
@@ -1000,9 +1009,7 @@ SmartTemplate4.Settings = {
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
-			// el.value could not access.. why??
 				document.getElementById("msgIdentity").selectedIndex = index;
-				// no fire event with set selectedIndex/selectedItem.. why??
 				this.selectIdentity(idKey);
         wasSwitched = true;
 				break;
@@ -1813,15 +1820,6 @@ SmartTemplate4.Settings = {
             donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
-							donateButton.addEventListener(
-								"click", 
-								function(event) { 
-									setTimeout(function() { 
-                    SmartTemplate4.Util.showLicenseDialog("extra2"); 
-										window.close(); 
-									});	
-								}, 
-								false);
 						}
 						else {
 							switch (licenseInfo.status) {
@@ -1839,8 +1837,17 @@ SmartTemplate4.Settings = {
 									options.labelLicenseBtn(donateButton, "buy");
 									break;
 							}
-							
 						}
+            donateButton.addEventListener(
+              "click", 
+              function(event) { 
+                setTimeout(function() { 
+                  SmartTemplate4.Util.showLicenseDialog("extra2"); 
+                  window.close(); 
+                });	
+              }, 
+              false);
+            
 				}			
 		//	}, 500
 		//);

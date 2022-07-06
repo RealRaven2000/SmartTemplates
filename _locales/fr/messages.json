@@ -1,9 +1,15 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "a.label": {
     "message": "Jour de la semaine (Vend.)"
   },
   "a.up.label": {
     "message": "Jour de la semaine (Vendredi)"
+  },
+  "ab_contact": {
+    "message": "Contact"
   },
   "ab_fields": {
     "message": "Variables du carnet d'adresses"
@@ -347,6 +353,45 @@
   "fileImage.label": {
     "message": "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable."
   },
+  "fileTemplates.add": {
+    "message": "Ajouter"
+  },
+  "fileTemplates.down": {
+    "message": "Descendre"
+  },
+  "fileTemplates.file.open": {
+    "message": "Sélectionnez le fichier de modèle à partir du disque"
+  },
+  "fileTemplates.file.path": {
+    "message": "Emplacement du modèle :"
+  },
+  "fileTemplates.file.title": {
+    "message": "Titre:"
+  },
+  "fileTemplates.file.title.tooltip": {
+    "message": "Celui-ci sera affiché dans le menu de sélection des modèles."
+  },
+  "fileTemplates.fwd.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Suivant'."
+  },
+  "fileTemplates.new.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Créer un nouveau message'."
+  },
+  "fileTemplates.remove": {
+    "message": "Éliminer"
+  },
+  "fileTemplates.rsp.tooltip": {
+    "message": "Liste des fichiers modèles externes pouvant être lancés à partir du bouton 'Répondre'."
+  },
+  "fileTemplates.title": {
+    "message": "Fichiers modèles"
+  },
+  "fileTemplates.up": {
+    "message": "Monter"
+  },
+  "fileTemplates.update": {
+    "message": "Réactualiser"
+  },
   "firstName.label": {
     "message": "Prénom :"
   },
@@ -559,6 +604,9 @@
   "label.licenseValid": {
     "message": "Votre licence est valide jusqu'au :"
   },
+  "label.premiumFeaturesSite": {
+    "message": "En savoir plus sur les fonctionnalités Premium sur notre site Web…"
+  },
   "lastName.label": {
     "message": "Nom :"
   },
@@ -688,11 +736,20 @@
   "month.1.name": {
     "message": "Janvier"
   },
+  "month.1.short": {
+    "message": "Jan"
+  },
   "month.10.name": {
     "message": "Octobre"
   },
+  "month.10.short": {
+    "message": "Oct"
+  },
   "month.11.name": {
     "message": "Novembre"
+  },
+  "month.11.short": {
+    "message": "Nov"
   },
   "month.12.name": {
     "message": "Décembre"
@@ -709,6 +766,9 @@
   "month.3.name": {
     "message": "Mars"
   },
+  "month.3.short": {
+    "message": "Mar"
+  },
   "month.4.name": {
     "message": "Avril"
   },
@@ -724,8 +784,14 @@
   "month.6.name": {
     "message": "Juin"
   },
+  "month.6.short": {
+    "message": "Juin"
+  },
   "month.7.name": {
     "message": "Juillet"
+  },
+  "month.7.short": {
+    "message": "Juil"
   },
   "month.8.name": {
     "message": "Août"
@@ -736,11 +802,17 @@
   "month.9.name": {
     "message": "Septembre"
   },
+  "month.9.short": {
+    "message": "Sep"
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
   },
   "n.label": {
     "message": "Numéro du mois (1 à 12)"
+  },
+  "newsgr.label": {
+    "message": "Groupes de discussion"
   },
   "no_button": {
     "message": "Non"
@@ -762,6 +834,9 @@
   },
   "p.label": {
     "message": "AM ou PM"
+  },
+  "p1.label": {
+    "message": "a.m."
   },
   "paste.label": {
     "message": "Coller"
@@ -867,6 +942,9 @@
   },
   "pref_groupNameRules": {
     "message": "Règles pour nom"
+  },
+  "pref_groupSignatures": {
+    "message": "Signatures"
   },
   "pref_groupTroubleShooting": {
     "message": "Dépannage"
@@ -984,6 +1062,9 @@
   },
   "pref_template_tip": {
     "message": "Vous pouvez modifier un entête avec des variables. Voir l'aide pour davantage d'informations."
+  },
+  "pref_variables.tab": {
+    "message": "Variables"
   },
   "premiumConfig": {
     "message": "Fonctionnalités Premium"
@@ -1318,7 +1399,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "20 février"
+    "message": "17 juillet"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1430,6 +1511,9 @@
   "table_fwd.label": {
     "message": "Transférer"
   },
+  "table_keyword.label": {
+    "message": "Variable"
+  },
   "table_new.label": {
     "message": "Nouveau"
   },
@@ -1521,6 +1605,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST,…"
   },
+  "update.tooltip": {
+    "message": "Cliquez ici une fois pour lire les nouveautés de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "Mises à jour"
   },
@@ -1555,7 +1648,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Modifier le texte dans le corps du courrier transféré [en ligne]. Cela fonctionne maintenant dans les fonctions : %deleteQuotedText()%, %replaceQuotedText()%, %deleteQuotedTags()%, %replaceQuotedTags()%.{L2} {L1}Transfert automatique / Réponse automatique avec SmartTemplate via des règles de filtrage - cela signifie vous pouvez déclencher n'importe quel modèle à l'aide de filtres (à l'aide de FiltaQuilla 3.4). Exclusif aux titulaires de licence SmartTemplates Pro.{L2}{L1} Commande %suppressQuoteHeaders% pour supprimer tous les en-têtes de citation.{L2}"
+    "message": "{L1}Corrections de maintenance pour la version 3.12.2 : les boutons Développer/Réduire/Aide sont désormais également visibles lors de l'ouverture des paramètres depuis le gestionnaire de modules complémentaires. Le bouton de renouvellement de licence en bas à gauche de la boîte de dialogue des paramètres fonctionne désormais comme prévu{L2}{L1}SmartTemplates Pro prend désormais en charge l'utilisation de 'clipboard' (presse-papiers) comme argument pour les fonctions de manipulation de texte et d'en-tête telles que %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(Regular Expression,clipboard)%{L2} {L1}Utilisez 'toclipboard' pour copier divers résultats dans le presse-papiers. Par exemple : %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Amélioration de l'espace réservé *selection* (sélection) dans les extraits de code pour mieux prendre en charge l'intégration dans les sections HTML sélectionnées. Par exemple, vous pouvez désormais envelopper une image avec une ombre en insérant un extrait de code HTML.{L2}{L1}Paramètres simplifiés pour les modèles d'identité (liste déroulante des comptes){L2}{L1}Nombreux correctifs de compatibilité pour Thunderbird 102. %spellcheck()% peut maintenant configurer le dictionnaire pour vérifier le texte en plusieurs langues.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

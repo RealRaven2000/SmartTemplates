@@ -606,7 +606,6 @@ SmartTemplate4.classSmartTemplate = function() {
 					brcnt++;
 				}
 				else {
-					// only older versions of Tb have 2 consecutive <BR>?? Tb13 has <br> <header> <br>
 					brcnt = 0;
 				}
 				deleteHeaderNode(root.firstChild);
@@ -772,7 +771,6 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (!templateText) return "";
     const flags = SmartTemplate4.PreprocessingFlags;
 
-		let isStationery = false;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -784,7 +782,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
 		let regular = SmartTemplate4.regularize(templateText, 
 				composeType, 
-				isStationery, 
+				false,   // isStationery
 				ignoreHTML, 
 				isDraftLike);
 		
@@ -890,6 +888,12 @@ SmartTemplate4.classSmartTemplate = function() {
 	// Add template message
 	function insertTemplate(startup, flags, fileTemplateSource)	{
     
+    if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
+      alert("To do: insertTemplate() through background - [issue 184]\n"
+        +  "This used to call ComposeMessage after adding item to SmartTemplate4.fileTemplates.armedQueue.");
+      return;
+    }
+    
     function cleanPlainTextNewLines(myHtml) {
       let lc = myHtml.toLocaleLowerCase();
       if (lc.includes("<br") || lc.includes("<p"))
@@ -901,14 +905,14 @@ SmartTemplate4.classSmartTemplate = function() {
 		if (!flags) {
 		  // if not passed, create an empty "flags" object, and initialise it.
 		  flags = {};
-			flags.isStationery = false;
 			SmartTemplate4.initFlags(flags);
 			flags.identitySwitched = true;  // new flag
 		}
     if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
-    if (SmartTemplate4.PreprocessingFlags.isLoadIdentity)
+    if (SmartTemplate4.PreprocessingFlags.isLoadIdentity) {
       flags.isLoadIdentity = true; // issue 139 duplication of template
+    }
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`, 
       flags);
@@ -1036,7 +1040,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 			
 			
-			isActiveOnAccount = pref.isProcessingActive(idKey, st4composeType, false);
+			isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
 			// draft + startup: do not process!
 			if (startup && composeCase=='draft')
 				isActiveOnAccount = false;
@@ -1741,6 +1745,89 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 	};
 	
+  // returns html code from selection in composer.
+  function unpackSelection(selection) {
+    debugger;
+    let aOf, fOf;
+    let isFocusDifferent = false;
+    let range = selection.getRangeAt(0);
+    if (!range.startContainer)
+      return range.toString();
+    
+    let html = "";
+    let ranges = [];
+    for(let i = 0; i < selection.rangeCount; i++) {
+      let r = selection.getRangeAt(i);
+      ranges.push(r);
+      // we assume start of selection has same nodeType as end
+      // so we can span across text nodes or surround elements with an outer element
+      switch (r.startContainer.nodeType) {
+        case 1: // ELEMENT_NODE
+          for (let i=0; i<r.startContainer.childNodes.length; i++) {
+            if (i<r.startOffset || i>r.endOffset) continue;
+            if (r.startContainer.childNodes[i].nodeType == 1) {
+              html += r.startContainer.childNodes[i].outerHTML;  
+            }
+            else if (r.startContainer.childNodes[i].nodeType == 3) {
+              html += r.startContainer.childNodes[i].textContent;
+            }
+          }
+          break;
+        case 3:  // TEXT_NODE
+          if (r.endContainer==r.startContainer) {
+            if (r.endOffset) {
+              html += r.startContainer.textContent.substring(r.startOffset, r.endOffset);
+            }
+            else {
+              html += r.startContainer.textContent.substring(r.startOffset);
+            }
+          }
+          else {
+            html += r.startContainer.textContent.substring(r.startOffset);
+            let ns = r.startContainer.nextSibling;
+            if (ns) {
+              switch (ns.nodeType) {
+                case 1: // ELEMENT_NODE
+                  html += ns.outerHTML;
+                  break;
+                case 3:  // TEXT_NODE
+                  html += ns.textContent;
+                  break;
+              }
+            }
+            if (r.endOffset) {
+              html += r.endContainer.textContent.substring(0,r.endOffset);
+            }
+            else
+              html += r.endContainer.textContent;
+          }
+          aOf = 0;
+          break;
+      }
+    }  
+    /*
+    aOf = selection.anchorOffset;
+    if (selection.focusNode != selection.anchorNode) {
+      isFocusDifferent = true;
+      fOf = selection.focusOffset;
+    }
+
+    if (isFocusDifferent) {
+      switch (selection.focusNode.nodeType) {
+        case 1: // ELEMENT_NODE
+          html += selection.focusNode.outerHTML;
+          break;
+        case 3:  // TEXT_NODE
+          html += selection.focusNode.textContent.substring(0,fOf);
+          aOf = 0;
+          break;
+      }
+    }
+    */
+    return html;
+  }
+	
+	
 	// -----------------------------------
 	// Constructor
 	// var SmartTemplate4 = SmartTemplate4;
@@ -1755,6 +1842,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	this.testSignatureVar = testSignatureVar;
 	this.testCursorVar = testCursorVar;
 	this.testSmartTemplateToken = testSmartTemplateToken;
+  this.unpackSelection = unpackSelection;
 };
 
 

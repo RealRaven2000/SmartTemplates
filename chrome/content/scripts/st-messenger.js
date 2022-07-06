@@ -14,8 +14,13 @@ var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
-  
   const util = window.SmartTemplate4.Util;
+  
+  // for version specific code / style fixes
+  if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
+    WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
+  }
+  
   util.logDebug("onLoad(" + activatedWhileWindowOpen + ")...");
 
   WL.injectElements(`
@@ -26,7 +31,7 @@ async function onLoad(activatedWhileWindowOpen) {
                    label="__MSG_smartTemplate4.settings.label__"
                    tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
                    class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="SmartTemplate4.Util.openPreferences();" />
+                   oncommand="SmartTemplate4.Util.openPreferences(this);" />
  
   
   </toolbarpalette>

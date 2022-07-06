@@ -814,10 +814,6 @@
   "no_button": {
     "message": "否"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "点击通知"
-  },
   "ongoing-work": {
     "message": "将 $addonName$ 转换为新编程模型的更改花费了数周时间，而且成本很高。 下一个2022版本将有更多更改。 有了这样复杂的附加组件，昂贵的工作就变得不可避免。 请帮助我们。",
     "placeholders": {
@@ -1391,7 +1387,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "2月20日"
+    "message": "7月17日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1597,6 +1593,15 @@
   "tzname.label": {
     "message": "GMT, PST, EST, …"
   },
+  "update.tooltip": {
+    "message": "单击此处一次以阅读 $addonName$ 中的新功能。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新"
   },
@@ -1631,7 +1636,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}修改转发邮件正文中的文本 [inline]。 这现在适用于以下功能：%deleteQuotedText()%、%replaceQuotedText()%、%deleteQuotedTags()%、%replaceQuotedTags()%。{L2} {L1}通过过滤规则使用 SmartTemplate 自动转发/自动回复 - 这意味着 您可以使用过滤器触发任何模板（使用 FiltaQuilla 3.4）。 SmartTemplates Pro 被许可人专有。{L2}{L1} %suppressQuoteHeaders% 命令禁止所有报价标题。{L2}"
+    "message": "{L1}3.12.2 的维护修复：从加载项管理器打开设置时，展开/折叠/帮助按钮现在也可见。 设置对话框左下角的更新许可证按钮现在可以按预期工作{L2}{L1}SmartTemplates Pro 现在支持使用 'clipboard'（剪贴板）作为文本和标题操作函数的参数，例如 %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}使用 'toclipboard' 将各种结果复制到剪贴板。 例如： %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}改进了片段中的 *selection*（选择）占位符，以更好地支持集成到选定的 HTML 部分。 例如，您现在可以通过插入 HTML 片段来包裹带有阴影的图像。{L2}{L1}身份模板的简化设置（帐户下拉菜单）{L2}{L1}Thunderbird 102 的许多兼容性修复程序。 %spellcheck()% 现在可以将字典设置为具有多种语言的校对文本。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
