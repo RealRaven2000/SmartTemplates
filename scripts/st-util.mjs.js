@@ -515,8 +515,8 @@ export let Util = {
   isAddressHeader: function	isAddressHeader(token='') {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
-       " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
-       " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
+       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to ");
   } ,  
   
   // 1763

@@ -157,8 +157,8 @@ function async_driver(val) {
 
 // We use this as a display consumer
 // nsIStreamListener
-var { XPCOMUtils } = 
-  ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") ;
+var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm") ;
+var { MsgHdrToMimeMessage } = ChromeUtils.import( "resource:///modules/gloda/MimeMessage.jsm" );
   
 // not used (yet)
 var SmartTemplate4_streamListener =
@@ -201,6 +201,111 @@ var SmartTemplate4_streamListener =
 };
 
 // -------------------------------------------------------------------
+// Get header string - Thunderbird 102
+// for "dummy header" derived from eml file, use clsGetAltHeader() instead.
+// -------------------------------------------------------------------
+SmartTemplate4.getHeadersAsync = async function() {
+  const Ci = Components.interfaces;
+  
+  async function getMimeMessage(msgHdr) {
+    // Use jsmime based MimeParser to read NNTP messages, which are not
+    // supported by MsgHdrToMimeMessage. No encryption support!
+    if (msgHdr.folder.server.type == "nntp") {
+      try {
+        let raw = await MsgHdrToRawMessage(msgHdr);
+        let mimeMsg = MimeParser.extractMimeMsg(raw, {
+          includeAttachments: false,
+        });
+        return mimeMsg;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    try {
+      return await new Promise(resolve => {
+        MsgHdrToMimeMessage(
+          msgHdr,
+          null,
+          (_msgHdr, mimeMsg) => {
+            resolve(mimeMsg);
+          },
+          true,
+          { examineEncryptedParts: true }
+        );
+      });
+    } catch (e) {
+      return null;
+    }
+  }
+  
+  // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#4061
+  
+  var params = null; // New way to pass parameters to the compose window as a nsIMsgComposeParameters object  
+  var args = null; // old way, parameters are passed as a string
+  var headers;
+  let gBodyFromArgs = false;
+
+  if (window.arguments && window.arguments[0]) {
+    try {
+      if (window.arguments[0] instanceof Ci.nsIMsgComposeParams) {
+        params = window.arguments[0];
+        gBodyFromArgs = params.composeFields && params.composeFields.body;
+      } else {
+        params = handleMailtoArgs(window.arguments[0]);
+      }
+    } catch (ex) {
+      dump("ERROR with parameters: " + ex + "\n");
+    }  
+    // if still no dice, try and see if the params is an old fashioned list of string attributes
+    // XXX can we get rid of this yet?
+    if (!params) {
+      SmartTemplate4.logToConsole("THUNDERBIRD 102 - not supported - old composer window arguments ");
+      args = GetArgs(window.arguments[0]);
+      return null;
+    }
+  }
+  // nsIMsgComposeParams.idl
+  let isNewMail = (params.type == Ci.nsIMsgCompType.New);
+  // gComposeType = params.type;
+  let mimeMsg;
+  if (!isNewMail) 
+  {
+    let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+    let msgHdr = messenger.msgHdrFromURI(params.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
+    mimeMsg = await getMimeMessage(msgHdr);
+    
+    headers = mimeMsg.headers;
+    
+    if (SmartTemplate4.Preferences.isDebug) {
+      console.log(headers);
+    }
+    // Map implements the "get()"
+    // return new Map(Object.entries(headers).map([k,e] => [k,e[0]])); 
+    // SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
+    return new Map(Object.entries(headers).map( ([k,e]) => [k.toLowerCase(),e.join(",")]) ); 
+  }
+  return ""; // new Map();
+	// return null; // ??
+}
+
+
+SmartTemplate4.getHeadersWrapper = function(originalMsgURI) {
+  let rv;
+  // streaming the message works up to Tb91, in Tb102 we need to load the headers during when starting ComposeStartup() [async]
+  if ((SmartTemplate4.Util.versionSmaller(window.SmartTemplate4.Util.Appver, "102"))) {
+    rv = new SmartTemplate4.classGetHeaders(originalMsgURI); // legacy headers
+  }  
+  else {
+    rv = SmartTemplate4.MessageHdr;
+  }
+  if (SmartTemplate4.Preferences.isDebug) {
+    console.log(rv);
+  }
+  return rv;
+}
+
+// -------------------------------------------------------------------
 // Get header string
 // for "dummy header" derived from eml file, use clsGetAltHeader() instead.
 // -------------------------------------------------------------------
@@ -221,25 +326,6 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
               .createInstance().QueryInterface(Ci.nsIMimeHeaders);
 							
 					
-/*   
-  // ASYNC MIME HEADERS
-
-  let testStreamHeaders = true; // new code!
-  var asyncUrlListener = new AsyncUrlListener();
-  
-  if (testStreamHeaders) {
-    // http://mxr.mozilla.org/comm-central/source/mailnews/base/public/nsIMsgMessageService.idl#190
-    
-    // http://mxr.mozilla.org/comm-central/source/mailnews/imap/test/unit/test_imapHdrStreaming.js#101
-    let messenger = Components.classes["@mozilla.org/messenger;1"].createInstance(Components.interfaces.nsIMessenger);
-    let msgService = messenger.messageServiceFromURI(messageURI); // get nsIMsgMessageService
-    msgService.streamHeaders(msgURI, SmartTemplate4_streamListener, asyncUrlListener,true);    
-    yield false;
-  }
-  // ==
-  let msgContent = new String(SmartTemplate4_streamListener._data);
-  headers.initialize(msgContent, msgContent.length);
-*/  
   if (messageURI.indexOf(".eml")>0) { 
 		return null;
 	}
@@ -298,6 +384,14 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
     SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
     return retValue;
 	};
+  
+	// -----------------------------------
+	// Check header
+  function has(header) {
+    let val = headers.extractHeader(header, false);
+    if (!val || typeof header == "undefined") return false;
+    return true;
+  }
 	
 	// -----------------------------------
 	// Get content
@@ -310,6 +404,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 
 	// -----------------------------------
 	// Public methods
+  this.has = has;
 	this.get = get;
 	this.content = content;
 
@@ -324,38 +419,44 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 			return h.substr(0, 1).toLowerCase() + h.substr(1);
 		}
     // /nsIMimeHeaders.extractHeader
-		let hdr = toCamelCase(header);
-		switch(hdr) {
+		let hdrCorrected = toCamelCase(header);
+		switch(hdrCorrected) {
 			case "from":
-			  hdr = "author";
+			  hdrCorrected = "author";
 				break;
 			case "recipient": // [issue 151] placeholder for target recipient
 			case "to":
-			  hdr = "recipients";
+			  hdrCorrected = "recipients";
 				break;
 		}
 		let retValue = "";
 		try {
-			retValue = msgDummyHeader[hdr];
+			retValue = msgDummyHeader[hdrCorrected];
 			if(!retValue) {
 				if (retValue=="") {
 					// if we are writing a NEW mail, we should insert some placeholders for resolving later.
-					// if (gMsgCompose.composeHTML && hdr.composeType == 'new') {
-					//   retValue = util.wrapDeferredHeader(hdr, "", gMsgCompose.composeHTML);
+					// if (gMsgCompose.composeHTML && hdrCorrected.composeType == 'new') {
+					//   retValue = util.wrapDeferredHeader(hdrCorrected, "", gMsgCompose.composeHTML);
 					// }
 				}
 				else
-					if (typeof msgDummyHeader[hdr] == "undefined")
-						retValue = msgDummyHeader.__proto__[hdr];
+					if (typeof msgDummyHeader[hdrCorrected] == "undefined")
+						retValue = msgDummyHeader.__proto__[hdrCorrected];
 			} 
 				
 		}
 		catch (ex) {
-			SmartTemplate4.Util.logException("clsGetAltHeader.get(" + hdr + ") failed.")
+			SmartTemplate4.Util.logException("clsGetAltHeader.get(" + hdrCorrected + ") failed.")
 		}
     SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
     return retValue;
 	};	
+  function has(header) {
+    let v = this.get(header);
+    if (!v || typeof v == "undefined") return false;
+    return true;
+  };
+	this.has = has;
 	this.get = get;
 	this.content = ""; // nothing here...
 	
@@ -1107,6 +1208,8 @@ SmartTemplate4.mimeDecoder = {
 	} // split
 };
 
+SmartTemplate4.MessageHdr = null; // will be overwritten
+
 SmartTemplate4.parseModifier = function(msg, composeType) {
 	function matchText(regX, fromPart) {
 	  try {
@@ -1117,7 +1220,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 					if (!gMsgCompose.originalMsgURI) debugger;
 					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
 					let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
-							hdr = (composeType!="new") ? new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI) : null,
+							hdr = (composeType!="new") ? new SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : null,
 							extractSource = '',
 							rx = patternArg ? util.unquotedRegex(patternArg[0], true) : ''; // pattern for searching body
 					switch(fromPart) {
@@ -1131,7 +1234,7 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
 							else {
 								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
-								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
+								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
 							}
 							util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
 							break;
@@ -1622,8 +1725,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		else {
 			
-			subject = mime.decode(hdr.get("Subject"), charset);
-			if (hdr.composeType=="new" && !subject) {
+			subject = mime.decode(hdr.get("subject"), charset);
+      
+			if (gMsgCompose.type == 0 && !subject) { // hdr.composeType=="new"
 				subject = util.wrapDeferredHeader("subject", subject, gMsgCompose.composeHTML);
 				util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
 			}
@@ -1657,7 +1761,11 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				let el = (typeof TokenMap[reservedWord]=='undefined') ? '' : TokenMap[reservedWord],
 				    isReserved = (el && el.startsWith("reserved")),
             isAddress = util.isAddressHeader(el),
-            addressHdr = isReserved ? "" : hdr.get(el ? el : reservedWord);
+            hdrName = (el ? el : reservedWord).toLowerCase(), // Tb102
+            addressHdr = isReserved ? "" : hdr.get(hdrName);
+        if (typeof addressHdr == "undefined") {
+          addressHdr = "";
+        }
             
         if (isAddress && !isReserved) {
           // if the header can be found, check if it has parameters and would evaluate to be empty?
@@ -1752,8 +1860,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
   // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
   let msgDbHdr = null,
-      charset,
-			hdr = null;
+      charset;
+      
+	let hdr = SmartTemplate4.MessageHdr; // created earlier, now is a Map of header arrays (one array per header)
 			
   if (gMsgCompose.originalMsgURI.indexOf(".eml")>0) { 
 		let messageWindow = Services.wm.getMostRecentWindow("mail:messageWindow"),
@@ -1795,7 +1904,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		try {
 			hdr = (composeType != "new") && (gMsgCompose.originalMsgURI) ? 
-			  new this.classGetHeaders(gMsgCompose.originalMsgURI) : 
+			  SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI) : 
 				new this.clsGetAltHeader(gMsgCompose.compFields);
 		}
 		catch(ex) {
@@ -1813,11 +1922,20 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	let date = (composeType != "new") && msgDbHdr ? msgDbHdr.date : null;
 	if (composeType != "new" && msgDbHdr) {
 		// for Reply/Forward message
+    let theDate;
+    if (hdr && hdr.has("date")) {
+      theDate = hdr.get("date");
+    } else {
+      theDate = msgDbHdr.date;
+    }
 		let tz = new function(date) {
 			this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
 			this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
 			this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-		} (hdr ? hdr.get("Date") : msgDbHdr.date);
+		} (theDate);
+    if (SmartTemplate4.Preferences.isDebug) {
+      console.log(tz);
+    }
 	}
 	// TokenMap["headerName"] = mail Header
 	// TokenMap["reserved"] = ST4 function
@@ -1919,7 +2037,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 
 						hdr =	(gMsgCompose.originalMsgURI.indexOf(".eml")>0 && msgDbHdr) ?
 							new SmartTemplate4.clsGetAltHeader(msgDbHdr) :
-							new SmartTemplate4.classGetHeaders(gMsgCompose.originalMsgURI);
+							SmartTemplate4.getHeadersWrapper(gMsgCompose.originalMsgURI);
 						switch(fromPart) {
 							case 'subject':
 								if (!hdr) {
@@ -1929,7 +2047,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 								util.addUsedPremiumFunction('matchTextFromSubject');
 								let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
 										charset = messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
-								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("Subject"), charset);
+								extractSource = SmartTemplate4.mimeDecoder.decode(hdr.get("subject"), charset);
 								util.logDebugOptional('parseModifier',"Extracting " + rx + " from Subject:\n" + extractSource);
 								break;
 							case 'body':
@@ -2005,7 +2123,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// cmd: "set" | "prefix" | "append" | "delete" | "deleteFromSubject"
 		// argString: 
 		// matchFunction: "" | "matchFromSubject" | "matchFromBody" 
-    function modifyHeader(hdr, cmd, argString, matchFunction="") {
+    function modifyHeader(hdrField, cmd, argString, matchFunction="") {
       const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","message-id"],
             ComposeFields = gMsgCompose.compFields;
 						
@@ -2059,21 +2177,21 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       try {
         let isClobberHeader = false;
        
-        util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument+ ")");
-        if (whiteList.indexOf(hdr)<0) {
+        util.logDebug("modifyHeader(" + hdrField +", " + cmd + ", " + argument+ ")");
+        if (whiteList.indexOf(hdrField)<0) {
           // not in whitelist
-          if (hdr.toLowerCase().startsWith("list") || hdr.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
+          if (hdrField.toLowerCase().startsWith("list") || hdrField.toLowerCase().startsWith("x-")) { // allow modification of all custom headers x-...
             isClobberHeader = true;
           }
           else {
-            util.logToConsole("invalid header - no permission to modify: " + hdr + 
+            util.logToConsole("invalid header - no permission to modify: " + hdrField + 
               "\nSupported headers: " + whiteList.join(', '));
             return '';
           }
         }
         // get
         modType = 'address';
-        switch (hdr) {
+        switch (hdrField) {
           case 'subject':
             targetString = ComposeFields.subject;
             modType = 'string';
@@ -2101,7 +2219,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           default:
             if (isClobberHeader) {
               modType = 'string';
-              targetString = gMsgCompose.compFields.getHeader(hdr) || "";
+              targetString = gMsgCompose.compFields.getHeader(hdrField) || "";
             }
             else modType = '';
             break;
@@ -2152,9 +2270,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
                 break;
               case 'append': // append an address field (if not contained already)
                              // also omit in Cc if already in To and vice versa
-                if (hdr=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                if (hdrField=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
                   break;
-                if (hdr=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
+                if (hdrField=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
                   break;
                 
                 if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
@@ -2167,7 +2285,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         
         // set
         // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
-        switch (hdr) {
+        switch (hdrField) {
           case 'subject':
 					  // replace newline characters with spaces and trim result!
 					  let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
@@ -2213,12 +2331,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           default:
             if (isClobberHeader) {
               if (targetString) {
-                util.logDebug("Adding clobbered header [" + hdr + "] =" + targetString);
-                gMsgCompose.compFields.setHeader(hdr, targetString);
+                util.logDebug("Adding clobbered header [" + hdrField + "] =" + targetString);
+                gMsgCompose.compFields.setHeader(hdrField, targetString);
               }
               else {
-                util.logDebug("Deleting clobbered header [" + hdr + "]");
-                gMsgCompose.compFields.deleteHeader(hdr);
+                util.logDebug("Deleting clobbered header [" + hdrField + "]");
+                gMsgCompose.compFields.deleteHeader(hdrField);
               }
             }
         }
@@ -2226,7 +2344,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
         // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
 				// [issue 117] : setting from doesn't work
-        if (hdr=='from' && ComposeFields.from && cmd=='set') {
+        if (hdrField=='from' && ComposeFields.from && cmd=='set') {
           // %header.set(from,"postmaster@hotmail.com")%
           // %header.set(from,"<Postmaster postmaster@hotmail.com>")%
           // only accepts mail addresses from existing identities - aliases included
@@ -2281,7 +2399,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         util.logException('modifyHeader()', ex);
       }
       return ''; // consume
-    }
+    }  // modifyHeader()
     
     // remove  (  ) from argument string
     function removeParentheses(arg) {
@@ -2351,12 +2469,12 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		try {
 			// for backward compatibility
 			switch (token) {
-				case "fromname":  token = "From"; arg = "(name)";   break;
-				case "frommail":  token = "From"; arg = "(mail)";   break;
-				case "toname":    token = "To";   arg = "(name)";   break;
-				case "tomail":    token = "To";   arg = "(mail)";   break;
-				case "ccname":    token = "Cc";   arg = "(name)";   break;
-				case "ccmail":    token = "Cc";   arg = "(mail)";   break;
+				case "fromname":  token = "from"; arg = "(name)";   break;
+				case "frommail":  token = "from"; arg = "(mail)";   break;
+				case "toname":    token = "to";   arg = "(name)";   break;
+				case "tomail":    token = "to";   arg = "(mail)";   break;
+				case "ccname":    token = "cc";   arg = "(name)";   break;
+				case "ccmail":    token = "cc";   arg = "(mail)";   break;
         // [issue 151] universal placeholder for target recipient
         case "recipient":   
           {
@@ -2365,20 +2483,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
                 token = "to";
                 break;
               case "rsp":
-                let isReplyTo = (hdr && hdr.get("reply-to") != "");
+                let isReplyTo = (hdr && hdr.has("reply-to"));
                 token = isReplyTo ? "reply-to" : "from";
                 break;
               case "fwd":
                 token = "to";
                 // make sure to add / append "fwd" switch:
-                if (!arg)
-                  arg = "(fwd)";
-                else {
-                  arg = arg.substr(0,arg.length-1) + ",fwd)";
-                }
+                if (!arg) { arg = "(fwd)"; }
+                else { arg = arg.substr(0,arg.length-1) + ",fwd)"; }
                 break;
             }
-            
           }
           break;
 			}

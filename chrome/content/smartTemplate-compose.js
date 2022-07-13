@@ -850,9 +850,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	// new function to retrieve quote header separately [Bug 25099]
 	// in order to fix bottom-reply
 	function getQuoteHeader(composeType, idKey) {
-		let hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
+		let quoteHdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
 		let ignoreHTML = false; // was false always
-		return getProcessedText(hdr, idKey, composeType, ignoreHTML);
+		return getProcessedText(quoteHdr, idKey, composeType, ignoreHTML);
 	};
 	
 	// -----------------------------------

@@ -1515,10 +1515,9 @@ SmartTemplate4.Util = {
 				let args=(argList.length<2) ? [] : argList[2].split(',');
 				
 				// 1st group: name of st4 variable, e.g. subject
-				if (generalFunction=='date')
-					generalFunction = 'dateshort';
-				if (generalFunction=='identity')
-					generalFunction = 'from';
+				if (generalFunction=="date") generalFunction = "dateshort";
+				if (generalFunction=="identity") generalFunction = "from";
+				if (generalFunction=="recipient") generalFunction = "to";
         
         let composeDetails = GetComposeDetails(); // Refresh subject and address fields
         expandRecipients(); // [issue 167] - refresh lists!
@@ -1675,8 +1674,8 @@ SmartTemplate4.Util = {
   isAddressHeader: function	isAddressHeader(token='') {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
-       " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
-       " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
+       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to ");
   } ,
   
 	// new function for manually formatting a time / date string in one go.

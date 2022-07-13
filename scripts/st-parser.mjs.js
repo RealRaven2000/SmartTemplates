@@ -1096,7 +1096,7 @@ export class Parser {
       }
       else {
         subject = composeDetails.subject; // mime.decode(hdr.get("Subject"), charset);
-        if (hdr.composeType=="new" && !subject) {
+        if (composeDetails.type=="new" && !subject) {
           // gMsgCompose.composeHTML
           const isHTMLMode = !composeDetails.isPlainText; 
           subject = Util.wrapDeferredHeader("subject", subject, isHTMLMode);
@@ -1558,12 +1558,12 @@ export class Parser {
       try {
         // for backward compatibility
         switch (token) {
-          case "fromname":  token = "From"; arg = "(name)";   break;
-          case "frommail":  token = "From"; arg = "(mail)";   break;
-          case "toname":    token = "To";   arg = "(name)";   break;
-          case "tomail":    token = "To";   arg = "(mail)";   break;
-          case "ccname":    token = "Cc";   arg = "(name)";   break;
-          case "ccmail":    token = "Cc";   arg = "(mail)";   break;
+          case "fromname":  token = "from"; arg = "(name)";   break;
+          case "frommail":  token = "from"; arg = "(mail)";   break;
+          case "toname":    token = "to";   arg = "(name)";   break;
+          case "tomail":    token = "to";   arg = "(mail)";   break;
+          case "ccname":    token = "cc";   arg = "(name)";   break;
+          case "ccmail":    token = "cc";   arg = "(mail)";   break;
           // [issue 151] universal placeholder for target recipient
           case "recipient":   
             {

@@ -592,7 +592,7 @@ var SmartTemplate4 = {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
-    SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup + ', ' , previousIdentity + ')');
+    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
     this.PreprocessingFlags.isLoadIdentity = true;
     if (startup) {
       // Old function call
@@ -687,6 +687,14 @@ var SmartTemplate4 = {
       return SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
     
+    async function smartTemplate_ComposeStartup() {
+      // get headers first
+      SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); // missing the messenger variable there?
+      SmartTemplate4.Util.logDebugOptional("functions","Before calling ComposeStartup() ...");
+      // now call compose startup
+      SmartTemplate4.original_ComposeStartup();
+    }
+    
     let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
@@ -701,6 +709,12 @@ var SmartTemplate4 = {
       // this is intentional, as we needed to replace Tb's processing
       // with our own (?)
       LoadIdentity = smartTemplate_loadIdentity;
+      
+      // Tb102 - monkey patch ComposeStartup to get headers earlier (and async)
+      if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
+        this.original_ComposeStartup = ComposeStartup;
+        ComposeStartup = smartTemplate_ComposeStartup;
+      }
     }
 
     this.pref = new SmartTemplate4.classPref();
@@ -793,10 +807,10 @@ var SmartTemplate4 = {
             btn.classList.add('always');
             break;
         }
-        util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + btn.className + ' , collapsed = ' + btn.collapsed);    
+        util.logDebugOptional("functions","SmartTemplate4Messenger btn.className = " + btn.className + " , collapsed = " + btn.collapsed);    
       }
       else
-        util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+        util.logDebugOptional("functions","SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in " + doc);
     }
     catch(ex) {
       util.logException("SmartTemplate4.updateStatusBar() failed ", ex);

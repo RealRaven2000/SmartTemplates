@@ -131,6 +131,13 @@ function onUnload(isAddOnShutDown) {
       // restore original LoadIdentity function
       LoadIdentity = origLoadIdFunc;
     }    
+    if (window.SmartTemplate4.Util.versionGreaterOrEqual(window.SmartTemplate4.Util.Appver, "102")) {
+      let origComposeStartup = window.SmartTemplate4.original_ComposeStartup;
+      if (origComposeStartup && origComposeStartup!=ComposeStartup) {
+        // restore original function
+        ComposeStartup = origComposeStartup;
+      }
+    }
   }
   catch(ex) {
     

@@ -243,22 +243,6 @@ function()
     composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
     
     SmartTemplate4.init();
-    
-    // safety for when the compose-window-init event does not fire (Tb 67+)
-    /*
-    if (typeof ComposeStartup == 'function') {
-      if (!SmartTemplate4.ComposeStartup) {
-        if (isDebugComposer) debugger;
-        SmartTemplate4.ComposeStartup = ComposeStartup;
-        ComposeStartup = function() {
-          logDebugOptional('composer','Calling ComposeStartup from Wrapper');
-          SmartTemplate4.ComposeStartup();
-          logDebugOptional('composer','Calling initListener');
-          SmartTemplate4.initListener(true);
-          // SmartTemplate4.composer.initTemplateMenu();
-        }
-      }
-    }
-    */
+
   }
 )();
