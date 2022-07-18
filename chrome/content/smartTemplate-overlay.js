@@ -205,7 +205,62 @@ var SmartTemplate4_streamListener =
 // for "dummy header" derived from eml file, use clsGetAltHeader() instead.
 // -------------------------------------------------------------------
 SmartTemplate4.getHeadersAsync = async function() {
-  const Ci = Components.interfaces;
+  const Ci = Components.interfaces,
+        Cu = Components.utils;
+  
+  // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-mail.js#146
+  /*
+   * Get raw message for a given msgHdr. This is not using aConvertData
+   * and therefore also works for nntp/news.
+   *
+   * @param aMsgHdr The message header to retrieve the raw message for.
+   * @return {string} - A Promise for the raw message.
+   */
+  function MsgHdrToRawMessage(msgHdr) {
+    let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
+      Ci.nsIMessenger
+    );
+    let msgUri = msgHdr.folder.generateMessageURI(msgHdr.messageKey);
+    let service = messenger.messageServiceFromURI(msgUri);
+    return new Promise((resolve, reject) => {
+      let streamlistener = {
+        _data: [],
+        _stream: null,
+        onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
+          if (!this._stream) {
+            this._stream = Cc[
+              "@mozilla.org/scriptableinputstream;1"
+            ].createInstance(Ci.nsIScriptableInputStream);
+            this._stream.init(aInputStream);
+          }
+          this._data.push(this._stream.read(aCount));
+        },
+        onStartRequest() {},
+        onStopRequest(aRequest, aStatus) {
+          if (aStatus == Cr.NS_OK) {
+            resolve(this._data.join(""));
+          } else {
+            Cu.reportError(aStatus);
+            reject();
+          }
+        },
+        QueryInterface: ChromeUtils.generateQI([
+          "nsIStreamListener",
+          "nsIRequestObserver",
+        ]),
+      };
+
+      service.streamMessage(
+        msgUri,
+        streamlistener,
+        null, // aMsgWindow
+        null, // aUrlListener
+        false, // aConvertData
+        "" //aAdditionalHeader
+      );
+    });
+  }
+  
   
   async function getMimeMessage(msgHdr) {
     // Use jsmime based MimeParser to read NNTP messages, which are not
@@ -273,7 +328,23 @@ SmartTemplate4.getHeadersAsync = async function() {
   {
     let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
     let msgHdr = messenger.msgHdrFromURI(params.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
+    
+    // get message body.
     mimeMsg = await getMimeMessage(msgHdr);
+    
+    if (!mimeMsg) {
+      if (!msgHdr) return ""; 
+      // build a minimal map from msgHdr
+      let hMap = new Map();
+      hMap.set("from",msgHdr.mime2DecodedAuthor);
+      hMap.set("to",msgHdr.mime2Recipients);
+      hMap.set("subject",msgHdr.mime2Subject);
+      hMap.set("priority",msgHdr.priority);
+      hMap.set("message-id",msgHdr.messageId);
+      hMap.set("thread-id",msgHdr.threadId);
+      hMap.set("date",msgHdr.date);
+      return hMap;
+    }
     
     headers = mimeMsg.headers;
     
@@ -1961,7 +2032,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
 		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
-    "conditionalText", "clipboard", "attachments"
+    "conditionalText", "clipboard", "toclipboard", "attachments"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -2818,6 +2889,14 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             return "";
           }
           return util.clipboardRead();
+        case "toclipboard":
+          if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+            util.addUsedPremiumFunction("toclipboard");
+          }
+          else {
+            util.clipboardWrite(args[0].replace(/^"(.*)"$/, "$1"));
+          }
+          return "";
 
 				default:
           // [Bug 25904]

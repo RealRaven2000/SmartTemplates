@@ -275,8 +275,6 @@ SmartTemplate4.Util = {
 					return this.mAppName='Thunderbird';
 				case SEAMONKEY_ID:
 					return this.mAppName='SeaMonkey';
-				case POSTBOX_ID:
-					return this.mAppName='Postbox';
 				default:
 					this.mAppName=appInfo.name;
 					this.logDebug ( 'Unknown Application: ' + appInfo.name);
