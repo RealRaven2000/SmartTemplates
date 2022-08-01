@@ -1117,9 +1117,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Očistite vse spremenljivke SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Posodobite in nadomestite z vsebino"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Odstranite spremenljivko SmartTemplates"
   },
