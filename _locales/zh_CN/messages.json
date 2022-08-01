@@ -1159,9 +1159,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "清理所有SmartTemplate变量"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "更新并替换为内容"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "删除SmartTemplates变量"
   },
