@@ -1159,9 +1159,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Vyčistěte všechny proměnné SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Aktualizace a nahrazení obsahem"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Odebrat proměnnou SmartTemplates"
   },
