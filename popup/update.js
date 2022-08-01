@@ -194,11 +194,8 @@ const discountUpgrade = "50%";
     
     let whatsNewLst = document.getElementById('whatsNewList');
     function replaceVariableCodeTags(txt) {
-      let tags = ["header.set(to,clipboard)", "header.prefix(subject,clipboard)", "replaceText(regular Expression,clipboard)", "replaceQuotedText(regular Expression,clipboard)", "spellcheck()", "from(name,toclipboard)", "dateformat(\"A, e/n/Y H:M\",current,toclipboard)"];
-      for (let x of tags) {
-        txt = txt.replace(`%${x}%`, `<code>%${x}%</code>`);
-      }
-      return txt.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>");
+      let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
+      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>").replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>");
     }
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))

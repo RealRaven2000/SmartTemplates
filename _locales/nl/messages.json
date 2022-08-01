@@ -1109,7 +1109,7 @@
     "message": "Alle SmartTemplate-variabelen opschonen"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Bijwerken en vervangen door inhoud"
+    "message": "Variabele vervangen door inhoud"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "SmartTemplates-variabele verwijderen"
@@ -1570,7 +1570,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Onderhoudsoplossingen voor 3.12.2: Uitvouw-/inklap-/help-knoppen zijn nu ook zichtbaar bij het openen van instellingen vanuit Add-ons Manager. De knop Licentie vernieuwen linksonder in het instellingenvenster werkt nu zoals verwacht{L2}{L1}SmartTemplates Pro ondersteunt nu het gebruik van 'clipboard' (klembord) als argument voor tekst- en koptekstmanipulatiefuncties zoals %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2} {L1}Gebruik 'toclipboard' om verschillende resultaten naar het klembord te kopiëren. Bijvoorbeeld: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Verbeterde *selection* (selectie) tijdelijke aanduiding in Snippets om integratie in geselecteerde HTML-secties beter te ondersteunen U kunt nu bijvoorbeeld een afbeelding omwikkelen met een schaduw door een HTML-fragment in te voegen.{L2}{L1}Vereenvoudigde instellingen voor identiteitssjablonen (vervolgkeuzelijst accounts){L2}{L1}Vele compatibiliteitsoplossingen voor Thunderbird 102. %spellcheck()% kan nu het woordenboek instellen om tekst met meerdere talen te controleren.{L2}"
+    "message": "{L1}Nieuwe {{toclipboard}} parameter voor adresvelden zoals {{%from(name)%}} om resultaten naar het klembord te kopiëren.{L2} {L1}Nadat FiltaQuilla automatisch een e-mail heeft doorgestuurd of beantwoord met smarttemplate, zal de dezelfde sjabloon was foutief gebruikt bij een volgend handmatig antwoord.{L2} {L1}De opdracht in het contextmenu hersteld om veldvariabelen bij te werken en te vervangen door inhoud.{L2} {L1}De parameters {{bracketMail}} en {{bracketName}} verbeterd voor gebruik met klembord. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

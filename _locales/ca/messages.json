@@ -1154,7 +1154,7 @@
     "message": "Neteja totes les variables SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Actualitzeu i substituïu per contingut"
+    "message": "Substitueix la variable per contingut"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Elimineu la variable SmartTemplates"
@@ -1630,7 +1630,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Solucions de manteniment per a la 3.12.2: ara també es poden veure els botons d'ampliar/reduir/ajuda quan s'obre la configuració des del Gestor de complements. El botó Renova la llicència a la part inferior esquerra del quadre de diàleg de configuració ara funciona com s'esperava{L2}{L1}SmartTemplates Pro ara admet l'ús de 'clipboard' (porta-retalls) com a argument per a les funcions de manipulació de text i capçaleres, com ara %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(expressió regular,clipboard)% % replaceQuotedText(regular Expression,clipboard)%{L2} {L1}Utilitzeu 'toclipboard' per copiar diversos resultats al porta-retalls. Per exemple: %from(nom,al porta-retalls)% %dateformat(\"A, e/n/Y H:M\",actual,al porta-retalls)% {L2}{L1}S'ha millorat el marcador de posició *selection* (výběr) als fragments per admetre millor la integració a les seccions HTML seleccionades. Per exemple, ara podeu embolicar una imatge amb una ombra inserint un fragment HTML.{L2}{L1}Configuració simplificada per a plantilles d'identitat (menú desplegable de comptes){L2}{L1}Nombroses correccions de compatibilitat per a Thunderbird 102.{L2}"
+    "message": "{L1}Nou paràmetre {{toclipboard}} per a camps d'adreça com ara {{%from(name)%}} per copiar els resultats al porta-retalls.{L2} {L1}Després que FiltaQuilla hagi reenviat o respongui automàticament un correu electrònic mitjançant smarttemplate, el la mateixa plantilla s'havia utilitzat per error en una resposta manual següent.{L2} {L1}S'ha reparat l'ordre del menú contextual per actualitzar i substituir les variables de camp per contingut.{L2} {L1}S'han millorat els paràmetres {{bracketMail}} i {{bracketName}} per utilitzar-lo amb el porta-retalls. {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

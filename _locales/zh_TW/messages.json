@@ -1148,7 +1148,7 @@
     "message": "清理所有SmartTemplate變量"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "更新並替換為內容"
+    "message": "用內容替換變量"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "刪除SmartTemplates變量"
@@ -1612,7 +1612,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}3.12.2 的維護修復：從加載項管理器打開設置時，展開/折疊/幫助按鈕現在也可見。 設置對話框左下角的更新許可證按鈕現在可以按預期工作{L2}{L1}SmartTemplates Pro 現在支持使用 'clipboard'（剪貼板）作為文本和標題操作函數的參數，例如 %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}使用 'toclipboard' 將各種結果復製到剪貼板。 例如： %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}改進了片段中的 *selection* （選擇）佔位符，以更好地支持集成到選定的 HTML 部分。 例如，您現在可以通過插入 HTML 片段來包裹帶有陰影的圖像。{L2}{L1}身份模板的簡化設置（帳戶下拉菜單）{L2}{L1}Thunderbird 102 的許多兼容性修復程序。 %spellcheck()% 現在可以將字典設置為具有多種語言的校對文本。{L2}"
+    "message": "{L1}新的 {{toclipboard}} 參數用於地址字段，例如 {{%from(name)%}}，用於將結果復製到剪貼板。{L2} {L1}FiltaQuilla 使用智能模板自動轉發或回復電子郵件後， 錯誤的以下手動回複使用了相同的模板。{L2} {L1}修復了上下文菜單命令以更新和替換字段變量的內容。{L2} {L1}改進了參數 {{bracketMail}} 和 {{bracketName}} 以用於剪貼板。 {L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

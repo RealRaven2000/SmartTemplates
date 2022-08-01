@@ -1127,7 +1127,7 @@
     "message": "Limpiar todas las variables de SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Actualizar y reemplazar con contenido"
+    "message": "Reemplazar variable con contenido"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Eliminar la variable SmartTemplates"
@@ -1600,7 +1600,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Correcciones de mantenimiento para 3.12.2: los botones de expandir/contraer/ayuda ahora también están visibles al abrir la configuración desde el Administrador de complementos. El botón Renovar licencia en la parte inferior izquierda del cuadro de diálogo de configuración ahora funciona como se esperaba{L2}{L1}SmartTemplates Pro ahora admite el uso de 'clipboard' (portapapeles) como argumento para funciones de manipulación de texto y encabezado, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Use 'toclipboard' para copiar varios resultados al portapapeles. Por ejemplo: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Marcador de posición *selection* (selección) mejorado en Snippets para admitir mejor la integración en secciones HTML seleccionadas. Por ejemplo, ahora puede envolver una imagen con una sombra mediante la inserción de un fragmento de código HTML.{L2}{L1}Configuración simplificada para plantillas de identidad (menú desplegable de cuentas){L2}{L1}Numerosas correcciones de compatibilidad para Thunderbird 102. %spellcheck()% ahora puede configurar el diccionario para revisar el texto con varios idiomas.{L2}"
+    "message": "{L1}Nuevo parámetro {{toclipboard}} para campos de dirección como {{%from(name)%}} para copiar los resultados al portapapeles.{L2} {L1}Después de que FiltaQuilla reenviara o respondiera automáticamente un correo electrónico usando una plantilla inteligente, el la misma plantilla se había utilizado en una siguiente respuesta manual por error.{L2} {L1}Reparó el comando del menú contextual para actualizar y reemplazar las variables de campo con contenido.{L2} {L1}Mejoró los parámetros {{bracketMail}} y {{bracketName}} para usar con el portapapeles. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

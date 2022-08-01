@@ -1094,7 +1094,7 @@
     "message": "Limpe todas as variáveis do SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Atualizar e substituir pelo conteúdo"
+    "message": "Substituir variável por conteúdo"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Remova essa variável SmartTemplates"
@@ -1561,7 +1561,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Correções de manutenção para 3.12.2: os botões Expandir/Recolher/Ajuda agora também ficam visíveis ao abrir as configurações do Gerenciador de Complementos. O botão Renovar licença na parte inferior esquerda da caixa de diálogo de configurações agora funciona como esperado{L2}{L1}SmartTemplates Pro agora suporta o uso de 'clipboard' (área de transferência) como argumento para funções de manipulação de texto e cabeçalho, como %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(expressão regular,clipboard)%{L2}{L1}Use 'toclipboard' para copiar vários resultados para a área de transferência. Por exemplo: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Espaço reservado para *selection* (seleção) aprimorado em snippets para oferecer melhor suporte à integração em seções HTML selecionadas. Por exemplo, agora você pode envolver uma imagem com uma sombra inserindo um snippet HTML.{L2}{L1}Configurações simplificadas para modelos de identidade (lista suspensa de contas){L2}{L1}Várias correções de compatibilidade para Thunderbird 102. %spellcheck()% agora pode definir dicionário para texto de prova com vários idiomas.{L2}"
+    "message": "{L1}Novo parâmetro {{toclipboard}} para campos de endereço como {{%from(name)%}} para copiar resultados para a área de transferência.{L2} {L1}Depois que o FiltaQuilla encaminhou ou respondeu automaticamente a um e-mail usando o smarttemplate, o mesmo modelo foi usado em uma resposta manual a seguir com erro.{L2} {L1}Reparado o comando do menu de contexto para atualizar e substituir variáveis de campo por conteúdo.{L2} {L1}Melhorou os parâmetros {{bracketMail}} e {{bracketName}} para usar com a área de transferência. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
