@@ -205,7 +205,7 @@ permalink: version.html
 		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.* - WIP</a>
 		<br>
 		<span class="appWrapper">
-			<span class="thunderbird">78.* - 91.*</span> 
+			<span class="thunderbird">78.* - 102.*</span> 
 		</span>
   </h4>
   <ul>
@@ -225,6 +225,56 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+<a id="3.13"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.13 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">78.* - 102.*</span> 
+		</span>
+  </h4>
+  
+  <h5 class="inList"><span class="inListTitle">Improvements</span></h5>
+  <ul>
+    <li>
+      New <code class="inline">toclipboard</code> parameter for address fields such 
+      as <code>%from(name)%</code> to copy results to clipboard.
+    </li>#
+    <li>
+      Improved the parameters <code class="inline">bracketMail</code> and 
+      <code class="inline">bracketName</code> for using with clipboard. 
+      These now do not encode the &lt; and &gt; signs anymore.
+    </li>
+  </ul>
+  
+
+  <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+  <ul>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/205">[issue 205]</a> 
+      Fixed: After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, 
+      the same template had been used in error on a following manual reply in error.
+    </li>
+    <li>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/204">[issue 204]</a>
+      Repaired the context menu command to update and replace field variables with content.
+      This will now remove the field and replace it with the current content (without updating
+      the content - to update it just use a left click beforehand).
+    </li> 
+  </ul>
+  
+  <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+  <ul>
+    <li>
+      In Thunderbird 102 We now use compose-window-init event in 102 to reliably attain headers at an earlier 
+      stage - in order to extract headers from the original email.
+    </li>
+  </ul>
+  
+</li> 
+
 
 <a id="3.12"> &nbsp; </a>
 <a id="3.12.1"> &nbsp; </a>
@@ -247,7 +297,7 @@ permalink: version.html
           In celebration of the release of Thunderbird 102, 
           you can now renew or extend your Pro license 
           for <span class="emphasis">25% off</span> - [around $7.50 USD saving $2.50!]  
-          from <span class="emphasis">June 28th</span> to <span class="emphasis">July 17th</span>.
+          extended to <span class="emphasis">July 20th</span>.
           Click the new panel at the bottom of the Thunderbird window:<br>
           <img src="img/status-expired.png"> ...and then click the renewal button.
         </p>
@@ -268,7 +318,7 @@ permalink: version.html
     <tr>
       <td style="vertical-align:top;">
       <!--  -->
-        <h3 class="shillBox">SmartTemplates SUMMER SALE - June 28th to July 17th</h3>
+        <h3 class="shillBox">SmartTemplates SUMMER SALE - June 28th to July 20th</h3>
         <p>
           In celebration of the release of Thunderbird 102,
           you can now get the Pro License for <span class="emphasis">33% off - [around $10.00 USD saving $5.00] </span> 
@@ -321,7 +371,7 @@ permalink: version.html
           In celebration of the release of Thunderbird 102,
           you can now upgrade your Standard license to SmartTemplates Pro
           for <span class="emphasis">50% off</span> - [pay $5.00 USD saving another $5.00]  
-          from <span class="emphasis">June 28th</span> to <span class="emphasis">July 17th</span>.
+          extended to <span class="emphasis">July 20th</span>.
         </p>
         <p>
           To avail of this offer, you can do either:
