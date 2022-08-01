@@ -1168,9 +1168,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Siivoa kaikki SmartTemplate-muuttujat"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Päivitä ja korvaa sisältö"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Poista SmartTemplates-muuttuja"
   },
