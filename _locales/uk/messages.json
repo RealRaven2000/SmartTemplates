@@ -1175,9 +1175,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Очистіть усі змінні SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Оновлення та заміна вмістом"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Видалити змінну SmartTemplates"
   },
