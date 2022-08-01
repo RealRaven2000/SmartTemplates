@@ -1111,9 +1111,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Wyczyść wszystkie zmienne SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Zaktualizuj i zamień na treść"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Usuń zmienną SmartTemplates"
   },
