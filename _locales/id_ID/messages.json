@@ -855,9 +855,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Membersihkan semua variabel SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Perbarui dan Ganti dengan Konten"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Hapus variabel SmartTemplates"
   },
