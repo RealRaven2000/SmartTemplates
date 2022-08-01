@@ -1126,9 +1126,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Limpiar todas las variables de SmartTemplate"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Actualizar y reemplazar con contenido"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Eliminar la variable SmartTemplates"
   },
