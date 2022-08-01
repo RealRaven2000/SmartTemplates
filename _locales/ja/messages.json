@@ -1147,9 +1147,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "SmartTemplate のすべての変数を除去します"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "コンテンツを更新・置換します"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "SmartTemplates の変数を除去します"
   },
