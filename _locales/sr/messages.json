@@ -1102,9 +1102,6 @@
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Очистите све променљиве СмартТемплате"
   },
-  "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Ажурирајте и замените садржајем"
-  },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Уклоните променљиву СмартТемплате⁴"
   },
