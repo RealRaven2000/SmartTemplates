@@ -832,6 +832,15 @@
   "p.label": {
     "message": "AM 或 PM"
   },
+  "p1.label": {
+    "message": "上午"
+  },
+  "p2.label": {
+    "message": "上午"
+  },
+  "p3.label": {
+    "message": "上午"
+  },
   "paste.label": {
     "message": "粘贴"
   },
@@ -1158,6 +1167,9 @@
   },
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "清理所有SmartTemplate变量"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "用内容替换变量"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "删除SmartTemplates变量"
