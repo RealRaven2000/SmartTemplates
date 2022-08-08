@@ -1670,7 +1670,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}"
+    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}{L1}Repaired {{%datelocal%}} variable.{L2}{L1}Improved accessibility in settings dialog.{L2}{L1}Variable {{%datelocal%}} reparada.{L2}{L1}Accesibilidad mejorada en el cuadro de diálogo de configuración.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

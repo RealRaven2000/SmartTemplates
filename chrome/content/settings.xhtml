@@ -36,14 +36,17 @@
 			          class="identity-menulist"
 			          label="__MSG_pref_server_def__"
 			          flex="1"
-			          oncommand="SmartTemplate4.Settings.selectIdentity(this.value);">
+			          oncommand="SmartTemplate4.Settings.selectIdentity(this.value);"
+                tabindex="0">
 				<menupopup id="msgIdentityPopup">
 					<menuitem class="identity-popup-item" label="__MSG_pref_server_def__" value="common"/>
 				</menupopup>
 			</menulist>
 			<toolbar id="templateTools" 
 			         mode="icons" 
-							 customizable="false">
+							 customizable="false"
+               >
+        <span class="navigateable">
         <toolbarbutton id="helpTemplates"
             class="toolbarbutton-1 chromeclass-toolbar-additional"
             oncommand="SmartTemplate4.Util.showStationeryHelpPage('templateFiles');" 
@@ -53,24 +56,30 @@
 				<toolbarbutton id="btnSaveTemplate"
               class="toolbarbutton-1 chromeclass-toolbar-additional"
               tooltiptext="__MSG_btnSaveTemplate.tooltip__"
+              alt="__MSG_btnSaveTemplate.tooltip__"
               oncommand="SmartTemplate4.Settings.store();"/>
 				<toolbarbutton id="btnLoadTemplate"
               class="toolbarbutton-1 chromeclass-toolbar-additional"
               tooltiptext="__MSG_btnLoadTemplate.tooltip__"
+              alt="__MSG_btnLoadTemplate.tooltip__"
               oncommand="SmartTemplate4.Settings.load();"/>
 				<toolbarbutton id="btnYouTube"
               class="toolbarbutton-1 chromeclass-toolbar-additional"
               tooltiptext="__MSG_btnYouTube.tooltip__"
+              alt="__MSG_btnYouTube.tooltip__"
               oncommand="SmartTemplate4.Util.showYouTubePage();"/>
         <toolbarbutton id="btnAdvanced"
               class="toolbarbutton-1 chromeclass-toolbar-additional"
               tooltiptext="__MSG_advanced.label__"
+              alt="__MSG_advanced.label__"
               oncommand="SmartTemplate4.Settings.openAdvanced();"/>
         <toolbarbutton id="btnCloseAdvanced"
               class="toolbarbutton-1 chromeclass-toolbar-additional"
               tooltiptext="__MSG_close.label__"
               oncommand="SmartTemplate4.Settings.closeAdvanced();"
+              alt="__MSG_close.label__"
               hidden="true"/>
+        </span>
       </toolbar>
 
 		</hbox>

@@ -721,11 +721,14 @@ table div.no {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 #templateTools toolbarbutton {
+  -moz-user-focus: normal; /* accessibility */
   min-width: unset;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
 
 /* buttons permanently invisible when opened from Add-ons Manager */
 toolbar toolbarbutton:not([hidden]) {

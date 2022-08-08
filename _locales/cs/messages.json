@@ -1630,7 +1630,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Nový parametr {{toclipboard}} pro pole adresy, jako je {{%from(name)%}} pro kopírování výsledků do schránky.{L2} {L1}Poté, co FiltaQuilla automaticky přeposlala e-mail nebo odpověděla na e-mail pomocí smarttemplate, stejná šablona byla omylem použita v následující ruční odpovědi.{L2} {L1}Opraven příkaz kontextové nabídky k aktualizaci a nahrazení proměnných polí obsahem.{L2} {L1}Vylepšeny parametry {{bracketMail}} a {{bracketName}} pro použití se schránkou. {L2}"
+    "message": "{L1}Nový parametr {{toclipboard}} pro pole adresy, jako je {{%from(name)%}} pro kopírování výsledků do schránky.{L2} {L1}Poté, co FiltaQuilla automaticky přeposlala e-mail nebo odpověděla na e-mail pomocí smarttemplate, stejná šablona byla omylem použita v následující ruční odpovědi.{L2} {L1}Opraven příkaz kontextové nabídky k aktualizaci a nahrazení proměnných polí obsahem.{L2} {L1}Vylepšeny parametry {{bracketMail}} a {{bracketName}} pro použití se schránkou. {L2}{L1}Opravená proměnná {{%datelocal%}}.{L2}{L1}Vylepšená dostupnost v dialogovém okně nastavení.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

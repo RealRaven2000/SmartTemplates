@@ -1575,7 +1575,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Neuer {{toclipboard}}-Parameter für Adressfelder wie {{%from(name)%}}, um Ergebnisse in die Zwischenablage zu kopieren.{L2} {L1}Nachdem FiltaQuilla eine E-Mail mithilfe von Smarttemplate automatisch weitergeleitet oder darauf geantwortet hatte, wurde irrtümlich dieselbe Vorlage bei einer folgenden manuellen Antwort verwendet.{L2} {L1}Kontextmenübefehl zum Aktualisieren und Ersetzen von Feldvariablen durch Inhalt repariert.{L2} {L1}Verbesserte Parameter {{bracketMail}} und {{bracketName}} für die Verwendung mit der Zwischenablage. {L2}"
+    "message": "{L1}Neuer {{toclipboard}}-Parameter für Adressfelder wie {{%from(name)%}}, um Ergebnisse in die Zwischenablage zu kopieren.{L2} {L1}Nachdem FiltaQuilla eine E-Mail mithilfe von Smarttemplate automatisch weitergeleitet oder darauf geantwortet hatte, wurde irrtümlich dieselbe Vorlage bei einer folgenden manuellen Antwort verwendet.{L2} {L1}Kontextmenübefehl zum Aktualisieren und Ersetzen von Feldvariablen durch Inhalt repariert.{L2} {L1}Verbesserte Parameter {{bracketMail}} und {{bracketName}} für die Verwendung mit der Zwischenablage. {L2}{L1}{{%datelocal%}} Variable repariert.{L2}{L1}Barrierefreiheit im Einstellungsdialog verbessert.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

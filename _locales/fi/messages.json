@@ -1651,7 +1651,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Uusi {{toclipboard}}-parametri osoitekentille, kuten {{%from(name)%}} tulosten kopioimiseksi leikepöydälle.{L2} {L1}Kun FiltaQuilla lähetti sähköpostin automaattisesti eteenpäin tai vastasi siihen älykäs mallin avulla, samaa mallia on käytetty virheellisesti seuraavassa manuaalisessa vastauksessa.{L2} {L1}Korjattu pikavalikon komento päivittää ja korvata kenttämuuttujia sisällöllä.{L2} {L1}Paramentit {{bracketMail}} ja {{bracketName}} leikepöydän kanssa käytettäväksi. {L2}"
+    "message": "{L1}Uusi {{toclipboard}}-parametri osoitekentille, kuten {{%from(name)%}} tulosten kopioimiseksi leikepöydälle.{L2} {L1}Kun FiltaQuilla lähetti sähköpostin automaattisesti eteenpäin tai vastasi siihen älykäs mallin avulla, samaa mallia on käytetty virheellisesti seuraavassa manuaalisessa vastauksessa.{L2} {L1}Korjattu pikavalikon komento päivittää ja korvata kenttämuuttujia sisällöllä.{L2} {L1}Paramentit {{bracketMail}} ja {{bracketName}} leikepöydän kanssa käytettäväksi. {L2}{L1}Korjattu muuttuja {{%datelocal%}}.{L2}{L1}Parannettu asetusten valintaikkunan käytettävyys.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

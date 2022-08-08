@@ -1648,7 +1648,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Nouveau paramètre {{toclipboard}} pour les champs d'adresse tels que {{%from(name)%}} pour copier les résultats dans le presse-papiers.{L2} {L1}Après que FiltaQuilla ait automatiquement transféré ou répondu à un e-mail à l'aide de smarttemplate, le le même modèle avait été utilisé lors d'une réponse manuelle suivante par erreur.{L2} {L1}Réparation de la commande du menu contextuel pour mettre à jour et remplacer les variables de champ par du contenu.{L2} {L1}Amélioration des paramètres {{bracketMail}} et {{bracketName}} à utiliser avec le presse-papiers. {L2}"
+    "message": "{L1}Nouveau paramètre {{toclipboard}} pour les champs d'adresse tels que {{%from(name)%}} pour copier les résultats dans le presse-papiers.{L2} {L1}Après que FiltaQuilla ait automatiquement transféré ou répondu à un e-mail à l'aide de smarttemplate, le le même modèle avait été utilisé lors d'une réponse manuelle suivante par erreur.{L2} {L1}Réparation de la commande du menu contextuel pour mettre à jour et remplacer les variables de champ par du contenu.{L2} {L1}Amélioration des paramètres {{bracketMail}} et {{bracketName}} à utiliser avec le presse-papiers. {L2}{L1}Variable {{%datelocal%}} réparée.{L2}{L1}Amélioration de l'accessibilité dans la boîte de dialogue des paramètres.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

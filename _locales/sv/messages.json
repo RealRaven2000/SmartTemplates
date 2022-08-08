@@ -1654,7 +1654,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Ny {{toclipboard}}-parameter för adressfält som {{%from(name)%}} för att kopiera resultat till urklipp.{L2} {L1}Efter att FiltaQuilla automatiskt vidarebefordrade eller svarade på ett e-postmeddelande med smarttemplate, samma mall hade använts i ett följande manuellt svar av misstag.{L2} {L1}Reparerade snabbmenykommandot för att uppdatera och ersätta fältvariabler med innehåll.{L2} {L1}Förbättrade parametrarna {{bracketMail}} och {{bracketName}} för användning med urklipp. {L2}"
+    "message": "{L1}Ny {{toclipboard}}-parameter för adressfält som {{%from(name)%}} för att kopiera resultat till urklipp.{L2} {L1}Efter att FiltaQuilla automatiskt vidarebefordrade eller svarade på ett e-postmeddelande med smarttemplate, samma mall hade använts i ett följande manuellt svar av misstag.{L2} {L1}Reparerade snabbmenykommandot för att uppdatera och ersätta fältvariabler med innehåll.{L2} {L1}Förbättrade parametrarna {{bracketMail}} och {{bracketName}} för användning med urklipp. {L2}{L1}Reparerad {{%datelocal%}} variabel.{L2}{L1}Förbättrad tillgänglighet i inställningsdialogrutan.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

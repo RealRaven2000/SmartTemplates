@@ -1957,3 +1957,39 @@ window.addEventListener('unload',
   SmartTemplate4.Settings.onUnload.bind(SmartTemplate4.Settings) , 
   { once: true });
     
+    
+window.addEventListener("keypress", async (event) => {
+  // [issue 208] solve some accessibility problems
+  //  we are adding cursor navigation to tabs and tabstops to toolbar buttons.
+  let target = event.target;
+  if (!target) return;
+  if (target.tagName=="tab")  {
+    let panels = target.parentNode;
+    let selectedPanelId = panels.tabbox.selectedPanel.id,
+        selectedIndex = panels.tabbox.selectedIndex;
+    switch (event.code) {
+      case "ArrowLeft":
+        panels.tabbox.selectedIndex = selectedIndex-1;
+        panels.tabbox.selectedPanel.focus();
+        break;
+      case "ArrowRight":
+        panels.tabbox.selectedIndex = selectedIndex+1;
+        panels.tabbox.selectedPanel.focus();
+        break;
+    }
+  }
+  if (target.tagName == "toolbarbutton") {
+    let toolbar = target.parentNode;
+    switch (event.code) {
+      case "ArrowLeft":
+        target.previousSibling.focus();
+        break;
+      case "ArrowRight":
+        target.nextSibling.focus();
+        break;
+      case "Tab":
+        // nice to have: skip out of the toolbar to the next available element, but that's complicated
+        break;
+    }
+  }
+});
