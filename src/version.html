@@ -239,9 +239,14 @@ permalink: version.html
   <h5 class="inList"><span class="inListTitle">Improvements</span></h5>
   <ul>
     <li>
+      New function <code>%toclipboard()%</code> to copy text to clipboard for
+      use with functions that insert data from the clipboard, such as 
+      <code class="inline">%clipboard%</code> or <code class="inline">%header.prefix(subject,clipboard)%</code>.
+    </li>
+    <li>
       New <code class="inline">toclipboard</code> parameter for address fields such 
       as <code>%from(name)%</code> to copy results to clipboard.
-    </li>#
+    </li>
     <li>
       Improved the parameters <code class="inline">bracketMail</code> and 
       <code class="inline">bracketName</code> for using with clipboard. 
