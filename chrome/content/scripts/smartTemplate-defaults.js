@@ -106,4 +106,4 @@ pref("extensions.smartTemplate4.license.gracePeriodDate","");
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
-pref("extensions.smartTemplate4.silentUpdate", false);
+pref("extensions.smartTemplate4.silentUpdate", true); // can be changed by everyone from now.
