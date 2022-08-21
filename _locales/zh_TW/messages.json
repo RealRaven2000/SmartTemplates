@@ -52,9 +52,6 @@
   "addon-authors-struggle": {
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
-  "advanced.label": {
-    "message": "進階"
-  },
   "any.label": {
     "message": "任何 Header-line"
   },
@@ -162,9 +159,6 @@
   },
   "ccname.label": {
     "message": "收件者姓名"
-  },
-  "close.label": {
-    "message": "關閉"
   },
   "conditional.forwardMode": {
     "message": "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。"
@@ -628,15 +622,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "只需支付$$5.00而不是$$10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}至  $expiry${boldEnd}。",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
   },
@@ -1033,9 +1018,6 @@
   "pref_sigReplaceBR.label": {
     "message": "用 <br> 替換純文本簽名中的換行符"
   },
-  "pref_silentUpdates": {
-    "message": "靜默更新"
-  },
   "pref_silentUpdates_tip": {
     "message": "更新 SmartTemplates 後不要打開更改日誌。"
   },
@@ -1370,9 +1352,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "7月17日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
