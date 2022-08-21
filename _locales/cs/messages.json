@@ -50,7 +50,7 @@
     "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
   },
   "advanced.label": {
-    "message": "Rozšířené"
+    "message": "Rozbalte dialog"
   },
   "any.label": {
     "message": "Jakákoliv řádka hlavičky"
@@ -161,7 +161,7 @@
     "message": "Jméno příjemce"
   },
   "close.label": {
-    "message": "Základní"
+    "message": "Sbalit dialog"
   },
   "conditional.forwardMode": {
     "message": "Pokud je e-mail přeposlán inline, je vložen první textový parametr. Druhý textový parametr se používá, když je pošta přeposílána jako příloha."
@@ -620,13 +620,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 4,30 EUR namísto 8,60 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
+    "message": "Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "licence"
   },
   "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
@@ -1028,7 +1031,7 @@
     "message": "Nahraď oddělovače řádků za <br> v textovém podpisu "
   },
   "pref_silentUpdates": {
-    "message": "Tiché aktualizace"
+    "message": "Neotevírejte kartu s historií verzí"
   },
   "pref_silentUpdates_tip": {
     "message": "Neotevírejte protokol změn po aktualizaci SmartTemplates."
@@ -1387,7 +1390,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. července"
+    "message": "4. září"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -1595,6 +1598,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "Poznámky k vydání (anglicky)"
+  },
+  "updates.news": {
+    "message" : "Poslední zprávy"
   },
   "updates.title": {
     "message": "Aktualizace"

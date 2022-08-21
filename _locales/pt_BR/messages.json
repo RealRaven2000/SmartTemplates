@@ -50,7 +50,7 @@
     "message": "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
   },
   "advanced.label": {
-    "message": "Avançado"
+    "message": "Expandir caixa de diálogo"
   },
   "any.label": {
     "message": "Qualquer linha de cabeçalho"
@@ -161,7 +161,7 @@
     "message": "Nome do destinatário"
   },
   "close.label": {
-    "message": "Básico"
+    "message": "Caixa de diálogo Recolher"
   },
   "conditional.forwardMode": {
     "message": "Se o email for encaminhado inline, o primeiro parâmetro de texto será inserido. O segundo parâmetro de texto é usado quando o e-mail é encaminhado como anexo."
@@ -584,13 +584,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague apenas € 4,30 em vez de € 8,60 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
+    "message": "Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenças"
   },
   "licenseComparison": {
     "message": "Para comparar os recursos das diferentes versões, {linkStart}leia esta lista{linkEnd}."
@@ -965,7 +968,7 @@
     "message": "Substiuir quebras de linhas na assinatura de texto simples por <br>"
   },
   "pref_silentUpdates": {
-    "message": "Atualizações silenciosas"
+    "message": "Não abra guia com histórico de versões"
   },
   "pref_silentUpdates_tip": {
     "message": "Não abra o log de alterações após a atualização do SmartTemplates."
@@ -1324,7 +1327,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 de julho"
+    "message": "4 de setembro"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1529,6 +1532,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "Notas de lançamento (inglês)"
+  },
+  "updates.news": {
+    "message" : "Últimas notícias"
   },
   "updates.title": {
     "message": "Atualizações"

@@ -50,7 +50,7 @@
     "message": "有用なアドオンであり続けるためには継続的な開発が必要ですが、それには金銭的な支援が欠かせません。これにより、ユーザーは新機能の恩恵を受け続けることができます。"
   },
   "advanced.label": {
-    "message": "詳細設定"
+    "message": "ダイアログを展開"
   },
   "any.label": {
     "message": "任意のヘッダー行"
@@ -161,7 +161,7 @@
     "message": "CC 受信者の名前"
   },
   "close.label": {
-    "message": "閉じる"
+    "message": "ダイアログを折りたたむ"
   },
   "conditional.forwardMode": {
     "message": "電子メールがインラインで転送される場合、最初のテキストパラメーターが挿入されます。2番目のテキストパラメーターは、メールが添付ファイルとして転送されるときに使用されます。"
@@ -626,13 +626,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "$$10.00 ではなく $$5.00 を支払うだけで、プレミアム機能へのフルアクセスを取得できます。この特別オファーは、{boldStart}$expiry$ まで{boldEnd} ご利用いただけます。",
+    "message": "この特別オファーは、{boldStart}$expiry$ まで{boldEnd} ご利用いただけます。",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "ライセンス"
   },
   "licenseComparison": {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
@@ -1016,7 +1019,7 @@
     "message": "プレーンテキスト形式の署名に含まれる改行を <br> で置換する"
   },
   "pref_silentUpdates": {
-    "message": "更新履歴の非表示"
+    "message": "バージョン履歴のあるタブを開かない"
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates の更新後に、更新履歴を表示しません"
@@ -1375,7 +1378,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月17日"
+    "message": "9月4日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1589,6 +1592,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "リリースノート (英語)"
+  },
+  "updates.news": {
+    "message" : "最新ニュース"
   },
   "updates.title": {
     "message": "更新について"

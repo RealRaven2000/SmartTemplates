@@ -53,7 +53,7 @@
     "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
   "advanced.label": {
-    "message": "Avancerat"
+    "message": "Expandera dialogrutan"
   },
   "any.label": {
     "message": "Alla Header-line"
@@ -164,7 +164,7 @@
     "message": "Mottagarens namn"
   },
   "close.label": {
-    "message": "Grundläggande"
+    "message": "Komprimera dialogrutan"
   },
   "conditional.forwardMode": {
     "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
@@ -626,13 +626,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 4,30 € istället för 8,60 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
+    "message": "Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenser"
   },
   "licenseComparison": {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
@@ -1034,7 +1037,7 @@
     "message": "Ersätt radbrytningar i signaturer med vanlig text med <br>"
   },
   "pref_silentUpdates": {
-    "message": "Tyst uppdateringar"
+    "message": "Öppna inte fliken med versionshistorik"
   },
   "pref_silentUpdates_tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
@@ -1402,7 +1405,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 juli"
+    "message": "4 september"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1619,6 +1622,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "Release Notes (engelska)"
+  },
+  "updates.news": {
+    "message" : "Senaste nytt"
   },
   "updates.title": {
     "message": "Uppdateringar"

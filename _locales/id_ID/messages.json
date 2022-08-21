@@ -24,7 +24,7 @@
     "message": "Pilih Akun:"
   },
   "advanced.label": {
-    "message": "Lanjutan"
+    "message": "Perluas Dialog"
   },
   "any.label": {
     "message": "Setiap Baris Tajuk"
@@ -96,7 +96,7 @@
     "message": "Nama penerima"
   },
   "close.label": {
-    "message": "Dasar"
+    "message": "Ciutkan Dialog"
   },
   "conditional.forwardMode": {
     "message": "Jika email diteruskan sebaris, parameter teks pertama dimasukkan. Parameter teks kedua digunakan saat email diteruskan sebagai lampiran."
@@ -430,7 +430,7 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Bayar hanya $$5,75 daripada $$10,00 dan dapatkan akses penuh ke fungsi Pro. Penawaran khusus ini tersedia dari {boldStart}hingga $expiry${boldEnd}.",
+    "message": "Penawaran khusus ini tersedia dari {boldStart}hingga $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
@@ -1059,6 +1059,12 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "updates.changeLog": {
+    "message" : "Catatan Rilis (Bahasa Inggris)"
+  },
+  "updates.news": {
+    "message" : "Berita Terbaru"
   },
   "updates.title": {
     "message": "Pembaruan"

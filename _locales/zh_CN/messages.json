@@ -53,7 +53,7 @@
     "message": "为了继续发挥作用，我们的附加组件开发人员现在需要资助修复和重写所需的资源，以便我们的用户可以继续从我们提供的功能中受益。"
   },
   "advanced.label": {
-    "message": "高级"
+    "message": "展开对话框"
   },
   "any.label": {
     "message": "任何标题行"
@@ -164,7 +164,7 @@
     "message": "抄送人姓名"
   },
   "close.label": {
-    "message": "关闭"
+    "message": "折叠对话框"
   },
   "conditional.forwardMode": {
     "message": "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。"
@@ -629,13 +629,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$$5.00而不是$$10.00，即可完全使用Pro功能。 此特别优惠适用于{boldStart}至 $expiry${boldEnd}。",
+    "message": "此特别优惠适用于{boldStart}至 $expiry${boldEnd}。",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "许可证"
   },
   "licenseComparison": {
     "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
@@ -1028,7 +1031,7 @@
     "message": "用 <br> 替换纯文本签名中的换行符"
   },
   "pref_silentUpdates": {
-    "message": "靜默更新"
+    "message":  "不要打开带有版本历史记录的选项卡"
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates更新後，請勿打開更改日誌。"
@@ -1387,7 +1390,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月17日"
+    "message": "9月4日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1601,6 +1604,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "发行说明（英文）"
+  },
+  "updates.news": {
+    "message" : "最新消息"
   },
   "updates.title": {
     "message": "更新"

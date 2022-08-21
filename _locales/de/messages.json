@@ -50,7 +50,7 @@
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
   },
   "advanced.label": {
-    "message": "Mehr"
+    "message": "Dialog erweitern"
   },
   "any.label": {
     "message": "Beliebige Kopfzeile"
@@ -161,7 +161,7 @@
     "message": "Empfängername"
   },
   "close.label": {
-    "message": "Schließen"
+    "message": "Dialog kompaktifizieren"
   },
   "conditional.forwardMode": {
     "message": "Wenn die E-Mail inline weitergeleitet wird, wird der erste Textparameter eingefügt. Der zweite Textparameter wird verwendet, wenn die E-Mail als Anhang weitergeleitet wird."
@@ -623,13 +623,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 4,30 € statt 8,60 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
+    "message": "Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Lizenzen"
   },
   "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
@@ -980,7 +983,7 @@
     "message": "Zeilenumbrüche in Text-Signatur durch <br> ersetzen"
   },
   "pref_silentUpdates": {
-    "message": "Stille Updates"
+    "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
   "pref_silentUpdates_tip": {
     "message": "Bei updates die Versionsgeschichte nicht anzeigen."
@@ -1339,7 +1342,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. Juli"
+    "message": "4. September"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1544,6 +1547,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Versionsgeschichte (Englisch)"
+  },
+  "updates.news": {
+    "message" : "Neueste Änderungen"
+  },
   "updates.title": {
     "message": "Aktualisierung"
   },
@@ -1575,7 +1584,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Neuer {{toclipboard}}-Parameter für Adressfelder wie {{%from(name)%}}, um Ergebnisse in die Zwischenablage zu kopieren.{L2} {L1}Nachdem FiltaQuilla eine E-Mail mithilfe von Smarttemplate automatisch weitergeleitet oder darauf geantwortet hatte, wurde irrtümlich dieselbe Vorlage bei einer folgenden manuellen Antwort verwendet.{L2} {L1}Kontextmenübefehl zum Aktualisieren und Ersetzen von Feldvariablen durch Inhalt repariert.{L2} {L1}Verbesserte Parameter {{bracketMail}} und {{bracketName}} für die Verwendung mit der Zwischenablage. {L2}{L1}{{%datelocal%}} Variable repariert.{L2}{L1}Barrierefreiheit im Einstellungsdialog verbessert.{L2}"
+    "message": "{L1}Neuer {{toclipboard}}-Parameter für Adressfelder wie {{%from(name)%}}, um Ergebnisse in die Zwischenablage zu kopieren.{L2} {L1}Kopieren von Texten in die Zwischenablage mit der neuen Funktion {{%toclipboard%}}.{L2} {L1}Nachdem FiltaQuilla eine E-Mail mithilfe von Smarttemplate automatisch weitergeleitet oder darauf geantwortet hatte, wurde irrtümlich dieselbe Vorlage bei einer folgenden manuellen Antwort verwendet.{L2} {L1}Kontextmenübefehl zum Aktualisieren und Ersetzen von Feldvariablen durch Inhalt repariert.{L2} {L1}Verbesserte Parameter {{bracketMail}} und {{bracketName}} für die Verwendung mit der Zwischenablage. {L2}{L1}{{%datelocal%}} Variable repariert.{L2}{L1}Barrierefreiheit im Einstellungsdialog verbessert.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -56,7 +56,7 @@
     "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   },
   "advanced.label": {
-    "message": "Advanced"
+    "message": "Expand Dialog"
   },
   "any.label": {
     "message": "Any Header-line"
@@ -167,7 +167,7 @@
     "message": "Recipient's name"
   },
   "close.label": {
-    "message": "Basic"
+    "message": "Collapse Dialog"
   },
   "conditional.forwardMode": {
     "message": "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment."
@@ -636,13 +636,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.00 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}until $expiry${boldEnd}.",
+    "message": "This special offer is available {boldStart}until $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenses"
   },
   "licenseComparison" : {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
@@ -1047,7 +1050,7 @@
     "message": "Replace line breaks in plain text signature with <br>"
   },
   "pref_silentUpdates": {
-    "message": "Silent updates"
+    "message": "Do not open tab with version history"
   },
   "pref_silentUpdates_tip": {
     "message": "Don't open change log after SmartTemplates was updated."
@@ -1418,7 +1421,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "July 17th"
+    "message": "September 4th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1636,6 +1639,12 @@
       }
     }
   },  
+  "updates.changeLog": {
+    "message" : "Release Notes (English)"
+  },
+  "updates.news": {
+    "message" : "Latest News"
+  },
   "updates.title": {
     "message": "Updates"
   },
@@ -1670,7 +1679,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}{L1}Repaired {{%datelocal%}} variable.{L2}{L1}Improved accessibility in settings dialog.{L2}{L1}Variable {{%datelocal%}} reparada.{L2}{L1}Accesibilidad mejorada en el cuadro de diálogo de configuración.{L2}"
+    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}Copy text to clipboard with the new function {{%toclipboard()%}}.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}{L1}Repaired {{%datelocal%}} variable.{L2}{L1}Improved accessibility in settings dialog.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

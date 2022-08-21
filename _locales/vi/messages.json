@@ -131,7 +131,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "Ngày 17 tháng 7"
+    "message": "Ngày 4 tháng 9"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -234,6 +234,15 @@
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "bản dịch do google cung cấp"
+  },
+  "updates.changeLog": {
+    "message" : "Ghi chú phát hành (tiếng Anh)"
+  },
+  "updates.news": {
+    "message" : "Tin mới nhất"
+  },
+  "updates.title": {
+    "message": "Cập nhật"
   },
   "whats-new-btn": {
     "message": "Có gì mới?"

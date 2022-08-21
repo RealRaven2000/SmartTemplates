@@ -53,7 +53,7 @@
     "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
   "advanced.label": {
-    "message": "Lisäasetukset"
+    "message": "Laajenna valintaikkuna"
   },
   "any.label": {
     "message": "Mikä tahansa otsakerivi"
@@ -164,7 +164,7 @@
     "message": "Vastaanottajan nimi"
   },
   "close.label": {
-    "message": "Sulje"
+    "message": "Kutista valintaikkuna"
   },
   "conditional.forwardMode": {
     "message": "Jos sähköposti välitetään edelleen, ensimmäinen tekstiparametri lisätään. Toista tekstiparametria käytetään, kun posti välitetään edelleen liitteenä."
@@ -629,13 +629,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Maksa vain 4,30 euroa 8,60 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
+    "message": "Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Lisenssit"
   },
   "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
@@ -1037,7 +1040,7 @@
     "message": "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä <br>"
   },
   "pref_silentUpdates": {
-    "message": "Hiljaiset päivitykset"
+    "message": "Älä avaa versiohistoriaa sisältävää välilehteä"
   },
   "pref_silentUpdates_tip": {
     "message": "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen."
@@ -1402,7 +1405,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. heinäkuuta"
+    "message": "4. syyskuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -1616,6 +1619,12 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "updates.changeLog": {
+    "message" : "Julkaisutiedot (englanniksi)"
+  },
+  "updates.news": {
+    "message" : "Uusimmat uutiset"
   },
   "updates.title": {
     "message": "Päivitykset"

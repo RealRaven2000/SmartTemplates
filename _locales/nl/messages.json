@@ -53,7 +53,7 @@
     "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
   },
   "advanced.label": {
-    "message": "Geavanceerd"
+    "message": "Dialoogvenster uitvouwen"
   },
   "any.label": {
     "message": "Elke headerregel"
@@ -164,7 +164,7 @@
     "message": "Achternaam van ontvanger"
   },
   "close.label": {
-    "message": "Sluiten"
+    "message": "Dialoogvenster samenvouwen"
   },
   "conditional.forwardMode": {
     "message": "Als de e-mail inline wordt doorgestuurd, wordt de eerste tekstparameter ingevoegd. De tweede tekstparameter wordt gebruikt wanneer de e-mail als bijlage wordt doorgestuurd."
@@ -626,13 +626,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betaal slechts € 4,30 in plaats van € 8,60 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}tot $expiry${boldEnd}.",
+    "message": "Deze speciale aanbieding is geldig van {boldStart}tot $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenties"
   },
   "licenseComparison": {
     "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
@@ -977,7 +980,7 @@
     "message": "Regelafbrekingen in ondertekening in platte tekst vervangen door <br>"
   },
   "pref_silentUpdates": {
-    "message": "Stille updates"
+    "message": "Tabblad met versiegeschiedenis niet openen"
   },
   "pref_silentUpdates_tip": {
     "message": "Geen wijzigingslijst openen nadat SmartTemplates is bijgewerkt"
@@ -1336,7 +1339,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 juli"
+    "message": "4 september"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1542,6 +1545,15 @@
   "updatesExpiry": {
     "message": "SmartTemplates Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel."
   },
+  "updates.changeLog": {
+    "message" : "Release-opmerkingen (Engels)"
+  },
+  "updates.news": {
+    "message" : "Laatste nieuws"
+  },
+  "updates.title": {
+    "message": "Updates"
+  },  
   "url.bugsAndFeaturesPage.label": {
     "message": "Bugrapporten / Functieaanvragen"
   },
