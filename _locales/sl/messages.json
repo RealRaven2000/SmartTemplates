@@ -52,9 +52,6 @@
   "addon-authors-struggle": {
     "message": "Da bomo še naprej koristni, moramo razvijalci dodatkov zdaj financirati vire, potrebne za popravljanje in prepisovanje, tako da bodo lahko naši uporabniki še naprej koristili funkcionalnost, ki jo ponujamo."
   },
-  "advanced.label": {
-    "message": "Napredno"
-  },
   "any.label": {
     "message": "Katerakoli vrstica glave"
   },
@@ -162,9 +159,6 @@
   },
   "ccname.label": {
     "message": "Prejemnikov priimek"
-  },
-  "close.label": {
-    "message": "Osnovno"
   },
   "conditional.forwardMode": {
     "message": "Če je e-poštno sporočilo posredovano v vrstici, se vstavi prvi besedilni parameter. Drugi besedilni parameter se uporablja, ko je pošta posredovana kot priloga."
@@ -589,15 +583,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Plačajte samo 4,30 € namesto 8,60 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do $expiry$ {boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
   },
@@ -985,9 +970,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Nadomesti prelome vrstic v podpisu z golim besedilom s <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Tihe posodobitve"
-  },
   "pref_silentUpdates_tip": {
     "message": "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates."
   },
@@ -1346,9 +1328,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17. julij"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
