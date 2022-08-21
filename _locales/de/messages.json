@@ -49,9 +49,6 @@
   "addon-authors-struggle": {
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
   },
-  "advanced.label": {
-    "message": "Mehr"
-  },
   "any.label": {
     "message": "Beliebige Kopfzeile"
   },
@@ -159,9 +156,6 @@
   },
   "ccname.label": {
     "message": "Empfängername"
-  },
-  "close.label": {
-    "message": "Schließen"
   },
   "conditional.forwardMode": {
     "message": "Wenn die E-Mail inline weitergeleitet wird, wird der erste Textparameter eingefügt. Der zweite Textparameter wird verwendet, wenn die E-Mail als Anhang weitergeleitet wird."
@@ -622,15 +616,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 4,30 € statt 8,60 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
   },
@@ -978,9 +963,6 @@
   },
   "pref_sigReplaceBR.label": {
     "message": "Zeilenumbrüche in Text-Signatur durch <br> ersetzen"
-  },
-  "pref_silentUpdates": {
-    "message": "Stille Updates"
   },
   "pref_silentUpdates_tip": {
     "message": "Bei updates die Versionsgeschichte nicht anzeigen."
@@ -1334,9 +1316,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17. Juli"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
