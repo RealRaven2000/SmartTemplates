@@ -1492,7 +1492,8 @@ SmartTemplate4.Util = {
 		const util = SmartTemplate4.Util,
 		      Ci = Components.interfaces,
 		      Cc = Components.classes;
-    if (!nodeList) nodeList = []; // create a dummy node list for now.
+    // [issue 204]  if no nodeList is passed in, this means we can replace immediately   
+    // if (!nodeList) nodeList = []; // create a dummy node list for now.
 		let div = el,
 				st4 = div.getAttribute('st4variable'),
 				alreadyResolved = (el.className == 'resolved'), // for removing _all_ smarttemplate divs
@@ -1814,8 +1815,7 @@ SmartTemplate4.Util = {
 				let dateOptions = {
 					hour12: false, // 24 hours
 					hour: getDateFormat('hour'),
-					minute: "2-digit",
-					dateStyle: "full"
+					minute: "2-digit"
 				};
 				// { dateStyle: "full", timeStyle: "long" } - not documented!
 				switch (timeType) {
@@ -1835,7 +1835,7 @@ SmartTemplate4.Util = {
 				}
 				let localeString = util.getLocalePref();
 				fmt = new Intl.DateTimeFormat(localeString, dateOptions);
-				util.logDebugOptional('timeStrings',"DateTimeFormat(" + localeString + ") resolved options: " + fmt.resolvedOptions());
+				util.logDebugOptional('timeStrings',"DateTimeFormat(" + localeString + ") resolved options: ", fmt.resolvedOptions());
 			}
       
 			if (SmartTemplate4.whatIsDateOffset) {
@@ -2867,17 +2867,16 @@ SmartTemplate4.Util.firstRun =
 
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
-          let isSilentUpdate =
-            isPremium && prefs.getMyBoolPref("silentUpdate");
-          if (isSilentUpdate) 
-            util.logDebug("Supressing Change Log, as disabled by user.")
+          let isSilentUpdate = prefs.getMyBoolPref("silentUpdate"); // allow this flag for all.
+          if (isSilentUpdate) {
+            util.logDebug("Supressing Change Log, as disabled by user.");
+          }
           else if (!this.silentUpdate(prev,pureVersion)) {
 						util.logDebugOptional ("firstRun","open tab for version history, ST " + current);
 						window.setTimeout(function(){ util.showVersionHistory(false); }, 2200);
 					}
 
-					// Display the modeless update message
-					// To Do: We need to make this more generic for charging for a standard version!
+					// Display update notification
 					window.setTimeout(function(){
 						util.popupAlert (util.ADDON_TITLE, updateVersionMessage); // OS notification
 					}, 3000);

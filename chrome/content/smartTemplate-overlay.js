@@ -217,11 +217,6 @@ SmartTemplate4.getHeadersAsync = async function() {
    * @return {string} - A Promise for the raw message.
    */
   function MsgHdrToRawMessage(msgHdr) {
-    let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
-      Ci.nsIMessenger
-    );
-    let msgUri = msgHdr.folder.generateMessageURI(msgHdr.messageKey);
-    let service = messenger.messageServiceFromURI(msgUri);
     return new Promise((resolve, reject) => {
       let streamlistener = {
         _data: [],
@@ -249,6 +244,12 @@ SmartTemplate4.getHeadersAsync = async function() {
           "nsIRequestObserver",
         ]),
       };
+      
+      let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
+        Ci.nsIMessenger
+      );
+      let msgUri = msgHdr.folder.generateMessageURI(msgHdr.messageKey);
+      let service = messenger.messageServiceFromURI(msgUri);
 
       service.streamMessage(
         msgUri,
@@ -2411,7 +2412,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               }
             }
         }
-        // try to update headers - ComposeStartup() /  ComposeFieldsReady()
+        // try to update headers - from ComposeStartup() /  ComposeFieldsReady()
         // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#3546
         // https://searchfox.org/comm-esr78/source/mail/components/compose/content/MsgComposeCommands.js#2766
 				// [issue 117] : setting from doesn't work
