@@ -341,6 +341,40 @@ async function main() {
   */
 
   messenger.WindowListener.startListening();
+  
+  
+  let browserInfo = await messenger.runtime.getBrowserInfo();
+  function getThunderbirdVersion() {
+    let parts = browserInfo.version.split(".");
+    return {
+      major: parseInt(parts[0]),
+      minor: parseInt(parts[1]),
+      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
+    }
+  }  
+  let tbVer = getThunderbirdVersion();
+  
+  // [issue 209] Exchange account validation
+  if (tbVer.major>=98) {
+    messenger.accounts.onCreated.addListener( async(id, account) => {
+      if (currentLicense.info.status == "MailNotConfigured") {
+        // redo license validation!
+        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+        await currentLicense.validate();
+        if(currentLicense.info.status != "MailNotConfigured") {
+          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        }
+        if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+      }
+      else {
+        if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
+      }
+    });
+  }  
+  
+
 }
 
 main();
