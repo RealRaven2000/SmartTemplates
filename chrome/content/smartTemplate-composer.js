@@ -237,11 +237,23 @@ function()
     if (isDebugComposer) debugger;
     try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
     catch(ex) {;}
+    
+    // get header variables early
+    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
+      window.addEventListener(
+        "compose-window-init",
+        async function() {
+          SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
+        },
+        {capture:true}
+      );    
+    }      
+    
     logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
     
     let composer = document.getElementById("msgcomposeWindow");
-    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
-    
+    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
+      
     SmartTemplate4.init();
 
   }

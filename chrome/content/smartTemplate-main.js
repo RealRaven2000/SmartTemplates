@@ -175,9 +175,24 @@ END LICENSE BLOCK
     # Moved clipboard reading to Util module
     # [issue 184] WIP: Move template processing into background script
 
-  Version 3.12 - 29/06/2022
+  Version 3.12.2 - 29/06/2022
     # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
     # [issue 198] - Renew license button on lower left of settings dialog not working
+    
+  Version 3.13 - WIP
+    # [issue 199] Inserting of addresses with display name that contains comma fails with unexpected results
+    # [issue 200] bracketMail() and bracketName() cannot be used in the same format string
+    # [issue 205] After FiltaQuilla filter forwards / replies with template, the next manual reply uses same template
+    # [issue 204] "Update and replace with content" command doesn't replace the field
+    # Use compose-window-init event in 102 to attain headers at an earlier stage - to call SmartTemplate4.getHeadersAsync()
+    # toclipboard - new parameter for copying address variables to clipboard 
+    # bracketMail() / bracketName() Fixed copying angled brackets to clipboard as plain text (and not encoded)
+    # [issue 206] %datelocal% throws an error and returns a blank space.
+    # [issue 208] Improve accessibility for settings dialog
+    # [issue 125] Support license validation with Exchange accounts (from Tb 102)
+    # After updating, do not open tab with version log automatically. Old behavior can be restored on the licenses tab.
+    # Repaired icon in customize toolbar
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -284,7 +299,7 @@ var SmartTemplate4 = {
     }
   },
 
-  initListener: function initListener(isWrapper) {
+  initListener: async function initListener(isWrapper) {
     const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences,
           msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -401,16 +416,21 @@ var SmartTemplate4 = {
         setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
         return;
       }      
-    } else if(theQueue.length) {
+    } else if (theQueue.length) {
+      util.logDebugOptional("fileTemplates", "Queued templates found", theQueue);
       let origUri = gMsgCompose.originalMsgURI;
       // try to find matching item from the queue
       let found = theQueue.find(el => el.uri == origUri && el.composeType == getMsgComposetype());
       if (found) {
         theFileTemplate = found;
         theQueue = theQueue.filter(el => el != found);
+        util.logDebugOptional("fileTemplates", "found match, filtered queue:", theQueue);
       }
-      else
+      else {
         theFileTemplate = theQueue.pop(); // if we can't find, let's take the last item instead and hope for the best.
+      }
+      ownerWin.SmartTemplate4.fileTemplates.armedQueue = theQueue; // store depleted queue back!
+      util.logDebugOptional("fileTemplates", "Found FileTemplate:", theFileTemplate, ownerWin.SmartTemplate4.fileTemplates.armedQueue);
     }
     
     if (theFileTemplate) {
@@ -687,14 +707,6 @@ var SmartTemplate4 = {
       return SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
     
-    async function smartTemplate_ComposeStartup() {
-      // get headers first
-      SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); // missing the messenger variable there?
-      SmartTemplate4.Util.logDebugOptional("functions","Before calling ComposeStartup() ...");
-      // now call compose startup
-      SmartTemplate4.original_ComposeStartup();
-    }
-    
     let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
@@ -709,12 +721,6 @@ var SmartTemplate4 = {
       // this is intentional, as we needed to replace Tb's processing
       // with our own (?)
       LoadIdentity = smartTemplate_loadIdentity;
-      
-      // Tb102 - monkey patch ComposeStartup to get headers earlier (and async)
-      if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
-        this.original_ComposeStartup = ComposeStartup;
-        ComposeStartup = smartTemplate_ComposeStartup;
-      }
     }
 
     this.pref = new SmartTemplate4.classPref();
