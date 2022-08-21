@@ -401,13 +401,13 @@ permalink: version.html
   <h5 class="inList"><span class="inListTitle">Improvements</span></h5>
   <ul>
     <li>
-      New function <code>%toclipboard()%</code> to copy text to clipboard for
-      use with functions that insert data from the clipboard, such as 
+      New function <code>%toclipboard("some text")%</code> to copy text to clipboard for
+      use with following SmartTemplate variables that can insert data from the clipboard, such as 
       <code class="inline">%clipboard%</code> or <code class="inline">%header.prefix(subject,clipboard)%</code>.
     </li>
     <li>
       New <code class="inline">toclipboard</code> parameter for address fields such 
-      as <code>%from(name)%</code> to copy results to clipboard.
+      as <code>%from(name)%</code> to copy extracted address parts to clipboard.
     </li>
     <li>
       Improved the parameters <code class="inline">bracketMail</code> and 
@@ -416,7 +416,17 @@ permalink: version.html
     </li>
     <li>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/208">[issue 208]</a> 
-      Improved accessibility for settings dialog. tabs and buttons can now be navigated using keyboard only.
+      Improved accessibility for settings dialog. Tabs and buttons can now be navigated using keyboard only.
+    </li>
+    <li>
+      <p>
+        After updating, SmartTemplates does not display the tab with version log automatically anymore. 
+        The original behavior can be restored on the licenses tab in the new 'Updates' section:
+      </p>
+      <img class="screenshot" src="img/settings-updates.png" alt="update settings" />
+      <p>
+        The fully translated "News" screen or a detailed change log (in English) on the 
+        support site can  also be displayed opened from here.
     </li>
   </ul>
   
@@ -436,16 +446,20 @@ permalink: version.html
     </li> 
     <li>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/206">[issue 206]</a> 
-      Repaired: <code class="inline">%datelocal%</code> returned a blank space instead of 
+      Repaired: <code class="inline">%datelocal%</code> - this returned a blank space instead of 
       the localized date.
+    </li>
+    <li>
+      Repaired SmartTemplates icon in "Customize Toolbar" so you can find it easier - you
+      can pull the SmartTemplates settings into the main toolbar for quick access.
     </li>
   </ul>
   
   <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
   <ul>
     <li>
-      In Thunderbird 102 We now use compose-window-init event in 102 to reliably attain headers at an earlier 
-      stage - in order to extract headers from the original email.
+      In Thunderbird 102 we now use the <tt>compose-window-init</tt> event to 
+      more reliably attain headers information from the original email.
     </li>
   </ul>
   
