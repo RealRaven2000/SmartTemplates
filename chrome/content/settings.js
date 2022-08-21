@@ -982,6 +982,8 @@ SmartTemplate4.Settings = {
 		document.getElementById('btnAdvanced').hidden = true;
 		document.getElementById('btnCloseAdvanced').hidden = false;
 		prefs.setMyBoolPref('expandSettings', true);
+    // [issue 208] accessibility
+    document.getElementById("fieldsTab").focus();
 
 		let versionBox = document.getElementById('versionBox');
 		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
@@ -1734,13 +1736,11 @@ SmartTemplate4.Settings = {
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
-      let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(licenseInfo.status) {
 				case "Valid":
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
-          silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1759,7 +1759,6 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.add('aboutLogoPro');
 				  break;
 				case "Expired":
-          silentUpdateOption.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
@@ -1767,7 +1766,6 @@ SmartTemplate4.Settings = {
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
-          silentUpdateOption.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');
@@ -1965,16 +1963,31 @@ window.addEventListener("keypress", async (event) => {
   if (!target) return;
   if (target.tagName=="tab")  {
     let panels = target.parentNode;
-    let selectedPanelId = panels.tabbox.selectedPanel.id,
-        selectedIndex = panels.tabbox.selectedIndex;
+    let selectedIndex = panels.tabbox.selectedIndex;
+        
+    let focus_event, keyevent;
     switch (event.code) {
       case "ArrowLeft":
-        panels.tabbox.selectedIndex = selectedIndex-1;
-        panels.tabbox.selectedPanel.focus();
+        if (selectedIndex>0) {
+          panels.tabbox.selectedIndex = selectedIndex-1;
+          panels.childNodes[selectedIndex-1].focus();
+          // focus_event = new FocusEvent("focus", {  }); // set relatedTarget ?
+          // panels.dispatchEvent(focus_event);
+          // emit Shift + Tab
+          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:true});
+          setTimeout(function() {target.dispatchEvent(keyevent);},10)
+        }
         break;
       case "ArrowRight":
-        panels.tabbox.selectedIndex = selectedIndex+1;
-        panels.tabbox.selectedPanel.focus();
+        if (selectedIndex<6) {
+          panels.tabbox.selectedIndex = selectedIndex+1;
+          panels.childNodes[selectedIndex+1].focus();
+          // focus_event = new FocusEvent("focus", {  });// set relatedTarget ?
+          // panels.dispatchEvent(focus_event);
+          // emit Tab key
+          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:false})
+          setTimeout(function() {target.dispatchEvent(keyevent);},10)
+        }
         break;
     }
   }
