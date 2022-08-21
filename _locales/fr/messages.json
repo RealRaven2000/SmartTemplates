@@ -55,9 +55,6 @@
   "addon-authors-struggle": {
     "message": "Pour continuer à être utiles, nous, les développeurs de modules complémentaires, devons désormais financer les ressources nécessaires pour corriger et réécrire afin que nos utilisateurs puissent continuer à bénéficier des fonctionnalités que nous fournissons."
   },
-  "advanced.label": {
-    "message": "Avancés"
-  },
   "any.label": {
     "message": "N'importe quel entête"
   },
@@ -165,9 +162,6 @@
   },
   "ccname.label": {
     "message": "Noms des destinataires en copie"
-  },
-  "close.label": {
-    "message": "Fermer"
   },
   "conditional.forwardMode": {
     "message": "Si l'e-mail est transféré en ligne, le premier paramètre de texte est inséré. Le deuxième paramètre de texte est utilisé lorsque le courrier est transféré en tant que pièce jointe."
@@ -631,15 +625,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Payez seulement 4,30 € au lieu de 8,60 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}jusqu'au  $expiry${boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
   },
@@ -1033,9 +1018,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Mises à jour silencieuses"
-  },
   "pref_silentUpdates_tip": {
     "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
   },
@@ -1394,9 +1376,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17 juillet"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
