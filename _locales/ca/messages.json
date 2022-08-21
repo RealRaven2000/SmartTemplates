@@ -52,9 +52,6 @@
   "addon-authors-struggle": {
     "message": "Per continuar sent útils, ara els desenvolupadors de complements han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
-  "advanced.label": {
-    "message": "Avançats"
-  },
   "any.label": {
     "message": "Quina entèsta que siá"
   },
@@ -162,9 +159,6 @@
   },
   "ccname.label": {
     "message": "Noms dels destinataris en còpia"
-  },
-  "close.label": {
-    "message": "Tampar"
   },
   "conditional.forwardMode": {
     "message": "Si el correu electrònic es reenvia en línia, s'insereix el primer paràmetre de text. El segon paràmetre de text s'utilitza quan el correu es reenvia com a fitxer adjunt."
@@ -628,15 +622,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Pagueu només 4,30 € en lloc de 8,60 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al $expiry$ {boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
   },
@@ -1036,9 +1021,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Substitueix els salts de línia per la signatura de text pla per <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Actualitzacions silencioses"
-  },
   "pref_silentUpdates_tip": {
     "message": "No obriu el registre de canvis després que s'hagi actualitzat SmartTemplates."
   },
@@ -1379,9 +1361,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17 de juliol"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
