@@ -10,7 +10,7 @@ END LICENSE BLOCK */
 // whether these are shown depends on the "endSale" variable in popup.js!
 const discountPro = "33%";
 const discountRenewal = "25%";
-const discountUpgrade = "50%";
+const discountUpgrade = "40%";
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
@@ -179,8 +179,7 @@ const discountUpgrade = "50%";
     //
     let specialOfferStandard = document.getElementById('specialOfferStandard');
     if (specialOfferStandard) {
-      let discount = "50%"; // Upgrade to Pro!
-      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discount])
+      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discountUpgrade])
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>");
     }

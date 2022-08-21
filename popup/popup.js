@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
-const endSale = new Date("2022-07-17"); // Next Sale End Date
+const endSale = new Date("2022-09-04"); // Next Sale End Date
 
 async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
@@ -140,7 +140,9 @@ async function updateActions(addonName) {
       newHeight = Math.round(r.height) + 80,
       maxHeight = window.screen.height;
       
-  if (newHeight>maxHeight) newHeight = maxHeight-15;
+  if (newHeight>maxHeight) {
+    newHeight = maxHeight-15;
+  }
   browser.windows.update(win.id, 
     {height: newHeight}
   );
