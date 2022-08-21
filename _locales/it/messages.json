@@ -49,9 +49,6 @@
   "addon-authors-struggle": {
     "message": "Per continuare ad essere utili, noi sviluppatori di componenti aggiuntivi dobbiamo ora finanziare le risorse necessarie per correggere e riscrivere in modo che i nostri utenti possano continuare a beneficiare delle funzionalità che forniamo."
   },
-  "advanced.label": {
-    "message": "Avanzate"
-  },
   "any.label": {
     "message": "Qualsiasi Header-line"
   },
@@ -159,9 +156,6 @@
   },
   "ccname.label": {
     "message": "Nome del destinatario"
-  },
-  "close.label": {
-    "message": "Chiudi"
   },
   "conditional.forwardMode": {
     "message": "Se l'email viene inoltrata in linea, viene inserito il primo parametro di testo. Il secondo parametro di testo viene utilizzato quando la posta viene inoltrata come allegato."
@@ -580,15 +574,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Paga solo € 4,30 invece di € 8,60 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}fino al $expiry${boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
   },
@@ -949,9 +934,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Sostituisci le interruzioni di riga con <br> nelle firme in testo semplice"
   },
-  "pref_silentUpdates": {
-    "message": "Aggiornamenti silenziosi"
-  },
   "pref_silentUpdates_tip": {
     "message": "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplates."
   },
@@ -1307,9 +1289,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17 luglio"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
