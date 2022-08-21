@@ -52,9 +52,6 @@
   "addon-authors-struggle": {
     "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
-  "advanced.label": {
-    "message": "Avancerat"
-  },
   "any.label": {
     "message": "Alla Header-line"
   },
@@ -162,9 +159,6 @@
   },
   "ccname.label": {
     "message": "Mottagarens namn"
-  },
-  "close.label": {
-    "message": "Grundläggande"
   },
   "conditional.forwardMode": {
     "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
@@ -625,15 +619,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Betala endast 4,30 € istället för 8,60 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
   },
@@ -1033,9 +1018,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Ersätt radbrytningar i signaturer med vanlig text med <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Tyst uppdateringar"
-  },
   "pref_silentUpdates_tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
   },
@@ -1397,9 +1379,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17 juli"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
