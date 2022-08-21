@@ -52,9 +52,6 @@
   "addon-authors-struggle": {
     "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
-  "advanced.label": {
-    "message": "Lisäasetukset"
-  },
   "any.label": {
     "message": "Mikä tahansa otsakerivi"
   },
@@ -162,9 +159,6 @@
   },
   "ccname.label": {
     "message": "Vastaanottajan nimi"
-  },
-  "close.label": {
-    "message": "Sulje"
   },
   "conditional.forwardMode": {
     "message": "Jos sähköposti välitetään edelleen, ensimmäinen tekstiparametri lisätään. Toista tekstiparametria käytetään, kun posti välitetään edelleen liitteenä."
@@ -628,15 +622,6 @@
       }
     }
   },
-  "license-standard-special-terms": {
-    "message": "Maksa vain 4,30 euroa 8,60 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
-    "placeholders": {
-      "expiry": {
-        "content": "$1",
-        "example": "16. April"
-      }
-    }
-  },
   "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
@@ -1036,9 +1021,6 @@
   "pref_sigReplaceBR.label": {
     "message": "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä <br>"
   },
-  "pref_silentUpdates": {
-    "message": "Hiljaiset päivitykset"
-  },
   "pref_silentUpdates_tip": {
     "message": "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen."
   },
@@ -1397,9 +1379,6 @@
         "example": "30%"
       }
     }
-  },
-  "special-offer-expiry": {
-    "message": "17. heinäkuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
