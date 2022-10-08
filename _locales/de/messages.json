@@ -1018,9 +1018,6 @@
   "quotePlaceholder.level": {
     "message": "[optional, numerisch] Maximale Zitierstufe, um ältere Zitate aus der Konversation zu entfernen."
   },
-  "quote_changers.cap": {
-    "message": "Zitat-Bearbeitung"
-  },
   "quote_changers.desc": {
     "message": "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen."
   },
