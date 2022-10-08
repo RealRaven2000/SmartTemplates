@@ -1018,9 +1018,6 @@
   "quotePlaceholder.level": {
     "message": "[opcjonalne, numeryczne] Maksymalny poziom cytowań, aby usunąć starsze cytaty z rozmowy."
   },
-  "quote_changers.cap": {
-    "message": "Cytuj manipulację"
-  },
   "quote_changers.desc": {
     "message": "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca."
   },
