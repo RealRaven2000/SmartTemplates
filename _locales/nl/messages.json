@@ -1015,9 +1015,6 @@
   "quotePlaceholder.level": {
     "message": "[optioneel, numeriek] Maximaal citatieniveau om oudere citaten uit het gesprek te verwijderen."
   },
-  "quote_changers.cap": {
-    "message": "Aanhalingsmanipulatie"
-  },
   "quote_changers.desc": {
     "message": "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen."
   },
