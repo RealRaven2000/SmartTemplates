@@ -1057,9 +1057,6 @@
   "quotePlaceholder.level": {
     "message": "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。"
   },
-  "quote_changers.cap": {
-    "message": "報價操縱"
-  },
   "quote_changers.desc": {
     "message": "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。"
   },
