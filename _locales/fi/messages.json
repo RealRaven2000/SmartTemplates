@@ -1075,9 +1075,6 @@
   "quotePlaceholder.level": {
     "message": "[valinnainen, numeerinen] Enimmäislainaustaso vanhempien lainausten poistamiseksi keskustelusta."
   },
-  "quote_changers.cap": {
-    "message": "Lainaa manipulointia"
-  },
   "quote_changers.desc": {
     "message": "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi."
   },
