@@ -1024,9 +1024,6 @@
   "quotePlaceholder.level": {
     "message": "[neobvezno, številčno] Najvišja stopnja navajanja za odstranitev starejših citatov iz pogovora."
   },
-  "quote_changers.cap": {
-    "message": "Manipulacija citatov"
-  },
   "quote_changers.desc": {
     "message": "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor."
   },
