@@ -988,9 +988,6 @@
   "quotePlaceholder.level": {
     "message": "[facoltativo, numerico] Livello massimo di citazioni per rimuovere le citazioni meno recenti dalla conversazione."
   },
-  "quote_changers.cap": {
-    "message": "Manipolazione delle citazioni"
-  },
   "quote_changers.desc": {
     "message": "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio."
   },
