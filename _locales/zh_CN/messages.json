@@ -1075,9 +1075,6 @@
   "quotePlaceholder.level": {
     "message": "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。"
   },
-  "quote_changers.cap": {
-    "message": "报价操作"
-  },
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"
   },
