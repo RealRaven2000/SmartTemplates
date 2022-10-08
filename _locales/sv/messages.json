@@ -1072,9 +1072,6 @@
   "quotePlaceholder.level": {
     "message": "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen."
   },
-  "quote_changers.cap": {
-    "message": "Citat Manipulation"
-  },
   "quote_changers.desc": {
     "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
   },
