@@ -1060,9 +1060,6 @@
   "quotePlaceholder.level": {
     "message": "[opcional, numèric] Nivell màxim de cites per eliminar cometes antigues de la conversa."
   },
-  "quote_changers.cap": {
-    "message": "Manipulació de pressupostos"
-  },
   "quote_changers.desc": {
     "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."
   },
