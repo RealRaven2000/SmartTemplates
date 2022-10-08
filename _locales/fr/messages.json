@@ -1072,9 +1072,6 @@
   "quotePlaceholder.level": {
     "message": "[facultatif, numérique] Niveau de citation maximal pour supprimer les anciennes citations de la conversation."
   },
-  "quote_changers.cap": {
-    "message": "Manipulation de devis"
-  },
   "quote_changers.desc": {
     "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."
   },
