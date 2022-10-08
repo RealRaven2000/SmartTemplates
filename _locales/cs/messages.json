@@ -1066,9 +1066,6 @@
   "quotePlaceholder.level": {
     "message": "[volitelný, číselný] Maximální úroveň citace k odstranění starších citací z konverzace."
   },
-  "quote_changers.cap": {
-    "message": "Nabídka manipulace"
-  },
   "quote_changers.desc": {
     "message": "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa."
   },
