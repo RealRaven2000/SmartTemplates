@@ -1033,9 +1033,6 @@
   "quotePlaceholder.level": {
     "message": "[opcional, numérico] Nivel máximo de citas para eliminar citas antiguas de la conversación."
   },
-  "quote_changers.cap": {
-    "message": "Manipulación de cotizaciones"
-  },
   "quote_changers.desc": {
     "message": "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio."
   },
