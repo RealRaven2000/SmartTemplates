@@ -1054,9 +1054,6 @@
   "quotePlaceholder.level": {
     "message": "[オプション、数値] 会話から古い引用を削除するための最大引用レベル。"
   },
-  "quote_changers.cap": {
-    "message": "引用部の操作"
-  },
   "quote_changers.desc": {
     "message": "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。"
   },
