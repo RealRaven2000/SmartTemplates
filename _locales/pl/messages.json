@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "Nazwisko odbiorcy"
   },
+  "clipboardFunctions": {
+    "message": "Funkcje schowka"
+  },
+  "clipboard.copy": {
+    "message": "kopiuje tekst do schowka."
+  },
+  "clipboard.insert": {
+    "message": "wstawia bieżącą zawartość schowka w tej pozycji."
+  },
+  "clipboard.from": {
+    "message": "(przykład dla dowolnej zmiennej adresu) skopiuj adres e-mail oryginalnego nadawcy do schowka."
+  },
+  "clipboard.setHeader": {
+    "message": "Użyj zawartości schowka, aby ustawić cc - (działa dla dowolnego nagłówka tekstowego)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Znajduje pasujący tekst z tematu i kopiuje do schowka, jeśli zostanie znaleziony."
+  },
+  "clipboard.matchBody": {
+    "message": "Dopasowuje tekst z oryginalnej treści wiadomości e-mail i kopiuje go do schowka, jeśli zostanie znaleziony."
+  },
+  "clipboard.notes": {
+    "message": "Każda funkcja używająca {toclip} wyczyści schowek, jeśli nie zwróci żadnych danych. Możesz użyć funkcji schowka, aby przenieść dane do fragmentu tekstu, który jest ładowany za pomocą polecenia {file}."
+  },
   "close.label": {
     "message": "Zwiń okno dialogowe"
   },
@@ -1040,7 +1064,7 @@
     "message": "[opcjonalne, numeryczne] Maksymalny poziom cytowań, aby usunąć starsze cytaty z rozmowy."
   },
   "quote_changers.cap": {
-    "message": "Cytuj manipulację"
+    "message": "Modyfikacja cytowanego tekstu"
   },
   "quote_changers.desc": {
     "message": "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca."

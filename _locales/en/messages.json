@@ -166,6 +166,30 @@
   "ccname.label": {
     "message": "Recipient's name"
   },
+  "clipboardFunctions": {
+    "message": "Clipboard Functions"
+  },
+  "clipboard.copy": {
+    "message": "copies text to clipboard."
+  },
+  "clipboard.insert": {
+    "message": "inserts current clipboard contents at this position."
+  },
+  "clipboard.from": {
+    "message": "(example for any address variable) copy mail address of original sender to clipboard."
+  },
+  "clipboard.setHeader": {
+    "message": "Use clipboard contents to set the cc - (works for any textual header)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Match text from subject and copy to clipboard if found."
+  },
+  "clipboard.matchBody": {
+    "message": "Matches text from original email content and copies it to clipboard if found."
+  },
+  "clipboard.notes": {
+    "message": "Any function that uses {toclip} will clear the clipboard if it returns no data. You can use the clipboard functions to transfer data into a text fragment that is loaded with the {file} command."
+  },
   "close.label": {
     "message": "Collapse Dialog"
   },
@@ -1107,7 +1131,7 @@
     "message": "[optional, numeric] Maximum citation level to exclude older quotes from the conversation."
   },
   "quote_changers.cap": {
-    "message": "Quote Manipulation"
+    "message": "Quote Modification"
   },
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."

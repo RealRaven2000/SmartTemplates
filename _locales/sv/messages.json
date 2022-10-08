@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Mottagarens namn"
   },
+  "clipboardFunctions": {
+    "message": "Urklippsfunktioner"
+  },
+  "clipboard.copy": {
+    "message": "kopierar text till urklipp."
+  },
+  "clipboard.insert": {
+    "message": "infogar aktuellt urklippsinnehåll på denna position."
+  },
+  "clipboard.from": {
+    "message": "(exempel för valfri adressvariabel) kopiera e-postadressen för den ursprungliga avsändaren till urklipp."
+  },
+  "clipboard.setHeader": {
+    "message": "Använd urklippsinnehåll för att ställa in cc - (fungerar för alla textrubriker)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Hittar matchande text från ämne och kopiera till urklipp om den hittas."
+  },
+  "clipboard.matchBody": {
+    "message": "Matchar text från det ursprungliga e-postinnehållet och kopierar det till urklipp om det hittas."
+  },
+  "clipboard.notes": {
+    "message": "Alla funktioner som använder {toclip} rensar urklippet om det inte returnerar någon data. Du kan använda urklippsfunktionerna för att överföra data till ett textfragment som laddas med kommandot {file}."
+  },
   "close.label": {
     "message": "Komprimera dialogrutan"
   },
@@ -1094,7 +1118,7 @@
     "message": "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen."
   },
   "quote_changers.cap": {
-    "message": "Citat Manipulation"
+    "message": "Citerad textändring"
   },
   "quote_changers.desc": {
     "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."

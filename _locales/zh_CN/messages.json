@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "抄送人姓名"
   },
+  "clipboardFunctions": {
+    "message": "剪贴板功能"
+  },
+  "clipboard.copy": {
+    "message": "将文本复制到剪贴板。"
+  },
+  "clipboard.insert": {
+    "message": "在此位置插入当前剪贴板内容。"
+  },
+  "clipboard.from": {
+    "message": "（任何地址变量的示例）将原始发件人的邮件地址复制到剪贴板。"
+  },
+  "clipboard.setHeader": {
+    "message": "使用剪贴板内容设置抄送 - （适用于任何文本标题）。"
+  },
+  "clipboard.matchSubject": {
+    "message": "从主题中查找匹配的文本，如果找到则复制到剪贴板。"
+  },
+  "clipboard.matchBody": {
+    "message": "匹配原始电子邮件内容中的文本并将其复制到剪贴板（如果找到）。"
+  },
+  "clipboard.notes": {
+    "message": "如果没有返回数据，任何使用 {toclip} 的函数都会清除剪贴板。 您可以使用剪贴板功能将数据传输到使用 {file} 命令加载的文本片段中。"
+  },
   "close.label": {
     "message": "折叠对话框"
   },
@@ -1088,7 +1112,7 @@
     "message": "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。"
   },
   "quote_changers.cap": {
-    "message": "报价操作"
+    "message": "引用文本修改"
   },
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"

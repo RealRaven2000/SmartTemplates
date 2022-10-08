@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "收件者姓名"
   },
+  "clipboardFunctions": {
+    "message": "剪貼板功能"
+  },
+  "clipboard.copy": {
+    "message": "將文本複製到剪貼板。"
+  },
+  "clipboard.insert": {
+    "message": "在此位置插入當前剪貼板內容。"
+  },
+  "clipboard.from": {
+    "message": "（任何地址變量的示例）將原始發件人的郵件地址複製到剪貼板。"
+  },
+  "clipboard.setHeader": {
+    "message": "使用剪貼板內容設置抄送 - （適用於任何文本標題）。"
+  },
+  "clipboard.matchSubject": {
+    "message": "從主題中查找匹配的文本，如果找到則復製到剪貼板。"
+  },
+  "clipboard.matchBody": {
+    "message": "匹配原始電子郵件內容中的文本並將其複製到剪貼板（如果找到）。"
+  },
+  "clipboard.notes": {
+    "message": "如果沒有返回數據，任何使用 {toclip} 的函數都會清除剪貼板。 您可以使用剪貼板功能將數據傳輸到使用 {file} 命令加載的文本片段中。"
+  },
   "close.label": {
     "message": "折疊對話框"
   },
@@ -1079,7 +1103,7 @@
     "message": "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。"
   },
   "quote_changers.cap": {
-    "message": "報價操縱"
+    "message": "引用文本修改"
   },
   "quote_changers.desc": {
     "message": "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。"

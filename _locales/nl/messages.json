@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Achternaam van ontvanger"
   },
+  "clipboardFunctions": {
+    "message": "Klembordfuncties"
+  },
+  "clipboard.copy": {
+    "message": "kopieert tekst naar het klembord."
+  },
+  "clipboard.insert": {
+    "message": "voegt de huidige inhoud van het klembord in op deze positie."
+  },
+  "clipboard.from": {
+    "message": "(voorbeeld voor elke adresvariabele) kopieer het e-mailadres van de oorspronkelijke afzender naar het klembord."
+  },
+  "clipboard.setHeader": {
+    "message": "Gebruik de inhoud van het klembord om de cc in te stellen - (werkt voor elke tekstuele kop)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Vindt overeenkomende tekst van onderwerp en kopieer naar klembord indien gevonden."
+  },
+  "clipboard.matchBody": {
+    "message": "Komt overeen met tekst van originele e-mailinhoud en kopieert deze naar het klembord als deze wordt gevonden."
+  },
+  "clipboard.notes": {
+    "message": "Elke functie die {toclip} gebruikt, zal het klembord wissen als er geen gegevens worden geretourneerd. U kunt de klembordfuncties gebruiken om gegevens over te zetten naar een tekstfragment dat wordt geladen met de opdracht {file}."
+  },
   "close.label": {
     "message": "Dialoogvenster samenvouwen"
   },
@@ -1037,7 +1061,7 @@
     "message": "[optioneel, numeriek] Maximaal citatieniveau om oudere citaten uit het gesprek te verwijderen."
   },
   "quote_changers.cap": {
-    "message": "Aanhalingsmanipulatie"
+    "message": "Aanpassing van geciteerde tekst"
   },
   "quote_changers.desc": {
     "message": "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen."

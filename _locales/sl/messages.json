@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Prejemnikov priimek"
   },
+  "clipboardFunctions": {
+    "message": "Funkcije odložišča"
+  },
+  "clipboard.copy": {
+    "message": "kopira besedilo v odložišče."
+  },
+  "clipboard.insert": {
+    "message": "vstavi trenutno vsebino odložišča na to mesto."
+  },
+  "clipboard.from": {
+    "message": "(primer za katero koli spremenljivko naslova) kopirajte poštni naslov prvotnega pošiljatelja v odložišče."
+  },
+  "clipboard.setHeader": {
+    "message": "Uporabite vsebino odložišča, da nastavite cc - (deluje za katero koli besedilno glavo)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Poišče ujemajoče se besedilo iz zadeve in kopira v odložišče, če ga najde."
+  },
+  "clipboard.matchBody": {
+    "message": "Ujema besedilo iz izvirne e-poštne vsebine in ga kopira v odložišče, če ga najde."
+  },
+  "clipboard.notes": {
+    "message": "Vsaka funkcija, ki uporablja {toclip}, bo počistila odložišče, če ne vrne podatkov. Funkcije odložišča lahko uporabite za prenos podatkov v fragment besedila, ki se naloži z ukazom {file}."
+  },
   "close.label": {
     "message": "Strni pogovorno okno"
   },
@@ -1046,7 +1070,7 @@
     "message": "[neobvezno, številčno] Najvišja stopnja navajanja za odstranitev starejših citatov iz pogovora."
   },
   "quote_changers.cap": {
-    "message": "Manipulacija citatov"
+    "message": "Sprememba citiranega besedila"
   },
   "quote_changers.desc": {
     "message": "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor."

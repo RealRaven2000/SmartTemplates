@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "Jméno příjemce"
   },
+  "clipboardFunctions": {
+    "message": "Funkce schránky"
+  },
+  "clipboard.copy": {
+    "message": "zkopíruje text do schránky."
+  },
+  "clipboard.insert": {
+    "message": "vloží aktuální obsah schránky na tuto pozici."
+  },
+  "clipboard.from": {
+    "message": "(příklad pro libovolnou proměnnou adresy) zkopírujte poštovní adresu původního odesílatele do schránky."
+  },
+  "clipboard.setHeader": {
+    "message": "Pomocí obsahu schránky nastavte desku cc - (funguje pro jakékoli textové záhlaví)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Vyhledá odpovídající text z předmětu a zkopíruje jej do schránky, pokud je nalezen."
+  },
+  "clipboard.matchBody": {
+    "message": "Shoduje se s textem z původního obsahu e-mailu a zkopíruje jej do schránky, pokud je nalezen."
+  },
+  "clipboard.notes": {
+    "message": "Jakákoli funkce, která používá {toclip}, vymaže schránku, pokud nevrátí žádná data. K přenosu dat do textového fragmentu, který se načte pomocí příkazu {file}, můžete použít funkce schránky."
+  },
   "close.label": {
     "message": "Sbalit dialog"
   },
@@ -1088,7 +1112,7 @@
     "message": "[volitelný, číselný] Maximální úroveň citace k odstranění starších citací z konverzace."
   },
   "quote_changers.cap": {
-    "message": "Nabídka manipulace"
+    "message": "Úprava nabídky"
   },
   "quote_changers.desc": {
     "message": "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa."

@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Noms dels destinataris en còpia"
   },
+  "clipboardFunctions": {
+    "message": "Funcions del porta-retalls"
+  },
+  "clipboard.copy": {
+    "message": "copia el text al porta-retalls."
+  },
+  "clipboard.insert": {
+    "message": "insereix el contingut actual del porta-retalls en aquesta posició."
+  },
+  "clipboard.from": {
+    "message": "(exemple per a qualsevol variable d'adreça) copieu l'adreça de correu del remitent original al porta-retalls."
+  },
+  "clipboard.setHeader": {
+    "message": "Utilitzeu el contingut del porta-retalls per configurar el cc - (funciona per a qualsevol capçalera textual)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Troba el text coincident de l'assumpte i copia al porta-retalls si es troba."
+  },
+  "clipboard.matchBody": {
+    "message": "Coincideix amb el text del contingut del correu electrònic original i el copia al porta-retalls si es troba."
+  },
+  "clipboard.notes": {
+    "message": "Qualsevol funció que utilitzi {toclip} esborrarà el porta-retalls si no retorna dades. Podeu utilitzar les funcions del porta-retalls per transferir dades a un fragment de text que es carrega amb l'ordre {file}."
+  },
   "close.label": {
     "message": "Redueix el diàleg"
   },
@@ -1082,7 +1106,7 @@
     "message": "[opcional, numèric] Nivell màxim de cites per eliminar cometes antigues de la conversa."
   },
   "quote_changers.cap": {
-    "message": "Manipulació de pressupostos"
+    "message": "Modificació del pressupost"
   },
   "quote_changers.desc": {
     "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."

@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Vastaanottajan nimi"
   },
+  "clipboardFunctions": {
+    "message": "Leikepöydän toiminnot"
+  },
+  "clipboard.copy": {
+    "message": "kopioi tekstin leikepöydälle."
+  },
+  "clipboard.insert": {
+    "message": "lisää nykyisen leikepöydän sisällön tähän kohtaan."
+  },
+  "clipboard.from": {
+    "message": "(esimerkki mistä tahansa osoitemuuttujasta) kopioi alkuperäisen lähettäjän sähköpostiosoite leikepöydälle."
+  },
+  "clipboard.setHeader": {
+    "message": "Käytä leikepöydän sisältöä asettaaksesi cc - (toimii kaikissa tekstiotsikoissa)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Etsii vastaavan tekstin aiheesta ja kopioi leikepöydälle, jos se löytyy."
+  },
+  "clipboard.matchBody": {
+    "message": "Vastaa tekstiä alkuperäisestä sähköpostisisällöstä ja kopioi sen leikepöydälle, jos se löytyy."
+  },
+  "clipboard.notes": {
+    "message": "Kaikki {toclip}-funktiota käyttävät funktiot tyhjentävät leikepöydän, jos ne eivät palauta tietoja. Voit käyttää leikepöytätoimintoja tietojen siirtämiseen tekstikatkelmaan, joka ladataan komennolla {file}."
+  },
   "close.label": {
     "message": "Kutista valintaikkuna"
   },
@@ -1097,7 +1121,7 @@
     "message": "[valinnainen, numeerinen] Enimmäislainaustaso vanhempien lainausten poistamiseksi keskustelusta."
   },
   "quote_changers.cap": {
-    "message": "Lainaa manipulointia"
+    "message": "Lainattu tekstin muutos"
   },
   "quote_changers.desc": {
     "message": "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi."

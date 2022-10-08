@@ -163,6 +163,30 @@
   "ccname.label": {
     "message": "Apellido del destinatario"
   },
+  "clipboardFunctions": {
+    "message": "Funciones del portapapeles"
+  },
+  "clipboard.copy": {
+    "message": "copia el texto al portapapeles."
+  },
+  "clipboard.insert": {
+    "message": "inserta el contenido actual del portapapeles en esta posición."
+  },
+  "clipboard.from": {
+    "message": "(ejemplo para cualquier variable de dirección) copie la dirección de correo del remitente original al portapapeles."
+  },
+  "clipboard.setHeader": {
+    "message": "Use el contenido del portapapeles para establecer el cc - (funciona para cualquier encabezado de texto)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Encuentra el texto coincidente del asunto y lo copia al portapapeles si lo encuentra."
+  },
+  "clipboard.matchBody": {
+    "message": "Hace coincidir el texto del contenido del correo electrónico original y lo copia en el portapapeles si lo encuentra."
+  },
+  "clipboard.notes": {
+    "message": "Cualquier función que use {toclip} borrará el portapapeles si no devuelve datos. Puede utilizar las funciones del portapapeles para transferir datos a un fragmento de texto que se carga con el comando {file}."
+  },
   "close.label": {
     "message": "Contraer cuadro de diálogo"
   },
@@ -1055,7 +1079,7 @@
     "message": "[opcional, numérico] Nivel máximo de citas para eliminar citas antiguas de la conversación."
   },
   "quote_changers.cap": {
-    "message": "Manipulación de cotizaciones"
+    "message": "Modificación del texto citado"
   },
   "quote_changers.desc": {
     "message": "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio."

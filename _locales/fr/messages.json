@@ -166,6 +166,30 @@
   "ccname.label": {
     "message": "Noms des destinataires en copie"
   },
+  "clipboardFunctions": {
+    "message": "Fonctions du Presse-papiers"
+  },
+  "clipboard.copy": {
+    "message": "copie le texte dans le presse-papiers."
+  },
+  "clipboard.insert": {
+    "message": "insère le contenu actuel du presse-papiers à cette position."
+  },
+  "clipboard.from": {
+    "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
+  },
+  "clipboard.setHeader": {
+    "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
+  },
+  "clipboard.matchSubject": {
+    "message": "Trouve le texte correspondant du sujet et le copie dans le presse-papiers s'il est trouvé."
+  },
+  "clipboard.matchBody": {
+    "message": "Correspond au texte du contenu de l'e-mail d'origine et le copie dans le presse-papiers s'il est trouvé."
+  },
+  "clipboard.notes": {
+    "message": "Toute fonction qui utilise {toclip} effacera le presse-papiers si elle ne renvoie aucune donnée. Vous pouvez utiliser les fonctions du presse-papiers pour transférer des données dans un fragment de texte chargé avec la commande {file}."
+  },
   "close.label": {
     "message": "Réduire la boîte de dialogue"
   },
@@ -1094,7 +1118,7 @@
     "message": "[facultatif, numérique] Niveau de citation maximal pour supprimer les anciennes citations de la conversation."
   },
   "quote_changers.cap": {
-    "message": "Manipulation de devis"
+    "message": "Modification du texte cité"
   },
   "quote_changers.desc": {
     "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."

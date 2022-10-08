@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "CC 受信者の名前"
   },
+  "clipboardFunctions": {
+    "message": "クリップボード機能"
+  },
+  "clipboard.copy": {
+    "message": "テキストをクリップボードにコピーします。"
+  },
+  "clipboard.insert": {
+    "message": "現在のクリップボードの内容をこの位置に挿入します。"
+  },
+  "clipboard.from": {
+    "message": "(任意のアドレス変数の例) 元の送信者のメールアドレスをクリップボードにコピーします。"
+  },
+  "clipboard.setHeader": {
+    "message": "クリップボードの内容を使用して cc - を設定します (任意のテキスト ヘッダーで機能します)。"
+  },
+  "clipboard.matchSubject": {
+    "message": "件名から一致するテキストを検索し、見つかった場合はクリップボードにコピーします。"
+  },
+  "clipboard.matchBody": {
+    "message": "元の電子メール コンテンツのテキストを照合し、見つかった場合はクリップボードにコピーします。"
+  },
+  "clipboard.notes": {
+    "message": "{toclip} を使用する関数は、データが返されない場合、クリップボードをクリアします。 クリップボード関数を使用して、{file} コマンドで読み込まれるテキスト フラグメントにデータを転送できます。"
+  },
   "close.label": {
     "message": "ダイアログを折りたたむ"
   },
@@ -1076,7 +1100,7 @@
     "message": "[オプション、数値] 会話から古い引用を削除するための最大引用レベル。"
   },
   "quote_changers.cap": {
-    "message": "引用部の操作"
+    "message": "引用テキストの修正"
   },
   "quote_changers.desc": {
     "message": "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。"

@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "Nome do destinatário"
   },
+  "clipboardFunctions": {
+    "message": "Funções da área de transferência"
+  },
+  "clipboard.copy": {
+    "message": "copia o texto para a área de transferência."
+  },
+  "clipboard.insert": {
+    "message": "insere o conteúdo atual da área de transferência nesta posição."
+  },
+  "clipboard.from": {
+    "message": "(exemplo para qualquer variável de endereço) copie o endereço de e-mail do remetente original para a área de transferência."
+  },
+  "clipboard.setHeader": {
+    "message": "Use o conteúdo da área de transferência para definir o cc - (funciona para qualquer cabeçalho textual)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Localiza o texto correspondente do assunto e copia para a área de transferência, se encontrado."
+  },
+  "clipboard.matchBody": {
+    "message": "Corresponde ao texto do conteúdo original do e-mail e o copia para a área de transferência, se encontrado."
+  },
+  "clipboard.notes": {
+    "message": "Qualquer função que use {toclip} limpará a área de transferência se não retornar dados. Você pode usar as funções da área de transferência para transferir dados para um fragmento de texto carregado com o comando {file}."
+  },
   "close.label": {
     "message": "Caixa de diálogo Recolher"
   },
@@ -1055,7 +1079,7 @@
     "message": "[opcional, numérico] Nível máximo de citação para remover citações mais antigas da conversa."
   },
   "quote_changers.cap": {
-    "message": "Manipulação de Cotação"
+    "message": "Modificação de Texto Citado"
   },
   "quote_changers.desc": {
     "message": "Variáveis premium para remover texto / tags das partes citadas e economizar espaço."

@@ -95,6 +95,30 @@
   "ccname.label": {
     "message": "Nama penerima"
   },
+  "clipboardFunctions": {
+    "message": "Fungsi Papan Klip"
+  },
+  "clipboard.copy": {
+    "message": "menyalin teks ke clipboard."
+  },
+  "clipboard.insert": {
+    "message": "menyisipkan konten clipboard saat ini pada posisi ini."
+  },
+  "clipboard.from": {
+    "message": "(contoh untuk variabel alamat apa pun) salin alamat email pengirim asli ke clipboard."
+  },
+  "clipboard.setHeader": {
+    "message": "Gunakan konten clipboard untuk mengatur cc - (berfungsi untuk header tekstual apa pun)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Menemukan teks yang cocok dari subjek dan salin ke clipboard jika ditemukan."
+  },
+  "clipboard.matchBody": {
+    "message": "Mencocokkan teks dari konten email asli dan menyalinnya ke clipboard jika ditemukan."
+  },
+  "clipboard.notes": {
+    "message": "Fungsi apa pun yang menggunakan {toclip} akan menghapus clipboard jika tidak mengembalikan data. Anda dapat menggunakan fungsi clipboard untuk mentransfer data ke dalam fragmen teks yang dimuat dengan perintah {file}."
+  },
   "close.label": {
     "message": "Ciutkan Dialog"
   },

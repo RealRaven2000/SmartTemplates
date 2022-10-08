@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "Nome del destinatario"
   },
+  "clipboardFunctions": {
+    "message": "Funzioni degli appunti"
+  },
+  "clipboard.copy": {
+    "message": "copia il testo negli appunti."
+  },
+  "clipboard.insert": {
+    "message": "inserisce il contenuto degli appunti corrente in questa posizione."
+  },
+  "clipboard.from": {
+    "message": "(esempio per qualsiasi variabile di indirizzo) copia l'indirizzo e-mail del mittente originale negli appunti."
+  },
+  "clipboard.setHeader": {
+    "message": "Usa il contenuto degli appunti per impostare cc - (funziona per qualsiasi intestazione testuale)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Trova il testo corrispondente dall'oggetto e copia negli appunti se trovato.)."
+  },
+  "clipboard.matchBody": {
+    "message": "Corrisponde al testo del contenuto dell'e-mail originale e lo copia negli appunti se trovato."
+  },
+  "clipboard.notes": {
+    "message": "Qualsiasi funzione che utilizza {toclip} cancellerà gli appunti se non restituisce dati. È possibile utilizzare le funzioni degli appunti per trasferire i dati in un frammento di testo caricato con il comando {file}."
+  },
   "close.label": {
     "message": "Comprimi la finestra di dialogo"
   },
@@ -1010,7 +1034,7 @@
     "message": "[facoltativo, numerico] Livello massimo di citazioni per rimuovere le citazioni meno recenti dalla conversazione."
   },
   "quote_changers.cap": {
-    "message": "Manipolazione delle citazioni"
+    "message": "Modifica del testo citato"
   },
   "quote_changers.desc": {
     "message": "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio."

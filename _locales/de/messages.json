@@ -160,6 +160,30 @@
   "ccname.label": {
     "message": "Empfängername"
   },
+  "clipboardFunctions": {
+    "message": "Funktionen für die Zwischenablage"
+  },
+  "clipboard.copy": {
+    "message": "kopiert Text in die Zwischenablage."
+  },
+  "clipboard.insert": {
+    "message": "fügt den aktuellen Inhalt der Zwischenablage an dieser Position ein."
+  },
+  "clipboard.from": {
+    "message": "(Beispiel für beliebige Adressvariable) Mailadresse des ursprünglichen Absenders in die Zwischenablage kopieren."
+  },
+  "clipboard.setHeader": {
+    "message": "Verwendet den Inhalt der Zwischenablage, um den cc zu setzen - (funktioniert für jeden Textheader)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Findet übereinstimmenden Text aus dem Betreff und kopiert ihn in die Zwischenablage"
+  },
+  "clipboard.matchBody": {
+    "message": "Gleicht Text aus dem ursprünglichen E-Mail-Inhalt ab und kopiert ihn in die Zwischenablage, falls gefunden."
+  },
+  "clipboard.notes": {
+    "message": "Jede Funktion, die {toclip} verwendet, löscht die Zwischenablage, wenn sie keine Daten zurückgibt. Sie können die Zwischenablagefunktionen verwenden, um Daten in ein Textfragment zu übertragen, das mit dem Befehl {file} geladen wird."
+  },
   "close.label": {
     "message": "Dialog kompaktifizieren"
   },
