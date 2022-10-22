@@ -1105,6 +1105,9 @@
   "url.supportPage.label": {
     "message": "Halaman Dukungan"
   },
+  "variable.search": {
+    "message": "Masukkan istilah penelusuran dan tekan {{Enter}}. Tekan {{F3}} untuk mengulang pencarian."
+  },
   "var_custom.cap": {
     "message": "Variabel untuk menyesuaikan 'Format tanggal'"
   },

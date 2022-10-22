@@ -1,0 +1,370 @@
+/* ################################################################################### */
+/* ################################ Help Iframe CONTENT ############################## */
+/* ################################################################################### */
+
+/* ####################################### BODY ###################################### */
+.help, h1, h2, aside, li,
+.aboutPersonnel {
+  font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
+}
+
+.help {
+  font-size: 9pt;
+  display: block;
+  background: rgb(250,250,250);
+	color: rgba(20,20,20,0.9);
+	border-left: #ccc 1px;
+	border-right: #ccc 1px;
+	font-size: 10pt;
+	min-height: 950px;
+ /* padding: 5px 10px; */
+}
+
+.help ul {
+	margin-bottom: 1.8em;
+	margin-top: 0.2em;
+	padding-left: 0;
+}
+.help ul li {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+/* IN PAGE SEARCH FACILITY */
+
+p#allexpander {
+  margin: 2px 0;
+}
+
+.help #searchBox {
+  cursor: pointer;
+  position: fixed;
+  min-width: 9em;
+  top: 1px;
+  right: 3px;
+	opacity: 0.7;
+}
+
+.help #searchHelpContent {
+  background-color: white;
+  border: 1px solid rgba(80,80,80,.8);
+  box-shadow: 3px 3px 2px rgba(80,80,80,.8);
+  padding: 2px 5px;
+  opacity: 0.83;
+  position: fixed;
+  top: 20px;
+  right: 3px;
+}
+
+.help #searchHelpContent.hidden {
+  visibility: hidden;
+}
+
+#searchHelpContent .key {
+  background-color: rgb(50,50,50,0.85);
+  border-radius: 3px !important;
+  color: white;
+  padding: 0 2px !important;
+  margin: 2px 0 !important;
+}
+
+#searchBox #search {
+	max-width: 8em;
+	font-size: 0.9em;
+}
+#searchBox #search:invalid  {
+  background-image: url("chrome://global/skin/icons/search-textbox.svg");
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+}
+
+#searchBox #fq-variables-search-help.popupButton {
+  -moz-context-properties: fill;
+	background-size: 16px 16px !important;
+	border-style: none !important;
+  display: inline-block;
+  fill: #0079ef; 
+	height: 16px !important;
+  width: 16px;
+  list-style-image: url("chrome://smartTemplate4/content/skin/icons/help-find-in-page.svg"); 
+  background-image: url("chrome://smartTemplate4/content/skin/icons/help-find-in-page.svg");
+  margin-right: -5px;
+	min-height: 16px;
+  min-width: 16px;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 1px;
+}
+
+#fq-variables-search-help  > image.toolbarbutton-icon {
+  height:21px;
+  transition: height 0.2s;
+}
+
+#fq-variables-search-help :hover {
+  /* margin-right: -4px; */
+}
+
+#fq-variables-search-help :hover > image.toolbarbutton-icon {
+  height:25px;
+}
+
+
+
+/* ################################ CHAPTER (HEADLINES)  ############################# */
+h1.helpchapter {
+  background-image: linear-gradient(to bottom, rgba(90,90,90,1) 0%, rgba(40,40,40,1) 100%);
+  border-radius: 0;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff; /* #ffffff for TT DeepDark Theme */
+  text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  cursor: pointer;
+  padding: 4px 0px;
+  margin: 7px 0;
+}
+
+#helpContents h4 {
+	margin: 0 0 !important;
+  padding: 5px;
+	background-color: rgb(60,60,60);
+	color: rgb(180,180,180) !important;
+  max-width: 80%;
+  width: 150px;
+}
+
+
+.help ul.chapterBody {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.chapterBody {
+  height: auto;
+  max-height: 1500px;
+  transition: max-height 0.4s ease-in;
+}
+
+.chapterBody.collapsed {
+  background-color: light-gray;
+  margin-top: -0.5em;  
+  max-height: 0;
+  transition: max-height 0.12s ease-out;
+  overflow: hidden;  
+}
+
+.chapterBody.collapsed ul, 
+.chapterBody.collapsed li, 
+.chapterBody.collapsed aside,
+.chapterBody.collapsed table,
+.chapterBody.collapsed h4 {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;  
+  color: #ffffff;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.chapterBody .chapterbreak {
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(144,144,144,0.1) 0%,rgba(144,144,144,0.7) 20%,rgba(144,144,144,1) 50%,rgba(144,144,144,0.7) 80%,rgba(144,144,144,0.1) 100%);
+  margin: 4px 25px 8px;
+}
+
+/* style the gear emoji to go to standard address format settings... */
+.config_default {
+  cursor: pointer;
+  border: 1px solid rgba(50,50,50,0.5);
+  border-radius: 3px;
+  font-size: 1.6em;
+  text-shadow: 0 0 0 rgba(109,140,200,0.9);
+  vertical-align: middle;
+}
+.config_default:hover {
+  background-color: rgba(80,80,80,0.15);
+  border: 1px solid rgba(40,40,40,0.9);
+}
+.config_default lbl {
+  color: rgba(40,40,40,0.8);
+  font-size: 0.625em;
+  vertical-align: text-top;
+}
+
+/** anchor tags */
+#helpContents a[href] {
+	font-weight: bold;
+	color: rgb(0,60,120);
+}
+#helpContents a[href]:hover {
+	text-decoration: underline;
+}
+
+
+/* ############################# HTML TAG ASIDE (BELOW CHAPTER) ######################### */
+aside {
+  display: block;
+  font-weight: normal;
+  font-size: 10pt !important;
+  /* font-style: italic; */ /* its kind of ugly having italics everywhere... */
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 0px 0px 4px;
+}
+
+/* ##################################### HTML TAG b  ################################# */
+b {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+#keywords {
+  border: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+
+/* #################################### HTML TAG CODE ################################ */
+/* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
+#keywords code, code {
+  background: linear-gradient(to bottom,  rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+  border-radius: 0.3em;
+  border: 1px solid #bbb;
+  margin: 2px 4px 2px 0px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
+}
+
+
+#keywords code.noWrite, code.noWrite {
+  background: linear-gradient(to bottom,  rgba(239,205,236,1) 0%, rgba(223,145,218,1) 50%, rgba(215,133,209,1) 51%, rgba(230,152,224,1) 100%);
+}
+
+#keywords code.deferable, code.deferable {
+	background: linear-gradient(to bottom, rgba(252,234,187,0.8) 0%,rgba(252,205,77,0.8) 40%,rgba(248,181,0,0.8) 51%,rgba(251,223,147,0.8) 100%);
+}
+
+#keywords code.deprecated, code.deprecated {
+  background: linear-gradient(to bottom, rgba(221,221,221,1) 0%,rgba(182,182,182,1) 50%,rgba(172,172,172,1) 51%,rgba(189,189,189,1) 100%);
+}
+
+/** variable parameters  **/
+.param {
+  color: rgb(0,0,45);
+  font-size: 0.8em;
+  font-family: Consolas, monaco, monospace;
+  font-style: italic;
+}
+.paramList {
+  margin: 5px 0;
+}
+.paramList .param {
+  background-color: rgb(230,230,230);
+  padding: 3px;
+}
+
+/**  address book switches **/
+.help ul.contact_switches {
+  margin-left: 14px;
+  list-style: bullet;
+	margin: 5px 0 !important;
+	margin-block-start: 5px;
+	margin-block-end: 5px;
+}
+.help ul.contact_switches li {
+  font-family: Consolas, monaco, monospace;
+  font-size: 10pt;
+	margin: 5px 0 0 15px !important;
+	color:  rgb(128,0,0) !important;
+}
+
+.help table.ab_fields * {
+  vertical-align: top !important;
+}
+
+
+
+
+table div.yes, table div.no {
+	list-style-position: inside;
+	display: list-item;
+}
+table div.yes {
+	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/enabled.png");
+}
+table div.no {
+	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/disabled.png");
+}
+
+/* #################################### TABLE FOR VARS ############################### */
+
+
+.tr-keywords td {
+  font-size: 11pt !important;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #808080;
+  padding: 0;
+}
+
+/* ################################## SCREENSHOT CLASS ############################### */
+.screenshot_help {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* ################################## SMALL ICON CLASS ############################### */
+.small_icon {
+  height: 16px;/*max 16px */
+  width: 16px; /*max 16px */
+  margin-right: 3px;
+}
+
+/* ############################## CHECKMARK & X IN VARTABLE ########################## */
+.no {
+  color: #ff0000;
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
+}
+.yes {
+  color: #7cfc00;
+  font-size: 13pt !important;
+  text-shadow: #000000 1px 1px 1px;
+}
+
+
+/* right hand panels widths */
+#rightPane tabpanel , #aboutPanel {
+  min-width: 420px;
+  max-width: 460px;
+}
+ 
+ 
+.contextConfig:hover {
+  background-color: pink;
+}
+
+/* #### help frame  #### */
+#helpFrame {
+	min-height: 300px;
+	height: auto;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+/* we will wrap these in parenthesis to indicate outdated status */
+#keywords code.deprecated, code.deprecated {
+	margin-right: 0;
+}
+

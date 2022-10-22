@@ -1608,6 +1608,9 @@
   "url.supportPage.label": {
     "message": "Stran za podporo"
   },
+  "variable.search": {
+    "message": "Vnesite iskalni izraz in pritisnite {{Enter}}. Pritisnite {{F3}} za ponovitev iskanja."
+  },
   "var_custom.cap": {
     "message": "Spremenljivke za 'obliko datuma' po meri"
   },

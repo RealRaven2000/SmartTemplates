@@ -1626,6 +1626,9 @@
   "url.supportPage.label": {
     "message": "支援網頁"
   },
+  "variable.search": {
+    "message": "輸入搜索詞並按 {{Enter}}。 按 {{F3}} 重複搜索。"
+  },
   "var_custom.cap": {
     "message": "自訂 '日期格式' 的變數"
   },

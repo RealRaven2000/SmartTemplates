@@ -1668,6 +1668,9 @@
   "url.supportPage.label": {
     "message": "Supportsida"
   },
+  "variable.search": {
+    "message": "Ange en sökterm och tryck på {{Enter}}. Tryck på {{F3}} för att upprepa sökningen."
+  },
   "var_custom.cap": {
     "message": "Variabler för anpassat datumformat"
   },

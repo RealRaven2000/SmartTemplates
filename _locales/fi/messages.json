@@ -1665,6 +1665,9 @@
   "url.supportPage.label": {
     "message": "Tuen kotisivu"
   },
+  "variable.search": {
+    "message": "Kirjoita hakutermi ja paina {{Enter}}. Toista haku painamalla {{F3}}."
+  },
   "var_custom.cap": {
     "message": "Muuttujat muokatulle päiväyksen muotoilulle"
   },

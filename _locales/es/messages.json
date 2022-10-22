@@ -1614,6 +1614,9 @@
   "url.supportPage.label": {
     "message": "Ayudar al sitio web"
   },
+  "variable.search": {
+    "message": "Ingrese un término de búsqueda y presione {{Enter}}. Pulse {{F3}} para repetir la búsqueda."
+  },
   "var_custom.cap": {
     "message": "Variables para formatos de fecha personalizados"
   },

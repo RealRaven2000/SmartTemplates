@@ -1666,6 +1666,9 @@
   "url.supportPage.label": {
     "message": "сторінка Підтримки"
   },
+  "variable.search": {
+    "message": "Введіть пошуковий термін і натисніть {{Enter}}. Натисніть {{F3}}, щоб повторити пошук."
+  },
   "var_custom.cap": {
     "message": "Змінні для персоналізації 'Date format'"
   },

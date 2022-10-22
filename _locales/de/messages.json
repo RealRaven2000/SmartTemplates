@@ -746,7 +746,7 @@
     "message": "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden."
   },
   "minSize_detail": {
-    "message": "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt."
+    "message": "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird noch am laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das tag trotzdem entfernt."
   },
   "month.1.name": {
     "message": "Januar"
@@ -1588,6 +1588,9 @@
   },
   "url.supportPage.label": {
     "message": "Support Homepage"
+  },
+  "variable.search": {
+    "message": "Einen Suchbegriff eingeben und dann {{Enter}} drücken. Drücken Sie {{F3}}, um die Suche zu wiederholen."
   },
   "var_custom.cap": {
     "message": "Variablen für angepasstes Datumsformat"

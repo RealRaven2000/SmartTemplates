@@ -1684,6 +1684,9 @@
   "url.supportPage.label": {
     "message": "Support Page"
   },
+  "variable.search": {
+    "message": "Enter a search term and press {{Enter}}. Press {{F3}} to repeat search."
+  },
   "var_custom.cap": {
     "message": "Variables for customized 'Date format'"
   },

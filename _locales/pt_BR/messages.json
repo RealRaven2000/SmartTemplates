@@ -1578,6 +1578,9 @@
   "url.supportPage.label": {
     "message": "Página de suporte"
   },
+  "variable.search": {
+    "message": "Digite um termo de pesquisa e pressione {{Enter}}. Pressione {{F3}} para repetir a pesquisa."
+  },
   "var_custom.cap": {
     "message": "Variáveis para data e hora personalizáveis "
   },

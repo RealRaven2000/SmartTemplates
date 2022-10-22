@@ -1605,6 +1605,9 @@
   "url.supportPage.label": {
     "message": "Strona pomocy"
   },
+  "variable.search": {
+    "message": "Wprowadź wyszukiwane hasło i naciśnij {{Enter}}. Naciśnij {{F3}}, aby powtórzyć wyszukiwanie."
+  },
   "var_custom.cap": {
     "message": "Zmienne dla dostosowania formatu daty"
   },

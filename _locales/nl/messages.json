@@ -1587,6 +1587,9 @@
   "url.supportPage.label": {
     "message": "Ondersteuningspagina"
   },
+  "variable.search": {
+    "message": "Voer een zoekterm in en druk op {{Enter}}. Druk op {{F3}} om het zoeken te herhalen."
+  },
   "var_custom.cap": {
     "message": "Variabelen voor aangepaste datumopmaak"
   },

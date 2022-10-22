@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://smarttemplate4/content/skin/settings.css" type="text/css" title="SmartTemplateSettings" ?>
 
+
 <!-- #### Help Content #### -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+>
 
 
 	<head>
@@ -12,6 +15,11 @@
   
   <div class="help" id="helpContents" onclick="containerClick(this, event);">
     <p id="allexpander">__MSG_heading.click__ <a href="#" onclick="expandAll(event);">__MSG_heading.expandAll__</a>.</p>
+    <hbox id="searchBox">
+      <toolbarbutton id="fq-variables-search-help" class="popupButton" label=""/> 
+      <html:input  id="search" required="true" />
+    </hbox>
+    <div id="searchHelpContent" class="hidden">__MSG_variable.search__</div>
 		<!-- ##### Fix Variables #### -->
 		<h1 class="helpchapter">__MSG_fix_var.cap__</h1>
     <div class="chapterBody">
@@ -96,7 +104,20 @@
 				<li><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>
 			</ul>
     </div>
-    
+
+		<h1 class="helpchapter">__MSG_clipboardFunctions__</h1>
+    <div class="chapterBody">
+      <ul>
+        <li><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
+        <li><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
+        <li><code>%from(mail,<i>toclipboard</i>)%</code> = __MSG_clipboard.from__</li>
+        <li><code>%header.set(cc,<i>clipboard</i>)%</code> = __MSG_clipboard.setHeader__</li>
+        <li><code>%matchTextFromSubject(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchSubject__</li>
+        <li><code>%matchTextFromBody(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchBody__</li>
+      </ul>
+      <p id="clipboardNotes">__MSG_clipboard.notes__</p>
+    </div>
+   
     <!-- ##### AB switches #### -->  
 		<h1 class="helpchapter">__MSG_ab_fields__</h1>
     <div class="chapterBody">

@@ -1569,6 +1569,9 @@
   "url.supportPage.label": {
     "message": "Pagina supporto"
   },
+  "variable.search": {
+    "message": "Inserisci un termine di ricerca e premi {{Invio}}. Premi {{F3}} per ripetere la ricerca."
+  },
   "var_custom.cap": {
     "message": "Variabili per data/ora personalizzata "
   },

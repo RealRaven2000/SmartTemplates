@@ -1644,6 +1644,9 @@
   "url.supportPage.label": {
     "message": "Stránka podpory"
   },
+  "variable.search": {
+    "message": "Zadejte hledaný výraz a stiskněte {{Enter}}. Stiskněte {{F3}} pro opakování hledání."
+  },
   "var_custom.cap": {
     "message": "Proměnné pro přizpůsobený formát data"
   },

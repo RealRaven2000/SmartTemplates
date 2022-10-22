@@ -1644,6 +1644,9 @@
   "url.supportPage.label": {
     "message": "Pagina d'ajuda"
   },
+  "variable.search": {
+    "message": "Introduïu un terme de cerca i premeu {{Retorn}}. Premeu {{F3}} per repetir la cerca."
+  },
   "var_custom.cap": {
     "message": "Variablas per personalizar lo format de data "
   },

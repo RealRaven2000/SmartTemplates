@@ -1650,6 +1650,9 @@
   "url.supportPage.label": {
     "message": "支持主页"
   },
+  "variable.search": {
+    "message": "输入搜索词并按 {{Enter}}。 按 {{F3}} 重复搜索。"
+  },
   "var_custom.cap": {
     "message": "自定义日期格式的变量"
   },
