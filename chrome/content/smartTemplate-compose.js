@@ -780,6 +780,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isDraftLike = !composeType 
 		  || flags.isFileTemplate
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
+      
+    templateText = SmartTemplate4.parseModifier(templateText, composeType, true); // global clipboard setting (replaces with %toclipboard()%)
 		let regular = SmartTemplate4.regularize(templateText, 
 				composeType, 
 				false,   // isStationery
@@ -1674,10 +1676,12 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						else {
 						  // if we reply below we must be above the signature.
-							if (editor.selection.collapseToEnd)
+							if (editor.selection.collapseToEnd) {
 								editor.selection.collapseToEnd();
-							else
+              }
+							else {
 								editor.selection.collapse(theParent, nodeOffset+1); 
+              }
 						}
 					}
 					/* void scrollIntoView (in short aRegion, in boolean aIsSynchronous, in int16_t aVPercent, in int16_t aHPercent); */
