@@ -369,9 +369,9 @@ SmartTemplate4.getHeadersWrapper = function(originalMsgURI) {
     rv = new SmartTemplate4.classGetHeaders(originalMsgURI); // legacy headers
   }  
   else {
-    rv = SmartTemplate4.MessageHdr;
+    rv = SmartTemplate4.MessageHdr; // new headers in TB102
   }
-  if (SmartTemplate4.Preferences.isDebug) {
+  if (SmartTemplate4.Preferences.isDebugOption("headers") ) {
     console.log(rv);
   }
   return rv;
@@ -451,8 +451,9 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
       // "Al \"Karsten\" Seltzer" <fxxxx@gmail.com>
       retValue = str.replace(/\\\"/g, "\""); // unescape
     }
-    else
+    else {
       retValue = str ? str : "";
+    }
     SmartTemplate4.regularize.headersDump += 'extractHeader(' + header + ') = ' + retValue + '\n';
     return retValue;
 	};
@@ -1274,7 +1275,10 @@ SmartTemplate4.mimeDecoder = {
         util.logDebug("mimeDecoder.split() - copying result to clipboard:\n" + addresses);
         util.clipboardWrite(addresses);
       }
-      addresses = "";
+      if (addresses) {
+        addresses = "%toclipboard(" + addresses + ")%"; // [issue 210] make sure to remember clipboard value
+      }
+
     }
 		return addresses;
 	} // split
@@ -1282,13 +1286,17 @@ SmartTemplate4.mimeDecoder = {
 
 SmartTemplate4.MessageHdr = null; // will be overwritten
 
-SmartTemplate4.parseModifier = function(msg, composeType) {
+SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false) {
 	function matchText(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
 			let matchPart = msg.match(regX);
 			if (matchPart) {
 				for (let i=0; i<matchPart.length; i++) {
+          let isClipboardPart =  (matchPart[i].lastIndexOf(",toclipboard")>0);
+          if (isClipboardPart && !clipboardMode || !isClipboardPart && clipboardMode) {
+            continue;
+          }
 					if (!gMsgCompose.originalMsgURI) debugger;
 					util.logDebugOptional('parseModifier','matched variable [' + i + ']: ' + matchPart[i]);
 					let patternArg = matchPart[i].match(   /(\"[^"].*?\")/   ), // get argument (includes quotation marks) ? non greedy
@@ -1356,9 +1364,13 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
                   }
 									// retrieve the (..) group part from the pattern  - e..g matchTextFromBody("Tattoo ([0-9])",1) => finds "Tattoo 100" => generates "100" (one word)
 								}
-                if (matchPart[i].lastIndexOf(",toclipboard")>0) {
+                if (isClipboardPart) {
                   util.clipboardWrite(replaceGroupString); // [issue 187]
-                  msg = msg.replace(matchPart[i], "");
+                  if (!replaceGroupString) {
+                    msg = msg.replace(matchPart[i], ""); 
+                  } else { 
+                    msg = msg.replace(matchPart[i], `%toclipboard(${replaceGroupString})%`);// [issue 210]
+                  }
                 }
                 else {
                   util.logDebug('matchText(' + fromPart + ') - Replacing Pattern with:\n' + replaceGroupString);
@@ -1374,7 +1386,12 @@ SmartTemplate4.parseModifier = function(msg, composeType) {
                 }
                 else {
                   // [Bug 26512] - if matchText is used multiple times, the result is blank  
-                  msg = msg.replace(matchPart[i],"");
+                  if (isClipboardPart) {
+                    msg = msg.replace(matchPart[i],"%toclipboard()%"); // overwrite the clipboard with empty string!
+                  }
+                  else {
+                    msg = msg.replace(matchPart[i],"");
+                  }
                 }
 							}
 						}
@@ -1855,7 +1872,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 					      : (addressHdr != "") ? str : ""; // check if header exists / is empty. this is for [[optional parts]]
 				if (!el) {
 					// util.logDebug('Removing non-reserved word: %' +  reservedWord + '%');
-          util.logToConsole('Discarding unknown variable: %' +  reservedWord + '%')
+          util.logToConsole('Ignore unknown variable: %' +  reservedWord + '%')
         }
 				else { // it's a reserved word, likely a header
 					if (prefs.isDebugOption("tokens.deferred")) debugger;
@@ -2930,7 +2947,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             }
           }
 					let isStripQuote = util.isAddressHeader(token),
-              theHeader = hdr.get(token),
+              theHeader = hdr.get(token.toLowerCase()),  // [issue 211] Newsgroups / Message-Id etc.
 							isFwdArg = false;
 							
 					if (util.getComposeType()=='fwd') {
@@ -2983,6 +3000,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
               util.addUsedPremiumFunction("clipboard");
             }
             else {
+              if (headerValue.startsWith("%toclipboard")) 
+                return "";
               util.clipboardWrite(headerValue);
             }
             return "";
@@ -3440,7 +3459,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
-  msg = msg.replace(/%([a-zA-Z][\w-:=.]*)(\([^%]+\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
+  msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
 	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
                                                                           // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
                                                                           // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
