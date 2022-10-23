@@ -684,6 +684,7 @@ SmartTemplate4.Util = {
 	logToConsole: function (a) {
 		const util = SmartTemplate4.Util;
     let msg = "SmartTemplates " + util.logTime() + "\n";
+    if (a.includes("initTemplateMenu")) debugger;
     console.log(msg, ...arguments);
   },
 

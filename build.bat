@@ -1,9 +1,9 @@
 set /P smartTemplateRev=<revision.txt
 set /a oldRev=%smartTemplateRev%
 set /a smartTemplateRev+=1
-pwsh -Command "(gc -en UTF8NoBOM manifest.json) -replace 'pre%oldRev%', 'pre%smartTemplateRev%' | Out-File manifest.json"
+powershell -Command "(gc -en UTF8 manifest.json) -replace 'pre%oldRev%', 'pre%smartTemplateRev%' | Out-File manifest.json -encoding utf8"
 "C:\Program Files\7-Zip\7z" a -xr!.svn smartTemplateWeb.zip manifest.json _locales scripts chrome locale popup st-background.* license.txt icon.png release-notes.html
 echo %smartTemplateRev% > revision.txt
-move smartTemplate-*.xpi "..\..\..\Test Versions\3.13\"
-pwsh -Command "Start-Sleep -m 150"
-rename smartTemplateWeb.zip smartTemplate-fx-3.13pre%smartTemplateRev%.xpi
+move smartTemplate-*.xpi "..\..\..\Test Versions\3.14\"
+powershell -Command "Start-Sleep -m 150"
+rename smartTemplateWeb.zip smartTemplate-fx-3.14pre%smartTemplateRev%.xpi

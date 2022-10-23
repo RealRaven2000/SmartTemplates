@@ -179,7 +179,7 @@ END LICENSE BLOCK
     # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
     # [issue 198] - Renew license button on lower left of settings dialog not working
     
-  Version 3.13 - WIP
+  Version 3.13 - 21/08/2022
     # [issue 199] Inserting of addresses with display name that contains comma fails with unexpected results
     # [issue 200] bracketMail() and bracketName() cannot be used in the same format string
     # [issue 205] After FiltaQuilla filter forwards / replies with template, the next manual reply uses same template
@@ -189,10 +189,19 @@ END LICENSE BLOCK
     # bracketMail() / bracketName() Fixed copying angled brackets to clipboard as plain text (and not encoded)
     # [issue 206] %datelocal% throws an error and returns a blank space.
     # [issue 208] Improve accessibility for settings dialog
-    # [issue 125] Support license validation with Exchange accounts (from Tb 102)
+    # [issue 209] Support license validation with Exchange accounts (from Tb 102)
     # After updating, do not open tab with version log automatically. Old behavior can be restored on the licenses tab.
     # Repaired icon in customize toolbar
-
+    
+  Version 3.14 - WIP
+    # [issue 211] accept mixed case headers such as "Newsgroups" / "Message-Id" again
+    # [issue 210] support using toclipboard parameter multiple times in the same template
+    # [issue 215] Search box in variables window
+    # Fixed text colors in Variables window when using dark themes.
+    # Known issue - [external?] template not applied when replying to a message we sent ourselves 
+    #               that used SmartTempaltes - and Tb changes the recipient - 
+    #               this leads to immediate secondary loadIdentity(startup=false,...) where previous body 
+    #               already has the smartTemplateInserted attribute.
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -647,8 +656,9 @@ var SmartTemplate4 = {
           else
             this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
         }
-        else
+        else {
           this.smartTemplate.insertTemplate(false);
+        }
         // [Bug 25104] when switching identity, old sig does not get removed.
         //             (I think what really happens is that it is inserted twice)
         isTemplateProcessed = true;
@@ -704,6 +714,18 @@ var SmartTemplate4 = {
   init: function init() {
     function smartTemplate_loadIdentity(startup){
       let prevIdentity = gCurrentIdentity;
+      // when composer changes identity (happens when we reply to our own email and it changes to the other recipient)
+      if (startup) { 
+/*  gMsgCompose DOES NOT EXIST at this stage!
+        let editor = gMsgCompose.editor();
+        if (editor) {
+          let root = editor.rootElement;
+          if (root.getAttribute("smartTemplateInserted")) {
+            root.removeAttribute("smartTemplateInserted");
+          }
+        }
+  */
+      }
       return SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
     

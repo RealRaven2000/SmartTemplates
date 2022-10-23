@@ -1315,7 +1315,7 @@ export class Parser {
         this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
         this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
         this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-      } (hdr ? hdr.get("Date") : msgDbHdr.date);
+      } (hdr ? hdr.get("date") : msgDbHdr.date);
     }
     // TokenMap["headerName"] = mail Header
     // TokenMap["reserved"] = ST4 function

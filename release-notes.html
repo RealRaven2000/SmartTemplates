@@ -1,31 +1,18 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.13">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.14">can be found here</a>
 
 <b>Enhancements</b>
 <ul>
-<li>New <code class="inline">toclipboard</code> parameter for address fields such as <code>%from(name)%</code> to copy results to clipboard.</li> 
-<li>Improved the parameters <code class="inline">bracketMail</code> and <code class="inline">bracketName</code> for using with clipboard. These now do not encode the &lt; and &gt; signs anymore.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/208">[issue 208]</a> Improved accessibility for settings dialog. tabs and buttons can now be navigated using keyboard only.</li>
-<li>After updating, SmartTemplates does not display the tab with version log automatically anymore. The original behavior can be restored on the licenses tab in the new 'Updates' section.
-
-The fully translated "News" screen or a detailed change log (in English) on the support site can  also be displayed opened from here.
-</li>
+<li>Added a search field to the variables page.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/215">[issue 215]</a></li> 
+<li>Improved colors in variables window when using dark themes.</li> 
+<li>Support using {{toclipboard}} parameter to copy data to clipboard multiple times in the same template.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/210">[issue 210]</a></li> 
 </ul>
 
 
 <b>Bug Fixes / Maintenance</b>
 <ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/205">[issue 205]</a> Fixed: After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used in error on a following manual reply in error.</li> 
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/204">[issue 204]</a> Repaired the context menu command to update and replace field variables with content (without updating the content - to update it just use a left click beforehand).</li> 
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/206">[issue 206]</a> Repaired: %datelocal% returned a blank space instead of the localized date.</li>
+<li>Fixed header variables with uppercase letters, such as {{%Message-Id%}} and {{%Newsgroups%}} <a href="https://github.com/RealRaven2000/SmartTemplates/issues/211">[issue 211]</a> </li>
 </ul>
 
-<b>Miscellaneous</b>
-<ul>
-<li> In Thunderbird 102 We now use compose-window-init event in 102 to reliably attain headers at an earlier 
-stage - in order to extract headers from the original email.
-</li>
-</ul>
-  
