@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Tham số {{toclipboard}} mới cho các trường địa chỉ như {{%from (name)%}} để sao chép kết quả vào khay nhớ tạm. {L2} {L1} Sau khi FiltaQuilla tự động chuyển tiếp hoặc trả lời email bằng smarttemplate, cùng một mẫu đã được sử dụng trong một câu trả lời thủ công sau do nhầm lẫn. {L2} {L1} Đã sửa chữa lệnh menu ngữ cảnh để cập nhật và thay thế các biến trường bằng nội dung. {L2} {L1} Đã cải thiện các tham số {{bracketMail}} và {{bracketName}} để sử dụng với khay nhớ tạm. {L2}{L1} Đã sửa chữa biến {{%datelocal%}}. {L2} {L1} Khả năng truy cập được cải thiện trong hộp thoại cài đặt. {L2}"
+    "message": "{L1} Hỗ trợ sử dụng tham số {{toclipboard}} để sao chép dữ liệu vào khay nhớ tạm nhiều lần trong cùng một mẫu. {L2} {L1} Đã thêm trường tìm kiếm văn bản trên trang biến. {L2} {L1} Cải thiện màu sắc trong cửa sổ biến khi sử dụng các chủ đề tối. {L2} {L1} Đã sửa chữa các biến tiêu đề có chữ hoa, chẳng hạn như {{% Message-Id%}} và {{% Newsgroups%}} {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

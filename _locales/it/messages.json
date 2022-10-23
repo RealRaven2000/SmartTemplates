@@ -1591,7 +1591,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuovo parametro {{toclipboard}} per campi indirizzo come {{%from(name)%}} per copiare i risultati negli appunti.{L2} {L1}Dopo che FiltaQuilla ha inoltrato o risposto automaticamente a un'e-mail utilizzando smarttemplate, il lo stesso modello era stato utilizzato in una successiva risposta manuale per errore.{L2} {L1}Riparato il comando del menu di scelta rapida per aggiornare e sostituire le variabili di campo con il contenuto.{L2} {L1}Migliorati i parametri {{bracketMail}} e {{bracketName}} per l'utilizzo con gli appunti. {L2}{L1}Variabile {{%datelocal%}} riparata.{L2}{L1}Accessibilità migliorata nella finestra di dialogo delle impostazioni.{L2}"
+    "message": "{L1}Supporto per l'utilizzo del parametro {{toclipboard}} per copiare i dati negli appunti più volte nello stesso modello.{L2} {L1}Aggiunto un campo di ricerca di testo nella pagina delle variabili.{L2} {L1}Colori migliorati nella finestra delle variabili quando si utilizzano temi scuri.{L2} {L1}Variabili di intestazione riparate con lettere maiuscole, come {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

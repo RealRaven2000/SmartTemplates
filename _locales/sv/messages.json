@@ -1690,7 +1690,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Ny {{toclipboard}}-parameter för adressfält som {{%from(name)%}} för att kopiera resultat till urklipp.{L2} {L1}Efter att FiltaQuilla automatiskt vidarebefordrade eller svarade på ett e-postmeddelande med smarttemplate, samma mall hade använts i ett följande manuellt svar av misstag.{L2} {L1}Reparerade snabbmenykommandot för att uppdatera och ersätta fältvariabler med innehåll.{L2} {L1}Förbättrade parametrarna {{bracketMail}} och {{bracketName}} för användning med urklipp. {L2}{L1}Reparerad {{%datelocal%}} variabel.{L2}{L1}Förbättrad tillgänglighet i inställningsdialogrutan.{L2}"
+    "message": "{L1}Stöd att använda parametern {{toclipboard}} för att kopiera data till urklipp flera gånger i samma mall.{L2} {L1}Lägge till ett textsökfält på variabelsidan.{L2} {L1}Förbättrade färger i variabelfönstret när du använder mörka teman.{L2} {L1}Reparerade rubrikvariabler med stora bokstäver, som {{%Message-Id%}} och {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

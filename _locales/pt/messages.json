@@ -1630,7 +1630,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Novo parâmetro {{toclipboard}} para campos de endereço como {{%from(name)%}} para copiar resultados para a área de transferência.{L2} {L1}Depois que o FiltaQuilla encaminhou ou respondeu automaticamente a um e-mail usando o smarttemplate, o mesmo modelo foi usado em uma resposta manual a seguir com erro.{L2} {L1}Reparado o comando do menu de contexto para atualizar e substituir variáveis de campo por conteúdo.{L2} {L1}Melhorou os parâmetros {{bracketMail}} e {{bracketName}} para usar com a área de transferência. {L2}{L1}Variável {{%datelocal%}} reparada.{L2}{L1}Acessibilidade aprimorada na caixa de diálogo de configurações.{L2}"
+    "message": "{L1}Suporte usando o parâmetro {{toclipboard}} para copiar dados para a área de transferência várias vezes no mesmo modelo.{L2} {L1}Adicionado um campo de pesquisa de texto na página de variáveis.{L2} {L1}Cores aprimoradas na janela de variáveis ao usar temas escuros.{L2} {L1}Variáveis de cabeçalho reparadas com letras maiúsculas, como {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

@@ -1666,7 +1666,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Nou paràmetre {{toclipboard}} per a camps d'adreça com ara {{%from(name)%}} per copiar els resultats al porta-retalls.{L2} {L1}Després que FiltaQuilla hagi reenviat o respongui automàticament un correu electrònic mitjançant smarttemplate, el la mateixa plantilla s'havia utilitzat per error en una resposta manual següent.{L2} {L1}S'ha reparat l'ordre del menú contextual per actualitzar i substituir les variables de camp per contingut.{L2} {L1}S'han millorat els paràmetres {{bracketMail}} i {{bracketName}} per utilitzar-lo amb el porta-retalls. {L2}{L1}S'ha reparat la variable {{%datelocal%}}.{L2}{L1}S'ha millorat l'accessibilitat al diàleg de configuració.{L2}"
+    "message": "{L1}Compatibilitat amb l'ús del paràmetre {{toclipboard}} per copiar dades al porta-retalls diverses vegades en la mateixa plantilla.{L2} {L1}S'ha afegit un camp de cerca de text a la pàgina de variables.{L2} {L1}Colors millorats a la finestra de variables quan feu servir temes foscos.{L2} {L1}Variables de capçalera reparades amb lletres majúscules, com ara {{%Message-Id%}} i {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

@@ -1706,7 +1706,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}Copy text to clipboard with the new function {{%toclipboard()%}}.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}{L1}Repaired {{%datelocal%}} variable.{L2}{L1}Improved accessibility in settings dialog.{L2}"
+    "message": "{L1}Support using {{toclipboard}} parameter to copy data to clipboard multiple times in the same template.{L2} {L1}Added a search field to the variables page.{L2} {L1}Improvement of colors in variables window when using dark themes.{L2} {L1}Fixed header variables with uppercase letters, such as {{%Message-Id%}} and {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

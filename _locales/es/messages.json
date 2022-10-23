@@ -1636,7 +1636,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuevo parámetro {{toclipboard}} para campos de dirección como {{%from(name)%}} para copiar los resultados al portapapeles.{L2} {L1}Después de que FiltaQuilla reenviara o respondiera automáticamente un correo electrónico usando una plantilla inteligente, el la misma plantilla se había utilizado en una siguiente respuesta manual por error.{L2} {L1}Reparó el comando del menú contextual para actualizar y reemplazar las variables de campo con contenido.{L2} {L1}Mejoró los parámetros {{bracketMail}} y {{bracketName}} para usar con el portapapeles. {L2}{L1}Επιδιορθώθηκε η μεταβλητή {{%datelocal%}}.{L2}{L1}Βελτιωμένη προσβασιμότητα στο παράθυρο διαλόγου ρυθμίσεων.{L2}"
+    "message": "{L1}Admite el uso del parámetro {{toclipboard}} para copiar datos al portapapeles varias veces en la misma plantilla.{L2} {L1}Se agregó un campo de búsqueda de texto en la página de variables.{L2} {L1}Colores mejorados en la ventana de variables al usar temas oscuros.{L2} {L1}Variables de encabezado reparadas con letras mayúsculas, como {{%Message-Id%}} y {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

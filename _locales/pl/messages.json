@@ -1627,7 +1627,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Nowy parametr {{toclipboard}} dla pól adresowych, takich jak {{%from(name)%}} do kopiowania wyników do schowka.{L2} {L1}Po automatycznym przekazaniu lub odpowiedzi przez FiltaQuilla na e-mail za pomocą smarttemplate, ten sam szablon został błędnie użyty w następującej ręcznej odpowiedzi.{L2} {L1}Naprawiono polecenie menu kontekstowego, aby zaktualizować i zastąpić zmienne pól zawartością.{L2} {L1}Poprawiono parametry {{bracketMail}} i {{bracketName}} do używania ze schowkiem. {L2}{L1}Naprawiona zmienna {{%datelocal%}}.{L2}{L1}Poprawiona dostępność w oknie ustawień.{L2}"
+    "message": "{L1}Obsługa używania parametru {{toclipboard}} do wielokrotnego kopiowania danych do schowka w tym samym szablonie.{L2} {L1}Dodano pole wyszukiwania tekstu na stronie zmiennych.{L2} {L1}Poprawione kolory w oknie zmiennych podczas używania ciemnych motywów.{L2} {L1}Naprawione zmienne nagłówka z dużymi literami, takie jak {{%Message-Id%}} i {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
