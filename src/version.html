@@ -434,8 +434,8 @@ permalink: version.html
       as <code>%from(name)%</code> to copy extracted address parts to clipboard.
     </li>
     <li>
-      Improved the parameters <code class="inline">bracketMail</code> and 
-      <code class="inline">bracketName</code> for using with clipboard. 
+      Improved the parameters <code class="parameter">bracketMail</code> and 
+      <code class="parameter">bracketName</code> for using with clipboard. 
       These now do not encode the &lt; and &gt; signs anymore.
     </li>
     <li>
@@ -664,7 +664,7 @@ permalink: version.html
           when the user clicks to update the field.
         </li>
         <li>
-          Using multiple <code class="inline">bracketMail</code> functions could lead to 
+          Using multiple <code class="parameter">bracketMail</code> functions could lead to 
           only the last <code class="inline">[[ optional section ]]</code> to be removed as expected.
           See related <a href="https://github.com/RealRaven2000/SmartTemplates/issues/192">[issue 192]</a>
         </li>
@@ -969,7 +969,11 @@ permalink: version.html
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/151">[issue 151]</a> 
-      New single variable <code>%recipient%</code> for final recipient to replace <code class="inline">%to%</code> / <code class="inline">%from%</code> in all compose case templates. This makes it easier to reuse the same template for writing / replying / forwarding and is also less confusing, as it does not "change perspective" as <code class="inline">%to%</code> does!
+      New single variable <code>%recipient%</code> for final recipient to replace 
+      <code class="inline">%to%</code> / <code class="inline">%from%</code> in all 
+      compose case templates. This makes it easier to reuse the same template for 
+      writing / replying / forwarding and is also less confusing, as it does 
+      not "change perspective" as <code class="inline">%to%</code> does!
     </li>
     <li>
       <p>
@@ -1093,10 +1097,13 @@ permalink: version.html
     <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       <p>
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/135">[issue 135]</a> Expand multiple recipients with <code class="inline">%to(firstname)%</code> in New Mail Template.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/135">[issue 135]</a> Expand multiple recipients 
+        with <code class="inline">%to(firstname)%</code> in New Mail Template.
       </p>
       <p>
-        When replying to an email we expect the variable %to(firstname)% to fill in all recipient names, using the address widget. They will be delimited by the character entered in advanced settings under the Name Rules box.
+        When replying to an email we expect the variable <code class="inline">%to(firstname)%</a> to fill in all recipient names, 
+        using the address widget. They will be delimited by the character entered in advanced 
+        settings under the Name Rules box.
       </p>
     </li>
     <li>
