@@ -12,6 +12,7 @@ permalink: version.html
   loadStyleSheet('infoBox.css');
   loadStyleSheet('myProjects.css');
 	loadStyleSheet('smarttemplate-pro.css');
+	loadStyleSheet('syntax.css');
   loadScriptFile('window.js');
 </script>
 
@@ -23,33 +24,8 @@ permalink: version.html
     font-size: 1em;
     margin: 0.2em 0;
   }
-  /* inline html code */
-  code.html {
-    background-color: #f6f9f6;
-    background-image: none !important;
-    color: #001010;
-    padding: 0px 6px !important;
-    border-radius: 0;
-  }
-  pre.code { 
-    background-color: #ffffff;
-    color: #303030;
-    font-family: Consolas, 'Courier New', Geneva, sans-serif;
-    font-size: 10pt !important;
-    padding: 1em;
-    box-shadow: inset 4px 4px 10px #000000;
-  }
   pre.maxW {
     max-width: 600px;
-  }
-  
-  key {
-    background-color: rgb(50,50,50,0.85);
-    border-radius: 3px !important;
-    color: white;
-    font-family: Consolas, 'Courier New', Geneva, sans-serif;
-    margin: 2px 0 !important;    
-    padding: 0 2px !important;
   }
   
   li.psa {
@@ -281,7 +257,7 @@ permalink: version.html
       Improvement of colors in variables window when using dark themes.
     </li> 
     <li>
-      Support using {{toclipboard}} parameter to copy data to clipboard multiple times in the same template.
+      Support using <code class="parameter">toclipboard</code> parameter to copy data to clipboard multiple times in the same template.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/210">[issue 210]</a>
     </li> 
   </ul>
@@ -457,7 +433,7 @@ permalink: version.html
       <code class="inline">%clipboard%</code> or <code class="inline">%header.prefix(subject,clipboard)%</code>.
     </li>
     <li>
-      New <code class="inline">toclipboard</code> parameter for address fields such 
+      New <code class="parameter">toclipboard</code> parameter for address fields such 
       as <code>%from(name)%</code> to copy extracted address parts to clipboard.
     </li>
     <li>
