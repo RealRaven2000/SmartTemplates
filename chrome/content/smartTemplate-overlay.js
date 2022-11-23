@@ -369,7 +369,7 @@ SmartTemplate4.getHeadersWrapper = function(originalMsgURI) {
     rv = new SmartTemplate4.classGetHeaders(originalMsgURI); // legacy headers
   }  
   else {
-    rv = SmartTemplate4.MessageHdr; // new headers in TB102
+    rv = SmartTemplate4.MessageHdr; // new headers in TB102 - uses SmartTemplate4.getHeadersAsync()
   }
   if (SmartTemplate4.Preferences.isDebugOption("headers") ) {
     console.log(rv);
@@ -661,6 +661,41 @@ SmartTemplate4.mimeDecoder = {
 		//           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
 		// use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
 		// mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
+    let mapLegacyCardStruct = new Map([
+      ['nickname', "NickName"],
+      ['additionalmail', "SecondEmail"],
+      ['chatname', "ChatName"],
+      ['workphone', "WorkPhone"],
+      ['homephone', "HomePhone"],
+      ['fax', "FaxNumber"],
+      ['pager', "PagerNumber"],
+      ['mobile', "CellularNumber"],
+      ['private.address1', "HomeAddress"],
+      ['private.address2', "HomeAddress2"],
+      ['private.city', "HomeCity"],
+      ['private.state', "HomeState"],
+      ['private.country', "HomeCountry"],
+      ['private.zip', "HomeZipCode"],
+      ['work.title', "JobTitle"],
+      ['work.department', "Department"],
+      ['work.organization', "Company"],
+      ['work.address1', "WorkAddress"],
+      ['work.address2', "WorkAddress2"],
+      ['work.city', "WorkCity"],
+      ['work.state', "WorkState"],
+      ['work.country', "WorkCountry"],
+      ['work.zip', "WorkZipCode"],          
+      ['work.webpage', "WebPage1"],
+      ['other.custom1', "Custom1"],
+      ['other.custom2', "Custom2"],
+      ['other.custom3', "Custom3"],
+      ['other.custom4', "Custom4"],
+      ['other.custom5', "Custom5"],
+      ['other.notes', "Notes"]
+      
+    ]);
+    
+    
 	  function getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}
@@ -868,10 +903,140 @@ SmartTemplate4.mimeDecoder = {
       
     function getCardProperty(p) {
       if (!card) return '';
-      let r = card.getProperty(p,"");
+      let legacyKey = mapLegacyCardStruct.get(p);
+      let r = card.getProperty(legacyKey,"");
       if (r) {
         let d = SmartTemplate4.mimeDecoder.decode(r);
         if (d) return d;
+      }
+      else {
+        // parse contents of vCard
+        // see https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm#463
+        let name, paramsType;
+        let addrArray;
+        if (p.startsWith("work.")) {
+          addrArray = card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="work").value;
+        }
+        if (p.startsWith("private.")) {
+          addrArray = card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="home").value;
+        }
+        if (addrArray) {
+          let p1 = p.split(".")[1]; //second word;
+          if (p1) {
+            let idx=null;
+            switch(p1) {
+              case "pobox": idx = 0; break;
+              case "address2": idx = 1; break;
+              case "address1": idx = 2; break;
+              case "city": idx = 3; break;
+              case "state": idx = 4; break;
+              case "zip": idx = 5; break;
+              case "country": idx = 6; break;
+            }
+            if (idx!=null) {
+              r = addrArray[idx];
+            }
+          }
+        }
+        if (!r) {
+          switch(p) {
+            case "additionalmail":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="email" && e.params.type==undefined);
+                if (result) return result.value;
+              }
+              break;
+            case "nickname":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="nickname");
+                if (result) return result.value;
+              }
+              break;
+            case "chatname":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="immp");
+                if (result) return result.value;
+              }
+              break;
+            case "workphone":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type=="work");
+                if (result) return result.value;
+              }
+              break;
+            case "homephone":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type=="home");
+                if (result) return result.value;
+              }
+              break;
+            case "fax":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type=="fax");
+                if (result) return result.value;
+              }
+              break;              
+            case "pager":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type=="pager");
+                if (result) return result.value;
+              }
+              break;  
+            case "mobile":
+              {
+                let result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type=="cell");
+                if (result) return result.value;
+              }
+              break;  
+            case "work.organization": // "Company"
+              {
+                let ar = card.vCardProperties.entries.filter( e=>e.name=="org");
+                if (ar && ar.length) {
+                  return ar[0].value[0];
+                }
+              }
+              break;
+            case "work.department": // "Department"
+              {
+                let ar = card.vCardProperties.entries.filter( e=>e.name=="org");
+                if (ar && ar.length) {
+                  return ar[0].value[1];
+                }
+              }
+              break;
+            case "work.title": // "JobTitle"
+              { 
+                let ar = card.vCardProperties.entries.filter( e=>e.name=="title");
+                if (ar && ar.length) {
+                  let result = ar.find(p=>p.type=="text");
+                  if (result) {
+                    return result.value;
+                  }
+                }
+              }
+              break;
+            case "work.webpage": // "WebPage1"
+              { 
+                let result =  card.vCardProperties.entries.filter( e=>e.name=="url" && e.type=="work");
+                if (result) return result.value;
+              }
+              break;              
+          }
+        }
+        if (p.startsWith("other.")) {
+          let p1 = p.split(".")[1]; //second word;  "custom1 .. custom5
+          if (p1.startsWith("custom")) {
+            let p2 = "x-" + p1;
+            let ar = card.vCardProperties.entries.filter(e=>e.name==p2);
+            if (ar && ar.length) {
+              return ar[0].value;
+            }
+          }
+        }
+
+      }
+      if (!r) {
+        console.log ("Card property not found: " + p);
       }
       return r;
     }
@@ -1051,7 +1216,12 @@ SmartTemplate4.mimeDecoder = {
 					partKeyWord = partKeyWord.substring(2);
 					isOptionalPart = true;
 				}
-        switch(partKeyWord.toLowerCase()) {
+        
+        let key = partKeyWord.toLowerCase();
+        if (mapLegacyCardStruct.has(key)) {
+          part = getCardProperty(key);
+        }
+        else switch(key) {
 					case 'initial':
 						while (addressElements.length>1) 
 							addressElements.pop();
@@ -1206,6 +1376,7 @@ SmartTemplate4.mimeDecoder = {
             break;
           case 'addressbook':
             part = "";
+            break;
           case 'toclipboard':
             isWriteClipboard = true;
             part = "";
@@ -2586,7 +2757,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           break;
 			}
 
-      if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;
+      // if (prefs.isDebugOption('tokens') && token != "X:=today") debugger;
 			let isUTC = SmartTemplate4.whatIsUtc, params;
 			switch(token) {
 				case "deleteText":            // return unchanged
@@ -3202,10 +3373,19 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           }
           break;
         case 'image':
-          let alt = (arr.length>1) ? 
-                    (" alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'") :    // don't escape this as it should be pure text. We cannot accept ,'
-                    "",
-              filePath;
+          let imgPath, alt = "", imageAttributes="";
+          if (arr.length>1) {
+            for (let i=1; i<arr.length; i++) {
+              let el = arr[i];
+              if (el.includes("=")) {
+                imageAttributes = imageAttributes + " " + el;
+              }
+              else {
+                // don't escape this as it should be pure text. We cannot accept ,'
+                alt = " alt='" + arr[1].replace("'","").replace(/\"/gm, "") + "'";
+              }
+            }
+          }
           if (!isAbsolute && currentPath) {
             //
             util.logDebug("insert image - adding relative path " + path + "\nto " + currentPath);
@@ -3213,10 +3393,10 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             if (lastSlash<0) lastSlash = currentPath.lastIndexOf("/");
             path = currentPath.substr(0, lastSlash + (path.startsWith('/') ? 0 : 1)) + path;
           }
-          filePath = "file:///" + path.replace(/\\/gm,'/');
+          imgPath = "file:///" + path.replace(/\\/gm,'/');
           // change to data URL
-          filePath = util.getFileAsDataURI(filePath)
-          html = "<img src='" + filePath + "'" + alt + " >";
+          imgPath = util.getFileAsDataURI(imgPath)
+          html = "<img src='" + imgPath + "'" + alt + imageAttributes + " >";
           break;
         default:
           alert('unsupported file type in %file()%: ' + type + '.');
@@ -3455,14 +3635,15 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 	// msg = msg.replaceAll(/%(.*)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
 	// msg = msg.replaceAll(/%(.*)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
 	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketMail\(([^)]*))\)/g, "%$1bracketMail\{$3\}")
-	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketName\(([^)]*))\)/g, "%$1bracketName\{$3\}");
+	msg = msg.replaceAll(/%([a-zA-Z]+.*?)(bracketName\(([)]*))\)/g, "%$1bracketName\{$3\}");
 	// AG: remove any parts ---in curly brackets-- (replace with  [[  ]] ) optional lines
 	msg = simplify(msg);	
   if (prefs.isDebugOption('regularize')) debugger;
-  msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); // added . for header.set / header.append / header.prefix
-	                                                                        // replaced ^) with ^% for header.set.matchFromSubject
-                                                                          // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
-                                                                          // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
+  // msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\(.*\))*%/gm, replaceReservedWords); 
+  msg = msg.replace(/%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
+                    // replaced ^) with ^% for header.set.matchFromSubject
+                    // added mandatory start with a letter to avoid catching  encoded numbers such as %5C
+                    // [issue 49] only match strings that start with an ASCII letter. (\D only guarded against digits)
 	
   // nuke optional stuff wrapped in double brackets [[ %identity(addressbook,..)% ]]
   msg = msg.replace(/\[\[[^\[]+class=st4optional[^\]]+\]\]/gm, '') ;

@@ -193,7 +193,7 @@ END LICENSE BLOCK
     # After updating, do not open tab with version log automatically. Old behavior can be restored on the licenses tab.
     # Repaired icon in customize toolbar
     
-  Version 3.14 - WIP
+  Version 3.14 - 26/10/2022
     # [issue 211] accept mixed case headers such as "Newsgroups" / "Message-Id" again
     # [issue 210] support using toclipboard parameter multiple times in the same template
     # [issue 215] Search box in variables window
@@ -202,6 +202,10 @@ END LICENSE BLOCK
     #               that used SmartTempaltes - and Tb changes the recipient - 
     #               this leads to immediate secondary loadIdentity(startup=false,...) where previous body 
     #               already has the smartTemplateInserted attribute.
+    
+  Version 3.15 - WIP
+    # [issue 215] Improved Variables search - use Shift+F3 to search backwards; support Numpad Enter
+    # [issue 217] addressbook switches broken.
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
