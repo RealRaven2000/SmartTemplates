@@ -21,106 +21,108 @@
     </hbox>
     <div id="searchHelpContent" class="hidden">__MSG_variable.search__</div>
 		<!-- ##### Fix Variables #### -->
-		<h1 class="helpchapter">__MSG_fix_var.cap__</h1>
-    <div class="chapterBody">
+		<h1 class="helpchapter" id="startHeading">__MSG_fix_var.cap__</h1>
+    <div class="chapterBody" tabindex="-1">
 			<ul>
-				<li><code>%identity(name)%</code> = __MSG_ownname.label__ (<code class="deprecated">%ownname%</code>)</li>
-				<li><code>%identity(mail)%</code> = __MSG_ownmail.label__ (<code class="deprecated">%ownmail%</code>)</li>
-				<li><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
-				<li><code>%identity(addressbook,<i>fieldId</i>)%</code> = __MSG_identity_ab__<br/>
+				<li tabindex="-1"><code>%identity(name)%</code> = __MSG_ownname.label__ (<code class="deprecated">%ownname%</code>)</li>
+				<li tabindex="-1"><code>%identity(mail)%</code> = __MSG_ownmail.label__ (<code class="deprecated">%ownmail%</code>)</li>
+				<li tabindex="-1"><code>%identity(firstname)%</code><code>%identity(name,link)%</code><code>%identity(firstname,link)%</code></li>
+				<li tabindex="-1"><code>%identity(addressbook,<i>fieldId</i>)%</code> = __MSG_identity_ab__<br/>
         <span class="param">fieldId</span> : __MSG_identity_ab.field__
         </li>
         <aside><b>__MSG_identity_ab.example__</b><br/> __MSG_identity_ab.phoneno__: %identity(addressbook,workphone)%</aside>
         
         <div class="chapterbreak" />
-				<li><code class="deferable">%date%</code> = __MSG_date.label__</li>
-				<li><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
-				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
-				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
-				<li><code class="deferable">%cc(mail)%</code> = __MSG_ccmail.label__</li>
+				<li tabindex="-1"><code class="deferable">%date%</code> = __MSG_date.label__</li>
+				<li tabindex="-1"><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
+				<li tabindex="-1"><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
+				<li tabindex="-1"><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
+				<li tabindex="-1"><code class="deferable">%cc(mail)%</code> = __MSG_ccmail.label__</li>
         
         <div class="chapterbreak" />
-				<li><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
-				<li><code>%sig(2)%</code> = __MSG_sig2.label__</li>
+				<li tabindex="-1"><code>%sig%</code><code>%sig(html)%</code><code>%sig(text)%</code> = __MSG_sig.label__</li>
+				<li tabindex="-1"><code>%sig(2)%</code> = __MSG_sig2.label__</li>
         <div class="chapterbreak" />
-				<li><code>%file(filePath,encoding)%</code> = __MSG_fileHTML.label__</li>
-				<li><code>%file(imagePath,altText)%</code> = __MSG_fileImage.label__</li>
-				<li><code>%style(styleSheetPath)%</code> = __MSG_fileCSS.label__</li>
-				<li><code>%attach(filePath)%</code> = __MSG_attach.label__</li>
+				<li tabindex="-1"><code>%file(filePath,encoding)%</code> = __MSG_fileHTML.label__</li>
+				<li tabindex="-1"><code>%file(imagePath,altText,attributeList)%</code> = __MSG_fileImage.label__<br/>
+        <span class="param">attributeList</span> : __MSG_fileImage.attributes__
+        </li>
+				<li tabindex="-1"><code>%style(styleSheetPath)%</code> = __MSG_fileCSS.label__</li>
+				<li tabindex="-1"><code>%attach(filePath)%</code> = __MSG_attach.label__</li>
         
       <div style="display:none;">
         <div class="chapterbreak"  />
         <aside><!--&basepath.desc; &basepath.desc2; --></aside>
-				<li><code>%basepath%</code> = <!--&basepath.relative; --></li>
-				<li><code>%basepath(folderPath)%</code> = <!-- &basepath.absolute; --></li>
+				<li tabindex="-1"><code>%basepath%</code> = <!--&basepath.relative; --></li>
+				<li tabindex="-1"><code>%basepath(folderPath)%</code> = <!-- &basepath.absolute; --></li>
       </div>
 
         <div class="chapterbreak" />
-				<li><code>%spellcheck(language)%</code> = __MSG_spellcheck.label__</li>
-				<li><code>%cursor%</code> = __MSG_cursor.label__</li>
+				<li tabindex="-1"><code>%spellcheck(language)%</code> = __MSG_spellcheck.label__</li>
+				<li tabindex="-1"><code>%cursor%</code> = __MSG_cursor.label__</li>
 			</ul>
     </div>
 
 		<!-- ##### "To" Variables #### -->
 		<h1 class="helpchapter">__MSG_to_var.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>(__MSG_to_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
-				<li><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
-				<li><code class="deferable">%to(firstname)%</code> = __MSG_tofirstname.label__</li>
-				<li><code class="deferable">%to(name)%</code> = __MSG_toname.label__</li>
-				<li><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
-				<li><code class="deferable">%to(name,bracketMail())%</code> = __MSG_toname.label__ &lt;__MSG_tomail.label__&gt;</li>
-				<li><code class="deferable">%to(name,fwd)%</code> = __MSG_tofwd.label__</li>
+				<li tabindex="-1"><code class="deferable">%recipient%</code> = __MSG_recipient.label__</li>
+				<li tabindex="-1"><code class="deferable">%to%</code> = __MSG_to.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li tabindex="-1"><code class="deferable">%to(firstname)%</code> = __MSG_tofirstname.label__</li>
+				<li tabindex="-1"><code class="deferable">%to(name)%</code> = __MSG_toname.label__</li>
+				<li tabindex="-1"><code class="deferable">%to(mail)%</code> = __MSG_tomail.label__</li>
+				<li tabindex="-1"><code class="deferable">%to(name,bracketMail())%</code> = __MSG_toname.label__ &lt;__MSG_tomail.label__&gt;</li>
+				<li tabindex="-1"><code class="deferable">%to(name,fwd)%</code> = __MSG_tofwd.label__</li>
 			</ul>
     </div>
 			
 			<!-- ##### "From" Variables #### -->
     <h1 class="helpchapter">__MSG_from_var.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>(__MSG_from_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
-				<li><code class="deferable">%from(firstname)%</code> = __MSG_fromfirstname.label__</li>
-				<li><code class="deferable">%from(name)%</code> = __MSG_fromname.label__</li>
-				<li><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
-				<li><code class="deferable">%from(name,mail)%</code> = __MSG_fromname.label__ __MSG_frommail.label__</li>
-				<li><code class="deferable">%from(name,bracketMail())%</code> = __MSG_fromname.label__ &lt;__MSG_frommail.label__&gt;</li>
-				<li><code class="deferable">%from(name,bracketMail(+;+))%</code> = __MSG_fromname.label__ +__MSG_frommail.label__+</li>
-				<li><code class="deferable">%from(name,bracketMail(square))%</code> = __MSG_fromname.label__ [__MSG_frommail.label__]</li>
-				<li><code class="deferable">%from(name,bracketMail(round))%</code> = __MSG_fromname.label__ (__MSG_frommail.label__)</li>
+				<li tabindex="-1"><code class="deferable">%from%</code> = __MSG_from.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li tabindex="-1"><code class="deferable">%from(firstname)%</code> = __MSG_fromfirstname.label__</li>
+				<li tabindex="-1"><code class="deferable">%from(name)%</code> = __MSG_fromname.label__</li>
+				<li tabindex="-1"><code class="deferable">%from(mail)%</code> = __MSG_frommail.label__</li>
+				<li tabindex="-1"><code class="deferable">%from(name,mail)%</code> = __MSG_fromname.label__ __MSG_frommail.label__</li>
+				<li tabindex="-1"><code class="deferable">%from(name,bracketMail())%</code> = __MSG_fromname.label__ &lt;__MSG_frommail.label__&gt;</li>
+				<li tabindex="-1"><code class="deferable">%from(name,bracketMail(+;+))%</code> = __MSG_fromname.label__ +__MSG_frommail.label__+</li>
+				<li tabindex="-1"><code class="deferable">%from(name,bracketMail(square))%</code> = __MSG_fromname.label__ [__MSG_frommail.label__]</li>
+				<li tabindex="-1"><code class="deferable">%from(name,bracketMail(round))%</code> = __MSG_fromname.label__ (__MSG_frommail.label__)</li>
 			</ul>
     </div>
     
 		<!-- ##### "CC" Variables #### -->
 		<h1 class="helpchapter">__MSG_cc_var.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>(__MSG_cc_note.label__)</aside>
 			<ul>
-				<li><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
-				<li><code class="deferable">%cc(firstname)%</code> = __MSG_ccfirstname.label__</li>
-				<li><code class="deferable">%cc(name)%</code> = __MSG_ccname.label__</li>
-				<li><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>
+				<li tabindex="-1"><code class="deferable">%cc%</code> = __MSG_cc.label__ <span class="config_default">&#x2699; <lbl>__MSG_standardformat.config__</lbl></span></li>
+				<li tabindex="-1"><code class="deferable">%cc(firstname)%</code> = __MSG_ccfirstname.label__</li>
+				<li tabindex="-1"><code class="deferable">%cc(name)%</code> = __MSG_ccname.label__</li>
+				<li tabindex="-1"><code class="deferable">%cc(name,bracketMail())%</code> = __MSG_ccname.label__ &lt;__MSG_ccmail.label__&gt;</li>
 			</ul>
     </div>
 
 		<h1 class="helpchapter">__MSG_clipboardFunctions__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
       <ul>
-        <li><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
-        <li><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
-        <li><code>%from(mail,<i>toclipboard</i>)%</code> = __MSG_clipboard.from__</li>
-        <li><code>%header.set(cc,<i>clipboard</i>)%</code> = __MSG_clipboard.setHeader__</li>
-        <li><code>%matchTextFromSubject(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchSubject__</li>
-        <li><code>%matchTextFromBody(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchBody__</li>
+        <li tabindex="-1"><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
+        <li tabindex="-1"><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
+        <li tabindex="-1"><code>%from(mail,<i>toclipboard</i>)%</code> = __MSG_clipboard.from__</li>
+        <li tabindex="-1"><code>%header.set(cc,<i>clipboard</i>)%</code> = __MSG_clipboard.setHeader__</li>
+        <li tabindex="-1"><code>%matchTextFromSubject(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchSubject__</li>
+        <li tabindex="-1"><code>%matchTextFromBody(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchBody__</li>
       </ul>
       <p id="clipboardNotes">__MSG_clipboard.notes__</p>
     </div>
    
     <!-- ##### AB switches #### -->  
 		<h1 class="helpchapter">__MSG_ab_fields__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 
       <aside>__MSG_ab_fields.desc__ <code>%from(firstname,workphone)%</code></aside>
       
@@ -129,30 +131,30 @@
           <td>
       <h4>__MSG_ab_contact__</h4>
       <ul class="contact_switches">
-        <li>firstname</li>
-        <li>lastname</li>
-        <li>name</li>
-        <li>nickname</li>
-        <li>additionalmail</li>
-        <li>chatname</li>
-        <li>workphone</li>
-        <li>homephone</li>
-        <li>fax</li>
-        <li>pager</li>
-        <li>mobile</li>
+        <li tabindex="-1">firstname</li>
+        <li tabindex="-1">lastname</li>
+        <li tabindex="-1">name</li>
+        <li tabindex="-1">nickname</li>
+        <li tabindex="-1">additionalmail</li>
+        <li tabindex="-1">chatname</li>
+        <li tabindex="-1">workphone</li>
+        <li tabindex="-1">homephone</li>
+        <li tabindex="-1">fax</li>
+        <li tabindex="-1">pager</li>
+        <li tabindex="-1">mobile</li>
       </ul>
           </td>
           <td>
       <h4>__MSG_ab_private__</h4>
       <ul class="contact_switches">
-        <li>private.city</li>
-        <li>private.address1</li>
-        <li>private.address2</li>
-        <li>private.state</li>
-        <li>private.country</li>
-        <li>private.zipcode</li>
-        <li>private.webpage</li>
-        <li></li>
+        <li tabindex="-1">private.city</li>
+        <li tabindex="-1">private.address1</li>
+        <li tabindex="-1">private.address2</li>
+        <li tabindex="-1">private.state</li>
+        <li tabindex="-1">private.country</li>
+        <li tabindex="-1">private.zipcode</li>
+        <li tabindex="-1">private.webpage</li>
+        <li tabindex="-1"></li>
       </ul>
           </td>
         </tr>
@@ -160,26 +162,26 @@
           <td>
       <h4>__MSG_ab_work__</h4>
       <ul class="contact_switches">
-        <li>work.title</li>
-        <li>work.department</li>
-        <li>work.organization</li>
-        <li>work.address1</li>
-        <li>work.address2</li>
-        <li>work.city</li>
-        <li>work.state</li>
-        <li>work.country</li>
-        <li>work.zipcode</li>
-        <li>work.webpage</li>
+        <li tabindex="-1">work.title</li>
+        <li tabindex="-1">work.department</li>
+        <li tabindex="-1">work.organization</li>
+        <li tabindex="-1">work.address1</li>
+        <li tabindex="-1">work.address2</li>
+        <li tabindex="-1">work.city</li>
+        <li tabindex="-1">work.state</li>
+        <li tabindex="-1">work.country</li>
+        <li tabindex="-1">work.zipcode</li>
+        <li tabindex="-1">work.webpage</li>
       </ul>
           </td>
           <td>
       <h4>__MSG_ab_other__</h4>
       <ul class="contact_switches">
-        <li>other.custom1</li>
-        <li>other.custom2</li>
-        <li>other.custom3</li>
-        <li>other.custom4</li>
-        <li>other.notes</li>
+        <li tabindex="-1">other.custom1</li>
+        <li tabindex="-1">other.custom2</li>
+        <li tabindex="-1">other.custom3</li>
+        <li tabindex="-1">other.custom4</li>
+        <li tabindex="-1">other.notes</li>
       </ul>
           </td>
         </tr>
@@ -188,73 +190,73 @@
       
 		<!-- ##### Special Formatting "{Brackets}" NEW "[[Brackets]]" #### -->
 		<h1 class="helpchapter">__MSG_spec_form.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_specform_note.label__
 				<br /><b>__MSG_ex_brack.label__</b><br />
 			</aside>
 			<aside>__MSG_brack_with_var.label__:
 			</aside>
 			<ul>
-				<li><code class="deferable">%to%</code> <code class="deferable">%to(firstname)%</code> <code class="deferable">%to(name)%</code> <code class="deferable">%to(mail)%</code></li>
-				<li><code class="deferable">%cc%</code> <code class="deferable">%cc(firstname)%</code> <code class="deferable">%cc(name)%</code> <code class="deferable">%cc(mail)%</code></li>
-				<li><code class="deferable">%bcc%</code> <code class="deferable">%bcc(firstname)%</code> <code class="deferable">%bcc(name)%</code> <code class="deferable">%bcc(mail)%</code></li>
+				<li tabindex="-1"><code class="deferable">%to%</code> <code class="deferable">%to(firstname)%</code> <code class="deferable">%to(name)%</code> <code class="deferable">%to(mail)%</code></li>
+				<li tabindex="-1"><code class="deferable">%cc%</code> <code class="deferable">%cc(firstname)%</code> <code class="deferable">%cc(name)%</code> <code class="deferable">%cc(mail)%</code></li>
+				<li tabindex="-1"><code class="deferable">%bcc%</code> <code class="deferable">%bcc(firstname)%</code> <code class="deferable">%bcc(name)%</code> <code class="deferable">%bcc(mail)%</code></li>
 			</ul>
     </div>
     
 		<!-- ##### Subject Variables #### -->
 		<h1 class="helpchapter">__MSG_sub_var.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<ul>
-				<li><code class="deferable">%subject%</code> = __MSG_sub.label__</li>
-				<li><code class="deferable">%subject(2)%</code> = __MSG_sub2.label__</li>
+				<li tabindex="-1"><code class="deferable">%subject%</code> = __MSG_sub.label__</li>
+				<li tabindex="-1"><code class="deferable">%subject(2)%</code> = __MSG_sub2.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### Special Variables (Message-Headerkeys) #### -->
 		<h1 class="helpchapter">__MSG_spec_var.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<ul>
-				<li><code class="noWrite">%Message-ID%</code> = __MSG_messid.label__</li>
-				<li><code class="noWrite">%Newsgroups%</code> = __MSG_newsgr.label__</li>
-				<li><code class="noWrite">%X-Mailer%</code> = __MSG_xmail.label__</li>
-				<li><code class="noWrite">%...%</code> = __MSG_any.label__</li>
+				<li tabindex="-1"><code class="noWrite">%Message-ID%</code> = __MSG_messid.label__</li>
+				<li tabindex="-1"><code class="noWrite">%Newsgroups%</code> = __MSG_newsgr.label__</li>
+				<li tabindex="-1"><code class="noWrite">%X-Mailer%</code> = __MSG_xmail.label__</li>
+				<li tabindex="-1"><code class="noWrite">%...%</code> = __MSG_any.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### conditional text #### -->
     <h1 class="helpchapter">__MSG_conditionals.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
       <p>__MSG_conditionals.note__</p>
 			<ul>
-        <li><code>%conditionalText(forwardMode,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
+        <li tabindex="-1"><code>%conditionalText(forwardMode,"inline text","attach text")%</code> = __MSG_conditional.forwardMode__</li>
       </ul>
     </div>
     
 		<!-- ##### mail header manipulation #### -->
 		<h1 class="helpchapter">__MSG_header_function.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_header_function.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25904" target="_blank">[Bug 25904]</a>.</aside>
 			<aside>__MSG_header_function.scope__ subject, from, to, cc, bcc, reply-to, list-*</aside>
 			<ul>
-				<li><code>%header.set(subject,"text")%</code> = __MSG_header.set.subject__</li>
-				<li><code>%header.prefix(subject,"text")%</code> = __MSG_header.prefix.subject__</li>
-				<li><code>%header.append(subject,"text")%</code> = __MSG_header.append.subject__</li>
-				<li><code>%header.delete(subject,"regex")%</code> = __MSG_header.delete.subject__</li>
-				<li><code>%header.set(to,"abc@de.com")%</code> = __MSG_header.set.to__</li>
-				<li><code>%header.append(to,"abc@de.com")%</code> = __MSG_header.append.to__</li>
-        <li><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = __MSG_header.set.from__</li>
+				<li tabindex="-1"><code>%header.set(subject,"text")%</code> = __MSG_header.set.subject__</li>
+				<li tabindex="-1"><code>%header.prefix(subject,"text")%</code> = __MSG_header.prefix.subject__</li>
+				<li tabindex="-1"><code>%header.append(subject,"text")%</code> = __MSG_header.append.subject__</li>
+				<li tabindex="-1"><code>%header.delete(subject,"regex")%</code> = __MSG_header.delete.subject__</li>
+				<li tabindex="-1"><code>%header.set(to,"abc@de.com")%</code> = __MSG_header.set.to__</li>
+				<li tabindex="-1"><code>%header.append(to,"abc@de.com")%</code> = __MSG_header.append.to__</li>
+        <li tabindex="-1"><code>%header.set(from,"Postmaster &lt;pm@abc.com&gt;")%</code> = __MSG_header.set.from__</li>
 			</ul>
     </div>
       
 		<!-- ##### deleteText / replaceText / matchTextFromBody / matchTextFromSubject #### -->
 		<h1 class="helpchapter">__MSG_stringmanip_function.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_stringmanip_function.explain__ <a href="https://smarttemplates.quickfolders.org/variables.html#stringManipulation" target="_blank">[String Manipulation]</a>.</aside>
 			<ul>
-				<li><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
-				<li><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
-				<li><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
-				<li><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
+				<li tabindex="-1"><code>%deleteText("text")%</code> = __MSG_deleteText__</li>
+				<li tabindex="-1"><code>%replaceText("find","replace")%</code> = __MSG_replaceText__</li>
+				<li tabindex="-1"><code>%matchTextFromBody("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromBody__</li>
+				<li tabindex="-1"><code>%matchTextFromSubject("Regular Expression",MatchGroup,"<span class="param">altText</span>")%</code> = __MSG_matchTextFromSubject__</li>
 			</ul>
 			<aside>__MSG_stringmanip.match.comment__</aside>
       <aside><span class="param">altText</span> : __MSG_stringmanip.alttext__</aside>
@@ -262,7 +264,7 @@
     <div class="chapterbreak" />
 
 		<h1 class="helpchapter">__MSG_quote_changers.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
       <ul>
         <aside>__MSG_quote_changers.desc__ <a href="https://smarttemplates.quickfolders.org/variables.html#quoteManipulation" target="_blank">Read Docs</a>.</aside>
         <code>%quotePlaceholder(<span class="param">quoteLevel</span>)</code> __MSG_quotePlaceholder__<br/>
@@ -290,46 +292,46 @@
 			
 		<!-- ##### Fix Variables for Date/Timezone #### -->
 		<h1 class="helpchapter">__MSG_fix_vartz.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>(__MSG_fix_vartz_note.label__)</aside>
 			<ul>
-				<li><code>%datelocal%</code> = __MSG_datelocal.label__</li>
-				<li><code>%dateshort%</code> = __MSG_dateshort.label__</li>
-				<li><code>%date_tz%</code> = __MSG_datetz.label__</li>
-				<li><code>%tz_name%</code> = __MSG_tzname.label__</li>
-				<li><code>%X:=timezone(tz)%</code> = __MSG_timezone.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
+				<li tabindex="-1"><code>%datelocal%</code> = __MSG_datelocal.label__</li>
+				<li tabindex="-1"><code>%dateshort%</code> = __MSG_dateshort.label__</li>
+				<li tabindex="-1"><code>%date_tz%</code> = __MSG_datetz.label__</li>
+				<li tabindex="-1"><code>%tz_name%</code> = __MSG_tzname.label__</li>
+				<li tabindex="-1"><code>%X:=timezone(tz)%</code> = __MSG_timezone.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26629" target="_blank">[Bug 26629]</a></li>
 			</ul>
 			<aside>(__MSG_dateoffset_note.label__)</aside>
 			<ul>
-				<li><code>%X:=calculated(DD,HH:MM)%</code> = __MSG_calculate.explain__</li>
-				<li><code>%X:=calculated(0)%</code> = __MSG_calculate.reset__</li>
+				<li tabindex="-1"><code>%X:=calculated(DD,HH:MM)%</code> = __MSG_calculate.explain__</li>
+				<li tabindex="-1"><code>%X:=calculated(0)%</code> = __MSG_calculate.reset__</li>
 			</ul>
 		</div>	
 			
 		<!-- ##### Custom Variables #### -->
 		<h1 class="helpchapter">__MSG_var_custom.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>(__MSG_customdf_note.label__)</aside>
 			<ul>
-				<li><code>%A%</code> = __MSG_a.up.label__</li>
-				<li><code>%a%</code> = __MSG_a.label__</li>
-				<li><code>%B%</code> = __MSG_b.up.label__</li>
-				<li><code>%b%</code> = __MSG_b.label__</li>
-				<li><code>%d%</code> = __MSG_d.label__</li>
-				<li><code>%e%</code> = __MSG_e.label__</li>
-				<li><code>%m%</code> = __MSG_m.label__</li>
-				<li><code>%n%</code> = __MSG_n.label__</li>
-				<li><code>%Y%</code> = __MSG_y.up.label__</li>
-				<li><code>%M%</code> = __MSG_m.up.label__</li>
-				<li><code>%S%</code> = __MSG_s.label__</li>
-				<li><code>%H%</code> = __MSG_h.label__</li>
-				<li><code>%k%</code> = __MSG_k.label__</li>
-				<li><code>%I%</code> = __MSG_i.label__</li>
-				<li><code>%l%</code> = __MSG_l.label__</li>
-				<li><code class="noWrite">%p%</code> = __MSG_p.label__</li>
-				<li><code class="noWrite">%p(1)%</code> = __MSG_p1.label__</li>
-				<li><code class="noWrite">%p(2)%</code> = __MSG_p2.label__</li>
-				<li><code class="deferable">%dateformat()%</code> = __MSG_dateformat.label__
+				<li tabindex="-1"><code>%A%</code> = __MSG_a.up.label__</li>
+				<li tabindex="-1"><code>%a%</code> = __MSG_a.label__</li>
+				<li tabindex="-1"><code>%B%</code> = __MSG_b.up.label__</li>
+				<li tabindex="-1"><code>%b%</code> = __MSG_b.label__</li>
+				<li tabindex="-1"><code>%d%</code> = __MSG_d.label__</li>
+				<li tabindex="-1"><code>%e%</code> = __MSG_e.label__</li>
+				<li tabindex="-1"><code>%m%</code> = __MSG_m.label__</li>
+				<li tabindex="-1"><code>%n%</code> = __MSG_n.label__</li>
+				<li tabindex="-1"><code>%Y%</code> = __MSG_y.up.label__</li>
+				<li tabindex="-1"><code>%M%</code> = __MSG_m.up.label__</li>
+				<li tabindex="-1"><code>%S%</code> = __MSG_s.label__</li>
+				<li tabindex="-1"><code>%H%</code> = __MSG_h.label__</li>
+				<li tabindex="-1"><code>%k%</code> = __MSG_k.label__</li>
+				<li tabindex="-1"><code>%I%</code> = __MSG_i.label__</li>
+				<li tabindex="-1"><code>%l%</code> = __MSG_l.label__</li>
+				<li tabindex="-1"><code class="noWrite">%p%</code> = __MSG_p.label__</li>
+				<li tabindex="-1"><code class="noWrite">%p(1)%</code> = __MSG_p1.label__</li>
+				<li tabindex="-1"><code class="noWrite">%p(2)%</code> = __MSG_p2.label__</li>
+				<li tabindex="-1"><code class="deferable">%dateformat()%</code> = __MSG_dateformat.label__
 					<aside>__MSG_dateformat.explain__ <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26588" target="_blank">[Bug 26588]</a>.</aside>
 					<aside><b>__MSG_dateformat.example__</b></aside>
           <table class="date_examples">
@@ -371,19 +373,19 @@
 
 		<!-- ##### X:=Sent Variable #### -->
 		<h1 class="helpchapter">__MSG_var_xsent.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_xsent_note.label__</aside>
 			<ul>
-				<li><code class="noWrite">%X:=sent%</code></li>
+				<li tabindex="-1"><code class="noWrite">%X:=sent%</code></li>
 			</ul>
     </div>
     
     
 		<!-- ##### Longstring Description #### -->
 		<h1 class="helpchapter">__MSG_xsent_long.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<ul>
-				<li><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
+				<li tabindex="-1"><code class="noWrite">%X:=sent% %A%, %d%.%m%.%Y% %H%:%M% %date_tz%</code>
 				    <br />__MSG_xsent_long_result.label__</li>
 			</ul>
     </div>
@@ -391,29 +393,29 @@
     
 		<!-- ##### Shortstring Description #### -->
 		<h1 class="helpchapter">__MSG_xsent_short.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<ul>
-				<li><code class="noWrite">%X:=sent% %datelocal%</code>
+				<li tabindex="-1"><code class="noWrite">%X:=sent% %datelocal%</code>
 				    <br />__MSG_xsent_short_result.label__</li>
 			</ul>
 			<aside>__MSG_xsent_short_note.label__</aside>
 			<ul>
-				<li><code>%datelocal%</code> = __MSG_localedate.label__</li>
-				<li><code>%dateshort%</code> = __MSG_shortdate.label__</li>
-				<li><code>%date_tz%</code> = __MSG_datetimezone.label__</li>
-				<li><code>%tz_name%</code> = __MSG_timezonename.label__</li>
+				<li tabindex="-1"><code>%datelocal%</code> = __MSG_localedate.label__</li>
+				<li tabindex="-1"><code>%dateshort%</code> = __MSG_shortdate.label__</li>
+				<li tabindex="-1"><code>%date_tz%</code> = __MSG_datetimezone.label__</li>
+				<li tabindex="-1"><code>%tz_name%</code> = __MSG_timezonename.label__</li>
 			</ul>
     </div>
     
 		<!-- ##### HTML -> UTF-8 Note #### -->
 		<h1 class="helpchapter">__MSG_html_note.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_html_note.label__</aside>
     </div>
     
 		<!-- ##### Variable Table Note #### -->
 		<h1 class="helpchapter">__MSG_table.cap__</h1>
-    <div class="chapterBody">
+    <div class="chapterBody" tabindex="-1">
 			<aside>__MSG_table_note.label__</aside>
 			<!-- ##### Variable Table #### -->
 			<table id="keywords">
@@ -655,6 +657,7 @@
 				</tbody>
 			</table>
 		</div>
+    <div id="endOfHelp"> </div>
   </div>
     
     

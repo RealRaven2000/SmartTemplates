@@ -368,3 +368,7 @@ table div.no {
 	margin-right: 0;
 }
 
+#helpContents *::selection {
+  color: yellow;
+  background-color: rgb(128,0,0);
+}
