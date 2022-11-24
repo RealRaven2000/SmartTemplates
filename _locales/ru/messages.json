@@ -386,9 +386,6 @@
   "from_var.cap": {
     "message": "Отправитель (От)"
   },
-  "fromfirstname.label": {
-    "message": "Имя отправителя"
-  },
   "frommail.label": {
     "message": "Адрес отправителя"
   },
