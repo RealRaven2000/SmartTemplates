@@ -422,9 +422,6 @@
   "from_var.cap": {
     "message": "Odesílatel (From)"
   },
-  "fromfirstname.label": {
-    "message": "Křestní jméno odesílatele"
-  },
   "frommail.label": {
     "message": "e-mail odesílatele"
   },
