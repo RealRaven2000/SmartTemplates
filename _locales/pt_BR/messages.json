@@ -383,9 +383,6 @@
   "from_var.cap": {
     "message": "Variáveis de remetente (De)"
   },
-  "fromfirstname.label": {
-    "message": "Primeiro nome do remetente"
-  },
   "frommail.label": {
     "message": "Nome e endereço do remetente"
   },
