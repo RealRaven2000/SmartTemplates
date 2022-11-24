@@ -250,8 +250,10 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
       You can add additional attributes to like this:
       <pre class=code>
-      %file(img/bargain-upg-bf-de.png,id=bargainStar,width=192)%
-      </pre>
+%file(img/bargain.png,id=bargainStar,width=192,"alternative text")%
+This will generate the following html code after importing the image data:
+&lt;img
+src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainStar" width="192" alt="alternative text"&gt;</pre>
     </li>
     <li>Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217]</a></li>
   </ul>
