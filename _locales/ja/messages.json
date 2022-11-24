@@ -425,9 +425,6 @@
   "from_var.cap": {
     "message": "差出人 (From)"
   },
-  "fromfirstname.label": {
-    "message": "差出人の名前 (名字を除く)"
-  },
   "frommail.label": {
     "message": "差出人のメールアドレス"
   },
