@@ -380,9 +380,6 @@
   "from_var.cap": {
     "message": "Variabili del mittente (Da)"
   },
-  "fromfirstname.label": {
-    "message": "Cognome del mittente"
-  },
   "frommail.label": {
     "message": "Indirizzo e-mail del mittente"
   },
