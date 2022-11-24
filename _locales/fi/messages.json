@@ -428,9 +428,6 @@
   "from_var.cap": {
     "message": "Lähettäjän muuttujat (From-kenttä)"
   },
-  "fromfirstname.label": {
-    "message": "Lähettäjän etunimi"
-  },
   "frommail.label": {
     "message": "Lähettäjän sähköpostiosoite"
   },
