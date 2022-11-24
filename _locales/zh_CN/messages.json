@@ -428,9 +428,6 @@
   "from_var.cap": {
     "message": "发件人变量 (From)"
   },
-  "fromfirstname.label": {
-    "message": "发件人名字"
-  },
   "frommail.label": {
     "message": "发件人邮件地址"
   },
