@@ -157,6 +157,42 @@ export class Parser {
         //           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
         // use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
         // mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
+        let mapLegacyCardStruct = new Map([
+          ['nickname', "NickName"],
+          ['additionalmail', "SecondEmail"],
+          ['chatname', "ChatName"],
+          ['workphone', "WorkPhone"],
+          ['homephone', "HomePhone"],
+          ['fax', "FaxNumber"],
+          ['pager', "PagerNumber"],
+          ['mobile', "CellularNumber"],
+          ['private.address1', "HomeAddress"],
+          ['private.address2', "HomeAddress2"],
+          ['private.city', "HomeCity"],
+          ['private.state', "HomeState"],
+          ['private.country', "HomeCountry"],
+          ['private.zip', "HomeZipCode"],
+          ['work.title', "JobTitle"],
+          ['work.department', "Department"],
+          ['work.organization', "Company"],
+          ['work.address1', "WorkAddress"],
+          ['work.address2', "WorkAddress2"],
+          ['work.city', "WorkCity"],
+          ['work.state', "WorkState"],
+          ['work.country', "WorkCountry"],
+          ['work.zip', "WorkZipCode"],          
+          ['work.webpage', "WebPage1"],
+          ['other.custom1', "Custom1"],
+          ['other.custom2', "Custom2"],
+          ['other.custom3', "Custom3"],
+          ['other.custom4', "Custom4"],
+          ['other.custom5', "Custom5"],
+          ['other.notes', "Notes"]
+          
+        ]);
+                
+        
+        
         function getEmailAddress(a) {
           return a.replace(/.*<(\S+)>.*/g, "$1");
         }
@@ -350,10 +386,13 @@ export class Parser {
             bracketNameParams = getBracketAddressArgs(format, 'Name'),
             card;
 
-          
+        // API-to-do: use API for retrieving properties
+        // (probably async)
+        // see https://webextension-api.thunderbird.net/en/stable/contacts.html#get-id
         function getCardProperty(p) {
           if (!card) return '';
-          let r = card.properties(p);
+          let legacyKey = mapLegacyCardStruct.get(p);
+          let r = card.ContactProperties[legacyKey];
           if (r) {
             let d = that.mimeDecoder.decode(r);
             if (d) return d;

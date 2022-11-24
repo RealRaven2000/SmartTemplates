@@ -42,6 +42,14 @@ const discountUpgrade = "40%";
         messenger.Utilities.showVersionHistory();
         break;
     }
+    
+    if (event.target.classList.contains("issue")) {
+      let issueId = event.target.getAttribute("no");
+      if (issueId) {
+        messenger.windows.openDefaultBrowser(`https://github.com/RealRaven2000/SmartTemplates/issues/${issueId}`);
+      }
+    }    
+    
   
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
@@ -194,7 +202,10 @@ const discountUpgrade = "40%";
     let whatsNewLst = document.getElementById('whatsNewList');
     function replaceVariableCodeTags(txt) {
       let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
-      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>").replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>");
+      return txt2.replace(/\{L1\}/g,"<li>")
+                 .replace(/\{L2\}/g,"</li>")
+                 .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
+                 .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
     }
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
