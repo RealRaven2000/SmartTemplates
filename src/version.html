@@ -249,9 +249,9 @@ permalink: version.html
       <img class="screenshot" src="img/var-search.png" alt="variables search options"/>
     </li>
     <li>
-      Added optional attributes list to image variable <code>%file%</code>
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
-      You can add additional attributes to like this:
+      Added optional attributes list to variable <code>%file()%</code> when it is used to 
+      include images <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
+      You can add additional attributes to with the following syntax:
       <pre class=code>
 %file(img/bargain.png,id=bargainStar,width=192,"alternative text")%
 This will generate the following html code after importing the image data:
@@ -261,8 +261,8 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
     <li>
       <p>
         Fixed a problem with <tt>addressbook</tt> switch, which can be used with address headers and also <code class="inline">%identity% </code>. This was broken by recent changes related to 
-        <code class="inline">toclipboard</code>. Also added support for the new vCard format. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217]. Example:</a>
+        <code class="inline">%toclipboard()%</code>. Also added support for the new vCard format. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217].</a> Example:
       </p>
             <pre class=code>
 %identity(addressbook,work.title,work.department,work.organization)%</pre>
