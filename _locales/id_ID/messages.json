@@ -281,9 +281,6 @@
   "from_var.cap": {
     "message": "Pengirim (Dari)"
   },
-  "fromfirstname.label": {
-    "message": "Nama depan pengirim"
-  },
   "frommail.label": {
     "message": "Alat email pengirim"
   },
