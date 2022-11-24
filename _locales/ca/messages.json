@@ -428,9 +428,6 @@
   "from_var.cap": {
     "message": "Expeditor (De)"
   },
-  "fromfirstname.label": {
-    "message": "Pichon nom de l'expeditor"
-  },
   "frommail.label": {
     "message": "Adreça electronica de l'expeditor"
   },
