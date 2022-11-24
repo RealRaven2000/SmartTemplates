@@ -383,9 +383,6 @@
   "from_var.cap": {
     "message": "Пошиљалац"
   },
-  "fromfirstname.label": {
-    "message": "Име пошиљаоца"
-  },
   "frommail.label": {
     "message": "Е-адреса пошиљаоца"
   },
