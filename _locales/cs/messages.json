@@ -1414,7 +1414,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12. listopadu"
+    "message": "2. prosince"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -1666,7 +1666,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Podporujte pomocí parametru {{toclipboard}} vícenásobné kopírování dat do schránky ve stejné šabloně.{L2} {L1}Přidáno pole pro textové vyhledávání na stránku proměnných.{L2} {L1}Vylepšené barvy v okně proměnných při použití tmavých motivů.{L2} {L1}Opravené proměnné záhlaví s velkými písmeny, jako je {{%Message-Id%}} a {{%Newsgroups%}}{L2}"
+    "message": "{{L1}Přidáno zpětné vyhledávání v okně proměnných – stisknutím kláves {{Shift}} + {{F3}} prohledejte text směrem nahoru.{L2}{L1}Do proměnné obrázku {{%file%}} byl přidán seznam volitelných atributů. [issue 216]{101} L2}{L1}Opraven problém s přepínačem {{addressbook}}. Také přidána podpora pro nový formát vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

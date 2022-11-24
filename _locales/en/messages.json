@@ -378,6 +378,9 @@
   "fileHTML.label": {
     "message": "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter."
   },
+  "fileImage.attributes": {
+    "message": "Optional list of attribute=value sets, such as 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found."
   },
@@ -466,7 +469,7 @@
     "message": "Sender (From)"
   },
   "fromfirstname.label": {
-    "message": "Sender's firstname"
+    "message": "Sender's first name"
   },
   "frommail.label": {
     "message": "Sender's email address"
@@ -1445,7 +1448,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "November 12th"
+    "message": "December 2nd"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1685,7 +1688,7 @@
     "message": "Support Page"
   },
   "variable.search": {
-    "message": "Enter a search term and press {{Enter}}. Press {{F3}} to repeat search."
+    "message": "Enter a search term and press {{Enter}}. Press {{F3}} to repeat search. {{Shift}} + {{F3}} searches backwards."
   },
   "var_custom.cap": {
     "message": "Variables for customized 'Date format'"
@@ -1706,7 +1709,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Support using {{toclipboard}} parameter to copy data to clipboard multiple times in the same template.{L2} {L1}Added a search field to the variables page.{L2} {L1}Improvement of colors in variables window when using dark themes.{L2} {L1}Fixed header variables with uppercase letters, such as {{%Message-Id%}} and {{%Newsgroups%}}{L2}"
+    "message": "{L1}Added backwards search in variables window - press {{Shift}} + {{F3}} to search text going up.{L2}{L1}Added optional attributes list to image variable {{%file%}} [issue 216].{L2}{L1}Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

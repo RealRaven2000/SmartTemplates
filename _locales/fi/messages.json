@@ -1429,7 +1429,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12. marraskuuta"
+    "message": "joulukuuta 2"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -1687,7 +1687,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Tue {{toclipboard}}-parametrin käyttämistä tietojen kopioimiseen leikepöydälle useita kertoja samassa mallissa.{L2} {L1}Lisättiin tekstihakukenttä muuttujasivulle.{L2} {L1}Parannetut värit muuttujaikkunassa tummia teemoja käytettäessä.{L2} {L1}Korjatut otsikkomuuttujat isoilla kirjaimilla, kuten {{%Message-Id%}} ja {{%Newsgroups%}}{L2}"
+    "message": "{L1}Lisättiin taaksepäin haku muuttujaikkunassa - paina {{Vaihto}} + {{F3}} hakeaksesi tekstiä ylöspäin.{L2}{L1}Valinnainen attribuuttiluettelo lisätty kuvamuuttujaan {{%file%}}. [issue 216]{101} L2}{L1}Korjattu ongelma {{addressbook}}-kytkimessä. Lisätty myös tuki uudelle vCard-muodolle. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

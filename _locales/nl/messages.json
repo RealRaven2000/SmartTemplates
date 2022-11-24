@@ -1363,7 +1363,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12 novemberr"
+    "message": "2 december"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1609,7 +1609,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Ondersteuning met {{toclipboard}} parameter om gegevens meerdere keren naar het klembord te kopiëren in dezelfde sjabloon.{L2} {L1}Een tekstzoekveld toegevoegd op de variabelenpagina.{L2} {L1}Verbeterde kleuren in het variabelenvenster bij gebruik van donkere thema's.{L2} {L1}Gerepareerde kopvariabelen met hoofdletters, zoals {{%Message-Id%}} en {{%Newsgroups%}}{L2}"
+    "message": "{L1}Achterwaarts zoeken toegevoegd in venster met variabelen - druk op {{Shift}} + {{F3}} om tekst omhoog te zoeken.{L2}{L1}Optionele attributenlijst toegevoegd aan afbeeldingsvariabele {{%file%}}. [issue 216]{L2}{L1}Probleem opgelost met schakelaar {{addressbook}}. Ook ondersteuning toegevoegd voor het nieuwe vCard-formaat. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

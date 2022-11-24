@@ -1414,7 +1414,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "11月12日"
+    "message": "12月2日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1672,7 +1672,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}支持在同一模板中使用 {{toclipboard}} 参数将数据多次复制到剪贴板。{L2} {L1}在变量页面上添加了文本搜索字段。{L2} {L1}改进了变量窗口中的颜色 使用深色主题时。{L2} {L1}修复了带有大写字母的标题变量，例如 {{%Message-Id%}} 和 {{%Newsgroups%}}{L2}"
+    "message": "{L1}在变量窗口中添加了向后搜索 - 按 {{Shift}} + {{F3}} 向上搜索文本。{L2}{L1}向图像变量 {{%file%}} 添加了可选属性列表。 [issue 216]{L2}{L1}修复了 {{addressbook}} 开关的问题。 还添加了对新 vCard 格式的支持。 [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

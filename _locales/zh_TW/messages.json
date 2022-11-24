@@ -1402,7 +1402,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "11月12日"
+    "message": "12月2日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1648,7 +1648,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}支持在同一模板中使用 {{toclipboard}} 參數將數據多次復製到剪貼板。{L2} {L1}在變量頁面上添加了文本搜索字段。{L2} {L1}改進了變量窗口中的顏色 使用深色主題時。{L2} {L1}修復了帶有大寫字母的標題變量，例如 {{%Message-Id%}} 和 {{%Newsgroups%}}{L2}"
+    "message": "{L1}在變量窗口中添加了向後搜索 - 按 {{Shift}} + {{F3}} 向上搜索文本。{L2}{L1}向圖像變量 {{%file%}} 添加了可選屬性列表。 [issue 216]{L2}{L1}修復了 {{addressbook}} 開關的問題。 還添加了對新 vCard 格式的支持。 [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

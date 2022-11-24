@@ -1384,7 +1384,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12 de novembro"
+    "message": "2 de dezembro"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1630,7 +1630,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Suporte usando o parâmetro {{toclipboard}} para copiar dados para a área de transferência várias vezes no mesmo modelo.{L2} {L1}Adicionado um campo de pesquisa de texto na página de variáveis.{L2} {L1}Cores aprimoradas na janela de variáveis ao usar temas escuros.{L2} {L1}Variáveis de cabeçalho reparadas com letras maiúsculas, como {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
+    "message": "{L1}Adicionada pesquisa reversa na janela de variáveis - pressione {{Shift}} + {{F3}} para pesquisar o texto subindo.{L2}{L1}Adicionada lista de atributos opcionais à variável de imagem {{%file%}}. [issue 216]{L2}{L1}Corrigido um problema com a chave {{addressbook}}. Também adicionou suporte para o novo formato vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

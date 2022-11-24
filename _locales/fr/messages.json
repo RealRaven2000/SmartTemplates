@@ -1426,7 +1426,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12 novembre"
+    "message": "2 décembre"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1684,7 +1684,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Prise en charge de l'utilisation du paramètre {{toclipboard}} pour copier les données dans le presse-papiers plusieurs fois dans le même modèle.{L2} {L1}Ajout d'un champ de recherche de texte sur la page des variables.{L2} {L1}Amélioration des couleurs dans la fenêtre des variables lors de l'utilisation de thèmes sombres.{L2} {L1}Variables d'en-tête réparées avec des lettres majuscules, telles que {{%Message-Id%}} et {{%Newsgroups%}}{L2}"
+    "message": "{L1}Ajout d'une recherche vers l'arrière dans la fenêtre des variables - appuyez sur {{Shift}} + {{F3}} pour rechercher le texte en remontant.{L2}{L1}Ajout d'une liste d'attributs facultatifs à la variable d'image {{%file%}}. [issue 216]{L2}{L1}Correction d'un problème avec le commutateur {{addressbook}}. Ajout également de la prise en charge du nouveau format vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

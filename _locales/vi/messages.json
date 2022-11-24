@@ -131,7 +131,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "Ngày 12 tháng 11"
+    "message": "ngày 2 tháng 12"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -254,7 +254,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hỗ trợ sử dụng tham số {{toclipboard}} để sao chép dữ liệu vào khay nhớ tạm nhiều lần trong cùng một mẫu. {L2} {L1} Đã thêm trường tìm kiếm văn bản trên trang biến. {L2} {L1} Cải thiện màu sắc trong cửa sổ biến khi sử dụng các chủ đề tối. {L2} {L1} Đã sửa chữa các biến tiêu đề có chữ hoa, chẳng hạn như {{% Message-Id%}} và {{% Newsgroups%}} {L2}"
+    "message": "{L1}Đã thêm tìm kiếm ngược trong cửa sổ biến - nhấn {{Shift}} + {{F3}} để tìm kiếm văn bản đi lên.{L2}{L1}Đã thêm danh sách thuộc tính tùy chọn vào biến hình ảnh {{%file%}}. [issue 216]{L2}{L1}Đã khắc phục sự cố với nút chuyển {{addressbook}}. Cũng đã thêm hỗ trợ cho định dạng vCard mới. [issue 217]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

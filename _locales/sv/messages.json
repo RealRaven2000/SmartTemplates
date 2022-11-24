@@ -1429,7 +1429,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12 november"
+    "message": "2 december"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1690,7 +1690,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Stöd att använda parametern {{toclipboard}} för att kopiera data till urklipp flera gånger i samma mall.{L2} {L1}Lägge till ett textsökfält på variabelsidan.{L2} {L1}Förbättrade färger i variabelfönstret när du använder mörka teman.{L2} {L1}Reparerade rubrikvariabler med stora bokstäver, som {{%Message-Id%}} och {{%Newsgroups%}}{L2}"
+    "message": "{L1}Lägg till bakåtsökning i variabelfönstret - tryck på {{Shift}} + {{F3}} för att söka i text som går upp.{L2}{L1}Lägg till valfria attributlista till bildvariabeln {{%file%}}. [issue 216]{L2}{L1}Fast ett problem med {{addressbook}}-omkopplaren. Har även lagt till stöd för det nya vCard-formatet. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

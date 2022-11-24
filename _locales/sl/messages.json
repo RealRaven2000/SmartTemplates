@@ -1378,7 +1378,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12. november"
+    "message": "2. december"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1630,7 +1630,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Podpora za uporabo parametra {{toclipboard}} za večkratno kopiranje podatkov v odložišče v isti predlogi.{L2} {L1}Dodano polje za iskanje besedila na strani s spremenljivkami.{L2} {L1}Izboljšane barve v oknu s spremenljivkami pri uporabi temnih tem.{L2} {L1}Popravljene spremenljivke glave z velikimi črkami, kot sta {{%Message-Id%}} in {{%Newsgroups%}}{L2}"
+    "message": "{L1}Dodano iskanje nazaj v oknu s spremenljivkami - pritisnite {{Shift}} + {{F3}} za iskanje besedila navzgor.{L2}{L1}Dodan izbirni seznam atributov spremenljivki slike {{%file%}}. [issue 216]{L2}{L1}Odpravljena težava s stikalom {{addressbook}}. Dodana je tudi podpora za novo obliko vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

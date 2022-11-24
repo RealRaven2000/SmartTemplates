@@ -1366,7 +1366,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "12. November"
+    "message": "2. Dezember"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1611,7 +1611,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Unterstützt mehrfaches Kopieren von Daten in die Zwischenablage in derselben Vorlage unter Verwendung des {{toclipboard}}-Parameters.{L2} {L1}{L2} {L1}Verbesserte Farben im Variablenfenster bei der Verwendung dunkler Themen.{L2} {L1}Kopfzeilenvariablen mit Großbuchstaben repariert, z. B. {{%Message-Id%}} und {{%Newsgroups%}}{L2}"
+    "message": "{L1}Verbesserungen im Suchfeld im Variablenfenster - Rückwärts suchen mit {{Umschalt}} + {{F3}} .{L2} {L1}Zur Bildvariable {{%file%}} kann eine Liste von Attributen hinzugefügt werden. [issue 216]{L2}{L1}Problem mit Schalter {{addressbook}} behoben. Ebenfalls hinzugefügt: Unterstützung für neues vCard-Format. [Ausgabe 217] {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
