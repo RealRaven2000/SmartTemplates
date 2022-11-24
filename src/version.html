@@ -258,7 +258,17 @@ This will generate the following html code after importing the image data:
 &lt;img
 src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainStar" width="192" alt="alternative text"&gt;</pre>
     </li>
-    <li>Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217]</a></li>
+    <li>
+      <p>
+        Fixed a problem with <tt>addressbook</tt> switch, which can be used with address headers and also <code class="inline">%identity% </code>. This was broken by recent changes related to 
+        <code class="inline">toclipboard</code>. Also added support for the new vCard format. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217]. Example:</a>
+      </p>
+            <pre class=code>
+%identity(addressbook,work.title,work.department,work.organization)%</pre>
+    </li>
+    
+    </li>
   </ul>
 </li> 
 
