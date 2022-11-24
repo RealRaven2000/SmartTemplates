@@ -434,9 +434,6 @@
   "from_var.cap": {
     "message": "Αποστολέας (Από)"
   },
-  "fromfirstname.label": {
-    "message": "Όνομα αποστολέα"
-  },
   "frommail.label": {
     "message": "Διεύθυνση email αποστολέα"
   },
