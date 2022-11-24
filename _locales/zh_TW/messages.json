@@ -428,9 +428,6 @@
   "from_var.cap": {
     "message": "寄件者 (從)"
   },
-  "fromfirstname.label": {
-    "message": "寄件者名字"
-  },
   "frommail.label": {
     "message": "寄件者電子郵件"
   },
