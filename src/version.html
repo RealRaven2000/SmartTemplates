@@ -239,57 +239,17 @@ permalink: version.html
 			<span class="thunderbird">91.* - 102.*</span> 
 		</span>
   </h4>
-  <ul>
-    <li>
-      <p>
-        Added backwards search in variables window - press  <key>Shift</key> + <key>F3</key> to search text going up.
-        You can also use the <key>Enter</key> key on the number pad to enter a new search term. 
-        This previously closed the SmartTemplates settings window.
-      </p>
-      <img class="screenshot" src="img/var-search.png" alt="variables search options"/>
-    </li>
-    <li>
-      Added optional attributes list to variable <code>%file()%</code> when it is used to 
-      include images <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
-      You can add additional attributes to with the following syntax:
-      <pre class=code>
-%file(img/bargain.png,id=bargainStar,width=192,"alternative text")%
-This will generate the following html code after importing the image data:
-&lt;img
-src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainStar" width="192" alt="alternative text"&gt;</pre>
-    </li>
-    <li>
-      <p>
-        Fixed a problem with <tt>addressbook</tt> switch, which can be used with address headers and also <code class="inline">%identity% </code>. This was broken by recent changes related to 
-        <code class="inline">%toclipboard()%</code>. Also added support for the new vCard format. 
-        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217].</a> Example:
-      </p>
-            <pre class=code>
-%identity(addressbook,work.title,work.department,work.organization)%</pre>
-    </li>
-  </ul>
-</li> 
-
-<a id="3.14"> &nbsp; </a>
-<li>
-  <h4>
-		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/3.14">Version 3.14 - 27/10/2022</a>
-		<br>
-		<span class="appWrapper">
-			<span class="thunderbird">78.* - 102.*</span> 
-		</span>
-  </h4>
 
   <table class="smartTemplateProRenew bargain psa"> 
     <tr>
       <td style="vertical-align:top;">
       
-        <h3 class="shillBox">SmartTemplates Pro Renewal - HALLOWEEN SALE!</h3>
+        <h3 class="shillBox">SmartTemplates Pro Renewal - BLACK FRIDAY SALE</h3>
         <p>
           In celebration of the release of Thunderbird 102, 
           you can now renew or extend your Pro license 
           for <span class="emphasis">25% off</span> - [around $7.50 USD saving $2.50!]  
-          from October 27th <span class="emphasis">22nd</span> to <span class="emphasis">November 12th</span>.
+          from <span class="emphasis">November 25th</span> to <span class="emphasis">December 2nd</span>.
           Click the SmartTemplates panel at the bottom of the Thunderbird window:<br>
           <img src="img/status-expired.png"> ...and then click the renewal button.
         </p>
@@ -310,9 +270,9 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
     <tr>
       <td style="vertical-align:top;">
       <!--  -->
-        <h3 class="shillBox">HALLOWEEN SALE - October 27th to November 12th</h3>
+        <h3 class="shillBox">BLACK FRIDAY SALE- November 25th to December 2nd</h3>
         <p>
-          In celebration of the release of Thunderbird 102,
+          Just for a single week,
           you can now get a SmartTemplates Pro License for <span class="emphasis">33% off - [around $10.00 USD saving $5.00] </span> 
           for <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-bargain">SmartTemplates Pro</a>
         </p>
@@ -358,12 +318,12 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
     <tr>
       <td style="vertical-align:top;">
       <!--  -->
-        <h3 class="shillBox">Go Pro! HALLOWEEN SALE</h3>
+        <h3 class="shillBox">BLACK FRIDAY SALE - just one week!</h3>
         <p>
           In celebration of the release of Thunderbird 102,
           you can now upgrade your Standard license to SmartTemplates Pro
           for <span class="emphasis">40% off</span> - [pay $6.00 USD saving $4.00]  
-          from October <span class="emphasis">27th</span> to <span class="emphasis">October 12th</span>.
+          from November <span class="emphasis">25th</span> to <span class="emphasis">December 2nd</span>.
         </p>
         <p>
           To avail of this offer, you can do either:
@@ -413,6 +373,48 @@ src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainS
     </tr>
   </table>  
   
+
+  <ul>
+    <li>
+      <p>
+        Added backwards search in variables window - press  <key>Shift</key> + <key>F3</key> to search text going up.
+        You can also use the <key>Enter</key> key on the number pad to enter a new search term. 
+        This previously closed the SmartTemplates settings window.
+      </p>
+      <img class="screenshot" src="img/var-search.png" alt="variables search options"/>
+    </li>
+    <li>
+      Added optional attributes list to variable <code>%file()%</code> when it is used to 
+      include images <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
+      You can add additional attributes to with the following syntax:
+      <pre class=code>
+%file(img/bargain.png,id=bargainStar,width=192,"alternative text")%
+This will generate the following html code after importing the image data:
+&lt;img
+src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainStar" width="192" alt="alternative text"&gt;</pre>
+    </li>
+    <li>
+      <p>
+        Fixed a problem with <tt>addressbook</tt> switch, which can be used with address headers and also <code class="inline">%identity% </code>. This was broken by recent changes related to 
+        <code class="inline">%toclipboard()%</code>. Also added support for the new vCard format. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217].</a> Example:
+      </p>
+            <pre class=code>
+%identity(addressbook,work.title,work.department,work.organization)%</pre>
+    </li>
+  </ul>
+</li> 
+
+<a id="3.14"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/3.14">Version 3.14 - 27/10/2022</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">78.* - 102.*</span> 
+		</span>
+  </h4>
+
   
   <h5 class="inList"><span class="inListTitle">Improvements</span></h5>
   <ul>
