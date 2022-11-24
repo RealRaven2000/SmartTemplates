@@ -158,7 +158,7 @@ permalink: version.html
       structure with native APIs, to one day have a standard permission based mail extension.
 		</p>
     <p class="miniquote">
-      As latest feature I added more <a href="premium/html#clipboard">support for using the clipboard</a>.
+      As latest feature I added more <a href="premium.html#clipboard">support for using the clipboard</a>.
       With this you can extract data from the original mail and easily copy it into different places of your Email reply.
     </p>
     <p class="miniquote">
@@ -229,6 +229,33 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+<a id="3.15"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.15 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">91.* - 102.*</span> 
+		</span>
+  </h4>
+  <ul>
+    <li>
+      Added backwards search in variables window - press {{Shift}} + {{F3}} to search text going up.
+      You can also use the Enter key on the number pad to enter a new search term.
+      
+    </li>
+    <li>
+      Added optional attributes list to image variable <code>%file%</code>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
+      You can add additional attributes to like this:
+      <pre class=code>
+      %file(img/bargain-upg-bf-de.png,id=bargainStar,width=192)%
+      </pre>
+    </li>
+    <li>Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217]</a></li>
+  </ul>
+</li> 
 
 <a id="3.14"> &nbsp; </a>
 <li>
