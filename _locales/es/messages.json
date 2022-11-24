@@ -428,9 +428,6 @@
   "from_var.cap": {
     "message": "Remitente (De)"
   },
-  "fromfirstname.label": {
-    "message": "Nombre de pila del remitente"
-  },
   "frommail.label": {
     "message": "Dirección del remitente"
   },
