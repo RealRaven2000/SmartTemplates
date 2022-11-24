@@ -386,9 +386,6 @@
   "from_var.cap": {
     "message": "Zmienne nadawcy (Nadawca:)"
   },
-  "fromfirstname.label": {
-    "message": "Imię nadawcy"
-  },
   "frommail.label": {
     "message": "Adres e-mail nadawcy"
   },
