@@ -422,9 +422,6 @@
   "from_var.cap": {
     "message": "Absendervariablen (Von)"
   },
-  "fromfirstname.label": {
-    "message": "Absendervorname"
-  },
   "frommail.label": {
     "message": "Absender E-Mail Adresse"
   },
