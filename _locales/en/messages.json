@@ -1709,7 +1709,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Added backwards search in variables window - press {{Shift}} + {{F3}} to search text going up.{L2}{L1}Added optional attributes list to image variable {{%file%}} [issue 216].{L2}{L1}Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Minor maintenance fix for text search in variables tab.{P2}{L1}Added backwards search in variables window - press {{Shift}} + {{F3}} to search text going up.{L2}{L1}Added optional attributes list to image variable {{%file()%}} [issue 216].{L2}{L1}Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

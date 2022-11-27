@@ -1630,7 +1630,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Adicionada pesquisa reversa na janela de variáveis - pressione {{Shift}} + {{F3}} para pesquisar o texto subindo.{L2}{L1}Adicionada lista de atributos opcionais à variável de imagem {{%file%}}. [issue 216]{L2}{L1}Corrigido um problema com a chave {{addressbook}}. Também adicionou suporte para o novo formato vCard. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Pequena correção de manutenção para pesquisa de texto na guia de variáveis.{P2} {L1}Adicionada pesquisa reversa na janela de variáveis - pressione {{Shift}} + {{F3}} para pesquisar o texto subindo.{L2}{L1}Adicionada lista de atributos opcionais à variável de imagem {{%file()%}}. [issue 216]{L2}{L1}Corrigido um problema com a chave {{addressbook}}. Também adicionou suporte para o novo formato vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

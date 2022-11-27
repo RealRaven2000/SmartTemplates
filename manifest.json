@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "3.15",
+  "version": "3.15.1",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author)",
@@ -13,7 +13,7 @@
     "gecko": {
       "id": "smarttemplate4@thunderbird.extension",
       "strict_min_version": "78.0",
-      "strict_max_version": "107.0"
+      "strict_max_version": "108.0"
     }
   },
   "background": {

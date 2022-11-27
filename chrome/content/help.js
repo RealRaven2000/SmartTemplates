@@ -197,7 +197,7 @@
             c = currentChapter;
             // if we are already on a search result in a uncollapsed chapter
             // check if there are still matches further down in current expanded chapter:
-            if (sel && c.classList && c.classList.contains("chapterBody") && !c.classList.contains("collapsed")) {
+            if (sel && c && c.classList && c.classList.contains("chapterBody") && !c.classList.contains("collapsed")) {
               let where = backwards ? "before" : "after";
               let nextFocus = sel.focusNode ? sel.focusNode.parentNode : null;
               if (nextFocus && (nextFocus.id=="searchBox" || nextFocus.id=="allexpander")) {

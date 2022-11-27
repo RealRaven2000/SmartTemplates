@@ -1609,7 +1609,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Achterwaarts zoeken toegevoegd in venster met variabelen - druk op {{Shift}} + {{F3}} om tekst omhoog te zoeken.{L2}{L1}Optionele attributenlijst toegevoegd aan afbeeldingsvariabele {{%file%}}. [issue 216]{L2}{L1}Probleem opgelost met schakelaar {{addressbook}}. Ook ondersteuning toegevoegd voor het nieuwe vCard-formaat. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Kleine onderhoudsreparatie voor het zoeken naar tekst in het tabblad Variabelen.{P2} {L1}Achterwaarts zoeken toegevoegd in venster met variabelen - druk op {{Shift}} + {{F3}} om tekst omhoog te zoeken.{L2}{L1}Optionele attributenlijst toegevoegd aan afbeeldingsvariabele {{%file()%}}. [issue 216]{L2}{L1}Probleem opgelost met schakelaar {{addressbook}}. Ook ondersteuning toegevoegd voor het nieuwe vCard-formaat. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

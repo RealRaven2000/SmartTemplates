@@ -1627,7 +1627,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Dodano wyszukiwanie wstecz w oknie zmiennych - naciśnij {{Shift}} + {{F3}}, aby wyszukać tekst w górę.{L2}{L1}Dodano opcjonalną listę atrybutów do zmiennej obrazu {{%file%}}. [issue 216]{L2}{L1}Naprawiono problem z przełącznikiem {{addressbook}}. Dodano także obsługę nowego formatu vCard. [issue 217] {L2}"
+    "message": "{P1}3.15.1 Drobna poprawka konserwacyjna wyszukiwania tekstu na karcie zmiennych.{P2} {L1}Dodano wyszukiwanie wstecz w oknie zmiennych - naciśnij {{Shift}} + {{F3}}, aby wyszukać tekst w górę.{L2}{L1}Dodano opcjonalną listę atrybutów do zmiennej obrazu {{%file()%}}. [issue 216]{L2}{L1}Naprawiono problem z przełącznikiem {{addressbook}}. Dodano także obsługę nowego formatu vCard. [issue 217] {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
