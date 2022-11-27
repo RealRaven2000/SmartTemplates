@@ -172,6 +172,27 @@
   "clipboard.copy": {
     "message": "копіює текст у буфер обміну."
   },
+  "clipboard.insert": {
+    "message": "вставляє поточний вміст буфера обміну в цю позицію."
+  },
+  "clipboard.from": {
+    "message": "(приклад для будь-якої змінної адреси) скопіювати адресу електронної пошти початкового відправника в буфер обміну."
+  },
+  "clipboard.setHeader": {
+    "message": "Використовуйте вміст буфера обміну, щоб установити cc - (працює для будь-якого текстового заголовка)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Зіставлення тексту із теми та копіювання в буфер обміну, якщо знайдено."
+  },
+  "clipboard.matchBody": {
+    "message": "Збігається з текстом оригінального вмісту електронної пошти та копіює його в буфер обміну, якщо знайдено."
+  },
+  "clipboard.notes": {
+    "message": "Будь-яка функція, яка використовує {toclip}, очищає буфер обміну, якщо не повертає дані. Ви можете використовувати функції буфера обміну для перенесення даних у текстовий фрагмент, який завантажується командою {file}."
+  },
+  "close.label": {
+    "message": "Згорнути діалогове вікно"
+  },
   "conditional.forwardMode": {
     "message": "Якщо електронне повідомлення пересилається вбудованим, вставляється перший текстовий параметр. Другий текстовий параметр використовується, коли лист пересилається як вкладення."
   },
@@ -357,6 +378,9 @@
   "fileHTML.label": {
     "message": "HTML або звичайний текстовий файл. UTF-8 передбачається, як додатковий параметр кодування символів."
   },
+  "fileImage.attributes": {
+    "message": "Необов’язковий список наборів атрибутів=значення, наприклад 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Файл зображення (png,jpg,gif,bmp,svg). Альтернативний текст відображається, якщо зображення не може бути знайдено."
   },
@@ -443,6 +467,9 @@
   },
   "from_var.cap": {
     "message": "Відправник (From)"
+  },
+  "fromfirstname.label": {
+    "message": "Ім'я відправника"
   },
   "frommail.label": {
     "message": "Адреса електронної пошти відправника"
@@ -634,6 +661,18 @@
         "example": "50%"
       }
     }
+  },
+  "license-standard-special-terms": {
+    "message": "Ця спеціальна пропозиція діє {boldStart}до $expiry${boldEnd}.",
+    "placeholders": {
+      "expiry": {
+        "content": "$1",
+        "example": "16. April"
+      }
+    }
+  },
+  "license-tab": {
+    "message": "Ліцензії"
   },
   "licenseComparison": {
     "message": "Для порівняння модифікацій різних версій, {linkStart}прочитано список{linkEnd}."
@@ -1034,6 +1073,9 @@
   "pref_sigReplaceBR.label": {
     "message": "Замінити розриви рядків у підпису з форматом простого тексту з <br>"
   },
+  "pref_silentUpdates": {
+    "message": "Не відкривати вкладку з історією версій"
+  },
   "pref_silentUpdates_tip": {
     "message": "Не відкривати зміну журналу після оновлення SmartTemplates."
   },
@@ -1087,6 +1129,9 @@
   },
   "quotePlaceholder.level": {
     "message": "[необов’язково, числове] Максимальний рівень цитування для видалення старих цитат із розмови."
+  },
+  "quote_changers.cap": {
+    "message": "Маніпуляція цитат"
   },
   "quote_changers.desc": {
     "message": "Преміум змінні для видалення тексту/тегів з цитованих частин і збереження місця."
@@ -1159,6 +1204,9 @@
   },
   "smartTemplate4.cleandeferred.tooltip": {
     "message": "Очистіть усі змінні SmartTemplate"
+  },
+  "smartTemplate4.deferredcontext.cleanup": {
+    "message": "Замінити змінну вмістом"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Видалити змінну SmartTemplates"
@@ -1390,6 +1438,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "2 грудня"
+  },
   "special-offer-head": {
     "message": "Допоможіть зберегти $addon$ сумісним",
     "placeholders": {
@@ -1596,6 +1647,18 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
+  },
+  "update.tooltip": {
+    "message": "Натисніть тут один раз, щоб прочитати, що нового в $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "updates.changeLog": {
+    "message": "Примітки до випуску (англійською)"
   },
   "updates.news": {
     "message": "Останні новини"
