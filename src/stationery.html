@@ -6,6 +6,8 @@ permalink: stationery.html
 <!-- STATIONERY.HTML -->
 <h2 class="page-header">Stationery Support / External HTML Template Files</h2>
 
+  loadStyleSheet("variables.css?v=2");
+
 <style>
 /* number labels in screenshots */
 span.number {
@@ -14,6 +16,10 @@ span.number {
   border-radius: 1.3em;
   font-weight: bold;
   padding: 4px 8px;
+}
+
+code {
+  
 }
 </style>
 
@@ -29,7 +35,7 @@ span.number {
 </p>
 
 <a name="templateFiles">&nbsp;</a>
-<h3>How to use Template Files (instead of Stationery Ad-on)</h3>
+<h3>How to use Template Files (instead of Stationery Add-on)</h3>
 <p>You select an external template via a dropdown on the reply / write or forward button:
   <br>
 	<img src="/img/file-templates-reply-ex1.png" class="screenshot" alt="Templates on reply" />
@@ -80,9 +86,11 @@ src="data:image/png;filename=cbbcdhchmmcihlkb.png;base64,iVBORw0KGgoAAAANSUhEUgA
 <a id="whatIsStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
  <h3>What is Stationery?</h3>
  
-<p>From version 0.9.3 onwards, SmartTemplates supports integration with the Stationery addon. 
-This is made possible through some changes that <a href="https://addons.mozilla.org/thunderbird/user/98987/" target="_blank" title="Visit arivald ATN Page">Arivald</a>, the owner of the Stationery extensions kindly added, 
-and is available from version 0.8 of Stationery. 
+<p>
+  From version 0.9.3 onwards, SmartTemplates supported integration with the Stationery addon by integration from 
+  its owner <a href="https://addons.mozilla.org/thunderbird/user/98987/" target="_blank" title="Visit arivald ATN Page">Arivald</a>. 
+  After Thunderbird 68, Stationery is not supported anymore, and you can use the internal template 
+  integration of SmartTemplates.
 </p>
 
 <p>Official Stationery page: <a href="https://addons.thunderbird.net/thunderbird/addon/stationery" target="_blank" title="Get Stationery!">Stationery for Thunderbird</a></p>
@@ -98,24 +106,32 @@ and is available from version 0.8 of Stationery.
    <img src="/screenshots/stationery-dropDown.png" class="screenshot" alt="template selection" />
 </p>
 
-<p>Stationery also adds a handy html editing pane to the composer window; this alone makes it worth installing, 
-   as it allows both simplifying and learning the html behind your email compositions:
+<p>
+  Stationery used to add a handy html editing pane to the composer window; from Thunderbird 78 onwards, 
+   you can instead install the Add-on 
+   <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/thunderhtmledit/">ThunderHTMLedit</a>
+   to get the same feature:
    <br>
    <img src="/screenshots/stationery-html.png" class="screenshot" alt="template selection" />
 </p>
    
 
  <a id="howtoUse"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
- <h3>How do I use SmartTemplates with Stationery?</h3>
+ <h3>How do I use SmartTemplates with external templates?</h3>
  
- <p>You can use pretty much all <a href="/variables.html">variables</a> directly in your stationery files. When you select a Stationery 
-    during writing or replying to mail, then the <a href="/templates.html">SmartTemplates templates</a> which are bound to the account identity of
-    your current email will be temporarily <i>ignored</i>. This means you do not need any special settings in quote / template as your Stationery 
-	file supplies everything.
-</P>
+<p>
+  You can use pretty much all <a href="/variables.html">variables</a> directly in your stationery files. 
+  When you select a new Template during writing or replying to mail, then the 
+  <a href="/templates.html">account templates</a> which are bound to the account identity of
+  your current email will be temporarily <i>ignored</i>.
+  The quote header settings are still used, unless specified otherwise (see below).
+</p>
 <p>	Instead SmartTemplates will search and replace the special
     header variables in the Stationery itself. This turns Stationery into a full blown templating application.</p>
-<p> Additionally, you can use the following powerful <a href="/variables.html">variables</a> to control the content and behavior of your Stationery Template:</p>
+<p> 
+  Additionally, you can use the following powerful <a href="/variables.html">variables</a> to control the content 
+  and behavior of your Stationery Template:
+</p>
 
 <article>
  <ul>
