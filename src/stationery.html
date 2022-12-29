@@ -17,11 +17,18 @@ span.number {
 }
 </style>
 
-<p>Latest news: for Thunderbird 68, SmartTemplates has successfully added a file templating system. 
-  This replaces Stationery which is not supporting Thunderbird 68 anymore. If you are still using 
-	Thunderbird 60.8 or an earlier verison at this stage, you can read the documentation below. To move 
-	forward into 2020, check out the "template files" feature in SmartTemplates instead:
+<p>
+  You can add a list of external HTML templates, integrated into the Write / Reply and Forward buttons, just like 
+	with Stationery, by selecting the item <i>Template Files</i> from the accounts drop down:<br>
+	<img src="/screenshots/fileTemplates.png" class="screenshot" alt="SmartTemplate - Template Files Integration" />
 </p>
+<p>
+  Note: when using an external template file (just like with Stationery), then the account specific quote header 
+  and template are ignored. If you need any SmartTemplates variables, you can insert them directly in the
+  HTML template file.
+</p>
+
+<a name="templateFiles">&nbsp;</a>
 <h3>How to use Template Files (instead of Stationery Ad-on)</h3>
 <p>You select an external template via a dropdown on the reply / write or forward button:
   <br>
@@ -32,8 +39,12 @@ span.number {
   as expected.
 </p>
 <p>
-  To add more templates to each menu, select the command <i></i>
-	<img src="/img/file-templates-reply-dropdown.png" class="screenshot" alt="Templates on reply" />
+  To add more templates to each menu, select the command <i>configure menu items...</i>
+  <br>
+	<img src="/img/file-templates-reply-configure.png" class="screenshot" alt="configure templates" />
+</p>
+<p>
+  This will open the SmartTemplate Settings dialog with the page "Template Files" selected:
   <br>
 	<img src="/img/file-templates-help-1.png" class="screenshot" alt="How to add template files" />
   <ol>
@@ -47,18 +58,24 @@ src="data:image/png;filename=cbbcdhchmmcihlkb.png;base64,iVBORw0KGgoAAAANSUhEUgA
   </ol>
 </p>
 
+<a name="snippets">&nbsp;</a>
+<h3>How to use Categories</h3>
 <p>
-  You can add a list of external HTML templates, integrated into the Write / Reply and Forward buttons, just like 
-	with Stationery, by selecting the item <i>Template Files</i> from the accounts drop down:<br>
-	<img src="/screenshots/fileTemplates.png" class="screenshot" alt="SmartTemplate - Template Files Integration" />
+  You can structure the template menus into submenus using the "Category" field.
+  These use alphabetical keyboard shortcuts (A, B, C...).
+  <br>
+  <img src="/img/template-categories.png" class="screenshot" alt="Categories menu list" />
 </p>
 <p>
-  Note: when using an external template file (just like with Stationery), then the account specific quote header 
-  and template are ignored. If you need any SmartTemplates variables, you can insert them directly in the
-  HTML template file.
+  To add a menu to an existing item, select it and enter the desired label for the popup menu:
+  <br>
+  <img src="/img/template-category.png" class="screenshot" alt="Category field" />
+  <br>
+  After that, click on the <i>Update</i> button. This will make a new submenu and move
+  the template underneath it. Note that the uppercae / lowercase spelling needs to match
+  exactly if you want multiple templates under the same submenu.
 </p>
 
-<p>Official Stationery page: <a href="https://addons.thunderbird.net/thunderbird/addon/stationery" target="_blank" title="Get Stationery!">Stationery for Thunderbird</a></p>
 
 <a id="whatIsStationery"></a><!-- this anchor is just an in-page jump point, it doesn't need to contain anything -->
  <h3>What is Stationery?</h3>
@@ -68,6 +85,7 @@ This is made possible through some changes that <a href="https://addons.mozilla.
 and is available from version 0.8 of Stationery. 
 </p>
 
+<p>Official Stationery page: <a href="https://addons.thunderbird.net/thunderbird/addon/stationery" target="_blank" title="Get Stationery!">Stationery for Thunderbird</a></p>
  
  <p>Stationery is an addon that allows adding "outlook-style" stationery to your emails. 
     What's more, it can be very well used to create powerful mail templates for repetitive tasks
