@@ -6,6 +6,17 @@ permalink: stationery.html
 <!-- STATIONERY.HTML -->
 <h2 class="page-header">Stationery Support / External HTML Template Files</h2>
 
+<style>
+/* number labels in screenshots */
+span.number {
+  background-color: rgb(180,0,0) !important;
+  color: white !important;
+  border-radius: 1.3em;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+</style>
+
 <p>Latest news: for Thunderbird 68, SmartTemplates has successfully added a file templating system. 
   This replaces Stationery which is not supporting Thunderbird 68 anymore. If you are still using 
 	Thunderbird 60.8 or an earlier verison at this stage, you can read the documentation below. To move 
@@ -14,16 +25,25 @@ permalink: stationery.html
 <h3>How to use Template Files (instead of Stationery Ad-on)</h3>
 <p>You select an external template via a dropdown on the reply / write or forward button:
   <br>
+	<img src="/img/file-templates-reply-ex1.png" class="screenshot" alt="Templates on reply" />
+  <br>
+  This will load the template (HTML file) from disk and replace all SmartTemplates variables 
+  based on your Thunderbird Identity and data of the replied / forwarded Mail
+  as expected.
+</p>
+<p>
+  To add more templates to each menu, select the command <i></i>
 	<img src="/img/file-templates-reply-dropdown.png" class="screenshot" alt="Templates on reply" />
   <br>
-	<img src="/img/file-templates-steps.png" class="screenshot" alt="How to add template files" />
+	<img src="/img/file-templates-help-1.png" class="screenshot" alt="How to add template files" />
   <ol>
-    <li>In Account, select "Template Files"</li>
-    <li>Click "Select Template File from disk" <img
+    <li>In Account, select "Template Files" <span class=number>1</span> </li>
+    <li>Click "Select Template File from disk" <span class=number>2</span><img
 src="data:image/png;filename=cbbcdhchmmcihlkb.png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAC30lEQVQ4jdXR20/ScRjH8foHWl11202HWVlmtg4q6QrMVpBrTVsXWlnzosPWYd4g/XAM0nLMDGmlZhrL7LTONnNUlksnySQiCJgwXaiIGFEG+O6i1dZKpbUu+myfu+f72p7nO4N/kBn/H+q+v4e3hgzsV8TYGtOnrPve7vhQa0MqoXcafMZ8Bo0FhF6riXlrYODSzx00YG1IjQ+1XFwLwetMBJr57DmL/+VB3jZlMfFO/1Ppr/82Gw9qrltNbKSJqK+RqK+RWOAq5vpMgmYtEbuOmKOamKOaCW8d5rrV8aGmC6uIDhmIDNQTGagnOmTgVU0qnnY1nnY1UbuOqF1HzFOL6cKq+NAufTKR9w2Me2sY99YQed/A86oU+p6q6Huq4outCt3l3chKM8gqXoa+RT892nF2OeP9tYTdesJuPeP9tRi1K3AbS3EbS/lsrUSmXM+mQAqFg5vZImROj7ZXLuVT33lCjipCjio+9Z2n9fRynG0CzjaBsEWLVCkiy5vMwY9FSI4nTo8aKxIIu6oZs2kZs2kJu6p5cHIpp87tZLM8DakgQiqIyHKvpMi/F8nxRGQaGTKN7JdT/EBbyxYSslcyailn1FJOyF7JHdVitpaIyHiSiLgr6VstKeR5ctnv3MIR/wGOjhxCppH9Hn2ons+YtQJ/jxp/j5oxawU3lYvIlqeR2ZzExlvJiO+uJPvZGtY4t5HrSCN/eCf7hgsmR28L8xjtLWOoW8lQt5LR3jKaSxag0u0gW56KVEhHKqSz7ZGITG8eG4/Fsf6lI3MJ9GjwdSrwdSoI9Khpki/A0arA0argg/k0UkFEbouEXS4JG4rX4ff7p/6o0sIlPNam4HxYxHCXkhGTivJdMzmRN4sTebM4s38OosMJ5FxPI9+Wg1ghxuVyTY0CdDQf44o8gRvKBLoN29EWzsZkMhH6EARA36KfdOVJ0e9588LAtZMSaouTCAaDkz7+I/Rv80/Qr8HH7vafHjbjAAAAAElFTkSuQmCC"
         alt="" class=""></li>
-    <li>[Optional step] change the title</li>
-    <li>Click Add, to add to the Write / Reply or Forward list.</li>
+    <li>[Optional step] <span class=number>3</span> change the Title  to display in the menu </li>
+    <li>[Optional step] <span class=number>4</span> add a Category  - this will create a submenu in order to structure your menu</li>
+    <li><span class=number>5</span> Click <i>Add</i> to add the template to the Write / Reply or Forward list.</li>
   </ol>
 </p>
 
