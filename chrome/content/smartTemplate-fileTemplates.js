@@ -658,7 +658,7 @@ SmartTemplate4.fileTemplates = {
 			
       let cat = theTemplate.category;
       if (cat) {
-        let popup = msgPopup.querySelector(`[templateCategory=${cat}]`);
+        let popup = msgPopup.querySelector(`[templateCategory='${cat}']`);
         if (popup) {
           popup.appendChild(menuitem);
           acKey = getAccessKey(popup.childElementCount);
