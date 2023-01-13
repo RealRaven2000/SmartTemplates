@@ -2474,7 +2474,7 @@ SmartTemplate4.Util = {
 	} ,
   
   // isDisabled - force disabled (on retry)
-  setSpellchecker: function(languages, isDisabled) {
+  setSpellchecker: async function(languages, isDisabled) {
 		const Ci = Components.interfaces,
 		      Cc = Components.classes,
 		      util = SmartTemplate4.Util;
@@ -2483,18 +2483,21 @@ SmartTemplate4.Util = {
         inlineSpellChecker = gSpellChecker.mInlineSpellChecker || GetCurrentEditor().getInlineSpellChecker(true);
     try {
       let spellChecker = inlineSpellChecker.spellChecker;
-      if (languages=='on') {
+      if (languages!='off') {
         if (enableInlineSpellCheck) {
-          enableInlineSpellCheck(false);
           enableInlineSpellCheck(true);
         }
-        else
+        else {
           gSpellChecker.enabled = true;
+        }
         util.logDebug('Enabled automatic spellcheck');
-        return;
+        if (languages=='on') {  // we're done here.
+          return;
+        }
       }
-      if (!isDisabled)
-        isDisabled = (gSpellChecker.enabled == false);
+      if (!isDisabled) {
+        isDisabled = !(gSpellChecker.enabled);
+      }
       if (isDisabled && languages!='off') {
         // temporarily enable
         gSpellChecker.enabled = true;
@@ -2537,7 +2540,8 @@ SmartTemplate4.Util = {
       }
       
       
-      let langArray = languages.split(",");
+      let langArray = languages.split(","),
+          invalidLanguages = [];
       for (let l=0; l<langArray.length; l++) {
         let foundOne = false;
         let language = langArray[l];
@@ -2561,17 +2565,23 @@ SmartTemplate4.Util = {
             }
           }
         }
-        langArray[l] = language; // write back correct entry
+        if (!foundOne) {
+          invalidLanguages.push(langArray[l]);
+        }
+        // write back correct entry, eliminate invalid ones.
+        langArray[l] = foundOne ? language : ""; 
       }
       
       if (found) {
         util.logDebug("Setting spellchecker / document language to: " + languages);
         document.documentElement.setAttribute("lang",""); // force resetting
+        
+        let passArray = langArray.filter(x => x!=""); // remove invalid entries!
         if(typeof gActiveDictionaries == "object") { // Tb102 supports multiple spellcheck languages active at the same time
-          ComposeChangeLanguage(langArray);
+          await ComposeChangeLanguage(passArray); 
         }
         else {
-          ComposeChangeLanguage(langArray[0]); // Tb91: only 1 single language supported 
+          await ComposeChangeLanguage(passArray[0]); // Tb91: only 1 single language supported // not async in 91, but await does no harm either
         }
         if (isDisabled) { // force restoring disabled status
           gSpellChecker.enabled = false; 
@@ -2581,6 +2591,9 @@ SmartTemplate4.Util = {
       else {
         let wrn = util.getBundleString("st.notification.spellcheck.notFound");
         throw wrn.replace("{0}", languages);
+      }
+      if (invalidLanguages.length) {
+        console.log("%spellcheck()% didn't find the following language entries: \n" + invalidLanguages.toString());
       }
     }
     catch(ex) {

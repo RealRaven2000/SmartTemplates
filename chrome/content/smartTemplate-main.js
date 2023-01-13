@@ -199,13 +199,23 @@ END LICENSE BLOCK
     # [issue 215] Search box in variables window
     # Fixed text colors in Variables window when using dark themes.
     # Known issue - [external?] template not applied when replying to a message we sent ourselves 
-    #               that used SmartTempaltes - and Tb changes the recipient - 
+    #               that used SmartTemplates - and Tb changes the recipient - 
     #               this leads to immediate secondary loadIdentity(startup=false,...) where previous body 
     #               already has the smartTemplateInserted attribute.
     
-  Version 3.15 - WIP
+  Version 3.15 - 25/11/2022
     # [issue 215] Improved Variables search - use Shift+F3 to search backwards; support Numpad Enter
     # [issue 217] addressbook switches broken.
+    
+  Version 3.15.1 - 28/11/2022
+    # fixed [F3] Search again.
+    
+  Version 3.16 - WIP
+    # [issue 222] Template Categories containing space characters disrupt the template menus
+    # [issue 223] Spellchecker is not activated by %spellcheck()% command - if the option 
+                  "spellcheck as you type" is disabled in Composition settings.
+    # [issue 219] Regression: bracketName(";") parameter broken. 
+    
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -359,8 +369,11 @@ var SmartTemplate4 = {
               if (gMsgCompose.composeHTML) {
                 loadHTMLMsgPrefs();
               }
-              // from MsgComposeCommands.js#557 - add encryption support?
-              if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
+              // from MsgComposeCommands.js - add encryption support?
+              if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
+                ComposeFieldsReady();
+                updateSendCommands(true);
+              } else if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
                 window.composeEditorReady = true;
                 window.dispatchEvent(new CustomEvent("compose-editor-ready"));
               }              

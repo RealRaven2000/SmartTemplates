@@ -1751,7 +1751,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	
   // returns html code from selection in composer.
   function unpackSelection(selection) {
-    debugger;
+    // debugger;
     let aOf, fOf;
     let isFocusDifferent = false;
     let range = selection.getRangeAt(0);
