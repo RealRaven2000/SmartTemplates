@@ -1611,7 +1611,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Kleine Wartungskorrektur für die Textsuche im Variablen-Tab.{P2} {L1}Verbesserungen im Suchfeld im Variablenfenster - Rückwärts suchen mit {{Umschalt}} + {{F3}} .{L2} {L1}Zur Bildvariable {{%file()%}} kann eine Liste von Attributen hinzugefügt werden. [issue 216]{L2}{L1}Problem mit Schalter {{addressbook}} behoben. Ebenfalls hinzugefügt: Unterstützung für neues vCard-Format. [issue 217] {L2}"
+    "message": "{P1}3.15.1 Kleine Wartungskorrektur für die Textsuche im Variablen-Tab.{P2} {L1}Verbesserungen im Suchfeld im Variablenfenster - Rückwärts suchen mit {{Umschalt}} + {{F3}} .{L2} {L1}Liste optionaler HTML-Attribute zur Bildvariablen hinzugefügt {{%file()%}}. [issue 216]{L2}{L1}Problem mit Schalter {{addressbook}} behoben. Ebenfalls hinzugefügt: Unterstützung für neues vCard-Format. [issue 217] {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

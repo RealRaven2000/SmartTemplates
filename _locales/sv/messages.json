@@ -1690,7 +1690,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Mindre underhållskorrigering för textsökning på fliken variabler.{P2} {L1}Lägg till bakåtsökning i variabelfönstret - tryck på {{Shift}} + {{F3}} för att söka i text som går upp.{L2}{L1}Lägg till valfria attributlista till bildvariabeln {{%file()%}}. [issue 216]{L2}{L1}Fast ett problem med {{addressbook}}-omkopplaren. Har även lagt till stöd för det nya vCard-formatet. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Mindre underhållskorrigering för textsökning på fliken variabler.{P2} {L1}Lägg till bakåtsökning i variabelfönstret - tryck på {{Shift}} + {{F3}} för att söka i text som går upp.{L2}{L1}Lade till lista med valfria HTML-attribut till bildvariabel {{%file()%}}. [issue 216]{L2}{L1}Fast ett problem med {{addressbook}}-omkopplaren. Har även lagt till stöd för det nya vCard-formatet. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

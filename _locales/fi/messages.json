@@ -1687,7 +1687,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Pieni huoltokorjaus Muuttujat-välilehden tekstihakuun.{P2} {L1}Lisättiin taaksepäin haku muuttujaikkunassa - paina {{Vaihto}} + {{F3}} hakeaksesi tekstiä ylöspäin.{L2}{L1}Valinnainen attribuuttiluettelo lisätty kuvamuuttujaan {{%file()%}}. [issue 216]{101} L2}{L1}Korjattu ongelma {{addressbook}}-kytkimessä. Lisätty myös tuki uudelle vCard-muodolle. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Pieni huoltokorjaus Muuttujat-välilehden tekstihakuun.{P2} {L1}Lisättiin taaksepäin haku muuttujaikkunassa - paina {{Vaihto}} + {{F3}} hakeaksesi tekstiä ylöspäin.{L2}{L1} Lisätty luettelo valinnaisista HTML-attribuuteista kuvamuuttujaan{{%file()%}}. [issue 216]{101} L2}{L1}Korjattu ongelma {{addressbook}}-kytkimessä. Lisätty myös tuki uudelle vCard-muodolle. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

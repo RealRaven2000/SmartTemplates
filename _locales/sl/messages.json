@@ -1630,7 +1630,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Manjši vzdrževalni popravek za iskanje besedila na zavihku spremenljivk.{P2} {L1}Dodano iskanje nazaj v oknu s spremenljivkami - pritisnite {{Shift}} + {{F3}} za iskanje besedila navzgor.{L2}{L1}Dodan izbirni seznam atributov spremenljivki slike {{%file()%}}. [issue 216]{L2}{L1}Odpravljena težava s stikalom {{addressbook}}. Dodana je tudi podpora za novo obliko vCard. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Manjši vzdrževalni popravek za iskanje besedila na zavihku spremenljivk.{P2} {L1}Dodano iskanje nazaj v oknu s spremenljivkami - pritisnite {{Shift}} + {{F3}} za iskanje besedila navzgor.{L2}{L1}Dodan seznam neobveznih atributov HTML spremenljivki slike {{%file()%}}. [issue 216]{L2}{L1}Odpravljena težava s stikalom {{addressbook}}. Dodana je tudi podpora za novo obliko vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

@@ -1684,7 +1684,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Correctif de maintenance mineur pour la recherche de texte dans l'onglet des variables.{P2} {L1}Ajout d'une recherche vers l'arrière dans la fenêtre des variables - appuyez sur {{Shift}} + {{F3}} pour rechercher le texte en remontant.{L2}{L1}Ajout d'une liste d'attributs facultatifs à la variable d'image {{%file()%}}. [issue 216]{L2}{L1}Correction d'un problème avec le commutateur {{addressbook}}. Ajout également de la prise en charge du nouveau format vCard. [issue 217]{L2}"
+    "message": "{P1}3.15.1 Correctif de maintenance mineur pour la recherche de texte dans l'onglet des variables.{P2} {L1}Ajout d'une recherche vers l'arrière dans la fenêtre des variables - appuyez sur {{Shift}} + {{F3}} pour rechercher le texte en remontant.{L2}{L1}Ajout d'une liste d'attributs HTML facultatifs à la variable d'image {{%file()%}}. [issue 216]{L2}{L1}Correction d'un problème avec le commutateur {{addressbook}}. Ajout également de la prise en charge du nouveau format vCard. [issue 217]{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
