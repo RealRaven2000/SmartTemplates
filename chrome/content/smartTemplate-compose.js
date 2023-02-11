@@ -9,6 +9,7 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
@@ -620,9 +621,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     let origMsgDelimiter = '',
         Id,
-		    bndl = Cc["@mozilla.org/intl/stringbundle;1"]
-							 .getService(Ci.nsIStringBundleService)
-							 .createBundle("chrome://messenger/locale/mime.properties");
+		    bndl = Services.strings.createBundle("chrome://messenger/locale/mime.properties");
     try {           
       origMsgDelimiter = bndl.GetStringFromID(1041);
     }
@@ -632,15 +631,15 @@ SmartTemplate4.classSmartTemplate = function() {
     try {
       // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
       let fwdId = 'mailnews.forward_header_originalmessage', // from Tb 31.0 onwards?
-          replyId = 'mailnews.reply_header_originalmessage', //  [Bug 25089] Default forward quote not hidden
-          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+          replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
+          
       
       Id = fwdId;
-      origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+      origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
       // fallback to replyId if it doesn't exist.
       if (!origMsgDelimiter) {
         Id = replyId
-        origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+        origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
       }
     }
     catch(ex) {

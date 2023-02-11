@@ -1,5 +1,3 @@
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 /*
   this script is necessary for [issue 171] Examples tab needs a browser element
 */

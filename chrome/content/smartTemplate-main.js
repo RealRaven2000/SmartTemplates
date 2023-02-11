@@ -215,6 +215,11 @@ END LICENSE BLOCK
     # [issue 223] Spellchecker is not activated by %spellcheck()% command - if the option 
                   "spellcheck as you type" is disabled in Composition settings.
     # [issue 219] Regression: bracketName(";") parameter broken. 
+    # minimum version: 91.0
+    # compatibilty until: 110.0
+    # Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIPrefService, 
+    #                              nsIStringBundleService, nsIXULAppInfo, nsIMsgComposeService, nsIConsoleService, nsIVersionComparator,
+    #                              nsIXULRuntime
     
 
 =========================
@@ -235,6 +240,8 @@ END LICENSE BLOCK
 */
 
  
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var SmartTemplate4 = {
   // definitions for whatIsX (time of %A-Za-z%)
   XisToday : 0,
@@ -1030,8 +1037,6 @@ SmartTemplate4.calendar = {
     init: function init(forcedLocale) {
       const util = SmartTemplate4.Util;
 
-      let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-               getService(Components.interfaces.nsIStringBundleService);
       // validate the passed locale name for existence
       // https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
       if (forcedLocale) {
@@ -1067,7 +1072,7 @@ SmartTemplate4.calendar = {
       let bundleUri = this.bundleLocale 
         ? "chrome://smarttemplate4-locales/content/" + this.bundleLocale 
         : "chrome://smarttemplate4/locale"; // determined by currently active Thunderbird locale
-      this.bundle = strBndlSvc.createBundle(bundleUri + "/calender.properties");
+      this.bundle = Services.strings.createBundle(bundleUri + "/calender.properties");
     },
     
     // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)

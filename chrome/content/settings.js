@@ -31,8 +31,7 @@ SmartTemplate4.Settings = {
 		return (this.accountKey !== '.common') ? this.accountKey : ''; 
 	},
 	Ci : Components.interfaces,
-	prefService : Components.classes["@mozilla.org/preferences-service;1"]
-									.getService(Components.interfaces.nsIPrefService),
+	prefService : Services.prefs,
 	//******************************************************************************
 	// Common functions
 	//******************************************************************************
@@ -1924,18 +1923,17 @@ SmartTemplate4.Settings = {
 	
 	sendMail: function sendMail(mailto) {
     const util = SmartTemplate4.Util;
-		
+		var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
     let subjectTxt = document.getElementById('txtSupportSubject'),
 		    supportType = document.getElementById('supportType').value,
 				version = document.getElementById('versionBox').value,
 		    subjectline = supportType + " (" + version + ") " + subjectTxt.value,
 		    sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline), // urlencode
-		    MessageComposer=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService),
 		    // make the URI
 		    ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService),
 		    aURI = ioService.newURI(sURL, null, null);
 		// open new message
-		MessageComposer.OpenComposeWindowWithURI (null, aURI);
+		MailServices.compose.OpenComposeWindowWithURI (null, aURI);
 		// focus window?
 	},	
 

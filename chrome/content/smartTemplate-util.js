@@ -10,6 +10,8 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK
 */
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
@@ -247,8 +249,7 @@ SmartTemplate4.Util = {
 	} ,
 
 	get AppverFull() {
-		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-						.getService(Components.interfaces.nsIXULAppInfo);
+		let appInfo = Services.appinfo;
 		return appInfo.version;
 	},
 
@@ -262,8 +263,7 @@ SmartTemplate4.Util = {
 
 	get Application() {
 		if (null===this.mAppName) {
-		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-						.getService(Components.interfaces.nsIXULAppInfo);
+		let appInfo = Services.appinfo;
 			const FIREFOX_ID = "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 			const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
 			const SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
@@ -286,28 +286,24 @@ SmartTemplate4.Util = {
 
 	get HostSystem() {
 		if (null===this.mHost) {
-			let runTime = Components.classes["@mozilla.org/xre/app-info;1"]
-						.getService(Components.interfaces.nsIXULRuntime);
+			let runTime = Services.appinfo;
 			let osString = runTime.OS;
 			this.mHost = osString.toLowerCase();
 			// 
-			if (window.navigator)
+			if (window.navigator) {
 				this.mHost = window.navigator.oscpu;
+      }
 			
-			
-			if (runTime.inSafeMode)
+			if (runTime.inSafeMode) {
 				this.mHost += ' [Safe Mode]';
-			
-			
+      }
 		}
 		return this.mHost; // linux - winnt - darwin
 	},
 	
 	get isLinux() {
     // https://developer.mozilla.org/en-US/docs/OS_TARGET
-    let xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
-                 .getService(Components.interfaces.nsIXULRuntime);  
-    return (xulRuntime.OS.indexOf('Linux')>=0);
+    return (Services.appinfo.OS.indexOf('Linux')>=0);
   } ,
 
   initTabListener: function() {
@@ -590,10 +586,9 @@ SmartTemplate4.Util = {
 		}
 		else {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
-			let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),  
-			    check = {value: false},   // default the checkbox to true  
+			let check = {value: false},   // default the checkbox to true  
 					dontShow = util.getBundleString("st.notification.dontShowAgain") + ' [' + featureTitle + ']',
-			    result = prompts.alert(null, title, theText); // , dontShow, check
+			    result = Services.prompt.alert(null, title, theText); // , dontShow, check
 			// if (check.value==true) util.disableFeatureNotification(featureName);
 		}
 	},  	
@@ -696,8 +691,7 @@ SmartTemplate4.Util = {
 	// strictFlag 		0x4
 	logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags)
 	{
-		let consoleService = Components.classes["@mozilla.org/consoleservice;1"]
-		                               .getService(Components.interfaces.nsIConsoleService),
+		let consoleService = Services.console,
 		    aCategory = 'chrome javascript',
 		    scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 		scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
@@ -772,7 +766,6 @@ SmartTemplate4.Util = {
 	
 	findMailTab: function findMailTab(tabmail, URL) {
 		const util = SmartTemplate4.Util;
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 		// mail: tabmail.tabInfo[n].browser		
 		let baseURL = util.getBaseURI(URL),
 				numTabs = util.getTabInfoLength(tabmail);
@@ -914,8 +907,7 @@ SmartTemplate4.Util = {
 			-  equals 0 then Version, then A==B
 			- is bigger than 0, then A > B
 		*/
-		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-														.getService(Components.interfaces.nsIVersionComparator);
+		let versionComparator = Services.vc;
 		return (versionComparator.compare(a, b) >= 0);
 	} ,
 
@@ -927,9 +919,8 @@ SmartTemplate4.Util = {
 			-  equals 0 then Version, then A==B
 			- is bigger than 0, then A > B
 		*/
-		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-														.getService(Components.interfaces.nsIVersionComparator);
-		 return (versionComparator.compare(a, b) < 0);
+		let versionComparator = Services.vc;
+		return (versionComparator.compare(a, b) < 0);
 	} ,
 
 
@@ -980,7 +971,7 @@ SmartTemplate4.Util = {
 						: window;
 
 		if (!w) {
-			let watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
+			let watcher = Services.ww;
 			w = watcher.openWindow(win, uri, name, "chrome,resizable,centerscreen,width=600px,height=350px", null);
 		}
 		w.focus();
@@ -1224,11 +1215,6 @@ SmartTemplate4.Util = {
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
 		util.logDebugOptional('images',"getFileAsDataURI()\nfilename=" + filename);
-		
-		var { Services } =
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/Services.jsm') :
-			Components.utils.import('resource://gre/modules/Services.jsm');
 		
     let url = Services.io.newURI(aURL), // , null, null
         contentType;
@@ -2406,10 +2392,6 @@ SmartTemplate4.Util = {
 			    listLocales = '',
 			    found = false;
 			try {
-				var { Services } =
-				  ChromeUtils.import ?
-					ChromeUtils.import('resource://gre/modules/Services.jsm') :
-					Components.utils.import('resource://gre/modules/Services.jsm');
 				
 				// Tb68: requestedLocale
 				// Tb60: getRequestedLocale()
@@ -2788,8 +2770,7 @@ SmartTemplate4.Util.firstRun =
 		let prev = -1, firstRun = true,
 		    debugFirstRun = false,
 		    prefBranchString = "extensions.smartTemplate4.",
-		    svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
-		    ssPrefs = svc.getBranch(prefBranchString);
+		    ssPrefs = Services.prefs.getBranch(prefBranchString);
 
 		try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstRun")); } catch (e) { debugFirstRun = false; }
 
@@ -3272,7 +3253,6 @@ SmartTemplate4.Message = {
 };  // ST4.Message
 
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
 Services.scriptloader.loadSubScript(

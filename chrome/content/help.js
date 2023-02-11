@@ -1,3 +1,5 @@
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
   function containerClick(el, evt) {
     var code = evt.target;
     
@@ -115,7 +117,7 @@
   });
   
   function isDebugLegacyOption() {
-    let isDebug = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.smartTemplate4.debug.variables.search"); 
+    let isDebug = Services.prefs.getBoolPref("extensions.smartTemplate4.debug.variables.search"); 
     return isDebug;
   }
   
@@ -262,7 +264,6 @@
     
   function init() {
     // [mx l10n] 
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
     let extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
 		Services.scriptloader.loadSubScript(

@@ -12,7 +12,7 @@
 // Support external HTML files that can be selected during the button press
 // write / reply and forward.
 
-
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 SmartTemplate4.fileTemplates = {
 	Entries: {
@@ -64,22 +64,19 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	get optionsWindow() {
-		const Ci = Components.interfaces,
-		      util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util;
           
     try {
-      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let windowManager = Services.wm,
           optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
       return optionsWindow;
     }
 		catch(ex) { ; }
 		
-    let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
-        getWindowEnumerator = 
+    let getWindowEnumerator = 
             (util.isLinux) ?
-            mediator.getXULWindowEnumerator :
-            mediator.getZOrderXULWindowEnumerator;
+            Services.wm.getXULWindowEnumerator :
+            Services.wm.getZOrderXULWindowEnumerator;
 	} , 
 	
   get ListBox() {
@@ -245,7 +242,6 @@ SmartTemplate4.fileTemplates = {
 		      getBundleString = util.getBundleString.bind(util),
 					FT = SmartTemplate4.fileTemplates;
 					
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     let path = document.getElementById('txtTemplatePath').value,
         label = document.getElementById('txtTemplateTitle').value,
         category = this.document.getElementById('txtTemplateCategory').value,
@@ -417,7 +413,6 @@ SmartTemplate4.fileTemplates = {
         },
         function onFailure(ex) {
           util.logDebug ('readStringFile() - Failure: ' + ex); 
-          var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
           if (ex.becauseNoSuchFile) {
             // File does not exist);
           }
@@ -438,7 +433,6 @@ SmartTemplate4.fileTemplates = {
 					},
 					function promise2_onFail(ex) {
 						util.logDebug ('promise2.then onFail():\n' + ex); 
-            var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 						Services.prompt.alert(null, 'SmartTemplates - promise2.then', 'Did not load main menu\n' + ex);
 						return promise2; // make loadCustomMenu chainable
 					}
@@ -530,7 +524,6 @@ SmartTemplate4.fileTemplates = {
       return String.fromCharCode(65+acCode-10); // continue with A,B,C
     }
     try {
-      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
       if (window == singleM)
         singleParentWindow = window;
@@ -1391,7 +1384,6 @@ SmartTemplate4.fileTemplates = {
 				return converter.ConvertToUnicode(data);
 			}
 			catch(ex) {
-        var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
 				    errText = util.getBundleString("st.fileTemplates.error.charSet");
 				SmartTemplate4.Message.display(

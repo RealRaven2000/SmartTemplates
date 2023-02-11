@@ -9,6 +9,8 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 //******************************************************************************
 // for messengercompose
 //******************************************************************************
@@ -24,7 +26,7 @@ SmartTemplate4.classPref = function() {
         Cc = Components.classes;
 	// -----------------------------------
 	// Constructor
-	let root = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+	let root = Services.prefs;
 
 	// -----------------------------------
 	// get preference
@@ -3405,8 +3407,6 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       }
     }
     catch(ex) {
-      var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-      
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
       Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
         "Please check Javascript error console for detailed error message.");
@@ -3424,8 +3424,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		// msgcompose was msgcomposeWindow
     let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
         pathUri = arr[0],
-		    composerWin = Cc["@mozilla.org/appshell/window-mediator;1"]
-		      .getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcompose") || window,
+		    composerWin = Services.wm.getMostRecentWindow("msgcompose") || window,
 		    attachments=[];
 		try {			
 			let FileUtils = Cu.import("resource://gre/modules/FileUtils.jsm").FileUtils;
