@@ -212,7 +212,7 @@ export class Parser {
           }
           return '';
         };
-        function getCardFromAB(mail) { // returns ContactNode
+         async function getCardFromAB(mail) { // returns ContactNode
           if (!mail) return null;
           // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
           // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
@@ -433,7 +433,8 @@ export class Parser {
           // [Bug 25643] get name from Addressbook
           emailAddress = getEmailAddress(address); // get this always
           const isResolveNamesAB = isForceAB || this.MimePrefs.resolveAB;
-          card = isResolveNamesAB ? getCardFromAB(emailAddress) : null; // ContactNode
+          card = isResolveNamesAB ? 
+            await getCardFromAB(emailAddress) : null; // ContactNode
           
           // determine name part (left of email)
           addressee = address.replace(/\s*<\S+>\s*$/, "")

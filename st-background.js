@@ -12,6 +12,7 @@ var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
 const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
+const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
 var startupFinished = false;
 var callbacks = [];
@@ -244,6 +245,24 @@ async function main() {
         // main window update reacting to license status change
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
+
+      case "cardbook.getContactsFromMail":
+        try {
+          let queryObject = {
+            query: "smartTemplates.getContactsFromMail", 
+            mail: data.mail
+          }
+          if (data.preferredDirId) {
+            queryObject.dirPrefId = data.preferredDirId;
+          }
+
+          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject );
+          return cards;
+        }
+        catch(ex) {
+          console.exception(ex);
+          return null;
+        }
         
     }
   });

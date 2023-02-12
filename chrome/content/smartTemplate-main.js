@@ -220,6 +220,7 @@ END LICENSE BLOCK
     # Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIPrefService, 
     #                              nsIStringBundleService, nsIXULAppInfo, nsIMsgComposeService, nsIConsoleService, nsIVersionComparator,
     #                              nsIXULRuntime
+    # [issue 50] Add CardBook support [WIP]
     
 
 =========================
@@ -641,7 +642,7 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: function loadIdentity(startup, previousIdentity) {
+  loadIdentity: async function loadIdentity(startup, previousIdentity) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
@@ -677,11 +678,12 @@ var SmartTemplate4 = {
             let text = util.getBundleString("st.fileTemplates.error.filePath");
             alert(text); 
           }
-          else
-            this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+          else {
+            await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+          }
         }
         else {
-          this.smartTemplate.insertTemplate(false);
+          await this.smartTemplate.insertTemplate(false);
         }
         // [Bug 25104] when switching identity, old sig does not get removed.
         //             (I think what really happens is that it is inserted twice)
@@ -693,7 +695,7 @@ var SmartTemplate4 = {
         // as the user might have edited here already! 
         // however, the signature is important as it should match the from address?
         if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-          newSig = this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
+          newSig = await this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
         }
       }
       // AG 31/08/2012 put this back as we need it!
@@ -736,21 +738,9 @@ var SmartTemplate4 = {
   // Initialize - we only call this from the compose window
   // -------------------------------------------------------------------
   init: function init() {
-    function smartTemplate_loadIdentity(startup){
+    async function smartTemplate_loadIdentity(startup){
       let prevIdentity = gCurrentIdentity;
-      // when composer changes identity (happens when we reply to our own email and it changes to the other recipient)
-      if (startup) { 
-/*  gMsgCompose DOES NOT EXIST at this stage!
-        let editor = gMsgCompose.editor();
-        if (editor) {
-          let root = editor.rootElement;
-          if (root.getAttribute("smartTemplateInserted")) {
-            root.removeAttribute("smartTemplateInserted");
-          }
-        }
-  */
-      }
-      return SmartTemplate4.loadIdentity(startup, prevIdentity);
+      return await SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
     
     let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]

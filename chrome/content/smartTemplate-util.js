@@ -11,6 +11,7 @@ END LICENSE BLOCK
 */
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var SmartTemplate4_TabURIregexp = {
 	get _thunderbirdRegExp() {
@@ -679,10 +680,8 @@ SmartTemplate4.Util = {
 	logToConsole: function (a) {
 		const util = SmartTemplate4.Util;
     let msg = "SmartTemplates " + util.logTime() + "\n";
-    if (a.includes("initTemplateMenu")) debugger;
     console.log(msg, ...arguments);
   },
-
 
 	// flags
 	// errorFlag		  0x0 	Error messages. A pseudo-flag for the default, error case.
@@ -691,11 +690,10 @@ SmartTemplate4.Util = {
 	// strictFlag 		0x4
 	logError: function (aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags)
 	{
-		let consoleService = Services.console,
-		    aCategory = 'chrome javascript',
+		let aCategory = "component javascript", // was: chrome javascript
 		    scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
 		scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
-		consoleService.logMessage(scriptError);
+		Services.console.logMessage(scriptError);
 	} ,
 
 	logException: function (aMessage, ex) {
@@ -997,6 +995,9 @@ SmartTemplate4.Util = {
 			+ reservedWord
 			+ ((reservedWord[reservedWord.length - 1] != '%') ? '%' : '');
 
+		if (SmartTemplate4.Preferences.isDebugOption("adressbook")) {
+			debugger;
+		}
 		let ErrorString1 = SmartTemplate4.Util.getBundleString("contextError");
 		let errorText = ErrorString1.replace("{1}", decoratedWord);
 
@@ -2738,7 +2739,59 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.logException("Failed copying string to clipboard!", ex);
       return false;
     }
-  }
+  },
+
+  // async version of string.replace()
+  // takes an asynchronous callback function as last argument.
+  replaceAsync: async function(string, searchValue, replacer) {
+    /*
+    https://www.npmjs.com/package/string-replace-async/v/3.0.2
+    The MIT License (MIT)
+
+    Copyright (c) Dmitrii Sobolev <disobolev@icloud.com> (github.com/dsblv)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+    */
+    try {
+      if (typeof replacer === "function") {
+        // 1. Run fake pass of `replace`, collect values from `replacer` calls
+        // 2. Resolve them with `Promise.all`
+        // 3. Run `replace` with resolved values
+        var values = [];
+        String.prototype.replace.call(string, searchValue, function () {
+          values.push(replacer.apply(undefined, arguments));
+          return "";
+        });
+        return Promise.all(values).then(function (resolvedValues) {
+          return String.prototype.replace.call(string, searchValue, function () {
+            return resolvedValues.shift();
+          });
+        });
+      } else {
+        return Promise.resolve(
+          String.prototype.replace.call(string, searchValue, replacer)
+        );
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }, 	
 };  // ST4.Util
 
 

@@ -10,6 +10,7 @@
 */
 
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var LastInput = {
   id: null,
@@ -905,8 +906,7 @@ SmartTemplate4.Settings = {
 		const util = SmartTemplate4.Util;
 		// get current identity
 		util.logDebugOptional("settings","fillIdentityListPopup()");
-		const accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
-									  getService(this.Ci.nsIMsgAccountManager).accounts;
+		const accounts = MailServices.accounts.accounts;
 		let currentId = 0,
 		    CurId = null;
 		
@@ -1269,9 +1269,6 @@ SmartTemplate4.Settings = {
 	} ,
   
   get currentAccountName() {
-    const  Ci = Components.interfaces,
-           accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
-									  getService(Ci.nsIMsgAccountManager).accounts;
     let theMenu = document.getElementById("msgIdentity"),
         menuEntry = theMenu.label,
         end = menuEntry.indexOf(' <');
@@ -1923,7 +1920,6 @@ SmartTemplate4.Settings = {
 	
 	sendMail: function sendMail(mailto) {
     const util = SmartTemplate4.Util;
-		var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
     let subjectTxt = document.getElementById('txtSupportSubject'),
 		    supportType = document.getElementById('supportType').value,
 				version = document.getElementById('versionBox').value,

@@ -11,6 +11,7 @@ END LICENSE BLOCK
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
+
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
 // -------------------------------------------------------------------
@@ -100,7 +101,7 @@ SmartTemplate4.classSmartTemplate = function() {
   //                    'omit' to suppress (remove only)
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
-	function extractSignature(Ident, signatureDefined, composeType) {
+	async function extractSignature(Ident, signatureDefined, composeType) {
     let isSigInBlockquote = false;
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText, // might not work if it is an attached file (find out how this is done)
@@ -290,7 +291,7 @@ SmartTemplate4.classSmartTemplate = function() {
       if (isSignatureTb && sigPath)
         pathArray.push(sigPath);
 			try {
-				sigText = getProcessedText(sigText, idKey, composeType, true);
+				sigText = await getProcessedText(sigText, idKey, composeType, true);
 			}
 			catch(ex) {
 				util.logException(ex, "getProcessedText(signature) failed.");
@@ -766,7 +767,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
+	async function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
 		if (!templateText) return "";
     const flags = SmartTemplate4.PreprocessingFlags;
 
@@ -781,7 +782,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
       
     templateText = SmartTemplate4.parseModifier(templateText, composeType, true); // global clipboard setting (replaces with %toclipboard()%)
-		let regular = SmartTemplate4.regularize(templateText, 
+		let regular = await SmartTemplate4.regularize(templateText, 
 				composeType, 
 				false,   // isStationery
 				ignoreHTML, 
@@ -850,19 +851,19 @@ SmartTemplate4.classSmartTemplate = function() {
 	
 	// new function to retrieve quote header separately [Bug 25099]
 	// in order to fix bottom-reply
-	function getQuoteHeader(composeType, idKey) {
+	async function getQuoteHeader(composeType, idKey) {
 		let quoteHdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
 		let ignoreHTML = false; // was false always
-		return getProcessedText(quoteHdr, idKey, composeType, ignoreHTML);
+		return await getProcessedText(quoteHdr, idKey, composeType, ignoreHTML);
 	};
 	
 	// -----------------------------------
 	// Get template message - wrapper for main template field
-	function getSmartTemplate(composeType, idKey) {
+	async function getSmartTemplate(composeType, idKey) {
 		util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		let msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
 		let ignoreHTML = false; // was false always - do we need gMsgCompose.composeHTML ?
-		return getProcessedText(msg, idKey, composeType, ignoreHTML);
+		return await getProcessedText(msg, idKey, composeType, ignoreHTML);
 	};
 	
 	function findDirectChildById(parent, id) {
@@ -887,7 +888,7 @@ SmartTemplate4.classSmartTemplate = function() {
 						
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup, flags, fileTemplateSource)	{
+	async function insertTemplate(startup, flags, fileTemplateSource)	{
     
     if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
       alert("To do: insertTemplate() through background - [issue 184]\n"
@@ -933,7 +934,7 @@ SmartTemplate4.classSmartTemplate = function() {
       idKey = gMsgCompose.identity.key;
     }
 		let isActiveOnAccount = false,
-		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),  
+		    acctMgr = MailServices.accounts,  
         identitySource,
 		    theIdentity = acctMgr.getIdentity(idKey);
     
@@ -1066,7 +1067,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
         try {
           // get signature and remove the one Tb has inserted
-          SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+          SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
         }
         catch(ex) {
           SmartTemplate4.signature = "";
@@ -1076,7 +1077,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				if (flags.isThunderbirdTemplate) {
 					// use innerHTML instead of outer (we do not want to replace the "body" part)
 					// if %sig% variable is in Tb Template it is going to be expanded at this step.
-					template = getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
+					template = await getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
 					// need to empty out the innerHTML if we insert this to avoid duplication.
 					editor.rootElement.innerHTML="";
 				}
@@ -1090,14 +1091,14 @@ SmartTemplate4.classSmartTemplate = function() {
               flags.suppressQuoteHeaders = true;
             }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
-						template = getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
+						template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
 					}
 				  else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
-						template = getSmartTemplate(st4composeType, idKey);
+						template = await getSmartTemplate(st4composeType, idKey);
 					}
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
-					quoteHeader = getQuoteHeader(st4composeType, idKey);
+					quoteHeader = await getQuoteHeader(st4composeType, idKey);
 				}
         
         if (flags.suppressQuoteHeaders) {

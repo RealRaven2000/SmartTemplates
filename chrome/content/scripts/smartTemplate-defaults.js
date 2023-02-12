@@ -16,6 +16,7 @@ pref("extensions.smartTemplate4.signature.insertDashes.html", false);
 pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); // we might have removeBlockQuotedSig.always later as a feature!#
 pref("extensions.smartTemplate4.signature.replaceLF.plaintext.br", true);
 pref("extensions.smartTemplate4.cursor.insertSpace", true);
+pref("extensions.smartTemplate4.mime.resolveAB.CardBook", false); // CardBook support
 pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
@@ -69,6 +70,7 @@ pref("extensions.smartTemplate4.debug.functions.delForwardHeader", false);
 pref("extensions.smartTemplate4.debug.functions.insertTemplate", false);
 pref("extensions.smartTemplate4.debug.functions.extractSignature", false);
 pref("extensions.smartTemplate4.debug.functions.getProcessedText", false);
+pref("extensions.smartTemplate4.debug.adressbook", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);

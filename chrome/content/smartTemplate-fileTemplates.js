@@ -1218,7 +1218,7 @@ SmartTemplate4.fileTemplates = {
 		// are clicked.
 	} ,
 	
-  insertFileEntryInComposer: function (entry) {
+  insertFileEntryInComposer: async function (entry) {
     let theFileTemplate = entry;
     let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
@@ -1273,11 +1273,10 @@ SmartTemplate4.fileTemplates = {
       flags.isFileTemplate = true;
       if (!flags.filePaths) flags.filePaths = [];
       flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
-      //SmartTemplate4.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
       let idkey = SmartTemplate4.Util.getIdentityKey(document);
       const ignoreHTML = true;
       let code =  
-        SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
+        await SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
       gMsgCompose.editor.insertHTML(code); 
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       
