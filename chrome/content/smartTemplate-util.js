@@ -702,7 +702,8 @@ SmartTemplate4.Util = {
 			stack= ex.stack.replace("@","\n  ");
 
 		let srcName = ex.fileName ? ex.fileName : "";
-		this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
+		console.warn(aMessage, srcName, ex.stack ? ex.stack.replace("@","\n  ") : "", ex.lineNumber);
+		// this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
 	} ,
 
 	logDebug: function (msg) {
@@ -1007,6 +1008,16 @@ SmartTemplate4.Util = {
 		);
 		this.logDebug (errorText);
 	} ,
+
+	displayInvalidToken: function(reservedWord, params) {
+		let theToken = `%${reservedWord+params}%`;
+		console.warn("SmartTemplates - invalid token: " + theToken);
+		let errorText = SmartTemplate4.Util.getBundleString("tokenError", theToken);
+		SmartTemplate4.Message.display(errorText,
+			"centerscreen,titlebar",
+			{ ok: function() {  }}
+		);
+	},
 
 /**
 * Returns the week number for this date. dowOffset is the day of week the week

@@ -504,6 +504,7 @@
 			<preference name="extensions.smartTemplate4.mime.resolveAB.preferNick" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.resolveAB.displayName" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.resolveAB.removeEmail" type="bool" instantApply="true"/>
+			<preference name="extensions.smartTemplate4.mime.resolveAB.CardBook" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.names.capitalize" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.names.guessFromMail" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.defaultFormat" type="string" instantApply="true"/>
@@ -700,11 +701,13 @@
 										<checkbox id="chkResolveABDisplay"
 												 label="__MSG_resolveNamesFromABDisplay__"
 												 preference="extensions.smartTemplate4.mime.resolveAB.displayName"/>
-												 
 										<checkbox id="chkResolveABRemoveMail"
 												 label="__MSG_resolveABRemoveMail__"
 												 tooltiptext="This will hide the mail address when using plain %cc% etc. if address book entry was found."
 												 preference="extensions.smartTemplate4.mime.resolveAB.removeEmail"/>
+										<checkbox id="chkResolveABCardBook"
+												label="__MSG_resolveNamesFromCardBook__"
+												preference="extensions.smartTemplate4.mime.resolveAB.CardBook"/>
 										
 									</vbox>
 								</hbox>

@@ -736,6 +736,12 @@ SmartTemplate4.mimeDecoder = {
       // alternatively look at mail merge (not mail merge p) - it may do it in a different way
 
       var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook');
+      if (isCardBookAB) {
+        if (SmartTemplate4.Util.licenseInfo.status != "Valid" || SmartTemplate4.Util.licenseInfo.keyType == 2) {
+          isCardBookAB = false;
+          console.warn("SmartTemplates: Cardbook support requires a valid SmartTemplates Pro license to work!");
+        }
+      }
 
       if (isCardBookAB) {
         try {
@@ -1389,6 +1395,10 @@ SmartTemplate4.mimeDecoder = {
           part = getCardProperty(key);
         }
         else switch(key) {
+          case 'throw':
+            // throw an error
+            throw("Invalid formatting string: " + key);
+            break;
 					case 'initial':
 						while (addressElements.length>1) 
 							addressElements.pop();
@@ -2234,7 +2244,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         util.logException("classifyReservedWord(" + reservedWord + ")", ex);
         console.log(ex);
 				SmartTemplate4.Message.parentWindow = Services.wm.getMostRecentWindow("msgcompose");  // gMsgCompose.editor.document.defaultView;
-				util.displayNotAllowedMessage(reservedWord);
+				util.displayInvalidToken(reservedWord, param || "");
 				return "";
 			}
 		}

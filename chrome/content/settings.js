@@ -1516,6 +1516,8 @@ SmartTemplate4.Settings = {
         premiumConfig   = getElement('premiumConfig');
     premiumConfig.disabled = !isEnabled;
 		*/
+		document.getElementById("chkResolveABCardBook");
+		chkResolveABCardBook.disabled = !isEnabled;
   },
   
   showTrialDate: function() {
@@ -1588,11 +1590,13 @@ SmartTemplate4.Settings = {
       }
       switch(result) {
         case "Valid":
-          this.enablePremiumConfig(true);
-					if (SmartTemplate4.Util.licenseInfo.keyType==2) // standard license
+					if (SmartTemplate4.Util.licenseInfo.keyType==2) { // standard license
             showValidationMessage(validationStandard, silent);
-					else
+					}
+					else {
 						showValidationMessage(validationPassed, silent);
+						this.enablePremiumConfig(true);
+					}
           licenseDate.value = niceDate;
           licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.value = util.getBundleString("label.licenseValid");
