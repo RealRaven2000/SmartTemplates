@@ -1141,6 +1141,9 @@
   "resolveNamesFromAB_tip": {
     "message": "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。"
   },
+  "resolveNamesFromCardBook": {
+    "message": "CardBook (プロ機能) をサポート"
+  },
   "s.label": {
     "message": "秒 (00 から 59)"
   },
@@ -1588,6 +1591,14 @@
   },
   "tofwd.label": {
     "message": "転送メッセージの受信者の追加に fwd を使用する"
+  },
+  "tokenError": {
+    "message": "次のトークンでエラーが発生しました: $token$\nテンプレートの構文エラーを確認してください。 すべての変数は、設定ウィンドウに記載されています。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "元の受信者のメールアドレス"

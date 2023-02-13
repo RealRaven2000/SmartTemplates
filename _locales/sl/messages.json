@@ -1111,6 +1111,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Podpora CardBook (profesionalna funkcija)"
+  },
   "s.label": {
     "message": "Sekunde (00 do 59)"
   },
@@ -1561,6 +1564,14 @@
   },
   "tofwd.label": {
     "message": "Uporabite 'fwd', da v posredovano pošto dodate prejemnika, ki ga je mogoče klikniti"
+  },
+  "tokenError": {
+    "message": "Naslednji žeton je ustvaril napako: $token$\nProsimo, preverite, ali so v predlogi sintaksne napake. Vse spremenljivke so dokumentirane v oknu z nastavitvami.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "E-poštni naslov prvotnega prejemnika"

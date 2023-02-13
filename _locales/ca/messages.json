@@ -1147,6 +1147,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Aquesta funció no funciona amb determinades llibretes d'adreces remotes, com ara LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Suport CardBook (funció professional)"
+  },
   "s.label": {
     "message": "Segondas (00 a 59)"
   },
@@ -1594,6 +1597,14 @@
   },
   "tofwd.label": {
     "message": "Utilitzeu fwd per afegir el destinatari clicable als correus reenviats"
+  },
+  "tokenError": {
+    "message": "El testimoni següent ha generat un error: $token$\nSi us plau, comproveu si hi ha errors de sintaxi a la vostra plantilla. Totes les variables estan documentades a la finestra de configuració.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Adreça de correu electrònic del destinatari original"

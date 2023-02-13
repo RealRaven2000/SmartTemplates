@@ -1153,6 +1153,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Funkce nepracuje se vzdálenýma adresářema, jako LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Podpora CardBook (pro funkce)"
+  },
   "s.label": {
     "message": "Vteřina (00 až 59)"
   },
@@ -1597,6 +1600,14 @@
   },
   "tofwd.label": {
     "message": "Pomocí fwd přidejte příjemce, na který lze kliknout, do předávaných e-mailů"
+  },
+  "tokenError": {
+    "message": "Následující token vygeneroval chybu: $token$\nZkontrolujte prosím svou šablonu, zda neobsahuje chyby syntaxe. Všechny proměnné jsou zdokumentovány na obrazovce nastavení.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "E-mailová adresa původního příjemce"

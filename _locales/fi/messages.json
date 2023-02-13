@@ -1162,6 +1162,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Tuki CardBook (pro-ominaisuus)"
+  },
   "s.label": {
     "message": "Sekunti (00-59)"
   },
@@ -1615,6 +1618,14 @@
   },
   "tofwd.label": {
     "message": "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin"
+  },
+  "tokenError": {
+    "message": "Seuraava tunnus loi virheen: $token$\nTarkista mallissasi syntaksivirheitä. Kaikki muuttujat dokumentoidaan asetusikkunassa.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Alkuperäisen vastaanottajan sähköpostiosoite"

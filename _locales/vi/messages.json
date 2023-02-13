@@ -231,6 +231,14 @@
       }
     }
   },
+  "tokenError": {
+    "message": "Mã thông báo sau đã tạo ra lỗi: $token$\nVui lòng kiểm tra mẫu của bạn để biết lỗi Cú pháp. Tất cả các biến được ghi lại trên cửa sổ cài đặt.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "bản dịch do google cung cấp"

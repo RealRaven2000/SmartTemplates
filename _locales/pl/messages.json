@@ -1105,6 +1105,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. "
   },
+  "resolveNamesFromCardBook": {
+    "message": "Wsparcie CardBook (funkcja pro)"
+  },
   "s.label": {
     "message": "Sekunda (00 do 59)"
   },
@@ -1555,6 +1558,14 @@
   },
   "tofwd.label": {
     "message": "Użyj programu fwd, aby dodać klikalnego odbiorcę w przesłanych wiadomościach e-mail"
+  },
+  "tokenError": {
+    "message": "Następujący token wygenerował błąd: $token$\nSprawdź swój szablon pod kątem błędów składniowych. Wszystkie zmienne są udokumentowane w oknie ustawień.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Adres e-mail pierwotnego odbiorcy"

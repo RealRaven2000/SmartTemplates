@@ -1105,6 +1105,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "CardBook unterstützen (Pro-Feature)"
+  },
   "s.label": {
     "message": "Sekunden (00 bis 59)"
   },
@@ -1546,6 +1549,14 @@
   },
   "tofwd.label": {
     "message": "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen"
+  },
+  "tokenError": {
+    "message": "Das folgende Token hat einen Fehler generiert: $token$\nBitte überprüfen Sie Ihre Vorlage auf Syntaxfehler. Alle Variablen sind auf dem Einstellungsdialog dokumentiert.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "E-Mail-Adresse des ursprünglichen Empfängers"

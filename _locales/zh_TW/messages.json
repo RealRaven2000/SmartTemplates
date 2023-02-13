@@ -1144,6 +1144,9 @@
   "resolveNamesFromAB_tip": {
     "message": "此功能不適用於某些遠程通訊簿，例如 LDAP。"
   },
+  "resolveNamesFromCardBook": {
+    "message": "支持 CardBook（專業版功能）"
+  },
   "s.label": {
     "message": "秒 (00到59)"
   },
@@ -1582,6 +1585,14 @@
   },
   "tofwd.label": {
     "message": "使用 fwd 在轉發的郵件中添加可點擊的收件人"
+  },
+  "tokenError": {
+    "message": "以下令牌生成錯誤：$token$\n請檢查您的模板是否存在語法錯誤。 所有變量都記錄在設置窗口中。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "原始收件人的電子郵件地址"

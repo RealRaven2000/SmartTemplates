@@ -1102,6 +1102,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Deze functie werkt niet met bepaalde adresboeken op afstand, zoals LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Ondersteuning CardBook (pro-functie)"
+  },
   "s.label": {
     "message": "Seconde (00 tot 59)"
   },
@@ -1546,6 +1549,14 @@
   },
   "tofwd.label": {
     "message": "Gebruik fwd om een aanklikbare ontvanger in doorgestuurde e-mailberichten toe te voegen"
+  },
+  "tokenError": {
+    "message": "Het volgende token genereerde een fout: $token$\nControleer uw sjabloon op syntaxisfouten. Alle variabelen zijn gedocumenteerd in het instellingenvenster.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "E-mailadres van oorspronkelijke ontvanger"

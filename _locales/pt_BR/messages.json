@@ -1087,6 +1087,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Este recurso não funciona com certos catálogos de endereços, como LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Suporte CardBook (recurso profissional)"
+  },
   "s.label": {
     "message": "Segundo (00 a 59)"
   },
@@ -1532,7 +1535,15 @@
   "tofwd.label": {
     "message": "Usar \"fwd\" para adicionar o destinatário clicável nos emails encaminhados"
   },
-  "tomail.label": {
+  "tokenError": {
+    "message": "O token a seguir gerou um erro: $token$\nVerifique se há erros de sintaxe em seu modelo. Todas as variáveis são documentadas na janela de configurações.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
+"tomail.label": {
     "message": "Endereço de e-mail do destinatário original"
   },
   "toname.label": {

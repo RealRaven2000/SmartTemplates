@@ -1175,6 +1175,9 @@
   "resolveNamesFromAB_tip": {
     "message": "This feature does not work with certain remote address books, such as LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Support CardBook (pro feature)"
+  },
   "s.label": {
     "message": "Second (00 to 59)"
   },
@@ -1637,6 +1640,14 @@
   },
   "tofwd.label": {
     "message": "Use fwd to add the clickable recipient in forwarded mails"
+  },
+  "tokenError": {
+    "message": "The following token generated an error: $token$\nPlease check your template for Syntax errors. All variables are documented on the settings window.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Original Recipient's email address"

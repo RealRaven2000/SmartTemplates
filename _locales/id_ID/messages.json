@@ -849,6 +849,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Fitur ini tidak berfungsi dengan buku alamat remote tertentu, seperti LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Dukungan CardBook (fitur pro)"
+  },
   "s.label": {
     "message": "Detik (00 - 59)"
   },
@@ -1071,6 +1074,14 @@
   },
   "tofwd.label": {
     "message": "Gunakan fwd untuk menambahkan penerima yang dapat diklik dalam email yang diteruskan"
+  },
+  "tokenError": {
+    "message": "Token berikut menghasilkan kesalahan: $token$\nSilakan periksa template Anda untuk kesalahan Sintaks. Semua variabel didokumentasikan di jendela pengaturan.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Alamat email Penerima Asli"

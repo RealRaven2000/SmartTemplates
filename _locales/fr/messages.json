@@ -1159,6 +1159,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Prise en charge de CardBook (fonctionnalité pro)"
+  },
   "s.label": {
     "message": "Secondes (00 à 59)"
   },
@@ -1612,6 +1615,14 @@
   },
   "tofwd.label": {
     "message": "Utiliser « transférer » pour ajouter un destinataire cliquable dans les courriels transférés"
+  },
+  "tokenError": {
+    "message": "Le jeton suivant a généré une erreur : $token$\nVeuillez vérifier votre modèle pour les erreurs de syntaxe. Toutes les variables sont documentées dans la fenêtre des paramètres.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Adresse e-mail du destinataire d'origine"

@@ -1153,6 +1153,9 @@
   "resolveNamesFromAB_tip": {
     "message": "此功能不能与某些远程通讯录协同工作，例如 LDAP。"
   },
+  "resolveNamesFromCardBook": {
+    "message": "支持 CardBook（专业版功能）"
+  },
   "s.label": {
     "message": "第二 (00 至 59)"
   },
@@ -1600,6 +1603,14 @@
   },
   "tofwd.label": {
     "message": "使用 fwd 在转发邮件中添加可点击收件人"
+  },
+  "tokenError": {
+    "message": "以下令牌生成错误：$token$\n请检查您的模板是否存在语法错误。 所有变量都记录在设置窗口中。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "原始收件人的电子邮件地址"

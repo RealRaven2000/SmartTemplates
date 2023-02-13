@@ -1159,6 +1159,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Denna funktioner fungerar inte med vissa fjärradressböcker, som LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Support CardBook (pro-funktion)"
+  },
   "s.label": {
     "message": "Sekund (00 till 59)"
   },
@@ -1618,6 +1621,14 @@
   },
   "tofwd.label": {
     "message": "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden"
+  },
+  "tokenError": {
+    "message": "Följande token genererade ett fel: $token$\nKontrollera din mall för syntaxfel. Alla variabler dokumenteras i inställningsfönstret.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Originalmottagarens e-postadress"

@@ -1075,6 +1075,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Supporto CardBook (funzionalità pro)"
+  },
   "s.label": {
     "message": "Secondo (00 a 59)"
   },
@@ -1522,6 +1525,14 @@
   },
   "tofwd.label": {
     "message": "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate"
+  },
+  "tokenError": {
+    "message": "Il seguente token ha generato un errore: $token$\nControlla il tuo modello per errori di sintassi. Tutte le variabili sono documentate nella finestra delle impostazioni.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Indirizzo email del destinatario originale"

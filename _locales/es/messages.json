@@ -1120,6 +1120,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Esta funcionalidad no funciona con algunas agendas remotas como LDAP"
   },
+  "resolveNamesFromCardBook": {
+    "message": "Compatibilidad con CardBook (función profesional)"
+  },
   "s.label": {
     "message": "Segundo (00 a 59)"
   },
@@ -1564,6 +1567,14 @@
   },
   "tofwd.label": {
     "message": "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados"
+  },
+  "tokenError": {
+    "message": "El siguiente token generó un error: $token$\nPor favor revise su plantilla para ver si hay errores de sintaxis. Todas las variables están documentadas en la ventana de configuración.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
   },
   "tomail.label": {
     "message": "Dirección de correo electrónico del destinatario original"

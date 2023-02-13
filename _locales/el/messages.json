@@ -1162,6 +1162,9 @@
   "resolveNamesFromAB_tip": {
     "message": "Αυτή η δυνατότητα δεν λειτουργεί με ορισμένα απομακρυσμένα βιβλία διευθύνσεων, όπως το LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Υποστήριξη CardBook (pro χαρακτηριστικό γνώρισμα)"
+  },
   "s.label": {
     "message": "Δευτερόλεπτο (00 ως 59)"
   },
