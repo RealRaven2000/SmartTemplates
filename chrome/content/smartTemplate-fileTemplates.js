@@ -1272,6 +1272,7 @@ SmartTemplate4.fileTemplates = {
     else {
       flags.isFileTemplate = true;
       if (!flags.filePaths) flags.filePaths = [];
+      util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`);
       flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
       let idkey = SmartTemplate4.Util.getIdentityKey(document);
       const ignoreHTML = true;
@@ -1280,7 +1281,9 @@ SmartTemplate4.fileTemplates = {
       gMsgCompose.editor.insertHTML(code); 
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       
-      flags.filePaths.pop();
+      let popped = flags.filePaths.pop();
+      util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Removed file from template stack: ${popped}`);
+
     }    
   } ,
   

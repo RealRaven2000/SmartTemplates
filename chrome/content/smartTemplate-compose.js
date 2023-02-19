@@ -289,6 +289,7 @@ SmartTemplate4.classSmartTemplate = function() {
       let pathArray = flags.filePaths;
       // if this has a path - put it on the stack so we can process %file()% variables within
       if (isSignatureTb && sigPath)
+				util.logDebugOptional("fileTemplates", `extractSignature: Add sig file to template stack: ${sigPath}`);
         pathArray.push(sigPath);
 			try {
 				sigText = await getProcessedText(sigText, idKey, composeType, true);
@@ -296,8 +297,12 @@ SmartTemplate4.classSmartTemplate = function() {
 			catch(ex) {
 				util.logException(ex, "getProcessedText(signature) failed.");
 			}
-      if (isSignatureTb && sigPath)
-        pathArray.pop();
+      if (isSignatureTb && sigPath) {
+        let last = pathArray.pop();
+				if (last) {
+					util.logDebugOptional("fileTemplates", `extractSignature: Removed file from template stack: ${last}`);
+				}
+			}
 		}
 
 		let dashesTxt = 

@@ -3023,7 +3023,6 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           return "";
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
-					// return finalize(token, expand("%H%:%M%:%S%"));
           return finalize(token, await expand("%H%:%M%:%S%"));
 				case "y":                               // Year 13... (2digits)
 				case "Y":                               // Year 1970...
@@ -3213,7 +3212,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             parsedContent =  await SmartTemplate4.smartTemplate.getProcessedText(fileContents, idkey, composeType, true);
           }
           // if a path was added in the meantime, we can now pop it off the stack.
-          if (pL<pathArray.length) pathArray.pop(); 
+          if (pL<pathArray.length) {
+            let popped = pathArray.pop(); 
+            util.logDebugOptional("fileTemplates", `replaceReservedWord: Removed file from template stack: ${popped}`);
+          }
           return parsedContent;
         case "basepath":
           return insertBasePath(removeParentheses(arg));
@@ -3440,13 +3442,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
         "\n flags.isFileTemplate = " + flags.isFileTemplate +
         "\n template path = " + currentPath || '?');
-      let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
+      let pathParts = path.includes("\\") ? path.split("\\") :  path.split("/");
       if (isFU) {
         // if (prefs.isDebugOption("fileTemplates")) debugger;
         try {
           // on Mac systems nsIDirectoryService key may NOT be empty!
           // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-          if (!FileUtils.getFile("Home", pathArray, false)) {
+          if (!FileUtils.getFile("Home", pathParts, false)) {
             util.logDebug("Cannot find file. Trying to append to path of template.");
           }
         }
@@ -3454,8 +3456,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           // new code for path of template - failed on Rob's Mac as unknown.
           // I think this is only set when a template is opened from the submenus!
           if (flags.isFileTemplate && currentPath) {
-            let slash = newPath.includes("/") ? "/" : "\\",
-                pathArray = newPath.split(slash);
+            // let slash = newPath.includes("/") ? "/" : "\\",
+            //     pathArray = newPath.split(slash);
             try {
               let ff = new FileUtils.File(newPath);
               if (!ff.exists()){
@@ -3557,8 +3559,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             // prepare for using relative paths from here...
             // assume we are within a template, to make matching subsequent relative paths possible.
             // should work for using %file(template.html)% in a SmartTemplate.
-            if (!flags.filePaths) 
+            if (!flags.filePaths) {
               flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+            }
+            util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}`);
             flags.filePaths.push(path);
           }
           break;

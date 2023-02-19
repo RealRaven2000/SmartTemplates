@@ -398,7 +398,7 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to add template message
   // -------------------------------------------------------------------
-  notifyComposeBodyReady: function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
+  notifyComposeBodyReady: async function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util,
           Ci = Components.interfaces,
@@ -500,6 +500,7 @@ var SmartTemplate4 = {
       else {
         flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) flags.filePaths = [];
+        util.logDebugOptional("fileTemplates", `notifyComposeBodyReady: Add file to template stack: ${theFileTemplate.path}`);
         flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
         /**********      GLOBAL VARIABLE!!! - SCOPED TO COMPOSER WINDOW      **********/
         // [issue 64] memorize the file template path in Composer! So we can change from address and reload it.
@@ -562,12 +563,13 @@ var SmartTemplate4 = {
             } , win
           );    
           if (cancelled) {
-            flags.filePaths.pop();
+            let popped = flags.filePaths.pop();
+            util.logDebugOptional("fileTemplates", `notifyComposeBodyReady: [cancelled] Removed file from template stack: ${popped}`);
             return;
           }
         }
         flags.isChangeTemplate = isChangeTemplate;
-        this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
+        await this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
         // store a flag in the document
         // [issue 108] Other Add-ons may accidentally duplicate template if they set from identity
         // root.setAttribute("smartTemplateInserted","true"); <== moved into the insertTemplate function!
