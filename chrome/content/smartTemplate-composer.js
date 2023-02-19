@@ -197,7 +197,7 @@ SmartTemplate4.composer = {
     // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
   
-  selectSnippetFromMenu: function(element) {
+  selectSnippetFromMenu: async function(element) {
     let isHandled = false;
     if (!SmartTemplate4.fileTemplates.armedEntry || !SmartTemplate4.fileTemplates.armedEntry.path) {
       if (element && element.id == "smarttemplate4-insertSnippet") {
@@ -213,7 +213,7 @@ SmartTemplate4.composer = {
         
     }
     else {
-      SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
+      await SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
     }
   },
   

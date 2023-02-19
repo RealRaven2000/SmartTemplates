@@ -2790,9 +2790,10 @@ SmartTemplate4.Util = {
           return "";
         });
         return Promise.all(values).then(function (resolvedValues) {
-          return String.prototype.replace.call(string, searchValue, function () {
+					let s = String.prototype.replace.call(string, searchValue, function () {
             return resolvedValues.shift();
           });
+					return s;
         });
       } else {
         return Promise.resolve(

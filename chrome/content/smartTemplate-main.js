@@ -644,7 +644,7 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: async function loadIdentity(startup, previousIdentity) {
+  loadIdentity: async function (startup, previousIdentity) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;

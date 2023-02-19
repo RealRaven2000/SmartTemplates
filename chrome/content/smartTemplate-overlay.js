@@ -3778,7 +3778,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     
     //process javascript insertions first, so the javascript source is not broken by the remaining processing
     //but cannot insert result now, or it would be double html escaped, so insert them later
-    msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
+    if (SmartTemplate4.Preferences.getBoolPref("sandbox")) {
+      // THIS NEEDS TO BECOME ASYNC. 
+      // NOT SURE IF POSSIBLE BECAUSE OF call to Cu.evalInSandbox  !!
+      msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
+    }
+    
   }
 	
 	/*  deprecating bs code. */
