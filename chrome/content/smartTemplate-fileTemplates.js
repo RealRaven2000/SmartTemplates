@@ -638,7 +638,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					
-					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
+					SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
 					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event, singleParentWindow); 
@@ -1272,7 +1272,7 @@ SmartTemplate4.fileTemplates = {
     else {
       flags.isFileTemplate = true;
       if (!flags.filePaths) flags.filePaths = [];
-      util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`);
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`);
       flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
       let idkey = SmartTemplate4.Util.getIdentityKey(document);
       const ignoreHTML = true;
@@ -1282,7 +1282,7 @@ SmartTemplate4.fileTemplates = {
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       
       let popped = flags.filePaths.pop();
-      util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Removed file from template stack: ${popped}`);
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Removed file from template stack: ${popped}`);
 
     }    
   } ,
@@ -1404,10 +1404,7 @@ SmartTemplate4.fileTemplates = {
 			}
 		}						
 					
-		const { FileUtils } = 
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
+		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 				
 		try {
 			// code from template-disk.jsm readHTMLTemplateFile()
