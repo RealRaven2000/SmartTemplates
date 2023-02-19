@@ -2204,8 +2204,10 @@ export class Parser {
               // prepare for using relative paths from here...
               // assume we are within a template, to make matching subsequent relative paths possible.
               // should work for using %file(template.html)% in a SmartTemplate.
-              if (!flags.filePaths) 
+              if (!flags.filePaths) {
                 flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+              }
+              Util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}`);
               flags.filePaths.push(path);
             }
             break;
