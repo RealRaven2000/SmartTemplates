@@ -698,11 +698,15 @@ SmartTemplate4.Util = {
 
 	logException: function (aMessage, ex) {
 		let stack = '';
-		if (typeof ex.stack!='undefined')
-			stack= ex.stack.replace("@","\n  ");
+		if (typeof ex.stack!='undefined') {
+			stack = ex.stack.replace("@","\n  ");
+		}
 
 		let srcName = ex.fileName ? ex.fileName : "";
-		console.warn(aMessage, srcName, ex.stack ? ex.stack.replace("@","\n  ") : "", ex.lineNumber);
+		console.warn(aMessage + "\n", 
+		  `${srcName}:${ex.lineNumber}`, 
+			`\n${ex.message}\n`, 
+			ex.stack ? ex.stack.replace("@","\n  ") : "", );
 		// this.logError(aMessage + "\n" + ex.message, srcName, stack, ex.lineNumber, 0, 0x1); // use warning flag, as this is an exception we caught ourselves
 	} ,
 
@@ -1382,7 +1386,7 @@ SmartTemplate4.Util = {
 	// HTML only:
 	// headers that are currently not defined may be filled later.
 	// e.g. adding a To address when writing a new email
-	wrapDeferredHeader : function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
+	wrapDeferredHeader : async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
 		
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util;
@@ -1399,8 +1403,12 @@ SmartTemplate4.Util = {
 			
 		// Add variables in "Write" window to standard features!
 		field = field.replace(/%/g,'');
+
+		let parensPos = field.indexOf('('),
+		    generalFunction = (parensPos==-1) ? field : field.substr(0,parensPos);	
+
 		let tag = "<smarttemplate" +
-					 " hdr='" + field + "'" +
+					 " hdr='" + generalFunction + "'" +
 					 " st4variable='" + field + "'" +
 					 " title='" + field + "'" +
 					 newComposeClass + 
@@ -1444,22 +1452,19 @@ SmartTemplate4.Util = {
 	} ,
   
 	
-	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
+	
+	cleanupDeferredFields : async function cleanupDeferredFields(forceDelete) {
 		const util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
           
   	function isQuotedNode(node) {
-      if (!node)
-        return false;
-      if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote')
-        return true;
-      if (!node.parentNode) return false;
-      // make this recursive; if the node is child of a quoted parent, it is also considered to be quoted.
-      return isQuotedNode(node.parentNode); 
+      if (!node) return false;
+      if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote') return true;
+      if (!node.parentNode) return false;      
+      return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
     };
           
 		let body = editor.rootElement,
-		    el = body,
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
 				nodeList = [];
         
@@ -1471,7 +1476,7 @@ SmartTemplate4.Util = {
       if (isQuotedNode(node)) continue;
 			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
         // update content of late deferred variables and add to nodeList for deletion
-				util.resolveDeferred(editor, node, true, nodeList); 
+				await util.resolveDeferred(editor, node, true, nodeList); 
 			}
 		}	
 		
@@ -1487,7 +1492,7 @@ SmartTemplate4.Util = {
 		}
 	} ,
 	
-	resolveDeferred: function st4_resolveDeferred(editor, el, isReplaceField, nodeList) {
+	resolveDeferred: async function (editor, el, isReplaceField, nodeList) {
 		const util = SmartTemplate4.Util,
 		      Ci = Components.interfaces,
 		      Cc = Components.classes;
@@ -1533,19 +1538,18 @@ SmartTemplate4.Util = {
 					case 'cc':    // fall through
 					case 'bcc':
             
-						let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-								charset = null,
-								addressValue; // messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).Charset;
+						let charset = null,
+								addressValue;
 						
-						if(generalFunction=='from')
+						if (generalFunction=='from') {
 							addressValue = composeDetails[generalFunction];
-						else {
+						} else {
               // should be a comma separated string in case of multiple to / cc / bcc values
               addressValue = composeDetails[generalFunction];
 						}
 						
 						if (addressValue) {
-							let token = SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
+							let token = await SmartTemplate4.mimeDecoder.split(addressValue, charset, argList[2], true);
 							// if nothing is returned by mime decoder (e.g. empty name) we do not resolve the variable
 							if (token || isReplaceField) {
 								el.innerHTML = token; // [issue 186] - mimeDecoder already HTML encodes?
@@ -1599,6 +1603,56 @@ SmartTemplate4.Util = {
 		}
 	} ,
 	
+  // memorize all deferred fields <smarttemplate> of a type
+	storeModifiedHeaders:  function(flags, type) {
+		if (!flags.modifiedHeaders.some(e => e == type)) {
+			flags.modifiedHeaders.push(type);
+		}
+	},
+	// Find  remember them to update their values once Editor is ready!
+	resolveDeferredBatch: async function(editor) {
+		// iterate all smartTemplates fields
+		let body = editor.rootElement,
+				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
+
+		function isQuotedNode(node) {
+			if (!node) return false;
+			if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote') return true;
+			if (!node.parentNode) return false;      
+			return isQuotedNode(node.parentNode); //  if node is child of a quoted parent, it is also considered to be quoted.
+		};
+
+		if (SmartTemplate4.Preferences.getMyBoolPref("deferred.autoUpdate")) {
+			try {
+				// let compType = SmartTemplate4.Util.getComposeType(); // do we need to know whether new or rsp/fwd case?
+				while(treeWalker.nextNode()) {
+					let node = treeWalker.currentNode;
+					// omit all quoted material.
+					if (isQuotedNode(node)) continue;
+					if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+						let hdr = node.getAttribute("hdr"); // this is the general function
+
+						// the following variables are replaced during resolveDeferred()
+						if (hdr=="identity") hdr = "from"; // perspective should always match, even when we reply / fwd!
+						if (hdr=="recipient") hdr = "to";
+
+						let v = node.getAttribute("st4variable");
+						if (hdr && SmartTemplate4.PreprocessingFlags.modifiedHeaders.some((e) => e == hdr) ) {
+							SmartTemplate4.Util.logDebug(`Modified Header found. Updating deferred variable ${hdr}\nst4 var = ${v}`);
+							// update content of late deferred variables and add to nodeList for deletion
+							await SmartTemplate4.Util.resolveDeferred(editor, node, false); 
+						}
+					}
+				}
+			}
+			catch(ex) {
+				SmartTemplate4.logException("resolveDeferredBatch() failed ", ex);
+			}
+		}
+		SmartTemplate4.PreprocessingFlags = []; // reset the array
+	},
+
+
 	// add listeners for deferred variables (e.g. "from" in New Email)
 	setupDeferredListeners: function st4_setupDeferredListeners(editor) {
 		const util = SmartTemplate4.Util;
@@ -1613,8 +1667,8 @@ SmartTemplate4.Util = {
 				// add a click handler
 				node.addEventListener(
 					"click", 
-					function(event) { 
-						util.resolveDeferred(editor, event.target, false); 
+					async function(event) { 
+						await util.resolveDeferred(editor, event.target, false); 
 						return false; 
 					}, 
 					false

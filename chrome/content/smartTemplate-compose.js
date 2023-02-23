@@ -1707,6 +1707,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		
 		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
+
+		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
 		resetDocument(gMsgCompose.editor, startup);
 		
 		// no license => show license notification.

@@ -1,6 +1,7 @@
 /* global settings */
 pref("extensions.smartTemplate4.sandbox", false); // disable sandboxed java
 pref("extensions.smartTemplate4.firstRun", true);
+pref("extensions.smartTemplate4.deferred.autoUpdate", true);
 pref("extensions.smartTemplate4.hasNews", false);
 pref("extensions.smartTemplate4.version", "?");
 pref("extensions.smartTemplate4.breaksAtTop", 0);

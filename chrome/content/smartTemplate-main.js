@@ -221,6 +221,8 @@ END LICENSE BLOCK
     #                              nsIStringBundleService, nsIXULAppInfo, nsIMsgComposeService, nsIConsoleService, nsIVersionComparator,
     #                              nsIXULRuntime
     # [issue 50] Add CardBook support [WIP]
+    # [issue 226] Automatically update deferred fields for headers that have been modified / set by template (header.set)
+
     
 
 =========================
@@ -258,7 +260,8 @@ var SmartTemplate4 = {
     hasTemplatePlaceHolder: false,  // future use
     isStationery: false,
     isThunderbirdTemplate: false,
-    isFileTemplate: false
+    isFileTemplate: false,
+    modifiedHeaders: [] // list of header vars that may have received new content; need to be updated in deferredVars
   },
   
   initFlags : function initFlags(flags) {
@@ -272,6 +275,7 @@ var SmartTemplate4 = {
     flags.hasTemplatePlaceHolder = false;
     flags.isThunderbirdTemplate = false;
     flags.isFileTemplate = false;
+    flags.modifiedHeaders = [];
   } ,
 
   stateListener: {

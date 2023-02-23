@@ -27,8 +27,9 @@ SmartTemplate4.composer = {
           uri = ios.newURI("chrome://SmartTemplate4/content/skin/compose-overlay.css", null, null);
           
     // for some reason this affects the 3pane window, too
-    if(!sss.sheetRegistered(uri, sss.USER_SHEET))
-      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);    
+    if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
+      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+    }
     
     // <<**********
     

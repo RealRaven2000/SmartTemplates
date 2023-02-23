@@ -2148,12 +2148,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         Cc = Components.classes,
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
-        prefs = SmartTemplate4.Preferences;
+        prefs = SmartTemplate4.Preferences,
+        mimeDecoder = this.mimeDecoder;
 				
 	// make sure to use the licenser from main window, to save time.
   // [issue 150] removed nag screen
 				
-	function getSubject(current) {
+	async function getSubject(current) {
 		if (prefs.isDebugOption("tokens.deferred")) debugger;
 		util.logDebugOptional('regularize', 'getSubject(' + current + ')');
 		let subject = '';
@@ -2163,10 +2164,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		}
 		else {
 			
-			subject = mime.decode(hdr.get("subject"), charset);
+			subject = mimeDecoder.decode(hdr.get("subject"), charset);
       
 			if (gMsgCompose.type == 0 && !subject) { // hdr.composeType=="new"
-				subject = util.wrapDeferredHeader("subject", subject, gMsgCompose.composeHTML);
+				subject = await util.wrapDeferredHeader("subject", subject, gMsgCompose.composeHTML);
 				util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
 			}
 			return subject;
@@ -2206,7 +2207,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (addressHdr && param && param.length>2) {  // includes parameters e.g. (firstname)
             util.logDebugOptional('regularize','check whether ' + reservedWord + ' ' + param + ' returns content...');
             let charset = gMsgCompose.compFields.characterSet,
-                headerValue = await mime.split(addressHdr, charset, param);
+                headerValue = await mimeDecoder.split(addressHdr, charset, param);
             if (!headerValue) {
               util.logDebugOptional('regularize','This %' + reservedWord + '% variable returned nothing.');
               addressHdr = "";
@@ -2231,7 +2232,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 							s = str;
 						}
 						else
-							s = util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+							s = await util.wrapDeferredHeader(str, el, gMsgCompose.composeHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
 						util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
 					}
 				}
@@ -2292,9 +2293,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	// var parent = SmartTemplate4;
 	let idkey = util.getIdentityKey(document),
 	    identity = MailServices.accounts.getIdentity(idkey),
-	    messenger = Cc["@mozilla.org/messenger;1"]
-					 .createInstance(Ci.nsIMessenger),
-	    mime = this.mimeDecoder;
+	    messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+
 
   // THIS FAILS IF MAIL IS OPENED FROM EML FILE:
   let msgDbHdr = null,
@@ -2571,6 +2571,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     async function modifyHeader(hdrField, cmd, argString, matchFunction="") {
       const whiteList = ["subject","to","from","cc","bcc","reply-to","priority","message-id"],
             ComposeFields = gMsgCompose.compFields;
+
+      let whatWasModified = "", isDataModified = false;
 						
 			if (prefs.isDebugOption('headers')) debugger;			
 			util.addUsedPremiumFunction('header.' + cmd);
@@ -2730,12 +2732,15 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         
         // set
         // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/NsIMsgCompFields
+        whatWasModified = hdrField;
+        isDataModified = (targetString.length) ? true : false;
         switch (hdrField) {
           case 'subject':
 					  // replace newline characters with spaces and trim result!
 					  let subjectString = targetString.replace(new RegExp("[\t\r\n]+", 'g'), " ").trim();
             document.getElementById("msgSubject").value = subjectString;
             ComposeFields.subject = subjectString;
+            isDataModified = (subjectString.length) ? true : false;
             break;
           case 'to':
             ComposeFields.to = targetString;
@@ -2753,6 +2758,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             ComposeFields.replyTo = targetString;
             break;
 					case 'priority':
+            isDataModified = false;
 					  const validVals = ["Highest", "High", "Normal", "Low", "Lowest"];
 						let found = validVals.find(f => f.toLowerCase() == argument);
 						if (found) {
@@ -2765,15 +2771,17 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 								util.logException('set priority ', ex);
 							}
 						}
-						else 
+						else {
 							util.logDebug("Invalid Priority: '" + targetString + "'\n" 
 						    + "Must be one of [" + validVals.join() +  "]");
+            }
 						
 					  break;
           case "message-id":
             ComposeFields.messageId = targetString;
             break;
           default:
+            whatWasModified = "";
             if (isClobberHeader) {
               if (targetString) {
                 util.logDebug("Adding clobbered header [" + hdrField + "] =" + targetString);
@@ -2838,6 +2846,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           
           CompFields2Recipients(ComposeFields);
+        }
+        if (whatWasModified && isDataModified ) {
+          // remember to update these elements when editor is ready.
+          util.storeModifiedHeaders(SmartTemplate4.PreprocessingFlags, whatWasModified); 
         }
       }
       catch(ex) {
@@ -2974,10 +2986,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             token = ""; // no deferred variable, just remove the variable silently
           }
           else {
-            if (dateFormatSent)
+            if (dateFormatSent) {
               token = defaultTime;
-            else {
-              token = util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+            } else {
+              token = await util.wrapDeferredHeader(token + arg, defaultTime,  gMsgCompose.composeHTML, (util.getComposeType()=='new'));
             }
           }
 					return token; 
@@ -3121,7 +3133,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 					return retVal;
 				case "subject":
 					let current = (arg=="(2)"),
-					    ret = getSubject(current);
+					    ret = await getSubject(current);
 					if (!current)
 						ret = SmartTemplate4.escapeHtml(ret);
 					return finalize(token, ret);
@@ -3229,7 +3241,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               (isAB) ? identity.email :
               identity.fullName + ' <' + identity.email + '>';
             // we need the split to support (name,link) etc.
-            token = await mime.split(fullId, charset, arg, true); // disable charsets decoding!
+            token = await mimeDecoder.split(fullId, charset, arg, true); // disable charsets decoding!
             
             if(isAB && !token) { 
               // let's put in a placeholder so we can delete superfluous [[ lines ]] 
@@ -3331,7 +3343,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             if (util.checkIsURLencoded(dmy))
               return dmy; // this is HTML: we won't escape it.
 							
-            token = util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
+            token = await util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
 						return token; 
 					}
 					// <----  early exit for non existent headers, e.g. "from" in Write case
@@ -3351,8 +3363,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 						}
 					}
 					let headerValue = isStripQuote ?
-					    await mime.split(theHeader, charset, arg) :
-							mime.decode(theHeader, charset);
+					    await mimeDecoder.split(theHeader, charset, arg) :
+							mimeDecoder.decode(theHeader, charset);
           if (!headerValue && util.isAddressHeader(token)) {
             let newTok = '<span class=st4optional args="' + arg + '" empty="true" />';
             return newTok;
@@ -3382,7 +3394,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			util.logException('replaceReservedWords(dmy, ' + token + ', ' + arg +') failed - unknown token?', ex);
 			if (util.checkIsURLencoded(dmy))
         return dmy;
-			token = util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
+			token = await util.wrapDeferredHeader(token + arg, "??", gMsgCompose.composeHTML);
       return token;
 		}
     
