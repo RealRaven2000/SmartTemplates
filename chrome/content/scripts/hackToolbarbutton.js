@@ -44,30 +44,38 @@ var hackToolbarbutton = {
     if (!button) 
       return null;
 
+
+
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
       let origCommand = button.getAttribute("command");
       
       button.setAttribute("is", "toolbarbutton-menu-button");
-      button.setAttribute("type", "menu-button");
-      button.setAttribute("wantdropmarker", "true");
 
-      button.appendChild(window.MozXULElement.parseXULToFragment(
-      `<toolbarbutton
-            id="${buttonId}-inner-button"
-            class="box-inherit toolbarbutton-menubutton-button" 
-            flex="1" 
-            allowevents="true"
-            command="${origCommand}"
-            label="${origLabel}"/>`));    
+      // fix dropdowns working in Tb110
+      let isTb110 = (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "110"));
+      let menuType = isTb110 ? "menu" : "menu-button";
+      // hack the button, unless it already is:
+      if (button.getAttribute("type") != menuType || !isTb110) {
+        button.setAttribute("type", menuType);
+        button.setAttribute("wantdropmarker", "true");
+        button.appendChild(window.MozXULElement.parseXULToFragment(
+        `<toolbarbutton
+              id="${buttonId}-inner-button"
+              class="box-inherit toolbarbutton-menubutton-button" 
+              flex="1" 
+              allowevents="true"
+              command="${origCommand}"
+              label="${origLabel}"/>`));    
 
-      button.appendChild(window.MozXULElement.parseXULToFragment(
-      `<dropmarker 
-            type="menu-button"
-            class="toolbarbutton-menubutton-dropmarker"/>`));
-      
-      button.querySelector("label").hidden = true;
-      button.querySelector("image").hidden = true;
+        button.appendChild(window.MozXULElement.parseXULToFragment(
+        `<dropmarker 
+              type="menu-button"
+              class="toolbarbutton-menubutton-dropmarker"/>`));
+        
+        button.querySelector("label").hidden = true;
+        button.querySelector("image").hidden = true;
+      }
     } 
 
     // check if we need to add popup

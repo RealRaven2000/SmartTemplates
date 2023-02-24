@@ -843,62 +843,11 @@ SmartTemplate4.fileTemplates = {
         return true;
       return false;
     }
-    // obsolete workaround (now replaced with TbSync's hackToolbarbutton script)
-    // use a fake parent button for inserting
-    // if we pass original btn, check if it is already a toolbarbuttion-menu-button and thus already has a menu
-    function insertMenuTb78(popupId, btnId, originalBtn = null) {
-      let theMsgPopup = document.getElementById(popupId),
-          originalPopup = null;
-      try {
-        if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
-          if (originalBtn && originalBtn.getAttribute("is")=="toolbarbutton-menu-button") {
-            // already have a menu, find matching childElement
-            for (let m of originalBtn.childNodes) {
-              if (m.tagName == 'menupopup') {
-                // originalPopup = m;
-                return m; // return original popup
-                break;
-              }
-            }
-          }
-          
-          let btn = document.getElementById(btnId);
-          if (btn) {
-            theMsgPopup = SmartTemplate4.fileTemplates.getPopup(btn.id); 
-            // TEST TEST TB78
-            if (theMsgPopup.id) debugger;
-            if (theMsgPopup && !theMsgPopup.id) {
-              theMsgPopup.id = popupId;
-              btn.type = "menu-button";
-              // attach the menupopup
-              btn.appendChild(theMsgPopup);
-              //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
-              
-              // hide the main button, add negative margin using te class STfakePopupBtn:
-              btn.firstChild.classList.add("STfakePopupBtn");
-            }
-            let originId = btn.getAttribute("insertafter");
-            originalBtn = document.getElementById(originId);
-          }
-          // only show if the "original button" actually exists / is shown on toolbar.
-          if (originalBtn) {
-            btn.hidden = originalBtn.hidden || false;
-            // btn.setAttribute("hidden", originalBtn.getAttribute("hidden"));
-            // move to the correct position!
-            originalBtn.parentNode.insertBefore(btn, originalBtn.nextSibling);
-            // btn
-          }
-        }
-      }
-      catch(ex) {
-        util.logException("insertMenuTb78(" + popupId + ", " + btnId + ")", ex);
-      }
-      return theMsgPopup;
-    }
-        
+
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
+
 		if (toolbar) {
 			// load current template list
 			const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
