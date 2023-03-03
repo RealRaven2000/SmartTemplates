@@ -1107,6 +1107,7 @@ SmartTemplate4.mimeDecoder = {
                   else if (isvCard) {
                     // card.vCardProperties.entries.filter( e=>e.name=="impp");
                     let results = cardObj.vCardJson[1].filter(e => e[0]=="impp"); // [ [ "impp", {}, "uri", "protocol:chatId" ] ...]
+                                  // card.vCardProperties.getAllEntries("impp")
                     if (results && subType) {
                       results = results.filter(e=>e[3].startsWith(subType));
                     }
@@ -1162,7 +1163,7 @@ SmartTemplate4.mimeDecoder = {
                     // card.vCardProperties.entries.filter( e=>e.name=="org");
                   if (ar && ar.length) {
                     try {
-                      return ar[0]; 
+                      return ar[3][0]; 
                     } catch(ex) {return "";}
                   }
                 }
@@ -1175,7 +1176,7 @@ SmartTemplate4.mimeDecoder = {
                     (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="org") : null);
                   if (ar && ar.length>=2) {
                     try {
-                      return ar[1];
+                      return ar[3][1];
                     } catch(ex) {return "";}
                   }
                 }
@@ -1243,24 +1244,33 @@ SmartTemplate4.mimeDecoder = {
                       adType = "PREF";
                       break;
                   }
-                  let result = isCardBook ?
-                    card.url.find(e=>e[1].includes(`TYPE=${adType}`)) :
-                    (isvCard ? 
-                      (  cardObj.vCardJson[1].find(e => e[0]=="url" && 
-                           (adType=="PREF" || e[1].type == adType.toLowerCase()))
-                      ) : null
-                    );
-                    // vCard has no default, return 1st entry found instead.
-                    /*
-                    card.vCardProperties.entries.find( e=>e.name=="url" && e.params 
-                      && (e.params.type==adType.toLowerCase() || adType=="PREF" )); */  
                   if (isCardBook) {
-                    return result[0].join(", ");
+                    let result = card.url.find(e=>e[1].includes(`TYPE=${adType}`));
+                    if (result && result.length) {
+                      return result[0].join(", ");
+                    }
                   }
-                  else if (result) { 
+                  else if (isvCard) {
+                    let results = cardObj.vCardJson[1].filter(e => e[0]=="url" && e[1].type && e[1].type == adType.toLowerCase());
+                    //  card.vCardProperties.getAllEntries("url").filter(e=>e.params.type==adType.toLowerCase())
+                    /*
+                        card.vCardProperties.entries.find( e=>e.name=="url" && e.params 
+                          && (e.params.type==adType.toLowerCase() || adType=="PREF" )); */  
+
+                    if (results && !results.length && adType=="PREF") {
+                      // vCard has no default, return 1st entry found instead.
+                      results = cardObj.vCardJson[1].filter(e => e[0]=="url");
+                    }
+                    let list = [];
                     // [ "url", {…}, "uri", "https://quickfolders.org" ]
-                    return result[3] 
-                  }; 
+                    for (let e of results) {
+                      let ar = e[3]; // .value;
+                      if (ar) {
+                        list.push(ar);
+                      }
+                    }
+                    return list.join(", ");
+                  }
                 }
                 break;  
             }
@@ -1713,10 +1723,17 @@ SmartTemplate4.mimeDecoder = {
 					// e.g. %from(name,bracketMail(??- {,}))%
 					// Name - {email}
 					// then hide the brackets and only show email.
-					if (addressElements.length==1 && aElement.bracketsOptional)
-						addressField += aElement.part; // omit brackets if this is the only bracketed Expression returned
-					else
-						addressField += aElement.bracketLeft + aElement.part + aElement.bracketRight;
+          let partString = "";
+          if (Array.isArray(aElement.part)) {
+            partString = aElement.part.join("<br>"); // address1 (idx=2) can have multiple entries!
+          } else {
+            partString = aElement.part;
+          }
+					if (addressElements.length==1 && aElement.bracketsOptional) {
+						addressField += partString; // omit brackets if this is the only bracketed Expression returned
+          } else {
+            addressField += aElement.bracketLeft + partString + aElement.bracketRight;
+          }
         }
 			}
       
