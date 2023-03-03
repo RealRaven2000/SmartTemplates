@@ -285,8 +285,13 @@ b {
 .help ul.contact_switches li {
   font-family: Consolas, monaco, monospace;
   font-size: 10pt;
+  font-weight: bold;
 	margin: 5px 0 0 15px !important;
 	color:  rgb(128,0,0) !important;
+}
+.help ul.contact_switches li a.cardbook {
+  font-weight: normal;
+	color:  rgb(80,80,80) !important;
 }
 
 .help table.ab_fields * {

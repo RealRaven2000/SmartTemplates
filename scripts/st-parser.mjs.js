@@ -1139,7 +1139,7 @@ export class Parser {
         if (composeDetails.type=="new" && !subject) {
           // gMsgCompose.composeHTML
           const isHTMLMode = !composeDetails.isPlainText; 
-          subject = Util.wrapDeferredHeader("subject", subject, isHTMLMode);
+          subject = await Util.wrapDeferredHeader("subject", subject, isHTMLMode);
           Util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
         }
         return subject;
@@ -1205,7 +1205,7 @@ export class Parser {
                 let isHTML = !composeDetails.isPlainText;
                 if (isHTML)
                   flags.hasDeferredVars = true;  // SmartTemplate4.hasDeferredVars
-                s = Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+                s = await Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
               }
               Util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
             }
@@ -1658,7 +1658,7 @@ export class Parser {
             if (dateFormatSent)
               token = defaultTime;
             else
-              token = Util.wrapDeferredHeader(token + arg, defaultTime, !composeDetails.isPlainText, (composeType=='new'));
+              token = await Util.wrapDeferredHeader(token + arg, defaultTime, !composeDetails.isPlainText, (composeType=='new'));
             return token; 
           case "datelocal":
           case "dateshort":
@@ -1998,7 +1998,7 @@ export class Parser {
               if (Util.checkIsURLencoded(dmy))
                 return dmy; // this is HTML: we won't escape it.
                 
-              token = Util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), !composeDetails.isPlainText, (composeType=='new'));
+              token = await Util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), !composeDetails.isPlainText, (composeType=='new'));
               return token; 
             }
             // <----  early exit for non existent headers, e.g. "from" in Write case
@@ -2036,7 +2036,7 @@ export class Parser {
         Util.logIssue184("replaceReservedWords - (exception)");
         if (Util.checkIsURLencoded(dmy))
           return dmy;
-        token = Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
+        token = await Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
         return token;
       }
       return escapeHtml(token);

@@ -681,7 +681,8 @@ SmartTemplate4.mimeDecoder = {
       ['private.state', "HomeState"],
       ['private.country', "HomeCountry"],
       ['private.zipcode', "HomeZipCode"],
-      ['work.title', "JobTitle"],
+      ['private.pobox', "HomePOBox"],
+      ['private.webpage', "WebPage2"],
       ['work.department', "Department"],
       ['work.organization', "Company"],
       ['work.address1', "WorkAddress"],
@@ -691,6 +692,10 @@ SmartTemplate4.mimeDecoder = {
       ['work.country', "WorkCountry"],
       ['work.zipcode', "WorkZipCode"],          
       ['work.webpage', "WebPage1"],
+      ['webpage', "WebPage1"],   // default webpage!
+      ['work.pobox', "WorkPOBox"],
+      ['work.title', "Jobtitle"],
+      ['work.role', ""],
       ['other.custom1', "Custom1"],
       ['other.custom2', "Custom2"],
       ['other.custom3', "Custom3"],
@@ -725,6 +730,7 @@ SmartTemplate4.mimeDecoder = {
       }
       return '';
     };
+
     async function getCardFromAB(mail) {
       if (!mail) return null;
       // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
@@ -750,13 +756,14 @@ SmartTemplate4.mimeDecoder = {
           if (card) {
             // return first result (for now)
             if (card.length) { 
-              return card[0]; 
+              return { card : card[0]}; 
             }
           }
         }
         catch(ex) {
           SmartTemplate4.Util.logException("cardbook.getContactsFromMail function  failed", ex);
           // will fall back to standard AB
+          return null;
         }
       }
 
@@ -782,8 +789,11 @@ SmartTemplate4.mimeDecoder = {
           // alert ("Directory Name:" + addressBook.dirName);
           try {
             let card = addressBook.cardForEmailAddress(mail);
-            if (card)
-              return card;
+            if (card) {
+              let jCal = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "parseVcard", vCard: card.vCardProperties.toVCard()});
+              console.log(jCal);
+              return {card: card, vCardJson: jCal};
+            }
           }
           catch(ex) {
             util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
@@ -931,7 +941,8 @@ SmartTemplate4.mimeDecoder = {
         address,
         bracketMailParams = getBracketAddressArgs(format, 'Mail'),
         bracketNameParams = getBracketAddressArgs(format, 'Name'),
-        card;
+        card,
+        cardObj; // will hold card and vCard json structure if vCard could be retrieved & parsed from Thunderbird
 
     function getPhoneProperty(card, phoneType, isCardBook) {
       let result;
@@ -944,8 +955,14 @@ SmartTemplate4.mimeDecoder = {
 
         }
         else {
-          result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type==phoneType);
-          if (result) return result.value;
+          // use cardObj.vCardJson
+          let records = cardObj.vCardJson[1].filter(e => e[0]=="tel" && e[1].type==phoneType);
+          if (records && records.length) {
+            return records[0][3]; // array with 4 members ["tel", {type:"work"}, "text", "087 123 456 789"]
+          }
+          // vCard parsing  - DON'T !!
+          // result = card.vCardProperties.entries.find( e=>e.name=="tel" && e.params.type==phoneType);
+          // if (result) return result.value;
         }        
       }
       catch(ex) {
@@ -963,7 +980,7 @@ SmartTemplate4.mimeDecoder = {
       let legacyKey = mapLegacyCardStruct.get(p);
       let cardbookKey = mapCardBook.get(p);
       try {
-        if (card.getProperty) {
+        if (card.getProperty && legacyKey) {
           r = card.getProperty(legacyKey,"");
         } else if (isCardBook) { // cardbook
           r = card[cardbookKey];
@@ -977,17 +994,30 @@ SmartTemplate4.mimeDecoder = {
           // see https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm#463
           let name, paramsType;
           let addrArray;
+          let isvCard = (cardObj && cardObj.vCardJson);
           if (p.startsWith("work.")) {
-            addrArray =
-              isCardBook ?
-              card.adr.find(e=>e[1].includes("TYPE=WORK")) :
-              card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="work").value;
+            if (isCardBook) {
+              addrArray = card.adr.find(e=>e[1].includes("TYPE=WORK"));
+            }
+            else if (isvCard) {
+              // card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="work").value;
+              let arA = cardObj.vCardJson[1].filter(e => e[0]=="adr" && e[1].type=="work");
+              if (arA && arA.length) {
+                addrArray = arA[0][3]; 
+              }
+            }
           }
           if (p.startsWith("private.")) {
-            addrArray = 
-              isCardBook ?
-              card.adr.find(e=>e[1].includes("TYPE=HOME")) :
-              card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="home").value;
+            if (isCardBook) {
+              addrArray = card.adr.find(e=>e[1].includes("TYPE=HOME"));
+            }
+            else if (isvCard) {
+              // card.vCardProperties.entries.find( e=>e.name=="adr" && e.params.type=="home").value;
+              let arA = cardObj.vCardJson[1].filter(e => e[0]=="adr" && e[1].type=="home");
+              if (arA && arA.length) {
+                addrArray = arA[0][3]; 
+              }
+            }
           }
           if (addrArray) {
             if (isDebugAB) {
@@ -1022,19 +1052,32 @@ SmartTemplate4.mimeDecoder = {
             }
           }
           if (!r) {
+            let subType = "";
+            if (p.startsWith("chatname")) {
+              let terms = p.split(".");
+              if (terms.length>1) {
+                subType = terms[1]; // chat protocol
+                p = terms[0];
+              }
+
+            }
             switch(p) {
               case "additionalmail":
                 {
                   let result = 
                     isCardBook ?
                     card.email.find(e=>e[1].length==0) : // not Array [ "PREF=1", "TYPE=work" ] but empty!
-                    card.vCardProperties.entries.find( e=>e.name=="email" && e.params.type==undefined);
+                    (isvCard ? cardObj.vCardJson[1].filter(e => e[0]=="email" && !e[1].type) : null);
+                    //card.vCardProperties.entries.find( e=>e.name=="email" && e.params.type==undefined);
                   if (result) {
                     if (isCardBook) {
                       if (result.length) return result[0].join(","); // this is still an array
                       return "";
                     }
-                    else return result.value;
+                    else {
+                      if (result.length)
+                      return result[0][3]; //  [ "email", { }, "text", "email address" ]
+                    }
                   }
                 }
                 break;
@@ -1043,23 +1086,39 @@ SmartTemplate4.mimeDecoder = {
                   if (isCardBook) {
                     return card.nickname;
                   }
-                  let result = card.vCardProperties.entries.find( e=>e.name=="nickname");
-                  if (result) return result.value;
+                  else if (isvCard) {
+                    // card.vCardProperties.entries.find( e=>e.name=="nickname");
+                    let result = cardObj.vCardJson[1].find(e => e[0]=="nickname"); // [ "nickname", {}, "text", "tbdaily" ]
+                    if (result && result.length) return result[3];
+                  }
                 }
                 break;
               case "chatname":
                 {
                   if (isCardBook) {
                     let elements = card.impp.filter(e=>e[0].length>0);
-                    let result = [];
+                    let results = [];
                     for (let e of elements) {
-                      result.push(e[0].toString()); // first element = chatname
+                      let ar = e[0].filter(el=>el.startsWith(subType)); // first element = chatname
+                      results.push(...ar); // spread for multiple results
                     }
-                    return result.join(",");
+                    return results.join(", ");
                   }
-                  let result = 
-                    card.vCardProperties.entries.find( e=>e.name=="impp");
-                  if (result) return result.value;
+                  else if (isvCard) {
+                    // card.vCardProperties.entries.filter( e=>e.name=="impp");
+                    let results = cardObj.vCardJson[1].filter(e => e[0]=="impp"); // [ [ "impp", {}, "uri", "protocol:chatId" ] ...]
+                    if (results && subType) {
+                      results = results.filter(e=>e[3].startsWith(subType));
+                    }
+                    
+                    if (results && results.length) {
+                      if (subType) {
+                        return results[0][3];
+                      }
+                      return results[0][3]; // array of arrays: concat them all?
+                    }
+ 
+                  }
                 }
                 break;
               case "workphone":
@@ -1099,12 +1158,11 @@ SmartTemplate4.mimeDecoder = {
                   let ar =
                     isCardBook ?
                     card.org.split(";") :
-                    card.vCardProperties.entries.filter( e=>e.name=="org");
+                    (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="org") : null);
+                    // card.vCardProperties.entries.filter( e=>e.name=="org");
                   if (ar && ar.length) {
                     try {
-                      return isCardBook ?
-                        ar[0] :
-                        ar[0].value[0];
+                      return ar[0]; 
                     } catch(ex) {return "";}
                   }
                 }
@@ -1114,13 +1172,23 @@ SmartTemplate4.mimeDecoder = {
                   let ar =
                     isCardBook ?
                     card.org.split(";") :
-                    card.vCardProperties.entries.filter( e=>e.name=="org");
-                  if (ar && ar.length) {
+                    (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="org") : null);
+                  if (ar && ar.length>=2) {
                     try {
-                      return isCardBook ?
-                        ar[1] :
-                        ar[0].value[1];
+                      return ar[1];
                     } catch(ex) {return "";}
+                  }
+                }
+                break;
+              case "work.role":
+                {
+                  let ar = 
+                    isCardBook ?
+                      card.role : 
+                      (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="role") : null);           
+                  if (ar && ar.length) {
+                    if (isvCard) { return ar[3]; }
+                    if (isCardBook) { return ar; } // string
                   }
                 }
                 break;
@@ -1128,35 +1196,73 @@ SmartTemplate4.mimeDecoder = {
                 { 
                   let ar =
                     isCardBook ?
-                    card.org.split(";") :
-                    card.vCardProperties.entries.filter( e=>e.name=="title");
+                    card.title :
+                    (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="title") : null);
                   if (ar && ar.length) {
                     try {
-                      if (isCardBook) {
-                        return ar[2];
-                      }
-                      else {
-                        let result = ar.find(p=>p.type=="text");
-                        if (result) {
-                          return result.value;
-                        }
-                      }
-                    } catch(ex) {return "";}
-
+                      if (isvCard) { return ar[3]; }
+                      if (isCardBook) { return ar; } // string
+                    } 
+                    catch(ex) {return "";}
                   }
                 }
                 break;
+              case "other.notes": // Notes
+                {
+                  let ar =
+                    isCardBook ?
+                    card.note :
+                    (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="note") : null);
+                    if (ar && ar.length) {
+                      try {
+                        let notes;
+                        if (isvCard) { notes = ar[3]; }
+                        if (isCardBook) { notes = ar; } // string
+                        return notes.replaceAll("\n","<br>");
+                      } 
+                      catch(ex) {
+                        return "";
+                      }
+                    }                  
+                }
+                break;
+  
+              case "webpage": // default one!
+              case "private.webpage": // "WebPage2" - fall through
               case "work.webpage": // "WebPage1"
                 { 
-                  let result = isCardBook ?
-                    card.url.find(e=>e[1].toString()=="TYPE=WORK") :
-                    card.vCardProperties.entries.filter( e=>e.name=="url" && e.type=="work");
-                  if (isCardBook) {
-                    return result[0].toString();
+                  let adType;
+                  switch(p.split(".")[0]) {
+                    case "work":
+                      adType = "WORK";
+                      break;
+                    case "private":
+                      adType = "HOME";
+                      break;
+                    default:
+                      adType = "PREF";
+                      break;
                   }
-                  else if (result) return result.value;
+                  let result = isCardBook ?
+                    card.url.find(e=>e[1].includes(`TYPE=${adType}`)) :
+                    (isvCard ? 
+                      (  cardObj.vCardJson[1].find(e => e[0]=="url" && 
+                           (adType=="PREF" || e[1].type == adType.toLowerCase()))
+                      ) : null
+                    );
+                    // vCard has no default, return 1st entry found instead.
+                    /*
+                    card.vCardProperties.entries.find( e=>e.name=="url" && e.params 
+                      && (e.params.type==adType.toLowerCase() || adType=="PREF" )); */  
+                  if (isCardBook) {
+                    return result[0].join(", ");
+                  }
+                  else if (result) { 
+                    // [ "url", {…}, "uri", "https://quickfolders.org" ]
+                    return result[3] 
+                  }; 
                 }
-                break;              
+                break;  
             }
           }
           // loader.loadSubScript("chrome://cardbook/content/cardbookUtils.jsm", cardbookRepository);
@@ -1169,7 +1275,8 @@ SmartTemplate4.mimeDecoder = {
               let ar = 
                 isCardBook ?
                 card.others.filter(e=>e.includes(p2.toUpperCase())) :
-                card.vCardProperties.entries.filter(e=>e.name==p2);
+                cardObj.vCardJson[1].find(e => e[0]==p2);
+                // card.vCardProperties.entries.filter(e=>e.name==p2);
               if (isCardBook) {
                 let s = ar.toString().split(";").find(e=>e.startsWith("VALUE")); // VALUE=TEXT:something
                 if (s) {
@@ -1180,8 +1287,8 @@ SmartTemplate4.mimeDecoder = {
                 }
               }
               else {
-                if (ar && ar.length) {
-                  return ar[0].value;
+                if (ar && ar.length>=4) {
+                  return ar[3];
                 }
               }
             }
@@ -1237,8 +1344,8 @@ SmartTemplate4.mimeDecoder = {
       // [Bug 25643] get name from Addressbook
       emailAddress = getEmailAddress(address); // get this always
       const isResolveNamesAB = isForceAB || prefs.getMyBoolPref('mime.resolveAB');
-      card = await getCardFromAB(emailAddress);
-			
+      cardObj = await getCardFromAB(emailAddress); // also retrieve vCard structure [vCardJson]
+      card = cardObj ? cardObj.card : null; // defined further above as global variable of split()
           
 			
       // determine name part (left of email)
@@ -1391,7 +1498,8 @@ SmartTemplate4.mimeDecoder = {
 				}
         
         let key = partKeyWord.toLowerCase();
-        if (mapLegacyCardStruct.has(key)) {
+         
+        if (mapLegacyCardStruct.has(key) || key.startsWith("chatname.")) {  // allow wildcard here. clunky.
           part = getCardProperty(key);
         }
         else switch(key) {
@@ -2452,6 +2560,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       try {
       if ((token.includes("</a>"))    // does token contain HTML link or encoded < >?
         ||
+        (token.includes("<br>")) // allow new line replacements
+        ||
         (token.includes("&lt;"))
         ||
         (token.includes("&gt;"))
@@ -3398,6 +3508,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       return token;
 		}
     
+    if (arg=="other.notes") { // allow html in notes field - (should be caught by escapeHTML)
+      return token;
+    }
 		return SmartTemplate4.escapeHtml(token);
 	} // end of replaceReservedWords  (longest add-on function written ever)
 	

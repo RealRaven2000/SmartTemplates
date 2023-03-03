@@ -246,6 +246,15 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
 
+      case "parseVcard" :
+        {
+          // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
+          // Get JSON representation of the vCard data (jCal).
+          let dataString = data.vCard;
+          return ICAL.parse(dataString);
+        }
+        
+
       case "cardbook.getContactsFromMail":
         try {
           let queryObject = {

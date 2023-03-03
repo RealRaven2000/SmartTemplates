@@ -137,7 +137,7 @@ export let Util = {
 	// HTML only:
 	// headers that are currently not defined may be filled later.
 	// e.g. adding a To address when writing a new email
-	wrapDeferredHeader : function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
+	wrapDeferredHeader : async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
 		if (Preferences.isDebugOption("tokens.deferred")) debugger;
 		
 		let newComposeClass = isComposeNew ? " class='noWrite'" : ""; /* make field look pink for headers that are not available in New Emails */
@@ -151,8 +151,11 @@ export let Util = {
 			
 		// Add variables in "Write" window to standard features!
 		field = field.replace(/%/g,'');
+		let parensPos = field.indexOf('('),
+		    generalFunction = (parensPos==-1) ? field : field.substr(0,parensPos);
+				
 		let tag = "<smarttemplate" +
-					 " hdr='" + field + "'" +
+					 " hdr='" + generalFunction + "'" +
 					 " st4variable='" + field + "'" +
 					 " title='" + field + "'" +
 					 newComposeClass + 
