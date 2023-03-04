@@ -1162,6 +1162,9 @@
   "resolveNamesFromCardBook": {
     "message": "Prise en charge de CardBook (fonctionnalité pro)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utiliser le carnet d'adresses standard si aucun contact n'est trouvé"
+  },
   "s.label": {
     "message": "Secondes (00 à 59)"
   },
@@ -1695,7 +1698,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Correctif de maintenance mineur pour la recherche de texte dans l'onglet des variables.{P2} {L1}Ajout d'une recherche vers l'arrière dans la fenêtre des variables - appuyez sur {{Shift}} + {{F3}} pour rechercher le texte en remontant.{L2}{L1}Ajout d'une liste d'attributs HTML facultatifs à la variable d'image {{%file()%}}. [issue 216]{L2}{L1}Correction d'un problème avec le commutateur {{addressbook}}. Ajout également de la prise en charge du nouveau format vCard. [issue 217]{L2}"
+    "message": "{L1}Ajout de la prise en charge de CardBook pour les utilisateurs de SmartTemplates Pro. Il peut être activé dans les paramètres avancés.{L2} {L1}Paramètre de filtre ajouté au commutateur {{chatname}}, par exemple : {{%from(chatname.skype)%}}.{L2} {L1}Le correcteur orthographique est maintenant activé par la commande {{%spellcheck()%}} - même si désactivé dans les paramètres de composition{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

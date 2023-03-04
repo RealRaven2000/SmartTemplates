@@ -852,6 +852,9 @@
   "resolveNamesFromCardBook": {
     "message": "Dukungan CardBook (fitur pro)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Gunakan buku alamat standar jika tidak ada kontak yang ditemukan"
+  },
   "s.label": {
     "message": "Detik (00 - 59)"
   },

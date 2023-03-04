@@ -193,8 +193,9 @@ SmartTemplate4.composer = {
         );
       }
     }
-    else
+    else {
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
+    }
     // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
   
@@ -208,9 +209,10 @@ SmartTemplate4.composer = {
           isHandled = true;
         }
       }
-      if (!isHandled)        
+      if (!isHandled) {    
         SmartTemplate4.Util.popupAlert("SmartTemplates", 
           "An error occured with the selected file. Either it can't be found or there was a problem accessing it.");
+      }
         
     }
     else {

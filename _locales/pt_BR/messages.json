@@ -1090,6 +1090,9 @@
   "resolveNamesFromCardBook": {
     "message": "Suporte CardBook (recurso profissional)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Use o catálogo de endereços padrão se nenhum contato for encontrado"
+  },
   "s.label": {
     "message": "Segundo (00 a 59)"
   },

@@ -1078,6 +1078,9 @@
   "resolveNamesFromCardBook": {
     "message": "Supporto CardBook (funzionalità pro)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utilizzare la rubrica standard se non viene trovato alcun contatto"
+  },
   "s.label": {
     "message": "Secondo (00 a 59)"
   },
@@ -1602,7 +1605,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Correzione di manutenzione minore per la ricerca di testo nella scheda delle variabili.{P2} {L1}Aggiunta la ricerca all'indietro nella finestra delle variabili: premi {{Maiusc}} + {{F3}} per cercare il testo che sale.{L2}{L1}Aggiunto elenco di attributi HTML facoltativi alla variabile immagine {{%file()%}}. [issue 216]{L2}{L1}Risolto un problema con l'interruttore {{addressbook}}. Aggiunto anche il supporto per il nuovo formato vCard. [issue 217]{L2}"
+    "message": "{L1}Aggiunto il supporto CardBook per gli utenti SmartTemplates Pro. Può essere abilitato nelle impostazioni avanzate.{L2} {L1}Aggiunto parametro filtro all'opzione {{chatname}}, ad esempio: {{%from(chatname.skype)%}}.{L2} {L1}Il correttore ortografico ora è attivato dal comando {{%spellcheck()%}} - anche se disattivato nelle impostazioni di composizione{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

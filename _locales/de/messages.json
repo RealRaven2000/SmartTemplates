@@ -1108,6 +1108,9 @@
   "resolveNamesFromCardBook": {
     "message": "CardBook unterstützen (Pro-Feature)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Standardadressbuch nutzen, wenn kein Kontakt gefunden wird"
+  },
   "s.label": {
     "message": "Sekunden (00 bis 59)"
   },
@@ -1622,7 +1625,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Kleine Wartungskorrektur für die Textsuche im Variablen-Tab.{P2} {L1}Verbesserungen im Suchfeld im Variablenfenster - Rückwärts suchen mit {{Umschalt}} + {{F3}} .{L2} {L1}Liste optionaler HTML-Attribute zur Bildvariablen hinzugefügt {{%file()%}}. [issue 216]{L2}{L1}Problem mit Schalter {{addressbook}} behoben. Ebenfalls hinzugefügt: Unterstützung für neues vCard-Format. [issue 217] {L2}"
+    "message": "{L1}CardBook-Unterstützung für SmartTemplates Pro-Benutzer hinzugefügt. Sie kann in den erweiterten Einstellungen aktiviert werden.{L2} {L1}Filterparameter zum Schalter {{chatname}} hinzugefügt, zB: {{%from(chatname.skype)%}}.{L2} {L1}Die Rechtschreibprüfung ist jetzt verfügbar aktiviert durch den Befehl {{%spellcheck()%}} - auch wenn dies in den Kompositionseinstellungen ausgeschaltet ist{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -1147,6 +1147,9 @@
   "resolveNamesFromCardBook": {
     "message": "支持 CardBook（專業版功能）"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "如果找不到聯繫人，請使用標準地址簿"
+  },
   "s.label": {
     "message": "秒 (00到59)"
   },
@@ -1659,7 +1662,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 變量選項卡中文本搜索的小維護修復。{P2} {L1}在變量窗口中添加了向後搜索 - 按 {{Shift}} + {{F3}} 向上搜索文本。{L2}{L1}向圖像變量添加可選 HTML 屬性列表 {{%file()%}} 。 [issue 216]{L2}{L1}修復了 {{addressbook}} 開關的問題。 還添加了對新 vCard 格式的支持。 [issue 217]{L2}"
+    "message": "{L1}為 SmartTemplates Pro 用戶添加 CardBook 支持。 它可以在高級設置中啟用。{L2} {L1}向 {{chatname}} 開關添加過濾器參數，例如：{{%from(chatname.skype)%}}。{L2} {L1}現在拼寫檢查器 由 {{%spellcheck()%}} 命令激活 - 即使在組合設置中關閉{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

@@ -1123,6 +1123,9 @@
   "resolveNamesFromCardBook": {
     "message": "Suporte CardBook (recurso profissional)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Use o catálogo de endereços padrão se nenhum contato for encontrado"
+  },
   "s.label": {
     "message": "Segundo (00 a 59)"
   },
@@ -1641,7 +1644,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Pequena correção de manutenção para pesquisa de texto na guia de variáveis.{P2} {L1}Adicionada pesquisa reversa na janela de variáveis - pressione {{Shift}} + {{F3}} para pesquisar o texto subindo.{L2}{L1}Adicionada lista de atributos HTML opcionais à variável de imagem {{%file()%}}. [issue 216]{L2}{L1}Corrigido um problema com a chave {{addressbook}}. Também adicionou suporte para o novo formato vCard. [issue 217]{L2}"
+    "message": "{L1}Adicionado suporte CardBook para usuários do SmartTemplates Pro. Ele pode ser ativado em configurações avançadas.{L2} {L1}Parâmetro de filtro adicionado à chave {{chatname}}, por exemplo: {{%from(chatname.skype)%}}.{L2} {L1}O corretor ortográfico agora é ativado pelo comando {{%spellcheck()%}} - mesmo se desativado nas configurações de composição{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

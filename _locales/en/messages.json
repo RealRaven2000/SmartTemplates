@@ -1178,6 +1178,9 @@
   "resolveNamesFromCardBook": {
     "message": "Support CardBook (pro feature)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Try standard address book if no contact is found"
+  },
   "s.label": {
     "message": "Second (00 to 59)"
   },
@@ -1720,7 +1723,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Minor maintenance fix for text search in variables tab.{P2}{L1}Added backwards search in variables window - press {{Shift}} + {{F3}} to search text going up.{L2}{L1}Added list of optional HTML attributes to image variable {{%file()%}} [issue 216].{L2}{L1}Fixed a problem with {{addressbook}} switch. Also added support for the new vCard format. [issue 217]{L2}"
+    "message": "{L1}Added CardBook support for SmartTemplates Pro users. It can be enabled in advanced settings.{L2} {L1}Added filter parameter to {{chatname}} switch, eg: {{%from(chatname.skype)%}}.{L2} {L1}The spellchecker is now activated by the {{%spellcheck()%}} command - even if the turned of in composition settings{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

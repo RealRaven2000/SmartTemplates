@@ -19,6 +19,7 @@ pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); 
 pref("extensions.smartTemplate4.signature.replaceLF.plaintext.br", true);
 pref("extensions.smartTemplate4.cursor.insertSpace", true);
 pref("extensions.smartTemplate4.mime.resolveAB.CardBook", false); // CardBook support
+pref("extensions.smartTemplate4.mime.resolveAB.CardBook.fallback", false); // Fallback to standard AB
 pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);

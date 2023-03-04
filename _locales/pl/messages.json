@@ -1108,6 +1108,9 @@
   "resolveNamesFromCardBook": {
     "message": "Wsparcie CardBook (funkcja pro)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Użyj standardowej książki adresowej, jeśli nie zostanie znaleziony żaden kontakt"
+  },
   "s.label": {
     "message": "Sekunda (00 do 59)"
   },
@@ -1638,7 +1641,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Drobna poprawka konserwacyjna wyszukiwania tekstu na karcie zmiennych.{P2} {L1}Dodano wyszukiwanie wstecz w oknie zmiennych - naciśnij {{Shift}} + {{F3}}, aby wyszukać tekst w górę.{L2}{L1}Dodano listę opcjonalnych atrybutów HTML do zmiennej obrazu {{%file()%}}. [issue 216]{L2}{L1}Naprawiono problem z przełącznikiem {{addressbook}}. Dodano także obsługę nowego formatu vCard. [issue 217] {L2}"
+    "message": "{L1}Dodano obsługę CardBook dla użytkowników SmartTemplates Pro. Można go włączyć w ustawieniach zaawansowanych.{L2} {L1}Dodano parametr filtra do przełącznika {{chatname}}, np.: {{%from(chatname.skype)%}}.{L2} {L1}Sprawdzanie pisowni jest teraz aktywowane poleceniem {{%spellcheck()%}} - nawet jeśli wyłączone w ustawieniach składu{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

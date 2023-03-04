@@ -222,6 +222,9 @@ END LICENSE BLOCK
     #                              nsIXULRuntime
     # [issue 50] Add CardBook support [WIP]
     # [issue 226] Automatically update deferred fields for headers that have been modified / set by template (header.set)
+    # use ical.js library to parse various vCard formats
+    # (see https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html)
+    # Show license buttons on the "menu restrictions" dialog message
 
     
 

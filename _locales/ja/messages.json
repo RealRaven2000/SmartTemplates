@@ -1144,6 +1144,9 @@
   "resolveNamesFromCardBook": {
     "message": "CardBook (プロ機能) をサポート"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "連絡先が見つからない場合は、標準のアドレス帳を使用する"
+  },
   "s.label": {
     "message": "秒 (00 から 59)"
   },
@@ -1671,7 +1674,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 変数タブでのテキスト検索のマイナー メンテナンス修正{P2} {L1}変数ウィンドウに後方検索を追加 - {{Shift}} + {{F3}} を押すと、テキストを上方向に検索できます。{L2}{L1}オプションの HTML 属性のリストを画像変数に追加しました {{%file()%}}。 [issue 216]{L2}{L1}{{addressbook}} スイッチの問題を修正しました。 新しい vCard フォーマットのサポートも追加されました。 [issue 217]{L2}"
+    "message": "{L1}SmartTemplates Pro ユーザー向けに CardBook のサポートを追加しました。 詳細設定で有効にすることができます。{L2} {L1}フィルター パラメーターを {{chatname}} スイッチに追加しました。例: {{%from(chatname.skype)%}}。{L2} {L1}スペルチェッカーは現在 {{%spellcheck()%}} コマンドで有効化 - コンポジション設定で無効にしても{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

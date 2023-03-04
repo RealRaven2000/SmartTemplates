@@ -1156,6 +1156,9 @@
   "resolveNamesFromCardBook": {
     "message": "Podpora CardBook (pro funkce)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Pokud není nalezen žádný kontakt, použijte výchozí adresář"
+  },
   "s.label": {
     "message": "Vteřina (00 až 59)"
   },
@@ -1677,7 +1680,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Drobná oprava údržby pro textové vyhledávání na kartě proměnné.{P2}{L1}Přidáno zpětné vyhledávání v okně proměnných – stisknutím kláves {{Shift}} + {{F3}} prohledejte text směrem nahoru.{L2}{L1}Přidán seznam volitelných atributů HTML do obrazové proměnné {{%file()%}}. [issue 216]{101} L2}{L1}Opraven problém s přepínačem {{addressbook}}. Také přidána podpora pro nový formát vCard. [issue 217]{L2}"
+    "message": "{L1}Byla přidána podpora CardBook pro uživatele SmartTemplates Pro. Lze ji aktivovat v pokročilých nastaveních.{L2} {L1}Do přepínače {{chatname}} byl přidán parametr filtru, např.: {{%from(chatname.skype)%}}.{L2} {L1}Kontrola pravopisu je nyní aktivuje se příkazem {{%spellcheck()%}} – i když je v nastavení kompozice vypnuto{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

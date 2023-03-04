@@ -1150,6 +1150,9 @@
   "resolveNamesFromCardBook": {
     "message": "Suport CardBook (funció professional)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utilitzeu la llibreta d'adreces predeterminada si no es troba cap contacte"
+  },
   "s.label": {
     "message": "Segondas (00 a 59)"
   },
@@ -1677,7 +1680,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Correcció de manteniment menor per a la cerca de text a la pestanya de variables.{P2}{L1}S'ha afegit una cerca cap enrere a la finestra de variables: premeu {{Majús}} + {{F3}} per cercar el text que puja.{L2}{L1}S'ha afegit una llista d'atributs HTML opcionals a la variable d'imatge {{%file()%}} [issue 216].{L2}{L1}S'ha solucionat un problema amb l'interruptor {{addressbook}}. També s'ha afegit suport per al nou format vCard. [issue 217]{L2}"
+    "message": "{L1}S'ha afegit compatibilitat amb CardBook per als usuaris de SmartTemplates Pro. Es pot activar a la configuració avançada.{L2} {L1}S'ha afegit un paràmetre de filtre a l'interruptor {{chatname}}, per exemple: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortogràfic és ara activat per l'ordre {{%spellcheck()%}}, fins i tot si s'ha desactivat a la configuració de la composició{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

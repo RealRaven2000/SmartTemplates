@@ -1105,6 +1105,9 @@
   "resolveNamesFromCardBook": {
     "message": "Ondersteuning CardBook (pro-functie)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Gebruik standaard adresboek als er geen contact is gevonden"
+  },
   "s.label": {
     "message": "Seconde (00 tot 59)"
   },
@@ -1620,7 +1623,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Kleine onderhoudsreparatie voor het zoeken naar tekst in het tabblad Variabelen.{P2} {L1}Achterwaarts zoeken toegevoegd in venster met variabelen - druk op {{Shift}} + {{F3}} om tekst omhoog te zoeken.{L2}{L1}Lijst met optionele HTML-attributen toegevoegd aan afbeeldingsvariabele {{%file()%}}. [issue 216]{L2}{L1}Probleem opgelost met schakelaar {{addressbook}}. Ook ondersteuning toegevoegd voor het nieuwe vCard-formaat. [issue 217]{L2}"
+    "message": "{L1} Kaartboekondersteuning toegevoegd voor SmartTemplates Pro -gebruikers. Het kan worden ingeschakeld in geavanceerde instellingen. {L2} {L1} toegevoegde filterparameter aan {{chatName}} schakelaar, bijv.: {{%from(chatname.skype)%}}. {L2} {L1} De spellchecker is nu geactiveerd door de opdracht {{%spellcheck()%}} - zelfs als de omgekeerde instellingen {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

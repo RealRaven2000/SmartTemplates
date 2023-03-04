@@ -1162,6 +1162,9 @@
   "resolveNamesFromCardBook": {
     "message": "Support CardBook (pro-funktion)"
   },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Använd standardadressboken om ingen kontakt hittas"
+  },
   "s.label": {
     "message": "Sekund (00 till 59)"
   },
@@ -1701,7 +1704,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}3.15.1 Mindre underhållskorrigering för textsökning på fliken variabler.{P2} {L1}Lägg till bakåtsökning i variabelfönstret - tryck på {{Shift}} + {{F3}} för att söka i text som går upp.{L2}{L1}Lade till lista med valfria HTML-attribut till bildvariabel {{%file()%}}. [issue 216]{L2}{L1}Fast ett problem med {{addressbook}}-omkopplaren. Har även lagt till stöd för det nya vCard-formatet. [issue 217]{L2}"
+    "message": "{L1}Lägg till stöd för CardBook för SmartTemplates Pro-användare. Det kan aktiveras i avancerade inställningar.{L2} {L1}Lade till filterparameter till {{chatname}}-omkopplaren, t.ex.: {{%from(chatname.skype)%}}.{L2} {L1}Stavningskontrollen är nu aktiveras av kommandot {{%spellcheck()%}} - även om det är avstängt i kompositionsinställningarna{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

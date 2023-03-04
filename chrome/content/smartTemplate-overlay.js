@@ -732,75 +732,91 @@ SmartTemplate4.mimeDecoder = {
     };
 
     async function getCardFromAB(mail) {
-      if (!mail) return null;
-      // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
-      
-      // CARDBOOK
-      // simpleMailRedirection.contacts => can be accesed via the notifyTools
-      // we need to make the caller async!
-      
-      // alternatively look at mail merge (not mail merge p) - it may do it in a different way
-
-      var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook');
-      if (isCardBookAB) {
-        if (SmartTemplate4.Util.licenseInfo.status != "Valid" || SmartTemplate4.Util.licenseInfo.keyType == 2) {
-          isCardBookAB = false;
-          console.warn("SmartTemplates: Cardbook support requires a valid SmartTemplates Pro license to work!");
-        }
+      let returnObj = {
+        card: null,
+        vCardJson: null
       }
+      if (!mail) return returnObj;
+      try {
 
-      if (isCardBookAB) {
-        try {
-          // Optional parameter -  preferredDirId: "b7d2806b-4c3a-40f4-ad25-541e77001ce1"
-          let card = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "cardbook.getContactsFromMail", mail: mail });
-          if (card) {
-            // return first result (for now)
-            if (card.length) { 
-              return { card : card[0]}; 
-            }
+        // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
+        
+        // CARDBOOK
+        // alternatively look at mail merge (not mail merge p) - it may do it in a different way
+
+        var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook'),
+            isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.fallback');
+        if (isCardBookAB) {
+          if (SmartTemplate4.Util.licenseInfo.status != "Valid" || SmartTemplate4.Util.licenseInfo.keyType == 2) {
+            isCardBookAB = false;
+            isCardBookFallback = false;
+            console.warn("SmartTemplates: Cardbook support requires a valid SmartTemplates Pro license to work!");
+            // TO DO: accumulate a warning for showing at the end of processing. 
+            // Should this only display no card was found?
           }
         }
-        catch(ex) {
-          SmartTemplate4.Util.logException("cardbook.getContactsFromMail function  failed", ex);
-          // will fall back to standard AB
-          return null;
-        }
-      }
 
-      
-      let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
-          allAddressBooks = []; 
-          
-       if (Array.isArray(abManager.directories)) {
-         allAddressBooks = abManager.directories; // Tb 88
-       }
-       else {
-         let AB = abManager.directories;
-         while (AB.hasMoreElements()) {
-           let addressBook = AB.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-           allAddressBooks.push(addressBook);
-         }
-       }
-      
-      // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
-      for (let i=0; i<allAddressBooks.length; i++ ) {
-        let addressBook = allAddressBooks[i];
-        if (addressBook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
-          // alert ("Directory Name:" + addressBook.dirName);
+        if (isCardBookAB) {
+          let card;
           try {
-            let card = addressBook.cardForEmailAddress(mail);
+            // Optional parameter -  preferredDirId: "b7d2806b-4c3a-40f4-ad25-541e77001ce1"
+            card = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "cardbook.getContactsFromMail", mail: mail });
             if (card) {
-              let jCal = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "parseVcard", vCard: card.vCardProperties.toVCard()});
-              console.log(jCal);
-              return {card: card, vCardJson: jCal};
+              // return first result (for now)
+              if (card.length) { 
+                returnObj.card = card[0];
+                return returnObj; 
+              }
             }
           }
           catch(ex) {
-            util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+            SmartTemplate4.Util.logException("cardbook.getContactsFromMail function  failed", ex);
+          }
+          // Will it fall back to standard AB?
+          if (!isCardBookFallback && !card && !card.length) {
+            return returnObj;
+          }
+        }
+        
+        let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
+            allAddressBooks = []; 
+            
+        if (Array.isArray(abManager.directories)) {
+          allAddressBooks = abManager.directories; // Tb 88
+        }
+        else {
+          let AB = abManager.directories;
+          while (AB.hasMoreElements()) {
+            let addressBook = AB.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
+            allAddressBooks.push(addressBook);
+          }
+        }
+        
+        // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
+        for (let i=0; i<allAddressBooks.length; i++ ) {
+          let addressBook = allAddressBooks[i];
+          if (addressBook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
+            // alert ("Directory Name:" + addressBook.dirName);
+            try {
+              let card = addressBook.cardForEmailAddress(mail);
+              if (card) {
+                returnObj.card = card;
+                let jCal = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "parseVcard", vCard: card.vCardProperties.toVCard()});
+                console.log(jCal);
+                returnObj.vCardJson = jCal;
+                return returnObj;
+              }
+            }
+            catch(ex) {
+              util.logDebug('Problem with Addressbook: ' + addressBook.dirName + '\n' + ex) ;
+            }
           }
         }
       }
-      return null;
+      catch(ex) {
+        SmartTemplate4.Util.logException("getCardFromAB() function failed", ex);
+      }
+      return returnObj;
     }
 
     // return the bracket delimiters
@@ -1158,11 +1174,14 @@ SmartTemplate4.mimeDecoder = {
                   // cardbook stores this as a ; concat string
                   let ar =
                     isCardBook ?
-                    card.org.split(";") :
+                    card.org.split("\\;") :
                     (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="org") : null);
                     // card.vCardProperties.entries.filter( e=>e.name=="org");
                   if (ar && ar.length) {
                     try {
+                      if (isCardBook) {
+                        return ar[0];
+                      }
                       return ar[3][0]; 
                     } catch(ex) {return "";}
                   }
@@ -1172,11 +1191,21 @@ SmartTemplate4.mimeDecoder = {
                 {
                   let ar =
                     isCardBook ?
-                    card.org.split(";") :
+                    card.org.split("\\;") :
                     (isvCard ? cardObj.vCardJson[1].find(e => e[0]=="org") : null);
                   if (ar && ar.length>=2) {
                     try {
-                      return ar[3][1];
+                      let depts;
+                      if (isCardBook) {
+                        depts = ar.slice(1); // remove first part (org)
+                      }
+                      else {
+                        depts = ar[3].slice(1);
+                      }
+                      if (depts.length) {
+                        if (depts.length==1) return depts[0];
+                        return depts; // .join("<br>")  ?
+                      }
                     } catch(ex) {return "";}
                   }
                 }

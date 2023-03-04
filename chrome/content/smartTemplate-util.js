@@ -3020,9 +3020,8 @@ SmartTemplate4.Message = {
 	noCALLBACK : null ,
 	myWindow : null,
 	parentWindow : null,
-	display : function(text, features, callbacksObj, parent, parsedVars="") {
+	display: function(text, features, callbacksObj, parent, parsedVars="") {
     let countDown = callbacksObj.countDown || 0,
-        isLicenseWarning = callbacksObj.isLicenseWarning,
         licenser = callbacksObj.licenser || null;
     if (licenser) {
       if (licenser.TrialDays<0) {
@@ -3047,10 +3046,11 @@ SmartTemplate4.Message = {
 		if (parent) {
       this.parentWindow = parent;
       // if this is the composer window, check if countdown has already been (partically) spent...
-      if ("SmartTemplate4_countDown" in parent)
+      if ("SmartTemplate4_countDown" in parent) {
         countDown = parent.SmartTemplate4_countDown; // remaining seconds.
-      else
+			} else {
         parent.SmartTemplate4_countDown = countDown; // remember seconds.
+			}
     }
 
 		// pass some data as args. we allow nulls for the callbacks
@@ -3071,7 +3071,7 @@ SmartTemplate4.Message = {
 		// open message with main as parent
 
 		let main = this.parentWindow || SmartTemplate4.Util.Mail3PaneWindow,
-		    dispFeatures = "chrome,alwaysRaised,dependent,dialog=no,close=no," + features; //  close=no,
+		    dispFeatures = "chrome,alwaysRaised,dependent,dialog=no," + features; //  close=no,
 		main.openDialog("chrome://smarttemplate4/content/smartTemplate-msg.xhtml", "st4message", dispFeatures, params);
 		this.parentWindow = null;
 
@@ -3215,8 +3215,9 @@ SmartTemplate4.Message = {
           let cdLabel = document.getElementById('countDown');
           startTimer(countDown, cdLabel);
         }
-        else 
+        else {
           SmartTemplate4.Message.allowClose = true;
+				}
         
 						
 				for (let i = 0; i < textNodes.length; i++) {
@@ -3241,35 +3242,37 @@ SmartTemplate4.Message = {
             div.appendChild(par);
           }
           msgDiv.appendChild(div);
+				}
 
-	        if (licenseBtnRow) {
-	          const ST4 = SmartTemplate4.Util.mainInstance,
-	                showDialog = SmartTemplate4.Util.showLicenseDialog.bind(SmartTemplate4.Util),
-	                openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
-	                featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
-	          if (params.showLicenseButton) {
-              removeLicenseButtons = false;
-	            let btnLicense = document.getElementById("btnShowLicenser"),
-	                btnFeatureCompare = document.getElementById("btnFeatureCompare"),
-	                feature = params.feature || "";
-	            btnLicense.addEventListener("click", 
-	              function() {
-	                showDialog(feature);
-	                window.close();  
-	              }, true
-	            );
-	            btnFeatureCompare.addEventListener("click", 
-	              function() {
-	                openURLInTab(featureCompUrl);
-	                window.close();  
-	              }, true
-	            );
-	            msgDiv.appendChild(licenseBtnRow);
-	          }
-          }
-        }
-        if (removeLicenseButtons)
+				if (licenseBtnRow) {
+					const ST4 = SmartTemplate4.Util.mainInstance,
+								showDialog = SmartTemplate4.Util.showLicenseDialog.bind(SmartTemplate4.Util),
+								openURLInTab = ST4.Util.openURLInTab.bind(ST4.Util),
+								featureCompUrl = SmartTemplate4.Util.PremiumFeaturesPage + "#featureComparison";
+					if (params.showLicenseButton) {
+						removeLicenseButtons = false;
+						let btnLicense = document.getElementById("btnShowLicenser"),
+								btnFeatureCompare = document.getElementById("btnFeatureCompare"),
+								feature = params.feature || "";
+						btnLicense.addEventListener("click", 
+							function() {
+								showDialog(feature);
+								window.close();  
+							}, true
+						);
+						btnFeatureCompare.addEventListener("click", 
+							function() {
+								openURLInTab(featureCompUrl);
+								window.close();  
+							}, true
+						);
+						msgDiv.appendChild(licenseBtnRow);
+					}
+				}
+        
+        if (removeLicenseButtons) {
           licenseBtnRow.parentNode.removeChild(licenseBtnRow);
+				}
 
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
         let buttons = [];

@@ -1516,8 +1516,8 @@ SmartTemplate4.Settings = {
         premiumConfig   = getElement('premiumConfig');
     premiumConfig.disabled = !isEnabled;
 		*/
-		document.getElementById("chkResolveABCardBook");
-		chkResolveABCardBook.disabled = !isEnabled;
+		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
+		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
   },
   
   showTrialDate: function() {
