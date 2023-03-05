@@ -1115,7 +1115,8 @@ SmartTemplate4.mimeDecoder = {
                     let elements = card.impp.filter(e=>e[0].length>0);
                     let results = [];
                     for (let e of elements) {
-                      let ar = e[0].filter(el=>el.startsWith(subType)); // first element = chatname
+                      let ar = e[0].filter(el=>(el.startsWith(subType))) 
+                        .map(x=>subType ? x.replace(`${subType}:`,"") : x); // if protocol: param is given, remove from chat handle!
                       results.push(...ar); // spread for multiple results
                     }
                     return results.join(", ");
@@ -1125,16 +1126,16 @@ SmartTemplate4.mimeDecoder = {
                     let results = cardObj.vCardJson[1].filter(e => e[0]=="impp"); // [ [ "impp", {}, "uri", "protocol:chatId" ] ...]
                                   // card.vCardProperties.getAllEntries("impp")
                     if (results && subType) {
-                      results = results.filter(e=>e[3].startsWith(subType));
+                      results = results.filter(e=>e[3].startsWith(subType)); 
                     }
                     
                     if (results && results.length) {
                       if (subType) {
-                        return results[0][3];
+                        // if protocol: param is given, remove from chat handle!
+                        return results[0][3].replace(`${subType}:`,"");
                       }
-                      return results[0][3]; // array of arrays: concat them all?
-                    }
- 
+                      return results.map(e=>e[3]).join(", "); // array of arrays: concat them all?
+                    } 
                   }
                 }
                 break;

@@ -1,30 +1,20 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.15.1">can be found here</a>
-
-<b>Maintenance Release 3.15.1</b>
-Minor maintenance fix for text search in variables tab that could break repeated searching using F3.
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.16">can be found here</a>
 
 
 <b>Enhancements</b>
 <ul>
-<li>
-Added backwards search in variables window - press [Shift] + [F3]to search text going up. You can also use the [Enter] key on the number pad to enter a new search term. This previously closed the SmartTemplates settings window</li>
-<li>Added optional attributes list to variable %file()% when it is used to include images , see <a href="https://github.com/RealRaven2000/SmartTemplates/issues/216">[issue 216]</a>.
-You can add additional attributes to like this:
-
-%file(img/bargain.png,id=bargainStar,width=192,"alternative text")%
-This will generate the following html code after importing the image data:
-&lt;img
-src="data:img/png;filename=bargain.png;base64,iVBORw0KGgoAAAAN...." id="bargainStar" width="192" alt="alternative text"&gt;</li>
+<li> Added CardBook support (Pro License Feature). You need to install Cardbook 84.5 as a minimal version to retrieve the addresses from it. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/50">[issue 50]</a>. You can enable this feature on the advanced settings page.
+</li>
+<li>Also added platform switches to chatname, which select a specific chat name based on the what it is for, such as %from(chatname.skype)% You can find all currently supported switches on the variables page under
+the section 'Address Book Fields' and can be combined with all address-related variables such as %to%, %from%, %cc%, %recipient% or %identity%.</li>
 </ul>
 
 <b>Bug Fixes / Maintenance</b>
 <ul>
-<li>Fixed a problem with <tt>addressbook</tt> switch, which can be used with address headers and also %identity%. This was broken by recent changes related to <code class="inline">toclipboard</code>. Also added support for the new vCard format. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/217">[issue 217].</a> Example:
-
-%identity(addressbook,work.title,work.department,work.organization)%
-</li>
+<li> Fixed: Template Categories containing space characters disrupt the template menus  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/222">[issue 222]</a></li>
+<li> Fixed: bracketName(";") parameter was broken.  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/219">[issue 219]</a></li>
 </ul>
 
