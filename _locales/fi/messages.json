@@ -1701,7 +1701,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Lisätty CardBook-tuki SmartTemplates Pro -käyttäjille. Se voidaan ottaa käyttöön lisäasetuksissa.{L2} {L1}Lisätty suodatinparametri {{chatname}}-kytkimeen, esim.: {{%from(chatname.skype)%}}.{L2} {L1}Oikeinkirjoituksen tarkistus on nyt aktivoitu komennolla {{%spellcheck()%}} - vaikka se olisi pois päältä sävellysasetuksissa{L2}"
+    "message": "{L1}Ylläpitoversio 3.16.1 – Forwarding with Template (Käyttäen FiltaQuilla-lisäosaa) ei enää lähettänyt luotuja sähköposteja automaattisesti. Korjattu, katso [issue 231]{L2}{L1}Lisätty CardBook-tuki SmartTemplates Pro -käyttäjille. Se voidaan ottaa käyttöön lisäasetuksissa.{L2} {L1}Lisätty suodatinparametri {{chatname}}-kytkimeen, esim.: {{%from(chatname.skype)%}}.{L2} {L1}Oikeinkirjoituksen tarkistus on nyt aktivoitu komennolla {{%spellcheck()%}} - vaikka se olisi pois päältä sävellysasetuksissa{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

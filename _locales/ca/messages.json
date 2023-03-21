@@ -1680,7 +1680,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}S'ha afegit compatibilitat amb CardBook per als usuaris de SmartTemplates Pro. Es pot activar a la configuració avançada.{L2} {L1}S'ha afegit un paràmetre de filtre a l'interruptor {{chatname}}, per exemple: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortogràfic és ara activat per l'ordre {{%spellcheck()%}}, fins i tot si s'ha desactivat a la configuració de la composició{L2}"
+    "message": "{L1}Versió de manteniment 3.16.1: el reenviament amb plantilla (mitjançant el complement FiltaQuilla) ja no enviava els correus electrònics generats automàticament. S'ha solucionat, vegeu [problema 231]{L2} {L1}S'ha afegit compatibilitat amb CardBook per als usuaris de SmartTemplates Pro. Es pot activar a la configuració avançada.{L2} {L1}S'ha afegit un paràmetre de filtre a l'interruptor {{chatname}}, per exemple: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortogràfic és ara activat per l'ordre {{%spellcheck()%}}, fins i tot si s'ha desactivat a la configuració de la composició{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

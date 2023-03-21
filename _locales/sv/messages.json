@@ -1704,7 +1704,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Lägg till stöd för CardBook för SmartTemplates Pro-användare. Det kan aktiveras i avancerade inställningar.{L2} {L1}Lade till filterparameter till {{chatname}}-omkopplaren, t.ex.: {{%from(chatname.skype)%}}.{L2} {L1}Stavningskontrollen är nu aktiveras av kommandot {{%spellcheck()%}} - även om det är avstängt i kompositionsinställningarna{L2}"
+    "message": "{L1}Underhållsversion 3.16.1 - Vidarebefordran med mall (med FiltaQuilla-tillägget) skickade inte längre de genererade e-postmeddelandena automatiskt. Fixat, se [issue 231]{L2} {L1}Lägg till stöd för CardBook för SmartTemplates Pro-användare. Det kan aktiveras i avancerade inställningar.{L2} {L1}Lade till filterparameter till {{chatname}}-omkopplaren, t.ex.: {{%from(chatname.skype)%}}.{L2} {L1}Stavningskontrollen är nu aktiveras av kommandot {{%spellcheck()%}} - även om det är avstängt i kompositionsinställningarna{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

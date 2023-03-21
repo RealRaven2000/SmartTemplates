@@ -1641,7 +1641,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Dodano obsługę CardBook dla użytkowników SmartTemplates Pro. Można go włączyć w ustawieniach zaawansowanych.{L2} {L1}Dodano parametr filtra do przełącznika {{chatname}}, np.: {{%from(chatname.skype)%}}.{L2} {L1}Sprawdzanie pisowni jest teraz aktywowane poleceniem {{%spellcheck()%}} - nawet jeśli wyłączone w ustawieniach składu{L2}"
+    "message": "{L1}Wersja konserwacji 3.16.1 — Przekazywanie z szablonem (za pomocą dodatku FiltaQuilla) nie powodowało już automatycznego wysyłania generowanych wiadomości e-mail. Naprawiono, patrz [issue 231] {L2} {L1}Dodano obsługę CardBook dla użytkowników SmartTemplates Pro. Można go włączyć w ustawieniach zaawansowanych.{L2} {L1}Dodano parametr filtra do przełącznika {{chatname}}, np.: {{%from(chatname.skype)%}}.{L2} {L1}Sprawdzanie pisowni jest teraz aktywowane poleceniem {{%spellcheck()%}} - nawet jeśli wyłączone w ustawieniach składu{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

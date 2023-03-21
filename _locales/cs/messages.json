@@ -1680,7 +1680,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Byla přidána podpora CardBook pro uživatele SmartTemplates Pro. Lze ji aktivovat v pokročilých nastaveních.{L2} {L1}Do přepínače {{chatname}} byl přidán parametr filtru, např.: {{%from(chatname.skype)%}}.{L2} {L1}Kontrola pravopisu je nyní aktivuje se příkazem {{%spellcheck()%}} – i když je v nastavení kompozice vypnuto{L2}"
+    "message": "{L1}Verze údržby 3.16.1 – Přeposílání pomocí šablony (pomocí doplňku FiltaQuilla) již automaticky neodesílalo vygenerované e-maily. Opraveno, viz [vydání 231]{L2} 231] {L2} {L1}Byla přidána podpora CardBook pro uživatele SmartTemplates Pro. Lze ji aktivovat v pokročilých nastaveních.{L2} {L1}Do přepínače {{chatname}} byl přidán parametr filtru, např.: {{%from(chatname.skype)%}}.{L2} {L1}Kontrola pravopisu je nyní aktivuje se příkazem {{%spellcheck()%}} – i když je v nastavení kompozice vypnuto{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

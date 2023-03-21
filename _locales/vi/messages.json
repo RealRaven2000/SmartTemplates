@@ -262,7 +262,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Đã thêm hỗ trợ CardBook cho người dùng SmartTemplates Pro. Nó có thể được bật trong cài đặt nâng cao.{L2} {L1}Đã thêm tham số bộ lọc vào khóa chuyển {{chatname}}, ví dụ: {{%from(chatname.skype)%}}.{L2} {L1}Trình kiểm tra chính tả hiện đã có được kích hoạt bởi lệnh {{%spellcheck()%}} - ngay cả khi đã tắt trong cài đặt sáng tác{L2}"
+    "message": "{L1}Phiên bản bảo trì 3.16.1 - Chuyển tiếp bằng Mẫu (sử dụng Tiện ích bổ sung FiltaQuilla) không tự động gửi Email được tạo nữa. Đã sửa lỗi, xem [issue 231]{L2} {L1}Đã thêm hỗ trợ CardBook cho người dùng SmartTemplates Pro. Nó có thể được bật trong cài đặt nâng cao.{L2} {L1}Đã thêm tham số bộ lọc vào khóa chuyển {{chatname}}, ví dụ: {{%from(chatname.skype)%}}.{L2} {L1}Trình kiểm tra chính tả hiện đã có được kích hoạt bởi lệnh {{%spellcheck()%}} - ngay cả khi đã tắt trong cài đặt sáng tác{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

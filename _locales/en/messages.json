@@ -1723,7 +1723,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Added CardBook support for SmartTemplates Pro users. It can be enabled in advanced settings.{L2} {L1}Added filter parameter to {{chatname}} switch, eg: {{%from(chatname.skype)%}}.{L2} {L1}The spellchecker is now activated by the {{%spellcheck()%}} command - even if the turned of in composition settings{L2}"
+    "message": "{L1}Maintenance version 3.16.1 - Forwarding with Template (using the FiltaQuilla Add-on) did not send off the generated Emails automatically any more. Fixed, see [issue 231]{L2} {L1}Added CardBook support for SmartTemplates Pro users. It can be enabled in advanced settings.{L2} {L1}Added filter parameter to {{chatname}} switch, eg: {{%from(chatname.skype)%}}.{L2} {L1}The spellchecker is now activated by the {{%spellcheck()%}} command - even if the turned of in composition settings{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

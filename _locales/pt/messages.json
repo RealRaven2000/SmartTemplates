@@ -1644,7 +1644,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Adicionado suporte CardBook para usuários do SmartTemplates Pro. Ele pode ser ativado em configurações avançadas.{L2} {L1}Parâmetro de filtro adicionado à chave {{chatname}}, por exemplo: {{%from(chatname.skype)%}}.{L2} {L1}O corretor ortográfico agora é ativado pelo comando {{%spellcheck()%}} - mesmo se desativado nas configurações de composição{L2}"
+    "message": "{L1}Manutenção versão 3.16.1 - Encaminhamento com modelo (usando o complemento FiltaQuilla) não enviava mais os e-mails gerados automaticamente. Corrigido, consulte [issue 231]{L2} {L1}Adicionado suporte CardBook para usuários do SmartTemplates Pro. Ele pode ser ativado em configurações avançadas.{L2} {L1}Parâmetro de filtro adicionado à chave {{chatname}}, por exemplo: {{%from(chatname.skype)%}}.{L2} {L1}O corretor ortográfico agora é ativado pelo comando {{%spellcheck()%}} - mesmo se desativado nas configurações de composição{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

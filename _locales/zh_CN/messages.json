@@ -1686,7 +1686,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}为 SmartTemplates Pro 用户添加 CardBook 支持。 它可以在高级设置中启用。{L2} {L1}向 {{chatname}} 开关添加过滤器参数，例如：{{%from(chatname.skype)%}}。{L2} {L1}现在拼写检查器 由 {{%spellcheck()%}} 命令激活 - 即使在组合设置中关闭{L2}"
+    "message": "{L1}维护版本 3.16.1 - 使用模板转发（使用 FiltaQuilla 插件）不再自动发送生成的电子邮件。 已修复，请参阅 [issue 231]{L2}{L1}为 SmartTemplates Pro 用户添加 CardBook 支持。 它可以在高级设置中启用。{L2} {L1}向 {{chatname}} 开关添加过滤器参数，例如：{{%from(chatname.skype)%}}。{L2} {L1}现在拼写检查器 由 {{%spellcheck()%}} 命令激活 - 即使在组合设置中关闭{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

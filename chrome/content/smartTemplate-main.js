@@ -210,7 +210,7 @@ END LICENSE BLOCK
   Version 3.15.1 - 28/11/2022
     # fixed [F3] Search again.
     
-  Version 3.16 - WIP
+  Version 3.16 - 05/03/2023
     # [issue 222] Template Categories containing space characters disrupt the template menus
     # [issue 223] Spellchecker is not activated by %spellcheck()% command - if the option 
                   "spellcheck as you type" is disabled in Composition settings.
@@ -226,6 +226,10 @@ END LICENSE BLOCK
     # (see https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html)
     # Show license buttons on the "menu restrictions" dialog message
 
+  Version 3.16.1 - 21/03/2023
+    # [issue 231] Forward with Template doesn't send off mail automatically any more
+    # [issue 229] Fixed Scripts fields %{% %}% 
+    # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
     
 
 =========================

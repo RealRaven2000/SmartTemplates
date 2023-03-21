@@ -1650,7 +1650,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Se agregó compatibilidad con CardBook para usuarios de SmartTemplates Pro. Se puede habilitar en la configuración avanzada.{L2} {L1}Se agregó un parámetro de filtro al interruptor {{chatname}}, por ejemplo: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortográfico ahora está activado por el comando {{%spellcheck()%}}, incluso si está desactivado en la configuración de composición{L2}"
+    "message": "{L1}Versión de mantenimiento 3.16.1: el reenvío con plantilla (usando el complemento FiltaQuilla) ya no enviaba los correos electrónicos generados automáticamente. Solucionado, consulte [issue 231]{L2} {L1}Se agregó compatibilidad con CardBook para usuarios de SmartTemplates Pro. Se puede habilitar en la configuración avanzada.{L2} {L1}Se agregó un parámetro de filtro al interruptor {{chatname}}, por ejemplo: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortográfico ahora está activado por el comando {{%spellcheck()%}}, incluso si está desactivado en la configuración de composición{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

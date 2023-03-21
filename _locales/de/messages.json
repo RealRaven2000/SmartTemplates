@@ -1625,7 +1625,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}CardBook-Unterstützung für SmartTemplates Pro-Benutzer hinzugefügt. Sie kann in den erweiterten Einstellungen aktiviert werden.{L2} {L1}Filterparameter zum Schalter {{chatname}} hinzugefügt, zB: {{%from(chatname.skype)%}}.{L2} {L1}Die Rechtschreibprüfung ist jetzt verfügbar aktiviert durch den Befehl {{%spellcheck()%}} - auch wenn dies in den Kompositionseinstellungen ausgeschaltet ist{L2}"
+    "message": "{L1}Wartungsversion 3.16.1 - Weiterleitung mit Vorlage (unter Verwendung des FiltaQuilla-Add-ons) versendete die generierten E-Mails nicht mehr automatisch. Behoben, siehe [issue 231]{L2} {L1}CardBook-Unterstützung für SmartTemplates Pro-Benutzer hinzugefügt. Sie kann in den erweiterten Einstellungen aktiviert werden.{L2} {L1}Filterparameter zum Schalter {{chatname}} hinzugefügt, zB: {{%from(chatname.skype)%}}.{L2} {L1}Die Rechtschreibprüfung ist jetzt verfügbar aktiviert durch den Befehl {{%spellcheck()%}} - auch wenn dies in den Kompositionseinstellungen ausgeschaltet ist{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

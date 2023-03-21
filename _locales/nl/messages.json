@@ -1623,7 +1623,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Kaartboekondersteuning toegevoegd voor SmartTemplates Pro -gebruikers. Het kan worden ingeschakeld in geavanceerde instellingen. {L2} {L1} toegevoegde filterparameter aan {{chatName}} schakelaar, bijv.: {{%from(chatname.skype)%}}. {L2} {L1} De spellchecker is nu geactiveerd door de opdracht {{%spellcheck()%}} - zelfs als de omgekeerde instellingen {L2}"
+    "message": "{L1} Onderhoudsversie 3.16.1 - Doorsturen met sjabloon (met behulp van de FiltaQuilla-add-on) stuurde de gegenereerde e-mails niet meer automatisch. Opgelost, zie [issue 231]{L2} {L1} Kaartboekondersteuning toegevoegd voor SmartTemplates Pro -gebruikers. Het kan worden ingeschakeld in geavanceerde instellingen. {L2} {L1} toegevoegde filterparameter aan {{chatName}} schakelaar, bijv.: {{%from(chatname.skype)%}}. {L2} {L1} De spellchecker is nu geactiveerd door de opdracht {{%spellcheck()%}} - zelfs als de omgekeerde instellingen {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

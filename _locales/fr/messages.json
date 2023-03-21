@@ -1698,7 +1698,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Ajout de la prise en charge de CardBook pour les utilisateurs de SmartTemplates Pro. Il peut être activé dans les paramètres avancés.{L2} {L1}Paramètre de filtre ajouté au commutateur {{chatname}}, par exemple : {{%from(chatname.skype)%}}.{L2} {L1}Le correcteur orthographique est maintenant activé par la commande {{%spellcheck()%}} - même si désactivé dans les paramètres de composition{L2}"
+    "message": "{L1}Version de maintenance 3.16.1 - Le transfert avec modèle (à l'aide du module complémentaire FiltaQuilla) n'envoyait plus automatiquement les e-mails générés. Corrigé, voir [issue 231]{L2} {L1}Ajout de la prise en charge de CardBook pour les utilisateurs de SmartTemplates Pro. Il peut être activé dans les paramètres avancés.{L2} {L1}Paramètre de filtre ajouté au commutateur {{chatname}}, par exemple : {{%from(chatname.skype)%}}.{L2} {L1}Le correcteur orthographique est maintenant activé par la commande {{%spellcheck()%}} - même si désactivé dans les paramètres de composition{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

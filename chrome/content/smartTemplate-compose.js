@@ -1734,12 +1734,14 @@ SmartTemplate4.classSmartTemplate = function() {
     
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
     // [issue 173] - SmartTemplates Pro required.
-    if (SmartTemplate4.PreprocessingFlags.isAutoSend) {
+    if (flags.isAutoSend) {
       if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
         let msg = util.getBundleString("st.notification.premium.sendByFilter");
         util.popupLicenseNotification("filterWithTemplate", true, true, msg);
       }
       else {
+				// make sure all variables are resolved + removed.
+				await SmartTemplate4.Util.cleanupDeferredFields(true);
         // push send button - with timeout?
         let timeout = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.sendTimeout");
         setTimeout(function () { SendMessage(); }, timeout);
