@@ -960,6 +960,11 @@ SmartTemplate4.mimeDecoder = {
         card,
         cardObj; // will hold card and vCard json structure if vCard could be retrieved & parsed from Thunderbird
 
+    function isCardCardBook(card) {
+      if (!card) return false;
+      return (typeof card.dirPrefId) == "string";
+    }
+
     function getPhoneProperty(card, phoneType, isCardBook) {
       let result;
       try {
@@ -992,7 +997,7 @@ SmartTemplate4.mimeDecoder = {
       const isDebugAB = SmartTemplate4.Preferences.isDebugOption("adressbook");
       SmartTemplate4.Util.logDebugOptional("adressbook",`getCardProperty(${p},${defaultValue})`)
       let r;
-      let isCardBook = (typeof card.dirPrefId) == "string";
+      let isCardBook = isCardCardBook(card);
       let legacyKey = mapLegacyCardStruct.get(p);
       let cardbookKey = mapCardBook.get(p);
       try {
@@ -1422,7 +1427,14 @@ SmartTemplate4.mimeDecoder = {
       firstName = (isResolveNamesAB && card) ? correctMime(cardFirstName) : '';
       if (isResolveNamesAB && card) {
 				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
-          firstName = correctMime(card.getProperty("NickName", cardFirstName));
+          let nick = cardFirstName;
+          if (card.getProperty) {
+            nick = correctMime(card.getProperty("NickName", cardFirstName));
+          }
+          else if (isCardCardBook(card)) { // cardbook
+            nick = card["nickname"];
+          }
+          firstName = nick || cardFirstName;
 				}
 				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName')) {
 					firstName = correctMime(cardFullname);
@@ -3950,7 +3962,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     
     //process javascript insertions first, so the javascript source is not broken by the remaining processing
     //but cannot insert result now, or it would be double html escaped, so insert them later
-    if (SmartTemplate4.Preferences.getBoolPref("sandbox")) {
+    if (SmartTemplate4.Preferences.getMyBoolPref("sandbox")) {
       // THIS NEEDS TO BECOME ASYNC. 
       // NOT SURE IF POSSIBLE BECAUSE OF call to Cu.evalInSandbox  !!
       msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
