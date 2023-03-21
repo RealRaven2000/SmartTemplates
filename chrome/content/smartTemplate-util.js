@@ -1418,22 +1418,19 @@ SmartTemplate4.Util = {
 	} ,
 	
 	// should be called when email is sent
-	composerSendMessage : function composerSendMessage (evt) {
+	composerSendMessage : function (evt) {
 		const Ci = Components.interfaces,
-		      util = SmartTemplate4.Util,
 		      msgComposeType = Ci.nsIMsgCompType,
 					nsIMsgCompDeliverMode = Ci.nsIMsgCompDeliverMode;
 					
 		let msgType = window.document.getElementById("msgcomposeWindow").getAttribute("msgtype");
-		util.logDebug('composerSendMessage() - msgType=' + msgType);
+		SmartTemplate4.Util.logDebug('composerSendMessage() - msgType=' + msgType);
 		
 		if (msgType == nsIMsgCompDeliverMode.Now || msgType == nsIMsgCompDeliverMode.Background || msgType == nsIMsgCompDeliverMode.Later) {
-			// is SmartTemplate4.classSmartTemplate.composeType == '', 'new', 'rsp', 'fwd'
 			switch (gMsgCompose.type) {
 				case msgComposeType.New:
 				case msgComposeType.NewsPost:
 				case msgComposeType.MailToUrl:
-				// [Bug 26632] Using %dateformat% in reply / forward: deferred fields are not automatically tidied up
 				case msgComposeType.Reply:
 				case msgComposeType.ReplyAll:
 				case msgComposeType.ReplyToSender:
@@ -1442,7 +1439,8 @@ SmartTemplate4.Util = {
 				case msgComposeType.ReplyToList:
 				case msgComposeType.ForwardAsAttachment:
 				case msgComposeType.ForwardInline:
-					util.cleanupDeferredFields();
+					// problem: this is now async! 
+					SmartTemplate4.Util.cleanupDeferredFields();
 					break;
 				default:
 					return;
@@ -1609,7 +1607,8 @@ SmartTemplate4.Util = {
 			flags.modifiedHeaders.push(type);
 		}
 	},
-	// Find  remember them to update their values once Editor is ready!
+	
+	// Find all remembered deferred variables and update their values once Editor is ready!
 	resolveDeferredBatch: async function(editor) {
 		// iterate all smartTemplates fields
 		let body = editor.rootElement,
@@ -1649,7 +1648,7 @@ SmartTemplate4.Util = {
 				SmartTemplate4.logException("resolveDeferredBatch() failed ", ex);
 			}
 		}
-		SmartTemplate4.PreprocessingFlags = []; // reset the array
+		SmartTemplate4.PreprocessingFlags.modifiedHeaders = []; // reset the headers array!
 	},
 
 
