@@ -381,7 +381,7 @@ permalink: version.html
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/231">[issue 231] </a>
     </li>
     <li>
-      Fixed: Scripts in template  <code>%{%</code> <code>%}%</code> - <a href="https://github.com/RealRaven2000/SmartTemplates/issues/229">[issue 229] </a>
+      Fixed: Scripts in template  <code>&#37;{&#37;</code> <code>&#37;}&#37;</code> - <a href="https://github.com/RealRaven2000/SmartTemplates/issues/229">[issue 229] </a>
     </li>
     <li>
       Fixed: <code class="inline">%from(addressbook,nickname)%</code> created an error when trying to use CardBook.
@@ -2703,7 +2703,7 @@ Sender: %from%
       If a html template file starts with certain UTF detection characters, 
       the "missing file" warning is wrongly displayed.
     </li>
-    <li>Sandboxed Javascript (script blocks enclosed in {{ "%{%   %}%)" }} implemented in [Bug 25676]
+    <li>Sandboxed Javascript (script blocks enclosed in {{ "<code>&#37;{&#37;</code> <code>&#37;}&#37;</code>)" }} implemented in [Bug 25676]
       stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing... 
       for now, SmartTemplates allows using these again for versions smaller than 69
     </li>
