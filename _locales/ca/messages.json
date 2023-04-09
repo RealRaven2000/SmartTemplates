@@ -1084,6 +1084,15 @@
   "premiumConfig": {
     "message": "Funcions premium"
   },
+  "pricing.section": {
+    "message": "Per saber el vostre preu, seleccioneu primer una de les opcions següents. Això obre una finestra separada del navegador on podeu completar la compra a la botiga web."
+  },
+  "pricing.section.hint": {
+    "message": "Nota: El preu varia en funció del model de llicència, país, tipus d'IVA, descomptes actuals o llicències ja adquirides."
+  },  
+  "pricing.title": {
+    "message": "Preus"
+  },  
   "prompt.email": {
     "message": "Introduïu una adreça de correu electrònic"
   },

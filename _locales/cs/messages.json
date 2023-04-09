@@ -1097,7 +1097,10 @@
     "message": "Vlož text pro přidání nebo nastavení"
   },
   "pricing.section": {
-    "message": "Chcete-li zjistit svou cenu, vyberte nejprve jednu z následujících možností. Otevře se samostatné okno prohlížeče, kde můžete dokončit nákup v internetovém obchodě.{newlines} Poznámka: Cena se liší v závislosti na modelu licence, zemi, sazbě DPH, aktuálních slevách nebo již zakoupených licencích."
+    "message": "Chcete-li zjistit svou cenu, vyberte nejprve jednu z následujících možností. Otevře se samostatné okno prohlížeče, kde můžete dokončit nákup v internetovém obchodě."
+  },
+  "pricing.section.hint": {
+    "message": "Poznámka: Cena se liší v závislosti na modelu licence, zemi, sazbě DPH, aktuálních slevách nebo již zakoupených licencích."
   },
   "pricing.title": {
     "message": "Ceny"
