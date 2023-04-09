@@ -1027,6 +1027,15 @@
   "premiumConfig": {
     "message": "Recursos Premium"
   },
+  "pricing.section": {
+    "message": "Para saber o seu preço, selecione primeiro uma das seguintes opções. Isso abre uma janela separada do navegador onde você pode concluir a compra na loja virtual."
+  },
+  "pricing.section.hint": {
+    "message": "Nota: O preço varia consoante o modelo de licença, país, taxa de IVA, descontos em vigor ou licenças já adquiridas."
+  },  
+  "pricing.title": {
+    "message": "Preços"
+  },
   "prompt.email": {
     "message": "Digite um endereço de email"
   },
