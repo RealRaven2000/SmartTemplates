@@ -53,7 +53,7 @@
     "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
   "advanced.label": {
-    "message": "Lisäasetukset"
+    "message": "Laajenna valintaikkuna"
   },
   "any.label": {
     "message": "Mikä tahansa otsakerivi"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Vastaanottajan nimi"
   },
+  "clipboardFunctions": {
+    "message": "Leikepöydän toiminnot"
+  },
+  "clipboard.copy": {
+    "message": "kopioi tekstin leikepöydälle."
+  },
+  "clipboard.insert": {
+    "message": "lisää nykyisen leikepöydän sisällön tähän kohtaan."
+  },
+  "clipboard.from": {
+    "message": "(esimerkki mistä tahansa osoitemuuttujasta) kopioi alkuperäisen lähettäjän sähköpostiosoite leikepöydälle."
+  },
+  "clipboard.setHeader": {
+    "message": "Käytä leikepöydän sisältöä asettaaksesi cc - (toimii kaikissa tekstiotsikoissa)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Etsii vastaavan tekstin aiheesta ja kopioi leikepöydälle, jos se löytyy."
+  },
+  "clipboard.matchBody": {
+    "message": "Vastaa tekstiä alkuperäisestä sähköpostisisällöstä ja kopioi sen leikepöydälle, jos se löytyy."
+  },
+  "clipboard.notes": {
+    "message": "Kaikki {toclip}-funktiota käyttävät funktiot tyhjentävät leikepöydän, jos ne eivät palauta tietoja. Voit käyttää leikepöytätoimintoja tietojen siirtämiseen tekstikatkelmaan, joka ladataan komennolla {file}."
+  },
   "close.label": {
-    "message": "Sulje"
+    "message": "Kutista valintaikkuna"
   },
   "conditional.forwardMode": {
     "message": "Jos sähköposti välitetään edelleen, ensimmäinen tekstiparametri lisätään. Toista tekstiparametria käytetään, kun posti välitetään edelleen liitteenä."
@@ -629,13 +653,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Maksa vain 4,30 euroa 8,60 euron sijaan ja saat täyden pääsyn Pro-toimintoihin. Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
+    "message": "Tämä erikoistarjous on saatavilla {boldStart} - $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Lisenssit"
   },
   "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
@@ -1037,7 +1064,7 @@
     "message": "Korvaa rivinvaihdot pelkkä teksti -allekirjoituksessa merkillä <br>"
   },
   "pref_silentUpdates": {
-    "message": "Hiljaiset päivitykset"
+    "message": "Älä avaa versiohistoriaa sisältävää välilehteä"
   },
   "pref_silentUpdates_tip": {
     "message": "Älä avaa muutoslokea SmartTemplates: n päivityksen jälkeen."
@@ -1094,7 +1121,7 @@
     "message": "[valinnainen, numeerinen] Enimmäislainaustaso vanhempien lainausten poistamiseksi keskustelusta."
   },
   "quote_changers.cap": {
-    "message": "Lainaa manipulointia"
+    "message": "Lainattu tekstin muutos"
   },
   "quote_changers.desc": {
     "message": "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi."
@@ -1134,6 +1161,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "Tämä toiminto ei toimi tiettyjen etäosoitekirjojen kanssa, kuten LDAP."
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Tuki CardBook (pro-ominaisuus)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Käytä tavallista osoitekirjaa, jos yhteystietoa ei löydy"
   },
   "s.label": {
     "message": "Sekunti (00-59)"
@@ -1402,7 +1435,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. heinäkuuta"
+    "message": "26. maaliskuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -1589,6 +1622,14 @@
   "tofwd.label": {
     "message": "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin"
   },
+  "tokenError": {
+    "message": "Seuraava tunnus loi virheen: $token$\nTarkista mallissasi syntaksivirheitä. Kaikki muuttujat dokumentoidaan asetusikkunassa.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Alkuperäisen vastaanottajan sähköpostiosoite"
   },
@@ -1617,6 +1658,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Julkaisutiedot (englanniksi)"
+  },
+  "updates.news": {
+    "message" : "Uusimmat uutiset"
+  },
   "updates.title": {
     "message": "Päivitykset"
   },
@@ -1631,6 +1678,9 @@
   },
   "url.supportPage.label": {
     "message": "Tuen kotisivu"
+  },
+  "variable.search": {
+    "message": "Kirjoita hakutermi ja paina {{Enter}}. Toista haku painamalla {{F3}}."
   },
   "var_custom.cap": {
     "message": "Muuttujat muokatulle päiväyksen muotoilulle"
@@ -1651,7 +1701,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Uusi {{toclipboard}}-parametri osoitekentille, kuten {{%from(name)%}} tulosten kopioimiseksi leikepöydälle.{L2} {L1}Kun FiltaQuilla lähetti sähköpostin automaattisesti eteenpäin tai vastasi siihen älykäs mallin avulla, samaa mallia on käytetty virheellisesti seuraavassa manuaalisessa vastauksessa.{L2} {L1}Korjattu pikavalikon komento päivittää ja korvata kenttämuuttujia sisällöllä.{L2} {L1}Paramentit {{bracketMail}} ja {{bracketName}} leikepöydän kanssa käytettäväksi. {L2}{L1}Korjattu muuttuja {{%datelocal%}}.{L2}{L1}Parannettu asetusten valintaikkunan käytettävyys.{L2}"
+    "message": "{L1}Ylläpitoversio 3.16.1 – Forwarding with Template (Käyttäen FiltaQuilla-lisäosaa) ei enää lähettänyt luotuja sähköposteja automaattisesti. Korjattu, katso [issue 231]{L2}{L1}Lisätty CardBook-tuki SmartTemplates Pro -käyttäjille. Se voidaan ottaa käyttöön lisäasetuksissa.{L2} {L1}Lisätty suodatinparametri {{chatname}}-kytkimeen, esim.: {{%from(chatname.skype)%}}.{L2} {L1}Oikeinkirjoituksen tarkistus on nyt aktivoitu komennolla {{%spellcheck()%}} - vaikka se olisi pois päältä sävellysasetuksissa{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

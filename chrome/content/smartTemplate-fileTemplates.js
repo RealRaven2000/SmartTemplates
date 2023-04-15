@@ -12,7 +12,7 @@
 // Support external HTML files that can be selected during the button press
 // write / reply and forward.
 
-
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 SmartTemplate4.fileTemplates = {
 	Entries: {
@@ -64,22 +64,19 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	get optionsWindow() {
-		const Ci = Components.interfaces,
-		      util = SmartTemplate4.Util;
+		const util = SmartTemplate4.Util;
           
     try {
-      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let windowManager = Services.wm,
           optionsWindow = windowManager.getMostRecentWindow('addon:SmartTemplate4'); 
       return optionsWindow;
     }
 		catch(ex) { ; }
 		
-    let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
-        getWindowEnumerator = 
+    let getWindowEnumerator = 
             (util.isLinux) ?
-            mediator.getXULWindowEnumerator :
-            mediator.getZOrderXULWindowEnumerator;
+            Services.wm.getXULWindowEnumerator :
+            Services.wm.getZOrderXULWindowEnumerator;
 	} , 
 	
   get ListBox() {
@@ -110,8 +107,9 @@ SmartTemplate4.fileTemplates = {
 	// adds an item to currently visible list
   addItem: function addItem(path, label, cat="", lb) {
     let listbox = lb || this.ListBox;
-    if (listbox)
+    if (listbox) {
       listbox.appendItem(label, JSON.stringify({path:path, category:cat})  );
+    }
   },
 	
 	// delete list (only of currently selected flavor)
@@ -143,7 +141,7 @@ SmartTemplate4.fileTemplates = {
       for (let i=0; i<this.CurrentEntries.length; i++) {
         let entry = this.CurrentEntries[i],
             cat = entry.category || "";
-        this.addItem(entry.path, entry.label, cat);
+        this.addItem(entry.path, SmartTemplate4.fileTemplates.makeLabel(entry), cat);
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
@@ -171,8 +169,9 @@ SmartTemplate4.fileTemplates = {
 		}
 		
 		// change label in list then save & reload.
-    if (txt)
+    if (txt) {
       e.label = txt.value;
+    }
     e.category = category;
 
     if (forceIndex) {
@@ -188,7 +187,7 @@ SmartTemplate4.fileTemplates = {
         case "txtTemplateTitle":
           let txt = document.getElementById("txtTemplateTitle").value;
           e.label = txt;
-          item.firstChild.value = txt; 
+          item.firstChild.value = SmartTemplate4.fileTemplates.makeLabel(e); // txt; 
           break;
       }
       this.saveCustomMenu();
@@ -236,7 +235,7 @@ SmartTemplate4.fileTemplates = {
       }
 			document.getElementById('txtTemplatePath').value = p;
 			document.getElementById('txtTemplateCategory').value = c;
-			document.getElementById('txtTemplateTitle').value = richlistitem.label;
+			document.getElementById('txtTemplateTitle').value = SmartTemplate4.fileTemplates.sanitizeLabel(richlistitem.label, c);
 		}
 	} ,
 	
@@ -245,7 +244,6 @@ SmartTemplate4.fileTemplates = {
 		      getBundleString = util.getBundleString.bind(util),
 					FT = SmartTemplate4.fileTemplates;
 					
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     let path = document.getElementById('txtTemplatePath').value,
         label = document.getElementById('txtTemplateTitle').value,
         category = this.document.getElementById('txtTemplateCategory').value,
@@ -369,6 +367,18 @@ SmartTemplate4.fileTemplates = {
         promise = OS.File.read(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
     return promise;
   } ,		
+
+  makeLabel: function(entry) {
+    let cat = entry.category || "";
+    // use right poiting guillemet (left-pointing double angle quotation mark) as delimiter
+    let retval = cat ? (cat + " » " + entry.label) : entry.label;
+    return retval;
+  },
+
+  sanitizeLabel: function(lbl, c) {
+    if (!c) return lbl;
+    return lbl.replace(c + " » ", "");
+  },
 	
 	// load template lists from file
   loadCustomMenu: function loadCustomMenu(fromOptions) {
@@ -398,7 +408,8 @@ SmartTemplate4.fileTemplates = {
                   c = entry.category || "";
 							// populate the options list(s)
 							if (fromOptions) {
-								fileTemplates.addItem(entry.path, entry.label, c, lb);
+                let theLabel = SmartTemplate4.fileTemplates.makeLabel(entry);
+								fileTemplates.addItem(entry.path, theLabel, c, lb);
 							}
 							// populate the Entries array from read data
 							T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
@@ -417,7 +428,6 @@ SmartTemplate4.fileTemplates = {
         },
         function onFailure(ex) {
           util.logDebug ('readStringFile() - Failure: ' + ex); 
-          var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
           if (ex.becauseNoSuchFile) {
             // File does not exist);
           }
@@ -438,7 +448,6 @@ SmartTemplate4.fileTemplates = {
 					},
 					function promise2_onFail(ex) {
 						util.logDebug ('promise2.then onFail():\n' + ex); 
-            var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 						Services.prompt.alert(null, 'SmartTemplates - promise2.then', 'Did not load main menu\n' + ex);
 						return promise2; // make loadCustomMenu chainable
 					}
@@ -530,7 +539,6 @@ SmartTemplate4.fileTemplates = {
       return String.fromCharCode(65+acCode-10); // continue with A,B,C
     }
     try {
-      var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
       if (window == singleM)
         singleParentWindow = window;
@@ -645,7 +653,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					
-					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
+					SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
 					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event, singleParentWindow); 
@@ -658,7 +666,7 @@ SmartTemplate4.fileTemplates = {
 			
       let cat = theTemplate.category;
       if (cat) {
-        let popup = msgPopup.querySelector(`[templateCategory=${cat}]`);
+        let popup = msgPopup.querySelector(`[templateCategory='${cat}']`);
         if (popup) {
           popup.appendChild(menuitem);
           acKey = getAccessKey(popup.childElementCount);
@@ -850,62 +858,11 @@ SmartTemplate4.fileTemplates = {
         return true;
       return false;
     }
-    // obsolete workaround (now replaced with TbSync's hackToolbarbutton script)
-    // use a fake parent button for inserting
-    // if we pass original btn, check if it is already a toolbarbuttion-menu-button and thus already has a menu
-    function insertMenuTb78(popupId, btnId, originalBtn = null) {
-      let theMsgPopup = document.getElementById(popupId),
-          originalPopup = null;
-      try {
-        if (!theMsgPopup || !theMsgPopup.parentNode || !theMsgPopup.parentNode.id.endsWith('-ST')) {
-          if (originalBtn && originalBtn.getAttribute("is")=="toolbarbutton-menu-button") {
-            // already have a menu, find matching childElement
-            for (let m of originalBtn.childNodes) {
-              if (m.tagName == 'menupopup') {
-                // originalPopup = m;
-                return m; // return original popup
-                break;
-              }
-            }
-          }
-          
-          let btn = document.getElementById(btnId);
-          if (btn) {
-            theMsgPopup = SmartTemplate4.fileTemplates.getPopup(btn.id); 
-            // TEST TEST TB78
-            if (theMsgPopup.id) debugger;
-            if (theMsgPopup && !theMsgPopup.id) {
-              theMsgPopup.id = popupId;
-              btn.type = "menu-button";
-              // attach the menupopup
-              btn.appendChild(theMsgPopup);
-              //let subButton=SmartTemplate4.Util.getAnonymousElementByAttribute(btn, "label", "stwrite");
-              
-              // hide the main button, add negative margin using te class STfakePopupBtn:
-              btn.firstChild.classList.add("STfakePopupBtn");
-            }
-            let originId = btn.getAttribute("insertafter");
-            originalBtn = document.getElementById(originId);
-          }
-          // only show if the "original button" actually exists / is shown on toolbar.
-          if (originalBtn) {
-            btn.hidden = originalBtn.hidden || false;
-            // btn.setAttribute("hidden", originalBtn.getAttribute("hidden"));
-            // move to the correct position!
-            originalBtn.parentNode.insertBefore(btn, originalBtn.nextSibling);
-            // btn
-          }
-        }
-      }
-      catch(ex) {
-        util.logException("insertMenuTb78(" + popupId + ", " + btnId + ")", ex);
-      }
-      return theMsgPopup;
-    }
-        
+
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
+
 		if (toolbar) {
 			// load current template list
 			const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
@@ -1225,7 +1182,7 @@ SmartTemplate4.fileTemplates = {
 		// are clicked.
 	} ,
 	
-  insertFileEntryInComposer: function (entry) {
+  insertFileEntryInComposer: async function (entry) {
     let theFileTemplate = entry;
     let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
@@ -1279,16 +1236,18 @@ SmartTemplate4.fileTemplates = {
     else {
       flags.isFileTemplate = true;
       if (!flags.filePaths) flags.filePaths = [];
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Add file to template stack: ${theFileTemplate.path}`);
       flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
-      //SmartTemplate4.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
       let idkey = SmartTemplate4.Util.getIdentityKey(document);
       const ignoreHTML = true;
       let code =  
-        SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
+        await SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
       gMsgCompose.editor.insertHTML(code); 
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       
-      flags.filePaths.pop();
+      let popped = flags.filePaths.pop();
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `insertFileEntryInComposer: Removed file from template stack: ${popped}`);
+
     }    
   } ,
   
@@ -1391,7 +1350,6 @@ SmartTemplate4.fileTemplates = {
 				return converter.ConvertToUnicode(data);
 			}
 			catch(ex) {
-        var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
 				    errText = util.getBundleString("st.fileTemplates.error.charSet");
 				SmartTemplate4.Message.display(
@@ -1410,10 +1368,7 @@ SmartTemplate4.fileTemplates = {
 			}
 		}						
 					
-		const { FileUtils } = 
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
+		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 				
 		try {
 			// code from template-disk.jsm readHTMLTemplateFile()

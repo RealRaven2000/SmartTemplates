@@ -157,6 +157,42 @@ export class Parser {
         //           hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/587dc0232d8a/patches-newmime/parser-tokens#l78
         // use https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/nsIMsgDBHdr
         // mime2DecodedAuthor, mime2DecodedSubject, mime2DecodedRecipients!
+        let mapLegacyCardStruct = new Map([
+          ['nickname', "NickName"],
+          ['additionalmail', "SecondEmail"],
+          ['chatname', "ChatName"],
+          ['workphone', "WorkPhone"],
+          ['homephone', "HomePhone"],
+          ['fax', "FaxNumber"],
+          ['pager', "PagerNumber"],
+          ['mobile', "CellularNumber"],
+          ['private.address1', "HomeAddress"],
+          ['private.address2', "HomeAddress2"],
+          ['private.city', "HomeCity"],
+          ['private.state', "HomeState"],
+          ['private.country', "HomeCountry"],
+          ['private.zip', "HomeZipCode"],
+          ['work.title', "JobTitle"],
+          ['work.department', "Department"],
+          ['work.organization', "Company"],
+          ['work.address1', "WorkAddress"],
+          ['work.address2', "WorkAddress2"],
+          ['work.city', "WorkCity"],
+          ['work.state', "WorkState"],
+          ['work.country', "WorkCountry"],
+          ['work.zip', "WorkZipCode"],          
+          ['work.webpage', "WebPage1"],
+          ['other.custom1', "Custom1"],
+          ['other.custom2', "Custom2"],
+          ['other.custom3', "Custom3"],
+          ['other.custom4', "Custom4"],
+          ['other.custom5', "Custom5"],
+          ['other.notes', "Notes"]
+          
+        ]);
+                
+        
+        
         function getEmailAddress(a) {
           return a.replace(/.*<(\S+)>.*/g, "$1");
         }
@@ -176,7 +212,7 @@ export class Parser {
           }
           return '';
         };
-        function getCardFromAB(mail) { // returns ContactNode
+         async function getCardFromAB(mail) { // returns ContactNode
           if (!mail) return null;
           // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
           // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
@@ -350,10 +386,13 @@ export class Parser {
             bracketNameParams = getBracketAddressArgs(format, 'Name'),
             card;
 
-          
+        // API-to-do: use API for retrieving properties
+        // (probably async)
+        // see https://webextension-api.thunderbird.net/en/stable/contacts.html#get-id
         function getCardProperty(p) {
           if (!card) return '';
-          let r = card.properties(p);
+          let legacyKey = mapLegacyCardStruct.get(p);
+          let r = card.ContactProperties[legacyKey];
           if (r) {
             let d = that.mimeDecoder.decode(r);
             if (d) return d;
@@ -394,7 +433,8 @@ export class Parser {
           // [Bug 25643] get name from Addressbook
           emailAddress = getEmailAddress(address); // get this always
           const isResolveNamesAB = isForceAB || this.MimePrefs.resolveAB;
-          card = isResolveNamesAB ? getCardFromAB(emailAddress) : null; // ContactNode
+          card = isResolveNamesAB ? 
+            await getCardFromAB(emailAddress) : null; // ContactNode
           
           // determine name part (left of email)
           addressee = address.replace(/\s*<\S+>\s*$/, "")
@@ -1099,7 +1139,7 @@ export class Parser {
         if (composeDetails.type=="new" && !subject) {
           // gMsgCompose.composeHTML
           const isHTMLMode = !composeDetails.isPlainText; 
-          subject = Util.wrapDeferredHeader("subject", subject, isHTMLMode);
+          subject = await Util.wrapDeferredHeader("subject", subject, isHTMLMode);
           Util.logDebugOptional("tokens.deferred",'regularize - wrapped missing header:\n' + subject);
         }
         return subject;
@@ -1165,7 +1205,7 @@ export class Parser {
                 let isHTML = !composeDetails.isPlainText;
                 if (isHTML)
                   flags.hasDeferredVars = true;  // SmartTemplate4.hasDeferredVars
-                s = Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
+                s = await Util.wrapDeferredHeader(str, el, isHTML, (composeType=='new')); // let's put in the reserved word as placeholder for simple deletion
               }
               Util.logDebugOptional("tokens.deferred",'classifyReservedWord - wrapped missing header:\n' + s);
             }
@@ -1315,7 +1355,7 @@ export class Parser {
         this.str = ("+0000" + date).replace(/.*([+-][0-9]{4,4})/, "$1");
         this.h = this.str.replace(/(.).*/, "$11") * (this.str.substr(1,1) * 10 + this.str.substr(2,1) * 1);
         this.m = this.str.replace(/(.).*/, "$11") * (this.str.substr(3,1) * 10 + this.str.substr(4,1) * 1);
-      } (hdr ? hdr.get("Date") : msgDbHdr.date);
+      } (hdr ? hdr.get("date") : msgDbHdr.date);
     }
     // TokenMap["headerName"] = mail Header
     // TokenMap["reserved"] = ST4 function
@@ -1618,7 +1658,7 @@ export class Parser {
             if (dateFormatSent)
               token = defaultTime;
             else
-              token = Util.wrapDeferredHeader(token + arg, defaultTime, !composeDetails.isPlainText, (composeType=='new'));
+              token = await Util.wrapDeferredHeader(token + arg, defaultTime, !composeDetails.isPlainText, (composeType=='new'));
             return token; 
           case "datelocal":
           case "dateshort":
@@ -1958,7 +1998,7 @@ export class Parser {
               if (Util.checkIsURLencoded(dmy))
                 return dmy; // this is HTML: we won't escape it.
                 
-              token = Util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), !composeDetails.isPlainText, (composeType=='new'));
+              token = await Util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), !composeDetails.isPlainText, (composeType=='new'));
               return token; 
             }
             // <----  early exit for non existent headers, e.g. "from" in Write case
@@ -1996,7 +2036,7 @@ export class Parser {
         Util.logIssue184("replaceReservedWords - (exception)");
         if (Util.checkIsURLencoded(dmy))
           return dmy;
-        token = Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
+        token = await Util.wrapDeferredHeader(token + arg, "??", !composeDetails.isPlainText);
         return token;
       }
       return escapeHtml(token);
@@ -2164,8 +2204,10 @@ export class Parser {
               // prepare for using relative paths from here...
               // assume we are within a template, to make matching subsequent relative paths possible.
               // should work for using %file(template.html)% in a SmartTemplate.
-              if (!flags.filePaths) 
+              if (!flags.filePaths) {
                 flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
+              }
+              Util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}`);
               flags.filePaths.push(path);
             }
             break;

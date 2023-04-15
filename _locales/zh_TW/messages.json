@@ -53,7 +53,7 @@
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
   "advanced.label": {
-    "message": "進階"
+    "message": "展開對話框"
   },
   "any.label": {
     "message": "任何 Header-line"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "收件者姓名"
   },
+  "clipboardFunctions": {
+    "message": "剪貼板功能"
+  },
+  "clipboard.copy": {
+    "message": "將文本複製到剪貼板。"
+  },
+  "clipboard.insert": {
+    "message": "在此位置插入當前剪貼板內容。"
+  },
+  "clipboard.from": {
+    "message": "（任何地址變量的示例）將原始發件人的郵件地址複製到剪貼板。"
+  },
+  "clipboard.setHeader": {
+    "message": "使用剪貼板內容設置抄送 - （適用於任何文本標題）。"
+  },
+  "clipboard.matchSubject": {
+    "message": "從主題中查找匹配的文本，如果找到則復製到剪貼板。"
+  },
+  "clipboard.matchBody": {
+    "message": "匹配原始電子郵件內容中的文本並將其複製到剪貼板（如果找到）。"
+  },
+  "clipboard.notes": {
+    "message": "如果沒有返回數據，任何使用 {toclip} 的函數都會清除剪貼板。 您可以使用剪貼板功能將數據傳輸到使用 {file} 命令加載的文本片段中。"
+  },
   "close.label": {
-    "message": "關閉"
+    "message": "折疊對話框"
   },
   "conditional.forwardMode": {
     "message": "如果以內聯方式轉發電子郵件，則會插入第一個text參數。 當郵件作為附件轉發時，將使用第二個text參數。"
@@ -629,13 +653,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$$5.00而不是$$10.00，即可完全使用Pro功能。 此特別優惠適用於{boldStart}至  $expiry${boldEnd}。",
+    "message": "此特別優惠適用於{boldStart}至  $expiry${boldEnd}。",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "許可證"
   },
   "licenseComparison": {
     "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
@@ -1034,7 +1061,7 @@
     "message": "用 <br> 替換純文本簽名中的換行符"
   },
   "pref_silentUpdates": {
-    "message": "靜默更新"
+    "message": "不要打開帶有版本歷史記錄的選項卡"
   },
   "pref_silentUpdates_tip": {
     "message": "更新 SmartTemplates 後不要打開更改日誌。"
@@ -1053,6 +1080,15 @@
   },
   "premiumConfig": {
     "message": "高級功能"
+  },
+  "pricing.section": {
+    "message": "要了解您的價格，請先選擇以下選項之一。 這將打開一個單獨的瀏覽器窗口，您可以在其中完成網上商店的購買。"
+  },
+  "pricing.section.hint": {
+    "message": "注意：價格因許可證型號、國家/地區、增值稅稅率、當前折扣或已購買的許可證而異。"
+  },  
+  "pricing.title": {
+    "message": "價錢"
   },
   "prompt.email": {
     "message": "輸入電子郵件地址"
@@ -1076,7 +1112,7 @@
     "message": "[可選，數字]最高引文級別，用於從對話中刪除較舊的引號。"
   },
   "quote_changers.cap": {
-    "message": "報價操縱"
+    "message": "引用文本修改"
   },
   "quote_changers.desc": {
     "message": "高級變量，用於從引用的零件中刪除文本/標籤並節省空間。"
@@ -1116,6 +1152,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "此功能不適用於某些遠程通訊簿，例如 LDAP。"
+  },
+  "resolveNamesFromCardBook": {
+    "message": "支持 CardBook（專業版功能）"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "如果找不到聯繫人，請使用標準地址簿"
   },
   "s.label": {
     "message": "秒 (00到59)"
@@ -1375,7 +1417,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月17日"
+    "message": "3月26日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1556,6 +1598,14 @@
   "tofwd.label": {
     "message": "使用 fwd 在轉發的郵件中添加可點擊的收件人"
   },
+  "tokenError": {
+    "message": "以下令牌生成錯誤：$token$\n請檢查您的模板是否存在語法錯誤。 所有變量都記錄在設置窗口中。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "原始收件人的電子郵件地址"
   },
@@ -1578,6 +1628,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "發行說明（英文）"
+  },
+  "updates.news": {
+    "message" : "最新消息"
+  },
   "updates.title": {
     "message": "更新"
   },
@@ -1592,6 +1648,9 @@
   },
   "url.supportPage.label": {
     "message": "支援網頁"
+  },
+  "variable.search": {
+    "message": "輸入搜索詞並按 {{Enter}}。 按 {{F3}} 重複搜索。"
   },
   "var_custom.cap": {
     "message": "自訂 '日期格式' 的變數"
@@ -1612,7 +1671,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}新的 {{toclipboard}} 參數用於地址字段，例如 {{%from(name)%}}，用於將結果復製到剪貼板。{L2} {L1}FiltaQuilla 使用智能模板自動轉發或回復電子郵件後， 錯誤的以下手動回複使用了相同的模板。{L2} {L1}修復了上下文菜單命令以更新和替換字段變量的內容。{L2} {L1}改進了參數 {{bracketMail}} 和 {{bracketName}} 以用於剪貼板。 {L2}{L1}修復了 {{%datelocal%}} 變量。{L2}{L1}改進了設置對話框中的可訪問性。{L2}"
+    "message": "{L1}維護版本 3.16.1 - 使用模板轉發（使用 FiltaQuilla 插件）不再自動發送生成的電子郵件。 已修復，請參閱 [issue 231]{L2} {L1}為 SmartTemplates Pro 用戶添加 CardBook 支持。 它可以在高級設置中啟用。{L2} {L1}向 {{chatname}} 開關添加過濾器參數，例如：{{%from(chatname.skype)%}}。{L2} {L1}現在拼寫檢查器 由 {{%spellcheck()%}} 命令激活 - 即使在組合設置中關閉{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

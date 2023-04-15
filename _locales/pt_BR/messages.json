@@ -50,7 +50,7 @@
     "message": "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
   },
   "advanced.label": {
-    "message": "Avançado"
+    "message": "Expandir caixa de diálogo"
   },
   "any.label": {
     "message": "Qualquer linha de cabeçalho"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "Nome do destinatário"
   },
+  "clipboardFunctions": {
+    "message": "Funções da área de transferência"
+  },
+  "clipboard.copy": {
+    "message": "copia o texto para a área de transferência."
+  },
+  "clipboard.insert": {
+    "message": "insere o conteúdo atual da área de transferência nesta posição."
+  },
+  "clipboard.from": {
+    "message": "(exemplo para qualquer variável de endereço) copie o endereço de e-mail do remetente original para a área de transferência."
+  },
+  "clipboard.setHeader": {
+    "message": "Use o conteúdo da área de transferência para definir o cc - (funciona para qualquer cabeçalho textual)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Localiza o texto correspondente do assunto e copia para a área de transferência, se encontrado."
+  },
+  "clipboard.matchBody": {
+    "message": "Corresponde ao texto do conteúdo original do e-mail e o copia para a área de transferência, se encontrado."
+  },
+  "clipboard.notes": {
+    "message": "Qualquer função que use {toclip} limpará a área de transferência se não retornar dados. Você pode usar as funções da área de transferência para transferir dados para um fragmento de texto carregado com o comando {file}."
+  },
   "close.label": {
-    "message": "Básico"
+    "message": "Caixa de diálogo Recolher"
   },
   "conditional.forwardMode": {
     "message": "Se o email for encaminhado inline, o primeiro parâmetro de texto será inserido. O segundo parâmetro de texto é usado quando o e-mail é encaminhado como anexo."
@@ -584,13 +608,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague apenas € 4,30 em vez de € 8,60 e tenha acesso total às funções Pro. Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
+    "message": "Esta oferta especial está disponível de {boldStart}a $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenças"
   },
   "licenseComparison": {
     "message": "Para comparar os recursos das diferentes versões, {linkStart}leia esta lista{linkEnd}."
@@ -965,7 +992,7 @@
     "message": "Substiuir quebras de linhas na assinatura de texto simples por <br>"
   },
   "pref_silentUpdates": {
-    "message": "Atualizações silenciosas"
+    "message": "Não abra guia com histórico de versões"
   },
   "pref_silentUpdates_tip": {
     "message": "Não abra o log de alterações após a atualização do SmartTemplates."
@@ -1000,6 +1027,15 @@
   "premiumConfig": {
     "message": "Recursos Premium"
   },
+  "pricing.section": {
+    "message": "Para saber o seu preço, selecione primeiro uma das seguintes opções. Isso abre uma janela separada do navegador onde você pode concluir a compra na loja virtual."
+  },
+  "pricing.section.hint": {
+    "message": "Nota: O preço varia consoante o modelo de licença, país, taxa de IVA, descontos em vigor ou licenças já adquiridas."
+  },  
+  "pricing.title": {
+    "message": "Preços"
+  },
   "prompt.email": {
     "message": "Digite um endereço de email"
   },
@@ -1022,7 +1058,7 @@
     "message": "[opcional, numérico] Nível máximo de citação para remover citações mais antigas da conversa."
   },
   "quote_changers.cap": {
-    "message": "Manipulação de Cotação"
+    "message": "Modificação de Texto Citado"
   },
   "quote_changers.desc": {
     "message": "Variáveis premium para remover texto / tags das partes citadas e economizar espaço."
@@ -1059,6 +1095,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "Este recurso não funciona com certos catálogos de endereços, como LDAP."
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Suporte CardBook (recurso profissional)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Use o catálogo de endereços padrão se nenhum contato for encontrado"
   },
   "s.label": {
     "message": "Segundo (00 a 59)"
@@ -1324,7 +1366,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 de julho"
+    "message": "26 de março"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1505,7 +1547,15 @@
   "tofwd.label": {
     "message": "Usar \"fwd\" para adicionar o destinatário clicável nos emails encaminhados"
   },
-  "tomail.label": {
+  "tokenError": {
+    "message": "O token a seguir gerou um erro: $token$\nVerifique se há erros de sintaxe em seu modelo. Todas as variáveis são documentadas na janela de configurações.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
+"tomail.label": {
     "message": "Endereço de e-mail do destinatário original"
   },
   "toname.label": {
@@ -1530,6 +1580,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Notas de lançamento (inglês)"
+  },
+  "updates.news": {
+    "message" : "Últimas notícias"
+  },
   "updates.title": {
     "message": "Atualizações"
   },
@@ -1544,6 +1600,9 @@
   },
   "url.supportPage.label": {
     "message": "Página de suporte"
+  },
+  "variable.search": {
+    "message": "Digite um termo de pesquisa e pressione {{Enter}}. Pressione {{F3}} para repetir a pesquisa."
   },
   "var_custom.cap": {
     "message": "Variáveis para data e hora personalizáveis "
@@ -1560,8 +1619,8 @@
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
-  "whats-new-list": {
-    "message": "{L1}Novo parâmetro {{toclipboard}} para campos de endereço como {{%from(name)%}} para copiar resultados para a área de transferência.{L2} {L1}Depois que o FiltaQuilla encaminhou ou respondeu automaticamente a um e-mail usando o smarttemplate, o mesmo modelo foi usado em uma resposta manual a seguir com erro.{L2} {L1}Reparado o comando do menu de contexto para atualizar e substituir variáveis de campo por conteúdo.{L2} {L1}Melhorou os parâmetros {{bracketMail}} e {{bracketName}} para usar com a área de transferência. {L2}{L1}Variável {{%datelocal%}} reparada.{L2}{L1}Acessibilidade aprimorada na caixa de diálogo de configurações.{L2}"
+  "|": {
+    "message": "{L1}Suporte usando o parâmetro {{toclipboard}} para copiar dados para a área de transferência várias vezes no mesmo modelo.{L2} {L1}Adicionado um campo de pesquisa de texto na página de variáveis.{L2} {L1}Cores aprimoradas na janela de variáveis ao usar temas escuros.{L2} {L1}Variáveis de cabeçalho reparadas com letras maiúsculas, como {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

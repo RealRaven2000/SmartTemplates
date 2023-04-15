@@ -53,7 +53,7 @@
     "message": "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
   },
   "advanced.label": {
-    "message": "Avanzado"
+    "message": "Diálogo Expandir"
   },
   "any.label": {
     "message": "Cualquier cabecera de línea"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Apellido del destinatario"
   },
+  "clipboardFunctions": {
+    "message": "Funciones del portapapeles"
+  },
+  "clipboard.copy": {
+    "message": "copia el texto al portapapeles."
+  },
+  "clipboard.insert": {
+    "message": "inserta el contenido actual del portapapeles en esta posición."
+  },
+  "clipboard.from": {
+    "message": "(ejemplo para cualquier variable de dirección) copie la dirección de correo del remitente original al portapapeles."
+  },
+  "clipboard.setHeader": {
+    "message": "Use el contenido del portapapeles para establecer el cc - (funciona para cualquier encabezado de texto)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Encuentra el texto coincidente del asunto y lo copia al portapapeles si lo encuentra."
+  },
+  "clipboard.matchBody": {
+    "message": "Hace coincidir el texto del contenido del correo electrónico original y lo copia en el portapapeles si lo encuentra."
+  },
+  "clipboard.notes": {
+    "message": "Cualquier función que use {toclip} borrará el portapapeles si no devuelve datos. Puede utilizar las funciones del portapapeles para transferir datos a un fragmento de texto que se carga con el comando {file}."
+  },
   "close.label": {
-    "message": "Cerrar"
+    "message": "Contraer cuadro de diálogo"
   },
   "conditional.forwardMode": {
     "message": "Si el correo electrónico se reenvía en línea, se inserta el primer parámetro de texto. El segundo parámetro de texto se utiliza cuando el correo se reenvía como archivo adjunto."
@@ -629,13 +653,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pague solo 4,30 € en lugar de 8,60 € y obtenga acceso completo a las funciones Pro. Esta oferta especial está disponible desde el {boldStart} hasta el $expiry$ {boldEnd}.",
+    "message": "Esta oferta especial está disponible desde el {boldStart} hasta el $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licencias"
   },
   "licenseComparison": {
     "message": "Para comparar las características de las diferentes versiones, {linkStart}lea esta lista{linkEnd}."
@@ -998,7 +1025,7 @@
     "message": "Reemplazar salto de línea por <br> en la firma de texto simple"
   },
   "pref_silentUpdates": {
-    "message": "Actualizaciones silenciosas"
+    "message": "No abrir página con historial de versiones"
   },
   "pref_silentUpdates_tip": {
     "message": "No abra el registro de cambios después de actualizar SmartTemplates."
@@ -1052,7 +1079,7 @@
     "message": "[opcional, numérico] Nivel máximo de citas para eliminar citas antiguas de la conversación."
   },
   "quote_changers.cap": {
-    "message": "Manipulación de cotizaciones"
+    "message": "Modificación del texto citado"
   },
   "quote_changers.desc": {
     "message": "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio."
@@ -1092,6 +1119,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "Esta funcionalidad no funciona con algunas agendas remotas como LDAP"
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Compatibilidad con CardBook (función profesional)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utilice la libreta de direcciones estándar si no se encuentra ningún contacto"
   },
   "s.label": {
     "message": "Segundo (00 a 59)"
@@ -1357,7 +1390,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 de julio"
+    "message": "26 de marzo"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1538,6 +1571,14 @@
   "tofwd.label": {
     "message": "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados"
   },
+  "tokenError": {
+    "message": "El siguiente token generó un error: $token$\nPor favor revise su plantilla para ver si hay errores de sintaxis. Todas las variables están documentadas en la ventana de configuración.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Dirección de correo electrónico del destinatario original"
   },
@@ -1566,6 +1607,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Notas de la versión (inglés)"
+  },
+  "updates.news": {
+    "message" : "Últimas noticias"
+  },
   "updates.title": {
     "message": "Actualizaciones"
   },
@@ -1580,6 +1627,9 @@
   },
   "url.supportPage.label": {
     "message": "Ayudar al sitio web"
+  },
+  "variable.search": {
+    "message": "Ingrese un término de búsqueda y presione {{Enter}}. Pulse {{F3}} para repetir la búsqueda."
   },
   "var_custom.cap": {
     "message": "Variables para formatos de fecha personalizados"
@@ -1600,7 +1650,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuevo parámetro {{toclipboard}} para campos de dirección como {{%from(name)%}} para copiar los resultados al portapapeles.{L2} {L1}Después de que FiltaQuilla reenviara o respondiera automáticamente un correo electrónico usando una plantilla inteligente, el la misma plantilla se había utilizado en una siguiente respuesta manual por error.{L2} {L1}Reparó el comando del menú contextual para actualizar y reemplazar las variables de campo con contenido.{L2} {L1}Mejoró los parámetros {{bracketMail}} y {{bracketName}} para usar con el portapapeles. {L2}{L1}Επιδιορθώθηκε η μεταβλητή {{%datelocal%}}.{L2}{L1}Βελτιωμένη προσβασιμότητα στο παράθυρο διαλόγου ρυθμίσεων.{L2}"
+    "message": "{L1}Versión de mantenimiento 3.16.1: el reenvío con plantilla (usando el complemento FiltaQuilla) ya no enviaba los correos electrónicos generados automáticamente. Solucionado, consulte [issue 231]{L2} {L1}Se agregó compatibilidad con CardBook para usuarios de SmartTemplates Pro. Se puede habilitar en la configuración avanzada.{L2} {L1}Se agregó un parámetro de filtro al interruptor {{chatname}}, por ejemplo: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortográfico ahora está activado por el comando {{%spellcheck()%}}, incluso si está desactivado en la configuración de composición{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

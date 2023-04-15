@@ -56,7 +56,7 @@
     "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   },
   "advanced.label": {
-    "message": "Advanced"
+    "message": "Expand Dialog"
   },
   "any.label": {
     "message": "Any Header-line"
@@ -166,8 +166,32 @@
   "ccname.label": {
     "message": "Recipient's name"
   },
+  "clipboardFunctions": {
+    "message": "Clipboard Functions"
+  },
+  "clipboard.copy": {
+    "message": "copies text to clipboard."
+  },
+  "clipboard.insert": {
+    "message": "inserts current clipboard contents at this position."
+  },
+  "clipboard.from": {
+    "message": "(example for any address variable) copy mail address of original sender to clipboard."
+  },
+  "clipboard.setHeader": {
+    "message": "Use clipboard contents to set the cc - (works for any textual header)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Match text from subject and copy to clipboard if found."
+  },
+  "clipboard.matchBody": {
+    "message": "Matches text from original email content and copies it to clipboard if found."
+  },
+  "clipboard.notes": {
+    "message": "Any function that uses {toclip} will clear the clipboard if it returns no data. You can use the clipboard functions to transfer data into a text fragment that is loaded with the {file} command."
+  },
   "close.label": {
-    "message": "Basic"
+    "message": "Collapse Dialog"
   },
   "conditional.forwardMode": {
     "message": "If the email is forwarded inline, the first text parameter is inserted. The second text parameter is used when the mail is forwarded as attachment."
@@ -354,6 +378,9 @@
   "fileHTML.label": {
     "message": "HTML or plain text file. UTF-8 is assumed when omitting the optional charset parameter."
   },
+  "fileImage.attributes": {
+    "message": "Optional list of attribute=value sets, such as 'id=image1,class=screenshot'."
+  },
   "fileImage.label": {
     "message": "Image file (png,jpg,gif,bmp,svg). The optional altText is displayed if the image can't be found."
   },
@@ -442,7 +469,7 @@
     "message": "Sender (From)"
   },
   "fromfirstname.label": {
-    "message": "Sender's firstname"
+    "message": "Sender's first name"
   },
   "frommail.label": {
     "message": "Sender's email address"
@@ -636,13 +663,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pay only $$5.00 instead of $$10.00 and get full access to the Pro functions. This special offer is available {boldStart}until $expiry${boldEnd}.",
+    "message": "This special offer is available {boldStart}until $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenses"
   },
   "licenseComparison" : {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
@@ -1047,7 +1077,7 @@
     "message": "Replace line breaks in plain text signature with <br>"
   },
   "pref_silentUpdates": {
-    "message": "Silent updates"
+    "message": "Do not open tab with version history"
   },
   "pref_silentUpdates_tip": {
     "message": "Don't open change log after SmartTemplates was updated."
@@ -1082,6 +1112,15 @@
   "premiumConfig": {
     "message": "Premium Features"
   },
+  "pricing.section": {
+    "message": "To find out your price, please select one of the following options first. This opens a separate browser window where you may complete the purchase in the web shop."
+  },
+  "pricing.section.hint": {
+    "message": "Note: The price varies depending on the license model, country, VAT rate, current discounts or licenses already purchased."
+  },  
+  "pricing.title": {
+    "message": "Pricing"
+  },  
   "prompt.email": {
     "message": "Enter an email address"
   },
@@ -1104,7 +1143,7 @@
     "message": "[optional, numeric] Maximum citation level to exclude older quotes from the conversation."
   },
   "quote_changers.cap": {
-    "message": "Quote Manipulation"
+    "message": "Quote Modification"
   },
   "quote_changers.desc": {
     "message": "Premium variables to remove text / tags from quoted parts and save space."
@@ -1144,6 +1183,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "This feature does not work with certain remote address books, such as LDAP."
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Support CardBook (pro feature)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Try standard address book if no contact is found"
   },
   "s.label": {
     "message": "Second (00 to 59)"
@@ -1418,7 +1463,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "July 17th"
+    "message": "March 26th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1608,6 +1653,14 @@
   "tofwd.label": {
     "message": "Use fwd to add the clickable recipient in forwarded mails"
   },
+  "tokenError": {
+    "message": "The following token generated an error: $token$\nPlease check your template for Syntax errors. All variables are documented on the settings window.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Original Recipient's email address"
   },
@@ -1636,6 +1689,12 @@
       }
     }
   },  
+  "updates.changeLog": {
+    "message" : "Release Notes (English)"
+  },
+  "updates.news": {
+    "message" : "Latest News"
+  },
   "updates.title": {
     "message": "Updates"
   },
@@ -1650,6 +1709,9 @@
   },
   "url.supportPage.label": {
     "message": "Support Page"
+  },
+  "variable.search": {
+    "message": "Enter a search term and press {{Enter}}. Press {{F3}} to repeat search. {{Shift}} + {{F3}} searches backwards."
   },
   "var_custom.cap": {
     "message": "Variables for customized 'Date format'"
@@ -1670,7 +1732,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}New {{toclipboard}} parameter for address fields such as {{%from(name)%}} to copy results to clipboard.{L2} {L1}After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used on a following manual reply in error.{L2} {L1}Repaired the context menu command to update and replace field variables with content.{L2} {L1}Improved the parameters {{bracketMail}} and {{bracketName}} for using with clipboard. {L2}{L1}Repaired {{%datelocal%}} variable.{L2}{L1}Improved accessibility in settings dialog.{L2}{L1}Variable {{%datelocal%}} reparada.{L2}{L1}Accesibilidad mejorada en el cuadro de diálogo de configuración.{L2}"
+    "message": "{L1}Maintenance version 3.16.1 - Forwarding with Template (using the FiltaQuilla Add-on) did not send off the generated Emails automatically any more. Fixed, see [issue 231]{L2} {L1}Added CardBook support for SmartTemplates Pro users. It can be enabled in advanced settings.{L2} {L1}Added filter parameter to {{chatname}} switch, eg: {{%from(chatname.skype)%}}.{L2} {L1}The spellchecker is now activated by the {{%spellcheck()%}} command - even if the turned of in composition settings{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

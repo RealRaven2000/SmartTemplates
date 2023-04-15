@@ -53,7 +53,7 @@
     "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
   },
   "advanced.label": {
-    "message": "Geavanceerd"
+    "message": "Dialoogvenster uitvouwen"
   },
   "any.label": {
     "message": "Elke headerregel"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Achternaam van ontvanger"
   },
+  "clipboardFunctions": {
+    "message": "Klembordfuncties"
+  },
+  "clipboard.copy": {
+    "message": "kopieert tekst naar het klembord."
+  },
+  "clipboard.insert": {
+    "message": "voegt de huidige inhoud van het klembord in op deze positie."
+  },
+  "clipboard.from": {
+    "message": "(voorbeeld voor elke adresvariabele) kopieer het e-mailadres van de oorspronkelijke afzender naar het klembord."
+  },
+  "clipboard.setHeader": {
+    "message": "Gebruik de inhoud van het klembord om de cc in te stellen - (werkt voor elke tekstuele kop)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Vindt overeenkomende tekst van onderwerp en kopieer naar klembord indien gevonden."
+  },
+  "clipboard.matchBody": {
+    "message": "Komt overeen met tekst van originele e-mailinhoud en kopieert deze naar het klembord als deze wordt gevonden."
+  },
+  "clipboard.notes": {
+    "message": "Elke functie die {toclip} gebruikt, zal het klembord wissen als er geen gegevens worden geretourneerd. U kunt de klembordfuncties gebruiken om gegevens over te zetten naar een tekstfragment dat wordt geladen met de opdracht {file}."
+  },
   "close.label": {
-    "message": "Sluiten"
+    "message": "Dialoogvenster samenvouwen"
   },
   "conditional.forwardMode": {
     "message": "Als de e-mail inline wordt doorgestuurd, wordt de eerste tekstparameter ingevoegd. De tweede tekstparameter wordt gebruikt wanneer de e-mail als bijlage wordt doorgestuurd."
@@ -626,13 +650,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betaal slechts € 4,30 in plaats van € 8,60 en krijg volledige toegang tot de Pro-functies. Deze speciale aanbieding is geldig van {boldStart}tot $expiry${boldEnd}.",
+    "message": "Deze speciale aanbieding is geldig van {boldStart}tot $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenties"
   },
   "licenseComparison": {
     "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
@@ -977,7 +1004,7 @@
     "message": "Regelafbrekingen in ondertekening in platte tekst vervangen door <br>"
   },
   "pref_silentUpdates": {
-    "message": "Stille updates"
+    "message": "Tabblad met versiegeschiedenis niet openen"
   },
   "pref_silentUpdates_tip": {
     "message": "Geen wijzigingslijst openen nadat SmartTemplates is bijgewerkt"
@@ -1012,6 +1039,15 @@
   "premiumConfig": {
     "message": "Premium-functies"
   },
+  "pricing.section": {
+    "message": "Selecteer eerst een van de volgende opties om uw prijs te weten te komen. Hierdoor wordt een apart browservenster geopend waar u de aankoop in de webshop kunt afronden."
+  },
+  "pricing.section.hint": {
+    "message": "Opmerking: de prijs varieert afhankelijk van het licentiemodel, het land, het btw-tarief, huidige kortingen of reeds gekochte licenties."
+  },  
+  "pricing.title": {
+    "message": "Prijzen"
+  },
   "prompt.email": {
     "message": "Voer een e-mailadres in"
   },
@@ -1034,7 +1070,7 @@
     "message": "[optioneel, numeriek] Maximaal citatieniveau om oudere citaten uit het gesprek te verwijderen."
   },
   "quote_changers.cap": {
-    "message": "Aanhalingsmanipulatie"
+    "message": "Aanpassing van geciteerde tekst"
   },
   "quote_changers.desc": {
     "message": "Premiumvariabelen om tekst/labels uit aangehaalde delen te verwijderen en ruimte te besparen."
@@ -1074,6 +1110,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "Deze functie werkt niet met bepaalde adresboeken op afstand, zoals LDAP."
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Ondersteuning CardBook (pro-functie)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Gebruik standaard adresboek als er geen contact is gevonden"
   },
   "s.label": {
     "message": "Seconde (00 tot 59)"
@@ -1336,7 +1378,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 juli"
+    "message": "26 maart"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1520,6 +1562,14 @@
   "tofwd.label": {
     "message": "Gebruik fwd om een aanklikbare ontvanger in doorgestuurde e-mailberichten toe te voegen"
   },
+  "tokenError": {
+    "message": "Het volgende token genereerde een fout: $token$\nControleer uw sjabloon op syntaxisfouten. Alle variabelen zijn gedocumenteerd in het instellingenvenster.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "E-mailadres van oorspronkelijke ontvanger"
   },
@@ -1542,6 +1592,15 @@
   "updatesExpiry": {
     "message": "SmartTemplates Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als gratis gebruikers. Functies exclusief voor premium vereisen een geldige licentiesleutel."
   },
+  "updates.changeLog": {
+    "message" : "Release-opmerkingen (Engels)"
+  },
+  "updates.news": {
+    "message" : "Laatste nieuws"
+  },
+  "updates.title": {
+    "message": "Updates"
+  },  
   "url.bugsAndFeaturesPage.label": {
     "message": "Bugrapporten / Functieaanvragen"
   },
@@ -1550,6 +1609,9 @@
   },
   "url.supportPage.label": {
     "message": "Ondersteuningspagina"
+  },
+  "variable.search": {
+    "message": "Voer een zoekterm in en druk op {{Enter}}. Druk op {{F3}} om het zoeken te herhalen."
   },
   "var_custom.cap": {
     "message": "Variabelen voor aangepaste datumopmaak"
@@ -1570,7 +1632,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Nieuwe {{toclipboard}} parameter voor adresvelden zoals {{%from(name)%}} om resultaten naar het klembord te kopiëren.{L2} {L1}Nadat FiltaQuilla automatisch een e-mail heeft doorgestuurd of beantwoord met smarttemplate, zal de dezelfde sjabloon was foutief gebruikt bij een volgend handmatig antwoord.{L2} {L1}De opdracht in het contextmenu hersteld om veldvariabelen bij te werken en te vervangen door inhoud.{L2} {L1}De parameters {{bracketMail}} en {{bracketName}} verbeterd voor gebruik met klembord. {L2}{L1}Gerepareerde {{%datelocal%}} variabele.{L2}{L1}Verbeterde toegankelijkheid in instellingendialoog.{L2}"
+    "message": "{L1} Onderhoudsversie 3.16.1 - Doorsturen met sjabloon (met behulp van de FiltaQuilla-add-on) stuurde de gegenereerde e-mails niet meer automatisch. Opgelost, zie [issue 231]{L2} {L1} Kaartboekondersteuning toegevoegd voor SmartTemplates Pro -gebruikers. Het kan worden ingeschakeld in geavanceerde instellingen. {L2} {L1} toegevoegde filterparameter aan {{chatName}} schakelaar, bijv.: {{%from(chatname.skype)%}}. {L2} {L1} De spellchecker is nu geactiveerd door de opdracht {{%spellcheck()%}} - zelfs als de omgekeerde instellingen {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

@@ -9,9 +9,11 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK
 */
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 SmartTemplate4.Preferences = {
 	Prefix: "extensions.smartTemplate4.",
-	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
+	service: Services.prefs,
 
 	get isDebug() {
 		return this.getMyBoolPref("debug");
@@ -37,9 +39,9 @@ SmartTemplate4.Preferences = {
     try {
 		  const Ci = Components.interfaces, Cc = Components.classes;
 			prefString = 
-				this.service.getStringPref ?
-				this.service.getStringPref(key) :
-        this.service.getCharPref(key);
+				Services.prefs.getStringPref ?
+				Services.prefs.getStringPref(key) :
+        Services.prefs.getCharPref(key);
     }
     catch(ex) {
       SmartTemplate4.Util.logDebug("Could not find string pref: " + p + "\n" + ex.message);
@@ -50,20 +52,20 @@ SmartTemplate4.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-    return this.service.setStringPref(this.Prefix + p, v);
+    return Services.prefs.setStringPref(this.Prefix + p, v);
 	},
 
 	getIntPref: function(p) {
-		return this.service.getIntPref(p);
+		return Services.prefs.getIntPref(p);
 	},
 
 	setIntPref: function(p, v) {
-		return this.service.setIntPref(p, v);
+		return Services.prefs.setIntPref(p, v);
 	},
 
 	getBoolPref: function(p) {
 		try {
-			return this.service.getBoolPref(p);
+			return Services.prefs.getBoolPref(p);
 		} catch(e) {
 			let s="Err:" +e;
 			SmartTemplate4.Util.logToConsole("getBoolPref("+p+") failed:\n" + s);
@@ -89,7 +91,7 @@ SmartTemplate4.Preferences = {
 
 	setBoolPref: function(p, v) {
 		try {
-			return this.service.setBoolPref(p, v);
+			return Services.prefs.setBoolPref(p, v);
 		} catch(e) {
 			let s="Err:" +e;
 			return false;
@@ -97,18 +99,18 @@ SmartTemplate4.Preferences = {
 	} ,
 
 	setMyStringPref: function(p, v) {
-		return this.service.setCharPref(this.Prefix + p, v);
+		return Services.prefs.setCharPref(this.Prefix + p, v);
 	} ,
 
 	getMyStringPref: function(p) {
-		return this.service.getCharPref(this.Prefix + p);
+		return Services.prefs.getCharPref(this.Prefix + p);
 	} ,
 
 	existsCharPref: function(pref) {
 		try {
-			if(this.service.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref))
 				return true;
-			if (this.service.getCharPref(pref))
+			if (Services.prefs.getCharPref(pref))
 				return true;
 		}
 		catch (e) {return false; }
@@ -117,9 +119,9 @@ SmartTemplate4.Preferences = {
 
 	existsBoolPref: function(pref) {
 		try {
-			if(this.service.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref))
 				return true;
-			if (this.service.getBoolPref(pref))
+			if (Services.prefs.getBoolPref(pref))
 				return true;
 		}
 		catch (e) {return false; }
@@ -128,7 +130,7 @@ SmartTemplate4.Preferences = {
 
 	getBoolPrefSilent: function(pref) {
 		try {
-			return this.service.getBoolPref(pref);
+			return Services.prefs.getBoolPref(pref);
 		}
 		catch(e) {
 			return false;

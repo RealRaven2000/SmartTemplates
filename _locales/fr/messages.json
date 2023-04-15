@@ -56,7 +56,7 @@
     "message": "Pour continuer à être utiles, nous, les développeurs de modules complémentaires, devons désormais financer les ressources nécessaires pour corriger et réécrire afin que nos utilisateurs puissent continuer à bénéficier des fonctionnalités que nous fournissons."
   },
   "advanced.label": {
-    "message": "Avancés"
+    "message": "Développer la boîte de dialogue"
   },
   "any.label": {
     "message": "N'importe quel entête"
@@ -166,8 +166,32 @@
   "ccname.label": {
     "message": "Noms des destinataires en copie"
   },
+  "clipboardFunctions": {
+    "message": "Fonctions du Presse-papiers"
+  },
+  "clipboard.copy": {
+    "message": "copie le texte dans le presse-papiers."
+  },
+  "clipboard.insert": {
+    "message": "insère le contenu actuel du presse-papiers à cette position."
+  },
+  "clipboard.from": {
+    "message": "(exemple pour toute variable d'adresse) copier l'adresse e-mail de l'expéditeur d'origine dans le presse-papiers."
+  },
+  "clipboard.setHeader": {
+    "message": "Utilisez le contenu du presse-papiers pour définir le cc - (fonctionne pour n'importe quel en-tête textuel).board."
+  },
+  "clipboard.matchSubject": {
+    "message": "Trouve le texte correspondant du sujet et le copie dans le presse-papiers s'il est trouvé."
+  },
+  "clipboard.matchBody": {
+    "message": "Correspond au texte du contenu de l'e-mail d'origine et le copie dans le presse-papiers s'il est trouvé."
+  },
+  "clipboard.notes": {
+    "message": "Toute fonction qui utilise {toclip} effacera le presse-papiers si elle ne renvoie aucune donnée. Vous pouvez utiliser les fonctions du presse-papiers pour transférer des données dans un fragment de texte chargé avec la commande {file}."
+  },
   "close.label": {
-    "message": "Fermer"
+    "message": "Réduire la boîte de dialogue"
   },
   "conditional.forwardMode": {
     "message": "Si l'e-mail est transféré en ligne, le premier paramètre de texte est inséré. Le deuxième paramètre de texte est utilisé lorsque le courrier est transféré en tant que pièce jointe."
@@ -632,13 +656,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Payez seulement 4,30 € au lieu de 8,60 € et obtenez un accès complet aux fonctions Pro. Cette offre spéciale est disponible du {boldStart}jusqu'au  $expiry${boldEnd}.",
+    "message": "Cette offre spéciale est disponible du {boldStart}jusqu'au  $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licences"
   },
   "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEnd}."
@@ -1034,7 +1061,7 @@
     "message": "Remplacer les retours à la ligne dans les signatures en texte brut par des <br>"
   },
   "pref_silentUpdates": {
-    "message": "Mises à jour silencieuses"
+    "message": "Ne pas ouvrir l'onglet avec l'historique des versions"
   },
   "pref_silentUpdates_tip": {
     "message": "N'ouvrez pas le journal des modifications après la mise à jour de SmartTemplates."
@@ -1091,7 +1118,7 @@
     "message": "[facultatif, numérique] Niveau de citation maximal pour supprimer les anciennes citations de la conversation."
   },
   "quote_changers.cap": {
-    "message": "Manipulation de devis"
+    "message": "Modification du texte cité"
   },
   "quote_changers.desc": {
     "message": "Variables premium pour supprimer le texte / les balises des pièces citées et économiser de l'espace."
@@ -1131,6 +1158,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "Cette option ne fonctionne pas avec certains carnets d'adresses tel que LDAP."
+  },
+  "resolveNamesFromCardBook": {
+    "message": "Prise en charge de CardBook (fonctionnalité pro)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utiliser le carnet d'adresses standard si aucun contact n'est trouvé"
   },
   "s.label": {
     "message": "Secondes (00 à 59)"
@@ -1399,7 +1432,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 juillet"
+    "message": "26 mars"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1586,6 +1619,14 @@
   "tofwd.label": {
     "message": "Utiliser « transférer » pour ajouter un destinataire cliquable dans les courriels transférés"
   },
+  "tokenError": {
+    "message": "Le jeton suivant a généré une erreur : $token$\nVeuillez vérifier votre modèle pour les erreurs de syntaxe. Toutes les variables sont documentées dans la fenêtre des paramètres.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Adresse e-mail du destinataire d'origine"
   },
@@ -1614,6 +1655,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Notes de version (anglais)"
+  },
+  "updates.news": {
+    "message" : "Dernières nouvelles"
+  },
   "updates.title": {
     "message": "Mises à jour"
   },
@@ -1628,6 +1675,9 @@
   },
   "url.supportPage.label": {
     "message": "Page d'aide"
+  },
+  "variable.search": {
+    "message": "Saisissez un terme de recherche et appuyez sur {{Entrée}}. Appuyez sur {{F3}} pour répéter la recherche."
   },
   "var_custom.cap": {
     "message": "Variables pour personnaliser le format de date"
@@ -1648,7 +1698,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Nouveau paramètre {{toclipboard}} pour les champs d'adresse tels que {{%from(name)%}} pour copier les résultats dans le presse-papiers.{L2} {L1}Après que FiltaQuilla ait automatiquement transféré ou répondu à un e-mail à l'aide de smarttemplate, le le même modèle avait été utilisé lors d'une réponse manuelle suivante par erreur.{L2} {L1}Réparation de la commande du menu contextuel pour mettre à jour et remplacer les variables de champ par du contenu.{L2} {L1}Amélioration des paramètres {{bracketMail}} et {{bracketName}} à utiliser avec le presse-papiers. {L2}{L1}Variable {{%datelocal%}} réparée.{L2}{L1}Amélioration de l'accessibilité dans la boîte de dialogue des paramètres.{L2}"
+    "message": "{L1}Version de maintenance 3.16.1 - Le transfert avec modèle (à l'aide du module complémentaire FiltaQuilla) n'envoyait plus automatiquement les e-mails générés. Corrigé, voir [issue 231]{L2} {L1}Ajout de la prise en charge de CardBook pour les utilisateurs de SmartTemplates Pro. Il peut être activé dans les paramètres avancés.{L2} {L1}Paramètre de filtre ajouté au commutateur {{chatname}}, par exemple : {{%from(chatname.skype)%}}.{L2} {L1}Le correcteur orthographique est maintenant activé par la commande {{%spellcheck()%}} - même si désactivé dans les paramètres de composition{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -50,7 +50,7 @@
     "message": "有用なアドオンであり続けるためには継続的な開発が必要ですが、それには金銭的な支援が欠かせません。これにより、ユーザーは新機能の恩恵を受け続けることができます。"
   },
   "advanced.label": {
-    "message": "詳細設定"
+    "message": "ダイアログを展開"
   },
   "any.label": {
     "message": "任意のヘッダー行"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "CC 受信者の名前"
   },
+  "clipboardFunctions": {
+    "message": "クリップボード機能"
+  },
+  "clipboard.copy": {
+    "message": "テキストをクリップボードにコピーします。"
+  },
+  "clipboard.insert": {
+    "message": "現在のクリップボードの内容をこの位置に挿入します。"
+  },
+  "clipboard.from": {
+    "message": "(任意のアドレス変数の例) 元の送信者のメールアドレスをクリップボードにコピーします。"
+  },
+  "clipboard.setHeader": {
+    "message": "クリップボードの内容を使用して cc - を設定します (任意のテキスト ヘッダーで機能します)。"
+  },
+  "clipboard.matchSubject": {
+    "message": "件名から一致するテキストを検索し、見つかった場合はクリップボードにコピーします。"
+  },
+  "clipboard.matchBody": {
+    "message": "元の電子メール コンテンツのテキストを照合し、見つかった場合はクリップボードにコピーします。"
+  },
+  "clipboard.notes": {
+    "message": "{toclip} を使用する関数は、データが返されない場合、クリップボードをクリアします。 クリップボード関数を使用して、{file} コマンドで読み込まれるテキスト フラグメントにデータを転送できます。"
+  },
   "close.label": {
-    "message": "閉じる"
+    "message": "ダイアログを折りたたむ"
   },
   "conditional.forwardMode": {
     "message": "電子メールがインラインで転送される場合、最初のテキストパラメーターが挿入されます。2番目のテキストパラメーターは、メールが添付ファイルとして転送されるときに使用されます。"
@@ -626,13 +650,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "$$10.00 ではなく $$5.00 を支払うだけで、プレミアム機能へのフルアクセスを取得できます。この特別オファーは、{boldStart}$expiry$ まで{boldEnd} ご利用いただけます。",
+    "message": "この特別オファーは、{boldStart}$expiry$ まで{boldEnd} ご利用いただけます。",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "ライセンス"
   },
   "licenseComparison": {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
@@ -1016,7 +1043,7 @@
     "message": "プレーンテキスト形式の署名に含まれる改行を <br> で置換する"
   },
   "pref_silentUpdates": {
-    "message": "更新履歴の非表示"
+    "message": "バージョン履歴のあるタブを開かない"
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates の更新後に、更新履歴を表示しません"
@@ -1073,7 +1100,7 @@
     "message": "[オプション、数値] 会話から古い引用を削除するための最大引用レベル。"
   },
   "quote_changers.cap": {
-    "message": "引用部の操作"
+    "message": "引用テキストの修正"
   },
   "quote_changers.desc": {
     "message": "引用部からテキストやタグを除去することでスペースを節約するための特別な変数です。"
@@ -1113,6 +1140,12 @@
   },
   "resolveNamesFromAB_tip": {
     "message": "この機能は、LDAP などのいくつかの種類のリモートのアドレス帳では機能しません。"
+  },
+  "resolveNamesFromCardBook": {
+    "message": "CardBook (プロ機能) をサポート"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "連絡先が見つからない場合は、標準のアドレス帳を使用する"
   },
   "s.label": {
     "message": "秒 (00 から 59)"
@@ -1375,7 +1408,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月17日"
+    "message": "3月26日"
   },
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
@@ -1562,6 +1595,14 @@
   "tofwd.label": {
     "message": "転送メッセージの受信者の追加に fwd を使用する"
   },
+  "tokenError": {
+    "message": "次のトークンでエラーが発生しました: $token$\nテンプレートの構文エラーを確認してください。 すべての変数は、設定ウィンドウに記載されています。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "元の受信者のメールアドレス"
   },
@@ -1590,6 +1631,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "リリースノート (英語)"
+  },
+  "updates.news": {
+    "message" : "最新ニュース"
+  },
   "updates.title": {
     "message": "更新について"
   },
@@ -1604,6 +1651,9 @@
   },
   "url.supportPage.label": {
     "message": "サポート"
+  },
+  "variable.search": {
+    "message": "検索語を入力して {{Enter}} を押します。 {{F3}} を押して検索を繰り返します。"
   },
   "var_custom.cap": {
     "message": "日時に関する変数"
@@ -1624,7 +1674,7 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1}結果をクリップボードにコピーするための{{％from（name）％}}などのアドレスフィールドの新しい{{toclipboard}}パラメータ。{L2} {L1} FiltaQuillaがsmarttemplateを使用して電子メールに自動的に転送または返信した後、 次の手動応答で同じテンプレートが誤って使用されていました。{L2}{L1}コンテキストメニューコマンドを修正して、フィールド変数を更新し、コンテンツに置き換えました。{L2}{L1}パラメータ{{bracketMail}}と{{bracketName}} クリップボードで使用するための。 {L2}{L1} {{%datelocal%}}変数を修復しました。{L2}{L1}設定ダイアログのアクセシビリティを改善しました。{L2}"
+    "message": "{L1}メンテナンス バージョン 3.16.1 - テンプレートを使用した転送 (FiltaQuilla アドオンを使用) で、生成されたメールが自動的に送信されなくなりました。 修正済み。[issue 231] を参照 {L2} {L1}SmartTemplates Pro ユーザー向けに CardBook のサポートを追加しました。 詳細設定で有効にすることができます。{L2} {L1}フィルター パラメーターを {{chatname}} スイッチに追加しました。例: {{%from(chatname.skype)%}}。{L2} {L1}スペルチェッカーは現在 {{%spellcheck()%}} コマンドで有効化 - コンポジション設定で無効にしても{L2}"
   },
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"

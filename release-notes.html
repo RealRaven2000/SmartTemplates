@@ -1,27 +1,27 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.13">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.16.1">can be found here</a>
+<b>Maintenance version 3.16.1</b>
+<ul>
+<li>Fixed: Forward with Template doesn't send off mail automatically any more. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/231">[issue 231] </a></li>
+<li> Fixed: Scripts in template  <code>%{%</code> <code>%}%</code> - <a href="https://github.com/RealRaven2000/SmartTemplates/issues/229">[issue 229] </a></li>
+<li> Fixed: <code class="inline">%from(addressbook,nickname)%</code> created an error when trying to use CardBook. </li>
+
+</ul>
+
 
 <b>Enhancements</b>
 <ul>
-<li>New <code class="inline">toclipboard</code> parameter for address fields such as <code>%from(name)%</code> to copy results to clipboard.</li> 
-<li>Improved the parameters <code class="inline">bracketMail</code> and <code class="inline">bracketName</code> for using with clipboard. These now do not encode the &lt; and &gt; signs anymore.</li>
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/208">[issue 208]</a> Improved accessibility for settings dialog. tabs and buttons can now be navigated using keyboard only.</li>
+<li> Added CardBook support (Pro License Feature). You need to install Cardbook 84.5 as a minimal version to retrieve the addresses from it. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/50">[issue 50]</a>. You can enable this feature on the advanced settings page.
+</li>
+<li>Also added platform switches to chatname, which select a specific chat name based on the what it is for, such as %from(chatname.skype)% You can find all currently supported switches on the variables page under
+the section 'Address Book Fields' and can be combined with all address-related variables such as %to%, %from%, %cc%, %recipient% or %identity%.</li>
 </ul>
-
 
 <b>Bug Fixes / Maintenance</b>
 <ul>
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/205">[issue 205]</a> Fixed: After FiltaQuilla automatically forwarded or replied to an email using smarttemplate, the same template had been used in error on a following manual reply in error.</li> 
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/204">[issue 204]</a> Repaired the context menu command to update and replace field variables with content (without updating the content - to update it just use a left click beforehand).</li> 
-<li><a href="https://github.com/RealRaven2000/SmartTemplates/issues/206">[issue 206]</a> Repaired: %datelocal% returned a blank space instead of the localized date.</li>
+<li> Fixed: Template Categories containing space characters disrupt the template menus  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/222">[issue 222]</a></li>
+<li> Fixed: bracketName(";") parameter was broken.  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/219">[issue 219]</a></li>
 </ul>
 
-<b>Miscellaneous</b>
-<ul>
-<li> In Thunderbird 102 We now use compose-window-init event in 102 to reliably attain headers at an earlier 
-stage - in order to extract headers from the original email.
-</li>
-</ul>
-  

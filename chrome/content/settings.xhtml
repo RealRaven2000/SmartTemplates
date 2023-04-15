@@ -504,6 +504,8 @@
 			<preference name="extensions.smartTemplate4.mime.resolveAB.preferNick" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.resolveAB.displayName" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.resolveAB.removeEmail" type="bool" instantApply="true"/>
+			<preference name="extensions.smartTemplate4.mime.resolveAB.CardBook" type="bool" instantApply="true"/>
+			<preference name="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.names.capitalize" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.names.guessFromMail" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.defaultFormat" type="string" instantApply="true"/>
@@ -522,7 +524,7 @@
 				<tab id="templatesTab" label="__MSG_pref_examples.tab__" 
 				     tooltiptext="__MSG_pref_examples.tooltip__" />
 				<tab id="aboutTab"  label="__MSG_about.cap__" /> 
-				<tab id="SmartTemplate4-Pro" label="SmartTemplates License"  class="free" />
+				<tab id="SmartTemplate4-Pro" label="___MSG_license-tab__"  class="free" />
 				<tab id="supportTab" label="__MSG_support.tab__" collapsed="true" /> 
 			</tabs>
 	
@@ -700,11 +702,16 @@
 										<checkbox id="chkResolveABDisplay"
 												 label="__MSG_resolveNamesFromABDisplay__"
 												 preference="extensions.smartTemplate4.mime.resolveAB.displayName"/>
-												 
 										<checkbox id="chkResolveABRemoveMail"
 												 label="__MSG_resolveABRemoveMail__"
 												 tooltiptext="This will hide the mail address when using plain %cc% etc. if address book entry was found."
 												 preference="extensions.smartTemplate4.mime.resolveAB.removeEmail"/>
+										<checkbox id="chkResolveABCardBook"
+												label="__MSG_resolveNamesFromCardBook__"
+												preference="extensions.smartTemplate4.mime.resolveAB.CardBook"/>
+												<checkbox id="chkCardBookFallback" style="margin-left: 2em"
+												          label="__MSG_resolveNamesFromCardBook.fallback__"
+																	preference="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback"/>
 										
 									</vbox>
 								</hbox>
@@ -845,21 +852,39 @@
 						<spacer flex="1" />
 					</hbox>				
 					<hbox>
-						<groupbox id="premiumConfig" disabled="true">
+						<groupbox id="premiumConfig" >
 							<hbox class="groupbox-title"><label class="header">__MSG_premiumConfig__</label></hbox>
 							<hbox>
 								<label class="plain-link" 
 											 tooltiptext="https://smarttemplates.quickfolders.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">__MSG_label.premiumFeaturesSite__</label>
 							</hbox>
+						</groupbox>
+					</hbox>				
+					<hbox>
+						<groupbox id="updates" >
+							<hbox class="groupbox-title"><label class="header">__MSG_updates.title__</label></hbox>
               <hbox>
                 <checkbox id="chkSilentUpdates"
                       label="__MSG_pref_silentUpdates__"
                       tooltiptext="__MSG_pref_silentUpdates_tip__"
                       preference="extensions.smartTemplate4.silentUpdate"
-                      disabled="true" /> 
+                      /> 
+                      
               </hbox>
+              <hbox>
+                <button id="btnNewsSplash"
+                        class="showSplash"
+                        label="__MSG_updates.news__"
+                        oncommand="SmartTemplate4.Util.viewSplashScreen(); window.close();"/>
+                <button id="btnVersionInfo"
+                        label="__MSG_updates.changeLog__"
+                        oncommand="SmartTemplate4.Util.showVersionHistory(false); window.close();"/>
+              </hbox>
+              
+              
 						</groupbox>
+            
 					</hbox>
 					<!-- will be populated / modified from bundle in code -->
 				</tabpanel>

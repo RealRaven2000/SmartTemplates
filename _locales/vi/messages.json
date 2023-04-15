@@ -131,7 +131,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "Ngày 17 tháng 7"
+    "message": "ngày 26 tháng 3"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -231,9 +231,26 @@
       }
     }
   },
+  "tokenError": {
+    "message": "Mã thông báo sau đã tạo ra lỗi: $token$\nVui lòng kiểm tra mẫu của bạn để biết lỗi Cú pháp. Tất cả các biến được ghi lại trên cửa sổ cài đặt.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "bản dịch do google cung cấp"
+  },
+  "updates.changeLog": {
+    "message" : "Ghi chú phát hành (tiếng Anh)"
+  },
+  "updates.news": {
+    "message" : "Tin mới nhất"
+  },
+  "updates.title": {
+    "message": "Cập nhật"
   },
   "whats-new-btn": {
     "message": "Có gì mới?"
@@ -245,7 +262,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Tham số {{toclipboard}} mới cho các trường địa chỉ như {{%from (name)%}} để sao chép kết quả vào khay nhớ tạm. {L2} {L1} Sau khi FiltaQuilla tự động chuyển tiếp hoặc trả lời email bằng smarttemplate, cùng một mẫu đã được sử dụng trong một câu trả lời thủ công sau do nhầm lẫn. {L2} {L1} Đã sửa chữa lệnh menu ngữ cảnh để cập nhật và thay thế các biến trường bằng nội dung. {L2} {L1} Đã cải thiện các tham số {{bracketMail}} và {{bracketName}} để sử dụng với khay nhớ tạm. {L2}{L1} Đã sửa chữa biến {{%datelocal%}}. {L2} {L1} Khả năng truy cập được cải thiện trong hộp thoại cài đặt. {L2}"
+    "message": "{L1}Phiên bản bảo trì 3.16.1 - Chuyển tiếp bằng Mẫu (sử dụng Tiện ích bổ sung FiltaQuilla) không tự động gửi Email được tạo nữa. Đã sửa lỗi, xem [issue 231]{L2} {L1}Đã thêm hỗ trợ CardBook cho người dùng SmartTemplates Pro. Nó có thể được bật trong cài đặt nâng cao.{L2} {L1}Đã thêm tham số bộ lọc vào khóa chuyển {{chatname}}, ví dụ: {{%from(chatname.skype)%}}.{L2} {L1}Trình kiểm tra chính tả hiện đã có được kích hoạt bởi lệnh {{%spellcheck()%}} - ngay cả khi đã tắt trong cài đặt sáng tác{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
