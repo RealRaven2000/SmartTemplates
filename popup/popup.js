@@ -118,11 +118,16 @@ async function updateActions(addonName) {
     }
   }
   else {
-    if (isSale && !isValid) { // not shown with Standard license either.
-      show('specialOffer');
-      hideSelectorItems('.donations');
-      hide('whyPurchase');
-			isActionList = false;
+    if (isSale) {
+      if (!isValid) { // not shown with Standard license either.
+        show('specialOffer');
+        hideSelectorItems('.donations');
+        hide('whyPurchase');
+        isActionList = false;
+      } else if (isProUser && licenseInfo.licensedDaysLeft<=10) {
+        show('specialOfferRenew');
+        hide('purchaseSection');
+      }
     }
   }  
   if (!isActionList) {
