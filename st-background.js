@@ -50,8 +50,14 @@ var ComposeAction = {};
       case "update":
         {
           setTimeout(
-            function() {
-              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+            async function() {
+              let ver = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.version","0");
+              const manifest = await messenger.runtime.getManifest();
+              // get pure version number / remove pre123 indicator
+              let installedVersion = manifest.version.replace(/pre*./,""); 
+              if (ver > installedVersion) {
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              }
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
               messenger.NotifyTools.notifyExperiment({event: "firstRun"});
             },

@@ -230,6 +230,19 @@ END LICENSE BLOCK
     # [issue 231] Forward with Template doesn't send off mail automatically any more
     # [issue 229] Fixed Scripts fields %{% %}% 
     # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
+
+  Version 3.17 - WIP
+    # to encourage license renewals: Show bargain section in splash screen if <=10 days to expiry
+    # [issue 232] Added pricing section to licensing dialog
+    # Added Czech translation to licensing dialog
+    # [issue 234] Correct the Number of days left in license by rounding up
+    # [issue 233] Improvements in Template Manager: Category prefix, [add sorting?]
+    # do not trigger "news" unless min ver changes at least.
+    # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
+    #   will be 4 under the new branch 5.0
+
+
+
     
 
 =========================

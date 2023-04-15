@@ -3899,6 +3899,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           arg = arg || "";
           if (prefs.isDebugOption('sandbox')) debugger;
           let retVariable = replaceReservedWords("", name, arg || "");
+          // await SmartTemplate4.Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords)
           util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
             + 'returns: ' + retVariable);
           return retVariable;
@@ -3929,6 +3930,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               }
               if (arg === implicitNull) arg = "";
               else arg = "("+arg+")";    //handles the case %%name(arg)%% and returns the same as %name(arg)%
+              // PROBLEM: replaceReservedWords is now async!
+              // we need to:
+              // await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
               let sbVal = replaceReservedWords("", aname, arg);
               util.logDebugOptional('sandbox','sandbox[' + aname +'] returns:' + sbVal);
               return sbVal;
