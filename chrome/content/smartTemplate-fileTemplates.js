@@ -107,8 +107,9 @@ SmartTemplate4.fileTemplates = {
 	// adds an item to currently visible list
   addItem: function addItem(path, label, cat="", lb) {
     let listbox = lb || this.ListBox;
-    if (listbox)
+    if (listbox) {
       listbox.appendItem(label, JSON.stringify({path:path, category:cat})  );
+    }
   },
 	
 	// delete list (only of currently selected flavor)
@@ -140,7 +141,7 @@ SmartTemplate4.fileTemplates = {
       for (let i=0; i<this.CurrentEntries.length; i++) {
         let entry = this.CurrentEntries[i],
             cat = entry.category || "";
-        this.addItem(entry.path, entry.label, cat);
+        this.addItem(entry.path, SmartTemplate4.fileTemplates.makeLabel(entry), cat);
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
@@ -168,8 +169,9 @@ SmartTemplate4.fileTemplates = {
 		}
 		
 		// change label in list then save & reload.
-    if (txt)
+    if (txt) {
       e.label = txt.value;
+    }
     e.category = category;
 
     if (forceIndex) {
@@ -185,7 +187,7 @@ SmartTemplate4.fileTemplates = {
         case "txtTemplateTitle":
           let txt = document.getElementById("txtTemplateTitle").value;
           e.label = txt;
-          item.firstChild.value = txt; 
+          item.firstChild.value = SmartTemplate4.fileTemplates.makeLabel(e); // txt; 
           break;
       }
       this.saveCustomMenu();
@@ -233,7 +235,7 @@ SmartTemplate4.fileTemplates = {
       }
 			document.getElementById('txtTemplatePath').value = p;
 			document.getElementById('txtTemplateCategory').value = c;
-			document.getElementById('txtTemplateTitle').value = richlistitem.label;
+			document.getElementById('txtTemplateTitle').value = SmartTemplate4.fileTemplates.sanitizeLabel(richlistitem.label, c);
 		}
 	} ,
 	
@@ -365,6 +367,18 @@ SmartTemplate4.fileTemplates = {
         promise = OS.File.read(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
     return promise;
   } ,		
+
+  makeLabel: function(entry) {
+    let cat = entry.category || "";
+    // use right poiting guillemet (left-pointing double angle quotation mark) as delimiter
+    let retval = cat ? (cat + " » " + entry.label) : entry.label;
+    return retval;
+  },
+
+  sanitizeLabel: function(lbl, c) {
+    if (!c) return lbl;
+    return lbl.replace(c + " » ", "");
+  },
 	
 	// load template lists from file
   loadCustomMenu: function loadCustomMenu(fromOptions) {
@@ -394,7 +408,8 @@ SmartTemplate4.fileTemplates = {
                   c = entry.category || "";
 							// populate the options list(s)
 							if (fromOptions) {
-								fileTemplates.addItem(entry.path, entry.label, c, lb);
+                let theLabel = SmartTemplate4.fileTemplates.makeLabel(entry);
+								fileTemplates.addItem(entry.path, theLabel, c, lb);
 							}
 							// populate the Entries array from read data
 							T.push({ path:entry.path, label:entry.label, category:entry.category || "" });
