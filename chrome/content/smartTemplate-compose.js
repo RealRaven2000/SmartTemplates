@@ -9,6 +9,8 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
@@ -99,7 +101,7 @@ SmartTemplate4.classSmartTemplate = function() {
   //                    'omit' to suppress (remove only)
 	// 1. removes signature node from the email
 	// 2. extract current Signature (should return signature from the account and not from the mail if it is defined!)
-	function extractSignature(Ident, signatureDefined, composeType) {
+	async function extractSignature(Ident, signatureDefined, composeType) {
     let isSigInBlockquote = false;
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText, // might not work if it is an attached file (find out how this is done)
@@ -287,15 +289,20 @@ SmartTemplate4.classSmartTemplate = function() {
       let pathArray = flags.filePaths;
       // if this has a path - put it on the stack so we can process %file()% variables within
       if (isSignatureTb && sigPath)
+				util.logDebugOptional("fileTemplates", `extractSignature: Add sig file to template stack: ${sigPath}`);
         pathArray.push(sigPath);
 			try {
-				sigText = getProcessedText(sigText, idKey, composeType, true);
+				sigText = await getProcessedText(sigText, idKey, composeType, true);
 			}
 			catch(ex) {
 				util.logException(ex, "getProcessedText(signature) failed.");
 			}
-      if (isSignatureTb && sigPath)
-        pathArray.pop();
+      if (isSignatureTb && sigPath) {
+        let last = pathArray.pop();
+				if (last) {
+					util.logDebugOptional("fileTemplates", `extractSignature: Removed file from template stack: ${last}`);
+				}
+			}
 		}
 
 		let dashesTxt = 
@@ -620,9 +627,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
     let origMsgDelimiter = '',
         Id,
-		    bndl = Cc["@mozilla.org/intl/stringbundle;1"]
-							 .getService(Ci.nsIStringBundleService)
-							 .createBundle("chrome://messenger/locale/mime.properties");
+		    bndl = Services.strings.createBundle("chrome://messenger/locale/mime.properties");
     try {           
       origMsgDelimiter = bndl.GetStringFromID(1041);
     }
@@ -632,15 +637,15 @@ SmartTemplate4.classSmartTemplate = function() {
     try {
       // from Tb 31.0 we have a dedicated string for _forwarded_ messages!
       let fwdId = 'mailnews.forward_header_originalmessage', // from Tb 31.0 onwards?
-          replyId = 'mailnews.reply_header_originalmessage', //  [Bug 25089] Default forward quote not hidden
-          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+          replyId = 'mailnews.reply_header_originalmessage'; //  [Bug 25089] Default forward quote not hidden
+          
       
       Id = fwdId;
-      origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+      origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
       // fallback to replyId if it doesn't exist.
       if (!origMsgDelimiter) {
         Id = replyId
-        origMsgDelimiter = service.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
+        origMsgDelimiter = Services.prefs.getComplexValue(Id, Ci.nsIPrefLocalizedString).data;
       }
     }
     catch(ex) {
@@ -767,7 +772,7 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// -----------------------------------
 	// Get processed template
-	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
+	async function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
 		if (!templateText) return "";
     const flags = SmartTemplate4.PreprocessingFlags;
 
@@ -780,7 +785,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isDraftLike = !composeType 
 		  || flags.isFileTemplate
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
-		let regular = SmartTemplate4.regularize(templateText, 
+      
+    templateText = SmartTemplate4.parseModifier(templateText, composeType, true); // global clipboard setting (replaces with %toclipboard()%)
+		let regular = await SmartTemplate4.regularize(templateText, 
 				composeType, 
 				false,   // isStationery
 				ignoreHTML, 
@@ -849,19 +856,19 @@ SmartTemplate4.classSmartTemplate = function() {
 	
 	// new function to retrieve quote header separately [Bug 25099]
 	// in order to fix bottom-reply
-	function getQuoteHeader(composeType, idKey) {
-		let hdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
+	async function getQuoteHeader(composeType, idKey) {
+		let quoteHdr = SmartTemplate4.pref.getQuoteHeader(idKey, composeType, "");
 		let ignoreHTML = false; // was false always
-		return getProcessedText(hdr, idKey, composeType, ignoreHTML);
+		return await getProcessedText(quoteHdr, idKey, composeType, ignoreHTML);
 	};
 	
 	// -----------------------------------
 	// Get template message - wrapper for main template field
-	function getSmartTemplate(composeType, idKey) {
+	async function getSmartTemplate(composeType, idKey) {
 		util.logDebugOptional('functions','getSmartTemplate(' + composeType + ', ' + idKey +')');
 		let msg = SmartTemplate4.pref.getTemplate(idKey, composeType, "");
 		let ignoreHTML = false; // was false always - do we need gMsgCompose.composeHTML ?
-		return getProcessedText(msg, idKey, composeType, ignoreHTML);
+		return await getProcessedText(msg, idKey, composeType, ignoreHTML);
 	};
 	
 	function findDirectChildById(parent, id) {
@@ -886,7 +893,7 @@ SmartTemplate4.classSmartTemplate = function() {
 						
 	// -----------------------------------
 	// Add template message
-	function insertTemplate(startup, flags, fileTemplateSource)	{
+	async function insertTemplate(startup, flags, fileTemplateSource)	{
     
     if (SmartTemplate4.Preferences.isBackgroundParser()) { // [issue 184] - this should never be called if this flag is set
       alert("To do: insertTemplate() through background - [issue 184]\n"
@@ -932,7 +939,7 @@ SmartTemplate4.classSmartTemplate = function() {
       idKey = gMsgCompose.identity.key;
     }
 		let isActiveOnAccount = false,
-		    acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),  
+		    acctMgr = MailServices.accounts,  
         identitySource,
 		    theIdentity = acctMgr.getIdentity(idKey);
     
@@ -1065,7 +1072,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
         try {
           // get signature and remove the one Tb has inserted
-          SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+          SmartTemplate4.signature = await extractSignature(theIdentity, sigType, st4composeType);
         }
         catch(ex) {
           SmartTemplate4.signature = "";
@@ -1075,7 +1082,7 @@ SmartTemplate4.classSmartTemplate = function() {
 				if (flags.isThunderbirdTemplate) {
 					// use innerHTML instead of outer (we do not want to replace the "body" part)
 					// if %sig% variable is in Tb Template it is going to be expanded at this step.
-					template = getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
+					template = await getProcessedText(editor.rootElement.innerHTML, idKey, st4composeType, true); // ignoreHTML = true ?
 					// need to empty out the innerHTML if we insert this to avoid duplication.
 					editor.rootElement.innerHTML="";
 				}
@@ -1089,14 +1096,14 @@ SmartTemplate4.classSmartTemplate = function() {
               flags.suppressQuoteHeaders = true;
             }
             // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
-						template = getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
+						template = await getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
 					}
 				  else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
-						template = getSmartTemplate(st4composeType, idKey);
+						template = await getSmartTemplate(st4composeType, idKey);
 					}
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
-					quoteHeader = getQuoteHeader(st4composeType, idKey);
+					quoteHeader = await getQuoteHeader(st4composeType, idKey);
 				}
         
         if (flags.suppressQuoteHeaders) {
@@ -1674,10 +1681,12 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						else {
 						  // if we reply below we must be above the signature.
-							if (editor.selection.collapseToEnd)
+							if (editor.selection.collapseToEnd) {
 								editor.selection.collapseToEnd();
-							else
+              }
+							else {
 								editor.selection.collapse(theParent, nodeOffset+1); 
+              }
 						}
 					}
 					/* void scrollIntoView (in short aRegion, in boolean aIsSynchronous, in int16_t aVPercent, in int16_t aHPercent); */
@@ -1698,6 +1707,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		
 		bodyEl.setAttribute("smartTemplateInserted","true"); // guard against duplication!
+
+		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
 		resetDocument(gMsgCompose.editor, startup);
 		
 		// no license => show license notification.
@@ -1723,12 +1734,14 @@ SmartTemplate4.classSmartTemplate = function() {
     
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = false; // [issue 139] avoid template duplication!
     // [issue 173] - SmartTemplates Pro required.
-    if (SmartTemplate4.PreprocessingFlags.isAutoSend) {
+    if (flags.isAutoSend) {
       if (!util.hasLicense()  || util.licenseInfo.keyType == 2) {
         let msg = util.getBundleString("st.notification.premium.sendByFilter");
         util.popupLicenseNotification("filterWithTemplate", true, true, msg);
       }
       else {
+				// make sure all variables are resolved + removed.
+				await SmartTemplate4.Util.cleanupDeferredFields(true);
         // push send button - with timeout?
         let timeout = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.sendTimeout");
         setTimeout(function () { SendMessage(); }, timeout);
@@ -1747,7 +1760,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	
   // returns html code from selection in composer.
   function unpackSelection(selection) {
-    debugger;
+    // debugger;
     let aOf, fOf;
     let isFocusDifferent = false;
     let range = selection.getRangeAt(0);

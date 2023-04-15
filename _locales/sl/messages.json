@@ -53,7 +53,7 @@
     "message": "Da bomo še naprej koristni, moramo razvijalci dodatkov zdaj financirati vire, potrebne za popravljanje in prepisovanje, tako da bodo lahko naši uporabniki še naprej koristili funkcionalnost, ki jo ponujamo."
   },
   "advanced.label": {
-    "message": "Napredno"
+    "message": "Razširi pogovorno okno"
   },
   "any.label": {
     "message": "Katerakoli vrstica glave"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Prejemnikov priimek"
   },
+  "clipboardFunctions": {
+    "message": "Funkcije odložišča"
+  },
+  "clipboard.copy": {
+    "message": "kopira besedilo v odložišče."
+  },
+  "clipboard.insert": {
+    "message": "vstavi trenutno vsebino odložišča na to mesto."
+  },
+  "clipboard.from": {
+    "message": "(primer za katero koli spremenljivko naslova) kopirajte poštni naslov prvotnega pošiljatelja v odložišče."
+  },
+  "clipboard.setHeader": {
+    "message": "Uporabite vsebino odložišča, da nastavite cc - (deluje za katero koli besedilno glavo)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Poišče ujemajoče se besedilo iz zadeve in kopira v odložišče, če ga najde."
+  },
+  "clipboard.matchBody": {
+    "message": "Ujema besedilo iz izvirne e-poštne vsebine in ga kopira v odložišče, če ga najde."
+  },
+  "clipboard.notes": {
+    "message": "Vsaka funkcija, ki uporablja {toclip}, bo počistila odložišče, če ne vrne podatkov. Funkcije odložišča lahko uporabite za prenos podatkov v fragment besedila, ki se naloži z ukazom {file}."
+  },
   "close.label": {
-    "message": "Osnovno"
+    "message": "Strni pogovorno okno"
   },
   "conditional.forwardMode": {
     "message": "Če je e-poštno sporočilo posredovano v vrstici, se vstavi prvi besedilni parameter. Drugi besedilni parameter se uporablja, ko je pošta posredovana kot priloga."
@@ -590,13 +614,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Plačajte samo 4,30 € namesto 8,60 € in pridobite popoln dostop do funkcij Pro. Ta posebna ponudba je na voljo od {boldStart} do $expiry$ {boldEnd}.",
+    "message": "Ta posebna ponudba je na voljo od {boldStart} do $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licence"
   },
   "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam {linkEnd}."
@@ -986,7 +1013,7 @@
     "message": "Nadomesti prelome vrstic v podpisu z golim besedilom s <br>"
   },
   "pref_silentUpdates": {
-    "message": "Tihe posodobitve"
+    "message": "Ne odpri zavihka z zgodovino različic"
   },
   "pref_silentUpdates_tip": {
     "message": "Dnevnika sprememb ne odpirajte po posodobitvi SmartTemplates."
@@ -1021,6 +1048,15 @@
   "premiumConfig": {
     "message": "Lastnosti premium"
   },
+  "pricing.section": {
+    "message": "Če želite izvedeti svojo ceno, najprej izberite eno od naslednjih možnosti. S tem se odpre ločeno okno brskalnika, kjer lahko zaključite nakup v spletni trgovini."
+  },
+  "pricing.section.hint": {
+    "message": "Opomba: Cena se razlikuje glede na model licence, državo, stopnjo DDV, trenutne popuste ali že kupljene licence."
+  },  
+  "pricing.title": {
+    "message": "Cenitev"
+  },
   "prompt.email": {
     "message": "Vnesite e-poštni naslov"
   },
@@ -1043,7 +1079,7 @@
     "message": "[neobvezno, številčno] Najvišja stopnja navajanja za odstranitev starejših citatov iz pogovora."
   },
   "quote_changers.cap": {
-    "message": "Manipulacija citatov"
+    "message": "Sprememba citiranega besedila"
   },
   "quote_changers.desc": {
     "message": "Premium spremenljivke za odstranjevanje besedila / oznak iz delov, ki jih citirajo, in prihranite prostor."
@@ -1084,6 +1120,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Za možnost ne deluje z nekaterimi oddaljenimi imeniki, kot je LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Podpora CardBook (profesionalna funkcija)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Če stika ni mogoče najti, uporabite standardni adresar"
+  },
   "s.label": {
     "message": "Sekunde (00 do 59)"
   },
@@ -1118,7 +1160,7 @@
     "message": "Očistite vse spremenljivke SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Posodobite in nadomestite z vsebino"
+    "message": "Zamenjaj spremenljivko z vsebino"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Odstranite spremenljivko SmartTemplates"
@@ -1351,7 +1393,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. julij"
+    "message": "26. marec"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1535,6 +1577,14 @@
   "tofwd.label": {
     "message": "Uporabite 'fwd', da v posredovano pošto dodate prejemnika, ki ga je mogoče klikniti"
   },
+  "tokenError": {
+    "message": "Naslednji žeton je ustvaril napako: $token$\nProsimo, preverite, ali so v predlogi sintaksne napake. Vse spremenljivke so dokumentirane v oknu z nastavitvami.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "E-poštni naslov prvotnega prejemnika"
   },
@@ -1560,6 +1610,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Opombe ob izdaji (angleščina)"
+  },
+  "updates.news": {
+    "message" : "Zadnje novice"
+  },
   "updates.title": {
     "message": "Posodobitve"
   },
@@ -1574,6 +1630,9 @@
   },
   "url.supportPage.label": {
     "message": "Stran za podporo"
+  },
+  "variable.search": {
+    "message": "Vnesite iskalni izraz in pritisnite {{Enter}}. Pritisnite {{F3}} za ponovitev iskanja."
   },
   "var_custom.cap": {
     "message": "Spremenljivke za 'obliko datuma' po meri"
@@ -1594,7 +1653,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Popravki vzdrževanja za 3.12.2: gumbi za razširitev/strnitev/pomoč so zdaj vidni tudi pri odpiranju nastavitev iz upravitelja dodatkov. Gumb za obnovitev licence na levem dnu pogovornega okna z nastavitvami zdaj deluje po pričakovanjih{L2}{L1}SmartTemplates Pro zdaj podpira uporabo »clipboard« (odložišča) kot argumenta za funkcije manipulacije besedila in glave, kot je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard) )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Uporabite 'toclipboard' za kopiranje različnih rezultatov v odložišče. Na primer: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Izboljšana oznaka mesta *selection* (izbira) v Snippets za boljšo podporo pri integraciji v izbrane razdelke HTML. Zdaj lahko na primer sliko ovijete s senco, čeprav vstavite delček HTML.{L2}{L1}Poenostavljene nastavitve za predloge identitete (spustni meni računov){L2}{L1}Številni popravki združljivosti za Thunderbird 102. %spellcheck()% lahko zdaj nastavi slovar na preizkusno besedilo z več jeziki.{L2}"
+    "message": "{L1}Vzdrževalna različica 3.16.1 – Posredovanje s predlogo (z dodatkom FiltaQuilla) ni več samodejno pošiljalo ustvarjenih e-poštnih sporočil. Popravljeno, glejte [issue 231]{L2} {L1}Dodana podpora CardBook za uporabnike SmartTemplates Pro. Omogoči se lahko v naprednih nastavitvah.{L2} {L1}Stikalu {{chatname}} je dodan parameter filtra, npr.: {{%from(chatname.skype)%}}.{L2} {L1}Črkovalnik je zdaj aktivira ukaz {{%spellcheck()%}} – tudi če je izklopljen v nastavitvah sestavljanja{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

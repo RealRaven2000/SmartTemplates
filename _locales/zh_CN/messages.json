@@ -53,7 +53,7 @@
     "message": "为了继续发挥作用，我们的附加组件开发人员现在需要资助修复和重写所需的资源，以便我们的用户可以继续从我们提供的功能中受益。"
   },
   "advanced.label": {
-    "message": "高级"
+    "message": "展开对话框"
   },
   "any.label": {
     "message": "任何标题行"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "抄送人姓名"
   },
+  "clipboardFunctions": {
+    "message": "剪贴板功能"
+  },
+  "clipboard.copy": {
+    "message": "将文本复制到剪贴板。"
+  },
+  "clipboard.insert": {
+    "message": "在此位置插入当前剪贴板内容。"
+  },
+  "clipboard.from": {
+    "message": "（任何地址变量的示例）将原始发件人的邮件地址复制到剪贴板。"
+  },
+  "clipboard.setHeader": {
+    "message": "使用剪贴板内容设置抄送 - （适用于任何文本标题）。"
+  },
+  "clipboard.matchSubject": {
+    "message": "从主题中查找匹配的文本，如果找到则复制到剪贴板。"
+  },
+  "clipboard.matchBody": {
+    "message": "匹配原始电子邮件内容中的文本并将其复制到剪贴板（如果找到）。"
+  },
+  "clipboard.notes": {
+    "message": "如果没有返回数据，任何使用 {toclip} 的函数都会清除剪贴板。 您可以使用剪贴板功能将数据传输到使用 {file} 命令加载的文本片段中。"
+  },
   "close.label": {
-    "message": "关闭"
+    "message": "折叠对话框"
   },
   "conditional.forwardMode": {
     "message": "如果以内联方式转发电子邮件，则会插入第一个text参数。 当邮件作为附件转发时，将使用第二个text参数。"
@@ -629,13 +653,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "只需支付$$5.00而不是$$10.00，即可完全使用Pro功能。 此特别优惠适用于{boldStart}至 $expiry${boldEnd}。",
+    "message": "此特别优惠适用于{boldStart}至 $expiry${boldEnd}。",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "许可证"
   },
   "licenseComparison": {
     "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
@@ -1028,7 +1055,7 @@
     "message": "用 <br> 替换纯文本签名中的换行符"
   },
   "pref_silentUpdates": {
-    "message": "靜默更新"
+    "message":  "不要打开带有版本历史记录的选项卡"
   },
   "pref_silentUpdates_tip": {
     "message": "SmartTemplates更新後，請勿打開更改日誌。"
@@ -1063,6 +1090,15 @@
   "premiumConfig": {
     "message": "高级功能"
   },
+  "pricing.section": {
+    "message": "要了解您的价格，请先选择以下选项之一。 这将打开一个单独的浏览器窗口，您可以在其中完成网上商店的购买。"
+  },
+  "pricing.section.hint": {
+    "message": "注意：价格因许可证型号、国家/地区、增值税税率、当前折扣或已购买的许可证而异。"
+  },  
+  "pricing.title": {
+    "message": "价钱"
+  },
   "prompt.email": {
     "message": "请输入一个电子邮件地址"
   },
@@ -1085,7 +1121,7 @@
     "message": "[可选，数字]最高引文级别，用于从对话中删除较旧的引号。"
   },
   "quote_changers.cap": {
-    "message": "报价操作"
+    "message": "引用文本修改"
   },
   "quote_changers.desc": {
     "message": "高级变量，用于从引用的零件中删除文本/标签并节省空间。"
@@ -1126,6 +1162,12 @@
   "resolveNamesFromAB_tip": {
     "message": "此功能不能与某些远程通讯录协同工作，例如 LDAP。"
   },
+  "resolveNamesFromCardBook": {
+    "message": "支持 CardBook（专业版功能）"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "如果找不到联系人，请使用标准地址簿"
+  },
   "s.label": {
     "message": "第二 (00 至 59)"
   },
@@ -1160,7 +1202,7 @@
     "message": "清理所有SmartTemplate变量"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "更新并替换为内容"
+    "message": "用内容替换变量"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "删除SmartTemplates变量"
@@ -1387,7 +1429,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月17日"
+    "message": "3月26日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1574,6 +1616,14 @@
   "tofwd.label": {
     "message": "使用 fwd 在转发邮件中添加可点击收件人"
   },
+  "tokenError": {
+    "message": "以下令牌生成错误：$token$\n请检查您的模板是否存在语法错误。 所有变量都记录在设置窗口中。",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "原始收件人的电子邮件地址"
   },
@@ -1602,6 +1652,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "发行说明（英文）"
+  },
+  "updates.news": {
+    "message" : "最新消息"
+  },
   "updates.title": {
     "message": "更新"
   },
@@ -1616,6 +1672,9 @@
   },
   "url.supportPage.label": {
     "message": "支持主页"
+  },
+  "variable.search": {
+    "message": "输入搜索词并按 {{Enter}}。 按 {{F3}} 重复搜索。"
   },
   "var_custom.cap": {
     "message": "自定义日期格式的变量"
@@ -1636,7 +1695,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}3.12.2 的维护修复：从加载项管理器打开设置时，展开/折叠/帮助按钮现在也可见。 设置对话框左下角的更新许可证按钮现在可以按预期工作{L2}{L1}SmartTemplates Pro 现在支持使用 'clipboard'（剪贴板）作为文本和标题操作函数的参数，例如 %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}使用 'toclipboard' 将各种结果复制到剪贴板。 例如： %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}改进了片段中的 *selection*（选择）占位符，以更好地支持集成到选定的 HTML 部分。 例如，您现在可以通过插入 HTML 片段来包裹带有阴影的图像。{L2}{L1}身份模板的简化设置（帐户下拉菜单）{L2}{L1}Thunderbird 102 的许多兼容性修复程序。 %spellcheck()% 现在可以将字典设置为具有多种语言的校对文本。{L2}"
+    "message": "{L1}维护版本 3.16.1 - 使用模板转发（使用 FiltaQuilla 插件）不再自动发送生成的电子邮件。 已修复，请参阅 [issue 231]{L2}{L1}为 SmartTemplates Pro 用户添加 CardBook 支持。 它可以在高级设置中启用。{L2} {L1}向 {{chatname}} 开关添加过滤器参数，例如：{{%from(chatname.skype)%}}。{L2} {L1}现在拼写检查器 由 {{%spellcheck()%}} 命令激活 - 即使在组合设置中关闭{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

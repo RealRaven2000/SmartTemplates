@@ -53,7 +53,7 @@
     "message": "Zaawansowane"
   },
   "any.label": {
-    "message": "Każdy wiersz nagłówka"
+    "message": "Rozwiń okno dialogowe"
   },
   "attach.label": {
     "message": "Dodaj plik jako załącznik"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "Nazwisko odbiorcy"
   },
+  "clipboardFunctions": {
+    "message": "Funkcje schowka"
+  },
+  "clipboard.copy": {
+    "message": "kopiuje tekst do schowka."
+  },
+  "clipboard.insert": {
+    "message": "wstawia bieżącą zawartość schowka w tej pozycji."
+  },
+  "clipboard.from": {
+    "message": "(przykład dla dowolnej zmiennej adresu) skopiuj adres e-mail oryginalnego nadawcy do schowka."
+  },
+  "clipboard.setHeader": {
+    "message": "Użyj zawartości schowka, aby ustawić cc - (działa dla dowolnego nagłówka tekstowego)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Znajduje pasujący tekst z tematu i kopiuje do schowka, jeśli zostanie znaleziony."
+  },
+  "clipboard.matchBody": {
+    "message": "Dopasowuje tekst z oryginalnej treści wiadomości e-mail i kopiuje go do schowka, jeśli zostanie znaleziony."
+  },
+  "clipboard.notes": {
+    "message": "Każda funkcja używająca {toclip} wyczyści schowek, jeśli nie zwróci żadnych danych. Możesz użyć funkcji schowka, aby przenieść dane do fragmentu tekstu, który jest ładowany za pomocą polecenia {file}."
+  },
   "close.label": {
-    "message": "Zamknij"
+    "message": "Zwiń okno dialogowe"
   },
   "conditional.forwardMode": {
     "message": "Jeśli wiadomość e-mail jest przekazywana w tekście, wstawiany jest pierwszy parametr tekstowy. Drugi parametr tekstowy jest używany, gdy wiadomość jest przekazywana jako załącznik."
@@ -587,13 +611,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zapłać tylko 4,30 € zamiast 8,60 € i uzyskaj pełny dostęp do funkcji Pro. Ta oferta specjalna jest dostępna od {boldStart}do $expiry${boldEnd}.",
+    "message": "Ta oferta specjalna jest dostępna od {boldStart}do $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licencje"
   },
   "licenseComparison": {
     "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
@@ -980,7 +1007,7 @@
     "message": "Zamień w podpisie tekstowym podziały wiersza na <br>"
   },
   "pref_silentUpdates": {
-    "message": "Ciche aktualizacje"
+    "message": "Nie otwieraj karty z historią wersji"
   },
   "pref_silentUpdates_tip": {
     "message": "Nie otwieraj dziennika zmian po aktualizacji SmartTemplates."
@@ -1015,6 +1042,15 @@
   "premiumConfig": {
     "message": "Funkcje premium"
   },
+  "pricing.section": {
+    "message": "Aby poznać swoją cenę, najpierw wybierz jedną z poniższych opcji. Spowoduje to otwarcie osobnego okna przeglądarki, w którym można dokonać zakupu w sklepie internetowym."
+  },
+  "pricing.section.hint": {
+    "message": "Uwaga: Cena różni się w zależności od modelu licencji, kraju, stawki VAT, aktualnych rabatów lub już zakupionych licencji."
+  },  
+  "pricing.title": {
+    "message": "cennik"
+  },
   "prompt.email": {
     "message": "Wprowadź adres wiadomości"
   },
@@ -1037,7 +1073,7 @@
     "message": "[opcjonalne, numeryczne] Maksymalny poziom cytowań, aby usunąć starsze cytaty z rozmowy."
   },
   "quote_changers.cap": {
-    "message": "Cytuj manipulację"
+    "message": "Modyfikacja cytowanego tekstu"
   },
   "quote_changers.desc": {
     "message": "Zmienne premium do usuwania tekstu / znaczników z cytowanych części i oszczędzania miejsca."
@@ -1078,6 +1114,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Ta funkcja nie działa z niektórymi zdalnymi książkami adresowymi, takimi jak LDAP. "
   },
+  "resolveNamesFromCardBook": {
+    "message": "Wsparcie CardBook (funkcja pro)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Użyj standardowej książki adresowej, jeśli nie zostanie znaleziony żaden kontakt"
+  },
   "s.label": {
     "message": "Sekunda (00 do 59)"
   },
@@ -1112,7 +1154,7 @@
     "message": "Wyczyść wszystkie zmienne SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Zaktualizuj i zamień na treść"
+    "message": "Zastąp zmienną treścią"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Usuń zmienną SmartTemplates"
@@ -1342,7 +1384,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 lipca"
+    "message": "26 marca"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1529,6 +1571,14 @@
   "tofwd.label": {
     "message": "Użyj programu fwd, aby dodać klikalnego odbiorcę w przesłanych wiadomościach e-mail"
   },
+  "tokenError": {
+    "message": "Następujący token wygenerował błąd: $token$\nSprawdź swój szablon pod kątem błędów składniowych. Wszystkie zmienne są udokumentowane w oknie ustawień.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Adres e-mail pierwotnego odbiorcy"
   },
@@ -1557,6 +1607,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Informacje o wydaniu (angielski)"
+  },
+  "updates.news": {
+    "message" : "Najnowsze wiadomości"
+  },
   "updates.title": {
     "message": "Aktualizacje"
   },
@@ -1571,6 +1627,9 @@
   },
   "url.supportPage.label": {
     "message": "Strona pomocy"
+  },
+  "variable.search": {
+    "message": "Wprowadź wyszukiwane hasło i naciśnij {{Enter}}. Naciśnij {{F3}}, aby powtórzyć wyszukiwanie."
   },
   "var_custom.cap": {
     "message": "Zmienne dla dostosowania formatu daty"
@@ -1591,7 +1650,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Poprawki konserwacyjne w wersji 3.12.2: Przyciski rozwijania/zwijania/pomocy są teraz widoczne również podczas otwierania ustawień z Menedżera dodatków. Przycisk odnowienia licencji w lewym dolnym rogu okna ustawień działa teraz zgodnie z oczekiwaniami{L2}{L1}SmartTemplates Pro obsługuje teraz używanie 'clipboard' (schowek) jako argumentu dla funkcji manipulacji tekstem i nagłówkiem, takich jak %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(wyrażenie regularne,clipboard )% %replaceQuotedText(wyrażenie regularne,clipboard)%{L2} {L1}Użyj 'toclipboard', aby skopiować różne wyniki do schowka. Na przykład: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Ulepszone *selection* (zaznaczanie) zastępcze we fragmentach, aby lepiej obsługiwać integrację z wybranymi sekcjami HTML. Na przykład, możesz teraz owinąć obraz cieniem, wstawiając fragment kodu HTML.{L2}{L1}Uproszczone ustawienia szablonów tożsamości (rozwijane konta){L2}{L1}Liczne poprawki zgodności dla Thunderbird 102. %spellcheck()% może teraz ustawić słownik do sprawdzania tekstu w wielu językach.{L2}"
+    "message": "{L1}Wersja konserwacji 3.16.1 — Przekazywanie z szablonem (za pomocą dodatku FiltaQuilla) nie powodowało już automatycznego wysyłania generowanych wiadomości e-mail. Naprawiono, patrz [issue 231] {L2} {L1}Dodano obsługę CardBook dla użytkowników SmartTemplates Pro. Można go włączyć w ustawieniach zaawansowanych.{L2} {L1}Dodano parametr filtra do przełącznika {{chatname}}, np.: {{%from(chatname.skype)%}}.{L2} {L1}Sprawdzanie pisowni jest teraz aktywowane poleceniem {{%spellcheck()%}} - nawet jeśli wyłączone w ustawieniach składu{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

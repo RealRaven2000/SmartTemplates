@@ -14,6 +14,7 @@ var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+
   const util = window.SmartTemplate4.Util;
   
   // for version specific code / style fixes

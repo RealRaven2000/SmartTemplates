@@ -1,4 +1,5 @@
 @import url("chrome://smarttemplate4/content/skin/style.css");
+@import url("chrome://smarttemplate4/content/skin/variables.css"); 
 
 #smartTemplate_prefDialog {
 	min-width: 550px;
@@ -501,231 +502,19 @@ groupbox.transparent .groupbox-title {
   line-height: 1.3em;
 }
 
-/* ################################################################################### */
-/* ################################ Help Iframe CONTENT ############################## */
-/* ################################################################################### */
-
-/* ####################################### BODY ###################################### */
-.help, h1, h2, aside, li,
-.aboutPersonnel {
-  font-family: Calibri, Helvetica,'Segoe UI', Verdana, Geneva, sans-serif;
-}
-
-.help {
-  font-size: 9pt;
-  display: block;
-  background: rgb(250,250,250);
-	border-left: #ccc 1px;
-	border-right: #ccc 1px;
-	font-size: 10pt;
-	min-height: 950px;
- /* padding: 5px 10px; */
-}
-
-.help ul {
-	margin-bottom: 1.8em;
-	margin-top: 0.2em;
-	padding-left: 0;
-}
-.help ul li {
-  list-style-image: none;
-  list-style-type: none;
-}
-
-p#allexpander {
-  margin: 2px 0;
-}
-
-/* ################################ CHAPTER (HEADLINES)  ############################# */
-h1.helpchapter {
-  font-size: 12pt;
-  font-weight: bold;
-  text-align: center;
-  color: #ffffff; /* #ffffff for TT DeepDark Theme */
-  text-shadow: #000000 1px 1px 1px; /* #000000 for TT DeepDark Theme */
-  border-top: 1px solid #808080;
-  border-bottom: 1px solid #808080;
-  cursor: pointer;
-  padding: 4px 0px;
-  margin: 7px 0;
-}
-
-.help ul.chapterBody {
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-
-.chapterBody {
-  height: auto;
-  max-height: 1500px;
-  transition: max-height 0.4s ease-in;
-}
-
-.chapterBody.collapsed {
-  background-color: light-gray;
-  margin-top: -0.5em;  
-  max-height: 0;
-  transition: max-height 0.12s ease-out;
-  overflow: hidden;  
-}
-.chapterBody.collapsed ul, 
-.chapterBody.collapsed li, 
-.chapterBody.collapsed aside,
-.chapterBody.collapsed table,
-.chapterBody.collapsed h4 {
-  /* display: none; */
-  visibility: hidden;
-  opacity: 0;  
-  color: #ffffff;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.chapterBody .chapterbreak {
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(144,144,144,0.1) 0%,rgba(144,144,144,0.7) 20%,rgba(144,144,144,1) 50%,rgba(144,144,144,0.7) 80%,rgba(144,144,144,0.1) 100%);
-  margin: 4px 25px 8px;
-}
-
-/* style the gear emoji to go to standard address format settings... */
-.config_default:hover {
-  background-color: rgba(80,80,80,0.15);
-  border: 1px solid rgba(40,40,40,0.8);
-  border-radius: 3px;
-}
-.config_default {
-  cursor: pointer;
-  font-size: 1.6em;
-  text-shadow: 0 0 0 rgba(109,140,200,0.9);
-  vertical-align: middle;
-}
-.config_default lbl {
-  color: rgba(40,40,40,0.8);
-  font-size: 0.625em;
-  vertical-align: text-top;
-}
-
-
-/* ############################# HTML TAG ASIDE (BELOW CHAPTER) ######################### */
-aside {
-  display: block;
-  font-weight: normal;
-  font-size: 10pt !important;
-  /* font-style: italic; */ /* its kind of ugly having italics everywhere... */
-  margin-top: 0px;
-  margin-bottom: 5px;
-  padding: 0px 0px 4px;
-}
-
-/* ##################################### HTML TAG b  ################################# */
-b {
-  font-style: italic;
-  font-weight: bolder;
-}
-
-
-/* #################################### HTML TAG CODE ################################ */
-/* note: code looks best in a fixed width font - MS standard nowadays is consolas! */
-#keywords code, code {
-  border: 1px solid #bbb;
-  margin: 2px 4px 2px 0px;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Consolas, 'Courier New', Geneva, sans-serif;
-  font-size: 10pt !important;
-  padding: 2px 4px;
-}
-
-table div.yes, table div.no {
-	list-style-position: inside;
-	display: list-item;
-}
-table div.yes {
-	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/enabled.png");
-}
-table div.no {
-	list-style-image:  url("chrome://smartTemplate4/content/skin/icons/disabled.png");
-}
-
-/* #################################### TABLE FOR VARS ############################### */
-#keywords {
-  border: 0;
-  border-collapse: collapse;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.tr-keywords td {
-  font-size: 11pt !important;
-  text-align: center;
-  vertical-align: middle;
-  border-bottom: 1px solid #808080;
-  padding: 0;
-}
-
-/* ################################## SCREENSHOT CLASS ############################### */
-.screenshot_help {
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
-/* ################################## SMALL ICON CLASS ############################### */
-.small_icon {
-  height: 16px;/*max 16px */
-  width: 16px; /*max 16px */
-  margin-right: 3px;
-}
-
-/* ############################## CHECKMARK & X IN VARTABLE ########################## */
-.no {
-  color: #ff0000;
-  font-size: 13pt !important;
-  text-shadow: #000000 1px 1px 1px;
-}
-.yes {
-  color: #7cfc00;
-  font-size: 13pt !important;
-  text-shadow: #000000 1px 1px 1px;
-}
-
-
-/* right hand panels widths */
-#rightPane tabpanel , #aboutPanel {
-  min-width: 420px;
-  max-width: 460px;
-}
- 
- 
-.contextConfig:hover {
-  background-color: pink;
-}
-
-/* #### help frame  #### */
-#helpFrame {
-	min-height: 300px;
-	height: auto;
-	margin-left: -5px;
-	margin-right: -5px;
-}
-
-
-
-/* we will wrap these in parenthesis to indicate outdated status */
-#keywords code.deprecated, code.deprecated {
-	margin-right: 0;
-}
 
 #globalSettingsVbox, #advancedSettingsVbox {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 #templateTools toolbarbutton {
+  -moz-user-focus: normal; /* accessibility */
   min-width: unset;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
 
 /* buttons permanently invisible when opened from Add-ons Manager */
 toolbar toolbarbutton:not([hidden]) {

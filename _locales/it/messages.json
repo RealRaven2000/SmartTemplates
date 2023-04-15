@@ -50,7 +50,7 @@
     "message": "Per continuare ad essere utili, noi sviluppatori di componenti aggiuntivi dobbiamo ora finanziare le risorse necessarie per correggere e riscrivere in modo che i nostri utenti possano continuare a beneficiare delle funzionalità che forniamo."
   },
   "advanced.label": {
-    "message": "Avanzate"
+    "message": "Espandi finestra di dialogo"
   },
   "any.label": {
     "message": "Qualsiasi Header-line"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "Nome del destinatario"
   },
+  "clipboardFunctions": {
+    "message": "Funzioni degli appunti"
+  },
+  "clipboard.copy": {
+    "message": "copia il testo negli appunti."
+  },
+  "clipboard.insert": {
+    "message": "inserisce il contenuto degli appunti corrente in questa posizione."
+  },
+  "clipboard.from": {
+    "message": "(esempio per qualsiasi variabile di indirizzo) copia l'indirizzo e-mail del mittente originale negli appunti."
+  },
+  "clipboard.setHeader": {
+    "message": "Usa il contenuto degli appunti per impostare cc - (funziona per qualsiasi intestazione testuale)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Trova il testo corrispondente dall'oggetto e copia negli appunti se trovato.)."
+  },
+  "clipboard.matchBody": {
+    "message": "Corrisponde al testo del contenuto dell'e-mail originale e lo copia negli appunti se trovato."
+  },
+  "clipboard.notes": {
+    "message": "Qualsiasi funzione che utilizza {toclip} cancellerà gli appunti se non restituisce dati. È possibile utilizzare le funzioni degli appunti per trasferire i dati in un frammento di testo caricato con il comando {file}."
+  },
   "close.label": {
-    "message": "Chiudi"
+    "message": "Comprimi la finestra di dialogo"
   },
   "conditional.forwardMode": {
     "message": "Se l'email viene inoltrata in linea, viene inserito il primo parametro di testo. Il secondo parametro di testo viene utilizzato quando la posta viene inoltrata come allegato."
@@ -581,13 +605,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Paga solo € 4,30 invece di € 8,60 e ottieni pieno accesso alle funzioni Pro. Questa offerta speciale è disponibile dal {boldStart}fino al $expiry${boldEnd}.",
+    "message": "Questa offerta speciale è disponibile dal {boldStart}fino al $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenze"
   },
   "licenseComparison": {
     "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
@@ -950,7 +977,7 @@
     "message": "Sostituisci le interruzioni di riga con <br> nelle firme in testo semplice"
   },
   "pref_silentUpdates": {
-    "message": "Aggiornamenti silenziosi"
+    "message": "Non aprire la scheda con la cronologia delle versioni"
   },
   "pref_silentUpdates_tip": {
     "message": "Non aprire il registro delle modifiche dopo l'aggiornamento di SmartTemplates."
@@ -1007,7 +1034,7 @@
     "message": "[facoltativo, numerico] Livello massimo di citazioni per rimuovere le citazioni meno recenti dalla conversazione."
   },
   "quote_changers.cap": {
-    "message": "Manipolazione delle citazioni"
+    "message": "Modifica del testo citato"
   },
   "quote_changers.desc": {
     "message": "Variabili premium per rimuovere testo / tag dalle parti quotate e risparmiare spazio."
@@ -1048,6 +1075,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Questa funzionalità non è disponibile con alcune rubriche remote, come ad esempio LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Supporto CardBook (funzionalità pro)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utilizzare la rubrica standard se non viene trovato alcun contatto"
+  },
   "s.label": {
     "message": "Secondo (00 a 59)"
   },
@@ -1082,7 +1115,7 @@
     "message": "Elimina tutte le variabili di SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Aggiorna e sostituisci con contenuto"
+    "message": "Sostituisci variabile con contenuto"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Rimuovere la variabile SmartTemplates"
@@ -1312,7 +1345,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 luglio"
+    "message": "26 marzo"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1496,6 +1529,14 @@
   "tofwd.label": {
     "message": "Usa 'fwd' per aggiungere il destinatario cliccabile nelle e-mail inoltrate"
   },
+  "tokenError": {
+    "message": "Il seguente token ha generato un errore: $token$\nControlla il tuo modello per errori di sintassi. Tutte le variabili sono documentate nella finestra delle impostazioni.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Indirizzo email del destinatario originale"
   },
@@ -1521,6 +1562,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Note di rilascio (inglese)"
+  },
+  "updates.news": {
+    "message" : "Ultime notizie"
+  },
   "updates.title": {
     "message": "Aggiornamenti"
   },
@@ -1535,6 +1582,9 @@
   },
   "url.supportPage.label": {
     "message": "Pagina supporto"
+  },
+  "variable.search": {
+    "message": "Inserisci un termine di ricerca e premi {{Invio}}. Premi {{F3}} per ripetere la ricerca."
   },
   "var_custom.cap": {
     "message": "Variabili per data/ora personalizzata "
@@ -1555,7 +1605,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Correzioni di manutenzione per 3.12.2: i pulsanti Espandi/comprimi/guida ora sono visibili anche quando si aprono le impostazioni da Gestione componenti aggiuntivi. Il pulsante Rinnova licenza nella parte inferiore sinistra della finestra di dialogo delle impostazioni ora funziona come previsto{L2}{L1}SmartTemplates Pro ora supporta l'utilizzo di 'clipboard' (appunti) come argomento per funzioni di manipolazione del testo e dell'intestazione come %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard )% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Usa 'toclipboard' per copiare vari risultati negli appunti. Ad esempio: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Migliorato il segnaposto *selection* (selezione) negli snippet per supportare meglio l'integrazione nelle sezioni HTML selezionate. Ad esempio, ora puoi avvolgere un'immagine con un'ombra inserendo uno snippet HTML.{L2}{L1}Impostazioni semplificate per i modelli di identità (elenco a discesa degli account){L2}{L1}Numerose correzioni per la compatibilità per Thunderbird 102. %spellcheck()% ora può impostare il dizionario per provare il testo con più lingue.{L2}"
+    "message": "{L1}Maintenance versione 3.16.1 - L'inoltro con modello (utilizzando il componente aggiuntivo FiltaQuilla) non inviava più automaticamente le email generate. Risolto, vedi [issue 231]{L2} {L1}Aggiunto il supporto CardBook per gli utenti SmartTemplates Pro. Può essere abilitato nelle impostazioni avanzate.{L2} {L1}Aggiunto parametro filtro all'opzione {{chatname}}, ad esempio: {{%from(chatname.skype)%}}.{L2} {L1}Il correttore ortografico ora è attivato dal comando {{%spellcheck()%}} - anche se disattivato nelle impostazioni di composizione{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

@@ -43,9 +43,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
         
         showXhtmlPage: function(uri) {
-          let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-            .getService(Components.interfaces.nsIWindowMediator)
-            .getMostRecentWindow("mail:3pane");  
+          let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri).focus();
         }
   

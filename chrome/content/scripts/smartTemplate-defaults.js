@@ -1,5 +1,7 @@
 /* global settings */
+pref("extensions.smartTemplate4.sandbox", false); // disable sandboxed java
 pref("extensions.smartTemplate4.firstRun", true);
+pref("extensions.smartTemplate4.deferred.autoUpdate", true);
 pref("extensions.smartTemplate4.hasNews", false);
 pref("extensions.smartTemplate4.version", "?");
 pref("extensions.smartTemplate4.breaksAtTop", 0);
@@ -16,6 +18,8 @@ pref("extensions.smartTemplate4.signature.insertDashes.html", false);
 pref("extensions.smartTemplate4.signature.removeBlockQuotedSig.onFail", false); // we might have removeBlockQuotedSig.always later as a feature!#
 pref("extensions.smartTemplate4.signature.replaceLF.plaintext.br", true);
 pref("extensions.smartTemplate4.cursor.insertSpace", true);
+pref("extensions.smartTemplate4.mime.resolveAB.CardBook", false); // CardBook support
+pref("extensions.smartTemplate4.mime.resolveAB.CardBook.fallback", false); // Fallback to standard AB
 pref("extensions.smartTemplate4.mime.resolveAB", true);
 pref("extensions.smartTemplate4.mime.resolveAB.removeEmail", true);
 pref("extensions.smartTemplate4.mime.resolveAB.preferNick", false);
@@ -69,6 +73,7 @@ pref("extensions.smartTemplate4.debug.functions.delForwardHeader", false);
 pref("extensions.smartTemplate4.debug.functions.insertTemplate", false);
 pref("extensions.smartTemplate4.debug.functions.extractSignature", false);
 pref("extensions.smartTemplate4.debug.functions.getProcessedText", false);
+pref("extensions.smartTemplate4.debug.adressbook", false);
 pref("extensions.smartTemplate4.debug.replaceReservedWords", false);
 pref("extensions.smartTemplate4.debug.deleteNodes", false);
 pref("extensions.smartTemplate4.debug.composer", false);
@@ -100,10 +105,11 @@ pref("extensions.smartTemplate4.debug.notifications.menus", false);
 pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
+pref("extensions.smartTemplate4.debug.variables.search", false);
 
 // SmartTemplate License specific:
 pref("extensions.smartTemplate4.license.gracePeriodDate","");
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
-pref("extensions.smartTemplate4.silentUpdate", false);
+pref("extensions.smartTemplate4.silentUpdate", true); // can be changed by everyone from now.

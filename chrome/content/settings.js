@@ -10,6 +10,7 @@
 */
 
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var LastInput = {
   id: null,
@@ -31,8 +32,7 @@ SmartTemplate4.Settings = {
 		return (this.accountKey !== '.common') ? this.accountKey : ''; 
 	},
 	Ci : Components.interfaces,
-	prefService : Components.classes["@mozilla.org/preferences-service;1"]
-									.getService(Components.interfaces.nsIPrefService),
+	prefService : Services.prefs,
 	//******************************************************************************
 	// Common functions
 	//******************************************************************************
@@ -906,8 +906,7 @@ SmartTemplate4.Settings = {
 		const util = SmartTemplate4.Util;
 		// get current identity
 		util.logDebugOptional("settings","fillIdentityListPopup()");
-		const accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
-									  getService(this.Ci.nsIMsgAccountManager).accounts;
+		const accounts = MailServices.accounts.accounts;
 		let currentId = 0,
 		    CurId = null;
 		
@@ -982,6 +981,8 @@ SmartTemplate4.Settings = {
 		document.getElementById('btnAdvanced').hidden = true;
 		document.getElementById('btnCloseAdvanced').hidden = false;
 		prefs.setMyBoolPref('expandSettings', true);
+    // [issue 208] accessibility
+    document.getElementById("fieldsTab").focus();
 
 		let versionBox = document.getElementById('versionBox');
 		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
@@ -1268,9 +1269,6 @@ SmartTemplate4.Settings = {
 	} ,
   
   get currentAccountName() {
-    const  Ci = Components.interfaces,
-           accounts = Components.classes["@mozilla.org/messenger/account-manager;1"].
-									  getService(Ci.nsIMsgAccountManager).accounts;
     let theMenu = document.getElementById("msgIdentity"),
         menuEntry = theMenu.label,
         end = menuEntry.indexOf(' <');
@@ -1518,6 +1516,8 @@ SmartTemplate4.Settings = {
         premiumConfig   = getElement('premiumConfig');
     premiumConfig.disabled = !isEnabled;
 		*/
+		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
+		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
   },
   
   showTrialDate: function() {
@@ -1590,11 +1590,13 @@ SmartTemplate4.Settings = {
       }
       switch(result) {
         case "Valid":
-          this.enablePremiumConfig(true);
-					if (SmartTemplate4.Util.licenseInfo.keyType==2) // standard license
+					if (SmartTemplate4.Util.licenseInfo.keyType==2) { // standard license
             showValidationMessage(validationStandard, silent);
-					else
+					}
+					else {
 						showValidationMessage(validationPassed, silent);
+						this.enablePremiumConfig(true);
+					}
           licenseDate.value = niceDate;
           licenseDate.classList.add('valid'); // [issue 170]
           licenseDateLabel.value = util.getBundleString("label.licenseValid");
@@ -1734,13 +1736,11 @@ SmartTemplate4.Settings = {
       // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
       this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
-      let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(licenseInfo.status) {
 				case "Valid":
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+32)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
-          silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenseInfo.expiryDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1759,7 +1759,6 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.add('aboutLogoPro');
 				  break;
 				case "Expired":
-          silentUpdateOption.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
@@ -1767,7 +1766,6 @@ SmartTemplate4.Settings = {
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
-          silentUpdateOption.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');
@@ -1926,18 +1924,16 @@ SmartTemplate4.Settings = {
 	
 	sendMail: function sendMail(mailto) {
     const util = SmartTemplate4.Util;
-		
     let subjectTxt = document.getElementById('txtSupportSubject'),
 		    supportType = document.getElementById('supportType').value,
 				version = document.getElementById('versionBox').value,
 		    subjectline = supportType + " (" + version + ") " + subjectTxt.value,
 		    sURL="mailto:" + mailto + "?subject=" + encodeURI(subjectline), // urlencode
-		    MessageComposer=Components.classes["@mozilla.org/messengercompose;1"].getService(Components.interfaces.nsIMsgComposeService),
 		    // make the URI
 		    ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService),
 		    aURI = ioService.newURI(sURL, null, null);
 		// open new message
-		MessageComposer.OpenComposeWindowWithURI (null, aURI);
+		MailServices.compose.OpenComposeWindowWithURI (null, aURI);
 		// focus window?
 	},	
 
@@ -1957,3 +1953,54 @@ window.addEventListener('unload',
   SmartTemplate4.Settings.onUnload.bind(SmartTemplate4.Settings) , 
   { once: true });
     
+    
+window.addEventListener("keypress", async (event) => {
+  // [issue 208] solve some accessibility problems
+  //  we are adding cursor navigation to tabs and tabstops to toolbar buttons.
+  let target = event.target;
+  if (!target) return;
+  if (target.tagName=="tab")  {
+    let panels = target.parentNode;
+    let selectedIndex = panels.tabbox.selectedIndex;
+        
+    let focus_event, keyevent;
+    switch (event.code) {
+      case "ArrowLeft":
+        if (selectedIndex>0) {
+          panels.tabbox.selectedIndex = selectedIndex-1;
+          panels.childNodes[selectedIndex-1].focus();
+          // focus_event = new FocusEvent("focus", {  }); // set relatedTarget ?
+          // panels.dispatchEvent(focus_event);
+          // emit Shift + Tab
+          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:true});
+          setTimeout(function() {target.dispatchEvent(keyevent);},10)
+        }
+        break;
+      case "ArrowRight":
+        if (selectedIndex<6) {
+          panels.tabbox.selectedIndex = selectedIndex+1;
+          panels.childNodes[selectedIndex+1].focus();
+          // focus_event = new FocusEvent("focus", {  });// set relatedTarget ?
+          // panels.dispatchEvent(focus_event);
+          // emit Tab key
+          keyevent = new KeyboardEvent("keypress", {key:"Tab", shiftKey:false})
+          setTimeout(function() {target.dispatchEvent(keyevent);},10)
+        }
+        break;
+    }
+  }
+  if (target.tagName == "toolbarbutton") {
+    let toolbar = target.parentNode;
+    switch (event.code) {
+      case "ArrowLeft":
+        target.previousSibling.focus();
+        break;
+      case "ArrowRight":
+        target.nextSibling.focus();
+        break;
+      case "Tab":
+        // nice to have: skip out of the toolbar to the next available element, but that's complicated
+        break;
+    }
+  }
+});

@@ -1,6 +1,6 @@
 "use strict";
 
-
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 SmartTemplate4.composer = {
   load: function st4_composerLoad() {
     const Ci = Components.interfaces,
@@ -27,8 +27,9 @@ SmartTemplate4.composer = {
           uri = ios.newURI("chrome://SmartTemplate4/content/skin/compose-overlay.css", null, null);
           
     // for some reason this affects the 3pane window, too
-    if(!sss.sheetRegistered(uri, sss.USER_SHEET))
-      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);    
+    if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
+      sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+    }
     
     // <<**********
     
@@ -192,12 +193,13 @@ SmartTemplate4.composer = {
         );
       }
     }
-    else
+    else {
       SmartTemplate4.notifyComposeBodyReady(null, true, window);
+    }
     // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
   
-  selectSnippetFromMenu: function(element) {
+  selectSnippetFromMenu: async function(element) {
     let isHandled = false;
     if (!SmartTemplate4.fileTemplates.armedEntry || !SmartTemplate4.fileTemplates.armedEntry.path) {
       if (element && element.id == "smarttemplate4-insertSnippet") {
@@ -207,13 +209,14 @@ SmartTemplate4.composer = {
           isHandled = true;
         }
       }
-      if (!isHandled)        
+      if (!isHandled) {    
         SmartTemplate4.Util.popupAlert("SmartTemplates", 
           "An error occured with the selected file. Either it can't be found or there was a problem accessing it.");
+      }
         
     }
     else {
-      SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
+      await SmartTemplate4.fileTemplates.insertFileEntryInComposer(SmartTemplate4.fileTemplates.armedEntry);
     }
   },
   
@@ -237,28 +240,24 @@ function()
     if (isDebugComposer) debugger;
     try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
     catch(ex) {;}
+    
+    // get header variables early
+    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
+      window.addEventListener(
+        "compose-window-init",
+        async function() {
+          SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
+        },
+        {capture:true}
+      );    
+    }      
+    
     logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
     
     let composer = document.getElementById("msgcomposeWindow");
-    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, false);
-    
+    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
+      
     SmartTemplate4.init();
-    
-    // safety for when the compose-window-init event does not fire (Tb 67+)
-    /*
-    if (typeof ComposeStartup == 'function') {
-      if (!SmartTemplate4.ComposeStartup) {
-        if (isDebugComposer) debugger;
-        SmartTemplate4.ComposeStartup = ComposeStartup;
-        ComposeStartup = function() {
-          logDebugOptional('composer','Calling ComposeStartup from Wrapper');
-          SmartTemplate4.ComposeStartup();
-          logDebugOptional('composer','Calling initListener');
-          SmartTemplate4.initListener(true);
-          // SmartTemplate4.composer.initTemplateMenu();
-        }
-      }
-    }
-    */
+
   }
 )();

@@ -175,9 +175,75 @@ END LICENSE BLOCK
     # Moved clipboard reading to Util module
     # [issue 184] WIP: Move template processing into background script
 
-  Version 3.12 - 29/06/2022
+  Version 3.12.2 - 29/06/2022
     # [issue 197] - Expand / collapse / help buttons invisible when opening settings from Add-ons Manager
     # [issue 198] - Renew license button on lower left of settings dialog not working
+    
+  Version 3.13 - 21/08/2022
+    # [issue 199] Inserting of addresses with display name that contains comma fails with unexpected results
+    # [issue 200] bracketMail() and bracketName() cannot be used in the same format string
+    # [issue 205] After FiltaQuilla filter forwards / replies with template, the next manual reply uses same template
+    # [issue 204] "Update and replace with content" command doesn't replace the field
+    # Use compose-window-init event in 102 to attain headers at an earlier stage - to call SmartTemplate4.getHeadersAsync()
+    # toclipboard - new parameter for copying address variables to clipboard 
+    # bracketMail() / bracketName() Fixed copying angled brackets to clipboard as plain text (and not encoded)
+    # [issue 206] %datelocal% throws an error and returns a blank space.
+    # [issue 208] Improve accessibility for settings dialog
+    # [issue 209] Support license validation with Exchange accounts (from Tb 102)
+    # After updating, do not open tab with version log automatically. Old behavior can be restored on the licenses tab.
+    # Repaired icon in customize toolbar
+    
+  Version 3.14 - 26/10/2022
+    # [issue 211] accept mixed case headers such as "Newsgroups" / "Message-Id" again
+    # [issue 210] support using toclipboard parameter multiple times in the same template
+    # [issue 215] Search box in variables window
+    # Fixed text colors in Variables window when using dark themes.
+    # Known issue - [external?] template not applied when replying to a message we sent ourselves 
+    #               that used SmartTemplates - and Tb changes the recipient - 
+    #               this leads to immediate secondary loadIdentity(startup=false,...) where previous body 
+    #               already has the smartTemplateInserted attribute.
+    
+  Version 3.15 - 25/11/2022
+    # [issue 215] Improved Variables search - use Shift+F3 to search backwards; support Numpad Enter
+    # [issue 217] addressbook switches broken.
+    
+  Version 3.15.1 - 28/11/2022
+    # fixed [F3] Search again.
+    
+  Version 3.16 - 05/03/2023
+    # [issue 222] Template Categories containing space characters disrupt the template menus
+    # [issue 223] Spellchecker is not activated by %spellcheck()% command - if the option 
+                  "spellcheck as you type" is disabled in Composition settings.
+    # [issue 219] Regression: bracketName(";") parameter broken. 
+    # minimum version: 91.0
+    # compatibilty until: 110.0
+    # Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIPrefService, 
+    #                              nsIStringBundleService, nsIXULAppInfo, nsIMsgComposeService, nsIConsoleService, nsIVersionComparator,
+    #                              nsIXULRuntime
+    # [issue 50] Add CardBook support [WIP]
+    # [issue 226] Automatically update deferred fields for headers that have been modified / set by template (header.set)
+    # use ical.js library to parse various vCard formats
+    # (see https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html)
+    # Show license buttons on the "menu restrictions" dialog message
+
+  Version 3.16.1 - 21/03/2023
+    # [issue 231] Forward with Template doesn't send off mail automatically any more
+    # [issue 229] Fixed Scripts fields %{% %}% 
+    # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
+
+  Version 3.17 - WIP
+    # to encourage license renewals: Show bargain section in splash screen if <=10 days to expiry
+    # [issue 232] Added pricing section to licensing dialog
+    # Added Czech translation to licensing dialog
+    # [issue 234] Correct the Number of days left in license by rounding up
+    # [issue 233] Improvements in Template Manager: Category prefix, [add sorting?]
+    # do not trigger "news" unless min ver changes at least.
+    # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
+    #   will be 4 under the new branch 5.0
+
+
+
+    
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -197,6 +263,8 @@ END LICENSE BLOCK
 */
 
  
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var SmartTemplate4 = {
   // definitions for whatIsX (time of %A-Za-z%)
   XisToday : 0,
@@ -212,7 +280,8 @@ var SmartTemplate4 = {
     hasTemplatePlaceHolder: false,  // future use
     isStationery: false,
     isThunderbirdTemplate: false,
-    isFileTemplate: false
+    isFileTemplate: false,
+    modifiedHeaders: [] // list of header vars that may have received new content; need to be updated in deferredVars
   },
   
   initFlags : function initFlags(flags) {
@@ -226,6 +295,7 @@ var SmartTemplate4 = {
     flags.hasTemplatePlaceHolder = false;
     flags.isThunderbirdTemplate = false;
     flags.isFileTemplate = false;
+    flags.modifiedHeaders = [];
   } ,
 
   stateListener: {
@@ -284,7 +354,7 @@ var SmartTemplate4 = {
     }
   },
 
-  initListener: function initListener(isWrapper) {
+  initListener: async function initListener(isWrapper) {
     const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences,
           msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -331,8 +401,11 @@ var SmartTemplate4 = {
               if (gMsgCompose.composeHTML) {
                 loadHTMLMsgPrefs();
               }
-              // from MsgComposeCommands.js#557 - add encryption support?
-              if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
+              // from MsgComposeCommands.js - add encryption support?
+              if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
+                ComposeFieldsReady();
+                updateSendCommands(true);
+              } else if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
                 window.composeEditorReady = true;
                 window.dispatchEvent(new CustomEvent("compose-editor-ready"));
               }              
@@ -349,7 +422,7 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to add template message
   // -------------------------------------------------------------------
-  notifyComposeBodyReady: function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
+  notifyComposeBodyReady: async function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util,
           Ci = Components.interfaces,
@@ -401,16 +474,21 @@ var SmartTemplate4 = {
         setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
         return;
       }      
-    } else if(theQueue.length) {
+    } else if (theQueue.length) {
+      util.logDebugOptional("fileTemplates", "Queued templates found", theQueue);
       let origUri = gMsgCompose.originalMsgURI;
       // try to find matching item from the queue
       let found = theQueue.find(el => el.uri == origUri && el.composeType == getMsgComposetype());
       if (found) {
         theFileTemplate = found;
         theQueue = theQueue.filter(el => el != found);
+        util.logDebugOptional("fileTemplates", "found match, filtered queue:", theQueue);
       }
-      else
+      else {
         theFileTemplate = theQueue.pop(); // if we can't find, let's take the last item instead and hope for the best.
+      }
+      ownerWin.SmartTemplate4.fileTemplates.armedQueue = theQueue; // store depleted queue back!
+      util.logDebugOptional("fileTemplates", "Found FileTemplate:", theFileTemplate, ownerWin.SmartTemplate4.fileTemplates.armedQueue);
     }
     
     if (theFileTemplate) {
@@ -446,6 +524,7 @@ var SmartTemplate4 = {
       else {
         flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) flags.filePaths = [];
+        util.logDebugOptional("fileTemplates", `notifyComposeBodyReady: Add file to template stack: ${theFileTemplate.path}`);
         flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
         /**********      GLOBAL VARIABLE!!! - SCOPED TO COMPOSER WINDOW      **********/
         // [issue 64] memorize the file template path in Composer! So we can change from address and reload it.
@@ -508,12 +587,13 @@ var SmartTemplate4 = {
             } , win
           );    
           if (cancelled) {
-            flags.filePaths.pop();
+            let popped = flags.filePaths.pop();
+            util.logDebugOptional("fileTemplates", `notifyComposeBodyReady: [cancelled] Removed file from template stack: ${popped}`);
             return;
           }
         }
         flags.isChangeTemplate = isChangeTemplate;
-        this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
+        await this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
         // store a flag in the document
         // [issue 108] Other Add-ons may accidentally duplicate template if they set from identity
         // root.setAttribute("smartTemplateInserted","true"); <== moved into the insertTemplate function!
@@ -588,11 +668,11 @@ var SmartTemplate4 = {
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: function loadIdentity(startup, previousIdentity) {
+  loadIdentity: async function (startup, previousIdentity) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
-    SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup + ', ' , previousIdentity + ')');
+    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
     this.PreprocessingFlags.isLoadIdentity = true;
     if (startup) {
       // Old function call
@@ -624,11 +704,13 @@ var SmartTemplate4 = {
             let text = util.getBundleString("st.fileTemplates.error.filePath");
             alert(text); 
           }
-          else
-            this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+          else {
+            await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+          }
         }
-        else
-          this.smartTemplate.insertTemplate(false);
+        else {
+          await this.smartTemplate.insertTemplate(false);
+        }
         // [Bug 25104] when switching identity, old sig does not get removed.
         //             (I think what really happens is that it is inserted twice)
         isTemplateProcessed = true;
@@ -639,7 +721,7 @@ var SmartTemplate4 = {
         // as the user might have edited here already! 
         // however, the signature is important as it should match the from address?
         if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-          newSig = this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
+          newSig = await this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
         }
       }
       // AG 31/08/2012 put this back as we need it!
@@ -682,9 +764,9 @@ var SmartTemplate4 = {
   // Initialize - we only call this from the compose window
   // -------------------------------------------------------------------
   init: function init() {
-    function smartTemplate_loadIdentity(startup){
+    async function smartTemplate_loadIdentity(startup){
       let prevIdentity = gCurrentIdentity;
-      return SmartTemplate4.loadIdentity(startup, prevIdentity);
+      return await SmartTemplate4.loadIdentity(startup, prevIdentity);
     }
     
     let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
@@ -793,10 +875,10 @@ var SmartTemplate4 = {
             btn.classList.add('always');
             break;
         }
-        util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + btn.className + ' , collapsed = ' + btn.collapsed);    
+        util.logDebugOptional("functions","SmartTemplate4Messenger btn.className = " + btn.className + " , collapsed = " + btn.collapsed);    
       }
       else
-        util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);
+        util.logDebugOptional("functions","SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in " + doc);
     }
     catch(ex) {
       util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
@@ -971,8 +1053,6 @@ SmartTemplate4.calendar = {
     init: function init(forcedLocale) {
       const util = SmartTemplate4.Util;
 
-      let strBndlSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].
-               getService(Components.interfaces.nsIStringBundleService);
       // validate the passed locale name for existence
       // https://developer.mozilla.org/en-US/docs/How_to_enable_locale_switching_in_a_XULRunner_application
       if (forcedLocale) {
@@ -1008,7 +1088,7 @@ SmartTemplate4.calendar = {
       let bundleUri = this.bundleLocale 
         ? "chrome://smarttemplate4-locales/content/" + this.bundleLocale 
         : "chrome://smarttemplate4/locale"; // determined by currently active Thunderbird locale
-      this.bundle = strBndlSvc.createBundle(bundleUri + "/calender.properties");
+      this.bundle = Services.strings.createBundle(bundleUri + "/calender.properties");
     },
     
     // the following functions retrieve strings from our own language packs (languages supported by SmartTemplate itself)

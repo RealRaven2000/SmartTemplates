@@ -50,7 +50,7 @@
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
   },
   "advanced.label": {
-    "message": "Mehr"
+    "message": "Dialog erweitern"
   },
   "any.label": {
     "message": "Beliebige Kopfzeile"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "Empfängername"
   },
+  "clipboardFunctions": {
+    "message": "Funktionen für die Zwischenablage"
+  },
+  "clipboard.copy": {
+    "message": "kopiert Text in die Zwischenablage."
+  },
+  "clipboard.insert": {
+    "message": "fügt den aktuellen Inhalt der Zwischenablage an dieser Position ein."
+  },
+  "clipboard.from": {
+    "message": "(Beispiel für beliebige Adressvariable) Mailadresse des ursprünglichen Absenders in die Zwischenablage kopieren."
+  },
+  "clipboard.setHeader": {
+    "message": "Verwendet den Inhalt der Zwischenablage, um den cc zu setzen - (funktioniert für jeden Textheader)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Findet übereinstimmenden Text aus dem Betreff und kopiert ihn in die Zwischenablage"
+  },
+  "clipboard.matchBody": {
+    "message": "Gleicht Text aus dem ursprünglichen E-Mail-Inhalt ab und kopiert ihn in die Zwischenablage, falls gefunden."
+  },
+  "clipboard.notes": {
+    "message": "Jede Funktion, die {toclip} verwendet, löscht die Zwischenablage, wenn sie keine Daten zurückgibt. Sie können die Zwischenablagefunktionen verwenden, um Daten in ein Textfragment zu übertragen, das mit dem Befehl {file} geladen wird."
+  },
   "close.label": {
-    "message": "Schließen"
+    "message": "Dialog kompaktifizieren"
   },
   "conditional.forwardMode": {
     "message": "Wenn die E-Mail inline weitergeleitet wird, wird der erste Textparameter eingefügt. Der zweite Textparameter wird verwendet, wenn die E-Mail als Anhang weitergeleitet wird."
@@ -623,13 +647,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zahlen Sie nur 4,30 € statt 8,60 € und erhalten Sie vollen Zugriff auf die Pro-Funktionen. Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
+    "message": "Dieses Sonderangebot ist {boldStart} bis $expiry$ {boldEnd} verfügbar.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Lizenzen"
   },
   "licenseComparison": {
     "message": "Um die Funktionalität der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
@@ -719,7 +746,7 @@
     "message": "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden."
   },
   "minSize_detail": {
-    "message": "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt."
+    "message": "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird noch am laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das tag trotzdem entfernt."
   },
   "month.1.name": {
     "message": "Januar"
@@ -980,7 +1007,7 @@
     "message": "Zeilenumbrüche in Text-Signatur durch <br> ersetzen"
   },
   "pref_silentUpdates": {
-    "message": "Stille Updates"
+    "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
   "pref_silentUpdates_tip": {
     "message": "Bei updates die Versionsgeschichte nicht anzeigen."
@@ -1015,6 +1042,15 @@
   "premiumConfig": {
     "message": "Premium Funktionen"
   },
+  "pricing.section": {
+    "message": "Um Ihren Preis zu erfahren, wählen Sie bitte zuerst eine der folgenden Optionen. Dies öffnet ein separates Browserfenster, wo Sie dann im Webshop den Kauf abschließen können."
+  },
+  "pricing.section.hint": {
+    "message": "Hinweis: Der Preis variiert je nach Lizenzmodell, Land, Mehrwertsteuersatz, aktuellen Rabatten oder bereits gekauften Lizenzen."
+  },  
+  "pricing.title": {
+    "message": "Preise"
+  },  
   "prompt.email": {
     "message": "Email-Adresse eingeben"
   },
@@ -1078,6 +1114,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Die Namensersetzung funktioniert nicht mit Adressbüchern die über Fernzugriff funktionieren, wie z.B. LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "CardBook unterstützen (Pro-Feature)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Standardadressbuch nutzen, wenn kein Kontakt gefunden wird"
+  },
   "s.label": {
     "message": "Sekunden (00 bis 59)"
   },
@@ -1112,7 +1154,7 @@
     "message": "Räumt alle SmartTemplate Variablen auf"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Aktualisieren und durch Inhalt ersetzen"
+    "message": "Variable durch Inhalt ersetzen"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "SmartTemplates Variable löschen"
@@ -1339,7 +1381,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. Juli"
+    "message": "26. März"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1520,6 +1562,14 @@
   "tofwd.label": {
     "message": "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen"
   },
+  "tokenError": {
+    "message": "Das folgende Token hat einen Fehler generiert: $token$\nBitte überprüfen Sie Ihre Vorlage auf Syntaxfehler. Alle Variablen sind auf dem Einstellungsdialog dokumentiert.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "E-Mail-Adresse des ursprünglichen Empfängers"
   },
@@ -1544,6 +1594,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Versionsgeschichte (Englisch)"
+  },
+  "updates.news": {
+    "message" : "Neueste Änderungen"
+  },
   "updates.title": {
     "message": "Aktualisierung"
   },
@@ -1555,6 +1611,9 @@
   },
   "url.supportPage.label": {
     "message": "Support Homepage"
+  },
+  "variable.search": {
+    "message": "Einen Suchbegriff eingeben und dann {{Enter}} drücken. Drücken Sie {{F3}}, um die Suche zu wiederholen."
   },
   "var_custom.cap": {
     "message": "Variablen für angepasstes Datumsformat"
@@ -1575,7 +1634,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Wartungskorrekturen in 3.12.2: Schaltflächen zum Erweitern/Reduzieren/Hilfe sind jetzt auch sichtbar, wenn die Einstellungen aus dem Add-ons-Manager geöffnet werden. Schaltfläche „Lizenz erneuern“ links unten im Einstellungsdialog funktioniert jetzt wie erwartet{L2}{L1}SmartTemplates Pro unterstützt jetzt die Verwendung von 'clipboard' (Zwischenablage) als Parameter für Text- und Header-Manipulationsfunktionen wie %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)% {L2}{L1}Verwenden Sie 'toclipboard', um verschiedene Ergebnisse in die Zwischenablage zu kopieren. Zum Beispiel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Verbesserter *selection* (Auswahl)-Platzhalter in Snippets, um die Integration in HTML Sektionen besser zu unterstützen. Beispielsweise können Sie jetzt ein Bild mit einem Schatten umhüllen, indem Sie ein HTML-Snippet einfügen.{L2}{L1}Vereinfachte Einstellungen für Identitätsvorlagen (Konten-Dropdown){L2}{L1}Zahlreiche Kompatibilitätskorrekturen für Thunderbird 102. %spellcheck()% kann jetzt das Wörterbuch so einstellen, dass Text in mehreren Sprachen geprüft wird.{L2}"
+    "message": "{L1}Wartungsversion 3.16.1 - Weiterleitung mit Vorlage (unter Verwendung des FiltaQuilla-Add-ons) versendete die generierten E-Mails nicht mehr automatisch. Behoben, siehe [issue 231]{L2} {L1}CardBook-Unterstützung für SmartTemplates Pro-Benutzer hinzugefügt. Sie kann in den erweiterten Einstellungen aktiviert werden.{L2} {L1}Filterparameter zum Schalter {{chatname}} hinzugefügt, zB: {{%from(chatname.skype)%}}.{L2} {L1}Die Rechtschreibprüfung ist jetzt verfügbar aktiviert durch den Befehl {{%spellcheck()%}} - auch wenn dies in den Kompositionseinstellungen ausgeschaltet ist{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -50,7 +50,7 @@
     "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
   },
   "advanced.label": {
-    "message": "Rozšířené"
+    "message": "Rozbalte dialog"
   },
   "any.label": {
     "message": "Jakákoliv řádka hlavičky"
@@ -160,8 +160,32 @@
   "ccname.label": {
     "message": "Jméno příjemce"
   },
+  "clipboardFunctions": {
+    "message": "Funkce schránky"
+  },
+  "clipboard.copy": {
+    "message": "zkopíruje text do schránky."
+  },
+  "clipboard.insert": {
+    "message": "vloží aktuální obsah schránky na tuto pozici."
+  },
+  "clipboard.from": {
+    "message": "(příklad pro libovolnou proměnnou adresy) zkopírujte poštovní adresu původního odesílatele do schránky."
+  },
+  "clipboard.setHeader": {
+    "message": "Pomocí obsahu schránky nastavte desku cc - (funguje pro jakékoli textové záhlaví)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Vyhledá odpovídající text z předmětu a zkopíruje jej do schránky, pokud je nalezen."
+  },
+  "clipboard.matchBody": {
+    "message": "Shoduje se s textem z původního obsahu e-mailu a zkopíruje jej do schránky, pokud je nalezen."
+  },
+  "clipboard.notes": {
+    "message": "Jakákoli funkce, která používá {toclip}, vymaže schránku, pokud nevrátí žádná data. K přenosu dat do textového fragmentu, který se načte pomocí příkazu {file}, můžete použít funkce schránky."
+  },
   "close.label": {
-    "message": "Základní"
+    "message": "Sbalit dialog"
   },
   "conditional.forwardMode": {
     "message": "Pokud je e-mail přeposlán inline, je vložen první textový parametr. Druhý textový parametr se používá, když je pošta přeposílána jako příloha."
@@ -620,13 +644,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Zaplaťte pouze 4,30 EUR namísto 8,60 EUR a získejte plný přístup k funkcím Pro. Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
+    "message": "Tato speciální nabídka je k dispozici od {boldStart} do $expiry${boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "licence"
   },
   "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
@@ -1028,7 +1055,7 @@
     "message": "Nahraď oddělovače řádků za <br> v textovém podpisu "
   },
   "pref_silentUpdates": {
-    "message": "Tiché aktualizace"
+    "message": "Neotevírejte kartu s historií verzí"
   },
   "pref_silentUpdates_tip": {
     "message": "Neotevírejte protokol změn po aktualizaci SmartTemplates."
@@ -1069,6 +1096,15 @@
   "prompt.text": {
     "message": "Vlož text pro přidání nebo nastavení"
   },
+  "pricing.section": {
+    "message": "Chcete-li zjistit svou cenu, vyberte nejprve jednu z následujících možností. Otevře se samostatné okno prohlížeče, kde můžete dokončit nákup v internetovém obchodě."
+  },
+  "pricing.section.hint": {
+    "message": "Poznámka: Cena se liší v závislosti na modelu licence, zemi, sazbě DPH, aktuálních slevách nebo již zakoupených licencích."
+  },
+  "pricing.title": {
+    "message": "Ceny"
+  },
   "purchase-a-license": {
     "message": "Kupte si licenci."
   },
@@ -1085,7 +1121,7 @@
     "message": "[volitelný, číselný] Maximální úroveň citace k odstranění starších citací z konverzace."
   },
   "quote_changers.cap": {
-    "message": "Nabídka manipulace"
+    "message": "Úprava nabídky"
   },
   "quote_changers.desc": {
     "message": "Prémiové proměnné pro odstranění textu / značek z citovaných částí a pro úsporu místa."
@@ -1126,6 +1162,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Funkce nepracuje se vzdálenýma adresářema, jako LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Podpora CardBook (pro funkce)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Pokud není nalezen žádný kontakt, použijte výchozí adresář"
+  },
   "s.label": {
     "message": "Vteřina (00 až 59)"
   },
@@ -1160,7 +1202,7 @@
     "message": "Vyčistěte všechny proměnné SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Aktualizace a nahrazení obsahem"
+    "message": "Nahradit proměnnou obsahem"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Odebrat proměnnou SmartTemplates"
@@ -1387,7 +1429,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17. července"
+    "message": "26. března"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -1571,6 +1613,14 @@
   "tofwd.label": {
     "message": "Pomocí fwd přidejte příjemce, na který lze kliknout, do předávaných e-mailů"
   },
+  "tokenError": {
+    "message": "Následující token vygeneroval chybu: $token$\nZkontrolujte prosím svou šablonu, zda neobsahuje chyby syntaxe. Všechny proměnné jsou zdokumentovány na obrazovce nastavení.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "E-mailová adresa původního příjemce"
   },
@@ -1596,6 +1646,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Poznámky k vydání (anglicky)"
+  },
+  "updates.news": {
+    "message" : "Poslední zprávy"
+  },
   "updates.title": {
     "message": "Aktualizace"
   },
@@ -1610,6 +1666,9 @@
   },
   "url.supportPage.label": {
     "message": "Stránka podpory"
+  },
+  "variable.search": {
+    "message": "Zadejte hledaný výraz a stiskněte {{Enter}}. Stiskněte {{F3}} pro opakování hledání."
   },
   "var_custom.cap": {
     "message": "Proměnné pro přizpůsobený formát data"
@@ -1630,7 +1689,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Opravy údržby pro 3.12.2: Tlačítka pro rozbalení/sbalení/nápovědu jsou nyní viditelná také při otevírání nastavení ze Správce doplňků. Tlačítko pro obnovení licence v levé dolní části dialogu nastavení nyní funguje podle očekávání{L2}{L1}SmartTemplates Pro nyní podporuje použití 'clipboard' (schránky) jako argumentu pro funkce manipulace s textem a záhlavím, jako je %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(regular Expression,clipboard)% %replaceQuotedText(regular Expression,clipboard)%{L2}{L1}Ke zkopírování různých výsledků do schránky použijte 'toclipboard'. Například: %from(name,schlipboard)% %dateformat(\"A, e/n/Y H:M\",current,schlipboard)% {L2}{L1}Vylepšený zástupný symbol *selection* (výběr) ve úryvcích pro lepší podporu integrace do vybraných sekcí HTML. Nyní můžete například zabalit obrázek do stínu vložením úryvku HTML.{L2}{L1}Zjednodušené nastavení pro šablony identit (rozbalovací nabídka účtů){L2}{L1}Četné opravy kompatibility pro Thunderbird 102.{L2}"
+    "message": "{L1}Verze údržby 3.16.1 – Přeposílání pomocí šablony (pomocí doplňku FiltaQuilla) již automaticky neodesílalo vygenerované e-maily. Opraveno, viz [vydání 231]{L2} 231] {L2} {L1}Byla přidána podpora CardBook pro uživatele SmartTemplates Pro. Lze ji aktivovat v pokročilých nastaveních.{L2} {L1}Do přepínače {{chatname}} byl přidán parametr filtru, např.: {{%from(chatname.skype)%}}.{L2} {L1}Kontrola pravopisu je nyní aktivuje se příkazem {{%spellcheck()%}} – i když je v nastavení kompozice vypnuto{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

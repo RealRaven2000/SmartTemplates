@@ -137,7 +137,7 @@ export let Util = {
 	// HTML only:
 	// headers that are currently not defined may be filled later.
 	// e.g. adding a To address when writing a new email
-	wrapDeferredHeader : function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
+	wrapDeferredHeader : async function wrapDeferredHeader(field, defaultValue, isHtml, isComposeNew) {
 		if (Preferences.isDebugOption("tokens.deferred")) debugger;
 		
 		let newComposeClass = isComposeNew ? " class='noWrite'" : ""; /* make field look pink for headers that are not available in New Emails */
@@ -151,8 +151,11 @@ export let Util = {
 			
 		// Add variables in "Write" window to standard features!
 		field = field.replace(/%/g,'');
+		let parensPos = field.indexOf('('),
+		    generalFunction = (parensPos==-1) ? field : field.substr(0,parensPos);
+				
 		let tag = "<smarttemplate" +
-					 " hdr='" + field + "'" +
+					 " hdr='" + generalFunction + "'" +
 					 " st4variable='" + field + "'" +
 					 " title='" + field + "'" +
 					 newComposeClass + 
@@ -515,8 +518,8 @@ export let Util = {
   isAddressHeader: function	isAddressHeader(token='') {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
-       " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
-       " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+       " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
+       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to ");
   } ,  
   
   // 1763
@@ -1145,47 +1148,23 @@ export let Util = {
   
   // async version of string.replace()
   // takes an asynchronous callback function as last argument.
+  // rewritten by TbSync
   replaceAsync: async function(string, searchValue, replacer) {
-    /*
-    https://www.npmjs.com/package/string-replace-async/v/3.0.2
-    The MIT License (MIT)
-
-    Copyright (c) Dmitrii Sobolev <disobolev@icloud.com> (github.com/dsblv)
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
-    */
     try {
       if (typeof replacer === "function") {
-        // 1. Run fake pass of `replace`, collect values from `replacer` calls
-        // 2. Resolve them with `Promise.all`
-        // 3. Run `replace` with resolved values
-        var values = [];
-        String.prototype.replace.call(string, searchValue, function () {
-          values.push(replacer.apply(undefined, arguments));
-          return "";
+        let  values = [];
+        string.replace(searchValue, function () {
+          values.push(arguments); // store the regexp split
+          return ""; // this is a fake pass, we do not replace anything here
         });
-        return Promise.all(values).then(function (resolvedValues) {
-          return String.prototype.replace.call(string, searchValue, function () {
-            return resolvedValues.shift();
-          });
+        let resolvedValues = [];
+        for (let args of values) {
+          resolvedValues.push(await replacer(...args));
+        }
+        return string.replace(searchValue, function () {
+          return resolvedValues.shift();
         });
-      } else {
+      } else { // if a string is passed.
         return Promise.resolve(
           String.prototype.replace.call(string, searchValue, replacer)
         );

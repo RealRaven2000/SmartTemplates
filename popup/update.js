@@ -10,7 +10,7 @@ END LICENSE BLOCK */
 // whether these are shown depends on the "endSale" variable in popup.js!
 const discountPro = "33%";
 const discountRenewal = "25%";
-const discountUpgrade = "50%";
+const discountUpgrade = "33%";
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
@@ -42,6 +42,14 @@ const discountUpgrade = "50%";
         messenger.Utilities.showVersionHistory();
         break;
     }
+    
+    if (event.target.classList.contains("issue")) {
+      let issueId = event.target.getAttribute("no");
+      if (issueId) {
+        messenger.windows.openDefaultBrowser(`https://github.com/RealRaven2000/SmartTemplates/issues/${issueId}`);
+      }
+    }    
+    
   
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
@@ -179,8 +187,7 @@ const discountUpgrade = "50%";
     //
     let specialOfferStandard = document.getElementById('specialOfferStandard');
     if (specialOfferStandard) {
-      let discount = "50%"; // Upgrade to Pro!
-      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discount])
+      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discountUpgrade])
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>");
     }
@@ -194,11 +201,11 @@ const discountUpgrade = "50%";
     
     let whatsNewLst = document.getElementById('whatsNewList');
     function replaceVariableCodeTags(txt) {
-      let tags = ["header.set(to,clipboard)", "header.prefix(subject,clipboard)", "replaceText(regular Expression,clipboard)", "replaceQuotedText(regular Expression,clipboard)", "spellcheck()", "from(name,toclipboard)", "dateformat(\"A, e/n/Y H:M\",current,toclipboard)"];
-      for (let x of tags) {
-        txt = txt.replace(`%${x}%`, `<code>%${x}%</code>`);
-      }
-      return txt.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>");
+      let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
+      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
+                 .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
+                 .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
+                 .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
     }
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))

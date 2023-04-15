@@ -13,8 +13,6 @@
 
 /* [mx-l10n] This module handles front-end code for the licensing dialog  */
 
-var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-				
 // removed UI function from SmartTemplate4.Licenser
 var Register = {
   l10n: function() {

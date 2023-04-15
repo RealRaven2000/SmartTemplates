@@ -53,7 +53,7 @@
     "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
   "advanced.label": {
-    "message": "Avancerat"
+    "message": "Expandera dialogrutan"
   },
   "any.label": {
     "message": "Alla Header-line"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Mottagarens namn"
   },
+  "clipboardFunctions": {
+    "message": "Urklippsfunktioner"
+  },
+  "clipboard.copy": {
+    "message": "kopierar text till urklipp."
+  },
+  "clipboard.insert": {
+    "message": "infogar aktuellt urklippsinnehåll på denna position."
+  },
+  "clipboard.from": {
+    "message": "(exempel för valfri adressvariabel) kopiera e-postadressen för den ursprungliga avsändaren till urklipp."
+  },
+  "clipboard.setHeader": {
+    "message": "Använd urklippsinnehåll för att ställa in cc - (fungerar för alla textrubriker)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Hittar matchande text från ämne och kopiera till urklipp om den hittas."
+  },
+  "clipboard.matchBody": {
+    "message": "Matchar text från det ursprungliga e-postinnehållet och kopierar det till urklipp om det hittas."
+  },
+  "clipboard.notes": {
+    "message": "Alla funktioner som använder {toclip} rensar urklippet om det inte returnerar någon data. Du kan använda urklippsfunktionerna för att överföra data till ett textfragment som laddas med kommandot {file}."
+  },
   "close.label": {
-    "message": "Grundläggande"
+    "message": "Komprimera dialogrutan"
   },
   "conditional.forwardMode": {
     "message": "Om e-postmeddelandet vidarebefordras infogas den första textparametern. Den andra textparametern används när mejlet vidarebefordras som en bilaga."
@@ -626,13 +650,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Betala endast 4,30 € istället för 8,60 € och få full tillgång till Pro-funktionerna. Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
+    "message": "Detta specialerbjudande är tillgängligt från {boldStart} till $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Licenser"
   },
   "licenseComparison": {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
@@ -1034,7 +1061,7 @@
     "message": "Ersätt radbrytningar i signaturer med vanlig text med <br>"
   },
   "pref_silentUpdates": {
-    "message": "Tyst uppdateringar"
+    "message": "Öppna inte fliken med versionshistorik"
   },
   "pref_silentUpdates_tip": {
     "message": "Öppna inte ändringsloggen efter att SmartTemplates har uppdaterats."
@@ -1069,6 +1096,15 @@
   "premiumConfig": {
     "message": "Premiumfunktioner"
   },
+  "pricing.section": {
+    "message": "För att ta reda på ditt pris, välj ett av följande alternativ först. Detta öppnar ett separat webbläsarfönster där du kan genomföra köpet i webbshoppen."
+  },
+  "pricing.section.hint": {
+    "message": "Obs: Priset varierar beroende på licensmodell, land, momssats, aktuella rabatter eller redan köpta licenser."
+  },  
+  "pricing.title": {
+    "message": "Prissättning"
+  },
   "prompt.email": {
     "message": "Ange en e-postadress"
   },
@@ -1091,7 +1127,7 @@
     "message": "[valfritt, numeriskt] Högsta citeringsnivå för att ta bort äldre citat från konversationen."
   },
   "quote_changers.cap": {
-    "message": "Citat Manipulation"
+    "message": "Citerad textändring"
   },
   "quote_changers.desc": {
     "message": "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme."
@@ -1132,6 +1168,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Denna funktioner fungerar inte med vissa fjärradressböcker, som LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Support CardBook (pro-funktion)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Använd standardadressboken om ingen kontakt hittas"
+  },
   "s.label": {
     "message": "Sekund (00 till 59)"
   },
@@ -1166,7 +1208,7 @@
     "message": "Städa upp alla SmartTemplate-variabler"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Uppdatera och ersätt med innehåll"
+    "message": "Ersätt variabel med innehåll"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Ta bort SmartTemplates-variabel"
@@ -1402,7 +1444,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 juli"
+    "message": "26 mars"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1592,6 +1634,14 @@
   "tofwd.label": {
     "message": "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden"
   },
+  "tokenError": {
+    "message": "Följande token genererade ett fel: $token$\nKontrollera din mall för syntaxfel. Alla variabler dokumenteras i inställningsfönstret.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Originalmottagarens e-postadress"
   },
@@ -1620,6 +1670,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Release Notes (engelska)"
+  },
+  "updates.news": {
+    "message" : "Senaste nytt"
+  },
   "updates.title": {
     "message": "Uppdateringar"
   },
@@ -1634,6 +1690,9 @@
   },
   "url.supportPage.label": {
     "message": "Supportsida"
+  },
+  "variable.search": {
+    "message": "Ange en sökterm och tryck på {{Enter}}. Tryck på {{F3}} för att upprepa sökningen."
   },
   "var_custom.cap": {
     "message": "Variabler för anpassat datumformat"
@@ -1654,7 +1713,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Underhållskorrigeringar för 3.12.2: Utöka/komprimera/hjälp-knappar är nu också synliga när du öppnar inställningar från tilläggshanteraren. Knappen Förnya licens längst ner till vänster i inställningsdialogrutan fungerar nu som förväntat{L2}{L1}SmartTemplates Pro stöder nu användningen av 'clipboard' (urklipp) som argument för text- och rubrikmanipuleringsfunktioner som %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(reguljärt uttryck,clipboard)% %replaceQuotedText(reguljärt uttryck,clipboard)% {L2}{L1}Använd 'toclipboard' för att kopiera olika resultat till urklipp. Till exempel: %from(name,toclipboard)% %dateformat(\"A, e/n/Y H:M\",current,toclipboard)% {L2}{L1}Förbättrad *selection* (selektion) platshållare i Snippets för att bättre stödja integration i utvalda HTML-sektioner. Till exempel kan du nu linda en bild med en skugga genom att infoga ett HTML-kodavsnitt.{L2}{L1}Förenklade inställningar för identitetsmallar (rullgardinsmenyn för konton){L2}{L1}Många kompatibilitetskorrigeringar för Thunderbird 102. %spellcheck()% kan nu ställa in ordbok för att korrekturläsa text med flera språk.{L2}"
+    "message": "{L1}Underhållsversion 3.16.1 - Vidarebefordran med mall (med FiltaQuilla-tillägget) skickade inte längre de genererade e-postmeddelandena automatiskt. Fixat, se [issue 231]{L2} {L1}Lägg till stöd för CardBook för SmartTemplates Pro-användare. Det kan aktiveras i avancerade inställningar.{L2} {L1}Lade till filterparameter till {{chatname}}-omkopplaren, t.ex.: {{%from(chatname.skype)%}}.{L2} {L1}Stavningskontrollen är nu aktiveras av kommandot {{%spellcheck()%}} - även om det är avstängt i kompositionsinställningarna{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

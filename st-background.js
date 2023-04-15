@@ -12,6 +12,7 @@ var currentLicense;
 const GRACEPERIOD_DAYS = 28;
 const GRACEDATE_STORAGE = "extensions.smartTemplate4.license.gracePeriodDate";
 const DEBUGLICENSE_STORAGE = "extensions.smartTemplate4.debug.premium.licenser";
+const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 
 var startupFinished = false;
 var callbacks = [];
@@ -49,8 +50,14 @@ var ComposeAction = {};
       case "update":
         {
           setTimeout(
-            function() {
-              messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+            async function() {
+              let ver = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.version","0");
+              const manifest = await messenger.runtime.getManifest();
+              // get pure version number / remove pre123 indicator
+              let installedVersion = manifest.version.replace(/pre*./,""); 
+              if (ver > installedVersion) {
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
+              }
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
               messenger.NotifyTools.notifyExperiment({event: "firstRun"});
             },
@@ -244,6 +251,33 @@ async function main() {
         // main window update reacting to license status change
         messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"}); 
         break;
+
+      case "parseVcard" :
+        {
+          // https://webextension-api.thunderbird.net/en/stable/how-to/contacts.html
+          // Get JSON representation of the vCard data (jCal).
+          let dataString = data.vCard;
+          return ICAL.parse(dataString);
+        }
+        
+
+      case "cardbook.getContactsFromMail":
+        try {
+          let queryObject = {
+            query: "smartTemplates.getContactsFromMail", 
+            mail: data.mail
+          }
+          if (data.preferredDirId) {
+            queryObject.dirPrefId = data.preferredDirId;
+          }
+
+          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject );
+          return cards;
+        }
+        catch(ex) {
+          console.exception(ex);
+          return null;
+        }
         
     }
   });
@@ -341,6 +375,40 @@ async function main() {
   */
 
   messenger.WindowListener.startListening();
+  
+  
+  let browserInfo = await messenger.runtime.getBrowserInfo();
+  function getThunderbirdVersion() {
+    let parts = browserInfo.version.split(".");
+    return {
+      major: parseInt(parts[0]),
+      minor: parseInt(parts[1]),
+      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
+    }
+  }  
+  let tbVer = getThunderbirdVersion();
+  
+  // [issue 209] Exchange account validation
+  if (tbVer.major>=98) {
+    messenger.accounts.onCreated.addListener( async(id, account) => {
+      if (currentLicense.info.status == "MailNotConfigured") {
+        // redo license validation!
+        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+        await currentLicense.validate();
+        if(currentLicense.info.status != "MailNotConfigured") {
+          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        }
+        if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+      }
+      else {
+        if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
+      }
+    });
+  }  
+  
+
 }
 
 main();

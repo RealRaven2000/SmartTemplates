@@ -53,7 +53,7 @@
     "message": "Per continuar sent útils, ara els desenvolupadors de complements han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
   "advanced.label": {
-    "message": "Avançats"
+    "message": "Amplia el diàleg"
   },
   "any.label": {
     "message": "Quina entèsta que siá"
@@ -163,8 +163,32 @@
   "ccname.label": {
     "message": "Noms dels destinataris en còpia"
   },
+  "clipboardFunctions": {
+    "message": "Funcions del porta-retalls"
+  },
+  "clipboard.copy": {
+    "message": "copia el text al porta-retalls."
+  },
+  "clipboard.insert": {
+    "message": "insereix el contingut actual del porta-retalls en aquesta posició."
+  },
+  "clipboard.from": {
+    "message": "(exemple per a qualsevol variable d'adreça) copieu l'adreça de correu del remitent original al porta-retalls."
+  },
+  "clipboard.setHeader": {
+    "message": "Utilitzeu el contingut del porta-retalls per configurar el cc - (funciona per a qualsevol capçalera textual)."
+  },
+  "clipboard.matchSubject": {
+    "message": "Troba el text coincident de l'assumpte i copia al porta-retalls si es troba."
+  },
+  "clipboard.matchBody": {
+    "message": "Coincideix amb el text del contingut del correu electrònic original i el copia al porta-retalls si es troba."
+  },
+  "clipboard.notes": {
+    "message": "Qualsevol funció que utilitzi {toclip} esborrarà el porta-retalls si no retorna dades. Podeu utilitzar les funcions del porta-retalls per transferir dades a un fragment de text que es carrega amb l'ordre {file}."
+  },
   "close.label": {
-    "message": "Tampar"
+    "message": "Redueix el diàleg"
   },
   "conditional.forwardMode": {
     "message": "Si el correu electrònic es reenvia en línia, s'insereix el primer paràmetre de text. El segon paràmetre de text s'utilitza quan el correu es reenvia com a fitxer adjunt."
@@ -629,13 +653,16 @@
     }
   },
   "license-standard-special-terms": {
-    "message": "Pagueu només 4,30 € en lloc de 8,60 € i obteniu accés complet a les funcions Pro. Aquesta oferta especial està disponible del {boldStart} al $expiry$ {boldEnd}.",
+    "message": "Aquesta oferta especial està disponible del {boldStart} al $expiry$ {boldEnd}.",
     "placeholders": {
       "expiry": {
         "content": "$1",
         "example": "16. April"
       }
     }
+  },
+  "license-tab": {
+    "message": "Llicències"
   },
   "licenseComparison": {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
@@ -1037,7 +1064,7 @@
     "message": "Substitueix els salts de línia per la signatura de text pla per <br>"
   },
   "pref_silentUpdates": {
-    "message": "Actualitzacions silencioses"
+    "message": "No obriu la pestanya amb l'historial de versions"
   },
   "pref_silentUpdates_tip": {
     "message": "No obriu el registre de canvis després que s'hagi actualitzat SmartTemplates."
@@ -1057,6 +1084,15 @@
   "premiumConfig": {
     "message": "Funcions premium"
   },
+  "pricing.section": {
+    "message": "Per saber el vostre preu, seleccioneu primer una de les opcions següents. Això obre una finestra separada del navegador on podeu completar la compra a la botiga web."
+  },
+  "pricing.section.hint": {
+    "message": "Nota: El preu varia en funció del model de llicència, país, tipus d'IVA, descomptes actuals o llicències ja adquirides."
+  },  
+  "pricing.title": {
+    "message": "Preus"
+  },  
   "prompt.email": {
     "message": "Introduïu una adreça de correu electrònic"
   },
@@ -1079,7 +1115,7 @@
     "message": "[opcional, numèric] Nivell màxim de cites per eliminar cometes antigues de la conversa."
   },
   "quote_changers.cap": {
-    "message": "Manipulació de pressupostos"
+    "message": "Modificació del pressupost"
   },
   "quote_changers.desc": {
     "message": "Variables premium per eliminar text / etiquetes de les parts citades i estalviar espai."
@@ -1120,6 +1156,12 @@
   "resolveNamesFromAB_tip": {
     "message": "Aquesta funció no funciona amb determinades llibretes d'adreces remotes, com ara LDAP."
   },
+  "resolveNamesFromCardBook": {
+    "message": "Suport CardBook (funció professional)"
+  },
+  "resolveNamesFromCardBook.fallback": {
+    "message": "Utilitzeu la llibreta d'adreces predeterminada si no es troba cap contacte"
+  },
   "s.label": {
     "message": "Segondas (00 a 59)"
   },
@@ -1154,7 +1196,7 @@
     "message": "Neteja totes les variables SmartTemplate"
   },
   "smartTemplate4.deferredcontext.cleanup": {
-    "message": "Actualitzeu i substituïu per contingut"
+    "message": "Substitueix la variable per contingut"
   },
   "smartTemplate4.deferredcontext.delete": {
     "message": "Elimineu la variable SmartTemplates"
@@ -1384,7 +1426,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "17 de juliol"
+    "message": "26 de març"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1568,6 +1610,14 @@
   "tofwd.label": {
     "message": "Utilitzeu fwd per afegir el destinatari clicable als correus reenviats"
   },
+  "tokenError": {
+    "message": "El testimoni següent ha generat un error: $token$\nSi us plau, comproveu si hi ha errors de sintaxi a la vostra plantilla. Totes les variables estan documentades a la finestra de configuració.",
+    "placeholders": {
+      "token": {
+        "content": "$1"
+      }
+    }
+  },
   "tomail.label": {
     "message": "Adreça de correu electrònic del destinatari original"
   },
@@ -1596,6 +1646,12 @@
       }
     }
   },
+  "updates.changeLog": {
+    "message" : "Notes de la versió (anglès)"
+  },
+  "updates.news": {
+    "message" : "Últimes notícies"
+  },
   "updates.title": {
     "message": "Actualitzacions"
   },
@@ -1610,6 +1666,9 @@
   },
   "url.supportPage.label": {
     "message": "Pagina d'ajuda"
+  },
+  "variable.search": {
+    "message": "Introduïu un terme de cerca i premeu {{Retorn}}. Premeu {{F3}} per repetir la cerca."
   },
   "var_custom.cap": {
     "message": "Variablas per personalizar lo format de data "
@@ -1630,7 +1689,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Solucions de manteniment per a la 3.12.2: ara també es poden veure els botons d'ampliar/reduir/ajuda quan s'obre la configuració des del Gestor de complements. El botó Renova la llicència a la part inferior esquerra del quadre de diàleg de configuració ara funciona com s'esperava{L2}{L1}SmartTemplates Pro ara admet l'ús de 'clipboard' (porta-retalls) com a argument per a les funcions de manipulació de text i capçaleres, com ara %header.set(to,clipboard)% %header.prefix(subject,clipboard)% %replaceText(expressió regular,clipboard)% % replaceQuotedText(regular Expression,clipboard)%{L2} {L1}Utilitzeu 'toclipboard' per copiar diversos resultats al porta-retalls. Per exemple: %from(nom,al porta-retalls)% %dateformat(\"A, e/n/Y H:M\",actual,al porta-retalls)% {L2}{L1}S'ha millorat el marcador de posició *selection* (výběr) als fragments per admetre millor la integració a les seccions HTML seleccionades. Per exemple, ara podeu embolicar una imatge amb una ombra inserint un fragment HTML.{L2}{L1}Configuració simplificada per a plantilles d'identitat (menú desplegable de comptes){L2}{L1}Nombroses correccions de compatibilitat per a Thunderbird 102.{L2}"
+    "message": "{L1}Versió de manteniment 3.16.1: el reenviament amb plantilla (mitjançant el complement FiltaQuilla) ja no enviava els correus electrònics generats automàticament. S'ha solucionat, vegeu [problema 231]{L2} {L1}S'ha afegit compatibilitat amb CardBook per als usuaris de SmartTemplates Pro. Es pot activar a la configuració avançada.{L2} {L1}S'ha afegit un paràmetre de filtre a l'interruptor {{chatname}}, per exemple: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortogràfic és ara activat per l'ordre {{%spellcheck()%}}, fins i tot si s'ha desactivat a la configuració de la composició{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
