@@ -1,4 +1,17 @@
 
+
+var sales_end = new Date("2023-03-26");
+
+/* functions that remove elements depending on the user type (from user=pro querystring ) */
+
+var removableItems = [
+	"smartTemplateProUser",
+	"smartTemplateFreeUser",
+	"smartTemplateProRenew"
+];
+var removedItems = [];
+
+
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 
 	function getQueryVariable(variable)	{
