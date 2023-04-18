@@ -79,6 +79,19 @@ var removedItems = [];
 			}
 			
 		}
+		
+		// remove sales stuff
+		if (sales_end && new Date() > sales_end) {
+			removableItems.forEach(
+				(e) => {
+					if (!removedItems.includes(e)) {
+						removeClassItems(e);
+						removedItems.push(e);
+					}
+				}
+			);
+		}
+
 	});
 	
 	
