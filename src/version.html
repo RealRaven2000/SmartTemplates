@@ -235,6 +235,57 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+
+<a id="3.17"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.17 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">91.* - 110.*</span> 
+		</span>
+  </h4>
+  <p>
+		SmartTemplates  is fully compatible with the current ESR version
+		of Thunderbird (102.10) - and currently supports up to version 110 beta 4.
+		I am currently working on 
+		<a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">fundamental changes for Thunderbird 115</a> 
+		which will be released in summer 2023 and has a completely 
+		<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
+		user interface "Supernova"</a>.
+		This requires considerable work of <b>rewriting all elements interacting with the main page</b> 
+		(3pane) of Thunderbird (toolbar buttons, template menus) - and also requires rewriting
+    the settings dialog as a content tab. Please fund this work through buying a license.
+	</p>
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    <li>
+      New <code>%deleteForwardedBody%</code> function removes the body of the original email when 
+      forwarding inline. Can be used to process information from automated mails while removing 
+      the original information.
+    </li>
+    <li>
+      Improvements in Template Manager: Show Category in the list for easier navigation.
+    </li>
+    <li>
+      Added pricing section to licensing dialog <a href="https://github.com/RealRaven2000/SmartTemplates/issues/232">[issue 232]</a>
+    </li>
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Corrected the Number of days left in license by rounding up <a href="https://github.com/RealRaven2000/SmartTemplates/issues/234">[issue 234]</a>
+    </li>
+    <h5 class="inList"><span class="inListTitle">Miscellaneous</span></h5>
+    <li>
+      Added Czech translation to licensing dialog
+    </li>
+    <li>
+      SmartTemplates does not trigger "news" unless min ver changes at least. This way
+      test versions can be loaded without always displaying the "News" label on the toolbar / status bar.
+    </li>
+  </ul>
+</li> 
+
 <a id="3.16"> &nbsp; </a>
 <a id="3.16.1"> &nbsp; </a>
 <li>
