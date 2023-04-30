@@ -1288,8 +1288,32 @@ SmartTemplate4.Util = {
         fPart = path.lastIndexOf(slash),
         newPath = "",
         appendedPath = "";
-    if (fPart)
-      newPath = path.substr(0,fPart) + slash;
+
+		// [issue 237] allow navigating to parent folders.
+		let jumpUp = 0;
+    if (fPart) {
+      newPath = path.substr(0,fPart);
+		}
+		while (filePath.startsWith("../")) {
+			filePath = filePath.replace("../","");
+			jumpUp++;
+		}
+		while (filePath.startsWith("..\\")) {
+			filePath = filePath.replace("..\\","");
+			jumpUp++;
+		}
+
+		let pA = newPath.split(slash);
+		while (jumpUp > 0) {
+			pA.pop();
+			jumpUp--;
+		}
+		newPath = pA.join(slash);
+
+		if (fPart) {
+		  newPath = newPath + slash;
+		}
+
     // issue 77 - %file()% path truncated at front by 1 letter on Mac OS
     if (filePath && newPath) {
       let slashUnifiedFilePath = filePath.replace(noSlash, slash);
