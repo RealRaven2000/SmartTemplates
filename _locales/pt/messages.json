@@ -298,6 +298,9 @@
   "defaultMimeFormat_tip": {
     "message": "Formato a ser usado ao substituir endereços simples %to% %from% %cc%. Por exemplo. (firstname,lastname,??mail) mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email."
   },
+  "deleteForwardedBody": {
+    "message": "Esta função remove o corpo do e-mail original ao encaminhar em linha. Pode ser usado para processar informações de e-mails automatizados enquanto remove as informações originais."
+  },
   "deleteQuotedTags": {
     "message": "Exclui tags da cotação"
   },
@@ -804,6 +807,12 @@
   },
   "n.label": {
     "message": "Mês (de 1 a 12)"
+  },
+  "newsHead": {
+    "message": "Últimas notícias"
+  },
+  "newsSection": {
+    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento SmartTemplates para a nova interface do usuário Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2} {P1}Como este trabalho é exclusivamente financiado pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar SmartTemplates no futuro{P2}"
   },
   "newsgr.label": {
     "message": "Grupos de notícias"
@@ -1653,7 +1662,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Manutenção versão 3.16.1 - Encaminhamento com modelo (usando o complemento FiltaQuilla) não enviava mais os e-mails gerados automaticamente. Corrigido, consulte [issue 231]{L2} {L1}Adicionado suporte CardBook para usuários do SmartTemplates Pro. Ele pode ser ativado em configurações avançadas.{L2} {L1}Parâmetro de filtro adicionado à chave {{chatname}}, por exemplo: {{%from(chatname.skype)%}}.{L2} {L1}O corretor ortográfico agora é ativado pelo comando {{%spellcheck()%}} - mesmo se desativado nas configurações de composição{L2}"
+    "message": "{L1} A nova função {{%deleteForwardedBody%}} remove o corpo do e-mail original ao encaminhar em linha. {L2} {L1}Comandos que inserem conteúdo de arquivos agora podem acessar pastas pai com {{../}}, por exemplo: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Melhorias no gerenciador de modelos: Mostrar categoria na lista para facilitar a navegação. {L2} {L1} Seção de preços adicionada à caixa de diálogo de licenciamento {L2} {L1} Corrigido o número de dias restantes na licença arredondando para cima {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

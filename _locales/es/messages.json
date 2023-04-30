@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Formato para usar al reemplazar de las direcciones %to% %from% %cc%.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo."
   },
+  "deleteForwardedBody": {
+    "message": "Esta función elimina el cuerpo del correo electrónico original cuando se reenvía en línea. Se puede usar para procesar información de correos electrónicos automatizados mientras se elimina la información original."
+  },
   "deleteQuotedTags": {
     "message": "Elimina tags de la cita."
   },
@@ -810,6 +813,12 @@
   },
   "n.label": {
     "message": "Mes (1 a 12)"
+  },
+  "newsHead": {
+    "message": "Últimas noticias"
+  },
+  "newsSection": {
+    "message": "{P1}Actualmente estoy trabajando en la conversión del complemento SmartTemplates para la nueva interfaz de usuario de Thunderbird SuperNova. Esto se implementará en la próxima versión principal de Thunderbird 115 en el verano de 2023.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [problema 213]{P2} {P1}Como este trabajo es exclusivamente financiado por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar SmartTemplates en el futuro{P2}"
   },
   "newsgr.label": {
     "message": "Grupos de noticias"
@@ -1650,7 +1659,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Versión de mantenimiento 3.16.1: el reenvío con plantilla (usando el complemento FiltaQuilla) ya no enviaba los correos electrónicos generados automáticamente. Solucionado, consulte [issue 231]{L2} {L1}Se agregó compatibilidad con CardBook para usuarios de SmartTemplates Pro. Se puede habilitar en la configuración avanzada.{L2} {L1}Se agregó un parámetro de filtro al interruptor {{chatname}}, por ejemplo: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortográfico ahora está activado por el comando {{%spellcheck()%}}, incluso si está desactivado en la configuración de composición{L2}"
+    "message": "{L1} La nueva función {{%deleteForwardedBody%}} elimina el cuerpo del correo electrónico original cuando se reenvía en línea. {L2} {L1}Los comandos que insertan contenidos de archivos ahora pueden acceder a las carpetas principales con {{../}}, por ejemplo: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Mejoras en el Administrador de plantillas: Mostrar categoría en la lista para facilitar la navegación. {L2} {L1} Se agregó la sección de precios al cuadro de diálogo de licencias {L2} {L1} Se corrigió la cantidad de días restantes en la licencia redondeando hacia arriba {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

@@ -298,6 +298,9 @@
   "defaultMimeFormat_tip": {
     "message": "Formato da utilizzare quando si sostituiscono gli indirizzi da %to% %from% %cc%. Per (firstname,lastname,??mail) mostrerà il nome seguito dal cognome; se entrambi non sono disponibili, mostrerà l'indirizzo di posta."
   },
+  "deleteForwardedBody": {
+    "message": "Questa funzione rimuove il corpo dell'e-mail originale durante l'inoltro in linea. Può essere utilizzato per elaborare informazioni da e-mail automatizzate rimuovendo le informazioni originali."
+  },
   "deleteQuotedTags": {
     "message": "Elimina i tag dalla citazione"
   },
@@ -771,6 +774,12 @@
   },
   "n.label": {
     "message": "Mese (da 1 a 12)"
+  },
+  "newsHead": {
+    "message": "Ultime notizie"
+  },
+  "newsSection": {
+    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo SmartTemplates per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [numero 213]{P2} {P1}Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro{P2}"
   },
   "ongoing-work": {
     "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
@@ -1605,7 +1614,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Maintenance versione 3.16.1 - L'inoltro con modello (utilizzando il componente aggiuntivo FiltaQuilla) non inviava più automaticamente le email generate. Risolto, vedi [issue 231]{L2} {L1}Aggiunto il supporto CardBook per gli utenti SmartTemplates Pro. Può essere abilitato nelle impostazioni avanzate.{L2} {L1}Aggiunto parametro filtro all'opzione {{chatname}}, ad esempio: {{%from(chatname.skype)%}}.{L2} {L1}Il correttore ortografico ora è attivato dal comando {{%spellcheck()%}} - anche se disattivato nelle impostazioni di composizione{L2}"
+    "message": "{L1} La nuova funzione {{%deleteForwardedBody%}} rimuove il corpo dell'email originale durante l'inoltro in linea. {L2} {L1}I comandi che inseriscono contenuti dai file ora possono accedere alle cartelle principali con {{../}}, ad es.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Miglioramenti in Gestione modelli: mostra la categoria nell'elenco per una navigazione più semplice. {L2} {L1} Aggiunta la sezione dei prezzi alla finestra di dialogo della licenza {L2} {L1} Corretto il numero di giorni rimanenti nella licenza arrotondando per eccesso {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

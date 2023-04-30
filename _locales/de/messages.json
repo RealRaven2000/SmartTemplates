@@ -298,6 +298,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format beim Ersetzen von %to% %from% %cc% Addressen. z.B. (firstname,lastname,??mail) ersetzt durch Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt."
   },
+  "deleteForwardedBody": {
+    "message": "Diese Funktion entfernt bei der Inline-Weiterleitung den Text der ursprünglichen E-Mail. Kann verwendet werden, um Informationen aus automatisierten E-Mails zu verarbeiten, während die ursprünglichen Informationen entfernt werden."
+  },
   "deleteQuotedTags": {
     "message": "Löscht HTML Tags aus Zitaten"
   },
@@ -789,6 +792,12 @@
   },
   "n.label": {
     "message": "Monat (1 bis 12)"
+  },
+  "newsHead": {
+    "message": "Neuigkeiten"
+  },
+  "newsSection": {
+    "message": "{P1}Ich arbeite derzeit an der Konvertierung des SmartTemplates-Addons für die neue Thunderbird SuperNova-Benutzeroberfläche. Diese wird in der nächsten Hauptversion von Thunderbird 115 im Sommer 2023 implementiert.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2} {P1}Diese Arbeit wird ausschließlich durch den Verkauf von Lizenzen finanziert. Bitte erwägen Sie den Kauf einer Lizenz oder die Verlängerung Ihrer vorigen Lizenz, wenn Sie daran interessiert sind, SmartTemplates in Zukunft zu verwenden.{P2}"
   },
   "newsgr.label": {
     "message": "Nachrichtengruppen"
@@ -1634,7 +1643,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Wartungsversion 3.16.1 - Weiterleitung mit Vorlage (unter Verwendung des FiltaQuilla-Add-ons) versendete die generierten E-Mails nicht mehr automatisch. Behoben, siehe [issue 231]{L2} {L1}CardBook-Unterstützung für SmartTemplates Pro-Benutzer hinzugefügt. Sie kann in den erweiterten Einstellungen aktiviert werden.{L2} {L1}Filterparameter zum Schalter {{chatname}} hinzugefügt, zB: {{%from(chatname.skype)%}}.{L2} {L1}Die Rechtschreibprüfung ist jetzt verfügbar aktiviert durch den Befehl {{%spellcheck()%}} - auch wenn dies in den Kompositionseinstellungen ausgeschaltet ist{L2}"
+    "message": "{L1} Die neue {{%deleteForwardedBody%}}-Funktion entfernt den Text der ursprünglichen E-Mail bei der Inline-Weiterleitung. {L2} {L1}Befehle, die Inhalte aus Dateien einfügen, können jetzt mit {{../}} auf übergeordnete Ordner zugreifen, z.B.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Verbesserungen im Vorlagen-Manager: Kategorie in der Liste anzeigen für einfachere Navigation. {L2} {L1} Preisabschnitt zum Lizenzierungsdialog hinzugefügt {L2} {L1} Anzahl der verbleibenden Tage in der Lizenz durch Aufrunden korrigiert {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
