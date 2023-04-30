@@ -241,8 +241,16 @@ END LICENSE BLOCK
     # Added Czech translation to licensing dialog
     # [issue 234] Correct the Number of days left in license by rounding up
     # do not trigger "news" unless min ver changes at least.
-    # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
-    #   will be 4 under the new branch 5.0
+    #
+
+#################################################
+
+  Version 4.0 - WIP
+    # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
+    # - new browser action button (WIP)
+    # - messageServiceFromURI moved to MailServices
+    # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
+
 
     
 

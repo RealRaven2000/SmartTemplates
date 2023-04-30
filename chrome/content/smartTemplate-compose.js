@@ -1114,13 +1114,13 @@ SmartTemplate4.classSmartTemplate = function() {
 					if (template.match(/%deleteForwardedBody%/gm)) {
 						flags.deleteForwardedBody = true;
 					}
-
+					
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
 					quoteHeader = await getQuoteHeader(st4composeType, idKey);
 				}
         
         if (flags.suppressQuoteHeaders) {
-          util.logDebug("Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)")
+          util.logDebug("Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)");
           quoteHeader = "";
         }
 				if (flags.deleteForwardedBody) {
