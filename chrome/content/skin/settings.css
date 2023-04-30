@@ -706,6 +706,7 @@ label.plain-link:hover {
 }
 #ST4-Panels {
   padding-top: 4px;
+	max-height: 95vw;
 }
 
 #fileSettings {

@@ -1374,7 +1374,7 @@ export class Parser {
       "dbg1", "sig", "newsgroup", 
       "ownname", "ownmail", "mailTo",
       "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
-      "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders",
+      "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders", "deleteForwardedBody",
       "cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
       "messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
       "header.set", "header.append", "header.prefix, header.delete",

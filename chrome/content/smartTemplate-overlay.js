@@ -250,11 +250,8 @@ SmartTemplate4.getHeadersAsync = async function() {
         ]),
       };
       
-      let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
-        Ci.nsIMessenger
-      );
       let msgUri = msgHdr.folder.generateMessageURI(msgHdr.messageKey);
-      let service = messenger.messageServiceFromURI(msgUri);
+      let service = MailServices.messageServiceFromURI(msgUri);
 
       service.streamMessage(
         msgUri,
@@ -393,8 +390,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
         Cc = Components.classes,
 				util = SmartTemplate4.Util;
 	if (!messageURI) return null;
-	let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
-	    messageService = messenger.messageServiceFromURI(messageURI),
+	let messageService = MailServices.messageServiceFromURI(messageURI),
 	    messageStream = Cc["@mozilla.org/network/sync-stream-listener;1"].createInstance().QueryInterface(Ci.nsIInputStream),
 	    inputStream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance().QueryInterface(Ci.nsIScriptableInputStream);
 
@@ -2559,7 +2555,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		"dbg1", "sig", "newsgroup", 
 		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
-    "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders",
+    "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders", "deleteForwardedBody",
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
 		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
@@ -3202,6 +3198,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "suppressQuoteHeaders":
           SmartTemplate4.PreprocessingFlags.suppressQuoteHeaders = true;
           return "";
+        case "deleteForwardedBody":
+          SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+          return "";          
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
           return finalize(token, await expand("%H%:%M%:%S%"));

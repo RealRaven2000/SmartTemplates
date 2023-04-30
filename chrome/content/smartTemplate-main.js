@@ -231,15 +231,21 @@ END LICENSE BLOCK
     # [issue 229] Fixed Scripts fields %{% %}% 
     # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
 
-  Version 3.17 - WIP
+#################################################
+
+  Version 4.0 - WIP
     # to encourage license renewals: Show bargain section in splash screen if <=10 days to expiry
     # [issue 232] Added pricing section to licensing dialog
     # Added Czech translation to licensing dialog
     # [issue 234] Correct the Number of days left in license by rounding up
     # [issue 233] Improvements in Template Manager: Category prefix, [add sorting?]
     # do not trigger "news" unless min ver changes at least.
-    # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
-    #   will be 4 under the new branch 5.0
+    #
+    # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
+    # - new browser action button (WIP)
+    # - messageServiceFromURI moved to MailServices
+    # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
+
 
 
 
