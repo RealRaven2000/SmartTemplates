@@ -1,8 +1,9 @@
 /* special style for license button */
 #SmartTemplate4-Options-goPro #btnLicense {
-	position: fixed;
+	position: absolute;
 	top:   10px;
-	right: 20px;
+	left: auto;
+	right: auto;
 	max-width: 30em;
 	cursor: pointer;
 	outline: 1px solid rgba(0,0,0,0.0);
@@ -94,7 +95,7 @@
 }
 
 #btnStdLicense, #btnLicense, #btnDomainLicense {
-	-moz-appearance: none;
+	appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
   color: white !important;
@@ -166,7 +167,7 @@
 @keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 .btnLicenseContainer {
-	position: absolute;
+	position: relative;
 	height: 60px;
 }
 
@@ -181,10 +182,6 @@
 .licenseKey {
   font-size: 10pt;
 	font-family: Consolas, Courier, monospace;
-}
-
-#licenseContainer {
-	position: absolute;
 }
 
 #txtLicenseKey {
