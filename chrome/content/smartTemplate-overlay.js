@@ -2559,7 +2559,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 		"dbg1", "sig", "newsgroup", 
 		"ownname", "ownmail", "mailTo",
     "deleteText", "replaceText", "deleteQuotedText", "replaceQuotedText", "deleteQuotedTags", "replaceQuotedTags",
-    "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders",
+    "matchTextFromSubject", "matchTextFromBody", "suppressQuoteHeaders", "deleteForwardedBody",
 		"cursor", "quotePlaceholder", "language", "spellcheck", "quoteHeader", "internal-javascript-ref",
 		"messageRaw", "file", "style", "attach", "basepath",//depends on the original message, but not on any header
 		"header.set", "header.append", "header.prefix, header.delete",
@@ -3202,6 +3202,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case "suppressQuoteHeaders":
           SmartTemplate4.PreprocessingFlags.suppressQuoteHeaders = true;
           return "";
+        case "deleteForwardedBody":
+          SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+          return "";
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
           return finalize(token, await expand("%H%:%M%:%S%"));
@@ -3382,7 +3385,12 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               fileContents = insertFileLink(arg, composeType), 
               parsedContent;
           if (token=='style') {
-            parsedContent = "<style type='text/css'>\n" + fileContents + "\n</style>\n";
+            if (fileContents.startsWith("<div") && fileContents.includes("Error")) {
+              parsedContent = fileContents;  // include warning in text
+            }
+            else {
+              parsedContent = "<style type='text/css'>\n" + fileContents + "\n</style>\n";
+            }
           }
           else if (fileContents.startsWith("<img")) {
             parsedContent = fileContents;
@@ -3658,13 +3666,6 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
         }
       }
-      else { // Postbox
-        let LFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-            file = LFile.initWithPath(path);
-        if (!file.exists()) {
-          logDebug("file doesn't exist: " + path);
-        }
-      }
     }
     try {
       switch(type) {
@@ -3726,9 +3727,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               if (countRead) {
                 html = data.toString();
               }
-              else
+              else {
                 html = "<div style='border:1px solid #DDDDDD; color:#CCCCCC; background-color: #AA0000; max-width:600px;'> Error reading file: " + path + "<br>"
                        + "Please check error console for detail</div>";
+              }
             }					
           }
           // if we compose in html and file is txt we need to replace all line breaks with <br>
