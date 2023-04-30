@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Te gebruiken notatie bij vervanging van platte %to%/%from%/%cc%-adressen. Bv. voornaam, achternaam,??mail toont voornaam gevolgd door achternaam; als beide ontbreken, wordt het e-mailadres getoond."
   },
+  "deleteForwardedBody": {
+    "message": "Deze functie verwijdert de hoofdtekst van de originele e-mail bij inline doorsturen. Kan worden gebruikt om informatie uit geautomatiseerde mails te verwerken terwijl de originele informatie wordt verwijderd."
+  },
   "deleteQuotedTags": {
     "message": "Verwijdert labels uit het aangehaalde gedeelte"
   },
@@ -792,6 +795,12 @@
   },
   "n.label": {
     "message": "Maand (1 tot 12)"
+  },
+  "newsHead": {
+    "message": "Laatste nieuws"
+  },
+  "newsSection": {
+    "message": "{P1}Ik werk momenteel aan de conversie van de SmartTemplates-add-on voor de nieuwe Thunderbird SuperNova-gebruikersinterface. Dit zal worden geïmplementeerd in de volgende grote versie van Thunderbird 115 in de zomer van 2023.{P2} {P1}U kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2} {P1}Aangezien dit werk exclusief gefinancierd door de verkoop van licenties, overweeg dan om een licentie te kopen of uw vorige licentie te verlengen als u in de toekomst SmartTemplates wilt gebruiken{P2}"
   },
   "newsgr.label": {
     "message": "Nieuwsgroepen"
@@ -1632,7 +1641,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Onderhoudsversie 3.16.1 - Doorsturen met sjabloon (met behulp van de FiltaQuilla-add-on) stuurde de gegenereerde e-mails niet meer automatisch. Opgelost, zie [issue 231]{L2} {L1} Kaartboekondersteuning toegevoegd voor SmartTemplates Pro -gebruikers. Het kan worden ingeschakeld in geavanceerde instellingen. {L2} {L1} toegevoegde filterparameter aan {{chatName}} schakelaar, bijv.: {{%from(chatname.skype)%}}. {L2} {L1} De spellchecker is nu geactiveerd door de opdracht {{%spellcheck()%}} - zelfs als de omgekeerde instellingen {L2}"
+    "message": "{L1} Nieuwe functie {{%deleteForwardedBody%}} verwijdert de hoofdtekst van de oorspronkelijke e-mail bij inline doorsturen.{L2} {L1}Commando's die inhoud van bestanden invoegen, hebben nu toegang tot bovenliggende mappen met {{../}}, bijv.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Verbeteringen in Template Manager: Toon categorie in de lijst voor eenvoudigere navigatie. {L2} {L1} Prijssectie toegevoegd aan licentiedialoog {L2} {L1} Het aantal resterende dagen in licentie gecorrigeerd door naar boven af te ronden {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

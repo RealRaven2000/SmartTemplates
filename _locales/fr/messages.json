@@ -304,6 +304,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format à utiliser lors du remplacement des adresses %yo% %from% %cc%. Par exemple.  (firstname,lastname,??mail) affichera le prénom suivi du nom de famille; si les deux sont indisponibles, l'adresse e-mail sera affichée."
   },
+  "deleteForwardedBody": {
+    "message": "Cette fonction supprime le corps de l'e-mail d'origine lors du transfert en ligne. Peut être utilisé pour traiter les informations des e-mails automatisés tout en supprimant les informations d'origine."
+  },
   "deleteQuotedTags": {
     "message": "Supprime les balises du devis"
   },
@@ -837,6 +840,12 @@
   },
   "n.label": {
     "message": "Numéro du mois (1 à 12)"
+  },
+  "newsHead": {
+    "message": "Dernières nouvelles"
+  },
+  "newsSection": {
+    "message": "{P1}Je travaille actuellement sur la conversion de l'addon SmartTemplates pour la nouvelle interface utilisateur Thunderbird SuperNova. Cela sera implémenté dans la prochaine version majeure de Thunderbird 115 à l'été 2023.{P2} {P1}Vous pouvez lire l'avancement actuel de ce travail ici : [issue 213]{P2} {P1}Comme ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler votre précédente si vous souhaitez utiliser SmartTemplates à l'avenir{P2}"
   },
   "newsgr.label": {
     "message": "Groupes de discussion"
@@ -1698,7 +1707,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Version de maintenance 3.16.1 - Le transfert avec modèle (à l'aide du module complémentaire FiltaQuilla) n'envoyait plus automatiquement les e-mails générés. Corrigé, voir [issue 231]{L2} {L1}Ajout de la prise en charge de CardBook pour les utilisateurs de SmartTemplates Pro. Il peut être activé dans les paramètres avancés.{L2} {L1}Paramètre de filtre ajouté au commutateur {{chatname}}, par exemple : {{%from(chatname.skype)%}}.{L2} {L1}Le correcteur orthographique est maintenant activé par la commande {{%spellcheck()%}} - même si désactivé dans les paramètres de composition{L2}"
+    "message": "{L1} La nouvelle fonction {{%deleteForwardedBody%}} supprime le corps de l'e-mail d'origine lors du transfert en ligne. {L2} {L1} Améliorations dans le gestionnaire de modèles : affichez la catégorie dans la liste pour faciliter la navigation. {L2} {L1} Ajout d'une section de tarification à la boîte de dialogue de licence {L2} {L1} Correction du nombre de jours restants dans la licence en arrondissant {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -304,6 +304,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format to use when replacing plain %to% %from% %cc% addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address."
   },
+  "deleteForwardedBody": {
+    "message": "This function removes the body of the original email when forwarding inline. Can be used to process information from automated mails while removing the original information."
+  },
   "deleteQuotedTags": {
     "message": "Deletes tags from the quote"
   },
@@ -434,6 +437,9 @@
   },
   "fix_vartz_note.label": {
     "message": "Can be combined with %X:=sent%"
+  },
+  "fpFilterStyleSheet": {
+    "message": "Style Sheet"
   },
   "fpFilterHtmlTemplate": {
     "message": "HTML Template"
@@ -847,6 +853,12 @@
   },
   "n.label": {
     "message": "Month (1 to 12)"
+  },
+  "newsHead": {
+    "message": "Latest News"
+  },  
+  "newsSection": {
+    "message": "{P1}I am currently working on the conversion of the SmartTemplates Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2} {P1}As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using SmartTemplates in the future{P2}"
   },
   "newsgr.label": {
     "message": "Newsgroups"
@@ -1732,7 +1744,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Maintenance version 3.16.1 - Forwarding with Template (using the FiltaQuilla Add-on) did not send off the generated Emails automatically any more. Fixed, see [issue 231]{L2} {L1}Added CardBook support for SmartTemplates Pro users. It can be enabled in advanced settings.{L2} {L1}Added filter parameter to {{chatname}} switch, eg: {{%from(chatname.skype)%}}.{L2} {L1}The spellchecker is now activated by the {{%spellcheck()%}} command - even if the turned of in composition settings{L2}"
+    "message": "{L1} New {{%deleteForwardedBody%}} function removes the body of the original email when forwarding inline. {L2} {L1}Les commandes qui insèrent le contenu des fichiers peuvent désormais accéder aux dossiers parents avec {{../}}, par exemple : {{%style(../mystyle.css)%}} [issue 237]{L2}{L1}Commands that insert contents from files can now access parent folders with {{../}}, e.g. {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Improvements in Template Manager: Show Category in the list for easier navigation. {L2} {L1} Added pricing section to licensing dialog {L2} {L1} Corrected the Number of days left in license by rounding up {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

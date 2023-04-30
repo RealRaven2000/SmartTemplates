@@ -208,9 +208,14 @@ const discountUpgrade = "33%";
                  .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
     }
     if (whatsNewLst) {
-      whatsNewLst.innerHTML =  replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
+      whatsNewLst.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
         .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");
     }
+
+    let newsSection = document.getElementById('newsDetail');
+    if (newsSection) {
+      newsSection.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection'));
+    }    
     
     let ongoing = document.getElementById('ongoing-work');
     if (ongoing) {

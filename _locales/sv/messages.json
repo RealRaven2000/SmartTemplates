@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format att använda när adresserna %to% %from% %cc% ersätts. T.ex. förnamn,efternamn,??post kommer att visa förnamnet följt av efternamnet; om båda är otillgängliga kommer e-postadressen visas."
   },
+  "deleteForwardedBody": {
+    "message": "Den här funktionen tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. Kan användas för att behandla information från automatiserade e-postmeddelanden samtidigt som den ursprungliga informationen tas bort."
+  },
   "deleteQuotedTags": {
     "message": "Tar bort taggar från offerten"
   },
@@ -834,6 +837,12 @@
   },
   "n.label": {
     "message": "Månad (1 till 12)"
+  },
+  "newsHead": {
+    "message": "Senaste nytt"
+  },
+  "newsSection": {
+    "message": "{P1}Jag arbetar för närvarande med konverteringen av SmartTemplates-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 under sommaren 2023.{P2} {P1}Du kan läsa om den aktuella utvecklingen av detta arbete här: [issue 213]{P2} {P1}Eftersom detta arbete är exklusivt finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda SmartTemplates i framtiden{P2}"
   },
   "newsgr.label": {
     "message": "Diskussionsgrupper"
@@ -1713,7 +1722,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Underhållsversion 3.16.1 - Vidarebefordran med mall (med FiltaQuilla-tillägget) skickade inte längre de genererade e-postmeddelandena automatiskt. Fixat, se [issue 231]{L2} {L1}Lägg till stöd för CardBook för SmartTemplates Pro-användare. Det kan aktiveras i avancerade inställningar.{L2} {L1}Lade till filterparameter till {{chatname}}-omkopplaren, t.ex.: {{%from(chatname.skype)%}}.{L2} {L1}Stavningskontrollen är nu aktiveras av kommandot {{%spellcheck()%}} - även om det är avstängt i kompositionsinställningarna{L2}"
+    "message": "{L1} Ny {{%deleteForwardedBody%}}-funktion tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. {L2} {L1} Kommandon som infogar innehåll från filer kan nu komma åt överordnade mappar med {{../}}, t.ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Förbättringar i mallhanteraren: Visa kategori i listan för enklare navigering. {L2} {L1} Lade till prissektion i licensdialogrutan {L2} {L1} Korrigerade antalet dagar kvar i licensen genom att avrunda uppåt {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

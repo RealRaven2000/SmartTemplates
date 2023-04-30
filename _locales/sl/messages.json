@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Oblika za uporabo pri zamenjavi navadnih% do%% iz%% cc% naslovov. Npr. (firstname,lastname,??mail), bo prikazano ime, ki mu sledi priimek; če oba nista na voljo, bo prikazan e-poštni naslov."
   },
+  "deleteForwardedBody": {
+    "message": "Ta funkcija pri posredovanju v vrstici odstrani telo izvirnega e-poštnega sporočila. Uporablja se lahko za obdelavo informacij iz avtomatiziranih e-poštnih sporočil, medtem ko odstranjuje izvirne informacije."
+  },
   "deleteQuotedTags": {
     "message": "Izbriše oznake iz ponudbe"
   },
@@ -783,6 +786,12 @@
   },
   "n.label": {
     "message": "Mesec (1 do 12)"
+  },
+  "newsHead": {
+    "message": "Zadnje novice"
+  },
+  "newsSection": {
+    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2} {P1}Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti{P2}"
   },
   "newsgr.label": {
     "message": "Novičarske skupine"
@@ -1653,7 +1662,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Vzdrževalna različica 3.16.1 – Posredovanje s predlogo (z dodatkom FiltaQuilla) ni več samodejno pošiljalo ustvarjenih e-poštnih sporočil. Popravljeno, glejte [issue 231]{L2} {L1}Dodana podpora CardBook za uporabnike SmartTemplates Pro. Omogoči se lahko v naprednih nastavitvah.{L2} {L1}Stikalu {{chatname}} je dodan parameter filtra, npr.: {{%from(chatname.skype)%}}.{L2} {L1}Črkovalnik je zdaj aktivira ukaz {{%spellcheck()%}} – tudi če je izklopljen v nastavitvah sestavljanja{L2}"
+    "message": "{L1} Nova funkcija {{%deleteForwardedBody%}} odstrani telo izvirnega e-poštnega sporočila pri posredovanju v vrstici. {L2} {L1}Ukazi, ki vstavljajo vsebino iz datotek, lahko zdaj dostopajo do nadrejenih map z {{../}}, npr.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Izboljšave v upravitelju predlog: Prikaži kategorijo na seznamu za lažjo navigacijo. {L2} {L1} Dodan razdelek s cenami v pogovorno okno za licenciranje {L2} {L1} Popravljeno število preostalih dni v licenci z zaokroževanjem navzgor {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

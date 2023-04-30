@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "替换普通地址 %to% %from% %cc% 地址时使用的格式。 (firstname,lastname??mail)将显示姓氏后面的名字；如果两者都不可用，则显示邮件地址。"
   },
+  "deleteForwardedBody": {
+    "message": "此函数在内联转发时删除原始电子邮件的正文。 可用于在删除原始信息的同时处理来自自动邮件的信息。"
+  },
   "deleteQuotedTags": {
     "message": "从引用中删除标签"
   },
@@ -834,6 +837,12 @@
   },
   "n.label": {
     "message": "月份 (1 至 12)"
+  },
+  "newsHead": {
+    "message": "最新消息"
+  },
+  "newsSection": {
+    "message": "{P1}我目前正在为新的 Thunderbird SuperNova UI 转换 SmartTemplates Addon。 这将在 2023 年夏季的 Thunderbird 115 的下一个主要版本中实现。{P2} {P1}您可以在此处阅读有关这项工作的当前进度：[issue 213]{P2} {P1}因为这项工作是独家的 通过出售许可证获得资金，如果您有兴趣在未来使用 SmartTemplates，请考虑购买许可证或更新之前的许可证{P2}"
   },
   "newsgr.label": {
     "message": "新闻组"
@@ -1695,7 +1704,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}维护版本 3.16.1 - 使用模板转发（使用 FiltaQuilla 插件）不再自动发送生成的电子邮件。 已修复，请参阅 [issue 231]{L2}{L1}为 SmartTemplates Pro 用户添加 CardBook 支持。 它可以在高级设置中启用。{L2} {L1}向 {{chatname}} 开关添加过滤器参数，例如：{{%from(chatname.skype)%}}。{L2} {L1}现在拼写检查器 由 {{%spellcheck()%}} 命令激活 - 即使在组合设置中关闭{L2}"
+    "message": "{L1} 新的 {{%deleteForwardedBody%}} 函数在内联转发时删除原始电子邮件的正文。 {L2} {L1} 模板管理器的改进：在列表中显示类别以便于导航。 {L2} {L1}从文件插入内容的命令现在可以使用 {{../}} 访问父文件夹，例如：{{%style(../mystyle.css)%}} [issue 237]{L2} {L1} 在许可对话框中添加了定价部分 {L2} {L1} 通过四舍五入更正了许可剩余天数 {L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

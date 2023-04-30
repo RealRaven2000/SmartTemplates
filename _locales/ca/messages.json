@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format que s'ha d'utilitzar en substituir adreces simples %to% %from% %cc%. Per exemple. (firstname,lastname,??mail) mostrarà el nom seguit del cognom; si tots dos no estan disponibles, mostrarà l'adreça de correu electrònic."
   },
+  "deleteForwardedBody": {
+    "message": "Aquesta funció elimina el cos del correu electrònic original quan es reenvia en línia. Es pot utilitzar per processar informació de correus automatitzats mentre s'elimina la informació original."
+  },
   "deleteQuotedTags": {
     "message": "Suprimeix les etiquetes HTML de la cita"
   },
@@ -834,6 +837,12 @@
   },
   "n.label": {
     "message": "Numèro del mes (1 a 12)"
+  },
+  "newsHead": {
+    "message": "Últimes notícies"
+  },
+  "newsSection": {
+    "message": "{P1}Actualment estic treballant en la conversió del complement SmartTemplates per a la nova interfície d'usuari de Thunderbird SuperNova. Això s'implementarà a la propera versió principal de Thunderbird 115 l'estiu de 2023.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 213]{P2} {P1}Com que aquest treball és exclusivament finançat per la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessat a utilitzar SmartTemplates en el futur{P2}"
   },
   "newsgr.label": {
     "message": "Grups de notícies"
@@ -1689,7 +1698,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Versió de manteniment 3.16.1: el reenviament amb plantilla (mitjançant el complement FiltaQuilla) ja no enviava els correus electrònics generats automàticament. S'ha solucionat, vegeu [problema 231]{L2} {L1}S'ha afegit compatibilitat amb CardBook per als usuaris de SmartTemplates Pro. Es pot activar a la configuració avançada.{L2} {L1}S'ha afegit un paràmetre de filtre a l'interruptor {{chatname}}, per exemple: {{%from(chatname.skype)%}}.{L2} {L1}El corrector ortogràfic és ara activat per l'ordre {{%spellcheck()%}}, fins i tot si s'ha desactivat a la configuració de la composició{L2}"
+    "message": "{L1} La nova funció {{%deleteForwardedBody%}} elimina el cos del correu electrònic original quan es reenvia en línia. {L2} {L1}Les ordres que insereixen contingut dels fitxers ara poden accedir a les carpetes principals amb {{../}}, p. ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Millores al Gestor de plantilles: Mostra la categoria a la llista per facilitar la navegació. {L2} {L1} S'ha afegit una secció de preus al quadre de diàleg de llicència {L2} {L1} S'ha corregit el nombre de dies restants en llicència arrodonint {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

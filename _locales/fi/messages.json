@@ -301,6 +301,9 @@
   "defaultMimeFormat_tip": {
     "message": "Käytettävä muoto korvaamalla tavallinen %to% %from% %cc%. Esim. (firstname,lastname,??mail) näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen."
   },
+  "deleteForwardedBody": {
+    "message": "Vertaa ominaisuuksiaTämä toiminto poistaa alkuperäisen sähköpostin tekstiosan, kun edelleenlähetetään edelleen. Voidaan käyttää automaattisten sähköpostien tietojen käsittelyyn samalla kun alkuperäiset tiedot poistetaan."
+  },
   "deleteQuotedTags": {
     "message": "Poistaa tunnisteet tarjouksesta"
   },
@@ -834,6 +837,12 @@
   },
   "n.label": {
     "message": "Kuukausi (1-12)"
+  },
+  "newsHead": {
+    "message": "Uusimmat uutiset"
+  },
+  "newsSection": {
+    "message": "{P1}Työstän parhaillaan SmartTemplates Addonin muuntamista uuteen Thunderbird SuperNova -käyttöliittymään. Tämä otetaan käyttöön Thunderbird 115:n seuraavassa suuressa versiossa kesällä 2023.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [numero 213]{P2} {P1}Koska tämä työ on yksinomaan lisenssimyynnillä rahoitettuna, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään SmartTemplates tulevaisuudessa.{P2}"
   },
   "newsgr.label": {
     "message": "Uutisryhmät"
@@ -1701,7 +1710,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Ylläpitoversio 3.16.1 – Forwarding with Template (Käyttäen FiltaQuilla-lisäosaa) ei enää lähettänyt luotuja sähköposteja automaattisesti. Korjattu, katso [issue 231]{L2}{L1}Lisätty CardBook-tuki SmartTemplates Pro -käyttäjille. Se voidaan ottaa käyttöön lisäasetuksissa.{L2} {L1}Lisätty suodatinparametri {{chatname}}-kytkimeen, esim.: {{%from(chatname.skype)%}}.{L2} {L1}Oikeinkirjoituksen tarkistus on nyt aktivoitu komennolla {{%spellcheck()%}} - vaikka se olisi pois päältä sävellysasetuksissa{L2}"
+    "message": "{L1} Uusi {{%deleteForwardedBody%}}-toiminto poistaa alkuperäisen sähköpostin tekstiosan, kun edelleenlähetetään edelleen. {L2} {L1}Komennot, jotka lisäävät sisältöä tiedostoista, voivat nyt käyttää yläkansioita, joissa on {{../}}, esim.: {{%style(../mystyle.css)%}} [numero 237]{L2}{L1} Mallinhallinnan parannukset: Näytä luokka luettelossa navigoinnin helpottamiseksi. {L2} {L1} Lisätty hinnoitteluosa lisenssivalintaikkunaan {L2} {L1} Korjattu lisenssissä jäljellä olevien päivien lukumäärä pyöristämällä ylöspäin {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

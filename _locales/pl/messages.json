@@ -298,6 +298,9 @@
   "defaultMimeFormat_tip": {
     "message": "Format używany podczas zastępowania zwykłych adresów  %to% %from% %cc%. Na przykład. (firstname,lastname,??mail) pokaże imię, a następnie nazwisko; jeśli oba są niedostępne, wyświetli się adres e-mail."
   },
+  "deleteForwardedBody": {
+    "message": "Ta funkcja usuwa treść oryginalnej wiadomości e-mail podczas przekazywania w tekście. Może być używany do przetwarzania informacji z automatycznych wiadomości e-mail podczas usuwania oryginalnych informacji."
+  },
   "deleteQuotedTags": {
     "message": "Usuwa tagi z cytatu"
   },
@@ -789,6 +792,12 @@
   },
   "n.label": {
     "message": "Miesiąc (1 do 12)"
+  },
+  "newsHead": {
+    "message": "Najnowsze wiadomości"
+  },
+  "newsSection": {
+    "message": "{P1}Obecnie pracuję nad konwersją dodatku SmartTemplates do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 213]{P2} {P1}Ponieważ praca ta jest przeznaczona wyłącznie finansowane ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz używać SmartTemplates w przyszłości{P2}"
   },
   "newsgr.label": {
     "message": "Grupy dyskusyjne"
@@ -1650,7 +1659,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Wersja konserwacji 3.16.1 — Przekazywanie z szablonem (za pomocą dodatku FiltaQuilla) nie powodowało już automatycznego wysyłania generowanych wiadomości e-mail. Naprawiono, patrz [issue 231] {L2} {L1}Dodano obsługę CardBook dla użytkowników SmartTemplates Pro. Można go włączyć w ustawieniach zaawansowanych.{L2} {L1}Dodano parametr filtra do przełącznika {{chatname}}, np.: {{%from(chatname.skype)%}}.{L2} {L1}Sprawdzanie pisowni jest teraz aktywowane poleceniem {{%spellcheck()%}} - nawet jeśli wyłączone w ustawieniach składu{L2}"
+    "message": "{L1} Nowa funkcja {{%deleteForwardedBody%}} usuwa treść oryginalnej wiadomości e-mail podczas przekazywania w tekście. {L2} {L1}Polecenia, które wstawiają zawartość z plików, mogą teraz uzyskiwać dostęp do folderów nadrzędnych za pomocą {{../}}, np.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Ulepszenia w Menedżerze szablonów: Pokaż kategorię na liście, aby ułatwić nawigację. {L2} {L1} Dodano sekcję cenową do okna dialogowego licencjonowania {L2} {L1} Poprawiono liczbę dni pozostałych licencji, zaokrąglając w górę {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
