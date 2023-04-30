@@ -282,16 +282,22 @@ SmartTemplate4.fileTemplates = {
     // should we allow changing the URL ? (for selected item only)
     // do a match of first n characters and display a confirmation?
     if (!existingEntry) {
-      FT.addItem(path, label, category);
-      FT.CurrentEntries.push({path:path, label:label, category:category});
+      let entry = {
+        path:path, 
+        label:label, 
+        category:category
+      }
+      FT.addItem(path, SmartTemplate4.fileTemplates.makeLabel(entry), category);
+      FT.CurrentEntries.push(entry);
     }
     else {
       // update existing item (label)
       util.logDebug(`Updating existing item: ${existingEntry.label} [${existingEntry.path} , ${existingEntry.category} ]`);
       let lb = FT.ListBox;
       lb.ensureIndexIsVisible(existingIndex);
-      lb.getItemAtIndex(existingIndex).firstChild.value = label; // hack to update the label. IMPLEMENTATION DEPENDENT! if we chanbge from richlist we need to rewrite this one
       FT.CurrentEntries[existingIndex].label = label;
+      // hack to update the label. IMPLEMENTATION DEPENDENT! if we change from richlist we need to rewrite this one
+      lb.getItemAtIndex(existingIndex).firstChild.value = SmartTemplate4.fileTemplates.makeLabel(FT.CurrentEntries[existingIndex]); 
       // update path!
       lb.getItemAtIndex(existingIndex).value = JSON.stringify({path:path, category:category});
     }
@@ -982,7 +988,7 @@ SmartTemplate4.fileTemplates = {
 					document.getElementById('txtTemplatePath').value = localFile.path;
 					// we could potentially parse the file 
 					// and find the <title> tag!
-					let name = localFile.leafName.replace(".html","").replace(".htm","");
+					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","");
 					document.getElementById('txtTemplateTitle').value = name;
 					prefs.setStringPref('fileTemplates.path',localFile.parent.path); // store folder as default for next time.
 				}
@@ -1000,7 +1006,6 @@ SmartTemplate4.fileTemplates = {
 					prefs = SmartTemplate4.Preferences,
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		
-    let filterText = util.getBundleString("fpFilterHtmlTemplate"); //localized text for filePicker filter menu
 		
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
@@ -1018,7 +1023,8 @@ SmartTemplate4.fileTemplates = {
 		
 		fp.init(window, "", fp.modeOpen);
 
-    fp.appendFilter(filterText, "*.html; *.htm");
+    fp.appendFilter(util.getBundleString("fpFilterHtmlTemplate"), "*.html; *.htm");
+    fp.appendFilter(util.getBundleString("fpFilterStyleSheet"), "*.css");
     fp.defaultExtension = 'html';
 		
 		
@@ -1186,11 +1192,13 @@ SmartTemplate4.fileTemplates = {
     let theFileTemplate = entry;
     let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
-    if (!html)
+    const isFormatCSS = (theFileTemplate.path.endsWith(".css"));
+    if (!html) {
       html = tmpTemplate.Text;
+    }
     
     // [issue 164] - placeholder for selected text
-    if (html.includes("*selection*")) {
+    if (!isFormatCSS && html.includes("*selection*")) {
       let sel = gMsgCompose.editor.selection,
           selectedText = "";
       if (sel && sel.anchorNode) {
@@ -1240,8 +1248,24 @@ SmartTemplate4.fileTemplates = {
       flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
       let idkey = SmartTemplate4.Util.getIdentityKey(document);
       const ignoreHTML = true;
-      let code =  
-        await SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
+      let code;
+      if (isFormatCSS) { // [issue 238]
+        // create a style block!
+        let lastUnixPos = theFileTemplate.path.lastIndexOf('/'),
+            lastWindowsPos = theFileTemplate.path.lastIndexOf('\\'),
+            pos = Math.max(lastUnixPos, lastWindowsPos),
+            name = theFileTemplate.path.substring(pos+1);
+        code = `
+<!-- ${name} -->
+<style>
+  ${html}
+</style>
+
+        `;
+      }
+      else {
+        code = await SmartTemplate4.smartTemplate.getProcessedText(html, idkey, SmartTemplate4.Util.getComposeType(), ignoreHTML);
+      }
       gMsgCompose.editor.insertHTML(code); 
       // we should probably place the cursor at the end of the inserted HTML afterwards!
       
@@ -1307,7 +1331,7 @@ SmartTemplate4.fileTemplates = {
 				if (localFile) {
 					// we could potentially parse the file 
 					// and find the <title> tag!
-					let name = localFile.leafName.replace(".html","").replace(".htm","");
+					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","");
 					// should we store folder as default for next time?
 					// prefs.setStringPref('fileTemplates.path',localFile.parent.path); 
 					

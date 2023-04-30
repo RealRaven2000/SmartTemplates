@@ -728,6 +728,15 @@ SmartTemplate4.classSmartTemplate = function() {
 		util.logDebugOptional('functions','SmartTemplate4.delForwardHeader() ENDS');
 	}
 
+	function delForwardedBody() {
+		let rootEl = gMsgCompose.editor.rootElement;		
+		let bdy = rootEl.querySelector("div.moz-forward-container");
+		if (bdy) {
+      bdy.parentNode.removeChild(bdy);
+		}
+	}
+
+
 	// -----------------------------------
 	// Remove template messages and Restore original quote headers
 	function removePreviousTemplate()	{
@@ -1102,6 +1111,10 @@ SmartTemplate4.classSmartTemplate = function() {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
 						template = await getSmartTemplate(st4composeType, idKey);
 					}
+					if (template.match(/%deleteForwardedBody%/gm)) {
+						flags.deleteForwardedBody = true;
+					}
+
 					util.logDebugOptional('functions.insertTemplate','retrieving quote Header: getQuoteHeader(' + st4composeType + ', ' + idKey + ')');
 					quoteHeader = await getQuoteHeader(st4composeType, idKey);
 				}
@@ -1110,6 +1123,10 @@ SmartTemplate4.classSmartTemplate = function() {
           util.logDebug("Suppressing Quote header, as template has demanded. (%suppressQuoteHeaders%)")
           quoteHeader = "";
         }
+				if (flags.deleteForwardedBody) {
+          util.logDebug("Deleting Forwarded message body, as template has demanded. (%deleteForwardedBody%)");
+					delForwardedBody();
+				}
 				let isQuoteHeader = quoteHeader ? true : false;
         
 				switch(composeCase) {
