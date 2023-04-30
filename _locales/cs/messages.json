@@ -298,6 +298,9 @@
   "defaultMimeFormat_tip": {
     "message": "Formát, který se použije při nahrazení obyčejného %to%; %from%; %cc% adres. Např. (firstname,lastname,??mail) zobrazí křestní jméno a příjmení; pokud nejsou k dispozici, zobrazí e-mailovou adresu."
   },
+  "deleteForwardedBody": {
+    "message": "Tato funkce odstraní tělo původního e-mailu při přeposílání inline. Může být použit ke zpracování informací z automatických e-mailů při odstraňování původních informací."
+  },
   "deleteQuotedTags": {
     "message": "Odstraní značky z nabídky"
   },
@@ -825,6 +828,12 @@
   },
   "n.label": {
     "message": "Měsíc číselně (1 až 12)"
+  },
+  "newsHead": {
+    "message": "Poslední zprávy"
+  },
+  "newsSection": {
+    "message": "{P1}V současné době pracuji na převodu doplňku SmartTemplates pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2} {P1}Protože tato práce je výhradně financované z prodeje licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat SmartTemplates v budoucnu{P2}"
   },
   "newsgr.label": {
     "message": "Mailová skupina"
@@ -1689,7 +1698,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Verze údržby 3.16.1 – Přeposílání pomocí šablony (pomocí doplňku FiltaQuilla) již automaticky neodesílalo vygenerované e-maily. Opraveno, viz [vydání 231]{L2} 231] {L2} {L1}Byla přidána podpora CardBook pro uživatele SmartTemplates Pro. Lze ji aktivovat v pokročilých nastaveních.{L2} {L1}Do přepínače {{chatname}} byl přidán parametr filtru, např.: {{%from(chatname.skype)%}}.{L2} {L1}Kontrola pravopisu je nyní aktivuje se příkazem {{%spellcheck()%}} – i když je v nastavení kompozice vypnuto{L2}"
+    "message": "{L1} Nová funkce {{%deleteForwardedBody%}} odstraní tělo původního e-mailu při přeposílání inline. {L2} {L1}Příkazy, které vkládají obsah ze souborů, mají nyní přístup k nadřazeným složkám pomocí {{../}}, např.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Vylepšení ve Správci šablon: Zobrazení kategorie v seznamu pro snazší navigaci. {L2} {L1} Do dialogového okna licencování přidána sekce cen {L2} {L1} Opraven počet dní zbývajících v licenci zaokrouhlením nahoru {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

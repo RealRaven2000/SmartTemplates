@@ -295,6 +295,9 @@
   "defaultMimeFormat_tip": {
     "message": "Formato a ser usado ao substituir endereços simples %to% %from% %cc%. Por exemplo. (firstname,lastname,??mail) mostrará o primeiro nome seguido pelo sobrenome; se ambos não estiverem disponíveis, ele mostrará o endereço de email."
   },
+  "deleteForwardedBody": {
+    "message": "Esta função remove o corpo do e-mail original ao encaminhar em linha. Pode ser usado para processar informações de e-mails automatizados enquanto remove as informações originais."
+  },
   "deleteQuotedTags": {
     "message": "Exclui tags da cotação"
   },
@@ -774,6 +777,12 @@
   },
   "n.label": {
     "message": "Mês (de 1 a 12)"
+  },
+  "newsHead": {
+    "message": "Últimas notícias"
+  },
+  "newsSection": {
+    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento SmartTemplates para a nova interface do usuário Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2} {P1}Como este trabalho é exclusivamente financiado pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar SmartTemplates no futuro{P2}"
   },
   "newsgr.label": {
     "message": "Grupos de notícias"
