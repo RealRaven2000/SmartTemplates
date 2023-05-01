@@ -49,7 +49,11 @@ pre.inList {
 
 #version-history li ul li {
   padding-left: 1em;
-  list-style: square outside url('/img/checkMark.png') ;
+  list-style: square outside;
+}
+
+#version-history li ul li::marker {
+  content: "✔️";
 }
 
 #version-history li > h4 {
