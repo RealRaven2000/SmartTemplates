@@ -643,6 +643,9 @@ SmartTemplate4.fileTemplates = {
 			menuitem.setAttribute("st4composeType", composeType);
 			menuitem.classList.add("st4templateEntry");
 			menuitem.classList.add("menuitem-iconic");
+      if (theTemplate.path.endsWith(".css")) {
+        menuitem.setAttribute("is","layout")
+      }
 			if (!isLicensed && i>=MAX_FREE_TEMPLATES) {
 				menuitem.disabled = true;
         menuHasRestrictions = true;
