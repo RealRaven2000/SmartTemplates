@@ -791,7 +791,10 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2} {P1}Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti{P2}"
+    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti."
   },
   "newsgr.label": {
     "message": "Novičarske skupine"
@@ -1414,7 +1417,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence.",
     "placeholders": {
       "addon": {
         "content": "$1",

@@ -839,7 +839,10 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 SmartTemplates Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 213]{P2} {P1}因為這項工作是獨家的 通過出售許可證獲得資金，如果您有興趣在未來使用 SmartTemplates，請考慮購買許可證或更新之前的許可證{P2}"
+    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 SmartTemplates Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 213]{P2} "
+  },
+  "newsSection.license": {
+    "message": "因為這項工作是獨家的 通過出售許可證獲得資金，如果您有興趣在未來使用 SmartTemplates，請考慮購買許可證或更新之前的許可證"
   },
   "newsgr.label": {
     "message": "新聞群組"
@@ -1438,7 +1441,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{boldStart}您的幫助{boldEnd}來跟上！",
+    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。",
     "placeholders": {
       "addon": {
         "content": "$1",
