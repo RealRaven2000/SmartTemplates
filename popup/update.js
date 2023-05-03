@@ -169,11 +169,11 @@ const discountUpgrade = "33%";
       el.innerHTML = txtComp;
     }
     
-    let elements = document.querySelectorAll(".specialOfferHead"),
-        txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
-    for (let el of elements) {
-      el.textContent = txtHead;
-    }    
+    // let elements = document.querySelectorAll(".specialOfferHead"),
+    //     txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
+    // for (let el of elements) {
+    //   el.textContent = txtHead;
+    // }    
           
     let elementsSI = document.querySelectorAll(".specialOfferIntro"),
         txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
@@ -216,7 +216,7 @@ const discountUpgrade = "33%";
     if (newsSection) {
       newsSection.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection'));
     }    
-    
+
     let ongoing = document.getElementById('ongoing-work');
     if (ongoing) {
       ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
