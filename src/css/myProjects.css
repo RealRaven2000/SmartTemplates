@@ -1,3 +1,4 @@
+
 /*** PROJECT LINKS - links to my other projects **/
 
 h4.projects {
@@ -12,7 +13,6 @@ h4.projects {
   border: 1px solid #bce !important;
   border-radius: 0.5em; 
   box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
-  behavior: url(js/PIE.js); /* CSS3 Fix for IE 6-8 */
   padding: 0.35em 0.5em;
   display: inline-block;
   margin-right: 20px;
@@ -30,7 +30,6 @@ h4.projects:hover {
   background: -ms-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%);
   background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 );
-  behavior: url(js/PIE.js); /* CSS3 Fix for IE 6-8 */
 }
 
 h4.projects:hover,
