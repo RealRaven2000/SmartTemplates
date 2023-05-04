@@ -337,17 +337,33 @@ p.scream {
 
 img.screenshot,
 img.gallery {
-  border-radius: 10px;
-  box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.7); /* CSS3 = IE9 / Firefox 4+ */ 
-  border: 0;
-  border-style: none;
+  border-radius: 4px;
+  box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.2); /* CSS3 = IE9 / Firefox 4+ */ 
+  border: 1px solid #dad0d0;
+  border-style: solid;
   max-width: 100%;
-  behavior: url(js/PIE.js); /* CSS3 Fix for IE 6-8 */
 }
 img.screenshot {
   margin-top: 12px;
   margin-bottom: 10px;
 }
+
+#newsSection {
+  color: white;
+  border-radius: 0.3rem;
+  padding: 0.05rem 1rem;
+  background-color: rgba(6, 6, 112, 0.9);
+  background-image: linear-gradient(55deg, rgba(6, 6, 112, 0.9) 0%, rgba(115, 3, 85, 0.9) 100%);
+  margin: 1rem auto 1.2rem 30px;
+  max-width: 60rem;
+}
+#newsSection a {
+  color: yellow;
+}
+#newsSection a:hover {
+  color: lightyellow;
+}
+
 
 /* common list formatting */
 ul > li {
