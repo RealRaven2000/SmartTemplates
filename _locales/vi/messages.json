@@ -143,7 +143,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép.",
     "placeholders": {
       "addon": {
         "content": "$1",

@@ -797,7 +797,10 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Obecnie pracuję nad konwersją dodatku SmartTemplates do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 213]{P2} {P1}Ponieważ praca ta jest przeznaczona wyłącznie finansowane ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz używać SmartTemplates w przyszłości{P2}"
+    "message": "{P1}Obecnie pracuję nad konwersją dodatku SmartTemplates do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 213]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Ponieważ praca ta jest przeznaczona wyłącznie finansowane ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz używać SmartTemplates w przyszłości."
   },
   "newsgr.label": {
     "message": "Grupy dyskusyjne"
@@ -1405,7 +1408,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
+    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji.",
     "placeholders": {
       "addon": {
         "content": "$1",
