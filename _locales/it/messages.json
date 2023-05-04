@@ -779,7 +779,10 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo SmartTemplates per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [numero 213]{P2} {P1}Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro{P2}"
+    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo SmartTemplates per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [numero 213]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro."
   },
   "ongoing-work": {
     "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
@@ -1366,7 +1369,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Gentile {name}{boldEnd}, supporta $addon$ ottenendo una licenza. Il codice di Thunderbird si evolve continuamente e abbiamo bisogno del {boldStart}tuo aiuto{boldEnd} per stare al passo!",
+    "message": "{boldStart}Gentile {name}{boldEnd}, supporta $addon$ ottenendo una licenza. ",
     "placeholders": {
       "addon": {
         "content": "$1",

@@ -3199,8 +3199,13 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           SmartTemplate4.PreprocessingFlags.suppressQuoteHeaders = true;
           return "";
         case "deleteForwardedBody":
-          SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
-          return "";          
+          if (!util.hasLicense() || util.licenseInfo.keyType == 2) { 
+            util.addUsedPremiumFunction(token);
+          }
+          else {
+            SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+          }
+          return "";
 				case "T": // today
 				case "X":                               // Time hh:mm:ss
           return finalize(token, await expand("%H%:%M%:%S%"));

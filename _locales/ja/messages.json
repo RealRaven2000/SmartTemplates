@@ -1423,7 +1423,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}親愛なる {name} さん{boldEnd}、ライセンスを購入して $addon$ をサポートしてください。Thunderbirdのコードは絶えず進化しており、それに追いつくために {boldStart}あなたの助け{boldEnd} が必要です！",
+    "message": "{boldStart}親愛なる {name} さん{boldEnd}、ライセンスを購入して $addon$ をサポートしてください。",
     "placeholders": {
       "addon": {
         "content": "$1",

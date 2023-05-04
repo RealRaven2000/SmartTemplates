@@ -833,7 +833,10 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}V současné době pracuji na převodu doplňku SmartTemplates pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2} {P1}Protože tato práce je výhradně financované z prodeje licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat SmartTemplates v budoucnu{P2}"
+    "message": "{P1}V současné době pracuji na převodu doplňku SmartTemplates pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Protože tato práce je výhradně financované z prodeje licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat SmartTemplates v budoucnu."
   },
   "newsgr.label": {
     "message": "Mailová skupina"
@@ -1450,7 +1453,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. ",
     "placeholders": {
       "addon": {
         "content": "$1",
