@@ -1700,7 +1700,9 @@ export class Parser {
           case "suppressQuoteHeaders":
             flags.suppressQuoteHeaders = true;
             return "";
-          case "T": // today
+          case "deleteForwardedBody":
+            SmartTemplate4.PreprocessingFlags.deleteForwardedBody = true;
+            return "";          case "T": // today
           case "X":                               // Time hh:mm:ss
             return finalize(token, await expand("%H%:%M%:%S%"));
           case "y":                               // Year 13... (2digits)

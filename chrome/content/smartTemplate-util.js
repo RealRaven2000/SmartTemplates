@@ -90,6 +90,18 @@ SmartTemplate4.Util = {
     });
     
   },
+
+  // special function for displaying the popup on the SmartTemplates toolbar button
+  showToolbarPopup: function() {
+    let button = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+    if (!button) return;
+    const popupId = "smartTemplatesMainPopup";
+    let p = document.getElementById(popupId);
+    if (p) {
+      p.targetNode = button; 
+      p.openPopup(button,'after_start', 0, -1,true,false); // no event
+    }    
+  },  	
   
   get mainInstance() {
     return this.Mail3PaneWindow.SmartTemplate4;
@@ -715,6 +727,11 @@ SmartTemplate4.Util = {
 		if (SmartTemplate4.Preferences.isDebug && SmartTemplate4.Preferences.isDebugOption('default'))
 			this.logToConsole(...arguments);
 	},
+
+  logIssue213: function(txt) {
+		// Log missing items for Conversion to Thunderbird 115
+    console.log(`SmartTemplates %c[issue 213] to do: %c${txt}`, "color:red", "background: darkblue; color:white;");
+  },
 
 	logDebugOptional: function (optionString, msg) {
     optionString = arguments[0];

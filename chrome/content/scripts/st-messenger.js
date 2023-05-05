@@ -48,6 +48,75 @@ async function onLoad(activatedWhileWindowOpen) {
 
   `);
 
+  window.SmartTemplate4.doCommand = function (el) {
+    if (!el) {
+      return;
+    }
+    const SmartTemplates = window.SmartTemplate4;
+    switch (el.id) {
+      case "smartTemplates-write":
+        break;
+      case "smartTemplates-reply":
+        break;
+      case "smartTemplates-forward":
+        break;
+      case "smartTemplates-news":
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
+        break;
+      case "smartTemplates-settings":
+        SmartTemplates.Util.openPreferences(el);
+        break;
+      case "smartTemplates-installed":
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
+        break;
+      default:
+        console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
+    }
+  }
+
+  // THUNDERBIRD 115
+  // fix selectors
+  let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+  if (mainButton) {
+    mainButton.id = "SmartTemplate4Button";
+    mainButton.setAttribute("popup", "smartTemplatesMainPopup");
+
+    // this method worked in quickFilters:
+    // overload the menupopup based on the id we just added:
+    WL.injectElements(`
+      <button id="SmartTemplate4Button">
+        <menupopup id="smartTemplatesMainPopup">
+          <menu label="__MSG_pref_new.tab__">
+            <menupopup>
+              <menuitem id="smartTemplates-write" label="__MSG_pref_new.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+          <menu label="__MSG_pref_rsp.tab__">
+            <menupopup>
+              <menuitem id="smartTemplates-reply" label="__MSG_pref_rsp.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+          <menu label="__MSG_pref_fwd.tab__">
+            <menupopup>
+              <menuitem id="smartTemplates-forward" label="__MSG_pref_fwd.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+          
+          <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+
+          <menu label="Test">
+            <menupopup>
+              <menuitem id="smartTemplates-installed" label="Splash - Installed" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+
+        </menupopup>
+      </button>
+    `); 
+  }
+
+
   util.logDebug("notifyTools.enable...");
   window.SmartTemplate4.Util.notifyTools.enable();
   util.logDebug("Util.init...");

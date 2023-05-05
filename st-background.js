@@ -91,6 +91,13 @@ function showSplash() {
   messenger.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
 }
 
+function showSplashInstalled() {
+  const url = browser.runtime.getURL("popup/installed.html");
+  let screenH = window.screen.height,
+      windowHeight = (screenH > 870) ? 870 : screenH-20;  
+  messenger.windows.create({ url, type: "popup", width: 910, height: windowHeight, allowScriptsToClose : true});
+}
+
 
 async function main() {
   
@@ -211,6 +218,10 @@ async function main() {
         
       case "splashScreen":
         showSplash();
+        break;
+
+      case "splashInstalled":
+        showSplashInstalled();
         break;
         
       case "updateLicense":

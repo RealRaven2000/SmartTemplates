@@ -863,14 +863,16 @@ var SmartTemplate4 = {
             labelMode = 2;
           }
           else {
-            if (licenseInfo.keyType==2)
+            if (licenseInfo.keyType==2) {
               btn.label = "SmartTemplates";
-            else
+            } else {
               btn.label = "SmartTemplates Pro";
+            }
           }
         }
-        else
+        else {
           btn.label = "SmartTemplates";
+        }
         btn.collapsed = !isVisible;
         
         switch(labelMode) {
@@ -911,7 +913,10 @@ var SmartTemplate4 = {
           window.SmartTemplate4.updateStatusBar("default");
     }, 2000);
     
-    gMessageListeners.push(SmartTemplate4.messageListener);
+    SmartTemplate4.Util.logIssue213(`
+    gMessageListeners.push(SmartTemplate4.messageListener); 
+    gMessageListeners not defined.`)
+    
     
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels"}); // initialize new-related buttons in case there was an ignored update!
     util.logDebug("startUp complete");
@@ -921,7 +926,9 @@ var SmartTemplate4 = {
     const util = SmartTemplate4.Util;
     if (isMainWindow) {
       util.logDebug("removing message listeners…");
-      gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener);
+      SmartTemplate4.Util.logIssue213(`To do: 
+      gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener); 
+      gMessageListeners not defined.`) ;
     }
     
     util.logDebug("Remove added custom UI elements …");
@@ -1021,13 +1028,13 @@ var SmartTemplate4 = {
         btn.classList.add("alertExpired");
         if (!SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
           btn.setAttribute("tooltiptext", wrn);
-          btn.label = SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense");
+          btn.setAttribute("label", SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense"));
         }
       }
       else {
         if (btn.classList.contains("alertExpired")) {
           // remove expiry warning & restore label + default tip
-          btn.label = SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label");
+          btn.setAttribute("label", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label"));
           btn.setAttribute("tooltiptext", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.tooltip"));
           btn.classList.remove("alertExpired");
         }

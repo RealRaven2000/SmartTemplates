@@ -24,6 +24,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           win.SmartTemplate4.Util.logDebug(text);
         },
         
+        showToolbarPopup: function() {
+          let win = Services.wm.getMostRecentWindow("mail:3pane");  
+          win.SmartTemplate4.Util.showToolbarPopup();
+        },
+
         getUserName : function () {
           const util = win.SmartTemplate4.Util;
           let Accounts = util.Accounts; 
