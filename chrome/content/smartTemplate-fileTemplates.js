@@ -387,6 +387,7 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	// load template lists from file
+  // returns a promise!
   loadCustomMenu: function loadCustomMenu(fromOptions) {
     const util = SmartTemplate4.Util;
     fromOptions = fromOptions ? true : false;
@@ -836,12 +837,12 @@ SmartTemplate4.fileTemplates = {
 		return menupopup;		
 	} ,
 	
-  initMenusWithReset: function() {
+  initMenusWithReset: async function() {
     SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
-    SmartTemplate4.fileTemplates.initMenus(true);
+    await SmartTemplate4.fileTemplates.initMenus(true);
   },
   
-  initMenus: function (reset = false) {
+  initMenus: async function (reset = false) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
     let loc = "";

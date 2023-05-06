@@ -24,7 +24,7 @@ async function onLoad(activatedWhileWindowOpen) {
   
   updateTemplateMenus = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", updateTemplateMenus);
-  window.SmartTemplate4.fileTemplates.initMenusWithReset();
+  window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async
   
 }
 

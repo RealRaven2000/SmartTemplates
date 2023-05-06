@@ -55,3 +55,20 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 }
 
 
+/** POPUP MENUS **/
+
+#smartTemplates-settings {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: currentColor;
+}
+
+#smartTemplates-docs {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
+  stroke: currentColor;
+}
+
+#smartTemplates-tests {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/bug.svg") !important;
+  fill: rgb(123, 4, 4);
+}
+

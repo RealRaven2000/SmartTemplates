@@ -55,10 +55,13 @@ async function onLoad(activatedWhileWindowOpen) {
     const SmartTemplates = window.SmartTemplate4;
     switch (el.id) {
       case "smartTemplates-write":
+        SmartTemplates.Util.logIssue213("Write with template");
         break;
       case "smartTemplates-reply":
+        SmartTemplates.Util.logIssue213("Reply with template");
         break;
       case "smartTemplates-forward":
+        SmartTemplates.Util.logIssue213("Forward with template");
         break;
       case "smartTemplates-news":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
@@ -68,6 +71,15 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-installed":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
+        break;
+      case "smartTemplates-support":
+        SmartTemplates.Util.logIssue213("Show Support Tab");
+        break;
+      case "smartTemplates-variables":
+        SmartTemplates.Util.logIssue213("Show Variables Tab");
+        break;
+      case "smartTemplates-templatemenus":
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
@@ -105,9 +117,18 @@ async function onLoad(activatedWhileWindowOpen) {
           <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
 
-          <menu label="Test">
+          <menu id="smartTemplates-docs" label="Documentation"  class="menu-iconic">
             <menupopup>
-              <menuitem id="smartTemplates-installed" label="Splash - Installed" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-support" label="Support Site…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-variables" label="Variables…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+
+
+          <menu id="smartTemplates-tests" label="Test">
+            <menupopup>
+              <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
 
@@ -152,8 +173,7 @@ async function onLoad(activatedWhileWindowOpen) {
     }
   }
   
-  window.SmartTemplate4.fileTemplates.initMenusWithReset();
-  
+  window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async  
 }
 
 function onUnload(isAddOnShutDown) {
