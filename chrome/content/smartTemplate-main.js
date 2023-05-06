@@ -902,6 +902,36 @@ var SmartTemplate4 = {
     SmartTemplate4.updateStatusBar();
     SmartTemplate4.updateToolbarIcon();
   },
+  
+  getMessageBrowserWindow: function(window) {
+		if (window.gMessageListeners) {
+			// TB < 111
+			return window;
+		}
+
+		// TB >= 111
+		let msgViewDocument;
+		// eslint-disable-next-line no-extra-parens
+		const browser1 = /** @type {HTMLIFrameElement} */ (window.document.getElementById("mail3PaneTabBrowser1"));
+		if (browser1) {
+			// Window contains a tab with the mail3PaneTab
+			msgViewDocument = browser1.contentDocument;
+			if (!msgViewDocument) {
+				throw new Error("DKIM: mail3PaneTabBrowser1 exists but does not contain a document");
+			}
+		} else {
+			// Message is displayed in a new Window
+			msgViewDocument = window.document;
+		}
+
+		// eslint-disable-next-line no-extra-parens
+		const messageBrowser = /** @type {HTMLIFrameElement} */ (msgViewDocument.getElementById("messageBrowser"));
+		const innerWindow = messageBrowser.contentWindow;
+		if (!innerWindow) {
+			throw new Error("DKIM: messageBrowser exists but does not contain a window");
+		}
+		return innerWindow;
+	},
 
   startUp: function ST_startUp() {
     const util = SmartTemplate4.Util;
@@ -913,10 +943,13 @@ var SmartTemplate4 = {
           window.SmartTemplate4.updateStatusBar("default");
     }, 2000);
     
-    SmartTemplate4.Util.logIssue213(`
-    gMessageListeners.push(SmartTemplate4.messageListener); 
-    gMessageListeners not defined.`)
-    
+    // finding gMessageListeners:
+    // The standalone mail window also contains a XUL <browser> displaying about:message. 
+    // The browser can be accessed from the window's messageBrowser property.
+    let win = window.SmartTemplate4.getMessageBrowserWindow(window);
+    if (win) {
+      win.gMessageListeners.push(window.SmartTemplate4.messageListener);
+    } 
     
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels"}); // initialize new-related buttons in case there was an ignored update!
     util.logDebug("startUp complete");
@@ -926,9 +959,10 @@ var SmartTemplate4 = {
     const util = SmartTemplate4.Util;
     if (isMainWindow) {
       util.logDebug("removing message listeners…");
-      SmartTemplate4.Util.logIssue213(`To do: 
-      gMessageListeners = gMessageListeners.filter(listener => listener !== SmartTemplate4.messageListener); 
-      gMessageListeners not defined.`) ;
+      let win = SmartTemplate4.getMessageBrowserWindow(window);
+      if (win) {
+        win.gMessageListeners = win.gMessageListeners.filter(listener => listener !== window.SmartTemplate4.messageListener);
+      } 
     }
     
     util.logDebug("Remove added custom UI elements …");
@@ -971,13 +1005,14 @@ var SmartTemplate4 = {
       util.logDebug("onEndHeaders");
       let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
                   "hdrReplyToSenderButton", "hdrForwardButton","hdrDualForwardButton"];
-                  // ,"button-reply","button-replyall", "button-replylist", "button-forward" // are these from CompactHeaders?
       for (let b=0; b<hrBtns.length; b++) {
         let id = hrBtns[b],
             fakeId = id + "-ST",
             theBtn = document.getElementById(id);
         if(!theBtn) continue;
         let btn = document.getElementById(fakeId); // unneeded "fake" buttons need to be hidden
+        // WIP: at the moment these fake buttons do not exist
+        //      we may have to reintroduce them for ease of use in Tb115
         if(!btn) continue;
         btn.hidden = theBtn.hidden || false;
         if (btn.hidden) {
