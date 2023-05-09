@@ -71,7 +71,7 @@ permalink: premium.html
   </tr>
   
   <tr>
-    <th>Max Number of Template submenus</th>
+    <th>Max Number of Template submenus (categories)</th>
     <td>3</td>
     <td>3</td>
     <td>unlimited</td>
@@ -168,7 +168,7 @@ permalink: premium.html
   </tr>
   
   <tr>
-    <th><a href="#forwardedManipulation">Forwarded Mail Body</a><br>
+    <th><a href="#forwardedManipulation">Forwarded Mail Content</a><br>
       Remove contents of forwarded mail: <code>%deleteForwardedBody%</code>.</th>
     <td><span class="check negative">✘</span></td>
     <td><span class="check negative">✘</span></td>
@@ -211,7 +211,7 @@ permalink: premium.html
 
 <!-- ##### String Functions #### -->
 <a name="stringManipulation"> </a>
-<h3 class="helpchapter">String Manipulation</h3>
+<h3 class="helpchapter">Text Manipulation</h3>
 <article>
 	<ul>
 		<li><code>%deleteText("text")%</code> = Remove some text from the Quote Header, such as deleteText("via Paypal")- "John via Paypal wrote" =&gt; "John wrote"</li>
@@ -285,12 +285,13 @@ permalink: premium.html
 
 
 <a name="forwardedManipulation"> </a>
-<h3 class="helpchapter">Forwarded Mail</h3>
+<h3 class="helpchapter">Forwarded Mail Content</h3>
 <article>
   <p>
-    The command <code>%deleteForwardedBody%</code> removes the body of the original email when 
+    The command <code>%deleteForwardedBody%</code> removes the content of the original email when 
     forwarding it inline (not as attachment). This feature can be used to first process information from automated 
-    mails while removing the original information.
+    mails (with <a href="#stringManipulation">text manipulation</a> and <a="#headerManipulation">header</a> 
+    functions of the type <code class="inline">%header.*.matchFromBody%<code>) while removing the original information.
     <a href="https://github.com/RealRaven2000/SmartTemplates/issues/236">[issue 236]</a>
   </p>
 </article>
