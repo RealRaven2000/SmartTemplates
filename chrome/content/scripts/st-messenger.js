@@ -98,34 +98,36 @@ async function onLoad(activatedWhileWindowOpen) {
     WL.injectElements(`
       <button id="SmartTemplate4Button">
         <menupopup id="smartTemplatesMainPopup">
-          <menu label="__MSG_pref_new.tab__">
+          <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
             <menupopup>
-              <menuitem id="smartTemplates-write" label="__MSG_pref_new.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-write" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-write-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
-          <menu label="__MSG_pref_rsp.tab__">
+          <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic">
             <menupopup>
-              <menuitem id="smartTemplates-reply" label="__MSG_pref_rsp.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-reply" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-reply-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
-          <menu label="__MSG_pref_fwd.tab__">
+          <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic">
             <menupopup>
-              <menuitem id="smartTemplates-forward" label="__MSG_pref_fwd.tab__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-forward" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-forward-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
           
           <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
 
-          <menu id="smartTemplates-docs" label="Documentation"  class="menu-iconic">
+          <menu id="smartTemplates-docs" label="Documentation" class="menu-iconic">
             <menupopup>
               <menuitem id="smartTemplates-support" label="Support Site…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-variables" label="Variables…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
 
-
-          <menu id="smartTemplates-tests" label="Test">
+          <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
             <menupopup>
               <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

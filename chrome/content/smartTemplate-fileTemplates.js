@@ -25,6 +25,26 @@ SmartTemplate4.fileTemplates = {
 	lastError: null,
 	isModified: false, // set to true after editing moving / removing items
 	// how many templates are stored altogether?
+  uniMenus : [
+    {
+      id : "smartTemplates-write-menu",
+      composeType : "new",
+      command : "cmd_newMessage",
+      templates : "templatesNew"
+    },
+    {
+      id : "smartTemplates-reply-menu",
+      composeType : "rsp",
+      command : "cmd_reply",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-forward-menu",
+      composeType : "fwd",
+      command : "cmd_forwardInline",
+      templates : "templatesFwd"
+    },
+  ],
 	get entriesLength() {
 		let l = 0;
 		for (let p in this.Entries) { // walk through ids, get all arrays and sum up items
@@ -929,13 +949,26 @@ SmartTemplate4.fileTemplates = {
 							} 
 						);
           } catch (ex) {;}
+
+          for (let item of fileTemplates.uniMenus) {
+            let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, item.id);
+            if (thePopup && needsConfig(thePopup)) {
+              fileTemplates.configureMenu(
+                fileTemplates.Entries[item.templates], 
+                thePopup, 
+                item.composeType
+              );
+            }            
+          }
+
           
+/*          
 					// 1) write new entries --------------------
 					let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
 					if (needsConfig(newMsgPopup)) {
 						fileTemplates.configureMenu(fileTemplates.Entries.templatesNew, newMsgPopup, "new");
 					}
-					
+
 					// 2) reply entries     --------------------
 					let rspBtns=["button-reply","button-replyall", "button-replylist"];
 					for (let rspBtn of rspBtns) {
@@ -945,6 +978,7 @@ SmartTemplate4.fileTemplates = {
 								fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, replyPopup, "rsp");
 						}
 					}
+*/
 
 					// 4) ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
@@ -1054,7 +1088,7 @@ SmartTemplate4.fileTemplates = {
   }  ,
 	
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
+	onItemClick: function fileTemplate_onItemClick (menuitem, menuParent, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
     
     /*   START NEW CODE -  [issue 184] */
     // use a pref switch for testing API processing...
@@ -1074,7 +1108,8 @@ SmartTemplate4.fileTemplates = {
       return;
     }
     /*   END NEW CODE  - [issue 184] */    
-    
+
+    let btn = menuParent; // can be a button or a (new) menu on unifiedtoolbar button
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
     let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
@@ -1178,8 +1213,28 @@ SmartTemplate4.fileTemplates = {
           counter++;
         }
       }
-      else
-        btn.click(); // or fire the standard command event? 
+      else {
+        if (menuParent.tagName == "menu")  {  // Tb115
+          let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+          if (entry) {
+            // execute the command.
+            let controller = getEnabledControllerForCommand(entry.command);
+            if (!controller) {
+              util.logDebug(`No controller exists for the command ${entry.command} `);
+            } else {
+              if (controller.isCommandEnabled(entry.command)) {
+                controller.doCommand(entry.command);
+              } else {
+                util.logDebug(`Cannot call command ${entry.command} as it is disabled.`)
+              }
+            }
+          }
+
+        }
+        else {
+          btn.click(); // or fire the standard command event? 
+        }
+      }
 		}
 		else {
 			util.logDebugOptional("fileTemplates","+======++++++======++++++======+\nNo click event fired for button id=" + btn.id);

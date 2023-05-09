@@ -72,3 +72,30 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   fill: rgb(123, 4, 4);
 }
 
+
+/* reply buttons - see:
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/messageHeader.css#195
+    https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/icons.css
+  */
+
+#smartTemplates-write-menu {
+  list-style-image: var(--icon-new-mail);
+}
+
+/* reply, reply to sender */
+#smartTemplates-reply-menu {
+  list-style-image: var(--icon-reply);
+}
+
+#smartTemplates-forward-menu {
+  list-style-image: var(--icon-forward);
+}
+
+/* future */
+#smartTemplates-replyall-menu {
+  list-style-image: var(--icon-reply-all);
+}
+#smartTemplates-replylist-menu {
+  list-style-image: var(--icon-reply-list);
+}
+

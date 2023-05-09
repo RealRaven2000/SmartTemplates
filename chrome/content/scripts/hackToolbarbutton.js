@@ -37,14 +37,32 @@ var hackToolbarbutton = {
     }      
   },
   
+  // get the menupopup element to add templates submenu
+  getMenupopupElement(window, menuId) {   
+    let element = window.document.getElementById(menuId);
+    if (!element) {
+      return null;
+    }
+
+    // check if we need to add popup
+    let popup = element.querySelector("menupopup");
+    if (!popup) {
+      popup = window.document.createXULElement("menupopup");
+      popup.setAttribute("id", `${buttonId}-popup`);
+      popup.setAttribute("oncommand", "event.stopPropagation();");
+      button.appendChild(popup);
+    }  
+    return popup;
+  },
+
+
   // returns the menupopup element of the button, 
   // check if the button needs to converted beforehand and adds the menupopup element if needed first
-  getMenupopupElement(window, buttonId) {   
+  getMenupopupElement_Btn(window, buttonId) {   
     let button = window.document.getElementById(buttonId);
-    if (!button) 
+    if (!button) {
       return null;
-
-
+    }
 
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
