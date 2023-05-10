@@ -288,9 +288,10 @@ SmartTemplate4.classSmartTemplate = function() {
       if (!flags.filePaths) flags.filePaths=[]; // make sure we have a stack for paths!
       let pathArray = flags.filePaths;
       // if this has a path - put it on the stack so we can process %file()% variables within
-      if (isSignatureTb && sigPath)
+      if (isSignatureTb && sigPath) { // [issue 240]
 				util.logDebugOptional("fileTemplates", `extractSignature: Add sig file to template stack: ${sigPath}`);
         pathArray.push(sigPath);
+			}
 			try {
 				sigText = await getProcessedText(sigText, idKey, composeType, true);
 			}
@@ -1068,12 +1069,13 @@ SmartTemplate4.classSmartTemplate = function() {
 				// Message File loaded:
 				if (prefs.isDebugOption('functions.insertTemplate')) debugger;
 				
-				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed)
+				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed) {
 				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
-				else if (flags.isThunderbirdTemplate) 
+				} else if (flags.isThunderbirdTemplate) {
 					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
-				else
+				} else {
 					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
+				}
 				
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
 				
@@ -1326,9 +1328,9 @@ SmartTemplate4.classSmartTemplate = function() {
           let lev = quoteNode.getAttribute('quotelevel'),
               quoteLevels = 100;
           if (lev) {
-            if (lev=="all") 
+            if (lev=="all") {
               quoteLevels = 100;
-            else {
+						} else {
               quoteLevels = parseInt(lev,10);
             }
           } 
@@ -1619,8 +1621,9 @@ SmartTemplate4.classSmartTemplate = function() {
                           , parentSrchHTML.lastIndexOf('<br', caretStartPos) 
                           , parentSrchHTML.lastIndexOf('</div', caretStartPos)
                           , parentSrchHTML.lastIndexOf('</table', caretStartPos)) + 1; // where the previous Block ends
-                    if (previousBlock==0) 
+                    if (previousBlock==0) {
 											previousBlock = caretStartPos;
+										}
 										else {
 											previousBlock = parentSrchHTML.indexOf('>', previousBlock) + 1 || caretStartPos; // find end of closing tag
 											if (previousBlock < 0) previousBlock = 0;
@@ -1676,10 +1679,11 @@ SmartTemplate4.classSmartTemplate = function() {
 									// check if we would create an empty paragraph:
 									if (space.textContent == space.parentNode.innerText 
 									    && 
-											space.parentNode.tagName.toLowerCase()=="p")
+											space.parentNode.tagName.toLowerCase()=="p") {
 										space.parentNode.innerHTML="<br>"; // avoid empty paragraph because the editor will remove it; replaces space
-									else
+									} else {
 										space.parentNode.removeChild(space);
+									}
 								}
 								window.updateCommands('style');
                 // =========== FORCE CURSOR IN <PARA> ==================================== ]]]]
