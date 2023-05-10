@@ -254,10 +254,11 @@ SmartTemplate4.Settings = {
 		const PS = this.prefService;
 		switch (PS.getPrefType(prefstring)) {
 			case Components.interfaces.nsIPrefBranch.PREF_STRING:
-			  if (typeof PS.getStringPref === 'function') 
+			  if (typeof PS.getStringPref === 'function') {
 					return PS.getStringPref(prefstring);
-				else // outdated code, not used by anything modern:
+				} else { // outdated code, not used by anything modern:
 					return PS.getComplexValue(prefstring, Components.interfaces.nsISupportsString).data;
+				}
 			case Components.interfaces.nsIPrefBranch.PREF_INT:
 				return PS.getIntPref(prefstring);
 			case Components.interfaces.nsIPrefBranch.PREF_BOOL:
@@ -867,8 +868,12 @@ SmartTemplate4.Settings = {
 			this.setPref1st(prefRoot);
 
 			// Clone and setup a preference window tags.
-			const el = document.getElementById("deckA.per_account"),
-				  clone = el.cloneNode(true);
+			const el = document.getElementById("deckA.per_account");
+
+			// fix painting over of decks
+			el.classList.remove("deck-selected"); 
+
+			const clone = el.cloneNode(true);
 
 			this.prefCloneAndSetup(clone, branch);
 			let appendedChild = el.parentNode.appendChild(clone);
@@ -1221,10 +1226,12 @@ SmartTemplate4.Settings = {
 		let size = SmartTemplate4.Preferences.getMyIntPref("font.size");
 		
 		size = size + change;
-		if (size < 7) 
+		if (size < 7) {
 			size = 7;
-		if (size > 16) 
+		}
+		if (size > 16) {
 			size = 16;
+		}
 
 		let fs = document.getElementById('txtFontSize');
 		if (fs)
@@ -1912,8 +1919,9 @@ SmartTemplate4.Settings = {
         
 			}
       
-			if (Preferences) 
+			if (Preferences) {
 				Preferences.addAll(prefArray);
+			}
 		}							
 	},
 	
