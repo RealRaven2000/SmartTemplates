@@ -263,8 +263,9 @@ SmartTemplate4.classSmartTemplate = function() {
 					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
 					removed = true;
 					// old code - remove the preceding BR that TB always inserts
-					if (pBr && pBr.tagName == "BR")
+					if (pBr && pBr.tagName == "BR") {
 						bodyEl.removeChild(pBr); 
+					}
 					break;
 				}
 			}
@@ -288,9 +289,10 @@ SmartTemplate4.classSmartTemplate = function() {
       if (!flags.filePaths) flags.filePaths=[]; // make sure we have a stack for paths!
       let pathArray = flags.filePaths;
       // if this has a path - put it on the stack so we can process %file()% variables within
-      if (isSignatureTb && sigPath)
+      if (isSignatureTb && sigPath) { // [issue 240]
 				util.logDebugOptional("fileTemplates", `extractSignature: Add sig file to template stack: ${sigPath}`);
         pathArray.push(sigPath);
+			}
 			try {
 				sigText = await getProcessedText(sigText, idKey, composeType, true);
 			}
@@ -1070,10 +1072,11 @@ SmartTemplate4.classSmartTemplate = function() {
 				
 				if (flags.isFileTemplate && fileTemplateSource && !fileTemplateSource.failed)
 				  rawTemplate = fileTemplateSource.HTML || fileTemplateSource.Text;
-				else if (flags.isThunderbirdTemplate) 
+				else if (flags.isThunderbirdTemplate) {
 					rawTemplate = editor.rootElement.innerHTML; // treat email as raw template
-				else
+				} else {
 					rawTemplate = flags.isThunderbirdTemplate ? "" : pref.getTemplate(idKey, st4composeType, "");
+				}
 				
         sigType = testSignatureVar(rawTemplate); // 'omit' for supressing sig from smart template
 				
