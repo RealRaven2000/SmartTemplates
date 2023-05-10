@@ -231,7 +231,7 @@ END LICENSE BLOCK
     # [issue 229] Fixed Scripts fields %{% %}% 
     # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
 
-  Version 3.17 - WIP
+  Version 3.17 - 04/05/2023
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 237] Allow %file()% command to use ../ to access parent folders of a file
     # [issue 238] Insert Snippet: support inserting contents of a CSS file as style block
@@ -244,6 +244,8 @@ END LICENSE BLOCK
     # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
     #   will be 4 under the new branch 5.0
 
+  Version 3.17.1 - WIP
+    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     
 
 =========================
@@ -367,11 +369,13 @@ var SmartTemplate4 = {
     let notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4),
         txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
     SmartTemplate4.isListenerInitialised = true;
+    util.logHighlight("initListener", "yellow");
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
       // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
       if (!SmartTemplate4.Preferences.isBackgroundParser()) {
+        util.logHighlight("RegisterStateListener", "lightyellow");
         gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
       }
       
@@ -389,6 +393,7 @@ var SmartTemplate4 = {
           let idKey = util.getIdentityKey(document);
           stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
             // no notification on forward w. empty template
+            util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
             if (gComposeType !== msgComposeType.ForwardInline
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")

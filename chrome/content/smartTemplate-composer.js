@@ -9,7 +9,7 @@ SmartTemplate4.composer = {
           prefs = SmartTemplate4.Preferences;
           
     
-    util.logDebug("SmartTemplate4.composer.load");
+    util.logHighlight("ST.composer.load","white","#8e0477a4");
     
     // NOTE: tried to remove this and replace with 
     //       WL.injectCSS("chrome://SmartTemplate4/content/skin/compose-overlay.css");
@@ -36,6 +36,7 @@ SmartTemplate4.composer = {
     // thanks to Joerg K. for pointing this one out:
     window.document.getElementById("msgcomposeWindow").addEventListener("compose-send-message", 
       function (e) { 
+        util.logHighlight("Event: compose-send-message","lightpink","#8e0477a4");
         util.composerSendMessage(e); // pass on event in case we need it.
       }
     );
@@ -235,7 +236,8 @@ function()
     const util = SmartTemplate4.Util,
           logDebugOptional = util.logDebugOptional.bind(util),
           isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
-          
+    util.logHighlight("smartTemplate-composer.js", "yellow", "rgb(0,80,0)"); 
+
     let txt = "unknown";
     if (isDebugComposer) debugger;
     try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
@@ -246,6 +248,7 @@ function()
       window.addEventListener(
         "compose-window-init",
         async function() {
+          util.logHighlight("Event: compose-window-init", "lightgreen", "rgb(0,80,0)");
           SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
         },
         {capture:true}
@@ -256,6 +259,7 @@ function()
     
     let composer = document.getElementById("msgcomposeWindow");
     composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
+    util.logHighlight("added compose-window-init listener", "lightgreen", "rgb(0,80,0)");
       
     SmartTemplate4.init();
 

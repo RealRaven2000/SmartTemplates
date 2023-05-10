@@ -716,6 +716,13 @@ SmartTemplate4.Util = {
 			this.logToConsole(...arguments);
 	},
 
+	// optional logging for important points in flow.
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)") {
+		if (SmartTemplate4.Preferences.isDebug) {
+			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`);
+		}
+	},
+
 	logDebugOptional: function (optionString, msg) {
     optionString = arguments[0];
     let options = optionString.split(','); // allow multiple switches
