@@ -670,18 +670,17 @@ label.plain-link:hover {
 
 .templateList #btnUp {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up.png");
-	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
 .templateList #btnDown {
 	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down.png");
-	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
-.templateList #btnUp[disabled="true"],
-.templateList #btnDown[disabled="true"] 
-{
-  -moz-image-region: rect(16px 16px 32px 0px) !important;
+.templateList #btnUp[disabled="true"] { 
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-up-off.png");
+}
+.templateList #btnDown[disabled="true"]  {
+	list-style-image:  url("chrome://smarttemplate4/content/skin/icons/fugue-down-off.png");
 }
 
 .templateLabel {
