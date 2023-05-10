@@ -559,10 +559,8 @@ SmartTemplate4.fileTemplates = {
 				singleParentWindow = null;
           
     function getAccessKey(acCode) {
-      if (acCode<10)
-        return acCode.toString();
-      if (acCode>34) 
-        return "";
+      if (acCode<10) { return acCode.toString(); }
+      if (acCode>34) { return ""; }
       return String.fromCharCode(65+acCode-10); // continue with A,B,C
     }
     try {
@@ -1586,12 +1584,12 @@ SmartTemplate4.fileTemplates = {
 			try { 
 				// let HTMLEditor = gMsgCompose.editor.QueryInterface(Components.interfaces.nsIHTMLEditor);
 				let html = "";
-				if ('HTML' in template) 
+				if ('HTML' in template) { 
 					html = template.HTML;
-				else 
+        } else {
 					if ('Text' in template)
 						html = template.Text; // Stationery.plainText2HTML()
-								
+				}
 				// HTMLEditor.rebuildDocumentFromSource(html);
 			}
 			catch(ex) {

@@ -250,6 +250,7 @@ END LICENSE BLOCK
     # - new browser action button (WIP)
     # - messageServiceFromURI moved to MailServices
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
+    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
 
 
     
@@ -367,19 +368,21 @@ var SmartTemplate4 = {
     const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences,
           msgComposeType = Components.interfaces.nsIMsgCompType;
+          
+    util.logHighlight("initListener", "yellow");
     let log = util.logDebugOptional.bind(util);
     if (SmartTemplate4.isListenerInitialised) {
       log('composer','Listener is initialised - early exit.');
       return; // avoid calling 2x
     }
-    let notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4),
-        txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
+    let txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
     SmartTemplate4.isListenerInitialised = true;
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
       // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
       if (!SmartTemplate4.Preferences.isBackgroundParser()) {
+        util.logHighlight("RegisterStateListener", "lightyellow");
         gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
       }
       
@@ -397,6 +400,7 @@ var SmartTemplate4 = {
           let idKey = util.getIdentityKey(document);
           stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
             // no notification on forward w. empty template
+            util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
             if (gComposeType !== msgComposeType.ForwardInline
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
