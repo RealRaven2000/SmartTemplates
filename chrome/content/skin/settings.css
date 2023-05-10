@@ -11,7 +11,6 @@
 	-moz-context-properties: fill;
 	fill: currentColor;
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/help.svg");
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
