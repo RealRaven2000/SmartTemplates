@@ -231,7 +231,7 @@ END LICENSE BLOCK
     # [issue 229] Fixed Scripts fields %{% %}% 
     # [issue 230] %from(addressbook,nickname)% throws an error when trying to use CardBook
 
-  Version 3.17 - WIP
+  Version 3.17 - 04/05/2023
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 237] Allow %file()% command to use ../ to access parent folders of a file
     # [issue 238] Insert Snippet: support inserting contents of a CSS file as style block
@@ -253,6 +253,9 @@ END LICENSE BLOCK
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
 
 
+  Version 3.17.1 - WIP
+    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # [issue 242] Update "# licensed days left" at midnight.
     
 
 =========================
@@ -377,6 +380,7 @@ var SmartTemplate4 = {
     }
     let txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
     SmartTemplate4.isListenerInitialised = true;
+    util.logHighlight("initListener", "yellow");
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {

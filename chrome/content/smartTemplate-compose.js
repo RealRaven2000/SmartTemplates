@@ -263,8 +263,9 @@ SmartTemplate4.classSmartTemplate = function() {
 					let old_sig = bodyEl.removeChild(nodes[i]); // old_sig is just to check, not used
 					removed = true;
 					// old code - remove the preceding BR that TB always inserts
-					if (pBr && pBr.tagName == "BR")
+					if (pBr && pBr.tagName == "BR") {
 						bodyEl.removeChild(pBr); 
+					}
 					break;
 				}
 			}

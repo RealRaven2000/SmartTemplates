@@ -17,6 +17,7 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
+  window.SmartTemplate4.Util.logHighlight("st-composer.js - onLoad()", "yellow");
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
   
   // Version specific code / style fixes

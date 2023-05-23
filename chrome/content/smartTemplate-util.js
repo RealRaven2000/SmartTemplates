@@ -2777,6 +2777,18 @@ SmartTemplate4.Util = {
   viewSplashScreen: function() {
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "splashScreen" });
   },
+
+	setMidnightTimer: function() {
+		let today = new Date(),
+		    tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),
+		    timeToMidnight = (tomorrow-today);
+		setTimeout(
+			() => {
+				SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" }); 
+				SmartTemplate4.Util.setMidnightTimer();
+			},
+			timeToMidnight);
+	},	
   
   get Accounts() {
     var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
