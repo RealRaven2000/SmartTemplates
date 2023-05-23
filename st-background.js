@@ -246,6 +246,18 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
         break
         
+      // refresh license info (at midnight) and update label afterwards.
+      case "updateLicenseTimer":
+        {
+          await currentLicense.updateLicenseDates();
+
+          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+          messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
+          // update the status bar label too:
+          messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"});  
+          // <== calls   updateStatusBar() and updateToolbarIcon();
+        }
+        break;
         
       case "initLicensedUI":
         // main window update reacting to license status change

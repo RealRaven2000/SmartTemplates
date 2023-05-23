@@ -246,6 +246,7 @@ END LICENSE BLOCK
 
   Version 3.17.1 - WIP
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # [issue 242] Update "# licensed days left" at midnight.
     
 
 =========================
@@ -866,8 +867,9 @@ var SmartTemplate4 = {
               btn.label = "SmartTemplates Pro";
           }
         }
-        else
+        else {
           btn.label = "SmartTemplates";
+        }
         btn.collapsed = !isVisible;
         
         switch(labelMode) {
