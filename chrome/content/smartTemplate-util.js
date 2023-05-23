@@ -716,6 +716,13 @@ SmartTemplate4.Util = {
 			this.logToConsole(...arguments);
 	},
 
+	// optional logging for important points in flow.
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)") {
+		if (SmartTemplate4.Preferences.isDebug) {
+			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`);
+		}
+	},
+
 	logDebugOptional: function (optionString, msg) {
     optionString = arguments[0];
     let options = optionString.split(','); // allow multiple switches
@@ -2753,6 +2760,18 @@ SmartTemplate4.Util = {
   viewSplashScreen: function() {
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "splashScreen" });
   },
+
+	setMidnightTimer: function() {
+		let today = new Date(),
+		    tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),
+		    timeToMidnight = (tomorrow-today);
+		setTimeout(
+			() => {
+				SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" }); 
+				SmartTemplate4.Util.setMidnightTimer();
+			},
+			timeToMidnight);
+	},	
   
   get Accounts() {
     var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager

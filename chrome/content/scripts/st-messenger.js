@@ -54,6 +54,8 @@ async function onLoad(activatedWhileWindowOpen) {
   await window.SmartTemplate4.Util.init();
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
+  // set up updating the label at midnight
+  window.SmartTemplate4.Util.setMidnightTimer();
   
   // these events are repackaged in util-init() from notifications
   mylisteners["BackgroundUpdate"] = window.SmartTemplate4.initLicensedUI.bind(window.SmartTemplate4);
