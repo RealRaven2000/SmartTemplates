@@ -482,7 +482,7 @@ SmartTemplate4.Settings = {
 		
 		// wait some time so dialog can load first
 		if (prefs.getMyBoolPref('hideExamples')) { 
-			getElement('templatesTab').collapsed = true;
+			getElement('templatesTab').setAttribute("collapsed", true);
 		}
 		else {
 			window.setTimeout(function() { settings.loadTemplatesFrame(); }, 500);
@@ -574,7 +574,7 @@ SmartTemplate4.Settings = {
   },
 	
 	toggleExamples: function toggleExamples(el) {
-		document.getElementById('templatesTab').collapsed = (el.checked);
+		document.getElementById('templatesTab').setAttribute("collapsed", (el.checked));
     if (!el.checked)
       SmartTemplate4.Settings.loadTemplatesFrame();
 	} ,
@@ -1093,9 +1093,9 @@ SmartTemplate4.Settings = {
 			deck.selectedIndex = 1;
 			this.accountKey = "files";
 		}
-    btnSave.collapsed = (isShowTemplateSelector);
-    btnLoad.collapsed = (isShowTemplateSelector);
-    tipHelp.collapsed = (!isShowTemplateSelector);
+    btnSave.setAttribute("collapsed", (isShowTemplateSelector));
+    btnLoad.setAttribute("collapsed", (isShowTemplateSelector));
+    tipHelp.setAttribute("collapsed", (!isShowTemplateSelector));
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
 		if (!found) {
@@ -1510,8 +1510,8 @@ SmartTemplate4.Settings = {
   // make a validation message visible but also repeat a notification for screen readers.
   showValidationMessage: function showValidationMessage(el, silent=true) {
     const util = SmartTemplate4.Util;
-    if (el.collapsed != false) {
-      el.collapsed = false;
+    if (el.getAttribute("collapsed") != false) {
+      el.setAttribute("collapsed", false);
       if (!silent)
         util.popupAlert (util.ADDON_TITLE, el.textContent);
     }
@@ -1528,6 +1528,7 @@ SmartTemplate4.Settings = {
   },
   
   showTrialDate: function() {
+		debugger;
     let licenseDate = document.getElementById('licenseDate'),
         licenseDateLbl = document.getElementById('licenseDateLabel'),
         txtGracePeriod= SmartTemplate4.Util.gracePeriodText(SmartTemplate4.Util.licenseInfo.trialDays);
@@ -1576,15 +1577,15 @@ SmartTemplate4.Settings = {
         decryptedMail = SmartTemplate4.Util.licenseInfo.email, 
         decryptedDate = SmartTemplate4.Util.licenseInfo.expiryDate,
 				result = SmartTemplate4.Util.licenseInfo.status;
-		validationStandard.collapsed = true;
-    validationPassed.collapsed = true;
-    validationFailed.collapsed = true;
-    validationExpired.collapsed = true;
-		validationInvalidAddon.collapsed = true;
-    validationInvalidEmail.collapsed = true;
-    validationEmailNoMatch.collapsed = true;
-		validationDate.collapsed = false;
-		validationDateSpace.collapsed = false;
+		validationStandard.setAttribute("collapsed", true);
+    validationPassed.setAttribute("collapsed", true);
+    validationFailed.setAttribute("collapsed", true);
+    validationExpired.setAttribute("collapsed", true);
+		validationInvalidAddon.setAttribute("collapsed", true);
+    validationInvalidEmail.setAttribute("collapsed", true);
+    validationEmailNoMatch.setAttribute("collapsed", true);
+		validationDate.setAttribute("collapsed", false);
+		validationDateSpace.setAttribute("collapsed", false);
     this.enablePremiumConfig(false);
     try {
       let niceDate = decryptedDate;
@@ -1609,8 +1610,8 @@ SmartTemplate4.Settings = {
           licenseDateLabel.value = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
 				  let addonName = '';
 				  switch (SmartTemplate4.Util.licenseInfo.licenseKey.substr(0,2)) {
 						case 'QI':
@@ -1642,15 +1643,15 @@ SmartTemplate4.Settings = {
           showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
           showValidationMessage(validationInvalidEmail, silent);
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
         case "MailDifferent":
-				  validationDate.collapsed=true;
-					validationDateSpace.collapsed=true;
+				  validationDate.setAttribute("collapsed", true);
+					validationDateSpace.setAttribute("collapsed", true);
           showValidationMessage(validationFailed, true);
           showValidationMessage(validationEmailNoMatch, silent);
           break;
@@ -1665,7 +1666,7 @@ SmartTemplate4.Settings = {
       }
 			
 			// restore original label.
-			if (!validationDate.collapsed) {
+			if (!validationDate.getAttribute("collapsed")) {
 				let licenseDateLbl = getElement('licenseDateLabel'),
 				    lTxt = licenseDateLbl.getAttribute("originalContent");
 				if (lTxt) {
@@ -1676,7 +1677,7 @@ SmartTemplate4.Settings = {
 			
 			// show support tab if license is not empty 
 			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.licenseKey) ? true : false;
-			document.getElementById('supportTab').collapsed = !(isSupportEnabled);
+			document.getElementById('supportTab').setAttribute("collapsed",  !(isSupportEnabled));
       
     }    
     catch(ex) {
@@ -1759,8 +1760,9 @@ SmartTemplate4.Settings = {
 							btnLicense.classList.add('upgrade'); // removes "pulsing" animation
 							settings.labelLicenseBtn(btnLicense, "upgrade");
 						}
-						else
-							btnLicense.collapsed = true;
+						else {
+							btnLicense.setAttribute("collapsed", true);
+						}
 					}
 					replaceCssClass(proTab, 'paid');
 					replaceCssClass(btnLicense, 'paid');
@@ -1769,14 +1771,14 @@ SmartTemplate4.Settings = {
 				  break;
 				case "Expired":
 					settings.labelLicenseBtn(btnLicense, "renew");
-				  btnLicense.collapsed = false;
+				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo-pro.png");
 					break;
 				default: // no license
           settings.labelLicenseBtn(btnLicense, "buy");
-				  btnLicense.collapsed = false;
+				  btnLicense.setAttribute("collapsed", false);
 					replaceCssClass(proTab, 'free');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/content/skin/logo.png");
 					beautyTitle.classList.add('aboutLogo');
@@ -1819,11 +1821,11 @@ SmartTemplate4.Settings = {
 				let selectedPanelId = el.selectedPanel ? el.selectedPanel.id : 'unknown';
 				switch (selectedPanelId) {
 					case 'SmartTemplate4-Options-goPro':
-						donateButton.collapsed = true;
+						donateButton.setAttribute("collapsed", true);
             donateButton.setAttribute("hidden",true);
 						break;
 					default:
-						donateButton.collapsed = false;
+						donateButton.setAttribute("collapsed", false);
             donateButton.setAttribute("hidden",false);
 						if (!prefs.getStringPref('LicenseKey')) {
 							options.labelLicenseBtn(donateButton, "buy");
@@ -1834,7 +1836,7 @@ SmartTemplate4.Settings = {
 									options.labelLicenseBtn(donateButton, "renew");
 									break;
 								case "Valid":
-									donateButton.collapsed = true;
+									donateButton.setAttribute("collapsed", true);
 									break;
 								case "Invalid":
 									options.labelLicenseBtn(donateButton, "buy");
@@ -1871,7 +1873,7 @@ SmartTemplate4.Settings = {
 		switch(validStatus) {
 			case  "extend":
 				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense");
-				btnLicense.collapsed = false
+				btnLicense.setAttribute("collapsed", false);
 				btnLicense.label = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
 					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip"));

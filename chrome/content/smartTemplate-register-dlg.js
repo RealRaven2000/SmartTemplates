@@ -55,8 +55,9 @@ var Register = {
           util = SmartTemplate4.Util;
 		// for renewals, referrer is always the old license!
     let referrerTxt = getElement('referrer');
-		if (licenseInfo.status=="Valid")
+		if (licenseInfo.status=="Valid") {
 			referrerTxt.value = licenseInfo.licenseKey;
+    }
 		
 		// Renewal Logic.
     let decryptedDate = licenseInfo.expiryDate;
@@ -127,7 +128,7 @@ var Register = {
               
               if (!(licenseInfo.expiryDate < dateString)) { // not close to expiry yet. let's hide this path.
                 let standardRow = getElement('StandardLicenseRow');
-                standardRow.collapsed=true;
+                standardRow.setAttribute("collapsed", true);
               }
               break;
           }
@@ -141,17 +142,17 @@ var Register = {
 
 				// hide the "Enter License Key…" button + label
 				if (!licenseInfo.isExpired) {
-					getElement('haveLicense').collapsed=true;
-					getElement('btnEnterCode').collapsed=true;
+					getElement('haveLicense').setAttribute("collapsed", true);
+					getElement('btnEnterCode').setAttribute("collapsed", true);
 				}
 			}
 		}
     else
-      getElement('licenseDate').collapsed = true;
+      getElement('licenseDate').setAttribute("collapsed", true);
 		
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("st.licenseValidation.expired");
+			  getElement('licenseDateLabel').textContent = util.getBundleString("st.licenseValidation.expired");
 				getElement('LicenseTerm').classList.add('expired');
 			  break;
 			case "Valid":
@@ -159,10 +160,10 @@ var Register = {
 			  break;
 			case "Empty":
       case "NotValidated":
-				getElement('licenseDateLabel').value = " ";
+				getElement('licenseDateLabel').textContent = " ";
 			  break;
 			default: // default class=register will animate the button
-				getElement('licenseDateLabel').value = licenseInfo.description + ":";
+				getElement('licenseDateLabel').textContent = licenseInfo.description + ":";
 		}
   
   },
@@ -239,7 +240,7 @@ var Register = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
-    if (prefs.isDebugOption('premium.licenser')) getElement('referrer').collapsed=false;    
+    if (prefs.isDebugOption('premium.licenser')) getElement('referrer').setAttribute("collapsed",false);    
   },
   
   
