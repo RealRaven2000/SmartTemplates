@@ -114,6 +114,21 @@ SmartTemplate4.Util = {
 		return null;
 	} ,
 
+	get tabmail() {
+		let doc = this.Mail3PaneWindow.document,
+		    tabmail = doc.getElementById("tabmail");
+		return tabmail;
+	} ,	
+
+	get tabContainer() {
+		try{
+			return this.tabmail.tabContainer;
+		}
+		catch(ex) {
+			return null;
+		}
+	} ,	
+
 	getAnonymousNodes(doc,el) {
 		let aN = [];
 		for (let i = el.childNodes.length-1; i>0; i--) {
@@ -768,14 +783,30 @@ SmartTemplate4.Util = {
 		return null;
 	} ,
 	
-	getTabMode: function getTabMode(tab) {
-	  if (tab.mode) {   // Tb / Sm
-			return tab.mode.name;
+	getTabMode: function getTabMode(tabInfo) {
+    // Tb 115: mailMessageTab or mail3PaneTab for mail related tabs
+	  if (tabInfo && tabInfo.mode) {   // Tb / Sm
+			return tabInfo.mode.name;
 		}
-		if (tab.type)  // Pb
-		  return tab.type;
 		return "";
 	},
+
+  // @tabInfo - tabInfo object
+  // @type - one of "folder", "message", "search", "mail" (for folders+single messages), "other"
+  isTabMode: function(tabInfo, type) {
+    if (!tabInfo) return false;
+    switch (tabInfo.mode.name) {
+      case "mail3PaneTab":
+        return (["folder","mail"].includes(type));
+      case "mailMessageTab":
+        return (["folder","message"].includes(type));
+      case "glodaSearch": case "glodaSearch-result":
+        return (["search"].includes(type));
+      default:
+        return (["other"].includes(type));
+    }
+    return false;
+  },	
 	
 	getBaseURI: function baseURI(URL) {
 		let hashPos = URL.indexOf('#'),
@@ -1045,6 +1076,18 @@ SmartTemplate4.Util = {
 			"centerscreen,titlebar",
 			{ ok: function() {  }}
 		);
+	},
+
+	setMidnightTimer: function() {
+		let today = new Date(),
+		    tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),
+		    timeToMidnight = (tomorrow-today);
+		var timer = setTimeout(
+			function() {
+				SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
+				SmartTemplate4.Util.setMidnightTimer();
+			},
+			timeToMidnight);
 	},
 
 /**
@@ -3227,13 +3270,13 @@ SmartTemplate4.Message = {
     function startTimer(duration, label) {
       var timer = duration;
       if (duration < 0) return;
-      if (duration == 0) label.collapsed = true;
+      if (duration == 0) label.setAttribute("collapsed", true);
       let fun = setInterval(
         function () {
           timer--;
           if (timer<=0) {
             clearInterval(fun);
-            label.collapsed = true; // hide the label if it is zero!
+            labellabel.setAttribute("collapsed", true); // hide the label if it is zero!
           }
           label.value = timer.toString(); // make sure the last number shown is 1...
         }, 1000);

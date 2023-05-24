@@ -81,71 +81,29 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-templatemenus":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
+      case "smartTemplates-labelUpdate":
+        SmartTemplates.Util.notifyTools.notifyBackground({event: "updateNewsLabels"});
+        // update the status bar label too:
+        SmartTemplates.Util.notifyTools.notifyBackground({event:"initLicensedUI"});  
+        break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }
   }
 
-  // THUNDERBIRD 115
-  // fix selectors
-  let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-  if (mainButton) {
-    mainButton.id = "SmartTemplate4Button";
-    mainButton.setAttribute("popup", "smartTemplatesMainPopup");
-
-    // this method worked in quickFilters:
-    // overload the menupopup based on the id we just added:
-    WL.injectElements(`
-      <button id="SmartTemplate4Button">
-        <menupopup id="smartTemplatesMainPopup">
-          <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
-            <menupopup>
-              <menuitem id="smartTemplates-write" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-write-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-          <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic">
-            <menupopup>
-              <menuitem id="smartTemplates-reply" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-reply-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-          <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic">
-            <menupopup>
-              <menuitem id="smartTemplates-forward" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-forward-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-          
-          <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-          <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-
-          <menu id="smartTemplates-docs" label="Documentation" class="menu-iconic">
-            <menupopup>
-              <menuitem id="smartTemplates-support" label="Support Site…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-variables" label="Variables…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-
-          <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
-            <menupopup>
-              <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            </menupopup>
-          </menu>
-
-        </menupopup>
-      </button>
-    `); 
-  }
-
-
+  window.SmartTemplate4.WL = WL; // we need this in patchMailPane();
   util.logDebug("notifyTools.enable...");
   window.SmartTemplate4.Util.notifyTools.enable();
   util.logDebug("Util.init...");
   await window.SmartTemplate4.Util.init();
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
+
+  // The following will only work if we are currently in a mail pane (ATN update)
+  // otherwise, we need to call this again in a tab listener
+  window.SmartTemplate4.patchMailPane(); 
+  window.SmartTemplate4.addTabEventListener();
+
   // set up updating the label at midnight
   window.SmartTemplate4.Util.setMidnightTimer();
   
