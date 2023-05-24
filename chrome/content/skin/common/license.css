@@ -1,13 +1,10 @@
 /* special style for license button */
 #SmartTemplate4-Options-goPro #btnLicense {
-	position: absolute;
-	top:   10px;
-	left: auto;
-	right: auto;
 	max-width: 30em;
 	cursor: pointer;
 	outline: 1px solid rgba(0,0,0,0.0);
 	transition: outline-color 1.6s ease-out, outline-width 1.2s ease;
+	flex-basis: content;
 }
 
 #SmartTemplate4-Options-goPro #btnLicense:hover {
@@ -167,8 +164,10 @@
 @keyframes st4pulse {to {box-shadow: 0 0 0 10px rgba(232, 76, 61, 0.1);}}
 
 .btnLicenseContainer {
-	position: relative;
 	height: 60px;
+	flex-flow: row;
+	justify-content: center;
+	padding-block: 10px;
 }
 
 #btnLicense.register,

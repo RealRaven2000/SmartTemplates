@@ -1607,7 +1607,7 @@ SmartTemplate4.Settings = {
 					}
           licenseDate.value = niceDate;
           licenseDate.classList.add('valid'); // [issue 170]
-          licenseDateLabel.value = util.getBundleString("label.licenseValid");
+          licenseDateLabel.textContent = util.getBundleString("label.licenseValid");
           break;
         case "Invalid":
 				  validationDate.setAttribute("collapsed", true);
@@ -1638,7 +1638,7 @@ SmartTemplate4.Settings = {
 					}
           break;
         case "Expired":
-          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired");
+          licenseDateLabel.textContent = util.getBundleString("st.licenseValidation.expired");
           licenseDate.value = niceDate;
           showValidationMessage(validationExpired, false); // always show
           break;
