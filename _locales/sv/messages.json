@@ -1240,6 +1240,18 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licens har gått ut!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licensen löper ut om $daysLeft$ dagar",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates uppdaterades!"
   },
@@ -1327,6 +1339,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Den angivna nyckeln kan vara för {2})."
+  },
+  "st.menu.license": {
+    "message": "Kontrollera licensstatus…"
   },
   "st.notification.donate": {
     "message": "Donera"

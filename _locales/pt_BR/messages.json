@@ -1162,6 +1162,18 @@
   "smarttemplate4_button": {
     "message": "Editar modelos e cabeçalhos das mensagens anteriores…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licença expirada!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "A licença expira em $daysLeft$ dias",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates foi atualizado!"
   },

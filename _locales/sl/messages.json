@@ -1186,6 +1186,18 @@
   "smarttemplate4_button": {
     "message": "Uredi predloge / glavo navedka ..."
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licenca je potekla!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licenca poteče čez $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates je bil posodobljen!"
   },
@@ -1274,6 +1286,7 @@
   "st.licenseValidation.guessAddon": {
     "message": "(vneseni ključ je lahko za {2})."
   },
+  
   "st.notification.donate": {
     "message": "Daruj"
   },

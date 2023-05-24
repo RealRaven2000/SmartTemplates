@@ -1228,6 +1228,18 @@
   "smarttemplate4_button": {
     "message": "编辑模板 / 引用头文件…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "证件过期！"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "许可证在 $daysLeft$ 天后到期",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates 已更新！"
   },
@@ -1315,6 +1327,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "輸入的金鑰或許是適用在{2}"
+  },
+  "st.menu.license": {
+    "message": "检查许可证状态..."
   },
   "st.notification.donate": {
     "message": "捐"

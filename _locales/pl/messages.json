@@ -1180,6 +1180,18 @@
   "smarttemplate4_button": {
     "message": "Edycja szablonów i nagłówka…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licencja wygasła!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licencja wygasa za $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates zostało zaktualizowane!"
   },
@@ -1267,6 +1279,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Podany klucz może być dla {2})."
+  },
+  "st.menu.license": {
+    "message": "Sprawdź stan licencji…"
   },
   "st.notification.donate": {
     "message": "Dotacja"

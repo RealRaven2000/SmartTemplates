@@ -903,6 +903,18 @@
   "smarttemplate4_title": {
     "message": "SmartTemplate4"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Lisensi kedaluwarsa!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Lisensi berakhir dalam $daysLeft$ hari",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates telah diperbarui!"
   },
@@ -951,6 +963,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Lisensi yang dimasukkan mungkin untuk {2})."
+  },
+  "quickfilters.menu.license": {
+    "message": "Periksa status lisensi…"
   },
   "st.notification.donate": {
     "message": "Donasi"

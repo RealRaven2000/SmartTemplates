@@ -1168,6 +1168,18 @@
   "smarttemplate4_button": {
     "message": "Уреди шаблоне/заглавље цитата…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Дозвола истекла!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Лиценца истиче за $daysLeft$ дана",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates је ажуриран!"
   },

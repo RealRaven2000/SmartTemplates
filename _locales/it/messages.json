@@ -1141,6 +1141,18 @@
   "smarttemplate4_button": {
     "message": "Modifica i modelli di intestazione dei messaggi…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licenza scaduta!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La licenza scade tra $daysLeft$ giorni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates è stato aggiornato!"
   },
@@ -1228,6 +1240,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(La chiave inserita potrebbe essere relativa a {2})"
+  },
+  "st.menu.license": {
+    "message": "Controlla lo stato della licenza…"
   },
   "st.notification.donate": {
     "message": "Dona"

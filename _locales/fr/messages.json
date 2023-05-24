@@ -1225,6 +1225,18 @@
   "smarttemplate4_button": {
     "message": "Modifier les modèles/les entêtes…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licence expirée!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La licence expire dans $daysLeft$ jours",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates a été mis à jour "
   },
@@ -1312,6 +1324,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(La clé entrée semble être pour {2})"
+  },
+  "st.menu.license": {
+    "message": "Vérifier l'état de la licence…"
   },
   "st.notification.donate": {
     "message": "Faire un don"

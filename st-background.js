@@ -247,16 +247,26 @@ async function main() {
       case "updateTemplateMenus":
         // Broadcast main windows to run updateTemplateMenus
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
-        break
+        break;
         
       case "updateSnippetMenus":
         messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});
-        break
+        break;
         
       case "updateNewsLabels":
         messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
-        break
-        
+        break;
+
+      case "setActionTip":
+        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#settitle-details
+        messenger.browserAction.setTitle({title:data.text});
+        break;
+
+      case "setActionLabel":
+        // https://webextension-api.thunderbird.net/en/stable/browserAction.html#setlabel-details
+        messenger.browserAction.setLabel({label:data.text});
+        break;
+          
       // refresh license info (at midnight) and update label afterwards.
       case "updateLicenseTimer":
         {
@@ -266,7 +276,6 @@ async function main() {
           messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
           // update the status bar label too:
           messenger.NotifyTools.notifyExperiment({event:"initLicensedUI"});  
-          // <== calls   updateStatusBar() and updateToolbarIcon();
         }
         break;
         
@@ -399,37 +408,24 @@ async function main() {
 
   messenger.WindowListener.startListening();
   
-  
   let browserInfo = await messenger.runtime.getBrowserInfo();
-  function getThunderbirdVersion() {
-    let parts = browserInfo.version.split(".");
-    return {
-      major: parseInt(parts[0]),
-      minor: parseInt(parts[1]),
-      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
-    }
-  }  
-  let tbVer = getThunderbirdVersion();
-  
   // [issue 209] Exchange account validation
-  if (tbVer.major>=98) {
-    messenger.accounts.onCreated.addListener( async(id, account) => {
-      if (currentLicense.info.status == "MailNotConfigured") {
-        // redo license validation!
-        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
-        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
-        await currentLicense.validate();
-        if(currentLicense.info.status != "MailNotConfigured") {
-          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
-          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-        }
-        if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+  messenger.accounts.onCreated.addListener( async(id, account) => {
+    if (currentLicense.info.status == "MailNotConfigured") {
+      // redo license validation!
+      if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+      currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+      await currentLicense.validate();
+      if(currentLicense.info.status != "MailNotConfigured") {
+        if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
       }
-      else {
-        if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
-      }
-    });
-  }  
+      if (isDebugLicenser) console.log("SmartTemplates license info:", currentLicense.info); // test
+    }
+    else {
+      if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
+    }
+  });
   
 
 }

@@ -114,6 +114,18 @@
   "renew-your-license": {
     "message": "Gia hạn giấy phép của bạn."
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Giấy phép đã hết hạn!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Giấy phép hết hạn sau $daysLeft$ ngày",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates đã được cập nhật!"
   },

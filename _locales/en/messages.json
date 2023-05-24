@@ -1259,6 +1259,21 @@
   "smarttemplate4_title": {
     "message": "SmartTemplates"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "License expired!"
+  },
+  "SmartTemplateMainButton.invalid": {
+    "message": "License invalid."
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "License expires in $daysLeft$ days",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates was updated!"
   },
@@ -1346,6 +1361,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(The key entered may be for {2})."
+  },
+  "st.menu.license": {
+    "message": "Check license status…"
   },
   "st.notification.donate": {
     "message": "Donate"

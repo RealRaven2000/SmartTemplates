@@ -1228,6 +1228,18 @@
   "smarttemplate4_button": {
     "message": "Muokkaa pohjia / lainauksen otsakkeita…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Lisenssi vanhentunut!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Lisenssi vanhenee $daysLeft$ päivän kuluttua",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates päivitettiin!"
   },
@@ -1315,6 +1327,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Syötetty avain saattaa olla ohjelmalle {2})"
+  },
+  "st.menu.license": {
+    "message": "Tarkista lisenssin tila…"
   },
   "st.notification.donate": {
     "message": "Lahjoita"

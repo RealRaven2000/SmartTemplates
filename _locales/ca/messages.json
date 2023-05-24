@@ -1222,6 +1222,18 @@
   "smarttemplate4_button": {
     "message": "Modificar los modèls/las entèstas…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Llicència caducada!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La llicència caduca en $daysLeft$ dies",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates s'ha actualitzat."
   },
@@ -1309,6 +1321,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(La clau introduïda pot ser per a {2})."
+  },
+  "st.menu.license": {
+    "message": "Comprova l'estat de la llicència..."
   },
   "st.notification.donate": {
     "message": "Donar"

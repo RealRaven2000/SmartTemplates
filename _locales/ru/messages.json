@@ -1195,6 +1195,18 @@
   "smarttemplate4_button": {
     "message": "Правка шаблона / заголовок цитат"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Срок действия лицензии истек!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Срок действия лицензии истекает через $daysLeft$ дн.",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates обновлен!"
   },
@@ -1282,6 +1294,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Введённый ключ может быть для {2})."
+  },
+  "st.menu.license": {
+    "message": "Проверить статус лицензии…"
   },
   "st.notification.donate": {
     "message": "Пожертвовать"

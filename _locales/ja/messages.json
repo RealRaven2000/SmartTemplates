@@ -1198,6 +1198,18 @@
   "smarttemplate4_button": {
     "message": "テンプレートと引用ヘッダーの設定…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "ライセンスが失効しています！"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "ライセンスは $daysLeft$ 日後に期限切れになります",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates が更新されました！"
   },
@@ -1285,6 +1297,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(入力されたキーは {2} のものである可能性があります)"
+  },
+  "st.menu.license": {
+    "message": "ライセンスのステータスを確認…"
   },
   "st.notification.donate": {
     "message": "寄付"

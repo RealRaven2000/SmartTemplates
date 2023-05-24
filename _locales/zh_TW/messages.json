@@ -1216,6 +1216,18 @@
   "smarttemplate4_button": {
     "message": "編輯樣板/引用表頭"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "證件過期！"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "許可證在 $daysLeft$ 天后到期",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "智能模板已更新！"
   },
@@ -1303,6 +1315,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "（輸入的密鑰可能是{2}）。"
+  },
+  "st.menu.license": {
+    "message": "檢查許可證狀態..."
   },
   "st.notification.donate": {
     "message": "捐"

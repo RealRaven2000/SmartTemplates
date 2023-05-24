@@ -1177,6 +1177,18 @@
   "smarttemplate4_button": {
     "message": "Sjablonen en aanhalingskoptekst bewerken…"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licentie verlopen!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Licentie verloopt over $daysLeft$ dagen",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates is bijgewerkt!"
   },
@@ -1264,6 +1276,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(De ingevoerde sleutel is mogelijk voor {2})."
+  },
+  "st.menu.license": {
+    "message": "Licentiestatus controleren…"
   },
   "st.notification.donate": {
     "message": "Doneren"

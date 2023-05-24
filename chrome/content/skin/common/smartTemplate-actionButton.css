@@ -1,0 +1,80 @@
+/* New styling system, specific to THunderbird 115 */
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
+  background-color: rgba(240, 86, 175, 0.9);
+  background-image: linear-gradient(rgba(240, 86, 175, 0.9) 0%, rgba(180, 15, 106, 0.9) 48%, rgba(109, 5, 76, 0.8) 100%) !important;
+  border-radius: 4px;
+}
+
+#SmartTemplate4Button.newsflash #quickfilters-news  {
+  background-color: rgba(240, 86, 175, 0.9); /* purple */
+  background-image: linear-gradient(rgba(240, 86, 175, 0.9) 0%, rgba(180, 15, 106, 0.9) 48%, rgba(109, 5, 76, 0.8) 100%) !important;
+}
+
+#SmartTemplate4Button:where(.newsflash, .expired, .renew) > :where(label, .button-label) {
+    color: white !important;
+}
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.expired,
+.expired #smartTemplates-checklicense {
+  background-color: #b80015 !important; /* red */
+  background: linear-gradient(to bottom, #890219 0%,#b80015 100%) !important; 
+}
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew,
+.renew #smartTemplates-checklicense{
+  background-color: #ee570b !important; /* red */
+  background: linear-gradient(to bottom, #893a02 0%,#ec6301 100%) !important; 
+}
+
+/* chevron styling */
+#SmartTemplate4Button:where(.expired,.renew,.newsflash)  {
+  fill: white !important;
+}
+
+#SmartTemplate4Button:where(.expired, .newsflash):hover > :where(label,.button-label) {
+  color: rgb(249, 235, 214) !important;
+}
+
+#SmartTemplate4Button:where(.expired, .renew, .newsflash) > :where(label, .button-label) {
+  color: rgb(255,255,255) !important;
+}
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:hover,
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.expired:hover {
+	background-color: #6d0202 !important; 
+	background-image: linear-gradient(to bottom, #6d0202 0%,#aa4e5c 100%) !important;
+}
+
+
+/* main icon */
+#SmartTemplate4Button:not([checked="true"]):where(.expired,.renew,.newsflash) > .button-icon {
+  fill: #ffffff !important;
+}
+
+#SmartTemplate4Button:where(.expired, .newsflash):hover > .button-icon {
+  fill: rgb(249, 235, 214) !important;
+}
+
+/* force visible label */
+#SmartTemplate4Button:where(.expired, .renew, .newsflash) :where(.toolbarbutton-text, .button-label) {
+  display: inline-block !important;
+}
+
+/* optional menu items */
+#SmartTemplate4Button:not(.expired):not(.renew) #smartTemplates-checklicense {
+  display: none;
+}
+
+#smartTemplates-checklicense {
+  list-style-image: url("chrome://smarttemplate4/content/skin/icons/info.svg") !important;
+  fill: white;
+  color: white;
+}
+
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew:hover,
+.expired #smartTemplates-checklicense:hover {
+  background: linear-gradient(to bottom, #6e0315 0%,#d7831d 100%) !important; 
+  color: yellow;
+}

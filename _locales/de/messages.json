@@ -1180,6 +1180,18 @@
   "smarttemplate4_button": {
     "message": "Templates und Quote Header bearbeiten..."
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Lizenz abgelaufen!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Lizenz läuft ab in $daysLeft$ Tagen",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates wurde aktualisiert!"
   },
@@ -1267,6 +1279,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Der Schlüssel könnte für {2} sein)."
+  },
+  "st.menu.license": {
+    "message": "Lizenzstatus prüfen…"
   },
   "st.notification.donate": {
     "message": "Spenden"

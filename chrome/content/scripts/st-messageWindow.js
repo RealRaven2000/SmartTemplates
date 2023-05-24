@@ -12,6 +12,8 @@ let updateTemplateMenus;
 
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css");
   
   // for version specific code / style fixes
   if (window.SmartTemplate4.Util.versionGreaterOrEqual(window.SmartTemplate4.Util.AppverFull, "102")) {

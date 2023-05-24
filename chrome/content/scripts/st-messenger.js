@@ -14,6 +14,10 @@ var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
+  /** Main Toolbar **/
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
+  WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css");
+
 
   const util = window.SmartTemplate4.Util;
   
@@ -54,6 +58,9 @@ async function onLoad(activatedWhileWindowOpen) {
     }
     const SmartTemplates = window.SmartTemplate4;
     switch (el.id) {
+      case "smartTemplates-checklicense":
+        SmartTemplates.Util.openPreferences(el);
+        break;
       case "smartTemplates-write":
         SmartTemplates.Util.logIssue213("Write with template");
         break;
@@ -65,6 +72,8 @@ async function onLoad(activatedWhileWindowOpen) {
         break;
       case "smartTemplates-news":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
+        SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
+        SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
         break;
       case "smartTemplates-settings":
         SmartTemplates.Util.openPreferences(el);
@@ -82,9 +91,9 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;
       case "smartTemplates-labelUpdate":
-        SmartTemplates.Util.notifyTools.notifyBackground({event: "updateNewsLabels"});
+        SmartTemplates.Util.notifyTools.notifyBackground({func: "updateNewsLabels"});
         // update the status bar label too:
-        SmartTemplates.Util.notifyTools.notifyBackground({event:"initLicensedUI"});  
+        SmartTemplates.Util.notifyTools.notifyBackground({func:"initLicensedUI"});  
         break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);

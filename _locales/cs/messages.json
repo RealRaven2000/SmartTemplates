@@ -1228,6 +1228,18 @@
   "smarttemplate4_button": {
     "message": "Upravit šablony / hlavičku …"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Licence vypršela!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Platnost licence vyprší za $daysLeft$ dní",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates byl aktualizován!"
   },
@@ -1315,6 +1327,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Zadaný klíč může být pro {2})."
+  },
+  "st.menu.license": {
+    "message": "Zkontrolujte stav licence…"
   },
   "st.notification.donate": {
     "message": "Darovat"

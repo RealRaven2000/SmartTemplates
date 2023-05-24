@@ -2807,7 +2807,9 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels" }); 
       return;
     }
-    if (el && el.classList && el.classList.contains("alertExpired")) {
+    if (el && el.classList && 
+			  (el.classList.contains("alertExpired") || el.classList.contains("checkLicense"))
+			 ) {
       SmartTemplate4.Util.viewLicense();
     }
     else {

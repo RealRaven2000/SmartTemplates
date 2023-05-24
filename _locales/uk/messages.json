@@ -1244,6 +1244,18 @@
   "smarttemplate4_button": {
     "message": "Редагувати шаблони / цитати заголовків …"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "Термін дії ліцензії закінчився!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "Термін дії ліцензії закінчується через $daysLeft$ дн",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "SmartTemplates оновлено!"
   },
@@ -1331,6 +1343,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(Введений ключ може бути для {2})."
+  },
+  "st.menu.license": {
+    "message": "Перевірте статус ліцензії…"
   },
   "st.notification.donate": {
     "message": "Пожертвувати"

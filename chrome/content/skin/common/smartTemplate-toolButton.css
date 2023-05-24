@@ -24,7 +24,7 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 
 #SmartTemplate4Button.newsflash,
 #SmartTemplate4Messenger.newsflash {
-  background-color: #006EB7 !important; /* blue */
+  background-color: #0064a7 !important; /* blue */
   background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   color: white !important;
 }
@@ -37,6 +37,7 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 #SmartTemplate4Messenger.newsflash:hover {
 	background-color: #ffd65e !important; /* yellow */
 	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+  color: black;
 }
 #SmartTemplate4Button.newsflash:hover label,
 #SmartTemplate4Messenger.newsflash:hover label {
@@ -49,8 +50,7 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 
 /* force showing the label with news / update text */
 #SmartTemplate4Button.newsflash .toolbarbutton-text,
-#SmartTemplate4Messenger.newsflash .toolbarbutton-text,
-#SmartTemplate4Button.alertExpired .toolbarbutton-text {
+#SmartTemplate4Messenger.newsflash .toolbarbutton-text {
   display: inline-block !important;
 }
 

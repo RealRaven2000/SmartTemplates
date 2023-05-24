@@ -971,7 +971,7 @@ var SmartTemplate4 = {
   initLicensedUI: function ST_initLicensedUI() {
     SmartTemplate4.Util.logDebug("initLicensedUI()", SmartTemplate4.Util.licenseInfo);
     SmartTemplate4.updateStatusBar();
-    SmartTemplate4.updateToolbarIcon();
+    SmartTemplate4.updateNewsLabels();
   },
   
   getMessageBrowserWindow: function(window) {
@@ -1109,52 +1109,74 @@ var SmartTemplate4 = {
   
   // show news on update
   updateNewsLabels: function() {
-    const util  = SmartTemplate4.Util;
+    const util  = SmartTemplate4.Util,
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
     let hasNews = SmartTemplate4.Preferences.getMyBoolPref("hasNews"),
         btn = document.getElementById("SmartTemplate4Button"),
-        btnStatus = document.getElementById("SmartTemplate4Messenger");
-    if (btn) {
-      if (hasNews) {
-        let txt = util.getBundleString("SmartTemplateMainButton.updated")
-        btn.classList.add("newsflash");
-        btn.label = txt;
-        btn.setAttribute("tooltiptext", util.getBundleString("update.tooltip", ["SmartTemplates"]));
-        btnStatus.classList.add("newsflash");
-        btnStatus.label = txt;
-      }
-      else {
-        let txt = util.getBundleString("smartTemplate4.settings.label");
-        btn.classList.remove("newsflash");
-        btn.label = txt;
-        btn.setAttribute("tooltiptext", util.getBundleString("smartTemplate4.settings.tooltip"));
-        btnStatus.classList.remove("newsflash");
-        btnStatus.label = txt;
-      }
-      SmartTemplate4.updateToolbarIcon(); // renewal signal!
+        btnStatus = document.getElementById("SmartTemplate4Messenger"),
+        isVisible = false;
+    // for styling button parent background image
+    //   in  Tb115 we need to add the class to the parent <div class="live-content">!
+    function addClass(element, c) {
+      element.classList.add(c);
+      element.parentElement.classList.add(c)
     }
-  } ,
-  
-  updateToolbarIcon: function() {
-    // renewal color overrides news.
-    let btn = document.getElementById("SmartTemplate4Button");
+    function removeClass(element, c) {
+      element.classList.remove(c);
+      element.parentElement.classList.remove(c);
+    }    
+
     if (btn) {
-      let licenseInfo = SmartTemplate4.Util.licenseInfo;
-      if (licenseInfo.licenseKey && licenseInfo.isExpired)  {
-        let wrn = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
-        btn.classList.add("alertExpired");
-        if (!SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
-          btn.setAttribute("tooltiptext", wrn);
-          btn.setAttribute("label", SmartTemplate4.Util.getBundleString("st.notification.premium.btn.renewLicense"));
+      let txt = "",
+          tooltip = "";
+
+      if (licenseInfo.licenseKey) {
+        let days = licenseInfo.licensedDaysLeft,
+            wrn = null;
+        if (licenseInfo.status == "Invalid") {
+          addClass(btn, "expired");
+          wrn = util.getBundleString("SmartTemplateMainButton.invalid");
+        } else if (licenseInfo.isExpired)  {
+          wrn = util.getBundleString("SmartTemplateMainButton.expired");
+          addClass(btn, "expired");
+          removeClass(btn, "renew");
+          tooltip = SmartTemplate4.Util.getBundleString("licenseStatus.expired", [licenseInfo.expiredDays]);
         }
+        else if (days<15) {
+          wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
+          removeClass(btn, "expired");
+          addClass(btn, "renew");
+        }
+        else {
+          removeClass(btn, "expired");
+          removeClass(btn, "renew");
+        }
+        if (wrn) {
+          txt = wrn;
+        }
+      }
+
+      if (hasNews) {
+        txt = util.getBundleString("SmartTemplateMainButton.updated");
+        addClass(btn, "newsflash");
+        tooltip = util.getBundleString("update.tooltip", ["SmartTemplates"]);
+        btnStatus.classList.add("newsflash");
       }
       else {
-        if (btn.classList.contains("alertExpired")) {
-          // remove expiry warning & restore label + default tip
-          btn.setAttribute("label", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.label"));
-          btn.setAttribute("tooltiptext", SmartTemplate4.Util.getBundleString("smartTemplate4.settings.tooltip"));
-          btn.classList.remove("alertExpired");
-        }
+        btnStatus.classList.remove("newsflash");
       }
+      if (!txt) {
+        txt = util.getBundleString("smartTemplate4.settings.label");
+        removeClass(btn, "newsflash");
+        btnStatus.classList.remove("newsflash");
+      }
+
+      // uses browser.browserAction.setTitle() 
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionTip", text: tooltip });
+      
+      // used browser.browserAction.setLabel() 
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "setActionLabel", text: txt });
+
     }
   } ,
 
@@ -1170,7 +1192,8 @@ var SmartTemplate4 = {
       // overload the menupopup based on the id we just added:
       SmartTemplate4.WL.injectElements(`
         <button id="SmartTemplate4Button">
-          <menupopup id="smartTemplatesMainPopup">
+        <menupopup id="smartTemplatesMainPopup">
+            <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
               <menupopup>
                 <menuitem id="smartTemplates-write" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1243,6 +1266,7 @@ var SmartTemplate4 = {
       if (isMailPane) {
         SmartTemplate4.patchMailPane();
         // SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updatequickFiltersLabel"});
+        SmartTemplate4.updateNewsLabels();
       }
     },
     openTab: function(evt) {

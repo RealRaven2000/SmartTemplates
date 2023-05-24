@@ -1186,6 +1186,18 @@
   "smarttemplate4_button": {
     "message": "Editar plantillas y encabezados de respuesta"
   },
+  "SmartTemplateMainButton.expired": {
+    "message": "¡Licencia expirada!"
+  },
+  "SmartTemplateMainButton.renew": {
+    "message": "La licencia caduca en $daysLeft$ días",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1",
+        "example": "9"
+      }
+    }
+  },
   "SmartTemplateMainButton.updated": {
     "message": "¡SmartTemplates fue actualizado!"
   },
@@ -1273,6 +1285,9 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(La clave introducida puede ser para {2})."
+  },
+  "st.menu.license": {
+    "message": "Verifique el estado de la licencia …"
   },
   "st.notification.donate": {
     "message": "Donar"

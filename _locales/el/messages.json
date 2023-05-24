@@ -1231,6 +1231,9 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Το κλειδί που εισήχθη μπορεί να είναι για {2})."
   },
+  "st.menu.license": {
+    "message": "Ελέγξτε την κατάσταση άδειας…"
+  },
   "st.notification.donate": {
     "message": "Δωρίστε"
   },
