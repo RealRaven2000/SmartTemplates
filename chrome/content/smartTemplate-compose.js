@@ -1060,11 +1060,13 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			isActiveOnAccount = pref.isTemplateActive(idKey, st4composeType, false);
 			// draft + startup: do not process!
-			if (startup && composeCase=='draft')
+			if (startup && composeCase=='draft') {
 				isActiveOnAccount = false;
+			}
 			
-			if (flags.isFileTemplate)
+			if (flags.isFileTemplate) {
 				isActiveOnAccount = true;
+			}
  
 			if (isActiveOnAccount) {
 				// Message File loaded:
@@ -1154,8 +1156,9 @@ SmartTemplate4.classSmartTemplate = function() {
 						}
 						break;
 					case 'forward':
-						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment)
+						if (gMsgCompose.type == msgComposeType.ForwardAsAttachment) {
 							break;
+						}
 						if (flags.suppressQuoteHeaders || pref.isDeleteHeaders(idKey, st4composeType, false)) {
 							delForwardHeader(idKey, false);
 						}
@@ -1176,46 +1179,20 @@ SmartTemplate4.classSmartTemplate = function() {
 						qd.innerHTML = quoteHeader;
 						return qd;
 					}
-					// new behavior: always replace the standard quote header [forceReplaceQuoteHeader]
-					if (true) {
-						let firstQuote = 
-						  (st4composeType=='fwd') ?
-							editor.rootElement.firstChild :
-						  editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
-						// [Bug 26261] Quote header not inserted in plain text mode
-						if (!firstQuote) firstQuote = editor.rootElement.firstChild;
-						if (firstQuote) {
-							let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
-							    prev = quoteHd.previousSibling;
-							// force deleting the original quote header:
-							if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
-								prev.parentNode.removeChild(prev); 
-							}
-						}
-					}
-					else if (flags.hasQuoteHeader) { // find insertion point injected by %quoteHeader%
-						let qnode = findChildNode(editor.rootElement, 'quoteHeader-placeholder'); // quoteHeader
-						if (qnode) {
-							if (composeCase!='new') {
-							  let quoteHd = qdiv();
-								qnode.parentNode.insertBefore(quoteHd, qnode);
-								if (quoteHeader) // guard against empty setting: we do not remove header if there is nothing defined in st4.
-									gMsgCompose.editor.deleteNode(qnode);
-								// only if followed by a blockquote, delete every element between quoteHeader and blockquote element
-								let nn = quoteHd.nextSibling,
-								    isFollowedByQuote = false;
-								while (nn) {
-									if (nn.nodeName.toLowerCase() == 'blockquote') {
-										isFollowedByQuote = true;
-										break;
-									}
-									nn = nn.nextSibling;
-								}
-								if (isFollowedByQuote)
-									while (quoteHd.nextSibling && quoteHd.nextSibling.nodeName.toLowerCase() != 'blockquote') {
-										gMsgCompose.editor.deleteNode(quoteHd.nextSibling);
-									}
-							}
+
+					// replace the standard quote header
+					let firstQuote = 
+						(st4composeType=='fwd') ?
+						editor.rootElement.firstChild :
+						editor.rootElement.getElementsByTagName('BLOCKQUOTE')[0];
+					// [Bug 26261] Quote header not inserted in plain text mode
+					if (!firstQuote) firstQuote = editor.rootElement.firstChild;
+					if (firstQuote) {
+						let quoteHd = firstQuote.parentNode.insertBefore(qdiv(), firstQuote),
+								prev = quoteHd.previousSibling;
+						// force deleting the original quote header:
+						if (prev && prev.className && prev.className.indexOf('moz-cite-prefix')>=0) {
+							prev.parentNode.removeChild(prev); 
 						}
 					}
 				}
@@ -1772,11 +1749,12 @@ SmartTemplate4.classSmartTemplate = function() {
 	}; // insertTemplate
 
 	function resetDocument(editor, withUndo) {
-		gMsgCompose.editor.resetModificationCount();
+		SmartTemplate4.Util.logHighlight(`resetDocument(withUndo = ${withUndo})`, "yellow", "rgb(0,80,0)");
+		editor.resetModificationCount();
 		if (withUndo) {
 			util.logDebugOptional('functions', ' resetting Undo… ' );
-			gMsgCompose.editor.enableUndo(false);
-			gMsgCompose.editor.enableUndo(true);
+			editor.enableUndo(false);
+			editor.enableUndo(true);
 		}
 	};
 	

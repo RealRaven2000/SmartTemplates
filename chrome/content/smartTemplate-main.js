@@ -311,135 +311,134 @@ var SmartTemplate4 = {
     flags.modifiedHeaders = [];
   } ,
 
-  stateListener: {
-    NotifyComposeBodyReady_AllCases: function ST_NotifyComposeFieldsReady(event, composeCase) {
-      const util = SmartTemplate4.Util,
-            prefs = SmartTemplate4.Preferences,
-            msgComposeType = Components.interfaces.nsIMsgCompType;
-      let eventDelay = (gMsgCompose.type != msgComposeType.ForwardInline) 
-                     ? 10 
-                     : prefs.getMyIntPref("forwardInlineImg.delay"),
-          isNotify = false;
-      util.logDebug('NotifyComposeBodyReady');
-      isNotify = true;
+  // stateListener: {
+  //   NotifyComposeBodyReady_AllCases: function ST_NotifyComposeFieldsReady(event, composeCase) {
+  //     const util = SmartTemplate4.Util,
+  //           prefs = SmartTemplate4.Preferences,
+  //           msgComposeType = Components.interfaces.nsIMsgCompType;
+  //     let eventDelay = (gMsgCompose.type != msgComposeType.ForwardInline) 
+  //                    ? 10 
+  //                    : prefs.getMyIntPref("forwardInlineImg.delay"),
+  //         isNotify = false;
+  //     util.logDebug('NotifyComposeBodyReady');
+  //     isNotify = true;
       
-      // avoid race conditions that cause concurrent / nested calling of our notifyComposeBodyReady function
-      // isLoadIdentity - use for Conversations Add-on (and others that may trigger loadidentity)
-      if (SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired  
-         || SmartTemplate4.PreprocessingFlags.isLoadIdentity)   // [issue 139] duplication of template
-        isNotify = false; 
-      SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired = true;
+  //     // avoid race conditions that cause concurrent / nested calling of our notifyComposeBodyReady function
+  //     // isLoadIdentity - use for Conversations Add-on (and others that may trigger loadidentity)
+  //     if (SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired  
+  //        || SmartTemplate4.PreprocessingFlags.isLoadIdentity)   // [issue 139] duplication of template
+  //       isNotify = false; 
+  //     SmartTemplate4.PreprocessingFlags.NotifyComposeBodyReadyFired = true;
       
-      if (isNotify) {
-        // [BUG 26434] forwarding email with embedded images removes images
-        // test delaying call for forward case
-        window.setTimeout(
-          function(){ 
-            SmartTemplate4.notifyComposeBodyReady(event); 
-          }, 
-          eventDelay);
-      }
-    },
+  //     if (isNotify) {
+  //       // [BUG 26434] forwarding email with embedded images removes images
+  //       // test delaying call for forward case
+  //       window.setTimeout(
+  //         function(){ 
+  //           SmartTemplate4.notifyComposeBodyReady(); 
+  //         }, 
+  //         eventDelay);
+  //     }
+  //   },
     
-    NotifyComposeBodyReady: function(event) { 
-      const msgComposeType = Components.interfaces.nsIMsgCompType;
-      this.NotifyComposeBodyReady_AllCases(event, null);
-    },
+  //   NotifyComposeBodyReady: function(event) { 
+  //     const msgComposeType = Components.interfaces.nsIMsgCompType;
+  //     this.NotifyComposeBodyReady_AllCases(event, null);
+  //   },
 
-    // neu
-    NotifyComposeBodyReadyNew: function(event) {
-      const msgComposeType = Components.interfaces.nsIMsgCompType;
-      this.NotifyComposeBodyReady_AllCases(event, msgComposeType.New);
-    },
+  //   // neu
+  //   NotifyComposeBodyReadyNew: function(event) {
+  //     const msgComposeType = Components.interfaces.nsIMsgCompType;
+  //     this.NotifyComposeBodyReady_AllCases(event, msgComposeType.New);
+  //   },
     
-    NotifyComposeFieldsReady: function() {},
+  //   NotifyComposeFieldsReady: function() {},
 
-    //ende neu
+  //   //ende neu
     
-    ComposeProcessDone: function(aResult) {
-      const util = SmartTemplate4.Util;
-      util.logDebug('ComposeProcessDone');
-    },
+  //   ComposeProcessDone: function(aResult) {
+  //     const util = SmartTemplate4.Util;
+  //     util.logDebug('ComposeProcessDone');
+  //   },
     
-    SaveInFolderDone: function(folderURI) {
-      const util = SmartTemplate4.Util;
-      util.logDebug('SaveInFolderDone');
-    }
-  },
+  //   SaveInFolderDone: function(folderURI) {
+  //     const util = SmartTemplate4.Util;
+  //     util.logDebug('SaveInFolderDone');
+  //   }
+  // },
 
-  initListener: async function initListener(isWrapper) {
-    const util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences,
-          msgComposeType = Components.interfaces.nsIMsgCompType;
+  // initListener: async function initListener(isWrapper) {
+  //   const util = SmartTemplate4.Util,
+  //         prefs = SmartTemplate4.Preferences,
+  //         msgComposeType = Components.interfaces.nsIMsgCompType;
           
-    util.logHighlight("initListener", "yellow");
-    let log = util.logDebugOptional.bind(util);
-    if (SmartTemplate4.isListenerInitialised) {
-      log('composer','Listener is initialised - early exit.');
-      return; // avoid calling 2x
-    }
-    let txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
-    SmartTemplate4.isListenerInitialised = true;
-    util.logHighlight("initListener", "yellow");
-    log('composer', 'Registering State Listener [' + txtWrapper + ']...');
-    if (prefs.isDebugOption('composer')) debugger;
-    try {
-      // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
-      if (!SmartTemplate4.Preferences.isBackgroundParser()) {
-        util.logHighlight("RegisterStateListener", "lightyellow");
-        gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
-      }
+  //   util.logHighlight("initListener", "yellow");
+  //   let log = util.logDebugOptional.bind(util);
+  //   if (SmartTemplate4.isListenerInitialised) {
+  //     log('composer','Listener is initialised - early exit.');
+  //     return; // avoid calling 2x
+  //   }
+  //   let txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
+  //   SmartTemplate4.isListenerInitialised = true;
+  //   log('composer', 'Registering State Listener [' + txtWrapper + ']...');
+  //   if (prefs.isDebugOption('composer')) debugger;
+  //   try {
+  //     // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
+  //     if (!SmartTemplate4.Preferences.isBackgroundParser()) {
+  //       util.logHighlight("RegisterStateListener", "lightyellow");
+  //       gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
+  //     }
       
       
-      // can we overwrite part of global state listener?
-      // stateListener is defined in components/compose/content/MsgComposeCommands.js
-      if (stateListener && stateListener.NotifyComposeBodyReady) {
-        if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
+  //     // can we overwrite part of global state listener?
+  //     // stateListener is defined in components/compose/content/MsgComposeCommands.js
+  //     if (false &&
+  //         stateListener && stateListener.NotifyComposeBodyReady) {
+  //       if (typeof gComposeType !== 'undefined' && !util.OrigNotify) {
           
-          util.OrigNotify = 
-            (gComposeType == msgComposeType.New)
-            ? stateListener.NotifyComposeBodyReadyNew.bind(stateListener)
-            : stateListener.NotifyComposeBodyReady.bind(stateListener);
-            
-          let idKey = util.getIdentityKey(document);
-          stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
-            // no notification on forward w. empty template
-            util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
-            if (gComposeType !== msgComposeType.ForwardInline
-               ||
-               (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
-                && 
-                SmartTemplate4.pref.isTemplateActive(idKey, 'fwd', false))
-            {
-              util.OrigNotify();
-            }
-            // [issue 168] non-default text+background color not set
-            if (gComposeType == msgComposeType.New) {
-              if (gMsgCompose.composeHTML) {
-                loadHTMLMsgPrefs();
-              }
-              // from MsgComposeCommands.js - add encryption support?
-              if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
-                ComposeFieldsReady();
-                updateSendCommands(true);
-              } else if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
-                window.composeEditorReady = true;
-                window.dispatchEvent(new CustomEvent("compose-editor-ready"));
-              }              
-            }            
-          }
-        }
-      }
-    }
-    catch (ex) {
-      util.logException("Could not register status listener", ex);
-    }
-  },
+  //         util.OrigNotify = 
+  //           (gComposeType == msgComposeType.New)
+  //           ? stateListener.NotifyComposeBodyReadyNew.bind(stateListener)
+  //           : stateListener.NotifyComposeBodyReady.bind(stateListener);
+  //         let idKey = util.getIdentityKey(document);
+  //         stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
+  //           // no notification on forward w. empty template
+  //           util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
+  //           if (gComposeType !== msgComposeType.ForwardInline
+  //              ||
+  //              (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
+  //               && 
+  //               SmartTemplate4.pref.isTemplateActive(idKey, 'fwd', false))
+  //           {
+  //             util.OrigNotify();
+  //           }
+  //           // [issue 168] non-default text+background color not set
+  //           if (gComposeType == msgComposeType.New) {
+  //             if (gMsgCompose.composeHTML) {
+  //               loadHTMLMsgPrefs();
+  //             }
+  //             // from MsgComposeCommands.js - add encryption support?
+  //             if (util.versionGreaterOrEqual(util.AppverFull, "102")) {
+  //               ComposeFieldsReady();
+  //               updateSendCommands(true);
+  //             } else if (util.versionGreaterOrEqual(util.AppverFull, "91") && !BondOpenPGP.isEnabled()) {
+  //               window.composeEditorReady = true;
+  //               window.dispatchEvent(new CustomEvent("compose-editor-ready"));
+  //             }              
+  //           }            
+  //         }
+  //       }
+  //     }
+  //   }
+  //   catch (ex) {
+  //     util.logException("Could not register status listener", ex);
+  //   }
+  // },
   
   // -------------------------------------------------------------------
   // A handler to add template message
   // -------------------------------------------------------------------
-  notifyComposeBodyReady: async function notifyComposeBodyReady(evt, isChangeTemplate, win=null)  {
+  notifyComposeBodyReady: async function notifyComposeBodyReady(isChangeTemplate, win=null)  {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util,
           Ci = Components.interfaces,
@@ -488,7 +487,7 @@ var SmartTemplate4 = {
       theFileTemplate = ownerWin.SmartTemplate4.fileTemplates.armedEntry;
       // to avoid event triggering while we stream the message, postpone this one!
       if (SmartTemplate4.isStreamingMsg) {
-        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(evt, isChangeTemplate, win);}, 100);
+        setTimeout(function () { SmartTemplate4.notifyComposeBodyReady(isChangeTemplate, win);}, 100);
         return;
       }      
     } else if (theQueue.length) {
@@ -682,28 +681,106 @@ var SmartTemplate4 = {
     util.logDebugOptional('composer', 'notifyComposeBodyReady() ended.');
   },
 
+  // // -------------------------------------------------------------------
+  // // A handler to switch identity
+  // // -------------------------------------------------------------------
+  // loadIdentity: async function (startup, previousIdentity) {
+  //   const prefs = SmartTemplate4.Preferences,
+  //         util = SmartTemplate4.Util;    
+  //   let isTemplateProcessed = false;
+  //   SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
+  //   this.PreprocessingFlags.isLoadIdentity = true;
+  //   if (startup) {
+  //     // Old function call
+  //     this.original_LoadIdentity(startup);
+  //   }
+  //   else {
+  //     let isBodyModified = gMsgCompose.bodyModified,
+  //         composeType = util.getComposeType();
+  //     if (!previousIdentity) {
+  //       util.logDebug("loadIdenty called to change but without previous Identity; bailing out as something may have went wrong...");
+  //       this.original_LoadIdentity(false);
+  //       this.PreprocessingFlags.isLoadIdentity = false;
+  //       return;
+  //     }
+  //     let newSig;
+  //     // change identity on an existing message:
+  //     // Check body modified or not
+  //     // we can only reliable roll back the previous template and insert
+  //     // a new one if the user did not start composing yet (otherwise danger
+  //     // of removing newly composed content)
+  //     if (!isBodyModified) {
+  //       // [issue 51]
+  //       this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
+  //       // Add template message - will also remove previous template and quoteHeader.
+  //       if (window.SmartTemplate4.CurrentTemplate) {
+  //         //[issue 64] reload the same template if it was remembered.
+  //         let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
+  //         if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
+  //           let text = util.getBundleString("st.fileTemplates.error.filePath");
+  //           alert(text); 
+  //         }
+  //         else {
+  //           await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+  //         }
+  //       }
+  //       else {
+  //         await this.smartTemplate.insertTemplate(false);
+  //       }
+  //       // [Bug 25104] when switching identity, old sig does not get removed.
+  //       //             (I think what really happens is that it is inserted twice)
+  //       isTemplateProcessed = true;
+  //     }
+  //     else {
+  //       // if previous id has added a signature, we should try to remove it from there now
+  //       // we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
+  //       // as the user might have edited here already! 
+  //       // however, the signature is important as it should match the from address?
+  //       if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
+  //         newSig = await this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
+  //       }
+  //     }
+  //     // AG 31/08/2012 put this back as we need it!
+  //     // AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
+  //     //               as it messes up the signature (pulls it into the blockquote)
+  //     // AG 27/11/2019 [issue 7] putting condition back as it can mess up signature.
+  //     if (!isTemplateProcessed) {
+  //       if (isBodyModified && composeType=="new") {
+  //         // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
+  //         util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
+  //       }
+  //       this.original_LoadIdentity(startup);
+  //       // try replacing the (unprocessed) signature that Thunderbird has inserted.
+  //       if (prefs.getMyBoolPref('parseSignature') && newSig ) {
+  //         // find and replace signature node.
+  //         let sigNode = util.findChildNode(gMsgCompose.editor.rootElement, 'moz-signature');
+  //         if (sigNode) {
+  //           sigNode.innerHTML = newSig.innerHTML;
+  //         }
+  //         gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
+  //       }
+  //     }
+  //     if (!isBodyModified && gMsgCompose.bodyModified) {
+  //       gMsgCompose.editor.resetModificationCount();
+  //     } // for TB bug?
+  //   }
+  //   this.PreprocessingFlags.isLoadIdentity = false;
+    
+  // },
+
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: async function (startup, previousIdentity) {
+  loadIdentity: async function () {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
-    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
-    this.PreprocessingFlags.isLoadIdentity = true;
-    if (startup) {
-      // Old function call
-      this.original_LoadIdentity(startup);
-    }
-    else {
+    SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity()");
+    SmartTemplate4.Util.logHighlight("loadIdentity()", "yellow", "rgb(0,80,0)");
+    {
       let isBodyModified = gMsgCompose.bodyModified,
           composeType = util.getComposeType();
-      if (!previousIdentity) {
-        util.logDebug("loadIdenty called to change but without previous Identity; bailing out as something may have went wrong...");
-        this.original_LoadIdentity(false);
-        this.PreprocessingFlags.isLoadIdentity = false;
-        return;
-      }
+
       let newSig;
       // change identity on an existing message:
       // Check body modified or not
@@ -712,7 +789,7 @@ var SmartTemplate4 = {
       // of removing newly composed content)
       if (!isBodyModified) {
         // [issue 51]
-        this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
+        // this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
         // Add template message - will also remove previous template and quoteHeader.
         if (window.SmartTemplate4.CurrentTemplate) {
           //[issue 64] reload the same template if it was remembered.
@@ -750,7 +827,7 @@ var SmartTemplate4 = {
           // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
           util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
         }
-        this.original_LoadIdentity(startup);
+        // this.original_LoadIdentity(startup);
         // try replacing the (unprocessed) signature that Thunderbird has inserted.
         if (prefs.getMyBoolPref('parseSignature') && newSig ) {
           // find and replace signature node.
@@ -765,7 +842,6 @@ var SmartTemplate4 = {
         gMsgCompose.editor.resetModificationCount();
       } // for TB bug?
     }
-    this.PreprocessingFlags.isLoadIdentity = false;
     
   },
 
@@ -781,27 +857,12 @@ var SmartTemplate4 = {
   // Initialize - we only call this from the compose window
   // -------------------------------------------------------------------
   init: function init() {
-    async function smartTemplate_loadIdentity(startup){
-      let prevIdentity = gCurrentIdentity;
-      return await SmartTemplate4.loadIdentity(startup, prevIdentity);
-    }
-    
-    let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
+    // let prevIdentity = gCurrentIdentity;
+    // let isBackgroundParser = SmartTemplate4.Preferences.isBackgroundParser(); // [issue 184]
 
     // http://mxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#3998
-    if (typeof LoadIdentity === 'undefined') // if in main window: avoid init()
-      return;
     SmartTemplate4.Util.logDebug('SmartTemplate4.init()');
     
-    
-    if (!isBackgroundParser) {
-      this.original_LoadIdentity = LoadIdentity; // global function from MsgComposeCommands.js
-      // overwriting a global function within composer instance scope
-      // this is intentional, as we needed to replace Tb's processing
-      // with our own (?)
-      LoadIdentity = smartTemplate_loadIdentity;
-    }
-
     this.pref = new SmartTemplate4.classPref();
 
     // a class instance.
@@ -881,7 +942,7 @@ var SmartTemplate4 = {
         else {
           btn.label = "SmartTemplates";
         }
-        btn.collapsed = !isVisible;
+        btn.setAttribute("collapsed", !isVisible);
         
         switch(labelMode) {
           case 0:
@@ -894,10 +955,12 @@ var SmartTemplate4 = {
             btn.classList.add('always');
             break;
         }
-        util.logDebugOptional("functions","SmartTemplate4Messenger btn.className = " + btn.className + " , collapsed = " + btn.collapsed);    
+        util.logDebugOptional("functions",
+          `SmartTemplate4Messenger btn.className = ${btn.className} , collapsed = ${btn.getAttribute("collapsed")}`);    
       }
-      else
+      else {
         util.logDebugOptional("functions","SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in " + doc);
+      }
     }
     catch(ex) {
       util.logException("SmartTemplate4.updateStatusBar() failed ", ex);
@@ -956,8 +1019,12 @@ var SmartTemplate4 = {
     // The browser can be accessed from the window's messageBrowser property.
     let win = window.SmartTemplate4.getMessageBrowserWindow(window);
     if (win) {
+      try {
       win.gMessageListeners.push(window.SmartTemplate4.messageListener);
-    } 
+    } catch (ex) {
+      window.SmartTemplate4.Util.logException("gMessageListeners.push() failed.", ex);
+    }
+  }
     
     SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateNewsLabels"}); // initialize new-related buttons in case there was an ignored update!
     util.logDebug("startUp complete");
@@ -968,9 +1035,15 @@ var SmartTemplate4 = {
     if (isMainWindow) {
       util.logDebug("removing message listeners…");
       let win = SmartTemplate4.getMessageBrowserWindow(window);
-      if (win) {
-        win.gMessageListeners = win.gMessageListeners.filter(listener => listener !== window.SmartTemplate4.messageListener);
-      } 
+      if (win) { 
+        try {
+          win.gMessageListeners = win.gMessageListeners.filter(listener => listener !== window.SmartTemplate4.messageListener);
+        } catch (ex) {
+          util.logException("gMessageListeners remove() failed.", ex);
+        }
+      }
+
+
     }
     
     util.logDebug("Remove added custom UI elements …");
@@ -1084,6 +1157,7 @@ var SmartTemplate4 = {
       }
     }
   } 
+
 
 };  // Smarttemplate4
 

@@ -636,6 +636,7 @@ SmartTemplate4.fileTemplates = {
           menuitem.addEventListener("command",
             function(event) { 
               event.stopImmediatePropagation();
+              // event.preventDefault();
               // open licenser
               util.showLicenseDialog("MAX_STANDARD_CATEGORIES"); 
               return false; 
@@ -678,9 +679,10 @@ SmartTemplate4.fileTemplates = {
 			// we need to add an event handler to notify the parent button.
 			menuitem.addEventListener("command", 
 				function(event) { 
+          event.preventDefault();
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
-					
+          
 					SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
@@ -688,6 +690,10 @@ SmartTemplate4.fileTemplates = {
 					return false; 
 				}, 
 				{capture:true } , 
+				true);
+      menuitem.addEventListener("click", 
+        (event) => { event.stopPropagation();},
+        {capture:true } , 
 				true);
 			// stop command event from bubbling up.
 			// menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
@@ -1147,7 +1153,7 @@ SmartTemplate4.fileTemplates = {
         
     if (btn.id=="smarttemplate4-changeTemplate") {  
       // [issue 24] select different template from composer window
-      SmartTemplate4.notifyComposeBodyReady(null, true, window);
+      SmartTemplate4.notifyComposeBodyReady(true, window);
     }
     else if (btn.id == "smarttemplate4-insertSnippet") {
       // [issue 142] insert html Smart snippets within Composer at cursor

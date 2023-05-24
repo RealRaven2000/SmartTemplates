@@ -2986,11 +2986,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               MakeFromFieldEditable(true);
               if (fromName) {
                 identityList.value = fromName + " <" + fromAddress + ">";
-              }
-              else
+              } else {
                 identityList.value = fromAddress;
+              }
             }
-            await LoadIdentity(true);
+            
+            await window.LoadIdentity(true); 
+            // we may not need to call this explicitely?
+            await SmartTemplate4.loadIdentity();
           }
 					// there is a problem with dark themes - when editing the from address the text remains black.
 					// identityList.setAttribute("editable", "false");

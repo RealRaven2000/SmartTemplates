@@ -195,7 +195,7 @@ SmartTemplate4.composer = {
       }
     }
     else {
-      SmartTemplate4.notifyComposeBodyReady(null, true, window);
+      SmartTemplate4.notifyComposeBodyReady(true, window);
     }
     // SmartTemplate4.fileTemplates.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
   },
@@ -229,39 +229,53 @@ SmartTemplate4.composer = {
 };
 
 
-(
-function() 
-  {
-    // return; // let's do this from the background script!
-    const util = SmartTemplate4.Util,
-          logDebugOptional = util.logDebugOptional.bind(util),
-          isDebugComposer = SmartTemplate4.Preferences.isDebugOption('composer');
-    util.logHighlight("smartTemplate-composer.js", "yellow", "rgb(0,80,0)"); 
+SmartTemplate4.composer.startup  = async () => {
+  // return; // let's do this from the background script!
+  const util = SmartTemplate4.Util;
+  util.logHighlight("smartTemplate-composer.js", "yellow", "rgb(0,80,0)");
+       
+  // let composer = document.getElementById("msgcomposeWindow");
+  await new Promise(resolve => {
+    if (window.composeEditorReady) {
+      resolve();
+      return;
+    }
+    window.addEventListener("compose-editor-ready", resolve, {
+      once: true,
+    });
+  });  
 
-    let txt = "unknown";
-    if (isDebugComposer) debugger;
-    try { txt = window.document.firstElementChild.getAttribute('windowtype'); }
-    catch(ex) {;}
-    
-    // get header variables early
-    if (SmartTemplate4.Util.versionGreaterOrEqual(SmartTemplate4.Util.Appver, "102")) {
-      window.addEventListener(
-        "compose-window-init",
-        async function() {
-          util.logHighlight("Event: compose-window-init", "lightgreen", "rgb(0,80,0)");
-          SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
-        },
-        {capture:true}
-      );    
-    }      
-    
-    logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
-    
-    let composer = document.getElementById("msgcomposeWindow");
-    composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
-    util.logHighlight("added compose-window-init listener", "lightgreen", "rgb(0,80,0)");
-      
-    SmartTemplate4.init();
+  SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
+  
+  console.log({MessageHdr: SmartTemplate4.MessageHdr});
 
-  }
-)();
+  // get header variables early - was "window.addEventListener"
+  // window.addEventListener(
+  //   "compose-window-init",
+  //   async function() {
+  //     util.logHighlight("Event: compose-window-init", "lightgreen", "rgb(0,80,0)");
+  //     SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
+  //   },
+  //   {capture:true}
+  // );   
+  
+  // event function above is never called why exactly?
+  // TO DO: also add an event handler for compose-window-send
+  
+  // util.logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
+  // tried compose-editor-ready here but that's definitely too late.
+  // let composer = document.getElementById("msgcomposeWindow");
+  // composer.addEventListener("compose-window-init", SmartTemplate4.initListener, {capture:false});
+  util.logHighlight("added compose-window-init listener", "lightgreen", "rgb(0,80,0)");
+  // call this directly instead of putting it on the event as it's too late!
+  // SmartTemplate4.initListener();
+
+  SmartTemplate4.init();
+  SmartTemplate4.notifyComposeBodyReady(); 
+
+  // make sure we react to selecting a different identity
+  window.addEventListener("compose-from-changed", SmartTemplate4.loadIdentity);
+  // TO DO: we need to know what else was done before / after LoadIdentity
+  // NOTE: when the identity changes, gMsgCompose.bodyModified should be false but it is true...
+};
+
