@@ -1244,6 +1244,15 @@
   "st.menu.license": {
     "message": "Controlla lo stato della licenza…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Seleziona «Ultime notizie» da questo menu per leggere le novità di $addonName$.\n Questo riporterà il pulsante al suo aspetto predefinito.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Dona"
   },
@@ -1579,15 +1588,6 @@
   },
   "translatorNickname.label": {
     "message": "A35G, Luana e Lucky & Danilo Fortunato (BabelZilla)"
-  },
-  "update.tooltip": {
-    "message": "Fai clic qui una volta per leggere le novità di $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Note di rilascio (inglese)"

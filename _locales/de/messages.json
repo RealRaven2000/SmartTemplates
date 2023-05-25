@@ -1283,6 +1283,15 @@
   "st.menu.license": {
     "message": "Lizenzstatus prüfen…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Wählen Sie „Neueste Nachrichten“ aus diesem Menü, um zu lesen, was es Neues in $addonName$ gibt.\n Dadurch wird die Schaltfläche auf den Standard zurückgesetzt.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
   "st.notification.donate": {
     "message": "Spenden"
   },
@@ -1611,15 +1620,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, … "
-  },
-  "update.tooltip": {
-    "message": "Bitte einmal klicken, um zu lesen, was es Neues in $addonName$ gibt.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Versionsgeschichte (Englisch)"

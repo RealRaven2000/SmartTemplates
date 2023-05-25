@@ -1298,6 +1298,15 @@
   "st.menu.license": {
     "message": "Проверить статус лицензии…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Выберите «Последние новости» в этом меню, чтобы прочитать, что нового в $addonName$.\n Это вернет кнопку к ее внешнему виду по умолчанию.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Пожертвовать"
   },
@@ -1642,15 +1651,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, ..."
-  },
-  "update.tooltip": {
-    "message": "Нажмите здесь один раз, чтобы прочитать, что нового в $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Примечания к выпуску (английский)"

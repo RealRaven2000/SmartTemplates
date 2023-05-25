@@ -1343,6 +1343,15 @@
   "st.menu.license": {
     "message": "Kontrollera licensstatus…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Välj ”Senaste nyheter” från den här menyn för att läsa vad som är nytt i $addonName$.\n Detta återställer knappen till dess standardutseende.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Donera"
   },
@@ -1687,15 +1696,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
-  },
-  "update.tooltip": {
-    "message": "Klicka här en gång för att läsa vad som är nytt i $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Release Notes (engelska)"

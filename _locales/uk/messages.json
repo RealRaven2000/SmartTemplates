@@ -1347,6 +1347,15 @@
   "st.menu.license": {
     "message": "Перевірте статус ліцензії…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Виберіть «Останні новини» в цьому меню, щоб прочитати, що нового в $addonName$.\n Це призведе до повернення кнопки до її типового вигляду.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Пожертвувати"
   },

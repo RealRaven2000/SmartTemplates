@@ -1146,6 +1146,8 @@ var SmartTemplate4 = {
           wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
           removeClass(btn, "expired");
           addClass(btn, "renew");
+          tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);
+          
         }
         else {
           removeClass(btn, "expired");
@@ -1159,15 +1161,15 @@ var SmartTemplate4 = {
       if (hasNews) {
         txt = util.getBundleString("SmartTemplateMainButton.updated");
         addClass(btn, "newsflash");
-        tooltip = util.getBundleString("update.tooltip", ["SmartTemplates"]);
+        tooltip = util.getBundleString("st.menu.update.tooltip", ["SmartTemplates"]);
         btnStatus.classList.add("newsflash");
       }
       else {
+        removeClass(btn, "newsflash");
         btnStatus.classList.remove("newsflash");
       }
       if (!txt) {
         txt = util.getBundleString("smartTemplate4.settings.label");
-        removeClass(btn, "newsflash");
         btnStatus.classList.remove("newsflash");
       }
 
@@ -1193,33 +1195,33 @@ var SmartTemplate4 = {
       SmartTemplate4.WL.injectElements(`
         <button id="SmartTemplate4Button">
         <menupopup id="smartTemplatesMainPopup">
-            <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
               <menupopup>
-                <menuitem id="smartTemplates-write" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-write-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-write" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-write-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
             <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic">
               <menupopup>
-                <menuitem id="smartTemplates-reply" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-reply-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
             <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic">
               <menupopup>
-                <menuitem id="smartTemplates-forward" label="last template" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-forward-account" label="account template (reset)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
             
             <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
   
-            <menu id="smartTemplates-docs" label="Documentation" class="menu-iconic">
+            <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
               <menupopup>
-                <menuitem id="smartTemplates-support" label="Support Site…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-variables" label="Variables…" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
   

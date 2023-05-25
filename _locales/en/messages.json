@@ -1362,8 +1362,41 @@
   "st.licenseValidation.guessAddon": {
     "message": "(The key entered may be for {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentation"
+  },
+  "st.menu.template.default": {
+    "message": "Default Template (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Last Template"
+  },
   "st.menu.license": {
     "message": "Check license status…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Click here to the check license status for $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.supportSite": {
+    "message": "Support Site…"
+  },
+  "st.menu.update.tooltip": {
+    "message": "Select “Latest News” from this menu to read what's new in $addonName$.\n This will reset the button to its default appearance.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
+  "st.menu.docs.variables": {
+    "message": "Variables…"
   },
   "st.notification.donate": {
     "message": "Donate"
@@ -1713,15 +1746,6 @@
   "tzname.label": {
     "message": "GMT, PST, EST, ... "
   },
-  "update.tooltip": {
-    "message": "Click here once to read what's new in $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
-  },  
   "updates.changeLog": {
     "message" : "Release Notes (English)"
   },

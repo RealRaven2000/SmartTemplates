@@ -1331,6 +1331,15 @@
   "st.menu.license": {
     "message": "Zkontrolujte stav licence…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Chcete-li si přečíst, co je nového v $addonName$, vyberte z této nabídky „Nejnovější zprávy“.\n Tím se obnoví výchozí vzhled tlačítka.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
   "st.notification.donate": {
     "message": "Darovat"
   },
@@ -1663,15 +1672,6 @@
   },
   "tzname.label": {
     "message": "Zkratka čas. zóny GMT, PST, EST, ... "
-  },
-  "update.tooltip": {
-    "message": "Klikněte sem a přečtěte si, co je nového v $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Poznámky k vydání (anglicky)"

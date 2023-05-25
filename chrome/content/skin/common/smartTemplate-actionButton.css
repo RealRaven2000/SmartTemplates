@@ -1,31 +1,65 @@
-/* New styling system, specific to THunderbird 115 */
-
-li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
-  background-color: rgba(240, 86, 175, 0.9);
-  background-image: linear-gradient(rgba(240, 86, 175, 0.9) 0%, rgba(180, 15, 106, 0.9) 48%, rgba(109, 5, 76, 0.8) 100%) !important;
-  border-radius: 4px;
-}
-
-#SmartTemplate4Button.newsflash #quickfilters-news  {
-  background-color: rgba(240, 86, 175, 0.9); /* purple */
-  background-image: linear-gradient(rgba(240, 86, 175, 0.9) 0%, rgba(180, 15, 106, 0.9) 48%, rgba(109, 5, 76, 0.8) 100%) !important;
-}
-
-#SmartTemplate4Button:where(.newsflash, .expired, .renew) > :where(label, .button-label) {
-    color: white !important;
-}
+/* New styling system, specific to Thunderbird 115 */
 
 li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.expired,
 .expired #smartTemplates-checklicense {
-  background-color: #b80015 !important; /* red */
+  background-color: #b80015 !important; /* orange */
   background: linear-gradient(to bottom, #890219 0%,#b80015 100%) !important; 
+  color: white;
 }
 
 li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew,
 .renew #smartTemplates-checklicense{
-  background-color: #ee570b !important; /* red */
-  background: linear-gradient(to bottom, #893a02 0%,#ec6301 100%) !important; 
+  background-color: #893a02 !important; /* orange */
+  background: linear-gradient(to bottom, #ee570b 0%, #893a02 100%)  !important;  
+  color: white;
 }
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
+  background-color: #0064a7 !important; /* blue */
+  background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+  color: white;
+}
+/* highlight news item but only if the button is highlighted as news (hasNews pref set) */
+.newsflash menuitem#smartTemplates-news {
+	border: 1px solid transparent !important;
+	background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) padding-box,
+	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
+	animation: smarttemplates-ants 8s linear infinite !important;
+}
+
+/** common layout fixes for all special states **/
+li[item-id="ext-smarttemplate4@thunderbird.extension"] > .live-content:where(.renew,.newsflash,.expired) {
+  border-radius: var(--button-border-radius) ;
+  background-clip: border-box;
+  margin: 0 5px;
+  border: 0px solid gray;
+}
+
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew button {
+  padding-left: 3px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/**
+ * Marching ants border
+ */
+#smartTemplates-checklicense.marching-ants {
+	border: 1px solid transparent !important;
+	background: linear-gradient(to bottom, #ee570b 0%, #893a02 100%) padding-box,
+	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
+	animation: smarttemplates-ants 8s linear infinite !important;
+} 
+
+#smartTemplates-checklicense.marching-ants:hover {
+  animation: smarttemplates-ants 4s linear infinite !important;
+}
+
+@keyframes smarttemplates-ants { 
+  from { background-position: 0% 0% } 
+  to { background-position: 100% 100% } 
+}
+
 
 /* chevron styling */
 #SmartTemplate4Button:where(.expired,.renew,.newsflash)  {
@@ -40,12 +74,21 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew,
   color: rgb(255,255,255) !important;
 }
 
-li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:hover,
+#smartTemplatesMainPopup :where(menuitem,menu,menupopup),
+#smartTemplatesMainPopup :where(menuitem,menu,menupopup) label {
+ /* color: var(--lwt-text-color, black); */
+}
+
+
 li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.expired:hover {
 	background-color: #6d0202 !important; 
 	background-image: linear-gradient(to bottom, #6d0202 0%,#aa4e5c 100%) !important;
 }
 
+li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash:hover {
+	background-color: #6d0202 !important; 
+  background-image: linear-gradient(to bottom, #02409f 0%,#004e97 100%) !important;
+}
 
 /* main icon */
 #SmartTemplate4Button:not([checked="true"]):where(.expired,.renew,.newsflash) > .button-icon {

@@ -1280,6 +1280,15 @@
   "st.menu.license": {
     "message": "Licentiestatus controleren…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Selecteer “Laatste nieuws” in dit menu om te lezen wat er nieuw is in $addonName$.\n Hierdoor wordt de knop teruggezet naar zijn standaarduiterlijk.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Doneren"
   },

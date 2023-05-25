@@ -9,7 +9,6 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   min-height: 24px;
 }
  
-#SmartTemplate4Button,
 #mail-toolbox > toolbar[brighttext] #SmartTemplate4Button.toolbarbutton-1
 {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon24x24.png");
@@ -21,35 +20,29 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   list-style-image: url("chrome://smartTemplate4/content/skin/icons/icon16x16.png");
 }
 
-
-#SmartTemplate4Button.newsflash,
 #SmartTemplate4Messenger.newsflash {
   background-color: #0064a7 !important; /* blue */
   background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   color: white !important;
 }
-#SmartTemplate4Button.newsflash label,
+
 #SmartTemplate4Messenger.newsflash label {
   color: rgb(255,255,255) !important;
 }
 
-#SmartTemplate4Button.newsflash:hover,
 #SmartTemplate4Messenger.newsflash:hover {
 	background-color: #ffd65e !important; /* yellow */
 	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
   color: black;
 }
-#SmartTemplate4Button.newsflash:hover label,
 #SmartTemplate4Messenger.newsflash:hover label {
   color: rgb(60,0,0) !important;
 }
-#SmartTemplate4Button.newsflash:hover image,
 #SmartTemplate4Messenger.newsflash:hover image {
   fill: rgb(60,0,0) !important;
 }
 
 /* force showing the label with news / update text */
-#SmartTemplate4Button.newsflash .toolbarbutton-text,
 #SmartTemplate4Messenger.newsflash .toolbarbutton-text {
   display: inline-block !important;
 }

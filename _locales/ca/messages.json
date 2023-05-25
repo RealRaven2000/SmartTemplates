@@ -1325,6 +1325,15 @@
   "st.menu.license": {
     "message": "Comprova l'estat de la llicència..."
   },
+  "st.menu.update.tooltip": {
+    "message": "Seleccioneu «Últimes notícies» d'aquest menú per llegir les novetats de $addonName$.\n Això restablirà el botó a la seva aparença predeterminada.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1663,15 +1672,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST,…"
-  },
-  "update.tooltip": {
-    "message": "Feu clic aquí una vegada per llegir les novetats de $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Notes de la versió (anglès)"

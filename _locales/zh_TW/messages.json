@@ -1319,6 +1319,15 @@
   "st.menu.license": {
     "message": "檢查許可證狀態..."
   },
+  "st.menu.update.tooltip": {
+    "message": "從此菜單中選擇“最新消息”以閱讀 $addonName$ 中的新內容。\n 這會將按鈕重置為其默認外觀。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "捐"
   },
@@ -1645,15 +1654,6 @@
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "谷歌提供的翻譯"
-  },
-  "update.tooltip": {
-    "message": "單擊此處一次以閱讀 $addonName$ 中的新功能。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "發行說明（英文）"

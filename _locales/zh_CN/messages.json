@@ -1331,6 +1331,15 @@
   "st.menu.license": {
     "message": "检查许可证状态..."
   },
+  "st.menu.update.tooltip": {
+    "message": "从此菜单中选择“最新消息”以阅读 $addonName$ 中的新内容。\n 这会将按钮重置为其默认外观。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "捐"
   },
@@ -1669,15 +1678,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
-  },
-  "update.tooltip": {
-    "message": "单击此处一次以阅读 $addonName$ 中的新功能。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "发行说明（英文）"

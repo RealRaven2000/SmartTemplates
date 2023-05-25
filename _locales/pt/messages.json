@@ -1298,6 +1298,15 @@
   "st.menu.license": {
     "message": "Verifique o status da licença…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Selecione “Últimas notícias” neste menu para ler o que há de novo em $addonName$.\n Isso redefinirá o botão para sua aparência padrão.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Doar"
   },
@@ -1630,15 +1639,6 @@
   },
   "translatorNickname.label": {
     "message": "Mauro José da Silva (BabelZilla)"
-  },
-  "update.tooltip": {
-    "message": "Clique aqui uma vez para ler o que há de novo em $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Notas de lançamento (inglês)"

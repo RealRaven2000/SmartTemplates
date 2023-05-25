@@ -1301,6 +1301,15 @@
   "st.menu.license": {
     "message": "ライセンスのステータスを確認…"
   },
+  "st.menu.update.tooltip": {
+    "message": "$addonName$ の最新情報を読むには、このメニューから [最新ニュース] を選択してください。\n これにより、ボタンがデフォルトの外観にリセットされます。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "寄付"
   },
@@ -1639,15 +1648,6 @@
   },
   "tzname.label": {
     "message": "タイムゾーン (GMT, PST, EST, ... )"
-  },
-  "update.tooltip": {
-    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "リリースノート (英語)"

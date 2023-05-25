@@ -1289,6 +1289,15 @@
   "st.menu.license": {
     "message": "Verifique el estado de la licencia …"
   },
+  "st.menu.update.tooltip": {
+    "message": "Seleccione «Últimas noticias» en este menú para leer las novedades en $addonName$.\n Esto restablecerá el botón a su apariencia predeterminada.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1624,15 +1633,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
-  },
-  "update.tooltip": {
-    "message": "Haga clic aquí una vez para leer las novedades de $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Notas de la versión (inglés)"

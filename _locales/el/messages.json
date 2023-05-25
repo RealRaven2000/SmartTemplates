@@ -1234,6 +1234,15 @@
   "st.menu.license": {
     "message": "Ελέγξτε την κατάσταση άδειας…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Επιλέξτε «Τελευταίες ειδήσεις» από αυτό το μενού για να διαβάσετε τι νέο υπάρχει στο $addonName$.\n Αυτό θα επαναφέρει το κουμπί στην προεπιλεγμένη του εμφάνιση.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
   "st.notification.donate": {
     "message": "Δωρίστε"
   },

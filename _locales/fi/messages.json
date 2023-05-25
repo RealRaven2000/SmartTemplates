@@ -1331,6 +1331,15 @@
   "st.menu.license": {
     "message": "Tarkista lisenssin tila…"
   },
+  "st.menu.update.tooltip": {
+    "message": "Valitse tästä valikosta Uusimmat uutiset lukeaksesi $addonName$:n uutuudet.\n Tämä palauttaa painikkeen oletusulkoasunsa.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
   "st.notification.donate": {
     "message": "Lahjoita"
   },
@@ -1675,15 +1684,6 @@
   },
   "tzname.label": {
     "message": "GMT, PST, EST, …"
-  },
-  "update.tooltip": {
-    "message": "Napsauta tätä kerran lukeaksesi mitä uutta kohteessa $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "SmartTemplates"
-      }
-    }
   },
   "updates.changeLog": {
     "message" : "Julkaisutiedot (englanniksi)"
