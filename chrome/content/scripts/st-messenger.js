@@ -61,15 +61,41 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-checklicense":
         SmartTemplates.Util.openPreferences(el);
         break;
-      case "smartTemplates-write":
-        SmartTemplates.Util.logIssue213("Write with template");
+        
+      /* use last template */
+      case "smartTemplates-write-last":
+        SmartTemplates.Util.logIssue213("Write with last template");
         break;
-      case "smartTemplates-reply":
-        SmartTemplates.Util.logIssue213("Reply with template");
+      case "smartTemplates-reply-last":
+        SmartTemplates.Util.logIssue213("Reply with last template");
         break;
-      case "smartTemplates-forward":
-        SmartTemplates.Util.logIssue213("Forward with template");
+      case "smartTemplates-reply-list-last":
+        SmartTemplates.Util.logIssue213("Reply to list with last template");
         break;
+      case "smartTemplates-reply-all-last":
+        SmartTemplates.Util.logIssue213("Reply to all with last template");
+        break;
+      case "smartTemplates-forward-last":
+        SmartTemplates.Util.logIssue213("Forward with last template");
+        break;
+
+      /* use account template / reset */
+      case "smartTemplates-write-default":
+        SmartTemplates.Util.logIssue213("Write with default template");
+        break;
+      case "smartTemplates-reply-default":
+        SmartTemplates.Util.logIssue213("Reply with default template");
+        break;
+      case "smartTemplates-reply-list-default":
+        SmartTemplates.Util.logIssue213("Reply to list with default template");
+        break;
+      case "smartTemplates-reply-all-default":
+        SmartTemplates.Util.logIssue213("Reply to all with default template");
+        break;
+      case "smartTemplates-forward-default":
+        SmartTemplates.Util.logIssue213("Forward with default template");
+        break;
+        
       case "smartTemplates-news":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashScreen" });
         SmartTemplates.Preferences.setMyBoolPref("hasNews", false);

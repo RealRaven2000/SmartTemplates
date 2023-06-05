@@ -24,7 +24,8 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
 	border: 1px solid transparent !important;
 	background: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) padding-box,
 	            repeating-linear-gradient(-45deg, var(--lwt-text-color,black) 0, var(--lwt-text-color,black) 25%, transparent 0, transparent 50%) 0 / .6em .6em !important;
-	animation: smarttemplates-ants 8s linear infinite !important;
+	color: white;
+  animation: smarttemplates-ants 8s linear infinite !important;
 }
 
 /** common layout fixes for all special states **/

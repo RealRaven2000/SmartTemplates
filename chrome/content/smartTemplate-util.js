@@ -356,14 +356,26 @@ SmartTemplate4.Util = {
         util.logDebug("adding tablistener for tabmail.");
         // tabmail.registerTabMonitor()
         let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
-			  tabContainer.addEventListener("TabOpen", function tabOpened_st4(event) { 
+			  tabContainer.addEventListener("TabOpen", (event) => { 
           let tabInfo = event.detail.tabInfo;
-          if (util.getTabMode(tabInfo)=='message') {
+          if (tabInfo.mode.tabType.name == "mailTab") { //  util.getTabMode(tabInfo)=='message'
             util.logDebug("tabListener event:" + event);
-            // main window.
-            SmartTemplate4.fileTemplates.initMenus(true);
+						if (!SmartTemplate4.fileTemplates.tabConfigured) {
+            	SmartTemplate4.fileTemplates.initMenus(true);
+						}
           }
         });
+			  tabContainer.addEventListener("TabSelect", (event) => { 
+          let tabInfo = event.detail.tabInfo;
+          if (tabInfo.mode.tabType.name == "mailTab") {  //  util.getTabMode(tabInfo)=='message'
+            util.logDebug("tabListener event:" + event);
+						if (!SmartTemplate4.fileTemplates.tabConfigured) {
+							SmartTemplate4.fileTemplates.initMenus(true);
+						}
+          }
+        });
+
+
       }
     }
     catch(ex) {
@@ -2774,7 +2786,6 @@ SmartTemplate4.Util = {
 	
   clickStatusIcon: function(el) {
     let isLicenseWarning = false;
-    if (event) event.stopImmediatePropagation();
     if (el.classList.contains("alert") || el.classList.contains("alertExpired")) {
       isLicenseWarning = true;
     }

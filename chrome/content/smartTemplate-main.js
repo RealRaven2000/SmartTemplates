@@ -243,6 +243,11 @@ END LICENSE BLOCK
     # do not trigger "news" unless min ver changes at least.
     #
 
+  Version 3.17.1 - WIP
+    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # [issue 242] Update "# licensed days left" at midnight.
+
+
 #################################################
 
   Version 4.0 - WIP
@@ -251,11 +256,7 @@ END LICENSE BLOCK
     # - messageServiceFromURI moved to MailServices
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-
-
-  Version 3.17.1 - WIP
-    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # [issue 242] Update "# licensed days left" at midnight.
+    # [issue 243] Menu item / Option for reusing last external template
     
 
 =========================
@@ -1042,8 +1043,6 @@ var SmartTemplate4 = {
           util.logException("gMessageListeners remove() failed.", ex);
         }
       }
-
-
     }
     
     util.logDebug("Remove added custom UI elements …");
@@ -1051,6 +1050,7 @@ var SmartTemplate4 = {
     for (let element of elements) {
       element.remove();
     }
+    SmartTemplate4.fileTemplates.tabConfigured = false;
           
     util.logDebug("Cleanup/Downgrade toolbar buttons …");
     let manipulatedButtons = [
@@ -1146,8 +1146,7 @@ var SmartTemplate4 = {
           wrn = util.getBundleString("SmartTemplateMainButton.renew", [days]);
           removeClass(btn, "expired");
           addClass(btn, "renew");
-          tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);
-          
+          tooltip = SmartTemplate4.Util.getBundleString("st.menu.license.tooltip", ["SmartTemplates"]);          
         }
         else {
           removeClass(btn, "expired");
@@ -1192,26 +1191,40 @@ var SmartTemplate4 = {
   
       // this method worked in quickFilters:
       // overload the menupopup based on the id we just added:
+      // note: there is no command controller for write new
+      //       - instead the menu item calls "MsgNewMessage(null);
       SmartTemplate4.WL.injectElements(`
         <button id="SmartTemplate4Button">
         <menupopup id="smartTemplatesMainPopup">
             <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
               <menupopup>
-                <menuitem id="smartTemplates-write" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-write-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
-            <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic">
+            <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply">
               <menupopup>
-                <menuitem id="smartTemplates-reply" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-reply-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
-            <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic">
+            <menu label="__MSG_st.menu.replAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall">
               <menupopup>
-                <menuitem id="smartTemplates-forward" label="__MSG_st.menu.template.last__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-forward-account" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              </menupopup>
+            </menu>
+            <menu label="__MSG_st.menu.replList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist">
+              <menupopup>
+                <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              </menupopup>
+            </menu>
+            <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward">
+              <menupopup>
+                <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
             

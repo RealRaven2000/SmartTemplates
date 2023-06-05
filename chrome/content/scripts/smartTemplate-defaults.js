@@ -43,6 +43,11 @@ pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use th
 pref("extensions.smartTemplate4.fileTemplates.path", ""); // location of external html templates "Stationery" for next menu config action 
 pref("extensions.smartTemplate4.fileTemplates.instantPath", ""); // location for path used for adhoc html template selection 
 pref("extensions.smartTemplate4.fileTemplates.sendTimeout", 200); // [issue 173] wait before pressing send button
+
+pref("extensions.smartTemplate4.fileTemplates.mru.new", ""); // (json) template data for recently used cases
+pref("extensions.smartTemplate4.fileTemplates.mru.rsp", "");
+pref("extensions.smartTemplate4.fileTemplates.mru.fwd", "");
+
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort

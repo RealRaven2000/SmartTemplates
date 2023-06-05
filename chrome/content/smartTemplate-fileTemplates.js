@@ -22,9 +22,11 @@ SmartTemplate4.fileTemplates = {
     snippets: []
 	},
 	armedEntry: null,
+  tabConfigured: false,
 	lastError: null,
 	isModified: false, // set to true after editing moving / removing items
 	// how many templates are stored altogether?
+  // the "command" attribute is used to trigger the Tb command controller
   uniMenus : [
     {
       id : "smartTemplates-write-menu",
@@ -36,6 +38,18 @@ SmartTemplate4.fileTemplates = {
       id : "smartTemplates-reply-menu",
       composeType : "rsp",
       command : "cmd_reply",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-reply-all-menu",
+      composeType : "rsp",
+      command : "cmd_replyall",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-reply-list-menu",
+      composeType : "rsp",
+      command : "cmd_replylist",
       templates : "templatesRsp"
     },
     {
@@ -544,6 +558,55 @@ SmartTemplate4.fileTemplates = {
         
   },
 
+  createTemplateItem: function (composeType, theTemplate) {
+    let menuitem = document.createXULElement("menuitem");
+
+    menuitem.setAttribute("st4uiElement", "true");
+    menuitem.setAttribute("st4composeType", composeType);
+    menuitem.classList.add("st4templateEntry");
+    menuitem.classList.add("menuitem-iconic");
+    if (theTemplate && theTemplate.path && theTemplate.path.endsWith(".css")) {
+      menuitem.setAttribute("is","layout")
+    }
+    return menuitem;
+  },
+
+  addTemplateEvent: function (menuitem, popupParent, fT, composeType, template, singleParentWindow) {
+    if (menuitem.getAttribute("hasTemplateEvent")) {
+      // recreate menu item to throw away the old events!
+      // menuitem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, theTemplate);
+    }
+    let noTemplate = `(not set)`;
+    let mnuTemplateTitle = template ? `[${template.label}]` :  noTemplate;
+    let finalLabel = `${SmartTemplate4.Util.getBundleString("st.menu.template.last")} ${mnuTemplateTitle}`;
+    menuitem.label = finalLabel;
+
+    if (!template || !template.path) {
+      return;
+    }
+
+    menuitem.addEventListener("command", 
+      function(event) { 
+        event.preventDefault();
+        if (SmartTemplate4.Preferences.isDebugOption('fileTemplates.menus')) debugger;
+        event.stopImmediatePropagation();
+        
+        SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
+          + "composeType=" + composeType + "\n"
+          + "template=" + template.label);
+        fT.onItemClick(menuitem, popupParent, fT, composeType, template.path, template.label, event, singleParentWindow); 
+        return false; 
+      }, 
+      {capture:true } , 
+      true);
+    menuitem.addEventListener("click", 
+      (event) => { event.stopPropagation();},
+      {capture:true } , 
+      true);
+
+    menuitem.setAttribute("hasTemplateEvent", true); // this has an event
+  },
+
   // =====================   UI   ===================== //	
 
 	// lbl: [new, rsp, fwd]
@@ -555,7 +618,7 @@ SmartTemplate4.fileTemplates = {
           MAX_STANDARD_TEMPLATES = 25,
 					MAX_STANDARD_CATEGORIES=3,
           isLicensed = util.hasLicense(false);
-		let parent = msgPopup.parentNode, 
+		let popupParent = msgPopup.parentNode, 
 				singleParentWindow = null;
           
     function getAccessKey(acCode) {
@@ -572,7 +635,7 @@ SmartTemplate4.fileTemplates = {
       
     }
 					
-		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
+		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (popupParent.id || 'anonymous') + "]");
 		// first clear entries:
 							
 		let lastChild = msgPopup.lastChild,
@@ -656,16 +719,11 @@ SmartTemplate4.fileTemplates = {
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
       /* insert one item for each listed html template */
-			let menuitem = document.createXULElement("menuitem"),
+
+      
+			let menuitem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, theTemplate),
           acKey = "";
 
-			menuitem.setAttribute("st4uiElement", "true");
-			menuitem.setAttribute("st4composeType", composeType);
-			menuitem.classList.add("st4templateEntry");
-			menuitem.classList.add("menuitem-iconic");
-      if (theTemplate.path.endsWith(".css")) {
-        menuitem.setAttribute("is","layout")
-      }
 			if (!isLicensed && i>=MAX_FREE_TEMPLATES) {
 				menuitem.disabled = true;
         menuHasRestrictions = true;
@@ -674,29 +732,8 @@ SmartTemplate4.fileTemplates = {
         menuitem.disabled = true;
         menuHasRestrictions = true;
       }
-			
-			// if this is a non-native menupopup (we created it)
-			// we need to add an event handler to notify the parent button.
-			menuitem.addEventListener("command", 
-				function(event) { 
-          event.preventDefault();
-          if (prefs.isDebugOption('fileTemplates.menus')) debugger;
-					event.stopImmediatePropagation();
-          
-					SmartTemplate4.Util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
-						+ "composeType=" + composeType + "\n"
-						+ "template=" + theTemplate.label);
-					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event, singleParentWindow); 
-					return false; 
-				}, 
-				{capture:true } , 
-				true);
-      menuitem.addEventListener("click", 
-        (event) => { event.stopPropagation();},
-        {capture:true } , 
-				true);
-			// stop command event from bubbling up.
-			// menuitem.addEventListener("command", function(event) { event.stopImmediatePropagation(); } );
+
+      SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, popupParent, fT, composeType, theTemplate, singleParentWindow);
 			
       let cat = theTemplate.category;
       if (cat) {
@@ -767,8 +804,8 @@ SmartTemplate4.fileTemplates = {
 			  event.stopImmediatePropagation();
 				util.logDebugOptional("fileTemplates", "Click event for open file Template - stopped propagation.\n"
 					+ "composeType=" + composeType);
-				// fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, "File Template"); 
-				fT.onSelectAdHoc(fT, composeType, msgPopup, msgPopup.parentNode, singleParentWindow);
+				// fT.onItemClick(menuitem, popupParent, fT, composeType, theTemplate.path, "File Template"); 
+				fT.onSelectAdHoc(fT, composeType, msgPopup, popupParent, singleParentWindow);
 				return false; 
 			}, 
 			{capture:true } , 
@@ -808,9 +845,35 @@ SmartTemplate4.fileTemplates = {
 		if (lastChild && lastChild.tagName == 'menuseparator') {
 			msgPopup.appendChild(lastChild);
 		}
+    SmartTemplate4.fileTemplates.configureMenuMRU(msgPopup); // the last used template to the menu item!
 		msgPopup.setAttribute("st4configured", true);
 	} ,
 	
+  configureMenuMRU: function(msgPopup) {
+    // uses the classes st-last-rsp st-last-new st-last-fwd for adding the name of the last used templates
+    let menuitem = msgPopup.querySelector(".st-mru"); // should be only one per menu!
+    if (!menuitem) return;
+    let composeType = "";
+    if (menuitem.classList.contains("st-last-new")) {
+      composeType = "new";
+    } else if (menuitem.classList.contains("st-last-rsp")) {
+      composeType = "rsp";
+    } else if (menuitem.classList.contains("st-last-fwd")) {
+      composeType = "fwd";
+    } else return;
+    let setting = "fileTemplates.mru." + composeType,
+        jsonTemplate = SmartTemplate4.Preferences.getStringPref(setting, ""),
+        sEmptyLabel = "(not set)";
+    // {path, label, category}
+    let template = jsonTemplate ? JSON.parse(jsonTemplate) : {path:"", label:sEmptyLabel, category:""};
+
+    const singleParentWindow = true;
+    SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, msgPopup.parentNode, SmartTemplate4.fileTemplates, composeType, template, singleParentWindow);
+    
+
+
+    
+  },
 	// find menupopup in button's childNodes. If there is no menupopup, then append a new one.
 	getPopup: function (buttonName, parent = null) {
 		let doc = document,
@@ -864,6 +927,9 @@ SmartTemplate4.fileTemplates = {
   initMenusWithReset: async function() {
     SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
     await SmartTemplate4.fileTemplates.initMenus(true);
+    if (window.gTabmail.currentTabInfo.mode.type == "mailTab") {
+      SmartTemplate4.fileTemplates.tabConfigured = true;
+    }
   },
   
   initMenus: async function (reset = false) {
@@ -871,8 +937,7 @@ SmartTemplate4.fileTemplates = {
           prefs = SmartTemplate4.Preferences;
     let loc = "";
     try { 
-      if (window)
-        loc = window.document.URL; 
+      if (window) { loc = window.document.URL; }
     }
     catch(ex) {;}
           
@@ -954,6 +1019,7 @@ SmartTemplate4.fileTemplates = {
 						);
           } catch (ex) {;}
 
+          // this needs to be done from a tab listener too, to work when user updates the add-on from the manager tab
           for (let item of fileTemplates.uniMenus) {
             let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, item.id);
             if (thePopup && needsConfig(thePopup)) {
@@ -1091,6 +1157,22 @@ SmartTemplate4.fileTemplates = {
     return true;    
   }  ,
 	
+  // executes new, reply or forward, based on the 
+  // appropriate structure in  this.uniMenus
+  fireComposeCommand: function (entry) {
+    // execute the command.
+    let controller = getEnabledControllerForCommand(entry.command);
+    if (!controller) {
+      SmartTemplate4.Util.logDebug(`No controller exists for the command ${entry.command} `);
+    } else {
+      if (controller.isCommandEnabled(entry.command)) {
+        controller.doCommand(entry.command);
+      } else {
+        SmartTemplate4.Util.logDebug(`Cannot call command ${entry.command} as it is disabled.`)
+      }
+    }
+  },
+
 	// origin: "new", "rsp", "fwd"
 	onItemClick: function fileTemplate_onItemClick (menuitem, menuParent, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
     
@@ -1221,19 +1303,8 @@ SmartTemplate4.fileTemplates = {
         if (menuParent.tagName == "menu")  {  // Tb115
           let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
           if (entry) {
-            // execute the command.
-            let controller = getEnabledControllerForCommand(entry.command);
-            if (!controller) {
-              util.logDebug(`No controller exists for the command ${entry.command} `);
-            } else {
-              if (controller.isCommandEnabled(entry.command)) {
-                controller.doCommand(entry.command);
-              } else {
-                util.logDebug(`Cannot call command ${entry.command} as it is disabled.`)
-              }
-            }
+            SmartTemplate4.fileTemplates.fireComposeCommand(entry);
           }
-
         }
         else {
           btn.click(); // or fire the standard command event? 
@@ -1249,6 +1320,40 @@ SmartTemplate4.fileTemplates = {
 		// of composer. also there should always only be one active at a time (after clicking teh create from template)
 		// reset is absolutely necessary to not trigger the template functionality whe the "ordinary" write buttons 
 		// are clicked.
+
+    // update MRU item!
+    // this stores the last entry per compose case.
+    const setting = "fileTemplates.mru." + composeType;
+    let lastTemplate = JSON.stringify(entry);
+    let previousTemplate =  "";
+    try { 
+      previousTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+    }
+    catch(ex) {}; // using external template for the first time
+
+    if (lastTemplate) {
+      SmartTemplate4.Preferences.setStringPref(setting, lastTemplate);
+    }
+    if (previousTemplate && previousTemplate.path && previousTemplate.path == entry.path ) {
+      util.logDebugOptional("fileTemplates", `same template selected [${entry.label}], no need to patch last used menuitem.`);
+    }
+    else {
+      util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
+      let items = SmartTemplate4.fileTemplates.uniMenus.filter(e => e.composeType == composeType);
+      for (let item of items) {
+        let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, item.id);
+        if (thePopup) {
+          let oldMenuItem = thePopup.querySelector(".st-mru");
+          if (oldMenuItem) {
+            let newMenuItem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, entry);
+            const singleParentWindow = false; // called from a single message window?? TO DO LATER.
+            SmartTemplate4.fileTemplates.addTemplateEvent(newMenuItem, thePopup.parentNode, SmartTemplate4.fileTemplates, composeType, entry, singleParentWindow);
+            oldMenuItem.replaceWith(newMenuItem);
+          }
+        }            
+      }
+    }
+
 	} ,
 	
   insertFileEntryInComposer: async function (entry) {
@@ -1385,7 +1490,7 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.Util.logDebug("After calling ComposeMessage");
   },
   
-	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, btn, singleMsgWindow) {
+	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, menuParent, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info
 		this.pickFile(
 		  function(localFile) {
@@ -1412,12 +1517,14 @@ SmartTemplate4.fileTemplates = {
           }
             
           prefs.setStringPref('fileTemplates.instantPath',localFile.parent.path); // store folder as default for next time.
-					// we need to trigger the button.
-					// in Thunderbird 68 for some reason it is not done on the message header pagen buttons automatically. 
-					// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
-					// we may want to control which of these 2 are triggered (inline or attach), but I guess 
-					// without specifying it will likely be the Thunderbird account defaults
-					btn.click();
+
+          let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.command == menuParent.getAttribute("controller"));
+          if (entry) {
+            SmartTemplate4.fileTemplates.fireComposeCommand(entry);
+          }
+
+
+
 				}
 			},
       'fileTemplates.instantPath'

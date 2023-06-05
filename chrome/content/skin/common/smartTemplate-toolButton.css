@@ -80,6 +80,15 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   list-style-image: var(--icon-reply);
 }
 
+#smartTemplates-reply-all-menu {
+  list-style-image: var(--icon-reply-all);
+}
+
+#smartTemplates-reply-list-menu {
+  list-style-image: var(--icon-reply-list);
+}
+
+
 #smartTemplates-forward-menu {
   list-style-image: var(--icon-forward);
 }
