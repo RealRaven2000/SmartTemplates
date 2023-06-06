@@ -1286,8 +1286,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(La clave introducida puede ser para {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentación"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variables y Comandos…"
+  },
+  "st.menu.template.default": {
+    "message": "Plantilla predeterminada (cuenta)"
+  },
+  "st.menu.template.last": {
+    "message": "Última plantilla"
+  },
   "st.menu.license": {
     "message": "Verifique el estado de la licencia …"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Haga clic aquí para comprobar el estado de la licencia de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Responder a todos"
+  },
+  "st.menu.replyList": {
+    "message": "Responder a la lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Sitio de soporte…"
   },
   "st.menu.update.tooltip": {
     "message": "Seleccione «Últimas noticias» en este menú para leer las novedades en $addonName$.\n Esto restablecerá el botón a su apariencia predeterminada.",

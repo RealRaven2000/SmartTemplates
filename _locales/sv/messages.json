@@ -1340,8 +1340,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Den angivna nyckeln kan vara för {2})."
   },
+  "st.menu.docs": {
+    "message": "Dokumentation"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabler och kommandon…"
+  },
+  "st.menu.template.default": {
+    "message": "Standardmall (konto)"
+  },
+  "st.menu.template.last": {
+    "message": "Sista mallen"
+  },
   "st.menu.license": {
     "message": "Kontrollera licensstatus…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Klicka här för att kontrollera licensstatus för $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Svara alla"
+  },
+  "st.menu.replyList": {
+    "message": "Svara på Lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Supportwebbplats…"
   },
   "st.menu.update.tooltip": {
     "message": "Välj ”Senaste nyheter” från den här menyn för att läsa vad som är nytt i $addonName$.\n Detta återställer knappen till dess standardutseende.",

@@ -1241,8 +1241,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(La chiave inserita potrebbe essere relativa a {2})"
   },
+  "st.menu.docs": {
+    "message": "Documentazione"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabili e comandi…"
+  },
+  "st.menu.template.default": {
+    "message": "Modello predefinito (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Ultimo modello"
+  },
   "st.menu.license": {
     "message": "Controlla lo stato della licenza…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Fai clic qui per controllare lo stato della licenza per $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Rispondi a tutti"
+  },
+  "st.menu.replyList": {
+    "message": "Rispondi alla lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Sito di supporto…"
   },
   "st.menu.update.tooltip": {
     "message": "Seleziona «Ultime notizie» da questo menu per leggere le novità di $addonName$.\n Questo riporterà il pulsante al suo aspetto predefinito.",

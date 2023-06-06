@@ -1280,8 +1280,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Der Schlüssel könnte für {2} sein)."
   },
+  "st.menu.docs": {
+    "message": "Dokumentation"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variablen und Befehle…"
+  },
+  "st.menu.template.default": {
+    "message": "Standardvorlage (Konto)"
+  },
+  "st.menu.template.last": {
+    "message": "Letzte Vorlage"
+  },
   "st.menu.license": {
     "message": "Lizenzstatus prüfen…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Klicken Sie hier, um den Lizenzstatus für $addonName$ zu überprüfen.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Allen antworten"
+  },
+  "st.menu.replyList": {
+    "message": "Liste antworten"
+  },
+  "st.menu.supportSite": {
+    "message": "Support-Site……"
   },
   "st.menu.update.tooltip": {
     "message": "Wählen Sie „Neueste Nachrichten“ aus diesem Menü, um zu lesen, was es Neues in $addonName$ gibt.\n Dadurch wird die Schaltfläche auf den Standard zurückgesetzt.",

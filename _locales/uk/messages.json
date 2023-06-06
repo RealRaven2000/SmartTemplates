@@ -1344,8 +1344,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Введений ключ може бути для {2})."
   },
+  "st.menu.docs": {
+    "message": "Документація"
+  },
+  "st.menu.docs.variables": {
+    "message": "Змінні та команди…"
+  },
+  "st.menu.template.default": {
+    "message": "Шаблон за умовчанням (обліковий запис)"
+  },
+  "st.menu.template.last": {
+    "message": "Останній шаблон"
+  },
   "st.menu.license": {
     "message": "Перевірте статус ліцензії…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Натисніть тут, щоб перевірити статус ліцензії для $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Відповісти всім"
+  },
+  "st.menu.replyList": {
+    "message": "Відповісти списку"
+  },
+  "st.menu.supportSite": {
+    "message": "Сайт підтримки…"
   },
   "st.menu.update.tooltip": {
     "message": "Виберіть «Останні новини» в цьому меню, щоб прочитати, що нового в $addonName$.\n Це призведе до повернення кнопки до її типового вигляду.",

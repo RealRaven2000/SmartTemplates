@@ -1298,8 +1298,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(入力されたキーは {2} のものである可能性があります)"
   },
+  "st.menu.docs": {
+    "message": "ドキュメンテーション"
+  },
+  "st.menu.docs.variables": {
+    "message": "変数とコマンド…"
+  },
+  "st.menu.template.default": {
+    "message": "デフォルトのテンプレート (アカウント)"
+  },
+  "st.menu.template.last": {
+    "message": "最後のテンプレート"
+  },
   "st.menu.license": {
     "message": "ライセンスのステータスを確認…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "$addonName$ のライセンス ステータスを確認するには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "全員に返信"
+  },
+  "st.menu.replyList": {
+    "message": "リストに返信"
+  },
+  "st.menu.supportSite": {
+    "message": "サポートサイト…"
   },
   "st.menu.update.tooltip": {
     "message": "$addonName$ の最新情報を読むには、このメニューから [最新ニュース] を選択してください。\n これにより、ボタンがデフォルトの外観にリセットされます。",

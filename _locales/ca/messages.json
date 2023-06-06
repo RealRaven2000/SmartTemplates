@@ -1322,8 +1322,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(La clau introduïda pot ser per a {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentació"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variables i ordres…"
+  },
+  "st.menu.template.default": {
+    "message": "Plantilla predeterminada (compte)"
+  },
+  "st.menu.template.last": {
+    "message": "Última plantilla"
+  },
   "st.menu.license": {
-    "message": "Comprova l'estat de la llicència..."
+    "message": "Comprova l'estat de la llicència…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Feu clic aquí per comprovar l'estat de la llicència de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Respondre a tots"
+  },
+  "st.menu.replyList": {
+    "message": "Respon a la llista"
+  },
+  "st.menu.supportSite": {
+    "message": "Lloc de suport…"
   },
   "st.menu.update.tooltip": {
     "message": "Seleccioneu «Últimes notícies» d'aquest menú per llegir les novetats de $addonName$.\n Això restablirà el botó a la seva aparença predeterminada.",

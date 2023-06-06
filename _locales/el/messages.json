@@ -1231,8 +1231,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Το κλειδί που εισήχθη μπορεί να είναι για {2})."
   },
+  "st.menu.docs": {
+    "message": "Τεκμηρίωση"
+  },
+  "st.menu.docs.variables": {
+    "message": "Μεταβλητές και εντολές…"
+  },
+  "st.menu.template.default": {
+    "message": "Προεπιλεγμένο πρότυπο (λογαριασμός)"
+  },
+  "st.menu.template.last": {
+    "message": "Τελευταίο πρότυπο"
+  },
   "st.menu.license": {
     "message": "Ελέγξτε την κατάσταση άδειας…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Κάντε κλικ εδώ για να ελέγξετε την κατάσταση άδειας για $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Απάντηση σε όλους"
+  },
+  "st.menu.replyList": {
+    "message": "Απάντηση στη λίστα"
+  },
+  "st.menu.supportSite": {
+    "message": "Ιστότοπος υποστήριξης…"
   },
   "st.menu.update.tooltip": {
     "message": "Επιλέξτε «Τελευταίες ειδήσεις» από αυτό το μενού για να διαβάσετε τι νέο υπάρχει στο $addonName$.\n Αυτό θα επαναφέρει το κουμπί στην προεπιλεγμένη του εμφάνιση.",

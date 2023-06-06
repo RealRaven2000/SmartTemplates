@@ -1295,8 +1295,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Введённый ключ может быть для {2})."
   },
+  "st.menu.docs": {
+    "message": "Документация"
+  },
+  "st.menu.docs.variables": {
+    "message": "Переменные и команды…"
+  },
+  "st.menu.template.default": {
+    "message": "Шаблон по умолчанию (учетная запись)"
+  },
+  "st.menu.template.last": {
+    "message": "Последний шаблон"
+  },
   "st.menu.license": {
     "message": "Проверить статус лицензии…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Нажмите здесь, чтобы проверить статус лицензии для $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Ответить всем"
+  },
+  "st.menu.replyList": {
+    "message": "Ответить на список"
+  },
+  "st.menu.supportSite": {
+    "message": "Сайт поддержки…"
   },
   "st.menu.update.tooltip": {
     "message": "Выберите «Последние новости» в этом меню, чтобы прочитать, что нового в $addonName$.\n Это вернет кнопку к ее внешнему виду по умолчанию.",

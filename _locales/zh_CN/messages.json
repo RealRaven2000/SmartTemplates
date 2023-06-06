@@ -1328,8 +1328,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "輸入的金鑰或許是適用在{2}"
   },
+  "st.menu.docs": {
+    "message": "文档"
+  },
+  "st.menu.docs.variables": {
+    "message": "变量和命令……"
+  },
+  "st.menu.template.default": {
+    "message": "默认模板（帐户）"
+  },
+  "st.menu.template.last": {
+    "message": "最后一个模板"
+  },
   "st.menu.license": {
     "message": "检查许可证状态..."
+  },
+  "st.menu.license.tooltip": {
+    "message": "单击此处检查 $addonName$ 的许可证状态。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "全部回复"
+  },
+  "st.menu.replyList": {
+    "message": "回复清单"
+  },
+  "st.menu.supportSite": {
+    "message": "支持站点..."
   },
   "st.menu.update.tooltip": {
     "message": "从此菜单中选择“最新消息”以阅读 $addonName$ 中的新内容。\n 这会将按钮重置为其默认外观。",

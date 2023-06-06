@@ -1328,8 +1328,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Zadaný klíč může být pro {2})."
   },
+  "st.menu.docs": {
+    "message": "Dokumentace"
+  },
+  "st.menu.docs.variables": {
+    "message": "Proměnné a příkazy…"
+  },
+  "st.menu.template.default": {
+    "message": "Výchozí šablona (účet)"
+  },
+  "st.menu.template.last": {
+    "message": "Poslední šablona"
+  },
   "st.menu.license": {
     "message": "Zkontrolujte stav licence…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Kliknutím sem zkontrolujete stav licence pro $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Odpovědět všem"
+  },
+  "st.menu.replyList": {
+    "message": "Odpověď na seznam"
+  },
+  "st.menu.supportSite": {
+    "message": "Stránky podpory…"
   },
   "st.menu.update.tooltip": {
     "message": "Chcete-li si přečíst, co je nového v $addonName$, vyberte z této nabídky „Nejnovější zprávy“.\n Tím se obnoví výchozí vzhled tlačítka.",

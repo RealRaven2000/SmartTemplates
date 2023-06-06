@@ -1280,8 +1280,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Podany klucz może być dla {2})."
   },
+  "st.menu.docs": {
+    "message": "Dokumentacja"
+  },
+  "st.menu.docs.variables": {
+    "message": "Zmienne i polecenia…"
+  },
+  "st.menu.template.default": {
+    "message": "Szablon domyślny (konto)"
+  },
+  "st.menu.template.last": {
+    "message": "Ostatni szablon"
+  },
   "st.menu.license": {
     "message": "Sprawdź stan licencji…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Kliknij tutaj, aby sprawdzić stan licencji dla $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Odpowiedz wszystkim"
+  },
+  "st.menu.replyList": {
+    "message": "Odpowiedz na listę"
+  },
+  "st.menu.supportSite": {
+    "message": "Witryna wsparcia…"
   },
   "st.menu.update.tooltip": {
     "message": "Wybierz „Najnowsze wiadomości” z tego menu, aby przeczytać, co nowego w $addonName$.\n Spowoduje to przywrócenie domyślnego wyglądu przycisku.",

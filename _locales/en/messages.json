@@ -1365,6 +1365,9 @@
   "st.menu.docs": {
     "message": "Documentation"
   },
+  "st.menu.docs.variables": {
+    "message": "Variables and Commands…"
+  },
   "st.menu.template.default": {
     "message": "Default Template (account)"
   },
@@ -1383,6 +1386,12 @@
       }
     }
   },
+  "st.menu.replyAll": {
+    "message": "Reply All"
+  },
+  "st.menu.replyList": {
+    "message": "Reply to List"
+  },
   "st.menu.supportSite": {
     "message": "Support Site…"
   },
@@ -1395,9 +1404,6 @@
       }
     }
   },  
-  "st.menu.docs.variables": {
-    "message": "Variables…"
-  },
   "st.notification.donate": {
     "message": "Donate"
   },

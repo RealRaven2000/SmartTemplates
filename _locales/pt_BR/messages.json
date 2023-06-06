@@ -1259,8 +1259,38 @@
   "st.licenseValidation.expired": {
     "message": "Sua licença expira em:"
   },
+  "st.menu.docs": {
+    "message": "Documentação"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variáveis e Comandos…"
+  },
+  "st.menu.template.default": {
+    "message": "Modelo padrão (conta)"
+  },
+  "st.menu.template.last": {
+    "message": "Modelo padrão (conta)"
+  },
   "st.menu.license": {
     "message": "Verifique o status da licença…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Clique aqui para verificar o status da licença de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Responder todos"
+  },
+  "st.menu.replyList": {
+    "message": "Responder à Lista"
+  },
+  "st.menu.supportSite": {
+    "message": "Site de suporte…"
   },
   "st.menu.update.tooltip": {
     "message": "Selecione “Últimas notícias” neste menu para ler o que há de novo em $addonName$.\n Isso redefinirá o botão para sua aparência padrão.",

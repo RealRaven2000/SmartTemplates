@@ -1316,8 +1316,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "（輸入的密鑰可能是{2}）。"
   },
+  "st.menu.docs": {
+    "message": "文檔"
+  },
+  "st.menu.docs.variables": {
+    "message": "變量和命令……"
+  },
+  "st.menu.template.default": {
+    "message": "默認模板（帳戶）"
+  },
+  "st.menu.template.last": {
+    "message": "最後一個模板"
+  },
   "st.menu.license": {
     "message": "檢查許可證狀態..."
+  },
+  "st.menu.license.tooltip": {
+    "message": "單擊此處檢查 $addonName$ 的許可證狀態。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "全部回复"
+  },
+  "st.menu.replyList": {
+    "message": "回復清單"
+  },
+  "st.menu.supportSite": {
+    "message": "支持站點…"
   },
   "st.menu.update.tooltip": {
     "message": "從此菜單中選擇“最新消息”以閱讀 $addonName$ 中的新內容。\n 這會將按鈕重置為其默認外觀。",

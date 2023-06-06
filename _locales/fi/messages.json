@@ -1328,8 +1328,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Syötetty avain saattaa olla ohjelmalle {2})"
   },
+  "st.menu.docs": {
+    "message": "Dokumentointi"
+  },
+  "st.menu.docs.variables": {
+    "message": "Muuttujat ja komennot…"
+  },
+  "st.menu.template.default": {
+    "message": "Oletusmalli (tili)"
+  },
+  "st.menu.template.last": {
+    "message": "Viimeinen malli"
+  },
   "st.menu.license": {
     "message": "Tarkista lisenssin tila…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Napsauta tätä tarkistaaksesi $addonName$-lisenssin tilan.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Vastaa kaikille"
+  },
+  "st.menu.replyList": {
+    "message": "Vastaa listaan"
+  },
+  "st.menu.supportSite": {
+    "message": "Tukisivusto…"
   },
   "st.menu.update.tooltip": {
     "message": "Valitse tästä valikosta Uusimmat uutiset lukeaksesi $addonName$:n uutuudet.\n Tämä palauttaa painikkeen oletusulkoasunsa.",

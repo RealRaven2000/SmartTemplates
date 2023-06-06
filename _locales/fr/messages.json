@@ -1325,8 +1325,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(La clé entrée semble être pour {2})"
   },
+  "st.menu.docs": {
+    "message": "Documentation"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variables et commandes…"
+  },
+  "st.menu.template.default": {
+    "message": "Modèle par défaut (compte)"
+  },
+  "st.menu.template.last": {
+    "message": "Dernier modèle"
+  },
   "st.menu.license": {
     "message": "Vérifier l'état de la licence…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Cliquez ici pour vérifier l'état de la licence pour $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Répondre à tous"
+  },
+  "st.menu.replyList": {
+    "message": "Répondre à la liste"
+  },
+  "st.menu.supportSite": {
+    "message": "Site d'assistance…"
   },
   "st.menu.update.tooltip": {
     "message": "Sélectionnez «Dernières nouvelles» dans ce menu pour lire les nouveautés de $addonName$.\n Cela réinitialisera le bouton à son apparence par défaut.",

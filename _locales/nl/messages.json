@@ -1277,8 +1277,38 @@
   "st.licenseValidation.guessAddon": {
     "message": "(De ingevoerde sleutel is mogelijk voor {2})."
   },
+  "st.menu.docs": {
+    "message": "Documentatie"
+  },
+  "st.menu.docs.variables": {
+    "message": "Variabelen en opdrachten…"
+  },
+  "st.menu.template.default": {
+    "message": "Standaardsjabloon (account)"
+  },
+  "st.menu.template.last": {
+    "message": "Laatste sjabloon"
+  },
   "st.menu.license": {
     "message": "Licentiestatus controleren…"
+  },
+  "st.menu.license.tooltip": {
+    "message": "Klik hier om de licentiestatus voor $addonName$ te controleren.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },
+  "st.menu.replyAll": {
+    "message": "Allen beantwoorden"
+  },
+  "st.menu.replyList": {
+    "message": "Antwoord op lijst"
+  },
+  "st.menu.supportSite": {
+    "message": "Ondersteuningssite…"
   },
   "st.menu.update.tooltip": {
     "message": "Selecteer “Laatste nieuws” in dit menu om te lezen wat er nieuw is in $addonName$.\n Hierdoor wordt de knop teruggezet naar zijn standaarduiterlijk.",
