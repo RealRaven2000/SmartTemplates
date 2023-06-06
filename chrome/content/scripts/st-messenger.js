@@ -64,36 +64,28 @@ async function onLoad(activatedWhileWindowOpen) {
         
       /* use last template */
       case "smartTemplates-write-last":
-        SmartTemplates.Util.logIssue213("Write with last template");
-        break;
       case "smartTemplates-reply-last":
-        SmartTemplates.Util.logIssue213("Reply with last template");
-        break;
       case "smartTemplates-reply-list-last":
-        SmartTemplates.Util.logIssue213("Reply to list with last template");
-        break;
       case "smartTemplates-reply-all-last":
-        SmartTemplates.Util.logIssue213("Reply to all with last template");
-        break;
       case "smartTemplates-forward-last":
-        SmartTemplates.Util.logIssue213("Forward with last template");
+        // handled by event handler on menu item... 
         break;
 
       /* use account template / reset */
       case "smartTemplates-write-default":
-        SmartTemplates.Util.logIssue213("Write with default template");
-        break;
       case "smartTemplates-reply-default":
-        SmartTemplates.Util.logIssue213("Reply with default template");
-        break;
       case "smartTemplates-reply-list-default":
-        SmartTemplates.Util.logIssue213("Reply to list with default template");
-        break;
       case "smartTemplates-reply-all-default":
-        SmartTemplates.Util.logIssue213("Reply to all with default template");
-        break;
       case "smartTemplates-forward-default":
-        SmartTemplates.Util.logIssue213("Forward with default template");
+        // go up to the parent menu element (e.g. )
+        let menuParent = el.parentNode.parentNode;
+        let entry = SmartTemplates.fileTemplates.uniMenus.find(e => e.id == menuParent.id);
+        if (entry) {
+          SmartTemplates.Util.logDebug("Execute command for reply with account template: " + entry.command);
+          SmartTemplates.fileTemplates.fireComposeCommand(entry);
+        } else {
+          SmartTemplates.Util.logDebug(`couldn't find an entry in fileTemplates.uniMenus for ${el.id}`);
+        }
         break;
         
       case "smartTemplates-news":
