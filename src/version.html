@@ -274,7 +274,49 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+<a id="3.17.1"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+      Version 3.17.1 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">91.* - 110.*</span> 
+		</span>
+  </h4>
+  <ul>
+    <li>
+      Allow %replaceText% and %deleteText% to work on content that was imported using %file()%#
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">fundamental changes for Thunderbird 115</a>
 
+      <p>
+        We frequently need to import text fragments ("building blocks") that have a generic message 
+        but need to include some specific keywords, such as a product name or URL. 
+        Previously the following pattern did not work within the text that is imported:
+      </p>
+
+      <p>
+        <pre class="code">  %file("snippets/why-renew.html")%   
+  %replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%
+  %replaceText("{addonName}","quickFilters")% </pre>
+      </p>
+      <p>
+        Contained file (why-renew.html)
+        <pre class="code">  &lt;p&gt;
+    All changes of the Add-on {addonName} can be seen as they are 
+    created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
+  &lt;/p&gt;</pre>
+      </p>
+      <p>
+        SmartTemplates did the replacements before the contents of the file was loaded into the template. 
+        Expected behavior: First load the file and replace its contents into the template, 
+        then do the text replacements afterwards.
+      </p>
+    </li>
+    <li></li>
+    <li></li>
+  </ul>
+</li> 
 
 <a id="3.17"> &nbsp; </a>
 <li>
