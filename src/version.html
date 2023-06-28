@@ -284,10 +284,27 @@ permalink: version.html
 			<span class="thunderbird">91.* - 110.*</span> 
 		</span>
   </h4>
+
+  <div id="newsSection">
+    <p>
+      SmartTemplates  is fully compatible with the current ESR version
+      of Thunderbird (102.12) - and currently supports up to version 110 beta 4.
+      I am currently working on 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">fundamental changes for Thunderbird 115</a> 
+      which will be released in July 2023 and has a completely 
+      <a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
+      user interface "Supernova"</a>.
+      This requires considerable work of <b>rewriting all elements interacting with the main page</b> 
+      (3pane) of Thunderbird (toolbar buttons, template menus) - and also requires rewriting
+      the settings dialog as a content tab. Please fund this work through buying a license.
+    </p>
+  </div>
+
   <ul>
     <li>
-      Allow %replaceText% and %deleteText% to work on content that was imported using %file()%#
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">fundamental changes for Thunderbird 115</a>
+      Allow <code>%replaceText()%</code> and <code>%deleteText()%</code> to affect content 
+      that was imported using <code>%file()%#</code>
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">issue 244</a>
 
       <p>
         We frequently need to import text fragments ("building blocks") that have a generic message 
@@ -308,9 +325,12 @@ permalink: version.html
   &lt;/p&gt;</pre>
       </p>
       <p>
-        SmartTemplates did the replacements before the contents of the file was loaded into the template. 
-        Expected behavior: First load the file and replace its contents into the template, 
-        then do the text replacements afterwards.
+        Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were 
+        inserted into the template text. 
+        New behavior: First load the file and replace its contents into the template, 
+        then do the text replacements afterwards. As demonstrated in the example above,
+        it can also be used to modify HTML markup and affect things like HTML attributes
+        such as the URL of a web link.
       </p>
     </li>
     <li></li>
@@ -330,10 +350,10 @@ permalink: version.html
   <div id="newsSection">
     <p>
       SmartTemplates  is fully compatible with the current ESR version
-      of Thunderbird (102.10) - and currently supports up to version 110 beta 4.
+      of Thunderbird (102.12) - and currently supports up to version 110 beta 4.
       I am currently working on 
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">fundamental changes for Thunderbird 115</a> 
-      which will be released in summer 2023 and has a completely 
+      which will be released in July 2023 and has a completely 
       <a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
       user interface "Supernova"</a>.
       This requires considerable work of <b>rewriting all elements interacting with the main page</b> 
