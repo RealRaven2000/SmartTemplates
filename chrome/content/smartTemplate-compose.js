@@ -9,9 +9,6 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK 
 */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
-
 // -------------------------------------------------------------------
 // Insert template message and edit quote header
 // -------------------------------------------------------------------
