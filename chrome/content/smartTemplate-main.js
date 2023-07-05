@@ -275,8 +275,6 @@ END LICENSE BLOCK
 */
 
  
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 var SmartTemplate4 = {
   // definitions for whatIsX (time of %A-Za-z%)
   XisToday : 0,

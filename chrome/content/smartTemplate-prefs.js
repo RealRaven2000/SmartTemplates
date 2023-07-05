@@ -9,8 +9,6 @@ BEGIN LICENSE BLOCK
 END LICENSE BLOCK
 */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 SmartTemplate4.Preferences = {
 	Prefix: "extensions.smartTemplate4.",
 	service: Services.prefs,

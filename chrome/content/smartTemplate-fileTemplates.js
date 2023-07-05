@@ -12,8 +12,6 @@
 // Support external HTML files that can be selected during the button press
 // write / reply and forward.
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 SmartTemplate4.fileTemplates = {
 	Entries: {
 		templatesNew : [],

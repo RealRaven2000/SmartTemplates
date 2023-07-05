@@ -1,6 +1,5 @@
 "use strict";
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 SmartTemplate4.composer = {
   load: function st4_composerLoad() {
     const Ci = Components.interfaces,
