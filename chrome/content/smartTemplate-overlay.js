@@ -1798,7 +1798,9 @@ SmartTemplate4.mimeDecoder = {
 
 SmartTemplate4.MessageHdr = null; // will be overwritten
 
-SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false) {
+SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
+  const clipboardMode = firstPass ? true : false;
+  
 	function matchText(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
@@ -2029,7 +2031,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false)
       quoteTagsR = msg.match(/%replaceQuotedTags\(.*\)%/g);
       
   /* delete text in template / signature itself */
-	if (matches) {
+	if (!firstPass && matches) {
 		try {
 			util.addUsedPremiumFunction('deleteText');
 			for (let i=0; i<matches.length; i++) {
@@ -2047,7 +2049,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false)
 	}
   
   /* replace texts in template / signature itself */
-	if (matchesR) { // replacements in place
+	if (!firstPass && matchesR) { // replacements in place
     try {
       util.addUsedPremiumFunction('replaceText');
       
@@ -3800,8 +3802,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 	function attachFile(args) {
 		const util = SmartTemplate4.Util,
 		      Ci = Components.interfaces,
-					Cc = Components.classes,
-					{OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+					Cc = Components.classes;
 						
 		// msgcompose was msgcomposeWindow
     let arr = args.substr(1,args.length-2).split(','),  // strip parentheses and get optional params
