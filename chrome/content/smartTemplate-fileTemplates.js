@@ -59,6 +59,32 @@ SmartTemplate4.fileTemplates = {
       templates : "templatesFwd"
     },
   ],
+  msgHdrMenus : [
+    {
+      id : "smartTemplates-reply-menu",
+      composeType : "rsp",
+      command : "cmd_reply",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-reply-all-menu",
+      composeType : "rsp",
+      command : "cmd_replyall",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-reply-list-menu",
+      composeType : "rsp",
+      command : "cmd_replylist",
+      templates : "templatesRsp"
+    },
+    {
+      id : "smartTemplates-forward-menu",
+      composeType : "fwd",
+      command : "cmd_forwardInline",
+      templates : "templatesFwd"
+    },
+  ],
 	get entriesLength() {
 		let l = 0;
 		for (let p in this.Entries) { // walk through ids, get all arrays and sum up items
@@ -396,21 +422,16 @@ SmartTemplate4.fileTemplates = {
   } ,	
   	
   readStringFile: function readStringFile() {
-    // To read content from file
-		const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
-    // To read & write content to file
-    // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
-    
-    let profileDir = OS.Constants.Path.profileDir,
-        path = OS.Path.join(profileDir, "extensions", "smartTemplates.json"),
-        // decoder = new TextDecoder(),        // This decoder can be reused for several reads
-        promise = OS.File.read(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
+    let profileDir = PathUtils.profileDir,
+        path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
+        promise = IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an json object
+
     return promise;
   } ,		
 
   makeLabel: function(entry) {
     let cat = entry.category || "";
-    // use right poiting guillemet (left-pointing double angle quotation mark) as delimiter
+    // use right pointing guillemet (left-pointing double angle quotation mark) as delimiter
     let retval = cat ? (cat + " » " + entry.label) : entry.label;
     return retval;
   },
@@ -458,7 +479,7 @@ SmartTemplate4.fileTemplates = {
 						
 					}
           
-          let data = JSON.parse(CustomMenuData);  
+          let data = CustomMenuData; // JSON.parse(new TextDecoder().decode(CustomMenuData));
 					fillEntries(data.templatesNew, fileTemplates.Entries.templatesNew, fromOptions ? fileTemplates.RichList('new') : null);
 					fillEntries(data.templatesRsp, fileTemplates.Entries.templatesRsp, fromOptions ? fileTemplates.RichList('rsp') : null);
 					fillEntries(data.templatesFwd, fileTemplates.Entries.templatesFwd, fromOptions ? fileTemplates.RichList('fwd') : null);
@@ -506,21 +527,21 @@ SmartTemplate4.fileTemplates = {
     const util = SmartTemplate4.Util;
     
     try {
-			const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+			// const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
 				
       let fileTemplates = this, // closure this
-          profileDir = OS.Constants.Path.profileDir,
-          path = OS.Path.join(profileDir, "extensions", "smartTemplates.json"),
-          backPath = OS.Path.join(profileDir, "extensions", "smartTemplates.json.bak"),
-          promiseDelete = OS.File.remove(backPath),  // only if it exists
+          profileDir = PathUtils.profileDir,
+          path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
+          backPath = PathUtils.join(profileDir, "extensions", "smartTemplates.json.bak"),
+          promiseDelete = IOUtils.remove(backPath),  // only if it exists
           promiseBackup = promiseDelete.then(
 					function () { 
-						util.logDebug ('OS.File.move is next...'); 
-						OS.File.move(path, backPath); 
+						util.logDebug ('IOUtils.move is next...'); 
+						IOUtils.move(path, backPath); 
 					},
 					function failedDelete(fileError) { 
-						util.logDebug ('OS.File.remove failed for reason:' + fileError); 
-						OS.File.move(path, backPath); 
+						util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
+						IOUtils.move(path, backPath); 
 					}
         );
 
@@ -530,7 +551,7 @@ SmartTemplate4.fileTemplates = {
               outString = JSON.stringify(entity, null, '  '); // prettify
           try {
             // let theArray = new Uint8Array(outString);
-            let promise = OS.File.writeAtomic(path, outString, { encoding: "utf-8"});
+            let promise = IOUtils.writeJSON(path, outString, { encoding: "utf-8"});
             promise.then(
               function saveSuccess(byteCount) {
                 util.logDebug ('successfully saved ' + fileTemplates.entriesLength + ' bookmarks [' + byteCount + ' bytes] to file');
@@ -538,7 +559,7 @@ SmartTemplate4.fileTemplates = {
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
               },
-              function saveReject(fileError) {  // OS.File.Error
+              function saveReject(fileError) {  // IOUtils.Error
                 util.logDebug ('saveCustomMenu error:' + fileError);
               }
             );
@@ -558,8 +579,8 @@ SmartTemplate4.fileTemplates = {
         
   },
 
-  createTemplateItem: function (composeType, theTemplate) {
-    let menuitem = document.createXULElement("menuitem");
+  createTemplateItem: function (doc, composeType, theTemplate) {
+    let menuitem = doc.createXULElement("menuitem");
 
     menuitem.setAttribute("st4uiElement", "true");
     menuitem.setAttribute("st4composeType", composeType);
@@ -619,7 +640,8 @@ SmartTemplate4.fileTemplates = {
 					MAX_STANDARD_CATEGORIES=3,
           isLicensed = util.hasLicense(false);
 		let popupParent = msgPopup.parentNode, 
-				singleParentWindow = null;
+				singleParentWindow = null,
+        doc = msgPopup.ownerDocument;
           
     function getAccessKey(acCode) {
       if (acCode<10) { return acCode.toString(); }
@@ -646,7 +668,7 @@ SmartTemplate4.fileTemplates = {
         
     // if this will be underneath any commands e.g. "new Message" / "Event" / "Task", then a separator is nice
     if (templates.length && msgPopup.childNodes.length && msgPopup.lastChild.tagName!="menuseparator") { 
-      let menuseparator = document.createXULElement("menuseparator");
+      let menuseparator = doc.createXULElement("menuseparator");
       menuseparator.id = "fileTemplates-" + composeType + "msg-top";
       menuseparator.classList.add ("st4templateSeparator");
       msgPopup.appendChild(menuseparator);
@@ -675,7 +697,7 @@ SmartTemplate4.fileTemplates = {
       if (isAddNewCategory) {
         catAccelerator.push(1);
         // add a menupopup for the category
-        let menu = document.createXULElement("menu"),
+        let menu = doc.createXULElement("menu"),
             acCat = getAccessKey(acceleratorCat++);
         menu.classList.add("menuitem-iconic");
         menu.classList.add("st4templateCategory");
@@ -687,12 +709,12 @@ SmartTemplate4.fileTemplates = {
           lbl = util.getBundleString("template.category.other");
         }
         menu.setAttribute("label", lbl);
-        let menupopup = document.createXULElement("menupopup");
+        let menupopup = doc.createXULElement("menupopup");
         menupopup.setAttribute("templateCategory", cat);
         menupopup.setAttribute("st4uiElement", "true");
         if (isAddMaxCategoriesWarning) {
           let wrn = util.getBundleString("st.fileTemplates.restrictTemplateCats", [MAX_STANDARD_CATEGORIES.toString()]);
-          let menuitem = document.createXULElement("menuitem");
+          let menuitem = doc.createXULElement("menuitem");
           menuitem.classList.add("st4templateEntry");
           menuitem.classList.add("menuitem-iconic");
           menuitem.setAttribute("label", wrn);
@@ -721,7 +743,7 @@ SmartTemplate4.fileTemplates = {
       /* insert one item for each listed html template */
 
       
-			let menuitem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, theTemplate),
+			let menuitem = SmartTemplate4.fileTemplates.createTemplateItem(doc, composeType, theTemplate),
           acKey = "";
 
 			if (!isLicensed && i>=MAX_FREE_TEMPLATES) {
@@ -762,7 +784,7 @@ SmartTemplate4.fileTemplates = {
 		}
     if (menuHasRestrictions) {
       // add an explanation about why some template items are disabled.
-      let menuItem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+      let menuItem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
       menuItem.setAttribute("label", util.getBundleString("st.fileTemplates.restrictionQuestion"));
       menuItem.setAttribute("st4uiElement", "true");
       menuItem.setAttribute("st4composeType", composeType);
@@ -791,7 +813,7 @@ SmartTemplate4.fileTemplates = {
     }
 		
 		/* add an item for choosing ad hoc file template - uses file picker */
-		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
+		let menuitem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem"),
 		menuTitle = util.getBundleString("st.fileTemplates.openFile");		
 		menuitem.setAttribute("label", menuTitle);
 		menuitem.setAttribute("st4uiElement", "true");
@@ -815,7 +837,7 @@ SmartTemplate4.fileTemplates = {
     
 		/* [item 29]  Add configuration item to file template menus. */
     if (showConfigureItem) {
-      menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+      menuitem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
       menuTitle = util.getBundleString("st.fileTemplates.configureMenu");
       menuitem.setAttribute("label", menuTitle);
 			menuitem.setAttribute("st4uiElement", "true");
@@ -925,23 +947,51 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
   initMenusWithReset: async function() {
-    SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
-    await SmartTemplate4.fileTemplates.initMenus(true);
-    if (window.gTabmail.currentTabInfo.mode.type == "mailTab") {
+    console.log("initMenusWithReset() " + window.document.URL);
+    debugger; 
+    const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml"));
+    window.SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
+    await window.SmartTemplate4.fileTemplates.initMenus(true);
+    if (!isSingleMessage && window.gTabmail.currentTabInfo.mode.type == "mailTab") {
       SmartTemplate4.fileTemplates.tabConfigured = true;
     }
   },
   
-  initMenus: async function (reset = false) {
+
+  /*
+   *  @reset   : 
+   *  @options : {
+   *    toolbarType:"messageheader"   - only initialize header toolbar
+   *    toolbarType:"unified"         - only initialize unified toolbar
+   *    isMessenger:   set to true to force running regardless what type of tab we are in.
+   *  }
+   */
+  initMenus: async function (reset = false, options={}) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
     let loc = "";
+    let isSingleMessageWindow=false;
     try { 
       if (window) { loc = window.document.URL; }
     }
     catch(ex) {;}
+
+    if (window.document.URL.endsWith("messageWindow.xhtml")) { 
+      // no tabmail!
+      isSingleMessageWindow = true;
+      util.logDebug("initMenus - single message window");
+    } else {
+      // always patch only currentTab
+      const tabmail = document.getElementById("tabmail"),
+            currentTab = tabmail.selectedTab,
+            currentTabMode = util.getTabMode(currentTab);
+      if (!options.isMessenger &&  !["mail3PaneTab", "mailMessageTab"].includes(currentTabMode)) {
+        return;
+      }
+      util.logDebugOptional("notifications.menus", `fileTemplates.initMenus()...[${loc}]\ntabMode=${currentTabMode}`);
+    }
+
           
-    util.logDebugOptional("notifications.menus", "fileTemplates.initMenus()...[" + loc + "]");
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 
@@ -950,78 +1000,83 @@ SmartTemplate4.fileTemplates = {
       if (reset) return true;
       return (!menu.getAttribute('st4configured'));
     }
-    function isInHeaderArea(popup) {
+    function isInHeaderArea(popup) { // OBSOLETE
       let p = popup.parentNode;
       if (p) p = p.parentNode;
       if (p && p.id && p.id.startsWith("header-"))
         return true;
       return false;
     }
+    // remove all old menu items
+    function cleanup(doc) {
+      // 0) clear all old items if they exist
+      let separators = doc.getElementsByClassName("st4templateSeparator"),
+          items = doc.getElementsByClassName("st4templateEntry"),
+          categories = doc.getElementsByClassName("st4templateCategory"),
+          pickers = doc.getElementsByClassName("st4templatePicker"),
+          configurators = doc.getElementsByClassName("st4templateConfig"),
+          infoitems = doc.getElementsByClassName("st4templateInfo");
 
-		// check for toolbar 1st
-		let toolbar = document.getElementById('mail-bar3');
-		logDebug("initMenus() - toolbar: " + toolbar);
+      // turn these HTMLCollections into Arrays
+      Array.from(separators).forEach(el => { 
+        let menu = el.parentNode;
+        if (!menu.getAttribute('st4configured') || reset)
+          el.parentNode.removeChild(el); 
+      });
+      Array.from(items).forEach(el => { 
+          let menu = el.parentNode;
+          if (!menu.getAttribute('st4configured') || reset)
+            el.parentNode.removeChild(el); 
+      });
+      Array.from(pickers).forEach(el => { 
+          let menu = el.parentNode;
+          if (!menu.getAttribute('st4configured') || reset)
+            el.parentNode.removeChild(el); 
+      });
+      Array.from(configurators).forEach(el => { 
+          let menu = el.parentNode;
+          if (!menu.getAttribute('st4configured') || reset)
+            el.parentNode.removeChild(el); 
+      });
+      Array.from(categories).forEach(el => { 
+          let menu = el.parentNode;
+          if (!menu.getAttribute('st4configured') || reset)
+            el.parentNode.removeChild(el); 
+      });
+      Array.from(infoitems).forEach(el => { 
+          let menu = el.parentNode;
+          if (!menu.getAttribute('st4configured') || reset)
+            el.parentNode.removeChild(el); 
+      });    
+    }
 
-		if (toolbar) {
-			// load current template list
-			const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
-			fileTemplates.loadCustomMenu(false).then(
-				function smartTemplatesLoaded() {
-					let count = fileTemplates.entriesLength;
-					logDebug("Loaded " + count + " templates, now preparing compose button submenus…");
-					
-					// 0) clear all old items if they exist
-					let separators = document.getElementsByClassName("st4templateSeparator"),
-							items = document.getElementsByClassName("st4templateEntry"),
-              categories = document.getElementsByClassName("st4templateCategory"),
-							pickers = document.getElementsByClassName("st4templatePicker"),
-              configurators = document.getElementsByClassName("st4templateConfig"),
-              infoitems = document.getElementsByClassName("st4templateInfo");
-					logDebug("Resetting all menus…");
+		// let toolbar = document.getElementById('mail-bar3');  DEPRECATED IN 115.0b6
+    // load current template list
+    const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
+    fileTemplates.loadCustomMenu(false).then(
+      function smartTemplatesLoaded() {
+        let count = fileTemplates.entriesLength;
+        logDebug("Loaded " + count + " templates, now preparing compose button submenus…");
+
+        // single sections can be disabled by explicitely specifying which section
+        // should be patched, via options.toolbarType
+        let isHackUnified = !(options.toolbarType && options.toolbarType!="unified"),
+            isHackMessageHeader = !(options.toolbarType && options.toolbarType!="messageheader");
+
+
+        if (isHackUnified) { // unified toolbar button
+          let doc = window.document;
           
-					try {
-						 // turn these HTMLCollections into Arrays
-						Array.from(separators).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-						Array.from(items).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-						Array.from(pickers).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-						Array.from(configurators).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-            Array.from(categories).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-            Array.from(infoitems).forEach(el => { 
-                let menu = el.parentNode;
-                if (!menu.getAttribute('st4configured') || reset)
-                  el.parentNode.removeChild(el); 
-							} 
-						);
-          } catch (ex) {;}
+          try {
+            logDebug("Resetting all menus of unified toolbar button…");
+            cleanup(doc);
+          } catch (ex) {
+            util.logException("cleaning unified toolbar button:", ex);
+          }                       
 
           // this needs to be done from a tab listener too, to work when user updates the add-on from the manager tab
           for (let item of fileTemplates.uniMenus) {
-            let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, item.id);
+            let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
             if (thePopup && needsConfig(thePopup)) {
               fileTemplates.configureMenu(
                 fileTemplates.Entries[item.templates], 
@@ -1029,59 +1084,102 @@ SmartTemplate4.fileTemplates = {
                 item.composeType
               );
             }            
-          }
-
-          
+          }            
+        }
+        
 /*          
-					// 1) write new entries --------------------
-					let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
-					if (needsConfig(newMsgPopup)) {
-						fileTemplates.configureMenu(fileTemplates.Entries.templatesNew, newMsgPopup, "new");
-					}
+        // 1) write new entries --------------------
+        let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
+        if (needsConfig(newMsgPopup)) {
+          fileTemplates.configureMenu(fileTemplates.Entries.templatesNew, newMsgPopup, "new");
+        }
 
-					// 2) reply entries     --------------------
-					let rspBtns=["button-reply","button-replyall", "button-replylist"];
-					for (let rspBtn of rspBtns) {
-						//    calling getPopupElement() - if it doesn't exist, the popup will be automatically created & appended to button
-						let replyPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, rspBtn);
-						if (replyPopup && !isInHeaderArea(replyPopup) && needsConfig(replyPopup)) {
-								fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, replyPopup, "rsp");
-						}
-					}
+        // 2) reply entries     --------------------
+        let rspBtns=["button-reply","button-replyall", "button-replylist"];
+        for (let rspBtn of rspBtns) {
+          //    calling getPopupElement() - if it doesn't exist, the popup will be automatically created & appended to button
+          let replyPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, rspBtn);
+          if (replyPopup && !isInHeaderArea(replyPopup) && needsConfig(replyPopup)) {
+              fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, replyPopup, "rsp");
+          }
+        }
 */
 
-					// 4) ====  preview header area ==== //
-					let headerToolbox = document.getElementById('header-view-toolbox');
-					if (headerToolbox) {
-						logDebug("=============================\n"+
-                     "headerToolbox found; adding its template file menus…");
-            
-						// 4.b) (header) reply entries     -------------------- 
+        // 4) ====  preview header area ==== //
+        let doc;
+
+        if (isSingleMessageWindow) {
+          doc = window.messageBrowser.contentDocument; // about:message
+        } else {
+          let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
+          switch(currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
+            case "mailMessageTab":
+              doc = SmartTemplate4.Util.document3pane;
+              break;
+            case "mail3PaneTab":
+              let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
+              doc = browser.contentDocument;  
+              break;
+          }
+        }
+
+        if (isHackMessageHeader && doc) {
+          let headerToolbox = doc.getElementById('header-view-toolbox');
+          if (headerToolbox) {
+            logDebug("=============================\n"+
+                      "headerToolbox found; adding its template file menus…");
+
+            try {
+              logDebug("Resetting all menus of message header button…");
+              cleanup(doc);
+            } catch (ex) {
+              util.logException("cleaning msg hdr button:", ex);
+            }                       
+
+            for (let item of fileTemplates.msgHdrMenus) {
+              let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
+              if (thePopup && needsConfig(thePopup)) {
+                fileTemplates.configureMenu(
+                  fileTemplates.Entries[item.templates], 
+                  thePopup, 
+                  item.composeType
+                );
+              }            
+            }
+          }
+          else {
+            logDebug("headerToolbox NOT found!");
+          }
+/*              
+            // 4.b) (header) reply entries     -------------------- 
             let hdrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
                         "hdrReplyToSenderButton"]; // ,"button-reply","button-replyall", "button-replylist"
             for (let hdrBtn of hdrBtns) {
-							let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
+              let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, hdrBtn);
               if (needsConfig(popup)) {
                 fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, popup, "rsp");
               }
             }
-						
-						// 4.d) (header) forwarding entries --------------------
-						// what about hdrDualForwardButton => this one was from compactHeader.
+            
+            // 4.d) (header) forwarding entries --------------------
+            // what about hdrDualForwardButton => this one was from compactHeader.
             let hfBtns=['hdrForwardButton','button-forward','hdrDualForwardButton'];
             for (let hdrBtn of hfBtns) {
-              let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, hdrBtn);
+              let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, hdrBtn);
               if (needsConfig(popup)) {
                 fileTemplates.configureMenu(fileTemplates.Entries.templatesFwd, popup, "fwd");
               }
             }
-					}
-					else {
-						logDebug("headerToolbox NOT found!");
-					}
-				}
-			);
-		}
+*/   
+
+        } // populate message header
+
+        
+        
+
+      }
+    );
+		
 		
 	}	,
 	
@@ -1197,7 +1295,8 @@ SmartTemplate4.fileTemplates = {
 
     let btn = menuParent; // can be a button or a (new) menu on unifiedtoolbar button
 		const util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences;
+          prefs = SmartTemplate4.Preferences,
+          doc = menuitem.ownerDocument;
     let isSnippet = (btn && btn.id == "smarttemplate4-insertSnippet");
     if (isSnippet) {
       // overwrite with correct compose type
@@ -1341,11 +1440,11 @@ SmartTemplate4.fileTemplates = {
       util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
       let items = SmartTemplate4.fileTemplates.uniMenus.filter(e => e.composeType == composeType);
       for (let item of items) {
-        let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, item.id);
+        let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
         if (thePopup) {
           let oldMenuItem = thePopup.querySelector(".st-mru");
           if (oldMenuItem) {
-            let newMenuItem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, entry);
+            let newMenuItem = SmartTemplate4.fileTemplates.createTemplateItem(doc, composeType, entry);
             const singleParentWindow = false; // called from a single message window?? TO DO LATER.
             SmartTemplate4.fileTemplates.addTemplateEvent(newMenuItem, thePopup.parentNode, SmartTemplate4.fileTemplates, composeType, entry, singleParentWindow);
             oldMenuItem.replaceWith(newMenuItem);

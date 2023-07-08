@@ -270,6 +270,21 @@ SmartTemplate4.Util = {
 		}
   } ,  
 
+  get document3pane() {
+    return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
+  } ,
+
+  get documentMessageBrowser() {
+		let win = window.gTabmail.currentAboutMessage;
+		if (!win) return null;
+		if (!win.document) return null;
+		return win.document; 
+	},
+
+  get threadPane() { 
+    return this.document3pane.querySelector("#threadPane");
+  } ,	
+
 	get Mail3PaneWindow() {
 		let windowManager = Services.wm,
 		    win3pane = windowManager.getMostRecentWindow("mail:3pane");
@@ -811,7 +826,7 @@ SmartTemplate4.Util = {
       case "mail3PaneTab":
         return (["folder","mail"].includes(type));
       case "mailMessageTab":
-        return (["folder","message"].includes(type));
+        return (["folder","message", "mail"].includes(type));
       case "glodaSearch": case "glodaSearch-result":
         return (["search"].includes(type));
       default:
@@ -2811,7 +2826,7 @@ SmartTemplate4.Util = {
 
   },
   
-  openPreferences: function(el=null) {
+  openPreferences: async function(el=null) { // open legacy preferences
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
@@ -2824,8 +2839,7 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.viewLicense();
     }
     else {
-      window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
-      
+			window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
     }
     
   },

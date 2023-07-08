@@ -246,6 +246,7 @@ END LICENSE BLOCK
   Version 3.17.1 - WIP
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 242] Update "# licensed days left" at midnight.
+    # [issue 244] allow replaceText and deleteText to affect html that was imported using %file()%
 
 
 #################################################
@@ -257,6 +258,12 @@ END LICENSE BLOCK
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 243] Menu item / Option for reusing last external template
+    # deprecated {OS} for file reading.
+    // OS.File.read => IOUtils.read
+    // OS.Constants.Path.profileDir -> PathUtils.profileDir
+    // OS.Path.* -> PathUtils.*
+    // OS.File.writeAtomic -> IOUtils.writeJSON
+    // JSON.parse(CustomMenuData) -> JSON.parse(new TextDecoder().decode(CustomMenuData))
     
 
 =========================
@@ -1051,7 +1058,7 @@ var SmartTemplate4 = {
       element.remove();
     }
     SmartTemplate4.fileTemplates.tabConfigured = false;
-          
+/*          
     util.logDebug("Cleanup/Downgrade toolbar buttons …");
     let manipulatedButtons = [
       "button-newmsg",
@@ -1067,9 +1074,9 @@ var SmartTemplate4 = {
       "hdrForwardButton"];
     
     for (let btn of manipulatedButtons) {
-      window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window, btn);
+      window.SmartTemplate4.hackToolbarbutton.cleanupIfNeeded(window.document, btn);
     }
-    
+  */  
     util.logDebug("shutDown complete");
   } ,
   
@@ -1181,28 +1188,8 @@ var SmartTemplate4 = {
     }
   } ,
 
-  patchMailPane: function() {
-    // THUNDERBIRD 115
-    // fix selectors
-    let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
-    if (mainButton) {
-      mainButton.id = "SmartTemplate4Button";
-      mainButton.setAttribute("popup", "smartTemplatesMainPopup");
-  
-      // this method worked in quickFilters:
-      // overload the menupopup based on the id we just added:
-      // note: there is no command controller for write new
-      //       - instead the menu item calls "MsgNewMessage(null);
-      SmartTemplate4.WL.injectElements(`
-        <button id="SmartTemplate4Button">
-        <menupopup id="smartTemplatesMainPopup">
-            <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
-              <menupopup>
-                <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              </menupopup>
-            </menu>
+  get XML_replyMenus() {
+    return `
             <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply">
               <menupopup>
                 <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1221,13 +1208,47 @@ var SmartTemplate4 = {
                 <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
+    `;
+  },
+
+  get XML_forwardMenus() {
+    return `
             <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward">
               <menupopup>
                 <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
                 <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               </menupopup>
             </menu>
-            
+    `;
+  },
+
+  patchUnifiedToolbar: function() {
+    // THUNDERBIRD 115
+    // fix selectors
+    let mainButton = document.querySelector("button[extension='smarttemplate4@thunderbird.extension']");
+    if (mainButton) {
+      mainButton.id = "SmartTemplate4Button";
+      mainButton.setAttribute("popup", "smartTemplatesMainPopup");
+      if (mainButton.querySelector("#smartTemplatesMainPopup")) {
+        return true; // this one is already patched.
+      }
+  
+      // this method worked in quickFilters:
+      // overload the menupopup based on the id we just added:
+      // note: there is no command controller for write new
+      //       - instead the menu item calls "MsgNewMessage(null);
+      var XHTML_Markup = 
+      `<button id="SmartTemplate4Button">
+        <menupopup id="smartTemplatesMainPopup">
+          <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
+              <menupopup>
+                <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+                <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              </menupopup>
+            </menu>
+            ${this.XML_replyMenus}
+            ${this.XML_forwardMenus}
             <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
   
@@ -1240,6 +1261,7 @@ var SmartTemplate4 = {
   
             <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
               <menupopup>
+                <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
                 <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
                 <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
                 <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
@@ -1248,8 +1270,51 @@ var SmartTemplate4 = {
   
           </menupopup>
         </button>
-      `); 
+      `; 
+      this.WL.injectElements(XHTML_Markup);
+      return true;
     }
+    return false; // no button found, we're probably in a content tab
+  },
+
+  patchHeaderPane: function(doc, message_display_action_btn) {
+    const PatchedBtnClass = "SmartTemplates_HeaderBtn"; // use this for styles & as flag for having been patched
+    if (!doc) {
+      doc = this.Util.documentMessageBrowser;
+    }
+    if (!message_display_action_btn) {
+      message_display_action_btn = doc.querySelector("#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton");
+    }
+    if (!message_display_action_btn) {
+      return false; // button not found
+    }
+    if (message_display_action_btn.classList.contains(PatchedBtnClass)) {
+      return true; // already patched
+    }
+    // data-extensionid="smarttemplate4@thunderbird.extension"
+    message_display_action_btn.classList.add(PatchedBtnClass);
+
+    var XHTML_Markup = 
+    `<toolbarbutton id="${message_display_action_btn.id}">
+      <menupopup id="SmartTemplates_HeaderMenu">
+        ${this.XML_replyMenus}
+        ${this.XML_forwardMenus}
+      </menupopup>
+    </toolbarbutton>
+    `; 
+    this.WL.injectElements(XHTML_Markup);
+    let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
+    let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
+    let moveNodes = [];
+    for (let e of newPopup.childNodes) {
+      moveNodes.push(e);
+    }
+    for (let m of moveNodes) {
+      activePopup.appendChild(m);
+    }
+    this.Util.logDebug("Moved elements to popup:", moveNodes);
+    return true;
+
   },
   
   TabEventListeners: {}, // make a map of tab event listeners
@@ -1279,9 +1344,9 @@ var SmartTemplate4 = {
     selectTab: function(evt) {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
-        SmartTemplate4.patchMailPane();
-        // SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updatequickFiltersLabel"});
-        SmartTemplate4.updateNewsLabels();
+        if (SmartTemplate4.patchUnifiedToolbar()) {
+          SmartTemplate4.updateNewsLabels();
+        }
       }
     },
     openTab: function(evt) {
@@ -1295,15 +1360,15 @@ var SmartTemplate4 = {
       if (newTabInfo) {
         const isMailPane = SmartTemplate4.Util.isTabMode (newTabInfo, "mail");
         if (isMailPane) {
-          SmartTemplate4.patchMailPane();
+          if (SmartTemplate4.patchUnifiedToolbar()) {
+            SmartTemplate4.updateNewsLabels();
+          }
         }
   
         if (newTabInfo.SmartTemplates_patched) {
           SmartTemplate4.Util.logDebug("Tab is already patched: " + getTabDebugInfo(newTabInfo));
           return;
         }
-        SmartTemplate4.Util.logDebugOptional("listeners", 
-          "SmartTemplate4.TabListener.openTab() \n" + getTabDebugInfo(newTabInfo));
         if (isMailPane) {  // let's include single message tabs, let's see what happens
           try {
             if (typeof newTabInfo.chromeBrowser.contentWindow.commandController == "undefined") {

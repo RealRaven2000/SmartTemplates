@@ -1,14 +1,15 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 //original lds this after xul!!
+
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
+
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
-let updateTemplateMenus;
-
+let updateTemplateMenus; // listener function
 
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
@@ -20,14 +21,20 @@ async function onLoad(activatedWhileWindowOpen) {
     WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
   }
 
+  window.SmartTemplate4.Util.logDebug("st-messageWindow - onLoad(" + activatedWhileWindowOpen + ")...");
+
+  window.SmartTemplate4.WL = WL;
   window.SmartTemplate4.Util.notifyTools.enable();
   await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
   
+  if (window.SmartTemplate4.patchUnifiedToolbar()) {
+    window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async
+  }
+
   updateTemplateMenus = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", updateTemplateMenus);
-  window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async
-  
+
 }
 
 function onUnload(isAddOnShutDown) {

@@ -9,8 +9,8 @@ var hackToolbarbutton = {
   },
   
   //check if the button still contains menuitems and downgrade the button if that is not the case anymore
-  cleanupIfNeeded(window, buttonId) {
-    let button = window.document.getElementById(buttonId);
+  cleanupIfNeeded(doc, buttonId) {
+    let button = doc.getElementById(buttonId);
     if (button) {
       let popup = button.querySelector("menupopup");
       if (popup) {
@@ -38,8 +38,8 @@ var hackToolbarbutton = {
   },
   
   // get the menupopup element to add templates submenu
-  getMenupopupElement(window, menuId) {   
-    let element = window.document.getElementById(menuId);
+  getMenupopupElement(doc, menuId) {   
+    let element = doc.getElementById(menuId);
     if (!element) {
       return null;
     }
@@ -47,7 +47,7 @@ var hackToolbarbutton = {
     // check if we need to add popup
     let popup = element.querySelector("menupopup");
     if (!popup) {
-      popup = window.document.createXULElement("menupopup");
+      popup = doc.createXULElement("menupopup");
       popup.setAttribute("id", `${buttonId}-popup`);
       popup.setAttribute("oncommand", "event.stopPropagation();");
       button.appendChild(popup);
@@ -58,8 +58,8 @@ var hackToolbarbutton = {
 
   // returns the menupopup element of the button, 
   // check if the button needs to converted beforehand and adds the menupopup element if needed first
-  getMenupopupElement_Btn(window, buttonId) {   
-    let button = window.document.getElementById(buttonId);
+  getMenupopupElement_Btn(doc, buttonId) {   
+    let button = doc.getElementById(buttonId);
     if (!button) {
       return null;
     }
@@ -99,7 +99,7 @@ var hackToolbarbutton = {
     // check if we need to add popup
     let popup = button.querySelector("menupopup");
     if (!popup) {
-      popup = window.document.createXULElement("menupopup");
+      popup = doc.createXULElement("menupopup");
       popup.setAttribute("id", `${buttonId}-popup`);
       popup.setAttribute("oncommand", "event.stopPropagation();");
       button.appendChild(popup);
@@ -107,13 +107,13 @@ var hackToolbarbutton = {
     return popup;
   },
   
-  addMenuitem(window, buttonId, menuitemId, attributes = null) {
-    let popup = this.getMenupopupElement(window, buttonId); 
+  addMenuitem(doc, buttonId, menuitemId, attributes = null) {
+    let popup = this.getMenupopupElement(doc, buttonId); 
     if (!popup)
       return null;
     
     // add menuitem
-    let menuitem = window.document.createXULElement("menuitem");
+    let menuitem = doc.createXULElement("menuitem");
     menuitem.id = menuitemId;
     if (attributes) {
       for (let [attribute, value] of Object.entries(attributes)) {
@@ -124,12 +124,12 @@ var hackToolbarbutton = {
     return popup;
   },
 
-  removeMenuitem(window, buttonId, menuitemId) {
-    let menuitem = window.document.getElementById(menuitemId);
+  removeMenuitem(doc, buttonId, menuitemId) {
+    let menuitem = doc.getElementById(menuitemId);
     if (menuitem) {
       menuitem.remove();
     }
-    this.cleanupIfNeeded(window, buttonId);
+    this.cleanupIfNeeded(doc, buttonId);
   },
 
 }
