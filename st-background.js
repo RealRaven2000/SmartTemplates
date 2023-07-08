@@ -311,6 +311,18 @@ async function main() {
           return null;
         }
         
+      case "openPrefs":
+        {
+          const settingsUrl = "/html/smartTemplate-settings.html";
+          let url = browser.runtime.getURL(settingsUrl) + "*";
+          let [oldTab] = await browser.tabs.query({url}); // dereference first 
+          if (oldTab) {
+            await browser.windows.update(oldTab.windowId, {focused:true});
+          } else {
+            // open a new tab with settings
+            browser.tabs.create ({active: true, url: browser.runtime.getURL(settingsUrl)});
+          }
+        }
     }
   });
   
@@ -382,6 +394,10 @@ async function main() {
   
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/st-messageWindow.js");  
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/st-messenger.js");
+  // inject a separate script for header pane!
+  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/st-messagePane.js");
+
+
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/st-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/st-customizetoolbar.js");
   
@@ -426,6 +442,20 @@ async function main() {
       if (isDebugLicenser) console.log("SmartTemplates license state after adding account:", currentLicense.info)
     }
   });
+
+  /// message selection listener
+  browser.mailTabs.onSelectedMessagesChanged.addListener(
+    (tab, selectedMessages) => {
+      // selectedMessages = list - see messages member. add logic to decide whether to show:
+      // replyAll
+      // replyList
+      // redirect
+
+      /* only 1 message may be selected */
+
+    }
+  )
+  
   
 
 }
