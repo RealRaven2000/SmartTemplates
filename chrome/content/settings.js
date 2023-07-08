@@ -1380,7 +1380,7 @@ SmartTemplate4.Settings = {
         if (fp.file) {
           let path = fp.file.path;
           
-					const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+					// const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
 					
 					// Remember last path
 					let lastSlash = path.lastIndexOf("/");
@@ -1393,7 +1393,7 @@ SmartTemplate4.Settings = {
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           switch (mode) {
             case 'load':
-              let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
+              let promiseRead = IOUtils.read(path, { encoding: "utf-8" }); //  returns Uint8Array
               promiseRead.then(
                 function readSuccess(data) {
                   readData(data);
@@ -1405,7 +1405,7 @@ SmartTemplate4.Settings = {
               break;
             case 'save':
               // if (aResult == Ci.nsIFilePicker.returnReplace)
-              let promiseDelete = OS.File.remove(path);
+              let promiseDelete = IOUtils.remove(path);
               // defined 2 functions
               util.logDebug ('Setting up promise Delete');
               promiseDelete.then (
@@ -1414,7 +1414,7 @@ SmartTemplate4.Settings = {
                   // force appending correct file extension!
                   if (!path.toLowerCase().endsWith('.json'))
                     path += '.json';
-                  let promiseWrite = OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+                  let promiseWrite = IOUtils.writeJSON(path, jsonData, { encoding: "utf-8"}); // OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
                   promiseWrite.then(
                     function saveSuccess(byteCount) {
                       util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
@@ -1425,7 +1425,7 @@ SmartTemplate4.Settings = {
                   );
                 },
                 function failDelete(fileError) {
-                  util.logDebug ('OS.File.remove failed for reason:' + fileError); 
+                  util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
                 }
               );
               break;
