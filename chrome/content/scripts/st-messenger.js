@@ -1,6 +1,5 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-
 //original lds this after xul!!
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
@@ -18,7 +17,6 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-actionButton.css");
 
-
   const util = window.SmartTemplate4.Util;
   
   // for version specific code / style fixes
@@ -26,20 +24,11 @@ async function onLoad(activatedWhileWindowOpen) {
     WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay-102.css");
   }
   
-  util.logDebug("onLoad(" + activatedWhileWindowOpen + ")...");
+  util.logDebug("st-messenger - onLoad(" + activatedWhileWindowOpen + ")...");
 
+  // status bar button
   WL.injectElements(`
   
-  <!-- # THUNDERBIRD (TOOLBAR) # -->
-  <toolbarpalette id="MailToolbarPalette">
-    <toolbarbutton id="SmartTemplate4Button"
-                   label="__MSG_smartTemplate4.settings.label__"
-                   tooltiptext="__MSG_smartTemplate4.settings.tooltip__"
-                   class="toolbarbutton-1 chromeclass-toolbar-additional"
-                   oncommand="SmartTemplate4.Util.openPreferences(this);" />
- 
-  
-  </toolbarpalette>
   <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
   <hbox id="status-bar">
     <toolbarbutton id="SmartTemplate4Messenger"
@@ -52,7 +41,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
   `);
 
-  window.SmartTemplate4.doCommand = function (el) {
+  window.SmartTemplate4.doCommand = async function (el, params={}) {
     if (!el) {
       return;
     }
@@ -96,11 +85,16 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-settings":
         SmartTemplates.Util.openPreferences(el);
         break;
+      case "smartTemplates-settings-new":
+        SmartTemplates.Util.logIssue213("Show new HTML help dialog.");
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs" });
+        break;
       case "smartTemplates-installed":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
         break;
       case "smartTemplates-support":
         SmartTemplates.Util.logIssue213("Show Support Tab");
+        SmartTemplates.Util.showSupportPage();
         break;
       case "smartTemplates-variables":
         SmartTemplates.Util.logIssue213("Show Variables Tab");
@@ -118,8 +112,7 @@ async function onLoad(activatedWhileWindowOpen) {
     }
   }
 
-  window.SmartTemplate4.WL = WL; // we need this in patchMailPane();
-  util.logDebug("notifyTools.enable...");
+  window.SmartTemplate4.WL = WL; // we need this in patchUnifiedToolbar();
   window.SmartTemplate4.Util.notifyTools.enable();
   util.logDebug("Util.init...");
   await window.SmartTemplate4.Util.init();
@@ -128,7 +121,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
   // The following will only work if we are currently in a mail pane (ATN update)
   // otherwise, we need to call this again in a tab listener
-  window.SmartTemplate4.patchMailPane(); 
+  if (window.SmartTemplate4.patchUnifiedToolbar()) {
+    await window.SmartTemplate4.fileTemplates.initMenus(true, { toolbarType:"unified", isMessenger: true });  
+  }
   window.SmartTemplate4.addTabEventListener();
 
   // set up updating the label at midnight
@@ -162,7 +157,6 @@ async function onLoad(activatedWhileWindowOpen) {
     }
   }
   
-  window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async  
 }
 
 function onUnload(isAddOnShutDown) {
