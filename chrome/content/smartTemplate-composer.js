@@ -249,17 +249,6 @@ SmartTemplate4.composer.startup  = async () => {
   
   console.log({MessageHdr: SmartTemplate4.MessageHdr});
 
-  // get header variables early - was "window.addEventListener"
-  // window.addEventListener(
-  //   "compose-window-init",
-  //   async function() {
-  //     util.logHighlight("Event: compose-window-init", "lightgreen", "rgb(0,80,0)");
-  //     SmartTemplate4.MessageHdr = await SmartTemplate4.getHeadersAsync(); 
-  //   },
-  //   {capture:true}
-  // );   
-  
-  // event function above is never called why exactly?
   // TO DO: also add an event handler for compose-window-send
   
   // util.logDebugOptional('composer', "Adding compose-window-init event listener for msgcomposeWindow...");
