@@ -134,6 +134,12 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   mylisteners["updateNewsLabels"] = window.SmartTemplate4.updateNewsLabels.bind(window.SmartTemplate4);
   mylisteners["firstRun"] = util.firstRun.init.bind(util.firstRun);
+  mylisteners["patchUnifiedToolbar"] = () => {
+    if (window.SmartTemplate4.patchUnifiedToolbar()) {
+      window.SmartTemplate4.updateNewsLabels();
+    }
+  }
+
   mylisteners["forwardWithTemplate"] = 
     (event) => {
       window.SmartTemplate4.fileTemplates.onExternalMailProcess.call(
@@ -157,6 +163,9 @@ async function onLoad(activatedWhileWindowOpen) {
     }
   }
   
+
+
+
 }
 
 function onUnload(isAddOnShutDown) {

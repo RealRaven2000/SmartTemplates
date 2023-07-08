@@ -1237,42 +1237,49 @@ var SmartTemplate4 = {
       // overload the menupopup based on the id we just added:
       // note: there is no command controller for write new
       //       - instead the menu item calls "MsgNewMessage(null);
+      //        <button id="SmartTemplate4Button">
+      //        </button>
+
       var XHTML_Markup = 
-      `<button id="SmartTemplate4Button">
+      `<vbox id="titlebar">
         <menupopup id="smartTemplatesMainPopup">
           <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
-              <menupopup>
-                <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              </menupopup>
-            </menu>
-            ${this.XML_replyMenus}
-            ${this.XML_forwardMenus}
-            <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-            <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic">
+            <menupopup>
+              <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+          ${this.XML_replyMenus}
+          ${this.XML_forwardMenus}
+          <menuitem id="smartTemplates-news" label="__MSG_newsHead__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+
+          <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
+            <menupopup>
+              <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+
+          <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
+            <menupopup>
+              <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
   
-            <menu id="smartTemplates-docs" label="__MSG_st.menu.docs__" class="menu-iconic">
-              <menupopup>
-                <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              </menupopup>
-            </menu>
-  
-            <menu id="smartTemplates-tests" label="Test" class="menu-iconic">
-              <menupopup>
-                <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-                <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-              </menupopup>
-            </menu>
-  
-          </menupopup>
-        </button>
-      `; 
+        </menupopup>
+      </vbox>`; 
       this.WL.injectElements(XHTML_Markup);
-      return true;
+      let theMenu = window.document.querySelector("menupopup#smartTemplatesMainPopup");
+      if (theMenu) {
+        mainButton.appendChild(theMenu);
+        return true;
+      }
+      return false;
     }
     return false; // no button found, we're probably in a content tab
   },
@@ -1302,7 +1309,8 @@ var SmartTemplate4 = {
       </menupopup>
     </toolbarbutton>
     `; 
-    this.WL.injectElements(XHTML_Markup);
+    var WL = this.WLM || this.WL;
+    WL.injectElements(XHTML_Markup);
     let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
     let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
     let moveNodes = [];
@@ -1344,9 +1352,7 @@ var SmartTemplate4 = {
     selectTab: function(evt) {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
-        if (SmartTemplate4.patchUnifiedToolbar()) {
-          SmartTemplate4.updateNewsLabels();
-        }
+        SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
       }
     },
     openTab: function(evt) {
@@ -1359,11 +1365,14 @@ var SmartTemplate4 = {
       const RETRY_DELAY = 2500;
       if (newTabInfo) {
         const isMailPane = SmartTemplate4.Util.isTabMode (newTabInfo, "mail");
+        // patching the toolbar may be not necessary in this case (?)
+        // as I believe we cannot open a new mail in tab unless
+        // we are already on a mail / folder tab.
+        /*
         if (isMailPane) {
-          if (SmartTemplate4.patchUnifiedToolbar()) {
-            SmartTemplate4.updateNewsLabels();
-          }
+          SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
         }
+        */
   
         if (newTabInfo.SmartTemplates_patched) {
           SmartTemplate4.Util.logDebug("Tab is already patched: " + getTabDebugInfo(newTabInfo));

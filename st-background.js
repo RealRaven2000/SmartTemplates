@@ -323,6 +323,10 @@ async function main() {
             browser.tabs.create ({active: true, url: browser.runtime.getURL(settingsUrl)});
           }
         }
+
+      case "patchUnifiedToolbar":
+        messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
+        break
     }
   });
   

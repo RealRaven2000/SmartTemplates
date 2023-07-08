@@ -41,18 +41,11 @@ async function onLoad(activatedWhileWindowOpen) {
   HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
   const contentDoc = window.document;
   let headerButton = contentDoc.getElementById(HEADERBARID);
-  let win = window;
 
-  win.SmartTemplate4.WL = WL;
-  win.SmartTemplate4.Util.logDebug("Patching Header Pane...")
-  win.SmartTemplate4.patchHeaderPane(contentDoc, headerButton);
-  win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
-
-/*
   if (headerButton) { // patch button
     window.setTimeout(
       (win = window) => {
-        win.SmartTemplate4.WL = WL;
+        win.SmartTemplate4.WLM = WL; // make a separate WindowListener instance for message pagen context.
         win.SmartTemplate4.Util.logDebug("Patching Header Pane...")
         win.SmartTemplate4.patchHeaderPane(contentDoc, headerButton);
         win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
@@ -60,7 +53,6 @@ async function onLoad(activatedWhileWindowOpen) {
       WAIT_FOR_3PANE
     );
   }
-*/
 
   // messenger.messageDisplayAction.setTitle("SmartTemplates")
 
