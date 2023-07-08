@@ -54,6 +54,10 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
   fill: currentColor;
 }
+#smartTemplates-settings-new {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/settings.svg") !important;
+  fill: red;
+}
 
 #smartTemplates-docs {
 	list-style-image: url("chrome://smarttemplate4/content/skin/icons/docs.svg") !important;
@@ -101,3 +105,11 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   list-style-image: var(--icon-reply-list);
 }
 
+/* test */
+#SmartTemplates-reply {
+  list-style-image: var(--icon-reply);
+}
+
+#SmartTemplates-forward {
+  list-style-image: var(--icon-forward), linear-gradient(to left bottom, red, blue);
+}
