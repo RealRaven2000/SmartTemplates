@@ -297,6 +297,7 @@ SmartTemplate4.Settings = {
       return;
     settings.dialogHeight = dlg.clientHeight; // remember new height
     
+		/*
     let decksWrapper = getElement('decksWrapper'),
         templateBoxes = decksWrapper.getElementsByClassName('template');
     for (let i=0; i<templateBoxes.length; i++) {
@@ -321,6 +322,7 @@ SmartTemplate4.Settings = {
       
       t.style.height = (t.parentNode.clientHeight - 25 - cbHeight) + "px";
     }
+		*/
     
   },
 
@@ -1548,7 +1550,6 @@ SmartTemplate4.Settings = {
 	} ,
   
 	showTrialDate: function() {
-		debugger;
     let licenseDate = document.getElementById('licenseDate'),
         licenseDateLbl = document.getElementById('licenseDateLabel'),
         txtGracePeriod= SmartTemplate4.Util.gracePeriodText(SmartTemplate4.Util.licenseInfo.trialDays);
