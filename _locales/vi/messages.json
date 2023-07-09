@@ -274,7 +274,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hàm {{%deleteForwardedBody%}} mới sẽ xóa phần nội dung của email gốc khi chuyển tiếp nội tuyến. {L2} {L1} Các lệnh chèn nội dung từ tệp hiện có thể truy cập thư mục mẹ bằng {{../}}, ví dụ: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Cải tiến trong Trình quản lý Mẫu: Hiển thị Danh mục trong danh sách để điều hướng dễ dàng hơn. {L2} {L1} Đã thêm phần đặt giá vào hộp thoại cấp phép {L2} {L1} Đã sửa Số ngày còn lại trong giấy phép bằng cách làm tròn {L2}"
+    "message": "{L1}Giao diện người dùng: Trình đơn mẫu thả xuống hiện được hiển thị thông qua các nút chuyên dụng trên thanh công cụ hợp nhất mới và khu vực tiêu đề thư. Thunderbird không cho phép sửa đổi các nút hiện có bằng danh sách thả xuống nữa. {L2} {L1}Tùy chọn mới để tự động sử dụng lại mẫu bên ngoài cuối cùng [issue 243]{L2}{L1}Hỗ trợ {{%replaceText%}} và {{%deleteText%}} để sửa đổi html đã được nhập bằng {{%file()%}}. Bằng cách này, bạn có thể sử dụng các biến giữ chỗ và thay thế chúng từ mẫu chứa.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

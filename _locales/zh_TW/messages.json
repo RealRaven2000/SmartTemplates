@@ -839,7 +839,13 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 SmartTemplates Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 213]{P2} "
+    "message": "{P1}我已經基本完成了新 Thunderbird SuperNova UI 的 $addonName$ 轉換。 從現在開始，您可以將 Thunderbird 更新到新版本 115。{P2} {P1}有關更改和正在進行的工作的詳細信息以及提供反饋，請閱讀：[issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "因為這項工作是獨家的 通過出售許可證獲得資金，如果您有興趣在未來使用 SmartTemplates，請考慮購買許可證或更新之前的許可證"
@@ -1740,7 +1746,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 新的 {{%deleteForwardedBody%}} 函數在內聯轉發時刪除原始電子郵件的正文。 {L2} {L1}從文件插入內容的命令現在可以使用 {{../}} 訪問父文件夾，例如：{{%style(../mystyle.css)%}} [issue 237]{L2} {L1} 模板管理器的改進：在列表中顯示類別以便於導航。 {L2} {L1} 在許可對話框中添加了定價部分 {L2} {L1} 通過四捨五入更正了許可剩余天數 {L2}"
+    "message": "{L1}用戶界面：模板下拉菜單現在通過新的統一工具欄和消息標題區域中的專用按鈕顯示。 Thunderbird 不再允許使用下拉菜單修改現有按鈕。 {L2} {L1}自動重用最後一個外部模板的新選項 [issue 243]{L2}{L1}支持 {{%replaceText%}} 和 {{%deleteText%}} 修改使用  導入的 html 文件{{%file()％}}。 這樣您就可以使用佔位符變量並從包含的模板中替換它們。{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

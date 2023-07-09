@@ -797,7 +797,13 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}Ich arbeite derzeit an der Konvertierung des SmartTemplates-Addons für die neue Thunderbird SuperNova-Benutzeroberfläche. Diese wird in der nächsten Hauptversion von Thunderbird 115 im Sommer 2023 implementiert.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}"
+    "message": "{P1}Ich habe die Konvertierung von $addonName$ für die neue Thunderbird SuperNova-Benutzeroberfläche größtenteils abgeschlossen. Ab sofort können Sie Thunderbird auf die neue Version 115 aktualisieren.{P2} {P1}Weitere Informationen und Feedback zu den Änderungen und der laufenden Arbeit finden Sie unter: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Diese Arbeit wird ausschließlich durch den Verkauf von Lizenzen finanziert. Bitte erwägen Sie den Kauf einer Lizenz oder die Verlängerung Ihrer vorigen Lizenz, wenn Sie daran interessiert sind, SmartTemplates in Zukunft zu verwenden."
@@ -1703,7 +1709,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die neue {{%deleteForwardedBody%}}-Funktion entfernt den Text der ursprünglichen E-Mail bei der Inline-Weiterleitung. {L2} {L1}Befehle, die Inhalte aus Dateien einfügen, können jetzt mit {{../}} auf übergeordnete Ordner zugreifen, z.B.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Verbesserungen im Vorlagen-Manager: Kategorie in der Liste anzeigen für einfachere Navigation. {L2} {L1} Preisabschnitt zum Lizenzierungsdialog hinzugefügt {L2} {L1} Anzahl der verbleibenden Tage in der Lizenz durch Aufrunden korrigiert {L2}"
+    "message": "{L1}Benutzeroberfläche: Die Vorlagen-Dropdown-Menüs werden jetzt über spezielle Schaltflächen in der neuen einheitlichen Symbolleiste und im Nachrichtenkopfbereich angezeigt. Thunderbird erlaubt nicht mehr, vorhandene Schaltflächen mit einem Dropdown zu ändern. {L2} {L1}Neue Option zur automatischen Wiederverwendung der letzten externen Vorlage [issue 243]{L2} {L1}Unterstützt {{%replaceText%}} und {{%deleteText%}} zum Ändern von HTML, das mit {{%file()%}}  importiert wurde. Auf diese Weise können Sie Platzhaltervariablen verwenden und diese aus der enthaltenden Vorlage ersetzen.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

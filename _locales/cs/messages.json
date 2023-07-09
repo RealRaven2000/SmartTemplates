@@ -833,7 +833,13 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}V současné době pracuji na převodu doplňku SmartTemplates pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}"
+    "message": "{P1}Většinou jsem dokončil konverzi $addonName$ pro nové uživatelské rozhraní Thunderbird SuperNova. Od nynějška můžete Thunderbird aktualizovat na novou verzi 115.{P2} {P1}Podrobnosti a zpětnou vazbu o změnách a probíhající práci najdete na: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Protože tato práce je výhradně financované z prodeje licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat SmartTemplates v budoucnu."
@@ -1758,7 +1764,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Nová funkce {{%deleteForwardedBody%}} odstraní tělo původního e-mailu při přeposílání inline. {L2} {L1}Příkazy, které vkládají obsah ze souborů, mají nyní přístup k nadřazeným složkám pomocí {{../}}, např.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Vylepšení ve Správci šablon: Zobrazení kategorie v seznamu pro snazší navigaci. {L2} {L1} Do dialogového okna licencování přidána sekce cen {L2} {L1} Opraven počet dní zbývajících v licenci zaokrouhlením nahoru {L2}"
+    "message": "{L1}Uživatelské rozhraní: Rozbalovací nabídky šablon se nyní zobrazují prostřednictvím vyhrazených tlačítek na novém jednotném panelu nástrojů a v oblasti záhlaví zprávy. Thunderbird již neumožňuje upravovat stávající tlačítka pomocí rozevíracího seznamu. {L2} {L1}Nová možnost automatického opětovného použití poslední externí šablony [issue 243]{L2}{L1}Podporuje {{%replaceText%}} a {{%deleteText%}} pro úpravu html, který byl importován pomocí {{%file()%}}. Tímto způsobem můžete použít zástupné proměnné a nahradit je z šablony, která obsahuje.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

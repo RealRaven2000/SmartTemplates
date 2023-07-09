@@ -791,7 +791,13 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2}"
+    "message": "{P1}Večinoma sem dokončal pretvorbo $addonName$ za novi uporabniški vmesnik Thunderbird SuperNova. Od zdaj naprej lahko posodobite Thunderbird na novo različico 115.{P2} {P1}Za podrobnosti in povratne informacije o spremembah in delu, ki poteka, preberite: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti."
@@ -1690,7 +1696,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija {{%deleteForwardedBody%}} odstrani telo izvirnega e-poštnega sporočila pri posredovanju v vrstici. {L2} {L1}Ukazi, ki vstavljajo vsebino iz datotek, lahko zdaj dostopajo do nadrejenih map z {{../}}, npr.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Izboljšave v upravitelju predlog: Prikaži kategorijo na seznamu za lažjo navigacijo. {L2} {L1} Dodan razdelek s cenami v pogovorno okno za licenciranje {L2} {L1} Popravljeno število preostalih dni v licenci z zaokroževanjem navzgor {L2}"
+    "message": "{L1}Uporabniški vmesnik: Spustni meniji predlog so zdaj prikazani prek namenskih gumbov v novi poenoteni orodni vrstici in območju glave sporočila. Thunderbird ne dovoljuje več spreminjanja obstoječih gumbov s spustnim menijem. {L2} {L1}Nova možnost za samodejno ponovno uporabo zadnje zunanje predloge [issue 243]{L2}{L1}Podpira {{%replaceText%}} in {{%deleteText%}} za spreminjanje html-ja, ki je bil uvožen z {{%file()%}}. Na ta način lahko uporabite spremenljivke nadomestnih znakov in jih zamenjate iz vsebovalne predloge.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

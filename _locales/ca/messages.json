@@ -842,7 +842,13 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}Actualment estic treballant en la conversió del complement SmartTemplates per a la nova interfície d'usuari de Thunderbird SuperNova. Això s'implementarà a la propera versió principal de Thunderbird 115 l'estiu de 2023.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 213]{P2}"
+    "message": "{P1}La majoria he completat la conversió de $addonName$ per a la nova interfície d'usuari del Thunderbird SuperNova. A partir d'ara, podeu actualitzar Thunderbird a la nova versió 115.{P2} {P1}Per obtenir més detalls i donar comentaris sobre els canvis i el treball en curs, llegiu: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Com que aquest treball és exclusivament finançat per la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessat a utilitzar SmartTemplates en el futur."
@@ -1758,7 +1764,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} La nova funció {{%deleteForwardedBody%}} elimina el cos del correu electrònic original quan es reenvia en línia. {L2} {L1}Les ordres que insereixen contingut dels fitxers ara poden accedir a les carpetes principals amb {{../}}, p. ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Millores al Gestor de plantilles: Mostra la categoria a la llista per facilitar la navegació. {L2} {L1} S'ha afegit una secció de preus al quadre de diàleg de llicència {L2} {L1} S'ha corregit el nombre de dies restants en llicència arrodonint {L2}"
+    "message": "{L1}Interfície d'usuari: els menús desplegables de les plantilles ara es mostren mitjançant botons dedicats a la nova barra d'eines unificada i a l'àrea de capçalera del missatge. Thunderbird ja no permet modificar els botons existents amb un menú desplegable. {L2} {L1}Nova opció per reutilitzar automàticament la darrera plantilla externa [issue 243]{L2}{L1}Admet {{%replaceText%}} i {{%deleteText%}} per modificar l'html que s'ha importat amb {{%file()%}}. D'aquesta manera podeu utilitzar variables de marcador de posició i substituir des de la plantilla que la conté.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

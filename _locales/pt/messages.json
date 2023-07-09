@@ -812,7 +812,13 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento SmartTemplates para a nova interface do usuário Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}"
+    "message": "{P1}Concluí quase toda a conversão de $addonName$ para a nova interface do usuário do Thunderbird SuperNova. A partir de agora você pode atualizar o Thunderbird para a nova versão 115.{P2} {P1}Para mais detalhes e para dar feedback sobre as mudanças e o trabalho em andamento, leia: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Como este trabalho é exclusivamente financiado pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar SmartTemplates no futuro."
@@ -1722,7 +1728,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} A nova função {{%deleteForwardedBody%}} remove o corpo do e-mail original ao encaminhar em linha. {L2} {L1}Comandos que inserem conteúdo de arquivos agora podem acessar pastas pai com {{../}}, por exemplo: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Melhorias no gerenciador de modelos: Mostrar categoria na lista para facilitar a navegação. {L2} {L1} Seção de preços adicionada à caixa de diálogo de licenciamento {L2} {L1} Corrigido o número de dias restantes na licença arredondando para cima {L2}"
+    "message": "{L1}Interface do usuário: os menus suspensos do modelo agora são exibidos por meio de botões dedicados na nova barra de ferramentas unificada e na área do cabeçalho da mensagem. O Thunderbird não permite mais modificar os botões existentes com um menu suspenso. {L2} {L1}Nova opção para reutilizar automaticamente o último modelo externo [issue 243]{L2}{L1}Suporta {{%replaceText%}} e {{%deleteText%}} para modificar html que foi importado usando {{%file()%}}. Dessa forma, você pode usar variáveis de espaço reservado e substituí-las do modelo que as contém.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

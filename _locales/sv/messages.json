@@ -842,7 +842,13 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}Jag arbetar för närvarande med konverteringen av SmartTemplates-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 under sommaren 2023.{P2} {P1}Du kan läsa om den aktuella utvecklingen av detta arbete här: [issue 213]{P2}"
+    "message": "{P1}Jag har mestadels slutfört konverteringen av $addonName$ för det nya Thunderbird SuperNova-gränssnittet. Från och med nu kan du uppdatera Thunderbird till den nya versionen 115.{P2} {P1}För detaljer och för att ge feedback om ändringarna och pågående arbete läs: [utgåva 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Eftersom detta arbete är exklusivt finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda SmartTemplates i framtiden."
@@ -1782,7 +1788,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny {{%deleteForwardedBody%}}-funktion tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. {L2} {L1} Kommandon som infogar innehåll från filer kan nu komma åt överordnade mappar med {{../}}, t.ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Förbättringar i mallhanteraren: Visa kategori i listan för enklare navigering. {L2} {L1} Lade till prissektion i licensdialogrutan {L2} {L1} Korrigerade antalet dagar kvar i licensen genom att avrunda uppåt {L2}"
+    "message": "{L1}Användargränssnitt: Mallens rullgardinsmenyer visas nu via dedikerade knappar i det nya enhetliga verktygsfältet och meddelanderubriken. Thunderbird tillåter inte längre modifiering av befintliga knappar med en rullgardinsmeny. {L2} {L1}Nytt alternativ för att automatiskt återanvända den senaste externa mallen [issue 243]{L2}{L1}Stöder {{%replaceText%}} och {{%deleteText%}} för att ändra html som importerades med {{%file()%}}. På så sätt kan du använda platshållarvariabler och ersätta dem från den innehållande mallen.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
