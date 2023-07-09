@@ -162,7 +162,9 @@ async function onLoad(activatedWhileWindowOpen) {
       // add more listeners here...
     }
   }
-  
+
+  // initialise all menus
+  window.SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 
 
 
