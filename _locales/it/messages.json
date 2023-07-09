@@ -1262,6 +1262,9 @@
   "st.menu.docs": {
     "message": "Documentazione"
   },
+  "st.menu.docs.premium": {
+    "message": "Funzionalità premium…"
+  },
   "st.menu.docs.variables": {
     "message": "Variabili e comandi…"
   },

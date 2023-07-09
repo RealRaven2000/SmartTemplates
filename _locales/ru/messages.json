@@ -1316,6 +1316,9 @@
   "st.menu.docs": {
     "message": "Документация"
   },
+  "st.menu.docs.premium": {
+    "message": "Премиум-функции…"
+  },
   "st.menu.docs.variables": {
     "message": "Переменные и команды…"
   },

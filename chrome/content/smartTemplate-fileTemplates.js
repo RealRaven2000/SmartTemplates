@@ -948,7 +948,6 @@ SmartTemplate4.fileTemplates = {
 	
   initMenusWithReset: async function() {
     console.log("initMenusWithReset() " + window.document.URL);
-    debugger; 
     const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml"));
     window.SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
     await window.SmartTemplate4.fileTemplates.initMenus(true);

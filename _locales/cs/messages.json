@@ -1349,6 +1349,9 @@
   "st.menu.docs": {
     "message": "Dokumentace"
   },
+  "st.menu.docs.premium": {
+    "message": "Prémiové funkce…"
+  },
   "st.menu.docs.variables": {
     "message": "Proměnné a příkazy…"
   },

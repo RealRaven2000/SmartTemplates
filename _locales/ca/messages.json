@@ -1343,6 +1343,9 @@
   "st.menu.docs": {
     "message": "Documentació"
   },
+  "st.menu.docs.premium": {
+    "message": "Funcions Premium…"
+  },
   "st.menu.docs.variables": {
     "message": "Variables i ordres…"
   },

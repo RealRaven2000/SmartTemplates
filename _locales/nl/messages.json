@@ -1298,6 +1298,9 @@
   "st.menu.docs": {
     "message": "Documentatie"
   },
+  "st.menu.docs.premium": {
+    "message": "Premium eigenschappen…"
+  },
   "st.menu.docs.variables": {
     "message": "Variabelen en opdrachten…"
   },

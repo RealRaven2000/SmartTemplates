@@ -1252,6 +1252,9 @@
   "st.menu.docs": {
     "message": "Τεκμηρίωση"
   },
+  "st.menu.docs.premium": {
+    "message": "Premium Χαρακτηριστικά…"
+  },
   "st.menu.docs.variables": {
     "message": "Μεταβλητές και εντολές…"
   },

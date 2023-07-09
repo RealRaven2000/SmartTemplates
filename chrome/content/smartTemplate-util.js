@@ -31,6 +31,7 @@ SmartTemplate4.Util = {
 	lastTime: 0,
 	AMOHomepage:      "https://addons.thunderbird.net/thunderbird/addon/324497/",
 	PremiumFeaturesPage: "https://smarttemplates.quickfolders.org/premium.html",
+	VariablesPage:    "https://smarttemplates.quickfolders.org/variables.html",
 	SupportHomepage:  "https://smarttemplates.quickfolders.org/index.html",
 	BugPage:          "https://smarttemplates.quickfolders.org/bugs.html",
 	LicensePage:      "https://smarttemplates.quickfolders.org/contribute.html",
@@ -886,7 +887,8 @@ SmartTemplate4.Util = {
 		      util = SmartTemplate4.Util;
 		try {
 			this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-			linkURI = util.makeUriPremium(linkURI);
+		  linkURI = 
+			  linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
 
 			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
 			    ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
@@ -903,19 +905,16 @@ SmartTemplate4.Util = {
 		const Cc = Components.classes,
 		      Ci = Components.interfaces,
 					util = SmartTemplate4.Util;
-		if (util.Application === 'Thunderbird') {
-			let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
-				.getService(Ci.nsIExternalProtocolService);
-			let ioservice = Cc["@mozilla.org/network/io-service;1"].
-						getService(Ci.nsIIOService);
-			service.loadURI(ioservice.newURI(util.makeUriPremium(linkURI), null, null));
-			
-			if(null !== evt)
-				evt.stopPropagation();
-		}
-		else {
-			this.openLinkInBrowserForced(linkURI);
-		}
+		let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
+			.getService(Ci.nsIExternalProtocolService);
+		let ioservice = Cc["@mozilla.org/network/io-service;1"].
+					getService(Ci.nsIIOService);
+		// only add premium info if it is one of the support pages.
+		let uri = 
+			linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : uri;
+		service.loadURI(ioservice.newURI(uri, null, null));
+		
+		if(null !== evt) { evt.stopPropagation(); }			
 	},
 
 	// moved from options.js (then called
@@ -1028,7 +1027,15 @@ SmartTemplate4.Util = {
 
 	showLicensePage: function () { SmartTemplate4.Util.openURLInTab(this.LicensePage); } ,
 	showHomePage: function () { SmartTemplate4.Util.openURLInTab(this.AMOHomepage); } ,
-	showSupportPage: function () { SmartTemplate4.Util.openURLInTab(this.SupportHomepage); window.close();} ,
+	showSupportPage: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.SupportHomepage); 
+	} ,
+	showVariablesPage: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.VariablesPage); 
+	} ,
+	showPremiumFeatures: function () { 
+		SmartTemplate4.Util.openLinkInBrowserForced(this.PremiumFeaturesPage); 
+	} ,
 	showYouTubePage: function () { SmartTemplate4.Util.openLinkInBrowserForced(this.YouTubePage); } ,
 	showAxelAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.AxelAMOPage); } ,
 	showMarkyAMOPage: function () { SmartTemplate4.Util.openURLInTab(this.MarkyAMOPage); } ,
@@ -1041,7 +1048,6 @@ SmartTemplate4.Util = {
     SmartTemplate4.Util.openURLInTab(this.StationeryHelpPage + urlLink); 
   } ,
 	showBeniBelaHomepage: function () { SmartTemplate4.Util.openURLInTab(this.BeniBelaHomepage); } ,
-	showPremiumFeatures: function () { SmartTemplate4.Util.openURLInTab(this.PremiumFeaturesPage); } ,
 	
 
 	showAboutConfig: function(clickedElement, filter) {
@@ -2826,7 +2832,7 @@ SmartTemplate4.Util = {
 
   },
   
-  openPreferences: async function(el=null) { // open legacy preferences
+  openPreferences: async function(el=null, mode="") { // open legacy preferences
     if (SmartTemplate4.Preferences.getMyBoolPref("hasNews")) {
       SmartTemplate4.Util.viewSplashScreen();
       SmartTemplate4.Preferences.setMyBoolPref("hasNews", false);
@@ -2839,7 +2845,14 @@ SmartTemplate4.Util = {
       SmartTemplate4.Util.viewLicense();
     }
     else {
-			window.openDialog("chrome://SmartTemplate4/content/settings.xhtml", "Preferences", "chrome,titlebar,toolbar,dependent,centerscreen,resizable");
+			let params = {inn:{mode:mode}, out:null};			
+			
+			window.openDialog(
+				"chrome://SmartTemplate4/content/settings.xhtml", 
+				"Preferences", 
+				"chrome,titlebar,toolbar,dependent,centerscreen,resizable", 
+				SmartTemplate4,
+				params);
     }
     
   },

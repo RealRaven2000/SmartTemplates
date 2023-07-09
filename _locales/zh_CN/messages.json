@@ -1349,6 +1349,9 @@
   "st.menu.docs": {
     "message": "文档"
   },
+  "st.menu.docs.premium": {
+    "message": "高级功能…"
+  },
   "st.menu.docs.variables": {
     "message": "变量和命令……"
   },

@@ -1365,6 +1365,9 @@
   "st.menu.docs": {
     "message": "Документація"
   },
+  "st.menu.docs.premium": {
+    "message": "Преміум функції…"
+  },
   "st.menu.docs.variables": {
     "message": "Змінні та команди…"
   },

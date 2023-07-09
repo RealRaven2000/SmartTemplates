@@ -387,6 +387,9 @@ SmartTemplate4.Settings = {
             // [issue 121] current shown
             isSwitchCurrentIdentity = false;
           }
+					if (mode=="variables") {
+            isAdvancedPanelOpen = true; 
+					}
           if (inParams.composeType) {
             composeType = inParams.composeType;
           }
@@ -524,10 +527,15 @@ SmartTemplate4.Settings = {
 				break;
 			case 'fileTemplates': // set up file templates.
 				let idMenu = getElement("msgIdentity");
-				if (idMenu)
-					idMenu.selectedIndex = 1;
+				if (idMenu) { idMenu.selectedIndex = 1; }
 				SmartTemplate4.Settings.switchIdentity("fileTemplates", composeType);
 			  break;
+			case "variables": // Open variables tab
+				tabbox.selectedPanel = getElement('variablesFrame');
+				tabbox.selectedIndex = 0;
+			  settings.openAdvanced();  // issue 60
+        isAdvancedPanelOpen = true;
+				break
 		}
 		
 		let panels = getElement('ST4-Panels');

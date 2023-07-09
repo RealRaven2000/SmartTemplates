@@ -1349,6 +1349,9 @@
   "st.menu.docs": {
     "message": "Dokumentointi"
   },
+  "st.menu.docs.premium": {
+    "message": "Premium-ominaisuudet…"
+  },
   "st.menu.docs.variables": {
     "message": "Muuttujat ja komennot…"
   },

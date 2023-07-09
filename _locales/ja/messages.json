@@ -1313,6 +1313,9 @@
   "st.menu.docs": {
     "message": "ドキュメンテーション"
   },
+  "st.menu.docs.premium": {
+    "message": "プレミアム機能…"
+  },
   "st.menu.docs.variables": {
     "message": "変数とコマンド…"
   },

@@ -1,35 +1,18 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.17">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.0">can be found here</a>
 
-<b>Enhancements</b>
+<b>Enhancements / Changes</b>
 <ul>
-<li> New %deleteForwardedBody% function removes the body of the original email when forwarding inline. Can be used to process information from automated mails while removing the original information. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/236">[issue 236]</a> (function requires SmartTemplates Pro license)</li>
-<li> Insert Snippet now supports inserting contents of a CSS file as style block. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/238">[issue 238]</a></li>
-<li> Allow %file()% and %style% command to use ../ to access parent folders of a file <a href="https://github.com/RealRaven2000/SmartTemplates/issues/237">[issue 237]</a>
-
-Examples:
-
-  %file(../faq.html)%
-  %file(../../history/qf-5.16-de.html)%
-  %style(../styles/quickfolders-reminder.css)%
-
-</li>
-<li> Improvements in Template Manager: Show Category in the list for easier navigation. </li>
-<li> Added pricing section to licensing dialog <a href="https://github.com/RealRaven2000/SmartTemplates/issues/232">[issue 232]</a></li>
+<li> User Interface: The template dropdown menus are now displayed through dedicated buttons in the new unified toolbar and the message header area. Thunderbird does not allow modifying existing buttons with a dropdown anymore. </li>
+<li> New option to automatically reuse last external template <a href="https://github.com/RealRaven2000/SmartTemplates/issues/243">[issue 243]</a></li>
+<li> Supports {{%replaceText%}} and {{%deleteText%}} to modify html that was imported using {{%file()%}}. This way you can use placeholder variables and replace them from the containing template.[issue 243]</li>
 </ul>
 
-<b>Bug Fixes / Maintenance</b>
+<b>Known issues / Plans</b>
 <ul>
-<li>
-Corrected the Number of days left in license by rounding up <a href="https://github.com/RealRaven2000/SmartTemplates/issues/234">[issue 234]</a>
-</li>
-</ul>
-
-<b>Miscellaneous</b>
-<ul>
-<li> Added Czech translation to licensing dialog </li>
-<li> SmartTemplates does not trigger "news" unless min ver changes at least. This way test versions can be loaded without always displaying the "News" label on the toolbar / status bar.</li>
+<li>There may still be some stability issues with displaying / updating the template menus.</li>
+<li>Future verisons will hide irrelevant menus (reply list, reply all) based on current context.</li>
 </ul>  
 

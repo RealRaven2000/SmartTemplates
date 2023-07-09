@@ -1301,6 +1301,9 @@
   "st.menu.docs": {
     "message": "Dokumentacja"
   },
+  "st.menu.docs.premium": {
+    "message": "Funkcje premium…"
+  },
   "st.menu.docs.variables": {
     "message": "Zmienne i polecenia…"
   },

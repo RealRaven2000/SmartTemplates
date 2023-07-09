@@ -1337,6 +1337,9 @@
   "st.menu.docs": {
     "message": "文檔"
   },
+  "st.menu.docs.premium": {
+    "message": "高級功能…"
+  },
   "st.menu.docs.variables": {
     "message": "變量和命令……"
   },

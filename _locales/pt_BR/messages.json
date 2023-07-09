@@ -1280,6 +1280,9 @@
   "st.menu.docs": {
     "message": "Documentação"
   },
+  "st.menu.docs.premium": {
+    "message": "Recursos premium…"
+  },
   "st.menu.docs.variables": {
     "message": "Variáveis e Comandos…"
   },

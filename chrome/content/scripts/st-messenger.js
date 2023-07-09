@@ -27,10 +27,9 @@ async function onLoad(activatedWhileWindowOpen) {
   util.logDebug("st-messenger - onLoad(" + activatedWhileWindowOpen + ")...");
 
   // status bar button
-  WL.injectElements(`
+  // <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
   
-  <!-- #### STATUSBAR BUTTON OVERLAY IN MAIN WINDOW #### -->
-  <hbox id="status-bar">
+  WL.injectElements(`<hbox id="status-bar">
     <toolbarbutton id="SmartTemplate4Messenger"
                    class="statusbarpanel-iconic"
                    label="__MSG_smartTemplate4.settings.label__"
@@ -38,7 +37,6 @@ async function onLoad(activatedWhileWindowOpen) {
                    insertafter="totalMessageCount"
                    oncommand="SmartTemplate4.Util.clickStatusIcon(this);"/>
   </hbox>
-
   `);
 
   window.SmartTemplate4.doCommand = async function (el, params={}) {
@@ -97,8 +95,14 @@ async function onLoad(activatedWhileWindowOpen) {
         SmartTemplates.Util.showSupportPage();
         break;
       case "smartTemplates-variables":
-        SmartTemplates.Util.logIssue213("Show Variables Tab");
+        // SmartTemplates.Util.logIssue213("Show Variables Tab");
+        // SmartTemplates.Util.notifyTools.notifyBackground({ func: "openPrefs", page: "variables" });
+        SmartTemplates.Util.openPreferences(null, "variables");
+        SmartTemplates.Util.showVariablesPage();
         break;
+      case "smartTemplates-premium":
+        SmartTemplates.Util.showPremiumFeatures();
+        break
       case "smartTemplates-templatemenus":
         SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
         break;

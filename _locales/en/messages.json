@@ -1383,6 +1383,9 @@
   "st.menu.docs": {
     "message": "Documentation"
   },
+  "st.menu.docs.premium": {
+    "message": "Premium features…"
+  },
   "st.menu.docs.variables": {
     "message": "Variables and Commands…"
   },

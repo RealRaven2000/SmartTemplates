@@ -1361,6 +1361,9 @@
   "st.menu.docs": {
     "message": "Dokumentation"
   },
+  "st.menu.docs.premium": {
+    "message": "Premiumfunktioner…"
+  },
   "st.menu.docs.variables": {
     "message": "Variabler och kommandon…"
   },

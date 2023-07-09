@@ -1290,6 +1290,7 @@ var SmartTemplate4 = {
             <menupopup>
               <menuitem id="smartTemplates-support" label="__MSG_st.menu.supportSite__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-variables" label="__MSG_st.menu.docs.variables__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-premium" label="__MSG_st.menu.docs.premium__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
 
