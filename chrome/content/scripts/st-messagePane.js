@@ -38,7 +38,7 @@ async function onLoad(activatedWhileWindowOpen) {
   </hbox>
   `);
 
-  HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
+  const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
   const contentDoc = window.document;
   let headerButton = contentDoc.getElementById(HEADERBARID);
 

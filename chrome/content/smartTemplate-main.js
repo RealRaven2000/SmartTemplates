@@ -246,7 +246,7 @@ END LICENSE BLOCK
   Version 3.17.1 - WIP
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 242] Update "# licensed days left" at midnight.
-    # [issue 244] allow replaceText and deleteText to affect html that was imported using %file()%
+    # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
 
 
 #################################################
@@ -255,9 +255,11 @@ END LICENSE BLOCK
     # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
     # - new browser action button (WIP)
     # - messageServiceFromURI moved to MailServices
-    # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
+    # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+    # 
+    #
     # deprecated {OS} for file reading.
     // OS.File.read => IOUtils.read
     // OS.Constants.Path.profileDir -> PathUtils.profileDir
@@ -1381,6 +1383,7 @@ var SmartTemplate4 = {
     selectTab: function(evt) {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
+        const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
         SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
         let doc;
         let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
@@ -1393,7 +1396,7 @@ var SmartTemplate4 = {
             doc = browser.contentDocument;  
             break;
         }        
-        let headerButton = contentDoc.getElementById(HEADERBARID);
+        let headerButton = doc.getElementById(HEADERBARID);
         SmartTemplate4.patchHeaderPane(doc, headerButton);
       }
     },
