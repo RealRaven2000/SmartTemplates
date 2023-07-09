@@ -865,6 +865,18 @@
   "pref_defaultCharset_tip": {
     "message": "Utilizza questa codifica dei caratteri se quella delle intestazioni non può essere individuata."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportamento durante la scrittura o la risposta senza selezionare un modello dall'elenco a discesa."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Modello predefinito"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Usa il modello di account."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilizza l'ultimo modello esterno selezionato dal menu a discesa."
+  },
   "pref_dialog.title": {
     "message": "Impostazioni di SmartTemplates"
   },

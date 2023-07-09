@@ -934,6 +934,18 @@
   "pref_defaultCharset_tip": {
     "message": "Když je načítana hlavička, použij tuto znakovou sadu, pokud nemůže být rozpoznána."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Chování při psaní nebo odpovídání bez výběru šablony z rozevíracího seznamu."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Výchozí šablona"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Použije šablonu účtu."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Použijte externí šablonu naposledy vybranou z rozbalovací nabídky."
+  },
   "pref_dialog.title": {
     "message": "Nastavení SmartTemplates"
   },

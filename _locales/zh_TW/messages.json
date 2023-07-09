@@ -940,6 +940,18 @@
   "pref_defaultCharset_tip": {
     "message": "讀取標題時，如果無法確定，請回退到此字符集。"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "未從下拉列表中選擇模板的情況下撰寫或回复時的行為。"
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "默認模板"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "使用帳戶模板。"
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "使用最後從下拉菜單中選擇的外部模板。"
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates 設定"
   },

@@ -940,6 +940,18 @@
   "pref_defaultCharset_tip": {
     "message": "Lors de la lecture des en-têtes, se rabattre sur ce jeu de caractères s'il n'est pas possible de déterminer l'encodage."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportement lors de la rédaction ou de la réponse sans sélectionner de modèle dans la liste déroulante."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Modèle par défaut"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Utilisez le modèle de compte."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilisez le dernier modèle externe sélectionné dans le menu déroulant."
+  },
   "pref_dialog.title": {
     "message": "Options de SmartTemplates"
   },

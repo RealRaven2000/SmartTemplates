@@ -904,6 +904,18 @@
   "pref_defaultCharset_tip": {
     "message": "Al leer los encabezados, restaurar este juego de caracteres si no se puede determinar cuál usar."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportamiento al escribir o responder sin seleccionar una plantilla de la lista desplegable."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Plantilla predeterminada"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Utilice la plantilla de cuenta."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilice la última plantilla externa seleccionada en el menú desplegable."
+  },
   "pref_dialog.title": {
     "message": "Opciones de SmartTemplates"
   },

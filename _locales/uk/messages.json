@@ -950,6 +950,18 @@
   "pref_defaultCharset_tip": {
     "message": "При читанні заголовків, повернутися до цього кодування, якщо вони не можуть бути визначенні."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Поведінка під час написання або відповіді без вибору шаблону зі спадного списку."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Шаблон за замовчуванням"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Використовуйте шаблон облікового запису."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Використовуйте останній зовнішній шаблон, вибраний у спадному меню."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates налаштування"
   },

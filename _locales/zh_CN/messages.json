@@ -934,6 +934,18 @@
   "pref_defaultCharset_tip": {
     "message": "阅读引用头时，如不能确定，则使用此字符集作为后备选择。"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "未从下拉列表中选择模板的情况下撰写或回复时的行为。"
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "默认模板"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "使用帐户模板。"
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "使用最后从下拉菜单中选择的外部模板。"
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates 选项"
   },

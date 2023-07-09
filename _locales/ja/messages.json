@@ -913,6 +913,18 @@
   "pref_defaultCharset_tip": {
     "message": "ヘッダーの文字エンコーディングが判別できない場合には、この文字エンコーディングにフォールバックします。"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "ドロップダウン リストからテンプレートを選択せずに書き込みまたは返信するときの動作。"
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "デフォルトのテンプレート"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "アカウント テンプレートを使用します。"
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "ドロップダウン メニューから最後に選択した外部テンプレートを使用します。"
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates 設定"
   },

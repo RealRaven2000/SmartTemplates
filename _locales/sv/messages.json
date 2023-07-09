@@ -940,6 +940,18 @@
   "pref_defaultCharset_tip": {
     "message": "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Beteende när du skriver eller svarar utan att välja en mall från rullgardinsmenyn."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Standardmall"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Använd kontomallen."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Använd den externa mallen som senast valdes från rullgardinsmenyn."
+  },
   "pref_dialog.title": {
     "message": "Inställningar för SmartTemplates"
   },

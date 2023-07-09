@@ -657,6 +657,18 @@
   "pref_defaultCharset_tip": {
     "message": "Saat membaca header, kembali ke set karakter ini jika tidak dapat ditentukan."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Perilaku saat menulis atau membalas tanpa memilih template dari daftar drop-down."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Templat Bawaan"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Gunakan templat akun."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Gunakan template eksternal yang terakhir dipilih dari menu drop-down."
+  },
   "pref_dialog.title": {
     "message": "Setelan SmartTemplates"
   },

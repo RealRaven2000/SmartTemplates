@@ -892,6 +892,18 @@
   "pref_defaultCharset_tip": {
     "message": "Ob branju glav uporabi ta zasilni nabor znakov, če ga ni mogoče prepoznati."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Vedenje pri pisanju ali odgovoru brez izbire predloge s spustnega seznama."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Privzeta predloga"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Uporabite predlogo računa."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Uporabite zunanjo predlogo, ki je bila nazadnje izbrana v spustnem meniju."
+  },
   "pref_dialog.title": {
     "message": "Nastavitve SmartTemplates"
   },

@@ -880,6 +880,18 @@
   "pref_defaultCharset_tip": {
     "message": "Приликом читања заглавља, врати се на овај скуп знакова, уколико не може да се одреди."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Понашање при писању или одговарању без избора шаблона са падајуће листе."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Подразумевани шаблон"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Користите шаблон налога."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Користите спољни шаблон који је последњи изабран из падајућег менија."
+  },
   "pref_dialog.title": {
     "message": "Поставке SmartTemplates-а"
   },

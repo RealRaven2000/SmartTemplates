@@ -257,7 +257,7 @@ END LICENSE BLOCK
     # - messageServiceFromURI moved to MailServices
     # [issue 236] Remove body of forwarded mail - %deleteForwardedBody%
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # [issue 243] Menu item / Option for reusing last external template
+    # [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
     # deprecated {OS} for file reading.
     // OS.File.read => IOUtils.read
     // OS.Constants.Path.profileDir -> PathUtils.profileDir
@@ -513,6 +513,35 @@ var SmartTemplate4 = {
       }
       ownerWin.SmartTemplate4.fileTemplates.armedQueue = theQueue; // store depleted queue back!
       util.logDebugOptional("fileTemplates", "Found FileTemplate:", theFileTemplate, ownerWin.SmartTemplate4.fileTemplates.armedQueue);
+    }
+
+    // reuse last template for this specific composeType. [issue 243]
+    if (!theFileTemplate && prefs.getMyIntPref("defaultTemplateMethod")==2) {
+      // reuse last external template!
+      let composeType = "";
+      if (!this.smartTemplate.composeCase) {
+        composeType =  this.smartTemplate.setComposeCase(gMsgCompose.type);
+      }
+      try {
+        let setting = "fileTemplates.mru." + composeType;
+        switch(composeType) {
+          case "new":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+          case "rsp":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+          case "fwd":
+            theFileTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+            break;
+        }
+        if (theFileTemplate) {
+          util.logHighlight(`Found previous FileTemplate: `, "yellow", "rgb(0,80,0)", theFileTemplate);
+        }
+      }
+      catch(ex) {
+        util.logHighlight(`Could not retrieve previous file template for composeType ${composeType}`, "yellow", "rgb(0,80,0)");
+      }
     }
     
     if (theFileTemplate) {
@@ -1353,6 +1382,19 @@ var SmartTemplate4 = {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
         SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
+        let doc;
+        let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
+        switch(currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
+          case "mailMessageTab":
+            doc = SmartTemplate4.Util.document3pane;
+            break;
+          case "mail3PaneTab":
+            let browser = SmartTemplate4.Util.document3pane.getElementById("messageBrowser");
+            doc = browser.contentDocument;  
+            break;
+        }        
+        let headerButton = contentDoc.getElementById(HEADERBARID);
+        SmartTemplate4.patchHeaderPane(doc, headerButton);
       }
     },
     openTab: function(evt) {

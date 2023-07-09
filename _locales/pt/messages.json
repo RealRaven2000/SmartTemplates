@@ -901,6 +901,18 @@
   "pref_defaultCharset_tip": {
     "message": "Ao ler cabeçalhos, retroceder a esta codificação se não puder ser determinada."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportamento ao escrever ou responder sem selecionar um modelo na lista suspensa."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Modelo Padrão"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Modelo padrão Use o modelo de conta."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Use o modelo externo selecionado por último no menu suspenso."
+  },
   "pref_dialog.title": {
     "message": "Opções do SmartTemplates"
   },

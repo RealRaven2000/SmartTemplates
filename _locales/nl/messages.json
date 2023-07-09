@@ -886,6 +886,18 @@
   "pref_defaultCharset_tip": {
     "message": "Deze tekenset gebruiken als bij lezen van de headers deze niet kan worden bepaald"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Gedrag bij het schrijven of beantwoorden zonder een sjabloon te selecteren in de vervolgkeuzelijst."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Standaard sjabloon"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Gebruik het accountmodel."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Gebruik de laatst geselecteerde externe sjabloon in het vervolgkeuzemenu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates-instellingen"
   },

@@ -943,6 +943,18 @@
   "pref_defaultCharset_tip": {
     "message": "Εάν δεν μπορεί να προσδιοριστεί κατά την ανάγνωση των κεφαλίδων, χρησιμοποίησε αυτό το σύνολο χαρακτήρων."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Συμπεριφορά όταν γράφετε ή απαντάτε χωρίς να επιλέξετε πρότυπο από την αναπτυσσόμενη λίστα."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Προεπιλεγμένο πρότυπο"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Χρησιμοποιήστε το πρότυπο λογαριασμού."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Χρησιμοποιήστε το εξωτερικό πρότυπο που επιλέχθηκε τελευταία από το αναπτυσσόμενο μενού."
+  },
   "pref_dialog.title": {
     "message": "Ρυθμίσεις SmartTemplates"
   },

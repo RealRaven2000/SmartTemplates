@@ -943,6 +943,18 @@
   "pref_defaultCharset_tip": {
     "message": "Quan llegiu les capçaleres, torneu a aquest conjunt de caràcters si no es pot determinar."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Comportament en escriure o respondre sense seleccionar una plantilla de la llista desplegable."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Plantilla per defecte"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Aplica la plantilla de compte."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Utilitzeu la plantilla externa seleccionada per darrera vegada al menú desplegable."
+  },
   "pref_dialog.title": {
     "message": "Opcions de SmartTemplates"
   },

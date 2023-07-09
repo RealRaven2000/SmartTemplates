@@ -959,6 +959,18 @@
   "pref_defaultCharset_tip": {
     "message": "When reading the headers, fall back to this character set if it cannot be determined."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Behavior when writing or replying without selecting a template from the drop-down list."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Default Template"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Use the account template."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Use the external template last selected from the drop-down menu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates settings"
   },

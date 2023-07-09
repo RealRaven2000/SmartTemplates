@@ -886,6 +886,18 @@
   "pref_defaultCharset_tip": {
     "message": "Beim Einlesen der Header benutzt SmartTemplate diesen character set wenn er nicht ermittelt werden kann"
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Verhalten beim Schreiben oder Antworten ohne Auswahl einer Vorlage aus der Dropdown-Liste."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Standardvorlage"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Die Kontovorlage anwenden."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Die zuletzt aus dem Dropdown-Menü ausgewählte externe Vorlage verwenden."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates Einstellungen"
   },

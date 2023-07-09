@@ -943,6 +943,18 @@
   "pref_defaultCharset_tip": {
     "message": "Luettaessa otsakkeita käytä tätä merkistöä, jos sitä ei pystytä määrittämään."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Käyttäytyminen, kun kirjoitat tai vastaat valitsematta mallia avattavasta luettelosta."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Oletusmalli"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Käytä tilimallia."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Käytä avattavasta valikosta viimeksi valittua ulkoista mallia."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates - Asetukset"
   },

@@ -901,6 +901,18 @@
   "pref_defaultCharset_tip": {
     "message": "Использовать эту кодировку при чтении заголовков, если кодировка не определяется."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Поведение при написании или ответе без выбора шаблона из выпадающего списка."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Шаблон по умолчанию"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Используйте шаблон учетной записи."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Используйте внешний шаблон, выбранный последним из раскрывающегося меню."
+  },
   "pref_dialog.title": {
     "message": "Настройки SmartTemplates"
   },

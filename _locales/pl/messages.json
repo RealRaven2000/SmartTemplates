@@ -886,6 +886,18 @@
   "pref_defaultCharset_tip": {
     "message": "Jeśli nie możesz ustalić zestawu znaków, by przeczytać nagłówek wiadomości, wróć do domyślnego zestawu."
   },
+  "pref_defaultTemplateMethod_about": {
+    "message": "Zachowanie podczas pisania lub odpowiadania bez wybrania szablonu z rozwijanej listy."
+  },
+  "pref_defaultTemplateMethod_title": {
+    "message": "Domyślny szablon"
+  },
+  "pref_defaultTemplateMethod_select_account": {
+    "message": "Skorzystaj z szablonu konta."
+  },
+  "pref_defaultTemplateMethod_select_last": {
+    "message": "Użyj szablonu zewnętrznego wybranego ostatnio z rozwijanego menu."
+  },
   "pref_dialog.title": {
     "message": "SmartTemplates – ustawienia"
   },

@@ -391,8 +391,9 @@ SmartTemplate4.Settings = {
         }
       }
 
-      if (isSwitchCurrentIdentity)
+      if (isSwitchCurrentIdentity) {
         this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
+			}
     }
     catch(ex) {
       util.logException("Settings onLoad() switching account", ex);
@@ -547,6 +548,20 @@ SmartTemplate4.Settings = {
     }
     
     window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
+
+  	const defaultMethod = SmartTemplate4.Preferences.getMyIntPref("defaultTemplateMethod");
+		let selectMethod;
+		switch (defaultMethod) {
+			case 1:
+				selectMethod = getElement("useAccountTemplate");
+				break;
+			case 2:
+				selectMethod = getElement("useLastTemplate");
+				break;
+		}
+		selectMethod.checked = true;
+
+
     
     // dialog buttons are in a shadow DOM which needs to load its own css.
     // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
@@ -1517,7 +1532,7 @@ SmartTemplate4.Settings = {
     }
   } ,
   
-  enablePremiumConfig: function enablePremiumConfig(isEnabled) {
+  enablePremiumConfig: function (isEnabled) {
 		/* future function: enables premium configuration UI
     let getElement      = document.getElementById.bind(document),
         premiumConfig   = getElement('premiumConfig');
@@ -1525,9 +1540,14 @@ SmartTemplate4.Settings = {
 		*/
 		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
 		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
-  },
+		this.enableStandardConfig(isEnabled);
+  } ,
+
+	enableStandardConfig: function(isEnabled) {
+		document.getElementById("useLastTemplate").disabled = !isEnabled;
+	} ,
   
-  showTrialDate: function() {
+	showTrialDate: function() {
 		debugger;
     let licenseDate = document.getElementById('licenseDate'),
         licenseDateLbl = document.getElementById('licenseDateLabel'),
@@ -1586,7 +1606,7 @@ SmartTemplate4.Settings = {
     validationEmailNoMatch.setAttribute("collapsed", true);
 		validationDate.setAttribute("collapsed", false);
 		validationDateSpace.setAttribute("collapsed", false);
-    this.enablePremiumConfig(false);
+    this.enablePremiumConfig(false); //also disables standard features.
     try {
       let niceDate = decryptedDate;
       if (decryptedDate) {
@@ -1600,6 +1620,7 @@ SmartTemplate4.Settings = {
         case "Valid":
 					if (SmartTemplate4.Util.licenseInfo.keyType==2) { // standard license
             showValidationMessage(validationStandard, silent);
+						this.enableStandardConfig(true);
 					}
 					else {
 						showValidationMessage(validationPassed, silent);
@@ -1949,9 +1970,11 @@ SmartTemplate4.Settings = {
 		// focus window?
 	},	
 
-	
+	selectDefaultTemplates: function(el) {
+		SmartTemplate4.Preferences.setMyIntPref("defaultTemplateMethod", el.value);
+	},
 
-};
+}; // Settings
 
 window.document.addEventListener('DOMContentLoaded', 
   SmartTemplate4.Settings.l10n.bind(SmartTemplate4.Settings) , 

@@ -901,7 +901,68 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
 		return null;
 	};
-						
+
+	// [issue 243] set the composeCase and return the SmartTemplate st4composeType (new, rps, fwd)
+	function setComposeCase(composeType) {
+		const msgComposeType = Ci.nsIMsgCompType;
+		let st4composeType = "";
+		switch (composeType) {
+			case msgComposeType.Template: // new type for 1.6 - Thunderbird 52 uses this in "Edit As New" case
+				this.composeCase = 'tbtemplate'; // flags.isThunderbirdTemplate
+				st4composeType = "new"; // was "new" but there should be no processing in templates
+				break;
+			// new message -----------------------------------------
+			case msgComposeType.New:
+			case msgComposeType.NewsPost:
+			case msgComposeType.MailToUrl:
+				this.composeCase = 'new';
+				st4composeType = 'new';
+				break;
+
+			// reply message ---------------------------------------
+			case msgComposeType.Reply:
+			case msgComposeType.ReplyAll:
+			case msgComposeType.ReplyToSender:
+			case msgComposeType.ReplyToGroup:
+			case msgComposeType.ReplyToSenderAndGroup:
+			case msgComposeType.ReplyToList:
+				this.composeCase = 'reply';
+				st4composeType = 'rsp';
+				break;
+
+			// forwarding message ----------------------------------
+			case msgComposeType.ForwardAsAttachment:
+			case msgComposeType.ForwardInline:
+				this.composeCase = 'forward';
+				st4composeType = 'fwd';
+				break;
+
+			// do not process -----------------------------------
+			// (Draft:9/ReplyWithTemplate:12)
+			case msgComposeType.Draft:
+				this.composeCase = 'draft';
+				let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger),
+						msgDbHdr = gMsgCompose.originalMsgURI ? messenger.msgHdrFromURI(gMsgCompose.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr) : null;
+				if(msgDbHdr) {
+					const nsMsgKey_None = 0xffffffff;
+					if (msgDbHdr.threadParent && (msgDbHdr.threadParent != nsMsgKey_None)) {
+						st4composeType = 'rsp'; // just guessing, of course it could be fwd as well
+					}
+					if (msgDbHdr.numReferences == 0)
+						st4composeType = 'new';
+				}
+				break;
+			case msgComposeType.EditAsNew: 
+				this.composeCase = 'editAsNew';
+			case msgComposeType.EditTemplate: 
+				this.composeCase = 'editTemplate';
+			default:
+				this.composeCase = "";
+				break;
+		}		
+    return st4composeType;
+	};
+
 	// -----------------------------------
 	// Add template message
 	async function insertTemplate(startup, flags, fileTemplateSource)	{
@@ -1849,6 +1910,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	// -----------------------------------
 	// Public methods of classSmartTemplate
 	this.insertTemplate = insertTemplate;
+	this.setComposeCase = setComposeCase;
 	this.extractSignature = extractSignature;
   this.getProcessedText = getProcessedText;	
 	this.resetDocument = resetDocument;

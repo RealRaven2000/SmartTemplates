@@ -23,7 +23,7 @@
 <!-- fills full width of window -->
 <hbox id="optionsContainer" flex="1">
 
-	<vbox id="decksContainer" flex="2">
+	<vbox id="decksContainer" flex="1">
 
 		<!-- ######## Creating Identity Dropdown Box ######## -->
 		<hbox align="center" id="identityToolBar">
@@ -563,6 +563,22 @@
 								</hbox>
 							</vbox>
 						</groupbox>
+
+						<groupbox class="transparent" id="defaultTemplateBehaviorGrp">
+							<hbox class="groupbox-title"><label class="header">__MSG_pref_defaultTemplateMethod_title__</label></hbox>
+							<label>__MSG_pref_defaultTemplateMethod_about__</label>
+							<label for="useAccountTemplate">
+								<html:input type="radio" 
+									name="defaultTemplateBehavior" id="useAccountTemplate" value="1" 
+									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
+								/>__MSG_pref_defaultTemplateMethod_select_account__</label>
+							<label for="useLastTemplate">
+								<html:input type="radio" 
+									name="defaultTemplateBehavior" id="useLastTemplate" value="2" 
+									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
+								/>__MSG_pref_defaultTemplateMethod_select_last__</label>
+						</groupbox>
+
 						
 						<groupbox class="transparent">
 							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupSignatures__</label></hbox>
