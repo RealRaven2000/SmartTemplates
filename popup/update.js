@@ -9,8 +9,8 @@ END LICENSE BLOCK */
 
 // whether these are shown depends on the "endSale" variable in popup.js!
 const discountPro = "33%";
-const discountRenewal = "25%";
 const discountUpgrade = "33%";
+const discountRenewal = "25%";
 
   addEventListener("click", async (event) => {
     switch(event.target.id) {
