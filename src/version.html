@@ -346,10 +346,10 @@ permalink: version.html
     </tr>
   </table>  
   
-  <div class="psa announcement">
+  <div id="newsSection">
     <p>
-      This is a brand new version for Thunderbird 115 which is going to be released over the
-      next weeks and which has a completely redesigned new
+      SmartTemplates 6.0 is a brand new version for Thunderbird 115, which is in active process of 
+      release over the next weeks and which has a completely redesigned new
       <a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/"> 
       user interface "Supernova"</a>.
       If you would like to share feedback on this beta version, I recommend that you visit Github 
@@ -380,14 +380,53 @@ permalink: version.html
       
     </li>
     <li> 
-      New option to automatically reuse last external template 
+      New option to automatically reuse last external template. Once you select an external
+      HTML from the dropdown when replying, this will be used for all subsequent replies
+      using Thunderbird's standard reply / reply all buttons.
       <a href="https://github.com/RealRaven2000/SmartTemplates/issues/243">[issue 243]</a>
+      <p>
+        This feature will be available to all users with a valid license (Standard, Pro and Domain) and can be 
+        activated in <i>Global Settings</i>:
+      </p>
+      <img src="img/default-last-template.png" class="screenshot" alt="default last external template"> 
+
     </li>
     <li> 
-      Supports <code class="inline">%replaceText%</code> and <code class="inline">%deleteText%</code> 
-      to modify html that was imported using <code class="inline">%file()%</code>. 
-      This way you can use placeholder variables and replace them from 
-      the containing template. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">[issue 244]</a>
+      <p>
+        Supports <code class="inline">%replaceText%</code> and <code class="inline">%deleteText%</code> 
+        to modify html that was imported using <code class="inline">%file()%</code>. 
+        This way you can use placeholder variables and replace them from 
+        the containing template. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">[issue 244]</a><br>
+        I recommend using the tested syntax <tt>{variable}</tt> for replacement.
+      </p>
+
+      <p>
+        We frequently need to import text fragments ("building blocks") that have a generic message 
+        but need to include some specific keywords, such as a product name or URL. 
+        Previously the following pattern did not work within the text that is imported:
+      </p>
+
+      <p>
+        <pre class="code">  %file("snippets/why-renew.html")%
+  %replaceText("{addonName}","quickFilters")%    
+  %replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%</pre>
+      </p>
+      <p>
+        Contained file (why-renew.html)
+        <pre class="code">  &lt;p&gt;
+    All changes of the Add-on {addonName} can be seen as they are 
+    created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
+  &lt;/p&gt;</pre>
+      </p>
+      <p>
+        Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were 
+        inserted into the template text. 
+        New behavior: First load the file and replace its contents into the template, 
+        then do the text replacements afterwards. As demonstrated in the example above,
+        it can also be used to modify HTML markup and affect things like HTML attributes
+        such as the URL of a web link.
+      </p>
+
     </li>
     
     <h5 class="inList"><span class="inListTitle">Known issues / Work in Progess</span></h5>
