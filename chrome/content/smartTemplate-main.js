@@ -1299,6 +1299,7 @@ var SmartTemplate4 = {
               <menuitem id="smartTemplates-settings-new" label="__MSG_pref_dialog.title__ (NEW)" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-installed" label="Splashscreen - After Installation" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
               <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
             </menupopup>
           </menu>
@@ -1398,7 +1399,9 @@ var SmartTemplate4 = {
             break;
         }        
         let headerButton = doc.getElementById(HEADERBARID);
-        SmartTemplate4.patchHeaderPane(doc, headerButton);
+        if (SmartTemplate4.patchHeaderPane(doc, headerButton)) {
+          SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+        }
       }
     },
     openTab: function(evt) {
@@ -1406,7 +1409,6 @@ var SmartTemplate4 = {
         return `[ mode = ${tab.mode.name}, title = ${tab.title}, tabId = ${tab.tabId} ]`;
       }
       let tabmail = document.getElementById("tabmail");
-      // evt.detail.tabInfo.tabId 
       const newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);
       const RETRY_DELAY = 2500;
       if (newTabInfo) {

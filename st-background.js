@@ -248,6 +248,11 @@ async function main() {
         // Broadcast main windows to run updateTemplateMenus
         messenger.NotifyTools.notifyExperiment({event: "updateTemplateMenus"});
         break;
+
+      case "patchHeaderMenu":
+        // Broadcast about:messenger to run patch / refresh Header Menus
+        messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
+        break;
         
       case "updateSnippetMenus":
         messenger.NotifyTools.notifyExperiment({event: "updateSnippetMenus"});

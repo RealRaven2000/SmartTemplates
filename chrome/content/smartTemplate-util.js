@@ -350,55 +350,6 @@ SmartTemplate4.Util = {
     return (Services.appinfo.OS.indexOf('Linux')>=0);
   } ,
 
-  initTabListener: function() {
-    const util = SmartTemplate4.Util;
-    try {
-      let tabMon = {
-        monitorName: "st4TabMon",
-        onTabTitleChanged() {},
-        onTabOpened(tab, aFirstTab, aOldTab)
-        {
-          if (tab.mode.name != "preferencesTab")
-            return;
-          if (util.getTabMode()=='message') {
-            util.logDebug("tabListener event:" + event);
-          }          
-        }
-      }
-      
-      if (document) {
-        let tabmail = document.getElementById("tabmail");
-        if (!tabmail) return; // we are not in a main window
-        util.logDebug("adding tablistener for tabmail.");
-        // tabmail.registerTabMonitor()
-        let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
-			  tabContainer.addEventListener("TabOpen", (event) => { 
-          let tabInfo = event.detail.tabInfo;
-          if (tabInfo.mode.tabType.name == "mailTab") { //  util.getTabMode(tabInfo)=='message'
-            util.logDebug("tabListener event:" + event);
-						if (!SmartTemplate4.fileTemplates.tabConfigured) {
-            	SmartTemplate4.fileTemplates.initMenus(true);
-						}
-          }
-        });
-			  tabContainer.addEventListener("TabSelect", (event) => { 
-          let tabInfo = event.detail.tabInfo;
-          if (tabInfo.mode.tabType.name == "mailTab") {  //  util.getTabMode(tabInfo)=='message'
-            util.logDebug("tabListener event:" + event);
-						if (!SmartTemplate4.fileTemplates.tabConfigured) {
-							SmartTemplate4.fileTemplates.initMenus(true);
-						}
-          }
-        });
-
-
-      }
-    }
-    catch(ex) {
-      util.logException("initTabListener - ", ex);
-    }
-  },
-
 	get Version() {
     if (SmartTemplate4.Util.addonInfo) {
       SmartTemplate4.Util.logDebug("Version() getter. addonInfo:", SmartTemplate4.Util.addonInfo);
@@ -3129,18 +3080,6 @@ SmartTemplate4.Util.firstRun =
 					+ "\nprev!=current = " + (prev!=current).toString());
 			}
 			
-			// load the templates file and initialize the dropdown menus for write / reply / forward
-      /*
-			setTimeout(
-			  function() {
-          util.logDebug("OLD CALL TO FILETEMPLATES.INITMENUS()...")
-					SmartTemplate4.fileTemplates.initMenus(true); // force a reset of menus!!
-				}, 500
-			);
-      */
-      
-      util.initTabListener(); // need this for initialising fileTemplate menus in single message window
-
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
 
@@ -3494,6 +3433,8 @@ SmartTemplate4.Message = {
 
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 SmartTemplate4.Util.extension = ExtensionParent.GlobalManager.getExtension("smarttemplate4@thunderbird.extension");
+// test:
+// console.log(`SmartTemplates %cLoading notifyTools.js`, `color: white; background: rgb(180,0,0)`);
 Services.scriptloader.loadSubScript(
   SmartTemplate4.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
   SmartTemplate4.Util,

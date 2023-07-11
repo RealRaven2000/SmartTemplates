@@ -966,14 +966,15 @@ SmartTemplate4.fileTemplates = {
    *  }
    */
   initMenus: async function (reset = false, options={}) {
-		const util = SmartTemplate4.Util,
-          prefs = SmartTemplate4.Preferences;
+		const util = SmartTemplate4.Util;
     let loc = "";
-    let isSingleMessageWindow=false;
+    let isSingleMessageWindow = false;
     try { 
       if (window) { loc = window.document.URL; }
     }
     catch(ex) {;}
+
+    util.logDebug(`fileTemplates.initMenus(reset=${reset}) ...\n`, options);
 
     if (window.document.URL.endsWith("messageWindow.xhtml")) { 
       // no tabmail!

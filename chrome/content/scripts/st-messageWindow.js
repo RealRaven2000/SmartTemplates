@@ -29,12 +29,11 @@ async function onLoad(activatedWhileWindowOpen) {
   window.SmartTemplate4.startUp();
   
   if (window.SmartTemplate4.patchUnifiedToolbar()) {
-    window.SmartTemplate4.fileTemplates.initMenusWithReset(); // this func is now async
+    await window.SmartTemplate4.fileTemplates.initMenusWithReset(); 
   }
 
   updateTemplateMenus = window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates);
   window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", updateTemplateMenus);
-
 }
 
 function onUnload(isAddOnShutDown) {
