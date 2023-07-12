@@ -550,7 +550,7 @@ SmartTemplate4.Settings = {
 		this.configExtra2Button();
 		
 		// Stationery replacement :)
-		SmartTemplate4.fileTemplates.loadCustomMenu(true);
+		await SmartTemplate4.fileTemplates.loadCustomMenu(true);
     
     if (mode == 'licenseKey') {
       let txtLicense = getElement('txtLicenseKey');

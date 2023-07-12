@@ -144,7 +144,9 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["patchUnifiedToolbar"] = () => {
     if (window.SmartTemplate4.patchUnifiedToolbar()) {
       window.SmartTemplate4.updateNewsLabels();
+      return "success";
     }
+    return "failed";
   }
 
   mylisteners["forwardWithTemplate"] = 

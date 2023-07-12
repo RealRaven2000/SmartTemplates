@@ -1382,11 +1382,12 @@ var SmartTemplate4 = {
     }
   },
   TabListener: {
-    selectTab: function(evt) {
+    selectTab: async function(evt) {
       const isMailPane = SmartTemplate4.Util.isTabMode (evt.detail.tabInfo, "mail");
       if (isMailPane) {
         const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
-        SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
+        let result = await SmartTemplate4.Util.notifyTools.notifyBackground({func: "patchUnifiedToolbar"});
+        await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"unified"});
         let doc;
         let currentTabMode = SmartTemplate4.Util.getTabMode(gTabmail.selectedTab);
         switch(currentTabMode) { // there are tab modes that have no access to document3pane! e.g. contentTab
@@ -1400,7 +1401,7 @@ var SmartTemplate4 = {
         }        
         let headerButton = doc.getElementById(HEADERBARID);
         if (SmartTemplate4.patchHeaderPane(doc, headerButton)) {
-          SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+          await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
         }
       }
     },

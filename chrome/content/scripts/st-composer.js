@@ -119,8 +119,8 @@ async function onLoad(activatedWhileWindowOpen) {
   await window.SmartTemplate4.composer.startup(); 
 	window.SmartTemplate4.composer.load();
   
-  window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
-  window.SmartTemplate4.composer.initSnippetMenu();
+  await window.SmartTemplate4.composer.initTemplateMenu(); // since this is expensive, let's not call it from ComposeStartup it can be done later.
+  await window.SmartTemplate4.composer.initSnippetMenu();
   
   mylisteners["updateTemplateMenus"] = window.SmartTemplate4.composer.initTemplateMenu.bind(window.SmartTemplate4.composer);
   mylisteners["updateSnippetMenus"] =  window.SmartTemplate4.composer.initSnippetMenu.bind(window.SmartTemplate4.composer);

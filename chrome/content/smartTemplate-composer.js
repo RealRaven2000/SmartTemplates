@@ -138,7 +138,7 @@ SmartTemplate4.composer = {
     );
   } ,
   
-  initSnippetMenu : function() {
+  initSnippetMenu : async function() {
     SmartTemplate4.Util.logDebug("composer.initSnippetMenu() ...");
     // load menu with templates to button-save
     const Ci = Components.interfaces,
@@ -153,14 +153,11 @@ SmartTemplate4.composer = {
       if (cN.tagName == "menuseparator" || cN.tagName == "menuitem" || cN.tagName == "menu" || cN.tagName == "menupopup")
         snippetPopup.removeChild(cN);
     }    
-    
-    fT.loadCustomMenu(false).then(
-      function smartTemplatesLoaded() {
-        let compCase = "snippets",
-            entries = fT.Entries.snippets;
-        fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PLUS the configuration option.
-      }
-    );    
+
+    await  fT.loadCustomMenu(false);
+    let compCase = "snippets",
+        entries = fT.Entries.snippets;
+    fT.configureMenu(entries, snippetPopup, compCase, true); // build appropriate menu, PlUS the configuration option.
   } , 
   
   
