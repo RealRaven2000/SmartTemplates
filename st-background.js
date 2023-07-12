@@ -330,8 +330,8 @@ async function main() {
         }
 
       case "patchUnifiedToolbar":
-        messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
-        break
+        return await messenger.NotifyTools.notifyExperiment({event: "patchUnifiedToolbar"});
+        break;
     }
   });
   

@@ -425,7 +425,7 @@ SmartTemplate4.fileTemplates = {
     let profileDir = PathUtils.profileDir,
         path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
         isExist = await IOUtils.exists(path);
-    if (!isExist) {
+    if (!isExist) { // [issue 227] default smartTemplates.json data
       let defaultContent = `{
         "templatesNew": [
         ],

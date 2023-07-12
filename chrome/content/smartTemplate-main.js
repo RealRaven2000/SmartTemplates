@@ -255,10 +255,11 @@ END LICENSE BLOCK
     # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
     # - new browser action button (WIP)
     # - messageServiceFromURI moved to MailServices
-    # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
-    # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
-    # 
+    # Resolved in beta versions:
+    # b1 [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # b1 [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
+    # b1 [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+    # b2 [issue 227] Avoid error when smartTemplates.json file does not exist
     #
     # deprecated {OS} for file reading.
     // OS.File.read => IOUtils.read

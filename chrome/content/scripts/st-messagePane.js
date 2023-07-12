@@ -92,7 +92,7 @@ async function onLoad(activatedWhileWindowOpen) {
   patchHeaderMenu = async (win = window) => {
     win.SmartTemplate4.WLM = WL;
     if (win.SmartTemplate4.patchHeaderPane.bind(win.SmartTemplate4)) {
-      win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+      await win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
     }
   } 
   window.SmartTemplate4.Util.notifyTools.registerListener(reactNotification);
