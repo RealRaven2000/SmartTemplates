@@ -214,7 +214,7 @@ const discountUpgrade = "33%";
 
     let newsSection = document.getElementById('newsDetail');
     if (newsSection) {
-      newsSection.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection'));
+      newsSection.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('newsSection', addonName));
     }    
 
     let ongoing = document.getElementById('ongoing-work');
