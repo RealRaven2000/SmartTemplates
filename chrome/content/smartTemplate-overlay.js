@@ -1802,7 +1802,9 @@ SmartTemplate4.mimeDecoder = {
 
 SmartTemplate4.MessageHdr = null; // will be overwritten
 
-SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false) {
+SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
+  const clipboardMode = firstPass ? true : false;
+
 	function matchText(regX, fromPart) {
 	  try {
 			if (prefs.isDebugOption('parseModifier')) debugger;
@@ -2033,7 +2035,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false)
       quoteTagsR = msg.match(/%replaceQuotedTags\(.*\)%/g);
       
   /* delete text in template / signature itself */
-	if (matches) {
+	if (!firstPass && matches) {
 		try {
 			util.addUsedPremiumFunction('deleteText');
 			for (let i=0; i<matches.length; i++) {
@@ -2051,7 +2053,7 @@ SmartTemplate4.parseModifier = function(msg, composeType, clipboardMode = false)
 	}
   
   /* replace texts in template / signature itself */
-	if (matchesR) { // replacements in place
+	if (!firstPass && matchesR) { // replacements in place
     try {
       util.addUsedPremiumFunction('replaceText');
       
@@ -3784,7 +3786,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           html = "<img src='" + imgPath + "'" + alt + imageAttributes + " >";
           break;
         default:
-          alert('unsupported file type in %file()%: ' + type + '.');
+          alert(`Unsupported file type in %file()%.\nFilepath: '${path}' \nYou can see more detail in error console.`);
+          util.logHighlight("\nError in loading file due to unknown type.", "yellow", "rgb(80,0,0)",`path: ${path}\ntype: ${type}`);
           html='';
           break;
       }

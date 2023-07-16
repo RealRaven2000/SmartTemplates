@@ -247,6 +247,7 @@ END LICENSE BLOCK
   Version 3.17.1 - WIP
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 242] Update "# licensed days left" at midnight.
+    # [issue 244] allow replaceText and deleteText to affect html that was imported using %file()%
     
 
 =========================
@@ -370,13 +371,13 @@ var SmartTemplate4 = {
     let notifyComposeBodyReady = SmartTemplate4.notifyComposeBodyReady.bind(SmartTemplate4),
         txtWrapper = isWrapper ? "Wrapper=true" : "compose-window-init event";
     SmartTemplate4.isListenerInitialised = true;
-    util.logHighlight("initListener", "yellow");
+    util.logHighlightDebug("initListener", "yellow");
     log('composer', 'Registering State Listener [' + txtWrapper + ']...');
     if (prefs.isDebugOption('composer')) debugger;
     try {
       // await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.BackgroundParser");
       if (!SmartTemplate4.Preferences.isBackgroundParser()) {
-        util.logHighlight("RegisterStateListener", "lightyellow");
+        util.logHighlightDebug("RegisterStateListener", "lightyellow");
         gMsgCompose.RegisterStateListener(SmartTemplate4.stateListener);
       }
       
@@ -394,7 +395,7 @@ var SmartTemplate4 = {
           let idKey = util.getIdentityKey(document);
           stateListener.NotifyComposeBodyReady = function NotifyComposeBodyReadyST() {  //name helps debugging
             // no notification on forward w. empty template
-            util.logHighlight("NotifyComposeBodyReady (wrapped)", "lightyellow");
+            util.logHighlightDebug("NotifyComposeBodyReady (wrapped)", "lightyellow");
             if (gComposeType !== msgComposeType.ForwardInline
                ||
                (SmartTemplate4.pref.getTemplate(idKey, 'fwd', "")!="")
