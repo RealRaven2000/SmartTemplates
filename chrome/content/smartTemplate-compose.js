@@ -1810,7 +1810,7 @@ SmartTemplate4.classSmartTemplate = function() {
 	}; // insertTemplate
 
 	function resetDocument(editor, withUndo) {
-		SmartTemplate4.Util.logHighlight(`resetDocument(withUndo = ${withUndo})`, "yellow", "rgb(0,80,0)");
+		SmartTemplate4.Util.logHighlightDebug(`resetDocument(withUndo = ${withUndo})`, "yellow", "rgb(0,80,0)");
 		editor.resetModificationCount();
 		if (withUndo) {
 			util.logDebugOptional('functions', ' resetting Undo… ' );

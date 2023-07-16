@@ -3754,7 +3754,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             if (!flags.filePaths) {
               flags.filePaths = [];     // make an array so we can nest %file% statements to make fragments
             }
-            util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}`);
+            util.logDebugOptional("fileTemplates", `insertFileLink: Add file to template stack: ${path}\ntype: ${type}`);
             flags.filePaths.push(path);
           }
           break;
@@ -3785,7 +3785,8 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           html = "<img src='" + imgPath + "'" + alt + imageAttributes + " >";
           break;
         default:
-          alert('unsupported file type in %file()%: ' + type + '.');
+          alert(`Unsupported file type in %file()%.\nFilepath: '${path}' \nYou can see more detail in error console.`);
+          util.logHighlight("\nError in loading file due to unknown type.", "yellow", "rgb(80,0,0)",`\npath: ${path}\ntype: ${type}`);
           html='';
           break;
       }

@@ -728,10 +728,15 @@ SmartTemplate4.Util = {
   },
 
 	// optional logging for important points in flow.
-	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+	logHighlightDebug: function(txt, color="white", background="rgb(80,0,0)", ...args) {
 		if (SmartTemplate4.Preferences.isDebug) {
 			console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 		}
+	},
+
+	// forced highlight colored logging
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+		console.log(`SmartTemplates %c${txt}`, `color: ${color}; background: ${background}`, ...args);
 	},
 
 	logDebugOptional: function (optionString, msg) {
