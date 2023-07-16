@@ -3,33 +3,32 @@
 
 The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.17">can be found here</a>
 
+SmartTemplates is now compatible with the latest version of Thunderbird (115.0). This required numerous substantial changes, and rewriting of many functions. This version 3.17.1 backports some of the changes to Thunderbird 102 and earliser.
+
 <b>Enhancements</b>
 <ul>
-<li> New %deleteForwardedBody% function removes the body of the original email when forwarding inline. Can be used to process information from automated mails while removing the original information. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/236">[issue 236]</a> (function requires SmartTemplates Pro license)</li>
-<li> Insert Snippet now supports inserting contents of a CSS file as style block. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/238">[issue 238]</a></li>
-<li> Allow %file()% and %style% command to use ../ to access parent folders of a file <a href="https://github.com/RealRaven2000/SmartTemplates/issues/237">[issue 237]</a>
+<li> Allow %replaceText()%</code> and %deleteText()%</code> to affect content  that was imported using %file()%</code>
+    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">issue 244</a>
 
-Examples:
+We frequently need to import text fragments ("building blocks") that have a generic message but need to include some specific keywords, such as a product name or URL. Previously the following pattern did not work within the text that is imported:
 
-  %file(../faq.html)%
-  %file(../../history/qf-5.16-de.html)%
-  %style(../styles/quickfolders-reminder.css)%
+<pre>%file("snippets/why-renew.html")%
+%replaceText("{addonName}","quickFilters")%    
+%replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%</pre>
 
+Contained file (why-renew.html)
+
+<pre>&lt;p&gt;
+  All changes of the Add-on {addonName} can be seen as they are 
+  created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
+&lt;/p&gt;</pre>
+
+Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were inserted into the template text. 
+New behavior: First load the file and replace its contents into the template, then do the text replacements afterwards. As demonstrated in the example above, it can also be used to modify HTML markup and affect things like HTML attributes such as the URL of a web link.
 </li>
-<li> Improvements in Template Manager: Show Category in the list for easier navigation. </li>
-<li> Added pricing section to licensing dialog <a href="https://github.com/RealRaven2000/SmartTemplates/issues/232">[issue 232]</a></li>
-</ul>
 
-<b>Bug Fixes / Maintenance</b>
-<ul>
-<li>
-Corrected the Number of days left in license by rounding up <a href="https://github.com/RealRaven2000/SmartTemplates/issues/234">[issue 234]</a>
-</li>
+  
+<li> Fixed problem where an invalid HTML signature path could lead to problems in the template.  </li>
+<li>Update Number of days left in license at midnight</li>
 </ul>
-
-<b>Miscellaneous</b>
-<ul>
-<li> Added Czech translation to licensing dialog </li>
-<li> SmartTemplates does not trigger "news" unless min ver changes at least. This way test versions can be loaded without always displaying the "News" label on the toolbar / status bar.</li>
-</ul>  
 
