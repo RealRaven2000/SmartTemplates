@@ -858,7 +858,13 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}I am currently working on the conversion of the SmartTemplates Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}"
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.0). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using SmartTemplates in the future."
@@ -1478,7 +1484,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "March 26th"
+    "message": "July 25th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1747,7 +1753,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} New {{%deleteForwardedBody%}} function removes the body of the original email when forwarding inline. {L2}{L1}Commands that insert contents from files can now access parent folders with {{../}}, e.g. {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Improvements in Template Manager: Show Category in the list for easier navigation. {L2} {L1} Added pricing section to licensing dialog {L2} {L1} Corrected the Number of days left in license by rounding up {L2}"
+    "message": "{L1} Allow {{%replaceText%}} and {{%deleteText%}} functions to affect html that was imported using {{%file()%}}{L2} {L1} Fixed problem where an invalid HTML signature path could lead to problems in the template.{L2} {L1} Update Number of days left in license at midnight {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

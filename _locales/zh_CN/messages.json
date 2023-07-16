@@ -842,7 +842,13 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在为新的 Thunderbird SuperNova UI 转换 SmartTemplates Addon。 这将在 2023 年夏季的 Thunderbird 115 的下一个主要版本中实现。{P2} {P1}您可以在此处阅读有关这项工作的当前进度：[issue 213]{P2} "
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.0) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "因为这项工作是独家的 通过出售许可证获得资金，如果您有兴趣在未来使用 SmartTemplates，请考虑购买许可证或更新之前的许可证."
@@ -1441,7 +1447,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "3月26日"
+    "message": "7月25日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1707,7 +1713,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 新的 {{%deleteForwardedBody%}} 函数在内联转发时删除原始电子邮件的正文。 {L2} {L1} 模板管理器的改进：在列表中显示类别以便于导航。 {L2} {L1}从文件插入内容的命令现在可以使用 {{../}} 访问父文件夹，例如：{{%style(../mystyle.css)%}} [issue 237]{L2} {L1} 在许可对话框中添加了定价部分 {L2} {L1} 通过四舍五入更正了许可剩余天数 {L2}"
+    "message": "{L1}允许 {{%replaceText%}} 和 {{%deleteText%}} 函数影响使用 {{%file()%}} 导入的 html{L2} {L1} 修复了无效 HTML 签名路径可能导致模板出现问题的问题{L2} {L1} 午夜更新许可证剩余天数。 {L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

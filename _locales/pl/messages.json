@@ -797,7 +797,13 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Obecnie pracuję nad konwersją dodatku SmartTemplates do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 213]{P2}"
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.0). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Ponieważ praca ta jest przeznaczona wyłącznie finansowane ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz używać SmartTemplates w przyszłości."
@@ -1396,7 +1402,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 marca"
+    "message": "25 lipca"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1662,7 +1668,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Nowa funkcja {{%deleteForwardedBody%}} usuwa treść oryginalnej wiadomości e-mail podczas przekazywania w tekście. {L2} {L1}Polecenia, które wstawiają zawartość z plików, mogą teraz uzyskiwać dostęp do folderów nadrzędnych za pomocą {{../}}, np.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Ulepszenia w Menedżerze szablonów: Pokaż kategorię na liście, aby ułatwić nawigację. {L2} {L1} Dodano sekcję cenową do okna dialogowego licencjonowania {L2} {L1} Poprawiono liczbę dni pozostałych licencji, zaokrąglając w górę {L2}"
+    "message": "{L1} Zezwól funkcjom {{%replaceText%}} i {{%deleteText%}} na wpływ na kod HTML zaimportowany przy użyciu {{%file()%}} {L2} {L1}Naprawiono problem polegający na tym, że nieprawidłowa ścieżka podpisu HTML mogła prowadzić do problemów w szablonie{L2} {L1} Zaktualizuj liczbę dni pozostałych licencji o północy. {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

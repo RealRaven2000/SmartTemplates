@@ -797,7 +797,13 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}Ich arbeite derzeit an der Konvertierung des SmartTemplates-Addons für die neue Thunderbird SuperNova-Benutzeroberfläche. Diese wird in der nächsten Hauptversion von Thunderbird 115 im Sommer 2023 implementiert.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}"
+    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.0) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Diese Arbeit wird ausschließlich durch den Verkauf von Lizenzen finanziert. Bitte erwägen Sie den Kauf einer Lizenz oder die Verlängerung Ihrer vorigen Lizenz, wenn Sie daran interessiert sind, SmartTemplates in Zukunft zu verwenden."
@@ -1393,7 +1399,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26. März"
+    "message": "25. Juli"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1646,7 +1652,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die neue {{%deleteForwardedBody%}}-Funktion entfernt den Text der ursprünglichen E-Mail bei der Inline-Weiterleitung. {L2} {L1}Befehle, die Inhalte aus Dateien einfügen, können jetzt mit {{../}} auf übergeordnete Ordner zugreifen, z.B.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Verbesserungen im Vorlagen-Manager: Kategorie in der Liste anzeigen für einfachere Navigation. {L2} {L1} Preisabschnitt zum Lizenzierungsdialog hinzugefügt {L2} {L1} Anzahl der verbleibenden Tage in der Lizenz durch Aufrunden korrigiert {L2}"
+    "message": "{L1} Ermöglicht den Funktionen {{%replaceText%}} und {{%deleteText%}}, sich auf HTML auszuwirken, das mit {{%file()%}} importiert wurde.{L2} {L1} Es wurde ein Problem behoben, bei dem ein ungültiger HTML-Signaturpfad zu Problemen in der Vorlage führen konnte.{L2} {L1} Die Anzahl der verbleibenden Tage in der Lizenz wird um Mitternacht aktualisiert.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

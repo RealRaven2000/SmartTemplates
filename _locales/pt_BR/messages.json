@@ -782,7 +782,13 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento SmartTemplates para a nova interface do usuário Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}"
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.0). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Como este trabalho é exclusivamente financiado pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar SmartTemplates no futuro."
@@ -1378,7 +1384,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 de março"
+    "message": "25 de julho"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1631,8 +1637,8 @@
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
-  "|": {
-    "message": "{L1}Suporte usando o parâmetro {{toclipboard}} para copiar dados para a área de transferência várias vezes no mesmo modelo.{L2} {L1}Adicionado um campo de pesquisa de texto na página de variáveis.{L2} {L1}Cores aprimoradas na janela de variáveis ao usar temas escuros.{L2} {L1}Variáveis de cabeçalho reparadas com letras maiúsculas, como {{%Message-Id%}} e {{%Newsgroups%}}{L2}"
+  "whats-new-list": {
+    "message": "{L1} Permitir que as funções {{%replaceText%}} e {{%deleteText%}} afetem o html que foi importado usando {{%file()%}} {L2} {L1} Corrigido o problema em que um caminho de assinatura HTML inválido poderia levar a problemas no modelo{L2} {L1} Atualização Número de dias restantes na licença à meia-noite. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

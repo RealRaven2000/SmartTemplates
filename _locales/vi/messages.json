@@ -131,7 +131,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "ngày 26 tháng 3"
+    "message": "ngày 25 tháng 7"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -262,7 +262,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Hàm {{%deleteForwardedBody%}} mới sẽ xóa phần nội dung của email gốc khi chuyển tiếp nội tuyến. {L2} {L1} Các lệnh chèn nội dung từ tệp hiện có thể truy cập thư mục mẹ bằng {{../}}, ví dụ: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Cải tiến trong Trình quản lý Mẫu: Hiển thị Danh mục trong danh sách để điều hướng dễ dàng hơn. {L2} {L1} Đã thêm phần đặt giá vào hộp thoại cấp phép {L2} {L1} Đã sửa Số ngày còn lại trong giấy phép bằng cách làm tròn {L2}"
+    "message": "{L1} Cho phép các hàm {{%replaceText%}} và {{%deleteText%}} ảnh hưởng đến html được nhập bằng {{%file()%}} {L2} {L1} Đã khắc phục sự cố trong đó đường dẫn chữ ký HTML không hợp lệ có thể dẫn đến sự cố trong mẫu {L2} {L1} Cập nhật Số ngày còn lại trong giấy phép vào lúc nửa đêm. {L2} "
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -839,7 +839,13 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 SmartTemplates Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 213]{P2} "
+    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird (115.0) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2} {P1}您可以在此處了解這項工作的當前進展：[issue 213]{P2} ",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "因為這項工作是獨家的 通過出售許可證獲得資金，如果您有興趣在未來使用 SmartTemplates，請考慮購買許可證或更新之前的許可證"
@@ -1429,7 +1435,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "3月26日"
+    "message": "7月25日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1683,7 +1689,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 新的 {{%deleteForwardedBody%}} 函數在內聯轉發時刪除原始電子郵件的正文。 {L2} {L1}從文件插入內容的命令現在可以使用 {{../}} 訪問父文件夾，例如：{{%style(../mystyle.css)%}} [issue 237]{L2} {L1} 模板管理器的改進：在列表中顯示類別以便於導航。 {L2} {L1} 在許可對話框中添加了定價部分 {L2} {L1} 通過四捨五入更正了許可剩余天數 {L2}"
+    "message": "{L1} 允許 {{%replaceText%}} 和 {{%deleteText%}} 函數影響使用 {{%file()%}} 導入的 html{L2} {L1}修復了無效 HTML 簽名路徑可能導致模板出現問題的問題{L2} {L1}午夜更新許可證剩余天數。{L2}"
   },
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"

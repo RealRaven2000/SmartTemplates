@@ -845,7 +845,13 @@
     "message": "Dernières nouvelles"
   },
   "newsSection": {
-    "message": "{P1}Je travaille actuellement sur la conversion de l'addon SmartTemplates pour la nouvelle interface utilisateur Thunderbird SuperNova. Cela sera implémenté dans la prochaine version majeure de Thunderbird 115 à l'été 2023.{P2} {P1}Vous pouvez lire l'avancement actuel de ce travail ici : [issue 213]{P2}"
+    "message": "{P1}$addonName$ est désormais compatible avec la dernière version de Thunderbird (115.0). Cela a nécessité de nombreux changements substantiels et la réécriture de nombreuses fonctions.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Comme ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler votre précédente si vous souhaitez utiliser SmartTemplates à l'avenir."
@@ -1444,7 +1450,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 mars"
+    "message": "25 juillet"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1710,7 +1716,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} La nouvelle fonction {{%deleteForwardedBody%}} supprime le corps de l'e-mail d'origine lors du transfert en ligne. {L2} {L1} Améliorations dans le gestionnaire de modèles : affichez la catégorie dans la liste pour faciliter la navigation. {L2} {L1} Ajout d'une section de tarification à la boîte de dialogue de licence {L2} {L1} Correction du nombre de jours restants dans la licence en arrondissant {L2}"
+    "message": "{L1} Autoriser les fonctions {{%replaceText%}} et {{%deleteText%}} à affecter le code HTML importé à l'aide de {{%file()%}} {L2} {L1} Correction d'un problème où un chemin de signature HTML non valide pouvait entraîner des problèmes dans le modèle {L2} {L1} Mise à jour Nombre de jours restants en licence à minuit. {L2} "
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

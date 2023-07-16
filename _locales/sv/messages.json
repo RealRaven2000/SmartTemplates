@@ -842,7 +842,13 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}Jag arbetar för närvarande med konverteringen av SmartTemplates-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 under sommaren 2023.{P2} {P1}Du kan läsa om den aktuella utvecklingen av detta arbete här: [issue 213]{P2}"
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.0). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Eftersom detta arbete är exklusivt finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda SmartTemplates i framtiden."
@@ -1456,7 +1462,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 mars"
+    "message": "25 juli"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1725,7 +1731,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Ny {{%deleteForwardedBody%}}-funktion tar bort brödtexten i det ursprungliga e-postmeddelandet vid vidarebefordran inline. {L2} {L1} Kommandon som infogar innehåll från filer kan nu komma åt överordnade mappar med {{../}}, t.ex.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Förbättringar i mallhanteraren: Visa kategori i listan för enklare navigering. {L2} {L1} Lade till prissektion i licensdialogrutan {L2} {L1} Korrigerade antalet dagar kvar i licensen genom att avrunda uppåt {L2}"
+    "message": "{L1}Tillåt funktionerna {{%replaceText%}} och {{%deleteText%}} att påverka html som importerades med {{%file()%}} {L2} {L1} Fixat problem där en ogiltig HTML-signatursökväg kunde leda till problem i mallen {L2} {L1} Uppdatering Antal dagar kvar i licensen vid midnatt. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

@@ -779,7 +779,13 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo SmartTemplates per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [numero 213]{P2}"
+    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird (115.0). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Poiché questo lavoro è esclusivamente finanziato dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare SmartTemplates in futuro."
@@ -1357,7 +1363,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26 marzo"
+    "message": "25 luglio"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1617,7 +1623,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} La nuova funzione {{%deleteForwardedBody%}} rimuove il corpo dell'email originale durante l'inoltro in linea. {L2} {L1}I comandi che inseriscono contenuti dai file ora possono accedere alle cartelle principali con {{../}}, ad es.: {{%style(../mystyle.css)%}} [issue 237]{L2}{L1} Miglioramenti in Gestione modelli: mostra la categoria nell'elenco per una navigazione più semplice. {L2} {L1} Aggiunta la sezione dei prezzi alla finestra di dialogo della licenza {L2} {L1} Corretto il numero di giorni rimanenti nella licenza arrotondando per eccesso {L2}"
+    "message": "{L1}Consenti alle funzioni {{%replaceText%}} e {{%deleteText%}} di influenzare l'html che è stato importato usando {{%file()%}}.{L2} {L1}Risolto il problema per cui un percorso di firma HTML non valido poteva causare problemi nel modello{L2} {L1} Aggiorna Numero di giorni rimasti in licenza a mezzanotte.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

@@ -791,7 +791,13 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Trenutno delam na pretvorbi dodatka SmartTemplates za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [issue 213]{P2}"
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.0). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Ker je to delo izključno financira s prodajo licenc, razmislite o nakupu licence ali podaljšanju prejšnje, če vas zanima uporaba SmartTemplates v prihodnosti."
@@ -1405,7 +1411,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "26. marec"
+    "message": "25. julij"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1665,7 +1671,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Nova funkcija {{%deleteForwardedBody%}} odstrani telo izvirnega e-poštnega sporočila pri posredovanju v vrstici. {L2} {L1}Ukazi, ki vstavljajo vsebino iz datotek, lahko zdaj dostopajo do nadrejenih map z {{../}}, npr.: {{%style(../mystyle.css)%}} [issue 237]{L2} {L1} Izboljšave v upravitelju predlog: Prikaži kategorijo na seznamu za lažjo navigacijo. {L2} {L1} Dodan razdelek s cenami v pogovorno okno za licenciranje {L2} {L1} Popravljeno število preostalih dni v licenci z zaokroževanjem navzgor {L2}"
+    "message": "{L1} Dovoli, da funkcije {{%replaceText%}} in {{%deleteText%}} vplivajo na html, ki je bil uvožen z uporabo {{%file()%}} {L2} {L1} Odpravljena težava, pri kateri bi lahko neveljavna pot podpisa HTML povzročila težave v predlogi{L2} {L1} Posodobi Število preostalih dni v licenci ob polnoči.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
