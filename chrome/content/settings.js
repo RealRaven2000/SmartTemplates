@@ -1439,7 +1439,7 @@ SmartTemplate4.Settings = {
                   // force appending correct file extension!
                   if (!path.toLowerCase().endsWith('.json'))
                     path += '.json';
-                  let promiseWrite = IOUtils.writeJSON(path, jsonData, { encoding: "utf-8"}); // OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+                  let promiseWrite = IOUtils.writeUTF8(path, jsonData); // OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
                   promiseWrite.then(
                     function saveSuccess(byteCount) {
                       util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
