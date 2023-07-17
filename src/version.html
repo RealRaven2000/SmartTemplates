@@ -210,10 +210,12 @@ permalink: version.html
 
 <a id="4.0"> &nbsp; </a>
 <a id="4.0b1"> &nbsp; </a>
+<a id="4.0b2"> &nbsp; </a>
+<a id="4.0b3"> &nbsp; </a>
 <li>
   <h4>
-		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-      Version 4.0b1 - WIP</a>
+		<a href="https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/?page=1#version-4.0b2">
+      Version 4.0b3 - 17/07/2023</a>
 		<br>
 		<span class="appWrapper">
 			<span class="thunderbird">112.* - 115.0</span> 
@@ -365,6 +367,19 @@ permalink: version.html
   
 
   <ul>
+    <h5 class="inList"><span class="inListTitle">Important Maintenance Fixes - 4.0b3</span></h5>
+    <li>
+      Fixed a bug which broke the template menus when modifying 
+      (the menus were saved in a broken format). 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/247">[issue 247]</a>
+    </li>
+    <li>
+      The <code>%recipient%</code> variable will now update to the correct address when 
+      inserting it from a smart fragment in a reply, even after it was 
+      changed manually.
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/248">[issue 248]</a>
+    </li>
+
     <h5 class="inList"><span class="inListTitle">Enhancements / Changes</span></h5>
     <li> 
       <p>
@@ -438,6 +453,7 @@ permalink: version.html
     
     <h5 class="inList"><span class="inListTitle">Known issues / Work in Progess</span></h5>
     <b>Known issues / Plans</b>
+
     <li>
       There may still be some stability issues with displaying / updating the template menus.</li>
     <li>
