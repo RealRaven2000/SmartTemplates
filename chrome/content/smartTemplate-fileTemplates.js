@@ -542,8 +542,8 @@ SmartTemplate4.fileTemplates = {
           let entity = fileTemplates.Entries || '',
               outString = JSON.stringify(entity, null, '  '); // prettify
           try {
-            // let theArray = new Uint8Array(outString);
-            let promise = IOUtils.writeJSON(path, outString, { encoding: "utf-8"});
+            // let theArray = new Uint8Array(outString); // writeJSON
+            let promise = IOUtils.writeUTF8(path, outString);
             promise.then(
               function saveSuccess(byteCount) {
                 util.logDebug ('successfully saved ' + fileTemplates.entriesLength + ' bookmarks [' + byteCount + ' bytes] to file');
@@ -1448,6 +1448,12 @@ SmartTemplate4.fileTemplates = {
     let theFileTemplate = entry;
     let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(theFileTemplate);
     let html = fileTemplateSource.HTML;
+
+    // update recipients!!
+    try {
+      Recipients2CompFields(gMsgCompose.compFields);
+    } catch (ex) { SmartTemplate4.Util.logException("insertFileEntryInComposer() updating compFields.", ex); }
+
     const isFormatCSS = (theFileTemplate.path.endsWith(".css"));
     if (!html) {
       html = tmpTemplate.Text;
