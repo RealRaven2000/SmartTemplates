@@ -77,8 +77,11 @@ async function addMenuEntries(entries, parentId) {
               const manifest = await messenger.runtime.getManifest();
               // get pure version number / remove pre123 indicator
               let installedVersion = manifest.version.replace(/pre.*/,""); 
+              if (isDebug) console.log(`SmartTemplates Update:  old=${ver}  new=${installedVersion}`);
               // compare versions to support beta builds
-              if (compareVersions(installedVersion,ver)>1) { 
+              // hardcode "4.0" for now (from prerelease users)
+              // we probably need to manage this with a separate flag.
+              if (compareVersions(installedVersion,ver)>0 || ver=="4.0") { 
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});

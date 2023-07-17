@@ -243,7 +243,7 @@ END LICENSE BLOCK
     # do not trigger "news" unless min ver changes at least.
     #
 
-  Version 3.17.1 - WIP
+  Version 3.17.1 - 16/07/2023
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 242] Update "# licensed days left" at midnight.
     # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
@@ -260,12 +260,13 @@ END LICENSE BLOCK
     # b1 [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
     # b1 [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
     # b2 [issue 227] Avoid error when smartTemplates.json file does not exist
-    #
+    # b3 [issue 247] Regression - saving template menus saves invalid smartTemplates.json file
+    # b3 [issue 248] %recipient% uses the original "from" address when replying
     # deprecated {OS} for file reading.
     // OS.File.read => IOUtils.read
     // OS.Constants.Path.profileDir -> PathUtils.profileDir
     // OS.Path.* -> PathUtils.*
-    // OS.File.writeAtomic -> IOUtils.writeJSON
+    // OS.File.writeAtomic -> IOUtils.writeUTF8
     // JSON.parse(CustomMenuData) -> JSON.parse(new TextDecoder().decode(CustomMenuData))
     
 

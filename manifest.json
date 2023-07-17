@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "4.0b2",
+  "version": "4.0b3",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author)",
@@ -36,7 +36,8 @@
     "default_title": "SmartTemplates",
     "default_popup": "chrome/content/smarttemplates_main_popup.html",
     "default_windows": [ "normal" ],
-    "allowed_spaces": ["mail"]
+    "allowed_spaces": ["mail"],    
+    "type" : "menu"
   },  
   "message_display_action" : {
     "browser_style" : true,
