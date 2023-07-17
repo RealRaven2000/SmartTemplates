@@ -1565,15 +1565,14 @@ SmartTemplate4.Util = {
         nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
       }
       // tidy up unresolved variables, if forced!
-      if (nL.resolved || forceDelete)
+      if (nL.resolved || forceDelete) {
         editor.deleteNode(nL.divNode);
+			}
 		}
 	} ,
 	
 	resolveDeferred: async function (editor, el, isReplaceField, nodeList) {
-		const util = SmartTemplate4.Util,
-		      Ci = Components.interfaces,
-		      Cc = Components.classes;
+		const util = SmartTemplate4.Util;
     // [issue 204]  if no nodeList is passed in, this means we can replace immediately   
     // if (!nodeList) nodeList = []; // create a dummy node list for now.
 		let div = el,
@@ -1672,11 +1671,17 @@ SmartTemplate4.Util = {
 						editor.deleteNode(el);
 					}
 				}
-				else
+				else {
 					el.className = "resolved";
+				}
 			}
       else {
-        nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+				if (nodeList) {
+        	nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+				} else {
+					util.logHighlight(`resolveDeferred(isReplaceField:${isReplaceField}) called without nodeList\n`,"white","red", el);
+					util.logToConsole("Did you run template variables from smart snippets menu?\nAre you composing in plaintext mode?");
+				}
       }
 		}
 	} ,
@@ -1806,7 +1811,7 @@ SmartTemplate4.Util = {
     if (!token) return false;
     return RegExp(" " + token + " ", "i").test(
        " bcc cc disposition-notification-to errors-to from mail-followup-to mail-reply-to reply-to" +
-       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to ");
+       " resent-from resent-sender resent-to resent-cc resent-bcc return-path return-receipt-to sender to recipient"); // ALLOW recipient FOR FRAGMENTS.
   } ,
   
 	// new function for manually formatting a time / date string in one go.

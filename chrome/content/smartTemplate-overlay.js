@@ -3107,7 +3107,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 				case "ccname":    token = "cc";   arg = "(name)";   break;
 				case "ccmail":    token = "cc";   arg = "(mail)";   break;
         // [issue 151] universal placeholder for target recipient
-        case "recipient":   
+        case "recipient":   // this will be INCORRECT in fragments! use gMsgCompose.compFields.to instead!
           {
             switch(util.getComposeType()) {
               case "new":
@@ -3505,8 +3505,14 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             }
           }
 					let isStripQuote = util.isAddressHeader(token),
-              theHeader = hdr.get(token.toLowerCase()),  // [issue 211] Newsgroups / Message-Id etc.
-							isFwdArg = false;
+              theHeader,
+              isFwdArg = false;
+
+          if(originalToken=="recipient" && gMsgCompose.compFields && gMsgCompose.compFields.to) {
+            theHeader = gMsgCompose.compFields.to;
+          } 
+          else { theHeader = hdr.get(token.toLowerCase()); }  // [issue 211] Newsgroups / Message-Id etc.
+							
 							
 					if (util.getComposeType()=='fwd') {
 						let fmt = util.splitFormatArgs(arg); // returns array of { field: "fwd", modifier: "" }
@@ -3527,7 +3533,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               return dmy; // this is HTML: we won't escape it.
 							
             token = await util.wrapDeferredHeader(token + arg, (isStripQuote ? "" : "??"), gMsgCompose.composeHTML, (util.getComposeType()=='new'));
-						return token; 
+						return token; // should recipient be restored here?
 					}
 					// <----  early exit for non existent headers, e.g. "from" in Write case
 					else {
