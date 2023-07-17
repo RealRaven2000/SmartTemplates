@@ -1,6 +1,7 @@
 import {Licenser} from "./scripts/Licenser.mjs.js";
 import {SmartTemplates} from "./scripts/st-main.mjs.js";
 import {SmartTemplatesProcess} from "./scripts/st-process.mjs.js";
+import {compareVersions} from "./scripts/mozilla-version-comparator.js";
 
 
 
@@ -17,10 +18,31 @@ const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 var startupFinished = false;
 var callbacks = [];
 
-var ComposeAction = {};
-
-
-
+// Helper function to walk through a menu data structure and create WebExtension
+// menu entries.
+async function addMenuEntries(entries, parentId) {
+  for (let entry of entries) {
+    let config = {
+      id: entry.id,
+      contexts: ["browser_action_menu"],
+    }
+    if (entry.separator) {
+      config.type = "separator";
+    } else {
+      config.title = entry.label || browser.i18n.getMessage(entry.id);
+    }
+    if (parentId) {
+      config.parentId = parentId;
+    }
+    if (entry.disabled) {
+      config.enabled = false;
+    }
+    await browser.menus.create(config);
+    if (entry.subEntries) {
+      await addMenuEntries(entry.subEntries, entry.id);
+    }
+  }
+}
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
@@ -54,8 +76,9 @@ var ComposeAction = {};
               let ver = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.version","0");
               const manifest = await messenger.runtime.getManifest();
               // get pure version number / remove pre123 indicator
-              let installedVersion = manifest.version.replace(/pre*./,""); 
-              if (ver > installedVersion) {
+              let installedVersion = manifest.version.replace(/pre.*/,""); 
+              // compare versions to support beta builds
+              if (compareVersions(installedVersion,ver)>1) { 
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
