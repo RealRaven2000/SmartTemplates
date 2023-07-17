@@ -1779,7 +1779,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Käyttöliittymä: Mallin avattavat valikot näkyvät nyt erillisillä painikkeilla uudessa yhdistetyssä työkalupalkissa ja viestin otsikkoalueella. Thunderbird ei enää salli olemassa olevien painikkeiden muokkaamista pudotusvalikon avulla. {L2} {L1}Uusi vaihtoehto viimeisen ulkoisen mallin automaattiseen uudelleenkäyttöön [issue 243]{L2}{L1}Tukee {{%replaceText%}} ja {{%deleteText%}} HTML-koodin muokkaamiseen, joka tuotiin käyttämällä {{%file()%}}. Tällä tavalla voit käyttää paikkamerkkimuuttujia ja korvata ne sisältävästä mallista.{L2}"
+    "message": "{L1}Korjattu virhe, joka rikkoi mallivalikot muokkauksen yhteydessä (muokkauksen yhteydessä (valikot tallennettiin rikkinäisessä muodossa). [issue 247]{L2}{L1}Muuttuja {{%recipient%}} käyttää nyt oikeaa osoitetta, kun se lisätään vastauksen älykkäästä fragmentista. [issue 248]{L1}Käyttöliittymä: Mallin avattavat valikot näkyvät nyt erillisillä painikkeilla uudessa yhdistetyssä työkalupalkissa ja viestin otsikkoalueella. Thunderbird ei enää salli olemassa olevien painikkeiden muokkaamista pudotusvalikon avulla. {L2} {L1}Uusi vaihtoehto viimeisen ulkoisen mallin automaattiseen uudelleenkäyttöön [issue 243]{L2}{L1}Tukee {{%replaceText%}} ja {{%deleteText%}} HTML-koodin muokkaamiseen, joka tuotiin käyttämällä {{%file()%}}. Tällä tavalla voit käyttää paikkamerkkimuuttujia ja korvata ne sisältävästä mallista.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

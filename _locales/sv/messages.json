@@ -1791,7 +1791,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Användargränssnitt: Mallens rullgardinsmenyer visas nu via dedikerade knappar i det nya enhetliga verktygsfältet och meddelanderubriken. Thunderbird tillåter inte längre modifiering av befintliga knappar med en rullgardinsmeny. {L2} {L1}Nytt alternativ för att automatiskt återanvända den senaste externa mallen [issue 243]{L2}{L1}Stöder {{%replaceText%}} och {{%deleteText%}} för att ändra html som importerades med {{%file()%}}. På så sätt kan du använda platshållarvariabler och ersätta dem från den innehållande mallen.{L2}"
+    "message": "{L1}Fixade en bugg som bröt mallens menyer vid modifiering (vid modifiering (menyerna sparades i ett trasigt format). [issue 247]{L2} {L1}Variabeln {{%recipient%}} använder nu rätt adress när den infogas från ett smart fragment i ett svar. [issue 248]{L2}{L1}Användargränssnitt: Mallens rullgardinsmenyer visas nu via dedikerade knappar i det nya enhetliga verktygsfältet och meddelanderubriken. Thunderbird tillåter inte längre modifiering av befintliga knappar med en rullgardinsmeny. {L2} {L1}Nytt alternativ för att automatiskt återanvända den senaste externa mallen [issue 243]{L2}{L1}Stöder {{%replaceText%}} och {{%deleteText%}} för att ändra html som importerades med {{%file()%}}. På så sätt kan du använda platshållarvariabler och ersätta dem från den innehållande mallen.{L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

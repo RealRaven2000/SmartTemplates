@@ -1731,7 +1731,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Interface do usuário: os menus suspensos do modelo agora são exibidos por meio de botões dedicados na nova barra de ferramentas unificada e na área do cabeçalho da mensagem. O Thunderbird não permite mais modificar os botões existentes com um menu suspenso. {L2} {L1}Nova opção para reutilizar automaticamente o último modelo externo [issue 243]{L2}{L1}Suporta {{%replaceText%}} e {{%deleteText%}} para modificar html que foi importado usando {{%file()%}}. Dessa forma, você pode usar variáveis de espaço reservado e substituí-las do modelo que as contém.{L2}"
+    "message": "{L1}Corrigido um bug que quebrava os menus do modelo ao modificar (ao modificar (os menus eram salvos em um formato quebrado). [issue 247]{L2} {L1}A variável {{%recipient%}} agora usa o endereço correto ao inseri-lo de um fragmento inteligente em uma resposta. [issue 248]{L1}Interface do usuário: os menus suspensos do modelo agora são exibidos por meio de botões dedicados na nova barra de ferramentas unificada e na área do cabeçalho da mensagem. O Thunderbird não permite mais modificar os botões existentes com um menu suspenso. {L2} {L1}Nova opção para reutilizar automaticamente o último modelo externo [issue 243]{L2}{L1}Suporta {{%replaceText%}} e {{%deleteText%}} para modificar html que foi importado usando {{%file()%}}. Dessa forma, você pode usar variáveis de espaço reservado e substituí-las do modelo que as contém.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
