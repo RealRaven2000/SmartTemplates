@@ -1,5 +1,23 @@
 var hackToolbarbutton = {
   
+  updateMenuMRU(menuStructure, doc, reset=false) {
+    function needsConfig(menu) {
+      if (!menu) return false;
+      if (reset) return true;
+      return (!menu.getAttribute('st4configured'));
+    }    
+    for (let item of menuStructure) {
+      let thePopup = this.getMenupopupElement(doc, item.id);
+      if (thePopup && needsConfig(thePopup)) {
+        SmartTemplate4.fileTemplates.configureMenu(
+          SmartTemplate4.fileTemplates.Entries[item.templates], 
+          thePopup, 
+          item.composeType
+        );
+      }            
+    }            
+  }, 
+
   // enable/disable the default action of the button
   allowDefaultAction(window, buttonId, allow = true) {
     let innerButton = window.document.getElementById(`${buttonId}-inner-button`);

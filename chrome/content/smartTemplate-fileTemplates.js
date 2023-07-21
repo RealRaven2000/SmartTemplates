@@ -642,8 +642,9 @@ SmartTemplate4.fileTemplates = {
     }
     try {
       let singleM = Services.wm.getMostRecentWindow("mail:messageWindow");
-      if (window == singleM)
+      if (window == singleM) { // check if current window is a single message
         singleParentWindow = window;
+      }
     }
     catch(ex) {
       
@@ -819,7 +820,7 @@ SmartTemplate4.fileTemplates = {
 				util.logDebugOptional("fileTemplates", "Click event for open file Template - stopped propagation.\n"
 					+ "composeType=" + composeType);
 				// fT.onItemClick(menuitem, popupParent, fT, composeType, theTemplate.path, "File Template"); 
-				fT.onSelectAdHoc(fT, composeType, msgPopup, popupParent, singleParentWindow);
+				fT.onSelectAdHoc(fT, composeType, popupParent, singleParentWindow);
 				return false; 
 			}, 
 			{capture:true } , 
@@ -938,10 +939,9 @@ SmartTemplate4.fileTemplates = {
 		return menupopup;		
 	} ,
 	
-  initMenusWithReset: async function() {
-    console.log("initMenusWithReset() " + window.document.URL);
+  initMenusWithReset: async function() { 
     const isSingleMessage = (window.document.URL.endsWith("messageWindow.xhtml"));
-    window.SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
+    SmartTemplate4.Util.logHighlightDebug("initMenusWithReset()\n","white","#8e0477a4", window.document.URL, isSingleMessage);
     await window.SmartTemplate4.fileTemplates.initMenus(true);
     if (!isSingleMessage && window.gTabmail.currentTabInfo.mode.type == "mailTab") {
       SmartTemplate4.fileTemplates.tabConfigured = true;
@@ -987,18 +987,7 @@ SmartTemplate4.fileTemplates = {
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 
-    function needsConfig(menu) {
-      if (!menu) return false;
-      if (reset) return true;
-      return (!menu.getAttribute('st4configured'));
-    }
-    function isInHeaderArea(popup) { // OBSOLETE
-      let p = popup.parentNode;
-      if (p) p = p.parentNode;
-      if (p && p.id && p.id.startsWith("header-"))
-        return true;
-      return false;
-    }
+
     // remove all old menu items
     function cleanup(doc) {
       // 0) clear all old items if they exist
@@ -1042,7 +1031,6 @@ SmartTemplate4.fileTemplates = {
       });    
     }
 
-		// let toolbar = document.getElementById('mail-bar3');  DEPRECATED IN 115.0b6
     // load current template list
     const fileTemplates = SmartTemplate4.fileTemplates; // closure for the promise, just in case
     try {
@@ -1067,36 +1055,9 @@ SmartTemplate4.fileTemplates = {
         }                       
 
         // this needs to be done from a tab listener too, to work when user updates the add-on from the manager tab
-        for (let item of fileTemplates.uniMenus) {
-          let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
-          if (thePopup && needsConfig(thePopup)) {
-            fileTemplates.configureMenu(
-              fileTemplates.Entries[item.templates], 
-              thePopup, 
-              item.composeType
-            );
-          }            
-        }            
+        SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.uniMenus, doc, reset);
       }
       
-/*          
-      // 1) write new entries --------------------
-      let newMsgPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, "button-newmsg");
-      if (needsConfig(newMsgPopup)) {
-        fileTemplates.configureMenu(fileTemplates.Entries.templatesNew, newMsgPopup, "new");
-      }
-
-      // 2) reply entries     --------------------
-      let rspBtns=["button-reply","button-replyall", "button-replylist"];
-      for (let rspBtn of rspBtns) {
-        //    calling getPopupElement() - if it doesn't exist, the popup will be automatically created & appended to button
-        let replyPopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(window, rspBtn);
-        if (replyPopup && !isInHeaderArea(replyPopup) && needsConfig(replyPopup)) {
-            fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, replyPopup, "rsp");
-        }
-      }
-*/
-
       // 4) ====  preview header area ==== //
       let doc;
 
@@ -1128,41 +1089,11 @@ SmartTemplate4.fileTemplates = {
             util.logException("cleaning msg hdr button:", ex);
           }                       
 
-          for (let item of fileTemplates.msgHdrMenus) {
-            let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
-            if (thePopup && needsConfig(thePopup)) {
-              fileTemplates.configureMenu(
-                fileTemplates.Entries[item.templates], 
-                thePopup, 
-                item.composeType
-              );
-            }            
-          }
+          SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.msgHdrMenus, doc, reset);
         }
         else {
           logDebug("headerToolbox NOT found!");
         }
-/*              
-          // 4.b) (header) reply entries     -------------------- 
-          let hdrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton",
-                      "hdrReplyToSenderButton"]; // ,"button-reply","button-replyall", "button-replylist"
-          for (let hdrBtn of hdrBtns) {
-            let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, hdrBtn);
-            if (needsConfig(popup)) {
-              fileTemplates.configureMenu(fileTemplates.Entries.templatesRsp, popup, "rsp");
-            }
-          }
-          
-          // 4.d) (header) forwarding entries --------------------
-          // what about hdrDualForwardButton => this one was from compactHeader.
-          let hfBtns=['hdrForwardButton','button-forward','hdrDualForwardButton'];
-          for (let hdrBtn of hfBtns) {
-            let popup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, hdrBtn);
-            if (needsConfig(popup)) {
-              fileTemplates.configureMenu(fileTemplates.Entries.templatesFwd, popup, "fwd");
-            }
-          }
-*/   
 
       } // populate message header
     }
@@ -1411,6 +1342,13 @@ SmartTemplate4.fileTemplates = {
 
     // update MRU item!
     // this stores the last entry per compose case.
+    if (!isSnippet) {
+      this.storePreviousTemplate(composeType, entry);
+    }
+
+	} ,
+
+  storePreviousTemplate: function(composeType, entry) {
     const setting = "fileTemplates.mru." + composeType;
     let lastTemplate = JSON.stringify(entry);
     let previousTemplate =  "";
@@ -1420,29 +1358,17 @@ SmartTemplate4.fileTemplates = {
     catch(ex) {}; // using external template for the first time
 
     if (lastTemplate) {
+      // remember fileTemplates.mru.* setting for either of rsp, new, fwd
       SmartTemplate4.Preferences.setStringPref(setting, lastTemplate);
     }
     if (previousTemplate && previousTemplate.path && previousTemplate.path == entry.path ) {
-      util.logDebugOptional("fileTemplates", `same template selected [${entry.label}], no need to patch last used menuitem.`);
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `same template selected [${entry.label}], no need to patch last used menuitem.`);
     }
     else {
-      util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
-      let items = SmartTemplate4.fileTemplates.uniMenus.filter(e => e.composeType == composeType);
-      for (let item of items) {
-        let thePopup = SmartTemplate4.hackToolbarbutton.getMenupopupElement(doc, item.id);
-        if (thePopup) {
-          let oldMenuItem = thePopup.querySelector(".st-mru");
-          if (oldMenuItem) {
-            let newMenuItem = SmartTemplate4.fileTemplates.createTemplateItem(doc, composeType, entry);
-            const singleParentWindow = false; // called from a single message window?? TO DO LATER.
-            SmartTemplate4.fileTemplates.addTemplateEvent(newMenuItem, thePopup.parentNode, SmartTemplate4.fileTemplates, composeType, entry, singleParentWindow);
-            oldMenuItem.replaceWith(newMenuItem);
-          }
-        }            
-      }
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
     }
-
-	} ,
+  } ,
 	
   insertFileEntryInComposer: async function (entry) {
     let theFileTemplate = entry;
@@ -1584,7 +1510,7 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.Util.logDebug("After calling ComposeMessage");
   },
   
-	onSelectAdHoc : function onSelectAdHoc(fileTemplateInstance, composeType, popup, menuParent, singleMsgWindow) {
+	onSelectAdHoc : function(fileTemplateInstance, composeType, menuParent, singleMsgWindow) {
 		// prepare a callback function for "arming" the template file info
 		this.pickFile(
 		  function(localFile) {
@@ -1593,7 +1519,7 @@ SmartTemplate4.fileTemplates = {
 				if (localFile) {
 					// we could potentially parse the file 
 					// and find the <title> tag!
-					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","");
+					let name = localFile.leafName.replace(".html","").replace(".htm","").replace(".css","").replace("_"," ");
 					// should we store folder as default for next time?
 					// prefs.setStringPref('fileTemplates.path',localFile.parent.path); 
 					
@@ -1610,11 +1536,34 @@ SmartTemplate4.fileTemplates = {
             fTMain.armedEntry = fileTemplateInstance.armedEntry; // copy to last main window
           }
             
-          prefs.setStringPref('fileTemplates.instantPath',localFile.parent.path); // store folder as default for next time.
+          prefs.setStringPref('fileTemplates.instantPath', localFile.parent.path); // store folder as default for next time.
 
           let entry = SmartTemplate4.fileTemplates.uniMenus.find(e => e.command == menuParent.getAttribute("controller"));
           if (entry) {
             SmartTemplate4.fileTemplates.fireComposeCommand(entry);
+            // store MRU item and notify background
+            SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+          } else {
+            switch(composeType) {
+              case "snippets":
+                SmartTemplate4.fileTemplates.insertFileEntryInComposer(fileTemplateInstance.armedEntry);
+                break;
+              case "rsp":
+              case "fwd":
+              case "new":
+                if (menuParent && menuParent.id=="smarttemplate4-changeTemplate") {
+                  // store MRU item and notify background
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+                  SmartTemplate4.notifyComposeBodyReady(true, window);
+                } else {
+                  SmartTemplate4.fileTemplates.fireComposeCommand(fileTemplateInstance.armedEntry);
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+                }
+                break
+              default:
+                SmartTemplate4.Util.logToConsole(`File picker callback - unknown composeType: ${composeType}`);
+                break;
+            }
           }
 
 

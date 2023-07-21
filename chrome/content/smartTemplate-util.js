@@ -2490,9 +2490,9 @@ SmartTemplate4.Util = {
    * Installs the toolbar button with the given ID into the given
    * toolbar, if it is not already present in the document.
    *
-   * @toolbarId {string} The ID of the toolbar to install to.
-   * @id {string} The ID of the button to install.
-   * @afterId {string} The ID of the element to insert after. @optional
+   * @param {string} toolbarId The ID of the toolbar to install to.
+   * @param {string} id        The ID of the button to install.
+   * @param {string} afterId   The ID of the element to insert after. @optional
    */	
 	installButton: function installButton(toolbarId, id, afterId) {
     // if (!document.getElementById(id)) {

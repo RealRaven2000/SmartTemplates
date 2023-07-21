@@ -248,41 +248,47 @@ END LICENSE BLOCK
     # [issue 242] Update "# licensed days left" at midnight.
     # [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
 
-
 #################################################
 
-  Version 4.0 - WIP
+  Version 4.0b1 - 10/07/2023
     # [issue 213] Compatibity with Thunderbird 115 (ESR 2023/24)
     # - new browser action button (WIP)
     # - messageServiceFromURI moved to MailServices
-    # Resolved in beta versions:
-    # b1 [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
-    # b1 [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
-    # b1 [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
-    # b2 [issue 227] Avoid error when smartTemplates.json file does not exist
-    # b3 [issue 247] Regression - saving template menus saves invalid smartTemplates.json file
-    # b3 [issue 248] %recipient% uses the original "from" address when replying
     # deprecated {OS} for file reading.
     // OS.File.read => IOUtils.read
     // OS.Constants.Path.profileDir -> PathUtils.profileDir
     // OS.Path.* -> PathUtils.*
     // OS.File.writeAtomic -> IOUtils.writeUTF8
     // JSON.parse(CustomMenuData) -> JSON.parse(new TextDecoder().decode(CustomMenuData))
+    # b1 [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
+    # b1 [issue 243] Menu item / Option for reusing last external template (defaultTemplateMethod)
+    # b1 [issue 244] Allow replaceText and deleteText to affect html that was imported using %file()%
+    # - new browser action button (WIP)
+    # - messageServiceFromURI moved to MailServices
+
+  Version 4.0b2 - 12/07/2023
+    # b2 [issue 227] Avoid error when smartTemplates.json file does not exist
+
+  Version 4.0b3 - 16/07/2023
+    # b3 [issue 247] Regression - saving template menus saves invalid smartTemplates.json file
+    # b3 [issue 248] %recipient% uses the original "from" address when replying
+
+
+  Version 4.0b*** - WIP
+    # [issue 249] composer: open snippet / change template from file directly inserts nothing
+    # If cardbook support is enabled but cardbook disabled this will also prevent fallback to std AB
+    #   (cardbook fallback throws error)
     
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
-  
-  Version 2.x
     # [issue 27] Insert external HTML Templates from a web page URL
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
     # [issue 12] <head> section from templates should be merged into <body>
+    # The "clean up button" is not automatically installed in the composer toolbar.
     # ...
       
-  Version 2.2
-    # Known issues: The "clean up button" is not automatically installed in the composer toolbar.
-
 // investigate gMsgCompose.compFields!
 =========================
 */
@@ -900,7 +906,7 @@ var SmartTemplate4 = {
 		// TB >= 111
 		let msgViewDocument;
 		// eslint-disable-next-line no-extra-parens
-		const browser1 = /** @type {HTMLIFrameElement} */ (window.document.getElementById("mail3PaneTabBrowser1"));
+		const browser1 = (window.document.getElementById("mail3PaneTabBrowser1"));
 		if (browser1) {
 			// Window contains a tab with the mail3PaneTab
 			msgViewDocument = browser1.contentDocument;
@@ -913,7 +919,7 @@ var SmartTemplate4 = {
 		}
 
 		// eslint-disable-next-line no-extra-parens
-		const messageBrowser = /** @type {HTMLIFrameElement} */ (msgViewDocument.getElementById("messageBrowser"));
+		const messageBrowser = (msgViewDocument.getElementById("messageBrowser"));
 		const innerWindow = messageBrowser.contentWindow;
 		if (!innerWindow) {
 			throw new Error("DKIM: messageBrowser exists but does not contain a window");
