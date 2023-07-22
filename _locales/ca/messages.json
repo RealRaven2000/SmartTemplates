@@ -1767,7 +1767,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}S'ha corregit un error que trencava els menús de la plantilla en modificar-los (en modificar-los (els menús es desaven en un format trencat). [issue 247]{L2} {L1}La variable {{%recipient%}} ara utilitza l'adreça correcta quan l'insereix des d'un fragment intel·ligent en una resposta. [issue 248]{L2}{L1}Interfície d'usuari: els menús desplegables de les plantilles ara es mostren mitjançant botons dedicats a la nova barra d'eines unificada i a l'àrea de capçalera del missatge. Thunderbird ja no permet modificar els botons existents amb un menú desplegable. {L2} {L1}Nova opció per reutilitzar automàticament la darrera plantilla externa [issue 243]{L2}{L1}Admet {{%replaceText%}} i {{%deleteText%}} per modificar l'html que s'ha importat amb {{%file()%}}. D'aquesta manera podeu utilitzar variables de marcador de posició i substituir des de la plantilla que la conté.{L2}"
+    "message": "{L1} S'ha solucionat un problema amb l'obertura de plantilles o fragments directament des del fitxer: aquestes funcions no inserien cap dada. [problema 249]{L2}{L1} L'element de menú de la darrera plantilla utilitzada s'ha actualitzat com s'esperava.{L2}{L1} S'ha solucionat un problema amb el complement CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

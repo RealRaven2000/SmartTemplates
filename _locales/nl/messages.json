@@ -1719,7 +1719,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Een bug gerepareerd die de sjabloonmenu's kapot maakte bij het wijzigen (bij het wijzigen (de menu's werden opgeslagen in een gebroken formaat). [issue 247]{L2}{L1}De variabele {{%recipient%}} gebruikt nu het juiste adres bij het invoegen vanuit een slim fragment in een antwoord. [nummer 248]{L2}{L1}Gebruikersinterface: de vervolgkeuzemenu's voor sjablonen worden nu weergegeven via speciale knoppen in de nieuwe uniforme werkbalk en in het berichtkopgedeelte. Thunderbird staat het wijzigen van bestaande knoppen met een vervolgkeuzelijst niet meer toe. {L2} {L1}Nieuwe optie om automatisch de laatste externe sjabloon opnieuw te gebruiken [issue 243]{L2}{L1}Ondersteunt {{%replaceText%}} en {{%deleteText%}} om html aan te passen die is geïmporteerd met {{%file()%}}. Op deze manier kunt u variabelen voor tijdelijke aanduidingen gebruiken en deze vervangen door de sjabloon die het bevat.{L2}"
+    "message": "{L1} Er is een probleem opgelost met het openen van sjablonen of fragmenten rechtstreeks vanuit een bestand - deze functies voegden geen gegevens in. [issue 249]{L2}{L1} Het menu-item voor het laatst gebruikte sjabloon is nu bijgewerkt zoals verwacht.{L2}{L1} Probleem opgelost met de add-on CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

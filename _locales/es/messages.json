@@ -1728,7 +1728,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Se corrigió un error que rompía los menús de la plantilla al modificar (al modificar (los menús se guardaban en un formato roto). [issue 247]{L2}{L1}La variable {{%recipient%}} ahora usa la dirección correcta cuando se inserta desde un fragmento inteligente en una respuesta. [issue 248]{L2}{L1}Interfaz de usuario: los menús desplegables de plantillas ahora se muestran a través de botones dedicados en la nueva barra de herramientas unificada y el área del encabezado del mensaje. Thunderbird ya no permite modificar los botones existentes con un menú desplegable. {L2} {L1}Nueva opción para reutilizar automáticamente la última plantilla externa [issue 243]{L2}{L1}Admite {{%replaceText%}} y {{%deleteText%}} para modificar html que se importó usando {{%file()%}}. De esta forma, puede usar variables de marcador de posición y reemplazarlas desde la plantilla contenedora.{L2}"
+    "message": "{L1} Se solucionó un problema con la apertura de plantillas o fragmentos directamente desde el archivo: estas funciones no insertaban ningún dato. [issue 249]{L2}{L1} El elemento de menú para la última plantilla utilizada ahora se actualizó como se esperaba.{L2}{L1} Se corrigió un problema con el complemento CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

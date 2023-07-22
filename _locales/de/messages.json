@@ -1712,7 +1712,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Es wurde ein Fehler behoben, der dazu führte, dass die Vorlagenmenüs beim Ändern beschädigt wurden (die Menüs wurden in einem fehlerhaften Format gespeichert). [issue 247]{L1}{L2} Die Variable {{%recipient%}} verwendet jetzt die richtige Adresse, wenn sie aus einem Smart-Fragment in eine Antwort eingefügt wird. [issue 248]{L2}{L1}Benutzeroberfläche: Die Vorlagen-Dropdown-Menüs werden jetzt über spezielle Schaltflächen in der neuen einheitlichen Symbolleiste und im Nachrichtenkopfbereich angezeigt. Thunderbird erlaubt nicht mehr, vorhandene Schaltflächen mit einem Dropdown zu ändern. {L2} {L1}Neue Option zur automatischen Wiederverwendung der letzten externen Vorlage [issue 243]{L2} {L1}Unterstützt {{%replaceText%}} und {{%deleteText%}} zum Ändern von HTML, das mit {{%file()%}}  importiert wurde. Auf diese Weise können Sie Platzhaltervariablen verwenden und diese aus der enthaltenden Vorlage ersetzen.{L2}"
+    "message": "{L1} Es wurde ein Problem beim Öffnen von Vorlagen oder Fragmenten direkt von Dateien behoben – diese Funktionen fügten keine Daten ein. [issue 249]{L2}{L1} Der Menüpunkt für die zuletzt verwendete Vorlage wird jetzt wie erwartet aktualisiert.{L2}{L1} Ein Problem mit dem Add-on CardBook wurde behoben.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -79,9 +79,8 @@ async function addMenuEntries(entries, parentId) {
               let installedVersion = manifest.version.replace(/pre.*/,""); 
               if (isDebug) console.log(`SmartTemplates Update:  old=${ver}  new=${installedVersion}`);
               // compare versions to support beta builds
-              // hardcode "4.0" for now (from prerelease users)
-              // we probably need to manage this with a separate flag.
-              if (compareVersions(installedVersion,ver)>0 || ver=="4.0") { 
+              // we probably need to manage prerelease installs with a separate flag!
+              if (compareVersions(installedVersion,ver)>0) { 
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});

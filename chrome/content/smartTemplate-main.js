@@ -274,7 +274,7 @@ END LICENSE BLOCK
     # b3 [issue 248] %recipient% uses the original "from" address when replying
 
 
-  Version 4.0b*** - WIP
+  Version 4.0.1 - WIP
     # [issue 249] composer: open snippet / change template from file directly inserts nothing
     # If cardbook support is enabled but cardbook disabled this will also prevent fallback to std AB
     #   (cardbook fallback throws error)

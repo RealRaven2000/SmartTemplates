@@ -1728,7 +1728,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Naprawiono błąd, który psuł menu szablonu podczas modyfikacji (podczas modyfikacji (menu były zapisywane w uszkodzonym formacie). [issue 247]{L1}{L1}Zmienna {{%recipient%}} używa teraz poprawnego adresu podczas wstawiania go z inteligentnego fragmentu w odpowiedzi. [issue 248]{L2}{L1}Interfejs użytkownika: rozwijane menu szablonów są teraz wyświetlane za pomocą dedykowanych przycisków na nowym ujednoliconym pasku narzędzi iw obszarze nagłówka wiadomości. Thunderbird nie pozwala już na modyfikowanie istniejących przycisków za pomocą listy rozwijanej. {L2} {L1}Nowa opcja automatycznego ponownego użycia ostatniego szablonu zewnętrznego [issue 243]{L2}{L1}Obsługa {{%replaceText%}} i {{%deleteText%}} w celu modyfikacji kodu HTML zaimportowanego przy użyciu {{%file()%}}. W ten sposób możesz użyć zmiennych zastępczych i zastąpić je szablonem zawierającym.{L2}"
+    "message": "{L1} Naprawiono problem z otwieraniem szablonów lub fragmentów bezpośrednio z pliku - te funkcje nie wstawiały żadnych danych. [issue 249]{L2}{L1} Pozycja menu ostatnio używanego szablonu została zaktualizowana zgodnie z oczekiwaniami.{L2}{L1} Naprawiono problem z dodatkiem CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

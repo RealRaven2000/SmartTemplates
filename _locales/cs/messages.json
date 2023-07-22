@@ -1767,7 +1767,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Opravena chyba, která porušovala nabídky šablon při úpravách (při úpravách (nabídky byly uloženy v poškozeném formátu). [issue 247]{L2}{L1}Proměnná {{%recipient%}} nyní používá správnou adresu, když ji vkládá z chytrého fragmentu do odpovědi. [issue 248]{L1}Uživatelské rozhraní: Rozbalovací nabídky šablon se nyní zobrazují prostřednictvím vyhrazených tlačítek na novém jednotném panelu nástrojů a v oblasti záhlaví zprávy. Thunderbird již neumožňuje upravovat stávající tlačítka pomocí rozevíracího seznamu. {L2} {L1}Nová možnost automatického opětovného použití poslední externí šablony [issue 243]{L2}{L1}Podporuje {{%replaceText%}} a {{%deleteText%}} pro úpravu html, který byl importován pomocí {{%file()%}}. Tímto způsobem můžete použít zástupné proměnné a nahradit je z šablony, která obsahuje.{L2}"
+    "message": "{L1} Opraven problém s otevíráním šablon nebo úryvků přímo ze souboru – tyto funkce nevkládaly žádná data. [issue 249]{L2}{L1} Položka nabídky pro naposledy použitou šablonu je nyní aktualizována podle očekávání.{L2}{L1} Opraven problém s doplňkem CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

@@ -1776,7 +1776,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Correction d'un bug qui cassait les menus du modèle lors de la modification (lors de la modification (les menus étaient enregistrés dans un format cassé). [issue 247]{L2}{L1}La variable {{%recipient%}} utilise désormais l'adresse correcte lors de son insertion à partir d'un fragment intelligent dans une réponse. [issue 248]{L2}{L1}Interface utilisateur : les menus déroulants des modèles sont désormais affichés via des boutons dédiés dans la nouvelle barre d'outils unifiée et la zone d'en-tête de message. Thunderbird ne permet plus de modifier les boutons existants avec une liste déroulante. {L2} {L1}Nouvelle option pour réutiliser automatiquement le dernier modèle externe [issue 243]{L2}{L1}Prend en charge {{%replaceText%}} et {{%deleteText%}} pour modifier le code HTML qui a été importé à l'aide de {{%file()%}}. De cette façon, vous pouvez utiliser des variables d'espace réservé et les remplacer à partir du modèle contenant.{L2}"
+    "message": "{L1} Correction d'un problème avec l'ouverture de modèles ou d'extraits directement à partir du fichier - ces fonctions n'inséraient aucune donnée. [issue 249]{L2}{L1} L'élément de menu du dernier modèle utilisé est maintenant mis à jour comme prévu.{L2}{L1} Correction d'un problème avec le module complémentaire CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

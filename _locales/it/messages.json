@@ -1683,7 +1683,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Risolto un bug che interrompeva i menu dei modelli durante la modifica (durante la modifica (i menu venivano salvati in un formato non funzionante). [issue 247]{L2}{L1}La variabile {{%recipient%}} ora utilizza l'indirizzo corretto quando lo inserisce da un frammento intelligente in una risposta. [issue 248]{L2}{L1}Interfaccia utente: i menu a discesa dei modelli ora vengono visualizzati tramite pulsanti dedicati nella nuova barra degli strumenti unificata e nell'area dell'intestazione del messaggio. Thunderbird non consente più di modificare i pulsanti esistenti con un menu a discesa. {L2} {L1}Nuova opzione per riutilizzare automaticamente l'ultimo modello esterno [issue 243]{L2}{L1}Supporta {{%replaceText%}} e {{%deleteText%}} per modificare l'html importato utilizzando {{%file()%}}. In questo modo puoi utilizzare le variabili segnaposto e sostituirle dal modello contenitore.{L2}"
+    "message": "{L1} Risolto un problema con l'apertura di modelli o snippet direttamente dal file: queste funzioni non inserivano dati. [issue 249]{L2}{L1} La voce di menu per l'ultimo modello utilizzato è ora aggiornata come previsto.{L2}{L1} Risolto un problema con il componente aggiuntivo CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

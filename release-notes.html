@@ -1,21 +1,19 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.0b3">can be found here</a>
-
-<b>Maintenance itens for 4.0b3</b>
-<ul>
-  <li> Fixed a bug which broke the template menus when modifying  (the menus were saved in a broken format).  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/247">[issue 247]</a> </li>
-  <li> The <code>%recipient%</code> variable will now update to the correct address when inserting it from a smart fragment in a reply, even after it was changed manually. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/248">[issue 248]</a></li>
-</ul>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.1">can be found here</a>
 
 <b>Enhancements / Changes</b>
 <ul>
-  <li> User Interface: The template dropdown menus are now displayed through dedicated buttons in the new unified toolbar and the message header area. Thunderbird does not allow modifying existing buttons with a dropdown anymore. </li>
-  <li> New option to automatically reuse last external template <a href="https://github.com/RealRaven2000/SmartTemplates/issues/243">[issue 243]</a></li>
-  <li> Supports {{%replaceText%}} and {{%deleteText%}} to modify html that was imported using {{%file()%}}. This way you can use placeholder variables and replace them from the containing template.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">[issue 244]</a></li>
-  <li> 4.0b2 (rev266):  Avoid error when smartTemplates.json file does not exist.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/227">[issue 227]</a></li>
+  <li> The menu item for last used template is now updated as expected.</li>
 </ul>
+
+<b>Bug Fixed</b>
+<ul>
+  <li> Fixed a problem with the Add-on {CardBook}.</li>
+  <li> Fixed an issue with opening templates or snippets directly from file - these functions did not insert any data. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/249">[issue 249]</a></li>
+</ul>
+  
 
 <b>Known issues / Plans</b>
 <ul>

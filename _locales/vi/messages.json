@@ -274,7 +274,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Đã sửa lỗi làm hỏng các menu mẫu khi sửa đổi (khi sửa đổi (các menu được lưu ở định dạng bị hỏng). [issue 247]{L2}{L1}Biến {{%recipient%}} hiện sử dụng đúng địa chỉ khi chèn nó từ một đoạn thông minh trong thư trả lời. [issue 248]{L2}{L1}Giao diện người dùng: Trình đơn mẫu thả xuống hiện được hiển thị thông qua các nút chuyên dụng trên thanh công cụ hợp nhất mới và khu vực tiêu đề thư. Thunderbird không cho phép sửa đổi các nút hiện có bằng danh sách thả xuống nữa. {L2} {L1}Tùy chọn mới để tự động sử dụng lại mẫu bên ngoài cuối cùng [issue 243]{L2}{L1}Hỗ trợ {{%replaceText%}} và {{%deleteText%}} để sửa đổi html đã được nhập bằng {{%file()%}}. Bằng cách này, bạn có thể sử dụng các biến giữ chỗ và thay thế chúng từ mẫu chứa.{L2}"
+    "message": "{L1} Đã khắc phục sự cố khi mở các mẫu hoặc đoạn mã trực tiếp từ tệp - các chức năng này không chèn bất kỳ dữ liệu nào. [issue 249]{L2}{L1} Mục menu cho mẫu được sử dụng lần cuối hiện đã được cập nhật như mong đợi.{L2}{L1} Đã khắc phục sự cố với Tiện ích bổ sung CardBook.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

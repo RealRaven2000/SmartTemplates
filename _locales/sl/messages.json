@@ -1696,7 +1696,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Odpravljena je napaka, ki je pokvarila predloge menijev pri spreminjanju (pri spreminjanju (meniji so bili shranjeni v pokvarjenem formatu). [issue 247]{L2}{L1} Spremenljivka {{%recipient%}} zdaj uporablja pravilen naslov, ko ga vstavi iz pametnega fragmenta v odgovor. [issue 248]{L2}{L1} Uporabniški vmesnik: Spustni meniji predlog so zdaj prikazani prek namenskih gumbov v novi poenoteni orodni vrstici in območju glave sporočila. Thunderbird ne dovoljuje več spreminjanja obstoječih gumbov s spustnim menijem. {L2} {L1} Nova možnost za samodejno ponovno uporabo zadnje zunanje predloge [issue 243]{L2}{L1} Podpira {{%replaceText%}} in {{%deleteText%}} za spreminjanje html-ja, ki je bil uvožen z {{%file()%}}. Na ta način lahko uporabite spremenljivke nadomestnih znakov in jih zamenjate iz vsebovalne predloge.{L2}"
+    "message": "{L1} Odpravljena težava z odpiranjem predlog ali izrezkov neposredno iz datoteke – te funkcije niso vstavile nobenih podatkov. [issue 249]{L2}{L1} Element menija za zadnjo uporabljeno predlogo je zdaj posodobljen po pričakovanjih.{L2}{L1} Odpravljena težava z dodatkom CardBook.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
