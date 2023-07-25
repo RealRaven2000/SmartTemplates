@@ -114,7 +114,7 @@
 						<checkbox id="use_default"
 											label="__MSG_pref_def.label__"
 											preference="extensions.smartTemplate4.common.def"
-											oncommand="SmartTemplate4.Settings.prefDeck('default.deckB', this.checked ? 1 : 0);"/>
+											oncommand="SmartTemplate4.Settings.showCommonPlaceholder(this.checked);"/>
 						<spacer flex="1" />
 					</hbox>
 
@@ -292,7 +292,7 @@
 							</tabpanels>
 						</tabbox>
 
-						<!-- ######## placeholder for hint: 'Use Common' to create a customized quote header for this account. ######## -->
+						<!-- ######## this is hint should be shown instead of the decks when 'Use Common' is active. ######## -->
 						<vbox id="deckB.usedef">
 							<description>__MSG_pref_def.cap__</description>
 						</vbox>

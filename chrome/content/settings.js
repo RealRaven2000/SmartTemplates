@@ -76,10 +76,13 @@ SmartTemplate4.Settings = {
 
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
-	prefDeck : function prefDeck(id, index) {
+	showCommonPlaceholder : function (isCommon) {
+		debugger;
+		const id = "default.deckB";
 		let deck = document.getElementById(id + this.accountId);
-		if (deck)
-		  { deck.selectedIndex = index; }
+		if (deck){ 
+			deck.selectedIndex = isCommon ? 1 : 0; 
+		}
 
 		const idkey = SmartTemplate4.Util.getIdentityKey(document),
 		      branch = (idkey == "common") ? ".common" : "." + idkey;
@@ -880,7 +883,7 @@ SmartTemplate4.Settings = {
 
 	// Add identity
 	//--------------------------------------------------------------------
-	addIdentity : function addIdentity(menuvalue) {
+	addIdentity : function (menuvalue) {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					isCommon = (menuvalue == "common"),
@@ -914,7 +917,7 @@ SmartTemplate4.Settings = {
 			
 			let useCommon = 
 			  isCommon ? false : prefs.getBoolPref(prefRoot + "def"); // this.isChecked("use_default" + branch)
-			this.prefDeck("default.deckB", useCommon ? 1 : 0);
+			this.showCommonPlaceholder(useCommon);
 
 			this.disableWithCheckbox();
 			// this.accountKey = "";
@@ -967,8 +970,9 @@ SmartTemplate4.Settings = {
 			for (let j = 0; j < account.identities.length; j++) {
 				let identity = account.identities[j];
 
-				if (CurId == identity)
+				if (CurId == identity) {
 					currentId = theMenu.itemCount; // remember position
+				}
         
         // remove account name 
         let idText = "", acc = "";
@@ -981,13 +985,18 @@ SmartTemplate4.Settings = {
         let lbl = idText + acc + identity.identityName;
 				theMenu.appendItem(lbl, identity.key, "");
 				this.addIdentity(identity.key);
+				
 			}
 		}
 		// update all Preference elements - do we need to wait for another event?
 		for (let i=0; i<this.preferenceElements.length; i++ ) {
 			this.preferenceElements[i].updateElements();
 		}
-		
+		if (!CurId) {
+			let common = document.getElementById("deckA.per_account");
+			common.classList.add("deck-selected"); 
+		}
+	
 		
 		if (CurId && CurId.key && SmartTemplate4.Preferences.getMyBoolPref(CurId.key+".def")) { // use common?
 			theMenu.selectedIndex = 0;
@@ -1355,7 +1364,7 @@ SmartTemplate4.Settings = {
         if (isTargetIdentity) {
           // uncheck 'use common' checkbox
           document.getElementById('use_default' + targetId).checked = false;
-          SmartTemplate4.Settings.prefDeck('default.deckB', 0);
+          SmartTemplate4.Settings.showCommonPlaceholder(false);
         }
         for (let i=0; i<jsonData.textboxes.length; i++) {
           updateElement(jsonData.textboxes[i], stem, targetId);
