@@ -967,6 +967,9 @@
   "pref_groupMailContent": {
     "message": "メールクライアント"
   },
+  "pref_groupMiscellaneus": {
+    "message": "その他"
+  },
   "pref_groupNameRules": {
     "message": "名前のルール"
   },
@@ -981,6 +984,9 @@
   },
   "pref_help.tab": {
     "message": "ヘルプ"
+  },
+  "pref_header.inject": {
+    "message": "テンプレートから <head> の内容を挿入する"
   },
   "pref_hideExamples": {
     "message": "テンプレート例のタブを隠す"

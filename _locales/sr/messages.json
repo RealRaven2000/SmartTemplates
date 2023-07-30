@@ -919,6 +919,9 @@
   "pref_groupMailContent": {
     "message": "Садржај е-поруке"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Мисцелланеус"
+  },
   "pref_groupNameRules": {
     "message": "Правила за именовање"
   },
@@ -933,6 +936,9 @@
   },
   "pref_help.tab": {
     "message": "Помоћ"
+  },
+  "pref_header.inject": {
+    "message": "Убаците садржај <head> из шаблона"
   },
   "pref_hideExamples": {
     "message": "Сакриј картицу са примерима"

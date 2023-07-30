@@ -949,6 +949,9 @@
   "pref_groupMailContent": {
     "message": "Contenido del correo"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Varios"
+  },
   "pref_groupNameRules": {
     "message": "Reglas para nombres"
   },
@@ -963,6 +966,9 @@
   },
   "pref_help.tab": {
     "message": "Ayuda"
+  },
+  "pref_header.inject": {
+    "message": "Inyectar contenido de <head> desde la plantilla"
   },
   "pref_hideExamples": {
     "message": "Ocultar pestaña de ejemplos"

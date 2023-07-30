@@ -946,6 +946,9 @@
   "pref_groupMailContent": {
     "message": "Содержимое сообщения"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Разное"
+  },
   "pref_groupNameRules": {
     "message": "Правила для имен"
   },
@@ -960,6 +963,9 @@
   },
   "pref_help.tab": {
     "message": "Справка"
+  },
+  "pref_header.inject": {
+    "message": "Вставить содержимое <head> из шаблона"
   },
   "pref_hideExamples": {
     "message": "Спрятать вкладку с примерами"

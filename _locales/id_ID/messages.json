@@ -696,6 +696,9 @@
   "pref_groupMailContent": {
     "message": "Konten Email"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Lain-lain"
+  },
   "pref_groupNameRules": {
     "message": "Tata Tertib"
   },
@@ -710,6 +713,9 @@
   },
   "pref_help.tab": {
     "message": "Bantuan"
+  },
+  "pref_header.inject": {
+    "message": "Suntikkan konten <head> dari template"
   },
   "pref_hideExamples": {
     "message": "Sembunyikan tab contoh"

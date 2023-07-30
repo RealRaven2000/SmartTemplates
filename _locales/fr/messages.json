@@ -985,6 +985,9 @@
   "pref_groupMailContent": {
     "message": "Contenu du courriel"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Divers"
+  },
   "pref_groupNameRules": {
     "message": "Règles pour nom"
   },
@@ -999,6 +1002,9 @@
   },
   "pref_help.tab": {
     "message": "Assistant"
+  },
+  "pref_header.inject": {
+    "message": "Injecter le contenu de <head> à partir du modèle"
   },
   "pref_hideExamples": {
     "message": "Masquer l'onglet d'exemples"

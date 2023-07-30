@@ -985,6 +985,9 @@
   "pref_groupMailContent": {
     "message": "E-postinnehåll"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diverse"
+  },
   "pref_groupNameRules": {
     "message": "Namnregler"
   },
@@ -999,6 +1002,9 @@
   },
   "pref_help.tab": {
     "message": "Hjälp"
+  },
+  "pref_header.inject": {
+    "message": "Injicera innehållet i <huvud> från mallen"
   },
   "pref_hideExamples": {
     "message": "Dölj flik med exempel"

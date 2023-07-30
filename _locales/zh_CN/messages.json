@@ -979,6 +979,9 @@
   "pref_groupMailContent": {
     "message": "邮件内容"
   },
+  "pref_groupMiscellaneus": {
+    "message": "杂项"
+  },
   "pref_groupNameRules": {
     "message": "规则名称"
   },
@@ -993,6 +996,9 @@
   },
   "pref_help.tab": {
     "message": "帮助"
+  },
+  "pref_header.inject": {
+    "message": "从模板注入 <head> 的内容"
   },
   "pref_hideExamples": {
     "message": "隐藏示例选项卡"

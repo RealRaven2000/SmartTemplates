@@ -937,6 +937,9 @@
   "pref_groupMailContent": {
     "message": "Vsebina pošte"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Razno"
+  },
   "pref_groupNameRules": {
     "message": "Pravila za imena"
   },
@@ -951,6 +954,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoč"
+  },
+  "pref_header.inject": {
+    "message": "Vnesite vsebino <head> iz predloge"
   },
   "pref_hideExamples": {
     "message": "Skrij zavihek s primeri"

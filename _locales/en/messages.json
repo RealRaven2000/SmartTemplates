@@ -1004,6 +1004,9 @@
   "pref_groupMailContent": {
     "message": "Mail Content"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Miscellaneus"
+  },
   "pref_groupNameRules": {
     "message": "Name Rules"
   },
@@ -1018,6 +1021,9 @@
   },
   "pref_help.tab": {
     "message": "Help"
+  },
+  "pref_header.inject": {
+    "message": "Inject contents of <head> from template"
   },
   "pref_hideExamples": {
     "message": "Hide examples tab"

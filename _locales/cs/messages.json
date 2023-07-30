@@ -979,6 +979,9 @@
   "pref_groupMailContent": {
     "message": "Obsah e-mailu"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Různé"
+  },
   "pref_groupNameRules": {
     "message": "Jméno role"
   },
@@ -993,6 +996,9 @@
   },
   "pref_help.tab": {
     "message": "Nápověda"
+  },
+  "pref_header.inject": {
+    "message": "Vložit obsah <head> ze šablony"
   },
   "pref_hideExamples": {
     "message": "Skrýt záložku s příklady"

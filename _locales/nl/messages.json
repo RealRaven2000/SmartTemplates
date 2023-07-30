@@ -931,6 +931,9 @@
   "pref_groupMailContent": {
     "message": "E-mailinhoud"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diversen"
+  },
   "pref_groupNameRules": {
     "message": "Naamregels"
   },
@@ -945,6 +948,9 @@
   },
   "pref_help.tab": {
     "message": "Hulp"
+  },
+  "pref_header.inject": {
+    "message": "Injecteer de inhoud van <head> uit het sjabloon"
   },
   "pref_hideExamples": {
     "message": "Tabblad met voorbeelden verbergen"

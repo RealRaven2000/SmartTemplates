@@ -931,6 +931,9 @@
   "pref_groupMailContent": {
     "message": "Mailinhalt"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Verschiedenes"
+  },
   "pref_groupNameRules": {
     "message": "Namensregeln"
   },
@@ -945,6 +948,9 @@
   },
   "pref_help.tab": {
     "message": "Hilfe"
+  },
+  "pref_header.inject": {
+    "message": "Inhalt von <head> aus der Vorlage einfügen"
   },
   "pref_hideExamples": {
     "message": "Beispiele nicht anzeigen"

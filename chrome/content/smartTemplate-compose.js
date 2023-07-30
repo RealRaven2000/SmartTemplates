@@ -1268,6 +1268,40 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 		}
 
+    ///new extract <head> sections and inject into doc head.
+		try {
+			const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
+			if (isExtractHead) {
+				let testDiv = editor.document.createElement("div");
+				testDiv.id = "tempTemplate";
+				testDiv.hidden = true;
+				// replace <head> tags, because they will be removed on adding the HTML:
+				testDiv.innerHTML = template.replace("<head","<div class='smartTemplateHeader'").replace("</head","</div");
+				let heads = testDiv.querySelectorAll("div.smartTemplateHeader");
+				if (heads.length) {
+					let docHeader = editor.document.head || editor.document.getElementsByTagName('head')[0],
+							i=0;
+					for (let head of heads) {
+						util.logDebugOptional('composer',"SmartTemplates - head tag found\n", head.outerHTML);
+						let headContent = head.innerHTML;
+						docHeader.innerHTML = docHeader.innerHTML + 
+							`\n<!--- head [${i}] from template -->\n` +
+							headContent;
+						i++;
+					}
+					let len = heads.length;
+					for (let i=len-1; i>=0; i--) {
+						let head = heads[i];
+						testDiv.removeChild(head);
+					}
+					template = testDiv.innerHTML; // extract the remaining markup
+					editor.document.removeElement(testDiv);
+				}
+			}
+		} catch(ex) {
+			util.logException("Extract header from template failed", ex);
+		}
+
 		// add template message --------------------------------
 		// if template text is empty: still insert targetNode as we need it for the cursor!
 		// however we must honor the setting "breaks at top" as we now remove any <br> added by Tb

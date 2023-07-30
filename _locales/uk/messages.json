@@ -995,6 +995,9 @@
   "pref_groupMailContent": {
     "message": "l зміст"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Різне"
+  },
   "pref_groupNameRules": {
     "message": "Назва правил"
   },
@@ -1009,6 +1012,9 @@
   },
   "pref_help.tab": {
     "message": "Допомога"
+  },
+  "pref_header.inject": {
+    "message": "Вставте вміст <head> із шаблону"
   },
   "pref_hideExamples": {
     "message": "Сховати закладку з прикладами"

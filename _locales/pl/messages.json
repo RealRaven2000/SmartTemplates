@@ -931,6 +931,9 @@
   "pref_groupMailContent": {
     "message": "Treść wiadomości"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Różne"
+  },
   "pref_groupNameRules": {
     "message": "Nazwa reguły"
   },
@@ -945,6 +948,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoc"
+  },
+  "pref_header.inject": {
+    "message": "Wstrzyknij zawartość <head> z szablonu"
   },
   "pref_hideExamples": {
     "message": "Ukryj kartę przykładów"

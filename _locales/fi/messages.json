@@ -988,6 +988,9 @@
   "pref_groupMailContent": {
     "message": "Viestin sisältö"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Sekalaista"
+  },
   "pref_groupNameRules": {
     "message": "Nimisäännöt"
   },
@@ -1002,6 +1005,9 @@
   },
   "pref_help.tab": {
     "message": "Ohje"
+  },
+  "pref_header.inject": {
+    "message": "Lisää <head>:n sisältö mallista"
   },
   "pref_hideExamples": {
     "message": "Piilota esimerkit-välilehti"

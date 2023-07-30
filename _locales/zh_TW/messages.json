@@ -985,6 +985,9 @@
   "pref_groupMailContent": {
     "message": "郵件內容"
   },
+  "pref_groupMiscellaneus": {
+    "message": "雜項"
+  },
   "pref_groupNameRules": {
     "message": "命名規則"
   },
@@ -999,6 +1002,9 @@
   },
   "pref_help.tab": {
     "message": "求助"
+  },
+  "pref_header.inject": {
+    "message": "從模板注入 <head> 的內容"
   },
   "pref_hideExamples": {
     "message": "隱藏示例選項卡"

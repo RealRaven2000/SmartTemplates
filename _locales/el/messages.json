@@ -988,6 +988,9 @@
   "pref_groupMailContent": {
     "message": "Περιεχόμενο Μηνύματος"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Διάφορα"
+  },
   "pref_groupNameRules": {
     "message": "Κανόνες Ονομάτων"
   },
@@ -1002,6 +1005,9 @@
   },
   "pref_help.tab": {
     "message": "Βοήθεια"
+  },
+  "pref_header.inject": {
+    "message": "Εισάγετε τα περιεχόμενα του <head> από το πρότυπο"
   },
   "pref_hideExamples": {
     "message": "Κρύψε την καρτέλα με τα παραδείγματα"

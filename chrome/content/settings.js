@@ -1511,13 +1511,11 @@ SmartTemplate4.Settings = {
   } ,
   
   enablePremiumConfig: function enablePremiumConfig(isEnabled) {
-		/* future function: enables premium configuration UI
-    let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement('premiumConfig');
-    premiumConfig.disabled = !isEnabled;
-		*/
-		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
-		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
+		/* enables Pro features */
+		for (let el of document.querySelectorAll(".premiumFeature")) {
+			el.disabled = !isEnabled;
+		}
+		// this.enableStandardConfig(isEnabled); // 115 only.
   },
   
   showTrialDate: function() {

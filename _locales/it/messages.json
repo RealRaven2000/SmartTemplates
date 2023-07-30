@@ -910,6 +910,9 @@
   "pref_groupMailContent": {
     "message": "Contenuto Mail"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Varie"
+  },
   "pref_groupNameRules": {
     "message": "Regole per il nome"
   },
@@ -918,6 +921,9 @@
   },
   "pref_help.tab": {
     "message": "Aiuto"
+  },
+  "pref_header.inject": {
+    "message": "Inietta il contenuto di <head> dal modello"
   },
   "pref_hideExamples": {
     "message": "Non visualizzare la scheda degli esempi"
