@@ -849,7 +849,7 @@
     "message": "Останні новини"
   },
   "newsSection": {
-    "message": "{P1}Я майже завершив перетворення $addonName$ для нового інтерфейсу користувача Thunderbird SuperNova. Відтепер ви можете оновити Thunderbird до нової версії 115.{P2} {P1}Щоб дізнатися більше та надіслати відгук про зміни та поточну роботу, прочитайте: [випуск 213]{P2}",
+    "message": "{P1}$addonName$ тепер сумісний з останньою версією Thunderbird (115.0). Це вимагало численних суттєвих змін і переписування багатьох функцій.{P2} {P1}Ви можете прочитати поточний хід цієї роботи тут: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1007,6 +1007,9 @@
   "pref_groupMailContent": {
     "message": "l зміст"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Різне"
+  },
   "pref_groupNameRules": {
     "message": "Назва правил"
   },
@@ -1021,6 +1024,9 @@
   },
   "pref_help.tab": {
     "message": "Допомога"
+  },
+  "pref_header.inject": {
+    "message": "Вставте вміст <head> із шаблону"
   },
   "pref_hideExamples": {
     "message": "Сховати закладку з прикладами"

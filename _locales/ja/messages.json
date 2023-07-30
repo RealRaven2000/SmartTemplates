@@ -835,6 +835,21 @@
   "no_button": {
     "message": "いいえ"
   },
+  "newsHead": {
+    "message": "最新ニュース"
+  },  
+  "newsSection": {
+    "message": "{P1}$addonName$ は、Thunderbird の最新バージョン (115.0) と互換性があります。 これには、多数の大幅な変更と多くの関数の書き直しが必要でした。{P2} {P1}この作業の現在の進捗状況については、[問題 213]{P2} で確認できます。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "SmartTemplates"
+      }
+    }
+  },  
+  "newsSection.license": {
+    "message": "この作業はライセンスの販売によってのみ賄われているため、将来 SmartTemplates を使用することに興味がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
+  },
   "ongoing-work": {
     "message": "$addonName$ を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。次の 2022 バージョンにはさらに多くの変更があります。このような複雑なアドオンでは、コストのかかる作業が避けられなくなります。私たちを支援してください。",
     "placeholders": {
@@ -964,6 +979,9 @@
   "pref_groupMailContent": {
     "message": "メールクライアント"
   },
+  "pref_groupMiscellaneus": {
+    "message": "その他"
+  },
   "pref_groupNameRules": {
     "message": "名前のルール"
   },
@@ -978,6 +996,9 @@
   },
   "pref_help.tab": {
     "message": "ヘルプ"
+  },
+  "pref_header.inject": {
+    "message": "テンプレートから <head> の内容を挿入する"
   },
   "pref_hideExamples": {
     "message": "テンプレート例のタブを隠す"

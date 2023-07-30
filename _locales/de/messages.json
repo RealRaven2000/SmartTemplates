@@ -797,7 +797,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}Ich habe die Konvertierung von $addonName$ für die neue Thunderbird SuperNova-Benutzeroberfläche größtenteils abgeschlossen. Ab sofort können Sie Thunderbird auf die neue Version 115 aktualisieren.{P2} {P1}Weitere Informationen und Feedback zu den Änderungen und der laufenden Arbeit finden Sie unter: [issue 213]{P2}",
+    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.0) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -943,6 +943,9 @@
   "pref_groupMailContent": {
     "message": "Mailinhalt"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Verschiedenes"
+  },
   "pref_groupNameRules": {
     "message": "Namensregeln"
   },
@@ -957,6 +960,9 @@
   },
   "pref_help.tab": {
     "message": "Hilfe"
+  },
+  "pref_header.inject": {
+    "message": "Inhalt von <head> aus der Vorlage einfügen"
   },
   "pref_hideExamples": {
     "message": "Beispiele nicht anzeigen"

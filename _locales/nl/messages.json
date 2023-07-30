@@ -800,7 +800,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}Ik heb de conversie van $addonName$ voor de nieuwe Thunderbird SuperNova UI grotendeels voltooid. Vanaf nu kunt u Thunderbird updaten naar de nieuwe versie 115.{P2} {P1}Lees voor details en om feedback te geven over de wijzigingen en lopende werkzaamheden: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.0). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -943,6 +943,9 @@
   "pref_groupMailContent": {
     "message": "E-mailinhoud"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diversen"
+  },
   "pref_groupNameRules": {
     "message": "Naamregels"
   },
@@ -957,6 +960,9 @@
   },
   "pref_help.tab": {
     "message": "Hulp"
+  },
+  "pref_header.inject": {
+    "message": "Injecteer de inhoud van <head> uit het sjabloon"
   },
   "pref_hideExamples": {
     "message": "Tabblad met voorbeelden verbergen"

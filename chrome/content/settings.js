@@ -74,10 +74,10 @@ SmartTemplate4.Settings = {
 		return arguments[0];
 	} ,
 
+
 	// Select Deck with identity key
 	//--------------------------------------------------------------------
 	showCommonPlaceholder : function (isCommon) {
-		debugger;
 		const id = "default.deckB";
 		let deck = document.getElementById(id + this.accountId);
 		if (deck){ 
@@ -1552,17 +1552,17 @@ SmartTemplate4.Settings = {
   } ,
   
   enablePremiumConfig: function (isEnabled) {
-		/* future function: enables premium configuration UI
-    let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement('premiumConfig');
-    premiumConfig.disabled = !isEnabled;
-		*/
-		document.getElementById("chkResolveABCardBook").disabled = !isEnabled;
-		document.getElementById("chkCardBookFallback").disabled = !isEnabled;
+		/* enables Pro features */
+		for (let el of document.querySelectorAll(".premiumFeature")) {
+			el.disabled = !isEnabled;
+		}
 		this.enableStandardConfig(isEnabled);
   } ,
 
 	enableStandardConfig: function(isEnabled) {
+		for (let el of document.querySelectorAll(".standardFeature")) {
+			el.disabled = !isEnabled;
+		}
 		document.getElementById("useLastTemplate").disabled = !isEnabled;
 	} ,
   

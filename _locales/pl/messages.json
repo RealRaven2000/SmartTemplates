@@ -797,7 +797,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}W większości ukończyłem konwersję $addonName$ na nowy interfejs Thunderbirda SuperNova. Od teraz możesz zaktualizować Thunderbirda do nowej wersji 115.{P2} {P1}Aby uzyskać szczegółowe informacje i wyrazić opinię na temat zmian i bieżących prac, przeczytaj: [issue 213]{P2}",
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.0). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -943,6 +943,9 @@
   "pref_groupMailContent": {
     "message": "Treść wiadomości"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Różne"
+  },
   "pref_groupNameRules": {
     "message": "Nazwa reguły"
   },
@@ -957,6 +960,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoc"
+  },
+  "pref_header.inject": {
+    "message": "Wstrzyknij zawartość <head> z szablonu"
   },
   "pref_hideExamples": {
     "message": "Ukryj kartę przykładów"

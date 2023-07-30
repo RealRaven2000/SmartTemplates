@@ -800,7 +800,7 @@
     "message": "Последние новости"
   },
   "newsSection": {
-    "message": "{P1}Мне в основном удалось преобразовать $addonName$ для нового пользовательского интерфейса Thunderbird SuperNova. С этого момента вы можете обновить Thunderbird до новой версии 115.{P2} {P1}Подробнее и оставить отзыв об изменениях и текущей работе: [issue 213]{P2}",
+    "message": "{P1}$addonName$ теперь совместим с последней версией Thunderbird (115.0). Это потребовало многочисленных существенных изменений и переписывания многих функций.{P2} {P1}Вы можете прочитать о текущем ходе этой работы здесь: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -958,6 +958,9 @@
   "pref_groupMailContent": {
     "message": "Содержимое сообщения"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Разное"
+  },
   "pref_groupNameRules": {
     "message": "Правила для имен"
   },
@@ -972,6 +975,9 @@
   },
   "pref_help.tab": {
     "message": "Справка"
+  },
+  "pref_header.inject": {
+    "message": "Вставить содержимое <head> из шаблона"
   },
   "pref_hideExamples": {
     "message": "Спрятать вкладку с примерами"

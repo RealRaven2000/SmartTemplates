@@ -842,7 +842,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}Jag har mestadels slutfört konverteringen av $addonName$ för det nya Thunderbird SuperNova-gränssnittet. Från och med nu kan du uppdatera Thunderbird till den nya versionen 115.{P2} {P1}För detaljer och för att ge feedback om ändringarna och pågående arbete läs: [utgåva 213]{P2}",
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.0). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -997,6 +997,9 @@
   "pref_groupMailContent": {
     "message": "E-postinnehåll"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Diverse"
+  },
   "pref_groupNameRules": {
     "message": "Namnregler"
   },
@@ -1011,6 +1014,9 @@
   },
   "pref_help.tab": {
     "message": "Hjälp"
+  },
+  "pref_header.inject": {
+    "message": "Injicera innehållet i <huvud> från mallen"
   },
   "pref_hideExamples": {
     "message": "Dölj flik med exempel"

@@ -833,7 +833,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}Většinou jsem dokončil konverzi $addonName$ pro nové uživatelské rozhraní Thunderbird SuperNova. Od nynějška můžete Thunderbird aktualizovat na novou verzi 115.{P2} {P1}Podrobnosti a zpětnou vazbu o změnách a probíhající práci najdete na: [issue 213]{P2}",
+    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.0). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -991,6 +991,9 @@
   "pref_groupMailContent": {
     "message": "Obsah e-mailu"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Různé"
+  },
   "pref_groupNameRules": {
     "message": "Jméno role"
   },
@@ -1005,6 +1008,9 @@
   },
   "pref_help.tab": {
     "message": "Nápověda"
+  },
+  "pref_header.inject": {
+    "message": "Vložit obsah <head> ze šablony"
   },
   "pref_hideExamples": {
     "message": "Skrýt záložku s příklady"

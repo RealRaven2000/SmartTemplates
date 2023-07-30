@@ -858,7 +858,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}I have mostly completed conversion of $addonName$ for the new Thunderbird SuperNova UI. From now on you can update Thunderbird to the new version 115.{P2} {P1}For detail and to give feedback about the changes and ongoing work read: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.0). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1016,6 +1016,9 @@
   "pref_groupMailContent": {
     "message": "Mail Content"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Miscellaneus"
+  },
   "pref_groupNameRules": {
     "message": "Name Rules"
   },
@@ -1031,6 +1034,9 @@
   "pref_help.tab": {
     "message": "Help"
   },
+  "pref_header.inject": {
+    "message": "Inject contents of <head> from template"
+  },  
   "pref_hideExamples": {
     "message": "Hide examples tab"
   },

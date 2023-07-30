@@ -842,7 +842,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}Olen pääosin suorittanut $addonName$:n muuntamisen uudelle Thunderbird SuperNova -käyttöliittymälle. Tästä eteenpäin voit päivittää Thunderbirdin uuteen versioon 115.{P2} {P1}Lisätietoja ja palautetta muutoksista ja meneillään olevasta työstä saat lukemalla: [issue 213]{P2}",
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.0) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1000,6 +1000,9 @@
   "pref_groupMailContent": {
     "message": "Viestin sisältö"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Sekalaista"
+  },
   "pref_groupNameRules": {
     "message": "Nimisäännöt"
   },
@@ -1014,6 +1017,9 @@
   },
   "pref_help.tab": {
     "message": "Ohje"
+  },
+  "pref_header.inject": {
+    "message": "Lisää <head>:n sisältö mallista"
   },
   "pref_hideExamples": {
     "message": "Piilota esimerkit-välilehti"

@@ -509,6 +509,7 @@
 			<preference name="extensions.smartTemplate4.names.guessFromMail" type="bool" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mime.defaultFormat" type="string" instantApply="true"/>
 			<preference name="extensions.smartTemplate4.mail.suppressLink" type="bool" instantApply="true"/>
+			<preference name="extensions.smartTemplate4.header.inject" type="bool" instantApply="true"/>      
 			<preference name="extensions.smartTemplate4.silentUpdate" type="bool" instantApply="true"/>
       
       <preference name="extensions.smartTemplate4.BackgroundParser" type="bool" instantApply="true"/>
@@ -573,7 +574,7 @@
 								/>__MSG_pref_defaultTemplateMethod_select_account__</label>
 							<label for="useLastTemplate">
 								<html:input type="radio" 
-									name="defaultTemplateBehavior" id="useLastTemplate" value="2" 
+									name="defaultTemplateBehavior" id="useLastTemplate" value="2" class="standardFeature"
 									onclick="SmartTemplate4.Settings.selectDefaultTemplates(this);"
 								/>__MSG_pref_defaultTemplateMethod_select_last__</label>
 						</groupbox>
@@ -721,21 +722,30 @@
 												 label="__MSG_resolveABRemoveMail__"
 												 tooltiptext="This will hide the mail address when using plain %cc% etc. if address book entry was found."
 												 preference="extensions.smartTemplate4.mime.resolveAB.removeEmail"/>
-										<checkbox id="chkResolveABCardBook"
+										<checkbox id="chkResolveABCardBook" class="premiumFeature"
 												label="__MSG_resolveNamesFromCardBook__"
 												preference="extensions.smartTemplate4.mime.resolveAB.CardBook"/>
-												<checkbox id="chkCardBookFallback" style="margin-left: 2em"
-												          label="__MSG_resolveNamesFromCardBook.fallback__"
-																	preference="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback"/>
+										<checkbox id="chkCardBookFallback" class="premiumFeature"
+										    style="margin-left: 2em"
+												label="__MSG_resolveNamesFromCardBook.fallback__"
+												preference="extensions.smartTemplate4.mime.resolveAB.CardBook.fallback"/>
 										
 									</vbox>
 								</hbox>
 							</vbox>								
 						</groupbox>
 						
-						<checkbox label="__MSG_suppressMailToLink__"
-						          preference="extensions.smartTemplate4.mail.suppressLink"/>
-					
+						<groupbox class="transparent">
+							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupMiscellaneus__</label></hbox>
+							<vbox>
+								<checkbox label="__MSG_suppressMailToLink__"
+									preference="extensions.smartTemplate4.mail.suppressLink"/>
+							  <checkbox label="__MSG_pref_header.inject__" class="premiumFeature"
+									preference="extensions.smartTemplate4.header.inject"/>
+		
+							</vbox>
+						</groupbox>
+
 						<spacer flex="2" />
 						<groupbox class="transparent">
 							<hbox class="groupbox-title"><label class="header">__MSG_pref_groupTroubleShooting__</label></hbox>

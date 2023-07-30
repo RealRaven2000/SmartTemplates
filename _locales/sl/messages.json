@@ -791,7 +791,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Večinoma sem dokončal pretvorbo $addonName$ za novi uporabniški vmesnik Thunderbird SuperNova. Od zdaj naprej lahko posodobite Thunderbird na novo različico 115.{P2} {P1}Za podrobnosti in povratne informacije o spremembah in delu, ki poteka, preberite: [issue 213]{P2}",
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.0). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -949,6 +949,9 @@
   "pref_groupMailContent": {
     "message": "Vsebina pošte"
   },
+  "pref_groupMiscellaneus": {
+    "message": "Razno"
+  },
   "pref_groupNameRules": {
     "message": "Pravila za imena"
   },
@@ -963,6 +966,9 @@
   },
   "pref_help.tab": {
     "message": "Pomoč"
+  },
+  "pref_header.inject": {
+    "message": "Vnesite vsebino <head> iz predloge"
   },
   "pref_hideExamples": {
     "message": "Skrij zavihek s primeri"
