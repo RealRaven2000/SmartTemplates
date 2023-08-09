@@ -1306,7 +1306,9 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 		}
 
-    ///new extract <head> sections and inject into doc head.
+		// [issue 79]
+    // Extract <head> sections and inject into doc head.
+		// merge all <body> attributes into document body (body will be converted into an attributeless div)
 		try {
 			const isExtractHead = SmartTemplate4.Preferences.getMyBoolPref("header.inject");
 			if (isExtractHead) {
@@ -1314,7 +1316,10 @@ SmartTemplate4.classSmartTemplate = function() {
 				testDiv.id = "tempTemplate";
 				testDiv.hidden = true;
 				// replace <head> tags, because they will be removed on adding the HTML:
-				testDiv.innerHTML = template.replace("<head","<div class='smartTemplateHeader'").replace("</head","</div");
+				testDiv.innerHTML = template.replace("<head","<div class='smartTemplateHeader' ").replace("</head","</div")
+				                            .replace("<body","<div class='smartTemplateBody' "  ).replace("</body","</div");
+
+				// ===== merge head contents
 				let heads = testDiv.querySelectorAll("div.smartTemplateHeader");
 				if (heads.length) {
 					let docHeader = editor.document.head || editor.document.getElementsByTagName('head')[0],
@@ -1333,8 +1338,41 @@ SmartTemplate4.classSmartTemplate = function() {
 						testDiv.removeChild(head);
 					}
 					template = testDiv.innerHTML; // extract the remaining markup
-					editor.document.removeElement(testDiv);
 				}
+
+				// ===== merge body attributes
+				let bodies = testDiv.querySelectorAll("div.smartTemplateBody");
+				if (bodies.length) { // gather all attributes.
+					let allAttributes = [];
+					for (let body of bodies) {
+						let atts = [...body.attributes];
+						allAttributes.push(...atts);
+						for (let a of atts) { // strip all attributes of the div, it shouldn't do anything hopefully
+							body.removeAttribute(a.name);
+						}
+					}
+					// all body attributes are dropped by composer, so there is no need to tidy up!
+					for (let a of allAttributes) {
+						let isClass = (a.name=="class");
+						if (isClass) {
+							a.value = a.value.replace("smartTemplateBody","").trim();
+						}
+						if (a.value && a.value.trim()) {
+							if (isClass) {
+								let clist = a.value.split(" ");
+								for (let cl of clist) {
+									if (cl) {
+										bodyEl.classList.add(cl);
+									}
+								}
+							} else { // note: this definitely overwrites previous attributes!
+								bodyEl.setAttribute(a.name, a.value);
+							}
+						}
+					}
+					template = testDiv.innerHTML; // extract the remaining markup again.
+				}
+				testDiv.remove();
 			}
 		} catch(ex) {
 			util.logException("Extract header from template failed", ex);
