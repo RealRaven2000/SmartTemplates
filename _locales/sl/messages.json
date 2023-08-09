@@ -791,7 +791,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.0). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.1). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

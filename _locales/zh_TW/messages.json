@@ -839,7 +839,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird (115.0) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2} {P1}您可以在此處了解這項工作的當前進展：[issue 213]{P2} ",
+    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird (115.1) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2} {P1}您可以在此處了解這項工作的當前進展：[issue 213]{P2} ",
     "placeholders": {
       "addonName": {
         "content": "$1",

@@ -842,7 +842,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.0) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.1) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

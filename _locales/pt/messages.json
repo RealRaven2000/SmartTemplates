@@ -812,7 +812,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.0). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.1). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

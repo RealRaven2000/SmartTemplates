@@ -797,7 +797,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.0). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.1). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

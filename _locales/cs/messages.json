@@ -833,7 +833,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.0). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
+    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.1). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

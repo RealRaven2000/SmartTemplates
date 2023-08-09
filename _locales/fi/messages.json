@@ -842,7 +842,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.0) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.1) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
