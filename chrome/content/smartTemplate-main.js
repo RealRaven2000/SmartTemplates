@@ -273,8 +273,7 @@ END LICENSE BLOCK
     # b3 [issue 247] Regression - saving template menus saves invalid smartTemplates.json file
     # b3 [issue 248] %recipient% uses the original "from" address when replying
 
-
-  Version 4.0.2 - WIP
+  Version 4.0.2 - 25/07/2023
     # [issue 249] composer: open snippet / change template from file directly inserts nothing
     # If cardbook support is enabled but cardbook disabled this will also prevent fallback to std AB
     #   (cardbook fallback throws error)
@@ -284,14 +283,21 @@ END LICENSE BLOCK
     # with an notification that reacts to the message header change API - 
     # remove SmartTemplate4.messageListener
     # use the onMessageDisplayed API instead
+
     
+  Version 4.1 - WIP
+    # [issue 79] Inject contents of <head> tags into composer's head section, merge body attributes
+    # Remove console error “receiving end does not exist” if Cardbook enabled but not installed
+    # Slightly improved settings layout (long template list tended to push the bottom 
+      buttons outside of the window)
+    # [issue 252] ST 4.0.2 Cannot open license website (or any external website links)
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
     # [issue 27] Insert external HTML Templates from a web page URL
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
-    # [issue 12] <head> section from templates should be merged into <body>
     # The "clean up button" is not automatically installed in the composer toolbar.
     # ...
       

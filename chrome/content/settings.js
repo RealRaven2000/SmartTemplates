@@ -335,7 +335,7 @@ SmartTemplate4.Settings = {
 
 	// Setup default preferences and common settings
 	//--------------------------------------------------------------------
-	onLoad: async function onLoad() {
+	onLoad: async function() {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
@@ -513,7 +513,7 @@ SmartTemplate4.Settings = {
     settings.labelLicenseBtn(getElement("btnLicense"), "buy");
     getElement('txtLicenseKey').value = SmartTemplate4.Util.licenseInfo.licenseKey;
     if (SmartTemplate4.Util.licenseInfo.licenseKey) {
-      SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
+      await SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
     }
 		
 		if (isAdvancedPanelOpen) {
@@ -1515,7 +1515,7 @@ SmartTemplate4.Settings = {
   } ,
 
   // send new key to background page for validation
-  validateNewKey: async function validateNewKey(el) {
+  validateNewKey: async function (el) {
     this.trimLicense();
     let input = document.getElementById('txtLicenseKey'),
         key = input.value;
@@ -1745,16 +1745,15 @@ SmartTemplate4.Settings = {
 			finalLicense = this.trimLicense();
     }
     if (finalLicense) {
-      // SmartTemplate4.Settings.validateLicenseInOptions(false);
       SmartTemplate4.Settings.validateNewKey();
     }
   } ,
   
-  validateLicenseFromEvent: function() {
-    SmartTemplate4.Settings.validateLicenseInOptions(false);
+  validateLicenseFromEvent: async function() {
+    await SmartTemplate4.Settings.validateLicenseInOptions(false);
   },
   
-  validateLicenseInOptions: function validateLicenseInOptions(silent = false) {
+  validateLicenseInOptions: async function (silent = false) {
 		function replaceCssClass(el,addedClass) {
 			try {
 				el.classList.add(addedClass);

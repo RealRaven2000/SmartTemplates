@@ -60,6 +60,15 @@ const discountRenewal = "25%";
     }
   });  
 
+  function replaceVariableCodeTags(txt) {
+    let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
+    // added simple <tag> support
+    return txt2.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>")
+               .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
+               .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
+               .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
+               .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
+  }
 
 
   addEventListener("load", async (event) => {
@@ -201,13 +210,6 @@ const discountRenewal = "25%";
     } 
     
     let whatsNewLst = document.getElementById('whatsNewList');
-    function replaceVariableCodeTags(txt) {
-      let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
-      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
-                 .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
-                 .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
-                 .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
-    }
     if (whatsNewLst) {
       whatsNewLst.innerHTML = replaceVariableCodeTags(messenger.i18n.getMessage('whats-new-list'))
         .replace(/\{image1\}/g,"<br><img src='snippets.png' style='width:400px;'>");

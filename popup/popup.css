@@ -11,6 +11,15 @@
   font-weight: bold;
 }
 
+span.htmltag {
+  background-color: #b6e1dd !important;
+  color: #13441d;
+  font-family: Consolas,monaco,monospace;
+  font-size: 0.9em;
+  padding: 0 3px;
+  border-radius: 3px;  
+}
+
 #innerwrapper {
   position: relative;
   background-color: white;
@@ -61,10 +70,6 @@
   color: yellow;
 }
 
-
-ul.actions {
-  
-}
 
 .actionlinks {
   text-align: center;
@@ -224,13 +229,6 @@ code[param] {
 #specialBox #standardLicense,
 #specialBox .specialOffer {
   background: transparent !important;
-}
-
-#purchaseLicenseListItem { /* test */
-/*
-  background-color: lightyellow;
-  color: rgb(120,0,0);
-  */
 }
 
 

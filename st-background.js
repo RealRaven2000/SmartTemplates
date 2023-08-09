@@ -18,6 +18,15 @@ const CARDBOOK_APPNAME = "cardbook@vigneau.philippe";
 var startupFinished = false;
 var callbacks = [];
 
+// Remove console error “receiving end does not exist”
+function logReceptionError(x) {
+  if (x.message.includes("Receiving end does not exist.")) {
+    // no need to log - CardBook is not installed or disabled.
+  } else { 
+    console.log(x); 
+  }  
+}
+
 // Helper function to walk through a menu data structure and create WebExtension
 // menu entries.
 async function addMenuEntries(entries, parentId) {
@@ -333,7 +342,9 @@ async function main() {
             queryObject.dirPrefId = data.preferredDirId;
           }
 
-          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject );
+          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject ).catch(
+            (x) => { logReceptionError(x); cards=null; }
+          );
           return cards;
         }
         catch(ex) {

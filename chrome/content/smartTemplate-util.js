@@ -867,7 +867,7 @@ SmartTemplate4.Util = {
 					getService(Ci.nsIIOService);
 		// only add premium info if it is one of the support pages.
 		let uri = 
-			linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : uri;
+			linkURI.includes("smarttemplates.") ? util.makeUriPremium(linkURI) : linkURI;
 		service.loadURI(ioservice.newURI(uri, null, null));
 		
 		if(null !== evt) { evt.stopPropagation(); }			
