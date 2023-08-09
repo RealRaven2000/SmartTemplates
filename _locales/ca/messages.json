@@ -1773,7 +1773,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} S'ha solucionat un problema amb l'obertura de plantilles o fragments directament des del fitxer: aquestes funcions no inserien cap dada. [problema 249]{L2}{L1} L'element de menú de la darrera plantilla utilitzada s'ha actualitzat com s'esperava.{L2}{L1} S'ha solucionat un problema amb el complement CardBook.{L2}"
+    "message": "El codi {L1} dins d'una etiqueta <head> es mourà a partir d'ara a la secció principal <head> del document. També ara els atributs <body> es transfereixen al <body> principal. Això hauria de fer més visibles els estils CSS en altres clients de correu [issue 79]{L2} {L1} A la versió anterior, el lloc web de la llicència no s'obria en fer clic a cap botó del diàleg de llicència. S'ha solucionat això i també s'ha obert el lloc d'assistència al navegador estàndard.{L2}{L1} S'han solucionat diversos problemes de disseny a la pantalla de configuració.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

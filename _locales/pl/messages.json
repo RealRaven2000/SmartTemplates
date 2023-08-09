@@ -1734,7 +1734,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Naprawiono problem z otwieraniem szablonów lub fragmentów bezpośrednio z pliku - te funkcje nie wstawiały żadnych danych. [issue 249]{L2}{L1} Pozycja menu ostatnio używanego szablonu została zaktualizowana zgodnie z oczekiwaniami.{L2}{L1} Naprawiono problem z dodatkiem CardBook.{L2}"
+    "message": "{L1} Kod w tagu <head> będzie teraz przenoszony do głównej sekcji <head> dokumentu. Również atrybuty <body> są teraz przenoszone do głównego <body>. Powinno to sprawić, że style CSS będą lepiej widoczne w innych klientach pocztowych [issue 79]{L2} {L1} W poprzedniej wersji witryna z licencją nie otwierała się po kliknięciu dowolnego przycisku w oknie dialogowym Licencja. Zostało to naprawione, a także otwieranie strony pomocy technicznej w standardowej przeglądarce.{L2}{L1} Naprawiono różne problemy z układem ekranu ustawień.{L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

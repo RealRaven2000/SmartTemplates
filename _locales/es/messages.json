@@ -1734,7 +1734,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se solucionó un problema con la apertura de plantillas o fragmentos directamente desde el archivo: estas funciones no insertaban ningún dato. [issue 249]{L2}{L1} El elemento de menú para la última plantilla utilizada ahora se actualizó como se esperaba.{L2}{L1} Se corrigió un problema con el complemento CardBook.{L2}"
+    "message": "{L1} El código dentro de una etiqueta <head> se moverá a partir de ahora a la sección principal <head> del documento. Además, los atributos <body> ahora se transfieren al <body> principal. Esto debería hacer que los estilos CSS sean más visibles en otros clientes de correo [issue 79]{L2} {L1} En la versión anterior, el sitio web de la licencia no se abría al hacer clic en cualquier botón del cuadro de diálogo Licencia. Esto se solucionó y también se abrió el sitio de soporte en el navegador estándar.{L2}{L1} Se corrigieron varios problemas de diseño en la pantalla de configuración.{L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

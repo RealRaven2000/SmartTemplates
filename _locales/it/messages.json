@@ -1689,7 +1689,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Risolto un problema con l'apertura di modelli o snippet direttamente dal file: queste funzioni non inserivano dati. [issue 249]{L2}{L1} La voce di menu per l'ultimo modello utilizzato è ora aggiornata come previsto.{L2}{L1} Risolto un problema con il componente aggiuntivo CardBook.{L2}"
+    "message": "{L1} Il codice all'interno di un tag <head> sarà ora spostato nella sezione principale <head> del documento. Anche gli attributi <body> sono ora trasferiti al <body> principale. Ciò dovrebbe rendere gli stili CSS più visibili in altri client di posta [issue 79]{L2} {L1} Nella versione precedente, il sito Web della licenza non si apriva quando si faceva clic su qualsiasi pulsante nella finestra di dialogo Licenza. Il problema è stato risolto e anche l'apertura del sito di supporto nel browser standard.{L2}{L1} Risolti vari problemi di layout nella schermata delle impostazioni.{L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

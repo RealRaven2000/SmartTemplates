@@ -1785,7 +1785,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Korjattu ongelma, joka liittyi mallien tai katkelmien avaamiseen suoraan tiedostosta – nämä toiminnot eivät lisänneet tietoja. [issue 249]{L2}{L1} Viimeksi käytetyn mallin valikkokohta on nyt päivitetty odotetusti.{L2}{L1} Korjattu ongelma lisäosan CardBook kanssa.{L2}"
+    "message": "{L1} Koodi <head>-tunnisteen sisällä siirretään tästä lähtien asiakirjan <head>-pääosioon. Myös <body>-attribuutit siirretään nyt pääasialliseen <body>. Tämän pitäisi tehdä CSS-tyyleistä näkyvämpiä muissa sähköpostiohjelmissa [issue 79]{L2} {L1} Edellisessä versiossa lisenssisivusto ei avautunut, kun lisenssivalintaikkunan painikkeita napsautettiin. Tämä korjattiin ja tukisivusto avattiin myös tavallisessa selaimessa.{L2}{L1} Sekalaiset asetteluongelmat korjattu asetusnäytössä.{L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

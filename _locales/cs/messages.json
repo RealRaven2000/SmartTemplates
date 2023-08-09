@@ -1773,7 +1773,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Opraven problém s otevíráním šablon nebo úryvků přímo ze souboru – tyto funkce nevkládaly žádná data. [issue 249]{L2}{L1} Položka nabídky pro naposledy použitou šablonu je nyní aktualizována podle očekávání.{L2}{L1} Opraven problém s doplňkem CardBook.{L2}"
+    "message": "{L1} Kód ve značce <head> bude od nynějška přesunut do hlavní části <head> dokumentu. Také atributy <body> jsou nyní přeneseny do hlavního <body>. To by mělo zviditelnit styly CSS v jiných poštovních klientech [issue 79]{L2} {L1} V předchozí verzi se webová stránka licence neotevřela po kliknutí na žádné tlačítko v dialogovém okně Licence. To bylo opraveno a také otevření stránky podpory ve standardním prohlížeči.{L2}{L1} Opraveny různé problémy s rozložením na obrazovce nastavení.{L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

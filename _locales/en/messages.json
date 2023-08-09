@@ -1822,7 +1822,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixed an issue with opening templates or snippets directly from file - these functions did not insert any data. [issue 249]{L2}{L1} The menu item for last used template is now updated as expected.{L2}{L1} Fixed a problem with the Add-on {CardBook}.{L2}"
+    "message": "{L1} Any code within a <head> tag will from now be moved into the main <head> section of the document. Also <body> attributes are now transferred to the main <body>. This should make CSS styles more visible in other mail clients [issue 79]{L2} {L1} In the previous version, the license website did not open when clicking on any buttons in the License dialog. This was fixed and also opening the support site in the standard browser.{L2}{L1} Fixed miscellaneous layout issues in settings screen.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -1718,7 +1718,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Es wurde ein Problem beim Öffnen von Vorlagen oder Fragmenten direkt von Dateien behoben – diese Funktionen fügten keine Daten ein. [issue 249]{L2}{L1} Der Menüpunkt für die zuletzt verwendete Vorlage wird jetzt wie erwartet aktualisiert.{L2}{L1} Ein Problem mit dem Add-on CardBook wurde behoben.{L2}"
+    "message": "{L1} Code innerhalb eines <head>-Tags wird von nun an in den Hauptabschnitt <head> des Dokuments verschoben. Auch <body>-Attribute werden nun auf den Haupt-<body> übertragen. Dadurch sollten CSS-Stile in anderen E-Mail-Clients besser sichtbar sein [issue 79]{L2} {L1} In der vorherigen Version wurde die Lizenz-Website nicht geöffnet, wenn im Lizenzdialog auf eine Schaltfläche geklickt wurde. Dieses Problem wurde berichtigt; ebenso das Öffnen der Support-Website im Standardbrowser.{L2}{L1} Verschiedene Layoutprobleme im Einstellungsbildschirm wurden behoben.{L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

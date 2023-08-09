@@ -1782,7 +1782,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Correction d'un problème avec l'ouverture de modèles ou d'extraits directement à partir du fichier - ces fonctions n'inséraient aucune donnée. [issue 249]{L2}{L1} L'élément de menu du dernier modèle utilisé est maintenant mis à jour comme prévu.{L2}{L1} Correction d'un problème avec le module complémentaire CardBook.{L2}"
+    "message": "{L1} Le code dans une balise <head> sera désormais déplacé dans la section principale <head> du document. De plus, les attributs <body> sont désormais transférés au <body> principal. Cela devrait rendre les styles CSS plus visibles dans les autres clients de messagerie [issue 79]{L2} {L1} Dans la version précédente, le site Web de la licence ne s'ouvrait pas lorsque vous cliquiez sur les boutons de la boîte de dialogue Licence. Cela a été corrigé et a également ouvert le site d'assistance dans le navigateur standard.{L2}{L1} Correction de divers problèmes de mise en page dans l'écran des paramètres.{L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

@@ -1702,7 +1702,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Odpravljena težava z odpiranjem predlog ali izrezkov neposredno iz datoteke – te funkcije niso vstavile nobenih podatkov. [issue 249]{L2}{L1} Element menija za zadnjo uporabljeno predlogo je zdaj posodobljen po pričakovanjih.{L2}{L1} Odpravljena težava z dodatkom CardBook.{L2}"
+    "message": "{L1} Koda znotraj oznake <head> bo odslej premaknjena v glavni razdelek <head> dokumenta. Tudi atributi <body> so zdaj preneseni v glavno <body>. To bi moralo narediti sloge CSS bolj vidne v drugih poštnih odjemalcih [issue 79]{L2} {L1} V prejšnji različici se spletno mesto z licenco ni odprlo, ko ste kliknili kateri koli gumb v pogovornem oknu Licenca. To je bilo popravljeno in prav tako se je odprlo spletno mesto za podporo v standardnem brskalniku.{L2}{L1} Odpravljene različne težave s postavitvijo na zaslonu z nastavitvami.{L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

@@ -1704,7 +1704,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Corrigido um problema com a abertura de modelos ou trechos diretamente do arquivo - essas funções não inseriam nenhum dado. [issue 249]{L2}{L1} O item de menu do último modelo usado foi atualizado conforme o esperado.{L2}{L1} Corrigido um problema com o complemento CardBook.{L2}"
+    "message": "{L1} O código dentro de uma tag <head> será movido a partir de agora para a seção <head> principal do documento. Além disso, os atributos <body> agora são transferidos para o <body> principal. Isso deve tornar os estilos CSS mais visíveis em outros clientes de e-mail [issue 79]{L2} {L1} Na versão anterior, o site da licença não abria ao clicar em qualquer botão na caixa de diálogo Licença. Isso foi corrigido e também a abertura do site de suporte no navegador padrão.{L2}{L1} Corrigidos diversos problemas de layout na tela de configurações.{L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

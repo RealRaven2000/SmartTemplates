@@ -1725,7 +1725,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Er is een probleem opgelost met het openen van sjablonen of fragmenten rechtstreeks vanuit een bestand - deze functies voegden geen gegevens in. [issue 249]{L2}{L1} Het menu-item voor het laatst gebruikte sjabloon is nu bijgewerkt zoals verwacht.{L2}{L1} Probleem opgelost met de add-on CardBook.{L2}"
+    "message": "{L1} Code binnen een <head>-tag wordt vanaf nu verplaatst naar het hoofdgedeelte <head> van het document. Ook <body> attributen worden nu overgebracht naar de hoofd <body>. Dit zou CSS-stijlen beter zichtbaar moeten maken in andere e-mailclients [issue 79]{L2} {L1} In de vorige versie werd de licentiewebsite niet geopend bij het klikken op knoppen in het dialoogvenster Licentie. Dit is opgelost en ook het openen van de ondersteuningssite in de standaardbrowser.{L2}{L1} Verschillende lay-outproblemen opgelost in het instellingenscherm.{L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
