@@ -130,10 +130,10 @@ button.active::marker {
 	list-style-image : url("ico/info.svg") !important;
 }
 #QuickFolders-Pro {
-  list-style-image : url("ico/pro.png") !important;
+  list-style-image : url("ico/pro-expired.svg") !important;
 }
 #QuickFolders-Pro.paid {
-  list-style-image : url("ico/pro-paid.png") !important;
+  list-style-image : url("ico/pro-paid.svg") !important;
 }
 
  /* Style the tab */

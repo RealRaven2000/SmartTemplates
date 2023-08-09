@@ -69,6 +69,9 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
   fill: rgb(123, 4, 4);
 }
 
+#smartTemplates-news {
+	list-style-image: url("chrome://smarttemplate4/content/skin/icons/new.svg") !important;
+}
 
 /* reply buttons - see:
     https://searchfox.org/comm-esr102/source/mail/themes/shared/mail/messageHeader.css#195

@@ -18,6 +18,7 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.newsflash {
   background-color: #0064a7 !important; /* blue */
   background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   color: white;
+  
 }
 /* highlight news item but only if the button is highlighted as news (hasNews pref set) */
 .newsflash menuitem#smartTemplates-news {
@@ -74,12 +75,6 @@ li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.renew butto
 #SmartTemplate4Button:where(.expired, .renew, .newsflash) > :where(label, .button-label) {
   color: rgb(255,255,255) !important;
 }
-
-#smartTemplatesMainPopup :where(menuitem,menu,menupopup),
-#smartTemplatesMainPopup :where(menuitem,menu,menupopup) label {
- /* color: var(--lwt-text-color, black); */
-}
-
 
 li[item-id="ext-smarttemplate4@thunderbird.extension"] .live-content.expired:hover {
 	background-color: #6d0202 !important; 

@@ -394,6 +394,7 @@ groupbox.transparent .groupbox-title {
 
 .fileTemplatePanel richlistbox {
   min-height: 7em;
+	max-height: 50vh; /* avoid being cut off! */
 }
 
 vbox.headers {
@@ -637,15 +638,15 @@ toolbar toolbarbutton:not([hidden]) {
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 /* menuitem.cmd[tagName="qfRegister"],  */
 tab#SmartTemplate4-Pro {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-default.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.paid {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-paid.svg') !important;
 }
 
 tab#SmartTemplate4-Pro.expired {
-	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.png') !important;
+	list-style-image : url('chrome://smarttemplate4/content/skin/icons/pro-expired.svg') !important;
 }
 
 /* vbox in a fieldset */
@@ -734,4 +735,10 @@ label.plain-link:hover {
 
 #fileSettings div.settingsRow #txtTemplateCategory[type="text"] {
   flex: 1;
+}
+
+/* color problems with buttons in dark sking mode */
+button {
+  color: var(--button-text-color) !important; /* was inherit */
+  background: var(--button-background-color) !important;
 }
