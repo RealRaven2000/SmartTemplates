@@ -239,43 +239,63 @@ permalink: version.html
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
 
-<a id="4.1"> &nbsp; </a>
-<li>
-  <h4>
-		<a href="https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/?page=1#version-4.1">
-      Version 4.1 - 09/08/2023</a>
-		<br>
-		<span class="appWrapper">
-			<span class="thunderbird">111.0 - 115.*</span>
-		</span>
-  </h4>
-  <ul>
-    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
-    <li> 
-      Any code within a &lt;head&gt; tag will from now be moved into the main &lt;head&gt; section 
-      of the document. Also &lt;body&gt; attributes are now transferred to the main &lt;body&gt;. 
-      This should make CSS styles more visible in other mail clients.
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/79">[issue 79]</a>
-    </li> 
-    
-    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
-    <li> 
-      In the previous version, the license website did not open when clicking on any 
-      buttons in the License dialog. This was fixed and also opening the support site 
-      in the standard browser.
-    </li>
-    <li> 
-      Fixed miscellaneous layout issues in settings screen.
-    </li>
-      
-    
-    <h5 class="inList"><span class="inListTitle">Known issues / Plans</span></h5>
-    <li>There may still be some stability issues with displaying / updating the template menus.</li>
-    <li>Future versions will hide irrelevant menus (reply list, reply all) based on current context.</li>
-  </ul>
-</li> 
+
 <ul id="version-history">
 
+<!-- LATEST RELEASE ON ATN -->
+<a id="latest"> </a>
+<a id="head"> </a>
+
+  <a id="4.1"> &nbsp; </a>
+  <li>
+    <h4>
+      <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/?page=1#version-4.1">
+        Version 4.1 - 09/08/2023</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">111.0 - 115.*</span>
+      </span>
+    </h4>
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+      <li> 
+        <p>
+          New option to inject contents of <code class="html">&lt;head&gt;</code> tags into the Thunderbird 
+          composers' head section. 
+          Merge attributes of template <code class="html">&lt;body&gt;</code> into the 
+          body tag of the Email.
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/79">[issue 79]</a>
+        </p>
+        <p>
+          Thunderbird used to discard any body tags that were injected into composer.
+          With this new feature we can influence the look and feel of the page
+          better (including background color and images). Moving style sections
+          into the head of the email can also make the layout translate better
+          in various email environments. Some webmail sites discard styles that
+          are not located within the head section.
+        </p>      
+        <p>
+          This behavior can be toggled on the advanced settings page:
+        </p>
+        <img class="screenshot" src="img/injectHeadSection.png" />
+      </li> 
+      
+      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+      <li> 
+        In the previous version, the license website did not open when clicking on any 
+        buttons in the License dialog. This was fixed and also opening the support site 
+        in the standard browser.
+      </li>
+      <li> 
+        Fixed various layout issues in settings screen.
+      </li>
+        
+      
+      <h5 class="inList"><span class="inListTitle">Known issues / Plans</span></h5>
+      <li>There may still be some stability issues with displaying / updating the template menus.</li>
+      <li>Future versions will hide irrelevant menus (reply list, reply all) based on current context.</li>
+    </ul>
+  </li> 
 
   <a id="4.0.1"> &nbsp; </a>
   <a id="4.0.2"> &nbsp; </a>
@@ -473,258 +493,255 @@ permalink: version.html
 <a id="4.0b1"> &nbsp; </a>
 <a id="4.0b2"> &nbsp; </a>
 <a id="4.0b3"> &nbsp; </a>
-<li>
-  <h4>
-		<a href="https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/?page=1#version-4.0b3">
-      Version 4.0b3 - 17/07/2023</a>
-		<br>
-		<span class="appWrapper">
-			<span class="thunderbird">112.* - 115.*</span> 
-		</span>
-  </h4>
+  <li>
+    <h4>
+      <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/?page=1#version-4.0b3">
+        Version 4.0b3 - 17/07/2023</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">112.* - 115.*</span> 
+      </span>
+    </h4>
 
-  <div id="newsSection">
-    <p>
-      SmartTemplates 4.0 is a brand new version for Thunderbird 115, which is in active process of 
-      release over the next weeks and which has a completely redesigned new
-      <a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/"> 
-      user interface "Supernova"</a>.
-      If you would like to share feedback on this beta version, I recommend that you visit Github 
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">issue 213</a>.
-    </p>
-    <p>
-      Please <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=newsSection">buy a license</a> 
-      or renew your license to finance this work if you want to use SmartTemplates in the future.
-    </p>
-  </div>
-
-
-  <table class="smartTemplateProRenew bargain psa"> 
-    <tr>
-      <td style="vertical-align:top;">
-      
-        <h3 class="shillBox">SmartTemplates Pro Renewal - SUMMER SALE</h3>
-        <p>
-          You can now renew or extend your Pro license 
-          for <span class="emphasis">25% off</span> - [around $7.50 USD saving $2.50!]  
-          from <span class="emphasis">July 10th</span> to <span class="emphasis">July 25th</span>.
-          Click the SmartTemplates panel at the bottom of the Thunderbird window:<br>
-          <img src="img/status-expired.png"> ...and then click the renewal button.
-        </p>
-        <p>
-          Make sure to catch this occasion while it is up, this is the cheapest way to use all 
-          <a target="_blank" href="premium.html">premium features</a> for Thunderbird 102!
-        </p>
-      </td>
-      <td style="vertical-align:top; max-width:0;">
-        <a class="nohover" href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-versionpage-bargain">
-          <img id="bargainStar" src="img/bargain-renew-tb105.png" />
-        </a>
-      </td>
-    </tr>
-  </table>
-
-  <table class="smartTemplateFreeUser bargain psa"> 
-    <tr>
-      <td style="vertical-align:top;">
-      <!--  -->
-        <h3 class="shillBox">SUMMER SALE - until July 25th</h3>
-        <p>
-          For the next weeks, you can now get a SmartTemplates Pro License 
-          for <span class="emphasis">33% off - [around $10.00 USD saving $5.00] </span> 
-          for <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-bargain">SmartTemplates Pro</a>
-        </p>
-        <p>
-          Catch this occasion while available, this is the cheapest way to use all 
-          <a target="_blank" href="premium.html">premium features</a> for Thunderbird 115.
-        </p>
-        <p>
-          Alternatively, you can buy the <a href="https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=st-versionpage-explain">standard license here</a>. 
-        </p>
-        <p>
-          The license is valid for one full year after purchase, after which 
-          it can be extended or upgraded. SmartTemplates needs to be completely rewritten to keep 
-          working on a future version of Thunderbird, as the "legacy Add-on" system is gradually replaced with a 
-          different technology. Only through funding this work can SmartTemplates survive - it may be the price of a cup of coffee to you - consider 
-          whether you think it is worth supporting the many features that SmartTemplates gives you.
-        </p>
-      </td>
-      <td style="vertical-align:top; max-width:0;">
-        <a class="nohover" href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-versionpage-bargain">
-          <img id="bargainStar" src="img/bargain-33-tb115.png" />
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>
-          To make a choice - expand the settings dialog: <br>
-          <img src="img/st-advanced-btn.png"><br>
-          then click the <i>Buy License</i> item from the SmartTemplate License tab on the Options dialog.
-        </p>
-        <img class="screenshot" src="img/smartTemplate-license.png" />
-      </td>
-    </tr>
-  </table>
-  
-  <table class="smartTemplateStdUser bargain psa"> 
-    <tr>
-      <td style="vertical-align:top;">
-      <!--  -->
-        <h3 class="shillBox">Summer SALE - Upgrade to Pro for same price as a Standard license</h3>
-        <p>
-          You can now upgrade your Standard license to SmartTemplates Pro
-          for <span class="emphasis">33% off</span> - [pay $6.00 USD saving $3.00]  
-          from <span class="emphasis">July 10th</span> to <span class="emphasis">July 25th</span>.
-        </p>
-        <p>
-          To avail of this offer, you can do either:
-        </p>
-        <ul>
-          <li>
-            If your license expires soon or is expired, click the panel at the bottom of the Thunderbird window:<br>
-            <img src="img/status-expired.png"><br>
-            ...and then click the renewal / extend button.
-          </li>
-          <li>
-            Or open the SmartTemplates license tab, expand the dialog 
-            and click on the button "Upgrade to Pro" or "Renew License".<br>
-            <table style="width:auto;">
-              <tr>
-                <td style="text-align:center;">
-                  <img src="img/st-advanced-btn.png">
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align:center;">
-                  <img src="img/license-2.png" style="margin-top: 5px; height:180px;">
-                </td>
-              </tr>
-            </table>
-          </li>
-        </ul>
-        - You can then make the choice for upgrade or extension from the SmartTemplates
-        licensing screen.
-
-        <p>
-          This will <b>transmit your current license key</b> to the shop site to assure eligibility - make sure to use 
-          the link directly for the discount. It will also give you a full year from your license purchase 
-          (even if your Standard key is already expired).
-        </p>
-
-        <p>
-          Make sure to catch this occasion while it is up, this is the cheapest way to use all 
-          <a target="_blank" href="premium.html">premium features</a> for Thunderbird 102!
-        </p>
-      </td>
-      <td style="vertical-align:top; max-width:0;">
-        <a class="nohover">
-          <img id="bargainStar" src="img/bargain-upgrade-tb115.png" />
-        </a>
-      </td>
-    </tr>
-  </table>  
-  
-
-  <ul>
-    <h5 class="inList"><span class="inListTitle">Important Maintenance Fixes - 4.0b3</span></h5>
-    <li>
-      Fixed a bug which broke the template menus when modifying 
-      (the menus were saved in a broken format). 
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/247">[issue 247]</a>
-    </li>
-    <li>
-      The <code>%recipient%</code> variable will now update to the correct address when 
-      inserting it from a smart fragment in a reply, even after it was 
-      changed manually.
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/248">[issue 248]</a>
-    </li>
-
-    <h5 class="inList"><span class="inListTitle">Enhancements / Changes</span></h5>
-    <li> 
+    <div id="newsSection">
       <p>
-        User Interface: The template dropdown menus are now displayed through dedicated 
-        buttons in the new unified toolbar and the message header area. Thunderbird does not 
-        allow modifying existing buttons (such as Write or Reply) with a dropdown anymore. 
-      </p>
-      <h6>Unified Toolbar Menu</h6>
-      <p>
-        this is automatically added on installation on the top right of Thunderbird - you can move 
-        it to the left via the context menu and selecting Customize.
-      </p>
-      <img src="img/toolbar-menu.png" class="screenshot" alt="unified toolbar menu">     
-
-      <h6>Header Actions Menu</h6>
-      <p>
-        <img src="img/header-action-menu.png" class="screenshot" alt="header action menu">     
-      </p>
-    </li>
-
-    <li> 
-      New option to automatically reuse last external template. Once you select an external
-      HTML from the dropdown when replying, this will be used for all subsequent replies
-      using Thunderbird's standard reply / reply all buttons.
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/243">[issue 243]</a>
-      <p>
-        This feature will be available to all users with a valid license (Standard, Pro and Domain) and can be 
-        activated in <i>Global Settings</i>:
-      </p>
-      <img src="img/default-last-template.png" class="screenshot" alt="default last external template"> 
-
-    </li>
-
-    <li> 
-      <p>
-        Supports <code class="inline">%replaceText%</code> and <code class="inline">%deleteText%</code> 
-        to modify html that was imported using <code class="inline">%file()%</code>. 
-        This way you can use placeholder variables and replace them from 
-        the containing template. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">[issue 244]</a><br>
-        I recommend using the tested syntax <tt>{variable}</tt> for place holders.
-      </p>
-
-      <p>
-        We frequently need to import text fragments ("building blocks") that have some generic
-        content but need to include some specific keywords, such as a product name or URL.  
-        Previously the following pattern did not work within the text that is imported:
-      </p>
-
-      <p>
-        <pre class="code">  %file("snippets/why-renew.html")%
-  %replaceText("{addonName}","quickFilters")%    
-  %replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%</pre>
+        SmartTemplates 4.0 is a brand new version for Thunderbird 115, which is in active process of 
+        release over the next weeks and which has a completely redesigned new
+        <a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/"> 
+        user interface "Supernova"</a>.
+        If you would like to share feedback on this beta version, I recommend that you visit Github 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">issue 213</a>.
       </p>
       <p>
-        Contained file (why-renew.html)
-        <pre class="code">  &lt;p&gt;
-    All changes of the Add-on {addonName} can be seen as they are 
-    created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
-  &lt;/p&gt;</pre>
+        Please <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=newsSection">buy a license</a> 
+        or renew your license to finance this work if you want to use SmartTemplates in the future.
       </p>
-      <p>
-        Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were 
-        inserted into the template text. 
-        New behavior: First load the file and replace its contents into the template, 
-        then do the text replacements afterwards. As demonstrated in the example above,
-        it can also be used to modify HTML markup and affect things like HTML attributes
-        such as the URL of a web link.
-      </p>
+    </div>
 
-    </li>
+
+    <table class="smartTemplateProRenew bargain psa"> 
+      <tr>
+        <td style="vertical-align:top;">
+        
+          <h3 class="shillBox">SmartTemplates Pro Renewal - SUMMER SALE</h3>
+          <p>
+            You can now renew or extend your Pro license 
+            for <span class="emphasis">25% off</span> - [around $7.50 USD saving $2.50!]  
+            from <span class="emphasis">July 10th</span> to <span class="emphasis">July 25th</span>.
+            Click the SmartTemplates panel at the bottom of the Thunderbird window:<br>
+            <img src="img/status-expired.png"> ...and then click the renewal button.
+          </p>
+          <p>
+            Make sure to catch this occasion while it is up, this is the cheapest way to use all 
+            <a target="_blank" href="premium.html">premium features</a> for Thunderbird 102!
+          </p>
+        </td>
+        <td style="vertical-align:top; max-width:0;">
+          <a class="nohover" href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-versionpage-bargain">
+            <img id="bargainStar" src="img/bargain-renew-tb105.png" />
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <table class="smartTemplateFreeUser bargain psa"> 
+      <tr>
+        <td style="vertical-align:top;">
+        <!--  -->
+          <h3 class="shillBox">SUMMER SALE - until July 25th</h3>
+          <p>
+            For the next weeks, you can now get a SmartTemplates Pro License 
+            for <span class="emphasis">33% off - [around $10.00 USD saving $5.00] </span> 
+            for <a href="http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-bargain">SmartTemplates Pro</a>
+          </p>
+          <p>
+            Catch this occasion while available, this is the cheapest way to use all 
+            <a target="_blank" href="premium.html">premium features</a> for Thunderbird 115.
+          </p>
+          <p>
+            Alternatively, you can buy the <a href="https://sites.fastspring.com/quickfolders/product/smarttemplatestandard?referrer=st-versionpage-explain">standard license here</a>. 
+          </p>
+          <p>
+            The license is valid for one full year after purchase, after which 
+            it can be extended or upgraded. SmartTemplates needs to be completely rewritten to keep 
+            working on a future version of Thunderbird, as the "legacy Add-on" system is gradually replaced with a 
+            different technology. Only through funding this work can SmartTemplates survive - it may be the price of a cup of coffee to you - consider 
+            whether you think it is worth supporting the many features that SmartTemplates gives you.
+          </p>
+        </td>
+        <td style="vertical-align:top; max-width:0;">
+          <a class="nohover" href="https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-versionpage-bargain">
+            <img id="bargainStar" src="img/bargain-33-tb115.png" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            To make a choice - expand the settings dialog: <br>
+            <img src="img/st-advanced-btn.png"><br>
+            then click the <i>Buy License</i> item from the SmartTemplate License tab on the Options dialog.
+          </p>
+          <img class="screenshot" src="img/smartTemplate-license.png" />
+        </td>
+      </tr>
+    </table>
     
-    <h5 class="inList"><span class="inListTitle">Known issues / Work in Progess</span></h5>
-    <b>Known issues / Plans</b>
+    <table class="smartTemplateStdUser bargain psa"> 
+      <tr>
+        <td style="vertical-align:top;">
+        <!--  -->
+          <h3 class="shillBox">Summer SALE - Upgrade to Pro for same price as a Standard license</h3>
+          <p>
+            You can now upgrade your Standard license to SmartTemplates Pro
+            for <span class="emphasis">33% off</span> - [pay $6.00 USD saving $3.00]  
+            from <span class="emphasis">July 10th</span> to <span class="emphasis">July 25th</span>.
+          </p>
+          <p>
+            To avail of this offer, you can do either:
+          </p>
+          <ul>
+            <li>
+              If your license expires soon or is expired, click the panel at the bottom of the Thunderbird window:<br>
+              <img src="img/status-expired.png"><br>
+              ...and then click the renewal / extend button.
+            </li>
+            <li>
+              Or open the SmartTemplates license tab, expand the dialog 
+              and click on the button "Upgrade to Pro" or "Renew License".<br>
+              <table style="width:auto;">
+                <tr>
+                  <td style="text-align:center;">
+                    <img src="img/st-advanced-btn.png">
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">
+                    <img src="img/license-2.png" style="margin-top: 5px; height:180px;">
+                  </td>
+                </tr>
+              </table>
+            </li>
+          </ul>
+          - You can then make the choice for upgrade or extension from the SmartTemplates
+          licensing screen.
 
-    <li>
-      There may still be some stability issues with displaying / updating the template menus.</li>
-    <li>
-      Future versions will hide irrelevant menus (reply list, reply all) based on current context.
-    </li>
-  </ul>
-</li> 
+          <p>
+            This will <b>transmit your current license key</b> to the shop site to assure eligibility - make sure to use 
+            the link directly for the discount. It will also give you a full year from your license purchase 
+            (even if your Standard key is already expired).
+          </p>
 
-<!-- LATEST RELEASE ON ATN -->
-<a id="latest"> </a>
-<a id="head"> </a>
+          <p>
+            Make sure to catch this occasion while it is up, this is the cheapest way to use all 
+            <a target="_blank" href="premium.html">premium features</a> for Thunderbird 102!
+          </p>
+        </td>
+        <td style="vertical-align:top; max-width:0;">
+          <a class="nohover">
+            <img id="bargainStar" src="img/bargain-upgrade-tb115.png" />
+          </a>
+        </td>
+      </tr>
+    </table>  
+    
+
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Important Maintenance Fixes - 4.0b3</span></h5>
+      <li>
+        Fixed a bug which broke the template menus when modifying 
+        (the menus were saved in a broken format). 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/247">[issue 247]</a>
+      </li>
+      <li>
+        The <code>%recipient%</code> variable will now update to the correct address when 
+        inserting it from a smart fragment in a reply, even after it was 
+        changed manually.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/248">[issue 248]</a>
+      </li>
+
+      <h5 class="inList"><span class="inListTitle">Enhancements / Changes</span></h5>
+      <li> 
+        <p>
+          User Interface: The template dropdown menus are now displayed through dedicated 
+          buttons in the new unified toolbar and the message header area. Thunderbird does not 
+          allow modifying existing buttons (such as Write or Reply) with a dropdown anymore. 
+        </p>
+        <h6>Unified Toolbar Menu</h6>
+        <p>
+          this is automatically added on installation on the top right of Thunderbird - you can move 
+          it to the left via the context menu and selecting Customize.
+        </p>
+        <img src="img/toolbar-menu.png" class="screenshot" alt="unified toolbar menu">     
+
+        <h6>Header Actions Menu</h6>
+        <p>
+          <img src="img/header-action-menu.png" class="screenshot" alt="header action menu">     
+        </p>
+      </li>
+
+      <li> 
+        New option to automatically reuse last external template. Once you select an external
+        HTML from the dropdown when replying, this will be used for all subsequent replies
+        using Thunderbird's standard reply / reply all buttons.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/243">[issue 243]</a>
+        <p>
+          This feature will be available to all users with a valid license (Standard, Pro and Domain) and can be 
+          activated in <i>Global Settings</i>:
+        </p>
+        <img src="img/default-last-template.png" class="screenshot" alt="default last external template"> 
+
+      </li>
+
+      <li> 
+        <p>
+          Supports <code class="inline">%replaceText%</code> and <code class="inline">%deleteText%</code> 
+          to modify html that was imported using <code class="inline">%file()%</code>. 
+          This way you can use placeholder variables and replace them from 
+          the containing template. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">[issue 244]</a><br>
+          I recommend using the tested syntax <tt>{variable}</tt> for place holders.
+        </p>
+
+        <p>
+          We frequently need to import text fragments ("building blocks") that have some generic
+          content but need to include some specific keywords, such as a product name or URL.  
+          Previously the following pattern did not work within the text that is imported:
+        </p>
+
+        <p>
+          <pre class="code">  %file("snippets/why-renew.html")%
+    %replaceText("{addonName}","quickFilters")%    
+    %replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%</pre>
+        </p>
+        <p>
+          Contained file (why-renew.html)
+          <pre class="code">  &lt;p&gt;
+      All changes of the Add-on {addonName} can be seen as they are 
+      created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
+    &lt;/p&gt;</pre>
+        </p>
+        <p>
+          Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were 
+          inserted into the template text. 
+          New behavior: First load the file and replace its contents into the template, 
+          then do the text replacements afterwards. As demonstrated in the example above,
+          it can also be used to modify HTML markup and affect things like HTML attributes
+          such as the URL of a web link.
+        </p>
+
+      </li>
+      
+      <h5 class="inList"><span class="inListTitle">Known issues / Work in Progess</span></h5>
+      <b>Known issues / Plans</b>
+
+      <li>
+        There may still be some stability issues with displaying / updating the template menus.</li>
+      <li>
+        Future versions will hide irrelevant menus (reply list, reply all) based on current context.
+      </li>
+    </ul>
+  </li> 
+
 
 
 <!-- anchor to #contact for pre versions otherwise url to ATN
@@ -755,6 +772,71 @@ permalink: version.html
       - Miscellaneous
       - Title "New Feature" is removed from list now and we list all below Enhancements
 -->
+
+<a id="3.18"> &nbsp; </a>
+<li>
+  <h4>
+		<a href="#contact" onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">Version 3.18 - WIP</a>
+		<br>
+		<span class="appWrapper">
+			<span class="thunderbird">91.* - 110.*</span> 
+		</span>
+  </h4>
+  <div id="newsSection">
+    <p>
+      SmartTemplates is now compatible with the latest version of Thunderbird (115.2)!
+    </p>
+    <p>
+      Thunderbird 115 has been released on July 11th and has a completely 
+      <a href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
+      user interface "Supernova"</a>.
+    </p>
+    <p>
+      This required considerable work of <b>rewriting all elements interacting with the main page</b> 
+      (3pane) of Thunderbird (toolbar buttons, template menus, event handlers) - and also requires rewriting
+      the settings dialog as a content tab. Please fund this work through buying a license.
+    </p>
+    <p>
+      If you would like to read up or comment on the ongoing work for optimizing this new 
+      SmartTemplates version, see 
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">this Github issue</a>.      
+    </p>
+  </div>  
+  
+  <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+    
+    <li> 
+      <p>
+        New option to inject contents of <code class="html">&lt;head&gt;</code> tags into the Thunderbird 
+        composers' head section. 
+        Merge attributes of template <code class="html">&lt;body&gt;</code> into the 
+        body tag of the Email.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/79">[issue 79]</a>
+      </p>
+      <p>
+        Thunderbird used to discard any body tags that were injected into composer.
+        With this new feature we can influence the look and feel of the page
+        better (including background color and images). Moving style sections
+        into the head of the email can also make the layout translate better
+        in various email environments. Some webmail sites discard styles that
+        are not located within the head section.
+      </p>      
+      <p>
+        This behavior can be toggled on the advanced settings page:
+      </p>
+      <img class="screenshot" src="img/injectHeadSection.png" />
+    </li> 
+    
+    <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+    <li>
+      Avoid error in log when smartTemplates.json file does not exist  
+      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/227">[issue 227]</a>
+    </li>
+  </ul>
+</li> 
+
+
 <a id="3.17.1"> &nbsp; </a>
 <li>
   <h4>
@@ -766,25 +848,7 @@ permalink: version.html
 		</span>
   </h4>
 
-  <div id="newsSection">
-    <p>
-      SmartTemplates is now compatible with the latest version of Thunderbird (115.0)!
-    </p>
-    <p>
-      Thunderbird 115 has been released on July 11th and has a completely 
-      <a href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
-      user interface "Supernova"</a>.
 
-      This required considerable work of <b>rewriting all elements interacting with the main page</b> 
-      (3pane) of Thunderbird (toolbar buttons, template menus, event handlers) - and also requires rewriting
-      the settings dialog as a content tab. Please fund this work through buying a license.
-    </p>
-    <p>
-      If you would like to read up or comment on the ongoing work for optimizing this new 
-      SmartTemplates version, see 
-      <a href="https://github.com/RealRaven2000/SmartTemplates/issues/213">this Github issue</a>.      
-    </p>
-  </div>
 
   <table class="smartTemplateProRenew bargain psa"> 
     <tr>
@@ -914,6 +978,7 @@ permalink: version.html
 
 
   <ul>
+    <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
     <li>
       Allow <code>%replaceText()%</code> and <code>%deleteText()%</code> to affect content 
       that was imported using <code>%file()%#</code>
