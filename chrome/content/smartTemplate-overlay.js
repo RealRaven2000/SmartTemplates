@@ -773,7 +773,7 @@ SmartTemplate4.mimeDecoder = {
             SmartTemplate4.Util.logException("cardbook.getContactsFromMail function  failed", ex);
           }
           // Will it fall back to standard AB?
-          if (!isCardBookFallback && !card && !card.length) {
+          if (!isCardBookFallback && (!card || !card.length)) {
             return returnObj;
           }
         }
