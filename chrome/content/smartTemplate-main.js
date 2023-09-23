@@ -244,10 +244,15 @@ END LICENSE BLOCK
     # setting final max ver to 110.0b4 - new Versions for Thunderbird SuperNova (and 115 ESR) 
     #   will be 4 under the new branch 5.0
 
-  Version 3.17.1 - WIP
+  Version 3.17.1 - 16/07/2023
     # [issue 240] Regression (3.16) invalid HTML signature path can lead to problems in template 
     # [issue 242] Update "# licensed days left" at midnight.
     # [issue 244] allow replaceText and deleteText to affect html that was imported using %file()%
+
+  Version 3.18 - WIP
+    # [issue 227] Avoid error in log when smartTemplates.json file does not exist
+    # [issue 79] Inject contents of <head> tags into composer's head section, merge body attributes
+    # Fixed a problem with cardbook when no match round and fallback to standard AB is not defined 
     
 
 =========================

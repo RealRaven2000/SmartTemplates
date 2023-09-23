@@ -1,34 +1,22 @@
 <meta charset="UTF-8">
 <style>b { display: block; margin-top: 10px; } </style>
 
-The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.17.1">can be found here</a>
+The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#3.18">can be found here</a>
 
-SmartTemplates is now compatible with the latest version of Thunderbird (115.0). This required numerous substantial changes, and rewriting of many functions. This version 3.17.1 backports some of the changes to Thunderbird 102 and earliser.
+SmartTemplates is now compatible with the latest version of Thunderbird (115.2.3). This required numerous substantial changes, and rewriting of many functions. This version 3.17.1 backports some of the changes to Thunderbird 102 and earliser.
 
 <b>Enhancements</b>
 <ul>
-<li> Allow %replaceText()%</code> and %deleteText()%</code> to affect content  that was imported using %file()%</code>
-    <a href="https://github.com/RealRaven2000/SmartTemplates/issues/244">issue 244</a>
+<li> New option to inject contents of <code class="html">&lt;head&gt;</code> tags into the Thunderbird composers' head section. Merge attributes of template <code class="html">&lt;body&gt;</code> into the body tag of the Email. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/79">[issue 79]</a>
 
-We frequently need to import text fragments ("building blocks") that have a generic message but need to include some specific keywords, such as a product name or URL. Previously the following pattern did not work within the text that is imported:
+Thunderbird used to discard any body tags that were injected into composer. With this new feature we can influence the look and feel of the page better (including background color and images). Moving style sections into the head of the email can also make the layout translate better in various email environments. Some webmail sites discard styles that are not located within the head section.
 
-<pre>%file("snippets/why-renew.html")%
-%replaceText("{addonName}","quickFilters")%    
-%replaceText("{github}","https://github.com/RealRaven2000/quickFilters")%</pre>
+This behavior can be toggled on the advanced settings page. </li>
+</ul>
 
-Contained file (why-renew.html)
-
-<pre>&lt;p&gt;
-  All changes of the Add-on {addonName} can be seen as they are 
-  created and tracked &lt;a href="{github}/issues"&gt;on Github&lt;/a&gt;;
-&lt;/p&gt;</pre>
-
-Previously, SmartTemplates did the replacements <b>before</b> the contents of the file were inserted into the template text. 
-New behavior: First load the file and replace its contents into the template, then do the text replacements afterwards. As demonstrated in the example above, it can also be used to modify HTML markup and affect things like HTML attributes such as the URL of a web link.
-</li>
-
-  
-<li> Fixed problem where an invalid HTML signature path could lead to problems in the template.  </li>
-<li>Update Number of days left in license at midnight</li>
+<b>Bugfixes</b>
+<ul>
+<li> Avoid error in log when smartTemplates.json file (list of external templates) does not exist <a href="https://github.com/RealRaven2000/SmartTemplates/issues/227">[issue 227]</a>  </li>
+<li> Fixed a problem with cardbook when no match round and fallback to standard AB is not defined </li>
 </ul>
 

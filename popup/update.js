@@ -201,8 +201,12 @@ const discountUpgrade = "33%";
     
     let whatsNewLst = document.getElementById('whatsNewList');
     function replaceVariableCodeTags(txt) {
+      // {{param}}
+      // {{%variable%}}
+      // <tag>
       let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
-      return txt2.replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
+      return txt2.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>")
+                 .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
                  .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
                  .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")
                  .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
