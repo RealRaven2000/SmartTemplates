@@ -800,7 +800,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.0). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.2.3). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1402,8 +1402,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juli"
-  },
+    "message": "9 oktober"
+  },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1656,7 +1656,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Toestaan dat {{%replaceText%}}- en {{%deleteText%}}-functies invloed hebben op html dat is geïmporteerd met {{%file()%}}  {L2} {L1} Probleem opgelost waarbij een ongeldig HTML-handtekeningpad tot problemen in de sjabloon kon leiden {L2} {L1} Update Aantal resterende dagen in licentie om middernacht. {L2}"
+    "message": "{P1} De volgende functies zijn teruggebracht vanuit SmartTemplates v4.1, die draait op de nieuwste versie van Thunderbird, v115.2. Ik raad aan om Thunderbird binnenkort bij te werken als u nog steeds v102 gebruikt.{P2}{L1} Nieuwe optie om de inhoud van <head> tags into the Thunderbird editor's head section in te voegen. Het kan nu ook <body> attributes from the template samenvoegen in het <body> element van de e-mail. Het verplaatsen van stijlsecties naar de kop van de e-mail kan ook de lay-out beter vertalen in verschillende e-mailomgevingen.{L2} {L1} Er wordt geen fout meer geregistreerd in de JavaScript-foutconsole als er geen externe sjablonen zijn geconfigureerd. {L2}"
   },
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."

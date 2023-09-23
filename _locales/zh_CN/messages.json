@@ -842,7 +842,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.0) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.2.3) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1453,7 +1453,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月25日"
+    "message": "10月9日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1719,7 +1719,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}允许 {{%replaceText%}} 和 {{%deleteText%}} 函数影响使用 {{%file()%}} 导入的 html{L2} {L1} 修复了无效 HTML 签名路径可能导致模板出现问题的问题{L2} {L1} 午夜更新许可证剩余天数。 {L2}"
+    "message": "{P1} 以下功能已从SmartTemplates v4.1回溯，该版本运行在最新的Thunderbird版本v115.2上。如果您仍在使用v102，我建议尽快更新Thunderbird。{P2}{L1} 新选项可将<head> tags into the Thunderbird editor's head section的内容注入其中。它还可以将模板的<body> attributes合并到电子邮件的<body>元素中。将样式部分移动到电子邮件头部还可以在各种电子邮件环境中更好地转换布局。{L2} {L1} 如果未配置外部模板，JavaScript错误控制台将不再记录错误。{L2}"
   },
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

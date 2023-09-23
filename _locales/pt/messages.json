@@ -812,7 +812,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.0). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.2.3). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1423,8 +1423,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 de julho"
-  },
+    "message": "9 de outubro"
+  },  
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {
@@ -1677,7 +1677,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Permitir que as funções {{%replaceText%}} e {{%deleteText%}} afetem o html que foi importado usando {{%file()%}} {L2} {L1} Corrigido o problema em que um caminho de assinatura HTML inválido poderia levar a problemas no modelo{L2} {L1} Atualização Número de dias restantes na licença à meia-noite. {L2}"
+    "message": "{P1} As seguintes funcionalidades foram retroportadas do SmartTemplates v4.1, que roda na versão mais recente do Thunderbird, v115.2. Recomendo a atualização do Thunderbird em breve, se ainda estiver usando a v102.{P2}{L1} Nova opção para injetar conteúdos de <head> tags into the Thunderbird editor's head section. Agora, também pode mesclar <body> attributes from the template no <body> element do email. Mover seções de estilo para o cabeçalho do email também pode melhorar a tradução do layout em diversos ambientes de email.{L2} {L1} Nenhum erro é mais registrado no console de erros do JavaScript se nenhum modelo externo estiver configurado. {L2}"
   },
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

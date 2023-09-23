@@ -797,7 +797,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.0). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.2.3). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1408,8 +1408,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 lipca"
-  },
+    "message": "9 października"
+  },  
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {
@@ -1674,7 +1674,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Zezwól funkcjom {{%replaceText%}} i {{%deleteText%}} na wpływ na kod HTML zaimportowany przy użyciu {{%file()%}} {L2} {L1}Naprawiono problem polegający na tym, że nieprawidłowa ścieżka podpisu HTML mogła prowadzić do problemów w szablonie{L2} {L1} Zaktualizuj liczbę dni pozostałych licencji o północy. {L2}"
+    "message": "{P1} Następujące funkcje zostały przeniesione z powrotem z SmartTemplates v4.1, które działa na najnowszej wersji Thunderbird, v115.2. Zalecam jak najszybszą aktualizację Thunderbirda, jeśli nadal używasz wersji v102.{P2}{L1} Nowa opcja wstrzykiwania zawartości znaczników <head> tags into the Thunderbird editor's head section. Teraz można również łączyć <body> attributes from the template w elemencie <body> wiadomości e-mail. Przeniesienie sekcji stylu do nagłówka wiadomości może również poprawić tłumaczenie układu w różnych środowiskach e-mailowych.{L2} {L1} W konsoli błędów JavaScript nie jest już rejestrowany żaden błąd, jeśli nie są skonfigurowane zewnętrzne szablony. {L2}"
   },
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."

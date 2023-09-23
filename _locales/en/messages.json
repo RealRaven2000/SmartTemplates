@@ -858,7 +858,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.0). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.2.3). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1490,7 +1490,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "July 25th"
+    "message": "October 9th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1759,7 +1759,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Allow {{%replaceText%}} and {{%deleteText%}} functions to affect html that was imported using {{%file()%}}{L2} {L1} Fixed problem where an invalid HTML signature path could lead to problems in the template.{L2} {L1} Update Number of days left in license at midnight {L2}"
+    "message": "{P1} The following features were back ported from SmartTemplates v4.1 which runs on the latest version of Thunderbird, v115.2. I recommend updating Thunderbird soon if you are still using v102.{P2}{L1} New option to inject contents of <head> tags into the Thunderbird editor's head section. Also it can now merge <body> attributes from the template into the <body> element of the email. Moving style sections into the head of the email can also make the layout translate better in various email environments.{L2} {L1} No more error is logged in the JavaScript error console if no external templates are configured. {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

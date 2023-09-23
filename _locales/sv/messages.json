@@ -842,7 +842,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.0). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.2.3). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1468,8 +1468,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juli"
-  },
+    "message": "9 oktober"
+  },  
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1737,7 +1737,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Tillåt funktionerna {{%replaceText%}} och {{%deleteText%}} att påverka html som importerades med {{%file()%}} {L2} {L1} Fixat problem där en ogiltig HTML-signatursökväg kunde leda till problem i mallen {L2} {L1} Uppdatering Antal dagar kvar i licensen vid midnatt. {L2}"
+    "message": "{P1} Följande funktioner har återanvänts från SmartTemplates v4.1, som körs på den senaste versionen av Thunderbird, v115.2. Jag rekommenderar att du uppdaterar Thunderbird snart om du fortfarande använder v102.{P2}{L1} Nytt alternativ för att infoga innehållet i <head> tags into the Thunderbird editor's head section. Den kan också nu sammanfoga <body> attributes from the template i e-postens <body>-element. Att flytta stilsektioner till e-postens rubrik kan också göra att layouten översätts bättre i olika e-postmiljöer.{L2} {L1} Inga felmeddelanden loggas längre i JavaScript-felkonsolen om inga externa mallar är konfigurerade. {L2}"
   },
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."

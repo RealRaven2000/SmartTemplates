@@ -818,7 +818,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ ahora es compatible con la última versión de Thunderbird (115.0). Esto requirió numerosos cambios sustanciales y la reescritura de muchas funciones.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [issue 213]{P2}",
+    "message": "{P1}$addonName$ ahora es compatible con la última versión de Thunderbird (115.2.3). Esto requirió numerosos cambios sustanciales y la reescritura de muchas funciones.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1414,8 +1414,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 de julio"
-  },
+    "message": "9 de octubre"
+  },  
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
     "placeholders": {
@@ -1674,7 +1674,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Permitir que las funciones {{%replaceText%}} y {{%deleteText%}} afecten el html que se importó usando {{%file()%}}  {L2} {L1}Se solucionó el problema por el cual una ruta de firma HTML no válida podía generar problemas en la plantilla {L2} {L1}Actualizar Número de días que quedan en la licencia a la medianoche."
+    "message": "{P1} Las siguientes funciones se han retroportado de SmartTemplates v4.1, que se ejecuta en la última versión de Thunderbird, v115.2. Recomiendo actualizar Thunderbird pronto si todavía está utilizando la v102.{P2}{L1} Nueva opción para inyectar contenidos de <head> tags into the Thunderbird editor's head section. También puede ahora fusionar <body> attributes from the template en el <body> element del correo electrónico. Mover secciones de estilo a la cabecera del correo electrónico también puede mejorar la traducción del diseño en diversos entornos de correo electrónico.{L2} {L1} Ya no se registra ningún error en la consola de errores de JavaScript si no se han configurado plantillas externas. {L2}"
   },
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

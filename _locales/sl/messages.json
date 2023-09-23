@@ -791,7 +791,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.0). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.2.3). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1417,8 +1417,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. julij"
-  },
+    "message": "9. oktober"
+  },  
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1677,7 +1677,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Dovoli, da funkcije {{%replaceText%}} in {{%deleteText%}} vplivajo na html, ki je bil uvožen z uporabo {{%file()%}} {L2} {L1} Odpravljena težava, pri kateri bi lahko neveljavna pot podpisa HTML povzročila težave v predlogi{L2} {L1} Posodobi Število preostalih dni v licenci ob polnoči.{L2}"
+    "message": "{P1} Naslednje funkcionalnosti so bile ponovno prinesene iz SmartTemplates v4.1, ki deluje na najnovejši različici Thunderbirda, v115.2. Priporočam, da čim prej posodobite Thunderbird, če še vedno uporabljate v102.{P2}{L1} Nova možnost za vstavljanje vsebine znakov <head> tags into the Thunderbird editor's head section. Zdaj lahko tudi združite <body> attributes from the template v <body> element e-pošte. Premikanje sekcij sloga v glavo e-pošte lahko tudi izboljša prevod postavitve v različnih okoljih e-pošte.{L2} {L1} V konzoli za napake JavaScript se več ne beleži napaka, če niso konfigurirane zunanje predloge. {L2}"
   },
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

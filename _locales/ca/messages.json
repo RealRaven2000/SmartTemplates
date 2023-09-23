@@ -842,7 +842,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ ara és compatible amb l'última versió de Thunderbird (115.0). Això va requerir nombrosos canvis substancials i la reescriptura de moltes funcions.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 213]{P2}",
+    "message": "{P1}$addonName$ ara és compatible amb l'última versió de Thunderbird (115.2.3). Això va requerir nombrosos canvis substancials i la reescriptura de moltes funcions.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1450,8 +1450,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 de juliol"
-  },
+    "message": "9 d'octubre"
+  },  
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1713,7 +1713,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Permet que les funcions {{%replaceText%}} i {{%deleteText%}} afectin l'html que s'ha importat mitjançant {{%file()%}}{L2} {L1} S'ha solucionat un problema en què un camí de signatura HTML no vàlid podria provocar problemes a la plantilla.{L2} {L1} Actualització Nombre de dies restants en llicència a mitjanit {L2}"
+    "message": "{P1} Les següents característiques han estat retroportades de SmartTemplates v4.1, que s'executa a l'última versió de Thunderbird, la v115.2. Recomano actualitzar Thunderbird aviat si encara utilitzeu la v102.{P2}{L1} Nova opció per injectar continguts de les etiquetes <head> tags into the Thunderbird editor's head section. També pot ara fusionar <body> attributes from the template into the <body> element of the email. Moving style sections into the head of the email can also make the layout translate better in various email environments.{L2} {L1} Ja no es registra cap error a la consola d'errors de JavaScript si no s'han configurat plantilles externes. {L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

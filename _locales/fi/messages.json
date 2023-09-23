@@ -842,7 +842,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.0) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.2.3) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1459,8 +1459,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. heinäkuuta"
-  },
+    "message": "9. lokakuuta"
+  },  
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1725,7 +1725,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Salli funktioiden {{%replaceText%}} ja {{%deleteText%}} vaikuttaa html:ään, joka tuotiin käyttämällä {{%file()%}} {L2} {L1}Korjattu ongelma, jossa virheellinen HTML-allekirjoituspolku voi johtaa ongelmiin mallissa{L2} {L1} Päivitys Lisenssipäivien lukumäärä keskiyöllä.{L2}"
+    "message": "{P1} Seuraavat ominaisuudet on tuotu takaisin SmartTemplates v4.1:stä, joka toimii viimeisimmällä Thunderbird-versiolla, v115.2. Suosittelen päivittämään Thunderbirdin pian, jos käytät edelleen versiota 102.{P2}{L1} Uusi vaihtoehto liittää <head> tags into the Thunderbird editor's head section. Nyt voit myös yhdistää <body> attributes from the template sähköpostin <body> elementtiin. Tyylimuotoilujen siirtäminen sähköpostin otsikkoon voi myös tehdä ulkoasusta paremmin toimivan erilaisissa sähköpostiympäristöissä.{L2} {L1} JavaScript-virhekonsoliin ei enää kirjata virheitä, jos ulkoisia malleja ei ole määritetty. {L2}"
   },
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

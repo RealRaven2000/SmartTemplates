@@ -797,7 +797,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.0) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
+    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.2.3) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1405,8 +1405,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. Juli"
-  },
+    "message": "9. Oktober"
+  },  
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1658,7 +1658,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Ermöglicht den Funktionen {{%replaceText%}} und {{%deleteText%}}, sich auf HTML auszuwirken, das mit {{%file()%}} importiert wurde.{L2} {L1} Es wurde ein Problem behoben, bei dem ein ungültiger HTML-Signaturpfad zu Problemen in der Vorlage führen konnte.{L2} {L1} Die Anzahl der verbleibenden Tage in der Lizenz wird um Mitternacht aktualisiert.{L2}"
+    "message": "{P1} Die folgenden Funktionen wurden aus SmartTemplates v4.1 zurückportiert, die auf der neuesten Version von Thunderbird, v115.2, läuft. Ich empfehle, Thunderbird bald zu aktualisieren, wenn Sie noch v102 verwenden.{P2}{L1} Neue Option, den Inhalt von <head> tags into the Thunderbird editor's head section einzufügen. Es kann auch <body> Attribute aus der Vorlage in das <body> Element der E-Mail einfügen. Das Verschieben von Style-Sektionen in den Header der E-Mail kann das Layout in verschiedenen E-Mail-Umgebungen besser übersetzen lassen.{L2} {L1} Es wird kein Fehler mehr in der JavaScript-Fehlerkonsole protokolliert, wenn keine externen Vorlagen konfiguriert sind. {L2}"
   },
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

@@ -845,7 +845,7 @@
     "message": "Dernières nouvelles"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ est désormais compatible avec la dernière version de Thunderbird (115.0). Cela a nécessité de nombreux changements substantiels et la réécriture de nombreuses fonctions.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 213]{P2}",
+    "message": "{P1}$addonName$ est désormais compatible avec la dernière version de Thunderbird (115.2.3). Cela a nécessité de nombreux changements substantiels et la réécriture de nombreuses fonctions.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1456,8 +1456,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juillet"
-  },
+    "message": "9 octobre"
+  },  
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1722,7 +1722,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Autoriser les fonctions {{%replaceText%}} et {{%deleteText%}} à affecter le code HTML importé à l'aide de {{%file()%}} {L2} {L1} Correction d'un problème où un chemin de signature HTML non valide pouvait entraîner des problèmes dans le modèle {L2} {L1} Mise à jour Nombre de jours restants en licence à minuit. {L2} "
+    "message": "{P1} Les fonctionnalités suivantes ont été rétroportées depuis SmartTemplates v4.1, qui s'exécute sur la dernière version de Thunderbird, v115.2. Je recommande de mettre à jour Thunderbird rapidement si vous utilisez encore la version 102.{P2}{L1} Nouvelle option pour injecter les contenus des <head> tags into the Thunderbird editor's head section. Il peut également fusionner les <body> attributes from the template dans l'élément <body> de l'email. Le déplacement des sections de style dans l'en-tête de l'email peut également améliorer la mise en page dans différents environnements de messagerie.{L2} {L1} Aucune erreur n'est plus enregistrée dans la console d'erreurs JavaScript si aucune modèle externe n'est configurée. {L2}"
   },
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

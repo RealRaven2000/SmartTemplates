@@ -833,7 +833,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.0). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
+    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.2.3). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1453,8 +1453,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. července"
-  },
+    "message": "9. října"
+  },  
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -1713,7 +1713,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Povolit funkcím {{%replaceText%}} a {{%deleteText%}} ovlivnit html, který byl importován pomocí {{%file()%}}{L2} {L1} Opraven problém s neplatnou cestou podpisu HTML může vést k problémům v šabloně.{L2} {L1} Aktualizovat Počet dní zbývajících v licenci o půlnoci {L2}"
+    "message": "{P1} Následující funkce byly zpětně přeneseny z SmartTemplates verze 4.1, která běží na nejnovější verzi Thunderbirdu, verze 115.2. Doporučuji brzy aktualizovat Thunderbird, pokud stále používáte verzi 102.{P2}{L1} Nová možnost vložit obsah <head> tags into the Thunderbird editor's head section. Také nyní může sloučit <body> attributes from the template do <body> element of the email. Přesunutí sekce se stylama do hlavičky e-mailu také může zlepšit překlad rozložení v různých e-mailových prostředích.{L2} {L1} V konzoli pro chyby JavaScriptu již není zaznamenána žádná chyba, pokud nejsou nakonfigurovány externí šablony. {L2}"
   },
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

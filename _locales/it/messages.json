@@ -779,7 +779,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird (115.0). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird (115.2.3). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1369,8 +1369,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 luglio"
-  },
+    "message": "9 ottobre"
+  },  
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {
@@ -1629,7 +1629,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Consenti alle funzioni {{%replaceText%}} e {{%deleteText%}} di influenzare l'html che è stato importato usando {{%file()%}}.{L2} {L1}Risolto il problema per cui un percorso di firma HTML non valido poteva causare problemi nel modello{L2} {L1} Aggiorna Numero di giorni rimasti in licenza a mezzanotte.{L2}"
+    "message": "{P1} Le seguenti funzionalità sono state riportate dalla versione SmartTemplates v4.1, che funziona sulla versione più recente di Thunderbird, la v115.2. Raccomando di aggiornare Thunderbird al più presto se stai ancora usando la v102.{P2}{L1} Nuova opzione per inserire i contenuti delle etichette <head> tags into the Thunderbird editor's head section. Ora può anche unire gli <body> attributes from the template nell'elemento <body> della email. Spostando le sezioni di stile nell'intestazione della email è possibile migliorare la traduzione del layout in vari ambienti di posta elettronica.{L2} {L1} Non viene più registrato alcun errore nella console degli errori JavaScript se non sono configurati modelli esterni. {L2}"
   },
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

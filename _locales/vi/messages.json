@@ -131,8 +131,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "ngày 25 tháng 7"
-  },
+    "message": "9 tháng 10"
+  },  
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -262,7 +262,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Cho phép các hàm {{%replaceText%}} và {{%deleteText%}} ảnh hưởng đến html được nhập bằng {{%file()%}} {L2} {L1} Đã khắc phục sự cố trong đó đường dẫn chữ ký HTML không hợp lệ có thể dẫn đến sự cố trong mẫu {L2} {L1} Cập nhật Số ngày còn lại trong giấy phép vào lúc nửa đêm. {L2} "
+    "message": "{P1} Các tính năng sau đã được đưa lại từ SmartTemplates v4.1, chạy trên phiên bản Thunderbird mới nhất, v115.2. Tôi khuyên bạn nên cập nhật Thunderbird sớm nếu bạn vẫn đang sử dụng v102.{P2}{L1} Tùy chọn mới để chèn nội dung của <head> tags vào trong phần đầu của trình soạn thảo Thunderbird. Bây giờ nó cũng có thể kết hợp <body> attributes từ mẫu vào trong phần tử <body> của email. Việc di chuyển các phần kiểu dáng vào phần đầu của email cũng có thể làm cho bố cục dịch tốt hơn trong nhiều môi trường email khác nhau.{L2} {L1} Không còn lỗi được ghi lại trong bảng điều khiển lỗi JavaScript nếu không có mẫu bên ngoài được cấu hình. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
