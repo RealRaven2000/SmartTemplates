@@ -19,7 +19,14 @@ var callbacks = [];
 
 var ComposeAction = {};
 
-
+// Remove console error “receiving end does not exist”
+function logReceptionError(x) {
+  if (x.message.includes("Receiving end does not exist.")) {
+    // no need to log - CardBook is not installed or disabled.
+  } else { 
+    console.log(x); 
+  }  
+}
 
 
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
@@ -283,8 +290,9 @@ async function main() {
             queryObject.dirPrefId = data.preferredDirId;
           }
 
-          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject );
-          return cards;
+          let cards = await messenger.runtime.sendMessage( CARDBOOK_APPNAME, queryObject ).catch(
+            (x) => { logReceptionError(x); cards=null; }
+          );
         }
         catch(ex) {
           console.exception(ex);
