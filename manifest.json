@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "SmartTemplates",
 	"description": "__MSG_extensionDescription__",
-  "version": "4.1pre28",
+  "version": "4.2pre27",
   "default_locale": "en",
   "developer": {
 	  "name": "Axel Grude (author)",
@@ -41,7 +41,7 @@
   },  
   "message_display_action" : {
     "browser_style" : true,
-    "default_label" : "Follow up with SmartTemplates",
+    "default_label" : "SmartTemplates",
     "default_icon": {
       "19": "chrome/content/skin/icon16x16.png",
       "32": "chrome/content/skin/icon32x32.png"
