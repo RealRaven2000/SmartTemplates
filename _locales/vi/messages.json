@@ -143,8 +143,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "ngày 25 tháng 7"
-  },
+    "message": "9 tháng 10"
+  },  
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
     "placeholders": {
@@ -274,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Mã trong thẻ <head> từ bây giờ sẽ được chuyển vào phần chính <head> của tài liệu. Ngoài ra, các thuộc tính <body> hiện được chuyển sang <body> chính. Điều này sẽ làm cho các kiểu CSS hiển thị rõ hơn trong các ứng dụng thư khách khác [issue 79]{L2} {L1} Trong phiên bản trước, trang web cấp phép không mở khi nhấp vào bất kỳ nút nào trong hộp thoại Giấy phép. Sự cố này đã được khắc phục và đồng thời mở trang web hỗ trợ trong trình duyệt chuẩn.{L2}{L1} Đã khắc phục sự cố bố cục linh tinh trong màn hình cài đặt.{L2}"
-  },
+    "message": "{L1} Nút trong thanh tiêu đề email giờ ngắn hơn và không chứa cụm từ 'Follow up with SmartTemplates' nữa - bạn thậm chí có thể hoàn toàn ẩn nhãn SmartTemplates để chỉ biểu tượng duy nhất còn hiển thị trong chế độ biểu tượng + văn bản. [issue 254]{L2} {L1} Chúng tôi cũng đã thêm một mục trong menu để truy cập cài đặt của SmartTemplates. {L2}{L1} Đã khắc phục một vấn đề đã ngăn chặn mẫu tài khoản khác được tải khi bạn thay đổi địa chỉ 'Từ' trong cửa sổ chỉnh sửa email. [issue 256]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

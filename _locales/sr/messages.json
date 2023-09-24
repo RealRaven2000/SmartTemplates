@@ -794,7 +794,7 @@
     "message": "Најновије вести"
   },
   "newsSection": {
-    "message": "{L1}$addonName$ је сада компатибилан са најновијом верзијом Тхундербирд-а (115.1). Ово је захтевало бројне суштинске промене и преписивање многих функција.{L2} {L1}Овде можете прочитати о тренутном напретку овог посла: [issue 213]{L2}",
+    "message": "{L1}$addonName$ је сада компатибилан са најновијом верзијом Тхундербирд-а (115.2.3). Ово је захтевало бројне суштинске промене и преписивање многих функција.{L2} {L1}Овде можете прочитати о тренутном напретку овог посла: [issue 213]{L2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1292,6 +1292,23 @@
   "st.licenseValidation.guessAddon": {
     "message": "(Унети кључ може бити за {2})."
   },
+  "st.notification.bodyModified": {
+    "message": "Тандерберд вам каже да сте већ нешто унели, желите ли ипак учитати шаблон?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Ово ће одбацити све што сте унели и учитати шаблон налога."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Ово ће одбацити све што сте унели и поново учитати тренутни шаблон [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Кликните на Откажи да бисте задржали садржај е-поште без измена."
+  },
   "st.notification.donate": {
     "message": "Донирајте"
   },
@@ -1423,8 +1440,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. јула"
-  },
+    "message": "9. октобар"
+  },  
   "special-offer-head": {
     "message": "Помозите да $addon$ буде компатибилан",
     "placeholders": {

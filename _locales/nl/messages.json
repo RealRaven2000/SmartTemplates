@@ -800,7 +800,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.1). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.2.3). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1310,6 +1310,9 @@
   "st.menu.docs.variables": {
     "message": "Variabelen en opdrachten…"
   },
+  "st.menu.hideLabel": {
+    "message": "Knoplabel verbergen"
+  },
   "st.menu.template.default": {
     "message": "Standaardsjabloon (account)"
   },
@@ -1346,6 +1349,23 @@
       }
     }
   },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird zegt dat je al iets hebt getypt, wil je toch de sjabloon laden?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de accountsjabloon laden."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Dit zal alles wat is getypt verwijderen en de huidige sjabloon [$template$] opnieuw laden.",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klik op Annuleren om de inhoud van de e-mail ongewijzigd te houden."
+  },  
   "st.notification.donate": {
     "message": "Doneren"
   },
@@ -1471,8 +1491,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juli"
-  },
+    "message": "9 oktober"
+  },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1725,8 +1745,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Code binnen een <head>-tag wordt vanaf nu verplaatst naar het hoofdgedeelte <head> van het document. Ook <body> attributen worden nu overgebracht naar de hoofd <body>. Dit zou CSS-stijlen beter zichtbaar moeten maken in andere e-mailclients [issue 79]{L2} {L1} In de vorige versie werd de licentiewebsite niet geopend bij het klikken op knoppen in het dialoogvenster Licentie. Dit is opgelost en ook het openen van de ondersteuningssite in de standaardbrowser.{L2}{L1} Verschillende lay-outproblemen opgelost in het instellingenscherm.{L2}"
-  },
+    "message": "{L1} De knop in de e-mailkopbalk is nu korter en bevat niet langer de zin 'Follow up with SmartTemplates' - je kunt zelfs het SmartTemplates-label volledig verbergen, zodat alleen het pictogram zichtbaar blijft in de modus met pictogram + tekst. [issue 254]{L2} {L1} We hebben ook een menu-item toegevoegd om toegang te krijgen tot de SmartTemplates-instellingen. {L2}{L1} Een probleem is opgelost waardoor andere accountsjablonen niet werden geladen wanneer je het 'Van'-adres in het e-mailbewerkingvenster wijzigt. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

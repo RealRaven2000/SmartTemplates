@@ -842,7 +842,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.1) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.2.3) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1361,6 +1361,9 @@
   "st.menu.docs.variables": {
     "message": "变量和命令……"
   },
+  "st.menu.hideLabel": {
+    "message": "隐藏按钮标签"
+  },
   "st.menu.template.default": {
     "message": "默认模板（帐户）"
   },
@@ -1396,6 +1399,23 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird 表示您已经输入了一些内容，您是否仍然要加载模板？"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "这将丢弃您输入的任何内容，并加载帐户模板。"
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "这将丢弃您输入的任何内容，并重新加载当前模板 [$template$]。",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "单击取消以保持电子邮件内容不变。"
   },
   "st.notification.donate": {
     "message": "捐"
@@ -1522,8 +1542,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月25日"
-  },
+    "message": "10月9日"
+  },  
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {
@@ -1779,8 +1799,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} <head> 标记内的代码将从现在开始移至文档的主要 <head> 部分。 此外，<body> 属性现在也转移到主 <body> 中。 这应该使 CSS 样式在其他邮件客户端中更加明显 [issue 79]{L2} {L1} 在以前的版本中，单击许可证对话框中的任何按钮时不会打开许可证网站。 此问题已修复，并且还可以在标准浏览器中打开支持网站。{L2}{L1}修复了设置屏幕中的各种布局问题。{L2}"
-  },
+    "message": "{L1} 电子邮件标题栏中的按钮现在更短，不再包含短语 'Follow up with SmartTemplates' - 即使在图标+文本模式下，您甚至可以完全隐藏 SmartTemplates 标签，只保留图标可见。[issue 254]{L2} {L1} 我们还添加了一个菜单项，以访问 SmartTemplates 的设置。{L2}{L1} 解决了更改电子邮件编辑器窗口中的 '发件人' 地址后阻止其他帐户模板加载的问题。[issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

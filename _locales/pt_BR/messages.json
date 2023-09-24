@@ -782,7 +782,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.1). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.2.3). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1292,6 +1292,9 @@
   "st.menu.docs.variables": {
     "message": "Variáveis e Comandos…"
   },
+  "st.menu.hideLabel": {
+    "message": "Ocultar rótulo do botão"
+  },
   "st.menu.template.default": {
     "message": "Modelo padrão (conta)"
   },
@@ -1330,6 +1333,23 @@
   },
   "st.licenseValidation.guessAddon": {
     "message": "(A chave inserida pode ser para {2})."
+  },
+  "st.notification.bodyModified": {
+    "message": "O Thunderbird diz que você já digitou algo, você deseja carregar o modelo mesmo assim?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e carregará o modelo da conta."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Isso descartará qualquer coisa digitada e recarregará o modelo atual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Clique em Cancelar para manter o conteúdo do e-mail inalterado."
   },
   "st.notification.donate": {
     "message": "Doar"
@@ -1459,8 +1479,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 de julho"
-  },
+    "message": "9 de outubro"
+  },  
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {
@@ -1704,8 +1724,8 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} O código dentro de uma tag <head> será movido a partir de agora para a seção <head> principal do documento. Além disso, os atributos <body> agora são transferidos para o <body> principal. Isso deve tornar os estilos CSS mais visíveis em outros clientes de e-mail [issue 79]{L2} {L1} Na versão anterior, o site da licença não abria ao clicar em qualquer botão na caixa de diálogo Licença. Isso foi corrigido e também a abertura do site de suporte no navegador padrão.{L2}{L1} Corrigidos diversos problemas de layout na tela de configurações.{L2}"
-  },
+    "message": "{L1} O botão na barra de cabeçalho de e-mail agora é mais curto e não contém mais a frase 'Follow up with SmartTemplates' - você pode até mesmo ocultar completamente o rótulo SmartTemplates para que apenas o ícone permaneça visível no modo ícone + texto. [issue 254]{L2} {L1} Também adicionamos uma entrada de menu para acessar as configurações do SmartTemplates. {L2}{L1} Um problema foi corrigido que impedia o carregamento de outros modelos de conta quando você alterava o endereço 'De' na janela do editor de e-mail. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },

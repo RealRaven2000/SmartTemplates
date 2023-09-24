@@ -845,7 +845,7 @@
     "message": "Dernières nouvelles"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ est désormais compatible avec la dernière version de Thunderbird (115.1). Cela a nécessité de nombreux changements substantiels et la réécriture de nombreuses fonctions.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 213]{P2}",
+    "message": "{P1}$addonName$ est désormais compatible avec la dernière version de Thunderbird (115.2.3). Cela a nécessité de nombreux changements substantiels et la réécriture de nombreuses fonctions.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1358,6 +1358,9 @@
   "st.menu.docs.variables": {
     "message": "Variables et commandes…"
   },
+  "st.menu.hideLabel": {
+    "message": "Masquer l'étiquette du bouton"
+  },
   "st.menu.template.default": {
     "message": "Modèle par défaut (compte)"
   },
@@ -1393,6 +1396,23 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird dit que vous avez déjà saisi quelque chose, voulez-vous quand même charger le modèle ?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Cela supprimera tout ce qui a été saisi et chargera le modèle du compte."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Cela supprimera tout ce qui a été saisi et rechargera le modèle actuel [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Cliquez sur Annuler pour conserver le contenu du courrier électronique tel quel."
   },
   "st.notification.donate": {
     "message": "Faire un don"
@@ -1525,8 +1545,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juillet"
-  },
+    "message": "9 octobre"
+  },  
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1782,8 +1802,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Le code dans une balise <head> sera désormais déplacé dans la section principale <head> du document. De plus, les attributs <body> sont désormais transférés au <body> principal. Cela devrait rendre les styles CSS plus visibles dans les autres clients de messagerie [issue 79]{L2} {L1} Dans la version précédente, le site Web de la licence ne s'ouvrait pas lorsque vous cliquiez sur les boutons de la boîte de dialogue Licence. Cela a été corrigé et a également ouvert le site d'assistance dans le navigateur standard.{L2}{L1} Correction de divers problèmes de mise en page dans l'écran des paramètres.{L2}"
-  },
+    "message": "{L1} Le bouton dans la barre d'en-tête des e-mails est désormais plus court et ne contient plus la phrase 'Follow up with SmartTemplates' - vous pouvez même masquer complètement l'étiquette SmartTemplates pour que seule l'icône reste visible en mode icône + texte. [issue 254]{L2} {L1} Nous avons également ajouté une entrée de menu pour accéder aux paramètres de SmartTemplates. {L2}{L1} Un problème a été résolu qui empêchait le chargement d'autres modèles de compte lorsque vous modifiez l'adresse 'De' dans la fenêtre de l'éditeur d'e-mails. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },

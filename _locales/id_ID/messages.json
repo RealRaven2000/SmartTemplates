@@ -985,6 +985,23 @@
   "quickfilters.menu.license": {
     "message": "Periksa status lisensi…"
   },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird mengatakan Anda telah mengetik sesuatu, apakah Anda ingin memuat template ini?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template akun."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Ini akan menghapus semua yang telah Anda ketik dan memuat template saat ini [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klik Batal untuk tetap menjaga isi email tanpa perubahan."
+  },
   "st.notification.donate": {
     "message": "Donasi"
   },

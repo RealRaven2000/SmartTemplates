@@ -1355,6 +1355,9 @@
   "st.menu.docs.variables": {
     "message": "Variables i ordres…"
   },
+  "st.menu.hideLabel": {
+    "message": "Amaga l'etiqueta del botó"
+  },  
   "st.menu.template.default": {
     "message": "Plantilla predeterminada (compte)"
   },
@@ -1391,6 +1394,23 @@
       }
     }
   },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird diu que ja has escrit alguna cosa. Vols carregar la plantilla de totes maneres?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i carregarà la plantilla del compte."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Això descartarà qualsevol cosa escrita i recarregarà la plantilla actual [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Feu clic a Cancel·la per mantenir el contingut del correu electrònic sense canvis."
+  },  
   "st.notification.donate": {
     "message": "Donar"
   },
@@ -1519,8 +1539,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 de juliol"
-  },
+    "message": "9 d'octubre"
+  },  
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1773,7 +1793,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "El codi {L1} dins d'una etiqueta <head> es mourà a partir d'ara a la secció principal <head> del document. També ara els atributs <body> es transfereixen al <body> principal. Això hauria de fer més visibles els estils CSS en altres clients de correu [issue 79]{L2} {L1} A la versió anterior, el lloc web de la llicència no s'obria en fer clic a cap botó del diàleg de llicència. S'ha solucionat això i també s'ha obert el lloc d'assistència al navegador estàndard.{L2}{L1} S'han solucionat diversos problemes de disseny a la pantalla de configuració.{L2}"
+    "message": "{L1} El botó de la barra de capçalera del correu ara és més curt i no conté la frase 'Follow up with SmartTemplates' - fins i tot pots amagar completament l'etiqueta de SmartTemplates de manera que només aparegui l'ícon mentre estiguis en mode icona + text. [issue 254]{L2} {L1} També hem afegit una entrada de menú per accedir a la configuració de SmartTemplates. {L2}{L1} S'ha solucionat un problema que impedia que altres plantilles d'altres comptes es carreguessin quan canvies l'adreça 'De' a la finestra de l'editor de correu. [issue 256]{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

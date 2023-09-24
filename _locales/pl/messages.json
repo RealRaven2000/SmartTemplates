@@ -797,7 +797,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.1). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
+    "message": "{P1}$addonName$ jest teraz kompatybilny z najnowszą wersją Thunderbirda (115.2.3). Wymagało to wielu istotnych zmian i przepisania wielu funkcji.{P2} {P1}Możesz przeczytać o obecnym postępie prac tutaj: [numer 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1313,6 +1313,9 @@
   "st.menu.docs.variables": {
     "message": "Zmienne i polecenia…"
   },
+  "st.menu.hideLabel": {
+    "message": "Ukryj etykietę przycisku"
+  },
   "st.menu.template.default": {
     "message": "Szablon domyślny (konto)"
   },
@@ -1348,6 +1351,23 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird mówi, że już coś napisałeś, czy chcesz mimo to załadować szablon?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "To odrzuci wszystko, co napisałeś, i załaduje szablon konta."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "To odrzuci wszystko, co napisałeś, i ponownie załaduje bieżący szablon [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Kliknij Anuluj, aby zachować treść e-maila bez zmian."
   },
   "st.notification.donate": {
     "message": "Dotacja"
@@ -1477,8 +1497,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 lipca"
-  },
+    "message": "9 października"
+  },  
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
     "placeholders": {
@@ -1734,8 +1754,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Kod w tagu <head> będzie teraz przenoszony do głównej sekcji <head> dokumentu. Również atrybuty <body> są teraz przenoszone do głównego <body>. Powinno to sprawić, że style CSS będą lepiej widoczne w innych klientach pocztowych [issue 79]{L2} {L1} W poprzedniej wersji witryna z licencją nie otwierała się po kliknięciu dowolnego przycisku w oknie dialogowym Licencja. Zostało to naprawione, a także otwieranie strony pomocy technicznej w standardowej przeglądarce.{L2}{L1} Naprawiono różne problemy z układem ekranu ustawień.{L2}"
-  },
+    "message": "{L1} Przycisk w pasku nagłówka wiadomości e-mail jest teraz krótszy i nie zawiera już frazy 'Follow up with SmartTemplates' - można nawet całkowicie ukryć etykietę SmartTemplates, tak aby pozostała widoczna tylko ikona w trybie ikony + tekst. [issue 254]{L2} {L1} Dodaliśmy również pozycję menu do dostępu do ustawień SmartTemplates. {L2}{L1} Naprawiono problem, który uniemożliwiał ładowanie innych szablonów konta po zmianie adresu 'Od' w oknie edytora wiadomości e-mail. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

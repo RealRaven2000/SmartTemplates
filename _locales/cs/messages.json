@@ -833,7 +833,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.1). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
+    "message": "{P1}$addonName$ je nyní kompatibilní s nejnovější verzí Thunderbirdu (115.2.3). To si vyžádalo řadu podstatných změn a přepsání mnoha funkcí.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1361,6 +1361,9 @@
   "st.menu.docs.variables": {
     "message": "Proměnné a příkazy…"
   },
+  "st.menu.hideLabel": {
+    "message": "Skrýt popisek tlačítka"
+  },
   "st.menu.template.default": {
     "message": "Výchozí šablona (účet)"
   },
@@ -1397,6 +1400,23 @@
       }
     }
   },  
+  "st.notification.bodyModified": {
+    "message": "Thunderbird říká, že jste již něco napsali. Chcete přesto načíst šablonu?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Tím se zahodí cokoli napsáno a načte se šablona účtu."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Tím se zahodí cokoli napsáno a znovu načte aktuální šablonu [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klikněte na Zrušit pro zachování obsahu e-mailu beze změn."
+  } ,
   "st.notification.donate": {
     "message": "Darovat"
   },
@@ -1522,8 +1542,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. července"
-  },
+    "message": "9. října"
+  },  
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -1773,8 +1793,8 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Kód ve značce <head> bude od nynějška přesunut do hlavní části <head> dokumentu. Také atributy <body> jsou nyní přeneseny do hlavního <body>. To by mělo zviditelnit styly CSS v jiných poštovních klientech [issue 79]{L2} {L1} V předchozí verzi se webová stránka licence neotevřela po kliknutí na žádné tlačítko v dialogovém okně Licence. To bylo opraveno a také otevření stránky podpory ve standardním prohlížeči.{L2}{L1} Opraveny různé problémy s rozložením na obrazovce nastavení.{L2}"
-  },
+    "message": "{L1} Tlačítko v hlavičce e-mailu je nyní kratší a neobsahuje již frázi 'Follow up with SmartTemplates' - dokonce můžete úplně skrýt popisek SmartTemplates, takže zůstane viditelná pouze ikona v režimu ikony + text. [issue 254]{L2} {L1} Přidali jsme také položku menu pro přístup k nastavením SmartTemplates. {L2}{L1} Byl opraven problém, který bránil načítání šablon jiných účtů při změně adresy 'Od' v okně editoru e-mailu. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."
   },

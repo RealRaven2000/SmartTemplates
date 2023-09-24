@@ -842,7 +842,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.1) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.2.3) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1361,6 +1361,9 @@
   "st.menu.docs.variables": {
     "message": "Muuttujat ja komennot…"
   },
+  "st.menu.hideLabel": {
+    "message": "Piilota painikkeen teksti"
+  },
   "st.menu.template.default": {
     "message": "Oletusmalli (tili)"
   },
@@ -1397,6 +1400,23 @@
       }
     }
   },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird sanoo, että olet jo kirjoittanut jotain, haluatko ladata mallin joka tapauksessa?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa tilin mallin."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Tämä hylkää kirjoitetun sisällön ja lataa nykyisen mallin [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Napsauta Peruuta säilyttääksesi sähköpostin sisällön ennallaan."
+  },  
   "st.notification.donate": {
     "message": "Lahjoita"
   },
@@ -1528,8 +1548,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. heinäkuuta"
-  },
+    "message": "9. lokakuuta"
+  },  
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -1785,8 +1805,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Koodi <head>-tunnisteen sisällä siirretään tästä lähtien asiakirjan <head>-pääosioon. Myös <body>-attribuutit siirretään nyt pääasialliseen <body>. Tämän pitäisi tehdä CSS-tyyleistä näkyvämpiä muissa sähköpostiohjelmissa [issue 79]{L2} {L1} Edellisessä versiossa lisenssisivusto ei avautunut, kun lisenssivalintaikkunan painikkeita napsautettiin. Tämä korjattiin ja tukisivusto avattiin myös tavallisessa selaimessa.{L2}{L1} Sekalaiset asetteluongelmat korjattu asetusnäytössä.{L2}"
-  },
+    "message": "{L1} Sähköpostin otsikkopalkin painike on nyt lyhyempi eikä sisällä enää fraasia 'Follow up with SmartTemplates' - voit jopa piilottaa SmartTemplates-tunnuksen kokonaan, jolloin näkyvissä on vain kuvake teksti + kuvake -tilassa. [issue 254]{L2} {L1} Lisäsimme myös valikon, jolla pääset SmartTemplates-asetuksiin. {L2}{L1} Korjasimme ongelman, joka esti muiden tilien mallipohjien lataamisen, kun vaihdat 'Lähettäjä'-osoitteen sähköpostieditorin ikkunassa. [issue 256]{L2}"
+  },   
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

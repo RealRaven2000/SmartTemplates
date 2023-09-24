@@ -797,7 +797,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.1) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
+    "message": "{P1}$addonName$ ist ab sofort der neuesten Version von Thunderbird (115.2.3) kompatibel. Dies erforderte zahlreiche wesentliche Änderungen und das Umschreiben vieler Funktionen.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1313,6 +1313,9 @@
   "st.menu.docs.variables": {
     "message": "Variablen und Befehle…"
   },
+  "st.menu.hideLabel": {
+    "message": "Schaltflächenbeschriftung ausblenden"
+  },
   "st.menu.template.default": {
     "message": "Standardvorlage (Konto)"
   },
@@ -1348,6 +1351,23 @@
         "example": "SmartTemplates"
       }
     }
+  },  
+  "st.notification.bodyModified": {
+    "message": "Thunderbird meldet, Sie hätten bereits etwas eingetippt. Die Vorlage trotzdem laden?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Dadurch werden alle eingegebenen Daten verworfen und die Kontovorlage geladen."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Dadurch werden alle eingegebenen Daten verworfen und die aktuelle Vorlage [$template$] neu geladen.",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klicken Sie auf „Abbrechen“, um den E-Mail-Inhalt unverändert zu lassen."
   },  
   "st.notification.donate": {
     "message": "Spenden"
@@ -1474,8 +1494,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. Juli"
-  },
+    "message": "9. Oktober"
+  },  
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1718,8 +1738,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Code innerhalb eines <head>-Tags wird von nun an in den Hauptabschnitt <head> des Dokuments verschoben. Auch <body>-Attribute werden nun auf den Haupt-<body> übertragen. Dadurch sollten CSS-Stile in anderen E-Mail-Clients besser sichtbar sein [issue 79]{L2} {L1} In der vorherigen Version wurde die Lizenz-Website nicht geöffnet, wenn im Lizenzdialog auf eine Schaltfläche geklickt wurde. Dieses Problem wurde berichtigt; ebenso das Öffnen der Support-Website im Standardbrowser.{L2}{L1} Verschiedene Layoutprobleme im Einstellungsbildschirm wurden behoben.{L2}"
-  },
+    "message": "{L1} Die Schaltfläche in der E-Mail-Kopfzeile ist jetzt kürzer und enthält nicht mehr den Satz 'Follow up with SmartTemplates' - Sie können sogar das SmartTemplates-Label vollständig ausblenden, sodass nur das Symbol im Icon + Text-Modus sichtbar bleibt. [issue 254]{L2} {L1} Wir haben auch einen Menüeintrag hinzugefügt, um auf die SmartTemplates-Einstellungen zuzugreifen. {L2}{L1} Ein Problem wurde behoben, das verhinderte, dass andere Kontovorlagen geladen werden, wenn Sie die 'Von'-Adresse im E-Mail-Editor-Fenster ändern. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

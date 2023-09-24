@@ -791,7 +791,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.1). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.2.3). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1310,7 +1310,23 @@
   "st.licenseValidation.guessAddon": {
     "message": "(vneseni ključ je lahko za {2})."
   },
-  
+  "st.notification.bodyModified": {
+    "message": "Thunderbird pravi, da ste že nekaj vnesli. Ali želite vseeno naložiti predlogo?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in naložilo predlogo računa."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "To bo zavrglo vse, kar ste vnesli, in ponovno naložilo trenutno predlogo [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Kliknite Prekliči, da ohranite vsebino e-pošte nespremenjeno."
+  },
   "st.notification.donate": {
     "message": "Daruj"
   },
@@ -1442,8 +1458,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25. julij"
-  },
+    "message": "9. oktober"
+  },  
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1702,8 +1718,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Koda znotraj oznake <head> bo odslej premaknjena v glavni razdelek <head> dokumenta. Tudi atributi <body> so zdaj preneseni v glavno <body>. To bi moralo narediti sloge CSS bolj vidne v drugih poštnih odjemalcih [issue 79]{L2} {L1} V prejšnji različici se spletno mesto z licenco ni odprlo, ko ste kliknili kateri koli gumb v pogovornem oknu Licenca. To je bilo popravljeno in prav tako se je odprlo spletno mesto za podporo v standardnem brskalniku.{L2}{L1} Odpravljene različne težave s postavitvijo na zaslonu z nastavitvami.{L2}"
-  },
+    "message": "{L1} Gumb v vrstici z glavo e-pošte je zdaj krajši in ne vsebuje več fraze 'Follow up with SmartTemplates' - lahko celo popolnoma skrijete oznako SmartTemplates, tako da je vidna samo ikona v načinu ikone + besedilo. [issue 254]{L2} {L1} Dodali smo tudi vnos v meni za dostop do nastavitev SmartTemplates. {L2}{L1} Odpravljena je bila težava, ki je preprečevala nalaganje drugih predlog računa, ko ste spremenili naslov 'Od' v oknu urejevalnika e-pošte. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
   },

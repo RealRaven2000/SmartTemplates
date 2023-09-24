@@ -858,7 +858,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.1). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.2.3). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1395,6 +1395,9 @@
   "st.menu.docs.variables": {
     "message": "Variables and Commands…"
   },
+  "st.menu.hideLabel": {
+    "message": "Hide button label"
+  },
   "st.menu.template.default": {
     "message": "Default Template (account)"
   },
@@ -1430,6 +1433,23 @@
         "example": "SmartTemplates"
       }
     }
+  },  
+  "st.notification.bodyModified": {
+    "message": "Thunderbird says you have already typed something, do you want to load the template anyway?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "This will discard anything  typed and load the account template."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "This will discard anything  typed and reload the current template [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }    
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Click Cancel to keep email contents unchanged."
   },  
   "st.notification.donate": {
     "message": "Donate"
@@ -1562,7 +1582,7 @@
     }
   },
   "special-offer-expiry": {
-    "message": "July 25th"
+    "message": "October 9th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1822,7 +1842,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Any code within a <head> tag will from now be moved into the main <head> section of the document. Also <body> attributes are now transferred to the main <body>. This should make CSS styles more visible in other mail clients [issue 79]{L2} {L1} In the previous version, the license website did not open when clicking on any buttons in the License dialog. This was fixed and also opening the support site in the standard browser.{L2}{L1} Fixed miscellaneous layout issues in settings screen.{L2}"
+    "message": "{L1} The button in the email header bar is now shorter not containing the phrase 'Follow up with SmartTemplates' anymore - you can even completely hide the SmartTemplates label so that only the icon remains visible while in icon + text mode. [issue 254]{L2} {L1} We also added a menu entry to access SmartTemplates settings. {L2}{L1} A problem was fixed that prevented other account templates loading when you change the 'From' address in the email editor window.  [issue 256]{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

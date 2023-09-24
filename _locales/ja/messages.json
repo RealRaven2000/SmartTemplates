@@ -839,7 +839,7 @@
     "message": "最新ニュース"
   },  
   "newsSection": {
-    "message": "{P1}$addonName$ は、Thunderbird の最新バージョン (115.1) と互換性があります。 これには、多数の大幅な変更と多くの関数の書き直しが必要でした。{P2} {P1}この作業の現在の進捗状況については、[問題 213]{P2} で確認できます。",
+    "message": "{P1}$addonName$ は、Thunderbird の最新バージョン (115.2.3) と互換性があります。 これには、多数の大幅な変更と多くの関数の書き直しが必要でした。{P2} {P1}この作業の現在の進捗状況については、[問題 213]{P2} で確認できます。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1340,6 +1340,9 @@
   "st.menu.docs.variables": {
     "message": "変数とコマンド…"
   },
+  "st.menu.hideLabel": {
+    "message": "ボタンラベルを非表示にする"
+  },
   "st.menu.template.default": {
     "message": "デフォルトのテンプレート (アカウント)"
   },
@@ -1375,6 +1378,23 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbirdはすでに何かを入力したと言っていますが、テンプレートを読み込みますか？"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "これにより、入力した内容がすべて破棄され、アカウントのテンプレートが読み込まれます。"
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "これにより、入力した内容がすべて破棄され、現在のテンプレート [$template$] が再読み込みされます。",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "メールの内容を変更せずに保持するにはキャンセルをクリックしてください。"
   },
   "st.notification.donate": {
     "message": "寄付"
@@ -1501,8 +1521,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "7月25日"
-  },
+    "message": "10月9日"
+  },  
   "special-offer-head": {
     "message": "$addon$ の互換性を維持するのに役立ちます",
     "placeholders": {
@@ -1758,8 +1778,8 @@
     "message": "詳細な更新履歴 (英語のみ)："
   },
   "whats-new-list": {
-    "message": "{L1} <head> タグ内のコードは、ドキュメントのメインの <head> セクションに移動されます。 また、<body> 属性がメインの <body> に転送されるようになりました。 これにより、CSS スタイルが他のメール クライアントでより見やすくなります [issue 79]{L2} {L1} 以前のバージョンでは、[ライセンス] ダイアログのボタンをクリックしてもライセンス Web サイトが開きませんでした。 この問題は修正され、標準ブラウザでサポート サイトが開くようになりました。{L2}{L1} 設定画面のその他のレイアウトの問題を修正しました。{L2}"
-  },
+    "message": "{L1} メールヘッダーバーのボタンは今、以前の 'Follow up with SmartTemplates' のフレーズを含まない短縮されたものになりました。アイコン+テキストモードではスマートテンプレートラベルを完全に非表示にして、アイコンのみが表示されるようにすることもできます。 [issue 254]{L2} {L1} SmartTemplatesの設定にアクセスするためのメニューエントリも追加しました。 {L2}{L1} メールエディタウィンドウで '送信者' アドレスを変更すると、他のアカウントテンプレートが読み込まれない問題が修正されました。 [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "改行を含むことができるため、空白を \\s で表現する必要があることに注意してください。カンマおよびダブルクオートは利用できません。"
   },

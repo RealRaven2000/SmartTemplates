@@ -842,7 +842,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.1). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.2.3). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1373,6 +1373,9 @@
   "st.menu.docs.variables": {
     "message": "Variabler och kommandon…"
   },
+  "st.menu.hideLabel": {
+    "message": "Dölj knappetikett"
+  },
   "st.menu.template.default": {
     "message": "Standardmall (konto)"
   },
@@ -1408,6 +1411,23 @@
         "example": "SmartTemplates"
       }
     }
+  },
+  "st.notification.bodyModified": {
+    "message": "Thunderbird säger att du redan har skrivit något. Vill du ändå ladda in mallen?"
+  },
+  "st.notification.bodyModified.accountTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda in kontomallen."
+  },
+  "st.notification.bodyModified.externalTemplate": {
+    "message": "Detta kommer att kasta bort allt du har skrivit och ladda om den aktuella mallen [$template$].",
+    "placeholders": {
+      "template": {
+        "content": "$1"
+      }
+    }
+  },
+  "st.notification.bodyModified.instructions": {
+    "message": "Klicka på Avbryt för att behålla e-postinnehållet oförändrat."
   },
   "st.notification.donate": {
     "message": "Donera"
@@ -1537,8 +1557,8 @@
     }
   },
   "special-offer-expiry": {
-    "message": "25 juli"
-  },
+    "message": "9 oktober"
+  },  
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
@@ -1797,8 +1817,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Koden inom en <head>-tagg kommer från och med nu att flyttas till huvuddelen av <head> i dokumentet. Även <body>-attribut överförs nu till huvud-<body>. Detta bör göra CSS-stilar mer synliga i andra e-postklienter [issue 79]{L2} {L1} I den tidigare versionen öppnades inte licenswebbplatsen när man klickade på några knappar i licensdialogrutan. Detta åtgärdades och även att öppna supportwebbplatsen i standardwebbläsaren.{L2}{L1} Fixade diverse layoutproblem på inställningsskärmen.{L2}"
-  },
+    "message": "{L1} Knappen i e-posthuvudet är nu kortare och innehåller inte längre frasen 'Follow up with SmartTemplates' - du kan till och med gömma SmartTemplates-etiketten helt så att endast ikonen förblir synlig i ikon + textläge. [issue 254]{L2} {L1} Vi har också lagt till en menyinmatning för att komma åt SmartTemplates-inställningarna. {L2}{L1} Ett problem har åtgärdats som hindrade andra konto mallar från att laddas när du ändrar 'Från'-adressen i e-postredigeringsfönstret. [issue 256]{L2}"
+  },  
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },
