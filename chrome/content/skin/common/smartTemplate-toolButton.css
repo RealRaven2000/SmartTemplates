@@ -116,3 +116,14 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 #SmartTemplates-forward {
   list-style-image: var(--icon-forward), linear-gradient(to left bottom, red, blue);
 }
+
+/* option to hide the label, should only be shown in "icons and text" mode! */
+.message-header-buttons-only-icons .st-toggle-label,
+.message-header-buttons-only-text .st-toggle-label {
+  display: none !important;
+}
+
+/* use the class force-label-hidden on the button to force hiding the label, but only if icon is visible */
+#messageHeader:not(.message-header-buttons-only-text) .SmartTemplates_HeaderBtn.force-label-hidden .toolbarbutton-text  {
+  display: none !important;
+}

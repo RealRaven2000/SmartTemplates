@@ -59,6 +59,11 @@ async function onLoad(activatedWhileWindowOpen) {
           win.SmartTemplate4.Util.logDebug("patchHeaderPane() returned false!");
         }
         win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+        if (win.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel")) {
+          headerButton.classList.add("force-label-hidden");
+        } else {
+          headerButton.classList.remove("force-label-hidden");
+        }
       },
       WAIT_FOR_3PANE
     );

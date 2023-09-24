@@ -114,6 +114,15 @@ async function onLoad(activatedWhileWindowOpen) {
         // update the status bar label too:
         SmartTemplates.Util.notifyTools.notifyBackground({func:"initLicensedUI"});  
         break;
+      case "smartTemplates-toggle-label":
+        let isHidden = SmartTemplates.Preferences.getMyBoolPref("toolbar.hideLabel");
+        isHidden = !isHidden;
+        SmartTemplates.Preferences.setMyBoolPref("toolbar.hideLabel", isHidden);
+        let btn = el.parentElement.parentElement;
+        if (btn) {
+          el.parentElement.parentElement.classList.toggle("force-label-hidden");
+        }
+        break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }
