@@ -285,12 +285,23 @@ END LICENSE BLOCK
     # use the onMessageDisplayed API instead
 
     
-  Version 4.1 - WIP
+  Version 4.1 - 09/08/2023
     # [issue 79] Inject contents of <head> tags into composer's head section, merge body attributes
     # Remove console error “receiving end does not exist” if Cardbook enabled but not installed
     # Slightly improved settings layout (long template list tended to push the bottom 
       buttons outside of the window)
     # [issue 252] ST 4.0.2 Cannot open license website (or any external website links)
+
+  Version 4.2 - WIP
+    # [issue 254] Made the button above email preview less obtrusive:
+      Shortened the text for the message display action button - "SmartTemplates" 
+      Added an option to remove the label when in icon+text mode.
+    # Add "settings" item to bottom of SmartTemplates thread tools menu
+    # [issue 256] Fixed: account template not loaded when changing From address
+
+  Version 4.2.x - FUTURE VERSION / WIP
+    # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
+
 
 
 =========================
@@ -616,100 +627,17 @@ var SmartTemplate4 = {
     util.logDebugOptional('composer', 'notifyComposeBodyReady() ended.');
   },
 
-  // // -------------------------------------------------------------------
-  // // A handler to switch identity
-  // // -------------------------------------------------------------------
-  // loadIdentity: async function (startup, previousIdentity) {
-  //   const prefs = SmartTemplate4.Preferences,
-  //         util = SmartTemplate4.Util;    
-  //   let isTemplateProcessed = false;
-  //   SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity(" + startup + ", " , previousIdentity + ")");
-  //   this.PreprocessingFlags.isLoadIdentity = true;
-  //   if (startup) {
-  //     // Old function call
-  //     this.original_LoadIdentity(startup);
-  //   }
-  //   else {
-  //     let isBodyModified = gMsgCompose.bodyModified,
-  //         composeType = util.getComposeType();
-  //     if (!previousIdentity) {
-  //       util.logDebug("loadIdenty called to change but without previous Identity; bailing out as something may have went wrong...");
-  //       this.original_LoadIdentity(false);
-  //       this.PreprocessingFlags.isLoadIdentity = false;
-  //       return;
-  //     }
-  //     let newSig;
-  //     // change identity on an existing message:
-  //     // Check body modified or not
-  //     // we can only reliable roll back the previous template and insert
-  //     // a new one if the user did not start composing yet (otherwise danger
-  //     // of removing newly composed content)
-  //     if (!isBodyModified) {
-  //       // [issue 51]
-  //       this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
-  //       // Add template message - will also remove previous template and quoteHeader.
-  //       if (window.SmartTemplate4.CurrentTemplate) {
-  //         //[issue 64] reload the same template if it was remembered.
-  //         let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
-  //         if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
-  //           let text = util.getBundleString("st.fileTemplates.error.filePath");
-  //           alert(text); 
-  //         }
-  //         else {
-  //           await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
-  //         }
-  //       }
-  //       else {
-  //         await this.smartTemplate.insertTemplate(false);
-  //       }
-  //       // [Bug 25104] when switching identity, old sig does not get removed.
-  //       //             (I think what really happens is that it is inserted twice)
-  //       isTemplateProcessed = true;
-  //     }
-  //     else {
-  //       // if previous id has added a signature, we should try to remove it from there now
-  //       // we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
-  //       // as the user might have edited here already! 
-  //       // however, the signature is important as it should match the from address?
-  //       if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-  //         newSig = await this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
-  //       }
-  //     }
-  //     // AG 31/08/2012 put this back as we need it!
-  //     // AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
-  //     //               as it messes up the signature (pulls it into the blockquote)
-  //     // AG 27/11/2019 [issue 7] putting condition back as it can mess up signature.
-  //     if (!isTemplateProcessed) {
-  //       if (isBodyModified && composeType=="new") {
-  //         // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
-  //         util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
-  //       }
-  //       this.original_LoadIdentity(startup);
-  //       // try replacing the (unprocessed) signature that Thunderbird has inserted.
-  //       if (prefs.getMyBoolPref('parseSignature') && newSig ) {
-  //         // find and replace signature node.
-  //         let sigNode = util.findChildNode(gMsgCompose.editor.rootElement, 'moz-signature');
-  //         if (sigNode) {
-  //           sigNode.innerHTML = newSig.innerHTML;
-  //         }
-  //         gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
-  //       }
-  //     }
-  //     if (!isBodyModified && gMsgCompose.bodyModified) {
-  //       gMsgCompose.editor.resetModificationCount();
-  //     } // for TB bug?
-  //   }
-  //   this.PreprocessingFlags.isLoadIdentity = false;
-    
-  // },
-
   // -------------------------------------------------------------------
   // A handler to switch identity
   // -------------------------------------------------------------------
-  loadIdentity: async function () {
+  loadIdentity: async function (options = {}) {
     const prefs = SmartTemplate4.Preferences,
           util = SmartTemplate4.Util;    
     let isTemplateProcessed = false;
+    let isChangeFromViaSmartTemplate = false;
+    if (typeof options.setFromHeader != "undefined" && options.setFromHeader) {
+      isChangeFromViaSmartTemplate = true;
+    }
     SmartTemplate4.Util.logDebugOptional("functions","SmartTemplate4.loadIdentity()");
     SmartTemplate4.Util.logHighlight("loadIdentity()", "yellow", "rgb(0,80,0)");
     {
@@ -722,7 +650,27 @@ var SmartTemplate4 = {
       // we can only reliable roll back the previous template and insert
       // a new one if the user did not start composing yet (otherwise danger
       // of removing newly composed content)
-      if (!isBodyModified) {
+      // note I used (!isBodyModified) but this lies in Thunderbird 115 !!
+      // LoadIdentity(), before calling compose-from-changed, sets gMsgCompose.identity, 
+      // which _always_ toggles the flag to true temporarily, so we cannot rely on it being correct.
+      let isOverrideBodyModified = false;
+      if (isBodyModified) {
+        let question = util.getBundleString("st.notification.bodyModified"),
+            detail,
+            instructions = util.getBundleString("st.notification.bodyModified.instructions");
+
+        if (window.SmartTemplate4.CurrentTemplate) {
+          let templateName = window.SmartTemplate4.CurrentTemplate.label || window.SmartTemplate4.CurrentTemplate.path;
+          detail = util.getBundleString("st.notification.bodyModified.externalTemplate", [templateName]);
+        } else {
+          detail = util.getBundleString("st.notification.bodyModified.accountTemplate");
+        }
+            
+        isOverrideBodyModified = confirm( question + "\n" + detail + "\n\n" + instructions);
+      }
+      
+      if ( !isChangeFromViaSmartTemplate &&               // don't trigger a tempalte reload in case header.set(from) was called!!
+          (!isBodyModified || isOverrideBodyModified)) {  // ask user it isBodyModified is really true...
         // [issue 51]
         // this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
         // Add template message - will also remove previous template and quoteHeader.
@@ -734,6 +682,9 @@ var SmartTemplate4 = {
             alert(text); 
           }
           else {
+            if (isOverrideBodyModified)  {
+              window.SmartTemplate4.PreprocessingFlags.identitySwitched = true
+            }
             await this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
           }
         }
@@ -1045,6 +996,14 @@ var SmartTemplate4 = {
     `;
   },
 
+  get XML_toggleLabelMenu() {
+    let isDisabled = 
+      window.SmartTemplate4.Preferences.getMyBoolPref("toolbar.hideLabel") ? `checked="true"` : "";
+    return `
+      <menuitem id="smartTemplates-toggle-label" label="__MSG_st.menu.hideLabel__" class="menuitem-iconic st-toggle-label" oncommand="window.SmartTemplate4.doCommand(this);" type="checkbox" ${isDisabled} onclick="event.stopPropagation();" />
+    `
+  },
+
   patchUnifiedToolbar: function() {
     // THUNDERBIRD 115
     // fix selectors
@@ -1131,6 +1090,9 @@ var SmartTemplate4 = {
       <menupopup id="SmartTemplates_HeaderMenu">
         ${this.XML_replyMenus}
         ${this.XML_forwardMenus}
+        ${this.XML_toggleLabelMenu}
+        <menuseparator class="st4templateSeparator"/>
+        <menuitem id="smartTemplates-settings" label="__MSG_pref_dialog.title__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
       </menupopup>
     </toolbarbutton>
     `; 
@@ -1191,9 +1153,11 @@ var SmartTemplate4 = {
             doc = browser.contentDocument;  
             break;
         }        
-        let headerButton = doc.getElementById(HEADERBARID);
-        if (SmartTemplate4.patchHeaderPane(doc, headerButton)) {
-          await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+        if (doc) {
+          let headerButton = doc.getElementById(HEADERBARID);
+          if (SmartTemplate4.patchHeaderPane(doc, headerButton)) {
+            await SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
+          }
         }
       }
     },

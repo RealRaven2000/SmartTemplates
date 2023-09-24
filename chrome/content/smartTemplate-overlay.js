@@ -2995,7 +2995,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             
             await window.LoadIdentity(true); 
             // we may not need to call this explicitely?
-            await SmartTemplate4.loadIdentity();
+            await SmartTemplate4.loadIdentity({setFromHeader: true });
           }
 					// there is a problem with dark themes - when editing the from address the text remains black.
 					// identityList.setAttribute("editable", "false");

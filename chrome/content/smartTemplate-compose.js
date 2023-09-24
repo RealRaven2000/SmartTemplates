@@ -989,9 +989,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		}
     if (SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning) return;
     SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning = true; // [issue 139] avoid duplicates
-    if (SmartTemplate4.PreprocessingFlags.isLoadIdentity) {
-      flags.isLoadIdentity = true; // issue 139 duplication of template
-    }
+
 		util.logDebugOptional('functions,functions.insertTemplate',
 		  `insertTemplate(startup: ${startup} , gMsgCompose.type = ${gMsgCompose.type}`, 
       flags);
@@ -1677,8 +1675,9 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// moved code for moving selection to top / bottom
 		// re-find cursor
-		if (!caretContainer)
+		if (!caretContainer) {
 		  caretContainer = findChildNode(targetNode, 'st4cursor');
+		}
 		isCursor = (caretContainer != null);
 		try {
 			if (targetNode) { // usually <body>
@@ -1842,14 +1841,16 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		await SmartTemplate4.Util.resolveDeferredBatch(gMsgCompose.editor);
 		resetDocument(gMsgCompose.editor, startup);
+		// check gMsgCompose.bodyModified `- should be false here`
 		
 		// no license => show license notification.
 		if (util.licenseInfo.status!="Valid") {
 			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
 			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
 		}
-		else
+		else {
 			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
+		}
 		
 		if (SmartTemplate4.hasDeferredVars) {
       util.logDebug("Setting up listeners for deferred field variables!");

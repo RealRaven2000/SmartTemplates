@@ -260,7 +260,8 @@ SmartTemplate4.composer.startup  = async () => {
   SmartTemplate4.notifyComposeBodyReady(); 
 
   // make sure we react to selecting a different identity
-  window.addEventListener("compose-from-changed", SmartTemplate4.loadIdentity);
+  window.addEventListener("compose-from-changed", SmartTemplate4.loadIdentity.bind(SmartTemplate4));
+  
   // TO DO: we need to know what else was done before / after LoadIdentity
   // NOTE: when the identity changes, gMsgCompose.bodyModified should be false but it is true...
 };
