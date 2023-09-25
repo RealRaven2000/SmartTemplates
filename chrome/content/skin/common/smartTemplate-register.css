@@ -10,8 +10,9 @@ label.ref {
   min-width: 200px;
 	width:auto;
 }
+
 #LicenseTerm {
-  padding: 1em 1em;
+  padding: 0.8em;
 }
 
 @keyframes smartTemplatesRenew {
@@ -58,6 +59,8 @@ td {
 
 #thePage {
 	box-shadow: 2px 2px 4px rgba(80, 80, 80, 0.4);
+  overflow-y: scroll;
+  /* max-height: 75vh;   */
 }
 
 #buyBox {
@@ -73,13 +76,15 @@ td {
   font-size: 10.2pt;
 	color: rgb(0, 0, 0);
 }
+
 .productcontainer {
   background-color: rgb(195,220,22);
 	margin: 12px;
 }
+
 .product:before {
   content: url('chrome://smartTemplate4/content/skin/icon32x32.png'); 
-  margin: 0.2em 0.2em 0 0;
+  margin-right: 0.3em;
   vertical-align: middle;
   display: inline-block; /* added 02.09.12 to center font in box */
 }
@@ -96,11 +101,10 @@ td {
   flex-wrap: nowrap;
   text-shadow: 0px 1px 1px rgba(255,255,255,0.4);
   font-family: calibri, arial, sans-serif;
-  font-size: 25pt;
+  font-size: 20pt;
   font-weight: 900;
   height: auto;
   padding: 0.3em 0.4em 0.2em 0.3em;
-  vertical-align: middle;
   white-space: nowrap;
 }
 
