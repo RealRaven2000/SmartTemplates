@@ -1,6 +1,6 @@
 
 
-var sales_end = new Date("2023-09-10");
+var sales_end = new Date("2023-10-09");
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 
