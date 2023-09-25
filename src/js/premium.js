@@ -100,7 +100,8 @@ var removedItems = [];
 			let saleStarts =  document.querySelectorAll(".saleStart");
 			for (let s of saleStarts) {
 				s.textContent = sales_start_lbl; // e.g. "September 25th"
-			}			let saleEnds =  document.querySelectorAll(".saleEnd");
+			}			
+			let saleEnds =  document.querySelectorAll(".saleEnd");
 			for (let s of saleEnds) {
 				s.textContent = sales_end_lbl; // e.g. "October 9th"
 			}			
