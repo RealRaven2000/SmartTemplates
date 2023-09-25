@@ -3079,9 +3079,9 @@ SmartTemplate4.Util.firstRun =
 			// =============================================
 			// STORE CURRENT VERSION NUMBER!
 			if (prev != pureVersion && current != '?') {
-				util.logDebug ("Storing new version number " + current);
-				// STORE VERSION CODE!
-				prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+				// util.logDebug ("Storing new version number " + current);
+				// STORE VERSION CODE! (taken out!)
+				// prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
 			}
 			else {
 				util.logDebugOptional ("firstRun","No need to store current version: " + current

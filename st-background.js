@@ -90,8 +90,16 @@ async function addMenuEntries(entries, parentId) {
               // compare versions to support beta builds
               // we probably need to manage prerelease installs with a separate flag!
               if (compareVersions(installedVersion,ver)>0) { 
+                if (isDebug) console.log("Setting hasNews flag!");
                 messenger.LegacyPrefs.setPref("extensions.smartTemplate4.hasNews", true);
               }
+              if (ver != installedVersion ) {
+                if (isDebug) console.log("Storing new version number " + manifest.version);
+                // STORE VERSION CODE!
+                // prefs.setMyStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+                messenger.LegacyPrefs.setPref("extensions.smartTemplate4.version", installedVersion);
+              }              
+              
               messenger.NotifyTools.notifyExperiment({event: "updateNewsLabels"});
               messenger.NotifyTools.notifyExperiment({event: "firstRun"});
             },
