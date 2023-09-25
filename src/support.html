@@ -15,31 +15,76 @@ permalink: support.html
 
 <p>No Software is without trouble.</p>
 <p>
-  We try to publish software with less of trouble for you but if you have some, we <i>highly recommend</i> to install the 
-  <a href="https://addons.thunderbird.net/thunderbird/addon/1815/" title="Console&#178; Add-on on ATN" target="_blank">Console&#178;  Add-on</a> first.
-  <br>
-	<b>Thunderbird 60 and earlier:</b> Please install the <a href="http://downloads.mozdev.org/smarttemplate4/console2-1.0a10.xpi">patched version here</a> for contemporary builds 
-	of Thunderbird (45 and higher - now compatible with Thunderbird 60.4.0).<br>
-  Console&#178; has more detailed options for the logging process than the default error console of Thunderbird.
-	If you do want to use the built in error console, be aware that it may be a little harder to
-	set up what it actually displays. By default it may not give you what you need for Add-on troubleshooting.</p>
-  <p><b>Thunderbird 68 and later</b>
-    you have to use the built in Javascript error console, which can be invoked from the Tools menu: 
+  We try to publish software with less of trouble for you but if you have some, we <i>recommend</i> to use the 
+	built in Javascript error console, which can be invoked from the Tools menu: 
+
+
     Select Developer Tools / Error console or press Ctrl+Shift+J
   
 
-<h3>Console&#178; Configuration - Thunderbird 60 and earlier only</h3>
-<p><b>1.</b> Click on "<u>O</u>ptions" in the top right corner of Console&#178; Window and select the following options:<br>
-  <img src="/screenshots/support/console2Options.png" class="screenshot" title="Console2 Options" alt="">
-</p>
-<p><b>2.</b> Click the "<u>A</u>ll" button on top left of Console&#178; Window to see those entries inside the Log Window only<br>
-</p>
+ <h3>Instructions for creating a debug log (SmartTemplates)</h3>
+  
+  <ul>
+    <li>
+      <p>
+        First, open SmartTemplates Settings. Make sure to expand the dialog:
+      </p>
+			<img src="img/st-expand-settings.png" alt="expand settings" class="screenshot">
+      <p>
+				Then open the advanced Settings page<br>
+      </p>
+      <p>
+				<img src="img/st-advanced-tab.png" alt="advanced tab" class="screenshot">
+      </p>
+    </li>
+    <li>
+			Scroll down to the Troubleshooting section and activate Debug mode.
+    </li>
+    <li>
+      Right-click debug mode, click om on the disclaimer (it's safe as it only allows changing relevant debug switches)
+      <p>
+				<img src="img/debug-rightclick.png" alt="debug option" class="screenshot">
+      </p>
+    </li>
+    <li>
+      <p>
+        Depending on what kind of error you are investigating, find 
+        the following additional debug settings and  activate them:<br> 
+      </p>
+      <table>
+        <tr>
+          <td>extensions.quickfolders.debug.*</td><td>true</td>
+        </tr>
+      </table>
+      <p>
+        <img src="img/st-debug-toggles.png" class="screenshot" alt="various debug options">
+      </p>
+    </li>
+    <li>
+      Open the Errors console in Thunderbird's main menu: Tools / Developer Tools / Error Console.
+    </li>
+    <li>Clear the output<br>
+        <br>
+        <img src="img/error-console-clear.png" alt="" class="screenshot">
+    </li>
+    <li>
+      IMPORTANT: Configure the console as follows:<br>
+      <br>
+      <img src="img/error-console-config.png" alt="error console configuration" class="screenshot">
+    </li>
+    <li>
+      Now you're ready for a test - try to reproduce the error in SmartTemplates
+      by carrying out only the last actions that lead to the problem.
+    </li>
+    <li>Right-click on any message, then select <i>Copy all Messages</i><br>
+      <br>
+      <img src="img/error-console-results.png" class="screenshot" alt="capturing the error log">
 
-<p><b>3.</b> Disable the  "Content" logging using the 5th button on the second toolbar below. This will make sure to remove any "noise"
-      introduced by errors in the emails themselves. Usually we do not need these error messages as they only muddy the waters<br>
-  <img src="/screenshots/support/console-optimal-settings.png" class="screenshot" title="Console2 Window Options" alt="">
-</p>
-
+    </li>
+    <li>
+      You can paste your log results in your reply.
+    </li>
+  </ul>
 
 <p><b>4.</b> Often it is necessary to provide more context - you can tell SmartTemplates to log more information of what it does. 
 </p>
