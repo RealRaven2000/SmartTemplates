@@ -1285,6 +1285,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "Π"
+  },
+  "st.menuaccess.reply": {
+    "message": "Α"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "ό"
+  },
+  "st.menuaccess.replyList": {
+    "message": "λ"
+  },  
   "st.menu.replyAll": {
     "message": "Απάντηση σε όλους"
   },

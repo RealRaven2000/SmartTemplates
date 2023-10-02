@@ -1334,6 +1334,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "W"
+  },
+  "st.menuaccess.reply": {
+    "message": "A"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "E"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
   "st.menu.replyAll": {
     "message": "Allen antworten"
   },

@@ -1349,6 +1349,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "П"
+  },
+  "st.menuaccess.reply": {
+    "message": "О"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "в"
+  },
+  "st.menuaccess.replyList": {
+    "message": "с"
+  },    
   "st.menu.replyAll": {
     "message": "Ответить всем"
   },

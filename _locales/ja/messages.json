@@ -1361,6 +1361,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "F"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
   "st.menu.replyAll": {
     "message": "全員に返信"
   },

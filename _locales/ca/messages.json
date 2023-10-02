@@ -1376,6 +1376,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "T"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
   "st.menu.replyAll": {
     "message": "Respondre a tots"
   },

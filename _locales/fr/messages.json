@@ -1379,6 +1379,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "T"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "O"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
   "st.menu.replyAll": {
     "message": "Répondre à tous"
   },

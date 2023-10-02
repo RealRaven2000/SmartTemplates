@@ -1313,6 +1313,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "E"
+  },
+  "st.menuaccess.reply": {
+    "message": "R"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "T"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },    
   "st.menu.replyAll": {
     "message": "Responder todos"
   },

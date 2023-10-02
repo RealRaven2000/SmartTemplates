@@ -1331,6 +1331,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "D"
+  },
+  "st.menuaccess.reply": {
+    "message": "A"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "B"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
   "st.menu.replyAll": {
     "message": "Allen beantwoorden"
   },

@@ -1382,6 +1382,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "I"
+  },
+  "st.menuaccess.reply": {
+    "message": "V"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "K"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },
   "st.menu.replyAll": {
     "message": "Vastaa kaikille"
   },

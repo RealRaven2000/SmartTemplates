@@ -1394,6 +1394,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "F"
+  },
+  "st.menuaccess.reply": {
+    "message": "S"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "A"
+  },
+  "st.menuaccess.replyList": {
+    "message": "L"
+  },  
   "st.menu.replyAll": {
     "message": "Svara alla"
   },

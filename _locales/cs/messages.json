@@ -1382,6 +1382,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "P"
+  },
+  "st.menuaccess.reply": {
+    "message": "O"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "V"
+  },
+  "st.menuaccess.replyList": {
+    "message": "S"
+  },  
   "st.menu.replyAll": {
     "message": "Odpovědět všem"
   },

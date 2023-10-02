@@ -1398,6 +1398,18 @@
       }
     }
   },
+  "st.menuaccess.forward": {
+    "message": "П"
+  },
+  "st.menuaccess.reply": {
+    "message": "В"
+  },
+  "st.menuaccess.replyAll": {
+    "message": "м"
+  },
+  "st.menuaccess.replyList": {
+    "message": "с"
+  },  
   "st.menu.replyAll": {
     "message": "Відповісти всім"
   },
