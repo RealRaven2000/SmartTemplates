@@ -1,4 +1,4 @@
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 
 /*
 function composeWindowIsReady(composeWindow) {

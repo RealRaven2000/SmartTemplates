@@ -1,4 +1,3 @@
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
   function containerClick(el, evt) {
     var code = evt.target;

@@ -2237,8 +2237,7 @@ export class Parser {
         }
       }
       catch(ex) {
-        var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-        
+                
         Util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more information if you enable debug mode.",ex );
         Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
           "Please check Javascript error console for detailed error message.");

@@ -1,7 +1,10 @@
 /* eslint-disable object-shorthand */
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var Services = globalThis.Services || ChromeUtils.import(
+	"resource://gre/modules/Services.jsm"
+	).Services;
+
 
 // might be better to get the parent window of the current window
 // because we may be screwed otherwise.

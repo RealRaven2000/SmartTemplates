@@ -1,5 +1,3 @@
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 //original lds this after xul!!
 
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-main.js", window, "UTF-8");
