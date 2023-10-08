@@ -1259,8 +1259,10 @@ SmartTemplate4.Util = {
     }
   } ,
 	
-  // @global=true returns a regular expression from a quoted string
-  // @global=false returns a string from a quoted string
+ /**
+  * @param global = true returns a regular expression from a quoted string
+  *                 false returns a string from a quoted string
+	*/
   unquotedRegex: function unquotedRegex(s, global) {
     if (s == "clipboard") { // [issue 183]
       if (!SmartTemplate4.Util.hasLicense()  || SmartTemplate4.Util.licenseInfo.keyType == 2) { 
@@ -2850,22 +2852,21 @@ SmartTemplate4.Util = {
 		      Cc = Components.classes;
     let cp = "";
     try {
-      const flavor = "text/unicode",
-            flavorHTML = "text/html",  // "application/x-moz-nativehtml" // flavorRTF = "text/rtf",
-            xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+      const xferable = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
+			function testFlavors() {
+				const supportedFlavors = ["text/html","text/unicode","text/plain"]; // "text/rtf"
+				for (let flavor of supportedFlavors) {
+					if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard))
+					  return flavor;
+				}
+				return null;
+			}
       if (!xferable) {
         SmartTemplate4.Util.logToConsole("Couldn't get the clipboard data due to an internal error (couldn't create a Transferable object).")
       }
       else {
         xferable.init(null);
-        let finalFlavor = "";
-        if (Services.clipboard.hasDataMatchingFlavors([flavorHTML], Services.clipboard.kGlobalClipboard)) {
-          finalFlavor = flavorHTML;
-        }
-        else if (Services.clipboard.hasDataMatchingFlavors([flavor], Services.clipboard.kGlobalClipboard)) {
-          finalFlavor = flavor;
-        }
-        
+        let finalFlavor = testFlavors();
         if (finalFlavor) {
           xferable.addDataFlavor(finalFlavor);
           // Get the data into our transferable.
