@@ -1971,11 +1971,18 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
   
   function quoteLevel(element, level) {
     if (!element || !element.parentNode)
-      return level;
+      return 0;
     let p = element.parentNode;
-    if (p.tagName && p.tagName.toLowerCase()=="blockquote")
-      return quoteLevel(p, level + 1); // increase level and check grandparent
-    return quoteLevel(p, level);
+    while (p) {
+      if (p.tagName) {
+        if (p.tagName.toLowerCase()=="blockquote" ||
+            p.tagName.toLowerCase()=="div" && p.getAttribute("type")=="cite") { // <div type="cite" ... >
+          level++;
+        }
+      }
+      p = p.parentNode;
+    }
+    return level;
   }
   
   function htmlToElement(doc, html) {
@@ -2260,7 +2267,8 @@ SmartTemplate4.parseModifier = function(msg, composeType, firstPass = false) {
           
           if (s) {
             let nodes = rootEl.querySelectorAll(s); // NodeList
-            for (let i=0; i<nodes.length; i++) {
+            let len = nodes.length
+            for (let i=len-1; i>=0; i--) {
               let n = nodes.item(i),
                   lv = quoteLevel(n, 0),
                   loadingDeferred = false;
@@ -3884,7 +3892,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     // local variables can be defined within these blocks, only 1 expression line is allowed per block,
     // hence best to wrap all code in (function() { ..code.. })()  
     // function must return "" in order not to insert an error
-    function replaceJavascript(dmy, script) {
+    async function replaceJavascript(dmy, script) {
       util.logDebugOptional('sandbox', 'replaceJavascript(' + dmy +', ' + script +')');
       if (!sandbox) {
         sandbox = new Cu.Sandbox(
@@ -3908,10 +3916,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           }
           return count;
         };        
-        sandbox.variable = function(name, arg) {
+        sandbox.variable = async function(name, arg) {
           arg = arg || "";
           if (prefs.isDebugOption('sandbox')) debugger;
-          let retVariable = replaceReservedWords("", name, arg || "");
+          let retVariable = await replaceReservedWords("", name, arg || "");
           // await SmartTemplate4.Util.replaceAsync(str, /%([\w-]+)%/gm, replaceReservedWords)
           util.logDebugOptional('sandbox','variable(' + name + ', ' + arg +')\n'
             + 'returns: ' + retVariable);
@@ -3935,7 +3943,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           
         for (let name in TokenMap) {
           sandbox[name] = (function(aname) {
-            return function(arg){
+            return async function(arg){
               if (prefs.isDebugOption('sandbox')) debugger;
               if (typeof arg === "undefined") {
                 util.logDebugOptional('sandbox','sandbox[] arg undefined, returning %' + aname +'()%');
@@ -3946,7 +3954,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               // PROBLEM: replaceReservedWords is now async!
               // we need to:
               // await SmartTemplate4.Util.replaceAsync(msg, /%([a-zA-Z][\w\-:=.]*)(\([^%]*\))*%/gm, replaceReservedWords); 
-              let sbVal = replaceReservedWords("", aname, arg);
+              let sbVal = await replaceReservedWords("", aname, arg);
               util.logDebugOptional('sandbox','sandbox[' + aname +'] returns:' + sbVal);
               return sbVal;
             };
@@ -3961,7 +3969,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       var x;
       try {
         if (prefs.isDebugOption('sandbox')) debugger;
-        x = Cu.evalInSandbox("(" + script + ").toString()", sandbox); 
+        x = await Cu.evalInSandbox("(" + script + ")", sandbox); //todo: need to check if await is safe here
         //prevent sandbox leak by templates that redefine toString (no idea if this works, or is actually needed)
         if (x.toString === String.prototype.toString) {
           x = x.toString(); 
@@ -3982,7 +3990,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
     if (SmartTemplate4.Preferences.getMyBoolPref("sandbox")) {
       // THIS NEEDS TO BECOME ASYNC. 
       // NOT SURE IF POSSIBLE BECAUSE OF call to Cu.evalInSandbox  !!
-      msg = msg.replace(/%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
+      msg = await SmartTemplate4.Util.replaceAsync(msg, /%\{%((.|\n|\r)*?)%\}%/gm, replaceJavascript); // also remove all newlines and unnecessary white spaces
     }
     
   }
