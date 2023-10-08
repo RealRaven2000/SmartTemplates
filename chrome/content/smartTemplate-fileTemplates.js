@@ -20,6 +20,7 @@ SmartTemplate4.fileTemplates = {
 		templatesFwd : [],
     snippets: []
 	},
+  MRU_Entries: [], // [issue 263]
 	armedEntry: null,
   tabConfigured: false,
 	lastError: null,
@@ -57,6 +58,9 @@ SmartTemplate4.fileTemplates = {
       command : "cmd_forwardInline",
       templates : "templatesFwd"
     },
+    {
+      id : "mru-smartTemplates-unified",
+    }
   ],
   msgHdrMenus : [
     {
@@ -83,6 +87,9 @@ SmartTemplate4.fileTemplates = {
       command : "cmd_forwardInline",
       templates : "templatesFwd"
     },
+    {
+      id : "mru-smartTemplates-header",
+    }
   ],
 	get entriesLength() {
 		let l = 0;
@@ -583,15 +590,18 @@ SmartTemplate4.fileTemplates = {
     return menuitem;
   },
 
+  lastTemplateLabel: function(template) {
+    let noTemplate = `(not set)`;
+    let mnuTemplateTitle = template ? `${template.label}` :  noTemplate;
+    let finalLabel = `${SmartTemplate4.Util.getBundleString("st.menu.template.last")}: ${mnuTemplateTitle}`;
+    return finalLabel;
+  },
+
   addTemplateEvent: function (menuitem, popupParent, fT, composeType, template, singleParentWindow) {
     if (menuitem.getAttribute("hasTemplateEvent")) {
       // recreate menu item to throw away the old events!
       // menuitem = SmartTemplate4.fileTemplates.createTemplateItem(composeType, theTemplate);
     }
-    let noTemplate = `(not set)`;
-    let mnuTemplateTitle = template ? `[${template.label}]` :  noTemplate;
-    let finalLabel = `${SmartTemplate4.Util.getBundleString("st.menu.template.last")} ${mnuTemplateTitle}`;
-    menuitem.label = finalLabel;
 
     if (!template || !template.path) {
       return;
@@ -621,18 +631,24 @@ SmartTemplate4.fileTemplates = {
 
   // =====================   UI   ===================== //	
 
-	// lbl: [new, rsp, fwd]
+/**
+  * build a templates menu underneath a popup that's passed in
+  * @param	templates      list of menu entries 
+  * @param  msgPopup
+  * @param	composeType    new, rsp, fwd, mru-smartTemplates-unified & mru-smartTemplates-header
+  * @param  showConfigureItem  switch to create "configure menu" item.
+  * */
 	configureMenu: function (templates, msgPopup, composeType, showConfigureItem = true) {
 		const util = SmartTemplate4.Util,
 					fT = SmartTemplate4.fileTemplates,
-          prefs = SmartTemplate4.Preferences,
-					MAX_FREE_TEMPLATES = 5,
+          MAX_FREE_TEMPLATES = 5,
           MAX_STANDARD_TEMPLATES = 25,
 					MAX_STANDARD_CATEGORIES=3,
           isLicensed = util.hasLicense(false);
 		let popupParent = msgPopup.parentNode, 
 				singleParentWindow = null,
-        doc = msgPopup.ownerDocument;
+        doc = msgPopup.ownerDocument,
+        isMRUmenu = composeType.startsWith("mru-");
           
     function getAccessKey(acCode) {
       if (acCode<10) { return acCode.toString(); }
@@ -666,12 +682,13 @@ SmartTemplate4.fileTemplates = {
       msgPopup.appendChild(menuseparator);
     } 
     
+    // add list of templates to popup menus
     for (let i=0; i<templates.length; i++) {
       let cat = templates[i].category,
           isAddNewCategory = false,
           isAddMaxCategoriesWarning = false;
       // if maximum number of "free / standard" submenus is exceeded, group into "other"
-      if (cat && !categories.includes(cat)) {
+      if (!isMRUmenu && cat && !categories.includes(cat)) {
         if (!util.hasProLicense && categories.length>=MAX_STANDARD_CATEGORIES) {
           cat = "Other";
           templates[i].category = cat;  // write back to data!
@@ -730,11 +747,23 @@ SmartTemplate4.fileTemplates = {
     }
       
     let menuHasRestrictions = false; // set this if any maximum is exceeded!
+    const delimiter = "\u00BB".toString(); // »
+
 		for (let i=0; i<templates.length; i++) {
 			let theTemplate = templates[i];
       /* insert one item for each listed html template */
-
-      
+      if (isMRUmenu) { // [issue 263] need to determine the original composeType, reply probably extended to replyAll, replyList
+        composeType = templates[i].composeType;
+        if (msgPopup.id == "smartTemplatesMainPopup") { // only show write items
+          if (composeType == "rsp" || composeType == "fwd") {
+            continue;
+          }
+        } else { // only show respond or forward
+          if (composeType =="new") {
+            continue;
+          }
+        }
+      }
 			let menuitem = SmartTemplate4.fileTemplates.createTemplateItem(doc, composeType, theTemplate),
           acKey = "";
 
@@ -748,9 +777,13 @@ SmartTemplate4.fileTemplates = {
       }
 
       SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, popupParent, fT, composeType, theTemplate, singleParentWindow);
+      if (!isMRUmenu) {
+        menuitem.label = this.lastTemplateLabel(theTemplate);
+      }
 			
-      let cat = theTemplate.category;
-      if (cat) {
+      let cat = theTemplate.category || "";
+      let newLabel = theTemplate.label;
+      if (cat && !isMRUmenu) {
         let popup = msgPopup.querySelector(`[templateCategory='${cat}']`);
         if (popup) {
           popup.appendChild(menuitem);
@@ -768,11 +801,36 @@ SmartTemplate4.fileTemplates = {
         acKey = getAccessKey(accelerator++);
         if (acKey) {
           menuitem.setAttribute("accesskey", acKey);
-        }        
+        }
+        if (isMRUmenu) {
+          let actionId="";
+          switch(theTemplate.cmd) {
+            case "forward":
+              actionId = "pref_fwd.tab";
+              break;
+            case "reply":
+              actionId = "pref_rsp.tab";
+              break;
+            case "replyAll":
+              actionId = "st.menu.replyAll";
+              break;
+            case "replyList":
+              actionId = "st.menu.replyList";
+              break;
+            case "write":
+              actionId = "pref_new.tab";
+              break;
+            default: continue;
+          }
+          let lblAction = SmartTemplate4.Util.getBundleString(actionId);
+          let title = theTemplate.label;
+          // add category to label
+          let catMenu = cat ? `${cat} ${delimiter} ` : "";
+          newLabel = `${lblAction}: ${catMenu}${title}`;    
+        }
         msgPopup.appendChild(menuitem);
       }
-      menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + theTemplate.label);
-      
+      menuitem.setAttribute("label", (acKey ? (acKey + " ") : "") + newLabel);
 		}
     if (menuHasRestrictions) {
       // add an explanation about why some template items are disabled.
@@ -883,9 +941,63 @@ SmartTemplate4.fileTemplates = {
 
     const singleParentWindow = true;
     SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, msgPopup.parentNode, SmartTemplate4.fileTemplates, composeType, template, singleParentWindow);
+    menuitem.label = this.lastTemplateLabel(template);
     
-    // new MRU list for last 10 actions.
+    // [issue 263]
+    // new MRU list for last *N* actions.
+/* 
+    if (false) for (let e; e < this.MRU_Entries.length; e++) {
+      let entry = this.MRU_Entries[e];
+      let actionId="";
+      let composeType="";
+      switch(entry.cmd) {
+        case "forward":
+          actionId = "pref_fwd.tab";
+          composeType = "fwd";
+          break;
+        case "reply":
+          actionId = "pref_rsp.tab";
+          composeType = "rsp";
+          break;
+        case "replyAll":
+          actionId = "st.menu.replyAll";
+          composeType = "rsp";
+          break;
+        case "replyList":
+          actionId = "st.menu.replyList";
+          composeType = "rsp";
+          break;
+        case "write":
+          actionId = "pref_new.tab";
+          composeType = "new";
+          break;
+        default: continue;
+      }
+      if (0==e) { // clear old MRU items
+        debugger;
+        let oldEntries = msgPopup.querySelectorAll("st-mru-toplevel");
+        for (let oe of oldEntries) {
+          msgPopup.removeChild(oe); // or oe.delete() ?
+        }
+      }
+      let lblAction = SmartTemplate4.Util.getBundleString(actionId);
+      let title = entry.label;
+      let path = entry.path;
+      let cat = entry.category ? `[${entry.category}] ` : "";
+      let menuLabel = `${lblAction}: ${cat}${title}`;
+      let menuitem = msgPopup.ownerDocument.createElement("menuitem");
+      menuitem.classList.add("st-mru-toplevel"); // maybe come up with a new class here (?) st-mru-toplevel
+      msgPopup.appendChild(menuitem);
 
+      SmartTemplate4.fileTemplates.addTemplateEvent(menuitem, 
+        msgPopup.parentNode, 
+        SmartTemplate4.fileTemplates, 
+        composeType, 
+        {path:entry.path, label:menuLabel, category:""}, // do not create a category popup!!
+        singleParentWindow);
+    }  // ... [issue 263]
+
+  */
 
     
   },
@@ -1055,7 +1167,11 @@ SmartTemplate4.fileTemplates = {
         }                       
 
         // this needs to be done from a tab listener too, to work when user updates the add-on from the manager tab
-        SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.uniMenus, doc, reset);
+        let test = SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.uniMenus, doc, reset);
+        if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
+          console.log("initMenus", test);
+        }
+        
       }
       
       // 4) ====  preview header area ==== //
@@ -1089,7 +1205,10 @@ SmartTemplate4.fileTemplates = {
             util.logException("cleaning msg hdr button:", ex);
           }                       
 
-          SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.msgHdrMenus, doc, reset);
+          let test = SmartTemplate4.hackToolbarbutton.updateMenuMRU(fileTemplates.msgHdrMenus, doc, reset);
+          if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) {
+            console.log("initMenus", test);
+          }          
         }
         else {
           logDebug("headerToolbox NOT found!");
@@ -1191,8 +1310,32 @@ SmartTemplate4.fileTemplates = {
     }
   },
 
+  enterMRUitem(entry) {
+    let MAX_MRU_ITEMS = 10; // will be license specific
+    let el = SmartTemplate4.fileTemplates.MRU_Entries.find(e => 
+      e.path == entry.path && 
+      e.composeType == entry.composeType);
+    if (el) {
+      let idx = SmartTemplate4.fileTemplates.MRU_Entries.indexOf(el);
+      if (idx==0) {
+        // no change necessary it was already here last time
+      }
+      if (idx>0) {
+        let items = SmartTemplate4.fileTemplates.MRU_Entries.splice(idx,1);
+        SmartTemplate4.fileTemplates.MRU_Entries.splice(0, 0, ...items); // insert old element at the top
+      }
+    } else {
+      // insert new item on top.
+      SmartTemplate4.fileTemplates.MRU_Entries.splice(0, 0, entry);
+    }
+    if (MAX_MRU_ITEMS < SmartTemplate4.fileTemplates.MRU_Entries.length) {
+      SmartTemplate4.fileTemplates.MRU_Entries.pop();
+    }
+
+  },
+
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function fileTemplate_onItemClick (menuitem, menuParent, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
+	onItemClick: function (menuitem, menuParent, fileTemplateInstance, composeType, path, label, originalEvent, singleMwindow) {
     
     /*   START NEW CODE -  [issue 184] */
     // use a pref switch for testing API processing...
@@ -1211,7 +1354,7 @@ SmartTemplate4.fileTemplates = {
       });
       return;
     }
-    /*   END NEW CODE  - [issue 184] */    
+    /* END NEW CODE  - [issue 184] */
 
     let btn = menuParent; // can be a button or a (new) menu on unifiedtoolbar button
 		const util = SmartTemplate4.Util,
@@ -1274,11 +1417,10 @@ SmartTemplate4.fileTemplates = {
 			// without specifying it will likely be the Thunderbird account defaults
 			util.logDebugOptional("fileTemplates","firing btn.click() …");
       if (isSmartReplyBtn) {
-        const isAlt = originalEvent.altKey, 
-              isCtrl = originalEvent.ctrlKey, 
+        // isAlt = originalEvent.altKey, 
+        const isCtrl = originalEvent.ctrlKey, 
               isShift = originalEvent.shiftKey;
         let buttonNo = 0,
-            buttons = btn.parentElement.childNodes,
             popupMenuItems = menuitem.parentElement.childNodes;
         
         /* select first second third or fourth button. default is the first one (usally reply all): */
@@ -1299,7 +1441,7 @@ SmartTemplate4.fileTemplates = {
               return popupMenuItems[c].click();
             }
             
-            switch(popupMenuItems[c].id) {
+            switch (popupMenuItems[c].id) {
               case "hdrReplyList_ReplyListSubButton":  // first item
               case "hdrReplyAll_ReplyAllSubButton":
               case "hdrRelplyList_ReplyAllSubButton": // genuine typo from Tb
@@ -1324,6 +1466,20 @@ SmartTemplate4.fileTemplates = {
           if (entry) {
             SmartTemplate4.fileTemplates.fireComposeCommand(entry);
           }
+        } else if (menuParent.getAttribute("type")=="menu" || menuParent.id == "SmartTemplate4Button") { // [issue 263] recent templates menu
+          let recentEntry = { command: null };
+          switch (composeType) {
+            case "new":
+              recentEntry.command = "cmd_newMessage";
+              break;
+            case "rsp":
+              recentEntry.command = "cmd_reply";
+              break;
+            case "fwd":
+              recentEntry.command = "cmd_forwardInline";
+              break;
+          }
+          SmartTemplate4.fileTemplates.fireComposeCommand(recentEntry);
         }
         else {
           btn.click(); // or fire the standard command event? 
@@ -1343,17 +1499,40 @@ SmartTemplate4.fileTemplates = {
     // update MRU item!
     // this stores the last entry per compose case.
     if (!isSnippet) {
-      this.storePreviousTemplate(composeType, entry);
+      this.storePreviousTemplate(composeType, entry); // do not update MRU yet.
+      let cmd = "";
+      switch(entry.composeType) {
+        case "rsp":
+          cmd = "reply";
+          break;
+        case "fwd":
+          cmd = "forward";
+          break;
+        case "new":
+          cmd = "write";
+          break;
+      }
+      let mruEntry = {
+        cmd: cmd,
+        label: entry.label,
+        path: entry.path,
+        composeType: entry.composeType
+      }
+      if (mruEntry.cmd) {
+        SmartTemplate4.fileTemplates.enterMRUitem(mruEntry);
+      }
+      // notify UI to update _after_ updating the MRU list.
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
     }
 
 	} ,
 
-  storePreviousTemplate: function(composeType, entry) {
+  storePreviousTemplate: function(composeType, entry, updateMenus = false) {
     const setting = "fileTemplates.mru." + composeType;
     let lastTemplate = JSON.stringify(entry);
-    let previousTemplate =  "";
+    let previous =  "";
     try { 
-      previousTemplate = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
+      previous = JSON.parse(SmartTemplate4.Preferences.getStringPref(setting)); 
     }
     catch(ex) {}; // using external template for the first time
 
@@ -1361,8 +1540,14 @@ SmartTemplate4.fileTemplates = {
       // remember fileTemplates.mru.* setting for either of rsp, new, fwd
       SmartTemplate4.Preferences.setStringPref(setting, lastTemplate);
     }
-    if (previousTemplate && previousTemplate.path && previousTemplate.path == entry.path ) {
-      SmartTemplate4.Util.logDebugOptional("fileTemplates", `same template selected [${entry.label}], no need to patch last used menuitem.`);
+    if (!updateMenus) {
+      return;
+    }
+    if (previous 
+        && previous.path 
+        && previous.path == entry.path 
+        && previous.composeType == entry.composeType) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates", `same composeType + template selected [${entry.composeType},${entry.label}], no need to patch last used menuitem.`);
     }
     else {
       SmartTemplate4.Util.logDebugOptional("fileTemplates", `Patching Last Template[${composeType}], to ${entry.label}.`);
@@ -1542,7 +1727,7 @@ SmartTemplate4.fileTemplates = {
           if (entry) {
             SmartTemplate4.fileTemplates.fireComposeCommand(entry);
             // store MRU item and notify background
-            SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+            SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry, true); 
           } else {
             switch(composeType) {
               case "snippets":
@@ -1553,11 +1738,11 @@ SmartTemplate4.fileTemplates = {
               case "new":
                 if (menuParent && menuParent.id=="smarttemplate4-changeTemplate") {
                   // store MRU item and notify background
-                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry, true); 
                   SmartTemplate4.notifyComposeBodyReady(true, window);
                 } else {
                   SmartTemplate4.fileTemplates.fireComposeCommand(fileTemplateInstance.armedEntry);
-                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry); 
+                  SmartTemplate4.fileTemplates.storePreviousTemplate(composeType, fileTemplateInstance.armedEntry, true); 
                 }
                 break
               default:
@@ -1577,8 +1762,7 @@ SmartTemplate4.fileTemplates = {
 	readHTMLTemplateFile : function readHTMLTemplateFile(template) {
 		const Ci = Components.interfaces,
 					Cc = Components.classes,
-					util = SmartTemplate4.Util,
-					prefs = SmartTemplate4.Preferences;	
+					util = SmartTemplate4.Util;	
 		// template.filePath = templateUrlToRealFilePath(template.url);
 		function toUnicode(charset, data) {
 			let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);

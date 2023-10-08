@@ -6,16 +6,29 @@ var hackToolbarbutton = {
       if (reset) return true;
       return (!menu.getAttribute('st4configured'));
     }    
+    let thePopup = null;
     for (let item of menuStructure) {
-      let thePopup = this.getMenupopupElement(doc, item.id);
+      // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
+      thePopup = this.getMenupopupElement(doc, item.id);
       if (thePopup && needsConfig(thePopup)) {
-        SmartTemplate4.fileTemplates.configureMenu(
-          SmartTemplate4.fileTemplates.Entries[item.templates], 
-          thePopup, 
-          item.composeType
-        );
+        if (item.id.startsWith("mru-")) {
+          SmartTemplate4.fileTemplates.configureMenu(
+            SmartTemplate4.fileTemplates.MRU_Entries,
+            thePopup, 
+            item.id,    // use this as signal for MRU processing
+            false       // no "show Configure.." menuitem
+          );
+        }
+        else {
+          SmartTemplate4.fileTemplates.configureMenu(
+            SmartTemplate4.fileTemplates.Entries[item.templates], 
+            thePopup, 
+            item.composeType
+          );
+        }
       }            
-    }            
+    } 
+    return thePopup; // just for testing. 
   }, 
 
   // enable/disable the default action of the button
@@ -56,11 +69,31 @@ var hackToolbarbutton = {
   },
   
   // get the menupopup element to add templates submenu
-  getMenupopupElement(doc, menuId) {   
-    let element = doc.getElementById(menuId);
+  getMenupopupElement(doc, menuId) {
+    let parentElement;
+    let isTopLevel = false;
+    switch(menuId) {
+      case "mru-smartTemplates-unified":
+        parentElement = "smartTemplatesMainPopup";
+        isTopLevel = true;
+        break;
+      case "mru-smartTemplates-header":
+        parentElement = "SmartTemplates_HeaderMenu";
+        let el = doc.querySelector("[data-extension-id='smarttemplate4@thunderbird.extension']"); 
+        isTopLevel = true;
+        return el;
+        break;
+      default: 
+        parentElement = menuId; 
+
+    }
+    let element = doc.getElementById(parentElement);
     if (!element) {
       return null;
     }
+    if (isTopLevel) {
+      return element; // [issue 263] MRU list
+    } 
 
     // check if we need to add popup
     let popup = element.querySelector("menupopup");
