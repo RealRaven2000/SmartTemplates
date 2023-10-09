@@ -240,7 +240,63 @@ permalink: version.html
 -->
 
 
+
+
 <ul id="version-history">
+
+  <a id="4.3"> &nbsp; </a>
+  <li>
+    <h4>
+      <a href="#contact" 
+        onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
+        Version 4.3 - WIP</a>
+      <br>
+      <span class="appWrapper">
+        <span class="thunderbird">111.0 - 115.*</span>
+      </span>
+    </h4>
+    <ul>
+      <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
+      <li>
+        Added accelerator keys for message header button (Forward, Reply, Reply All and Reply to List)
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/262">[issue 262] </a>
+      </li>
+      <li>
+        <p>
+          List most recently used [MRU] external template actions on top level of SmartTemplates menus.
+          These will show for reply and forward on top level the SmartTemplates header menu
+          and for write actions on the main toolbar menu. It will prevent a lot of additional
+          menu selection when creating a larger number of templates during a mail campaign.
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/263">[issue 263] </a>
+        </p>
+        <img class="screenshot" src="img/mru-followup.png" alt="MRU follow up actions"/>
+      </li>
+      <li>
+        Support reading <code>%clipboard%</code> with "text/plain" content 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/264">[issue 264] </a>
+      </li>
+      <li>
+        Support <code class="html">&lt;div type='cite'&gt;</code> for raising quote level in 
+        commands that have quote level parameters.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/265">[issue 265] </a>
+      </li>
+      <h5 class="inList"><span class="inListTitle">Bug Fixes</span></h5>
+      <li>
+        <p>
+          [For Geeks only!]
+        </p>
+        <p>
+          Fixed template scripting (JavaScript) - thanks to Benito van Zander for providing the patch code.
+          All replacement functions (variables used in scripts) are now asynchronous, so if
+          you are using script in a template, variables such as "subject" will return a 
+          promise and need to be converted to content using "await".
+          <a href="https://github.com/RealRaven2000/SmartTemplates/issues/266">[issue 266] </a>
+        </p>
+      </li>
+      <li></li>
+    </ul>
+  </li> 
+
 
   <a id="4.2"> &nbsp; </a>
   <a id="4.2.1"> &nbsp; </a>
