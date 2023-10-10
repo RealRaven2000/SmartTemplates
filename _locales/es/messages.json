@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Nuevo sistema de licencias"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Continuar con la selección de licencia 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Mostrar términos de la licencia"
+  },
   "licenseStatus.expired": {
     "message": "La licencia de SmartTemplates ha expirado hace $countDays$ días.",
     "placeholders": {

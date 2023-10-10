@@ -47,6 +47,39 @@ var Register = {
     window.addEventListener("SmartTemplates.BackgroundUpdate", this.updateLicenseUI.bind(this));
 		util.logDebug("Register.load() complete");
   } ,
+
+  toggleTerms: function(btn) {
+    let termsBox = document.getElementById("licenseTerms");
+    let collapsed = termsBox.getAttribute("collapsed");
+    let label;
+    if (collapsed) {
+      termsBox.removeAttribute("collapsed");
+      label = "licenseTerms.hide";
+      btn.classList.add("continue");
+    } else {
+      termsBox.setAttribute("collapsed", "true")
+      label = "licenseTerms.show";
+      btn.classList.remove("continue");
+    }
+    btn.label = SmartTemplate4.Util.getBundleString(label);
+    let form = document.querySelector("hbox.form");
+    if (form) {
+      if (collapsed) {
+        form.setAttribute("collapsed", "true")
+      } else {
+        form.removeAttribute("collapsed");
+      }
+    }
+    let buy = document.getElementById("buyBox");
+    if (buy) {
+      if (collapsed) {
+        buy.setAttribute("collapsed", "true")
+      } else {
+        buy.removeAttribute("collapsed");
+      }
+    }
+    window.sizeToContent();
+  },  
   
   updateLicenseUI: async function updateLicenseUI() {  
     const licenseInfo = SmartTemplate4.Util.licenseInfo,
@@ -153,8 +186,9 @@ var Register = {
 				}
 			}
 		}
-    else
+    else {
       getElement('licenseDate').setAttribute("collapsed", true);
+    }
 		
 		switch(licenseInfo.status) {
 			case "Expired":
@@ -171,6 +205,7 @@ var Register = {
 			default: // default class=register will animate the button
 				getElement('licenseDateLabel').textContent = licenseInfo.description + ":";
 		}
+    window.sizeToContent();
   
   },
   

@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "新的许可制度"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 继续选择许可证 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "显示许可协议条款"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates许可已在 $countDays$ 天前过期。",
     "placeholders": {

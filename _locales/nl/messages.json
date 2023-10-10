@@ -670,6 +670,12 @@
   "licenseHead": {
     "message": "Nieuw licentiesysteem"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Doorgaan naar licentiekeuze 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Licentievoorwaarden weergeven"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-licentie is $countDays$ dagen geleden verlopen.",
     "placeholders": {

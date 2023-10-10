@@ -664,6 +664,12 @@
   "licenseHead": {
     "message": "Nový licenční systém"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Pokračovat výběrem licence 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Zobrazit licenční podmínky"
+  },
   "licenseStatus.expired": {
     "message": "Platnost licence SmartTemplates vypršela $countDays$ před  dny.",
     "placeholders": {

@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Nou sistema de llicències"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Continua amb la selecció de la llicència 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Mostra els termes de la llicència"
+  },
   "licenseStatus.expired": {
     "message": "La llicència SmartTemplates ha caducat fa $countDays$ dies.",
     "placeholders": {

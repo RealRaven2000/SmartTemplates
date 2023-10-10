@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Νέο Σύστημα Αδειοδότησης"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Συνέχιση με την επιλογή άδειας 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Εμφάνιση όρων άδειας"
+  },
   "licenseStatus.expired": {
     "message": "Η άδεια SmartTemplates έχει λήξει $countDays$ ημέρες πριν.",
     "placeholders": {

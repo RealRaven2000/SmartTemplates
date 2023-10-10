@@ -299,15 +299,22 @@ END LICENSE BLOCK
     # Add "settings" item to bottom of SmartTemplates thread tools menu
     # [issue 256] Fixed: account template not loaded when changing From address
 
-  Version 4.2.x - FUTURE VERSION / WIP
-    # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
+  Version 4.3 - WIP
+    # [issue 263] List most recent external template actions on top level of SmartTemplates menus
     # [issue 262] Add accelerator keys for message header button (Forward, Reply, Reply All and Reply to List)
-    # [issue 263] List most recent external template actions on top level of follow up menu
-
+    # [issue 264] Support reading %clipboard% with "text/plain" content 
+    # [issue 265] Support <div type='cite'> for raising quote level in commands that have quote level parameters    
+    # [issue 268] Make registration screen less tall / easily resizable
+    # 
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
-    # [issue ]
+  Version 4.x - FUTURE VERSION / WIP
+    # [issue ] 
+    # [issue ] 
+
+    # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
+
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
     # [issue 27] Insert external HTML Templates from a web page URL
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
@@ -1053,6 +1060,7 @@ var SmartTemplate4 = {
           <menuitem id="smartTemplates-templatemenus" label="Update Template Menus!" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-patchHeaderTools" label="Patch Header Menu" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-labelUpdate" label="Update Button labels" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+          <menuitem id="smartTemplates-registration" label="License Screen" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
         </menupopup>
       </menu>
 

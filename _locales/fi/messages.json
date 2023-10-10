@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "Uusi lisenssijärjestelmä"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Jatka lisenssin valitsemista 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Näytä lisenssiehdot"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-lisenssi on vanhentunut $countDays$ päivää sitten.",
     "placeholders": {

@@ -625,6 +625,12 @@
   "licenseHead": {
     "message": "Нови систем лиценцирања"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Настави са избором лиценце 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Прикажи услове лиценце"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates Лиценца је истекла пре $countDays$ дана.",
     "placeholders": {

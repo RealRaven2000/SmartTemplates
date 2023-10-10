@@ -673,6 +673,12 @@
   "licenseHead": {
     "message": "新的許可製度"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 繼續選擇許可證 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "顯示許可協議條款"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates許可已在 $countDays$ 天前過期。",
     "placeholders": {

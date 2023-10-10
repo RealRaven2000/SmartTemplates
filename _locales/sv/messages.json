@@ -670,6 +670,12 @@
   "licenseHead": {
     "message": "Nytt licenssystem"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Fortsätt till licensval 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Visa licensvillkor"
+  },
   "licenseStatus.expired": {
     "message": "SmartTemplates-licensen har upphört att gälla för $countDays$ dagar sedan.",
     "placeholders": {

@@ -680,6 +680,12 @@
   "licenseHead": {
     "message": "Нова ліцензована система"
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Продовжити вибір ліцензії 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Показати умови ліцензії"
+  },
   "licenseStatus.expired": {
     "message": "Ліцензія SmartTemplates закінчилась $countDays$ днів тому.",
     "placeholders": {

@@ -121,6 +121,9 @@ async function onLoad(activatedWhileWindowOpen) {
           el.parentElement.parentElement.classList.toggle("force-label-hidden");
         }
         break;
+      case "smartTemplates-registration":
+        SmartTemplates.Util.showLicenseDialog("test menu");
+        break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }

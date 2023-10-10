@@ -462,6 +462,12 @@
       }
     }
   },
+  "licenseTerms.hide": {
+    "message": "🡇 Lanjutkan ke Pemilihan Lisensi 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Tampilkan Ketentuan Lisensi"
+  },
   "licenseStatus.expired": {
     "message": "Lisensi SmartTemplates telah kedaluwarsa $countDays$ hari yang lalu.",
     "placeholders": {
