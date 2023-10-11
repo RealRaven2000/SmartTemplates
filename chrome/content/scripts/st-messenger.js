@@ -124,6 +124,13 @@ async function onLoad(activatedWhileWindowOpen) {
       case "smartTemplates-registration":
         SmartTemplates.Util.showLicenseDialog("test menu");
         break;
+      case "smartTemplates-mru-save":
+        await SmartTemplates.fileTemplates.storeMRU();
+        break;
+      case "smartTemplates-mru-load":
+        await SmartTemplates.fileTemplates.loadMRU();
+        SmartTemplates.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+        break;
       default:
         console.log("Unknown SmartTemplates command", el.id || "id: N/A", el);
     }

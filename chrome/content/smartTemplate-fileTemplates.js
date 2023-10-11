@@ -214,7 +214,7 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	// label was changed, auto update the list!
-  onEditLabel: function onEditLabel(txt, forceIndex=null) {
+  onEditLabel: async function(txt, forceIndex=null) {
     const util = SmartTemplate4.Util;
     SmartTemplate4.Util.logDebug("onEditLabel", txt);
     // check if one is selected and we just changed it]
@@ -256,10 +256,10 @@ SmartTemplate4.fileTemplates = {
           item.firstChild.value = SmartTemplate4.fileTemplates.makeLabel(e); // txt; 
           break;
       }
-      this.saveCustomMenu();
+      await this.saveCustomMenu();
       return;
     }
-    this.saveCustomMenu();
+    await this.saveCustomMenu();
     this.repopulate(true); // rebuild menu
 		listbox.selectedIndex = idx; // reselect item
   } , 
@@ -278,12 +278,12 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.Util.logDebug("checkModifications", evt);
   } ,
   
-	onSelect: function(rlb) {
+	onSelect: async function(rlb) {
     SmartTemplate4.Util.logDebug("onSelect", rlb);
     if (LastInput.listbox == rlb) {
       if (LastInput.value != document.getElementById(LastInput.id).value) {
         // let lastListItem = rlb.getItemAtIndex(LastInput.selectedIndex);
-        this.onEditLabel(null, LastInput.selectedIndex);
+        await this.onEditLabel(null, LastInput.selectedIndex);
       }
     }
 		let richlistitem = rlb.getSelectedItem(0);
@@ -372,7 +372,7 @@ SmartTemplate4.fileTemplates = {
     SmartTemplate4.fileTemplates.saveCustomMenu();
   },
   
-  remove: function remove() {
+  remove: function() {
     if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) debugger;
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
@@ -462,19 +462,19 @@ SmartTemplate4.fileTemplates = {
     return lbl.replace(c + " » ", "");
   },
 	
+
 	// load template lists from file
   loadCustomMenu: async function(fromOptions) {
     const util = SmartTemplate4.Util;
     fromOptions = fromOptions ? true : false;
-    util.logDebug ('loadCustomMenu(' + fromOptions + ')...'); 
-    let promise3;
+    util.logDebug (`loadCustomMenu(${fromOptions})...`); 
+
     try {
-      // let CustomMenuString='';
       let fileTemplates = this; // closure this
       let CustomMenuData = await this.readStringFile();
       {
         // populate the templates list
-        util.logDebug ('readStringFile() - Success'); 
+        util.logDebug ("loadCustomMenu() - Success"); 
         
         function fillEntries(E,T,lb) {
           //empty list
@@ -521,25 +521,27 @@ SmartTemplate4.fileTemplates = {
   } ,
 
   // save to file
-  saveCustomMenu: function saveCustomMenu()  {
+  saveCustomMenu: async function ()  {
     const util = SmartTemplate4.Util;
     
     try {
-			// const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
-				
       let fileTemplates = this, // closure this
           profileDir = PathUtils.profileDir,
           path = PathUtils.join(profileDir, "extensions", "smartTemplates.json"),
           backPath = PathUtils.join(profileDir, "extensions", "smartTemplates.json.bak"),
-          promiseDelete = IOUtils.remove(backPath),  // only if it exists
+          promiseDelete = IOUtils.exists(backPath) ?  IOUtils.remove(backPath) : Promise.resolve(),
           promiseBackup = promiseDelete.then(
-					function () { 
+					async function () { 
 						util.logDebug ('IOUtils.move is next...'); 
-						IOUtils.move(path, backPath); 
+            if (await IOUtils.exists(path)) {
+						  IOUtils.move(path, backPath); 
+            }
 					},
-					function failedDelete(fileError) { 
+					async function failedDelete(fileError) { 
 						util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
-						IOUtils.move(path, backPath); 
+            if (await IOUtils.exists(path)) {
+						  IOUtils.move(path, backPath); 
+            }
 					}
         );
 
@@ -552,27 +554,27 @@ SmartTemplate4.fileTemplates = {
             let promise = IOUtils.writeUTF8(path, outString);
             promise.then(
               function saveSuccess(byteCount) {
-                util.logDebug ('successfully saved ' + fileTemplates.entriesLength + ' bookmarks [' + byteCount + ' bytes] to file');
+                util.logDebug (`Successfully saved ${fileTemplates.entriesLength} bookmarks [${byteCount} bytes] to file.`);
 								fileTemplates.isModified = true;
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
                 SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
               },
               function saveReject(fileError) {  // IOUtils.Error
-                util.logDebug ('saveCustomMenu error:' + fileError);
+                util.logDebug ("saveCustomMenu error:" + fileError);
               }
             );
           }
           catch (ex) {
-            util.logException('MenuOnTop.TopMenu.saveCustomMenu()', ex);
+            util.logException("SmartTemplate4.fileTemplates.saveCustomMenu()", ex);
           }
         },
         function backupFailure(fileError) {
-          util.logDebug ('promiseBackup error:' + fileError);
+          util.logDebug (`promiseBackup error: ${fileError}`);
         }
       )
     }
     catch(ex) {
-      util.logException('MenuOnTop.TopMenu.saveCustomMenu()', ex);
+      util.logException("SmartTemplate4.fileTemplates.saveCustomMenu()", ex);
     }
         
   },
@@ -1957,7 +1959,93 @@ SmartTemplate4.fileTemplates = {
       p = p.parentElement;
     }
     return null;
+  },
+
+  storeMRU: async function()  {
+    const util = SmartTemplate4.Util;
+    
+    try {
+      let fileTemplates = this, // closure this
+          profileDir = PathUtils.profileDir,
+          path = PathUtils.join(profileDir, "extensions", "smartTemplates_mru.json"),
+          backPath = PathUtils.join(profileDir, "extensions", "smartTemplates_mru.json.bak"),
+          promiseDelete = IOUtils.exists(backPath) ?  IOUtils.remove(backPath) : Promise.resolve(),  // delete backup only if it exists
+          promiseBackup = promiseDelete.then(
+					async function () { 
+						util.logDebug ('IOUtils.move is next...'); 
+            if (await IOUtils.exists(path)) {
+						  IOUtils.move(path, backPath); 
+            }
+					},
+					async function failedDelete(fileError) { 
+						util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
+            if (await IOUtils.exists(path)) {
+						  IOUtils.move(path, backPath); 
+            }
+					}
+        );
+
+      promiseBackup.then( 
+        function backSuccess() {
+          let mruArray = SmartTemplate4.fileTemplates.MRU_Entries || "[]",  // Array
+              outString = JSON.stringify(mruArray, null, '  '); // prettify
+          try {
+            // let theArray = new Uint8Array(outString); // writeJSON
+            let promise = IOUtils.writeUTF8(path, outString);
+            promise.then(
+              function saveSuccess(byteCount) {
+                util.logDebug (`Successfully saved ${mruArray.length} MRU items [${byteCount} bytes] to file:\n`, path);
+								fileTemplates.isModified = true;
+                /*
+                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
+                SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateSnippetMenus" });
+                */
+              },
+              function saveReject(fileError) {  // IOUtils.Error
+                util.logDebug ("storeMRU error:" + fileError);
+              }
+            );
+          }
+          catch (ex) {
+            util.logException("SmartTemplate4.fileTemplates.storeMRU()", ex);
+          }
+        },
+        function backupFailure(fileError) {
+          util.logDebug (`promiseBackup error: ${fileError}`);
+        }
+      )
+    }
+    catch(ex) {
+      util.logException("SmartTemplate4.fileTemplates.storeMRU()", ex);
+    }
+        
+  },
+
+  loadMRU: async function() {
+    const util = SmartTemplate4.Util;
+    util.logDebug ("loadMRU()"); 
+    try {
+      let profileDir = PathUtils.profileDir,
+      path = PathUtils.join(profileDir, "extensions", "smartTemplates_mru.json"),
+      isExist = await IOUtils.exists(path);
+
+      if (!isExist) { // [issue 227] default smartTemplates.json data
+        return false;
+      }
+      let rv = await IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an json object
+      if (typeof rv == "object") {
+        SmartTemplate4.fileTemplates.MRU_Entries = [...rv]; // make a fresh array.
+        return true;
+      }
+    } catch (ex) {
+      util.logDebug ('loadMRU() - Failure: ' + ex); 
+      Services.prompt.alert(null, 
+        "SmartTemplate4.fileTemplates.loadMRU()", 
+        "Reading the smartTemplates_mru.json file failed\n" + ex);
+      // no changes to Entries array
+      // return Promise.reject("loadCustomMenu failed.");
+      return false;
+    }
   }
-	
 		
 }
