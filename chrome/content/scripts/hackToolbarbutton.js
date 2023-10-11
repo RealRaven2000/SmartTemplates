@@ -9,24 +9,28 @@ var hackToolbarbutton = {
     let thePopup = null;
     for (let item of menuStructure) {
       // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
-      thePopup = this.getMenupopupElement(doc, item.id);
-      if (thePopup && needsConfig(thePopup)) {
-        if (item.id.startsWith("mru-")) {
-          SmartTemplate4.fileTemplates.configureMenu(
-            SmartTemplate4.fileTemplates.MRU_Entries,
-            thePopup, 
-            item.id,    // use this as signal for MRU processing
-            false       // no "show Configure.." menuitem
-          );
-        }
-        else {
-          SmartTemplate4.fileTemplates.configureMenu(
-            SmartTemplate4.fileTemplates.Entries[item.templates], 
-            thePopup, 
-            item.composeType
-          );
-        }
-      }            
+      try {
+        thePopup = this.getMenupopupElement(doc, item.id);
+        if (thePopup && needsConfig(thePopup)) {
+          if (item.id.startsWith("mru-")) {
+            SmartTemplate4.fileTemplates.configureMenu(
+              SmartTemplate4.fileTemplates.MRU_Entries,
+              thePopup, 
+              item.id,    // use this as signal for MRU processing
+              false       // no "show Configure.." menuitem
+            );
+          }
+          else {
+            SmartTemplate4.fileTemplates.configureMenu(
+              SmartTemplate4.fileTemplates.Entries[item.templates], 
+              thePopup, 
+              item.composeType
+            );
+          }
+        }            
+      } catch (ex) {
+        SmartTemplate4.Util.logException("updateMenuMRU()", ex);
+      }
     } 
     return thePopup; // just for testing. 
   }, 

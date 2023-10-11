@@ -127,3 +127,12 @@ toolbar:not([iconsize="small"]) #SmartTemplate4Button image {
 #messageHeader:not(.message-header-buttons-only-text) .SmartTemplates_HeaderBtn.force-label-hidden .toolbarbutton-text  {
   display: none !important;
 }
+
+menuitem.st4templatePicker {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/template-load.png') !important;
+}
+
+menuitem.st4templateEntry:hover, menuitem.st-mru:hover {
+	list-style-image : url('chrome://smartTemplate4/content/skin/icons/icon24x24.png') !important;
+}
+
