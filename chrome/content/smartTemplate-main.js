@@ -1112,14 +1112,18 @@ var SmartTemplate4 = {
     let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
     let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
     let moveNodes = [];
-    for (let e of newPopup.childNodes) {
-      moveNodes.push(e);
+    if (newPopup) {
+      for (let e of newPopup.childNodes) {
+        moveNodes.push(e);
+      }
+      for (let m of moveNodes) {
+        activePopup.appendChild(m);
+      }
+      this.Util.logDebug("Moved elements to popup:", moveNodes);
+      return true;
+    } else {
+      this.Util.logDebug("patchHeaderPane() - didn't find #SmartTemplates_HeaderMenu, so I couldn't patch the header menu");
     }
-    for (let m of moveNodes) {
-      activePopup.appendChild(m);
-    }
-    this.Util.logDebug("Moved elements to popup:", moveNodes);
-    return true;
 
   },
   

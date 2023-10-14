@@ -121,7 +121,7 @@ var hackToolbarbutton = {
 
     if (!(button.hasAttribute("type") && button.getAttribute("type") == "menu-button")) {
       let origLabel = button.getAttribute("label");
-      let origCommand = button.getAttribute("command");
+      let origCommand = button.getAttribute("_command");
       
       button.setAttribute("is", "toolbarbutton-menu-button");
 

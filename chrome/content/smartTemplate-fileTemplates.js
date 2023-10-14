@@ -590,7 +590,7 @@ SmartTemplate4.fileTemplates = {
       menuitem.setAttribute("is","layout")
     }
     if (theTemplate.command) {
-      menuitem.setAttribute("command", theTemplate.command)
+      menuitem.setAttribute("_command", theTemplate.command)
     }
     return menuitem;
   },
@@ -656,7 +656,7 @@ SmartTemplate4.fileTemplates = {
         doc = msgPopup.ownerDocument;
 
     const isMRUmenu = composeType.startsWith("mru-");
-    const isMainPopup = (msgPopup.id && msgPopup.id == "smartTemplatesMainPopup");
+    const isMainPopup = (!!msgPopup.id && msgPopup.id == "smartTemplatesMainPopup");
           
     function getAccessKey(acCode) {
       if (acCode<10) { return acCode.toString(); }
@@ -1488,8 +1488,8 @@ SmartTemplate4.fileTemplates = {
       }
 
       if (entry.command) {
-        switch(entry.command) {
-          case "cmd_replyAll":
+        switch(entry.command.toLowerCase()) {
+          case "cmd_replyall":
             cmd = "replyAll";
             break;
           case "cmd_replylist":
