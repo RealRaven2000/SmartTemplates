@@ -143,6 +143,7 @@ async function onLoad(activatedWhileWindowOpen) {
   util.logDebug("startUp...");
   window.SmartTemplate4.startUp();
 
+  await window.SmartTemplate4.fileTemplates.loadMRU();
   // The following will only work if we are currently in a mail pane (ATN update)
   // otherwise, we need to call this again in a tab listener
   if (window.SmartTemplate4.patchUnifiedToolbar()) {

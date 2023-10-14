@@ -51,6 +51,7 @@ pref("extensions.smartTemplate4.fileTemplates.sendTimeout", 200); // [issue 173]
 pref("extensions.smartTemplate4.fileTemplates.mru.new", ""); // (json) template data for recently used cases
 pref("extensions.smartTemplate4.fileTemplates.mru.rsp", "");
 pref("extensions.smartTemplate4.fileTemplates.mru.fwd", "");
+pref("extensions.smartTemplate4.fileTemplates.mru.max", 10); // [issue 263] max number for mru items (pro users only)
 
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort

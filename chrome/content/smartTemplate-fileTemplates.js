@@ -646,17 +646,20 @@ SmartTemplate4.fileTemplates = {
   * */
 	configureMenu: function (templatesList, msgPopup, composeType, showConfigureItem = true) {
 		const util = SmartTemplate4.Util,
-					fT = SmartTemplate4.fileTemplates,
-          MAX_FREE_TEMPLATES = 5,
-          MAX_STANDARD_TEMPLATES = 25,
-					MAX_STANDARD_CATEGORIES=3,
+					fT = SmartTemplate4.fileTemplates;
+
+    const isMRUmenu = composeType.startsWith("mru-");
+    const isMainPopup = (!!msgPopup.id && msgPopup.id == "smartTemplatesMainPopup");
+
+    const MAX_FREE_TEMPLATES = isMRUmenu ? 3 : 5,
+          MAX_STANDARD_TEMPLATES = isMRUmenu ? 5 : 25,
+					MAX_STANDARD_CATEGORIES = 3,
+          MAX_MRU_CEILING = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max"),
           isLicensed = util.hasLicense(false);
 		let popupParent = msgPopup.parentNode, 
 				singleParentWindow = null,
         doc = msgPopup.ownerDocument;
 
-    const isMRUmenu = composeType.startsWith("mru-");
-    const isMainPopup = (!!msgPopup.id && msgPopup.id == "smartTemplatesMainPopup");
           
     function getAccessKey(acCode) {
       if (acCode<10) { return acCode.toString(); }
@@ -769,6 +772,9 @@ SmartTemplate4.fileTemplates = {
     const delimiter = "\u00BB".toString(); // »
 
 		for (let i=0; i<templates.length; i++) {
+      if (isMRUmenu && i>MAX_MRU_CEILING) {
+        break;
+      }
 			let theTemplate = templates[i];
       /* insert one item for each listed html template */
       if (isMRUmenu) { // [issue 263] need to determine the original composeType, reply probably extended to replyAll, replyList
@@ -1271,7 +1277,7 @@ SmartTemplate4.fileTemplates = {
   },
 
   enterMRUitem(entry) {
-    let MAX_MRU_ITEMS = 10; // will be license specific
+    let MAX_MRU_ITEMS = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max") * 2; // default is 10 but can be raised in Pro
     let el = SmartTemplate4.fileTemplates.MRU_Entries.find(e => 
       e.path == entry.path && 
       e.command == entry.command); // match command instead of composeType
@@ -1292,6 +1298,7 @@ SmartTemplate4.fileTemplates = {
     if (MAX_MRU_ITEMS < SmartTemplate4.fileTemplates.MRU_Entries.length) {
       SmartTemplate4.fileTemplates.MRU_Entries.pop();
     }
+    SmartTemplate4.fileTemplates.storeMRU();
     return true;
   },
 
@@ -1707,11 +1714,24 @@ SmartTemplate4.fileTemplates = {
 					// now remember the correct template for the next composer window!
           let templateEntry =  
 						{ 
+              cmd: null,
 							composeType: composeType, 
 							path: localFile.path, 
 							label: name,
               command: ct
 						};
+          let cmd;
+          switch(ct) {
+            case "cmd_reply": cmd = "reply"; break;
+            case "cmd_replyall": cmd = "replyAll"; break;
+            case "cmd_replylist": cmd = "replyList"; break;
+            case "cmd_newMessage": cmd = "write"; break;
+            case "cmd_forward": cmd = "forward"; break;
+            case "cmd_forwardInline": cmd = "forward"; break;
+          }
+          if (cmd) {
+            templateEntry.cmd = cmd;
+          }
           let isStoreMRU = false;
             
           fileTemplateInstance.armedEntry = templateEntry;
