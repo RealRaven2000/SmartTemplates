@@ -245,11 +245,12 @@ permalink: version.html
 <ul id="version-history">
 
   <a id="4.3"> &nbsp; </a>
+  <a id="4.3.1"> &nbsp; </a>
   <li>
     <h4>
       <a href="#contact" 
         onclick="alert('This is still Work in Progress!\nPlease mail us if you want a preview version for testing.\n\nThank you!')">
-        Version 4.3 - WIP</a>
+        Version 4.3.1 - WIP</a>
       <br>
       <span class="appWrapper">
         <span class="thunderbird">111.0 - 115.*</span>
@@ -270,6 +271,29 @@ permalink: version.html
           <a href="https://github.com/RealRaven2000/SmartTemplates/issues/263">[issue 263] </a>
         </p>
         <img class="screenshot" src="img/mru-followup.png" alt="MRU follow up actions"/>
+        <p>
+          The main button lists the most recent templates used to write new emails.
+          The button over the email preview displays the templates used to reply and 
+          forward mails.
+        </p>
+        <p>
+          The number of items for each of these menus depends on the license level.
+          <ul>
+            <li>
+              SmartTemplates "Free" displays the last 3 items used.
+            </li>
+            <li>
+              SmartTemplates Standard displayes the last 5 items used, and remembers 
+              these Thunderbird is restarted.
+            </li>
+            <li>
+              SmartTemplates Pro displays the last 10 items, but the maximum amount can be 
+              configured in the configuration setting
+              <tt>extensions.smartTemplate4.fileTemplates.mru.max</tt>. 
+            </li>
+          </ul>
+          I will provide a user interface for adjusting the maximum number in a future version.
+        </p>        
       </li>
       <li>
         Support reading <code>%clipboard%</code> with "text/plain" content 
