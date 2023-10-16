@@ -1434,6 +1434,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "W"
+  },  
   "st.menu.replyAll": {
     "message": "Reply All"
   },
@@ -1860,7 +1863,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} The button in the email header bar is now shorter not containing the phrase 'Follow up with SmartTemplates' anymore - you can even completely hide the SmartTemplates label so that only the icon remains visible while in icon + text mode. [issue 254]{L2} {L1} We also added a menu entry to access SmartTemplates settings. {L2}{L1} A problem was fixed that prevented other account templates loading when you change the 'From' address in the email editor window.  [issue 256]{L2}"
+    "message": "{L1} SmartTemplates menus now list the last used external template actions at top level. The amount of these depends on license level. [issue 263]{L2} {L1} Added accelerator keys for write, reply and forward submenus. {L2} {L1} Support reading from clipboard in plain/text format.{L2} {L1} Fixed the {{%messageRaw()%}} variable.{L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

@@ -1352,6 +1352,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Odpowiedz wszystkim"
   },
@@ -1772,8 +1775,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Przycisk w pasku nagłówka wiadomości e-mail jest teraz krótszy i nie zawiera już frazy 'Follow up with SmartTemplates' - można nawet całkowicie ukryć etykietę SmartTemplates, tak aby pozostała widoczna tylko ikona w trybie ikony + tekst. [issue 254]{L2} {L1} Dodaliśmy również pozycję menu do dostępu do ustawień SmartTemplates. {L2}{L1} Naprawiono problem, który uniemożliwiał ładowanie innych szablonów konta po zmianie adresu 'Od' w oknie edytora wiadomości e-mail. [issue 256]{L2}"
-  },  
+    "message": "{L1} Menu SmartTemplates teraz wyświetla ostatnio używane akcje zewnętrznych szablonów na najwyższym poziomie. Ilość zależy od poziomu licencji. [issue 263]{L2} {L1} Dodano klawisze skrótu do podmenu napisz, odpowiedz i przekaż. {L2} {L1} Obsługa odczytu z schowka w formacie tekstowym.{L2} {L1} Poprawiona zmienna {{%messageRaw()%}}.{L2}"
+  },    
   "whitespace_note": {
     "message": "Zauważ, że białe znaki można najlepiej przedstawić jako \\s, ponieważ mogą również zawierać podziały wierszy. Nie można używać przecinków i znaków podwójnego cudzysłowu."
   },

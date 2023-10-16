@@ -61,9 +61,9 @@ const discountRenewal = "25%";
   });  
 
   function replaceVariableCodeTags(txt) {
-    let txt2 = txt.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>");
+    let txt2 = txt.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>");
     // added simple <tag> support
-    return txt2.replace(/<(.*?)>/g,"<span class='htmltag' />&lt;$1&gt;</span>")
+    return txt2.replace(/\{\{(%.*?%)\}\}/g,"<code>$1</code>")
                .replace(/\{L1\}/g,"<li>").replace(/\{L2\}/g,"</li>")
                .replace(/\{P1\}/g,"<p>").replace(/\{P2\}/g,"</p>")
                .replace(/\{\{(.*?)\}\}/g,"<code param>$1</code>")

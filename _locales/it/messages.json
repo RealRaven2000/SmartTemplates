@@ -1313,6 +1313,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "M"
+  },  
   "st.menu.replyAll": {
     "message": "Rispondi a tutti"
   },
@@ -1727,8 +1730,8 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Il pulsante nella barra dell'intestazione dell'email è ora più corto e non contiene più la frase 'Follow up with SmartTemplates' - puoi persino nascondere completamente l'etichetta SmartTemplates in modo che rimanga visibile solo l'icona nella modalità icona + testo. [issue 254]{L2} {L1} Abbiamo anche aggiunto una voce di menu per accedere alle impostazioni di SmartTemplates. {L2}{L1} È stato risolto un problema che impediva il caricamento di altri modelli di account quando cambiavi l'indirizzo 'Da' nella finestra dell'editor di email. [issue 256]{L2}"
-  },  
+    "message": "{L1} I menu di SmartTemplates ora mostrano le ultime azioni di modelli esterni utilizzate a livello superiore. La quantità di queste azioni dipende dal livello di licenza. [issue 263]{L2} {L1} Aggiunte le scorciatoie per i sottomenu Scrivi, Rispondi e Inoltra. {L2} {L1} Supporto per la lettura dagli appunti in formato testo semplice.{L2} {L1} Corretta la variabile {{%messageRaw()%}}.{L2}"
+  },   
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."
   },

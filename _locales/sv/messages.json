@@ -1412,6 +1412,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Svara alla"
   },
@@ -1835,8 +1838,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Knappen i e-posthuvudet är nu kortare och innehåller inte längre frasen 'Follow up with SmartTemplates' - du kan till och med gömma SmartTemplates-etiketten helt så att endast ikonen förblir synlig i ikon + textläge. [issue 254]{L2} {L1} Vi har också lagt till en menyinmatning för att komma åt SmartTemplates-inställningarna. {L2}{L1} Ett problem har åtgärdats som hindrade andra konto mallar från att laddas när du ändrar 'Från'-adressen i e-postredigeringsfönstret. [issue 256]{L2}"
-  },  
+    "message": "{L1} SmartTemplates-menyer visar nu de senast använda externa mallåtgärderna på översta nivån. Antalet beror på licensnivån. [issue 263]{L2} {L1} Snabbtangenter har lagts till för undermenyerna Skriv, Svara och Vidarebefordra. {L2} {L1} Stöd för att läsa från urklipp i ren textformat.{L2} {L1} Korrigering av variabeln {{%messageRaw()%}}.{L2}"
+  },    
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },

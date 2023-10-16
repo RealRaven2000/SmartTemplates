@@ -1352,6 +1352,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },  
+  "st.menuaccess.write": {
+    "message": "V"
+  },  
   "st.menu.replyAll": {
     "message": "Allen antworten"
   },
@@ -1756,8 +1759,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die Schaltfläche in der E-Mail-Kopfzeile ist jetzt kürzer und enthält nicht mehr den Satz 'Follow up with SmartTemplates' - Sie können sogar das SmartTemplates-Label vollständig ausblenden, sodass nur das Symbol im Icon + Text-Modus sichtbar bleibt. [issue 254]{L2} {L1} Wir haben auch einen Menüeintrag hinzugefügt, um auf die SmartTemplates-Einstellungen zuzugreifen. {L2}{L1} Ein Problem wurde behoben, das verhinderte, dass andere Kontovorlagen geladen werden, wenn Sie die 'Von'-Adresse im E-Mail-Editor-Fenster ändern. [issue 256]{L2}"
-  },  
+    "message": "{L1} SmartTemplates-Menüs listen jetzt die zuletzt verwendeten externen Vorlagenaktionen auf Top-Ebene auf. Die Anzahl dieser Aktionen hängt vom Lizenzlevel ab. [issue 263]{L2} {L1} Beschleunigungstasten wurden für die Schreib-, Antwort- und Weiterleiten-Untermenüs hinzugefügt. {L2} {L1} Unterstützung für das Lesen aus der Zwischenablage im Klartextformat.{L2} {L1} Die {{%messageRaw()%}} Variable funktioniert wieder.{L2}"
+  },    
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."
   },

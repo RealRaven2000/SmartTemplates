@@ -301,11 +301,10 @@ END LICENSE BLOCK
 
   Version 4.3 - WIP
     # [issue 263] List most recent external template actions on top level of SmartTemplates menus
-    # [issue 262] Add accelerator keys for message header button (Forward, Reply, Reply All and Reply to List)
+    # [issue 262] Add accelerator keys for template menus (Write, Forward, Reply, Reply All and Reply to List)
     # [issue 264] Support reading %clipboard% with "text/plain" content 
     # [issue 265] Support <div type='cite'> for raising quote level in commands that have quote level parameters    
     # [issue 268] Make registration screen less tall / easily resizable
-    # 
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -1034,7 +1033,7 @@ var SmartTemplate4 = {
   `<vbox id="titlebar">
     <menupopup id="smartTemplatesMainPopup">
       <menuitem id="smartTemplates-checklicense" label="__MSG_st.menu.license__" class="menuitem-iconic checkLicense marching-ants" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
-      <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage">
+      <menu label="__MSG_pref_new.tab__"  id="smartTemplates-write-menu" class="menu-iconic" controller="cmd_newMessage" accesskey="__MSG_st.menuaccess.write__">
         <menupopup>
           <menuitem id="smartTemplates-write-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-new st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
           <menuitem id="smartTemplates-write-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>

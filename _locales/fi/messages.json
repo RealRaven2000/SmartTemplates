@@ -1400,6 +1400,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "U"
+  },  
   "st.menu.replyAll": {
     "message": "Vastaa kaikille"
   },
@@ -1823,7 +1826,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Sähköpostin otsikkopalkin painike on nyt lyhyempi eikä sisällä enää fraasia 'Follow up with SmartTemplates' - voit jopa piilottaa SmartTemplates-tunnuksen kokonaan, jolloin näkyvissä on vain kuvake teksti + kuvake -tilassa. [issue 254]{L2} {L1} Lisäsimme myös valikon, jolla pääset SmartTemplates-asetuksiin. {L2}{L1} Korjasimme ongelman, joka esti muiden tilien mallipohjien lataamisen, kun vaihdat 'Lähettäjä'-osoitteen sähköpostieditorin ikkunassa. [issue 256]{L2}"
+    "message": "{L1} SmartTemplates-valikot näyttävät nyt viimeksi käytettyjen ulkoisten mallien toiminnot ylintasolla. Näiden määrä riippuu lisenssitasosta. [issue 263]{L2} {L1} Lisätty kiihdytinäppäimet kirjoita-, vastaa- ja lähetä-alaotsikoille. {L2} {L1} Tukee leikkausvälineen lukemista pelkässä tekstimuodossa.{L2} {L1} Korjattu {{%messageRaw()%}} muuttuja.{L2}"
   },   
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."

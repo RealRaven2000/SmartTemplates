@@ -1367,6 +1367,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },    
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Responder todos"
   },
@@ -1775,8 +1778,8 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} O botão na barra de cabeçalho de e-mail agora é mais curto e não contém mais a frase 'Follow up with SmartTemplates' - você pode até mesmo ocultar completamente o rótulo SmartTemplates para que apenas o ícone permaneça visível no modo ícone + texto. [issue 254]{L2} {L1} Também adicionamos uma entrada de menu para acessar as configurações do SmartTemplates. {L2}{L1} Um problema foi corrigido que impedia o carregamento de outros modelos de conta quando você alterava o endereço 'De' na janela do editor de e-mail. [issue 256]{L2}"
-  },  
+    "message": "{L1} Os menus do SmartTemplates agora exibem as últimas ações de modelos externos usadas no nível superior. A quantidade depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte à leitura da área de transferência no formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2}"
+  },   
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },

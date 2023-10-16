@@ -1358,6 +1358,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "R"
+  },  
   "st.menu.replyAll": {
     "message": "Responder a todos"
   },
@@ -1772,8 +1775,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} El botón en la barra de encabezado de correo electrónico ahora es más corto y no contiene la frase 'Follow up with SmartTemplates' - incluso puedes ocultar completamente la etiqueta de SmartTemplates para que solo el icono siga siendo visible en el modo de icono + texto. [issue 254]{L2} {L1} También hemos agregado una entrada de menú para acceder a la configuración de SmartTemplates. {L2}{L1} Se solucionó un problema que impedía que se cargaran otras plantillas de cuenta cuando cambiabas la dirección 'De' en la ventana del editor de correo electrónico. [issue 256]{L2}"
-  },
+    "message": "{L1} Los menús de SmartTemplates ahora muestran las últimas acciones de plantillas externas utilizadas en el nivel superior. La cantidad de estas depende del nivel de licencia. [issue 263]{L2} {L1} Se han agregado teclas de acceso rápido para los submenús de escribir, responder y reenviar. {L2} {L1} Admite la lectura desde el portapapeles en formato de texto sin formato.{L2} {L1} Se corrigió la variable {{%messageRaw()%}}.{L2}"
+  },  
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."
   },

@@ -1397,6 +1397,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Répondre à tous"
   },
@@ -1820,8 +1823,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Le bouton dans la barre d'en-tête des e-mails est désormais plus court et ne contient plus la phrase 'Follow up with SmartTemplates' - vous pouvez même masquer complètement l'étiquette SmartTemplates pour que seule l'icône reste visible en mode icône + texte. [issue 254]{L2} {L1} Nous avons également ajouté une entrée de menu pour accéder aux paramètres de SmartTemplates. {L2}{L1} Un problème a été résolu qui empêchait le chargement d'autres modèles de compte lorsque vous modifiez l'adresse 'De' dans la fenêtre de l'éditeur d'e-mails. [issue 256]{L2}"
-  },  
+    "message": "{L1} Les menus de SmartTemplates affichent désormais les dernières actions de modèles externes utilisées au niveau supérieur. Le nombre de ces actions dépend du niveau de la licence. [issue 263]{L2} {L1} Ajout de touches d'accélération pour les sous-menus Écrire, Répondre et Transférer. {L2} {L1} Prise en charge de la lecture depuis le presse-papiers au format texte brut.{L2} {L1} Correction de la variable {{%messageRaw()%}}.{L2}"
+  },   
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."
   },

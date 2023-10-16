@@ -1817,8 +1817,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 电子邮件标题栏中的按钮现在更短，不再包含短语 'Follow up with SmartTemplates' - 即使在图标+文本模式下，您甚至可以完全隐藏 SmartTemplates 标签，只保留图标可见。[issue 254]{L2} {L1} 我们还添加了一个菜单项，以访问 SmartTemplates 的设置。{L2}{L1} 解决了更改电子邮件编辑器窗口中的 '发件人' 地址后阻止其他帐户模板加载的问题。[issue 256]{L2}"
-  },  
+    "message": "{L1} SmartTemplates菜单现在在顶级水平列出了最近使用的外部模板操作。这取决于许可证级别。 [issue 263]{L2} {L1} 为写、回复和转发子菜单添加了快捷键。 {L2} {L1} 支持纯文本格式的剪贴板读取。{L2} {L1} 修复了{{%messageRaw()%}}变量。{L2}"
+  },   
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

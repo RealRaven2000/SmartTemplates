@@ -1280,8 +1280,10 @@ SmartTemplate4.fileTemplates = {
     let MAX_MRU_ITEMS = SmartTemplate4.Preferences.getMyIntPref("fileTemplates.mru.max") * 2; // default is 10 but can be raised in Pro
     let el = SmartTemplate4.fileTemplates.MRU_Entries.find(e => 
       e.path == entry.path && 
-      e.command == entry.command); // match command instead of composeType
+      (e.cmd == entry.cmd ||
+       e.command == entry.command));
     if (!entry) return false;
+    if (!entry.command) debugger;
     if (el) {
       let idx = SmartTemplate4.fileTemplates.MRU_Entries.indexOf(el);
       if (idx==0) {

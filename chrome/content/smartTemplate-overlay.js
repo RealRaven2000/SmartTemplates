@@ -326,8 +326,7 @@ SmartTemplate4.getHeadersAsync = async function() {
   let isNewMail = (params.type == Ci.nsIMsgCompType.New);
   // gComposeType = params.type;
   let mimeMsg;
-  if (!isNewMail) 
-  {
+  if (!isNewMail) {
     let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
     let msgHdr = messenger.msgHdrFromURI(params.originalMsgURI).QueryInterface(Ci.nsIMsgDBHdr);
     
@@ -345,9 +344,11 @@ SmartTemplate4.getHeadersAsync = async function() {
       hMap.set("message-id",msgHdr.messageId);
       hMap.set("thread-id",msgHdr.threadId);
       hMap.set("date",msgHdr.date);
+      hMap.set("content", "");
       return hMap;
     }
-    
+
+
     headers = mimeMsg.headers;
     
     if (SmartTemplate4.Preferences.isDebug) {
@@ -356,7 +357,25 @@ SmartTemplate4.getHeadersAsync = async function() {
     // Map implements the "get()"
     // return new Map(Object.entries(headers).map([k,e] => [k,e[0]])); 
     // SmartTemplate4.Util.logDebugOptional('mime','allHeaders: \n' +  headers.allHeaders);
-    return new Map(Object.entries(headers).map( ([k,e]) => [k.toLowerCase(),e.join(",")]) ); 
+    let theMap = new Map(Object.entries(headers).map( ([k,e]) => [k.toLowerCase(),e.join(",")]) );
+
+    // support messageRaw()
+    let bodyContent = "";
+    for (let p of mimeMsg.parts) {
+      if (p.body) {
+        bodyContent += p.body;
+      }
+      if (p.parts) {
+        for (let u of p.parts) {
+          if (u.body) {
+            bodyContent += u.body;
+          }
+        }
+      }
+    }
+    
+    theMap.set("content", bodyContent);
+    return theMap; 
   }
   return ""; // new Map();
 	// return null; // ??
@@ -364,14 +383,10 @@ SmartTemplate4.getHeadersAsync = async function() {
 
 
 SmartTemplate4.getHeadersWrapper = function(originalMsgURI) {
-  let rv;
   // streaming the message works up to Tb91, in Tb102 we need to load the headers during when starting ComposeStartup() [async]
-  if ((SmartTemplate4.Util.versionSmaller(window.SmartTemplate4.Util.Appver, "102"))) {
-    rv = new SmartTemplate4.classGetHeaders(originalMsgURI); // legacy headers
-  }  
-  else {
-    rv = SmartTemplate4.MessageHdr; // new headers in TB102 - uses SmartTemplate4.getHeadersAsync()
-  }
+  // SmartTemplate4.classGetHeaders(originalMsgURI); // deprecated function since Thunderbird 102
+  // new headers in TB102 - uses SmartTemplate4.getHeadersAsync()  
+  let rv  = SmartTemplate4.MessageHdr;  // <== await SmartTemplate4.getHeadersAsync()
   if (SmartTemplate4.Preferences.isDebugOption("headers") ) {
     console.log(rv);
   }
@@ -3379,7 +3394,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
 			    return javascriptResults[/\((.*)\)/.exec(arg)[1]];
 				// any headers (to/cc/from/date/subject/message-id/newsgroups, etc)
 				case "messageRaw": //returns the arg-th first characters of the content of the original message
-				  return hdr.content(arg?/\((.*)\)/.exec(arg)[1]*1:2048);
+          { // was hdr.content(argumentLength)
+            let  bodyContent = hdr.get("content"),
+                 length = arg?/\((.*)\)/.exec(arg)[1]*1:2048;
+            return bodyContent.substring(0, length); 
+          }
 				case "attach":
 					util.addUsedPremiumFunction('attach');
           attachFile(arg);

@@ -1394,6 +1394,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },  
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Respondre a tots"
   },
@@ -1811,7 +1814,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} El botó de la barra de capçalera del correu ara és més curt i no conté la frase 'Follow up with SmartTemplates' - fins i tot pots amagar completament l'etiqueta de SmartTemplates de manera que només aparegui l'ícon mentre estiguis en mode icona + text. [issue 254]{L2} {L1} També hem afegit una entrada de menú per accedir a la configuració de SmartTemplates. {L2}{L1} S'ha solucionat un problema que impedia que altres plantilles d'altres comptes es carreguessin quan canvies l'adreça 'De' a la finestra de l'editor de correu. [issue 256]{L2}"
+    "message": "{L1} Les opcions de SmartTemplates ara llisten les darreres accions de plantilles externes utilitzades a nivell superior. La quantitat d'aquestes dependrà del nivell de la llicència. [issue 263]{L2} {L1} S'han afegit tecles d'acceleració per als submenús d'escriure, respondre i reenviar. {L2} {L1} S'admet la lectura del porta-retalls en format de text pla. {L2} {L1} S'ha corregit la variable {{%messageRaw()%}}.{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

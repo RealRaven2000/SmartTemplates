@@ -1349,6 +1349,9 @@
   "st.menuaccess.replyList": {
     "message": "L"
   },
+  "st.menuaccess.write": {
+    "message": "N"
+  },  
   "st.menu.replyAll": {
     "message": "Allen beantwoorden"
   },
@@ -1763,8 +1766,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} De knop in de e-mailkopbalk is nu korter en bevat niet langer de zin 'Follow up with SmartTemplates' - je kunt zelfs het SmartTemplates-label volledig verbergen, zodat alleen het pictogram zichtbaar blijft in de modus met pictogram + tekst. [issue 254]{L2} {L1} We hebben ook een menu-item toegevoegd om toegang te krijgen tot de SmartTemplates-instellingen. {L2}{L1} Een probleem is opgelost waardoor andere accountsjablonen niet werden geladen wanneer je het 'Van'-adres in het e-mailbewerkingvenster wijzigt. [issue 256]{L2}"
-  },  
+    "message": "{L1} SmartTemplates-menu's tonen nu de laatst gebruikte externe sjabloonacties op het hoogste niveau. Het aantal hangt af van het licentieniveau. [issue 263]{L2} {L1} Sneltoetsen toegevoegd voor de schrijf-, antwoord- en doorstuursubmenu's. {L2} {L1} Ondersteuning voor lezen vanuit het klembord in platte tekstindeling.{L2} {L1} De {{%messageRaw()%}} variabele is gecorrigeerd.{L2}"
+  },   
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },
