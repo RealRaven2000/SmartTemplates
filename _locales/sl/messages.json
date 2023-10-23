@@ -1724,7 +1724,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Meniji SmartTemplates zdaj prikazujejo zadnje uporabljene zunanje predloge dejanj na vrhnji ravni. Količina teh je odvisna od ravni licence. [issue 263]{L2} {L1} Dodane so bližnjice za podmeni Piši, Odgovori in Posreduj. {L2} {L1} Podpora za branje iz odložišča v obliki čistega besedila.{L2} {L1} Popravljena je spremenljivka {{%messageRaw()%}}.{L2}"
+    "message": "{L1} Meniji SmartTemplates zdaj prikazujejo zadnje uporabljene zunanje predloge dejanj na vrhnji ravni. Količina teh je odvisna od ravni licence. [issue 263]{L2} {L1} Dodane so bližnjice za podmeni Piši, Odgovori in Posreduj. {L2} {L1} Podpora za branje iz odložišča v obliki čistega besedila.{L2} {L1} Popravljena je spremenljivka {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },   
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."

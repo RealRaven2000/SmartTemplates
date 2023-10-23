@@ -1823,7 +1823,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Les menus de SmartTemplates affichent désormais les dernières actions de modèles externes utilisées au niveau supérieur. Le nombre de ces actions dépend du niveau de la licence. [issue 263]{L2} {L1} Ajout de touches d'accélération pour les sous-menus Écrire, Répondre et Transférer. {L2} {L1} Prise en charge de la lecture depuis le presse-papiers au format texte brut.{L2} {L1} Correction de la variable {{%messageRaw()%}}.{L2}"
+    "message": "{L1} Les menus de SmartTemplates affichent désormais les dernières actions de modèles externes utilisées au niveau supérieur. Le nombre de ces actions dépend du niveau de la licence. [issue 263]{L2} {L1} Ajout de touches d'accélération pour les sous-menus Écrire, Répondre et Transférer. {L2} {L1} Prise en charge de la lecture depuis le presse-papiers au format texte brut.{L2} {L1} Correction de la variable {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },   
   "whitespace_note": {
     "message": "Notez que les espaces peuvent être mieux représentés sous forme de \\s car ils peuvent également contenir des sauts de ligne. Les virgules et les guillemets ne peuvent pas être utilisés."

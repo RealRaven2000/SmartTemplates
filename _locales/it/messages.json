@@ -1730,7 +1730,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} I menu di SmartTemplates ora mostrano le ultime azioni di modelli esterni utilizzate a livello superiore. La quantità di queste azioni dipende dal livello di licenza. [issue 263]{L2} {L1} Aggiunte le scorciatoie per i sottomenu Scrivi, Rispondi e Inoltra. {L2} {L1} Supporto per la lettura dagli appunti in formato testo semplice.{L2} {L1} Corretta la variabile {{%messageRaw()%}}.{L2}"
+    "message": "{L1} I menu di SmartTemplates ora mostrano le ultime azioni di modelli esterni utilizzate a livello superiore. La quantità di queste azioni dipende dal livello di licenza. [issue 263]{L2} {L1} Aggiunte le scorciatoie per i sottomenu Scrivi, Rispondi e Inoltra. {L2} {L1} Supporto per la lettura dagli appunti in formato testo semplice.{L2} {L1} Corretta la variabile {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },   
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

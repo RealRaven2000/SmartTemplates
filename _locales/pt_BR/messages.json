@@ -1745,7 +1745,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Os menus do SmartTemplates agora exibem as últimas ações de modelos externos usadas no nível superior. A quantidade depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte à leitura da área de transferência no formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2}"
+    "message": "{L1} Os menus do SmartTemplates agora exibem as últimas ações de modelos externos usadas no nível superior. A quantidade depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte à leitura da área de transferência no formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },  
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."

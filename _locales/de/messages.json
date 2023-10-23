@@ -1759,7 +1759,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-Menüs listen jetzt die zuletzt verwendeten externen Vorlagenaktionen auf Top-Ebene auf. Die Anzahl dieser Aktionen hängt vom Lizenzlevel ab. [issue 263]{L2} {L1} Beschleunigungstasten wurden für die Schreib-, Antwort- und Weiterleiten-Untermenüs hinzugefügt. {L2} {L1} Unterstützung für das Lesen aus der Zwischenablage im Klartextformat.{L2} {L1} Die {{%messageRaw()%}} Variable funktioniert wieder.{L2}"
+    "message": "{L1} SmartTemplates-Menüs listen jetzt die zuletzt verwendeten externen Vorlagenaktionen auf Top-Ebene auf. Die Anzahl dieser Aktionen hängt vom Lizenzlevel ab. [issue 263]{L2} {L1} Beschleunigungstasten wurden für die Schreib-, Antwort- und Weiterleiten-Untermenüs hinzugefügt. {L2} {L1} Unterstützung für das Lesen aus der Zwischenablage im Klartextformat.{L2} {L1} Die {{%messageRaw()%}} Variable funktioniert wieder.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },    
   "whitespace_note": {
     "message": "Whitespace kann am besten als \\s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden."

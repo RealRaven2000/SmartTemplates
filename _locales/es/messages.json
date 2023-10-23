@@ -1775,7 +1775,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Los menús de SmartTemplates ahora muestran las últimas acciones de plantillas externas utilizadas en el nivel superior. La cantidad de estas depende del nivel de licencia. [issue 263]{L2} {L1} Se han agregado teclas de acceso rápido para los submenús de escribir, responder y reenviar. {L2} {L1} Admite la lectura desde el portapapeles en formato de texto sin formato.{L2} {L1} Se corrigió la variable {{%messageRaw()%}}.{L2}"
+    "message": "{L1} Los menús de SmartTemplates ahora muestran las últimas acciones de plantillas externas utilizadas en el nivel superior. La cantidad de estas depende del nivel de licencia. [issue 263]{L2} {L1} Se han agregado teclas de acceso rápido para los submenús de escribir, responder y reenviar. {L2} {L1} Admite la lectura desde el portapapeles en formato de texto sin formato.{L2} {L1} Se corrigió la variable {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },  
   "whitespace_note": {
     "message": "Tenga en cuenta que el espacio en blanco se puede representar mejor como \\s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles."

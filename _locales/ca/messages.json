@@ -1814,7 +1814,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Les opcions de SmartTemplates ara llisten les darreres accions de plantilles externes utilitzades a nivell superior. La quantitat d'aquestes dependrà del nivell de la llicència. [issue 263]{L2} {L1} S'han afegit tecles d'acceleració per als submenús d'escriure, respondre i reenviar. {L2} {L1} S'admet la lectura del porta-retalls en format de text pla. {L2} {L1} S'ha corregit la variable {{%messageRaw()%}}.{L2}"
+    "message": "{L1} Les opcions de SmartTemplates ara llisten les darreres accions de plantilles externes utilitzades a nivell superior. La quantitat d'aquestes dependrà del nivell de la llicència. [issue 263]{L2} {L1} S'han afegit tecles d'acceleració per als submenús d'escriure, respondre i reenviar. {L2} {L1} S'admet la lectura del porta-retalls en format de text pla. {L2} {L1} S'ha corregit la variable {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."

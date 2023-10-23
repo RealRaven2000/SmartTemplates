@@ -1814,7 +1814,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates nyní ve svém menu uvádí poslední použité akce externích šablon na úrovni vrchní úrovně. Počet závisí na úrovni licence. [issue 263]{L2} {L1} Přidány zrychlené klávesy pro podmenu Napsat, Odpovědět a Přeposlat. {L2} {L1} Podpora čtení ze schránky ve formátu prostého textu.{L2} {L1} Opravena proměnná {{%messageRaw()%}}{L2}"
+    "message": "{L1} SmartTemplates nyní ve svém menu uvádí poslední použité akce externích šablon na úrovni vrchní úrovně. Počet závisí na úrovni licence. [issue 263]{L2} {L1} Přidány zrychlené klávesy pro podmenu Napsat, Odpovědět a Přeposlat. {L2} {L1} Podpora čtení ze schránky ve formátu prostého textu.{L2} {L1} Opravena proměnná {{%messageRaw()%}}{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },   
   "whitespace_note": {
     "message": "Všimněte si, že mezeru lze nejlépe reprezentovat jako \\s, protože může také obsahovat konce řádků. Nelze použít čárky a dvojité uvozovky."

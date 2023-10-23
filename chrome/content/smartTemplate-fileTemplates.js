@@ -881,7 +881,12 @@ SmartTemplate4.fileTemplates = {
     /* add an item for choosing ad hoc file template - uses file picker */
     // only the submenus have controllers
     let menuitem, menuTitle;
-    if (SmartTemplate4.fileTemplates.getController(msgPopup)) {
+    const parentId = msgPopup.parentElement?.id || null;
+    // [issue 269]
+    const hasOpenFileItem = 
+      ["smarttemplate4-changeTemplate","smarttemplate4-insertSnippet"].includes(parentId) || SmartTemplate4.fileTemplates.getController(msgPopup);
+    
+    if (hasOpenFileItem) {
       menuitem = doc.createXULElement ? doc.createXULElement("menuitem") : doc.createElement("menuitem");
       menuTitle = util.getBundleString("st.fileTemplates.openFile");		
       menuitem.setAttribute("label", menuTitle);

@@ -1817,7 +1817,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates菜单现在在顶级水平列出了最近使用的外部模板操作。这取决于许可证级别。 [issue 263]{L2} {L1} 为写、回复和转发子菜单添加了快捷键。 {L2} {L1} 支持纯文本格式的剪贴板读取。{L2} {L1} 修复了{{%messageRaw()%}}变量。{L2}"
+    "message": "{L1} SmartTemplates菜单现在在顶级水平列出了最近使用的外部模板操作。这取决于许可证级别。 [issue 263]{L2} {L1} 为写、回复和转发子菜单添加了快捷键。 {L2} {L1} 支持纯文本格式的剪贴板读取。{L2} {L1} 修复了{{%messageRaw()%}}变量。{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
   },   
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
