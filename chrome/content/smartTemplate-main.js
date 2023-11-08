@@ -299,12 +299,25 @@ END LICENSE BLOCK
     # Add "settings" item to bottom of SmartTemplates thread tools menu
     # [issue 256] Fixed: account template not loaded when changing From address
 
-  Version 4.3 - WIP
+  Version 4.3.1 - 16/10/2023
     # [issue 263] List most recent external template actions on top level of SmartTemplates menus
     # [issue 262] Add accelerator keys for template menus (Write, Forward, Reply, Reply All and Reply to List)
     # [issue 264] Support reading %clipboard% with "text/plain" content 
     # [issue 265] Support <div type='cite'> for raising quote level in commands that have quote level parameters    
     # [issue 268] Make registration screen less tall / easily resizable
+
+  Version 4.3.2 - 23/10/2023
+    # [issue 269] Regression: Insert Snippet and Change template buttons were missing the menu item "Open template file..."
+  
+  Version 4.3.3 - WIP
+    # [issue 271] Sometimes the header menu is empty - patchHeaderPane() fails - 
+                  - increased default delay for patching message 
+                  - keeping a reference to local WindowListener in message window
+    # [issue 273] Loading accounts settings doesn't work
+    # [issue 272] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
+    #             or when clicking a mailto link on a website. This should load the template of the default account.
+
+
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -312,6 +325,7 @@ END LICENSE BLOCK
     # [issue ] 
     # [issue ] 
 
+    # [issue 253] recreate menus using API functions
     # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
 
     # [issue 150] Remove "Nag Screens" in Composer for unlicensed users
@@ -394,7 +408,6 @@ var SmartTemplate4 = {
     
     // check if a file template is active. we need to get the window from the originating event!
     let dbg = 'SmartTemplate4.notifyComposeBodyReady()',
-        stationeryTemplate = null,
         flags = this.PreprocessingFlags;
     this.initFlags(flags);
         
@@ -1080,6 +1093,11 @@ var SmartTemplate4 = {
 
   patchHeaderPane: function(doc, message_display_action_btn) {
     const PatchedBtnClass = "SmartTemplates_HeaderBtn"; // use this for styles & as flag for having been patched
+    const isDebug = SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus");
+    if (isDebug) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus",
+        "Patching Header Pane for document", doc);
+    }
     if (!doc) {
       doc = this.Util.documentMessageBrowser;
     }
@@ -1087,13 +1105,14 @@ var SmartTemplate4 = {
       message_display_action_btn = doc.querySelector("#smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton");
     }
     if (!message_display_action_btn) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Couldn't find message display action button. aborting patchHeaderPane()");
       return false; // button not found
     }
     if (message_display_action_btn.classList.contains(PatchedBtnClass)) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","Header button is already patched. aborting patchHeaderPane()", message_display_action_btn);
       return true; // already patched
     }
     // data-extensionid="smarttemplate4@thunderbird.extension"
-    message_display_action_btn.classList.add(PatchedBtnClass);
 
     var XHTML_Markup = 
     `<toolbarbutton id="${message_display_action_btn.id}">
@@ -1106,8 +1125,11 @@ var SmartTemplate4 = {
       </menupopup>
     </toolbarbutton>
     `; 
-    var WL = this.WLM || this.WL;
+    var WL = doc.ownerGlobal?.SmartTemplate4_WLM || this.WL;
+    SmartTemplate4.Util.logDebugOptional("fileTemplates.menus","window loader injecting...", {XHTML_Markup});
     WL.injectElements(XHTML_Markup);
+    message_display_action_btn.classList.add(PatchedBtnClass);
+
     let activePopup = message_display_action_btn.querySelector("menupopup[data-action-menu]");
     let newPopup = message_display_action_btn.querySelector("#SmartTemplates_HeaderMenu");
     let moveNodes = [];

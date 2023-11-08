@@ -20,29 +20,12 @@ async function onLoad(activatedWhileWindowOpen) {
       }
     }
 
-  window.SmartTemplate4.WLM = WL;
+  window.SmartTemplate4_WLM = WL; // keep a reference to the correct WindowListener. [issue 271]
+                                  // it can only patch stuff in its own window!
   const WAIT_FOR_3PANE = window.SmartTemplate4.Preferences.getMyIntPref("fileTemplates.menus.delayMessagePane");
   window.SmartTemplate4.Util.logDebug(`============INJECT==========\nst-messagePane.js onLoad(${activatedWhileWindowOpen})`);
 
   WL.injectCSS("chrome://smartTemplate4/content/skin/common/smartTemplate-toolButton.css");
-  
-  // special elements - only for Pro users!
-  /* deprecated. ¯\_(ツ)_/¯  Works in Betterbird
-  WL.injectElements(`
-  <hbox id="header-view-toolbar">
-    <toolbarbutton id="SmartTemplates-smartReply"
-                   class="statusbarpanel-iconic"
-                   label="Reply with Template"
-                   tooltiptext="Reply using an external Template"
-                   oncommand="window.SmartTemplate4.doCommand(this);"/>
-    <toolbarbutton id="SmartTemplates-smartForward"
-                   class="statusbarpanel-iconic"
-                   label="Forward with Template"
-                   tooltiptext="Forward using an external Template"
-                   oncommand="window.SmartTemplate4.doCommand(this);"/>
-  </hbox>
-  `);
-  */
 
   const HEADERBARID = "smarttemplate4_thunderbird_extension-messageDisplayAction-toolbarbutton";
   const contentDoc = window.document;
@@ -51,7 +34,7 @@ async function onLoad(activatedWhileWindowOpen) {
   if (headerButton) { // patch button
     window.setTimeout(
       (win = window) => {
-        win.SmartTemplate4.WLM = WL; // make a separate WindowListener instance for message pagen context.
+        win.SmartTemplate4_WLM = WL; // make a separate WindowListener instance for message pagen context.
         win.SmartTemplate4.Util.logDebug("Patching Header Pane...")
         let result = win.SmartTemplate4.patchHeaderPane(contentDoc, headerButton);
         if (!result) {
@@ -94,8 +77,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
   // closure both window and this WL!
   patchHeaderMenu = async (win = window) => {
-    win.SmartTemplate4.WLM = WL;
+    win.SmartTemplate4_WLM = WL;
     if (win.SmartTemplate4.patchHeaderPane.bind(win.SmartTemplate4)) {
+      // to do - recreate through API [issue 253]
       await win.SmartTemplate4.fileTemplates.initMenus(true, {toolbarType:"messageheader"});
     }
   } 

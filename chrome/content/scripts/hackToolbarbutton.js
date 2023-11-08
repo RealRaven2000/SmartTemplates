@@ -7,10 +7,14 @@ var hackToolbarbutton = {
       return (!menu.getAttribute('st4configured'));
     }    
     let thePopup = null;
+    let notFound = [];
     for (let item of menuStructure) {
       // 2 new (dummy) items: mru-smartTemplates-unified & mru-smartTemplates-header
       try {
         thePopup = this.getMenupopupElement(doc, item.id);
+        if (!thePopup) {
+          notFound.push(item);
+        }
         if (thePopup && needsConfig(thePopup)) {
           if (item.id.startsWith("mru-")) {
             SmartTemplate4.fileTemplates.configureMenu(
@@ -32,6 +36,10 @@ var hackToolbarbutton = {
         SmartTemplate4.Util.logException("updateMenuMRU()", ex);
       }
     } 
+    if (notFound.length) {
+      SmartTemplate4.Util.logDebugOptional("fileTemplates",
+        "Didn't find any of the following popup menus:", notFound);
+    }
     return thePopup; // just for testing. 
   }, 
 
