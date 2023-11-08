@@ -302,6 +302,7 @@ SmartTemplate4.getHeadersAsync = async function() {
   var args = null; // old way, parameters are passed as a string
   var headers;
   let gBodyFromArgs = false;
+  let composeType;
 
   if (window.arguments && window.arguments[0]) {
     try {
@@ -321,9 +322,15 @@ SmartTemplate4.getHeadersAsync = async function() {
       args = GetArgs(window.arguments[0]);
       return null;
     }
+    // nsIMsgComposeParams.idl
+    composeType = params.type;     
+  } else {
+    composeType = window.gComposeType; // [issue 272] when creating new email from taskbar icon
   }
-  // nsIMsgComposeParams.idl
-  let isNewMail = (params.type == Ci.nsIMsgCompType.New);
+
+  // issue 272 - also support clicking a mailto: link on a website!
+  let isNewMail = (composeType == Ci.nsIMsgCompType.New || composeType == Ci.nsIMsgCompType.MailToUrl);
+
   // gComposeType = params.type;
   let mimeMsg;
   if (!isNewMail) {
@@ -377,8 +384,7 @@ SmartTemplate4.getHeadersAsync = async function() {
     theMap.set("content", bodyContent);
     return theMap; 
   }
-  return ""; // new Map();
-	// return null; // ??
+  return ""; 
 }
 
 
