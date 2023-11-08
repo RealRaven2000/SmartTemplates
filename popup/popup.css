@@ -31,7 +31,8 @@ span.htmltag {
 #innerwrapper p,
 #innerwrapper ul,
 #innerwrapper li,
-#innerwrapper span {
+#innerwrapper span,
+#innerwrapper h3 {
   background-color: transparent;
 }
 
@@ -123,7 +124,7 @@ canvas[collapsed=true]
   background-color: rgba(0,0,0,0.9);
   color: white;
 }
-#changesList {
+#changesList, #whatsNewList {
   background-color: transparent;
 }
 
@@ -161,7 +162,7 @@ canvas[collapsed=true]
   margin-bottom: 1.2em;
 }
 
-#specialBox,
+.importantInfo,
 .announcement {
   border-radius: 6px;
   margin-left: -1em;
@@ -169,11 +170,19 @@ canvas[collapsed=true]
   padding: 0.1em 1em;
 }
 
-#specialBox h2,
-#newsSection h2  {
+.importantInfo h2,
+.importantInfo h3,
+#newsSection h2 {
   background: none !important;
-  margin-top: 16px;
   color: white;
+  margin-top: 16px;
+}
+
+/* in between heading in list */
+.importantInfo h3 {
+  margin-block: 13px;
+  font-size: 12pt;
+  font-weight: normal;
 }
 
 .specialOffer .bargainIcon {
@@ -226,8 +235,8 @@ code[param] {
 
 
 
-#specialBox #standardLicense,
-#specialBox .specialOffer {
+.importantInfo #standardLicense,
+.importantInfo .specialOffer {
   background: transparent !important;
 }
 

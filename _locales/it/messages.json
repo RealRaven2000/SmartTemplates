@@ -785,7 +785,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird (115.2.3). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ è ora compatibile con l'ultima versione di Thunderbird ($compatibleVer$). Ciò ha richiesto numerose modifiche sostanziali e la riscrittura di molte funzioni.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1730,7 +1730,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} I menu di SmartTemplates ora mostrano le ultime azioni di modelli esterni utilizzate a livello superiore. La quantità di queste azioni dipende dal livello di licenza. [issue 263]{L2} {L1} Aggiunte le scorciatoie per i sottomenu Scrivi, Rispondi e Inoltra. {L2} {L1} Supporto per la lettura dagli appunti in formato testo semplice.{L2} {L1} Corretta la variabile {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
+    "message": "{L1} I menu SmartTemplates ora mostrano le ultime azioni di modelli esterni utilizzate a livello superiore. Il numero di queste azioni dipende dal livello di licenza. [issue 263]{L2} {L1} Sono state aggiunte scorciatoie da tastiera per i sottomenu di scrivi, rispondi e inoltra. {L2} {L1} Supporto per la lettura dagli appunti in formato testo semplice.{L2} {L1} Corretta la variabile {{%messageRaw()%}}.{L2} {S1}Elementi di manutenzione nella versione 4.3.3{S2} {L1} Risolti problemi occasionali con la mancanza di voci di menu rispondi e inoltra nell'area dell'intestazione. [issue 271]{L2} {L1} Il caricamento delle impostazioni dell'account dalle impostazioni era rotto ed è stato corretto.{L2}{L1} SmartTemplates non caricava il modello predefinito quando si faceva clic con il pulsante destro del mouse sull'icona Thunderbird nella barra delle attività o su un collegamento 'mailto' su un sito web per scrivere una nuova email. [issue 272] {L2}"
   },   
   "whitespace_note": {
     "message": "Si noti che gli spazi bianchi possono essere meglio rappresentati come \\s perché possono contenere anche interruzioni di riga. Non è possibile utilizzare virgole e virgolette doppie."

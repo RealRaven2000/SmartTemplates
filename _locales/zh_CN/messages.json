@@ -848,11 +848,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird (115.2.3) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2} {P1}您可以在此处了解这项工作的当前进展：[issue 213]{P2}",
+    "message": "{P1}$addonName$ 现在与最新版本的 Thunderbird ($compatibleVer$) 兼容。 这需要进行大量实质性更改，并重写许多函数。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1817,8 +1820,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates菜单现在在顶级水平列出了最近使用的外部模板操作。这取决于许可证级别。 [issue 263]{L2} {L1} 为写、回复和转发子菜单添加了快捷键。 {L2} {L1} 支持纯文本格式的剪贴板读取。{L2} {L1} 修复了{{%messageRaw()%}}变量。{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },   
+    "message": "{L1} SmartTemplates菜单现在在顶层列出了最近使用的外部模板操作。这些操作的数量取决于许可证级别。 [issue 263]{L2} {L1} 为写、回复和转发子菜单添加了快捷键。 {L2} {L1} 支持以纯文本格式从剪贴板读取内容。{L2} {L1} 修复了{{%messageRaw()%}}变量。{L2} {S1}版本4.3.3中的维护项目{S2} {L1} 解决了标题区域按钮上偶尔出现回复和转发菜单项丢失的问题。 [issue 271]{L2} {L1} 从设置中加载帐户设置出现故障，已得到修复。{L2}{L1} 在点击Thunderbird任务栏图标或网站'mailto'链接以编写新电子邮件时，SmartTemplates没有加载默认模板。[issue 272] {L2}"
+  },     
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"
   },

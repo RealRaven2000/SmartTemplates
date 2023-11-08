@@ -107,8 +107,9 @@ async function updateActions(addonName) {
         }
         else {
           hide('news-license');
+          hide('newsSection');
           show('licenseExtended');
-	        hide('time-and-effort');
+	        // hide('time-and-effort');
 	        hide('purchaseHeader');
 	        hide('whyPurchase');
           hide('extendLicenseListItem');
@@ -136,15 +137,19 @@ async function updateActions(addonName) {
   }  
 
   let animation = document.getElementById('gimmick');
-  if (animation)
+  if (animation) {
     animation.parentNode.removeChild(animation);
+  }
   
   // resize to contents if necessary...
-  let win = await browser.windows.getCurrent(),
-      wrapper = document.getElementById('innerwrapper'),
+  window.sizeToContent();
+
+  let win = await browser.windows.getCurrent();
+  if (win) console.log(win);
+  let wrapper = document.getElementById('innerwrapper'),
       r = wrapper.getBoundingClientRect(),
       newHeight = Math.round(r.height) + 80,
-      maxHeight = window.screen.height;
+      maxHeight = window.screen.availHeight;
       
   if (newHeight>maxHeight) {
     newHeight = maxHeight-15;

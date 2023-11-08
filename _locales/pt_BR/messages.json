@@ -788,7 +788,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird (115.2.3). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
+    "message": "{P1}$addonName$ agora é compatível com a versão mais recente do Thunderbird ($compatibleVer$). Isso exigiu inúmeras mudanças substanciais e a reescrita de muitas funções.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1745,8 +1745,8 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Os menus do SmartTemplates agora exibem as últimas ações de modelos externos usadas no nível superior. A quantidade depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte à leitura da área de transferência no formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },  
+    "message": "{L1} Os menus do SmartTemplates agora listam as últimas ações de modelos externos usados no nível superior. A quantidade dessas ações depende do nível da licença. [issue 263]{L2} {L1} Foram adicionadas teclas de atalho para os submenus de escrever, responder e encaminhar. {L2} {L1} Suporte para leitura a partir da área de transferência em formato de texto simples.{L2} {L1} Corrigida a variável {{%messageRaw()%}}.{L2} {S1}Itens de Manutenção na versão 4.3.3{S2} {L1} Foram corrigidos problemas ocasionais com a falta de itens de menu de resposta e encaminhamento na área do cabeçalho. [issue 271]{L2} {L1} O carregamento de configurações de conta a partir das configurações estava quebrado e foi corrigido.{L2}{L1} O SmartTemplates não carregava o modelo padrão ao clicar com o botão direito no ícone do Thunderbird na barra de tarefas ou em um link 'mailto' em um site para escrever um novo e-mail. [issue 272] {L2}"
+  },   
   "whitespace_note": {
     "message": "Observe que o espaço em branco pode ser melhor representado como \\s, pois também pode conter quebras de linha. Vírgulas e caracteres de aspas duplas não podem ser usados."
   },

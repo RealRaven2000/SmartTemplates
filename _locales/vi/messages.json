@@ -274,8 +274,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Các menu SmartTemplates hiện tại liệt kê các hành động mẫu bên ngoài được sử dụng gần đây ở cấp độ cao nhất. Số lượng này phụ thuộc vào cấp độ giấy phép. [issue 263]{L2} {L1} Đã thêm phím tắt cho các tiêu đề con viết, trả lời và chuyển tiếp. {L2} {L1} Hỗ trợ đọc từ clipboard trong định dạng văn bản thuần.{L2} {L1} Sửa biến {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },  
+    "message": "{L1} Menu SmartTemplates hiện đã hiển thị các hành động mẫu ngoại vi đã sử dụng gần đây ở cấp độ hàng đầu. Số lượng các hành động này phụ thuộc vào cấp độ cấp phép. [issue 263]{L2} {L1} Đã thêm phím tắt cho các submenu viết, trả lời và chuyển tiếp. {L2} {L1} Hỗ trợ đọc từ clipboard trong định dạng văn bản thuần túy.{L2} {L1} Biến {{%messageRaw()%}} đã được sửa.{L2} {S1}Các mục bảo dưỡng trong phiên bản 4.3.3{S2} {L1} Sửa các vấn đề đôi khi mất các mục menu trả lời và chuyển tiếp trong khu vực tiêu đề. [issue 271]{L2} {L1} Việc tải cài đặt tài khoản từ cài đặt đã bị lỗi và đã được sửa.{L2}{L1} SmartTemplates không tải mẫu mặc định khi nhấp chuột phải vào biểu tượng Thunderbird trên thanh tác vụ hoặc trên liên kết 'mailto' trên trang web để viết email mới. [issue 272] {L2}"
+  },    
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

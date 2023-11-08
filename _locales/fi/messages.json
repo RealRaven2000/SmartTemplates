@@ -848,11 +848,14 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version (115.2.3) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 213]{P2}",
+    "message": "{P1}$addonName$ on nyt yhteensopiva Thunderbirdin uusimman version ($compatibleVer$) kanssa. Tämä vaati lukuisia merkittäviä muutoksia ja monien toimintojen uudelleenkirjoittamista.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1826,8 +1829,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-valikot näyttävät nyt viimeksi käytettyjen ulkoisten mallien toiminnot ylintasolla. Näiden määrä riippuu lisenssitasosta. [issue 263]{L2} {L1} Lisätty kiihdytinäppäimet kirjoita-, vastaa- ja lähetä-alaotsikoille. {L2} {L1} Tukee leikkausvälineen lukemista pelkässä tekstimuodossa.{L2} {L1} Korjattu {{%messageRaw()%}} muuttuja.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },   
+    "message": "{L1} SmartTemplates-valikot näyttävät nyt viimeksi käytetyt ulkoiset mallitoiminnot ylin tasolla. Näiden määrä riippuu lisenssitasosta. [issue 263]{L2} {L1} Lisätty pikanäppäimet kirjoita-, vastaa- ja lähetä-ali-valikoille. {L2} {L1} Tuki leiketiedoston lukemiseen muotoilemattomana tekstinä.{L2} {L1} Korjattu muuttuja {{%messageRaw()%}}.{L2}{S1}Ylläpitokohteet versiossa 4.3.3{S2} {L1} Korjattu satunnaiset ongelmat, joissa vastaa- ja lähetä-valikot puuttuivat otsikkoalueen painikkeelta. [issue 271]{L2} {L1} Tilin asetusten lataaminen asetuksista oli rikki ja on korjattu.{L2}{L1} SmartTemplates ei ladannut oletusmallia napsautettaessa hiiren oikealla painikkeella Thunderbird-kuvaketta tehtäväpalkissa tai verkkosivun 'mailto'-linkkiä kirjoittaakseen uuden sähköpostin. [issue 272] {L2}"
+  },    
   "whitespace_note": {
     "message": "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \\s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää."
   },

@@ -848,7 +848,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}La majoria he completat la conversió de $addonName$ per a la nova interfície d'usuari del Thunderbird SuperNova. A partir d'ara, podeu actualitzar Thunderbird a la nova versió 115.{P2} {P1}Per obtenir més detalls i donar comentaris sobre els canvis i el treball en curs, llegiu: [issue 213]{P2}",
+    "message": "{P1}La majoria he completat la conversió de $addonName$ per a la nova interfície d'usuari del Thunderbird SuperNova ($compatibleVer$). A partir d'ara, podeu actualitzar Thunderbird a la nova versió 115.{P2} {P1}Per obtenir més detalls i donar comentaris sobre els canvis i el treball en curs, llegiu: [issue 213]{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1814,8 +1814,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Les opcions de SmartTemplates ara llisten les darreres accions de plantilles externes utilitzades a nivell superior. La quantitat d'aquestes dependrà del nivell de la llicència. [issue 263]{L2} {L1} S'han afegit tecles d'acceleració per als submenús d'escriure, respondre i reenviar. {L2} {L1} S'admet la lectura del porta-retalls en format de text pla. {L2} {L1} S'ha corregit la variable {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },
+    "message": "{L1} Menús de SmartTemplates ahora muestran las últimas acciones de plantillas externas utilizadas en el nivel superior. La cantidad de estas acciones depende del nivel de licencia. [issue 263]{L2} {L1} Se han agregado teclas de acceso rápido para los submenús de escribir, responder y reenviar. {L2} {L1} Soporte para lectura desde el portapapeles en formato de texto sin formato.{L2} {L1} Se ha corregido la variable {{%messageRaw()%}}.{L2}{S1}Elementos de mantenimiento en la versión 4.3.3{S2} {L1} Se han solucionado problemas ocasionales con la falta de elementos de menú de respuesta y reenvío en el área de la cabecera. [issue 271]{L2} {L1} La carga de la configuración de la cuenta desde la configuración estaba rota y se ha corregido.{L2}{L1} SmartTemplates no cargaba la plantilla por defecto al hacer clic con el botón derecho en el icono de Thunderbird en la barra de tareas o en un enlace 'mailto' de un sitio web para escribir un nuevo correo electrónico. [issue 272] {L2}"
+  },  
   "whitespace_note": {
     "message": "Tingueu en compte que els espais en blanc es poden representar millor com \\s perquè també poden contenir salts de línia. No es poden utilitzar comes ni cometes dobles."
   },

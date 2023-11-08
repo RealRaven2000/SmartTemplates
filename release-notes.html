@@ -3,37 +3,25 @@
 
 The full change log with screen shots <a href="https://smarttemplates.quickfolders.org/version.html#4.3">can be found here</a>
 
-<b>Enhancements / Changes</b>
-<ul>
-  <li> Added accelerator keys for template menus (Write, Forward, Reply, Reply All and Reply to List) <a href="https://github.com/RealRaven2000/SmartTemplates/issues/262">[issue 262] </a>
-  </li>
-  <li> List most recently used [MRU] external template actions on top level of SmartTemplates menus. These will show for reply and forward on top level the SmartTemplates header menu and for write actions on the main toolbar menu. It will prevent a lot of additional menu selection when creating a larger number of templates during a mail campaign. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/263">[issue 263] </a>  
-  
-  
-  The main button lists the most recent templates used to write new emails. The button over the email preview displays the templates used to reply and forward mails.
-
-  The number of items for each of these menus depends on the license level. 
-  SmartTemplates "Free" displays the last 3 items used. 
-  SmartTemplates Standard displayes the last 5 items used, and remembers these on restart of Thunderbird. 
-  SmartTemplates Pro displays the last 10 items, but the maximum amount can be configured in the configuration setting <tt>extensions.smartTemplate4.fileTemplates.mru.max</tt>. I will provide a user interface for adjusting the maximum number in a future version.
-  </li>
-  <li> Support reading  `%clipboard%` with "text/plain" content  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/264">[issue 264] </a> </li>
-  <li> Support `&lt;div type='cite'&gt;` for raising quote level in  commands that have quote level parameters. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/265">[issue 265] </a> </li>
-  <li> Made registration screen less tall, to support smaller screens / display scaling. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/268">[issue 268] </a></li>
-</ul>
-
-<b>Bugs Fixed</b>
-<ul>
-  <li> Fixed `%messageRaw()%` function. </li>
-  <li> [For Geeks only!]
-
-Fixed template scripting (JavaScript) - thanks to Benito van Zander for providing the patch code. All replacement functions (variables used in scripts) are now asynchronous, so if you are using script in a template, variables such as "subject" will return a  promise and need to be converted to content using "await". <a href="https://github.com/RealRaven2000/SmartTemplates/issues/266">[issue 266]</a></li>
-</ul>
-
-<b>Maintenance fix 4.3.2</b>
+<b>Maintenance Version 4.3.3</b>
 <ul>
 <li>
-  Regression: <i>Insert Snippet</i> and <i>Change template</i> buttons are missing the menu item <i>"Open template file..."</i>
-  <a href="https://github.com/RealRaven2000/SmartTemplates/issues/269">[issue 269] </a>
+  Fixed loading account settings from settings window. <a href="https://github.com/RealRaven2000/SmartTemplates/issues/273">[issue 273]</a>
 </li>
+<li>
+  Fixed: SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu or when clicking a mailto link on a website. This now loads the template of the default identity as expected.<a href="https://github.com/RealRaven2000/SmartTemplates/issues/272">[issue 272]</a>
+</li>
+<li> Added support for 120.* beta versions </li>
 </ul>
+
+
+<b>Work in Progress</b>
+<ul>
+  <li> 
+    Sometimes the header menu is empty (missing the reply / forward submenus) 
+    To alleviate the problem for now, I increased the delay for patching message 
+    an also keeping a reference to local WindowListener in message window. There will be a complete fix 
+    forthcoming very soon. See <a href="https://github.com/RealRaven2000/SmartTemplates/issues/271">[issue 271]</a> 
+  </li>
+</ul>
+

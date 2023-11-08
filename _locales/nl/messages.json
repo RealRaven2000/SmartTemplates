@@ -806,11 +806,14 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird (115.2.3). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2} {P1}Je kunt de huidige voortgang van dit werk hier lezen: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is nu compatibel met de nieuwste versie van Thunderbird ($compatibleVer$). Dit vereiste talloze substantiële veranderingen en het herschrijven van veel functies.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1766,8 +1769,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-menu's tonen nu de laatst gebruikte externe sjabloonacties op het hoogste niveau. Het aantal hangt af van het licentieniveau. [issue 263]{L2} {L1} Sneltoetsen toegevoegd voor de schrijf-, antwoord- en doorstuursubmenu's. {L2} {L1} Ondersteuning voor lezen vanuit het klembord in platte tekstindeling.{L2} {L1} De {{%messageRaw()%}} variabele is gecorrigeerd.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },   
+    "message": "{L1} SmartTemplates-menu's geven nu de laatst gebruikte externe sjabloonacties weer op het hoogste niveau. Het aantal van deze acties is afhankelijk van het licentieniveau. [issue 263]{L2} {L1} Sneltoetsen zijn toegevoegd voor de schrijf-, antwoord- en doorstuursubmenu's. {L2} {L1} Ondersteuning voor lezen vanuit het klembord in platte tekstformaat.{L2} {L1} De variabele {{%messageRaw()%}} is hersteld.{L2} {S1}Onderhoudsitems in versie 4.3.3{S2} {L1} Incidentele problemen met ontbrekende antwoord- en doorstuurmenu-items in het koptekstgebied zijn opgelost. [issue 271]{L2} {L1} Het laden van accountinstellingen vanuit de instellingen was kapot en is hersteld.{L2}{L1} SmartTemplates laadde het standaardsjabloon niet wanneer er met de rechtermuisknop werd geklikt op het Thunderbird-taakbalkpictogram of op een website 'mailto'-koppeling om een nieuwe e-mail te schrijven. [issue 272] {L2}"
+  },     
   "whitespace_note": {
     "message": "Houd er rekening mee dat witruimte het beste kan worden vertegenwoordigd als \\s, omdat hierin ook regelafbrekingen kunnen voorkomen. Komma’s en dubbele aanhalingstekens mogen niet worden gebruikt."
   },

@@ -864,11 +864,14 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird (115.2.3). This required numerous substantial changes, and rewriting of many functions.{P2} {P1}You can read up on the current progress of this work here: [issue 213]{P2}",
+    "message": "{P1}$addonName$ is now compatible with the latest version of Thunderbird ($compatibleVer$). This required numerous substantial changes, and rewriting of many functions.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1863,7 +1866,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates menus now list the last used external template actions at top level. The amount of these depends on license level. [issue 263]{L2} {L1} Added accelerator keys for write, reply and forward submenus. {L2} {L1} Support reading from clipboard in plain/text format.{L2} {L1} Fixed the {{%messageRaw()%}} variable.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
+    "message": "{L1} SmartTemplates menus now list the last used external template actions at top level. The amount of these depends on license level. [issue 263]{L2} {L1} Added accelerator keys for write, reply and forward submenus. {L2} {L1} Support reading from clipboard in plain/text format.{L2} {L1} Fixed the {{%messageRaw()%}} variable.{L2}{S1}Maintenance Items in version 4.3.3{S2} {L1} We fixed occasional problems with reply and forward menu items missing on header area button. [issue 271]{L2} {L1} Loading account settings from settings was broken and has been fixed.{L2}{L1} SmartTemplates didn't load the default template when right-clicking on the Thunderbird taskbar icon or on a website 'mailto' link to write a new email. [issue 272] {L2}"
   },
   "whitespace_note": {
     "message": "Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used."

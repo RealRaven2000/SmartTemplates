@@ -845,11 +845,14 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird (115.2.3) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2} {P1}您可以在此處了解這項工作的當前進展：[issue 213]{P2} ",
+    "message": "{P1}$addonName$ 現在與最新版本的 Thunderbird ($compatibleVer$) 兼容。 這需要進行大量實質性更改，並重寫許多函數。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1793,8 +1796,8 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates菜單現在在頂級水平列出了最近使用的外部模板操作。這取決於許可證級別。 [issue 263]{L2} {L1} 為寫、回覆和轉發子菜單添加了快速鍵。 {L2} {L1} 支持純文本格式的剪貼板讀取。{L2} {L1} 修復了{{%messageRaw()%}}變量。{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },    
+    "message": "{L1} SmartTemplates菜單現在在頂層列出了最近使用的外部模板操作。這些操作的數量取決於許可證級別。[issue 263]{L2} {L1} 為寫、回覆和轉寄子菜單新增了快速鍵。{L2} {L1} 支援以純文本格式從剪貼板讀取內容。{L2} {L1} 修復了{{%messageRaw()%}}變數。{L2} {S1}版本4.3.3中的維護項目{S2} {L1} 解決了標題區域按鈕上偶爾遺失回覆和轉寄菜單項的問題。[issue 271]{L2} {L1} 從設定中載入帳戶設定出現故障，已得到修復。{L2}{L1} 在點擊Thunderbird工作列圖標或網站'mailto'連結以編寫新電子郵件時，SmartTemplates未載入預設模板。[issue 272] {L2}"
+  },   
   "whitespace_note": {
     "message": "請注意，空格可以最好地表示為 \\s，因為它也可以包含換行符。 不能使用逗號和雙引號字符。"
   },

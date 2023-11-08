@@ -28,7 +28,8 @@ function logReceptionError(x) {
 }
 
 // Helper function to walk through a menu data structure and create WebExtension
-// menu entries.
+// menu entries. 
+// TO DO: use this to recreate SmartTemplates header menus from the back-end [issue 253]
 async function addMenuEntries(entries, parentId) {
   for (let entry of entries) {
     let config = {
@@ -293,6 +294,7 @@ async function main() {
 
       case "patchHeaderMenu":
         // Broadcast about:messenger to run patch / refresh Header Menus
+        // To do rewrite with api [issue 253]
         messenger.NotifyTools.notifyExperiment({event: "patchHeaderMenu"});
         break;
         

@@ -848,11 +848,14 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird (115.2.3). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 213]{P2}",
+    "message": "{P1}$addonName$ är nu kompatibel med den senaste versionen av Thunderbird ($compatibleVer$). Detta krävde många betydande förändringar och omskrivning av många funktioner.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1838,8 +1841,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} SmartTemplates-menyer visar nu de senast använda externa mallåtgärderna på översta nivån. Antalet beror på licensnivån. [issue 263]{L2} {L1} Snabbtangenter har lagts till för undermenyerna Skriv, Svara och Vidarebefordra. {L2} {L1} Stöd för att läsa från urklipp i ren textformat.{L2} {L1} Korrigering av variabeln {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
-  },    
+    "message": "{L1} SmartTemplates-menyer visar nu de senast använda externa mallåtgärderna på toppnivån. Antalet av dessa beror på licensnivån. [issue 263]{L2} {L1} Genvägar har lagts till för skriv, svara och vidare undermenyer. {L2} {L1} Stöd för att läsa från urklipp i ren textformat.{L2} {L1} Variabeln {{%messageRaw()%}} har åtgärdats.{L2} {S1}Underhållsobjekt i version 4.3.3{S2} {L1} Åtgärdat sporadiska problem med saknade svar- och vidaremål-menyobjekt i huvudområdet. [issue 271]{L2} {L1} Inläsning av kontoinställningar från inställningar var trasig och har åtgärdats.{L2}{L1} SmartTemplates laddade inte standardmallen när högerklickades på Thunderbird-ikonen i aktivitetsfältet eller på en 'mailto'-länk på en webbplats för att skriva ett nytt e-postmeddelande. [issue 272] {L2}"
+  },     
   "whitespace_note": {
     "message": "Observera att whitespace bäst kan representeras som '\\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas."
   },

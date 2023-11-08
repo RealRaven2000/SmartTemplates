@@ -797,11 +797,14 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird (115.2.3). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2} {P1}Tukaj lahko preberete o trenutnem napredku tega dela: [številka 213]{P2}",
+    "message": "{P1}$addonName$ je zdaj združljiv z najnovejšo različico Thunderbird ($compatibleVer$). To je zahtevalo številne bistvene spremembe in ponovno pisanje številnih funkcij.{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "SmartTemplates"
+      },
+      "compatibleVer": {
+        "content": "$2"
       }
     }
   },
@@ -1724,7 +1727,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Meniji SmartTemplates zdaj prikazujejo zadnje uporabljene zunanje predloge dejanj na vrhnji ravni. Količina teh je odvisna od ravni licence. [issue 263]{L2} {L1} Dodane so bližnjice za podmeni Piši, Odgovori in Posreduj. {L2} {L1} Podpora za branje iz odložišča v obliki čistega besedila.{L2} {L1} Popravljena je spremenljivka {{%messageRaw()%}}.{L2}{L1}v4.3.2 - fixed 'Open template file' item in Composer [issue 269]{L2}"
+    "message": "{L1} Meniji SmartTemplates zdaj prikazujejo zadnje uporabljene zunanje akcije predlog na vrhnji ravni. Količina teh akcij je odvisna od ravni licence. [issue 263]{L2} {L1} Dodane so bližnjice za podmenije za pisanje, odgovor in posredovanje. {L2} {L1} Podpora za branje iz odložišča v obliki čistega besedila.{L2} {L1} Popravljena je spremenljivka {{%messageRaw()%}}.{L2} {S1}Vzdrževalni predmeti v različici 4.3.3{S2} {L1} Popravljene so bile občasne težave z manjkajočimi elementi menija za odgovarjanje in posredovanje na območju glave. [issue 271]{L2} {L1} Nalaganje nastavitev računa iz nastavitev je bilo pokvarjeno in je bilo popravljeno.{L2}{L1} SmartTemplates niso naložile privzetega predloga ob desnim kliku na ikono Thunderbird na opravilni vrstici ali na povezavo 'mailto' na spletni strani za pisanje novega e-poštnega sporočila. [issue 272] {L2}"
   },   
   "whitespace_note": {
     "message": "Upoštevajte, da je beli prostor lahko najbolje predstaviti kot \\s, ker lahko vsebuje tudi prelome vrstic. Vejice in znakov z dvojnim citiranjem ni mogoče uporabiti."
