@@ -247,13 +247,14 @@ permalink: version.html
   <a id="4.3"> &nbsp; </a>
   <a id="4.3.1"> &nbsp; </a>
   <a id="4.3.2"> &nbsp; </a>
+  <a id="4.3.3"> &nbsp; </a>
   <li>
     <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/324497/versions/4.3.2">
-        Version 4.3.2 - 23/10/2023</a>
+        Version 4.3.3 - 08/11/2023</a>
       <br>
       <span class="appWrapper">
-        <span class="thunderbird">111.0 - 119.*</span>
+        <span class="thunderbird">111.0 - 120.*</span>
       </span>
     </h4>
 
@@ -387,6 +388,26 @@ permalink: version.html
 
 
     <ul>
+      <h5 class="inList"><span class="inListTitle">Maintenance Release - 4.3.3</span></h5>
+      <li>
+        Fixed loading account settings from settings window. 
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/273">[issue 273]</a>
+      </li>
+      <li>
+        Fixed: SmartTemplates ignored when creating an email from the Thunderbird taskbar 
+        context menu or when clicking a mailto link on a website. This now loads the 
+        template of the default identity as expected.
+        <a href="https://github.com/RealRaven2000/SmartTemplates/issues/272">[issue 272]</a>
+      </li>
+      <li> Added support for 120.* beta versions </li>
+      <li> Added longer delay to patching header pane dropdown menu.</li>
+      <li> 
+        Sometimes the header menu is empty (missing the reply / forward submenus) 
+        To alleviate the problem for now, I increased the delay for patching message 
+        an also keeping a reference to local WindowListener in message window. There will be a complete fix 
+        forthcoming very soon. See <a href="https://github.com/RealRaven2000/SmartTemplates/issues/271">[issue 271]</a> 
+      </li>
+
       <h5 class="inList"><span class="inListTitle">Enhancements</span></h5>
       <li>
         Added accelerator keys for template menus (Write, Forward, Reply, Reply All and Reply to List)
@@ -457,7 +478,7 @@ permalink: version.html
         </p>
       </li>
 
-      <h5 class="inList"><span class="inListTitle">Known Issues</span></h5>
+      <h5 class="inList"><span class="inListTitle">Fixed in 4.3.2 - 23/10/2023</span></h5>
       <li>
         Regression: <i>Insert Snippet</i> and <i>Change template</i> buttons are missing 
         the menu item <i>"Open template file..."</i>
