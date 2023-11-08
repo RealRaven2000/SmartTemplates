@@ -607,7 +607,7 @@ SmartTemplate4.Settings = {
       SmartTemplate4.Settings.loadTemplatesFrame();
 	} ,
 	
-	loadTemplatesFrame: function loadTemplatesFrame() {
+	loadTemplatesFrame: function() {
     const url = "https://smarttemplates.quickfolders.org/templates.html";
     // deferred loading of templates content
     let templatesIFrame = document.getElementById("templatesIFrame");
@@ -1010,7 +1010,7 @@ SmartTemplate4.Settings = {
 		
 	} ,
 
-	openAdvanced: function openAdvanced() {
+	openAdvanced: function() {
 		const prefs = SmartTemplate4.Preferences;
 		let advancedContainer = document.getElementById('advancedContainer');
 		advancedContainer.hidden = false;
@@ -1027,7 +1027,7 @@ SmartTemplate4.Settings = {
 		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
 	} ,
 
-	closeAdvanced: function closeAdvanced() {
+	closeAdvanced: function() {
 		const prefs = SmartTemplate4.Preferences;
 		let advancedContainer = document.getElementById('advancedContainer'),
 		    wid = advancedContainer.scrollWidth;
@@ -1319,7 +1319,7 @@ SmartTemplate4.Settings = {
       return menuEntry;
   },
   
-  fileAccountSettings: function fileAccountSettings(mode, jsonData, fname) {
+  fileAccountSettings: function(mode, jsonData, fname) {
     // readData: this function does the actual work of interpreting the read data
     // and setting the UI values of currently selected deck accordingly:
     function readData(data) {
@@ -1344,7 +1344,7 @@ SmartTemplate4.Settings = {
 					el.dispatchEvent(evt);
 				}
       }
-      let settings = JSON.parse(data);
+      let settings = data;
       // jsonData = the key
       // every identifier ends with id#; we need to replace the number with the current key!
       // or match the string up to .id!
@@ -1427,7 +1427,7 @@ SmartTemplate4.Settings = {
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           switch (mode) {
             case 'load':
-              let promiseRead = IOUtils.read(path, { encoding: "utf-8" }); //  returns Uint8Array
+              let promiseRead = IOUtils.readJSON(path, { encoding: "utf-8" }); //  returns Uint8Array
               promiseRead.then(
                 function readSuccess(data) {
                   readData(data);
@@ -1499,7 +1499,7 @@ SmartTemplate4.Settings = {
   } ,
   
   // load a Template file (not this module!)
-  load: async function load() {
+  load: async function() {
 		const util = SmartTemplate4.Util;
     
     
