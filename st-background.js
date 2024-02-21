@@ -54,6 +54,118 @@ async function addMenuEntries(entries, parentId) {
   }
 }
 
+
+
+// example on building reply menus
+function get_XML_replyMenus() {
+  return `
+    <menu label="__MSG_pref_rsp.tab__" id="smartTemplates-reply-menu" class="menu-iconic" controller="cmd_reply" accesskey="__MSG_st.menuaccess.reply__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+    <menu label="__MSG_st.menu.replyAll__" id="smartTemplates-reply-all-menu" class="menu-iconic" controller="cmd_replyall" accesskey="__MSG_st.menuaccess.replyAll__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-all-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-all-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+    <menu label="__MSG_st.menu.replyList__" id="smartTemplates-reply-list-menu" class="menu-iconic" controller="cmd_replylist" accesskey="__MSG_st.menuaccess.replyList__">
+      <menupopup>
+        <menuitem id="smartTemplates-reply-list-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-rsp st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+        <menuitem id="smartTemplates-reply-list-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+      </menupopup>
+    </menu>
+  `;
+}
+function get_XML_forwardMenus() {
+  return `
+          <menu label="__MSG_pref_fwd.tab__" id="smartTemplates-forward-menu" class="menu-iconic" controller="cmd_forward"  accesskey="__MSG_st.menuaccess.forward__">
+            <menupopup>
+              <menuitem id="smartTemplates-forward-last" label="__MSG_st.menu.template.last__" class="menuitem-iconic st-last-fwd st-mru" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+              <menuitem id="smartTemplates-forward-default" label="__MSG_st.menu.template.default__" class="menuitem-iconic" oncommand="window.SmartTemplate4.doCommand(this);"  onclick="event.stopPropagation();"/>
+            </menupopup>
+          </menu>
+  `;
+}
+
+const replyMenus = [
+  { type:"menu", id:"smartTemplates-reply-menu", classList:"menu-iconic", 
+    label:"pref_rsp.tab", accesskey:"st.menuaccess.reply",
+    controller:"cmd_reply", 
+    popupItems: [
+      { id:"smartTemplates-reply-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+  { type:"menu", id:"smartTemplates-reply-all-menu", classList:"menu-iconic", 
+    label:"st.menu.replyAll", accesskey:"st.menuaccess.replyAll",
+    controller:"cmd_replyall", 
+    popupItems: [
+      { id:"smartTemplates-reply-all-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-all-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+  { type:"menu", id:"smartTemplates-reply-list-menu", classList:"menu-iconic", 
+    label:"st.menu.replyList", accesskey:"st.menuaccess.replyList",
+    controller:"cmd_replylist", 
+    popupItems: [
+      { id:"smartTemplates-reply-list-last", label:"st.menu.template.last", classList:"menuitem-iconic st-last-rsp st-mru" },
+      { id:"smartTemplates-reply-list-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }, 
+];
+
+const forwardMenus = [
+  { type:"menu", id:"smartTemplates-forward-menu", classList:"menu-iconic", 
+    label:"pref_fwd.tab", accesskey:"st.menuaccess.forward",
+    controller:"cmd_reply", 
+    popupItems: [
+      { id:"smartTemplates-forward-last", label:"st.menu.template.last", classList:"menuitem-iconicst-last-fwd st-mruu" },
+      { id:"smartTemplates-forward-default", label:"st.menu.template.default", classList:"menuitem-iconic" }
+    ]
+  }  
+];
+
+
+
+async function createHeaderMenu() {
+  let isDebug =  await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug.headerPane"); 
+  let menuProps = {
+    contexts: ["message_display_action"],
+    onclick: async (event) => {    
+      if (isDebug) { console.log("SmartTemplates header context menu", event); }
+      // const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
+
+      // determine email of email(s) shown in preview pane:
+      // const selectedMail = event?.selectedMail || null;
+
+      messenger.NotifyTools.notifyExperiment( 
+        { 
+          event: "checkMailAction", 
+          detail: { 
+            commandItem: menuItem, 
+            selectedMail: event?.selectedMail
+          } 
+        } 
+      );
+    },
+    icons: { // list-style-image: var(--icon-reply);
+      "16": "chrome://messenger/skin/icons/new/compact/reply.svg"
+    } ,
+    enabled: true,
+    id: "smartTemplates-reply-menu",
+    title: messenger.i18n.getMessage("pref_rsp.tab")
+  } 
+  // how to retrieve a css variable (according to Arndt)
+  // getComputedStyle(document.documentElement).getPropertyValue('--icon-reply')
+  // getComputedStyle(document.documentElement).setProperty('--icon-reply', 'whatever-value')
+  let idToggle = await messenger.menus.create(menuProps); // id of menu item
+}
+
+ 
+
   messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
     let isDebug = await messenger.LegacyPrefs.getPref("extensions.smartTemplate4.debug");
     // Wait until the main startup routine has finished!
@@ -412,7 +524,7 @@ async function main() {
 
   
   ); 
-   
+
   // content smarttemplate4-locales locale/
   // we still need this for explicitely setting locale for Calender localization!
   messenger.WindowListener.registerChromeUrl([ 

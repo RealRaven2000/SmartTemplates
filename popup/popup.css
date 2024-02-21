@@ -278,10 +278,6 @@ body p, body li {
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-/*
-  https://designshack.net/articles/css/inner-shadows-in-css-images-text-and-beyond/
-*/
-
 
 h1, h2, h3, h4 {
   /* color: #1a566d; */
@@ -290,16 +286,7 @@ h1, h2, h3, h4 {
   color: rgba(20,30,50,0.6);
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  font-weight: bold;
-  
-/*       
-  
-  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
-  -webkit-background-clip: text;
-     -moz-background-clip: text;
-          background-clip: text;
-          */
-          
+  font-weight: bold;     
 }
 
 h1 {
