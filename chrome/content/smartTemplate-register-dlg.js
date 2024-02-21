@@ -250,13 +250,22 @@ var Register = {
     }
           
     // iterate accounts
+    const isAllowAlias = SmartTemplate4.Preferences.getMyBoolPref("licenser.forceSecondaryIdentity"); 
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
         myAccounts = util.Accounts,
-        acCount = myAccounts.length;
+        acCount = myAccounts.length,
+        aliasIdentity = null;
+
     util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')…');
     for (let a=0; a < myAccounts.length; a++) { 
       let ac = myAccounts[a];
+      if (isAllowAlias && !aliasIdentity) {
+        let aliasIdentity = ac.identities.find(id => id.email == SmartTemplate4.Util.licenseInfo.email);
+        if (aliasIdentity && (aliasIdentity != ac.defaultIdentity)) {
+          appendIdentity(popup, aliasIdentity, ac);
+        }
+      }
       if (ac.defaultIdentity) {
         util.logDebugOptional('identities', ac.key + ': appending default identity…');
         appendIdentity(popup, ac.defaultIdentity, ac);
@@ -267,9 +276,8 @@ var Register = {
         let idCount = ids ? ids.length : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
         for (let i=0; i<idCount; i++) {
-          // use ac.defaultIdentity ?
           // populate the dropdown with nsIMsgIdentity details
-          let id = util.getIdentityByIndex(ids, i);
+          let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
           if (!id) continue;
           appendIdentity(popup, id, ac);
         }
