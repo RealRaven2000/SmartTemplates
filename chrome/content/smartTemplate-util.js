@@ -1447,22 +1447,6 @@ SmartTemplate4.Util = {
 				null,
 				params).focus();
 	}	,
-		
-  // safe wrapper to get member from account.identities array
-  getIdentityByIndex: function getIdentityByIndex(ids, index) {
-    const Ci = Components.interfaces;
-    if (!ids) return null;
-    try {
-      // replace queryElementAt with array[index].QueryInterface!
-      if (ids[index])
-        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
-      return null;
-    }
-    catch(ex) {
-      SmartTemplate4.Util.logDebug('Exception in getIdentityByIndex(ids,' + index + ') \n' + ex.toString());
-    }
-    return null;
-  } ,	
 	
 	// HTML only:
 	// headers that are currently not defined may be filled later.
@@ -1488,10 +1472,12 @@ SmartTemplate4.Util = {
 		let parensPos = field.indexOf('('),
 		    generalFunction = (parensPos==-1) ? field : field.substr(0,parensPos);	
 
+	  // instead of using title (which generates a "normal" html thumbnail)
+		// let's use a new attribute st4title + CSS
 		let tag = "<smarttemplate" +
 					 " hdr='" + generalFunction + "'" +
 					 " st4variable='" + field + "'" +
-					 " title='" + field + "'" +
+					 " st4title='" + field + "'" +
 					 newComposeClass + 
 					 ">" + defaultValue + "</smarttemplate>";
 					 
