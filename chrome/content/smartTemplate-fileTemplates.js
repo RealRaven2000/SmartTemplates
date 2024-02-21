@@ -416,16 +416,6 @@ SmartTemplate4.fileTemplates = {
   },
 	
 	// =====================   FILES   ===================== //	
-	
-  getLocalFile: function getLocalFile() {
-    // get the "menuOnTop.json" file in the profile/extensions directory
-    let path = new Array("extensions", "smartTemplates.json");
-    // http://dxr.mozilla.org/comm-central/source/mozilla/toolkit/modules/FileUtils.jsm?from=FileUtils.jsm&case=true#41
-		
-		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
-		
-		return FileUtils.getFile("ProfD", path); // implements nsIFile
-  } ,	
   	
   readStringFile: async function() {
     let profileDir = PathUtils.profileDir,
@@ -1288,7 +1278,7 @@ SmartTemplate4.fileTemplates = {
       (e.cmd == entry.cmd ||
        e.command == entry.command));
     if (!entry) return false;
-    if (!entry.command) debugger;
+    
     if (el) {
       let idx = SmartTemplate4.fileTemplates.MRU_Entries.indexOf(el);
       if (idx==0) {

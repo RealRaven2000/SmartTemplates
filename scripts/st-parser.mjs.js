@@ -1982,45 +1982,34 @@ export class Parser {
         Util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
           "\n flags.isFileTemplate = " + flags.isFileTemplate +
           "\n template path = " + currentPath || '?');
-        let pathArray = path.includes("\\") ? path.split("\\") :  path.split("/");
-        if (isFU) {
-          // if (await Preferences.isDebugOption("fileTemplates")) debugger;
-          try {
-            // on Mac systems nsIDirectoryService key may NOT be empty!
-            // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-            if (!FileUtils.getFile("Home", pathArray, false)) {
-              Util.logDebug("Cannot find file. Trying to append to path of template.");
-            }
+        // if (await Preferences.isDebugOption("fileTemplates")) debugger;
+        try {
+          // on Mac systems nsIDirectoryService key may NOT be empty!
+          // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
+          if (!await IOUtils.exists(newPath)) { 
+            Util.logDebug("Cannot find file. Trying to append to path of template.");
           }
-          catch (ex) {
-            // new code for path of template - failed on Rob's Mac as unknown.
-            // I think this is only set when a template is opened from the submenus!
-            if (flags.isFileTemplate && currentPath) {
-              let slash = newPath.includes("/") ? "/" : "\\",
-                  pathArray = newPath.split(slash);
-              try {
-                let ff = new FileUtils.File(newPath);
-                if (!ff.exists()){
-                  Util.logDebug("Failed to find file at: " + newPath);
-                } 
-                else {
-                  Util.logDebug("%file% Converted relative path: " + newPath);
-                  path=newPath; // fix path and make absolute
-                }
+        }
+        catch (ex) {
+          // new code for path of template - failed on Rob's Mac as unknown.
+          // I think this is only set when a template is opened from the submenus!
+          if (flags.isFileTemplate && currentPath) {
+            try {
+              let ff = new FileUtils.File(newPath);
+              if (!ff.exists()){
+                Util.logDebug("Failed to find file at: " + newPath);
+              } 
+              else {
+                Util.logDebug("%file% Converted relative path: " + newPath);
+                path=newPath; // fix path and make absolute
               }
-              catch(ex) {
-                debugger;
-              }
+            }
+            catch(ex) {
+              debugger;
             }
           }
         }
-        else { // Postbox
-          let LFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
-              file = LFile.initWithPath(path);
-          if (!file.exists()) {
-            logDebug("file doesn't exist: " + path);
-          }
-        }
+
       }
       try {
         switch(type) {
@@ -2055,13 +2044,9 @@ export class Parser {
                   countRead = 0;
               // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
               try {
-                let localFile = isFU ?   // not in Postbox
-                                new FileUtils.File(path) :
-                                Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+                let localFile = new FileUtils.File(path),
                     str = {};
                 Util.logDebug("localFile.initWithPath(" + path + ")");
-                if (!isFU)
-                  localFile.initWithPath(path);
                 
                 fstream.init(localFile, -1, 0, 0);
                 /* sigEncoding: The character encoding you want, default is using UTF-8 here */
