@@ -309,7 +309,7 @@ END LICENSE BLOCK
   Version 4.3.2 - 23/10/2023
     # [issue 269] Regression: Insert Snippet and Change template buttons were missing the menu item "Open template file..."
   
-  Version 4.3.3 - WIP
+  Version 4.3.3 - 08/11/2023
     # [issue 271] Sometimes the header menu is empty - patchHeaderPane() fails - 
                   - increased default delay for patching message 
                   - keeping a reference to local WindowListener in message window
@@ -317,13 +317,24 @@ END LICENSE BLOCK
     # [issue 272] SmartTemplates ignored when creating an email from the Thunderbird taskbar context menu
     #             or when clicking a mailto link on a website. This should load the template of the default account.
 
-
+  Version 4.4 - WIP
+    # [issue 275] Auto-Fill content for %to%, %recipient% and %from% when 
+                  clicking Contact context menu "Compose Message To" or writing new mail
+    # Add documentation for dateformat(fstring,toclipboard)
+    # Add Alias to register dialog if already set in a license
+    # [issue 239] Use correct %recipient% when replying to own email
+    # [issue 246] Support for other.custom1, other.custom2 etc. from address book fields
+    # [issue 257] intermittent failure looking up Cardbook, workaround: force lowercase emails (optional)
+    # [issue 267] Support for extracting prefix and suffix from address book fields
+    # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
+    # Removed duplicate tooltip on active fields in write new mail
 
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
   Version 4.x - FUTURE VERSION / WIP
+    # [issue ] Add menus in background script using API functions
     # [issue ] 
-    # [issue ] 
+
 
     # [issue 253] recreate menus using API functions
     # New Idea: Add an account templates submenu - only for accounts with dedicated settings.
