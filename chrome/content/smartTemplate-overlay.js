@@ -465,7 +465,7 @@ SmartTemplate4.classGetHeaders = function(messageURI) {
 	function get(header) {
     // /nsIMimeHeaders.extractHeader
     let retValue = '',
-		    str = headers.extractHeader(header, false);
+		    str = headers.extractHeader(header, false)
     // for names maybe use nsIMsgHeaderParser.extractHeaderAddressName instead?
     if (str && SmartTemplate4.Preferences.getMyBoolPref('headers.unescape.quotes')) {
       // if a string has nested escaped quotes in it, should we unescape them?
@@ -513,29 +513,37 @@ SmartTemplate4.clsGetAltHeader = function(msgDummyHeader) {
 			return h.substr(0, 1).toLowerCase() + h.substr(1);
 		}
     // /nsIMimeHeaders.extractHeader
-		let hdrCorrected = toCamelCase(header);
+		let hdrCorrected = toCamelCase(header),
+        hdrFallback = null;
 		switch(hdrCorrected) {
 			case "from":
 			  hdrCorrected = "author";
+        hdrFallback = "from";
 				break;
 			case "recipient": // [issue 151] placeholder for target recipient
 			case "to":
 			  hdrCorrected = "recipients";
+        hdrFallback = "to";
 				break;
 		}
 		let retValue = "";
 		try {
 			retValue = msgDummyHeader[hdrCorrected];
-			if(!retValue) {
+      if (!retValue && hdrFallback) {
+        retValue = msgDummyHeader[hdrFallback];
+      }
+			if (!retValue) {
 				if (retValue=="") {
 					// if we are writing a NEW mail, we should insert some placeholders for resolving later.
 					// if (gMsgCompose.composeHTML && hdrCorrected.composeType == 'new') {
 					//   retValue = util.wrapDeferredHeader(hdrCorrected, "", gMsgCompose.composeHTML);
 					// }
 				}
-				else
-					if (typeof msgDummyHeader[hdrCorrected] == "undefined")
+				else {
+					if (typeof msgDummyHeader[hdrCorrected] == "undefined") {
 						retValue = msgDummyHeader.__proto__[hdrCorrected];
+          }
+        }
 			} 
 				
 		}
@@ -761,7 +769,8 @@ SmartTemplate4.mimeDecoder = {
         // alternatively look at mail merge (not mail merge p) - it may do it in a different way
 
         var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook'),
-            isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.fallback');
+            isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.fallback'),
+            isCardBookForceLowerCase = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.forceLowerCase');
         if (isCardBookAB) {
           if (SmartTemplate4.Util.licenseInfo.status != "Valid" || SmartTemplate4.Util.licenseInfo.keyType == 2) {
             isCardBookAB = false;
@@ -776,6 +785,9 @@ SmartTemplate4.mimeDecoder = {
           let card;
           try {
             // Optional parameter -  preferredDirId: "b7d2806b-4c3a-40f4-ad25-541e77001ce1"
+            if (isCardBookForceLowerCase) {
+              mail = mail.toLowerCase();
+            }
             card = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "cardbook.getContactsFromMail", mail: mail });
             if (card) {
               // return first result (for now)
@@ -1130,6 +1142,28 @@ SmartTemplate4.mimeDecoder = {
                   }
                 }
                 break;
+              case "prefix": // [issue 267]
+                {
+                  if (isCardBook) {
+                    return card.prefixname;
+                  }
+                  else if (isvCard) {
+                    let result = cardObj.vCardJson[1].find(e => e[0]=="n"); // Array(4) [ "n", {}, "text", (5) […] ]
+                    if (result && result.length) return result[3][3];
+                  }
+                }
+                break;
+              case "suffix": // [issue 267]
+                {
+                  if (isCardBook) {
+                    return card.suffixname;
+                  }
+                  else if (isvCard) {
+                    let result = cardObj.vCardJson[1].find(e => e[0]=="n"); // Array(4) [ "n", {}, "text", (5) […] ]
+                    if (result && result.length) return result[3][4];
+                  }
+                }
+                break;
               case "chatname":
                 {
                   if (isCardBook) {
@@ -1340,12 +1374,16 @@ SmartTemplate4.mimeDecoder = {
                 // card.vCardProperties.entries.filter(e=>e.name==p2);
               if (isCardBook) {
                 let s = ar.toString().split(";").find(e=>e.startsWith("VALUE")); // VALUE=TEXT:something
-                if (s) {
+                if (!s) {
+                  // "X-CUSTOM1:Test Custom ONE"
+                  s = ar.toString().split(";").find(e=>e.startsWith(p2.toUpperCase()));
+                }
+                if (s) { 
                   let n = s.indexOf(":");
                   if (n>1) {
                     return s.substr(n+1);
                   }
-                }
+                } 
               }
               else {
                 if (ar && ar.length>=4) {
@@ -1624,19 +1662,24 @@ SmartTemplate4.mimeDecoder = {
           case 'lastname':
             if (card && cardLastname) {
               part = cardLastname;
-            }
-            else if (isOnlyOneName && format.indexOf('firstname')<0) {
+            } else if (isOnlyOneName && format.indexOf('firstname')<0) {
               part = firstName; // fall back to first name if lastName was 
                                 // 'emptied' because of duplication
-            }
-            else
+            } else {
               part = lastName;
+            }
             break;
           // [issue 24]
           // AB stuff - contact
           case 'nickname':
             part = getCardProperty("NickName");
             break;
+          case 'prefix': // [issue 267]
+            part = getCardProperty("prefix");
+            break;
+          case 'suffix': // [issue 267]
+            part = getCardProperty("suffix");
+            break;      
           case 'additionalmail':
             part = getCardProperty("SecondEmail");
             break;
@@ -2391,6 +2434,19 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             isAddress = util.isAddressHeader(el),
             hdrName = (el ? el : reservedWord).toLowerCase(), // Tb102
             addressHdr = isReserved ? "" : hdr.get(hdrName);
+        // insert fragment?
+        if(["recipient","identity"].includes(reservedWord) && gMsgCompose.compFields) {
+          // TokenMap[reservedWord]
+          //  !SmartTemplate4.PreprocessingFlags.isInsertTemplateRunning
+          switch (reservedWord) {
+            case "recipient":
+              addressHdr = gMsgCompose.compFields.to;
+              break;
+            case "identity":
+              addressHdr = gMsgCompose.compFields.from;
+              break;
+          }
+        }
         if (typeof addressHdr == "undefined") {
           addressHdr = "";
         }
@@ -2779,21 +2835,26 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (cmd=="deleteFromSubject") {
             argument = argString.substr(1); // cut off opening parenthesis
           }
-				  if (argument.startsWith("\"")) { 
-            // string wrapped in double quotes
-						argument = argument.substr(1, argument.lastIndexOf("\"")-1);
-          } else { 
-            // literal, only remove the closing parentheses
-						argument = argument.substr(0, argument.lastIndexOf(")"));
+          argument = argument.substr(0, argument.lastIndexOf(")"));
+          let multiArgs=[];
+          if (argument.includes(",clipboard") || argument.includes("clipboard,")) {
+            multiArgs = argument.split(",");
+          } else {
+            multiArgs = [argument];
           }
-          // [issue 183]
-          if (argument=="clipboard") {
-            if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
-              argument = "";
-              util.addUsedPremiumFunction("clipboard");
-            }
-            else {
-              argument = util.clipboardRead();
+          argument = "";
+          for (let a of multiArgs) {
+            // support adding multiple string arguments
+            if (a=="clipboard") { // [issue 183]
+              if (!util.hasLicense()  || util.licenseInfo.keyType == 2) { 
+                argument = "";
+                util.addUsedPremiumFunction("clipboard");
+              }
+              else {
+                argument += util.clipboardRead();
+              }
+            } else {
+              argument += a.replace(/^"(.*)"$/, '$1'); // remove quotes at start and end
             }
           }
 				  break;
@@ -3175,8 +3236,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
           if (arg.includes("current")) {
             dateFormatSent = false; // force using current time!
           }
-					if (dateFormatSent)
+					if (dateFormatSent) {
 						tm.setTime((date / 1000));
+          }
           // [issue 115] Erratic %datetime()% results when forcing HTML with Shift 
           arg = util.removeHtmlEntities(arg);
 					let defaultTime = util.dateFormat(tm.getTime() * 1000, removeParentheses(arg), 0); // dateFormat will add offsets itself
@@ -3420,7 +3482,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
               // if it contains file(img) then these may be relative to the parent path
               // and they will be resolved during this function call using the new stack
               // recursively:
-              fileContents = insertFileLink(arg, composeType), 
+              fileContents = await insertFileLink(arg, composeType), 
               parsedContent;
           if (token=='style') {
             if (fileContents.startsWith("<div") && fileContents.includes("Error")) {
@@ -3641,10 +3703,10 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
   }
   
   // [Bug 25871] %file()% function
-  function insertFileLink(txt, composeType) {
+  async function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-    const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm'),
-          isFU = FileUtils && FileUtils.File;
+    const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
+    // isFU = true; // FileUtils.File exists
 								
     // determine file type:
     let html = "",
@@ -3656,14 +3718,7 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         currentPath = flags.filePaths ? 
                      (flags.filePaths.length ? flags.filePaths[flags.filePaths.length-1] : "") : 
                      ""; // top of stack
-    /*                 
-    let slash = currentPath.includes("/") ? "/" : "\\",
-        noSlash = (slash=='/') ? "\\" : "/",
-        fPart = currentPath.lastIndexOf(slash),
-        newPath = "";
-    if (fPart)
-      newPath = currentPath.substr(0,fPart) + slash + path.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
-      */
+
     let newPath = util.getPathFolder(currentPath, path);
                      
     if (type.match( /(png|apng|jpg|jpeg|jp2k|gif|tif|bmp|dib|rle|ico|svg|webp)$/))
@@ -3678,35 +3733,32 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
       util.logDebug(dbgCmdType + " - " + type + " path may be relative: " + path  +
         "\n flags.isFileTemplate = " + flags.isFileTemplate +
         "\n template path = " + currentPath || '?');
-      let pathParts = path.includes("\\") ? path.split("\\") :  path.split("/");
-      if (isFU) {
-        // if (prefs.isDebugOption("fileTemplates")) debugger;
-        try {
-          // on Mac systems nsIDirectoryService key may NOT be empty!
-          // https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/File_I_O
-          if (!FileUtils.getFile("Home", pathParts, false)) {
-            util.logDebug("Cannot find file. Trying to append to path of template.");
-          }
+      
+      // if (prefs.isDebugOption("fileTemplates")) debugger;
+      try {
+        // let pathParts = path.includes("\\") ? path.split("\\") :  path.split("/");
+        // (!FileUtils.getFile("Home", pathParts, false))
+        if (!await IOUtils.exists(newPath)) {  
+          util.logDebug("Cannot find file. Trying to append to path of template.");
         }
-        catch (ex) {
-          // new code for path of template - failed on Rob's Mac as unknown.
-          // I think this is only set when a template is opened from the submenus!
-          if (flags.isFileTemplate && currentPath) {
-            // let slash = newPath.includes("/") ? "/" : "\\",
-            //     pathArray = newPath.split(slash);
-            try {
-              let ff = new FileUtils.File(newPath);
-              if (!ff.exists()){
-                util.logDebug("Failed to find file at: " + newPath);
-              } 
-              else {
-                util.logDebug("%file% Converted relative path: " + newPath);
-                path=newPath; // fix path and make absolute
-              }
+      }
+      catch (ex) {
+        // new code for path of template - failed on Rob's Mac as unknown.
+        // I think this is only set when a template is opened from the submenus!
+        if (flags.isFileTemplate && currentPath) {
+          // let slash = newPath.includes("/") ? "/" : "\\",
+          //     pathArray = newPath.split(slash);
+          try {
+            if (!await IOUtils.exists(newPath)) {
+              util.logDebug("Failed to find file at: " + newPath);
+            } 
+            else {
+              util.logDebug("%file% Converted relative path: " + newPath);
+              path=newPath; // fix path and make absolute
             }
-            catch(ex) {
-              debugger;
-            }
+          }
+          catch(ex) {
+            debugger;
           }
         }
       }
@@ -3717,8 +3769,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
         case 'html':
         case 'txt':
         case 'css':
-          if (!isAbsolute) 
+          if (!isAbsolute) {
             path = newPath;
+          }
           //try our new method
           if (prefs.getMyBoolPref("vars.file.fileTemplateMethod")) {
             let tmpTemplate = SmartTemplate4.fileTemplates.retrieveTemplate(
@@ -3730,8 +3783,9 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
             );
             if (!tmpTemplate.failed) {
               html = tmpTemplate.HTML;
-              if (!html)
+              if (!html) {
                 html = tmpTemplate.Text;
+              }
             }
           }
           if (!html) {
@@ -3744,15 +3798,11 @@ SmartTemplate4.regularize = async function regularize(msg, composeType, isStatio
                 countRead = 0;
             // let sigFile = Ident.signature.QueryInterface(Ci.nsIFile); 
             try {
-              let localFile = isFU ?   // not in Postbox
-                              new FileUtils.File(path) :
-                              Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile),
+              let localFile = new FileUtils.File(path),
                   str = {};
               util.logDebug("localFile.initWithPath(" + path + ")");
-              if (!isFU)
-                localFile.initWithPath(path);
-              
               fstream.init(localFile, -1, 0, 0);
+
               /* sigEncoding: The character encoding you want, default is using UTF-8 here */
               let encoding = (arr.length>1) ? arr[1] : 'UTF-8';
               util.logDebug("initializing stream with " + encoding + " encoding…");

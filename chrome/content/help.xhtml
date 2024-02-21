@@ -113,6 +113,7 @@
         <li tabindex="-1"><code>%toclipboard(<i>text</i>)%</code> = __MSG_clipboard.copy__</li>
         <li tabindex="-1"><code>%clipboard%</code> = __MSG_clipboard.insert__</li>
         <li tabindex="-1"><code>%from(mail,<i>toclipboard</i>)%</code> = __MSG_clipboard.from__</li>
+        <li tabindex="-1"><code>%dateformat("formatString",<i>toclipboard</i>)%</code> = __MSG_clipboard.dateformat__ __MSG_var_custom.cap__</li>
         <li tabindex="-1"><code>%header.set(cc,<i>clipboard</i>)%</code> = __MSG_clipboard.setHeader__</li>
         <li tabindex="-1"><code>%matchTextFromSubject(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchSubject__</li>
         <li tabindex="-1"><code>%matchTextFromBody(regularPattern,group,<i>toclipboard</i>)%</code> = __MSG_clipboard.matchBody__</li>
@@ -135,6 +136,8 @@
         <li tabindex="-1">lastname</li>
         <li tabindex="-1">name</li>
         <li tabindex="-1">nickname</li>
+        <li tabindex="-1">prefix</li>
+        <li tabindex="-1">suffix</li>
         <li tabindex="-1">additionalmail</li>
         <li tabindex="-1">chatname</li>
         <li tabindex="-1">workphone</li>
