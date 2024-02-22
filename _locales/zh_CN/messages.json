@@ -1820,7 +1820,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 当通过上下文菜单 '撰写邮件至' 写新电子邮件时，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址数据现在将自动插入。[issue 275]{L2} {L1} 当回复自己在对话中的电子邮件时，{{%recipient%}} 的使用也能正常工作，并且 Thunderbird 会自动更改收件人。[issue 239]{L2} {L1} 新选项在搜索 Cardbook 联系人时强制使用小写电子邮件地址。{L2} {L1} 从地址簿字段中提取 {{prefix}} 和 {{suffix}} 的支持。[issue 267]{L2} {L1} 从地址簿字段支持 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}"
+    "message": "{L1} 当通过上下文菜单 '撰写邮件至' 写新电子邮件时，{{%to%}}、{{%recipient%}} 和 {{%from%}} 的地址数据现在将自动插入。[issue 275]{L2} {L1} 当回复自己在对话中的电子邮件时，{{%recipient%}} 的使用也能正常工作，并且 Thunderbird 会自动更改收件人。[issue 239]{L2} {L1}在搜索 Cardbook 联系人时，将电子邮件地址转换为小写。[issue 278]{L2}  {L1} 从地址簿字段中提取 {{prefix}} 和 {{suffix}} 的支持。[issue 267]{L2} {L1} 从地址簿字段支持 {{other.custom1}}、{{other.custom2}} 等。[issue 246]{L2} {L1} 删除了活动 SmartTemplate 字段上的重复工具提示。{L2}"
   },   
   "whitespace_note": {
     "message": "请注意，空格最好用\\s表示，因为它也可以包含换行符。 不能使用逗号和双引号字符。"

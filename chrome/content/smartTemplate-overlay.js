@@ -769,8 +769,7 @@ SmartTemplate4.mimeDecoder = {
         // alternatively look at mail merge (not mail merge p) - it may do it in a different way
 
         var isCardBookAB = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook'),
-            isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.fallback'),
-            isCardBookForceLowerCase = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.forceLowerCase');
+            isCardBookFallback = SmartTemplate4.Preferences.getMyBoolPref('mime.resolveAB.CardBook.fallback');
         if (isCardBookAB) {
           if (SmartTemplate4.Util.licenseInfo.status != "Valid" || SmartTemplate4.Util.licenseInfo.keyType == 2) {
             isCardBookAB = false;
@@ -785,9 +784,8 @@ SmartTemplate4.mimeDecoder = {
           let card;
           try {
             // Optional parameter -  preferredDirId: "b7d2806b-4c3a-40f4-ad25-541e77001ce1"
-            if (isCardBookForceLowerCase) {
-              mail = mail.toLowerCase();
-            }
+            // [issue 278] - avoid mixed case when looking up emails!
+            mail = mail.toLowerCase();
             card = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "cardbook.getContactsFromMail", mail: mail });
             if (card) {
               // return first result (for now)

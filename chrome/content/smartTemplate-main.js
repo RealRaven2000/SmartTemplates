@@ -324,7 +324,8 @@ END LICENSE BLOCK
     # Add Alias to register dialog if already set in a license
     # [issue 239] Use correct %recipient% when replying to own email
     # [issue 246] Support for other.custom1, other.custom2 etc. from address book fields
-    # [issue 257] intermittent failure looking up Cardbook, workaround: force lowercase emails (optional)
+    # [issue 257] Cardbook: Deferred variable (clicking on the pink "to(name)" field not pulling data from B intermittently
+    # [issue 278] failure looking up Cardbook with mixed case - forced lowercase emails
     # [issue 267] Support for extracting prefix and suffix from address book fields
     # [issue 276] Removed FileUtils.getFile for future compatibility (122 beta)
     # Removed duplicate tooltip on active fields in write new mail
